@@ -30,21 +30,24 @@ public class Escritorio extends Guidewire {
     @FindBy(xpath=".//*[@id='TabBar:ContactTab:NewContact:NewPerson-itemEl']")
     WebElementFacade mnuNewPerson;
 
+    // TODO: 18/04/2016 Revisión escritura de excepciones en log 
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
-        System.out.println("Esperando...");
         try {
             element(labelIngreso).waitUntilVisible();
             element(mnuContact).waitUntilVisible();
         }catch(Exception e){
-            System.out.println("Threw an exception....");
+            throw new RuntimeException(e);
         }
     }
-
+    
+    // TODO: 18/04/2016 Revisión escritura de excepciones en log 
     public void assertion(String element){
         try {
             assertThat(labelIngreso.getText().toString(), containsString(element));
-        }catch (Exception e){}
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void nuevoContactoPersona() {
