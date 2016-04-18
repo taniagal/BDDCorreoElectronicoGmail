@@ -11,9 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
-/**
- * Created by jorghome on 30/03/2016.
- */
+
 public class Escritorio extends Guidewire {
 
     public Escritorio(WebDriver driver) {
@@ -60,7 +58,5 @@ public class Escritorio extends Guidewire {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
         }
-
     }
-
 }
