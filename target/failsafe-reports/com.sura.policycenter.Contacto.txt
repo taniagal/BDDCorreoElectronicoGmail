@@ -1,0 +1,66 @@
+-------------------------------------------------------------------------------
+Test set: com.sura.policycenter.Contacto
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 2, Errors: 1, Skipped: 1, Time elapsed: 12.085 sec <<< FAILURE! - in com.sura.policycenter.Contacto
+Then el usuario deberia poder acceder a nuevo contacto persona(com.sura.policycenter.selenium.definitions.PolicyDefinitions)  Time elapsed: 4.993 sec  <<< ERROR!
+net.serenitybdd.core.exceptions.SerenityManagedException: Timed out after 2 seconds. Element not found
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.50.1', revision: 'd7fc91b29de65b790abb01f3ac5f7ea2191c88a7', time: '2016-01-29 11:11:26'
+System info: host: 'PQVIPF0DCV2P', ip: '10.214.18.161', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_79'
+Driver info: driver.version: unknown
+	at net.thucydides.core.annotations.locators.SmartAjaxElementLocator.ajaxFindElement(SmartAjaxElementLocator.java:145)
+	at net.thucydides.core.annotations.locators.SmartAjaxElementLocator.findElement(SmartAjaxElementLocator.java:93)
+	at net.serenitybdd.core.pages.WebElementFacadeImpl.getElement(WebElementFacadeImpl.java:144)
+	at net.serenitybdd.core.pages.WebElementFacadeImpl.getCoordinates(WebElementFacadeImpl.java:1089)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at net.thucydides.core.annotations.locators.AbstractSingleItemHandler.invoke(AbstractSingleItemHandler.java:45)
+	at com.sun.proxy.$Proxy21.getCoordinates(Unknown Source)
+	at org.openqa.selenium.interactions.internal.MouseAction.getActionLocation(MouseAction.java:51)
+	at org.openqa.selenium.interactions.MoveMouseAction.perform(MoveMouseAction.java:39)
+	at org.openqa.selenium.interactions.CompositeAction.perform(CompositeAction.java:50)
+	at com.sura.policycenter.selenium.pages.Escritorio.nuevoContactoPersona(Escritorio.java:56)
+	at com.sura.policycenter.selenium.steps.PolicySteps.nuevoContactoPersona(PolicySteps.java:40)
+	at com.sura.policycenter.selenium.steps.PolicySteps$$EnhancerByCGLIB$$92c0ff4f.CGLIB$nuevoContactoPersona$1(<generated>)
+	at com.sura.policycenter.selenium.steps.PolicySteps$$EnhancerByCGLIB$$92c0ff4f$$FastClassByCGLIB$$fc735b49.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at net.thucydides.core.steps.StepInterceptor.invokeMethod(StepInterceptor.java:348)
+	at net.thucydides.core.steps.StepInterceptor.executeTestStepMethod(StepInterceptor.java:333)
+	at net.thucydides.core.steps.StepInterceptor.runTestStep(StepInterceptor.java:308)
+	at net.thucydides.core.steps.StepInterceptor.testStepResult(StepInterceptor.java:130)
+	at net.thucydides.core.steps.StepInterceptor.intercept(StepInterceptor.java:57)
+	at com.sura.policycenter.selenium.steps.PolicySteps$$EnhancerByCGLIB$$92c0ff4f.nuevoContactoPersona(<generated>)
+	at com.sura.policycenter.selenium.definitions.PolicyDefinitions.nuevoContactoPersona(PolicyDefinitions.java:36)
+
+Scenario: autenticacion en policycenter  Time elapsed: 5.141 sec  <<< FAILURE!
+java.lang.AssertionError: scenario failed!
+	at de.codecentric.jbehave.junit.monitoring.JUnitScenarioReporter.afterScenario(JUnitScenarioReporter.java:218)
+	at org.jbehave.core.reporters.DelegatingStoryReporter.afterScenario(DelegatingStoryReporter.java:43)
+	at org.jbehave.core.reporters.ConcurrentStoryReporter.afterScenario(ConcurrentStoryReporter.java:175)
+	at org.jbehave.core.embedder.StoryRunner.runCancellable(StoryRunner.java:347)
+	at org.jbehave.core.embedder.StoryRunner.run(StoryRunner.java:239)
+	at org.jbehave.core.embedder.StoryRunner.run(StoryRunner.java:182)
+	at org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:266)
+	at org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:233)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+
+contacto.story  Time elapsed: 6.125 sec  <<< FAILURE!
+java.lang.AssertionError: story failed!
+	at de.codecentric.jbehave.junit.monitoring.JUnitScenarioReporter.afterStory(JUnitScenarioReporter.java:143)
+	at org.jbehave.core.reporters.DelegatingStoryReporter.afterStory(DelegatingStoryReporter.java:49)
+	at org.jbehave.core.reporters.ConcurrentStoryReporter.afterStory(ConcurrentStoryReporter.java:121)
+	at org.jbehave.core.embedder.StoryRunner.runCancellable(StoryRunner.java:355)
+	at org.jbehave.core.embedder.StoryRunner.run(StoryRunner.java:239)
+	at org.jbehave.core.embedder.StoryRunner.run(StoryRunner.java:182)
+	at org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:266)
+	at org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:233)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+

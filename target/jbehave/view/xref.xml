@@ -1,0 +1,49 @@
+<xref>
+  <whenMade>1460757710662</whenMade>
+  <createdBy>JBehave</createdBy>
+  <metaFilter>-ignore</metaFilter>
+  <meta/>
+  <stories>
+    <story>
+      <description></description>
+      <narrative></narrative>
+      <name>login.story</name>
+      <path>stories/claims/login.story</path>
+      <html>stories.claims.login.html</html>
+      <meta></meta>
+      <scenarios>Scenario:autenticacion en ClaimsCenter
+Given estoy en la pagina de autenticacion de ClaimsCenter
+When ingrese username &lt;usr&gt; y password &lt;pass&gt;
+Then deberia ingresar al sistema y ver el mensaje &lt;message&gt;
+
+
+</scenarios>
+      <passed>true</passed>
+      <pending>false</pending>
+      <started>1460757688325</started>
+      <duration>6480</duration>
+    </story>
+    <story>
+      <description></description>
+      <narrative></narrative>
+      <name>contacto.story</name>
+      <path>stories/policycenter/contacto.story</path>
+      <html>stories.policycenter.contacto.html</html>
+      <meta></meta>
+      <scenarios>Scenario:autenticacion en policycenter
+Given el usuario ingresa a la pagina de autenticacion de PolicyCenter
+When el usuario ingresa username &lt;usr&gt; y password &lt;pass&gt;
+Then el usuario deberia ver la pagina de inicio correspondiente a su rol &lt;message&gt;
+Then el usuario deberia poder acceder a nuevo contacto persona
+Then el usuario deberia cerrar sesion
+
+
+</scenarios>
+      <passed>false</passed>
+      <pending>false</pending>
+      <started>1460757698629</started>
+      <duration>10576</duration>
+    </story>
+  </stories>
+  <stepMatches/>
+</xref>

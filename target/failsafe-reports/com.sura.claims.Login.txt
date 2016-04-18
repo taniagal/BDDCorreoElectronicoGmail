@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.sura.claims.Login
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.343 sec - in com.sura.claims.Login

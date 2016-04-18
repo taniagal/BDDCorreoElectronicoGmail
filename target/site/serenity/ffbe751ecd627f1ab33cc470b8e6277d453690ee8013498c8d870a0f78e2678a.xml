@@ -1,0 +1,63 @@
+<acceptance-test-run title="autenticacion en ClaimsCenter" name="autenticacion en ClaimsCenter" steps="3" successful="3" failures="0" skipped="0" ignored="0" pending="0" result="SUCCESS" duration="6367" timestamp="2016-04-15T17:01:28.399-05:00" session-id="1338e206dc117d5d2d8c7e1def8cc7b4">
+  <user-story id="login" name="Login" path="stories/claims/login.story"/>
+  <tags>
+    <tag name="Claims" type="feature"/>
+    <tag name="Claims/Login" type="story"/>
+  </tags>
+  <examples>
+    <datasets>
+      <dataset startRow="0" rowCount="0"/>
+    </datasets>
+    <headers>
+      <header>usr</header>
+      <header>pass</header>
+      <header>message</header>
+    </headers>
+    <rows>
+      <row result="SUCCESS">
+        <value>su</value>
+        <value>gw</value>
+        <value>Actividades</value>
+      </row>
+    </rows>
+  </examples>
+  <test-group name="[1] {usr=su, pass=gw, message=Actividades}" result="SUCCESS">
+    <test-group name="Given estoy en la pagina de autenticacion de ClaimsCenter" result="SUCCESS">
+      <screenshots>
+        <screenshot image="854caa81d73b60c42be43f31362e1e8b.png"/>
+      </screenshots>
+      <test-step result="SUCCESS" duration="3996">
+        <screenshots>
+          <screenshot image="854caa81d73b60c42be43f31362e1e8b.png"/>
+        </screenshots>
+        <description>Open</description>
+      </test-step>
+    </test-group>
+    <test-group name="When ingrese username {su} y password {gw}" result="SUCCESS">
+      <screenshots>
+        <screenshot image="e585c2dc3189b47b153dfac456958683.png"/>
+        <screenshot image="acaa42d3598c4311ab2f5d19e3ee769b.png"/>
+      </screenshots>
+      <test-step result="SUCCESS" duration="786">
+        <screenshots>
+          <screenshot image="e585c2dc3189b47b153dfac456958683.png"/>
+          <screenshot image="03f535be0b9d35ea7ab247a6e3c9b22f.png"/>
+        </screenshots>
+        <description>Login: &lt;span class=&apos;step-parameter&apos;&gt;su, gw&lt;/span&gt;</description>
+      </test-step>
+    </test-group>
+    <test-group name="Then deberia ingresar al sistema y ver el mensaje {Actividades}" result="SUCCESS">
+      <screenshots>
+        <screenshot image="acaa42d3598c4311ab2f5d19e3ee769b.png"/>
+        <screenshot image="0fb0e03152e4de131546d5c6c859d799.png"/>
+      </screenshots>
+      <test-step result="SUCCESS" duration="358">
+        <screenshots>
+          <screenshot image="acaa42d3598c4311ab2f5d19e3ee769b.png"/>
+          <screenshot image="0fb0e03152e4de131546d5c6c859d799.png"/>
+        </screenshots>
+        <description>Assertion: &lt;span class=&apos;step-parameter&apos;&gt;Actividades&lt;/span&gt;</description>
+      </test-step>
+    </test-group>
+  </test-group>
+</acceptance-test-run>

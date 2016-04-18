@@ -1,0 +1,35 @@
+{"xref": {
+  "whenMade": 1460757710662,
+  "createdBy": "JBehave",
+  "metaFilter": "-ignore",
+  "meta": [],
+  "stories": [
+    {
+      "description": "",
+      "narrative": "",
+      "name": "login.story",
+      "path": "stories/claims/login.story",
+      "html": "stories.claims.login.html",
+      "meta": "",
+      "scenarios": "Scenario:autenticacion en ClaimsCenter\nGiven estoy en la pagina de autenticacion de ClaimsCenter\nWhen ingrese username <usr> y password <pass>\nThen deberia ingresar al sistema y ver el mensaje <message>\n\n\n",
+      "passed": true,
+      "pending": false,
+      "started": 1460757688325,
+      "duration": 6480
+    },
+    {
+      "description": "",
+      "narrative": "",
+      "name": "contacto.story",
+      "path": "stories/policycenter/contacto.story",
+      "html": "stories.policycenter.contacto.html",
+      "meta": "",
+      "scenarios": "Scenario:autenticacion en policycenter\nGiven el usuario ingresa a la pagina de autenticacion de PolicyCenter\nWhen el usuario ingresa username <usr> y password <pass>\nThen el usuario deberia ver la pagina de inicio correspondiente a su rol <message>\nThen el usuario deberia poder acceder a nuevo contacto persona\nThen el usuario deberia cerrar sesion\n\n\n",
+      "passed": false,
+      "pending": false,
+      "started": 1460757698629,
+      "duration": 10576
+    }
+  ],
+  "stepMatches": []
+}}

@@ -1,0 +1,6 @@
+#org.jbehave.core.embedder.StoryManager
+#Fri Apr 15 17:01:50 COT 2016
+threads=1
+total=11000
+threadAverage=11000
+stories/policycenter/contacto.story=11000

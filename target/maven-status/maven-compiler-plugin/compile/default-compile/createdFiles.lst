@@ -1,0 +1,9 @@
+com\sura\claims\selenium\steps\ClaimsSteps.class
+com\sura\claims\selenium\pages\AbrirApp.class
+com\sura\policycenter\selenium\pages\Escritorio.class
+com\sura\guidewire\selenium\Guidewire.class
+com\sura\claims\selenium\pages\Escritorio.class
+com\sura\claims\selenium\definitions\ClaimsDefinitions.class
+com\sura\policycenter\selenium\pages\AbrirApp.class
+com\sura\policycenter\selenium\definitions\PolicyDefinitions.class
+com\sura\policycenter\selenium\steps\PolicySteps.class
