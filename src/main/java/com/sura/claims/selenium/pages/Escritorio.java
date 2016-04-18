@@ -23,7 +23,8 @@ public class Escritorio extends Guidewire {
     public void assertion(String element){
         try {
             assertThat(labelIngreso.getText().toString(), containsString(element));
-        }catch (Exception e){}
+        }catch (Exception e){
+        }
     }
 
 }
