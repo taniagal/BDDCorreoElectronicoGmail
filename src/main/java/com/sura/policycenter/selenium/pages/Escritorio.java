@@ -32,19 +32,20 @@ public class Escritorio extends Guidewire {
 
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
-        System.out.println("Esperando...");
         try {
             element(labelIngreso).waitUntilVisible();
             element(mnuContact).waitUntilVisible();
         }catch(Exception e){
-            System.out.println("Threw an exception....");
+            throw new RuntimeException(e);
         }
     }
 
     public void assertion(String element){
         try {
             assertThat(labelIngreso.getText().toString(), containsString(element));
-        }catch (Exception e){}
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void nuevoContactoPersona() {
