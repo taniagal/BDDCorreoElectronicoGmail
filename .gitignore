@@ -1,3 +1,5 @@
 #Directorios Ignorados
 .idea
 target
+BDDCore.iml
+pom.xml
