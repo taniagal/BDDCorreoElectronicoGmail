@@ -30,7 +30,7 @@ public class Escritorio extends Guidewire {
     @FindBy(xpath=".//*[@id='TabBar:ContactTab:NewContact:NewPerson-itemEl']")
     WebElementFacade mnuNewPerson;
 
-    // TODO: 18/04/2016 Revisión escritura de excepciones en log 
+    // TODO: 18/04/2016 Revision escritura de excepciones en log 
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
         try {
@@ -41,7 +41,7 @@ public class Escritorio extends Guidewire {
         }
     }
     
-    // TODO: 18/04/2016 Revisión escritura de excepciones en log 
+    // TODO: 18/04/2016 Revision escritura de excepciones en log 
     public void assertion(String element){
         try {
             assertThat(labelIngreso.getText().toString(), containsString(element));
@@ -50,6 +50,7 @@ public class Escritorio extends Guidewire {
         }
     }
 
+    // TODO: 18/04/2016 Revision escritura de excepciones en log 
     public void nuevoContactoPersona() {
         Actions act = new Actions(getDriver());
         mnuContact.click();
@@ -59,7 +60,11 @@ public class Escritorio extends Guidewire {
         act.moveToElement(mnuNewPerson).click().build().perform();
         try {
             Thread.sleep(3000);
+<<<<<<< HEAD
         } catch (Exception e) {
+=======
+        } catch (InterruptedException e) {
+>>>>>>> ae24bd133282f725f3426740a2338fe577cb4822
             throw new RuntimeException(e);
         }
     }

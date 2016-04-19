@@ -33,15 +33,15 @@ public class Guidewire extends PageObject {
     @FindBy(xpath=".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnLogout2;
 
+    // TODO: 19/04/2016 Revision escritura de excepciones en log 
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
-        System.out.println("Esperando...");
         getDriver().manage().window().maximize();
         try {
             element(usuario).waitUntilVisible();
             element(contrasena).waitUntilVisible();
         }catch(Exception e){
-            System.out.println("Threw an exception....");
+            throw new RuntimeException(e);
         }
     }
     public void login(String user, String pass) {
