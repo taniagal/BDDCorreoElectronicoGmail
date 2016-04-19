@@ -12,9 +12,9 @@ import com.sura.policycenter.selenium.pages.AbrirApp;
  */
 public class PolicySteps extends ScenarioSteps {
 
-    public Guidewire gw;
-    public AbrirApp abrirapp;
-    public Escritorio escritorio;
+    Guidewire gw = new Guidewire(getDriver());
+    AbrirApp abrirapp = new AbrirApp(getDriver());
+    Escritorio escritorio = new Escritorio(getDriver());
 
     public PolicySteps(Pages pages) {
         super(pages);
@@ -27,7 +27,7 @@ public class PolicySteps extends ScenarioSteps {
 
     @Step
     public void login(String usuario, String contrasena) {
-        gw.login(usuario,contrasena);
+        gw.login(usuario, contrasena);
     }
 
     @Step
