@@ -12,9 +12,9 @@ import com.sura.policycenter.selenium.pages.AbrirApp;
  */
 public class PolicySteps extends ScenarioSteps {
 
-    Guidewire gw;
-    AbrirApp abrir;
-    Escritorio escritorio;
+    public Guidewire gw;
+    public AbrirApp abrirapp;
+    public Escritorio escritorio;
 
     public PolicySteps(Pages pages) {
         super(pages);
@@ -22,7 +22,7 @@ public class PolicySteps extends ScenarioSteps {
 
     @Step
     public void open() {
-        abrir.open();
+        abrirapp.open();
     }
 
     @Step
