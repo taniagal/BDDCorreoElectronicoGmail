@@ -14,7 +14,8 @@ public class ReclamacionDefinitons {
     }
 
     @Given ("y me logeado en ClaimsCenter <usr> <pass>")
-    public void login(@Named("usr") String user, @Named("Pass") String pass) {
+    public void login(@Named("usr") String user, @Named("Pass") String pass)
+    {
         cs.login(user, pass);
     }
 
