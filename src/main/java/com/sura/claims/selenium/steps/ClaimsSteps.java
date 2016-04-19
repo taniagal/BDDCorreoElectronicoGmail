@@ -2,6 +2,7 @@ package com.sura.claims.selenium.steps;
 
 import com.sura.claims.selenium.pages.AbrirApp;
 import com.sura.claims.selenium.pages.Escritorio;
+import com.sura.claims.selenium.pages.Reclamacion;
 import com.sura.guidewire.selenium.Guidewire;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
@@ -13,9 +14,9 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class ClaimsSteps extends ScenarioSteps{
     Guidewire gw;
-    AbrirApp abrir;
+    AbrirApp abrirApp;
     Escritorio escritorio;
-
+    Reclamacion reclamacion;
 
     public ClaimsSteps(Pages pages) {
         super(pages);
@@ -23,7 +24,7 @@ public class ClaimsSteps extends ScenarioSteps{
 
     @Step
     public void open() {
-        abrir.open();
+        abrirApp.open();
     }
 
     @Step
@@ -34,6 +35,21 @@ public class ClaimsSteps extends ScenarioSteps{
     @Step
     public void assertion(String element) {
         escritorio.assertion(element);
+    }
+
+    @Step
+    public void navegacion(){
+        escritorio.navegacion();
+    }
+
+    @Step
+    public void setReclamacion(String Npoliza){
+        reclamacion.llenarReclamacion(Npoliza);
+    }
+
+    @Step
+    public void logout(){
+        gw.logout();
     }
 
 }

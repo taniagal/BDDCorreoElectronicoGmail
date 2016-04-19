@@ -1,9 +1,9 @@
 package com.sura.claims;
 
-import net.serenitybdd.jbehave.SerenityStories;
+import net.serenitybdd.jbehave.SerenityStory;
 
 /**
  * Created by edwabuac on 18/04/2016.
  */
-public class Reclamacion extends SerenityStories{
+public class Reclamacion extends SerenityStory{
 }

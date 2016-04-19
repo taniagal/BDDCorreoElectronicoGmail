@@ -44,7 +44,6 @@ public class Guidewire extends PageObject {
             System.out.println("Threw an exception....");
         }
     }
-
     public void login(String user, String pass) {
         usuario.clear();
         contrasena.clear();
@@ -52,7 +51,6 @@ public class Guidewire extends PageObject {
         contrasena.type(pass);
         submit.click();
     }
-
     public void logout() {
         btnConfig.click();
         btnLogout.click();

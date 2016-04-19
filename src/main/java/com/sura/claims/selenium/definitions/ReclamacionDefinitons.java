@@ -1,33 +1,36 @@
 package com.sura.claims.selenium.definitions;
 
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import com.sura.claims.selenium.steps.ClaimsSteps;
+import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.*;
 
-/**
- * Created by edwabuac on 18/04/2016.
- */
 public class ReclamacionDefinitons {
-    @Given("el usuario ingresa a la pagina de autenticacion de PolicyCenter")
-    public void givenElUsuarioIngresaALaPaginaDeAutenticacionDePolicyCenter() {
+    @Steps
+    ClaimsSteps cs;
+
+    @Given ("abro la aplicacion")
+    public void open(){
+        cs.open();
     }
 
-    @When("el usuario ingresa username <usr> y password <pass>")
-    public void whenElUsuarioIngresaUsernameusrYPasswordpass() {
+    @Given ("y me logeado en ClaimsCenter <usr> <pass>")
+    public void login(@Named("usr") String user, @Named("Pass") String pass) {
+        cs.login(user, pass);
     }
 
-    @Then("el usuario deberia ver la pagina de inicio correspondiente a su rol <message>")
-    public void thenElUsuarioDeberiaVerLaPaginaDeInicioCorrespondienteASuRolmessage() {
-
+    @When("cuando ingrese a la pantalla de reclamacion")
+    public void navegacion() {
+        cs.navegacion();
     }
 
-    @Then("el usuario deberia poder acceder a nuevo contacto persona")
-    public void thenElUsuarioDeberiaPoderAccederANuevoContactoPersona() {
-
+    @When("ingrese los datos necesarios <poliza>")
+    public void crearReclamacion(@Named("npoliza") String npoliza) {
+        cs.setReclamacion(npoliza);
     }
 
-    @Then("el usuario deberia cerrar sesion")
-    public void thenElUsuarioDeberiaCerrarSesion() {
-
+    @Then("deberia poder crear una reclamacion")
+    public void logout(){
     }
 }
+
+

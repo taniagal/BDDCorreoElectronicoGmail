@@ -59,7 +59,8 @@ public class Escritorio extends Guidewire {
         act.moveToElement(mnuNewPerson).click().build().perform();
         try {
             Thread.sleep(3000);
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
