@@ -15,11 +15,17 @@ Se utiliza **BDD** (Behavior-Driven Development o Desarrollo Guiado por el Compo
 ### ¿Como realizar la instalación? ###
 
 * Descargar o clonar el proyecto BDDCoreSura
+
 * Contar con las herramientas relacionadas en (url wiki), especialmente con un IDE de desarrollo como IntelliJIDEA o Eclipse.
+
 * Cómo ejecutar las pruebas? en el directorio "bddcoresura\src\test\java\com\sura\" se encuentran las clases que ejecutan los test para cada uno de los módulos (PolicyCenter, Claims y Billing), utilizando el IDE IntelliJIDEA, dentro de la clase se encuentra el botón ejecutable "Run Test".
+
 Igualmente desde consola se puede realizar la ejecución con el siguiente comando:
+
 **mvn clean verify serenity:aggregate**
+
 * Una vez ejecutado se crea el directorio "target\site\serenity\", con un archivo html "index.html" que corresponde al informe de resultados para la última ejecución realizada.
+
 
 
 En el siguiente link se encuentra un mayor detalle técnico con la explicación del ejemplo utilizado en el proyecto para conocer cómo crear una prueba desde la historia de usuario:
