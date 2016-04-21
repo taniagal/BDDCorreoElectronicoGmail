@@ -12,9 +12,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 
-public class Escritorio extends Guidewire {
+public class EscritorioPage extends Guidewire {
 
-    public Escritorio(WebDriver driver) {
+    public EscritorioPage(WebDriver driver) {
         super(driver);
     }
 
