@@ -6,12 +6,12 @@ Quiero ser capaz de autenticarme
 Asi desplegar la pagina de inicio correspondiente
 
 Scenario: autenticacion en policycenter
-Given el usuario ingresa a la pagina de autenticacion de PolicyCenter
-When el usuario ingresa username <usr> y password <pass>
+Given el usuario ingresa a la pagina de autenticacion de PolicyCenter - Seus
+When el usuario ingresa pais <country>, username <usr> y password <pass>
 Then el usuario deberia ver la pagina de inicio correspondiente a su rol <message>
 Then el usuario deberia poder acceder a nuevo contacto persona
 Then el usuario deberia cerrar sesion
 
 Examples:
-|usr|pass|message|
-|su|gw|Mis actividades|
+|country|usr|pass|message|
+|Colombia|pedrvevi|pedrvevi|Mis actividades|

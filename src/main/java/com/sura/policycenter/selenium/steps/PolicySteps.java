@@ -1,19 +1,19 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.guidewire.selenium.SeusLoginPage;
-import com.sura.policycenter.selenium.pages.Escritorio;
+import com.sura.policycenter.selenium.pages.EscritorioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.policycenter.selenium.pages.AbrirApp;
+import com.sura.policycenter.selenium.pages.AbrirAppPage;
 
 public class PolicySteps extends ScenarioSteps {
 
     SeusLoginPage seus = new SeusLoginPage(getDriver());
     Guidewire gw = new Guidewire(getDriver());
-    AbrirApp abrirapp = new AbrirApp(getDriver());
-    Escritorio escritorioPage = new Escritorio(getDriver());
+    AbrirAppPage abrirapp = new AbrirAppPage(getDriver());
+    EscritorioPage escritorioPagePage = new EscritorioPage(getDriver());
 
     public PolicySteps(Pages pages) {
         super(pages);
@@ -41,12 +41,12 @@ public class PolicySteps extends ScenarioSteps {
 
     @Step
     public void assertion(String element) {
-        escritorioPage.assertion(element);
+        escritorioPagePage.assertion(element);
     }
 
     @Step
     public void nuevoContactoPersona() {
-        escritorioPage.nuevoContactoPersona();
+        escritorioPagePage.nuevoContactoPersona();
     }
 
     @Step
