@@ -44,6 +44,24 @@ public class ParticipantesDeCuentaPages extends Guidewire {
     @FindBy(xpath=".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Update-btnInnerEl']")
     WebElementFacade btnActualizar;
 
+    @FindBy(xpath=".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Cancel']")
+    WebElementFacade btnCancelar;
 
+    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Add']")
+    WebElementFacade btnAgregar;
 
+    @FindBy(xpath =".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Remove']")
+    WebElementFacade btnQuitar;
+
+    @FindBy(xpath =".//*[@id='ext-gen1853']/div/img")
+    WebElementFacade chkRegistroUno;
+
+    @FindBy(xpath =".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV:0:AssignedUser:UserBrowseMenuItem']")
+    WebElementFacade btnSelecUsuario;
+
+    @FindBy(xpath =".//*[@id='gridview-1259-record-ext-record-130']/td[3]/div")
+    WebElementFacade grdUsuarioAsigEdit;
+
+    @FindBy(xpath =".//*[@id='ext-gen2119']")
+    WebElementFacade grdGrupoAsigEdit;
 }
