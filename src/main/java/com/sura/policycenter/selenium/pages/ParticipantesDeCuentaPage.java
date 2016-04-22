@@ -8,9 +8,9 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by eliaalch on 21/04/2016.
  */
-public class ParticipantesDeCuentaPages extends Guidewire {
+public class ParticipantesDeCuentaPage extends Guidewire {
 
-    public ParticipantesDeCuentaPages(WebDriver driver) {
+    public ParticipantesDeCuentaPage(WebDriver driver) {
         super(driver);
     }
 
