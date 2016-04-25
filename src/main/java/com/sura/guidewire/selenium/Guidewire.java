@@ -56,13 +56,9 @@ public class Guidewire extends PageObject {
     public void logout() {
         btnConfig.click();
         btnLogout.click();
-        // Si termina el proceso de crear contacto quitar la siguiente linea
-        btnLogout2.click();
-    }
-
-    public void logoutSinPendiente() {
-        btnConfig.click();
-        btnLogout.click();
+        if(btnLogout2.isCurrentlyVisible()){
+            btnLogout2.click();
+        }
     }
 
     // TODO: 25/04/2016 Revision escritura de excepciones en log
