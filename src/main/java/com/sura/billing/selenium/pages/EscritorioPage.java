@@ -23,6 +23,9 @@ public class EscritorioPage extends Guidewire {
     @FindBy(xpath=".//*[@id='UserSearch:UserSearchScreen:ttlBar']")
     WebElementFacade labelIngreso;
 
+    @FindBy(xpath=".//*[@id='HolidaysPage:HolidaysScreen:0']")
+    WebElementFacade labelIngreso2;
+
     @FindBy(xpath=".//*[@id='TabBar:AdministrationTab-btnWrap']")
     WebElementFacade mnuAdministracion;
 
@@ -44,6 +47,10 @@ public class EscritorioPage extends Guidewire {
         gw.asercion(labelIngreso.getText(),mensaje);
     }
 
+    public void asercionFestivo(String msj2){
+        gw.asercion(labelIngreso2.getText(),msj2);
+    }
+
     // TODO: 22/04/2016 Revision escritura de excepciones en log
     public void admDiasFestivos() {
         Actions act = new Actions(getDriver());
@@ -59,7 +66,6 @@ public class EscritorioPage extends Guidewire {
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         act.moveToElement(mnuItemsFestivos).click().build().perform();
-        //getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {

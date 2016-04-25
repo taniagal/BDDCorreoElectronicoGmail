@@ -12,9 +12,9 @@ import net.thucydides.core.steps.ScenarioSteps;
  */
 public class BillingSteps extends ScenarioSteps {
 
-    private Guidewire gw = new Guidewire(getDriver());
-    private AbrirAppPage abrirAppPage = new AbrirAppPage(getDriver());
-    private EscritorioPage escritorioPage = new EscritorioPage(getDriver());
+    Guidewire gw = new Guidewire(getDriver());
+    AbrirAppPage abrirAppPage = new AbrirAppPage(getDriver());
+    EscritorioPage escritorioPage = new EscritorioPage(getDriver());
 
     public BillingSteps(Pages pages) {
         super(pages);
@@ -41,8 +41,13 @@ public class BillingSteps extends ScenarioSteps {
     }
 
     @Step
+    public void assertionFestivo(String msj2){
+        escritorioPage.asercionFestivo(msj2);
+    }
+
+    @Step
     public void logout() {
-        gw.logoutSinPendiente();
+        gw.logout();
     }
 
 }
