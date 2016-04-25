@@ -5,6 +5,8 @@ import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Created by jorghome on 15/04/2016.
@@ -56,5 +58,19 @@ public class Guidewire extends PageObject {
         btnLogout.click();
         // Si termina el proceso de crear contacto quitar la siguiente linea
         btnLogout2.click();
+    }
+
+    public void logoutSinPendiente() {
+        btnConfig.click();
+        btnLogout.click();
+    }
+
+    // TODO: 25/04/2016 Revision escritura de excepciones en log
+    public void asercion(String elemento, String mensaje){
+        try {
+            assertThat(elemento, containsString(mensaje));
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 }
