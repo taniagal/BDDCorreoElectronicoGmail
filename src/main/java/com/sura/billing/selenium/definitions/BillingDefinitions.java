@@ -30,9 +30,10 @@ public class BillingDefinitions {
         bcs.assertion(msjResult);
     }
 
-    @Then("el usuario deberia poder acceder a la administracion de dias festivos")
-    public void admDiasFestivos() {
+    @Then("el usuario deberia poder acceder a la administracion de <message2>")
+    public void admDiasFestivos(@Named("message2") String msjResult2) {
         bcs.admDiasFestivos();
+        bcs.assertionFestivo(msjResult2);
     }
 
     @Then("el usuario deberia cerrar sesion")
