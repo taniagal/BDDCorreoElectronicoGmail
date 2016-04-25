@@ -19,22 +19,12 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void openSeus() {
-        seus.open();
-    }
-
-    @Step
-    public void loginSeus(String pais,String usuario, String contrasenia) {
-        seus.login(pais, usuario, contrasenia);
-    }
-
-    @Step
     public void nuevoContactoPersona() {
         escritorioPagePage.nuevoContactoPersona();
     }
 
     @Step
-    public void ingrerarTipoDocumentoPersonaNatural(){
+    public void ingresarTipoDocumentoPersonaNatural(){
         ;
     }
 

@@ -1,5 +1,6 @@
 package com.sura.policycenter.selenium.definitions;
 
+import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevoContactoSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
@@ -13,11 +14,12 @@ public class CrearNuevoContactoDefinitions {
 
     @Steps
     CrearNuevoContactoSteps crearNuevoContactoSteps ;
+    @Steps
+    SeusLoginSteps seusLoginSteps;
 
     @Given("estoy logueado con usuario <usr> y contrasenia <contrasenia> y pais <country>")
     public void givenEstoyLogueadoConUsuariousrYContraseniacontrasenia(@Named("country") String country, @Named("usr") String user, @Named("contrasenia") String password) {
-        crearNuevoContactoSteps.openSeus();
-        crearNuevoContactoSteps.loginSeus(country,user, password);
+        seusLoginSteps.login(country,user,password);
     }
 
     @Given("estoy en la pantalla de crear contacto persona natural")
