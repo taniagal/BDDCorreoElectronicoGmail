@@ -21,10 +21,15 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     public void abrirNuevaCuenta() {
         cp.navNuevaCuenta();
     }
+
     @Step
-    public void crearNuevaCuenta(String tipoDocumento,
-                                 String documento, String primerNombre,
-                                 String primerApellido, String tipoDireccion,
-                                 String direccion) {
+    public void crearNuevaCuentaPersona(String tipoDocumento, String documento, String primerNombre,
+                                 String primerApellido, String tipoDireccion, String direccion) {
+        cp.buscarPersona("yyyy");
+        cp.crearCuentaNuevaPersona();
+
+
     }
+
+
 }

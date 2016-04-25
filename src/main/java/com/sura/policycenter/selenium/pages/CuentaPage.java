@@ -27,26 +27,41 @@ public class CuentaPage extends Guidewire{
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
     WebElementFacade mnuNuevaCuenta;
 
-    public void navNuevaCuenta(){
-        Actions act = new Actions(getDriver());
-        mnuCuenta.click();
-        dormilon();
-        mnuCuenta.click();
-        dormilon();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        dormilon();
-        act.moveToElement(mnuNuevaCuenta).click().build().perform();
+    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:GlobalContactNameInputSet:Name-inputEl']")
+    WebElementFacade txtNombreCompania;
 
+
+    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    WebElementFacade btnBuscar;
+
+    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton']")
+    WebElementFacade btnCrearCuentaNueva;
+
+    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton:NewAccount_Person-textEl']")
+    WebElementFacade btnNuevaCuentaPersonal;
+
+    public void navNuevaCuenta(){
+        Actions act = gw.deployMenu(mnuCuenta);
+        act.moveToElement(mnuNuevaCuenta).click().build().perform();
+    }
+
+    public void buscarPersona(String nombre){
+        txtNombreCompania.sendKeys(nombre);
+        btnBuscar.click();
+        dormilon();
+    }
+
+    public void crearCuentaNuevaPersona(){
+        btnCrearCuentaNueva.click();
+        btnNuevaCuentaPersonal.click();
     }
 
     private void dormilon() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
 
             throw new RuntimeException(e);
         }
     }
-
-
 }
