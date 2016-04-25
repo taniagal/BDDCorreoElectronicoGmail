@@ -52,6 +52,7 @@ public class EscritorioPage extends Guidewire {
 
     // TODO: 18/04/2016 Revision escritura de excepciones en log 
     public void nuevoContactoPersona() {
+
         Actions act = new Actions(getDriver());
         mnuContact.click();
         mnuContact.click();

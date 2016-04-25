@@ -3,7 +3,9 @@ package com.sura.guidewire.selenium;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -68,5 +70,13 @@ public class Guidewire extends PageObject {
         }catch (Exception e){
             throw new RuntimeException(e);
         }
+    }
+
+    public Actions deployMenu(WebElementFacade menu){
+        Actions act = new Actions(getDriver());
+        menu.click();
+        menu.click();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        return act;
     }
 }
