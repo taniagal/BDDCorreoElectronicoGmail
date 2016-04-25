@@ -3,10 +3,11 @@ package com.sura.guidewire.selenium;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
+import org.hamcrest.Matcher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
+
+import static org.hamcrest.Matchers.containsString;
 
 /**
  * Created by jorghome on 15/04/2016.
@@ -26,10 +27,10 @@ public class Guidewire extends PageObject {
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
     WebElementFacade submit;
 
-    @FindBy(xpath=".//*[@id=':TabLinkMenuButton-btnIconEl']")
+    @FindBy(xpath="//span[@id=':TabLinkMenuButton-btnEl']/span[2]")
     WebElementFacade btnConfig;
 
-    @FindBy(xpath=".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
+    @FindBy(id ="TabBar:LogoutTabBarLink-textEl")
     WebElementFacade btnLogout;
 
     @FindBy(xpath=".//*[@id='button-1005-btnInnerEl']")
@@ -40,12 +41,22 @@ public class Guidewire extends PageObject {
     public void waitUntilMainElementsAppears() {
         getDriver().manage().window().maximize();
         try {
-            element(usuario).waitUntilVisible();
-            element(contrasena).waitUntilVisible();
+            usuario.waitUntilVisible();
+            contrasena.waitUntilVisible();
         }catch(Exception e){
             throw new RuntimeException(e);
         }
     }
+
+    public void asercion(WebElementFacade element, String mensaje){
+        try {
+            assertThat(element.getText(),containsString(mensaje));
+        }catch (Exception e){
+        }
+    }
+    private void assertThat(String element, Matcher<String> stringMatcher) {
+    }
+
     public void login(String user, String pass) {
         usuario.clear();
         contrasena.clear();
@@ -58,15 +69,6 @@ public class Guidewire extends PageObject {
         btnLogout.click();
         if(btnLogout2.isCurrentlyVisible()){
             btnLogout2.click();
-        }
-    }
-
-    // TODO: 25/04/2016 Revision escritura de excepciones en log
-    public void asercion(String elemento, String mensaje){
-        try {
-            assertThat(elemento, containsString(mensaje));
-        }catch (Exception e){
-            throw new RuntimeException(e);
         }
     }
 }

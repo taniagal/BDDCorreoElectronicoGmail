@@ -7,13 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-
 /**
  * Created by jorghome on 30/03/2016.
  */
 public class Escritorio extends Guidewire {
+
+    Guidewire gw = new Guidewire(getDriver());
 
     public Escritorio(WebDriver driver) {
         super(driver);
@@ -28,20 +27,16 @@ public class Escritorio extends Guidewire {
     @FindBy(xpath=".//*[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
     WebElementFacade txtBuscarNumReclamancion;
 
-
-
-    public void assertion(String element){
-        try {
-            assertThat(lblIngreso.getText().toString(), containsString(element));
-        }catch (Exception e){
-        }
+    public void assertion(String mensaje){
+    gw.asercion(lblIngreso,mensaje);
     }
 
     /*Navegación hasta nueva Reclamacion*/
-    public void navegacion(){
+    public void navegacion() throws InterruptedException {
     Actions act = new Actions(getDriver());
-    mnuReclamacion.click();
-    mnuReclamacion.click();
+        mnuReclamacion.click();
+        Thread.sleep(1000);
+        mnuReclamacion.click();
     act.sendKeys(Keys.ARROW_DOWN).build().perform();
     act.moveToElement(cboNuevaReclamacion).click().build().perform();
     try {
