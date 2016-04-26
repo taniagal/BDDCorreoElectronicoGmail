@@ -28,7 +28,7 @@ public class Escritorio extends Guidewire {
     WebElementFacade txtBuscarNumReclamancion;
 
     public void assertion(String mensaje){
-    gw.asercion(lblIngreso,mensaje);
+    gw.asercion(lblIngreso.getText(),mensaje);
     }
 
     /*Navegación hasta nueva Reclamacion*/

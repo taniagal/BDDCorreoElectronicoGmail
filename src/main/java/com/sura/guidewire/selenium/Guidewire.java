@@ -48,9 +48,9 @@ public class Guidewire extends PageObject {
         }
     }
 
-    public void asercion(WebElementFacade element, String mensaje){
+    public void asercion(String element, String mensaje){
         try {
-            assertThat(element.getText(),containsString(mensaje));
+            assertThat(element,containsString(mensaje));
         }catch (Exception e){
         }
     }

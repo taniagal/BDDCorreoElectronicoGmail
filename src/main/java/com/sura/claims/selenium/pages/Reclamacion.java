@@ -166,7 +166,7 @@ public class Reclamacion extends Guidewire {
     }
 
     public void asercion(String msn) {
-        gw.asercion(lblNuevaReclamacion, msn);
+        gw.asercion(lblNuevaReclamacion.getText(), msn);
     }
 
 }
