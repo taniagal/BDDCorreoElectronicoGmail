@@ -7,13 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
-
 public class BusquedaContactoPage extends Guidewire {
-
-    public BusquedaContactoPage(WebDriver driver) {
-        super(driver);
-    }
 
     @FindBy(xpath=".//*[@id='TabBar:ContactTab']")
     WebElementFacade contactMenu;
@@ -36,29 +30,21 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:Name']")
     WebElementFacade selectContact;
 
-
-
-    public void buscarContacto()  {
-        try{
-        Actions act = new Actions(getDriver());
-        contactMenu.click();
-        Thread.sleep(1000);
-        contactMenu.click();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(buscarContact).click().build().perform();
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
+    public BusquedaContactoPage(WebDriver driver) {
+        super(driver);
     }
 
-    public void buscarContactoPersona(){
-        tipoContact.type("Personal");
-        tipoContact.sendKeys(Keys.ENTER);
-        nombreContact.type("Ray");
-        apellidoContact.type("Newton");
-        botonBuscar.click();
-        selectContact.click();
+    public void accionarBuscarContacto()  {
+        try{
+            Actions act = new Actions(getDriver());
+            contactMenu.click();
+            Thread.sleep(1000);
+            contactMenu.click();
+            act.sendKeys(Keys.ARROW_DOWN).build().perform();
+            act.moveToElement(buscarContact).click().build().perform();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void buscarContactoPersona(String nombre, String apellido){
@@ -69,5 +55,4 @@ public class BusquedaContactoPage extends Guidewire {
         botonBuscar.click();
         selectContact.click();
     }
-
 }

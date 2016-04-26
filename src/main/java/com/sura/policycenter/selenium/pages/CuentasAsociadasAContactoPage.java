@@ -4,11 +4,10 @@ import com.sura.guidewire.selenium.SeusLoginPage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
-public class ContactAssociatedAccount extends SeusLoginPage {
+public class CuentasAsociadasAContactoPage extends SeusLoginPage {
 
     @FindBy(xpath="//td[@id='ContactFile:MenuLinks:ContactFile_ContactFile_Accounts']/div")
     WebElementFacade mnuLateralCuenta;
@@ -31,12 +30,12 @@ public class ContactAssociatedAccount extends SeusLoginPage {
     @FindBy(xpath = ".//*[@id='ContactFile_Accounts:panelRefInfoMessage:InfoMessage_ExtDV:message']")
     WebElementFacade msjCuentaNoEncontrada;
 
-    public ContactAssociatedAccount(WebDriver driver) {
+    public CuentasAsociadasAContactoPage(WebDriver driver) {
         super(driver);
     }
 
-    public void assertCamposLista(String nombre, String direccion,
-                                  String telefono, String email, String rol){
+    public void validarCamposLista(String nombre, String direccion,
+                                   String telefono, String email, String rol){
         mnuLateralCuenta.click();
         assertThat(nombreContactoCuenta.getText().toString(), containsString(nombre));
         assertThat(direccionContactoCuenta.getText().toString(), containsString(direccion));
