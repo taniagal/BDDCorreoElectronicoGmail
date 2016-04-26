@@ -41,14 +41,14 @@ public class ClaimsSteps extends ScenarioSteps{
     public void navegacion() throws InterruptedException {
         try {
             escritorio.navegacion();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        }catch (Exception e){
+            throw new RuntimeException(e);
         }
     }
 
     @Step
-    public void setReclamacion(String Npoliza){
-        reclamacion.llenarReclamacion(Npoliza);
+    public void setReclamacion(String npoliza){
+        reclamacion.llenarReclamacion(npoliza);
     }
 
     @Step

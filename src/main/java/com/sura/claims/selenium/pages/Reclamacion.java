@@ -112,9 +112,9 @@ public class Reclamacion extends Guidewire {
      * @param Npoliza numero de poliza
      *
      */
-    public void llenarReclamacion(String Npoliza) {
+    public void llenarReclamacion(String npoliza) {
         Actions act = new Actions(getDriver());
-        primerFormulario(Npoliza);
+        primerFormulario(npoliza);
         segundoFormulario(act);
         tercerFormulario(act);
     }
@@ -128,8 +128,8 @@ public class Reclamacion extends Guidewire {
         txtFechaSiniestro.hasFocus();
         try {
             Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        }catch (Exception e){
+            throw new RuntimeException(e);
         }
         btnSiguiente.click();
     }
@@ -144,8 +144,8 @@ public class Reclamacion extends Guidewire {
         txtRelacionAsegurado.sendKeys("Persona");
         try {
             Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        }catch (Exception e){
+            throw new RuntimeException(e);
         }
         checkVehiculoInvo.waitUntilEnabled();
         checkVehiculoInvo.click();
@@ -157,7 +157,7 @@ public class Reclamacion extends Guidewire {
         listaCausas.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         causaRoboEstereo.click();
-        txtDescripcion.sendKeys("Prueba reclamación Edd, automatizada con SERENITY BBD" +
+        txtDescripcion.sendKeys("Prueba reclamacion Edd, automatizada con SERENITY BBD" +
                 "Y SELENIUM WEBDRIVER...");
         lugar.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
