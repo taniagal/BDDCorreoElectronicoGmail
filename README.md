@@ -16,7 +16,7 @@ Se utiliza **BDD** (Behavior-Driven Development o Desarrollo Guiado por el Compo
 
 * Descargar o clonar el proyecto BDDCoreSura
 
-* Contar con las herramientas relacionadas en la [**wiki**](https://bitbucket.org/suracore/bddcoresura/wiki/Home), especialmente con un IDE de desarrollo como IntelliJIDEA o Eclipse.
+* Contar con las herramientas relacionadas en la [**Wiki**](https://bitbucket.org/suracore/bddcoresura/wiki/Home), especialmente con un IDE de desarrollo como IntelliJIDEA o Eclipse.
 
 * Cómo ejecutar las pruebas? en el directorio "bddcoresura\src\test\java\com\sura\" se encuentran las clases que ejecutan los test para cada uno de los módulos (PolicyCenter, Claims y Billing), utilizando el IDE IntelliJIDEA, dentro de la clase se encuentra el botón ejecutable "Run Test".
 
@@ -30,4 +30,4 @@ Igualmente desde consola se puede realizar la ejecución con el siguiente comand
 
 En el siguiente link se encuentra la wiki con un mayor detalle técnico con la explicación del ejemplo utilizado en el proyecto para conocer cómo crear una prueba desde la historia de usuario:
 
-[**wiki**](https://bitbucket.org/suracore/bddcoresura/wiki/Home)
+[**Wiki**](https://bitbucket.org/suracore/bddcoresura/wiki/Home)
