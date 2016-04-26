@@ -71,7 +71,7 @@ public class HistorialCuentaPage extends Guidewire {
         //itmPoliza.click();
         //BtnBuscarItem.click();
         System.out.println(btnMostrarRelacionadoCon.getSelectOptions());
-        btnMostrarRelacionadoCon.
+
 
         try {
             Thread.sleep(1000);
