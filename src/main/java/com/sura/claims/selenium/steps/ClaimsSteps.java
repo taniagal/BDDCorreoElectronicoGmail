@@ -13,10 +13,10 @@ import net.thucydides.core.steps.ScenarioSteps;
  */
 
 public class ClaimsSteps extends ScenarioSteps{
-    Guidewire gw;
-    AbrirApp abrirApp;
-    Escritorio escritorio;
-    Reclamacion reclamacion;
+    Guidewire gw = new Guidewire(getDriver());
+    AbrirApp abrirApp = new AbrirApp(getDriver());
+    Escritorio escritorio = new Escritorio(getDriver());
+    Reclamacion reclamacion = new Reclamacion(getDriver());
 
     public ClaimsSteps(Pages pages) {
         super(pages);
@@ -38,8 +38,12 @@ public class ClaimsSteps extends ScenarioSteps{
     }
 
     @Step
-    public void navegacion(){
-        escritorio.navegacion();
+    public void navegacion() throws InterruptedException {
+        try {
+            escritorio.navegacion();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Step
@@ -50,6 +54,11 @@ public class ClaimsSteps extends ScenarioSteps{
     @Step
     public void logout(){
         gw.logout();
+    }
+
+    @Step
+    public void asercion(String msn){
+        reclamacion.asercion(msn);
     }
 
 }
