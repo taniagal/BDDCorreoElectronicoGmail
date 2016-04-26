@@ -13,7 +13,9 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
 
     HistorialCuentaPage historialCuentaPage = new HistorialCuentaPage(getDriver());
 
-    public HistorialCuentaSteps(Pages pages) {super(pages);}
+    public HistorialCuentaSteps(Pages pages) {
+        super(pages);
+    }
 
     @Step
     public void seleccionarCuenta(String numCuenta) {
@@ -27,5 +29,8 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
         historialCuentaPage.seleccionarHistorial();
     }
 
-
+    @Step
+    public void buscarCuentaRelacionadoCon() {
+        historialCuentaPage.buscarCuentaRelacionadoCon();
+    }
 }

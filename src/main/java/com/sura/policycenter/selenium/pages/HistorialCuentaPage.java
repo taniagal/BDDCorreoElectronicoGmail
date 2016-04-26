@@ -29,6 +29,14 @@ public class HistorialCuentaPage extends Guidewire {
     @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_History']/div")
     WebElementFacade mnuHistorial;
 
+    @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
+    WebElementFacade btnMostrarRelacionadoCon;
+
+    @FindBy(xpath=".//*[@id='boundlist-1074-listEl']/ul/li[3]")
+    WebElementFacade itmPoliza;
+
+    @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    WebElementFacade BtnBuscarItem;
 
     public void buscarCuenta(String numCuenta) {
         Actions act = new Actions(getDriver());
@@ -46,6 +54,7 @@ public class HistorialCuentaPage extends Guidewire {
     }
 
     public void seleccionarHistorial() {
+        mnuHistorial.waitUntilEnabled();
         mnuHistorial.click();
         try {
             Thread.sleep(1000);
@@ -55,5 +64,21 @@ public class HistorialCuentaPage extends Guidewire {
         }
     }
 
+    public void buscarCuentaRelacionadoCon(){
+
+        btnMostrarRelacionadoCon.waitUntilEnabled();
+        btnMostrarRelacionadoCon.click();
+        //itmPoliza.click();
+        //BtnBuscarItem.click();
+        System.out.println(btnMostrarRelacionadoCon.getSelectOptions());
+        btnMostrarRelacionadoCon.
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
 
 }

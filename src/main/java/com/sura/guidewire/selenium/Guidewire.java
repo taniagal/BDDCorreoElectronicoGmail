@@ -61,6 +61,10 @@ public class Guidewire extends PageObject {
         }
     }
 
+    public void close(){
+        getDriver().quit();
+    }
+
     // TODO: 25/04/2016 Revision escritura de excepciones en log
     public void asercion(String elemento, String mensaje){
         try {
