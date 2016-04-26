@@ -27,9 +27,7 @@ public class ReclamacionDefinitions {
 
     @When("cuando ingrese a la pantalla de reclamacion")
     public void getReclamacion() throws InterruptedException {
-        try {
-            cs.navegacion();
-        } catch (InterruptedException e) {
+        try {cs.navegacion();} catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
