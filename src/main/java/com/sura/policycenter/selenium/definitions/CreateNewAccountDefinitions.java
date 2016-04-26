@@ -42,9 +42,31 @@ public class CreateNewAccountDefinitions {
                 direccion,ciudad,estado,codigoPostal,nombreOrganizacion);
     }
 
-    @Then("se debe crear la cuenta con el cliente persona natural")
-    @Pending
-    public void asercion() {
-        // PENDING
+    @Then("se debe crear la cuenta <resumen> con el cliente <primer_nombre> persona natural")
+    public void assertCrearCuenta(@Named("resumen")String resumen, @Named("primer_nombre")String primerNombre){
+        cns.assertCrearCuenta(resumen,primerNombre);
+        pcs.logout();
+    }
+
+    //------Escenario 2
+    @When("Quiera crear una cuenta para una persona juridica e ingrese la informacion en los campos\n" +
+            "nombre empresa <nombre_empresa>, tipo de documento <tipo_documento>, numero de documento <documento>,\n" +
+            "tipo de direccion <tipo_direccion>, direccion <direccion>, ciudad <ciudad>, estado <estado>,\n" +
+            "codigo postal <codigo_postal> y nombre de organizacion <nombre_organizacion>")
+    public void abrirNuevaCuenta(@Named("tipo_documento")String tipoDocumento, @Named("documento")String documento,
+                                 @Named("nombre_empresa")String nombreEmpresa, @Named("tipo_direccion")String tipoDireccion,
+                                  @Named("direccion")String direccion, @Named("ciudad")String ciudad,
+                                  @Named("estado")String estado, @Named("codigo_postal")String codigoPostal,
+                                  @Named("nombre_organizacion")String nombreOrganizacion) {
+
+        cns.abrirNuevaCuenta();
+        cns.crearNuevaCuentaPersonaJuridica ( tipoDocumento, documento, nombreEmpresa, tipoDireccion,
+                direccion,ciudad,estado,codigoPostal,nombreOrganizacion);
+    }
+
+    @Then("se debe crear la cuenta <resumen> con el cliente <nombre_empresa> persona juridica")
+    public void assertCrearCuentaJuridica(@Named("resumen")String resumen, @Named("nombre_empresa")String nombreEmpresa){
+        cns.assertCrearCuenta(resumen,nombreEmpresa);
+        pcs.logout();
     }
 }

@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * Created by criscaor on 2016/04/25.
  */
@@ -37,8 +35,14 @@ public class CuentaPage extends Guidewire{
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton:NewAccount_Person-textEl']")
     WebElementFacade btnNuevaCuentaPersonal;
 
+    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton:NewAccount_Company-textEl']")
+    WebElementFacade btnNuevaCuentaCompania;
+
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     WebElementFacade txtNombreNuevaCuentaPersonal;
+
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    WebElementFacade txtNombreNuevaPersonaJuridica;
 
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade txtApellidoNuevaCuentaPersonal;
@@ -76,8 +80,17 @@ public class CuentaPage extends Guidewire{
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update-btnInnerEl']")
     WebElementFacade btnActualizar;
 
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:ttlBar']")
+    WebElementFacade lblResumenCuenta;
+
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:Name-inputEl']")
+    WebElementFacade lblNombreDeCuenta;
+
+
     public void navNuevaCuenta(){
         Actions act = gw.deployMenu(mnuCuenta);
+        mnuNuevaCuenta.waitUntilPresent();
+        mnuNuevaCuenta.waitUntilClickable();
         act.moveToElement(mnuNuevaCuenta).click().build().perform();
     }
 
@@ -110,12 +123,14 @@ public class CuentaPage extends Guidewire{
         cboTipoDireccionNuevaCuentaPersonal.sendKeys(tipoDireccion);
         cboTipoDireccionNuevaCuentaPersonal.sendKeys(Keys.ENTER);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
-        //btnActualizar.click();
-        try {
-            TimeUnit.SECONDS.sleep(10);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        btnActualizar.click();
+    }
+
+    public void assertCrearCuenta(String resumenCuenta, String nombreCuenta){
+        System.out.println(lblResumenCuenta.containsText(resumenCuenta)+" <---------> "+  lblNombreDeCuenta.containsText(nombreCuenta));
+        lblResumenCuenta.containsText(resumenCuenta);
+        lblNombreDeCuenta.containsText(nombreCuenta);
+
     }
 
 
@@ -125,5 +140,38 @@ public class CuentaPage extends Guidewire{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void crearCuentaNuevaPersonaJuridica(String tipoDocumento, String documento, String nombreEmpresa,
+                                                String tipoDireccion, String direccion, String ciudad, String estado,
+                                                String codigoPostal, String nombreOrganizacion) {
+        btnCrearCuentaNueva.click();
+        btnNuevaCuentaCompania.waitUntilPresent();
+        btnNuevaCuentaCompania.click();
+        btnAgregarOrganizacion.waitUntilPresent();
+        btnAgregarOrganizacion.click();
+        txtNombreDeOrganizacion.waitUntilPresent();
+        txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
+        btnBuscarOrganizacion.click();
+        btnSeleccionarOrganizacion.waitUntilPresent();
+        btnSeleccionarOrganizacion.click();
+        txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
+        txtCiudadNuevaCuentaPersonal.sendKeys(ciudad);
+        txtNombreNuevaPersonaJuridica.waitUntilPresent();
+        txtNombreNuevaPersonaJuridica.clear();
+        txtNombreNuevaPersonaJuridica.sendKeys(nombreEmpresa);
+        dormilon();
+        //cboEstadoNuevaCuentaPersonal.waitUntilPresent();
+        cboEstadoNuevaCuentaPersonal.click();
+        dormilon();
+        //cboEstadoNuevaCuentaPersonal.waitUntilPresent();
+        cboEstadoNuevaCuentaPersonal.sendKeys(estado);
+        cboTipoDireccionNuevaCuentaPersonal.click();
+        dormilon();
+        //cboTipoDireccionNuevaCuentaPersonal.waitUntilPresent();
+        cboTipoDireccionNuevaCuentaPersonal.sendKeys(tipoDireccion);
+        cboTipoDireccionNuevaCuentaPersonal.sendKeys(Keys.ENTER);
+        txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
+        btnActualizar.click();
     }
 }
