@@ -24,16 +24,22 @@ public class CreateNewAccountDefinitions {
     @Given("que me encuentro en el sistema de policy center como usuario <user> , contrasena <pass> y Pais <country>")
     public void login(@Named("user") String usuario, @Named("pass") String contrasenia, @Named("country")String pais) {
         //seusLogin.login(usuario,contrasenia);
-        //pcs.open();
         pcs.login(usuario, contrasenia);
     }
 
-    @When("Quiera crear una cuenta para un contacto persona natural e ingrese la informacion en los campos tipo de documento <tipo_documento>, numero de documento <documento>, Primer nombre <primer_nombre>, primer apellido <primer_apellido>, tipo de direccion <tipo_direccion> y direccion <direccion>")
+    @When("Quiera crear una cuenta para un contacto persona natural e ingrese la informacion en los campos tipo de\n" +
+            "documento <tipo_documento>, numero de documento <documento>, Primer nombre <primer_nombre>,\n" +
+            "primer apellido <primer_apellido>, tipo de direccion <tipo_direccion>, direccion <direccion>, ciudad <ciudad>,\n" +
+            "estado <estado>, codigo postal <codigo_postal> y nombre de organizacion <nombre_organizacion>")
     public void abrirNuevaCuenta(@Named("tipo_documento")String tipoDocumento, @Named("documento")String documento,
                             @Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
-                            @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion) {
+                            @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
+                             @Named("ciudad")String ciudad,@Named("estado")String estado,
+                             @Named("codigo_postal")String codigoPostal, @Named("nombre_organizacion")String nombreOrganizacion) {
+
         cns.abrirNuevaCuenta();
-        cns.crearNuevaCuentaPersona ( tipoDocumento, documento,primerNombre,primerApellido,tipoDireccion,direccion);
+        cns.crearNuevaCuentaPersona ( tipoDocumento, documento, primerNombre, primerApellido, tipoDireccion,
+                direccion,ciudad,estado,codigoPostal,nombreOrganizacion);
     }
 
     @Then("se debe crear la cuenta con el cliente persona natural")

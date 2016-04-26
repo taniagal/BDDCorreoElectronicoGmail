@@ -24,10 +24,12 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
 
     @Step
     public void crearNuevaCuentaPersona(String tipoDocumento, String documento, String primerNombre,
-                                 String primerApellido, String tipoDireccion, String direccion) {
+                                        String primerApellido, String tipoDireccion, String direccion,
+                                        String ciudad, String estado, String codigoPostal,
+                                        String nombreOrganizacion) {
         cp.buscarPersona("yyyy");
-        cp.crearCuentaNuevaPersona();
-
+        cp.crearCuentaNuevaPersona(tipoDocumento, documento, primerNombre, primerApellido, tipoDireccion,
+                direccion,ciudad,estado,codigoPostal,nombreOrganizacion);
 
     }
 
