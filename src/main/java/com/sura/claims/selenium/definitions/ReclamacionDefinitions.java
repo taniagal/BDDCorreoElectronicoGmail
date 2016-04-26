@@ -27,7 +27,9 @@ public class ReclamacionDefinitions {
 
     @When("cuando ingrese a la pantalla de reclamacion")
     public void getReclamacion() throws InterruptedException {
-            cs.navegacion();
+        try {cs.navegacion();} catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @When("ingrese los datos necesarios <npoliza>")

@@ -4,7 +4,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
 import org.hamcrest.Matcher;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import static org.hamcrest.Matchers.containsString;
@@ -18,22 +20,22 @@ public class Guidewire extends PageObject {
         super(driver);
     }
 
-    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
+    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
     WebElementFacade usuario;
 
-    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
+    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
     WebElementFacade contrasena;
 
-    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
     WebElementFacade submit;
 
-    @FindBy(xpath="//span[@id=':TabLinkMenuButton-btnEl']/span[2]")
+    @FindBy(xpath = "//span[@id=':TabLinkMenuButton-btnEl']/span[2]")
     WebElementFacade btnConfig;
 
-    @FindBy(id ="TabBar:LogoutTabBarLink-textEl")
+    @FindBy(id = "TabBar:LogoutTabBarLink-textEl")
     WebElementFacade btnLogout;
 
-    @FindBy(xpath=".//*[@id='button-1005-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnLogout2;
 
     // TODO: 19/04/2016 Revision escritura de excepciones en log 
@@ -43,19 +45,21 @@ public class Guidewire extends PageObject {
         try {
             usuario.waitUntilVisible();
             contrasena.waitUntilVisible();
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
+
     // TODO: 26/04/2016 Revision escritura de excepciones en log
-    public void asercion(String element, String mensaje){
+    public void asercion(String element, String mensaje) {
         try {
-            assertThat(element,containsString(mensaje));
-        }catch (Exception e){
+            assertThat(element, containsString(mensaje));
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
     private void assertThat(String element, Matcher<String> stringMatcher) {
     }
 
@@ -66,11 +70,21 @@ public class Guidewire extends PageObject {
         contrasena.type(pass);
         submit.click();
     }
+
     public void logout() {
         btnConfig.click();
         btnLogout.click();
-        if(btnLogout2.isCurrentlyVisible()){
+        if (btnLogout2.isCurrentlyVisible()) {
             btnLogout2.click();
         }
     }
+
+    public Actions deployMenu(WebElementFacade menu){
+        Actions act = new Actions(getDriver());
+        menu.click();
+        menu.click();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        return act;
+    }
+
 }
