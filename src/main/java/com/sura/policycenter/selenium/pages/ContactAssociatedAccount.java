@@ -28,6 +28,9 @@ public class ContactAssociatedAccount extends SeusLoginPage {
     @FindBy(xpath="//td[6]/div")
     WebElementFacade rolesContactoCuenta;
 
+    @FindBy(xpath = ".//*[@id='ContactFile_Accounts:panelRefInfoMessage:InfoMessage_ExtDV:message']")
+    WebElementFacade msjCuentaNoEncontrada;
+
     public ContactAssociatedAccount(WebDriver driver) {
         super(driver);
     }
@@ -42,4 +45,8 @@ public class ContactAssociatedAccount extends SeusLoginPage {
         assertThat(rolesContactoCuenta.getText().toString(), containsString(rol));
     }
 
+    public void validarMensaje(String mensaje) {
+        mnuLateralCuenta.click();
+        assertThat(msjCuentaNoEncontrada.getText().toString(), containsString(mensaje));
+    }
 }

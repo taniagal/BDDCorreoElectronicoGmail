@@ -9,8 +9,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import javax.swing.*;
-
 public class ContactAssociatedAccountDefinitions {
 
     @Steps
@@ -19,18 +17,11 @@ public class ContactAssociatedAccountDefinitions {
     @Steps
     ContactAssociatedAccountSteps contactSteps;
 
-
-
     @Given("que me encuentro autenticado con pais <pais>, username <usr> y password <pass>")
     public void login(@Named("pais") String pais,
                       @Named("usr") String usuario,
                       @Named("pass") String password) {
         seusSteps.login(pais, usuario, password);
-    }
-
-    @Given("existe una cuenta asociada a un contacto")
-    public void givenExisteUnaCuentaAsociadaAUnContacto() {
-        // PENDING
     }
 
     @When("consulte las cuentas asociadas a un contacto")
@@ -45,5 +36,18 @@ public class ContactAssociatedAccountDefinitions {
                                          @Named("email") String email,
                                          @Named("rol") String rol) {
         contactSteps.searchAssociatedAccounts(nombre, direccion, telefono, email, rol);
+    }
+
+    @When("consulte las cuentas asociadas al contacto <nombre> <apellido> y este no tenga alguna")
+    public void whenConsulteLasCuentasAsociadasAlContactonombreapellidoYEsteNoTengaAlguna(
+        @Named("nombre") String nombre,
+        @Named("apellido") String apellido) {
+        contactSteps.searchContact(nombre, apellido);
+    }
+
+    @Then("se muestra el mensaje informativo <mensaje>")
+    public void thenSeMuestraElMensajeInformativomensaje(
+            @Named("mensaje") String mensaje) {
+        contactSteps.validarMensajeCuenta(mensaje);
     }
 }

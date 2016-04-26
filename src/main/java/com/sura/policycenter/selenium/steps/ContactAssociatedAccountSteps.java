@@ -1,5 +1,6 @@
 package com.sura.policycenter.selenium.steps;
 
+
 import com.sura.policycenter.selenium.pages.BusquedaContactoPage;
 import com.sura.policycenter.selenium.pages.ContactAssociatedAccount;
 import net.thucydides.core.annotations.Step;
@@ -21,7 +22,19 @@ public class ContactAssociatedAccountSteps extends ScenarioSteps {
     }
 
     @Step
+    public void searchContact(String nombre, String apellido) {
+        busquedaPage.buscarContacto();
+        busquedaPage.buscarContactoPersona(nombre, apellido);
+    }
+
+    @Step
     public void searchAssociatedAccounts(String nombre, String direccion, String telefono, String email, String rol) {
         associatedAccountPage.assertCamposLista(nombre, direccion, telefono, email, rol);
+    }
+
+    @Step
+    public void validarMensajeCuenta(String mensaje) {
+        associatedAccountPage.validarMensaje(mensaje);
+
     }
 }

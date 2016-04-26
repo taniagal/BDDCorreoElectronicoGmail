@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.guidewire.selenium.SeusLoginPage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -58,6 +57,15 @@ public class BusquedaContactoPage extends Guidewire {
         tipoContact.sendKeys(Keys.ENTER);
         nombreContact.type("Ray");
         apellidoContact.type("Newton");
+        botonBuscar.click();
+        selectContact.click();
+    }
+
+    public void buscarContactoPersona(String nombre, String apellido){
+        tipoContact.type("Personal");
+        tipoContact.sendKeys(Keys.ENTER);
+        nombreContact.type(nombre);
+        apellidoContact.type(apellido);
         botonBuscar.click();
         selectContact.click();
     }
