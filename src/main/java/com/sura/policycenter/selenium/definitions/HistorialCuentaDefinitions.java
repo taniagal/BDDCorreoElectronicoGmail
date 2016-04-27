@@ -37,13 +37,6 @@ public class HistorialCuentaDefinitions {
     @When("ingreso al historial")
     public void whenIngresoAlHistorial() {
         historialCuentaSteps.seleccionarHistorial();
-        seusLoginSteps.logout();
-        seusLoginSteps.close();
-    }
-
-    @Then("solo se pueden visualizar las transacciones que esten asociadas a la cuenta")
-    @Manual
-    public void thenSoloSePuedenVisualizarLasTransaccionesQueEstenAsociadasALaCuenta() {
     }
 
     //ESCENARIO 2
@@ -65,16 +58,39 @@ public class HistorialCuentaDefinitions {
     }
 
     @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con")
-    @Pending
     public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoRelacionadoCon() {
-        // PENDING
+        historialCuentaSteps.validarResultadoBusqueda();
     }
 
-    @Then("mostrar la siguiente informacion <Tipo>, <usuario>, <fechaTransaccion>, <descripcion>, <producto>, <poliza>, <transaccionPoliza>, <valorOriginal>, <valorNuevo>")
-    @Pending
-    public void thenMostrarLaSiguienteInformacionTipousuariofechaTransacciondescripcionproductopolizatransaccionPolizavalorOriginalvalorNuevo() {
-        // PENDING
+    @Then("mostrar la siguiente informacion <tipo>, <usuario>, <fechaTransaccion>, <descripcion>, <producto>, <poliza>, <transaccionPoliza>, <valorOriginal>, <valorNuevo>")
+    public void thenMostrarLaSiguienteInformacionTipousuariofechaTransacciondescripcionproductopolizatransaccionPolizavalorOriginalvalorNuevo(@Named("tipo") String tipo,
+                                                                                                                                              @Named("usuario") String usuario,
+                                                                                                                                              @Named("fechaTransaccion") String fechaTransaccion,
+                                                                                                                                              @Named("descripcion") String descripcion,
+                                                                                                                                              @Named("producto") String producto,
+                                                                                                                                              @Named("poliza") String poliza,
+                                                                                                                                              @Named("transaccionPoliza") String transaccionPoliza,
+                                                                                                                                              @Named("valorOriginal") String valorOriginal,
+                                                                                                                                              @Named("valorNuevo") String valorNuevo) {
+        historialCuentaSteps.validarColumnasHistorialCuenta(tipo, usuario, fechaTransaccion, descripcion, producto, poliza, transaccionPoliza, valorOriginal, valorNuevo);
+        seusLoginSteps.logout();
+        seusLoginSteps.close();
     }
+
+    @When("indique el criterio de busqueda producto")
+    public void whenIndiqueElCriterioDeBusquedaProducto() {
+        historialCuentaSteps.buscarCuentaProducto();
+    }
+
+    @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto")
+    public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoProducto() {
+        //historialCuentaSteps.validarResultadoBusqueda();
+    }
+
+
+
+
+
 
     @When("se realiza la busqueda por <fecha> y solo se indique la opcion hasta")
     @Pending
@@ -113,7 +129,6 @@ public class HistorialCuentaDefinitions {
     }
 
     @When("indique un <usuario> para realizar la busqueda")
-    @Pending
     public void whenIndiqueUnusuarioParaRealizarLaBusqueda(@Named("usuario") String usuario) {
         historialCuentaSteps.buscarCuentaUsuario(usuario);
     }
