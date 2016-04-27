@@ -28,43 +28,37 @@ public class CrearNuevoContactoDefinitions {
 
     @When("ingreso la informacion del tipo de documento <tipoDocumento>")
     public void whenIngresoLaInformacionDelTipoDeDocumentotipoDocumento(@Named("tipoDocumento") String tipoDocumento) {
-        // PENDING
+        crearNuevoContactoSteps.seleccionarTipoDocumentoPersonaNatural(tipoDocumento);
     }
 
     @When("ingreso la informacion de numero de documento <numeroDeDocumento>")
-    @Pending
-    public void whenIngresoLaInformacionDeNumeroDeDocumentonumeroDeDocumento() {
-        // PENDING
+    public void whenIngresoLaInformacionDeNumeroDeDocumentonumeroDeDocumento(@Named("numeroDeDocumento") String numeroDeDocumento) {
+        crearNuevoContactoSteps.ingresarNumeroDocumentoPersonaNatural(numeroDeDocumento);
     }
 
     @When("ingreso la informacion de primer nombre <primerNombre>")
-    @Pending
-    public void whenIngresoLaInformacionDePrimerNombreprimerNombre() {
-        // PENDING
+    public void whenIngresoLaInformacionDePrimerNombreprimerNombre(@Named("primerNombre") String primerNombre) {
+        crearNuevoContactoSteps.ingresarPrimerNombrePersonaNatural(primerNombre);
     }
 
     @When("ingreso la informacion de primer apellido <primerApellido>")
-    @Pending
-    public void whenIngresoLaInformacionDePrimerApellidoprimerApellido() {
-        // PENDING
+    public void whenIngresoLaInformacionDePrimerApellidoprimerApellido(@Named("primerApellido") String primerApellido) {
+        crearNuevoContactoSteps.ingresarPrimerApellidoPersonaNatural(primerApellido);
     }
 
     @When("ingreso la informacion de tipo de dioreccion <tipoDireccion>")
-    @Pending
-    public void whenIngresoLaInformacionDeTipoDeDiorecciontipoDireccion() {
-        // PENDING
+    public void whenIngresoLaInformacionDeTipoDeDiorecciontipoDireccion(@Named("tipoDireccion") String tipoDireccion) {
+        crearNuevoContactoSteps.seleccionarTipoDireccionPersonaNatural(tipoDireccion);
     }
 
     @When("ingreso la informacion de direccion <direccion>")
-    @Pending
-    public void whenIngresoLaInformacionDeDirecciondireccion() {
-        // PENDING
+    public void whenIngresoLaInformacionDeDirecciondireccion(@Named("direccion") String direccion) {
+        crearNuevoContactoSteps.ingresarDireccionPersonaNatural(direccion);
     }
 
     @Then("se debe crear una persona tipo natural")
-    @Pending
     public void thenSeDebeCrearUnaPersonaTipoNatural() {
-        // PENDING
+        crearNuevoContactoSteps.actualizar();
     }
 
 }

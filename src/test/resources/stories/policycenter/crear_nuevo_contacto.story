@@ -20,5 +20,6 @@ Then se debe crear una persona tipo natural
 
 
 Examples:
-|usr|contrasenia|country|
-|pedrvevi|pedrvevi|Colombia|
+|usr        |contrasenia    |country    |tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion  |direccion  |
+|pedrvevi   |pedrvevi       |Colombia   |CEDULA DE CIUDADANIA   |123-45-6666        |BRAYAN         |RUIZ           |Negocio        |CRA 50     |
+

@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.guidewire.selenium.SeusLoginPage;
 import com.sura.policycenter.selenium.pages.EscritorioPage;
+import com.sura.policycenter.selenium.pages.NuevoContactoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -13,6 +14,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     SeusLoginPage seus = new SeusLoginPage(getDriver());
     EscritorioPage escritorioPagePage = new EscritorioPage(getDriver());
+    NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
 
     public CrearNuevoContactoSteps(Pages pages) {
         super(pages);
@@ -24,8 +26,41 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarTipoDocumentoPersonaNatural(){
+    public void seleccionarTipoDocumentoPersonaNatural(String tipoDocumento){
+        nuevoContactoPage.seleccionarTipoDocumento(tipoDocumento);
 
     }
+
+    @Step
+    public void ingresarNumeroDocumentoPersonaNatural(String numeroDocumento){
+        nuevoContactoPage.ingresarNumeroDocumento(numeroDocumento);
+    }
+
+    @Step
+    public void ingresarPrimerNombrePersonaNatural(String primerNombre){
+        nuevoContactoPage.ingresarPrimerNombre(primerNombre);
+    }
+
+    @Step
+    public void ingresarPrimerApellidoPersonaNatural(String primerApellido){
+        nuevoContactoPage.ingresarPrimerApellido(primerApellido);
+    }
+
+    @Step
+    public void seleccionarTipoDireccionPersonaNatural(String tipoDireccion){
+        nuevoContactoPage.seleccionarTipoDireccion(tipoDireccion);
+    }
+
+    @Step
+    public void ingresarDireccionPersonaNatural(String direccion){
+        nuevoContactoPage.ingresarDireccion(direccion);
+    }
+
+    @Step
+    public void actualizar(){
+        nuevoContactoPage.actualizar();
+    }
+
+
 
 }
