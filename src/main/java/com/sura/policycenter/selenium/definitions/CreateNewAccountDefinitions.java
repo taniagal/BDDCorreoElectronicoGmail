@@ -31,7 +31,7 @@ public class CreateNewAccountDefinitions {
             "documento <tipo_documento>, numero de documento <documento>, Primer nombre <primer_nombre>,\n" +
             "primer apellido <primer_apellido>, tipo de direccion <tipo_direccion>, direccion <direccion>, ciudad <ciudad>,\n" +
             "estado <estado>, codigo postal <codigo_postal> y nombre de organizacion <nombre_organizacion>")
-    public void abrirNuevaCuenta(@Named("tipo_documento")String tipoDocumento, @Named("documento")String documento,
+    public void whenCrearNuevaCuentaPersonaNatural(@Named("tipo_documento")String tipoDocumento, @Named("documento")String documento,
                             @Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
                             @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
                              @Named("ciudad")String ciudad,@Named("estado")String estado,
@@ -42,18 +42,22 @@ public class CreateNewAccountDefinitions {
                 direccion,ciudad,estado,codigoPostal,nombreOrganizacion);
     }
 
-    @Then("se debe crear la cuenta <resumen> con el cliente <primer_nombre> persona natural")
-    public void assertCrearCuenta(@Named("resumen")String resumen, @Named("primer_nombre")String primerNombre){
-        cns.assertCrearCuenta(resumen,primerNombre);
-        pcs.logout();
+    @Then("se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural")
+    public void assertCrearNuevaCuentaPersonaNatural(@Named("primer_apellido")String primerApellido, @Named("primer_nombre")String primerNombre){
+        cns.assertCrearCuenta(primerNombre+" "+primerApellido);
     }
 
+
     //------Escenario 2
+    @Given("Me ecnuentro en Policy Center")
+    public void assertPolicyCenterLogin(){
+        cns.assertPolicyCenterLogin();
+    }
     @When("Quiera crear una cuenta para una persona juridica e ingrese la informacion en los campos\n" +
             "nombre empresa <nombre_empresa>, tipo de documento <tipo_documento>, numero de documento <documento>,\n" +
             "tipo de direccion <tipo_direccion>, direccion <direccion>, ciudad <ciudad>, estado <estado>,\n" +
             "codigo postal <codigo_postal> y nombre de organizacion <nombre_organizacion>")
-    public void abrirNuevaCuenta(@Named("tipo_documento")String tipoDocumento, @Named("documento")String documento,
+    public void whenCrearNuevaCuentaPersonaJuridica(@Named("tipo_documento")String tipoDocumento, @Named("documento")String documento,
                                  @Named("nombre_empresa")String nombreEmpresa, @Named("tipo_direccion")String tipoDireccion,
                                   @Named("direccion")String direccion, @Named("ciudad")String ciudad,
                                   @Named("estado")String estado, @Named("codigo_postal")String codigoPostal,
@@ -64,9 +68,26 @@ public class CreateNewAccountDefinitions {
                 direccion,ciudad,estado,codigoPostal,nombreOrganizacion);
     }
 
-    @Then("se debe crear la cuenta <resumen> con el cliente <nombre_empresa> persona juridica")
-    public void assertCrearCuentaJuridica(@Named("resumen")String resumen, @Named("nombre_empresa")String nombreEmpresa){
-        cns.assertCrearCuenta(resumen,nombreEmpresa);
-        pcs.logout();
+    @Then("se debe crear la cuenta con el cliente <nombre_empresa> persona juridica")
+    public void assertCrearNuevaCuentaPersonaJuridica(@Named("nombre_empresa")String nombreEmpresa){
+        cns.assertCrearCuenta(nombreEmpresa);
     }
+
+
+    // ----- Escenario 3
+    @Given("Que un cliente ya tiene una cuenta creada con tipo de documento <tipo_documento> y documento <documento>")
+    public  void verificarCuentaCreada(@Named("tipo_documento")String tipoDocumento, @Named("documento")String documento){
+
+    }
+
+    @When("Quiero crear una cuenta adicional para alguno de los tipos de personas (natural)")
+    public void entrarPaginaCrearNuevaCuentaNatural(){
+        cns.abrirNuevaCuenta();
+    }
+
+    @Then("No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>")
+    public void assertVerificarMensaje(@Named("mensaje")String mensaje){
+
+    }
+
 }

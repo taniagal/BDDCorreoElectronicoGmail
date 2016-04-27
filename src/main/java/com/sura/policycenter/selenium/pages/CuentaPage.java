@@ -1,11 +1,20 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by criscaor on 2016/04/25.
@@ -89,16 +98,9 @@ public class CuentaPage extends Guidewire{
 
     public void navNuevaCuenta(){
         Actions act = gw.deployMenu(mnuCuenta);
-        mnuNuevaCuenta.waitUntilPresent();
-        mnuNuevaCuenta.waitUntilClickable();
         act.moveToElement(mnuNuevaCuenta).click().build().perform();
     }
 
-    public void buscarPersona(String nombre){
-        txtNombreCompania.sendKeys(nombre);
-        btnBuscar.click();
-        dormilon();
-    }
 
     public void crearCuentaNuevaPersona(String tipoDocumento, String documento, String primerNombre,
                                         String primerApellido, String tipoDireccion, String direccion,
@@ -114,7 +116,6 @@ public class CuentaPage extends Guidewire{
         txtApellidoNuevaCuentaPersonal.sendKeys(primerApellido);
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         txtCiudadNuevaCuentaPersonal.sendKeys(ciudad);
-        dormilon();
         cboEstadoNuevaCuentaPersonal.click();
         dormilon();
         cboEstadoNuevaCuentaPersonal.sendKeys(estado);
@@ -123,55 +124,56 @@ public class CuentaPage extends Guidewire{
         cboTipoDireccionNuevaCuentaPersonal.sendKeys(tipoDireccion);
         cboTipoDireccionNuevaCuentaPersonal.sendKeys(Keys.ENTER);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
+        dormilon();
         btnActualizar.click();
-    }
-
-    public void assertCrearCuenta(String resumenCuenta, String nombreCuenta){
-        System.out.println(lblResumenCuenta.containsText(resumenCuenta)+" <---------> "+  lblNombreDeCuenta.containsText(nombreCuenta));
-        lblResumenCuenta.containsText(resumenCuenta);
-        lblNombreDeCuenta.containsText(nombreCuenta);
-
-    }
-
-
-    private void dormilon() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public void crearCuentaNuevaPersonaJuridica(String tipoDocumento, String documento, String nombreEmpresa,
                                                 String tipoDireccion, String direccion, String ciudad, String estado,
                                                 String codigoPostal, String nombreOrganizacion) {
-        btnCrearCuentaNueva.click();
-        btnNuevaCuentaCompania.waitUntilPresent();
+        btnCrearCuentaNueva.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
         btnNuevaCuentaCompania.click();
-        btnAgregarOrganizacion.waitUntilPresent();
         btnAgregarOrganizacion.click();
-        txtNombreDeOrganizacion.waitUntilPresent();
         txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         btnBuscarOrganizacion.click();
-        btnSeleccionarOrganizacion.waitUntilPresent();
         btnSeleccionarOrganizacion.click();
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         txtCiudadNuevaCuentaPersonal.sendKeys(ciudad);
-        txtNombreNuevaPersonaJuridica.waitUntilPresent();
         txtNombreNuevaPersonaJuridica.clear();
         txtNombreNuevaPersonaJuridica.sendKeys(nombreEmpresa);
-        dormilon();
-        //cboEstadoNuevaCuentaPersonal.waitUntilPresent();
         cboEstadoNuevaCuentaPersonal.click();
         dormilon();
-        //cboEstadoNuevaCuentaPersonal.waitUntilPresent();
         cboEstadoNuevaCuentaPersonal.sendKeys(estado);
         cboTipoDireccionNuevaCuentaPersonal.click();
         dormilon();
-        //cboTipoDireccionNuevaCuentaPersonal.waitUntilPresent();
         cboTipoDireccionNuevaCuentaPersonal.sendKeys(tipoDireccion);
         cboTipoDireccionNuevaCuentaPersonal.sendKeys(Keys.ENTER);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
+        dormilon();
         btnActualizar.click();
+    }
+
+    public void buscarPersona(String nombre){
+        dormilon();
+        txtNombreCompania.sendKeys(nombre);
+        btnBuscar.click();
+        dormilon();dormilon();
+    }
+
+    public void assertCrearCuenta(String nombreCuenta){
+        dormilon();
+        assertThat(lblNombreDeCuenta.containsText(nombreCuenta));
+    }
+
+    public void assertPolicyCenterLogin(){
+        assertThat(mnuCuenta.isPresent());
+    }
+
+    private void dormilon() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
