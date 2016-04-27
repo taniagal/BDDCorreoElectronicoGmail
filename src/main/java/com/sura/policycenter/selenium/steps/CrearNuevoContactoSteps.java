@@ -25,7 +25,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void ingresarTipoDocumentoPersonaNatural(){
-        ;
+
     }
 
 }

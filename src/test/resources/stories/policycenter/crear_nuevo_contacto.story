@@ -20,5 +20,5 @@ Then se debe crear una persona tipo natural
 
 
 Examples:
-|usr|pass|country|
+|usr|contrasenia|country|
 |pedrvevi|pedrvevi|Colombia|

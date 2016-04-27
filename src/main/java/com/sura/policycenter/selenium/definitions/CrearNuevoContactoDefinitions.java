@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevoContactoSteps;
-import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
 
@@ -11,11 +10,11 @@ import org.jbehave.core.annotations.*;
  * Created by brayruru on 2016/04/25.
  */
 public class CrearNuevoContactoDefinitions {
-
-    @Steps
-    CrearNuevoContactoSteps crearNuevoContactoSteps ;
     @Steps
     SeusLoginSteps seusLoginSteps;
+    @Steps
+    CrearNuevoContactoSteps crearNuevoContactoSteps ;
+
 
     @Given("estoy logueado con usuario <usr> y contrasenia <contrasenia> y pais <country>")
     public void givenEstoyLogueadoConUsuariousrYContraseniacontrasenia(@Named("country") String country, @Named("usr") String user, @Named("contrasenia") String password) {
@@ -28,7 +27,6 @@ public class CrearNuevoContactoDefinitions {
     }
 
     @When("ingreso la informacion del tipo de documento <tipoDocumento>")
-    @Pending
     public void whenIngresoLaInformacionDelTipoDeDocumentotipoDocumento(@Named("tipoDocumento") String tipoDocumento) {
         // PENDING
     }
