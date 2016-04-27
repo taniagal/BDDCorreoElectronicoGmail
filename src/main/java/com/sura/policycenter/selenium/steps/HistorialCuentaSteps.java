@@ -39,6 +39,11 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
         historialCuentaPage.buscarCuentaProducto();
     }
 
+    @Step
+    public void validarDatosOpcionesMultiples() {
+        historialCuentaPage.validarDatosOpcionesMultiples();
+    }
+
 
 
 
@@ -78,4 +83,10 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
                                                 String valorNuevo) {
         historialCuentaPage.validarColumnasHistorialCuenta(tipo, usuario, fechaTransaccion, descripcion, producto, poliza, transaccionPoliza, valorOriginal, valorNuevo);
     }
+
+    @Step
+    public void buscarCuentaConMultiplesOpciones(String usuario, String fechaDesde, String fechaHasta) {
+        historialCuentaPage.buscarCuentaConMultiplesOpciones( usuario,  fechaDesde,  fechaHasta);
+    }
+
 }

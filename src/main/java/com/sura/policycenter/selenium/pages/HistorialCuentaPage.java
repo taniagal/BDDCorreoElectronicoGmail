@@ -1,14 +1,18 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.annotations.Named;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import javax.swing.*;
+
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -24,13 +28,15 @@ public class HistorialCuentaPage extends Guidewire {
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     WebElementFacade mnuCuenta;
 
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
+     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
+    //@FindBy(xpath="//div[2]/div/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     WebElementFacade txtNumCuenta;
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
     WebElementFacade btnBuscarCuenta;
 
-    @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_History']/div")
+    //@FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_History']/div")
+    @FindBy(xpath="//tr[13]/td/div/span")
     WebElementFacade mnuHistorial;
 
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
@@ -81,16 +87,28 @@ public class HistorialCuentaPage extends Guidewire {
     @FindBy(xpath="//div[9]/div/span")
     WebElementFacade colValorNuevo;
 
+    @FindBy(xpath="//li[21]")
+    WebElementFacade itmRelacionadoConRenovacion;
+
+    // @FindBy(xpath="id=AccountFile_History:HistoryScreenDV:FromDate-inputEl")
+    @FindBy(xpath="//td[3]/div/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    WebElementFacade txtFechaDesde;
+
+    @FindBy(xpath="//tr[3]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    WebElementFacade txtFechaHasta;
+
 
     public void buscarCuenta(String numCuenta) {
         Actions act = new Actions(getDriver());
+        mnuCuenta.waitUntilEnabled();
         mnuCuenta.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         txtNumCuenta.waitUntilEnabled();
         txtNumCuenta.type(numCuenta);
+        btnBuscarCuenta.waitUntilEnabled();
         btnBuscarCuenta.click();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
 
             throw new RuntimeException(e);
@@ -213,6 +231,45 @@ public class HistorialCuentaPage extends Guidewire {
 
         }catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void buscarCuentaConMultiplesOpciones(String usuario, String fechaDesde, String fechaHasta){
+
+        btnMostrarRelacionadoCon.waitUntilEnabled();
+        btnMostrarRelacionadoCon.click();
+        itmRelacionadoConRenovacion.click();
+        txtUsuario.waitUntilEnabled();
+        txtUsuario.type(usuario);
+        txtFechaDesde.waitUntilEnabled();
+        txtFechaDesde.type(fechaDesde);
+        txtFechaHasta.waitUntilEnabled();
+        txtFechaHasta.type(fechaHasta);
+
+        btnBuscarItem.waitUntilEnabled();
+        btnBuscarItem.click();
+
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void validarDatosOpcionesMultiples(){
+        WebElement table = getDriver().findElement(By.xpath("//td/div/div[2]/div/table"));
+
+        List<WebElement> allRows = table.findElements(By.tagName("tr"));
+
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+
+            // Print the contents of each cell
+            for (WebElement cell : cells) {
+                System.out.println(cell.getText());
+            }
         }
     }
 

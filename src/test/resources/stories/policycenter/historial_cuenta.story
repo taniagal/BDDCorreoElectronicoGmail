@@ -68,12 +68,22 @@ y que esta se actualice cada que se realice una transaccion a la cuenta o a una 
 #|numCuenta|tipo|usuario|fechaTransaccion|descripcion|producto|poliza|transaccionPoliza|valorOriginal|valorNuevo|
 #|C000212105|Tipo|Usuario|Fecha de transacción|Descripción|Producto|Póliza|Transacción de póliza|Valor original|Valor nuevo|
 
-Scenario: Busqueda de historial por la opcion producto
+#Scenario: Busqueda de historial por la opcion producto
+#Given me encuentro autenticado en gw
+#And estoy en el historial de la cuenta <numCuenta>
+#When indique el criterio de busqueda producto
+#Then debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto
+
+#Examples:
+#|numCuenta|
+#|C000212105|
+
+Scenario: Busqueda de historial combinando multiples opciones: Usuario, Relacionado Con y Fechas
 Given me encuentro autenticado en gw
 And estoy en el historial de la cuenta <numCuenta>
-When indique el criterio de busqueda producto
-Then debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto
+When indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> y <FechaHasta>
+Then debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda
 
 Examples:
-|numCuenta|
-|C000212105|
+|numCuenta|Usuario|FechaDesde|FechaHasta
+|C000212105|Christine Craft|01/01/2016|12/30/2200

@@ -87,6 +87,17 @@ public class HistorialCuentaDefinitions {
         //historialCuentaSteps.validarResultadoBusqueda();
     }
 
+    @When("indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> y <FechaHasta>")
+    public void whenIndiqueMultiplesCriterios (@Named("Usuario") String usuario,
+                                               @Named("FechaDesde") String fechaDesde,
+                                               @Named("FechaHasta") String fechaHasta){
+        historialCuentaSteps.buscarCuentaConMultiplesOpciones( usuario,  fechaDesde,  fechaHasta);
+    }
+    @Then("debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda")
+    public void thenDeboPoderVerLasTransaccionesRelacionadasALosMultiplesOpciones() {
+        historialCuentaSteps.validarDatosOpcionesMultiples();
+    }
+
 
 
 
