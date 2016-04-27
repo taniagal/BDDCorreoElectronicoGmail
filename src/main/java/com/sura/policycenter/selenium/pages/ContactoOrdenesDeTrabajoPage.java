@@ -1,13 +1,19 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.SeusLoginPage;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.apache.commons.lang3.ArrayUtils;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.sikuli.api.robot.Key;
 
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.isIn;
 
 public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
@@ -35,11 +41,15 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     @FindBy(xpath="//td[7]/div")
     WebElementFacade fechaFin;
 
-    @FindBy(xpath="//td[7]/div")
+    @FindBy(xpath="//td[8]/div")
     WebElementFacade participante;
 
     @FindBy(xpath="//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrdersCompletenessFilter-inputEl']")
     WebElementFacade filtroEstado;
+
+
+    @FindBy(xpath="//td/div/div[3]/div/table")
+    WebElementFacade table;
 
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrderTypeFilter-inputEl']")
     WebElementFacade filtroTipoTransaccion;
@@ -72,5 +82,32 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         assertThat(this.estado.getText().toString(), containsString(estado));
         assertThat(this.fechaFin.getText().toString(), containsString(fechaFin));
         assertThat(this.participante.getText().toString(), containsString(participante));
+    }
+
+    //display key de los estados: typeList localization ---> TypeKey.PolicyPeriodStatus
+    public void validarFiltroEstado(String filtroEstado) {
+        String[] listEstadosCompletos = {"Comprometida", "No tomado", "Retirado", "Vencida", "Rechazado",
+        "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado"};
+        String[] listEstadosAbiertos = {"Cotizado", "Borrador", "Nuevo", "Cotización", "Vinculación contractual",
+        "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
+        String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);
+
+        List<WebElement> allRows = table.findElements(By.tagName("tr"));
+
+        try {
+            for (WebElement row : allRows) {
+                List<WebElement> cells = row.findElements(By.tagName("td"));
+                String estadoStr = cells.get(5).getText();
+                if(filtroEstado == "Completo"){
+                    assertThat(estadoStr, isIn(listEstadosCompletos));
+                }else if (filtroEstado == "Abierto"){
+                    assertThat(estadoStr, isIn(listEstadosAbiertos));
+                }else{
+                    assertThat(estadoStr, isIn(listEstadosTodos));
+                }
+            }
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

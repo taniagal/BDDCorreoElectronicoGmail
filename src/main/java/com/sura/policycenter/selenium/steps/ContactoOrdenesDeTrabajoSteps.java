@@ -30,4 +30,8 @@ public class ContactoOrdenesDeTrabajoSteps extends ScenarioSteps {
                 estado, fechaFin, participante);
     }
 
+    @Step
+    public void validarFiltroEstado(String filtroEstado) {
+        ordenesTrabajoPage.validarFiltroEstado(filtroEstado);
+    }
 }

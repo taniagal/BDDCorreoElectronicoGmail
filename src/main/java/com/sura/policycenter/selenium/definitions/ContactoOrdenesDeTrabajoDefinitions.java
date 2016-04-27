@@ -18,10 +18,11 @@ public class ContactoOrdenesDeTrabajoDefinitions {
     @Steps
     ContactoOrdenesDeTrabajoSteps ordenesTrabajoSteps;
 
-    @Given("consulte  un contacto con transacciones como: <nombre> <apellido>")
-    public void buscarContacto(@Named("nombre") String nombre,
+    @Given("consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>")
+    public void buscarContacto(@Named("tipoContacto") String tipoContacto,
+                               @Named("nombre") String nombre,
                                @Named("apellido") String apellido) {
-        contactoSteps.buscarContacto(nombre, apellido);
+        contactoSteps.buscarContacto(tipoContacto, nombre, apellido);
     }
 
     @When("consulte las transacciones por estado <filtroEstado>")
@@ -41,5 +42,10 @@ public class ContactoOrdenesDeTrabajoDefinitions {
                                      @Named("participante") String participante) {
         ordenesTrabajoSteps.validarCamposTransacciones(fechaCreacion, poliza, producto, transaccion, tipo,
                 estado, fechaFin, participante);
+    }
+
+    @Then("debe mostrarme el listado de transacciones filtradas por estado <filtroEstado>")
+    public void validarTransacciones(@Named("filtroEstado") String filtroEstado) {
+        ordenesTrabajoSteps.validarFiltroEstado(filtroEstado);
     }
 }
