@@ -36,7 +36,7 @@ public class HistorialCuentaPage extends Guidewire {
     WebElementFacade itmPoliza;
 
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade BtnBuscarItem;
+    WebElementFacade btnBuscarItem;
 
     public void buscarCuenta(String numCuenta) {
         Actions act = new Actions(getDriver());
@@ -81,4 +81,40 @@ public class HistorialCuentaPage extends Guidewire {
         }
     }
 
+    public void buscarCuentaFecha(String fecha){
+        txtNumCuenta.waitUntilEnabled();
+        txtNumCuenta.type(fecha);
+        btnBuscarItem.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void buscarCuentaFechaRango(String desde, String hasta){
+        txtNumCuenta.waitUntilEnabled();
+        txtNumCuenta.type(desde);
+        txtNumCuenta.type(hasta);
+        btnBuscarItem.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void buscarCuentaUsuario(String usuario) {
+        txtNumCuenta.waitUntilEnabled();
+        txtNumCuenta.type(usuario);
+        btnBuscarItem.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
 }

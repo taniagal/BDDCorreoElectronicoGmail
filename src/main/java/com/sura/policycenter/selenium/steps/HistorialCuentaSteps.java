@@ -33,4 +33,20 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
     public void buscarCuentaRelacionadoCon() {
         historialCuentaPage.buscarCuentaRelacionadoCon();
     }
+
+    @Step
+    public void buscarCuentaFecha(String fecha) {
+
+        historialCuentaPage.buscarCuentaFecha(fecha);
+    }
+
+    @Step
+    public void buscarCuentaFechaRango (String desde, String hasta) {
+        historialCuentaPage.buscarCuentaFechaRango(desde, hasta);
+    }
+
+    @Step
+    public void buscarCuentaUsuario (String usuario) {
+        historialCuentaPage.buscarCuentaUsuario(usuario);
+    }
 }

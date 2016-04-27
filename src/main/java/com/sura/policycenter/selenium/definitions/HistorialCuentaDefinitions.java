@@ -53,7 +53,7 @@ public class HistorialCuentaDefinitions {
     }
 
     @Given("estoy en el historial de la cuenta <numCuenta>")
-    @Pending
+    //DC-@Pending
     public void givenEstoyEnElHistorialDeLaCuentanumCuenta(@Named("numCuenta") String numCuenta) {
         historialCuentaSteps.seleccionarCuenta(numCuenta);
         historialCuentaSteps.seleccionarHistorial();
@@ -78,11 +78,11 @@ public class HistorialCuentaDefinitions {
 
     @When("se realiza la busqueda por <fecha> y solo se indique la opcion hasta")
     @Pending
-    public void whenSeRealizaLaBusquedaPorfechaYSoloSeIndiqueLaOpcionHasta() {
-        // PENDING
+    public void whenSeRealizaLaBusquedaPorfechaYSoloSeIndiqueLaOpcionHasta(@Named("fecha") String fechaHasta) {
+        historialCuentaSteps.buscarCuentaFecha(fechaHasta);
     }
 
-    @Then("debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion desde corresponde a la fecha de inicio de la cuenta.")
+    @Then("debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion desde corresponde a la fecha de inicio de la cuenta")
     @Pending
     public void thenDeboPoderVerLasTransaccionesEnElRangoDeFechasSeleccionadoTeniendoEnCuentaQueLaOpcionDesdeCorrespondeALaFechaDeInicioDeLaCuenta() {
         // PENDING
@@ -90,8 +90,8 @@ public class HistorialCuentaDefinitions {
 
     @When("se realiza la busqueda por <fecha> y solo se indique la opcion desde")
     @Pending
-    public void whenSeRealizaLaBusquedaPorfechaYSoloSeIndiqueLaOpcionDesde() {
-        // PENDING
+    public void whenSeRealizaLaBusquedaPorfechaYSoloSeIndiqueLaOpcionDesde(@Named("fecha") String fechaDesde) {
+        historialCuentaSteps.buscarCuentaFecha(fechaDesde);
     }
 
     @Then("debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion hasta corresponde a la fecha actual.")
@@ -102,8 +102,8 @@ public class HistorialCuentaDefinitions {
 
     @When("se realiza la busqueda por fecha ( <desde> - <hasta>)")
     @Pending
-    public void whenSeRealizaLaBusquedaPorFechadesdehasta() {
-        // PENDING
+    public void whenSeRealizaLaBusquedaPorFechadesdehasta(@Named("desde") String fechaDesde, @Named("hasta") String fechaHasta) {
+        historialCuentaSteps.buscarCuentaFechaRango(fechaDesde, fechaHasta);
     }
 
     @Then("debo poder ver las transacciones en el rango de fechas seleccionado.")
@@ -114,8 +114,8 @@ public class HistorialCuentaDefinitions {
 
     @When("indique un <usuario> para realizar la busqueda")
     @Pending
-    public void whenIndiqueUnusuarioParaRealizarLaBusqueda() {
-        // PENDING
+    public void whenIndiqueUnusuarioParaRealizarLaBusqueda(@Named("usuario") String usuario) {
+        historialCuentaSteps.buscarCuentaUsuario(usuario);
     }
 
     @Then("debo poder ver las transacciones asociadas a ese usuario especifico, que estan relacionadas con la cuenta y las polizas asociadas a ella.")
@@ -159,5 +159,4 @@ public class HistorialCuentaDefinitions {
     public void thenDeboPoderVerElCampoPolizaHabilitadoComoUnVinculoParaElDetalleDeLaTransaccion() {
         // PENDING
     }
-
 }
