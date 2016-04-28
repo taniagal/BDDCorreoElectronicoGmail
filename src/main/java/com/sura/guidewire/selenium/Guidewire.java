@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.LoggerFactory;
 
 import static org.hamcrest.Matchers.containsString;
 
@@ -20,46 +21,47 @@ public class Guidewire extends PageObject {
         super(driver);
     }
 
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
+    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
     WebElementFacade usuario;
 
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
+    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
     WebElementFacade contrasena;
 
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
+    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
     WebElementFacade submit;
 
-    @FindBy(xpath = "//span[@id=':TabLinkMenuButton-btnEl']/span[2]")
+    @FindBy(xpath="//span[@id=':TabLinkMenuButton-btnEl']/span[2]")
     WebElementFacade btnConfig;
 
-    @FindBy(id = "TabBar:LogoutTabBarLink-textEl")
+    @FindBy(id ="TabBar:LogoutTabBarLink-textEl")
     WebElementFacade btnLogout;
 
-    @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
+    @FindBy(xpath=".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnLogout2;
 
-    // TODO: 19/04/2016 Revision escritura de excepciones en log 
+    // Initialize Log4j logs
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
+
+    // TODO: 19/04/2016 Revision escritura de excepciones en log
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
         getDriver().manage().window().maximize();
         try {
             usuario.waitUntilVisible();
             contrasena.waitUntilVisible();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        }catch(Exception e){
+            LOGGER.error("This is error : " + e);
         }
     }
-
 
     // TODO: 26/04/2016 Revision escritura de excepciones en log
-    public void asercion(String element, String mensaje) {
+    public void asercion(String element, String mensaje){
         try {
-            assertThat(element, containsString(mensaje));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            assertThat(element,containsString(mensaje));
+        }catch (Exception e){
+            LOGGER.error("This is error : " + e);
         }
     }
-
     private void assertThat(String element, Matcher<String> stringMatcher) {
     }
 
@@ -70,13 +72,16 @@ public class Guidewire extends PageObject {
         contrasena.type(pass);
         submit.click();
     }
-
     public void logout() {
         btnConfig.click();
         btnLogout.click();
-        if (btnLogout2.isCurrentlyVisible()) {
+        if(btnLogout2.isCurrentlyVisible()){
             btnLogout2.click();
         }
+    }
+
+    public void close(){
+        getDriver().quit();
     }
 
     public Actions deployMenu(WebElementFacade menu){
@@ -86,5 +91,4 @@ public class Guidewire extends PageObject {
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
     }
-
 }

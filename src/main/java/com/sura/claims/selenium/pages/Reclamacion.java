@@ -2,22 +2,19 @@ package com.sura.claims.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.LoggerFactory;
 
-/**
- * Created by edwabuac on 19/04/2016.
- */
+
 public class Reclamacion extends Guidewire {
-
     Guidewire gw = new Guidewire(getDriver());
-
     public Reclamacion(WebDriver driver) {
         super(driver);
     }
-
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen" +
             ":LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker" +
@@ -29,7 +26,6 @@ public class Reclamacion extends Guidewire {
 
     @FindBy(xpath = ".//li[4]")
     WebElementFacade asegurado;
-
 
     @FindBy(xpath = "//div[6]/div/ul/li")
     WebElementFacade direcciondelugar;
@@ -107,9 +103,12 @@ public class Reclamacion extends Guidewire {
     @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:ScreenMode_false-inputEl']")
     WebElementFacade rdobuttonCrearPoliza;
 
+    // Initialize slf4j logs
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
     /**
      *
-     * @param Npoliza numero de poliza
+     * @param npoliza numero de poliza
      *
      */
     public void llenarReclamacion(String npoliza) {
@@ -129,7 +128,7 @@ public class Reclamacion extends Guidewire {
         try {
             Thread.sleep(2000);
         }catch (Exception e){
-            throw new RuntimeException(e);
+            LOGGER.error("This is error : " + e);
         }
         btnSiguiente.click();
     }
@@ -145,7 +144,7 @@ public class Reclamacion extends Guidewire {
         try {
             Thread.sleep(2000);
         }catch (Exception e){
-            throw new RuntimeException(e);
+            LOGGER.error("This is error : " + e);
         }
         checkVehiculoInvo.waitUntilEnabled();
         checkVehiculoInvo.click();
