@@ -89,4 +89,9 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
         historialCuentaPage.buscarCuentaConMultiplesOpciones( usuario,  fechaDesde,  fechaHasta);
     }
 
+    @Step
+    public void validarResultadoProducto(){
+        historialCuentaPage.validarResultadoProducto();
+    }
+
 }

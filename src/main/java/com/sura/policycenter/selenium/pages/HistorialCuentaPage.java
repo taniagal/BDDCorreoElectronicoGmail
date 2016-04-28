@@ -97,16 +97,33 @@ public class HistorialCuentaPage extends Guidewire {
     @FindBy(xpath="//tr[3]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     WebElementFacade txtFechaHasta;
 
+    @FindBy(xpath="//td/div/div[2]/div/table")
+    WebElementFacade table;
+
+    //@FindBy(xpath="//td[@id='AccountFile_History:HistoryScreenDV:ProductFilter-inputCell']/input")
+    @FindBy(xpath="//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    WebElementFacade txtProducto;
 
     public void buscarCuenta(String numCuenta) {
         Actions act = new Actions(getDriver());
         mnuCuenta.waitUntilEnabled();
-        mnuCuenta.click();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        //mnuCuenta.click();
+
+        act.sendKeys(mnuCuenta,Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(txtNumCuenta).click().build().perform();
         txtNumCuenta.waitUntilEnabled();
         txtNumCuenta.type(numCuenta);
+
         btnBuscarCuenta.waitUntilEnabled();
         btnBuscarCuenta.click();
+
+        //act.moveToElement(btnBuscarCuenta).click().build().perform();
+
+        /*txtNumCuenta.waitUntilEnabled();
+        txtNumCuenta.type(numCuenta);
+
+        btnBuscarCuenta.waitUntilEnabled();
+        btnBuscarCuenta.click();*/
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -259,18 +276,41 @@ public class HistorialCuentaPage extends Guidewire {
     }
 
     public void validarDatosOpcionesMultiples(){
-        WebElement table = getDriver().findElement(By.xpath("//td/div/div[2]/div/table"));
+
 
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
+        String usuario = txtUsuario.getValue().toString();
 
-        for (WebElement row : allRows) {
-            List<WebElement> cells = row.findElements(By.tagName("td"));
+        try {
 
-            // Print the contents of each cell
-            for (WebElement cell : cells) {
-                System.out.println(cell.getText());
+            for (WebElement row : allRows) {
+                List<WebElement> cells = row.findElements(By.tagName("td"));
+                assertThat(cells.get(1).getText(), is(equalTo(usuario)));
             }
+
+        }catch (Exception e) {
+            throw new RuntimeException(e);
         }
+
+    }
+
+    public void validarResultadoProducto(){
+
+
+        List<WebElement> allRows = table.findElements(By.tagName("tr"));
+        String producto = txtProducto.getValue().toString();
+
+        try {
+
+            for (WebElement row : allRows) {
+                List<WebElement> cells = row.findElements(By.tagName("td"));
+                assertThat(cells.get(4).getText(), is(equalTo(producto)));
+            }
+
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

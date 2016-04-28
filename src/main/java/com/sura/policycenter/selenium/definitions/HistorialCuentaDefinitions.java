@@ -39,7 +39,6 @@ public class HistorialCuentaDefinitions {
         historialCuentaSteps.seleccionarHistorial();
     }
 
-    //ESCENARIO 2
     @Given("me encuentro autenticado en gw")
     public void givenMeEncuentroAutenticadoEnGw() {
         seusLoginSteps.login();
@@ -84,7 +83,9 @@ public class HistorialCuentaDefinitions {
 
     @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto")
     public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoProducto() {
-        //historialCuentaSteps.validarResultadoBusqueda();
+        historialCuentaSteps.validarResultadoProducto();
+        seusLoginSteps.logout();
+        seusLoginSteps.close();
     }
 
     @When("indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> y <FechaHasta>")
@@ -93,12 +94,13 @@ public class HistorialCuentaDefinitions {
                                                @Named("FechaHasta") String fechaHasta){
         historialCuentaSteps.buscarCuentaConMultiplesOpciones( usuario,  fechaDesde,  fechaHasta);
     }
+
     @Then("debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda")
     public void thenDeboPoderVerLasTransaccionesRelacionadasALosMultiplesOpciones() {
         historialCuentaSteps.validarDatosOpcionesMultiples();
+        seusLoginSteps.logout();
+        seusLoginSteps.close();
     }
-
-
 
 
 
