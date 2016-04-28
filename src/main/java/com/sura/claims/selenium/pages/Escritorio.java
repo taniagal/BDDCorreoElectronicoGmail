@@ -28,8 +28,6 @@ public class Escritorio extends Guidewire {
     WebElementFacade cboNuevaReclamacion;
     @FindBy(xpath=".//*[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
     WebElementFacade txtBuscarNumReclamancion;
-
-
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
     WebElementFacade mnuBusqueda;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ClaimSearchesGroup-textEl']")

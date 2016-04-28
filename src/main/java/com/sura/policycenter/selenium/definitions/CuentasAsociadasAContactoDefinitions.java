@@ -13,12 +13,6 @@ public class CuentasAsociadasAContactoDefinitions {
     @Steps
     CuentasAsociadasAContactoSteps contactoSteps;
 
-    @Given("que me encuentro autenticado con pais <pais>, username <usr> y password <pass>")
-    public void login(@Named("pais") String pais,
-                      @Named("usr") String usuario,
-                      @Named("pass") String password) {
-        seusSteps.login(pais, usuario, password);
-    }
 
     @When("consulte  un contacto con cuentas asociadas como: <nombre> <apellido>")
     public void consultarCuentasAsociadas(@Named("nombre") String nombre,

@@ -4,8 +4,10 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
+import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.LoggerFactory;
 
 
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
@@ -26,6 +28,8 @@ public class SeusLoginPage extends PageObject {
     @FindBy(xpath=".//*[@id='lower']/input")
     WebElementFacade btnSubmit;
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
 
@@ -33,7 +37,7 @@ public class SeusLoginPage extends PageObject {
         try {
             pais.waitUntilVisible();
         }catch(Exception e){
-            throw new RuntimeException(e);
+            LOGGER.error("This is error : " + e);
         }
     }
 
