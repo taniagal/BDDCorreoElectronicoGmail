@@ -48,8 +48,8 @@ public class HistorialCuentaDefinitions {
     public void givenEstoyEnElHistorialDeLaCuentanumCuenta(@Named("numCuenta") String numCuenta) {
         historialCuentaSteps.seleccionarCuenta(numCuenta);
         historialCuentaSteps.seleccionarHistorial();
-        seusLoginSteps.logout();
-        seusLoginSteps.close();
+        /*seusLoginSteps.logout();
+        seusLoginSteps.close();*/
     }
 
     @Then("mostrar la siguiente informacion <tipo>, <usuario>, <fechaTransaccion>, <descripcion>, <producto>, <poliza>, <transaccionPoliza>, <valorOriginal>, <valorNuevo>")
@@ -75,8 +75,6 @@ public class HistorialCuentaDefinitions {
     @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con")
     public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoRelacionadoCon() {
         historialCuentaSteps.validarResultadoBusqueda();
-        seusLoginSteps.logout();
-        seusLoginSteps.close();
     }
 
     @When("indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> y <FechaHasta>")

@@ -15,7 +15,10 @@ Examples:
 |country|user|password|numCuenta|tipo|usuario|fechaTransaccion|descripcion|producto|poliza|transaccionPoliza|valorOriginal|valorNuevo|
 |Colombia|pedrvevi|pedrvevi|S000212121|Tipo|Usuario|Fecha de transacción|Descripción|Producto|Póliza|Transacción de póliza|Valor original|Valor nuevo|
 
+
 Scenario: Busqueda de historial por usuario
+Meta:
+@manual
 Given me encuentro autenticado en gw
 And estoy en el historial de la cuenta <numCuenta>
 When indique un <usuario> para realizar la busqueda

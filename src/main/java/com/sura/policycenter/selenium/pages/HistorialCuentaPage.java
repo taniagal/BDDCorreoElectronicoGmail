@@ -85,7 +85,7 @@ public class HistorialCuentaPage extends Guidewire {
     @FindBy(xpath="//div[9]/div/span")
     WebElementFacade colValorNuevo;
 
-    @FindBy(xpath="//li[21]")
+    @FindBy(xpath="//li[2]")
     WebElementFacade itmRelacionadoConRenovacion;
 
     @FindBy(xpath="//td[3]/div/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
