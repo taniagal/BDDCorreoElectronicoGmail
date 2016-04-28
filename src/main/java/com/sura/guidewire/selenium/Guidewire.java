@@ -7,7 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
+import java.lang.Math;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -79,17 +79,30 @@ public class Guidewire extends PageObject {
         Actions act = new Actions(getDriver());
         menu.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
         try{
-            TimeUnit.MILLISECONDS.sleep(500);
+            TimeUnit.MILLISECONDS.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         menu.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
         try {
-            TimeUnit.MILLISECONDS.sleep(500);
+            TimeUnit.MILLISECONDS.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
+    }
+
+    public String cedulaRandom(){
+        int primero= (int) Math.floor(Math.random()*(100-999)+999);
+        int segundo= (int) Math.floor(Math.random()*(10-99)+99);
+        int tercero= (int) Math.floor(Math.random()*(1000-9999)+9999);
+        return primero+"-"+segundo+"-"+tercero;
+    }
+
+    public String nitRandom(){
+        int primero= (int) Math.floor(Math.random()*(10-99)+99);
+        int segundo= (int) Math.floor(Math.random()*(1000000-9999999)+9999999);
+        return primero+"-"+segundo;
     }
 }

@@ -1,20 +1,16 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Created by criscaor on 2016/04/25.
@@ -72,7 +68,7 @@ public class CuentaPage extends Guidewire{
     WebElementFacade cboTipoDireccionNuevaCuentaPersonal;
 
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
-    WebElementFacade txtDocumentoNuevaCuentaPersonal;
+    WebElementFacade txtDocumentoNuevaCuenta;
 
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:ProducerSelectionInputSet:Producer:SelectOrganization']")
     WebElementFacade btnAgregarOrganizacion;
@@ -95,6 +91,14 @@ public class CuentaPage extends Guidewire{
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:Name-inputEl']")
     WebElementFacade lblNombreDeCuenta;
 
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:DocumentType-inputEl']")
+    WebElementFacade cboTipoDocumentoNuevaCuenta;
+
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:BasicPersonInfo:CreateNewContactInputSet:DateOfBirth-inputEl']")
+    WebElementFacade txtFechaNacimiento;
+
+    @FindBy(id = "CreateAccount:CreateAccountScreen:_msgs")
+    WebElementFacade divMensaje;
 
     public void navNuevaCuenta(){
         Actions act = gw.deployMenu(mnuCuenta);
@@ -102,16 +106,19 @@ public class CuentaPage extends Guidewire{
     }
 
 
-    public void crearCuentaNuevaPersona(String tipoDocumento, String documento, String primerNombre,
-                                        String primerApellido, String tipoDireccion, String direccion,
-                                        String ciudad, String estado, String codigoPostal,
-                                        String nombreOrganizacion){
+    public void crearCuentaNuevaPersona(String tipoDocumento, String documento, String fechaNacimiento, String primerNombre, String primerApellido, String tipoDireccion, String direccion, String ciudad, String estado, String codigoPostal, String nombreOrganizacion){
         btnCrearCuentaNueva.click();
         btnNuevaCuentaPersonal.click();
         btnAgregarOrganizacion.click();
         txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         btnBuscarOrganizacion.click();
         btnSeleccionarOrganizacion.click();
+        //cboTipoDocumentoNuevaCuenta.click();
+       // dormilon();
+        cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
+        cboTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
+        txtDocumentoNuevaCuenta.sendKeys(documento);
+        txtFechaNacimiento.sendKeys(fechaNacimiento);
         txtNombreNuevaCuentaPersonal.sendKeys(primerNombre);
         txtApellidoNuevaCuentaPersonal.sendKeys(primerApellido);
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
@@ -137,6 +144,11 @@ public class CuentaPage extends Guidewire{
         txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         btnBuscarOrganizacion.click();
         btnSeleccionarOrganizacion.click();
+        //cboTipoDocumentoNuevaCuenta.click();
+        //dormilon();
+        cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
+        cboTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
+        txtDocumentoNuevaCuenta.sendKeys(documento);
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         txtCiudadNuevaCuentaPersonal.sendKeys(ciudad);
         txtNombreNuevaPersonaJuridica.clear();
@@ -162,11 +174,23 @@ public class CuentaPage extends Guidewire{
 
     public void assertCrearCuenta(String nombreCuenta){
         dormilon();
-        assertThat(lblNombreDeCuenta.containsText(nombreCuenta));
+        //assertThat(lblNombreDeCuenta,containsText(nombreCuenta));
+        assertThat("Error 1", lblNombreDeCuenta.containsText(nombreCuenta));
+        System.out.printf(nombreCuenta+"<----->"+lblNombreDeCuenta.containsText(nombreCuenta));
     }
 
     public void assertPolicyCenterLogin(){
-        assertThat(mnuCuenta.isPresent());
+        assertThat("Error 2", mnuCuenta.isPresent());
+    }
+
+    public  void  assertVerificarMenor(String mensaje){
+        dormilon();
+        assertThat("Error 3", divMensaje.containsText(mensaje));
+    }
+
+    public  void  assertVerificarMensaje(String mensaje){
+        dormilon();
+        assertThat("Error 3", divMensaje.containsText(mensaje));
     }
 
     private void dormilon() {

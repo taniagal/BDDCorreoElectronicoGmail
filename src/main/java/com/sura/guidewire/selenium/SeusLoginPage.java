@@ -8,8 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 
-//@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
-@DefaultUrl("http://10.209.16.122:8180/pc/PolicyCenter.do")
+@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
+//@DefaultUrl("http://10.209.16.122:8180/pc/PolicyCenter.do")
 public class SeusLoginPage extends PageObject {
     public SeusLoginPage(WebDriver driver) {
         super(driver);
@@ -40,16 +40,14 @@ public class SeusLoginPage extends PageObject {
         }
     }
 
-    public void login(String usuario, String contrasenia) {
-       /* this.usuario.clear();
+    public void login(String pais, String usuario, String contrasenia) {
+        this.usuario.clear();
         this.contrasenia.clear();
         this.pais.click();
         this.pais.selectByVisibleText(pais);
         this.usuario.type(usuario);
         this.contrasenia.type(contrasenia);
-        this.btnSubmit.click();*/
-
-        gw.login(usuario,contrasenia);
+        this.btnSubmit.click();
     }
 
 }

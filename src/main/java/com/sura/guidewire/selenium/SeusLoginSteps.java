@@ -19,12 +19,12 @@ public class SeusLoginSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void login(String usuario, String contrasenia) {
+    public void login(String pais, String usuario, String contrasenia) {
 
         String element = "Mis actividades";
 
         seus.open();
-        seus.login(usuario, contrasenia);
+        seus.login(pais, usuario, contrasenia);
         escritorioPagePage.assertion(element);
     }
 
@@ -38,7 +38,7 @@ public class SeusLoginSteps  extends ScenarioSteps {
         String element = "Mis actividades";
 
         seus.open();
-        seus.login(usuario, contrasenia);
+        seus.login(pais,usuario, contrasenia);
         escritorioPagePage.assertion(element);
     }
 }
