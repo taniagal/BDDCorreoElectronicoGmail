@@ -52,6 +52,20 @@ public class CrearNuevoContactoDefinitions {
     @Then("se debe crear una persona tipo natural")
     public void thenSeDebeCrearUnaPersonaTipoNatural() {
         crearNuevoContactoSteps.actualizar();
+
+        crearNuevoContactoSteps.getDriver().close();
+    }
+
+
+    @When("selecciono el tipo de telefono fijo <tipoTelefonoFijo> e ingreso el numero de telefono fijo <numeroTelefonoFijo>")
+    public void whenIngresoElNumeroDeTelefonoFijotelefonoFijo(@Named("tipoTelefonoFijo") String tipoTelefonoFijo, @Named("numeroTelefonoFijo") String numeroTelefonoFijo) {
+       crearNuevoContactoSteps.ingresarNumeroTelefonoFijo(tipoTelefonoFijo, numeroTelefonoFijo);
+    }
+
+    @Then("el campo de Pais <pais>, Departamento <departamento> y ciudad <ciudad> deben ser obligatorios")
+    public void thenElCampoDePaispaisDepartamentodepartamentoYCiudadciudadDebenSerObligatorios() {
+        // PENDING
+        ;
     }
 
 }
