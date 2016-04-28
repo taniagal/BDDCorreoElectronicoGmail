@@ -13,35 +13,34 @@ import org.jbehave.core.annotations.When;
 public class ReclamacionDefinitions {
 
     @Steps
-    ClaimsSteps cs;
+    ClaimsSteps claimsteps;
 
-    @Given("abro la aplicacion")
-    public void givenAbroLaAplicacion() {
-        cs.open();
+    /**
+     * Pasos Login
+     */
+    @Given("ingreso a la app")
+    public void open(){
+        claimsteps.open();
     }
-
-    @Given("y me logeado en ClaimsCenter <usr> <pass>")
-    public void login(@Named("usr") String usr,@Named("pass") String pass) {
-    cs.login(usr, pass);
+    @When("ingrese <usr> y <pass>")
+    public void login(@Named("usr") String usr, @Named("pass") String pass){
+        claimsteps.login(usr,pass);
     }
-
+    @Then("deberia ingresar a la applicacion <message>")
+    public void assertion(@Named("message") String msn) {
+        claimsteps.assertion(msn);
+    }
     @When("cuando ingrese a la pantalla de reclamacion")
     public void getReclamacion() throws InterruptedException {
-        try {cs.navegacion();} catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+            claimsteps.navegacion();
     }
-
     @When("ingrese los datos necesarios <npoliza>")
     public void llenarFormulario(@Named("npoliza")String npoliza) {
-        cs.setReclamacion(npoliza);
+        claimsteps.llenarReclamacion(npoliza);
     }
-
     @Then("deberia poder crear una reclamacion y ver el <mensaje>")
     public void terminarReclamacion(@Named("mensaje")String msn) {
-        cs.asercion(msn);
-        cs.logout();
+        claimsteps.asercion(msn);
+        claimsteps.logout();
     }
-
-
 }

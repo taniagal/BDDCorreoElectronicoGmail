@@ -3,7 +3,6 @@ package com.sura.claims.selenium.steps;
 import com.sura.claims.selenium.pages.AbrirApp;
 import com.sura.claims.selenium.pages.Buscar;
 import com.sura.claims.selenium.pages.Escritorio;
-import com.sura.claims.selenium.pages.Buscar;
 import com.sura.claims.selenium.pages.Reclamacion;
 import com.sura.guidewire.selenium.Guidewire;
 import net.thucydides.core.annotations.Step;
@@ -50,7 +49,7 @@ public class ClaimsSteps extends ScenarioSteps{
     }
 
     @Step
-    public void setReclamacion(String npoliza) {
+    public void llenarReclamacion(String npoliza) {
         reclamacion.llenarReclamacion(npoliza);
     }
 

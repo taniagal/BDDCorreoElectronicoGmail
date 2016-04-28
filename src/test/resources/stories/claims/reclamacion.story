@@ -5,12 +5,11 @@ Quiero poder crear una reclamación
 
 Scenario: Crear reclamacion en ClaimsCenter
 
-Given abro la aplicacion
-Given y me logeado en ClaimsCenter <usr> <pass>
+GivenStories: stories/claims/login.story
 When cuando ingrese a la pantalla de reclamacion
 When ingrese los datos necesarios <npoliza>
 Then deberia poder crear una reclamacion y ver el <mensaje>
 
 Examples:
-|usr|pass|npoliza|mensaje|
-|su|gw|54-253465|Nueva reclamación guardada|
+|npoliza  |mensaje                   |
+|54-253465|Nueva reclamación guardada|
