@@ -9,11 +9,10 @@ Scenario: Ver informacion de las transacciones asociadas al contacto
 Given que me encuentro autenticado con pais <pais>, username <usr> y password <pass>
 And consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>
 When consulte las transacciones por estado <filtroEstado>
-Then debe mostrarme el listado de transacciones con su respectiva informacion: Fecha de creacion <fechaCreacion> Poliza <poliza> producto <producto> Transaccion <transaccion> Tipo <tipo> Status <estado> Fecha fin transaccion <fechaFin> Participante <participante>
+Then debe mostrarme el listado de transacciones con su respectiva informacion: producto <producto> Transaccion <transaccion> Tipo <tipo> Status <estado> Participante <participante>
 
 Examples:
-|pais|usr|pass|tipoContacto|nombre|apellido|filtroEstado|fechaCreacion|poliza|producto|transaccion|tipo|estado|fechaFin|participante
-|Colombia|pedrvevi|pedrvevi|Empresa|Earth Tech||Completo|04/28/2016|2032459936|Businessowners|467653123|Emisión|Comprometida|04/28/2016|Christine Craft
+|pais|usr|pass|tipoContacto|nombre|apellido|filtroEstado|producto|transaccion|tipo|estado|participante
 
 Scenario: Ver informacion de transacciones sin registros
 Given consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>

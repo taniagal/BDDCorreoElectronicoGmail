@@ -12,8 +12,7 @@ import org.sikuli.api.robot.Key;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.isIn;
+import static org.hamcrest.Matchers.*;
 
 public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
@@ -79,15 +78,15 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         this.mnuTransaccionesPoliza.click();
     }
 
-    public void validarCamposTransacciones(String fechaCreacion, String poliza, String producto, String numeroTransaccion,
-                                           String tipo, String estado, String fechaFin, String participante) {
-        assertThat(this.fechaCreacion.getText().toString(), containsString(fechaCreacion));
-        assertThat(this.poliza.getText().toString(), containsString(poliza));
+    public void validarCamposTransacciones(String producto, String numeroTransaccion,
+                                           String tipo, String estado, String participante) {
+        assertThat(this.fechaCreacion.getText().toString(), is(notNullValue()));
+        assertThat(this.poliza.getText().toString(), is(notNullValue()));
         assertThat(this.producto.getText().toString(), containsString(producto));
         assertThat(this.numeroTransaccion.getText().toString(), containsString(numeroTransaccion));
         assertThat(this.tipo.getText().toString(), containsString(tipo));
         assertThat(this.estado.getText().toString(), containsString(estado));
-        assertThat(this.fechaFin.getText().toString(), containsString(fechaFin));
+        assertThat(this.fechaFin.getText().toString(), is(notNullValue()));
         assertThat(this.participante.getText().toString(), containsString(participante));
     }
 

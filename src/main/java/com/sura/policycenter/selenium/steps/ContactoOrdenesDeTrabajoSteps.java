@@ -24,10 +24,10 @@ public class ContactoOrdenesDeTrabajoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarCamposTransacciones(String fechaCreacion, String poliza, String producto, String numeroTransaccion,
-                                           String tipo, String estado, String fechaFin, String participante){
-        ordenesTrabajoPage.validarCamposTransacciones(fechaCreacion, poliza, producto, numeroTransaccion, tipo,
-                estado, fechaFin, participante);
+    public void validarCamposTransacciones(String producto, String numeroTransaccion,
+                                           String tipo, String estado, String participante){
+        ordenesTrabajoPage.validarCamposTransacciones(producto, numeroTransaccion, tipo,
+                estado, participante);
     }
 
     @Step

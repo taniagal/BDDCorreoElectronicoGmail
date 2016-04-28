@@ -37,17 +37,14 @@ public class ContactoOrdenesDeTrabajoDefinitions {
         ordenesTrabajoSteps.filtrarPorEstado(filtroEstado);
     }
 
-    @Then("debe mostrarme el listado de transacciones con su respectiva informacion: Fecha de creacion <fechaCreacion> Poliza <poliza> producto <producto> Transaccion <transaccion> Tipo <tipo> Status <estado> Fecha fin transaccion <fechaFin> Participante <participante>")
-    public void validarTransacciones(@Named("fechaCreacion") String fechaCreacion,
-                                     @Named("poliza") String poliza,
-                                     @Named("producto") String producto,
+    @Then("debe mostrarme el listado de transacciones con su respectiva informacion: producto <producto> Transaccion <transaccion> Tipo <tipo> Status <estado> Participante <participante>")
+    public void validarTransacciones(@Named("producto") String producto,
                                      @Named("transaccion") String transaccion,
                                      @Named("tipo") String tipo,
                                      @Named("estado") String estado,
-                                     @Named("fechaFin") String fechaFin,
                                      @Named("participante") String participante) {
-        ordenesTrabajoSteps.validarCamposTransacciones(fechaCreacion, poliza, producto, transaccion, tipo,
-                estado, fechaFin, participante);
+        ordenesTrabajoSteps.validarCamposTransacciones(producto, transaccion, tipo,
+                estado, participante);
     }
 
     @Then("debe mostrarme el listado de transacciones filtradas por estado <filtroEstado>")
