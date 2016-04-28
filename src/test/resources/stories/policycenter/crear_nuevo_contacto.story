@@ -8,7 +8,7 @@ se debe crear una persona tipo natural
 
 
 Scenario: Crear contacto persona natural
-Given estoy logueado con usuario <usr> y contrasenia <contrasenia> y pais <country>
+GivenStories: stories/policycenter/login_policy.story
 Given estoy en la pantalla de crear contacto persona natural
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
@@ -20,6 +20,6 @@ Then se debe crear una persona tipo natural
 
 
 Examples:
-|usr        |contrasenia    |country    |tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion  |direccion  |
-|pedrvevi   |pedrvevi       |Colombia   |CEDULA DE CIUDADANIA   |123-45-6666        |BRAYAN         |RUIZ           |Negocio        |CRA 50     |
+|tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion  |direccion  |
+|CEDULA DE CIUDADANIA   |123-45-6666        |BRAYAN         |RUIZ           |Negocio        |CRA 50     |
 

@@ -10,16 +10,9 @@ import org.jbehave.core.annotations.*;
  * Created by brayruru on 2016/04/25.
  */
 public class CrearNuevoContactoDefinitions {
-    @Steps
-    SeusLoginSteps seusLoginSteps;
+
     @Steps
     CrearNuevoContactoSteps crearNuevoContactoSteps ;
-
-
-    @Given("estoy logueado con usuario <usr> y contrasenia <contrasenia> y pais <country>")
-    public void givenEstoyLogueadoConUsuariousrYContraseniacontrasenia(@Named("country") String country, @Named("usr") String user, @Named("contrasenia") String password) {
-        seusLoginSteps.login(country,user,password);
-    }
 
     @Given("estoy en la pantalla de crear contacto persona natural")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaNatural() {
