@@ -68,6 +68,11 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
         filtroEstado.sendKeys(Key.ENTER);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void seleccionarTransacciones(){

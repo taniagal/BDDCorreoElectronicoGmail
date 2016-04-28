@@ -55,6 +55,7 @@ public class BusquedaContactoPage extends Guidewire {
             contactMenu.click();
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
             act.moveToElement(buscarContact).click().build().perform();
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

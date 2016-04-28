@@ -13,7 +13,7 @@ Then debe mostrarme el listado de transacciones con su respectiva informacion: F
 
 Examples:
 |pais|usr|pass|tipoContacto|nombre|apellido|filtroEstado|fechaCreacion|poliza|producto|transaccion|tipo|estado|fechaFin|participante
-|Colombia|pedrvevi|pedrvevi|Personal|Wendell|Jackson|Todos|04/25/2016|1196065271|Auto personal|453453462|Emisión|Comprometida|04/25/2016|Alice Applegate
+|Colombia|pedrvevi|pedrvevi|Empresa|Earth Tech||Completo|04/28/2016|2032459936|Businessowners|467653123|Emisión|Comprometida|04/28/2016|Christine Craft
 
 Scenario: Ver informacion de transacciones sin registros
 Given consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>
