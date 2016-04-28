@@ -7,8 +7,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import javax.swing.*;
-
 /**
  * Created by jonamele on 20/04/2016.
  */
