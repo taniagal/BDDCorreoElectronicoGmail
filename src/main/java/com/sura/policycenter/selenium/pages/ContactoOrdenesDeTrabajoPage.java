@@ -47,7 +47,6 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     @FindBy(xpath="//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrdersCompletenessFilter-inputEl']")
     WebElementFacade filtroEstado;
 
-
     @FindBy(xpath="//td/div/div[3]/div/table")
     WebElementFacade table;
 
@@ -56,6 +55,9 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:ProductFilter-inputEl']")
     WebElementFacade filtroProducto;
+
+    @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:message:InfoMessage_ExtDV:message']")
+    WebElementFacade msjTransaccionNoEncontrada;
 
 
     public ContactoOrdenesDeTrabajoPage(WebDriver driver) {
@@ -93,21 +95,70 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);
 
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            String estadoStr = cells.get(5).getText();
+            if(filtroEstado == "Completo"){
+                assertThat(estadoStr, isIn(listEstadosCompletos));
+            }else if (filtroEstado == "Abierto"){
+                assertThat(estadoStr, isIn(listEstadosAbiertos));
+            }else{
+                assertThat(estadoStr, isIn(listEstadosTodos));
+            }
+        }
+    }
+
+    public void filtrarTransaccionesPorTransaccion(String filtroTransaccion) {
+        this.filtroTipoTransaccion.click();
+        this.filtroTipoTransaccion.sendKeys(filtroTransaccion);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.filtroTipoTransaccion.sendKeys(Key.ENTER);
+    }
+
+    public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
+        List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         try {
             for (WebElement row : allRows) {
                 List<WebElement> cells = row.findElements(By.tagName("td"));
-                String estadoStr = cells.get(5).getText();
-                if(filtroEstado == "Completo"){
-                    assertThat(estadoStr, isIn(listEstadosCompletos));
-                }else if (filtroEstado == "Abierto"){
-                    assertThat(estadoStr, isIn(listEstadosAbiertos));
-                }else{
-                    assertThat(estadoStr, isIn(listEstadosTodos));
-                }
+                String transaccionStr = cells.get(4).getText();
+                assertThat(transaccionStr, containsString(filtroTransaccion));
             }
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void filtrarTransaccionesPorProducto(String filtroProducto) {
+        this.filtroProducto.click();
+        this.filtroProducto.sendKeys(filtroProducto);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.filtroProducto.sendKeys(Key.ENTER);
+    }
+
+    public void validarTransaccionesPorProducto(String filtroProducto) {
+        List<WebElement> allRows = table.findElements(By.tagName("tr"));
+
+        try {
+            for (WebElement row : allRows) {
+                List<WebElement> cells = row.findElements(By.tagName("td"));
+                String transaccionStr = cells.get(2).getText();
+                assertThat(transaccionStr, containsString(filtroProducto));
+            }
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void validarMensaje(String mensaje) {
+        assertThat(msjTransaccionNoEncontrada.getText().toString(), containsString(mensaje));
     }
 }

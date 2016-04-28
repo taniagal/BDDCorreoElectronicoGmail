@@ -34,4 +34,29 @@ public class ContactoOrdenesDeTrabajoSteps extends ScenarioSteps {
     public void validarFiltroEstado(String filtroEstado) {
         ordenesTrabajoPage.validarFiltroEstado(filtroEstado);
     }
+
+    @Step
+    public void filtrarPorTransaccion(String filtroTransaccion) {
+        ordenesTrabajoPage.filtrarTransaccionesPorTransaccion(filtroTransaccion);
+    }
+
+    @Step
+    public void validarPorTransaccion(String filtroTransaccion) {
+        ordenesTrabajoPage.validarTransaccionesPorTransaccion(filtroTransaccion);
+    }
+
+    @Step
+    public void filtrarPorProducto(String filtroProducto) {
+        ordenesTrabajoPage.filtrarTransaccionesPorProducto(filtroProducto);
+    }
+
+    @Step
+    public void validarPorProducto(String filtroProducto) {
+        ordenesTrabajoPage.validarTransaccionesPorProducto(filtroProducto);
+    }
+
+    @Step
+    public void validarMensaje(String mensaje) {
+        ordenesTrabajoPage.validarMensaje(mensaje);
+    }
 }
