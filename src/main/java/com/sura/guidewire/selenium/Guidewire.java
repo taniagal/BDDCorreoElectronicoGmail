@@ -9,8 +9,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
+import java.lang.Math;
+import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.Matchers.containsString;
+
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Created by jorghome on 15/04/2016.
@@ -30,11 +34,12 @@ public class Guidewire extends PageObject {
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
     WebElementFacade submit;
 
-    @FindBy(xpath="//span[@id=':TabLinkMenuButton-btnEl']/span[2]")
+      @FindBy(xpath=".//*[@id=':TabLinkMenuButton-btnIconEl']")
     WebElementFacade btnConfig;
 
-    @FindBy(id ="TabBar:LogoutTabBarLink-textEl")
+    @FindBy(xpath=".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
     WebElementFacade btnLogout;
+
 
     @FindBy(xpath=".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnLogout2;
@@ -84,11 +89,36 @@ public class Guidewire extends PageObject {
         getDriver().quit();
     }
 
+
     public Actions deployMenu(WebElementFacade menu){
         Actions act = new Actions(getDriver());
-        menu.click();
-        menu.click();
+        menu.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+        try{
+            TimeUnit.MILLISECONDS.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        menu.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+        try {
+            TimeUnit.MILLISECONDS.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
     }
+public String cedulaRandom(){
+        int primero= (int) Math.floor(Math.random()*(100-999)+999);
+        int segundo= (int) Math.floor(Math.random()*(10-99)+99);
+        int tercero= (int) Math.floor(Math.random()*(1000-9999)+9999);
+        return primero+"-"+segundo+"-"+tercero;
+    }
+
+    public String nitRandom(){
+        int primero= (int) Math.floor(Math.random()*(10-99)+99);
+        int segundo= (int) Math.floor(Math.random()*(1000000-9999999)+9999999);
+        return primero+"-"+segundo;
+    }
+
+
 }

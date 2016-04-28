@@ -39,7 +39,7 @@ public class SeusLoginSteps  extends ScenarioSteps {
         String element = "Mis actividades";
 
         seus.open();
-        seus.login(pais, usuario, contrasenia);
+        seus.login(pais,usuario, contrasenia);
         escritorioPagePage.assertion(element);
     }
 
