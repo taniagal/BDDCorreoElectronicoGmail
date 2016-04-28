@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.NoSuchElementException;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 /**
  * Created by brayruru on 2016/04/27.
  */
@@ -48,11 +50,7 @@ public class NuevoContactoPage extends Guidewire{
 
     public void seleccionarTipoDocumento (String tipoDocumento){
      this.tipoDocumento.type(tipoDocumento);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        setImplicitTimeout(5, SECONDS);
         this.tipoDocumento.click();
     }
 
@@ -70,11 +68,7 @@ public class NuevoContactoPage extends Guidewire{
 
     public void seleccionarTipoDireccion(String tipoDireccion){
         this.tipoDireccion.type(tipoDireccion);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        setImplicitTimeout(5, SECONDS);
         this.tipoDireccion.click();
     }
 
@@ -87,12 +81,7 @@ public class NuevoContactoPage extends Guidewire{
         wait_for_the_element_to_be_clickable(this.actualizar);
         this.actualizar.click();
 
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //assert(this.nombreContact.getText().toString(), "BRAYAN");
+        setImplicitTimeout(5, SECONDS);
         Assert.assertEquals(this.nombreContact.getText().toString(), "BRAYAN");
 
 
