@@ -48,8 +48,6 @@ public class HistorialCuentaDefinitions {
     public void givenEstoyEnElHistorialDeLaCuentanumCuenta(@Named("numCuenta") String numCuenta) {
         historialCuentaSteps.seleccionarCuenta(numCuenta);
         historialCuentaSteps.seleccionarHistorial();
-        /*seusLoginSteps.logout();
-        seusLoginSteps.close();*/
     }
 
     @Then("mostrar la siguiente informacion <tipo>, <usuario>, <fechaTransaccion>, <descripcion>, <producto>, <poliza>, <transaccionPoliza>, <valorOriginal>, <valorNuevo>")

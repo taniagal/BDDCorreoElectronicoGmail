@@ -103,7 +103,6 @@ public class HistorialCuentaPage extends Guidewire {
     public void buscarCuenta(String numCuenta) {
         Actions act = new Actions(getDriver());
         mnuCuenta.waitUntilEnabled();
-        //mnuCuenta.click();
 
         act.sendKeys(mnuCuenta,Keys.ARROW_DOWN).build().perform();
         act.moveToElement(txtNumCuenta).click().build().perform();
@@ -113,13 +112,6 @@ public class HistorialCuentaPage extends Guidewire {
         btnBuscarCuenta.waitUntilEnabled();
         btnBuscarCuenta.click();
 
-        //act.moveToElement(btnBuscarCuenta).click().build().perform();
-
-        /*txtNumCuenta.waitUntilEnabled();
-        txtNumCuenta.type(numCuenta);
-
-        btnBuscarCuenta.waitUntilEnabled();
-        btnBuscarCuenta.click();*/
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
