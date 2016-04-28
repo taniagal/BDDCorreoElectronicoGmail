@@ -48,8 +48,9 @@ public class HistorialCuentaDefinitions {
     public void givenEstoyEnElHistorialDeLaCuentanumCuenta(@Named("numCuenta") String numCuenta) {
         historialCuentaSteps.seleccionarCuenta(numCuenta);
         historialCuentaSteps.seleccionarHistorial();
+        seusLoginSteps.logout();
+        seusLoginSteps.close();
     }
-
 
     @Then("mostrar la siguiente informacion <tipo>, <usuario>, <fechaTransaccion>, <descripcion>, <producto>, <poliza>, <transaccionPoliza>, <valorOriginal>, <valorNuevo>")
     public void thenMostrarLaSiguienteInformacionTipousuariofechaTransacciondescripcionproductopolizatransaccionPolizavalorOriginalvalorNuevo(@Named("tipo") String tipo,
@@ -62,6 +63,44 @@ public class HistorialCuentaDefinitions {
                                                                                                                                               @Named("valorOriginal") String valorOriginal,
                                                                                                                                               @Named("valorNuevo") String valorNuevo) {
         historialCuentaSteps.validarColumnasHistorialCuenta(tipo, usuario, fechaTransaccion, descripcion, producto, poliza, transaccionPoliza, valorOriginal, valorNuevo);
+        seusLoginSteps.logout();
+        seusLoginSteps.close();
+    }
+
+    @When("indique el criterio de busqueda Relacionado con")
+    public void whenIndiqueElCriterioDeBusquedaRelacionadoCon() {
+        historialCuentaSteps.buscarCuentaRelacionadoCon();
+    }
+
+    @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con")
+    public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoRelacionadoCon() {
+        historialCuentaSteps.validarResultadoBusqueda();
+        seusLoginSteps.logout();
+        seusLoginSteps.close();
+    }
+
+    @When("indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> y <FechaHasta>")
+    public void whenIndiqueMultiplesCriterios (@Named("Usuario") String usuario,
+                                               @Named("FechaDesde") String fechaDesde,
+                                               @Named("FechaHasta") String fechaHasta){
+        historialCuentaSteps.buscarCuentaConMultiplesOpciones( usuario,  fechaDesde,  fechaHasta);
+    }
+
+    @Then("debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda")
+    public void thenDeboPoderVerLasTransaccionesRelacionadasALosMultiplesOpciones() {
+        historialCuentaSteps.validarDatosOpcionesMultiples();
+        seusLoginSteps.logout();
+        seusLoginSteps.close();
+    }
+
+    @When("indique el criterio de busqueda producto")
+    public void whenIndiqueElCriterioDeBusquedaProducto() {
+        historialCuentaSteps.buscarCuentaProducto();
+    }
+
+    @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto")
+    public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoProducto() {
+        historialCuentaSteps.validarResultadoProducto();
         seusLoginSteps.logout();
         seusLoginSteps.close();
     }
@@ -97,42 +136,6 @@ public class HistorialCuentaDefinitions {
     @Then("debo poder ver las transacciones asociadas a ese usuario especifico, que estan relacionadas con la cuenta y las polizas asociadas a ella.")
     @Manual
     public void thenDeboPoderVerLasTransaccionesAsociadasAEseUsuarioEspecificoQueEstanRelacionadasConLaCuentaYLasPolizasAsociadasAElla() {}
-
-    @When("indique el criterio de busqueda Relacionado con")
-    public void whenIndiqueElCriterioDeBusquedaRelacionadoCon() {
-        historialCuentaSteps.buscarCuentaRelacionadoCon();
-    }
-
-    @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con")
-    public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoRelacionadoCon() {
-        historialCuentaSteps.validarResultadoBusqueda();
-    }
-
-    @When("indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> y <FechaHasta>")
-    public void whenIndiqueMultiplesCriterios (@Named("Usuario") String usuario,
-                                               @Named("FechaDesde") String fechaDesde,
-                                               @Named("FechaHasta") String fechaHasta){
-        historialCuentaSteps.buscarCuentaConMultiplesOpciones( usuario,  fechaDesde,  fechaHasta);
-    }
-
-    @Then("debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda")
-    public void thenDeboPoderVerLasTransaccionesRelacionadasALosMultiplesOpciones() {
-        historialCuentaSteps.validarDatosOpcionesMultiples();
-        seusLoginSteps.logout();
-        seusLoginSteps.close();
-    }
-
-    @When("indique el criterio de busqueda producto")
-    public void whenIndiqueElCriterioDeBusquedaProducto() {
-        historialCuentaSteps.buscarCuentaProducto();
-    }
-
-    @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto")
-    public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoProducto() {
-        historialCuentaSteps.validarResultadoProducto();
-        seusLoginSteps.logout();
-        seusLoginSteps.close();
-    }
 
     @When("seleccione  el  numero de la <poliza>")
     @Manual

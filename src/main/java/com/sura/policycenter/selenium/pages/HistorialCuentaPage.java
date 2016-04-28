@@ -3,7 +3,6 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.jbehave.core.annotations.Named;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,8 +27,7 @@ public class HistorialCuentaPage extends Guidewire {
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     WebElementFacade mnuCuenta;
 
-     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
-    //@FindBy(xpath="//div[2]/div/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
     WebElementFacade txtNumCuenta;
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
@@ -90,7 +88,6 @@ public class HistorialCuentaPage extends Guidewire {
     @FindBy(xpath="//li[21]")
     WebElementFacade itmRelacionadoConRenovacion;
 
-    // @FindBy(xpath="id=AccountFile_History:HistoryScreenDV:FromDate-inputEl")
     @FindBy(xpath="//td[3]/div/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     WebElementFacade txtFechaDesde;
 
@@ -100,7 +97,6 @@ public class HistorialCuentaPage extends Guidewire {
     @FindBy(xpath="//td/div/div[2]/div/table")
     WebElementFacade table;
 
-    //@FindBy(xpath="//td[@id='AccountFile_History:HistoryScreenDV:ProductFilter-inputCell']/input")
     @FindBy(xpath="//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     WebElementFacade txtProducto;
 
@@ -136,7 +132,7 @@ public class HistorialCuentaPage extends Guidewire {
         mnuHistorial.waitUntilEnabled();
         mnuHistorial.click();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
 
             throw new RuntimeException(e);
@@ -147,6 +143,7 @@ public class HistorialCuentaPage extends Guidewire {
 
         btnMostrarRelacionadoCon.waitUntilEnabled();
         btnMostrarRelacionadoCon.click();
+        itmRelacionadoCon.waitUntilEnabled();
         itmRelacionadoCon.click();
         btnBuscarItem.click();
 
@@ -183,7 +180,6 @@ public class HistorialCuentaPage extends Guidewire {
             throw new RuntimeException(e);
         }
     }
-
 
     public void validarColumnasHistorialCuenta(String tipo,
                                                String usuario,
@@ -226,7 +222,6 @@ public class HistorialCuentaPage extends Guidewire {
         btnBuscarItem.waitUntilEnabled();
         btnBuscarItem.click();
 
-
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -236,7 +231,6 @@ public class HistorialCuentaPage extends Guidewire {
     }
 
     public void validarDatosOpcionesMultiples(){
-
 
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String usuario = txtUsuario.getValue().toString();
@@ -251,11 +245,9 @@ public class HistorialCuentaPage extends Guidewire {
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public void validarResultadoProducto(){
-
 
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String producto = txtProducto.getValue().toString();
@@ -270,7 +262,5 @@ public class HistorialCuentaPage extends Guidewire {
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
-
 }
