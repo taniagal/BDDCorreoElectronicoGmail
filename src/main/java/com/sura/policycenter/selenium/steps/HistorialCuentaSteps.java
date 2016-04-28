@@ -44,28 +44,6 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
         historialCuentaPage.validarDatosOpcionesMultiples();
     }
 
-
-
-
-
-
-
-    @Step
-    public void buscarCuentaFecha(String fecha) {
-
-        historialCuentaPage.buscarCuentaFecha(fecha);
-    }
-
-    @Step
-    public void buscarCuentaFechaRango (String desde, String hasta) {
-        historialCuentaPage.buscarCuentaFechaRango(desde, hasta);
-    }
-
-    @Step
-    public void buscarCuentaUsuario (String usuario) {
-        historialCuentaPage.buscarCuentaUsuario(usuario);
-    }
-
     @Step
     public void validarResultadoBusqueda () {
         historialCuentaPage.validarResultadoBusqueda();

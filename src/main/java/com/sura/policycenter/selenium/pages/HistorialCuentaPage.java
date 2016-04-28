@@ -173,46 +173,6 @@ public class HistorialCuentaPage extends Guidewire {
         }
     }
 
-
-
-
-    public void buscarCuentaFecha(String fecha){
-        txtNumCuenta.waitUntilEnabled();
-        txtNumCuenta.type(fecha);
-        btnBuscarItem.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void buscarCuentaFechaRango(String desde, String hasta){
-        txtNumCuenta.waitUntilEnabled();
-        txtNumCuenta.type(desde);
-        txtNumCuenta.type(hasta);
-        btnBuscarItem.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void buscarCuentaUsuario(String usuario) {
-        txtUsuario.waitUntilEnabled();
-        txtUsuario.type(usuario);
-        btnBuscarItem.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
-    }
-
     public void validarResultadoBusqueda(){
         try {
 

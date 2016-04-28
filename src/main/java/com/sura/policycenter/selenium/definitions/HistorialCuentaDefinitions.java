@@ -45,21 +45,11 @@ public class HistorialCuentaDefinitions {
     }
 
     @Given("estoy en el historial de la cuenta <numCuenta>")
-    //DC-@Pending
     public void givenEstoyEnElHistorialDeLaCuentanumCuenta(@Named("numCuenta") String numCuenta) {
         historialCuentaSteps.seleccionarCuenta(numCuenta);
         historialCuentaSteps.seleccionarHistorial();
     }
 
-    @When("indique el criterio de busqueda Relacionado con")
-    public void whenIndiqueElCriterioDeBusquedaRelacionadoCon() {
-        historialCuentaSteps.buscarCuentaRelacionadoCon();
-    }
-
-    @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con")
-    public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoRelacionadoCon() {
-        historialCuentaSteps.validarResultadoBusqueda();
-    }
 
     @Then("mostrar la siguiente informacion <tipo>, <usuario>, <fechaTransaccion>, <descripcion>, <producto>, <poliza>, <transaccionPoliza>, <valorOriginal>, <valorNuevo>")
     public void thenMostrarLaSiguienteInformacionTipousuariofechaTransacciondescripcionproductopolizatransaccionPolizavalorOriginalvalorNuevo(@Named("tipo") String tipo,
@@ -76,16 +66,62 @@ public class HistorialCuentaDefinitions {
         seusLoginSteps.close();
     }
 
-    @When("indique el criterio de busqueda producto")
-    public void whenIndiqueElCriterioDeBusquedaProducto() {
-        historialCuentaSteps.buscarCuentaProducto();
+    @When("se realiza la busqueda por <fecha> y solo se indique la opcion desde")
+    @Manual
+    public void whenSeRealizaLaBusquedaPorfechaYSoloSeIndiqueLaOpcionDesde(@Named("fecha") String fechaDesde) {
+        // PENDING
     }
 
-    @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto")
-    public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoProducto() {
-        historialCuentaSteps.validarResultadoProducto();
-        seusLoginSteps.logout();
-        seusLoginSteps.close();
+    @Then("debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion hasta corresponde a la fecha actual.")
+    @Manual
+    public void thenDeboPoderVerLasTransaccionesEnElRangoDeFechasSeleccionadoTeniendoEnCuentaQueLaOpcionHastaCorrespondeALaFechaActual() {
+        // PENDING
+    }
+
+    @When("se realiza la busqueda por <fecha> y solo se indique la opcion hasta")
+    @Manual
+    public void whenSeRealizaLaBusquedaPorfechaYSoloSeIndiqueLaOpcionHasta(@Named("fecha") String fechaHasta) {
+        // PENDING
+    }
+
+    @Then("debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion desde corresponde a la fecha de inicio de la cuenta")
+    @Manual
+    public void thenDeboPoderVerLasTransaccionesEnElRangoDeFechasSeleccionadoTeniendoEnCuentaQueLaOpcionDesdeCorrespondeALaFechaDeInicioDeLaCuenta() {
+        // PENDING
+    }
+
+    @When("se realiza la busqueda por fecha ( <desde> - <hasta>)")
+    @Manual
+    public void whenSeRealizaLaBusquedaPorFechadesdehasta() {
+        // PENDING
+    }
+
+    @Then("debo poder ver las transacciones en el rango de fechas seleccionado.")
+    @Manual
+    public void thenDeboPoderVerLasTransaccionesEnElRangoDeFechasSeleccionado() {
+        // PENDING
+    }
+
+    @When("indique un <usuario> para realizar la busqueda")
+    @Manual
+    public void whenIndiqueUnusuarioParaRealizarLaBusqueda() {
+        // PENDING
+    }
+
+    @Then("debo poder ver las transacciones asociadas a ese usuario especifico, que estan relacionadas con la cuenta y las polizas asociadas a ella.")
+    @Manual
+    public void thenDeboPoderVerLasTransaccionesAsociadasAEseUsuarioEspecificoQueEstanRelacionadasConLaCuentaYLasPolizasAsociadasAElla() {
+        // PENDING
+    }
+
+    @When("indique el criterio de busqueda Relacionado con")
+    public void whenIndiqueElCriterioDeBusquedaRelacionadoCon() {
+        historialCuentaSteps.buscarCuentaRelacionadoCon();
+    }
+
+    @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con")
+    public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoRelacionadoCon() {
+        historialCuentaSteps.validarResultadoBusqueda();
     }
 
     @When("indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> y <FechaHasta>")
@@ -102,89 +138,57 @@ public class HistorialCuentaDefinitions {
         seusLoginSteps.close();
     }
 
-
-
-
-    @When("se realiza la busqueda por <fecha> y solo se indique la opcion hasta")
-    @Pending
-    public void whenSeRealizaLaBusquedaPorfechaYSoloSeIndiqueLaOpcionHasta(@Named("fecha") String fechaHasta) {
-        historialCuentaSteps.buscarCuentaFecha(fechaHasta);
+    @When("indique el criterio de busqueda producto")
+    public void whenIndiqueElCriterioDeBusquedaProducto() {
+        historialCuentaSteps.buscarCuentaProducto();
     }
 
-    @Then("debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion desde corresponde a la fecha de inicio de la cuenta")
-    @Pending
-    public void thenDeboPoderVerLasTransaccionesEnElRangoDeFechasSeleccionadoTeniendoEnCuentaQueLaOpcionDesdeCorrespondeALaFechaDeInicioDeLaCuenta() {
-        // PENDING
-    }
-
-    @When("se realiza la busqueda por <fecha> y solo se indique la opcion desde")
-    @Pending
-    public void whenSeRealizaLaBusquedaPorfechaYSoloSeIndiqueLaOpcionDesde(@Named("fecha") String fechaDesde) {
-        historialCuentaSteps.buscarCuentaFecha(fechaDesde);
-    }
-
-    @Then("debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion hasta corresponde a la fecha actual.")
-    @Pending
-    public void thenDeboPoderVerLasTransaccionesEnElRangoDeFechasSeleccionadoTeniendoEnCuentaQueLaOpcionHastaCorrespondeALaFechaActual() {
-        // PENDING
-    }
-
-    @When("se realiza la busqueda por fecha ( <desde> - <hasta>)")
-    @Pending
-    public void whenSeRealizaLaBusquedaPorFechadesdehasta(@Named("desde") String fechaDesde, @Named("hasta") String fechaHasta) {
-        historialCuentaSteps.buscarCuentaFechaRango(fechaDesde, fechaHasta);
-    }
-
-    @Then("debo poder ver las transacciones en el rango de fechas seleccionado.")
-    @Pending
-    public void thenDeboPoderVerLasTransaccionesEnElRangoDeFechasSeleccionado() {
-        // PENDING
-    }
-
-    @When("indique un <usuario> para realizar la busqueda")
-    public void whenIndiqueUnusuarioParaRealizarLaBusqueda(@Named("usuario") String usuario) {
-        historialCuentaSteps.buscarCuentaUsuario(usuario);
-    }
-
-    @Then("debo poder ver las transacciones asociadas a ese usuario especifico, que estan relacionadas con la cuenta y las polizas asociadas a ella.")
-    @Pending
-    public void thenDeboPoderVerLasTransaccionesAsociadasAEseUsuarioEspecificoQueEstanRelacionadasConLaCuentaYLasPolizasAsociadasAElla() {
-        // PENDING
-    }
-
-    @When("indique el <tipo> de producto")
-    @Pending
-    public void whenIndiqueEltipoDeProducto() {
-        // PENDING
-    }
-
-    @Then("debo poder ver las transacciones asociadas al tipo de producto seleccionado.")
-    @Pending
-    public void thenDeboPoderVerLasTransaccionesAsociadasAlTipoDeProductoSeleccionado() {
-        // PENDING
-    }
-
-    @When("indique varios criterios de busqueda como: Fechas ( <desde> - <hasta>), <usuario>,  <producto> y  <poliza>")
-    @Pending
-    public void whenIndiqueVariosCriteriosDeBusquedaComoFechasdesdehastausuarioproductoYpoliza() {
-        // PENDING
-    }
-
-    @Then("debo poder ver las transacciones asociadas a todos los criterios de busqueda definidos.")
-    @Pending
-    public void thenDeboPoderVerLasTransaccionesAsociadasATodosLosCriteriosDeBusquedaDefinidos() {
-        // PENDING
+    @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto")
+    public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoProducto() {
+        historialCuentaSteps.validarResultadoProducto();
+        seusLoginSteps.logout();
+        seusLoginSteps.close();
     }
 
     @When("seleccione  el  numero de la <poliza>")
-    @Pending
+    @Manual
     public void whenSeleccioneElNumeroDeLapoliza() {
         // PENDING
     }
 
     @Then("debo poder ver el campo poliza habilitado como un vinculo para el detalle de la transaccion")
-    @Pending
+    @Manual
     public void thenDeboPoderVerElCampoPolizaHabilitadoComoUnVinculoParaElDetalleDeLaTransaccion() {
         // PENDING
+    }
+
+    @When("seleccione  el  numero de la transaccion <numeroTransaccion> de la poliza")
+    @Manual
+    public void whenSeleccioneElNumeroDeLaTransaccionnumerotransaccionDeLaPoliza() {
+        //PENDING
+    }
+
+    @Then("debo poder ver el detalle de la transaccion")
+    @Manual
+    public void thenDeboPoderVerElDetalleDeLaTransaccion() {
+        //PENDING
+    }
+
+    @When("se realice una modificacion valorable a la <poliza> de la cuenta")
+    @Manual
+    public void whenSeRealiceUnaModificacionValorableALapolizaDeLaCuenta() {
+        // PENDING
+    }
+
+    @Then("poder ver el <valorOriginal> de la poliza antes de realizar el cambio")
+    @Manual
+    public void thenPoderVerElvalororiginalDeLaPolizaAntesDeRealizarElCambio() {
+        //PENDING
+    }
+
+    @Then("poder ver el <valorNuevo> de la poliza despues de realizar el cambio")
+    @Manual
+    public void thenPoderVerElvalornuevoDeLaPolizaDespuesDeRealizarElCambio() {
+        //PENDING
     }
 }
