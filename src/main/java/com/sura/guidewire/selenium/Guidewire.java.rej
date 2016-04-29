@@ -1,0 +1,16 @@
+diff a/src/main/java/com/sura/guidewire/selenium/Guidewire.java b/src/main/java/com/sura/guidewire/selenium/Guidewire.java	(rejected hunks)
+@@ -78,11 +78,12 @@
+     public Actions deployMenu(WebElementFacade menu){
+         Actions act = new Actions(getDriver());
+         menu.click();
+-        try {
++        /*try {
+             TimeUnit.MILLISECONDS.sleep(1500);
+         } catch (InterruptedException e) {
+             e.printStackTrace();
+-        }
++        }*/
++        menu.waitUntilEnabled();
+         menu.click();
+         try {
+             TimeUnit.MILLISECONDS.sleep(1500);
