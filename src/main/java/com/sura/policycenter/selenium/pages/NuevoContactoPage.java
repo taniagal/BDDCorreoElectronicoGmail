@@ -160,8 +160,8 @@ public class NuevoContactoPage extends Guidewire{
         }
     }
 
-    public void verificarContactoExistente(){
-        try{
+    public void verificarContactoExistente() {
+        try {
             wait_for_the_element_to_be_clickable(this.actualizar);
             this.actualizar.click();
             Thread.sleep(3000);
@@ -170,7 +170,7 @@ public class NuevoContactoPage extends Guidewire{
 
             throw new RuntimeException(e);
         }
-
+    }
 
     public Boolean esTelefonoFijo(String tipoTelefono){
         if ("Trabajo".equals(tipoTelefono) || "Vivienda".equals(tipoTelefono)){
