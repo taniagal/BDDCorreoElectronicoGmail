@@ -24,11 +24,26 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade apellidoContact;
 
+    @FindBy(xpath="")
+    WebElementFacade tipoIdentificacion;
+
+    @FindBy(xpath="")
+    WebElementFacade numeroIdentificacion;
+
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     WebElementFacade botonBuscar;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:Name']")
     WebElementFacade selectContact;
+
+    @FindBy(xpath="//td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
+    WebElementFacade lstTipoIdentificacion;
+
+    @FindBy(xpath="//li")
+    WebElementFacade itmTipoIdentificacion;
+
+    @FindBy(xpath="//td/table/tbody/tr/td[2]/input")
+    WebElementFacade txtRazonSocial;
 
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
@@ -47,6 +62,15 @@ public class BusquedaContactoPage extends Guidewire {
         }
     }
 
+
+    public void buscarContactoPersonaSinVerDetalle(String nombre, String apellido){
+        tipoContact.type("Personal");
+        tipoContact.sendKeys(Keys.ENTER);
+        nombreContact.type(nombre);
+        apellidoContact.type(apellido);
+        botonBuscar.click();
+    }
+
     public void buscarContactoPersona(String nombre, String apellido){
         tipoContact.type("Personal");
         tipoContact.sendKeys(Keys.ENTER);
@@ -54,5 +78,32 @@ public class BusquedaContactoPage extends Guidewire {
         apellidoContact.type(apellido);
         botonBuscar.click();
         selectContact.click();
+    }
+
+    public void buscarContactoPorTipoYNroIdentificacion(String tipoIdentificacion, String numeroIdentificacion){
+        tipoContact.type("Personal");
+        tipoContact.sendKeys(Keys.ENTER);
+    }
+
+    public void consultarPersonaJuridaPorRazonSocial(String razonSocial){
+
+        lstTipoIdentificacion.waitUntilEnabled();
+        lstTipoIdentificacion.click();
+        itmTipoIdentificacion.waitUntilEnabled();
+        itmTipoIdentificacion.click();
+        txtRazonSocial.type(razonSocial);
+        botonBuscar.waitUntilEnabled();
+        botonBuscar.click();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+
+    //TODO
+    public void verInformacionPersonaJuridica(){
     }
 }
