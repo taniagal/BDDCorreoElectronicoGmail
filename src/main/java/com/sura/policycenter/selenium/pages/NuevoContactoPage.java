@@ -230,7 +230,7 @@ public class NuevoContactoPage extends Guidewire{
                 }
 
                 if(flag) {
-                    Assert.assertEquals(textoRequerido, mensajeRequerido.getTextoEnum());
+                    Assert.assertEquals(textoRequerido, mensajeRequerido.getMensajeRequerido());
                 }
 
             }
