@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
@@ -17,6 +18,8 @@ public class EscritorioPage extends Guidewire {
     public EscritorioPage(WebDriver driver) {
         super(driver);
     }
+
+    Actions act = new Actions(getDriver());
 
     @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
     WebElementFacade labelIngreso;
@@ -29,6 +32,11 @@ public class EscritorioPage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewPerson-itemEl']")
     WebElementFacade mnuNewPerson;
+
+    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewCompany-textEl']")
+    WebElementFacade mnuNewCompany;
+
+
 
     // TODO: 18/04/2016 Revision escritura de excepciones en log 
     @WhenPageOpens
@@ -54,7 +62,7 @@ public class EscritorioPage extends Guidewire {
     public void nuevoContactoPersona() {
         try {
 
-            Actions act = new Actions(getDriver());
+
             Thread.sleep(3000);
             mnuContact.click();
             Thread.sleep(3000);
@@ -69,5 +77,25 @@ public class EscritorioPage extends Guidewire {
 
             throw new RuntimeException(e);
         }
+    }
+
+    public void nuevoContactoPersonaJuridica() {
+
+try{
+    Thread.sleep(3000);
+            mnuContact.click();
+    Thread.sleep(3000);
+            mnuContact.click();
+    Thread.sleep(3000);
+            act.sendKeys(Keys.ARROW_DOWN).build().perform();
+            act.moveToElement(mnuNewContact).click().build().perform();
+            act.moveToElement(mnuNewCompany).click().build().perform();
+
+        Thread.sleep(3000);
+    } catch (InterruptedException e) {
+
+        throw new RuntimeException(e);
+    }
+
     }
 }

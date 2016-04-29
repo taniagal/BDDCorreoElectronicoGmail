@@ -54,4 +54,28 @@ public class CrearNuevoContactoDefinitions {
         crearNuevoContactoSteps.actualizar();
     }
 
+    ////////////ESCENARIO CREAR PERSONA JURIDICA
+
+    @Given("estoy en la pantalla de crear contacto persona juridica")
+    public void givenEstoyEnLaPantallaDeCrearContactoPersonaJuridica() {
+        crearNuevoContactoSteps.nuevoContactoPersonaJuridica();
+    }
+
+    @When("ingreso la informacion de razon social <razonSocial>")
+    public void whenIngresoLaInformacionDeRazonSocial(@Named("razonSocial") String razonSocial) {
+        crearNuevoContactoSteps.ingresarRazonSocial(razonSocial);
+    }
+
+    @Then("se debe crear una persona tipo juridica")
+    public void thenSeDebeCrearUnaPersonaTipoJuridica() {
+        crearNuevoContactoSteps.actualizarJuridica();
+    }
+
+    @Then("debe validar que el contacto ya existe")
+    public void thenSeDebeValidarQueElContactoYaExiste() {
+        crearNuevoContactoSteps.verificarContactoExistente();
+    }
+
+
+
 }

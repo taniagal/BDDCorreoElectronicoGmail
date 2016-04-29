@@ -26,6 +26,7 @@ public class NuevoContactoPage extends Guidewire{
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade tipoDocumento;
 
+
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     private WebElementFacade numeroDocumento;
 
@@ -46,6 +47,17 @@ public class NuevoContactoPage extends Guidewire{
 
     @FindBy(xpath =".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade nombreContact;
+
+    @FindBy(xpath =".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    private WebElementFacade razonSocial;
+
+    @FindBy(xpath =".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    private WebElementFacade desRazonSocial;
+
+    @FindBy(xpath =".//*[@id='NewContact:_msgs']/div")
+    private WebElementFacade contactoExistente;
+
+
 
 
     public void seleccionarTipoDocumento (String tipoDocumento){
@@ -84,6 +96,38 @@ public class NuevoContactoPage extends Guidewire{
         setImplicitTimeout(5, SECONDS);
         Assert.assertEquals(this.nombreContact.getText().toString(), "BRAYAN");
 
+
+    }
+
+
+
+    //ESCENARIO NUEVO CONTACTO PERSONA JURIDICA
+    public void ingresarRazonSocial( String razonSocial){
+        this.razonSocial.type(razonSocial);
+    }
+
+    public void actualizarJuridica() {
+        try {
+            wait_for_the_element_to_be_clickable(this.actualizar);
+            this.actualizar.click();
+            Thread.sleep(3000);
+            Assert.assertEquals(this.desRazonSocial.getText().toString(), "La Vaquita");
+        } catch (InterruptedException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void verificarContactoExistente(){
+        try{
+            wait_for_the_element_to_be_clickable(this.actualizar);
+            this.actualizar.click();
+            Thread.sleep(3000);
+            Assert.assertEquals(this.contactoExistente.getText().toString(), "Ya existe un contacto con el mismo número de identificación");
+        } catch (InterruptedException e) {
+
+            throw new RuntimeException(e);
+        }
 
     }
 

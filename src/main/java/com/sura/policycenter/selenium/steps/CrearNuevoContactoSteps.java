@@ -61,6 +61,28 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
         nuevoContactoPage.actualizar();
     }
 
+    //////CREAR CONTACTO PERSONA JURIDICA
+
+    @Step
+    public void nuevoContactoPersonaJuridica() {
+        escritorioPagePage.nuevoContactoPersonaJuridica();
+    }
+
+    @Step
+    public void ingresarRazonSocial( String razonSocial) {
+        nuevoContactoPage.ingresarRazonSocial(razonSocial);
+    }
+    @Step
+    public void actualizarJuridica(){
+        nuevoContactoPage.actualizarJuridica();
+    }
+
+    @Step
+    public void verificarContactoExistente(){
+        nuevoContactoPage.verificarContactoExistente();
+    }
+
+
 
 
 }
