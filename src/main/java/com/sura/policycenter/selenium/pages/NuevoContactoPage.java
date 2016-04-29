@@ -143,7 +143,6 @@ public class NuevoContactoPage extends Guidewire{
     }
 
 
-
     //ESCENARIO NUEVO CONTACTO PERSONA JURIDICA
     public void ingresarRazonSocial( String razonSocial){
         this.razonSocial.type(razonSocial);
