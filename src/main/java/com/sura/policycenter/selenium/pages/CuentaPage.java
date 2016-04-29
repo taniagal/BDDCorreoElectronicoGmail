@@ -124,14 +124,14 @@ public class CuentaPage extends Guidewire{
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         txtCiudadNuevaCuentaPersonal.sendKeys(ciudad);
         cboEstadoNuevaCuentaPersonal.click();
-        dormilon();
+        waitThread();
         cboEstadoNuevaCuentaPersonal.sendKeys(estado);
         cboTipoDireccionNuevaCuentaPersonal.click();
-        dormilon();
+        waitThread();
         cboTipoDireccionNuevaCuentaPersonal.sendKeys(tipoDireccion);
         cboTipoDireccionNuevaCuentaPersonal.sendKeys(Keys.ENTER);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
-        dormilon();
+        waitThread();
         btnActualizar.click();
     }
 
@@ -154,26 +154,26 @@ public class CuentaPage extends Guidewire{
         txtNombreNuevaPersonaJuridica.clear();
         txtNombreNuevaPersonaJuridica.sendKeys(nombreEmpresa);
         cboEstadoNuevaCuentaPersonal.click();
-        dormilon();
+        waitThread();
         cboEstadoNuevaCuentaPersonal.sendKeys(estado);
         cboTipoDireccionNuevaCuentaPersonal.click();
-        dormilon();
+        waitThread();
         cboTipoDireccionNuevaCuentaPersonal.sendKeys(tipoDireccion);
         cboTipoDireccionNuevaCuentaPersonal.sendKeys(Keys.ENTER);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
-        dormilon();
+        waitThread();
         btnActualizar.click();
     }
 
     public void buscarPersona(String nombre){
-        dormilon();
+        waitThread();
         txtNombreCompania.sendKeys(nombre);
         btnBuscar.click();
-        dormilon();dormilon();
+        waitThread();waitThread();
     }
 
     public void assertCrearCuenta(String nombreCuenta){
-        dormilon();
+        waitThread();
         //assertThat(lblNombreDeCuenta,containsText(nombreCuenta));
         assertThat("Error 1", lblNombreDeCuenta.containsText(nombreCuenta));
         System.out.printf(nombreCuenta+"<----->"+lblNombreDeCuenta.containsText(nombreCuenta));
@@ -184,16 +184,16 @@ public class CuentaPage extends Guidewire{
     }
 
     public  void  assertVerificarMenor(String mensaje){
-        dormilon();
+        waitThread();
         assertThat("Error 3", divMensaje.containsText(mensaje));
     }
 
     public  void  assertVerificarMensaje(String mensaje){
-        dormilon();
+        waitThread();
         assertThat("Error 3", divMensaje.containsText(mensaje));
     }
 
-    private void dormilon() {
+    private void waitThread() {
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {

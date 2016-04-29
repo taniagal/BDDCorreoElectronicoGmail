@@ -21,6 +21,9 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     WebElementFacade nombreContact;
 
+    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    WebElementFacade txtNombreEmpresa;
+
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade apellidoContact;
 
@@ -55,4 +58,19 @@ public class BusquedaContactoPage extends Guidewire {
         botonBuscar.click();
         selectContact.click();
     }
+
+    public void buscarContactoEmpresa(String nombreEmpresa){
+        tipoContact.type("Empresa");
+        tipoContact.sendKeys(Keys.ENTER);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        txtNombreEmpresa.type(nombreEmpresa);
+        botonBuscar.click();
+        selectContact.click();
+    }
+
+
 }
