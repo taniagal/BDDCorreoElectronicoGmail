@@ -55,3 +55,26 @@ Then debe validar que el contacto ya existe
 Examples:
 |tipoDocumento          |numeroDeDocumento  |razonSocial     | tipoDireccion  |direccion  |
 |CEDULA DE CIUDADANIA   |1245226    |La Vaquita       |Negocio        |CRA 50     |
+=======
+
+Narrative:
+Que estoy creando un contacto
+Ingreso el número de teléfono fijo
+El campo de ciudad se convierte automáticamente en obligatorio.
+
+Scenario: Campo ciudad obligatorio si se ingresa el telefono
+
+GivenStories: stories/policycenter/login_policy.story
+Given estoy en la pantalla de crear contacto persona natural
+When selecciono el tipo de telefono fijo <tipoTelefonoFijo> e ingreso el numero de telefono fijo <numeroTelefonoFijo>
+Then el campo de Pais <pais>, Departamento <departamento> y ciudad <ciudad> deben ser obligatorios
+
+
+
+Examples:
+|numeroTelefonoFijo             |tipoTelefonoFijo       |pais          |departamento                |ciudad  |
+|12345678                       |Vivienda               |Colombia        |Antioquía                   |Medellín |
+
+
+
+

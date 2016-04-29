@@ -4,7 +4,9 @@ import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -56,8 +58,24 @@ public class NuevoContactoPage extends Guidewire{
 
     @FindBy(xpath =".//*[@id='NewContact:_msgs']/div")
     private WebElementFacade contactoExistente;
+	
+    @FindBy(xpath =".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl']")
+    private WebElementFacade tipoTelefono;
 
+    @FindBy(xpath =".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
+    private WebElementFacade telefonoTrabajo;
 
+    @FindBy(xpath =".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
+    private WebElementFacade telefonoResidencia;
+
+    @FindBy(xpath =".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
+    private WebElementFacade pais;
+
+    @FindBy(xpath =".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    private WebElementFacade departamento;
+
+    @FindBy(xpath =".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City-inputEl']")
+    private WebElementFacade ciudad;
 
 
     public void seleccionarTipoDocumento (String tipoDocumento){
@@ -96,6 +114,31 @@ public class NuevoContactoPage extends Guidewire{
         setImplicitTimeout(5, SECONDS);
         Assert.assertEquals(this.nombreContact.getText().toString(), "BRAYAN");
 
+    }
+
+    public void ingresarTelefonoFijo(String tipoTelefono, String numeroTelefono){
+        if (esTelefonoFijo(tipoTelefono)) {
+            ingresarTelefono(tipoTelefono, numeroTelefono);
+        }
+    }
+
+
+    public void ingresarTelefono(String tipoTelefono, String numeroTelefono) {
+
+        if ("Trabajo".equals(tipoTelefono)) {
+            this.tipoDocumento.type(tipoTelefono);
+            setImplicitTimeout(2, SECONDS);
+            this.tipoDocumento.click();
+            this.telefonoTrabajo.type(numeroTelefono);
+        } else if ("Vivienda".equals(tipoTelefono)) {
+            this.tipoDocumento.type(tipoTelefono);
+            setImplicitTimeout(2, SECONDS);
+            this.tipoDocumento.click();
+            this.telefonoResidencia.type(numeroTelefono);
+        } else {
+
+        }
+
 
     }
 
@@ -129,10 +172,20 @@ public class NuevoContactoPage extends Guidewire{
             throw new RuntimeException(e);
         }
 
+
+    public Boolean esTelefonoFijo(String tipoTelefono){
+        if ("Trabajo".equals(tipoTelefono) || "Vivienda".equals(tipoTelefono)){
+            return Boolean.TRUE;
+        }
+
+        return Boolean.FALSE;
+
     }
 
     public void wait_for_the_element_to_be_clickable(WebElementFacade element) {
         new WebDriverWait(getDriver(), 60).ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable((element)));
     }
+
+
 }

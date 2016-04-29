@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.guidewire.selenium.SeusLoginPage;
 import com.sura.policycenter.selenium.pages.EscritorioPage;
 import com.sura.policycenter.selenium.pages.NuevoContactoPage;
 import net.thucydides.core.annotations.Step;
@@ -12,7 +11,6 @@ import net.thucydides.core.steps.ScenarioSteps;
  */
 public class CrearNuevoContactoSteps extends ScenarioSteps {
 
-    SeusLoginPage seus = new SeusLoginPage(getDriver());
     EscritorioPage escritorioPagePage = new EscritorioPage(getDriver());
     NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
 
@@ -82,6 +80,12 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
         nuevoContactoPage.verificarContactoExistente();
     }
 
+
+
+    @Step
+    public void ingresarNumeroTelefonoFijo(String tipoTelefonoFijo, String numeroTelefonoFijo){
+        nuevoContactoPage.ingresarTelefonoFijo(tipoTelefonoFijo,numeroTelefonoFijo);
+    }
 
 
 
