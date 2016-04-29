@@ -1,5 +1,6 @@
 package com.sura.policycenter.selenium.steps;
 
+import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.selenium.pages.EscritorioPage;
 import com.sura.policycenter.selenium.pages.NuevoContactoPage;
 import net.thucydides.core.annotations.Step;
@@ -11,8 +12,19 @@ import net.thucydides.core.steps.ScenarioSteps;
  */
 public class CrearNuevoContactoSteps extends ScenarioSteps {
 
+    Guidewire gw = new Guidewire(getDriver());
     EscritorioPage escritorioPagePage = new EscritorioPage(getDriver());
     NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
+
+    private String cedula = "";
+    private String nit = "";
+
+
+    private void  initRandoms(){
+        cedula = gw.cedulaRandom();
+        nit = gw.nitRandom();
+
+    }
 
     public CrearNuevoContactoSteps(Pages pages) {
         super(pages);
@@ -31,7 +43,10 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void ingresarNumeroDocumentoPersonaNatural(String numeroDocumento){
-        nuevoContactoPage.ingresarNumeroDocumento(numeroDocumento);
+        if("".equals(cedula) || "".equals(nit)){
+            initRandoms();
+        }
+        nuevoContactoPage.ingresarNumeroDocumento(cedula);
     }
 
     @Step
@@ -56,7 +71,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void actualizar(){
-        nuevoContactoPage.actualizar();
+        nuevoContactoPage.actualizarPersonaNatural();
     }
 
     //////CREAR CONTACTO PERSONA JURIDICA
@@ -86,6 +101,13 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     public void ingresarNumeroTelefonoFijo(String tipoTelefonoFijo, String numeroTelefonoFijo){
         nuevoContactoPage.ingresarTelefonoFijo(tipoTelefonoFijo,numeroTelefonoFijo);
     }
+
+    @Step
+    public void validarCampoPaisDepartamentoYCiudad(){
+        nuevoContactoPage.validarCampoPaisDepartamentoYCiudad();
+    }
+
+
 
 
 

@@ -29,6 +29,7 @@ public class CrearNuevoContactoDefinitions {
         crearNuevoContactoSteps.ingresarNumeroDocumentoPersonaNatural(numeroDeDocumento);
     }
 
+
     @When("ingreso la informacion de primer nombre <primerNombre>")
     public void whenIngresoLaInformacionDePrimerNombreprimerNombre(@Named("primerNombre") String primerNombre) {
         crearNuevoContactoSteps.ingresarPrimerNombrePersonaNatural(primerNombre);
@@ -62,13 +63,13 @@ public class CrearNuevoContactoDefinitions {
        crearNuevoContactoSteps.ingresarNumeroTelefonoFijo(tipoTelefonoFijo, numeroTelefonoFijo);
     }
 
-    @Then("el campo de Pais <pais>, Departamento <departamento> y ciudad <ciudad> deben ser obligatorios")
+    @Then("el campo de ciudad deben ser obligatorios")
     public void thenElCampoDePaispaisDepartamentodepartamentoYCiudadciudadDebenSerObligatorios() {
-        // PENDING
-        ;
+        crearNuevoContactoSteps.validarCampoPaisDepartamentoYCiudad();
     }
 
     ////////////ESCENARIO CREAR PERSONA JURIDICA
+
 
     @Given("estoy en la pantalla de crear contacto persona juridica")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaJuridica() {

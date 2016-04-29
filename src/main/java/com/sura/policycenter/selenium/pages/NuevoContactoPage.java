@@ -1,16 +1,19 @@
 package com.sura.policycenter.selenium.pages;
 
+
 import com.sura.guidewire.selenium.Guidewire;
+import com.sura.policycenter.constantes.EnumContacto;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBys;
+
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -24,6 +27,8 @@ public class NuevoContactoPage extends Guidewire{
     public NuevoContactoPage(WebDriver driver) {
         super(driver);
     }
+
+
 
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade tipoDocumento;
@@ -77,6 +82,9 @@ public class NuevoContactoPage extends Guidewire{
     @FindBy(xpath =".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City-inputEl']")
     private WebElementFacade ciudad;
 
+   // @FindBy( xpath =".//*[@id='NewContact:_msgs']")
+    private WebElementFacade arregloDeMensajes;
+
 
     public void seleccionarTipoDocumento (String tipoDocumento){
      this.tipoDocumento.type(tipoDocumento);
@@ -107,12 +115,19 @@ public class NuevoContactoPage extends Guidewire{
         this.direccion.click();
     }
 
-    public void actualizar(){
+    public void actualizarPersonaNatural(){
         wait_for_the_element_to_be_clickable(this.actualizar);
         this.actualizar.click();
 
         setImplicitTimeout(5, SECONDS);
         Assert.assertEquals(this.nombreContact.getText().toString(), "BRAYAN");
+
+    }
+
+    public void actualizar(){
+        wait_for_the_element_to_be_clickable(this.actualizar);
+        this.actualizar.click();
+        setImplicitTimeout(5, SECONDS);
 
     }
 
@@ -126,14 +141,14 @@ public class NuevoContactoPage extends Guidewire{
     public void ingresarTelefono(String tipoTelefono, String numeroTelefono) {
 
         if ("Trabajo".equals(tipoTelefono)) {
-            this.tipoDocumento.type(tipoTelefono);
+            this.tipoTelefono.type(tipoTelefono);
             setImplicitTimeout(2, SECONDS);
-            this.tipoDocumento.click();
+            this.tipoTelefono.click();
             this.telefonoTrabajo.type(numeroTelefono);
         } else if ("Vivienda".equals(tipoTelefono)) {
-            this.tipoDocumento.type(tipoTelefono);
+            this.tipoTelefono.type(tipoTelefono);
             setImplicitTimeout(2, SECONDS);
-            this.tipoDocumento.click();
+            this.tipoTelefono.click();
             this.telefonoResidencia.type(numeroTelefono);
         } else {
 
@@ -184,6 +199,44 @@ public class NuevoContactoPage extends Guidewire{
     public void wait_for_the_element_to_be_clickable(WebElementFacade element) {
         new WebDriverWait(getDriver(), 60).ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable((element)));
+    }
+
+    //ESCENARIO CAMPO PAIS, DEPARTAMENTO Y CIUDAD OBLIGATORIO
+
+    public void validarCampoPaisDepartamentoYCiudad(){
+
+        if (esTelefonoFijo(this.tipoTelefono.getValue())) {
+            actualizar();
+
+            List<WebElementFacade> tabs = withTimeoutOf(5, SECONDS).findAll(".//*[@id='NewContact:_msgs']//div");
+
+            EnumContacto mensajeRequerido = null;
+            boolean flag = false;
+
+            for (WebElementFacade div: tabs) {
+                String textoRequerido = div.getText();
+                flag = false;
+
+                if (textoRequerido.toLowerCase().contains(EnumContacto.CIUDAD.name().toLowerCase())){
+
+                    mensajeRequerido = EnumContacto.CIUDAD;
+                    flag=true;
+                }
+
+                if (textoRequerido.toLowerCase().contains(EnumContacto.DEPARTAMENTO.name().toLowerCase())){
+
+                    mensajeRequerido = EnumContacto.DEPARTAMENTO;
+                    flag=true;
+                }
+
+                if(flag) {
+                    Assert.assertEquals(textoRequerido, mensajeRequerido.getTextoEnum());
+                }
+
+            }
+
+        }
+
     }
 
 
