@@ -53,7 +53,7 @@ public class CrearNuevoContactoDefinitions {
     public void thenSeDebeCrearUnaPersonaTipoNatural() {
         crearNuevoContactoSteps.actualizar();
 
-        crearNuevoContactoSteps.getDriver().close();
+//        crearNuevoContactoSteps.getDriver().close();
     }
 
 
