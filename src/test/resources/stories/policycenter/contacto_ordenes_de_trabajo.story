@@ -13,6 +13,7 @@ Then debe mostrarme el listado de transacciones con su respectiva informacion: p
 
 Examples:
 |pais|usr|pass|tipoContacto|nombre|apellido|filtroEstado|producto|transaccion|tipo|estado|participante
+|Colombia|pedrvevi|pedrvevi|Empresa|Earth Tech||Completo|Businessowners|467653123|Emisión|Comprometida|Christine Craft
 
 Scenario: Ver informacion de transacciones sin registros
 Given consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>
