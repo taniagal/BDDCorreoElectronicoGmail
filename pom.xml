@@ -29,24 +29,24 @@
     </properties>
 
     <repositories>
-      <repository>
-        <snapshots>
-        <enabled>false</enabled>
-        </snapshots>
-        <id>central</id>
-        <name>bintray</name>
-        <url>http://jcenter.bintray.com</url>
-      </repository>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>bintray</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
     </repositories>
     <pluginRepositories>
-      <pluginRepository>
-        <snapshots>
-        <enabled>false</enabled>
-        </snapshots>
-        <id>central</id>
-        <name>bintray-plugins</name>
-        <url>http://jcenter.bintray.com</url>
-      </pluginRepository>
+        <pluginRepository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>bintray-plugins</name>
+            <url>http://jcenter.bintray.com</url>
+        </pluginRepository>
     </pluginRepositories>
 
     <dependencies>
@@ -92,11 +92,6 @@
             <artifactId>sikuli-api</artifactId>
             <version>${sikuli.api.version}</version>
         </dependency>
-        <!--<dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>RELEASE</version>
-        </dependency>-->
     </dependencies>
     <build>
         <plugins>
@@ -114,8 +109,8 @@
                 <configuration>
                     <includes>
                         <include>**/policycenter/*.java</include>
-                        <include>**/claims/*.java</include>
-                        <include>**/billing/*.java</include>
+                        <!--<include>**/claims/*.java</include>
+                        <include>**/billing/*.java</include>-->
                     </includes>
                     <argLine>-Xmx1024m</argLine>
                     <systemPropertyVariables>

@@ -12,6 +12,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class SeusLoginSteps  extends ScenarioSteps {
 
     SeusLoginPage seus = new SeusLoginPage(getDriver());
+    Guidewire gw = new Guidewire(getDriver());
     EscritorioPage escritorioPagePage = new EscritorioPage(getDriver());
 
     public SeusLoginSteps(Pages pages) {
@@ -40,5 +41,16 @@ public class SeusLoginSteps  extends ScenarioSteps {
         seus.open();
         seus.login(pais,usuario, contrasenia);
         escritorioPagePage.assertion(element);
+    }
+
+    @Step
+    public void logout() {
+        gw.logout();
+    }
+
+
+    @Step
+    public void close() {
+        gw.close();
     }
 }

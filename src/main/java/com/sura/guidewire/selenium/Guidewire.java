@@ -3,12 +3,15 @@ package com.sura.guidewire.selenium;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
+import org.hamcrest.Matcher;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.LoggerFactory;
 import java.lang.Math;
 import java.util.concurrent.TimeUnit;
+
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,26 +34,42 @@ public class Guidewire extends PageObject {
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
     WebElementFacade submit;
 
-    @FindBy(xpath=".//*[@id=':TabLinkMenuButton-btnIconEl']")
+      @FindBy(xpath=".//*[@id=':TabLinkMenuButton-btnIconEl']")
     WebElementFacade btnConfig;
 
     @FindBy(xpath=".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
     WebElementFacade btnLogout;
 
+
     @FindBy(xpath=".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnLogout2;
 
-    // TODO: 19/04/2016 Revision escritura de excepciones en log 
+    // Initialize Log4j logs
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
+
+    // TODO: 19/04/2016 Revision escritura de excepciones en log
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
         getDriver().manage().window().maximize();
         try {
-            element(usuario).waitUntilVisible();
-            element(contrasena).waitUntilVisible();
+            usuario.waitUntilVisible();
+            contrasena.waitUntilVisible();
         }catch(Exception e){
-            throw new RuntimeException(e);
+            LOGGER.error("This is error : " + e);
         }
     }
+
+    // TODO: 26/04/2016 Revision escritura de excepciones en log
+    public void asercion(String element, String mensaje){
+        try {
+            assertThat(element,containsString(mensaje));
+        }catch (Exception e){
+            LOGGER.error("This is error : " + e);
+        }
+    }
+    private void assertThat(String element, Matcher<String> stringMatcher) {
+    }
+
     public void login(String user, String pass) {
         usuario.clear();
         contrasena.clear();
@@ -66,14 +85,10 @@ public class Guidewire extends PageObject {
         }
     }
 
-    // TODO: 25/04/2016 Revision escritura de excepciones en log
-    public void asercion(String elemento, String mensaje){
-        try {
-            assertThat(elemento, containsString(mensaje));
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
+    public void close(){
+        getDriver().quit();
     }
+
 
     public Actions deployMenu(WebElementFacade menu){
         Actions act = new Actions(getDriver());
@@ -92,8 +107,7 @@ public class Guidewire extends PageObject {
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
     }
-
-    public String cedulaRandom(){
+public String cedulaRandom(){
         int primero= (int) Math.floor(Math.random()*(100-999)+999);
         int segundo= (int) Math.floor(Math.random()*(10-99)+99);
         int tercero= (int) Math.floor(Math.random()*(1000-9999)+9999);
@@ -105,4 +119,6 @@ public class Guidewire extends PageObject {
         int segundo= (int) Math.floor(Math.random()*(1000000-9999999)+9999999);
         return primero+"-"+segundo;
     }
+
+
 }
