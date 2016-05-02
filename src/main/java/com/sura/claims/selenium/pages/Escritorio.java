@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 /**
  * Created by jorghome on 30/03/2016.
  */
@@ -43,17 +45,14 @@ public class Escritorio extends Guidewire {
 
     /*Navegación hasta nueva Reclamacion*/
     public void navegacionNuevaReclamacion() throws InterruptedException {
+
         Actions act = new Actions(getDriver());
         mnuReclamacion.click();
-        Thread.sleep(1000);
+        gw.ThreadWait(3);
         mnuReclamacion.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(cboNuevaReclamacion).click().build().perform();
-        try {
-            Thread.sleep(3000);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        gw.ThreadWait(3);
     }
 
     public void navegacionBuscaAvanzada() {
