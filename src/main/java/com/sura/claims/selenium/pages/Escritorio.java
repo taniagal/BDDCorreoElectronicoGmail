@@ -61,8 +61,8 @@ public class Escritorio extends Guidewire {
 
         mnuBusqueda.waitUntilClickable();
         Actions act = gw.deployMenu(mnuBusqueda);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        Thread.sleep(1000);
+        //act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        //Thread.sleep(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         Thread.sleep(1000);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
