@@ -101,9 +101,9 @@
                 <version>2.18.1</version>
                 <configuration>
                     <includes>
-                        <!--<include>**/billing/*.java</include>-->
-                         <include>**/policycenter/*.java</include>
-                        <include>**/claims/*.java</include>
+                        <!--<include>**/billing/*.java</include>
+                        <include>**/claims/*.java</include>-->
+                        <include>**/policycenter/*.java</include>
                     </includes>
                     <argLine>-Xmx1024m</argLine>
                     <systemPropertyVariables>

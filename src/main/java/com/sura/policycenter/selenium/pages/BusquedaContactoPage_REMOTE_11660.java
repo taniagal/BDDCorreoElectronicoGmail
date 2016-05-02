@@ -28,9 +28,6 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     WebElementFacade nombreContact;
 
-    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
-    WebElementFacade txtNombreEmpresa;
-
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade apellidoContact;
 
@@ -82,30 +79,15 @@ public class BusquedaContactoPage extends Guidewire {
         selectContact.click();
     }
 
-<<<<<<< HEAD
-    public void buscarContactoEmpresa(String nombreEmpresa){
-        tipoContact.type("Empresa");
-        tipoContact.sendKeys(Keys.ENTER);
-=======
     public void buscarContacto(String tipoContacto, String nombre, String apellido, String numero){
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         int parada = Integer.parseInt(numero);
->>>>>>> develop
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-<<<<<<< HEAD
-        txtNombreEmpresa.type(nombreEmpresa);
-        botonBuscar.click();
-        selectContact.click();
-    }
-
-
-}
-=======
         if (tipoContacto.equals("Personal")){
             nombreContact.type(nombre);
             apellidoContact.type(apellido);
@@ -133,4 +115,3 @@ public class BusquedaContactoPage extends Guidewire {
         }
     }
 }
->>>>>>> develop
