@@ -44,4 +44,14 @@ public class BusquedaActividadesDefinitions {
         busquedaActividadesSteps.filtrarPorNumeroDeCuenta(numeroCuenta);
     }
 
+    @When("quiera realizar la busqueda de actividades sin algun filtro")
+    public void buscarSinFiltro() {
+        busquedaActividadesSteps.buscarSinFiltro();
+    }
+
+    @Then("me debe mostrar el siguiente mensaje <mensaje>")
+    public void validarMensajeFiltroRequerido(@Named("mensaje") String mensaje) {
+        busquedaActividadesSteps.validarMensajeFiltroRequerido(mensaje);
+    }
+
 }

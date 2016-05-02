@@ -33,4 +33,12 @@ public class BusquedaActividadesSteps extends ScenarioSteps {
     public void filtrarPorNumeroDeCuenta(String numeroCuenta) {
         buscarActividadesPage.filtrarPorNumeroDeCuenta(numeroCuenta);
     }
+
+    public void buscarSinFiltro() {
+        buscarActividadesPage.buscarSinFiltro();
+    }
+
+    public void validarMensajeFiltroRequerido(String mensaje) {
+        buscarActividadesPage.validarMensjeFiltroRequerido(mensaje);
+    }
 }

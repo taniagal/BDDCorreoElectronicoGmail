@@ -39,3 +39,12 @@ prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, Titular de la
 Examples:
 |numeroCuenta|prioridad|estadoActividad|asunto|titularCuenta|producto|asignadoPor|estado
 |C000212105|Normal|Abierta|Review Submission|Wright Construction|Compensación de los trabajadores||California
+
+Scenario: Realizar busqueda de actividades sin esfecificar un filtro
+Given que me encuentro en la busqueda de actividades
+When quiera realizar la busqueda de actividades sin algun filtro
+Then me debe mostrar el siguiente mensaje <mensaje>
+
+Examples:
+|mensaje
+|Especifique un cesionario, un número de póliza o un número de cuenta

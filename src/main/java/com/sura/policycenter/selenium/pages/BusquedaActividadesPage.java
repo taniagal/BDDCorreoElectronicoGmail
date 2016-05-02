@@ -74,6 +74,9 @@ public class BusquedaActividadesPage extends SeusLoginPage {
     @FindBy(xpath="//td[12]/div")
     WebElementFacade grdEstado;
 
+    @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
+    WebElementFacade msgFiltrosRequeridos;
+
 
     public BusquedaActividadesPage(WebDriver driver) {super(driver);}
 
@@ -131,5 +134,19 @@ public class BusquedaActividadesPage extends SeusLoginPage {
         }
         txtNumeroCuenta.sendKeys(numeroCuenta);
         btnBuscar.click();
+    }
+
+    public void buscarSinFiltro() {
+        btnRestablecer.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        btnBuscar.click();
+    }
+
+    public void validarMensjeFiltroRequerido(String mensaje) {
+        assertThat(this.msgFiltrosRequeridos.getText(), containsString(mensaje));
     }
 }
