@@ -173,26 +173,18 @@ public class HistorialCuentaPage extends Guidewire {
         }
     }
 
-    public void validarColumnasHistorialCuenta(String tipo,
-                                               String usuario,
-                                               String fechaTransaccion,
-                                               String descripcion,
-                                               String producto,
-                                               String poliza,
-                                               String transaccionPoliza,
-                                               String valorOriginal,
-                                               String valorNuevo){
+    public void validarColumnasHistorialCuenta(){
         try {
 
-            assertThat(colTipo.getText().toString(), is(equalTo(tipo)));
-            assertThat(colUsuario.getText().toString(), is(equalTo(usuario)));
-            assertThat(colFechaTransaccion.getText().toString(), is(equalTo(fechaTransaccion)));
-            assertThat(colDescripcion.getText().toString(), is(equalTo(descripcion)));
-            assertThat(colProducto.getText().toString(), is(equalTo(producto)));
-            assertThat(colPoliza.getText().toString(), is(equalTo(poliza)));
-            assertThat(colTransaccionPoliza.getText().toString(), is(equalTo(transaccionPoliza)));
-            assertThat(colValorOriginal.getText().toString(), is(equalTo(valorOriginal)));
-            assertThat(colValorNuevo.getText().toString(), is(equalTo(valorNuevo)));
+            assertThat(colTipo.getText().toString(), is(not(equalTo(null))));
+            assertThat(colUsuario.getText().toString(), is(not(equalTo(null))));
+            assertThat(colFechaTransaccion.getText().toString(), is(not(equalTo(null))));
+            assertThat(colDescripcion.getText().toString(), is(not(equalTo(null))));
+            assertThat(colProducto.getText().toString(), is(not(equalTo(null))));
+            assertThat(colPoliza.getText().toString(), is(not(equalTo(null))));
+            assertThat(colTransaccionPoliza.getText().toString(), is(not(equalTo(null))));
+            assertThat(colValorOriginal.getText().toString(), is(not(equalTo(null))));
+            assertThat(colValorNuevo.getText().toString(), is(not(equalTo(null))));
 
         }catch (Exception e) {
             throw new RuntimeException(e);

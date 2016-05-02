@@ -50,16 +50,8 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void validarColumnasHistorialCuenta (String tipo,
-                                                String usuario,
-                                                String fechaTransaccion,
-                                                String descripcion,
-                                                String producto,
-                                                String poliza,
-                                                String transaccionPoliza,
-                                                String valorOriginal,
-                                                String valorNuevo) {
-        historialCuentaPage.validarColumnasHistorialCuenta(tipo, usuario, fechaTransaccion, descripcion, producto, poliza, transaccionPoliza, valorOriginal, valorNuevo);
+    public void validarColumnasHistorialCuenta () {
+        historialCuentaPage.validarColumnasHistorialCuenta();
     }
 
     @Step

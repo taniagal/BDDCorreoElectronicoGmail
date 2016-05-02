@@ -51,16 +51,8 @@ public class HistorialCuentaDefinitions {
     }
 
     @Then("mostrar la siguiente informacion <tipo>, <usuario>, <fechaTransaccion>, <descripcion>, <producto>, <poliza>, <transaccionPoliza>, <valorOriginal>, <valorNuevo>")
-    public void thenMostrarLaSiguienteInformacionTipousuariofechaTransacciondescripcionproductopolizatransaccionPolizavalorOriginalvalorNuevo(@Named("tipo") String tipo,
-                                                                                                                                              @Named("usuario") String usuario,
-                                                                                                                                              @Named("fechaTransaccion") String fechaTransaccion,
-                                                                                                                                              @Named("descripcion") String descripcion,
-                                                                                                                                              @Named("producto") String producto,
-                                                                                                                                              @Named("poliza") String poliza,
-                                                                                                                                              @Named("transaccionPoliza") String transaccionPoliza,
-                                                                                                                                              @Named("valorOriginal") String valorOriginal,
-                                                                                                                                              @Named("valorNuevo") String valorNuevo) {
-        historialCuentaSteps.validarColumnasHistorialCuenta(tipo, usuario, fechaTransaccion, descripcion, producto, poliza, transaccionPoliza, valorOriginal, valorNuevo);
+    public void thenMostrarLaSiguienteInformacionTipousuariofechaTransacciondescripcionproductopolizatransaccionPolizavalorOriginalvalorNuevo() {
+        historialCuentaSteps.validarColumnasHistorialCuenta();
         seusLoginSteps.logout();
         seusLoginSteps.close();
     }
