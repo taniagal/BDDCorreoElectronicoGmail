@@ -13,7 +13,7 @@ import java.util.Date;
 /**
  * Created by criscaor on 2016/04/25.
  */
-public class CreateNewAccountDefinitions {
+public class CrearCuentaNuevaDefinitions {
 
     @Steps
     SeusLoginSteps seusLogin;
@@ -133,5 +133,6 @@ public class CreateNewAccountDefinitions {
     public void assertVerificarMenor(@Named("mensaje")String mensaje){
         cns.assertVerificarMenor(mensaje);
     }
+
 
 }

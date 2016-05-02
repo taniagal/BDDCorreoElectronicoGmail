@@ -40,4 +40,9 @@ public class DetallesContactoSteps extends ScenarioSteps {
     public void verificarCamposPersonaJuridica() {
         dc.verificarCamposPersonaJuridica();
     }
+
+    @Step
+    public void editarContacto(){
+        dc.editarContacto();
+    }
 }

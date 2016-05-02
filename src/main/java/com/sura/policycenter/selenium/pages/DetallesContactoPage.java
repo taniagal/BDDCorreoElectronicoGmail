@@ -78,8 +78,15 @@ public class DetallesContactoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl']")
     WebElementFacade getTxtCorreoElectronicoPrimarioEmpresa;
 
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Edit-btnInnerEl']")
+    WebElementFacade btnEditarContacto;
+
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void editarContacto(){
+        btnEditarContacto.click();
     }
 
 
