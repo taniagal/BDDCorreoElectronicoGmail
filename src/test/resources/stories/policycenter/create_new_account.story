@@ -44,7 +44,7 @@ Then No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
 user |pass |country  |tipo_documento       |documento   |fecha_nacimiento |primer_nombre |primer_apellido |tipo_direccion |direccion |ciudad    |estado     |codigo_postal  |nombre_organizacion    |mensaje|
-su   |gw   |Colombia |CEDULA DE CIUDADANIA |655-45-4955    |02/12/1990       |Nombre        |Apellido        |Vivienda       |Calle 44A |Medellin  |Florida    |10001          |d                      |Ya existe una cuenta con el mismo tipo y número de documento ingresado|
+su   |gw   |Colombia |CEDULA DE CIUDADANIA |655-45-4955    |02/12/1990       |Nombre        |Apellido        |Vivienda       |Calle 44A |Medellin  |Florida    |10001          |d                      |Ya existe un contacto con el mismo número de identificación|
 
 
 
