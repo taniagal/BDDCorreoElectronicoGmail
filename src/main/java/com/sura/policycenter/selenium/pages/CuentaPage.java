@@ -175,22 +175,22 @@ public class CuentaPage extends Guidewire{
     public void assertCrearCuenta(String nombreCuenta){
         dormilon();
         //assertThat(lblNombreDeCuenta,containsText(nombreCuenta));
-        assertThat("Error 1", lblNombreDeCuenta.containsText(nombreCuenta));
+        assertThat("Falló la creación de la cuenta", lblNombreDeCuenta.containsText(nombreCuenta));
         System.out.printf(nombreCuenta+"<----->"+lblNombreDeCuenta.containsText(nombreCuenta));
     }
 
     public void assertPolicyCenterLogin(){
-        assertThat("Error 2", mnuCuenta.isPresent());
+        assertThat("Falló verificar el logueo", mnuCuenta.isPresent());
     }
 
     public  void  assertVerificarMenor(String mensaje){
         dormilon();
-        assertThat("Error 3", divMensaje.containsText(mensaje));
+        assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
     }
 
     public  void  assertVerificarMensaje(String mensaje){
         dormilon();
-        assertThat("Error 3", divMensaje.containsText(mensaje));
+        assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
     private void dormilon() {
