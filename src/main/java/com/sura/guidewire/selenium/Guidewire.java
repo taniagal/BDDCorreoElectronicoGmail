@@ -106,16 +106,9 @@ public class Guidewire extends PageObject {
         return act;
     }
 
-
-    public void ThreadWait(int segundos) {
-
-        int milisegundos = 0;
-        String aux = "000";
-
-        aux = Integer.toString(segundos) + aux;
-        milisegundos = Integer.parseInt(aux);
+    public void threadWait(int milisegundos) {
         try {
-            Thread.sleep(milisegundos);
+            TimeUnit.MILLISECONDS.sleep(milisegundos);
         } catch (InterruptedException e) {
             LOGGER.error("This is error : " + e);
         }

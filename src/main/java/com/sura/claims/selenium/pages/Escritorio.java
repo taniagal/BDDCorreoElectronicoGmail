@@ -34,8 +34,6 @@ public class Escritorio extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
     WebElementFacade mnuBusqueda;
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ClaimSearchesGroup-textEl']")
-    WebElementFacade mnubuscaReclamaciones;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ClaimSearchesGroup:ClaimSearchesGroup_ClaimSearch-textEl']")
     WebElementFacade mnubuscaAvanzada;
 
@@ -43,16 +41,15 @@ public class Escritorio extends Guidewire {
         gw.asercion(lblIngreso.getText(), mensaje);
     }
 
-    /*Navegación hasta nueva Reclamacion*/
-    public void navegacionNuevaReclamacion() throws InterruptedException {
+    public void navegacionNuevaReclamacion() {
 
         Actions act = new Actions(getDriver());
         mnuReclamacion.click();
-        gw.ThreadWait(3);
+        gw.threadWait(3000);
         mnuReclamacion.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(cboNuevaReclamacion).click().build().perform();
-        gw.ThreadWait(3);
+        gw.threadWait(3000);
     }
 
     public void navegacionBuscaAvanzada() {
