@@ -30,4 +30,9 @@ public class BusquedaDeCuentasDefinitions {
         busquedDeCuentasSteps.mostrarInformacionDeLaCuenta(numeroCuenta, nombre, direccion);
     }
 
+    @Then("me debe mostrar el mensaje <mensaje>")
+    public void validarMensaje(@Named("mensaje") String mensaje) {
+        busquedDeCuentasSteps.validarMensaje(mensaje);
+    }
+
 }

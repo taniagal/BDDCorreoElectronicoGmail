@@ -37,6 +37,9 @@ public class BusquedaDeCuentasPage extends SeusLoginPage {
     @FindBy(xpath="//td[4]/div")
     WebElementFacade grdDireccion;
 
+    @FindBy(xpath="//*[@id='AccountSearch:AccountSearchScreen:_msgs']/div")
+    WebElementFacade msjMensajeInformativo;
+
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
     }
@@ -56,6 +59,8 @@ public class BusquedaDeCuentasPage extends SeusLoginPage {
     }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String primerApellido) {
+        txtPrimerNombre.clear();
+        txtPrimerApellido.clear();
         txtPrimerNombre.sendKeys(primerNombre);
         txtPrimerApellido.sendKeys(primerApellido);
         btnBuscar.click();
@@ -65,5 +70,9 @@ public class BusquedaDeCuentasPage extends SeusLoginPage {
         assertThat(this.grdNumeroCuenta.getText(), containsString(numeroCuenta));
         assertThat(this.grdNombre.getText(), containsString(nombre));
         assertThat(this.grdDireccion.getText(), containsString(direccion));
+    }
+
+    public void validarMensaje(String mensaje) {
+        assertThat(this.msjMensajeInformativo.getText(), containsString(mensaje));
     }
 }

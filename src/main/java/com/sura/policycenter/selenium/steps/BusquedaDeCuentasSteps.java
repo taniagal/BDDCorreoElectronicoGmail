@@ -27,4 +27,9 @@ public class BusquedaDeCuentasSteps extends ScenarioSteps{
     public void mostrarInformacionDeLaCuenta(String numeroCuenta, String nombre, String direccion) {
         busquedaDeCuentasPage.mostrarInformacionDeLaCuenta(numeroCuenta, nombre, direccion);
     }
+
+    @Step
+    public void validarMensaje(String mensaje) {
+        busquedaDeCuentasPage.validarMensaje(mensaje);
+    }
 }
