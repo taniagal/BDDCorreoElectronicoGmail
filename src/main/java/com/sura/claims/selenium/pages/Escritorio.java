@@ -20,13 +20,13 @@ public class Escritorio extends Guidewire {
         super(driver);
     }
 
-    @FindBy(xpath=".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
+    @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
     WebElementFacade lblIngreso;
-    @FindBy(xpath=".//*[@id='TabBar:ClaimTab-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
     WebElementFacade mnuReclamacion;
-    @FindBy(xpath=".//*[@id='TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl']")
+    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl']")
     WebElementFacade cboNuevaReclamacion;
-    @FindBy(xpath=".//*[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
+    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
     WebElementFacade txtBuscarNumReclamancion;
 
 
@@ -37,43 +37,32 @@ public class Escritorio extends Guidewire {
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ClaimSearchesGroup:ClaimSearchesGroup_ClaimSearch-textEl']")
     WebElementFacade mnubuscaAvanzada;
 
-    public void assertion(String mensaje){
-    gw.asercion(lblIngreso.getText(),mensaje);
+    public void assertion(String mensaje) {
+        gw.asercion(lblIngreso.getText(), mensaje);
     }
 
     /*Navegación hasta nueva Reclamacion*/
     public void navegacionNuevaReclamacion() throws InterruptedException {
-    Actions act = new Actions(getDriver());
+        Actions act = new Actions(getDriver());
         mnuReclamacion.click();
         Thread.sleep(1000);
         mnuReclamacion.click();
-    act.sendKeys(Keys.ARROW_DOWN).build().perform();
-    act.moveToElement(cboNuevaReclamacion).click().build().perform();
-    try {
-        Thread.sleep(3000);
-    }
-    catch (Exception e) {
-        throw new RuntimeException(e);
-    }
-    }
-
-    public void navegacionBuscaAvanzada() throws InterruptedException {
-
-        mnuBusqueda.waitUntilClickable();
-        Actions act = gw.deployMenu(mnuBusqueda);
-        //act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        //Thread.sleep(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        Thread.sleep(1000);
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnubuscaAvanzada).click().build().perform();
-
+        act.moveToElement(cboNuevaReclamacion).click().build().perform();
         try {
-            TimeUnit.SECONDS.sleep(2);
+            Thread.sleep(3000);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public void navegacionBuscaAvanzada() {
+
+        mnuBusqueda.waitUntilClickable();
+        Actions act = gw.deployMenu(mnuBusqueda);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnubuscaAvanzada).click().build().perform();
     }
 
 }

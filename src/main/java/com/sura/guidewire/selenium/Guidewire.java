@@ -92,13 +92,8 @@ public class Guidewire extends PageObject {
 
     public Actions deployMenu(WebElementFacade menu){
         Actions act = new Actions(getDriver());
-        menu.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
-        try{
-            TimeUnit.MILLISECONDS.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        menu.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+        menu.waitUntilClickable().click();
+        menu.waitUntilClickable().click();
         try {
             TimeUnit.MILLISECONDS.sleep(1000);
         } catch (InterruptedException e) {
