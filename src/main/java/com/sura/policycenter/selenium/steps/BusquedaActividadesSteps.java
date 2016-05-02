@@ -1,13 +1,13 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.policycenter.selenium.pages.BuscarActividadesPage;
+import com.sura.policycenter.selenium.pages.BusquedaActividadesPage;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class BuscarActividadesSteps extends ScenarioSteps {
+public class BusquedaActividadesSteps extends ScenarioSteps {
 
-    BuscarActividadesPage buscarActividadesPage = new BuscarActividadesPage(getDriver());
-    public BuscarActividadesSteps(Pages pages) {
+    BusquedaActividadesPage buscarActividadesPage = new BusquedaActividadesPage(getDriver());
+    public BusquedaActividadesSteps(Pages pages) {
         super(pages);
     }
 
@@ -19,10 +19,10 @@ public class BuscarActividadesSteps extends ScenarioSteps {
         buscarActividadesPage.filtrarPorAsignado(usuario);
     }
 
-    public void validarResultado(String icono, String fechaVencimiento, String prioridad, String estadoActividad,
-                                 String asunto, String id, String titularCuenta, String producto,
+    public void validarResultado(String prioridad, String estadoActividad,
+                                 String asunto, String titularCuenta, String producto,
                                  String asignadoPor, String estado) {
-        buscarActividadesPage.validarResultado(icono,fechaVencimiento,prioridad,estadoActividad,asunto,id,
+        buscarActividadesPage.validarResultado(prioridad,estadoActividad,asunto,
                 titularCuenta,producto,asignadoPor,estado);
     }
 

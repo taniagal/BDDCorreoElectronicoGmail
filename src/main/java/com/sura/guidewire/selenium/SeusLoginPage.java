@@ -8,8 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 
-//@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
-@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
+@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
+//@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class SeusLoginPage extends PageObject {
     public SeusLoginPage(WebDriver driver) {
         super(driver);
