@@ -13,7 +13,7 @@ import java.util.Date;
 /**
  * Created by criscaor on 2016/04/25.
  */
-public class CreateNewAccountDefinitions {
+public class CrearCuentaNuevaDefinitions {
 
     @Steps
     SeusLoginSteps seusLogin;
