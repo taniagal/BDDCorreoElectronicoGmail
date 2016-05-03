@@ -9,6 +9,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
+import javax.swing.*;
+
 
 public class Reclamacion extends Guidewire {
     Guidewire gw = new Guidewire(getDriver());
@@ -24,7 +26,7 @@ public class Reclamacion extends Guidewire {
     @FindBy(xpath = ".//*[@id='NewClaimSaved:NewClaimSavedScreen:ttlBar']")
     WebElementFacade lblNuevaReclamacion;
 
-    @FindBy(xpath = ".//li[4]")
+    @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Claim_ReportedByType-inputEl']")
     WebElementFacade asegurado;
 
     @FindBy(xpath = "//div[6]/div/ul/li")
@@ -34,9 +36,8 @@ public class Reclamacion extends Guidewire {
             ":LossDetailsAddressDV:Description-inputEl']")
     WebElementFacade txtDescripcion;
 
-    @FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow" +
-            ":BasicInfoDetailViewPanelDV:ReportedBy_Name-triggerWrap")
-    WebElementFacade flechitaAbajo;
+    @FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl")
+    WebElementFacade nombre;
 
     @FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:RightPanel" +
             ":FNOLWizard_BasicInfoRightPanelSet:1:InsuredVehicleDV:InsuredVehicleInputGroup:_checkbox")
@@ -119,7 +120,6 @@ public class Reclamacion extends Guidewire {
     }
 
     private void primerFormulario(String Npoliza) {
-         /*Primer Formulario*/
         rdobuttonBuscarPoliza.click();
         txtNpoliza.sendKeys(Npoliza);
         btnBuscar.click();
@@ -134,18 +134,17 @@ public class Reclamacion extends Guidewire {
     }
 
     private void segundoFormulario(Actions act) {
-         /*Segundo Formulario*/
-        flechitaAbajo.click();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        asegurado.waitUntilClickable();
-        asegurado.click();
-        txtRelacionAsegurado.clear();
-        txtRelacionAsegurado.sendKeys("Persona");
+        nombre.click();
+        nombre.sendKeys("Allen Robertson");
+        nombre.sendKeys(Keys.ENTER);
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         }catch (Exception e){
             LOGGER.error("This is error : " + e);
         }
+        asegurado.click();
+        asegurado.sendKeys("Persona");
+        asegurado.sendKeys(Keys.ENTER);
         checkVehiculoInvo.waitUntilEnabled();
         checkVehiculoInvo.click();
         btnSiguiente.click();
