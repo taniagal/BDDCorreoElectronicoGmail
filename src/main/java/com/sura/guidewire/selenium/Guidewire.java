@@ -13,9 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.lang.Math;
 import java.util.concurrent.TimeUnit;
 
-
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Created by jorghome on 15/04/2016.
@@ -24,9 +22,19 @@ public class Guidewire extends PageObject {
 
     public Guidewire(WebDriver driver) {
         super(driver);
+
     }
 
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
+    @FindBy(id=":TabLinkMenuButton-btnIconEl")
+    WebElementFacade configuracion;
+    @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
+    WebElementFacade internacional;
+    @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
+    WebElementFacade idioma;
+    @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
+    WebElementFacade espaniol;
+
+    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
     WebElementFacade usuario;
 
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
@@ -35,12 +43,11 @@ public class Guidewire extends PageObject {
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
     WebElementFacade submit;
 
-    @FindBy(xpath = ".//*[@id=':TabLinkMenuButton-btnIconEl']")
+    @FindBy(xpath =".//*[@id=':TabLinkMenuButton-btnIconEl']")
     WebElementFacade btnConfig;
 
     @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
     WebElementFacade btnLogout;
-
 
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnLogout2;
@@ -59,6 +66,9 @@ public class Guidewire extends PageObject {
             LOGGER.error("This is error : " + e);
         }
     }
+
+    Actions act = new Actions(getDriver());
+
 
     // TODO: 26/04/2016 Revision escritura de excepciones en log
     public void asercion(String element, String mensaje) {
@@ -92,7 +102,6 @@ public class Guidewire extends PageObject {
         getDriver().quit();
     }
 
-
     public Actions deployMenu(WebElementFacade menu) {
         Actions act = new Actions(getDriver());
         menu.waitUntilClickable().click();
@@ -106,6 +115,13 @@ public class Guidewire extends PageObject {
         return act;
     }
 
+    public String cedulaRandom() {
+        int primero = (int) Math.floor(Math.random() * (100 - 999) + 999);
+        int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
+        int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
+        return primero + "-" + segundo + "-" + tercero;
+    }
+
     public void threadWait(int milisegundos) {
         try {
             TimeUnit.MILLISECONDS.sleep(milisegundos);
@@ -114,17 +130,22 @@ public class Guidewire extends PageObject {
         }
     }
 
-    public String cedulaRandom() {
-        int primero = (int) Math.floor(Math.random() * (100 - 999) + 999);
-        int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
-        int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
-        return primero + "-" + segundo + "-" + tercero;
-    }
-
     public String nitRandom() {
         int primero = (int) Math.floor(Math.random() * (10 - 99) + 99);
         int segundo = (int) Math.floor(Math.random() * (1000000 - 9999999) + 9999999);
         return primero + "-" + segundo;
+    }
+
+    public void elegirLenguaje(){
+        configuracion.click();
+        threadWait(500);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        threadWait(500);
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        threadWait(500);
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        threadWait(500);
+        espaniol.click();
     }
 
 
