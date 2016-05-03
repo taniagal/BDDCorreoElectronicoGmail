@@ -117,7 +117,7 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void actualizarPersonaNatural() {
-        wait_for_the_element_to_be_clickable(this.actualizar);
+        this.actualizar.waitUntilClickable();
         this.actualizar.click();
 
         setImplicitTimeout(1, SECONDS);
@@ -126,7 +126,7 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void actualizar() {
-        wait_for_the_element_to_be_clickable(this.actualizar);
+        this.actualizar.waitUntilClickable();
         this.actualizar.click();
         setImplicitTimeout(1, SECONDS);
 
@@ -166,7 +166,7 @@ public class NuevoContactoPage extends Guidewire {
 
     public void actualizarJuridica() {
 
-        wait_for_the_element_to_be_clickable(this.actualizar);
+        this.actualizar.waitUntilClickable();
         this.actualizar.click();
         setImplicitTimeout(1, SECONDS);
         assertThat(this.desRazonSocial.getText().toString(), containsString("La Vaquita"));
@@ -175,7 +175,7 @@ public class NuevoContactoPage extends Guidewire {
 
     public void verificarContactoExistente() {
 
-        wait_for_the_element_to_be_clickable(this.actualizar);
+        this.actualizar.waitUntilClickable();
         this.actualizar.click();
         setImplicitTimeout(1, SECONDS);
         assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
@@ -188,11 +188,6 @@ public class NuevoContactoPage extends Guidewire {
 
         return Boolean.FALSE;
 
-    }
-
-    public void wait_for_the_element_to_be_clickable(WebElementFacade element) {
-        new WebDriverWait(getDriver(), 60).ignoring(NoSuchElementException.class)
-                .until(ExpectedConditions.elementToBeClickable((element)));
     }
 
     //ESCENARIO CAMPO PAIS, DEPARTAMENTO Y CIUDAD OBLIGATORIO
