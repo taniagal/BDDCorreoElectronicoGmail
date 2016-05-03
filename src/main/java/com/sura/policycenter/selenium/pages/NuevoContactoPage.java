@@ -11,12 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.openqa.selenium.WebDriver;
 
-
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.Matchers.containsString;
@@ -121,11 +116,11 @@ public class NuevoContactoPage extends Guidewire {
         this.actualizar.click();
 
         setImplicitTimeout(1, SECONDS);
-        assertThat(this.nombreContact.getText().toString(), containsString("BRAYAN"));
+        assertThat(this.nombreContact.getText(), containsString("BRAYAN"));
 
     }
 
-    public void actualizar() {
+    private void actualizar() {
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
         setImplicitTimeout(1, SECONDS);
@@ -139,7 +134,7 @@ public class NuevoContactoPage extends Guidewire {
     }
 
 
-    public void ingresarTelefono(String tipoTelefono, String numeroTelefono) {
+    private void ingresarTelefono(String tipoTelefono, String numeroTelefono) {
 
         if ("Trabajo".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
@@ -181,7 +176,7 @@ public class NuevoContactoPage extends Guidewire {
         assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 
-    public Boolean esTelefonoFijo(String tipoTelefono) {
+    private Boolean esTelefonoFijo(String tipoTelefono) {
         if ("Trabajo".equals(tipoTelefono) || "Vivienda".equals(tipoTelefono)) {
             return Boolean.TRUE;
         }
@@ -200,7 +195,7 @@ public class NuevoContactoPage extends Guidewire {
             List<WebElementFacade> tabs = withTimeoutOf(1, SECONDS).findAll(".//*[@id='NewContact:_msgs']//div");
 
             EnumContacto mensajeRequerido = null;
-            boolean flag = false;
+            boolean flag;
 
             for (WebElementFacade div : tabs) {
                 String textoRequerido = div.getText();
