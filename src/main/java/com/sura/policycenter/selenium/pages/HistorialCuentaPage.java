@@ -107,6 +107,7 @@ public class HistorialCuentaPage extends Guidewire {
 
         act.sendKeys(mnuCuenta,Keys.ARROW_DOWN).build().perform();
         act.moveToElement(txtNumCuenta).click().build().perform();
+        setImplicitTimeout(1, TimeUnit.SECONDS);
         txtNumCuenta.waitUntilEnabled();
         txtNumCuenta.type(numCuenta);
 

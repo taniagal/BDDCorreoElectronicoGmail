@@ -40,5 +40,11 @@ public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
         cuentasOrdenesTrabajoPage.filtrarTransaccionesPorProducto(filtroProducto);
     }
 
+    @Step
+    public void seleccionarCuenta(String numCuenta) {
+
+        cuentasOrdenesTrabajoPage.buscarCuenta(numCuenta);
+    }
+
 
 }

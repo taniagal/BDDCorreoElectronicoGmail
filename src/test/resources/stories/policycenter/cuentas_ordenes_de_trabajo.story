@@ -7,7 +7,7 @@ para obtener información de órdenes de trabajo
 
 Scenario: Ver informacion de las transacciones asociadas al cuenta
 GivenStories: stories/policycenter/login_policy.story
-Given Estoy en una cuenta <numCuenta>
+Given Estoy buscando una cuenta <numCuenta>
 When consulte las transacciones de poliza por estado <filtroEstado>
 Then debe mostrarme el listado de transacciones con su respectiva informacion: producto <producto> Transaccion <transaccion> Tipo <tipo> Status <estado> Participante <participante>
 
@@ -17,26 +17,26 @@ Examples:
 
 
 Scenario: Ver informacion de transacciones sin registros
-Given Estoy en una cuenta <numCuenta>
+Given Estoy buscando una cuenta <numCuenta>
 When consulte las transacciones de poliza y no encuentre registros
 Then se muestra el mensaje informativo de transaccionde poliza no encontrada <mensaje>
 
 Examples:
-|numCuenta||mensaje
-|6701413182||La cuenta no tiene transacciones asociadas
+|numCuenta|mensaje|
+|9830130793|La cuenta no tiene transacciones asociadas|
 
 Scenario: Ver informacion filtrada por estado
-Given Estoy en una cuenta <numCuenta>
+Given Estoy buscando una cuenta <numCuenta>
 When consulte las transacciones de poliza por estado <filtroEstado>
 Then debe mostrarme el listado de transacciones filtradas por estado <filtroEstado>
 
 Examples:
-|numCuenta||filtroEstado|estado
-|S000212121||Completo|Comprometida
+|numCuenta|filtroEstado|estado
+|S000212121|Completo|Comprometida
 
 
 Scenario: Ver informacion filtrada por tipo de transaccion
-Given Estoy en una cuenta <numCuenta>
+Given Estoy buscando una cuenta <numCuenta>
 When consulte las transacciones de poliza por estado <filtroEstado>
 And consulte las transacciones de poliza por tipo de transaccion <filtroTransaccion>
 Then debe mostrarme el listado de transacciones filtradas por tipo de transaccion <filtroTransaccion>
@@ -46,14 +46,14 @@ Examples:
 |S000212121|Todos|Emisión
 
 Scenario: Ver informacion filtrada por producto
-Given Estoy en una cuenta <numCuenta>
+Given Estoy buscando una cuenta <numCuenta>
 When consulte las transacciones de poliza por estado <filtroEstado>
 And consulte las transacciones de poliza por tipo de transaccion <filtroTransaccion>
 And consulte las transacciones de poliza por tipo de producto <filtroProducto>
 Then debe mostrarme el listado de transacciones filtradas por tipo de transaccion <filtroProducto>
 
 Examples:
-|numCuenta||filtroEstado||filtroTransaccion|filtroProducto
-|S000212121||Todos||Todos|Businessowners
+|numCuenta|filtroEstado||filtroTransaccion|filtroProducto
+|S000212121|Todos||Todos|Businessowners
 
 

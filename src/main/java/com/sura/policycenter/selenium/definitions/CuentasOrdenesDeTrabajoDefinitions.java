@@ -4,6 +4,7 @@ import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.steps.ContactoOrdenesDeTrabajoSteps;
 import com.sura.policycenter.selenium.steps.CuentasOrdenesDeTrabajoSteps;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
@@ -17,6 +18,11 @@ public class CuentasOrdenesDeTrabajoDefinitions {
 
     @Steps
     CuentasOrdenesDeTrabajoSteps cuentasOrdenesTrabajoSteps;
+
+    @Given("Estoy buscando una cuenta <numCuenta>")
+    public void givenEstoyEnUnaCuentanumCuenta(@org.jbehave.core.annotations.Named("numCuenta") String numCuenta) {
+        cuentasOrdenesTrabajoSteps.seleccionarCuenta(numCuenta);
+    }
 
     @When("consulte las transacciones de poliza por estado <filtroEstado>")
     public void consultarTransacciones(@Named("filtroEstado") String filtroEstado) {
