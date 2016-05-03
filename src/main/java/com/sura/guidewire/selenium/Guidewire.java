@@ -120,5 +120,22 @@ public String cedulaRandom(){
         return primero+"-"+segundo;
     }
 
+    public void inputList(WebElementFacade element, String option){
+        element.click();
+        wait(200);
+        element.sendKeys(option);
+        element.sendKeys(Keys.ENTER);
+    }
+
+
+    public void wait(int time){
+        try {
+            TimeUnit.MILLISECONDS.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

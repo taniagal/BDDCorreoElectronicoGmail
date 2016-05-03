@@ -42,7 +42,26 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void editarContacto(){
+    public void editarContacto(String primerNombre, String primerApellido, String segundoNombre,
+                               String segundoApellido, String fechaFallecimiento, String causaFallecimiento,
+                               String profesion, String estadoCivil, String tipoFamilia, String telefonoPrimario,
+                               String telefonoCelular, String telefonoResidencial, String telefonoTrabajo,
+                               String correoElectronicoPrimario, String correoElectronicoSecundario) {
+
         dc.editarContacto();
+        dc.editarContactoPersona(primerNombre,primerApellido,segundoNombre,segundoApellido, fechaFallecimiento, causaFallecimiento,
+                profesion, estadoCivil, tipoFamilia, telefonoPrimario, telefonoCelular, telefonoResidencial, telefonoTrabajo,
+                correoElectronicoPrimario, correoElectronicoSecundario);
     }
+
+    @Step
+    public void actualizarContacto(){
+        dc.actualizaContacto();
+    }
+
+    @Step
+    public void verificarActualizacionPersona(){
+        dc.verificarActualizacion();
+    }
+
 }

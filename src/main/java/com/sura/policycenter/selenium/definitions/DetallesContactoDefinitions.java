@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.DetallesContactoSteps;
+import com.sura.policycenter.selenium.steps.PolicySteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
 
@@ -16,8 +17,8 @@ public class DetallesContactoDefinitions {
     @Steps
     DetallesContactoSteps dcs;
 
-    //@Steps
-    //PolicySteps pcs;
+    @Steps
+    PolicySteps pcs;
 
 
     /**
@@ -28,7 +29,6 @@ public class DetallesContactoDefinitions {
             " que tengo un contacto tipo persona natural")
     public void login(@Named("user") String usuario, @Named("pass") String contrasenia, @Named("country")String pais) {
         seusLogin.login();
-
     }
 
     @When("quiera ver informacion detallada del contacto  con nombre <primer_nombre> y con apellido <primer_apellido>")
@@ -60,7 +60,6 @@ public class DetallesContactoDefinitions {
 
     @Then("se debe ver minimo la siguiente informacion: Razon social, Nombre comercial, Tipo de documento, N\u00FAmero de\r\ndocumento, Actividad economica, Numero de empleados, Valor de activos, ventas anuales, Telefono de la oficina, Fax,\r\nCorreo electronico primario")
     public void assertConsultarDetallePersonaJuridica() {
-        // PENDING
         dcs.verificarCamposPersonaJuridica();
     }
 
