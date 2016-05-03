@@ -108,11 +108,15 @@
                 <version>${maven.failsafe.plugin}</version>
                 <configuration>
                     <includes>
-                        <include>**/policycenter/*.java</include>
                         <!--<include>**/claims/*.java</include>
                         <include>**/billing/*.java</include>-->
+                        <include>**/policycenter/*.java</include>
                     </includes>
-                    <argLine>-Xmx1024m</argLine>
+                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                    <parallel>classes</parallel>
+                    <perCoreThreadCount>true</perCoreThreadCount>
+                    <threadCount>2</threadCount>
+                    <forkCount>2C</forkCount>
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
                     </systemPropertyVariables>
