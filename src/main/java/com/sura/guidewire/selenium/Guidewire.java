@@ -10,11 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-
 import java.lang.Math;
-import java.util.concurrent.TimeUnit;
-
-
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -39,9 +35,6 @@ public class Guidewire extends PageObject {
     WebElementFacade espaniol;
 
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-
     WebElementFacade usuario;
 
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
@@ -50,19 +43,13 @@ public class Guidewire extends PageObject {
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
     WebElementFacade submit;
 
-    @FindBy(xpath=".//*[@id=':TabLinkMenuButton-btnIconEl']")
-
-    @FindBy(xpath = ".//*[@id=':TabLinkMenuButton-btnIconEl']")
-
+    @FindBy(xpath =".//*[@id=':TabLinkMenuButton-btnIconEl']")
     WebElementFacade btnConfig;
 
     @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
     WebElementFacade btnLogout;
 
-    @FindBy(xpath=".//*[@id='button-1005-btnInnerEl']")
-
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
-
     WebElementFacade btnLogout2;
 
     // Initialize Log4j logs
@@ -115,7 +102,6 @@ public class Guidewire extends PageObject {
         getDriver().quit();
     }
 
-
     public Actions deployMenu(WebElementFacade menu) {
         Actions act = new Actions(getDriver());
         menu.waitUntilClickable().click();
@@ -129,12 +115,12 @@ public class Guidewire extends PageObject {
         return act;
     }
 
-    public String cedulaRandom(){
-        int primero= (int) Math.floor(Math.random()*(100-999)+999);
-        int segundo= (int) Math.floor(Math.random()*(10-99)+99);
-        int tercero= (int) Math.floor(Math.random()*(1000-9999)+9999);
-        return primero+"-"+segundo+"-"+tercero;
-
+    public String cedulaRandom() {
+        int primero = (int) Math.floor(Math.random() * (100 - 999) + 999);
+        int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
+        int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
+        return primero + "-" + segundo + "-" + tercero;
+    }
 
     public void threadWait(int milisegundos) {
         try {
@@ -142,14 +128,6 @@ public class Guidewire extends PageObject {
         } catch (InterruptedException e) {
             LOGGER.error("This is error : " + e);
         }
-    }
-
-    public String cedulaRandom() {
-        int primero = (int) Math.floor(Math.random() * (100 - 999) + 999);
-        int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
-        int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
-        return primero + "-" + segundo + "-" + tercero;
-
     }
 
     public String nitRandom() {
@@ -160,29 +138,13 @@ public class Guidewire extends PageObject {
 
     public void elegirLenguaje(){
         configuracion.click();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        threadWait(500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        threadWait(500);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        threadWait(500);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        threadWait(500);
         espaniol.click();
     }
 
