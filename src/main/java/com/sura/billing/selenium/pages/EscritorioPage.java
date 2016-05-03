@@ -386,7 +386,7 @@ public class EscritorioPage extends Guidewire {
             case "Administracion":
                 mnuAdministracion.click();
                 mnuAdministracion.click();
-                gw.ThreadWait(1000);
+                gw.threadWait(1000);
                 act.sendKeys(Keys.ARROW_DOWN).build().perform();
                 act.sendKeys(Keys.ARROW_DOWN).build().perform();
                 switch (item1){
