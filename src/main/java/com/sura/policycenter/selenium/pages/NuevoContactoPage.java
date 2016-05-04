@@ -46,7 +46,7 @@ public class NuevoContactoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade direccion;
 
-    @FindBy(xpath = ".//*[@id='NewContact:Update-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='NewContact:ForceDupCheckUpdate-btnInnerEl']")
     private WebElementFacade actualizar;
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
@@ -81,10 +81,12 @@ public class NuevoContactoPage extends Guidewire {
 
     private WebElementFacade arregloDeMensajes;
 
+    private Guidewire gw = new Guidewire(getDriver());
+
 
     public void seleccionarTipoDocumento(String tipoDocumento) {
         this.tipoDocumento.type(tipoDocumento);
-        setImplicitTimeout(1, SECONDS);
+        gw.threadWait(1000);
         this.tipoDocumento.click();
     }
 
@@ -102,7 +104,7 @@ public class NuevoContactoPage extends Guidewire {
 
     public void seleccionarTipoDireccion(String tipoDireccion) {
         this.tipoDireccion.type(tipoDireccion);
-        setImplicitTimeout(1, SECONDS);
+        gw.threadWait(1000);
         this.tipoDireccion.click();
     }
 
@@ -115,7 +117,7 @@ public class NuevoContactoPage extends Guidewire {
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
 
-        setImplicitTimeout(1, SECONDS);
+        gw.threadWait(1000);
         assertThat(this.nombreContact.getText(), containsString("BRAYAN"));
 
     }
@@ -123,7 +125,7 @@ public class NuevoContactoPage extends Guidewire {
     private void actualizar() {
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
-        setImplicitTimeout(1, SECONDS);
+        gw.threadWait(1000);
 
     }
 
@@ -138,12 +140,12 @@ public class NuevoContactoPage extends Guidewire {
 
         if ("Trabajo".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            setImplicitTimeout(1, SECONDS);
+            gw.threadWait(1000);
             this.tipoTelefono.click();
             this.telefonoTrabajo.type(numeroTelefono);
         } else if ("Vivienda".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            setImplicitTimeout(1, SECONDS);
+            gw.threadWait(1000);
             this.tipoTelefono.click();
             this.telefonoResidencia.type(numeroTelefono);
         } else {
@@ -163,7 +165,7 @@ public class NuevoContactoPage extends Guidewire {
 
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
-        setImplicitTimeout(1, SECONDS);
+        gw.threadWait(1000);
         assertThat(this.desRazonSocial.getText().toString(), containsString("La Vaquita"));
 
     }
@@ -172,7 +174,7 @@ public class NuevoContactoPage extends Guidewire {
 
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
-        setImplicitTimeout(1, SECONDS);
+        gw.threadWait(1000);
         assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 
