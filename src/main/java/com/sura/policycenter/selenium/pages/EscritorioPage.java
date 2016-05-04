@@ -77,6 +77,18 @@ public class EscritorioPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-itemEl']")
     WebElementFacade mnuItemNuevaCuenta;
 
+    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
+    WebElementFacade txtNumCuenta;
+
+    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
+    WebElementFacade btnBuscarCuenta;
+
+    @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
+    private static WebElementFacade linkContactos;
+
+
+
+
     /**
      * Objetos menu Acciones Cuenta
      */
@@ -646,6 +658,15 @@ public class EscritorioPage extends Guidewire {
                 switch (item1.toUpperCase()) {
                     case "NUEVA CUENTA":
                         act.moveToElement(mnuItemNuevaCuenta).click().build().perform();
+                        break;
+                    case "CONSULTAR":
+                        act.moveToElement(txtNumCuenta).click().build().perform();
+                        gw.threadWait(2000);
+                        txtNumCuenta.waitUntilEnabled();
+                        txtNumCuenta.type(item2);
+                        gw.threadWait(2000);
+                        btnBuscarCuenta.waitUntilEnabled();
+                        btnBuscarCuenta.click();
                         break;
                     case "":
                         break;
@@ -1261,5 +1282,11 @@ public class EscritorioPage extends Guidewire {
             case "":
                 break;
         }
+    }
+
+
+    public static void clicLinkContactos(){
+        linkContactos.waitUntilClickable();
+        linkContactos.click();
     }
 }
