@@ -112,6 +112,9 @@
                         <include>**/billing/*.java</include>-->
                         <include>**/policycenter/*.java</include>
                     </includes>
+                    <excludes>
+                        <exclude>**/policycenter/MainStories.java</exclude>
+                    </excludes>
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                     <parallel>classes</parallel>
                     <perCoreThreadCount>true</perCoreThreadCount>
