@@ -1,13 +1,15 @@
 package com.sura.guidewire.selenium;
 
+import com.google.common.base.Function;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
 import org.hamcrest.Matcher;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
 
 import java.lang.Math;
@@ -148,5 +150,19 @@ public class Guidewire extends PageObject {
         espaniol.click();
     }
 
-
-}
+        public void waitUntil(int millis) {
+            Integer i = 0;
+            Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
+                    TimeUnit.MILLISECONDS).pollingEvery(millis,
+                    TimeUnit.MILLISECONDS);
+            try {
+                waitUtil.until(new Function<Integer, Boolean>() {
+                    public Boolean apply(Integer i) {
+                        return false;
+                    }
+                });
+            } catch (TimeoutException e) {
+                LOGGER.error("This is error : " + e);
+            }
+        }
+    }

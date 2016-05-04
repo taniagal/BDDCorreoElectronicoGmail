@@ -45,11 +45,11 @@ public class Escritorio extends Guidewire {
 
         Actions act = new Actions(getDriver());
         mnuReclamacion.click();
-        gw.threadWait(3000);
+        gw.waitUntil(3000);
         mnuReclamacion.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(cboNuevaReclamacion).click().build().perform();
-        gw.threadWait(3000);
+        gw.waitUntil(3000);
     }
 
     public void navegacionBuscaAvanzada() {
