@@ -5,8 +5,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -175,29 +173,29 @@ public class DetallesContactoPage extends Guidewire {
 
     public void editarContacto(){
         btnEditarContacto.click();
-        wait(300);
+        threadWait(300);
     }
 
 
     public void editarContactoPersona(String primerNombre, String primerApellido, String segundoNombre,String segundoApellido,
                                       String fechaFallecimiento, String causaFallecimiento, String profesion, String estadoCivil,
-                                      String tipoFamilia, String telefonoPrimario,String telefonoCelular, String telefonoResidencial,
+                                      String tipoFamilia,String telefonoCelular, String telefonoResidencial,
                                       String telefonoTrabajo,String correoElectronicoPrimario, String correoElectronicoSecundario){
         txtTelefonoCelular.clear();
         txtTelefonoCelular.sendKeys(telefonoCelular);
         txtSegundoNombre.clear();
+        threadWait(200);
         txtSegundoNombre.sendKeys(segundoNombre);
         txtSegundoApellido.clear();
         txtSegundoApellido.sendKeys(segundoApellido);
-        inputList(cboEstadoCivil,estadoCivil);
-        inputList(cboProfesion, profesion);
-        inputList(cboTipoFamilia, tipoFamilia);
-        inputList(cboTipoTelefono, telefonoPrimario);
-        wait(500);
+        selectItem(cboEstadoCivil,estadoCivil);
+        selectItem(cboProfesion, profesion);
+        selectItem(cboTipoFamilia, tipoFamilia);
+        threadWait(500);
         txtTelefonoTrabajo.clear();
         txtTelefonoTrabajo.sendKeys(telefonoTrabajo);
         txtCorreoElectronicoPrimario.clear();
-        wait(500);
+        threadWait(500);
         txtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
         txtCorreoElectronicoSecundario.clear();
         txtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
@@ -211,7 +209,6 @@ public class DetallesContactoPage extends Guidewire {
         dtlContact[6]= profesion;
         dtlContact[7]= estadoCivil;
         dtlContact[8]= tipoFamilia;
-        dtlContact[9]= telefonoPrimario;
         dtlContact[10]= telefonoCelular;
         dtlContact[11]= telefonoResidencial;
         dtlContact[12]= telefonoTrabajo;
@@ -228,8 +225,8 @@ public class DetallesContactoPage extends Guidewire {
         txtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
         txtNombreComercial.clear();
         txtNombreComercial.sendKeys(nombreComercial);
-        inputList(cboActividadComercial, actividadComercial);
-        wait(500);
+        selectItem(cboActividadComercial, actividadComercial);
+        threadWait(500);
         txtNumeroEmpleados.clear();
         txtNumeroEmpleados.sendKeys(numeroEmpleados);
         txtValorActivos.clear();
@@ -238,7 +235,7 @@ public class DetallesContactoPage extends Guidewire {
         txtVentasAnuales.sendKeys(ventasAnuales);
         txtTelefonoOficina.clear();
         txtTelefonoOficina.sendKeys(telefonoOficina);
-        wait(500);
+        threadWait(500);
         txtCorreoElectronicoSecundarioEmpresa.clear();
         txtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
 
@@ -254,7 +251,7 @@ public class DetallesContactoPage extends Guidewire {
 
     public void actualizaContacto(){
         btnActualizar.click();
-        wait(2000);
+        threadWait(2000);
     }
 
     public void verificarActualizacion(){
@@ -263,7 +260,6 @@ public class DetallesContactoPage extends Guidewire {
         assertThat("la profesion esta erroneo",dtlContact[6].equals(cboProfesion.getText()));
         assertThat("el estado civil esta erroneo",dtlContact[7].equals(cboEstadoCivil.getText()));
         assertThat("el tipo de familia esta erroneo",dtlContact[8].equals(cboTipoFamilia.getText()));
-        assertThat("el tipo de letefono esta erroneo",dtlContact[9].equals(cboTipoTelefono.getText()));
         assertThat("el celular esta erroneo",dtlContact[10].equals(txtTelefonoCelular2.getText()));
         assertThat("el tel residencial esta erroneo",dtlContact[11].equals(txtTelefonoResidencial2.getText()));
         assertThat("el tel trabajo esta erroneo",dtlContact[12].equals(txtTelefonoTrabajo2.getText()));

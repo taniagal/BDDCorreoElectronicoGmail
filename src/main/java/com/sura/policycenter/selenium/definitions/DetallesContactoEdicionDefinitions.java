@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
+import com.sura.policycenter.selenium.steps.CrearNuevoContactoSteps;
 import com.sura.policycenter.selenium.steps.DetallesContactoSteps;
 import com.sura.policycenter.selenium.steps.PolicySteps;
 import net.thucydides.core.annotations.Steps;
@@ -24,36 +25,52 @@ public class DetallesContactoEdicionDefinitions {
     @Steps
     DetallesContactoSteps dcs;
 
-    @Given("Se ha consultado la informacion detallada de un contacto tipo persona natural con nombre <primer_nombre> y apellido <primer_apellido>\n" +
-            "y con el usuario <user>, con contrasenia <pass> y pais <country>")
+    @Steps
+    CrearNuevoContactoSteps ncs;
+
+    @Given("Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural con nombre \n" +
+            "<primer_nombre> y apellido <primer_apellido>, tipo direccion <tipo_direccion>, direccion <direccion>, \n" +
+            "tipo documento <tipo_documento>, documento <documento>, y con el usuario <user>, con contrasenia <pass> y pais <country>")
+    //@Pending
     public void login(@Named("user") String usuario, @Named("pass") String contrasenia, @Named("country")String pais,
-                      @Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido){
+                      @Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
+                      @Named("tipo_documento")String tipoDocumento,@Named("documento")String documento,
+                      @Named("tipo_direccion")String tipoDireccion,@Named("direccion")String direccion){
         seusLogin.login();
+        ncs.nuevoContactoPersona();
+        ncs.seleccionarTipoDocumentoPersonaNatural(tipoDocumento);
+        ncs.ingresarNumeroDocumentoPersonaNatural(documento);
+        ncs.ingresarPrimerNombrePersonaNatural(primerNombre);
+        ncs.ingresarPrimerApellidoPersonaNatural(primerApellido);
+        ncs.seleccionarTipoDireccionPersonaNatural(tipoDireccion);
+        ncs.ingresarDireccionPersonaNatural(direccion);
+        ncs.btnCrearPersona();
         dcs.abrirDetallesContactoPersona(primerNombre,primerApellido);
     }
 
 
-    @When("quiera editar la informacion del contacto con perimer nombre <primer_nombre>, \n" +
+    @When("quiera editar la informacion del contacto con perimer nombre <primer_nombre>,\n" +
             "segundo nombre <segundo_nombre>, primer apellido <primer_apellido>, segundo apellido <segundo_apellido>,\n" +
             "fecha fallecimiento <fecha_fallecimiento>, causa fallecimiento <causa_fallecimiento>, profesion <profesion>,\n" +
-            "estado civil <estado_civil>, tipo familia <tipo_familia>, telefono primario <telefono_primario>, \n" +
-            "telefono celular <telefono_celular>,telefono residencial <telefono_residencial>, telefono trabajo <telefono_trabajo>,\n" +
-            "correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>")
+            "estado civil <estado_civil>, tipo familia <tipo_familia>,telefono celular <telefono_celular>,telefono residencial \n" +
+            "<telefono_residencial>, telefono trabajo <telefono_trabajo>,correo electronico primario <correo_electronico_primario>,\n" +
+            " correo electronico secundario <correo_electronico_secundario>")
+    //@Pending
     public void editarLaInformacionContacto(@Named("primer_nombre")String primerNombre,@Named("segundo_nombre")String segundoNombre,
                                             @Named("primer_apellido")String primerApellido,@Named("segundo_apellido")String segundoApellido,
                                             @Named("fecha_fallecimiento")String fechaFallecimiento,@Named("causa_fallecimiento")String causaFallecimiento,
                                             @Named("profesion")String profesion,@Named("estado_civil")String estadoCivil,@Named("tipo_familia")String tipoFamilia,
-                                            @Named("telefono_primario")String telefonoPrimario,@Named("telefono_celular")String telefonoCelular,
-                                            @Named("telefono_residencial")String telefonoResidencial,@Named("telefono_trabajo")String telefonoTrabajo,
-                                            @Named("correo_electronico_primario")String correoElectronicoPrimario,
+                                            @Named("telefono_celular")String telefonoCelular,@Named("telefono_residencial")String telefonoResidencial,
+                                            @Named("telefono_trabajo")String telefonoTrabajo,@Named("correo_electronico_primario")String correoElectronicoPrimario,
                                             @Named("correo_electronico_secundario")String correoElectronicoSecundario){
 
         dcs.editarContacto(primerNombre,primerApellido,segundoNombre,segundoApellido, fechaFallecimiento, causaFallecimiento,
-                profesion, estadoCivil, tipoFamilia, telefonoPrimario, telefonoCelular, telefonoResidencial, telefonoTrabajo,
+                profesion, estadoCivil, tipoFamilia,telefonoCelular, telefonoResidencial, telefonoTrabajo,
                 correoElectronicoPrimario, correoElectronicoSecundario);
     }
 
     @Then("se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios")
+    //@Pending
     public void ralizarEdicionInformacionContacto() {
         dcs.actualizarContacto();
         dcs.verificarActualizacionPersona();
@@ -61,10 +78,19 @@ public class DetallesContactoEdicionDefinitions {
 
 
     //-------------------ESCENARIO 2---------------------
-    @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica con nombre <razon_social> con el usuario <user>, con contrasenia <pass> y pais <country>")
+    @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica con nombre <razon_social>,\n" +
+            "tipo de direccion <tipo_direccion> y direccion <direccion>, con el usuario <user>, con contrasenia <pass> y pais <country>")
     public void login(@Named("user") String usuario, @Named("pass") String contrasenia, @Named("country")String pais,
-                      @Named("razon_social")String razonSocial){
+                      @Named("razon_social")String razonSocial,@Named("tipo_direccion")String tipoDireccion,
+                      @Named("direccion")String direccion){
         //seusLogin.login();
+        ncs.nuevoContactoPersonaJuridica();
+        ncs.seleccionarTipoDocumentoPersonaNatural("NIT");
+        ncs.ingresarRazonSocial(razonSocial);
+        ncs.seleccionarTipoDireccionPersonaNatural(tipoDireccion);
+        ncs.ingresarDireccionPersonaNatural(direccion);
+        ncs.ingresarNumeroDocumentoPersonaNatural("");
+        ncs.btnCrearPersona();
         dcs.abrirDetallesContactoEmpresa(razonSocial);
     }
 
@@ -79,7 +105,8 @@ public class DetallesContactoEdicionDefinitions {
                                             @Named("telefono_oficina")String telefonoOficina,@Named("correo_electronico_primario")String correoElectronicoPrimario,
                                             @Named("correo_electronico_secundario")String correoElectronicoSecundario){
 
-        dcs.editarContacto(razonSocial,nombreComercial,actividadComercial,numeroEmpleados, valorActivos, ventasAnuales,
+
+      dcs.editarContacto(razonSocial,nombreComercial,actividadComercial,numeroEmpleados, valorActivos, ventasAnuales,
                 telefonoOficina, correoElectronicoPrimario, correoElectronicoSecundario);
     }
 

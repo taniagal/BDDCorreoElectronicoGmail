@@ -4,6 +4,7 @@ import com.sura.policycenter.selenium.pages.BusquedaContactoPage;
 import com.sura.policycenter.selenium.pages.DetallesContactoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
+import net.thucydides.core.screenshots.QueuedScreenshot;
 import net.thucydides.core.steps.ScenarioSteps;
 
 /**
@@ -44,13 +45,13 @@ public class DetallesContactoSteps extends ScenarioSteps {
     @Step
     public void editarContacto(String primerNombre, String primerApellido, String segundoNombre,
                                String segundoApellido, String fechaFallecimiento, String causaFallecimiento,
-                               String profesion, String estadoCivil, String tipoFamilia, String telefonoPrimario,
-                               String telefonoCelular, String telefonoResidencial, String telefonoTrabajo,
+                               String profesion, String estadoCivil, String tipoFamilia, String telefonoCelular,
+                               String telefonoResidencial, String telefonoTrabajo,
                                String correoElectronicoPrimario, String correoElectronicoSecundario) {
 
         dc.editarContacto();
         dc.editarContactoPersona(primerNombre,primerApellido,segundoNombre,segundoApellido, fechaFallecimiento, causaFallecimiento,
-                profesion, estadoCivil, tipoFamilia, telefonoPrimario, telefonoCelular, telefonoResidencial, telefonoTrabajo,
+                profesion, estadoCivil, tipoFamilia,telefonoCelular, telefonoResidencial, telefonoTrabajo,
                 correoElectronicoPrimario, correoElectronicoSecundario);
     }
 
@@ -80,4 +81,5 @@ public class DetallesContactoSteps extends ScenarioSteps {
         dc.editarContactoJuridico(razonSocial,nombreComercial,actividadComercial,numeroEmpleados, valorActivos, ventasAnuales,
                 telefonoOficina, correoElectronicoPrimario, correoElectronicoSecundario);
     }
+
 }

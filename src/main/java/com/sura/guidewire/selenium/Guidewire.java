@@ -119,9 +119,9 @@ public class Guidewire extends PageObject {
         return primero + "-" + segundo + "-" + tercero;
     }
 
-    public void inputList(WebElementFacade element, String option){
+    public void selectItem(WebElementFacade element, String option){
         element.click();
-        threadWait(300);
+        threadWait(200);
         element.sendKeys(option);
         element.sendKeys(Keys.ENTER);
     }
@@ -151,23 +151,5 @@ public class Guidewire extends PageObject {
         threadWait(500);
         espaniol.click();
     }
-
-    public void inputList(WebElementFacade element, String option){
-        element.click();
-        wait(200);
-        element.sendKeys(option);
-        element.sendKeys(Keys.ENTER);
-    }
-
-
-    public void wait(int time){
-        try {
-            TimeUnit.MILLISECONDS.sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
 }

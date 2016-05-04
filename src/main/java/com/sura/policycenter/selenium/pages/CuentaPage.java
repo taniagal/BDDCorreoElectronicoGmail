@@ -7,9 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -122,7 +119,7 @@ public class CuentaPage extends Guidewire{
         txtNombreNuevaCuentaPersonal.sendKeys(primerNombre);
         txtApellidoNuevaCuentaPersonal.sendKeys(primerApellido);
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        inputList(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
+        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
         btnActualizar.click();
     }
@@ -141,7 +138,7 @@ public class CuentaPage extends Guidewire{
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         txtNombreNuevaPersonaJuridica.clear();
         txtNombreNuevaPersonaJuridica.sendKeys(nombreEmpresa);
-        inputList(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
+        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
         btnActualizar.click();
     }
