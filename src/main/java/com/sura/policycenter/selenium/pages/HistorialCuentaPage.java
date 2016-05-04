@@ -12,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import javax.swing.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -106,18 +107,20 @@ public class HistorialCuentaPage extends Guidewire {
 
         act.sendKeys(mnuCuenta,Keys.ARROW_DOWN).build().perform();
         act.moveToElement(txtNumCuenta).click().build().perform();
+        setImplicitTimeout(1, TimeUnit.SECONDS);
         txtNumCuenta.waitUntilEnabled();
         txtNumCuenta.type(numCuenta);
 
         btnBuscarCuenta.waitUntilEnabled();
         btnBuscarCuenta.click();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//
+//            throw new RuntimeException(e);
+//        }
+        setImplicitTimeout(1, TimeUnit.SECONDS);
     }
 
     public void seleccionarHistorial() {
