@@ -54,6 +54,8 @@ public class DetallesContactoSteps extends ScenarioSteps {
                 correoElectronicoPrimario, correoElectronicoSecundario);
     }
 
+
+
     @Step
     public void actualizarContacto(){
         dc.actualizaContacto();
@@ -64,4 +66,13 @@ public class DetallesContactoSteps extends ScenarioSteps {
         dc.verificarActualizacion();
     }
 
+    @Step
+    public void editarContacto(String razonSocial, String nombreComercial, String actividadComercial, String numeroEmpleados,
+                               String valorActivos, String ventasAnuales, String telefonoOficina,
+                               String correoElectronicoPrimario, String correoElectronicoSecundario) {
+
+        dc.editarContacto();
+        dc.editarContactoJuridico(razonSocial,nombreComercial,actividadComercial,numeroEmpleados, valorActivos, ventasAnuales,
+                telefonoOficina, correoElectronicoPrimario, correoElectronicoSecundario);
+    }
 }

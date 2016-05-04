@@ -135,35 +135,39 @@ public class DetallesContactoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress2-inputEl']")
     WebElementFacade txtCorreoElectronicoSecundario;
 
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-labelEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
     WebElementFacade txtRazonSocial;
 
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:CommercialName-labelEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
     WebElementFacade txtNombreComercial;
 
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Activity-labelEl']")
-    WebElementFacade txtActividadComercial;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Activity-inputEl']")
+    WebElementFacade cboActividadComercial;
 
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:EmployeesNumber-labelEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:EmployeesNumber-inputEl']")
     WebElementFacade txtNumeroEmpleados;
 
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Assets-labelEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Assets-inputEl']")
     WebElementFacade txtValorActivos;
 
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:AnualSells-labelEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:AnualSells-inputEl']")
     WebElementFacade txtVentasAnuales;
 
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:AnualSells-labelEl']")
-    WebElementFacade txtTelefonoOficinaEmpresa;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
+    WebElementFacade txtTelefonoOficina;
 
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress1-inputEl']")
     WebElementFacade txtCorreoElectronicoPrimarioEmpresa;
 
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress2-inputEl']")
+    WebElementFacade txtCorreoElectronicoSecundarioEmpresa;
+
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update-btnInnerEl']")
     WebElementFacade btnActualizar;
 
 
     private  String [] dtlContact = new String[15];
+    private String [] dtlCntJ = new String[7];
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
@@ -175,13 +179,10 @@ public class DetallesContactoPage extends Guidewire {
     }
 
 
-
-    public void editarContactoPersona(String primerNombre, String primerApellido, String segundoNombre,
-                                      String segundoApellido, String fechaFallecimiento, String causaFallecimiento,
-                                      String profesion, String estadoCivil, String tipoFamilia, String telefonoPrimario,
-                                      String telefonoCelular, String telefonoResidencial, String telefonoTrabajo,
-                                      String correoElectronicoPrimario, String correoElectronicoSecundario){
-
+    public void editarContactoPersona(String primerNombre, String primerApellido, String segundoNombre,String segundoApellido,
+                                      String fechaFallecimiento, String causaFallecimiento, String profesion, String estadoCivil,
+                                      String tipoFamilia, String telefonoPrimario,String telefonoCelular, String telefonoResidencial,
+                                      String telefonoTrabajo,String correoElectronicoPrimario, String correoElectronicoSecundario){
         txtTelefonoCelular.clear();
         txtTelefonoCelular.sendKeys(telefonoCelular);
         txtSegundoNombre.clear();
@@ -203,9 +204,6 @@ public class DetallesContactoPage extends Guidewire {
         txtTelefonoResidencial.clear();
         txtTelefonoResidencial.sendKeys(telefonoResidencial);
 
-
-       // dtlContact[0]= primerNombre;
-       // dtlContact[1]= primerApellido;
         dtlContact[2]= segundoNombre;
         dtlContact[3]= segundoApellido;
         dtlContact[4]= fechaFallecimiento;
@@ -221,6 +219,39 @@ public class DetallesContactoPage extends Guidewire {
         dtlContact[14]= correoElectronicoSecundario;
 
     }
+
+    public void editarContactoJuridico(String razonSocial, String nombreComercial, String actividadComercial,
+                                       String numeroEmpleados,String valorActivos, String ventasAnuales, String telefonoOficina,
+                                       String correoElectronicoPrimario, String correoElectronicoSecundario){
+
+        txtNombreComercial.clear();
+        txtNombreComercial.sendKeys(nombreComercial);
+        inputList(cboActividadComercial, actividadComercial);
+        wait(500);
+        txtNumeroEmpleados.clear();
+        txtNumeroEmpleados.sendKeys(numeroEmpleados);
+        txtValorActivos.clear();
+        txtValorActivos.sendKeys(valorActivos);
+        txtVentasAnuales.clear();
+        txtVentasAnuales.sendKeys(ventasAnuales);
+        txtTelefonoOficina.clear();
+        txtTelefonoOficina.sendKeys(telefonoOficina);
+        wait(500);
+        txtCorreoElectronicoPrimarioEmpresa.clear();
+        txtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
+        txtCorreoElectronicoSecundarioEmpresa.clear();
+        txtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
+
+        dtlCntJ[0]= nombreComercial;
+        dtlCntJ[1]= actividadComercial;
+        dtlCntJ[2]= numeroEmpleados;
+        dtlCntJ[3]= valorActivos;
+        dtlCntJ[4]= ventasAnuales;
+        dtlCntJ[5]= telefonoOficina;
+        dtlCntJ[6]= correoElectronicoPrimario;
+        dtlCntJ[7]= correoElectronicoSecundario;
+    }
+
     public void actualizaContacto(){
         btnActualizar.click();
         wait(2000);
@@ -239,6 +270,19 @@ public class DetallesContactoPage extends Guidewire {
         assertThat("el correo primario esta erroneo",dtlContact[13].equals(txtCorreoElectronicoPrimario.getText()));
         assertThat("el correo secundario esta erroneo",dtlContact[14].equals(txtCorreoElectronicoSecundario.getText()));
     }
+
+
+    public void verificarActualizacionJuridico(){
+        assertThat("el nombre comercial esta erroneo",dtlContact[0].equals(txtNombreComercial.getText()));
+        assertThat("la actividad comercial esta erronea",dtlContact[1].equals(cboActividadComercial.getText()));
+        assertThat("el numero de empleados",dtlContact[2].equals(txtNumeroEmpleados.getText()));
+        assertThat("el valor activos estoa erroneo",dtlContact[3].equals(txtValorActivos.getText()));
+        assertThat("las ventas anuales esta erroneo",dtlContact[4].equals(txtVentasAnuales.getText()));
+        assertThat("el telefono  oficina esta erroneo",dtlContact[5].equals(txtTelefonoOficina.getText()));
+        assertThat("el correo primario esta erroneo",dtlContact[6].equals(txtCorreoElectronicoPrimarioEmpresa.getText()));
+        assertThat("el correo secundario esta erroneo",dtlContact[7].equals(txtCorreoElectronicoSecundarioEmpresa.getText()));
+    }
+
 
     public  void verificarCamposPersonaNatural(){
 

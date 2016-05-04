@@ -62,11 +62,7 @@ public class BusquedaContactoPage extends Guidewire {
     public void buscarContactoEmpresa(String nombreEmpresa){
         tipoContact.type("Empresa");
         tipoContact.sendKeys(Keys.ENTER);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        wait(1000);
         txtNombreEmpresa.type(nombreEmpresa);
         botonBuscar.click();
         selectContact.click();
