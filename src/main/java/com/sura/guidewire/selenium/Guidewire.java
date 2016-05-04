@@ -105,12 +105,9 @@ public class Guidewire extends PageObject {
     public Actions deployMenu(WebElementFacade menu) {
         Actions act = new Actions(getDriver());
         menu.waitUntilClickable().click();
+        threadWait(1000);
         menu.waitUntilClickable().click();
-        try {
-            TimeUnit.MILLISECONDS.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        threadWait(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
     }
@@ -120,6 +117,13 @@ public class Guidewire extends PageObject {
         int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
         int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
         return primero + "-" + segundo + "-" + tercero;
+    }
+
+    public void inputList(WebElementFacade element, String option){
+        element.click();
+        threadWait(300);
+        element.sendKeys(option);
+        element.sendKeys(Keys.ENTER);
     }
 
     public void threadWait(int milisegundos) {
