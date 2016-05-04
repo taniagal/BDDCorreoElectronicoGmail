@@ -74,9 +74,9 @@ public class BusquedaActividadesPage extends SeusLoginPage {
     @FindBy(xpath="//td[12]/div")
     WebElementFacade grdEstado;
 
+
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
     WebElementFacade msgFiltrosRequeridos;
-
 
     public BusquedaActividadesPage(WebDriver driver) {super(driver);}
 
@@ -148,5 +148,20 @@ public class BusquedaActividadesPage extends SeusLoginPage {
 
     public void validarMensjeFiltroRequerido(String mensaje) {
         assertThat(this.msgFiltrosRequeridos.getText(), containsString(mensaje));
+    }
+
+    public void buscarPorFiltroReqYOpcional(String usuario, String prioridad) {
+        txtAsignadoA.sendKeys(usuario);
+        txtPrioridad.clear();
+        txtPrioridad.sendKeys(prioridad);
+        txtPrioridad.sendKeys(Keys.ENTER);
+        btnBuscar.click();
+    }
+
+    public void buscarPorFiltroOpcional(String estadoActividad) {
+        txtEstadoActividad.clear();
+        txtEstadoActividad.sendKeys(estadoActividad);
+        txtEstadoActividad.sendKeys(Keys.ENTER);
+        btnBuscar.click();
     }
 }
