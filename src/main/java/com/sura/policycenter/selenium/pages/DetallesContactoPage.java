@@ -167,7 +167,7 @@ public class DetallesContactoPage extends Guidewire {
 
 
     private  String [] dtlContact = new String[15];
-    private String [] dtlCntJ = new String[7];
+    private String [] dtlCntJ = new String[8];
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
@@ -224,6 +224,8 @@ public class DetallesContactoPage extends Guidewire {
                                        String numeroEmpleados,String valorActivos, String ventasAnuales, String telefonoOficina,
                                        String correoElectronicoPrimario, String correoElectronicoSecundario){
 
+        txtCorreoElectronicoPrimarioEmpresa.clear();
+        txtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
         txtNombreComercial.clear();
         txtNombreComercial.sendKeys(nombreComercial);
         inputList(cboActividadComercial, actividadComercial);
@@ -237,8 +239,6 @@ public class DetallesContactoPage extends Guidewire {
         txtTelefonoOficina.clear();
         txtTelefonoOficina.sendKeys(telefonoOficina);
         wait(500);
-        txtCorreoElectronicoPrimarioEmpresa.clear();
-        txtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
         txtCorreoElectronicoSecundarioEmpresa.clear();
         txtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
 
@@ -273,14 +273,14 @@ public class DetallesContactoPage extends Guidewire {
 
 
     public void verificarActualizacionJuridico(){
-        assertThat("el nombre comercial esta erroneo",dtlContact[0].equals(txtNombreComercial.getText()));
-        assertThat("la actividad comercial esta erronea",dtlContact[1].equals(cboActividadComercial.getText()));
-        assertThat("el numero de empleados",dtlContact[2].equals(txtNumeroEmpleados.getText()));
-        assertThat("el valor activos estoa erroneo",dtlContact[3].equals(txtValorActivos.getText()));
-        assertThat("las ventas anuales esta erroneo",dtlContact[4].equals(txtVentasAnuales.getText()));
-        assertThat("el telefono  oficina esta erroneo",dtlContact[5].equals(txtTelefonoOficina.getText()));
-        assertThat("el correo primario esta erroneo",dtlContact[6].equals(txtCorreoElectronicoPrimarioEmpresa.getText()));
-        assertThat("el correo secundario esta erroneo",dtlContact[7].equals(txtCorreoElectronicoSecundarioEmpresa.getText()));
+        assertThat("el nombre comercial esta erroneo",dtlCntJ[0].equals(txtNombreComercial.getText()));
+        assertThat("la actividad comercial esta erronea",dtlCntJ[1].equals(cboActividadComercial.getText()));
+        assertThat("el numero de empleados",dtlCntJ[2].equals(txtNumeroEmpleados.getText()));
+        assertThat("el valor activos estoa erroneo",dtlCntJ[3].equals(txtValorActivos.getText()));
+        assertThat("las ventas anuales esta erroneo",dtlCntJ[4].equals(txtVentasAnuales.getText()));
+        assertThat("el telefono  oficina esta erroneo",dtlCntJ[5].equals(txtTelefonoTrabajo2.getText()));
+        assertThat("el correo primario esta erroneo",dtlCntJ[6].equals(txtCorreoElectronicoPrimarioEmpresa.getText()));
+        assertThat("el correo secundario esta erroneo",dtlCntJ[7].equals(txtCorreoElectronicoSecundarioEmpresa.getText()));
     }
 
 

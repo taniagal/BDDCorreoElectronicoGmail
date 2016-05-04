@@ -67,6 +67,11 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
+    public void verificarActualizacionPersonaJuridica(){
+        dc.verificarActualizacionJuridico();
+    }
+
+    @Step
     public void editarContacto(String razonSocial, String nombreComercial, String actividadComercial, String numeroEmpleados,
                                String valorActivos, String ventasAnuales, String telefonoOficina,
                                String correoElectronicoPrimario, String correoElectronicoSecundario) {

@@ -26,7 +26,6 @@ public class DetallesContactoEdicionDefinitions {
 
     @Given("Se ha consultado la informacion detallada de un contacto tipo persona natural con nombre <primer_nombre> y apellido <primer_apellido>\n" +
             "y con el usuario <user>, con contrasenia <pass> y pais <country>")
-    @Pending
     public void login(@Named("user") String usuario, @Named("pass") String contrasenia, @Named("country")String pais,
                       @Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido){
         seusLogin.login();
@@ -40,7 +39,6 @@ public class DetallesContactoEdicionDefinitions {
             "estado civil <estado_civil>, tipo familia <tipo_familia>, telefono primario <telefono_primario>, \n" +
             "telefono celular <telefono_celular>,telefono residencial <telefono_residencial>, telefono trabajo <telefono_trabajo>,\n" +
             "correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>")
-    @Pending
     public void editarLaInformacionContacto(@Named("primer_nombre")String primerNombre,@Named("segundo_nombre")String segundoNombre,
                                             @Named("primer_apellido")String primerApellido,@Named("segundo_apellido")String segundoApellido,
                                             @Named("fecha_fallecimiento")String fechaFallecimiento,@Named("causa_fallecimiento")String causaFallecimiento,
@@ -56,7 +54,6 @@ public class DetallesContactoEdicionDefinitions {
     }
 
     @Then("se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios")
-    @Pending
     public void ralizarEdicionInformacionContacto() {
         dcs.actualizarContacto();
         dcs.verificarActualizacionPersona();
@@ -67,7 +64,7 @@ public class DetallesContactoEdicionDefinitions {
     @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica con nombre <razon_social> con el usuario <user>, con contrasenia <pass> y pais <country>")
     public void login(@Named("user") String usuario, @Named("pass") String contrasenia, @Named("country")String pais,
                       @Named("razon_social")String razonSocial){
-        seusLogin.login();
+        //seusLogin.login();
         dcs.abrirDetallesContactoEmpresa(razonSocial);
     }
 
@@ -86,10 +83,10 @@ public class DetallesContactoEdicionDefinitions {
                 telefonoOficina, correoElectronicoPrimario, correoElectronicoSecundario);
     }
 
-@Then("se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios")
+    @Then("se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios de persona juridica")
     public void ralizarEdicionInformacionContactoJuridico() {
         dcs.actualizarContacto();
-        dcs.verificarActualizacionPersona();
+        dcs.verificarActualizacionPersonaJuridica();
     }
 
 

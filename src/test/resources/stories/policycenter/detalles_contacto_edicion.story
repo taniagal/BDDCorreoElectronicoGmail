@@ -36,7 +36,7 @@ When quiera editar la informacion del contacto con razon social <razon_social>, 
 actividad comercial <actividad_comercial>, numero de empleados <numero_empleados>, valor activos <valor_activos>,
  ventas anuales <ventas_anuales>, telefono oficina <telefono_oficina>, correo electronico primario <correo_electronico_primario>,
   correo electronico secundario <correo_electronico_secundario>
-Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios
+Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios de persona juridica
 
 Examples:
 |country |user    |pass     |razon_social   |nombre_comercial  |actividad_comercial                    |numero_empleados  |valor_activos  |ventas_anuales |telefono_oficina  |correo_electronico_primario  |correo_electronico_secundario|
