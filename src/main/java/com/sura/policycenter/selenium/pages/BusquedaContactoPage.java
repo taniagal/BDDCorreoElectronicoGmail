@@ -1,13 +1,17 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Pending;
 import org.jruby.common.IRubyWarnings;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -24,10 +28,10 @@ public class BusquedaContactoPage extends Guidewire {
     WebElementFacade tipoContact;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    WebElementFacade txtprimerNombre;
+    WebElementFacade txtNombre;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    WebElementFacade txtprimerApellido;
+    WebElementFacade txtApellido;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     WebElementFacade botonBuscar;
@@ -35,30 +39,25 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath="//tr[3]/td/table/tbody/tr/td[2]/input\n")
     WebElementFacade txtRazonSocial;
 
-    @FindBy(xpath="//div[@id='ContactSearch:ContactSearchScreen:_msgs']/div")
+    //@FindBy(xpath="//div[@id='ContactSearch:ContactSearchScreen:_msgs']/div")
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:_msgs']/div")
     WebElementFacade msjValidacionCampos;
 
-    //@FindBy(xpath="//div[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:_RecordCount']")
-    @FindBy(id="id=ContactSearch:ContactSearchScreen:ContactSearchResultsLV:_RecordCount")
+    //@FindBy(id="id=ContactSearch:ContactSearchScreen:ContactSearchResultsLV:_RecordCount")
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:_RecordCount']")
     WebElementFacade msjSinRegistros;
 
     @FindBy(xpath="//li[2]")
     WebElementFacade itmNIT;
 
-    //@FindBy(xpath="//td[@id='ContactSearch:ContactSearchScreen:ContactType-inputCell']/input")
     @FindBy(xpath="//input[@id='ContactSearch:ContactSearchScreen:DocumentType-inputEl']")
     WebElementFacade txtTipoDoc;
 
-    @FindBy(xpath="//td[@id='ContactSearch:ContactSearchScreen:identificationNumber-bodyEl']/input")
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:identificationNumber-inputEl']")
     WebElementFacade txtNumDoc;
 
-    @FindBy(xpath="//td[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:MiddleName-bodyEl']/input")
-    WebElementFacade txtSegNombre;
-
-    @FindBy(xpath="//td[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:Particle-bodyEl']/input")
-    WebElementFacade txtSegApellido;
-
-    @FindBy(xpath="//td[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:CommercialName-bodyEl']/input")
+    //@FindBy(xpath="//td[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:CommercialName-bodyEl']/input")
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
     WebElementFacade txtNombreComercial;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
@@ -69,6 +68,21 @@ public class BusquedaContactoPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:Name']")
     WebElementFacade selectContact;
+
+    @FindBy(xpath="//div[3]/div/table/tbody/tr/td[2]/div")
+    WebElementFacade colTipoId;
+
+    @FindBy(xpath="//td[3]/div")
+    WebElementFacade colNumId;
+
+    @FindBy(xpath="//td[4]/div")
+    WebElementFacade colNombreCcial;
+
+    @FindBy(xpath="//td[5]/div")
+    WebElementFacade colRazonSocial;
+
+    @FindBy(xpath="//td[6]/div")
+    WebElementFacade colDireccion;
 
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
@@ -99,8 +113,8 @@ public class BusquedaContactoPage extends Guidewire {
     public void buscarContactoPersona(String primerNombre, String primerApellido){
         tipoContact.type("Personal");
         tipoContact.sendKeys(Keys.ENTER);
-        txtprimerNombre.type(primerNombre);
-        txtprimerApellido.type(primerApellido);
+        txtNombre.type(primerNombre);
+        txtApellido.type(primerApellido);
         botonBuscar.click();
         selectContact.click();
     }
@@ -113,6 +127,7 @@ public class BusquedaContactoPage extends Guidewire {
     public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial){
 
         txtTipoDoc.type(tipoDoc);
+        txtTipoDoc.sendKeys(Keys.ENTER);
         txtRazonSocial.type(razonSocial);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
@@ -210,19 +225,17 @@ public class BusquedaContactoPage extends Guidewire {
         }
     }
 
-    //TODO: Falta mapear elementos de la tabla de resultados
-    @Pending
     public void verInfoPersonaJuridica() {
         try {
 
-            /*assertThat(colTipoId.getText().toString(), is(not(equalTo(null))));
+            assertThat(colTipoId.getText().toString(), is(not(equalTo(null))));
             assertThat(colNumId.getText().toString(), is(not(equalTo(null))));
             assertThat(colNombreCcial.getText().toString(), is(not(equalTo(null))));
             assertThat(colRazonSocial.getText().toString(), is(not(equalTo(null))));
             assertThat(colDireccion.getText().toString(), is(not(equalTo(null))));
-            assertThat(colTelefono.getText().toString(), is(not(equalTo(null))));
-            assertThat(colEmail.getText().toString(), is(not(equalTo(null))));
-            assertThat(colExternal.getText().toString(), is(not(equalTo(null))));*/
+            //assertThat(colTelefono.getText().toString(), is(not(equalTo(null))));
+            //assertThat(colEmail.getText().toString(), is(not(equalTo(null))));
+            //assertThat(colExternal.getText().toString(), is(not(equalTo(null))));*/
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -250,25 +263,22 @@ public class BusquedaContactoPage extends Guidewire {
     public void consultarContactoTipoNumDoc(String tipoDoc, String numDoc) {
 
         txtTipoDoc.type(tipoDoc);
+        txtTipoDoc.sendKeys(Keys.ENTER);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         txtNumDoc.type(numDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
     }
 
-    public void consultarContactoPorNombresYApellidos(String tipoDoc, String primerNombre, String segundoNombre,
-                                                      String primerApellido, String segundoApellido) {
+    public void consultarContactoPorNombresYApellidos(String tipoDoc, String nombre, String apellido) {
         txtTipoDoc.type(tipoDoc);
-        txtprimerNombre.type(primerNombre);
-        txtSegNombre.type(segundoNombre);
-        txtprimerApellido.type(primerApellido);
-        txtSegApellido.type(segundoApellido);
+        txtTipoDoc.sendKeys(Keys.ENTER);
+        txtNombre.type(nombre);
+        txtApellido.type(apellido);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
 
@@ -282,6 +292,7 @@ public class BusquedaContactoPage extends Guidewire {
 
     public void consultarContactoNombreComercial(String tipoDoc, String nombreComercial){
         txtTipoDoc.type(tipoDoc);
+        txtTipoDoc.sendKeys(Keys.ENTER);
         txtNombreComercial.type(nombreComercial);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();

@@ -78,9 +78,8 @@ public class BusquedaContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void consultarContactoPorNombresYApellidos(String tipoDoc, String primerNombre, String segundoNombre,
-                                                      String primerApellido, String segundoApellido) {
-        busquedaContactoPage.consultarContactoPorNombresYApellidos(tipoDoc, primerNombre, segundoNombre, primerApellido, segundoApellido);
+    public void consultarContactoPorNombresYApellidos(String tipoDoc, String nombre, String apellido) {
+        busquedaContactoPage.consultarContactoPorNombresYApellidos(tipoDoc, nombre, apellido);
     }
 
     @Step
