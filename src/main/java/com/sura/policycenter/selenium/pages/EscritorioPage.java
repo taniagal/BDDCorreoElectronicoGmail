@@ -7,6 +7,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
@@ -81,7 +83,7 @@ public class EscritorioPage extends Guidewire {
      * Objetos menu Acciones Cuenta
      */
 
-    @FindBy(xpath = ".//*[@id='TabBar:AccountTab-btnWrap']")
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions-btnInnerEl']")
     WebElementFacade mnuAccionesCuenta;
 
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewNote-itemEl']")
@@ -641,8 +643,10 @@ public class EscritorioPage extends Guidewire {
                 break;
             case "CUENTA":
                 mnuCuenta.click();
+                gw.threadWait(2000);
                 mnuCuenta.click();
                 act.sendKeys(Keys.ARROW_DOWN).build().perform();
+                gw.threadWait(2000);
                 switch (item1.toUpperCase()) {
                     case "NUEVA CUENTA":
                         act.moveToElement(mnuItemNuevaCuenta).click().build().perform();
@@ -857,6 +861,7 @@ public class EscritorioPage extends Guidewire {
                 break;
             case "ACCIONES CUENTA":
                 mnuCuenta.click();
+                gw.threadWait(2000);
                 mnuAccionesCuenta.click();
                 mnuAccionesCuenta.click();
                 act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -917,7 +922,7 @@ public class EscritorioPage extends Guidewire {
                                 act.moveToElement(mnuAccionRecordatorio.waitUntilClickable()).build().perform();
                                 act.sendKeys(Keys.ARROW_RIGHT).build().perform();
                                 switch (item3.toUpperCase()) {
-                                    case "CANCELAR UNA POLIZA DIVIDAD":
+                                    case "CANCELAR UNA POLIZA DIVIDIDA":
                                         act.moveToElement(mnuAccionCancelPolizaDividida.waitUntilClickable()).click().build().perform();
                                         break;
                                     case "COTIZACION REQUERIDA":
@@ -1091,7 +1096,7 @@ public class EscritorioPage extends Guidewire {
                                 act.moveToElement(mnuAccionRecordatorioP.waitUntilClickable()).build().perform();
                                 act.sendKeys(Keys.ARROW_RIGHT).build().perform();
                                 switch (item3.toUpperCase()) {
-                                    case "CANCELAR UNA POLIZA DIVIDAD":
+                                    case "CANCELAR UNA POLIZA DIVIDIDA":
                                         act.moveToElement(mnuAccionCancelPolizaDivididaP.waitUntilClickable()).click().build().perform();
                                         break;
                                     case "COTIZACION REQUERIDA":
@@ -1230,7 +1235,7 @@ public class EscritorioPage extends Guidewire {
                         break;
                 }
                 break;
-            case "ADMINISTRACION":
+            case "ACCIONES ADMINISTRACION":
                 mnuAdministracion.click();
                 mnuAccionesAdministracion.click();
                 mnuAccionesAdministracion.click();
