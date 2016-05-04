@@ -8,9 +8,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
 
-import java.lang.Math;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -142,14 +143,19 @@ public class Guidewire extends PageObject {
 
     public void elegirLenguaje(){
         configuracion.click();
-        threadWait(500);
+        wait(configuracion,6);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        threadWait(500);
+        wait(configuracion,6);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        threadWait(500);
+        wait(configuracion,6);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        threadWait(500);
+        wait(configuracion,6);
         espaniol.click();
+    }
+
+    protected void wait(final WebElementFacade element, final int timeoutInSeconds) {
+        final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
 
