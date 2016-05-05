@@ -5,6 +5,7 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -26,6 +27,9 @@ public class BusquedaContactoPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     WebElementFacade nombreContact;
+
+    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    WebElementFacade txtNombreEmpresa;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade apellidoContact;
@@ -98,5 +102,23 @@ public class BusquedaContactoPage extends Guidewire {
         if (selectedContact1 != null){
             selectedContact1.click();
         }
+    }
+
+    public void buscarContactoEmpresa(String nombreEmpresa){
+        tipoContact.type("Empresa");
+        tipoContact.sendKeys(Keys.ENTER);
+        threadWait(1000);
+        txtNombreEmpresa.type(nombreEmpresa);
+        botonBuscar.click();
+        selectContact.click();
+    }
+
+    public void buscarContactoPersona(String nombre, String apellido){
+        tipoContact.type("Personal");
+        tipoContact.sendKeys(Keys.ENTER);
+        nombreContact.type(nombre);
+        apellidoContact.type(apellido);
+        botonBuscar.click();
+        selectContact.click();
     }
 }

@@ -226,4 +226,7 @@ public class NuevoContactoPage extends Guidewire {
     }
 
 
+    public void btnActualizarPersonaNatural() {
+        actualizar.click();
+    }
 }
