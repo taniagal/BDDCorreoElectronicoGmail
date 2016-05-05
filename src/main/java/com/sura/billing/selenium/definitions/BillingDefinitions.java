@@ -32,11 +32,17 @@ public class BillingDefinitions {
 
     @Then("el usuario deberia poder acceder a la administracion de <message2>")
     public void admDiasFestivos(@Named("message2") String msjResult2) {
-        bcs.admDiasFestivos();
+        bcs.navegarItemDiasFestivos();
         bcs.assertionFestivo(msjResult2);
     }
 
-    @Then("el usuario deberia cerrar sesion")
+    @Then("deberia ingresar al sistema y ver el mensaje <message> y navegar por todos los menu")
+    public void navegarTabBar(@Named("message")String msjResult) {
+        bcs.assertion(msjResult);
+        bcs.navegarTabBar();
+    }
+
+    @Then("el usuario de billing deberia cerrar sesion")
     public void logout() {
         bcs.logout();
     }

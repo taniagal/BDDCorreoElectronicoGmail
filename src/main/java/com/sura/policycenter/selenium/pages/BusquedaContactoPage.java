@@ -2,19 +2,19 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Pending;
-import org.jruby.common.IRubyWarnings;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.isIn;
 
 public class BusquedaContactoPage extends Guidewire {
 
@@ -33,17 +33,18 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade txtApellido;
 
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    WebElementFacade nombreEmpresaContact;
+
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     WebElementFacade botonBuscar;
 
     @FindBy(xpath="//tr[3]/td/table/tbody/tr/td[2]/input\n")
     WebElementFacade txtRazonSocial;
 
-    //@FindBy(xpath="//div[@id='ContactSearch:ContactSearchScreen:_msgs']/div")
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:_msgs']/div")
     WebElementFacade msjValidacionCampos;
 
-    //@FindBy(id="id=ContactSearch:ContactSearchScreen:ContactSearchResultsLV:_RecordCount")
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:_RecordCount']")
     WebElementFacade msjSinRegistros;
 
@@ -56,7 +57,6 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:identificationNumber-inputEl']")
     WebElementFacade txtNumDoc;
 
-    //@FindBy(xpath="//td[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:CommercialName-bodyEl']/input")
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
     WebElementFacade txtNombreComercial;
 
@@ -84,6 +84,9 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath="//td[6]/div")
     WebElementFacade colDireccion;
 
+    @FindBy(xpath="//div[3]/div/table")
+    WebElementFacade table;
+
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
     }
@@ -96,17 +99,35 @@ public class BusquedaContactoPage extends Guidewire {
             contactMenu.click();
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
             act.moveToElement(buscarContact).click().build().perform();
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void buscarContactoPersonaSinVerDetalle(String tipoDoc, String nombre, String apellido){
+    public void buscarContactoPersonaSinVerDetalle(String tipoDoc, String nombre, String apellido) {
         tipoContact.type("Personal");
         tipoContact.sendKeys(Keys.ENTER);
         txtTipoDoc.type(tipoDoc);
         nombreContact.type(nombre);
         apellidoContact.type(apellido);
+    }
+
+    public void buscarContacto(String tipoContacto, String nombre, String apellido){
+        tipoContact.type(tipoContacto);
+        tipoContact.sendKeys(Keys.ENTER);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (tipoContacto.equals("Personal")){
+            nombreContact.type(nombre);
+            apellidoContact.type(apellido);
+        }else{
+            nombreEmpresaContact.type(nombre);
+        }
+
         botonBuscar.click();
     }
 
@@ -290,7 +311,7 @@ public class BusquedaContactoPage extends Guidewire {
         }
     }
 
-    public void consultarContactoNombreComercial(String tipoDoc, String nombreComercial){
+    public void consultarContactoNombreComercial(String tipoDoc, String nombreComercial) {
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
         txtNombreComercial.type(nombreComercial);
@@ -302,6 +323,42 @@ public class BusquedaContactoPage extends Guidewire {
         } catch (InterruptedException e) {
 
             throw new RuntimeException(e);
+        }
+    }
+
+    public void buscarContacto(String tipoContacto, String nombre, String apellido, String numero){
+        tipoContact.type(tipoContacto);
+        tipoContact.sendKeys(Keys.ENTER);
+        int parada = Integer.parseInt(numero);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (tipoContacto.equals("Personal")){
+            nombreContact.type(nombre);
+            apellidoContact.type(apellido);
+        }else{
+            nombreEmpresaContact.type(nombre);
+        }
+        botonBuscar.click();
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        List<WebElement> allRows = table.findElements(By.tagName("tr"));
+        WebElement selectedContact1 = null;
+
+        for (int i = 0; i < parada && i < allRows.size(); i++) {
+            WebElement row = allRows.get(i);
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            selectedContact1 = cells.get(1);
+        }
+        if (selectedContact1 != null){
+            selectedContact1.click();
         }
     }
 }

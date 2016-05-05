@@ -106,15 +106,15 @@ public class CuentaPage extends Guidewire{
     }
 
 
-    public void crearCuentaNuevaPersona(String tipoDocumento, String documento, String fechaNacimiento, String primerNombre, String primerApellido, String tipoDireccion, String direccion, String ciudad, String estado, String codigoPostal, String nombreOrganizacion){
+    public void crearCuentaNuevaPersona(String tipoDocumento, String documento, String fechaNacimiento,
+                                        String primerNombre, String primerApellido, String tipoDireccion,
+                                        String direccion, String codigoPostal, String nombreOrganizacion){
         btnCrearCuentaNueva.click();
         btnNuevaCuentaPersonal.click();
         btnAgregarOrganizacion.click();
         txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         btnBuscarOrganizacion.click();
         btnSeleccionarOrganizacion.click();
-        //cboTipoDocumentoNuevaCuenta.click();
-       // dormilon();
         cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
         cboTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
         txtDocumentoNuevaCuenta.sendKeys(documento);
@@ -122,46 +122,27 @@ public class CuentaPage extends Guidewire{
         txtNombreNuevaCuentaPersonal.sendKeys(primerNombre);
         txtApellidoNuevaCuentaPersonal.sendKeys(primerApellido);
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        txtCiudadNuevaCuentaPersonal.sendKeys(ciudad);
-        cboEstadoNuevaCuentaPersonal.click();
-        dormilon();
-        cboEstadoNuevaCuentaPersonal.sendKeys(estado);
-        cboTipoDireccionNuevaCuentaPersonal.click();
-        dormilon();
-        cboTipoDireccionNuevaCuentaPersonal.sendKeys(tipoDireccion);
-        cboTipoDireccionNuevaCuentaPersonal.sendKeys(Keys.ENTER);
+        inputList(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
-        dormilon();
         btnActualizar.click();
     }
 
     public void crearCuentaNuevaPersonaJuridica(String tipoDocumento, String documento, String nombreEmpresa,
-                                                String tipoDireccion, String direccion, String ciudad, String estado,
-                                                String codigoPostal, String nombreOrganizacion) {
-        btnCrearCuentaNueva.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+                                                String tipoDireccion, String direccion, String codigoPostal, String nombreOrganizacion) {
+        btnCrearCuentaNueva.click();
         btnNuevaCuentaCompania.click();
         btnAgregarOrganizacion.click();
         txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         btnBuscarOrganizacion.click();
         btnSeleccionarOrganizacion.click();
-        //cboTipoDocumentoNuevaCuenta.click();
-        //dormilon();
         cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
         cboTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
         txtDocumentoNuevaCuenta.sendKeys(documento);
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        txtCiudadNuevaCuentaPersonal.sendKeys(ciudad);
         txtNombreNuevaPersonaJuridica.clear();
         txtNombreNuevaPersonaJuridica.sendKeys(nombreEmpresa);
-        cboEstadoNuevaCuentaPersonal.click();
-        dormilon();
-        cboEstadoNuevaCuentaPersonal.sendKeys(estado);
-        cboTipoDireccionNuevaCuentaPersonal.click();
-        dormilon();
-        cboTipoDireccionNuevaCuentaPersonal.sendKeys(tipoDireccion);
-        cboTipoDireccionNuevaCuentaPersonal.sendKeys(Keys.ENTER);
+        inputList(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
-        dormilon();
         btnActualizar.click();
     }
 
@@ -175,22 +156,22 @@ public class CuentaPage extends Guidewire{
     public void assertCrearCuenta(String nombreCuenta){
         dormilon();
         //assertThat(lblNombreDeCuenta,containsText(nombreCuenta));
-        assertThat("Error 1", lblNombreDeCuenta.containsText(nombreCuenta));
+        assertThat("Falló la creación de la cuenta", lblNombreDeCuenta.containsText(nombreCuenta));
         System.out.printf(nombreCuenta+"<----->"+lblNombreDeCuenta.containsText(nombreCuenta));
     }
 
     public void assertPolicyCenterLogin(){
-        assertThat("Error 2", mnuCuenta.isPresent());
+        assertThat("Falló verificar el logueo", mnuCuenta.isPresent());
     }
 
     public  void  assertVerificarMenor(String mensaje){
         dormilon();
-        assertThat("Error 3", divMensaje.containsText(mensaje));
+        assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
     }
 
     public  void  assertVerificarMensaje(String mensaje){
         dormilon();
-        assertThat("Error 3", divMensaje.containsText(mensaje));
+        assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
     private void dormilon() {
