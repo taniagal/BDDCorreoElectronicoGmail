@@ -114,10 +114,17 @@ public class Guidewire extends PageObject {
     }
 
     public String cedulaRandom() {
+        StringBuilder result=new StringBuilder("");
+
         int primero = (int) Math.floor(Math.random() * (100 - 999) + 999);
         int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
         int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
-        return primero + "-" + segundo + "-" + tercero;
+
+        result.append(primero);
+        result.append(segundo);
+        result.append(tercero);
+
+        return result.toString();
     }
 
     public void selectItem(WebElementFacade element, String option){

@@ -144,17 +144,13 @@ public class CuentaPage extends Guidewire{
     }
 
     public void buscarPersona(String nombre){
-        dormilon();
+        wait(txtNombreCompania,2000);
         txtNombreCompania.sendKeys(nombre);
         btnBuscar.click();
-        dormilon();dormilon();
     }
 
     public void assertCrearCuenta(String nombreCuenta){
-        dormilon();
-        //assertThat(lblNombreDeCuenta,containsText(nombreCuenta));
         assertThat("Falló la creación de la cuenta", lblNombreDeCuenta.containsText(nombreCuenta));
-        System.out.printf(nombreCuenta+"<----->"+lblNombreDeCuenta.containsText(nombreCuenta));
     }
 
     public void assertPolicyCenterLogin(){
@@ -162,20 +158,11 @@ public class CuentaPage extends Guidewire{
     }
 
     public  void  assertVerificarMenor(String mensaje){
-        dormilon();
         assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
     }
 
     public  void  assertVerificarMensaje(String mensaje){
-        dormilon();
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
-    private void dormilon() {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
