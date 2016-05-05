@@ -153,13 +153,11 @@ public class Guidewire extends PageObject {
         espaniol.click();
     }
 
-<<<<<<< HEAD
+
     protected void wait(final WebElementFacade element, final int timeoutInSeconds) {
         final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
 
-=======
->>>>>>> feature/Contat_Details
 }
