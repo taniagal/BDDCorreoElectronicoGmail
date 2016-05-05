@@ -74,6 +74,11 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
         nuevoContactoPage.actualizarPersonaNatural();
     }
 
+    @Step
+    public void btnCrearPersona(){
+        nuevoContactoPage.btnActualizarPersonaNatural();
+    }
+
     //////CREAR CONTACTO PERSONA JURIDICA
 
     @Step
@@ -94,7 +99,6 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     public void verificarContactoExistente(){
         nuevoContactoPage.verificarContactoExistente();
     }
-
 
 
     @Step

@@ -7,6 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
+
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -119,8 +122,21 @@ public class CuentaPage extends Guidewire{
         txtNombreNuevaCuentaPersonal.sendKeys(primerNombre);
         txtApellidoNuevaCuentaPersonal.sendKeys(primerApellido);
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
+<<<<<<< HEAD
+        txtCiudadNuevaCuentaPersonal.sendKeys(ciudad);
+        cboEstadoNuevaCuentaPersonal.click();
+        waitThread();
+        cboEstadoNuevaCuentaPersonal.sendKeys(estado);
+        cboTipoDireccionNuevaCuentaPersonal.click();
+        waitThread();
+        cboTipoDireccionNuevaCuentaPersonal.sendKeys(tipoDireccion);
+        cboTipoDireccionNuevaCuentaPersonal.sendKeys(Keys.ENTER);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
+        waitThread();
+=======
+        inputList(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
+        txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
+>>>>>>> develop
         btnActualizar.click();
     }
 
@@ -138,20 +154,32 @@ public class CuentaPage extends Guidewire{
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         txtNombreNuevaPersonaJuridica.clear();
         txtNombreNuevaPersonaJuridica.sendKeys(nombreEmpresa);
-        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
+<<<<<<< HEAD
+        cboEstadoNuevaCuentaPersonal.click();
+        waitThread();
+        cboEstadoNuevaCuentaPersonal.sendKeys(estado);
+        cboTipoDireccionNuevaCuentaPersonal.click();
+        waitThread();
+        cboTipoDireccionNuevaCuentaPersonal.sendKeys(tipoDireccion);
+        cboTipoDireccionNuevaCuentaPersonal.sendKeys(Keys.ENTER);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
+        waitThread();
+=======
+        inputList(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
+        txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
+>>>>>>> develop
         btnActualizar.click();
     }
 
     public void buscarPersona(String nombre){
-        dormilon();
+        waitThread();
         txtNombreCompania.sendKeys(nombre);
         btnBuscar.click();
-        dormilon();dormilon();
+        waitThread();waitThread();
     }
 
     public void assertCrearCuenta(String nombreCuenta){
-        dormilon();
+        waitThread();
         //assertThat(lblNombreDeCuenta,containsText(nombreCuenta));
         assertThat("Falló la creación de la cuenta", lblNombreDeCuenta.containsText(nombreCuenta));
         System.out.printf(nombreCuenta+"<----->"+lblNombreDeCuenta.containsText(nombreCuenta));
@@ -162,6 +190,15 @@ public class CuentaPage extends Guidewire{
     }
 
     public  void  assertVerificarMenor(String mensaje){
+<<<<<<< HEAD
+        waitThread();
+        assertThat("Error 3", divMensaje.containsText(mensaje));
+    }
+
+    public  void  assertVerificarMensaje(String mensaje){
+        waitThread();
+        assertThat("Error 3", divMensaje.containsText(mensaje));
+=======
         dormilon();
         assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
     }
@@ -169,9 +206,10 @@ public class CuentaPage extends Guidewire{
     public  void  assertVerificarMensaje(String mensaje){
         dormilon();
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
+>>>>>>> develop
     }
 
-    private void dormilon() {
+    private void waitThread() {
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
