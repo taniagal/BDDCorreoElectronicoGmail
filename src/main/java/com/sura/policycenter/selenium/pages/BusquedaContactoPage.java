@@ -6,7 +6,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -45,20 +44,6 @@ public class BusquedaContactoPage extends Guidewire {
 
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
-    }
-
-    public void accionarBuscarContacto()  {
-        try{
-            Actions act = new Actions(getDriver());
-            contactMenu.click();
-            Thread.sleep(1000);
-            contactMenu.click();
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.moveToElement(buscarContact).click().build().perform();
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public void buscarContacto(String tipoContacto, String nombre, String apellido){
