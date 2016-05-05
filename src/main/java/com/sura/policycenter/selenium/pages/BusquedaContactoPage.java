@@ -9,7 +9,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
@@ -28,17 +27,11 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")
     WebElementFacade tipoContact;
 
-	@FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    WebElementFacade nombreContact;
-
 	@FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
     WebElementFacade txtNombreEmpresa;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     WebElementFacade txtNombre;
-
-	@FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    WebElementFacade apellidoContact;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade txtApellido;
@@ -94,6 +87,21 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath="//td[6]/div")
     WebElementFacade colDireccion;
 
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:FirstName']")
+    WebElementFacade colNombre;
+
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:FirstLastName']")
+    WebElementFacade colApellido;
+
+    @FindBy(xpath="//td[9]/div")
+    WebElementFacade colTelefono;
+
+    @FindBy(xpath="//td[10]/div")
+    WebElementFacade colEmail;
+
+    @FindBy(xpath="//td[11]/div")
+    WebElementFacade colExterna;
+
     @FindBy(xpath="//div[3]/div/table")
     WebElementFacade table;
 
@@ -141,15 +149,6 @@ public class BusquedaContactoPage extends Guidewire {
         botonBuscar.click();
     }
 
-    public void buscarContactoPersona(String primerNombre, String primerApellido){
-        tipoContact.type("Personal");
-        tipoContact.sendKeys(Keys.ENTER);
-        txtNombre.type(primerNombre);
-        txtApellido.type(primerApellido);
-        botonBuscar.click();
-        selectContact.click();
-    }
-
 	public void buscarContactoPersona(String nombre, String apellido){
         tipoContact.type("Personal");
         tipoContact.sendKeys(Keys.ENTER);
@@ -180,12 +179,6 @@ public class BusquedaContactoPage extends Guidewire {
         }
     }
 
-    //TODO
-    @Pending
-    public void verInformacionPersonaJuridica(){
-        //PENDING
-    }
-
     public void validarInformacionTipoId() {
 
         String msjSinReg = "No hay datos para mostrar";
@@ -214,10 +207,6 @@ public class BusquedaContactoPage extends Guidewire {
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
 
-        /*lstTipoDoc.waitUntilEnabled();
-        lstTipoDoc.click();
-        itmNinguno.waitUntilEnabled();
-        itmNinguno.click();*/
         txtTipoDoc.type(tipoDoc);
         txtNumDoc.type(numDoc);
         botonBuscar.waitUntilEnabled();
@@ -233,10 +222,6 @@ public class BusquedaContactoPage extends Guidewire {
 
     public void consultarContactoTipoDoc(String tipoDoc) {
 
-        /*lstTipoDoc.waitUntilEnabled();
-        lstTipoDoc.click();
-        itmNIT.waitUntilEnabled();
-        itmNIT.click();*/
         txtTipoDoc.type(tipoDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
@@ -281,20 +266,17 @@ public class BusquedaContactoPage extends Guidewire {
         }
     }
 
-    //TODO: Falta Mapear Elementos de la tabla de resultados
     public void verInfoPersonaNatural() {
         try {
 
-            /*assertThat(colTipoId.getText().toString(), is(not(equalTo(null))));
+            assertThat(colTipoId.getText().toString(), is(not(equalTo(null))));
             assertThat(colNumId.getText().toString(), is(not(equalTo(null))));
-            assertThat(colPrimerNom.getText().toString(), is(not(equalTo(null))));
-            assertThat(colSegundoNom.getText().toString(), is(not(equalTo(null))));
-            assertThat(colPrimerApel.getText().toString(), is(not(equalTo(null))));
-            assertThat(colSegundoApel.getText().toString(), is(not(equalTo(null))));
+            assertThat(colNombre.getText().toString(), is(not(equalTo(null))));
+            assertThat(colApellido.getText().toString(), is(not(equalTo(null))));
             assertThat(colDireccion.getText().toString(), is(not(equalTo(null))));
             assertThat(colTelefono.getText().toString(), is(not(equalTo(null))));
             assertThat(colEmail.getText().toString(), is(not(equalTo(null))));
-            assertThat(colExternal.getText().toString(), is(not(equalTo(null))));*/
+            assertThat(colExterna.getText().toString(), is(not(equalTo(null))));
         }catch (Exception e) {
             throw new RuntimeException(e);
         }

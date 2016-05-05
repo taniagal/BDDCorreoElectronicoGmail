@@ -33,11 +33,11 @@ public class BusquedaContactoDefinitions {
 
     @Given("estoy en busqueda de contactos")
     public void givenEstoyEnBusquedaContactos() {
-        buscarContactoSteps.accionarBuscarContacto();
+        buscarContactoSteps.navegarBarraSuperior();
     }
 
     @When("quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre> y apellido <apellido>")
-    public void whenConsultoPorPrimerNombreYPrimerApellido(@Named("tipoDoc") String tipoDoc,
+    public void whenConsultoPorNombreYApellido(@Named("tipoDoc") String tipoDoc,
                                                            @Named("nombre") String nombre,
                                                            @Named("apellido") String apellido) {
         buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, nombre, apellido);
@@ -60,7 +60,6 @@ public class BusquedaContactoDefinitions {
 
     @Then("debo ver un <mensaje> de alerta indicando que es necesario ingresar algun criterio de busqueda")
     public void thenValidarMensaje(@Named("mensaje") String mensaje){
-
         //buscarContactoSteps.validarMensaje(mensaje);
         seusLoginSteps.logout();
         seusLoginSteps.close();
@@ -108,47 +107,16 @@ public class BusquedaContactoDefinitions {
         buscarContactoSteps.consultarContactoTipoNumDoc(tipoDoc, numDoc);
     }
 
-    /*@When("quiera consultar contacto de tipo persona natural <tipoDoc> por segundo nombre <segNombre> y segundo apellido <segApellido>")
-    public void whenConsultarPersNatSegNombSegApel(@Named("tipoDoc") String tipoDoc,
-                                                   @Named("seg_nombre") String segNombre,
-                                                   @Named("seg_apellido") String segApellido) {
-        buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, "", segNombre, "", segApellido);
-    }
-
-    @When("quiera consultar contacto de tipo persona natural <tipoDoc> por segundo nombre <segundoNombre>")
-    public void whenConsultarContactoSegundoNombre(@Named("tipoDoc") String tipoDoc, @Named("segundoNombre") String segundoNombre) {
-        buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, "", segundoNombre, "", "");
-    }*/
-
     @When("quiera consultar contacto de tipo persona natural <tipoDoc> por apellido <apellido>")
     public void whenConsultarContactoPrimerApellido(@Named("tipoDoc") String tipoDoc, @Named("apellido") String apellido) {
         buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, "", apellido);
     }
-
-    /*@When("quiera consultar contacto de tipo persona natural <tipoDoc> por segundo apellido <segundoApellido>")
-    public void whenConsultarContactoSegundoApellido(@Named("tipoDoc") String tipoDoc, @Named("segundoApellido") String segundoApellido) {
-        buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, "", "", "", segundoApellido);
-    }*/
 
     @When("quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre>")
     public void whenConsultarContactoPorNombre(@Named("tipoDoc") String tipoDoc,
                                                @Named("nombre") String nombre) {
         buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, nombre, "");
     }
-
-    /*@When("quiera consultar contacto de tipo persona natural <tipoDoc> por primer nombre <primerNombre> y segundo apellido <segundoApellido>")
-    public void whenConsultarContactoPrimerNomSegApel(@Named("tipoDoc") String tipoDoc,
-                                                      @Named("primerNombre") String primerNombre,
-                                                      @Named("segundoApellido") String segundoApellido) {
-        buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, primerNombre, "", "", segundoApellido);
-    }
-
-    @When("quiera consultar contacto de tipo persona natural <tipoDoc> por segundo nombre <segundoNombre> y primer apellido <primerApellido>")
-    public void whenConsultarContactoSegNomPrimerApel(@Named("tipoDoc") String tipoDoc,
-                                                      @Named("segundoNombre") String segundoNombre,
-                                                      @Named("primerApelludo") String primerApellido){
-        buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, "", segundoNombre, primerApellido, "");
-    }*/
 
     @Then("debo ver un mensaje <mensaje> de alerta indicando que se debe ingresar al menos dos de los campos incluido un nombre")
     public void thenValidarMensajeNombre(@Named("mensaje") String mensaje) {
@@ -164,7 +132,7 @@ public class BusquedaContactoDefinitions {
 
     @Then("debo ver la informacion del contacto de tipo persona natural")
     public void thenVerInfoPersonaNatural() {
-        //buscarContactoSteps.verInfoPersonaNatural();
+        buscarContactoSteps.verInfoPersonaNatural();
         seusLoginSteps.logout();
         seusLoginSteps.close();
     }
