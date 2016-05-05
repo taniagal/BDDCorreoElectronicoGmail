@@ -14,6 +14,17 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         super(driver);
     }
 
+/*    @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
+    private WebElementFacade linkAccountFileAccountFileContacts;
+
+
+
+
+    public void consultarContactos(){
+        linkAccountFileAccountFileContacts.waitUntilClickable();
+        linkAccountFileAccountFileContacts.click();
+    }*/
+
 
 
 

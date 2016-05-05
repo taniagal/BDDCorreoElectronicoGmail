@@ -12,9 +12,8 @@ import net.thucydides.core.steps.ScenarioSteps;
  */
 public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
-    private final Guidewire gw = new Guidewire(getDriver());
     private final EscritorioPage escritorioPagePage = new EscritorioPage(getDriver());
-    private final ContactosAsociadosACuentasPage nuevoContactoPage = new ContactosAsociadosACuentasPage(getDriver());
+    private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
 
 
     public ContactosAsociadosACuentasSteps(Pages pages) {
@@ -24,9 +23,12 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     @Step
     public void consultarCuentaPorNum(String numCuenta) {
         escritorioPagePage.navegarTabBar("CUENTA","CONSULTAR",numCuenta);
-
     }
 
+    @Step
+    public void consultarContactos(){
+       // contactosAsociadosACuentasPage.consultarContactos();
+    }
 
 
 
