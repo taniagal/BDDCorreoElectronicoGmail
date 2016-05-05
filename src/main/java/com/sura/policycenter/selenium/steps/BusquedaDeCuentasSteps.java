@@ -24,6 +24,11 @@ public class BusquedaDeCuentasSteps extends ScenarioSteps{
     }
 
     @Step
+    public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
+        busquedaDeCuentasPage.buscarCuentaPorIdentificacion(tipoDocumento, numeroDocumento);
+    }
+
+    @Step
     public void mostrarInformacionDeLaCuenta(String numeroCuenta, String nombre, String direccion) {
         busquedaDeCuentasPage.mostrarInformacionDeLaCuenta(numeroCuenta, nombre, direccion);
     }

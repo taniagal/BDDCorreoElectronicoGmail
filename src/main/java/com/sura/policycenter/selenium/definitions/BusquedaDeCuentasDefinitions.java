@@ -23,6 +23,12 @@ public class BusquedaDeCuentasDefinitions {
         busquedDeCuentasSteps.buscarCuentaPorNombreYApellido(primerNombre, primerApellido);
     }
 
+    @When("ingrese la informacion de tipo de documento <tipoDocumento> y numero de documento <numeroDocumento> del titular de la cuenta")
+    public void buscarCuentaPorIdentificacion(@Named("tipoDocumento") String tipoDocumento,
+                                               @Named("numeroDocumento") String numeroDocumento) {
+        busquedDeCuentasSteps.buscarCuentaPorIdentificacion(tipoDocumento, numeroDocumento);
+    }
+
     @Then("me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>")
     public void mostrarInformacionDeLaCuenta(@Named("numeroCuenta") String numeroCuenta,
                                              @Named("nombre") String nombre,

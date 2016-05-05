@@ -66,6 +66,14 @@ public class BusquedaDeCuentasPage extends SeusLoginPage {
         btnBuscar.click();
     }
 
+    public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
+//        txtPrimerNombre.clear();
+//        txtPrimerApellido.clear();
+//        txtPrimerNombre.sendKeys(primerNombre);
+//        txtPrimerApellido.sendKeys(primerApellido);
+//        btnBuscar.click();
+    }
+
     public void mostrarInformacionDeLaCuenta(String numeroCuenta, String nombre, String direccion) {
         assertThat(this.grdNumeroCuenta.getText(), containsString(numeroCuenta));
         assertThat(this.grdNombre.getText(), containsString(nombre));
