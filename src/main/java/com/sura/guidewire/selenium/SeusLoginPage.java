@@ -3,19 +3,17 @@ package com.sura.guidewire.selenium;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;
-import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
-public class SeusLoginPage extends PageObject {
+public class SeusLoginPage extends Guidewire {
     public SeusLoginPage(WebDriver driver) {
         super(driver);
     }
 
-    Guidewire gw = new Guidewire(getDriver());
 
     @FindBy(xpath=".//*[@id='country']")
     WebElementFacade pais;
@@ -48,6 +46,7 @@ public class SeusLoginPage extends PageObject {
         this.usuario.type(usuario);
         this.contrasenia.type(contrasenia);
         this.btnSubmit.click();
+
     }
 
 }
