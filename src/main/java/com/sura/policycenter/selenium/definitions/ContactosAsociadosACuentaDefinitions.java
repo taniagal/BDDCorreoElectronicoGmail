@@ -29,9 +29,23 @@ public class ContactosAsociadosACuentaDefinitions {
     }
 
     @Then("debo ver el detalle del contacto de tipo persona jur\u00EDdica")
-    @Pending
     public void thenDeboVerElDetalleDelContactoDeTipoPersonaJurídica() {
-        // PENDING
+        contactosAsociadosACuentaSteps.verificarDetalleContactoNoEsNulo();
+    }
+
+    @Given("selecciono un contacto de la lista de contactos <posicion>  y aplico la opcion <opcion>")
+    public void givenSeleccionoUnContactoDeLaListaDeContactosposicion(String posicion, String opcion) {
+        contactosAsociadosACuentaSteps.selecionarContacto(posicion, opcion);
+    }
+
+    @Then("debo ver los roles de contacto de tipo persona jur\u00EDdica")
+    public void thenDeboVerLosRolesDeContactoDeTipoPersonaJurídica() {
+        contactosAsociadosACuentaSteps.verificarRolesFuncionesNoEsNulo();
+    }
+
+    @Then("debo ver las direcciones asociadas al contacto")
+    public void thenDeboVerLasDireccionesAsociadasAUnContacto() {
+        contactosAsociadosACuentaSteps.verificarDireccionesEsNulo();
     }
 
 

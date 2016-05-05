@@ -659,15 +659,6 @@ public class EscritorioPage extends Guidewire {
                     case "NUEVA CUENTA":
                         act.moveToElement(mnuItemNuevaCuenta).click().build().perform();
                         break;
-                    case "CONSULTAR":
-                        act.moveToElement(txtNumCuenta).click().build().perform();
-                        gw.threadWait(2000);
-                        txtNumCuenta.waitUntilEnabled();
-                        txtNumCuenta.type(item2);
-                        gw.threadWait(2000);
-                        btnBuscarCuenta.waitUntilEnabled();
-                        btnBuscarCuenta.click();
-                        break;
                     case "":
                         break;
                 }
