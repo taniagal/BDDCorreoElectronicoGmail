@@ -144,7 +144,7 @@ public class CuentaPage extends Guidewire{
     }
 
     public void buscarPersona(String nombre){
-        wait(txtNombreCompania,2000);
+        espera(txtNombreCompania,2000);
         txtNombreCompania.sendKeys(nombre);
         btnBuscar.click();
     }

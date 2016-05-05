@@ -150,18 +150,18 @@ public class Guidewire extends PageObject {
 
     public void elegirLenguaje(){
         configuracion.click();
-        wait(configuracion,6);
+        espera(configuracion,6);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        wait(configuracion,6);
+        espera(configuracion,6);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        wait(configuracion,6);
+        espera(configuracion,6);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        wait(configuracion,6);
+        espera(configuracion,6);
         espaniol.click();
     }
 
 
-    protected void wait(final WebElementFacade element, final int timeoutInSeconds) {
+    protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
         final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
