@@ -114,15 +114,22 @@ public class Guidewire extends PageObject {
     }
 
     public String cedulaRandom() {
+        StringBuilder result=new StringBuilder("");
+
         int primero = (int) Math.floor(Math.random() * (100 - 999) + 999);
         int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
         int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
-        return primero + "-" + segundo + "-" + tercero;
+
+        result.append(primero);
+        result.append(segundo);
+        result.append(tercero);
+
+        return result.toString();
     }
 
-    public void inputList(WebElementFacade element, String option){
+    public void selectItem(WebElementFacade element, String option){
         element.click();
-        threadWait(300);
+        threadWait(200);
         element.sendKeys(option);
         element.sendKeys(Keys.ENTER);
     }
@@ -152,6 +159,7 @@ public class Guidewire extends PageObject {
         wait(configuracion,6);
         espaniol.click();
     }
+
 
     protected void wait(final WebElementFacade element, final int timeoutInSeconds) {
         final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);

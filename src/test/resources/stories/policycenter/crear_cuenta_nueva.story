@@ -13,8 +13,8 @@ primer apellido <primer_apellido>, tipo de direccion <tipo_direccion>, direccion
 Then se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural
 
 Examples:
-user |pass |country  |tipo_documento       |fecha_nacimiento |primer_nombre |primer_apellido |tipo_direccion |direccion |codigo_postal  |nombre_organizacion    |
-su   |gw   |Colombia |CEDULA DE CIUDADANIA |02/12/1990       |Nombre        |Apellido        |Vivienda       |Calle 44A |10001          |d                      |
+user |pass |country  |tipo_documento       |fecha_nacimiento |primer_nombre |primer_apellido |tipo_direccion |direccion         |codigo_postal  |nombre_organizacion    |
+su   |gw   |Colombia |CEDULA DE CIUDADANIA |02/12/1990       |SASHA         |AKERMAN        |Vivienda       |CALLE 54B #50-25   |10001          |D                      |
 
 
 
@@ -27,8 +27,8 @@ nombre empresa <nombre_empresa>, tipo de documento <tipo_documento>,tipo de dire
 Then se debe crear la cuenta con el cliente <nombre_empresa> persona juridica
 
 Examples:
-user |pass |country  |nombre_empresa |tipo_documento |tipo_direccion |direccion |codigo_postal  |nombre_organizacion    |
-su   |gw   |Colombia |nombre empresa |NIT            |Vivienda       |Calle 44A |10001          |d                      |
+user |pass |country  |nombre_empresa |tipo_documento |tipo_direccion |direccion        |codigo_postal  |nombre_organizacion    |
+su   |gw   |Colombia |UMBRELLA       |NIT            |Vivienda       |CALLE 54B #50-25 |10001          |d                      |
 
 
 
@@ -42,8 +42,8 @@ codigo postal <codigo_postal> y nombre de organizacion <nombre_organizacion>
 Then No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
-user |pass |country  |tipo_documento       |fecha_nacimiento |primer_nombre |primer_apellido |tipo_direccion |direccion |codigo_postal  |nombre_organizacion    |mensaje|
-su   |gw   |Colombia |CEDULA DE CIUDADANIA |02/12/1990       |Nombre        |Apellido        |Vivienda       |Calle 44A |10001          |d                      |Ya existe un contacto con el mismo número de identificación|
+user |pass |country  |tipo_documento       |fecha_nacimiento |primer_nombre |primer_apellido |tipo_direccion |direccion         |codigo_postal  |nombre_organizacion|mensaje|
+su   |gw   |Colombia |CEDULA DE CIUDADANIA |02/12/1990       |SASHA         |AKERMAN         |Vivienda       |CALLE 54B #50-25  |10001          |D                  |Ya existe un contacto con el mismo número de identificación|
 
 
 
@@ -57,5 +57,5 @@ primer apellido <primer_apellido>, tipo de direccion <tipo_direccion> y direccio
 Then No me debe permitir crear la cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
-user |pass |country  |tipo_documento        |documento      |fecha_nacimiento|primer_nombre |primer_apellido |tipo_direccion |direccion |ciudad    |estado     |codigo_postal  |nombre_organizacion  |mensaje|
-su   |gw   |Colombia |CEDULA DE CIUDADANIA  |371-45-4568    |02/15/2012| Nombre        |Apellido        |Vivienda       |Calle 44A |Medellin  |Florida    |10001          |d                    |Por políticas de la compañia no es posible crear una cuenta a una persona menor de 16 años|
+user |pass |country  |tipo_documento        |documento      |fecha_nacimiento|primer_nombre |primer_apellido |tipo_direccion |direccion          |codigo_postal  |nombre_organizacion  |mensaje|
+su   |gw   |Colombia |CEDULA DE CIUDADANIA  |371-45-4568    |02/15/2012      |SASHA         |AKERMAN         |Vivienda       |CALLE 54B #50-25   |10001          |D                    |Por políticas de la compañia no es posible crear una cuenta a una persona menor de 16 años|

@@ -9,6 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
@@ -27,8 +28,17 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")
     WebElementFacade tipoContact;
 
+	@FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
+    WebElementFacade nombreContact;
+
+	@FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    WebElementFacade txtNombreEmpresa;
+
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     WebElementFacade txtNombre;
+
+	@FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
+    WebElementFacade apellidoContact;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade txtApellido;
@@ -136,6 +146,15 @@ public class BusquedaContactoPage extends Guidewire {
         tipoContact.sendKeys(Keys.ENTER);
         txtNombre.type(primerNombre);
         txtApellido.type(primerApellido);
+        botonBuscar.click();
+        selectContact.click();
+    }
+
+	public void buscarContactoPersona(String nombre, String apellido){
+        tipoContact.type("Personal");
+        tipoContact.sendKeys(Keys.ENTER);
+        nombreContact.type(nombre);
+        apellidoContact.type(apellido);
         botonBuscar.click();
         selectContact.click();
     }
@@ -361,4 +380,14 @@ public class BusquedaContactoPage extends Guidewire {
             selectedContact1.click();
         }
     }
+	
+	public void buscarContactoEmpresa(String nombreEmpresa){
+        tipoContact.type("Empresa");
+        tipoContact.sendKeys(Keys.ENTER);
+        threadWait(1000);
+        txtNombreEmpresa.type(nombreEmpresa);
+        botonBuscar.click();
+        selectContact.click();
+    }
+
 }

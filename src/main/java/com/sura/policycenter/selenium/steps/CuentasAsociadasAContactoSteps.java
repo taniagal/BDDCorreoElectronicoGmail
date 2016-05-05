@@ -18,13 +18,13 @@ public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
     @Step
     public void buscarContacto(String tipoContacto, String nombre, String apellido) {
         busquedaPage.accionarBuscarContacto();
-        busquedaPage.buscarContacto(tipoContacto, nombre, apellido);
+        busquedaPage.buscarContactoPersona( nombre, apellido);
     }
 
     @Step
     public void buscarContactoSel(String tipoContacto, String nombre, String apellido, String numero) {
         busquedaPage.accionarBuscarContacto();
-        busquedaPage.buscarContacto(tipoContacto, nombre, apellido, numero);
+       // busquedaPage.buscarContacto(tipoContacto, nombre, apellido, numero);
     }
 
     @Step
