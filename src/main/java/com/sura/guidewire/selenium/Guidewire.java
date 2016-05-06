@@ -150,13 +150,13 @@ public class Guidewire extends PageObject {
 
     public void elegirLenguaje(){
         configuracion.click();
-        espera(configuracion,6);
+        waitABit(800);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        espera(configuracion,6);
+        waitABit(800);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        espera(configuracion,6);
+        waitABit(800);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        espera(configuracion,6);
+        waitABit(800);
         espaniol.click();
     }
 
