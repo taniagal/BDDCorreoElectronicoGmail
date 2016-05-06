@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 /**
  * Created by jorghome on 30/03/2016.
  */
@@ -20,60 +22,43 @@ public class Escritorio extends Guidewire {
         super(driver);
     }
 
-    @FindBy(xpath=".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
+    @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
     WebElementFacade lblIngreso;
-    @FindBy(xpath=".//*[@id='TabBar:ClaimTab-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
     WebElementFacade mnuReclamacion;
-    @FindBy(xpath=".//*[@id='TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl']")
+    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl']")
     WebElementFacade cboNuevaReclamacion;
-    @FindBy(xpath=".//*[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
+    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
     WebElementFacade txtBuscarNumReclamancion;
 
 
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
     WebElementFacade mnuBusqueda;
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ClaimSearchesGroup-textEl']")
-    WebElementFacade mnubuscaReclamaciones;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ClaimSearchesGroup:ClaimSearchesGroup_ClaimSearch-textEl']")
     WebElementFacade mnubuscaAvanzada;
 
-    public void assertion(String mensaje){
-    gw.asercion(lblIngreso.getText(),mensaje);
+    public void assertion(String mensaje) {
+        gw.asercion(lblIngreso.getText(), mensaje);
     }
 
-    /*Navegación hasta nueva Reclamacion*/
-    public void navegacionNuevaReclamacion() throws InterruptedException {
-    Actions act = new Actions(getDriver());
+    public void navegacionNuevaReclamacion() {
+
+        Actions act = new Actions(getDriver());
         mnuReclamacion.click();
-        Thread.sleep(1000);
+        gw.threadWait(3000);
         mnuReclamacion.click();
-    act.sendKeys(Keys.ARROW_DOWN).build().perform();
-    act.moveToElement(cboNuevaReclamacion).click().build().perform();
-    try {
-        Thread.sleep(3000);
-    }
-    catch (Exception e) {
-        throw new RuntimeException(e);
-    }
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(cboNuevaReclamacion).click().build().perform();
+        gw.threadWait(3000);
     }
 
-    public void navegacionBuscaAvanzada() throws InterruptedException {
+    public void navegacionBuscaAvanzada() {
 
         mnuBusqueda.waitUntilClickable();
         Actions act = gw.deployMenu(mnuBusqueda);
-        //act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        //Thread.sleep(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        Thread.sleep(1000);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnubuscaAvanzada).click().build().perform();
-
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
     }
 
 }

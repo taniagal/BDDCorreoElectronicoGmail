@@ -5,8 +5,8 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -28,6 +28,9 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     WebElementFacade nombreContact;
 
+    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    WebElementFacade txtNombreEmpresa;
+
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade apellidoContact;
 
@@ -45,20 +48,6 @@ public class BusquedaContactoPage extends Guidewire {
 
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
-    }
-
-    public void accionarBuscarContacto()  {
-        try{
-            Actions act = new Actions(getDriver());
-            contactMenu.click();
-            Thread.sleep(1000);
-            contactMenu.click();
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.moveToElement(buscarContact).click().build().perform();
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public void buscarContacto(String tipoContacto, String nombre, String apellido){
@@ -113,5 +102,23 @@ public class BusquedaContactoPage extends Guidewire {
         if (selectedContact1 != null){
             selectedContact1.click();
         }
+    }
+
+    public void buscarContactoEmpresa(String nombreEmpresa){
+        tipoContact.type("Empresa");
+        tipoContact.sendKeys(Keys.ENTER);
+        threadWait(1000);
+        txtNombreEmpresa.type(nombreEmpresa);
+        botonBuscar.click();
+        selectContact.click();
+    }
+
+    public void buscarContactoPersona(String nombre, String apellido){
+        tipoContact.type("Personal");
+        tipoContact.sendKeys(Keys.ENTER);
+        nombreContact.type(nombre);
+        apellidoContact.type(apellido);
+        botonBuscar.click();
+        selectContact.click();
     }
 }

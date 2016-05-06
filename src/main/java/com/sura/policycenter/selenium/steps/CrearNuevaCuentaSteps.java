@@ -33,12 +33,12 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void crearNuevaCuentaPersona(String tipoDocumento, String documento, String fechaNacimiento,String primerNombre, String primerApellido, String tipoDireccion, String direccion, String ciudad, String estado, String codigoPostal,String nombreOrganizacion) {
+    public void crearNuevaCuentaPersona(String tipoDocumento,String fechaNacimiento,String primerNombre, String primerApellido, String tipoDireccion, String direccion, String codigoPostal,String nombreOrganizacion) {
         if("".equals(cedula) || "".equals(nit)){
             initRandoms();
         }
         cp.buscarPersona("Busqueda");
-        cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,ciudad,estado,codigoPostal,nombreOrganizacion);
+        cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,codigoPostal,nombreOrganizacion);
     }
 
     @Step
@@ -47,12 +47,12 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void crearNuevaCuentaPersonaJuridica(String tipoDocumento, String documento, String nombreEmpresa, String tipoDireccion, String direccion, String ciudad, String estado, String codigoPostal, String nombreOrganizacion) {
+    public void crearNuevaCuentaPersonaJuridica(String tipoDocumento, String nombreEmpresa, String tipoDireccion, String direccion,String codigoPostal, String nombreOrganizacion) {
         if("".equals(cedula) || "".equals(nit)){
             initRandoms();
         }
         cp.buscarPersona("Busqueda");
-        cp.crearCuentaNuevaPersonaJuridica(tipoDocumento, nit, nombreEmpresa, tipoDireccion, direccion,ciudad,estado,codigoPostal,nombreOrganizacion);
+        cp.crearCuentaNuevaPersonaJuridica(tipoDocumento, nit, nombreEmpresa, tipoDireccion, direccion,codigoPostal,nombreOrganizacion);
     }
 
     @Step
@@ -61,12 +61,12 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void crearNuevaCuentaPersona2(String tipoDocumento, String documento, String fechaNacimiento,String primerNombre, String primerApellido, String tipoDireccion, String direccion, String ciudad, String estado, String codigoPostal,String nombreOrganizacion) {
+    public void crearNuevaCuentaPersona2(String tipoDocumento, String fechaNacimiento,String primerNombre, String primerApellido, String tipoDireccion, String direccion, String codigoPostal,String nombreOrganizacion) {
         if("".equals(cedula) || "".equals(nit)){
             initRandoms();
         }
         cp.buscarPersona("Busqueda");
-        cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,ciudad,estado,codigoPostal,nombreOrganizacion);
+        cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,codigoPostal,nombreOrganizacion);
     }
 
     @Step
