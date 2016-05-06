@@ -89,20 +89,20 @@ public class BusquedaActividadesPage extends SeusLoginPage {
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
             act.moveToElement(mnuBuscarActividades).click().build().perform();
             Thread.sleep(2000);
+            btnRestablecer.click();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void filtrarPorAsignado(String usuario) {
-        txtAsignadoA.sendKeys("Alice Applegate");
-        btnBuscar.click();
+        txtAsignadoA.sendKeys(usuario);
     }
 
     public void validarResultado(String prioridad, String estadoActividad,
                                  String asunto, String titularCuenta, String producto, String asignadoPor,
                                  String estado) {
-        assertThat(this.grdIcono.getText(), is(notNullValue()));
+        btnBuscar.click();
         assertThat(this.grdFechaVencimiento.getText(), is(notNullValue()));
         assertThat(this.grdPrioridad.getText(), containsString(prioridad));
         assertThat(this.grdEstadoActividad.getText(), containsString(estadoActividad));
@@ -115,38 +115,34 @@ public class BusquedaActividadesPage extends SeusLoginPage {
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
-        btnRestablecer.click();
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         txtNumeroPoliza.sendKeys(numeroPoliza);
-        btnBuscar.click();
     }
 
     public void filtrarPorNumeroDeCuenta(String numeroCuenta) {
-        btnRestablecer.click();
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         txtNumeroCuenta.sendKeys(numeroCuenta);
-        btnBuscar.click();
     }
 
     public void buscarSinFiltro() {
-        btnRestablecer.click();
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        btnBuscar.click();
     }
 
     public void validarMensjeFiltroRequerido(String mensaje) {
+        btnBuscar.click();
+        txtNumeroCuenta.clear();
         assertThat(this.msgFiltrosRequeridos.getText(), containsString(mensaje));
     }
 
@@ -155,13 +151,11 @@ public class BusquedaActividadesPage extends SeusLoginPage {
         txtPrioridad.clear();
         txtPrioridad.sendKeys(prioridad);
         txtPrioridad.sendKeys(Keys.ENTER);
-        btnBuscar.click();
     }
 
     public void buscarPorFiltroOpcional(String estadoActividad) {
         txtEstadoActividad.clear();
         txtEstadoActividad.sendKeys(estadoActividad);
         txtEstadoActividad.sendKeys(Keys.ENTER);
-        btnBuscar.click();
     }
 }

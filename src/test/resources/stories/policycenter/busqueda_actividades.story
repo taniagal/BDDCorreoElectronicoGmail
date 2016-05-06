@@ -27,7 +27,7 @@ prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, Titular de la
 
 Examples:
 |numeroPoliza|prioridad|estadoActividad|asunto|titularCuenta|producto|asignadoPor|estado
-|7337120071|Normal|Abierta|Review Submission|Wright Construction|Compensación de los trabajadores||California
+|TEST_22222222|Normal|Abierta|prueba actividad|Wendell Jackson|||Kentucky
 
 Scenario: Realizar busqueda de actividades por el filtro numero de cuenta
 Given que me encuentro en la busqueda de actividades
@@ -72,7 +72,7 @@ prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, Titular de la
 
 Examples:
 |usuario|filtroPrioridad|prioridad|estadoActividad|asunto|titularCuenta|producto|asignadoPor|estado
-|Alice Applegate|Normal|Normal|Review Submission|Wright Construction|Compensación de los trabajadores||California
+|Alice Applegate|Normal|Normal|Abierta|Review Submission|Wright Construction|Compensación de los trabajadores||California
 
 Scenario: Realizar busqueda de actividades sin espeficar un filtro requerido pero si alguno opcional
 Given que me encuentro en la busqueda de actividades
