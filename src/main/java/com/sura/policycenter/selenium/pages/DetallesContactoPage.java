@@ -255,6 +255,7 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void verificarActualizacion(){
+        espera(txtSegundoNombre,5);
         assertThat("el segundo nombre esta erroneo",dtlContact[2].equals(txtSegundoNombre.getText()));
         assertThat("el segundo apellido esta erroneo",dtlContact[3].equals(txtSegundoApellido.getText()));
         assertThat("la profesion esta erroneo",dtlContact[6].equals(cboProfesion.getText()));
@@ -269,6 +270,7 @@ public class DetallesContactoPage extends Guidewire {
 
 
     public void verificarActualizacionJuridico(){
+        espera(txtNombreComercial,5);
         assertThat("el nombre comercial esta erroneo",dtlCntJ[0].equals(txtNombreComercial.getText()));
         assertThat("la actividad comercial esta erronea",dtlCntJ[1].equals(cboActividadComercial.getText()));
         assertThat("el numero de empleados",dtlCntJ[2].equals(txtNumeroEmpleados.getText()));

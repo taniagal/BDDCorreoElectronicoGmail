@@ -24,8 +24,8 @@ estado civil <estado_civil>, tipo familia <tipo_familia>,telefono celular <telef
 Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios
 
 Examples:
-|country |user    |pass     |tipo_documento        |documento  |primer_nombre|primer_apellido |segundo_nombre   |segundo_apellido   |tipo_direccion |direccion  |fecha_fallecimiento  |causa_fallecimiento    |profesion  |estado_civil   |tipo_familia |telefono_celular    |telefono_residencial  |telefono_trabajo  |correo_electronico_primario  |correo_electronico_secundario|
-|Colombia|pedrvevi|pedrvevi |CEDULA DE CIUDADANIA  |564-36-5489|HEGIGI       |OIUIOIO         |segundo nombre   |segundo apellido   |Vivienda       |Calle 69-69|12/12/2015           |causa de fallecimiento |ABOGADO    |Soltero        |Nuclear      |654-985-1236        |789-785-1236          |456-789-1236      |primario@mail.com            |secundario@mail.com          |
+|country |user    |pass     |tipo_documento        |documento  |primer_nombre|primer_apellido |segundo_nombre   |segundo_apellido   |tipo_direccion |direccion       |fecha_fallecimiento  |causa_fallecimiento    |profesion  |estado_civil   |tipo_familia |telefono_celular    |telefono_residencial  |telefono_trabajo  |correo_electronico_primario  |correo_electronico_secundario|
+|Colombia|pedrvevi|pedrvevi |CEDULA DE CIUDADANIA  |564-36-5489|SASHA         |AKERMAN        |segundo nombre   |segundo apellido   |Vivienda       |CALLE 54B #50-25 |12/12/2015           |causa de fallecimiento |ABOGADO    |Soltero        |Nuclear      |654-985-1236        |789-785-1236          |456-789-1236      |primario@mail.com            |secundario@mail.com          |
 
 
 
@@ -41,6 +41,6 @@ actividad comercial <actividad_comercial>, numero de empleados <numero_empleados
 Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios de persona juridica
 
 Examples:
-|country |user    |pass     |razon_social   |tipo_direccion |direccion|nombre_comercial  |actividad_comercial                    |numero_empleados  |valor_activos  |ventas_anuales |telefono_oficina  |correo_electronico_primario  |correo_electronico_secundario|
-|Colombia|pedrvevi|pedrvevi |Empresa prueba |Vivienda       |calle 40 |BDD Sura          |FABRICACION DE RECIPIENTES DE MADERA   |400               |190000000      |135000000      |888-789-1236      |primario@mail.com            |secundario@mail.com          |
+|country |user    |pass     |razon_social   |tipo_direccion |direccion        |nombre_comercial  |actividad_comercial                    |numero_empleados  |valor_activos  |ventas_anuales |telefono_oficina  |correo_electronico_primario  |correo_electronico_secundario|
+|Colombia|pedrvevi|pedrvevi |UMBRELLA       |Vivienda       |CALLE 54B #50-25 |BDD Sura          |FABRICACION DE RECIPIENTES DE MADERA   |400               |190000000      |135000000      |888-789-1236      |primario@mail.com            |secundario@mail.com          |
 
