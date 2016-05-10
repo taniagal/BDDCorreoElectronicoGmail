@@ -12,11 +12,6 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-import java.util.List;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.isIn;
-
 public class BusquedaContactoPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='TabBar:ContactTab']")
@@ -28,7 +23,7 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")
     WebElementFacade tipoContact;
 
-	@FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
     WebElementFacade txtNombreEmpresa;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
@@ -36,9 +31,6 @@ public class BusquedaContactoPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade txtApellido;
-
-    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
-    WebElementFacade nombreEmpresaContact;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
     WebElementFacade nombreEmpresaContact;
@@ -128,26 +120,18 @@ public class BusquedaContactoPage extends Guidewire {
         super(driver);
     }
 
-    public void buscarContacto(String tipoContacto, String nombre, String apellido){
-        tipoContact.type(tipoContacto);
-        tipoContact.sendKeys(Keys.ENTER);
-        try {
+    public void accionarBuscarContacto()  {
+        try{
+            Actions act = new Actions(getDriver());
+            contactMenu.click();
             Thread.sleep(1000);
             contactMenu.click();
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
             act.moveToElement(buscarContact).click().build().perform();
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        if (tipoContacto.equals("Personal")){
-            nombreContact.type(nombre);
-            apellidoContact.type(apellido);
-        }else{
-            nombreEmpresaContact.type(nombre);
-        }
-        botonBuscar.click();
-        selectContact.click();
     }
 
     public void buscarContactoPersonaSinVerDetalle(String tipoDoc, String nombre, String apellido) {
@@ -176,40 +160,13 @@ public class BusquedaContactoPage extends Guidewire {
         botonBuscar.click();
     }
 
-	public void buscarContactoPersona(String nombre, String apellido){
+    public void buscarContactoPersona(String nombre, String apellido){
         tipoContact.type("Personal");
         tipoContact.sendKeys(Keys.ENTER);
-        int parada = Integer.parseInt(numero);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if (tipoContacto.equals("Personal")){
-            nombreContact.type(nombre);
-            apellidoContact.type(apellido);
-        }else{
-            nombreEmpresaContact.type(nombre);
-        }
+        nombreContact.type(nombre);
+        apellidoContact.type(apellido);
         botonBuscar.click();
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        List<WebElement> allRows = table.findElements(By.tagName("tr"));
-        WebElement selectedContact1 = null;
-
-        for (int i = 0; i < parada && i < allRows.size(); i++) {
-            WebElement row = allRows.get(i);
-            List<WebElement> cells = row.findElements(By.tagName("td"));
-            selectedContact1 = cells.get(1);
-        }
-        if (selectedContact1 != null){
-            selectedContact1.click();
-        }
+        selectContact.click();
     }
 
     public void buscarContactoPorTipoYNroIdentificacion(String tipoIdentificacion, String numeroIdentificacion){
@@ -375,8 +332,8 @@ public class BusquedaContactoPage extends Guidewire {
             selectedContact1.click();
         }
     }
-	
-	public void buscarContactoEmpresa(String nombreEmpresa){
+
+    public void buscarContactoEmpresa(String nombreEmpresa){
         tipoContact.type("Empresa");
         tipoContact.sendKeys(Keys.ENTER);
         threadWait(1000);
