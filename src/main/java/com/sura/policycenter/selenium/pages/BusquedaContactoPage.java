@@ -40,9 +40,6 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
     WebElementFacade nombreEmpresaContact;
 
-    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
-    WebElementFacade nombreEmpresaContact;
-
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     WebElementFacade botonBuscar;
 
@@ -128,14 +125,25 @@ public class BusquedaContactoPage extends Guidewire {
         super(driver);
     }
 
+    public void accionarBuscarContacto()  {
+        try{
+            Actions act = new Actions(getDriver());
+            contactMenu.click();
+            Thread.sleep(1000);
+            contactMenu.click();
+            act.sendKeys(Keys.ARROW_DOWN).build().perform();
+            act.moveToElement(buscarContact).click().build().perform();
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void buscarContacto(String tipoContacto, String nombre, String apellido){
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         try {
             Thread.sleep(1000);
             contactMenu.click();
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.moveToElement(buscarContact).click().build().perform();
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -158,58 +166,13 @@ public class BusquedaContactoPage extends Guidewire {
         apellidoContact.type(apellido);
     }
 
-    public void buscarContacto(String tipoContacto, String nombre, String apellido){
-        tipoContact.type(tipoContacto);
-        tipoContact.sendKeys(Keys.ENTER);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if (tipoContacto.equals("Personal")){
-            nombreContact.type(nombre);
-            apellidoContact.type(apellido);
-        }else{
-            nombreEmpresaContact.type(nombre);
-        }
-
-        botonBuscar.click();
-    }
-
 	public void buscarContactoPersona(String nombre, String apellido){
         tipoContact.type("Personal");
         tipoContact.sendKeys(Keys.ENTER);
-        int parada = Integer.parseInt(numero);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        if (tipoContacto.equals("Personal")){
-            nombreContact.type(nombre);
-            apellidoContact.type(apellido);
-        }else{
-            nombreEmpresaContact.type(nombre);
-        }
+        nombreContact.type(nombre);
+        apellidoContact.type(apellido);
         botonBuscar.click();
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        List<WebElement> allRows = table.findElements(By.tagName("tr"));
-        WebElement selectedContact1 = null;
-
-        for (int i = 0; i < parada && i < allRows.size(); i++) {
-            WebElement row = allRows.get(i);
-            List<WebElement> cells = row.findElements(By.tagName("td"));
-            selectedContact1 = cells.get(1);
-        }
-        if (selectedContact1 != null){
-            selectedContact1.click();
-        }
+        selectContact.click();
     }
 
     public void buscarContactoPorTipoYNroIdentificacion(String tipoIdentificacion, String numeroIdentificacion){
