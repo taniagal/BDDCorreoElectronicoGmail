@@ -18,6 +18,10 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
     public static final String DIRECCIONES = "DIRECCIONES";
 
+    public static final String TRANSACCIONES_ASOCIADAS = "TRANSACCIONES_ASOCIADAS";
+
+    public static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
+
 
     private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
     CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
@@ -52,6 +56,12 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
             case DIRECCIONES:
                 contactosAsociadosACuentasPage.seleccionarTabDirecciones();
                 break;
+            case TRANSACCIONES_ASOCIADAS:
+                contactosAsociadosACuentasPage.seleccionarTabTransaccionesAsociadas();
+                break;
+            case POLIZAS_ASOCIADAS:
+                contactosAsociadosACuentasPage.seleccionarTabPolizasAsociadas();
+                break;
         }
 
     }
@@ -63,8 +73,8 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarEncabezados(ExamplesTable encabezados) {
-        contactosAsociadosACuentasPage.existeEncabezadoDeTablaRolesFunciones(encabezados, "encabezados", "\".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:ContactRolesDV:ContactRolesLV']/div/div/div/div\"");
+    public void verificarEncabezados(ExamplesTable encabezados, String encabezado, String xPathElementos) {
+        contactosAsociadosACuentasPage.existeEncabezadoDeTabla(encabezados, encabezado, xPathElementos);
     }
 
     @Step

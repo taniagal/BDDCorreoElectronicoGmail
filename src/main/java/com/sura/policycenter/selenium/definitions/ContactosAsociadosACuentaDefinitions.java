@@ -14,6 +14,8 @@ import org.jbehave.core.model.ExamplesTable;
  */
 public class ContactosAsociadosACuentaDefinitions {
 
+    public static final String encabezado = "encabezados";
+
     @Steps
     SeusLoginSteps seusSteps;
 
@@ -43,12 +45,24 @@ public class ContactosAsociadosACuentaDefinitions {
     @Then("debo ver los roles de contacto de tipo persona y sus $encabezados")
     public void thenDeboVerLosRolesDeContactoDeTipoPersonaJurídica(ExamplesTable encabezados) {
         contactosAsociadosACuentaSteps.verificarRolesFuncionesNoEsNulo();
-        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados);
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado, "//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:ContactRolesDV:ContactRolesLV']/div/div/div/div");
     }
 
-    @Then("debo ver las direcciones asociadas al contacto")
-    public void thenDeboVerLasDireccionesAsociadasAUnContacto() {
+    @Then("debo ver las direcciones asociadas al contacto y sus $encabezados")
+    public void thenDeboVerLasDireccionesAsociadasAUnContacto(ExamplesTable encabezados) {
         contactosAsociadosACuentaSteps.verificarDireccionesEsNulo();
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet:AddressesLV']/div/div/div/div");
+    }
+
+
+    @Then("debo ver las transacciones asociadas al contacto y sus $encabezados")
+    public void thenDeboVerLasTransaccionesAsociadasAUnContacto(ExamplesTable encabezados) {
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_WorkOrdersLV']/div/div/div/div");
+    }
+
+    @Then("debo ver las polizas asociadas al contacto y sus $encabezados")
+    public void thenDeboVerLasPolizasAsociadasAUnContacto(ExamplesTable encabezados) {
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_PoliciesLV']/div/div/div/div");
     }
 
     @Given("el contacto tiene mínimo una dirección")

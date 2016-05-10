@@ -35,6 +35,12 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesCardTab-btnInnerEl']")
     private WebElementFacade tabDirecciones;
 
+    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:JobsCardTab-btnInnerEl']")
+    private WebElementFacade tabTransaccionesAsociadas;
+
+    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:PoliciesCardTab-btnInnerEl']")
+    private WebElementFacade tabPolizasAsociadas;
+
     /*
     * Informacion tab detalle de contacto
     * */
@@ -85,7 +91,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
 
 
-    public void existeEncabezadoDeTablaRolesFunciones(ExamplesTable encabezados, String keyElement, String xPathElementos) {
+    public void existeEncabezadoDeTabla(ExamplesTable encabezados, String keyElement, String xPathElementos) {
         List<WebElementFacade> listEncabezados = withTimeoutOf(1, SECONDS).findAll(xPathElementos);
 
         int countCoincidencias = 0;
@@ -144,6 +150,16 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         tabDirecciones.click();
     }
 
+    public void seleccionarTabTransaccionesAsociadas() {
+        tabTransaccionesAsociadas.waitUntilClickable();
+        tabTransaccionesAsociadas.click();
+    }
+
+    public void seleccionarTabPolizasAsociadas() {
+        tabPolizasAsociadas.waitUntilClickable();
+        tabPolizasAsociadas.click();
+    }
+
     public void verificarListaContactoNoEsNulo() {
         List<WebElementFacade> contactos = getListaContactos();
         assertThat("La cuenta debe tener contactos de tipo persona juridica o natural", contactos.size()>0);
@@ -181,8 +197,5 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         threadWait(1000);
     }
 
-    public void validarEncabezadoDirecciones(){
-        List<WebElementFacade> encabezadoDirecciones = withTimeoutOf(1, SECONDS).findAll(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet:AddressesLV']/div/div/div/div");
 
-    }
 }
