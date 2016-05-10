@@ -4,17 +4,13 @@ import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.annotations.Pending;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
 import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.hamcrest.Matchers.isIn;
 
 public class BusquedaContactoPage extends Guidewire {
 
@@ -105,6 +101,21 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath="//div[3]/div/table")
     WebElementFacade table;
 
+    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
+    WebElementFacade submit;
+
+    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
+    WebElementFacade txtusuario;
+
+    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
+    WebElementFacade txtcontrasena;
+
+    public void login(String usuario, String contrasena){
+        txtusuario.type(usuario);
+        txtcontrasena.type(contrasena);
+        submit.click();
+    }
+
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
     }
@@ -170,13 +181,7 @@ public class BusquedaContactoPage extends Guidewire {
         txtRazonSocial.type(razonSocial);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
+        espera(botonBuscar,2);
     }
 
     public void validarInformacionTipoId() {
@@ -185,7 +190,7 @@ public class BusquedaContactoPage extends Guidewire {
 
         try {
             Thread.sleep(2000);
-            assertThat(msjSinRegistros.getText().toString(),is(equalTo(msjSinReg)));
+            assertThat(msjSinRegistros.getText(),is(equalTo(msjSinReg)));
 
         } catch (InterruptedException e) {
 
@@ -197,7 +202,7 @@ public class BusquedaContactoPage extends Guidewire {
 
         try {
             Thread.sleep(2000);
-            assertThat(msjValidacionCampos.getText().toString(),is(equalTo(msjVal)));
+            assertThat(msjValidacionCampos.getText(),is(equalTo(msjVal)));
 
         } catch (InterruptedException e) {
 
@@ -211,13 +216,7 @@ public class BusquedaContactoPage extends Guidewire {
         txtNumDoc.type(numDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
+        espera(botonBuscar,2);
     }
 
     public void consultarContactoTipoDoc(String tipoDoc) {
@@ -225,13 +224,7 @@ public class BusquedaContactoPage extends Guidewire {
         txtTipoDoc.type(tipoDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
+        espera(botonBuscar,2);
     }
 
     public void consultarPersonaJuridicaTipoNumDoc(String numDoc) {
@@ -241,26 +234,19 @@ public class BusquedaContactoPage extends Guidewire {
         txtNumDoc.type(numDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
+        espera(botonBuscar,2);
     }
 
     public void verInfoPersonaJuridica() {
         try {
-
-            assertThat(colTipoId.getText().toString(), is(not(equalTo(null))));
-            assertThat(colNumId.getText().toString(), is(not(equalTo(null))));
-            assertThat(colNombreCcial.getText().toString(), is(not(equalTo(null))));
-            assertThat(colRazonSocial.getText().toString(), is(not(equalTo(null))));
-            assertThat(colDireccion.getText().toString(), is(not(equalTo(null))));
-            //assertThat(colTelefono.getText().toString(), is(not(equalTo(null))));
-            //assertThat(colEmail.getText().toString(), is(not(equalTo(null))));
-            //assertThat(colExternal.getText().toString(), is(not(equalTo(null))));*/
+            assertThat(colTipoId.getText(), is(not(equalTo(null))));
+            assertThat(colNumId.getText(), is(not(equalTo(null))));
+            assertThat(colNombreCcial.getText(), is(not(equalTo(null))));
+            assertThat(colRazonSocial.getText(), is(not(equalTo(null))));
+            assertThat(colDireccion.getText(), is(not(equalTo(null))));
+            assertThat(colTelefono.getText(), is(not(equalTo(null))));
+            assertThat(colEmail.getText(), is(not(equalTo(null))));
+            assertThat(colExterna.getText(), is(not(equalTo(null))));
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -269,14 +255,14 @@ public class BusquedaContactoPage extends Guidewire {
     public void verInfoPersonaNatural() {
         try {
 
-            assertThat(colTipoId.getText().toString(), is(not(equalTo(null))));
-            assertThat(colNumId.getText().toString(), is(not(equalTo(null))));
-            assertThat(colNombre.getText().toString(), is(not(equalTo(null))));
-            assertThat(colApellido.getText().toString(), is(not(equalTo(null))));
-            assertThat(colDireccion.getText().toString(), is(not(equalTo(null))));
-            assertThat(colTelefono.getText().toString(), is(not(equalTo(null))));
-            assertThat(colEmail.getText().toString(), is(not(equalTo(null))));
-            assertThat(colExterna.getText().toString(), is(not(equalTo(null))));
+            assertThat(colTipoId.getText(), is(not(equalTo(null))));
+            assertThat(colNumId.getText(), is(not(equalTo(null))));
+            assertThat(colNombre.getText(), is(not(equalTo(null))));
+            assertThat(colApellido.getText(), is(not(equalTo(null))));
+            assertThat(colDireccion.getText(), is(not(equalTo(null))));
+            assertThat(colTelefono.getText(), is(not(equalTo(null))));
+            assertThat(colEmail.getText(), is(not(equalTo(null))));
+            assertThat(colExterna.getText(), is(not(equalTo(null))));
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -286,11 +272,7 @@ public class BusquedaContactoPage extends Guidewire {
 
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        espera(txtTipoDoc,1);
         txtNumDoc.type(numDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
@@ -303,13 +285,7 @@ public class BusquedaContactoPage extends Guidewire {
         txtApellido.type(apellido);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
+        espera(botonBuscar,2);
     }
 
     public void consultarContactoNombreComercial(String tipoDoc, String nombreComercial) {
@@ -318,13 +294,7 @@ public class BusquedaContactoPage extends Guidewire {
         txtNombreComercial.type(nombreComercial);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
-        }
+        espera(botonBuscar,2);
     }
 
     public void buscarContacto(String tipoContacto, String nombre, String apellido, String numero){

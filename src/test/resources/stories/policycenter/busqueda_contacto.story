@@ -109,33 +109,42 @@ Quiero ser capaz de buscar elementos específicos asociados a un contacto
 #|usuario|contrasena|tipoDoc |razonSocial|
 #|su     |gw        |NIT     |La Vaquita|
 
-Scenario: Consultar contacto de tipo persona natural por nombre y apellido
+#Scenario: Consultar contacto de tipo persona natural por nombre y apellido
+#Given que estoy autenticado en GW con usuario <usuario> y contrasena <contrasena>
+#And estoy en busqueda de contactos
+#When quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre> y apellido <apellido>
+#Then debo ver la informacion del contacto de tipo persona natural
+
+#Examples:
+#|usuario|contrasena|tipoDoc             |nombre |apellido |
+#|su     |gw        |CEDULA DE CIUDADANIA|Alice  |Shiu     |
+
+#Scenario: Consultar contacto de tipo persona natural unicamente por nombre
+#Given que estoy autenticado en GW con usuario <usuario> y contrasena <contrasena>
+#And estoy en busqueda de contactos
+#When quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre>
+#Then debo ver la informacion del contacto de tipo persona natural
+
+#Examples:
+#|usuario|contrasena|tipoDoc             |nombre|
+#|su     |gw        |CEDULA DE CIUDADANIA|Alice |
+
+#Scenario: Consultar contacto de tipo persona natural unicamente por apellido
+#Given que estoy autenticado en GW con usuario <usuario> y contrasena <contrasena>
+#And estoy en busqueda de contactos
+#When quiera consultar contacto de tipo persona natural <tipoDoc> por apellido <apellido>
+#Then debo ver la informacion del contacto de tipo persona natural
+
+#Examples:
+#|usuario|contrasena|tipoDoc              |apellido |
+#|su     |gw        |CEDULA DE CIUDADANIA |Shiu     |
+
+Scenario: Consultar contacto a traves de la opcion del menu Contactos - Buscar
 Given que estoy autenticado en GW con usuario <usuario> y contrasena <contrasena>
 And estoy en busqueda de contactos
 When quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre> y apellido <apellido>
 Then debo ver la informacion del contacto de tipo persona natural
 
 Examples:
-|usuario|contrasena|tipoDoc             |nombre |apellido |
-|su     |gw        |CEDULA DE CIUDADANIA|Alice  |Shiu     |
-
-Scenario: Consultar contacto de tipo persona natural unicamente por nombre
-Given que estoy autenticado en GW con usuario <usuario> y contrasena <contrasena>
-And estoy en busqueda de contactos
-When quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre>
-Then debo ver la informacion del contacto de tipo persona natural
-
-Examples:
-|usuario|contrasena|tipoDoc             |nombre|
-|su     |gw        |CEDULA DE CIUDADANIA|Alice |
-
-Scenario: Consultar contacto de tipo persona natural unicamente por apellido
-Given que estoy autenticado en GW con usuario <usuario> y contrasena <contrasena>
-And estoy en busqueda de contactos
-When quiera consultar contacto de tipo persona natural <tipoDoc> por apellido <apellido>
-Then debo ver la informacion del contacto de tipo persona natural
-
-Examples:
-|usuario|contrasena|tipoDoc              |apellido |
-|su     |gw        |CEDULA DE CIUDADANIA |Shiu     |
-
+|usuario|contrasena|tipoDoc              |nombre |apellido |
+|su     |gw        |CEDULA DE CIUDADANIA |Alice  |Shiu     |

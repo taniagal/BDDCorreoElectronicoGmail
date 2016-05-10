@@ -24,8 +24,13 @@ public class BusquedaContactoSteps extends ScenarioSteps {
     EscritorioPage escritorioPolicy = new EscritorioPage(getDriver());
 
     @Step
-    public void navegarBarraSuperior() {
-        escritorioPolicy.navegarTabBar("Buscar", "Contactos", "");
+    public void login(String usuario, String contrasena){
+        busquedaContactoPage.login(usuario, contrasena);
+    }
+
+    @Step
+    public void navegarBarraSuperior(String menu, String submenu, String item) {
+        escritorioPolicy.navegarTabBar(menu, submenu, item);
     }
 
     @Step

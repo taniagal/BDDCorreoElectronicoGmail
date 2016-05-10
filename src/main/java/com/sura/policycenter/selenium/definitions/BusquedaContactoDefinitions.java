@@ -31,9 +31,20 @@ public class BusquedaContactoDefinitions {
         pcs.login(usuario,contrasena);
     }
 
+    @Given("estoy en GW <usuario> <contrasena>")
+    public void loginGW(@Named("usuario") String usuario, @Named("contrasena") String contrasena) {
+        buscarContactoSteps.login(usuario, contrasena);
+    }
+    //////
+
     @Given("estoy en busqueda de contactos")
     public void givenEstoyEnBusquedaContactos() {
-        buscarContactoSteps.navegarBarraSuperior();
+        buscarContactoSteps.navegarBarraSuperior("Buscar", "Contactos", "");
+    }
+
+    @Given("estoy en contactos para buscar")
+    public void givenContactosBuscar(@Named("usuario") String usuario, @Named("contrasena") String contrasena){
+        buscarContactoSteps.navegarBarraSuperior("Contacto", "Buscar", "");
     }
 
     @When("quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre> y apellido <apellido>")
