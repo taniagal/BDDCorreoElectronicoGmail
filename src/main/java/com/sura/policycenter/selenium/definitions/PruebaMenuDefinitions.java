@@ -33,7 +33,7 @@ public class PruebaMenuDefinitions {
 
     @Then("deberia navegar por todos los menu")
     public void nuevoContactoPersona() throws InterruptedException {
-        pms.navegarTabBar();
+        pms.pruebaNavegacion();
     }
 
     @Then("deberia cerrar sesion")

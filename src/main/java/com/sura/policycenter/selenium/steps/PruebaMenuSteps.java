@@ -6,38 +6,97 @@ import com.sura.guidewire.selenium.Guidewire;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 /**
  * Created by jorghome on 04/05/2016.
  */
 public class PruebaMenuSteps extends ScenarioSteps {
 
-    Guidewire gw = new Guidewire(getDriver());
-    AbrirAppPage abrirAppPage = new AbrirAppPage(getDriver());
-    EscritorioPage escritorioPage = new EscritorioPage(getDriver());
+    //Guidewire gw = new Guidewire(getDriver());
+    //AbrirAppPage abrirAppPage = new AbrirAppPage(getDriver());
+    //EscritorioPage escritorioPage = new EscritorioPage(getDriver());
+    //EscritorioPage escritorioPage;
 
     public PruebaMenuSteps(Pages pages) {
         super(pages);
     }
 
+    private Guidewire gw() {
+        return getPages().currentPageAt(Guidewire.class);
+    }
+
+    private AbrirAppPage abrirAppPage() {
+        return getPages().currentPageAt(AbrirAppPage.class);
+    }
+
+    private EscritorioPage escritorioPage() {
+        return getPages().currentPageAt(EscritorioPage.class);
+    }
+
     @Step
     public void open() {
-        abrirAppPage.open();
+        abrirAppPage().open();
     }
 
     @Step
     public void login(String usuario, String contrasenia) {
-        gw.login(usuario, contrasenia);
+        gw().login(usuario, contrasenia);
     }
 
     @Step
     public void assertion(String element) {
-        escritorioPage.assertion(element);
+        escritorioPage().assertion(element);
     }
 
     @Step
+    public void pruebaNavegacion (){
+        //Menu Escritorio
+        /*escritorioPage.irAMisActividades();
+        gw.waitUntil(3000);
+        escritorioPage.irAMisCuentas();
+        gw.waitUntil(3000);
+        escritorioPage.irAMisEnvios();
+        gw.waitUntil(3000);
+        escritorioPage.irAMisRenovaciones();
+        gw.waitUntil(3000);
+        escritorioPage.irAMisOtrasTransacciones();
+        gw.waitUntil(3000);
+        escritorioPage.irAMisColas();
+        gw.waitUntil(3000);*/
+
+        //Menu Cuenta
+       /* escritorioPage().irANuevaCuenta();
+        gw().waitUntil(3000);*/
+
+        //Menu Poliza
+        /*escritorioPage().irANuevoEnvio();
+        gw().waitUntil(3000);*/
+
+        //Menu Contacto
+        /*escritorioPage().irANuevaCompania();
+        gw().waitUntil(3000);
+        escritorioPage().irANuevaPersona();
+        gw().waitUntil(3000);
+        escritorioPage().irABuscarContacto();
+        gw().waitUntil(3000);*/
+
+        //Menu Buscar
+        escritorioPage().irABuscarPolizas();
+        gw().waitUntil(3000);
+        escritorioPage().irABuscarCuentas();
+        gw().waitUntil(3000);
+        escritorioPage().irABuscarCodAgente();
+        gw().waitUntil(3000);
+        escritorioPage().irABuscarActividades();
+        gw().waitUntil(3000);
+        escritorioPage().irABuscarContactos();
+        gw().waitUntil(3000);
+    }
+
+    /*@Step
     public void navegarTabBar() {
-        /*escritorioPage.navegarTabBar("escritorio", "mis actividades", "");
+        *//*escritorioPage.navegarTabBar("escritorio", "mis actividades", "");
         gw.threadWait(2000);
         escritorioPage.navegarTabBar("escritorio", "mis cuentas", "");
         gw.threadWait(2000);
@@ -52,7 +111,7 @@ public class PruebaMenuSteps extends ScenarioSteps {
         escritorioPage.navegarAcciones("acciones escritorio", "nuevo envio", "", "");
         gw.threadWait(2000);
         escritorioPage.navegarAcciones("acciones escritorio", "nueva cuenta", "", "");
-        gw.threadWait(2000);*/
+        gw.threadWait(2000);*//*
         escritorioPage.navegarTabBar("cuenta", "nueva cuenta", "");
         gw.threadWait(2000);
         escritorioPage.navegarAcciones("acciones cuenta", "nueva nota", "", "");
@@ -127,7 +186,7 @@ public class PruebaMenuSteps extends ScenarioSteps {
         gw.threadWait(2000);
         escritorioPage.navegarAcciones("acciones cuenta", "combinar cuenta con esta cuenta", "", "");
         gw.threadWait(2000);
-        /*escritorioPage.navegarTabBar("poliza", "nuevo envio", "");
+        *//*escritorioPage.navegarTabBar("poliza", "nuevo envio", "");
         gw.threadWait(2000);
         escritorioPage.navegarAcciones("acciones poliza", "archivo de cuenta", "", "");
         gw.threadWait(2000);
@@ -290,12 +349,12 @@ public class PruebaMenuSteps extends ScenarioSteps {
         escritorioPage.navegarAcciones("acciones administracion", "nuevo grupo de afinidad", "", "");
         gw.threadWait(2000);
         escritorioPage.navegarAcciones("acciones administracion", "verificar si el patron de formulario de poliza contiene errores", "", "");
-        gw.threadWait(2000);*/
+        gw.threadWait(2000);*//*
 
-    }
+    }*/
 
     @Step
     public void logout() {
-        gw.logout();
+        gw().logout();
     }
 }

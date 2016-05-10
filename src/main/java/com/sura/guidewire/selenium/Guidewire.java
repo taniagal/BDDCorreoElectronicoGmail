@@ -108,11 +108,12 @@ public class Guidewire extends PageObject {
         Actions act = new Actions(getDriver());
         menu.waitUntilClickable().click();
         menu.waitUntilClickable().click();
-        try {
+        waitUntil(1000);
+        /*try {
             TimeUnit.MILLISECONDS.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
     }
