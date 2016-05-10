@@ -61,7 +61,6 @@ public class ClaimsSteps extends ScenarioSteps{
         escritorio.navegacionBuscaAvanzada();
     }
 
-
     @Step
     public void buscaPolizaAvanzada (String Npoliza){buscar.buscaAvanzada(Npoliza);
     }
