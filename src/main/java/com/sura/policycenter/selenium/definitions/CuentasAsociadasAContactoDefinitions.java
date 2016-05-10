@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CuentasAsociadasAContactoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
@@ -8,16 +7,11 @@ import org.jbehave.core.annotations.*;
 public class CuentasAsociadasAContactoDefinitions {
 
     @Steps
-    SeusLoginSteps seusSteps;
-
-    @Steps
     CuentasAsociadasAContactoSteps contactoSteps;
 
-    @Given("que me encuentro autenticado con pais <pais>, username <usr> y password <pass>")
-    public void login(@Named("pais") String pais,
-                      @Named("usr") String usuario,
-                      @Named("pass") String password) {
-        seusSteps.login(pais, usuario, password);
+    @Given("que voy a consultar un contacto")
+    public void seleccionarOpcionBuscarContacto() {
+        contactoSteps.navegarBarraSuperior();
     }
 
     @When("consulte  un contacto con cuentas asociadas como: <nombre> <apellido>")
