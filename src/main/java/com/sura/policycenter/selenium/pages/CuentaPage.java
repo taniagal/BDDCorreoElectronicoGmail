@@ -52,12 +52,6 @@ public class CuentaPage extends Guidewire{
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     WebElementFacade txtDireccionNuevaCuentaPersonal;
 
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City-inputEl']")
-    WebElementFacade txtCiudadNuevaCuentaPersonal;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    WebElementFacade cboEstadoNuevaCuentaPersonal;
-
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-inputEl']")
     WebElementFacade txtCodigoPostalNuevaCuentaPersonal;
 
@@ -82,9 +76,6 @@ public class CuentaPage extends Guidewire{
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update-btnInnerEl']")
     WebElementFacade btnActualizar;
 
-    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:ttlBar']")
-    WebElementFacade lblResumenCuenta;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:Name-inputEl']")
     WebElementFacade lblNombreDeCuenta;
 
@@ -108,10 +99,12 @@ public class CuentaPage extends Guidewire{
                                         String direccion, String codigoPostal, String nombreOrganizacion){
         btnCrearCuentaNueva.click();
         btnNuevaCuentaPersonal.click();
+        espera(btnAgregarOrganizacion,5);
         btnAgregarOrganizacion.click();
         txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         btnBuscarOrganizacion.click();
         btnSeleccionarOrganizacion.click();
+        espera(cboTipoDocumentoNuevaCuenta,5);
         cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
         cboTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
         txtDocumentoNuevaCuenta.sendKeys(documento);
@@ -128,10 +121,12 @@ public class CuentaPage extends Guidewire{
                                                 String tipoDireccion, String direccion, String codigoPostal, String nombreOrganizacion) {
         btnCrearCuentaNueva.click();
         btnNuevaCuentaCompania.click();
+        espera(btnAgregarOrganizacion,5);
         btnAgregarOrganizacion.click();
         txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         btnBuscarOrganizacion.click();
         btnSeleccionarOrganizacion.click();
+        espera(cboTipoDocumentoNuevaCuenta,5);
         cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
         cboTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
         txtDocumentoNuevaCuenta.sendKeys(documento);

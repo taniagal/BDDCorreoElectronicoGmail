@@ -14,8 +14,8 @@ Tipo de documento, Numero de documento, Sexo,Fecha de nacimiento, Fecha de falle
 Profesion, Estado civil, Tipo familia,  Telefono primario, Telefono celular y Correo electronico primario
 
 Examples:
-user |pass |country  |primer_nombre    |primer_apellido |tipo_direccion |direccion  |documento   |tipo_documento        |
-su   |gw   |Colombia |HEGIGI           |OIUIOIO         |Vivienda       |calle 30   |564-36-5489 |CEDULA DE CIUDADANIA  |
+user |pass |country  |primer_nombre    |primer_apellido |tipo_direccion |direccion       |documento   |tipo_documento        |
+su   |gw   |Colombia |SASHA            |AKERMAN         |Vivienda       |CALLE 54B #50-25 |564-36-5489 |CEDULA DE CIUDADANIA  |
 
 
 Scenario: ver informacion detallada de un contacto tipo persona juridica.
@@ -28,5 +28,5 @@ documento, Actividad economica, Numero de empleados, Valor de activos, ventas an
 Correo electronico primario
 
 Examples:
-user |pass |country  |nombre_empresa    |tipo_direccion |direccion  |
-su   |gw   |Colombia |Empresa prueba    |Vivienda       |calle 30   |
+user |pass |country  |nombre_empresa    |tipo_direccion |direccion       |
+su   |gw   |Colombia |UMBRELLA          |Vivienda       |CALLE 54B #50-25 |
