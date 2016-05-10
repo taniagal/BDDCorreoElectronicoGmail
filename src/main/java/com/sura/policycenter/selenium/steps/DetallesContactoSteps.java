@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaContactoPage;
 import com.sura.policycenter.selenium.pages.DetallesContactoPage;
+import com.sura.policycenter.selenium.pages.EscritorioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.screenshots.QueuedScreenshot;
@@ -16,13 +17,15 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
     DetallesContactoPage dc = new DetallesContactoPage(getDriver());
 
+    EscritorioPage escritorioPolicy = new EscritorioPage(getDriver());
+
     public DetallesContactoSteps(Pages pages){
         super(pages);
     }
 
     @Step
     public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido){
-        bc.accionarBuscarContacto();
+        escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
         bc.buscarContactoPersona(primer_nombre,primer_apellido);
     }
 
@@ -33,7 +36,7 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
     @Step
     public void abrirDetallesContactoEmpresa(String nombreEmpresa){
-        bc.accionarBuscarContacto();
+        escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
         bc.buscarContactoEmpresa(nombreEmpresa);
     }
 
