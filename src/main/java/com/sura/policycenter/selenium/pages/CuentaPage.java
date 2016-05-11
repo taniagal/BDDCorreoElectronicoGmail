@@ -115,6 +115,7 @@ public class CuentaPage extends Guidewire{
         selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
         btnActualizar.click();
+        waitABit(1000);
     }
 
     public void crearCuentaNuevaPersonaJuridica(String tipoDocumento, String documento, String nombreEmpresa,
@@ -136,6 +137,7 @@ public class CuentaPage extends Guidewire{
         selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
         btnActualizar.click();
+        waitABit(1000);
     }
 
     public void buscarPersona(String nombre){
@@ -145,6 +147,7 @@ public class CuentaPage extends Guidewire{
     }
 
     public void assertCrearCuenta(String nombreCuenta){
+        espera(lblNombreDeCuenta,20);
         assertThat("Falló la creación de la cuenta", lblNombreDeCuenta.containsText(nombreCuenta));
     }
 
@@ -153,10 +156,12 @@ public class CuentaPage extends Guidewire{
     }
 
     public  void  assertVerificarMenor(String mensaje){
+        espera(divMensaje,20);
         assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
     }
 
     public  void  assertVerificarMensaje(String mensaje){
+        espera(divMensaje,20);
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
