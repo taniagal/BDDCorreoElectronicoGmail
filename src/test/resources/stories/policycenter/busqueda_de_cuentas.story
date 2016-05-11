@@ -130,6 +130,10 @@ Given que me encuentro en la busqueda de cuentas
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar el mensaje <mensaje>
 
+Examples:
+|primerNombre|segundoNombre|primerApellido|segundoApellido|mensaje
+|Rayo||Newton||La búsqueda no devolvió resultados.
+
 Scenario: Busqueda de cuenta persona natural por primer nombre y segundo nombre, datos insuficientes para la consulta
 Given que me encuentro en la busqueda de cuentas
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -193,16 +197,6 @@ Examples:
 |razonSocial|numeroCuenta|nombre|direccion
 |Variedades Yurledys|C000478988|Variedades Yurledys|826 N 8th St, Floor 0000, Developer Unit Habitation Cube #0000, Sheboygan, WI 94404-0000, Estados Unidos
 
-Scenario: Busqueda de cuenta persona juridica por nombre comercial
-Given que me encuentro en la busqueda de cuentas
-When ingrese la informacion de nombre comercial <nombreComercial> del titular de la cuenta
-Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
-
-Examples:
-|nombreComercial|numeroCuenta|nombre|direccion
-|Variedades Yurledys S.A|C000478988|Variedades Yurledys|826 N 8th St, Floor 0000, Developer Unit Habitation Cube #0000, Sheboygan, WI 94404-0000, Estados Unidos
-
-
 Scenario: Busqueda de cuenta persona juridica por razon social sin datos existentes
 Given que me encuentro en la busqueda de cuentas
 When ingrese la informacion de tipo de razon social <razonSocial> del titular de la cuenta
@@ -211,6 +205,15 @@ Then me debe mostrar el mensaje <mensaje>
 Examples:
 |razonSocial|mensaje
 |Variedades Yuyeimi|La búsqueda no devolvió resultados.
+
+Scenario: Busqueda de cuenta persona juridica por nombre comercial
+Given que me encuentro en la busqueda de cuentas
+When ingrese la informacion de nombre comercial <nombreComercial> del titular de la cuenta
+Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
+
+Examples:
+|nombreComercial|numeroCuenta|nombre|direccion
+|Variedades Yurledys S.A|C000478988|Variedades Yurledys|826 N 8th St, Floor 0000, Developer Unit Habitation Cube #0000, Sheboygan, WI 94404-0000, Estados Unidos
 
 Scenario: Busqueda de cuenta persona juridica por nombre comercial sin datos existentes
 Given que me encuentro en la busqueda de cuentas
