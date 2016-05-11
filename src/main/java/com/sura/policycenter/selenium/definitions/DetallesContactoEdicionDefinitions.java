@@ -70,7 +70,6 @@ public class DetallesContactoEdicionDefinitions {
     }
 
     @Then("se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios")
-    //@Pending
     public void ralizarEdicionInformacionContacto() {
         dcs.actualizarContacto();
         dcs.verificarActualizacionPersona();
@@ -83,7 +82,6 @@ public class DetallesContactoEdicionDefinitions {
     public void login(@Named("user") String usuario, @Named("pass") String contrasenia, @Named("country")String pais,
                       @Named("razon_social")String razonSocial,@Named("tipo_direccion")String tipoDireccion,
                       @Named("direccion")String direccion){
-        //seusLogin.login();
         ncs.nuevoContactoPersonaJuridica();
         ncs.seleccionarTipoDocumentoPersonaNatural("NIT");
         ncs.ingresarRazonSocial(razonSocial);
