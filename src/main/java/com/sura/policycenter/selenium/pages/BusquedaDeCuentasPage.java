@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.SeusLoginPage;
+import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
@@ -9,10 +9,8 @@ import org.openqa.selenium.interactions.Actions;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
 
-public class BusquedaDeCuentasPage extends SeusLoginPage {
-
+public class BusquedaDeCuentasPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='TabBar:SearchTab']")
     WebElementFacade mnuBuscar;
@@ -112,19 +110,16 @@ public class BusquedaDeCuentasPage extends SeusLoginPage {
     }
 
     public void ingresarABuscarCuentas() {
-        try{
             Actions act = new Actions(getDriver());
+            espera(mnuBuscar, 5);
             mnuBuscar.waitUntilClickable();
             mnuBuscar.click();
-            Thread.sleep(1000);
+            threadWait(1000);
             mnuBuscar.click();
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
             act.moveToElement(mnuBuscarCuenta).click().build().perform();
-            Thread.sleep(2000);
-            } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
+            threadWait(2000);
+     }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         txtTipoDocumento.clear();
@@ -160,12 +155,8 @@ public class BusquedaDeCuentasPage extends SeusLoginPage {
     }
 
     public void validarMensaje(String mensaje) {
+        espera(msjMensajeInformativo, 2);
         assertThat(this.msjMensajeInformativo.getText(), containsString(mensaje));
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public void validarCamposDelFormulario() {
