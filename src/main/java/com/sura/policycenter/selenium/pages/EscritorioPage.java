@@ -1,7 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.policycenter.selenium.pages.menu.*;
+import com.sura.policycenter.selenium.pages.menu.acciones.EscritorioNuevaCuentaPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.EscritorioNuevoEnvioPage;
+import com.sura.policycenter.selenium.pages.menu.tabbar.*;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.Keys;
@@ -162,5 +164,105 @@ public class EscritorioPage extends Guidewire {
 
     public BuscarContactosPage irABuscarContactos() {
         return barraNavegacion.irABuscarContactos();
+    }
+
+    public EquipoPage irAEquipo() {
+        return barraNavegacion.irAEquipo();
+    }
+
+    public AdminUsuariosPage irAAdminUsuarios() {
+        return barraNavegacion.irAAdminUsuarios();
+    }
+
+    public AdminGruposPage irAAdminGrupos() {
+        return barraNavegacion.irAAdminGrupos();
+    }
+
+    public AdminRolesPage irAAdminRoles() {
+        return barraNavegacion.irAAdminRoles();
+    }
+
+    public AdminRegionesPage irAAdminRegiones() {
+        return barraNavegacion.irAAdminRegiones();
+    }
+
+    public AdminOrganizacionesPage irAAdminOrganizaciones() {
+        return barraNavegacion.irAAdminOrganizaciones();
+    }
+
+    public AdminCodAgentesPage irAAdminCodAgentes() {
+        return barraNavegacion.irAAdminCodAgentes();
+    }
+
+    public AdminPerfilAutoridadPage irAAdminPerfilAutoridad() {
+        return barraNavegacion.irAAdminPerfilAutoridad();
+    }
+
+    public AdminAtributosPage irAAdminAtributos() {
+        return barraNavegacion.irAAdminAtributos();
+    }
+
+    public AdminGruposAfinidadPage irAAdminGruposAfinidad() {
+        return barraNavegacion.irAAdminGruposAfinidad();
+    }
+
+    public AdminPatronesActividadPage irAAdminPatronesActividad() {
+        return barraNavegacion.irAAdminPatronesActividad();
+    }
+
+    public AdminDiasFestivosPage irAAdminDiasFestivos() {
+        return barraNavegacion.irAAdminDiasFestivos();
+    }
+
+    public AdminPatronesFormPolizaPage irAAdminPatronesFormPoliza() {
+        return barraNavegacion.irAAdminPatronesFormPoliza();
+    }
+
+    public AdminRetencionPolizasPage irAAdminRetencionPolizas() {
+        return barraNavegacion.irAAdminRetencionPolizas();
+    }
+
+    public AdminMensajesPage irAAdminMensajes() {
+        return barraNavegacion.irAAdminMensajes();
+    }
+
+    public AdminColasMensajesPage irAAdminColasMensajes() {
+        return barraNavegacion.irAAdminColasMensajes();
+    }
+
+    public AdminFlujosTrabajoPage irAAdminFlujosTrabajo() {
+        return barraNavegacion.irAAdminFlujosTrabajo();
+    }
+
+    public AdminEstadistFlujoTrabajoPage irAAdminEstadistFlujoTrabajo() {
+        return barraNavegacion.irAAdminEstadistFlujoTrabajo();
+    }
+
+    public AdminImportarDatosPage irAAdminImportarDatos() {
+        return barraNavegacion.irAAdminImportarDatos();
+    }
+
+    public AdminExportarDatosPage irAAdminExportarDatos() {
+        return barraNavegacion.irAAdminExportarDatos();
+    }
+
+    public AdminParamSecuenciaPage irAAdminParamSecuencia() {
+        return barraNavegacion.irAAdminParamSecuencia();
+    }
+
+    public AdminFormatoExportaPage irAAdminFormatoExporta() {
+        return barraNavegacion.irAAdminFormatoExporta();
+    }
+
+    public AdminCambioDatosPage irAAdminCambioDatos() {
+        return barraNavegacion.irAAdminCambioDatos();
+    }
+
+    public EscritorioNuevoEnvioPage irAEscritorioNuevoEnvio() {
+        return barraNavegacion.irAEscritorioNuevoEnvio();
+    }
+
+    public EscritorioNuevaCuentaPage irAEscritorioNuevaCuenta() {
+        return barraNavegacion.irAEscritorioNuevaCuenta();
     }
 }

@@ -82,7 +82,7 @@ public class PruebaMenuSteps extends ScenarioSteps {
         gw().waitUntil(3000);*/
 
         //Menu Buscar
-        escritorioPage().irABuscarPolizas();
+        /*escritorioPage().irABuscarPolizas();
         gw().waitUntil(3000);
         escritorioPage().irABuscarCuentas();
         gw().waitUntil(3000);
@@ -91,6 +91,60 @@ public class PruebaMenuSteps extends ScenarioSteps {
         escritorioPage().irABuscarActividades();
         gw().waitUntil(3000);
         escritorioPage().irABuscarContactos();
+        gw().waitUntil(3000);*/
+
+        //Menu Equipo
+        /*escritorioPage().irAEquipo();
+        gw().waitUntil(3000);*/
+
+        //Menu Adiministracion
+        /*escritorioPage().irAAdminUsuarios();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminGrupos();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminRoles();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminRegiones();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminOrganizaciones();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminCodAgentes();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminPerfilAutoridad();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminAtributos();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminGruposAfinidad();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAAdminPatronesActividad();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminDiasFestivos();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminPatronesFormPoliza();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminRetencionPolizas();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAAdminMensajes();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminColasMensajes();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminFlujosTrabajo();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminEstadistFlujoTrabajo();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAAdminImportarDatos();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminExportarDatos();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminParamSecuencia();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminFormatoExporta();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminCambioDatos();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAEscritorioNuevoEnvio();
+        gw().waitUntil(3000);*/
+        escritorioPage().irAEscritorioNuevaCuenta();
         gw().waitUntil(3000);
     }
 

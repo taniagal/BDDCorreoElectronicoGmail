@@ -1,4 +1,4 @@
-package com.sura.policycenter.selenium.pages.menu;
+package com.sura.policycenter.selenium.pages.menu.tabbar;
 
 import com.sura.guidewire.selenium.Guidewire;
 import org.openqa.selenium.WebDriver;
@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by jorghome on 10/05/2016.
  */
-public class MisEnviosPage extends Guidewire {
-    public MisEnviosPage(WebDriver driver) {
+public class NuevaCompaniaPage extends Guidewire {
+    public NuevaCompaniaPage(WebDriver driver) {
         super(driver);
     }
 }
