@@ -80,6 +80,18 @@ public class EscritorioPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-itemEl']")
     WebElementFacade mnuItemNuevaCuenta;
 
+    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
+    WebElementFacade txtNumCuenta;
+
+    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
+    WebElementFacade btnBuscarCuenta;
+
+    @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
+    private static WebElementFacade linkContactos;
+
+
+
+
     /**
      * Objetos menu Acciones Cuenta
      */
@@ -1265,5 +1277,11 @@ public class EscritorioPage extends Guidewire {
             case "":
                 break;
         }
+    }
+
+
+    public static void clicLinkContactos(){
+        linkContactos.waitUntilClickable();
+        linkContactos.click();
     }
 }
