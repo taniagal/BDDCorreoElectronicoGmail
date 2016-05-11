@@ -27,8 +27,8 @@ nombre empresa <nombre_empresa>, tipo de documento <tipo_documento>,tipo de dire
 Then se debe crear la cuenta con el cliente <nombre_empresa> persona juridica
 
 Examples:
-user |pass |country  |nombre_empresa |tipo_documento |tipo_direccion |direccion        |codigo_postal  |nombre_organizacion    |
-su   |gw   |Colombia |UMBRELLA       |NIT            |Vivienda       |CALLE 54B #50-25 |10001          |d                      |
+|user |pass |country  |nombre_empresa |tipo_documento |tipo_direccion |direccion        |codigo_postal  |nombre_organizacion    |
+|su   |gw   |Colombia |UMBRELLA       |NIT            |Vivienda       |CALLE 54B #50-25 |10001          |d                      |
 
 
 
@@ -42,8 +42,8 @@ codigo postal <codigo_postal> y nombre de organizacion <nombre_organizacion>
 Then No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
-user |pass |country  |tipo_documento       |fecha_nacimiento |primer_nombre |primer_apellido |tipo_direccion |direccion         |codigo_postal  |nombre_organizacion|mensaje|
-su   |gw   |Colombia |CEDULA DE CIUDADANIA |02/12/1990       |SASHA         |AKERMAN         |Vivienda       |CALLE 54B #50-25  |10001          |D                  |Ya existe un contacto con el mismo número de identificación|
+|user |pass |country  |tipo_documento       |fecha_nacimiento |primer_nombre |primer_apellido |tipo_direccion |direccion         |codigo_postal  |nombre_organizacion|mensaje|
+|su   |gw   |Colombia |CEDULA DE CIUDADANIA |02/12/1990       |SASHA         |AKERMAN         |Vivienda       |CALLE 54B #50-25  |10001          |D                  |Ya existe un contacto con el mismo número de identificación|
 
 
 

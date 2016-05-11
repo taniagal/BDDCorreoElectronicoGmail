@@ -173,7 +173,7 @@ public class DetallesContactoPage extends Guidewire {
 
     public void editarContacto(){
         btnEditarContacto.click();
-        threadWait(300);
+        waitABit(300);
     }
 
 
@@ -184,18 +184,18 @@ public class DetallesContactoPage extends Guidewire {
         txtTelefonoCelular.clear();
         txtTelefonoCelular.sendKeys(telefonoCelular);
         txtSegundoNombre.clear();
-        threadWait(200);
+        waitABit(200);
         txtSegundoNombre.sendKeys(segundoNombre);
         txtSegundoApellido.clear();
         txtSegundoApellido.sendKeys(segundoApellido);
         selectItem(cboEstadoCivil,estadoCivil);
         selectItem(cboProfesion, profesion);
         selectItem(cboTipoFamilia, tipoFamilia);
-        threadWait(500);
+        waitABit(500);
         txtTelefonoTrabajo.clear();
         txtTelefonoTrabajo.sendKeys(telefonoTrabajo);
         txtCorreoElectronicoPrimario.clear();
-        threadWait(500);
+        waitABit(500);
         txtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
         txtCorreoElectronicoSecundario.clear();
         txtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
@@ -226,7 +226,7 @@ public class DetallesContactoPage extends Guidewire {
         txtNombreComercial.clear();
         txtNombreComercial.sendKeys(nombreComercial);
         selectItem(cboActividadComercial, actividadComercial);
-        threadWait(500);
+        waitABit(500);
         txtNumeroEmpleados.clear();
         txtNumeroEmpleados.sendKeys(numeroEmpleados);
         txtValorActivos.clear();
@@ -235,7 +235,7 @@ public class DetallesContactoPage extends Guidewire {
         txtVentasAnuales.sendKeys(ventasAnuales);
         txtTelefonoOficina.clear();
         txtTelefonoOficina.sendKeys(telefonoOficina);
-        threadWait(500);
+        waitABit(500);
         txtCorreoElectronicoSecundarioEmpresa.clear();
         txtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
 

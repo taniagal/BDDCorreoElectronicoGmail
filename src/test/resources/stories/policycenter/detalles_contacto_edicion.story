@@ -25,7 +25,7 @@ Then se deben habilitar la edicion de cierta informacion del contacto, actualiza
 
 Examples:
 |country |user    |pass     |tipo_documento        |documento  |primer_nombre|primer_apellido |segundo_nombre   |segundo_apellido   |tipo_direccion |direccion       |fecha_fallecimiento  |causa_fallecimiento    |profesion  |estado_civil   |tipo_familia |telefono_celular    |telefono_residencial  |telefono_trabajo  |correo_electronico_primario  |correo_electronico_secundario|
-|Colombia|pedrvevi|pedrvevi |CEDULA DE CIUDADANIA  |564-36-5489|SASHA         |AKERMAN        |segundo nombre   |segundo apellido   |Vivienda       |CALLE 54B #50-25 |12/12/2015           |causa de fallecimiento |ABOGADO    |Soltero        |Nuclear      |654-985-1236        |789-785-1236          |456-789-1236      |primario@mail.com            |secundario@mail.com          |
+|Colombia|pedrvevi|pedrvevi |CEDULA DE CIUDADANIA  |564-36-5489|SASHA         |AKERMAN        |KAREN            |PEREZ              |Vivienda       |CALLE 54B #50-25 |12/12/2015           |causa de fallecimiento |ABOGADO    |Soltero        |Nuclear      |654-985-1236        |789-785-1236          |456-789-1236      |primario@mail.com            |secundario@mail.com          |
 
 
 

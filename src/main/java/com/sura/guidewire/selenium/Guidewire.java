@@ -113,20 +113,6 @@ public class Guidewire extends PageObject {
         return act;
     }
 
-    public String cedulaRandom() {
-        StringBuilder result=new StringBuilder("");
-
-        int primero = (int) Math.floor(Math.random() * (100 - 999) + 999);
-        int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
-        int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
-
-        result.append(primero);
-        result.append(segundo);
-        result.append(tercero);
-
-        return result.toString();
-    }
-
     public void selectItem(WebElementFacade element, String option){
         element.click();
         threadWait(200);
@@ -143,9 +129,20 @@ public class Guidewire extends PageObject {
     }
 
     public String nitRandom() {
-        int primero = (int) Math.floor(Math.random() * (10 - 99) + 99);
-        int segundo = (int) Math.floor(Math.random() * (1000000 - 9999999) + 9999999);
-        return primero + "-" + segundo;
+        StringBuilder result=new StringBuilder("");
+        int primero = (int) Math.floor(Math.random() * (90 - 99) + 99);
+        int segundo = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
+        result.append(primero);
+        result.append(segundo);
+        return result.toString();
+    }
+
+
+    public String cedulaRandom() {
+        StringBuilder result=new StringBuilder("");
+        int primero = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
+        result.append(primero);
+        return result.toString();
     }
 
     public void elegirLenguaje(){
