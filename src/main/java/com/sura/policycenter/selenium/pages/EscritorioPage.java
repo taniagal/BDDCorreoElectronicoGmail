@@ -7,6 +7,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import javax.swing.*;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
@@ -690,7 +693,7 @@ public class EscritorioPage extends Guidewire {
                 break;
             case "BUSCAR":
                 mnuBuscar.click();
-                mnuBuscar.click();
+                espera(mnuBuscar,2);
                 act.sendKeys(Keys.ARROW_DOWN).build().perform();
                 switch (item1.toUpperCase()) {
                     case "POLIZAS":

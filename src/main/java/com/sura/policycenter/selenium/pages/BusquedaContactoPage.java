@@ -8,7 +8,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import javax.swing.*;
 import java.util.List;
+
+import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -52,10 +56,14 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:_RecordCount']")
     WebElementFacade msjSinRegistros;
 
+    //@FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:SearchWarningMessagePanelSet:SearchWarningMessage']")
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:_msgs']/div")
+    WebElementFacade msjSinCriterios;
+
     @FindBy(xpath="//li[2]")
     WebElementFacade itmNIT;
 
-    @FindBy(xpath="//input[@id='ContactSearch:ContactSearchScreen:DocumentType-inputEl']")
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:DocumentType-inputEl']")
     WebElementFacade txtTipoDoc;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:identificationNumber-inputEl']")
@@ -175,11 +183,6 @@ public class BusquedaContactoPage extends Guidewire {
         selectContact.click();
     }
 
-    public void buscarContactoPorTipoYNroIdentificacion(String tipoIdentificacion, String numeroIdentificacion){
-        tipoContact.type("Personal");
-        tipoContact.sendKeys(Keys.ENTER);
-    }
-
     public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial){
 
         txtTipoDoc.type(tipoDoc);
@@ -196,7 +199,7 @@ public class BusquedaContactoPage extends Guidewire {
 
         try {
             Thread.sleep(2000);
-            assertThat(msjSinRegistros.getText(),is(equalTo(msjSinReg)));
+            assertThat(msjSinRegistros.getText().toString(),is(equalTo(msjSinReg)));
 
         } catch (InterruptedException e) {
 
@@ -208,7 +211,7 @@ public class BusquedaContactoPage extends Guidewire {
 
         try {
             Thread.sleep(2000);
-            assertThat(msjValidacionCampos.getText(),is(equalTo(msjVal)));
+            assertThat(msjSinCriterios.getText(),is(equalTo(msjVal)));
 
         } catch (InterruptedException e) {
 
@@ -243,23 +246,36 @@ public class BusquedaContactoPage extends Guidewire {
         espera(botonBuscar,2);
     }
 
-    public void verInfoPersonaJuridica() {
+    public void verInfoPersonaJuridica(String filtro) {
+        List<WebElement> allRows = table.findElements(By.tagName("tr"));
+
         try {
-            assertThat(colTipoId.getText(), is(not(equalTo(null))));
-            assertThat(colNumId.getText(), is(not(equalTo(null))));
-            assertThat(colNombreCcial.getText(), is(not(equalTo(null))));
-            assertThat(colRazonSocial.getText(), is(not(equalTo(null))));
-            assertThat(colDireccion.getText(), is(not(equalTo(null))));
-            assertThat(colTelefono.getText(), is(not(equalTo(null))));
-            assertThat(colEmail.getText(), is(not(equalTo(null))));
-            assertThat(colExterna.getText(), is(not(equalTo(null))));
+
+            for (WebElement row : allRows) {
+                List<WebElement> cells = row.findElements(By.tagName("td"));
+                assertThat(cells.get(4).getText(), is(equalTo(filtro)));
+            }
+
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void verInfoPersonaNatural() {
+    public void verInfoPersonaNatural(String filtro) {
+        List<WebElement> allRows = table.findElements(By.tagName("tr"));
+        //String razonSocial = txtRazonSocial.getValue().toString();
+
         try {
+
+            for (WebElement row : allRows) {
+                List<WebElement> cells = row.findElements(By.tagName("td"));
+                assertThat(cells.get(3).getText(), is(equalTo(filtro)));
+            }
+
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        /*try {
 
             assertThat(colTipoId.getText(), is(not(equalTo(null))));
             assertThat(colNumId.getText(), is(not(equalTo(null))));
@@ -271,24 +287,27 @@ public class BusquedaContactoPage extends Guidewire {
             assertThat(colExterna.getText(), is(not(equalTo(null))));
         }catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
 
-    public void consultarContactoTipoNumDoc(String tipoDoc, String numDoc) {
+    public void  consultarContactoTipoNumDoc(String tipoDoc, String numDoc) {
 
+        txtTipoDoc.waitUntilEnabled();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
-        espera(txtTipoDoc,1);
+        txtNumDoc.waitUntilEnabled();
         txtNumDoc.type(numDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
     }
 
-    public void consultarContactoPorNombresYApellidos(String tipoDoc, String nombre, String apellido) {
+    public void consultarContactoPorNombresYApellidos(String tipoDoc, String primerNombre,
+                                                      String segundoNombre, String primerApellido,
+                                                      String segundoApellido) {
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
-        txtNombre.type(nombre);
-        txtApellido.type(apellido);
+        txtNombre.type(primerNombre);
+        txtApellido.type(primerApellido);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
         espera(botonBuscar,2);
@@ -348,4 +367,14 @@ public class BusquedaContactoPage extends Guidewire {
         selectContact.click();
     }
 
+    public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido){
+
+        boolean valido = primerNombre.length() < 2 || segundoNombre.length() < 2 || primerApellido.length() < 2 || segundoApellido.length() < 2;
+        assertTrue(valido);
+    }
+
+    public void validarLongitudPersonaJuridica(String razonSocial, String nombreComercial) {
+        boolean valido = razonSocial.length() < 4 || nombreComercial.length() < 4;
+        assertTrue(valido);
+    }
 }

@@ -70,13 +70,13 @@ public class BusquedaContactoSteps extends ScenarioSteps {
 
     @Step
     @Pending
-    public void verInfoPersonaJuridica() {
-        busquedaContactoPage.verInfoPersonaJuridica();
+    public void verInfoPersonaJuridica(String filtro) {
+        busquedaContactoPage.verInfoPersonaJuridica(filtro);
     }
 
     @Step
-    public void verInfoPersonaNatural() {
-        busquedaContactoPage.verInfoPersonaNatural();
+    public void verInfoPersonaNatural(String filtro) {
+        busquedaContactoPage.verInfoPersonaNatural(filtro);
     }
 
     @Step
@@ -85,12 +85,24 @@ public class BusquedaContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void consultarContactoPorNombresYApellidos(String tipoDoc, String nombre, String apellido) {
-        busquedaContactoPage.consultarContactoPorNombresYApellidos(tipoDoc, nombre, apellido);
+    public void consultarContactoPorNombresYApellidos(String tipoDoc, String primerNombre,
+                                                      String segundoNombre, String primerApellido,
+                                                      String segundoApellido) {
+        busquedaContactoPage.consultarContactoPorNombresYApellidos(tipoDoc, primerNombre, segundoNombre, primerApellido, segundoApellido);
     }
 
     @Step
     public void consultarContactoNombreComercial(String tipoDoc, String nombreComercial) {
         busquedaContactoPage.consultarContactoNombreComercial(tipoDoc, nombreComercial);
+    }
+
+    @Step
+    public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido){
+        busquedaContactoPage.validarLongitudPersonaNatural(primerNombre,"",primerApellido,"");
+    }
+
+    @Step
+    public void validarLongitudPersonaJuridica(String razonSocial, String nombreComercial) {
+        busquedaContactoPage.validarLongitudPersonaJuridica(razonSocial, nombreComercial);
     }
 }

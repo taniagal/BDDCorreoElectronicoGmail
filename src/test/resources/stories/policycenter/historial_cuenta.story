@@ -9,7 +9,7 @@ Scenario: Historial de la cuenta
 Given me encuentro autenticado en gw con un <country>, <user> y <password>
 And Estoy en una cuenta <numCuenta>
 When ingreso al historial
-Then mostrar la siguiente informacion <tipo>, <usuario>, <fechaTransaccion>, <descripcion>, <producto>, <poliza>, <transaccionPoliza>, <valorOriginal>, <valorNuevo>
+Then mostrar la informacion del historial de la cuenta
 
 Examples:
 |country|user|password|numCuenta|tipo|usuario|fechaTransaccion|descripcion|producto|poliza|transaccionPoliza|valorOriginal|valorNuevo|
@@ -33,7 +33,7 @@ Given me encuentro autenticado en gw
 And estoy en el historial de la cuenta <numCuenta>
 When indique el criterio de busqueda Relacionado con
 Then debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con
-And mostrar la siguiente informacion <tipo>, <usuario>, <fechaTransaccion>, <descripcion>, <producto>, <poliza>, <transaccionPoliza>, <valorOriginal>, <valorNuevo>
+And mostrar la informacion del historial de la cuenta
 
 Examples:
 |numCuenta|tipo|usuario|fechaTransaccion|descripcion|producto|poliza|transaccionPoliza|valorOriginal|valorNuevo|
