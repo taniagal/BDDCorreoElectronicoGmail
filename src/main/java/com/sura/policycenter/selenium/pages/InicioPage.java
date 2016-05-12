@@ -403,4 +403,50 @@ public class InicioPage extends Guidewire {
         return navegacion.irAAdminVerificarErrorPatron();
     }
 
+
+
+    public CuentaCreaAgenteNuevPage irACuentaCreaAgenteNuevPage() {
+        return navegacion.irACuentaCreaAgenteNuevPage();
+    }
+
+    public CuentaObtAudPersoInterPage irACuentaObtAudPersoInterPage() {
+        return navegacion.irACuentaObtAudPersoInterPage();
+    }
+
+    public CuentaObtAudServExterPage irACuentaObtAudServExterPage() {
+        return navegacion.irACuentaObtAudServExterPage();
+    }
+
+    public CuentaObtCotizReaseguroPage irACuentaObtCotizReaseguroPage() {
+        return navegacion.irACuentaObtCotizReaseguroPage();
+    }
+
+    public CuentaObtDatoOficPage irACuentaObtDatoOficPage() {
+        return navegacion.irACuentaObtDatoOficPage();
+    }
+
+    public CuentaObtInfoVehiMotoPage irACuentaObtInfoVehiMotoPage() {
+        return navegacion.irACuentaObtInfoVehiMotoPage();
+    }
+
+    public CuentaObtInspContSiniesPage irACuentaObtInspContSiniesPage() {
+        return navegacion.irACuentaObtInspContSiniesPage();
+    }
+
+    public CuentaObtInspServExterPage irACuentaObtInspServExterPage() {
+        return navegacion.irACuentaObtInspServExterPage();
+    }
+
+    public CuentaObtReporCredPage irACuentaObtReporCredPage() {
+        return navegacion.irACuentaObtReporCredPage();
+    }
+
+    public CuentaRevisionLegalPage irACuentaRevisionLegalPage() {
+        return navegacion.irACuentaRevisionLegalPage();
+    }
+
+    public CuentaTazaCotPoliManuPage irCuentaTazaCotPoliManuPage() {
+        return navegacion.irCuentaTazaCotPoliManuPage();
+    }
+
 }

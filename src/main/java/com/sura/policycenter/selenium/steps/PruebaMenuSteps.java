@@ -92,13 +92,16 @@ public class PruebaMenuSteps extends ScenarioSteps {
         gw().waitUntil(2000);*/
         /*escritorioPage().irAEscritorioConvPoliACuentaPage();
         gw().waitUntil(1000);*/
+        escritorioPage().irCuentaTazaCotPoliManuPage();
+        gw().waitUntil(2000);
+
 
 
         //Menu Poliza
         /*escritorioPage().irANuevoEnvio();
         gw().waitUntil(3000);*/
-        escritorioPage().irABuscarPoliza("4215989563");
-        gw().waitUntil(3000);
+        /*escritorioPage().irABuscarPoliza("4215989563");
+        gw().waitUntil(3000);*/
 
         //Menu Contacto
         /*escritorioPage().irANuevaCompania();

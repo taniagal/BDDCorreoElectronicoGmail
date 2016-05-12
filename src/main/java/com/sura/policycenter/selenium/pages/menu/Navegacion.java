@@ -222,6 +222,35 @@ public class Navegacion extends Guidewire {
     @FindBy (xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_Validate:AdminMenuActions_ValidateFormPatterns-itemEl']")
     WebElementFacade mnuAccionVerificarErroresPatron;
 
+
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category-arrowEl']")
+    WebElementFacade mnuAccionSolicitud;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:0:item-itemEl']")
+    WebElementFacade mnuAccionAgenteNuevo;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:1:item-itemEl']")
+    WebElementFacade mnuAccionAuditoriaInterno;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:2:item-itemEl']")
+    WebElementFacade mnuAccionAuditoriaExterna;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:3:item-itemEl']")
+    WebElementFacade mnuAccionCotizacionReaseguro;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:4:item-itemEl']")
+    WebElementFacade mnuAccionDatosOf;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:5:item-itemEl']")
+    WebElementFacade mnuAccionInfoAgente;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:6:item-textEl']")
+    WebElementFacade mnuAccionInformesMotorizado;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:7:item-itemEl']")
+    WebElementFacade mnuAccionInspeccionSiniestro;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:8:item-itemEl']")
+    WebElementFacade mnuAccionInspeccionExterno;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:9:item-itemEl']")
+    WebElementFacade mnuAccionReportesCredito;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:10:item-itemEl']")
+    WebElementFacade mnuAccionRevisionLegal;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:11:item-itemEl']")
+    WebElementFacade mnuAccionCotizarManual;
+
+
     public MisActividadesPage irAMisActividades() {
         gw.deployMenu(menuEscritorio);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -882,5 +911,149 @@ public class Navegacion extends Guidewire {
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuAccionVerificarErroresPatron).release(mnuAccionVerificarErroresPatron).click().build().perform();
         return new AdminVerificarErrorPatronPage(getDriver());
+    }
+
+    public CuentaCreaAgenteNuevPage irACuentaCreaAgenteNuevPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionAgenteNuevo).release(mnuAccionAgenteNuevo).click().build().perform();
+        return new CuentaCreaAgenteNuevPage(getDriver());
+    }
+
+    public CuentaObtAudPersoInterPage irACuentaObtAudPersoInterPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionAuditoriaInterno).release(mnuAccionAuditoriaInterno).click().build().perform();
+        return new CuentaObtAudPersoInterPage(getDriver());
+    }
+
+    public CuentaObtAudServExterPage irACuentaObtAudServExterPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionAuditoriaExterna).release(mnuAccionAuditoriaExterna).click().build().perform();
+        return new CuentaObtAudServExterPage(getDriver());
+    }
+
+    public CuentaObtCotizReaseguroPage irACuentaObtCotizReaseguroPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionCotizacionReaseguro).release(mnuAccionCotizacionReaseguro).click().build().perform();
+        return new CuentaObtCotizReaseguroPage(getDriver());
+    }
+
+    public CuentaObtDatoOficPage irACuentaObtDatoOficPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionDatosOf).release(mnuAccionDatosOf).click().build().perform();
+        return new CuentaObtDatoOficPage(getDriver());
+    }
+
+    public CuentaObtInfoVehiMotoPage irACuentaObtInfoVehiMotoPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionInformesMotorizado).release(mnuAccionInformesMotorizado).click().build().perform();
+        return new CuentaObtInfoVehiMotoPage(getDriver());
+    }
+
+    public CuentaObtInspContSiniesPage irACuentaObtInspContSiniesPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionInspeccionSiniestro).release(mnuAccionInspeccionSiniestro).click().build().perform();
+        return new CuentaObtInspContSiniesPage(getDriver());
+    }
+
+    public CuentaObtInspServExterPage irACuentaObtInspServExterPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionInspeccionExterno).release(mnuAccionInspeccionExterno).click().build().perform();
+        return new CuentaObtInspServExterPage(getDriver());
+    }
+
+    public CuentaObtReporCredPage irACuentaObtReporCredPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionReportesCredito).release(mnuAccionReportesCredito).click().build().perform();
+        return new CuentaObtReporCredPage(getDriver());
+    }
+
+    public CuentaRevisionLegalPage irACuentaRevisionLegalPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRevisionLegal).release(mnuAccionRevisionLegal).click().build().perform();
+        return new CuentaRevisionLegalPage(getDriver());
+    }
+
+    public CuentaObtInfRiesAgenPage irACuentaObtInfRiesAgenPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionInfoAgente).release(mnuAccionInfoAgente).click().build().perform();
+        return new CuentaObtInfRiesAgenPage(getDriver());
+    }
+
+    public CuentaTazaCotPoliManuPage irCuentaTazaCotPoliManuPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionCotizarManual).release(mnuAccionCotizarManual).click().build().perform();
+        return new CuentaTazaCotPoliManuPage(getDriver());
     }
 }
