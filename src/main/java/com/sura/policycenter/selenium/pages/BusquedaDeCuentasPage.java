@@ -105,29 +105,49 @@ public class BusquedaDeCuentasPage extends Guidewire {
     @FindBy(xpath="//*[@id='AccountSearch:AccountSearchScreen:_msgs']/div")
     WebElementFacade msjMensajeInformativo;
 
+    @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV_tb:PrintMe']")
+    WebElementFacade btnImprimir;
+
+    @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:DoPrint-labelEl']")
+    WebElementFacade lblImprimir;
+
+    @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:Export-labelEl']")
+    WebElementFacade lblExportar;
+
+    @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:CustomExport-labelEl']")
+    WebElementFacade lblExportarPersonalizado;
+
+    @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:PrintChoice_Choice-inputEl']")
+    WebElementFacade rbtnImprimir;
+
+    @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:ExportChoice_Choice-inputEl']")
+    WebElementFacade rbtnExportar;
+
+    @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:CustomExportChoice_Choice-inputEl']")
+    WebElementFacade rbtnExportarPersonalizado;
+
+    @FindBy(xpath=".//*[@id='PrintOptionPopup:__crumb__']")
+    WebElementFacade btnVolverBuscarCuentas;
+
+
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
     }
 
     public void ingresarABuscarCuentas() {
             Actions act = new Actions(getDriver());
-            espera(mnuBuscar, 5);
             mnuBuscar.waitUntilClickable();
             mnuBuscar.click();
-            threadWait(1000);
+            waitABit(1000);
             mnuBuscar.click();
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
             act.moveToElement(mnuBuscarCuenta).click().build().perform();
-            threadWait(2000);
+            waitABit(1000);
      }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
-        txtTipoDocumento.clear();
-        txtNumeroDocumento.clear();
-        txtPrimerNombre.clear();
-        txtSegundoNombre.clear();
-        txtPrimerApellido.clear();
-        txtSegundoApellido.clear();
+        this.limpiarFormulario();
+        waitABit(1000);
         txtPrimerNombre.sendKeys(primerNombre);
         txtSegundoNombre.sendKeys(segundoNombre);
         txtPrimerApellido.sendKeys(primerApellido);
@@ -135,13 +155,20 @@ public class BusquedaDeCuentasPage extends Guidewire {
         btnBuscar.click();
     }
 
-    public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
-        txtPrimerNombre.clear();
-        txtPrimerApellido.clear();
-        txtSegundoNombre.clear();
-        txtSegundoApellido.clear();
+    public void limpiarFormulario(){
         txtTipoDocumento.clear();
         txtNumeroDocumento.clear();
+        txtRazonSocial.clear();
+        txtNombreComercial.clear();
+        txtPrimerNombre.clear();
+        txtSegundoNombre.clear();
+        txtPrimerApellido.clear();
+        txtSegundoApellido.clear();
+    }
+
+    public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
+        this.limpiarFormulario();
+        waitABit(1000);
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
         txtNumeroDocumento.sendKeys(numeroDocumento);
@@ -155,8 +182,14 @@ public class BusquedaDeCuentasPage extends Guidewire {
     }
 
     public void validarMensaje(String mensaje) {
-        espera(msjMensajeInformativo, 2);
+        msjMensajeInformativo.waitUntilVisible();
         assertThat(this.msjMensajeInformativo.getText(), containsString(mensaje));
+    }
+
+    public void validarCheckNoSeleccionado(WebElementFacade elemento){
+        if(elemento.isSelected()){
+            assertThat("Check seleccionado", containsString("Check no seleccionado"));
+        }else assertThat("Check no seleccionado", containsString("Check no seleccionado"));
     }
 
     public void validarCamposDelFormulario() {
@@ -169,15 +202,9 @@ public class BusquedaDeCuentasPage extends Guidewire {
         this.txtSegundoApellido.shouldBeVisible();
         this.txtRazonSocial.shouldBeVisible();
         this.txtNombreComercial.shouldBeVisible();
-        if(chkPrimerNombreExacto.isSelected()){
-            assertThat("Check Primer Nombre Exacto Seleccionado", containsString("Check Primer Nombre Exacto No Seleccionado"));
-        }else assertThat("Check Primer Nombre Exacto No Seleccionado", containsString("Check Primer Nombre Exacto No Seleccionado"));
-        if(chkPrimerApellidoExacto.isSelected()){
-            assertThat("Check Primer Nombre Exacto Seleccionado", containsString("Check Primer Nombre Exacto No Seleccionado"));
-        }else assertThat("Check Primer Nombre Exacto No Seleccionado", containsString("Check Primer Nombre Exacto No Seleccionado"));
-        if(chkNombreCompaniaExacto.isSelected()){
-            assertThat("Check Primer Nombre Exacto Seleccionado", containsString("Check Primer Nombre Exacto No Seleccionado"));
-        }else assertThat("Check Primer Nombre Exacto No Seleccionado", containsString("Check Primer Nombre Exacto No Seleccionado"));
+        validarCheckNoSeleccionado(chkPrimerNombreExacto);
+        validarCheckNoSeleccionado(chkPrimerApellidoExacto);
+        validarCheckNoSeleccionado(chkNombreCompaniaExacto);
     }
 
     public void validarEtiquetasDelFormulario(){
@@ -191,35 +218,67 @@ public class BusquedaDeCuentasPage extends Guidewire {
         assertThat(this.lblPrimerNombreExacto.getText(), containsString("El primer nombre es una coincidencia exacta"));
         assertThat(this.lblPrimerApellidoExacto.getText(), containsString("El primer apellido es una coincidencia exacta"));
         assertThat(this.lblRazonSocial.getText(), containsString("Razón social"));
-        assertThat(this.lblNombreComercialExacto.getText(), containsString("Razón social coincide exactamente"));
+        assertThat(this.lblNombreComercialExacto.getText(), containsString("Razón social es una coincidencia exacta"));
         assertThat(this.lblNombreComercial.getText(), containsString("Nombre comercial"));
     }
 
     public void buscarCuentaPorRazonSocial(String razonSocial) {
-        txtTipoDocumento.clear();
-        txtNumeroDocumento.clear();
-        txtPrimerNombre.clear();
-        txtPrimerApellido.clear();
-        txtNombreComercial.clear();
-        txtRazonSocial.clear();
+        this.limpiarFormulario();
+        waitABit(1000);
         txtRazonSocial.sendKeys(razonSocial);
         btnBuscar.click();
     }
 
     public void seleccionarTipoIdentificacion(String tipoDocumento){
-        txtTipoDocumento.clear();
+        txtTipoDocumento.waitUntilVisible();
+        this.limpiarFormulario();
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
     }
 
     public void buscarCuentaPorNombreComercial(String nombreComercial) {
-        txtTipoDocumento.clear();
-        txtNumeroDocumento.clear();
-        txtPrimerNombre.clear();
-        txtPrimerApellido.clear();
-        txtRazonSocial.clear();
-        txtNombreComercial.clear();
+        this.limpiarFormulario();
+        waitABit(1000);
         txtNombreComercial.sendKeys(nombreComercial);
+        btnBuscar.click();
+    }
+
+    public void seleccionarImprimir() {
+        btnImprimir.click();
+    }
+
+    public void validarOpcionesDeImprimir(String imprimir, String exportar, String exportarPersonalizado) {
+        espera(rbtnImprimir, 4);
+        this.rbtnExportar.shouldBeVisible();
+        this.rbtnImprimir.shouldBeVisible();
+        this.rbtnExportarPersonalizado.shouldBeVisible();
+        assertThat(this.lblImprimir.getText(), containsString(imprimir));
+        assertThat(this.lblExportar.getText(), containsString(exportar));
+        assertThat(this.lblExportarPersonalizado.getText(), containsString(exportarPersonalizado));
+        btnVolverBuscarCuentas.click();
+    }
+
+    public void ingresarRazonSocialYPrimerNombre(String razonSocial, String primerNombre) {
+        this.limpiarFormulario();
+        waitABit(1000);
+        this.txtRazonSocial.sendKeys(razonSocial);
+        this.txtPrimerNombre.sendKeys(primerNombre);
+        btnBuscar.click();
+    }
+
+    public void ingresarNombreComercialYPrimerNombre(String nombreComercial, String primerNombre) {
+        this.limpiarFormulario();
+        waitABit(1000);
+        this.txtNombreComercial.sendKeys(nombreComercial);
+        this.txtPrimerNombre.sendKeys(primerNombre);
+        btnBuscar.click();
+    }
+
+    public void ingresarRazonSocialYNombreComercial(String nombreComercial, String razonSocial) {
+        this.limpiarFormulario();
+        waitABit(1000);
+        this.txtNombreComercial.sendKeys(nombreComercial);
+        this.txtRazonSocial.sendKeys(razonSocial);
         btnBuscar.click();
     }
 }

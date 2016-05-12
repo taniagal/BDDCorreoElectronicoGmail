@@ -62,4 +62,24 @@ public class BusquedaDeCuentasSteps extends ScenarioSteps{
     public void buscarCuentaPorNombreComercial(String nombreComercial) {
         busquedaDeCuentasPage.buscarCuentaPorNombreComercial(nombreComercial);
     }
+
+    public void seleccionarImprimir() {
+        busquedaDeCuentasPage.seleccionarImprimir();
+    }
+
+    public void validarOpcionesDeImprimir(String imprimir, String exportar, String exportarPersonalizado) {
+        busquedaDeCuentasPage.validarOpcionesDeImprimir(imprimir, exportar, exportarPersonalizado);
+    }
+
+    public void ingresarRazonSocialYPrimerNombre(String razonSocial, String primerNombre) {
+        busquedaDeCuentasPage.ingresarRazonSocialYPrimerNombre(razonSocial, primerNombre);
+    }
+
+    public void ingresarNombreComercialYPrimerNombre(String nombreComercial, String primerNombre) {
+        busquedaDeCuentasPage.ingresarNombreComercialYPrimerNombre(nombreComercial, primerNombre);
+    }
+
+    public void ingresarRazonSocialYNombreComercial(String nombreComercial, String razonSocial) {
+        busquedaDeCuentasPage.ingresarRazonSocialYNombreComercial(nombreComercial, razonSocial);
+    }
 }

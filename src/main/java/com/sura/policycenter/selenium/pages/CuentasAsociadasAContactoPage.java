@@ -37,15 +37,15 @@ public class CuentasAsociadasAContactoPage extends SeusLoginPage {
     public void validarCamposLista(String nombre, String direccion,
                                    String telefono, String email, String rol){
         mnuLateralCuenta.click();
-        assertThat(nombreContactoCuenta.getText().toString(), containsString(nombre));
-        assertThat(direccionContactoCuenta.getText().toString(), containsString(direccion));
-        assertThat(telContactoCuenta.getText().toString(), containsString(telefono));
-        assertThat(emailContactoCuenta.getText().toString(), containsString(email));
-        assertThat(rolesContactoCuenta.getText().toString(), containsString(rol));
+        assertThat(nombreContactoCuenta.getText(), containsString(nombre));
+        assertThat(direccionContactoCuenta.getText(), containsString(direccion));
+        assertThat(telContactoCuenta.getText(), containsString(telefono));
+        assertThat(emailContactoCuenta.getText(), containsString(email));
+        assertThat(rolesContactoCuenta.getText(), containsString(rol));
     }
 
     public void validarMensaje(String mensaje) {
         mnuLateralCuenta.click();
-        assertThat(msjCuentaNoEncontrada.getText().toString(), containsString(mensaje));
+        assertThat(msjCuentaNoEncontrada.getText(), containsString(mensaje));
     }
 }
