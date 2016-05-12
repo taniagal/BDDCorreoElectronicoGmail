@@ -28,10 +28,7 @@ public class Guidewire extends PageObject {
 
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     WebElementFacade configuracion;
-    @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
-    WebElementFacade internacional;
-    @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
-    WebElementFacade idioma;
+
     @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
     WebElementFacade espaniol;
 
@@ -105,9 +102,9 @@ public class Guidewire extends PageObject {
 
     public Actions deployMenu(WebElementFacade menu) {
         Actions act = new Actions(getDriver());
-        menu.waitUntilClickable().click();
+        menu.click();
         waitABit(1500);
-        menu.waitUntilClickable().click();
+        menu.click();
         waitABit(500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;

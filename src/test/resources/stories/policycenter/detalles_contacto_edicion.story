@@ -1,4 +1,4 @@
-
+Meta:
 Narrative:
 As a user
 I want to perform an action
@@ -8,7 +8,7 @@ Feature: Contact_detail
 
 
 Antecedents: HU Search Contact y HU Metodos de Entrada de Direcciones
-# Pendiente por definir en la historia la validacion de direcciones con la historia New address input modes
+#Pendiente por definir en la historia la validacion de direcciones con la historia New address input modes
 
 Scenario: Editar detalles de contacto de tipo persona natural
 
@@ -20,7 +20,7 @@ segundo nombre <segundo_nombre>, primer apellido <primer_apellido>, segundo apel
 fecha fallecimiento <fecha_fallecimiento>, causa fallecimiento <causa_fallecimiento>, profesion <profesion>,
 estado civil <estado_civil>, tipo familia <tipo_familia>,telefono celular <telefono_celular>,telefono residencial
 <telefono_residencial>, telefono trabajo <telefono_trabajo>,correo electronico primario <correo_electronico_primario>,
- correo electronico secundario <correo_electronico_secundario>
+correo electronico secundario <correo_electronico_secundario>
 Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios
 
 Examples:
@@ -36,8 +36,8 @@ Given Se ha consultado la informacion detallada de un contacto tipo persona juri
 tipo de direccion <tipo_direccion> y direccion <direccion>
 When quiera editar la informacion del contacto con razon social <razon_social>, nombre comercial <nombre_comercial>,
 actividad comercial <actividad_comercial>, numero de empleados <numero_empleados>, valor activos <valor_activos>,
- ventas anuales <ventas_anuales>, telefono oficina <telefono_oficina>, correo electronico primario <correo_electronico_primario>,
-  correo electronico secundario <correo_electronico_secundario>
+ventas anuales <ventas_anuales>, telefono oficina <telefono_oficina>, correo electronico primario <correo_electronico_primario>,
+correo electronico secundario <correo_electronico_secundario>
 Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios de persona juridica
 
 Examples:
