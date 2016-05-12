@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.policycenter.selenium.pages.EscritorioPage;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.NuevoContactoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
@@ -13,7 +13,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     private final Guidewire gw = new Guidewire(getDriver());
-    private final EscritorioPage escritorioPagePage = new EscritorioPage(getDriver());
+    private final InicioPage inicioPage = new InicioPage(getDriver());
     private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
 
     private String cedula = "";
@@ -32,7 +32,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void nuevoContactoPersona() {
-        escritorioPagePage.nuevoContactoPersona();
+        inicioPage.nuevoContactoPersona();
     }
 
     @Step
@@ -78,7 +78,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void nuevoContactoPersonaJuridica() {
-        escritorioPagePage.nuevoContactoPersonaJuridica();
+        inicioPage.nuevoContactoPersonaJuridica();
     }
 
     @Step
