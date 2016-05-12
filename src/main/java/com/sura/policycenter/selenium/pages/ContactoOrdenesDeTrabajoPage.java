@@ -67,11 +67,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
         filtroEstado.sendKeys(Key.ENTER);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(2000);
     }
 
     public void seleccionarTransacciones(){
@@ -102,9 +98,9 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             String estadoStr = cells.get(5).getText();
-            if(filtroEstado == "Completo"){
+            if(filtroEstado.equals("Completo")){
                 assertThat(estadoStr, isIn(listEstadosCompletos));
-            }else if (filtroEstado == "Abierto"){
+            }else if (filtroEstado.equals("Abierto")){
                 assertThat(estadoStr, isIn(listEstadosAbiertos));
             }else{
                 assertThat(estadoStr, isIn(listEstadosTodos));
@@ -115,11 +111,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     public void filtrarTransaccionesPorTransaccion(String filtroTransaccion) {
         this.filtroTipoTransaccion.click();
         this.filtroTipoTransaccion.sendKeys(filtroTransaccion);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(1000);
         this.filtroTipoTransaccion.sendKeys(Key.ENTER);
     }
 
@@ -140,11 +132,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(1000);
         this.filtroProducto.sendKeys(Key.ENTER);
     }
 
