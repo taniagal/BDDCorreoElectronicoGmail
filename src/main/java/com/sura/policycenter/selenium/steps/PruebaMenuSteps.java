@@ -72,6 +72,8 @@ public class PruebaMenuSteps extends ScenarioSteps {
         //Menu Poliza
         /*escritorioPage().irANuevoEnvio();
         gw().waitUntil(3000);*/
+        escritorioPage().irABuscarPoliza("4215989563");
+        gw().waitUntil(3000);
 
         //Menu Contacto
         /*escritorioPage().irANuevaCompania();
@@ -144,8 +146,135 @@ public class PruebaMenuSteps extends ScenarioSteps {
         gw().waitUntil(3000);*/
         /*escritorioPage().irAEscritorioNuevoEnvio();
         gw().waitUntil(3000);*/
-        escritorioPage().irAEscritorioNuevaCuenta();
+        /*escritorioPage().irAEscritorioNuevaCuenta();
+        gw().waitUntil(3000);*/
+
+        /***********************************escritorioPage().irAPolizaArchivoCuenta();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaSubgerente();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaGrupo();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaNuevaNota();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaLigarDocExistente();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaCrearDocPlantilla();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaRevisarNuevoCorreo();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaReunirseAgenteAgencia();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaReunirseAsegurado();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaCancelPolizaDividida();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaCotizacionRequerida();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaDiarioX30dias();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaDiarioX60dias();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaDiarioX90dias();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaNotificacionPoliza();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaAsignaAuditoria();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAPolizaRevisionMitadPlazo();
         gw().waitUntil(3000);
+        escritorioPage().irAPolizaRecordatorioGeneral();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaReescribirCuentaNueva();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaRenovacionRevision();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaRevisarAgente();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaRevisarX30();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaRevisarX45();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaRevisarX60();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaRevisionRendimiento();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaVerificarCobertura();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaIndiceFueraRango();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaRevisarAprobar();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaCrearAgenteNuevo();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaObtenerAuditPersonalInterno();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaObtenerAuditServicioExterno();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaObtenerCotizacionReaseguro();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaObtenerDatosOf();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaObtenerInfoRiesgosAgente();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaObtenerInformesVehiculo();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaObtenerInspeccionSiniestro();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaObtenerInspeccionExterno();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaObtenerReportesCredito();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaRevisionLegal();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaTasarCotizarManual();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaCopiarEnvio();
+        gw().waitUntil(3000);
+        escritorioPage().irAPolizaActivarDesactivar();
+        gw().waitUntil(3000);*/
+        /*escritorioPage().irAContactoNuevaCuenta();
+        gw().waitUntil(3000);*/
+        escritorioPage().irAAdminUsuarioNuevo();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminGrupoNuevo();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminOrganizacionNueva();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminCodAgenteNuevo();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminNuevoGrupoAfinidad();
+        gw().waitUntil(3000);
+        escritorioPage().irAAdminVerificarErrorPatron();
+        gw().waitUntil(3000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     /*@Step

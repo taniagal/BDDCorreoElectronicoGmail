@@ -1,8 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.policycenter.selenium.pages.menu.acciones.EscritorioNuevaCuentaPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.EscritorioNuevoEnvioPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.*;
 import com.sura.policycenter.selenium.pages.menu.tabbar.*;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
@@ -128,6 +127,10 @@ public class EscritorioPage extends Guidewire {
 
     public NuevaCuentaPage irANuevaCuenta() {
         return barraNavegacion.irANuevaCuenta();
+    }
+
+    public PolizaBuscarPage irABuscarPoliza(String numPoliza) {
+        return barraNavegacion.irABuscarPoliza(String numPoliza);
     }
 
     public NuevoEnvioPage irANuevoEnvio() {
@@ -265,4 +268,37 @@ public class EscritorioPage extends Guidewire {
     public EscritorioNuevaCuentaPage irAEscritorioNuevaCuenta() {
         return barraNavegacion.irAEscritorioNuevaCuenta();
     }
+
+    public PolizaArchivoCuentaPage irAPolizaArchivoCuenta() {
+        return barraNavegacion.irAPolizaArchivoCuenta();
+    }
+
+    public ContactoNuevaCuentaPage irAContactoNuevaCuenta() {
+        return barraNavegacion.irAContactoNuevaCuenta();
+    }
+
+    public AdminUsuarioNuevoPage irAAdminUsuarioNuevo() {
+        return barraNavegacion.irAAdminUsuarioNuevo();
+    }
+
+    public AdminGrupoNuevoPage irAAdminGrupoNuevo() {
+        return barraNavegacion.irAAdminGrupoNuevo();
+    }
+
+    public AdminOrganizacionNuevaPage irAAdminOrganizacionNueva() {
+        return barraNavegacion.irAAdminOrganizacionNueva();
+    }
+
+    public AdminCodAgenteNuevoPage irAAdminCodAgenteNuevo() {
+        return barraNavegacion.irAAdminCodAgenteNuevo();
+    }
+
+    public AdminNuevoGrupoAfinidadPage irAAdminNuevoGrupoAfinidad() {
+        return barraNavegacion.irAAdminNuevoGrupoAfinidad();
+    }
+
+    public AdminVerificarErrorPatronPage irAAdminVerificarErrorPatron() {
+        return barraNavegacion.irAAdminVerificarErrorPatron();
+    }
+
 }
