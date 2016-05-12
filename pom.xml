@@ -115,11 +115,11 @@
                     <excludes>
                         <exclude>**/policycenter/MainStories.java</exclude>
                     </excludes>
-                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                    <!--<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                     <parallel>classes</parallel>
                     <perCoreThreadCount>true</perCoreThreadCount>
                     <threadCount>2</threadCount>
-                    <forkCount>2C</forkCount>
+                    <forkCount>2C</forkCount>-->
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
                     </systemPropertyVariables>
