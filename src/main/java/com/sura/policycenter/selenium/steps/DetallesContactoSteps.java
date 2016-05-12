@@ -5,12 +5,9 @@ import com.sura.policycenter.selenium.pages.DetallesContactoPage;
 import com.sura.policycenter.selenium.pages.EscritorioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
-import net.thucydides.core.screenshots.QueuedScreenshot;
 import net.thucydides.core.steps.ScenarioSteps;
 
-/**
- * Created by hectsaga on 2016/04/29.
- */
+
 public class DetallesContactoSteps extends ScenarioSteps {
 
     BusquedaContactoPage bc = new BusquedaContactoPage(getDriver());

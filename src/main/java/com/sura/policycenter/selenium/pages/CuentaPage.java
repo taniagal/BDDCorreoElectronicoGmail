@@ -9,9 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Created by criscaor on 2016/04/25.
- */
+
 public class CuentaPage extends Guidewire{
     Guidewire gw = new Guidewire(getDriver());
 
