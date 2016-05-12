@@ -119,7 +119,7 @@
                     <parallel>classes</parallel>
                     <perCoreThreadCount>true</perCoreThreadCount>
                     <threadCount>1</threadCount>
-                    <forkCount>1C</forkCount>
+                    <!--<forkCount>2C</forkCount>-->
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
                     </systemPropertyVariables>
