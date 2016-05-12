@@ -141,13 +141,13 @@ public class CuentaPage extends Guidewire{
     }
 
     public void buscarPersona(String nombre){
-        espera(txtNombreCompania,2000);
+        waitABit(1000);
         txtNombreCompania.sendKeys(nombre);
         btnBuscar.click();
     }
 
     public void assertCrearCuenta(String nombreCuenta){
-        espera(lblNombreDeCuenta,20);
+        waitABit(1000);
         assertThat("Falló la creación de la cuenta", lblNombreDeCuenta.containsText(nombreCuenta));
     }
 
@@ -156,12 +156,12 @@ public class CuentaPage extends Guidewire{
     }
 
     public  void  assertVerificarMenor(String mensaje){
-        espera(divMensaje,20);
+        waitABit(1000);
         assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
     }
 
     public  void  assertVerificarMensaje(String mensaje){
-        espera(divMensaje,20);
+        waitABit(1000);
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
