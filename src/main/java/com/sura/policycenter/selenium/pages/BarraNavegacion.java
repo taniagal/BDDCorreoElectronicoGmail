@@ -1,13 +1,14 @@
 package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.policycenter.selenium.pages.menu.acciones.EscritorioNuevaCuentaPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.EscritorioNuevoEnvioPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.*;
 import com.sura.policycenter.selenium.pages.menu.tabbar.*;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import javax.swing.*;
 
 /**
  * Created by jonamele on 06/05/2016.
@@ -127,6 +128,567 @@ public class BarraNavegacion extends Guidewire {
     WebElementFacade mnuAccionNuevoEnvio;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewAccount']")
     WebElementFacade mnuAccionNuevaCuenta;
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions-btnInnerEl']")
+    WebElementFacade mnuAccionesCuenta;
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewNote-itemEl']")
+    WebElementFacade mnuAccionNuevaNota;
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewDocument-arrowEl']")
+    WebElementFacade mnuAccionDocNuevos;
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewDocument:AccountNewDocumentMenuItemSet:AccountNewDocumentMenuItemSet_Linked-itemEl']")
+    WebElementFacade mnuAccionLigarDocExistente;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewDocument:AccountNewDocumentMenuItemSet:AccountNewDocumentMenuItemSet_Template-textEl']")
+    WebElementFacade mnuAccionCrearDocPlantilla;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewEmail-itemEl']")
+    WebElementFacade mnuAccionNuevoCorreo;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission-itemEl']")
+    WebElementFacade mnuAccionNuevoEnvio2;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category:0:item-textEl']")
+    WebElementFacade mnuAccionRevisarNuevoCorreo;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity-arrowEl']")
+    WebElementFacade mnuAccionActNueva;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category-arrowEl']")
+    WebElementFacade mnuAccionCorreoNuevo;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category-arrowEl']")
+    WebElementFacade mnuAccionEntrevista;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category:0:item-textEl']")
+    WebElementFacade mnuAccionReunirseAgenteAgencia;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category:1:item-itemEl']")
+    WebElementFacade mnuAccionReunirseAsegurado;
+
+
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category-arrowEl']")
+    WebElementFacade mnuAccionRecordatorio;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:0:item-itemEl']")
+    WebElementFacade mnuAccionCancelPolizaDividida;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:1:item-itemEl']")
+    WebElementFacade mnuAccionCotizacionReq;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:2:item-itemEl']")
+    WebElementFacade mnuAccionDiarioX30;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:3:item-itemEl']")
+    WebElementFacade mnuAccionDiarioX60;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:4:item-itemEl']")
+    WebElementFacade mnuAccionDiarioX90;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:5:item-itemEl']")
+    WebElementFacade mnuAccionNotificacionPoliza;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:6:item-itemEl']")
+    WebElementFacade mnuAccionRecordatorioGeneral;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:7:item-itemEl']")
+    WebElementFacade mnuAccionRevisarAgente;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:8:item-textEl']")
+    WebElementFacade mnuAccionRevisarX30;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:9:item-textEl']")
+    WebElementFacade mnuAccionRevisarX45;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:10:item-textEl']")
+    WebElementFacade mnuAccionRevisarX60;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:11:item-itemEl']")
+    WebElementFacade mnuAccionRevisarRendimiento;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:12:item-itemEl']")
+    WebElementFacade mnuAccionVerificarCobertura;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_MovePolicies-itemEl']")
+    WebElementFacade mnuAccionTransferirPolizas;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_RewritePolicies-itemEl']")
+    WebElementFacade mnuAccionReescribirPolizas;
+    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_MergeAccounts-textEl']")
+    WebElementFacade mnuAccionCombinarCuentas;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*-----------------------------------------------------------------------------*/
 
     public MisActividadesPage irAMisActividades() {
         gw.deployMenu(menuEscritorio);
@@ -464,5 +1026,266 @@ public class BarraNavegacion extends Guidewire {
         return new EscritorioNuevaCuentaPage(getDriver());
     }
 
+    public EscritorioNuevaNotaPage irAEscritorioNuevaNota() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionNuevaNota).release(mnuAccionNuevaNota).click().build().perform();
+        return new EscritorioNuevaNotaPage(getDriver());
+    }
 
+    public EscritorioLigaDocExistePage irAEscritorioLigaDocExiste() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionDocNuevos).release(mnuAccionDocNuevos).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionLigarDocExistente).release(mnuAccionLigarDocExistente).click().build().perform();
+        return new EscritorioLigaDocExistePage(getDriver());
+    }
+
+
+    public EscritorioCreaDocNuevaPlantPage irACreaDocNuevaPlantPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionDocNuevos).release(mnuAccionDocNuevos).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionCrearDocPlantilla).release(mnuAccionCrearDocPlantilla).click().build().perform();
+        return new EscritorioCreaDocNuevaPlantPage(getDriver());
+    }
+
+    public EscritorioNuevoCorreoElecPage irAEscritorioNuevoCorreoElect() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionNuevoCorreo).release(mnuAccionNuevoCorreo).click().build().perform();
+        return new EscritorioNuevoCorreoElecPage(getDriver());
+    }
+
+    public EscritorioNuevoEnvioCuentaPage irAEscritorioNuevoEnvioCuentaPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionNuevoEnvio2).release(mnuAccionNuevoEnvio2).click().build().perform();
+        return new EscritorioNuevoEnvioCuentaPage(getDriver());
+
+    }
+
+    public EscritorioRevisaNuevoCorreoPage irAEscritorioRevisaNuevoCorreoPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionCorreoNuevo).release(mnuAccionCorreoNuevo).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRevisarNuevoCorreo).release(mnuAccionRevisarNuevoCorreo).click().build().perform();
+        return new EscritorioRevisaNuevoCorreoPage(getDriver());
+    }
+
+    public EscritorioReuneAgentePage irAEscritorioReuneAgentePage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionEntrevista).release(mnuAccionEntrevista).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionReunirseAgenteAgencia).release(mnuAccionReunirseAgenteAgencia).click().build().perform();
+        return new EscritorioReuneAgentePage(getDriver());
+    }
+
+    public EscritorioReuneAseguradoPage irAEscritorioReuneAseguradoPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionEntrevista).release(mnuAccionEntrevista).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionReunirseAsegurado).release(mnuAccionReunirseAsegurado).click().build().perform();
+        return new EscritorioReuneAseguradoPage(getDriver());
+
+    }
+
+    public EscritorioCancelaPolizDividPage irAEscritorioCancelaPolizDividPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionCancelPolizaDividida).release(mnuAccionCancelPolizaDividida).click().build().perform();
+        return new EscritorioCancelaPolizDividPage(getDriver());
+    }
+
+    public EscritorioCotizaRequeridaPage irAEscritorioCotizaRequeridaPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionCotizacionReq).release(mnuAccionCotizacionReq).click().build().perform();
+        return new EscritorioCotizaRequeridaPage(getDriver());
+    }
+
+    public EscritorioDiarioX30Page irAEscritorioDiarioX30Page() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionDiarioX30).release(mnuAccionDiarioX30).click().build().perform();
+        return new EscritorioDiarioX30Page(getDriver());
+    }
+
+    public EscritorioDiarioX60Page irAEscritorioDiarioX60Page() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionDiarioX60).release(mnuAccionDiarioX60).click().build().perform();
+        return new EscritorioDiarioX60Page(getDriver());
+    }
+
+    public EscritorioDiarioX90Page irAEscritorioDiarioX90Page() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionDiarioX90).release(mnuAccionDiarioX90).click().build().perform();
+        return new EscritorioDiarioX90Page(getDriver());
+    }
+
+    public EscritorioNotificaPolizaPage irAEscritorioNotificaPolizaPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionNotificacionPoliza).release(mnuAccionNotificacionPoliza).click().build().perform();
+        return new EscritorioNotificaPolizaPage(getDriver());
+    }
+
+    public EscritorioRecuerdaGeneralPage irAEscritorioRecuerdaGeneralPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorioGeneral).release(mnuAccionRecordatorioGeneral).click().build().perform();
+        return new EscritorioRecuerdaGeneralPage(getDriver());
+    }
+
+    public EscritorioRevisaAgentePage irAEscritorioRevisaAgentePage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRevisarAgente).release(mnuAccionRevisarAgente).click().build().perform();
+        return new EscritorioRevisaAgentePage(getDriver());
+    }
+
+    public EscritorioRevPer30DiaAseguraPage irAEscritorioRevPer30DiaAseguraPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRevisarX30).release(mnuAccionRevisarX30).click().build().perform();
+        return new EscritorioRevPer30DiaAseguraPage(getDriver());
+    }
+
+    public EscritorioRevPer45DiaAseguraPage irAEscritorioRevPer45DiaAseguraPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRevisarX45).release(mnuAccionRevisarX45).click().build().perform();
+        return new EscritorioRevPer45DiaAseguraPage(getDriver());
+    }
+
+    public EscritorioRevPer60DiaAseguraPage irAEscritorioRevPer60DiaAseguraPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRevisarX60).release(mnuAccionRevisarX60).click().build().perform();
+        return new EscritorioRevPer60DiaAseguraPage(getDriver());
+    }
+
+    public EscritorioRevisaRendimPage irAEscritorioRevisaRendimPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRevisarRendimiento).release(mnuAccionRevisarRendimiento).click().build().perform();
+        return new EscritorioRevisaRendimPage(getDriver());
+    }
+
+    public EscritorioVerificaCoberPage irAEscritorioVerificaCoberPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionVerificarCobertura).release(mnuAccionVerificarCobertura).click().build().perform();
+        return new EscritorioVerificaCoberPage(getDriver());
+    }
+
+    public EscritorioTransPoliACuentaPage irAEscritorioTransPoliACuentaPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionTransferirPolizas).release(mnuAccionTransferirPolizas).click().build().perform();
+        return new EscritorioTransPoliACuentaPage(getDriver());
+    }
+
+    public EscritorioReescrPoliACuentaPage irAEscritorioReescrPoliACuentaPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionReescribirPolizas).release(mnuAccionReescribirPolizas).click().build().perform();
+        return new EscritorioReescrPoliACuentaPage(getDriver());
+    }
+
+    public EscritorioConvPoliACuentaPage irAEscritorioConvPoliACuentaPage() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionCombinarCuentas).release(mnuAccionCombinarCuentas).click().build().perform();
+        return new EscritorioConvPoliACuentaPage(getDriver());
+    }
 }

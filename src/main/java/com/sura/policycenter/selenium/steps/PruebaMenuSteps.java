@@ -8,6 +8,8 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.apache.commons.lang3.StringEscapeUtils;
 
+import javax.swing.*;
+
 /**
  * Created by jorghome on 04/05/2016.
  */
@@ -68,6 +70,37 @@ public class PruebaMenuSteps extends ScenarioSteps {
         //Menu Cuenta
        /* escritorioPage().irANuevaCuenta();
         gw().waitUntil(3000);*/
+
+        //Acciones Cuenta
+        /*escritorioPage().irAEscritorioNuevaNota();
+        gw().waitUntil(1000);
+        escritorioPage().irAEscritorioLigaDocExiste();
+        gw().waitUntil(1000);
+        escritorioPage().irACreaDocNuevaPlantPage();
+        gw().waitUntil(1000);
+        escritorioPage().irAEscritorioNuevoCorreoElect();
+        gw().waitUntil(1000);
+        escritorioPage().irAEscritorioNuevoEnvioCuentaPage();
+        gw().waitUntil(1000);
+        escritorioPage().irAEscritorioRevisaNuevoCorreoPage();
+        gw().waitUntil(1000);
+        escritorioPage().irAEscritorioReuneAgentePage();
+        gw().waitUntil(1000);
+        escritorioPage().irAEscritorioRevPer30DiaAseguraPage();
+        gw().waitUntil(1000);
+        escritorioPage().irAEscritorioRevPer45DiaAseguraPage();
+        gw().waitUntil(1000);
+        escritorioPage().irAEscritorioRevPer60DiaAseguraPage();
+        gw().waitUntil(2000);*/
+        escritorioPage().irAEscritorioConvPoliACuentaPage();
+        gw().waitUntil(1000);
+
+
+
+
+
+
+
 
         //Menu Poliza
         /*escritorioPage().irANuevoEnvio();
@@ -144,8 +177,6 @@ public class PruebaMenuSteps extends ScenarioSteps {
         gw().waitUntil(3000);*/
         /*escritorioPage().irAEscritorioNuevoEnvio();
         gw().waitUntil(3000);*/
-        escritorioPage().irAEscritorioNuevaCuenta();
-        gw().waitUntil(3000);
     }
 
     /*@Step
