@@ -269,6 +269,98 @@ public class EscritorioPage extends Guidewire {
         return barraNavegacion.irAEscritorioNuevaCuenta();
     }
 
+    public EscritorioNuevaNotaPage irAEscritorioNuevaNota() {
+        return barraNavegacion.irAEscritorioNuevaNota();
+    }
+
+    public EscritorioLigaDocExistePage irAEscritorioLigaDocExiste() {
+        return barraNavegacion.irAEscritorioLigaDocExiste();
+    }
+
+    public EscritorioCreaDocNuevaPlantPage irACreaDocNuevaPlantPage() {
+        return barraNavegacion.irACreaDocNuevaPlantPage();
+    }
+
+    public EscritorioNuevoCorreoElecPage irAEscritorioNuevoCorreoElect(){
+        return barraNavegacion.irAEscritorioNuevoCorreoElect();
+    }
+
+    public EscritorioNuevoEnvioCuentaPage irAEscritorioNuevoEnvioCuentaPage(){
+        return barraNavegacion.irAEscritorioNuevoEnvioCuentaPage();
+    }
+
+    public EscritorioRevisaNuevoCorreoPage irAEscritorioRevisaNuevoCorreoPage(){
+        return barraNavegacion.irAEscritorioRevisaNuevoCorreoPage();
+    }
+
+    public EscritorioReuneAgentePage irAEscritorioReuneAgentePage(){
+        return barraNavegacion.irAEscritorioReuneAgentePage();
+    }
+
+    public EscritorioReuneAseguradoPage irAEscritorioReuneAseguradoPage(){
+        return barraNavegacion.irAEscritorioReuneAseguradoPage();
+    }
+
+    public EscritorioCancelaPolizDividPage irAEscritorioCancelaPolizDividPage(){
+        return barraNavegacion.irAEscritorioCancelaPolizDividPage();
+    }
+
+    public EscritorioCotizaRequeridaPage irAEscritorioCotizaRequeridaPage(){
+        return barraNavegacion.irAEscritorioCotizaRequeridaPage();
+    }
+
+    public EscritorioDiarioX30Page irAEscritorioDiarioX30Page(){
+        return barraNavegacion.irAEscritorioDiarioX30Page();
+    }
+
+    public EscritorioDiarioX60Page irAEscritorioDiarioX60Page(){
+        return barraNavegacion.irAEscritorioDiarioX60Page();
+    }
+
+    public EscritorioDiarioX90Page irAEscritorioDiarioX90Page(){
+        return barraNavegacion.irAEscritorioDiarioX90Page();
+    }
+
+    public EscritorioNotificaPolizaPage irAEscritorioNotificaPolizaPage(){
+        return barraNavegacion.irAEscritorioNotificaPolizaPage();
+    }
+
+    public EscritorioRevisaAgentePage irAEscritorioRevisaAgentePage(){
+        return barraNavegacion.irAEscritorioRevisaAgentePage();
+    }
+
+    public EscritorioRevPer30DiaAseguraPage irAEscritorioRevPer30DiaAseguraPage(){
+        return barraNavegacion.irAEscritorioRevPer30DiaAseguraPage();
+    }
+
+    public EscritorioRevPer45DiaAseguraPage irAEscritorioRevPer45DiaAseguraPage(){
+        return barraNavegacion.irAEscritorioRevPer45DiaAseguraPage();
+    }
+
+    public EscritorioRevPer60DiaAseguraPage irAEscritorioRevPer60DiaAseguraPage(){
+        return barraNavegacion.irAEscritorioRevPer60DiaAseguraPage();
+    }
+
+    public EscritorioRevisaRendimPage irAEscritorioRevisaRendimPage(){
+        return barraNavegacion.irAEscritorioRevisaRendimPage();
+    }
+
+    public EscritorioVerificaCoberPage irAEscritorioVerificaCoberPage(){
+        return barraNavegacion.irAEscritorioVerificaCoberPage();
+    }
+
+    public EscritorioTransPoliACuentaPage irAEscritorioTransPoliACuentaPage(){
+        return barraNavegacion.irAEscritorioTransPoliACuentaPage();
+    }
+
+    public EscritorioReescrPoliACuentaPage irAEscritorioReescrPoliACuentaPage(){
+        return barraNavegacion.irAEscritorioReescrPoliACuentaPage();
+    }
+
+    public EscritorioConvPoliACuentaPage irAEscritorioConvPoliACuentaPage(){
+        return barraNavegacion.irAEscritorioConvPoliACuentaPage();
+    }
+
     public PolizaArchivoCuentaPage irAPolizaArchivoCuenta() {
         return barraNavegacion.irAPolizaArchivoCuenta();
     }
