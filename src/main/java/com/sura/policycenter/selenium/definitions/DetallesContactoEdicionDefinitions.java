@@ -3,24 +3,14 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevoContactoSteps;
 import com.sura.policycenter.selenium.steps.DetallesContactoSteps;
-import com.sura.policycenter.selenium.steps.PolicySteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
 
-import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-
-/**
- * Created by criscaor on 2016/05/02.
- */
 public class DetallesContactoEdicionDefinitions {
 
     @Steps
     SeusLoginSteps seusLogin;
-
-    @Steps
-    PolicySteps ps;
 
     @Steps
     DetallesContactoSteps dcs;
@@ -28,12 +18,11 @@ public class DetallesContactoEdicionDefinitions {
     @Steps
     CrearNuevoContactoSteps ncs;
 
-    @Given("Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural con nombre \n" +
-            "<primer_nombre> y apellido <primer_apellido>, tipo direccion <tipo_direccion>, direccion <direccion>, \n" +
-            "tipo documento <tipo_documento>, documento <documento>, y con el usuario <user>, con contrasenia <pass> y pais <country>")
+    @Given("Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural con nombre\n" +
+            "<primer_nombre> y apellido <primer_apellido>, tipo direccion <tipo_direccion>, direccion <direccion>,\n" +
+            "tipo documento <tipo_documento>, documento <documento>")
     //@Pending
-    public void login(@Named("user") String usuario, @Named("pass") String contrasenia, @Named("country")String pais,
-                      @Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
+    public void login(@Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
                       @Named("tipo_documento")String tipoDocumento,@Named("documento")String documento,
                       @Named("tipo_direccion")String tipoDireccion,@Named("direccion")String direccion){
         seusLogin.login();
@@ -70,7 +59,6 @@ public class DetallesContactoEdicionDefinitions {
     }
 
     @Then("se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios")
-    //@Pending
     public void ralizarEdicionInformacionContacto() {
         dcs.actualizarContacto();
         dcs.verificarActualizacionPersona();
@@ -79,11 +67,9 @@ public class DetallesContactoEdicionDefinitions {
 
     //-------------------ESCENARIO 2---------------------
     @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica con nombre <razon_social>,\n" +
-            "tipo de direccion <tipo_direccion> y direccion <direccion>, con el usuario <user>, con contrasenia <pass> y pais <country>")
-    public void login(@Named("user") String usuario, @Named("pass") String contrasenia, @Named("country")String pais,
-                      @Named("razon_social")String razonSocial,@Named("tipo_direccion")String tipoDireccion,
+            "tipo de direccion <tipo_direccion> y direccion <direccion>")
+    public void login(@Named("razon_social")String razonSocial,@Named("tipo_direccion")String tipoDireccion,
                       @Named("direccion")String direccion){
-        //seusLogin.login();
         ncs.nuevoContactoPersonaJuridica();
         ncs.seleccionarTipoDocumentoPersonaNatural("NIT");
         ncs.ingresarRazonSocial(razonSocial);

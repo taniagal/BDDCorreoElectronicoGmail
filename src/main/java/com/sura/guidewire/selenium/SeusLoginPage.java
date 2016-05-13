@@ -14,7 +14,6 @@ public class SeusLoginPage extends Guidewire {
         super(driver);
     }
 
-
     @FindBy(xpath=".//*[@id='country']")
     WebElementFacade pais;
 
