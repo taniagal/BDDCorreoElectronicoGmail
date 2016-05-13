@@ -41,7 +41,10 @@ public class Guidewire extends PageObject {
 
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     WebElementFacade configuracion;
-
+    @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
+    WebElementFacade internacional;
+    @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
+    WebElementFacade idioma;
     @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
     WebElementFacade espaniol;
 
@@ -114,12 +117,26 @@ public class Guidewire extends PageObject {
 
     public Actions deployMenu(WebElementFacade menu) {
         Actions act = new Actions(getDriver());
-        menu.click();
-        waitABit(1500);
-        menu.click();
-        waitABit(500);
+        menu.waitUntilClickable().click();
+        threadWait(1000);
+        menu.waitUntilClickable().click();
+        threadWait(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
+    }
+
+    public String cedulaRandom() {
+        StringBuilder result=new StringBuilder("");
+
+        int primero = (int) Math.floor(Math.random() * (100 - 999) + 999);
+        int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
+        int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
+
+        result.append(primero);
+        result.append(segundo);
+        result.append(tercero);
+
+        return result.toString();
     }
 
     public void selectItem(WebElementFacade element, String option){
@@ -138,20 +155,9 @@ public class Guidewire extends PageObject {
     }
 
     public String nitRandom() {
-        StringBuilder result=new StringBuilder("");
-        int primero = (int) Math.floor(Math.random() * (90 - 99) + 99);
-        int segundo = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
-        result.append(primero);
-        result.append(segundo);
-        return result.toString();
-    }
-
-
-    public String cedulaRandom() {
-        StringBuilder result=new StringBuilder("");
-        int primero = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
-        result.append(primero);
-        return result.toString();
+        int primero = (int) Math.floor(Math.random() * (10 - 99) + 99);
+        int segundo = (int) Math.floor(Math.random() * (1000000 - 9999999) + 9999999);
+        return primero + "-" + segundo;
     }
 
     public void elegirLenguaje(){
