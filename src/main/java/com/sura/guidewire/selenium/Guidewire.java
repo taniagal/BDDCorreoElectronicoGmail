@@ -8,6 +8,7 @@ import org.hamcrest.Matcher;
 import org.jbehave.core.model.ExamplesTable;
 import org.jbehave.core.steps.Parameters;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -171,59 +172,5 @@ public class Guidewire extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-
-    public HashSet<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable) throws Exception{
-        System.out.println("Guidewire.obtenerNombreColumnasDeExamplesTable");
-
-        HashSet<String> nombreColumnasTablaHS = new HashSet<>();
-        Parameters row = examplesTable.getRowAsParameters(0);
-        Iterator<String> menu = row.values().keySet().iterator();
-
-        while (menu.hasNext()) {
-            String key = (String) menu.next();
-            nombreColumnasTablaHS.add(new String(key));
-        }
-
-        return nombreColumnasTablaHS;
-
-    }
-
-    public WebElement obtenerElementoDelDOMPorTextoBuscandoPorXpath(String textoDelMenu, String tipoElemento) throws Exception {
-        System.out.println("Guidewire.obtenerElementoDelDOMPorTextoBuscandoPorXpath");
-
-        switch (tipoElemento){
-            case "LINK" :
-                System.out.println("LINK");
-                return getDriver().findElement(By.xpath(".//a[contains(.,'" + textoDelMenu + "')]"));
-            default:
-                return null;
-        }
-
-    }
-
-    public Boolean existenOpcionesPorMenu(ExamplesTable opcionesPorRol, String tipoMenu) {
-        System.out.println("Guidewire.existenOpcionesPorMenu");
-        mensajeError = "";
-        try {
-            HashSet<String> nombreColumnasTablaHS = obtenerNombreColumnasDeExamplesTable(opcionesPorRol);
-
-            for (String menuPrimerNivel : obtenerNombreColumnasDeExamplesTable(opcionesPorRol)) {
-                System.out.println("MENU -> " + menuPrimerNivel);
-                obtenerElementoDelDOMPorTextoBuscandoPorXpath(menuPrimerNivel, tipoMenu).click();
-                obtenerElementoDelDOMPorTextoBuscandoPorXpath(menuPrimerNivel, tipoMenu).sendKeys(Keys.ARROW_RIGHT);
-                for (Map<String, String> row : opcionesPorRol.getRows()) {
-                    System.out.println("MENU -> " + menuPrimerNivel + " -> " + row.get(menuPrimerNivel));
-                    obtenerElementoDelDOMPorTextoBuscandoPorXpath(row.get(menuPrimerNivel), tipoMenu);
-                }
-
-            }
-            return Boolean.TRUE;
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
-        return Boolean.FALSE;
-
-    }
 
 }

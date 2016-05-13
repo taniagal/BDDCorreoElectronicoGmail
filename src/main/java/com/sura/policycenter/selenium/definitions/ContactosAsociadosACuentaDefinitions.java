@@ -73,7 +73,7 @@ public class ContactosAsociadosACuentaDefinitions {
     }
 
     @Then("debo ver las opciones de menú para los roles $opcionesPorRoles")
-    public void thenDeboVerLasOpcionesDeMenuParaLosRoles(ExamplesTable opcionesPorRoles) {
+    public void thenDeboVerLasOpcionesDeMenuParaLosRoles(ExamplesTable opcionesPorRoles) throws Exception {
         contactosAsociadosACuentaSteps.verOpcionesDeCreacionDeContactoPorRoleDeContactos(opcionesPorRoles);
 
     }

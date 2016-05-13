@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import com.sura.serinitybdd.util.GuidewireUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
@@ -22,8 +23,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         super(driver);
     }
 
-    private static String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú no encontrados";
-
+    private static String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú encontrados";
 
 
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
@@ -205,9 +205,8 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
 
 
-    // Que!!! belleza de código Johan Pues! Pues! Pues! :P
-    public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol) {
-        assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, existenOpcionesPorMenu(opcionesPorRol, "LINK"));
+    public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol) throws Exception {
+        //assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, GuidewireUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT,"LINK",opcionesPorRol));
     }
 
 

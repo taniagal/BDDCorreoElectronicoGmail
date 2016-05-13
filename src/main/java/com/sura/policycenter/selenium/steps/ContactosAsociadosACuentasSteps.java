@@ -88,7 +88,7 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verOpcionesDeCreacionDeContactoPorRoleDeContactos(ExamplesTable opcionesPorRol) {
+    public void verOpcionesDeCreacionDeContactoPorRoleDeContactos(ExamplesTable opcionesPorRol) throws Exception {
         contactosAsociadosACuentasPage.existeOpcionesPorSubMenu(opcionesPorRol);
     }
 
