@@ -86,4 +86,14 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     public void verificarDireccionesEsNulo() {
         contactosAsociadosACuentasPage.verificarDireccioneNoEsNulo();
     }
+
+    @Step
+    public void verOpcionesDeCreacionDeContactoPorRoleDeContactos(ExamplesTable opcionesPorRol) throws Exception {
+        contactosAsociadosACuentasPage.existeOpcionesPorSubMenu(opcionesPorRol);
+    }
+
+    @Step
+    public void clicCrearNuevoContacto() {
+        contactosAsociadosACuentasPage.clicCrearNuevoContacto();
+    }
 }

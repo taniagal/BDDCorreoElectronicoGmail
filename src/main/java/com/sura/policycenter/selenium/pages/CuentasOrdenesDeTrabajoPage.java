@@ -21,28 +21,30 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
 
     //@FindBy(xpath=".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_WorkOrders']/div/span")
     @FindBy(xpath=".//tr[5]/td/div/span")
-    WebElementFacade mnuTransaccionesPoliza;
+    private WebElementFacade mnuTransaccionesPoliza;
 
     @FindBy(xpath=".//td/div/div/div/div/table/tbody/tr/td[2]/table/tbody/tr/td/input")
-    WebElementFacade filtroEstado;
+    private WebElementFacade filtroEstado;
 
     @FindBy(xpath=".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:message:InfoMessage_ExtDV:message']")
-    WebElementFacade msjTransaccionNoEncontrada;
+    private WebElementFacade msjTransaccionNoEncontrada;
 
     @FindBy(xpath=".//table[2]/tbody/tr/td[2]/table/tbody/tr/td/input")
-    WebElementFacade filtroTipoTransaccion;
+    private WebElementFacade filtroTipoTransaccion;
 
     @FindBy(xpath=".//table[3]/tbody/tr/td[2]/table/tbody/tr/td/input")
-    WebElementFacade filtroProducto;
+    private WebElementFacade filtroProducto;
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
-    WebElementFacade mnuCuenta;
+    private WebElementFacade mnuCuenta;
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
-    WebElementFacade txtNumCuenta;
+    private WebElementFacade txtNumCuenta;
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
-    WebElementFacade btnBuscarCuenta;
+    private WebElementFacade btnBuscarCuenta;
+
+
 
     Guidewire gw = new Guidewire(getDriver());
 
