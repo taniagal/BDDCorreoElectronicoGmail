@@ -1,6 +1,11 @@
 package com.sura.policycenter.selenium.pages;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.sura.guidewire.selenium.Guidewire;
+import freemarker.ext.beans.HashAdapter;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -8,18 +13,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
-import javax.swing.*;
-import java.util.List;
+import org.slf4j.LoggerFactory;
 
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-
-import java.util.List;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.isIn;
 
 public class BusquedaContactoPage extends Guidewire {
 
@@ -41,6 +39,12 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade txtApellido;
 
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:MiddleName-inputEl']")
+    WebElementFacade txtSegNombre;
+
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:Particle-inputEl']")
+    WebElementFacade txtSegApellido;
+
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
     WebElementFacade nombreEmpresaContact;
 
@@ -56,8 +60,8 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:_RecordCount']")
     WebElementFacade msjSinRegistros;
 
-    //@FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:SearchWarningMessagePanelSet:SearchWarningMessage']")
-    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:_msgs']/div")
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:SearchWarningMessagePanelSet:SearchWarningMessage']")
+    //@FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:_msgs']/div")
     WebElementFacade msjSinCriterios;
 
     @FindBy(xpath="//li[2]")
@@ -66,7 +70,8 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:DocumentType-inputEl']")
     WebElementFacade txtTipoDoc;
 
-    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:identificationNumber-inputEl']")
+    //@FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:identificationNumber-inputEl']")
+    @FindBy(xpath="//td[@id='ContactSearch:ContactSearchScreen:identificationNumber-bodyEl']/input")
     WebElementFacade txtNumDoc;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
@@ -122,6 +127,44 @@ public class BusquedaContactoPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
     WebElementFacade txtcontrasena;
+
+    @FindBy(xpath="//div/div/div[2]/div/span")
+    WebElementFacade lblTipoId;
+
+    @FindBy(xpath="//div/div/div[3]/div/span")
+    WebElementFacade lblNumId;
+
+    @FindBy(xpath="//div[4]/div/span")
+    WebElementFacade lblPrimNombre;
+
+    @FindBy(xpath="//div/div/div[5]/div/span")
+    WebElementFacade lblSegNombre;
+
+    @FindBy(xpath="//div[6]/div/span")
+    WebElementFacade lblPriApellido;
+
+    @FindBy(xpath="//div[7]/div/span")
+    WebElementFacade lblSegApellido;
+
+    @FindBy(xpath="//div[8]/div/span")
+    WebElementFacade lblNomComercial;
+
+    @FindBy(xpath="//div[9]/div/span")
+    WebElementFacade lblRazonSocial;
+
+    @FindBy(xpath="//div[10]/div/span")
+    WebElementFacade lblDireccion;
+
+    @FindBy(xpath="//div[11]/div/span")
+    WebElementFacade lblTelefono;
+
+    @FindBy(xpath="//div[12]/div/span")
+    WebElementFacade lblEmail;
+
+    @FindBy(xpath="//div[13]/div/span")
+    WebElementFacade lblExterna;
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaContactoPage.class);
 
     public void login(String usuario, String contrasena){
         txtusuario.type(usuario);
@@ -210,12 +253,11 @@ public class BusquedaContactoPage extends Guidewire {
     public void validarMensaje(String msjVal) {
 
         try {
-            Thread.sleep(2000);
+            espera(msjSinCriterios,3);
             assertThat(msjSinCriterios.getText(),is(equalTo(msjVal)));
 
-        } catch (InterruptedException e) {
-
-            throw new RuntimeException(e);
+        } catch(Exception e) {
+            LOGGER.error("This is error", e);
         }
     }
 
@@ -253,50 +295,66 @@ public class BusquedaContactoPage extends Guidewire {
 
             for (WebElement row : allRows) {
                 List<WebElement> cells = row.findElements(By.tagName("td"));
-                assertThat(cells.get(4).getText(), is(equalTo(filtro)));
+                boolean valido = cells.get(0).getText().equals(filtro) ||
+                                 cells.get(1).getText().equals(filtro) ||
+                                 cells.get(2).getText().equals(filtro) ||
+                                 cells.get(3).getText().equals(filtro);
+                assertTrue(valido);
             }
 
-        }catch (Exception e) {
-            throw new RuntimeException(e);
+        }catch(Exception e) {
+            LOGGER.error("This is error", e);
         }
     }
 
-    public void verInfoPersonaNatural(String filtro) {
+    public void verInfoPersonaNatural(String filtro1, String filtro2) {
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
-        //String razonSocial = txtRazonSocial.getValue().toString();
 
         try {
 
             for (WebElement row : allRows) {
                 List<WebElement> cells = row.findElements(By.tagName("td"));
-                assertThat(cells.get(3).getText(), is(equalTo(filtro)));
+                if(filtro1!="") {
+                    boolean valido1 = cells.get(0).getText().equals(filtro1) ||
+                                      cells.get(1).getText().equals(filtro1) ||
+                                      cells.get(2).getText().equals(filtro1) ||
+                                      cells.get(3).getText().equals(filtro1) ||
+                                      cells.get(4).getText().equals(filtro1) ||
+                                      cells.get(5).getText().equals(filtro1);
+                    assertTrue(valido1);
+                }
+                if(filtro2!="") {
+                    boolean valido2 = cells.get(0).getText().equals(filtro1) ||
+                                      cells.get(1).getText().equals(filtro1) ||
+                                      cells.get(2).getText().equals(filtro1) ||
+                                      cells.get(3).getText().equals(filtro1) ||
+                                      cells.get(4).getText().equals(filtro1) ||
+                                      cells.get(5).getText().equals(filtro1);
+                    assertTrue(valido2);
+                }
             }
 
-        }catch (Exception e) {
-            throw new RuntimeException(e);
+        }catch(Exception e) {
+            LOGGER.error("This is error", e);
         }
-        /*try {
-
-            assertThat(colTipoId.getText(), is(not(equalTo(null))));
-            assertThat(colNumId.getText(), is(not(equalTo(null))));
-            assertThat(colNombre.getText(), is(not(equalTo(null))));
-            assertThat(colApellido.getText(), is(not(equalTo(null))));
-            assertThat(colDireccion.getText(), is(not(equalTo(null))));
-            assertThat(colTelefono.getText(), is(not(equalTo(null))));
-            assertThat(colEmail.getText(), is(not(equalTo(null))));
-            assertThat(colExterna.getText(), is(not(equalTo(null))));
-        }catch (Exception e) {
-            throw new RuntimeException(e);
-        }*/
     }
 
     public void  consultarContactoTipoNumDoc(String tipoDoc, String numDoc) {
 
+        espera(txtTipoDoc,3);
+        txtTipoDoc.waitUntilPresent();
+        txtTipoDoc.waitUntilClickable();
         txtTipoDoc.waitUntilEnabled();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
+        espera(txtNumDoc,3);
+        txtNumDoc.waitUntilPresent();
+        txtNumDoc.waitUntilClickable();
         txtNumDoc.waitUntilEnabled();
         txtNumDoc.type(numDoc);
+        espera(botonBuscar,2);
+        botonBuscar.waitUntilPresent();
+        botonBuscar.waitUntilClickable();
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
     }
@@ -307,7 +365,9 @@ public class BusquedaContactoPage extends Guidewire {
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
         txtNombre.type(primerNombre);
+        txtSegNombre.type(segundoNombre);
         txtApellido.type(primerApellido);
+        txtSegApellido.type(segundoApellido);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
         espera(botonBuscar,2);
@@ -326,6 +386,7 @@ public class BusquedaContactoPage extends Guidewire {
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         int parada = Integer.parseInt(numero);
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -376,5 +437,40 @@ public class BusquedaContactoPage extends Guidewire {
     public void validarLongitudPersonaJuridica(String razonSocial, String nombreComercial) {
         boolean valido = razonSocial.length() < 4 || nombreComercial.length() < 4;
         assertTrue(valido);
+    }
+
+    public void validarLabelsPersonaNatural(Map<String, String> labelsContacto){
+        try {
+            Thread.sleep(2000);
+            assertThat(lblTipoId.getText().toString(),is(equalTo(labelsContacto.get("tipoId"))));
+            assertThat(lblNumId.getText().toString(),is(equalTo(labelsContacto.get("numId"))));
+            assertThat(lblPrimNombre.getText().toString(),is(equalTo(labelsContacto.get("primNombre"))));
+            assertThat(lblSegNombre.getText().toString(),is(equalTo(labelsContacto.get("segNombre"))));
+            assertThat(lblPriApellido.getText().toString(),is(equalTo(labelsContacto.get("priApellido"))));
+            assertThat(lblSegApellido.getText().toString(),is(equalTo(labelsContacto.get("segApellido"))));
+            assertThat(lblDireccion.getText().toString(),is(equalTo(labelsContacto.get("direccion"))));
+            assertThat(lblTelefono.getText().toString(),is(equalTo(labelsContacto.get("telefono"))));
+            assertThat(lblEmail.getText().toString(),is(equalTo(labelsContacto.get("email"))));
+            assertThat(lblExterna.getText().toString(),is(equalTo(labelsContacto.get("externa"))));
+        } catch(Exception e) {
+            LOGGER.error("This is error", e);
+        }
+    }
+
+    public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto){
+        try {
+            Thread.sleep(2000);
+            assertThat(lblTipoId.getText().toString(),is(equalTo(labelsContacto.get("tipoId"))));
+            assertThat(lblNumId.getText().toString(),is(equalTo(labelsContacto.get("numId"))));
+            assertThat(lblNomComercial.getText().toString(),is(equalTo(labelsContacto.get("nomComercial"))));
+            assertThat(lblSegNombre.getText().toString(),is(equalTo(labelsContacto.get("segNombre"))));
+            assertThat(lblRazonSocial.getText().toString(),is(equalTo(labelsContacto.get("raznSocial"))));
+            assertThat(lblDireccion.getText().toString(),is(equalTo(labelsContacto.get("direccion"))));
+            assertThat(lblTelefono.getText().toString(),is(equalTo(labelsContacto.get("telefono"))));
+            assertThat(lblEmail.getText().toString(),is(equalTo(labelsContacto.get("email"))));
+            assertThat(lblExterna.getText().toString(),is(equalTo(labelsContacto.get("externa"))));
+        } catch(Exception e) {
+            LOGGER.error("This is error", e);
+        }
     }
 }

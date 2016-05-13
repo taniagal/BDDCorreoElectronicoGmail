@@ -9,6 +9,7 @@ import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.yecht.Data;
+import java.util.Map;
 
 /**
  * Created by jhonvebz on 25/04/2016.
@@ -75,8 +76,8 @@ public class BusquedaContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verInfoPersonaNatural(String filtro) {
-        busquedaContactoPage.verInfoPersonaNatural(filtro);
+    public void verInfoPersonaNatural(String filtro1, String filtro2) {
+        busquedaContactoPage.verInfoPersonaNatural(filtro1, filtro2);
     }
 
     @Step
@@ -104,5 +105,15 @@ public class BusquedaContactoSteps extends ScenarioSteps {
     @Step
     public void validarLongitudPersonaJuridica(String razonSocial, String nombreComercial) {
         busquedaContactoPage.validarLongitudPersonaJuridica(razonSocial, nombreComercial);
+    }
+
+    @Step
+    public void validarLabelsPersonaNatural(Map<String, String> labelsContacto){
+        busquedaContactoPage.validarLabelsPersonaNatural(labelsContacto);
+    }
+
+    @Step
+    public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto){
+        busquedaContactoPage.validarLabelsPersonaJuridica(labelsContacto);
     }
 }
