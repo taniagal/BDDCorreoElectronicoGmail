@@ -37,25 +37,40 @@ public class DetallesContactoEdicionDefinitions {
         dcs.abrirDetallesContactoPersona(primerNombre,primerApellido);
     }
 
+    @When("quiera editar la informacion del contacto con perimer nombre <primer_nombre>,segundo nombre <segundo_nombre>")
+    public void agregarNombre(@Named("segundo_nombre")String segundoNombre){
+        dcs.agregarNombre(segundoNombre);
+    }
+    @When("primer apellido <primer_apellido>, segundo apellido <segundo_apellido>")
+    public void agregarApellido(@Named("segundo_apellido")String segundoApellido){
+        dcs.agregarApellido(segundoApellido);
+    }
 
-    @When("quiera editar la informacion del contacto con perimer nombre <primer_nombre>,\n" +
-            "segundo nombre <segundo_nombre>, primer apellido <primer_apellido>, segundo apellido <segundo_apellido>,\n" +
-            "fecha fallecimiento <fecha_fallecimiento>, causa fallecimiento <causa_fallecimiento>, profesion <profesion>,\n" +
-            "estado civil <estado_civil>, tipo familia <tipo_familia>,telefono celular <telefono_celular>,telefono residencial \n" +
-            "<telefono_residencial>, telefono trabajo <telefono_trabajo>,correo electronico primario <correo_electronico_primario>,\n" +
-            " correo electronico secundario <correo_electronico_secundario>")
-    //@Pending
-    public void editarLaInformacionContacto(@Named("primer_nombre")String primerNombre,@Named("segundo_nombre")String segundoNombre,
-                                            @Named("primer_apellido")String primerApellido,@Named("segundo_apellido")String segundoApellido,
-                                            @Named("fecha_fallecimiento")String fechaFallecimiento,@Named("causa_fallecimiento")String causaFallecimiento,
-                                            @Named("profesion")String profesion,@Named("estado_civil")String estadoCivil,@Named("tipo_familia")String tipoFamilia,
-                                            @Named("telefono_celular")String telefonoCelular,@Named("telefono_residencial")String telefonoResidencial,
-                                            @Named("telefono_trabajo")String telefonoTrabajo,@Named("correo_electronico_primario")String correoElectronicoPrimario,
-                                            @Named("correo_electronico_secundario")String correoElectronicoSecundario){
+    @When("profesion <profesion>")
+    public void agregarProfesion(@Named("profesion")String profesion){
+        dcs.agregarProfesion(profesion);
+    }
 
-        dcs.editarContacto(primerNombre,primerApellido,segundoNombre,segundoApellido, fechaFallecimiento, causaFallecimiento,
-                profesion, estadoCivil, tipoFamilia,telefonoCelular, telefonoResidencial, telefonoTrabajo,
-                correoElectronicoPrimario, correoElectronicoSecundario);
+    @When("estado civil <estado_civil>")
+    public void agregarEstadocivil(@Named("estado_civil")String estadoCivil){
+        dcs.agregarEstadoCivil(estadoCivil);
+    }
+
+    @When("tipo familia <tipo_familia>")
+    public void agregarTipoFamilia(@Named("tipo_familia")String tipoFamilia){
+        dcs.agregarTipoFamilia(tipoFamilia);
+    }
+
+    @When("telefono celular <telefono_celular>,telefono residencial<telefono_residencial>, telefono trabajo <telefono_trabajo>")
+    public void agregarTelefonos(@Named("telefono_celular")String telefonoCelular,@Named("telefono_residencial")String telefonoResidencial,
+                                 @Named("telefono_trabajo")String telefonoTrabajo){
+        dcs.agregarTelefonos(telefonoCelular, telefonoResidencial, telefonoTrabajo);
+    }
+
+    @When("correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>")
+    public void agregarCorreos(@Named("correo_electronico_primario")String correoElectronicoPrimario,
+                               @Named("correo_electronico_secundario")String correoElectronicoSecundario){
+        dcs.agregarCorreos(correoElectronicoPrimario, correoElectronicoSecundario);
     }
 
     @Then("se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios")

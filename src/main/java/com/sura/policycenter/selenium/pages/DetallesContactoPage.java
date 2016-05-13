@@ -380,4 +380,59 @@ public class DetallesContactoPage extends Guidewire {
     }
 
 
+    public void agregarNombre(String segundoNombre){
+        txtSegundoNombre.clear();
+        //waitABit(200);
+        txtSegundoNombre.sendKeys(segundoNombre);
+        dtlContact[2]= segundoNombre;
+    }
+
+    public void agregarApellido(String segundoApellido){
+        txtSegundoApellido.clear();
+        txtSegundoApellido.sendKeys(segundoApellido);
+        dtlContact[3]= segundoApellido;
+    }
+
+    public void agregarFallecimiento( String fechaFallecimiento, String causaFallecimiento){
+        dtlContact[4]= fechaFallecimiento;
+        dtlContact[5]= causaFallecimiento;
+    }
+
+    public void agregarProfesion(String profesion){
+        selectItem(cboProfesion, profesion);
+        dtlContact[6]= profesion;
+    }
+
+    public void agregarEstadoCivil(String estadoCivil){
+        selectItem(cboEstadoCivil,estadoCivil);
+        dtlContact[7]= estadoCivil;
+    }
+
+    public void agregarTipoFamilia(String tipoFamilia){
+        selectItem(cboTipoFamilia, tipoFamilia);
+        dtlContact[8]= tipoFamilia;
+    }
+
+    public void agregarTelefonos(String telefonoCelular, String telefonoResidencial, String telefonoTrabajo){
+        txtTelefonoTrabajo.clear();
+        txtTelefonoTrabajo.sendKeys(telefonoTrabajo);
+        txtTelefonoCelular.clear();
+        txtTelefonoCelular.sendKeys(telefonoCelular);
+        txtTelefonoResidencial.clear();
+        txtTelefonoResidencial.sendKeys(telefonoResidencial);
+        dtlContact[10]= telefonoCelular;
+        dtlContact[11]= telefonoResidencial;
+        dtlContact[12]= telefonoTrabajo;
+    }
+
+    public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
+        txtCorreoElectronicoPrimario.clear();
+        //waitABit(200);
+        txtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
+        txtCorreoElectronicoSecundario.clear();
+        //waitABit(200);
+        txtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
+        dtlContact[13]= correoElectronicoPrimario;
+        dtlContact[14]= correoElectronicoSecundario;
+    }
 }

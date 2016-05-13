@@ -43,21 +43,6 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void editarContacto(String primerNombre, String primerApellido, String segundoNombre,
-                               String segundoApellido, String fechaFallecimiento, String causaFallecimiento,
-                               String profesion, String estadoCivil, String tipoFamilia, String telefonoCelular,
-                               String telefonoResidencial, String telefonoTrabajo,
-                               String correoElectronicoPrimario, String correoElectronicoSecundario) {
-
-        dc.editarContacto();
-        dc.editarContactoPersona(primerNombre,primerApellido,segundoNombre,segundoApellido, fechaFallecimiento, causaFallecimiento,
-                profesion, estadoCivil, tipoFamilia,telefonoCelular, telefonoResidencial, telefonoTrabajo,
-                correoElectronicoPrimario, correoElectronicoSecundario);
-    }
-
-
-
-    @Step
     public void actualizarContacto(){
         dc.actualizaContacto();
     }
@@ -73,13 +58,48 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
+    public void agregarNombre(String segundoNombre){
+        dc.editarContacto();
+        waitABit(1000);
+        dc.agregarNombre(segundoNombre);
+    }
+
+    @Step
+    public void agregarApellido(String segundoApellido){
+        dc.agregarApellido(segundoApellido);
+    }
+
+    @Step
+    public void agregarProfesion(String profesion){
+        dc.agregarProfesion(profesion);
+    }
+
+    @Step
+    public void agregarEstadoCivil(String estadoCivil){
+        dc.agregarEstadoCivil(estadoCivil);
+    }
+
+    @Step
+    public void agregarTipoFamilia(String tipoFamilia){
+        dc.agregarTipoFamilia(tipoFamilia);
+    }
+
+    @Step
+    public void agregarTelefonos(String telefonoCelular, String telefonoResidencial, String telefonoTrabajo){
+        dc.agregarTelefonos(telefonoCelular,telefonoResidencial,telefonoTrabajo);
+    }
+
+    @Step
+    public void agregarCorreos(String correoElectronicoPrimario, String correoElectronicoSecundario){
+        dc.agregarCorreo(correoElectronicoPrimario,correoElectronicoSecundario);
+    }
+
+    @Step
     public void editarContacto(String razonSocial, String nombreComercial, String actividadComercial, String numeroEmpleados,
                                String valorActivos, String ventasAnuales, String telefonoOficina,
                                String correoElectronicoPrimario, String correoElectronicoSecundario) {
-
         dc.editarContacto();
         dc.editarContactoJuridico(razonSocial,nombreComercial,actividadComercial,numeroEmpleados, valorActivos, ventasAnuales,
                 telefonoOficina, correoElectronicoPrimario, correoElectronicoSecundario);
     }
-
 }
