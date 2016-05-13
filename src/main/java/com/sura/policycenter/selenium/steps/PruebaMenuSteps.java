@@ -1,11 +1,19 @@
 package com.sura.policycenter.selenium.steps;
 
+import com.beust.jcommander.internal.Lists;
 import com.sura.policycenter.selenium.pages.AbrirAppPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.model.TestTag;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import net.thucydides.core.steps.StepEventBus;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jorghome on 04/05/2016.
@@ -32,6 +40,26 @@ public class PruebaMenuSteps extends ScenarioSteps {
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
+
+    @Step
+    public void should_run_just_for_end_to_end_tests () {
+
+        Map<String, String> metadata = Serenity.getCurrentSession().getMetaData();
+
+        if (!metadata.get("level").equalsIgnoreCase("system")) {
+            StepEventBus.getEventBus().testIgnored();
+        }
+        else {
+            add_tags();
+        }
+    }
+
+    public void add_tags() {
+        List<TestTag> myTags = Lists.newArrayList(TestTag.withName("menu").andType("prueba"));
+        StepEventBus.getEventBus().addTagsToCurrentStory(myTags);
+    }
+
+    @WithTag("prueba:menu")
 
     @Step
     public void open() {
@@ -121,9 +149,9 @@ public class PruebaMenuSteps extends ScenarioSteps {
         gw().waitUntil(2000);
         inicioPage().irACuentaReescrPoliACuenta();
         gw().waitUntil(2000);
-        inicioPage().irACuentaConvPoliACuenta();
+        inicioPage().irACuentaCombPoliACuenta();
         gw().waitUntil(1000);
-        inicioPage().irCuentaTazaCotPoliManuPage();
+        inicioPage().irCuentaTazaCotPoliManu();
         gw().waitUntil(2000);*/
 
         //Menu Poliza
@@ -219,7 +247,6 @@ public class PruebaMenuSteps extends ScenarioSteps {
         gw().waitUntil(3000);
         inicioPage().irAAdminVerificarErrorPatron();
         gw().waitUntil(3000);*/
-
     }
 
     @Step

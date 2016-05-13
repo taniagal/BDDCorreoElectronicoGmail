@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by jonamele on 12/05/2016.
  */
-public class CuentaConvPoliACuentaPage extends Guidewire {
-    public CuentaConvPoliACuentaPage(WebDriver driver) {
+public class CuentaCombPoliACuentaPage extends Guidewire {
+    public CuentaCombPoliACuentaPage(WebDriver driver) {
         super(driver);
     }
 }

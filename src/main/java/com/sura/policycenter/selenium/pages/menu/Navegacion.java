@@ -34,6 +34,7 @@ public class Navegacion extends Guidewire {
     Guidewire gw = new Guidewire(getDriver());
     Actions act = new Actions(getDriver());
 
+    // Objetos menu Escritorio
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnWrap']")
     WebElementFacade menuEscritorio;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopActivities-itemEl']")
@@ -50,12 +51,20 @@ public class Navegacion extends Guidewire {
     WebElementFacade mnuItemMisColas;
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab-btnWrap']")
     WebElementFacade mnuCuenta;
+
+    // Objetos menu Cuenta
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-itemEl']")
     WebElementFacade mnuItemNuevaCuenta;
+
+    // Objetos menu Poliza
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
     WebElementFacade mnuPoliza;
+    @FindBy (xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_PolicyRetrievalItem-inputEl']")
+    WebElementFacade mnuNumPoliza;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-itemEl']")
     WebElementFacade mnuItemNuevoEnvio;
+
+    // Objetos menu Contacto
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
     WebElementFacade mnuContact;
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact-arrowEl']")
@@ -68,6 +77,8 @@ public class Navegacion extends Guidewire {
     WebElementFacade mnuItemContactoBusqueda;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
     WebElementFacade mnuBuscar;
+
+    // Objetos menu Buscar
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_PolicySearch']")
     WebElementFacade mnuItemBuscarPoliza;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_AccountSearch']")
@@ -78,8 +89,12 @@ public class Navegacion extends Guidewire {
     WebElementFacade mnuItemBuscarAct;
     @FindBy(xpath = "//*[@id='TabBar:SearchTab:Search_ContactSearch']")
     WebElementFacade mnuItemBusquedaContacto;
+
+    // Objetos menu Equipo
     @FindBy(xpath = ".//*[@id='TabBar:TeamTab-btnInnerEl']")
     WebElementFacade mnuEquipo;
+
+    // Objetos menu Administracion
     @FindBy(xpath = ".//*[@id='TabBar:AdminTab-btnWrap']")
     WebElementFacade mnuAdministracion;
     @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_UsersAndSecurity-arrowEl']")
@@ -134,12 +149,16 @@ public class Navegacion extends Guidewire {
     WebElementFacade mnuItemFormatoExpHojasCalculo;
     @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Utilities:Utilities_DataChangePage-itemEl']")
     WebElementFacade mnuItemCambioDatos;
+
+    // Objetos menu Acciones Escritorio
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions']")
     WebElementFacade mnuAccionesEscritorio;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission']")
     WebElementFacade mnuAccionNuevoEnvio;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewAccount']")
     WebElementFacade mnuAccionNuevaCuenta;
+
+    // Objetos menu Acciones Cuenta
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions-btnInnerEl']")
     WebElementFacade mnuAccionesCuenta;
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewNote-itemEl']")
@@ -200,12 +219,14 @@ public class Navegacion extends Guidewire {
     WebElementFacade mnuAccionReescribirPolizas;
     @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_MergeAccounts-textEl']")
     WebElementFacade mnuAccionCombinarCuentas;
-    @FindBy (xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_PolicyRetrievalItem-inputEl']")
-    WebElementFacade mnuNumPoliza;
+
+    // Objetos menu Acciones Contacto
     @FindBy (xpath = ".//*[@id='ContactFile:ContactFileMenuActions-btnInnerEl']")
     WebElementFacade mnuAccionesContacto;
     @FindBy (xpath = ".//*[@id='ContactFile:ContactFileMenuActions:ContactFileMenuActions_Create:ContactFileMenuActions_NewAccount-itemEl']")
     WebElementFacade mnuAccionNuevaCuentaC;
+
+    // Objetos menu Acciones Administracion
     @FindBy (xpath = ".//*[@id='Admin:AdminMenuActions-btnInnerEl']")
     WebElementFacade mnuAccionesAdministracion;
     @FindBy (xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuActions_NewUser-itemEl']")
@@ -220,8 +241,6 @@ public class Navegacion extends Guidewire {
     WebElementFacade mnuAccionNuevoGrupoAfiinidad;
     @FindBy (xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_Validate:AdminMenuActions_ValidateFormPatterns-itemEl']")
     WebElementFacade mnuAccionVerificarErroresPatron;
-
-
     @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category-arrowEl']")
     WebElementFacade mnuAccionSolicitud;
     @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:0:item-itemEl']")
@@ -249,7 +268,7 @@ public class Navegacion extends Guidewire {
     @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:11:item-itemEl']")
     WebElementFacade mnuAccionCotizarManual;
 
-
+    // Navegacion menu Escritorio
     public MisActividadesPage irAMisActividades() {
         gw.deployMenu(menuEscritorio);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -299,6 +318,7 @@ public class Navegacion extends Guidewire {
         return new MisColasPage(getDriver());
     }
 
+    // Navegacion menu Cuenta
     public NuevaCuentaPage irANuevaCuenta() {
         gw.deployMenu(mnuCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -313,6 +333,11 @@ public class Navegacion extends Guidewire {
         return new NuevoEnvioPage(getDriver());
     }
 
+    // Navegacion menu Poliza
+
+
+
+    // Navegacion menu Contacto
     public NuevaCompaniaPage irANuevaCompania() {
         gw.deployMenu(mnuContact);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -338,6 +363,7 @@ public class Navegacion extends Guidewire {
         return new BuscarContactoPage(getDriver());
     }
 
+    // Navegacion menu Buscar
     public BuscarPolizasPage irABuscarPolizas() {
         gw.deployMenu(mnuBuscar);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -373,12 +399,14 @@ public class Navegacion extends Guidewire {
         return new BuscarContactosPage(getDriver());
     }
 
+    // Navegacion menu Equipo
     public EquipoPage irAEquipo() {
         gw.deployMenu(mnuEquipo);
         act.moveToElement(mnuEquipo).release(mnuEquipo).click().build().perform();
         return new EquipoPage(getDriver());
     }
 
+    // Navegacion menu Administracion
     public AdminUsuariosPage irAAdminUsuarios() {
         gw.deployMenu(mnuAdministracion);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -577,6 +605,7 @@ public class Navegacion extends Guidewire {
         return new AdminCambioDatosPage(getDriver());
     }
 
+    // Navegacion menu Acciones Escritorio
     public EscritorioNuevoEnvioPage irAEscritorioNuevoEnvio() {
         menuEscritorio.click();
         gw.deployMenu(mnuAccionesEscritorio);
@@ -593,6 +622,7 @@ public class Navegacion extends Guidewire {
         return new EscritorioNuevaCuentaPage(getDriver());
     }
 
+    // Navegacion menu Acciones Cuenta
     public CuentaNuevaNotaPage irACuentaNuevaNota() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
@@ -610,7 +640,6 @@ public class Navegacion extends Guidewire {
         act.moveToElement(mnuAccionLigarDocExistente).release(mnuAccionLigarDocExistente).click().build().perform();
         return new CuentaLigaDocExistePage(getDriver());
     }
-
 
     public CuentaCreaDocNuevaPlantPage irACuentaCreaDocNuevaPlant() {
         mnuCuenta.click();
@@ -636,7 +665,6 @@ public class Navegacion extends Guidewire {
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuAccionNuevoEnvio2).release(mnuAccionNuevoEnvio2).click().build().perform();
         return new CuentaNuevoEnvioPage(getDriver());
-
     }
 
     public CuentaRevisaNuevoCorreoPage irACuentaRevisaNuevoCorreo() {
@@ -673,7 +701,6 @@ public class Navegacion extends Guidewire {
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionReunirseAsegurado).release(mnuAccionReunirseAsegurado).click().build().perform();
         return new CuentaReuneAseguradoPage(getDriver());
-
     }
 
     public CuentaCancelaPolizDividPage irACuentaCancelaPolizDivid() {
@@ -748,7 +775,7 @@ public class Navegacion extends Guidewire {
         return new CuentaNotificaPolizaPage(getDriver());
     }
 
-    public CuentaRecuerdaGeneralPage irAEscritorioRecuerdaGeneralPage() {
+    public CuentaRecuerdaGeneralPage irAEscritorioRecuerdaGeneral() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -848,14 +875,159 @@ public class Navegacion extends Guidewire {
         return new CuentaReescrPoliACuentaPage(getDriver());
     }
 
-    public CuentaConvPoliACuentaPage irACuentaConvPoliACuenta() {
+    public CuentaCombPoliACuentaPage irACuentaCombPoliACuenta() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuAccionCombinarCuentas).release(mnuAccionCombinarCuentas).click().build().perform();
-        return new CuentaConvPoliACuentaPage(getDriver());
+        return new CuentaCombPoliACuentaPage(getDriver());
     }
 
+    public CuentaCreaAgenteNuevPage irACuentaCreaAgenteNuev() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionAgenteNuevo).release(mnuAccionAgenteNuevo).click().build().perform();
+        return new CuentaCreaAgenteNuevPage(getDriver());
+    }
+
+    public CuentaObtAudPersoInterPage irACuentaObtAudPersoInter() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionAuditoriaInterno).release(mnuAccionAuditoriaInterno).click().build().perform();
+        return new CuentaObtAudPersoInterPage(getDriver());
+    }
+
+    public CuentaObtAudServExterPage irACuentaObtAudServExter() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionAuditoriaExterna).release(mnuAccionAuditoriaExterna).click().build().perform();
+        return new CuentaObtAudServExterPage(getDriver());
+    }
+
+    public CuentaObtCotizReaseguroPage irACuentaObtCotizReaseguro() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionCotizacionReaseguro).release(mnuAccionCotizacionReaseguro).click().build().perform();
+        return new CuentaObtCotizReaseguroPage(getDriver());
+    }
+
+    public CuentaObtDatoOficPage irACuentaObtDatoOfic() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionDatosOf).release(mnuAccionDatosOf).click().build().perform();
+        return new CuentaObtDatoOficPage(getDriver());
+    }
+
+    public CuentaObtInfoVehiMotoPage irACuentaObtInfoVehiMoto() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionInformesMotorizado).release(mnuAccionInformesMotorizado).click().build().perform();
+        return new CuentaObtInfoVehiMotoPage(getDriver());
+    }
+
+    public CuentaObtInspContSiniesPage irACuentaObtInspContSinies() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionInspeccionSiniestro).release(mnuAccionInspeccionSiniestro).click().build().perform();
+        return new CuentaObtInspContSiniesPage(getDriver());
+    }
+
+    public CuentaObtInspServExterPage irACuentaObtInspServExter() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionInspeccionExterno).release(mnuAccionInspeccionExterno).click().build().perform();
+        return new CuentaObtInspServExterPage(getDriver());
+    }
+
+    public CuentaObtReporCredPage irACuentaObtReporCred() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionReportesCredito).release(mnuAccionReportesCredito).click().build().perform();
+        return new CuentaObtReporCredPage(getDriver());
+    }
+
+    public CuentaRevisionLegalPage irACuentaRevisionLegal() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionRevisionLegal).release(mnuAccionRevisionLegal).click().build().perform();
+        return new CuentaRevisionLegalPage(getDriver());
+    }
+
+    public CuentaObtInfRiesAgenPage irACuentaObtInfRiesAgen() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionInfoAgente).release(mnuAccionInfoAgente).click().build().perform();
+        return new CuentaObtInfRiesAgenPage(getDriver());
+    }
+
+    public CuentaTazaCotPoliManuPage irCuentaTazaCotPoliManu() {
+        mnuCuenta.click();
+        gw.deployMenu(mnuAccionesCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        act.moveToElement(mnuAccionCotizarManual).release(mnuAccionCotizarManual).click().build().perform();
+        return new CuentaTazaCotPoliManuPage(getDriver());
+    }
+
+    // Navegacion menu Acciones Contacto
     public ContactoNuevaCuentaPage irAContactoNuevaCuenta() {
         mnuContact.click();
         gw.deployMenu(mnuAccionesContacto);
@@ -864,6 +1036,7 @@ public class Navegacion extends Guidewire {
         return new ContactoNuevaCuentaPage(getDriver());
     }
 
+    // Navegacion menu Acciones Administracion
     public AdminUsuarioNuevoPage irAAdminUsuarioNuevo() {
         mnuAdministracion.click();
         gw.deployMenu(mnuAccionesAdministracion);
@@ -910,149 +1083,5 @@ public class Navegacion extends Guidewire {
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuAccionVerificarErroresPatron).release(mnuAccionVerificarErroresPatron).click().build().perform();
         return new AdminVerificarErrorPatronPage(getDriver());
-    }
-
-    public CuentaCreaAgenteNuevPage irACuentaCreaAgenteNuevPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionAgenteNuevo).release(mnuAccionAgenteNuevo).click().build().perform();
-        return new CuentaCreaAgenteNuevPage(getDriver());
-    }
-
-    public CuentaObtAudPersoInterPage irACuentaObtAudPersoInterPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionAuditoriaInterno).release(mnuAccionAuditoriaInterno).click().build().perform();
-        return new CuentaObtAudPersoInterPage(getDriver());
-    }
-
-    public CuentaObtAudServExterPage irACuentaObtAudServExterPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionAuditoriaExterna).release(mnuAccionAuditoriaExterna).click().build().perform();
-        return new CuentaObtAudServExterPage(getDriver());
-    }
-
-    public CuentaObtCotizReaseguroPage irACuentaObtCotizReaseguroPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionCotizacionReaseguro).release(mnuAccionCotizacionReaseguro).click().build().perform();
-        return new CuentaObtCotizReaseguroPage(getDriver());
-    }
-
-    public CuentaObtDatoOficPage irACuentaObtDatoOficPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionDatosOf).release(mnuAccionDatosOf).click().build().perform();
-        return new CuentaObtDatoOficPage(getDriver());
-    }
-
-    public CuentaObtInfoVehiMotoPage irACuentaObtInfoVehiMotoPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionInformesMotorizado).release(mnuAccionInformesMotorizado).click().build().perform();
-        return new CuentaObtInfoVehiMotoPage(getDriver());
-    }
-
-    public CuentaObtInspContSiniesPage irACuentaObtInspContSiniesPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionInspeccionSiniestro).release(mnuAccionInspeccionSiniestro).click().build().perform();
-        return new CuentaObtInspContSiniesPage(getDriver());
-    }
-
-    public CuentaObtInspServExterPage irACuentaObtInspServExterPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionInspeccionExterno).release(mnuAccionInspeccionExterno).click().build().perform();
-        return new CuentaObtInspServExterPage(getDriver());
-    }
-
-    public CuentaObtReporCredPage irACuentaObtReporCredPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionReportesCredito).release(mnuAccionReportesCredito).click().build().perform();
-        return new CuentaObtReporCredPage(getDriver());
-    }
-
-    public CuentaRevisionLegalPage irACuentaRevisionLegalPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionRevisionLegal).release(mnuAccionRevisionLegal).click().build().perform();
-        return new CuentaRevisionLegalPage(getDriver());
-    }
-
-    public CuentaObtInfRiesAgenPage irACuentaObtInfRiesAgenPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionInfoAgente).release(mnuAccionInfoAgente).click().build().perform();
-        return new CuentaObtInfRiesAgenPage(getDriver());
-    }
-
-    public CuentaTazaCotPoliManuPage irCuentaTazaCotPoliManuPage() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuAccionCotizarManual).release(mnuAccionCotizarManual).click().build().perform();
-        return new CuentaTazaCotPoliManuPage(getDriver());
     }
 }
