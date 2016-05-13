@@ -219,9 +219,7 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void agregarTelefonosResidencial(String telefonoResidencial){
-        txtTelefonoResidencial.clear();
-        waitABit(200);
-        txtTelefonoResidencial.sendKeys(telefonoResidencial);
+        txtTelefonoResidencial.type(telefonoResidencial);
         dtlContact[11]= telefonoResidencial;
     }
 
@@ -274,7 +272,6 @@ public class DetallesContactoPage extends Guidewire {
 
     public  void verificarCamposPersonaNatural(){
         StringBuilder notPresent = new StringBuilder("No estan presentes los elemtos:");
-        String res ="";
         if(!lblPrimerNombre.isPresent()) notPresent.append(" primer_nombre,");
         if(!lblSegundoNombre.isPresent()) notPresent.append(" segundo_nombre,");
         if(!lblPrimerApellido.isPresent()) notPresent.append(" primer_apellido,");
@@ -289,11 +286,11 @@ public class DetallesContactoPage extends Guidewire {
         if(!lblTipoTelefono.isPresent()) notPresent.append(" tipo_telefono,");
         if(!lblTelefonoCelular.isPresent()) notPresent.append(" telefono_celular,");
         if(!lblCorreoElectronicoPrimario.isPresent()) notPresent.append(" correo_electronico_primario,");
-        res = notPresent.toString();
-       /* if("No estan presentes los elemtos:".equals(notPresent.toString())){
-            notPresent = notPresent.toString().substring(0,notPresent.toString().length()-1);
-            notPresent.append(".");
-        }*/
+        String res = notPresent.toString();
+        if("No estan presentes los elemtos:".equals(res)){
+            res = notPresent.toString().substring(0,notPresent.toString().length()-1);
+        }
+        assertThat(res,"No estan presentes los elemtos.".equals(res));
     }
 
     public void verificarCamposPersonaJuridica() {
