@@ -10,9 +10,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
+
+import static com.sura.policycenter.selenium.definitions.ContactosAsociadosACuentaDefinitions.encabezado;
 
 /**
  * Created by Andrés Alarcón - QVisión on 2016/05/13.
@@ -84,6 +84,23 @@ public class GuidewireUtil {
     public static void esperarElementoSeaClickable(WebDriver driver, WebElement element) {
         new WebDriverWait(driver, 60).ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static List<String> obtenerTablaDeEjemplosDeUnaColumna(ExamplesTable tablaUnaColumna) throws Exception {
+        List<String> valores = new ArrayList<>();
+
+        Parameters row = tablaUnaColumna.getRowAsParameters(0);
+        Iterator<String> opcion = row.values().keySet().iterator();
+
+        while (opcion.hasNext()) {
+            String key = (String) opcion.next();
+            valores.add(new String(key));
+        }
+        for (Map<String, String> enc : tablaUnaColumna.getRows()) {
+            valores.add(new String(enc.get(valores.get(0)).toString()));
+
+        }
+        return valores;
     }
 
 }

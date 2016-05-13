@@ -30,8 +30,8 @@ public class DisponibilidadDetalleProductoDefinitions {
     }
 
     @Then("tipo de canal ventas debe contener los valores $tipoCanal")
-    public void validarTipoCanalVentas(ExamplesTable tipoCanal) {
-        // PENDING
+    public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws Exception {
+        disponibilidadDetalleProductoSteps.validarTipoCanalVentas(tipoCanal);
     }
 
 }

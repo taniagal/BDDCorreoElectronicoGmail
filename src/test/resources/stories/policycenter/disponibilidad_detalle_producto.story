@@ -5,15 +5,13 @@ Como usuario de policy center
 quiero poder configurar el modelo del producto teniendo en cuenta los canales de distribución
 para que se muestren las coberturas, terminos y opciones segun la disponibilidad
 
-GivenStories: stories/policycenter/login_policy.story
-
 Scenario: Filtrar canal por organizacion
+GivenStories: stories/policycenter/login_policy.story
 Given Estoy buscando una cuenta <numCuenta>
 And Estoy expidiendo una poliza de autos
 And viendo Informacion de poliza
 When seleccione Organizacion de ventas: <organizacion>
 Then tipo de canal ventas debe contener los valores
-
 |tipoCanal|
 |<ninguno>|
 |Leasing|
