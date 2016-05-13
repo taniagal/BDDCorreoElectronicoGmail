@@ -1,20 +1,28 @@
 package com.sura.guidewire.selenium;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
 import org.hamcrest.Matcher;
+import org.jbehave.core.model.ExamplesTable;
+import org.jbehave.core.steps.Parameters;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Created by jorghome on 15/04/2016.
@@ -25,6 +33,10 @@ public class Guidewire extends PageObject {
         super(driver);
 
     }
+
+    String mensajeError = "";
+
+
 
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     WebElementFacade configuracion;
@@ -80,8 +92,7 @@ public class Guidewire extends PageObject {
         }
     }
 
-    private void assertThat(String element, Matcher<String> stringMatcher) {
-    }
+
 
     public void login(String user, String pass) {
         usuario.clear();
@@ -166,5 +177,59 @@ public class Guidewire extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+
+    public HashSet<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable) throws Exception{
+        System.out.println("Guidewire.obtenerNombreColumnasDeExamplesTable");
+
+        HashSet<String> nombreColumnasTablaHS = new HashSet<>();
+        Parameters row = examplesTable.getRowAsParameters(0);
+        Iterator<String> menu = row.values().keySet().iterator();
+
+        while (menu.hasNext()) {
+            String key = (String) menu.next();
+            nombreColumnasTablaHS.add(new String(key));
+        }
+
+        return nombreColumnasTablaHS;
+
+    }
+
+    public WebElement obtenerElementoDelDOMPorTextoBuscandoPorXpath(String textoDelMenu, String tipoElemento) throws Exception {
+        System.out.println("Guidewire.obtenerElementoDelDOMPorTextoBuscandoPorXpath");
+
+        switch (tipoElemento){
+            case "LINK" :
+                System.out.println("LINK");
+                return getDriver().findElement(By.xpath(".//a[contains(.,'" + textoDelMenu + "')]"));
+            default:
+                return null;
+        }
+
+    }
+
+    public Boolean existenOpcionesPorMenu(ExamplesTable opcionesPorRol, String tipoMenu) {
+        System.out.println("Guidewire.existenOpcionesPorMenu");
+        mensajeError = "";
+        try {
+            HashSet<String> nombreColumnasTablaHS = obtenerNombreColumnasDeExamplesTable(opcionesPorRol);
+
+            for (String menuPrimerNivel : obtenerNombreColumnasDeExamplesTable(opcionesPorRol)) {
+                System.out.println("MENU -> " + menuPrimerNivel);
+                obtenerElementoDelDOMPorTextoBuscandoPorXpath(menuPrimerNivel, tipoMenu).click();
+                obtenerElementoDelDOMPorTextoBuscandoPorXpath(menuPrimerNivel, tipoMenu).sendKeys(Keys.ARROW_RIGHT);
+                for (Map<String, String> row : opcionesPorRol.getRows()) {
+                    System.out.println("MENU -> " + menuPrimerNivel + " -> " + row.get(menuPrimerNivel));
+                    obtenerElementoDelDOMPorTextoBuscandoPorXpath(row.get(menuPrimerNivel), tipoMenu);
+                }
+
+            }
+            return Boolean.TRUE;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return Boolean.FALSE;
+
+    }
 
 }

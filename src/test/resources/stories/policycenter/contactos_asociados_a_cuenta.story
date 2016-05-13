@@ -70,8 +70,17 @@ Examples:
 |numCuenta|posicion|opcion|
 |S000212121|1|POLIZAS_ASOCIADAS|
 
-
-
+Scenario: Validar opciones de creación de contacto
+Given estoy en la pantalla de cuenta y existe una cuenta <numCuenta> con contactos asociados
+And quiera ver el detalle de los contactos de la cuenta <numCuenta>
+And y desee crear un nuevo contacto
+Then debo ver las opciones de menú para los roles
+|Contacto de facturacion    |Contacto de información de reclamaciones   |Contacto primario      |Contacto secundario    |
+|Nueva Persona Natural      |Nueva Persona Natural                      |Nueva Persona Natural  |Nueva Persona Natural  |
+|Del Directorio             |Del Directorio                             |Del Directorio         |Del Directorio         |
+Examples:
+|numCuenta|
+|S000212121|
 
 
 
