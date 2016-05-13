@@ -16,11 +16,9 @@ Given Se tiene y se ha consultado la informacion detallada de un contacto tipo p
 <primer_nombre> y apellido <primer_apellido>, tipo direccion <tipo_direccion>, direccion <direccion>,
 tipo documento <tipo_documento>, documento <documento>
 When quiera editar la informacion del contacto con perimer nombre <primer_nombre>,segundo nombre <segundo_nombre>
-And primer apellido <primer_apellido>, segundo apellido <segundo_apellido>
-And profesion <profesion>
-And estado civil <estado_civil>
-And tipo familia <tipo_familia>
-And telefono celular <telefono_celular>,telefono residencial<telefono_residencial>, telefono trabajo <telefono_trabajo>
+And primer apellido <primer_apellido>, segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>
+And profesion <profesion>, estado civil <estado_civil>,tipo familia <tipo_familia>,telefono residencial<telefono_residencial>
+And telefono celular <telefono_celular>
 And correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>
 Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios
 

@@ -60,7 +60,6 @@ public class DetallesContactoSteps extends ScenarioSteps {
     @Step
     public void agregarNombre(String segundoNombre){
         dc.editarContacto();
-        waitABit(1000);
         dc.agregarNombre(segundoNombre);
     }
 
@@ -70,23 +69,23 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarProfesion(String profesion){
-        dc.agregarProfesion(profesion);
+    public void agregarLists(String profesion,String estadoCivil,String tipoFamilia){
+        dc.agregarLists(profesion,estadoCivil,tipoFamilia);
     }
 
     @Step
-    public void agregarEstadoCivil(String estadoCivil){
-        dc.agregarEstadoCivil(estadoCivil);
+    public void agregarTelefonoResidencia(String telefonoResidencial){
+        dc.agregarTelefonosResidencial(telefonoResidencial);
     }
 
     @Step
-    public void agregarTipoFamilia(String tipoFamilia){
-        dc.agregarTipoFamilia(tipoFamilia);
+    public void agregarTelefonoTrabajo(String telefonoTrabajo){
+        dc.agregarTelefonoTrabajo(telefonoTrabajo);
     }
 
     @Step
-    public void agregarTelefonos(String telefonoCelular, String telefonoResidencial, String telefonoTrabajo){
-        dc.agregarTelefonos(telefonoCelular,telefonoResidencial,telefonoTrabajo);
+    public void agregarTelefonoCelular(String telefonoCelular){
+        dc.agregarTelefonoCelular(telefonoCelular);
     }
 
     @Step

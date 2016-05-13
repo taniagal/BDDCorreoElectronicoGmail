@@ -21,7 +21,6 @@ public class DetallesContactoEdicionDefinitions {
     @Given("Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural con nombre\n" +
             "<primer_nombre> y apellido <primer_apellido>, tipo direccion <tipo_direccion>, direccion <direccion>,\n" +
             "tipo documento <tipo_documento>, documento <documento>")
-    //@Pending
     public void login(@Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
                       @Named("tipo_documento")String tipoDocumento,@Named("documento")String documento,
                       @Named("tipo_direccion")String tipoDireccion,@Named("direccion")String direccion){
@@ -41,30 +40,21 @@ public class DetallesContactoEdicionDefinitions {
     public void agregarNombre(@Named("segundo_nombre")String segundoNombre){
         dcs.agregarNombre(segundoNombre);
     }
-    @When("primer apellido <primer_apellido>, segundo apellido <segundo_apellido>")
-    public void agregarApellido(@Named("segundo_apellido")String segundoApellido){
+    @When("primer apellido <primer_apellido>, segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>")
+    public void agregarApellido(@Named("segundo_apellido")String segundoApellido,@Named("telefono_trabajo")String telefonoTrabajo){
         dcs.agregarApellido(segundoApellido);
+        dcs.agregarTelefonoTrabajo(telefonoTrabajo);
     }
 
-    @When("profesion <profesion>")
-    public void agregarProfesion(@Named("profesion")String profesion){
-        dcs.agregarProfesion(profesion);
+    @When("profesion <profesion>, estado civil <estado_civil>,tipo familia <tipo_familia>,telefono residencial<telefono_residencial>")
+    public void agregarLists(@Named("profesion")String profesion,@Named("estado_civil")String estadoCivil,@Named("tipo_familia")String tipoFamilia,@Named("telefono_residencial")String telefonoResidencial){
+        dcs.agregarTelefonoResidencia(telefonoResidencial);
+        dcs.agregarLists(profesion,estadoCivil,tipoFamilia);
     }
 
-    @When("estado civil <estado_civil>")
-    public void agregarEstadocivil(@Named("estado_civil")String estadoCivil){
-        dcs.agregarEstadoCivil(estadoCivil);
-    }
-
-    @When("tipo familia <tipo_familia>")
-    public void agregarTipoFamilia(@Named("tipo_familia")String tipoFamilia){
-        dcs.agregarTipoFamilia(tipoFamilia);
-    }
-
-    @When("telefono celular <telefono_celular>,telefono residencial<telefono_residencial>, telefono trabajo <telefono_trabajo>")
-    public void agregarTelefonos(@Named("telefono_celular")String telefonoCelular,@Named("telefono_residencial")String telefonoResidencial,
-                                 @Named("telefono_trabajo")String telefonoTrabajo){
-        dcs.agregarTelefonos(telefonoCelular, telefonoResidencial, telefonoTrabajo);
+    @When("telefono celular <telefono_celular>")
+    public void agregarTelefonoCelular(@Named("telefono_celular")String telefonoCelular){
+        dcs.agregarTelefonoCelular(telefonoCelular);
     }
 
     @When("correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>")
@@ -83,7 +73,7 @@ public class DetallesContactoEdicionDefinitions {
     //-------------------ESCENARIO 2---------------------
     @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica con nombre <razon_social>,\n" +
             "tipo de direccion <tipo_direccion> y direccion <direccion>")
-    public void login(@Named("razon_social")String razonSocial,@Named("tipo_direccion")String tipoDireccion,
+    public void infoContactoJurídico(@Named("razon_social")String razonSocial,@Named("tipo_direccion")String tipoDireccion,
                       @Named("direccion")String direccion){
         ncs.nuevoContactoPersonaJuridica();
         ncs.seleccionarTipoDocumentoPersonaNatural("NIT");

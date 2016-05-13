@@ -80,17 +80,8 @@ public class DetallesContactoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Edit-btnInnerEl']")
     WebElementFacade btnEditarContacto;
 
-
-
-
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    WebElementFacade txtPrimerNombre;
-
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl']")
     WebElementFacade txtSegundoNombre;
-
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    WebElementFacade txtPrimerApellido;
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:Particle-inputEl']")
     WebElementFacade txtSegundoApellido;
@@ -103,9 +94,6 @@ public class DetallesContactoPage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:FamilyType-inputEl']")
     WebElementFacade cboTipoFamilia;
-
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl']")
-    WebElementFacade cboTipoTelefono;
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:CellPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     WebElementFacade txtTelefonoCelular;
@@ -130,9 +118,6 @@ public class DetallesContactoPage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress2-inputEl']")
     WebElementFacade txtCorreoElectronicoSecundario;
-
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
-    WebElementFacade txtRazonSocial;
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
     WebElementFacade txtNombreComercial;
@@ -171,49 +156,9 @@ public class DetallesContactoPage extends Guidewire {
 
     public void editarContacto(){
         btnEditarContacto.click();
-        waitABit(300);
+        waitABit(800);
     }
 
-
-    public void editarContactoPersona(String primerNombre, String primerApellido, String segundoNombre,String segundoApellido,
-                                      String fechaFallecimiento, String causaFallecimiento, String profesion, String estadoCivil,
-                                      String tipoFamilia,String telefonoCelular, String telefonoResidencial,
-                                      String telefonoTrabajo,String correoElectronicoPrimario, String correoElectronicoSecundario){
-        txtTelefonoCelular.clear();
-        txtTelefonoCelular.sendKeys(telefonoCelular);
-        txtSegundoNombre.clear();
-        waitABit(200);
-        txtSegundoNombre.sendKeys(segundoNombre);
-        txtSegundoApellido.clear();
-        txtSegundoApellido.sendKeys(segundoApellido);
-        selectItem(cboEstadoCivil,estadoCivil);
-        selectItem(cboProfesion, profesion);
-        selectItem(cboTipoFamilia, tipoFamilia);
-        waitABit(500);
-        txtTelefonoTrabajo.clear();
-        txtTelefonoTrabajo.sendKeys(telefonoTrabajo);
-        txtCorreoElectronicoPrimario.clear();
-        waitABit(500);
-        txtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
-        txtCorreoElectronicoSecundario.clear();
-        txtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
-        txtTelefonoResidencial.clear();
-        txtTelefonoResidencial.sendKeys(telefonoResidencial);
-
-        dtlContact[2]= segundoNombre;
-        dtlContact[3]= segundoApellido;
-        dtlContact[4]= fechaFallecimiento;
-        dtlContact[5]= causaFallecimiento;
-        dtlContact[6]= profesion;
-        dtlContact[7]= estadoCivil;
-        dtlContact[8]= tipoFamilia;
-        dtlContact[10]= telefonoCelular;
-        dtlContact[11]= telefonoResidencial;
-        dtlContact[12]= telefonoTrabajo;
-        dtlContact[13]= correoElectronicoPrimario;
-        dtlContact[14]= correoElectronicoSecundario;
-
-    }
 
     public void editarContactoJuridico(String razonSocial, String nombreComercial, String actividadComercial,
                                        String numeroEmpleados,String valorActivos, String ventasAnuales, String telefonoOficina,
@@ -249,11 +194,59 @@ public class DetallesContactoPage extends Guidewire {
 
     public void actualizaContacto(){
         btnActualizar.click();
-        threadWait(2000);
+        waitABit(2000);
     }
 
+    public void agregarNombre(String segundoNombre){
+        txtSegundoNombre.clear();
+        txtSegundoNombre.sendKeys(segundoNombre);
+        dtlContact[2]= segundoNombre;
+    }
+
+    public void agregarApellido(String segundoApellido){
+        txtSegundoApellido.clear();
+        txtSegundoApellido.sendKeys(segundoApellido);
+        dtlContact[3]= segundoApellido;
+    }
+
+    public void agregarLists(String profesion,String estadoCivil,String tipoFamilia){
+        selectItem(cboProfesion, profesion);
+        selectItem(cboEstadoCivil,estadoCivil);
+        selectItem(cboTipoFamilia, tipoFamilia);
+        dtlContact[6]= profesion;
+        dtlContact[7]= estadoCivil;
+        dtlContact[8]= tipoFamilia;
+    }
+
+    public void agregarTelefonosResidencial(String telefonoResidencial){
+        txtTelefonoResidencial.clear();
+        waitABit(200);
+        txtTelefonoResidencial.sendKeys(telefonoResidencial);
+        dtlContact[11]= telefonoResidencial;
+    }
+
+    public void agregarTelefonoTrabajo(String telefonoTrabajo){
+        txtTelefonoTrabajo.sendKeys(telefonoTrabajo);
+        dtlContact[12]= telefonoTrabajo;
+    }
+
+    public void agregarTelefonoCelular(String telefonoCelular){
+        txtTelefonoCelular.sendKeys(telefonoCelular);
+        dtlContact[10]= telefonoCelular;
+    }
+
+    public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
+        txtCorreoElectronicoPrimario.clear();
+        waitABit(300);
+        txtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
+        waitABit(200);
+        txtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
+        dtlContact[13]= correoElectronicoPrimario;
+        dtlContact[14]= correoElectronicoSecundario;
+    }
+
+
     public void verificarActualizacion(){
-        espera(txtSegundoNombre,5);
         assertThat("el segundo nombre esta erroneo",dtlContact[2].equals(txtSegundoNombre.getText()));
         assertThat("el segundo apellido esta erroneo",dtlContact[3].equals(txtSegundoApellido.getText()));
         assertThat("la profesion esta erroneo",dtlContact[6].equals(cboProfesion.getText()));
@@ -268,7 +261,6 @@ public class DetallesContactoPage extends Guidewire {
 
 
     public void verificarActualizacionJuridico(){
-        espera(txtNombreComercial,5);
         assertThat("el nombre comercial esta erroneo",dtlCntJ[0].equals(txtNombreComercial.getText()));
         assertThat("la actividad comercial esta erronea",dtlCntJ[1].equals(cboActividadComercial.getText()));
         assertThat("el numero de empleados",dtlCntJ[2].equals(txtNumeroEmpleados.getText()));
@@ -281,158 +273,45 @@ public class DetallesContactoPage extends Guidewire {
 
 
     public  void verificarCamposPersonaNatural(){
-
-        String notPresent = "No estan presentes los elemtos:";
-
-        if(!lblPrimerNombre.isPresent()){
-            notPresent += " primer_nombre,";
-        }
-        if(!lblSegundoNombre.isPresent()){
-            notPresent += " segundo_nombre,";
-        }
-        if(!lblPrimerApellido.isPresent()){
-            notPresent += " primer_apellido,";
-        }
-        if(!lblSegundoApellido.isPresent()){
-            notPresent += " segundo_apellido,";
-        }
-        if(!lblTipoDocumento.isPresent()){
-            notPresent += " tipo_documento,";
-        }
-        if(!lblNumeroDocumento.isPresent()){
-            notPresent += " numero_documento,";
-        }
-        if(!lblSexo.isPresent()){
-            notPresent += " sexo,";
-        }
-        if(!lblFechaNacimiento.isPresent()){
-            notPresent += " fecha_nacimiento,";
-        }
-        if(!lblProfesion.isPresent()){
-            notPresent += " profesion,";
-        }
-        if(!lblEstadoCivil.isPresent()){
-            notPresent += " estado_civil,";
-        }
-        if(!lblTipoFamilia.isPresent()){
-            notPresent += " tipo_familia,";
-        }
-        if(!lblTipoTelefono.isPresent()){
-            notPresent += " tipo_telefono,";
-        }
-        if(!lblTelefonoCelular.isPresent()){
-            notPresent += " telefono_celular,";
-        }
-        if(!lblCorreoElectronicoPrimario.isPresent()){
-            notPresent += " correo_electronico_primario,";
-        }
-
-        if("No estan presentes los elemtos:".equals(notPresent)){
-            notPresent = notPresent.substring(0,notPresent.length()-1);
-            notPresent += ".";
-        }
-
-        assertThat(notPresent,"No estan presentes los elemtos.".equals(notPresent));
-
+        StringBuilder notPresent = new StringBuilder("No estan presentes los elemtos:");
+        String res ="";
+        if(!lblPrimerNombre.isPresent()) notPresent.append(" primer_nombre,");
+        if(!lblSegundoNombre.isPresent()) notPresent.append(" segundo_nombre,");
+        if(!lblPrimerApellido.isPresent()) notPresent.append(" primer_apellido,");
+        if(!lblSegundoApellido.isPresent()) notPresent.append(" segundo_apellido,");
+        if(!lblTipoDocumento.isPresent()) notPresent.append(" tipo_documento,");
+        if(!lblNumeroDocumento.isPresent()) notPresent.append(" numero_documento,");
+        if(!lblSexo.isPresent()) notPresent.append(" sexo,");
+        if(!lblFechaNacimiento.isPresent()) notPresent.append(" fecha_nacimiento,");
+        if(!lblProfesion.isPresent()) notPresent.append(" profesion,");
+        if(!lblEstadoCivil.isPresent()) notPresent.append(" estado_civil,");
+        if(!lblTipoFamilia.isPresent()) notPresent.append(" tipo_familia,");
+        if(!lblTipoTelefono.isPresent()) notPresent.append(" tipo_telefono,");
+        if(!lblTelefonoCelular.isPresent()) notPresent.append(" telefono_celular,");
+        if(!lblCorreoElectronicoPrimario.isPresent()) notPresent.append(" correo_electronico_primario,");
+        res = notPresent.toString();
+       /* if("No estan presentes los elemtos:".equals(notPresent.toString())){
+            notPresent = notPresent.toString().substring(0,notPresent.toString().length()-1);
+            notPresent.append(".");
+        }*/
     }
 
     public void verificarCamposPersonaJuridica() {
         String notPresent = "No estan presentes los elemtos:";
-
-        if(!lblRazonSocial.isPresent()){
-            notPresent += " razon_social,";
-        }
-        if(!lblNombreComercial.isPresent()){
-            notPresent += " nombre_comercial,";
-        }
-        if(!lblTipoDocumento.isPresent()){
-            notPresent += " tipo_documento,";
-        }
-        if(!lblNumeroDocumento.isPresent()){
-            notPresent += " numero_documento,";
-        }
-        if(!lblActividadComercial.isPresent()){
-            notPresent += " actividad_comercial,";
-        }
-        if(!lblNumeroEmpleados.isPresent()){
-            notPresent += " numero_empleados,";
-        }
-        if(!lblValorActivos.isPresent()){
-            notPresent += " valor_activos,";
-        }
-        if(!lblVentasAnuales.isPresent()){
-            notPresent += " ventas_anuales,";
-        }
-        if(!lblTelefonoOficinaEmpresa.isPresent()){
-            notPresent += " telefono_oficina,";
-        }
-        if(!getTxtCorreoElectronicoPrimarioEmpresa.isPresent()){
-            notPresent += " correo_electronico_primario,";
-        }
-
-
+        if(!lblRazonSocial.isPresent()) notPresent += " razon_social,";
+        if(!lblNombreComercial.isPresent()) notPresent += " nombre_comercial,";
+        if(!lblTipoDocumento.isPresent()) notPresent += " tipo_documento,";
+        if(!lblNumeroDocumento.isPresent()) notPresent += " numero_documento,";
+        if(!lblActividadComercial.isPresent()) notPresent += " actividad_comercial,";
+        if(!lblNumeroEmpleados.isPresent()) notPresent += " numero_empleados,";
+        if(!lblValorActivos.isPresent()) notPresent += " valor_activos,";
+        if(!lblVentasAnuales.isPresent()) notPresent += " ventas_anuales,";
+        if(!lblTelefonoOficinaEmpresa.isPresent()) notPresent += " telefono_oficina,";
+        if(!getTxtCorreoElectronicoPrimarioEmpresa.isPresent()) notPresent += " correo_electronico_primario,";
         if("No estan presentes los elemtos:".equals(notPresent)){
             notPresent = notPresent.substring(0,notPresent.length()-1);
             notPresent += ".";
         }
-
         assertThat(notPresent,"No estan presentes los elemtos.".equals(notPresent));
-    }
-
-
-    public void agregarNombre(String segundoNombre){
-        txtSegundoNombre.clear();
-        //waitABit(200);
-        txtSegundoNombre.sendKeys(segundoNombre);
-        dtlContact[2]= segundoNombre;
-    }
-
-    public void agregarApellido(String segundoApellido){
-        txtSegundoApellido.clear();
-        txtSegundoApellido.sendKeys(segundoApellido);
-        dtlContact[3]= segundoApellido;
-    }
-
-    public void agregarFallecimiento( String fechaFallecimiento, String causaFallecimiento){
-        dtlContact[4]= fechaFallecimiento;
-        dtlContact[5]= causaFallecimiento;
-    }
-
-    public void agregarProfesion(String profesion){
-        selectItem(cboProfesion, profesion);
-        dtlContact[6]= profesion;
-    }
-
-    public void agregarEstadoCivil(String estadoCivil){
-        selectItem(cboEstadoCivil,estadoCivil);
-        dtlContact[7]= estadoCivil;
-    }
-
-    public void agregarTipoFamilia(String tipoFamilia){
-        selectItem(cboTipoFamilia, tipoFamilia);
-        dtlContact[8]= tipoFamilia;
-    }
-
-    public void agregarTelefonos(String telefonoCelular, String telefonoResidencial, String telefonoTrabajo){
-        txtTelefonoTrabajo.clear();
-        txtTelefonoTrabajo.sendKeys(telefonoTrabajo);
-        txtTelefonoCelular.clear();
-        txtTelefonoCelular.sendKeys(telefonoCelular);
-        txtTelefonoResidencial.clear();
-        txtTelefonoResidencial.sendKeys(telefonoResidencial);
-        dtlContact[10]= telefonoCelular;
-        dtlContact[11]= telefonoResidencial;
-        dtlContact[12]= telefonoTrabajo;
-    }
-
-    public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
-        txtCorreoElectronicoPrimario.clear();
-        //waitABit(200);
-        txtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
-        txtCorreoElectronicoSecundario.clear();
-        //waitABit(200);
-        txtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
-        dtlContact[13]= correoElectronicoPrimario;
-        dtlContact[14]= correoElectronicoSecundario;
     }
 }

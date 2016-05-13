@@ -2,8 +2,11 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevaCuentaSteps;
-import net.thucydides.core.annotations.*;
-import org.jbehave.core.annotations.*;
+import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,9 +32,9 @@ public class CrearCuentaNuevaDefinitions {
             "primer apellido <primer_apellido>, tipo de direccion <tipo_direccion>, direccion <direccion>,\n" +
             " codigo postal <codigo_postal> y nombre de organizacion <nombre_organizacion>")
     public void whenCrearNuevaCuentaPersonaNatural(@Named("tipo_documento")String tipoDocumento, @Named("fecha_nacimiento")String fechaNacimiento,
-                            @Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
-                            @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
-                            @Named("codigo_postal")String codigoPostal, @Named("nombre_organizacion")String nombreOrganizacion) {
+                                                   @Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
+                                                   @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
+                                                   @Named("codigo_postal")String codigoPostal, @Named("nombre_organizacion")String nombreOrganizacion) {
         cns.abrirNuevaCuenta();
         cns.crearNuevaCuentaPersona ( tipoDocumento,fechaNacimiento, primerNombre, primerApellido, tipoDireccion,
                 direccion,codigoPostal,nombreOrganizacion);

@@ -84,7 +84,7 @@ public class BillingSteps extends ScenarioSteps {
         escritorioPage.navegarTabBar("Buscar", "Agentes", "");
         gw.threadWait(2000);
         escritorioPage.navegarTabBar("Buscar", "Transacciones", "");
-        gw.threadWait(2000);;
+        gw.threadWait(2000);
         escritorioPage.navegarTabBar("Buscar", "Actividades", "");
         gw.threadWait(2000);
         escritorioPage.navegarTabBar("Buscar", "Tickets de problemas", "");
