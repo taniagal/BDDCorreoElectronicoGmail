@@ -1,20 +1,29 @@
 package com.sura.guidewire.selenium;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
 import org.hamcrest.Matcher;
+import org.jbehave.core.model.ExamplesTable;
+import org.jbehave.core.steps.Parameters;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Created by jorghome on 15/04/2016.
@@ -25,6 +34,10 @@ public class Guidewire extends PageObject {
         super(driver);
 
     }
+
+    String mensajeError = "";
+
+
 
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     WebElementFacade configuracion;
@@ -77,8 +90,7 @@ public class Guidewire extends PageObject {
         }
     }
 
-    private void assertThat(String element, Matcher<String> stringMatcher) {
-    }
+
 
     public void login(String user, String pass) {
         usuario.clear();

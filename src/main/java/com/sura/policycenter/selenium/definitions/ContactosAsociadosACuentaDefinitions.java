@@ -65,23 +65,18 @@ public class ContactosAsociadosACuentaDefinitions {
         contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_PoliciesLV']/div/div/div/div");
     }
 
-    @Given("el contacto tiene mínimo una dirección")
-    @Pending
-    public void givenElContactoTieneMinimoUnaDireccion() {
+
+
+    @Given("y desee crear un nuevo contacto")
+    public void andDeseeCrearUnNuevoContacto() {
+        contactosAsociadosACuentaSteps.clicCrearNuevoContacto();
+    }
+
+    @Then("debo ver las opciones de menú para los roles $opcionesPorRoles")
+    public void thenDeboVerLasOpcionesDeMenuParaLosRoles(ExamplesTable opcionesPorRoles) throws Exception {
+        contactosAsociadosACuentaSteps.verOpcionesDeCreacionDeContactoPorRoleDeContactos(opcionesPorRoles);
 
     }
 
-
-    @When("quiera ver las direcciones del contacto seleccionado")
-    @Pending
-    public void cuandoQuieraVerLasDireccionesDelContactoSeleccionado() {
-
-    }
-
-    @Then("debo ver las direcciones del contacto")
-    @Pending
-    public void entoncesDeboVerLasDireccionesDelContacto() {
-
-    }
 
 }

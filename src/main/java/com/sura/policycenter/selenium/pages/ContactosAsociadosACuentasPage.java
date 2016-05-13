@@ -1,18 +1,18 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import com.sura.serinitybdd.util.GuidewireUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.isIn;
 
 /**
  * Created by jorgsape on 2016/05/04.
@@ -22,6 +22,9 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     public ContactosAsociadosACuentasPage(WebDriver driver) {
         super(driver);
     }
+
+    private static String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú encontrados";
+
 
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
     private WebElementFacade linkAccountFileAccountFileContacts;
@@ -82,25 +85,28 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl']")
     private WebElementFacade lblEmail;
 
+    @FindBy(xpath = ".//a[contains(.,'Crear nuevo contacto')]")
+    private WebElementFacade btnCrearNuevoContacto;
 
 
-    public void consultarContactos(){
+
+
+    public void consultarContactos() {
         linkAccountFileAccountFileContacts.waitUntilClickable();
         linkAccountFileAccountFileContacts.click();
     }
-
 
 
     public void existeEncabezadoDeTabla(ExamplesTable encabezados, String keyElement, String xPathElementos) {
         List<WebElementFacade> listEncabezados = withTimeoutOf(1, SECONDS).findAll(xPathElementos);
 
         int countCoincidencias = 0;
-        for (Map<String, String> enc : encabezados.getRows()){
-            if (enc.containsKey(keyElement)){
+        for (Map<String, String> enc : encabezados.getRows()) {
+            if (enc.containsKey(keyElement)) {
 
                 for (WebElement encabezad : listEncabezados) {
                     if (encabezad.getText().equals(enc.get(keyElement).toString())) {
-                        countCoincidencias ++;
+                        countCoincidencias++;
                         break;
                     }
                 }
@@ -109,22 +115,22 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         }
 
 
-        assertThat("Se encontraron los encabezados esperados",countCoincidencias == encabezados.getRowCount() );
+        assertThat("Se encontraron los encabezados esperados", countCoincidencias == encabezados.getRowCount());
 
 
     }
 
-    public List<WebElementFacade> getListaContactos(){
+    public List<WebElementFacade> getListaContactos() {
         List<WebElementFacade> contactos = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return contactos;
     }
 
-    public List<WebElementFacade> getListaRolesFunciones(){
+    public List<WebElementFacade> getListaRolesFunciones() {
         List<WebElementFacade> rolesFunciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return rolesFunciones;
     }
 
-    public List<WebElementFacade> getListaDirecciones(){
+    public List<WebElementFacade> getListaDirecciones() {
         List<WebElementFacade> direcciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
         return direcciones;
     }
@@ -162,7 +168,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
     public void verificarListaContactoNoEsNulo() {
         List<WebElementFacade> contactos = getListaContactos();
-        assertThat("La cuenta debe tener contactos de tipo persona juridica o natural", contactos.size()>0);
+        assertThat("La cuenta debe tener contactos de tipo persona juridica o natural", contactos.size() > 0);
     }
 
     public void verificarDetalleContactoNoEsNulo() {
@@ -170,12 +176,12 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         assertThat("El campo tipo de documento es obligatorio", lblTipoDocumento.isPresent());
         assertThat("El campo numero de documento es obligatorio", lblNumeroDocumento.isPresent());
 
-        if("PERSONAL".equals(lblTitulo.getText().toUpperCase())){
+        if ("PERSONAL".equals(lblTitulo.getText().toUpperCase())) {
             assertThat("El campo nombre es obligatorio", lblNombre.isPresent());
             assertThat("El campo segundo nombre es obligatorio", lblSegundoNombre.isPresent());
             assertThat("El campo apellido es obligatorio", lblApellido.isPresent());
             assertThat("El campo segundo apellido es obligatorio", lblSegundoApellido.isPresent());
-        }else{
+        } else {
             assertThat("El campo razon social es obligatorio", lblRazonSocial.isPresent());
             assertThat("El campo nombre comercial es obligatorio", lblNombreComercial.isPresent());
 
@@ -187,14 +193,25 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
     public void verificarRolesFuncionesNoEsNulo() {
         List<WebElementFacade> rolesFunciones = getListaRolesFunciones();
-        assertThat("El contacto debe tener roles o funciones asignados", rolesFunciones.size()>0);
+        assertThat("El contacto debe tener roles o funciones asignados", rolesFunciones.size() > 0);
         threadWait(1000);
     }
 
     public void verificarDireccioneNoEsNulo() {
         List<WebElementFacade> direcciones = getListaDirecciones();
-        assertThat("El contacto debe tener direcciones asignados", direcciones.size()>0);
+        assertThat("El contacto debe tener direcciones asignados", direcciones.size() > 0);
         threadWait(1000);
+    }
+
+
+
+    public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol) throws Exception {
+        //assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, GuidewireUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT,"LINK",opcionesPorRol));
+    }
+
+
+    public void clicCrearNuevoContacto() {
+        this.btnCrearNuevoContacto.click();
     }
 
 
