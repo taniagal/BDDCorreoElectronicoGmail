@@ -1,4 +1,5 @@
 package com.sura.policycenter.selenium.pages.menu;
+
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.selenium.pages.menu.acciones.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.acciones.contacto.ContactoNuevaCuentaPage;
@@ -20,8 +21,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
-
 
 /**
  * Created by jonamele on 06/05/2016.
@@ -594,7 +593,7 @@ public class Navegacion extends Guidewire {
         return new EscritorioNuevaCuentaPage(getDriver());
     }
 
-    public CuentaNuevaNotaPage irAEscritorioNuevaNota() {
+    public CuentaNuevaNotaPage irACuentaNuevaNota() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -602,7 +601,7 @@ public class Navegacion extends Guidewire {
         return new CuentaNuevaNotaPage(getDriver());
     }
 
-    public CuentaLigaDocExistePage irAEscritorioLigaDocExiste() {
+    public CuentaLigaDocExistePage irACuentaLigaDocExiste() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -613,7 +612,7 @@ public class Navegacion extends Guidewire {
     }
 
 
-    public CuentaCreaDocNuevaPlantPage irACreaDocNuevaPlantPage() {
+    public CuentaCreaDocNuevaPlantPage irACuentaCreaDocNuevaPlant() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -623,7 +622,7 @@ public class Navegacion extends Guidewire {
         return new CuentaCreaDocNuevaPlantPage(getDriver());
     }
 
-    public CuentaNuevoCorreoElecPage irAEscritorioNuevoCorreoElect() {
+    public CuentaNuevoCorreoElecPage irACuentaNuevoCorreoElect() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -631,7 +630,7 @@ public class Navegacion extends Guidewire {
         return new CuentaNuevoCorreoElecPage(getDriver());
     }
 
-    public CuentaNuevoEnvioPage irAEscritorioNuevoEnvioCuentaPage() {
+    public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -640,7 +639,7 @@ public class Navegacion extends Guidewire {
 
     }
 
-    public CuentaRevisaNuevoCorreoPage irAEscritorioRevisaNuevoCorreoPage() {
+    public CuentaRevisaNuevoCorreoPage irACuentaRevisaNuevoCorreo() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -652,7 +651,7 @@ public class Navegacion extends Guidewire {
         return new CuentaRevisaNuevoCorreoPage(getDriver());
     }
 
-    public CuentaReuneAgentePage irAEscritorioReuneAgentePage() {
+    public CuentaReuneAgentePage irACuentaReuneAgente() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -664,7 +663,7 @@ public class Navegacion extends Guidewire {
         return new CuentaReuneAgentePage(getDriver());
     }
 
-    public CuentaReuneAseguradoPage irAEscritorioReuneAseguradoPage() {
+    public CuentaReuneAseguradoPage irACuentaReuneAsegurado() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -677,7 +676,7 @@ public class Navegacion extends Guidewire {
 
     }
 
-    public CuentaCancelaPolizDividPage irAEscritorioCancelaPolizDividPage() {
+    public CuentaCancelaPolizDividPage irACuentaCancelaPolizDivid() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -689,7 +688,7 @@ public class Navegacion extends Guidewire {
         return new CuentaCancelaPolizDividPage(getDriver());
     }
 
-    public CuentaCotizaRequeridaPage irAEscritorioCotizaRequeridaPage() {
+    public CuentaCotizaRequeridaPage irACuentaCotizaRequerida() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -701,7 +700,7 @@ public class Navegacion extends Guidewire {
         return new CuentaCotizaRequeridaPage(getDriver());
     }
 
-    public CuentaDiarioX30Page irAEscritorioDiarioX30Page() {
+    public CuentaDiarioX30Page irACuentaDiarioX30() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -713,7 +712,7 @@ public class Navegacion extends Guidewire {
         return new CuentaDiarioX30Page(getDriver());
     }
 
-    public CuentaDiarioX60Page irAEscritorioDiarioX60Page() {
+    public CuentaDiarioX60Page irACuentaDiarioX60() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -725,7 +724,7 @@ public class Navegacion extends Guidewire {
         return new CuentaDiarioX60Page(getDriver());
     }
 
-    public CuentaDiarioX90Page irAEscritorioDiarioX90Page() {
+    public CuentaDiarioX90Page irACuentaDiarioX90() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -737,7 +736,7 @@ public class Navegacion extends Guidewire {
         return new CuentaDiarioX90Page(getDriver());
     }
 
-    public CuentaNotificaPolizaPage irAEscritorioNotificaPolizaPage() {
+    public CuentaNotificaPolizaPage irACuentaNotificaPoliza() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -761,7 +760,7 @@ public class Navegacion extends Guidewire {
         return new CuentaRecuerdaGeneralPage(getDriver());
     }
 
-    public CuentaRevisaAgentePage irAEscritorioRevisaAgentePage() {
+    public CuentaRevisaAgentePage irACuentaRevisaAgente() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -773,7 +772,7 @@ public class Navegacion extends Guidewire {
         return new CuentaRevisaAgentePage(getDriver());
     }
 
-    public CuentaRevPer30DiaAseguraPage irAEscritorioRevPer30DiaAseguraPage() {
+    public CuentaRevPer30DiaAseguraPage irACuentaRevPer30DiaAsegura() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -785,7 +784,7 @@ public class Navegacion extends Guidewire {
         return new CuentaRevPer30DiaAseguraPage(getDriver());
     }
 
-    public CuentaRevPer45DiaAseguraPage irAEscritorioRevPer45DiaAseguraPage() {
+    public CuentaRevPer45DiaAseguraPage irACuentaRevPer45DiaAsegura() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -797,7 +796,7 @@ public class Navegacion extends Guidewire {
         return new CuentaRevPer45DiaAseguraPage(getDriver());
     }
 
-    public CuentaRevPer60DiaAseguraPage irAEscritorioRevPer60DiaAseguraPage() {
+    public CuentaRevPer60DiaAseguraPage irACuentaRevPer60DiaAsegura() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -809,7 +808,7 @@ public class Navegacion extends Guidewire {
         return new CuentaRevPer60DiaAseguraPage(getDriver());
     }
 
-    public CuentaRevisaRendimPage irAEscritorioRevisaRendimPage() {
+    public CuentaRevisaRendimPage irACuentaRevisaRendim() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -821,7 +820,7 @@ public class Navegacion extends Guidewire {
         return new CuentaRevisaRendimPage(getDriver());
     }
 
-    public CuentaVerificaCoberPage irAEscritorioVerificaCoberPage() {
+    public CuentaVerificaCoberPage irACuentaVerificaCober() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -833,7 +832,7 @@ public class Navegacion extends Guidewire {
         return new CuentaVerificaCoberPage(getDriver());
     }
 
-    public CuentaTransPoliACuentaPage irAEscritorioTransPoliACuentaPage() {
+    public CuentaTransPoliACuentaPage irACuentaTransPoliACuenta() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -841,7 +840,7 @@ public class Navegacion extends Guidewire {
         return new CuentaTransPoliACuentaPage(getDriver());
     }
 
-    public CuentaReescrPoliACuentaPage irAEscritorioReescrPoliACuentaPage() {
+    public CuentaReescrPoliACuentaPage irACuentaReescrPoliACuenta() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -849,7 +848,7 @@ public class Navegacion extends Guidewire {
         return new CuentaReescrPoliACuentaPage(getDriver());
     }
 
-    public CuentaConvPoliACuentaPage irAEscritorioConvPoliACuentaPage() {
+    public CuentaConvPoliACuentaPage irACuentaConvPoliACuenta() {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();

@@ -7,7 +7,6 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-
 /**
  * Created by jorghome on 04/05/2016.
  */
@@ -15,8 +14,8 @@ public class PruebaMenuSteps extends ScenarioSteps {
 
     //Guidewire gw = new Guidewire(getDriver());
     //AbrirAppPage abrirAppPage = new AbrirAppPage(getDriver());
-    //InicioPage escritorioPage = new InicioPage(getDriver());
-    //InicioPage escritorioPage;
+    //InicioPage inicioPage = new InicioPage(getDriver());
+    //InicioPage inicioPage;
 
     public PruebaMenuSteps(Pages pages) {
         super(pages);
@@ -30,7 +29,7 @@ public class PruebaMenuSteps extends ScenarioSteps {
         return getPages().currentPageAt(AbrirAppPage.class);
     }
 
-    private InicioPage escritorioPage() {
+    private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
 
@@ -46,153 +45,179 @@ public class PruebaMenuSteps extends ScenarioSteps {
 
     @Step
     public void assertion(String element) {
-        escritorioPage().assertion(element);
+        inicioPage().assertion(element);
     }
 
     @Step
     public void pruebaNavegacion (){
         //Menu Escritorio
-        /*escritorioPage.irAMisActividades();
-        gw.waitUntil(3000);
-        escritorioPage.irAMisCuentas();
-        gw.waitUntil(3000);
-        escritorioPage.irAMisEnvios();
-        gw.waitUntil(3000);
-        escritorioPage.irAMisRenovaciones();
-        gw.waitUntil(3000);
-        escritorioPage.irAMisOtrasTransacciones();
-        gw.waitUntil(3000);
-        escritorioPage.irAMisColas();
-        gw.waitUntil(3000);*/
+        inicioPage().irAMisActividades();
+        gw().waitUntil(3000);
+        /*inicioPage().irAMisCuentas();
+        gw().waitUntil(3000);
+        inicioPage().irAMisEnvios();
+        gw().waitUntil(3000);
+        inicioPage().irAMisRenovaciones();
+        gw().waitUntil(3000);
+        inicioPage().irAMisOtrasTransacciones();
+        gw().waitUntil(3000);
+        inicioPage().irAMisColas();
+        gw().waitUntil(3000);*/
+
+        //Acciones Escritorio
+        /*inicioPage().irAEscritorioNuevoEnvio();
+        gw().waitUntil(3000);
+        inicioPage().irAEscritorioNuevaCuenta();
+        gw().waitUntil(3000);*/
 
         //Menu Cuenta
-        /*escritorioPage().irANuevaCuenta();
+        /*inicioPage().irANuevaCuenta();
         gw().waitUntil(3000);*/
 
         //Acciones Cuenta
-        /*escritorioPage().irAEscritorioNuevaNota();
+        /*inicioPage().irACuentaNuevaNota();
         gw().waitUntil(1000);
-        escritorioPage().irAEscritorioLigaDocExiste();
+        inicioPage().irACuentaLigaDocExiste();
         gw().waitUntil(1000);
-        escritorioPage().irACreaDocNuevaPlantPage();
+        inicioPage().irACuentaCreaDocNuevaPlant();
         gw().waitUntil(1000);
-        escritorioPage().irAEscritorioNuevoCorreoElect();
+        inicioPage().irACuentaNuevoCorreoElect();
         gw().waitUntil(1000);
-        escritorioPage().irAEscritorioNuevoEnvioCuentaPage();
+        inicioPage().irACuentaNuevoEnvioCuenta();
         gw().waitUntil(1000);
-        escritorioPage().irAEscritorioRevisaNuevoCorreoPage();
+        inicioPage().irACuentaRevisaNuevoCorreo();
         gw().waitUntil(1000);
-        escritorioPage().irAEscritorioReuneAgentePage();
+        inicioPage().irACuentaReuneAgente();
         gw().waitUntil(1000);
-        escritorioPage().irAEscritorioRevPer30DiaAseguraPage();
+        inicioPage().irACuentaReuneAsegurado();
         gw().waitUntil(1000);
-        escritorioPage().irAEscritorioRevPer45DiaAseguraPage();
+        inicioPage().irACuentaCancelaPolizDivid();
         gw().waitUntil(1000);
-        escritorioPage().irAEscritorioRevPer60DiaAseguraPage();
-        gw().waitUntil(2000);*/
-        /*escritorioPage().irAEscritorioConvPoliACuentaPage();
-        gw().waitUntil(1000);*/
-        escritorioPage().irCuentaTazaCotPoliManuPage();
+        inicioPage().irACuentaCotizaRequerida();
+        gw().waitUntil(1000);
+        inicioPage().irACuentaDiarioX30();
+        gw().waitUntil(1000);
+        inicioPage().irACuentaDiarioX60();
+        gw().waitUntil(1000);
+        inicioPage().irACuentaCancelaPolizDivid();
+        gw().waitUntil(1000);
+        inicioPage().irACuentaDiarioX90();
+        gw().waitUntil(1000);
+        inicioPage().irACuentaNotificaPoliza();
+        gw().waitUntil(1000);
+        inicioPage().irACuentaRevisaAgente();
+        gw().waitUntil(1000);
+        inicioPage().irACuentaRevPer30DiaAsegura();
+        gw().waitUntil(1000);
+        inicioPage().irACuentaRevPer45DiaAsegura();
+        gw().waitUntil(1000);
+        inicioPage().irACuentaRevPer60DiaAsegura();
         gw().waitUntil(2000);
-
-
+        inicioPage().irACuentaRevisaRendim();
+        gw().waitUntil(2000);
+        inicioPage().irACuentaVerificaCober();
+        gw().waitUntil(2000);
+        inicioPage().irACuentaTransPoliACuenta();
+        gw().waitUntil(2000);
+        inicioPage().irACuentaReescrPoliACuenta();
+        gw().waitUntil(2000);
+        inicioPage().irACuentaConvPoliACuenta();
+        gw().waitUntil(1000);
+        inicioPage().irCuentaTazaCotPoliManuPage();
+        gw().waitUntil(2000);*/
 
         //Menu Poliza
-        /*escritorioPage().irANuevoEnvio();
-        gw().waitUntil(3000);*/
-        /*escritorioPage().irABuscarPoliza("4215989563");
+        /*inicioPage().irANuevoEnvio();
+        gw().waitUntil(3000);
+        inicioPage().irABuscarPoliza("4215989563");
         gw().waitUntil(3000);*/
 
         //Menu Contacto
-        /*escritorioPage().irANuevaCompania();
+        /*inicioPage().irANuevaCompania();
         gw().waitUntil(3000);
-        escritorioPage().irANuevaPersona();
+        inicioPage().irANuevaPersona();
         gw().waitUntil(3000);
-        escritorioPage().irABuscarContacto();
-        gw().waitUntil(3000);*/
-
-        //Menu Buscar
-        /*escritorioPage().irABuscarPolizas();
-        gw().waitUntil(3000);
-        escritorioPage().irABuscarCuentas();
-        gw().waitUntil(3000);
-        escritorioPage().irABuscarCodAgente();
-        gw().waitUntil(3000);
-        escritorioPage().irABuscarActividades();
-        gw().waitUntil(3000);
-        escritorioPage().irABuscarContactos();
-        gw().waitUntil(3000);*/
-
-        //Menu Equipo
-        /*escritorioPage().irAEquipo();
-        gw().waitUntil(3000);*/
-
-        //Menu Adiministracion
-        /*escritorioPage().irAAdminUsuarios();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminGrupos();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminRoles();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminRegiones();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminOrganizaciones();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminCodAgentes();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminPerfilAutoridad();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminAtributos();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminGruposAfinidad();
-        gw().waitUntil(3000);*/
-        /*escritorioPage().irAAdminPatronesActividad();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminDiasFestivos();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminPatronesFormPoliza();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminRetencionPolizas();
-        gw().waitUntil(3000);*/
-        /*escritorioPage().irAAdminMensajes();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminColasMensajes();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminFlujosTrabajo();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminEstadistFlujoTrabajo();
-        gw().waitUntil(3000);*/
-        /*escritorioPage().irAAdminImportarDatos();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminExportarDatos();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminParamSecuencia();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminFormatoExporta();
-        gw().waitUntil(3000);
-        escritorioPage().irAAdminCambioDatos();
-        gw().waitUntil(3000);*/
-        /*escritorioPage().irAEscritorioNuevoEnvio();
-        gw().waitUntil(3000);*/
-        /*escritorioPage().irAEscritorioNuevaCuenta();
+        inicioPage().irABuscarContacto();
         gw().waitUntil(3000);*/
 
         //Acciones Contacto
-        /*escritorioPage().irAContactoNuevaCuenta();
+        /*inicioPage().irAContactoNuevaCuenta();
+        gw().waitUntil(3000);*/
+
+        //Menu Buscar
+        /*inicioPage().irABuscarPolizas();
+        gw().waitUntil(3000);
+        inicioPage().irABuscarCuentas();
+        gw().waitUntil(3000);
+        inicioPage().irABuscarCodAgente();
+        gw().waitUntil(3000);
+        inicioPage().irABuscarActividades();
+        gw().waitUntil(3000);
+        inicioPage().irABuscarContactos();
+        gw().waitUntil(3000);*/
+
+        //Menu Equipo
+        /*inicioPage().irAEquipo();
+        gw().waitUntil(3000);*/
+
+        //Menu Adiministracion
+        /*inicioPage().irAAdminUsuarios();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminGrupos();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminRoles();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminRegiones();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminOrganizaciones();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminCodAgentes();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminPerfilAutoridad();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminAtributos();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminGruposAfinidad();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminPatronesActividad();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminDiasFestivos();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminPatronesFormPoliza();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminRetencionPolizas();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminMensajes();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminColasMensajes();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminFlujosTrabajo();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminEstadistFlujoTrabajo();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminImportarDatos();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminExportarDatos();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminParamSecuencia();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminFormatoExporta();
+        gw().waitUntil(3000);
+        inicioPage().irAAdminCambioDatos();
         gw().waitUntil(3000);*/
 
         //Acciones Adiministracion
-        /*escritorioPage().irAAdminUsuarioNuevo();
+        /*inicioPage().irAAdminUsuarioNuevo();
         gw().waitUntil(3000);
-        escritorioPage().irAAdminGrupoNuevo();
+        inicioPage().irAAdminGrupoNuevo();
         gw().waitUntil(3000);
-        escritorioPage().irAAdminOrganizacionNueva();
+        inicioPage().irAAdminOrganizacionNueva();
         gw().waitUntil(3000);
-        escritorioPage().irAAdminCodAgenteNuevo();
+        inicioPage().irAAdminCodAgenteNuevo();
         gw().waitUntil(3000);
-        escritorioPage().irAAdminNuevoGrupoAfinidad();
+        inicioPage().irAAdminNuevoGrupoAfinidad();
         gw().waitUntil(3000);
-        escritorioPage().irAAdminVerificarErrorPatron();
+        inicioPage().irAAdminVerificarErrorPatron();
         gw().waitUntil(3000);*/
 
     }

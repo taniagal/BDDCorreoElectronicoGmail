@@ -283,96 +283,96 @@ public class InicioPage extends Guidewire {
         return navegacion.irAEscritorioNuevaCuenta();
     }
 
-    public CuentaNuevaNotaPage irAEscritorioNuevaNota() {
-        return navegacion.irAEscritorioNuevaNota();
+    public CuentaNuevaNotaPage irACuentaNuevaNota() {
+        return navegacion.irACuentaNuevaNota();
     }
 
-    public CuentaLigaDocExistePage irAEscritorioLigaDocExiste() {
-        return navegacion.irAEscritorioLigaDocExiste();
+    public CuentaLigaDocExistePage irACuentaLigaDocExiste() {
+        return navegacion.irACuentaLigaDocExiste();
     }
 
-    public CuentaCreaDocNuevaPlantPage irACreaDocNuevaPlantPage() {
-        return navegacion.irACreaDocNuevaPlantPage();
+    public CuentaCreaDocNuevaPlantPage irACuentaCreaDocNuevaPlant() {
+        return navegacion.irACuentaCreaDocNuevaPlant();
     }
 
-    public CuentaNuevoCorreoElecPage irAEscritorioNuevoCorreoElect(){
-        return navegacion.irAEscritorioNuevoCorreoElect();
+    public CuentaNuevoCorreoElecPage irACuentaNuevoCorreoElect(){
+        return navegacion.irACuentaNuevoCorreoElect();
     }
 
-    public CuentaNuevoEnvioPage irAEscritorioNuevoEnvioCuentaPage(){
-        return navegacion.irAEscritorioNuevoEnvioCuentaPage();
+    public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta(){
+        return navegacion.irACuentaNuevoEnvioCuenta();
     }
 
-    public CuentaRevisaNuevoCorreoPage irAEscritorioRevisaNuevoCorreoPage(){
-        return navegacion.irAEscritorioRevisaNuevoCorreoPage();
+    public CuentaRevisaNuevoCorreoPage irACuentaRevisaNuevoCorreo(){
+        return navegacion.irACuentaRevisaNuevoCorreo();
     }
 
-    public CuentaReuneAgentePage irAEscritorioReuneAgentePage(){
-        return navegacion.irAEscritorioReuneAgentePage();
+    public CuentaReuneAgentePage irACuentaReuneAgente(){
+        return navegacion.irACuentaReuneAgente();
     }
 
-    public CuentaReuneAseguradoPage irAEscritorioReuneAseguradoPage(){
-        return navegacion.irAEscritorioReuneAseguradoPage();
+    public CuentaReuneAseguradoPage irACuentaReuneAsegurado(){
+        return navegacion.irACuentaReuneAsegurado();
     }
 
-    public CuentaCancelaPolizDividPage irAEscritorioCancelaPolizDividPage(){
-        return navegacion.irAEscritorioCancelaPolizDividPage();
+    public CuentaCancelaPolizDividPage irACuentaCancelaPolizDivid(){
+        return navegacion.irACuentaCancelaPolizDivid();
     }
 
-    public CuentaCotizaRequeridaPage irAEscritorioCotizaRequeridaPage(){
-        return navegacion.irAEscritorioCotizaRequeridaPage();
+    public CuentaCotizaRequeridaPage irACuentaCotizaRequerida(){
+        return navegacion.irACuentaCotizaRequerida();
     }
 
-    public CuentaDiarioX30Page irAEscritorioDiarioX30Page(){
-        return navegacion.irAEscritorioDiarioX30Page();
+    public CuentaDiarioX30Page irACuentaDiarioX30(){
+        return navegacion.irACuentaDiarioX30();
     }
 
-    public CuentaDiarioX60Page irAEscritorioDiarioX60Page(){
-        return navegacion.irAEscritorioDiarioX60Page();
+    public CuentaDiarioX60Page irACuentaDiarioX60(){
+        return navegacion.irACuentaDiarioX60();
     }
 
-    public CuentaDiarioX90Page irAEscritorioDiarioX90Page(){
-        return navegacion.irAEscritorioDiarioX90Page();
+    public CuentaDiarioX90Page irACuentaDiarioX90(){
+        return navegacion.irACuentaDiarioX90();
     }
 
-    public CuentaNotificaPolizaPage irAEscritorioNotificaPolizaPage(){
-        return navegacion.irAEscritorioNotificaPolizaPage();
+    public CuentaNotificaPolizaPage irACuentaNotificaPoliza(){
+        return navegacion.irACuentaNotificaPoliza();
     }
 
-    public CuentaRevisaAgentePage irAEscritorioRevisaAgentePage(){
-        return navegacion.irAEscritorioRevisaAgentePage();
+    public CuentaRevisaAgentePage irACuentaRevisaAgente(){
+        return navegacion.irACuentaRevisaAgente();
     }
 
-    public CuentaRevPer30DiaAseguraPage irAEscritorioRevPer30DiaAseguraPage(){
-        return navegacion.irAEscritorioRevPer30DiaAseguraPage();
+    public CuentaRevPer30DiaAseguraPage irACuentaRevPer30DiaAsegura(){
+        return navegacion.irACuentaRevPer30DiaAsegura();
     }
 
-    public CuentaRevPer45DiaAseguraPage irAEscritorioRevPer45DiaAseguraPage(){
-        return navegacion.irAEscritorioRevPer45DiaAseguraPage();
+    public CuentaRevPer45DiaAseguraPage irACuentaRevPer45DiaAsegura(){
+        return navegacion.irACuentaRevPer45DiaAsegura();
     }
 
-    public CuentaRevPer60DiaAseguraPage irAEscritorioRevPer60DiaAseguraPage(){
-        return navegacion.irAEscritorioRevPer60DiaAseguraPage();
+    public CuentaRevPer60DiaAseguraPage irACuentaRevPer60DiaAsegura(){
+        return navegacion.irACuentaRevPer60DiaAsegura();
     }
 
-    public CuentaRevisaRendimPage irAEscritorioRevisaRendimPage(){
-        return navegacion.irAEscritorioRevisaRendimPage();
+    public CuentaRevisaRendimPage irACuentaRevisaRendim(){
+        return navegacion.irACuentaRevisaRendim();
     }
 
-    public CuentaVerificaCoberPage irAEscritorioVerificaCoberPage(){
-        return navegacion.irAEscritorioVerificaCoberPage();
+    public CuentaVerificaCoberPage irACuentaVerificaCober(){
+        return navegacion.irACuentaVerificaCober();
     }
 
-    public CuentaTransPoliACuentaPage irAEscritorioTransPoliACuentaPage(){
-        return navegacion.irAEscritorioTransPoliACuentaPage();
+    public CuentaTransPoliACuentaPage irACuentaTransPoliACuenta(){
+        return navegacion.irACuentaTransPoliACuenta();
     }
 
-    public CuentaReescrPoliACuentaPage irAEscritorioReescrPoliACuentaPage(){
-        return navegacion.irAEscritorioReescrPoliACuentaPage();
+    public CuentaReescrPoliACuentaPage irACuentaReescrPoliACuenta(){
+        return navegacion.irACuentaReescrPoliACuenta();
     }
 
-    public CuentaConvPoliACuentaPage irAEscritorioConvPoliACuentaPage(){
-        return navegacion.irAEscritorioConvPoliACuentaPage();
+    public CuentaConvPoliACuentaPage irACuentaConvPoliACuenta(){
+        return navegacion.irACuentaConvPoliACuenta();
     }
 
     public ContactoNuevaCuentaPage irAContactoNuevaCuenta() {
