@@ -1,6 +1,7 @@
 package com.sura.guidewire.selenium;
 
 import net.serenitybdd.core.annotations.findby.By;
+import com.google.common.base.Function;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
@@ -15,13 +16,16 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
-
+import java.lang.Math;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -93,7 +97,8 @@ public class Guidewire extends PageObject {
         }
     }
 
-
+    private void assertThat(String element, Matcher<String> stringMatcher) {
+    }
 
     public void login(String user, String pass) {
         usuario.clear();
@@ -118,9 +123,9 @@ public class Guidewire extends PageObject {
     public Actions deployMenu(WebElementFacade menu) {
         Actions act = new Actions(getDriver());
         menu.waitUntilClickable().click();
-        threadWait(1000);
+        waitUntil(1000);
         menu.waitUntilClickable().click();
-        threadWait(1000);
+        waitUntil(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
     }
@@ -172,7 +177,6 @@ public class Guidewire extends PageObject {
         espaniol.click();
     }
 
-
     protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
         final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -180,3 +184,19 @@ public class Guidewire extends PageObject {
 
 
 }
+        public void waitUntil(int millis) {
+            Integer i = 0;
+            Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
+                    TimeUnit.MILLISECONDS).pollingEvery(millis,
+                    TimeUnit.MILLISECONDS);
+            try {
+                waitUtil.until(new Function<Integer, Boolean>() {
+                    public Boolean apply(Integer i) {
+                        return false;
+                    }
+                });
+            } catch (TimeoutException e) {
+                LOGGER.error("This is error : " + e);
+            }
+        }
+    }
