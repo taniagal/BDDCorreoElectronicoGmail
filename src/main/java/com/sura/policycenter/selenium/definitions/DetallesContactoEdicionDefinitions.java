@@ -46,9 +46,8 @@ public class DetallesContactoEdicionDefinitions {
         dcs.agregarTelefonoTrabajo(telefonoTrabajo);
     }
 
-    @When("profesion <profesion>, estado civil <estado_civil>,tipo familia <tipo_familia>,telefono residencial<telefono_residencial>")
-    public void agregarLists(@Named("profesion")String profesion,@Named("estado_civil")String estadoCivil,@Named("tipo_familia")String tipoFamilia,@Named("telefono_residencial")String telefonoResidencial){
-        dcs.agregarTelefonoResidencia(telefonoResidencial);
+    @When("profesion <profesion>, estado civil <estado_civil>,tipo familia <tipo_familia>")
+    public void agregarLists(@Named("profesion")String profesion,@Named("estado_civil")String estadoCivil,@Named("tipo_familia")String tipoFamilia){
         dcs.agregarLists(profesion,estadoCivil,tipoFamilia);
     }
 
@@ -57,10 +56,11 @@ public class DetallesContactoEdicionDefinitions {
         dcs.agregarTelefonoCelular(telefonoCelular);
     }
 
-    @When("correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>")
+    @When("correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>,telefono residencial<telefono_residencial>")
     public void agregarCorreos(@Named("correo_electronico_primario")String correoElectronicoPrimario,
-                               @Named("correo_electronico_secundario")String correoElectronicoSecundario){
+                               @Named("correo_electronico_secundario")String correoElectronicoSecundario,@Named("telefono_residencial")String telefonoResidencial){
         dcs.agregarCorreos(correoElectronicoPrimario, correoElectronicoSecundario);
+        dcs.agregarTelefonoResidencia(telefonoResidencial);
     }
 
     @Then("se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios")
@@ -82,7 +82,6 @@ public class DetallesContactoEdicionDefinitions {
         ncs.ingresarDireccionPersonaNatural(direccion);
         ncs.ingresarNumeroDocumentoPersonaNatural("");
         ncs.btnCrearPersona();
-        dcs.abrirDetallesContactoEmpresa(razonSocial);
     }
 
 

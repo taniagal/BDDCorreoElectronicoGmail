@@ -17,9 +17,9 @@ Given Se tiene y se ha consultado la informacion detallada de un contacto tipo p
 tipo documento <tipo_documento>, documento <documento>
 When quiera editar la informacion del contacto con perimer nombre <primer_nombre>,segundo nombre <segundo_nombre>
 And primer apellido <primer_apellido>, segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>
-And profesion <profesion>, estado civil <estado_civil>,tipo familia <tipo_familia>,telefono residencial<telefono_residencial>
+And profesion <profesion>, estado civil <estado_civil>,tipo familia <tipo_familia>
 And telefono celular <telefono_celular>
-And correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>
+And correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>,telefono residencial<telefono_residencial>
 Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios
 
 Examples:
@@ -41,5 +41,5 @@ Then se deben habilitar la edicion de cierta informacion del contacto, actualiza
 
 Examples:
 |razon_social   |tipo_direccion |direccion        |nombre_comercial  |actividad_comercial                    |numero_empleados  |valor_activos  |ventas_anuales |telefono_oficina  |correo_electronico_primario  |correo_electronico_secundario|
-|UMBRELLA       |Vivienda       |CALLE 54B #50-25 |BDD Sura          |FABRICACION DE RECIPIENTES DE MADERA   |400               |190000000      |135000000      |888-789-1236      |primario@mail.com            |secundario@mail.com          |
+|UMBRELLA SA    |Vivienda       |CALLE 54B #50-25 |BDD Sura          |FABRICACION DE RECIPIENTES DE MADERA   |400               |190000000      |135000000      |888-789-1236      |primario@mail.com            |secundario@mail.com          |
 

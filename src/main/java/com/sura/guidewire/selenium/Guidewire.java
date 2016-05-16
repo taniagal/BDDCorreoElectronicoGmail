@@ -113,7 +113,8 @@ public class Guidewire extends PageObject {
     public void selectItem(WebElementFacade element, String option){
         element.click();
         waitABit(200);
-        element.type(option);
+        element.sendKeys(option);
+        element.sendKeys(Keys.ENTER);
     }
 
     public void threadWait(int milisegundos) {

@@ -162,9 +162,10 @@ public class DetallesContactoPage extends Guidewire {
 
     public void editarContactoJuridico(String razonSocial, String nombreComercial, String actividadComercial,
                                        String numeroEmpleados,String valorActivos, String ventasAnuales, String telefonoOficina,
-                                       String correoElectronicoPrimario, String correoElectronicoSecundario){
+                                       String correoElectronicoPrimario, String correoElectronicoSecundario) {
 
         txtCorreoElectronicoPrimarioEmpresa.clear();
+        waitABit(100);
         txtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
         txtNombreComercial.clear();
         txtNombreComercial.sendKeys(nombreComercial);
@@ -178,8 +179,8 @@ public class DetallesContactoPage extends Guidewire {
         txtVentasAnuales.sendKeys(ventasAnuales);
         txtTelefonoOficina.clear();
         txtTelefonoOficina.sendKeys(telefonoOficina);
-        waitABit(500);
         txtCorreoElectronicoSecundarioEmpresa.clear();
+        waitABit(300);
         txtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
 
         dtlCntJ[0]= nombreComercial;
@@ -245,6 +246,7 @@ public class DetallesContactoPage extends Guidewire {
 
 
     public void verificarActualizacion(){
+        espera(txtSegundoNombre,6);
         assertThat("el segundo nombre esta erroneo",dtlContact[2].equals(txtSegundoNombre.getText()));
         assertThat("el segundo apellido esta erroneo",dtlContact[3].equals(txtSegundoApellido.getText()));
         assertThat("la profesion esta erroneo",dtlContact[6].equals(cboProfesion.getText()));
@@ -259,6 +261,7 @@ public class DetallesContactoPage extends Guidewire {
 
 
     public void verificarActualizacionJuridico(){
+        espera(txtNombreComercial,6);
         assertThat("el nombre comercial esta erroneo",dtlCntJ[0].equals(txtNombreComercial.getText()));
         assertThat("la actividad comercial esta erronea",dtlCntJ[1].equals(cboActividadComercial.getText()));
         assertThat("el numero de empleados",dtlCntJ[2].equals(txtNumeroEmpleados.getText()));
@@ -290,7 +293,7 @@ public class DetallesContactoPage extends Guidewire {
         if("No estan presentes los elemtos:".equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);
         }
-        assertThat(res,"No estan presentes los elemtos.".equals(res));
+        assertThat(res,"No estan presentes los elemtos".equals(res));
     }
 
     public void verificarCamposPersonaJuridica() {
