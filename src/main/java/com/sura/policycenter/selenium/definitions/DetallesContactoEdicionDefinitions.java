@@ -14,10 +14,14 @@ public class DetallesContactoEdicionDefinitions {
     @Steps
     CrearNuevoContactoSteps ncs;
 
+    @Given("Se ha consultado la informacion detallada de un contacto persona natural")
+    public void personaNatural(){}
+
     @When("quiera editar la informacion del contacto con segundo nombre <segundo_nombre>")
     public void agregarNombre(@Named("segundo_nombre")String segundoNombre){
         dcs.agregarNombre(segundoNombre);
     }
+
     @When("segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>")
     public void agregarApellido(@Named("segundo_apellido")String segundoApellido,@Named("telefono_trabajo")String telefonoTrabajo){
         dcs.agregarApellido(segundoApellido);
@@ -49,24 +53,15 @@ public class DetallesContactoEdicionDefinitions {
 
 
     //-------------------ESCENARIO 2---------------------
-    @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica con nombre <razon_social>,\n" +
-            "tipo de direccion <tipo_direccion> y direccion <direccion>")
-    public void infoContactoJurídico(@Named("razon_social")String razonSocial,@Named("tipo_direccion")String tipoDireccion,
-                      @Named("direccion")String direccion){
-        ncs.nuevoContactoPersonaJuridica();
-        ncs.seleccionarTipoDocumentoPersonaNatural("NIT");
-        ncs.ingresarRazonSocial(razonSocial);
-        ncs.seleccionarTipoDireccionPersonaNatural(tipoDireccion);
-        ncs.ingresarDireccionPersonaNatural(direccion);
-        ncs.ingresarNumeroDocumentoPersonaNatural("");
-        ncs.btnCrearPersona();
+    @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica")
+    public void infoContactoJurídico(){
     }
 
 
   @When("quiera editar la informacion del contacto con razon social <razon_social>, nombre comercial <nombre_comercial>,\n" +
           "actividad comercial <actividad_comercial>, numero de empleados <numero_empleados>, valor activos <valor_activos>,\n" +
-          " ventas anuales <ventas_anuales>, telefono oficina <telefono_oficina>, correo electronico primario <correo_electronico_primario>,\n" +
-          "  correo electronico secundario <correo_electronico_secundario>")
+          "ventas anuales <ventas_anuales>, telefono oficina <telefono_oficina>, correo electronico primario <correo_electronico_primario>,\n" +
+          "correo electronico secundario <correo_electronico_secundario>")
     public void editarLaInformacionContacto(@Named("razon_social")String razonSocial,@Named("nombre_comercial")String nombreComercial,
                                             @Named("actividad_comercial")String actividadComercial,@Named("numero_empleados")String numeroEmpleados,
                                             @Named("valor_activos")String valorActivos,@Named("ventas_anuales")String ventasAnuales,
