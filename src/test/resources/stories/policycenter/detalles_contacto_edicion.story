@@ -4,7 +4,7 @@ As a user
 I want to perform an action
 So that I can achieve a business goal
 
-Feature: Contact_detail
+Feature: Detalles de un contacto
 
 
 Antecedents: HU Search Contact y HU Metodos de Entrada de Direcciones
@@ -12,9 +12,9 @@ Antecedents: HU Search Contact y HU Metodos de Entrada de Direcciones
 
 Scenario: Editar detalles de contacto de tipo persona natural
 
-Given Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural con nombre
-<primer_nombre> y apellido <primer_apellido>, tipo direccion <tipo_direccion>, direccion <direccion>,
-tipo documento <tipo_documento>, documento <documento>
+GivenStories: stories/policycenter/crear_nuevo_contacto_natural.story
+
+Given Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural.
 When quiera editar la informacion del contacto con perimer nombre <primer_nombre>,segundo nombre <segundo_nombre>
 And primer apellido <primer_apellido>, segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>
 And profesion <profesion>, estado civil <estado_civil>,tipo familia <tipo_familia>

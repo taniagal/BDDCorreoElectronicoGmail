@@ -90,7 +90,7 @@ public class CrearCuentaNuevaDefinitions {
 
     @Then("No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>")
     public void assertVerificarMensaje(@Named("mensaje")String mensaje){
-        //cOMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
+        //COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
         //cns.assertVerificarMensaje(mensaje);
     }
 
@@ -113,7 +113,7 @@ public class CrearCuentaNuevaDefinitions {
 
     @Then("No me debe permitir crear la cuenta y debe mostrar el mensaje <mensaje>")
     public void assertVerificarMenor(@Named("mensaje")String mensaje){
-        //cOMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
+        //COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
         //cns.assertVerificarMenor(mensaje);
     }
 }

@@ -18,12 +18,12 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     private String cedula = "";
     private String nit = "";
+    private String tipoDoc="";
 
 
     private void  initRandoms(){
         cedula = gw.cedulaRandom();
         nit = gw.nitRandom();
-
     }
 
     public CrearNuevoContactoSteps(Pages pages) {
@@ -38,7 +38,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     @Step
     public void seleccionarTipoDocumentoPersonaNatural(String tipoDocumento){
         nuevoContactoPage.seleccionarTipoDocumento(tipoDocumento);
-
+        tipoDoc = tipoDocumento;
     }
 
     @Step
@@ -46,7 +46,8 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
         if("".equals(cedula) || "".equals(nit)){
             initRandoms();
         }
-        nuevoContactoPage.ingresarNumeroDocumento(cedula);
+        if(tipoDoc.equals("NIT")) nuevoContactoPage.ingresarNumeroDocumento(nit);
+        else nuevoContactoPage.ingresarNumeroDocumento(cedula);
     }
 
     @Step
@@ -70,8 +71,8 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void actualizar(){
-        nuevoContactoPage.actualizarPersonaNatural();
+    public void actualizar(String primerNombre){
+        nuevoContactoPage.actualizarPersonaNatural(primerNombre);
     }
 
     @Step
@@ -91,8 +92,8 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
         nuevoContactoPage.ingresarRazonSocial(razonSocial);
     }
     @Step
-    public void actualizarJuridica(){
-        nuevoContactoPage.actualizarJuridica();
+    public void actualizarJuridica(String razonSocial){
+        nuevoContactoPage.actualizarJuridica(razonSocial);
     }
 
     @Step
@@ -110,9 +111,5 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     public void validarCampoPaisDepartamentoYCiudad(){
         nuevoContactoPage.validarCampoPaisDepartamentoYCiudad();
     }
-
-
-
-
 
 }

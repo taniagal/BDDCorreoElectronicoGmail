@@ -18,22 +18,8 @@ public class DetallesContactoEdicionDefinitions {
     @Steps
     CrearNuevoContactoSteps ncs;
 
-    @Given("Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural con nombre\n" +
-            "<primer_nombre> y apellido <primer_apellido>, tipo direccion <tipo_direccion>, direccion <direccion>,\n" +
-            "tipo documento <tipo_documento>, documento <documento>")
-    public void login(@Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
-                      @Named("tipo_documento")String tipoDocumento,@Named("documento")String documento,
-                      @Named("tipo_direccion")String tipoDireccion,@Named("direccion")String direccion){
-        seusLogin.login();
-        ncs.nuevoContactoPersona();
-        ncs.seleccionarTipoDocumentoPersonaNatural(tipoDocumento);
-        ncs.ingresarNumeroDocumentoPersonaNatural(documento);
-        ncs.ingresarPrimerNombrePersonaNatural(primerNombre);
-        ncs.ingresarPrimerApellidoPersonaNatural(primerApellido);
-        ncs.seleccionarTipoDireccionPersonaNatural(tipoDireccion);
-        ncs.ingresarDireccionPersonaNatural(direccion);
-        ncs.btnCrearPersona();
-        dcs.abrirDetallesContactoPersona(primerNombre,primerApellido);
+    @Given("Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural.")
+    public void contactoCreado(){
     }
 
     @When("quiera editar la informacion del contacto con perimer nombre <primer_nombre>,segundo nombre <segundo_nombre>")

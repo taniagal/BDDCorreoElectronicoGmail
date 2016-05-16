@@ -85,9 +85,7 @@ public class NuevoContactoPage extends Guidewire {
 
 
     public void seleccionarTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento.type(tipoDocumento);
-        gw.threadWait(1000);
-        this.tipoDocumento.click();
+        selectItem(this.tipoDocumento,tipoDocumento);
     }
 
     public void ingresarNumeroDocumento(String numeroDocumento) {
@@ -103,22 +101,19 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void seleccionarTipoDireccion(String tipoDireccion) {
-        this.tipoDireccion.type(tipoDireccion);
-        gw.threadWait(1000);
-        this.tipoDireccion.click();
+        selectItem(this.tipoDireccion,tipoDireccion);
     }
 
     public void ingresarDireccion(String direccion) {
-        this.direccion.type(direccion);
-        this.direccion.click();
+        selectItem(this.direccion,direccion);
     }
 
-    public void actualizarPersonaNatural() {
+    public void actualizarPersonaNatural(String primerNombre) {
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
 
         gw.threadWait(1000);
-        assertThat(this.nombreContact.getText(), containsString("BRAYAN"));
+        assertThat(this.nombreContact.getText(), containsString(primerNombre));
 
     }
 
@@ -161,21 +156,20 @@ public class NuevoContactoPage extends Guidewire {
         this.razonSocial.type(razonSocial);
     }
 
-    public void actualizarJuridica() {
-
+    public void actualizarJuridica(String razonSocial) {
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
         gw.threadWait(1000);
-        assertThat(this.desRazonSocial.getText().toString(), containsString("La Vaquita"));
+        assertThat(this.desRazonSocial.getText().toString(), containsString(razonSocial));
 
     }
 
     public void verificarContactoExistente() {
-
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
+        /*----COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
         gw.threadWait(1000);
-        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
+        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));*/
     }
 
     private Boolean esTelefonoFijo(String tipoTelefono) {
