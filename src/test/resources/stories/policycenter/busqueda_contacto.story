@@ -13,7 +13,7 @@ And debo ver un mensaje <mensaje> de alerta indicando que se debe ingresar al me
 
 Examples:
 |tipoDoc             |primerNombre |mensaje |
-|CEDULA DE CIUDADANIA|Yurledys     |No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas).|
+|CEDULA DE CIUDADANIA|YURLEDYS     |No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas).|
 
 Scenario: Consultar contacto de tipo persona natural unicamente por segundo nombre
 Given estoy en busqueda de contactos
@@ -23,7 +23,7 @@ And debo ver un mensaje <mensaje> de alerta indicando que se debe ingresar al me
 
 Examples:
 |tipoDoc             |segundoNombre |mensaje |
-|CEDULA DE CIUDADANIA|Paola         |No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas).|
+|CEDULA DE CIUDADANIA|PAOLA         |No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas).|
 
 Scenario: Consultar contacto de tipo persona natural unicamente por primer apellido
 Given estoy en busqueda de contactos
@@ -33,7 +33,7 @@ And debo ver un mensaje <mensaje> de alerta indicando que se debe ingresar al me
 
 Examples:
 |tipoDoc             |primerApellido |mensaje|
-|CEDULA DE CIUDADANIA|Gallego        |No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas).|
+|CEDULA DE CIUDADANIA|GALLEGO        |No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas).|
 
 Scenario: Consultar contacto de tipo persona natural unicamente por segundo apellido
 Given estoy en busqueda de contactos
@@ -43,7 +43,7 @@ And debo ver un mensaje <mensaje> de alerta indicando que se debe ingresar al me
 
 Examples:
 |tipoDoc             |segundoApellido |mensaje|
-|CEDULA DE CIUDADANIA|Torres          |No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas).|
+|CEDULA DE CIUDADANIA|TORRES          |No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas).|
 
 Scenario: Consultar contacto de tipo persona natural por primer nombre y primer apellido
 Given estoy en busqueda de contactos
@@ -52,7 +52,7 @@ Then debo ver la informacion del contacto de tipo persona natural <filtro1> <fil
 
 Examples:
 |tipoDoc             |primerNombre |primerApellido|filtro1  |filtro2 |
-|CEDULA DE CIUDADANIA|Yurledys     |Gallego       |YURLEDYS |GALLEGO |
+|CEDULA DE CIUDADANIA|YURLEDYS     |GALLEGO       |YURLEDYS |GALLEGO |
 
 Scenario: Consultar contacto de tipo persona natural por segundo nombre y segundo apellido
 Given estoy en busqueda de contactos
@@ -61,7 +61,7 @@ Then debo ver la informacion del contacto de tipo persona natural <filtro1> <fil
 
 Examples:
 |tipoDoc             |segundoNombre |segundoApellido|filtro1 |filtro2 |
-|CEDULA DE CIUDADANIA|Paola         |Torres         |PAOLA   |TORRES  |
+|CEDULA DE CIUDADANIA|PAOLA         |TORRES         |PAOLA   |TORRES  |
 
 Scenario: Consultar contacto de tipo persona natural por primer nombre y segundo apellido
 Given estoy en busqueda de contactos
@@ -70,7 +70,7 @@ Then debo ver la informacion del contacto de tipo persona natural <filtro1> <fil
 
 Examples:
 |tipoDoc             |primerNombre  |segundoApellido|filtro1  |filtro2 |
-|CEDULA DE CIUDADANIA|Yurledys      |Torres         |YURLEDYS |TORRES  |
+|CEDULA DE CIUDADANIA|YURLEDYS      |TORRES         |YURLEDYS |TORRES  |
 
 Scenario: Consultar contacto de tipo persona natural por segundo nombre y primer apellido
 Given estoy en busqueda de contactos
@@ -79,7 +79,7 @@ Then debo ver la informacion del contacto de tipo persona natural <filtro1> <fil
 
 Examples:
 |tipoDoc             |segundoNombre  |primerApellido |filtro1 |filtro2 |
-|CEDULA DE CIUDADANIA|Paola          |Gallego        |PAOLA   |GALLEGO |
+|CEDULA DE CIUDADANIA|PAOLA          |GALLEGO        |PAOLA   |GALLEGO |
 
 Scenario: Consultar contacto de tipo persona natural por primer apellido y segundo apellido
 Given estoy en busqueda de contactos
@@ -89,7 +89,7 @@ And debo ver un mensaje <mensaje> de alerta indicando que se debe ingresar al me
 
 Examples:
 |tipoDoc             |primerApellido |segundoApellido |mensaje |
-|CEDULA DE CIUDADANIA|Gallego        |Torres          |No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas).|
+|CEDULA DE CIUDADANIA|GALLEGO        |TORRES          |No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas).|
 
 Scenario: Consultar contacto de tipo persona juridica por razon social
 Given estoy en busqueda de contactos
@@ -98,7 +98,7 @@ Then debo ver la informacion del contacto de tipo persona juridica <filtro>
 
 Examples:
 |tipoDoc |razonSocial         |filtro              |
-|NIT     |Variedades Yurledys |Variedades Yurledys |
+|NIT     |VARIEDADES YURLEDYS |VARIEDADES YURLEDYS |
 
 Scenario: Consultar contacto de tipo persona juridica por nombre comercial
 Given estoy en busqueda de contactos
@@ -107,7 +107,7 @@ Then debo ver la informacion del contacto de tipo persona juridica <filtro>
 
 Examples:
 |tipoDoc  |nombreComercial     |filtro             |
-|NIT      |Variedades Yurledys |Variedades Yurledys|
+|NIT      |VARIEDADES YURLEDYS |VARIEDADES YURLEDYS|
 
 Scenario: Consultar contacto de tipo persona natural por tipo y numero de identificacion
 Given estoy en busqueda de contactos
@@ -174,7 +174,7 @@ Then los labels se deben mostrar como se indica en el UIFields para persona natu
 
 Examples:
 |tipoDoc             |primerNombre|primerApellido|
-|CEDULA DE CIUDADANIA|Yurledys    |Gallego       |
+|CEDULA DE CIUDADANIA|YURLEDYS    |GALLEGO       |
 
 Scenario: Mostrar labels correctos en espaniol para persona juridica
 Given estoy en busqueda de contactos
@@ -182,8 +182,8 @@ When quiera consultar contacto de tipo persona juridica <tipoDoc> por razon soci
 Then los labels se deben mostrar como se indica en el UIFields para persona juridica
 
 Examples:
-|tipoDoc  |razonSocial             |
-|NIT      |Variedades Yurledys S.A |
+|tipoDoc  |razonSocial         |
+|NIT      |VARIEDADES YURLEDYS |
 
 Scenario: Consultar contacto a traves de la opcion del menu Contactos - Buscar
 Given estoy en contactos para buscar
@@ -201,7 +201,7 @@ Then debo ver la informacion del contacto de tipo persona juridica <filtro>
 
 Examples:
 |tipoDoc  |nombreComercial     |filtro              |
-|NIT      |Variedades Yurledys |Variedades Yurledys |
+|NIT      |VARIEDADES YURLEDYS |VARIEDADES YURLEDYS |
 
 Scenario: Validar opcion Exportar
 Meta:

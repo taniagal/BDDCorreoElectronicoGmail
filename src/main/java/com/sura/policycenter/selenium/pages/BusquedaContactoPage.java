@@ -3,6 +3,7 @@ package com.sura.policycenter.selenium.pages;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import com.sura.guidewire.selenium.Guidewire;
 import freemarker.ext.beans.HashAdapter;
@@ -67,11 +68,16 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath="//li[2]")
     WebElementFacade itmNIT;
 
+    @FindBy(xpath="//td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
+    WebElementFacade btnTipoDoc;
+
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:DocumentType-inputEl']")
     WebElementFacade txtTipoDoc;
 
-    //@FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:identificationNumber-inputEl']")
-    @FindBy(xpath="//td[@id='ContactSearch:ContactSearchScreen:identificationNumber-bodyEl']/input")
+    @FindBy(xpath="//li")
+    WebElementFacade itmTipoDoc;
+
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:identificationNumber-inputEl']")
     WebElementFacade txtNumDoc;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
@@ -341,33 +347,30 @@ public class BusquedaContactoPage extends Guidewire {
 
     public void  consultarContactoTipoNumDoc(String tipoDoc, String numDoc) {
 
-        espera(txtTipoDoc,3);
-        txtTipoDoc.waitUntilPresent();
-        txtTipoDoc.waitUntilClickable();
-        txtTipoDoc.waitUntilEnabled();
-        txtTipoDoc.type(tipoDoc);
-        txtTipoDoc.sendKeys(Keys.ENTER);
-        espera(txtNumDoc,3);
-        txtNumDoc.waitUntilPresent();
-        txtNumDoc.waitUntilClickable();
-        txtNumDoc.waitUntilEnabled();
+        txtTipoDoc.click();
+        WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'"+tipoDoc+"')]");
+        cbxTipoDoc.click();
+        waitABit(1000);
         txtNumDoc.type(numDoc);
-        espera(botonBuscar,2);
-        botonBuscar.waitUntilPresent();
+
+        waitABit(1000);
         botonBuscar.waitUntilClickable();
-        botonBuscar.waitUntilEnabled();
         botonBuscar.click();
     }
 
     public void consultarContactoPorNombresYApellidos(String tipoDoc, String primerNombre,
                                                       String segundoNombre, String primerApellido,
                                                       String segundoApellido) {
-        txtTipoDoc.type(tipoDoc);
-        txtTipoDoc.sendKeys(Keys.ENTER);
+        txtTipoDoc.click();
+        WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'"+tipoDoc+"')]");
+        cbxTipoDoc.click();
+        waitABit(1000);
         txtNombre.type(primerNombre);
         txtSegNombre.type(segundoNombre);
+        waitABit(1000);
         txtApellido.type(primerApellido);
         txtSegApellido.type(segundoApellido);
+        waitABit(1000);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
         espera(botonBuscar,2);
@@ -444,7 +447,7 @@ public class BusquedaContactoPage extends Guidewire {
             Thread.sleep(2000);
             assertThat(lblTipoId.getText().toString(),is(equalTo(labelsContacto.get("tipoId"))));
             assertThat(lblNumId.getText().toString(),is(equalTo(labelsContacto.get("numId"))));
-            assertThat(lblPrimNombre.getText().toString(),is(equalTo(labelsContacto.get("primNombre"))));
+            assertThat(lblPrimNombre.getText().toString(),is(equalTo(labelsContacto.get("priNombre"))));
             assertThat(lblSegNombre.getText().toString(),is(equalTo(labelsContacto.get("segNombre"))));
             assertThat(lblPriApellido.getText().toString(),is(equalTo(labelsContacto.get("priApellido"))));
             assertThat(lblSegApellido.getText().toString(),is(equalTo(labelsContacto.get("segApellido"))));
@@ -463,8 +466,7 @@ public class BusquedaContactoPage extends Guidewire {
             assertThat(lblTipoId.getText().toString(),is(equalTo(labelsContacto.get("tipoId"))));
             assertThat(lblNumId.getText().toString(),is(equalTo(labelsContacto.get("numId"))));
             assertThat(lblNomComercial.getText().toString(),is(equalTo(labelsContacto.get("nomComercial"))));
-            assertThat(lblSegNombre.getText().toString(),is(equalTo(labelsContacto.get("segNombre"))));
-            assertThat(lblRazonSocial.getText().toString(),is(equalTo(labelsContacto.get("raznSocial"))));
+            assertThat(lblRazonSocial.getText().toString(),is(equalTo(labelsContacto.get("razonSocial"))));
             assertThat(lblDireccion.getText().toString(),is(equalTo(labelsContacto.get("direccion"))));
             assertThat(lblTelefono.getText().toString(),is(equalTo(labelsContacto.get("telefono"))));
             assertThat(lblEmail.getText().toString(),is(equalTo(labelsContacto.get("email"))));

@@ -191,18 +191,9 @@ public class BusquedaContactoDefinitions {
         buscarContactoSteps.validarInformacionTipoId();
     }
 
-    @Then("debo ver un <mensaje> de alerta indicando que es necesario ingresar algun criterio de busqueda")
-    public void thenValidarMensaje(@Named("mensaje") String mensaje){
-        //buscarContactoSteps.validarMensaje(mensaje);
-        seusLoginSteps.logout();
-        seusLoginSteps.close();
-    }
-
     @Then("debo ver un <mensaje> de alerta indicando que es necesario ingresar tipo y numero de documento")
     public void thenValidarMensajeTipoNumDoc(@Named("mensaje") String mensaje) {
         buscarContactoSteps.validarMensaje(mensaje);
-        //seusLoginSteps.logout();
-        //seusLoginSteps.close();
     }
 
     @Then("no debo ver la informacion del contacto de tipo persona natural")
@@ -213,8 +204,6 @@ public class BusquedaContactoDefinitions {
     @Then("debo ver un mensaje <mensaje> de alerta indicando que se debe ingresar al menos dos de los campos incluido un nombre")
     public void thenValidarMensajeNombre(@Named("mensaje") String mensaje) {
         buscarContactoSteps.validarMensaje(mensaje);
-        //seusLoginSteps.logout();
-        //seusLoginSteps.close();
     }
 
     @When("quiera consultar contacto de tipo persona juridica <tipoDoc> por nombre comercial <nombreComercial>")
@@ -226,29 +215,21 @@ public class BusquedaContactoDefinitions {
     public void thenVerInfoPersonaNatural(@Named("filtro1") String filtro1,
                                           @Named("filtro2") String filtro2) {
         buscarContactoSteps.verInfoPersonaNatural(filtro1, filtro2);
-        //seusLoginSteps.logout();
-        //seusLoginSteps.close();
     }
 
     @Then("debo ver la informacion del contacto de tipo persona juridica <filtro>")
     public void thenVerInfoPersonaJuridica(@Named("filtro") String filtro){
         buscarContactoSteps.verInfoPersonaJuridica(filtro);
-        //seusLoginSteps.logout();
-        //seusLoginSteps.close();
     }
 
     @Then("debo ver un <mensaje> de alerta indicando que la longitud debe ser mayor o igual a dos caracteres")
     public void validarMensajeLongitudPersNat(@Named("mensaje") String mensaje){
         buscarContactoSteps.validarMensaje(mensaje);
-        //seusLoginSteps.logout();
-        //seusLoginSteps.close();
     }
 
     @Then("debo ver un <mensaje> de alerta indicando que la longitud debe ser mayor o igual a cuatro caracteres")
     public void validarMensajeLongitudPersJurid(@Named("mensaje") String mensaje){
         buscarContactoSteps.validarMensaje(mensaje);
-        //seusLoginSteps.logout();
-        //seusLoginSteps.close();
     }
 
     @Then("los labels se deben mostrar como se indica en el UIFields para persona natural")
@@ -263,7 +244,7 @@ public class BusquedaContactoDefinitions {
         labelsContacto.put("segApellido","Segundo Apellido");
         labelsContacto.put("direccion","Dirección");
         labelsContacto.put("telefono","Teléfono");
-        labelsContacto.put("email","Correo electrónico");
+        labelsContacto.put("email","Correo Electrónico");
         labelsContacto.put("externa","Externa");
         buscarContactoSteps.validarLabelsPersonaNatural(labelsContacto);
     }
@@ -278,7 +259,7 @@ public class BusquedaContactoDefinitions {
         labelsContacto.put("razonSocial","Razón Social");
         labelsContacto.put("direccion","Dirección");
         labelsContacto.put("telefono","Teléfono");
-        labelsContacto.put("email","Correo electrónico");
+        labelsContacto.put("email","Correo Electrónico");
         labelsContacto.put("externa","Externa");
         buscarContactoSteps.validarLabelsPersonaJuridica(labelsContacto);
     }
