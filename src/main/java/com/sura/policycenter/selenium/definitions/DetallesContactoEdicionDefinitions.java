@@ -8,25 +8,17 @@ import org.jbehave.core.annotations.*;
 
 
 public class DetallesContactoEdicionDefinitions {
-
-    @Steps
-    SeusLoginSteps seusLogin;
-
     @Steps
     DetallesContactoSteps dcs;
 
     @Steps
     CrearNuevoContactoSteps ncs;
 
-    @Given("Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural.")
-    public void contactoCreado(){
-    }
-
-    @When("quiera editar la informacion del contacto con perimer nombre <primer_nombre>,segundo nombre <segundo_nombre>")
+    @When("quiera editar la informacion del contacto con segundo nombre <segundo_nombre>")
     public void agregarNombre(@Named("segundo_nombre")String segundoNombre){
         dcs.agregarNombre(segundoNombre);
     }
-    @When("primer apellido <primer_apellido>, segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>")
+    @When("segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>")
     public void agregarApellido(@Named("segundo_apellido")String segundoApellido,@Named("telefono_trabajo")String telefonoTrabajo){
         dcs.agregarApellido(segundoApellido);
         dcs.agregarTelefonoTrabajo(telefonoTrabajo);

@@ -6,6 +6,18 @@ So that I can achieve a business goal
 
 Feature: Detalles de un contacto
 
+Scenario: Editar detalles de contacto de tipo persona juridica
+Given Se ha consultado la informacion detallada de un contacto tipo persona juridica con nombre <razon_social>,
+tipo de direccion <tipo_direccion> y direccion <direccion>
+When quiera editar la informacion del contacto con razon social <razon_social>, nombre comercial <nombre_comercial>,
+actividad comercial <actividad_comercial>, numero de empleados <numero_empleados>, valor activos <valor_activos>,
+ventas anuales <ventas_anuales>, telefono oficina <telefono_oficina>, correo electronico primario <correo_electronico_primario>,
+correo electronico secundario <correo_electronico_secundario>
+Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios de persona juridica
+
+Examples:
+|razon_social   |tipo_direccion |direccion        |nombre_comercial  |actividad_comercial                    |numero_empleados  |valor_activos  |ventas_anuales |telefono_oficina  |correo_electronico_primario  |correo_electronico_secundario|
+|UMBRELLA SA    |Vivienda       |CALLE 54B #50-25 |BDD Sura          |FABRICACION DE RECIPIENTES DE MADERA   |400               |190000000      |135000000      |888-789-1236      |primario@mail.com            |secundario@mail.com          |
 
 Antecedents: HU Search Contact y HU Metodos de Entrada de Direcciones
 #Pendiente por definir en la historia la validacion de direcciones con la historia New address input modes
@@ -13,10 +25,8 @@ Antecedents: HU Search Contact y HU Metodos de Entrada de Direcciones
 Scenario: Editar detalles de contacto de tipo persona natural
 
 GivenStories: stories/policycenter/crear_nuevo_contacto_natural.story
-
-Given Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural.
-When quiera editar la informacion del contacto con perimer nombre <primer_nombre>,segundo nombre <segundo_nombre>
-And primer apellido <primer_apellido>, segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>
+When quiera editar la informacion del contacto con segundo nombre <segundo_nombre>
+And segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>
 And profesion <profesion>, estado civil <estado_civil>,tipo familia <tipo_familia>
 And telefono celular <telefono_celular>
 And correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>,telefono residencial<telefono_residencial>
@@ -29,17 +39,4 @@ Examples:
 
 
 
-Scenario: Editar detalles de contacto de tipo persona juridica
-
-Given Se ha consultado la informacion detallada de un contacto tipo persona juridica con nombre <razon_social>,
-tipo de direccion <tipo_direccion> y direccion <direccion>
-When quiera editar la informacion del contacto con razon social <razon_social>, nombre comercial <nombre_comercial>,
-actividad comercial <actividad_comercial>, numero de empleados <numero_empleados>, valor activos <valor_activos>,
-ventas anuales <ventas_anuales>, telefono oficina <telefono_oficina>, correo electronico primario <correo_electronico_primario>,
-correo electronico secundario <correo_electronico_secundario>
-Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios de persona juridica
-
-Examples:
-|razon_social   |tipo_direccion |direccion        |nombre_comercial  |actividad_comercial                    |numero_empleados  |valor_activos  |ventas_anuales |telefono_oficina  |correo_electronico_primario  |correo_electronico_secundario|
-|UMBRELLA SA    |Vivienda       |CALLE 54B #50-25 |BDD Sura          |FABRICACION DE RECIPIENTES DE MADERA   |400               |190000000      |135000000      |888-789-1236      |primario@mail.com            |secundario@mail.com          |
 
