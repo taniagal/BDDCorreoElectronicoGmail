@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.guidewire.selenium.SeusLoginPage;
-import com.sura.policycenter.selenium.pages.EscritorioPage;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -13,7 +13,7 @@ public class PolicySteps extends ScenarioSteps {
     SeusLoginPage seus = new SeusLoginPage(getDriver());
     Guidewire gw = new Guidewire(getDriver());
     AbrirAppPage abrirapp = new AbrirAppPage(getDriver());
-    EscritorioPage escritorioPagePage = new EscritorioPage(getDriver());
+    InicioPage inicioPage = new InicioPage(getDriver());
 
     public PolicySteps(Pages pages) {
         super(pages);
@@ -42,12 +42,12 @@ public class PolicySteps extends ScenarioSteps {
 
     @Step
     public void assertion(String element) {
-        escritorioPagePage.assertion(element);
+        inicioPage.assertion(element);
     }
 
     @Step
     public void nuevoContactoPersona() {
-        escritorioPagePage.nuevoContactoPersona();
+        inicioPage.nuevoContactoPersona();
     }
 
     @Step

@@ -5,23 +5,12 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.isIn;
-
 public class BusquedaContactoPage extends Guidewire {
-
-    @FindBy(xpath=".//*[@id='TabBar:ContactTab']")
-    WebElementFacade contactMenu;
-
-    @FindBy(xpath=".//*[@id='TabBar:ContactTab:Search']")
-    WebElementFacade buscarContact;
-
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")
     WebElementFacade tipoContact;
 
@@ -53,11 +42,7 @@ public class BusquedaContactoPage extends Guidewire {
     public void buscarContacto(String tipoContacto, String nombre, String apellido){
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(1000);
         if (tipoContacto.equals("Personal")){
             nombreContact.type(nombre);
             apellidoContact.type(apellido);
@@ -72,11 +57,7 @@ public class BusquedaContactoPage extends Guidewire {
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         int parada = Integer.parseInt(numero);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(1000);
         if (tipoContacto.equals("Personal")){
             nombreContact.type(nombre);
             apellidoContact.type(apellido);
@@ -84,12 +65,7 @@ public class BusquedaContactoPage extends Guidewire {
             nombreEmpresaContact.type(nombre);
         }
         botonBuscar.click();
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(3000);
 
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         WebElement selectedContact1 = null;
@@ -107,7 +83,7 @@ public class BusquedaContactoPage extends Guidewire {
     public void buscarContactoEmpresa(String nombreEmpresa){
         tipoContact.type("Empresa");
         tipoContact.sendKeys(Keys.ENTER);
-        threadWait(1000);
+        waitABit(1000);
         txtNombreEmpresa.type(nombreEmpresa);
         botonBuscar.click();
         selectContact.click();

@@ -19,29 +19,32 @@ import static org.hamcrest.Matchers.containsString;
  */
 public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
 
-    @FindBy(xpath=".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_WorkOrders']/div/span")
-    WebElementFacade mnuTransaccionesPoliza;
+    //@FindBy(xpath=".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_WorkOrders']/div/span")
+    @FindBy(xpath=".//tr[5]/td/div/span")
+    private WebElementFacade mnuTransaccionesPoliza;
 
     @FindBy(xpath=".//td/div/div/div/div/table/tbody/tr/td[2]/table/tbody/tr/td/input")
-    WebElementFacade filtroEstado;
+    private WebElementFacade filtroEstado;
 
     @FindBy(xpath=".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:message:InfoMessage_ExtDV:message']")
-    WebElementFacade msjTransaccionNoEncontrada;
+    private WebElementFacade msjTransaccionNoEncontrada;
 
     @FindBy(xpath=".//table[2]/tbody/tr/td[2]/table/tbody/tr/td/input")
-    WebElementFacade filtroTipoTransaccion;
+    private WebElementFacade filtroTipoTransaccion;
 
     @FindBy(xpath=".//table[3]/tbody/tr/td[2]/table/tbody/tr/td/input")
-    WebElementFacade filtroProducto;
+    private WebElementFacade filtroProducto;
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
-    WebElementFacade mnuCuenta;
+    private WebElementFacade mnuCuenta;
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
-    WebElementFacade txtNumCuenta;
+    private WebElementFacade txtNumCuenta;
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
-    WebElementFacade btnBuscarCuenta;
+    private WebElementFacade btnBuscarCuenta;
+
+
 
     Guidewire gw = new Guidewire(getDriver());
 
@@ -50,8 +53,10 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void seleccionarTransacciones(){
+
         this.mnuTransaccionesPoliza.waitUntilClickable();
         this.mnuTransaccionesPoliza.click();
+
     }
 
     public void buscarCuenta(String numCuenta) {
@@ -80,13 +85,13 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
 
     public void filtrarTransaccionesPorEstado(String estado){
         filtroEstado.click();
+        getDriver().manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+
         filtroEstado.sendKeys(estado);
+        getDriver().manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+
         filtroEstado.sendKeys(Key.ENTER);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        getDriver().manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
     }
 
     public void validarMensaje(String mensaje) {
@@ -94,17 +99,11 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorTransaccion(String filtroTransaccion) {
-        filtroTipoTransaccion.click();
-        filtroTipoTransaccion.clear();
-        filtroTipoTransaccion.sendKeys(filtroTransaccion);
-        filtroTipoTransaccion.sendKeys(Key.ENTER);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
+        this.filtroTipoTransaccion.waitUntilClickable();
+        this.filtroTipoTransaccion.click();
+        this.filtroTipoTransaccion.clear();
+        this.filtroTipoTransaccion.sendKeys(filtroTransaccion);
+        this.filtroTipoTransaccion.sendKeys(Key.ENTER);
     }
 
     public void filtrarTransaccionesPorProducto(String filtroProducto) {

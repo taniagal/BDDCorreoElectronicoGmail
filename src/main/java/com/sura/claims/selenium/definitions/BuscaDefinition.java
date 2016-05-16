@@ -29,6 +29,7 @@ public class BuscaDefinition {
     @When("cuando ingrese a la opcion de busqueda avanzada")
     public void navegacionBuscaAvanzada() throws InterruptedException {
         cs.navegacionBuscaAvanzada();
+        cs.navegaBuscar();
     }
 
     @When("ingrese los datos de poliza <npoliza>")

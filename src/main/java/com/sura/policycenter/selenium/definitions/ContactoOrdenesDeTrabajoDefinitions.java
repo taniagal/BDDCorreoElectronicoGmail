@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.google.inject.name.Named;
+import org.jbehave.core.annotations.Named;
 import com.sura.policycenter.selenium.steps.ContactoOrdenesDeTrabajoSteps;
 import com.sura.policycenter.selenium.steps.CuentasAsociadasAContactoSteps;
 import net.thucydides.core.annotations.Steps;

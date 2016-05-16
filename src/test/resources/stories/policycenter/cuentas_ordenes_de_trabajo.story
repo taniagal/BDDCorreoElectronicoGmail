@@ -23,7 +23,7 @@ Then se muestra el mensaje informativo de transaccionde poliza no encontrada <me
 
 Examples:
 |numCuenta|mensaje|
-|9830130793|La cuenta no tiene transacciones asociadas|
+|9565863452|No tiene transacciones asociadas|
 
 Scenario: Ver informacion filtrada por estado
 Given Estoy buscando una cuenta <numCuenta>
