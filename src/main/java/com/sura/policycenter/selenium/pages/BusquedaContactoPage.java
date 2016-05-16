@@ -13,12 +13,14 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.interactions.Actions;
 import org.slf4j.LoggerFactory;
 
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import java.util.List;
 
 public class BusquedaContactoPage extends Guidewire {
 
@@ -31,12 +33,18 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")
     WebElementFacade tipoContact;
 
-	@FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
+    WebElementFacade nombreContact;
+
+    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
     WebElementFacade txtNombreEmpresa;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     WebElementFacade txtNombre;
 
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
+    WebElementFacade apellidoContact;
+    
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade txtApellido;
 
@@ -198,13 +206,7 @@ public class BusquedaContactoPage extends Guidewire {
     public void buscarContacto(String tipoContacto, String nombre, String apellido){
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
-        try {
-            Thread.sleep(1000);
-            contactMenu.click();
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(1000);
         if (tipoContacto.equals("Personal")){
             nombreContact.type(nombre);
             apellidoContact.type(apellido);
@@ -389,12 +391,7 @@ public class BusquedaContactoPage extends Guidewire {
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         int parada = Integer.parseInt(numero);
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(1000);
         if (tipoContacto.equals("Personal")){
             nombreContact.type(nombre);
             apellidoContact.type(apellido);
@@ -402,12 +399,7 @@ public class BusquedaContactoPage extends Guidewire {
             nombreEmpresaContact.type(nombre);
         }
         botonBuscar.click();
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(3000);
 
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         WebElement selectedContact1 = null;
@@ -421,11 +413,11 @@ public class BusquedaContactoPage extends Guidewire {
             selectedContact1.click();
         }
     }
-	
-	public void buscarContactoEmpresa(String nombreEmpresa){
+
+    public void buscarContactoEmpresa(String nombreEmpresa){
         tipoContact.type("Empresa");
         tipoContact.sendKeys(Keys.ENTER);
-        threadWait(1000);
+        waitABit(1000);
         txtNombreEmpresa.type(nombreEmpresa);
         botonBuscar.click();
         selectContact.click();
@@ -474,5 +466,12 @@ public class BusquedaContactoPage extends Guidewire {
         } catch(Exception e) {
             LOGGER.error("This is error", e);
         }
+    public void buscarContactoPersona(String nombre, String apellido){
+        tipoContact.type("Personal");
+        tipoContact.sendKeys(Keys.ENTER);
+        nombreContact.type(nombre);
+        apellidoContact.type(apellido);
+        botonBuscar.click();
+        selectContact.click();
     }
 }

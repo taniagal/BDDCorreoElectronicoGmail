@@ -3,13 +3,10 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevoContactoSteps;
 import com.sura.policycenter.selenium.steps.DetallesContactoSteps;
-import com.sura.policycenter.selenium.steps.PolicySteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
 
-/**
- * Created by hectsaga on 2016/04/29.
- */
+
 public class DetallesContactoDefinitions {
 
     @Steps
@@ -17,9 +14,6 @@ public class DetallesContactoDefinitions {
 
     @Steps
     DetallesContactoSteps dcs;
-
-    @Steps
-    PolicySteps pcs;
 
     @Steps
     CrearNuevoContactoSteps ncs;
@@ -30,9 +24,8 @@ public class DetallesContactoDefinitions {
 
     @Given("Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural con nombre\n" +
             "<primer_nombre> y apellido <primer_apellido>, tipo direccion <tipo_direccion>, direccion <direccion>,\n" +
-            "tipo documento <tipo_documento>, documento <documento>, y con el usuario <user>, con contrasenia <pass> y pais <country>")
-    public void login(@Named("user") String usuario, @Named("pass") String contrasenia, @Named("country")String pais,
-                      @Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
+            "tipo documento <tipo_documento>, documento <documento>")
+    public void login(@Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
                       @Named("tipo_documento")String tipoDocumento,@Named("documento")String documento,
                       @Named("tipo_direccion")String tipoDireccion,@Named("direccion")String direccion) {
         seusLogin.login();
@@ -62,11 +55,8 @@ public class DetallesContactoDefinitions {
 
 
     @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica con nombre <nombre_empresa>,\n" +
-            "      tipo de direccion <tipo_direccion> y direccion <direccion>, con el usuario <user>, con contrasenia <pass> y pais <country>")
-    public void loginPersonaJuridica(@Named("user") String usuario, @Named("pass") String contrasenia, @Named("country")String pais,
-                                     @Named("nombre_empresa")String razonSocial,@Named("tipo_direccion")String tipoDireccion,
-                                     @Named("direccion")String direccion) {
-        //seusLogin.login();
+            "      tipo de direccion <tipo_direccion> y direccion <direccion>")
+    public void loginPersonaJuridica(@Named("nombre_empresa")String razonSocial,@Named("tipo_direccion")String tipoDireccion,@Named("direccion")String direccion) {
         ncs.nuevoContactoPersonaJuridica();
         ncs.seleccionarTipoDocumentoPersonaNatural("NIT");
         ncs.ingresarRazonSocial(razonSocial);

@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.policycenter.selenium.pages.EscritorioPage;
 import com.sura.policycenter.selenium.pages.HistorialCuentaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
