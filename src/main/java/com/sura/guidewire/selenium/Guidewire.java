@@ -32,7 +32,6 @@ public class Guidewire extends PageObject {
 
     public Guidewire(WebDriver driver) {
         super(driver);
-
     }
 
     String mensajeError = "";
