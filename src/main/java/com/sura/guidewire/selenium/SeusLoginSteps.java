@@ -1,7 +1,6 @@
 package com.sura.guidewire.selenium;
 
-import com.sura.policycenter.selenium.pages.AbrirAppPage;
-import com.sura.policycenter.selenium.pages.EscritorioPage;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -13,7 +12,7 @@ public class SeusLoginSteps  extends ScenarioSteps {
 
     SeusLoginPage seus = new SeusLoginPage(getDriver());
     Guidewire gw = new Guidewire(getDriver());
-    EscritorioPage escritorioPagePage = new EscritorioPage(getDriver());
+    InicioPage inicioPage = new InicioPage(getDriver());
 
     public SeusLoginSteps(Pages pages) {
         super(pages);
@@ -26,7 +25,7 @@ public class SeusLoginSteps  extends ScenarioSteps {
 
         seus.open();
         seus.login(pais, usuario, contrasenia);
-        escritorioPagePage.assertion(element);
+        inicioPage.assertion(element);
     }
 
 
@@ -40,7 +39,7 @@ public class SeusLoginSteps  extends ScenarioSteps {
 
         seus.open();
         seus.login(pais,usuario, contrasenia);
-        escritorioPagePage.assertion(element);
+        inicioPage.assertion(element);
     }
 
     @Step
