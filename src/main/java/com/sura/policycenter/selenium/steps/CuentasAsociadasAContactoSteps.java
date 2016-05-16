@@ -21,7 +21,8 @@ public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
 
     @Step
     public void navegarBarraSuperior() {
-        escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
+        inicioPage().irABuscarContacto();
+        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
     }
 
     @Step

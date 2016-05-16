@@ -1,33 +1,21 @@
 package com.sura.guidewire.selenium;
 
-import net.serenitybdd.core.annotations.findby.By;
 import com.google.common.base.Function;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
 import org.hamcrest.Matcher;
-import org.jbehave.core.model.ExamplesTable;
-import org.jbehave.core.steps.Parameters;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
-import java.lang.Math;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * Created by jorghome on 15/04/2016.
@@ -36,12 +24,9 @@ public class Guidewire extends PageObject {
 
     public Guidewire(WebDriver driver) {
         super(driver);
-
     }
 
     String mensajeError = "";
-
-
 
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     WebElementFacade configuracion;
@@ -51,22 +36,16 @@ public class Guidewire extends PageObject {
     WebElementFacade idioma;
     @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
     WebElementFacade espaniol;
-
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
     WebElementFacade usuario;
-
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
     WebElementFacade contrasena;
-
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
     WebElementFacade submit;
-
     @FindBy(xpath =".//*[@id=':TabLinkMenuButton-btnIconEl']")
     WebElementFacade btnConfig;
-
     @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
     WebElementFacade btnLogout;
-
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnLogout2;
 
@@ -182,21 +161,15 @@ public class Guidewire extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-
-}
-        public void waitUntil(int millis) {
-            Integer i = 0;
-            Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
-                    TimeUnit.MILLISECONDS).pollingEvery(millis,
-                    TimeUnit.MILLISECONDS);
-            try {
-                waitUtil.until(new Function<Integer, Boolean>() {
-                    public Boolean apply(Integer i) {
-                        return false;
-                    }
-                });
-            } catch (TimeoutException e) {
-                LOGGER.error("This is error : " + e);
+    public void waitUntil(int millis) {
+        Integer i = 0;
+        Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
+                TimeUnit.MILLISECONDS).pollingEvery(millis,
+                TimeUnit.MILLISECONDS);
+        waitUtil.until(new Function<Integer, Boolean>() {
+            public Boolean apply(Integer i) {
+                return false;
             }
-        }
+        });
     }
+}
