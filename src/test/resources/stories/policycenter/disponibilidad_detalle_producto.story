@@ -12,16 +12,13 @@ And Estoy expidiendo una poliza de autos
 And viendo Informacion de poliza
 When seleccione Organizacion de ventas: <organizacion>
 Then tipo de canal ventas debe contener los valores
-|tipoCanal|
-|<ninguno>|
 |Leasing|
 |Renting|
 |Sufi|
-|Televentas|
 
 Examples:
 |numCuenta|organizacion
-|xxxxx|xxxxxx
+|C000888888|Bancolombia
 
 Scenario: Filtrar Tipo de Producto por canal
 Given Estoy buscando una cuenta <numCuenta>

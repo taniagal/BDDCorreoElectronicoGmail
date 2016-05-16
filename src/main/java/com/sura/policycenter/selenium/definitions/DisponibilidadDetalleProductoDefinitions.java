@@ -15,18 +15,18 @@ public class DisponibilidadDetalleProductoDefinitions {
     DisponibilidadDetalleProductoSteps disponibilidadDetalleProductoSteps;
 
     @Given("Estoy expidiendo una poliza de autos")
-    public void givenEstoyExpidiendoUnaPolizaDeAutos() {
-        // PENDING
+    public void accionarNuevoEnvio() {
+        disponibilidadDetalleProductoSteps.accionarNuevoEnvio();
     }
 
     @Given("viendo Informacion de poliza")
-    public void givenViendoInformacionDePoliza() {
-        // PENDING
+    public void verInformacionDePoliza() {
+        disponibilidadDetalleProductoSteps.verInformacionPoliza();
     }
 
     @When("seleccione Organizacion de ventas: <organizacion>")
     public void seleccionarOrganizacionDeVentas(@Named("organizacion") String organizacion) {
-        // PENDING
+        disponibilidadDetalleProductoSteps.seleccionarOrganizacionDeVentas(organizacion);
     }
 
     @Then("tipo de canal ventas debe contener los valores $tipoCanal")

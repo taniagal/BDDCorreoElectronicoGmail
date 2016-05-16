@@ -16,4 +16,16 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
     public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws Exception {
         disponibilidadDetalleProductoPage.validarTipoCanalVentas(tipoCanal);
     }
+
+    public void accionarNuevoEnvio() {
+        disponibilidadDetalleProductoPage.accionarNuevoEnvio();
+    }
+
+    public void verInformacionPoliza() {
+        disponibilidadDetalleProductoPage.verInformacionDePoliza();
+    }
+
+    public void seleccionarOrganizacionDeVentas(String organizacion) {
+        disponibilidadDetalleProductoPage.seleccionarOrganizacionDeVentas(organizacion);
+    }
 }
