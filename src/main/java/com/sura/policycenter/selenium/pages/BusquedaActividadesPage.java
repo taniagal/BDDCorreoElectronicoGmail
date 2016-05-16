@@ -81,18 +81,15 @@ public class BusquedaActividadesPage extends SeusLoginPage {
     public BusquedaActividadesPage(WebDriver driver) {super(driver);}
 
     public void buscarActividades() {
-        try{
             Actions act = new Actions(getDriver());
+            mnuBuscar.waitUntilClickable();
             mnuBuscar.click();
-            Thread.sleep(3000);
+            waitABit(1000);
             mnuBuscar.click();
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
             act.moveToElement(mnuBuscarActividades).click().build().perform();
-            Thread.sleep(2000);
             btnRestablecer.click();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+            waitABit(1000);
     }
 
     public void filtrarPorAsignado(String usuario) {
@@ -146,11 +143,25 @@ public class BusquedaActividadesPage extends SeusLoginPage {
         assertThat(this.msgFiltrosRequeridos.getText(), containsString(mensaje));
     }
 
-    public void buscarPorFiltroReqYOpcional(String usuario, String prioridad) {
+    public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
         txtAsignadoA.sendKeys(usuario);
         txtPrioridad.clear();
         txtPrioridad.sendKeys(prioridad);
         txtPrioridad.sendKeys(Keys.ENTER);
+    }
+
+    public void buscarPorFiltrosUsuarioYEstadoDeActividad(String usuario, String estadoActividad) {
+        txtAsignadoA.sendKeys(usuario);
+        txtEstadoActividad.clear();
+        txtEstadoActividad.sendKeys(estadoActividad);
+        txtEstadoActividad.sendKeys(Keys.ENTER);
+    }
+
+    public void buscarPorFiltrosUsuarioYVencida(String usuario, String vencida) {
+        txtAsignadoA.sendKeys(usuario);
+        txtVencida.clear();
+        txtVencida.sendKeys(vencida);
+        txtVencida.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltroOpcional(String estadoActividad) {

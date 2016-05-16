@@ -42,8 +42,15 @@ public class BusquedaActividadesSteps extends ScenarioSteps {
         busquedaActividades.validarMensjeFiltroRequerido(mensaje);
     }
 
-    public void buscarPorFiltrosRequeridoYOpcional(String usuario, String prioridad) {
-        busquedaActividades.buscarPorFiltroReqYOpcional(usuario, prioridad);
+    public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
+        busquedaActividades.buscarPorFiltrosUsuarioYPrioridad(usuario, prioridad);
+    }
+
+    public void buscarPorFiltrosUsuarioYEstadoDeActividad(String usuario, String actividad) {
+        busquedaActividades.buscarPorFiltrosUsuarioYEstadoDeActividad(usuario, actividad);
+    }
+    public void buscarPorFiltrosUsuarioYVencida(String usuario, String vencida) {
+        busquedaActividades.buscarPorFiltrosUsuarioYVencida(usuario, vencida);
     }
 
     public void buscarPorFiltroOpcional(String estadoActividad) {
