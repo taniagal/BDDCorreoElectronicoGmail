@@ -27,7 +27,7 @@ public class HistorialCuentaDefinitions {
         seusLoginSteps.login(country, user, password);
     }
 
-    @Given("Estoy en una cuenta <numCuenta>")
+    @Given("estoy en una cuenta <numCuenta>")
     public void givenEstoyEnUnaCuentanumCuenta(@Named("numCuenta") String numCuenta) {
         historialCuentaSteps.seleccionarCuenta(numCuenta);
     }
@@ -51,8 +51,6 @@ public class HistorialCuentaDefinitions {
     @Then("mostrar la informacion del historial de la cuenta")
     public void thenMostrarLaSiguienteInformacionTipousuariofechaTransacciondescripcionproductopolizatransaccionPolizavalorOriginalvalorNuevo() {
         historialCuentaSteps.validarColumnasHistorialCuenta();
-        seusLoginSteps.logout();
-        seusLoginSteps.close();
     }
 
     @When("indique el criterio de busqueda Relacionado con")
@@ -75,8 +73,6 @@ public class HistorialCuentaDefinitions {
     @Then("debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda")
     public void thenDeboPoderVerLasTransaccionesRelacionadasALosMultiplesOpciones() {
         historialCuentaSteps.validarDatosOpcionesMultiples();
-        seusLoginSteps.logout();
-        seusLoginSteps.close();
     }
 
     @When("indique el criterio de busqueda producto")
@@ -87,8 +83,6 @@ public class HistorialCuentaDefinitions {
     @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto")
     public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoProducto() {
         historialCuentaSteps.validarResultadoProducto();
-        seusLoginSteps.logout();
-        seusLoginSteps.close();
     }
 
     @When("se realiza la busqueda por <fecha> y solo se indique la opcion desde")

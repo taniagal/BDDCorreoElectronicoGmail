@@ -13,7 +13,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.interactions.Actions;
 import org.slf4j.LoggerFactory;
 
@@ -33,18 +32,12 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")
     WebElementFacade tipoContact;
 
-    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    WebElementFacade nombreContact;
-
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
     WebElementFacade txtNombreEmpresa;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     WebElementFacade txtNombre;
 
-    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    WebElementFacade apellidoContact;
-    
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade txtApellido;
 
@@ -97,7 +90,7 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade apellidoContact;
 
-    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:Name']")
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:DocumentType']")
     WebElementFacade selectContact;
 
     @FindBy(xpath="//div[3]/div/table/tbody/tr/td[2]/div")
@@ -452,26 +445,23 @@ public class BusquedaContactoPage extends Guidewire {
         }
     }
 
-    public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto){
+    public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto) {
         try {
             Thread.sleep(2000);
-            assertThat(lblTipoId.getText().toString(),is(equalTo(labelsContacto.get("tipoId"))));
-            assertThat(lblNumId.getText().toString(),is(equalTo(labelsContacto.get("numId"))));
-            assertThat(lblNomComercial.getText().toString(),is(equalTo(labelsContacto.get("nomComercial"))));
-            assertThat(lblRazonSocial.getText().toString(),is(equalTo(labelsContacto.get("razonSocial"))));
-            assertThat(lblDireccion.getText().toString(),is(equalTo(labelsContacto.get("direccion"))));
-            assertThat(lblTelefono.getText().toString(),is(equalTo(labelsContacto.get("telefono"))));
-            assertThat(lblEmail.getText().toString(),is(equalTo(labelsContacto.get("email"))));
-            assertThat(lblExterna.getText().toString(),is(equalTo(labelsContacto.get("externa"))));
-        } catch(Exception e) {
+            assertThat(lblTipoId.getText().toString(), is(equalTo(labelsContacto.get("tipoId"))));
+            assertThat(lblNumId.getText().toString(), is(equalTo(labelsContacto.get("numId"))));
+            assertThat(lblNomComercial.getText().toString(), is(equalTo(labelsContacto.get("nomComercial"))));
+            assertThat(lblRazonSocial.getText().toString(), is(equalTo(labelsContacto.get("razonSocial"))));
+            assertThat(lblDireccion.getText().toString(), is(equalTo(labelsContacto.get("direccion"))));
+            assertThat(lblTelefono.getText().toString(), is(equalTo(labelsContacto.get("telefono"))));
+            assertThat(lblEmail.getText().toString(), is(equalTo(labelsContacto.get("email"))));
+            assertThat(lblExterna.getText().toString(), is(equalTo(labelsContacto.get("externa"))));
+        } catch (Exception e) {
             LOGGER.error("This is error", e);
         }
-    public void buscarContactoPersona(String nombre, String apellido){
-        tipoContact.type("Personal");
-        tipoContact.sendKeys(Keys.ENTER);
-        nombreContact.type(nombre);
-        apellidoContact.type(apellido);
-        botonBuscar.click();
+    }
+
+    public void seleccionarContacto() {
         selectContact.click();
     }
 }

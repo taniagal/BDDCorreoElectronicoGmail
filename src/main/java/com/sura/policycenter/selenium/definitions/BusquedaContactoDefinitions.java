@@ -17,7 +17,6 @@ import java.util.Map;
  */
 public class BusquedaContactoDefinitions {
 
-    //DC
     @Steps
     PolicySteps pcs;
 
@@ -26,19 +25,6 @@ public class BusquedaContactoDefinitions {
 
     @Steps
     BusquedaContactoSteps buscarContactoSteps;
-
-    //DC!!!
-    @Given("que estoy autenticado en GW con usuario <usuario> y contrasena <contrasena>")
-    public void givenLogin(@Named("usuario") String usuario, @Named("contrasena") String contrasena){
-        pcs.open();
-        pcs.login(usuario,contrasena);
-    }
-
-    @Given("estoy en GW <usuario> <contrasena>")
-    public void loginGW(@Named("usuario") String usuario, @Named("contrasena") String contrasena) {
-        buscarContactoSteps.login(usuario, contrasena);
-    }
-    //////
 
     @Given("estoy en busqueda de contactos")
     public void givenEstoyEnBusquedaContactos() {

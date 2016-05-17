@@ -20,10 +20,13 @@ public class DetallesContactoSteps extends ScenarioSteps {
         super(pages);
     }
 
+
+
     @Step
     public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido){
         escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
-        bc.buscarContactoPersona(primer_nombre,primer_apellido);
+        bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primer_nombre,"",primer_apellido,"");
+        bc.seleccionarContacto();
     }
 
     @Step
@@ -34,7 +37,8 @@ public class DetallesContactoSteps extends ScenarioSteps {
     @Step
     public void abrirDetallesContactoEmpresa(String nombreEmpresa){
         escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
-        bc.buscarContactoEmpresa(nombreEmpresa);
+        bc.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
+        bc.seleccionarContacto();
     }
 
     @Step
