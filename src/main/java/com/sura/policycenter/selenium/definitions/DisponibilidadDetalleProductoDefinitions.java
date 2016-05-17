@@ -29,9 +29,44 @@ public class DisponibilidadDetalleProductoDefinitions {
         disponibilidadDetalleProductoSteps.seleccionarOrganizacionDeVentas(organizacion);
     }
 
+    @When("seleccione Organizacion de ventas: <otraOrganizacion>")
+    public void seleccionarOtraOrganizacionDeVentas(@Named("otraOrganizacion") String otraOrganizacion) {
+        disponibilidadDetalleProductoSteps.seleccionarOrganizacionDeVentas(otraOrganizacion);
+    }
+
+    @When("seleccione Tipo de canal ventas: <otroTipoCanal>")
+    public void seleccionarOtroTipoCanalDeVentas(@Named("otroTipoCanal") String otroTipoCanal){
+        disponibilidadDetalleProductoSteps.seleccionarTipoCanalDeVentas(otroTipoCanal);
+    }
+
+    @When("seleccione Tipo de canal ventas: <tipoCanal>")
+    public void seleccionarTipoCanalDeVentas(@Named("tipoCanal") String tipoCanal){
+        disponibilidadDetalleProductoSteps.seleccionarTipoCanalDeVentas(tipoCanal);
+    }
+
+    @When("seleccione PA tipo de poliza: <tipoPoliza>")
+    public void seleccionarPATipoPoliza(@Named("tipoPoliza") String tipoPoliza){
+        disponibilidadDetalleProductoSteps.seleccionarPATipoPoliza(tipoPoliza);
+    }
+
     @Then("tipo de canal ventas debe contener los valores $tipoCanal")
     public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws Exception {
         disponibilidadDetalleProductoSteps.validarTipoCanalVentas(tipoCanal);
+    }
+
+    @Then("PA tipo de poliza debe contener los valores $PATipoPoliza")
+    public void validarPATipoDePoliza(ExamplesTable PaTipoPoliza) throws Exception {
+        disponibilidadDetalleProductoSteps.validarPATipoPoliza(PaTipoPoliza);
+    }
+
+    @Then("tipo de canal ventas debe tener el valor vacio")
+    public void validarActualizacionDeListaTipoCanal(){
+        disponibilidadDetalleProductoSteps.validarActualizacionDeListaTipoCanal();
+    }
+
+    @Then("PA tipo de poliza debe tener el valor vacio")
+    public void validarActualizacionDeListaPATipoPoliza(){
+        disponibilidadDetalleProductoSteps.validarActualizacionDeListaPATipoPoliza();
     }
 
 }

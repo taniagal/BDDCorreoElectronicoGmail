@@ -17,7 +17,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class DisponibilidadDetalleProductoPage extends Guidewire {
 
     @FindBy(xpath=".//input[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
-    private WebElementFacade listaTipoCanalesDeVenta;
+    private WebElementFacade listaTipoCanalDeVenta;
 
     @FindBy(xpath=".//*[@id='AccountFile:AccountFileMenuActions']")
     private WebElementFacade btnAccionesCuenta;
@@ -34,12 +34,16 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
     WebElementFacade listaOrganizacionDeVentas;
 
+    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
+    WebElementFacade listaPATipoPoliza;
+
 
     public DisponibilidadDetalleProductoPage(WebDriver driver) {
         super(driver);
     }
 
     public void accionarNuevoEnvio() {
+        btnAccionesCuenta.waitUntilClickable();
         btnAccionesCuenta.click();
         opcionNuevoEnvio.click();
         waitABit(1000);
@@ -61,7 +65,11 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
     }
 
     public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws Exception {
-        listaTipoCanalesDeVenta.click();
+        listaTipoCanalDeVenta.click();
+        this.validarDatosDeLaLista(tipoCanal);
+    }
+
+    public void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GuidewireUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {
@@ -73,4 +81,30 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
     }
 
 
+    public void seleccionarTipoCanalDeVentas(String tipoCanal) {
+        listaTipoCanalDeVenta.clear();
+        listaTipoCanalDeVenta.sendKeys(tipoCanal);
+        listaTipoCanalDeVenta.sendKeys(Keys.ENTER);
+        waitABit(2000);
+    }
+
+    public void validarPATipoPoliza(ExamplesTable paTipoPoliza) throws Exception {
+        listaPATipoPoliza.click();
+        this.validarDatosDeLaLista(paTipoPoliza);
+    }
+
+    public void seleccionarPATipoPoliza(String tipoPoliza) {
+        listaPATipoPoliza.clear();
+        listaPATipoPoliza.sendKeys(tipoPoliza);
+        listaPATipoPoliza.sendKeys(Keys.ENTER);
+        waitABit(2000);
+    }
+
+    public void validarActualizacionDeListaTipoCanal() {
+        assertThat(listaTipoCanalDeVenta.getText(), containsText(""));
+    }
+
+    public void validarActualizacionDeListaPATipoPoliza() {
+        assertThat(listaPATipoPoliza.getText(), containsText(""));
+    }
 }

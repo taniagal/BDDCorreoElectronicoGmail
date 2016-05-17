@@ -24,41 +24,44 @@ Scenario: Filtrar Tipo de Producto por canal
 Given Estoy buscando una cuenta <numCuenta>
 And Estoy expidiendo una poliza de autos
 And viendo Informacion de poliza
-When seleccione Tipo de canal ventas: <tipoCanal>
-Then PA tipo de poliza debe contener los valores de <tipoCanal>
+When seleccione Organizacion de ventas: <organizacion>
+And seleccione Tipo de canal ventas: <tipoCanal>
+Then PA tipo de poliza debe contener los valores
+|<ninguno>|
+|Comercial - Personal Fleet|
 
 Examples:
 
-|numCuenta|tipoCanal
-|xxxxx|xxxxxx
+|numCuenta|organizacion|tipoCanal
+|C000888888|Bancolombia|Renting
 
-Scenario: Al cambiar filtro de organizacion se cambia canal y tipo de producto
+Scenario: Al cambiar filtro de organizacion se cambia canal y tipo de poliza
 Given Estoy buscando una cuenta <numCuenta>
 And Estoy expidiendo una poliza de autos
 And viendo Informacion de poliza
 When seleccione Organizacion de ventas: <organizacion>
 And seleccione Tipo de canal ventas: <tipoCanal>
 And seleccione PA tipo de poliza: <tipoPoliza>
-When seleccione Organizacion de ventas: <otraOrganizacion>
+And seleccione Organizacion de ventas: <otraOrganizacion>
 Then tipo de canal ventas debe tener el valor vacio
 And PA tipo de poliza debe tener el valor vacio
 
 Examples:
 
 |numCuenta|organizacion|tipoCanal|tipoPoliza|otraOrganizacion
-|xxxxx|xxxxxx|xxxxx|xxxx|xxxxx
+|C000888888|Bancolombia|Renting|Comercial - Personal Fleet|Exito
 
-Scenario: Al cambiar filtro de canal se cambia tipo de producto
+Scenario: Al cambiar filtro de canal se cambia tipo de poliza
 Given Estoy buscando una cuenta <numCuenta>
 And Estoy expidiendo una poliza de autos
 And viendo Informacion de poliza
 When seleccione Organizacion de ventas: <organizacion>
 And seleccione Tipo de canal ventas: <tipoCanal>
 And seleccione PA tipo de poliza: <tipoPoliza>
-When seleccione Tipo de canal ventas: <otroTipoCanal>
+And seleccione Tipo de canal ventas: <otroTipoCanal>
 Then PA tipo de poliza debe tener el valor vacio
 
 Examples:
 
 |numCuenta|organizacion|tipoCanal|tipoPoliza|otroTipoCanal
-|xxxxx|xxxxxx|xxxxx|xxxx|xxxxx
+|C000888888|Bancolombia|Renting|Comercial - Personal Fleet|Leasing

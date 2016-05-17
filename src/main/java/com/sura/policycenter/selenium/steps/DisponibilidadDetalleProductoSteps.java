@@ -28,4 +28,24 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
     public void seleccionarOrganizacionDeVentas(String organizacion) {
         disponibilidadDetalleProductoPage.seleccionarOrganizacionDeVentas(organizacion);
     }
+
+    public void seleccionarTipoCanalDeVentas(String tipoCanal) {
+        disponibilidadDetalleProductoPage.seleccionarTipoCanalDeVentas(tipoCanal);
+    }
+
+    public void validarPATipoPoliza(ExamplesTable PaTipoPoliza) throws Exception {
+        disponibilidadDetalleProductoPage.validarPATipoPoliza(PaTipoPoliza);
+    }
+
+    public void seleccionarPATipoPoliza(String tipoPoliza) {
+        disponibilidadDetalleProductoPage.seleccionarPATipoPoliza(tipoPoliza);
+    }
+
+    public void validarActualizacionDeListaTipoCanal() {
+        disponibilidadDetalleProductoPage.validarActualizacionDeListaTipoCanal();
+    }
+
+    public void validarActualizacionDeListaPATipoPoliza() {
+        disponibilidadDetalleProductoPage.validarActualizacionDeListaPATipoPoliza();
+    }
 }
