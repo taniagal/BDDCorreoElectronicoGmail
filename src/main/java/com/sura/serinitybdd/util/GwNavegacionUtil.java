@@ -13,14 +13,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.*;
 
 import static com.sura.policycenter.selenium.definitions.ContactosAsociadosACuentaDefinitions.encabezado;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 /**
  * Created by Andrés Alarcón - QVisión on 2016/05/13.
  */
-public class GuidewireUtil {
+public class GwNavegacionUtil {
 
 
-    public static Boolean existenOpcionesPorMenuHastaSegundoNivel(WebDriver driver, Keys keyNav, String tipoElementoMenu, ExamplesTable opcionesPorMenu) {
+    public static Boolean existenOpcionesPorMenuHastaSegundoNivel(WebDriver driver, Keys keyNav, String tipoElementoMenu, ExamplesTable opcionesPorMenu, Boolean darClick) {
         System.out.println("GuidewireUtil.existenOpcionesPorMenu");
         String menu = "";
 
@@ -31,22 +32,29 @@ public class GuidewireUtil {
                 menu = "MENU -> " + menuPrimerNivel;
                 System.out.println(menu);
                 WebElement elementoMenu = obtenerMenuPorTextoContenido(driver, menuPrimerNivel, tipoElementoMenu);
-                esperarElementoSeaClickable(driver, elementoMenu);
                 elementoMenu.click();
-                obtenerMenuPorTextoContenido(driver, menuPrimerNivel, tipoElementoMenu).sendKeys(keyNav);
-                for (Map<String, String> row : opcionesPorMenu.getRows()) {
-                    menu = "MENU -> " + menuPrimerNivel + " -> " + row.get(menuPrimerNivel);
-                    System.out.println(menu);
-                    WebElement elementoSubMenu = obtenerMenuPorTextoContenido(driver, row.get(menuPrimerNivel), tipoElementoMenu);
-                    esperarElementoSeaClickable(driver, elementoSubMenu);
-                    elementoSubMenu.sendKeys(keyNav);
-                }
+                elementoMenu.sendKeys(keyNav);
+                recorrerOpciones(driver, tipoElementoMenu, opcionesPorMenu, menuPrimerNivel, darClick);
 
             }
             return Boolean.TRUE;
 
         } catch (Exception e) {
             return Boolean.FALSE;
+        }
+    }
+
+    private static void recorrerOpciones(WebDriver driver, String tipoElementoMenu, ExamplesTable opcionesPorMenu, String menuPrimerNivel, Boolean darClick) throws Exception {
+        String menu;
+        for (Map<String, String> row : opcionesPorMenu.getRows()) {
+            menu = "MENU -> " + menuPrimerNivel + " -> " + row.get(menuPrimerNivel);
+            System.out.println(menu);
+            WebElement elementoSubMenu = obtenerMenuPorTextoContenido(driver, row.get(menuPrimerNivel), tipoElementoMenu);
+            if(darClick){
+                elementoSubMenu.click();
+
+            }
+
         }
     }
 

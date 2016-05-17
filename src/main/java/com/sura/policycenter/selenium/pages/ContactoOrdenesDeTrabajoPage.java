@@ -76,14 +76,14 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
     public void validarCamposTransacciones(String producto, String numeroTransaccion,
                                            String tipo, String estado, String participante) {
-        assertThat(this.fechaCreacion.getText().toString(), is(notNullValue()));
-        assertThat(this.poliza.getText().toString(), is(notNullValue()));
-        assertThat(this.producto.getText().toString(), containsString(producto));
-        assertThat(this.numeroTransaccion.getText().toString(), containsString(numeroTransaccion));
-        assertThat(this.tipo.getText().toString(), containsString(tipo));
-        assertThat(this.estado.getText().toString(), containsString(estado));
-        assertThat(this.fechaFin.getText().toString(), is(notNullValue()));
-        assertThat(this.participante.getText().toString(), containsString(participante));
+        assertThat(this.fechaCreacion.getText(), is(notNullValue()));
+        assertThat(this.poliza.getText(), is(notNullValue()));
+        assertThat(this.producto.getText(), containsString(producto));
+        assertThat(this.numeroTransaccion.getText(), containsString(numeroTransaccion));
+        assertThat(this.tipo.getText(), containsString(tipo));
+        assertThat(this.estado.getText(), containsString(estado));
+        assertThat(this.fechaFin.getText(), is(notNullValue()));
+        assertThat(this.participante.getText(), containsString(participante));
     }
 
     //display key de los estados: typeList localization ---> TypeKey.PolicyPeriodStatus
@@ -151,6 +151,6 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void validarMensaje(String mensaje) {
-        assertThat(msjTransaccionNoEncontrada.getText().toString(), containsString(mensaje));
+        assertThat(msjTransaccionNoEncontrada.getText(), containsString(mensaje));
     }
 }
