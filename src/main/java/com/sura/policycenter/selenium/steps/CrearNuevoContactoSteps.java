@@ -18,6 +18,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     private final Guidewire gw = new Guidewire(getDriver());
     private final InicioPage inicioPage = new InicioPage(getDriver());
     private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
+    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     private String cedula = "";
     private String nit = "";

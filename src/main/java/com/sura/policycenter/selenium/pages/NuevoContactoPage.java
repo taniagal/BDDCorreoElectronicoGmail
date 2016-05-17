@@ -120,7 +120,7 @@ public class NuevoContactoPage extends Guidewire {
     private void actualizar() {
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
-        gw.threadWait(1000);
+        waitABit(1000);
 
     }
 
@@ -135,12 +135,12 @@ public class NuevoContactoPage extends Guidewire {
 
         if ("Trabajo".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            gw.threadWait(1000);
+            waitABit(1000);
             this.tipoTelefono.click();
             this.telefonoTrabajo.type(numeroTelefono);
         } else if ("Vivienda".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            gw.threadWait(1000);
+            waitABit(1000);
             this.tipoTelefono.click();
             this.telefonoResidencia.type(numeroTelefono);
         } else {

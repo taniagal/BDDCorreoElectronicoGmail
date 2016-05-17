@@ -22,11 +22,14 @@ import static org.hamcrest.CoreMatchers.containsString;
  */
 public class Guidewire extends PageObject {
 
+    String mensajeError = "";
+    // Initialize Log4j logs
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
+    Actions act = new Actions(getDriver());
+
     public Guidewire(WebDriver driver) {
         super(driver);
     }
-
-    String mensajeError = "";
 
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     WebElementFacade configuracion;
@@ -49,9 +52,6 @@ public class Guidewire extends PageObject {
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnLogout2;
 
-    // Initialize Log4j logs
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
-
     // TODO: 19/04/2016 Revision escritura de excepciones en log
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
@@ -63,9 +63,6 @@ public class Guidewire extends PageObject {
             LOGGER.error("This is error : " + e);
         }
     }
-
-    Actions act = new Actions(getDriver());
-
 
     // TODO: 26/04/2016 Revision escritura de excepciones en log
     public void asercion(String element, String mensaje) {
@@ -153,15 +150,4 @@ public class Guidewire extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void waitUntil(int millis) {
-        Integer i = 0;
-        Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
-                TimeUnit.MILLISECONDS).pollingEvery(millis,
-                TimeUnit.MILLISECONDS);
-        waitUtil.until(new Function<Integer, Boolean>() {
-            public Boolean apply(Integer i) {
-                return false;
-            }
-        });
-    }
 }

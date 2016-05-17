@@ -9,6 +9,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioN
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.BuscarContactoPage;
+import com.sura.policycenter.selenium.pages.menu.superior.cuenta.CuentaBuscarPage;
 import com.sura.policycenter.selenium.pages.menu.superior.cuenta.NuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.NuevaCompaniaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.NuevaPersonaPage;
@@ -57,6 +58,10 @@ public class Navegacion extends Guidewire {
     // Objetos menu Cuenta
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-itemEl']")
     WebElementFacade mnuItemNuevaCuenta;
+    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
+    private WebElementFacade txtNumCuenta;
+    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
+    private WebElementFacade btnBuscarCuenta;
 
     // Objetos menu Poliza
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
@@ -328,16 +333,27 @@ public class Navegacion extends Guidewire {
         return new NuevaCuentaPage(getDriver());
     }
 
+    public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
+        gw.deployMenu(mnuCuenta);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
+        waitABit(2000);
+        txtNumCuenta.waitUntilEnabled();
+        txtNumCuenta.type(numCuenta);
+        waitABit(2000);
+        btnBuscarCuenta.waitUntilEnabled();
+        btnBuscarCuenta.click();
+        waitABit(2000);
+        return new CuentaBuscarPage(getDriver());
+    }
+
+    // Navegacion menu Poliza
     public NuevoEnvioPage irANuevoEnvio() {
         gw.deployMenu(mnuPoliza);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoEnvio).release(mnuItemNuevoEnvio).click().build().perform();
         return new NuevoEnvioPage(getDriver());
     }
-
-    // Navegacion menu Poliza
-
-
 
     // Navegacion menu Contacto
     public NuevaCompaniaPage irANuevaCompania() {
