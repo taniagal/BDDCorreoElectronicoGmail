@@ -23,7 +23,7 @@ Then se deben habilitar la edicion de cierta informacion del contacto, actualiza
 
 Examples:
 |tipo_documento        |documento  |primer_nombre |primer_apellido |segundo_nombre   |segundo_apellido   |tipo_direccion |direccion       |profesion  |estado_civil   |tipo_familia |telefono_celular    |telefono_residencial  |telefono_trabajo  |correo_electronico_primario  |correo_electronico_secundario|
-|CEDULA DE CIUDADANIA  |564-36-5489|SASHA         |AKERMAN         |KAREN            |PEREZ              |Vivienda       |CALLE 54B #50-25|ABOGADO    |Soltero        |Nuclear      |654-985-1236        |789-785-1236          |456-789-1236      |primario@mail.com            |secundario@mail.com         |
+|CEDULA DE CIUDADANIA  |564-36-5489|SASHA         |AKERMAN         |KAREN            |PEREZ              |Vivienda       |CALLE 54B #50-25|ABOGADO    |Soltero        |Nuclear      |354-985-1236        |789-7856          |456-7896      |primario@mail.com            |secundario@mail.com         |
 
 
 Scenario: Editar detalles de contacto de tipo persona juridica
@@ -38,5 +38,5 @@ Then se deben habilitar la edicion de cierta informacion del contacto, actualiza
 
 Examples:
 |razon_social   |tipo_direccion |direccion        |nombre_comercial  |actividad_comercial                    |numero_empleados  |valor_activos  |ventas_anuales |telefono_oficina  |correo_electronico_primario  |correo_electronico_secundario|
-|UMBRELLA SA    |Vivienda       |CALLE 54B #50-25 |BDD Sura          |FABRICACION DE RECIPIENTES DE MADERA   |400               |190000000      |135000000      |888-789-1236      |primario@mail.com            |secundario@mail.com          |
+|UMBRELLA SA    |Vivienda       |CALLE 54B #50-25 |BDD Sura          |FABRICACION DE RECIPIENTES DE MADERA   |400               |190000000      |135000000      |888-7896      |primario@mail.com            |secundario@mail.com          |
 

@@ -21,6 +21,6 @@ public class AgregarDireccionContactoDefinitions {
 
     @When("valide la informaci\u00F3n en los campos")
     public void whenValideLaInformaciónEnLosCampos() {
-        dcs.validarCampos();
+        //dcs.validarCampos();
     }
 }
