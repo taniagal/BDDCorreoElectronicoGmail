@@ -11,6 +11,7 @@ import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarActividadesPage;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.BuscarContactoPage;
+import com.sura.policycenter.selenium.pages.menu.superior.cuenta.CuentaBuscarPage;
 import com.sura.policycenter.selenium.pages.menu.superior.cuenta.NuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.NuevaCompaniaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.NuevaPersonaPage;
@@ -140,6 +141,7 @@ public class InicioPage extends Guidewire {
     public NuevaCuentaPage irANuevaCuenta() {
         return navegacion.irANuevaCuenta();
     }
+    public CuentaBuscarPage irACuentaBuscar(String numCuenta) { return navegacion.irACuentaBuscar(numCuenta); }
 
     // Metodos navegacion Poliza
     public NuevoEnvioPage irANuevoEnvio() {

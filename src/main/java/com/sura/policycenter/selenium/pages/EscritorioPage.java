@@ -677,7 +677,7 @@ public class EscritorioPage extends Guidewire {
                 break;
             case "CONTACTO":
                 mnuContact.click();
-                gw.threadWait(1000);
+                waitABit(1000);
                 mnuContact.click();
                 act.sendKeys(Keys.ARROW_DOWN).build().perform();
                 switch (item1.toUpperCase()) {
@@ -732,7 +732,7 @@ public class EscritorioPage extends Guidewire {
             case "ADMINISTRACION":
                 mnuAdministracion.click();
                 mnuAdministracion.click();
-                gw.threadWait(1000);
+                waitABit(1000);
                 act.sendKeys(Keys.ARROW_DOWN).build().perform();
                 act.sendKeys(Keys.ARROW_DOWN).build().perform();
                 switch (item1.toUpperCase()) {

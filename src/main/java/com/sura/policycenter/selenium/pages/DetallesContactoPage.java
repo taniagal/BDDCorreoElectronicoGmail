@@ -249,7 +249,7 @@ public class DetallesContactoPage extends Guidewire {
 
     public void actualizaContacto(){
         btnActualizar.click();
-        threadWait(2000);
+        waitABit(2000);
     }
 
     public void verificarActualizacion(){
