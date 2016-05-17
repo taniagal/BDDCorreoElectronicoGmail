@@ -9,11 +9,11 @@ Scenario: Visualizar todas las cuentas asociadas a un contacto
 GivenStories: stories/policycenter/login_policy.story
 Given que voy a consultar un contacto
 When consulte  un contacto con cuentas asociadas como: <nombre> <apellido>
-Then se muestra la lista de cuentas asociadas con nombre: <nombre>, direccion: <direccion>, tel: <telefono>, email: <email> y rol: <rol>
+Then se muestra la lista de cuentas asociadas con nombre: <nombreConsulta>, direccion: <direccion>, tel: <telefono>, email: <email> y rol: <rol>
 
 Examples:
-|nombre|apellido|direccion|telefono|email|rol
-|Ray|Newton|1253 Paloma Ave, Floor 0000, Developer Unit Habitation Cube #0000, Arcadia, CA 91007|818-446-1206|8729@guidewire.com|Asegurado nombrado, Conductor, Titular de la cuenta
+|nombre|apellido|nombreConsulta|direccion|telefono|email|rol
+|Yurledys|Gallego|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos|502-897-3038|0001@guidewire.com|Titular de la cuenta
 
 Scenario: Visualizar pantalla vacia para las cuentas asociadas a un contacto
 Given que voy a consultar un contacto
@@ -21,4 +21,4 @@ When consulte  un contacto sin cuentas asociadas como: <nombre> <apellido>
 Then se muestra el mensaje informativo <mensaje>
 Examples:
 |nombre|apellido|mensaje
-|Jane|Collins|El contacto no está asociado a ninguna cuenta
+|Ray|Newton|El contacto no está asociado a ninguna cuenta
