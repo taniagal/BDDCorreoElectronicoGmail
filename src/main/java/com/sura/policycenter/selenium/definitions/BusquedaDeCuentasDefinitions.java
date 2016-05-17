@@ -1,20 +1,28 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.google.inject.name.Named;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.BusquedaDeCuentasSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
+
 public class BusquedaDeCuentasDefinitions {
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
     @Steps
     BusquedaDeCuentasSteps busquedaDeCuentasSteps;
 
     @Given("que me encuentro en la busqueda de cuentas")
     public void ingresarABuscarCuentas() {
-        busquedaDeCuentasSteps.ingresarABuscarCuentas("Buscar", "Cuentas");
+        //busquedaDeCuentasSteps.ingresarABuscarCuentas("Buscar", "Cuentas");
+        inicioPage().irABuscarCuentas();
     }
 
     @When("seleccione el tipo de identificacion <tipoDocumento>")

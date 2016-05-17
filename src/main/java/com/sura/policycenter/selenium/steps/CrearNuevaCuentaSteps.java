@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.selenium.pages.CuentaPage;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -10,7 +11,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class CrearNuevaCuentaSteps extends ScenarioSteps {
     Guidewire gw = new Guidewire(getDriver());
     CuentaPage cp = new CuentaPage(getDriver());
-
+    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     private String cedula = "";
     private String nit = "";
@@ -27,7 +28,8 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
 
     @Step
     public void abrirNuevaCuenta() {
-        cp.navNuevaCuenta();
+        inicioPage().irANuevaCuenta();
+        //cp.navNuevaCuenta();
     }
 
     @Step

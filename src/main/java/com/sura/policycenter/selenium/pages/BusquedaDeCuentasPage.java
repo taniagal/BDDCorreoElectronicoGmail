@@ -138,6 +138,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
             Actions act = new Actions(getDriver());
             mnuBuscar.waitUntilClickable();
             mnuBuscar.click();
+            mnuBuscar.waitUntilClickable();
             waitABit(1000);
             mnuBuscar.click();
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
