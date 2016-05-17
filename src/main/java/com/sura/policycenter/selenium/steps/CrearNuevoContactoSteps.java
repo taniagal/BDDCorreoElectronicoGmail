@@ -13,8 +13,9 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     private final Guidewire gw = new Guidewire(getDriver());
-    private final InicioPage inicioPage = new InicioPage(getDriver());
+    //private final InicioPage inicioPage = new InicioPage(getDriver());
     private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
+    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     private String cedula = "";
     private String nit = "";
@@ -32,7 +33,8 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void nuevoContactoPersona() {
-        inicioPage.nuevoContactoPersona();
+        //inicioPage.nuevoContactoPersona();
+        inicioPage().irANuevaPersona();
     }
 
     @Step
@@ -83,7 +85,8 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void nuevoContactoPersonaJuridica() {
-        inicioPage.nuevoContactoPersonaJuridica();
+        //inicioPage.nuevoContactoPersonaJuridica();
+        inicioPage().irANuevaCompania();
     }
 
     @Step

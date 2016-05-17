@@ -14,6 +14,9 @@ public class PolicySteps extends ScenarioSteps {
     Guidewire gw = new Guidewire(getDriver());
     AbrirAppPage abrirapp = new AbrirAppPage(getDriver());
     InicioPage inicioPage = new InicioPage(getDriver());
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
     public PolicySteps(Pages pages) {
         super(pages);
@@ -47,7 +50,7 @@ public class PolicySteps extends ScenarioSteps {
 
     @Step
     public void nuevoContactoPersona() {
-        inicioPage.nuevoContactoPersona();
+        inicioPage().irANuevaPersona();
     }
 
     @Step
