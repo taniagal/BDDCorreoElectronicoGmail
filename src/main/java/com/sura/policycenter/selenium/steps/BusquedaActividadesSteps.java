@@ -20,9 +20,9 @@ public class BusquedaActividadesSteps extends ScenarioSteps {
     }
 
     public void validarResultado(String prioridad, String estadoActividad,
-                                 String asunto, String titularCuenta, String producto,
+                                 String asunto, String id, String titularCuenta, String producto,
                                  String asignadoPor, String estado) {
-        busquedaActividades.validarResultado(prioridad,estadoActividad,asunto,
+        busquedaActividades.validarResultado(prioridad,estadoActividad,asunto, id,
                 titularCuenta,producto,asignadoPor,estado);
     }
 

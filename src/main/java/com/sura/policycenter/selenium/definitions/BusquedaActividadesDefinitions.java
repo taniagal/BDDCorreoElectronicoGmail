@@ -22,15 +22,18 @@ public class BusquedaActividadesDefinitions {
         busquedaActividadesSteps.filtrarPorAsignado(usuario);
     }
 
-    @Then("me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:\r\nprioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, Titular de la cuenta <titularCuenta>, producto\r\n<producto>, asignado por <asignadoPor>, estado <estado>")
+    @Then("me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:" +
+            "\r\nprioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titular de la " +
+            "cuenta <titularCuenta>, producto\r\n<producto>, asignado por <asignadoPor>, estado <estado>")
     public void validarActividadesAsignadas(@Named("prioridad") String prioridad,
                                             @Named("estadoActividad") String estadoActividad,
                                             @Named("asunto") String asunto,
+                                            @Named("id") String id,
                                             @Named("titularCuenta") String titularCuenta,
                                             @Named("producto") String producto,
                                             @Named("asignadoPor") String asignadoPor,
                                             @Named("estado") String estado) {
-        busquedaActividadesSteps.validarResultado(prioridad, estadoActividad, asunto,
+        busquedaActividadesSteps.validarResultado(prioridad, estadoActividad, asunto, id,
                 titularCuenta, producto, asignadoPor, estado);
     }
 
@@ -55,7 +58,8 @@ public class BusquedaActividadesDefinitions {
         busquedaActividadesSteps.buscarPorFiltrosUsuarioYPrioridad(usuario, filtroPrioridad);
     }
 
-    @When("quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y estado de actividad <estadoActividad>")
+    @When("quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y estado de actividad" +
+            " <estadoActividad>")
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(@Named("usuario") String usuario,
                                                           @Named("estadoActividad") String estadoActividad) {
         busquedaActividadesSteps.buscarPorFiltrosUsuarioYEstadoDeActividad(usuario, estadoActividad);

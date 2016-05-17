@@ -97,14 +97,14 @@ public class BusquedaActividadesPage extends SeusLoginPage {
     }
 
     public void validarResultado(String prioridad, String estadoActividad,
-                                 String asunto, String titularCuenta, String producto, String asignadoPor,
+                                 String asunto, String id, String titularCuenta, String producto, String asignadoPor,
                                  String estado) {
         btnBuscar.click();
         assertThat(this.grdFechaVencimiento.getText(), is(notNullValue()));
         assertThat(this.grdPrioridad.getText(), containsString(prioridad));
         assertThat(this.grdEstadoActividad.getText(), containsString(estadoActividad));
         assertThat(this.grdAsunto.getText(), containsString(asunto));
-        assertThat(this.grdId.getText(), is(notNullValue()));
+        assertThat(this.grdId.getText(), containsString(id));
         assertThat(this.grdCuenta.getText(), containsString(titularCuenta));
         assertThat(this.grdProducto.getText(), containsString(producto));
         assertThat(this.grdAsignadoPor.getText(), containsString(asignadoPor));
