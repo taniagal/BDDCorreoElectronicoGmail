@@ -2,7 +2,7 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.serinitybdd.util.GuidewireUtil;
+import com.sura.serinitybdd.util.GwNavegacionUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
@@ -71,7 +71,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
 
     public void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
         List<WebElementFacade> elementosTipoCanalVentas;
-        List<String> elementosRequeridos = GuidewireUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
+        List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {
             elementosTipoCanalVentas = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'"+tipo+"')]");
             for (WebElementFacade lista : elementosTipoCanalVentas){
