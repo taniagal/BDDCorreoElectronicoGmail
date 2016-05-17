@@ -101,4 +101,20 @@ public class DetallesContactoSteps extends ScenarioSteps {
         dc.editarContactoJuridico(razonSocial,nombreComercial,actividadComercial,numeroEmpleados, valorActivos, ventasAnuales,
                 telefonoOficina, correoElectronicoPrimario, correoElectronicoSecundario);
     }
+
+    @Step
+    public void agregarDireccion() {
+        dc.editarContacto();
+        dc.irADirecciones();
+    }
+
+    @Step
+    public void validarDatosPatalla() {
+        dc.validarDatosPantalla();
+    }
+
+    @Step
+    public void validarCampos() {
+        dc.validarCampos();
+    }
 }
