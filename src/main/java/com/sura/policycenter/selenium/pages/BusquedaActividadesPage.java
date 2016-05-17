@@ -112,29 +112,17 @@ public class BusquedaActividadesPage extends SeusLoginPage {
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(2000);
         txtNumeroPoliza.sendKeys(numeroPoliza);
     }
 
     public void filtrarPorNumeroDeCuenta(String numeroCuenta) {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(2000);
         txtNumeroCuenta.sendKeys(numeroCuenta);
     }
 
     public void buscarSinFiltro() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitABit(2000);
     }
 
     public void validarMensjeFiltroRequerido(String mensaje) {
