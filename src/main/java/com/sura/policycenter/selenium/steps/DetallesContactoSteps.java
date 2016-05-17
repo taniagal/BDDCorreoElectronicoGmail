@@ -3,6 +3,7 @@ package com.sura.policycenter.selenium.steps;
 import com.sura.policycenter.selenium.pages.BusquedaContactoPage;
 import com.sura.policycenter.selenium.pages.DetallesContactoPage;
 import com.sura.policycenter.selenium.pages.EscritorioPage;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -14,7 +15,10 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
     DetallesContactoPage dc = new DetallesContactoPage(getDriver());
 
-    EscritorioPage escritorioPolicy = new EscritorioPage(getDriver());
+    //EscritorioPage escritorioPolicy = new EscritorioPage(getDriver());
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
     public DetallesContactoSteps(Pages pages){
         super(pages);
@@ -24,7 +28,8 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
     @Step
     public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido){
-        escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
+        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
+        inicioPage().irABuscarContacto();
         bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primer_nombre,"",primer_apellido,"");
         bc.seleccionarContacto();
     }
@@ -36,7 +41,8 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
     @Step
     public void abrirDetallesContactoEmpresa(String nombreEmpresa){
-        escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
+        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
+        inicioPage().irABuscarContacto();
         bc.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
         bc.seleccionarContacto();
     }
