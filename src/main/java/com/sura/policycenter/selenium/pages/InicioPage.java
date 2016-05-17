@@ -77,7 +77,7 @@ public class InicioPage extends Guidewire {
         }
     }
 
-    // TODO: 18/04/2016 Revision escritura de excepciones en log
+    /*// TODO: 18/04/2016 Revision escritura de excepciones en log
     public void nuevoContactoPersona() {
 
         try {
@@ -115,7 +115,7 @@ public class InicioPage extends Guidewire {
 
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
     // Metodos navegacion Escritorio
     public MisActividadesPage irAMisActividades() {
