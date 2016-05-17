@@ -381,15 +381,18 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void buscarContacto(String tipoContacto, String nombre, String apellido, String numero){
-        tipoContact.type(tipoContacto);
-        tipoContact.sendKeys(Keys.ENTER);
+
+        txtTipoDoc.click();
+        WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'"+tipoContacto+"')]");
+        cbxTipoDoc.click();
+
         int parada = Integer.parseInt(numero);
         waitABit(1000);
-        if (tipoContacto.equals("Personal")){
-            nombreContact.type(nombre);
-            apellidoContact.type(apellido);
+        if (tipoContacto.equals("CEDULA DE CIUDADANIA")){
+            txtNombre.type(nombre);
+            txtApellido.type(apellido);
         }else{
-            nombreEmpresaContact.type(nombre);
+            txtRazonSocial.type(nombre);
         }
         botonBuscar.click();
         waitABit(3000);
