@@ -389,6 +389,7 @@ public class Navegacion extends Guidewire {
 
     public BuscarCuentasPage irABuscarCuentas() {
         gw.deployMenu(mnuBuscar);
+        waitABit(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemBuscarCuenta).release(mnuItemBuscarCuenta).click().build().perform();
         return new BuscarCuentasPage(getDriver());
