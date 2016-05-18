@@ -384,12 +384,12 @@ public class Navegacion extends Guidewire {
 
     public BuscarContactoPage irABuscarContacto() {
         gw.deployMenu(mnuContact);
+        waitABit(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemContactoBusqueda).release(mnuItemContactoBusqueda).click().build().perform();
         return new BuscarContactoPage(getDriver());
     }
 
-    // Navegacion menu Buscar
     public BuscarPolizasPage irABuscarPolizas() {
         gw.deployMenu(mnuBuscar);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -399,6 +399,7 @@ public class Navegacion extends Guidewire {
 
     public BuscarCuentasPage irABuscarCuentas() {
         gw.deployMenu(mnuBuscar);
+        waitABit(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemBuscarCuenta).release(mnuItemBuscarCuenta).click().build().perform();
         return new BuscarCuentasPage(getDriver());
