@@ -22,11 +22,14 @@ import static org.hamcrest.CoreMatchers.containsString;
  */
 public class Guidewire extends PageObject {
 
+    String mensajeError = "";
+    // Initialize Log4j logs
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
+    Actions act = new Actions(getDriver());
+
     public Guidewire(WebDriver driver) {
         super(driver);
     }
-
-    String mensajeError = "";
 
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     WebElementFacade configuracion;
@@ -49,9 +52,6 @@ public class Guidewire extends PageObject {
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnLogout2;
 
-    // Initialize Log4j logs
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
-
     // TODO: 19/04/2016 Revision escritura de excepciones en log
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
@@ -63,9 +63,6 @@ public class Guidewire extends PageObject {
             LOGGER.error("This is error : " + e);
         }
     }
-
-    Actions act = new Actions(getDriver());
-
 
     // TODO: 26/04/2016 Revision escritura de excepciones en log
     public void asercion(String element, String mensaje) {
@@ -102,47 +99,36 @@ public class Guidewire extends PageObject {
     public Actions deployMenu(WebElementFacade menu) {
         Actions act = new Actions(getDriver());
         menu.waitUntilClickable().click();
-        waitUntil(1000);
+        waitABit(1000);
         menu.waitUntilClickable().click();
-        waitUntil(1000);
+        waitABit(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
     }
 
+
     public String cedulaRandom() {
-        StringBuilder result=new StringBuilder("");
-
-        int primero = (int) Math.floor(Math.random() * (100 - 999) + 999);
-        int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
-        int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
-
-        result.append(primero);
-        result.append(segundo);
-        result.append(tercero);
-
-        return result.toString();
+        int cedula = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
+        return Integer.toString(cedula);
     }
+
+    //----Crea un numero de nit de 9 digitos
+    public String nitRandom() {
+        int nit = (int) Math.floor(Math.random() * (900000000 - 999999999) + 999999999);
+        return Integer.toString(nit);
+    }
+
+
+
 
     public void selectItem(WebElementFacade element, String option){
         element.click();
-        threadWait(200);
+        waitABit(200);
         element.sendKeys(option);
         element.sendKeys(Keys.ENTER);
     }
 
-    public void threadWait(int milisegundos) {
-        try {
-            TimeUnit.MILLISECONDS.sleep(milisegundos);
-        } catch (InterruptedException e) {
-            LOGGER.error("This is error : " + e);
-        }
-    }
 
-    public String nitRandom() {
-        int primero = (int) Math.floor(Math.random() * (10 - 99) + 99);
-        int segundo = (int) Math.floor(Math.random() * (1000000 - 9999999) + 9999999);
-        return primero + "-" + segundo;
-    }
 
     public void elegirLenguaje(){
         configuracion.click();
@@ -161,15 +147,4 @@ public class Guidewire extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void waitUntil(int millis) {
-        Integer i = 0;
-        Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
-                TimeUnit.MILLISECONDS).pollingEvery(millis,
-                TimeUnit.MILLISECONDS);
-        waitUtil.until(new Function<Integer, Boolean>() {
-            public Boolean apply(Integer i) {
-                return false;
-            }
-        });
-    }
 }

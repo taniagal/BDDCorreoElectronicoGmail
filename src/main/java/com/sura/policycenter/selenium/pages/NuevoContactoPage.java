@@ -86,7 +86,7 @@ public class NuevoContactoPage extends Guidewire {
 
     public void seleccionarTipoDocumento(String tipoDocumento) {
         this.tipoDocumento.type(tipoDocumento);
-        gw.threadWait(1000);
+        waitABit(1000);
         this.tipoDocumento.click();
     }
 
@@ -104,7 +104,7 @@ public class NuevoContactoPage extends Guidewire {
 
     public void seleccionarTipoDireccion(String tipoDireccion) {
         this.tipoDireccion.type(tipoDireccion);
-        gw.threadWait(1000);
+        waitABit(1000);
         this.tipoDireccion.click();
     }
 
@@ -117,7 +117,7 @@ public class NuevoContactoPage extends Guidewire {
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
 
-        gw.threadWait(1000);
+        waitABit(1000);
         assertThat(this.nombreContact.getText(), containsString("BRAYAN"));
 
     }
@@ -125,7 +125,7 @@ public class NuevoContactoPage extends Guidewire {
     private void actualizar() {
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
-        gw.threadWait(1000);
+        waitABit(1000);
 
     }
 
@@ -140,12 +140,12 @@ public class NuevoContactoPage extends Guidewire {
 
         if ("Trabajo".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            gw.threadWait(1000);
+            waitABit(1000);
             this.tipoTelefono.click();
             this.telefonoTrabajo.type(numeroTelefono);
         } else if ("Vivienda".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            gw.threadWait(1000);
+            waitABit(1000);
             this.tipoTelefono.click();
             this.telefonoResidencia.type(numeroTelefono);
         } else {
@@ -165,7 +165,7 @@ public class NuevoContactoPage extends Guidewire {
 
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
-        gw.threadWait(1000);
+        waitABit(1000);
         assertThat(this.desRazonSocial.getText().toString(), containsString("La Vaquita"));
 
     }
@@ -174,7 +174,7 @@ public class NuevoContactoPage extends Guidewire {
 
         this.actualizar.waitUntilClickable();
         this.actualizar.click();
-        gw.threadWait(1000);
+        waitABit(1000);
         assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 

@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.selenium.pages.CuentaPage;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -10,7 +11,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class CrearNuevaCuentaSteps extends ScenarioSteps {
     Guidewire gw = new Guidewire(getDriver());
     CuentaPage cp = new CuentaPage(getDriver());
-
+    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     private String cedula = "";
     private String nit = "";
@@ -27,16 +28,17 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
 
     @Step
     public void abrirNuevaCuenta() {
-        cp.navNuevaCuenta();
+        inicioPage().irANuevaCuenta();
+        //cp.navNuevaCuenta();
     }
 
     @Step
-    public void crearNuevaCuentaPersona(String tipoDocumento,String fechaNacimiento,String primerNombre, String primerApellido, String tipoDireccion, String direccion, String codigoPostal,String nombreOrganizacion) {
+    public void crearNuevaCuentaPersona(String tipoDocumento,String fechaNacimiento,String primerNombre, String primerApellido, String tipoDireccion, String direccion, String codigoPostal,String nombreOrganizacion, String agente) {
         if("".equals(cedula) || "".equals(nit)){
             initRandoms();
         }
         cp.buscarPersona("Busqueda");
-        cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,codigoPostal,nombreOrganizacion);
+        cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,codigoPostal,nombreOrganizacion,agente);
     }
 
     @Step
@@ -45,12 +47,12 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void crearNuevaCuentaPersonaJuridica(String tipoDocumento, String nombreEmpresa, String tipoDireccion, String direccion,String codigoPostal, String nombreOrganizacion) {
+    public void crearNuevaCuentaPersonaJuridica(String tipoDocumento, String nombreEmpresa, String tipoDireccion, String direccion,String codigoPostal, String nombreOrganizacion,String agente) {
         if("".equals(cedula) || "".equals(nit)){
             initRandoms();
         }
         cp.buscarPersona("Busqueda");
-        cp.crearCuentaNuevaPersonaJuridica(tipoDocumento, nit, nombreEmpresa, tipoDireccion, direccion,codigoPostal,nombreOrganizacion);
+        cp.crearCuentaNuevaPersonaJuridica(tipoDocumento, nit, nombreEmpresa, tipoDireccion, direccion,codigoPostal,nombreOrganizacion,agente);
     }
 
     @Step
@@ -59,12 +61,12 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void crearNuevaCuentaPersona2(String tipoDocumento, String fechaNacimiento,String primerNombre, String primerApellido, String tipoDireccion, String direccion, String codigoPostal,String nombreOrganizacion) {
+    public void crearNuevaCuentaPersona2(String tipoDocumento, String fechaNacimiento,String primerNombre, String primerApellido, String tipoDireccion, String direccion, String codigoPostal,String nombreOrganizacion, String agente) {
         if("".equals(cedula) || "".equals(nit)){
             initRandoms();
         }
         cp.buscarPersona("Busqueda");
-        cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,codigoPostal,nombreOrganizacion);
+        cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,codigoPostal,nombreOrganizacion,agente);
     }
 
     @Step

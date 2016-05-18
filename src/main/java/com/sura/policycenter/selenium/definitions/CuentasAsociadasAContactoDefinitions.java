@@ -23,13 +23,13 @@ public class CuentasAsociadasAContactoDefinitions {
         contactoSteps.buscarContacto("Personal", nombre, apellido);
     }
 
-    @Then("se muestra la lista de cuentas asociadas con nombre: <nombre>, direccion: <direccion>, tel: <telefono>, email: <email> y rol: <rol>")
-    public void listarCuentasAsociadas  (@Named("nombre") String nombre,
+    @Then("se muestra la lista de cuentas asociadas con nombre: <nombreConsulta>, direccion: <direccion>, tel: <telefono>, email: <email> y rol: <rol>")
+    public void listarCuentasAsociadas  (@Named("nombreConsulta") String nombreConsulta,
                                          @Named("direccion") String direccion,
                                          @Named("telefono") String telefono,
                                          @Named("email") String email,
                                          @Named("rol") String rol) {
-        contactoSteps.listarCuentasAsociadasAContacto(nombre, direccion, telefono, email, rol);
+        contactoSteps.listarCuentasAsociadasAContacto(nombreConsulta, direccion, telefono, email, rol);
     }
 
     @When("consulte  un contacto sin cuentas asociadas como: <nombre> <apellido>")

@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
+import com.sura.policycenter.selenium.pages.NuevoAseguradoNombradoPage;
 import com.sura.policycenter.selenium.steps.ContactosAsociadosACuentasSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -72,11 +73,24 @@ public class ContactosAsociadosACuentaDefinitions {
         contactosAsociadosACuentaSteps.clicCrearNuevoContacto();
     }
 
-    @Then("debo ver las opciones de menú para los roles $opcionesPorRoles")
-    public void thenDeboVerLasOpcionesDeMenuParaLosRoles(ExamplesTable opcionesPorRoles) throws Exception {
-        contactosAsociadosACuentaSteps.verOpcionesDeCreacionDeContactoPorRoleDeContactos(opcionesPorRoles);
+    @Given("debo darClick <darClick>  y ver las opciones de menú para los roles $opcionesPorRoles")
+    public void thenDeboVerLasOpcionesDeMenuParaLosRoles(ExamplesTable opcionesPorRoles, Boolean darClick) throws Exception {
+        contactosAsociadosACuentaSteps.verOpcionesDeCreacionDeContactoPorRoleDeContactos(opcionesPorRoles, darClick);
 
     }
+
+    @Given("asocie un nuevo contacto a la cuenta con el rol seleccionado")
+    public void andAsocieUnNuevoContactoALaCuenta() throws Exception {
+        NuevoAseguradoNombradoPage nuevoAseguradoNombradoPage = new NuevoAseguradoNombradoPage(contactosAsociadosACuentaSteps.getDriver());
+        nuevoAseguradoNombradoPage.asociarNuevoAseguradoNombradoACuenta();
+
+    }
+
+    @Then("debo poder visualizar el contacto recien asociado con su rol seleccionado")
+    public void thenVisualizarContactoAsociado() throws Exception {
+        contactosAsociadosACuentaSteps.esContactoAsociado();
+    }
+
 
 
 }

@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.serinitybdd.util.GuidewireUtil;
+import com.sura.serinitybdd.util.GwNavegacionUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
@@ -18,78 +18,56 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * Created by jorgsape on 2016/05/04.
  */
 public class ContactosAsociadosACuentasPage extends Guidewire {
-
-    public ContactosAsociadosACuentasPage(WebDriver driver) {
-        super(driver);
-    }
-
     private static String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú encontrados";
-
-
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
     private WebElementFacade linkAccountFileAccountFileContacts;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDetailCardTab']")
     private WebElementFacade tabDetalleContactos;
-
     @FindBy(xpath = ".//div[2]/div/a[2]/span/span/span")
     private WebElementFacade tabRolesFunciones;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesCardTab-btnInnerEl']")
     private WebElementFacade tabDirecciones;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:JobsCardTab-btnInnerEl']")
     private WebElementFacade tabTransaccionesAsociadas;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:PoliciesCardTab-btnInnerEl']")
     private WebElementFacade tabPolizasAsociadas;
+    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:0']")
+    private WebElementFacade lblTitulo;
 
     /*
     * Informacion tab detalle de contacto
     * */
-
-    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:0']")
-    private WebElementFacade lblTitulo;
+    @FindBy(xpath = ".//label[contains(@id,'ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl')]")
+    private WebElementFacade lblEmail;
 
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:DocumentType-labelCell']")
     private WebElementFacade lblTipoDocumento;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
     private WebElementFacade lblNumeroDocumento;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-labelEl']")
     private WebElementFacade lblRazonSocial;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:CommercialName-labelEl']")
     private WebElementFacade lblNombreComercial;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
     private WebElementFacade lblNombre;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-labelEl']")
     private WebElementFacade lblSegundoNombre;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:LastName-labelEl']")
     private WebElementFacade lblApellido;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:Particle-labelEl']")
     private WebElementFacade lblSegundoApellido;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-labelCell']")
     private WebElementFacade lblDireccion;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
     private WebElementFacade lblTelefono;
 
 
-    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl']")
-    private WebElementFacade lblEmail;
-
     @FindBy(xpath = ".//a[contains(.,'Crear nuevo contacto')]")
     private WebElementFacade btnCrearNuevoContacto;
 
-
-
+    public ContactosAsociadosACuentasPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void consultarContactos() {
         linkAccountFileAccountFileContacts.waitUntilClickable();
@@ -138,7 +116,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     public void selecionarContacto(String posicion) {
         List<WebElementFacade> contactos = getListaContactos();
         contactos.get(Integer.parseInt(posicion)).click();
-        threadWait(1000);
+        waitABit(1000);
     }
 
     public void seleccionarTabDetalleContacto() {
@@ -188,25 +166,38 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         }
         assertThat("El campo direccion es obligatorio", lblDireccion.isPresent());
         assertThat("El campo telefono es obligatorio", lblTelefono.isPresent());
-        assertThat("El campo email es obligatorio", lblEmail.isPresent());
+        //assertThat("El campo email es obligatorio", lblEmail.isPresent());
     }
 
     public void verificarRolesFuncionesNoEsNulo() {
         List<WebElementFacade> rolesFunciones = getListaRolesFunciones();
         assertThat("El contacto debe tener roles o funciones asignados", rolesFunciones.size() > 0);
-        threadWait(1000);
+        waitABit(1000);
     }
 
     public void verificarDireccioneNoEsNulo() {
         List<WebElementFacade> direcciones = getListaDirecciones();
         assertThat("El contacto debe tener direcciones asignados", direcciones.size() > 0);
-        threadWait(1000);
+        waitABit(1000);
     }
 
 
 
-    public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol) throws Exception {
-        //assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, GuidewireUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT,"LINK",opcionesPorRol));
+    public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
+        assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT,"LINK",opcionesPorRol, darClick));
+    }
+
+
+    public void esContactoAsociado() throws Exception {
+        NuevoAseguradoNombradoPage nuevoAseguradoNombradoPage = new NuevoAseguradoNombradoPage(getDriver());
+        if (nuevoAseguradoNombradoPage.asociarNuevoAseguradoNombradoACuenta()){
+            for (WebElementFacade contacto : getListaContactos()){
+                System.out.printf("");
+            }
+        }
+
+        //assertThat();
+
     }
 
 
