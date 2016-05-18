@@ -24,11 +24,14 @@ public class DetallesContactoSteps extends ScenarioSteps {
         super(pages);
     }
 
+
+
     @Step
     public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido){
         //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
         inicioPage().irABuscarContacto();
-        bc.buscarContactoPersona(primer_nombre,primer_apellido);
+        bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primer_nombre,"",primer_apellido,"");
+        bc.seleccionarContacto();
     }
 
     @Step
@@ -40,28 +43,14 @@ public class DetallesContactoSteps extends ScenarioSteps {
     public void abrirDetallesContactoEmpresa(String nombreEmpresa){
         //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
         inicioPage().irABuscarContacto();
-        bc.buscarContactoEmpresa(nombreEmpresa);
+        bc.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
+        bc.seleccionarContacto();
     }
 
     @Step
     public void verificarCamposPersonaJuridica() {
         dc.verificarCamposPersonaJuridica();
     }
-
-    @Step
-    public void editarContacto(String primerNombre, String primerApellido, String segundoNombre,
-                               String segundoApellido, String fechaFallecimiento, String causaFallecimiento,
-                               String profesion, String estadoCivil, String tipoFamilia, String telefonoCelular,
-                               String telefonoResidencial, String telefonoTrabajo,
-                               String correoElectronicoPrimario, String correoElectronicoSecundario) {
-
-        dc.editarContacto();
-        dc.editarContactoPersona(primerNombre,primerApellido,segundoNombre,segundoApellido, fechaFallecimiento, causaFallecimiento,
-                profesion, estadoCivil, tipoFamilia,telefonoCelular, telefonoResidencial, telefonoTrabajo,
-                correoElectronicoPrimario, correoElectronicoSecundario);
-    }
-
-
 
     @Step
     public void actualizarContacto(){
@@ -79,13 +68,63 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
+    public void agregarNombre(String segundoNombre){
+        dc.editarContacto();
+        dc.agregarNombre(segundoNombre);
+    }
+
+    @Step
+    public void agregarApellido(String segundoApellido){
+        dc.agregarApellido(segundoApellido);
+    }
+
+    @Step
+    public void agregarLists(String profesion,String estadoCivil,String tipoFamilia){
+        dc.agregarLists(profesion,estadoCivil,tipoFamilia);
+    }
+
+    @Step
+    public void agregarTelefonoResidencia(String telefonoResidencial){
+        dc.agregarTelefonosResidencial(telefonoResidencial);
+    }
+
+    @Step
+    public void agregarTelefonoTrabajo(String telefonoTrabajo){
+        dc.agregarTelefonoTrabajo(telefonoTrabajo);
+    }
+
+    @Step
+    public void agregarTelefonoCelular(String telefonoCelular){
+        dc.agregarTelefonoCelular(telefonoCelular);
+    }
+
+    @Step
+    public void agregarCorreos(String correoElectronicoPrimario, String correoElectronicoSecundario){
+        dc.agregarCorreo(correoElectronicoPrimario,correoElectronicoSecundario);
+    }
+
+    @Step
     public void editarContacto(String razonSocial, String nombreComercial, String actividadComercial, String numeroEmpleados,
                                String valorActivos, String ventasAnuales, String telefonoOficina,
                                String correoElectronicoPrimario, String correoElectronicoSecundario) {
-
         dc.editarContacto();
         dc.editarContactoJuridico(razonSocial,nombreComercial,actividadComercial,numeroEmpleados, valorActivos, ventasAnuales,
                 telefonoOficina, correoElectronicoPrimario, correoElectronicoSecundario);
     }
 
+    @Step
+    public void agregarDireccion() {
+        dc.editarContacto();
+        dc.irADirecciones();
+    }
+
+    @Step
+    public void validarDatosPatalla() {
+        dc.validarDatosPantalla();
+    }
+
+    @Step
+    public void validarCampos() {
+        dc.validarCampos();
+    }
 }

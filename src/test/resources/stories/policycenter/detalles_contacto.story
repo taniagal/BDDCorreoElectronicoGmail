@@ -15,7 +15,7 @@ Profesion, Estado civil, Tipo familia,  Telefono primario, Telefono celular y Co
 
 Examples:
 |primer_nombre    |primer_apellido |tipo_direccion |direccion        |documento   |tipo_documento        |
-|SASHA            |AKERMAN         |Vivienda       |CALLE 54B #50-25 |564-36-5489 |CEDULA DE CIUDADANIA  |
+|ANA              |AKERMAN         |Vivienda       |CALLE 54B #50-25 |564-36-5489 |CEDULA DE CIUDADANIA  |
 
 
 Scenario: ver informacion detallada de un contacto tipo persona juridica.
@@ -28,5 +28,5 @@ documento, Actividad economica, Numero de empleados, Valor de activos, ventas an
 Correo electronico primario
 
 Examples:
-|nombre_empresa    |tipo_direccion |direccion       |
-|UMBRELLA          |Vivienda       |CALLE 54B #50-25 |
+|nombre_empresa    |tipo_direccion |direccion        |
+|UMBRELLAS         |Vivienda       |CALLE 54B #50-25 |

@@ -17,10 +17,16 @@ public class ContactoOrdenesDeTrabajoDefinitions {
     ContactoOrdenesDeTrabajoSteps ordenesTrabajoSteps;
 
     @Given("consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>")
-    public void buscarContacto(@Named("tipoContacto") String tipoContacto,
+    public void buscarContactoPersona(@Named("tipoContacto") String tipoContacto,
                                @Named("nombre") String nombre,
                                @Named("apellido") String apellido) {
-        contactoSteps.buscarContacto(tipoContacto, nombre, apellido);
+        contactoSteps.buscarContactoPersona(tipoContacto, nombre, apellido);
+    }
+
+    @Given("consulte  un contacto del tipo <tipoContacto> con transacciones como: <razonSocial>")
+    public void buscarContactoEmpresa(@Named("tipoContacto") String tipoContacto,
+                                      @Named("razonSocial") String razonSocial){
+        contactoSteps.buscarContactoEmpresa(tipoContacto,razonSocial);
     }
 
     @Given("consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido> y seleccione el registro <numero>")
