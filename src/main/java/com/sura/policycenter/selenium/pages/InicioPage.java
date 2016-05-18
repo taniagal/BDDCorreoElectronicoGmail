@@ -26,6 +26,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import javax.swing.*;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
@@ -100,7 +103,6 @@ public class InicioPage extends Guidewire {
     }
 
     public void nuevoContactoPersonaJuridica() {
-
         try {
             Thread.sleep(3000);
             mnuContact.click();

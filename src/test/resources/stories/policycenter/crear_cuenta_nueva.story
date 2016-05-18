@@ -14,7 +14,7 @@ Then se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> pe
 
 Examples:
 |tipo_documento       |fecha_nacimiento |primer_nombre |primer_apellido |tipo_direccion |direccion         |codigo_postal  |nombre_organizacion    |agente|
-|CEDULA DE CIUDADANIA |02/12/1990       |SASHA         |AKERMAN        |Vivienda       |CALLE 54B #50-25   |10001          |Ca                      |501-002542Armstrong - Los Angeles|
+|CEDULA DE CIUDADANIA |02/12/1990       |SASHA         |AKERMAN        |Vivienda       |CALLE 54B #50-25   |10001          |Ca                      |501-002542|
 
 
 
@@ -28,7 +28,7 @@ Then se debe crear la cuenta con el cliente <nombre_empresa> persona juridica
 
 Examples:
 |nombre_empresa |tipo_documento |tipo_direccion |direccion        |codigo_postal  |nombre_organizacion    |agente|
-|UMBRELLA       |NIT            |Vivienda       |CALLE 54B #50-25 |10001          |Ca                      |501-002542Armstrong - Los Angeles|
+|UMBRELLA       |NIT            |Vivienda       |CALLE 54B #50-25 |10001          |Ca                      |501-002542|
 
 
 
@@ -43,8 +43,7 @@ Then No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
 |tipo_documento       |fecha_nacimiento |primer_nombre |primer_apellido |tipo_direccion |direccion         |codigo_postal  |nombre_organizacion|mensaje|agente|
-|CEDULA DE CIUDADANIA |02/12/1990       |SASHA         |AKERMAN         |Vivienda       |CALLE 54B #50-25  |10001          |Ca                  |Ya existe un contacto con el mismo número de identificación| 501-002542Armstrong - Los Angeles|
-
+|CEDULA DE CIUDADANIA |02/12/1990       |SASHA         |AKERMAN         |Vivienda       |CALLE 54B #50-25  |10001          |Ca                  |Ya existe un contacto con el mismo número de identificación|501-002542|
 
 
 Scenario: crear una cuenta para un contacto menor de edad
@@ -57,6 +56,6 @@ primer apellido <primer_apellido>, tipo de direccion <tipo_direccion> y direccio
 Then No me debe permitir crear la cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
-|tipo_documento        |documento      |fecha_nacimiento|primer_nombre |primer_apellido |tipo_direccion |direccion          |codigo_postal  |nombre_organizacion  |mensaje|agente|
-|CEDULA DE CIUDADANIA  |371-45-4568    |02/15/2012      |SASHA         |AKERMAN         |Vivienda       |CALLE 54B #50-25   |10001          |Ca                    |Por políticas de la compañia no es posible crear una cuenta a una persona menor de 16 años|501-002542Armstrong - Los Angeles|
+|tipo_documento        |documento      |fecha_nacimiento|primer_nombre |primer_apellido |tipo_direccion |direccion          |codigo_postal  |nombre_organizacion|mensaje|agente|
+|CEDULA DE CIUDADANIA  |371-45-4568    |02/15/2012      |SASHA         |AKERMAN         |Vivienda       |CALLE 54B #50-25   |10001          |Ca                 |Por políticas de la compañia no es posible crear una cuenta a una persona menor de 16 años|501-002542|
 

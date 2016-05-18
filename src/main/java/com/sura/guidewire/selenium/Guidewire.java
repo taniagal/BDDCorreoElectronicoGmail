@@ -98,15 +98,30 @@ public class Guidewire extends PageObject {
 
     public Actions deployMenu(WebElementFacade menu) {
         Actions act = new Actions(getDriver());
-        menu.waitUntilClickable().click();
-        waitABit(1000);
-        menu.waitUntilClickable().click();
-        waitABit(1000);
+        menu.click();
+        waitABit(1500);
+        menu.click();
+        waitABit(500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
     }
 
+    public void selectItem(WebElementFacade element, String option){
+        element.click();
+        waitABit(200);
+        element.sendKeys(option);
+        element.sendKeys(Keys.ENTER);
+    }
 
+    public void threadWait(int milisegundos) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(milisegundos);
+        } catch (InterruptedException e) {
+            LOGGER.error("This is error : " + e);
+        }
+    }
+
+    //----Crea un numero de cudeula de 8 digitos
     public String cedulaRandom() {
         int cedula = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
         return Integer.toString(cedula);
@@ -117,18 +132,6 @@ public class Guidewire extends PageObject {
         int nit = (int) Math.floor(Math.random() * (900000000 - 999999999) + 999999999);
         return Integer.toString(nit);
     }
-
-
-
-
-    public void selectItem(WebElementFacade element, String option){
-        element.click();
-        waitABit(200);
-        element.sendKeys(option);
-        element.sendKeys(Keys.ENTER);
-    }
-
-
 
     public void elegirLenguaje(){
         configuracion.click();

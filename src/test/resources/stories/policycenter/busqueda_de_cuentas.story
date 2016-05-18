@@ -6,7 +6,7 @@ quiero ser capaz de buscar una cuenta
 para ver el detalle de la misma
 
 Scenario: campos de la busqueda de cuentas por tipo de documento NIT
-GivenStories: stories/policycenter/login_policy.story
+GivenStories: stories/policycenter/crear_nuevo_contacto_natural.story
 Given que me encuentro en la busqueda de cuentas
 When seleccione el tipo de identificacion <tipoDocumento>
 Then me debe mostrar los campos tipo identificacion, numero identificacion, primer nombre, segundo nombre, primer apellido, segundo apellido, razon social, nombre comercial, pais, departamento, ciudad, direccion, telefono
