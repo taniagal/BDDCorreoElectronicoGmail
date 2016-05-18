@@ -3,9 +3,12 @@ package com.sura.policycenter.selenium.steps;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.NuevoContactoPage;
+import com.sura.policycenter.selenium.pages.menu.superior.contacto.NuevaCompaniaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+
+import javax.swing.*;
 
 /**
  * Created by brayruru on 2016/04/25.
@@ -13,18 +16,18 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     private final Guidewire gw = new Guidewire(getDriver());
-    //private final InicioPage inicioPage = new InicioPage(getDriver());
+    private final InicioPage inicioPage = new InicioPage(getDriver());
     private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
     private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     private String cedula = "";
     private String nit = "";
+    private String tipoDoc="";
 
 
     private void  initRandoms(){
         cedula = gw.cedulaRandom();
         nit = gw.nitRandom();
-
     }
 
     public CrearNuevoContactoSteps(Pages pages) {
@@ -33,14 +36,13 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void nuevoContactoPersona() {
-        //inicioPage.nuevoContactoPersona();
-        inicioPage().irANuevaPersona();
+        inicioPage.irANuevaPersona();
     }
 
     @Step
     public void seleccionarTipoDocumentoPersonaNatural(String tipoDocumento){
         nuevoContactoPage.seleccionarTipoDocumento(tipoDocumento);
-
+        tipoDoc = tipoDocumento;
     }
 
     @Step
@@ -48,7 +50,8 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
         if("".equals(cedula) || "".equals(nit)){
             initRandoms();
         }
-        nuevoContactoPage.ingresarNumeroDocumento(cedula);
+        if(tipoDoc.equals("NIT")) nuevoContactoPage.ingresarNumeroDocumento(nit);
+        else nuevoContactoPage.ingresarNumeroDocumento(cedula);
     }
 
     @Step
@@ -72,8 +75,8 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void actualizar(){
-        nuevoContactoPage.actualizarPersonaNatural();
+    public void actualizar(String primerNombre){
+        nuevoContactoPage.actualizarPersonaNatural(primerNombre);
     }
 
     @Step
@@ -85,8 +88,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void nuevoContactoPersonaJuridica() {
-        //inicioPage.nuevoContactoPersonaJuridica();
-        inicioPage().irANuevaCompania();
+        inicioPage.irANuevaCompania();
     }
 
     @Step
@@ -94,8 +96,8 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
         nuevoContactoPage.ingresarRazonSocial(razonSocial);
     }
     @Step
-    public void actualizarJuridica(){
-        nuevoContactoPage.actualizarJuridica();
+    public void actualizarJuridica(String razonSocial){
+        nuevoContactoPage.actualizarJuridica(razonSocial);
     }
 
     @Step
@@ -113,9 +115,5 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     public void validarCampoPaisDepartamentoYCiudad(){
         nuevoContactoPage.validarCampoPaisDepartamentoYCiudad();
     }
-
-
-
-
 
 }

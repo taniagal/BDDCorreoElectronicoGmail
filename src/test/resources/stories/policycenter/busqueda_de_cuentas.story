@@ -6,7 +6,7 @@ quiero ser capaz de buscar una cuenta
 para ver el detalle de la misma
 
 Scenario: campos de la busqueda de cuentas por tipo de documento NIT
-GivenStories: stories/policycenter/login_policy.story
+GivenStories: stories/policycenter/crear_nuevo_contacto_natural.story
 Given que me encuentro en la busqueda de cuentas
 When seleccione el tipo de identificacion <tipoDocumento>
 Then me debe mostrar los campos tipo identificacion, numero identificacion, primer nombre, segundo nombre, primer apellido, segundo apellido, razon social, nombre comercial, pais, departamento, ciudad, direccion, telefono
@@ -33,7 +33,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys||Ga||C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys||Ga||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por primer nombre y segundo apellido
 Given que me encuentro en la busqueda de cuentas
@@ -42,7 +42,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|||Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|||Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo nombre y primer apellido
 Given que me encuentro en la busqueda de cuentas
@@ -51,7 +51,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, primer apellido
 Given que me encuentro en la busqueda de cuentas
@@ -60,7 +60,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|Pa|||C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|Pa|||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, primer apellido y segundo apellido
 Given que me encuentro en la busqueda de cuentas
@@ -69,7 +69,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys||Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys||Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo apellido
 Given que me encuentro en la busqueda de cuentas
@@ -78,7 +78,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|||To|C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|||To|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo nombre, primer apellido
 Given que me encuentro en la busqueda de cuentas
@@ -87,7 +87,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por segundo nombre, primer apellido
 Given que me encuentro en la busqueda de cuentas
@@ -96,7 +96,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-||Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+||Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por segundo nombre, primer apellido y segundo apellido
 Given que me encuentro en la busqueda de cuentas
@@ -105,7 +105,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-||Paola|Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+||Paola|Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por segundo nombre, segundo apellido
 Given que me encuentro en la busqueda de cuentas
@@ -114,7 +114,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-||Paola||Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+||Paola||Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo nombre, primer apellido y segundo apellido
 Given que me encuentro en la busqueda de cuentas
@@ -123,7 +123,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|Paola|Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|Paola|Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por primer nombre y primer apellido sin datos existentes
 Given que me encuentro en la busqueda de cuentas
@@ -141,7 +141,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|Paola|||C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|Paola|||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, datos insuficientes para la consulta
 Given que me encuentro en la busqueda de cuentas
@@ -186,7 +186,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |tipoDocumento|numeroDocumento|numeroCuenta|nombre|direccion
-|CEDULA DE CIUDADANIA|1234567890|C000888888|YURLEDYS PAOLA GALLEGO TORRES|4040 ELMWOOD, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|CEDULA DE CIUDADANIA|1234567890|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona juridica por tipo y numero de documento
 Given que me encuentro en la busqueda de cuentas
@@ -195,7 +195,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |tipoDocumento|numeroDocumento|numeroCuenta|nombre|direccion
-|NIT|9202086744|C010478975|VARIEDADES YURLEDYS|826 N ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
+|NIT|9202086744|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
 
 Scenario: Busqueda cuenta por persona juridica por razon social
 Given que me encuentro en la busqueda de cuentas
@@ -204,7 +204,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |razonSocial|numeroCuenta|nombre|direccion
-|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|826 N ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
+|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona juridica por razon social sin datos existentes
 Given que me encuentro en la busqueda de cuentas
@@ -222,7 +222,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |nombreComercial|numeroCuenta|nombre|direccion
-|Variedades Yurledys S.A|C010478975|VARIEDADES YURLEDYS|826 N ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
+|Variedades Yurledys S.A|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona juridica por nombre comercial sin datos existentes
 Given que me encuentro en la busqueda de cuentas
@@ -322,11 +322,13 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |nombreComercial|razonSocial|numeroCuenta|nombre|direccion
-|Variedades Yurledys S.A|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|826 N ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
+|Variedades Yurledys S.A|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
 
-Scenario: Exportar resultados de busqueda en PDF, CSV y CSV Personalizado
+#Scenario: Exportar resultados de busqueda en PDF, CSV y CSV Personalizado
 Meta:
 @manual
-Given que he buscado una cuenta y la busqueda arrojo resultados
-When quiera exportar el resultado arrojado en la busqueda
-Then el sistema debe permitir imprimir y exportar el resultado y mostrar las opciones permitidas (Imprimir como pdf, Exportar como CSV, Exportación personalizada como CSV)
+#Given que he buscado una cuenta y la busqueda arrojo resultados
+#When quiera exportar el resultado arrojado en la busqueda
+#Then el sistema debe permitir imprimir y exportar el resultado y mostrar las opciones permitidas (Imprimir como pdf, Exportar como CSV, Exportación personalizada como CSV)
+
+
