@@ -160,6 +160,7 @@ public class BusquedaContactoPage extends Guidewire {
         }
     }
     public void buscarContacto(String tipoContacto, String nombre, String apellido){
+        tipoContact.waitUntilClickable();
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         waitABit(1000);

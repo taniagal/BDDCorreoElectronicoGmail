@@ -110,7 +110,7 @@
                     <includes>
                         <!--<include>**/claims/*.java</include>
                         <include>**/billing/*.java</include>-->
-                        <include>**/policycenter/AgregarDireccionAContacto.java</include>
+                        <include>**/policycenter/*.java</include>
                     </includes>
                     <excludes>
                         <exclude>**/policycenter/MainStories.java</exclude>

@@ -10,11 +10,11 @@ GivenStories: stories/policycenter/login_policy.story
 Given que voy a consultar un contacto
 And consulte  un contacto del tipo <tipoContacto> con transacciones como: <razonSocial>
 When consulte las transacciones por estado <filtroEstado>
-Then debe mostrarme el listado de transacciones con su respectiva informacion: producto <producto> Transaccion <transaccion> Tipo <tipo> Status <estado> Participante <participante>
+Then debe mostrarme el listado de transacciones con su respectiva informacion: numero de poliza <poliza>, producto <producto>, transaccion <transaccion>, tipo <tipo>, estado <estado>, participante <participante>
 
 Examples:
-|tipoContacto|razonSocial|filtroEstado|producto|transaccion|tipo|estado|participante
-|NIT|VARIEDADES YURLEDYS|Completo|Businessowners|467653123|Emisión|Comprometida|Christine Craft
+|tipoContacto|razonSocial|filtroEstado|poliza|producto|transaccion|tipo|estado|participante
+|NIT|Variedades Yurledys|Completo|TEST_22222223|Businessowners|22222223|Emisión|Comprometida|Super User
 
 Scenario: Ver informacion de transacciones sin registros
 Given que voy a consultar un contacto
@@ -24,7 +24,7 @@ Then se muestra el mensaje informativo de transaccion no encontrada <mensaje>
 
 Examples:
 |tipoContacto|nombre|apellido|mensaje
-|CEDULA DE CIUDADANIA|YURLEDYS|GALLEGO|El contacto no tiene transacciones asociadas
+|CEDULA DE CIUDADANIA|Yurledys|Gallego|El contacto no tiene transacciones asociadas
 
 Scenario: Ver informacion filtrada por estado
 Given que voy a consultar un contacto
@@ -34,27 +34,27 @@ Then debe mostrarme el listado de transacciones filtradas por estado <filtroEsta
 
 Examples:
 |tipoContacto|razonSocial|filtroEstado|estado
-|NIT|VARIEDADES YURLEDYS||Completo
+|NIT|Variedades Yurledys|Completo
 
 Scenario: Ver informacion filtrada por tipo de transaccion
 Given que voy a consultar un contacto
-And consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido> y seleccione el registro <numero>
+And consulte  un contacto del tipo <tipoContacto> con transacciones como: <razonSocial>
 When consulte las transacciones por estado <filtroEstado>
 And consulte las transacciones por tipo de transaccion <filtroTransaccion>
 Then debe mostrarme el listado de transacciones filtradas por tipo de transaccion <filtroTransaccion>
 
 Examples:
-|tipoContacto|nombre|apellido|numero|filtroEstado|filtroTransaccion
-|NIT|VARIEDADES YURLEDYS||1|Todos|Emisión
+|tipoContacto|razonSocial|filtroEstado|filtroTransaccion
+|NIT|Variedades Yurledys|Todos|Emisión
 
 Scenario: Ver informacion filtrada por producto
 Given que voy a consultar un contacto
-And consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido> y seleccione el registro <numero>
+And consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>
 When consulte las transacciones por estado <filtroEstado>
 And consulte las transacciones por tipo de transaccion <filtroTransaccion>
 And consulte las transacciones por tipo de transaccion <filtroProducto>
 Then debe mostrarme el listado de transacciones filtradas por tipo de transaccion <filtroProducto>
 
 Examples:
-|tipoContacto|nombre|apellido|numero|filtroEstado|filtroTransaccion|filtroProducto
-|NIT|VARIEDADES YURLEDYS||1|Todos|Todos|Auto comercial
+|tipoContacto|nombre|apellido|filtroEstado|filtroTransaccion|filtroProducto
+|CEDULA DE CIUDADANIA|Dorian|Eastmond|Todos|Todos|Auto personal
