@@ -37,4 +37,33 @@ public class InformacionTitularCuentaSteps extends ScenarioSteps {
         informacionTitularCuentaPage.validarInformacionBasica(titularCuenta,tipoDocumento,nroDocumento,primaVigencia, segmentacion, comportamniento,
                 actividadEconomica, totalNoFacturado, totalFacturado, totalvencido, totalPendiente);
     }
+
+    @Step
+    public void validarInformacionMetricas (String anioVigencia, String polizasActivas, String canceladoPorCliente,
+                                            String canceladoPorCompania, String otrasCancelaciones, String primaVitalicia,
+                                            String totalSiniestrosAbiertos, String totalNetoIncurrido){
+        informacionTitularCuentaPage.validarInformacionMetricas(anioVigencia,polizasActivas,canceladoPorCliente,
+                canceladoPorCompania, otrasCancelaciones, primaVitalicia, totalSiniestrosAbiertos, totalNetoIncurrido);
+    }
+
+    @Step
+    public void validarInformacionTransacciones (String fechaCreacion, String nroPoliza, String producto,
+                                                 String nroTransaccion, String tipo, String estado) {
+        informacionTitularCuentaPage.validarInformacionTransacciones(fechaCreacion, nroPoliza, producto,
+                nroTransaccion, tipo, estado);
+    }
+
+    @Step
+    public void validarInformacionSiniestros (String nroPoliza, String producto, String asegurado, String fechaPerdida,
+                                              String nroSiniestro, String estado, String totalIncurrido) {
+        informacionTitularCuentaPage.validarInformacionSiniestros(nroPoliza, producto, asegurado,
+                fechaPerdida, nroSiniestro, estado, totalIncurrido);
+    }
+
+    @Step
+    public void validarNombreCompletoPersonaNatural (String primerNombre, String segundoNombre, String primerApellido,
+                                                     String segundoApellido) {
+        informacionTitularCuentaPage.validarNombreCompletoPersonaNatural(primerNombre, segundoNombre, primerApellido,
+                segundoApellido);
+    }
 }

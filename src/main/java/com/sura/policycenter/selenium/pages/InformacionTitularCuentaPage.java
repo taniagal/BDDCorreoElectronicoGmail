@@ -108,4 +108,64 @@ public class InformacionTitularCuentaPage extends Guidewire {
             throw new RuntimeException(e);
         }
     }
+
+    public void validarInformacionMetricas(String titularCuenta, String tipoDocumento, String nroDocumento, String primaVigencia,
+                                         String segmentacion, String comportamniento, String actividadEconomica,
+                                         String totalNoFacturado, String totalFacturado, String totalVencido, String totalPendiente){
+        try {
+            assertThat(txtTitularCuenta.getText().toString(), is(equalTo(titularCuenta)));
+            assertThat(txtTipoDocumento.getText().toString(), is(equalTo(tipoDocumento)));
+            assertThat(txtNumeroDocumento.getText().toString(), is(equalTo(nroDocumento)));
+            assertThat(txtPrimaVigencia.getText().toString(), is(equalTo(primaVigencia)));
+            assertThat(txtSegmentacion.getText().toString(), is(equalTo(segmentacion)));
+            assertThat(txtComportamiento.getText().toString(), is(equalTo(comportamniento)));
+            assertThat(txtActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
+            assertThat(txtTotalNoFacturado.getText().toString(), is(equalTo(totalNoFacturado)));
+            assertThat(txtTotalFacturado.getText().toString(), is(equalTo(totalFacturado)));
+            assertThat(txtTotalVencido.getText().toString(), is(equalTo(totalVencido)));
+            assertThat(txtTotalPendiente.getText().toString(), is(equalTo(totalPendiente)));
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void validarInformacionTransacciones(String titularCuenta, String tipoDocumento, String nroDocumento, String primaVigencia,
+                                         String segmentacion, String comportamniento, String actividadEconomica,
+                                         String totalNoFacturado, String totalFacturado, String totalVencido, String totalPendiente){
+        try {
+            assertThat(txtTitularCuenta.getText().toString(), is(equalTo(titularCuenta)));
+            assertThat(txtTipoDocumento.getText().toString(), is(equalTo(tipoDocumento)));
+            assertThat(txtNumeroDocumento.getText().toString(), is(equalTo(nroDocumento)));
+            assertThat(txtPrimaVigencia.getText().toString(), is(equalTo(primaVigencia)));
+            assertThat(txtSegmentacion.getText().toString(), is(equalTo(segmentacion)));
+            assertThat(txtComportamiento.getText().toString(), is(equalTo(comportamniento)));
+            assertThat(txtActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
+            assertThat(txtTotalNoFacturado.getText().toString(), is(equalTo(totalNoFacturado)));
+            assertThat(txtTotalFacturado.getText().toString(), is(equalTo(totalFacturado)));
+            assertThat(txtTotalVencido.getText().toString(), is(equalTo(totalVencido)));
+            assertThat(txtTotalPendiente.getText().toString(), is(equalTo(totalPendiente)));
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void validarInformacionSiniestros(String titularCuenta, String tipoDocumento, String nroDocumento, String primaVigencia,
+                                                String segmentacion, String comportamniento, String actividadEconomica,
+                                                String totalNoFacturado, String totalFacturado, String totalVencido, String totalPendiente){
+        try {
+            assertThat(txtTitularCuenta.getText().toString(), is(equalTo(titularCuenta)));
+            assertThat(txtTipoDocumento.getText().toString(), is(equalTo(tipoDocumento)));
+            assertThat(txtNumeroDocumento.getText().toString(), is(equalTo(nroDocumento)));
+            assertThat(txtPrimaVigencia.getText().toString(), is(equalTo(primaVigencia)));
+            assertThat(txtSegmentacion.getText().toString(), is(equalTo(segmentacion)));
+            assertThat(txtComportamiento.getText().toString(), is(equalTo(comportamniento)));
+            assertThat(txtActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
+            assertThat(txtTotalNoFacturado.getText().toString(), is(equalTo(totalNoFacturado)));
+            assertThat(txtTotalFacturado.getText().toString(), is(equalTo(totalFacturado)));
+            assertThat(txtTotalVencido.getText().toString(), is(equalTo(totalVencido)));
+            assertThat(txtTotalPendiente.getText().toString(), is(equalTo(totalPendiente)));
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

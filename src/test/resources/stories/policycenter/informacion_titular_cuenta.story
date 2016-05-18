@@ -80,3 +80,27 @@ seguido de nombre 2 <segundoNombre> seguido de apellido 1 <primerApellido> segui
 Examples:
 |tipoDoc             |nombre  |apellido|primerNombre|segundoNombre|primerApellido|segundoApellido|
 |CEDULA DE CIUDADANIA|Yurledys|Gallego |||||
+
+
+Scenario: Mostrar campos fecha de fallecimiento y causa de fallecimiento
+GivenStories: stories/policycenter/login_policy.story
+Given que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>
+When ingrese a informacion del titular de la cuenta
+Then los campos fecha de fallecimiento <fechaFallecimiento> y causa de fallecimiento <causaFallecimiento> se deben mostrar
+unicamente cuando tengan informacion relacionada, de lo contrario estos campos deben permanecer ocultos.
+
+Examples:
+|tipoDoc             |nombre  |apellido|fechaFallecimiento|causaFallecimiento|
+|CEDULA DE CIUDADANIA|Yurledys|Gallego |||
+
+
+Scenario: Mostrar campo actividad economica
+GivenStories: stories/policycenter/login_policy.story
+Given que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>
+When ingrese a informacion del titular de la cuenta
+Then los campos fecha de fallecimiento <fechaFallecimiento> y causa de fallecimiento <causaFallecimiento> se deben mostrar
+unicamente cuando tengan informacion relacionada, de lo contrario estos campos deben permanecer ocultos.
+
+Examples:
+|tipoDoc             |nombre  |apellido|fechaFallecimiento|causaFallecimiento|
+|CEDULA DE CIUDADANIA|Yurledys|Gallego |||
