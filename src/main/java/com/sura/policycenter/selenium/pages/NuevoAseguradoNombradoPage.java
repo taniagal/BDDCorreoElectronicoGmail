@@ -23,7 +23,7 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
     private WebElementFacade txtDireccion;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade cboDepartamento;
-    @FindBy(xpath = "//input[@name='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext']")
+    @FindBy(xpath = ".//input[@name='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext']")
     private WebElementFacade cboCiudad;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade txtTelefonoTrabajo;
@@ -53,7 +53,7 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
         Boolean esAsociado;
         try {
 
-            txtNumeroDocumento.type("123456789");
+            txtNumeroDocumento.type("1".concat(cedulaRandom()));
             txtNombre.type("JOHAN");
             txtApellido.type("MUSTACHE");
             txtTelefonoTrabajo.type("435-3434");
@@ -68,38 +68,23 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
             tabDetalleContacto.waitUntilClickable();
             tabDetalleContacto.click();
             cboTipoDireccion.type("Otros");
+            cboTipoDireccion.sendKeys(Keys.ENTER);
             cboTipoDocumento.type("CEDULA DE CIUDADANIA");
+            cboTipoDocumento.sendKeys(Keys.ENTER);
             cboDepartamento.type("Antioquia");
-            txtApellido.setWindowFocus();
+            cboDepartamento.sendKeys(Keys.ENTER);
 
-//            waitABit(1000);
-//            WebElementFacade cbxDeptoList = findBy(".//input[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
-//            waitABit(1000);
-//            cbxDeptoList.click();
-//            waitABit(1000);
-//            WebElementFacade cbxDepto = findBy(".//li[contains(.,'Antioquia')]");
-//            cbxDepto.click();
-//            waitABit(1000);
+
             waitABit(3000);
             cboCiudad.clear();
             waitABit(3000);
             cboCiudad.type("Medellin");
             waitABit(3000);
+            cboCiudad.sendKeys(Keys.ENTER);
 
-//            waitABit(1000);
-//            cboCiudad.click();
-//            waitABit(1000);
-//            WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'Medellin')]");
-//            cbxTipoDoc.click();
-//            waitABit(1000);
-
-
-            txtDireccion.click();
+            txtDireccion.clear();
             txtDireccion.type("CL 45 - 56 A 109");
-            txtApellido.setWindowFocus();
             waitABit(3000);
-
-            btnActualizar.waitUntilClickable();
             btnActualizar.click();
 
 

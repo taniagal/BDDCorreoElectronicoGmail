@@ -88,7 +88,12 @@ public class ContactosAsociadosACuentaDefinitions {
 
     @Then("debo poder visualizar el contacto recien asociado con su rol seleccionado")
     public void thenVisualizarContactoAsociado() throws Exception {
-        contactosAsociadosACuentaSteps.esContactoAsociado();
+        contactosAsociadosACuentaSteps.esContactoAsociado("JOHAN MUSTACHE");
+    }
+
+    @Given("busco un contacto del directorio  que no exista en la cuenta con un rol existente")
+    public void thenBuscUnContactoDelDirectorioQueNoExistaEnLaCuentaConUnRolExistente() throws Exception {
+        contactosAsociadosACuentaSteps.buscarContactoDelDirectorio();
     }
 
 

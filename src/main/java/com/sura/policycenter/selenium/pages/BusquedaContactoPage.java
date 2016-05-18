@@ -97,4 +97,6 @@ public class BusquedaContactoPage extends Guidewire {
         botonBuscar.click();
         selectContact.click();
     }
+
+
 }
