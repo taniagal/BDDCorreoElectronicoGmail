@@ -70,13 +70,14 @@ Examples:
 |numCuenta|posicion|opcion|
 |C001888888|0|POLIZAS_ASOCIADAS|
 
+
 Scenario: Asociacion de un contacto de facturacion (persona natural) a una cuenta
 Given estoy en la pantalla de cuenta y existe una cuenta <numCuenta> con contactos asociados
 And quiera ver el detalle de los contactos de la cuenta <numCuenta>
 And y desee crear un nuevo contacto
 And debo darClick <darClick>  y ver las opciones de menú para los roles
-|Contacto de facturacion|
-|Nueva Persona Natural|
+|Contacto de facturación|
+|Nuevo Persona Natural|
 And asocie un nuevo contacto a la cuenta con el rol seleccionado
 Then debo poder visualizar el contacto recien asociado con su rol seleccionado
 Examples:
@@ -88,13 +89,10 @@ Given estoy en la pantalla de cuenta y existe una cuenta <numCuenta> con contact
 And quiera ver el detalle de los contactos de la cuenta <numCuenta>
 And y desee crear un nuevo contacto
 And debo darClick <darClick>  y ver las opciones de menú para los roles
-|Contacto de facturacion|
+|Contacto de facturación|
 |Del Directorio|
 And busco un contacto del directorio  que no exista en la cuenta con un rol existente
 Then debo poder visualizar el contacto recien asociado con su rol seleccionado
 Examples:
 |numCuenta|darClick|
 |C000888888|true|
-
-
-
