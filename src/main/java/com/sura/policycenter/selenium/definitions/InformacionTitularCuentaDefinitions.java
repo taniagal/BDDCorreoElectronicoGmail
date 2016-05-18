@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
+import com.sura.policycenter.selenium.steps.BusquedaContactoSteps;
 import com.sura.policycenter.selenium.steps.InformacionTitularCuentaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -17,15 +18,16 @@ public class InformacionTitularCuentaDefinitions {
     @Steps
     InformacionTitularCuentaSteps informacionTitularCuentaSteps;
 
-    //@Steps
-    //BusquedaContactoSteps buscarContactoSteps;
+    @Steps
+    BusquedaContactoSteps buscarContactoSteps;
 
 
     @Given("que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>")
     public void givenExisteTitularCuenta(@Named("tipoDoc") String tipoDoc,
                                          @Named("nombre") String nombre,
                                          @Named("apellido") String apellido) {
-        //buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, nombre, "", apellido, "");
+        buscarContactoSteps.navegarBarraSuperior("Buscar", "Contactos", "");
+        buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, nombre, "", apellido, "");
     }
 
     @When("ingrese a informacion del titular de la cuenta")
@@ -39,44 +41,37 @@ public class InformacionTitularCuentaDefinitions {
                                                                             @Named("transacciones") String transacciones,
                                                                             @Named("reclamaciones") String reclamaciones){
         informacionTitularCuentaSteps.validarEncabezadosInformacionTitularCuenta(informacionBasica, metricas, transacciones, reclamaciones);
-        seusLoginSteps.logout();
-        seusLoginSteps.close();
     }
 
-    @Then("debe mostrarme en la informacion basica: Titular de la cuenta <titularCuenta>, tipo de documento <tipoDocumento>,\n" +
-            "Nro de documento <nroDocumento>, prima en vigencia <primaVigencia>, Segmentacion <segmentacion>, Comportamiento <comportamiento>,\n" +
-            "actividad economica <actividadEconomica>, Total no Facturado <totalNoFacturado>, total actualmente facturado <totalFacturado>,\n" +
-            "total vencido <totalvencido> y total pendiente <totalPendiente>.")
+    @Then("debe mostrarme en la informacion basica: Titular de la cuenta <titularCuenta>, tipo de documento <tipoDocumento>, Nro de documento <nroDocumento>, prima en vigencia <primaVigencia>, Segmentacion <segmentacion>, Comportamiento <comportamiento>, Total no Facturado <totalNoFacturado>, total actualmente facturado <totalFacturado>, total vencido <totalVencido> y total pendiente <totalPendiente>.")
     public void thenMostrarInformacionBasica(@Named("titularCuenta")String titularCuenta,@Named("tipoDocumento")String tipoDocumento,
                                              @Named("nroDocumento")String nroDocumento,@Named("primaVigencia")String primaVigencia,
                                              @Named("segmentacion")String segmentacion,@Named("comportamiento")String comportamiento,
-                                             @Named("actividadEconomica")String actividadEconomica,@Named("totalNoFacturado")String totalNoFacturado,
-                                             @Named("totalFacturado")String totalFacturado, @Named("totalvencido")String totalvencido,
+                                             @Named("totalNoFacturado")String totalNoFacturado,
+                                             @Named("totalFacturado")String totalFacturado, @Named("totalVencido")String totalVencido,
                                              @Named("totalPendiente")String totalPendiente){
 
         informacionTitularCuentaSteps.validarInformacionBasica(titularCuenta,tipoDocumento,nroDocumento,primaVigencia, segmentacion, comportamiento,
-                actividadEconomica, totalNoFacturado, totalFacturado, totalvencido, totalPendiente);
+                totalNoFacturado, totalFacturado, totalVencido, totalPendiente);
     }
 
-
-    @Then("debe mostrarme en metricas de valor del cliente: Anio de vigencia de la primera poliza <anioVigencia>, polizas activas <polizasActivas>,\n" +
-            "Cancelado por el cliente <canceladoPorCliente>, cancelado por la compania de seguros por falta de pago <canceladoPorCompania>,\n" +
-            "otras cancelaciones <otrasCancelaciones>, prima vitalicia <primaVitalicia>.\n" +
-            "Informacion de siniestros abiertos: Total de siniestros abiertos <totalSiniestrosAbiertos>, total neto incurrido <totalNetoIncurrido>.")
+    @Then("debe mostrarme en metricas de valor del cliente: Anio de vigencia de la primera poliza <anioVigencia>, polizas activas <polizasActivas>, Cancelado por el cliente <canceladoPorCliente>, cancelado por la compania de seguros por falta de pago <canceladoPorCompania>, otras cancelaciones <otrasCancelaciones>, prima vitalicia <primaVitalicia>. Informacion de reclamaciones abiertas: Total de reclamaciones abiertas <totalReclamacionesAbiertas>, total neto incurrido <totalNetoIncurrido>.")
     public void thenMostrarInformacionMetricas(@Named("anioVigencia")String anioVigencia,@Named("polizasActivas")String polizasActivas,
                                                @Named("canceladoPorCliente")String canceladoPorCliente,@Named("canceladoPorCompania")String canceladoPorCompania,
                                                @Named("otrasCancelaciones")String otrasCancelaciones,@Named("primaVitalicia")String primaVitalicia,
-                                               @Named("totalSiniestrosAbiertos")String totalSiniestrosAbiertos,@Named("totalNetoIncurrido")String totalNetoIncurrido){
+                                               @Named("totalReclamacionesAbiertas")String totalReclamacionesAbiertas,@Named("totalNetoIncurrido")String totalNetoIncurrido){
 
         informacionTitularCuentaSteps.validarInformacionMetricas(anioVigencia,polizasActivas,canceladoPorCliente,canceladoPorCompania, otrasCancelaciones, primaVitalicia,
-                totalSiniestrosAbiertos, totalNetoIncurrido);
+                totalReclamacionesAbiertas, totalNetoIncurrido);
     }
 
+    @Then("el nombre del titular de la cuenta debe aparecer con el nombre completo <nombreCompleto>, es decir, nombre 1 seguido de nombre 2 seguido de apellido 1 seguido de apellido 2.")
+    public void thenMostrarNombreCompleto(@Named("nombreCompleto")String nombreCompleto){
 
+        informacionTitularCuentaSteps.validarNombreCompletoPersonaNatural(nombreCompleto);
+    }
 
-
-    @Then("debe mostrarme: Fecha de creación <fechaCreacion>, Numero de poliza <nroPoliza>, producto <producto>,\n" +
-            "Numero de transaccion <nroTransaccion>, Tipo <tipo>, estado <estado>")
+    @Then("debe mostrarme: Fecha de creación <fechaCreacion>, Numero de poliza <nroPoliza>, producto <producto>, Numero de transaccion <nroTransaccion>, Tipo <tipo>, estado <estado>.")
     public void thenMostrarInformacionTransacciones(@Named("fechaCreacion")String fechaCreacion,@Named("nroPoliza")String nroPoliza,
                                                     @Named("producto")String producto,@Named("nroTransaccion")String nroTransaccion,
                                                     @Named("tipo")String tipo,@Named("estado")String estado){
@@ -84,24 +79,29 @@ public class InformacionTitularCuentaDefinitions {
         informacionTitularCuentaSteps.validarInformacionTransacciones(fechaCreacion, nroPoliza, producto, nroTransaccion, tipo, estado);
     }
 
-
-    @Then("debe mostrarme Numero de poliza <nroPoliza>, producto <producto>, asegurado <asegurado>, Fecha de perdida <fechaPerdida>,\n" +
-            "numero de siniestro <nroSiniestro>, Estado <estado>, total incurrido <totalIncurrido>.")
-    public void thenMostrarInformacionSiniestros(@Named("nroPoliza")String nroPoliza,@Named("producto")String producto,
+    @Then("debe mostrarme Numero de poliza <nroPoliza>, producto <producto>, asegurado <asegurado>, Fecha de perdida <fechaPerdida>, numero de reclamacion <nroReclamacion>, Estado <estado>, total incurrido <totalIncurrido>.")
+    public void thenMostrarInformacionReclamaciones(@Named("nroPoliza")String nroPoliza,@Named("producto")String producto,
                                                  @Named("asegurado")String asegurado,@Named("fechaPerdida")String fechaPerdida,
-                                                 @Named("nroSiniestro")String nroSiniestro,@Named("estado")String estado,
+                                                 @Named("nroReclamacion")String nroReclamacion,@Named("estado")String estado,
                                                  @Named("totalIncurrido")String totalIncurrido){
 
-        informacionTitularCuentaSteps.validarInformacionSiniestros(nroPoliza, producto, asegurado, fechaPerdida, nroSiniestro,
+        informacionTitularCuentaSteps.validarInformacionReclamaciones(nroPoliza, producto, asegurado, fechaPerdida, nroReclamacion,
                 estado, totalIncurrido);
     }
 
+    @Then("si el campo actividad economica <actividadEconomica> esta vacio se debe ocultar, de lo contrario, se debe mostrar la actividad economica normalmente.")
+    public void thenMostrarActividadEconomica(@Named("actividadEconomica")String actividadEconomica){
 
-    @Then("el nombre del titular de la cuenta debe aparecer con el nombre completo, es decir, nombre 1 <primerNombre>\n" +
-            "seguido de nombre 2 <segundoNombre> seguido de apellido 1 <primerApellido> seguido de apellido 2 <segundoApellido>.")
-    public void thenMostrarNombreCompleto(@Named("primerNombre")String primerNombre,@Named("segundoNombre")String segundoNombre,
-                                          @Named("primerApellido")String primerApellido,@Named("segundoApellido")String segundoApellido){
-
-        informacionTitularCuentaSteps.validarNombreCompletoPersonaNatural(primerNombre, segundoNombre, primerApellido, segundoApellido);
+        informacionTitularCuentaSteps.validarCampoActividadEconomica(actividadEconomica);
     }
+
+    @Then("los campos que se muestren no deben permitir la edicion, es decir, todos los campos seran solo informativos.")
+    public void thenValidarCamposComoNoEditables(){
+
+        informacionTitularCuentaSteps.validarCamposComoNoEditables();
+    }
+
+
+
+
 }

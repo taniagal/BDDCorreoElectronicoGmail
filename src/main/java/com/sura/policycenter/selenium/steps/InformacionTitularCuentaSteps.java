@@ -17,10 +17,9 @@ public class InformacionTitularCuentaSteps extends ScenarioSteps {
 
     @Step
     public void seleccionarInformacionTitularCuenta() {
-
+        informacionTitularCuentaPage.clickTipoDocumento();
         informacionTitularCuentaPage.seleccionarInformacionTitularCuenta();
     }
-
 
     @Step
     public void validarEncabezadosInformacionTitularCuenta (String informacionBasica,
@@ -32,18 +31,18 @@ public class InformacionTitularCuentaSteps extends ScenarioSteps {
 
     @Step
     public void validarInformacionBasica (String titularCuenta, String tipoDocumento, String nroDocumento, String primaVigencia,
-                                          String segmentacion, String comportamniento, String actividadEconomica,
-                                          String totalNoFacturado, String totalFacturado, String totalvencido, String totalPendiente) {
+                                          String segmentacion, String comportamniento, String totalNoFacturado,
+                                          String totalFacturado, String totalvencido, String totalPendiente) {
         informacionTitularCuentaPage.validarInformacionBasica(titularCuenta,tipoDocumento,nroDocumento,primaVigencia, segmentacion, comportamniento,
-                actividadEconomica, totalNoFacturado, totalFacturado, totalvencido, totalPendiente);
+                totalNoFacturado, totalFacturado, totalvencido, totalPendiente);
     }
 
     @Step
     public void validarInformacionMetricas (String anioVigencia, String polizasActivas, String canceladoPorCliente,
                                             String canceladoPorCompania, String otrasCancelaciones, String primaVitalicia,
-                                            String totalSiniestrosAbiertos, String totalNetoIncurrido){
+                                            String totalReclamacionesAbiertas, String totalNetoIncurrido){
         informacionTitularCuentaPage.validarInformacionMetricas(anioVigencia,polizasActivas,canceladoPorCliente,
-                canceladoPorCompania, otrasCancelaciones, primaVitalicia, totalSiniestrosAbiertos, totalNetoIncurrido);
+               canceladoPorCompania, otrasCancelaciones, primaVitalicia, totalReclamacionesAbiertas, totalNetoIncurrido);
     }
 
     @Step
@@ -54,16 +53,24 @@ public class InformacionTitularCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarInformacionSiniestros (String nroPoliza, String producto, String asegurado, String fechaPerdida,
-                                              String nroSiniestro, String estado, String totalIncurrido) {
-        informacionTitularCuentaPage.validarInformacionSiniestros(nroPoliza, producto, asegurado,
-                fechaPerdida, nroSiniestro, estado, totalIncurrido);
+    public void validarInformacionReclamaciones(String nroPoliza, String producto, String asegurado, String fechaPerdida,
+                                              String nroReclamacion, String estado, String totalIncurrido) {
+        informacionTitularCuentaPage.validarInformacionReclamaciones(nroPoliza, producto, asegurado,
+                fechaPerdida, nroReclamacion, estado, totalIncurrido);
     }
 
     @Step
-    public void validarNombreCompletoPersonaNatural (String primerNombre, String segundoNombre, String primerApellido,
-                                                     String segundoApellido) {
-        informacionTitularCuentaPage.validarNombreCompletoPersonaNatural(primerNombre, segundoNombre, primerApellido,
-                segundoApellido);
+    public void validarNombreCompletoPersonaNatural (String nombreCompleto) {
+        informacionTitularCuentaPage.validarNombreCompletoPersonaNatural(nombreCompleto);
+    }
+
+    @Step
+    public void validarCampoActividadEconomica(String actividadEconomica) {
+        informacionTitularCuentaPage.validarCampoActividadEconomica(actividadEconomica);
+    }
+
+    @Step
+    public void validarCamposComoNoEditables() {
+        informacionTitularCuentaPage.validarCamposComoNoEditables();
     }
 }

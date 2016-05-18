@@ -48,9 +48,6 @@ public class InformacionTitularCuentaPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:Behavior-inputEl']")
     WebElementFacade txtComportamiento;
 
-    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountsActividadEconomica-bodyEl']")
-    WebElementFacade txtActividadEconomica;
-
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:TotalUnbilled-inputEl']")
     WebElementFacade txtTotalNoFacturado;
 
@@ -63,6 +60,87 @@ public class InformacionTitularCuentaPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:TotalOutstandingBilled-inputEl']")
     WebElementFacade txtTotalPendiente;
 
+    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:DocumentType']")
+    WebElementFacade itmTipoDocumento;
+
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:FirstPolicyEffectiveYearInput-labelEl']")
+    WebElementFacade lblAnioVigencia;
+
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:ActivePoliciesInput-inputEl']")
+    WebElementFacade txtPolizasActivas;
+
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:CanceledByCustomerInput-inputEl']")
+    WebElementFacade txtCanceladoPorCliente;
+
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:CanceledByCarrierInput-inputEl']")
+    WebElementFacade txtCanceladoPorCompania;
+
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:OtherCancellationsInput-inputEl']")
+    WebElementFacade txtOtrasCancelaciones;
+
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:LifetimePremiumInput-labelEl']")
+    WebElementFacade lblPrimaVitalicia;
+
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:OpenClaimsCount-inputEl']")
+    WebElementFacade txtTotalReclamacionesAbiertas;
+
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:NetTotalIncurred-labelEl']")
+    WebElementFacade lblTotalNetoIncurrido;
+
+    @FindBy(xpath="//div[2]/div/div/div/div/span")
+    WebElementFacade colCrearFecha;
+
+    @FindBy(xpath="//div/div/div[2]/div/span")
+    WebElementFacade colNroPoliza;
+
+    @FindBy(xpath="//div[3]/div/span")
+    WebElementFacade colProducto;
+
+    @FindBy(xpath="//div/div/div[4]/div/span")
+    WebElementFacade colNroTransaccion;
+
+    @FindBy(xpath="//div[5]/div/span")
+    WebElementFacade colTipo;
+
+    @FindBy(xpath="//div[6]/div/span")
+    WebElementFacade colEstado;
+
+
+    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div/div/span")
+    WebElementFacade colNumeroPoliza;
+
+    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[2]/div/span")
+    WebElementFacade colProductoReclamaciones;
+
+    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[3]/div/span")
+    WebElementFacade colAsegurado;
+
+    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[4]/div/span")
+    WebElementFacade colFechaPerdida;
+
+    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[5]/div/span")
+    WebElementFacade colNroReclamacion;
+
+    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[6]/div/span")
+    WebElementFacade colEstadoReclamacion;
+
+    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[7]/div/span")
+    WebElementFacade colTotalIncurrido;
+
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountsActividadEconomica-labelEl']")
+    WebElementFacade lblActividadEconomica;
+
+
+    public void clickTipoDocumento() {
+        itmTipoDocumento.waitUntilEnabled();
+        itmTipoDocumento.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
 
     public void seleccionarInformacionTitularCuenta() {
         mnuInformacionTitularCuenta.waitUntilEnabled();
@@ -90,7 +168,7 @@ public class InformacionTitularCuentaPage extends Guidewire {
     }
 
     public void validarInformacionBasica(String titularCuenta, String tipoDocumento, String nroDocumento, String primaVigencia,
-                                         String segmentacion, String comportamniento, String actividadEconomica,
+                                         String segmentacion, String comportamniento,
                                          String totalNoFacturado, String totalFacturado, String totalVencido, String totalPendiente){
         try {
             assertThat(txtTitularCuenta.getText().toString(), is(equalTo(titularCuenta)));
@@ -99,7 +177,6 @@ public class InformacionTitularCuentaPage extends Guidewire {
             assertThat(txtPrimaVigencia.getText().toString(), is(equalTo(primaVigencia)));
             assertThat(txtSegmentacion.getText().toString(), is(equalTo(segmentacion)));
             assertThat(txtComportamiento.getText().toString(), is(equalTo(comportamniento)));
-            assertThat(txtActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
             assertThat(txtTotalNoFacturado.getText().toString(), is(equalTo(totalNoFacturado)));
             assertThat(txtTotalFacturado.getText().toString(), is(equalTo(totalFacturado)));
             assertThat(txtTotalVencido.getText().toString(), is(equalTo(totalVencido)));
@@ -109,61 +186,78 @@ public class InformacionTitularCuentaPage extends Guidewire {
         }
     }
 
-    public void validarInformacionMetricas(String titularCuenta, String tipoDocumento, String nroDocumento, String primaVigencia,
-                                         String segmentacion, String comportamniento, String actividadEconomica,
-                                         String totalNoFacturado, String totalFacturado, String totalVencido, String totalPendiente){
+    public void validarInformacionMetricas(String anioVigencia, String polizasActivas, String canceladoPorCliente,
+                                                String canceladoPorCompania, String otrasCancelaciones, String primaVitalicia,
+                                                String totalReclamacionesAbiertas, String totalNetoIncurrido){
         try {
-            assertThat(txtTitularCuenta.getText().toString(), is(equalTo(titularCuenta)));
-            assertThat(txtTipoDocumento.getText().toString(), is(equalTo(tipoDocumento)));
-            assertThat(txtNumeroDocumento.getText().toString(), is(equalTo(nroDocumento)));
-            assertThat(txtPrimaVigencia.getText().toString(), is(equalTo(primaVigencia)));
-            assertThat(txtSegmentacion.getText().toString(), is(equalTo(segmentacion)));
-            assertThat(txtComportamiento.getText().toString(), is(equalTo(comportamniento)));
-            assertThat(txtActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
-            assertThat(txtTotalNoFacturado.getText().toString(), is(equalTo(totalNoFacturado)));
-            assertThat(txtTotalFacturado.getText().toString(), is(equalTo(totalFacturado)));
-            assertThat(txtTotalVencido.getText().toString(), is(equalTo(totalVencido)));
-            assertThat(txtTotalPendiente.getText().toString(), is(equalTo(totalPendiente)));
+            assertThat(lblAnioVigencia.getText().toString(), is(equalTo(anioVigencia)));
+            assertThat(txtPolizasActivas.getText().toString(), is(equalTo(polizasActivas)));
+            assertThat(txtCanceladoPorCliente.getText().toString(), is(equalTo(canceladoPorCliente)));
+            assertThat(txtCanceladoPorCompania.getText().toString(), is(equalTo(canceladoPorCompania)));
+            assertThat(txtOtrasCancelaciones.getText().toString(), is(equalTo(otrasCancelaciones)));
+            assertThat(lblPrimaVitalicia.getText().toString(), is(equalTo(primaVitalicia)));
+            assertThat(txtTotalReclamacionesAbiertas.getText().toString(), is(equalTo(totalReclamacionesAbiertas)));
+            assertThat(lblTotalNetoIncurrido.getText().toString(), is(equalTo(totalNetoIncurrido)));
+
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void validarInformacionTransacciones(String titularCuenta, String tipoDocumento, String nroDocumento, String primaVigencia,
-                                         String segmentacion, String comportamniento, String actividadEconomica,
-                                         String totalNoFacturado, String totalFacturado, String totalVencido, String totalPendiente){
+    public void validarNombreCompletoPersonaNatural(String nombreCompleto){
         try {
-            assertThat(txtTitularCuenta.getText().toString(), is(equalTo(titularCuenta)));
-            assertThat(txtTipoDocumento.getText().toString(), is(equalTo(tipoDocumento)));
-            assertThat(txtNumeroDocumento.getText().toString(), is(equalTo(nroDocumento)));
-            assertThat(txtPrimaVigencia.getText().toString(), is(equalTo(primaVigencia)));
-            assertThat(txtSegmentacion.getText().toString(), is(equalTo(segmentacion)));
-            assertThat(txtComportamiento.getText().toString(), is(equalTo(comportamniento)));
-            assertThat(txtActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
-            assertThat(txtTotalNoFacturado.getText().toString(), is(equalTo(totalNoFacturado)));
-            assertThat(txtTotalFacturado.getText().toString(), is(equalTo(totalFacturado)));
-            assertThat(txtTotalVencido.getText().toString(), is(equalTo(totalVencido)));
-            assertThat(txtTotalPendiente.getText().toString(), is(equalTo(totalPendiente)));
+            assertThat(txtTitularCuenta.getText().toString(), is(equalTo(nombreCompleto)));
+
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void validarInformacionSiniestros(String titularCuenta, String tipoDocumento, String nroDocumento, String primaVigencia,
-                                                String segmentacion, String comportamniento, String actividadEconomica,
-                                                String totalNoFacturado, String totalFacturado, String totalVencido, String totalPendiente){
+    public void validarInformacionTransacciones(String fechaCreacion, String nroPoliza, String producto,
+                                                String nroTransaccion, String tipo, String estado){
         try {
-            assertThat(txtTitularCuenta.getText().toString(), is(equalTo(titularCuenta)));
-            assertThat(txtTipoDocumento.getText().toString(), is(equalTo(tipoDocumento)));
-            assertThat(txtNumeroDocumento.getText().toString(), is(equalTo(nroDocumento)));
-            assertThat(txtPrimaVigencia.getText().toString(), is(equalTo(primaVigencia)));
-            assertThat(txtSegmentacion.getText().toString(), is(equalTo(segmentacion)));
-            assertThat(txtComportamiento.getText().toString(), is(equalTo(comportamniento)));
-            assertThat(txtActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
-            assertThat(txtTotalNoFacturado.getText().toString(), is(equalTo(totalNoFacturado)));
-            assertThat(txtTotalFacturado.getText().toString(), is(equalTo(totalFacturado)));
-            assertThat(txtTotalVencido.getText().toString(), is(equalTo(totalVencido)));
-            assertThat(txtTotalPendiente.getText().toString(), is(equalTo(totalPendiente)));
+            assertThat(colCrearFecha.getText().toString(), is(equalTo(fechaCreacion)));
+            assertThat(colNroPoliza.getText().toString(), is(equalTo(nroPoliza)));
+            assertThat(colProducto.getText().toString(), is(equalTo(producto)));
+            assertThat(colNroTransaccion.getText().toString(), is(equalTo(nroTransaccion)));
+            assertThat(colTipo.getText().toString(), is(equalTo(tipo)));
+            assertThat(colEstado.getText().toString(), is(equalTo(estado)));
+
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void validarInformacionReclamaciones(String nroPoliza, String producto, String asegurado, String fechaPerdida,
+                                                String nroReclamacion, String estado, String totalIncurrido){
+        try {
+            assertThat(colNumeroPoliza.getText().toString(), is(equalTo(nroPoliza)));
+            assertThat(colProductoReclamaciones.getText().toString(), is(equalTo(producto)));
+            assertThat(colAsegurado.getText().toString(), is(equalTo(asegurado)));
+            assertThat(colFechaPerdida.getText().toString(), is(equalTo(fechaPerdida)));
+            assertThat(colNroReclamacion.getText().toString(), is(equalTo(nroReclamacion)));
+            assertThat(colEstadoReclamacion.getText().toString(), is(equalTo(estado)));
+            assertThat(colTotalIncurrido.getText().toString(), is(equalTo(totalIncurrido)));
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void validarCampoActividadEconomica(String actividadEconomica){
+        try {
+            assertThat(lblActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
+
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void validarCamposComoNoEditables(){
+        try {
+           /* waitABit(3000);
+            String texto = txtTitularCuenta.getText().toString();
+            txtTitularCuenta.sendKeys("prueba");
+            assertThat(texto, is(equalTo(txtTitularCuenta.getText().toString())));*/
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
