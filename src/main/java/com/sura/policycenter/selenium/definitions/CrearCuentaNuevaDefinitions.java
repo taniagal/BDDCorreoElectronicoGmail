@@ -84,7 +84,7 @@ public class CrearCuentaNuevaDefinitions {
                                                     @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
                                                     @Named("codigo_postal")String codigoPostal, @Named("nombre_organizacion")String nombreOrganizacion, @Named("agente") String agente){
         cns.abrirNuevaCuenta();
-        cns.crearNuevaCuentaPersona2(tipoDocumento, fechaNacimiento, primerNombre, primerApellido, tipoDireccion,direccion,
+        cns.crearNuevaCuentaPersona(tipoDocumento, fechaNacimiento, primerNombre, primerApellido, tipoDireccion,direccion,
                 codigoPostal,nombreOrganizacion,agente);
     }
 
@@ -107,7 +107,7 @@ public class CrearCuentaNuevaDefinitions {
         Date date = new Date();
         String fechaActual = dateFormat.format(date);
         cns.abrirNuevaCuenta();
-        cns.crearNuevaCuentaPersona2(tipoDocumento,fechaActual, primerNombre, primerApellido, tipoDireccion,direccion,codigoPostal,nombreOrganizacion, agente);
+        cns.crearNuevaCuentaPersona(tipoDocumento,fechaActual, primerNombre, primerApellido, tipoDireccion,direccion,codigoPostal,nombreOrganizacion, agente);
     }
 
     @Then("No me debe permitir crear la cuenta y debe mostrar el mensaje <mensaje>")
