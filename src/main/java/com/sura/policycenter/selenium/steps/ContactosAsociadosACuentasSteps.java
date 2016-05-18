@@ -2,10 +2,13 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.ContactosAsociadosACuentasPage;
 import com.sura.policycenter.selenium.pages.CuentasOrdenesDeTrabajoPage;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
+
+import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 /**
  * Created by jorgsape on 2016/05/04.
@@ -25,7 +28,9 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
     private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
     CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
-
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
     public ContactosAsociadosACuentasSteps(Pages pages) {
         super(pages);
@@ -33,8 +38,8 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
     @Step
     public void consultarCuentaPorNum(String numCuenta) {
-        cuentasOrdenesTrabajoPage.buscarCuenta(numCuenta);
-
+        //cuentasOrdenesTrabajoPage.buscarCuenta(numCuenta);
+        inicioPage().irACuentaBuscar(numCuenta);
     }
 
     @Step

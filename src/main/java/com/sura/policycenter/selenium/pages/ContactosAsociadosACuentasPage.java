@@ -116,7 +116,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     public void selecionarContacto(String posicion) {
         List<WebElementFacade> contactos = getListaContactos();
         contactos.get(Integer.parseInt(posicion)).click();
-        threadWait(1000);
+        waitABit(1000);
     }
 
     public void seleccionarTabDetalleContacto() {
@@ -172,13 +172,13 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     public void verificarRolesFuncionesNoEsNulo() {
         List<WebElementFacade> rolesFunciones = getListaRolesFunciones();
         assertThat("El contacto debe tener roles o funciones asignados", rolesFunciones.size() > 0);
-        threadWait(1000);
+        waitABit(1000);
     }
 
     public void verificarDireccioneNoEsNulo() {
         List<WebElementFacade> direcciones = getListaDirecciones();
         assertThat("El contacto debe tener direcciones asignados", direcciones.size() > 0);
-        threadWait(1000);
+        waitABit(1000);
     }
 
 

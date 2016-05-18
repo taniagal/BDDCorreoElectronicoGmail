@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.ContactoOrdenesDeTrabajoPage;
 import com.sura.policycenter.selenium.pages.CuentasOrdenesDeTrabajoPage;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -12,7 +13,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
 
     CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
-
+    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
     public CuentasOrdenesDeTrabajoSteps(Pages pages) {
         super(pages);
     }
@@ -42,8 +43,8 @@ public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
 
     @Step
     public void seleccionarCuenta(String numCuenta) {
-
-        cuentasOrdenesTrabajoPage.buscarCuenta(numCuenta);
+        inicioPage().irACuentaBuscar(numCuenta);
+        //cuentasOrdenesTrabajoPage.buscarCuenta(numCuenta);
     }
 
 

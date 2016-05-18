@@ -45,6 +45,7 @@ public class CuentasAsociadasAContactoPage extends SeusLoginPage {
     }
 
     public void validarMensaje(String mensaje) {
+        mnuLateralCuenta.waitUntilClickable();
         mnuLateralCuenta.click();
         assertThat(msjCuentaNoEncontrada.getText(), containsString(mensaje));
     }
