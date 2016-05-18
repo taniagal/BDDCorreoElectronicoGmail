@@ -63,20 +63,13 @@ public class BusquedaContactoPage extends Guidewire {
     WebElementFacade msjSinRegistros;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:SearchWarningMessagePanelSet:SearchWarningMessage']")
-    //@FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:_msgs']/div")
     WebElementFacade msjSinCriterios;
 
     @FindBy(xpath="//li[2]")
     WebElementFacade itmNIT;
 
-    @FindBy(xpath="//td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
-    WebElementFacade btnTipoDoc;
-
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:DocumentType-inputEl']")
     WebElementFacade txtTipoDoc;
-
-    @FindBy(xpath="//li")
-    WebElementFacade itmTipoDoc;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:identificationNumber-inputEl']")
     WebElementFacade txtNumDoc;
@@ -92,36 +85,6 @@ public class BusquedaContactoPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:DocumentType']")
     WebElementFacade selectContact;
-
-    @FindBy(xpath="//div[3]/div/table/tbody/tr/td[2]/div")
-    WebElementFacade colTipoId;
-
-    @FindBy(xpath="//td[3]/div")
-    WebElementFacade colNumId;
-
-    @FindBy(xpath="//td[4]/div")
-    WebElementFacade colNombreCcial;
-
-    @FindBy(xpath="//td[5]/div")
-    WebElementFacade colRazonSocial;
-
-    @FindBy(xpath="//td[6]/div")
-    WebElementFacade colDireccion;
-
-    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:FirstName']")
-    WebElementFacade colNombre;
-
-    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:FirstLastName']")
-    WebElementFacade colApellido;
-
-    @FindBy(xpath="//td[9]/div")
-    WebElementFacade colTelefono;
-
-    @FindBy(xpath="//td[10]/div")
-    WebElementFacade colEmail;
-
-    @FindBy(xpath="//td[11]/div")
-    WebElementFacade colExterna;
 
     @FindBy(xpath="//div[3]/div/table")
     WebElementFacade table;
