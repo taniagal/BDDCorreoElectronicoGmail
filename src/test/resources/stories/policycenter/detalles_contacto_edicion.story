@@ -15,9 +15,9 @@ Scenario: Editar detalles de contacto de tipo persona natural
 GivenStories: stories/policycenter/crear_nuevo_contacto_natural.story
 Given Se ha consultado la informacion detallada de un contacto persona natural
 When quiera editar la informacion del contacto con segundo nombre <segundo_nombre>
-And segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>
 And profesion <profesion>, estado civil <estado_civil>,tipo familia <tipo_familia>
 And telefono celular <telefono_celular>
+And segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>
 And correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>,telefono residencial<telefono_residencial>
 Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios
 

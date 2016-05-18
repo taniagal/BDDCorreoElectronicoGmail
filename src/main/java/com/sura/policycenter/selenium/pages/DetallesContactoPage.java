@@ -263,6 +263,7 @@ public class DetallesContactoPage extends Guidewire {
 
     public void agregarApellido(String segundoApellido){
         txtSegundoApellido.clear();
+        waitABit(1500);
         txtSegundoApellido.sendKeys(segundoApellido);
         dtlContact[3]= segundoApellido;
     }

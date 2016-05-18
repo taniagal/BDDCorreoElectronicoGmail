@@ -36,7 +36,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void nuevoContactoPersona() {
-        inicioPage.nuevoContactoPersona();
+        inicioPage.irANuevaPersona();
     }
 
     @Step
