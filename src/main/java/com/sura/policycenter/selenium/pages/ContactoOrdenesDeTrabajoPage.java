@@ -74,10 +74,10 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         this.mnuTransaccionesPoliza.click();
     }
 
-    public void validarCamposTransacciones(String producto, String numeroTransaccion,
+    public void validarCamposTransacciones(String poliza, String producto, String numeroTransaccion,
                                            String tipo, String estado, String participante) {
         assertThat(this.fechaCreacion.getText(), is(notNullValue()));
-        assertThat(this.poliza.getText(), is(notNullValue()));
+        assertThat(this.poliza.getText(), containsString(poliza));
         assertThat(this.producto.getText(), containsString(producto));
         assertThat(this.numeroTransaccion.getText(), containsString(numeroTransaccion));
         assertThat(this.tipo.getText(), containsString(tipo));
