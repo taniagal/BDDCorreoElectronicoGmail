@@ -120,4 +120,17 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
             }
         }
     }
+
+    @Step
+    public void eliminarContactoAsociando(String nombreContacto) throws Exception {
+        contactosAsociadosACuentasPage.ElimnarContactoAsociado(nombreContacto);
+    }
+
+    @Step
+    public void contactoEliminado(String contactoEliminado) throws Exception {
+        contactosAsociadosACuentasPage.contactoEliminado(contactoEliminado);
+    }
+
+
+
 }

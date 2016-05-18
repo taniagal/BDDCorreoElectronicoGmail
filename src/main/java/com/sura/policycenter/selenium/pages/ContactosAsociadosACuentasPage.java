@@ -3,6 +3,7 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.constantes.EnumContacto;
 import com.sura.serinitybdd.util.GwNavegacionUtil;
+import jxl.common.Assert;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
@@ -62,6 +63,10 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     private WebElementFacade lblDireccion;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
     private WebElementFacade lblTelefono;
+
+    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:removeContact-btnInnerEl']")
+    private WebElementFacade btnEliminar;
+
 
 
 
@@ -234,5 +239,42 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         this.btnCrearNuevoContacto.click();
     }
 
+    public void ElimnarContactoAsociado(String nombreContacto) {
+
+        List<WebElementFacade> checkBoxes = withTimeoutOf(1, SECONDS)
+                .findAll("//img[contains(@class,'x-grid-checkcolumn')]");
+
+        int cont = 0;
+
+        for (WebElementFacade contacto : getListaContactos()) {
+            cont += 1;
+            if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {
+
+                for (int i = 0 ; i < checkBoxes.size(); i++){
+
+                    if (i == cont){
+                        checkBoxes.get(cont-1).click();
+                        btnEliminar.click();
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    public void contactoEliminado(String contactoEliminado) {
+
+        boolean noExiste = true;
+        for (WebElementFacade contacto : getListaContactos()) {
+
+            if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(contactoEliminado)) {
+                noExiste = false;
+            }
+
+        }
+        assertThat("No existe el contacto",noExiste);
+
+    }
 
 }

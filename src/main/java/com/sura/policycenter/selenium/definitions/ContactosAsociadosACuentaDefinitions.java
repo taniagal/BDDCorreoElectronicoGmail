@@ -5,9 +5,7 @@ import com.sura.policycenter.selenium.pages.NuevoAseguradoNombradoPage;
 import com.sura.policycenter.selenium.steps.ContactosAsociadosACuentasSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
 /**
@@ -96,6 +94,17 @@ public class ContactosAsociadosACuentaDefinitions {
         contactosAsociadosACuentaSteps.buscarContactoDelDirectorio();
     }
 
+
+    @Given("y deseo eliminar el contacto <contactoEliminado>")
+    public void givenYDeseoEliminarElContactocontactoEliminado(String contactoEliminado) throws Exception {
+        contactosAsociadosACuentaSteps.eliminarContactoAsociando(contactoEliminado);
+    }
+
+
+    @Then("el contacto <contactoEliminado> ya no debe estar asociado a la cuenta")
+    public void thenContatctoEliminado(String contactoEliminado) throws Exception {
+        contactosAsociadosACuentaSteps.contactoEliminado(contactoEliminado);
+    }
 
 
 }
