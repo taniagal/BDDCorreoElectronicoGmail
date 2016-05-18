@@ -7,6 +7,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.contacto.ContactoNueva
 import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.*;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarActividadesPage;
@@ -168,8 +169,7 @@ public class InicioPage extends Guidewire {
     public BuscarPolizasPage irABuscarPolizas() {
         return navegacion.irABuscarPolizas();
     }
-    public BuscarCuentasPage irABuscarCuentas() {
-        return navegacion.irABuscarCuentas();
+    public BuscarCuentasPage irABuscarCuentas() {return navegacion.irABuscarCuentas();
     }
     public BuscarCodAgentePage irABuscarCodAgente() {
         return navegacion.irABuscarCodAgente();
@@ -361,4 +361,8 @@ public class InicioPage extends Guidewire {
     }
     public AdminVerificarErrorPatronPage irAAdminVerificarErrorPatron() { return navegacion.irAAdminVerificarErrorPatron(); }
 
+    //Metodos Opciones Cuentas
+    public OpcionesCrearPartcCuentaPage irAOpcionesCrearPartcCuenta(){
+        return navegacion.irAOpcionesCrearPartcCuenta();
+    }
 }
