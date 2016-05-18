@@ -190,11 +190,11 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
     public void esContactoAsociado() throws Exception {
         NuevoAseguradoNombradoPage nuevoAseguradoNombradoPage = new NuevoAseguradoNombradoPage(getDriver());
-        if (nuevoAseguradoNombradoPage.asociarNuevoAseguradoNombradoACuenta()){
+        //if (nuevoAseguradoNombradoPage.asociarNuevoAseguradoNombradoACuenta()){
             for (WebElementFacade contacto : getListaContactos()){
                 System.out.printf("");
             }
-        }
+        //}
 
         //assertThat();
 

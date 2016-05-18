@@ -101,4 +101,5 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     public void esContactoAsociado() throws Exception {
         contactosAsociadosACuentasPage.esContactoAsociado();
     }
+
 }

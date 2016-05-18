@@ -13,7 +13,7 @@ And asocie un nuevo contacto a la cuenta con el rol seleccionado
 Then debo poder visualizar el contacto recien asociado con su rol seleccionado
 Examples:
 |numCuenta|darClick|
-|S000212121|true|
+|C000888888|true|
 
 
 
