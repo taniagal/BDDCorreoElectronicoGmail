@@ -113,7 +113,7 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
     @Step
     public void buscarContactoDelDirectorio() throws Exception {
-        Boolean esContactoAsociadoDesdeDirectorio = busquedaDelDirectorioPage.buscarContacto("Personal", "DORIAN", "EASTMOND");
+        Boolean esContactoAsociadoDesdeDirectorio = busquedaDelDirectorioPage.buscarContacto("CEDULA DE CIUDADANIA", "DORIAN", "EASTMOND");
         if (esContactoAsociadoDesdeDirectorio) {
             if(esContactoAsociado("DORIAN STIWAR EASTMOND PULGARIN")){
                 contactosAsociadosACuentasPage.validarOcurrenciaDeMensajeDeAplicacion(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:_msgs']/div","porque ya tiene ese rol");

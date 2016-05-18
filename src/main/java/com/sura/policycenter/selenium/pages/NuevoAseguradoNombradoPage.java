@@ -53,7 +53,7 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
         Boolean esAsociado;
         try {
 
-            txtNumeroDocumento.type("1".concat(cedulaRandom()));
+            txtNumeroDocumento.type("11".concat(cedulaRandom()));
             txtNombre.type("JOHAN");
             txtApellido.type("MUSTACHE");
             txtTelefonoTrabajo.type("435-3434");

@@ -21,7 +21,6 @@ public class BusquedaDeCuentasDefinitions {
 
     @Given("que me encuentro en la busqueda de cuentas")
     public void ingresarABuscarCuentas() {
-        //busquedaDeCuentasSteps.ingresarABuscarCuentas("Buscar", "Cuentas");
         inicioPage().irABuscarCuentas();
     }
 

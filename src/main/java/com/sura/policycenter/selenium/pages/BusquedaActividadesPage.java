@@ -86,6 +86,7 @@ public class BusquedaActividadesPage extends SeusLoginPage {
             mnuBuscar.click();
             waitABit(1000);
             mnuBuscar.click();
+            waitABit(1000);
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
             act.moveToElement(mnuBuscarActividades).click().build().perform();
             btnRestablecer.click();
