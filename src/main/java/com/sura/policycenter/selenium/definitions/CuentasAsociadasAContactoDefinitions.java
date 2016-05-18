@@ -20,7 +20,7 @@ public class CuentasAsociadasAContactoDefinitions {
     @When("consulte  un contacto con cuentas asociadas como: <nombre> <apellido>")
     public void consultarCuentasAsociadas(@Named("nombre") String nombre,
                                           @Named("apellido") String apellido) {
-        contactoSteps.buscarContacto("Personal", nombre, apellido);
+        contactoSteps.buscarContactoPersona("CEDULA DE CIUDADANIA", nombre, apellido);
     }
 
     @Then("se muestra la lista de cuentas asociadas con nombre: <nombreConsulta>, direccion: <direccion>, tel: <telefono>, email: <email> y rol: <rol>")
@@ -35,7 +35,7 @@ public class CuentasAsociadasAContactoDefinitions {
     @When("consulte  un contacto sin cuentas asociadas como: <nombre> <apellido>")
     public void consultarCuentasAsociadasVacias(@Named("nombre") String nombre,
                                                 @Named("apellido") String apellido) {
-        contactoSteps.buscarContacto("Personal", nombre, apellido);
+        contactoSteps.buscarContactoPersona("CEDULA DE CIUDADANIA", nombre, apellido);
     }
 
     @Then("se muestra el mensaje informativo <mensaje>")

@@ -8,13 +8,13 @@ para obtener información de órdenes de trabajo
 Scenario: Ver informacion de las transacciones asociadas al contacto
 GivenStories: stories/policycenter/login_policy.story
 Given que voy a consultar un contacto
-And consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>
+And consulte  un contacto del tipo <tipoContacto> con transacciones como: <razonSocial>
 When consulte las transacciones por estado <filtroEstado>
 Then debe mostrarme el listado de transacciones con su respectiva informacion: producto <producto> Transaccion <transaccion> Tipo <tipo> Status <estado> Participante <participante>
 
 Examples:
-|tipoContacto|nombre|apellido|filtroEstado|producto|transaccion|tipo|estado|participante
-|Empresa|Earth Tech||Completo|Businessowners|467653123|Emisión|Comprometida|Christine Craft
+|tipoContacto|razonSocial|filtroEstado|producto|transaccion|tipo|estado|participante
+|NIT|VARIEDADES YURLEDYS|Completo|Businessowners|467653123|Emisión|Comprometida|Christine Craft
 
 Scenario: Ver informacion de transacciones sin registros
 Given que voy a consultar un contacto
@@ -24,17 +24,17 @@ Then se muestra el mensaje informativo de transaccion no encontrada <mensaje>
 
 Examples:
 |tipoContacto|nombre|apellido|mensaje
-|Personal|Jane|Collins|El contacto no tiene transacciones asociadas
+|CEDULA DE CIUDADANIA|YURLEDYS|GALLEGO|El contacto no tiene transacciones asociadas
 
 Scenario: Ver informacion filtrada por estado
 Given que voy a consultar un contacto
-And consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>
+And consulte  un contacto del tipo <tipoContacto> con transacciones como: <razonSocial>
 When consulte las transacciones por estado <filtroEstado>
 Then debe mostrarme el listado de transacciones filtradas por estado <filtroEstado>
 
 Examples:
-|tipoContacto|nombre|apellido|filtroEstado|estado
-|Empresa|Earth Tech||Completo
+|tipoContacto|razonSocial|filtroEstado|estado
+|NIT|VARIEDADES YURLEDYS||Completo
 
 Scenario: Ver informacion filtrada por tipo de transaccion
 Given que voy a consultar un contacto
@@ -45,7 +45,7 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 |tipoContacto|nombre|apellido|numero|filtroEstado|filtroTransaccion
-|Empresa|Wright Construction||2|Todos|Emisión
+|NIT|VARIEDADES YURLEDYS||1|Todos|Emisión
 
 Scenario: Ver informacion filtrada por producto
 Given que voy a consultar un contacto
@@ -57,4 +57,4 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 |tipoContacto|nombre|apellido|numero|filtroEstado|filtroTransaccion|filtroProducto
-|Empresa|Wright Construction||2|Todos|Todos|Auto comercial
+|NIT|VARIEDADES YURLEDYS||1|Todos|Todos|Auto comercial

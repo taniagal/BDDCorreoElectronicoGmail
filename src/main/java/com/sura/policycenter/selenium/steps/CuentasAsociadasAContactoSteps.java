@@ -26,10 +26,17 @@ public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void buscarContacto(String tipoContacto, String nombre, String apellido) {
+    public void buscarContactoPersona(String tipoContacto, String nombre, String apellido) {
         //busquedaPage.accionarBuscarContacto();
         inicioPage().irABuscarContacto();
-        busquedaPage.buscarContacto(tipoContacto, nombre, apellido);
+        busquedaPage.consultarContactoPorNombresYApellidos(tipoContacto,nombre,"",apellido,"");
+        busquedaPage.seleccionarContacto();
+    }
+
+    @Step
+    public void buscarContactoEmpresa(String tipoContacto, String razonSocial){
+        busquedaPage.consultarPersonaJuridaPorRazonSocial(tipoContacto, razonSocial);
+        busquedaPage.seleccionarContacto();
     }
 
     @Step
