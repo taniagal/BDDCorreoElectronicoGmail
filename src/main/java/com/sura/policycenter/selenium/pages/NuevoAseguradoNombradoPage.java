@@ -23,7 +23,7 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
     private WebElementFacade txtDireccion;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade cboDepartamento;
-    @FindBy(xpath = ".//div[@class='x-trigger-index-0 x-form-trigger x-form-arrow-trigger x-form-trigger-first x-form-trigger-over x-form-arrow-trigger-over']")
+    @FindBy(xpath = "//input[@name='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext']")
     private WebElementFacade cboCiudad;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade txtTelefonoTrabajo;
@@ -70,7 +70,7 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
             cboTipoDireccion.type("Otros");
             cboTipoDocumento.type("CEDULA DE CIUDADANIA");
             cboDepartamento.type("Antioquia");
-
+            txtApellido.setWindowFocus();
 
 //            waitABit(1000);
 //            WebElementFacade cbxDeptoList = findBy(".//input[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
@@ -80,9 +80,11 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
 //            WebElementFacade cbxDepto = findBy(".//li[contains(.,'Antioquia')]");
 //            cbxDepto.click();
 //            waitABit(1000);
-
+            waitABit(3000);
             cboCiudad.clear();
+            waitABit(3000);
             cboCiudad.type("Medellin");
+            waitABit(3000);
 
 //            waitABit(1000);
 //            cboCiudad.click();
@@ -95,7 +97,7 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
             txtDireccion.click();
             txtDireccion.type("CL 45 - 56 A 109");
             txtApellido.setWindowFocus();
-            threadWait(5000);
+            waitABit(3000);
 
             btnActualizar.waitUntilClickable();
             btnActualizar.click();
