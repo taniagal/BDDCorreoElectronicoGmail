@@ -97,7 +97,7 @@ public class CuentaPage extends Guidewire{
 
     public void crearCuentaNuevaPersona(String tipoDocumento, String documento, String fechaNacimiento,
                                         String primerNombre, String primerApellido, String tipoDireccion,
-                                        String direccion, String codigoPostal, String nombreOrganizacion){
+                                        String direccion, String codigoPostal, String nombreOrganizacion, String agente){
         btnCrearCuentaNueva.click();
         btnNuevaCuentaPersonal.click();
         espera(btnAgregarOrganizacion,5);
@@ -106,7 +106,7 @@ public class CuentaPage extends Guidewire{
         btnBuscarOrganizacion.click();
         btnSeleccionarOrganizacion.click();
         waitABit(1000);
-        selectItem(cboCodigoAgente,"4999Agente Sura");
+        selectItem(cboCodigoAgente,agente);
         espera(cboTipoDocumentoNuevaCuenta,15);
         cboTipoDocumentoNuevaCuenta.clear();
         cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
@@ -123,7 +123,7 @@ public class CuentaPage extends Guidewire{
     }
 
     public void crearCuentaNuevaPersonaJuridica(String tipoDocumento, String documento, String nombreEmpresa,
-                                                String tipoDireccion, String direccion, String codigoPostal, String nombreOrganizacion) {
+                                                String tipoDireccion, String direccion, String codigoPostal, String nombreOrganizacion, String agente) {
         btnCrearCuentaNueva.click();
         btnNuevaCuentaCompania.click();
         espera(btnAgregarOrganizacion,5);
@@ -132,7 +132,7 @@ public class CuentaPage extends Guidewire{
         btnBuscarOrganizacion.click();
         btnSeleccionarOrganizacion.click();
         waitABit(1000);
-        selectItem(cboCodigoAgente,"4999Agente Sura");
+        selectItem(cboCodigoAgente,agente);
         espera(cboTipoDocumentoNuevaCuenta,15);
         cboTipoDocumentoNuevaCuenta.clear();
         cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
