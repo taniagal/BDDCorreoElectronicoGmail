@@ -106,24 +106,6 @@ public class Guidewire extends PageObject {
         return act;
     }
 
-<<<<<<< HEAD
-=======
-
-    public String cedulaRandom() {
-        int cedula = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
-        return Integer.toString(cedula);
-    }
-
-    //----Crea un numero de nit de 9 digitos
-    public String nitRandom() {
-        int nit = (int) Math.floor(Math.random() * (900000000 - 999999999) + 999999999);
-        return Integer.toString(nit);
-    }
-
-
-
-
->>>>>>> develop
     public void selectItem(WebElementFacade element, String option){
         element.click();
         waitABit(200);
