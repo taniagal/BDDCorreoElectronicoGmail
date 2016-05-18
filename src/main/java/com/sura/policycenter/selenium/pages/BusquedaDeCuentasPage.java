@@ -245,6 +245,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
     }
 
     public void seleccionarImprimir() {
+        waitABit(1000);
         btnImprimir.click();
     }
 
