@@ -1,6 +1,5 @@
 package com.sura.guidewire.selenium;
 
-import com.google.common.base.Function;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
@@ -10,11 +9,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.TimeUnit;
+
 import static org.hamcrest.CoreMatchers.containsString;
 
 /**
@@ -32,7 +31,7 @@ public class Guidewire extends PageObject {
     }
 
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
-    WebElementFacade configuracion;
+    private WebElementFacade configuracion;
     @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
     WebElementFacade internacional;
     @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
@@ -51,6 +50,8 @@ public class Guidewire extends PageObject {
     WebElementFacade btnLogout;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnLogout2;
+    @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
+    WebElementFacade lblMisActividades;
 
     // TODO: 19/04/2016 Revision escritura de excepciones en log
     @WhenPageOpens
@@ -98,26 +99,12 @@ public class Guidewire extends PageObject {
 
     public Actions deployMenu(WebElementFacade menu) {
         Actions act = new Actions(getDriver());
-        menu.waitUntilClickable().click();
-        waitABit(1000);
-        menu.waitUntilClickable().click();
-        waitABit(1000);
+        menu.click();
+        waitABit(1500);
+        menu.click();
+        waitABit(500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
-    }
-
-    public String cedulaRandom() {
-        StringBuilder result=new StringBuilder("");
-
-        int primero = (int) Math.floor(Math.random() * (100 - 999) + 999);
-        int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
-        int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
-
-        result.append(primero);
-        result.append(segundo);
-        result.append(tercero);
-
-        return result.toString();
     }
 
     public void selectItem(WebElementFacade element, String option){
@@ -127,27 +114,47 @@ public class Guidewire extends PageObject {
         element.sendKeys(Keys.ENTER);
     }
 
+    public void threadWait(int milisegundos) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(milisegundos);
+        } catch (InterruptedException e) {
+            LOGGER.error("This is error : " + e);
+        }
+    }
+
+    //----Crea un numero de cudeula de 8 digitos
+    public String cedulaRandom() {
+        int cedula = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
+        return Integer.toString(cedula);
+    }
+
+    //----Crea un numero de nit de 9 digitos
     public String nitRandom() {
-        int primero = (int) Math.floor(Math.random() * (10 - 99) + 99);
-        int segundo = (int) Math.floor(Math.random() * (1000000 - 9999999) + 9999999);
-        return primero + "-" + segundo;
+        int nit = (int) Math.floor(Math.random() * (900000000 - 999999999) + 999999999);
+        return Integer.toString(nit);
     }
 
     public void elegirLenguaje(){
+
+        if(!lblMisActividades.getText().equals("Mis actividades")){
         configuracion.click();
-        waitABit(800);
+        waitABit(300);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(800);
+        waitABit(300);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(800);
+        waitABit(300);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(800);
+        waitABit(300);
         espaniol.click();
+        waitABit(850);
+        }
+
     }
 
     protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
         final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-
 }
+
+
