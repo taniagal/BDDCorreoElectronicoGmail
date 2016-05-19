@@ -10,12 +10,9 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 
 public class DetallesContactoSteps extends ScenarioSteps {
-
     BusquedaContactoPage bc = new BusquedaContactoPage(getDriver());
-
     DetallesContactoPage dc = new DetallesContactoPage(getDriver());
 
-    //EscritorioPage escritorioPolicy = new EscritorioPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
@@ -27,10 +24,9 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
 
     @Step
-    public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido){
-        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
+    public void abrirDetallesContactoPersona(String primerNombre, String primerApellido){
         inicioPage().irABuscarContacto();
-        bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primer_nombre,"",primer_apellido,"");
+        bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primerNombre,"",primerApellido,"");
         bc.seleccionarContacto();
     }
 
@@ -41,7 +37,6 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
     @Step
     public void abrirDetallesContactoEmpresa(String nombreEmpresa){
-        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
         inicioPage().irABuscarContacto();
         bc.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
         bc.seleccionarContacto();
@@ -126,5 +121,15 @@ public class DetallesContactoSteps extends ScenarioSteps {
     @Step
     public void validarCampos() {
         dc.validarCampos();
+    }
+
+    @Step
+    public void validarDireccion(String tipoDireccion){
+        dc.validarDireccion(tipoDireccion);
+    }
+
+    @Step
+    public void agregarRazonSocial(String razonSocial, String nombreComercial, String actividadComercial) {
+        dc.agregarRazonSocial(razonSocial,nombreComercial,actividadComercial);
     }
 }

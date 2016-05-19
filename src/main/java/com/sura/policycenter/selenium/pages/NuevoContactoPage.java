@@ -9,6 +9,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
@@ -74,10 +75,23 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade pais;
 
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade departamento;
+    private WebElementFacade cboDepartamento;
 
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City-inputEl']")
-    private WebElementFacade ciudad;
+    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
+    private WebElementFacade cboCiudad;
+
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    private WebElementFacade cboDepartamento2;
+
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
+    private WebElementFacade cboCiudad2;
+
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
+    private WebElementFacade tipoDireccion2;
+
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
+    private WebElementFacade direccion2;
+
 
     private WebElementFacade arregloDeMensajes;
 
@@ -104,8 +118,20 @@ public class NuevoContactoPage extends Guidewire {
         selectItem(this.tipoDireccion,tipoDireccion);
     }
 
-    public void ingresarDireccion(String direccion) {
-        selectItem(this.direccion,direccion);
+    public void ingresarDireccion(String direccion, String departamento, String ciudad) {
+        this.direccion.sendKeys(direccion);
+        selectItem(cboDepartamento,departamento);
+        waitABit(1000);
+        selectItem(cboCiudad,ciudad);
+    }
+
+    public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
+        direccion2.sendKeys(direccion);
+        selectItem(cboDepartamento2,departamento);
+        waitABit(1500);
+        selectItem(cboCiudad2,ciudad);
+        waitABit(1500);
+        selectItem(tipoDireccion2,tipoDireccion);
     }
 
     public void actualizarPersonaNatural(String primerNombre) {

@@ -13,12 +13,12 @@ And ingreso la informacion de numero de documento <numeroDeDocumento>
 And ingreso la informacion de primer nombre <primerNombre>
 And ingreso la informacion de primer apellido <primerApellido>
 And ingreso la informacion de tipo de dioreccion <tipoDireccion>
-And ingreso la informacion de direccion <direccion>
+And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 Then se debe crear una persona tipo natural con primer nombre <primerNombre>
 
 Examples:
-|tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion  |direccion  |
-|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |Negocio        |CRA 50     |
+|tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion  |direccion  |departamento|ciudad  |
+|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |Negocio        |CRA 50     |Antioquia   |Medellin|
 
 
 Scenario: Crear contacto persona juridica
@@ -27,12 +27,12 @@ When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
 And ingreso la informacion de razon social <razonSocial>
 And ingreso la informacion de tipo de dioreccion <tipoDireccion>
-And ingreso la informacion de direccion <direccion>
+And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 Then se debe crear una persona tipo juridica con razon social <razonSocial>
 
 Examples:
-|tipoDocumento|numeroDeDocumento|razonSocial     | tipoDireccion  |direccion  |
-|NIT          |12452267         |LA VAQUITA      |Negocio         |CRA 50     |
+|tipoDocumento|numeroDeDocumento|razonSocial     | tipoDireccion  |direccion  |departamento|ciudad  |
+|NIT          |12452267         |LA VAQUITA      |Negocio         |CRA 50     |Antioquia   |Medellin|
 
 
 Scenario: Validar Contacto Existente
@@ -41,12 +41,12 @@ When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
 And ingreso la informacion de razon social <razonSocial>
 And ingreso la informacion de tipo de dioreccion <tipoDireccion>
-And ingreso la informacion de direccion <direccion>
+And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 Then debe validar que el contacto ya existe
 
 Examples:
-|tipoDocumento|numeroDeDocumento|razonSocial| tipoDireccion  |direccion  |
-|NIT          |1245226          |LA VAQUITA ||Negocio        |CRA 50     |
+|tipoDocumento|numeroDeDocumento|razonSocial| tipoDireccion  |direccion|departamento|ciudad  |
+|NIT          |1245226          |LA VAQUITA ||Negocio        |CRA 50   |Antioquia   |Medellin|
 
 
 
@@ -57,13 +57,13 @@ And ingreso la informacion de numero de documento <numeroDeDocumento>
 And ingreso la informacion de primer nombre <primerNombre>
 And ingreso la informacion de primer apellido <primerApellido>
 And ingreso la informacion de tipo de dioreccion <tipoDireccion>
-And ingreso la informacion de direccion <direccion>
+And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 And selecciono el tipo de telefono fijo <tipoTelefonoFijo> e ingreso el numero de telefono fijo <numeroTelefonoFijo>
 Then el campo de ciudad deben ser obligatorios
 
 Examples:
-|tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion  |direccion  |tipoTelefonoFijo     |numeroTelefonoFijo|
-|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |Negocio        |CRA 50     |Vivienda             |12345678          |
+|tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion  |direccion  |tipoTelefonoFijo     |numeroTelefonoFijo|departamento|ciudad  |
+|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |Negocio        |CRA 50     |Vivienda             |12345678          |Antioquia   |Medellin|
 
 
 

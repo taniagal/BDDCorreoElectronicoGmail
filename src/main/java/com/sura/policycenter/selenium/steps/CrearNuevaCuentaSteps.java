@@ -11,8 +11,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class CrearNuevaCuentaSteps extends ScenarioSteps {
     Guidewire gw = new Guidewire(getDriver());
     CuentaPage cp = new CuentaPage(getDriver());
-    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
+    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
     private String cedula = "";
     private String nit = "";
 
@@ -21,7 +21,6 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
         nit = gw.nitRandom();
 
     }
-
     public CrearNuevaCuentaSteps(Pages pages){
         super(pages);
     }
@@ -29,7 +28,6 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     @Step
     public void abrirNuevaCuenta() {
         inicioPage().irANuevaCuenta();
-        //cp.navNuevaCuenta();
     }
 
     @Step

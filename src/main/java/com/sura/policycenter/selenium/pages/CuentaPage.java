@@ -9,13 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-
 public class CuentaPage extends Guidewire{
-    Guidewire gw = new Guidewire(getDriver());
-
-    public CuentaPage(WebDriver driver){
-        super(driver);
-    }
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     WebElementFacade mnuCuenta;
@@ -89,8 +83,14 @@ public class CuentaPage extends Guidewire{
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
     WebElementFacade cboCodigoAgente;
 
+    Actions act = null;
+
+    public CuentaPage(WebDriver driver){
+        super(driver);
+    }
+
     public void navNuevaCuenta(){
-        Actions act = gw.deployMenu(mnuCuenta);
+        act = deployMenu(mnuCuenta);
         act.moveToElement(mnuNuevaCuenta).click().build().perform();
     }
 

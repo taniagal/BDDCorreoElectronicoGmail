@@ -7,6 +7,11 @@ import org.openqa.selenium.support.FindBy;
 
 import javax.swing.*;
 
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import static net.thucydides.core.pages.components.HtmlTable.rowsFrom;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
@@ -199,9 +204,13 @@ public class DetallesContactoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-inputEl']")
     WebElementFacade txtDescripcionDireccion;
 
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table")
+    WebElementFacade tblDirecciones;
+
 
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
+    private  String [] dtlContact2 = new String[1];
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
@@ -253,6 +262,8 @@ public class DetallesContactoPage extends Guidewire {
 
     public void irADirecciones(){
         btnDirecciones.click();
+        waitABit(2000);
+        btnAgregar.click();
     }
 
     public void agregarNombre(String segundoNombre){
@@ -302,6 +313,22 @@ public class DetallesContactoPage extends Guidewire {
         dtlContact[14]= correoElectronicoSecundario;
     }
 
+    //-------DETALLE CONTACTO EDICION PERSONA JURIDICA
+
+
+    public void agregarRazonSocial(String razonSocial, String nombreComercial, String actividadComercial) {
+    }
+
+    public void validarDireccion(String tipoDireccion){
+        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains(tipoDireccion));
+    }
+
+    public List<WebElementFacade> getListaContactos() {
+        List<WebElementFacade> contactos = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
+        return contactos;
+    }
+
+    //-------DETALLE CONTACTO EDICION
     //-------Valida si los datos ingresados es igual al que se muestran en el detalle
     public void verificarActualizacion(){
         espera(txtSegundoNombre,6);
@@ -343,6 +370,8 @@ public class DetallesContactoPage extends Guidewire {
         assertThat(res,"No estan correctos los valores".equals(res));
     }
 
+
+    //-------DETALLE CONTACTO
     //-------Valida si estos elementos están presentes
     public  void verificarCamposPersonaNatural(){
         StringBuilder notPresent = new StringBuilder("No estan presentes los elemtos:");
@@ -386,6 +415,7 @@ public class DetallesContactoPage extends Guidewire {
         assertThat(res,"No estan presentes los elemtos".equals(res));
     }
 
+    //------- AGREGAR DIRECCION A CONTACTO
     public void validarDatosPantalla() {
         StringBuilder notPresent = new StringBuilder("No estan presentes los elemtos:");
         if(!lblPais.isPresent()) notPresent.append(" pais,");
@@ -403,16 +433,12 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void validarCampos() {
-        //cboPais.
-        //cboDepartamento.click();
-        //txtDireccion.click();
-        JOptionPane.showMessageDialog(null,cboPais.getText());
-        JOptionPane.showMessageDialog(null,cboDepartamento.getText());
-        JOptionPane.showMessageDialog(null,txtDireccion.getText());
         StringBuilder right = new StringBuilder("No estan correctos los valores:");
-        if(!cboPais.getText().equals("Colombia"))right.append(" pais,");
-        if(!cboDepartamento.getText().equals("<ninguno>"))right.append(" departamento,");
-        System.out.println(cboDepartamento.getText());
+        if(!cboPais.getValue().toString().equals("Colombia"))right.append(" pais,");
+        if(!cboDepartamento.getValue().toString().equals("<ninguno>"))right.append(" departamento,");
+        if(!cboCiudad.isCurrentlyEnabled())right.append(" ciudad,");
+        if(!txtDireccion.getAttribute("placeholder").equals("CRA 11 B #11 A - 11"))right.append("el place holder del campo drireccion,");
+        if(!txtDireccion.getAttribute("data-qtip").equals("Esta Direccion podria estandarizarse automáticamente"))right.append("el data tip del campo drireccion,");
         String res = right.toString();
         if("No estan correctos los valores:".equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);

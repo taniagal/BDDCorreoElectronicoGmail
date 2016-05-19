@@ -43,21 +43,24 @@ public class CrearNuevoContactoDefinitions {
         crearNuevoContactoSteps.ingresarPrimerApellidoPersonaNatural(primerApellido);
     }
 
-    @When("ingreso la informacion de tipo de dioreccion <tipoDireccion>")
-    public void whenIngresoLaInformacionDeTipoDeDiorecciontipoDireccion(@Named("tipoDireccion") String tipoDireccion) {
+    @When("ingreso la informacion de tipo de direccion <tipoDireccion>")
+    public void whenIngresoLaInformacionDeTipoDeDirecciontipoDireccion(@Named("tipoDireccion") String tipoDireccion) {
         crearNuevoContactoSteps.seleccionarTipoDireccionPersonaNatural(tipoDireccion);
     }
 
-    @When("ingreso la informacion de direccion <direccion>")
-    public void whenIngresoLaInformacionDeDirecciondireccion(@Named("direccion") String direccion) {
-        crearNuevoContactoSteps.ingresarDireccionPersonaNatural(direccion);
+    @When("ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>")
+    public void whenIngresoLaInformacionDeDirecciondireccion(@Named("direccion") String direccion, @Named("departamento") String departamento, @Named("ciudad") String ciudad) {
+        crearNuevoContactoSteps.ingresarDireccionPersonaNatural(direccion, departamento, ciudad);
+    }
+
+    @When("ingreso la informacion de direccion <direccion>, <departamento>, <ciudad>, tipo de direccion <tipoDireccion>")
+    public void whenIngresoLaInformacionDeDirecciondireccion2(@Named("direccion") String direccion, @Named("departamento") String departamento, @Named("ciudad") String ciudad, @Named("tipoDireccion") String tipoDireccion) {
+        crearNuevoContactoSteps.ingresarDireccionPersonaNatural2(direccion, departamento, ciudad, tipoDireccion);
     }
 
     @Then("se debe crear una persona tipo natural con primer nombre <primerNombre>")
     public void thenSeDebeCrearUnaPersonaTipoNatural(@Named("primerNombre") String primerNombre) {
         crearNuevoContactoSteps.actualizar(primerNombre);
-
-//        crearNuevoContactoSteps.getDriver().close();
     }
 
 

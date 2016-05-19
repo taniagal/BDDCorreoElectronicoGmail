@@ -73,11 +73,20 @@ public class DetallesContactoEdicionDefinitions {
                 telefonoOficina, correoElectronicoPrimario, correoElectronicoSecundario);
     }
 
+    @When("quiera editar la informacion del contacto con razon social <razon_social>, nombre comercial <nombre_comercial>, actividad comercial <actividad_comercial>")
+    public void agregarRazonSocial(@Named("razon_social")String razonSocial,@Named("nombre_comercial")String nombreComercial, @Named("actividad_comercial")String actividadComercial){
+        dcs.agregarRazonSocial(razonSocial,nombreComercial,actividadComercial);
+    }
+
+    @When("numero de empleados <numero_empleados>, valor activos <valor_activos>, ventas anuales <ventas_anuales>")
+    public void agregarEmpleaods(){}
+
+    @When("telefono oficina <telefono_oficina>, correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>")
+    public void agregarCorreos(){}
+
     @Then("se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios de persona juridica")
     public void ralizarEdicionInformacionContactoJuridico() {
         dcs.actualizarContacto();
         dcs.verificarActualizacionPersonaJuridica();
     }
-
-
 }
