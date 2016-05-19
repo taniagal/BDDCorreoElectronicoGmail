@@ -89,17 +89,40 @@ public class InformacionTitularCuentaDefinitions {
                 estado, totalIncurrido);
     }
 
-    @Then("si el campo actividad economica <actividadEconomica> esta vacio se debe ocultar, de lo contrario, se debe mostrar la actividad economica normalmente.")
-    public void thenMostrarActividadEconomica(@Named("actividadEconomica")String actividadEconomica){
-
-        informacionTitularCuentaSteps.validarCampoActividadEconomica(actividadEconomica);
-    }
-
     @Then("los campos que se muestren no deben permitir la edicion, es decir, todos los campos seran solo informativos.")
     public void thenValidarCamposComoNoEditables(){
 
         informacionTitularCuentaSteps.validarCamposComoNoEditables();
     }
+
+
+
+
+
+    @Then("los campos fecha de fallecimiento <fechaFallecimiento> y causa de fallecimiento <causaFallecimiento> se deben mostrar unicamente cuando tengan informacion relacionada, de lo contrario estos campos deben permanecer ocultos.")
+    public void thenMostarFechaYCausaFallecimiento(@Named("fechaFallecimiento")String fechaFallecimiento,
+                                                   @Named("causaFallecimiento")String causaFallecimiento){
+
+        informacionTitularCuentaSteps.validarInformacionFallecimiento(fechaFallecimiento, causaFallecimiento);
+    }
+
+    @Then("si el dato actividad economica esta vacio, este campo se debe ocultar, de lo contrario, se debe mostrar la actividad economica normalmente.")
+    public void thenMostrarActividadEconomica(@Named("actividadEconomica")String actividadEconomica){
+
+        informacionTitularCuentaSteps.validarCampoActividadEconomica(actividadEconomica);
+    }
+
+    @Then("si los datos de segmentación y comportamiento estan vacios, debe mostrar al usuario las palabras 'Sin informacion' en estos campos, es decir, nunca puede estar en blanco.")
+    public void thenMostrarSinInformacionEnSegmentacionYComportamiento(){
+
+        informacionTitularCuentaSteps.validarCamposSegmentacionYComportamiento();
+    }
+
+
+
+
+
+
 
 
 

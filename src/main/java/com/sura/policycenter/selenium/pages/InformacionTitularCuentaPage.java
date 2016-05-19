@@ -105,7 +105,6 @@ public class InformacionTitularCuentaPage extends Guidewire {
     @FindBy(xpath="//div[6]/div/span")
     WebElementFacade colEstado;
 
-
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div/div/span")
     WebElementFacade colNumeroPoliza;
 
@@ -129,6 +128,8 @@ public class InformacionTitularCuentaPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountsActividadEconomica-labelEl']")
     WebElementFacade lblActividadEconomica;
+
+    String div = "div";
 
 
     public void clickTipoDocumento() {
@@ -243,6 +244,37 @@ public class InformacionTitularCuentaPage extends Guidewire {
         }
     }
 
+    public void validarCamposComoNoEditables(){
+        try {
+            assertThat(txtTitularCuenta.getTagName(), is(equalTo(div)));
+            assertThat(txtTipoDocumento.getTagName(), is(equalTo(div)));
+            assertThat(txtNumeroDocumento.getTagName(), is(equalTo(div)));
+            assertThat(txtPrimaVigencia.getTagName(), is(equalTo(div)));
+            assertThat(txtSegmentacion.getTagName(), is(equalTo(div)));
+            assertThat(txtComportamiento.getTagName(), is(equalTo(div)));
+            assertThat(txtTotalNoFacturado.getTagName(), is(equalTo(div)));
+            assertThat(txtTotalFacturado.getTagName(), is(equalTo(div)));
+            assertThat(txtTotalVencido.getTagName(), is(equalTo(div)));
+            assertThat(txtTotalPendiente.getTagName(), is(equalTo(div)));
+            assertThat(txtPolizasActivas.getTagName(), is(equalTo(div)));
+            assertThat(txtCanceladoPorCliente.getTagName(), is(equalTo(div)));
+            assertThat(txtCanceladoPorCompania.getTagName(), is(equalTo(div)));
+            assertThat(txtOtrasCancelaciones.getTagName(), is(equalTo(div)));
+            assertThat(txtTotalReclamacionesAbiertas.getTagName(), is(equalTo(div)));
+
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void validarInformacionFallecimiento(String fechaFallecimiento, String causaFallecimiento){
+        try {
+
+        }catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void validarCampoActividadEconomica(String actividadEconomica){
         try {
             assertThat(lblActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
@@ -252,12 +284,10 @@ public class InformacionTitularCuentaPage extends Guidewire {
         }
     }
 
-    public void validarCamposComoNoEditables(){
+    public void validarCamposSegmentacionYComportamiento(){
         try {
-           /* waitABit(3000);
-            String texto = txtTitularCuenta.getText().toString();
-            txtTitularCuenta.sendKeys("prueba");
-            assertThat(texto, is(equalTo(txtTitularCuenta.getText().toString())));*/
+
+
         }catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -67,3 +67,14 @@ Examples:
 |tipoDoc             |nombre  |apellido|nroPoliza       |producto|asegurado|fechaPerdida       |nroReclamacion       |estado|totalIncurrido |
 |CEDULA DE CIUDADANIA|Yurledys|Gallego |Número de póliza|Producto|Asegurado|Fecha de la pérdida|Número de reclamación|Estado|Total incurrido|
 
+
+Scenario: No permitir edición en campos
+Given que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>
+When ingrese a informacion del titular de la cuenta
+Then los campos que se muestren no deben permitir la edicion, es decir, todos los campos seran solo informativos.
+
+Examples:
+|tipoDoc             |nombre  |apellido|
+|CEDULA DE CIUDADANIA|Yurledys|Gallego |
+
+

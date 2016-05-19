@@ -65,12 +65,23 @@ public class InformacionTitularCuentaSteps extends ScenarioSteps {
     }
 
     @Step
+    public void validarCamposComoNoEditables() {
+        informacionTitularCuentaPage.validarCamposComoNoEditables();
+    }
+
+    @Step
+    public void validarInformacionFallecimiento(String fechaFallecimiento, String causaFallecimiento){
+        informacionTitularCuentaPage.validarInformacionFallecimiento(fechaFallecimiento, causaFallecimiento);
+    }
+
+    @Step
     public void validarCampoActividadEconomica(String actividadEconomica) {
         informacionTitularCuentaPage.validarCampoActividadEconomica(actividadEconomica);
     }
 
     @Step
-    public void validarCamposComoNoEditables() {
-        informacionTitularCuentaPage.validarCamposComoNoEditables();
+    public void validarCamposSegmentacionYComportamiento() {
+        informacionTitularCuentaPage.validarCamposSegmentacionYComportamiento();
     }
+
 }
