@@ -1,9 +1,9 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.beust.jcommander.internal.Lists;
+import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.selenium.pages.AbrirAppPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
-import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.WithTag;

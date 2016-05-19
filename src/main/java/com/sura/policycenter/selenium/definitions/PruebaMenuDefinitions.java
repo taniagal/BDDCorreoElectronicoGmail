@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.PruebaMenuSteps;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.WithTag;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
