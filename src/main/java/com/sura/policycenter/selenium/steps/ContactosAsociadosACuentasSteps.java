@@ -1,8 +1,10 @@
 package com.sura.policycenter.selenium.steps;
 
+import com.sura.policycenter.selenium.pages.BusquedaContactoPage;
 import com.sura.policycenter.selenium.pages.ContactosAsociadosACuentasPage;
 import com.sura.policycenter.selenium.pages.CuentasOrdenesDeTrabajoPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
+import com.sura.policycenter.selenium.pages.menu.superior.cuenta.panel.contactos.BusquedaContactoDelDirectorioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -27,7 +29,9 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
 
     private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
+    private BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage = new BusquedaContactoDelDirectorioPage(getDriver());
     CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
+
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
@@ -43,7 +47,7 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void consultarContactos(){
+    public void consultarContactos() {
         contactosAsociadosACuentasPage.consultarContactos();
     }
 
@@ -51,7 +55,7 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     public void selecionarContacto(String posicion, String opcion) {
         contactosAsociadosACuentasPage.verificarListaContactoNoEsNulo();
         contactosAsociadosACuentasPage.selecionarContacto(posicion);
-        switch (opcion){
+        switch (opcion) {
             case DETALLE_CONTACTO:
                 contactosAsociadosACuentasPage.seleccionarTabDetalleContacto();
                 break;
@@ -103,7 +107,30 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void esContactoAsociado() throws Exception {
-        contactosAsociadosACuentasPage.esContactoAsociado();
+    public Boolean esContactoAsociado(String nombre) throws Exception {
+        return contactosAsociadosACuentasPage.esContactoAsociado(nombre);
     }
+
+    @Step
+    public void buscarContactoDelDirectorio() throws Exception {
+        Boolean esContactoAsociadoDesdeDirectorio = busquedaDelDirectorioPage.buscarContacto("CEDULA DE CIUDADANIA", "DORIAN", "EASTMOND");
+        if (esContactoAsociadoDesdeDirectorio) {
+            if(esContactoAsociado("DORIAN STIWAR EASTMOND PULGARIN")){
+                contactosAsociadosACuentasPage.validarOcurrenciaDeMensajeDeAplicacion(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:_msgs']/div","porque ya tiene ese rol");
+            }
+        }
+    }
+
+    @Step
+    public void eliminarContactoAsociando(String nombreContacto) throws Exception {
+        contactosAsociadosACuentasPage.ElimnarContactoAsociado(nombreContacto);
+    }
+
+    @Step
+    public void contactoEliminado(String contactoEliminado) throws Exception {
+        contactosAsociadosACuentasPage.contactoEliminado(contactoEliminado);
+    }
+
+
+
 }
