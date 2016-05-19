@@ -221,40 +221,6 @@ public class DetallesContactoPage extends Guidewire {
         waitABit(800);
     }
 
-
-    public void editarContactoJuridico(String razonSocial, String nombreComercial, String actividadComercial,
-                                       String numeroEmpleados,String valorActivos, String ventasAnuales, String telefonoOficina,
-                                       String correoElectronicoPrimario, String correoElectronicoSecundario) {
-
-        txtCorreoElectronicoPrimarioEmpresa.clear();
-        waitABit(100);
-        txtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
-        txtNombreComercial.clear();
-        txtNombreComercial.sendKeys(nombreComercial);
-        selectItem(cboActividadComercial, actividadComercial);
-        waitABit(500);
-        txtNumeroEmpleados.clear();
-        txtNumeroEmpleados.sendKeys(numeroEmpleados);
-        txtValorActivos.clear();
-        txtValorActivos.sendKeys(valorActivos);
-        txtVentasAnuales.clear();
-        txtVentasAnuales.sendKeys(ventasAnuales);
-        txtTelefonoOficina.clear();
-        txtTelefonoOficina.sendKeys(telefonoOficina);
-        txtCorreoElectronicoSecundarioEmpresa.clear();
-        waitABit(300);
-        txtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
-
-        dtlCntJ[0]= nombreComercial;
-        dtlCntJ[1]= actividadComercial;
-        dtlCntJ[2]= numeroEmpleados;
-        dtlCntJ[3]= valorActivos;
-        dtlCntJ[4]= ventasAnuales;
-        dtlCntJ[5]= telefonoOficina;
-        dtlCntJ[6]= correoElectronicoPrimario;
-        dtlCntJ[7]= correoElectronicoSecundario;
-    }
-
     public void actualizaContacto(){
         btnActualizar.click();
         waitABit(2000);
@@ -263,6 +229,10 @@ public class DetallesContactoPage extends Guidewire {
     public void irADirecciones(){
         btnDirecciones.click();
         waitABit(2000);
+        btnAgregar.click();
+    }
+
+    public void agregarDireccion(){
         btnAgregar.click();
     }
 
@@ -305,28 +275,52 @@ public class DetallesContactoPage extends Guidewire {
 
     public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
         txtCorreoElectronicoPrimario.clear();
-        waitABit(300);
+        waitABit(500);
         txtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
-        waitABit(200);
+        waitABit(500);
         txtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
         dtlContact[13]= correoElectronicoPrimario;
         dtlContact[14]= correoElectronicoSecundario;
     }
 
+
     //-------DETALLE CONTACTO EDICION PERSONA JURIDICA
-
-
-    public void agregarRazonSocial(String razonSocial, String nombreComercial, String actividadComercial) {
+    public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
+        txtNombreComercial.clear();
+        txtNombreComercial.sendKeys(nombreComercial);
+        selectItem(cboActividadComercial, actividadComercial);
+        dtlCntJ[0]= nombreComercial;
+        dtlCntJ[1]= actividadComercial;
     }
 
-    public void validarDireccion(String tipoDireccion){
-        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains(tipoDireccion));
+
+    public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
+        waitABit(500);
+        txtNumeroEmpleados.clear();
+        txtNumeroEmpleados.sendKeys(numeroEmpleados);
+        txtValorActivos.clear();
+        txtValorActivos.sendKeys(valorActivos);
+        txtVentasAnuales.clear();
+        txtVentasAnuales.sendKeys(ventasAnuales);
+        dtlCntJ[2]= numeroEmpleados;
+        dtlCntJ[3]= valorActivos;
+        dtlCntJ[4]= ventasAnuales;
     }
 
-    public List<WebElementFacade> getListaContactos() {
-        List<WebElementFacade> contactos = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
-        return contactos;
+    public void agregarCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario){
+        txtCorreoElectronicoPrimarioEmpresa.clear();
+        waitABit(100);
+        txtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
+        txtTelefonoOficina.clear();
+        txtTelefonoOficina.sendKeys(telefonoOficina);
+        txtCorreoElectronicoSecundarioEmpresa.clear();
+        waitABit(500);
+        txtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
+        dtlCntJ[5]= telefonoOficina;
+        dtlCntJ[6]= correoElectronicoPrimario;
+        dtlCntJ[7]= correoElectronicoSecundario;
     }
+
 
     //-------DETALLE CONTACTO EDICION
     //-------Valida si los datos ingresados es igual al que se muestran en el detalle
@@ -437,12 +431,26 @@ public class DetallesContactoPage extends Guidewire {
         if(!cboPais.getValue().toString().equals("Colombia"))right.append(" pais,");
         if(!cboDepartamento.getValue().toString().equals("<ninguno>"))right.append(" departamento,");
         if(!cboCiudad.isCurrentlyEnabled())right.append(" ciudad,");
-        if(!txtDireccion.getAttribute("placeholder").equals("CRA 11 B #11 A - 11"))right.append("el place holder del campo drireccion,");
-        if(!txtDireccion.getAttribute("data-qtip").equals("Esta Direccion podria estandarizarse automáticamente"))right.append("el data tip del campo drireccion,");
+        if(!txtDireccion.getAttribute("placeholder").equals("CRA 11 B #11 A - 11"))right.append("drireccion placeholder,");
+        if(!txtDireccion.getAttribute("data-qtip").equals("Esta Direccion podria estandarizarse automáticamente"))right.append("drireccion data-tip,");
+        if(!txtDireccion.getAttribute("maxlength").equals("200"))right.append("direccion maxlength,");
         String res = right.toString();
         if("No estan correctos los valores:".equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
         }
         assertThat(res,"No estan correctos los valores".equals(res));
+    }
+
+    public void validarDireccion(String tipoDireccion){
+        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains(tipoDireccion));
+    }
+
+    public List<WebElementFacade> getListaContactos() {
+        List<WebElementFacade> contactos = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
+        return contactos;
+    }
+
+    public void validarMensaje(String mensaje) {
+        
     }
 }

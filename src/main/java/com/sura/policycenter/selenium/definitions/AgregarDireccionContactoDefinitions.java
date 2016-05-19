@@ -30,8 +30,19 @@ public class AgregarDireccionContactoDefinitions {
         dcs.actualizarContacto();
     }
 
+    @When("agrego fila de direccion")
+    public void direccionNueva(){
+        dcs.agregarNuevaDireccion();
+    }
+
     @Then("en la lista de direcciones agregadas se debe ver la nueva direccion <tipoDireccion>")
     public void assertDireccion(@Named("tipoDireccion") String tipoDireccion){
         dcs.validarDireccion(tipoDireccion);
     }
+
+    @Then("el sistema me debe impedir la repeticion del tipo de direccion y mostrar el mensaje <mensaje>")
+    public void assertRepeticionTipoDirreccion (@Named("mensaje") String mensaje){
+        dcs.validarMensaje(mensaje);
+    }
+
 }

@@ -99,18 +99,14 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void editarContacto(String razonSocial, String nombreComercial, String actividadComercial, String numeroEmpleados,
-                               String valorActivos, String ventasAnuales, String telefonoOficina,
-                               String correoElectronicoPrimario, String correoElectronicoSecundario) {
-        dc.editarContacto();
-        dc.editarContactoJuridico(razonSocial,nombreComercial,actividadComercial,numeroEmpleados, valorActivos, ventasAnuales,
-                telefonoOficina, correoElectronicoPrimario, correoElectronicoSecundario);
-    }
-
-    @Step
     public void agregarDireccion() {
         dc.editarContacto();
         dc.irADirecciones();
+    }
+
+    @Step
+    public void agregarNuevaDireccion(){
+        dc.agregarDireccion();
     }
 
     @Step
@@ -129,7 +125,23 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarRazonSocial(String razonSocial, String nombreComercial, String actividadComercial) {
-        dc.agregarRazonSocial(razonSocial,nombreComercial,actividadComercial);
+    public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
+        dc.editarContacto();
+        dc.agregarRazonSocial(nombreComercial,actividadComercial);
+    }
+
+    @Step
+    public void validarMensaje(String mensaje) {
+        dc.validarMensaje(mensaje);
+    }
+
+    @Step
+    public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
+        dc.agregarEmpleados(numeroEmpleados,ventasAnuales,valorActivos);
+    }
+
+    @Step
+    public void agregarCorreosJ(String telefonoOficina, String correoPrimario, String correoSecundario) {
+        dc.agregarCorreosJ(telefonoOficina,correoPrimario,correoSecundario);
     }
 }
