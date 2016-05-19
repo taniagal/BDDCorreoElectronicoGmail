@@ -66,7 +66,13 @@ public class BusquedaDePolizaPage extends Guidewire{
 
     public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda) throws Exception{
         List<String> datosAValidar = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(resultadoBusqueda);
-
-        
     }
+    public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
+        txtNumeroCuenta.waitUntilClickable();
+        txtNumeroCuenta.clear();
+        txtNumeroCuenta.sendKeys(numeroCuenta);
+        btnBuscar.click();
+    }
+
+
 }

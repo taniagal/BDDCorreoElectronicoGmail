@@ -15,3 +15,14 @@ Then se debe visualizar la siguiente información:
 Examples:
 |buscarNumeroPoliza
 |TEST_22222222
+
+Scenario: Consultar polizas por número de cuenta existente
+Given que existe una poliza
+When la busco por numero de cuenta <numeroCuenta>
+Then se debe visualizar la siguiente información:
+|numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
+|TEST_22222222|DORIAN EASTMOND PULGARIN|C001888888|Auto personal|Vigentes|04/18/2016|10/18/2016|NXCQZY-000028|
+
+Examples:
+|numeroCuenta
+|C001888888
