@@ -37,4 +37,16 @@ public class BusquedaDePolizaSteps extends ScenarioSteps{
     public void validarMensajeDeConsultaSinResultados(String mensaje) {
         busquedaDePolizaPage.validarMensajeDeConsultaSinResultados(mensaje);
     }
+
+    public void buscarPolizaPorProducto(String producto) {
+        busquedaDePolizaPage.buscarPolizaPorProducto(producto);
+    }
+
+    public void buscarPolizaPorAgente(String agente) {
+        busquedaDePolizaPage.buscarPolizaPorAgente(agente);
+    }
+
+    public void buscarPolizaPorCodigoAgente(String codigoAgente) {
+        busquedaDePolizaPage.buscarPolizaPorCodigoAgente(codigoAgente);
+    }
 }
