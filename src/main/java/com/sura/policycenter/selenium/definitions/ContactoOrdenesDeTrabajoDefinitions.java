@@ -1,10 +1,10 @@
 package com.sura.policycenter.selenium.definitions;
 
-import org.jbehave.core.annotations.Named;
 import com.sura.policycenter.selenium.steps.ContactoOrdenesDeTrabajoSteps;
 import com.sura.policycenter.selenium.steps.CuentasAsociadasAContactoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 

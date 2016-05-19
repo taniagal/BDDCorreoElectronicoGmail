@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.policycenter.selenium.pages.BusquedaContactoPage;
 import com.sura.policycenter.selenium.pages.ContactosAsociadosACuentasPage;
 import com.sura.policycenter.selenium.pages.CuentasOrdenesDeTrabajoPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
@@ -9,8 +8,6 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
-
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 /**
  * Created by jorgsape on 2016/05/04.

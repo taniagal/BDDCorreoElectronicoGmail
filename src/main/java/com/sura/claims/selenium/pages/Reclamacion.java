@@ -9,8 +9,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.*;
-
 
 public class Reclamacion extends Guidewire {
     Guidewire gw = new Guidewire(getDriver());
@@ -21,7 +19,7 @@ public class Reclamacion extends Guidewire {
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen" +
             ":LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker" +
             "-triggerWrap']")
-    WebElementFacade lugar;
+    private WebElementFacade lugar;
 
     @FindBy(xpath = ".//*[@id='NewClaimSaved:NewClaimSavedScreen:ttlBar']")
     WebElementFacade lblNuevaReclamacion;
