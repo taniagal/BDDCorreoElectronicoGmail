@@ -79,4 +79,12 @@ public class BusquedaDePolizaPage extends Guidewire{
             assertThat(grdAgente.getText(), is(notNullValue()));
         }
     }
+    public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
+        txtNumeroCuenta.waitUntilClickable();
+        txtNumeroCuenta.clear();
+        txtNumeroCuenta.sendKeys(numeroCuenta);
+        btnBuscar.click();
+    }
+
+
 }

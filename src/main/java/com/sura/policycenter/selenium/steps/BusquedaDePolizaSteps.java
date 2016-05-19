@@ -29,4 +29,9 @@ public class BusquedaDePolizaSteps extends ScenarioSteps{
     public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda){
         busquedaDePolizaPage.validarResultadosDeLaBusqueda(resultadoBusqueda);
     }
+
+    public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta){
+        busquedaDePolizaPage.buscarPolizaPorNumeroDeCuenta(numeroCuenta);
+    }
+
 }

@@ -27,4 +27,9 @@ public class BusquedaDePolizaDefinitions {
     public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda){
         busquedaDePolizaSteps.validarResultadosDeLaBusqueda(resultadoBusqueda);
     }
+
+    @When("la busco por numero de cuenta <numeroCuenta>")
+    public void buscarPolizaPorNumeroDeCuenta(@Named("numeroCuenta") String numeroCuenta){
+        busquedaDePolizaSteps.buscarPolizaPorNumeroDeCuenta(numeroCuenta);
+    }
 }
