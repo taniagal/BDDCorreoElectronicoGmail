@@ -6,7 +6,6 @@ quiero ser capaz de ver un resumen de la informacion del titular de la cuenta.
 La pantalla debe mostrar la información completa de la cuenta del cliente, las polizas y el estado de la reclamaciones
 y otra informacion de multiples sistemas como ClaimCenter y BillingCenter
 
-
 Scenario: Ver informacion del titular de la cuenta
 GivenStories: stories/policycenter/login_policy.story
 Given que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>
@@ -78,3 +77,21 @@ Examples:
 |CEDULA DE CIUDADANIA|Yurledys|Gallego |
 
 
+Scenario: Mostrar campos fecha de fallecimiento y causa de fallecimiento
+Given que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>
+When ingrese a informacion del titular de la cuenta
+Then los campos fecha de fallecimiento <fechaFallecimiento> y causa de fallecimiento <causaFallecimiento> se deben mostrar unicamente cuando tengan informacion relacionada, de lo contrario estos campos deben permanecer ocultos.
+
+Examples:
+|tipoDoc             |nombre |apellido |fechaFallecimiento|causaFallecimiento|
+|CEDULA DE CIUDADANIA|ALFREDO|ANTIQUOIA|03/14/2016        |ACCIDENTE         |
+
+
+Scenario: Mostrar campo actividad economica
+Given que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>
+When ingrese a informacion del titular de la cuenta
+Then si el dato actividad economica esta vacio, este campo se debe ocultar, de lo contrario, se debe mostrar la actividad economica normalmente.
+
+Examples:
+|tipoDoc             |nombre  |apellido|actividadEconomica  |
+|CEDULA DE CIUDADANIA|ALFREDO |ANTIQUOIA|Actividad Económica|

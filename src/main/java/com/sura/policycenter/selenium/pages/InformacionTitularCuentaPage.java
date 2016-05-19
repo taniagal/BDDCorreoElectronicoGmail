@@ -129,6 +129,14 @@ public class InformacionTitularCuentaPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountsActividadEconomica-labelEl']")
     WebElementFacade lblActividadEconomica;
 
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:PersonDateOfDeath-inputEl']")
+    WebElementFacade txtFechaFallecimiento;
+
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:PersonCauseOfDeath-inputEl']")
+    WebElementFacade txtCausaFallecimiento;
+
+
+
     String div = "div";
 
 
@@ -269,7 +277,8 @@ public class InformacionTitularCuentaPage extends Guidewire {
 
     public void validarInformacionFallecimiento(String fechaFallecimiento, String causaFallecimiento){
         try {
-
+            assertThat(txtFechaFallecimiento.getText().toString(), is(equalTo(fechaFallecimiento)));
+            assertThat(txtCausaFallecimiento.getText().toString(), is(equalTo(causaFallecimiento)));
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -278,15 +287,6 @@ public class InformacionTitularCuentaPage extends Guidewire {
     public void validarCampoActividadEconomica(String actividadEconomica){
         try {
             assertThat(lblActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
-
-        }catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void validarCamposSegmentacionYComportamiento(){
-        try {
-
 
         }catch (Exception e) {
             throw new RuntimeException(e);

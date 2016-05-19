@@ -95,10 +95,6 @@ public class InformacionTitularCuentaDefinitions {
         informacionTitularCuentaSteps.validarCamposComoNoEditables();
     }
 
-
-
-
-
     @Then("los campos fecha de fallecimiento <fechaFallecimiento> y causa de fallecimiento <causaFallecimiento> se deben mostrar unicamente cuando tengan informacion relacionada, de lo contrario estos campos deben permanecer ocultos.")
     public void thenMostarFechaYCausaFallecimiento(@Named("fechaFallecimiento")String fechaFallecimiento,
                                                    @Named("causaFallecimiento")String causaFallecimiento){
@@ -111,20 +107,4 @@ public class InformacionTitularCuentaDefinitions {
 
         informacionTitularCuentaSteps.validarCampoActividadEconomica(actividadEconomica);
     }
-
-    @Then("si los datos de segmentación y comportamiento estan vacios, debe mostrar al usuario las palabras 'Sin informacion' en estos campos, es decir, nunca puede estar en blanco.")
-    public void thenMostrarSinInformacionEnSegmentacionYComportamiento(){
-
-        informacionTitularCuentaSteps.validarCamposSegmentacionYComportamiento();
-    }
-
-
-
-
-
-
-
-
-
-
 }

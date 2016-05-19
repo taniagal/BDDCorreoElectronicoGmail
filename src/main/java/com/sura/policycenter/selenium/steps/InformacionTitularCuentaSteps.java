@@ -78,10 +78,4 @@ public class InformacionTitularCuentaSteps extends ScenarioSteps {
     public void validarCampoActividadEconomica(String actividadEconomica) {
         informacionTitularCuentaPage.validarCampoActividadEconomica(actividadEconomica);
     }
-
-    @Step
-    public void validarCamposSegmentacionYComportamiento() {
-        informacionTitularCuentaPage.validarCamposSegmentacionYComportamiento();
-    }
-
 }
