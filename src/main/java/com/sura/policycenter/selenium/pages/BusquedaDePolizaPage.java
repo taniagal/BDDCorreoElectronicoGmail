@@ -1,13 +1,16 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.serinitybdd.util.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
-import java.util.List;
+import java.util.Map;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
 public class BusquedaDePolizaPage extends Guidewire{
 
@@ -64,9 +67,16 @@ public class BusquedaDePolizaPage extends Guidewire{
         btnBuscar.click();
     }
 
-    public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda) throws Exception{
-        List<String> datosAValidar = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(resultadoBusqueda);
-
-        
+    public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda){
+        for (Map<String,String> row : resultadoBusqueda.getRows()) {
+            assertThat(grdNumeroPoliza.getText(), containsText(row.get("numeroPoliza")));
+            assertThat(grdAseguradoNombrado.getText(), containsText(row.get("nombreAsegurado")));
+            assertThat(grdNumeroCuenta.getText(), containsText(row.get("numeroCuenta")));
+            assertThat(grdProducto.getText(), containsText(row.get("producto")));
+            assertThat(grdEstado.getText(), containsText(row.get("estado")));
+            assertThat(grdFechaVigencia.getText(), is(notNullValue()));
+            assertThat(grdFechaExpiracion.getText(), is(notNullValue()));
+            assertThat(grdAgente.getText(), is(notNullValue()));
+        }
     }
 }

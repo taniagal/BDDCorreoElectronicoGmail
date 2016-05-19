@@ -6,6 +6,7 @@ Quiero ser capaz de buscar una poliza asociada a un contacto
 Para ver el detalle de la misma
 
 Scenario: Consultar polizas por número de poliza existente
+GivenStories: stories/policycenter/login_policy.story
 Given que existe una poliza
 When la busco por numero de poliza <buscarNumeroPoliza>
 Then se debe visualizar la siguiente información:
