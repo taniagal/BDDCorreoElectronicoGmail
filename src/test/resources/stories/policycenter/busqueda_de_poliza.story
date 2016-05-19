@@ -17,6 +17,16 @@ Examples:
 |buscarNumeroPoliza
 |TEST_22222222
 
+
+Scenario: Consultar polizas por número de poliza no existente
+Given que existe una poliza
+When la busco por numero de poliza <buscarNumeroPoliza>
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+|buscarNumeroPoliza|mensaje
+|34565456543|La búsqueda no devolvió resultados.
+
 Scenario: Consultar polizas por número de cuenta existente
 Given que existe una poliza
 When la busco por numero de cuenta <numeroCuenta>
@@ -27,3 +37,12 @@ Then se debe visualizar la siguiente información:
 Examples:
 |numeroCuenta
 |C001888888
+
+Scenario: Consultar polizas por número de cuenta no existente
+Given que existe una poliza
+When la busco por numero de cuenta <numeroCuenta>
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+|numeroCuenta|mensaje
+|9988899988|La búsqueda no devolvió resultados.

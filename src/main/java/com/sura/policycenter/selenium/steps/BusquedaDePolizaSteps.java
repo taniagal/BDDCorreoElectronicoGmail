@@ -34,4 +34,7 @@ public class BusquedaDePolizaSteps extends ScenarioSteps{
         busquedaDePolizaPage.buscarPolizaPorNumeroDeCuenta(numeroCuenta);
     }
 
+    public void validarMensajeDeConsultaSinResultados(String mensaje) {
+        busquedaDePolizaPage.validarMensajeDeConsultaSinResultados(mensaje);
+    }
 }

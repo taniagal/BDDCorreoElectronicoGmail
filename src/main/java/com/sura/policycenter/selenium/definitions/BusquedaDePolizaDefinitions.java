@@ -32,4 +32,9 @@ public class BusquedaDePolizaDefinitions {
     public void buscarPolizaPorNumeroDeCuenta(@Named("numeroCuenta") String numeroCuenta){
         busquedaDePolizaSteps.buscarPolizaPorNumeroDeCuenta(numeroCuenta);
     }
+
+    @Then("debe mostrar el mensaje <mensaje>")
+    public void validarMensajeDeConsultaSinResultados(@Named("mensaje") String mensaje){
+        busquedaDePolizaSteps.validarMensajeDeConsultaSinResultados(mensaje);
+    }
 }

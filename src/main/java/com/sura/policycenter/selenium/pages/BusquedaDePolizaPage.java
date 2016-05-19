@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Map;
 
-import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -64,6 +64,9 @@ public class BusquedaDePolizaPage extends Guidewire{
     @FindBy(xpath="//td[10]/div")
     WebElementFacade grdAgente;
 
+    @FindBy(xpath = "//div[@id='PolicySearch:PolicySearchScreen:_msgs']/div")
+    WebElementFacade msjValidacion;
+
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaDePolizaPage.class);
 
     public BusquedaDePolizaPage(WebDriver driver){
@@ -76,33 +79,29 @@ public class BusquedaDePolizaPage extends Guidewire{
         btnBuscar.click();
     }
 
-    public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda){
+    public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda) {
+        waitABit(2000);
         List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
-        try {
-        for (Map<String,String> row : resultadoBusqueda.getRows()) {
-            for (WebElement row2 : allRows) {
-                List<WebElement> cells = row2.findElements(By.tagName("td"));
-                System.out.println("Celda 2" + cells.get(2).getText());
-                assertThat(cells.get(2).getText(), containsText(row.get("numeroPoliza")));
-                assertThat(grdAseguradoNombrado.getText(), containsText(row.get("nombreAsegurado")));
-                assertThat(grdNumeroCuenta.getText(), containsText(row.get("numeroCuenta")));
-                assertThat(grdProducto.getText(), containsText(row.get("producto")));
-                assertThat(grdEstado.getText(), containsText(row.get("estado")));
-                assertThat(grdFechaVigencia.getText(), is(notNullValue()));
-                assertThat(grdFechaExpiracion.getText(), is(notNullValue()));
-                assertThat(grdAgente.getText(), containsText(row.get("agente")));
-            }
-        }
-        }catch(Exception e) {
-            LOGGER.error("This is error", e);
+        Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
+        assertThat(grdNumeroPoliza.getText(), is(equalTo(sampleData.get("numeroPoliza"))));
+        assertThat(grdAseguradoNombrado.getText(), is(equalTo(sampleData.get("nombreAsegurado"))));
+        assertThat(grdProducto.getText(), is(equalTo(sampleData.get("producto"))));
+        assertThat(grdEstado.getText(), is(equalTo(sampleData.get("estado"))));
+        assertThat(grdFechaVigencia.getText(), is(notNullValue()));
+        assertThat(grdFechaExpiracion.getText(), is(notNullValue()));
+        assertThat(grdAgente.getText(), is(equalTo(sampleData.get("agente"))));
+
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            assertThat(cells.get(4).getText(), is(equalTo(sampleData.get("numeroCuenta"))));
         }
     }
 
     public void limpiarCampos(){
         waitABit(2000);
-        txtNumeroPoliza.waitUntilEnabled();
+        txtNumeroPoliza.waitUntilClickable();
         txtNumeroPoliza.clear();
-        txtNumeroCuenta.waitUntilEnabled();
+        txtNumeroCuenta.waitUntilClickable();
         txtNumeroCuenta.clear();
         waitABit(2000);
     }
@@ -110,8 +109,13 @@ public class BusquedaDePolizaPage extends Guidewire{
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
         this.limpiarCampos();
         txtNumeroCuenta.sendKeys(numeroCuenta);
+        btnBuscar.waitUntilClickable();
         btnBuscar.click();
     }
 
 
+    public void validarMensajeDeConsultaSinResultados(String mensaje) {
+        msjValidacion.waitUntilVisible();
+        assertThat(msjValidacion.getText(), is(equalTo(mensaje)));
+    }
 }
