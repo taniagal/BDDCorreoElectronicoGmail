@@ -9,10 +9,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 
 /**
  * Created by jorgsape on 2016/05/04.
@@ -60,6 +62,11 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     private WebElementFacade lblDireccion;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
     private WebElementFacade lblTelefono;
+
+    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:removeContact-btnInnerEl']")
+    private WebElementFacade btnEliminar;
+
+
 
 
     @FindBy(xpath = ".//a[contains(.,'Crear nuevo contacto')]")
@@ -182,28 +189,91 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     }
 
 
-
     public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
-        assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT,"LINK",opcionesPorRol, darClick));
+        assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
     }
 
 
-    public void esContactoAsociado() throws Exception {
-        NuevoAseguradoNombradoPage nuevoAseguradoNombradoPage = new NuevoAseguradoNombradoPage(getDriver());
-        if (nuevoAseguradoNombradoPage.asociarNuevoAseguradoNombradoACuenta()){
-            for (WebElementFacade contacto : getListaContactos()){
-                System.out.printf("");
+    public Boolean esContactoAsociado(String nombreContacto) throws Exception {
+        Boolean esAsociado = Boolean.FALSE;
+        try {
+
+            for (WebElementFacade contacto : getListaContactos()) {
+                if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {
+                    esAsociado = Boolean.TRUE;
+                    break;
+                }
             }
+
+        } catch (Exception e) {
+            assertThat("El contacto se asocio a la cuenta exitosamente", esAsociado);
+        }
+        assertThat("El contacto se asocio a la cuenta exitosamente", esAsociado);
+        return esAsociado;
+    }
+
+    public Boolean validarOcurrenciaDeMensajeDeAplicacion(String idXpathDivMensajes, String mensajesApp){
+        Boolean existeOcurrencia = Boolean.FALSE;
+        String mensajeMostrado="";
+        try {
+            List<WebElementFacade> divsMensajes = withTimeoutOf(1, SECONDS).findAll(idXpathDivMensajes);
+            for (WebElementFacade div : divsMensajes) {
+                mensajeMostrado = div.getText();
+                if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
+                    existeOcurrencia = Boolean.TRUE;
+                    break;
+                }
+            }
+            if (existeOcurrencia) {
+                assertThat(mensajeMostrado, containsString(mensajesApp));
+            }
+        } catch (Exception e){
+            existeOcurrencia =  Boolean.FALSE;
         }
 
-        //assertThat();
-
+        return existeOcurrencia;
     }
-
 
     public void clicCrearNuevoContacto() {
         this.btnCrearNuevoContacto.click();
     }
 
+    public void ElimnarContactoAsociado(String nombreContacto) {
+
+        List<WebElementFacade> checkBoxes = withTimeoutOf(1, SECONDS)
+                .findAll("//img[contains(@class,'x-grid-checkcolumn')]");
+
+        int cont = 0;
+
+        for (WebElementFacade contacto : getListaContactos()) {
+            cont += 1;
+            if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {
+
+                for (int i = 0 ; i < checkBoxes.size(); i++){
+
+                    if (i == cont){
+                        checkBoxes.get(cont-1).click();
+                        btnEliminar.click();
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    public void contactoEliminado(String contactoEliminado) {
+
+        boolean noExiste = true;
+        for (WebElementFacade contacto : getListaContactos()) {
+
+            if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(contactoEliminado)) {
+                noExiste = false;
+            }
+
+        }
+        assertThat("No existe el contacto",noExiste);
+
+    }
 
 }

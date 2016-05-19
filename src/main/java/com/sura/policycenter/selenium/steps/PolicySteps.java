@@ -1,12 +1,12 @@
 package com.sura.policycenter.selenium.steps;
 
+import com.sura.guidewire.selenium.Guidewire;
 import com.sura.guidewire.selenium.SeusLoginPage;
+import com.sura.policycenter.selenium.pages.AbrirAppPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import com.sura.guidewire.selenium.Guidewire;
-import com.sura.policycenter.selenium.pages.AbrirAppPage;
 
 public class PolicySteps extends ScenarioSteps {
 

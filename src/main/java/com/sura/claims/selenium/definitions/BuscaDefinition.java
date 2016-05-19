@@ -40,6 +40,7 @@ public class BuscaDefinition {
 
     @Then("deberia buscar una reclamacion")
     public void logout(){
+        throw new UnsupportedOperationException("Invalid operation for sorted list.");
     }
 
 

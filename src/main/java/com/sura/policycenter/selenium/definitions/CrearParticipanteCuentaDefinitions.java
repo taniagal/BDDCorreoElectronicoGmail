@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.definitions;
 
 
 import com.sura.policycenter.selenium.steps.CrearParticipantesCuentaSteps;
-import jxl.common.Assert;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
