@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.policycenter.selenium.pages.ContactoOrdenesDeTrabajoPage;
 import com.sura.policycenter.selenium.pages.CuentasOrdenesDeTrabajoPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;

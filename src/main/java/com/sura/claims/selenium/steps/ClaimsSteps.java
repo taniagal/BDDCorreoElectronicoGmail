@@ -5,12 +5,13 @@ import com.sura.claims.selenium.pages.Buscar;
 import com.sura.claims.selenium.pages.Escritorio;
 import com.sura.claims.selenium.pages.Reclamacion;
 import com.sura.guidewire.selenium.Guidewire;
-//import com.sura.policycenter.selenium.pages.PaginaPrincipal;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 import javax.swing.*;
+
+//import com.sura.policycenter.selenium.pages.PaginaPrincipal;
 
 /**
  * Created by edwabuac on 15/04/2016.

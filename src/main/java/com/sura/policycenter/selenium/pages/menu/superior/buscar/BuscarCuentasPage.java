@@ -1,12 +1,9 @@
 package com.sura.policycenter.selenium.pages.menu.superior.buscar;
 
 import com.sura.guidewire.selenium.Guidewire;
-import jnr.ffi.annotations.Clear;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import javax.swing.*;
 
 /**
  * Created by jorghome on 10/05/2016.
