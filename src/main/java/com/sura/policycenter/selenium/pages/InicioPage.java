@@ -10,24 +10,20 @@ import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioN
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
-import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarActividadesPage;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.BuscarContactoPage;
-import com.sura.policycenter.selenium.pages.menu.superior.cuenta.CuentaBuscarPage;
-import com.sura.policycenter.selenium.pages.menu.superior.cuenta.NuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.NuevaCompaniaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.NuevaPersonaPage;
+import com.sura.policycenter.selenium.pages.menu.superior.cuenta.CuentaBuscarPage;
+import com.sura.policycenter.selenium.pages.menu.superior.cuenta.NuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.equipo.EquipoPage;
 import com.sura.policycenter.selenium.pages.menu.superior.escritorio.*;
 import com.sura.policycenter.selenium.pages.menu.superior.poliza.NuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.superior.poliza.PolizaBuscarPage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
-import javax.swing.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
