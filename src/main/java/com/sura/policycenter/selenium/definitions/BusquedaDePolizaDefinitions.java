@@ -24,7 +24,7 @@ public class BusquedaDePolizaDefinitions {
     }
 
     @Then("se debe visualizar la siguiente información: $resultadoBusqueda")
-    public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda) throws Exception{
+    public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda){
         busquedaDePolizaSteps.validarResultadosDeLaBusqueda(resultadoBusqueda);
     }
 
