@@ -224,10 +224,10 @@ public class BusquedaContactoDefinitions {
         Map<String, String> labelsContacto = new HashMap<>();
         labelsContacto.put("tipoId", "Tipo de Documento");
         labelsContacto.put("numId", "Número de Documento");
-        labelsContacto.put("priNombre","Primer Nombre");
-        labelsContacto.put("segNombre","Segundo Nombre");
-        labelsContacto.put("priApellido","Primer Apellido");
-        labelsContacto.put("segApellido","Segundo Apellido");
+        labelsContacto.put("priNombre","Primer nombre");
+        labelsContacto.put("segNombre","Segundo nombre");
+        labelsContacto.put("priApellido","Primer apellido");
+        labelsContacto.put("segApellido","Segundo apellido");
         labelsContacto.put("direccion","Dirección");
         labelsContacto.put("telefono","Teléfono");
         labelsContacto.put("email","Correo Electrónico");
@@ -241,7 +241,7 @@ public class BusquedaContactoDefinitions {
         Map<String, String> labelsContacto = new HashMap<>();
         labelsContacto.put("tipoId", "Tipo de Documento");
         labelsContacto.put("numId", "Número de Documento");
-        labelsContacto.put("nomComercial","Nombre Comercial");
+        labelsContacto.put("nomComercial","Nombre comercial");
         labelsContacto.put("razonSocial","Razón Social");
         labelsContacto.put("direccion","Dirección");
         labelsContacto.put("telefono","Teléfono");
