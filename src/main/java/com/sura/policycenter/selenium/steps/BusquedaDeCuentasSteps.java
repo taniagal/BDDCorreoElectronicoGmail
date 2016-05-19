@@ -20,7 +20,6 @@ public class BusquedaDeCuentasSteps extends ScenarioSteps{
 
     @Step
     public void ingresarABuscarCuentas(String buscar, String cuenta) {
-        //busquedaDeCuentasPage.ingresarABuscarCuentas();
         inicioPage().irABuscarCuentas();
     }
 
