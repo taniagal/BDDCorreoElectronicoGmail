@@ -42,7 +42,7 @@ prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titu
 
 Examples:
 |usuario|estadoActividad|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|Alice Applegate|Abierta|Normal|Abierta|prueba actividad|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|Alice Applegate|Abierta|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
 
 
 Scenario: Realizar busqueda de actividades por alguno de los filtros requeridos y prioridad
@@ -54,7 +54,7 @@ prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titu
 
 Examples:
 |usuario|filtroPrioridad|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|Alice Applegate|Normal|Normal|Abierta|prueba actividad|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|Alice Applegate|Normal|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
 
 Scenario: Realizar busqueda de actividades por alguno de los filtros requeridos y vencida
 Given que me encuentro en la busqueda de actividades
@@ -65,7 +65,7 @@ prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titu
 
 Examples:
 |usuario|filtroVencida|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|Alice Applegate|No|Normal|Abierta|prueba actividad|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|Alice Applegate|No|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
 
 Scenario: Realizar busqueda de actividades por el filtro asignado a
 Given que me encuentro en la busqueda de actividades
@@ -76,7 +76,7 @@ prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titu
 
 Examples:
 |usuario|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|Alice Applegate|Normal|Abierta|prueba actividad|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|Alice Applegate|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
 
 Scenario: Realizar busqueda de actividades por el filtro numero de poliza
 Given que me encuentro en la busqueda de actividades
@@ -87,7 +87,7 @@ prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titu
 
 Examples:
 |numeroPoliza|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|TEST_22222222|Normal|Abierta|prueba actividad|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|TEST_22222222|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
 
 Scenario: Realizar busqueda de actividades por el filtro numero de cuenta
 Given que me encuentro en la busqueda de actividades
@@ -98,7 +98,7 @@ prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titu
 
 Examples:
 |numeroCuenta|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|C001888888|Normal|Abierta|prueba actividad|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|C001888888|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
 
 Scenario: Realizar busqueda de actividades sin esfecificar un filtro
 Given que me encuentro en la busqueda de actividades

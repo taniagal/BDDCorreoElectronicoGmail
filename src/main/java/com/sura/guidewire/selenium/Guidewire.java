@@ -1,6 +1,5 @@
 package com.sura.guidewire.selenium;
 
-import com.google.common.base.Function;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
@@ -10,11 +9,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.TimeUnit;
+
 import static org.hamcrest.CoreMatchers.containsString;
 
 /**
@@ -32,7 +31,7 @@ public class Guidewire extends PageObject {
     }
 
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
-    WebElementFacade configuracion;
+    private WebElementFacade configuracion;
     @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
     WebElementFacade internacional;
     @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
@@ -51,6 +50,8 @@ public class Guidewire extends PageObject {
     WebElementFacade btnLogout;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnLogout2;
+    @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
+    WebElementFacade lblMisActividades;
 
     // TODO: 19/04/2016 Revision escritura de excepciones en log
     @WhenPageOpens
@@ -134,20 +135,26 @@ public class Guidewire extends PageObject {
     }
 
     public void elegirLenguaje(){
+
+        if(!lblMisActividades.getText().equals("Mis actividades")){
         configuracion.click();
-        waitABit(800);
+        waitABit(300);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(800);
+        waitABit(300);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(800);
+        waitABit(300);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(800);
+        waitABit(300);
         espaniol.click();
+        waitABit(850);
+        }
+
     }
 
     protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
         final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-
 }
+
+

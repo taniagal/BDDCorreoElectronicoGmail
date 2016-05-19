@@ -1,10 +1,10 @@
 package com.sura.policycenter.selenium.definitions;
 
-import org.jbehave.core.annotations.Named;
 import com.sura.policycenter.selenium.steps.ContactoOrdenesDeTrabajoSteps;
 import com.sura.policycenter.selenium.steps.CuentasAsociadasAContactoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
@@ -43,13 +43,14 @@ public class ContactoOrdenesDeTrabajoDefinitions {
         ordenesTrabajoSteps.filtrarPorEstado(filtroEstado);
     }
 
-    @Then("debe mostrarme el listado de transacciones con su respectiva informacion: producto <producto> Transaccion <transaccion> Tipo <tipo> Status <estado> Participante <participante>")
-    public void validarTransacciones(@Named("producto") String producto,
+    @Then("debe mostrarme el listado de transacciones con su respectiva informacion: numero de poliza <poliza>, producto <producto>, transaccion <transaccion>, tipo <tipo>, estado <estado>, participante <participante>")
+    public void validarTransacciones(@Named("poliza") String poliza,
+                                     @Named("producto") String producto,
                                      @Named("transaccion") String transaccion,
                                      @Named("tipo") String tipo,
                                      @Named("estado") String estado,
                                      @Named("participante") String participante) {
-        ordenesTrabajoSteps.validarCamposTransacciones(producto, transaccion, tipo,
+        ordenesTrabajoSteps.validarCamposTransacciones(poliza, producto, transaccion, tipo,
                 estado, participante);
     }
 

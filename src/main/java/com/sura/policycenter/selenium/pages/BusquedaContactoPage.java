@@ -1,12 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import com.sura.guidewire.selenium.Guidewire;
-import freemarker.ext.beans.HashAdapter;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -16,10 +10,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+import java.util.Map;
+
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-import java.util.List;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 public class BusquedaContactoPage extends Guidewire {
 
@@ -160,6 +157,7 @@ public class BusquedaContactoPage extends Guidewire {
         }
     }
     public void buscarContacto(String tipoContacto, String nombre, String apellido){
+        tipoContact.waitUntilClickable();
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         waitABit(1000);
@@ -430,4 +428,6 @@ public class BusquedaContactoPage extends Guidewire {
     public void seleccionarContacto() {
         selectContact.click();
     }
+
+
 }

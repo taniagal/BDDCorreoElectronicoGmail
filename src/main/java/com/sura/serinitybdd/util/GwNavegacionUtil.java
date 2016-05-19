@@ -12,9 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.*;
 
-import static com.sura.policycenter.selenium.definitions.ContactosAsociadosACuentaDefinitions.encabezado;
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
-
 /**
  * Created by Andrés Alarcón - QVisión on 2016/05/13.
  */
