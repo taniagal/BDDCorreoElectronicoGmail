@@ -7,6 +7,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.*;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.BuscarContactoPage;
@@ -23,8 +24,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
-import javax.swing.*;
 
 /**
  * Created by jonamele on 06/05/2016.
@@ -279,6 +278,9 @@ public class Navegacion extends Guidewire {
     // Objetos menu Opciones Cuenta
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Roles']/div")
     WebElementFacade mnuOpcionesCuenta;
+
+    @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
+    WebElementFacade mnuResumenCuenta;
 
     // Navegacion menu Escritorio
     public MisActividadesPage irAMisActividades() {
@@ -1118,4 +1120,9 @@ public class Navegacion extends Guidewire {
         return new OpcionesCrearPartcCuentaPage(getDriver());
     }
 
+    public OpcionesResumenCuentaPage irAOpcionesResumenCuenta() {
+        mnuResumenCuenta.click();
+        waitABit(800);
+        return new OpcionesResumenCuentaPage(getDriver());
+    }
 }
