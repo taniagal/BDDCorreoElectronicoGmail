@@ -5,6 +5,7 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,7 @@ public class BusquedaDePolizaPage extends Guidewire{
     @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:ProductName-inputEl']")
     WebElementFacade txtProducto;
 
-    @FindBy(xpath="/*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:Producer-inputEl']")
+    @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:Producer-inputEl']")
     WebElementFacade txtAgente;
 
     @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:ProducerCode-inputEl']")
@@ -114,4 +115,41 @@ public class BusquedaDePolizaPage extends Guidewire{
     }
 
 
+    public void buscarPolizaPorNumeroCuentaYProducto(String numeroCuenta, String producto) {
+        this.limpiarCampos();
+        txtNumeroCuenta.sendKeys(numeroCuenta);
+        txtProducto.clear();
+        txtProducto.sendKeys(producto);
+        txtProducto.sendKeys(Keys.ENTER);
+        btnBuscar.click();
+    }
+
+    public void buscarPorNumerocuentaYAgente(String numeroCuenta, String agente) {
+        this.limpiarCampos();
+        txtProducto.clear();
+        txtProducto.sendKeys("<ninguno>");
+        txtProducto.sendKeys(Keys.ENTER);
+        txtNumeroCuenta.sendKeys(numeroCuenta);
+        waitABit(2000);
+        txtAgente.sendKeys(agente);
+        btnBuscar.click();
+    }
+
+    public void buscarPolizaPorNumeroCuentaYCodigoAgente(String numeroCuenta, String codigoAgente) {
+        this.limpiarCampos();
+        txtAgente.clear();
+        txtNumeroCuenta.sendKeys(numeroCuenta);
+        txtCodigoAgente.sendKeys(codigoAgente);
+        btnBuscar.click();
+    }
+
+    public void buscarPolizaPorNumeroCuentaYDosOpcionales(String numeroCuenta, String producto, String codigoAgente) {
+        this.limpiarCampos();
+        txtNumeroCuenta.sendKeys(numeroCuenta);
+        txtProducto.clear();
+        txtProducto.sendKeys(producto);
+        txtProducto.sendKeys(Keys.ENTER);
+        txtCodigoAgente.sendKeys(codigoAgente);
+        btnBuscar.click();
+    }
 }

@@ -32,4 +32,30 @@ public class BusquedaDePolizaDefinitions {
     public void buscarPolizaPorNumeroDeCuenta(@Named("numeroCuenta") String numeroCuenta){
         busquedaDePolizaSteps.buscarPolizaPorNumeroDeCuenta(numeroCuenta);
     }
+
+    @When("la busco por numero de cuenta <numeroCuenta> y producto <producto>")
+    public void buscarPolizaPorNumeroCuentaYProducto(@Named("numeroCuenta") String numeroCuenta,
+                                                     @Named("producto") String producto){
+        busquedaDePolizaSteps.buscarPolizaPorNumeroCuentaYProducto(numeroCuenta, producto);
+    }
+
+    @When("la busco por numero de cuenta <numeroCuenta> y agente <agente>")
+    public void buscarPolizaPorNumeroCuentaY(@Named("numeroCuenta") String numeroCuenta,
+                                             @Named("agente") String agente){
+        busquedaDePolizaSteps.buscarPorNumerocuentaYAgente(numeroCuenta, agente);
+    }
+
+
+    @When("la busco por numero de cuenta <numeroCuenta> y codigo de agente <codigoAgente>")
+    public void buscarPolizaPorNumeroCuentaYCodigoAgente(@Named("numeroCuenta") String numeroCuenta,
+                                             @Named("codigoAgente") String codigoAgente){
+        busquedaDePolizaSteps.buscarPolizaPorNumeroCuentaYCodigoAgente(numeroCuenta, codigoAgente);
+    }
+
+    @When("la busco por numero de cuenta <numeroCuenta>, producto <producto> y codigo de agente <codigoAgente>")
+    public void buscarPolizaPorNumeroCuentaYDosOpcionales(@Named("numeroCuenta") String numeroCuenta,
+                                                          @Named("producto") String producto,
+                                                          @Named("numeroCuenta") String codigoAgente) {
+        busquedaDePolizaSteps.buscarPolizaPorNumeroCuentaYDosOpcionales(numeroCuenta, producto, codigoAgente);
+    }
 }
