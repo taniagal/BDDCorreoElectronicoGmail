@@ -79,6 +79,7 @@ public class CrearNuevoContactoDefinitions {
 
     @Given("estoy en la pantalla de crear contacto persona juridica")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaJuridica() {
+        seusLoginSteps.login();
         crearNuevoContactoSteps.nuevoContactoPersonaJuridica();
     }
 
