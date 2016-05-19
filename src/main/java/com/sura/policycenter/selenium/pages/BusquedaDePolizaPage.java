@@ -5,6 +5,7 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,7 @@ public class BusquedaDePolizaPage extends Guidewire{
     @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:ProductName-inputEl']")
     WebElementFacade txtProducto;
 
-    @FindBy(xpath="/*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:Producer-inputEl']")
+    @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:Producer-inputEl']")
     WebElementFacade txtAgente;
 
     @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:ProducerCode-inputEl']")
@@ -103,6 +104,8 @@ public class BusquedaDePolizaPage extends Guidewire{
         txtNumeroPoliza.clear();
         txtNumeroCuenta.waitUntilClickable();
         txtNumeroCuenta.clear();
+        txtAgente.clear();
+        txtCodigoAgente.clear();
         waitABit(2000);
     }
 
@@ -117,5 +120,35 @@ public class BusquedaDePolizaPage extends Guidewire{
     public void validarMensajeDeConsultaSinResultados(String mensaje) {
         msjValidacion.waitUntilVisible();
         assertThat(msjValidacion.getText(), is(equalTo(mensaje)));
+    }
+
+    public void buscarPolizaPorProducto(String producto) {
+        this.limpiarCampos();
+        txtProducto.waitUntilClickable();
+        txtProducto.clear();
+        txtProducto.sendKeys(producto);
+        txtProducto.sendKeys(Keys.ENTER);
+        waitABit(2000);
+        btnBuscar.click();
+    }
+
+    public void buscarPolizaPorAgente(String agente) {
+        this.limpiarCampos();
+        txtProducto.waitUntilClickable();
+        txtProducto.clear();
+        txtProducto.sendKeys("<ninguno>");
+        txtProducto.sendKeys(Keys.ENTER);
+        txtAgente.sendKeys(agente);
+        btnBuscar.click();
+    }
+
+    public void buscarPolizaPorCodigoAgente(String codigoAgente) {
+        this.limpiarCampos();
+        txtProducto.waitUntilClickable();
+        txtProducto.clear();
+        txtProducto.sendKeys("<ninguno>");
+        txtProducto.sendKeys(Keys.ENTER);
+        txtCodigoAgente.sendKeys(codigoAgente);
+        btnBuscar.click();
     }
 }
