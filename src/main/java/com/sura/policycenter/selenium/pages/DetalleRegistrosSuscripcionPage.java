@@ -22,14 +22,41 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
     @FindBy(xpath=".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:TotalCost-inputEl']")
     WebElementFacade lblCostoTotal;
 
+    @FindBy(xpath="//div[2]/div/table/tbody/tr/td/div/div[2]/div/table/tbody/tr/td/div")
+    WebElementFacade lblProducto;
+
+    @FindBy(xpath="//div/table/tbody/tr/td[2]/div")
+    WebElementFacade lblNroEnvio;
+
+    @FindBy(xpath="//td[3]/div")
+    WebElementFacade lblEstado;
+
+    @FindBy(xpath="//td[4]/div")
+    WebElementFacade lblNroPoliza;
+
+    @FindBy(xpath="//td[5]/div")
+    WebElementFacade lblCrearFecha;
+
+    @FindBy(xpath="//td[6]/div")
+    WebElementFacade lblFechaCierre;
+
     public DetalleRegistrosSuscripcionPage(WebDriver driver) {
         super(driver);
     }
 
+    public void validarCamposDetalle(String producto, String nroEnvio, String estado, String nroPoliza){
+        assertThat(lblProducto.getText(), is(equalTo(producto)));
+        assertThat(lblNroEnvio.getText(), is(equalTo(nroEnvio)));
+        assertThat(lblEstado.getText(), is(equalTo(estado)));
+        assertThat(lblNroPoliza.getText(), is(equalTo(nroPoliza)));
+        assertThat(lblCrearFecha.getText(), is(notNullValue()));
+        lblFechaCierre.shouldBeVisible();
+    }
+
     public void buscarRegistrosDeSucripcion(){
-        mnuRegistrosSuscripcion.waitUntilClickable();
+        waitABit(1000);
         mnuRegistrosSuscripcion.click();
-        lblTransaccion.waitUntilClickable();
+        waitABit(1000);
         lblTransaccion.click();
     }
 

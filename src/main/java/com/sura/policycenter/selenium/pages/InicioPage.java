@@ -140,7 +140,9 @@ public class InicioPage extends Guidewire {
     public NuevaCuentaPage irANuevaCuenta() {
         return navegacion.irANuevaCuenta();
     }
-    public CuentaBuscarPage irACuentaBuscar(String numCuenta) { return navegacion.irACuentaBuscar(numCuenta); }
+    public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
+        return navegacion.irACuentaBuscar(numCuenta);
+    }
 
     // Metodos navegacion Poliza
     public NuevoEnvioPage irANuevoEnvio() {

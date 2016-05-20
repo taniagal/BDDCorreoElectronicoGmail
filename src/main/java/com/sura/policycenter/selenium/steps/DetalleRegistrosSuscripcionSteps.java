@@ -14,6 +14,11 @@ public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
     }
 
     @Step
+    public void validarCamposDetalle(String producto, String nroEnvio, String estado, String nroPoliza) {
+        detalleRegistrosSuscripcionPage.validarCamposDetalle(producto, nroEnvio, estado, nroPoliza);
+    }
+
+    @Step
     public void buscarRegistrosDeSucripcion() {
         detalleRegistrosSuscripcionPage.buscarRegistrosDeSucripcion();
     }

@@ -29,9 +29,12 @@ public class DetalleRegistrosSuscripcionDefinitions {
         detalleRegistrosSuscripcionSteps.buscarRegistrosDeSucripcion();
     }
 
-    @Then("debo ver la siguiente informacion")
-    public void verDetalleRegistrosDeSuscripcion() {
-        // PENDING
+    @Then("debo ver la siguiente informacion producto <producto>, <nroEnvio>, <estado>, <nroPoliza>")
+    public void verDetalleRegistrosDeSuscripcion(@Named("producto") String producto,
+                                                 @Named("nroEnvio") String nroEnvio,
+                                                 @Named("estado") String estado,
+                                                 @Named("nroPoliza") String nroPoliza) {
+        detalleRegistrosSuscripcionSteps.validarCamposDetalle(producto, nroEnvio, estado, nroPoliza);
     }
 
     @Then("debo ver el costo total <total> para las cotizaciones en estado cotizado")
