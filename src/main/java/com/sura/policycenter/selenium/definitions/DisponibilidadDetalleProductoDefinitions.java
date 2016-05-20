@@ -9,10 +9,11 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
+@SuppressWarnings("WeakerAccess")
 public class DisponibilidadDetalleProductoDefinitions {
 
     @Steps
-    DisponibilidadDetalleProductoSteps disponibilidadDetalleProductoSteps;
+    private DisponibilidadDetalleProductoSteps disponibilidadDetalleProductoSteps;
 
     @Given("Estoy expidiendo una poliza de autos")
     public void accionarNuevoEnvio() {

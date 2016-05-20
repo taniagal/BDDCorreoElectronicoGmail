@@ -16,6 +16,7 @@ import java.util.Map;
 /**
  * Created by jhonvebz on 25/04/2016.
  */
+@SuppressWarnings("WeakerAccess")
 public class BusquedaContactoDefinitions {
 
     @Steps
@@ -25,16 +26,16 @@ public class BusquedaContactoDefinitions {
     SeusLoginSteps seusLoginSteps;
 
     @Steps
-    BusquedaContactoSteps buscarContactoSteps;
+    private BusquedaContactoSteps buscarContactoSteps;
 
     @Given("estoy en busqueda de contactos")
     public void givenEstoyEnBusquedaContactos() {
-        buscarContactoSteps.navegarBarraSuperior("Buscar", "Contactos", "");
+        buscarContactoSteps.navegarBarraSuperior();
     }
 
     @Given("estoy en contactos para buscar")
     public void givenContactosBuscar(){
-        buscarContactoSteps.navegarBarraSuperior("Contacto", "Buscar", "");
+        buscarContactoSteps.navegarBarraSuperior();
     }
 
     @When("quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre> y apellido <apellido>")

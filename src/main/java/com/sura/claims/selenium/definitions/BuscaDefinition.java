@@ -10,10 +10,11 @@ import org.jbehave.core.annotations.When;
 /**
  * Created by jonamele on 20/04/2016.
  */
+@SuppressWarnings("WeakerAccess")
 public class BuscaDefinition {
 
     @Steps
-    ClaimsSteps cs;
+    private ClaimsSteps cs;
 
     @Given("abro la aplicacion como super usuario")
 

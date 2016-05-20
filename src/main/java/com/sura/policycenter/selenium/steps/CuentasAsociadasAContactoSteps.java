@@ -9,8 +9,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
 
-    BusquedaContactoPage busquedaPage = new BusquedaContactoPage(getDriver());
-    CuentasAsociadasAContactoPage cuentasAsociadasAContactoPage = new CuentasAsociadasAContactoPage(getDriver());
+    private BusquedaContactoPage busquedaPage = new BusquedaContactoPage(getDriver());
+    private CuentasAsociadasAContactoPage cuentasAsociadasAContactoPage = new CuentasAsociadasAContactoPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }

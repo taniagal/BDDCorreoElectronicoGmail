@@ -13,12 +13,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
+@SuppressWarnings("WeakerAccess")
 public class CrearCuentaNuevaDefinitions {
     @Steps
-    SeusLoginSteps seusLogin;
+    private SeusLoginSteps seusLogin;
 
     @Steps
-    CrearNuevaCuentaSteps cns;
+    private CrearNuevaCuentaSteps cns;
 
 
     @Given("que me encuentro en el sistema de policy center")

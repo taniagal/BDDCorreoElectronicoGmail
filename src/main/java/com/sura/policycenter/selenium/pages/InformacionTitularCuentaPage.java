@@ -16,128 +16,128 @@ public class InformacionTitularCuentaPage extends Guidewire {
     }
 
     @FindBy(xpath="//tr[2]/td/div/span")
-    WebElementFacade mnuInformacionTitularCuenta;
+    private WebElementFacade mnuInformacionTitularCuenta;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:ttlBar']")
-    WebElementFacade tituloInformacionTitularCuenta;
+    private WebElementFacade tituloInformacionTitularCuenta;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsTitleBar']")
-    WebElementFacade tituloMetricas;
+    private WebElementFacade tituloMetricas;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:0']")
-    WebElementFacade tituloTransacciones;
+    private WebElementFacade tituloTransacciones;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:1']")
-    WebElementFacade tituloReclamaciones;
+    private WebElementFacade tituloReclamaciones;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountHolderName-inputEl']")
-    WebElementFacade txtTitularCuenta;
+    private WebElementFacade txtTitularCuenta;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountHoldeDocumentType-inputEl']")
-    WebElementFacade txtTipoDocumento;
+    private WebElementFacade txtTipoDocumento;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountHolderDocumentNumber-inputEl']")
-    WebElementFacade txtNumeroDocumento;
+    private WebElementFacade txtNumeroDocumento;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:InForcePremium-inputEl']")
-    WebElementFacade txtPrimaVigencia;
+    private WebElementFacade txtPrimaVigencia;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:Segmentation-inputEl']")
-    WebElementFacade txtSegmentacion;
+    private WebElementFacade txtSegmentacion;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:Behavior-inputEl']")
-    WebElementFacade txtComportamiento;
+    private WebElementFacade txtComportamiento;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:TotalUnbilled-inputEl']")
-    WebElementFacade txtTotalNoFacturado;
+    private WebElementFacade txtTotalNoFacturado;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:TotalCurrentlyBilled-inputEl']")
-    WebElementFacade txtTotalFacturado;
+    private WebElementFacade txtTotalFacturado;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:TotalPastDueBilled-inputEl']")
-    WebElementFacade txtTotalVencido;
+    private WebElementFacade txtTotalVencido;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:TotalOutstandingBilled-inputEl']")
-    WebElementFacade txtTotalPendiente;
+    private WebElementFacade txtTotalPendiente;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:DocumentType']")
-    WebElementFacade itmTipoDocumento;
+    private WebElementFacade itmTipoDocumento;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:FirstPolicyEffectiveYearInput-labelEl']")
-    WebElementFacade lblAnioVigencia;
+    private WebElementFacade lblAnioVigencia;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:ActivePoliciesInput-inputEl']")
-    WebElementFacade txtPolizasActivas;
+    private WebElementFacade txtPolizasActivas;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:CanceledByCustomerInput-inputEl']")
-    WebElementFacade txtCanceladoPorCliente;
+    private WebElementFacade txtCanceladoPorCliente;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:CanceledByCarrierInput-inputEl']")
-    WebElementFacade txtCanceladoPorCompania;
+    private WebElementFacade txtCanceladoPorCompania;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:OtherCancellationsInput-inputEl']")
-    WebElementFacade txtOtrasCancelaciones;
+    private WebElementFacade txtOtrasCancelaciones;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:LifetimePremiumInput-labelEl']")
-    WebElementFacade lblPrimaVitalicia;
+    private WebElementFacade lblPrimaVitalicia;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:OpenClaimsCount-inputEl']")
-    WebElementFacade txtTotalReclamacionesAbiertas;
+    private WebElementFacade txtTotalReclamacionesAbiertas;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:NetTotalIncurred-labelEl']")
-    WebElementFacade lblTotalNetoIncurrido;
+    private WebElementFacade lblTotalNetoIncurrido;
 
     @FindBy(xpath="//div[2]/div/div/div/div/span")
-    WebElementFacade colCrearFecha;
+    private WebElementFacade colCrearFecha;
 
     @FindBy(xpath="//div/div/div[2]/div/span")
-    WebElementFacade colNroPoliza;
+    private WebElementFacade colNroPoliza;
 
     @FindBy(xpath="//div[3]/div/span")
-    WebElementFacade colProducto;
+    private WebElementFacade colProducto;
 
     @FindBy(xpath="//div/div/div[4]/div/span")
-    WebElementFacade colNroTransaccion;
+    private WebElementFacade colNroTransaccion;
 
     @FindBy(xpath="//div[5]/div/span")
-    WebElementFacade colTipo;
+    private WebElementFacade colTipo;
 
     @FindBy(xpath="//div[6]/div/span")
-    WebElementFacade colEstado;
+    private WebElementFacade colEstado;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div/div/span")
-    WebElementFacade colNumeroPoliza;
+    private WebElementFacade colNumeroPoliza;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[2]/div/span")
-    WebElementFacade colProductoReclamaciones;
+    private WebElementFacade colProductoReclamaciones;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[3]/div/span")
-    WebElementFacade colAsegurado;
+    private WebElementFacade colAsegurado;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[4]/div/span")
-    WebElementFacade colFechaPerdida;
+    private WebElementFacade colFechaPerdida;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[5]/div/span")
-    WebElementFacade colNroReclamacion;
+    private WebElementFacade colNroReclamacion;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[6]/div/span")
-    WebElementFacade colEstadoReclamacion;
+    private WebElementFacade colEstadoReclamacion;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[7]/div/span")
-    WebElementFacade colTotalIncurrido;
+    private WebElementFacade colTotalIncurrido;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountsActividadEconomica-labelEl']")
-    WebElementFacade lblActividadEconomica;
+    private WebElementFacade lblActividadEconomica;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:PersonDateOfDeath-inputEl']")
-    WebElementFacade txtFechaFallecimiento;
+    private WebElementFacade txtFechaFallecimiento;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:PersonCauseOfDeath-inputEl']")
-    WebElementFacade txtCausaFallecimiento;
+    private WebElementFacade txtCausaFallecimiento;
 
 
 
-    String div = "div";
+    private String div = "div";
 
 
     public void clickTipoDocumento() {

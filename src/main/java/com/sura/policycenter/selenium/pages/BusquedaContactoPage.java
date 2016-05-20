@@ -7,12 +7,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.slf4j.LoggerFactory;
-
 import java.util.List;
 import java.util.Map;
-
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -21,115 +18,115 @@ import static org.hamcrest.Matchers.is;
 public class BusquedaContactoPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='TabBar:ContactTab']")
-    WebElementFacade contactMenu;
+    private WebElementFacade contactMenu;
 
     @FindBy(xpath=".//*[@id='TabBar:ContactTab:Search']")
-    WebElementFacade buscarContact;
+    private WebElementFacade buscarContact;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")
-    WebElementFacade tipoContact;
+    private WebElementFacade tipoContact;
 
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
-    WebElementFacade txtNombreEmpresa;
+    private WebElementFacade txtNombreEmpresa;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    WebElementFacade txtNombre;
+    private WebElementFacade txtNombre;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    WebElementFacade txtApellido;
+    private WebElementFacade txtApellido;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:MiddleName-inputEl']")
-    WebElementFacade txtSegNombre;
+    private WebElementFacade txtSegNombre;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:Particle-inputEl']")
-    WebElementFacade txtSegApellido;
+    private WebElementFacade txtSegApellido;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
-    WebElementFacade nombreEmpresaContact;
+    private WebElementFacade nombreEmpresaContact;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade botonBuscar;
+    private WebElementFacade botonBuscar;
 
     @FindBy(xpath="//tr[3]/td/table/tbody/tr/td[2]/input\n")
-    WebElementFacade txtRazonSocial;
+    private WebElementFacade txtRazonSocial;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:_msgs']/div")
-    WebElementFacade msjValidacionCampos;
+    private WebElementFacade msjValidacionCampos;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:_RecordCount']")
-    WebElementFacade msjSinRegistros;
+    private WebElementFacade msjSinRegistros;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:SearchWarningMessagePanelSet:SearchWarningMessage']")
-    WebElementFacade msjSinCriterios;
+    private WebElementFacade msjSinCriterios;
 
     @FindBy(xpath="//li[2]")
-    WebElementFacade itmNIT;
+    private WebElementFacade itmNIT;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:DocumentType-inputEl']")
-    WebElementFacade txtTipoDoc;
+    private WebElementFacade txtTipoDoc;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:identificationNumber-inputEl']")
-    WebElementFacade txtNumDoc;
+    private WebElementFacade txtNumDoc;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
-    WebElementFacade txtNombreComercial;
+    private WebElementFacade txtNombreComercial;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    WebElementFacade nombreContact;
+    private WebElementFacade nombreContact;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    WebElementFacade apellidoContact;
+    private WebElementFacade apellidoContact;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:DocumentType']")
-    WebElementFacade selectContact;
+    private WebElementFacade selectContact;
 
     @FindBy(xpath="//div[3]/div/table")
-    WebElementFacade table;
+    private WebElementFacade table;
 
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
-    WebElementFacade submit;
+    private WebElementFacade submit;
 
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-    WebElementFacade txtusuario;
+    private WebElementFacade txtusuario;
 
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
-    WebElementFacade txtcontrasena;
+    private WebElementFacade txtcontrasena;
 
     @FindBy(xpath="//div/div/div[2]/div/span")
-    WebElementFacade lblTipoId;
+    private WebElementFacade lblTipoId;
 
     @FindBy(xpath="//div/div/div[3]/div/span")
-    WebElementFacade lblNumId;
+    private WebElementFacade lblNumId;
 
     @FindBy(xpath="//div[4]/div/span")
-    WebElementFacade lblPrimNombre;
+    private WebElementFacade lblPrimNombre;
 
     @FindBy(xpath="//div/div/div[5]/div/span")
-    WebElementFacade lblSegNombre;
+    private WebElementFacade lblSegNombre;
 
     @FindBy(xpath="//div[6]/div/span")
-    WebElementFacade lblPriApellido;
+    private WebElementFacade lblPriApellido;
 
     @FindBy(xpath="//div[7]/div/span")
-    WebElementFacade lblSegApellido;
+    private WebElementFacade lblSegApellido;
 
     @FindBy(xpath="//div[8]/div/span")
-    WebElementFacade lblNomComercial;
+    private WebElementFacade lblNomComercial;
 
     @FindBy(xpath="//div[9]/div/span")
-    WebElementFacade lblRazonSocial;
+    private WebElementFacade lblRazonSocial;
 
     @FindBy(xpath="//div[10]/div/span")
-    WebElementFacade lblDireccion;
+    private WebElementFacade lblDireccion;
 
     @FindBy(xpath="//div[11]/div/span")
-    WebElementFacade lblTelefono;
+    private WebElementFacade lblTelefono;
 
     @FindBy(xpath="//div[12]/div/span")
-    WebElementFacade lblEmail;
+    private WebElementFacade lblEmail;
 
     @FindBy(xpath="//div[13]/div/span")
-    WebElementFacade lblExterna;
+    private WebElementFacade lblExterna;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaContactoPage.class);
 
@@ -143,7 +140,7 @@ public class BusquedaContactoPage extends Guidewire {
         super(driver);
     }
 
-    public void accionarBuscarContacto()  {
+    /*public void accionarBuscarContacto()  {
         try{
             Actions act = new Actions(getDriver());
             contactMenu.click();
@@ -155,7 +152,7 @@ public class BusquedaContactoPage extends Guidewire {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
     public void buscarContacto(String tipoContacto, String nombre, String apellido){
         tipoContact.waitUntilClickable();
         tipoContact.type(tipoContacto);
@@ -380,6 +377,7 @@ public class BusquedaContactoPage extends Guidewire {
         selectContact.click();
     }
 
+    @SuppressWarnings("SameParameterValue")
     public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido){
 
         boolean valido = primerNombre.length() < 2 || segundoNombre.length() < 2 || primerApellido.length() < 2 || segundoApellido.length() < 2;

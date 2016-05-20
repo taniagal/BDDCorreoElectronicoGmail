@@ -18,11 +18,11 @@ import javax.swing.*;
  */
 
 public class ClaimsSteps extends ScenarioSteps{
-    Guidewire gw = new Guidewire(getDriver());
-    AbrirApp abrirApp = new AbrirApp(getDriver());
-    Escritorio escritorio = new Escritorio(getDriver());
-    Reclamacion reclamacion = new Reclamacion(getDriver());
-    Buscar buscar = new Buscar(getDriver());
+    private Guidewire gw = new Guidewire(getDriver());
+    private AbrirApp abrirApp = new AbrirApp(getDriver());
+    private Escritorio escritorio = new Escritorio(getDriver());
+    private Reclamacion reclamacion = new Reclamacion(getDriver());
+    private Buscar buscar = new Buscar(getDriver());
     //PaginaPrincipal paginaPrincipal= new PaginaPrincipal (getDriver());
 
     public ClaimsSteps(Pages pages) {

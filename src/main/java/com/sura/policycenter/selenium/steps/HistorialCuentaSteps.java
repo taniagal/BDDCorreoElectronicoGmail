@@ -11,7 +11,7 @@ import net.thucydides.core.steps.ScenarioSteps;
  */
 public class HistorialCuentaSteps  extends ScenarioSteps {
 
-    HistorialCuentaPage historialCuentaPage = new HistorialCuentaPage(getDriver());
+    private HistorialCuentaPage historialCuentaPage = new HistorialCuentaPage(getDriver());
     private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
     public HistorialCuentaSteps(Pages pages) {
         super(pages);

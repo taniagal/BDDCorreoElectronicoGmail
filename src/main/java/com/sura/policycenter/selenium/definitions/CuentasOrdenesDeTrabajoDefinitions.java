@@ -11,13 +11,14 @@ import org.jbehave.core.annotations.When;
 /**
  * Created by brayruru on 2016/05/03.
  */
+@SuppressWarnings("WeakerAccess")
 public class CuentasOrdenesDeTrabajoDefinitions {
 
     @Steps
-    ContactoOrdenesDeTrabajoSteps ordenesTrabajoSteps;
+    private ContactoOrdenesDeTrabajoSteps ordenesTrabajoSteps;
 
     @Steps
-    CuentasOrdenesDeTrabajoSteps cuentasOrdenesTrabajoSteps;
+    private CuentasOrdenesDeTrabajoSteps cuentasOrdenesTrabajoSteps;
 
     @Given("Estoy buscando una cuenta <numCuenta>")
     public void givenEstoyEnUnaCuentanumCuenta(@org.jbehave.core.annotations.Named("numCuenta") String numCuenta) {

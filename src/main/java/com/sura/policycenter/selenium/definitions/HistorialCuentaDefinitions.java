@@ -12,13 +12,14 @@ import org.jbehave.core.annotations.When;
 /**
  * Created by jhonvebz on 25/04/2016.
  */
+@SuppressWarnings("WeakerAccess")
 public class HistorialCuentaDefinitions {
 
     @Steps
-    SeusLoginSteps seusLoginSteps;
+    private SeusLoginSteps seusLoginSteps;
 
     @Steps
-    HistorialCuentaSteps historialCuentaSteps;
+    private HistorialCuentaSteps historialCuentaSteps;
 
     @Given("me encuentro autenticado en gw con un <country>, <user> y <password>")
     public void givenMeEncuentroAutenticadoEnGwConUnpaisusuarioYcontrasena(@Named("country") String country,

@@ -20,7 +20,6 @@ import static org.hamcrest.Matchers.containsString;
  * Created by jorgsape on 2016/05/04.
  */
 public class ContactosAsociadosACuentasPage extends Guidewire {
-    private static String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú encontrados";
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
     private WebElementFacade linkAccountFileAccountFileContacts;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDetailCardTab']")
@@ -105,18 +104,21 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
     }
 
-    public List<WebElementFacade> getListaContactos() {
-        List<WebElementFacade> contactos = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+    private List<WebElementFacade> getListaContactos() {
+        List<WebElementFacade> contactos;
+        contactos = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return contactos;
     }
 
-    public List<WebElementFacade> getListaRolesFunciones() {
-        List<WebElementFacade> rolesFunciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+    private List<WebElementFacade> getListaRolesFunciones() {
+        List<WebElementFacade> rolesFunciones;
+        rolesFunciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return rolesFunciones;
     }
 
-    public List<WebElementFacade> getListaDirecciones() {
-        List<WebElementFacade> direcciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
+    private List<WebElementFacade> getListaDirecciones() {
+        List<WebElementFacade> direcciones;
+        direcciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
         return direcciones;
     }
 
@@ -190,6 +192,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
 
     public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
+        String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú encontrados";
         assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
     }
 
@@ -212,6 +215,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         return esAsociado;
     }
 
+    @SuppressWarnings("SameParameterValue")
     public Boolean validarOcurrenciaDeMensajeDeAplicacion(String idXpathDivMensajes, String mensajesApp){
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado="";

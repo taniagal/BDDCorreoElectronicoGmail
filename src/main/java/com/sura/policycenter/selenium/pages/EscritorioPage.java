@@ -13,75 +13,114 @@ import static org.hamcrest.Matchers.containsString;
 
 public class EscritorioPage extends Guidewire {
 
-    Guidewire gw = new Guidewire(getDriver());
+    //private Guidewire gw = new Guidewire(getDriver());
 
     public EscritorioPage(WebDriver driver) {
         super(driver);
     }
 
-    Actions act = new Actions(getDriver());
+/*private Actions act = new Actions(getDriver());
 
-    @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
-    WebElementFacade labelIngreso;
+    @FindBy(xpath = ".
+/
+[@id='DesktopActivities:DesktopActivitiesScreen:0']")
+    private WebElementFacade labelIngreso;
 
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact-arrowEl']")
-    WebElementFacade mnuNewContact;
+    @FindBy(xpath = ".
+/
+[@id='TabBar:ContactTab:NewContact-arrowEl']")
+    private WebElementFacade mnuNewContact;
 
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewPerson-itemEl']")
-    WebElementFacade mnuNewPerson;
+    @FindBy(xpath = ".
+/
+[@id='TabBar:ContactTab:NewContact:NewPerson-itemEl']")
+    private WebElementFacade mnuNewPerson;
 
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewCompany-textEl']")
-    WebElementFacade mnuNewCompany;
+    @FindBy(xpath = ".
+/
+[@id='TabBar:ContactTab:NewContact:NewCompany-textEl']")
+    private WebElementFacade mnuNewCompany;
 
-    /**
+
+*
      * Objetos menu Escritorio
-     */
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnWrap']")
-    WebElementFacade mnuEscritorio;
 
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopActivities-itemEl']")
-    WebElementFacade mnuItemMisActividades;
+    @FindBy(xpath = ".
+/
+[@id='TabBar:DesktopTab-btnWrap']")
+    private WebElementFacade mnuEscritorio;
 
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopAccounts-itemEl']")
-    WebElementFacade mnuItemMisCuentas;
+    @FindBy(xpath = ".
+/
+[@id='TabBar:DesktopTab:Desktop_DesktopActivities-itemEl']")
+    private WebElementFacade mnuItemMisActividades;
 
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopSubmissions-itemEl']")
-    WebElementFacade mnuItemMisEnvios;
+    @FindBy(xpath = ".
+/
+[@id='TabBar:DesktopTab:Desktop_DesktopAccounts-itemEl']")
+    private WebElementFacade mnuItemMisCuentas;
 
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopRenewals-itemEl']")
-    WebElementFacade mnuItemMisRenovaciones;
+    @FindBy(xpath = ".
+/
+[@id='TabBar:DesktopTab:Desktop_DesktopSubmissions-itemEl']")
+    private WebElementFacade mnuItemMisEnvios;
 
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopOtherWorkOrders-itemEl']")
-    WebElementFacade mnuItemMisOtrasTrans;
+    @FindBy(xpath = ".
+/
+[@id='TabBar:DesktopTab:Desktop_DesktopRenewals-itemEl']")
+    private WebElementFacade mnuItemMisRenovaciones;
 
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopAssignableQueues-itemEl']")
-    WebElementFacade mnuItemMisColas;
+    @FindBy(xpath = ".
+/
+[@id='TabBar:DesktopTab:Desktop_DesktopOtherWorkOrders-itemEl']")
+    private WebElementFacade mnuItemMisOtrasTrans;
 
-    /**
+    @FindBy(xpath = ".
+/
+[@id='TabBar:DesktopTab:Desktop_DesktopAssignableQueues-itemEl']")
+    private WebElementFacade mnuItemMisColas;
+
+
+*
      * Objetos menu Acciones Escritorio
-     */
-    @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions']")
-    WebElementFacade mnuAccionesEscritorio;
 
-    @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission']")
-    WebElementFacade mnuAccionNuevoEnvio;
+    @FindBy(xpath = ".
+/
+[@id='Desktop:DesktopMenuActions']")
+    private WebElementFacade mnuAccionesEscritorio;
 
-    @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewAccount']")
-    WebElementFacade mnuAccionNuevaCuenta;
+    @FindBy(xpath = ".
+/
+[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission']")
+    private WebElementFacade mnuAccionNuevoEnvio;
 
-    /**
+    @FindBy(xpath = ".
+/
+[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewAccount']")
+    private WebElementFacade mnuAccionNuevaCuenta;
+
+
+*
      * Objetos menu Cuenta
-     */
-    @FindBy(xpath = ".//*[@id='TabBar:AccountTab-btnWrap']")
-    WebElementFacade mnuCuenta;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AccountTab-btnWrap']")
+    private WebElementFacade mnuCuenta;
+
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AccountTab:AccountTab_NewAccount-itemEl']")
     WebElementFacade mnuItemNuevaCuenta;
 
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
+    @FindBy(xpath=".
+/
+[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
     WebElementFacade txtNumCuenta;
 
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
+    @FindBy(xpath=".
+/
+[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
     WebElementFacade btnBuscarCuenta;
 
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
@@ -90,468 +129,765 @@ public class EscritorioPage extends Guidewire {
 
 
 
-    /**
-     * Objetos menu Acciones Cuenta
-     */
 
-    @FindBy(xpath = ".//*[@id='TabBar:AccountTab-btnWrap']")
+*
+     * Objetos menu Acciones Cuenta
+
+
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AccountTab-btnWrap']")
     WebElementFacade mnuAccionesCuenta;
 
-    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewNote-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewNote-itemEl']")
     WebElementFacade mnuAccionNuevaNota;
 
-    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewDocument-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewDocument-itemEl']")
     WebElementFacade mnuAccionDocNuevos;
 
-    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewDocument:AccountNewDocumentMenuItemSet:AccountNewDocumentMenuItemSet_Linked-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewDocument:AccountNewDocumentMenuItemSet:AccountNewDocumentMenuItemSet_Linked-itemEl']")
     WebElementFacade mnuAccionLigarDocExistente;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewDocument:AccountNewDocumentMenuItemSet:AccountNewDocumentMenuItemSet_Template-textEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewDocument:AccountNewDocumentMenuItemSet:AccountNewDocumentMenuItemSet_Template-textEl']")
     WebElementFacade mnuAccionCrearDocPlantilla;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewEmail-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewEmail-itemEl']")
     WebElementFacade mnuAccionNuevoCorreo;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission-itemEl']")
     WebElementFacade mnuAccionNuevoEnvio2;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity-arrowEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity-arrowEl']")
     WebElementFacade mnuAccionActNueva;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category-arrowEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category-arrowEl']")
     WebElementFacade mnuAccionCorreoNuevo;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category:0:item-textEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category:0:item-textEl']")
     WebElementFacade mnuAccionRevisarNuevoCorreo;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category-arrowEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category-arrowEl']")
     WebElementFacade mnuAccionEntrevista;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category:0:item-textEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category:0:item-textEl']")
     WebElementFacade mnuAccionReunirseAgenteAgencia;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category:1:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category:1:item-itemEl']")
     WebElementFacade mnuAccionReunirseAsegurado;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category-arrowEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category-arrowEl']")
     WebElementFacade mnuAccionRecordatorio;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:0:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:0:item-itemEl']")
     WebElementFacade mnuAccionCancelPolizaDividida;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:1:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:1:item-itemEl']")
     WebElementFacade mnuAccionCotizacionReq;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:2:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:2:item-itemEl']")
     WebElementFacade mnuAccionDiarioX30;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:3:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:3:item-itemEl']")
     WebElementFacade mnuAccionDiarioX60;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:4:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:4:item-itemEl']")
     WebElementFacade mnuAccionDiarioX90;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:5:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:5:item-itemEl']")
     WebElementFacade mnuAccionNotificacionPoliza;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:6:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:6:item-itemEl']")
     WebElementFacade mnuAccionRecordatorioGeneral;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:7:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:7:item-itemEl']")
     WebElementFacade mnuAccionRevisarAgente;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:8:item-textEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:8:item-textEl']")
     WebElementFacade mnuAccionRevisarX30;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:9:item-textEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:9:item-textEl']")
     WebElementFacade mnuAccionRevisarX45;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:10:item-textEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:10:item-textEl']")
     WebElementFacade mnuAccionRevisarX60;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:11:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:11:item-itemEl']")
     WebElementFacade mnuAccionRevisarRendimiento;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:12:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:12:item-itemEl']")
     WebElementFacade mnuAccionVerificarCobertura;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category-arrowEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category-arrowEl']")
     WebElementFacade mnuAccionSolicitud;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:0:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:0:item-itemEl']")
     WebElementFacade mnuAccionAgenteNuevo;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:1:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:1:item-itemEl']")
     WebElementFacade mnuAccionAuditoriaInterno;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:2:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:2:item-itemEl']")
     WebElementFacade mnuAccionAuditoriaExterna;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:3:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:3:item-itemEl']")
     WebElementFacade mnuAccionCotizacionReaseguro;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:4:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:4:item-itemEl']")
     WebElementFacade mnuAccionDatosOf;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:5:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:5:item-itemEl']")
     WebElementFacade mnuAccionInfoAgente;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:6:item-textEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:6:item-textEl']")
     WebElementFacade mnuAccionInformesMotorizado;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:7:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:7:item-itemEl']")
     WebElementFacade mnuAccionInspeccionSiniestro;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:8:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:8:item-itemEl']")
     WebElementFacade mnuAccionInspeccionExterno;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:9:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:9:item-itemEl']")
     WebElementFacade mnuAccionReportesCredito;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:10:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:10:item-itemEl']")
     WebElementFacade mnuAccionRevisionLegal;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:11:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:11:item-itemEl']")
     WebElementFacade mnuAccionCotizarManual;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_MovePolicies-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_MovePolicies-itemEl']")
     WebElementFacade mnuAccionTransferirPolizas;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_RewritePolicies-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_RewritePolicies-itemEl']")
     WebElementFacade mnuAccionReescribirPolizas;
 
-    @FindBy (xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_MergeAccounts-textEl']")
+    @FindBy (xpath = ".
+/
+[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_MergeAccounts-textEl']")
     WebElementFacade mnuAccionCombinarCuentas;
 
-    /**
+
+*
      * Objetos menu Poliza
-     */
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
+
+    @FindBy(xpath = ".
+/
+[@id='TabBar:PolicyTab-btnWrap']")
     WebElementFacade mnuPoliza;
 
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-itemEl']")
     WebElementFacade mnuItemNuevoEnvio;
 
-    /**
-     * Objetos menu Acciones Poliza
-     */
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions-btnInnerEl']")
+*
+     * Objetos menu Acciones Poliza
+
+
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions-btnInnerEl']")
     WebElementFacade mnuAccionesPoliza;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Goto:WizardMenuActions_ToAccountFile-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Goto:WizardMenuActions_ToAccountFile-itemEl']")
     WebElementFacade mnuAccionArchivoCuenta;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Goto:WizardActionsMenuItemSet:SubmissionInfo-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Goto:WizardActionsMenuItemSet:SubmissionInfo-itemEl']")
     WebElementFacade mnuAccionSubgerente;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Goto:WizardMenuActions_JobGroup-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Goto:WizardMenuActions_JobGroup-itemEl']")
     WebElementFacade mnuAccionGrupo;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Goto:WizardMenuActions_JobGroup:JobGroupItem']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Goto:WizardMenuActions_JobGroup:JobGroupItem']")
     WebElementFacade mnuAccionItemGrupo;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewNote-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewNote-itemEl']")
     WebElementFacade mnuAccionNuevaNotaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewDocument-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewDocument-itemEl']")
     WebElementFacade mnuAccionDocNuevosP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewDocument:NewJobDocumentMenuItemSet:PolicyPeriodNewDocumentMenuItemSet_Linked-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewDocument:NewJobDocumentMenuItemSet:PolicyPeriodNewDocumentMenuItemSet_Linked-itemEl']")
     WebElementFacade mnuAccionLigarDocExistenteP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewDocument:NewJobDocumentMenuItemSet:PolicyPeriodNewDocumentMenuItemSet_Template-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewDocument:NewJobDocumentMenuItemSet:PolicyPeriodNewDocumentMenuItemSet_Template-itemEl']")
     WebElementFacade mnuAccionCrearDocPlantillaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity-itemEl']")
     WebElementFacade mnuAccionActNuevaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category-itemEl']")
     WebElementFacade mnuAccionCorreoNuevoP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category:0:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category:0:item-itemEl']")
     WebElementFacade mnuAccionRevisarNuevoCorreoP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category-itemEl']")
     WebElementFacade mnuAccionEntrevistaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category:0:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category:0:item-itemEl']")
     WebElementFacade mnuAccionReunirseAgenteAgenciaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category:1:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:1:NewActivityMenuItemSet_Category:1:item-itemEl']")
     WebElementFacade mnuAccionReunirseAseguradoP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category-itemEl']")
     WebElementFacade mnuAccionRecordatorioP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:0:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:0:item-itemEl']")
     WebElementFacade mnuAccionCancelPolizaDivididaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:1:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:1:item-itemEl']")
     WebElementFacade mnuAccionCotizacionReqP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:2:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:2:item-itemEl']")
     WebElementFacade mnuAccionDiarioX30P;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:3:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:3:item-itemEl']")
     WebElementFacade mnuAccionDiarioX60P;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:4:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:4:item-itemEl']")
     WebElementFacade mnuAccionDiarioX90P;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:5:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:5:item-itemEl']")
     WebElementFacade mnuAccionNotificacionPolizaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:6:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:6:item-itemEl']")
     WebElementFacade mnuAccionAsignaAuditoriaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:7:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:7:item-itemEl']")
     WebElementFacade mnuAccionRevisionMitadPlazoP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:8:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:8:item-itemEl']")
     WebElementFacade mnuAccionRecordatorioGeneralP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:9:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:9:item-itemEl']")
     WebElementFacade mnuAccionReescribirCtaNuevaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:10:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:10:item-itemEl']")
     WebElementFacade mnuAccionRenovaRevisionPolizaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:11:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:11:item-itemEl']")
     WebElementFacade mnuAccionRevisarAgenteP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:12:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:12:item-itemEl']")
     WebElementFacade mnuAccionRevisarX30P;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:13:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:13:item-itemEl']")
     WebElementFacade mnuAccionRevisarX45P;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:14:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:14:item-itemEl']")
     WebElementFacade mnuAccionRevisarX60P;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:15:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:15:item-itemEl']")
     WebElementFacade mnuAccionRevisarRendimientoP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:16:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:16:item-itemEl']")
     WebElementFacade mnuAccionVerificarCoberturaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:17:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:2:NewActivityMenuItemSet_Category:17:item-itemEl']")
     WebElementFacade mnuAccionIndiceFueraRangoP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category-itemEl']")
     WebElementFacade mnuAccionRevisionAseguradorP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:0:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category:0:item-itemEl']")
     WebElementFacade mnuAccionRevisarAprobarP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category-itemEl']")
     WebElementFacade mnuAccionSolicitudP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:0:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:0:item-itemEl']")
     WebElementFacade mnuAccionAgenteNuevoP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:1:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:1:item-itemEl']")
     WebElementFacade mnuAccionAuditoriaInternoP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:2:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:2:item-itemEl']")
     WebElementFacade mnuAccionAuditoriaExternaP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:3:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:3:item-itemEl']")
     WebElementFacade mnuAccionCotizacionReaseguroP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:4:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:4:item-itemEl']")
     WebElementFacade mnuAccionDatosOfP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:5:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:5:item-itemEl']")
     WebElementFacade mnuAccionInfoAgenteP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:6:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:6:item-itemEl']")
     WebElementFacade mnuAccionInformesMotorizadoP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:7:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:7:item-itemEl']")
     WebElementFacade mnuAccionInspeccionSiniestroP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:8:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:8:item-itemEl']")
     WebElementFacade mnuAccionInspeccionExternoP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:9:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:9:item-itemEl']")
     WebElementFacade mnuAccionReportesCreditoP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:10:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:10:item-itemEl']")
     WebElementFacade mnuAccionRevisionLegalP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:11:item-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_NewActivity:NewActivityMenuItemSet:4:NewActivityMenuItemSet_Category:11:item-itemEl']")
     WebElementFacade mnuAccionCotizarManualP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_CopySubmission-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_CopySubmission-itemEl']")
     WebElementFacade mnuAccionCopiarEnvioP;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Archiving:WizardMenuActions_SuspendResumeArchiving-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Archiving:WizardMenuActions_SuspendResumeArchiving-itemEl']")
     WebElementFacade mnuAccionArchivarDesactivarP;
 
-    /**
+
+*
      * Objetos menu Contacto
-     */
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
+
+    @FindBy(xpath = ".
+/
+[@id='TabBar:ContactTab-btnWrap']")
     WebElementFacade mnuContact;
 
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact-arrowEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:ContactTab:NewContact-arrowEl']")
     WebElementFacade mnuItemNuevoContacto;
 
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewCompany']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:ContactTab:NewContact:NewCompany']")
     WebElementFacade mnuItemNuevaCompania;
 
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewPerson']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:ContactTab:NewContact:NewPerson']")
     WebElementFacade mnuItemNuevaPersona;
 
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:Search-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:ContactTab:Search-itemEl']")
     WebElementFacade mnuItemContactoBusqueda;
 
-    /**
-     * Objetos menu Acciones Contacto
-     */
 
-    @FindBy (xpath = ".//*[@id='ContactFile:ContactFileMenuActions-btnInnerEl']")
+*
+     * Objetos menu Acciones Contacto
+
+
+    @FindBy (xpath = ".
+/
+[@id='ContactFile:ContactFileMenuActions-btnInnerEl']")
     WebElementFacade mnuAccionesContacto;
 
-    @FindBy (xpath = ".//*[@id='ContactFile:ContactFileMenuActions:ContactFileMenuActions_Create:ContactFileMenuActions_NewAccount-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='ContactFile:ContactFileMenuActions:ContactFileMenuActions_Create:ContactFileMenuActions_NewAccount-itemEl']")
     WebElementFacade mnuAccionNuevaCuentaC;
 
 
-    /**
+
+*
      * Objetos menu Buscar
-     */
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
+
+    @FindBy(xpath = ".
+/
+[@id='TabBar:SearchTab-btnWrap']")
     WebElementFacade mnuBuscar;
 
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_PolicySearch']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:SearchTab:Search_PolicySearch']")
     WebElementFacade mnuItemBuscarPoliza;
 
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_AccountSearch']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:SearchTab:Search_AccountSearch']")
     WebElementFacade mnuItemBuscarCuenta;
 
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ProducerCodeSearch']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:SearchTab:Search_ProducerCodeSearch']")
     WebElementFacade mnuItemBuscarCodAgente;
 
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ActivitySearch']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:SearchTab:Search_ActivitySearch']")
     WebElementFacade mnuItemBuscarAct;
 
-    @FindBy(xpath = "//*[@id='TabBar:SearchTab:Search_ContactSearch']")
+    @FindBy(xpath = "
+/
+[@id='TabBar:SearchTab:Search_ContactSearch']")
     WebElementFacade mnuItemBusquedaContacto;
 
-    /**
+
+*
      * Objetos menu Equipo
-     */
-    @FindBy(xpath = ".//*[@id='TabBar:TeamTab-btnInnerEl']")
+
+    @FindBy(xpath = ".
+/
+[@id='TabBar:TeamTab-btnInnerEl']")
     WebElementFacade mnuEquipo;
 
-    /**
+
+*
      * Objetos menu Admnistracion
-     */
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab-btnWrap']")
+
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab-btnWrap']")
     WebElementFacade mnuAdministracion;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_UsersAndSecurity']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_UsersAndSecurity']")
     WebElementFacade mnuItemUsuarioSeguridad;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_AdminUserSearchPage-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_AdminUserSearchPage-itemEl']")
     WebElementFacade mnuItemUsuario;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_AdminGroupSearchPage-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_AdminGroupSearchPage-itemEl']")
     WebElementFacade mnuItemGrupos;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_Roles-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_Roles-itemEl']")
     WebElementFacade mnuItemRoles;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_Regions-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_Regions-itemEl']")
     WebElementFacade mnuItemRegiones;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_OrganizationSearchPage-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_OrganizationSearchPage-itemEl']")
     WebElementFacade mnuItemOrganizaciones;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_AdminProducerCodeSearch-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_AdminProducerCodeSearch-itemEl']")
     WebElementFacade mnuItemCodAgente;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_UWAuthorityProfiles-textEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_UWAuthorityProfiles-textEl']")
     WebElementFacade mnuItemPerAutoridad;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_Attributes-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_Attributes-itemEl']")
     WebElementFacade mnuItemAtributos;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_SearchAffinityGroup-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_UsersAndSecurity:UsersAndSecurity_SearchAffinityGroup-itemEl']")
     WebElementFacade mnuItemGruposAfinidad;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_BusinessSettings']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_BusinessSettings']")
     WebElementFacade mnuItemConfigComercial;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_BusinessSettings:BusinessSettings_ActivityPatterns-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_BusinessSettings:BusinessSettings_ActivityPatterns-itemEl']")
     WebElementFacade mnuItemPatronesActividad;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_BusinessSettings:BusinessSettings_Holidays-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_BusinessSettings:BusinessSettings_Holidays-itemEl']")
     WebElementFacade mnuItemDiasFestivos;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_BusinessSettings:BusinessSettings_FormPatterns-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_BusinessSettings:BusinessSettings_FormPatterns-itemEl']")
     WebElementFacade mnuItemPatronesFormularioPoliza;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_BusinessSettings:BusinessSettings_PolicyHolds-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_BusinessSettings:BusinessSettings_PolicyHolds-itemEl']")
     WebElementFacade mnuItemRetenciionesPolizas;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Monitoring']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_Monitoring']")
     WebElementFacade mnuItemSupervision;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Monitoring:Monitoring_MessageSearch-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_Monitoring:Monitoring_MessageSearch-itemEl']")
     WebElementFacade mnuItemMensajes;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Monitoring:Monitoring_MessagingDestinationControlList-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_Monitoring:Monitoring_MessagingDestinationControlList-itemEl']")
     WebElementFacade mnuItemColasMensajes;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Monitoring:Monitoring_WorkflowSearch-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_Monitoring:Monitoring_WorkflowSearch-itemEl']")
     WebElementFacade mnuItemFlujosTrabajo;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Monitoring:Monitoring_WorkflowStats-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_Monitoring:Monitoring_WorkflowStats-itemEl']")
     WebElementFacade mnuItemEstadisticaFlujos;
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Utilities']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_Utilities']")
     WebElementFacade mnuItemUtilidades;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Utilities:Utilities_ImportWizard-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_Utilities:Utilities_ImportWizard-itemEl']")
     WebElementFacade mnuItemImportDatos;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Utilities:Utilities_ExportData-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_Utilities:Utilities_ExportData-itemEl']")
     WebElementFacade mnuItemExportDatos;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Utilities:Utilities_ScriptParametersPage-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_Utilities:Utilities_ScriptParametersPage-itemEl']")
     WebElementFacade mnuItemParametrosSecuencia;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Utilities:Utilities_DataFlowMasks-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_Utilities:Utilities_DataFlowMasks-itemEl']")
     WebElementFacade mnuItemFormatoExpHojasCalculo;
 
-    @FindBy(xpath = ".//*[@id='TabBar:AdminTab:Admin_Utilities:Utilities_DataChangePage-itemEl']")
+    @FindBy(xpath = ".
+/
+[@id='TabBar:AdminTab:Admin_Utilities:Utilities_DataChangePage-itemEl']")
     WebElementFacade mnuItemCambioDatos;
 
 
-    /**
-     * Objetos menu Acciones Administracion
-     */
 
-    @FindBy (xpath = ".//*[@id='Admin:AdminMenuActions-btnInnerEl']")
+*
+     * Objetos menu Acciones Administracion
+
+
+    @FindBy (xpath = ".
+/
+[@id='Admin:AdminMenuActions-btnInnerEl']")
     WebElementFacade mnuAccionesAdministracion;
 
-    @FindBy (xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuActions_NewUser-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuActions_NewUser-itemEl']")
     WebElementFacade mnuAccionUsuarioNuevo;
 
-    @FindBy (xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuActions_NewGroup-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuActions_NewGroup-itemEl']")
     WebElementFacade mnuAccionGrupoNuevo;
 
-    @FindBy (xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuActions_NewOrganization-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuActions_NewOrganization-itemEl']")
     WebElementFacade mnuAccionOrganizacionNueva;
 
-    @FindBy (xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuActions_NewProducerCode-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuActions_NewProducerCode-itemEl']")
     WebElementFacade mnuAccionCodAgenteNuevo;
 
-    @FindBy (xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuActions_NewAffinityGroup-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='Admin:AdminMenuActions:AdminMenuActions_Create:AdminMenuActions_NewAffinityGroup-itemEl']")
     WebElementFacade mnuAccionNuevoGrupoAfiinidad;
 
-    @FindBy (xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_Validate:AdminMenuActions_ValidateFormPatterns-itemEl']")
+    @FindBy (xpath = ".
+/
+[@id='Admin:AdminMenuActions:AdminMenuActions_Validate:AdminMenuActions_ValidateFormPatterns-itemEl']")
     WebElementFacade mnuAccionVerificarErroresPatron;
 
     // TODO: 18/04/2016 Revision escritura de excepciones en log
@@ -614,11 +950,12 @@ public class EscritorioPage extends Guidewire {
         }
     }
 
-    /**
+
+*
      * ------------------------------------------------------------------------------------------------------------------
      * MENU SUPERIOR
      * -----------------------------------------------------------------------------------------------------------------
-     */
+
 
     public void navegarTabBar(String menu, String item1, String item2) {
 
@@ -844,11 +1181,12 @@ public class EscritorioPage extends Guidewire {
         }
     }
 
-    /**
+
+*
      * -----------------------------------------------------------------------------------------------------------------
      * MENU ACCIONES
      * ------------------------------------------------------------------------------------------------------------------
-     */
+
 
 
     public void navegarAcciones(String menu, String item1, String item2, String item3) {
@@ -1281,5 +1619,6 @@ public class EscritorioPage extends Guidewire {
     public static void clicLinkContactos(){
         linkContactos.waitUntilClickable();
         linkContactos.click();
-    }
+    }*/
+
 }

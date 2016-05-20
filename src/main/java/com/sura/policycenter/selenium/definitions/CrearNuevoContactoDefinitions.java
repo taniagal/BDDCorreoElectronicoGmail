@@ -12,12 +12,13 @@ import org.jbehave.core.annotations.When;
 /**
  * Created by brayruru on 2016/04/25.
  */
+@SuppressWarnings("WeakerAccess")
 public class CrearNuevoContactoDefinitions {
 
     @Steps
-    CrearNuevoContactoSteps crearNuevoContactoSteps ;
+    private CrearNuevoContactoSteps crearNuevoContactoSteps ;
     @Steps
-    SeusLoginSteps seusLoginSteps;
+    private SeusLoginSteps seusLoginSteps;
 
     @Given("estoy en la pantalla de crear contacto persona natural")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaNatural() {

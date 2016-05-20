@@ -10,16 +10,17 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 
+@SuppressWarnings("WeakerAccess")
 public class DetallesContactoDefinitions {
 
     @Steps
-    SeusLoginSteps seusLogin;
+    private SeusLoginSteps seusLogin;
 
     @Steps
-    DetallesContactoSteps dcs;
+    private DetallesContactoSteps dcs;
 
     @Steps
-    CrearNuevoContactoSteps ncs;
+    private CrearNuevoContactoSteps ncs;
 
     /**
      * Escenario 1

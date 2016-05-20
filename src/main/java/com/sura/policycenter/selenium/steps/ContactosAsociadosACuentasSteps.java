@@ -14,15 +14,15 @@ import org.jbehave.core.model.ExamplesTable;
  */
 public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
-    public static final String DETALLE_CONTACTO = "DETALLE_CONTACTO";
+    private static final String DETALLE_CONTACTO = "DETALLE_CONTACTO";
 
-    public static final String FUNCIONES = "FUNCIONES";
+    private static final String FUNCIONES = "FUNCIONES";
 
-    public static final String DIRECCIONES = "DIRECCIONES";
+    private static final String DIRECCIONES = "DIRECCIONES";
 
-    public static final String TRANSACCIONES_ASOCIADAS = "TRANSACCIONES_ASOCIADAS";
+    private static final String TRANSACCIONES_ASOCIADAS = "TRANSACCIONES_ASOCIADAS";
 
-    public static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
+    private static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
 
 
     private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
@@ -78,6 +78,7 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
         contactosAsociadosACuentasPage.verificarDetalleContactoNoEsNulo();
     }
 
+    @SuppressWarnings("SameParameterValue")
     @Step
     public void verificarEncabezados(ExamplesTable encabezados, String encabezado, String xPathElementos) {
         contactosAsociadosACuentasPage.existeEncabezadoDeTabla(encabezados, encabezado, xPathElementos);

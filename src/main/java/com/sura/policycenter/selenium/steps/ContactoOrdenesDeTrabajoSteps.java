@@ -7,7 +7,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class ContactoOrdenesDeTrabajoSteps extends ScenarioSteps {
 
-    ContactoOrdenesDeTrabajoPage ordenesTrabajoPage = new ContactoOrdenesDeTrabajoPage(getDriver());
+    private ContactoOrdenesDeTrabajoPage ordenesTrabajoPage = new ContactoOrdenesDeTrabajoPage(getDriver());
 
     public ContactoOrdenesDeTrabajoSteps(Pages pages) {
         super(pages);

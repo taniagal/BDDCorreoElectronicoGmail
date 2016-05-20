@@ -14,8 +14,8 @@ import org.openqa.selenium.support.FindBy;
  */
 public class Escritorio extends Guidewire {
 
-    BarraNavegacion barraNavegacion;
-    Guidewire gw = new Guidewire(getDriver());
+    private BarraNavegacion barraNavegacion;
+    private Guidewire gw = new Guidewire(getDriver());
 
     public Escritorio(WebDriver driver) {
         super(driver);
@@ -23,17 +23,17 @@ public class Escritorio extends Guidewire {
     }
 
     @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
-    WebElementFacade lblIngreso;
+    private WebElementFacade lblIngreso;
     @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
-    WebElementFacade mnuReclamacion;
+    private WebElementFacade mnuReclamacion;
     @FindBy(xpath = ".//*[@id='TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl']")
-    WebElementFacade cboNuevaReclamacion;
+    private WebElementFacade cboNuevaReclamacion;
     @FindBy(xpath = ".//*[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
-    WebElementFacade txtBuscarNumReclamancion;
+    private WebElementFacade txtBuscarNumReclamancion;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
-    WebElementFacade mnuBusqueda;
+    private WebElementFacade mnuBusqueda;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ClaimSearchesGroup:ClaimSearchesGroup_ClaimSearch-textEl']")
-    WebElementFacade mnubuscaAvanzada;
+    private WebElementFacade mnubuscaAvanzada;
 
     public PaginaPanel irAPanel() {
         return barraNavegacion.irAPanel();

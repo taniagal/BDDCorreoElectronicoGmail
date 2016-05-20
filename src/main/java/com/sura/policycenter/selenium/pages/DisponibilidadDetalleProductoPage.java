@@ -23,19 +23,19 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
     private WebElementFacade btnAccionesCuenta;
 
     @FindBy(xpath=".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission']")
-    WebElementFacade opcionNuevoEnvio;
+    private WebElementFacade opcionNuevoEnvio;
 
     @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:7:addSubmission']")
-    WebElementFacade btnElegirAutoPersonal;
+    private WebElementFacade btnElegirAutoPersonal;
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div")
-    WebElementFacade opcionVerInformacionPoliza;
+    private WebElementFacade opcionVerInformacionPoliza;
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
-    WebElementFacade listaOrganizacionDeVentas;
+    private WebElementFacade listaOrganizacionDeVentas;
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
-    WebElementFacade listaPATipoPoliza;
+    private WebElementFacade listaPATipoPoliza;
 
 
     public DisponibilidadDetalleProductoPage(WebDriver driver) {
@@ -69,7 +69,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
         this.validarDatosDeLaLista(tipoCanal);
     }
 
-    public void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
+    private  void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {

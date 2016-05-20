@@ -24,80 +24,80 @@ public class HistorialCuentaPage extends Guidewire {
     }
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
-    WebElementFacade mnuCuenta;
+    private WebElementFacade mnuCuenta;
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
-    WebElementFacade txtNumCuenta;
+    private WebElementFacade txtNumCuenta;
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
-    WebElementFacade btnBuscarCuenta;
+    private WebElementFacade btnBuscarCuenta;
 
     //@FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_History']/div")
     @FindBy(xpath="//tr[13]/td/div/span")
-    WebElementFacade mnuHistorial;
+    private WebElementFacade mnuHistorial;
 
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
-    WebElementFacade btnMostrarRelacionadoCon;
+    private WebElementFacade btnMostrarRelacionadoCon;
 
     @FindBy(xpath="//li[5]")
-    WebElementFacade itmRelacionadoCon;
+    private WebElementFacade itmRelacionadoCon;
 
     @FindBy(xpath="//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
-    WebElementFacade btnMostrarProducto;
+    private WebElementFacade btnMostrarProducto;
 
     @FindBy(xpath="//li[2]")
-    WebElementFacade itmProducto;
+    private WebElementFacade itmProducto;
 
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:user-inputEl']")
-    WebElementFacade txtUsuario;
+    private WebElementFacade txtUsuario;
 
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade btnBuscarItem;
+    private WebElementFacade btnBuscarItem;
 
     @FindBy(xpath="//td/div/div[2]/div/table/tbody/tr/td/div")
-    WebElementFacade itemTipoResultado;
+    private WebElementFacade itemTipoResultado;
 
     @FindBy(xpath="//td/div/div/div/div/div/div/span")
-    WebElementFacade colTipo;
+    private WebElementFacade colTipo;
 
     @FindBy(xpath="//div/div/div[2]/div/span")
-    WebElementFacade colUsuario;
+    private WebElementFacade colUsuario;
 
     @FindBy(xpath="//div[3]/div/span")
-    WebElementFacade colFechaTransaccion;
+    private WebElementFacade colFechaTransaccion;
 
     @FindBy(xpath="//div/div/div[4]/div/span")
-    WebElementFacade colDescripcion;
+    private WebElementFacade colDescripcion;
 
     @FindBy(xpath="//div[5]/div/span")
-    WebElementFacade colProducto;
+    private WebElementFacade colProducto;
 
     @FindBy(xpath="//div[6]/div/span")
-    WebElementFacade colPoliza;
+    private WebElementFacade colPoliza;
 
     @FindBy(xpath="//div[7]/div/span")
-    WebElementFacade colTransaccionPoliza;
+    private WebElementFacade colTransaccionPoliza;
 
     @FindBy(xpath="//div[8]/div/span")
-    WebElementFacade colValorOriginal;
+    private WebElementFacade colValorOriginal;
 
     @FindBy(xpath="//div[9]/div/span")
-    WebElementFacade colValorNuevo;
+    private WebElementFacade colValorNuevo;
 
     @FindBy(xpath="//li[2]")
-    WebElementFacade itmRelacionadoConRenovacion;
+    private WebElementFacade itmRelacionadoConRenovacion;
 
     @FindBy(xpath="//td[3]/div/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
-    WebElementFacade txtFechaDesde;
+    private WebElementFacade txtFechaDesde;
 
     @FindBy(xpath="//tr[3]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
-    WebElementFacade txtFechaHasta;
+    private WebElementFacade txtFechaHasta;
 
     @FindBy(xpath="//td/div/div[2]/div/table")
-    WebElementFacade table;
+    private WebElementFacade table;
 
     @FindBy(xpath="//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
-    WebElementFacade txtProducto;
+    private WebElementFacade txtProducto;
 
     public void buscarCuenta(String numCuenta) {
         Actions act = new Actions(getDriver());

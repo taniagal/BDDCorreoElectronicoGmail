@@ -24,7 +24,7 @@ public class Guidewire extends PageObject {
     String mensajeError = "";
     // Initialize Log4j logs
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
-    Actions act = new Actions(getDriver());
+    private Actions act = new Actions(getDriver());
 
     public Guidewire(WebDriver driver) {
         super(driver);
@@ -33,25 +33,25 @@ public class Guidewire extends PageObject {
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     private WebElementFacade configuracion;
     @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
-    WebElementFacade internacional;
+    private WebElementFacade internacional;
     @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
-    WebElementFacade idioma;
+    private WebElementFacade idioma;
     @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
-    WebElementFacade espaniol;
+    private WebElementFacade espaniol;
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-    WebElementFacade usuario;
+    private WebElementFacade usuario;
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
-    WebElementFacade contrasena;
+    private WebElementFacade contrasena;
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
-    WebElementFacade submit;
+    private WebElementFacade submit;
     @FindBy(xpath =".//*[@id=':TabLinkMenuButton-btnIconEl']")
-    WebElementFacade btnConfig;
+    private WebElementFacade btnConfig;
     @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
-    WebElementFacade btnLogout;
+    private WebElementFacade btnLogout;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
-    WebElementFacade btnLogout2;
+    private WebElementFacade btnLogout2;
     @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
-    WebElementFacade lblMisActividades;
+    private WebElementFacade lblMisActividades;
 
     // TODO: 19/04/2016 Revision escritura de excepciones en log
     @WhenPageOpens
@@ -114,6 +114,7 @@ public class Guidewire extends PageObject {
         element.sendKeys(Keys.ENTER);
     }
 
+    @SuppressWarnings("SameParameterValue")
     public void threadWait(int milisegundos) {
         try {
             TimeUnit.MILLISECONDS.sleep(milisegundos);

@@ -7,7 +7,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
 
-    DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage = new DisponibilidadDetalleProductoPage(getDriver());
+    private DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage = new DisponibilidadDetalleProductoPage(getDriver());
 
     public DisponibilidadDetalleProductoSteps(Pages pages){
         super(pages);

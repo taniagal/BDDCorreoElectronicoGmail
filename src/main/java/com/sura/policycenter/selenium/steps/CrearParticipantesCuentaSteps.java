@@ -16,8 +16,8 @@ public class CrearParticipantesCuentaSteps extends ScenarioSteps {
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
-    BuscarCuentasPage buscarCuentasPage = new BuscarCuentasPage (getDriver());
-    OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage (getDriver());
+    private BuscarCuentasPage buscarCuentasPage = new BuscarCuentasPage (getDriver());
+    private OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage (getDriver());
 
     @Step
     public void navegaBuscarCuentaPar (){

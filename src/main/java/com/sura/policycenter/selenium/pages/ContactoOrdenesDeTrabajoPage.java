@@ -17,46 +17,46 @@ import static org.hamcrest.Matchers.*;
 public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
     @FindBy(xpath=".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_WorkOrders']/div")
-    WebElementFacade mnuTransaccionesPoliza;
+    private WebElementFacade mnuTransaccionesPoliza;
 
     @FindBy(xpath="//div[3]/div/table/tbody/tr/td/div")
-    WebElementFacade fechaCreacion;
+    private WebElementFacade fechaCreacion;
 
     @FindBy(xpath="//div/table/tbody/tr/td[2]/div")
-    WebElementFacade poliza;
+    private WebElementFacade poliza;
 
     @FindBy(xpath="//td[3]/div")
-    WebElementFacade producto;
+    private WebElementFacade producto;
 
     @FindBy(xpath="//td[4]/div")
-    WebElementFacade numeroTransaccion;
+    private WebElementFacade numeroTransaccion;
 
     @FindBy(xpath="//td[5]/div")
-    WebElementFacade tipo;
+    private WebElementFacade tipo;
 
     @FindBy(xpath="//td[6]/div")
-    WebElementFacade estado;
+    private WebElementFacade estado;
 
     @FindBy(xpath="//td[7]/div")
-    WebElementFacade fechaFin;
+    private WebElementFacade fechaFin;
 
     @FindBy(xpath="//td[8]/div")
-    WebElementFacade participante;
+    private WebElementFacade participante;
 
     @FindBy(xpath="//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrdersCompletenessFilter-inputEl']")
-    WebElementFacade filtroEstado;
+    private WebElementFacade filtroEstado;
 
     @FindBy(xpath="//td/div/div[3]/div/table")
-    WebElementFacade table;
+    private WebElementFacade table;
 
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrderTypeFilter-inputEl']")
-    WebElementFacade filtroTipoTransaccion;
+    private WebElementFacade filtroTipoTransaccion;
 
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:ProductFilter-inputEl']")
-    WebElementFacade filtroProducto;
+    private WebElementFacade filtroProducto;
 
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:message:InfoMessage_ExtDV:message']")
-    WebElementFacade msjTransaccionNoEncontrada;
+    private WebElementFacade msjTransaccionNoEncontrada;
 
 
     public ContactoOrdenesDeTrabajoPage(WebDriver driver) {

@@ -9,12 +9,13 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 
+@SuppressWarnings("WeakerAccess")
 public class DetallesContactoEdicionDefinitions {
     @Steps
-    DetallesContactoSteps dcs;
+    private DetallesContactoSteps dcs;
 
     @Steps
-    CrearNuevoContactoSteps ncs;
+    private CrearNuevoContactoSteps ncs;
 
     @Given("Se ha consultado la informacion detallada de un contacto persona natural")
     public void personaNatural(){}
