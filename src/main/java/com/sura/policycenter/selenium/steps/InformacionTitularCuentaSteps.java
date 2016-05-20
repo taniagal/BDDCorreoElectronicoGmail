@@ -8,7 +8,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class InformacionTitularCuentaSteps extends ScenarioSteps {
 
-    InformacionTitularCuentaPage informacionTitularCuentaPage = new InformacionTitularCuentaPage(getDriver());
+    private InformacionTitularCuentaPage informacionTitularCuentaPage = new InformacionTitularCuentaPage(getDriver());
 
 
     public InformacionTitularCuentaSteps(Pages pages) {

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by eliaalch on 21/04/2016.
  */
+@SuppressWarnings("WeakerAccess")
 public class ParticipantesDeCuentaPage extends Guidewire {
 
     public ParticipantesDeCuentaPage(WebDriver driver) {

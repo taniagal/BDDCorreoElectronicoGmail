@@ -22,8 +22,8 @@ import org.openqa.selenium.support.FindBy;
  */
 public class InicioPage extends Guidewire {
 
-    Guidewire gw = new Guidewire(getDriver());
-    Navegacion navegacion;
+    private Guidewire gw = new Guidewire(getDriver());
+    private Navegacion navegacion;
 
     public InicioPage(WebDriver driver) {
         super(driver);
@@ -31,18 +31,18 @@ public class InicioPage extends Guidewire {
     }
 
     @FindBy(xpath = ".//*[@id='UserSearch:UserSearchScreen:ttlBar']")
-    WebElementFacade labelIngreso;
+    private WebElementFacade labelIngreso;
 
     @FindBy(xpath = ".//*[@id='HolidaysPage:HolidaysScreen:0']")
-    WebElementFacade labelIngreso2;
+    private WebElementFacade labelIngreso2;
 
     // Objetos menu tabBar Escritorio
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnWrap']")
-    WebElementFacade mnuEscritorio;
+    private WebElementFacade mnuEscritorio;
 
     // Objetos menu tabBar Administracion
     @FindBy(xpath=".//*[@id='TabBar:AdministrationTab-btnWrap']")
-    WebElementFacade mnuAdministracion;
+    private WebElementFacade mnuAdministracion;
 
     // TODO: 22/04/2016 Revision escritura de excepciones en log
     @WhenPageOpens

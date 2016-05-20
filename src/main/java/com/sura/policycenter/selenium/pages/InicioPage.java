@@ -30,8 +30,8 @@ import static org.hamcrest.Matchers.containsString;
 
 public class InicioPage extends Guidewire {
 
-    Guidewire gw = new Guidewire(getDriver());
-    Navegacion navegacion;
+    private Guidewire gw = new Guidewire(getDriver());
+    private Navegacion navegacion;
 
     public InicioPage(WebDriver driver) {
         super(driver);
@@ -41,19 +41,19 @@ public class InicioPage extends Guidewire {
     Actions act = new Actions(getDriver());
 
     @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
-    WebElementFacade labelIngreso;
+    private WebElementFacade labelIngreso;
 
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
-    WebElementFacade mnuContact;
+    private WebElementFacade mnuContact;
 
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact-arrowEl']")
-    WebElementFacade mnuNewContact;
+    private WebElementFacade mnuNewContact;
 
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewPerson-itemEl']")
-    WebElementFacade mnuNewPerson;
+    private WebElementFacade mnuNewPerson;
 
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewCompany-textEl']")
-    WebElementFacade mnuNewCompany;
+    private WebElementFacade mnuNewCompany;
 
 
 

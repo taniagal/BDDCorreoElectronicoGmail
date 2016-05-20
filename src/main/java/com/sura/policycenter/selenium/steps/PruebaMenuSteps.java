@@ -54,7 +54,7 @@ public class PruebaMenuSteps extends ScenarioSteps {
         }
     }
 
-    public void add_tags() {
+    private void add_tags() {
         List<TestTag> myTags = Lists.newArrayList(TestTag.withName("menu").andType("prueba"));
         StepEventBus.getEventBus().addTagsToCurrentStory(myTags);
     }

@@ -136,10 +136,6 @@ public class InformacionTitularCuentaPage extends Guidewire {
     private WebElementFacade txtCausaFallecimiento;
 
 
-
-    private String div = "div";
-
-
     public void clickTipoDocumento() {
         itmTipoDocumento.waitUntilEnabled();
         itmTipoDocumento.click();
@@ -254,6 +250,7 @@ public class InformacionTitularCuentaPage extends Guidewire {
 
     public void validarCamposComoNoEditables(){
         try {
+            String div = "div";
             assertThat(txtTitularCuenta.getTagName(), is(equalTo(div)));
             assertThat(txtTipoDocumento.getTagName(), is(equalTo(div)));
             assertThat(txtNumeroDocumento.getTagName(), is(equalTo(div)));

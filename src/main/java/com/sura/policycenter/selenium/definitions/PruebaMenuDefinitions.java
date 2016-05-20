@@ -10,10 +10,11 @@ import org.jbehave.core.annotations.When;
 /**
  * Created by jorghome on 04/05/2016.
  */
+@SuppressWarnings("WeakerAccess")
 public class PruebaMenuDefinitions {
 
     @Steps
-    PruebaMenuSteps pms;
+    private PruebaMenuSteps pms;
 
     //@WithTag("prueba:menu")
 

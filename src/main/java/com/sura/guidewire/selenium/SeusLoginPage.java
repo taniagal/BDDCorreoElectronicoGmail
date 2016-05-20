@@ -14,19 +14,19 @@ public class SeusLoginPage extends Guidewire {
         super(driver);
     }
 
-    Guidewire gw = new Guidewire(getDriver());
+    private Guidewire gw = new Guidewire(getDriver());
 
     @FindBy(xpath=".//*[@id='country']")
-    WebElementFacade pais;
+    private WebElementFacade pais;
 
     @FindBy(id="username")
-    WebElementFacade usuario;
+    private WebElementFacade usuario;
 
     @FindBy(xpath=".//*[@id='password']")
-    WebElementFacade contrasenia;
+    private WebElementFacade contrasenia;
 
     @FindBy(xpath=".//*[@id='lower']/input")
-    WebElementFacade btnSubmit;
+    private WebElementFacade btnSubmit;
 
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {

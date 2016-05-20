@@ -18,7 +18,7 @@ public class BarraNavegacion extends Guidewire {
     public BarraNavegacion(WebDriver driver) {
         super(driver);
     }
-    private Actions act = new Actions(getDriver());
+    private final Actions act = new Actions(getDriver());
 
     @SuppressWarnings("WeakerAccess")
     @FindBy(xpath = ".//*[@id='TabBar:DashboardTab']")

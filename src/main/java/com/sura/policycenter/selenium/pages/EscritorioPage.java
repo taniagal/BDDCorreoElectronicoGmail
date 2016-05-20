@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
+@SuppressWarnings("WeakerAccess")
 public class EscritorioPage extends Guidewire {
 
     //private Guidewire gw = new Guidewire(getDriver());
