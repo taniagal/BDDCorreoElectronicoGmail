@@ -107,14 +107,14 @@ public class InicioPage extends Guidewire {
             Thread.sleep(3000);
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
             act.moveToElement(mnuNewContact).click().build().perform();
-            act.moveToElement(mnuNewCompany).click().build().perform();
+    act.moveToElement(mnuNewCompany).click().build().perform();
 
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
+    Thread.sleep(3000);
+} catch (InterruptedException e) {
 
-            throw new RuntimeException(e);
+        throw new RuntimeException(e);
         }
-    }*/
+        }*/
 
     // Metodos navegacion Escritorio
     public MisActividadesPage irAMisActividades() {
@@ -140,7 +140,9 @@ public class InicioPage extends Guidewire {
     public NuevaCuentaPage irANuevaCuenta() {
         return navegacion.irANuevaCuenta();
     }
-    public CuentaBuscarPage irACuentaBuscar(String numCuenta) { return navegacion.irACuentaBuscar(numCuenta); }
+    public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
+        return navegacion.irACuentaBuscar(numCuenta);
+    }
 
     // Metodos navegacion Poliza
     public NuevoEnvioPage irANuevoEnvio() {
