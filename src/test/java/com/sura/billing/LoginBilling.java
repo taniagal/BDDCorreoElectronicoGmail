@@ -5,5 +5,5 @@ import net.serenitybdd.jbehave.SerenityStory;
 /**
  * Created by jorghome on 22/04/2016.
  */
-public class LoginBilling  {
+public class LoginBilling extends SerenityStory {
 }
