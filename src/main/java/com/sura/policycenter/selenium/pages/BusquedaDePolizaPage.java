@@ -148,7 +148,7 @@ public class BusquedaDePolizaPage extends Guidewire{
         btnBuscar.click();
     }
 
-        public void buscarPolizaPorNumeroCuentaYProducto(String numeroCuenta, String producto) {
+    public void buscarPolizaPorNumeroCuentaYProducto(String numeroCuenta, String producto) {
         this.limpiarCampos();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         txtProducto.clear();
