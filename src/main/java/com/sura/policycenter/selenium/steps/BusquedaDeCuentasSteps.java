@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaDeCuentasPage;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -8,9 +9,17 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class BusquedaDeCuentasSteps extends ScenarioSteps{
 
     BusquedaDeCuentasPage busquedaDeCuentasPage = new BusquedaDeCuentasPage(getDriver());
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
     public BusquedaDeCuentasSteps(Pages pages){
         super(pages);
+    }
+
+    @Step
+    public void ingresarABuscarCuentas(String buscar, String cuenta) {
+        inicioPage().irABuscarCuentas();
     }
 
     @Step
