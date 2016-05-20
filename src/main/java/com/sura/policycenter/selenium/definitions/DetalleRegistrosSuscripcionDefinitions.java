@@ -34,4 +34,15 @@ public class DetalleRegistrosSuscripcionDefinitions {
         // PENDING
     }
 
+    @Then("debo ver el costo total <total> para las cotizaciones en estado cotizado")
+    public void verTotal(@Named("total") String total) {
+        detalleRegistrosSuscripcionSteps.validarTotal(total);
+    }
+
+    @Then("debo ver la sumatoria <suma> de todas las cotizaciones y renovaciones independiente de su estado")
+    public void verSumaGrupo(@Named("suma") String suma) {
+        detalleRegistrosSuscripcionSteps.validarSumaGrupo(suma);
+    }
+
+
 }

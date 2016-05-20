@@ -17,4 +17,14 @@ public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
     public void buscarRegistrosDeSucripcion() {
         detalleRegistrosSuscripcionPage.buscarRegistrosDeSucripcion();
     }
+
+    @Step
+    public void validarTotal(String total) {
+        detalleRegistrosSuscripcionPage.validarTotal(total);
+    }
+
+    @Step
+    public void validarSumaGrupo(String suma) {
+        detalleRegistrosSuscripcionPage.validarSumaGrupo(suma);
+    }
 }

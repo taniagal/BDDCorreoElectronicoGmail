@@ -5,6 +5,9 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 public class DetalleRegistrosSuscripcionPage extends Guidewire{
 
     @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_UnderwritingFiles']/div/span")
@@ -29,4 +32,13 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
         lblTransaccion.waitUntilClickable();
         lblTransaccion.click();
     }
+
+    public void validarTotal(String total){
+        assertThat(lblCostoTotal.getText(), is(equalTo(total)));
+    }
+
+    public void validarSumaGrupo(String suma){
+        assertThat(lblNroCotizaciones.getText(), is(equalTo(suma)));
+    }
+
 }
