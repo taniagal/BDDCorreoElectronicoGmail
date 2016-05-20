@@ -8,7 +8,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
@@ -47,9 +46,6 @@ public class BusquedaDePolizaPage extends Guidewire{
     @FindBy(xpath="//td[4]/div")
     WebElementFacade grdAseguradoNombrado;
 
-    @FindBy(xpath="//td[5]/div")
-    WebElementFacade grdNumeroCuenta;
-
     @FindBy(xpath="//td[6]/div")
     WebElementFacade grdProducto;
 
@@ -68,8 +64,6 @@ public class BusquedaDePolizaPage extends Guidewire{
     @FindBy(xpath = "//div[@id='PolicySearch:PolicySearchScreen:_msgs']/div")
     WebElementFacade msjValidacion;
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaDePolizaPage.class);
-
     public BusquedaDePolizaPage(WebDriver driver){
         super(driver);
     }
@@ -82,6 +76,7 @@ public class BusquedaDePolizaPage extends Guidewire{
 
     public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda) {
         waitABit(2000);
+        tablaResultados.waitUntilClickable();
         List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
         Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
         assertThat(grdNumeroPoliza.getText(), is(equalTo(sampleData.get("numeroPoliza"))));
@@ -122,6 +117,13 @@ public class BusquedaDePolizaPage extends Guidewire{
         assertThat(msjValidacion.getText(), is(equalTo(mensaje)));
     }
 
+    public void limpiarCampoProducto(){
+        txtProducto.waitUntilClickable();
+        txtProducto.clear();
+        txtProducto.sendKeys("<ninguno>");
+        txtProducto.sendKeys(Keys.ENTER);
+    }
+
     public void buscarPolizaPorProducto(String producto) {
         this.limpiarCampos();
         txtProducto.waitUntilClickable();
@@ -134,20 +136,14 @@ public class BusquedaDePolizaPage extends Guidewire{
 
     public void buscarPolizaPorAgente(String agente) {
         this.limpiarCampos();
-        txtProducto.waitUntilClickable();
-        txtProducto.clear();
-        txtProducto.sendKeys("<ninguno>");
-        txtProducto.sendKeys(Keys.ENTER);
+        this.limpiarCampoProducto();
         txtAgente.sendKeys(agente);
         btnBuscar.click();
     }
 
     public void buscarPolizaPorCodigoAgente(String codigoAgente) {
         this.limpiarCampos();
-        txtProducto.waitUntilClickable();
-        txtProducto.clear();
-        txtProducto.sendKeys("<ninguno>");
-        txtProducto.sendKeys(Keys.ENTER);
+        this.limpiarCampoProducto();
         txtCodigoAgente.sendKeys(codigoAgente);
         btnBuscar.click();
     }
@@ -163,9 +159,7 @@ public class BusquedaDePolizaPage extends Guidewire{
 
     public void buscarPorNumerocuentaYAgente(String numeroCuenta, String agente) {
         this.limpiarCampos();
-        txtProducto.clear();
-        txtProducto.sendKeys("<ninguno>");
-        txtProducto.sendKeys(Keys.ENTER);
+        this.limpiarCampoProducto();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         waitABit(2000);
         txtAgente.sendKeys(agente);
@@ -174,7 +168,7 @@ public class BusquedaDePolizaPage extends Guidewire{
 
     public void buscarPolizaPorNumeroCuentaYCodigoAgente(String numeroCuenta, String codigoAgente) {
         this.limpiarCampos();
-        txtAgente.clear();
+        this.limpiarCampoProducto();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         txtCodigoAgente.sendKeys(codigoAgente);
         btnBuscar.click();

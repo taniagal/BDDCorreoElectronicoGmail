@@ -118,7 +118,7 @@ Examples:
 |numeroCuenta|producto|codigoAgente
 |C001888888|Auto personal|Standard Code
 
-Scenario: Consultar polizas que no existen por numero de cuenta, producto y codigo de agente
+Scenario: Consultar polizas por numero de cuenta que no existe, producto y codigo de agente
 Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta>, producto <producto> y codigo de agente <codigoAgente>
 Then debe mostrar el mensaje <mensaje>
@@ -128,14 +128,7 @@ Examples:
 |C001887545|Auto personal|Standard Code|La búsqueda no devolvió resultados.
 
 
-
-
-
-
-
-
-
-Scenario: Consultar polizas que no existen por numero de cuenta y producto
+Scenario: Consultar polizas por numero de cuenta que no existe y producto
 Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta> y producto <producto>
 Then debe mostrar el mensaje <mensaje>
@@ -144,7 +137,7 @@ Examples:
 |numeroCuenta|producto|mensaje
 |C001887456|Auto personal|La búsqueda no devolvió resultados.
 
-Scenario: Consultar polizas por numero de cuenta y agente
+Scenario: Consultar polizas por numero de cuenta que no existe y agente
 Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta> y agente <agente>
 Then debe mostrar el mensaje <mensaje>
@@ -153,11 +146,11 @@ Examples:
 |numeroCuenta|agente|mensaje
 |C001887456|Careful Auditors|La búsqueda no devolvió resultados.
 
-Scenario: Consultar polizas por numero de cuenta  y codigo de agente
+Scenario: Consultar polizas por numero de cuenta  y codigo de agente no relacionado a la poliza
 Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta> y codigo de agente <codigoAgente>
 Then debe mostrar el mensaje <mensaje>
 
 Examples:
 |numeroCuenta|codigoAgente|mensaje
-|C001888888|Standard|La búsqueda no devolvió resultados.
+|C001888888|portal|La búsqueda no devolvió resultados.
