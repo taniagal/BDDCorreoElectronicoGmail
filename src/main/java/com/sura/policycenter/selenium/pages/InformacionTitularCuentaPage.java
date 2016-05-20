@@ -16,124 +16,131 @@ public class InformacionTitularCuentaPage extends Guidewire {
     }
 
     @FindBy(xpath="//tr[2]/td/div/span")
-    private WebElementFacade mnuInformacionTitularCuenta;
+    WebElementFacade mnuInformacionTitularCuenta;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:ttlBar']")
-    private WebElementFacade tituloInformacionTitularCuenta;
+    WebElementFacade tituloInformacionTitularCuenta;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsTitleBar']")
-    private WebElementFacade tituloMetricas;
+    WebElementFacade tituloMetricas;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:0']")
-    private WebElementFacade tituloTransacciones;
+    WebElementFacade tituloTransacciones;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:1']")
-    private WebElementFacade tituloReclamaciones;
+    WebElementFacade tituloSiniestros;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountHolderName-inputEl']")
-    private WebElementFacade txtTitularCuenta;
+    WebElementFacade txtTitularCuenta;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountHoldeDocumentType-inputEl']")
-    private WebElementFacade txtTipoDocumento;
+    WebElementFacade txtTipoDocumento;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountHolderDocumentNumber-inputEl']")
-    private WebElementFacade txtNumeroDocumento;
+    WebElementFacade txtNumeroDocumento;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:InForcePremium-inputEl']")
-    private WebElementFacade txtPrimaVigencia;
+    WebElementFacade txtPrimaVigencia;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:Segmentation-inputEl']")
-    private WebElementFacade txtSegmentacion;
+    WebElementFacade txtSegmentacion;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:Behavior-inputEl']")
-    private WebElementFacade txtComportamiento;
+    WebElementFacade txtComportamiento;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:TotalUnbilled-inputEl']")
-    private WebElementFacade txtTotalNoFacturado;
+    WebElementFacade txtTotalNoFacturado;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:TotalCurrentlyBilled-inputEl']")
-    private WebElementFacade txtTotalFacturado;
+    WebElementFacade txtTotalFacturado;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:TotalPastDueBilled-inputEl']")
-    private WebElementFacade txtTotalVencido;
+    WebElementFacade txtTotalVencido;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:TotalOutstandingBilled-inputEl']")
-    private WebElementFacade txtTotalPendiente;
+    WebElementFacade txtTotalPendiente;
 
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:DocumentType']")
-    private WebElementFacade itmTipoDocumento;
+    WebElementFacade itmTipoDocumento;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:FirstPolicyEffectiveYearInput-labelEl']")
-    private WebElementFacade lblAnioVigencia;
+    WebElementFacade lblAnioVigencia;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:ActivePoliciesInput-inputEl']")
-    private WebElementFacade txtPolizasActivas;
+    WebElementFacade txtPolizasActivas;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:CanceledByCustomerInput-inputEl']")
-    private WebElementFacade txtCanceladoPorCliente;
+    WebElementFacade txtCanceladoPorCliente;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:CanceledByCarrierInput-inputEl']")
-    private WebElementFacade txtCanceladoPorCompania;
+    WebElementFacade txtCanceladoPorCompania;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:OtherCancellationsInput-inputEl']")
-    private WebElementFacade txtOtrasCancelaciones;
+    WebElementFacade txtOtrasCancelaciones;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:LifetimePremiumInput-labelEl']")
-    private WebElementFacade lblPrimaVitalicia;
+    WebElementFacade lblPrimaVitalicia;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:OpenClaimsCount-inputEl']")
-    private WebElementFacade txtTotalReclamacionesAbiertas;
+    WebElementFacade txtTotalSiniestrosAbiertos;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:NetTotalIncurred-labelEl']")
-    private WebElementFacade lblTotalNetoIncurrido;
+    WebElementFacade lblTotalNetoIncurrido;
 
     @FindBy(xpath="//div[2]/div/div/div/div/span")
-    private WebElementFacade colCrearFecha;
+    WebElementFacade colCrearFecha;
 
     @FindBy(xpath="//div/div/div[2]/div/span")
-    private WebElementFacade colNroPoliza;
+    WebElementFacade colNroPoliza;
 
     @FindBy(xpath="//div[3]/div/span")
-    private WebElementFacade colProducto;
+    WebElementFacade colProducto;
 
     @FindBy(xpath="//div/div/div[4]/div/span")
-    private WebElementFacade colNroTransaccion;
+    WebElementFacade colNroTransaccion;
 
     @FindBy(xpath="//div[5]/div/span")
-    private WebElementFacade colTipo;
+    WebElementFacade colTipo;
 
     @FindBy(xpath="//div[6]/div/span")
-    private WebElementFacade colEstado;
+    WebElementFacade colEstado;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div/div/span")
-    private WebElementFacade colNumeroPoliza;
+    WebElementFacade colNumeroPoliza;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[2]/div/span")
-    private WebElementFacade colProductoReclamaciones;
+    WebElementFacade colProductoSiniestros;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[3]/div/span")
-    private WebElementFacade colAsegurado;
+    WebElementFacade colAsegurado;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[4]/div/span")
-    private WebElementFacade colFechaPerdida;
+    WebElementFacade colFechaPerdida;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[5]/div/span")
-    private WebElementFacade colNroReclamacion;
+    WebElementFacade colNumeroSiniestros;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[6]/div/span")
-    private WebElementFacade colEstadoReclamacion;
+    WebElementFacade colEstadoSiniestro;
 
     @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[7]/div/span")
-    private WebElementFacade colTotalIncurrido;
+    WebElementFacade colTotalIncurrido;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountsActividadEconomica-labelEl']")
-    private WebElementFacade lblActividadEconomica;
+    WebElementFacade lblActividadEconomica;
+
+    @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:PersonDateOfDeath-labelEl']")
+    WebElementFacade lblFechaFallecimiento;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:PersonDateOfDeath-inputEl']")
-    private WebElementFacade txtFechaFallecimiento;
+    WebElementFacade txtFechaFallecimiento;
 
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:PersonCauseOfDeath-inputEl']")
-    private WebElementFacade txtCausaFallecimiento;
+    WebElementFacade txtCausaFallecimiento;
+
+
+
+    String div = "div";
 
 
     public void clickTipoDocumento() {
@@ -161,12 +168,12 @@ public class InformacionTitularCuentaPage extends Guidewire {
     public void validarEncabezadosInformacionTitularCuenta(String informacionBasica,
                                                String metricas,
                                                String transacciones,
-                                               String reclamaciones){
+                                               String siniestros){
         try {
             assertThat(tituloInformacionTitularCuenta.getText().toString(), is(equalTo(informacionBasica)));
             assertThat(tituloMetricas.getText().toString(), is(equalTo(metricas)));
             assertThat(tituloTransacciones.getText().toString(), is(equalTo(transacciones)));
-            assertThat(tituloReclamaciones.getText().toString(), is(equalTo(reclamaciones)));
+            assertThat(tituloSiniestros.getText().toString(), is(equalTo(siniestros)));
         }catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -193,7 +200,7 @@ public class InformacionTitularCuentaPage extends Guidewire {
 
     public void validarInformacionMetricas(String anioVigencia, String polizasActivas, String canceladoPorCliente,
                                                 String canceladoPorCompania, String otrasCancelaciones, String primaVitalicia,
-                                                String totalReclamacionesAbiertas, String totalNetoIncurrido){
+                                                String totalSiniestrosAbiertos, String totalNetoIncurrido){
         try {
             assertThat(lblAnioVigencia.getText().toString(), is(equalTo(anioVigencia)));
             assertThat(txtPolizasActivas.getText().toString(), is(equalTo(polizasActivas)));
@@ -201,7 +208,7 @@ public class InformacionTitularCuentaPage extends Guidewire {
             assertThat(txtCanceladoPorCompania.getText().toString(), is(equalTo(canceladoPorCompania)));
             assertThat(txtOtrasCancelaciones.getText().toString(), is(equalTo(otrasCancelaciones)));
             assertThat(lblPrimaVitalicia.getText().toString(), is(equalTo(primaVitalicia)));
-            assertThat(txtTotalReclamacionesAbiertas.getText().toString(), is(equalTo(totalReclamacionesAbiertas)));
+            assertThat(txtTotalSiniestrosAbiertos.getText().toString(), is(equalTo(totalSiniestrosAbiertos)));
             assertThat(lblTotalNetoIncurrido.getText().toString(), is(equalTo(totalNetoIncurrido)));
 
         }catch (Exception e) {
@@ -233,15 +240,15 @@ public class InformacionTitularCuentaPage extends Guidewire {
         }
     }
 
-    public void validarInformacionReclamaciones(String nroPoliza, String producto, String asegurado, String fechaPerdida,
-                                                String nroReclamacion, String estado, String totalIncurrido){
+    public void validarInformacionSiniestros(String nroPoliza, String producto, String asegurado, String fechaPerdida,
+                                                String numeroSiniestros, String estado, String totalIncurrido){
         try {
             assertThat(colNumeroPoliza.getText().toString(), is(equalTo(nroPoliza)));
-            assertThat(colProductoReclamaciones.getText().toString(), is(equalTo(producto)));
+            assertThat(colProductoSiniestros.getText().toString(), is(equalTo(producto)));
             assertThat(colAsegurado.getText().toString(), is(equalTo(asegurado)));
             assertThat(colFechaPerdida.getText().toString(), is(equalTo(fechaPerdida)));
-            assertThat(colNroReclamacion.getText().toString(), is(equalTo(nroReclamacion)));
-            assertThat(colEstadoReclamacion.getText().toString(), is(equalTo(estado)));
+            assertThat(colNumeroSiniestros.getText().toString(), is(equalTo(numeroSiniestros)));
+            assertThat(colEstadoSiniestro.getText().toString(), is(equalTo(estado)));
             assertThat(colTotalIncurrido.getText().toString(), is(equalTo(totalIncurrido)));
         }catch (Exception e) {
             throw new RuntimeException(e);
@@ -250,7 +257,6 @@ public class InformacionTitularCuentaPage extends Guidewire {
 
     public void validarCamposComoNoEditables(){
         try {
-            String div = "div";
             assertThat(txtTitularCuenta.getTagName(), is(equalTo(div)));
             assertThat(txtTipoDocumento.getTagName(), is(equalTo(div)));
             assertThat(txtNumeroDocumento.getTagName(), is(equalTo(div)));
@@ -265,7 +271,7 @@ public class InformacionTitularCuentaPage extends Guidewire {
             assertThat(txtCanceladoPorCliente.getTagName(), is(equalTo(div)));
             assertThat(txtCanceladoPorCompania.getTagName(), is(equalTo(div)));
             assertThat(txtOtrasCancelaciones.getTagName(), is(equalTo(div)));
-            assertThat(txtTotalReclamacionesAbiertas.getTagName(), is(equalTo(div)));
+            assertThat(txtTotalSiniestrosAbiertos.getTagName(), is(equalTo(div)));
 
         }catch (Exception e) {
             throw new RuntimeException(e);
@@ -274,7 +280,7 @@ public class InformacionTitularCuentaPage extends Guidewire {
 
     public void validarInformacionFallecimiento(String fechaFallecimiento, String causaFallecimiento){
         try {
-            assertThat(txtFechaFallecimiento.getText().toString(), is(equalTo(fechaFallecimiento)));
+            assertThat(lblFechaFallecimiento.getText().toString(), is(equalTo(fechaFallecimiento)));
             assertThat(txtCausaFallecimiento.getText().toString(), is(equalTo(causaFallecimiento)));
         }catch (Exception e) {
             throw new RuntimeException(e);

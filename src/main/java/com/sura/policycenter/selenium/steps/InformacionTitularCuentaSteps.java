@@ -25,8 +25,8 @@ public class InformacionTitularCuentaSteps extends ScenarioSteps {
     public void validarEncabezadosInformacionTitularCuenta (String informacionBasica,
                                                 String metricas,
                                                 String transacciones,
-                                                String reclamaciones) {
-        informacionTitularCuentaPage.validarEncabezadosInformacionTitularCuenta(informacionBasica, metricas, transacciones, reclamaciones);
+                                                String siniestros) {
+        informacionTitularCuentaPage.validarEncabezadosInformacionTitularCuenta(informacionBasica, metricas, transacciones, siniestros);
     }
 
     @Step
@@ -40,9 +40,9 @@ public class InformacionTitularCuentaSteps extends ScenarioSteps {
     @Step
     public void validarInformacionMetricas (String anioVigencia, String polizasActivas, String canceladoPorCliente,
                                             String canceladoPorCompania, String otrasCancelaciones, String primaVitalicia,
-                                            String totalReclamacionesAbiertas, String totalNetoIncurrido){
+                                            String totalSiniestrosAbiertos, String totalNetoIncurrido){
         informacionTitularCuentaPage.validarInformacionMetricas(anioVigencia,polizasActivas,canceladoPorCliente,
-               canceladoPorCompania, otrasCancelaciones, primaVitalicia, totalReclamacionesAbiertas, totalNetoIncurrido);
+               canceladoPorCompania, otrasCancelaciones, primaVitalicia, totalSiniestrosAbiertos, totalNetoIncurrido);
     }
 
     @Step
@@ -53,10 +53,10 @@ public class InformacionTitularCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarInformacionReclamaciones(String nroPoliza, String producto, String asegurado, String fechaPerdida,
-                                              String nroReclamacion, String estado, String totalIncurrido) {
-        informacionTitularCuentaPage.validarInformacionReclamaciones(nroPoliza, producto, asegurado,
-                fechaPerdida, nroReclamacion, estado, totalIncurrido);
+    public void validarInformacionSiniestros(String nroPoliza, String producto, String asegurado, String fechaPerdida,
+                                              String numeroSiniestros, String estado, String totalIncurrido) {
+        informacionTitularCuentaPage.validarInformacionSiniestros(nroPoliza, producto, asegurado,
+                fechaPerdida, numeroSiniestros, estado, totalIncurrido);
     }
 
     @Step
