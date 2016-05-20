@@ -5,8 +5,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
-
 /**
  * Created by jonamele on 22/04/2016.
  */
@@ -27,8 +25,8 @@ public class Buscar extends Guidewire {
     @FindBy (xpath = ".//td[6]/div")
     WebElementFacade msnPoliza;
 
-    public void buscaAvanzada (String Npoliza){
-        txtNpoliza.sendKeys(Npoliza);
+    public void buscaAvanzada (String nPoliza){
+        txtNpoliza.sendKeys(nPoliza);
         rdobuttonBuscarPoliza.click();
     }
 

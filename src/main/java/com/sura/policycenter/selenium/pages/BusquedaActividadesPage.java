@@ -8,9 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 
 public class BusquedaActividadesPage extends SeusLoginPage {
 
@@ -86,6 +84,7 @@ public class BusquedaActividadesPage extends SeusLoginPage {
             mnuBuscar.click();
             waitABit(1000);
             mnuBuscar.click();
+            waitABit(1000);
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
             act.moveToElement(mnuBuscarActividades).click().build().perform();
             btnRestablecer.click();

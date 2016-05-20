@@ -204,7 +204,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |razonSocial|numeroCuenta|nombre|direccion
-|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
+|Variedades Yurledys S.A|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona juridica por razon social sin datos existentes
 Given que me encuentro en la busqueda de cuentas
@@ -222,7 +222,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |nombreComercial|numeroCuenta|nombre|direccion
-|Variedades Yurledys S.A|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
+|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
 
 Scenario: Busqueda de cuenta persona juridica por nombre comercial sin datos existentes
 Given que me encuentro en la busqueda de cuentas
@@ -322,13 +322,13 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |nombreComercial|razonSocial|numeroCuenta|nombre|direccion
-|Variedades Yurledys S.A|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
+|Variedades Yurledys|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
 
-#Scenario: Exportar resultados de busqueda en PDF, CSV y CSV Personalizado
+Scenario: Exportar resultados de busqueda en PDF, CSV y CSV Personalizado
 Meta:
 @manual
-#Given que he buscado una cuenta y la busqueda arrojo resultados
-#When quiera exportar el resultado arrojado en la busqueda
-#Then el sistema debe permitir imprimir y exportar el resultado y mostrar las opciones permitidas (Imprimir como pdf, Exportar como CSV, Exportación personalizada como CSV)
+Given que he buscado una cuenta y la busqueda arrojo resultados
+When quiera exportar el resultado arrojado en la busqueda
+Then el sistema debe permitir imprimir y exportar el resultado y mostrar las opciones permitidas (Imprimir como pdf, Exportar como CSV, Exportación personalizada como CSV)
 
 

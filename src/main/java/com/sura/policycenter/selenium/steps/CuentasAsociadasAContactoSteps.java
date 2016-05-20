@@ -22,12 +22,10 @@ public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
     @Step
     public void navegarBarraSuperior() {
         inicioPage().irABuscarContacto();
-        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
     }
 
     @Step
     public void buscarContactoPersona(String tipoContacto, String nombre, String apellido) {
-        //busquedaPage.accionarBuscarContacto();
         inicioPage().irABuscarContacto();
         busquedaPage.consultarContactoPorNombresYApellidos(tipoContacto,nombre,"",apellido,"");
         busquedaPage.seleccionarContacto();

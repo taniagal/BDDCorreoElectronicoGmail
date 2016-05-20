@@ -42,6 +42,11 @@ public class BillingDefinitions {
         bcs.navegarTabBar();
     }
 
+    @Then("deberia buscar la cuenta numero <numCuenta> y la poliza numero <numPoliza> y el agente numero <numAgente>")
+    public void buscarCuenta(@Named("numCuenta")String numCuenta, @Named("numPoliza")String numPoliza, @Named("numAgente")String numAgente){
+        bcs.buscarMenu(numCuenta, numPoliza, numAgente);
+    }
+
     @Then("el usuario de billing deberia cerrar sesion")
     public void logout() {
         bcs.logout();
