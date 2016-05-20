@@ -66,7 +66,7 @@ public class Guidewire extends PageObject {
     }
 
     // TODO: 26/04/2016 Revision escritura de excepciones en log
-    private void asercion(String element, String mensaje) {
+    public void asercion(String element, String mensaje) {
         try {
             assertThat(element, containsString(mensaje));
         } catch (Exception e) {
