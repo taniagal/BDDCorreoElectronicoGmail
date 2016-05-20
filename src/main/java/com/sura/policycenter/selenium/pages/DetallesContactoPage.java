@@ -207,6 +207,8 @@ public class DetallesContactoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table")
     WebElementFacade tblDirecciones;
 
+    @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
+    WebElementFacade divMensaje;
 
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
@@ -430,7 +432,6 @@ public class DetallesContactoPage extends Guidewire {
         StringBuilder right = new StringBuilder("No estan correctos los valores:");
         if(!cboPais.getValue().toString().equals("Colombia"))right.append(" pais,");
         if(!cboDepartamento.getValue().toString().equals("<ninguno>"))right.append(" departamento,");
-        if(!cboCiudad.isCurrentlyEnabled())right.append(" ciudad,");
         if(!txtDireccion.getAttribute("placeholder").equals("CRA 11 B #11 A - 11"))right.append("drireccion placeholder,");
         if(!txtDireccion.getAttribute("data-qtip").equals("Esta Direccion podria estandarizarse automáticamente"))right.append("drireccion data-tip,");
         if(!txtDireccion.getAttribute("maxlength").equals("200"))right.append("direccion maxlength,");
@@ -451,6 +452,6 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void validarMensaje(String mensaje) {
-        
+        assertThat("Problemas en el mensaje de error"+mensaje,divMensaje.containsText(mensaje));
     }
 }

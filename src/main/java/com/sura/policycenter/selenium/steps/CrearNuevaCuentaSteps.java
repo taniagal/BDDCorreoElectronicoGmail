@@ -9,20 +9,21 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 
 public class CrearNuevaCuentaSteps extends ScenarioSteps {
+    private String cedula = "";
+    private String nit = "";
+
     Guidewire gw = new Guidewire(getDriver());
     CuentaPage cp = new CuentaPage(getDriver());
 
     private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
-    private String cedula = "";
-    private String nit = "";
 
+    public CrearNuevaCuentaSteps(Pages pages){
+        super(pages);
+    }
     private void  initRandoms(){
         cedula = gw.cedulaRandom();
         nit = gw.nitRandom();
 
-    }
-    public CrearNuevaCuentaSteps(Pages pages){
-        super(pages);
     }
 
     @Step
@@ -35,7 +36,7 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
         if("".equals(cedula) || "".equals(nit)){
             initRandoms();
         }
-        cp.buscarPersona("Busqueda");
+        cp.buscarPersona("Busqueda","Persona");
         cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,codigoPostal,nombreOrganizacion,agente);
     }
 
@@ -49,7 +50,7 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
         if("".equals(cedula) || "".equals(nit)){
             initRandoms();
         }
-        cp.buscarPersona("Busqueda");
+        cp.buscarPersona("Busqueda","Compania");
         cp.crearCuentaNuevaPersonaJuridica(tipoDocumento, nit, nombreEmpresa, tipoDireccion, direccion,codigoPostal,nombreOrganizacion,agente);
     }
 
@@ -67,4 +68,37 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
         cp.assertVerificarMensaje(mensaje);
     }
 
+    @Step
+    public void agregarTipoDocumento(String tipoDocumento) {
+        if("".equals(cedula) || "".equals(nit)) initRandoms();
+        if("NIT".equals(tipoDocumento)){
+            cp.buscarPersona("Busqueda","Compania");
+            cp.agregarTipoDocumento(tipoDocumento,nit);
+        }
+        else{
+            cp.buscarPersona("Busqueda","Persona");
+            cp.agregarTipoDocumento(tipoDocumento,cedula);
+        }
+    }
+
+    @Step
+    public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
+        cp.agregarDireccion(tipoDireccion,direccion,departamento,ciudad);
+        cp.actualizar();
+    }
+
+    @Step
+    public void agregarOrganizacion(String nombreOrganizacion, String agente) {
+        cp.agregarOrganizacion(nombreOrganizacion,agente);
+    }
+
+    @Step
+    public void agregarNombre(String primerNombre, String primerApellido, String fechaNacimiento){
+        cp.agregarNombres(primerNombre,primerApellido,fechaNacimiento);
+    }
+
+    @Step
+    public void agregarRazonSocial(String razonSocial) {
+        cp.agregarRazonsocial(razonSocial);
+    }
 }

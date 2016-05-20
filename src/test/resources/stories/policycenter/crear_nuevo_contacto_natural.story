@@ -18,4 +18,4 @@ Then se debe crear una persona tipo natural con primer nombre <primerNombre>
 
 Examples:
 |tipoDocumento         |numeroDeDocumento  |primerNombre  |primerApellido|tipoDireccion  |direccion       |departamento|ciudad  |
-|CEDULA DE CIUDADANIA  |564-36-5489        |SASHA         |AKERMAN       |Vivienda       |C 54B #50-25  |Antioquia   |Medellin|
+|CEDULA DE CIUDADANIA  |564-36-5489        |SASHA         |AKERMAN       |Otros          |C 54B #50-25    |Antioquia   |Medellin|

@@ -17,8 +17,8 @@ Then en la lista de direcciones agregadas se debe ver la nueva direccion <tipoDi
 
 
 Examples:
-|tipoDocumento         |numeroDeDocumento  |primerNombre  |primerApellido|tipoDireccion  |direccion        |departamento|ciudad  |
-|CEDULA DE CIUDADANIA  |564-36-5489        |SASHA         |AKERMAN       |Negocio        |CALLE 60B #10-157|Antioquia   |Medellin|
+|tipoDocumento       |numeroDeDocumento|primerNombre|primerApellido|tipoDireccion|direccion        |departamento|ciudad  |
+|CEDULA DE CIUDADANIA|564-36-5489      |SASHA       |AKERMAN       |Negocio      |CALLE 60B #10-157|Antioquia   |Medellin|
 
 Scenario: Agregar direccion a un contacto del mismo tipo
 
@@ -33,5 +33,5 @@ Then el sistema me debe impedir la repeticion del tipo de direccion y mostrar el
 
 
 Examples:
-|tipoDocumento         |numeroDeDocumento  |primerNombre  |primerApellido|tipoDireccion  |direccion        |departamento|ciudad  |mensaje|
-|CEDULA DE CIUDADANIA  |564-36-5489        |SASHA         |AKERMAN       |Vivienda        |CALLE 60B #10-157|Antioquia   |Medellin|No se puede ingresar más de una dirección al contacto con el mismo Tipo de dirección|
+|tipoDocumento       |numeroDeDocumento|primerNombre|primerApellido|tipoDireccion|direccion      |departamento|ciudad  |mensaje|
+|CEDULA DE CIUDADANIA|564-36-5489      |SASHA       |AKERMAN       |Vivienda     |CRA 60B #10-157|Antioquia   |Medellin|No se puede ingresar más de una dirección al contacto con el mismo Tipo de dirección|

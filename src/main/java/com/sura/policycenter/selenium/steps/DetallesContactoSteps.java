@@ -12,14 +12,13 @@ public class DetallesContactoSteps extends ScenarioSteps {
     BusquedaContactoPage bc = new BusquedaContactoPage(getDriver());
     DetallesContactoPage dc = new DetallesContactoPage(getDriver());
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
     public DetallesContactoSteps(Pages pages){
         super(pages);
     }
 
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
 
     @Step

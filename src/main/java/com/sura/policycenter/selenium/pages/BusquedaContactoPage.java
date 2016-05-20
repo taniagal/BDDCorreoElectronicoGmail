@@ -133,6 +133,7 @@ public class BusquedaContactoPage extends Guidewire {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaContactoPage.class);
 
+    final String ERROR = "This is error";
     public void login(String usuario, String contrasena){
         txtusuario.type(usuario);
         txtcontrasena.type(contrasena);
@@ -161,7 +162,7 @@ public class BusquedaContactoPage extends Guidewire {
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         waitABit(1000);
-        if (tipoContacto.equals("Personal")){
+        if ("Personal".equals(tipoContacto)){
             nombreContact.type(nombre);
             apellidoContact.type(apellido);
         }else{
@@ -219,7 +220,7 @@ public class BusquedaContactoPage extends Guidewire {
             assertThat(msjSinCriterios.getText(),is(equalTo(msjVal)));
 
         } catch(Exception e) {
-            LOGGER.error("This is error", e);
+            LOGGER.error(ERROR, e);
         }
     }
 
@@ -265,7 +266,7 @@ public class BusquedaContactoPage extends Guidewire {
             }
 
         }catch(Exception e) {
-            LOGGER.error("This is error", e);
+            LOGGER.error(ERROR, e);
         }
     }
 
@@ -276,7 +277,7 @@ public class BusquedaContactoPage extends Guidewire {
 
             for (WebElement row : allRows) {
                 List<WebElement> cells = row.findElements(By.tagName("td"));
-                if(filtro1!="") {
+                if(!filtro1.equals("")) {
                     boolean valido1 = cells.get(0).getText().equals(filtro1) ||
                                       cells.get(1).getText().equals(filtro1) ||
                                       cells.get(2).getText().equals(filtro1) ||
@@ -285,7 +286,7 @@ public class BusquedaContactoPage extends Guidewire {
                                       cells.get(5).getText().equals(filtro1);
                     assertTrue(valido1);
                 }
-                if(filtro2!="") {
+                if(!filtro2.equals("")) {
                     boolean valido2 = cells.get(0).getText().equals(filtro1) ||
                                       cells.get(1).getText().equals(filtro1) ||
                                       cells.get(2).getText().equals(filtro1) ||
@@ -297,7 +298,7 @@ public class BusquedaContactoPage extends Guidewire {
             }
 
         }catch(Exception e) {
-            LOGGER.error("This is error", e);
+            LOGGER.error(ERROR, e);
         }
     }
 
@@ -405,7 +406,7 @@ public class BusquedaContactoPage extends Guidewire {
             assertThat(lblEmail.getText().toString(),is(equalTo(labelsContacto.get("email"))));
             assertThat(lblExterna.getText().toString(),is(equalTo(labelsContacto.get("externa"))));
         } catch(Exception e) {
-            LOGGER.error("This is error", e);
+            LOGGER.error(ERROR, e);
         }
     }
 
@@ -421,7 +422,7 @@ public class BusquedaContactoPage extends Guidewire {
             assertThat(lblEmail.getText().toString(), is(equalTo(labelsContacto.get("email"))));
             assertThat(lblExterna.getText().toString(), is(equalTo(labelsContacto.get("externa"))));
         } catch (Exception e) {
-            LOGGER.error("This is error", e);
+            LOGGER.error(ERROR, e);
         }
     }
 
