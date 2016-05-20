@@ -74,8 +74,8 @@ Examples:
 |codigoAgente|mensaje
 |Standard Code|Se debe especificar al menos número de póliza o número de cuenta
 
-Scenario: Consultar polizas por un criterio obligatorio y uno opcional
-Given que existe una poliza
+Scenario: Consultar polizas por numero de cuenta y producto
+Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta> y producto <producto>
 Then se debe visualizar la siguiente información:
 |numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
@@ -85,8 +85,8 @@ Examples:
 |numeroCuenta|producto
 |C001888888|Auto personal
 
-Scenario: Consultar polizas por un criterio obligatorio y uno opcional
-Given que existe una poliza
+Scenario: Consultar polizas por numero de cuenta y agente
+Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta> y agente <agente>
 Then se debe visualizar la siguiente información:
 |numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
@@ -96,8 +96,8 @@ Examples:
 |numeroCuenta|agente
 |C001888888|Careful Auditors
 
-Scenario: Consultar polizas por un criterio obligatorio y uno opcional
-Given que existe una poliza
+Scenario: Consultar polizas por numero de cuenta  y codigo de agente
+Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta> y codigo de agente <codigoAgente>
 Then se debe visualizar la siguiente información:
 |numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
@@ -107,8 +107,8 @@ Examples:
 |numeroCuenta|codigoAgente
 |C001888888|Standard Code
 
-Scenario: Consultar polizas por un criterio obligatorio y dos opcionales
-Given que existe una poliza
+Scenario: Consultar polizas por numero de cuenta, producto y codigo de agente
+Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta>, producto <producto> y codigo de agente <codigoAgente>
 Then se debe visualizar la siguiente información:
 |numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
@@ -117,3 +117,47 @@ Then se debe visualizar la siguiente información:
 Examples:
 |numeroCuenta|producto|codigoAgente
 |C001888888|Auto personal|Standard Code
+
+Scenario: Consultar polizas que no existen por numero de cuenta, producto y codigo de agente
+Given que voy a buscar una poliza
+When la busco por numero de cuenta <numeroCuenta>, producto <producto> y codigo de agente <codigoAgente>
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+|numeroCuenta|producto|codigoAgente|mensaje
+|C001887545|Auto personal|Standard Code|La búsqueda no devolvió resultados.
+
+
+
+
+
+
+
+
+
+Scenario: Consultar polizas que no existen por numero de cuenta y producto
+Given que voy a buscar una poliza
+When la busco por numero de cuenta <numeroCuenta> y producto <producto>
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+|numeroCuenta|producto|mensaje
+|C001887456|Auto personal|La búsqueda no devolvió resultados.
+
+Scenario: Consultar polizas por numero de cuenta y agente
+Given que voy a buscar una poliza
+When la busco por numero de cuenta <numeroCuenta> y agente <agente>
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+|numeroCuenta|agente|mensaje
+|C001887456|Careful Auditors|La búsqueda no devolvió resultados.
+
+Scenario: Consultar polizas por numero de cuenta  y codigo de agente
+Given que voy a buscar una poliza
+When la busco por numero de cuenta <numeroCuenta> y codigo de agente <codigoAgente>
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+|numeroCuenta|codigoAgente|mensaje
+|C001888888|Standard|La búsqueda no devolvió resultados.
