@@ -215,7 +215,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         return esAsociado;
     }
 
-    @SuppressWarnings("SameParameterValue")
+    @SuppressWarnings({"SameParameterValue", "UnusedReturnValue"})
     public Boolean validarOcurrenciaDeMensajeDeAplicacion(String idXpathDivMensajes, String mensajesApp){
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado="";

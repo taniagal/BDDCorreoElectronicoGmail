@@ -22,8 +22,8 @@ import org.openqa.selenium.support.FindBy;
  */
 public class InicioPage extends Guidewire {
 
-    private Guidewire gw = new Guidewire(getDriver());
-    private Navegacion navegacion;
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final Navegacion navegacion;
 
     public InicioPage(WebDriver driver) {
         super(driver);

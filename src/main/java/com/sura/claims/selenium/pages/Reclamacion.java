@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 
 public class Reclamacion extends Guidewire {
-    private Guidewire gw = new Guidewire(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
     public Reclamacion(WebDriver driver) {
         super(driver);
     }

@@ -6,7 +6,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class BusquedaActividadesSteps extends ScenarioSteps {
 
-    private BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
+    private final BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
     public BusquedaActividadesSteps(Pages pages) {
         super(pages);
     }

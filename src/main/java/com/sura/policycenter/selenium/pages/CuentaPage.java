@@ -11,7 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class CuentaPage extends Guidewire{
-    private Guidewire gw = new Guidewire(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
 
     public CuentaPage(WebDriver driver){
         super(driver);

@@ -10,10 +10,10 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class PolicySteps extends ScenarioSteps {
 
-    private SeusLoginPage seus = new SeusLoginPage(getDriver());
-    private Guidewire gw = new Guidewire(getDriver());
-    private AbrirAppPage abrirapp = new AbrirAppPage(getDriver());
-    private InicioPage inicioPage = new InicioPage(getDriver());
+    private final SeusLoginPage seus = new SeusLoginPage(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final AbrirAppPage abrirapp = new AbrirAppPage(getDriver());
+    private final InicioPage inicioPage = new InicioPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }

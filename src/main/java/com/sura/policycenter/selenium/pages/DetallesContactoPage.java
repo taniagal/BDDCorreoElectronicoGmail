@@ -200,8 +200,8 @@ public class DetallesContactoPage extends Guidewire {
     private WebElementFacade txtDescripcionDireccion;
 
 
-    private  String [] dtlContact = new String[15];
-    private String [] dtlCntJ = new String[8];
+    private final String [] dtlContact = new String[15];
+    private final String [] dtlCntJ = new String[8];
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);

@@ -78,7 +78,7 @@ public class NuevoContactoPage extends Guidewire {
 
     private WebElementFacade arregloDeMensajes;
 
-    private Guidewire gw = new Guidewire(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
 
 
     public void seleccionarTipoDocumento(String tipoDocumento) {

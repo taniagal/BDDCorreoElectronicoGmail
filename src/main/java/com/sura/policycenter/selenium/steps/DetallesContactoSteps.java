@@ -10,9 +10,9 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class DetallesContactoSteps extends ScenarioSteps {
 
-    private BusquedaContactoPage bc = new BusquedaContactoPage(getDriver());
+    private final BusquedaContactoPage bc = new BusquedaContactoPage(getDriver());
 
-    private DetallesContactoPage dc = new DetallesContactoPage(getDriver());
+    private final DetallesContactoPage dc = new DetallesContactoPage(getDriver());
 
     //EscritorioPage escritorioPolicy = new EscritorioPage(getDriver());
     private InicioPage inicioPage() {

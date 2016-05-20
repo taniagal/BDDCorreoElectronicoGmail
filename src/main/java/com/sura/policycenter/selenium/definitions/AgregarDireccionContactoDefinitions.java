@@ -20,6 +20,7 @@ public class AgregarDireccionContactoDefinitions {
         dcs.validarDatosPatalla();
     }
 
+    @SuppressWarnings("EmptyMethod")
     @When("valide la informaci\u00F3n en los campos")
     public void whenValideLaInformaciónEnLosCampos() {
         //dcs.validarCampos();

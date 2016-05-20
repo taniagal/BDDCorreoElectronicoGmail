@@ -28,10 +28,11 @@ import org.openqa.selenium.support.FindBy;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
+@SuppressWarnings("UnusedReturnValue")
 public class InicioPage extends Guidewire {
 
     private Guidewire gw = new Guidewire(getDriver());
-    private Navegacion navegacion;
+    private final Navegacion navegacion;
 
     public InicioPage(WebDriver driver) {
         super(driver);

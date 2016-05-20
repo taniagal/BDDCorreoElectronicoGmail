@@ -48,6 +48,7 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
         super(driver);
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public Boolean asociarNuevoAseguradoNombradoACuenta() {
 
         Boolean esAsociado;

@@ -12,7 +12,7 @@ public class OpcionesCrearPartcCuentaPage extends Guidewire {
         super(driver);
     }
 
-    private Actions act = new Actions(getDriver());
+    private final Actions act = new Actions(getDriver());
 
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Edit-btnInnerEl']")
     private WebElementFacade btnEditCuenta;

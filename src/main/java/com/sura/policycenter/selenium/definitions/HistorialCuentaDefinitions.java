@@ -12,7 +12,7 @@ import org.jbehave.core.annotations.When;
 /**
  * Created by jhonvebz on 25/04/2016.
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "EmptyMethod"})
 public class HistorialCuentaDefinitions {
 
     @Steps
@@ -86,6 +86,7 @@ public class HistorialCuentaDefinitions {
         historialCuentaSteps.validarResultadoProducto();
     }
 
+    @SuppressWarnings("EmptyMethod")
     @When("se realiza la busqueda por <fecha> y solo se indique la opcion desde")
     @Manual
     public void whenSeRealizaLaBusquedaPorfechaYSoloSeIndiqueLaOpcionDesde(@Named("fecha") String fechaDesde) {

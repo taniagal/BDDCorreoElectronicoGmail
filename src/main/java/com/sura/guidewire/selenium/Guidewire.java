@@ -24,7 +24,7 @@ public class Guidewire extends PageObject {
     String mensajeError = "";
     // Initialize Log4j logs
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
-    private Actions act = new Actions(getDriver());
+    private final Actions act = new Actions(getDriver());
 
     public Guidewire(WebDriver driver) {
         super(driver);
@@ -66,7 +66,7 @@ public class Guidewire extends PageObject {
     }
 
     // TODO: 26/04/2016 Revision escritura de excepciones en log
-    public void asercion(String element, String mensaje) {
+    private void asercion(String element, String mensaje) {
         try {
             assertThat(element, containsString(mensaje));
         } catch (Exception e) {

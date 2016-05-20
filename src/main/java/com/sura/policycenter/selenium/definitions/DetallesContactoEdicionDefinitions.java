@@ -17,6 +17,7 @@ public class DetallesContactoEdicionDefinitions {
     @Steps
     private CrearNuevoContactoSteps ncs;
 
+    @SuppressWarnings("EmptyMethod")
     @Given("Se ha consultado la informacion detallada de un contacto persona natural")
     public void personaNatural(){}
 
@@ -56,6 +57,7 @@ public class DetallesContactoEdicionDefinitions {
 
 
     //-------------------ESCENARIO 2---------------------
+    @SuppressWarnings("EmptyMethod")
     @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica")
     public void infoContactoJurídico(){
     }

@@ -14,8 +14,8 @@ import org.openqa.selenium.support.FindBy;
  */
 public class Escritorio extends Guidewire {
 
-    private BarraNavegacion barraNavegacion;
-    private Guidewire gw = new Guidewire(getDriver());
+    private final BarraNavegacion barraNavegacion;
+    private final Guidewire gw = new Guidewire(getDriver());
 
     public Escritorio(WebDriver driver) {
         super(driver);
@@ -35,10 +35,12 @@ public class Escritorio extends Guidewire {
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ClaimSearchesGroup:ClaimSearchesGroup_ClaimSearch-textEl']")
     private WebElementFacade mnubuscaAvanzada;
 
+    @SuppressWarnings("UnusedReturnValue")
     public PaginaPanel irAPanel() {
         return barraNavegacion.irAPanel();
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public PaginaMiCalendario irAMiCalendario() {
         return barraNavegacion.irAMiCalendario();
     }

@@ -33,30 +33,30 @@ public class Navegacion extends Guidewire {
         super(driver);
     }
 
-    private Guidewire gw = new Guidewire(getDriver());
-    private Actions act = new Actions(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final Actions act = new Actions(getDriver());
 
     // Objetos menu Escritorio
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnWrap']")
-    WebElementFacade menuEscritorio;
+    private WebElementFacade menuEscritorio;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopActivities-itemEl']")
-    WebElementFacade itemMisActividades;
+    private WebElementFacade itemMisActividades;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopAccounts-itemEl']")
-    WebElementFacade mnuItemMisCuentas;
+    private WebElementFacade mnuItemMisCuentas;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopSubmissions-itemEl']")
-    WebElementFacade mnuItemMisEnvios;
+    private WebElementFacade mnuItemMisEnvios;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopRenewals-itemEl']")
-    WebElementFacade mnuItemMisRenovaciones;
+    private WebElementFacade mnuItemMisRenovaciones;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopOtherWorkOrders-itemEl']")
-    WebElementFacade mnuItemMisOtrasTrans;
+    private WebElementFacade mnuItemMisOtrasTrans;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopAssignableQueues-itemEl']")
-    WebElementFacade mnuItemMisColas;
+    private WebElementFacade mnuItemMisColas;
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab-btnWrap']")
-    WebElementFacade mnuCuenta;
+    private WebElementFacade mnuCuenta;
 
     // Objetos menu Cuenta
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-itemEl']")
-    WebElementFacade mnuItemNuevaCuenta;
+    private WebElementFacade mnuItemNuevaCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
     private WebElementFacade txtNumCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")

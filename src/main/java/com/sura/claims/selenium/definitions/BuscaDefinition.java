@@ -23,7 +23,7 @@ public class BuscaDefinition {
     }
 
     @Given("me logeo en ClaimsCenter <usr> <pass>")
-    public void login (@Named("usr") String user, @Named("pass") String pass) throws InterruptedException {
+    public void login (@Named("usr") String user, @Named("pass") String pass) {
         cs.login(user, pass);
     }
 

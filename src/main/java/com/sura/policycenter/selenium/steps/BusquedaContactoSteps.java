@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class BusquedaContactoSteps extends ScenarioSteps {
 
-    private BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
+    private final BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }

@@ -25,8 +25,8 @@ public class Navegacion extends Guidewire{
         super(driver);
     }
 
-    private Guidewire gw = new Guidewire(getDriver());
-    private Actions act = new Actions(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final Actions act = new Actions(getDriver());
 
     @FindBy(xpath = ".//*[@id='UserSearch:UserSearchScreen:ttlBar']")
     private WebElementFacade labelIngreso;
@@ -69,7 +69,7 @@ public class Navegacion extends Guidewire{
     @FindBy(xpath = ".//*[@id='TabBar:ProducersTab-btnWrap']")
     private WebElementFacade mnuAgente;
     @FindBy(xpath = ".//*[@id='TabBar:ProducersTab:ProducerNameSearchItem-inputEl']")
-    WebElementFacade itemNumAgente;
+    private WebElementFacade itemNumAgente;
 
     // Objetos menu Buscar
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
@@ -168,7 +168,7 @@ public class Navegacion extends Guidewire{
     
     // Objetos menu acciones Escritorio
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions-btnIconEl']")
-    WebElementFacade mnuAccionesEscritorio;
+    private WebElementFacade mnuAccionesEscritorio;
     // Nuevo pago
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewPayment-arrowEl']")
     private WebElementFacade itemNuevoPago;

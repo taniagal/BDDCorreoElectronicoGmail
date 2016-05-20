@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class Buscar extends Guidewire {
 
-    private Guidewire gw = new Guidewire(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
 
     public Buscar(WebDriver driver) {
         super(driver);

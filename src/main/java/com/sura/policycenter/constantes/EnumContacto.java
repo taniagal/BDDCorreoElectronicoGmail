@@ -8,7 +8,7 @@ public enum EnumContacto {
         CIUDAD ("Ciudad: El campo \"Ciudad\" es requerido"),
         DEPARTAMENTO ("Departamento: El campo \"Departamento\" es requerido");
 
-    private String mensajeRequerido;
+    private final String mensajeRequerido;
 
     EnumContacto(String mensaje){
         mensajeRequerido = mensaje;

@@ -157,6 +157,7 @@ public class BusquedaContactoDefinitions {
         buscarContactoSteps.validarLongitudPersonaJuridica("", nombreComercial);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @When("quiera exportar el resultado de la busqueda")
     @Manual
     public void validarExportar(){
@@ -252,6 +253,7 @@ public class BusquedaContactoDefinitions {
         buscarContactoSteps.validarLabelsPersonaJuridica(labelsContacto);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Then("el sistema debe permitir exportar el resultado")
     @Manual
     public void sistemaDebeExportarResultado(){}
