@@ -3,7 +3,10 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevoContactoSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
 
 /**
@@ -13,9 +16,12 @@ public class CrearNuevoContactoDefinitions {
 
     @Steps
     CrearNuevoContactoSteps crearNuevoContactoSteps ;
+    @Steps
+    SeusLoginSteps seusLoginSteps;
 
     @Given("estoy en la pantalla de crear contacto persona natural")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaNatural() {
+        seusLoginSteps.login();
         crearNuevoContactoSteps.nuevoContactoPersona();
     }
 
@@ -50,9 +56,9 @@ public class CrearNuevoContactoDefinitions {
         crearNuevoContactoSteps.ingresarDireccionPersonaNatural(direccion);
     }
 
-    @Then("se debe crear una persona tipo natural")
-    public void thenSeDebeCrearUnaPersonaTipoNatural() {
-        crearNuevoContactoSteps.actualizar();
+    @Then("se debe crear una persona tipo natural con primer nombre <primerNombre>")
+    public void thenSeDebeCrearUnaPersonaTipoNatural(@Named("primerNombre") String primerNombre) {
+        crearNuevoContactoSteps.actualizar(primerNombre);
 
 //        crearNuevoContactoSteps.getDriver().close();
     }
@@ -73,6 +79,7 @@ public class CrearNuevoContactoDefinitions {
 
     @Given("estoy en la pantalla de crear contacto persona juridica")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaJuridica() {
+        seusLoginSteps.login();
         crearNuevoContactoSteps.nuevoContactoPersonaJuridica();
     }
 
@@ -81,9 +88,9 @@ public class CrearNuevoContactoDefinitions {
         crearNuevoContactoSteps.ingresarRazonSocial(razonSocial);
     }
 
-    @Then("se debe crear una persona tipo juridica")
-    public void thenSeDebeCrearUnaPersonaTipoJuridica() {
-        crearNuevoContactoSteps.actualizarJuridica();
+    @Then("se debe crear una persona tipo juridica con razon social <razonSocial>")
+    public void thenSeDebeCrearUnaPersonaTipoJuridica(@Named("razonSocial") String razonSocial) {
+        crearNuevoContactoSteps.actualizarJuridica(razonSocial);
     }
 
     @Then("debe validar que el contacto ya existe")

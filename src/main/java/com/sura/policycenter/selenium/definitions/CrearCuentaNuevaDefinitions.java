@@ -2,8 +2,11 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevaCuentaSteps;
-import net.thucydides.core.annotations.*;
-import org.jbehave.core.annotations.*;
+import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -81,7 +84,7 @@ public class CrearCuentaNuevaDefinitions {
                                                     @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
                                                     @Named("codigo_postal")String codigoPostal, @Named("nombre_organizacion")String nombreOrganizacion, @Named("agente") String agente){
         cns.abrirNuevaCuenta();
-        cns.crearNuevaCuentaPersona2(tipoDocumento, fechaNacimiento, primerNombre, primerApellido, tipoDireccion,direccion,
+        cns.crearNuevaCuentaPersona(tipoDocumento, fechaNacimiento, primerNombre, primerApellido, tipoDireccion,direccion,
                 codigoPostal,nombreOrganizacion,agente);
     }
 
@@ -104,7 +107,7 @@ public class CrearCuentaNuevaDefinitions {
         Date date = new Date();
         String fechaActual = dateFormat.format(date);
         cns.abrirNuevaCuenta();
-        cns.crearNuevaCuentaPersona2(tipoDocumento,fechaActual, primerNombre, primerApellido, tipoDireccion,direccion,codigoPostal,nombreOrganizacion, agente);
+        cns.crearNuevaCuentaPersona(tipoDocumento,fechaActual, primerNombre, primerApellido, tipoDireccion,direccion,codigoPostal,nombreOrganizacion, agente);
     }
 
     @Then("No me debe permitir crear la cuenta y debe mostrar el mensaje <mensaje>")

@@ -33,7 +33,7 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void crearNuevaCuentaPersona(String tipoDocumento,String fechaNacimiento,String primerNombre, String primerApellido, String tipoDireccion, String direccion, String codigoPostal,String nombreOrganizacion, String agente) {
+    public void crearNuevaCuentaPersona(String tipoDocumento, String fechaNacimiento, String primerNombre, String primerApellido, String tipoDireccion, String direccion, String codigoPostal, String nombreOrganizacion, String agente) {
         if("".equals(cedula) || "".equals(nit)){
             initRandoms();
         }
@@ -58,15 +58,6 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     @Step
     public void assertPolicyCenterLogin(){
         cp.assertPolicyCenterLogin();
-    }
-
-    @Step
-    public void crearNuevaCuentaPersona2(String tipoDocumento, String fechaNacimiento,String primerNombre, String primerApellido, String tipoDireccion, String direccion, String codigoPostal,String nombreOrganizacion, String agente) {
-        if("".equals(cedula) || "".equals(nit)){
-            initRandoms();
-        }
-        cp.buscarPersona("Busqueda");
-        cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,codigoPostal,nombreOrganizacion,agente);
     }
 
     @Step
