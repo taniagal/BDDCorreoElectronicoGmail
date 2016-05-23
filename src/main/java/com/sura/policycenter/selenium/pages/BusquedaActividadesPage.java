@@ -80,6 +80,7 @@ public class BusquedaActividadesPage extends SeusLoginPage {
     public void buscarActividades() {
             Actions act = new Actions(getDriver());
             mnuBuscar.waitUntilClickable();
+            waitABit(1000);
             mnuBuscar.click();
             waitABit(1000);
             mnuBuscar.click();
