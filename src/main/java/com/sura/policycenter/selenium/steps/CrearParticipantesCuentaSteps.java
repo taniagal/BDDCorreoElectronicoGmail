@@ -35,7 +35,6 @@ public class CrearParticipantesCuentaSteps extends ScenarioSteps {
         opcionesCrearPartcCuentaPage.navegacionCreaParticipante();
     }
 
-
     @Step
     public void validaParticipante (){
         opcionesCrearPartcCuentaPage.verificarCamposParticipantes();

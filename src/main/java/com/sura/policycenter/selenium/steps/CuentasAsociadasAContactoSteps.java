@@ -53,4 +53,5 @@ public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
     public void validarMensajeCuenta(String mensaje) {
         cuentasAsociadasAContactoPage.validarMensaje(mensaje);
     }
+
 }

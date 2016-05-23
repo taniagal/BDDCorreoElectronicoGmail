@@ -21,7 +21,6 @@ public class PruebaMenuDefinitions {
     @Given("ingreso a la pagina de autenticacion de PolicyCenter")
     public void open() {
         pms.open();
-
     }
 
     @When("ingreso username <usr> y password <pass>")

@@ -8,56 +8,43 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.sikuli.api.robot.Key;
-
 import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.isIn;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.StringContains.containsString;
 
 public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
     @FindBy(xpath=".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_WorkOrders']/div")
     private WebElementFacade mnuTransaccionesPoliza;
-
     @FindBy(xpath="//div[3]/div/table/tbody/tr/td/div")
     private WebElementFacade fechaCreacion;
-
     @FindBy(xpath="//div/table/tbody/tr/td[2]/div")
     private WebElementFacade poliza;
-
     @FindBy(xpath="//td[3]/div")
     private WebElementFacade producto;
-
     @FindBy(xpath="//td[4]/div")
     private WebElementFacade numeroTransaccion;
-
     @FindBy(xpath="//td[5]/div")
     private WebElementFacade tipo;
-
     @FindBy(xpath="//td[6]/div")
     private WebElementFacade estado;
-
     @FindBy(xpath="//td[7]/div")
     private WebElementFacade fechaFin;
-
     @FindBy(xpath="//td[8]/div")
     private WebElementFacade participante;
-
     @FindBy(xpath="//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrdersCompletenessFilter-inputEl']")
     private WebElementFacade filtroEstado;
-
     @FindBy(xpath="//td/div/div[3]/div/table")
     private WebElementFacade table;
-
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrderTypeFilter-inputEl']")
     private WebElementFacade filtroTipoTransaccion;
-
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:ProductFilter-inputEl']")
     private WebElementFacade filtroProducto;
-
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:message:InfoMessage_ExtDV:message']")
     private WebElementFacade msjTransaccionNoEncontrada;
-
 
     public ContactoOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);

@@ -13,6 +13,7 @@ public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
 
     private final CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
     private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
+
     public CuentasOrdenesDeTrabajoSteps(Pages pages) {
         super(pages);
     }
@@ -45,6 +46,5 @@ public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
         inicioPage().irACuentaBuscar(numCuenta);
         //cuentasOrdenesTrabajoPage.buscarCuenta(numCuenta);
     }
-
 
 }

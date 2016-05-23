@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-
 import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.steps.DisponibilidadDetalleProductoSteps;
 import net.thucydides.core.annotations.Steps;

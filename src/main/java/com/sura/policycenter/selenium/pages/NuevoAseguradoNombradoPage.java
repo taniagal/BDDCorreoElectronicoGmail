@@ -5,12 +5,14 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by jorgsape on 2016/05/13.
  */
 public class NuevoAseguradoNombradoPage extends Guidewire {
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade cboTipoDocumento;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
@@ -37,12 +39,10 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
     private WebElementFacade cboDetalleTipoDireccion;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade cboDetalleDireccion;
-
-
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
     private WebElementFacade btnActualizar;
 
-    ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
+    private ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
 
     public NuevoAseguradoNombradoPage(WebDriver driver) {
         super(driver);
@@ -50,22 +50,17 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
 
     @SuppressWarnings("UnusedReturnValue")
     public Boolean asociarNuevoAseguradoNombradoACuenta() {
-
         Boolean esAsociado;
         try {
-
             txtNumeroDocumento.type("11".concat(cedulaRandom()));
             txtNombre.type("JOHAN");
             txtApellido.type("MUSTACHE");
             txtTelefonoTrabajo.type("435-3434");
-
             tabDetalleDireccion.waitUntilClickable();
             tabDetalleDireccion.click();
-
             cboDetalleTipoDireccion.type("Otros");
             cboDetalleDireccion.click();
             cboDetalleDireccion.type("CL 45 - 56 A 109");
-
             tabDetalleContacto.waitUntilClickable();
             tabDetalleContacto.click();
             cboTipoDireccion.type("Otros");
@@ -74,27 +69,21 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
             cboTipoDocumento.sendKeys(Keys.ENTER);
             cboDepartamento.type("Antioquia");
             cboDepartamento.sendKeys(Keys.ENTER);
-
-
             waitABit(3000);
             cboCiudad.clear();
             waitABit(3000);
             cboCiudad.type("Medellin");
             waitABit(3000);
             cboCiudad.sendKeys(Keys.ENTER);
-
             txtDireccion.clear();
             txtDireccion.type("CL 45 - 56 A 109");
             waitABit(3000);
             btnActualizar.click();
-
-
             esAsociado = Boolean.TRUE;
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error("This is error : " + e);
             esAsociado =  Boolean.FALSE;
         }
-
         return esAsociado;
     }
 }

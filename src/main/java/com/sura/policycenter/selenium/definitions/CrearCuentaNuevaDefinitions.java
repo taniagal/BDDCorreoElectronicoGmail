@@ -7,11 +7,9 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 
 @SuppressWarnings("WeakerAccess")
 public class CrearCuentaNuevaDefinitions {

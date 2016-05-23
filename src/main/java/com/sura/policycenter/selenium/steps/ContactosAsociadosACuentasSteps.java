@@ -15,20 +15,13 @@ import org.jbehave.core.model.ExamplesTable;
 public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
     private static final String DETALLE_CONTACTO = "DETALLE_CONTACTO";
-
     private static final String FUNCIONES = "FUNCIONES";
-
     private static final String DIRECCIONES = "DIRECCIONES";
-
     private static final String TRANSACCIONES_ASOCIADAS = "TRANSACCIONES_ASOCIADAS";
-
     private static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
-
-
     private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
     private final BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage = new BusquedaContactoDelDirectorioPage(getDriver());
-    CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
-
+    private CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
@@ -71,7 +64,6 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
         }
 
     }
-
 
     @Step
     public void verificarDetalleContactoNoEsNulo() {
@@ -128,7 +120,5 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     public void contactoEliminado(String contactoEliminado) throws Exception {
         contactosAsociadosACuentasPage.contactoEliminado(contactoEliminado);
     }
-
-
 
 }

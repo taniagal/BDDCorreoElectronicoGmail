@@ -7,14 +7,10 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-
 public class DetallesContactoSteps extends ScenarioSteps {
 
     private final BusquedaContactoPage bc = new BusquedaContactoPage(getDriver());
-
     private final DetallesContactoPage dc = new DetallesContactoPage(getDriver());
-
-    //EscritorioPage escritorioPolicy = new EscritorioPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
@@ -23,11 +19,8 @@ public class DetallesContactoSteps extends ScenarioSteps {
         super(pages);
     }
 
-
-
     @Step
     public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido){
-        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
         inicioPage().irABuscarContacto();
         bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primer_nombre,"",primer_apellido,"");
         bc.seleccionarContacto();
@@ -40,7 +33,6 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
     @Step
     public void abrirDetallesContactoEmpresa(String nombreEmpresa){
-        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
         inicioPage().irABuscarContacto();
         bc.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
         bc.seleccionarContacto();

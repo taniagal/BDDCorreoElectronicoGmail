@@ -6,31 +6,26 @@ import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class SeusLoginPage extends Guidewire {
+
+    private Guidewire gw = new Guidewire(getDriver());
+    @FindBy(xpath=".//*[@id='country']")
+    private WebElementFacade pais;
+    @FindBy(id="username")
+    private WebElementFacade usuario;
+    @FindBy(xpath=".//*[@id='password']")
+    private WebElementFacade contrasenia;
+    @FindBy(xpath=".//*[@id='lower']/input")
+    private WebElementFacade btnSubmit;
+
     public SeusLoginPage(WebDriver driver) {
         super(driver);
     }
 
-    private Guidewire gw = new Guidewire(getDriver());
-
-    @FindBy(xpath=".//*[@id='country']")
-    private WebElementFacade pais;
-
-    @FindBy(id="username")
-    private WebElementFacade usuario;
-
-    @FindBy(xpath=".//*[@id='password']")
-    private WebElementFacade contrasenia;
-
-    @FindBy(xpath=".//*[@id='lower']/input")
-    private WebElementFacade btnSubmit;
-
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
-
         getDriver().manage().window().maximize();
         try {
             pais.waitUntilVisible();
@@ -47,7 +42,6 @@ public class SeusLoginPage extends Guidewire {
         this.usuario.type(usuario);
         this.contrasenia.type(contrasenia);
         this.btnSubmit.click();
-
     }
 
 }

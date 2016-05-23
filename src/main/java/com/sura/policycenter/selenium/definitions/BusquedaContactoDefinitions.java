@@ -9,9 +9,8 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
-import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
 
 /**
  * Created by jhonvebz on 25/04/2016.

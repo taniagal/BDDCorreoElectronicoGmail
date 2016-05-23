@@ -6,89 +6,70 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.StringContains.containsString;
 
 public class BusquedaActividadesPage extends SeusLoginPage {
 
     @FindBy(xpath=".//*[@id='TabBar:SearchTab']")
     private WebElementFacade mnuBuscar;
-
     @FindBy(xpath=".//*[@id='TabBar:SearchTab:Search_ActivitySearch']")
     private WebElementFacade mnuBuscarActividades;
-
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:AssignedUser-inputEl']")
     private WebElementFacade txtAsignadoA;
-
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:ActivityStatus-inputEl']")
     private WebElementFacade txtEstadoActividad;
-
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:ActivityPriority-inputEl']")
     private WebElementFacade txtPrioridad;
-
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:OverdueNow-inputEl']")
     private WebElementFacade txtVencida;
-
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:PolicyNumber-inputEl']")
     private WebElementFacade txtNumeroPoliza;
-
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:AccountNumber-inputEl']")
     private WebElementFacade txtNumeroCuenta;
-
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade btnBuscar;
-
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     private WebElementFacade btnRestablecer;
-
     @FindBy(xpath="//div[4]/div/table/tbody/tr/td[2]/div")
     private WebElementFacade grdIcono;
-
     @FindBy(xpath="//td[4]/div")
     private WebElementFacade grdFechaVencimiento;
-
     @FindBy(xpath="//td[5]/div")
     private WebElementFacade grdPrioridad;
-
     @FindBy(xpath="//td[6]/div")
     private WebElementFacade grdEstadoActividad;
-
     @FindBy(xpath="//td[7]/div")
     private WebElementFacade grdAsunto;
-
     @FindBy(xpath="//td[8]/div")
     private WebElementFacade grdId;
-
     @FindBy(xpath="//td[9]/div")
     private WebElementFacade grdCuenta;
-
     @FindBy(xpath="//td[10]/div")
     private WebElementFacade grdProducto;
-
     @FindBy(xpath="//td[11]/div")
     private WebElementFacade grdAsignadoPor;
-
     @FindBy(xpath="//td[12]/div")
     private WebElementFacade grdEstado;
-
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
     private WebElementFacade msgFiltrosRequeridos;
 
     public BusquedaActividadesPage(WebDriver driver) {super(driver);}
 
     public void buscarActividades() {
-            Actions act = new Actions(getDriver());
-            mnuBuscar.waitUntilClickable();
-            waitABit(1000);
-            mnuBuscar.click();
-            waitABit(1000);
-            mnuBuscar.click();
-            waitABit(1000);
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.moveToElement(mnuBuscarActividades).click().build().perform();
-            btnRestablecer.click();
-            waitABit(1000);
+        Actions act = new Actions(getDriver());
+        mnuBuscar.waitUntilClickable();
+        waitABit(1000);
+        mnuBuscar.click();
+        waitABit(1000);
+        mnuBuscar.click();
+        waitABit(1000);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuBuscarActividades).click().build().perform();
+        btnRestablecer.click();
+        waitABit(1000);
     }
 
     public void filtrarPorAsignado(String usuario) {
@@ -156,4 +137,5 @@ public class BusquedaActividadesPage extends SeusLoginPage {
         txtEstadoActividad.sendKeys(estadoActividad);
         txtEstadoActividad.sendKeys(Keys.ENTER);
     }
+
 }

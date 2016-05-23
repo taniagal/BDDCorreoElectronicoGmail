@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.pages;
 
-
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.serinitybdd.util.GwNavegacionUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -8,35 +7,26 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DisponibilidadDetalleProductoPage extends Guidewire {
 
     @FindBy(xpath=".//input[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
     private WebElementFacade listaTipoCanalDeVenta;
-
     @FindBy(xpath=".//*[@id='AccountFile:AccountFileMenuActions']")
     private WebElementFacade btnAccionesCuenta;
-
     @FindBy(xpath=".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission']")
     private WebElementFacade opcionNuevoEnvio;
-
     @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:7:addSubmission']")
     private WebElementFacade btnElegirAutoPersonal;
-
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div")
     private WebElementFacade opcionVerInformacionPoliza;
-
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
     private WebElementFacade listaOrganizacionDeVentas;
-
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
     private WebElementFacade listaPATipoPoliza;
-
 
     public DisponibilidadDetalleProductoPage(WebDriver driver) {
         super(driver);

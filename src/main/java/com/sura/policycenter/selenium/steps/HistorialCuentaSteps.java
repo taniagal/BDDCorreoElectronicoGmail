@@ -19,7 +19,6 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
 
     @Step
     public void seleccionarCuenta(String numCuenta) {
-        //historialCuentaPage.buscarCuenta(numCuenta);
         inicioPage().irACuentaBuscar(numCuenta);
     }
 

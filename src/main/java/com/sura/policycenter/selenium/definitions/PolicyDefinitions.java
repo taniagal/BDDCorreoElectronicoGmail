@@ -16,7 +16,6 @@ public class PolicyDefinitions {
     @Given("el usuario ingresa a la pagina de autenticacion de PolicyCenter")
     public void open() {
         pcs.open();
-
     }
 
     @Given("el usuario ingresa a la pagina de autenticacion de PolicyCenter - Seus")

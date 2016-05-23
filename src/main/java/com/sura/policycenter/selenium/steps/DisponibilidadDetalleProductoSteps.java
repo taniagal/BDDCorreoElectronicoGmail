@@ -48,4 +48,5 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
     public void validarActualizacionDeListaPATipoPoliza() {
         disponibilidadDetalleProductoPage.validarActualizacionDeListaPATipoPoliza();
     }
+
 }
