@@ -29,12 +29,12 @@ public class BusquedaContactoDefinitions {
 
     @Given("estoy en busqueda de contactos")
     public void givenEstoyEnBusquedaContactos() {
-        buscarContactoSteps.navegarBarraSuperior("Buscar", "Contactos", "");
+        buscarContactoSteps.navegarBarraSuperior();
     }
 
     @Given("estoy en contactos para buscar")
     public void givenContactosBuscar(){
-        buscarContactoSteps.navegarBarraSuperior("Contacto", "Buscar", "");
+        buscarContactoSteps.navegarBarraSuperior();
     }
 
     @When("quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre> y apellido <apellido>")
@@ -243,7 +243,7 @@ public class BusquedaContactoDefinitions {
         labelsContacto.put("tipoId", "Tipo de Documento");
         labelsContacto.put("numId", "Número de Documento");
         labelsContacto.put("nomComercial","Nombre comercial");
-        labelsContacto.put("razonSocial","Razón Social");
+        labelsContacto.put("razonSocial","Razón social");
         labelsContacto.put("direccion","Dirección");
         labelsContacto.put("telefono","Teléfono");
         labelsContacto.put("email","Correo Electrónico");

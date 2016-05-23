@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaContactoPage;
 import com.sura.policycenter.selenium.pages.EscritorioPage;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
@@ -16,6 +17,8 @@ public class BusquedaContactoSteps extends ScenarioSteps {
 
     BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
 
+    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
+
     public BusquedaContactoSteps(Pages pages) {
         super(pages);
     }
@@ -28,8 +31,14 @@ public class BusquedaContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void navegarBarraSuperior(String menu, String submenu, String item) {
-        escritorioPolicy.navegarTabBar(menu, submenu, item);
+    public void navegarBarraSuperior() {
+        //escritorioPolicy.navegarTabBar(menu, submenu, item);
+        inicioPage().irABuscarContactos();
+    }
+
+    @Step
+    public void buscarContacto(){
+        inicioPage().irABuscarContacto();
     }
 
     @Step

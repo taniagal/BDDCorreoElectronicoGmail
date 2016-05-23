@@ -422,8 +422,11 @@ public class Navegacion extends Guidewire {
     }
 
     public BuscarContactosPage irABuscarContactos() {
+        //waitABit(1000);
         gw.deployMenu(mnuBuscar);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        //waitABit(1000);
+        //mnuItemBusquedaContacto.waitUntilClickable();
         act.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();
         return new BuscarContactosPage(getDriver());
     }

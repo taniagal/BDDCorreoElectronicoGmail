@@ -15,7 +15,7 @@ Profesion, Estado civil, Tipo familia,  Telefono primario, Telefono celular y Co
 
 Examples:
 |primer_nombre    |primer_apellido |tipo_direccion |direccion        |documento   |tipo_documento        |
-|ANA              |AKERMAN         |Vivienda       |CALLE 54B #50-25 |564-36-5489 |CEDULA DE CIUDADANIA  |
+|SASHA            |AKERMAN         |Vivienda       |CALLE 54B #50-25 |564-36-5489 |CEDULA DE CIUDADANIA  |
 
 
 Scenario: ver informacion detallada de un contacto tipo persona juridica.
