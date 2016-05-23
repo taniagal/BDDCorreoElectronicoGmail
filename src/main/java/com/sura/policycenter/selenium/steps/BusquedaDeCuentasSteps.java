@@ -8,7 +8,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class BusquedaDeCuentasSteps extends ScenarioSteps{
 
-    private BusquedaDeCuentasPage busquedaDeCuentasPage = new BusquedaDeCuentasPage(getDriver());
+    private final BusquedaDeCuentasPage busquedaDeCuentasPage = new BusquedaDeCuentasPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }

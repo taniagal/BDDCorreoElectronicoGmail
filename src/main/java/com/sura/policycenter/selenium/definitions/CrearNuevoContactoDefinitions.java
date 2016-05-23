@@ -8,9 +8,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-/**
- * Created by brayruru on 2016/04/25.
- */
 @SuppressWarnings("WeakerAccess")
 public class CrearNuevoContactoDefinitions {
 
@@ -59,8 +56,7 @@ public class CrearNuevoContactoDefinitions {
     @Then("se debe crear una persona tipo natural con primer nombre <primerNombre>")
     public void thenSeDebeCrearUnaPersonaTipoNatural(@Named("primerNombre") String primerNombre) {
         crearNuevoContactoSteps.actualizar(primerNombre);
-
-//        crearNuevoContactoSteps.getDriver().close();
+        //crearNuevoContactoSteps.getDriver().close();
     }
 
     @When("selecciono el tipo de telefono fijo <tipoTelefonoFijo> e ingreso el numero de telefono fijo <numeroTelefonoFijo>")
@@ -73,7 +69,9 @@ public class CrearNuevoContactoDefinitions {
         crearNuevoContactoSteps.validarCampoPaisDepartamentoYCiudad();
     }
 
-    ////////////ESCENARIO CREAR PERSONA JURIDICA
+    /**
+     * Escenario crear persona juridica
+     */
     @Given("estoy en la pantalla de crear contacto persona juridica")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaJuridica() {
         seusLoginSteps.login();

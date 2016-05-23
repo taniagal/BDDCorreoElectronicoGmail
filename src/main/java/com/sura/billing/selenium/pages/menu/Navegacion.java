@@ -1,14 +1,88 @@
 package com.sura.billing.selenium.pages.menu;
 
-import com.sura.billing.selenium.pages.menu.acciones.administracion.*;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevaAgenciaCobroPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevaFuncionPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoGrupoPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPatronCargoInmediatoPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPatronCargoProrrataPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPatronCargoRecapturaPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPatronCargoTransfDirectaPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPerfilLimiteAutPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanAsignaPagosPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanComisionPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanDevolPrimaPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanFactAgenciaPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanFactPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanMoraPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanPagoPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoUsuarioPage;
 import com.sura.billing.selenium.pages.menu.acciones.agente.AgenteNuevoPage;
 import com.sura.billing.selenium.pages.menu.acciones.cuenta.CuentaNuevaPage;
-import com.sura.billing.selenium.pages.menu.acciones.escritorio.*;
-import com.sura.billing.selenium.pages.menu.principal.administracion.*;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.AnulacionNegativaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.AnulacionPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.DesembolsoPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.EntradaPagosMultiplesPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.NotificacionAsignadaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.NotificacionCompartidaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.PagoEsperaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.PreferenciasPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.ReversionAnulacionNegativaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.ReversionAnulacionPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.ReversionCargoPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.ReversionTransfFondosPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.SolicitudPagoPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.SubrogacionPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.TransaccionGeneralPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.TransferenciaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.WriteOffAttemptedAboveThresholdAsignadaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.WriteOffAttemptedAboveThresholdCompartidaPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminAgenciasCobroPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminCambioDatosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminColasMensajesPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminDiasFestivosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminEstadistFlujosTrabajoPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminExpotarDatosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminFlujosTrabajoPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminFuncionesPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminGruposPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminImpotarDatosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminParamSecuenciaPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPatronesActPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPatronesCargoPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPerfilLimiteAutoridadPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesAsignaPagoPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesComisionPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesDevolPrimaPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesFactAgenciaPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesFacturacionPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesMoraPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesPagosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminUsuariosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminZonasSeguridadPage;
 import com.sura.billing.selenium.pages.menu.principal.agente.AgenteBuscarPage;
-import com.sura.billing.selenium.pages.menu.principal.buscar.*;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarActividadesPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarAgentesPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarContactosPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarCuentasPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarDesembolsosPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarElementosEsperaFactDirectaPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarFacturasPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarPagoSalAgentePage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarPagosPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarPolizasPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarProcesosMoraPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarSolicitudesPagoPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarTicketsProblemasPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarTransacPage;
 import com.sura.billing.selenium.pages.menu.principal.cuenta.CuentaBuscarPage;
-import com.sura.billing.selenium.pages.menu.principal.escritorio.*;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.CargosRetenidosPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.DesembolsosPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.EstadosAprobacionPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.MisActividadesPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.MisElementosAgenciaPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.MisIncidentesPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.MisMorasPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.PagosEnEsperaPage;
 import com.sura.billing.selenium.pages.menu.principal.poliza.PolizaBuscarPage;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -17,21 +91,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by jorghome on 18/05/2016.
- */
 public class Navegacion extends Guidewire{
-    public Navegacion(WebDriver driver) {
-        super(driver);
-    }
 
     private final Guidewire gw = new Guidewire(getDriver());
     private final Actions act = new Actions(getDriver());
-
-    @FindBy(xpath = ".//*[@id='UserSearch:UserSearchScreen:ttlBar']")
-    private WebElementFacade labelIngreso;
-    @FindBy(xpath = ".//*[@id='HolidaysPage:HolidaysScreen:0']")
-    private WebElementFacade labelIngreso2;
 
     // Objetos menu Escritorio
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnWrap']")
@@ -272,14 +335,16 @@ public class Navegacion extends Guidewire{
     // Nuevo usuario
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewUser-itemEl']")
     private WebElementFacade mnuItemNuevoUsuario;
-    @FindBy(xpath = ".//*[@id='NewUserWizard:Cancel-btnInnerEl']")
-    private WebElementFacade cancelarNuevoUsuario;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewRole-itemEl']")
     private WebElementFacade mnuItemNuevaFuncion;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewGroup-itemEl']")
     private WebElementFacade mnuItemNuevoGrupo;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewAuthorityLimitProfile-itemEl']")
     private WebElementFacade mnuItemNuevoPerfilLimiteAut;
+
+    public Navegacion(WebDriver driver) {
+        super(driver);
+    }
 
     // Navegacion menu Escritorio
     public MisActividadesPage irAMisActividades() {
@@ -386,7 +451,7 @@ public class Navegacion extends Guidewire{
     public BuscarPagosPage irABuscarPagos() {
         gw.deployMenu(mnuBuscar);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemFacturas).release(mnuItemFacturas).click().build().perform();
+        act.moveToElement(mnuItemPagos).release(mnuItemPagos).click().build().perform();
         return new BuscarPagosPage(getDriver());
     }
     public BuscarAgentesPage irABuscarAgentes() {
@@ -617,7 +682,7 @@ public class Navegacion extends Guidewire{
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemImportDatos).release(mnuItemImportDatos).click().build().perform();
+        act.moveToElement(mnuItemExportDatos).release(mnuItemExportDatos).click().build().perform();
         return new AdminExpotarDatosPage(getDriver());
     }
     public AdminParamSecuenciaPage irAAdminParamSecuencia() {
@@ -975,76 +1040,4 @@ public class Navegacion extends Guidewire{
         return new NuevoPerfilLimiteAutPage(getDriver());
     }
 
-
-
-   /*
-
-            case "Acciones":
-                mnuAcciones.click();
-                mnuAcciones.click();
-                act.sendKeys(Keys.ARROW_DOWN).build().perform();
-                switch (item1){
-                    case "Nuevo plan de facturacion":
-                        act.moveToElement(mnuItemNuevoPlanFact.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de pago":
-                        act.moveToElement(mnuItemNuevoPlanPago.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de comision":
-                        act.moveToElement(mnuItemNuevoPlanComision.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de mora":
-                        act.moveToElement(mnuItemNuevoPlanMora.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de factura a la agencia":
-                        act.moveToElement(mnuItemNuevoPlanFactAgencia.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de devolucion de prima":
-                        act.moveToElement(mnuItemNuevoPlanDevolPrima.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de asignacion de pagos":
-                        act.moveToElement(mnuItemNuevoPlanAsignaPagos.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nueva agencia de cobro":
-                        act.moveToElement(mnuItemNuevaAgenciaCobro.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo patron de cargo":
-                        act.moveToElement(mnuItemNuevoPatronCargo.waitUntilClickable()).build().perform();
-                        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-                        switch (item2){
-                            case "Inmediato":
-                                act.moveToElement(mnuItemInmediato.waitUntilClickable()).click().build().perform();
-                                break;
-                            case "Transferencia directa":
-                                act.moveToElement(mnuItemTransferenciaDirecta.waitUntilClickable()).click().build().perform();
-                                break;
-                            case "Prorrata":
-                                act.moveToElement(mnuItemProrrata.waitUntilClickable()).click().build().perform();
-                                break;
-                            case "Recapturar":
-                                act.moveToElement(mnuItemRecapturar.waitUntilClickable()).click().build().perform();
-                                break;
-                        }
-                        break;
-                    case "Nuevo usuario":
-                        act.moveToElement(mnuItemNuevoUsuario.waitUntilClickable()).click().build().perform();
-                        cancelarNuevoUsuario.click();
-                        break;
-                    case "Nueva funcion":
-                        act.moveToElement(mnuItemNuevaFuncion.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo grupo":
-                        act.moveToElement(mnuItemNuevoGrupo.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo perfil de limite de autoridad":
-                        act.moveToElement(mnuItemNuevoPerfilLimiteAut.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "":
-                        break;
-                }
-                break;
-            case "":
-                break;
-        }
-    }*/
 }

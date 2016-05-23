@@ -7,14 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.sikuli.api.robot.Key;
 import org.slf4j.LoggerFactory;
-
 import java.util.concurrent.TimeUnit;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
-/**
- * Created by brayruru on 2016/05/03.
- */
 public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
@@ -30,12 +26,6 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     private WebElementFacade filtroTipoTransaccion;
     @FindBy(xpath=".//table[3]/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade filtroProducto;
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
-    private WebElementFacade mnuCuenta;
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
-    private WebElementFacade txtNumCuenta;
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
-    private WebElementFacade btnBuscarCuenta;
 
     public CuentasOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);
@@ -70,11 +60,7 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
-        try {
-            waitABit(1000);
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        waitABit(1000);
         this.filtroProducto.sendKeys(Key.ENTER);
     }
 

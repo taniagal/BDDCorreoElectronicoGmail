@@ -7,9 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.StringContains.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BusquedaActividadesPage extends SeusLoginPage {
 
@@ -33,8 +33,6 @@ public class BusquedaActividadesPage extends SeusLoginPage {
     private WebElementFacade btnBuscar;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     private WebElementFacade btnRestablecer;
-    @FindBy(xpath="//div[4]/div/table/tbody/tr/td[2]/div")
-    private WebElementFacade grdIcono;
     @FindBy(xpath="//td[4]/div")
     private WebElementFacade grdFechaVencimiento;
     @FindBy(xpath="//td[5]/div")
@@ -56,7 +54,9 @@ public class BusquedaActividadesPage extends SeusLoginPage {
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
     private WebElementFacade msgFiltrosRequeridos;
 
-    public BusquedaActividadesPage(WebDriver driver) {super(driver);}
+    public BusquedaActividadesPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void buscarActividades() {
         Actions act = new Actions(getDriver());

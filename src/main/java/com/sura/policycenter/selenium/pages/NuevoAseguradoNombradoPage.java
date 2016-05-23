@@ -7,9 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-/**
- * Created by jorgsape on 2016/05/13.
- */
 public class NuevoAseguradoNombradoPage extends Guidewire {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
@@ -41,8 +38,6 @@ public class NuevoAseguradoNombradoPage extends Guidewire {
     private WebElementFacade cboDetalleDireccion;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
     private WebElementFacade btnActualizar;
-
-    private ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
 
     public NuevoAseguradoNombradoPage(WebDriver driver) {
         super(driver);

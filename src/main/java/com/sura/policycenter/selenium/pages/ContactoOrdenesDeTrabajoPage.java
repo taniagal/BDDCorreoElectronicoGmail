@@ -85,9 +85,9 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             String estadoStr = cells.get(5).getText();
-            if(filtroEstado.equals("Completo")){
+            if(("Completo").equals(filtroEstado)){
                 assertThat(estadoStr, isIn(listEstadosCompletos));
-            }else if (filtroEstado.equals("Abierto")){
+            }else if (("Abierto").equals(filtroEstado)){
                 assertThat(estadoStr, isIn(listEstadosAbiertos));
             }else{
                 assertThat(estadoStr, isIn(listEstadosTodos));
@@ -105,14 +105,10 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
-        try {
-            for (WebElement row : allRows) {
-                List<WebElement> cells = row.findElements(By.tagName("td"));
-                String transaccionStr = cells.get(4).getText();
-                assertThat(transaccionStr, containsString(filtroTransaccion));
-            }
-        }catch (Exception e) {
-            throw new RuntimeException(e);
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            String transaccionStr = cells.get(4).getText();
+            assertThat(transaccionStr, containsString(filtroTransaccion));
         }
     }
 
@@ -126,14 +122,10 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     public void validarTransaccionesPorProducto(String filtroProducto) {
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
-        try {
-            for (WebElement row : allRows) {
-                List<WebElement> cells = row.findElements(By.tagName("td"));
-                String transaccionStr = cells.get(2).getText();
-                assertThat(transaccionStr, containsString(filtroProducto));
-            }
-        }catch (Exception e) {
-            throw new RuntimeException(e);
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            String transaccionStr = cells.get(2).getText();
+            assertThat(transaccionStr, containsString(filtroProducto));
         }
     }
 

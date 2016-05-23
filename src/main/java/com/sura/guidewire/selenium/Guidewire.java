@@ -13,20 +13,13 @@ import org.slf4j.LoggerFactory;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Created by jorghome on 15/04/2016.
- */
 public class Guidewire extends PageObject {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
     private final Actions act = new Actions(getDriver());
-    private final String mensajeError = "";
+    private static final String mensajeError = "";
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     private WebElementFacade configuracion;
-    @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
-    private WebElementFacade internacional;
-    @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
-    private WebElementFacade idioma;
     @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
     private WebElementFacade espaniol;
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
@@ -51,20 +44,12 @@ public class Guidewire extends PageObject {
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
         getDriver().manage().window().maximize();
-        try {
-            usuario.waitUntilVisible();
-            contrasena.waitUntilVisible();
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        usuario.waitUntilVisible();
+        contrasena.waitUntilVisible();
     }
 
     public void asercion(String element, String mensaje) {
-        try {
-            assertThat(element, containsString(mensaje));
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        assertThat(element, containsString(mensaje));
     }
 
     public void login(String user, String pass) {
@@ -88,7 +73,6 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        Actions act = new Actions(getDriver());
         menu.click();
         waitABit(1500);
         menu.click();
@@ -123,7 +107,7 @@ public class Guidewire extends PageObject {
     }
 
     public void elegirLenguaje(){
-        if(!lblMisActividades.getText().equals("Mis actividades")){
+        if(!("Mis actividades").equals(lblMisActividades.getText())){
         configuracion.click();
         waitABit(300);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();

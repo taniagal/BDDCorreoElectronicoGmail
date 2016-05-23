@@ -7,18 +7,14 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-/**
- * Created by brayruru on 2016/04/25.
- */
 public class CrearNuevoContactoSteps extends ScenarioSteps {
 
-    private final Guidewire gw = new Guidewire(getDriver());
-    private final InicioPage inicioPage = new InicioPage(getDriver());
-    private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
-    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
     private String cedula = "";
     private String nit = "";
     private String tipoDoc="";
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
+    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     private void  initRandoms(){
         cedula = gw.cedulaRandom();
@@ -31,7 +27,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void nuevoContactoPersona() {
-        inicioPage.irANuevaPersona();
+        inicioPage().irANuevaPersona();
     }
 
     @Step
@@ -42,11 +38,12 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void ingresarNumeroDocumentoPersonaNatural(String numeroDocumento){
-        if("".equals(cedula) || "".equals(nit)){
-            initRandoms();
+        if("".equals(cedula) || "".equals(nit)) initRandoms();
+        if(("NIT").equals(tipoDoc)) {
+            nuevoContactoPage.ingresarNumeroDocumento(nit);
+        } else {
+            nuevoContactoPage.ingresarNumeroDocumento(cedula);
         }
-        if(tipoDoc.equals("NIT")) nuevoContactoPage.ingresarNumeroDocumento(nit);
-        else nuevoContactoPage.ingresarNumeroDocumento(cedula);
     }
 
     @Step
@@ -79,10 +76,12 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
         nuevoContactoPage.btnActualizarPersonaNatural();
     }
 
-    //////CREAR CONTACTO PERSONA JURIDICA
+    /**
+     * Crear contacto persona juridica
+     */
     @Step
     public void nuevoContactoPersonaJuridica() {
-        inicioPage.irANuevaCompania();
+        inicioPage().irANuevaCompania();
     }
 
     @Step

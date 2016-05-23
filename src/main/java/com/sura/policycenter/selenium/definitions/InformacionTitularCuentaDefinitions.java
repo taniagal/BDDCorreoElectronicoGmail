@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.BusquedaContactoSteps;
 import com.sura.policycenter.selenium.steps.InformacionTitularCuentaSteps;
 import net.thucydides.core.annotations.Steps;
@@ -9,12 +8,8 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-
 @SuppressWarnings("WeakerAccess")
 public class InformacionTitularCuentaDefinitions {
-
-    @Steps
-    private SeusLoginSteps seusLoginSteps;
 
     @Steps
     private InformacionTitularCuentaSteps informacionTitularCuentaSteps;

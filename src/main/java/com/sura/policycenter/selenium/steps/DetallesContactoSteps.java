@@ -20,7 +20,7 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido){
+    public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido) {
         inicioPage().irABuscarContacto();
         bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primer_nombre,"",primer_apellido,"");
         bc.seleccionarContacto();
@@ -32,7 +32,7 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void abrirDetallesContactoEmpresa(String nombreEmpresa){
+    public void abrirDetallesContactoEmpresa(String nombreEmpresa) {
         inicioPage().irABuscarContacto();
         bc.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
         bc.seleccionarContacto();
@@ -59,7 +59,7 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarNombre(String segundoNombre){
+    public void agregarNombre(String segundoNombre) {
         dc.editarContacto();
         dc.agregarNombre(segundoNombre);
     }
@@ -70,12 +70,12 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarLists(String profesion,String estadoCivil,String tipoFamilia){
+    public void agregarLists(String profesion,String estadoCivil,String tipoFamilia) {
         dc.agregarLists(profesion,estadoCivil,tipoFamilia);
     }
 
     @Step
-    public void agregarTelefonoResidencia(String telefonoResidencial){
+    public void agregarTelefonoResidencia(String telefonoResidencial) {
         dc.agregarTelefonosResidencial(telefonoResidencial);
     }
 
@@ -90,7 +90,7 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarCorreos(String correoElectronicoPrimario, String correoElectronicoSecundario){
+    public void agregarCorreos(String correoElectronicoPrimario, String correoElectronicoSecundario) {
         dc.agregarCorreo(correoElectronicoPrimario,correoElectronicoSecundario);
     }
 

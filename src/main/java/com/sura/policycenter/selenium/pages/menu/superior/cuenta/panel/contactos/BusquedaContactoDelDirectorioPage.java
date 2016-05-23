@@ -3,14 +3,12 @@ package com.sura.policycenter.selenium.pages.menu.superior.cuenta.panel.contacto
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.jruby.RubyBoolean;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-/**
- * Created by johan.beltran on 18/05/2016.
- */
 public class BusquedaContactoDelDirectorioPage extends Guidewire {
 
     @FindBy(xpath = ".//input[contains(@id,'ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl')]")
@@ -30,22 +28,18 @@ public class BusquedaContactoDelDirectorioPage extends Guidewire {
     @SuppressWarnings("SameParameterValue")
     public Boolean buscarContacto(String tipoContacto, String nombre, String apellido) {
         Boolean esBuscado = Boolean.FALSE;
-        try {
 
 
-            cboTipoContacto.click();
+        cboTipoContacto.click();
 
-            WebElementFacade optCboTipoContacto = findBy(".//li[contains(.,'" + tipoContacto + "')]");
-            optCboTipoContacto.click();
-            waitABit(1000);
-            txtPrimerNombre.type(nombre);
-            txtPrimerApellido.type(apellido);
-            btnBuscar.click();
+        WebElementFacade optCboTipoContacto = findBy(".//li[contains(.,'" + tipoContacto + "')]");
+        optCboTipoContacto.click();
+        waitABit(1000);
+        txtPrimerNombre.type(nombre);
+        txtPrimerApellido.type(apellido);
+        btnBuscar.click();
 
-            esBuscado = selecionarContacto(esBuscado, "1234567891");
-        }catch (Exception e){
-            return esBuscado;
-        }
+        esBuscado = selecionarContacto(esBuscado, "1234567891");
 
         return esBuscado;
     }
@@ -61,7 +55,7 @@ public class BusquedaContactoDelDirectorioPage extends Guidewire {
                     break;
                 }
             }
-            esBuscado = Boolean.TRUE;
+            esBuscado = true;
         }
         return esBuscado;
     }

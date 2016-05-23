@@ -28,7 +28,6 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     @Step
     public void abrirNuevaCuenta() {
         inicioPage().irANuevaCuenta();
-        //cp.navNuevaCuenta();
     }
 
     @Step

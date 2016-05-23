@@ -9,9 +9,6 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-/**
- * Created by jorgsape on 2016/05/04.
- */
 public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
     private static final String DETALLE_CONTACTO = "DETALLE_CONTACTO";
@@ -21,7 +18,7 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     private static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
     private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
     private final BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage = new BusquedaContactoDelDirectorioPage(getDriver());
-    private CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
+    private final CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
@@ -32,7 +29,6 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
     @Step
     public void consultarCuentaPorNum(String numCuenta) {
-        //cuentasOrdenesTrabajoPage.buscarCuenta(numCuenta);
         inicioPage().irACuentaBuscar(numCuenta);
     }
 
@@ -60,6 +56,8 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
                 break;
             case POLIZAS_ASOCIADAS:
                 contactosAsociadosACuentasPage.seleccionarTabPolizasAsociadas();
+                break;
+            default:
                 break;
         }
 
@@ -104,10 +102,8 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     @Step
     public void buscarContactoDelDirectorio() throws Exception {
         Boolean esContactoAsociadoDesdeDirectorio = busquedaDelDirectorioPage.buscarContacto("CEDULA DE CIUDADANIA", "DORIAN", "EASTMOND");
-        if (esContactoAsociadoDesdeDirectorio) {
-            if(esContactoAsociado("DORIAN STIWAR EASTMOND PULGARIN")){
-                contactosAsociadosACuentasPage.validarOcurrenciaDeMensajeDeAplicacion(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:_msgs']/div","porque ya tiene ese rol");
-            }
+        if (esContactoAsociadoDesdeDirectorio && esContactoAsociado("DORIAN STIWAR EASTMOND PULGARIN")) {
+            contactosAsociadosACuentasPage.validarOcurrenciaDeMensajeDeAplicacion(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:_msgs']/div","porque ya tiene ese rol");
         }
     }
 

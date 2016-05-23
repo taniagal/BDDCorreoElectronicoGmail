@@ -8,19 +8,16 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
-import java.util.List;
 import java.util.Map;
-import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import java.util.List;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 
 public class BusquedaContactoPage extends Guidewire {
 
-    @FindBy(xpath=".//*[@id='TabBar:ContactTab']")
-    private WebElementFacade contactMenu;
-    @FindBy(xpath=".//*[@id='TabBar:ContactTab:Search']")
-    private WebElementFacade buscarContact;
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaContactoPage.class);
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")
     private WebElementFacade tipoContact;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
@@ -39,8 +36,6 @@ public class BusquedaContactoPage extends Guidewire {
     private WebElementFacade botonBuscar;
     @FindBy(xpath="//tr[3]/td/table/tbody/tr/td[2]/input\n")
     private WebElementFacade txtRazonSocial;
-    @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:_msgs']/div")
-    private WebElementFacade msjValidacionCampos;
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:_RecordCount']")
     private WebElementFacade msjSinRegistros;
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:SearchWarningMessagePanelSet:SearchWarningMessage']")
@@ -92,7 +87,9 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath="//div[13]/div/span")
     private WebElementFacade lblExterna;
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaContactoPage.class);
+    public BusquedaContactoPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void login(String usuario, String contrasena){
         txtusuario.type(usuario);
@@ -100,16 +97,12 @@ public class BusquedaContactoPage extends Guidewire {
         submit.click();
     }
 
-    public BusquedaContactoPage(WebDriver driver) {
-        super(driver);
-    }
-
     public void buscarContacto(String tipoContacto, String nombre, String apellido){
         tipoContact.waitUntilClickable();
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         waitABit(1000);
-        if (tipoContacto.equals("Personal")){
+        if(("Personal").equals(tipoContacto)){
             nombreContact.type(nombre);
             apellidoContact.type(apellido);
         }else{
@@ -147,21 +140,13 @@ public class BusquedaContactoPage extends Guidewire {
 
     public void validarInformacionTipoId() {
         String msjSinReg = "No hay datos para mostrar";
-        try {
-            waitABit(2000);
-            assertThat(msjSinRegistros.getText().toString(),is(equalTo(msjSinReg)));
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        waitABit(2000);
+        assertThat(msjSinRegistros.getText().toString(),is(equalTo(msjSinReg)));
     }
 
     public void validarMensaje(String msjVal) {
-        try {
-            espera(msjSinCriterios,3);
-            assertThat(msjSinCriterios.getText(),is(equalTo(msjVal)));
-        } catch(Exception e) {
-            LOGGER.error("This is error", e);
-        }
+        espera(msjSinCriterios,3);
+        assertThat(msjSinCriterios.getText(),is(equalTo(msjVal)));
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
@@ -190,46 +175,38 @@ public class BusquedaContactoPage extends Guidewire {
 
     public void verInfoPersonaJuridica(String filtro) {
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
-        try {
-            for (WebElement row : allRows) {
-                List<WebElement> cells = row.findElements(By.tagName("td"));
-                boolean valido = cells.get(0).getText().equals(filtro) ||
-                                 cells.get(1).getText().equals(filtro) ||
-                                 cells.get(2).getText().equals(filtro) ||
-                                 cells.get(3).getText().equals(filtro);
-                assertTrue(valido);
-            }
-        }catch(Exception e) {
-            LOGGER.error("This is error", e);
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            boolean valido = cells.get(0).getText().equals(filtro) ||
+                             cells.get(1).getText().equals(filtro) ||
+                             cells.get(2).getText().equals(filtro) ||
+                             cells.get(3).getText().equals(filtro);
+            assertTrue(valido);
         }
     }
 
     public void verInfoPersonaNatural(String filtro1, String filtro2) {
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
-        try {
-            for (WebElement row : allRows) {
-                List<WebElement> cells = row.findElements(By.tagName("td"));
-                if(!filtro1.equals("")) {
-                    boolean valido1 = cells.get(0).getText().equals(filtro1) ||
-                                      cells.get(1).getText().equals(filtro1) ||
-                                      cells.get(2).getText().equals(filtro1) ||
-                                      cells.get(3).getText().equals(filtro1) ||
-                                      cells.get(4).getText().equals(filtro1) ||
-                                      cells.get(5).getText().equals(filtro1);
-                    assertTrue(valido1);
-                }
-                if(!filtro2.equals("")) {
-                    boolean valido2 = cells.get(0).getText().equals(filtro1) ||
-                                      cells.get(1).getText().equals(filtro1) ||
-                                      cells.get(2).getText().equals(filtro1) ||
-                                      cells.get(3).getText().equals(filtro1) ||
-                                      cells.get(4).getText().equals(filtro1) ||
-                                      cells.get(5).getText().equals(filtro1);
-                    assertTrue(valido2);
-                }
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if(!("").equals(filtro1)) {
+                boolean valido1 = cells.get(0).getText().equals(filtro1) ||
+                                  cells.get(1).getText().equals(filtro1) ||
+                                  cells.get(2).getText().equals(filtro1) ||
+                                  cells.get(3).getText().equals(filtro1) ||
+                                  cells.get(4).getText().equals(filtro1) ||
+                                  cells.get(5).getText().equals(filtro1);
+                assertTrue(valido1);
             }
-        }catch(Exception e) {
-            LOGGER.error("This is error", e);
+            if(!("").equals(filtro2)) {
+                boolean valido2 = cells.get(0).getText().equals(filtro1) ||
+                                  cells.get(1).getText().equals(filtro1) ||
+                                  cells.get(2).getText().equals(filtro1) ||
+                                  cells.get(3).getText().equals(filtro1) ||
+                                  cells.get(4).getText().equals(filtro1) ||
+                                  cells.get(5).getText().equals(filtro1);
+                assertTrue(valido2);
+            }
         }
     }
 
@@ -277,7 +254,7 @@ public class BusquedaContactoPage extends Guidewire {
         cbxTipoDoc.click();
         int parada = Integer.parseInt(numero);
         waitABit(1000);
-        if (tipoContacto.equals("CEDULA DE CIUDADANIA")){
+        if (("CEDULA DE CIUDADANIA").equals(tipoContacto)){
             txtNombre.type(nombre);
             txtApellido.type(apellido);
         }else{
@@ -333,7 +310,7 @@ public class BusquedaContactoPage extends Guidewire {
             assertThat(lblTelefono.getText().toString(),is(equalTo(labelsContacto.get("telefono"))));
             assertThat(lblEmail.getText().toString(),is(equalTo(labelsContacto.get("email"))));
             assertThat(lblExterna.getText().toString(),is(equalTo(labelsContacto.get("externa"))));
-        } catch(Exception e) {
+        } catch(InterruptedException e) {
             LOGGER.error("This is error", e);
         }
     }
@@ -349,7 +326,7 @@ public class BusquedaContactoPage extends Guidewire {
             assertThat(lblTelefono.getText().toString(), is(equalTo(labelsContacto.get("telefono"))));
             assertThat(lblEmail.getText().toString(), is(equalTo(labelsContacto.get("email"))));
             assertThat(lblExterna.getText().toString(), is(equalTo(labelsContacto.get("externa"))));
-        } catch (Exception e) {
+        } catch (InterruptedException e) {
             LOGGER.error("This is error", e);
         }
     }

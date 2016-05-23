@@ -9,9 +9,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-/**
- * Created by jhonvebz on 25/04/2016.
- */
 @SuppressWarnings({"WeakerAccess", "EmptyMethod"})
 public class HistorialCuentaDefinitions {
 
@@ -90,89 +87,105 @@ public class HistorialCuentaDefinitions {
     @When("se realiza la busqueda por <fecha> y solo se indique la opcion desde")
     @Manual
     public void whenSeRealizaLaBusquedaPorfechaYSoloSeIndiqueLaOpcionDesde(@Named("fecha") String fechaDesde) {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @Then("debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion hasta corresponde a la fecha actual.")
     @Manual
     public void thenDeboPoderVerLasTransaccionesEnElRangoDeFechasSeleccionadoTeniendoEnCuentaQueLaOpcionHastaCorrespondeALaFechaActual() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @When("se realiza la busqueda por <fecha> y solo se indique la opcion hasta")
     @Manual
     public void whenSeRealizaLaBusquedaPorfechaYSoloSeIndiqueLaOpcionHasta(@Named("fecha") String fechaHasta) {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @Then("debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion desde corresponde a la fecha de inicio de la cuenta")
     @Manual
     public void thenDeboPoderVerLasTransaccionesEnElRangoDeFechasSeleccionadoTeniendoEnCuentaQueLaOpcionDesdeCorrespondeALaFechaDeInicioDeLaCuenta() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @When("se realiza la busqueda por fecha ( <desde> - <hasta>)")
     @Manual
     public void whenSeRealizaLaBusquedaPorFechadesdehasta() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @Then("debo poder ver las transacciones en el rango de fechas seleccionado.")
     @Manual
     public void thenDeboPoderVerLasTransaccionesEnElRangoDeFechasSeleccionado() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @When("indique un <usuario> para realizar la busqueda")
     @Manual
     public void whenIndiqueUnusuarioParaRealizarLaBusqueda() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @Then("debo poder ver las transacciones asociadas a ese usuario especifico, que estan relacionadas con la cuenta y las polizas asociadas a ella.")
     @Manual
     public void thenDeboPoderVerLasTransaccionesAsociadasAEseUsuarioEspecificoQueEstanRelacionadasConLaCuentaYLasPolizasAsociadasAElla() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @When("seleccione  el  numero de la <poliza>")
     @Manual
     public void whenSeleccioneElNumeroDeLapoliza() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @Then("debo poder ver el campo poliza habilitado como un vinculo para el detalle de la transaccion")
     @Manual
     public void thenDeboPoderVerElCampoPolizaHabilitadoComoUnVinculoParaElDetalleDeLaTransaccion() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @When("seleccione  el  numero de la transaccion <numeroTransaccion> de la poliza")
     @Manual
     public void whenSeleccioneElNumeroDeLaTransaccionnumerotransaccionDeLaPoliza() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @Then("debo poder ver el detalle de la transaccion")
     @Manual
     public void thenDeboPoderVerElDetalleDeLaTransaccion() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @When("se realice una modificacion valorable a la <poliza> de la cuenta")
     @Manual
     public void whenSeRealiceUnaModificacionValorableALapolizaDeLaCuenta() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @Then("poder ver el <valorOriginal> de la poliza antes de realizar el cambio")
     @Manual
     public void thenPoderVerElvalororiginalDeLaPolizaAntesDeRealizarElCambio() {
+        // Se ejecuta manualmente.
     }
 
     @SuppressWarnings("EmptyMethod")
     @Then("poder ver el <valorNuevo> de la poliza despues de realizar el cambio")
     @Manual
     public void thenPoderVerElvalornuevoDeLaPolizaDespuesDeRealizarElCambio() {
+        // Se ejecuta manualmente.
     }
+
 }

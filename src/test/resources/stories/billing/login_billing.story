@@ -16,7 +16,7 @@ Then el usuario deberia poder acceder a la administracion de <message2>
 Then el usuario de billing deberia cerrar sesion
 
 Examples:
-|usr|pass   |message            |message2              |
+|usr|pass   |message            |message2        |
 |su |gw     |Búsqueda de usuario|Días festivos   |
 
 Scenario: navegacion menu en BillingCenter
