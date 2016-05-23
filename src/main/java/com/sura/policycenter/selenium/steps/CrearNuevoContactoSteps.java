@@ -16,11 +16,9 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     private final InicioPage inicioPage = new InicioPage(getDriver());
     private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
     private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
-
     private String cedula = "";
     private String nit = "";
     private String tipoDoc="";
-
 
     private void  initRandoms(){
         cedula = gw.cedulaRandom();
@@ -87,7 +85,6 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     //////CREAR CONTACTO PERSONA JURIDICA
-
     @Step
     public void nuevoContactoPersonaJuridica() {
         inicioPage.irANuevaCompania();
@@ -106,7 +103,6 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     public void verificarContactoExistente(){
         nuevoContactoPage.verificarContactoExistente();
     }
-
 
     @Step
     public void ingresarNumeroTelefonoFijo(String tipoTelefonoFijo, String numeroTelefonoFijo){

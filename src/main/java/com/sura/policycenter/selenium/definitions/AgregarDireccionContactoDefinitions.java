@@ -7,9 +7,10 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+@SuppressWarnings("WeakerAccess")
 public class AgregarDireccionContactoDefinitions {
     @Steps
-    DetallesContactoSteps dcs;
+    private DetallesContactoSteps dcs;
 
     @Given("que ya tengo un contacto creado")
     public void givenQueYaTengoUnContactoCreado() {

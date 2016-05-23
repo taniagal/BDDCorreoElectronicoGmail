@@ -3,18 +3,18 @@ Meta:
 Narrative:
 Como usuario PolicyCenter
 quiero ser capaz de ver un resumen de la informacion del titular de la cuenta.
-La pantalla debe mostrar la información completa de la cuenta del cliente, las polizas y el estado de la reclamaciones
+La pantalla debe mostrar la información completa de la cuenta del cliente, las polizas y el estado de los siniestros
 y otra informacion de multiples sistemas como ClaimCenter y BillingCenter
 
 Scenario: Ver informacion del titular de la cuenta
 GivenStories: stories/policycenter/login_policy.story
 Given que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>
 When ingrese a informacion del titular de la cuenta
-Then debe mostrarme la informacion basica <informacionBasica>, metricas <metricas>, transacciones de polizas pendientes <transacciones> y siniestros abiertos <reclamaciones>
+Then debe mostrarme la informacion basica <informacionBasica>, metricas <metricas>, transacciones de polizas pendientes <transacciones> y siniestros abiertos <siniestros>
 
 Examples:
-|tipoDoc             |nombre  |apellido|informacionBasica                   |metricas                     |transacciones                     |reclamaciones         |
-|CEDULA DE CIUDADANIA|Yurledys|Gallego |Información del titular de la cuenta|Métricas de valor del cliente|Transacciones de póliza pendientes|Reclamaciones abiertas|
+|tipoDoc             |nombre  |apellido|informacionBasica                   |metricas                     |transacciones                     |siniestros         |
+|CEDULA DE CIUDADANIA|Yurledys|Gallego |Información del titular de la cuenta|Métricas de valor del cliente|Transacciones de póliza pendientes|Siniestros abiertos|
 
 
 Scenario: Informacion basica
@@ -30,10 +30,10 @@ Examples:
 Scenario: Metricas de valor de cliente
 Given que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>
 When ingrese a informacion del titular de la cuenta
-Then debe mostrarme en metricas de valor del cliente: Anio de vigencia de la primera poliza <anioVigencia>, polizas activas <polizasActivas>, Cancelado por el cliente <canceladoPorCliente>, cancelado por la compania de seguros por falta de pago <canceladoPorCompania>, otras cancelaciones <otrasCancelaciones>, prima vitalicia <primaVitalicia>. Informacion de reclamaciones abiertas: Total de reclamaciones abiertas <totalReclamacionesAbiertas>, total neto incurrido <totalNetoIncurrido>.
+Then debe mostrarme en metricas de valor del cliente: Anio de vigencia de la primera poliza <anioVigencia>, polizas activas <polizasActivas>, Cancelado por el cliente <canceladoPorCliente>, cancelado por la compania de seguros por falta de pago <canceladoPorCompania>, otras cancelaciones <otrasCancelaciones>, prima vitalicia <primaVitalicia>. Informacion de siniestros abiertos: Total de siniestros abiertos <totalSiniestrosAbiertos>, total neto incurrido <totalNetoIncurrido>.
 
 Examples:
-|tipoDoc             |nombre  |apellido|anioVigencia                        |polizasActivas|canceladoPorCliente|canceladoPorCompania|otrasCancelaciones|primaVitalicia |totalReclamacionesAbiertas|totalNetoIncurrido  |
+|tipoDoc             |nombre  |apellido|anioVigencia                        |polizasActivas|canceladoPorCliente|canceladoPorCompania|otrasCancelaciones|primaVitalicia |totalSiniestrosAbiertos|totalNetoIncurrido  |
 |CEDULA DE CIUDADANIA|Yurledys|Gallego |Año de vigencia de la primera póliza|0             |0                  |0                   |0                 |Prima vitalicia|0                         |Total neto incurrido|
 
 
@@ -53,18 +53,18 @@ When ingrese a informacion del titular de la cuenta
 Then debe mostrarme: Fecha de creación <fechaCreacion>, Numero de poliza <nroPoliza>, producto <producto>, Numero de transaccion <nroTransaccion>, Tipo <tipo>, estado <estado>.
 
 Examples:
-|tipoDoc             |nombre  |apellido|fechaCreacion|nroPoliza   |producto|nroTransaccion    |tipo|estado|
-|CEDULA DE CIUDADANIA|Yurledys|Gallego |Crear fecha  |N° de póliza|Producto|N.º de transacción|Tipo|Estado|
+|tipoDoc             |nombre  |apellido|fechaCreacion    |nroPoliza   |producto|nroTransaccion    |tipo|estado|
+|CEDULA DE CIUDADANIA|Yurledys|Gallego |Fecha de creación|N° de póliza|Producto|N.º de transacción|Tipo|Estado|
 
 
 Scenario: Siniestros abiertos
 Given que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>
 When ingrese a informacion del titular de la cuenta
-Then debe mostrarme Numero de poliza <nroPoliza>, producto <producto>, asegurado <asegurado>, Fecha de perdida <fechaPerdida>, numero de reclamacion <nroReclamacion>, Estado <estado>, total incurrido <totalIncurrido>.
+Then debe mostrarme Numero de poliza <nroPoliza>, producto <producto>, asegurado <asegurado>, Fecha de perdida <fechaPerdida>, numero de siniestros <numeroSiniestros>, Estado <estado>, total incurrido <totalIncurrido>.
 
 Examples:
-|tipoDoc             |nombre  |apellido|nroPoliza       |producto|asegurado|fechaPerdida       |nroReclamacion       |estado|totalIncurrido |
-|CEDULA DE CIUDADANIA|Yurledys|Gallego |Número de póliza|Producto|Asegurado|Fecha de la pérdida|Número de reclamación|Estado|Total incurrido|
+|tipoDoc             |nombre  |apellido|nroPoliza       |producto|asegurado|fechaPerdida       |numeroSiniestros       |estado|totalIncurrido |
+|CEDULA DE CIUDADANIA|Yurledys|Gallego |Número de póliza|Producto|Asegurado|Fecha de la pérdida|Número de siniestros|Estado|Total incurrido|
 
 
 Scenario: No permitir edición en campos
@@ -83,8 +83,8 @@ When ingrese a informacion del titular de la cuenta
 Then los campos fecha de fallecimiento <fechaFallecimiento> y causa de fallecimiento <causaFallecimiento> se deben mostrar unicamente cuando tengan informacion relacionada, de lo contrario estos campos deben permanecer ocultos.
 
 Examples:
-|tipoDoc             |nombre |apellido |fechaFallecimiento|causaFallecimiento|
-|CEDULA DE CIUDADANIA|ALFREDO|ANTIQUOIA|03/14/2016        |ACCIDENTE         |
+|tipoDoc             |nombre |apellido |fechaFallecimiento           |causaFallecimiento|
+|CEDULA DE CIUDADANIA|ALFREDO|ANTIOQUIA|Fecha de Fallecimiento       |ACCIDENTE         |
 
 
 Scenario: Mostrar campo actividad economica
@@ -94,4 +94,4 @@ Then si el dato actividad economica esta vacio, este campo se debe ocultar, de l
 
 Examples:
 |tipoDoc             |nombre  |apellido|actividadEconomica  |
-|CEDULA DE CIUDADANIA|ALFREDO |ANTIQUOIA|Actividad Económica|
+|CEDULA DE CIUDADANIA|ALFREDO |ANTIOQUIA|Actividad Económica|

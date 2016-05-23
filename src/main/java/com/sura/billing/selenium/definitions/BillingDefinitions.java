@@ -10,10 +10,11 @@ import org.jbehave.core.annotations.When;
 /**
  * Created by jorghome on 22/04/2016.
  */
+@SuppressWarnings("WeakerAccess")
 public class BillingDefinitions {
 
     @Steps
-    BillingSteps bcs;
+    private BillingSteps bcs;
 
     @Given("estoy en la pagina de autenticacion de BillingCenter")
     public void open() {

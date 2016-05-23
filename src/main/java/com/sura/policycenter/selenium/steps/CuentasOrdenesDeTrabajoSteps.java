@@ -11,8 +11,9 @@ import net.thucydides.core.steps.ScenarioSteps;
  */
 public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
 
-    CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
+    private final CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
     private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
+
     public CuentasOrdenesDeTrabajoSteps(Pages pages) {
         super(pages);
     }
@@ -45,6 +46,5 @@ public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
         inicioPage().irACuentaBuscar(numCuenta);
         //cuentasOrdenesTrabajoPage.buscarCuenta(numCuenta);
     }
-
 
 }

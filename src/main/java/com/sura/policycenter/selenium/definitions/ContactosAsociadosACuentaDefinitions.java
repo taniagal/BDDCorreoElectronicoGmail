@@ -11,15 +11,16 @@ import org.jbehave.core.model.ExamplesTable;
 /**
  * Created by jorgsape on 2016/05/04.
  */
+@SuppressWarnings("WeakerAccess")
 public class ContactosAsociadosACuentaDefinitions {
 
-    public static final String encabezado = "encabezados";
+    private static final String encabezado = "encabezados";
 
     @Steps
     SeusLoginSteps seusSteps;
 
     @Steps
-    ContactosAsociadosACuentasSteps contactosAsociadosACuentaSteps;
+    private ContactosAsociadosACuentasSteps contactosAsociadosACuentaSteps;
 
     @Given("estoy en la pantalla de cuenta y existe una cuenta <numCuenta> con contactos asociados")
     public void givenEstoyEnLaPantallaDeCuentaYExisteUnaCuentanumCuentaConContactosDeTipoPersonaJuridicaAsociados(String numCuenta) {

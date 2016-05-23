@@ -7,7 +7,6 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-
 public class DetallesContactoSteps extends ScenarioSteps {
     BusquedaContactoPage bc = new BusquedaContactoPage(getDriver());
     DetallesContactoPage dc = new DetallesContactoPage(getDriver());

@@ -8,10 +8,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 import java.util.Map;
-
+import java.util.List;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -20,7 +18,6 @@ import static org.hamcrest.Matchers.containsString;
  * Created by jorgsape on 2016/05/04.
  */
 public class ContactosAsociadosACuentasPage extends Guidewire {
-    private static String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú encontrados";
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
     private WebElementFacade linkAccountFileAccountFileContacts;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDetailCardTab']")
@@ -62,13 +59,8 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     private WebElementFacade lblDireccion;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
     private WebElementFacade lblTelefono;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:removeContact-btnInnerEl']")
     private WebElementFacade btnEliminar;
-
-
-
-
     @FindBy(xpath = ".//a[contains(.,'Crear nuevo contacto')]")
     private WebElementFacade btnCrearNuevoContacto;
 
@@ -81,14 +73,11 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         linkAccountFileAccountFileContacts.click();
     }
 
-
     public void existeEncabezadoDeTabla(ExamplesTable encabezados, String keyElement, String xPathElementos) {
         List<WebElementFacade> listEncabezados = withTimeoutOf(1, SECONDS).findAll(xPathElementos);
-
         int countCoincidencias = 0;
         for (Map<String, String> enc : encabezados.getRows()) {
             if (enc.containsKey(keyElement)) {
-
                 for (WebElement encabezad : listEncabezados) {
                     if (encabezad.getText().equals(enc.get(keyElement).toString())) {
                         countCoincidencias++;
@@ -96,27 +85,25 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
                     }
                 }
             }
-
         }
-
-
         assertThat("Se encontraron los encabezados esperados", countCoincidencias == encabezados.getRowCount());
-
-
     }
 
-    public List<WebElementFacade> getListaContactos() {
-        List<WebElementFacade> contactos = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+    private List<WebElementFacade> getListaContactos() {
+        List<WebElementFacade> contactos;
+        contactos = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return contactos;
     }
 
-    public List<WebElementFacade> getListaRolesFunciones() {
-        List<WebElementFacade> rolesFunciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+    private List<WebElementFacade> getListaRolesFunciones() {
+        List<WebElementFacade> rolesFunciones;
+        rolesFunciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return rolesFunciones;
     }
 
-    public List<WebElementFacade> getListaDirecciones() {
-        List<WebElementFacade> direcciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
+    private List<WebElementFacade> getListaDirecciones() {
+        List<WebElementFacade> direcciones;
+        direcciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
         return direcciones;
     }
 
@@ -160,7 +147,6 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
         assertThat("El campo tipo de documento es obligatorio", lblTipoDocumento.isPresent());
         assertThat("El campo numero de documento es obligatorio", lblNumeroDocumento.isPresent());
-
         if ("PERSONAL".equals(lblTitulo.getText().toUpperCase())) {
             assertThat("El campo nombre es obligatorio", lblNombre.isPresent());
             assertThat("El campo segundo nombre es obligatorio", lblSegundoNombre.isPresent());
@@ -188,16 +174,14 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         waitABit(1000);
     }
 
-
     public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
+        String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú encontrados";
         assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
     }
-
 
     public Boolean esContactoAsociado(String nombreContacto) throws Exception {
         Boolean esAsociado = Boolean.FALSE;
         try {
-
             for (WebElementFacade contacto : getListaContactos()) {
                 if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {
                     esAsociado = Boolean.TRUE;
@@ -212,6 +196,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         return esAsociado;
     }
 
+    @SuppressWarnings({"SameParameterValue", "UnusedReturnValue"})
     public Boolean validarOcurrenciaDeMensajeDeAplicacion(String idXpathDivMensajes, String mensajesApp){
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado="";
@@ -242,15 +227,11 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
         List<WebElementFacade> checkBoxes = withTimeoutOf(1, SECONDS)
                 .findAll("//img[contains(@class,'x-grid-checkcolumn')]");
-
         int cont = 0;
-
         for (WebElementFacade contacto : getListaContactos()) {
             cont += 1;
             if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {
-
                 for (int i = 0 ; i < checkBoxes.size(); i++){
-
                     if (i == cont){
                         checkBoxes.get(cont-1).click();
                         btnEliminar.click();
@@ -258,22 +239,16 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
                 }
             }
         }
-
-
     }
 
     public void contactoEliminado(String contactoEliminado) {
-
         boolean noExiste = true;
         for (WebElementFacade contacto : getListaContactos()) {
-
             if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(contactoEliminado)) {
                 noExiste = false;
             }
-
         }
         assertThat("No existe el contacto",noExiste);
-
     }
 
 }

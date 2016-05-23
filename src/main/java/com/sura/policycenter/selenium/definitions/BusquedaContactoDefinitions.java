@@ -9,13 +9,13 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
-import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
 
 /**
  * Created by jhonvebz on 25/04/2016.
  */
+@SuppressWarnings("WeakerAccess")
 public class BusquedaContactoDefinitions {
 
     @Steps
@@ -25,16 +25,16 @@ public class BusquedaContactoDefinitions {
     SeusLoginSteps seusLoginSteps;
 
     @Steps
-    BusquedaContactoSteps buscarContactoSteps;
+    private BusquedaContactoSteps buscarContactoSteps;
 
     @Given("estoy en busqueda de contactos")
     public void givenEstoyEnBusquedaContactos() {
-        buscarContactoSteps.navegarBarraSuperior("Buscar", "Contactos", "");
+        buscarContactoSteps.navegarBarraSuperior();
     }
 
     @Given("estoy en contactos para buscar")
     public void givenContactosBuscar(){
-        buscarContactoSteps.navegarBarraSuperior("Contacto", "Buscar", "");
+        buscarContactoSteps.navegarBarraSuperior();
     }
 
     @When("quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre> y apellido <apellido>")
@@ -156,6 +156,7 @@ public class BusquedaContactoDefinitions {
         buscarContactoSteps.validarLongitudPersonaJuridica("", nombreComercial);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @When("quiera exportar el resultado de la busqueda")
     @Manual
     public void validarExportar(){
@@ -251,6 +252,7 @@ public class BusquedaContactoDefinitions {
         buscarContactoSteps.validarLabelsPersonaJuridica(labelsContacto);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Then("el sistema debe permitir exportar el resultado")
     @Manual
     public void sistemaDebeExportarResultado(){}

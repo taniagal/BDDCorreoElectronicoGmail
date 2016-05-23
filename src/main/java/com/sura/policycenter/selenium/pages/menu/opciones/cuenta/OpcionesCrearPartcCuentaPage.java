@@ -12,34 +12,34 @@ public class OpcionesCrearPartcCuentaPage extends Guidewire {
         super(driver);
     }
 
-    Actions act = new Actions(getDriver());
+    private final Actions act = new Actions(getDriver());
 
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Edit-btnInnerEl']")
-    WebElementFacade btnEditCuenta;
+    private WebElementFacade btnEditCuenta;
 
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Add-btnInnerEl']")
-    WebElementFacade btnAgregaCuenta;
+    private WebElementFacade btnAgregaCuenta;
 
     @FindBy(xpath = ".//tr[2]/td[2]/div")
-    WebElementFacade listRol;
+    private WebElementFacade listRol;
 
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV:1:AssignedUser:UserBrowseMenuItem']")
-    WebElementFacade btnSelecUsuar;
+    private WebElementFacade btnSelecUsuar;
 
     @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchDV:Username-inputEl']")
-    WebElementFacade lblNombreUsuario;
+    private WebElementFacade lblNombreUsuario;
 
     @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade btnBuscarUsuario;
+    private WebElementFacade btnBuscarUsuario;
 
     @FindBy(xpath = ".//*[@id='centerPanel']")
-    WebElementFacade lblPartArc;
+    private WebElementFacade lblPartArc;
 
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Update-btnInnerEl']")
-    WebElementFacade btnActualiza;
+    private WebElementFacade btnActualiza;
 
     @FindBy(xpath = ".//div[contains(.,'Director Sucursal')]")
-    WebElementFacade lblvalidaRol;
+    private WebElementFacade lblvalidaRol;
 
     // TODO: 17/05/2016 Se deben parametrizar datos quemados de los contains en las listas
     public void navegacionCreaParticipante() {

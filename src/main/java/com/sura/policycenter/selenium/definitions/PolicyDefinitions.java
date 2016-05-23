@@ -7,15 +7,15 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+@SuppressWarnings("WeakerAccess")
 public class PolicyDefinitions {
 
     @Steps
-    PolicySteps pcs;
+    private PolicySteps pcs;
 
     @Given("el usuario ingresa a la pagina de autenticacion de PolicyCenter")
     public void open() {
         pcs.open();
-
     }
 
     @Given("el usuario ingresa a la pagina de autenticacion de PolicyCenter - Seus")

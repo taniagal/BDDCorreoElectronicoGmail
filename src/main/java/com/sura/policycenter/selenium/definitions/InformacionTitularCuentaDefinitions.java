@@ -10,23 +10,24 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 
+@SuppressWarnings("WeakerAccess")
 public class InformacionTitularCuentaDefinitions {
 
     @Steps
-    SeusLoginSteps seusLoginSteps;
+    private SeusLoginSteps seusLoginSteps;
 
     @Steps
-    InformacionTitularCuentaSteps informacionTitularCuentaSteps;
+    private InformacionTitularCuentaSteps informacionTitularCuentaSteps;
 
     @Steps
-    BusquedaContactoSteps buscarContactoSteps;
+    private BusquedaContactoSteps buscarContactoSteps;
 
 
     @Given("que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>")
     public void givenExisteTitularCuenta(@Named("tipoDoc") String tipoDoc,
                                          @Named("nombre") String nombre,
                                          @Named("apellido") String apellido) {
-        buscarContactoSteps.navegarBarraSuperior("Buscar", "Contactos", "");
+        buscarContactoSteps.navegarBarraSuperior();
         buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, nombre, "", apellido, "");
     }
 
@@ -35,12 +36,12 @@ public class InformacionTitularCuentaDefinitions {
         informacionTitularCuentaSteps.seleccionarInformacionTitularCuenta();
     }
 
-    @Then("debe mostrarme la informacion basica <informacionBasica>, metricas <metricas>, transacciones de polizas pendientes <transacciones> y siniestros abiertos <reclamaciones>")
+    @Then("debe mostrarme la informacion basica <informacionBasica>, metricas <metricas>, transacciones de polizas pendientes <transacciones> y siniestros abiertos <siniestros>")
     public void thenMostrarInformacionbasicaMetricasTransaccionesSiniestros(@Named("informacionBasica") String informacionBasica,
                                                                             @Named("metricas") String metricas,
                                                                             @Named("transacciones") String transacciones,
-                                                                            @Named("reclamaciones") String reclamaciones){
-        informacionTitularCuentaSteps.validarEncabezadosInformacionTitularCuenta(informacionBasica, metricas, transacciones, reclamaciones);
+                                                                            @Named("siniestros") String siniestros){
+        informacionTitularCuentaSteps.validarEncabezadosInformacionTitularCuenta(informacionBasica, metricas, transacciones, siniestros);
     }
 
     @Then("debe mostrarme en la informacion basica: Titular de la cuenta <titularCuenta>, tipo de documento <tipoDocumento>, Nro de documento <nroDocumento>, prima en vigencia <primaVigencia>, Segmentacion <segmentacion>, Comportamiento <comportamiento>, Total no Facturado <totalNoFacturado>, total actualmente facturado <totalFacturado>, total vencido <totalVencido> y total pendiente <totalPendiente>.")
@@ -55,14 +56,14 @@ public class InformacionTitularCuentaDefinitions {
                 totalNoFacturado, totalFacturado, totalVencido, totalPendiente);
     }
 
-    @Then("debe mostrarme en metricas de valor del cliente: Anio de vigencia de la primera poliza <anioVigencia>, polizas activas <polizasActivas>, Cancelado por el cliente <canceladoPorCliente>, cancelado por la compania de seguros por falta de pago <canceladoPorCompania>, otras cancelaciones <otrasCancelaciones>, prima vitalicia <primaVitalicia>. Informacion de reclamaciones abiertas: Total de reclamaciones abiertas <totalReclamacionesAbiertas>, total neto incurrido <totalNetoIncurrido>.")
+    @Then("debe mostrarme en metricas de valor del cliente: Anio de vigencia de la primera poliza <anioVigencia>, polizas activas <polizasActivas>, Cancelado por el cliente <canceladoPorCliente>, cancelado por la compania de seguros por falta de pago <canceladoPorCompania>, otras cancelaciones <otrasCancelaciones>, prima vitalicia <primaVitalicia>. Informacion de siniestros abiertos: Total de siniestros abiertos <totalSiniestrosAbiertos>, total neto incurrido <totalNetoIncurrido>.")
     public void thenMostrarInformacionMetricas(@Named("anioVigencia")String anioVigencia,@Named("polizasActivas")String polizasActivas,
                                                @Named("canceladoPorCliente")String canceladoPorCliente,@Named("canceladoPorCompania")String canceladoPorCompania,
                                                @Named("otrasCancelaciones")String otrasCancelaciones,@Named("primaVitalicia")String primaVitalicia,
-                                               @Named("totalReclamacionesAbiertas")String totalReclamacionesAbiertas,@Named("totalNetoIncurrido")String totalNetoIncurrido){
+                                               @Named("totalSiniestrosAbiertos")String totalSiniestrosAbiertos,@Named("totalNetoIncurrido")String totalNetoIncurrido){
 
         informacionTitularCuentaSteps.validarInformacionMetricas(anioVigencia,polizasActivas,canceladoPorCliente,canceladoPorCompania, otrasCancelaciones, primaVitalicia,
-                totalReclamacionesAbiertas, totalNetoIncurrido);
+                totalSiniestrosAbiertos, totalNetoIncurrido);
     }
 
     @Then("el nombre del titular de la cuenta debe aparecer con el nombre completo <nombreCompleto>, es decir, nombre 1 seguido de nombre 2 seguido de apellido 1 seguido de apellido 2.")
@@ -79,13 +80,13 @@ public class InformacionTitularCuentaDefinitions {
         informacionTitularCuentaSteps.validarInformacionTransacciones(fechaCreacion, nroPoliza, producto, nroTransaccion, tipo, estado);
     }
 
-    @Then("debe mostrarme Numero de poliza <nroPoliza>, producto <producto>, asegurado <asegurado>, Fecha de perdida <fechaPerdida>, numero de reclamacion <nroReclamacion>, Estado <estado>, total incurrido <totalIncurrido>.")
-    public void thenMostrarInformacionReclamaciones(@Named("nroPoliza")String nroPoliza,@Named("producto")String producto,
+    @Then("debe mostrarme Numero de poliza <nroPoliza>, producto <producto>, asegurado <asegurado>, Fecha de perdida <fechaPerdida>, numero de siniestros <numeroSiniestros>, Estado <estado>, total incurrido <totalIncurrido>.")
+    public void thenMostrarInformacionSiniestros(@Named("nroPoliza")String nroPoliza,@Named("producto")String producto,
                                                  @Named("asegurado")String asegurado,@Named("fechaPerdida")String fechaPerdida,
-                                                 @Named("nroReclamacion")String nroReclamacion,@Named("estado")String estado,
+                                                 @Named("numeroSiniestros")String numeroSiniestros,@Named("estado")String estado,
                                                  @Named("totalIncurrido")String totalIncurrido){
 
-        informacionTitularCuentaSteps.validarInformacionReclamaciones(nroPoliza, producto, asegurado, fechaPerdida, nroReclamacion,
+        informacionTitularCuentaSteps.validarInformacionSiniestros(nroPoliza, producto, asegurado, fechaPerdida, numeroSiniestros,
                 estado, totalIncurrido);
     }
 

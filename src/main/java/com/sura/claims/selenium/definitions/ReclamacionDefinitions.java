@@ -10,10 +10,11 @@ import org.jbehave.core.annotations.When;
 /**
  * Created by edwabuac on 19/04/2016.
  */
+@SuppressWarnings("WeakerAccess")
 public class ReclamacionDefinitions {
 
     @Steps
-    ClaimsSteps claimsteps;
+    private ClaimsSteps claimsteps;
 
     /**
      * Pasos Login

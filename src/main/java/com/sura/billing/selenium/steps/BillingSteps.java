@@ -13,9 +13,9 @@ import net.thucydides.core.steps.ScenarioSteps;
  */
 public class BillingSteps extends ScenarioSteps {
 
-    Guidewire gw = new Guidewire(getDriver());
-    AbrirAppPage abrirAppPage = new AbrirAppPage(getDriver());
-    InicioPage inicioPage = new InicioPage(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final AbrirAppPage abrirAppPage = new AbrirAppPage(getDriver());
+    private final InicioPage inicioPage = new InicioPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
@@ -39,6 +39,7 @@ public class BillingSteps extends ScenarioSteps {
         inicioPage.assertion(element);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Step
     @Manual
     public void navegarItemDiasFestivos() {
@@ -50,6 +51,7 @@ public class BillingSteps extends ScenarioSteps {
         inicioPage.asercionFestivo(msj2);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Step
     public void navegarTabBar() {
         //Menu Escritorio
@@ -243,6 +245,7 @@ public class BillingSteps extends ScenarioSteps {
         gw.logout();
     }
 
+    @SuppressWarnings("EmptyMethod")
     public void buscarMenu(String numCuenta, String numPoliza, String numAgente) {
         /*inicioPage().irACuentaBuscar(numCuenta);
         waitABit(3000);
