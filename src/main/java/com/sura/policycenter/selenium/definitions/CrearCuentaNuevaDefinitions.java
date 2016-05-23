@@ -8,10 +8,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 
 public class CrearCuentaNuevaDefinitions {
     @Steps
@@ -50,15 +46,15 @@ public class CrearCuentaNuevaDefinitions {
 
     @Then("se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural")
     public void assertCrearNuevaCuentaPersonaNatural(@Named("primer_apellido")String primerApellido, @Named("primer_nombre")String primerNombre){
-        cns.assertCrearCuenta(primerNombre+" "+primerApellido);
+        cns.verificarCrearCuenta(primerNombre+" "+primerApellido);
     }
 
 
 
     //------Escenario 2
     @Given("me ecnuentro en Policy Center")
-    public void assertPolicyCenterLogin(){
-        cns.assertPolicyCenterLogin();
+    public void validarLogeoPolicyCenter(){
+        cns.validarLogeoPolicyCenter();
     }
 
     @When("quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento>")
@@ -74,19 +70,19 @@ public class CrearCuentaNuevaDefinitions {
 
     @Then("se debe crear la cuenta con el cliente <razon_social> persona juridica")
     public void assertCrearNuevaCuentaPersonaJuridica(@Named("razon_social")String razonSocial){
-        cns.assertCrearCuenta(razonSocial);
+        cns.verificarCrearCuenta(razonSocial);
     }
 
 
     // ----- Escenario 3
     @Given("que un contacto ya tiene una cuenta creada")
     public  void verificarCuentaCreada(){
-        cns.assertPolicyCenterLogin();
+        cns.validarLogeoPolicyCenter();
     }
 
     @Then("No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje> y <mensaje2>")
     public void assertVerificarMensaje(@Named("mensaje")String mensaje){
-        cns.assertVerificarMensaje(mensaje);
-        cns.assertVerificarMenor(mensaje);
+        cns.verificarMensaje(mensaje);
+        cns.verificarEdadMenor(mensaje);
     }
 }

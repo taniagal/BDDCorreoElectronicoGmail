@@ -20,6 +20,7 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     public CrearNuevaCuentaSteps(Pages pages){
         super(pages);
     }
+
     private void  initRandoms(){
         cedula = gw.cedulaRandom();
         nit = gw.nitRandom();
@@ -29,43 +30,6 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     @Step
     public void abrirNuevaCuenta() {
         inicioPage().irANuevaCuenta();
-    }
-
-    @Step
-    public void crearNuevaCuentaPersona(String tipoDocumento, String fechaNacimiento, String primerNombre, String primerApellido, String tipoDireccion, String direccion, String codigoPostal, String nombreOrganizacion, String agente) {
-        if("".equals(cedula) || "".equals(nit)){
-            initRandoms();
-        }
-        cp.buscarPersona("Busqueda","Persona");
-        cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,codigoPostal,nombreOrganizacion,agente);
-    }
-
-    @Step
-    public void assertCrearCuenta(String nombreCuenta){
-        cp.assertCrearCuenta(nombreCuenta);
-    }
-
-    @Step
-    public void crearNuevaCuentaPersonaJuridica(String tipoDocumento, String nombreEmpresa, String tipoDireccion, String direccion,String codigoPostal, String nombreOrganizacion,String agente) {
-        if("".equals(cedula) || "".equals(nit)){
-            initRandoms();
-        }
-        cp.buscarPersona("Busqueda","Compania");
-        cp.crearCuentaNuevaPersonaJuridica(tipoDocumento, nit, nombreEmpresa, tipoDireccion, direccion,codigoPostal,nombreOrganizacion,agente);
-    }
-
-    @Step
-    public void assertPolicyCenterLogin(){
-        cp.assertPolicyCenterLogin();
-    }
-
-    @Step
-    public void assertVerificarMenor(String mensaje){
-        cp.assertVerificarMenor(mensaje);
-    }
-    @Step
-    public void assertVerificarMensaje(String mensaje){
-        cp.assertVerificarMensaje(mensaje);
     }
 
     @Step
@@ -100,5 +64,25 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     @Step
     public void agregarRazonSocial(String razonSocial) {
         cp.agregarRazonsocial(razonSocial);
+    }
+
+    @Step
+    public void verificarCrearCuenta(String nombreCuenta){
+        cp.verificarCrearCuenta(nombreCuenta);
+    }
+
+    @Step
+    public void validarLogeoPolicyCenter(){
+        cp.validarLogeoPolicyCenter();
+    }
+
+    @Step
+    public void verificarEdadMenor(String mensaje){
+        cp.verificarEdadMenor(mensaje);
+    }
+
+    @Step
+    public void verificarMensaje(String mensaje){
+        cp.verificarMensaje(mensaje);
     }
 }

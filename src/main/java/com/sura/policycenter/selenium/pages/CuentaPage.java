@@ -100,7 +100,7 @@ public class CuentaPage extends Guidewire{
     }
 
 
-    public void crearCuentaNuevaPersona(String tipoDocumento, String documento, String fechaNacimiento,
+    /*public void crearCuentaNuevaPersona(String tipoDocumento, String documento, String fechaNacimiento,
                                         String primerNombre, String primerApellido, String tipoDireccion,
                                         String direccion, String codigoPostal, String nombreOrganizacion, String agente){
         btnCrearCuentaNueva.click();
@@ -125,7 +125,7 @@ public class CuentaPage extends Guidewire{
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
         btnActualizar.click();
         waitABit(1000);
-    }
+    }*/
 
     public void agregarTipoDocumento(String tipoDocumento, String documento) {
         cboTipoDocumentoNuevaCuenta.clear();
@@ -147,11 +147,10 @@ public class CuentaPage extends Guidewire{
 
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         selectItem(cboDepartamento,departamento);
-        waitABit(1000);
+        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         selectItem(cboCiudad,ciudad);
-        waitABit(1000);
+        waitABit(1500);
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
@@ -169,7 +168,7 @@ public class CuentaPage extends Guidewire{
         waitABit(1000);
     }
 
-    public void crearCuentaNuevaPersonaJuridica(String tipoDocumento, String documento, String nombreEmpresa,
+   /* public void crearCuentaNuevaPersonaJuridica(String tipoDocumento, String documento, String nombreEmpresa,
                                                 String tipoDireccion, String direccion, String codigoPostal, String nombreOrganizacion, String agente) {
         btnCrearCuentaNueva.click();
         btnNuevaCuentaCompania.click();
@@ -192,7 +191,7 @@ public class CuentaPage extends Guidewire{
         txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
         btnActualizar.click();
         waitABit(1000);
-    }
+    }*/
 
     public void buscarPersona(String nombre, String persona){
         waitABit(1000);
@@ -208,21 +207,21 @@ public class CuentaPage extends Guidewire{
         }
     }
 
-    public void assertCrearCuenta(String nombreCuenta){
+    public void verificarCrearCuenta(String nombreCuenta){
         waitABit(1000);
         assertThat("Falló la creación de la cuenta", lblNombreDeCuenta.containsText(nombreCuenta));
     }
 
-    public void assertPolicyCenterLogin(){
+    public void validarLogeoPolicyCenter(){
         assertThat("Falló verificar el logueo", mnuCuenta.isPresent());
     }
 
-    public  void  assertVerificarMenor(String mensaje){
+    public  void verificarEdadMenor(String mensaje){
         waitABit(1000);
         assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
     }
 
-    public  void  assertVerificarMensaje(String mensaje){
+    public  void verificarMensaje(String mensaje){
         waitABit(1000);
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }

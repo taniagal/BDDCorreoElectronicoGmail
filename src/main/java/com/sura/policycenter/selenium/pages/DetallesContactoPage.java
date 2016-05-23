@@ -432,7 +432,7 @@ public class DetallesContactoPage extends Guidewire {
         StringBuilder right = new StringBuilder("No estan correctos los valores:");
         if(!cboPais.getValue().toString().equals("Colombia"))right.append(" pais,");
         if(!cboDepartamento.getValue().toString().equals("<ninguno>"))right.append(" departamento,");
-        if(!txtDireccion.getAttribute("placeholder").equals("CRA 11 B #11 A - 11"))right.append("drireccion placeholder,");
+        if(!txtDireccion.getAttribute("placeholder").equals("CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203"))right.append("drireccion placeholder,");
         if(!txtDireccion.getAttribute("data-qtip").equals("Esta Direccion podria estandarizarse automáticamente"))right.append("drireccion data-tip,");
         if(!txtDireccion.getAttribute("maxlength").equals("200"))right.append("direccion maxlength,");
         String res = right.toString();

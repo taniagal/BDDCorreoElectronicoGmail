@@ -99,6 +99,7 @@ public class NuevoContactoPage extends Guidewire {
 
 
     public void seleccionarTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento.waitUntilPresent();
         selectItem(this.tipoDocumento,tipoDocumento);
     }
 
@@ -121,8 +122,9 @@ public class NuevoContactoPage extends Guidewire {
     public void ingresarDireccion(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
         selectItem(cboDepartamento,departamento);
-        waitABit(1000);
+        waitABit(1500);
         selectItem(cboCiudad,ciudad);
+        waitABit(1500);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
