@@ -10,7 +10,6 @@ import org.openqa.selenium.support.FindBy;
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class SeusLoginPage extends Guidewire {
 
-    private Guidewire gw = new Guidewire(getDriver());
     @FindBy(xpath=".//*[@id='country']")
     private WebElementFacade pais;
     @FindBy(id="username")
@@ -27,11 +26,7 @@ public class SeusLoginPage extends Guidewire {
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
         getDriver().manage().window().maximize();
-        try {
-            pais.waitUntilVisible();
-        }catch(Exception e){
-            throw new RuntimeException(e);
-        }
+        pais.waitUntilVisible();
     }
 
     public void login(String pais, String usuario, String contrasenia) {

@@ -9,7 +9,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-
 @SuppressWarnings("WeakerAccess")
 public class DetallesContactoDefinitions {
 
@@ -47,9 +46,8 @@ public class DetallesContactoDefinitions {
     public void guivenPersonaJuridica(){}
 
     @When("quiera ver informacion detallada del contacto con nombre empresa <nombre_empresa>")
-    public void whenConsultarDetallePersonaJuridica (@Named("nombre_empresa") String nombre_empresa) {
+    public void whenConsultarDetallePersonaJuridica(@Named("nombre_empresa")String nombre_empresa) {
         dcs.abrirDetallesContactoEmpresa(nombre_empresa);
-
     }
 
     @Then("se debe ver minimo la siguiente informacion: Razon social, Nombre comercial, Tipo de documento, Numero de\n" +

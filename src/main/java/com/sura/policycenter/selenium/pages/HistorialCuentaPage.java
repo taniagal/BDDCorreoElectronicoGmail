@@ -16,9 +16,6 @@ import static org.hamcrest.Matchers.is;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by jhonvebz on 25/04/2016.
- */
 public class HistorialCuentaPage extends Guidewire {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
@@ -95,11 +92,7 @@ public class HistorialCuentaPage extends Guidewire {
     public void seleccionarHistorial() {
         mnuHistorial.waitUntilEnabled();
         mnuHistorial.click();
-        try {
-            waitABit(3000);
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        waitABit(3000);
     }
 
     public void buscarCuentaRelacionadoCon(){
@@ -108,11 +101,7 @@ public class HistorialCuentaPage extends Guidewire {
         itmRelacionadoCon.waitUntilEnabled();
         itmRelacionadoCon.click();
         btnBuscarItem.click();
-        try {
-            waitABit(3000);
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        waitABit(3000);
     }
 
     public void buscarCuentaProducto(){
@@ -120,36 +109,24 @@ public class HistorialCuentaPage extends Guidewire {
         btnMostrarProducto.click();
         itmProducto.click();
         btnBuscarItem.click();
-        try {
-            waitABit(3000);
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        waitABit(3000);
     }
 
     public void validarResultadoBusqueda(){
-        try {
-            assertThat(itemTipoResultado.getText().toString(), is(not(equalTo(""))));
-            assertThat(itemTipoResultado.getText().toString(), is(not(equalTo(null))));
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        assertThat(itemTipoResultado.getText().toString(), is(not(equalTo(""))));
+        assertThat(itemTipoResultado.getText().toString(), is(not(equalTo(null))));
     }
 
     public void validarColumnasHistorialCuenta(){
-        try {
-            assertThat(colTipo.getText().toString(), is(not(equalTo(null))));
-            assertThat(colUsuario.getText().toString(), is(not(equalTo(null))));
-            assertThat(colFechaTransaccion.getText().toString(), is(not(equalTo(null))));
-            assertThat(colDescripcion.getText().toString(), is(not(equalTo(null))));
-            assertThat(colProducto.getText().toString(), is(not(equalTo(null))));
-            assertThat(colPoliza.getText().toString(), is(not(equalTo(null))));
-            assertThat(colTransaccionPoliza.getText().toString(), is(not(equalTo(null))));
-            assertThat(colValorOriginal.getText().toString(), is(not(equalTo(null))));
-            assertThat(colValorNuevo.getText().toString(), is(not(equalTo(null))));
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        assertThat(colTipo.getText().toString(), is(not(equalTo(null))));
+        assertThat(colUsuario.getText().toString(), is(not(equalTo(null))));
+        assertThat(colFechaTransaccion.getText().toString(), is(not(equalTo(null))));
+        assertThat(colDescripcion.getText().toString(), is(not(equalTo(null))));
+        assertThat(colProducto.getText().toString(), is(not(equalTo(null))));
+        assertThat(colPoliza.getText().toString(), is(not(equalTo(null))));
+        assertThat(colTransaccionPoliza.getText().toString(), is(not(equalTo(null))));
+        assertThat(colValorOriginal.getText().toString(), is(not(equalTo(null))));
+        assertThat(colValorNuevo.getText().toString(), is(not(equalTo(null))));
     }
 
     public void buscarCuentaConMultiplesOpciones(String usuario, String fechaDesde, String fechaHasta){
@@ -164,36 +141,24 @@ public class HistorialCuentaPage extends Guidewire {
         txtFechaHasta.type(fechaHasta);
         btnBuscarItem.waitUntilEnabled();
         btnBuscarItem.click();
-        try {
-            waitABit(3000);
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        waitABit(3000);
     }
 
     public void validarDatosOpcionesMultiples(){
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String usuario = txtUsuario.getValue().toString();
-        try {
-            for (WebElement row : allRows) {
-                List<WebElement> cells = row.findElements(By.tagName("td"));
-                assertThat(cells.get(1).getText(), is(equalTo(usuario)));
-            }
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            assertThat(cells.get(1).getText(), is(equalTo(usuario)));
         }
     }
 
     public void validarResultadoProducto(){
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String producto = txtProducto.getValue().toString();
-        try {
-            for (WebElement row : allRows) {
-                List<WebElement> cells = row.findElements(By.tagName("td"));
-                assertThat(cells.get(4).getText(), is(equalTo(producto)));
-            }
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            assertThat(cells.get(4).getText(), is(equalTo(producto)));
         }
     }
 }

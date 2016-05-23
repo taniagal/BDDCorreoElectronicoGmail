@@ -8,22 +8,18 @@ import com.sura.guidewire.selenium.Guidewire;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-
-import javax.swing.*;
-
-//import com.sura.policycenter.selenium.pages.PaginaPrincipal;
-
-/**
- * Created by edwabuac on 15/04/2016.
- */
+import net.thucydides.core.steps.StepInterceptor;
+import org.slf4j.LoggerFactory;
+import javax.swing.JOptionPane;
 
 public class ClaimsSteps extends ScenarioSteps{
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private final Guidewire gw = new Guidewire(getDriver());
     private final AbrirApp abrirApp = new AbrirApp(getDriver());
     private final Escritorio escritorio = new Escritorio(getDriver());
     private final Reclamacion reclamacion = new Reclamacion(getDriver());
     private final Buscar buscar = new Buscar(getDriver());
-    //PaginaPrincipal paginaPrincipal= new PaginaPrincipal (getDriver());
 
     public ClaimsSteps(Pages pages) {
         super(pages);
@@ -46,11 +42,7 @@ public class ClaimsSteps extends ScenarioSteps{
 
     @Step
     public void navegacion() {
-        try {
-            escritorio.navegacionNuevaReclamacion();
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
+        escritorio.navegacionNuevaReclamacion();
     }
 
     @Step
@@ -58,36 +50,35 @@ public class ClaimsSteps extends ScenarioSteps{
         reclamacion.llenarReclamacion(npoliza);
     }
 
-    public void navegacionBuscaAvanzada () {
+    public void navegacionBuscaAvanzada() {
         escritorio.navegacionBuscaAvanzada();
     }
 
     @Step
-    public void buscaPolizaAvanzada (String Npoliza){buscar.buscaAvanzada(Npoliza);
+    public void buscaPolizaAvanzada(String Npoliza) {
+        buscar.buscaAvanzada(Npoliza);
     }
 
     @Step
-    public void navegaBuscar (){
+    public void navegaBuscar() {
         JOptionPane.showMessageDialog(null, "entro al Step del page");
         escritorio.irAPanel();
         escritorio.irAMiCalendario();
     }
 
     @Step
-    public void asersionPoliza (String numPoliza){
+    public void asersionPoliza(String numPoliza) {
         buscar.asersionPoliza (numPoliza);
     }
 
-
     @Step
-    public void logout(){
+    public void logout() {
         gw.logout();
     }
 
     @Step
-    public void asercion(String msn){reclamacion.asercion(msn);
+    public void asercion(String msn) {
+        reclamacion.asercion(msn);
     }
-
-
 
 }

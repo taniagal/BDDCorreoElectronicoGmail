@@ -8,9 +8,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-/**
- * Created by brayruru on 2016/04/25.
- */
 @SuppressWarnings("WeakerAccess")
 public class CrearNuevoContactoDefinitions {
 
@@ -77,7 +74,9 @@ public class CrearNuevoContactoDefinitions {
 
     }
 
-    ////////////ESCENARIO CREAR PERSONA JURIDICA
+    /**
+     * Escenario crear persona juridica
+     */
     @Given("estoy en la pantalla de crear contacto persona juridica")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaJuridica() {
         seusLoginSteps.login();

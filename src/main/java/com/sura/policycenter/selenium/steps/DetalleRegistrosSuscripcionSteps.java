@@ -7,7 +7,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
 
-    private DetalleRegistrosSuscripcionPage detalleRegistrosSuscripcionPage = new DetalleRegistrosSuscripcionPage(getDriver());
+    private final DetalleRegistrosSuscripcionPage detalleRegistrosSuscripcionPage = new DetalleRegistrosSuscripcionPage(getDriver());
 
     public DetalleRegistrosSuscripcionSteps(Pages pages){
         super(pages);

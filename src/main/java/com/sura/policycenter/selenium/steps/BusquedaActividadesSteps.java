@@ -6,13 +6,16 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class BusquedaActividadesSteps extends ScenarioSteps {
 
-    private BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
+    private final BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
+
     public void buscarActividades() {
         busquedaActividades.buscarActividades();
     }
+
     public void filtrarPorAsignado(String usuario) {
         busquedaActividades.filtrarPorAsignado(usuario);
     }
+
     public void validarResultado(String prioridad, String estadoActividad,
                                  String asunto, String id, String titularCuenta, String producto,
                                  String asignadoPor, String estado) {

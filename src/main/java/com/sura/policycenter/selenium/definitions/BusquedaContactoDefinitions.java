@@ -9,12 +9,9 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Created by jhonvebz on 25/04/2016.
- */
 @SuppressWarnings("WeakerAccess")
 public class BusquedaContactoDefinitions {
 
@@ -160,6 +157,7 @@ public class BusquedaContactoDefinitions {
     @When("quiera exportar el resultado de la busqueda")
     @Manual
     public void validarExportar(){
+        // Se realiza manualmente.
     }
 
     @When("la longitud de esta <razonSocial> sea inferior a cuatro caracteres")
@@ -255,5 +253,7 @@ public class BusquedaContactoDefinitions {
     @SuppressWarnings("EmptyMethod")
     @Then("el sistema debe permitir exportar el resultado")
     @Manual
-    public void sistemaDebeExportarResultado(){}
+    public void sistemaDebeExportarResultado() {
+        // Se realiza manualmente.
+    }
 }

@@ -14,9 +14,6 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
-/**
- * Created by brayruru on 2016/04/27.
- */
 public class NuevoContactoPage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
@@ -32,7 +29,7 @@ public class NuevoContactoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade direccion;
     @FindBy(xpath = ".//*[@id='NewContact:Update-btnInnerEl']")
-    private WebElementFacade actualizar;
+    private WebElementFacade btnActualizar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade nombreContact;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
@@ -115,15 +112,15 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void actualizarPersonaNatural(String primerNombre) {
-        this.actualizar.waitUntilClickable();
-        this.actualizar.click();
+        this.btnActualizar.waitUntilClickable();
+        this.btnActualizar.click();
         waitABit(1000);
         assertThat(this.nombreContact.getText(), containsString(primerNombre));
     }
 
     private void actualizar() {
-        this.actualizar.waitUntilClickable();
-        this.actualizar.click();
+        this.btnActualizar.waitUntilClickable();
+        this.btnActualizar.click();
         waitABit(1000);
     }
 
@@ -144,8 +141,6 @@ public class NuevoContactoPage extends Guidewire {
             waitABit(1000);
             this.tipoTelefono.click();
             this.telefonoResidencia.type(numeroTelefono);
-        } else {
-
         }
 
     }
@@ -159,17 +154,17 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void actualizarJuridica(String razonSocial) {
-        this.actualizar.waitUntilClickable();
-        this.actualizar.click();
+        this.btnActualizar.waitUntilClickable();
+        this.btnActualizar.click();
         waitABit(1000);
         assertThat(this.desRazonSocial.getText().toString(), containsString(razonSocial));
 
     }
 
     public void verificarContactoExistente() {
-        this.actualizar.waitUntilClickable();
-        this.actualizar.click();
-        /*----COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
+        this.btnActualizar.waitUntilClickable();
+        this.btnActualizar.click();
+        /*COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
         waitABit(1000);
         assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));*/
     }
@@ -211,6 +206,6 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void btnActualizarPersonaNatural() {
-        actualizar.click();
+        btnActualizar.click();
     }
 }

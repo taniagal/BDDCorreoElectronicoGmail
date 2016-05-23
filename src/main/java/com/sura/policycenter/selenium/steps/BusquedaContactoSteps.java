@@ -9,12 +9,9 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import java.util.Map;
 
-/**
- * Created by jhonvebz on 25/04/2016.
- */
 public class BusquedaContactoSteps extends ScenarioSteps {
 
-    private BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
+    private final BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }

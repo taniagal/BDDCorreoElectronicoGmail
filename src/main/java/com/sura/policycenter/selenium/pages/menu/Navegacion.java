@@ -24,14 +24,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by jonamele on 06/05/2016.
- */
 public class Navegacion extends Guidewire {
-
-    public Navegacion(WebDriver driver) {
-        super(driver);
-    }
 
     private final Guidewire gw = new Guidewire(getDriver());
     private final Actions act = new Actions(getDriver());
@@ -277,6 +270,10 @@ public class Navegacion extends Guidewire {
     // Objetos menu Opciones Cuenta
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Roles']/div")
     private WebElementFacade mnuOpcionesCuenta;
+
+    public Navegacion(WebDriver driver) {
+        super(driver);
+    }
 
     // Navegacion menu Escritorio
     public MisActividadesPage irAMisActividades() {

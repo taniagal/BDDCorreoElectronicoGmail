@@ -5,9 +5,6 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-/**
- * Created by jhonvebz on 25/04/2016.
- */
 public class SeusLoginSteps  extends ScenarioSteps {
 
     private final SeusLoginPage seus = new SeusLoginPage(getDriver());

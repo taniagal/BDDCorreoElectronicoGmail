@@ -95,7 +95,7 @@ public class InformacionTitularCuentaPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:PersonCauseOfDeath-inputEl']")
     WebElementFacade txtCausaFallecimiento;
 
-    private final String div = "div";
+    private static final String div = "div";
 
     public InformacionTitularCuentaPage(WebDriver driver) {
         super(driver);
@@ -104,54 +104,38 @@ public class InformacionTitularCuentaPage extends Guidewire {
     public void clickTipoDocumento() {
         itmTipoDocumento.waitUntilEnabled();
         itmTipoDocumento.click();
-        try {
-            waitABit(3000);
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        waitABit(3000);
     }
 
     public void seleccionarInformacionTitularCuenta() {
         mnuInformacionTitularCuenta.waitUntilEnabled();
         mnuInformacionTitularCuenta.click();
-        try {
-            waitABit(3000);
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        waitABit(3000);
     }
 
     public void validarEncabezadosInformacionTitularCuenta(String informacionBasica,
                                                String metricas,
                                                String transacciones,
                                                String siniestros){
-        try {
-            assertThat(tituloInformacionTitularCuenta.getText().toString(), is(equalTo(informacionBasica)));
-            assertThat(tituloMetricas.getText().toString(), is(equalTo(metricas)));
-            assertThat(tituloTransacciones.getText().toString(), is(equalTo(transacciones)));
-            assertThat(tituloSiniestros.getText().toString(), is(equalTo(siniestros)));
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        assertThat(tituloInformacionTitularCuenta.getText().toString(), is(equalTo(informacionBasica)));
+        assertThat(tituloMetricas.getText().toString(), is(equalTo(metricas)));
+        assertThat(tituloTransacciones.getText().toString(), is(equalTo(transacciones)));
+        assertThat(tituloSiniestros.getText().toString(), is(equalTo(siniestros)));
     }
 
     public void validarInformacionBasica(String titularCuenta, String tipoDocumento, String nroDocumento, String primaVigencia,
                                          String segmentacion, String comportamniento,
                                          String totalNoFacturado, String totalFacturado, String totalVencido, String totalPendiente){
-        try {
-            assertThat(txtTitularCuenta.getText().toString(), is(equalTo(titularCuenta)));
-            assertThat(txtTipoDocumento.getText().toString(), is(equalTo(tipoDocumento)));
-            assertThat(txtNumeroDocumento.getText().toString(), is(equalTo(nroDocumento)));
-            assertThat(txtPrimaVigencia.getText().toString(), is(equalTo(primaVigencia)));
-            assertThat(txtSegmentacion.getText().toString(), is(equalTo(segmentacion)));
-            assertThat(txtComportamiento.getText().toString(), is(equalTo(comportamniento)));
-            assertThat(txtTotalNoFacturado.getText().toString(), is(equalTo(totalNoFacturado)));
-            assertThat(txtTotalFacturado.getText().toString(), is(equalTo(totalFacturado)));
-            assertThat(txtTotalVencido.getText().toString(), is(equalTo(totalVencido)));
-            assertThat(txtTotalPendiente.getText().toString(), is(equalTo(totalPendiente)));
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        assertThat(txtTitularCuenta.getText().toString(), is(equalTo(titularCuenta)));
+        assertThat(txtTipoDocumento.getText().toString(), is(equalTo(tipoDocumento)));
+        assertThat(txtNumeroDocumento.getText().toString(), is(equalTo(nroDocumento)));
+        assertThat(txtPrimaVigencia.getText().toString(), is(equalTo(primaVigencia)));
+        assertThat(txtSegmentacion.getText().toString(), is(equalTo(segmentacion)));
+        assertThat(txtComportamiento.getText().toString(), is(equalTo(comportamniento)));
+        assertThat(txtTotalNoFacturado.getText().toString(), is(equalTo(totalNoFacturado)));
+        assertThat(txtTotalFacturado.getText().toString(), is(equalTo(totalFacturado)));
+        assertThat(txtTotalVencido.getText().toString(), is(equalTo(totalVencido)));
+        assertThat(txtTotalPendiente.getText().toString(), is(equalTo(totalPendiente)));
     }
 
     public void validarInformacionMetricas(String anioVigencia, String polizasActivas, String canceladoPorCliente,
@@ -173,80 +157,56 @@ public class InformacionTitularCuentaPage extends Guidewire {
     }
 
     public void validarNombreCompletoPersonaNatural(String nombreCompleto){
-        try {
-            assertThat(txtTitularCuenta.getText().toString(), is(equalTo(nombreCompleto)));
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        assertThat(txtTitularCuenta.getText().toString(), is(equalTo(nombreCompleto)));
     }
 
     public void validarInformacionTransacciones(String fechaCreacion, String nroPoliza, String producto,
                                                 String nroTransaccion, String tipo, String estado){
-        try {
-            assertThat(colCrearFecha.getText().toString(), is(equalTo(fechaCreacion)));
-            assertThat(colNroPoliza.getText().toString(), is(equalTo(nroPoliza)));
-            assertThat(colProducto.getText().toString(), is(equalTo(producto)));
-            assertThat(colNroTransaccion.getText().toString(), is(equalTo(nroTransaccion)));
-            assertThat(colTipo.getText().toString(), is(equalTo(tipo)));
-            assertThat(colEstado.getText().toString(), is(equalTo(estado)));
+        assertThat(colCrearFecha.getText().toString(), is(equalTo(fechaCreacion)));
+        assertThat(colNroPoliza.getText().toString(), is(equalTo(nroPoliza)));
+        assertThat(colProducto.getText().toString(), is(equalTo(producto)));
+        assertThat(colNroTransaccion.getText().toString(), is(equalTo(nroTransaccion)));
+        assertThat(colTipo.getText().toString(), is(equalTo(tipo)));
+        assertThat(colEstado.getText().toString(), is(equalTo(estado)));
 
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
     }
 
     public void validarInformacionSiniestros(String nroPoliza, String producto, String asegurado, String fechaPerdida,
                                                 String numeroSiniestros, String estado, String totalIncurrido){
-        try {
-            assertThat(colNumeroPoliza.getText().toString(), is(equalTo(nroPoliza)));
-            assertThat(colProductoSiniestros.getText().toString(), is(equalTo(producto)));
-            assertThat(colAsegurado.getText().toString(), is(equalTo(asegurado)));
-            assertThat(colFechaPerdida.getText().toString(), is(equalTo(fechaPerdida)));
-            assertThat(colNumeroSiniestros.getText().toString(), is(equalTo(numeroSiniestros)));
-            assertThat(colEstadoSiniestro.getText().toString(), is(equalTo(estado)));
-            assertThat(colTotalIncurrido.getText().toString(), is(equalTo(totalIncurrido)));
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        assertThat(colNumeroPoliza.getText().toString(), is(equalTo(nroPoliza)));
+        assertThat(colProductoSiniestros.getText().toString(), is(equalTo(producto)));
+        assertThat(colAsegurado.getText().toString(), is(equalTo(asegurado)));
+        assertThat(colFechaPerdida.getText().toString(), is(equalTo(fechaPerdida)));
+        assertThat(colNumeroSiniestros.getText().toString(), is(equalTo(numeroSiniestros)));
+        assertThat(colEstadoSiniestro.getText().toString(), is(equalTo(estado)));
+        assertThat(colTotalIncurrido.getText().toString(), is(equalTo(totalIncurrido)));
     }
 
     public void validarCamposComoNoEditables(){
-        try {
-            assertThat(txtTitularCuenta.getTagName(), is(equalTo(div)));
-            assertThat(txtTipoDocumento.getTagName(), is(equalTo(div)));
-            assertThat(txtNumeroDocumento.getTagName(), is(equalTo(div)));
-            assertThat(txtPrimaVigencia.getTagName(), is(equalTo(div)));
-            assertThat(txtSegmentacion.getTagName(), is(equalTo(div)));
-            assertThat(txtComportamiento.getTagName(), is(equalTo(div)));
-            assertThat(txtTotalNoFacturado.getTagName(), is(equalTo(div)));
-            assertThat(txtTotalFacturado.getTagName(), is(equalTo(div)));
-            assertThat(txtTotalVencido.getTagName(), is(equalTo(div)));
-            assertThat(txtTotalPendiente.getTagName(), is(equalTo(div)));
-            assertThat(txtPolizasActivas.getTagName(), is(equalTo(div)));
-            assertThat(txtCanceladoPorCliente.getTagName(), is(equalTo(div)));
-            assertThat(txtCanceladoPorCompania.getTagName(), is(equalTo(div)));
-            assertThat(txtOtrasCancelaciones.getTagName(), is(equalTo(div)));
-            assertThat(txtTotalSiniestrosAbiertos.getTagName(), is(equalTo(div)));
+        assertThat(txtTitularCuenta.getTagName(), is(equalTo(div)));
+        assertThat(txtTipoDocumento.getTagName(), is(equalTo(div)));
+        assertThat(txtNumeroDocumento.getTagName(), is(equalTo(div)));
+        assertThat(txtPrimaVigencia.getTagName(), is(equalTo(div)));
+        assertThat(txtSegmentacion.getTagName(), is(equalTo(div)));
+        assertThat(txtComportamiento.getTagName(), is(equalTo(div)));
+        assertThat(txtTotalNoFacturado.getTagName(), is(equalTo(div)));
+        assertThat(txtTotalFacturado.getTagName(), is(equalTo(div)));
+        assertThat(txtTotalVencido.getTagName(), is(equalTo(div)));
+        assertThat(txtTotalPendiente.getTagName(), is(equalTo(div)));
+        assertThat(txtPolizasActivas.getTagName(), is(equalTo(div)));
+        assertThat(txtCanceladoPorCliente.getTagName(), is(equalTo(div)));
+        assertThat(txtCanceladoPorCompania.getTagName(), is(equalTo(div)));
+        assertThat(txtOtrasCancelaciones.getTagName(), is(equalTo(div)));
+        assertThat(txtTotalSiniestrosAbiertos.getTagName(), is(equalTo(div)));
 
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
     }
 
     public void validarInformacionFallecimiento(String fechaFallecimiento, String causaFallecimiento){
-        try {
-            assertThat(lblFechaFallecimiento.getText().toString(), is(equalTo(fechaFallecimiento)));
-            assertThat(txtCausaFallecimiento.getText().toString(), is(equalTo(causaFallecimiento)));
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        assertThat(lblFechaFallecimiento.getText().toString(), is(equalTo(fechaFallecimiento)));
+        assertThat(txtCausaFallecimiento.getText().toString(), is(equalTo(causaFallecimiento)));
     }
 
     public void validarCampoActividadEconomica(String actividadEconomica){
-        try {
-            assertThat(lblActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        assertThat(lblActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
     }
 }

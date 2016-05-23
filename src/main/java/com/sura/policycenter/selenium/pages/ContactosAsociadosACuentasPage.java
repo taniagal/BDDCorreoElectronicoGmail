@@ -14,10 +14,9 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
-/**
- * Created by jorgsape on 2016/05/04.
- */
 public class ContactosAsociadosACuentasPage extends Guidewire {
+
+    private final String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú encontrados";
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
     private WebElementFacade linkAccountFileAccountFileContacts;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDetailCardTab']")
@@ -38,7 +37,6 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     * */
     @FindBy(xpath = ".//label[contains(@id,'ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl')]")
     private WebElementFacade lblEmail;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:DocumentType-labelCell']")
     private WebElementFacade lblTipoDocumento;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
@@ -140,14 +138,14 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
     public void verificarListaContactoNoEsNulo() {
         List<WebElementFacade> contactos = getListaContactos();
-        assertThat("La cuenta debe tener contactos de tipo persona juridica o natural", contactos.size() > 0);
+        assertThat("La cuenta debe tener contactos de tipo persona juridica o natural", !contactos.isEmpty());
     }
 
     public void verificarDetalleContactoNoEsNulo() {
 
         assertThat("El campo tipo de documento es obligatorio", lblTipoDocumento.isPresent());
         assertThat("El campo numero de documento es obligatorio", lblNumeroDocumento.isPresent());
-        if ("PERSONAL".equals(lblTitulo.getText().toUpperCase())) {
+        if ("PERSONAL".equalsIgnoreCase(lblTitulo.getText())) {
             assertThat("El campo nombre es obligatorio", lblNombre.isPresent());
             assertThat("El campo segundo nombre es obligatorio", lblSegundoNombre.isPresent());
             assertThat("El campo apellido es obligatorio", lblApellido.isPresent());
@@ -159,38 +157,32 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         }
         assertThat("El campo direccion es obligatorio", lblDireccion.isPresent());
         assertThat("El campo telefono es obligatorio", lblTelefono.isPresent());
-        //assertThat("El campo email es obligatorio", lblEmail.isPresent());
+        assertThat("El campo email es obligatorio", lblEmail.isPresent());
     }
 
     public void verificarRolesFuncionesNoEsNulo() {
         List<WebElementFacade> rolesFunciones = getListaRolesFunciones();
-        assertThat("El contacto debe tener roles o funciones asignados", rolesFunciones.size() > 0);
+        assertThat("El contacto debe tener roles o funciones asignados", !rolesFunciones.isEmpty());
         waitABit(1000);
     }
 
     public void verificarDireccioneNoEsNulo() {
         List<WebElementFacade> direcciones = getListaDirecciones();
-        assertThat("El contacto debe tener direcciones asignados", direcciones.size() > 0);
+        assertThat("El contacto debe tener direcciones asignados", !direcciones.isEmpty());
         waitABit(1000);
     }
 
     public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
-        String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú encontrados";
         assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
     }
 
     public Boolean esContactoAsociado(String nombreContacto) throws Exception {
         Boolean esAsociado = Boolean.FALSE;
-        try {
-            for (WebElementFacade contacto : getListaContactos()) {
-                if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {
-                    esAsociado = Boolean.TRUE;
-                    break;
-                }
+        for (WebElementFacade contacto : getListaContactos()) {
+            if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {
+                esAsociado = Boolean.TRUE;
+                break;
             }
-
-        } catch (Exception e) {
-            assertThat("El contacto se asocio a la cuenta exitosamente", esAsociado);
         }
         assertThat("El contacto se asocio a la cuenta exitosamente", esAsociado);
         return esAsociado;
@@ -200,22 +192,17 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     public Boolean validarOcurrenciaDeMensajeDeAplicacion(String idXpathDivMensajes, String mensajesApp){
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado="";
-        try {
-            List<WebElementFacade> divsMensajes = withTimeoutOf(1, SECONDS).findAll(idXpathDivMensajes);
-            for (WebElementFacade div : divsMensajes) {
-                mensajeMostrado = div.getText();
-                if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
-                    existeOcurrencia = Boolean.TRUE;
-                    break;
-                }
+        List<WebElementFacade> divsMensajes = withTimeoutOf(1, SECONDS).findAll(idXpathDivMensajes);
+        for (WebElementFacade div : divsMensajes) {
+            mensajeMostrado = div.getText();
+            if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
+                existeOcurrencia = Boolean.TRUE;
+                break;
             }
-            if (existeOcurrencia) {
-                assertThat(mensajeMostrado, containsString(mensajesApp));
-            }
-        } catch (Exception e){
-            existeOcurrencia =  Boolean.FALSE;
         }
-
+        if (existeOcurrencia) {
+            assertThat(mensajeMostrado, containsString(mensajesApp));
+        }
         return existeOcurrencia;
     }
 

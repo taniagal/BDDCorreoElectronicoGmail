@@ -5,9 +5,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by eliaalch on 21/04/2016.
- */
 @SuppressWarnings("WeakerAccess")
 public class ParticipantesDeCuentaPage extends Guidewire {
 

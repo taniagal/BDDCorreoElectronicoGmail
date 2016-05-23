@@ -20,7 +20,6 @@ import java.util.ArrayList;
  */
 public class GwNavegacionUtil {
 
-
     @SuppressWarnings("SameParameterValue")
     public static Boolean existenOpcionesPorMenuHastaSegundoNivel(WebDriver driver, Keys keyNav, String tipoElementoMenu, ExamplesTable opcionesPorMenu, Boolean darClick) {
         System.out.println("GuidewireUtil.existenOpcionesPorMenu");
