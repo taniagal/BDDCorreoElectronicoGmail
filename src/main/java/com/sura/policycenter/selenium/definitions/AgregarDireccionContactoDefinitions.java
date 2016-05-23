@@ -5,9 +5,10 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.When;
 
+@SuppressWarnings("WeakerAccess")
 public class AgregarDireccionContactoDefinitions {
     @Steps
-    DetallesContactoSteps dcs;
+    private DetallesContactoSteps dcs;
 
     @Given("que ya tengo un contacto creado")
     public void givenQueYaTengoUnContactoCreado() {
@@ -19,6 +20,7 @@ public class AgregarDireccionContactoDefinitions {
         dcs.validarDatosPatalla();
     }
 
+    @SuppressWarnings("EmptyMethod")
     @When("valide la informaci\u00F3n en los campos")
     public void whenValideLaInformaciónEnLosCampos() {
         //dcs.validarCampos();

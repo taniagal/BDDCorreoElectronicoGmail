@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 
 public class Reclamacion extends Guidewire {
-    Guidewire gw = new Guidewire(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
     public Reclamacion(WebDriver driver) {
         super(driver);
     }
@@ -22,85 +22,85 @@ public class Reclamacion extends Guidewire {
     private WebElementFacade lugar;
 
     @FindBy(xpath = ".//*[@id='NewClaimSaved:NewClaimSavedScreen:ttlBar']")
-    WebElementFacade lblNuevaReclamacion;
+    private WebElementFacade lblNuevaReclamacion;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Claim_ReportedByType-inputEl']")
-    WebElementFacade asegurado;
+    private WebElementFacade asegurado;
 
     @FindBy(xpath = "//div[6]/div/ul/li")
-    WebElementFacade direcciondelugar;
+    private WebElementFacade direcciondelugar;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen" +
             ":LossDetailsAddressDV:Description-inputEl']")
-    WebElementFacade txtDescripcion;
+    private WebElementFacade txtDescripcion;
 
     @FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl")
-    WebElementFacade nombre;
+    private WebElementFacade nombre;
 
     @FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:RightPanel" +
             ":FNOLWizard_BasicInfoRightPanelSet:1:InsuredVehicleDV:InsuredVehicleInputGroup:_checkbox")
-    WebElementFacade checkVehiculoInvo;
+    private WebElementFacade checkVehiculoInvo;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow" +
             ":BasicInfoDetailViewPanelDV:ReportedBy_Name-labelEl']")
-    WebElementFacade lblNombre;
+    private WebElementFacade lblNombre;
 
     @FindBy(xpath = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:RightPanel" +
             ":FNOLWizard_BasicInfoRightPanelSet:0:InsuredVehicleDV:InsuredVehicleInputGroup:_checkbox")
-    WebElementFacade chkVehiuloInvolucrado;
+    private WebElementFacade chkVehiuloInvolucrado;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow" +
             ":BasicInfoDetailViewPanelDV:Claim_ReportedByType-inputEl']")
-    WebElementFacade txtRelacionAsegurado;
+    private WebElementFacade txtRelacionAsegurado;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguiente;
+    private WebElementFacade btnSiguiente;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:Finish-btnInnerEl']")
-    WebElementFacade btnFinalizar;
+    private WebElementFacade btnFinalizar;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:policyNumber" +
             "-inputEl']")
-    WebElementFacade txtNpoliza;
+    private WebElementFacade txtNpoliza;
 
     @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
-    WebElementFacade mnuReclamacion;
+    private WebElementFacade mnuReclamacion;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:ttlBar']")
-    WebElementFacade lblMensaje;
+    private WebElementFacade lblMensaje;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:Search']")
-    WebElementFacade btnBuscar;
+    private WebElementFacade btnBuscar;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow" +
             ":BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl']")
-    WebElementFacade txtNombre;
+    private WebElementFacade txtNombre;
 
     @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
-    WebElementFacade txtApellido;
+    private WebElementFacade txtApellido;
 
     @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
-    WebElementFacade txtNombreOrganizacion;
+    private WebElementFacade txtNombreOrganizacion;
 
     @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
-    WebElementFacade cboTipoPoliza;
+    private WebElementFacade cboTipoPoliza;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:Claim_LossDate" +
             "-inputEl']")
-    WebElementFacade txtFechaSiniestro;
+    private WebElementFacade txtFechaSiniestro;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen" +
             ":LossDetailsAddressDV:Claim_LossCause-triggerWrap']")
-    WebElementFacade listaCausas;
+    private WebElementFacade listaCausas;
 
     @FindBy(xpath = "//li[8]")
-    WebElementFacade causaRoboEstereo;
+    private WebElementFacade causaRoboEstereo;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:ScreenMode_true-inputEl']")
-    WebElementFacade rdobuttonBuscarPoliza;
+    private WebElementFacade rdobuttonBuscarPoliza;
 
     @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:ScreenMode_false-inputEl']")
-    WebElementFacade rdobuttonCrearPoliza;
+    private WebElementFacade rdobuttonCrearPoliza;
 
     // Initialize slf4j logs
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);

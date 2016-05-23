@@ -8,16 +8,16 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-
 /**
  * Created by brayruru on 2016/04/25.
  */
+@SuppressWarnings("WeakerAccess")
 public class CrearNuevoContactoDefinitions {
 
     @Steps
-    CrearNuevoContactoSteps crearNuevoContactoSteps ;
+    private CrearNuevoContactoSteps crearNuevoContactoSteps ;
     @Steps
-    SeusLoginSteps seusLoginSteps;
+    private SeusLoginSteps seusLoginSteps;
 
     @Given("estoy en la pantalla de crear contacto persona natural")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaNatural() {
@@ -63,7 +63,6 @@ public class CrearNuevoContactoDefinitions {
 //        crearNuevoContactoSteps.getDriver().close();
     }
 
-
     @When("selecciono el tipo de telefono fijo <tipoTelefonoFijo> e ingreso el numero de telefono fijo <numeroTelefonoFijo>")
     public void whenIngresoElNumeroDeTelefonoFijotelefonoFijo(@Named("tipoTelefonoFijo") String tipoTelefonoFijo, @Named("numeroTelefonoFijo") String numeroTelefonoFijo) {
        crearNuevoContactoSteps.ingresarNumeroTelefonoFijo(tipoTelefonoFijo, numeroTelefonoFijo);
@@ -75,8 +74,6 @@ public class CrearNuevoContactoDefinitions {
     }
 
     ////////////ESCENARIO CREAR PERSONA JURIDICA
-
-
     @Given("estoy en la pantalla de crear contacto persona juridica")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaJuridica() {
         seusLoginSteps.login();
@@ -97,7 +94,5 @@ public class CrearNuevoContactoDefinitions {
     public void thenSeDebeValidarQueElContactoYaExiste() {
         crearNuevoContactoSteps.verificarContactoExistente();
     }
-
-
 
 }

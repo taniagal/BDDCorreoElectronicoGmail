@@ -11,7 +11,6 @@ import net.thucydides.core.model.TestTag;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import net.thucydides.core.steps.StepEventBus;
-
 import java.util.List;
 import java.util.Map;
 
@@ -20,32 +19,23 @@ import java.util.Map;
  */
 public class PruebaMenuSteps extends ScenarioSteps {
 
-    //Guidewire gw = new Guidewire(getDriver());
-    //AbrirAppPage abrirAppPage = new AbrirAppPage(getDriver());
-    //InicioPage inicioPage = new InicioPage(getDriver());
-    //InicioPage inicioPage;
+    private Guidewire gw() {
+        return getPages().currentPageAt(Guidewire.class);
+    }
+    private AbrirAppPage abrirAppPage() {
+        return getPages().currentPageAt(AbrirAppPage.class);
+    }
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
     public PruebaMenuSteps(Pages pages) {
         super(pages);
     }
 
-    private Guidewire gw() {
-        return getPages().currentPageAt(Guidewire.class);
-    }
-
-    private AbrirAppPage abrirAppPage() {
-        return getPages().currentPageAt(AbrirAppPage.class);
-    }
-
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
     @Step
     public void should_run_just_for_end_to_end_tests () {
-
         Map<String, String> metadata = Serenity.getCurrentSession().getMetaData();
-
         if (!metadata.get("level").equalsIgnoreCase("system")) {
             StepEventBus.getEventBus().testIgnored();
         }
@@ -54,7 +44,7 @@ public class PruebaMenuSteps extends ScenarioSteps {
         }
     }
 
-    public void add_tags() {
+    private void add_tags() {
         List<TestTag> myTags = Lists.newArrayList(TestTag.withName("menu").andType("prueba"));
         StepEventBus.getEventBus().addTagsToCurrentStory(myTags);
     }

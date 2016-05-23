@@ -10,9 +10,9 @@ import net.thucydides.core.steps.ScenarioSteps;
  */
 public class SeusLoginSteps  extends ScenarioSteps {
 
-    SeusLoginPage seus = new SeusLoginPage(getDriver());
-    Guidewire gw = new Guidewire(getDriver());
-    InicioPage inicioPage = new InicioPage(getDriver());
+    private final SeusLoginPage seus = new SeusLoginPage(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final InicioPage inicioPage = new InicioPage(getDriver());
 
     public SeusLoginSteps(Pages pages) {
         super(pages);

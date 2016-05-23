@@ -5,127 +5,147 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 public class BusquedaDeCuentasPage extends Guidewire {
 
+    @FindBy(xpath=".//*[@id='TabBar:SearchTab']")
+    private WebElementFacade mnuBuscar;
+
+    @FindBy(xpath=" .//*[@id='TabBar:SearchTab:Search_AccountSearch']")
+    private WebElementFacade mnuBuscarCuenta;
+
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-labelEl']")
-    WebElementFacade lblTipoDocumento;
+    private WebElementFacade lblTipoDocumento;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDNumber-labelEl']")
-    WebElementFacade lblNumeroDocumento;
+    private WebElementFacade lblNumeroDocumento;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-labelEl']")
-    WebElementFacade lblNumeroCuenta;
+    private WebElementFacade lblNumeroCuenta;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:GlobalPersonNameInputSet:FirstName-labelEl']")
-    WebElementFacade lblPrimerNombre;
+    private WebElementFacade lblPrimerNombre;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:GlobalPersonNameInputSet:MiddleName-labelEl']")
-    WebElementFacade lblSegundoNombre;
+    private WebElementFacade lblSegundoNombre;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:GlobalPersonNameInputSet:LastName-labelEl']")
-    WebElementFacade lblPrimerApellido;
+    private WebElementFacade lblPrimerApellido;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:GlobalPersonNameInputSet:Particle-labelEl']")
-    WebElementFacade lblSegundoApellido;
+    private WebElementFacade lblSegundoApellido;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:GlobalContactNameInputSet:Name-labelEl']")
-    WebElementFacade lblRazonSocial;
+    private WebElementFacade lblRazonSocial;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:CommercialName-labelEl']")
-    WebElementFacade lblNombreComercial;
+    private WebElementFacade lblNombreComercial;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:FirstNameExact-labelEl']")
-    WebElementFacade lblPrimerNombreExacto;
+    private WebElementFacade lblPrimerNombreExacto;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:LastNameExact-labelEl']")
-    WebElementFacade lblPrimerApellidoExacto;
+    private WebElementFacade lblPrimerApellidoExacto;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:CompanyNameExact-labelEl']")
-    WebElementFacade lblNombreComercialExacto;
+    private WebElementFacade lblNombreComercialExacto;
 
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-inputEl']")
-    WebElementFacade txtTipoDocumento;
+    private WebElementFacade txtTipoDocumento;
 
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDNumber-inputEl']")
-    WebElementFacade txtNumeroDocumento;
+    private WebElementFacade txtNumeroDocumento;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
-    WebElementFacade txtNumeroCuenta;
+    private WebElementFacade txtNumeroCuenta;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:GlobalPersonNameInputSet:FirstName-inputEl']")
-    WebElementFacade txtPrimerNombre;
+    private WebElementFacade txtPrimerNombre;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:GlobalPersonNameInputSet:MiddleName-inputEl']")
-    WebElementFacade txtSegundoNombre;
+    private WebElementFacade txtSegundoNombre;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:GlobalPersonNameInputSet:LastName-inputEl']")
-    WebElementFacade txtPrimerApellido;
+    private WebElementFacade txtPrimerApellido;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:GlobalPersonNameInputSet:Particle-inputEl']")
-    WebElementFacade txtSegundoApellido;
+    private WebElementFacade txtSegundoApellido;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:GlobalContactNameInputSet:Name-inputEl']")
-    WebElementFacade txtRazonSocial;
+    private WebElementFacade txtRazonSocial;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:CommercialName-inputEl']")
-    WebElementFacade txtNombreComercial;
+    private WebElementFacade txtNombreComercial;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:FirstNameExact-inputEl']")
-    WebElementFacade chkPrimerNombreExacto;
+    private WebElementFacade chkPrimerNombreExacto;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:LastNameExact-inputEl']")
-    WebElementFacade chkPrimerApellidoExacto;
+    private WebElementFacade chkPrimerApellidoExacto;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:CompanyNameExact-inputEl']")
-    WebElementFacade chkNombreCompaniaExacto;
+    private WebElementFacade chkNombreCompaniaExacto;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade btnBuscar;
+    private WebElementFacade btnBuscar;
 
     @FindBy(xpath="//div[4]/div/table/tbody/tr/td[2]/div")
-    WebElementFacade grdNumeroCuenta;
+    private WebElementFacade grdNumeroCuenta;
 
     @FindBy(xpath="//div[4]/div/table/tbody/tr/td[3]/div")
-    WebElementFacade grdNombre;
+    private WebElementFacade grdNombre;
 
     @FindBy(xpath="//td[4]/div")
-    WebElementFacade grdDireccion;
+    private WebElementFacade grdDireccion;
 
     @FindBy(xpath="//*[@id='AccountSearch:AccountSearchScreen:_msgs']/div")
-    WebElementFacade msjMensajeInformativo;
+    private WebElementFacade msjMensajeInformativo;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV_tb:PrintMe']")
-    WebElementFacade btnImprimir;
+    private WebElementFacade btnImprimir;
 
     @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:DoPrint-labelEl']")
-    WebElementFacade lblImprimir;
+    private WebElementFacade lblImprimir;
 
     @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:Export-labelEl']")
-    WebElementFacade lblExportar;
+    private WebElementFacade lblExportar;
 
     @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:CustomExport-labelEl']")
-    WebElementFacade lblExportarPersonalizado;
+    private WebElementFacade lblExportarPersonalizado;
 
     @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:PrintChoice_Choice-inputEl']")
-    WebElementFacade rbtnImprimir;
+    private WebElementFacade rbtnImprimir;
 
     @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:ExportChoice_Choice-inputEl']")
-    WebElementFacade rbtnExportar;
+    private WebElementFacade rbtnExportar;
 
     @FindBy(xpath=".//*[@id='PrintOptionPopup:PrintOptionPopupScreen:PrintOptionDV:CustomExportChoice_Choice-inputEl']")
-    WebElementFacade rbtnExportarPersonalizado;
+    private WebElementFacade rbtnExportarPersonalizado;
 
     @FindBy(xpath=".//*[@id='PrintOptionPopup:__crumb__']")
-    WebElementFacade btnVolverBuscarCuentas;
+    private WebElementFacade btnVolverBuscarCuentas;
 
 
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
     }
+
+    public void ingresarABuscarCuentas() {
+            Actions act = new Actions(getDriver());
+            mnuBuscar.waitUntilClickable();
+            mnuBuscar.click();
+            mnuBuscar.waitUntilClickable();
+            waitABit(1000);
+            mnuBuscar.click();
+            act.sendKeys(Keys.ARROW_DOWN).build().perform();
+            act.moveToElement(mnuBuscarCuenta).click().build().perform();
+            waitABit(1000);
+     }
+
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         this.limpiarFormulario();
         waitABit(1000);
@@ -136,7 +156,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         btnBuscar.click();
     }
 
-    public void limpiarFormulario(){
+    private void limpiarFormulario(){
         txtTipoDocumento.clear();
         txtNumeroDocumento.clear();
         txtRazonSocial.clear();
@@ -167,7 +187,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         assertThat(this.msjMensajeInformativo.getText(), containsString(mensaje));
     }
 
-    public void validarCheckNoSeleccionado(WebElementFacade elemento){
+    private void validarCheckNoSeleccionado(WebElementFacade elemento){
         if(elemento.isSelected()){
             assertThat("Check seleccionado", containsString("Check no seleccionado"));
         }else assertThat("Check no seleccionado", containsString("Check no seleccionado"));

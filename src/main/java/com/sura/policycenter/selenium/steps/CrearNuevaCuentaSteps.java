@@ -7,10 +7,9 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-
 public class CrearNuevaCuentaSteps extends ScenarioSteps {
-    Guidewire gw = new Guidewire(getDriver());
-    CuentaPage cp = new CuentaPage(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final CuentaPage cp = new CuentaPage(getDriver());
     private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     private String cedula = "";

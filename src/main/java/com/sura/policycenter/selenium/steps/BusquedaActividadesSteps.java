@@ -6,24 +6,22 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class BusquedaActividadesSteps extends ScenarioSteps {
 
-    BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
-    public BusquedaActividadesSteps(Pages pages) {
-        super(pages);
-    }
-
+    private BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
     public void buscarActividades() {
         busquedaActividades.buscarActividades();
     }
-
     public void filtrarPorAsignado(String usuario) {
         busquedaActividades.filtrarPorAsignado(usuario);
     }
-
     public void validarResultado(String prioridad, String estadoActividad,
                                  String asunto, String id, String titularCuenta, String producto,
                                  String asignadoPor, String estado) {
         busquedaActividades.validarResultado(prioridad,estadoActividad,asunto, id,
                 titularCuenta,producto,asignadoPor,estado);
+    }
+
+    public BusquedaActividadesSteps(Pages pages) {
+        super(pages);
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
@@ -55,5 +53,5 @@ public class BusquedaActividadesSteps extends ScenarioSteps {
 
     public void buscarPorFiltroOpcional(String estadoActividad) {
         busquedaActividades.buscarPorFiltroOpcional(estadoActividad);
-}
+    }
 }

@@ -4,204 +4,138 @@ import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import javax.swing.*;
-
+import javax.swing.JOptionPane;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-
 public class DetallesContactoPage extends Guidewire {
+
     Guidewire gw = new Guidewire(getDriver());
-
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
-    WebElementFacade lblPrimerNombre;
-
+    private WebElementFacade lblPrimerNombre;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-labelEl']")
-    WebElementFacade lblSegundoNombre;
-
+    private WebElementFacade lblSegundoNombre;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:LastName-labelEl']")
-    WebElementFacade lblPrimerApellido;
-
+    private WebElementFacade lblPrimerApellido;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:Particle-labelEl']")
-    WebElementFacade lblSegundoApellido;
-
+    private WebElementFacade lblSegundoApellido;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:DocumentType-labelEl']")
-    WebElementFacade lblTipoDocumento;
-
+    private WebElementFacade lblTipoDocumento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
-    WebElementFacade lblNumeroDocumento;
-
+    private WebElementFacade lblNumeroDocumento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Sexo-labelEl']")
-    WebElementFacade lblSexo;
-
+    private WebElementFacade lblSexo;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DateOfBirth-labelEl']")
-    WebElementFacade lblFechaNacimiento;
-
+    private WebElementFacade lblFechaNacimiento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Profession-labelEl']")
-    WebElementFacade lblProfesion;
-
+    private WebElementFacade lblProfesion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:MaritalStatus-labelEl']")
-    WebElementFacade lblEstadoCivil;
-
+    private WebElementFacade lblEstadoCivil;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:FamilyType-labelEl']")
-    WebElementFacade lblTipoFamilia;
-
+    private WebElementFacade lblTipoFamilia;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-labelEl']")
-    WebElementFacade lblTipoTelefono;
-
+    private WebElementFacade lblTipoTelefono;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:CellPhone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
-    WebElementFacade lblTelefonoCelular;
-
+    private WebElementFacade lblTelefonoCelular;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress1-labelEl']")
-    WebElementFacade lblCorreoElectronicoPrimario;
-
+    private WebElementFacade lblCorreoElectronicoPrimario;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-labelEl']")
-    WebElementFacade lblRazonSocial;
-
+    private WebElementFacade lblRazonSocial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:CommercialName-labelEl']")
-    WebElementFacade lblNombreComercial;
-
+    private WebElementFacade lblNombreComercial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Activity-labelEl']")
-    WebElementFacade lblActividadComercial;
-
+    private WebElementFacade lblActividadComercial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:EmployeesNumber-labelEl']")
-    WebElementFacade lblNumeroEmpleados;
-
+    private WebElementFacade lblNumeroEmpleados;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Assets-labelEl']")
-    WebElementFacade lblValorActivos;
-
+    private WebElementFacade lblValorActivos;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:AnualSells-labelEl']")
-    WebElementFacade lblVentasAnuales;
-
+    private WebElementFacade lblVentasAnuales;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:AnualSells-labelEl']")
-    WebElementFacade lblTelefonoOficinaEmpresa;
-
+    private WebElementFacade lblTelefonoOficinaEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl']")
-    WebElementFacade getTxtCorreoElectronicoPrimarioEmpresa;
-
+    private WebElementFacade getTxtCorreoElectronicoPrimarioEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Edit-btnInnerEl']")
-    WebElementFacade btnEditarContacto;
-
+    private WebElementFacade btnEditarContacto;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl']")
-    WebElementFacade txtSegundoNombre;
-
+    private WebElementFacade txtSegundoNombre;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:Particle-inputEl']")
-    WebElementFacade txtSegundoApellido;
-
+    private WebElementFacade txtSegundoApellido;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Profession-inputEl']")
-    WebElementFacade cboProfesion;
-
+    private WebElementFacade cboProfesion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:MaritalStatus-inputEl']")
-    WebElementFacade cboEstadoCivil;
-
+    private WebElementFacade cboEstadoCivil;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:FamilyType-inputEl']")
-    WebElementFacade cboTipoFamilia;
-
+    private WebElementFacade cboTipoFamilia;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:CellPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
-    WebElementFacade txtTelefonoCelular;
-
+    private WebElementFacade txtTelefonoCelular;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:CellPhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
-    WebElementFacade txtTelefonoCelular2;
-
+    private WebElementFacade txtTelefonoCelular2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
-    WebElementFacade txtTelefonoResidencial;
-
+    private WebElementFacade txtTelefonoResidencial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
-    WebElementFacade txtTelefonoResidencial2;
-
+    private WebElementFacade txtTelefonoResidencial2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
-    WebElementFacade txtTelefonoTrabajo;
-
+    private WebElementFacade txtTelefonoTrabajo;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
-    WebElementFacade txtTelefonoTrabajo2;
-
+    private WebElementFacade txtTelefonoTrabajo2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress1-inputEl']")
-    WebElementFacade txtCorreoElectronicoPrimario;
-
+    private WebElementFacade txtCorreoElectronicoPrimario;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress2-inputEl']")
-    WebElementFacade txtCorreoElectronicoSecundario;
-
+    private WebElementFacade txtCorreoElectronicoSecundario;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
-    WebElementFacade txtNombreComercial;
-
+    private WebElementFacade txtNombreComercial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Activity-inputEl']")
-    WebElementFacade cboActividadComercial;
-
+    private WebElementFacade cboActividadComercial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:EmployeesNumber-inputEl']")
-    WebElementFacade txtNumeroEmpleados;
-
+    private WebElementFacade txtNumeroEmpleados;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Assets-inputEl']")
-    WebElementFacade txtValorActivos;
-
+    private WebElementFacade txtValorActivos;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:AnualSells-inputEl']")
-    WebElementFacade txtVentasAnuales;
-
+    private WebElementFacade txtVentasAnuales;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
-    WebElementFacade txtTelefonoOficina;
-
+    private WebElementFacade txtTelefonoOficina;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress1-inputEl']")
-    WebElementFacade txtCorreoElectronicoPrimarioEmpresa;
-
+    private WebElementFacade txtCorreoElectronicoPrimarioEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress2-inputEl']")
-    WebElementFacade txtCorreoElectronicoSecundarioEmpresa;
-
+    private WebElementFacade txtCorreoElectronicoSecundarioEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update-btnInnerEl']")
-    WebElementFacade btnActualizar;
-
+    private WebElementFacade btnActualizar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesCardTab-btnInnerEl']")
-    WebElementFacade btnDirecciones;
-
+    private WebElementFacade btnDirecciones;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV_tb:Add-btnInnerEl']")
-    WebElementFacade btnAgregar;
-
+    private WebElementFacade btnAgregar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-labelEl']")
-    WebElementFacade lblPais;
-
+    private WebElementFacade lblPais;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-labelEl']")
-    WebElementFacade lblDepartamento;
-
+    private WebElementFacade lblDepartamento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-labelEl']")
-    WebElementFacade lblCiudad;
-
+    private WebElementFacade lblCiudad;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-labelEl']")
-    WebElementFacade lblDireccion;
-
+    private WebElementFacade lblDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-labelEl']")
-    WebElementFacade lblCodigoPostal;
-
+    private WebElementFacade lblCodigoPostal;
     @FindBy(xpath = " .//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-labelEl']")
-    WebElementFacade lblTipoDireccion;
-
+    private WebElementFacade lblTipoDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-labelEl']")
-    WebElementFacade lblDescripcionDireccion;
-
+    private WebElementFacade lblDescripcionDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-labelEl']")
-    WebElementFacade lblVálidoHasta;
-
+    private WebElementFacade lblVálidoHasta;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
-    WebElementFacade cboPais;
-
+    private WebElementFacade cboPais;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    WebElementFacade cboDepartamento;
-
+    private WebElementFacade cboDepartamento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
-    WebElementFacade cboCiudad;
-
+    private WebElementFacade cboCiudad;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
-    WebElementFacade txtDireccion;
-
+    private WebElementFacade txtDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-inputEl']")
-    WebElementFacade txtCodigoPostal;
-
+    private WebElementFacade txtCodigoPostal;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
-    WebElementFacade txtTipoNegocio;
-
+    private WebElementFacade txtTipoNegocio;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-inputEl']")
-    WebElementFacade txtDescripcionDireccion;
-
-
-    private  String [] dtlContact = new String[15];
-    private String [] dtlCntJ = new String[8];
+    private WebElementFacade txtDescripcionDireccion;
+    private final String [] dtlContact = new String[15];
+    private final String [] dtlCntJ = new String[8];
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
@@ -211,7 +145,6 @@ public class DetallesContactoPage extends Guidewire {
         btnEditarContacto.click();
         waitABit(800);
     }
-
 
     public void editarContactoJuridico(String razonSocial, String nombreComercial, String actividadComercial,
                                        String numeroEmpleados,String valorActivos, String ventasAnuales, String telefonoOficina,
@@ -302,7 +235,9 @@ public class DetallesContactoPage extends Guidewire {
         dtlContact[14]= correoElectronicoSecundario;
     }
 
-    //-------Valida si los datos ingresados es igual al que se muestran en el detalle
+    /**
+     * Valida si los datos ingresados es igual al que se muestran en el detalle
+     */
     public void verificarActualizacion(){
         espera(txtSegundoNombre,6);
         StringBuilder right = new StringBuilder("No estan correctos los valores:");
@@ -323,8 +258,6 @@ public class DetallesContactoPage extends Guidewire {
         assertThat(res,"No estan correctos los valores".equals(res));
     }
 
-
-
     public void verificarActualizacionJuridico(){
         espera(txtNombreComercial,6);
         StringBuilder right = new StringBuilder("No estan correctos los valores:");
@@ -343,7 +276,9 @@ public class DetallesContactoPage extends Guidewire {
         assertThat(res,"No estan correctos los valores".equals(res));
     }
 
-    //-------Valida si estos elementos están presentes
+    /**
+     * Valida si estos elementos están presentes
+     */
     public  void verificarCamposPersonaNatural(){
         StringBuilder notPresent = new StringBuilder("No estan presentes los elemtos:");
         if(!lblPrimerNombre.isPresent()) notPresent.append(" primer_nombre,");

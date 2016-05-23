@@ -18,11 +18,11 @@ import javax.swing.*;
  */
 
 public class ClaimsSteps extends ScenarioSteps{
-    Guidewire gw = new Guidewire(getDriver());
-    AbrirApp abrirApp = new AbrirApp(getDriver());
-    Escritorio escritorio = new Escritorio(getDriver());
-    Reclamacion reclamacion = new Reclamacion(getDriver());
-    Buscar buscar = new Buscar(getDriver());
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final AbrirApp abrirApp = new AbrirApp(getDriver());
+    private final Escritorio escritorio = new Escritorio(getDriver());
+    private final Reclamacion reclamacion = new Reclamacion(getDriver());
+    private final Buscar buscar = new Buscar(getDriver());
     //PaginaPrincipal paginaPrincipal= new PaginaPrincipal (getDriver());
 
     public ClaimsSteps(Pages pages) {
@@ -45,7 +45,7 @@ public class ClaimsSteps extends ScenarioSteps{
     }
 
     @Step
-    public void navegacion() throws InterruptedException {
+    public void navegacion() {
         try {
             escritorio.navegacionNuevaReclamacion();
         }catch (Exception e){
@@ -58,7 +58,7 @@ public class ClaimsSteps extends ScenarioSteps{
         reclamacion.llenarReclamacion(npoliza);
     }
 
-    public void navegacionBuscaAvanzada () throws InterruptedException {
+    public void navegacionBuscaAvanzada () {
         escritorio.navegacionBuscaAvanzada();
     }
 

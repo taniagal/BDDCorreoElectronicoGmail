@@ -7,10 +7,11 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+@SuppressWarnings("WeakerAccess")
 public class BusquedaActividadesDefinitions {
 
     @Steps
-    BusquedaActividadesSteps busquedaActividadesSteps;
+    private BusquedaActividadesSteps busquedaActividadesSteps;
 
     @Given("que me encuentro en la busqueda de actividades")
     public void buscarActividades() {

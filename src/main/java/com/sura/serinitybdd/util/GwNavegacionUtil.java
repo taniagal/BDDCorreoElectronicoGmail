@@ -9,8 +9,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
 
 /**
  * Created by Andrés Alarcón - QVisión on 2016/05/13.
@@ -18,6 +21,7 @@ import java.util.*;
 public class GwNavegacionUtil {
 
 
+    @SuppressWarnings("SameParameterValue")
     public static Boolean existenOpcionesPorMenuHastaSegundoNivel(WebDriver driver, Keys keyNav, String tipoElementoMenu, ExamplesTable opcionesPorMenu, Boolean darClick) {
         System.out.println("GuidewireUtil.existenOpcionesPorMenu");
         String menu = "";
@@ -56,7 +60,7 @@ public class GwNavegacionUtil {
     }
 
 
-    public static HashSet<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable) throws Exception {
+    private static HashSet<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable) throws Exception {
         System.out.println("GuidewireUtil.obtenerNombreColumnasDeExamplesTable");
 
         HashSet<String> nombreColumnasTablaHS = new HashSet<>();
@@ -73,7 +77,7 @@ public class GwNavegacionUtil {
     }
 
 
-    public static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu) throws Exception {
+    private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu) throws Exception {
         System.out.println("GuidewireUtil.obtenerMenuPorTextoContenido");
 
         switch (tipoElementoMenu) {

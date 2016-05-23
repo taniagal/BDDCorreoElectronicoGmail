@@ -7,7 +7,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
 
-    DetalleRegistrosSuscripcionPage detalleRegistrosSuscripcionPage = new DetalleRegistrosSuscripcionPage(getDriver());
+    private DetalleRegistrosSuscripcionPage detalleRegistrosSuscripcionPage = new DetalleRegistrosSuscripcionPage(getDriver());
 
     public DetalleRegistrosSuscripcionSteps(Pages pages){
         super(pages);
@@ -32,4 +32,5 @@ public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
     public void validarSumaGrupo(String suma) {
         detalleRegistrosSuscripcionPage.validarSumaGrupo(suma);
     }
+
 }

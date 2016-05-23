@@ -14,19 +14,20 @@ import java.util.List;
 public class BusquedaContactoDelDirectorioPage extends Guidewire {
 
     @FindBy(xpath = ".//input[contains(@id,'ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl')]")
-    WebElementFacade cboTipoContacto;
+    private WebElementFacade cboTipoContacto;
     @FindBy(xpath = ".//input[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    WebElementFacade txtPrimerNombre;
+    private WebElementFacade txtPrimerNombre;
     @FindBy(xpath = ".//input[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    WebElementFacade txtPrimerApellido;
+    private WebElementFacade txtPrimerApellido;
     @FindBy(xpath = ".//a[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade btnBuscar;
+    private WebElementFacade btnBuscar;
 
 
     public BusquedaContactoDelDirectorioPage(WebDriver driver) {
         super(driver);
     }
 
+    @SuppressWarnings("SameParameterValue")
     public Boolean buscarContacto(String tipoContacto, String nombre, String apellido) {
         Boolean esBuscado = Boolean.FALSE;
         try {
@@ -49,6 +50,7 @@ public class BusquedaContactoDelDirectorioPage extends Guidewire {
         return esBuscado;
     }
 
+    @SuppressWarnings("SameParameterValue")
     private Boolean selecionarContacto(Boolean esBuscado, String numDocumento) {
         List<WebElementFacade> listaContactos = findAll(".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV-body']/div/table/tbody/tr");
         if (!listaContactos.isEmpty()) {
