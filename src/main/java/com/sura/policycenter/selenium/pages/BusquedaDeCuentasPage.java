@@ -5,18 +5,11 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 public class BusquedaDeCuentasPage extends Guidewire {
-
-    @FindBy(xpath=".//*[@id='TabBar:SearchTab']")
-    WebElementFacade mnuBuscar;
-
-    @FindBy(xpath=" .//*[@id='TabBar:SearchTab:Search_AccountSearch']")
-    WebElementFacade mnuBuscarCuenta;
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-labelEl']")
     WebElementFacade lblTipoDocumento;
@@ -133,19 +126,6 @@ public class BusquedaDeCuentasPage extends Guidewire {
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
     }
-
-    public void ingresarABuscarCuentas() {
-            Actions act = new Actions(getDriver());
-            mnuBuscar.waitUntilClickable();
-            mnuBuscar.click();
-            mnuBuscar.waitUntilClickable();
-            waitABit(1000);
-            mnuBuscar.click();
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.moveToElement(mnuBuscarCuenta).click().build().perform();
-            waitABit(1000);
-     }
-
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         this.limpiarFormulario();
         waitABit(1000);
