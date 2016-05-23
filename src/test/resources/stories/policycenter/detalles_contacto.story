@@ -13,7 +13,7 @@ Profesion, Estado civil, Tipo familia,  Telefono primario, Telefono celular y Co
 
 Examples:
 |primer_nombre    |primer_apellido |
-|ANA              |AKERMAN         |
+|SASHA            |AKERMAN         |
 
 
 Scenario: ver informacion detallada de un contacto tipo persona juridica.
@@ -26,4 +26,4 @@ Correo electronico primario
 
 Examples:
 |nombre_empresa    |
-|UMBRELLAS         |
+|UMBRELLA          |

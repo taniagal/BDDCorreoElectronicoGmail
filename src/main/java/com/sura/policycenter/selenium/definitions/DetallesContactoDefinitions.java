@@ -37,6 +37,7 @@ public class DetallesContactoDefinitions {
     @Then("se debe ver minimo la siguiente informacion: Primer nombre, Segundo nombre, Primer apellido, Segundo apellido,\r\nTipo de documento, Numero de documento, Sexo,Fecha de nacimiento, Fecha de fallecimiento, Causa de fallecimiento,\r\nProfesion, Estado civil, Tipo familia,  Telefono primario, Telefono celular y Correo electronico primario")
     public void assertConsultarDetallePersonaNatural() {
         dcs.verificarCamposPersonaNatural();
+        seusLogin.close();
     }
 
 

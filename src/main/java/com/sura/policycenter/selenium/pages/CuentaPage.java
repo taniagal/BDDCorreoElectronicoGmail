@@ -12,9 +12,6 @@ public class CuentaPage extends Guidewire{
     Actions act = null;
 
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
-    WebElementFacade mnuCuenta;
-
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
     private WebElementFacade mnuNuevaCuenta;
@@ -79,33 +76,6 @@ public class CuentaPage extends Guidewire{
     }
 
 
-    /*public void crearCuentaNuevaPersona(String tipoDocumento, String documento, String fechaNacimiento,
-                                        String primerNombre, String primerApellido, String tipoDireccion,
-                                        String direccion, String codigoPostal, String nombreOrganizacion, String agente){
-        btnCrearCuentaNueva.click();
-        btnNuevaCuentaPersonal.click();
-        espera(btnAgregarOrganizacion,5);
-        btnAgregarOrganizacion.click();
-        txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
-        btnBuscarOrganizacion.click();
-        btnSeleccionarOrganizacion.click();
-        waitABit(1000);
-        selectItem(cboCodigoAgente,agente);
-        espera(cboTipoDocumentoNuevaCuenta,15);
-        cboTipoDocumentoNuevaCuenta.clear();
-        cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
-        cboTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
-        txtDocumentoNuevaCuenta.sendKeys(documento);
-        txtFechaNacimiento.sendKeys(fechaNacimiento);
-        txtNombreNuevaCuentaPersonal.sendKeys(primerNombre);
-        txtApellidoNuevaCuentaPersonal.sendKeys(primerApellido);
-        txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
-        btnActualizar.click();
-        waitABit(1000);
-    }*/
-
     public void agregarTipoDocumento(String tipoDocumento, String documento) {
         cboTipoDocumentoNuevaCuenta.clear();
         cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
@@ -127,6 +97,7 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(cboDepartamento,departamento);
+        waitABit(1000);
         selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         selectItem(cboCiudad,ciudad);
         waitABit(1500);
@@ -146,31 +117,6 @@ public class CuentaPage extends Guidewire{
         btnActualizar.click();
         waitABit(1000);
     }
-
-   /* public void crearCuentaNuevaPersonaJuridica(String tipoDocumento, String documento, String nombreEmpresa,
-                                                String tipoDireccion, String direccion, String codigoPostal, String nombreOrganizacion, String agente) {
-        btnCrearCuentaNueva.click();
-        btnNuevaCuentaCompania.click();
-        espera(btnAgregarOrganizacion,5);
-        btnAgregarOrganizacion.click();
-        txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
-        btnBuscarOrganizacion.click();
-        btnSeleccionarOrganizacion.click();
-        waitABit(1000);
-        selectItem(cboCodigoAgente,agente);
-        espera(cboTipoDocumentoNuevaCuenta,15);
-        cboTipoDocumentoNuevaCuenta.clear();
-        cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
-        cboTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
-        txtDocumentoNuevaCuenta.sendKeys(documento);
-        txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        txtNombreNuevaPersonaJuridica.clear();
-        txtNombreNuevaPersonaJuridica.sendKeys(nombreEmpresa);
-        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
-        btnActualizar.click();
-        waitABit(1000);
-    }*/
 
     public void buscarPersona(String nombre, String persona){
         waitABit(1000);

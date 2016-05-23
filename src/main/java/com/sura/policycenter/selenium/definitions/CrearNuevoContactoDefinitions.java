@@ -74,6 +74,7 @@ public class CrearNuevoContactoDefinitions {
     @Then("el campo de ciudad deben ser obligatorios")
     public void thenElCampoDePaispaisDepartamentodepartamentoYCiudadciudadDebenSerObligatorios() {
         crearNuevoContactoSteps.validarCampoPaisDepartamentoYCiudad();
+
     }
 
     ////////////ESCENARIO CREAR PERSONA JURIDICA
