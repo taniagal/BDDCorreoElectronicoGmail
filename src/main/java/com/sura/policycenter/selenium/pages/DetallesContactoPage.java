@@ -135,10 +135,6 @@ public class DetallesContactoPage extends Guidewire {
     private WebElementFacade txtTipoDocumento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     private WebElementFacade txtDocumento;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-inputEl']")
-    private WebElementFacade txtDescripcionDireccion;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table")
-    private WebElementFacade tblDirecciones;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
 
@@ -323,8 +319,6 @@ public class DetallesContactoPage extends Guidewire {
      */
     public void verificarEstadoDeDocumento(){
         //assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo", !txtTipoDocumento.isCurrentlyEnabled() || !txtDocumento.isCurrentlyEnabled());
-        JOptionPane.showMessageDialog(null,txtTipoDocumento.isCurrentlyEnabled());
-        JOptionPane.showMessageDialog(null,txtDocumento.isCurrentlyEnabled());
     }
 
 
