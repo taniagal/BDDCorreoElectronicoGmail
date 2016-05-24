@@ -38,19 +38,32 @@ public class CotizacionesDeLaCuentaDefinitions {
 
     @When("seleccione las acciones de una cotizacion en particular")
     public void whenSeleccioneAccionesCotizacion() {
-        //cotizacionesDeLaCuentaSteps.seleccionarAccionesCotizacion();
+        cotizacionesDeLaCuentaSteps.seleccionarAccionesCotizacion();
     }
 
     @Then("me debe permitir cambiar el estado de acuerdo a la lista definida. Lista definida: Declinar <declinar>, No Tomar <noTomar>")
     public void whenSeleccioneAccionesCotizacion(@Named("declinar") String declinar, @Named("noTomar") String noTomar) {
-        // cotizacionesDeLaCuentaSteps.seleccionarAccionesCotizacion(declinar, noTomar);
+        cotizacionesDeLaCuentaSteps.validarEstadosCotizacion(declinar, noTomar);
     }
 
-    @When("seleccione la opcion de crear nueva cotizacion <crearCotizacion>")
+    @When("seleccione la opcion de crear nueva cotizacion")
     public void whenSeleccioneCrearCotizacion() {
-       // cotizacionesDeLaCuentaSteps.eleccionarCrearCotizacion();
+        cotizacionesDeLaCuentaSteps.crearNuevaCotizacion();
     }
 
+    @Then("se debe iniciar el proceso de nueva cotizacion")
+    public void thenValidarProcesoNuevaCot() {
+        cotizacionesDeLaCuentaSteps.validarCreacionCotizacion();
+    }
 
+    @When("muestre el listado de las acciones que se le pueden hacer a una cotizacion <declinar> <noTomar>")
+    public void whenValidarEstadosCot(@Named("declinar") String declinar, @Named("noTomar") String noTomar){
+        cotizacionesDeLaCuentaSteps.seleccionarAccionesCotizacion();
+        cotizacionesDeLaCuentaSteps.validarEstadosCotizacion(declinar,noTomar);
+    }
 
+    @Then("no debe aparece la opcion de retirar <retirar>.")
+    public void thenValidarOpcionRetirar(@Named("retirar") String retirar){
+        cotizacionesDeLaCuentaSteps.validarOpcionRetirar(retirar);
+    }
 }

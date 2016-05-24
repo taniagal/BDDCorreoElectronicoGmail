@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.InicioPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarCuentasPage;
 import net.thucydides.core.annotations.Step;
@@ -18,6 +19,7 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
     }
     BuscarCuentasPage buscarCuentasPage = new BuscarCuentasPage (getDriver());
     OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage (getDriver());
+    OpcionesAdminitradorCotizaciones opcionesAdministradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());
 
     @Step
     public void navegaBuscarCuentaPar (){
@@ -47,6 +49,31 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
 
     @Step
     public void seleccionarCotizacionesDeLaCuenta() {
+        inicioPage().irAOpcionesAdministradorCotizaciones();
+    }
 
+    @Step
+    public void seleccionarAccionesCotizacion() {
+        opcionesAdministradorCotizaciones.seleccionarAcciones();
+    }
+
+    @Step
+    public void validarEstadosCotizacion(String declinar, String noTomar) {
+        opcionesAdministradorCotizaciones.validarEstadosCotizacion(declinar, noTomar);
+    }
+
+    @Step
+    public void crearNuevaCotizacion() {
+        opcionesAdministradorCotizaciones.crearNuevaCotizacion();
+    }
+
+    @Step
+    public void validarCreacionCotizacion() {
+        opcionesAdministradorCotizaciones.validarCreacionCotizacion();
+    }
+
+    @Step
+    public void validarOpcionRetirar(String retirar) {
+        opcionesAdministradorCotizaciones.validarOpcionRetirar(retirar);
     }
 }

@@ -6,6 +6,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.contacto.ContactoNueva
 import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.*;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
@@ -270,6 +271,9 @@ public class Navegacion extends Guidewire {
     // Objetos menu Opciones Cuenta
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Roles']/div")
     private WebElementFacade mnuOpcionesCuenta;
+
+    @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_SubmissionManager']/div/span")
+    private WebElementFacade mnuAdmCotizaciones;
 
     public Navegacion(WebDriver driver) {
         super(driver);
@@ -1115,4 +1119,9 @@ public class Navegacion extends Guidewire {
         return new OpcionesCrearPartcCuentaPage(getDriver());
     }
 
+    public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
+        mnuAdmCotizaciones.click();
+        waitABit(800);
+        return new OpcionesAdminitradorCotizaciones(getDriver());
+    }
 }
