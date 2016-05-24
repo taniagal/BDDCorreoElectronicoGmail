@@ -6,94 +6,69 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 
-
 public class CuentaPage extends Guidewire{
-    Guidewire gw = new Guidewire(getDriver());
+
+    private final Guidewire gw = new Guidewire(getDriver());
+
+    @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
+    private WebElementFacade mnuCuenta;
+    @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
+    private WebElementFacade mnuNuevaCuenta;
+    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:GlobalContactNameInputSet:Name-inputEl']")
+    private WebElementFacade txtNombreCompania;
+    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    private WebElementFacade btnBuscar;
+    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton']")
+    private WebElementFacade btnCrearCuentaNueva;
+    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton:NewAccount_Person-textEl']")
+    private WebElementFacade btnNuevaCuentaPersonal;
+    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton:NewAccount_Company-textEl']")
+    private WebElementFacade btnNuevaCuentaCompania;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
+    private WebElementFacade txtNombreNuevaCuentaPersonal;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalContactNameInputSet:Name-inputEl']")
+    private WebElementFacade txtNombreNuevaPersonaJuridica;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
+    private WebElementFacade txtApellidoNuevaCuentaPersonal;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
+    private WebElementFacade txtDireccionNuevaCuentaPersonal;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-inputEl']")
+    private WebElementFacade txtCodigoPostalNuevaCuentaPersonal;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressType-inputEl']")
+    private WebElementFacade cboTipoDireccionNuevaCuentaPersonal;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
+    private WebElementFacade txtDocumentoNuevaCuenta;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:ProducerSelectionInputSet:Producer:SelectOrganization']")
+    private WebElementFacade btnAgregarOrganizacion;
+    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchDV:GlobalContactNameInputSet:Name-inputEl']")
+    private WebElementFacade txtNombreDeOrganizacion;
+    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    private WebElementFacade btnBuscarOrganizacion;
+    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchResultsLV:0:_Select']")
+    private WebElementFacade btnSeleccionarOrganizacion;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update-btnInnerEl']")
+    private WebElementFacade btnActualizar;
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:Name-inputEl']")
+    private WebElementFacade lblNombreDeCuenta;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:DocumentType-inputEl']")
+    private WebElementFacade cboTipoDocumentoNuevaCuenta;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:BasicPersonInfo:CreateNewContactInputSet:DateOfBirth-inputEl']")
+    private WebElementFacade txtFechaNacimiento;
+    @FindBy(id = "CreateAccount:CreateAccountScreen:_msgs")
+    private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
+    private WebElementFacade cboCodigoAgente;
 
     public CuentaPage(WebDriver driver){
         super(driver);
     }
 
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
-    WebElementFacade mnuCuenta;
-
-    @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
-    WebElementFacade mnuNuevaCuenta;
-
-    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:GlobalContactNameInputSet:Name-inputEl']")
-    WebElementFacade txtNombreCompania;
-
-    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade btnBuscar;
-
-    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton']")
-    WebElementFacade btnCrearCuentaNueva;
-
-    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton:NewAccount_Person-textEl']")
-    WebElementFacade btnNuevaCuentaPersonal;
-
-    @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton:NewAccount_Company-textEl']")
-    WebElementFacade btnNuevaCuentaCompania;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    WebElementFacade txtNombreNuevaCuentaPersonal;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalContactNameInputSet:Name-inputEl']")
-    WebElementFacade txtNombreNuevaPersonaJuridica;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    WebElementFacade txtApellidoNuevaCuentaPersonal;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
-    WebElementFacade txtDireccionNuevaCuentaPersonal;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-inputEl']")
-    WebElementFacade txtCodigoPostalNuevaCuentaPersonal;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressType-inputEl']")
-    WebElementFacade cboTipoDireccionNuevaCuentaPersonal;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
-    WebElementFacade txtDocumentoNuevaCuenta;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:ProducerSelectionInputSet:Producer:SelectOrganization']")
-    WebElementFacade btnAgregarOrganizacion;
-
-    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchDV:GlobalContactNameInputSet:Name-inputEl']")
-    WebElementFacade txtNombreDeOrganizacion;
-
-    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade btnBuscarOrganizacion;
-
-    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchResultsLV:0:_Select']")
-    WebElementFacade btnSeleccionarOrganizacion;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update-btnInnerEl']")
-    WebElementFacade btnActualizar;
-
-    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:Name-inputEl']")
-    WebElementFacade lblNombreDeCuenta;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:DocumentType-inputEl']")
-    WebElementFacade cboTipoDocumentoNuevaCuenta;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:BasicPersonInfo:CreateNewContactInputSet:DateOfBirth-inputEl']")
-    WebElementFacade txtFechaNacimiento;
-
-    @FindBy(id = "CreateAccount:CreateAccountScreen:_msgs")
-    WebElementFacade divMensaje;
-
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
-    WebElementFacade cboCodigoAgente;
-
     public void navNuevaCuenta(){
         Actions act = gw.deployMenu(mnuCuenta);
         act.moveToElement(mnuNuevaCuenta).click().build().perform();
     }
-
 
     public void crearCuentaNuevaPersona(String tipoDocumento, String documento, String fechaNacimiento,
                                         String primerNombre, String primerApellido, String tipoDireccion,
@@ -147,11 +122,11 @@ public class CuentaPage extends Guidewire{
         waitABit(1000);
     }
 
+    @SuppressWarnings("SameParameterValue")
     public void buscarPersona(String nombre){
         waitABit(1000);
         txtNombreCompania.sendKeys(nombre);
         btnBuscar.click();
-
     }
 
     public void assertCrearCuenta(String nombreCuenta){

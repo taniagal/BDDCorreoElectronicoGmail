@@ -7,18 +7,18 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
-
+@SuppressWarnings("WeakerAccess")
 public class CrearCuentaNuevaDefinitions {
     @Steps
-    SeusLoginSteps seusLogin;
+    private SeusLoginSteps seusLogin;
 
     @Steps
-    CrearNuevaCuentaSteps cns;
+    private CrearNuevaCuentaSteps cns;
 
 
     @Given("que me encuentro en el sistema de policy center")
@@ -45,8 +45,9 @@ public class CrearCuentaNuevaDefinitions {
         cns.assertCrearCuenta(primerNombre+" "+primerApellido);
     }
 
-
-    //------Escenario 2
+    /**
+     * Escenario 2
+     */
     @Given("Me ecnuentro en Policy Center")
     public void assertPolicyCenterLogin(){
         cns.assertPolicyCenterLogin();
@@ -68,8 +69,9 @@ public class CrearCuentaNuevaDefinitions {
         cns.assertCrearCuenta(nombreEmpresa);
     }
 
-
-    // ----- Escenario 3
+    /**
+     * Escenario 3
+     */
     @Given("Que un cliente ya tiene una cuenta creada")
     public  void verificarCuentaCreada(){
         cns.assertPolicyCenterLogin();
@@ -93,8 +95,17 @@ public class CrearCuentaNuevaDefinitions {
         cns.assertVerificarMensaje(mensaje);
     }
 
-
-    // ------ Escenario 4
+    /**
+     * Escenario 4
+     * @param codigoPostal
+     * @param tipoDocumento
+     * @param primerNombre
+     * @param primerApellido
+     * @param tipoDireccion
+     * @param direccion
+     * @param nombreOrganizacion
+     * @param agente
+     */
     @When("Quiera crear una cuenta para un contacto persona natural menor de edad con fecha de nacimiento <fecha_nacimineto>,\n" +
             "e ingrese la informacion en los campos tipo de documento <tipo_documento>,Primer nombre <primer_nombre>,\n" +
             "primer apellido <primer_apellido>, tipo de direccion <tipo_direccion> y direccion <direccion>. codigo postal\n" +
@@ -103,7 +114,7 @@ public class CrearCuentaNuevaDefinitions {
                                            @Named("primer_nombre")String primerNombre,@Named("primer_apellido")String primerApellido,
                                            @Named("tipo_direccion")String tipoDireccion,@Named("direccion")String direccion,
                                            @Named("nombre_organizacion")String nombreOrganizacion, @Named("agente") String agente){
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", new Locale("es","CO"));
         Date date = new Date();
         String fechaActual = dateFormat.format(date);
         cns.abrirNuevaCuenta();

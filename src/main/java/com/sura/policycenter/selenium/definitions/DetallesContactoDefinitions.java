@@ -9,22 +9,21 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-
+@SuppressWarnings("WeakerAccess")
 public class DetallesContactoDefinitions {
 
     @Steps
-    SeusLoginSteps seusLogin;
+    private SeusLoginSteps seusLogin;
 
     @Steps
-    DetallesContactoSteps dcs;
+    private DetallesContactoSteps dcs;
 
     @Steps
-    CrearNuevoContactoSteps ncs;
+    private CrearNuevoContactoSteps ncs;
 
     /**
      * Escenario 1
      */
-
     @Given("Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural con nombre\n" +
             "<primer_nombre> y apellido <primer_apellido>, tipo direccion <tipo_direccion>, direccion <direccion>,\n" +
             "tipo documento <tipo_documento>, documento <documento>")
@@ -55,8 +54,6 @@ public class DetallesContactoDefinitions {
     /**
      * Escenario 2
      */
-
-
     @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica con nombre <nombre_empresa>,\n" +
             "      tipo de direccion <tipo_direccion> y direccion <direccion>")
     public void loginPersonaJuridica(@Named("nombre_empresa")String razonSocial,@Named("tipo_direccion")String tipoDireccion,@Named("direccion")String direccion) {
@@ -71,9 +68,8 @@ public class DetallesContactoDefinitions {
     }
 
     @When("quiera ver informacion detallada del contacto con nombre empresa <nombre_empresa>")
-    public void whenConsultarDetallePersonaJuridica (@Named("nombre_empresa") String nombre_empresa) {
+    public void whenConsultarDetallePersonaJuridica(@Named("nombre_empresa")String nombre_empresa) {
         dcs.abrirDetallesContactoEmpresa(nombre_empresa);
-
     }
 
     @Then("se debe ver minimo la siguiente informacion: Razon social, Nombre comercial, Tipo de documento, N\u00FAmero de\r\ndocumento, Actividad economica, Numero de empleados, Valor de activos, ventas anuales, Telefono de la oficina, Fax,\r\nCorreo electronico primario")

@@ -8,14 +8,15 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-
+@SuppressWarnings("WeakerAccess")
 public class DetallesContactoEdicionDefinitions {
     @Steps
-    DetallesContactoSteps dcs;
+    private DetallesContactoSteps dcs;
 
     @Steps
-    CrearNuevoContactoSteps ncs;
+    private CrearNuevoContactoSteps ncs;
 
+    @SuppressWarnings("EmptyMethod")
     @Given("Se ha consultado la informacion detallada de un contacto persona natural")
     public void personaNatural(){}
 
@@ -53,10 +54,12 @@ public class DetallesContactoEdicionDefinitions {
         dcs.verificarActualizacionPersona();
     }
 
-
-    //-------------------ESCENARIO 2---------------------
+    /**
+     * ESCENARIO 2
+     */
+    @SuppressWarnings("EmptyMethod")
     @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica")
-    public void infoContactoJurídico(){
+    public void infoContactoJuridico(){
     }
 
 

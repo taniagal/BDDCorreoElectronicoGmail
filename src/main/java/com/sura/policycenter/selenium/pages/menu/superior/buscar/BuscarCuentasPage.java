@@ -15,13 +15,13 @@ public class BuscarCuentasPage extends Guidewire {
     }
 
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
-    WebElementFacade lblCuenta;
+    private WebElementFacade lblCuenta;
 
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade btnBuscaCuenta;
+    private WebElementFacade btnBuscaCuenta;
 
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
-    WebElementFacade linkCuenta;
+    private WebElementFacade linkCuenta;
 
     public void navegacionBuscarCuenta(String numCuenta) {
         lblCuenta.clear();

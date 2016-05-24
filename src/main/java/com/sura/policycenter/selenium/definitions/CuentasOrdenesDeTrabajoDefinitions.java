@@ -1,23 +1,17 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.google.inject.name.Named;
-import com.sura.policycenter.selenium.steps.ContactoOrdenesDeTrabajoSteps;
 import com.sura.policycenter.selenium.steps.CuentasOrdenesDeTrabajoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-/**
- * Created by brayruru on 2016/05/03.
- */
+@SuppressWarnings("WeakerAccess")
 public class CuentasOrdenesDeTrabajoDefinitions {
 
     @Steps
-    ContactoOrdenesDeTrabajoSteps ordenesTrabajoSteps;
-
-    @Steps
-    CuentasOrdenesDeTrabajoSteps cuentasOrdenesTrabajoSteps;
+    private CuentasOrdenesDeTrabajoSteps cuentasOrdenesTrabajoSteps;
 
     @Given("Estoy buscando una cuenta <numCuenta>")
     public void givenEstoyEnUnaCuentanumCuenta(@org.jbehave.core.annotations.Named("numCuenta") String numCuenta) {
@@ -49,8 +43,5 @@ public class CuentasOrdenesDeTrabajoDefinitions {
     public void filtrarPorProducto(@Named("filtroProducto") String filtroProducto) {
         cuentasOrdenesTrabajoSteps.filtrarPorProducto(filtroProducto);
     }
-
-
-
 
 }

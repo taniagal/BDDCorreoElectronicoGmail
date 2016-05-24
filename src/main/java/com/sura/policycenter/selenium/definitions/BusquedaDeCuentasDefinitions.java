@@ -7,9 +7,9 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
+@SuppressWarnings("WeakerAccess")
 public class BusquedaDeCuentasDefinitions {
 
     private InicioPage inicioPage() {
@@ -17,7 +17,7 @@ public class BusquedaDeCuentasDefinitions {
     }
 
     @Steps
-    BusquedaDeCuentasSteps busquedaDeCuentasSteps;
+    private BusquedaDeCuentasSteps busquedaDeCuentasSteps;
 
     @Given("que me encuentro en la busqueda de cuentas")
     public void ingresarABuscarCuentas() {

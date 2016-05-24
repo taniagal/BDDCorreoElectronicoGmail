@@ -5,11 +5,9 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-
 public class InformacionTitularCuentaSteps extends ScenarioSteps {
 
-    InformacionTitularCuentaPage informacionTitularCuentaPage = new InformacionTitularCuentaPage(getDriver());
-
+    private final InformacionTitularCuentaPage informacionTitularCuentaPage = new InformacionTitularCuentaPage(getDriver());
 
     public InformacionTitularCuentaSteps(Pages pages) {
         super(pages);

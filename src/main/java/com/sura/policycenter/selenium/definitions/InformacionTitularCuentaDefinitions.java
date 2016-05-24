@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.BusquedaContactoSteps;
 import com.sura.policycenter.selenium.steps.InformacionTitularCuentaSteps;
 import net.thucydides.core.annotations.Steps;
@@ -9,24 +8,21 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-
+@SuppressWarnings("WeakerAccess")
 public class InformacionTitularCuentaDefinitions {
 
     @Steps
-    SeusLoginSteps seusLoginSteps;
+    private InformacionTitularCuentaSteps informacionTitularCuentaSteps;
 
     @Steps
-    InformacionTitularCuentaSteps informacionTitularCuentaSteps;
-
-    @Steps
-    BusquedaContactoSteps buscarContactoSteps;
+    private BusquedaContactoSteps buscarContactoSteps;
 
 
     @Given("que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>")
     public void givenExisteTitularCuenta(@Named("tipoDoc") String tipoDoc,
                                          @Named("nombre") String nombre,
                                          @Named("apellido") String apellido) {
-        buscarContactoSteps.navegarBarraSuperior("Buscar", "Contactos", "");
+        buscarContactoSteps.navegarBarraSuperior();
         buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, nombre, "", apellido, "");
     }
 

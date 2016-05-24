@@ -7,7 +7,6 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 public class DetalleRegistrosSuscripcionDefinitions {
@@ -46,6 +45,5 @@ public class DetalleRegistrosSuscripcionDefinitions {
     public void verSumaGrupo(@Named("suma") String suma) {
         detalleRegistrosSuscripcionSteps.validarSumaGrupo(suma);
     }
-
 
 }

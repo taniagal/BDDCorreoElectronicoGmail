@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.pages;
 
-
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.serinitybdd.util.GwNavegacionUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -8,35 +7,26 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DisponibilidadDetalleProductoPage extends Guidewire {
 
     @FindBy(xpath=".//input[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
     private WebElementFacade listaTipoCanalDeVenta;
-
     @FindBy(xpath=".//*[@id='AccountFile:AccountFileMenuActions']")
     private WebElementFacade btnAccionesCuenta;
-
     @FindBy(xpath=".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission']")
-    WebElementFacade opcionNuevoEnvio;
-
+    private WebElementFacade opcionNuevoEnvio;
     @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:7:addSubmission']")
-    WebElementFacade btnElegirAutoPersonal;
-
+    private WebElementFacade btnElegirAutoPersonal;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div")
-    WebElementFacade opcionVerInformacionPoliza;
-
+    private WebElementFacade opcionVerInformacionPoliza;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
-    WebElementFacade listaOrganizacionDeVentas;
-
+    private WebElementFacade listaOrganizacionDeVentas;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
-    WebElementFacade listaPATipoPoliza;
-
+    private WebElementFacade listaPATipoPoliza;
 
     public DisponibilidadDetalleProductoPage(WebDriver driver) {
         super(driver);
@@ -69,7 +59,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
         this.validarDatosDeLaLista(tipoCanal);
     }
 
-    public void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
+    private  void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {

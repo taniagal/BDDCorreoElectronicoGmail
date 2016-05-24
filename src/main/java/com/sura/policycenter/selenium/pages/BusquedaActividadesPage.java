@@ -6,90 +6,70 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.StringContains.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 public class BusquedaActividadesPage extends SeusLoginPage {
 
     @FindBy(xpath=".//*[@id='TabBar:SearchTab']")
-    WebElementFacade mnuBuscar;
-
+    private WebElementFacade mnuBuscar;
     @FindBy(xpath=".//*[@id='TabBar:SearchTab:Search_ActivitySearch']")
-    WebElementFacade mnuBuscarActividades;
-
+    private WebElementFacade mnuBuscarActividades;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:AssignedUser-inputEl']")
-    WebElementFacade txtAsignadoA;
-
+    private WebElementFacade txtAsignadoA;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:ActivityStatus-inputEl']")
-    WebElementFacade txtEstadoActividad;
-
+    private WebElementFacade txtEstadoActividad;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:ActivityPriority-inputEl']")
-    WebElementFacade txtPrioridad;
-
+    private WebElementFacade txtPrioridad;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:OverdueNow-inputEl']")
-    WebElementFacade txtVencida;
-
+    private WebElementFacade txtVencida;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:PolicyNumber-inputEl']")
-    WebElementFacade txtNumeroPoliza;
-
+    private WebElementFacade txtNumeroPoliza;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:AccountNumber-inputEl']")
-    WebElementFacade txtNumeroCuenta;
-
+    private WebElementFacade txtNumeroCuenta;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade btnBuscar;
-
+    private WebElementFacade btnBuscar;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
-    WebElementFacade btnRestablecer;
-
-    @FindBy(xpath="//div[4]/div/table/tbody/tr/td[2]/div")
-    WebElementFacade grdIcono;
-
+    private WebElementFacade btnRestablecer;
     @FindBy(xpath="//td[4]/div")
-    WebElementFacade grdFechaVencimiento;
-
+    private WebElementFacade grdFechaVencimiento;
     @FindBy(xpath="//td[5]/div")
-    WebElementFacade grdPrioridad;
-
+    private WebElementFacade grdPrioridad;
     @FindBy(xpath="//td[6]/div")
-    WebElementFacade grdEstadoActividad;
-
+    private WebElementFacade grdEstadoActividad;
     @FindBy(xpath="//td[7]/div")
-    WebElementFacade grdAsunto;
-
+    private WebElementFacade grdAsunto;
     @FindBy(xpath="//td[8]/div")
-    WebElementFacade grdId;
-
+    private WebElementFacade grdId;
     @FindBy(xpath="//td[9]/div")
-    WebElementFacade grdCuenta;
-
+    private WebElementFacade grdCuenta;
     @FindBy(xpath="//td[10]/div")
-    WebElementFacade grdProducto;
-
+    private WebElementFacade grdProducto;
     @FindBy(xpath="//td[11]/div")
-    WebElementFacade grdAsignadoPor;
-
+    private WebElementFacade grdAsignadoPor;
     @FindBy(xpath="//td[12]/div")
-    WebElementFacade grdEstado;
-
-
+    private WebElementFacade grdEstado;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
-    WebElementFacade msgFiltrosRequeridos;
+    private WebElementFacade msgFiltrosRequeridos;
 
-    public BusquedaActividadesPage(WebDriver driver) {super(driver);}
+    public BusquedaActividadesPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void buscarActividades() {
-            Actions act = new Actions(getDriver());
-            mnuBuscar.waitUntilClickable();
-            waitABit(1000);
-            mnuBuscar.click();
-            waitABit(1000);
-            mnuBuscar.click();
-            waitABit(1000);
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.moveToElement(mnuBuscarActividades).click().build().perform();
-            btnRestablecer.click();
-            waitABit(1000);
+        Actions act = new Actions(getDriver());
+        mnuBuscar.waitUntilClickable();
+        waitABit(1000);
+        mnuBuscar.click();
+        waitABit(1000);
+        mnuBuscar.click();
+        waitABit(1000);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuBuscarActividades).click().build().perform();
+        btnRestablecer.click();
+        waitABit(1000);
     }
 
     public void filtrarPorAsignado(String usuario) {
@@ -157,4 +137,5 @@ public class BusquedaActividadesPage extends SeusLoginPage {
         txtEstadoActividad.sendKeys(estadoActividad);
         txtEstadoActividad.sendKeys(Keys.ENTER);
     }
+
 }

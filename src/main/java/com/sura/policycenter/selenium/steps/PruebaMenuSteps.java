@@ -1,65 +1,27 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.beust.jcommander.internal.Lists;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.selenium.pages.AbrirAppPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.annotations.WithTag;
-import net.thucydides.core.model.TestTag;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.thucydides.core.steps.StepEventBus;
 
-import java.util.List;
-import java.util.Map;
-
-/**
- * Created by jorghome on 04/05/2016.
- */
 public class PruebaMenuSteps extends ScenarioSteps {
 
-    //Guidewire gw = new Guidewire(getDriver());
-    //AbrirAppPage abrirAppPage = new AbrirAppPage(getDriver());
-    //InicioPage inicioPage = new InicioPage(getDriver());
-    //InicioPage inicioPage;
-
-    public PruebaMenuSteps(Pages pages) {
-        super(pages);
-    }
-
-    private Guidewire gw() {
+    private Guidewire guidewire() {
         return getPages().currentPageAt(Guidewire.class);
     }
-
     private AbrirAppPage abrirAppPage() {
         return getPages().currentPageAt(AbrirAppPage.class);
     }
-
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
 
-    @Step
-    public void should_run_just_for_end_to_end_tests () {
-
-        Map<String, String> metadata = Serenity.getCurrentSession().getMetaData();
-
-        if (!metadata.get("level").equalsIgnoreCase("system")) {
-            StepEventBus.getEventBus().testIgnored();
-        }
-        else {
-            add_tags();
-        }
+    public PruebaMenuSteps(Pages pages) {
+        super(pages);
     }
-
-    public void add_tags() {
-        List<TestTag> myTags = Lists.newArrayList(TestTag.withName("menu").andType("prueba"));
-        StepEventBus.getEventBus().addTagsToCurrentStory(myTags);
-    }
-
-    @WithTag("prueba:menu")
 
     @Step
     public void open() {
@@ -68,7 +30,7 @@ public class PruebaMenuSteps extends ScenarioSteps {
 
     @Step
     public void login(String usuario, String contrasenia) {
-        gw().login(usuario, contrasenia);
+        guidewire().login(usuario, contrasenia);
     }
 
     @Step
@@ -90,20 +52,20 @@ public class PruebaMenuSteps extends ScenarioSteps {
         inicioPage().irAMisOtrasTransacciones();
         waitABit(3000);
         inicioPage().irAMisColas();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Acciones Escritorio
-        /*inicioPage().irAEscritorioNuevoEnvio();
+        inicioPage().irAEscritorioNuevoEnvio();
         waitABit(3000);
         inicioPage().irAEscritorioNuevaCuenta();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Menu Cuenta
-        /*inicioPage().irANuevaCuenta();
-        waitABit(3000);*/
+        inicioPage().irANuevaCuenta();
+        waitABit(3000);
 
         //Acciones Cuenta
-        /*inicioPage().irACuentaNuevaNota();
+        inicioPage().irACuentaNuevaNota();
         waitABit(1000);
         inicioPage().irACuentaLigaDocExiste();
         waitABit(1000);
@@ -152,28 +114,28 @@ public class PruebaMenuSteps extends ScenarioSteps {
         inicioPage().irACuentaCombPoliACuenta();
         waitABit(1000);
         inicioPage().irCuentaTazaCotPoliManu();
-        waitABit(2000);*/
+        waitABit(2000);
 
         //Menu Poliza
-        /*inicioPage().irANuevoEnvio();
+        inicioPage().irANuevoEnvio();
         waitABit(3000);
         inicioPage().irABuscarPoliza("4215989563");
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Menu Contacto
-        /*inicioPage().irANuevaCompania();
+        inicioPage().irANuevaCompania();
         waitABit(3000);
         inicioPage().irANuevaPersona();
         waitABit(3000);
         inicioPage().irABuscarContacto();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Acciones Contacto
-        /*inicioPage().irAContactoNuevaCuenta();
-        waitABit(3000);*/
+        inicioPage().irAContactoNuevaCuenta();
+        waitABit(3000);
 
         //Menu Buscar
-        /*inicioPage().irABuscarPolizas();
+        inicioPage().irABuscarPolizas();
         waitABit(3000);
         inicioPage().irABuscarCuentas();
         waitABit(3000);
@@ -182,14 +144,14 @@ public class PruebaMenuSteps extends ScenarioSteps {
         inicioPage().irABuscarActividades();
         waitABit(3000);
         inicioPage().irABuscarContactos();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Menu Equipo
-        /*inicioPage().irAEquipo();
-        waitABit(3000);*/
+        inicioPage().irAEquipo();
+        waitABit(3000);
 
         //Menu Adiministracion
-        /*inicioPage().irAAdminUsuarios();
+        inicioPage().irAAdminUsuarios();
         waitABit(3000);
         inicioPage().irAAdminGrupos();
         waitABit(3000);
@@ -232,10 +194,10 @@ public class PruebaMenuSteps extends ScenarioSteps {
         inicioPage().irAAdminFormatoExporta();
         waitABit(3000);
         inicioPage().irAAdminCambioDatos();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Acciones Adiministracion
-        /*inicioPage().irAAdminUsuarioNuevo();
+        inicioPage().irAAdminUsuarioNuevo();
         waitABit(3000);
         inicioPage().irAAdminGrupoNuevo();
         waitABit(3000);
@@ -251,6 +213,6 @@ public class PruebaMenuSteps extends ScenarioSteps {
 
     @Step
     public void logout() {
-        gw().logout();
+        guidewire().logout();
     }
 }
