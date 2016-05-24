@@ -54,11 +54,12 @@ public class DetallesContactoEdicionDefinitions {
         dcs.verificarActualizacionPersona();
     }
 
-
-    //-------------------ESCENARIO 2---------------------
+    /**
+     * ESCENARIO 2
+     */
     @SuppressWarnings("EmptyMethod")
     @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica")
-    public void infoContactoJurídico(){
+    public void infoContactoJuridico(){
     }
 
 

@@ -16,7 +16,7 @@ public class AgregarDireccionContactoDefinitions {
     }
 
     @When("se vaya a ingresar la nueva direccion y valide los campos en pantalla")
-    public void whenSeVayaAIngresarLaNuevaDirecciónYValideLosCamposEnPantalla() {
+    public void whenSeVayaAIngresarLaNuevaDireccionYValideLosCamposEnPantalla() {
         dcs.validarDatosPatalla();
     }
 
