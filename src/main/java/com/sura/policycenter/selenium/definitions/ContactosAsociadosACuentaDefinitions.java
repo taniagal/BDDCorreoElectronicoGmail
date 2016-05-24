@@ -40,7 +40,7 @@ public class ContactosAsociadosACuentaDefinitions {
     }
 
     @Then("debo ver los roles de contacto de tipo persona y sus $encabezados")
-    public void thenDeboVerLosRolesDeContactoDeTipoPersonaJurídica(ExamplesTable encabezados) {
+    public void thenDeboVerLosRolesDeContactoDeTipoPersonaJuridica(ExamplesTable encabezados) {
         contactosAsociadosACuentaSteps.verificarRolesFuncionesNoEsNulo();
         contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado, "//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:ContactRolesDV:ContactRolesLV']/div/div/div/div");
     }

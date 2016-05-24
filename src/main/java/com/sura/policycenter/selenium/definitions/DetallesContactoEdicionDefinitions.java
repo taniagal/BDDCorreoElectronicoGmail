@@ -57,11 +57,12 @@ public class DetallesContactoEdicionDefinitions {
 
     }
 
-
-    //-------------------ESCENARIO 2---------------------
+    /**
+     * ESCENARIO 2
+     */
     @SuppressWarnings("EmptyMethod")
     @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica")
-    public void infoContactoJurídico(){
+    public void infoContactoJuridico(){
     }
 
     @When("quiera editar la informacion del contacto con razon social <razon_social>, nombre comercial <nombre_comercial>, actividad comercial <actividad_comercial>")
