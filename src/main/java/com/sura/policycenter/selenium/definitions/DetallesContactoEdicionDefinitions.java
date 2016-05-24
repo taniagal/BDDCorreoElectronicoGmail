@@ -1,18 +1,18 @@
 package com.sura.policycenter.selenium.definitions;
 
+import com.sura.guidewire.selenium.SeusLoginPage;
+import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevoContactoSteps;
 import com.sura.policycenter.selenium.steps.DetallesContactoSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 
 @SuppressWarnings("WeakerAccess")
 public class DetallesContactoEdicionDefinitions {
     @Steps
     private DetallesContactoSteps dcs;
-
+    @Steps
+    private SeusLoginSteps sls;
     @Steps
     private CrearNuevoContactoSteps ncs;
 
@@ -23,6 +23,7 @@ public class DetallesContactoEdicionDefinitions {
     @When("quiera editar la informacion del contacto con segundo nombre <segundo_nombre>")
     public void agregarNombre(@Named("segundo_nombre")String segundoNombre){
         dcs.agregarNombre(segundoNombre);
+        dcs.verificarEstadoDocumento();
     }
 
     @When("segundo apellido <segundo_apellido>, telefono trabajo <telefono_trabajo>")
@@ -52,6 +53,8 @@ public class DetallesContactoEdicionDefinitions {
     public void ralizarEdicionInformacionContacto() {
         dcs.actualizarContacto();
         dcs.verificarActualizacionPersona();
+        sls.close();
+
     }
 
 
@@ -64,6 +67,7 @@ public class DetallesContactoEdicionDefinitions {
     @When("quiera editar la informacion del contacto con razon social <razon_social>, nombre comercial <nombre_comercial>, actividad comercial <actividad_comercial>")
     public void agregarRazonSocial(@Named("nombre_comercial")String nombreComercial, @Named("actividad_comercial")String actividadComercial){
         dcs.agregarRazonSocial(nombreComercial,actividadComercial);
+        dcs.verificarEstadoDocumento();
     }
 
     @When("numero de empleados <numero_empleados>, valor activos <valor_activos>, ventas anuales <ventas_anuales>")

@@ -12,7 +12,7 @@ And ingreso la informacion de numero de documento <numeroDeDocumento>
 And ingreso la informacion de razon social <razonSocial>
 And ingreso la informacion de tipo de direccion <tipoDireccion>
 And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
-Then se debe crear una persona tipo juridica con razon social <razonSocial>
+Then se debe crear una persona juridica con razon social <razonSocial>
 
 Examples:
 |tipoDocumento|numeroDeDocumento|razonSocial     | tipoDireccion  |direccion|departamento|ciudad  |

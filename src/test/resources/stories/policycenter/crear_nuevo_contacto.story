@@ -6,13 +6,12 @@ Quiera crear una persona natural e ingrese la información en los campos tipo de
 se debe crear una persona tipo natural
 
 Scenario: Crear contacto persona natural
-GivenStories: stories/policycenter/login_policy.story
 Given estoy en la pantalla de crear contacto persona natural
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
 And ingreso la informacion de primer nombre <primerNombre>
 And ingreso la informacion de primer apellido <primerApellido>
-And ingreso la informacion de tipo de dioreccion <tipoDireccion>
+And ingreso la informacion de tipo de direccion <tipoDireccion>
 And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 Then se debe crear una persona tipo natural con primer nombre <primerNombre>
 
@@ -26,7 +25,7 @@ Given estoy en la pantalla de crear contacto persona juridica
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
 And ingreso la informacion de razon social <razonSocial>
-And ingreso la informacion de tipo de dioreccion <tipoDireccion>
+And ingreso la informacion de tipo de direccion <tipoDireccion>
 And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 Then se debe crear una persona tipo juridica con razon social <razonSocial>
 
@@ -40,7 +39,7 @@ Given estoy en la pantalla de crear contacto persona juridica
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
 And ingreso la informacion de razon social <razonSocial>
-And ingreso la informacion de tipo de dioreccion <tipoDireccion>
+And ingreso la informacion de tipo de direccion <tipoDireccion>
 And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 Then debe validar que el contacto ya existe
 
@@ -56,7 +55,7 @@ When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
 And ingreso la informacion de primer nombre <primerNombre>
 And ingreso la informacion de primer apellido <primerApellido>
-And ingreso la informacion de tipo de dioreccion <tipoDireccion>
+And ingreso la informacion de tipo de direccion <tipoDireccion>
 And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 And selecciono el tipo de telefono fijo <tipoTelefonoFijo> e ingreso el numero de telefono fijo <numeroTelefonoFijo>
 Then el campo de ciudad deben ser obligatorios

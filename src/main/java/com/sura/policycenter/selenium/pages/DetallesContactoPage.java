@@ -139,14 +139,16 @@ public class DetallesContactoPage extends Guidewire {
     private WebElementFacade txtCodigoPostal;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
     private WebElementFacade txtTipoNegocio;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:DocumentType-inputEl']")
+    private WebElementFacade txtTipoDocumento;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
+    private WebElementFacade txtDocumento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-inputEl']")
-    WebElementFacade txtDescripcionDireccion;
-
+    private WebElementFacade txtDescripcionDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table")
-    WebElementFacade tblDirecciones;
-
+    private WebElementFacade tblDirecciones;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
-    WebElementFacade divMensaje;
+    private WebElementFacade divMensaje;
 
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
@@ -300,6 +302,12 @@ public class DetallesContactoPage extends Guidewire {
             res = right.toString().substring(0,right.toString().length()-1);
         }
         assertThat(res,"No estan correctos los valores".equals(res));
+    }
+
+    //-----Verifica que el documento y el tipo de documento no sean editables por un error de codigo en policy.
+    public void verificarEstadoDeDocumento(){
+        assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo",
+                !txtTipoDocumento.isEnabled() || !txtDocumento.isEnabled());
     }
 
 

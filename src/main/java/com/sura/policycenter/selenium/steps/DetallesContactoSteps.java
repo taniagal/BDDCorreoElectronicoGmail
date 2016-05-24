@@ -133,6 +133,10 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
+    public void verificarEstadoDocumento(){
+        dc.verificarEstadoDeDocumento();
+    }
+    @Step
     public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
         dc.agregarEmpleados(numeroEmpleados,ventasAnuales,valorActivos);
     }

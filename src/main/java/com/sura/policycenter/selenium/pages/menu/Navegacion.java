@@ -24,6 +24,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.*;
+
 public class Navegacion extends Guidewire {
 
     private final Guidewire gw = new Guidewire(getDriver());
@@ -363,6 +365,7 @@ public class Navegacion extends Guidewire {
     public NuevaCompaniaPage irANuevaCompania() {
         gw.deployMenu(mnuContact);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        waitABit(500);
         act.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemNuevaCompania).release(mnuItemNuevaCompania).click().build().perform();
@@ -373,6 +376,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuContact);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
+        waitABit(500);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemNuevaPersona).release(mnuItemNuevaPersona).click().build().perform();
         return new NuevaPersonaPage(getDriver());

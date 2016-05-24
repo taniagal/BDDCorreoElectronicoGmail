@@ -13,7 +13,7 @@ And ingreso la informacion de primer nombre <primerNombre>
 And ingreso la informacion de primer apellido <primerApellido>
 And ingreso la informacion de tipo de direccion <tipoDireccion>
 And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
-Then se debe crear una persona tipo natural con primer nombre <primerNombre>
+Then se debe crear una persona natural con primer nombre <primerNombre>
 
 
 Examples:

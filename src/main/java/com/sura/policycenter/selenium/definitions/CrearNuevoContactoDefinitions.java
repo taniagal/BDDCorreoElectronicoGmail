@@ -61,6 +61,12 @@ public class CrearNuevoContactoDefinitions {
     @Then("se debe crear una persona tipo natural con primer nombre <primerNombre>")
     public void thenSeDebeCrearUnaPersonaTipoNatural(@Named("primerNombre") String primerNombre) {
         crearNuevoContactoSteps.actualizar(primerNombre);
+        seusLoginSteps.close();
+    }
+
+    @Then("se debe crear una persona natural con primer nombre <primerNombre>")
+    public void thenSeDebeCrearUnaPersonaNatural(@Named("primerNombre") String primerNombre) {
+        crearNuevoContactoSteps.actualizar(primerNombre);
     }
 
     @When("selecciono el tipo de telefono fijo <tipoTelefonoFijo> e ingreso el numero de telefono fijo <numeroTelefonoFijo>")
@@ -71,7 +77,7 @@ public class CrearNuevoContactoDefinitions {
     @Then("el campo de ciudad deben ser obligatorios")
     public void thenElCampoDePaispaisDepartamentodepartamentoYCiudadciudadDebenSerObligatorios() {
         crearNuevoContactoSteps.validarCampoPaisDepartamentoYCiudad();
-
+        seusLoginSteps.close();
     }
 
     /**
@@ -91,11 +97,18 @@ public class CrearNuevoContactoDefinitions {
     @Then("se debe crear una persona tipo juridica con razon social <razonSocial>")
     public void thenSeDebeCrearUnaPersonaTipoJuridica(@Named("razonSocial") String razonSocial) {
         crearNuevoContactoSteps.actualizarJuridica(razonSocial);
+        seusLoginSteps.close();
+    }
+
+    @Then("se debe crear una persona juridica con razon social <razonSocial>")
+    public void thenSeDebeCrearUnaPersonaJuridica(@Named("razonSocial") String razonSocial) {
+        crearNuevoContactoSteps.actualizarJuridica(razonSocial);
     }
 
     @Then("debe validar que el contacto ya existe")
     public void thenSeDebeValidarQueElContactoYaExiste() {
         crearNuevoContactoSteps.verificarContactoExistente();
+        seusLoginSteps.close();
     }
 
 }
