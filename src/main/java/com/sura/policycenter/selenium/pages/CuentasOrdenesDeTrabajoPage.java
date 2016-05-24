@@ -13,8 +13,6 @@ import static org.hamcrest.Matchers.containsString;
 
 public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
-    Guidewire gw = new Guidewire(getDriver());
     //@FindBy(xpath=".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_WorkOrders']/div/span")
     @FindBy(xpath=".//tr[5]/td/div/span")
     private WebElementFacade mnuTransaccionesPoliza;

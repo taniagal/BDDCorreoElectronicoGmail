@@ -13,12 +13,11 @@ public class DetallesContactoEdicionDefinitions {
     @Steps
     private DetallesContactoSteps dcs;
 
-    @Steps
-    private CrearNuevoContactoSteps ncs;
-
     @SuppressWarnings("EmptyMethod")
     @Given("Se ha consultado la informacion detallada de un contacto persona natural")
-    public void personaNatural(){}
+    public void personaNatural() {
+        // Pendiente consulta informacion detallada contacto persona natural.
+    }
 
     @When("quiera editar la informacion del contacto con segundo nombre <segundo_nombre>")
     public void agregarNombre(@Named("segundo_nombre")String segundoNombre){
@@ -59,7 +58,8 @@ public class DetallesContactoEdicionDefinitions {
      */
     @SuppressWarnings("EmptyMethod")
     @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica")
-    public void infoContactoJuridico(){
+    public void infoContactoJuridico() {
+        // Pendiente consulta informacion detallada contacto persona juridica.
     }
 
 

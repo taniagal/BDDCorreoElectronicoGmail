@@ -17,8 +17,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class HistorialCuentaPage extends Guidewire {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
+    
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")

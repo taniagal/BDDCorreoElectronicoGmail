@@ -15,9 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class Guidewire extends PageObject {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
     private final Actions act = new Actions(getDriver());
-    private static final String mensajeError = "";
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     private WebElementFacade configuracion;
     @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")

@@ -68,8 +68,8 @@ public class DetallesContactoDefinitions {
     }
 
     @When("quiera ver informacion detallada del contacto con nombre empresa <nombre_empresa>")
-    public void whenConsultarDetallePersonaJuridica(@Named("nombre_empresa")String nombre_empresa) {
-        dcs.abrirDetallesContactoEmpresa(nombre_empresa);
+    public void whenConsultarDetallePersonaJuridica(@Named("nombre_empresa")String nombreEmpresa) {
+        dcs.abrirDetallesContactoEmpresa(nombreEmpresa);
     }
 
     @Then("se debe ver minimo la siguiente informacion: Razon social, Nombre comercial, Tipo de documento, N\u00FAmero de\r\ndocumento, Actividad economica, Numero de empleados, Valor de activos, ventas anuales, Telefono de la oficina, Fax,\r\nCorreo electronico primario")

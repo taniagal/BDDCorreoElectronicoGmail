@@ -20,9 +20,9 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido) {
+    public void abrirDetallesContactoPersona(String primerNombre, String primerApellido) {
         inicioPage().irABuscarContacto();
-        bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primer_nombre,"",primer_apellido,"");
+        bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primerNombre,"",primerApellido,"");
         bc.seleccionarContacto();
     }
 
