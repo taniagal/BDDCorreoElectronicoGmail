@@ -32,8 +32,23 @@ public class CotizacionesDeLaCuentaDefinitions {
     }
 
     @When("ingrese a cotizaciones de la cuenta")
-    public void whenIgresoACotizacionesDeLaCuenta() {
-        historialCuentaSteps.seleccionarHistorial();
+    public void whenIgreseACotizacionesDeLaCuenta() {
+        cotizacionesDeLaCuentaSteps.seleccionarCotizacionesDeLaCuenta();
+    }
+
+    @When("seleccione las acciones de una cotizacion en particular")
+    public void whenSeleccioneAccionesCotizacion() {
+        cotizacionesDeLaCuentaSteps.seleccionarAccionesCotizacion();
+    }
+
+    @Then("me debe permitir cambiar el estado de acuerdo a la lista definida. Lista definida: Declinar <declinar>, No Tomar <noTomar>")
+    public void whenSeleccioneAccionesCotizacion(@Named("declinar") String declinar, @Named("noTomar") String noTomar) {
+        cotizacionesDeLaCuentaSteps.seleccionarAccionesCotizacion(declinar, noTomar);
+    }
+
+    @When("seleccione la opcion de crear nueva cotizacion <crearCotizacion>")
+    public void whenSeleccioneCrearCotizacion() {
+        cotizacionesDeLaCuentaSteps.eleccionarCrearCotizacion();
     }
 
 
