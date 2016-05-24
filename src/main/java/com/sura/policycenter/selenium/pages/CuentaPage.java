@@ -33,8 +33,6 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade txtApellidoNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade txtDireccionNuevaCuentaPersonal;
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-inputEl']")
-    private WebElementFacade txtCodigoPostalNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressType-inputEl']")
     private WebElementFacade cboTipoDireccionNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
