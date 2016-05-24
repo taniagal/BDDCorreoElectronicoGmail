@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
+
 public class Reclamacion extends Guidewire {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
@@ -57,7 +58,7 @@ public class Reclamacion extends Guidewire {
 
     /**
      *
-     * @param npoliza numero de poliza
+     * @param npoliza numero de reclamacion
      *
      */
     public void llenarReclamacion(String npoliza) {
@@ -112,7 +113,7 @@ public class Reclamacion extends Guidewire {
     }
 
     public void asercion(String msn) {
-        gw.asercion(lblNuevaReclamacion.getText(), msn);
+        asercion(lblNuevaReclamacion.getText(), msn);
     }
 
 }
