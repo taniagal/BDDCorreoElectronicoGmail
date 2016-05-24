@@ -7,10 +7,9 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.When;
 
-
-@SuppressWarnings("WeakerAccess")
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
+@SuppressWarnings("WeakerAccess")
 public class ReclamacionDefinitions {
 
     private InicioPage inicioPage() {
