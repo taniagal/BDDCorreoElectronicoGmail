@@ -7,14 +7,10 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-
 public class DetallesContactoSteps extends ScenarioSteps {
 
-    BusquedaContactoPage bc = new BusquedaContactoPage(getDriver());
-
-    DetallesContactoPage dc = new DetallesContactoPage(getDriver());
-
-    //EscritorioPage escritorioPolicy = new EscritorioPage(getDriver());
+    private final BusquedaContactoPage bc = new BusquedaContactoPage(getDriver());
+    private final DetallesContactoPage dc = new DetallesContactoPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
@@ -23,11 +19,8 @@ public class DetallesContactoSteps extends ScenarioSteps {
         super(pages);
     }
 
-
-
     @Step
-    public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido){
-        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
+    public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido) {
         inicioPage().irABuscarContacto();
         bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primer_nombre,"",primer_apellido,"");
         bc.seleccionarContacto();
@@ -39,8 +32,7 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void abrirDetallesContactoEmpresa(String nombreEmpresa){
-        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
+    public void abrirDetallesContactoEmpresa(String nombreEmpresa) {
         inicioPage().irABuscarContacto();
         bc.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
         bc.seleccionarContacto();
@@ -67,7 +59,7 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarNombre(String segundoNombre){
+    public void agregarNombre(String segundoNombre) {
         dc.editarContacto();
         dc.agregarNombre(segundoNombre);
     }
@@ -78,12 +70,12 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarLists(String profesion,String estadoCivil,String tipoFamilia){
+    public void agregarLists(String profesion,String estadoCivil,String tipoFamilia) {
         dc.agregarLists(profesion,estadoCivil,tipoFamilia);
     }
 
     @Step
-    public void agregarTelefonoResidencia(String telefonoResidencial){
+    public void agregarTelefonoResidencia(String telefonoResidencial) {
         dc.agregarTelefonosResidencial(telefonoResidencial);
     }
 
@@ -98,7 +90,7 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarCorreos(String correoElectronicoPrimario, String correoElectronicoSecundario){
+    public void agregarCorreos(String correoElectronicoPrimario, String correoElectronicoSecundario) {
         dc.agregarCorreo(correoElectronicoPrimario,correoElectronicoSecundario);
     }
 

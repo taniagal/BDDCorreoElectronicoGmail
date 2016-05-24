@@ -9,26 +9,16 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-/**
- * Created by jorgsape on 2016/05/04.
- */
 public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
-    public static final String DETALLE_CONTACTO = "DETALLE_CONTACTO";
-
-    public static final String FUNCIONES = "FUNCIONES";
-
-    public static final String DIRECCIONES = "DIRECCIONES";
-
-    public static final String TRANSACCIONES_ASOCIADAS = "TRANSACCIONES_ASOCIADAS";
-
-    public static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
-
-
+    private static final String DETALLE_CONTACTO = "DETALLE_CONTACTO";
+    private static final String FUNCIONES = "FUNCIONES";
+    private static final String DIRECCIONES = "DIRECCIONES";
+    private static final String TRANSACCIONES_ASOCIADAS = "TRANSACCIONES_ASOCIADAS";
+    private static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
     private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
-    private BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage = new BusquedaContactoDelDirectorioPage(getDriver());
-    CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
-
+    private final BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage = new BusquedaContactoDelDirectorioPage(getDriver());
+    private final CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
@@ -39,7 +29,6 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
 
     @Step
     public void consultarCuentaPorNum(String numCuenta) {
-        //cuentasOrdenesTrabajoPage.buscarCuenta(numCuenta);
         inicioPage().irACuentaBuscar(numCuenta);
     }
 
@@ -68,16 +57,18 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
             case POLIZAS_ASOCIADAS:
                 contactosAsociadosACuentasPage.seleccionarTabPolizasAsociadas();
                 break;
+            default:
+                break;
         }
 
     }
-
 
     @Step
     public void verificarDetalleContactoNoEsNulo() {
         contactosAsociadosACuentasPage.verificarDetalleContactoNoEsNulo();
     }
 
+    @SuppressWarnings("SameParameterValue")
     @Step
     public void verificarEncabezados(ExamplesTable encabezados, String encabezado, String xPathElementos) {
         contactosAsociadosACuentasPage.existeEncabezadoDeTabla(encabezados, encabezado, xPathElementos);
@@ -111,10 +102,8 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     @Step
     public void buscarContactoDelDirectorio() throws Exception {
         Boolean esContactoAsociadoDesdeDirectorio = busquedaDelDirectorioPage.buscarContacto("CEDULA DE CIUDADANIA", "DORIAN", "EASTMOND");
-        if (esContactoAsociadoDesdeDirectorio) {
-            if(esContactoAsociado("DORIAN STIWAR EASTMOND PULGARIN")){
-                contactosAsociadosACuentasPage.validarOcurrenciaDeMensajeDeAplicacion(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:_msgs']/div","porque ya tiene ese rol");
-            }
+        if (esContactoAsociadoDesdeDirectorio && esContactoAsociado("DORIAN STIWAR EASTMOND PULGARIN")) {
+            contactosAsociadosACuentasPage.validarOcurrenciaDeMensajeDeAplicacion(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:_msgs']/div","porque ya tiene ese rol");
         }
     }
 
@@ -127,7 +116,5 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     public void contactoEliminado(String contactoEliminado) throws Exception {
         contactosAsociadosACuentasPage.contactoEliminado(contactoEliminado);
     }
-
-
 
 }

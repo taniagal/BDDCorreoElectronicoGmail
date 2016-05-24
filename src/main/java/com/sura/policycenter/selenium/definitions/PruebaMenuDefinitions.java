@@ -7,20 +7,17 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-/**
- * Created by jorghome on 04/05/2016.
- */
+@SuppressWarnings("WeakerAccess")
 public class PruebaMenuDefinitions {
 
     @Steps
-    PruebaMenuSteps pms;
+    private PruebaMenuSteps pms;
 
     //@WithTag("prueba:menu")
 
     @Given("ingreso a la pagina de autenticacion de PolicyCenter")
     public void open() {
         pms.open();
-
     }
 
     @When("ingreso username <usr> y password <pass>")

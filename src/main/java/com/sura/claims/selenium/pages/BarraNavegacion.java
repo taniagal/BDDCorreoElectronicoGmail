@@ -9,25 +9,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by jonamele on 06/05/2016.
- */
+@SuppressWarnings("WeakerAccess")
 public class BarraNavegacion extends Guidewire {
 
     public BarraNavegacion(WebDriver driver) {
         super(driver);
     }
+    private final Actions act = new Actions(getDriver());
 
-    Actions act = new Actions(getDriver());
-
+    @SuppressWarnings("WeakerAccess")
     @FindBy(xpath = ".//*[@id='TabBar:DashboardTab']")
-    WebElementFacade menuPanel;
+    private WebElementFacade menuPanel;
+    @SuppressWarnings("WeakerAccess")
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnWrap']")
-    WebElementFacade menuEscritorio;
+    private WebElementFacade menuEscritorio;
+    @SuppressWarnings("WeakerAccess")
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopCalendarGroup-itemEl']")
-    WebElementFacade itemCalendario;
+    private WebElementFacade itemCalendario;
+    @SuppressWarnings("WeakerAccess")
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:Desktop_DesktopCalendarGroup:DesktopCalendarGroup_Calendar-itemEl']")
-    WebElementFacade itemMiCalendario;
+    private WebElementFacade itemMiCalendario;
 
     public PaginaPanel irAPanel()  {
         menuPanel.click();

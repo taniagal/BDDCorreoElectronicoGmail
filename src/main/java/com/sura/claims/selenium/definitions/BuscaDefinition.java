@@ -7,13 +7,11 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-/**
- * Created by jonamele on 20/04/2016.
- */
+@SuppressWarnings("WeakerAccess")
 public class BuscaDefinition {
 
     @Steps
-    ClaimsSteps cs;
+    private ClaimsSteps cs;
 
     @Given("abro la aplicacion como super usuario")
 
@@ -22,7 +20,7 @@ public class BuscaDefinition {
     }
 
     @Given("me logeo en ClaimsCenter <usr> <pass>")
-    public void login (@Named("usr") String user, @Named("pass") String pass) throws InterruptedException {
+    public void login (@Named("usr") String user, @Named("pass") String pass) {
         cs.login(user, pass);
     }
 

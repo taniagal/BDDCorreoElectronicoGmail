@@ -9,36 +9,32 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by jorghome on 30/03/2016.
- */
 public class Escritorio extends Guidewire {
 
-    BarraNavegacion barraNavegacion;
-    Guidewire gw = new Guidewire(getDriver());
+    private final BarraNavegacion barraNavegacion;
+    private final Guidewire gw = new Guidewire(getDriver());
+    @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
+    private WebElementFacade lblIngreso;
+    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
+    private WebElementFacade mnuReclamacion;
+    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl']")
+    private WebElementFacade cboNuevaReclamacion;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
+    private WebElementFacade mnuBusqueda;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ClaimSearchesGroup:ClaimSearchesGroup_ClaimSearch-textEl']")
+    private WebElementFacade mnubuscaAvanzada;
 
     public Escritorio(WebDriver driver) {
         super(driver);
         barraNavegacion = new BarraNavegacion(driver);
     }
 
-    @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
-    WebElementFacade lblIngreso;
-    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
-    WebElementFacade mnuReclamacion;
-    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab:ClaimTab_FNOLWizard-textEl']")
-    WebElementFacade cboNuevaReclamacion;
-    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab:ClaimTab_FindClaim-inputEl']")
-    WebElementFacade txtBuscarNumReclamancion;
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
-    WebElementFacade mnuBusqueda;
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ClaimSearchesGroup:ClaimSearchesGroup_ClaimSearch-textEl']")
-    WebElementFacade mnubuscaAvanzada;
-
+    @SuppressWarnings("UnusedReturnValue")
     public PaginaPanel irAPanel() {
         return barraNavegacion.irAPanel();
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public PaginaMiCalendario irAMiCalendario() {
         return barraNavegacion.irAMiCalendario();
     }
@@ -48,7 +44,6 @@ public class Escritorio extends Guidewire {
     }
 
     public void navegacionNuevaReclamacion() {
-
         Actions act = new Actions(getDriver());
         mnuReclamacion.click();
         waitABit(3000);
@@ -59,7 +54,6 @@ public class Escritorio extends Guidewire {
     }
 
     public void navegacionBuscaAvanzada() {
-
         mnuBusqueda.waitUntilClickable();
         Actions act = gw.deployMenu(mnuBusqueda);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();

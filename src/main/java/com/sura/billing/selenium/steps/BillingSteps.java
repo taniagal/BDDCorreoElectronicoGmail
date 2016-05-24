@@ -8,20 +8,17 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-/**
- * Created by jorghome on 22/04/2016.
- */
 public class BillingSteps extends ScenarioSteps {
 
-    Guidewire gw = new Guidewire(getDriver());
-    AbrirAppPage abrirAppPage = new AbrirAppPage(getDriver());
-    InicioPage inicioPage = new InicioPage(getDriver());
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final AbrirAppPage abrirAppPage = new AbrirAppPage(getDriver());
 
     public BillingSteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step
@@ -36,28 +33,30 @@ public class BillingSteps extends ScenarioSteps {
 
     @Step
     public void assertion(String element) {
-        inicioPage.assertion(element);
+        inicioPage().assertion(element);
     }
 
     @Step
     @Manual
     public void navegarItemDiasFestivos() {
-        //inicioPage.navegarTabBar("Administracion", "Configuracion comercial", "Dias festivos");
+        inicioPage().irAAdminDiasFestivos();
+        waitABit(3000);
     }
 
     @Step
     public void assertionFestivo(String msj2){
-        inicioPage.asercionFestivo(msj2);
+        inicioPage().asercionFestivo(msj2);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Step
     public void navegarTabBar() {
         //Menu Escritorio
-        /*inicioPage().irAMisActividades();
+        inicioPage().irAMisActividades();
         waitABit(3000);
         inicioPage().irAEstadosAprobacion();
         waitABit(3000);
-        inicioPage().irAMisIncidentes();
+        /*inicioPage().irAMisIncidentes();
         waitABit(3000);
         inicioPage().irAMisMoras();
         waitABit(3000);
@@ -68,10 +67,10 @@ public class BillingSteps extends ScenarioSteps {
         inicioPage().irAMisElementosAgencia();
         waitABit(3000);
         inicioPage().irACargosRetenidos();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Menu Buscar
-        /*inicioPage().irABuscarCuentas();
+        inicioPage().irABuscarCuentas();
         waitABit(3000);
         inicioPage().irABuscarPolizas();
         waitABit(3000);
@@ -98,11 +97,11 @@ public class BillingSteps extends ScenarioSteps {
         inicioPage().irABuscarSolicitudesPago();
         waitABit(3000);
         inicioPage().irABuscarElementosEsperaFactDirecta();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Menu Administracion
         //Admin Usuarios y seguridad
-        /*inicioPage().irAAdminUsuarios();
+        inicioPage().irAAdminUsuarios();
         waitABit(3000);
         inicioPage().irAAdminGrupos();
         waitABit(3000);
@@ -111,10 +110,10 @@ public class BillingSteps extends ScenarioSteps {
         inicioPage().irAAdminZonasSeguridad();
         waitABit(3000);
         inicioPage().irAAdminPerfilLimiteAutoridad();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Admin Configuracion comercial
-        /*inicioPage().irAAdminPatronesAct();
+        inicioPage().irAAdminPatronesAct();
         waitABit(3000);
         inicioPage().irAAdminPlanesFactAgencia();
         waitABit(3000);
@@ -135,28 +134,28 @@ public class BillingSteps extends ScenarioSteps {
         inicioPage().irAAdminPlanesPagos();
         waitABit(3000);
         inicioPage().irAAdminPlanesDevolPrima();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Admin Supervision
-        /*inicioPage().irAAdminColasMensajes();
+        inicioPage().irAAdminColasMensajes();
         waitABit(3000);
         inicioPage().irAAdminFlujosTrabajo();
         waitABit(3000);
         inicioPage().irAAdminEstadistFlujosTrabajo();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Admin Utilidades
-        /*inicioPage().irAAdminImpotarDatos();
+        inicioPage().irAAdminImpotarDatos();
         waitABit(3000);
         inicioPage().irAAdminExpotarDatos();
         waitABit(3000);
         inicioPage().irAAdminParamSecuencia();
         waitABit(3000);
         inicioPage().irAAdminCambioDatos();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Acciones Escritorio
-        /*inicioPage().irAAccionEPagoEspera();
+        inicioPage().irAAccionEPagoEspera();
         waitABit(3000);
         inicioPage().irAAccionEEntradaPagosMultiples();
         waitABit(3000);
@@ -191,18 +190,18 @@ public class BillingSteps extends ScenarioSteps {
         inicioPage().irAAccionEWriteOffAttemptedAboveThresholdCompartida();
         waitABit(3000);
         inicioPage().irAAccionEPreferencias();
-        waitABit(3000);*/
+        waitABit(3000);
 
         //Acciones Cuenta
-        /*inicioPage().irAAccionCCuentaNueva();
-        waitABit(3000);*/
+        inicioPage().irAAccionCCuentaNueva();
+        waitABit(3000);
 
         //Acciones Agente
-        /*inicioPage().irAAccionAAgenteNuevo();
-        waitABit(3000);*/
+        inicioPage().irAAccionAAgenteNuevo();
+        waitABit(3000);
 
         //Acciones Administracion
-        /*inicioPage().irAAccionANuevoPlanFact();
+        inicioPage().irAAccionANuevoPlanFact();
         waitABit(3000);
         inicioPage().irAAccionANuevoPlanPago();
         waitABit(3000);
@@ -235,7 +234,6 @@ public class BillingSteps extends ScenarioSteps {
         inicioPage().irAAccionANuevoPerfilLimiteAut();
         waitABit(3000);*/
 
-
     }
 
     @Step
@@ -244,11 +242,12 @@ public class BillingSteps extends ScenarioSteps {
     }
 
     public void buscarMenu(String numCuenta, String numPoliza, String numAgente) {
-        /*inicioPage().irACuentaBuscar(numCuenta);
+        inicioPage().irACuentaBuscar(numCuenta);
         waitABit(3000);
-        inicioPage().irAPolizaBuscar(numPoliza);
+        /*inicioPage().irAPolizaBuscar(numPoliza);
         waitABit(3000);
         inicioPage().irAAgenteBuscar(numAgente);
         waitABit(3000);*/
     }
+
 }
