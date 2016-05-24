@@ -15,9 +15,6 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
-/**
- * Created by diegcaac on 18/05/2016.
- */
 public class OpcionesResumenCuentaPage extends Guidewire {
 
     public OpcionesResumenCuentaPage(WebDriver driver) {
