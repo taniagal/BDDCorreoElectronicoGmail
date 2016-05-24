@@ -8,21 +8,22 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class CrearNuevaCuentaSteps extends ScenarioSteps {
-    private final Guidewire gw = new Guidewire(getDriver());
-    private final CuentaPage cp = new CuentaPage(getDriver());
-    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
-
     private String cedula = "";
     private String nit = "";
+
+    Guidewire gw = new Guidewire(getDriver());
+    CuentaPage cp = new CuentaPage(getDriver());
+
+    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
+
+    public CrearNuevaCuentaSteps(Pages pages){
+        super(pages);
+    }
 
     private void  initRandoms(){
         cedula = gw.cedulaRandom();
         nit = gw.nitRandom();
 
-    }
-
-    public CrearNuevaCuentaSteps(Pages pages){
-        super(pages);
     }
 
     @Step
@@ -31,40 +32,56 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void crearNuevaCuentaPersona(String tipoDocumento, String fechaNacimiento, String primerNombre, String primerApellido, String tipoDireccion, String direccion, String codigoPostal, String nombreOrganizacion, String agente) {
-        if("".equals(cedula) || "".equals(nit)){
-            initRandoms();
+    public void agregarTipoDocumento(String tipoDocumento) {
+        if("".equals(cedula) || "".equals(nit)) initRandoms();
+        if("NIT".equals(tipoDocumento)){
+            cp.buscarPersona("Busqueda","Compania");
+            cp.agregarTipoDocumento(tipoDocumento,nit);
         }
-        cp.buscarPersona("Busqueda");
-        cp.crearCuentaNuevaPersona(tipoDocumento, cedula,fechaNacimiento, primerNombre, primerApellido, tipoDireccion, direccion,codigoPostal,nombreOrganizacion,agente);
-    }
-
-    @Step
-    public void assertCrearCuenta(String nombreCuenta){
-        cp.assertCrearCuenta(nombreCuenta);
-    }
-
-    @Step
-    public void crearNuevaCuentaPersonaJuridica(String tipoDocumento, String nombreEmpresa, String tipoDireccion, String direccion,String codigoPostal, String nombreOrganizacion,String agente) {
-        if("".equals(cedula) || "".equals(nit)){
-            initRandoms();
+        else{
+            cp.buscarPersona("Busqueda","Persona");
+            cp.agregarTipoDocumento(tipoDocumento,cedula);
         }
-        cp.buscarPersona("Busqueda");
-        cp.crearCuentaNuevaPersonaJuridica(tipoDocumento, nit, nombreEmpresa, tipoDireccion, direccion,codigoPostal,nombreOrganizacion,agente);
     }
 
     @Step
-    public void assertPolicyCenterLogin(){
-        cp.assertPolicyCenterLogin();
+    public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
+        cp.agregarDireccion(tipoDireccion,direccion,departamento,ciudad);
+        cp.actualizar();
     }
 
     @Step
-    public void assertVerificarMenor(String mensaje){
-        cp.assertVerificarMenor(mensaje);
-    }
-    @Step
-    public void assertVerificarMensaje(String mensaje){
-        cp.assertVerificarMensaje(mensaje);
+    public void agregarOrganizacion(String nombreOrganizacion, String agente) {
+        cp.agregarOrganizacion(nombreOrganizacion,agente);
     }
 
+    @Step
+    public void agregarNombre(String primerNombre, String primerApellido, String fechaNacimiento){
+        cp.agregarNombres(primerNombre,primerApellido,fechaNacimiento);
+    }
+
+    @Step
+    public void agregarRazonSocial(String razonSocial) {
+        cp.agregarRazonsocial(razonSocial);
+    }
+
+    @Step
+    public void verificarCrearCuenta(String nombreCuenta){
+        cp.verificarCrearCuenta(nombreCuenta);
+    }
+
+    @Step
+    public void validarLogeoPolicyCenter(){
+        cp.validarLogeoPolicyCenter();
+    }
+
+    @Step
+    public void verificarEdadMenor(String mensaje){
+        cp.verificarEdadMenor(mensaje);
+    }
+
+    @Step
+    public void verificarMensaje(String mensaje){
+        cp.verificarMensaje(mensaje);
+    }
 }

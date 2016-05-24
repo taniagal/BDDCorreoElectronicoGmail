@@ -11,11 +11,11 @@ When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
 And ingreso la informacion de primer nombre <primerNombre>
 And ingreso la informacion de primer apellido <primerApellido>
-And ingreso la informacion de tipo de dioreccion <tipoDireccion>
-And ingreso la informacion de direccion <direccion>
-Then se debe crear una persona tipo natural con primer nombre <primerNombre>
+And ingreso la informacion de tipo de direccion <tipoDireccion>
+And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
+Then se debe crear una persona natural con primer nombre <primerNombre>
 
 
 Examples:
-|tipoDocumento         |numeroDeDocumento  |primerNombre  |primerApellido|tipoDireccion  |direccion       |
-|CEDULA DE CIUDADANIA  |564-36-5489        |SASHA         |AKERMAN       |Vivienda       |CALLE 54B #50-25|
+|tipoDocumento         |numeroDeDocumento  |primerNombre  |primerApellido|tipoDireccion  |direccion       |departamento|ciudad  |
+|CEDULA DE CIUDADANIA  |564-36-5489        |SASHA         |AKERMAN       |Otros          |C 54B #50-25    |Antioquia   |Medellin|

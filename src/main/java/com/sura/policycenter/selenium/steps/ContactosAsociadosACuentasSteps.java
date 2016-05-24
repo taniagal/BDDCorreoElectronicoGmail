@@ -18,6 +18,7 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     private static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
     private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
     private final BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage = new BusquedaContactoDelDirectorioPage(getDriver());
+    private final CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }

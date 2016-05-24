@@ -11,7 +11,7 @@ import org.jbehave.core.model.ExamplesTable;
 @SuppressWarnings("WeakerAccess")
 public class ContactosAsociadosACuentaDefinitions {
 
-    private static final String ENCABEZADO = "encabezados";
+    private static final String encabezado = "encabezados";
 
     @Steps
     SeusLoginSteps seusSteps;
@@ -42,25 +42,27 @@ public class ContactosAsociadosACuentaDefinitions {
     @Then("debo ver los roles de contacto de tipo persona y sus $encabezados")
     public void thenDeboVerLosRolesDeContactoDeTipoPersonaJuridica(ExamplesTable encabezados) {
         contactosAsociadosACuentaSteps.verificarRolesFuncionesNoEsNulo();
-        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, ENCABEZADO, "//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:ContactRolesDV:ContactRolesLV']/div/div/div/div");
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado, "//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:ContactRolesDV:ContactRolesLV']/div/div/div/div");
     }
 
     @Then("debo ver las direcciones asociadas al contacto y sus $encabezados")
     public void thenDeboVerLasDireccionesAsociadasAUnContacto(ExamplesTable encabezados) {
         contactosAsociadosACuentaSteps.verificarDireccionesEsNulo();
-        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, ENCABEZADO,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet:AddressesLV']/div/div/div/div");
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet:AddressesLV']/div/div/div/div");
     }
 
 
     @Then("debo ver las transacciones asociadas al contacto y sus $encabezados")
     public void thenDeboVerLasTransaccionesAsociadasAUnContacto(ExamplesTable encabezados) {
-        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, ENCABEZADO,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_WorkOrdersLV']/div/div/div/div");
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_WorkOrdersLV']/div/div/div/div");
     }
 
     @Then("debo ver las polizas asociadas al contacto y sus $encabezados")
     public void thenDeboVerLasPolizasAsociadasAUnContacto(ExamplesTable encabezados) {
-        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, ENCABEZADO,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_PoliciesLV']/div/div/div/div");
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_PoliciesLV']/div/div/div/div");
     }
+
+
 
     @Given("y desee crear un nuevo contacto")
     public void andDeseeCrearUnNuevoContacto() {
@@ -70,12 +72,14 @@ public class ContactosAsociadosACuentaDefinitions {
     @Given("debo darClick <darClick>  y ver las opciones de menú para los roles $opcionesPorRoles")
     public void thenDeboVerLasOpcionesDeMenuParaLosRoles(ExamplesTable opcionesPorRoles, Boolean darClick) throws Exception {
         contactosAsociadosACuentaSteps.verOpcionesDeCreacionDeContactoPorRoleDeContactos(opcionesPorRoles, darClick);
+
     }
 
     @Given("asocie un nuevo contacto a la cuenta con el rol seleccionado")
     public void andAsocieUnNuevoContactoALaCuenta() throws Exception {
         NuevoAseguradoNombradoPage nuevoAseguradoNombradoPage = new NuevoAseguradoNombradoPage(contactosAsociadosACuentaSteps.getDriver());
         nuevoAseguradoNombradoPage.asociarNuevoAseguradoNombradoACuenta();
+
     }
 
     @Then("debo poder visualizar el contacto recien asociado con su rol seleccionado")

@@ -99,10 +99,11 @@ public class InicioPage extends Guidewire {
     private WebElementFacade labelIngreso2;
     @FindBy(xpath=".//*[@id='TabBar:AdministrationTab-btnWrap']")
     private WebElementFacade mnuAdministracion;
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
     private final Guidewire gw = new Guidewire(getDriver());
     private final Navegacion navegacion;
 
-    public InicioPage(WebDriver driver) {
+    public InicioPage(WebDriver driver, WebElementFacade labelIngreso) {
         super(driver);
         navegacion = new Navegacion(getDriver());
     }
