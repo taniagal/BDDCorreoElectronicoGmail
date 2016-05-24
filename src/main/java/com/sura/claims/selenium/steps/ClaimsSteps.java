@@ -7,15 +7,11 @@ import com.sura.guidewire.selenium.Guidewire;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.thucydides.core.steps.StepInterceptor;
-import org.slf4j.LoggerFactory;
-import javax.swing.JOptionPane;
 
 public class ClaimsSteps extends ScenarioSteps{
 
     private final Guidewire gw = new Guidewire(getDriver());
     private final AbrirApp abrirApp = new AbrirApp(getDriver());
-    private final Escritorio escritorio = new Escritorio(getDriver());
     private final Reclamacion reclamacion = new Reclamacion(getDriver());
     private final Buscar buscar = new Buscar(getDriver());
 

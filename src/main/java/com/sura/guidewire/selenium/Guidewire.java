@@ -4,7 +4,6 @@ import com.google.common.base.Function;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
-import org.hamcrest.Matcher;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -13,8 +12,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.TimeUnit;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -114,10 +114,10 @@ public class Guidewire extends PageObject {
      * Crea numero de cedula
      * @return numero de cedula de 8 digitos
      */
-    public String cedulaRandom() {
+   /* public String cedulaRandom() {
         int cedula = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
         return Integer.toString(cedula);
-    }
+    }*/
 
     /**
      * Crea un numero de nit
