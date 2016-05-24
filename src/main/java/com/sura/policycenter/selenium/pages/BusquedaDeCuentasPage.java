@@ -133,21 +133,10 @@ public class BusquedaDeCuentasPage extends Guidewire {
         super(driver);
     }
 
-    public void ingresarABuscarCuentas() {
-            Actions act = new Actions(getDriver());
-            mnuBuscar.waitUntilClickable();
-            mnuBuscar.click();
-            mnuBuscar.waitUntilClickable();
-            waitABit(1000);
-            mnuBuscar.click();
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.moveToElement(mnuBuscarCuenta).click().build().perform();
-            waitABit(1000);
-     }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         this.limpiarFormulario();
-        waitABit(1000);
+        //waitABit(500);
         txtPrimerNombre.sendKeys(primerNombre);
         txtSegundoNombre.sendKeys(segundoNombre);
         txtPrimerApellido.sendKeys(primerApellido);
@@ -164,11 +153,11 @@ public class BusquedaDeCuentasPage extends Guidewire {
         txtSegundoNombre.clear();
         txtPrimerApellido.clear();
         txtSegundoApellido.clear();
+        waitABit(500);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
         this.limpiarFormulario();
-        waitABit(1000);
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
         txtNumeroDocumento.sendKeys(numeroDocumento);
@@ -208,23 +197,23 @@ public class BusquedaDeCuentasPage extends Guidewire {
     }
 
     public void validarEtiquetasDelFormulario(){
-        assertThat(this.lblNumeroCuenta.getText(), containsString("Número de cuenta"));
-        assertThat(this.lblTipoDocumento.getText(), containsString("Tipo documento"));
-        assertThat(this.lblNumeroDocumento.getText(), containsString("Número documento"));
-        assertThat(this.lblPrimerNombre.getText(), containsString("Primer nombre"));
-        assertThat(this.lblSegundoNombre.getText(), containsString("Segundo nombre"));
-        assertThat(this.lblPrimerApellido.getText(), containsString("Primer apellido"));
-        assertThat(this.lblSegundoApellido.getText(), containsString("Segundo apellido"));
-        assertThat(this.lblPrimerNombreExacto.getText(), containsString("El primer nombre es una coincidencia exacta"));
-        assertThat(this.lblPrimerApellidoExacto.getText(), containsString("El primer apellido es una coincidencia exacta"));
-        assertThat(this.lblRazonSocial.getText(), containsString("Razón social"));
-        assertThat(this.lblNombreComercialExacto.getText(), containsString("Razón social es una coincidencia exacta"));
-        assertThat(this.lblNombreComercial.getText(), containsString("Nombre comercial"));
+        assertThat(this.lblNumeroCuenta.getText().toLowerCase(), containsString("número de cuenta"));
+        assertThat(this.lblTipoDocumento.getText().toLowerCase(), containsString("tipo documento"));
+        assertThat(this.lblNumeroDocumento.getText().toLowerCase(), containsString("número documento"));
+        assertThat(this.lblPrimerNombre.getText().toLowerCase(), containsString("primer nombre"));
+        assertThat(this.lblSegundoNombre.getText().toLowerCase(), containsString("segundo nombre"));
+        assertThat(this.lblPrimerApellido.getText().toLowerCase(), containsString("primer apellido"));
+        assertThat(this.lblSegundoApellido.getText().toLowerCase(), containsString("segundo apellido"));
+        assertThat(this.lblPrimerNombreExacto.getText().toLowerCase(), containsString("el primer nombre es una coincidencia exacta"));
+        assertThat(this.lblPrimerApellidoExacto.getText().toLowerCase(), containsString("el primer apellido es una coincidencia exacta"));
+        assertThat(this.lblRazonSocial.getText().toLowerCase(), containsString("razón social"));
+        assertThat(this.lblNombreComercialExacto.getText().toLowerCase(), containsString("razón social es una coincidencia exacta"));
+        assertThat(this.lblNombreComercial.getText().toLowerCase(), containsString("nombre comercial"));
     }
 
     public void buscarCuentaPorRazonSocial(String razonSocial) {
         this.limpiarFormulario();
-        waitABit(1000);
+        //waitABit(1000);
         txtRazonSocial.sendKeys(razonSocial);
         btnBuscar.click();
     }
@@ -238,13 +227,13 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void buscarCuentaPorNombreComercial(String nombreComercial) {
         this.limpiarFormulario();
-        waitABit(1000);
+        //waitABit(100);
         txtNombreComercial.sendKeys(nombreComercial);
         btnBuscar.click();
     }
 
     public void seleccionarImprimir() {
-        waitABit(1000);
+        waitABit(500);
         btnImprimir.click();
     }
 
@@ -261,7 +250,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void ingresarRazonSocialYPrimerNombre(String razonSocial, String primerNombre) {
         this.limpiarFormulario();
-        waitABit(1000);
+        //waitABit(100);
         this.txtRazonSocial.sendKeys(razonSocial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         btnBuscar.click();
@@ -269,7 +258,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void ingresarNombreComercialYPrimerNombre(String nombreComercial, String primerNombre) {
         this.limpiarFormulario();
-        waitABit(1000);
+        //waitABit(100);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         btnBuscar.click();
@@ -277,7 +266,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void ingresarRazonSocialYNombreComercial(String nombreComercial, String razonSocial) {
         this.limpiarFormulario();
-        waitABit(1000);
+        //waitABit(100);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtRazonSocial.sendKeys(razonSocial);
         btnBuscar.click();
