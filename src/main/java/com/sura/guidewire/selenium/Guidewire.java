@@ -89,19 +89,6 @@ public class Guidewire extends PageObject {
         return act;
     }
 
-    public String cedulaRandom() {
-        StringBuilder result=new StringBuilder("");
-
-        int primero = (int) Math.floor(Math.random() * (100 - 999) + 999);
-        int segundo = (int) Math.floor(Math.random() * (10 - 99) + 99);
-        int tercero = (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
-
-        result.append(primero);
-        result.append(segundo);
-        result.append(tercero);
-
-        return result.toString();
-    }
 
     public void selectItem(WebElementFacade element, String option){
         element.click();
@@ -114,10 +101,10 @@ public class Guidewire extends PageObject {
      * Crea numero de cedula
      * @return numero de cedula de 8 digitos
      */
-   /* public String cedulaRandom() {
+    public String cedulaRandom() {
         int cedula = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
         return Integer.toString(cedula);
-    }*/
+    }
 
     /**
      * Crea un numero de nit

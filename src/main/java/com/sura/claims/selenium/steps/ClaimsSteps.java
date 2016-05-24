@@ -26,7 +26,7 @@ public class ClaimsSteps extends ScenarioSteps{
 
     @Step
     public void login(String usuario, String contrasena) {
-        login(usuario,contrasena);
+        gw.login(usuario,contrasena);
     }
 
     @Step
