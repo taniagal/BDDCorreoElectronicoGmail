@@ -136,7 +136,6 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         this.limpiarFormulario();
-        //waitABit(500);
         txtPrimerNombre.sendKeys(primerNombre);
         txtSegundoNombre.sendKeys(segundoNombre);
         txtPrimerApellido.sendKeys(primerApellido);
@@ -213,7 +212,6 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void buscarCuentaPorRazonSocial(String razonSocial) {
         this.limpiarFormulario();
-        //waitABit(1000);
         txtRazonSocial.sendKeys(razonSocial);
         btnBuscar.click();
     }
@@ -227,7 +225,6 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void buscarCuentaPorNombreComercial(String nombreComercial) {
         this.limpiarFormulario();
-        //waitABit(100);
         txtNombreComercial.sendKeys(nombreComercial);
         btnBuscar.click();
     }
@@ -250,7 +247,6 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void ingresarRazonSocialYPrimerNombre(String razonSocial, String primerNombre) {
         this.limpiarFormulario();
-        //waitABit(100);
         this.txtRazonSocial.sendKeys(razonSocial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         btnBuscar.click();
@@ -258,7 +254,6 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void ingresarNombreComercialYPrimerNombre(String nombreComercial, String primerNombre) {
         this.limpiarFormulario();
-        //waitABit(100);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         btnBuscar.click();
@@ -266,7 +261,6 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void ingresarRazonSocialYNombreComercial(String nombreComercial, String razonSocial) {
         this.limpiarFormulario();
-        //waitABit(100);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtRazonSocial.sendKeys(razonSocial);
         btnBuscar.click();
