@@ -33,7 +33,7 @@ public class CotizacionesDeLaCuentaDefinitions {
 
     @When("ingrese a cotizaciones de la cuenta")
     public void whenIgreseACotizacionesDeLaCuenta() {
-        //cotizacionesDeLaCuentaSteps.seleccionarCotizacionesDeLaCuenta();
+        cotizacionesDeLaCuentaSteps.seleccionarCotizacionesDeLaCuenta();
     }
 
     @When("seleccione las acciones de una cotizacion en particular")

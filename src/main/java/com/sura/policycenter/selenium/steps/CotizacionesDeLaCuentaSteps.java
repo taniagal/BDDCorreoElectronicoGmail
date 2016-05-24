@@ -44,4 +44,9 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
     public void logout() {
         buscarCuentasPage.logout();
     }
+
+    @Step
+    public void seleccionarCotizacionesDeLaCuenta() {
+
+    }
 }
