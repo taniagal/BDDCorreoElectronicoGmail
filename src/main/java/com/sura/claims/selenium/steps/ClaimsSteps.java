@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 
 public class ClaimsSteps extends ScenarioSteps{
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private final Guidewire gw = new Guidewire(getDriver());
     private final AbrirApp abrirApp = new AbrirApp(getDriver());
     private final Escritorio escritorio = new Escritorio(getDriver());
