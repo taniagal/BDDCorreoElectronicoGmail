@@ -226,7 +226,9 @@ public class DetallesContactoPage extends Guidewire {
     }
 
 
-    //-------DETALLE CONTACTO EDICION PERSONA JURIDICA
+    /**
+     *DETALLE CONTACTO EDICION PERSONA JURIDICA
+     */
     public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
         txtNombreComercial.clear();
         txtNombreComercial.sendKeys(nombreComercial);
@@ -264,8 +266,10 @@ public class DetallesContactoPage extends Guidewire {
     }
 
 
-    //-------DETALLE CONTACTO EDICION
-    //-------Valida si los datos ingresados es igual al que se muestran en el detalle
+    /**
+     * DETALLE CONTACTO EDICION
+     *Valida si los datos ingresados es igual al que se muestran en el detalle
+     */
     public void verificarActualizacion(){
         espera(txtSegundoNombre,6);
         StringBuilder right = new StringBuilder("No estan correctos los valores:");
@@ -304,15 +308,19 @@ public class DetallesContactoPage extends Guidewire {
         assertThat(res,"No estan correctos los valores".equals(res));
     }
 
-    //-----Verifica que el documento y el tipo de documento no sean editables por un error de codigo en policy.
+    /**
+     * Verifica que el documento y el tipo de documento no sean editables por un error de codigo en policy.
+     */
     public void verificarEstadoDeDocumento(){
         assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo",
-                !txtTipoDocumento.isEnabled() || !txtDocumento.isEnabled());
+                !txtTipoDocumento.isCurrentlyEnabled() || !txtDocumento.isCurrentlyEnabled());
     }
 
 
-    //-------DETALLE CONTACTO
-    //-------Valida si estos elementos están presentes
+    /**
+     * DETALLE CONTACTO
+    *Valida si estos elementos están presentes
+    */
     public  void verificarCamposPersonaNatural(){
         StringBuilder notPresent = new StringBuilder("No estan presentes los elemtos:");
         if(!lblPrimerNombre.isPresent()) notPresent.append(" primer_nombre,");
@@ -355,7 +363,9 @@ public class DetallesContactoPage extends Guidewire {
         assertThat(res,"No estan presentes los elemtos".equals(res));
     }
 
-    //------- AGREGAR DIRECCION A CONTACTO
+    /**
+     * AGREGAR DIRECCION A CONTACTO
+     */
     public void validarDatosPantalla() {
         StringBuilder notPresent = new StringBuilder("No estan presentes los elemtos:");
         if(!lblPais.isPresent()) notPresent.append(" pais,");

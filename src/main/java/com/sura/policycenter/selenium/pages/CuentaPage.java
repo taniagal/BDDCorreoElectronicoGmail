@@ -58,13 +58,11 @@ public class CuentaPage extends Guidewire{
     @FindBy(id = "CreateAccount:CreateAccountScreen:_msgs")
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
-    WebElementFacade cboCodigoAgente;
-
+    private WebElementFacade cboCodigoAgente;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    WebElementFacade cboDepartamento;
-
+    private WebElementFacade cboDepartamento;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
-    WebElementFacade cboCiudad;
+    private WebElementFacade cboCiudad;
 
     public CuentaPage(WebDriver driver){
         super(driver);
