@@ -76,4 +76,9 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
     public void validarOpcionRetirar(String retirar) {
         opcionesAdministradorCotizaciones.validarOpcionRetirar(retirar);
     }
+
+    @Step
+    public void seleccionarFiltros(String cotizacion, String producto) {
+        opcionesAdministradorCotizaciones.seleccionarFiltros(cotizacion, producto);
+    }
 }

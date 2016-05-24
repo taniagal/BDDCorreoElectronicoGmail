@@ -66,4 +66,10 @@ public class CotizacionesDeLaCuentaDefinitions {
     public void thenValidarOpcionRetirar(@Named("retirar") String retirar){
         cotizacionesDeLaCuentaSteps.validarOpcionRetirar(retirar);
     }
+
+    @When("seleccione una o varias opciones de algun filtro <cotizaciones> <productos>")
+    public void whenSeleccionarFiltrosBusqueda(@Named("envios") String cotizacion,
+                                               @Named("productos") String producto){
+        cotizacionesDeLaCuentaSteps.seleccionarFiltros(cotizacion, producto);
+    }
 }

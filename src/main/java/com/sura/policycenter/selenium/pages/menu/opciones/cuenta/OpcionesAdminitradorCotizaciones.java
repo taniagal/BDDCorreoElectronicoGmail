@@ -44,6 +44,9 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuIcon-fieldMenu']")
     private WebElementFacade lstAcciones;
 
+    @FindBy(xpath = "//td/div/div[3]/div/table")
+    private WebElementFacade tblCotizaciones;
+
     public void seleccionarAcciones(){
         waitABit(1000);
         btnAcciones.click();
@@ -76,5 +79,9 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         Boolean validacion = false;
         validacion = lstAcciones.containsElements(retirar);
         assertFalse(validacion);
+    }
+
+    public void seleccionarFiltros(String cotizacion, String prodcuto){
+
     }
 }
