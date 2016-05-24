@@ -38,7 +38,8 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void ingresarNumeroDocumentoPersonaNatural(String numeroDocumento){
-        if("".equals(cedula) || "".equals(nit)) initRandoms();
+        if("".equals(cedula) || "".equals(nit))
+            initRandoms();
         if(("NIT").equals(tipoDoc)) {
             nuevoContactoPage.ingresarNumeroDocumento(nit);
         } else {

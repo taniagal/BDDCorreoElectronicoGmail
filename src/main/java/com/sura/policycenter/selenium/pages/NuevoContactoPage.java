@@ -48,24 +48,16 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade pais;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade cboDepartamento;
-
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
     private WebElementFacade cboCiudad;
-
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade cboDepartamento2;
-
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
     private WebElementFacade cboCiudad2;
-
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
     private WebElementFacade tipoDireccion2;
-
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade direccion2;
-
-
-    private WebElementFacade arregloDeMensajes;
 
     private final Guidewire gw = new Guidewire(getDriver());
 
@@ -147,7 +139,6 @@ public class NuevoContactoPage extends Guidewire {
 
     /**
      * Escenario nuevo contacto persona juridica
-     * @param razonSocial
      */
     public void ingresarRazonSocial(String razonSocial) {
         this.razonSocial.type(razonSocial);
@@ -164,9 +155,8 @@ public class NuevoContactoPage extends Guidewire {
     public void verificarContactoExistente() {
         this.btnActualizar.waitUntilClickable();
         this.btnActualizar.click();
-        /*COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
         waitABit(1000);
-        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));*/
+        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 
     private Boolean esTelefonoFijo(String tipoTelefono) {

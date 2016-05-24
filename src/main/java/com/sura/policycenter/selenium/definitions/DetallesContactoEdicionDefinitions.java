@@ -16,8 +16,6 @@ public class DetallesContactoEdicionDefinitions {
     private DetallesContactoSteps dcs;
     @Steps
     private SeusLoginSteps sls;
-    @Steps
-    private CrearNuevoContactoSteps ncs;
 
     @SuppressWarnings("EmptyMethod")
     @Given("Se ha consultado la informacion detallada de un contacto persona natural")

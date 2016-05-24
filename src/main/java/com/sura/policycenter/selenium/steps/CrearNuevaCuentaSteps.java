@@ -14,10 +14,12 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     Guidewire gw = new Guidewire(getDriver());
     CuentaPage cp = new CuentaPage(getDriver());
 
-    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
-
     public CrearNuevaCuentaSteps(Pages pages){
         super(pages);
+    }
+
+    private InicioPage inicioPage(){
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     private void  initRandoms(){
@@ -37,8 +39,7 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
         if("NIT".equals(tipoDocumento)){
             cp.buscarPersona("Busqueda","Compania");
             cp.agregarTipoDocumento(tipoDocumento,nit);
-        }
-        else{
+        }else{
             cp.buscarPersona("Busqueda","Persona");
             cp.agregarTipoDocumento(tipoDocumento,cedula);
         }
