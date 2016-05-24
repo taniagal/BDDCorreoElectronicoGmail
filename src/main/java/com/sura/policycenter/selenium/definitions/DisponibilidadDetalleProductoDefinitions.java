@@ -55,8 +55,8 @@ public class DisponibilidadDetalleProductoDefinitions {
     }
 
     @Then("PA tipo de poliza debe contener los valores $PATipoPoliza")
-    public void validarPATipoDePoliza(ExamplesTable paTipoPoliza) throws Exception {
-        disponibilidadDetalleProductoSteps.validarPATipoPoliza(paTipoPoliza);
+    public void validarPATipoDePoliza(ExamplesTable PaTipoPoliza) throws Exception {
+        disponibilidadDetalleProductoSteps.validarPATipoPoliza(PaTipoPoliza);
     }
 
     @Then("tipo de canal ventas debe tener el valor vacio")

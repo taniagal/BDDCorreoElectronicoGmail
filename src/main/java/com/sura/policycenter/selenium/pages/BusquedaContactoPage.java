@@ -91,6 +91,7 @@ public class BusquedaContactoPage extends Guidewire {
         super(driver);
     }
 
+    final String ERROR = "This is error";
     public void login(String usuario, String contrasena){
         txtusuario.type(usuario);
         txtcontrasena.type(contrasena);
@@ -102,7 +103,7 @@ public class BusquedaContactoPage extends Guidewire {
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         waitABit(1000);
-        if(("Personal").equals(tipoContacto)){
+        if ("Personal".equals(tipoContacto)){
             nombreContact.type(nombre);
             apellidoContact.type(apellido);
         }else{

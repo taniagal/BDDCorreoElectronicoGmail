@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.containsString;
 
 public class ContactosAsociadosACuentasPage extends Guidewire {
 
-    private static final String ASSERTMENUCREARNUEVOCONTACTO = "Elementos del menú encontrados";
+    private final String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú encontrados";
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
     private WebElementFacade linkAccountFileAccountFileContacts;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDetailCardTab']")
@@ -173,7 +173,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     }
 
     public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
-        assertThat(ASSERTMENUCREARNUEVOCONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
+        assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
     }
 
     public Boolean esContactoAsociado(String nombreContacto) throws Exception {
