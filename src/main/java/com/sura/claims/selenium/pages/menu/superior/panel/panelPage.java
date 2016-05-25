@@ -3,8 +3,11 @@ package com.sura.claims.selenium.pages.menu.superior.panel;
 import com.sura.guidewire.selenium.Guidewire;
 import org.openqa.selenium.WebDriver;
 
-public class PanelPage extends Guidewire {
-    public PanelPage(WebDriver driver) {
+/**
+ * Created by jorghome on 10/05/2016.
+ */
+public class panelPage extends Guidewire {
+    public panelPage(WebDriver driver) {
         super(driver);
     }
 }

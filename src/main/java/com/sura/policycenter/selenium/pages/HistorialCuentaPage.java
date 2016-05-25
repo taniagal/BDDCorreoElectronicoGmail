@@ -8,14 +8,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import org.slf4j.LoggerFactory;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class HistorialCuentaPage extends Guidewire {
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")

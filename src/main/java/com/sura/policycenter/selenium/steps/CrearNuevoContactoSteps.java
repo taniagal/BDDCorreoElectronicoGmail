@@ -14,17 +14,15 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     private String tipoDoc="";
     private final Guidewire gw = new Guidewire(getDriver());
     private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
-    public CrearNuevoContactoSteps(Pages pages) {
-        super(pages);
-    }
+    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     private void  initRandoms(){
         cedula = gw.cedulaRandom();
         nit = gw.nitRandom();
+    }
+
+    public CrearNuevoContactoSteps(Pages pages) {
+        super(pages);
     }
 
     @Step
@@ -40,9 +38,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     @Step
     public void ingresarNumeroDocumentoPersonaNatural(String numeroDocumento){
-        if("".equals(cedula) || "".equals(nit)) {
-            initRandoms();
-        }
+        if("".equals(cedula) || "".equals(nit)) initRandoms();
         if(("NIT").equals(tipoDoc)) {
             nuevoContactoPage.ingresarNumeroDocumento(nit);
         } else {

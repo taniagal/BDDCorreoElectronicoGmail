@@ -33,13 +33,12 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
 
     @Step
     public void agregarTipoDocumento(String tipoDocumento) {
-        if("".equals(cedula) || "".equals(nit)) {
-            initRandoms();
-        }
+        if("".equals(cedula) || "".equals(nit)) initRandoms();
         if("NIT".equals(tipoDocumento)){
             cp.buscarPersona("Busqueda","Compania");
             cp.agregarTipoDocumento(tipoDocumento,nit);
-        } else {
+        }
+        else{
             cp.buscarPersona("Busqueda","Persona");
             cp.agregarTipoDocumento(tipoDocumento,cedula);
         }
