@@ -5,7 +5,10 @@ import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevoContactoSteps;
 import com.sura.policycenter.selenium.steps.DetallesContactoSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
 @SuppressWarnings("WeakerAccess")
 public class DetallesContactoEdicionDefinitions {
@@ -13,12 +16,6 @@ public class DetallesContactoEdicionDefinitions {
     private DetallesContactoSteps dcs;
     @Steps
     private SeusLoginSteps sls;
-    @Steps
-    private CrearNuevoContactoSteps ncs;
-
-    @SuppressWarnings("EmptyMethod")
-    @Given("Se ha consultado la informacion detallada de un contacto persona natural")
-    public void personaNatural(){}
 
     @When("quiera editar la informacion del contacto con segundo nombre <segundo_nombre>")
     public void agregarNombre(@Named("segundo_nombre")String segundoNombre){
@@ -60,11 +57,6 @@ public class DetallesContactoEdicionDefinitions {
     /**
      * ESCENARIO 2
      */
-    @SuppressWarnings("EmptyMethod")
-    @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica")
-    public void infoContactoJuridico(){
-    }
-
     @When("quiera editar la informacion del contacto con razon social <razon_social>, nombre comercial <nombre_comercial>, actividad comercial <actividad_comercial>")
     public void agregarRazonSocial(@Named("nombre_comercial")String nombreComercial, @Named("actividad_comercial")String actividadComercial){
         dcs.agregarRazonSocial(nombreComercial,actividadComercial);

@@ -91,7 +91,6 @@ public class BusquedaContactoPage extends Guidewire {
         super(driver);
     }
 
-    final String ERROR = "This is error";
     public void login(String usuario, String contrasena){
         txtusuario.type(usuario);
         txtcontrasena.type(contrasena);

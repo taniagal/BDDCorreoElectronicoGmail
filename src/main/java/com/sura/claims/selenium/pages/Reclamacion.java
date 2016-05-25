@@ -9,10 +9,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
+
 public class Reclamacion extends Guidewire {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-    private final Guidewire gw = new Guidewire(getDriver());
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen" +
             ":LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker" +
             "-triggerWrap']")
@@ -57,7 +57,7 @@ public class Reclamacion extends Guidewire {
 
     /**
      *
-     * @param npoliza numero de poliza
+     * @param npoliza numero de reclamacion
      *
      */
     public void llenarReclamacion(String npoliza) {
@@ -67,9 +67,9 @@ public class Reclamacion extends Guidewire {
         tercerFormulario(act);
     }
 
-    private void primerFormulario(String Npoliza) {
+    private void primerFormulario(String nPoliza) {
         rdobuttonBuscarPoliza.click();
-        txtNpoliza.sendKeys(Npoliza);
+        txtNpoliza.sendKeys(nPoliza);
         btnBuscar.click();
         txtFechaSiniestro.sendKeys("04/21/2016");
         txtFechaSiniestro.hasFocus();
@@ -99,20 +99,21 @@ public class Reclamacion extends Guidewire {
     }
 
     private void tercerFormulario(Actions act) {
+        Actions action = act;
         listaCausas.waitUntilClickable();
         listaCausas.click();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        action.sendKeys(Keys.ARROW_DOWN).build().perform();
         causaRoboEstereo.click();
         txtDescripcion.sendKeys("Prueba reclamacion Edd, automatizada con SERENITY BBD" +
                 "Y SELENIUM WEBDRIVER...");
         lugar.click();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        action.sendKeys(Keys.ARROW_DOWN).build().perform();
         direcciondelugar.click();
         btnFinalizar.click();
     }
 
     public void asercion(String msn) {
-        gw.asercion(lblNuevaReclamacion.getText(), msn);
+        asercion(lblNuevaReclamacion.getText(), msn);
     }
 
 }

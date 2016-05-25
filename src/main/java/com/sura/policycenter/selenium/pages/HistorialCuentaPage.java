@@ -8,24 +8,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class HistorialCuentaPage extends Guidewire {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
     private WebElementFacade txtNumCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
     private WebElementFacade btnBuscarCuenta;
-    //@FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_History']/div")
     @FindBy(xpath="//tr[13]/td/div/span")
     private WebElementFacade mnuHistorial;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
