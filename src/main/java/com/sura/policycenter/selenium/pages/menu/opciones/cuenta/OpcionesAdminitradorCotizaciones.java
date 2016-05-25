@@ -94,6 +94,30 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     @FindBy(xpath = "//div[10]/div/span")
     private WebElementFacade colCartas;
 
+    @FindBy(xpath = "//tr[7]/td[2]/div/span[2]")
+    private WebElementFacade lblPropiedadComercialCotizado;
+
+    @FindBy(xpath = "//tr[7]/td[8]/div")
+    private WebElementFacade lblCotizado;
+
+    @FindBy(xpath = "//tr[9]/td[2]/div/span[2]")
+    private WebElementFacade lblPropiedadComercialDeclinado;
+
+    @FindBy(xpath = "//tr[9]/td[8]/div")
+    private WebElementFacade lblDeclinado;
+
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:3:ConfirmLetter']")
+    private WebElementFacade btnCrearCartaCotizacion;
+
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:4:DeclineLetter']")
+    private WebElementFacade btnCrearCartaDeclinacion;
+
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionProduct']")
+    private WebElementFacade lblAutoPersonal;
+
+    @FindBy(xpath = "//tbody/tr/td[10]/div")
+    private WebElementFacade campoCartas;
+
     public void seleccionarAcciones(){
         waitABit(1000);
         btnAcciones.click();
@@ -190,5 +214,78 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         } catch(InterruptedException e) {
             LOGGER.error("This is error", e);
         }
+    }
+
+    public void validarEstadoDiferenteExpedida(String estado) {
+
+        Integer contador = 0;
+
+        List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if (!cells.get(2).getText().equals(" ") && cells.get(7).getText().equals(estado)) {
+                contador++;
+            }
+        }
+
+        if(estado.equals("Expedida")){
+            assertThat(contador,is(equalTo(2)));
+        }else if (!estado.equals("Expedida")){
+            assertThat(contador,is(equalTo(1)));
+        }
+    }
+
+    public void validarNumeroPoliza() {
+
+        Integer contador = 0;
+
+        List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if (!cells.get(2).getText().equals(" ") && !cells.get(6).getText().equals(" ") && cells.get(7).getText().equals("Expedida")) {
+                contador++;
+            }
+        }
+        assertThat(contador,is(equalTo(2)));
+    }
+
+    public void validarEstadoCotizacionCotizado(String propiedadComercial, String cotizado) {
+
+        assertThat(lblPropiedadComercialCotizado.getText(), is(equalTo(propiedadComercial)));
+        assertThat(lblCotizado.getText(), is(equalTo(cotizado)));
+
+    }
+
+    public void validarEstadoCotizacionDeclinado(String propiedadComercial, String declinado) {
+
+        assertThat(lblPropiedadComercialDeclinado.getText(), is(equalTo(propiedadComercial)));
+        assertThat(lblDeclinado.getText(), is(equalTo(declinado)));
+
+    }
+
+    public void mostrarBotonCrearCartaCotizacion(String crearCarta) {
+        assertThat(btnCrearCartaCotizacion.getText(), is(equalTo(crearCarta)));
+    }
+
+    public void mostrarBotonCrearCartaDeclinacion(String crearCarta) {
+        assertThat(btnCrearCartaDeclinacion.getText(), is(equalTo(crearCarta)));
+    }
+
+    public void validarEstadoAutoPersonal(String producto) {
+        assertThat(lblAutoPersonal.getText(), is(equalTo(producto)));
+    }
+
+    public void noMostrarBotonCrearCarta(String crearCarta) {
+        assertThat(campoCartas.getText(), is(not(equalTo(crearCarta))));
+    }
+
+    public void mostrarTodosLosProductos(String producto) {
+        waitABit(1000);
+        txtProductos.click();
+        WebElementFacade cbxProducto = findBy(".//li[contains(.,'"+producto+"')]");
+        waitABit(1000);
+        cbxProducto.click();
+        act.sendKeys(Keys.ENTER);
+        waitABit(1500);
     }
 }

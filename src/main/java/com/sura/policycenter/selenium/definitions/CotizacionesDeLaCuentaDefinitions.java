@@ -4,6 +4,7 @@ import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CotizacionesDeLaCuentaSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevaCuentaSteps;
 import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
+import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -98,5 +99,80 @@ public class CotizacionesDeLaCuentaDefinitions {
         labelsCotizaciones.put("cartas","Cartas");
 
         cotizacionesDeLaCuentaSteps.validarLabelsCotizaciones(labelsCotizaciones);
+    }
+
+
+
+
+    @When("se esten mostrando todos los productos <producto>")
+    public void whenMostrarTodosLosProductos(@Named("producto") String producto){
+        cotizacionesDeLaCuentaSteps.mostrarTodosLosProductos(producto);
+    }
+
+    @When("una cotizacion se encuentre en un estado diferente a 'Expedida' <estado>")
+    public void whenEstadoDiferenteExpedida(@Named("estado") String estado){
+        cotizacionesDeLaCuentaSteps.validarEstadoDiferenteExpedida(estado);
+    }
+
+    @Then("el numero de poliza debe aparecer vacio.")
+    public void thenNoMostrarNumeroPoliza(){
+        cotizacionesDeLaCuentaSteps.validarNumeroPoliza();
+    }
+
+    @When("una cotizacion se encuentre en un estado 'Expedida' <estado>")
+    public void whenEstadoIgualExpedida(@Named("estado") String estado){
+        cotizacionesDeLaCuentaSteps.validarEstadoDiferenteExpedida(estado);
+    }
+
+    @Then("se debe mostrar el numero de la poliza.")
+    public void thenMostrarNumeroPoliza(){
+        cotizacionesDeLaCuentaSteps.validarNumeroPoliza();
+    }
+
+    @When("una cotizacion este en estado 'Cotizado' <cotizado> y no se haya generado una carta de cotizacion para esta cotizacion y sea cotizacion de MRC <propiedadComercial>")
+    public void whenvalidarEstadoCotizacionCotizado(@Named("propiedadComercial") String propiedadComercial, @Named("cotizado") String cotizado){
+        cotizacionesDeLaCuentaSteps.validarEstadoCotizacionCotizado(propiedadComercial, cotizado);
+    }
+
+    @Then("me debe permitir crear una carta de cotizacion por medio de un boton. El label del boton debe ser 'Crear carta de cotizacion' <crearCarta>.")
+    public void thenMostrarCartaCotizacion(@Named("crearCarta") String crearCarta){
+        cotizacionesDeLaCuentaSteps.mostrarBotonCrearCartaCotizacion(crearCarta);
+    }
+
+    @When("una cotizacion este en estado 'Declinado' <declinado> y no se haya generado una carta de declinacion para esta cotizacion y sea cotizacion de MRC <propiedadComercial>")
+    public void whenvalidarEstadoCotizacionDeclinado(@Named("propiedadComercial") String propiedadComercial, @Named("declinado") String declinado){
+        cotizacionesDeLaCuentaSteps.validarEstadoCotizacionDeclinado(propiedadComercial, declinado);
+    }
+
+    @Then("me debe permitir crear una carta de declinacion por medio de un boton. El label del boton debe ser 'Crear carta de declinacion' <crearCarta>.")
+    public void thenMostrarCartaDeclinacion(@Named("crearCarta") String crearCarta){
+        cotizacionesDeLaCuentaSteps.mostrarBotonCrearCartaDeclinacion(crearCarta);
+    }
+
+    @When("una cotizacion sea producto Auto Personal <producto>")
+    public void whenValidarEstadoAutoPersonal(@Named("producto") String producto){
+        cotizacionesDeLaCuentaSteps.validarEstadoAutoPersonal(producto);
+    }
+
+    @Then("no debe aparecer la opcion de crear carta de cotizacion <crearCarta>.")
+    public void thenNoMostrarCartaCotizacion(@Named("crearCarta") String crearCarta){
+        cotizacionesDeLaCuentaSteps.noMostrarBotonCrearCarta(crearCarta);
+    }
+
+    @Then("no debe aparecer la opcion de crear carta de declinacion <crearCarta>.")
+    public void thenNoMostrarCartaDeclinacion(@Named("crearCarta") String crearCarta){
+        cotizacionesDeLaCuentaSteps.noMostrarBotonCrearCarta(crearCarta);
+    }
+
+    @When("a una cotizacion se le haya creado carta de confirmacion o de declinacion")
+    @Manual
+    public void whenCrearCarta(){
+        // Se realiza manualmente.
+    }
+
+    @Then("me debe permitir descargar esta carta. Esta funcionalidad queda tal cual como viene de caja.")
+    @Manual
+    public void thenPermitirDescargarCarta(){
+        // Se realiza manualmente.
     }
 }

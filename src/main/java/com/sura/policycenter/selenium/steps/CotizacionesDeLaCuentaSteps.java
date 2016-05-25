@@ -93,4 +93,46 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
     public void validarLabelsCotizaciones(Map<String, String> labelsCotizaciones) {
         opcionesAdministradorCotizaciones.validarLabelsCotizaciones(labelsCotizaciones);
     }
+
+    @Step
+    public void validarEstadoDiferenteExpedida(String estado) {
+        opcionesAdministradorCotizaciones.validarEstadoDiferenteExpedida(estado);
+    }
+
+    @Step
+    public void validarNumeroPoliza() {
+        opcionesAdministradorCotizaciones.validarNumeroPoliza();
+    }
+
+    @Step
+    public void validarEstadoCotizacionCotizado(String propiedadComercial, String cotizado) {
+        opcionesAdministradorCotizaciones.validarEstadoCotizacionCotizado(propiedadComercial, cotizado);
+    }
+
+    @Step
+    public void validarEstadoCotizacionDeclinado(String propiedadComercial, String cotizado) {
+        opcionesAdministradorCotizaciones.validarEstadoCotizacionDeclinado(propiedadComercial, cotizado);
+    }
+
+    @Step
+    public void mostrarBotonCrearCartaCotizacion(String crearCarta) {
+        opcionesAdministradorCotizaciones.mostrarBotonCrearCartaCotizacion(crearCarta);
+    }
+
+    @Step
+    public void mostrarBotonCrearCartaDeclinacion(String crearCarta) {
+        opcionesAdministradorCotizaciones.mostrarBotonCrearCartaDeclinacion(crearCarta);
+    }
+
+    public void validarEstadoAutoPersonal(String producto) {
+        opcionesAdministradorCotizaciones.validarEstadoAutoPersonal(producto);
+    }
+
+    public void noMostrarBotonCrearCarta(String crearCarta) {
+        opcionesAdministradorCotizaciones.noMostrarBotonCrearCarta(crearCarta);
+    }
+
+    public void mostrarTodosLosProductos(String producto) {
+        opcionesAdministradorCotizaciones.mostrarTodosLosProductos(producto);
+    }
 }
