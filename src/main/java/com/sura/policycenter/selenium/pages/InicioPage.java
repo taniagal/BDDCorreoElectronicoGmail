@@ -31,8 +31,6 @@ import static org.hamcrest.Matchers.containsString;
 
 @SuppressWarnings("UnusedReturnValue")
 public class InicioPage extends Guidewire {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
     private final Navegacion navegacion;
     Actions act = new Actions(getDriver());
 

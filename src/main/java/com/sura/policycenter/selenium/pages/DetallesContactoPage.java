@@ -4,7 +4,14 @@ import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import javax.swing.JOptionPane;
+
+import javax.swing.*;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import static net.thucydides.core.pages.components.HtmlTable.rowsFrom;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DetallesContactoPage extends Guidewire {
@@ -132,10 +139,20 @@ public class DetallesContactoPage extends Guidewire {
     private WebElementFacade txtCodigoPostal;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
     private WebElementFacade txtTipoNegocio;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:DocumentType-inputEl']")
+    private WebElementFacade txtTipoDocumento;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
+    private WebElementFacade txtDocumento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-inputEl']")
     private WebElementFacade txtDescripcionDireccion;
-    private final String [] dtlContact = new String[15];
-    private final String [] dtlCntJ = new String[8];
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table")
+    private WebElementFacade tblDirecciones;
+    @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
+    private WebElementFacade divMensaje;
+
+    private  String [] dtlContact = new String[15];
+    private String [] dtlCntJ = new String[8];
+    private  String [] dtlContact2 = new String[1];
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
@@ -146,39 +163,6 @@ public class DetallesContactoPage extends Guidewire {
         waitABit(800);
     }
 
-    public void editarContactoJuridico(String razonSocial, String nombreComercial, String actividadComercial,
-                                       String numeroEmpleados,String valorActivos, String ventasAnuales, String telefonoOficina,
-                                       String correoElectronicoPrimario, String correoElectronicoSecundario) {
-
-        txtCorreoElectronicoPrimarioEmpresa.clear();
-        waitABit(100);
-        txtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
-        txtNombreComercial.clear();
-        txtNombreComercial.sendKeys(nombreComercial);
-        selectItem(cboActividadComercial, actividadComercial);
-        waitABit(500);
-        txtNumeroEmpleados.clear();
-        txtNumeroEmpleados.sendKeys(numeroEmpleados);
-        txtValorActivos.clear();
-        txtValorActivos.sendKeys(valorActivos);
-        txtVentasAnuales.clear();
-        txtVentasAnuales.sendKeys(ventasAnuales);
-        txtTelefonoOficina.clear();
-        txtTelefonoOficina.sendKeys(telefonoOficina);
-        txtCorreoElectronicoSecundarioEmpresa.clear();
-        waitABit(300);
-        txtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
-
-        dtlCntJ[0]= nombreComercial;
-        dtlCntJ[1]= actividadComercial;
-        dtlCntJ[2]= numeroEmpleados;
-        dtlCntJ[3]= valorActivos;
-        dtlCntJ[4]= ventasAnuales;
-        dtlCntJ[5]= telefonoOficina;
-        dtlCntJ[6]= correoElectronicoPrimario;
-        dtlCntJ[7]= correoElectronicoSecundario;
-    }
-
     public void actualizaContacto(){
         btnActualizar.click();
         waitABit(2000);
@@ -186,6 +170,12 @@ public class DetallesContactoPage extends Guidewire {
 
     public void irADirecciones(){
         btnDirecciones.click();
+        waitABit(2000);
+        btnAgregar.click();
+    }
+
+    public void agregarDireccion(){
+        btnAgregar.click();
     }
 
     public void agregarNombre(String segundoNombre){
@@ -227,16 +217,58 @@ public class DetallesContactoPage extends Guidewire {
 
     public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
         txtCorreoElectronicoPrimario.clear();
-        waitABit(300);
+        waitABit(500);
         txtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
-        waitABit(200);
+        waitABit(500);
         txtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
         dtlContact[13]= correoElectronicoPrimario;
         dtlContact[14]= correoElectronicoSecundario;
     }
 
+
     /**
-     * Valida si los datos ingresados es igual al que se muestran en el detalle
+     *DETALLE CONTACTO EDICION PERSONA JURIDICA
+     */
+    public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
+        txtNombreComercial.clear();
+        txtNombreComercial.sendKeys(nombreComercial);
+        selectItem(cboActividadComercial, actividadComercial);
+        dtlCntJ[0]= nombreComercial;
+        dtlCntJ[1]= actividadComercial;
+    }
+
+
+    public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
+        waitABit(500);
+        txtNumeroEmpleados.clear();
+        txtNumeroEmpleados.sendKeys(numeroEmpleados);
+        txtValorActivos.clear();
+        txtValorActivos.sendKeys(valorActivos);
+        txtVentasAnuales.clear();
+        txtVentasAnuales.sendKeys(ventasAnuales);
+        dtlCntJ[2]= numeroEmpleados;
+        dtlCntJ[3]= valorActivos;
+        dtlCntJ[4]= ventasAnuales;
+    }
+
+    public void agregarCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario){
+        txtCorreoElectronicoPrimarioEmpresa.clear();
+        waitABit(100);
+        txtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
+        txtTelefonoOficina.clear();
+        txtTelefonoOficina.sendKeys(telefonoOficina);
+        txtCorreoElectronicoSecundarioEmpresa.clear();
+        waitABit(500);
+        txtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
+        dtlCntJ[5]= telefonoOficina;
+        dtlCntJ[6]= correoElectronicoPrimario;
+        dtlCntJ[7]= correoElectronicoSecundario;
+    }
+
+
+    /**
+     * DETALLE CONTACTO EDICION
+     *Valida si los datos ingresados es igual al que se muestran en el detalle
      */
     public void verificarActualizacion(){
         espera(txtSegundoNombre,6);
@@ -277,8 +309,18 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     /**
-     * Valida si estos elementos están presentes
+     * Verifica que el documento y el tipo de documento no sean editables por un error de codigo en policy.
      */
+    public void verificarEstadoDeDocumento(){
+        assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo",
+                !txtTipoDocumento.isCurrentlyEnabled() || !txtDocumento.isCurrentlyEnabled());
+    }
+
+
+    /**
+     * DETALLE CONTACTO
+    *Valida si estos elementos están presentes
+    */
     public  void verificarCamposPersonaNatural(){
         StringBuilder notPresent = new StringBuilder("No estan presentes los elemtos:");
         if(!lblPrimerNombre.isPresent()) notPresent.append(" primer_nombre,");
@@ -321,6 +363,9 @@ public class DetallesContactoPage extends Guidewire {
         assertThat(res,"No estan presentes los elemtos".equals(res));
     }
 
+    /**
+     * AGREGAR DIRECCION A CONTACTO
+     */
     public void validarDatosPantalla() {
         StringBuilder notPresent = new StringBuilder("No estan presentes los elemtos:");
         if(!lblPais.isPresent()) notPresent.append(" pais,");
@@ -338,20 +383,29 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void validarCampos() {
-        //cboPais.
-        //cboDepartamento.click();
-        //txtDireccion.click();
-        JOptionPane.showMessageDialog(null,cboPais.getText());
-        JOptionPane.showMessageDialog(null,cboDepartamento.getText());
-        JOptionPane.showMessageDialog(null,txtDireccion.getText());
         StringBuilder right = new StringBuilder("No estan correctos los valores:");
-        if(!cboPais.getText().equals("Colombia"))right.append(" pais,");
-        if(!cboDepartamento.getText().equals("<ninguno>"))right.append(" departamento,");
-        System.out.println(cboDepartamento.getText());
+        if(!cboPais.getValue().toString().equals("Colombia"))right.append(" pais,");
+        if(!cboDepartamento.getValue().toString().equals("<ninguno>"))right.append(" departamento,");
+        if(!txtDireccion.getAttribute("placeholder").equals("CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203"))right.append("drireccion placeholder,");
+        if(!txtDireccion.getAttribute("data-qtip").equals("Esta Direccion podria estandarizarse automáticamente"))right.append("drireccion data-tip,");
+        if(!txtDireccion.getAttribute("maxlength").equals("200"))right.append("direccion maxlength,");
         String res = right.toString();
         if("No estan correctos los valores:".equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
         }
         assertThat(res,"No estan correctos los valores".equals(res));
+    }
+
+    public void validarDireccion(String tipoDireccion){
+        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains(tipoDireccion));
+    }
+
+    public List<WebElementFacade> getListaContactos() {
+        List<WebElementFacade> contactos = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
+        return contactos;
+    }
+
+    public void validarMensaje(String mensaje) {
+        assertThat("Problemas en el mensaje de error"+mensaje,divMensaje.containsText(mensaje));
     }
 }

@@ -102,7 +102,7 @@ public class BusquedaContactoPage extends Guidewire {
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         waitABit(1000);
-        if(("Personal").equals(tipoContacto)){
+        if ("Personal".equals(tipoContacto)){
             nombreContact.type(nombre);
             apellidoContact.type(apellido);
         }else{

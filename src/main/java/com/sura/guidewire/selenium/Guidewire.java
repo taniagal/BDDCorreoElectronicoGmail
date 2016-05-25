@@ -1,5 +1,6 @@
 package com.sura.guidewire.selenium;
 
+import com.google.common.base.Function;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
@@ -8,18 +9,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.TimeUnit;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class Guidewire extends PageObject {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
     private final Actions act = new Actions(getDriver());
-    private static final String mensajeError = "";
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
-    private WebElementFacade configuracion;
+    WebElementFacade configuracion;
+    @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
+    WebElementFacade internacional;
+    @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
+    WebElementFacade idioma;
     @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
     private WebElementFacade espaniol;
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
@@ -73,13 +80,15 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        menu.click();
-        waitABit(1500);
-        menu.click();
-        waitABit(500);
+        Actions act = new Actions(getDriver());
+        menu.waitUntilClickable().click();
+        waitABit(300);
+        menu.waitUntilClickable().click();
+        waitABit(300);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
     }
+
 
     public void selectItem(WebElementFacade element, String option){
         element.click();
@@ -126,4 +135,15 @@ public class Guidewire extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    public void waitUntil(int millis) {
+        Integer i = 0;
+        Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
+                TimeUnit.MILLISECONDS).pollingEvery(millis,
+                TimeUnit.MILLISECONDS);
+        waitUtil.until(new Function<Integer, Boolean>() {
+            public Boolean apply(Integer i) {
+                return false;
+            }
+        });
+    }
 }

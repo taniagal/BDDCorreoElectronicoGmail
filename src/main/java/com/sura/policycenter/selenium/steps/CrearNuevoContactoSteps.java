@@ -62,8 +62,13 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarDireccionPersonaNatural(String direccion){
-        nuevoContactoPage.ingresarDireccion(direccion);
+    public void ingresarDireccionPersonaNatural(String direccion, String departamento, String ciudad){
+        nuevoContactoPage.ingresarDireccion(direccion, departamento, ciudad);
+    }
+
+    @Step
+    public void ingresarDireccionPersonaNatural2(String direccion, String departamento, String ciudad, String tipoDireccion){
+        nuevoContactoPage.ingresarDireccion2(direccion, departamento, ciudad, tipoDireccion);
     }
 
     @Step
