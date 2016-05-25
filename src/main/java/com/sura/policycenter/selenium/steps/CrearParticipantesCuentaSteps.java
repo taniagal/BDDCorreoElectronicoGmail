@@ -9,13 +9,16 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class CrearParticipantesCuentaSteps extends ScenarioSteps {
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
     private final BuscarCuentasPage buscarCuentasPage = new BuscarCuentasPage (getDriver());
     private final OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage (getDriver());
 
-    public CrearParticipantesCuentaSteps(Pages pages) {super(pages);}
+    public CrearParticipantesCuentaSteps(Pages pages) {
+        super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
     @Step
     public void navegaBuscarCuentaPar (){

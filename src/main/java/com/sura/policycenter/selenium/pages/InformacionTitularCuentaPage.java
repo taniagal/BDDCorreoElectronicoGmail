@@ -2,17 +2,14 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.apache.xalan.xsltc.runtime.InternalRuntimeError;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class InformacionTitularCuentaPage extends Guidewire {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
     @FindBy(xpath="//tr[2]/td/DIV/span")
     WebElementFacade mnuInformacionTitularCuenta;
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:ttlBar']")
