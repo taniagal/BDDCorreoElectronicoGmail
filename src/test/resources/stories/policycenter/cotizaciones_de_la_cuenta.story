@@ -23,7 +23,7 @@ And seleccione la opcion de crear nueva cotizacion
 Then se debe iniciar el proceso de nueva cotizacion
 
 Examples:
-|numCuenta|
+|numCuenta   |
 |C000777777  |
 
 Scenario: Ocultar opcion de retirar
@@ -40,10 +40,18 @@ Scenario: Mostrar resultado segun el filtro
 Given estoy en una cuenta <numCuenta>
 When ingrese a cotizaciones de la cuenta
 And seleccione una o varias opciones de algun filtro <cotizaciones> <productos>
-Then se debe mostrar la información de acuerdo a los filtros: Acciones, Producto, Cotizacion, Tipo de cotizacion,
-Fecha inicio de vigencia, Fecha fin de vigencia, Estado, Costo total.
+Then se debe mostrar la información de acuerdo a los filtros <productos>: Acciones, Producto, Cotizacion, Tipo de cotizacion,
+Fecha inicio de vigencia, Fecha fin de vigencia, Estado, Costo total
 
 Examples:
-|numeroCuenta|cotizaciones            |productos           |
-|C000777777  |Presentaciones abiertas |Todos Los Productos |
-|C000777777  |Completar envíos        |Todos Los Prodcutos |
+|numCuenta  |cotizaciones           |productos           |
+|C000777777 |Todas las cotizaciones |Propiedad comercial |
+
+Scenario: Mostrar labels correctos en espanol
+Given estoy en una cuenta <numCuenta>
+When ingrese a cotizaciones de la cuenta
+Then los labels se deben mostrar tal cual como se indica en los UIFields
+
+Examples:
+|numCuenta   |
+|C000777777  |

@@ -8,6 +8,8 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import java.util.Map;
+
 /**
  * Created by jonamele on 16/05/2016.
  */
@@ -80,5 +82,15 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
     @Step
     public void seleccionarFiltros(String cotizacion, String producto) {
         opcionesAdministradorCotizaciones.seleccionarFiltros(cotizacion, producto);
+    }
+
+    @Step
+    public void mostrarInfoCotizacion(String producto) {
+        opcionesAdministradorCotizaciones.mostrarInfoCotizacion(producto);
+    }
+
+    @Step
+    public void validarLabelsCotizaciones(Map<String, String> labelsCotizaciones) {
+        opcionesAdministradorCotizaciones.validarLabelsCotizaciones(labelsCotizaciones);
     }
 }

@@ -13,6 +13,8 @@ import org.jbehave.core.annotations.When;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class CotizacionesDeLaCuentaDefinitions {
@@ -68,8 +70,33 @@ public class CotizacionesDeLaCuentaDefinitions {
     }
 
     @When("seleccione una o varias opciones de algun filtro <cotizaciones> <productos>")
-    public void whenSeleccionarFiltrosBusqueda(@Named("envios") String cotizacion,
+    public void whenSeleccionarFiltrosBusqueda(@Named("cotizaciones") String cotizacion,
                                                @Named("productos") String producto){
         cotizacionesDeLaCuentaSteps.seleccionarFiltros(cotizacion, producto);
+    }
+
+    @Then("se debe mostrar la información de acuerdo a los filtros <productos>: Acciones, Producto, Cotizacion, Tipo de cotizacion,\n" +
+            "Fecha inicio de vigencia, Fecha fin de vigencia, Estado, Costo total")
+    public void thenMostrarInformacionCotizacion(@Named("productos") String producto){
+        cotizacionesDeLaCuentaSteps.mostrarInfoCotizacion(producto);
+    }
+
+    @Then("los labels se deben mostrar tal cual como se indica en los UIFields")
+    public void thenValidarLabelsCotizaciones(){
+        Map<String, String> labelsCotizaciones = new HashMap<>();
+        labelsCotizaciones.put("lblCotizaciones", "Cotizaciones de la cuenta");
+        labelsCotizaciones.put("btnNuevaCotizacion", "Nueva cotización");
+        labelsCotizaciones.put("acciones","Acciones");
+        labelsCotizaciones.put("producto","Producto");
+        labelsCotizaciones.put("numCotizacion","N° de cotización");
+        labelsCotizaciones.put("tipoCotizacion","Tipo de cotización");
+        labelsCotizaciones.put("fechaIniVigencia","Fecha inicio de vigencia");
+        labelsCotizaciones.put("fechaFinVigencia","Fecha fin de vigencia");
+        labelsCotizaciones.put("numPoliza","Número de póliza");
+        labelsCotizaciones.put("estado","Estado");
+        labelsCotizaciones.put("costoTotal","Costo total");
+        labelsCotizaciones.put("cartas","Cartas");
+
+        cotizacionesDeLaCuentaSteps.validarLabelsCotizaciones(labelsCotizaciones);
     }
 }
