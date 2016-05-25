@@ -10,25 +10,19 @@ import static org.hamcrest.Matchers.containsString;
 public class CuentasAsociadasAContactoPage extends SeusLoginPage {
 
     @FindBy(xpath="//td[@id='ContactFile:MenuLinks:ContactFile_ContactFile_Accounts']/div")
-    WebElementFacade mnuLateralCuenta;
-
+    private WebElementFacade mnuLateralCuenta;
     @FindBy(xpath="//div/table/tbody/tr/td[2]/div")
-    WebElementFacade nombreContactoCuenta;
-
+    private WebElementFacade nombreContactoCuenta;
     @FindBy(xpath="//td[3]/div")
-    WebElementFacade direccionContactoCuenta;
-
+    private WebElementFacade direccionContactoCuenta;
     @FindBy(xpath="//td[4]/div")
-    WebElementFacade telContactoCuenta;
-
+    private WebElementFacade telContactoCuenta;
     @FindBy(xpath="//td[5]/div")
-    WebElementFacade emailContactoCuenta;
-
+    private WebElementFacade emailContactoCuenta;
     @FindBy(xpath="//td[6]/div")
-    WebElementFacade rolesContactoCuenta;
-
+    private WebElementFacade rolesContactoCuenta;
     @FindBy(xpath = ".//*[@id='ContactFile_Accounts:panelRefInfoMessage:InfoMessage_ExtDV:message']")
-    WebElementFacade msjCuentaNoEncontrada;
+    private WebElementFacade msjCuentaNoEncontrada;
 
     public CuentasAsociadasAContactoPage(WebDriver driver) {
         super(driver);

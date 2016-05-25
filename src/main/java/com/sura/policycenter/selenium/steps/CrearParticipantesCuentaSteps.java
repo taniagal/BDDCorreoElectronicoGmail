@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarCuentasPage;
@@ -8,19 +7,15 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import javax.swing.*;
-
-/**
- * Created by jonamele on 16/05/2016.
- */
 public class CrearParticipantesCuentaSteps extends ScenarioSteps {
 
-    public CrearParticipantesCuentaSteps(Pages pages) {super(pages);}
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
-    BuscarCuentasPage buscarCuentasPage = new BuscarCuentasPage (getDriver());
-    OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage (getDriver());
+    private final BuscarCuentasPage buscarCuentasPage = new BuscarCuentasPage (getDriver());
+    private final OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage (getDriver());
+
+    public CrearParticipantesCuentaSteps(Pages pages) {super(pages);}
 
     @Step
     public void navegaBuscarCuentaPar (){
@@ -37,7 +32,6 @@ public class CrearParticipantesCuentaSteps extends ScenarioSteps {
         inicioPage().irAOpcionesCrearPartcCuenta();
         opcionesCrearPartcCuentaPage.navegacionCreaParticipante();
     }
-
 
     @Step
     public void validaParticipante (){

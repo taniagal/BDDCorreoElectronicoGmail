@@ -8,18 +8,16 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.model.ExamplesTable;
 
-/**
- * Created by jorgsape on 2016/05/04.
- */
+@SuppressWarnings("WeakerAccess")
 public class ContactosAsociadosACuentaDefinitions {
 
-    public static final String encabezado = "encabezados";
+    private static final String ENCABEZADO = "encabezados";
 
     @Steps
     SeusLoginSteps seusSteps;
 
     @Steps
-    ContactosAsociadosACuentasSteps contactosAsociadosACuentaSteps;
+    private ContactosAsociadosACuentasSteps contactosAsociadosACuentaSteps;
 
     @Given("estoy en la pantalla de cuenta y existe una cuenta <numCuenta> con contactos asociados")
     public void givenEstoyEnLaPantallaDeCuentaYExisteUnaCuentanumCuentaConContactosDeTipoPersonaJuridicaAsociados(String numCuenta) {
@@ -42,26 +40,26 @@ public class ContactosAsociadosACuentaDefinitions {
     }
 
     @Then("debo ver los roles de contacto de tipo persona y sus $encabezados")
-    public void thenDeboVerLosRolesDeContactoDeTipoPersonaJurídica(ExamplesTable encabezados) {
+    public void thenDeboVerLosRolesDeContactoDeTipoPersonaJuridica(ExamplesTable encabezados) {
         contactosAsociadosACuentaSteps.verificarRolesFuncionesNoEsNulo();
-        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado, "//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:ContactRolesDV:ContactRolesLV']/div/div/div/div");
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, ENCABEZADO, "//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:ContactRolesDV:ContactRolesLV']/div/div/div/div");
     }
 
     @Then("debo ver las direcciones asociadas al contacto y sus $encabezados")
     public void thenDeboVerLasDireccionesAsociadasAUnContacto(ExamplesTable encabezados) {
         contactosAsociadosACuentaSteps.verificarDireccionesEsNulo();
-        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet:AddressesLV']/div/div/div/div");
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, ENCABEZADO,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet:AddressesLV']/div/div/div/div");
     }
 
 
     @Then("debo ver las transacciones asociadas al contacto y sus $encabezados")
     public void thenDeboVerLasTransaccionesAsociadasAUnContacto(ExamplesTable encabezados) {
-        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_WorkOrdersLV']/div/div/div/div");
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, ENCABEZADO,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_WorkOrdersLV']/div/div/div/div");
     }
 
     @Then("debo ver las polizas asociadas al contacto y sus $encabezados")
     public void thenDeboVerLasPolizasAsociadasAUnContacto(ExamplesTable encabezados) {
-        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, encabezado,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_PoliciesLV']/div/div/div/div");
+        contactosAsociadosACuentaSteps.verificarEncabezados(encabezados, ENCABEZADO,".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountFile_Contacts_PoliciesLV']/div/div/div/div");
     }
 
 

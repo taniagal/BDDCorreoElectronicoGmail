@@ -2,35 +2,28 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaContactoPage;
 import com.sura.policycenter.selenium.pages.DetallesContactoPage;
-import com.sura.policycenter.selenium.pages.EscritorioPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-
 public class DetallesContactoSteps extends ScenarioSteps {
-
     BusquedaContactoPage bc = new BusquedaContactoPage(getDriver());
-
     DetallesContactoPage dc = new DetallesContactoPage(getDriver());
-
-    //EscritorioPage escritorioPolicy = new EscritorioPage(getDriver());
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
 
     public DetallesContactoSteps(Pages pages){
         super(pages);
     }
 
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
 
     @Step
-    public void abrirDetallesContactoPersona(String primer_nombre, String primer_apellido){
-        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
+    public void abrirDetallesContactoPersona(String primerNombre, String primerApellido){
         inicioPage().irABuscarContacto();
-        bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primer_nombre,"",primer_apellido,"");
+        bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primerNombre,"",primerApellido,"");
         bc.seleccionarContacto();
     }
 
@@ -40,8 +33,7 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void abrirDetallesContactoEmpresa(String nombreEmpresa){
-        //escritorioPolicy.navegarTabBar("Contacto", "Buscar", "");
+    public void abrirDetallesContactoEmpresa(String nombreEmpresa) {
         inicioPage().irABuscarContacto();
         bc.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
         bc.seleccionarContacto();
@@ -68,7 +60,7 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarNombre(String segundoNombre){
+    public void agregarNombre(String segundoNombre) {
         dc.editarContacto();
         dc.agregarNombre(segundoNombre);
     }
@@ -79,12 +71,12 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarLists(String profesion,String estadoCivil,String tipoFamilia){
+    public void agregarLists(String profesion,String estadoCivil,String tipoFamilia) {
         dc.agregarLists(profesion,estadoCivil,tipoFamilia);
     }
 
     @Step
-    public void agregarTelefonoResidencia(String telefonoResidencial){
+    public void agregarTelefonoResidencia(String telefonoResidencial) {
         dc.agregarTelefonosResidencial(telefonoResidencial);
     }
 
@@ -99,23 +91,19 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarCorreos(String correoElectronicoPrimario, String correoElectronicoSecundario){
+    public void agregarCorreos(String correoElectronicoPrimario, String correoElectronicoSecundario) {
         dc.agregarCorreo(correoElectronicoPrimario,correoElectronicoSecundario);
-    }
-
-    @Step
-    public void editarContacto(String razonSocial, String nombreComercial, String actividadComercial, String numeroEmpleados,
-                               String valorActivos, String ventasAnuales, String telefonoOficina,
-                               String correoElectronicoPrimario, String correoElectronicoSecundario) {
-        dc.editarContacto();
-        dc.editarContactoJuridico(razonSocial,nombreComercial,actividadComercial,numeroEmpleados, valorActivos, ventasAnuales,
-                telefonoOficina, correoElectronicoPrimario, correoElectronicoSecundario);
     }
 
     @Step
     public void agregarDireccion() {
         dc.editarContacto();
         dc.irADirecciones();
+    }
+
+    @Step
+    public void agregarNuevaDireccion(){
+        dc.agregarDireccion();
     }
 
     @Step
@@ -126,5 +114,35 @@ public class DetallesContactoSteps extends ScenarioSteps {
     @Step
     public void validarCampos() {
         dc.validarCampos();
+    }
+
+    @Step
+    public void validarDireccion(String tipoDireccion){
+        dc.validarDireccion(tipoDireccion);
+    }
+
+    @Step
+    public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
+        dc.editarContacto();
+        dc.agregarRazonSocial(nombreComercial,actividadComercial);
+    }
+
+    @Step
+    public void validarMensaje(String mensaje) {
+        dc.validarMensaje(mensaje);
+    }
+
+    @Step
+    public void verificarEstadoDocumento(){
+        dc.verificarEstadoDeDocumento();
+    }
+    @Step
+    public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
+        dc.agregarEmpleados(numeroEmpleados,ventasAnuales,valorActivos);
+    }
+
+    @Step
+    public void agregarCorreosJ(String telefonoOficina, String correoPrimario, String correoSecundario) {
+        dc.agregarCorreosJ(telefonoOficina,correoPrimario,correoSecundario);
     }
 }

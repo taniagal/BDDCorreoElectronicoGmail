@@ -3,18 +3,18 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevoContactoSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
-
-/**
- * Created by brayruru on 2016/04/25.
- */
+@SuppressWarnings("WeakerAccess")
 public class CrearNuevoContactoDefinitions {
 
     @Steps
-    CrearNuevoContactoSteps crearNuevoContactoSteps ;
+    private CrearNuevoContactoSteps crearNuevoContactoSteps ;
     @Steps
-    SeusLoginSteps seusLoginSteps;
+    private SeusLoginSteps seusLoginSteps;
 
     @Given("estoy en la pantalla de crear contacto persona natural")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaNatural() {
@@ -43,23 +43,31 @@ public class CrearNuevoContactoDefinitions {
         crearNuevoContactoSteps.ingresarPrimerApellidoPersonaNatural(primerApellido);
     }
 
-    @When("ingreso la informacion de tipo de dioreccion <tipoDireccion>")
-    public void whenIngresoLaInformacionDeTipoDeDiorecciontipoDireccion(@Named("tipoDireccion") String tipoDireccion) {
+    @When("ingreso la informacion de tipo de direccion <tipoDireccion>")
+    public void whenIngresoLaInformacionDeTipoDeDirecciontipoDireccion(@Named("tipoDireccion") String tipoDireccion) {
         crearNuevoContactoSteps.seleccionarTipoDireccionPersonaNatural(tipoDireccion);
     }
 
-    @When("ingreso la informacion de direccion <direccion>")
-    public void whenIngresoLaInformacionDeDirecciondireccion(@Named("direccion") String direccion) {
-        crearNuevoContactoSteps.ingresarDireccionPersonaNatural(direccion);
+    @When("ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>")
+    public void whenIngresoLaInformacionDeDirecciondireccion(@Named("direccion") String direccion, @Named("departamento") String departamento, @Named("ciudad") String ciudad) {
+        crearNuevoContactoSteps.ingresarDireccionPersonaNatural(direccion, departamento, ciudad);
+    }
+
+    @When("ingreso la informacion de direccion <direccion>, <departamento>, <ciudad>, tipo de direccion <tipoDireccion>")
+    public void whenIngresoLaInformacionDeDirecciondireccion2(@Named("direccion") String direccion, @Named("departamento") String departamento, @Named("ciudad") String ciudad, @Named("tipoDireccion") String tipoDireccion) {
+        crearNuevoContactoSteps.ingresarDireccionPersonaNatural2(direccion, departamento, ciudad, tipoDireccion);
     }
 
     @Then("se debe crear una persona tipo natural con primer nombre <primerNombre>")
     public void thenSeDebeCrearUnaPersonaTipoNatural(@Named("primerNombre") String primerNombre) {
         crearNuevoContactoSteps.actualizar(primerNombre);
-
-//        crearNuevoContactoSteps.getDriver().close();
+        seusLoginSteps.close();
     }
 
+    @Then("se debe crear una persona natural con primer nombre <primerNombre>")
+    public void thenSeDebeCrearUnaPersonaNatural(@Named("primerNombre") String primerNombre) {
+        crearNuevoContactoSteps.actualizar(primerNombre);
+    }
 
     @When("selecciono el tipo de telefono fijo <tipoTelefonoFijo> e ingreso el numero de telefono fijo <numeroTelefonoFijo>")
     public void whenIngresoElNumeroDeTelefonoFijotelefonoFijo(@Named("tipoTelefonoFijo") String tipoTelefonoFijo, @Named("numeroTelefonoFijo") String numeroTelefonoFijo) {
@@ -69,13 +77,15 @@ public class CrearNuevoContactoDefinitions {
     @Then("el campo de ciudad deben ser obligatorios")
     public void thenElCampoDePaispaisDepartamentodepartamentoYCiudadciudadDebenSerObligatorios() {
         crearNuevoContactoSteps.validarCampoPaisDepartamentoYCiudad();
+        seusLoginSteps.close();
     }
 
-    ////////////ESCENARIO CREAR PERSONA JURIDICA
-
-
+    /**
+     * Escenario crear persona juridica
+     */
     @Given("estoy en la pantalla de crear contacto persona juridica")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaJuridica() {
+        seusLoginSteps.login();
         crearNuevoContactoSteps.nuevoContactoPersonaJuridica();
     }
 
@@ -87,13 +97,18 @@ public class CrearNuevoContactoDefinitions {
     @Then("se debe crear una persona tipo juridica con razon social <razonSocial>")
     public void thenSeDebeCrearUnaPersonaTipoJuridica(@Named("razonSocial") String razonSocial) {
         crearNuevoContactoSteps.actualizarJuridica(razonSocial);
+        seusLoginSteps.close();
+    }
+
+    @Then("se debe crear una persona juridica con razon social <razonSocial>")
+    public void thenSeDebeCrearUnaPersonaJuridica(@Named("razonSocial") String razonSocial) {
+        crearNuevoContactoSteps.actualizarJuridica(razonSocial);
     }
 
     @Then("debe validar que el contacto ya existe")
     public void thenSeDebeValidarQueElContactoYaExiste() {
         crearNuevoContactoSteps.verificarContactoExistente();
+        seusLoginSteps.close();
     }
-
-
 
 }

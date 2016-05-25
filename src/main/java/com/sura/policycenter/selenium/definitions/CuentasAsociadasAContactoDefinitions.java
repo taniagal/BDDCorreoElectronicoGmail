@@ -2,15 +2,16 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.CuentasAsociadasAContactoSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.When;
 import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
+@SuppressWarnings("WeakerAccess")
 public class CuentasAsociadasAContactoDefinitions {
 
     @Steps
-    CuentasAsociadasAContactoSteps contactoSteps;
+    private CuentasAsociadasAContactoSteps contactoSteps;
 
     @Given("que voy a consultar un contacto")
     public void seleccionarOpcionBuscarContacto() {

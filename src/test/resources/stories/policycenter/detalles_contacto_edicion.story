@@ -13,7 +13,6 @@ Antecedents: HU Search Contact y HU Metodos de Entrada de Direcciones
 Scenario: Editar detalles de contacto de tipo persona natural
 
 GivenStories: stories/policycenter/crear_nuevo_contacto_natural.story
-Given Se ha consultado la informacion detallada de un contacto persona natural
 When quiera editar la informacion del contacto con segundo nombre <segundo_nombre>
 And profesion <profesion>, estado civil <estado_civil>,tipo familia <tipo_familia>
 And telefono celular <telefono_celular>
@@ -29,12 +28,11 @@ Examples:
 Scenario: Editar detalles de contacto de tipo persona juridica
 
 GivenStories: stories/policycenter/crear_nuevo_contacto_juridico.story
-Given Se ha consultado la informacion detallada de un contacto tipo persona juridica
-When quiera editar la informacion del contacto con razon social <razon_social>, nombre comercial <nombre_comercial>,
-actividad comercial <actividad_comercial>, numero de empleados <numero_empleados>, valor activos <valor_activos>,
-ventas anuales <ventas_anuales>, telefono oficina <telefono_oficina>, correo electronico primario <correo_electronico_primario>,
-correo electronico secundario <correo_electronico_secundario>
+When quiera editar la informacion del contacto con razon social <razon_social>, nombre comercial <nombre_comercial>, actividad comercial <actividad_comercial>
+And numero de empleados <numero_empleados>, valor activos <valor_activos>, ventas anuales <ventas_anuales>
+And telefono oficina <telefono_oficina>, correo electronico primario <correo_electronico_primario>, correo electronico secundario <correo_electronico_secundario>
 Then se deben habilitar la edicion de cierta informacion del contacto, actualizar y visualizar los cambios de persona juridica
+
 
 Examples:
 |razon_social   |tipo_direccion |direccion        |nombre_comercial  |actividad_comercial                    |numero_empleados  |valor_activos  |ventas_anuales |telefono_oficina  |correo_electronico_primario  |correo_electronico_secundario|

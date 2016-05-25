@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-
 import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.steps.DisponibilidadDetalleProductoSteps;
 import net.thucydides.core.annotations.Steps;
@@ -9,10 +8,11 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
+@SuppressWarnings("WeakerAccess")
 public class DisponibilidadDetalleProductoDefinitions {
 
     @Steps
-    DisponibilidadDetalleProductoSteps disponibilidadDetalleProductoSteps;
+    private DisponibilidadDetalleProductoSteps disponibilidadDetalleProductoSteps;
 
     @Given("Estoy expidiendo una poliza de autos")
     public void accionarNuevoEnvio() {
@@ -55,8 +55,8 @@ public class DisponibilidadDetalleProductoDefinitions {
     }
 
     @Then("PA tipo de poliza debe contener los valores $PATipoPoliza")
-    public void validarPATipoDePoliza(ExamplesTable PaTipoPoliza) throws Exception {
-        disponibilidadDetalleProductoSteps.validarPATipoPoliza(PaTipoPoliza);
+    public void validarPATipoDePoliza(ExamplesTable paTipoPoliza) throws Exception {
+        disponibilidadDetalleProductoSteps.validarPATipoPoliza(paTipoPoliza);
     }
 
     @Then("tipo de canal ventas debe tener el valor vacio")

@@ -1,27 +1,22 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.policycenter.constantes.EnumContacto;
 import com.sura.serinitybdd.util.GwNavegacionUtil;
-import jxl.common.Assert;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.*;
-
+import java.util.Map;
+import java.util.List;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
-/**
- * Created by jorgsape on 2016/05/04.
- */
 public class ContactosAsociadosACuentasPage extends Guidewire {
-    private static String MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO = "Elementos del menú encontrados";
+
+    private static final String ASSERTMENUCREARNUEVOCONTACTO = "Elementos del menú encontrados";
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
     private WebElementFacade linkAccountFileAccountFileContacts;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDetailCardTab']")
@@ -42,7 +37,6 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     * */
     @FindBy(xpath = ".//label[contains(@id,'ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl')]")
     private WebElementFacade lblEmail;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:DocumentType-labelCell']")
     private WebElementFacade lblTipoDocumento;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
@@ -63,13 +57,8 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     private WebElementFacade lblDireccion;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
     private WebElementFacade lblTelefono;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:removeContact-btnInnerEl']")
     private WebElementFacade btnEliminar;
-
-
-
-
     @FindBy(xpath = ".//a[contains(.,'Crear nuevo contacto')]")
     private WebElementFacade btnCrearNuevoContacto;
 
@@ -82,14 +71,11 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         linkAccountFileAccountFileContacts.click();
     }
 
-
     public void existeEncabezadoDeTabla(ExamplesTable encabezados, String keyElement, String xPathElementos) {
         List<WebElementFacade> listEncabezados = withTimeoutOf(1, SECONDS).findAll(xPathElementos);
-
         int countCoincidencias = 0;
         for (Map<String, String> enc : encabezados.getRows()) {
             if (enc.containsKey(keyElement)) {
-
                 for (WebElement encabezad : listEncabezados) {
                     if (encabezad.getText().equals(enc.get(keyElement).toString())) {
                         countCoincidencias++;
@@ -97,27 +83,25 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
                     }
                 }
             }
-
         }
-
-
         assertThat("Se encontraron los encabezados esperados", countCoincidencias == encabezados.getRowCount());
-
-
     }
 
-    public List<WebElementFacade> getListaContactos() {
-        List<WebElementFacade> contactos = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+    private List<WebElementFacade> getListaContactos() {
+        List<WebElementFacade> contactos;
+        contactos = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return contactos;
     }
 
-    public List<WebElementFacade> getListaRolesFunciones() {
-        List<WebElementFacade> rolesFunciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+    private List<WebElementFacade> getListaRolesFunciones() {
+        List<WebElementFacade> rolesFunciones;
+        rolesFunciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return rolesFunciones;
     }
 
-    public List<WebElementFacade> getListaDirecciones() {
-        List<WebElementFacade> direcciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
+    private List<WebElementFacade> getListaDirecciones() {
+        List<WebElementFacade> direcciones;
+        direcciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
         return direcciones;
     }
 
@@ -154,15 +138,14 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
     public void verificarListaContactoNoEsNulo() {
         List<WebElementFacade> contactos = getListaContactos();
-        assertThat("La cuenta debe tener contactos de tipo persona juridica o natural", contactos.size() > 0);
+        assertThat("La cuenta debe tener contactos de tipo persona juridica o natural", !contactos.isEmpty());
     }
 
     public void verificarDetalleContactoNoEsNulo() {
 
         assertThat("El campo tipo de documento es obligatorio", lblTipoDocumento.isPresent());
         assertThat("El campo numero de documento es obligatorio", lblNumeroDocumento.isPresent());
-
-        if ("PERSONAL".equals(lblTitulo.getText().toUpperCase())) {
+        if ("PERSONAL".equalsIgnoreCase(lblTitulo.getText())) {
             assertThat("El campo nombre es obligatorio", lblNombre.isPresent());
             assertThat("El campo segundo nombre es obligatorio", lblSegundoNombre.isPresent());
             assertThat("El campo apellido es obligatorio", lblApellido.isPresent());
@@ -174,64 +157,52 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         }
         assertThat("El campo direccion es obligatorio", lblDireccion.isPresent());
         assertThat("El campo telefono es obligatorio", lblTelefono.isPresent());
-        //assertThat("El campo email es obligatorio", lblEmail.isPresent());
+        assertThat("El campo email es obligatorio", lblEmail.isPresent());
     }
 
     public void verificarRolesFuncionesNoEsNulo() {
         List<WebElementFacade> rolesFunciones = getListaRolesFunciones();
-        assertThat("El contacto debe tener roles o funciones asignados", rolesFunciones.size() > 0);
+        assertThat("El contacto debe tener roles o funciones asignados", !rolesFunciones.isEmpty());
         waitABit(1000);
     }
 
     public void verificarDireccioneNoEsNulo() {
         List<WebElementFacade> direcciones = getListaDirecciones();
-        assertThat("El contacto debe tener direcciones asignados", direcciones.size() > 0);
+        assertThat("El contacto debe tener direcciones asignados", !direcciones.isEmpty());
         waitABit(1000);
     }
 
-
     public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
-        assertThat(MSG_ASSERT_MENU_BTN_CREAR_NUEVO_CONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
+        assertThat(ASSERTMENUCREARNUEVOCONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
     }
-
 
     public Boolean esContactoAsociado(String nombreContacto) throws Exception {
         Boolean esAsociado = Boolean.FALSE;
-        try {
-
-            for (WebElementFacade contacto : getListaContactos()) {
-                if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {
-                    esAsociado = Boolean.TRUE;
-                    break;
-                }
+        for (WebElementFacade contacto : getListaContactos()) {
+            if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {
+                esAsociado = Boolean.TRUE;
+                break;
             }
-
-        } catch (Exception e) {
-            assertThat("El contacto se asocio a la cuenta exitosamente", esAsociado);
         }
         assertThat("El contacto se asocio a la cuenta exitosamente", esAsociado);
         return esAsociado;
     }
 
+    @SuppressWarnings({"SameParameterValue", "UnusedReturnValue"})
     public Boolean validarOcurrenciaDeMensajeDeAplicacion(String idXpathDivMensajes, String mensajesApp){
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado="";
-        try {
-            List<WebElementFacade> divsMensajes = withTimeoutOf(1, SECONDS).findAll(idXpathDivMensajes);
-            for (WebElementFacade div : divsMensajes) {
-                mensajeMostrado = div.getText();
-                if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
-                    existeOcurrencia = Boolean.TRUE;
-                    break;
-                }
+        List<WebElementFacade> divsMensajes = withTimeoutOf(1, SECONDS).findAll(idXpathDivMensajes);
+        for (WebElementFacade div : divsMensajes) {
+            mensajeMostrado = div.getText();
+            if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
+                existeOcurrencia = Boolean.TRUE;
+                break;
             }
-            if (existeOcurrencia) {
-                assertThat(mensajeMostrado, containsString(mensajesApp));
-            }
-        } catch (Exception e){
-            existeOcurrencia =  Boolean.FALSE;
         }
-
+        if (existeOcurrencia) {
+            assertThat(mensajeMostrado, containsString(mensajesApp));
+        }
         return existeOcurrencia;
     }
 
@@ -243,15 +214,11 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
         List<WebElementFacade> checkBoxes = withTimeoutOf(1, SECONDS)
                 .findAll("//img[contains(@class,'x-grid-checkcolumn')]");
-
         int cont = 0;
-
         for (WebElementFacade contacto : getListaContactos()) {
             cont += 1;
             if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {
-
                 for (int i = 0 ; i < checkBoxes.size(); i++){
-
                     if (i == cont){
                         checkBoxes.get(cont-1).click();
                         btnEliminar.click();
@@ -259,22 +226,16 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
                 }
             }
         }
-
-
     }
 
     public void contactoEliminado(String contactoEliminado) {
-
         boolean noExiste = true;
         for (WebElementFacade contacto : getListaContactos()) {
-
             if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(contactoEliminado)) {
                 noExiste = false;
             }
-
         }
         assertThat("No existe el contacto",noExiste);
-
     }
 
 }

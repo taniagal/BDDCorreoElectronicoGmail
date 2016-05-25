@@ -3,53 +3,48 @@ package com.sura.policycenter.selenium.pages.menu.superior.cuenta.panel.contacto
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.Keys;
+import org.jruby.RubyBoolean;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-/**
- * Created by johan.beltran on 18/05/2016.
- */
 public class BusquedaContactoDelDirectorioPage extends Guidewire {
 
     @FindBy(xpath = ".//input[contains(@id,'ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl')]")
-    WebElementFacade cboTipoContacto;
+    private WebElementFacade cboTipoContacto;
     @FindBy(xpath = ".//input[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    WebElementFacade txtPrimerNombre;
+    private WebElementFacade txtPrimerNombre;
     @FindBy(xpath = ".//input[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    WebElementFacade txtPrimerApellido;
+    private WebElementFacade txtPrimerApellido;
     @FindBy(xpath = ".//a[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    WebElementFacade btnBuscar;
+    private WebElementFacade btnBuscar;
 
 
     public BusquedaContactoDelDirectorioPage(WebDriver driver) {
         super(driver);
     }
 
+    @SuppressWarnings("SameParameterValue")
     public Boolean buscarContacto(String tipoContacto, String nombre, String apellido) {
         Boolean esBuscado = Boolean.FALSE;
-        try {
 
 
-            cboTipoContacto.click();
+        cboTipoContacto.click();
 
-            WebElementFacade optCboTipoContacto = findBy(".//li[contains(.,'" + tipoContacto + "')]");
-            optCboTipoContacto.click();
-            waitABit(1000);
-            txtPrimerNombre.type(nombre);
-            txtPrimerApellido.type(apellido);
-            btnBuscar.click();
+        WebElementFacade optCboTipoContacto = findBy(".//li[contains(.,'" + tipoContacto + "')]");
+        optCboTipoContacto.click();
+        waitABit(1000);
+        txtPrimerNombre.type(nombre);
+        txtPrimerApellido.type(apellido);
+        btnBuscar.click();
 
-            esBuscado = selecionarContacto(esBuscado, "1234567891");
-        }catch (Exception e){
-            return esBuscado;
-        }
+        esBuscado = selecionarContacto(esBuscado, "1234567891");
 
         return esBuscado;
     }
 
+    @SuppressWarnings("SameParameterValue")
     private Boolean selecionarContacto(Boolean esBuscado, String numDocumento) {
         List<WebElementFacade> listaContactos = findAll(".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV-body']/div/table/tbody/tr");
         if (!listaContactos.isEmpty()) {
@@ -60,7 +55,7 @@ public class BusquedaContactoDelDirectorioPage extends Guidewire {
                     break;
                 }
             }
-            esBuscado = Boolean.TRUE;
+            esBuscado = true;
         }
         return esBuscado;
     }

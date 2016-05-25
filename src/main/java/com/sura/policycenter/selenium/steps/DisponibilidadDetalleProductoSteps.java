@@ -7,7 +7,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
 
-    DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage = new DisponibilidadDetalleProductoPage(getDriver());
+    private final DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage = new DisponibilidadDetalleProductoPage(getDriver());
 
     public DisponibilidadDetalleProductoSteps(Pages pages){
         super(pages);
@@ -33,8 +33,8 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
         disponibilidadDetalleProductoPage.seleccionarTipoCanalDeVentas(tipoCanal);
     }
 
-    public void validarPATipoPoliza(ExamplesTable PaTipoPoliza) throws Exception {
-        disponibilidadDetalleProductoPage.validarPATipoPoliza(PaTipoPoliza);
+    public void validarPATipoPoliza(ExamplesTable paTipoPoliza) throws Exception {
+        disponibilidadDetalleProductoPage.validarPATipoPoliza(paTipoPoliza);
     }
 
     public void seleccionarPATipoPoliza(String tipoPoliza) {
@@ -48,4 +48,5 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
     public void validarActualizacionDeListaPATipoPoliza() {
         disponibilidadDetalleProductoPage.validarActualizacionDeListaPATipoPoliza();
     }
+
 }
