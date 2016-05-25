@@ -1,7 +1,6 @@
 package com.sura.claims.selenium.steps;
 
 import com.sura.claims.selenium.pages.AbrirApp;
-import com.sura.claims.selenium.pages.Buscar;
 import com.sura.claims.selenium.pages.Reclamacion;
 import com.sura.guidewire.selenium.Guidewire;
 import net.thucydides.core.annotations.Step;
@@ -13,7 +12,6 @@ public class ClaimsSteps extends ScenarioSteps{
     private final Guidewire gw = new Guidewire(getDriver());
     private final AbrirApp abrirApp = new AbrirApp(getDriver());
     private final Reclamacion reclamacion = new Reclamacion(getDriver());
-    private final Buscar buscar = new Buscar(getDriver());
 
     public ClaimsSteps(Pages pages) {
         super(pages);
@@ -36,8 +34,7 @@ public class ClaimsSteps extends ScenarioSteps{
 
     @Step
     public void logout() {
-        logout();
+        gw.logout();
     }
-
 
 }

@@ -11,9 +11,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
-
-import java.util.*;
-
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
 
 public class GwNavegacionUtil {
 
@@ -23,7 +25,7 @@ public class GwNavegacionUtil {
 
     @SuppressWarnings("SameParameterValue")
     public static Boolean existenOpcionesPorMenuHastaSegundoNivel(WebDriver driver, Keys keyNav, String tipoElementoMenu, ExamplesTable opcionesPorMenu, Boolean darClick) {
-        System.out.println("GuidewireUtil.existenOpcionesPorMenu");
+        LOGGER.error("GuidewireUtil.existenOpcionesPorMenu");
         String menu = "";
 
         try {

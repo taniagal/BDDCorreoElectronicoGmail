@@ -18,16 +18,9 @@ public class DetallesContactoDefinitions {
     @Steps
     private DetallesContactoSteps dcs;
 
-    @Steps
-    private CrearNuevoContactoSteps ncs;
-
     /**
      * Escenario 1
      */
-
-    @Given("Se tiene y se ha consultado la informacion detallada de un contacto tipo persona natural")
-    public void guivenPersonaNatural(){}
-
     @When("quiera ver informacion detallada del contacto  con nombre <primer_nombre> y con apellido <primer_apellido>")
     public void whenConsultarDetallePersonaNatural(@Named("primer_nombre") String primerNombre, @Named("primer_apellido") String primerApellido) {
         dcs.abrirDetallesContactoPersona(primerNombre,primerApellido);
@@ -39,15 +32,12 @@ public class DetallesContactoDefinitions {
         seusLogin.close();
     }
 
-
-
-    //------------- Escenario 2
-    @Given("Se ha consultado la informacion detallada de un contacto tipo persona juridica")
-    public void guivenPersonaJuridica(){}
-
+    /**
+     * Escenario 2
+     */
     @When("quiera ver informacion detallada del contacto con nombre empresa <nombre_empresa>")
-    public void whenConsultarDetallePersonaJuridica(@Named("nombre_empresa")String nombre_empresa) {
-        dcs.abrirDetallesContactoEmpresa(nombre_empresa);
+    public void whenConsultarDetallePersonaJuridica(@Named("nombre_empresa")String nombreEmpresa) {
+        dcs.abrirDetallesContactoEmpresa(nombreEmpresa);
     }
 
     @Then("se debe ver minimo la siguiente informacion: Razon social, Nombre comercial, Tipo de documento, Numero de\n" +
