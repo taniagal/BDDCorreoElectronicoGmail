@@ -80,7 +80,6 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        Actions act = new Actions(getDriver());
         menu.waitUntilClickable().click();
         waitABit(300);
         menu.waitUntilClickable().click();
