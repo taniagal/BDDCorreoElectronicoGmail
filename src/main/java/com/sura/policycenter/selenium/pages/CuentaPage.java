@@ -9,8 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CuentaPage extends Guidewire{
-    Actions act = null;
 
+    Actions act = null;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
@@ -33,8 +33,6 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade txtApellidoNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade txtDireccionNuevaCuentaPersonal;
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-inputEl']")
-    private WebElementFacade txtCodigoPostalNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressType-inputEl']")
     private WebElementFacade cboTipoDireccionNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
@@ -72,7 +70,6 @@ public class CuentaPage extends Guidewire{
         act = deployMenu(mnuCuenta);
         act.moveToElement(mnuNuevaCuenta).click().build().perform();
     }
-
 
     public void agregarTipoDocumento(String tipoDocumento, String documento) {
         cboTipoDocumentoNuevaCuenta.clear();
@@ -123,8 +120,7 @@ public class CuentaPage extends Guidewire{
         if("Compania".equals(persona)) {
             btnCrearCuentaNueva.click();
             btnNuevaCuentaCompania.click();
-        }
-        else {
+        } else {
             btnCrearCuentaNueva.click();
             btnNuevaCuentaPersonal.click();
         }

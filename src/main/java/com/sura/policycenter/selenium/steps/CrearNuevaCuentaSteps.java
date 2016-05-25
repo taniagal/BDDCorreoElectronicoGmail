@@ -8,12 +8,11 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class CrearNuevaCuentaSteps extends ScenarioSteps {
+
     private String cedula = "";
     private String nit = "";
-
-    Guidewire gw = new Guidewire(getDriver());
-    CuentaPage cp = new CuentaPage(getDriver());
-
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final CuentaPage cp = new CuentaPage(getDriver());
     private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     public CrearNuevaCuentaSteps(Pages pages){
@@ -33,12 +32,13 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
 
     @Step
     public void agregarTipoDocumento(String tipoDocumento) {
-        if("".equals(cedula) || "".equals(nit)) initRandoms();
+        if("".equals(cedula) || "".equals(nit)) {
+            initRandoms();
+        }
         if("NIT".equals(tipoDocumento)){
             cp.buscarPersona("Busqueda","Compania");
             cp.agregarTipoDocumento(tipoDocumento,nit);
-        }
-        else{
+        } else {
             cp.buscarPersona("Busqueda","Persona");
             cp.agregarTipoDocumento(tipoDocumento,cedula);
         }
@@ -84,4 +84,5 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     public void verificarMensaje(String mensaje){
         cp.verificarMensaje(mensaje);
     }
+
 }

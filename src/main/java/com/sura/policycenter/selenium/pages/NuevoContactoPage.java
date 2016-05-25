@@ -4,10 +4,6 @@ import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.constantes.EnumContacto;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import java.util.List;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -44,30 +40,18 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade telefonoTrabajo;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade telefonoResidencia;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
-    private WebElementFacade pais;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade cboDepartamento;
-
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
     private WebElementFacade cboCiudad;
-
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade cboDepartamento2;
-
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
     private WebElementFacade cboCiudad2;
-
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
     private WebElementFacade tipoDireccion2;
-
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade direccion2;
-
-
-    private WebElementFacade arregloDeMensajes;
-
-    private final Guidewire gw = new Guidewire(getDriver());
 
     public NuevoContactoPage(WebDriver driver) {
         super(driver);
