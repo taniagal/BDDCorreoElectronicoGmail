@@ -8,8 +8,8 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class DetallesContactoSteps extends ScenarioSteps {
-    BusquedaContactoPage bc = new BusquedaContactoPage(getDriver());
-    DetallesContactoPage dc = new DetallesContactoPage(getDriver());
+    BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
+    DetallesContactoPage detallesContactoPage = new DetallesContactoPage(getDriver());
 
     public DetallesContactoSteps(Pages pages){
         super(pages);
@@ -23,126 +23,126 @@ public class DetallesContactoSteps extends ScenarioSteps {
     @Step
     public void abrirDetallesContactoPersona(String primerNombre, String primerApellido){
         inicioPage().irABuscarContacto();
-        bc.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primerNombre,"",primerApellido,"");
-        bc.seleccionarContacto();
+        busquedaContactoPage.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primerNombre,"",primerApellido,"");
+        busquedaContactoPage.seleccionarContacto();
     }
 
     @Step
     public void verificarCamposPersonaNatural() {
-        dc.verificarCamposPersonaNatural();
+        detallesContactoPage.verificarCamposPersonaNatural();
     }
 
     @Step
     public void abrirDetallesContactoEmpresa(String nombreEmpresa) {
         inicioPage().irABuscarContacto();
-        bc.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
-        bc.seleccionarContacto();
+        busquedaContactoPage.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
+        busquedaContactoPage.seleccionarContacto();
     }
 
     @Step
     public void verificarCamposPersonaJuridica() {
-        dc.verificarCamposPersonaJuridica();
+        detallesContactoPage.verificarCamposPersonaJuridica();
     }
 
     @Step
     public void actualizarContacto(){
-        dc.actualizaContacto();
+        detallesContactoPage.actualizaContacto();
     }
 
     @Step
     public void verificarActualizacionPersona(){
-        dc.verificarActualizacion();
+        detallesContactoPage.verificarActualizacion();
     }
 
     @Step
     public void verificarActualizacionPersonaJuridica(){
-        dc.verificarActualizacionJuridico();
+        detallesContactoPage.verificarActualizacionJuridico();
     }
 
     @Step
     public void agregarNombre(String segundoNombre) {
-        dc.editarContacto();
-        dc.agregarNombre(segundoNombre);
+        detallesContactoPage.editarContacto();
+        detallesContactoPage.agregarNombre(segundoNombre);
     }
 
     @Step
     public void agregarApellido(String segundoApellido){
-        dc.agregarApellido(segundoApellido);
+        detallesContactoPage.agregarApellido(segundoApellido);
     }
 
     @Step
     public void agregarLists(String profesion,String estadoCivil,String tipoFamilia) {
-        dc.agregarLists(profesion,estadoCivil,tipoFamilia);
+        detallesContactoPage.agregarLists(profesion,estadoCivil,tipoFamilia);
     }
 
     @Step
     public void agregarTelefonoResidencia(String telefonoResidencial) {
-        dc.agregarTelefonosResidencial(telefonoResidencial);
+        detallesContactoPage.agregarTelefonosResidencial(telefonoResidencial);
     }
 
     @Step
     public void agregarTelefonoTrabajo(String telefonoTrabajo){
-        dc.agregarTelefonoTrabajo(telefonoTrabajo);
+        detallesContactoPage.agregarTelefonoTrabajo(telefonoTrabajo);
     }
 
     @Step
     public void agregarTelefonoCelular(String telefonoCelular){
-        dc.agregarTelefonoCelular(telefonoCelular);
+        detallesContactoPage.agregarTelefonoCelular(telefonoCelular);
     }
 
     @Step
     public void agregarCorreos(String correoElectronicoPrimario, String correoElectronicoSecundario) {
-        dc.agregarCorreo(correoElectronicoPrimario,correoElectronicoSecundario);
+        detallesContactoPage.agregarCorreo(correoElectronicoPrimario,correoElectronicoSecundario);
     }
 
     @Step
     public void agregarDireccion() {
-        dc.editarContacto();
-        dc.irADirecciones();
+        detallesContactoPage.editarContacto();
+        detallesContactoPage.irADirecciones();
     }
 
     @Step
     public void agregarNuevaDireccion(){
-        dc.agregarDireccion();
+        detallesContactoPage.agregarDireccion();
     }
 
     @Step
     public void validarDatosPatalla() {
-        dc.validarDatosPantalla();
+        detallesContactoPage.validarDatosPantalla();
     }
 
     @Step
     public void validarCampos() {
-        dc.validarCampos();
+        detallesContactoPage.validarCampos();
     }
 
     @Step
     public void validarDireccion(String tipoDireccion){
-        dc.validarDireccion(tipoDireccion);
+        detallesContactoPage.validarDireccion(tipoDireccion);
     }
 
     @Step
     public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
-        dc.editarContacto();
-        dc.agregarRazonSocial(nombreComercial,actividadComercial);
+        detallesContactoPage.editarContacto();
+        detallesContactoPage.agregarRazonSocial(nombreComercial,actividadComercial);
     }
 
     @Step
     public void validarMensaje(String mensaje) {
-        dc.validarMensaje(mensaje);
+        detallesContactoPage.validarMensaje(mensaje);
     }
 
     @Step
     public void verificarEstadoDocumento(){
-        dc.verificarEstadoDeDocumento();
+        detallesContactoPage.verificarEstadoDeDocumento();
     }
     @Step
     public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
-        dc.agregarEmpleados(numeroEmpleados,ventasAnuales,valorActivos);
+        detallesContactoPage.agregarEmpleados(numeroEmpleados,ventasAnuales,valorActivos);
     }
 
     @Step
     public void agregarCorreosJ(String telefonoOficina, String correoPrimario, String correoSecundario) {
-        dc.agregarCorreosJ(telefonoOficina,correoPrimario,correoSecundario);
+        detallesContactoPage.agregarCorreosJ(telefonoOficina,correoPrimario,correoSecundario);
     }
 }
