@@ -21,14 +21,19 @@ public class IngresoDeAseguradoACotizacionDefinitions {
     private IngresoDeAseguradoACotizacionSteps ingresoDeAseguradoACotizacionSteps;
 
     @Given("voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>")
-    public void irAIngresarAsegurado(@Named("cuenta") String cuenta){
+    public void irABuscarCuenta(@Named("cuenta") String cuenta){
         inicioPage().irACuentaBuscar(cuenta);
-        inicioPage().irACuentaNuevoEnvioCuenta();
-        ingresoDeAseguradoACotizacionSteps.irAIngresarAsegurado();
+        }
+
+    @Given("crear una cotizacion nueva")
+    public void crearNuevaCotizacion(){
+        inicioPage().irANuevoEnvioDeCuenta();
     }
+
 
     @When("quiera agregar un asegurado")
     public void agregarAsegurado(){
+        ingresoDeAseguradoACotizacionSteps.irAIngresarAsegurado();
         ingresoDeAseguradoACotizacionSteps.agregarAsegurado();
     }
 
