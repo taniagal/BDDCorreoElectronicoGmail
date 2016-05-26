@@ -16,6 +16,9 @@ public class CrearCuentaNuevaDefinitions {
     private CrearNuevaCuentaSteps cns;
 
 
+    /**
+     * ESCENARIO 1
+     */
     @Given("que me encuentro en el sistema de policy center")
     public void login() {
         seusLogin.login();
@@ -50,7 +53,9 @@ public class CrearCuentaNuevaDefinitions {
 
 
 
-    //------Escenario 2
+    /**
+     * ESCENARIO 2
+     */
     @Given("me ecnuentro en Policy Center")
     public void validarLogeoPolicyCenter(){
         cns.validarLogeoPolicyCenter();
@@ -73,14 +78,16 @@ public class CrearCuentaNuevaDefinitions {
     }
 
 
-    // ----- Escenario 3
+    /**
+     * ESCENARIO 3
+     */
     @Given("que un contacto ya tiene una cuenta creada")
     public  void verificarCuentaCreada(){
         cns.validarLogeoPolicyCenter();
     }
 
     @Then("No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje> y <mensaje2>")
-    public void assertVerificarMensaje(@Named("mensaje")String mensaje){
+    public void verificarMensaje(@Named("mensaje")String mensaje){
         cns.verificarMensaje(mensaje);
         cns.verificarEdadMenor(mensaje);
     }

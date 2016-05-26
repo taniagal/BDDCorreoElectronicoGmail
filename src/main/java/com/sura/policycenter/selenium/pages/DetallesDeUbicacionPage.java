@@ -3,9 +3,12 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObjects;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+
+import javax.swing.*;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -53,7 +56,10 @@ public class DetallesDeUbicacionPage extends Guidewire{
     private WebElementFacade labelNumeroDePisos;
     @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BuildYear-labelEl']")
     private WebElementFacade labelAnioDeConstruccion;
+    @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BuildYear-labelEl']")
+    private WebElementFacade divMensaje;
 
+    String direccion = "";
 
 
     public DetallesDeUbicacionPage(WebDriver driver) {
@@ -82,14 +88,26 @@ public class DetallesDeUbicacionPage extends Guidewire{
         botonAgregarNuevaUbicacion.click();
     }
 
-    public void agregarUbicacion(String direccion, String departamento, String ciudad, String descrpcion) {
+    public void agregarDireccion(String direccion, String departamento, String ciudad) {
         campoTxtDireccion.sendKeys(direccion);
+        this.direccion = direccion;
         selectItem(comboBoxDepartamento,departamento);
         waitABit(1500);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(1500);
-        campoTxtDescripcionDeUbicacion.sendKeys(descrpcion);
+    }
+
+    public void agregarUbicacion(String descripcion, String actividad){
+        campoTxtDescripcionDeUbicacion.sendKeys(descripcion);
+        selectItem(comboBoxActividadEconomica,actividad);
         botonAceptar.click();
+    }
+
+    public void validarIngresoDeUbicacion(){
+        assertThat("Error al agregar la ubicacion", getDatosTabla().get(1).getText().contains(direccion));
+    }
+
+    public List<WebElementFacade> getDatosTabla() {
+        return withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/div/table/tbody/tr");
     }
 
     public void validarCamposNuevos(){
@@ -103,10 +121,19 @@ public class DetallesDeUbicacionPage extends Guidewire{
             if(!labelAnioDeConstruccion.isPresent())
                 notPresent.append(" anio_de_construccion,");
             String res = notPresent.toString();
-            if("No estan presentes los elementos:".equals(res)){
+            if("No estan presentes los elementos:".equals(res))
                 res = notPresent.toString().substring(0,notPresent.toString().length()-1);
-            }
             assertThat(res,"No estan presentes los elementos".equals(res));
         }
 
+    public void verificarMensaje(String mensaje) {
+        waitABit(1000);
+        assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
+    }
+
+    public void verificarMensajeDireccion(String mensaje) {
+        mensaje = mensaje.substring(0,13)+direccion+mensaje.substring(13,mensaje.length());
+        waitABit(1000);
+        assertThat("Falló el mensaje de validacion de caracteres de la direccion", divMensaje.containsText(mensaje));
+    }
 }

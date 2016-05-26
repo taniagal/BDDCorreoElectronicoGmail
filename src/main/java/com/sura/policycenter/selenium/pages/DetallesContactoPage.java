@@ -61,7 +61,7 @@ public class DetallesContactoPage extends Guidewire {
     private WebElementFacade labelTelefonoOficinaEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl']")
     private WebElementFacade getcampoTxtCorreoElectronicoPrimarioEmpresa;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Edit-botonInnerEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Edit']")
     private WebElementFacade botonEditarContacto;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl']")
     private WebElementFacade campoTxtSegundoNombre;
@@ -105,7 +105,7 @@ public class DetallesContactoPage extends Guidewire {
     private WebElementFacade campoTxtCorreoElectronicoPrimarioEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress2-inputEl']")
     private WebElementFacade campoTxtCorreoElectronicoSecundarioEmpresa;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update-botonInnerEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update']")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesCardTab-botonInnerEl']")
     private WebElementFacade botonDirecciones;
@@ -146,6 +146,7 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void editarContacto(){
+        espera(botonEditarContacto,10);
         botonEditarContacto.click();
         waitABit(800);
     }
@@ -317,7 +318,8 @@ public class DetallesContactoPage extends Guidewire {
      * Verifica que el documento y el tipo de documento no sean editables por un error de codigo en policy.
      */
     public void verificarEstadoDeDocumento(){
-        //assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo", !campoTxtTipoDocumento.isCurrentlyEnabled() || !campoTxtDocumento.isCurrentlyEnabled());
+        assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo",
+                !campoTxtTipoDocumento.getAttribute("class").contains("x-form-text") || !campoTxtDocumento.getAttribute("class").contains("x-form-text"));
     }
 
 
