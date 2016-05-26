@@ -46,6 +46,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaTransPoli
 import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaVerificaCoberPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminAtributosPage;
@@ -342,12 +343,15 @@ public class Navegacion extends Guidewire {
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Roles']/div")
     private WebElementFacade mnuOpcionesCuenta;
 
+    @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
+    WebElementFacade mnuResumenCuenta;
+
+    @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_SubmissionManager']/div/span")
+    private WebElementFacade mnuAdmCotizaciones;
+
     public Navegacion(WebDriver driver) {
         super(driver);
     }
-
-    @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
-    WebElementFacade mnuResumenCuenta;
 
     // Navegacion menu Escritorio
     public MisActividadesPage irAMisActividades() {
@@ -416,7 +420,6 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
-        waitFor(mnuCuenta);
         gw.deployMenu(mnuCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
@@ -443,6 +446,8 @@ public class Navegacion extends Guidewire {
     // Navegacion menu Contacto
     public NuevaCompaniaPage irANuevaCompania() {
         gw.deployMenu(mnuContact);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        waitABit(500);
         act.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemNuevaCompania).release(mnuItemNuevaCompania).click().build().perform();
@@ -451,7 +456,9 @@ public class Navegacion extends Guidewire {
 
     public NuevaPersonaPage irANuevaPersona() {
         gw.deployMenu(mnuContact);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
+        waitABit(500);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemNuevaPersona).release(mnuItemNuevaPersona).click().build().perform();
         return new NuevaPersonaPage(getDriver());
@@ -1299,5 +1306,11 @@ public class Navegacion extends Guidewire {
         mnuResumenCuenta.click();
         waitABit(800);
         return new OpcionesResumenCuentaPage(getDriver());
+    }
+
+    public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
+        mnuAdmCotizaciones.click();
+        waitABit(800);
+        return new OpcionesAdminitradorCotizaciones(getDriver());
     }
 }
