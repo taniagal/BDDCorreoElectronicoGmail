@@ -564,6 +564,7 @@ public class Navegacion extends Guidewire {
 
     public AdminOrganizacionesPage irAAdminOrganizaciones() {
         gw.deployMenu(mnuAdministracion);
+        waitABit(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
         act.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
