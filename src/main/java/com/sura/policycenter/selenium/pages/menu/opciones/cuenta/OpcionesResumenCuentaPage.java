@@ -23,14 +23,13 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade lblNumDoc;
     @FindBy(xpath = ".//span[contains(.,'Código de agente')]")
     private WebElementFacade lblCodAgente;
-    @FindBy(xpath = "//span[contains(.,'Descripción')]")
+    @FindBy(xpath = ".//span[contains(.,'Descripción')]")
     private WebElementFacade lblDescAgente;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:AccountNumber-labelEl']")
     private WebElementFacade lblNumCuenta;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:AccountStatus-labelEl']")
     private WebElementFacade lblEstadoCuenta;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:0']")
-    //@FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:0']")
     private WebElementFacade lblTipoPersona;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:GlobalContactNameInputSet:Name-labelEl']")
     private WebElementFacade lblRazonSocial;
@@ -46,15 +45,18 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade lblEmailEmpresa;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress1-labelEl']")
     private WebElementFacade lblEmailPersona;
-    @FindBy(xpath = "//label[contains(@id,'BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Segmentation-labelEl')]")
+
+    @FindBy(xpath = ".//label[contains(@id,'BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Segmentation-labelEl')]")
     private WebElementFacade lblSegmentacionPer;
-    @FindBy(xpath = "//label[contains(@id,'BasicInfoDV:ContactNameInputSet:Segmentation-labelEl')]")
+
+    @FindBy(xpath = ".//label[contains(@id,'BasicInfoDV:ContactNameInputSet:Segmentation-labelEl')]")
     private WebElementFacade lblSegmentacionJur;
-    @FindBy(xpath = "//label[contains(@id,'BasicInfoDV:ContactNameInputSet:Behavior-labelEl')]")
+
+    @FindBy(xpath = ".//label[contains(@id,'BasicInfoDV:ContactNameInputSet:Behavior-labelEl')]")
     private WebElementFacade lblComportamientoJur;
     @FindBy(xpath = ".//label[contains(@id,'BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Behavior-labelEl')]")
     private WebElementFacade lblComportamientoPer;
-    //@FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:AddressShortInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-labelEl']")
+
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-labelEl']")
     private WebElementFacade lblDireccion;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
@@ -71,7 +73,8 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade lblEstadoCivil;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Profession-labelEl']")
     private WebElementFacade lblProfesion;
-    @FindBy(xpath = "//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Sexo-labelEl']")
+
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Sexo-labelEl']")
     private WebElementFacade lblSexo;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DeathCause-labelEl']")
     private WebElementFacade lblCausaMuerte;
@@ -79,7 +82,8 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade lblFechaFallecimiento;
     @FindBy(xpath = ".//label[contains(@id,'BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-labelEl')]")
     private WebElementFacade lblTipoTel;
-    @FindBy(xpath = "//div[contains(@id,'BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl')]")
+
+    @FindBy(xpath = ".//div[contains(@id,'BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl')]")
     private WebElementFacade txtTipoTel;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade txtTelResidencial;
@@ -95,39 +99,54 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade lblTelCelular;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:0']")
     private WebElementFacade lblActividades;
-    @FindBy(xpath = "//span[contains(.,'Fecha de vencimiento')]")
+
+    @FindBy(xpath = ".//span[contains(.,'Fecha de vencimiento')]")
     private WebElementFacade lblFechaVencAct;
-    @FindBy(xpath = "//span[contains(.,'Prioridad')]")
+
+    @FindBy(xpath = ".//span[contains(.,'Prioridad')]")
     private WebElementFacade lblPrioridadAct;
-    @FindBy(xpath = "//span[contains(.,'Tema')]")
+
+    @FindBy(xpath = ".//span[contains(.,'Tema')]")
     private WebElementFacade lblTemaAct;
-    @FindBy(xpath = "//span[contains(.,'Asignado a')]")
+
+    @FindBy(xpath = ".//span[contains(.,'Asignado a')]")
     private WebElementFacade lblAsignadoAct;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:1']")
     private WebElementFacade lblTerminosPol;
-    @FindBy(xpath = "//tr[6]/td/div/div[2]/div/div/div/div")
+
+    @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div/div")
     private WebElementFacade lblNumPoliza;
-    @FindBy(xpath = "//tr[6]/td/div/div[2]/div/div/div[2]/div")
+
+    @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div[2]/div")
     private WebElementFacade lblProducto;
-    @FindBy(xpath = "//tr[6]/td/div/div[2]/div/div/div[3]/div")
+
+    @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div[3]/div")
     private WebElementFacade lblEstadoPol;
-    @FindBy(xpath = "//tr[6]/td/div/div[2]/div/div/div[4]/div")
+
+    @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div[4]/div")
     private WebElementFacade lblFechaVigPol;
-    @FindBy(xpath = "//div[5]/div")
+
+    @FindBy(xpath = ".//div[5]/div")
     private WebElementFacade lblFechaExpPol;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:2']")
     private WebElementFacade lblTransPolPendientes;
-    @FindBy(xpath = "//div[3]/div/div/div[2]/div")
+
+    @FindBy(xpath = ".//div[3]/div/div/div[2]/div")
     private WebElementFacade lblNumTrans;
-    @FindBy(xpath = "//div[3]/div/div/div[3]/div")
+
+    @FindBy(xpath = ".//div[3]/div/div/div[3]/div")
     private WebElementFacade lblEstadoTrans;
-    @FindBy(xpath = "//div[3]/div/div/div[4]/div")
+
+    @FindBy(xpath = ".//div[3]/div/div/div[4]/div")
     private WebElementFacade lblNumPolTrans;
-    @FindBy(xpath = "//div[3]/div/div/div[5]/div")
+
+    @FindBy(xpath = ".//div[3]/div/div/div[5]/div")
     private WebElementFacade lblProductoTrans;
-    @FindBy(xpath = "//div[6]/div")
+
+    @FindBy(xpath = ".//div[6]/div")
     private WebElementFacade lblTipoTrans;
-    @FindBy(xpath = "//div[7]/div")
+
+    @FindBy(xpath = ".//div[7]/div")
     private WebElementFacade lblAseguradorTrans;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:EditAccount-btnInnerEl']")
     private WebElementFacade btnEditarCuenta;
@@ -173,6 +192,13 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade txtEmailPrimarioCompania;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:EmailAddress2-inputEl']")
     private WebElementFacade txtEmailSecundarioCompania;
+
+    @FindBy(xpath = ".//tr[15]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
+    private WebElementFacade btnPais;
+
+    @FindBy(xpath = ".//tr[21]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
+    private WebElementFacade btnDepto;
+
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
     private WebElementFacade txtPais;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
@@ -266,7 +292,7 @@ public class OpcionesResumenCuentaPage extends Guidewire {
             assertThat(lblTipoTrans.getText(), is(equalTo(infoResumenCuenta.get("tipoTrans"))));
             assertThat(lblAseguradorTrans.getText(), is(equalTo(infoResumenCuenta.get("aseguradorTrans"))));
         } catch (Exception e) {
-            LOGGER.error("This is error", e);
+            LOGGER.error(validacion, e);
             validacion = e.getMessage();
         }
         assertThat(validacion, is(equalTo(null)));

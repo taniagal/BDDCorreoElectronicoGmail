@@ -11,6 +11,10 @@ import com.sura.policycenter.selenium.steps.BusquedaContactoSteps;
 import com.sura.policycenter.selenium.steps.PolicySteps;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
 @SuppressWarnings("WeakerAccess")
 public class BusquedaContactoDefinitions {

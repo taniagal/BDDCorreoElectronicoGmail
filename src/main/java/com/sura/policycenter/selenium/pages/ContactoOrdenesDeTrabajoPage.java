@@ -76,7 +76,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     //display key de los estados: typeList localization ---> TypeKey.PolicyPeriodStatus
     public void validarFiltroEstado(String filtroEstado) {
         String[] listEstadosCompletos = {"Comprometida", "No tomado", "Retirado", "Vencida", "Rechazado",
-        "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado"};
+        "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida"};
         String[] listEstadosAbiertos = {"Cotizado", "Borrador", "Nuevo", "Cotización", "Vinculación contractual",
         "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
         String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);
