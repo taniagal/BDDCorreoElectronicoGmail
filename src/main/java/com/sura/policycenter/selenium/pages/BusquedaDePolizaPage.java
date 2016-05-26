@@ -8,59 +8,43 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
 import java.util.Map;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BusquedaDePolizaPage extends Guidewire{
 
     @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:PolicyNumberCriterion-inputEl']")
     WebElementFacade txtNumeroPoliza;
-
     @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:AccountNumber-inputEl']")
     WebElementFacade txtNumeroCuenta;
-
     @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:ProductName-inputEl']")
     WebElementFacade txtProducto;
-
     @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:Producer-inputEl']")
     WebElementFacade txtAgente;
-
     @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:ProducerCode-inputEl']")
     WebElementFacade txtCodigoAgente;
-
     @FindBy(xpath=".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     WebElementFacade btnBuscar;
-
     @FindBy(xpath = ".//div[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV-body']/div/table")
     WebElementFacade tablaResultados;
-
     @FindBy(xpath="//a[contains(text(),'TEST_22222222')]")
     WebElementFacade grdNumeroPoliza;
-
     @FindBy(xpath="//td[4]/div")
     WebElementFacade grdAseguradoNombrado;
-
     @FindBy(xpath="//td[6]/div")
     WebElementFacade grdProducto;
-
     @FindBy(xpath="//td[7]/div")
     WebElementFacade grdEstado;
-
     @FindBy(xpath="//td[8]/div")
     WebElementFacade grdFechaVigencia;
-
     @FindBy(xpath="//td[9]/div")
     WebElementFacade grdFechaExpiracion;
-
     @FindBy(xpath="//td[10]/div")
     WebElementFacade grdAgente;
-
     @FindBy(xpath = "//div[@id='PolicySearch:PolicySearchScreen:_msgs']/div")
     WebElementFacade msjValidacion;
 

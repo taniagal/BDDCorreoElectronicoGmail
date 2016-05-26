@@ -7,23 +7,20 @@ import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-
 import java.util.Map;
 
-/**
- * Created by jhonvebz on 25/04/2016.
- */
 public class BusquedaContactoSteps extends ScenarioSteps {
 
-    BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
+    private final BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
     private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     public BusquedaContactoSteps(Pages pages) {
         super(pages);
     }
-
-    EscritorioPage escritorioPolicy = new EscritorioPage(getDriver());
 
     @Step
     public void login(String usuario, String contrasena){
@@ -32,7 +29,6 @@ public class BusquedaContactoSteps extends ScenarioSteps {
 
     @Step
     public void navegarBarraSuperior() {
-        //escritorioPolicy.navegarTabBar(menu, submenu, item);
         inicioPage().irABuscarContactos();
     }
 
@@ -43,7 +39,7 @@ public class BusquedaContactoSteps extends ScenarioSteps {
 
     @Step
     public void accionarBuscarContacto() {
-        busquedaContactoPage.accionarBuscarContacto();
+        inicioPage().irABuscarContacto();
     }
 
     @Step
@@ -104,6 +100,7 @@ public class BusquedaContactoSteps extends ScenarioSteps {
         busquedaContactoPage.consultarContactoNombreComercial(tipoDoc, nombreComercial);
     }
 
+    @SuppressWarnings("SameParameterValue")
     @Step
     public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido){
         busquedaContactoPage.validarLongitudPersonaNatural(primerNombre,"",primerApellido,"");

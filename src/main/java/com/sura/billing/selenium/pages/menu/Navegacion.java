@@ -1,14 +1,88 @@
 package com.sura.billing.selenium.pages.menu;
 
-import com.sura.billing.selenium.pages.menu.acciones.administracion.*;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevaAgenciaCobroPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevaFuncionPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoGrupoPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPatronCargoInmediatoPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPatronCargoProrrataPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPatronCargoRecapturaPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPatronCargoTransfDirectaPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPerfilLimiteAutPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanAsignaPagosPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanComisionPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanDevolPrimaPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanFactAgenciaPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanFactPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanMoraPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoPlanPagoPage;
+import com.sura.billing.selenium.pages.menu.acciones.administracion.NuevoUsuarioPage;
 import com.sura.billing.selenium.pages.menu.acciones.agente.AgenteNuevoPage;
 import com.sura.billing.selenium.pages.menu.acciones.cuenta.CuentaNuevaPage;
-import com.sura.billing.selenium.pages.menu.acciones.escritorio.*;
-import com.sura.billing.selenium.pages.menu.principal.administracion.*;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.AnulacionNegativaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.AnulacionPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.DesembolsoPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.EntradaPagosMultiplesPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.NotificacionAsignadaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.NotificacionCompartidaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.PagoEsperaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.PreferenciasPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.ReversionAnulacionNegativaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.ReversionAnulacionPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.ReversionCargoPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.ReversionTransfFondosPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.SolicitudPagoPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.SubrogacionPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.TransaccionGeneralPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.TransferenciaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.WriteOffAttemptedAboveThresholdAsignadaPage;
+import com.sura.billing.selenium.pages.menu.acciones.escritorio.WriteOffAttemptedAboveThresholdCompartidaPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminAgenciasCobroPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminCambioDatosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminColasMensajesPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminDiasFestivosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminEstadistFlujosTrabajoPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminExpotarDatosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminFlujosTrabajoPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminFuncionesPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminGruposPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminImpotarDatosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminParamSecuenciaPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPatronesActPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPatronesCargoPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPerfilLimiteAutoridadPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesAsignaPagoPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesComisionPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesDevolPrimaPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesFactAgenciaPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesFacturacionPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesMoraPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminPlanesPagosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminUsuariosPage;
+import com.sura.billing.selenium.pages.menu.principal.administracion.AdminZonasSeguridadPage;
 import com.sura.billing.selenium.pages.menu.principal.agente.AgenteBuscarPage;
-import com.sura.billing.selenium.pages.menu.principal.buscar.*;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarActividadesPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarAgentesPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarContactosPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarCuentasPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarDesembolsosPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarElementosEsperaFactDirectaPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarFacturasPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarPagoSalAgentePage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarPagosPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarPolizasPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarProcesosMoraPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarSolicitudesPagoPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarTicketsProblemasPage;
+import com.sura.billing.selenium.pages.menu.principal.buscar.BuscarTransacPage;
 import com.sura.billing.selenium.pages.menu.principal.cuenta.CuentaBuscarPage;
-import com.sura.billing.selenium.pages.menu.principal.escritorio.*;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.CargosRetenidosPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.DesembolsosPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.EstadosAprobacionPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.MisActividadesPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.MisElementosAgenciaPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.MisIncidentesPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.MisMorasPage;
+import com.sura.billing.selenium.pages.menu.principal.escritorio.PagosEnEsperaPage;
 import com.sura.billing.selenium.pages.menu.principal.poliza.PolizaBuscarPage;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -17,269 +91,260 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-/**
- * Created by jorghome on 18/05/2016.
- */
 public class Navegacion extends Guidewire{
-    public Navegacion(WebDriver driver) {
-        super(driver);
-    }
 
-    Guidewire gw = new Guidewire(getDriver());
-    Actions act = new Actions(getDriver());
-
-    @FindBy(xpath = ".//*[@id='UserSearch:UserSearchScreen:ttlBar']")
-    WebElementFacade labelIngreso;
-    @FindBy(xpath = ".//*[@id='HolidaysPage:HolidaysScreen:0']")
-    WebElementFacade labelIngreso2;
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final Actions act = new Actions(getDriver());
 
     // Objetos menu Escritorio
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnWrap']")
-    WebElementFacade mnuEscritorio;
+    private WebElementFacade mnuEscritorio;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:DesktopGroup_DesktopActivities-itemEl']")
-    WebElementFacade mnuItemMisActividades;
+    private WebElementFacade mnuItemMisActividades;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:DesktopGroup_DesktopApprovals-itemEl']")
-    WebElementFacade mnuItemEstadosAprobacion;
+    private WebElementFacade mnuItemEstadosAprobacion;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:DesktopGroup_DesktopTroubleTickets-itemEl']")
-    WebElementFacade mnuItemMisIncidentes;
+    private WebElementFacade mnuItemMisIncidentes;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:DesktopGroup_DesktopDelinquencies-itemEl']")
-    WebElementFacade mnuItemMisMoras;
+    private WebElementFacade mnuItemMisMoras;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:DesktopGroup_DesktopDisbursements-itemEl']")
-    WebElementFacade mnuItemDesembolsos;
+    private WebElementFacade mnuItemDesembolsos;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:DesktopGroup_DesktopSuspensePayments-itemEl']")
-    WebElementFacade mnuItemPagosEnEspera;
+    private WebElementFacade mnuItemPagosEnEspera;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:DesktopGroup_DesktopAgencyItems-itemEl']")
-    WebElementFacade mnuItemMisElementosAgencia;
+    private WebElementFacade mnuItemMisElementosAgencia;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab:DesktopGroup_DesktopHeldCharges-itemEl']")
-    WebElementFacade mnuItemCargosRetenidos;
+    private WebElementFacade mnuItemCargosRetenidos;
 
     // Objetos menu Cuenta
     @FindBy(xpath = ".//*[@id='TabBar:AccountsTab-btnWrap']")
-    WebElementFacade mnuCuenta;
+    private WebElementFacade mnuCuenta;
     @FindBy(xpath = ".//*[@id='TabBar:AccountsTab:AccountNumberSearchItem-inputEl']")
-    WebElementFacade itemNumCuenta;
+    private WebElementFacade itemNumCuenta;
 
     // Objetos menu Poliza
     @FindBy(xpath = ".//*[@id='TabBar:PoliciesTab-btnWrap']")
-    WebElementFacade mnuPoliza;
+    private WebElementFacade mnuPoliza;
     @FindBy(xpath = ".//*[@id='TabBar:PoliciesTab:PolicyNumberSearchItem-inputEl']")
-    WebElementFacade itemNumPoliza;
+    private WebElementFacade itemNumPoliza;
 
     // Objetos menu Agente
     @FindBy(xpath = ".//*[@id='TabBar:ProducersTab-btnWrap']")
-    WebElementFacade mnuAgente;
+    private WebElementFacade mnuAgente;
     @FindBy(xpath = ".//*[@id='TabBar:ProducersTab:ProducerNameSearchItem-inputEl']")
-    WebElementFacade itemNumAgente;
+    private WebElementFacade itemNumAgente;
 
     // Objetos menu Buscar
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
-    WebElementFacade mnuBuscar;
+    private WebElementFacade mnuBuscar;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_AccountSearch-itemEl']")
-    WebElementFacade mnuItemCuentas;
+    private WebElementFacade mnuItemCuentas;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_PolicySearch-itemEl']")
-    WebElementFacade mnuItemPolizas;
+    private WebElementFacade mnuItemPolizas;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_ContactSearch-itemEl']")
-    WebElementFacade mnuItemContactos;
+    private WebElementFacade mnuItemContactos;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_InvoiceSearch-itemEl']")
-    WebElementFacade mnuItemFacturas;
+    private WebElementFacade mnuItemFacturas;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_PaymentSearch-itemEl']")
-    WebElementFacade mnuItemPagos;
+    private WebElementFacade mnuItemPagos;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_ProducerSearch-itemEl']")
-    WebElementFacade mnuItemAgentes;
+    private WebElementFacade mnuItemAgentes;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_TransactionSearch-itemEl']")
-    WebElementFacade mnuItemTransacciones;
+    private WebElementFacade mnuItemTransacciones;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_ActivitySearch-itemEl']")
-    WebElementFacade mnuItemActividades;
+    private WebElementFacade mnuItemActividades;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_TroubleTicketSearch-itemEl']")
-    WebElementFacade mnuItemTicketsProblemas;
+    private WebElementFacade mnuItemTicketsProblemas;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_DelinquencyProcessSearch-itemEl']")
-    WebElementFacade mnuItemProcesosMora;
+    private WebElementFacade mnuItemProcesosMora;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_DisbursementSearch-itemEl']")
-    WebElementFacade mnuItemDesembolsosBuscar;
+    private WebElementFacade mnuItemDesembolsosBuscar;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_OutgoingProducerPaymentSearch-itemEl']")
-    WebElementFacade mnuItemPagosSalientesAgente;
+    private WebElementFacade mnuItemPagosSalientesAgente;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_PaymentRequestSearch-itemEl']")
-    WebElementFacade mnuItemSolicitudesPago;
+    private WebElementFacade mnuItemSolicitudesPago;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_DirectBillSuspenseItemSearch-itemEl']")
-    WebElementFacade mnuItemElementosEsperaFactDirecta;
+    private WebElementFacade mnuItemElementosEsperaFactDirecta;
 
     // Objetos menu Administracion
     @FindBy(xpath=".//*[@id='TabBar:AdministrationTab-btnWrap']")
-    WebElementFacade mnuAdministracion;
+    private WebElementFacade mnuAdministracion;
     // Usuarios y Seguridad
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_UsersAndSecurity']")
-    WebElementFacade mnuItemUsuariosSeguridad;
+    private WebElementFacade mnuItemUsuariosSeguridad;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_UsersAndSecurity:UsersAndSecurity_UserSearch-itemEl']")
-    WebElementFacade mnuItemUsuarios;
+    private WebElementFacade mnuItemUsuarios;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_UsersAndSecurity:UsersAndSecurity_Groups-itemEl']")
-    WebElementFacade mnuItemGrupos;
+    private WebElementFacade mnuItemGrupos;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_UsersAndSecurity:UsersAndSecurity_Roles-itemEl']")
-    WebElementFacade mnuItemFunciones;
+    private WebElementFacade mnuItemFunciones;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_UsersAndSecurity:UsersAndSecurity_SecurityZones-itemEl']")
-    WebElementFacade mnuItemZonasSeguridad;
+    private WebElementFacade mnuItemZonasSeguridad;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_UsersAndSecurity:UsersAndSecurity_AuthorityLimitProfiles-itemEl']")
-    WebElementFacade mnuItemPerfilLimiteAut;
+    private WebElementFacade mnuItemPerfilLimiteAut;
     // Configuracion comercial
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings']")
-    WebElementFacade mnuItemConfigComercial;
+    private WebElementFacade mnuItemConfigComercial;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_ActivityPatterns-itemEl']")
-    WebElementFacade mnuItemPatronesActividad;
+    private WebElementFacade mnuItemPatronesActividad;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_AgencyBillPlans-itemEl']")
-    WebElementFacade mnuItemPlanesFactAgencia;
+    private WebElementFacade mnuItemPlanesFactAgencia;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_BillingPlans-itemEl']")
-    WebElementFacade mnuItemPlanesFacturacion;
+    private WebElementFacade mnuItemPlanesFacturacion;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_ChargePatterns-itemEl']")
-    WebElementFacade mnuItemPatronesCargo;
+    private WebElementFacade mnuItemPatronesCargo;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_CollectionAgencies-itemEl']")
-    WebElementFacade mnuItemAgenciasCobro;
+    private WebElementFacade mnuItemAgenciasCobro;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_CommissionPlans-itemEl']")
-    WebElementFacade mnuItemPlanesComision;
+    private WebElementFacade mnuItemPlanesComision;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_DelinquencyPlans-itemEl']")
-    WebElementFacade mnuItemPlanesMora;
+    private WebElementFacade mnuItemPlanesMora;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_Holidays-itemEl']")
-    WebElementFacade mnuItemDiasFestivos;
+    private WebElementFacade mnuItemDiasFestivos;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_PaymentAllocationPlans-itemEl']")
-    WebElementFacade mnuItemPlanesAsignaPago;
+    private WebElementFacade mnuItemPlanesAsignaPago;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_PaymentPlans-itemEl']")
-    WebElementFacade mnuItemPlanesPagos;
+    private WebElementFacade mnuItemPlanesPagos;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_ReturnPremiumPlans-itemEl']")
-    WebElementFacade mnuItemPlanesDevolucionPrima;
+    private WebElementFacade mnuItemPlanesDevolucionPrima;
     // Supervision
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Monitoring-arrowEl']")
-    WebElementFacade mnuItemSupervision;
+    private WebElementFacade mnuItemSupervision;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Monitoring:Monitoring_MessagingDestinationControlList-itemEl']")
-    WebElementFacade mnuItemColasMensajes;
+    private WebElementFacade mnuItemColasMensajes;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Monitoring:Monitoring_WorkflowSearch-itemEl']")
-    WebElementFacade mnuItemFlujosTrabajo;
+    private WebElementFacade mnuItemFlujosTrabajo;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Monitoring:Monitoring_WorkflowStats-itemEl']")
-    WebElementFacade mnuItemEstadisticaFlujos;
+    private WebElementFacade mnuItemEstadisticaFlujos;
     // Utilidades
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Utilities-arrowEl']")
-    WebElementFacade mnuItemUtilidades;
+    private WebElementFacade mnuItemUtilidades;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Utilities:Utilities_ImportWizard-itemEl']")
-    WebElementFacade mnuItemImportDatos;
+    private WebElementFacade mnuItemImportDatos;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Utilities:Utilities_ExportData-itemEl']")
-    WebElementFacade mnuItemExportDatos;
+    private WebElementFacade mnuItemExportDatos;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Utilities:Utilities_ScriptParametersPage-itemEl']")
-    WebElementFacade mnuItemParametrosSecuencia;
+    private WebElementFacade mnuItemParametrosSecuencia;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Utilities:Utilities_DataChangePage-itemEl']")
-    WebElementFacade mnuItemCambioDatos;
+    private WebElementFacade mnuItemCambioDatos;
     
     
     // Objetos menu acciones Escritorio
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions-btnIconEl']")
-    WebElementFacade mnuAccionesEscritorio;
+    private WebElementFacade mnuAccionesEscritorio;
     // Nuevo pago
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewPayment-arrowEl']")
-    WebElementFacade itemNuevoPago;
+    private WebElementFacade itemNuevoPago;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewPayment:DesktopMenuActions_NewSuspensePayment-itemEl']")
-    WebElementFacade accionPagoEnEspera;
+    private WebElementFacade accionPagoEnEspera;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewPayment:DesktopMenuActions_MultiPaymentEntryWizard-itemEl']")
-    WebElementFacade accionEntradaPagosMultiples;
+    private WebElementFacade accionEntradaPagosMultiples;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewPayment:DesktopMenuActions_NewPaymentRequest-itemEl']")
-    WebElementFacade accionSolicitudPago;
+    private WebElementFacade accionSolicitudPago;
     // Nueva Transaccion
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewTransaction-arrowEl']")
-    WebElementFacade accionNuevaTransac;
+    private WebElementFacade accionNuevaTransac;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewTransaction:DesktopMenuActions_NewDisbursementTransaction-itemEl']")
-    WebElementFacade accionDesembolso;
+    private WebElementFacade accionDesembolso;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewTransaction:DesktopMenuActions_NewTransactionTransfer-itemEl']")
-    WebElementFacade accionTransferencia;
+    private WebElementFacade accionTransferencia;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewTransaction:DesktopMenuActions_NewTransactionWriteoff-itemEl']")
-    WebElementFacade accionAnulacion;
+    private WebElementFacade accionAnulacion;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewTransaction:DesktopMenuActions_NewTransactionNegativeWriteoff-itemEl']")
-    WebElementFacade accionAnulacionNegativa;
+    private WebElementFacade accionAnulacionNegativa;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewTransaction:DesktopMenuActions_NewTransactionSubrogation-itemEl']")
-    WebElementFacade accionSubrogacion;
+    private WebElementFacade accionSubrogacion;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewTransaction:DesktopMenuActions_NewChargeReversal-itemEl']")
-    WebElementFacade accionReversionCargo;
+    private WebElementFacade accionReversionCargo;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewTransaction:DesktopMenuActions_NewWriteoffReversal-itemEl']")
-    WebElementFacade accionReversionAnulacion;
+    private WebElementFacade accionReversionAnulacion;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewTransaction:DesktopMenuActions_NewNegativeWriteoffReversal-itemEl']")
-    WebElementFacade accionReversionAnulacionNegativa;
+    private WebElementFacade accionReversionAnulacionNegativa;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewTransaction:DesktopMenuActions_NewFundsTransferReversal-itemEl']")
-    WebElementFacade accionReversionTransfFondos;
+    private WebElementFacade accionReversionTransfFondos;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewTransaction:DesktopMenuActions_NewTransactionGeneral-itemEl']")
-    WebElementFacade accionTransacGeneral;
+    private WebElementFacade accionTransacGeneral;
     // Nueva actividad asignada
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:NewAssignedActivity-arrowEl']")
-    WebElementFacade itemActAsignada;
+    private WebElementFacade itemActAsignada;
     // Recordatorio actividad asignada
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:NewAssignedActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category-arrowEl']")
-    WebElementFacade itemRecordatorioAsignada;
+    private WebElementFacade itemRecordatorioAsignada;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:NewAssignedActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category:0:item-itemEl']")
-    WebElementFacade accionNotificacionAsignada;
+    private WebElementFacade accionNotificacionAsignada;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:NewAssignedActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category:1:item-itemEl']")
-    WebElementFacade accionWriteOffAttemptedAboveThresholdAsignada;
+    private WebElementFacade accionWriteOffAttemptedAboveThresholdAsignada;
     // Nueva actividad compartida
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:NewSharedActivity-arrowEl']")
-    WebElementFacade itemActCompartida;
+    private WebElementFacade itemActCompartida;
     // Recordatorio actividad compartida
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:NewSharedActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category-arrowEl']")
-    WebElementFacade itemRecordatorioCompartida;
+    private WebElementFacade itemRecordatorioCompartida;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:NewSharedActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category:0:item-itemEl']")
-    WebElementFacade accionNotificacionCompartida;
+    private WebElementFacade accionNotificacionCompartida;
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:NewSharedActivity:NewActivityMenuItemSet:0:NewActivityMenuItemSet_Category:1:item-itemEl']")
-    WebElementFacade accionWriteOffAttemptedAboveThresholdCompartida;
+    private WebElementFacade accionWriteOffAttemptedAboveThresholdCompartida;
     // Preferencias
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_UserPreferences-itemEl']")
-    WebElementFacade accionPreferencias;
+    private WebElementFacade accionPreferencias;
 
     // Objetos menu acciones Cuenta
     @FindBy(xpath = ".//*[@id='AccountsGroup:AccountsMenuActions-btnIconEl']")
-    WebElementFacade mnuAccionesCuenta;
+    private WebElementFacade mnuAccionesCuenta;
     @FindBy(xpath = ".//*[@id='AccountsGroup:AccountsMenuActions:AccountsMenuActions_NewAccount-itemEl']")
-    WebElementFacade accionNuevaCuenta;
+    private WebElementFacade accionNuevaCuenta;
 
     // Objetos menu acciones Agente
     @FindBy(xpath = ".//*[@id='ProducersGroup:ProducersMenuActions-btnIconEl']")
-    WebElementFacade mnuAccionesAgente;
+    private WebElementFacade mnuAccionesAgente;
     @FindBy(xpath = ".//*[@id='ProducersGroup:ProducersMenuActions:ProducersMenuActions_NewProducer-itemEl']")
-    WebElementFacade accionNuevoAgente;
+    private WebElementFacade accionNuevoAgente;
 
     // Objetos menu acciones Administracion
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions-btnIconEl']")
-    WebElementFacade mnuAccionesAdmin;
+    private WebElementFacade mnuAccionesAdmin;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewBillingPlan-itemEl']")
-    WebElementFacade mnuItemNuevoPlanFact;
+    private WebElementFacade mnuItemNuevoPlanFact;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewPaymentPlan-itemEl']")
-    WebElementFacade mnuItemNuevoPlanPago;
+    private WebElementFacade mnuItemNuevoPlanPago;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewCommissionPlan-itemEl']")
-    WebElementFacade mnuItemNuevoPlanComision;
+    private WebElementFacade mnuItemNuevoPlanComision;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewDelinquencyPlan-itemEl']")
-    WebElementFacade mnuItemNuevoPlanMora;
+    private WebElementFacade mnuItemNuevoPlanMora;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewAgencyBillPlan-itemEl']")
-    WebElementFacade mnuItemNuevoPlanFactAgencia;
+    private WebElementFacade mnuItemNuevoPlanFactAgencia;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewReturnPremiumPlan-itemEl']")
-    WebElementFacade mnuItemNuevoPlanDevolPrima;
+    private WebElementFacade mnuItemNuevoPlanDevolPrima;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewPaymentAllocationPlan-itemEl']")
-    WebElementFacade mnuItemNuevoPlanAsignaPagos;
+    private WebElementFacade mnuItemNuevoPlanAsignaPagos;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewCollectionAgency-itemEl']")
-    WebElementFacade mnuItemNuevaAgenciaCobro;
+    private WebElementFacade mnuItemNuevaAgenciaCobro;
 
     // Nuevo patron de cargo
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewChargePattern-arrowEl']")
-    WebElementFacade mnuItemNuevoPatronCargo;
+    private WebElementFacade mnuItemNuevoPatronCargo;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewChargePattern:NewImmediateCharge-itemEl']")
-    WebElementFacade mnuItemInmediato;
+    private WebElementFacade mnuItemInmediato;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewChargePattern:NewPassThroughCharge-itemEl']")
-    WebElementFacade mnuItemTransferenciaDirecta;
+    private WebElementFacade mnuItemTransferenciaDirecta;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewChargePattern:NewProRataCharge-itemEl']")
-    WebElementFacade mnuItemProrrata;
+    private WebElementFacade mnuItemProrrata;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewChargePattern:NewRecaptureCharge-itemEl']")
-    WebElementFacade mnuItemRecapturar;
+    private WebElementFacade mnuItemRecapturar;
 
     // Nuevo usuario
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewUser-itemEl']")
-    WebElementFacade mnuItemNuevoUsuario;
-    @FindBy(xpath = ".//*[@id='NewUserWizard:Cancel-btnInnerEl']")
-    WebElementFacade cancelarNuevoUsuario;
+    private WebElementFacade mnuItemNuevoUsuario;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewRole-itemEl']")
-    WebElementFacade mnuItemNuevaFuncion;
+    private WebElementFacade mnuItemNuevaFuncion;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewGroup-itemEl']")
-    WebElementFacade mnuItemNuevoGrupo;
+    private WebElementFacade mnuItemNuevoGrupo;
     @FindBy(xpath = ".//*[@id='Admin:AdminMenuActions:AdminMenuActions_NewAuthorityLimitProfile-itemEl']")
-    WebElementFacade mnuItemNuevoPerfilLimiteAut;
+    private WebElementFacade mnuItemNuevoPerfilLimiteAut;
+
+    public Navegacion(WebDriver driver) {
+        super(driver);
+    }
 
     // Navegacion menu Escritorio
     public MisActividadesPage irAMisActividades() {
@@ -386,7 +451,7 @@ public class Navegacion extends Guidewire{
     public BuscarPagosPage irABuscarPagos() {
         gw.deployMenu(mnuBuscar);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemFacturas).release(mnuItemFacturas).click().build().perform();
+        act.moveToElement(mnuItemPagos).release(mnuItemPagos).click().build().perform();
         return new BuscarPagosPage(getDriver());
     }
     public BuscarAgentesPage irABuscarAgentes() {
@@ -617,7 +682,7 @@ public class Navegacion extends Guidewire{
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemImportDatos).release(mnuItemImportDatos).click().build().perform();
+        act.moveToElement(mnuItemExportDatos).release(mnuItemExportDatos).click().build().perform();
         return new AdminExpotarDatosPage(getDriver());
     }
     public AdminParamSecuenciaPage irAAdminParamSecuencia() {
@@ -975,76 +1040,4 @@ public class Navegacion extends Guidewire{
         return new NuevoPerfilLimiteAutPage(getDriver());
     }
 
-
-
-   /*
-
-            case "Acciones":
-                mnuAcciones.click();
-                mnuAcciones.click();
-                act.sendKeys(Keys.ARROW_DOWN).build().perform();
-                switch (item1){
-                    case "Nuevo plan de facturacion":
-                        act.moveToElement(mnuItemNuevoPlanFact.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de pago":
-                        act.moveToElement(mnuItemNuevoPlanPago.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de comision":
-                        act.moveToElement(mnuItemNuevoPlanComision.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de mora":
-                        act.moveToElement(mnuItemNuevoPlanMora.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de factura a la agencia":
-                        act.moveToElement(mnuItemNuevoPlanFactAgencia.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de devolucion de prima":
-                        act.moveToElement(mnuItemNuevoPlanDevolPrima.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo plan de asignacion de pagos":
-                        act.moveToElement(mnuItemNuevoPlanAsignaPagos.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nueva agencia de cobro":
-                        act.moveToElement(mnuItemNuevaAgenciaCobro.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo patron de cargo":
-                        act.moveToElement(mnuItemNuevoPatronCargo.waitUntilClickable()).build().perform();
-                        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-                        switch (item2){
-                            case "Inmediato":
-                                act.moveToElement(mnuItemInmediato.waitUntilClickable()).click().build().perform();
-                                break;
-                            case "Transferencia directa":
-                                act.moveToElement(mnuItemTransferenciaDirecta.waitUntilClickable()).click().build().perform();
-                                break;
-                            case "Prorrata":
-                                act.moveToElement(mnuItemProrrata.waitUntilClickable()).click().build().perform();
-                                break;
-                            case "Recapturar":
-                                act.moveToElement(mnuItemRecapturar.waitUntilClickable()).click().build().perform();
-                                break;
-                        }
-                        break;
-                    case "Nuevo usuario":
-                        act.moveToElement(mnuItemNuevoUsuario.waitUntilClickable()).click().build().perform();
-                        cancelarNuevoUsuario.click();
-                        break;
-                    case "Nueva funcion":
-                        act.moveToElement(mnuItemNuevaFuncion.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo grupo":
-                        act.moveToElement(mnuItemNuevoGrupo.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "Nuevo perfil de limite de autoridad":
-                        act.moveToElement(mnuItemNuevoPerfilLimiteAut.waitUntilClickable()).click().build().perform();
-                        break;
-                    case "":
-                        break;
-                }
-                break;
-            case "":
-                break;
-        }
-    }*/
 }

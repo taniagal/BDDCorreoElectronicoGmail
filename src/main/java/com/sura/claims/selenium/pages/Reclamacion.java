@@ -11,133 +11,83 @@ import org.slf4j.LoggerFactory;
 
 
 public class Reclamacion extends Guidewire {
-    Guidewire gw = new Guidewire(getDriver());
-    public Reclamacion(WebDriver driver) {
-        super(driver);
-    }
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen" +
             ":LossDetailsAddressDV:AddressDetailInputSetRef:CCAddressInputSet:globalAddressContainer:Address_Picker" +
             "-triggerWrap']")
     private WebElementFacade lugar;
-
     @FindBy(xpath = ".//*[@id='NewClaimSaved:NewClaimSavedScreen:ttlBar']")
-    WebElementFacade lblNuevaReclamacion;
-
+    private WebElementFacade lblNuevaReclamacion;
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:Claim_ReportedByType-inputEl']")
-    WebElementFacade asegurado;
-
+    private WebElementFacade asegurado;
     @FindBy(xpath = "//div[6]/div/ul/li")
-    WebElementFacade direcciondelugar;
-
+    private WebElementFacade direcciondelugar;
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen" +
             ":LossDetailsAddressDV:Description-inputEl']")
-    WebElementFacade txtDescripcion;
-
+    private WebElementFacade txtDescripcion;
     @FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl")
-    WebElementFacade nombre;
-
+    private WebElementFacade nombre;
     @FindBy(id = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:RightPanel" +
             ":FNOLWizard_BasicInfoRightPanelSet:1:InsuredVehicleDV:InsuredVehicleInputGroup:_checkbox")
-    WebElementFacade checkVehiculoInvo;
-
-    @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow" +
-            ":BasicInfoDetailViewPanelDV:ReportedBy_Name-labelEl']")
-    WebElementFacade lblNombre;
-
-    @FindBy(xpath = "FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow:RightPanel" +
-            ":FNOLWizard_BasicInfoRightPanelSet:0:InsuredVehicleDV:InsuredVehicleInputGroup:_checkbox")
-    WebElementFacade chkVehiuloInvolucrado;
-
-    @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow" +
-            ":BasicInfoDetailViewPanelDV:Claim_ReportedByType-inputEl']")
-    WebElementFacade txtRelacionAsegurado;
-
+    private WebElementFacade checkVehiculoInvo;
     @FindBy(xpath = ".//*[@id='FNOLWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguiente;
-
+    private WebElementFacade btnSiguiente;
     @FindBy(xpath = ".//*[@id='FNOLWizard:Finish-btnInnerEl']")
-    WebElementFacade btnFinalizar;
-
+    private WebElementFacade btnFinalizar;
     @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:policyNumber" +
             "-inputEl']")
-    WebElementFacade txtNpoliza;
-
-    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
-    WebElementFacade mnuReclamacion;
-
-    @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:ttlBar']")
-    WebElementFacade lblMensaje;
-
+    private WebElementFacade txtNpoliza;
     @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:Search']")
-    WebElementFacade btnBuscar;
-
-    @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_BasicInfoScreen:PanelRow" +
-            ":BasicInfoDetailViewPanelDV:ReportedBy_Name-inputEl']")
-    WebElementFacade txtNombre;
-
-    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
-    WebElementFacade txtApellido;
-
-    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
-    WebElementFacade txtNombreOrganizacion;
-
-    @FindBy(xpath = ".//*[@id='TabBar:ClaimTab-btnInnerEl']")
-    WebElementFacade cboTipoPoliza;
-
+    private WebElementFacade btnBuscar;
     @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:FNOLWizardFindPolicyPanelSet:Claim_LossDate" +
             "-inputEl']")
-    WebElementFacade txtFechaSiniestro;
-
+    private WebElementFacade txtFechaSiniestro;
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen" +
             ":LossDetailsAddressDV:Claim_LossCause-triggerWrap']")
-    WebElementFacade listaCausas;
-
+    private WebElementFacade listaCausas;
     @FindBy(xpath = "//li[8]")
-    WebElementFacade causaRoboEstereo;
-
+    private WebElementFacade causaRoboEstereo;
     @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:ScreenMode_true-inputEl']")
-    WebElementFacade rdobuttonBuscarPoliza;
+    private WebElementFacade rdobuttonBuscarPoliza;
 
-    @FindBy(xpath = ".//*[@id='FNOLWizard:FNOLWizard_FindPolicyScreen:ScreenMode_false-inputEl']")
-    WebElementFacade rdobuttonCrearPoliza;
-
-    // Initialize slf4j logs
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+    public Reclamacion(WebDriver driver) {
+        super(driver);
+    }
 
     /**
      *
-     * @param npoliza numero de poliza
+     * @param npoliza numero de reclamacion
      *
      */
     public void llenarReclamacion(String npoliza) {
         Actions act = new Actions(getDriver());
         primerFormulario(npoliza);
-        segundoFormulario(act);
+        segundoFormulario();
         tercerFormulario(act);
     }
 
-    private void primerFormulario(String Npoliza) {
+    private void primerFormulario(String nPoliza) {
         rdobuttonBuscarPoliza.click();
-        txtNpoliza.sendKeys(Npoliza);
+        txtNpoliza.sendKeys(nPoliza);
         btnBuscar.click();
         txtFechaSiniestro.sendKeys("04/21/2016");
         txtFechaSiniestro.hasFocus();
         try {
-            Thread.sleep(2000);
-        }catch (Exception e){
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
             LOGGER.error("This is error : " + e);
         }
         btnSiguiente.click();
     }
 
-    private void segundoFormulario(Actions act) {
+    private void segundoFormulario() {
         nombre.click();
         nombre.sendKeys("Allen Robertson");
         nombre.sendKeys(Keys.ENTER);
         try {
             Thread.sleep(1000);
-        }catch (Exception e){
+        }catch (InterruptedException e){
             LOGGER.error("This is error : " + e);
         }
         asegurado.click();
@@ -149,20 +99,21 @@ public class Reclamacion extends Guidewire {
     }
 
     private void tercerFormulario(Actions act) {
+        Actions action = act;
         listaCausas.waitUntilClickable();
         listaCausas.click();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        action.sendKeys(Keys.ARROW_DOWN).build().perform();
         causaRoboEstereo.click();
         txtDescripcion.sendKeys("Prueba reclamacion Edd, automatizada con SERENITY BBD" +
                 "Y SELENIUM WEBDRIVER...");
         lugar.click();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        action.sendKeys(Keys.ARROW_DOWN).build().perform();
         direcciondelugar.click();
         btnFinalizar.click();
     }
 
     public void asercion(String msn) {
-        gw.asercion(lblNuevaReclamacion.getText(), msn);
+        asercion(lblNuevaReclamacion.getText(), msn);
     }
 
 }

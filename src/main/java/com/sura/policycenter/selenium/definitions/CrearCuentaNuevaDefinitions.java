@@ -8,17 +8,13 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-
+@SuppressWarnings("WeakerAccess")
 public class CrearCuentaNuevaDefinitions {
     @Steps
-    SeusLoginSteps seusLogin;
+    private SeusLoginSteps seusLogin;
 
     @Steps
-    CrearNuevaCuentaSteps cns;
+    private CrearNuevaCuentaSteps cns;
 
 
     @Given("que me encuentro en el sistema de policy center")
@@ -26,92 +22,68 @@ public class CrearCuentaNuevaDefinitions {
         seusLogin.login();
     }
 
-
-    @When("Quiera crear una cuenta para un contacto persona natural e ingrese la informacion en los campos tipo de\n" +
-            "documento <tipo_documento>, fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,\n" +
-            "primer apellido <primer_apellido>, tipo de direccion <tipo_direccion>, direccion <direccion>,\n" +
-            " codigo postal <codigo_postal> y nombre de organizacion <nombre_organizacion> <agente>")
-    public void whenCrearNuevaCuentaPersonaNatural(@Named("tipo_documento")String tipoDocumento, @Named("fecha_nacimiento")String fechaNacimiento,
-                            @Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
-                            @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
-                            @Named("codigo_postal")String codigoPostal, @Named("nombre_organizacion")String nombreOrganizacion, @Named("agente") String agente) {
+    @When("quiera crear una cuenta para un contacto persona natural e ingrese documento, tipo de documento <tipo_documento>")
+    public void crearCuentaNuevaPersonaNatural(@Named("tipo_documento")String tipoDocumento){
         cns.abrirNuevaCuenta();
-        cns.crearNuevaCuentaPersona ( tipoDocumento,fechaNacimiento, primerNombre, primerApellido, tipoDireccion,
-                direccion,codigoPostal,nombreOrganizacion,agente);
+        cns.agregarTipoDocumento(tipoDocumento);
+    }
+
+    @When("fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>")
+    public void agregarNombres(@Named("fecha_nacimiento")String fechaNacimiento,@Named("primer_nombre")String primerNombre,
+                                       @Named("primer_apellido")String primerApellido){
+        cns.agregarNombre(primerNombre,primerApellido,fechaNacimiento);
+    }
+
+    @When("tipo de direccion <tipo_direccion>, direccion <direccion>, departamento <departamento>, ciudad <ciudad>")
+    public void agregarDireccion( @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
+                                  @Named("departamento")String departamento,@Named("ciudad")String ciudad){
+        cns.agregarDireccion(tipoDireccion,direccion,departamento,ciudad);
+    }
+    @When("nombre de organizacion <nombre_organizacion> <agente>")
+    public void agregarOrganizacion( @Named("nombre_organizacion")String nombreOrganizacion, @Named("agente") String agente){
+        cns.agregarOrganizacion(nombreOrganizacion,agente);
     }
 
     @Then("se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural")
     public void assertCrearNuevaCuentaPersonaNatural(@Named("primer_apellido")String primerApellido, @Named("primer_nombre")String primerNombre){
-        cns.assertCrearCuenta(primerNombre+" "+primerApellido);
+        cns.verificarCrearCuenta(primerNombre+" "+primerApellido);
     }
 
-
-    //------Escenario 2
-    @Given("Me ecnuentro en Policy Center")
-    public void assertPolicyCenterLogin(){
-        cns.assertPolicyCenterLogin();
+    /**
+     * Escenario 2
+     */
+    @Given("me ecnuentro en Policy Center")
+    public void validarLogeoPolicyCenter(){
+        cns.validarLogeoPolicyCenter();
     }
 
-    @When("Quiera crear una cuenta para una persona juridica e ingrese la informacion en los campos\n" +
-            "nombre empresa <nombre_empresa>, tipo de documento <tipo_documento>,tipo de direccion <tipo_direccion>,\n" +
-            " direccion <direccion>,codigo postal <codigo_postal> y nombre de organizacion <nombre_organizacion> <agente>")
-    public void whenCrearNuevaCuentaPersonaJuridica(@Named("tipo_documento")String tipoDocumento, @Named("nombre_empresa")String nombreEmpresa,
-                                                    @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
-                                                    @Named("codigo_postal")String codigoPostal,@Named("nombre_organizacion")String nombreOrganizacion, @Named("agente") String agente) {
+    @When("quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento>")
+    public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento){
         cns.abrirNuevaCuenta();
-        cns.crearNuevaCuentaPersonaJuridica ( tipoDocumento,nombreEmpresa, tipoDireccion,
-                direccion,codigoPostal,nombreOrganizacion,agente);
+        cns.agregarTipoDocumento(tipoDocumento);
     }
 
-    @Then("se debe crear la cuenta con el cliente <nombre_empresa> persona juridica")
-    public void assertCrearNuevaCuentaPersonaJuridica(@Named("nombre_empresa")String nombreEmpresa){
-        cns.assertCrearCuenta(nombreEmpresa);
+    @When("nombre empresa <razon_social>")
+    public void agregarRazonSocial(@Named("razon_social")String razonSocial){
+        cns.agregarRazonSocial(razonSocial);
     }
 
+    @Then("se debe crear la cuenta con el cliente <razon_social> persona juridica")
+    public void assertCrearNuevaCuentaPersonaJuridica(@Named("razon_social")String razonSocial){
+        cns.verificarCrearCuenta(razonSocial);
+    }
 
-    // ----- Escenario 3
-    @Given("Que un cliente ya tiene una cuenta creada")
+    /**
+     * Escenario 3
+     */
+    @Given("que un contacto ya tiene una cuenta creada")
     public  void verificarCuentaCreada(){
-        cns.assertPolicyCenterLogin();
+        cns.validarLogeoPolicyCenter();
     }
 
-    @When("Quiero crear una cuenta adicional para alguno de los tipos de personas (natural) e ingrese la informacion en los campos tipo de\n" +
-            "documento <tipo_documento>, fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,\n" +
-            "primer apellido <primer_apellido>, tipo de direccion <tipo_direccion>, direccion <direccion>,\n" +
-            "codigo postal <codigo_postal> y nombre de organizacion <nombre_organizacion> <agente>")
-    public void entrarPaginaCrearNuevaCuentaNatural(@Named("tipo_documento")String tipoDocumento, @Named("fecha_nacimiento")String fechaNacimiento,
-                                                    @Named("primer_nombre")String primerNombre, @Named("primer_apellido")String primerApellido,
-                                                    @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
-                                                    @Named("codigo_postal")String codigoPostal, @Named("nombre_organizacion")String nombreOrganizacion, @Named("agente") String agente){
-        cns.abrirNuevaCuenta();
-        cns.crearNuevaCuentaPersona(tipoDocumento, fechaNacimiento, primerNombre, primerApellido, tipoDireccion,direccion,
-                codigoPostal,nombreOrganizacion,agente);
-    }
-
-    @Then("No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>")
+    @Then("No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje> y <mensaje2>")
     public void assertVerificarMensaje(@Named("mensaje")String mensaje){
-        cns.assertVerificarMensaje(mensaje);
-    }
-
-
-    // ------ Escenario 4
-    @When("Quiera crear una cuenta para un contacto persona natural menor de edad con fecha de nacimiento <fecha_nacimineto>,\n" +
-            "e ingrese la informacion en los campos tipo de documento <tipo_documento>,Primer nombre <primer_nombre>,\n" +
-            "primer apellido <primer_apellido>, tipo de direccion <tipo_direccion> y direccion <direccion>. codigo postal\n" +
-            " <codigo_postal> y nombre de organizacion <nombre_organizacion> <agente>")
-    public void whenCrearNuevaPersonaMenor(@Named("codigo_postal")String codigoPostal,@Named("tipo_documento")String tipoDocumento,
-                                           @Named("primer_nombre")String primerNombre,@Named("primer_apellido")String primerApellido,
-                                           @Named("tipo_direccion")String tipoDireccion,@Named("direccion")String direccion,
-                                           @Named("nombre_organizacion")String nombreOrganizacion, @Named("agente") String agente){
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        Date date = new Date();
-        String fechaActual = dateFormat.format(date);
-        cns.abrirNuevaCuenta();
-        cns.crearNuevaCuentaPersona(tipoDocumento,fechaActual, primerNombre, primerApellido, tipoDireccion,direccion,codigoPostal,nombreOrganizacion, agente);
-    }
-
-    @Then("No me debe permitir crear la cuenta y debe mostrar el mensaje <mensaje>")
-    public void assertVerificarMenor(@Named("mensaje")String mensaje){
-        cns.assertVerificarMenor(mensaje);
+        cns.verificarMensaje(mensaje);
+        cns.verificarEdadMenor(mensaje);
     }
 }

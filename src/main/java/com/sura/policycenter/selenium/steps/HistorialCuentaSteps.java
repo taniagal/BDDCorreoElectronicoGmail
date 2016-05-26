@@ -6,15 +6,16 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-/**
- * Created by jhonvebz on 25/04/2016.
- */
 public class HistorialCuentaSteps  extends ScenarioSteps {
 
-    HistorialCuentaPage historialCuentaPage = new HistorialCuentaPage(getDriver());
-    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
+    private final HistorialCuentaPage historialCuentaPage = new HistorialCuentaPage(getDriver());
+
     public HistorialCuentaSteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step

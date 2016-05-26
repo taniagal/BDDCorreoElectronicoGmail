@@ -7,17 +7,16 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 public class DetalleRegistrosSuscripcionDefinitions {
 
+    @Steps
+    DetalleRegistrosSuscripcionSteps detalleRegistrosSuscripcionSteps;
+
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
-
-    @Steps
-    DetalleRegistrosSuscripcionSteps detalleRegistrosSuscripcionSteps;
 
     @Given("busco una cuenta existente como <numeroCuenta>")
     public void buscarCuenta(@Named("numeroCuenta") String numeroCuenta) {
@@ -46,6 +45,5 @@ public class DetalleRegistrosSuscripcionDefinitions {
     public void verSumaGrupo(@Named("suma") String suma) {
         detalleRegistrosSuscripcionSteps.validarSumaGrupo(suma);
     }
-
 
 }

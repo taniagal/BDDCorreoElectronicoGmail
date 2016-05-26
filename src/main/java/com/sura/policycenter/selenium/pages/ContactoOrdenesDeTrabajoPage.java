@@ -8,56 +8,44 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.sikuli.api.robot.Key;
-
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.StringContains.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.isIn;
 
 public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
     @FindBy(xpath=".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_WorkOrders']/div")
-    WebElementFacade mnuTransaccionesPoliza;
-
+    private WebElementFacade mnuTransaccionesPoliza;
     @FindBy(xpath="//div[3]/div/table/tbody/tr/td/div")
-    WebElementFacade fechaCreacion;
-
+    private WebElementFacade fechaCreacion;
     @FindBy(xpath="//div/table/tbody/tr/td[2]/div")
-    WebElementFacade poliza;
-
+    private WebElementFacade poliza;
     @FindBy(xpath="//td[3]/div")
-    WebElementFacade producto;
-
+    private WebElementFacade producto;
     @FindBy(xpath="//td[4]/div")
-    WebElementFacade numeroTransaccion;
-
+    private WebElementFacade numeroTransaccion;
     @FindBy(xpath="//td[5]/div")
-    WebElementFacade tipo;
-
+    private WebElementFacade tipo;
     @FindBy(xpath="//td[6]/div")
-    WebElementFacade estado;
-
+    private WebElementFacade estado;
     @FindBy(xpath="//td[7]/div")
-    WebElementFacade fechaFin;
-
+    private WebElementFacade fechaFin;
     @FindBy(xpath="//td[8]/div")
-    WebElementFacade participante;
-
+    private WebElementFacade participante;
     @FindBy(xpath="//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrdersCompletenessFilter-inputEl']")
-    WebElementFacade filtroEstado;
-
+    private WebElementFacade filtroEstado;
     @FindBy(xpath="//td/div/div[3]/div/table")
-    WebElementFacade table;
-
+    private WebElementFacade table;
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrderTypeFilter-inputEl']")
-    WebElementFacade filtroTipoTransaccion;
-
+    private WebElementFacade filtroTipoTransaccion;
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:ProductFilter-inputEl']")
-    WebElementFacade filtroProducto;
-
+    private WebElementFacade filtroProducto;
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:message:InfoMessage_ExtDV:message']")
-    WebElementFacade msjTransaccionNoEncontrada;
-
+    private WebElementFacade msjTransaccionNoEncontrada;
 
     public ContactoOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);
@@ -98,9 +86,9 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             String estadoStr = cells.get(5).getText();
-            if(filtroEstado.equals("Completo")){
+            if(("Completo").equals(filtroEstado)){
                 assertThat(estadoStr, isIn(listEstadosCompletos));
-            }else if (filtroEstado.equals("Abierto")){
+            }else if (("Abierto").equals(filtroEstado)){
                 assertThat(estadoStr, isIn(listEstadosAbiertos));
             }else{
                 assertThat(estadoStr, isIn(listEstadosTodos));
@@ -118,14 +106,10 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
-        try {
-            for (WebElement row : allRows) {
-                List<WebElement> cells = row.findElements(By.tagName("td"));
-                String transaccionStr = cells.get(4).getText();
-                assertThat(transaccionStr, containsString(filtroTransaccion));
-            }
-        }catch (Exception e) {
-            throw new RuntimeException(e);
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            String transaccionStr = cells.get(4).getText();
+            assertThat(transaccionStr, containsString(filtroTransaccion));
         }
     }
 
@@ -139,14 +123,10 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     public void validarTransaccionesPorProducto(String filtroProducto) {
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
-        try {
-            for (WebElement row : allRows) {
-                List<WebElement> cells = row.findElements(By.tagName("td"));
-                String transaccionStr = cells.get(2).getText();
-                assertThat(transaccionStr, containsString(filtroProducto));
-            }
-        }catch (Exception e) {
-            throw new RuntimeException(e);
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            String transaccionStr = cells.get(2).getText();
+            assertThat(transaccionStr, containsString(filtroProducto));
         }
     }
 

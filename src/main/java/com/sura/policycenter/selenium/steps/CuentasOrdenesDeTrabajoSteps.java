@@ -6,16 +6,15 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-/**
- * Created by brayruru on 2016/05/03.
- */
 public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
 
-    CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
-    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
+    private final CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
+
     public CuentasOrdenesDeTrabajoSteps(Pages pages) {
         super(pages);
     }
+
+    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     @Step
     public void verTransaccionesContacto() {
@@ -43,8 +42,6 @@ public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
     @Step
     public void seleccionarCuenta(String numCuenta) {
         inicioPage().irACuentaBuscar(numCuenta);
-        //cuentasOrdenesTrabajoPage.buscarCuenta(numCuenta);
     }
-
 
 }

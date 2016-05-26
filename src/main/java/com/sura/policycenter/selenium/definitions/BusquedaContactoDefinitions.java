@@ -9,13 +9,10 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
-import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
 
-/**
- * Created by jhonvebz on 25/04/2016.
- */
+@SuppressWarnings("WeakerAccess")
 public class BusquedaContactoDefinitions {
 
     @Steps
@@ -25,7 +22,7 @@ public class BusquedaContactoDefinitions {
     SeusLoginSteps seusLoginSteps;
 
     @Steps
-    BusquedaContactoSteps buscarContactoSteps;
+    private BusquedaContactoSteps buscarContactoSteps;
 
     @Given("estoy en busqueda de contactos")
     public void givenEstoyEnBusquedaContactos() {
@@ -156,9 +153,11 @@ public class BusquedaContactoDefinitions {
         buscarContactoSteps.validarLongitudPersonaJuridica("", nombreComercial);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @When("quiera exportar el resultado de la busqueda")
     @Manual
     public void validarExportar(){
+        // Se realiza manualmente.
     }
 
     @When("la longitud de esta <razonSocial> sea inferior a cuatro caracteres")
@@ -251,7 +250,10 @@ public class BusquedaContactoDefinitions {
         buscarContactoSteps.validarLabelsPersonaJuridica(labelsContacto);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Then("el sistema debe permitir exportar el resultado")
     @Manual
-    public void sistemaDebeExportarResultado(){}
+    public void sistemaDebeExportarResultado() {
+        // Se realiza manualmente.
+    }
 }

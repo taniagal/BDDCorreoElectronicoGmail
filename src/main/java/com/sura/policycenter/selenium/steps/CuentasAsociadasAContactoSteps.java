@@ -9,14 +9,15 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
 
-    BusquedaContactoPage busquedaPage = new BusquedaContactoPage(getDriver());
-    CuentasAsociadasAContactoPage cuentasAsociadasAContactoPage = new CuentasAsociadasAContactoPage(getDriver());
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
+    private final BusquedaContactoPage busquedaPage = new BusquedaContactoPage(getDriver());
+    private final CuentasAsociadasAContactoPage cuentasAsociadasAContactoPage = new CuentasAsociadasAContactoPage(getDriver());
 
     public CuentasAsociadasAContactoSteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step
@@ -39,7 +40,6 @@ public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
 
     @Step
     public void buscarContactoSel(String tipoContacto, String nombre, String apellido, String numero) {
-        //busquedaPage.accionarBuscarContacto();
         inicioPage().irABuscarContacto();
         busquedaPage.buscarContacto(tipoContacto, nombre, apellido, numero);
     }
@@ -53,4 +53,5 @@ public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
     public void validarMensajeCuenta(String mensaje) {
         cuentasAsociadasAContactoPage.validarMensaje(mensaje);
     }
+
 }

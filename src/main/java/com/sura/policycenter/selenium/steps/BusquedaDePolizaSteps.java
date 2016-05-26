@@ -9,11 +9,15 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class BusquedaDePolizaSteps extends ScenarioSteps{
 
-    BusquedaDePolizaPage busquedaDePolizaPage = new BusquedaDePolizaPage(getDriver());
+    private final BusquedaDePolizaPage busquedaDePolizaPage = new BusquedaDePolizaPage(getDriver());
+
+    public BusquedaDePolizaSteps(Pages pages) {
+        super(pages);
+    }
+
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
-    public BusquedaDePolizaSteps(Pages pages){super(pages);}
 
     @Step
     public void irABuscarPoliza() {

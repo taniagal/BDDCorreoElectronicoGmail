@@ -8,14 +8,12 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-/**
- * Created by jonamele on 16/05/2016.
- */
+@SuppressWarnings("WeakerAccess")
 public class CrearParticipanteCuentaDefinitions {
 
 
     @Steps
-    CrearParticipantesCuentaSteps crearParticipantesCuentaSteps;
+    private CrearParticipantesCuentaSteps crearParticipantesCuentaSteps;
 
 
    @Given("que existe una cuenta <numCuenta>")

@@ -6,7 +6,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class BusquedaActividadesSteps extends ScenarioSteps {
 
-    BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
+    private final BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
+
     public BusquedaActividadesSteps(Pages pages) {
         super(pages);
     }
@@ -55,5 +56,5 @@ public class BusquedaActividadesSteps extends ScenarioSteps {
 
     public void buscarPorFiltroOpcional(String estadoActividad) {
         busquedaActividades.buscarPorFiltroOpcional(estadoActividad);
-}
+    }
 }

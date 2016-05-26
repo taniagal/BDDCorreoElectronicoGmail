@@ -4,39 +4,31 @@ import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
-
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
 
 public class DetalleRegistrosSuscripcionPage extends Guidewire{
 
     @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_UnderwritingFiles']/div/span")
     WebElementFacade mnuRegistrosSuscripcion;
-
     @FindBy(xpath=".//*[@id='UnderwritingFiles:RenewalManagerScreen:RenewalManagerLV:0:GroupName']")
     WebElementFacade lblTransaccion;
-
     @FindBy(xpath=".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:NumJobs-inputEl']")
     WebElementFacade lblNroCotizaciones;
-
     @FindBy(xpath=".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:TotalCost-inputEl']")
     WebElementFacade lblCostoTotal;
-
     @FindBy(xpath="//div[2]/div/table/tbody/tr/td/div/div[2]/div/table/tbody/tr/td/div")
     WebElementFacade lblProducto;
-
     @FindBy(xpath="//div/table/tbody/tr/td[2]/div")
     WebElementFacade lblNroEnvio;
-
     @FindBy(xpath="//td[3]/div")
     WebElementFacade lblEstado;
-
     @FindBy(xpath="//td[4]/div")
     WebElementFacade lblNroPoliza;
-
     @FindBy(xpath="//td[5]/div")
     WebElementFacade lblCrearFecha;
-
     @FindBy(xpath="//td[6]/div")
     WebElementFacade lblFechaCierre;
 

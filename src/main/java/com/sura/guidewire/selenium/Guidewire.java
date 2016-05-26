@@ -1,80 +1,60 @@
 package com.sura.guidewire.selenium;
 
+import com.google.common.base.Function;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
-import org.hamcrest.Matcher;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.LoggerFactory;
-
 import java.util.concurrent.TimeUnit;
-
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Created by jorghome on 15/04/2016.
- */
 public class Guidewire extends PageObject {
 
-    String mensajeError = "";
-    // Initialize Log4j logs
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
-    Actions act = new Actions(getDriver());
-
-    public Guidewire(WebDriver driver) {
-        super(driver);
-    }
-
+    private final Actions act = new Actions(getDriver());
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
-    private WebElementFacade configuracion;
+    WebElementFacade configuracion;
     @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
     WebElementFacade internacional;
     @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
     WebElementFacade idioma;
     @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
-    WebElementFacade espaniol;
+    private WebElementFacade espaniol;
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-    WebElementFacade usuario;
+    private WebElementFacade usuario;
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
-    WebElementFacade contrasena;
+    private WebElementFacade contrasena;
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
-    WebElementFacade submit;
+    private WebElementFacade submit;
     @FindBy(xpath =".//*[@id=':TabLinkMenuButton-btnIconEl']")
-    WebElementFacade btnConfig;
+    private WebElementFacade btnConfig;
     @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
-    WebElementFacade btnLogout;
+    private WebElementFacade btnLogout;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
-    WebElementFacade btnLogout2;
+    private WebElementFacade btnLogout2;
     @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
-    WebElementFacade lblMisActividades;
+    private WebElementFacade lblMisActividades;
 
-    // TODO: 19/04/2016 Revision escritura de excepciones en log
+    public Guidewire(WebDriver driver) {
+        super(driver);
+    }
+
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
         getDriver().manage().window().maximize();
-        try {
-            usuario.waitUntilVisible();
-            contrasena.waitUntilVisible();
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
+        usuario.waitUntilVisible();
+        contrasena.waitUntilVisible();
     }
 
-    // TODO: 26/04/2016 Revision escritura de excepciones en log
     public void asercion(String element, String mensaje) {
-        try {
-            assertThat(element, containsString(mensaje));
-        } catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
-    }
-
-    private void assertThat(String element, Matcher<String> stringMatcher) {
+        assertThat(element, containsString(mensaje));
     }
 
     public void login(String user, String pass) {
@@ -98,14 +78,14 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        Actions act = new Actions(getDriver());
-        menu.click();
-        waitABit(1500);
-        menu.click();
-        waitABit(500);
+        menu.waitUntilClickable().click();
+        waitABit(300);
+        menu.waitUntilClickable().click();
+        waitABit(300);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
     }
+
 
     public void selectItem(WebElementFacade element, String option){
         element.click();
@@ -114,29 +94,26 @@ public class Guidewire extends PageObject {
         element.sendKeys(Keys.ENTER);
     }
 
-    public void threadWait(int milisegundos) {
-        try {
-            TimeUnit.MILLISECONDS.sleep(milisegundos);
-        } catch (InterruptedException e) {
-            LOGGER.error("This is error : " + e);
-        }
-    }
-
-    //----Crea un numero de cudeula de 8 digitos
+    /**
+     * Crea numero de cedula
+     * @return numero de cedula de 8 digitos
+     */
     public String cedulaRandom() {
         int cedula = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
         return Integer.toString(cedula);
     }
 
-    //----Crea un numero de nit de 9 digitos
+    /**
+     * Crea un numero de nit
+     * @return numero de nit de 9 digitos
+     */
     public String nitRandom() {
         int nit = (int) Math.floor(Math.random() * (900000000 - 999999999) + 999999999);
         return Integer.toString(nit);
     }
 
     public void elegirLenguaje(){
-
-        if(!lblMisActividades.getText().equals("Mis actividades")){
+        if(!("Mis actividades").equals(lblMisActividades.getText())){
         configuracion.click();
         waitABit(300);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -148,13 +125,22 @@ public class Guidewire extends PageObject {
         espaniol.click();
         waitABit(850);
         }
-
     }
 
     protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
         final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+    public void waitUntil(int millis) {
+        Integer i = 0;
+        Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
+                TimeUnit.MILLISECONDS).pollingEvery(millis,
+                TimeUnit.MILLISECONDS);
+        waitUtil.until(new Function<Integer, Boolean>() {
+            public Boolean apply(Integer i) {
+                return false;
+            }
+        });
+    }
 }
-
-
