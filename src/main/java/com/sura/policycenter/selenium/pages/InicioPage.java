@@ -1,5 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.selenium.pages.menu.Navegacion;
 import com.sura.policycenter.selenium.pages.menu.acciones.administracion.*;
@@ -23,12 +27,15 @@ import com.sura.policycenter.selenium.pages.menu.superior.poliza.NuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.superior.poliza.PolizaBuscarPage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
+<<<<<<< HEAD
+=======
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
+>>>>>>> c3e28daaa6cad6e9a2f9064c61326928a67e0500
 
 @SuppressWarnings("UnusedReturnValue")
 public class InicioPage extends Guidewire {

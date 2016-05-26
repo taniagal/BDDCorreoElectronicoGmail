@@ -1,19 +1,19 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
-import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.slf4j.LoggerFactory;
-import java.util.List;
-import java.util.Map;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
+import java.util.List;
+import java.util.Map;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.slf4j.LoggerFactory;
+import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
 
 public class BusquedaContactoPage extends Guidewire {
 
