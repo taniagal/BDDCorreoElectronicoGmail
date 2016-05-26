@@ -48,6 +48,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioN
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminAtributosPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminCambioDatosPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminCodAgentesPage;
@@ -341,6 +342,9 @@ public class Navegacion extends Guidewire {
     // Objetos menu Opciones Cuenta
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Roles']/div")
     private WebElementFacade mnuOpcionesCuenta;
+
+    @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
+    WebElementFacade mnuResumenCuenta;
 
     @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_SubmissionManager']/div/span")
     private WebElementFacade mnuAdmCotizaciones;
@@ -1296,6 +1300,12 @@ public class Navegacion extends Guidewire {
         waitABit(800);
         mnuOpcionesCuenta.click();
         return new OpcionesCrearPartcCuentaPage(getDriver());
+    }
+
+    public OpcionesResumenCuentaPage irAOpcionesResumenCuenta() {
+        mnuResumenCuenta.click();
+        waitABit(800);
+        return new OpcionesResumenCuentaPage(getDriver());
     }
 
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {

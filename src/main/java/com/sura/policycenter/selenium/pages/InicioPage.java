@@ -9,6 +9,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioN
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.BuscarContactoPage;
@@ -339,6 +340,10 @@ public class InicioPage extends Guidewire {
     //Metodos Opciones Cuentas
     public OpcionesCrearPartcCuentaPage irAOpcionesCrearPartcCuenta(){
         return navegacion.irAOpcionesCrearPartcCuenta();
+    }
+
+    public OpcionesResumenCuentaPage irAOpcionesResumenCuenta() {
+        return navegacion.irAOpcionesResumenCuenta();
     }
 
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {

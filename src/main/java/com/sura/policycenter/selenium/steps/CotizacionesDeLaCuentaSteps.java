@@ -105,18 +105,8 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarEstadoCotizacionCotizado(String propiedadComercial, String cotizado) {
-        opcionesAdministradorCotizaciones.validarEstadoCotizacionCotizado(propiedadComercial, cotizado);
-    }
-
-    @Step
     public void validarEstadoCotizacionDeclinado(String propiedadComercial, String cotizado) {
         opcionesAdministradorCotizaciones.validarEstadoCotizacionDeclinado(propiedadComercial, cotizado);
-    }
-
-    @Step
-    public void mostrarBotonCrearCartaCotizacion(String crearCarta) {
-        opcionesAdministradorCotizaciones.mostrarBotonCrearCartaCotizacion(crearCarta);
     }
 
     @Step

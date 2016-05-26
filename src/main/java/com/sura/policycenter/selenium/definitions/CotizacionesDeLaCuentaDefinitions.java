@@ -122,16 +122,6 @@ public class CotizacionesDeLaCuentaDefinitions {
         cotizacionesDeLaCuentaSteps.validarNumeroPoliza();
     }
 
-    @When("una cotizacion este en estado 'Cotizado' <cotizado> y no se haya generado una carta de cotizacion para esta cotizacion y sea cotizacion de MRC <propiedadComercial>")
-    public void whenvalidarEstadoCotizacionCotizado(@Named("propiedadComercial") String propiedadComercial, @Named("cotizado") String cotizado){
-        cotizacionesDeLaCuentaSteps.validarEstadoCotizacionCotizado(propiedadComercial, cotizado);
-    }
-
-    @Then("me debe permitir crear una carta de cotizacion por medio de un boton. El label del boton debe ser 'Crear carta de cotizacion' <crearCarta>.")
-    public void thenMostrarCartaCotizacion(@Named("crearCarta") String crearCarta){
-        cotizacionesDeLaCuentaSteps.mostrarBotonCrearCartaCotizacion(crearCarta);
-    }
-
     @When("una cotizacion este en estado 'Declinado' <declinado> y no se haya generado una carta de declinacion para esta cotizacion y sea cotizacion de MRC <propiedadComercial>")
     public void whenvalidarEstadoCotizacionDeclinado(@Named("propiedadComercial") String propiedadComercial, @Named("declinado") String declinado){
         cotizacionesDeLaCuentaSteps.validarEstadoCotizacionDeclinado(propiedadComercial, declinado);
@@ -145,11 +135,6 @@ public class CotizacionesDeLaCuentaDefinitions {
     @When("una cotizacion sea producto Auto Personal <producto>")
     public void whenValidarEstadoAutoPersonal(@Named("producto") String producto){
         cotizacionesDeLaCuentaSteps.validarEstadoAutoPersonal(producto);
-    }
-
-    @Then("no debe aparecer la opcion de crear carta de cotizacion <crearCarta>.")
-    public void thenNoMostrarCartaCotizacion(@Named("crearCarta") String crearCarta){
-        cotizacionesDeLaCuentaSteps.noMostrarBotonCrearCarta(crearCarta);
     }
 
     @Then("no debe aparecer la opcion de crear carta de declinacion <crearCarta>.")
