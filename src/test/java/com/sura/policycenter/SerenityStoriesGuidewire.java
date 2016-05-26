@@ -27,16 +27,16 @@ public class SerenityStoriesGuidewire extends AbstractJBehaveStory {
 
     @Test
     public void ingreso_a_guidewire_como_administrador() throws Throwable {
-        SerenityStories login_policy_story = newStory("policycenter/login_policy.story");
-        run(login_policy_story);
+        SerenityStories loginPolicyStory = newStory("policycenter/login_policy.story");
+        run(loginPolicyStory);
         List<TestOutcome> outcomes = loadTestOutcomes();
         assertThat(outcomes.size(), is(1));
     }
 
     @Test
     public void carga_datos_a_guidewire_con_datos_de_muestra_sura() throws Throwable {
-        SerenityStories login_policy_story = newStory("policycenter/login_policy.story");
-        run(login_policy_story);
+        SerenityStories loginPolicyStory = newStory("policycenter/login_policy.story");
+        run(loginPolicyStory);
         List<TestOutcome> outcomes = loadTestOutcomes();
         assertThat(outcomes.size(), is(1));
     }

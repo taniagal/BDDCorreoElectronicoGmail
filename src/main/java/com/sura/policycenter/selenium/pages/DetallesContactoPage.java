@@ -134,7 +134,7 @@ public class DetallesContactoPage extends Guidewire {
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
     private static final String MSJVALIDARVALORES = "No estan correctos los valores:";
-    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elemtos:";
+    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
@@ -276,7 +276,6 @@ public class DetallesContactoPage extends Guidewire {
             right.append("correo primario,");
         if(!dtlContact[14].equals(campoTxtCorreoElectronicoSecundario.getText()))
             right.append("correo secundario,");
-        }
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
@@ -303,7 +302,6 @@ public class DetallesContactoPage extends Guidewire {
             right.append("correo primario,");
         if(!dtlCntJ[7].equals(campoTxtCorreoElectronicoSecundarioEmpresa.getText()))
             right.append("correo secundario,");
-        }
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
@@ -353,7 +351,6 @@ public class DetallesContactoPage extends Guidewire {
             notPresent.append(" telefono_celular,");
         if(!labelCorreoElectronicoPrimario.isPresent())
             notPresent.append(" correo_electronico_primario,");
-        }
         String res = notPresent.toString();
         if(MSJVALIDARELEMENTOS.equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);
@@ -383,7 +380,6 @@ public class DetallesContactoPage extends Guidewire {
             notPresent.append(" telefono_oficina,");
         if(!getcampoTxtCorreoElectronicoPrimarioEmpresa.isPresent())
             notPresent.append(" correo_electronico_primario,");
-        }
         String res = notPresent.toString();
         if(MSJVALIDARELEMENTOS.equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);
@@ -410,7 +406,6 @@ public class DetallesContactoPage extends Guidewire {
             notPresent.append(" tipo dirección,");
         if(!labelDescripcionDireccion.isPresent())
             notPresent.append(" descripción direccion,");
-        }
         String res = notPresent.toString();
         if(MSJVALIDARELEMENTOS.equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);
@@ -430,7 +425,6 @@ public class DetallesContactoPage extends Guidewire {
             right.append("drireccion data-tip,");
         if(!campoTxtDireccion.getAttribute("maxlength").equals("200"))
             right.append("direccion maxlength,");
-        }
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);

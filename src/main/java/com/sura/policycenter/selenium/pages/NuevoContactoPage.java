@@ -32,8 +32,8 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade razonSocial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade desRazonSocial;
-    /*@FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
-    private WebElementFacade contactoExistente;*/
+    @FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
+    private WebElementFacade contactoExistente;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl']")
     private WebElementFacade tipoTelefono;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
@@ -148,9 +148,10 @@ public class NuevoContactoPage extends Guidewire {
     public void verificarContactoExistente() {
         this.btnActualizar.waitUntilClickable();
         this.btnActualizar.click();
-        /*COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
+        /**COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
+         */
         waitABit(1000);
-        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));*/
+        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 
     private Boolean esTelefonoFijo(String tipoTelefono) {
