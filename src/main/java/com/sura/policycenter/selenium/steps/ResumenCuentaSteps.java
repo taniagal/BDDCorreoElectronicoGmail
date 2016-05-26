@@ -30,4 +30,44 @@ public class ResumenCuentaSteps extends ScenarioSteps {
     public void verInfoResumenCuenta(Map<String, String> infoResumenCuenta) {
         opcionesResumenCuentaPage.verInfoResumenCuenta(infoResumenCuenta);
     }
+
+    @Step
+    public void editarResumenCuenta() {
+        opcionesResumenCuentaPage.editarResumenCuenta();
+    }
+
+    @Step
+    public void validarCamposEditablesPersona() {
+        opcionesResumenCuentaPage.validarCamposEditablesPersona();
+    }
+
+    @Step
+    public void validarCamposEditablesCompania() {
+        opcionesResumenCuentaPage.validarCamposEditablesCompania();
+    }
+
+    @Step
+    public void actualizarCuenta(){
+        opcionesResumenCuentaPage.actualizarCuenta();
+    }
+
+    @Step
+    public void editarPais(String pais) {
+        opcionesResumenCuentaPage.editarPais(pais);
+    }
+
+    @Step
+    public void validarDepartamento(String departamento) {
+        opcionesResumenCuentaPage.validarDepartamento(departamento);
+    }
+
+    @Step
+    public void editarDepto(String departamento) {
+        opcionesResumenCuentaPage.editarDepto(departamento);
+    }
+
+    @Step
+    public void validarCiudad(String ciudad) {
+        opcionesResumenCuentaPage.validarCiudad(ciudad);
+    }
 }
