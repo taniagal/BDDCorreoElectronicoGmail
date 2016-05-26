@@ -6,18 +6,17 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.When;
-
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 @SuppressWarnings("WeakerAccess")
 public class ReclamacionDefinitions {
 
+    @Steps
+    private ClaimsSteps claimsteps;
+
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
-
-    @Steps
-    private ClaimsSteps claimsteps;
 
     @Given("ingreso a la app")
     public void open(){

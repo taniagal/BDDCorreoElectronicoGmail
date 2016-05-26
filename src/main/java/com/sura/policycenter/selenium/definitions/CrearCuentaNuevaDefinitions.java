@@ -7,10 +7,6 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 @SuppressWarnings("WeakerAccess")
 public class CrearCuentaNuevaDefinitions {
@@ -53,9 +49,9 @@ public class CrearCuentaNuevaDefinitions {
         cns.verificarCrearCuenta(primerNombre+" "+primerApellido);
     }
 
-
-
-    //------Escenario 2
+    /**
+     * Escenario 2
+     */
     @Given("me ecnuentro en Policy Center")
     public void validarLogeoPolicyCenter(){
         cns.validarLogeoPolicyCenter();
@@ -77,8 +73,9 @@ public class CrearCuentaNuevaDefinitions {
         cns.verificarCrearCuenta(razonSocial);
     }
 
-
-    // ----- Escenario 3
+    /**
+     * Escenario 3
+     */
     @Given("que un contacto ya tiene una cuenta creada")
     public  void verificarCuentaCreada(){
         cns.validarLogeoPolicyCenter();

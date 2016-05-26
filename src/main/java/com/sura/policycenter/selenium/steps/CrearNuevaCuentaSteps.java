@@ -13,10 +13,13 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
     private String nit = "";
     private final Guidewire gw = new Guidewire(getDriver());
     private final CuentaPage cp = new CuentaPage(getDriver());
-    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
-    public CrearNuevaCuentaSteps(Pages pages){
+    public CrearNuevaCuentaSteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     private void  initRandoms(){

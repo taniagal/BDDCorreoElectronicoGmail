@@ -4,8 +4,9 @@ import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DetallesContactoPage extends Guidewire {
@@ -463,19 +464,19 @@ public class DetallesContactoPage extends Guidewire {
 
     public void validarCampos() {
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!cboPais.getValue().toString().equals("Colombia")) {
+        if(!"Colombia".equals(cboPais.getValue().toString())) {
             right.append(" pais,");
         }
-        if(!cboDepartamento.getValue().toString().equals("<ninguno>")) {
+        if(!"<ninguno>".equals(cboDepartamento.getValue().toString())) {
             right.append(" departamento,");
         }
-        if(!txtDireccion.getAttribute("placeholder").equals("CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203")) {
+        if(!"CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203".equals(txtDireccion.getAttribute("placeholder"))) {
             right.append("drireccion placeholder,");
         }
-        if(!txtDireccion.getAttribute("data-qtip").equals("Esta Direccion podria estandarizarse automáticamente")) {
+        if(!"Esta Direccion podria estandarizarse automáticamente".equals(txtDireccion.getAttribute("data-qtip"))) {
             right.append("drireccion data-tip,");
         }
-        if(!txtDireccion.getAttribute("maxlength").equals("200")) {
+        if(!"200".equals(txtDireccion.getAttribute("maxlength"))) {
             right.append("direccion maxlength,");
         }
         String res = right.toString();

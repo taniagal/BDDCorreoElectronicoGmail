@@ -6,18 +6,18 @@ import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-
 import java.util.Map;
 
 public class BusquedaContactoSteps extends ScenarioSteps {
 
     private final BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
 
     public BusquedaContactoSteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step

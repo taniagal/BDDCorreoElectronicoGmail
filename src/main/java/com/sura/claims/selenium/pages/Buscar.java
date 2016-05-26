@@ -8,19 +8,16 @@ import org.openqa.selenium.support.FindBy;
 public class Buscar extends Guidewire {
 
     private final Guidewire gw = new Guidewire(getDriver());
+    @FindBy (xpath = ".//*[@id='ClaimSearch:ClaimSearchScreen:ClaimSearchDV:ClaimSearchRequiredInputSet:PolicyNumber-inputEl']")
+    private WebElementFacade txtNpoliza;
+    @FindBy (xpath = ".//*[@id='ClaimSearch:ClaimSearchScreen:ClaimSearchDV:ClaimSearchAndResetInputSet:Search']")
+    private WebElementFacade rdobuttonBuscarPoliza;
+    @FindBy (xpath = ".//td[6]/div")
+    private WebElementFacade msnPoliza;
 
     public Buscar(WebDriver driver) {
         super(driver);
     }
-
-    @FindBy (xpath = ".//*[@id='ClaimSearch:ClaimSearchScreen:ClaimSearchDV:ClaimSearchRequiredInputSet:PolicyNumber-inputEl']")
-    private WebElementFacade txtNpoliza;
-
-    @FindBy (xpath = ".//*[@id='ClaimSearch:ClaimSearchScreen:ClaimSearchDV:ClaimSearchAndResetInputSet:Search']")
-    private WebElementFacade rdobuttonBuscarPoliza;
-
-    @FindBy (xpath = ".//td[6]/div")
-    private WebElementFacade msnPoliza;
 
     public void buscaAvanzada (String nPoliza){
         txtNpoliza.sendKeys(nPoliza);

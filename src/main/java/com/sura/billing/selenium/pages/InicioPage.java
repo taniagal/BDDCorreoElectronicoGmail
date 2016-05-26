@@ -90,7 +90,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
 
 public class InicioPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='UserSearch:UserSearchScreen:ttlBar']")

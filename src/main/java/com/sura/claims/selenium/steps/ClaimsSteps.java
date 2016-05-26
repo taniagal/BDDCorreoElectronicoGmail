@@ -1,7 +1,6 @@
 package com.sura.claims.selenium.steps;
 
 import com.sura.claims.selenium.pages.AbrirApp;
-import com.sura.claims.selenium.pages.Buscar;
 import com.sura.claims.selenium.pages.Reclamacion;
 import com.sura.guidewire.selenium.Guidewire;
 import net.thucydides.core.annotations.Step;
