@@ -16,51 +16,51 @@ public class CuentaPage extends Guidewire{
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
     private WebElementFacade mnuNuevaCuenta;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:GlobalContactNameInputSet:Name-inputEl']")
-    private WebElementFacade txtNombreCompania;
+    private WebElementFacade campoTxtNombreCompania;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    private WebElementFacade btnBuscar;
+    private WebElementFacade botonBuscar;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton']")
-    private WebElementFacade btnCrearCuentaNueva;
+    private WebElementFacade botonCrearCuentaNueva;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton:NewAccount_Person-textEl']")
-    private WebElementFacade btnNuevaCuentaPersonal;
+    private WebElementFacade botonNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountButton:NewAccount_Company-textEl']")
-    private WebElementFacade btnNuevaCuentaCompania;
+    private WebElementFacade botonNuevaCuentaCompania;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    private WebElementFacade txtNombreNuevaCuentaPersonal;
+    private WebElementFacade campoTxtNombreNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalContactNameInputSet:Name-inputEl']")
-    private WebElementFacade txtNombreNuevaPersonaJuridica;
+    private WebElementFacade campoTxtNombreNuevaPersonaJuridica;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    private WebElementFacade txtApellidoNuevaCuentaPersonal;
+    private WebElementFacade campoTxtApellidoNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
-    private WebElementFacade txtDireccionNuevaCuentaPersonal;
+    private WebElementFacade campoTxtDireccionNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressType-inputEl']")
-    private WebElementFacade cboTipoDireccionNuevaCuentaPersonal;
+    private WebElementFacade comboBoxTipoDireccionNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
-    private WebElementFacade txtDocumentoNuevaCuenta;
+    private WebElementFacade campoTxtDocumentoNuevaCuenta;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:ProducerSelectionInputSet:Producer:SelectOrganization']")
-    private WebElementFacade btnAgregarOrganizacion;
+    private WebElementFacade botonAgregarOrganizacion;
     @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchDV:GlobalContactNameInputSet:Name-inputEl']")
-    private WebElementFacade txtNombreDeOrganizacion;
+    private WebElementFacade campoTxtNombreDeOrganizacion;
     @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    private WebElementFacade btnBuscarOrganizacion;
+    private WebElementFacade botonBuscarOrganizacion;
     @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchResultsLV:0:_Select']")
-    private WebElementFacade btnSeleccionarOrganizacion;
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update-btnInnerEl']")
-    private WebElementFacade btnActualizar;
+    private WebElementFacade botonSeleccionarOrganizacion;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update-botonInnerEl']")
+    private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:Name-inputEl']")
-    private WebElementFacade lblNombreDeCuenta;
+    private WebElementFacade labelNombreDeCuenta;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:DocumentType-inputEl']")
-    private WebElementFacade cboTipoDocumentoNuevaCuenta;
+    private WebElementFacade comboBoxTipoDocumentoNuevaCuenta;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:BasicPersonInfo:CreateNewContactInputSet:DateOfBirth-inputEl']")
-    private WebElementFacade txtFechaNacimiento;
+    private WebElementFacade campoTxtFechaNacimiento;
     @FindBy(id = "CreateAccount:CreateAccountScreen:_msgs")
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
-    private WebElementFacade cboCodigoAgente;
+    private WebElementFacade comboBoxCodigoAgente;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade cboDepartamento;
+    private WebElementFacade comboBoxDepartamento;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
-    private WebElementFacade cboCiudad;
+    private WebElementFacade comboBoxCiudad;
 
     public CuentaPage(WebDriver driver){
         super(driver);
@@ -72,63 +72,64 @@ public class CuentaPage extends Guidewire{
     }
 
     public void agregarTipoDocumento(String tipoDocumento, String documento) {
-        cboTipoDocumentoNuevaCuenta.clear();
-        cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
-        cboTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
-        txtDocumentoNuevaCuenta.sendKeys(documento);
+        comboBoxTipoDocumentoNuevaCuenta.clear();
+        comboBoxTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
+        comboBoxTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
+        campoTxtDocumentoNuevaCuenta.sendKeys(documento);
     }
 
     public void agregarNombres(String primerNombre, String primerApellido, String fechaNacimiento) {
-        txtFechaNacimiento.sendKeys(fechaNacimiento);
-        txtNombreNuevaCuentaPersonal.sendKeys(primerNombre);
-        txtApellidoNuevaCuentaPersonal.sendKeys(primerApellido);
+        campoTxtFechaNacimiento.sendKeys(fechaNacimiento);
+        campoTxtNombreNuevaCuentaPersonal.sendKeys(primerNombre);
+        campoTxtApellidoNuevaCuentaPersonal.sendKeys(primerApellido);
     }
 
     public void agregarRazonsocial(String razonSocial) {
-        txtNombreNuevaPersonaJuridica.clear();
-        txtNombreNuevaPersonaJuridica.sendKeys(razonSocial);
+        campoTxtNombreNuevaPersonaJuridica.clear();
+        campoTxtNombreNuevaPersonaJuridica.sendKeys(razonSocial);
     }
 
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
-        txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        selectItem(cboDepartamento,departamento);
+        campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
+        selectItem(comboBoxDepartamento,departamento);
         waitABit(1000);
-        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        selectItem(cboCiudad,ciudad);
+        selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
+        selectItem(comboBoxCiudad,ciudad);
         waitABit(1500);
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
-        espera(btnAgregarOrganizacion,5);
-        btnAgregarOrganizacion.click();
-        txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
-        btnBuscarOrganizacion.click();
-        btnSeleccionarOrganizacion.click();
+        espera(botonAgregarOrganizacion,5);
+        botonAgregarOrganizacion.click();
+        campoTxtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
+        botonBuscarOrganizacion.click();
+        botonSeleccionarOrganizacion.click();
         waitABit(1000);
-        selectItem(cboCodigoAgente,agente);
+        selectItem(comboBoxCodigoAgente,agente);
     }
 
     public void actualizar(){
-        btnActualizar.click();
+        botonActualizar.click();
         waitABit(1000);
     }
 
     public void buscarPersona(String nombre, String persona){
         waitABit(1000);
-        txtNombreCompania.sendKeys(nombre);
-        btnBuscar.click();
+        campoTxtNombreCompania.sendKeys(nombre);
+        botonBuscar.click();
         if("Compania".equals(persona)) {
-            btnCrearCuentaNueva.click();
-            btnNuevaCuentaCompania.click();
-        } else {
-            btnCrearCuentaNueva.click();
-            btnNuevaCuentaPersonal.click();
+            botonCrearCuentaNueva.click();
+            botonNuevaCuentaCompania.click();
+        }
+        else {
+            botonCrearCuentaNueva.click();
+            botonNuevaCuentaPersonal.click();
         }
     }
 
     public void verificarCrearCuenta(String nombreCuenta){
         waitABit(1000);
-        assertThat("Falló la creación de la cuenta", lblNombreDeCuenta.containsText(nombreCuenta));
+        assertThat("Falló la creación de la cuenta", labelNombreDeCuenta.containsText(nombreCuenta));
     }
 
     public void validarLogeoPolicyCenter(){

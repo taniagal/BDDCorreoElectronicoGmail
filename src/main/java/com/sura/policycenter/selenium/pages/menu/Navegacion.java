@@ -140,7 +140,7 @@ public class Navegacion extends Guidewire {
     private WebElementFacade mnuContact;
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact-arrowEl']")
     private WebElementFacade mnuItemNuevoContacto;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewCompany']")
+    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewCompany-textEl']")
     private WebElementFacade mnuItemNuevaCompania;
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewPerson']")
     private WebElementFacade mnuItemNuevaPersona;
@@ -446,8 +446,6 @@ public class Navegacion extends Guidewire {
     // Navegacion menu Contacto
     public NuevaCompaniaPage irANuevaCompania() {
         gw.deployMenu(mnuContact);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(500);
         act.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemNuevaCompania).release(mnuItemNuevaCompania).click().build().perform();
@@ -456,9 +454,7 @@ public class Navegacion extends Guidewire {
 
     public NuevaPersonaPage irANuevaPersona() {
         gw.deployMenu(mnuContact);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoContacto).release(mnuItemNuevoContacto).build().perform();
-        waitABit(500);
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemNuevaPersona).release(mnuItemNuevaPersona).click().build().perform();
         return new NuevaPersonaPage(getDriver());
@@ -466,9 +462,6 @@ public class Navegacion extends Guidewire {
 
     public BuscarContactoPage irABuscarContacto() {
         gw.deployMenu(mnuContact);
-        waitABit(1000);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
         act.moveToElement(mnuItemContactoBusqueda).release(mnuItemContactoBusqueda).click().build().perform();
         return new BuscarContactoPage(getDriver());
     }
@@ -483,9 +476,6 @@ public class Navegacion extends Guidewire {
 
     public BuscarCuentasPage irABuscarCuentas() {
         gw.deployMenu(mnuBuscar);
-        waitABit(1000);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
         act.moveToElement(mnuItemBuscarCuenta).release(mnuItemBuscarCuenta).click().build().perform();
         return new BuscarCuentasPage(getDriver());
     }
@@ -508,8 +498,6 @@ public class Navegacion extends Guidewire {
 
     public BuscarContactosPage irABuscarContactos() {
         gw.deployMenu(mnuBuscar);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
         act.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();
         return new BuscarContactosPage(getDriver());
     }

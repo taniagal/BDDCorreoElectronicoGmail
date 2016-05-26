@@ -1,5 +1,7 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
+import java.util.List;
+import java.util.Map;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -10,10 +12,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.*;
-import java.util.List;
-import java.util.Map;
-
 import static com.thoughtworks.selenium.SeleneseTestBase.assertFalse;
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static org.hamcrest.CoreMatchers.not;
@@ -22,14 +20,9 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class OpcionesAdminitradorCotizaciones extends Guidewire {
-
-    public OpcionesAdminitradorCotizaciones(WebDriver driver) {
-        super(driver);
-    }
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
 
     Actions act = new Actions(getDriver());
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
 
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:0']")
     private WebElementFacade lblCotizacionesCuenta;
@@ -94,20 +87,11 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     @FindBy(xpath = "//div[10]/div/span")
     private WebElementFacade colCartas;
 
-    @FindBy(xpath = "//tr[7]/td[2]/div/span[2]")
-    private WebElementFacade lblPropiedadComercialCotizado;
-
-    @FindBy(xpath = "//tr[7]/td[8]/div")
-    private WebElementFacade lblCotizado;
-
     @FindBy(xpath = "//tr[9]/td[2]/div/span[2]")
     private WebElementFacade lblPropiedadComercialDeclinado;
 
     @FindBy(xpath = "//tr[9]/td[8]/div")
     private WebElementFacade lblDeclinado;
-
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:3:ConfirmLetter']")
-    private WebElementFacade btnCrearCartaCotizacion;
 
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:4:DeclineLetter']")
     private WebElementFacade btnCrearCartaDeclinacion;
@@ -117,6 +101,10 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
 
     @FindBy(xpath = "//tbody/tr/td[10]/div")
     private WebElementFacade campoCartas;
+
+    public OpcionesAdminitradorCotizaciones(WebDriver driver) {
+        super(driver);
+    }
 
     public void seleccionarAcciones(){
         waitABit(1000);
@@ -173,7 +161,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if(tProductos.equals(producto) && !(cells.get(1).getText().equals(" "))) {
+            if(tProductos.equals(producto) && !(" ".equals(cells.get(1).getText()))) {
                 assertThat(cells.get(1).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(2).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(3).getText(), is(not(equalTo(null))));
@@ -181,7 +169,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
                 assertThat(cells.get(5).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(7).getText(), is(not(equalTo(null))));
             }
-            else if(!(cells.get(1).getText().equals(" "))){
+            else if(!(" ".equals(cells.get(1).getText()))){
                 boolean valido = cells.get(1).getText().equals(producto);
                 assertTrue(valido);
 
@@ -223,14 +211,14 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (!cells.get(2).getText().equals(" ") && cells.get(7).getText().equals(estado)) {
+            if (!" ".equals(cells.get(2).getText()) && cells.get(7).getText().equals(estado)) {
                 contador++;
             }
         }
 
-        if(estado.equals("Expedida")){
+        if("Expedida".equals(estado)){
             assertThat(contador,is(equalTo(2)));
-        }else if (!estado.equals("Expedida")){
+        }else if (!"Expedida".equals(estado)){
             assertThat(contador,is(equalTo(1)));
         }
     }
@@ -242,7 +230,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (!cells.get(2).getText().equals(" ") && !cells.get(6).getText().equals(" ") && cells.get(7).getText().equals("Expedida")) {
+            if (!" ".equals(cells.get(2).getText()) && !" ".equals(cells.get(6).getText()) && "Expedida".equals(cells.get(7).getText())) {
                 contador++;
             }
         }

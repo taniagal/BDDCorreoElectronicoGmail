@@ -192,13 +192,6 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade txtEmailPrimarioCompania;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:EmailAddress2-inputEl']")
     private WebElementFacade txtEmailSecundarioCompania;
-
-    @FindBy(xpath = ".//tr[15]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
-    private WebElementFacade btnPais;
-
-    @FindBy(xpath = ".//tr[21]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
-    private WebElementFacade btnDepto;
-
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
     private WebElementFacade txtPais;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
