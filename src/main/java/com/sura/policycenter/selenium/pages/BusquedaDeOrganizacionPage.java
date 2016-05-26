@@ -2,10 +2,13 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.SeusLoginPage;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import javax.swing.*;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -54,6 +57,13 @@ public class BusquedaDeOrganizacionPage extends SeusLoginPage {
     private WebElementFacade grdEstado;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
     private WebElementFacade msgFiltrosRequeridos;
+    @FindBy(xpath=".//*[@id='OrganizationSearchPage:OrganizationSearchScreen:OrganizationSearchDV:GlobalContactNameInputSet:Name-inputEl']")
+    private WebElementFacade txtRazonSocial;
+    @FindBy(xpath=".//*[@id='OrganizationSearchPage:OrganizationSearchScreen:OrganizationSearchResultsLV:0:Name']")
+    private WebElementFacade linkRazonSocial;
+
+
+
 
     public BusquedaDeOrganizacionPage(WebDriver driver) {
         super(driver);
@@ -139,9 +149,14 @@ public class BusquedaDeOrganizacionPage extends SeusLoginPage {
         txtEstadoActividad.sendKeys(Keys.ENTER);
     }
 
-    public void ingresarRazonSocial() {
-        txtEstadoActividad.clear();
-        txtEstadoActividad.sendKeys(estadoActividad);
-        txtEstadoActividad.sendKeys(Keys.ENTER);
+    public void ingresarRazonSocial(String razonSocial) {
+        txtRazonSocial.clear();
+        txtRazonSocial.sendKeys(razonSocial);
+        txtRazonSocial.sendKeys(Keys.ENTER);
+    }
+
+    public void validarOrganizacion(String nomOrganizacion) {
+        linkRazonSocial.waitUntilClickable();
+        assertThat(linkRazonSocial.getText(), Matchers.containsString(nomOrganizacion));
     }
 }
