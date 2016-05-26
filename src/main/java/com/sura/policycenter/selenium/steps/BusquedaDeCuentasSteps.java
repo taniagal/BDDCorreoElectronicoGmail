@@ -9,12 +9,13 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class BusquedaDeCuentasSteps extends ScenarioSteps{
 
     private final BusquedaDeCuentasPage busquedaDeCuentasPage = new BusquedaDeCuentasPage(getDriver());
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
 
     public BusquedaDeCuentasSteps(Pages pages){
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step

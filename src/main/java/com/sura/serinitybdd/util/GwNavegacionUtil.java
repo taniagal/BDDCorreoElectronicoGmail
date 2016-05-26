@@ -11,14 +11,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
-
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class GwNavegacionUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-    private GwNavegacionUtil(){
+    public GwNavegacionUtil(){
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -69,7 +71,7 @@ public class GwNavegacionUtil {
 
         while (menu.hasNext()) {
             String key = (String) menu.next();
-            nombreColumnasTablaHS.add(new String(key));
+            nombreColumnasTablaHS.add(key);
         }
 
         return nombreColumnasTablaHS;
@@ -80,12 +82,11 @@ public class GwNavegacionUtil {
     private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu) throws Exception {
         LOGGER.error("GuidewireUtil.obtenerMenuPorTextoContenido");
 
-        switch (tipoElementoMenu) {
-            case "LINK":
-                LOGGER.error("LINK");
-                return driver.findElement(By.xpath(".//a[contains(.,'" + textoDelMenu + "')]"));
-            default:
-                return null;
+        if (tipoElementoMenu.equals("LINK")) {
+            LOGGER.error("LINK");
+            return driver.findElement(By.xpath(".//a[contains(.,'" + textoDelMenu + "')]"));
+        } else {
+            return null;
         }
 
     }
@@ -103,7 +104,7 @@ public class GwNavegacionUtil {
 
         while (opcion.hasNext()) {
             String key = (String) opcion.next();
-            valores.add(new String(key));
+            valores.add(key);
         }
         for (Map<String, String> enc : tablaUnaColumna.getRows()) {
             valores.add(new String(enc.get(valores.get(0)).toString()));

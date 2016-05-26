@@ -11,12 +11,13 @@ public class CuentasAsociadasAContactoSteps extends ScenarioSteps {
 
     private final BusquedaContactoPage busquedaPage = new BusquedaContactoPage(getDriver());
     private final CuentasAsociadasAContactoPage cuentasAsociadasAContactoPage = new CuentasAsociadasAContactoPage(getDriver());
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
 
     public CuentasAsociadasAContactoSteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step

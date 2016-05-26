@@ -11,10 +11,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class Navegacion extends Guidewire {
 
-    public Navegacion(WebDriver driver) {
-        super(driver);
-    }
-
     Actions act = new Actions(getDriver());
 
     // Objetos menu Reclamacion
@@ -38,6 +34,10 @@ public class Navegacion extends Guidewire {
     WebElementFacade mnuAccionNuevoEnvio;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewAccount']")
     WebElementFacade mnuAccionNuevaCuenta;
+
+    public Navegacion(WebDriver driver) {
+        super(driver);
+    }
 
     //    Navegacion menu Reclamacion
     public NuevaReclamacionPage irANuevaReclamacion() {
