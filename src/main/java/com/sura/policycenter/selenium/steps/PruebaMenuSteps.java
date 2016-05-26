@@ -15,12 +15,13 @@ public class PruebaMenuSteps extends ScenarioSteps {
     private AbrirAppPage abrirAppPage() {
         return getPages().currentPageAt(AbrirAppPage.class);
     }
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
 
     public PruebaMenuSteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step
