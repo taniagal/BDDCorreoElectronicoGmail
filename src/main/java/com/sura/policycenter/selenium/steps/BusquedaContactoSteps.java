@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaContactoPage;
-import com.sura.policycenter.selenium.pages.EscritorioPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Step;
@@ -12,9 +11,6 @@ import java.util.Map;
 public class BusquedaContactoSteps extends ScenarioSteps {
 
     private final BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
 
     private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
