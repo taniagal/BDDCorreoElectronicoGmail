@@ -9,7 +9,7 @@ Para agregarlos a la cotizacion
 
 @Issue 15114 Driver Details
 
-Scenario: Agregar asegurado
+Scenario: Opciones para agregar asegurado
 GivenStories: stories/policycenter/login_policy.story
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
 And crear una cotizacion nueva
@@ -23,3 +23,16 @@ Then Se debe mostrar las opciones:
 Examples:
 |cuenta|
 |C000888888|
+
+Scenario: Agregar asegurado de los contactos de la cuenta
+Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
+And crear una cotizacion nueva
+When quiera agregar un asegurado
+And agregue un asegurado que es contacto de la cuenta
+Then debe quedar agregado como asegurado <nombre>
+
+
+Examples:
+|cuenta|nombre|
+|C000888888|DONIA GLORIA GALLEGO|
+

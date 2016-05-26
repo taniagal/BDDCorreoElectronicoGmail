@@ -37,9 +37,19 @@ public class IngresoDeAseguradoACotizacionDefinitions {
         ingresoDeAseguradoACotizacionSteps.agregarAsegurado();
     }
 
+    @When("agregue un asegurado que es contacto de la cuenta")
+    public void agregarAseguradoDeContactoDeLaCuenta(){
+        ingresoDeAseguradoACotizacionSteps.agregarAseguradoContactoDeLaCuenta();
+    }
+
     @Then("Se debe mostrar las opciones: $listaAgregar")
     public void validarOpcionesDeAgregar(ExamplesTable listaAgregar){
         ingresoDeAseguradoACotizacionSteps.validarOpcionesDeAgregar(listaAgregar);
+    }
+
+    @Then("debe quedar agregado como asegurado <nombre>")
+    public void validarAseguradoAgregado(@Named("nombre") String nombre){
+        ingresoDeAseguradoACotizacionSteps.validarAseguradoAgregado(nombre);
     }
 
 }

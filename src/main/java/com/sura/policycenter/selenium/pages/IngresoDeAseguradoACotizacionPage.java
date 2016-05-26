@@ -1,11 +1,13 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.serinitybdd.util.GwNavegacionUtil;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +23,15 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver']")
     WebElementFacade botonAgregar;
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact']")
+    WebElementFacade opcionContactoDeCuenta;
+
+    @FindBy(xpath = ".//span[contains(.,'DONIA GLORIA GALLEGO')]")
+    WebElementFacade contactoDeCuenta;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV-body']")
+    WebElementFacade tablaAsegurados;
+
     public IngresoDeAseguradoACotizacionPage(WebDriver driver){
         super(driver);
     }
@@ -32,11 +43,9 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
         botonConductores.click();
     }
 
-
     public void agregarAsegurado() {
         botonAgregar.click();
     }
-
 
     public String validarOpcionesDeAgregar(ExamplesTable listaAgregar) {
         List<WebElementFacade> elementosAgregar;
@@ -58,4 +67,17 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
         return opcionesOk;
     }
 
+    public void agregarAseguradoContactoDeLaCuenta() {
+        waitFor(opcionContactoDeCuenta);
+        opcionContactoDeCuenta.click();
+        waitFor(contactoDeCuenta);
+        contactoDeCuenta.click();
+    }
+
+
+    public String validarAseguradoAgregado() {
+        waitABit(1000);
+        List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
+        return allRows.get(0).getText();
+    }
 }
