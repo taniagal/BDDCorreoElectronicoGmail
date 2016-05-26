@@ -249,22 +249,11 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         assertThat(contador,is(equalTo(2)));
     }
 
-    public void validarEstadoCotizacionCotizado(String propiedadComercial, String cotizado) {
-
-        assertThat(lblPropiedadComercialCotizado.getText(), is(equalTo(propiedadComercial)));
-        assertThat(lblCotizado.getText(), is(equalTo(cotizado)));
-
-    }
-
     public void validarEstadoCotizacionDeclinado(String propiedadComercial, String declinado) {
 
         assertThat(lblPropiedadComercialDeclinado.getText(), is(equalTo(propiedadComercial)));
         assertThat(lblDeclinado.getText(), is(equalTo(declinado)));
 
-    }
-
-    public void mostrarBotonCrearCartaCotizacion(String crearCarta) {
-        assertThat(btnCrearCartaCotizacion.getText(), is(equalTo(crearCarta)));
     }
 
     public void mostrarBotonCrearCartaDeclinacion(String crearCarta) {
