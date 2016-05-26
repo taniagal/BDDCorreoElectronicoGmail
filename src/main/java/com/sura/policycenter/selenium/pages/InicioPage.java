@@ -47,8 +47,8 @@ import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaTransPoli
 import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaVerificaCoberPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
-import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminAtributosPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminCambioDatosPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminCodAgentesPage;
@@ -100,6 +100,7 @@ import org.openqa.selenium.interactions.Actions;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@SuppressWarnings("UnusedReturnValue")
 public class InicioPage extends Guidewire {
     private final Navegacion navegacion;
     Actions act = new Actions(getDriver());
@@ -484,7 +485,7 @@ public class InicioPage extends Guidewire {
         return navegacion.irAOpcionesCrearPartcCuenta();
     }
 
-    public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
-        return navegacion.irAOpcionesAdministradorCotizaciones();
+    public OpcionesResumenCuentaPage irAOpcionesResumenCuenta() {
+        return navegacion.irAOpcionesResumenCuenta();
     }
 }
