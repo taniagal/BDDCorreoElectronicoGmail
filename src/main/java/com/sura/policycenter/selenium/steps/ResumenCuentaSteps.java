@@ -32,11 +32,6 @@ public class ResumenCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarTipoCuenta(String tipoCuenta) {
-        opcionesResumenCuentaPage.validarTipoCuenta(tipoCuenta);
-    }
-
-    @Step
     public void editarResumenCuenta() {
         opcionesResumenCuentaPage.editarResumenCuenta();
     }
