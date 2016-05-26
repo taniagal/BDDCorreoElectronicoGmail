@@ -48,7 +48,7 @@ public class DetallesDeUbiacionDefinitions {
      */
     @Then("que se muestre el mensaje <mensaje>")
     public void verificarMensaje(@Named("mensaje")String mensaje){
-        //detallesDeUbicacionSteps.verificarMensaje(mensaje);
+        detallesDeUbicacionSteps.verificarMensaje(mensaje);
         loginSteps.close();
     }
 
@@ -58,7 +58,7 @@ public class DetallesDeUbiacionDefinitions {
      */
     @Then("que se muestre el mensaje de direccion <mensaje>")
     public void verificarMensajeDireccion(@Named("mensaje")String mensaje){
-        //detallesDeUbicacionSteps.verificarMensajeDireccion(mensaje);
+        detallesDeUbicacionSteps.verificarMensajeDireccion(mensaje);
         loginSteps.close();
     }
 }

@@ -56,7 +56,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
     private WebElementFacade labelNumeroDePisos;
     @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BuildYear-labelEl']")
     private WebElementFacade labelAnioDeConstruccion;
-    @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BuildYear-labelEl']")
+    @FindBy(css=".message")
     private WebElementFacade divMensaje;
 
     String direccion = "";
