@@ -79,6 +79,16 @@ Examples:
 |numCuenta   |estado  |
 |C000777777  |Borrador|
 
+Scenario: Permitir crear carta de cotizacion
+Given estoy en una cuenta <numCuenta>
+When ingrese a cotizaciones de la cuenta
+And una cotizacion este en estado 'Cotizado' <cotizado> y no se haya generado una carta de cotizacion para esta cotizacion y sea cotizacion de MRC <propiedadComercial>
+Then me debe permitir crear una carta de cotizacion por medio de un boton. El label del boton debe ser 'Crear carta de cotizacion' <crearCarta>.
+
+Examples:
+|numCuenta   |cotizado|propiedadComercial |crearCarta               |
+|C000777777  |Cotizado|Propiedad comercial|Crear carta de cotización|
+
 
 Scenario: Permitir crear carta de declinacion
 Given estoy en una cuenta <numCuenta>
@@ -89,6 +99,17 @@ Then me debe permitir crear una carta de declinacion por medio de un boton. El l
 Examples:
 |numCuenta   |declinado|propiedadComercial |crearCarta                |
 |C000777777  |Declinado|Propiedad comercial|Crear carta de declinación|
+
+
+Scenario: No permitir crear carta de cotizacion
+Given estoy en una cuenta <numCuenta>
+When ingrese a cotizaciones de la cuenta
+And una cotizacion sea producto Auto Personal <producto>
+Then no debe aparecer la opcion de crear carta de cotizacion <crearCarta>.
+
+Examples:
+|numCuenta   |producto     |crearCarta               |
+|C000777777  |Auto personal|Crear carta de cotización|
 
 
 Scenario: No permitir crear carta de declinacion

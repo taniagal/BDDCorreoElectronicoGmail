@@ -13,7 +13,7 @@ Then se muestra la lista de cuentas asociadas con nombre: <nombreConsulta>, dire
 
 Examples:
 |nombre|apellido|nombreConsulta|direccion|telefono|email|rol
-|Yurledys|Gallego|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos|408-2211|0003@guidewire.com|Conductor, Titular de la cuenta
+|Yurledys|Gallego|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos|408-2211|0001@guidewire.com|Conductor, Titular de la cuenta
 
 Scenario: Visualizar pantalla vacia para las cuentas asociadas a un contacto
 Given que voy a consultar un contacto
