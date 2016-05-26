@@ -33,8 +33,8 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
         disponibilidadDetalleProductoPage.seleccionarTipoCanalDeVentas(tipoCanal);
     }
 
-    public void validarPATipoPoliza(ExamplesTable PaTipoPoliza) throws Exception {
-        disponibilidadDetalleProductoPage.validarPATipoPoliza(PaTipoPoliza);
+    public void validarPATipoPoliza(ExamplesTable paTipoPoliza) throws Exception {
+        disponibilidadDetalleProductoPage.validarPATipoPoliza(paTipoPoliza);
     }
 
     public void seleccionarPATipoPoliza(String tipoPoliza) {

@@ -8,6 +8,10 @@ public class BusquedaActividadesSteps extends ScenarioSteps {
 
     private final BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
 
+    public BusquedaActividadesSteps(Pages pages) {
+        super(pages);
+    }
+
     public void buscarActividades() {
         busquedaActividades.buscarActividades();
     }
@@ -21,10 +25,6 @@ public class BusquedaActividadesSteps extends ScenarioSteps {
                                  String asignadoPor, String estado) {
         busquedaActividades.validarResultado(prioridad,estadoActividad,asunto, id,
                 titularCuenta,producto,asignadoPor,estado);
-    }
-
-    public BusquedaActividadesSteps(Pages pages) {
-        super(pages);
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {

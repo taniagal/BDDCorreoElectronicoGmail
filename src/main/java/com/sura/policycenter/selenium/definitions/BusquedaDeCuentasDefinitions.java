@@ -12,12 +12,12 @@ import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 @SuppressWarnings("WeakerAccess")
 public class BusquedaDeCuentasDefinitions {
 
+    @Steps
+    private BusquedaDeCuentasSteps busquedaDeCuentasSteps;
+
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
-
-    @Steps
-    private BusquedaDeCuentasSteps busquedaDeCuentasSteps;
 
     @Given("que me encuentro en la busqueda de cuentas")
     public void ingresarABuscarCuentas() {

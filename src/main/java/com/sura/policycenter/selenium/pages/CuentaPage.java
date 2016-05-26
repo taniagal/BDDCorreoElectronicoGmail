@@ -10,8 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CuentaPage extends Guidewire{
 
-    private final Guidewire gw = new Guidewire(getDriver());
-
+    Actions act = null;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
@@ -34,8 +33,6 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade txtApellidoNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade txtDireccionNuevaCuentaPersonal;
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-inputEl']")
-    private WebElementFacade txtCodigoPostalNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressType-inputEl']")
     private WebElementFacade cboTipoDireccionNuevaCuentaPersonal;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
@@ -60,47 +57,48 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
     private WebElementFacade cboCodigoAgente;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    private WebElementFacade cboDepartamento;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
+    private WebElementFacade cboCiudad;
 
     public CuentaPage(WebDriver driver){
         super(driver);
     }
 
     public void navNuevaCuenta(){
-        Actions act = gw.deployMenu(mnuCuenta);
+        act = deployMenu(mnuCuenta);
         act.moveToElement(mnuNuevaCuenta).click().build().perform();
     }
 
-    public void crearCuentaNuevaPersona(String tipoDocumento, String documento, String fechaNacimiento,
-                                        String primerNombre, String primerApellido, String tipoDireccion,
-                                        String direccion, String codigoPostal, String nombreOrganizacion, String agente){
-        btnCrearCuentaNueva.click();
-        btnNuevaCuentaPersonal.click();
-        espera(btnAgregarOrganizacion,5);
-        btnAgregarOrganizacion.click();
-        txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
-        btnBuscarOrganizacion.click();
-        btnSeleccionarOrganizacion.click();
-        waitABit(1000);
-        selectItem(cboCodigoAgente,agente);
-        espera(cboTipoDocumentoNuevaCuenta,15);
+    public void agregarTipoDocumento(String tipoDocumento, String documento) {
         cboTipoDocumentoNuevaCuenta.clear();
         cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
         cboTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
         txtDocumentoNuevaCuenta.sendKeys(documento);
+    }
+
+    public void agregarNombres(String primerNombre, String primerApellido, String fechaNacimiento) {
         txtFechaNacimiento.sendKeys(fechaNacimiento);
         txtNombreNuevaCuentaPersonal.sendKeys(primerNombre);
         txtApellidoNuevaCuentaPersonal.sendKeys(primerApellido);
-        txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
-        btnActualizar.click();
-        waitABit(1000);
     }
 
-    public void crearCuentaNuevaPersonaJuridica(String tipoDocumento, String documento, String nombreEmpresa,
-                                                String tipoDireccion, String direccion, String codigoPostal, String nombreOrganizacion, String agente) {
-        btnCrearCuentaNueva.click();
-        btnNuevaCuentaCompania.click();
+    public void agregarRazonsocial(String razonSocial) {
+        txtNombreNuevaPersonaJuridica.clear();
+        txtNombreNuevaPersonaJuridica.sendKeys(razonSocial);
+    }
+
+    public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
+        txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
+        selectItem(cboDepartamento,departamento);
+        waitABit(1000);
+        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
+        selectItem(cboCiudad,ciudad);
+        waitABit(1500);
+    }
+
+    public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         espera(btnAgregarOrganizacion,5);
         btnAgregarOrganizacion.click();
         txtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
@@ -108,44 +106,42 @@ public class CuentaPage extends Guidewire{
         btnSeleccionarOrganizacion.click();
         waitABit(1000);
         selectItem(cboCodigoAgente,agente);
-        espera(cboTipoDocumentoNuevaCuenta,15);
-        cboTipoDocumentoNuevaCuenta.clear();
-        cboTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
-        cboTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
-        txtDocumentoNuevaCuenta.sendKeys(documento);
-        txtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        txtNombreNuevaPersonaJuridica.clear();
-        txtNombreNuevaPersonaJuridica.sendKeys(nombreEmpresa);
-        selectItem(cboTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        txtCodigoPostalNuevaCuentaPersonal.sendKeys(codigoPostal);
+    }
+
+    public void actualizar(){
         btnActualizar.click();
         waitABit(1000);
     }
 
-    @SuppressWarnings("SameParameterValue")
-    public void buscarPersona(String nombre){
+    public void buscarPersona(String nombre, String persona){
         waitABit(1000);
         txtNombreCompania.sendKeys(nombre);
         btnBuscar.click();
+        if("Compania".equals(persona)) {
+            btnCrearCuentaNueva.click();
+            btnNuevaCuentaCompania.click();
+        } else {
+            btnCrearCuentaNueva.click();
+            btnNuevaCuentaPersonal.click();
+        }
     }
 
-    public void assertCrearCuenta(String nombreCuenta){
+    public void verificarCrearCuenta(String nombreCuenta){
         waitABit(1000);
         assertThat("Falló la creación de la cuenta", lblNombreDeCuenta.containsText(nombreCuenta));
     }
 
-    public void assertPolicyCenterLogin(){
+    public void validarLogeoPolicyCenter(){
         assertThat("Falló verificar el logueo", mnuCuenta.isPresent());
     }
 
-    public  void  assertVerificarMenor(String mensaje){
+    public  void verificarEdadMenor(String mensaje){
         waitABit(1000);
         assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
     }
 
-    public  void  assertVerificarMensaje(String mensaje){
+    public  void verificarMensaje(String mensaje){
         waitABit(1000);
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
-
 }

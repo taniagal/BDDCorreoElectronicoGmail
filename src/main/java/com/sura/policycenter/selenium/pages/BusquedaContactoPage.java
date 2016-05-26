@@ -8,10 +8,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
-import java.util.Map;
 import java.util.List;
-import static org.hamcrest.Matchers.is;
+import java.util.Map;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 
@@ -102,7 +102,7 @@ public class BusquedaContactoPage extends Guidewire {
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
         waitABit(1000);
-        if(("Personal").equals(tipoContacto)){
+        if ("Personal".equals(tipoContacto)){
             nombreContact.type(nombre);
             apellidoContact.type(apellido);
         }else{

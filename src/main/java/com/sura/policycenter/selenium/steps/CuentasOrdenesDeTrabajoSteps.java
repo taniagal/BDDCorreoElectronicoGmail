@@ -9,10 +9,13 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
 
     private final CuentasOrdenesDeTrabajoPage cuentasOrdenesTrabajoPage = new CuentasOrdenesDeTrabajoPage(getDriver());
-    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
 
     public CuentasOrdenesDeTrabajoSteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step

@@ -8,7 +8,6 @@ Scenario: Crear reclamacion en ClaimsCenter
 GivenStories: stories/claims/login.story
 When cuando ingrese a la pantalla de reclamacion
 When ingrese los datos necesarios <npoliza>
-Then deberia poder crear una reclamacion y ver el <mensaje>
 
 Examples:
 |npoliza  |mensaje                   |

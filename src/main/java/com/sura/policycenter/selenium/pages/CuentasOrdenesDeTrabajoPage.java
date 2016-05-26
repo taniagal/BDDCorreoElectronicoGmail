@@ -1,21 +1,17 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
 import com.sura.guidewire.selenium.SeusLoginPage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.sikuli.api.robot.Key;
-import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.TimeUnit;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
-    Guidewire gw = new Guidewire(getDriver());
-    //@FindBy(xpath=".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_WorkOrders']/div/span")
     @FindBy(xpath=".//tr[5]/td/div/span")
     private WebElementFacade mnuTransaccionesPoliza;
     @FindBy(xpath=".//td/div/div/div/div/table/tbody/tr/td[2]/table/tbody/tr/td/input")

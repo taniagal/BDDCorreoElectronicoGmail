@@ -6,6 +6,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import java.util.List;
+
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -32,20 +33,33 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade razonSocial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade desRazonSocial;
-    @FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
-    private WebElementFacade contactoExistente;
+    /*@FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
+    private WebElementFacade contactoExistente;*/
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl']")
     private WebElementFacade tipoTelefono;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade telefonoTrabajo;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade telefonoResidencia;
+    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    private WebElementFacade cboDepartamento;
+    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
+    private WebElementFacade cboCiudad;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    private WebElementFacade cboDepartamento2;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
+    private WebElementFacade cboCiudad2;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
+    private WebElementFacade tipoDireccion2;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
+    private WebElementFacade direccion2;
 
     public NuevoContactoPage(WebDriver driver) {
         super(driver);
     }
 
     public void seleccionarTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento.waitUntilPresent();
         selectItem(this.tipoDocumento,tipoDocumento);
     }
 
@@ -65,8 +79,21 @@ public class NuevoContactoPage extends Guidewire {
         selectItem(this.tipoDireccion,tipoDireccion);
     }
 
-    public void ingresarDireccion(String direccion) {
-        selectItem(this.direccion,direccion);
+    public void ingresarDireccion(String direccion, String departamento, String ciudad) {
+        this.direccion.sendKeys(direccion);
+        selectItem(cboDepartamento,departamento);
+        waitABit(1500);
+        selectItem(cboCiudad,ciudad);
+        waitABit(1500);
+    }
+
+    public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
+        direccion2.sendKeys(direccion);
+        selectItem(cboDepartamento2,departamento);
+        waitABit(1500);
+        selectItem(cboCiudad2,ciudad);
+        waitABit(1500);
+        selectItem(tipoDireccion2,tipoDireccion);
     }
 
     public void actualizarPersonaNatural(String primerNombre) {

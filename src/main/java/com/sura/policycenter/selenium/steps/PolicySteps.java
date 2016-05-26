@@ -13,12 +13,13 @@ public class PolicySteps extends ScenarioSteps {
     private final SeusLoginPage seus = new SeusLoginPage(getDriver());
     private final Guidewire gw = new Guidewire(getDriver());
     private final AbrirAppPage abrirapp = new AbrirAppPage(getDriver());
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
 
     public PolicySteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step

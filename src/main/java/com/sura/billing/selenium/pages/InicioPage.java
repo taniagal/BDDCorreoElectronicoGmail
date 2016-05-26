@@ -90,7 +90,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
 
 public class InicioPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='UserSearch:UserSearchScreen:ttlBar']")
@@ -99,11 +98,10 @@ public class InicioPage extends Guidewire {
     private WebElementFacade labelIngreso2;
     @FindBy(xpath=".//*[@id='TabBar:AdministrationTab-btnWrap']")
     private WebElementFacade mnuAdministracion;
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
     private final Guidewire gw = new Guidewire(getDriver());
     private final Navegacion navegacion;
 
-    public InicioPage(WebDriver driver, WebElementFacade labelIngreso) {
+    public InicioPage(WebDriver driver) {
         super(driver);
         navegacion = new Navegacion(getDriver());
     }

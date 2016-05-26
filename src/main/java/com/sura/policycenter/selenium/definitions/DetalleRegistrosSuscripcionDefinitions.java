@@ -11,12 +11,12 @@ import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 public class DetalleRegistrosSuscripcionDefinitions {
 
+    @Steps
+    DetalleRegistrosSuscripcionSteps detalleRegistrosSuscripcionSteps;
+
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
-
-    @Steps
-    DetalleRegistrosSuscripcionSteps detalleRegistrosSuscripcionSteps;
 
     @Given("busco una cuenta existente como <numeroCuenta>")
     public void buscarCuenta(@Named("numeroCuenta") String numeroCuenta) {

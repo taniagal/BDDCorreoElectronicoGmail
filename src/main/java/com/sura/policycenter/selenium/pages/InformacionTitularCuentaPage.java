@@ -4,15 +4,13 @@ import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 public class InformacionTitularCuentaPage extends Guidewire {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
-    @FindBy(xpath="//tr[2]/td/div/span")
+    @FindBy(xpath="//tr[2]/td/DIV/span")
     WebElementFacade mnuInformacionTitularCuenta;
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:ttlBar']")
     WebElementFacade tituloInformacionTitularCuenta;
@@ -60,31 +58,31 @@ public class InformacionTitularCuentaPage extends Guidewire {
     WebElementFacade txtTotalSiniestrosAbiertos;
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:NetTotalIncurred-labelEl']")
     WebElementFacade lblTotalNetoIncurrido;
-    @FindBy(xpath="//div[2]/div/div/div/div/span")
+    @FindBy(xpath="//DIV[2]/DIV/DIV/DIV/DIV/span")
     WebElementFacade colCrearFecha;
-    @FindBy(xpath="//div/div/div[2]/div/span")
+    @FindBy(xpath="//DIV/DIV/DIV[2]/DIV/span")
     WebElementFacade colNroPoliza;
-    @FindBy(xpath="//div[3]/div/span")
+    @FindBy(xpath="//DIV[3]/DIV/span")
     WebElementFacade colProducto;
-    @FindBy(xpath="//div/div/div[4]/div/span")
+    @FindBy(xpath="//DIV/DIV/DIV[4]/DIV/span")
     WebElementFacade colNroTransaccion;
-    @FindBy(xpath="//div[5]/div/span")
+    @FindBy(xpath="//DIV[5]/DIV/span")
     WebElementFacade colTipo;
-    @FindBy(xpath="//div[6]/div/span")
+    @FindBy(xpath="//DIV[6]/DIV/span")
     WebElementFacade colEstado;
-    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div/div/span")
+    @FindBy(xpath="//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV/DIV/span")
     WebElementFacade colNumeroPoliza;
-    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[2]/div/span")
+    @FindBy(xpath="//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[2]/DIV/span")
     WebElementFacade colProductoSiniestros;
-    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[3]/div/span")
+    @FindBy(xpath="//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[3]/DIV/span")
     WebElementFacade colAsegurado;
-    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[4]/div/span")
+    @FindBy(xpath="//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[4]/DIV/span")
     WebElementFacade colFechaPerdida;
-    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[5]/div/span")
+    @FindBy(xpath="//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[5]/DIV/span")
     WebElementFacade colNumeroSiniestros;
-    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[6]/div/span")
+    @FindBy(xpath="//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[6]/DIV/span")
     WebElementFacade colEstadoSiniestro;
-    @FindBy(xpath="//tr[6]/td/div/div[2]/div/div/div[7]/div/span")
+    @FindBy(xpath="//tr[6]/td/DIV/DIV[2]/DIV/DIV/DIV[7]/DIV/span")
     WebElementFacade colTotalIncurrido;
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:AccountsActividadEconomica-labelEl']")
     WebElementFacade lblActividadEconomica;
@@ -95,7 +93,7 @@ public class InformacionTitularCuentaPage extends Guidewire {
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:AccountHolderDV:PersonCauseOfDeath-inputEl']")
     WebElementFacade txtCausaFallecimiento;
 
-    private static final String div = "div";
+    private static final String DIV = "div";
 
     public InformacionTitularCuentaPage(WebDriver driver) {
         super(driver);
@@ -141,19 +139,15 @@ public class InformacionTitularCuentaPage extends Guidewire {
     public void validarInformacionMetricas(String anioVigencia, String polizasActivas, String canceladoPorCliente,
                                                 String canceladoPorCompania, String otrasCancelaciones, String primaVitalicia,
                                                 String totalSiniestrosAbiertos, String totalNetoIncurrido){
-        try {
-            assertThat(lblAnioVigencia.getText().toString(), is(equalTo(anioVigencia)));
-            assertThat(txtPolizasActivas.getText().toString(), is(equalTo(polizasActivas)));
-            assertThat(txtCanceladoPorCliente.getText().toString(), is(equalTo(canceladoPorCliente)));
-            assertThat(txtCanceladoPorCompania.getText().toString(), is(equalTo(canceladoPorCompania)));
-            assertThat(txtOtrasCancelaciones.getText().toString(), is(equalTo(otrasCancelaciones)));
-            assertThat(lblPrimaVitalicia.getText().toString(), is(equalTo(primaVitalicia)));
-            assertThat(txtTotalSiniestrosAbiertos.getText().toString(), is(equalTo(totalSiniestrosAbiertos)));
-            assertThat(lblTotalNetoIncurrido.getText().toString(), is(equalTo(totalNetoIncurrido)));
+        assertThat(lblAnioVigencia.getText().toString(), is(equalTo(anioVigencia)));
+        assertThat(txtPolizasActivas.getText().toString(), is(equalTo(polizasActivas)));
+        assertThat(txtCanceladoPorCliente.getText().toString(), is(equalTo(canceladoPorCliente)));
+        assertThat(txtCanceladoPorCompania.getText().toString(), is(equalTo(canceladoPorCompania)));
+        assertThat(txtOtrasCancelaciones.getText().toString(), is(equalTo(otrasCancelaciones)));
+        assertThat(lblPrimaVitalicia.getText().toString(), is(equalTo(primaVitalicia)));
+        assertThat(txtTotalSiniestrosAbiertos.getText().toString(), is(equalTo(totalSiniestrosAbiertos)));
+        assertThat(lblTotalNetoIncurrido.getText().toString(), is(equalTo(totalNetoIncurrido)));
 
-        }catch (Exception e) {
-            LOGGER.error("This is error : " + e);
-        }
     }
 
     public void validarNombreCompletoPersonaNatural(String nombreCompleto){
@@ -168,7 +162,6 @@ public class InformacionTitularCuentaPage extends Guidewire {
         assertThat(colNroTransaccion.getText().toString(), is(equalTo(nroTransaccion)));
         assertThat(colTipo.getText().toString(), is(equalTo(tipo)));
         assertThat(colEstado.getText().toString(), is(equalTo(estado)));
-
     }
 
     public void validarInformacionSiniestros(String nroPoliza, String producto, String asegurado, String fechaPerdida,
@@ -183,22 +176,21 @@ public class InformacionTitularCuentaPage extends Guidewire {
     }
 
     public void validarCamposComoNoEditables(){
-        assertThat(txtTitularCuenta.getTagName(), is(equalTo(div)));
-        assertThat(txtTipoDocumento.getTagName(), is(equalTo(div)));
-        assertThat(txtNumeroDocumento.getTagName(), is(equalTo(div)));
-        assertThat(txtPrimaVigencia.getTagName(), is(equalTo(div)));
-        assertThat(txtSegmentacion.getTagName(), is(equalTo(div)));
-        assertThat(txtComportamiento.getTagName(), is(equalTo(div)));
-        assertThat(txtTotalNoFacturado.getTagName(), is(equalTo(div)));
-        assertThat(txtTotalFacturado.getTagName(), is(equalTo(div)));
-        assertThat(txtTotalVencido.getTagName(), is(equalTo(div)));
-        assertThat(txtTotalPendiente.getTagName(), is(equalTo(div)));
-        assertThat(txtPolizasActivas.getTagName(), is(equalTo(div)));
-        assertThat(txtCanceladoPorCliente.getTagName(), is(equalTo(div)));
-        assertThat(txtCanceladoPorCompania.getTagName(), is(equalTo(div)));
-        assertThat(txtOtrasCancelaciones.getTagName(), is(equalTo(div)));
-        assertThat(txtTotalSiniestrosAbiertos.getTagName(), is(equalTo(div)));
-
+        assertThat(txtTitularCuenta.getTagName(), is(equalTo(DIV)));
+        assertThat(txtTipoDocumento.getTagName(), is(equalTo(DIV)));
+        assertThat(txtNumeroDocumento.getTagName(), is(equalTo(DIV)));
+        assertThat(txtPrimaVigencia.getTagName(), is(equalTo(DIV)));
+        assertThat(txtSegmentacion.getTagName(), is(equalTo(DIV)));
+        assertThat(txtComportamiento.getTagName(), is(equalTo(DIV)));
+        assertThat(txtTotalNoFacturado.getTagName(), is(equalTo(DIV)));
+        assertThat(txtTotalFacturado.getTagName(), is(equalTo(DIV)));
+        assertThat(txtTotalVencido.getTagName(), is(equalTo(DIV)));
+        assertThat(txtTotalPendiente.getTagName(), is(equalTo(DIV)));
+        assertThat(txtPolizasActivas.getTagName(), is(equalTo(DIV)));
+        assertThat(txtCanceladoPorCliente.getTagName(), is(equalTo(DIV)));
+        assertThat(txtCanceladoPorCompania.getTagName(), is(equalTo(DIV)));
+        assertThat(txtOtrasCancelaciones.getTagName(), is(equalTo(DIV)));
+        assertThat(txtTotalSiniestrosAbiertos.getTagName(), is(equalTo(DIV)));
     }
 
     public void validarInformacionFallecimiento(String fechaFallecimiento, String causaFallecimiento){
