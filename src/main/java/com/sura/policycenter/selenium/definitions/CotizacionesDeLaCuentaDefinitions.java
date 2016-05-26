@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CotizacionesDeLaCuentaSteps;
-import com.sura.policycenter.selenium.steps.CrearNuevaCuentaSteps;
 import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
@@ -11,9 +10,6 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -100,9 +96,6 @@ public class CotizacionesDeLaCuentaDefinitions {
 
         cotizacionesDeLaCuentaSteps.validarLabelsCotizaciones(labelsCotizaciones);
     }
-
-
-
 
     @When("se esten mostrando todos los productos <producto>")
     public void whenMostrarTodosLosProductos(@Named("producto") String producto){
