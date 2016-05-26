@@ -18,7 +18,9 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
         super(pages);
     }
 
-    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
     private void  initRandoms(){
         cedula = gw.cedulaRandom();

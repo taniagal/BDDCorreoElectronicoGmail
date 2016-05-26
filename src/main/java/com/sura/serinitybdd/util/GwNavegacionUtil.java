@@ -11,17 +11,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class GwNavegacionUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-    public GwNavegacionUtil(){
-    }
 
     @SuppressWarnings("SameParameterValue")
     public static Boolean existenOpcionesPorMenuHastaSegundoNivel(WebDriver driver, Keys keyNav, String tipoElementoMenu, ExamplesTable opcionesPorMenu, Boolean darClick) {
@@ -82,7 +80,7 @@ public class GwNavegacionUtil {
     private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu) throws Exception {
         LOGGER.error("GuidewireUtil.obtenerMenuPorTextoContenido");
 
-        if (tipoElementoMenu.equals("LINK")) {
+        if ("LINK".equals(tipoElementoMenu)) {
             LOGGER.error("LINK");
             return driver.findElement(By.xpath(".//a[contains(.,'" + textoDelMenu + "')]"));
         } else {

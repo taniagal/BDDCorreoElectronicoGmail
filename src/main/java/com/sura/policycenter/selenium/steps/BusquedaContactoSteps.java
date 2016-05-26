@@ -11,12 +11,13 @@ import java.util.Map;
 public class BusquedaContactoSteps extends ScenarioSteps {
 
     private final BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
 
     public BusquedaContactoSteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step
