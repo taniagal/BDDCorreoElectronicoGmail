@@ -3,14 +3,14 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.BusquedaContactoSteps;
 import com.sura.policycenter.selenium.steps.PolicySteps;
+import java.util.Map;
+import java.util.HashMap;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import java.util.Map;
-import java.util.HashMap;
 
 @SuppressWarnings("WeakerAccess")
 public class BusquedaContactoDefinitions {
@@ -242,7 +242,7 @@ public class BusquedaContactoDefinitions {
         labelsContacto.put("tipoId", "Tipo de Documento");
         labelsContacto.put("numId", "Número de Documento");
         labelsContacto.put("nomComercial","Nombre comercial");
-        labelsContacto.put("razonSocial","Razón Social");
+        labelsContacto.put("razonSocial","Razón social");
         labelsContacto.put("direccion","Dirección");
         labelsContacto.put("telefono","Teléfono");
         labelsContacto.put("email","Correo Electrónico");

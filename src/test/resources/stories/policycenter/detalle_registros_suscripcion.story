@@ -13,7 +13,7 @@ Then debo ver la siguiente informacion producto <producto>, <nroEnvio>, <estado>
 
 Examples:
 |numeroCuenta|producto|nroEnvio|estado|nroPoliza|
-|C001888888|Compensación de los trabajadores|22222224|Comprometida|TEST_22222224|
+|C001888888|Auto personal|22222222|Expedida|TEST_22222222|
 
 Scenario: Consultar el valor total de un grupo de cotizaciones
 Given busco una cuenta existente como <numeroCuenta>
@@ -22,7 +22,7 @@ Then debo ver el costo total <total> para las cotizaciones en estado cotizado
 
 Examples:
 |numeroCuenta|total|
-|C001888888|$1,418.00|
+|C001888888|-|
 |C010478975|-|
 
 Scenario: Consultar numero de cotizaciones del grupo
@@ -32,6 +32,6 @@ Then debo ver la sumatoria <suma> de todas las cotizaciones y renovaciones indep
 
 Examples:
 |numeroCuenta|suma|
-|C001888888|3|
+|C001888888|1|
 
 
