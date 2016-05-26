@@ -7,6 +7,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Map;
@@ -86,6 +89,13 @@ public class BusquedaContactoPage extends Guidewire {
     private WebElementFacade lblEmail;
     @FindBy(xpath="//div[13]/div/span")
     private WebElementFacade lblExterna;
+
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
+    private WebElementFacade txtTipoDocDirectorioCotizacion;
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
+    private WebElementFacade txtNumDocDirectorioCotizacion;
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    private WebElementFacade btnBuscarDirectorioCotizacion;
 
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
@@ -335,4 +345,13 @@ public class BusquedaContactoPage extends Guidewire {
         selectContact.click();
     }
 
+    public void consultarContactoPorTipoDocumentoCotizacion(String tipoId, String numeroId) {
+        waitFor(txtTipoDocDirectorioCotizacion).clear();
+        txtTipoDocDirectorioCotizacion.sendKeys(tipoId);
+        txtTipoDocDirectorioCotizacion.sendKeys(Keys.ENTER);
+        waitABit(1000);
+        txtNumDocDirectorioCotizacion.sendKeys(numeroId);
+        btnBuscarDirectorioCotizacion.click();
+        waitForWithRefresh();
+    }
 }

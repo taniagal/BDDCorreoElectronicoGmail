@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.pages.InicioPage;
+import com.sura.policycenter.selenium.steps.BusquedaContactoSteps;
 import com.sura.policycenter.selenium.steps.IngresoDeAseguradoACotizacionSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -19,6 +20,9 @@ public class IngresoDeAseguradoACotizacionDefinitions {
 
     @Steps
     private IngresoDeAseguradoACotizacionSteps ingresoDeAseguradoACotizacionSteps;
+
+    @Steps
+    private BusquedaContactoSteps busquedaContactoSteps;
 
     @Given("voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>")
     public void irABuscarCuenta(@Named("cuenta") String cuenta){
@@ -38,8 +42,24 @@ public class IngresoDeAseguradoACotizacionDefinitions {
     }
 
     @When("agregue un asegurado que es contacto de la cuenta")
-    public void agregarAseguradoDeContactoDeLaCuenta(){
+    public void agregarAseguradoContactoDeLaCuenta(){
         ingresoDeAseguradoACotizacionSteps.agregarAseguradoContactoDeLaCuenta();
+    }
+
+    @When("agregue un asegurado del directorio")
+    public void agregarAseguradoContactoDelDirectorio(){
+        ingresoDeAseguradoACotizacionSteps.agregarAseguradoContactoDelDirectorio();
+    }
+
+    @When("ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>")
+    public void buscarContactoPorIdentificacion(@Named("tipoId") String tipoId,
+                                                @Named("numeroId") String numeroId){
+        busquedaContactoSteps.consultarContactoPorTipoDocumentoCotizacion(tipoId, numeroId);
+    }
+
+    @When("seleccione el contacto a agregar")
+    public void seleccionarContactoAAgregarDelDirectorio(){
+        ingresoDeAseguradoACotizacionSteps.seleccionarContactoDelDirectorio();
     }
 
     @Then("Se debe mostrar las opciones: $listaAgregar")

@@ -31,8 +31,19 @@ When quiera agregar un asegurado
 And agregue un asegurado que es contacto de la cuenta
 Then debe quedar agregado como asegurado <nombre>
 
-
 Examples:
 |cuenta|nombre|
 |C000888888|DONIA GLORIA GALLEGO|
 
+Scenario: Agregar asegurado del directorio
+Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
+And crear una cotizacion nueva
+When quiera agregar un asegurado
+And agregue un asegurado del directorio
+And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
+And seleccione el contacto a agregar
+Then debe quedar agregado como asegurado <nombre>
+
+Examples:
+|cuenta|tipoId|numeroId|nombre|
+|C000888888|NIT|9202086744|VARIEDADES YURLEDYS|

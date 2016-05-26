@@ -26,8 +26,14 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact']")
     WebElementFacade opcionContactoDeCuenta;
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddFromSearch']")
+    WebElementFacade opcionContactoDelDirectorio;
+
     @FindBy(xpath = ".//span[contains(.,'DONIA GLORIA GALLEGO')]")
     WebElementFacade contactoDeCuenta;
+
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']")
+    WebElementFacade seleccionarContactoDelDirectorio;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV-body']")
     WebElementFacade tablaAsegurados;
@@ -79,5 +85,13 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
         waitABit(1000);
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         return allRows.get(0).getText();
+    }
+
+    public void agregarAseguradoContactoDelDirectorio() {
+        waitFor(opcionContactoDelDirectorio).click();
+    }
+
+    public void seleccionarContactoDelDirectorio() {
+        waitFor(seleccionarContactoDelDirectorio).click();
     }
 }
