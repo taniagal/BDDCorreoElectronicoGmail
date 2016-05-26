@@ -14,7 +14,9 @@ public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
         super(pages);
     }
 
-    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
+    }
 
     @Step
     public void verTransaccionesContacto() {
