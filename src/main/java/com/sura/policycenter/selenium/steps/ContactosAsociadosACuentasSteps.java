@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.ContactosAsociadosACuentasPage;
-import com.sura.policycenter.selenium.pages.CuentasOrdenesDeTrabajoPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.superior.cuenta.panel.contactos.BusquedaContactoDelDirectorioPage;
 import net.thucydides.core.annotations.Step;
@@ -18,12 +17,13 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     private static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
     private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
     private final BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage = new BusquedaContactoDelDirectorioPage(getDriver());
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
 
     public ContactosAsociadosACuentasSteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step

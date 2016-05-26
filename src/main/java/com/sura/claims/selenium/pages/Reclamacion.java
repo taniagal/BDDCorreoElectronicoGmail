@@ -63,7 +63,7 @@ public class Reclamacion extends Guidewire {
     public void llenarReclamacion(String npoliza) {
         Actions act = new Actions(getDriver());
         primerFormulario(npoliza);
-        segundoFormulario(act);
+        segundoFormulario();
         tercerFormulario(act);
     }
 
@@ -81,7 +81,7 @@ public class Reclamacion extends Guidewire {
         btnSiguiente.click();
     }
 
-    private void segundoFormulario(Actions act) {
+    private void segundoFormulario() {
         nombre.click();
         nombre.sendKeys("Allen Robertson");
         nombre.sendKeys(Keys.ENTER);

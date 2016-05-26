@@ -6,6 +6,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import java.util.List;
+
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -32,8 +33,8 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade razonSocial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade desRazonSocial;
-    @FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
-    private WebElementFacade contactoExistente;
+    /*@FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
+    private WebElementFacade contactoExistente;*/
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl']")
     private WebElementFacade tipoTelefono;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")

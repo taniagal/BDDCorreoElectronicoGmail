@@ -8,12 +8,12 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import java.util.Map;
 import java.util.List;
-import static org.hamcrest.MatcherAssert.assertThat;
+import java.util.Map;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BusquedaDePolizaPage extends Guidewire{
 
