@@ -1,5 +1,6 @@
 package com.sura.policycenter.selenium.definitions;
 
+import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.BusquedaContactoSteps;
 import com.sura.policycenter.selenium.steps.InformacionTitularCuentaSteps;
 import net.thucydides.core.annotations.Steps;
@@ -13,6 +14,9 @@ public class InformacionTitularCuentaDefinitions {
 
     @Steps
     private InformacionTitularCuentaSteps informacionTitularCuentaSteps;
+    
+    @Steps
+    SeusLoginSteps seusLoginSteps;
 
     @Steps
     private BusquedaContactoSteps buscarContactoSteps;
