@@ -1,11 +1,11 @@
 package com.sura.policycenter.selenium.pages.menu.superior.cuenta.panel.contactos;
 
+import java.util.List;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
-import java.util.List;
 
 public class BusquedaContactoDelDirectorioPage extends Guidewire {
 

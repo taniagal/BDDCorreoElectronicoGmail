@@ -1,5 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.selenium.pages.menu.Navegacion;
 import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminCodAgenteNuevoPage;
@@ -93,12 +97,6 @@ import com.sura.policycenter.selenium.pages.menu.superior.poliza.PolizaBuscarPag
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-
-
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 @SuppressWarnings("UnusedReturnValue")
 public class InicioPage extends Guidewire {

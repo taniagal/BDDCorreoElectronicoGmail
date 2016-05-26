@@ -1,20 +1,16 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
-import com.sura.policycenter.selenium.steps.ResumenCuentaSteps;
-import net.thucydides.core.annotations.Manual;
-import net.thucydides.core.annotations.Steps;
+import java.util.HashMap;
+import java.util.Map;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
+import com.sura.policycenter.selenium.steps.ResumenCuentaSteps;
+import net.thucydides.core.annotations.Manual;
+import net.thucydides.core.annotations.Steps;
 
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * Created by diegcaac on 18/05/2016.
- */
 public class ResumenCuentaDefinitions {
 
     @Steps
@@ -23,7 +19,7 @@ public class ResumenCuentaDefinitions {
     @Steps
     HistorialCuentaSteps historialCuentaSteps;
 
-    private Map<String, String> infoResumenCuenta = new HashMap<>();
+    private final Map<String, String> infoResumenCuenta = new HashMap<>();
 
     public ResumenCuentaDefinitions(){
         infoResumenCuenta.put("lblResumenCuenta", "Resumen del archivo de cuenta");
@@ -127,18 +123,19 @@ public class ResumenCuentaDefinitions {
 
     @When("ingrese a editar la direccion de la cuenta e indique una direccion <direccion> que se pueda estandarizar")
     @Manual
-    public void whenValidarDireccionEstandarizada(){
+    public void whenValidarDireccionEstandarizada() {
+        // Se realiza manualmente.
     }
 
     @When("ingrese a editar la direccion de la cuenta e indique una direccion <direccion> que no se pueda estandarizar")
     @Manual
-    public void whenValidarDireccionNoEstandarizada(){
+    public void whenValidarDireccionNoEstandarizada() {
+        // Se realiza manualmente.
     }
 
     @Then("puedo visualizar el resumen de la cuenta seleccionada de tipo persona juridica, el listado de actividades, vigencias\n" +
             "de las polizas asociadas a la cuenta y transacciones pendientes de las polizas asociadas a la cuenta")
     public void verInfoResumenCuentaPersonaJuridica(){
-
         resumenCuentaSteps.verInfoResumenCuenta(infoResumenCuenta);
     }
 
@@ -173,11 +170,13 @@ public class ResumenCuentaDefinitions {
 
     @Then("se debe almacenar la direccion de acuerdo a la estandarizacion dada")
     @Manual
-    public void thenValidarDireccionEstandarizada(){
+    public void thenValidarDireccionEstandarizada() {
+        // Se realiza manualmente.
     }
 
     @Then("se debe almacenar la direccion como la ingreso el usuario")
     @Manual
-    public void thenValidarDireccionNoEstandarizada(){
+    public void thenValidarDireccionNoEstandarizada() {
+        // Se realiza manualmente.
     }
 }
