@@ -2,32 +2,102 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.selenium.pages.menu.Navegacion;
-import com.sura.policycenter.selenium.pages.menu.acciones.administracion.*;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminCodAgenteNuevoPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminGrupoNuevoPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminNuevoGrupoAfinidadPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminOrganizacionNuevaPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminUsuarioNuevoPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminVerificarErrorPatronPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.contacto.ContactoNuevaCuentaPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.*;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaCancelaPolizDividPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaCombPoliACuentaPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaCotizaRequeridaPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaCreaAgenteNuevPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaCreaDocNuevaPlantPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaDiarioX30Page;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaDiarioX60Page;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaDiarioX90Page;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaLigaDocExistePage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaNotificaPolizaPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaNuevaNotaPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaNuevoCorreoElecPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaNuevoEnvioPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtAudPersoInterPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtAudServExterPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtCotizReaseguroPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtDatoOficPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtInfRiesAgenPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtInfoVehiMotoPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtInspContSiniesPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtInspServExterPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtReporCredPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRecuerdaGeneralPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaReescrPoliACuentaPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaReuneAgentePage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaReuneAseguradoPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevPer30DiaAseguraPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevPer45DiaAseguraPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevPer60DiaAseguraPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevisaAgentePage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevisaNuevoCorreoPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevisaRendimPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevisionLegalPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaTazaCotPoliManuPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaTransPoliACuentaPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaVerificaCoberPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
-import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
-import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
-import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminAtributosPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminCambioDatosPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminCodAgentesPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminColasMensajesPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminDiasFestivosPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminEstadistFlujoTrabajoPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminExportarDatosPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminFlujosTrabajoPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminFormatoExportaPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminGruposAfinidadPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminGruposPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminImportarDatosPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminMensajesPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminOrganizacionesPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminParamSecuenciaPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminPatronesActividadPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminPatronesFormPolizaPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminPerfilAutoridadPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminRegionesPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminRetencionPolizasPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminRolesPage;
+import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminUsuariosPage;
+import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarActividadesPage;
+import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarCodAgentePage;
+import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarContactosPage;
+import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarCuentasPage;
+import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarPolizasPage;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.BuscarContactoPage;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.NuevaCompaniaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.NuevaPersonaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.cuenta.CuentaBuscarPage;
 import com.sura.policycenter.selenium.pages.menu.superior.cuenta.NuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.equipo.EquipoPage;
-import com.sura.policycenter.selenium.pages.menu.superior.escritorio.*;
+import com.sura.policycenter.selenium.pages.menu.superior.escritorio.MisActividadesPage;
+import com.sura.policycenter.selenium.pages.menu.superior.escritorio.MisColasPage;
+import com.sura.policycenter.selenium.pages.menu.superior.escritorio.MisCuentasPage;
+import com.sura.policycenter.selenium.pages.menu.superior.escritorio.MisEnviosPage;
+import com.sura.policycenter.selenium.pages.menu.superior.escritorio.MisOtrasTransacPage;
+import com.sura.policycenter.selenium.pages.menu.superior.escritorio.MisRenovacionesPage;
 import com.sura.policycenter.selenium.pages.menu.superior.poliza.NuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.superior.poliza.PolizaBuscarPage;
+import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 
+
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 
 @SuppressWarnings("UnusedReturnValue")
 public class InicioPage extends Guidewire {
@@ -58,18 +128,23 @@ public class InicioPage extends Guidewire {
     public MisActividadesPage irAMisActividades() {
         return navegacion.irAMisActividades();
     }
+
     public MisCuentasPage irAMisCuentas() {
         return navegacion.irAMisCuentas();
     }
+
     public MisEnviosPage irAMisEnvios() {
         return navegacion.irAMisEnvios();
     }
+
     public MisRenovacionesPage irAMisRenovaciones() {
         return navegacion.irAMisRenovaciones();
     }
+
     public MisOtrasTransacPage irAMisOtrasTransacciones() {
         return navegacion.irAMisOtrasTransacciones();
     }
+
     public MisColasPage irAMisColas() {
         return navegacion.irAMisColas();
     }
@@ -78,6 +153,7 @@ public class InicioPage extends Guidewire {
     public NuevaCuentaPage irANuevaCuenta() {
         return navegacion.irANuevaCuenta();
     }
+
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
         return navegacion.irACuentaBuscar(numCuenta);
     }
@@ -86,6 +162,7 @@ public class InicioPage extends Guidewire {
     public NuevoEnvioPage irANuevoEnvio() {
         return navegacion.irANuevoEnvio();
     }
+
     public PolizaBuscarPage irABuscarPoliza(String numPoliza) {
         return navegacion.irABuscarPoliza(numPoliza);
     }
@@ -94,9 +171,11 @@ public class InicioPage extends Guidewire {
     public NuevaCompaniaPage irANuevaCompania() {
         return navegacion.irANuevaCompania();
     }
+
     public NuevaPersonaPage irANuevaPersona() {
         return navegacion.irANuevaPersona();
     }
+
     public BuscarContactoPage irABuscarContacto() {
         return navegacion.irABuscarContacto();
     }
@@ -105,15 +184,19 @@ public class InicioPage extends Guidewire {
     public BuscarPolizasPage irABuscarPolizas() {
         return navegacion.irABuscarPolizas();
     }
+
     public BuscarCuentasPage irABuscarCuentas() {
         return navegacion.irABuscarCuentas();
     }
+
     public BuscarCodAgentePage irABuscarCodAgente() {
         return navegacion.irABuscarCodAgente();
     }
-    public BuscarActividadesPage irABuscarActividades(){
+
+    public BuscarActividadesPage irABuscarActividades() {
         return navegacion.irABuscarActividades();
     }
+
     public BuscarContactosPage irABuscarContactos() {
         return navegacion.irABuscarContactos();
     }
@@ -127,66 +210,87 @@ public class InicioPage extends Guidewire {
     public AdminUsuariosPage irAAdminUsuarios() {
         return navegacion.irAAdminUsuarios();
     }
+
     public AdminGruposPage irAAdminGrupos() {
         return navegacion.irAAdminGrupos();
     }
+
     public AdminRolesPage irAAdminRoles() {
         return navegacion.irAAdminRoles();
     }
+
     public AdminRegionesPage irAAdminRegiones() {
         return navegacion.irAAdminRegiones();
     }
+
     public AdminOrganizacionesPage irAAdminOrganizaciones() {
         return navegacion.irAAdminOrganizaciones();
     }
+
     public AdminCodAgentesPage irAAdminCodAgentes() {
         return navegacion.irAAdminCodAgentes();
     }
+
     public AdminPerfilAutoridadPage irAAdminPerfilAutoridad() {
         return navegacion.irAAdminPerfilAutoridad();
     }
+
     public AdminAtributosPage irAAdminAtributos() {
         return navegacion.irAAdminAtributos();
     }
+
     public AdminGruposAfinidadPage irAAdminGruposAfinidad() {
         return navegacion.irAAdminGruposAfinidad();
     }
+
     public AdminPatronesActividadPage irAAdminPatronesActividad() {
         return navegacion.irAAdminPatronesActividad();
     }
+
     public AdminDiasFestivosPage irAAdminDiasFestivos() {
         return navegacion.irAAdminDiasFestivos();
     }
+
     public AdminPatronesFormPolizaPage irAAdminPatronesFormPoliza() {
         return navegacion.irAAdminPatronesFormPoliza();
     }
+
     public AdminRetencionPolizasPage irAAdminRetencionPolizas() {
         return navegacion.irAAdminRetencionPolizas();
     }
+
     public AdminMensajesPage irAAdminMensajes() {
         return navegacion.irAAdminMensajes();
     }
+
     public AdminColasMensajesPage irAAdminColasMensajes() {
         return navegacion.irAAdminColasMensajes();
     }
+
     public AdminFlujosTrabajoPage irAAdminFlujosTrabajo() {
         return navegacion.irAAdminFlujosTrabajo();
     }
+
     public AdminEstadistFlujoTrabajoPage irAAdminEstadistFlujoTrabajo() {
         return navegacion.irAAdminEstadistFlujoTrabajo();
     }
+
     public AdminImportarDatosPage irAAdminImportarDatos() {
         return navegacion.irAAdminImportarDatos();
     }
+
     public AdminExportarDatosPage irAAdminExportarDatos() {
         return navegacion.irAAdminExportarDatos();
     }
+
     public AdminParamSecuenciaPage irAAdminParamSecuencia() {
         return navegacion.irAAdminParamSecuencia();
     }
+
     public AdminFormatoExportaPage irAAdminFormatoExporta() {
         return navegacion.irAAdminFormatoExporta();
     }
+
     public AdminCambioDatosPage irAAdminCambioDatos() {
         return navegacion.irAAdminCambioDatos();
     }
@@ -195,6 +299,7 @@ public class InicioPage extends Guidewire {
     public EscritorioNuevoEnvioPage irAEscritorioNuevoEnvio() {
         return navegacion.irAEscritorioNuevoEnvio();
     }
+
     public EscritorioNuevaCuentaPage irAEscritorioNuevaCuenta() {
         return navegacion.irAEscritorioNuevaCuenta();
     }
@@ -203,108 +308,143 @@ public class InicioPage extends Guidewire {
     public CuentaNuevaNotaPage irACuentaNuevaNota() {
         return navegacion.irACuentaNuevaNota();
     }
+
     public CuentaLigaDocExistePage irACuentaLigaDocExiste() {
         return navegacion.irACuentaLigaDocExiste();
     }
+
     public CuentaCreaDocNuevaPlantPage irACuentaCreaDocNuevaPlant() {
         return navegacion.irACuentaCreaDocNuevaPlant();
     }
-    public CuentaNuevoCorreoElecPage irACuentaNuevoCorreoElect(){
+
+    public CuentaNuevoCorreoElecPage irACuentaNuevoCorreoElect() {
         return navegacion.irACuentaNuevoCorreoElect();
     }
-    public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta(){
+
+    public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta() {
         return navegacion.irACuentaNuevoEnvioCuenta();
     }
-    public CuentaRevisaNuevoCorreoPage irACuentaRevisaNuevoCorreo(){
+
+    public CuentaRevisaNuevoCorreoPage irACuentaRevisaNuevoCorreo() {
         return navegacion.irACuentaRevisaNuevoCorreo();
     }
-    public CuentaReuneAgentePage irACuentaReuneAgente(){
+
+    public CuentaReuneAgentePage irACuentaReuneAgente() {
         return navegacion.irACuentaReuneAgente();
     }
-    public CuentaReuneAseguradoPage irACuentaReuneAsegurado(){
+
+    public CuentaReuneAseguradoPage irACuentaReuneAsegurado() {
         return navegacion.irACuentaReuneAsegurado();
     }
-    public CuentaCancelaPolizDividPage irACuentaCancelaPolizDivid(){
+
+    public CuentaCancelaPolizDividPage irACuentaCancelaPolizDivid() {
         return navegacion.irACuentaCancelaPolizDivid();
     }
-    public CuentaCotizaRequeridaPage irACuentaCotizaRequerida(){
+
+    public CuentaCotizaRequeridaPage irACuentaCotizaRequerida() {
         return navegacion.irACuentaCotizaRequerida();
     }
-    public CuentaDiarioX30Page irACuentaDiarioX30(){
+
+    public CuentaDiarioX30Page irACuentaDiarioX30() {
         return navegacion.irACuentaDiarioX30();
     }
-    public CuentaDiarioX60Page irACuentaDiarioX60(){
+
+    public CuentaDiarioX60Page irACuentaDiarioX60() {
         return navegacion.irACuentaDiarioX60();
     }
-    public CuentaDiarioX90Page irACuentaDiarioX90(){
+
+    public CuentaDiarioX90Page irACuentaDiarioX90() {
         return navegacion.irACuentaDiarioX90();
     }
-    public CuentaNotificaPolizaPage irACuentaNotificaPoliza(){
+
+    public CuentaNotificaPolizaPage irACuentaNotificaPoliza() {
         return navegacion.irACuentaNotificaPoliza();
     }
+
     public CuentaRecuerdaGeneralPage irACuentaRecuerdaGeneral() {
         return navegacion.irAEscritorioRecuerdaGeneral();
     }
-    public CuentaRevisaAgentePage irACuentaRevisaAgente(){
+
+    public CuentaRevisaAgentePage irACuentaRevisaAgente() {
         return navegacion.irACuentaRevisaAgente();
     }
+
     public CuentaRevPer30DiaAseguraPage irACuentaRevPer30DiaAsegura() {
         return navegacion.irACuentaRevPer30DiaAsegura();
     }
+
     public CuentaRevPer45DiaAseguraPage irACuentaRevPer45DiaAsegura() {
         return navegacion.irACuentaRevPer45DiaAsegura();
     }
+
     public CuentaRevPer60DiaAseguraPage irACuentaRevPer60DiaAsegura() {
         return navegacion.irACuentaRevPer60DiaAsegura();
     }
-    public CuentaRevisaRendimPage irACuentaRevisaRendim(){
+
+    public CuentaRevisaRendimPage irACuentaRevisaRendim() {
         return navegacion.irACuentaRevisaRendim();
     }
-    public CuentaVerificaCoberPage irACuentaVerificaCober(){
+
+    public CuentaVerificaCoberPage irACuentaVerificaCober() {
         return navegacion.irACuentaVerificaCober();
     }
-    public CuentaCreaAgenteNuevPage irACuentaCreaAgenteNuev(){
+
+    public CuentaCreaAgenteNuevPage irACuentaCreaAgenteNuev() {
         return navegacion.irACuentaCreaAgenteNuev();
     }
+
     public CuentaObtAudPersoInterPage irACuentaObtAudPersoInter() {
         return navegacion.irACuentaObtAudPersoInter();
     }
+
     public CuentaObtAudServExterPage irACuentaObtAudServExter() {
         return navegacion.irACuentaObtAudServExter();
     }
+
     public CuentaObtCotizReaseguroPage irACuentaObtCotizReaseguro() {
         return navegacion.irACuentaObtCotizReaseguro();
     }
+
     public CuentaObtDatoOficPage irACuentaObtDatoOfic() {
         return navegacion.irACuentaObtDatoOfic();
     }
+
     public CuentaObtInfRiesAgenPage irACuentaObtInfRies() {
         return navegacion.irACuentaObtInfRiesAgen();
     }
+
     public CuentaObtInfoVehiMotoPage irACuentaObtInfoVehiMoto() {
         return navegacion.irACuentaObtInfoVehiMoto();
     }
+
     public CuentaObtInspContSiniesPage irACuentaObtInspContSinies() {
         return navegacion.irACuentaObtInspContSinies();
     }
+
     public CuentaObtInspServExterPage irACuentaObtInspServExter() {
         return navegacion.irACuentaObtInspServExter();
     }
+
     public CuentaObtReporCredPage irACuentaObtReporCred() {
         return navegacion.irACuentaObtReporCred();
     }
+
     public CuentaRevisionLegalPage irACuentaRevisionLegal() {
         return navegacion.irACuentaRevisionLegal();
     }
+
     public CuentaTazaCotPoliManuPage irCuentaTazaCotPoliManu() {
         return navegacion.irCuentaTazaCotPoliManu();
     }
+
     public CuentaTransPoliACuentaPage irACuentaTransPoliACuenta() {
         return navegacion.irACuentaTransPoliACuenta();
     }
+
     public CuentaReescrPoliACuentaPage irACuentaReescrPoliACuenta() {
         return navegacion.irACuentaReescrPoliACuenta();
     }
+
     public CuentaCombPoliACuentaPage irACuentaCombPoliACuenta() {
         return navegacion.irACuentaCombPoliACuenta();
     }
@@ -318,24 +458,29 @@ public class InicioPage extends Guidewire {
     public AdminUsuarioNuevoPage irAAdminUsuarioNuevo() {
         return navegacion.irAAdminUsuarioNuevo();
     }
+
     public AdminGrupoNuevoPage irAAdminGrupoNuevo() {
         return navegacion.irAAdminGrupoNuevo();
     }
+
     public AdminOrganizacionNuevaPage irAAdminOrganizacionNueva() {
         return navegacion.irAAdminOrganizacionNueva();
     }
+
     public AdminCodAgenteNuevoPage irAAdminCodAgenteNuevo() {
         return navegacion.irAAdminCodAgenteNuevo();
     }
+
     public AdminNuevoGrupoAfinidadPage irAAdminNuevoGrupoAfinidad() {
         return navegacion.irAAdminNuevoGrupoAfinidad();
     }
+
     public AdminVerificarErrorPatronPage irAAdminVerificarErrorPatron() {
         return navegacion.irAAdminVerificarErrorPatron();
     }
 
     //Metodos Opciones Cuentas
-    public OpcionesCrearPartcCuentaPage irAOpcionesCrearPartcCuenta(){
+    public OpcionesCrearPartcCuentaPage irAOpcionesCrearPartcCuenta() {
         return navegacion.irAOpcionesCrearPartcCuenta();
     }
 

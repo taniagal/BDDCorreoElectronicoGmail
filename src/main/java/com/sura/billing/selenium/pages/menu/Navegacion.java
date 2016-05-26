@@ -118,13 +118,13 @@ public class Navegacion extends Guidewire{
 
     // Objetos menu Cuenta
     @FindBy(xpath = ".//*[@id='TabBar:AccountsTab-btnWrap']")
-    private WebElementFacade mnuCuenta;
+    private WebElementFacade mnuCuentaB;
     @FindBy(xpath = ".//*[@id='TabBar:AccountsTab:AccountNumberSearchItem-inputEl']")
     private WebElementFacade itemNumCuenta;
 
     // Objetos menu Poliza
     @FindBy(xpath = ".//*[@id='TabBar:PoliciesTab-btnWrap']")
-    private WebElementFacade mnuPoliza;
+    private WebElementFacade mnuPolizaB;
     @FindBy(xpath = ".//*[@id='TabBar:PoliciesTab:PolicyNumberSearchItem-inputEl']")
     private WebElementFacade itemNumPoliza;
 
@@ -136,7 +136,7 @@ public class Navegacion extends Guidewire{
 
     // Objetos menu Buscar
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
-    private WebElementFacade mnuBuscar;
+    private WebElementFacade mnuBuscarB;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_AccountSearch-itemEl']")
     private WebElementFacade mnuItemCuentas;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab:SearchGroup_PolicySearch-itemEl']")
@@ -168,14 +168,14 @@ public class Navegacion extends Guidewire{
 
     // Objetos menu Administracion
     @FindBy(xpath=".//*[@id='TabBar:AdministrationTab-btnWrap']")
-    private WebElementFacade mnuAdministracion;
+    private WebElementFacade mnuAdministracionB;
     // Usuarios y Seguridad
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_UsersAndSecurity']")
     private WebElementFacade mnuItemUsuariosSeguridad;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_UsersAndSecurity:UsersAndSecurity_UserSearch-itemEl']")
     private WebElementFacade mnuItemUsuarios;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_UsersAndSecurity:UsersAndSecurity_Groups-itemEl']")
-    private WebElementFacade mnuItemGrupos;
+    private WebElementFacade mnuItemGruposB;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_UsersAndSecurity:UsersAndSecurity_Roles-itemEl']")
     private WebElementFacade mnuItemFunciones;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_UsersAndSecurity:UsersAndSecurity_SecurityZones-itemEl']")
@@ -184,9 +184,9 @@ public class Navegacion extends Guidewire{
     private WebElementFacade mnuItemPerfilLimiteAut;
     // Configuracion comercial
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings']")
-    private WebElementFacade mnuItemConfigComercial;
+    private WebElementFacade mnuItemConfigComercialB;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_ActivityPatterns-itemEl']")
-    private WebElementFacade mnuItemPatronesActividad;
+    private WebElementFacade mnuItemPatronesActividadB;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_AgencyBillPlans-itemEl']")
     private WebElementFacade mnuItemPlanesFactAgencia;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_BillingPlans-itemEl']")
@@ -200,7 +200,7 @@ public class Navegacion extends Guidewire{
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_DelinquencyPlans-itemEl']")
     private WebElementFacade mnuItemPlanesMora;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_Holidays-itemEl']")
-    private WebElementFacade mnuItemDiasFestivos;
+    private WebElementFacade mnuItemDiasFestivosB;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_PaymentAllocationPlans-itemEl']")
     private WebElementFacade mnuItemPlanesAsignaPago;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_BusinessSettings:BusinessSettings_PaymentPlans-itemEl']")
@@ -209,29 +209,29 @@ public class Navegacion extends Guidewire{
     private WebElementFacade mnuItemPlanesDevolucionPrima;
     // Supervision
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Monitoring-arrowEl']")
-    private WebElementFacade mnuItemSupervision;
+    private WebElementFacade mnuItemSupervisionB;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Monitoring:Monitoring_MessagingDestinationControlList-itemEl']")
-    private WebElementFacade mnuItemColasMensajes;
+    private WebElementFacade mnuItemColasMensajesB;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Monitoring:Monitoring_WorkflowSearch-itemEl']")
-    private WebElementFacade mnuItemFlujosTrabajo;
+    private WebElementFacade mnuItemFlujosTrabajoB;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Monitoring:Monitoring_WorkflowStats-itemEl']")
-    private WebElementFacade mnuItemEstadisticaFlujos;
+    private WebElementFacade mnuItemEstadisticaFlujosB;
     // Utilidades
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Utilities-arrowEl']")
-    private WebElementFacade mnuItemUtilidades;
+    private WebElementFacade mnuItemUtilidadesB;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Utilities:Utilities_ImportWizard-itemEl']")
-    private WebElementFacade mnuItemImportDatos;
+    private WebElementFacade mnuItemImportDatosB;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Utilities:Utilities_ExportData-itemEl']")
-    private WebElementFacade mnuItemExportDatos;
+    private WebElementFacade mnuItemExportDatosB;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Utilities:Utilities_ScriptParametersPage-itemEl']")
-    private WebElementFacade mnuItemParametrosSecuencia;
+    private WebElementFacade mnuItemParametrosSecuenciaB;
     @FindBy(xpath = ".//*[@id='TabBar:AdministrationTab:Admin_Utilities:Utilities_DataChangePage-itemEl']")
-    private WebElementFacade mnuItemCambioDatos;
+    private WebElementFacade mnuItemCambioDatosB;
     
     
     // Objetos menu acciones Escritorio
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions-btnIconEl']")
-    private WebElementFacade mnuAccionesEscritorio;
+    private WebElementFacade mnuAccionesEscritorioB;
     // Nuevo pago
     @FindBy(xpath = ".//*[@id='DesktopGroup:DesktopMenuActions:DesktopMenuActions_NewPayment-arrowEl']")
     private WebElementFacade itemNuevoPago;
@@ -290,7 +290,7 @@ public class Navegacion extends Guidewire{
 
     // Objetos menu acciones Cuenta
     @FindBy(xpath = ".//*[@id='AccountsGroup:AccountsMenuActions-btnIconEl']")
-    private WebElementFacade mnuAccionesCuenta;
+    private WebElementFacade mnuAccionesCuentaB;
     @FindBy(xpath = ".//*[@id='AccountsGroup:AccountsMenuActions:AccountsMenuActions_NewAccount-itemEl']")
     private WebElementFacade accionNuevaCuenta;
 
@@ -398,7 +398,7 @@ public class Navegacion extends Guidewire{
 
     // Navegacion menu Cuenta
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
-        gw.deployMenu(mnuCuenta);
+        gw.deployMenu(mnuCuentaB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(itemNumCuenta).release(itemNumCuenta).click().build().perform();
         act.sendKeys(itemNumCuenta.type(numCuenta), Keys.ENTER).build().perform();
@@ -407,7 +407,7 @@ public class Navegacion extends Guidewire{
 
     // Navegacion menu Poliza
     public PolizaBuscarPage irAPolizaBuscar(String numPoliza) {
-        gw.deployMenu(mnuPoliza);
+        gw.deployMenu(mnuPolizaB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(itemNumPoliza).release(itemNumPoliza).click().build().perform();
         act.sendKeys(itemNumPoliza.type(numPoliza), Keys.ENTER).build().perform();
@@ -425,85 +425,85 @@ public class Navegacion extends Guidewire{
 
     // Navegacion menu Buscar
     public BuscarCuentasPage irABuscarCuentas() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemCuentas).release(mnuItemCuentas).click().build().perform();
         return new BuscarCuentasPage(getDriver());
     }
     public BuscarPolizasPage irABuscarPolizas() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemPolizas).release(mnuItemPolizas).click().build().perform();
         return new BuscarPolizasPage(getDriver());
     }
     public BuscarContactosPage irABuscarContactos() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemContactos).release(mnuItemContactos).click().build().perform();
         return new BuscarContactosPage(getDriver());
     }
     public BuscarFacturasPage irABuscarFacturas() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemFacturas).release(mnuItemFacturas).click().build().perform();
         return new BuscarFacturasPage(getDriver());
     }
     public BuscarPagosPage irABuscarPagos() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemPagos).release(mnuItemPagos).click().build().perform();
         return new BuscarPagosPage(getDriver());
     }
     public BuscarAgentesPage irABuscarAgentes() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemAgentes).release(mnuItemAgentes).click().build().perform();
         return new BuscarAgentesPage(getDriver());
     }
     public BuscarTransacPage irABuscarTransacciones() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemTransacciones).release(mnuItemTransacciones).click().build().perform();
         return new BuscarTransacPage(getDriver());
     }
     public BuscarActividadesPage irABuscarActividades() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemActividades).release(mnuItemActividades).click().build().perform();
         return new BuscarActividadesPage(getDriver());
     }
     public BuscarTicketsProblemasPage irABuscarTicketsProblemas() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemTicketsProblemas).release(mnuItemTicketsProblemas).click().build().perform();
         return new BuscarTicketsProblemasPage(getDriver());
     }
     public BuscarProcesosMoraPage irABuscarProcesosMora() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemProcesosMora).release(mnuItemProcesosMora).click().build().perform();
         return new BuscarProcesosMoraPage(getDriver());
     }
     public BuscarDesembolsosPage irABuscarDesembolsos() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemDesembolsosBuscar).release(mnuItemDesembolsosBuscar).click().build().perform();
         return new BuscarDesembolsosPage(getDriver());
     }
     public BuscarPagoSalAgentePage irABuscarPagoSalAgente() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemPagosSalientesAgente).release(mnuItemPagosSalientesAgente).click().build().perform();
         return new BuscarPagoSalAgentePage(getDriver());
     }
     public BuscarSolicitudesPagoPage irABuscarSolicitudesPago() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemSolicitudesPago).release(mnuItemSolicitudesPago).click().build().perform();
         return new BuscarSolicitudesPagoPage(getDriver());
     }
     public BuscarElementosEsperaFactDirectaPage irABuscarElementosEsperaFactDirecta() {
-        gw.deployMenu(mnuBuscar);
+        gw.deployMenu(mnuBuscarB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemElementosEsperaFactDirecta).release(mnuItemElementosEsperaFactDirecta).click().build().perform();
         return new BuscarElementosEsperaFactDirectaPage(getDriver());
@@ -512,7 +512,7 @@ public class Navegacion extends Guidewire{
     // Navegacion menu Administracion
     // Admin Usuarios y seguridad
     public AdminUsuariosPage irAAdminUsuarios() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemUsuariosSeguridad).release(mnuItemUsuariosSeguridad).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -520,15 +520,15 @@ public class Navegacion extends Guidewire{
         return new AdminUsuariosPage(getDriver());
     }
     public AdminGruposPage irAAdminGrupos() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemUsuariosSeguridad).release(mnuItemUsuariosSeguridad).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemGrupos).release(mnuItemGrupos).click().build().perform();
+        act.moveToElement(mnuItemGruposB).release(mnuItemGruposB).click().build().perform();
         return new AdminGruposPage(getDriver());
     }
     public AdminFuncionesPage irAAdminFunciones() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemUsuariosSeguridad).release(mnuItemUsuariosSeguridad).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -536,7 +536,7 @@ public class Navegacion extends Guidewire{
         return new AdminFuncionesPage(getDriver());
     }
     public AdminZonasSeguridadPage irAAdminZonasSeguridad() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemUsuariosSeguridad).release(mnuItemUsuariosSeguridad).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -544,7 +544,7 @@ public class Navegacion extends Guidewire{
         return new AdminZonasSeguridadPage(getDriver());
     }
     public AdminPerfilLimiteAutoridadPage irAAdminPerfilLimiteAutoridad() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemUsuariosSeguridad).release(mnuItemUsuariosSeguridad).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -554,89 +554,89 @@ public class Navegacion extends Guidewire{
 
     //Admin Configuracion comercial
     public AdminPatronesActPage irAAdminPatronesAct() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        act.moveToElement(mnuItemConfigComercialB).release(mnuItemConfigComercialB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemPatronesActividad).release(mnuItemPatronesActividad).click().build().perform();
+        act.moveToElement(mnuItemPatronesActividadB).release(mnuItemPatronesActividadB).click().build().perform();
         return new AdminPatronesActPage(getDriver());
     }
     public AdminPlanesFactAgenciaPage irAAdminPlanesFactAgencia() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        act.moveToElement(mnuItemConfigComercialB).release(mnuItemConfigComercialB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemPlanesFactAgencia).release(mnuItemPlanesFactAgencia).click().build().perform();
         return new AdminPlanesFactAgenciaPage(getDriver());
     }
     public AdminPlanesFacturacionPage irAAdminPlanesFacturacion() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        act.moveToElement(mnuItemConfigComercialB).release(mnuItemConfigComercialB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemPlanesFacturacion).release(mnuItemPlanesFacturacion).click().build().perform();
         return new AdminPlanesFacturacionPage(getDriver());
     }
     public AdminPatronesCargoPage irAAdminPatronesCargo() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        act.moveToElement(mnuItemConfigComercialB).release(mnuItemConfigComercialB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemPatronesCargo).release(mnuItemPatronesCargo).click().build().perform();
         return new AdminPatronesCargoPage(getDriver());
     }
     public AdminAgenciasCobroPage irAAdminAgenciasCobro() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        act.moveToElement(mnuItemConfigComercialB).release(mnuItemConfigComercialB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemAgenciasCobro).release(mnuItemAgenciasCobro).click().build().perform();
         return new AdminAgenciasCobroPage(getDriver());
     }
     public AdminPlanesComisionPage irAAdminPlanesComision() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        act.moveToElement(mnuItemConfigComercialB).release(mnuItemConfigComercialB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemPlanesComision).release(mnuItemPlanesComision).click().build().perform();
         return new AdminPlanesComisionPage(getDriver());
     }
     public AdminPlanesMoraPage irAAdminPlanesMora() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        act.moveToElement(mnuItemConfigComercialB).release(mnuItemConfigComercialB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemPlanesMora).release(mnuItemPlanesMora).click().build().perform();
         return new AdminPlanesMoraPage(getDriver());
     }
     public AdminDiasFestivosPage irAAdminDiasFestivos() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        act.moveToElement(mnuItemConfigComercialB).release(mnuItemConfigComercialB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemDiasFestivos).release(mnuItemDiasFestivos).click().build().perform();
+        act.moveToElement(mnuItemDiasFestivosB).release(mnuItemDiasFestivosB).click().build().perform();
         return new AdminDiasFestivosPage(getDriver());
     }
     public AdminPlanesAsignaPagoPage irAAdminPlanesAsignaPago() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        act.moveToElement(mnuItemConfigComercialB).release(mnuItemConfigComercialB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemPlanesAsignaPago).release(mnuItemPlanesAsignaPago).click().build().perform();
         return new AdminPlanesAsignaPagoPage(getDriver());
     }
     public AdminPlanesPagosPage irAAdminPlanesPagos() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        act.moveToElement(mnuItemConfigComercialB).release(mnuItemConfigComercialB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemPlanesPagos).release(mnuItemPlanesPagos).click().build().perform();
         return new AdminPlanesPagosPage(getDriver());
     }
     public AdminPlanesDevolPrimaPage irAAdminPlanesDevolPrima() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemConfigComercial).release(mnuItemConfigComercial).build().perform();
+        act.moveToElement(mnuItemConfigComercialB).release(mnuItemConfigComercialB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuItemPlanesDevolucionPrima).release(mnuItemPlanesDevolucionPrima).click().build().perform();
         return new AdminPlanesDevolPrimaPage(getDriver());
@@ -644,67 +644,67 @@ public class Navegacion extends Guidewire{
 
     //Admin Supervision
     public AdminColasMensajesPage irAAdminColasMensajes() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemSupervision).release(mnuItemSupervision).build().perform();
+        act.moveToElement(mnuItemSupervisionB).release(mnuItemSupervisionB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemColasMensajes).release(mnuItemColasMensajes).click().build().perform();
+        act.moveToElement(mnuItemColasMensajesB).release(mnuItemColasMensajesB).click().build().perform();
         return new AdminColasMensajesPage(getDriver());
     }
     public AdminFlujosTrabajoPage irAAdminFlujosTrabajo() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemSupervision).release(mnuItemSupervision).build().perform();
+        act.moveToElement(mnuItemSupervisionB).release(mnuItemSupervisionB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemFlujosTrabajo).release(mnuItemFlujosTrabajo).click().build().perform();
+        act.moveToElement(mnuItemFlujosTrabajoB).release(mnuItemFlujosTrabajoB).click().build().perform();
         return new AdminFlujosTrabajoPage(getDriver());
     }
     public AdminEstadistFlujosTrabajoPage irAAdminEstadistFlujosTrabajo() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemSupervision).release(mnuItemSupervision).build().perform();
+        act.moveToElement(mnuItemSupervisionB).release(mnuItemSupervisionB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemEstadisticaFlujos).release(mnuItemEstadisticaFlujos).click().build().perform();
+        act.moveToElement(mnuItemEstadisticaFlujosB).release(mnuItemEstadisticaFlujosB).click().build().perform();
         return new AdminEstadistFlujosTrabajoPage(getDriver());
     }
 
     //Admin Utilidades
     public AdminImpotarDatosPage irAAdminImpotarDatos() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
+        act.moveToElement(mnuItemUtilidadesB).release(mnuItemUtilidadesB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemImportDatos).release(mnuItemImportDatos).click().build().perform();
+        act.moveToElement(mnuItemImportDatosB).release(mnuItemImportDatosB).click().build().perform();
         return new AdminImpotarDatosPage(getDriver());
     }
     public AdminExpotarDatosPage irAAdminExpotarDatos() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
+        act.moveToElement(mnuItemUtilidadesB).release(mnuItemUtilidadesB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemExportDatos).release(mnuItemExportDatos).click().build().perform();
+        act.moveToElement(mnuItemExportDatosB).release(mnuItemExportDatosB).click().build().perform();
         return new AdminExpotarDatosPage(getDriver());
     }
     public AdminParamSecuenciaPage irAAdminParamSecuencia() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
+        act.moveToElement(mnuItemUtilidadesB).release(mnuItemUtilidadesB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemParametrosSecuencia).release(mnuItemParametrosSecuencia).click().build().perform();
+        act.moveToElement(mnuItemParametrosSecuenciaB).release(mnuItemParametrosSecuenciaB).click().build().perform();
         return new AdminParamSecuenciaPage(getDriver());
     }
     public AdminCambioDatosPage irAAdminCambioDatos() {
-        gw.deployMenu(mnuAdministracion);
+        gw.deployMenu(mnuAdministracionB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuItemUtilidades).release(mnuItemUtilidades).build().perform();
+        act.moveToElement(mnuItemUtilidadesB).release(mnuItemUtilidadesB).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        act.moveToElement(mnuItemCambioDatos).release(mnuItemCambioDatos).click().build().perform();
+        act.moveToElement(mnuItemCambioDatosB).release(mnuItemCambioDatosB).click().build().perform();
         return new AdminCambioDatosPage(getDriver());
     }
 
     public PagoEsperaPage irAAccionEPagoEspera() {
         mnuEscritorio.waitUntilClickable().click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(itemNuevoPago).release(itemNuevoPago).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -714,7 +714,7 @@ public class Navegacion extends Guidewire{
 
     public EntradaPagosMultiplesPage irAAccionEEntradaPagosMultiples() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(itemNuevoPago).release(itemNuevoPago).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -724,7 +724,7 @@ public class Navegacion extends Guidewire{
 
     public SolicitudPagoPage irAAccionESolicitudPago() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(itemNuevoPago).release(itemNuevoPago).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -734,7 +734,7 @@ public class Navegacion extends Guidewire{
 
     public DesembolsoPage irAAccionEDesembolso() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionNuevaTransac).release(accionNuevaTransac).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -744,7 +744,7 @@ public class Navegacion extends Guidewire{
 
     public TransferenciaPage irAAccionETransferencia() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionNuevaTransac).release(accionNuevaTransac).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -754,7 +754,7 @@ public class Navegacion extends Guidewire{
 
     public AnulacionPage irAAccionEAnulacion() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionNuevaTransac).release(accionNuevaTransac).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -764,7 +764,7 @@ public class Navegacion extends Guidewire{
 
     public AnulacionNegativaPage irAAccionEAnulacionNegativa() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionNuevaTransac).release(accionNuevaTransac).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -774,7 +774,7 @@ public class Navegacion extends Guidewire{
 
     public SubrogacionPage irAAccionESubrogacion() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionNuevaTransac).release(accionNuevaTransac).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -784,7 +784,7 @@ public class Navegacion extends Guidewire{
 
     public ReversionCargoPage irAAccionEReversionCargo() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionNuevaTransac).release(accionNuevaTransac).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -794,7 +794,7 @@ public class Navegacion extends Guidewire{
 
     public ReversionAnulacionPage irAAccionEReversionAnulacion() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionNuevaTransac).release(accionNuevaTransac).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -804,7 +804,7 @@ public class Navegacion extends Guidewire{
 
     public ReversionAnulacionNegativaPage irAAccionEReversionAnulacionNegativa() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionNuevaTransac).release(accionNuevaTransac).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -814,7 +814,7 @@ public class Navegacion extends Guidewire{
 
     public ReversionTransfFondosPage irAAccionEReversionTransfFondos() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionNuevaTransac).release(accionNuevaTransac).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -824,7 +824,7 @@ public class Navegacion extends Guidewire{
 
     public TransaccionGeneralPage irAAccionETransaccionGeneral() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionNuevaTransac).release(accionNuevaTransac).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -834,7 +834,7 @@ public class Navegacion extends Guidewire{
 
     public NotificacionAsignadaPage irAAccionENotificacionAsignada() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(itemActAsignada).release(itemActAsignada).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -846,7 +846,7 @@ public class Navegacion extends Guidewire{
 
     public WriteOffAttemptedAboveThresholdAsignadaPage irAAccionEWriteOffAttemptedAboveThresholdAsignada() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(itemActAsignada).release(itemActAsignada).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -858,7 +858,7 @@ public class Navegacion extends Guidewire{
 
     public NotificacionCompartidaPage irAAccionENotificacionCompartida() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(itemActCompartida).release(itemActCompartida).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -870,7 +870,7 @@ public class Navegacion extends Guidewire{
 
     public WriteOffAttemptedAboveThresholdCompartidaPage irAAccionEWriteOffAttemptedAboveThresholdCompartida() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(itemActCompartida).release(itemActCompartida).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
@@ -882,15 +882,15 @@ public class Navegacion extends Guidewire{
 
     public PreferenciasPage irAAccionEPreferencias() {
         mnuEscritorio.click();
-        gw.deployMenu(mnuAccionesEscritorio);
+        gw.deployMenu(mnuAccionesEscritorioB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionPreferencias).release(accionPreferencias).click().build().perform();
         return new PreferenciasPage(getDriver());
     }
 
     public CuentaNuevaPage irAAccionCCuentaNueva() {
-        mnuCuenta.click();
-        gw.deployMenu(mnuAccionesCuenta);
+        mnuCuentaB.click();
+        gw.deployMenu(mnuAccionesCuentaB);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(accionNuevaCuenta).release(accionNuevaCuenta).click().build().perform();
         return new CuentaNuevaPage(getDriver());
@@ -905,7 +905,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPlanFactPage irAAccionANuevoPlanFact() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPlanFact).release(mnuItemNuevoPlanFact).click().build().perform();
@@ -913,7 +913,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPlanPagoPage irAAccionANuevoPlanPago() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPlanPago).release(mnuItemNuevoPlanPago).click().build().perform();
@@ -921,7 +921,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPlanComisionPage irAAccionANuevoPlanComision() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPlanComision).release(mnuItemNuevoPlanComision).click().build().perform();
@@ -929,7 +929,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPlanMoraPage irAAccionANuevoPlanMora() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPlanMora).release(mnuItemNuevoPlanMora).click().build().perform();
@@ -937,7 +937,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPlanFactAgenciaPage irAAccionANuevoPlanFactAgencia() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPlanFactAgencia).release(mnuItemNuevoPlanFactAgencia).click().build().perform();
@@ -945,7 +945,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPlanDevolPrimaPage irAAccionANuevoPlanDevolPrima() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPlanDevolPrima).release(mnuItemNuevoPlanDevolPrima).click().build().perform();
@@ -953,7 +953,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPlanAsignaPagosPage irAAccionANuevoPlanAsignaPagos() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPlanAsignaPagos).release(mnuItemNuevoPlanAsignaPagos).click().build().perform();
@@ -961,7 +961,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevaAgenciaCobroPage irAAccionANuevaAgenciaCobro() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevaAgenciaCobro).release(mnuItemNuevaAgenciaCobro).click().build().perform();
@@ -969,7 +969,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPatronCargoInmediatoPage irAAccionANuevoPatronCargoInmediato() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPatronCargo).release(mnuItemNuevoPatronCargo).build().perform();
@@ -979,7 +979,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPatronCargoTransfDirectaPage irAAccionANuevoPatronCargoTransfDirecta() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPatronCargo).release(mnuItemNuevoPatronCargo).build().perform();
@@ -989,7 +989,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPatronCargoProrrataPage irAAccionANuevoPatronCargoProrrata() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPatronCargo).release(mnuItemNuevoPatronCargo).build().perform();
@@ -999,7 +999,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPatronCargoRecapturaPage irAAccionANuevoPatronCargoRecaptura() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPatronCargo).release(mnuItemNuevoPatronCargo).build().perform();
@@ -1009,7 +1009,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoUsuarioPage irAAccionANuevoUsuario() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoUsuario).release(mnuItemNuevoUsuario).click().build().perform();
@@ -1017,7 +1017,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevaFuncionPage irAAccionANuevaFuncion() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevaFuncion).release(mnuItemNuevaFuncion).click().build().perform();
@@ -1025,7 +1025,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoGrupoPage irAAccionANuevoGrupo() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoGrupo).release(mnuItemNuevoGrupo).click().build().perform();
@@ -1033,7 +1033,7 @@ public class Navegacion extends Guidewire{
     }
 
     public NuevoPerfilLimiteAutPage irAAccionANuevoPerfilLimiteAut() {
-        mnuAdministracion.click();
+        mnuAdministracionB.click();
         gw.deployMenu(mnuAccionesAdmin);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevoPerfilLimiteAut).release(mnuItemNuevoPerfilLimiteAut).click().build().perform();
