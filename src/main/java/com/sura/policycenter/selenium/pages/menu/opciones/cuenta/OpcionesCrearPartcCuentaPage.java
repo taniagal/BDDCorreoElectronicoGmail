@@ -1,45 +1,37 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
-import com.sura.guidewire.selenium.Guidewire;
-import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.pages.WebElementFacade;
 
 public class OpcionesCrearPartcCuentaPage extends Guidewire {
+
+    private final Actions act = new Actions(getDriver());
+    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Edit-btnInnerEl']")
+    private WebElementFacade btnEditCuenta;
+    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Add-btnInnerEl']")
+    private WebElementFacade btnAgregaCuenta;
+    @FindBy(xpath = ".//tr[2]/td[2]/div")
+    private WebElementFacade listRol;
+    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV:1:AssignedUser:UserBrowseMenuItem']")
+    private WebElementFacade btnSelecUsuar;
+    @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchDV:Username-inputEl']")
+    private WebElementFacade lblNombreUsuario;
+    @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    private WebElementFacade btnBuscarUsuario;
+    @FindBy(xpath = ".//*[@id='centerPanel']")
+    private WebElementFacade lblPartArc;
+    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Update-btnInnerEl']")
+    private WebElementFacade btnActualiza;
+    @FindBy(xpath = ".//div[contains(.,'Director Sucursal')]")
+    private WebElementFacade lblvalidaRol;
+
     public OpcionesCrearPartcCuentaPage(WebDriver driver) {
         super(driver);
     }
-
-    private final Actions act = new Actions(getDriver());
-
-    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Edit-btnInnerEl']")
-    private WebElementFacade btnEditCuenta;
-
-    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Add-btnInnerEl']")
-    private WebElementFacade btnAgregaCuenta;
-
-    @FindBy(xpath = ".//tr[2]/td[2]/div")
-    private WebElementFacade listRol;
-
-    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV:1:AssignedUser:UserBrowseMenuItem']")
-    private WebElementFacade btnSelecUsuar;
-
-    @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchDV:Username-inputEl']")
-    private WebElementFacade lblNombreUsuario;
-
-    @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    private WebElementFacade btnBuscarUsuario;
-
-    @FindBy(xpath = ".//*[@id='centerPanel']")
-    private WebElementFacade lblPartArc;
-
-    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Update-btnInnerEl']")
-    private WebElementFacade btnActualiza;
-
-    @FindBy(xpath = ".//div[contains(.,'Director Sucursal')]")
-    private WebElementFacade lblvalidaRol;
 
     // TODO: 17/05/2016 Se deben parametrizar datos quemados de los contains en las listas
     public void navegacionCreaParticipante() {

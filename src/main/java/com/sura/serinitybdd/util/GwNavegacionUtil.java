@@ -1,7 +1,10 @@
 package com.sura.serinitybdd.util;
 
-import net.serenitybdd.core.annotations.findby.By;
-import net.thucydides.core.steps.StepInterceptor;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 import org.jbehave.core.model.ExamplesTable;
 import org.jbehave.core.steps.Parameters;
 import org.openqa.selenium.Keys;
@@ -11,19 +14,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
-
-import java.util.*;
-
+import net.serenitybdd.core.annotations.findby.By;
+import net.thucydides.core.steps.StepInterceptor;
 
 public class GwNavegacionUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-    private GwNavegacionUtil(){
-    }
 
     @SuppressWarnings("SameParameterValue")
     public static Boolean existenOpcionesPorMenuHastaSegundoNivel(WebDriver driver, Keys keyNav, String tipoElementoMenu, ExamplesTable opcionesPorMenu, Boolean darClick) {
-        System.out.println("GuidewireUtil.existenOpcionesPorMenu");
+        LOGGER.error("GuidewireUtil.existenOpcionesPorMenu");
         String menu = "";
 
         try {
@@ -69,7 +69,7 @@ public class GwNavegacionUtil {
 
         while (menu.hasNext()) {
             String key = (String) menu.next();
-            nombreColumnasTablaHS.add(new String(key));
+            nombreColumnasTablaHS.add(key);
         }
 
         return nombreColumnasTablaHS;
@@ -80,12 +80,11 @@ public class GwNavegacionUtil {
     private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu) throws Exception {
         LOGGER.error("GuidewireUtil.obtenerMenuPorTextoContenido");
 
-        switch (tipoElementoMenu) {
-            case "LINK":
-                LOGGER.error("LINK");
-                return driver.findElement(By.xpath(".//a[contains(.,'" + textoDelMenu + "')]"));
-            default:
-                return null;
+        if ("LINK".equals(tipoElementoMenu)) {
+            LOGGER.error("LINK");
+            return driver.findElement(By.xpath(".//a[contains(.,'" + textoDelMenu + "')]"));
+        } else {
+            return null;
         }
 
     }
@@ -103,7 +102,7 @@ public class GwNavegacionUtil {
 
         while (opcion.hasNext()) {
             String key = (String) opcion.next();
-            valores.add(new String(key));
+            valores.add(key);
         }
         for (Map<String, String> enc : tablaUnaColumna.getRows()) {
             valores.add(new String(enc.get(valores.get(0)).toString()));

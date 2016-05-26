@@ -1,23 +1,23 @@
 package com.sura.policycenter.selenium.definitions;
 
+import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.BusquedaDeCuentasSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 @SuppressWarnings("WeakerAccess")
 public class BusquedaDeCuentasDefinitions {
 
+    @Steps
+    private BusquedaDeCuentasSteps busquedaDeCuentasSteps;
+
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
-
-    @Steps
-    private BusquedaDeCuentasSteps busquedaDeCuentasSteps;
 
     @Given("que me encuentro en la busqueda de cuentas")
     public void ingresarABuscarCuentas() {

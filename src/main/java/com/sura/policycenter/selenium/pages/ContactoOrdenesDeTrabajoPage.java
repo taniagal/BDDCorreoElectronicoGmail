@@ -1,19 +1,19 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.SeusLoginPage;
-import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.pages.WebElementFacade;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.isIn;
+import java.util.List;
 import org.apache.commons.lang3.ArrayUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.sikuli.api.robot.Key;
-import java.util.List;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.isIn;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.hamcrest.core.StringContains.containsString;
+import com.sura.guidewire.selenium.SeusLoginPage;
+import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.pages.WebElementFacade;
 
 public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
@@ -76,7 +76,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     //display key de los estados: typeList localization ---> TypeKey.PolicyPeriodStatus
     public void validarFiltroEstado(String filtroEstado) {
         String[] listEstadosCompletos = {"Comprometida", "No tomado", "Retirado", "Vencida", "Rechazado",
-        "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado"};
+        "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida"};
         String[] listEstadosAbiertos = {"Cotizado", "Borrador", "Nuevo", "Cotización", "Vinculación contractual",
         "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
         String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);

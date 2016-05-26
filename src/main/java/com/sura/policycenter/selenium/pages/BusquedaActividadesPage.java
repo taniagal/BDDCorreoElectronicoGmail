@@ -1,15 +1,15 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.SeusLoginPage;
-import net.serenitybdd.core.pages.WebElementFacade;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.hamcrest.core.StringContains.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
+import com.sura.guidewire.selenium.SeusLoginPage;
+import net.serenitybdd.core.pages.WebElementFacade;
 
 public class BusquedaActividadesPage extends SeusLoginPage {
 

@@ -1,22 +1,15 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
-import net.serenitybdd.core.pages.WebElementFacade;
+import static org.hamcrest.MatcherAssert.assertThat;
+import java.util.concurrent.TimeUnit;
+import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import javax.swing.*;
-
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
-import static net.thucydides.core.pages.components.HtmlTable.rowsFrom;
-import static org.hamcrest.MatcherAssert.assertThat;
+import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.pages.WebElementFacade;
 
 public class DetallesContactoPage extends Guidewire {
 
-    Guidewire gw = new Guidewire(getDriver());
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
     private WebElementFacade labelPrimerNombre;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-labelEl']")
@@ -140,6 +133,8 @@ public class DetallesContactoPage extends Guidewire {
 
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
+    private static final String MSJVALIDARVALORES = "No estan correctos los valores:";
+    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elemtos:";
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
@@ -215,7 +210,7 @@ public class DetallesContactoPage extends Guidewire {
 
 
     /**
-     *DETALLE CONTACTO EDICION PERSONA JURIDICA
+     * DETALLE CONTACTO EDICION PERSONA JURIDICA
      */
     public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
         campoTxtNombreComercial.clear();
@@ -256,7 +251,7 @@ public class DetallesContactoPage extends Guidewire {
 
     /**
      * DETALLE CONTACTO EDICION
-     *Valida si los datos ingresados es igual al que se muestran en el detalle
+     * Valida si los datos ingresados es igual al que se muestran en el detalle
      */
     public void verificarActualizacion(){
         espera(campoTxtSegundoNombre,6);
@@ -281,8 +276,9 @@ public class DetallesContactoPage extends Guidewire {
             right.append("correo primario,");
         if(!dtlContact[14].equals(campoTxtCorreoElectronicoSecundario.getText()))
             right.append("correo secundario,");
+        }
         String res = right.toString();
-        if("No estan correctos los valores:".equals(res)){
+        if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
         }
         assertThat(res,"No estan correctos los valores".equals(res));
@@ -307,8 +303,9 @@ public class DetallesContactoPage extends Guidewire {
             right.append("correo primario,");
         if(!dtlCntJ[7].equals(campoTxtCorreoElectronicoSecundarioEmpresa.getText()))
             right.append("correo secundario,");
+        }
         String res = right.toString();
-        if("No estan correctos los valores:".equals(res)){
+        if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
         }
         assertThat(res,"No estan correctos los valores".equals(res));
@@ -322,10 +319,9 @@ public class DetallesContactoPage extends Guidewire {
                 !campoTxtTipoDocumento.getAttribute("class").contains("x-form-text") || !campoTxtDocumento.getAttribute("class").contains("x-form-text"));
     }
 
-
     /**
      * DETALLE CONTACTO
-    *Valida si estos elementos están presentes
+     * Valida si estos elementos están presentes
     */
     public  void verificarCamposPersonaNatural(){
         StringBuilder notPresent = new StringBuilder("No estan presentes los elementos:");
@@ -357,8 +353,9 @@ public class DetallesContactoPage extends Guidewire {
             notPresent.append(" telefono_celular,");
         if(!labelCorreoElectronicoPrimario.isPresent())
             notPresent.append(" correo_electronico_primario,");
+        }
         String res = notPresent.toString();
-        if("No estan presentes los elementos:".equals(res)){
+        if(MSJVALIDARELEMENTOS.equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);
         }
         assertThat(res,"No estan presentes los elementos".equals(res));
@@ -386,8 +383,9 @@ public class DetallesContactoPage extends Guidewire {
             notPresent.append(" telefono_oficina,");
         if(!getcampoTxtCorreoElectronicoPrimarioEmpresa.isPresent())
             notPresent.append(" correo_electronico_primario,");
+        }
         String res = notPresent.toString();
-        if("No estan presentes los elementos:".equals(res)){
+        if(MSJVALIDARELEMENTOS.equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);
         }
         assertThat(res,"No estan presentes los elementos".equals(res));
@@ -412,8 +410,9 @@ public class DetallesContactoPage extends Guidewire {
             notPresent.append(" tipo dirección,");
         if(!labelDescripcionDireccion.isPresent())
             notPresent.append(" descripción direccion,");
+        }
         String res = notPresent.toString();
-        if("No estan presentes los elementos:".equals(res)){
+        if(MSJVALIDARELEMENTOS.equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);
         }
         assertThat(res,"No estan presentes los elementos".equals(res));
@@ -431,8 +430,9 @@ public class DetallesContactoPage extends Guidewire {
             right.append("drireccion data-tip,");
         if(!campoTxtDireccion.getAttribute("maxlength").equals("200"))
             right.append("direccion maxlength,");
+        }
         String res = right.toString();
-        if("No estan correctos los valores:".equals(res)){
+        if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
         }
         assertThat(res,"No estan correctos los valores".equals(res));

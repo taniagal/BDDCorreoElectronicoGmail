@@ -52,7 +52,6 @@ public class CrearCuentaNuevaDefinitions {
     }
 
 
-
     /**
      * ESCENARIO 2
      */
@@ -76,7 +75,6 @@ public class CrearCuentaNuevaDefinitions {
     public void assertCrearNuevaCuentaPersonaJuridica(@Named("razon_social")String razonSocial){
         cns.verificarCrearCuenta(razonSocial);
     }
-
 
     /**
      * ESCENARIO 3

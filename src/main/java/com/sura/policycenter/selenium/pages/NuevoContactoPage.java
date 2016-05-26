@@ -1,18 +1,14 @@
 package com.sura.policycenter.selenium.pages;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import java.util.List;
+import org.openqa.selenium.WebDriver;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.constantes.EnumContacto;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import java.util.List;
-import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 
 public class NuevoContactoPage extends Guidewire {
 
@@ -36,16 +32,14 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade razonSocial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade desRazonSocial;
-    @FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
-    private WebElementFacade contactoExistente;
+    /*@FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
+    private WebElementFacade contactoExistente;*/
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl']")
     private WebElementFacade tipoTelefono;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade telefonoTrabajo;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade telefonoResidencia;
-    @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
-    private WebElementFacade pais;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade cboDepartamento;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
@@ -58,8 +52,6 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade tipoDireccion2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade direccion2;
-
-    private final Guidewire gw = new Guidewire(getDriver());
 
     public NuevoContactoPage(WebDriver driver) {
         super(driver);
@@ -139,6 +131,7 @@ public class NuevoContactoPage extends Guidewire {
 
     /**
      * Escenario nuevo contacto persona juridica
+     * @param razonSocial
      */
     public void ingresarRazonSocial(String razonSocial) {
         this.razonSocial.type(razonSocial);
@@ -155,8 +148,9 @@ public class NuevoContactoPage extends Guidewire {
     public void verificarContactoExistente() {
         this.btnActualizar.waitUntilClickable();
         this.btnActualizar.click();
+        /*COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
         waitABit(1000);
-        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
+        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));*/
     }
 
     private Boolean esTelefonoFijo(String tipoTelefono) {

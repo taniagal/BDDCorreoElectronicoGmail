@@ -1,13 +1,11 @@
 package com.sura.policycenter.selenium.pages.menu.superior.cuenta.panel.contactos;
 
+import java.util.List;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.jruby.RubyBoolean;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class BusquedaContactoDelDirectorioPage extends Guidewire {
 
@@ -20,7 +18,6 @@ public class BusquedaContactoDelDirectorioPage extends Guidewire {
     @FindBy(xpath = ".//a[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade btnBuscar;
 
-
     public BusquedaContactoDelDirectorioPage(WebDriver driver) {
         super(driver);
     }
@@ -28,24 +25,20 @@ public class BusquedaContactoDelDirectorioPage extends Guidewire {
     @SuppressWarnings("SameParameterValue")
     public Boolean buscarContacto(String tipoContacto, String nombre, String apellido) {
         Boolean esBuscado = Boolean.FALSE;
-
-
         cboTipoContacto.click();
-
         WebElementFacade optCboTipoContacto = findBy(".//li[contains(.,'" + tipoContacto + "')]");
         optCboTipoContacto.click();
         waitABit(1000);
         txtPrimerNombre.type(nombre);
         txtPrimerApellido.type(apellido);
         btnBuscar.click();
-
         esBuscado = selecionarContacto(esBuscado, "1234567891");
-
         return esBuscado;
     }
 
     @SuppressWarnings("SameParameterValue")
     private Boolean selecionarContacto(Boolean esBuscado, String numDocumento) {
+        Boolean buscado = esBuscado;
         List<WebElementFacade> listaContactos = findAll(".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV-body']/div/table/tbody/tr");
         if (!listaContactos.isEmpty()) {
             for (WebElementFacade contacto : listaContactos){
@@ -55,8 +48,8 @@ public class BusquedaContactoDelDirectorioPage extends Guidewire {
                     break;
                 }
             }
-            esBuscado = true;
+            buscado = true;
         }
-        return esBuscado;
+        return buscado;
     }
 }
