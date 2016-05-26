@@ -9,17 +9,16 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class PruebaMenuSteps extends ScenarioSteps {
 
+    public PruebaMenuSteps(Pages pages) {
+        super(pages);
+    }
+
     private Guidewire guidewire() {
         return getPages().currentPageAt(Guidewire.class);
     }
     private AbrirAppPage abrirAppPage() {
         return getPages().currentPageAt(AbrirAppPage.class);
     }
-
-    public PruebaMenuSteps(Pages pages) {
-        super(pages);
-    }
-
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }

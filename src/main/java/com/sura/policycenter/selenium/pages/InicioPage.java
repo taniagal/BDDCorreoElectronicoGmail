@@ -7,7 +7,9 @@ import com.sura.policycenter.selenium.pages.menu.acciones.contacto.ContactoNueva
 import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.*;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
 import com.sura.policycenter.selenium.pages.menu.superior.contacto.BuscarContactoPage;
@@ -24,12 +26,14 @@ import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
+import org.slf4j.LoggerFactory;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 @SuppressWarnings("UnusedReturnValue")
 public class InicioPage extends Guidewire {
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
     private final Navegacion navegacion;
     Actions act = new Actions(getDriver());
 
@@ -336,5 +340,13 @@ public class InicioPage extends Guidewire {
     //Metodos Opciones Cuentas
     public OpcionesCrearPartcCuentaPage irAOpcionesCrearPartcCuenta(){
         return navegacion.irAOpcionesCrearPartcCuenta();
+    }
+
+    public OpcionesResumenCuentaPage irAOpcionesResumenCuenta() {
+        return navegacion.irAOpcionesResumenCuenta();
+    }
+
+    public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
+        return navegacion.irAOpcionesAdministradorCotizaciones();
     }
 }
