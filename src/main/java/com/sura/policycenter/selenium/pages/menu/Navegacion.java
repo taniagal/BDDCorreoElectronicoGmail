@@ -47,6 +47,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaVerificaC
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminAtributosPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminCambioDatosPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminCodAgentesPage;
