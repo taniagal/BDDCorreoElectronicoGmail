@@ -83,17 +83,17 @@ public class NuevoContactoPage extends Guidewire {
     public void ingresarDireccion(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
         selectItem(cboDepartamento,departamento);
-        waitABit(1500);
+        waitABit(2000);
         selectItem(cboCiudad,ciudad);
-        waitABit(1500);
+        waitABit(2000);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
         direccion2.sendKeys(direccion);
         selectItem(cboDepartamento2,departamento);
-        waitABit(1500);
+        waitABit(2000);
         selectItem(cboCiudad2,ciudad);
-        waitABit(1500);
+        waitABit(2000);
         selectItem(tipoDireccion2,tipoDireccion);
     }
 
