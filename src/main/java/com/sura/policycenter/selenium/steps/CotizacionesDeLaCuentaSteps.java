@@ -4,24 +4,24 @@ import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarCuentasPage;
+import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import java.util.Map;
-
-/**
- * Created by jonamele on 16/05/2016.
- */
 public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
 
-    public CotizacionesDeLaCuentaSteps(Pages pages) {super(pages);}
+    private final BuscarCuentasPage buscarCuentasPage = new BuscarCuentasPage (getDriver());
+    private final OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage (getDriver());
+    private final OpcionesAdminitradorCotizaciones opcionesAdministradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());
+
+    public CotizacionesDeLaCuentaSteps(Pages pages) {
+        super(pages);
+    }
+
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
-    BuscarCuentasPage buscarCuentasPage = new BuscarCuentasPage (getDriver());
-    OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage (getDriver());
-    OpcionesAdminitradorCotizaciones opcionesAdministradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());
 
     @Step
     public void navegaBuscarCuentaPar (){

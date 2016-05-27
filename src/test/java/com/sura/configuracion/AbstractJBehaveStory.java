@@ -1,10 +1,15 @@
 package com.sura.configuracion;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import net.serenitybdd.jbehave.SerenityStories;
 import net.serenitybdd.jbehave.runners.SerenityReportingRunner;
 import net.thucydides.core.model.TestOutcome;
 import net.thucydides.core.model.TestStep;
 import net.thucydides.core.reports.TestOutcomeLoader;
+import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.util.MockEnvironmentVariables;
 import net.thucydides.core.webdriver.Configuration;
 import net.thucydides.core.webdriver.SystemPropertiesConfiguration;
@@ -13,14 +18,12 @@ import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
+import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AbstractJBehaveStory {
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     protected MockEnvironmentVariables environmentVariables;
     protected Configuration systemConfiguration;
 
@@ -41,22 +44,7 @@ public class AbstractJBehaveStory {
         environmentVariables.setProperty("webdriver.driver", "phantomjs");
         systemConfiguration = new SystemPropertiesConfiguration(environmentVariables);
         raisedErrors.clear();
-        System.out.println("Report directory:" + this.outputDirectory);
-    }
-
-    final class AlertingNotifier extends RunNotifier {
-
-        private Throwable exceptionThrown;
-
-        @Override
-        public void fireTestFailure(Failure failure) {
-            exceptionThrown = failure.getException();
-            super.fireTestFailure(failure);
-        }
-
-        public Throwable getExceptionThrown() {
-            return exceptionThrown;
-        }
+        LOGGER.error("Report directory:" + this.outputDirectory);
     }
 
     protected void run(SerenityStories stories) throws Throwable {
@@ -68,7 +56,7 @@ public class AbstractJBehaveStory {
             runner.getDescription();
             runner.run(notifier);
         } catch(Throwable e) {
-         //   throw e;
+            LOGGER.error("Throwable: " + e);
         } finally {
             if (notifier.getExceptionThrown() != null) {
                 raisedErrors.add(notifier.getExceptionThrown());
@@ -78,7 +66,7 @@ public class AbstractJBehaveStory {
 
     protected List<TestOutcome> loadTestOutcomes() throws IOException {
         TestOutcomeLoader loader = new TestOutcomeLoader();
-        System.out.println("Loading test outcomes from " + outputDirectory);
+        LOGGER.error("Loading test outcomes from " + outputDirectory);
         return loader.loadFrom(outputDirectory);
     }
 
@@ -99,5 +87,19 @@ public class AbstractJBehaveStory {
         return givenStep;
     }
 
+    final class AlertingNotifier extends RunNotifier {
 
+        private Throwable exceptionThrown;
+
+        @Override
+        public void fireTestFailure(Failure failure) {
+            exceptionThrown = failure.getException();
+            super.fireTestFailure(failure);
+        }
+
+        public Throwable getExceptionThrown() {
+            return exceptionThrown;
+        }
+    }
+    
 }

@@ -1,14 +1,12 @@
 package com.sura.policycenter.selenium.pages;
 
-
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -59,6 +57,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
     @FindBy(css=".message")
     private WebElementFacade divMensaje;
 
+    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     String direccion = "";
 
 
@@ -111,7 +110,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public void validarCamposNuevos(){
-            StringBuilder notPresent = new StringBuilder("No estan presentes los elementos:");
+            StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
             if(!labelUsoPredominante.isPresent())
                 notPresent.append(" uso_predominante,");
             if(!labelNumeroDeSotanos.isPresent())
@@ -121,7 +120,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
             if(!labelAnioDeConstruccion.isPresent())
                 notPresent.append(" anio_de_construccion,");
             String res = notPresent.toString();
-            if("No estan presentes los elementos:".equals(res))
+            if(MSJVALIDARELEMENTOS.equals(res))
                 res = notPresent.toString().substring(0,notPresent.toString().length()-1);
             assertThat(res,"No estan presentes los elementos".equals(res));
         }
@@ -132,8 +131,9 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public void verificarMensajeDireccion(String mensaje) {
-        mensaje = mensaje.substring(0,13)+direccion+mensaje.substring(13,mensaje.length());
+        String validaMensaje;
+        validaMensaje = mensaje.substring(0,13)+direccion+mensaje.substring(13,mensaje.length());
         waitABit(1000);
-        assertThat("Falló el mensaje de validacion de caracteres de la direccion", divMensaje.containsText(mensaje));
+        assertThat("Falló el mensaje de validacion de caracteres de la direccion", divMensaje.containsText(validaMensaje));
     }
 }

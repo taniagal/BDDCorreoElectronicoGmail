@@ -1,15 +1,17 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import com.sura.guidewire.selenium.Guidewire;
 import java.util.Map;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
-import com.sura.guidewire.selenium.Guidewire;
-import net.serenitybdd.core.pages.WebElementFacade;
+
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 public class OpcionesResumenCuentaPage extends Guidewire {
 

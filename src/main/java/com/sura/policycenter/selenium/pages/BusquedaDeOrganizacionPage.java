@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -61,9 +60,6 @@ public class BusquedaDeOrganizacionPage extends SeusLoginPage {
     private WebElementFacade txtRazonSocial;
     @FindBy(xpath=".//*[@id='OrganizationSearchPage:OrganizationSearchScreen:OrganizationSearchResultsLV:0:Name']")
     private WebElementFacade linkRazonSocial;
-
-
-
 
     public BusquedaDeOrganizacionPage(WebDriver driver) {
         super(driver);

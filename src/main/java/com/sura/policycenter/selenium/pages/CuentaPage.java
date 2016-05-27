@@ -1,12 +1,14 @@
 package com.sura.policycenter.selenium.pages;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import com.sura.guidewire.selenium.Guidewire;
-import net.serenitybdd.core.pages.WebElementFacade;
+
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CuentaPage extends Guidewire{
 
@@ -120,8 +122,7 @@ public class CuentaPage extends Guidewire{
         if("Compania".equals(persona)) {
             botonCrearCuentaNueva.click();
             botonNuevaCuentaCompania.click();
-        }
-        else {
+        }else {
             botonCrearCuentaNueva.click();
             botonNuevaCuentaPersonal.click();
         }

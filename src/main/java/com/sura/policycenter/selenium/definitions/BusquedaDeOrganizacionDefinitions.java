@@ -1,13 +1,14 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.pages.InicioPage;
-import com.sura.policycenter.selenium.steps.BusquedaDeCuentasSteps;
 import com.sura.policycenter.selenium.steps.BusquedaDeOrganizacionSteps;
+
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+
 
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 

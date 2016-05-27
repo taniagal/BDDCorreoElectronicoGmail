@@ -1,19 +1,21 @@
 package com.sura.policycenter.selenium.pages;
 
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import java.util.concurrent.TimeUnit;
+import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import com.sura.guidewire.selenium.Guidewire;
-import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.pages.WebElementFacade;
+
+
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 public class HistorialCuentaPage extends Guidewire {
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")

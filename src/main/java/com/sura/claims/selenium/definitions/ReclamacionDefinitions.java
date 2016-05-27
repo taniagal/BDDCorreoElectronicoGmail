@@ -1,12 +1,14 @@
 package com.sura.claims.selenium.definitions;
 
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.When;
 import com.sura.claims.selenium.pages.InicioPage;
 import com.sura.claims.selenium.steps.ClaimsSteps;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.When;
+
+
+import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 @SuppressWarnings("WeakerAccess")
 public class ReclamacionDefinitions {

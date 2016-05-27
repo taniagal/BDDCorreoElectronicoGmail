@@ -1,16 +1,18 @@
 package com.sura.claims.selenium.pages;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import com.sura.claims.selenium.pages.menu.Navegacion;
 import com.sura.claims.selenium.pages.menu.superior.reclamacion.NuevaReclamacionPage;
 import com.sura.claims.selenium.pages.menu.superior.reclamacion.ReclamacionBuscarPage;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 
 public class InicioPage extends Guidewire {
 
