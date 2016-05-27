@@ -1,8 +1,8 @@
 package com.sura.policycenter.selenium.pages;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import java.util.concurrent.TimeUnit;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import com.sura.guidewire.selenium.Guidewire;
@@ -415,15 +415,15 @@ public class DetallesContactoPage extends Guidewire {
 
     public void validarCampos() {
         StringBuilder right = new StringBuilder("No estan correctos los valores:");
-        if(!comboBoxPais.getValue().toString().equals("Colombia"))
+        if(!"Colombia".equals(comboBoxPais.getValue().toString()))
             right.append(" pais,");
-        if(!comboBoxDepartamento.getValue().toString().equals("<ninguno>"))
+        if(!"<ninguno>".equals(comboBoxDepartamento.getValue().toString()))
             right.append(" departamento,");
-        if(!campoTxtDireccion.getAttribute("placeholder").equals("CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203"))
+        if(!"CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203".equals(campoTxtDireccion.getAttribute("placeholder")))
             right.append("drireccion placeholder,");
-        if(!campoTxtDireccion.getAttribute("data-qtip").equals("Esta Direccion podria estandarizarse automáticamente"))
+        if(!"Esta Direccion podria estandarizarse automáticamente".equals(campoTxtDireccion.getAttribute("data-qtip")))
             right.append("drireccion data-tip,");
-        if(!campoTxtDireccion.getAttribute("maxlength").equals("200"))
+        if(!"200".equals(campoTxtDireccion.getAttribute("maxlength")))
             right.append("direccion maxlength,");
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){

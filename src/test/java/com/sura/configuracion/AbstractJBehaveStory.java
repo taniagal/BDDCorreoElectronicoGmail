@@ -68,7 +68,7 @@ public class AbstractJBehaveStory {
             runner.getDescription();
             runner.run(notifier);
         } catch(Throwable e) {
-         //   throw e;
+
         } finally {
             if (notifier.getExceptionThrown() != null) {
                 raisedErrors.add(notifier.getExceptionThrown());
