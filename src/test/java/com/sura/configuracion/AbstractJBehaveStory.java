@@ -14,10 +14,11 @@ import org.junit.rules.TemporaryFolder;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
 
+import java.util.List;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class AbstractJBehaveStory {
 

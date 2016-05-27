@@ -255,7 +255,7 @@ public class DetallesContactoPage extends Guidewire {
      */
     public void verificarActualizacion(){
         espera(campoTxtSegundoNombre,6);
-        StringBuilder right = new StringBuilder("No estan correctos los valores:");
+        StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlContact[2].equals(campoTxtSegundoNombre.getText()))
             right.append("segundo nombre,");
         if(!dtlContact[3].equals(campoTxtSegundoApellido.getText()))
@@ -285,7 +285,7 @@ public class DetallesContactoPage extends Guidewire {
 
     public void verificarActualizacionJuridico(){
         espera(campoTxtNombreComercial,6);
-        StringBuilder right = new StringBuilder("No estan correctos los valores:");
+        StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlCntJ[0].equals(campoTxtNombreComercial.getText()))
             right.append("nombre comercial,");
         if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
@@ -322,7 +322,7 @@ public class DetallesContactoPage extends Guidewire {
      * Valida si estos elementos están presentes
     */
     public  void verificarCamposPersonaNatural(){
-        StringBuilder notPresent = new StringBuilder("No estan presentes los elementos:");
+        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelPrimerNombre.isPresent())
             notPresent.append(" primer_nombre,");
         if(!labelSegundoNombre.isPresent())
@@ -359,7 +359,7 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void verificarCamposPersonaJuridica() {
-        StringBuilder notPresent = new StringBuilder("No estan presentes los elementos:");
+        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelRazonSocial.isPresent())
             notPresent.append(" razon_social,");
         if(!labelNombreComercial.isPresent())
@@ -391,7 +391,7 @@ public class DetallesContactoPage extends Guidewire {
      * AGREGAR DIRECCION A CONTACTO
      */
     public void validarDatosPantalla() {
-        StringBuilder notPresent = new StringBuilder("No estan presentes los elementos:");
+        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelPais.isPresent())
             notPresent.append(" pais,");
         if(!labelDepartamento.isPresent())
@@ -414,16 +414,16 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void validarCampos() {
-        StringBuilder right = new StringBuilder("No estan correctos los valores:");
-        if(!comboBoxPais.getValue().toString().equals("Colombia"))
+        StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
+        if(!"Colombia".equals(comboBoxPais.getValue().toString()))
             right.append(" pais,");
-        if(!comboBoxDepartamento.getValue().toString().equals("<ninguno>"))
+        if(!"<ninguno>".equals(comboBoxDepartamento.getValue().toString()))
             right.append(" departamento,");
-        if(!campoTxtDireccion.getAttribute("placeholder").equals("CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203"))
+        if(!"CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203".equals(campoTxtDireccion.getAttribute("placeholder")))
             right.append("drireccion placeholder,");
-        if(!campoTxtDireccion.getAttribute("data-qtip").equals("Esta Direccion podria estandarizarse automáticamente"))
+        if(!"Esta Direccion podria estandarizarse automáticamente".equals(campoTxtDireccion.getAttribute("data-qtip")))
             right.append("drireccion data-tip,");
-        if(!campoTxtDireccion.getAttribute("maxlength").equals("200"))
+        if(!"200".equals(campoTxtDireccion.getAttribute("maxlength")))
             right.append("direccion maxlength,");
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
