@@ -1,8 +1,8 @@
 package com.sura.policycenter.selenium.steps;
 
-import java.util.Map;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
+import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;

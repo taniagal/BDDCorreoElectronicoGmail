@@ -1,15 +1,17 @@
 package com.sura.policycenter.selenium.pages;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import com.sura.guidewire.selenium.Guidewire;
+import com.sura.serinitybdd.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import com.sura.guidewire.selenium.Guidewire;
-import com.sura.serinitybdd.util.GwNavegacionUtil;
-import net.serenitybdd.core.pages.WebElementFacade;
+
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DisponibilidadDetalleProductoPage extends Guidewire {
 

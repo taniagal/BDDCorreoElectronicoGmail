@@ -1,8 +1,8 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
+import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.Map;
-import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
+
 
 import static com.thoughtworks.selenium.SeleneseTestBase.assertFalse;
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;

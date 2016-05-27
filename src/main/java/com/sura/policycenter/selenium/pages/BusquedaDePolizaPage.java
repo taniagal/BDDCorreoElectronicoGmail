@@ -1,23 +1,21 @@
 package com.sura.policycenter.selenium.pages;
 
-import java.util.Map;
+import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
-
+import java.util.Map;
+import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.sura.guidewire.selenium.Guidewire;
 
-import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BusquedaDePolizaPage extends Guidewire{
 

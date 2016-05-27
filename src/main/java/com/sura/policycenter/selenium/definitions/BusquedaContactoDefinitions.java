@@ -1,19 +1,16 @@
 package com.sura.policycenter.selenium.definitions;
 
-import java.util.Map;
+import com.sura.guidewire.selenium.SeusLoginSteps;
+import com.sura.policycenter.selenium.steps.BusquedaContactoSteps;
+import com.sura.policycenter.selenium.steps.PolicySteps;
 import java.util.HashMap;
-
+import java.util.Map;
+import net.thucydides.core.annotations.Manual;
+import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
-import com.sura.guidewire.selenium.SeusLoginSteps;
-import com.sura.policycenter.selenium.steps.BusquedaContactoSteps;
-import com.sura.policycenter.selenium.steps.PolicySteps;
-
-import net.thucydides.core.annotations.Manual;
-import net.thucydides.core.annotations.Steps;
 
 @SuppressWarnings("WeakerAccess")
 public class BusquedaContactoDefinitions {
