@@ -42,6 +42,7 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     @Step
     public void validarIngresoUbicacion(){
         detallesDeUbicacionPage.validarIngresoDeUbicacion();
+        waitABit(5000);
     }
 
     @Step
