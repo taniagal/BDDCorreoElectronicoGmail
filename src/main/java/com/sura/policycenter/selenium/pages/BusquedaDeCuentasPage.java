@@ -1,12 +1,15 @@
 package com.sura.policycenter.selenium.pages;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+
 import com.sura.guidewire.selenium.Guidewire;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 
 public class BusquedaDeCuentasPage extends Guidewire {
 
