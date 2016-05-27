@@ -26,8 +26,7 @@ public class DetallesDeUbiacionDefinitions {
     }
 
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>")
-    public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad,
-                                 @Named("descripcion")String descripcion){
+    public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad){
         detallesDeUbicacionSteps.agregarDireccion(direccion, departamento, ciudad);
     }
 

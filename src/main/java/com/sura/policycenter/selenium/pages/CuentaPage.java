@@ -122,8 +122,7 @@ public class CuentaPage extends Guidewire{
         if("Compania".equals(persona)) {
             botonCrearCuentaNueva.click();
             botonNuevaCuentaCompania.click();
-        }
-        else {
+        }else {
             botonCrearCuentaNueva.click();
             botonNuevaCuentaPersonal.click();
         }
