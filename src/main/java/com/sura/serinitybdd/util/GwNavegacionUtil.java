@@ -105,7 +105,7 @@ public class GwNavegacionUtil {
             valores.add(key);
         }
         for (Map<String, String> enc : tablaUnaColumna.getRows()) {
-            valores.add(new String(enc.get(valores.get(0)).toString()));
+            valores.add(enc.get(valores.get(0)).toString());
 
         }
         return valores;

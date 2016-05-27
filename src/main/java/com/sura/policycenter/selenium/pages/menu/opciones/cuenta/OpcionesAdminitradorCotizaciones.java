@@ -113,12 +113,8 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     }
 
     public void validarEstadosCotizacion(String estadoDeclinar, String estadoNoTomar){
-        try{
-            assertThat(itmDeclinar.getText(), is(equalTo(estadoDeclinar)));
-            assertThat(itmNoTomar.getText(), is(equalTo(estadoNoTomar)));
-        } catch (Exception e){
-            LOGGER.error("This is error", e);
-        }
+        assertThat(itmDeclinar.getText(), is(equalTo(estadoDeclinar)));
+        assertThat(itmNoTomar.getText(), is(equalTo(estadoNoTomar)));
     }
 
     public void crearNuevaCotizacion() {
@@ -169,8 +165,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
                 assertThat(cells.get(4).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(5).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(7).getText(), is(not(equalTo(null))));
-            }
-            else if(!(" ".equals(cells.get(1).getText()))){
+            } else if(!(" ".equals(cells.get(1).getText()))){
                 boolean valido = cells.get(1).getText().equals(producto);
                 assertTrue(valido);
 
