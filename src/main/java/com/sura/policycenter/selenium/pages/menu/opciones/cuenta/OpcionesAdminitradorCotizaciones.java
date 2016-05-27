@@ -88,13 +88,13 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     @FindBy(xpath = "//div[10]/div/span")
     private WebElementFacade colCartas;
 
-    @FindBy(xpath = "//tr[9]/td[2]/div/span[2]")
+    @FindBy(xpath = "//tr[7]/td[2]/div/span[2]")
     private WebElementFacade lblPropiedadComercialDeclinado;
 
-    @FindBy(xpath = "//tr[9]/td[8]/div")
+    @FindBy(xpath = "//tr[7]/td[8]/div")
     private WebElementFacade lblDeclinado;
 
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:4:DeclineLetter']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:3:DeclineLetter']")
     private WebElementFacade btnCrearCartaDeclinacion;
 
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionProduct']")
@@ -213,7 +213,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         }
 
         if("Expedida".equals(estado)){
-            assertThat(contador,is(equalTo(2)));
+            assertThat(contador,is(equalTo(1)));
         }else if (!"Expedida".equals(estado)){
             assertThat(contador,is(equalTo(1)));
         }
@@ -230,7 +230,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
                 contador++;
             }
         }
-        assertThat(contador,is(equalTo(2)));
+        assertThat(contador,is(equalTo(1)));
     }
 
     public void validarEstadoCotizacionDeclinado(String propiedadComercial, String declinado) {
