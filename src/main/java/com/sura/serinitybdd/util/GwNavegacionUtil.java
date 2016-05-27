@@ -1,5 +1,10 @@
 package com.sura.serinitybdd.util;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.steps.StepInterceptor;
 import org.jbehave.core.model.ExamplesTable;
@@ -11,11 +16,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class GwNavegacionUtil {
 
@@ -105,7 +105,7 @@ public class GwNavegacionUtil {
             valores.add(key);
         }
         for (Map<String, String> enc : tablaUnaColumna.getRows()) {
-            valores.add(new String(enc.get(valores.get(0)).toString()));
+            valores.add(enc.get(valores.get(0)).toString());
 
         }
         return valores;

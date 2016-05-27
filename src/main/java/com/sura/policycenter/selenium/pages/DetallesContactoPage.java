@@ -1,209 +1,211 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import java.util.concurrent.TimeUnit;
-import java.util.List;
+
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DetallesContactoPage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
-    private WebElementFacade lblPrimerNombre;
+    private WebElementFacade labelPrimerNombre;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-labelEl']")
-    private WebElementFacade lblSegundoNombre;
+    private WebElementFacade labelSegundoNombre;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:LastName-labelEl']")
-    private WebElementFacade lblPrimerApellido;
+    private WebElementFacade labelPrimerApellido;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:Particle-labelEl']")
-    private WebElementFacade lblSegundoApellido;
+    private WebElementFacade labelSegundoApellido;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:DocumentType-labelEl']")
-    private WebElementFacade lblTipoDocumento;
+    private WebElementFacade labelTipoDocumento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
-    private WebElementFacade lblNumeroDocumento;
+    private WebElementFacade labelNumeroDocumento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Sexo-labelEl']")
-    private WebElementFacade lblSexo;
+    private WebElementFacade labelSexo;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DateOfBirth-labelEl']")
-    private WebElementFacade lblFechaNacimiento;
+    private WebElementFacade labelFechaNacimiento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Profession-labelEl']")
-    private WebElementFacade lblProfesion;
+    private WebElementFacade labelProfesion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:MaritalStatus-labelEl']")
-    private WebElementFacade lblEstadoCivil;
+    private WebElementFacade labelEstadoCivil;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:FamilyType-labelEl']")
-    private WebElementFacade lblTipoFamilia;
+    private WebElementFacade labelTipoFamilia;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-labelEl']")
-    private WebElementFacade lblTipoTelefono;
+    private WebElementFacade labelTipoTelefono;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:CellPhone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
-    private WebElementFacade lblTelefonoCelular;
+    private WebElementFacade labelTelefonoCelular;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress1-labelEl']")
-    private WebElementFacade lblCorreoElectronicoPrimario;
+    private WebElementFacade labelCorreoElectronicoPrimario;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-labelEl']")
-    private WebElementFacade lblRazonSocial;
+    private WebElementFacade labelRazonSocial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:CommercialName-labelEl']")
-    private WebElementFacade lblNombreComercial;
+    private WebElementFacade labelNombreComercial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Activity-labelEl']")
-    private WebElementFacade lblActividadComercial;
+    private WebElementFacade labelActividadComercial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:EmployeesNumber-labelEl']")
-    private WebElementFacade lblNumeroEmpleados;
+    private WebElementFacade labelNumeroEmpleados;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Assets-labelEl']")
-    private WebElementFacade lblValorActivos;
+    private WebElementFacade labelValorActivos;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:AnualSells-labelEl']")
-    private WebElementFacade lblVentasAnuales;
+    private WebElementFacade labelVentasAnuales;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:AnualSells-labelEl']")
-    private WebElementFacade lblTelefonoOficinaEmpresa;
+    private WebElementFacade labelTelefonoOficinaEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl']")
-    private WebElementFacade getTxtCorreoElectronicoPrimarioEmpresa;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Edit-btnInnerEl']")
-    private WebElementFacade btnEditarContacto;
+    private WebElementFacade getcampoTxtCorreoElectronicoPrimarioEmpresa;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Edit']")
+    private WebElementFacade botonEditarContacto;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl']")
-    private WebElementFacade txtSegundoNombre;
+    private WebElementFacade campoTxtSegundoNombre;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:Particle-inputEl']")
-    private WebElementFacade txtSegundoApellido;
+    private WebElementFacade campoTxtSegundoApellido;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Profession-inputEl']")
-    private WebElementFacade cboProfesion;
+    private WebElementFacade comboBoxProfesion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:MaritalStatus-inputEl']")
-    private WebElementFacade cboEstadoCivil;
+    private WebElementFacade comboBoxEstadoCivil;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:FamilyType-inputEl']")
-    private WebElementFacade cboTipoFamilia;
+    private WebElementFacade comboBoxTipoFamilia;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:CellPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
-    private WebElementFacade txtTelefonoCelular;
+    private WebElementFacade campoTxtTelefonoCelular;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:CellPhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
-    private WebElementFacade txtTelefonoCelular2;
+    private WebElementFacade campoTxtTelefonoCelular2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
-    private WebElementFacade txtTelefonoResidencial;
+    private WebElementFacade campoTxtTelefonoResidencial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
-    private WebElementFacade txtTelefonoResidencial2;
+    private WebElementFacade campoTxtTelefonoResidencial2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
-    private WebElementFacade txtTelefonoTrabajo;
+    private WebElementFacade campoTxtTelefonoTrabajo;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
-    private WebElementFacade txtTelefonoTrabajo2;
+    private WebElementFacade campoTxtTelefonoTrabajo2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress1-inputEl']")
-    private WebElementFacade txtCorreoElectronicoPrimario;
+    private WebElementFacade campoTxtCorreoElectronicoPrimario;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress2-inputEl']")
-    private WebElementFacade txtCorreoElectronicoSecundario;
+    private WebElementFacade campoTxtCorreoElectronicoSecundario;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
-    private WebElementFacade txtNombreComercial;
+    private WebElementFacade campoTxtNombreComercial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Activity-inputEl']")
-    private WebElementFacade cboActividadComercial;
+    private WebElementFacade comboBoxActividadComercial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:EmployeesNumber-inputEl']")
-    private WebElementFacade txtNumeroEmpleados;
+    private WebElementFacade campoTxtNumeroEmpleados;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Assets-inputEl']")
-    private WebElementFacade txtValorActivos;
+    private WebElementFacade campoTxtValorActivos;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:AnualSells-inputEl']")
-    private WebElementFacade txtVentasAnuales;
+    private WebElementFacade campoTxtVentasAnuales;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
-    private WebElementFacade txtTelefonoOficina;
+    private WebElementFacade campoTxtTelefonoOficina;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress1-inputEl']")
-    private WebElementFacade txtCorreoElectronicoPrimarioEmpresa;
+    private WebElementFacade campoTxtCorreoElectronicoPrimarioEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress2-inputEl']")
-    private WebElementFacade txtCorreoElectronicoSecundarioEmpresa;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update-btnInnerEl']")
-    private WebElementFacade btnActualizar;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesCardTab-btnInnerEl']")
-    private WebElementFacade btnDirecciones;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV_tb:Add-btnInnerEl']")
-    private WebElementFacade btnAgregar;
+    private WebElementFacade campoTxtCorreoElectronicoSecundarioEmpresa;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update']")
+    private WebElementFacade botonActualizar;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesCardTab-botonInnerEl']")
+    private WebElementFacade botonDirecciones;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV_tb:Add-botonInnerEl']")
+    private WebElementFacade botonAgregar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-labelEl']")
-    private WebElementFacade lblPais;
+    private WebElementFacade labelPais;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-labelEl']")
-    private WebElementFacade lblDepartamento;
+    private WebElementFacade labelDepartamento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-labelEl']")
-    private WebElementFacade lblCiudad;
+    private WebElementFacade labelCiudad;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-labelEl']")
-    private WebElementFacade lblDireccion;
+    private WebElementFacade labelDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-labelEl']")
-    private WebElementFacade lblCodigoPostal;
+    private WebElementFacade labelCodigoPostal;
     @FindBy(xpath = " .//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-labelEl']")
-    private WebElementFacade lblTipoDireccion;
+    private WebElementFacade labelTipoDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-labelEl']")
-    private WebElementFacade lblDescripcionDireccion;
+    private WebElementFacade labelDescripcionDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
-    private WebElementFacade cboPais;
+    private WebElementFacade comboBoxPais;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade cboDepartamento;
+    private WebElementFacade comboBoxDepartamento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
-    private WebElementFacade txtDireccion;
+    private WebElementFacade campoTxtDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:DocumentType-inputEl']")
-    private WebElementFacade txtTipoDocumento;
+    private WebElementFacade campoTxtTipoDocumento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
-    private WebElementFacade txtDocumento;
+    private WebElementFacade campoTxtDocumento;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
 
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
     private static final String MSJVALIDARVALORES = "No estan correctos los valores:";
-    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elemtos:";
+    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
     }
 
     public void editarContacto(){
-        btnEditarContacto.click();
+        espera(botonEditarContacto,10);
+        botonEditarContacto.click();
         waitABit(800);
     }
 
     public void actualizaContacto(){
-        btnActualizar.click();
+        botonActualizar.click();
         waitABit(2000);
     }
 
     public void irADirecciones(){
-        btnDirecciones.click();
+        botonDirecciones.click();
         waitABit(2000);
-        btnAgregar.click();
+        botonAgregar.click();
     }
 
     public void agregarDireccion(){
-        btnAgregar.click();
+        botonAgregar.click();
     }
 
     public void agregarNombre(String segundoNombre){
-        txtSegundoNombre.clear();
-        txtSegundoNombre.sendKeys(segundoNombre);
+        campoTxtSegundoNombre.clear();
+        campoTxtSegundoNombre.sendKeys(segundoNombre);
         dtlContact[2]= segundoNombre;
     }
 
     public void agregarApellido(String segundoApellido){
-        txtSegundoApellido.clear();
+        campoTxtSegundoApellido.clear();
         waitABit(1500);
-        txtSegundoApellido.sendKeys(segundoApellido);
+        campoTxtSegundoApellido.sendKeys(segundoApellido);
         dtlContact[3]= segundoApellido;
     }
 
     public void agregarLists(String profesion,String estadoCivil,String tipoFamilia){
-        selectItem(cboProfesion, profesion);
-        selectItem(cboEstadoCivil,estadoCivil);
-        selectItem(cboTipoFamilia, tipoFamilia);
+        selectItem(comboBoxProfesion, profesion);
+        selectItem(comboBoxEstadoCivil,estadoCivil);
+        selectItem(comboBoxTipoFamilia, tipoFamilia);
         dtlContact[6]= profesion;
         dtlContact[7]= estadoCivil;
         dtlContact[8]= tipoFamilia;
     }
 
     public void agregarTelefonosResidencial(String telefonoResidencial){
-        txtTelefonoResidencial.type(telefonoResidencial);
+        campoTxtTelefonoResidencial.type(telefonoResidencial);
         dtlContact[11]= telefonoResidencial;
     }
 
     public void agregarTelefonoTrabajo(String telefonoTrabajo){
-        txtTelefonoTrabajo.sendKeys(telefonoTrabajo);
+        campoTxtTelefonoTrabajo.sendKeys(telefonoTrabajo);
         dtlContact[12]= telefonoTrabajo;
     }
 
     public void agregarTelefonoCelular(String telefonoCelular){
-        txtTelefonoCelular.sendKeys(telefonoCelular);
+        campoTxtTelefonoCelular.sendKeys(telefonoCelular);
         dtlContact[10]= telefonoCelular;
     }
 
     public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
-        txtCorreoElectronicoPrimario.clear();
+        campoTxtCorreoElectronicoPrimario.clear();
         waitABit(500);
-        txtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
+        campoTxtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
         waitABit(500);
-        txtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
+        campoTxtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
         dtlContact[13]= correoElectronicoPrimario;
         dtlContact[14]= correoElectronicoSecundario;
     }
@@ -213,9 +215,9 @@ public class DetallesContactoPage extends Guidewire {
      * DETALLE CONTACTO EDICION PERSONA JURIDICA
      */
     public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
-        txtNombreComercial.clear();
-        txtNombreComercial.sendKeys(nombreComercial);
-        selectItem(cboActividadComercial, actividadComercial);
+        campoTxtNombreComercial.clear();
+        campoTxtNombreComercial.sendKeys(nombreComercial);
+        selectItem(comboBoxActividadComercial, actividadComercial);
         dtlCntJ[0]= nombreComercial;
         dtlCntJ[1]= actividadComercial;
     }
@@ -223,26 +225,26 @@ public class DetallesContactoPage extends Guidewire {
 
     public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
         waitABit(500);
-        txtNumeroEmpleados.clear();
-        txtNumeroEmpleados.sendKeys(numeroEmpleados);
-        txtValorActivos.clear();
-        txtValorActivos.sendKeys(valorActivos);
-        txtVentasAnuales.clear();
-        txtVentasAnuales.sendKeys(ventasAnuales);
+        campoTxtNumeroEmpleados.clear();
+        campoTxtNumeroEmpleados.sendKeys(numeroEmpleados);
+        campoTxtValorActivos.clear();
+        campoTxtValorActivos.sendKeys(valorActivos);
+        campoTxtVentasAnuales.clear();
+        campoTxtVentasAnuales.sendKeys(ventasAnuales);
         dtlCntJ[2]= numeroEmpleados;
         dtlCntJ[3]= valorActivos;
         dtlCntJ[4]= ventasAnuales;
     }
 
     public void agregarCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario){
-        txtCorreoElectronicoPrimarioEmpresa.clear();
+        campoTxtCorreoElectronicoPrimarioEmpresa.clear();
         waitABit(100);
-        txtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
-        txtTelefonoOficina.clear();
-        txtTelefonoOficina.sendKeys(telefonoOficina);
-        txtCorreoElectronicoSecundarioEmpresa.clear();
+        campoTxtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
+        campoTxtTelefonoOficina.clear();
+        campoTxtTelefonoOficina.sendKeys(telefonoOficina);
+        campoTxtCorreoElectronicoSecundarioEmpresa.clear();
         waitABit(500);
-        txtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
+        campoTxtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
         dtlCntJ[5]= telefonoOficina;
         dtlCntJ[6]= correoElectronicoPrimario;
         dtlCntJ[7]= correoElectronicoSecundario;
@@ -254,38 +256,28 @@ public class DetallesContactoPage extends Guidewire {
      * Valida si los datos ingresados es igual al que se muestran en el detalle
      */
     public void verificarActualizacion(){
-        espera(txtSegundoNombre,6);
+        espera(campoTxtSegundoNombre,6);
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!dtlContact[2].equals(txtSegundoNombre.getText())) {
+        if(!dtlContact[2].equals(campoTxtSegundoNombre.getText()))
             right.append("segundo nombre,");
-        }
-        if(!dtlContact[3].equals(txtSegundoApellido.getText())) {
+        if(!dtlContact[3].equals(campoTxtSegundoApellido.getText()))
             right.append("segundo apellido,");
-        }
-        if(!dtlContact[6].equals(cboProfesion.getText())) {
+        if(!dtlContact[6].equals(comboBoxProfesion.getText()))
             right.append("profesion,");
-        }
-        if(!dtlContact[7].equals(cboEstadoCivil.getText())) {
+        if(!dtlContact[7].equals(comboBoxEstadoCivil.getText()))
             right.append("estado civil,");
-        }
-        if(!dtlContact[8].equals(cboTipoFamilia.getText())) {
+        if(!dtlContact[8].equals(comboBoxTipoFamilia.getText()))
             right.append("tipo de familia,");
-        }
-        if(!dtlContact[10].equals(txtTelefonoCelular2.getText())) {
+        if(!dtlContact[10].equals(campoTxtTelefonoCelular2.getText()))
             right.append("telefono celular,");
-        }
-        if(!dtlContact[11].equals(txtTelefonoResidencial2.getText())) {
+        if(!dtlContact[11].equals(campoTxtTelefonoResidencial2.getText()))
             right.append("telefono residencial,");
-        }
-        if(!dtlContact[12].equals(txtTelefonoTrabajo2.getText())) {
+        if(!dtlContact[12].equals(campoTxtTelefonoTrabajo2.getText()))
             right.append("telefono tarbajo,");
-        }
-        if(!dtlContact[13].equals(txtCorreoElectronicoPrimario.getText())) {
+        if(!dtlContact[13].equals(campoTxtCorreoElectronicoPrimario.getText()))
             right.append("correo primario,");
-        }
-        if(!dtlContact[14].equals(txtCorreoElectronicoSecundario.getText())) {
+        if(!dtlContact[14].equals(campoTxtCorreoElectronicoSecundario.getText()))
             right.append("correo secundario,");
-        }
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
@@ -294,32 +286,24 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void verificarActualizacionJuridico(){
-        espera(txtNombreComercial,6);
+        espera(campoTxtNombreComercial,6);
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!dtlCntJ[0].equals(txtNombreComercial.getText())) {
+        if(!dtlCntJ[0].equals(campoTxtNombreComercial.getText()))
             right.append("nombre comercial,");
-        }
-        if(!dtlCntJ[1].equals(cboActividadComercial.getText())) {
+        if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
             right.append("activida comercual,");
-        }
-        if(!dtlCntJ[2].equals(txtNumeroEmpleados.getText())) {
+        if(!dtlCntJ[2].equals(campoTxtNumeroEmpleados.getText()))
             right.append("numero de empleados,");
-        }
-        if(!dtlCntJ[3].equals(txtValorActivos.getText())) {
+        if(!dtlCntJ[3].equals(campoTxtValorActivos.getText()))
             right.append("valor activos,");
-        }
-        if(!dtlCntJ[4].equals(txtVentasAnuales.getText())) {
+        if(!dtlCntJ[4].equals(campoTxtVentasAnuales.getText()))
             right.append("ventas anuales,");
-        }
-        if(!dtlCntJ[5].equals(txtTelefonoTrabajo2.getText())) {
+        if(!dtlCntJ[5].equals(campoTxtTelefonoTrabajo2.getText()))
             right.append("telefono oficina,");
-        }
-        if(!dtlCntJ[6].equals(txtCorreoElectronicoPrimarioEmpresa.getText())) {
+        if(!dtlCntJ[6].equals(campoTxtCorreoElectronicoPrimarioEmpresa.getText()))
             right.append("correo primario,");
-        }
-        if(!dtlCntJ[7].equals(txtCorreoElectronicoSecundarioEmpresa.getText())) {
+        if(!dtlCntJ[7].equals(campoTxtCorreoElectronicoSecundarioEmpresa.getText()))
             right.append("correo secundario,");
-        }
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
@@ -332,7 +316,7 @@ public class DetallesContactoPage extends Guidewire {
      */
     public void verificarEstadoDeDocumento(){
         assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo",
-                !txtTipoDocumento.isCurrentlyEnabled() || !txtDocumento.isCurrentlyEnabled());
+                !campoTxtTipoDocumento.getAttribute("class").contains("x-form-text") || !campoTxtDocumento.getAttribute("class").contains("x-form-text"));
     }
 
     /**
@@ -341,92 +325,68 @@ public class DetallesContactoPage extends Guidewire {
     */
     public  void verificarCamposPersonaNatural(){
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if(!lblPrimerNombre.isPresent()) {
+        if(!labelPrimerNombre.isPresent())
             notPresent.append(" primer_nombre,");
-        }
-        if(!lblSegundoNombre.isPresent()) {
+        if(!labelSegundoNombre.isPresent())
             notPresent.append(" segundo_nombre,");
-        }
-        if(!lblPrimerApellido.isPresent()) {
+        if(!labelPrimerApellido.isPresent())
             notPresent.append(" primer_apellido,");
-        }
-        if(!lblSegundoApellido.isPresent()) {
+        if(!labelSegundoApellido.isPresent())
             notPresent.append(" segundo_apellido,");
-        }
-        if(!lblTipoDocumento.isPresent()) {
+        if(!labelTipoDocumento.isPresent())
             notPresent.append(" tipo_documento,");
-        }
-        if(!lblNumeroDocumento.isPresent()) {
+        if(!labelNumeroDocumento.isPresent())
             notPresent.append(" numero_documento,");
-        }
-        if(!lblSexo.isPresent()) {
+        if(!labelSexo.isPresent())
             notPresent.append(" sexo,");
-        }
-        if(!lblFechaNacimiento.isPresent()) {
+        if(!labelFechaNacimiento.isPresent())
             notPresent.append(" fecha_nacimiento,");
-        }
-        if(!lblProfesion.isPresent()) {
+        if(!labelProfesion.isPresent())
             notPresent.append(" profesion,");
-        }
-        if(!lblEstadoCivil.isPresent()) {
+        if(!labelEstadoCivil.isPresent())
             notPresent.append(" estado_civil,");
-        }
-        if(!lblTipoFamilia.isPresent()) {
+        if(!labelTipoFamilia.isPresent())
             notPresent.append(" tipo_familia,");
-        }
-        if(!lblTipoTelefono.isPresent()) {
+        if(!labelTipoTelefono.isPresent())
             notPresent.append(" tipo_telefono,");
-        }
-        if(!lblTelefonoCelular.isPresent()) {
+        if(!labelTelefonoCelular.isPresent())
             notPresent.append(" telefono_celular,");
-        }
-        if(!lblCorreoElectronicoPrimario.isPresent()) {
+        if(!labelCorreoElectronicoPrimario.isPresent())
             notPresent.append(" correo_electronico_primario,");
-        }
         String res = notPresent.toString();
         if(MSJVALIDARELEMENTOS.equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);
         }
-        assertThat(res,"No estan presentes los elemtos".equals(res));
+        assertThat(res,"No estan presentes los elementos".equals(res));
     }
 
     public void verificarCamposPersonaJuridica() {
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if(!lblRazonSocial.isPresent()) {
+        if(!labelRazonSocial.isPresent())
             notPresent.append(" razon_social,");
-        }
-        if(!lblNombreComercial.isPresent()) {
+        if(!labelNombreComercial.isPresent())
             notPresent.append(" nombre_comercial,");
-        }
-        if(!lblTipoDocumento.isPresent()) {
+        if(!labelTipoDocumento.isPresent())
             notPresent.append(" tipo_documento,");
-        }
-        if(!lblNumeroDocumento.isPresent()) {
+        if(!labelNumeroDocumento.isPresent())
             notPresent.append(" numero_documento,");
-        }
-        if(!lblActividadComercial.isPresent()) {
+        if(!labelActividadComercial.isPresent())
             notPresent.append(" actividad_comercial,");
-        }
-        if(!lblNumeroEmpleados.isPresent()) {
+        if(!labelNumeroEmpleados.isPresent())
             notPresent.append(" numero_empleados,");
-        }
-        if(!lblValorActivos.isPresent()) {
+        if(!labelValorActivos.isPresent())
             notPresent.append(" valor_activos,");
-        }
-        if(!lblVentasAnuales.isPresent()) {
+        if(!labelVentasAnuales.isPresent())
             notPresent.append(" ventas_anuales,");
-        }
-        if(!lblTelefonoOficinaEmpresa.isPresent()) {
+        if(!labelTelefonoOficinaEmpresa.isPresent())
             notPresent.append(" telefono_oficina,");
-        }
-        if(!getTxtCorreoElectronicoPrimarioEmpresa.isPresent()) {
+        if(!getcampoTxtCorreoElectronicoPrimarioEmpresa.isPresent())
             notPresent.append(" correo_electronico_primario,");
-        }
         String res = notPresent.toString();
         if(MSJVALIDARELEMENTOS.equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);
         }
-        assertThat(res,"No estan presentes los elemtos".equals(res));
+        assertThat(res,"No estan presentes los elementos".equals(res));
     }
 
     /**
@@ -434,51 +394,39 @@ public class DetallesContactoPage extends Guidewire {
      */
     public void validarDatosPantalla() {
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if(!lblPais.isPresent()) {
+        if(!labelPais.isPresent())
             notPresent.append(" pais,");
-        }
-        if(!lblDepartamento.isPresent()) {
+        if(!labelDepartamento.isPresent())
             notPresent.append(" deprtamento,");
-        }
-        if(!lblCiudad.isPresent()) {
+        if(!labelCiudad.isPresent())
             notPresent.append(" ciudad,");
-        }
-        if(!lblDireccion.isPresent()) {
+        if(!labelDireccion.isPresent())
             notPresent.append(" direccion,");
-        }
-        if(!lblCodigoPostal.isPresent()) {
+        if(!labelCodigoPostal.isPresent())
             notPresent.append(" codigo postal,");
-        }
-        if(!lblTipoDireccion.isPresent()) {
+        if(!labelTipoDireccion.isPresent())
             notPresent.append(" tipo dirección,");
-        }
-        if(!lblDescripcionDireccion.isPresent()) {
+        if(!labelDescripcionDireccion.isPresent())
             notPresent.append(" descripción direccion,");
-        }
         String res = notPresent.toString();
         if(MSJVALIDARELEMENTOS.equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);
         }
-        assertThat(res,"No estan presentes los elemtos".equals(res));
+        assertThat(res,"No estan presentes los elementos".equals(res));
     }
 
     public void validarCampos() {
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!"Colombia".equals(cboPais.getValue().toString())) {
+        if(!"Colombia".equals(comboBoxPais.getValue().toString()))
             right.append(" pais,");
-        }
-        if(!"<ninguno>".equals(cboDepartamento.getValue().toString())) {
+        if(!"<ninguno>".equals(comboBoxDepartamento.getValue().toString()))
             right.append(" departamento,");
-        }
-        if(!"CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203".equals(txtDireccion.getAttribute("placeholder"))) {
+        if(!"CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203".equals(campoTxtDireccion.getAttribute("placeholder")))
             right.append("drireccion placeholder,");
-        }
-        if(!"Esta Direccion podria estandarizarse automáticamente".equals(txtDireccion.getAttribute("data-qtip"))) {
+        if(!"Esta Direccion podria estandarizarse automáticamente".equals(campoTxtDireccion.getAttribute("data-qtip")))
             right.append("drireccion data-tip,");
-        }
-        if(!"200".equals(txtDireccion.getAttribute("maxlength"))) {
+        if(!"200".equals(campoTxtDireccion.getAttribute("maxlength")))
             right.append("direccion maxlength,");
-        }
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
@@ -491,9 +439,7 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public List<WebElementFacade> getListaContactos() {
-        List<WebElementFacade> contactos;
-        contactos = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
-        return contactos;
+        return withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
     }
 
     public void validarMensaje(String mensaje) {

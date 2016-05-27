@@ -1,3 +1,5 @@
+Busqueda de Actividades
+
 Meta:
 
 Narrative:
@@ -37,68 +39,68 @@ Scenario: Realizar busqueda de actividades por alguno de los filtros requeridos 
 Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y estado de actividad <estadoActividad>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
-prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titular de la cuenta <titularCuenta>, producto
-<producto>, asignado por <asignadoPor>, estado <estado>
+|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|
 
 Examples:
-|usuario|estadoActividad|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|Alice Applegate|Abierta|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|usuario|estadoActividad|
+|Alice Applegate|Abierta|
 
 
 Scenario: Realizar busqueda de actividades por alguno de los filtros requeridos y prioridad
 Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y prioridad <filtroPrioridad>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
-prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titular de la cuenta <titularCuenta>, producto
-<producto>, asignado por <asignadoPor>, estado <estado>
+|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|
 
 Examples:
-|usuario|filtroPrioridad|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|Alice Applegate|Normal|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|usuario|filtroPrioridad|
+|Alice Applegate|Normal|
 
 Scenario: Realizar busqueda de actividades por alguno de los filtros requeridos y vencida
 Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y vencida <filtroVencida>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
-prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titular de la cuenta <titularCuenta>, producto
-<producto>, asignado por <asignadoPor>, estado <estado>
+|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|
 
 Examples:
-|usuario|filtroVencida|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|Alice Applegate|No|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|usuario|filtroVencida|
+|Alice Applegate|No|
 
 Scenario: Realizar busqueda de actividades por el filtro asignado a
 Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro asignado a <usuario>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
-prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titular de la cuenta <titularCuenta>, producto
-<producto>, asignado por <asignadoPor>, estado <estado>
+|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|>
 
 Examples:
-|usuario|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|Alice Applegate|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|usuario|
+|Alice Applegate|
 
 Scenario: Realizar busqueda de actividades por el filtro numero de poliza
 Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro numero de poliza<numeroPoliza>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
-prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titular de la cuenta <titularCuenta>, producto
-<producto>, asignado por <asignadoPor>, estado <estado>
+|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|
 
 Examples:
-|numeroPoliza|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|TEST_22222222|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|numeroPoliza|
+|TEST_22222222|
 
 Scenario: Realizar busqueda de actividades por el filtro numero de cuenta
 Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro numero de cuenta<numeroCuenta>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
-prioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titular de la cuenta <titularCuenta>, producto
-<producto>, asignado por <asignadoPor>, estado <estado>
+|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|
 
 Examples:
-|numeroCuenta|prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado
-|C001888888|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky
+|numeroCuenta|
+|C001888888|
 
 Scenario: Realizar busqueda de actividades sin esfecificar un filtro
 Given que me encuentro en la busqueda de actividades
