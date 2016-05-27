@@ -47,3 +47,18 @@ Then debe quedar agregado como asegurado <nombre>
 Examples:
 |cuenta|tipoId|numeroId|nombre|
 |C000888888|NIT|9202086744|VARIEDADES YURLEDYS|
+
+Scenario: Agregar asegurado por la opción nueva persona natural
+Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
+And crear una cotizacion nueva
+When quiera agregar un asegurado
+And seleccione ingresar nueva persona natural
+And ingrese los datos de:
+|tipoId|numeroId|primerNombre|primerApellido|
+|CEDULA DE CIUDADANIA|1234567899|Luciana|Londoño|
+Then debe quedar agregado como asegurado <nombre>
+
+Examples:
+|cuenta|nombre|
+|C000888888|LUCIANA LONDOÑO|
+
