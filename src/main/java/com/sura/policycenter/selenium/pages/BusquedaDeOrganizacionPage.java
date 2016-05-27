@@ -1,17 +1,18 @@
 package com.sura.policycenter.selenium.pages;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.hamcrest.core.StringContains.containsString;
-
+import com.sura.guidewire.selenium.SeusLoginPage;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import com.sura.guidewire.selenium.SeusLoginPage;
-import net.serenitybdd.core.pages.WebElementFacade;
+
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.StringContains.containsString;
 
 public class BusquedaDeOrganizacionPage extends SeusLoginPage {
 

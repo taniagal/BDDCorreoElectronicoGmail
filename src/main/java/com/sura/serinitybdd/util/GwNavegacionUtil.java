@@ -1,10 +1,12 @@
 package com.sura.serinitybdd.util;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
+import net.serenitybdd.core.annotations.findby.By;
+import net.thucydides.core.steps.StepInterceptor;
 import org.jbehave.core.model.ExamplesTable;
 import org.jbehave.core.steps.Parameters;
 import org.openqa.selenium.Keys;
@@ -14,8 +16,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
-import net.serenitybdd.core.annotations.findby.By;
-import net.thucydides.core.steps.StepInterceptor;
 
 public class GwNavegacionUtil {
 

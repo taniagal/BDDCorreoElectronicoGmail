@@ -15,7 +15,9 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
     private final OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage (getDriver());
     private final OpcionesAdminitradorCotizaciones opcionesAdministradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());
 
-    public CotizacionesDeLaCuentaSteps(Pages pages) {super(pages);}
+    public CotizacionesDeLaCuentaSteps(Pages pages) {
+        super(pages);
+    }
 
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);

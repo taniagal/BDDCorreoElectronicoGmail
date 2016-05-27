@@ -1,5 +1,9 @@
 package com.sura.configuracion;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import net.serenitybdd.jbehave.SerenityStories;
 import net.serenitybdd.jbehave.runners.SerenityReportingRunner;
 import net.thucydides.core.model.TestOutcome;
@@ -13,11 +17,6 @@ import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunNotifier;
-
-import java.util.List;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class AbstractJBehaveStory {
