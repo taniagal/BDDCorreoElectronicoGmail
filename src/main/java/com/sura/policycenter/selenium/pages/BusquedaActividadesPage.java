@@ -63,8 +63,10 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
+        waitABit(1000);
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         btnBuscar.click();
+        waitABit(1000);
         assertThat(this.grdFechaVencimiento.getText(), is(notNullValue()));
         assertThat(this.grdPrioridad.getText(), is(equalTo(exampleTable.get("prioridad"))));
         assertThat(this.grdEstadoActividad.getText(), is(equalTo(exampleTable.get("estadoActividad"))));
