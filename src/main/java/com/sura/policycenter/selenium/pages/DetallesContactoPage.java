@@ -102,9 +102,9 @@ public class DetallesContactoPage extends Guidewire {
     private WebElementFacade campoTxtCorreoElectronicoSecundarioEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update']")
     private WebElementFacade botonActualizar;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesCardTab-botonInnerEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesCardTab']")
     private WebElementFacade botonDirecciones;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV_tb:Add-botonInnerEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV_tb:Add']")
     private WebElementFacade botonAgregar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-labelEl']")
     private WebElementFacade labelPais;
@@ -443,6 +443,6 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void validarMensaje(String mensaje) {
-        assertThat("Problemas en el mensaje de error"+mensaje,divMensaje.containsText(mensaje));
+        assertThat("No se puede ingresar más de una dirección al contacto con el mismo Tipo de dirección",divMensaje.containsText(mensaje));
     }
 }
