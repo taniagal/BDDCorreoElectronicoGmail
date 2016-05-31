@@ -63,7 +63,7 @@ Then debe mostrar el mensaje <mensaje>
 
 Examples:
 |codigoAgente|mensaje
-|Standard Code|Se debe ingresar un nombre, un apellido, un nombre de empresa, un ID oficial, un número de cuenta, un número de póliza, un número de teléfono, un agente o un código de agente. Además, si realiza una búsqueda solo por nombre y apellido, se debe especificar una coincidencia exacta. De lo contrario, debe especificar más información (como ciudad y estado o código postal). Si realiza una búsqueda inexacta, debe ingresar al menos tres letras del nombre y del apellido o cinco letras del nombre de empresa.
+|Standard Code|Código de agente : Se encuentra más de un Producer Code con el código "Standard Code." Use el emergenteProducer Code para elegir el Producer Code.
 
 Scenario: Consultar polizas por numero de cuenta y producto
 Given que voy a buscar una poliza
@@ -116,7 +116,7 @@ Then debe mostrar el mensaje <mensaje>
 
 Examples:
 |numeroCuenta|producto|codigoAgente|mensaje
-|C001887545|Auto personal|Standard Code|La búsqueda no devolvió resultados.
+|C001887545|Auto personal|Standard Code|Código de agente : Se encuentra más de un Producer Code con el código "Standard Code." Use el emergenteProducer Code para elegir el Producer Code.
 
 
 Scenario: Consultar polizas por numero de cuenta que no existe y producto
