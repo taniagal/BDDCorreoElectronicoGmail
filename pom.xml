@@ -118,8 +118,8 @@
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                     <parallel>classes</parallel>
                     <perCoreThreadCount>true</perCoreThreadCount>
-                    <threadCount>2</threadCount>
-                    <forkCount>1C</forkCount>
+                    <!--<threadCount>2</threadCount>
+                    <forkCount>1C</forkCount>-->
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
                     </systemPropertyVariables>
