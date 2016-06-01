@@ -29,11 +29,11 @@ Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
 And crear una cotizacion nueva
 When quiera agregar un asegurado
 And agregue un asegurado que es contacto de la cuenta
-Then debe quedar agregado como asegurado <nombre>
+Then debe quedar agregado como asegurado <numeroDocumento>
 
 Examples:
-|cuenta|nombre|
-|C000888888|DONIA GLORIA GALLEGO|
+|cuenta|numeroDocumento|
+|C000888888|1264567899|
 
 Scenario: Agregar asegurado del directorio
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
@@ -42,11 +42,11 @@ When quiera agregar un asegurado
 And agregue un asegurado del directorio
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
 And seleccione el contacto a agregar
-Then debe quedar agregado como asegurado <nombre>
+Then debe quedar agregado como asegurado <numeroDocumento>
 
 Examples:
-|cuenta|tipoId|numeroId|nombre|
-|C000888888|NIT|9202086744|VARIEDADES YURLEDYS|
+|cuenta|tipoId|numeroId|numeroDocumento|
+|C000888888|NIT|9202086744|9202086744|
 
 Scenario: Agregar asegurado por la opción nueva persona natural
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
@@ -56,11 +56,11 @@ And seleccione ingresar nueva persona natural
 And ingrese los datos de persona natural:
 |tipoId|numeroId|primerNombre|primerApellido|pais|departamento|ciudad|direccion|tipoDireccion|
 |CEDULA DE CIUDADANIA|1234567899|Luciana|Londoño|Colombia|Antioquia|Medellin|Cra 65 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
-Then debe quedar agregado como asegurado <nombre>
+Then debe quedar agregado como asegurado <numeroDocumento>
 
 Examples:
-|cuenta|nombre|
-|C000888888|LUCIANA LONDOÑO|
+|cuenta|numeroDocumento|
+|C000888888|1234567899|
 
 Scenario: Agregar asegurado por la opción nueva persona juridica
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
@@ -73,7 +73,7 @@ And ingrese los datos de persona juridica:
 Then debe quedar agregado como asegurado <nombre>
 
 Examples:
-|cuenta|nombre|
-|C000888888|COOPERATIVA COOPERANDO|
+|cuenta|numeroDocumento|
+|C000888888|9998887776|
 
 

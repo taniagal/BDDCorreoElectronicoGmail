@@ -36,8 +36,8 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
         ingresoDeAseguradoACotizacionPage.agregarAseguradoContactoDeLaCuenta();
     }
 
-    public void validarAseguradoAgregado(String nombre) {
-        assertThat(ingresoDeAseguradoACotizacionPage.validarAseguradoAgregado(), containsString(nombre));
+    public void validarAseguradoAgregado(String numeroDocumento) {
+        assertThat(ingresoDeAseguradoACotizacionPage.validarAseguradoAgregado(), containsString(numeroDocumento));
     }
 
     public void agregarAseguradoContactoDelDirectorio() {

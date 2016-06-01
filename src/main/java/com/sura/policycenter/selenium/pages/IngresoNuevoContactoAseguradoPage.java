@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.serinitybdd.util.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -8,7 +7,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -56,14 +54,24 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
         campoTipoDocumento.sendKeys(datosContacto.get("tipoId"));
         campoTipoDocumento.sendKeys(Keys.ENTER);
         campoNumeroDocumento.sendKeys(datosContacto.get("numeroId"));
+        campoPais.clear();
         campoPais.sendKeys(datosContacto.get("pais"));
         campoPais.sendKeys(Keys.ENTER);
+        waitABit(3000);
+        campoDepartamento.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDepartamento.sendKeys(datosContacto.get("departamento"));
         campoDepartamento.sendKeys(Keys.ENTER);
+        waitABit(3000);
+        campoCiudad.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoCiudad.sendKeys(datosContacto.get("ciudad"));
         campoCiudad.sendKeys(Keys.ENTER);
+        waitABit(1000);
+        campoDireccion.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDireccion.sendKeys(datosContacto.get("direccion"));
+        waitABit(1000);
+        campoTipoDireccion.clear();
         campoTipoDireccion.sendKeys(datosContacto.get("tipoDireccion"));
+        campoTipoDireccion.sendKeys(Keys.ENTER);
     }
 
     public void ingresarDatosNuevaPersonaNatural(ExamplesTable datosPersonaNatural) {
@@ -71,6 +79,7 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
         this.ingresarDatosComunesDeContacto(datosNuevaPersona);
         campoPrimerNombre.sendKeys(datosNuevaPersona.get("primerNombre"));
         campoPrimerApellido.sendKeys(datosNuevaPersona.get("primerApellido"));
+        waitABit(3000);
         botonAceptar.click();
     }
 

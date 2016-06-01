@@ -83,7 +83,7 @@ public class Guidewire extends PageObject {
         waitABit(500);
         menu.waitUntilClickable().click();
         waitABit(1500);
-        menu.waitUntilClickable().click();
+        menu.withTimeoutOf(3, TimeUnit.SECONDS).waitUntilClickable().click();
         waitABit(500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         return act;
