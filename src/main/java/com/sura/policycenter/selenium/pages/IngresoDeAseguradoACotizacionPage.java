@@ -18,7 +18,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     WebElementFacade botonElegirAutoPersonal;
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']/div")
-    WebElementFacade botonConductores;
+    WebElementFacade botonAsegurados;
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver']")
     WebElementFacade botonAgregar;
@@ -38,6 +38,12 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV-body']")
     WebElementFacade tablaAsegurados;
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddNewDriver:0:ContactType']")
+    WebElementFacade opcionNuevoPersonaNatural;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddNewDriver:1:ContactType']")
+    WebElementFacade opcionNuevoPersonaJuridica;
+
     public IngresoDeAseguradoACotizacionPage(WebDriver driver){
         super(driver);
     }
@@ -45,8 +51,8 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     public void irAIngresarAsegurado() {
         waitFor(botonElegirAutoPersonal);
         botonElegirAutoPersonal.click();
-        waitFor(botonConductores);
-        botonConductores.click();
+        waitFor(botonAsegurados);
+        botonAsegurados.click();
     }
 
     public void agregarAsegurado() {
@@ -88,10 +94,18 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void agregarAseguradoContactoDelDirectorio() {
-        waitFor(opcionContactoDelDirectorio).click();
+        opcionContactoDelDirectorio.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
     }
 
     public void seleccionarContactoDelDirectorio() {
-        waitFor(seleccionarContactoDelDirectorio).click();
+        seleccionarContactoDelDirectorio.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+    }
+
+    public void seleccionarNuevaPersonaNatural() {
+        opcionNuevoPersonaNatural.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+    }
+
+    public void seleccionarNuevaPersonaJuridica() {
+        opcionNuevoPersonaJuridica.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
     }
 }

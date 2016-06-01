@@ -62,6 +62,26 @@ public class IngresoDeAseguradoACotizacionDefinitions {
         ingresoDeAseguradoACotizacionSteps.seleccionarContactoDelDirectorio();
     }
 
+    @When("seleccione ingresar nueva persona natural")
+    public void seleccionarNuevaPersonaNatural(){
+        ingresoDeAseguradoACotizacionSteps.seleccionarNuevaPersonaNatural();
+    }
+
+    @When("ingrese los datos de persona natural: $datosPersonaNatural")
+    public void ingresarDatosNuevaPersonaNatural(ExamplesTable datosPersonaNatural){
+        ingresoDeAseguradoACotizacionSteps.ingresarDatosNuevaPersonaNatural(datosPersonaNatural);
+    }
+
+    @When("seleccione ingresar nueva persona juridica")
+    public void seleccionarNuevaPersonaJuridica(){
+        ingresoDeAseguradoACotizacionSteps.seleccionarNuevaPersonaJuridica();
+    }
+
+    @When("ingrese los datos de persona juridica: $datosPersonaJuridica")
+    public void ingresarDatosNuevaPersonaJuridica(ExamplesTable datosPersonaJuridica){
+        ingresoDeAseguradoACotizacionSteps.ingresarDatosNuevaPersonaJuridica(datosPersonaJuridica);
+    }
+
     @Then("Se debe mostrar las opciones: $listaAgregar")
     public void validarOpcionesDeAgregar(ExamplesTable listaAgregar){
         ingresoDeAseguradoACotizacionSteps.validarOpcionesDeAgregar(listaAgregar);
