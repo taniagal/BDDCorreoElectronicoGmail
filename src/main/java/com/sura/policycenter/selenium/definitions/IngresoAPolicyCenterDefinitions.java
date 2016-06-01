@@ -3,34 +3,20 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.policycenter.selenium.pages.GuidewireLoginPages;
 import com.sura.policycenter.selenium.steps.GuidewireLoginSteps;
 import net.serenitybdd.core.Serenity;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.pages.Pages;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import org.openqa.selenium.WebDriver;
 
 import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
 
 public class IngresoAPolicyCenterDefinitions {
 
-    @Managed(driver="chrome")
-    public WebDriver webDriver;
-
-    @ManagedPages
-    public Pages pages;
 
     @Steps
     GuidewireLoginSteps superUsuario;
 
     GuidewireLoginPages guidewireLoginPages;
-
-    public IngresoAPolicyCenterDefinitions(Pages pages) {
-        this.pages = pages;
-        guidewireLoginPages = pages.get(GuidewireLoginPages.class);
-    }
 
     @Given("Deseo ingresar como super usuario a PolicyCenter")
     public void ingresarComoSuperUsuarioPolicyCenter(){
