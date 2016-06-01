@@ -17,7 +17,7 @@ public class DetallesContactoDefinitions {
     private DetallesContactoSteps dcs;
 
     /**
-     * Escenario 1
+     * ESCENARIO 1
      */
     @When("quiera ver informacion detallada del contacto  con nombre <primer_nombre> y con apellido <primer_apellido>")
     public void whenConsultarDetallePersonaNatural(@Named("primer_nombre") String primerNombre, @Named("primer_apellido") String primerApellido) {
@@ -31,7 +31,7 @@ public class DetallesContactoDefinitions {
     }
 
     /**
-     * Escenario 2
+     * ESCENARIO 2
      */
     @When("quiera ver informacion detallada del contacto con nombre empresa <nombre_empresa>")
     public void whenConsultarDetallePersonaJuridica(@Named("nombre_empresa")String nombreEmpresa) {

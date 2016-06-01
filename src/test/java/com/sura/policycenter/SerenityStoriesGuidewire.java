@@ -1,12 +1,12 @@
 package com.sura.policycenter;
 
 import com.sura.configuracion.AbstractJBehaveStory;
+import java.util.List;
 import net.serenitybdd.jbehave.SerenityStories;
 import net.thucydides.core.model.TestOutcome;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

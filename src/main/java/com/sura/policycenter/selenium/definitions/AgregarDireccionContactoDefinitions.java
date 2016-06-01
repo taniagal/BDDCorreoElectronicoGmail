@@ -10,41 +10,41 @@ import org.jbehave.core.annotations.When;
 @SuppressWarnings("WeakerAccess")
 public class AgregarDireccionContactoDefinitions {
     @Steps
-    private DetallesContactoSteps dcs;
+    private DetallesContactoSteps detallesContactoSteps;
 
     @Given("que ya tengo un contacto creado")
     public void givenQueYaTengoUnContactoCreado() {
-        dcs.agregarDireccion();
+        detallesContactoSteps.agregarDireccion();
     }
 
     @When("se vaya a ingresar la nueva direccion y valide los campos en pantalla")
     public void whenSeVayaAIngresarLaNuevaDireccionYValideLosCamposEnPantalla() {
-        dcs.validarDatosPatalla();
+        detallesContactoSteps.validarDatosPatalla();
     }
 
     @When("valide la informacion en los campos")
     public void whenValideLaInformacionEnLosCampos() {
-        dcs.validarCampos();
+        detallesContactoSteps.validarCampos();
     }
 
     @When("se actualiza el contacto")
     public void actualizarContacto(){
-        dcs.actualizarContacto();
+        detallesContactoSteps.actualizarContacto();
     }
 
     @When("agrego fila de direccion")
     public void direccionNueva(){
-        dcs.agregarNuevaDireccion();
+        detallesContactoSteps.agregarNuevaDireccion();
     }
 
     @Then("en la lista de direcciones agregadas se debe ver la nueva direccion <tipoDireccion>")
     public void assertDireccion(@Named("tipoDireccion") String tipoDireccion){
-        dcs.validarDireccion(tipoDireccion);
+        detallesContactoSteps.validarDireccion(tipoDireccion);
     }
 
     @Then("el sistema me debe impedir la repeticion del tipo de direccion y mostrar el mensaje <mensaje>")
     public void assertRepeticionTipoDirreccion (@Named("mensaje") String mensaje){
-        dcs.validarMensaje(mensaje);
+        detallesContactoSteps.validarMensaje(mensaje);
     }
 
 }

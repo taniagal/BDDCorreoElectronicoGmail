@@ -2,10 +2,11 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.constantes.EnumContacto;
+import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
-import java.util.List;
+
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -33,8 +34,8 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade razonSocial;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade desRazonSocial;
-    /*@FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
-    private WebElementFacade contactoExistente;*/
+    @FindBy(xpath = ".//*[@id='NewContact:_msgs']/div")
+    private WebElementFacade contactoExistente;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl']")
     private WebElementFacade tipoTelefono;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
@@ -82,17 +83,17 @@ public class NuevoContactoPage extends Guidewire {
     public void ingresarDireccion(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
         selectItem(cboDepartamento,departamento);
-        waitABit(1500);
+        waitABit(2000);
         selectItem(cboCiudad,ciudad);
-        waitABit(1500);
+        waitABit(2000);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
         direccion2.sendKeys(direccion);
         selectItem(cboDepartamento2,departamento);
-        waitABit(1500);
+        waitABit(2000);
         selectItem(cboCiudad2,ciudad);
-        waitABit(1500);
+        waitABit(2000);
         selectItem(tipoDireccion2,tipoDireccion);
     }
 
@@ -149,9 +150,10 @@ public class NuevoContactoPage extends Guidewire {
     public void verificarContactoExistente() {
         this.btnActualizar.waitUntilClickable();
         this.btnActualizar.click();
-        /*COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
+        /**COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
+         */
         waitABit(1000);
-        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));*/
+        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 
     private Boolean esTelefonoFijo(String tipoTelefono) {

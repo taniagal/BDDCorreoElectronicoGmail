@@ -1,23 +1,25 @@
 package com.sura.policycenter.selenium.pages;
 
-import net.serenitybdd.core.pages.PageObject;
+import com.sura.guidewire.selenium.SeusLoginPage;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.jbehave.core.model.ExamplesTable;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
-import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.StringContains.containsString;
 
-public class BusquedaActividadesPage extends PageObject {
+public class BusquedaDeOrganizacionPage extends SeusLoginPage {
 
+    @FindBy(xpath=".//*[@id='TabBar:SearchTab']")
+    private WebElementFacade mnuBuscar;
+    @FindBy(xpath=".//*[@id='TabBar:SearchTab:Search_ActivitySearch']")
+    private WebElementFacade mnuBuscarActividades;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:AssignedUser-inputEl']")
     private WebElementFacade txtAsignadoA;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:ActivityStatus-inputEl']")
@@ -32,6 +34,8 @@ public class BusquedaActividadesPage extends PageObject {
     private WebElementFacade txtNumeroCuenta;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade btnBuscar;
+    @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
+    private WebElementFacade btnRestablecer;
     @FindBy(xpath="//td[4]/div")
     private WebElementFacade grdFechaVencimiento;
     @FindBy(xpath="//td[5]/div")
@@ -52,39 +56,46 @@ public class BusquedaActividadesPage extends PageObject {
     private WebElementFacade grdEstado;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
     private WebElementFacade msgFiltrosRequeridos;
+    @FindBy(xpath=".//*[@id='OrganizationSearchPage:OrganizationSearchScreen:OrganizationSearchDV:GlobalContactNameInputSet:Name-inputEl']")
+    private WebElementFacade txtRazonSocial;
+    @FindBy(xpath=".//*[@id='OrganizationSearchPage:OrganizationSearchScreen:OrganizationSearchResultsLV:0:Name']")
+    private WebElementFacade linkRazonSocial;
 
-    public BusquedaActividadesPage(WebDriver driver) {
+    public BusquedaDeOrganizacionPage(WebDriver driver) {
         super(driver);
     }
 
+    public void buscarActividades() {
+        Actions act = new Actions(getDriver());
+        mnuBuscar.waitUntilClickable();
+        waitABit(1000);
+        mnuBuscar.click();
+        waitABit(1000);
+        mnuBuscar.click();
+        waitABit(1000);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.moveToElement(mnuBuscarActividades).click().build().perform();
+        btnRestablecer.click();
+        waitABit(1000);
+    }
+
     public void filtrarPorAsignado(String usuario) {
-        this.limpiarFiltros();
         txtAsignadoA.sendKeys(usuario);
     }
 
-    public void validarResultado(ExamplesTable resultadoFiltroActividades) {
-        waitABit(1000);
-        Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
+    public void validarResultado(String prioridad, String estadoActividad,
+                                 String asunto, String id, String titularCuenta, String producto, String asignadoPor,
+                                 String estado) {
         btnBuscar.click();
-        waitABit(1000);
         assertThat(this.grdFechaVencimiento.getText(), is(notNullValue()));
-        assertThat(this.grdPrioridad.getText(), is(equalTo(exampleTable.get("prioridad"))));
-        assertThat(this.grdEstadoActividad.getText(), is(equalTo(exampleTable.get("estadoActividad"))));
-        assertThat(this.grdAsunto.getText(), is(equalTo(exampleTable.get("asunto"))));
-        assertThat(this.grdId.getText(), is(equalTo(exampleTable.get("id"))));
-        assertThat(this.grdCuenta.getText(), is(equalTo(exampleTable.get("titularCuenta"))));
-        assertThat(this.grdProducto.getText(), containsString(exampleTable.get("producto")));
-        assertThat(this.grdAsignadoPor.getText(), containsString(exampleTable.get("asignadoPor")));
-        assertThat(this.grdEstado.getText(), is(equalTo(exampleTable.get("estado"))));
-    }
-
-    public void limpiarFiltros(){
-        txtAsignadoA.clear();
-        txtEstadoActividad.clear();
-        txtNumeroPoliza.clear();
-        txtNumeroCuenta.clear();
-        txtPrioridad.clear();
-        txtVencida.clear();
+        assertThat(this.grdPrioridad.getText(), containsString(prioridad));
+        assertThat(this.grdEstadoActividad.getText(), containsString(estadoActividad));
+        assertThat(this.grdAsunto.getText(), containsString(asunto));
+        assertThat(this.grdId.getText(), containsString(id));
+        assertThat(this.grdCuenta.getText(), containsString(titularCuenta));
+        assertThat(this.grdProducto.getText(), containsString(producto));
+        assertThat(this.grdAsignadoPor.getText(), containsString(asignadoPor));
+        assertThat(this.grdEstado.getText(), containsString(estado));
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
@@ -99,7 +110,6 @@ public class BusquedaActividadesPage extends PageObject {
 
     public void buscarSinFiltro() {
         waitABit(2000);
-        limpiarFiltros();
     }
 
     public void validarMensjeFiltroRequerido(String mensaje) {
@@ -109,30 +119,40 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
-        this.limpiarFiltros();
         txtAsignadoA.sendKeys(usuario);
+        txtPrioridad.clear();
         txtPrioridad.sendKeys(prioridad);
         txtPrioridad.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(String usuario, String estadoActividad) {
-        this.limpiarFiltros();
         txtAsignadoA.sendKeys(usuario);
+        txtEstadoActividad.clear();
         txtEstadoActividad.sendKeys(estadoActividad);
         txtEstadoActividad.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltrosUsuarioYVencida(String usuario, String vencida) {
-        this.limpiarFiltros();
         txtAsignadoA.sendKeys(usuario);
+        txtVencida.clear();
         txtVencida.sendKeys(vencida);
         txtVencida.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltroOpcional(String estadoActividad) {
-        this.limpiarFiltros();
+        txtEstadoActividad.clear();
         txtEstadoActividad.sendKeys(estadoActividad);
         txtEstadoActividad.sendKeys(Keys.ENTER);
     }
 
+    public void ingresarRazonSocial(String razonSocial) {
+        txtRazonSocial.clear();
+        txtRazonSocial.sendKeys(razonSocial);
+        txtRazonSocial.sendKeys(Keys.ENTER);
+    }
+
+    public void validarOrganizacion(String nomOrganizacion) {
+        linkRazonSocial.waitUntilClickable();
+        assertThat(linkRazonSocial.getText(), Matchers.containsString(nomOrganizacion));
+    }
 }
