@@ -70,10 +70,38 @@ And seleccione ingresar nueva persona juridica
 And ingrese los datos de persona juridica:
 |tipoId|numeroId|razonSocial|pais|departamento|ciudad|direccion|tipoDireccion|
 |NIT|9998887776|Cooperativa Cooperando|Colombia|Antioquia|Medellin|Cra 66 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
-Then debe quedar agregado como asegurado <nombre>
+Then debe quedar agregado como asegurado <numeroDocumento>
 
 Examples:
 |cuenta|numeroDocumento|
 |C000888888|9998887776|
+
+Scenario: Agregar asegurado del directorio y que no existe
+Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
+And crear una cotizacion nueva
+When quiera agregar un asegurado
+And agregue un asegurado del directorio
+And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
+Then debe mostrar el mensaje <mensaje>
+
+Examples:
+|cuenta|tipoId|numeroId|mensaje|
+|C000888888|NIT|2020202020|La búsqueda no devolvió resultados.|
+
+Scenario: Agregar varios asegurados
+Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
+And crear una cotizacion nueva
+When quiera agregar un asegurado
+And agregue un asegurado del directorio
+And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
+And seleccione el contacto a agregar
+And agregue un asegurado que es contacto de la cuenta
+Then debe quedar agregado como asegurado <numeroDocumento>
+
+Examples:
+|cuenta|tipoId|numeroId|numeroDocumento|
+|C000888888|NIT|9202086744|9202086744|
+
+
 
 

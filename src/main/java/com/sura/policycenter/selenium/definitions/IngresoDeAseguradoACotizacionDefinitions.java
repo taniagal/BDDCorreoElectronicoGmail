@@ -91,6 +91,11 @@ public class IngresoDeAseguradoACotizacionDefinitions {
         ingresoDeAseguradoACotizacionSteps.validarAseguradoAgregado(numeroDocumento);
     }
 
+    @Then("debe mostrar el mensaje <mensaje>")
+    public void validarMensaje(@Named("mensaje") String mensaje){
+        ingresoDeAseguradoACotizacionSteps.validarMensaje(mensaje);
+    }
+
 }
 
 

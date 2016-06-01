@@ -63,4 +63,8 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
     public void ingresarDatosNuevaPersonaJuridica(ExamplesTable datosPersonaJuridica) {
         ingresoNuevoContactoAseguradoPage.ingresarDatosNuevaPersonaJuridica(datosPersonaJuridica);
     }
+
+    public void validarMensaje(String mensaje) {
+        assertThat(ingresoDeAseguradoACotizacionPage.validarMensaje(), is(equalTo(mensaje)));
+    }
 }

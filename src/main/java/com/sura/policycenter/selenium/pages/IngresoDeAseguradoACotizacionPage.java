@@ -47,6 +47,9 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddNewDriver']")
     WebElementFacade opcionNuevo;
 
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:_msgs']/div")
+    WebElementFacade mensajeBuscarDirectorio;
+
     public IngresoDeAseguradoACotizacionPage(WebDriver driver){
         super(driver);
     }
@@ -112,5 +115,9 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     public void seleccionarNuevaPersonaJuridica() {
         opcionNuevo.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
         opcionNuevoPersonaJuridica.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+    }
+
+    public String validarMensaje() {
+       return mensajeBuscarDirectorio.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible().getText();
     }
 }
