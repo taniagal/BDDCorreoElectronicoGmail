@@ -2,10 +2,11 @@ package com.sura.policycenter.selenium.definitions;
 
 
 import com.sura.policycenter.selenium.steps.CoaseguroSteps;
-import com.sura.policycenter.Model.Aseguradora;
+import com.sura.policycenter.model.Aseguradora;
 import java.util.ArrayList;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 
@@ -15,15 +16,10 @@ public class RegistrarCoaseguroDefinitions {
 
     @Given("puedo ingresar los datos del coaseguro")
     public void validarCampos(){
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         //coaseguroSteps.validarCampos();
     }
 
-    @When("")
+    @When("agregue las aseguradoras y su porcentaje de participacion")
     public void agregarCoaseguro(){
         ArrayList<Aseguradora> aseguradoras = new ArrayList<>();
         Aseguradora aseguradora = new Aseguradora();
@@ -35,5 +31,8 @@ public class RegistrarCoaseguroDefinitions {
         aseguradoras.add(aseguradora);
         coaseguroSteps.agregarCoaseguro(aseguradoras);
     }
+
+    @Then("el proceso debe ser exitoso")
+    public void verificarCoaseguro(){}
 
 }

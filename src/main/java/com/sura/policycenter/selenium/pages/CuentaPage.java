@@ -103,6 +103,7 @@ public class CuentaPage extends Guidewire{
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         espera(botonAgregarOrganizacion,5);
         botonAgregarOrganizacion.click();
+        waitABit(1000);
         campoTxtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();

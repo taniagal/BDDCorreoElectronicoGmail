@@ -2,7 +2,7 @@ package com.sura.policycenter.selenium.steps;
 
 
 import com.sura.policycenter.selenium.pages.CoaseguroPage;
-import com.sura.policycenter.Model.Aseguradora;
+import com.sura.policycenter.model.Aseguradora;
 import java.util.ArrayList;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;

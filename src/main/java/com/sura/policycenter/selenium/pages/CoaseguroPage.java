@@ -2,30 +2,32 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.policycenter.Model.Aseguradora;
+import com.sura.policycenter.model.Aseguradora;
 import java.util.ArrayList;
+
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import javax.swing.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CoaseguroPage extends Guidewire{
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:coinsuranceLinkPopup']")
-    private WebElementFacade linkAgregarCosaeguro;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:administrativeExpenses-inputEl']")
-    private WebElementFacade campoTxtGastosAdministrativos;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsurancePanelSet:insuranceLV-body']/div/table/tbody")
-    private WebElementFacade tablaParticipantes;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
+    private WebElementFacade linkAgregarCoaseguro;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:ReferencePolicyNumber-inputEl']")
+    private WebElementFacade campoTxtPolizaDeReferencia;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[2]/td[2]")
+    private WebElementFacade tdAseguradora2;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[2]/td[3]")
+    private WebElementFacade tdParticipacion2;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptar;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:coinsuranceTypeQuestion_false-inputEl']")
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:coinsuranceTypeQuestion_true-inputEl']")
     private WebElementFacade radioBotonAceptado;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsurancePanelSet:insuranceLV_tb:Add-btnInnerEl']")
-    private WebElementFacade botonAgregar;
-
-
-
 
     private static final String MSJVALIDARELEMENTOS = "No estan correctos los elementos:";
 
@@ -47,12 +49,30 @@ public class CoaseguroPage extends Guidewire{
     }
 
     public void agregarCoaseguro(ArrayList<Aseguradora> aseguradoras){
-        linkAgregarCosaeguro.click();
-        assertThat("El tipo de coaseguro por defecto debe ser Aceptado", radioBotonAceptado.isSelected());
-        campoTxtGastosAdministrativos.sendKeys();
+        linkAgregarCoaseguro.click();
+        assertThat("El tipo de coaseguro por defecto debe ser cedido", !radioBotonAceptado.isSelected());
+        radioBotonAceptado.click();
+        campoTxtPolizaDeReferencia.waitUntilPresent().sendKeys("poliza123");
+        Actions act = new Actions(getDriver());
         for(Aseguradora aseguradora: aseguradoras){
-            botonAgregar.click();
-            //Esperando mapeo de elementos de la tabla
+            int i = 1;
+            if (i == 1) {
+                WebElementFacade tdParticipacio = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[2]/div");
+                tdParticipacio.click();
+                act.sendKeys(Keys.TAB).build().perform();
+                //JOptionPane.showMessageDialog(null, "Tap");
+                //WebElementFacade tdParticipacion = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[3]/div");
+                //tdParticipacion.click();
+                //JOptionPane.showMessageDialog(null, "Click");
+                act.sendKeys("40");
+                //JOptionPane.showMessageDialog(null, aseguradora.getParticipacion());
+            }else{
+                WebElementFacade tdAseguradora = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[2]");
+                WebElementFacade tdParticipacion2 = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[3]");
+            }
+            i++;
         }
+        waitABit(10000);
     }
+
 }

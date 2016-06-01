@@ -1,4 +1,4 @@
-package com.sura.policycenter.Model;
+package com.sura.policycenter.model;
 
 
 public class Aseguradora {
