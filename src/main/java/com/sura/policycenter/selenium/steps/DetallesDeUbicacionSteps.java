@@ -21,11 +21,12 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     public void irANuevaPoliza(String cuenta, String organizacion, String agente){
         inicioPage().irANuevoEnvio();
         detallesDeUbicacionPage.agregarDatos(cuenta,organizacion,agente);
-        detallesDeUbicacionPage.irAUbicacion();
+        waitABit(5000);
     }
 
     @Step
     public void validarCamposnuevos(){
+        detallesDeUbicacionPage.irAUbicacion();
         detallesDeUbicacionPage.validarCamposNuevos();
     }
 
@@ -42,7 +43,6 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     @Step
     public void validarIngresoUbicacion(){
         detallesDeUbicacionPage.validarIngresoDeUbicacion();
-        waitABit(5000);
     }
 
     @Step
