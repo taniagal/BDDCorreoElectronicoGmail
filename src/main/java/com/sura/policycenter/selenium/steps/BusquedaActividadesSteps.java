@@ -57,4 +57,5 @@ public class BusquedaActividadesSteps extends ScenarioSteps {
     public void buscarPorFiltroOpcional(String estadoActividad) {
         busquedaActividades.buscarPorFiltroOpcional(estadoActividad);
     }
+
 }

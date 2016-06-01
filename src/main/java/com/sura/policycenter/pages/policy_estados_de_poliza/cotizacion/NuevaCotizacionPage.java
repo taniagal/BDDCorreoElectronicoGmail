@@ -10,11 +10,10 @@ public class NuevaCotizacionPage extends PageObject {
     public static final String LINK_NOMBRE_PERSONA = "//div[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:AccountName-inputEl']";
     public static final String LABEL_NOMBRE_PERSONA = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:AccountName-labelCell']";
 
-
-    public void obtenerTexto(String xpath){
-        if (find(By.xpath(xpath)).isPresent()){
-            find(By.xpath(xpath)).getText();
-        }
+    public String obtenerTexto(String xpath){
+     //   if (find(By.xpath(xpath)).isPresent()){
+        //withTimeoutOf(10, TimeUnit.SECONDS).waitForPresenceOf((By.xpath(xpath)));
+        return find(By.xpath(xpath)).getText();
     }
 
 }

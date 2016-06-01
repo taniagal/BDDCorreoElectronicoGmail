@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.is;
 public class SerenityStoriesGuidewire extends AbstractJBehaveStory {
 
     @Before
-    public void reset_driver() {
+    public void cargar_variables_de_ambiente() {
 
         environmentVariables.setProperty("webdriver.driver", "chrome");
         environmentVariables.setProperty("serenity.logging", "NORMAL");
@@ -35,7 +35,12 @@ public class SerenityStoriesGuidewire extends AbstractJBehaveStory {
 
     @Test
     public void carga_datos_a_guidewire_con_datos_de_muestra_sura() throws Throwable {
-        SerenityStories login_policy_story = newStory("policycenter/login_policy.story");
+
+    }
+
+    @Test
+    public void cotizar_desde_mis_actividades() throws Throwable {
+        SerenityStories login_policy_story = newStory("policy_estados_de_poliza/cotizacion/cotizar_desde_mis_actividades.story");
         run(login_policy_story);
         List<TestOutcome> outcomes = loadTestOutcomes();
         assertThat(outcomes.size(), is(1));
