@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.steps;
 
 
+import com.sura.policycenter.selenium.pages.EdicionContactoAseguradoPage;
 import com.sura.policycenter.selenium.pages.IngresoDeAseguradoACotizacionPage;
 import com.sura.policycenter.selenium.pages.IngresoNuevoContactoAseguradoPage;
 import net.thucydides.core.pages.Pages;
@@ -14,6 +15,7 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
 
     private IngresoDeAseguradoACotizacionPage ingresoDeAseguradoACotizacionPage = new IngresoDeAseguradoACotizacionPage(getDriver());
     private IngresoNuevoContactoAseguradoPage ingresoNuevoContactoAseguradoPage = new IngresoNuevoContactoAseguradoPage(getDriver());
+    private EdicionContactoAseguradoPage edicionContactoAseguradoPage = new EdicionContactoAseguradoPage(getDriver());
 
     public IngresoDeAseguradoACotizacionSteps (Pages pages){
         super(pages);
@@ -65,5 +67,17 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
 
     public void validarAseguradosAgregados(ExamplesTable asegurados) {
         ingresoDeAseguradoACotizacionPage.validarAseguradosAgregados(asegurados);
+    }
+
+    public void volverAAsegurados() {
+        ingresoDeAseguradoACotizacionPage.volverAAsegurados();
+    }
+
+    public void editarDatosNuevaPersonaNatural(ExamplesTable edicionPersonaNatural) {
+        edicionContactoAseguradoPage.editarDatosNuevaPersonaNatural(edicionPersonaNatural);
+    }
+
+    public void editarDatosNuevaPersonaJuridica(ExamplesTable edicionPersonaJuridica) {
+        edicionContactoAseguradoPage.editarDatosNuevaPersonaJuridica(edicionPersonaJuridica);
     }
 }

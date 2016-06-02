@@ -53,6 +53,9 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:_msgs']/div")
     WebElementFacade mensajeBuscarDirectorio;
 
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:__crumb__']")
+    WebElementFacade opcionVolverAAsegurados;
+
     public IngresoDeAseguradoACotizacionPage(WebDriver driver){
         super(driver);
     }
@@ -127,5 +130,9 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
             MatcherAssert.assertThat(allRows.get(i).getText(), Matchers.containsString(aseguradosAgregados.get("tipoDocumento")));
             MatcherAssert.assertThat(allRows.get(i).getText(), Matchers.containsString(aseguradosAgregados.get("numeroDocumento")));
         }
+    }
+
+    public void volverAAsegurados() {
+        opcionVolverAAsegurados.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
     }
 }

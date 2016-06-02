@@ -49,7 +49,7 @@ public class IngresoDeAseguradoACotizacionDefinitions {
         ingresoDeAseguradoACotizacionSteps.agregarAseguradoContactoDeLaCuenta();
     }
 
-    @When("agregue un asegurado del directorio")
+    @When("consulte un asegurado del directorio")
     public void agregarAseguradoContactoDelDirectorio(){
         ingresoDeAseguradoACotizacionSteps.agregarAseguradoContactoDelDirectorio();
     }
@@ -84,6 +84,23 @@ public class IngresoDeAseguradoACotizacionDefinitions {
     public void ingresarDatosNuevaPersonaJuridica(ExamplesTable datosPersonaJuridica){
         ingresoDeAseguradoACotizacionSteps.ingresarDatosNuevaPersonaJuridica(datosPersonaJuridica);
     }
+
+    @When("vuelva a ver los asegurados")
+    public void volverAAsegurados(){
+        ingresoDeAseguradoACotizacionSteps.volverAAsegurados();
+    }
+
+    @When("quiera editar los datos del nuevo contacto persona natural: $edicionPersonaNatural")
+    public void editarDatosNuevaPersonaNatural(ExamplesTable edicionPersonaNatural){
+        ingresoDeAseguradoACotizacionSteps.editarDatosNuevaPersonaNatural(edicionPersonaNatural);
+    }
+
+    @When("quiera editar los datos del nuevo contacto persona juridica: $edicionPersonaJuridica")
+    public void editarDatosNuevaPersonaJuridica(ExamplesTable edicionPersonaJuridica){
+        ingresoDeAseguradoACotizacionSteps.editarDatosNuevaPersonaJuridica(edicionPersonaJuridica);
+    }
+
+
 
     @Then("Se debe mostrar las opciones: $listaAgregar")
     public void validarOpcionesDeAgregar(ExamplesTable listaAgregar){
