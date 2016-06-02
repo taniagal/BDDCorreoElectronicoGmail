@@ -100,7 +100,15 @@ public class IngresoDeAseguradoACotizacionDefinitions {
         ingresoDeAseguradoACotizacionSteps.editarDatosNuevaPersonaJuridica(edicionPersonaJuridica);
     }
 
+    @When("seleccione el contacto agregado")
+    public void seleccionarContactoAgregado(){
+        ingresoDeAseguradoACotizacionSteps.seleccionarContactoAgregado();
+    }
 
+    @When("quite el contacto de la lista")
+    public void quitarAseguradoDeLaLista(){
+        ingresoDeAseguradoACotizacionSteps.quitarAseguradoDeLaLista();
+    }
 
     @Then("Se debe mostrar las opciones: $listaAgregar")
     public void validarOpcionesDeAgregar(ExamplesTable listaAgregar){
@@ -115,6 +123,11 @@ public class IngresoDeAseguradoACotizacionDefinitions {
     @Then("debe mostrar el mensaje <mensaje>")
     public void validarMensaje(@Named("mensaje") String mensaje){
         ingresoDeAseguradoACotizacionSteps.validarMensaje(mensaje);
+    }
+
+    @Then("la lista de asegurados debe quedar vacia")
+    public void  validarAseguradoEliminado(){
+        ingresoDeAseguradoACotizacionSteps.validarAseguradoEliminado();
     }
 
 }

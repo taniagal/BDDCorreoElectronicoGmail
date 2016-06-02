@@ -80,4 +80,16 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
     public void editarDatosNuevaPersonaJuridica(ExamplesTable edicionPersonaJuridica) {
         edicionContactoAseguradoPage.editarDatosNuevaPersonaJuridica(edicionPersonaJuridica);
     }
+
+    public void seleccionarContactoAgregado() {
+        ingresoDeAseguradoACotizacionPage.seleccionarContactoAgregado();
+    }
+
+    public void quitarAseguradoDeLaLista() {
+        ingresoDeAseguradoACotizacionPage.quitarAseguradoDeLaLista();
+    }
+
+    public void validarAseguradoEliminado() {
+        ingresoDeAseguradoACotizacionPage.validarAseguradoEliminado();
+    }
 }

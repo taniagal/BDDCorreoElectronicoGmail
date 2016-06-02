@@ -165,3 +165,19 @@ Then deben quedar agregados como asegurados:
 Examples:
 |cuenta|
 |C000888888|
+
+Scenario: Quitar asegurado
+Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
+And crear una cotizacion nueva
+When quiera agregar un asegurado
+And vaya a la opcion agregar
+And consulte un asegurado del directorio
+And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
+And seleccione el contacto a agregar
+And seleccione el contacto agregado
+And quite el contacto de la lista
+Then la lista de asegurados debe quedar vacia
+
+Examples:
+|cuenta|
+|C000888888|

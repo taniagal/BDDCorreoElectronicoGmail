@@ -56,6 +56,12 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:__crumb__']")
     WebElementFacade opcionVolverAAsegurados;
 
+    @FindBy(xpath = ".//img[@class='x-grid-checkcolumn']")
+    WebElementFacade seleccionarElemento;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:Remove']")
+    WebElementFacade botonQuitar;
+
     public IngresoDeAseguradoACotizacionPage(WebDriver driver){
         super(driver);
     }
@@ -134,5 +140,17 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
     public void volverAAsegurados() {
         opcionVolverAAsegurados.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+    }
+
+    public void seleccionarContactoAgregado() {
+        seleccionarElemento.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+    }
+
+    public void quitarAseguradoDeLaLista() {
+        botonQuitar.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+    }
+
+    public void validarAseguradoEliminado() {
+
     }
 }

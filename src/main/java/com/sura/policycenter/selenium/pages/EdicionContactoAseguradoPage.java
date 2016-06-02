@@ -12,10 +12,10 @@ import java.util.concurrent.TimeUnit;
 
 public class EdicionContactoAseguradoPage extends PageObject{
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:OfficialIDInputSet:DocumentType-inputEl']")
     WebElementFacade campoTipoDocumento;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     WebElementFacade campoNumeroDocumento;
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
@@ -39,7 +39,7 @@ public class EdicionContactoAseguradoPage extends PageObject{
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:AddressType-inputEl']")
     WebElementFacade campoTipoDireccion;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
     WebElementFacade campoRazonSocial;
 
     public EdicionContactoAseguradoPage(WebDriver driver){
@@ -79,7 +79,6 @@ public class EdicionContactoAseguradoPage extends PageObject{
         campoPrimerNombre.sendKeys(datosNuevaPersona.get("primerNombre"));
         campoPrimerApellido.clear();
         campoPrimerApellido.sendKeys(datosNuevaPersona.get("primerApellido"));
-        waitABit(3000);
     }
 
     public void editarDatosNuevaPersonaJuridica(ExamplesTable EdicionPersonaJuridica) {
