@@ -20,10 +20,8 @@ public class CoaseguroPage extends Guidewire{
     private WebElementFacade linkAgregarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:ReferencePolicyNumber-inputEl']")
     private WebElementFacade campoTxtPolizaDeReferencia;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[2]/td[2]")
-    private WebElementFacade tdAseguradora2;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[2]/td[3]")
-    private WebElementFacade tdParticipacion2;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:editConinsuranceLink']")
+    private WebElementFacade linkEditarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:coinsuranceTypeQuestion_true-inputEl']")
@@ -36,7 +34,7 @@ public class CoaseguroPage extends Guidewire{
     }
 
     public void validarCampos(){
-        /**StringBuilder notRight = new StringBuilder(MSJVALIDARELEMENTOS);
+       /* StringBuilder notRight = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!campoTxtParticipante1.containsText("Sura"))
             notRight.append(" dato_articipante_1,");
         if(campoTxtParticipante1.getAttribute("class").contains("x-form-text"))
@@ -49,30 +47,34 @@ public class CoaseguroPage extends Guidewire{
     }
 
     public void agregarCoaseguro(ArrayList<Aseguradora> aseguradoras){
-        linkAgregarCoaseguro.click();
+        linkAgregarCoaseguro.waitUntilPresent().click();
         assertThat("El tipo de coaseguro por defecto debe ser cedido", !radioBotonAceptado.isSelected());
-        radioBotonAceptado.click();
+        radioBotonAceptado.waitUntilPresent().click();
         campoTxtPolizaDeReferencia.waitUntilPresent().sendKeys("poliza123");
         Actions act = new Actions(getDriver());
+        int i = 1;
         for(Aseguradora aseguradora: aseguradoras){
-            int i = 1;
+            WebElementFacade campoAseguradora = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[2]");
+            campoAseguradora.click();
             if (i == 1) {
-                WebElementFacade tdParticipacio = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[2]/div");
-                tdParticipacio.click();
                 act.sendKeys(Keys.TAB).build().perform();
-                //JOptionPane.showMessageDialog(null, "Tap");
-                //WebElementFacade tdParticipacion = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[3]/div");
-                //tdParticipacion.click();
-                //JOptionPane.showMessageDialog(null, "Click");
-                act.sendKeys("40");
-                //JOptionPane.showMessageDialog(null, aseguradora.getParticipacion());
+                act.sendKeys(Keys.ENTER).build().perform();
+                act.sendKeys(aseguradora.getParticipacion()).build().perform();
+                assertThat("Sura debe estar por defecto en las aseguradoras", campoAseguradora.containsText("Sura"));
             }else{
-                WebElementFacade tdAseguradora = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[2]");
-                WebElementFacade tdParticipacion2 = findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[" + i + "]/td[3]");
+                act.click().build().perform();
+                act.sendKeys(aseguradora.getAseguradora()).build().perform();
+                act.sendKeys(Keys.TAB).build().perform();
+                act.sendKeys(aseguradora.getParticipacion()).build().perform();
             }
             i++;
         }
-        waitABit(10000);
+        act.sendKeys(Keys.TAB).build().perform();
+        botonAceptar.click();
+    }
+
+    public void verificarCoaseguro(){
+        assertThat("Error al agregar el coaseguro",linkEditarCoaseguro.isPresent());
     }
 
 }

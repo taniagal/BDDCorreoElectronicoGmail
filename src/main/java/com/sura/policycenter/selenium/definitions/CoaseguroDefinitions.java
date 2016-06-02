@@ -10,29 +10,34 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 
-public class RegistrarCoaseguroDefinitions {
+public class CoaseguroDefinitions {
     @Steps
     CoaseguroSteps coaseguroSteps;
 
+    ArrayList<Aseguradora> aseguradoras = new ArrayList<>();
+    Aseguradora aseguradora = null;
+
     @Given("puedo ingresar los datos del coaseguro")
     public void validarCampos(){
-        //coaseguroSteps.validarCampos();
+        coaseguroSteps.validarCampos();
     }
 
     @When("agregue las aseguradoras y su porcentaje de participacion")
     public void agregarCoaseguro(){
-        ArrayList<Aseguradora> aseguradoras = new ArrayList<>();
-        Aseguradora aseguradora = new Aseguradora();
-        aseguradora.setAseguradora("Sura");
-        aseguradora.setParticipacion("60");
-        aseguradoras.add(aseguradora);
-        aseguradora.setAseguradora("Fasecolda");
-        aseguradora.setParticipacion("40");
-        aseguradoras.add(aseguradora);
+        agregarAseguradora("Sura","60");
+        agregarAseguradora("Axxa","40");
         coaseguroSteps.agregarCoaseguro(aseguradoras);
     }
 
     @Then("el proceso debe ser exitoso")
-    public void verificarCoaseguro(){}
+    public void verificarCoaseguro(){
+        coaseguroSteps.verificarCoaseguro();
+    }
 
+    private void agregarAseguradora(String aseguradora, String participacion){
+        this.aseguradora = new Aseguradora();
+        this.aseguradora.setAseguradora(aseguradora);
+        this.aseguradora.setParticipacion(participacion);
+        aseguradoras.add(this.aseguradora);
+    }
 }
