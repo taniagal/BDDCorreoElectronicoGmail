@@ -48,4 +48,13 @@ public class DetalleRegistrosSuscripcionDefinitions {
         detalleRegistrosSuscripcionSteps.validarSumaGrupo(suma);
     }
 
+    @Then("no debe mostrar el menu actividades")
+    public void validarVisibilidadMenuActividades() {
+        detalleRegistrosSuscripcionSteps.validarVisibilidadMenuActividades();
+    }
+
+    @Then("no debe mostrar el menu analisis de riesgo")
+    public void validarVisibilidadMenuAnalisisDeRiesgo() {
+        detalleRegistrosSuscripcionSteps.validarVisibilidadMenuAnalisisDeRiesgo();
+    }
 }
