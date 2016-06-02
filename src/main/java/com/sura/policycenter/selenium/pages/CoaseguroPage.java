@@ -6,6 +6,7 @@ import com.sura.policycenter.model.Aseguradora;
 import java.util.ArrayList;
 
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.pages.components.HtmlTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -24,6 +25,8 @@ public class CoaseguroPage extends Guidewire{
     private WebElementFacade linkEditarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptar;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV_tb:Add-btnInnerEl']")
+    private WebElementFacade botonAgregar;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:coinsuranceTypeQuestion_true-inputEl']")
     private WebElementFacade radioBotonAceptado;
 
@@ -34,21 +37,12 @@ public class CoaseguroPage extends Guidewire{
     }
 
     public void validarCampos(){
-       /* StringBuilder notRight = new StringBuilder(MSJVALIDARELEMENTOS);
-        if(!campoTxtParticipante1.containsText("Sura"))
-            notRight.append(" dato_articipante_1,");
-        if(campoTxtParticipante1.getAttribute("class").contains("x-form-text"))
-            notRight.append(" editable_participante_1,");
-        String res = notRight.toString();
-        if(MSJVALIDARELEMENTOS.equals(res)){
-            res = notRight.toString().substring(0,notRight.toString().length()-1);
-        }
-        assertThat(res,MSJVALIDARELEMENTOS.equals(res));*/
+        linkAgregarCoaseguro.waitUntilPresent().click();
+        assertThat("El tipo de coaseguro por defecto debe ser cedido", !radioBotonAceptado.isSelected());
+        assertThat("Se deben poder agregar mas aseguradoras",botonAgregar.isPresent());
     }
 
     public void agregarCoaseguro(ArrayList<Aseguradora> aseguradoras){
-        linkAgregarCoaseguro.waitUntilPresent().click();
-        assertThat("El tipo de coaseguro por defecto debe ser cedido", !radioBotonAceptado.isSelected());
         radioBotonAceptado.waitUntilPresent().click();
         campoTxtPolizaDeReferencia.waitUntilPresent().sendKeys("poliza123");
         Actions act = new Actions(getDriver());
@@ -70,6 +64,9 @@ public class CoaseguroPage extends Guidewire{
             i++;
         }
         act.sendKeys(Keys.TAB).build().perform();
+
+        HtmlTable htmlTable = new HtmlTable(findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table"));
+        assertThat("El total no es del 100%",htmlTable.getHeadings().toString().contains("100"));
         botonAceptar.click();
     }
 

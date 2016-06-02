@@ -15,4 +15,4 @@ Then el proceso debe ser exitoso
 
 Examples:
 |cuenta     |organizacion|agente    |
-|C000888888 |IOY         |pcodeHCNDHC-000002FIEEBQ-000004 Producer Code|
+|C000888888 |XFH         |pcodeVRGYSJ-000002KSPMLZ-000004 Producer Code|

@@ -70,7 +70,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
         numeroDeCuenta.sendKeys(cuenta);
         espera(botonAgregarOrganizacion,5);
         botonAgregarOrganizacion.click();
-        waitABit(2000);
+        waitABit(1000);
         campoTxtNombreDeOrganizacion.sendKeys(organizacion);
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
