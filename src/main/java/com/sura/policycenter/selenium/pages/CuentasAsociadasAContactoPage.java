@@ -2,10 +2,11 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.SeusLoginPage;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
+
 
 public class CuentasAsociadasAContactoPage extends SeusLoginPage {
 
@@ -31,16 +32,16 @@ public class CuentasAsociadasAContactoPage extends SeusLoginPage {
     public void validarCamposLista(String nombre, String direccion,
                                    String telefono, String email, String rol){
         mnuLateralCuenta.click();
-        assertThat(nombreContactoCuenta.getText(), containsString(nombre));
-        assertThat(direccionContactoCuenta.getText(), containsString(direccion));
-        assertThat(telContactoCuenta.getText(), containsString(telefono));
-        assertThat(emailContactoCuenta.getText(), containsString(email));
-        assertThat(rolesContactoCuenta.getText(), containsString(rol));
+        MatcherAssert.assertThat(nombreContactoCuenta.getText(), Matchers.containsString(nombre));
+        MatcherAssert.assertThat(direccionContactoCuenta.getText(), Matchers.containsString(direccion));
+        MatcherAssert.assertThat(telContactoCuenta.getText(), Matchers.containsString(telefono));
+        MatcherAssert.assertThat(emailContactoCuenta.getText(), Matchers.containsString(email));
+        MatcherAssert.assertThat(rolesContactoCuenta.getText(), Matchers.containsString(rol));
     }
 
     public void validarMensaje(String mensaje) {
         mnuLateralCuenta.waitUntilClickable();
         mnuLateralCuenta.click();
-        assertThat(msjCuentaNoEncontrada.getText(), containsString(mensaje));
+        MatcherAssert.assertThat(msjCuentaNoEncontrada.getText(), Matchers.containsString(mensaje));
     }
 }

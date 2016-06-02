@@ -13,7 +13,7 @@ Then debo ver la siguiente informacion producto <producto>, <nroEnvio>, <estado>
 
 Examples:
 |numeroCuenta|producto|nroEnvio|estado|nroPoliza|
-|C001888888|Compensación de los trabajadores|22222224|Comprometida|TEST_22222224|
+|C001888888|Auto personal|22222222|Expedida|TEST_22222222|
 
 Scenario: Consultar el valor total de un grupo de cotizaciones
 Given busco una cuenta existente como <numeroCuenta>
@@ -33,5 +33,15 @@ Then debo ver la sumatoria <suma> de todas las cotizaciones y renovaciones indep
 Examples:
 |numeroCuenta|suma|
 |C001888888|3|
+
+Scenario: Campos ocultos
+Given busco una cuenta existente como <numeroCuenta>
+When busque el de detalle de los registros de suscripcion
+Then no debe mostrar el menu analisis de riesgo
+And no debe mostrar el menu actividades
+
+Examples:
+|numeroCuenta|
+|C001888888|
 
 

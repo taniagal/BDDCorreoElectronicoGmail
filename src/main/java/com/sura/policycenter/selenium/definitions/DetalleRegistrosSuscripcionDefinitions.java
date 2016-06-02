@@ -7,6 +7,8 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+
+
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 public class DetalleRegistrosSuscripcionDefinitions {
@@ -46,4 +48,13 @@ public class DetalleRegistrosSuscripcionDefinitions {
         detalleRegistrosSuscripcionSteps.validarSumaGrupo(suma);
     }
 
+    @Then("no debe mostrar el menu actividades")
+    public void validarVisibilidadMenuActividades() {
+        detalleRegistrosSuscripcionSteps.validarVisibilidadMenuActividades();
+    }
+
+    @Then("no debe mostrar el menu analisis de riesgo")
+    public void validarVisibilidadMenuAnalisisDeRiesgo() {
+        detalleRegistrosSuscripcionSteps.validarVisibilidadMenuAnalisisDeRiesgo();
+    }
 }

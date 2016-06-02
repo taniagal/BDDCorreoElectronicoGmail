@@ -46,6 +46,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaTransPoli
 import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaVerificaCoberPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
@@ -140,7 +141,7 @@ public class Navegacion extends Guidewire {
     private WebElementFacade mnuContact;
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact-arrowEl']")
     private WebElementFacade mnuItemNuevoContacto;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewCompany']")
+    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewCompany-textEl']")
     private WebElementFacade mnuItemNuevaCompania;
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewPerson']")
     private WebElementFacade mnuItemNuevaPersona;
@@ -349,6 +350,9 @@ public class Navegacion extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span")
     private WebElementFacade mnuInformacionDePoliza;
 
+    @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_SubmissionManager']/div/span")
+    private WebElementFacade mnuAdmCotizaciones;
+
     public Navegacion(WebDriver driver) {
         super(driver);
     }
@@ -420,7 +424,6 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
-        waitFor(mnuCuenta);
         gw.deployMenu(mnuCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
@@ -463,9 +466,6 @@ public class Navegacion extends Guidewire {
 
     public BuscarContactoPage irABuscarContacto() {
         gw.deployMenu(mnuContact);
-        waitABit(1000);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
         act.moveToElement(mnuItemContactoBusqueda).release(mnuItemContactoBusqueda).click().build().perform();
         return new BuscarContactoPage(getDriver());
     }
@@ -480,9 +480,6 @@ public class Navegacion extends Guidewire {
 
     public BuscarCuentasPage irABuscarCuentas() {
         gw.deployMenu(mnuBuscar);
-        waitABit(1000);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
         act.moveToElement(mnuItemBuscarCuenta).release(mnuItemBuscarCuenta).click().build().perform();
         return new BuscarCuentasPage(getDriver());
     }
@@ -505,8 +502,6 @@ public class Navegacion extends Guidewire {
 
     public BuscarContactosPage irABuscarContactos() {
         gw.deployMenu(mnuBuscar);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
         act.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();
         return new BuscarContactosPage(getDriver());
     }
@@ -561,6 +556,7 @@ public class Navegacion extends Guidewire {
 
     public AdminOrganizacionesPage irAAdminOrganizaciones() {
         gw.deployMenu(mnuAdministracion);
+        waitABit(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
         act.moveToElement(mnuItemUsuarioSeguridad).release(mnuItemUsuarioSeguridad).build().perform();
@@ -742,9 +738,10 @@ public class Navegacion extends Guidewire {
     // Navegacion menu Acciones Escritorio
     public EscritorioNuevoEnvioPage irAEscritorioNuevoEnvio() {
         menuEscritorio.click();
+        waitABit(1000);
         gw.deployMenu(mnuAccionesEscritorio);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitABit(1000);
         act.moveToElement(mnuAccionNuevoEnvio).release(mnuAccionNuevoEnvio).click().build().perform();
         return new EscritorioNuevoEnvioPage(getDriver());
     }
@@ -1310,5 +1307,11 @@ public class Navegacion extends Guidewire {
         mnuInformacionDePoliza.click();
         waitABit(1000);
         return new OpcionesInformacionPolizaPage(getDriver());
+    }
+
+    public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
+        mnuAdmCotizaciones.click();
+        waitABit(800);
+        return new OpcionesAdminitradorCotizaciones(getDriver());
     }
 }

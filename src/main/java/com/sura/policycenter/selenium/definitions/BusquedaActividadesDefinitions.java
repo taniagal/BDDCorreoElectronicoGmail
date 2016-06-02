@@ -6,6 +6,7 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 @SuppressWarnings("WeakerAccess")
 public class BusquedaActividadesDefinitions {
@@ -23,19 +24,9 @@ public class BusquedaActividadesDefinitions {
         busquedaActividadesSteps.filtrarPorAsignado(usuario);
     }
 
-    @Then("me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:" +
-            "\r\nprioridad <prioridad>, estado <estadoActividad> , asunto <asunto>, id <id>, Titular de la " +
-            "cuenta <titularCuenta>, producto\r\n<producto>, asignado por <asignadoPor>, estado <estado>")
-    public void validarActividadesAsignadas(@Named("prioridad") String prioridad,
-                                            @Named("estadoActividad") String estadoActividad,
-                                            @Named("asunto") String asunto,
-                                            @Named("id") String id,
-                                            @Named("titularCuenta") String titularCuenta,
-                                            @Named("producto") String producto,
-                                            @Named("asignadoPor") String asignadoPor,
-                                            @Named("estado") String estado) {
-        busquedaActividadesSteps.validarResultado(prioridad, estadoActividad, asunto, id,
-                titularCuenta, producto, asignadoPor, estado);
+    @Then("me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado: $resultadoFiltroActividades")
+    public void validarActividadesAsignadas(ExamplesTable resultadoFiltroActividades){
+        busquedaActividadesSteps.validarResultado(resultadoFiltroActividades);
     }
 
     @When("quiera realizar la busqueda de actividades por el filtro numero de poliza<numeroPoliza>")
