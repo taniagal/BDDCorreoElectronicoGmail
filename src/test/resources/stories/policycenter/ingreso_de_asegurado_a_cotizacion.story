@@ -29,11 +29,13 @@ Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
 And crear una cotizacion nueva
 When quiera agregar un asegurado
 And agregue un asegurado que es contacto de la cuenta
-Then debe quedar agregado como asegurado <numeroDocumento>
+Then deben quedar agregados como asegurados:
+|nombre|tipoDocumento|numeroDocumento|
+|DONIA GLORIA GALLEGO|CEDULA DE CIUDADANIA|1264567899|
 
 Examples:
-|cuenta|numeroDocumento|
-|C000888888|1264567899|
+|cuenta|
+|C000888888|
 
 Scenario: Agregar asegurado del directorio
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
@@ -42,11 +44,13 @@ When quiera agregar un asegurado
 And agregue un asegurado del directorio
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
 And seleccione el contacto a agregar
-Then debe quedar agregado como asegurado <numeroDocumento>
+Then deben quedar agregados como asegurados:
+|nombre|tipoDocumento|numeroDocumento|
+|VARIEDADES YURLEDYS S.A|NIT|9202086744|
 
 Examples:
-|cuenta|tipoId|numeroId|numeroDocumento|
-|C000888888|NIT|9202086744|9202086744|
+|cuenta|tipoId|numeroId|
+|C000888888|NIT|9202086744|
 
 Scenario: Agregar asegurado por la opción nueva persona natural
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
@@ -55,12 +59,14 @@ When quiera agregar un asegurado
 And seleccione ingresar nueva persona natural
 And ingrese los datos de persona natural:
 |tipoId|numeroId|primerNombre|primerApellido|pais|departamento|ciudad|direccion|tipoDireccion|
-|CEDULA DE CIUDADANIA|1234567899|Luciana|Londoño|Colombia|Antioquia|Medellin|Cra 65 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
-Then debe quedar agregado como asegurado <numeroDocumento>
+|CEDULA DE CIUDADANIA|1234568899|LUCIANA|LONDOÑO|Colombia|Antioquia|Medellin|Cra 65 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
+Then deben quedar agregados como asegurados:
+|nombre|tipoDocumento|numeroDocumento|
+|LUCIANA LONDOÑO|CEDULA DE CIUDADANIA|1234568899|
 
 Examples:
-|cuenta|numeroDocumento|
-|C000888888|1234567899|
+|cuenta|
+|C000888888|
 
 Scenario: Agregar asegurado por la opción nueva persona juridica
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
@@ -69,12 +75,14 @@ When quiera agregar un asegurado
 And seleccione ingresar nueva persona juridica
 And ingrese los datos de persona juridica:
 |tipoId|numeroId|razonSocial|pais|departamento|ciudad|direccion|tipoDireccion|
-|NIT|9998887776|Cooperativa Cooperando|Colombia|Antioquia|Medellin|Cra 66 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
-Then debe quedar agregado como asegurado <numeroDocumento>
+|NIT|9998887776|COOPERATIVA COOPERANDO|Colombia|Antioquia|Medellin|Cra 66 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
+Then deben quedar agregados como asegurados:
+|nombre|tipoDocumento|numeroDocumento|
+|COOPERATIVA COOPERANDO|NIT|9998887776|
 
 Examples:
-|cuenta|numeroDocumento|
-|C000888888|9998887776|
+|cuenta|
+|C000888888|
 
 Scenario: Agregar asegurado del directorio y que no existe
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
@@ -92,16 +100,17 @@ Scenario: Agregar varios asegurados
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
 And crear una cotizacion nueva
 When quiera agregar un asegurado
+And vaya a la opcion agregar
 And agregue un asegurado del directorio
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
 And seleccione el contacto a agregar
+And vaya a la opcion agregar
 And agregue un asegurado que es contacto de la cuenta
-Then debe quedar agregado como asegurado <numeroDocumento>
+Then deben quedar agregados como asegurados:
+|nombre|tipoDocumento|numeroDocumento|
+|VARIEDADES YURLEDYS S.A|NIT|9202086744|
+|DONIA GLORIA GALLEGO|CEDULA DE CIUDADANIA|1264567899|
 
 Examples:
-|cuenta|tipoId|numeroId|numeroDocumento|
-|C000888888|NIT|9202086744|9202086744|
-
-
-
-
+|cuenta|tipoId|numeroId|
+|C000888888|NIT|9202086744|

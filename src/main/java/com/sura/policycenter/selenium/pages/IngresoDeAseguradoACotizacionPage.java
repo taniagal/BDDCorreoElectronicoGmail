@@ -5,11 +5,14 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class IngresoDeAseguradoACotizacionPage extends PageObject{
@@ -92,13 +95,6 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
         contactoDeCuenta.click();
     }
 
-
-    public String validarAseguradoAgregado() {
-        waitABit(1000);
-        List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
-        return allRows.get(0).getText();
-    }
-
     public void agregarAseguradoContactoDelDirectorio() {
         opcionContactoDelDirectorio.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
     }
@@ -119,5 +115,17 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
     public String validarMensaje() {
        return mensajeBuscarDirectorio.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible().getText();
+    }
+
+    public void validarAseguradosAgregados(ExamplesTable asegurados) {
+        Map<String, String> aseguradosAgregados;
+        waitABit(1000);
+        List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
+        for (int i=0; i<allRows.size(); i++){
+            aseguradosAgregados = asegurados.getRows().get(i);
+            MatcherAssert.assertThat(allRows.get(i).getText(), Matchers.containsString(aseguradosAgregados.get("nombre")));
+            MatcherAssert.assertThat(allRows.get(i).getText(), Matchers.containsString(aseguradosAgregados.get("tipoDocumento")));
+            MatcherAssert.assertThat(allRows.get(i).getText(), Matchers.containsString(aseguradosAgregados.get("numeroDocumento")));
+        }
     }
 }

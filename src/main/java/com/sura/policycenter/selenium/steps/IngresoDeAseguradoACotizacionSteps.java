@@ -5,11 +5,10 @@ import com.sura.policycenter.selenium.pages.IngresoDeAseguradoACotizacionPage;
 import com.sura.policycenter.selenium.pages.IngresoNuevoContactoAseguradoPage;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.core.Is.is;
 
 public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
 
@@ -29,15 +28,11 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
     }
 
     public void validarOpcionesDeAgregar(ExamplesTable listaAgregar) {
-        assertThat(ingresoDeAseguradoACotizacionPage.validarOpcionesDeAgregar(listaAgregar), is(equalTo("Elementos de la opción Agregar correctos")));
+        MatcherAssert.assertThat(ingresoDeAseguradoACotizacionPage.validarOpcionesDeAgregar(listaAgregar), Is.is(Matchers.equalTo("Elementos de la opción Agregar correctos")));
     }
 
     public void agregarAseguradoContactoDeLaCuenta() {
         ingresoDeAseguradoACotizacionPage.agregarAseguradoContactoDeLaCuenta();
-    }
-
-    public void validarAseguradoAgregado(String numeroDocumento) {
-        assertThat(ingresoDeAseguradoACotizacionPage.validarAseguradoAgregado(), containsString(numeroDocumento));
     }
 
     public void agregarAseguradoContactoDelDirectorio() {
@@ -65,6 +60,10 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
     }
 
     public void validarMensaje(String mensaje) {
-        assertThat(ingresoDeAseguradoACotizacionPage.validarMensaje(), is(equalTo(mensaje)));
+        MatcherAssert.assertThat(ingresoDeAseguradoACotizacionPage.validarMensaje(), Is.is(Matchers.equalTo(mensaje)));
+    }
+
+    public void validarAseguradosAgregados(ExamplesTable asegurados) {
+        ingresoDeAseguradoACotizacionPage.validarAseguradosAgregados(asegurados);
     }
 }

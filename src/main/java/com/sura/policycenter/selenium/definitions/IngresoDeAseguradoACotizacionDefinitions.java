@@ -35,8 +35,12 @@ public class IngresoDeAseguradoACotizacionDefinitions {
     }
 
     @When("quiera agregar un asegurado")
-    public void agregarAsegurado(){
+    public void irAIngresarAsegurado(){
         ingresoDeAseguradoACotizacionSteps.irAIngresarAsegurado();
+    }
+
+    @When("vaya a la opcion agregar")
+    public void agregarAsegurado(){
         ingresoDeAseguradoACotizacionSteps.agregarAsegurado();
     }
 
@@ -86,9 +90,9 @@ public class IngresoDeAseguradoACotizacionDefinitions {
         ingresoDeAseguradoACotizacionSteps.validarOpcionesDeAgregar(listaAgregar);
     }
 
-    @Then("debe quedar agregado como asegurado <numeroDocumento>")
-    public void validarAseguradoAgregado(@Named("numeroDocumento") String numeroDocumento){
-        ingresoDeAseguradoACotizacionSteps.validarAseguradoAgregado(numeroDocumento);
+    @Then("deben quedar agregados como asegurados: $asegurados")
+    public void validarAseguradosAgregados(ExamplesTable asegurados){
+        ingresoDeAseguradoACotizacionSteps.validarAseguradosAgregados(asegurados);
     }
 
     @Then("debe mostrar el mensaje <mensaje>")
