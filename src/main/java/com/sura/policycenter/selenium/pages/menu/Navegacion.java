@@ -47,6 +47,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaVerificaC
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminAtributosPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.AdminCambioDatosPage;
@@ -342,12 +343,15 @@ public class Navegacion extends Guidewire {
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Roles']/div")
     private WebElementFacade mnuOpcionesCuenta;
 
+    @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
+    WebElementFacade mnuResumenCuenta;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span")
+    private WebElementFacade mnuInformacionDePoliza;
+
     public Navegacion(WebDriver driver) {
         super(driver);
     }
-
-    @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
-    WebElementFacade mnuResumenCuenta;
 
     // Navegacion menu Escritorio
     public MisActividadesPage irAMisActividades() {
@@ -1299,5 +1303,12 @@ public class Navegacion extends Guidewire {
         mnuResumenCuenta.click();
         waitABit(800);
         return new OpcionesResumenCuentaPage(getDriver());
+    }
+
+    public OpcionesInformacionPolizaPage irAInformacionDePoliza() {
+        waitFor(mnuInformacionDePoliza);
+        mnuInformacionDePoliza.click();
+        waitABit(1000);
+        return new OpcionesInformacionPolizaPage(getDriver());
     }
 }
