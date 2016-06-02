@@ -734,9 +734,10 @@ public class Navegacion extends Guidewire {
     // Navegacion menu Acciones Escritorio
     public EscritorioNuevoEnvioPage irAEscritorioNuevoEnvio() {
         menuEscritorio.click();
+        waitABit(1000);
         gw.deployMenu(mnuAccionesEscritorio);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitABit(1000);
         act.moveToElement(mnuAccionNuevoEnvio).release(mnuAccionNuevoEnvio).click().build().perform();
         return new EscritorioNuevoEnvioPage(getDriver());
     }

@@ -33,6 +33,10 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
     WebElementFacade lblCrearFecha;
     @FindBy(xpath="//td[6]/div")
     WebElementFacade lblFechaCierre;
+    @FindBy(xpath=".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:RiskAnalysisCardTab']")
+    WebElementFacade mnuAnalisis;
+    @FindBy(xpath=".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:ActivitiesCardTab']")
+    WebElementFacade mnuActividades;
 
     public DetalleRegistrosSuscripcionPage(WebDriver driver) {
         super(driver);
@@ -47,19 +51,27 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
         lblFechaCierre.shouldBeVisible();
     }
 
-    public void buscarRegistrosDeSucripcion(){
+    public void buscarRegistrosDeSucripcion() {
         waitABit(1000);
         mnuRegistrosSuscripcion.click();
         waitABit(1000);
         lblTransaccion.click();
     }
 
-    public void validarTotal(String total){
+    public void validarTotal(String total) {
         assertThat(lblCostoTotal.getText(), is(equalTo(total)));
     }
 
-    public void validarSumaGrupo(String suma){
+    public void validarSumaGrupo(String suma) {
         assertThat(lblNroCotizaciones.getText(), is(equalTo(suma)));
+    }
+
+    public void validarVisibilidadMenuAnalisisDeRiesgo() {
+        mnuAnalisis.shouldNotBeVisible();
+    }
+
+    public  void validarVisibilidadMenuActividades() {
+        mnuActividades.shouldNotBeVisible();
     }
 
 }
