@@ -181,3 +181,19 @@ Then la lista de asegurados debe quedar vacia
 Examples:
 |cuenta|
 |C000888888|
+
+Scenario: Mostrar errores al validar las reglas de MDM al dar siguiente
+Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
+And crear una cotizacion nueva
+When quiera agregar un asegurado
+And vaya a la opcion agregar
+And seleccione ingresar nueva persona natural
+And ingrese los datos de persona natural:
+|tipoId|numeroId|primerNombre|primerApellido|pais|departamento|ciudad|direccion|tipoDireccion|
+|CEDULA DE CIUDADANIA|10000000010|PRUEBA|MDM|Colombia|Antioquia|Medellin|Cra 65 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
+And vaya al siguiente paso de la cotizacion
+Then muestre el mensaje de validacion de la identificacion incorrecta <mensaje>
+
+Examples:
+|cuenta|mensaje|
+|C000888888|La longitud del documento de identificación no es válida, máximo 10 caracteres|

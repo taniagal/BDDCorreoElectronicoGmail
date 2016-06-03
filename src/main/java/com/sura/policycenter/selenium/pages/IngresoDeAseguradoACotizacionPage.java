@@ -7,6 +7,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -61,6 +62,12 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:Remove']")
     WebElementFacade botonQuitar;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:_msgs']/div")
+    WebElementFacade mensajeValidacionMDM;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Next']")
+    WebElementFacade botonSiguiente;
 
     public IngresoDeAseguradoACotizacionPage(WebDriver driver){
         super(driver);
@@ -151,6 +158,21 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void validarAseguradoEliminado() {
+        waitABit(1000);
+        List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
+        if(allRows.isEmpty()){
+            MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados vacía")));
+        }else {
+            MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados no es vacía")));
+        }
+    }
 
+    public void irASiguiente() {
+        botonSiguiente.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+    }
+
+    public void validarMensajeDeMDM(String mensaje) {
+        mensajeValidacionMDM.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible();
+        MatcherAssert.assertThat(mensajeValidacionMDM.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 }

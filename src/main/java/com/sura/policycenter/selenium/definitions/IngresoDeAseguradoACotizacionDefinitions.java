@@ -110,6 +110,11 @@ public class IngresoDeAseguradoACotizacionDefinitions {
         ingresoDeAseguradoACotizacionSteps.quitarAseguradoDeLaLista();
     }
 
+    @When("vaya al siguiente paso de la cotizacion")
+    public void irASiguiente(){
+        ingresoDeAseguradoACotizacionSteps.irASiguiente();
+    }
+
     @Then("Se debe mostrar las opciones: $listaAgregar")
     public void validarOpcionesDeAgregar(ExamplesTable listaAgregar){
         ingresoDeAseguradoACotizacionSteps.validarOpcionesDeAgregar(listaAgregar);
@@ -128,6 +133,11 @@ public class IngresoDeAseguradoACotizacionDefinitions {
     @Then("la lista de asegurados debe quedar vacia")
     public void  validarAseguradoEliminado(){
         ingresoDeAseguradoACotizacionSteps.validarAseguradoEliminado();
+    }
+
+    @Then("muestre el mensaje de validacion de la identificacion incorrecta <mensaje>")
+    public void validarMensajeDeMDM(@Named("mensaje") String mensaje){
+        ingresoDeAseguradoACotizacionSteps.validarMensajeDeMDM(mensaje);
     }
 
 }
