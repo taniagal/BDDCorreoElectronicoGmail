@@ -70,14 +70,15 @@ public class DetallesDeUbicacionPage extends Guidewire{
         numeroDeCuenta.sendKeys(cuenta);
         espera(botonAgregarOrganizacion,5);
         botonAgregarOrganizacion.click();
-        waitABit(1000);
+        waitABit(1500);
         campoTxtNombreDeOrganizacion.sendKeys(organizacion);
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
         waitABit(1000);
         selectItem(comboBoxCodigoAgente,agente);
+        waitABit(500);
         selectItem(comboBoxEstadoBase,"Antioquia");
-        waitABit(1000);
+        waitABit(500);
         botonElegir.click();
     }
 

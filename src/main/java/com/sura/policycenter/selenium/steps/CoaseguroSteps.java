@@ -23,10 +23,23 @@ public class CoaseguroSteps extends ScenarioSteps{
     @Step
     public void agregarCoaseguro(ArrayList<Aseguradora> aseguradoras){
         coaseguroPage.agregarCoaseguro(aseguradoras);
+        coaseguroPage.verificarPorcentajeParticipacion();
+        coaseguroPage.guardarcosaeguro();
+    }
+
+    @Step
+    public void agregarCoaseguro2(ArrayList<Aseguradora> aseguradoras){
+        coaseguroPage.agregarCoaseguro(aseguradoras);
+        coaseguroPage.guardarcosaeguro();
     }
 
     @Step
     public void verificarCoaseguro(){
         coaseguroPage.verificarCoaseguro();
+    }
+
+    @Step
+    public void verificarMensaje(String mensaje){
+        coaseguroPage.verificarMensaje(mensaje);
     }
 }
