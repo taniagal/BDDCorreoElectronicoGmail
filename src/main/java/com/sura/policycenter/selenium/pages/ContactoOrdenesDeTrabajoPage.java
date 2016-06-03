@@ -5,17 +5,14 @@ import java.util.List;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.apache.commons.lang3.ArrayUtils;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.sikuli.api.robot.Key;
 
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.isIn;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.hamcrest.core.StringContains.containsString;
 
 public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
@@ -65,14 +62,14 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
     public void validarCamposTransacciones(String poliza, String producto, String numeroTransaccion,
                                            String tipo, String estado, String participante) {
-        assertThat(this.fechaCreacion.getText(), is(notNullValue()));
-        assertThat(this.poliza.getText(), containsString(poliza));
-        assertThat(this.producto.getText(), containsString(producto));
-        assertThat(this.numeroTransaccion.getText(), containsString(numeroTransaccion));
-        assertThat(this.tipo.getText(), containsString(tipo));
-        assertThat(this.estado.getText(), containsString(estado));
-        assertThat(this.fechaFin.getText(), is(notNullValue()));
-        assertThat(this.participante.getText(), containsString(participante));
+        MatcherAssert.assertThat(this.fechaCreacion.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(this.poliza.getText(), Matchers.containsString(poliza));
+        MatcherAssert.assertThat(this.producto.getText(), Matchers.containsString(producto));
+        MatcherAssert.assertThat(this.numeroTransaccion.getText(), Matchers.containsString(numeroTransaccion));
+        MatcherAssert.assertThat(this.tipo.getText(), Matchers.containsString(tipo));
+        MatcherAssert.assertThat(this.estado.getText(), Matchers.containsString(estado));
+        MatcherAssert.assertThat(this.fechaFin.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(this.participante.getText(), Matchers.containsString(participante));
     }
 
     //display key de los estados: typeList localization ---> TypeKey.PolicyPeriodStatus
@@ -88,11 +85,11 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             String estadoStr = cells.get(5).getText();
             if(("Completo").equals(filtroEstado)){
-                assertThat(estadoStr, isIn(listEstadosCompletos));
+                MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosCompletos));
             }else if (("Abierto").equals(filtroEstado)){
-                assertThat(estadoStr, isIn(listEstadosAbiertos));
+                MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosAbiertos));
             }else{
-                assertThat(estadoStr, isIn(listEstadosTodos));
+                MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosTodos));
             }
         }
     }
@@ -110,7 +107,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             String transaccionStr = cells.get(4).getText();
-            assertThat(transaccionStr, containsString(filtroTransaccion));
+            MatcherAssert.assertThat(transaccionStr, Matchers.containsString(filtroTransaccion));
         }
     }
 
@@ -127,11 +124,11 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             String transaccionStr = cells.get(2).getText();
-            assertThat(transaccionStr, containsString(filtroProducto));
+            MatcherAssert.assertThat(transaccionStr, Matchers.containsString(filtroProducto));
         }
     }
 
     public void validarMensaje(String mensaje) {
-        assertThat(msjTransaccionNoEncontrada.getText(), containsString(mensaje));
+        MatcherAssert.assertThat(msjTransaccionNoEncontrada.getText(), Matchers.containsString(mensaje));
     }
 }

@@ -1,24 +1,21 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.SeusLoginPage;
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.hamcrest.core.StringContains.containsString;
+import java.util.Map;
 
-public class BusquedaActividadesPage extends SeusLoginPage {
 
-    @FindBy(xpath=".//*[@id='TabBar:SearchTab']")
-    private WebElementFacade mnuBuscar;
-    @FindBy(xpath=".//*[@id='TabBar:SearchTab:Search_ActivitySearch']")
-    private WebElementFacade mnuBuscarActividades;
+public class BusquedaActividadesPage extends PageObject {
+
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:AssignedUser-inputEl']")
     private WebElementFacade txtAsignadoA;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:ActivityStatus-inputEl']")
@@ -33,8 +30,6 @@ public class BusquedaActividadesPage extends SeusLoginPage {
     private WebElementFacade txtNumeroCuenta;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade btnBuscar;
-    @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
-    private WebElementFacade btnRestablecer;
     @FindBy(xpath="//td[4]/div")
     private WebElementFacade grdFechaVencimiento;
     @FindBy(xpath="//td[5]/div")
@@ -60,37 +55,34 @@ public class BusquedaActividadesPage extends SeusLoginPage {
         super(driver);
     }
 
-    public void buscarActividades() {
-        Actions act = new Actions(getDriver());
-        mnuBuscar.waitUntilClickable();
-        waitABit(1000);
-        mnuBuscar.click();
-        waitABit(1000);
-        mnuBuscar.click();
-        waitABit(1000);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(mnuBuscarActividades).click().build().perform();
-        btnRestablecer.click();
-        waitABit(1000);
-    }
-
     public void filtrarPorAsignado(String usuario) {
+        this.limpiarFiltros();
         txtAsignadoA.sendKeys(usuario);
     }
 
-    public void validarResultado(String prioridad, String estadoActividad,
-                                 String asunto, String id, String titularCuenta, String producto, String asignadoPor,
-                                 String estado) {
+    public void validarResultado(ExamplesTable resultadoFiltroActividades) {
+        waitABit(1000);
+        Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         btnBuscar.click();
-        assertThat(this.grdFechaVencimiento.getText(), is(notNullValue()));
-        assertThat(this.grdPrioridad.getText(), containsString(prioridad));
-        assertThat(this.grdEstadoActividad.getText(), containsString(estadoActividad));
-        assertThat(this.grdAsunto.getText(), containsString(asunto));
-        assertThat(this.grdId.getText(), containsString(id));
-        assertThat(this.grdCuenta.getText(), containsString(titularCuenta));
-        assertThat(this.grdProducto.getText(), containsString(producto));
-        assertThat(this.grdAsignadoPor.getText(), containsString(asignadoPor));
-        assertThat(this.grdEstado.getText(), containsString(estado));
+        waitABit(1000);
+        MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
+        MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
+        MatcherAssert.assertThat(this.grdAsunto.getText(), Is.is(Matchers.equalTo(exampleTable.get("asunto"))));
+        MatcherAssert.assertThat(this.grdId.getText(), Is.is(Matchers.equalTo(exampleTable.get("id"))));
+        MatcherAssert.assertThat(this.grdCuenta.getText(), Is.is(Matchers.equalTo(exampleTable.get("titularCuenta"))));
+        MatcherAssert.assertThat(this.grdProducto.getText(), Matchers.containsString(exampleTable.get("producto")));
+        MatcherAssert.assertThat(this.grdAsignadoPor.getText(), Matchers.containsString(exampleTable.get("asignadoPor")));
+        MatcherAssert.assertThat(this.grdEstado.getText(), Is.is(Matchers.equalTo(exampleTable.get("estado"))));
+    }
+
+    public void limpiarFiltros(){
+        txtAsignadoA.clear();
+        txtEstadoActividad.clear();
+        txtNumeroPoliza.clear();
+        txtNumeroCuenta.clear();
+        txtPrioridad.clear();
+        txtVencida.clear();
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
@@ -105,37 +97,38 @@ public class BusquedaActividadesPage extends SeusLoginPage {
 
     public void buscarSinFiltro() {
         waitABit(2000);
+        limpiarFiltros();
     }
 
     public void validarMensjeFiltroRequerido(String mensaje) {
         btnBuscar.click();
         txtNumeroCuenta.clear();
-        assertThat(this.msgFiltrosRequeridos.getText(), containsString(mensaje));
+        MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
     }
 
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
+        this.limpiarFiltros();
         txtAsignadoA.sendKeys(usuario);
-        txtPrioridad.clear();
         txtPrioridad.sendKeys(prioridad);
         txtPrioridad.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(String usuario, String estadoActividad) {
+        this.limpiarFiltros();
         txtAsignadoA.sendKeys(usuario);
-        txtEstadoActividad.clear();
         txtEstadoActividad.sendKeys(estadoActividad);
         txtEstadoActividad.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltrosUsuarioYVencida(String usuario, String vencida) {
+        this.limpiarFiltros();
         txtAsignadoA.sendKeys(usuario);
-        txtVencida.clear();
         txtVencida.sendKeys(vencida);
         txtVencida.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltroOpcional(String estadoActividad) {
-        txtEstadoActividad.clear();
+        this.limpiarFiltros();
         txtEstadoActividad.sendKeys(estadoActividad);
         txtEstadoActividad.sendKeys(Keys.ENTER);
     }

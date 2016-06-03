@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
-import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.BuscarCuentasPage;
 import java.util.Map;
 import net.thucydides.core.annotations.Step;
@@ -12,7 +11,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
 
     private final BuscarCuentasPage buscarCuentasPage = new BuscarCuentasPage (getDriver());
-    private final OpcionesCrearPartcCuentaPage opcionesCrearPartcCuentaPage = new OpcionesCrearPartcCuentaPage (getDriver());
     private final OpcionesAdminitradorCotizaciones opcionesAdministradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());
 
     public CotizacionesDeLaCuentaSteps(Pages pages) {
@@ -21,27 +19,6 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
 
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
-    }
-
-    @Step
-    public void navegaBuscarCuentaPar (){
-        inicioPage().irABuscarCuentas();
-    }
-
-    @Step
-    public void buscaCuenta (String numCuenta){
-        buscarCuentasPage.navegacionBuscarCuenta(numCuenta);
-    }
-
-    @Step
-    public void creaParticipante (){
-        inicioPage().irAOpcionesCrearPartcCuenta();
-        opcionesCrearPartcCuentaPage.navegacionCreaParticipante();
-    }
-
-    @Step
-    public void validaParticipante (){
-        opcionesCrearPartcCuentaPage.verificarCamposParticipantes();
     }
 
     @Step

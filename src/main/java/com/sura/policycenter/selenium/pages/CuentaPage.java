@@ -47,10 +47,12 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade botonBuscarOrganizacion;
     @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchResultsLV:0:_Select']")
     private WebElementFacade botonSeleccionarOrganizacion;
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update-botonInnerEl']")
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update']")
     private WebElementFacade botonActualizar;
-    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:Name-inputEl']")
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade labelNombreDeCuenta;
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileInfoBar:AccountName-btnInnerEl']")
+    private WebElementFacade labelCuentaNumero;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade comboBoxTipoDocumentoNuevaCuenta;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:BasicPersonInfo:CreateNewContactInputSet:DateOfBirth-inputEl']")
@@ -95,8 +97,9 @@ public class CuentaPage extends Guidewire{
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
         waitABit(1000);
-        selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         selectItem(comboBoxCiudad,ciudad);
+        waitABit(1000);
+        selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         waitABit(1500);
     }
 
@@ -147,5 +150,10 @@ public class CuentaPage extends Guidewire{
     public  void verificarMensaje(String mensaje){
         waitABit(1000);
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
+    }
+
+    public void verificarCuentaNumero(String nombreCuenta) {
+        waitABit(1000);
+        assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
     }
 }
