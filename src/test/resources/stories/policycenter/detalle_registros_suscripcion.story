@@ -22,7 +22,7 @@ Then debo ver el costo total <total> para las cotizaciones en estado cotizado
 
 Examples:
 |numeroCuenta|total|
-|C001888888|-|
+|C001888888|$1,418.00|
 |C010478975|-|
 
 Scenario: Consultar numero de cotizaciones del grupo
@@ -32,6 +32,16 @@ Then debo ver la sumatoria <suma> de todas las cotizaciones y renovaciones indep
 
 Examples:
 |numeroCuenta|suma|
-|C001888888|1|
+|C001888888|3|
+
+Scenario: Campos ocultos
+Given busco una cuenta existente como <numeroCuenta>
+When busque el de detalle de los registros de suscripcion
+Then no debe mostrar el menu analisis de riesgo
+And no debe mostrar el menu actividades
+
+Examples:
+|numeroCuenta|
+|C001888888|
 
 

@@ -33,4 +33,14 @@ public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
         detalleRegistrosSuscripcionPage.validarSumaGrupo(suma);
     }
 
+    @Step
+    public void validarVisibilidadMenuAnalisisDeRiesgo(){
+        detalleRegistrosSuscripcionPage.validarVisibilidadMenuAnalisisDeRiesgo();
+    }
+
+    @Step
+    public void validarVisibilidadMenuActividades(){
+        detalleRegistrosSuscripcionPage.validarVisibilidadMenuActividades();
+    }
+
 }
