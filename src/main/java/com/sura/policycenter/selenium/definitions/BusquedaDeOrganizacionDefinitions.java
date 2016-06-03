@@ -5,12 +5,11 @@ import com.sura.policycenter.selenium.steps.BusquedaDeOrganizacionSteps;
 
 import net.thucydides.core.annotations.Steps;
 
+import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 @SuppressWarnings("WeakerAccess")
 public class BusquedaDeOrganizacionDefinitions {
@@ -19,7 +18,7 @@ public class BusquedaDeOrganizacionDefinitions {
     private BusquedaDeOrganizacionSteps busquedaDeOrganizacionSteps;
 
     private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
+        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
     }
 
     @Given("que me encuentro en la pantalla de organizaciones")
