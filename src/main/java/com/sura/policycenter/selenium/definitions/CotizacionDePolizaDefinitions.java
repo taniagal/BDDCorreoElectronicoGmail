@@ -34,4 +34,9 @@ public class CotizacionDePolizaDefinitions {
     public void validarInformacionCotizacion(ExamplesTable informacionCotizacion) {
         cotizacionDePolizaSteps.validarInformacionCotizacion(informacionCotizacion);
     }
+
+    @Then("debo ver la siguiente direccion <direccion>")
+    public void validarInformacionCotizacion(@Named("direccion") String direccion) {
+        cotizacionDePolizaSteps.validarDireccion(direccion);
+    }
 }

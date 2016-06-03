@@ -20,3 +20,13 @@ Then debo ver la siguiente informacion
 Examples:
 |cotizacion|
 |22222225|
+
+Scenario: informacion general de cotizacion
+GivenStories: stories/policycenter/login_policy.story
+Given he realizado la cotizacion <cotizacion>
+When ingrese al detalle de la cotizacion
+Then debo ver la siguiente direccion <direccion>
+
+Examples:
+|cotizacion|direccion|
+|22222225|CRA 65 # 48-162, LOUISVILLE, Estados Unidos

@@ -20,4 +20,8 @@ public class CotizacionDePolizaSteps extends ScenarioSteps  {
     public void validarInformacionCotizacion(ExamplesTable informacionCotizacion) {
         cotizacionDePolizaPage.validarInformacionCotizacion(informacionCotizacion);
     }
+
+    public void validarDireccion(String direccion) {
+        cotizacionDePolizaPage.validarDireccion(direccion);
+    }
 }
