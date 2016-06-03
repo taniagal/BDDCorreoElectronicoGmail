@@ -48,7 +48,7 @@ public class CrearCuentaNuevaDefinitions {
 
     @Then("se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural")
     public void assertCrearNuevaCuentaPersonaNatural(@Named("primer_apellido")String primerApellido, @Named("primer_nombre")String primerNombre){
-        cns.verificarCrearCuenta(primerNombre+" "+primerApellido);
+        cns.verificarCrearCuenta(primerNombre);
     }
 
 
