@@ -47,11 +47,12 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void verDetalleCotizacion() {
-        tituloDePagina.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible();
+        waitFor(tituloDePagina).shouldBeVisible();
         MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
 
     public void validarInformacionCotizacion(ExamplesTable informacionCotizacion) {
+        waitFor(campoNumeroDeCotizacion).shouldBeVisible();
         Map<String, String> datosCotizacion;
         if (campoNumeroDeCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("numeroCotizacion"))) {
             datosCotizacion = informacionCotizacion.getRows().get(0);
