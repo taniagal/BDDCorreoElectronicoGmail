@@ -75,15 +75,28 @@ incluir un segundo tomador, vigencia de la poliza y la informacion de asesor
 #|C000888888     |60.325         |Descuento de póliza : no puede tener más de 2 dígitos a la derecha de la coma decimal.  |
 #|C000888888     |602.32         |Descuento de póliza : no puede tener más de 2 dígitos a la izquierda de la coma decimal.|
 
-Scenario: Validar campo poliza financiada
+#Scenario: Validar campo poliza financiada
+#GivenStories: stories/policycenter/login_policy.story
+#Given ya se inicio una nueva suscripcion <numeroCuenta>
+#And se visualiza la informacion de la poliza
+#When defina una poliza como financiada
+#Then se debe poder ingresar el numero de cuotas
+
+#Examples:
+#|numeroCuenta |
+#|C000888888   |
+
+Scenario: Validar retroactividad en la vigencia de la poliza
 GivenStories: stories/policycenter/login_policy.story
 Given ya se inicio una nueva suscripcion <numeroCuenta>
 And se visualiza la informacion de la poliza
-When defina una poliza como financiada
-Then se debe poder ingresar el numero de cuotas
+When modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
+Then se debe cumplir con la retroactividad permitida <fechaInicioVigencia> <mensaje>
 
 Examples:
-|numeroCuenta |
-|C000888888   |
+|numeroCuenta |tipoPlazo |fechaInicioVigencia|mensaje|
+|C000888888   |6 meses   |08/01/2016         |Fecha de vigencia : La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
+
+
 
 

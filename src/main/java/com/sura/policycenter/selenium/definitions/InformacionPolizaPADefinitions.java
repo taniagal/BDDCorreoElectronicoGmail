@@ -151,4 +151,10 @@ public class InformacionPolizaPADefinitions {
     public void ingresarNumeroCuotas(){
         informacionPolizaPASteps.ingresarNumeroCuotas();
     }
+
+    @Then("se debe cumplir con la retroactividad permitida <fechaInicioVigencia> <mensaje>")
+    public void validarRetroactividadPoliza(@Named("fechaInicioVigencia") String fechaInicioVigencia,
+                                            @Named("mensaje") String mensaje){
+        informacionPolizaPASteps.validarRetroactividadPoliza(fechaInicioVigencia, mensaje);
+    }
 }

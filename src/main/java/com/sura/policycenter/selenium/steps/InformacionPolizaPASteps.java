@@ -76,7 +76,13 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
         opcionesInformacionPoliza.definirPolizaFinanciada();
     }
 
+    @Step
     public void ingresarNumeroCuotas() {
         opcionesInformacionPoliza.ingresarNumeroCuotas();
+    }
+
+    @Step
+    public void validarRetroactividadPoliza(String fechaInicioVigencia, String mensaje) {
+        opcionesInformacionPoliza.validarRetroactividadPoliza(fechaInicioVigencia, mensaje);
     }
 }

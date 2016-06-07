@@ -11,6 +11,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Map;
 
 public class OpcionesInformacionPolizaPage extends Guidewire {
@@ -108,6 +112,9 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-inputEl']")
     private WebElementFacade fechaExpiracionPoliza;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:WrittenDate-inputEl']")
+    private WebElementFacade fechaEscrita;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:TermType-inputEl']")
     private WebElementFacade tipoPlazoPoliza;
@@ -261,6 +268,14 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void modificarFechaVigencia(String tipoPlazo, String fechaInicioVigencia) {
+        String validacion = null;
+        try{
+            MatcherAssert.assertThat(fechaVigenciaPoliza.getTextValue(), Is.is(Matchers.equalTo(fechaEscrita.getTextValue())));
+        }catch (Exception e){
+            LOGGER.error(validacion, e);
+            validacion = e.getMessage();
+        }
+        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
         waitFor(botonTipoPlazo);
         botonTipoPlazo.click();
         waitFor(tipoPlazoPoliza);
@@ -420,5 +435,29 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         botonNumeroCuotas.click();
         itemNumeroCuotas.click();
         waitABit(500);
+    }
+
+    public void validarRetroactividadPoliza(String fechaInicioVigencia, String mensaje) {
+        String validacion = null;
+        SimpleDateFormat formato = new SimpleDateFormat("MM/dd/yyyy");
+        Date fechaVigencia = null;
+        Date fechaActual = new Date();
+        String strFechaactual = formato.format(fechaActual);
+
+        try {
+            fechaVigencia = formato.parse(fechaInicioVigencia);
+            fechaActual = formato.parse(strFechaactual);
+            long dif = Math.abs(fechaActual.getTime() - fechaVigencia.getTime());
+            long dias = dif/(1000*60*60*24);
+            if(dias>60){
+                MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
+            }
+
+        }catch (Exception e) {
+            LOGGER.error(validacion, e);
+            validacion = e.getMessage();
+        }
+
+        MatcherAssert.assertThat(validacion,Is.is(Matchers.equalTo(null)));
     }
 }
