@@ -1,9 +1,9 @@
 package com.sura.policycenter.selenium.steps;
 
-
-import com.sura.policycenter.selenium.pages.CoaseguroPage;
 import com.sura.policycenter.model.Aseguradora;
-import java.util.ArrayList;
+import com.sura.policycenter.selenium.pages.CoaseguroPage;
+import java.util.List;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -21,14 +21,14 @@ public class CoaseguroSteps extends ScenarioSteps{
     }
 
     @Step
-    public void agregarCoaseguro(ArrayList<Aseguradora> aseguradoras){
+    public void agregarCoaseguro(List<Aseguradora> aseguradoras){
         coaseguroPage.agregarCoaseguro(aseguradoras);
         coaseguroPage.verificarPorcentajeParticipacion();
         coaseguroPage.guardarcosaeguro();
     }
 
     @Step
-    public void agregarCoaseguro2(ArrayList<Aseguradora> aseguradoras){
+    public void agregarCoaseguro2(List<Aseguradora> aseguradoras){
         coaseguroPage.agregarCoaseguro(aseguradoras);
         coaseguroPage.guardarcosaeguro();
     }

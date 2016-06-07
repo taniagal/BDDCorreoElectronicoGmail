@@ -2,17 +2,17 @@ package com.sura.policycenter.model;
 
 
 public class Aseguradora {
-    private String aseguradora;
+    private String nombre;
     private String participacion;
 
     public Aseguradora(){}
 
-    public String getAseguradora() {
-        return aseguradora;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setAseguradora(String aseguradora) {
-        this.aseguradora = aseguradora;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getParticipacion() {
