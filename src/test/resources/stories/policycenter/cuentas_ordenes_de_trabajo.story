@@ -9,11 +9,11 @@ Scenario: Ver informacion de las transacciones asociadas al cuenta
 GivenStories: stories/policycenter/login_policy.story
 Given Estoy buscando una cuenta <numCuenta>
 When consulte las transacciones de poliza por estado <filtroEstado>
-Then debe mostrarme el listado de transacciones con su respectiva informacion: producto <producto> Transaccion <transaccion> Tipo <tipo> Status <estado> Participante <participante>
+Then debe mostrarme el listado de transacciones con su respectiva informacion: numero de poliza <poliza>, producto <producto>, transaccion <transaccion>, tipo <tipo>, estado <estado>, participante <participante>
 
 Examples:
 |numCuenta|filtroEstado|producto|transaccion|tipo|estado|participante
-|S000212121|Completo|Businessowners|85746564938|Emisión|Comprometida|Christine Craft
+|C010478975|Completo|Businessowners|22222223|Emisión|Expedida|Super User
 
 
 Scenario: Ver informacion de transacciones sin registros
@@ -23,7 +23,7 @@ Then se muestra el mensaje informativo de transaccionde poliza no encontrada <me
 
 Examples:
 |numCuenta|mensaje|
-|9565863452|No tiene transacciones asociadas|
+|C000777778|No tiene transacciones asociadas|
 
 Scenario: Ver informacion filtrada por estado
 Given Estoy buscando una cuenta <numCuenta>
@@ -32,7 +32,7 @@ Then debe mostrarme el listado de transacciones filtradas por estado <filtroEsta
 
 Examples:
 |numCuenta|filtroEstado|estado
-|S000212121|Completo|Comprometida
+|C010478975|Abierto|Cambio de póliza
 
 
 Scenario: Ver informacion filtrada por tipo de transaccion
@@ -43,7 +43,7 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 |numCuenta|filtroEstado|filtroTransaccion
-|S000212121|Todos|Emisión
+|C010478975|Todos|Emisión
 
 Scenario: Ver informacion filtrada por producto
 Given Estoy buscando una cuenta <numCuenta>
@@ -54,6 +54,6 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 |numCuenta|filtroEstado||filtroTransaccion|filtroProducto
-|S000212121|Todos||Todos|Businessowners
+|C010478975|Todos||Todos|Businessowners
 
 

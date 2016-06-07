@@ -70,7 +70,7 @@ public class CrearNuevaCuentaSteps extends ScenarioSteps {
 
     @Step
     public void verificarCrearCuenta(String nombreCuenta){
-        cp.verificarCrearCuenta(nombreCuenta);
+        cp.verificarCuentaNumero(nombreCuenta);
     }
 
     @Step
