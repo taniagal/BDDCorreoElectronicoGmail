@@ -48,7 +48,7 @@ public class InformacionPolizaPADefinitions {
         infoPoliza.put("labelAgenteRegistro", "Agente de registro");
         infoPoliza.put("organizacionAgente", "Oficina de radicación");
         infoPoliza.put("codigoAgente", "Código de agente");
-        infoPoliza.put("modificadorPoliza", "Modificador Póliza"); //Modificador póliza
+        infoPoliza.put("modificadorPoliza", "Modificador póliza"); //Modificador póliza
         infoPoliza.put("descuentoPoliza", "Descuento de póliza");
     }
 
