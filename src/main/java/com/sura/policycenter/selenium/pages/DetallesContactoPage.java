@@ -4,7 +4,9 @@ import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -150,17 +152,19 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void actualizaContacto(){
         botonActualizar.click();
-        waitABit(2000);
+        waitABit(1500);
     }
 
     public void irADirecciones(){
+        waitABit(500);
         botonDirecciones.click();
-        waitABit(2000);
+        waitABit(1000);
         botonAgregar.click();
     }
 
     public void agregarDireccion(){
         botonAgregar.click();
+        waitABit(500);
     }
 
     public void agregarNombre(String segundoNombre){
@@ -201,8 +205,8 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
-        campoTxtCorreoElectronicoPrimario.clear();
-        waitABit(500);
+        campoTxtCorreoElectronicoPrimario.click();
+        waitABit(1000);
         campoTxtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
         waitABit(500);
         campoTxtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
@@ -225,7 +229,7 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
         waitABit(500);
-        campoTxtNumeroEmpleados.clear();
+        campoTxtNumeroEmpleados.click();
         campoTxtNumeroEmpleados.sendKeys(numeroEmpleados);
         campoTxtValorActivos.clear();
         campoTxtValorActivos.sendKeys(valorActivos);
@@ -238,12 +242,12 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario){
         campoTxtCorreoElectronicoPrimarioEmpresa.clear();
-        waitABit(100);
+        waitABit(300);
         campoTxtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
         campoTxtTelefonoOficina.sendKeys(telefonoOficina);
         campoTxtCorreoElectronicoSecundarioEmpresa.clear();
-        waitABit(500);
+        waitABit(700);
         campoTxtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
         dtlCntJ[5]= telefonoOficina;
         dtlCntJ[6]= correoElectronicoPrimario;

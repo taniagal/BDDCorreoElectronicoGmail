@@ -78,7 +78,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
         selectItem(comboBoxCodigoAgente,agente);
         waitABit(500);
         selectItem(comboBoxEstadoBase,"Antioquia");
-        waitABit(500);
+        waitABit(1000);
         botonElegir.click();
     }
 

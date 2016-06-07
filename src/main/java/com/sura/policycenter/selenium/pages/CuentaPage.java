@@ -96,11 +96,11 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(1000);
+        waitABit(900);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(1000);
+        waitABit(700);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        waitABit(1500);
+        waitABit(1000);
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
@@ -112,7 +112,6 @@ public class CuentaPage extends Guidewire{
         botonSeleccionarOrganizacion.click();
         waitABit(500);
         selectItem(comboBoxCodigoAgente,agente);
-        waitABit(1000);
     }
 
     public void actualizar(){

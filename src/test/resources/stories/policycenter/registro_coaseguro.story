@@ -1,9 +1,8 @@
 Meta:
 
 Narrative:
-As a user
-I want to perform an action
-So that I can achieve a business goal
+Como usuario de PolicyCenter
+quiero poder agregar la información de coseguro aceptado o cedido en una póliza nueva de Autos o MRC.
 
 Feacture: Registro de Coaseguro
 
