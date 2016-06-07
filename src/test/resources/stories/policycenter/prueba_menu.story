@@ -6,12 +6,12 @@ Asi desplegar la pagina de inicio correspondiente y navegar por los menus dispon
 
 Scenario: navegacion menu policycenter
 Meta: @tag prueba:menu
-Given ingreso a la pagina de autenticacion de PolicyCenter
-When ingreso username <usr> y password <pass>
-Then deberia ver la pagina de inicio correspondiente a su rol <message>
+Given el usuario ingresa a la pagina de autenticacion de PolicyCenter - Seus
+When el usuario ingresa pais <country>, username <usr> y password <pass>
+Then el usuario deberia ver la pagina de inicio correspondiente a su rol <message>
 Then deberia navegar por todos los menu
 Then deberia cerrar sesion
 
 Examples:
-|usr|pass|message|
-|su|gw|Mis actividades|
+|country|usr|pass|message|
+|Colombia|pedrvevi|pedrvevi|Mis actividades|
