@@ -22,7 +22,7 @@ public class ResumenCuentaDefinitions {
     private final Map<String, String> infoResumenCuenta = new HashMap<>();
 
     public ResumenCuentaDefinitions(){
-        infoResumenCuenta.put("lblResumenCuenta", "Resumen del archivo de cuenta");
+        infoResumenCuenta.put("lblResumenCuenta", "Resumen de la cuenta");
         infoResumenCuenta.put("tipoDocumento", "Tipo documento");
         infoResumenCuenta.put("numDocumento", "Número documento");
         infoResumenCuenta.put("codigoAgente", "Código de agente");
@@ -32,7 +32,7 @@ public class ResumenCuentaDefinitions {
         infoResumenCuenta.put("lblPersonaJuridica", "Compañía");
         infoResumenCuenta.put("razonSocial", "Razón social");
         infoResumenCuenta.put("nombreComercial", "Nombre comercial");
-        infoResumenCuenta.put("actComercial", "Actividad comercial");
+        infoResumenCuenta.put("actComercial", "Actividad económica");
         infoResumenCuenta.put("numEmpleados", "Número de empleados"); //Número de empleados
         infoResumenCuenta.put("telOficina", "Teléfono de la oficina");
         infoResumenCuenta.put("emailPersona", "Correo electrónico primario");
