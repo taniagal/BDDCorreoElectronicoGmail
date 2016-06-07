@@ -4,7 +4,7 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.model.Aseguradora;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.components.HtmlTable;
@@ -13,7 +13,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -64,7 +63,7 @@ public class CoaseguroPage extends Guidewire {
         assertThat(res+"verifique su codigo","No estan correctos los elementos".equals(res));
     }
 
-    public void agregarCoaseguro(ArrayList<Aseguradora> aseguradoras) {
+    public void agregarCoaseguro(List<Aseguradora> aseguradoras) {
         campoTxtPolizaDeReferencia.waitUntilPresent().sendKeys("poliza123");
         Actions act = new Actions(getDriver());
         int i = 1;
@@ -78,7 +77,7 @@ public class CoaseguroPage extends Guidewire {
                 assertThat("Sura debe estar por defecto en las aseguradoras", campoAseguradora.containsText("Sura"));
             } else {
                 act.click().build().perform();
-                act.sendKeys(aseguradora.getAseguradora()).build().perform();
+                act.sendKeys(aseguradora.getNombre()).build().perform();
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(aseguradora.getParticipacion()).build().perform();
             }
