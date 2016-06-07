@@ -13,8 +13,8 @@ And tipo de direccion <tipo_direccion>, direccion <direccion>, departamento <dep
 Then se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural
 
 Examples:
-|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente	  |
-|CEDULA DE CIUDADANIA|02/12/1990      |SASHA        |AKERMAN        |Vivienda       |CALLE 54B #50-25|Antioquia   |Medellin|CLCUWY-000023
+|tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|
+|CEDULA DE CIUDADANIA|02/12/1990      |SASHA        |AKERMAN        |Vivienda       |CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 |
 
 Scenario: crear una cuenta para un contacto persona juridica.
 
@@ -26,8 +26,8 @@ And tipo de direccion <tipo_direccion>, direccion <direccion>, departamento <dep
 Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
-|razon_social|tipo_documento |tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente	  |
-|UMBRELLA    |NIT            |Vivienda       |CALLE 54B #50-25|Antioquia   |Medellin|CLCUWY-000023                 |501-002542|
+|razon_social|tipo_documento |tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|
+|UMBRELLA    |NIT            |Vivienda       |CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 |
 
 
 
@@ -41,5 +41,5 @@ And tipo de direccion <tipo_direccion>, direccion <direccion>, departamento <dep
 Then No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje> y <mensaje2>
 
 Examples:
-|tipo_documento       |fecha_nacimiento |primer_nombre |primer_apellido |tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente	  |mensaje|mensaje2|
-|CEDULA DE CIUDADANIA |02/15/2012       |SASHA         |AKERMAN         |Vivienda       |CALLE 54B #50-25|Antioquia   |Medellin|CLCUWY-000023                 |501-002542|Ya existe un contacto con el mismo número de identificación|Por políticas de la compañia no es posible crear una cuenta a una persona menor de 16 años|
+|tipo_documento       |fecha_nacimiento |primer_nombre |primer_apellido |tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|mensaje|mensaje2|
+|CEDULA DE CIUDADANIA |02/15/2012       |SASHA         |AKERMAN         |Vivienda       |CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 |Ya existe un contacto con el mismo número de identificación|Por políticas de la compañia no es posible crear una cuenta a una persona menor de 16 años|
