@@ -48,16 +48,6 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionarOficinaRadicacion(String oficinaRadicacion) {
-        opcionesInformacionPoliza.seleccionarOficinaRadicacion(oficinaRadicacion);
-    }
-
-    @Step
-    public void validarSeleccionOficinaRadicacion(String oficinaRadicacion) {
-        opcionesInformacionPoliza.validarSeleccionOficinaRadicacion(oficinaRadicacion);
-    }
-
-    @Step
     public void ingresarPorcentajeDescuentoPoliza(String porcentaje) {
         opcionesInformacionPoliza.ingresarPorcentajeDescuentoPoliza(porcentaje);
     }

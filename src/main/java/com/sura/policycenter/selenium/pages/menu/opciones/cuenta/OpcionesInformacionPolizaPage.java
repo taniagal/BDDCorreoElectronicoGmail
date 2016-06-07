@@ -86,22 +86,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducerCode-labelEl']")
     private WebElementFacade labelCodigoAgente;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:QuestionStandardCommission-labelEl']")
-    private WebElementFacade labelComisionEstandar;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AgreedCommission-labelEl']")
-    private WebElementFacade labelComisionPactada;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:UWCompanyInputSet:0']")
-    private WebElementFacade labelCompaniaAseguradora;
-
-    @FindBy(xpath = "//label[contains(@for,'PolicyInfoDV:QuestionFeeAgreed-inputEl')]")
-    private WebElementFacade labelHonorarioPactado;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PromoterFeeAgreed-labelEl']")
-    private WebElementFacade labelHonorarioPromotora;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:5']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:4']")
     private WebElementFacade labelModificadorPoliza;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyDiscount-labelEl']")
@@ -191,22 +176,13 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:AddressDescription-inputEl']")
     private WebElementFacade textoDescripcionDireccionSegundoTomador;
 
-    @FindBy(xpath = ".//tr[20]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
-    private WebElementFacade botonOficinaRadicacion;
-
-    @FindBy(xpath = ".//input[contains(@id,'PolicyInfoDV:UWCompanyInputSet:UWCompany-inputEl')]")
-    private WebElementFacade textoOficinaRadicacion;
-
-    @FindBy(xpath = ".//li")
-    private WebElementFacade itemOficinaRadicacion;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:UWCompanyInputSet:0']")
     private WebElementFacade labelOficinaRadicacion;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyDiscount-inputEl']")
     private WebElementFacade textoDescuentoPoliza;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:QuestionFundedPolicy_true-boxLabelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:QuestionFundedPolicy_true-inputEl']")
     private WebElementFacade polizaFinanciada;
 
     @FindBy(xpath = ".//tr[11]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
@@ -248,16 +224,9 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
             MatcherAssert.assertThat(labelFechaExpiracion.getText(), Is.is(Matchers.equalTo(infoPoliza.get("fechaExpiracion"))));
             MatcherAssert.assertThat(labelFechaEscrita.getText(), Is.is(Matchers.equalTo(infoPoliza.get("fechaEscrita"))));
             MatcherAssert.assertThat(labelPolizaFinanciada.getText(), Is.is(Matchers.equalTo(infoPoliza.get("polizaFinanciada"))));
-            MatcherAssert.assertThat(labelNumeroCuotas.getText(), Is.is(Matchers.equalTo(infoPoliza.get("numeroCuotas"))));
             MatcherAssert.assertThat(labelAgenteRegistro.getText(), Is.is(Matchers.equalTo(infoPoliza.get("labelAgenteRegistro"))));
             MatcherAssert.assertThat(labelOrganizacionAgente.getText(), Is.is(Matchers.equalTo(infoPoliza.get("organizacionAgente"))));
             MatcherAssert.assertThat(labelCodigoAgente.getText(), Is.is(Matchers.equalTo(infoPoliza.get("codigoAgente"))));
-            //assertThat(labelComisionEstandar.getText(), is(equalTo(infoPoliza.get("comisionEstandar"))));
-            //assertThat(labelComisionPactada.getText(), is(equalTo(infoPoliza.get("comisionPactada"))));
-            //assertThat(labelCompaniaAseguradora.getText(), is(equalTo(infoPoliza.get("companiasAseguradoras"))));
-            //assertThat(labelHonorarioPactado.getText(), is(equalTo(infoPoliza.get("honorarioPactado"))));
-            //assertThat(labelHonorarioPromotora.getText(), is(equalTo(infoPoliza.get("honorarioPromotora"))));
-            MatcherAssert.assertThat(labelOficinaRadicacion.getText(), Is.is(Matchers.equalTo(infoPoliza.get("oficinaRadicacion"))));
             MatcherAssert.assertThat(labelModificadorPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("modificadorPoliza"))));
             MatcherAssert.assertThat(labelDescuentoPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("descuentoPoliza"))));
         }catch (Exception e){
@@ -375,28 +344,6 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
     }
 
-    public void seleccionarOficinaRadicacion(String oficinaRadicacion) {
-        waitFor(botonOficinaRadicacion);
-        botonOficinaRadicacion.click();
-        waitFor(textoOficinaRadicacion);
-        textoOficinaRadicacion.type(oficinaRadicacion);
-        waitFor(itemOficinaRadicacion);
-        itemOficinaRadicacion.click();
-        waitFor(fechaVigenciaPoliza);
-        fechaVigenciaPoliza.click();
-    }
-
-    public void validarSeleccionOficinaRadicacion(String oficinaRadicacion) {
-        String validacion = null;
-        try{
-            MatcherAssert.assertThat(textoOficinaRadicacion.getValue(), Is.is(Matchers.equalTo(oficinaRadicacion)));
-        }catch (Exception e){
-            LOGGER.error(validacion, e);
-            validacion = e.getMessage();
-        }
-        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
-    }
-
     public void ingresarPorcentajeDescuentoPoliza(String porcentaje) {
         waitFor(textoDescuentoPoliza);
         textoDescuentoPoliza.type(porcentaje);
@@ -434,6 +381,8 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         MatcherAssert.assertThat(textoNumeroCuotas.getText(), textoNumeroCuotas.isCurrentlyVisible());
         botonNumeroCuotas.click();
         itemNumeroCuotas.click();
+        waitFor(fechaExpiracionPoliza);
+        fechaExpiracionPoliza.click();
         waitABit(500);
     }
 

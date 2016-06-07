@@ -3,6 +3,7 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.policycenter.selenium.steps.CuentasOrdenesDeTrabajoSteps;
 import com.sura.policycenter.selenium.steps.DisponibilidadDetalleProductoSteps;
 import com.sura.policycenter.selenium.steps.InformacionPolizaPASteps;
+import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -43,16 +44,10 @@ public class InformacionPolizaPADefinitions {
         infoPoliza.put("fechaExpiracion", "Fecha de expiración");
         infoPoliza.put("fechaEscrita", "Fecha escrita");
         infoPoliza.put("polizaFinanciada", "¿Póliza financiada?");
-        //infoPoliza.put("numeroCuotas", "Número de cuotas");
+        infoPoliza.put("numeroCuotas", "Número de cuotas");
         infoPoliza.put("labelAgenteRegistro", "Agente de registro");
-        infoPoliza.put("organizacionAgente", "Organización");
+        infoPoliza.put("organizacionAgente", "Oficina de radicación");
         infoPoliza.put("codigoAgente", "Código de agente");
-        //infoPoliza.put("comisionEstandar", "¿Comisión estándar?");
-        //infoPoliza.put("comisionPactada", "¿Comisión pactada?");
-        //infoPoliza.put("companiasAseguradoras", "Compañías aseguradoras");
-        //infoPoliza.put("honorarioPactado", "¿La promotora tiene honorario pactado?");
-        //infoPoliza.put("honorarioPromotora", "Honorario de la promotora");
-        infoPoliza.put("oficinaRadicacion", "Oficina de radicación");
         infoPoliza.put("modificadorPoliza", "Modificador Póliza"); //Modificador póliza
         infoPoliza.put("descuentoPoliza", "Descuento de póliza");
     }
@@ -88,8 +83,9 @@ public class InformacionPolizaPADefinitions {
     }
 
     @When("seleccione, digite o busque la oficina de radicacion <oficinaRadicacion>")
+    @Manual
     public void seleccionarOficinaRadicacion(@Named("oficinaRadicacion") String oficinaRadicacion){
-        informacionPolizaPASteps.seleccionarOficinaRadicacion(oficinaRadicacion);
+        // Se realiza manualmente.
     }
 
     @When("ingrese un porcentaje <porcentaje> de poliza superior al 50.00")
@@ -132,8 +128,9 @@ public class InformacionPolizaPADefinitions {
     }
 
     @Then("debe quedar registrada la oficina seleccionada <oficinaRadicacion> en la informacion de la poliza")
+    @Manual
     public void validarSeleccionOficinaRadicacion(@Named("oficinaRadicacion") String oficinaRadicacion){
-        informacionPolizaPASteps.validarSeleccionOficinaRadicacion(oficinaRadicacion);
+        // Se realiza manualmente.
     }
 
     @Then("debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder el 50")
