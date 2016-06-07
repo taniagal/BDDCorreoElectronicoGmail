@@ -125,7 +125,7 @@ public class IngresoDeAseguradoACotizacionDefinitions {
         ingresoDeAseguradoACotizacionSteps.validarAseguradosAgregados(asegurados);
     }
 
-    @Then("debe mostrar el mensaje <mensaje>")
+    @Then("debe mostrar el mensaje del directorio <mensaje>")
     public void validarMensaje(@Named("mensaje") String mensaje){
         ingresoDeAseguradoACotizacionSteps.validarMensaje(mensaje);
     }

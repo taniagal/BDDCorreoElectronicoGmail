@@ -6,6 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -50,7 +51,8 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
     }
 
     public void ingresarDatosComunesDeContacto(Map<String, String> datosContacto){
-        campoTipoDocumento.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        waitFor(campoTipoDocumento).shouldBeVisible();
+        campoTipoDocumento.clear();
         campoTipoDocumento.sendKeys(datosContacto.get("tipoId"));
         campoTipoDocumento.sendKeys(Keys.ENTER);
         campoNumeroDocumento.sendKeys(datosContacto.get("numeroId"));
@@ -58,7 +60,7 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
         campoPais.sendKeys(datosContacto.get("pais"));
         campoPais.sendKeys(Keys.ENTER);
         waitABit(3000);
-        campoDepartamento.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoDepartamento.clear();
         campoDepartamento.sendKeys(datosContacto.get("departamento"));
         campoDepartamento.sendKeys(Keys.ENTER);
         waitABit(3000);
