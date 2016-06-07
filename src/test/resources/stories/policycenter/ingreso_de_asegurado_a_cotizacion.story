@@ -96,7 +96,7 @@ When quiera agregar un asegurado
 And vaya a la opcion agregar
 And consulte un asegurado del directorio
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
-Then debe mostrar el mensaje <mensaje>
+Then debe mostrar el mensaje del directorio <mensaje>
 
 Examples:
 |cuenta|tipoId|numeroId|mensaje|
@@ -125,6 +125,7 @@ Scenario: Editar campos en creación tipo persona natural
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
 And crear una cotizacion nueva
 When quiera agregar un asegurado
+And vaya a la opcion agregar
 And seleccione ingresar nueva persona natural
 And ingrese los datos de persona natural:
 |tipoId|numeroId|primerNombre|primerApellido|pais|departamento|ciudad|direccion|tipoDireccion|
