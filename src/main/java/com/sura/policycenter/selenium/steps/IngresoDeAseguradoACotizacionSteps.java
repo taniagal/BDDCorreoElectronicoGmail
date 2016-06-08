@@ -100,4 +100,8 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
     public void validarMensajeDeMDM(String mensaje) {
         ingresoDeAseguradoACotizacionPage.validarMensajeDeMDM(mensaje);
     }
+
+    public void validarMensajeDeIntegracion(String mensaje) {
+        ingresoDeAseguradoACotizacionPage.validarMensajeDeIntegracion(mensaje);
+    }
 }

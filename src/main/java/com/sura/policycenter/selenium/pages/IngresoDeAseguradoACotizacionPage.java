@@ -197,4 +197,8 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
         mensajeValidacionMDM.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible();
         MatcherAssert.assertThat(mensajeValidacionMDM.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
+
+    public void validarMensajeDeIntegracion(String mensaje) {
+
+    }
 }

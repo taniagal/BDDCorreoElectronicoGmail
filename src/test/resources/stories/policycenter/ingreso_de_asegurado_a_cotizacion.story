@@ -198,3 +198,33 @@ Then muestre el mensaje de validacion de la identificacion incorrecta <mensaje>
 Examples:
 |cuenta|mensaje|
 |C000888888|La longitud del número de documento de identificación no es válida, máximo 10 caracteres|
+
+Scenario: Validar asegurado que es riesgo consultable
+Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
+And crear una cotizacion nueva
+When quiera agregar un asegurado
+And vaya a la opcion agregar
+And consulte un asegurado del directorio
+And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
+And seleccione el contacto a agregar
+And vaya al siguiente paso de la cotizacion
+Then me debe mostrar el mensaje de riesgo consultable <mensaje>
+
+Examples:
+|cuenta|tipoId|numeroId|mensaje|
+|C000888888|CEDULA DE CIUDADANIA|33209130|[DIEGO VELEZ,El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal]|
+
+Scenario: Validar asegurado que es persona publicamente expuesta
+Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
+And crear una cotizacion nueva
+When quiera agregar un asegurado
+And vaya a la opcion agregar
+And consulte un asegurado del directorio
+And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
+And seleccione el contacto a agregar
+And vaya al siguiente paso de la cotizacion
+Then me debe mostrar el mensaje de riesgo consultable <mensaje>
+
+Examples:
+|cuenta|tipoId|numeroId|mensaje|
+|C000888888|CEDULA DE CIUDADANIA|71123456|[ANTONIO RESTREPO con el(los) rol(es) (CONDUCTOR) es un riesgo no estándar y debe ser autorizado]|

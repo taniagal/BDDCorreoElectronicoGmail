@@ -140,6 +140,11 @@ public class IngresoDeAseguradoACotizacionDefinitions {
         ingresoDeAseguradoACotizacionSteps.validarMensajeDeMDM(mensaje);
     }
 
+    @Then("me debe mostrar el mensaje de riesgo consultable <mensaje>")
+    public void validarMensajeDeIntegracion(@Named("mensaje") String mensaje){
+        ingresoDeAseguradoACotizacionSteps.validarMensajeDeIntegracion(mensaje);
+    }
+
 }
 
 
