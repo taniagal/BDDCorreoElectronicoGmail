@@ -19,9 +19,6 @@ import java.util.concurrent.TimeUnit;
 
 public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:7:addSubmission']")
-    WebElementFacade botonElegirAutoPersonal;
-
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']/div")
     WebElementFacade botonAsegurados;
 
@@ -70,13 +67,22 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next']")
     WebElementFacade botonSiguiente;
 
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
+    WebElementFacade campoNombreAgente;
+
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']")
+    WebElementFacade tablaProductos;
+
     public IngresoDeAseguradoACotizacionPage(WebDriver driver){
         super(driver);
     }
 
     public void irAIngresarAsegurado() {
-        waitFor(botonElegirAutoPersonal);
-        botonElegirAutoPersonal.click();
+        campoNombreAgente.waitUntilVisible().sendKeys(Keys.ARROW_DOWN);
+        campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
+        campoNombreAgente.sendKeys(Keys.ENTER);
+        WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
+        botonElegirProducto.click();
         waitFor(botonAsegurados);
         botonAsegurados.click();
     }
@@ -137,7 +143,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
     public void validarAseguradosAgregados(ExamplesTable asegurados) {
         Map<String, String> aseguradosAgregados;
-        tablaAsegurados.waitUntilVisible();
+        waitFor(tablaAsegurados).withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible();
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         for (int i=0; i<allRows.size(); i++){
             aseguradosAgregados = asegurados.getRows().get(i);
@@ -145,6 +151,20 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
             MatcherAssert.assertThat(allRows.get(i).getText(), Matchers.containsString(aseguradosAgregados.get("tipoDocumento")));
             MatcherAssert.assertThat(allRows.get(i).getText(), Matchers.containsString(aseguradosAgregados.get("numeroDocumento")));
         }
+    }
+
+    public Integer encontrarProducto(){
+        tablaProductos.waitUntilVisible();
+        Integer filaBoton = 0;
+        List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
+        for (WebElement row : filas) {
+            List<WebElement> columna = row.findElements(By.tagName("td"));
+            if (columna.get(1).getText().equals("Auto personal")){
+                return filaBoton;
+            }
+            filaBoton++;
+        }
+        return filaBoton;
     }
 
     public void volverAAsegurados() {
@@ -160,7 +180,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void validarAseguradoEliminado() {
-        waitABit(1000);
+        tablaAsegurados.waitUntilPresent().waitUntilVisible();
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         if(allRows.isEmpty()){
             MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados vacía")));

@@ -1,4 +1,4 @@
-Agregar informacion de asegurados a la cotizacion
+Ingreso de asegurado a cotizacion
 
 Meta:
 
@@ -55,7 +55,7 @@ Examples:
 |cuenta|tipoId|numeroId|
 |C000888888|NIT|9202086744|
 
-Scenario: Agregar asegurado por la opción nueva persona natural
+Scenario: Agregar asegurado por la opcion nueva persona natural
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
 And crear una cotizacion nueva
 When quiera agregar un asegurado
@@ -72,7 +72,7 @@ Examples:
 |cuenta|
 |C000888888|
 
-Scenario: Agregar asegurado por la opción nueva persona juridica
+Scenario: Agregar asegurado por la opcion nueva persona juridica
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
 And crear una cotizacion nueva
 When quiera agregar un asegurado
@@ -121,7 +121,7 @@ Examples:
 |cuenta|tipoId|numeroId|
 |C000888888|NIT|9202086744|
 
-Scenario: Editar campos en creación tipo persona natural
+Scenario: Editar campos en creacion tipo persona natural
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
 And crear una cotizacion nueva
 When quiera agregar un asegurado
@@ -144,7 +144,7 @@ Examples:
 |cuenta|
 |C000888888|
 
-Scenario: Editar campos en creación tipo persona juridica
+Scenario: Editar campos en creacion tipo persona juridica
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
 And crear una cotizacion nueva
 When quiera agregar un asegurado
@@ -180,8 +180,8 @@ And quite el contacto de la lista
 Then la lista de asegurados debe quedar vacia
 
 Examples:
-|cuenta|
-|C000888888|
+|cuenta|tipoId|numeroId|
+|C000888888|NIT|9202086744|
 
 Scenario: Mostrar errores al validar las reglas de MDM al dar siguiente
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
@@ -191,10 +191,10 @@ And vaya a la opcion agregar
 And seleccione ingresar nueva persona natural
 And ingrese los datos de persona natural:
 |tipoId|numeroId|primerNombre|primerApellido|pais|departamento|ciudad|direccion|tipoDireccion|
-|CEDULA DE CIUDADANIA|10000000010|PRUEBA|MDM|Colombia|Antioquia|Medellin|Cra 65 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
+|CEDULA DE CIUDADANIA|10000000010|ELIANA|QUINTERO|Colombia|Antioquia|Medellin|Cra 65 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
 And vaya al siguiente paso de la cotizacion
 Then muestre el mensaje de validacion de la identificacion incorrecta <mensaje>
 
 Examples:
 |cuenta|mensaje|
-|C000888888|La longitud del documento de identificación no es válida, máximo 10 caracteres|
+|C000888888|La longitud del número de documento de identificación no es válida, máximo 10 caracteres|
