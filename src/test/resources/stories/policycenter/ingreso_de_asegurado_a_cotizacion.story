@@ -212,7 +212,7 @@ Then muestre el mensaje de validacion del asegurado <mensaje>
 
 Examples:
 |cuenta|tipoId|numeroId|mensaje|
-|C000888888|CEDULA DE CIUDADANIA|16796652|[DIEGO VELEZ,El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal]|
+|C000888888|CEDULA DE CIUDADANIA|16796652|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 
 Scenario: Validar asegurado que es persona publicamente expuesta
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
@@ -227,4 +227,4 @@ Then muestre el mensaje de validacion del asegurado <mensaje>
 
 Examples:
 |cuenta|tipoId|numeroId|mensaje|
-|C000888888|CEDULA DE CIUDADANIA|71123456|[ANTONIO RESTREPO con el(los) rol(es) (CONDUCTOR) es un riesgo no estándar y debe ser autorizado]|
+|C000888888|CEDULA DE CIUDADANIA|71123456|ANTONIO RESTREPO con el(los) rol(es) (CONDUCTOR) es un riesgo no estándar y debe ser autorizado.|
