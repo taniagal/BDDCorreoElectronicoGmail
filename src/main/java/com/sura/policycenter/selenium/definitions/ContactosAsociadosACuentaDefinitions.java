@@ -1,5 +1,6 @@
 package com.sura.policycenter.selenium.definitions;
 
+import com.sura.common.exception.SuraExceptionTechnical;
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.pages.NuevoAseguradoNombradoPage;
 import com.sura.policycenter.selenium.steps.ContactosAsociadosACuentasSteps;
@@ -70,37 +71,37 @@ public class ContactosAsociadosACuentaDefinitions {
     }
 
     @Given("debo darClick <darClick>  y ver las opciones de menú para los roles $opcionesPorRoles")
-    public void thenDeboVerLasOpcionesDeMenuParaLosRoles(ExamplesTable opcionesPorRoles, Boolean darClick) throws Exception {
+    public void thenDeboVerLasOpcionesDeMenuParaLosRoles(ExamplesTable opcionesPorRoles, Boolean darClick) throws SuraExceptionTechnical {
         contactosAsociadosACuentaSteps.verOpcionesDeCreacionDeContactoPorRoleDeContactos(opcionesPorRoles, darClick);
 
     }
 
     @Given("asocie un nuevo contacto a la cuenta con el rol seleccionado")
-    public void andAsocieUnNuevoContactoALaCuenta() throws Exception {
+    public void andAsocieUnNuevoContactoALaCuenta() throws SuraExceptionTechnical {
         NuevoAseguradoNombradoPage nuevoAseguradoNombradoPage = new NuevoAseguradoNombradoPage(contactosAsociadosACuentaSteps.getDriver());
         nuevoAseguradoNombradoPage.asociarNuevoAseguradoNombradoACuenta();
 
     }
 
     @Then("debo poder visualizar el contacto recien asociado con su rol seleccionado")
-    public void thenVisualizarContactoAsociado() throws Exception {
+    public void thenVisualizarContactoAsociado() throws SuraExceptionTechnical {
         contactosAsociadosACuentaSteps.esContactoAsociado("DORIAN STIWAR EASTMOND PULGARIN");
     }
 
     @Given("busco un contacto del directorio  que no exista en la cuenta con un rol existente")
-    public void thenBuscUnContactoDelDirectorioQueNoExistaEnLaCuentaConUnRolExistente() throws Exception {
+    public void thenBuscUnContactoDelDirectorioQueNoExistaEnLaCuentaConUnRolExistente() throws SuraExceptionTechnical {
         contactosAsociadosACuentaSteps.buscarContactoDelDirectorio();
     }
 
 
     @Given("y deseo eliminar el contacto <contactoEliminado>")
-    public void givenYDeseoEliminarElContactocontactoEliminado(String contactoEliminado) throws Exception {
+    public void givenYDeseoEliminarElContactocontactoEliminado(String contactoEliminado) throws SuraExceptionTechnical {
         contactosAsociadosACuentaSteps.eliminarContactoAsociando(contactoEliminado);
     }
 
 
     @Then("el contacto <contactoEliminado> ya no debe estar asociado a la cuenta")
-    public void thenContatctoEliminado(String contactoEliminado) throws Exception {
+    public void thenContatctoEliminado(String contactoEliminado) throws SuraExceptionTechnical {
         contactosAsociadosACuentaSteps.contactoEliminado(contactoEliminado);
     }
 

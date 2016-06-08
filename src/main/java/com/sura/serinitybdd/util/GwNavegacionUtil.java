@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import com.sura.common.exception.SuraExceptionTechnical;
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.steps.StepInterceptor;
 import org.jbehave.core.model.ExamplesTable;
@@ -23,7 +25,6 @@ public class GwNavegacionUtil {
 
     @SuppressWarnings("SameParameterValue")
     public static Boolean existenOpcionesPorMenuHastaSegundoNivel(WebDriver driver, Keys keyNav, String tipoElementoMenu, ExamplesTable opcionesPorMenu, Boolean darClick) {
-        LOGGER.error("GuidewireUtil.existenOpcionesPorMenu");
         String menu = "";
 
         try {
@@ -40,12 +41,13 @@ public class GwNavegacionUtil {
             }
             return Boolean.TRUE;
 
-        } catch (Exception e) {
+        } catch (SuraExceptionTechnical e) {
+            LOGGER.error("GuidewireUtil.existenOpcionesPorMenu");
             return Boolean.FALSE;
         }
     }
 
-    private static void recorrerOpciones(WebDriver driver, String tipoElementoMenu, ExamplesTable opcionesPorMenu, String menuPrimerNivel, Boolean darClick) throws Exception {
+    private static void recorrerOpciones(WebDriver driver, String tipoElementoMenu, ExamplesTable opcionesPorMenu, String menuPrimerNivel, Boolean darClick) throws SuraExceptionTechnical {
         String menu;
         for (Map<String, String> row : opcionesPorMenu.getRows()) {
             menu = "MENU -> " + menuPrimerNivel + " -> " + row.get(menuPrimerNivel);
@@ -60,7 +62,7 @@ public class GwNavegacionUtil {
     }
 
 
-    private static HashSet<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable) throws Exception {
+    private static HashSet<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable) throws SuraExceptionTechnical {
         LOGGER.error("GuidewireUtil.obtenerNombreColumnasDeExamplesTable");
 
         HashSet<String> nombreColumnasTablaHS = new HashSet<>();
@@ -77,7 +79,7 @@ public class GwNavegacionUtil {
     }
 
 
-    private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu) throws Exception {
+    private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu) throws SuraExceptionTechnical {
         LOGGER.error("GuidewireUtil.obtenerMenuPorTextoContenido");
 
         if ("LINK".equals(tipoElementoMenu)) {
@@ -94,7 +96,7 @@ public class GwNavegacionUtil {
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public static List<String> obtenerTablaDeEjemplosDeUnaColumna(ExamplesTable tablaUnaColumna) throws Exception {
+    public static List<String> obtenerTablaDeEjemplosDeUnaColumna(ExamplesTable tablaUnaColumna) throws SuraExceptionTechnical {
         List<String> valores = new ArrayList<>();
 
         Parameters row = tablaUnaColumna.getRowAsParameters(0);

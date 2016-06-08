@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.google.inject.name.Named;
+import com.sura.common.exception.SuraExceptionTechnical;
 import com.sura.policycenter.selenium.steps.DisponibilidadDetalleProductoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -50,12 +51,12 @@ public class DisponibilidadDetalleProductoDefinitions {
     }
 
     @Then("tipo de canal ventas debe contener los valores $tipoCanal")
-    public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws Exception {
+    public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws SuraExceptionTechnical {
         disponibilidadDetalleProductoSteps.validarTipoCanalVentas(tipoCanal);
     }
 
     @Then("PA tipo de poliza debe contener los valores $PATipoPoliza")
-    public void validarPATipoDePoliza(ExamplesTable paTipoPoliza) throws Exception {
+    public void validarPATipoDePoliza(ExamplesTable paTipoPoliza) throws SuraExceptionTechnical {
         disponibilidadDetalleProductoSteps.validarPATipoPoliza(paTipoPoliza);
     }
 

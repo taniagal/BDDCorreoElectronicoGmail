@@ -1,5 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
+import com.sura.common.exception.SuraExceptionTechnical;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.serinitybdd.util.GwNavegacionUtil;
 import java.util.List;
@@ -174,11 +175,11 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
         waitABit(1000);
     }
 
-    public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
+    public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws SuraExceptionTechnical {
         assertThat(ASSERTMENUCREARNUEVOCONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
     }
 
-    public Boolean esContactoAsociado(String nombreContacto) throws Exception {
+    public Boolean esContactoAsociado(String nombreContacto) throws SuraExceptionTechnical {
         Boolean esAsociado = Boolean.FALSE;
         for (WebElementFacade contacto : getListaContactos()) {
             if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {
