@@ -7,8 +7,8 @@ Asi ver los detalles de la cotización de una poliza de Autos por cada uno de lo
 
 Scenario:
 GivenStories: stories/policycenter/login_policy.story
-Given estoy en una cuenta <numeroCuenta>
-When ingrese a cotizaciones de la cuenta
+Given he realizado la cotizacion <cotizacion>
+When ingrese al detalle de la cotizacion
 Then se debe mostrar la informacion del detalle de cotizacion por riesgo
 
 Examples:
