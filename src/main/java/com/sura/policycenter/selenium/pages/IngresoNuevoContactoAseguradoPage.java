@@ -67,10 +67,10 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
         campoCiudad.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoCiudad.sendKeys(datosContacto.get("ciudad"));
         campoCiudad.sendKeys(Keys.ENTER);
-        waitABit(1000);
+        waitABit(2000);
         campoDireccion.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDireccion.sendKeys(datosContacto.get("direccion"));
-        waitABit(1000);
+        waitABit(2000);
         campoTipoDireccion.clear();
         campoTipoDireccion.sendKeys(datosContacto.get("tipoDireccion"));
         campoTipoDireccion.sendKeys(Keys.ENTER);

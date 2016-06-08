@@ -67,6 +67,9 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next']")
     WebElementFacade botonSiguiente;
 
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
+    WebElementFacade campoNumeroCuenta;
+
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
 
@@ -78,7 +81,8 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void irAIngresarAsegurado() {
-        campoNombreAgente.waitUntilVisible().sendKeys(Keys.ARROW_DOWN);
+        waitABit(1500);
+        campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ENTER);
         WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
@@ -112,10 +116,13 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void agregarAseguradoContactoDeLaCuenta() {
-        waitFor(opcionContactoDeCuenta);
-        opcionContactoDeCuenta.click();
-        waitFor(contactoDeCuenta);
-        contactoDeCuenta.click();
+        do {
+            waitFor(opcionContactoDeCuenta);
+            opcionContactoDeCuenta.click();
+        }
+        while(!contactoDeCuenta.isVisible());{
+            contactoDeCuenta.click();
+        }
     }
 
     public void agregarAseguradoContactoDelDirectorio() {
@@ -143,7 +150,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
     public void validarAseguradosAgregados(ExamplesTable asegurados) {
         Map<String, String> aseguradosAgregados;
-        waitFor(tablaAsegurados).withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible();
+        waitABit(1000);
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         for (int i=0; i<allRows.size(); i++){
             aseguradosAgregados = asegurados.getRows().get(i);
@@ -180,7 +187,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void validarAseguradoEliminado() {
-        tablaAsegurados.waitUntilPresent().waitUntilVisible();
+        waitABit(1000);
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         if(allRows.isEmpty()){
             MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados vacía")));
@@ -194,8 +201,22 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void validarMensajeDeIntegraciones(String mensaje) {
-        mensajeValidacion.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible();
+        mensajeValidacion.waitUntilVisible();
         MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
+    public void irACrearNuevaCotizacion() {
+        WebElementFacade menuPoliza = withTimeoutOf(5, TimeUnit.SECONDS).find(".//*[@id='TabBar:PolicyTab']");
+        menuPoliza.waitUntilClickable().click();
+        waitABit(2000);
+        menuPoliza.waitUntilClickable().click();
+        menuPoliza.sendKeys(Keys.ARROW_DOWN);
+        WebElementFacade menuPolizaNuevoEnvio = withTimeoutOf(5, TimeUnit.SECONDS).find(".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']");
+        menuPolizaNuevoEnvio.waitUntilVisible().click();
+    }
+
+    public void ingresarCuenta(String cuenta) {
+        campoNumeroCuenta.waitUntilVisible().sendKeys(cuenta);
+        campoNumeroCuenta.sendKeys(Keys.TAB);
+    }
 }

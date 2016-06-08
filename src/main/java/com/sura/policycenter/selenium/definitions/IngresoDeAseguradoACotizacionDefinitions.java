@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.google.inject.name.Named;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.BusquedaContactoSteps;
 import com.sura.policycenter.selenium.steps.IngresoDeAseguradoACotizacionSteps;
 import net.thucydides.core.annotations.Steps;
@@ -14,24 +13,20 @@ import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 public class IngresoDeAseguradoACotizacionDefinitions {
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
     @Steps
     private IngresoDeAseguradoACotizacionSteps ingresoDeAseguradoACotizacionSteps;
 
     @Steps
     private BusquedaContactoSteps busquedaContactoSteps;
 
-    @Given("voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>")
-    public void irABuscarCuenta(@Named("cuenta") String cuenta){
-        inicioPage().irACuentaBuscar(cuenta);
+    @Given("voy a crear una nueva cotizacion")
+    public void irACrearNuevaCotizacion(@Named("cuenta") String cuenta){
+        ingresoDeAseguradoACotizacionSteps.irACrearNuevaCotizacion();
         }
 
-    @Given("crear una cotizacion nueva")
-    public void crearNuevaCotizacion(){
-        inicioPage().irANuevoEnvioDeCuenta();
+    @Given("crear una cotizacion nueva con la cuenta <cuenta>")
+    public void crearNuevaCotizacion(@Named("cuenta") String cuenta){
+        ingresoDeAseguradoACotizacionSteps.ingresarCuenta(cuenta);
     }
 
     @When("quiera agregar un asegurado")

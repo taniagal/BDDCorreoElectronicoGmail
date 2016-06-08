@@ -100,4 +100,12 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
     public void validarMensajeDeIntegraciones(String mensaje) {
         ingresoDeAseguradoACotizacionPage.validarMensajeDeIntegraciones(mensaje);
     }
+
+    public void irACrearNuevaCotizacion() {
+        ingresoDeAseguradoACotizacionPage.irACrearNuevaCotizacion();
+    }
+
+    public void ingresarCuenta(String cuenta) {
+        ingresoDeAseguradoACotizacionPage.ingresarCuenta(cuenta);
+    }
 }
