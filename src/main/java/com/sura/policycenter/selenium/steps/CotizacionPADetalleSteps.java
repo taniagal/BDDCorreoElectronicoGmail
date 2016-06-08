@@ -8,8 +8,10 @@ import java.util.Map;
 
 public class CotizacionPADetalleSteps extends ScenarioSteps {
 
+    OpcionesCotizacionPADetallePage opcionesCotizacionPADetallePage = new OpcionesCotizacionPADetallePage(getDriver());
+
     @Step
-    public static void validarInformacionDetalleCotizacion(Map<String, String> infoDetalleCotizacion) {
-        OpcionesCotizacionPADetallePage.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
+    public void validarInformacionDetalleCotizacion(Map<String, String> infoDetalleCotizacion) {
+        opcionesCotizacionPADetallePage.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
     }
 }

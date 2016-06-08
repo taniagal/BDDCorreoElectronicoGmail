@@ -13,4 +13,4 @@ Then se debe mostrar la informacion del detalle de cotizacion por riesgo
 
 Examples:
 |numeroCuenta |
-|C000888888   |
+|C000777777   |

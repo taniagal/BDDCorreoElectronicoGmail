@@ -12,6 +12,9 @@ import java.util.Map;
 
 public class CotizacionPADetalleDefinitions {
 
+    @Steps
+    CotizacionPADetalleSteps cotizacionPADetalleSteps;
+
     private final Map<String, String> infoDetalleCotizacion = new HashMap<>();
 
     public CotizacionPADetalleDefinitions(){
@@ -21,6 +24,12 @@ public class CotizacionPADetalleDefinitions {
         infoDetalleCotizacion.put("marca", "Marca");
         infoDetalleCotizacion.put("modelo", "Modelo");
         infoDetalleCotizacion.put("linea", "Línea");
+        infoDetalleCotizacion.put("descripcion", "Descripción");
+        infoDetalleCotizacion.put("valorTermino", "Valor término");
+        infoDetalleCotizacion.put("prima", "Prima");
+        infoDetalleCotizacion.put("subtotal", "Subtotal");
+        infoDetalleCotizacion.put("subtotalPrimas", "Subtotal de primas");
+        infoDetalleCotizacion.put("impuesto", "Impuesto");
     }
 
     @Steps
@@ -33,6 +42,6 @@ public class CotizacionPADetalleDefinitions {
 
     @Then("se debe mostrar la informacion del detalle de cotizacion por riesgo")
     public void thenMostrarInformacionDetalleCotizacion(){
-        CotizacionPADetalleSteps.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
+        cotizacionPADetalleSteps.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
     }
 }

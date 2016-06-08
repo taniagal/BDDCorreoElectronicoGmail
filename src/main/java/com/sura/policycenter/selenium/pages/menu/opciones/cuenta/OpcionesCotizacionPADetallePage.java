@@ -70,10 +70,22 @@ public class OpcionesCotizacionPADetallePage extends Guidewire {
         super(driver);
     }
 
-    public static void validarInformacionDetalleCotizacion(Map<String, String> infoDetalleCotizacion) {
+    public void validarInformacionDetalleCotizacion(Map<String, String> infoDetalleCotizacion) {
         String validacion = null;
         try{
-            MatcherAssert.assertThat(labelVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get"labelVehiculo")));
+            MatcherAssert.assertThat(labelVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("labelVehiculo"))));
+            MatcherAssert.assertThat(labelPlaca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("placa"))));
+            MatcherAssert.assertThat(labelCodigoFasecolda.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("codigoFasecolda"))));
+            MatcherAssert.assertThat(labelMarca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("marca"))));
+            MatcherAssert.assertThat(labelModelo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("modelo"))));
+            MatcherAssert.assertThat(labelLinea.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("linea"))));
+            MatcherAssert.assertThat(labelDescripcionCobertura.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("descripcion"))));
+            MatcherAssert.assertThat(labelValorTerminoCobertura.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("valorTermino"))));
+            MatcherAssert.assertThat(labelPrima.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("prima"))));
+            MatcherAssert.assertThat(labelSubtotal.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotal"))));
+            MatcherAssert.assertThat(labelSubtotalPrimas.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotalPrimas"))));
+            MatcherAssert.assertThat(labelImpuesto.getText(), Matchers.containsString(infoDetalleCotizacion.get("impuesto")));
+
         }catch (Exception e){
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
