@@ -41,8 +41,10 @@ public class Guidewire {
 		  driver.findElement(By.xpath(".//*[@id='UnsupportedTools:MenuLinks:UnsupportedTools_PCSampleData']/div")).click();
 		  driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:SampleDataSetsLV:0:LoadSampleData']")).click();
 		  Thread.sleep(5000);
+		  assertEquals("Conjunto cargado \"Sura\" correctamente.", driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")).getText());
 		  driver.findElement(By.xpath(".//*[@id=':TabLinkMenuButton-btnIconEl']")).click();
 		  driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:ReturnTabBarLink']")).click();
+
 	  }
 
 	  @After
