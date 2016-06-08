@@ -62,7 +62,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     WebElementFacade botonQuitar;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:_msgs']/div")
-    WebElementFacade mensajeValidacionMDM;
+    WebElementFacade mensajeValidacion;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next']")
     WebElementFacade botonSiguiente;
@@ -193,12 +193,9 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
         botonSiguiente.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
     }
 
-    public void validarMensajeDeMDM(String mensaje) {
-        mensajeValidacionMDM.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible();
-        MatcherAssert.assertThat(mensajeValidacionMDM.getText(), Is.is(Matchers.equalTo(mensaje)));
+    public void validarMensajeDeIntegraciones(String mensaje) {
+        mensajeValidacion.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible();
+        MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
-    public void validarMensajeDeIntegracion(String mensaje) {
-
-    }
 }

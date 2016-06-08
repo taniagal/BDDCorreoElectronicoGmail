@@ -135,14 +135,9 @@ public class IngresoDeAseguradoACotizacionDefinitions {
         ingresoDeAseguradoACotizacionSteps.validarAseguradoEliminado();
     }
 
-    @Then("muestre el mensaje de validacion de la identificacion incorrecta <mensaje>")
-    public void validarMensajeDeMDM(@Named("mensaje") String mensaje){
-        ingresoDeAseguradoACotizacionSteps.validarMensajeDeMDM(mensaje);
-    }
-
-    @Then("me debe mostrar el mensaje de riesgo consultable <mensaje>")
-    public void validarMensajeDeIntegracion(@Named("mensaje") String mensaje){
-        ingresoDeAseguradoACotizacionSteps.validarMensajeDeIntegracion(mensaje);
+    @Then("muestre el mensaje de validacion del asegurado <mensaje>")
+    public void validarMensajeDeIntegraciones(@Named("mensaje") String mensaje){
+        ingresoDeAseguradoACotizacionSteps.validarMensajeDeIntegraciones(mensaje);
     }
 
 }

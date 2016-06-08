@@ -193,7 +193,7 @@ And ingrese los datos de persona natural:
 |tipoId|numeroId|primerNombre|primerApellido|pais|departamento|ciudad|direccion|tipoDireccion|
 |CEDULA DE CIUDADANIA|10000000010|ELIANA|QUINTERO|Colombia|Antioquia|Medellin|Cra 65 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
 And vaya al siguiente paso de la cotizacion
-Then muestre el mensaje de validacion de la identificacion incorrecta <mensaje>
+Then muestre el mensaje de validacion del asegurado <mensaje>
 
 Examples:
 |cuenta|mensaje|
@@ -208,11 +208,11 @@ And consulte un asegurado del directorio
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
 And seleccione el contacto a agregar
 And vaya al siguiente paso de la cotizacion
-Then me debe mostrar el mensaje de riesgo consultable <mensaje>
+Then muestre el mensaje de validacion del asegurado <mensaje>
 
 Examples:
 |cuenta|tipoId|numeroId|mensaje|
-|C000888888|CEDULA DE CIUDADANIA|33209130|[DIEGO VELEZ,El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal]|
+|C000888888|CEDULA DE CIUDADANIA|16796652|[DIEGO VELEZ,El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal]|
 
 Scenario: Validar asegurado que es persona publicamente expuesta
 Given voy a ingresar un nuevo asegurado a una cotizacion con la cuenta <cuenta>
@@ -223,7 +223,7 @@ And consulte un asegurado del directorio
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
 And seleccione el contacto a agregar
 And vaya al siguiente paso de la cotizacion
-Then me debe mostrar el mensaje de riesgo consultable <mensaje>
+Then muestre el mensaje de validacion del asegurado <mensaje>
 
 Examples:
 |cuenta|tipoId|numeroId|mensaje|
