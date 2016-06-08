@@ -7,14 +7,14 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class CrearNuevaCuentaSteps extends ScenarioSteps {
+public class CuentaNuevaSteps extends ScenarioSteps {
 
     private String cedula = "";
     private String nit = "";
     private final Guidewire gw = new Guidewire(getDriver());
     private final CuentaPage cp = new CuentaPage(getDriver());
 
-    public CrearNuevaCuentaSteps(Pages pages) {
+    public CuentaNuevaSteps(Pages pages) {
         super(pages);
     }
 
