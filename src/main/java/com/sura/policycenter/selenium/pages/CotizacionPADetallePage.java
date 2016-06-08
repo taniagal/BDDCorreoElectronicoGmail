@@ -1,4 +1,4 @@
-package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
+package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -11,9 +11,12 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
-public class OpcionesCotizacionPADetallePage extends Guidewire {
+public class CotizacionPADetallePage extends Guidewire {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesCotizacionPADetallePage.class);
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(CotizacionPADetallePage.class);
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
+    private WebElementFacade tituloDePagina;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:1']")
     private WebElementFacade labelVehiculo;
@@ -66,8 +69,13 @@ public class OpcionesCotizacionPADetallePage extends Guidewire {
     @FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td/div")
     private WebElementFacade labelImpuesto;
 
-    public OpcionesCotizacionPADetallePage(WebDriver driver) {
+    public CotizacionPADetallePage(WebDriver driver) {
         super(driver);
+    }
+
+    public void verDetalleCotizacion() {
+        waitFor(tituloDePagina).shouldBeVisible();
+        MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
 
     public void validarInformacionDetalleCotizacion(Map<String, String> infoDetalleCotizacion) {

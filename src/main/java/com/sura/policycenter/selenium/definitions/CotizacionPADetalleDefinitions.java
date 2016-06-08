@@ -7,6 +7,7 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,8 +48,18 @@ public class CotizacionPADetalleDefinitions {
         inicioPage().irABuscarSubPoliza(cotizacion);
     }
 
+    @When("ingrese al detalle de la cotizacion")
+    public void verDetalleCotizacion() {
+        cotizacionPADetalleSteps.verDetalleCotizacion();
+    }
+
     @Then("se debe mostrar la informacion del detalle de cotizacion por riesgo")
     public void thenMostrarInformacionDetalleCotizacion(){
         cotizacionPADetalleSteps.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
+    }
+
+    @Then("se debe mostrar en la columna \"Termino\" el limite o deducible de la cobertura en el caso de que aplique")
+    public void thenValidarTerminoCobertura(){
+        //Pendiente configurar
     }
 }

@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCotizacionPADetallePage;
+import com.sura.policycenter.selenium.pages.CotizacionPADetallePage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -8,10 +8,15 @@ import java.util.Map;
 
 public class CotizacionPADetalleSteps extends ScenarioSteps {
 
-    OpcionesCotizacionPADetallePage opcionesCotizacionPADetallePage = new OpcionesCotizacionPADetallePage(getDriver());
+    CotizacionPADetallePage cotizacionPADetallePage = new CotizacionPADetallePage(getDriver());
+
+    @Step
+    public void verDetalleCotizacion() {
+        cotizacionPADetallePage.verDetalleCotizacion();
+    }
 
     @Step
     public void validarInformacionDetalleCotizacion(Map<String, String> infoDetalleCotizacion) {
-        opcionesCotizacionPADetallePage.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
+        cotizacionPADetallePage.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
     }
 }

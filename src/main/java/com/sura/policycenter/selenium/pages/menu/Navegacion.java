@@ -134,6 +134,8 @@ public class Navegacion extends Guidewire {
     private WebElementFacade mnuNumPoliza;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-itemEl']")
     private WebElementFacade mnuItemNuevoEnvio;
+    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
+    private WebElementFacade mnuNumeroSub;
 
     // Objetos menu Contacto
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
@@ -382,7 +384,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuPoliza);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
-        //mnuNumeroSub.typeAndEnter(numSubPoliza);
+        mnuNumeroSub.typeAndEnter(numSubPoliza);
         return new PolizaBuscarPage(getDriver());
     }
 
