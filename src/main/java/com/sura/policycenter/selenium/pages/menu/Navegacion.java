@@ -378,6 +378,14 @@ public class Navegacion extends Guidewire {
         return new PolizaBuscarPage(getDriver());
     }
 
+    public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza) {
+        gw.deployMenu(mnuPoliza);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        waitABit(300);
+        //mnuNumeroSub.typeAndEnter(numSubPoliza);
+        return new PolizaBuscarPage(getDriver());
+    }
+
     public MisEnviosPage irAMisEnvios() {
         gw.deployMenu(menuEscritorio);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();

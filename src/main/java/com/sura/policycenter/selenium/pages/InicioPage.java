@@ -162,6 +162,9 @@ public class InicioPage extends Guidewire {
     public PolizaBuscarPage irABuscarPoliza(String numPoliza) {
         return navegacion.irABuscarPoliza(numPoliza);
     }
+    public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza){
+        return  navegacion.irABuscarSubPoliza(numSubPoliza);
+    }
 
     // Metodos navegacion Contacto
     public NuevaCompaniaPage irANuevaCompania() {

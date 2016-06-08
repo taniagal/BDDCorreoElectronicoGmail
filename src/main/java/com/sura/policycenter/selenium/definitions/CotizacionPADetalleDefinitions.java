@@ -44,7 +44,7 @@ public class CotizacionPADetalleDefinitions {
 
     @Given("he realizado la cotizacion <cotizacion>")
     public void irALaCotizacion(@Named("cotizacion") String cotizacion) {
-        //inicioPage().irABuscarSubPoliza(cotizacion);
+        inicioPage().irABuscarSubPoliza(cotizacion);
     }
 
     @Then("se debe mostrar la informacion del detalle de cotizacion por riesgo")
