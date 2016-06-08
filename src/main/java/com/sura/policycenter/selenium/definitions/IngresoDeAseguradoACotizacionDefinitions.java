@@ -135,6 +135,11 @@ public class IngresoDeAseguradoACotizacionDefinitions {
         ingresoDeAseguradoACotizacionSteps.validarMensajeDeIntegraciones(mensaje);
     }
 
+    @Then("el boton recuperar mvr no es visible")
+    public void validarBotonNoVisible(){
+        ingresoDeAseguradoACotizacionSteps.validarBotonNoVisible();
+    }
+
 }
 
 

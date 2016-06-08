@@ -76,6 +76,9 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']")
     WebElementFacade tablaProductos;
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:RetrieveMVRButton-btnInnerEl']")
+    WebElementFacade botonRecuperarMVR;
+
     public IngresoDeAseguradoACotizacionPage(WebDriver driver){
         super(driver);
     }
@@ -218,5 +221,9 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     public void ingresarCuenta(String cuenta) {
         campoNumeroCuenta.waitUntilVisible().sendKeys(cuenta);
         campoNumeroCuenta.sendKeys(Keys.TAB);
+    }
+
+    public void validarBotonNoVisible() {
+        botonRecuperarMVR.shouldNotBeVisible();
     }
 }

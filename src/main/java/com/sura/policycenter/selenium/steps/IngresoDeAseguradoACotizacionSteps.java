@@ -108,4 +108,8 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
     public void ingresarCuenta(String cuenta) {
         ingresoDeAseguradoACotizacionPage.ingresarCuenta(cuenta);
     }
+
+    public void validarBotonNoVisible() {
+        ingresoDeAseguradoACotizacionPage.validarBotonNoVisible();
+    }
 }

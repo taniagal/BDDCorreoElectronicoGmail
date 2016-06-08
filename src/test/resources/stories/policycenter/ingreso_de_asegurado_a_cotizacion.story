@@ -214,6 +214,16 @@ Examples:
 |cuenta|tipoId|numeroId|mensaje|
 |C000888888|CEDULA DE CIUDADANIA|16796652|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 
+Scenario: validar que el boton recuperar mvr no es visible
+Given voy a crear una nueva cotizacion
+And crear una cotizacion nueva con la cuenta <cuenta>
+When quiera agregar un asegurado
+Then el boton recuperar mvr no es visible
+
+Examples:
+|cuenta|
+|C000888888|
+
 Scenario: Validar asegurado que es persona publicamente expuesta
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
@@ -228,3 +238,4 @@ Then muestre el mensaje de validacion del asegurado <mensaje>
 Examples:
 |cuenta|tipoId|numeroId|mensaje|
 |C000888888|CEDULA DE CIUDADANIA|71123456|ANTONIO RESTREPO con el(los) rol(es) (CONDUCTOR) es un riesgo no estándar y debe ser autorizado.|
+
