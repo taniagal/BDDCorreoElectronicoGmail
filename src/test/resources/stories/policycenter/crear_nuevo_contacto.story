@@ -45,7 +45,7 @@ Then debe validar que el contacto ya existe
 
 Examples:
 |tipoDocumento|numeroDeDocumento|razonSocial| tipoDireccion  |direccion|departamento|ciudad  |
-|NIT          |1245226          |LA VAQUITA ||Negocio        |CRA 50   |Antioquia   |Medellin|
+|NIT          |1245226          |LA VAQUITA |Negocio        |CRA 50   |Antioquia   |Medellin|
 
 
 
