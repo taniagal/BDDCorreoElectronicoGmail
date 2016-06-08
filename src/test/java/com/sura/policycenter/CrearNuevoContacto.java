@@ -1,5 +1,7 @@
 package com.sura.policycenter;
 
-public class CrearNuevoContacto {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class CrearNuevoContacto extends SerenityStory {
 
 }
