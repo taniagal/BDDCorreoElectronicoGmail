@@ -111,6 +111,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
             element(campoNombreAgente).shouldBeEnabled();
             seleccionarAgente("DIRECTO");
             String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto().toString() + ":addSubmission']";
+            System.out.println("xpath del boton -->>>>>>>>>" + xpathBotonElegirProducto);
             WebElementFacade botonElegirProducto = findBy(xpathBotonElegirProducto);
             botonElegirProducto.click();
             waitFor(botonAsegurados);
@@ -142,13 +143,10 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void agregarAseguradoContactoDeLaCuenta() {
-        do {
             waitFor(opcionContactoDeCuenta);
             opcionContactoDeCuenta.click();
-        }
-        while(!contactoDeCuenta.isVisible());{
+            waitFor(opcionContactoDeCuenta).waitUntilVisible();
             contactoDeCuenta.click();
-        }
     }
 
     public void agregarAseguradoContactoDelDirectorio() {
