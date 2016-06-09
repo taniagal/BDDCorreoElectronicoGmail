@@ -1,6 +1,7 @@
 package core.sura;
 
 import java.util.concurrent.TimeUnit;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,23 +30,24 @@ public class Guidewire {
         act = new Actions(driver);
         wait = new WebDriverWait(driver, 10);
 		baseUrl = "http://dllocoreseguros.suramericana.com:7003";
-        driver.manage().window().maximize();
+		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
     @Test
     public void cargarDatos() throws Exception {
         driver.get(baseUrl + "/pc/PolicyCenter.do");
-        driver.findElement(By.xpath("./*//*[@id='country']")).sendKeys("Colombia");
+        driver.findElement(By.xpath(".//*[@id='country']")).sendKeys("Colombia");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("pedrvevi");
-        driver.findElement(By.xpath("./*//*[@id='password']")).clear();
-        driver.findElement(By.xpath("./*//*[@id='password']")).sendKeys("pedrvevi");
-        driver.findElement(By.xpath("./*//*[@id='lower']/input")).click();
+        driver.findElement(By.xpath(".//*[@id='password']")).clear();
+        driver.findElement(By.xpath(".//*[@id='password']")).sendKeys("pedrvevi");
+        driver.findElement(By.xpath(".//*[@id='lower']/input")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
         elegirLenguaje();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
         driver.findElement(By.xpath(".//input[@id='QuickJump-inputEl']")).sendKeys(Keys.ALT,Keys.SHIFT, "t");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']"))).isDisplayed();
         driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']")).click();
         driver.findElement(By.xpath(".//*[@id='UnsupportedTools:MenuLinks:UnsupportedTools_PCSampleData']/div")).click();
         driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:SampleDataSetsLV:0:LoadSampleData']")).click();
