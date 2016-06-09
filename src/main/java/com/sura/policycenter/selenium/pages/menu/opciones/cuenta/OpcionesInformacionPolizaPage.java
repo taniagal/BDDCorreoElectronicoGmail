@@ -6,6 +6,7 @@ import org.bytedeco.javacpp.opencv_core;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -22,6 +23,9 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesInformacionPolizaPage.class);
 
     Actions act = new Actions(getDriver());
+
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
+    WebElementFacade campoNombreAgente;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PrimaryNamedInsuredLabel-labelEl']")
     private WebElementFacade labelAseguradoPrimario;
@@ -202,6 +206,28 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     public OpcionesInformacionPolizaPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void seleccionarAgenteCotizacion() {
+        campoNombreAgente.waitUntilVisible().sendKeys(Keys.ARROW_DOWN);
+        campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
+        campoNombreAgente.sendKeys(Keys.ENTER);
+        WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
+        botonElegirProducto.click();
+    }
+
+    public Integer encontrarProducto(){
+        tablaProductos.waitUntilVisible();
+        Integer filaBoton = 0;
+        List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
+        for (WebElement row : filas) {
+            List<WebElement> columna = row.findElements(By.tagName("td"));
+            if (columna.get(1).getText().equals("Auto personal")){
+                return filaBoton;
+            }
+            filaBoton++;
+        }
+        return filaBoton;
     }
 
     public void visualizarInformacionPoliza(Map<String, String> infoPoliza) {

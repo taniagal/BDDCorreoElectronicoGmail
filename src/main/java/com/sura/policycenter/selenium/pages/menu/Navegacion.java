@@ -8,42 +8,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminOr
 import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminUsuarioNuevoPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminVerificarErrorPatronPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.contacto.ContactoNuevaCuentaPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaCancelaPolizDividPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaCombPoliACuentaPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaCotizaRequeridaPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaCreaAgenteNuevPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaCreaDocNuevaPlantPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaDiarioX30Page;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaDiarioX60Page;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaDiarioX90Page;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaLigaDocExistePage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaNotificaPolizaPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaNuevaNotaPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaNuevoCorreoElecPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaNuevoEnvioPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtAudPersoInterPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtAudServExterPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtCotizReaseguroPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtDatoOficPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtInfRiesAgenPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtInfoVehiMotoPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtInspContSiniesPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtInspServExterPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaObtReporCredPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRecuerdaGeneralPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaReescrPoliACuentaPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaReuneAgentePage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaReuneAseguradoPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevPer30DiaAseguraPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevPer45DiaAseguraPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevPer60DiaAseguraPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevisaAgentePage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevisaNuevoCorreoPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevisaRendimPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaRevisionLegalPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaTazaCotPoliManuPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaTransPoliACuentaPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.CuentaVerificaCoberPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.*;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
@@ -291,6 +256,8 @@ public class Navegacion extends Guidewire {
     private WebElementFacade mnuAccionReescribirPolizas;
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_MergeAccounts-textEl']")
     private WebElementFacade mnuAccionCombinarCuentas;
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission-itemEl']")
+    private WebElementFacade mnuNuevaCotizacion;
 
     // Objetos menu Acciones Contacto
     @FindBy(xpath = ".//*[@id='ContactFile:ContactFileMenuActions-btnInnerEl']")
@@ -1117,6 +1084,12 @@ public class Navegacion extends Guidewire {
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionCotizarManual).release(mnuAccionCotizarManual).click().build().perform();
         return new CuentaTazaCotPoliManuPage(getDriver());
+    }
+
+    public CuentaNuevaCotizacionPage irANuevaCotizacion() {
+        waitFor(mnuNuevaCotizacion).shouldBeVisible();
+        mnuNuevaCotizacion.click();
+        return new CuentaNuevaCotizacionPage(getDriver());
     }
 
     // Navegacion menu Acciones Contacto

@@ -18,6 +18,16 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     }
 
     @Step
+    public void accionarNuevaCotizacion() {
+        inicioPage().irANuevaCotizacion();
+    }
+
+    @Step
+    public void seleccionarAgenteCotizacion() {
+        opcionesInformacionPoliza.seleccionarAgenteCotizacion();
+    }
+
+    @Step
     public void visualizarInformacionPoliza(Map<String, String> infoPoliza) {
         opcionesInformacionPoliza.visualizarInformacionPoliza(infoPoliza);
     }

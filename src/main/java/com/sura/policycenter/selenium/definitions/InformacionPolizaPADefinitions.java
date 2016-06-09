@@ -59,13 +59,15 @@ public class InformacionPolizaPADefinitions {
 
     @Given("se visualiza la informacion de la poliza")
     public void verInformacionPoliza(){
-        disponibilidadDetalleProductoSteps.accionarNuevoEnvio();
+        informacionPolizaPASteps.accionarNuevaCotizacion();
+        informacionPolizaPASteps.accionarInformacionPoliza();
         informacionPolizaPASteps.accionarInformacionPoliza();
     }
 
     @When("estoy expidiendo una poliza de autos")
     public void accionarExpedirPolizaAuto(){
-        disponibilidadDetalleProductoSteps.accionarNuevoEnvio();
+        //disponibilidadDetalleProductoSteps.accionarNuevoEnvio();
+        informacionPolizaPASteps.accionarNuevaCotizacion();
         informacionPolizaPASteps.accionarInformacionPoliza();
     }
 
