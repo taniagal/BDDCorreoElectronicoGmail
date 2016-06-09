@@ -74,7 +74,13 @@ public class EdicionContactoAseguradoPage extends PageObject{
 
     public void editarDatosNuevaPersonaNatural(ExamplesTable edicionPersonaNatural) {
         Map<String, String> datosNuevaPersona = edicionPersonaNatural.getRows().get(0);
-        this.editarDatosComunesDeContacto(datosNuevaPersona);
+        campoTipoDocumento.shouldBeEnabled();
+        campoNumeroDocumento.shouldBeEnabled();
+        campoPais.shouldBeEnabled();
+        campoDepartamento.shouldBeEnabled();
+        campoCiudad.shouldBeEnabled();
+        campoDireccion.shouldBeEnabled();
+        campoTipoDireccion.shouldBeEnabled();
         campoPrimerNombre.clear();
         campoPrimerNombre.sendKeys(datosNuevaPersona.get("primerNombre"));
         campoPrimerApellido.clear();
@@ -83,7 +89,13 @@ public class EdicionContactoAseguradoPage extends PageObject{
 
     public void editarDatosNuevaPersonaJuridica(ExamplesTable EdicionPersonaJuridica) {
         Map<String, String> datosNuevaEmpresa = EdicionPersonaJuridica.getRows().get(0);
-        this.editarDatosComunesDeContacto(datosNuevaEmpresa);
+        campoTipoDocumento.shouldBeEnabled();
+        campoNumeroDocumento.shouldBeEnabled();
+        campoPais.shouldBeEnabled();
+        campoDepartamento.shouldBeEnabled();
+        campoCiudad.shouldBeEnabled();
+        campoDireccion.shouldBeEnabled();
+        campoTipoDireccion.shouldBeEnabled();
         campoRazonSocial.clear();
         campoRazonSocial.sendKeys(datosNuevaEmpresa.get("razonSocial"));
     }

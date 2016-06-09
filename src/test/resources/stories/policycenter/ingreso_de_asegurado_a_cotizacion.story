@@ -9,13 +9,29 @@ Para agregarlos a la cotizacion
 
 @Issue 15114 Driver Details
 
-Scenario: Opciones para agregar asegurado
+Scenario: Validar asegurado que es persona publicamente expuesta
 GivenStories: stories/policycenter/login_policy.story
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 When quiera agregar un asegurado
 And vaya a la opcion agregar
-Then Se debe mostrar las opciones:
+And consulte un asegurado del directorio
+And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
+And seleccione el contacto a agregar
+And vaya al siguiente paso de la cotizacion
+Then muestre el mensaje de validacion del asegurado <mensaje>
+
+Examples:
+|cuenta|tipoId|numeroId|mensaje|
+|C000888888|CEDULA DE CIUDADANIA|71123456|ANTONIO RESTREPO con el(los) rol(es) (CONDUCTOR) es un riesgo no estándar y debe ser autorizado.|
+
+Scenario: Opciones para agregar asegurado
+Given voy a crear una nueva cotizacion
+And crear una cotizacion nueva con la cuenta <cuenta>
+When quiera agregar un asegurado
+And vaya a la opcion agregar
+Then el boton recuperar mvr no es visible
+And Se debe mostrar las opciones:
 |agregar|
 |Nuevo|
 |Del Directorio|
@@ -39,70 +55,8 @@ Examples:
 |cuenta|
 |C000888888|
 
-Scenario: Agregar asegurado del directorio
-Given voy a crear una nueva cotizacion
-And crear una cotizacion nueva con la cuenta <cuenta>
-When quiera agregar un asegurado
-And vaya a la opcion agregar
-And consulte un asegurado del directorio
-And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
-And seleccione el contacto a agregar
-Then deben quedar agregados como asegurados:
-|nombre|tipoDocumento|numeroDocumento|
-|VARIEDADES YURLEDYS S.A|NIT|9202086744|
 
-Examples:
-|cuenta|tipoId|numeroId|
-|C000888888|NIT|9202086744|
-
-Scenario: Agregar asegurado por la opcion nueva persona natural
-Given voy a crear una nueva cotizacion
-And crear una cotizacion nueva con la cuenta <cuenta>
-When quiera agregar un asegurado
-And vaya a la opcion agregar
-And seleccione ingresar nueva persona natural
-And ingrese los datos de persona natural:
-|tipoId|numeroId|primerNombre|primerApellido|pais|departamento|ciudad|direccion|tipoDireccion|
-|CEDULA DE CIUDADANIA|1234568899|LUCIANA|LONDOÑO|Colombia|Antioquia|Medellin|Cra 65 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
-Then deben quedar agregados como asegurados:
-|nombre|tipoDocumento|numeroDocumento|
-|LUCIANA LONDOÑO|CEDULA DE CIUDADANIA|1234568899|
-
-Examples:
-|cuenta|
-|C000888888|
-
-Scenario: Agregar asegurado por la opcion nueva persona juridica
-Given voy a crear una nueva cotizacion
-And crear una cotizacion nueva con la cuenta <cuenta>
-When quiera agregar un asegurado
-And vaya a la opcion agregar
-And seleccione ingresar nueva persona juridica
-And ingrese los datos de persona juridica:
-|tipoId|numeroId|razonSocial|pais|departamento|ciudad|direccion|tipoDireccion|
-|NIT|9998887776|COOPERATIVA COOPERANDO|Colombia|Antioquia|Medellin|Cra 66 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
-Then deben quedar agregados como asegurados:
-|nombre|tipoDocumento|numeroDocumento|
-|COOPERATIVA COOPERANDO|NIT|9998887776|
-
-Examples:
-|cuenta|
-|C000888888|
-
-Scenario: Agregar asegurado del directorio y que no existe
-Given voy a crear una nueva cotizacion
-And crear una cotizacion nueva con la cuenta <cuenta>
-When quiera agregar un asegurado
-And vaya a la opcion agregar
-And consulte un asegurado del directorio
-And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
-Then debe mostrar el mensaje del directorio <mensaje>
-
-Examples:
-|cuenta|tipoId|numeroId|mensaje|
-|C000888888|NIT|2020202020|La búsqueda no devolvió resultados.|
-
-Scenario: Agregar varios asegurados
+Scenario: Agregar varios asegurados (validar asegurado del directorio riesgo consultable)
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 When quiera agregar un asegurado
@@ -112,16 +66,18 @@ And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y nu
 And seleccione el contacto a agregar
 And vaya a la opcion agregar
 And agregue un asegurado que es contacto de la cuenta
-Then deben quedar agregados como asegurados:
+And vaya al siguiente paso de la cotizacion
+Then muestre el mensaje de validacion del asegurado <mensaje>
+And deben quedar agregados como asegurados:
 |nombre|tipoDocumento|numeroDocumento|
-|VARIEDADES YURLEDYS S.A|NIT|9202086744|
+|DIEGO VELEZ|CEDULA DE CIUDADANIA|16796652|
 |DONIA GLORIA GALLEGO|CEDULA DE CIUDADANIA|1264567899|
 
 Examples:
-|cuenta|tipoId|numeroId|
-|C000888888|NIT|9202086744|
+|cuenta|tipoId|numeroId|mensaje|
+|C000888888|CEDULA DE CIUDADANIA|16796652|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 
-Scenario: Editar campos en creacion tipo persona natural
+Scenario: Agregar asegurado y Editar campos en creacion tipo persona natural
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 When quiera agregar un asegurado
@@ -138,13 +94,13 @@ And consulte un asegurado del directorio
 And vuelva a ver los asegurados
 Then deben quedar agregados como asegurados:
 |nombre|tipoDocumento|numeroDocumento|
-|LUCIANA CALLE|CEDULA DE CIUDADANIA|1234569999|
+|LUCIANA CALLE|CEDULA DE CIUDADANIA|1234568999|
 
 Examples:
 |cuenta|
 |C000888888|
 
-Scenario: Editar campos en creacion tipo persona juridica
+Scenario: Agregar y Editar campos en creacion tipo persona juridica
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 When quiera agregar un asegurado
@@ -161,7 +117,7 @@ And consulte un asegurado del directorio
 And vuelva a ver los asegurados
 Then deben quedar agregados como asegurados:
 |nombre|tipoDocumento|numeroDocumento|
-|COOPERATIVA LALO|NIT|9998887778|
+|COOPERATIVA LALO|NIT|9998887777|
 
 Examples:
 |cuenta|
@@ -198,44 +154,4 @@ Then la lista de asegurados debe quedar vacia
 Examples:
 |cuenta|tipoId|numeroId|
 |C000888888|NIT|9202086744|
-
-Scenario: Validar asegurado que es riesgo consultable
-Given voy a crear una nueva cotizacion
-And crear una cotizacion nueva con la cuenta <cuenta>
-When quiera agregar un asegurado
-And vaya a la opcion agregar
-And consulte un asegurado del directorio
-And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
-And seleccione el contacto a agregar
-And vaya al siguiente paso de la cotizacion
-Then muestre el mensaje de validacion del asegurado <mensaje>
-
-Examples:
-|cuenta|tipoId|numeroId|mensaje|
-|C000888888|CEDULA DE CIUDADANIA|16796652|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
-
-Scenario: validar que el boton recuperar mvr no es visible
-Given voy a crear una nueva cotizacion
-And crear una cotizacion nueva con la cuenta <cuenta>
-When quiera agregar un asegurado
-Then el boton recuperar mvr no es visible
-
-Examples:
-|cuenta|
-|C000888888|
-
-Scenario: Validar asegurado que es persona publicamente expuesta
-Given voy a crear una nueva cotizacion
-And crear una cotizacion nueva con la cuenta <cuenta>
-When quiera agregar un asegurado
-And vaya a la opcion agregar
-And consulte un asegurado del directorio
-And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
-And seleccione el contacto a agregar
-And vaya al siguiente paso de la cotizacion
-Then muestre el mensaje de validacion del asegurado <mensaje>
-
-Examples:
-|cuenta|tipoId|numeroId|mensaje|
-|C000888888|CEDULA DE CIUDADANIA|71123456|ANTONIO RESTREPO con el(los) rol(es) (CONDUCTOR) es un riesgo no estándar y debe ser autorizado.|
 

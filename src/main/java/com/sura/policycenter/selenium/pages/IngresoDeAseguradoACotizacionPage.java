@@ -107,11 +107,10 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void irAIngresarAsegurado() {
-            element(campoNombreAgente).shouldBeVisible();
-            element(campoNombreAgente).shouldBeEnabled();
+            waitABit(2000);
             seleccionarAgente("DIRECTO");
+            waitABit(3000);
             String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto().toString() + ":addSubmission']";
-            System.out.println("xpath del boton -->>>>>>>>>" + xpathBotonElegirProducto);
             WebElementFacade botonElegirProducto = findBy(xpathBotonElegirProducto);
             botonElegirProducto.click();
             waitFor(botonAsegurados);
@@ -221,7 +220,8 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void irASiguiente() {
-        botonSiguiente.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+        waitABit(1000);
+        botonSiguiente.click();
     }
 
     public void validarMensajeDeIntegraciones(String mensaje) {
