@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.common.exception.SuraExceptionTechnical;
 import com.sura.policycenter.selenium.pages.DisponibilidadDetalleProductoPage;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -14,7 +13,7 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
         super(pages);
     }
 
-    public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws SuraExceptionTechnical {
+    public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws Exception {
         disponibilidadDetalleProductoPage.validarTipoCanalVentas(tipoCanal);
     }
 
@@ -34,7 +33,7 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
         disponibilidadDetalleProductoPage.seleccionarTipoCanalDeVentas(tipoCanal);
     }
 
-    public void validarPATipoPoliza(ExamplesTable paTipoPoliza) throws SuraExceptionTechnical {
+    public void validarPATipoPoliza(ExamplesTable paTipoPoliza) throws Exception {
         disponibilidadDetalleProductoPage.validarPATipoPoliza(paTipoPoliza);
     }
 

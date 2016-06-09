@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.common.exception.SuraExceptionTechnical;
 import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
 import com.sura.policycenter.selenium.steps.ResumenCuentaSteps;
 import java.util.HashMap;
@@ -136,13 +135,13 @@ public class ResumenCuentaDefinitions {
 
     @Then("puedo visualizar el resumen de la cuenta seleccionada de tipo persona juridica, el listado de actividades, vigencias\n" +
             "de las polizas asociadas a la cuenta y transacciones pendientes de las polizas asociadas a la cuenta")
-    public void verInfoResumenCuentaPersonaJuridica() throws SuraExceptionTechnical{
+    public void verInfoResumenCuentaPersonaJuridica(){
         resumenCuentaSteps.verInfoResumenCuenta(infoResumenCuenta);
     }
 
     @Then("puedo visualizar el resumen de la cuenta seleccionada de tipo persona natural, el listado de actividades, vigencias \n" +
             "de las polizas asociadas a la cuenta y transacciones pendientes de las polizas asociadas a la cuenta")
-    public void verInfoResumenCuentaPersonaNatural() throws  SuraExceptionTechnical{
+    public void verInfoResumenCuentaPersonaNatural(){
         resumenCuentaSteps.verInfoResumenCuenta(infoResumenCuenta);
     }
 

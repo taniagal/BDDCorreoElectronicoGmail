@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
-import com.sura.common.exception.SuraExceptionTechnical;
 import com.sura.guidewire.selenium.Guidewire;
 import java.util.Map;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -218,11 +217,11 @@ public class OpcionesResumenCuentaPage extends Guidewire {
         super(driver);
     }
 
-    public void verInfoResumenCuenta(Map<String, String> infoResumenCuenta) throws SuraExceptionTechnical {
+    public void verInfoResumenCuenta(Map<String, String> infoResumenCuenta) {
 
         String validacion = null;
 
-
+        try {
             assertThat(lblResumenCuenta.getText(), is(equalTo(infoResumenCuenta.get("lblResumenCuenta"))));
             assertThat(lblTipoDoc.getText(), is(equalTo(infoResumenCuenta.get("tipoDocumento"))));
             assertThat(lblNumDoc.getText(), is(equalTo(infoResumenCuenta.get("numDocumento"))));
@@ -287,8 +286,11 @@ public class OpcionesResumenCuentaPage extends Guidewire {
             assertThat(lblProductoTrans.getText(), is(equalTo(infoResumenCuenta.get("productoTrans"))));
             assertThat(lblTipoTrans.getText(), is(equalTo(infoResumenCuenta.get("tipoTrans"))));
             assertThat(lblAseguradorTrans.getText(), is(equalTo(infoResumenCuenta.get("aseguradorTrans"))));
-
-            assertThat(validacion, is(equalTo(null)));
+        } catch (Exception e) {
+            LOGGER.error(validacion, e);
+            validacion = e.getMessage();
+        }
+        assertThat(validacion, is(equalTo(null)));
     }
 
     public void editarResumenCuenta() {

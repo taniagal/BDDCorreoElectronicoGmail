@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.common.exception.SuraExceptionTechnical;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import java.util.Map;
@@ -26,7 +25,7 @@ public class ResumenCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verInfoResumenCuenta(Map<String, String> infoResumenCuenta) throws SuraExceptionTechnical {
+    public void verInfoResumenCuenta(Map<String, String> infoResumenCuenta) {
         opcionesResumenCuentaPage.verInfoResumenCuenta(infoResumenCuenta);
     }
 

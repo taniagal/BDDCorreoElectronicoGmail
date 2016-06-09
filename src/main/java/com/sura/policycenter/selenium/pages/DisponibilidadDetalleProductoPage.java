@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.common.exception.SuraExceptionTechnical;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.serinitybdd.util.GwNavegacionUtil;
 import java.util.List;
@@ -57,12 +56,12 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
         waitABit(2000);
     }
 
-    public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws SuraExceptionTechnical {
+    public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws Exception {
         listaTipoCanalDeVenta.click();
         this.validarDatosDeLaLista(tipoCanal);
     }
 
-    private  void validarDatosDeLaLista(ExamplesTable tipoCanal) throws SuraExceptionTechnical {
+    private  void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {
@@ -81,7 +80,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
         waitABit(2000);
     }
 
-    public void validarPATipoPoliza(ExamplesTable paTipoPoliza) throws SuraExceptionTechnical {
+    public void validarPATipoPoliza(ExamplesTable paTipoPoliza) throws Exception {
         listaPATipoPoliza.click();
         this.validarDatosDeLaLista(paTipoPoliza);
     }
