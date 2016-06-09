@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.pages.GuidewireLoginPages;
 import com.sura.policycenter.selenium.steps.GuidewireLoginSteps;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -19,9 +18,7 @@ public class IngresoAPolicyCenterDefinitions {
     GuidewireLoginPages guidewireLoginPages;
 
     @Given("Deseo ingresar como super usuario a PolicyCenter")
-    public void ingresarComoSuperUsuarioPolicyCenter(){
-        Serenity.done();
-    }
+    public void ingresarComoSuperUsuarioPolicyCenter(){}
 
     @When("Digíto usuario $usuario y contraseña $contrasenia y enviar las credenciales")
     public void ingresarComoSuperUsuarioPolicyCenter(String usuario, String contrasenia){

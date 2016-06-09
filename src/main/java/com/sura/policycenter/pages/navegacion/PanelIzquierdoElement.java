@@ -2,13 +2,21 @@ package com.sura.policycenter.pages.navegacion;
 
 import net.serenitybdd.core.pages.PageObject;
 
-public class PanelIzquierdoElement extends PageObject{
+import java.io.Serializable;
+
+public class PanelIzquierdoElement extends PageObject implements Serializable{
+
+    private static final long serialVersionUID = 1L;
 
     public static final String LINK_ACCIONES = "//a[contains(@id,'Desktop:DesktopMenuActions')]";
     public static final String LINK_NUEVA_COTIZACION = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']";
 
     public void opcion(String opcion){
-        waitFor(opcion).shouldBeDisplayed();
-        $(opcion).click();
+        try {
+            waitFor(opcion).shouldBeDisplayed();
+            $(opcion).click();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

@@ -11,4 +11,3 @@ When Digíto usuario su y contraseña gw y enviar las credenciales
 Then Debería acceder a PolicyCenter y ver página Mis actividades
 
 
-

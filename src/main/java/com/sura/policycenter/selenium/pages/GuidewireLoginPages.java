@@ -28,7 +28,7 @@ public class GuidewireLoginPages extends PageObject {
     }
 
     public void digitar(String elemento, String valor){
-        enter(valor).into($(elemento));
+        enter(valor).into($(elemento ));
         esperarAQueDigite(elemento, valor);
     }
 
