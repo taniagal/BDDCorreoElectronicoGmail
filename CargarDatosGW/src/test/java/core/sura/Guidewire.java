@@ -1,6 +1,7 @@
 package core.sura;
 
 import java.util.concurrent.TimeUnit;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +30,7 @@ public class Guidewire {
         act = new Actions(driver);
         wait = new WebDriverWait(driver, 10);
 		baseUrl = "http://dllocoreseguros.suramericana.com:7003";
-        driver.manage().window().maximize();
+		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 

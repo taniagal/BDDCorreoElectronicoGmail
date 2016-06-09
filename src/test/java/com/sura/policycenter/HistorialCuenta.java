@@ -1,4 +1,6 @@
 package com.sura.policycenter;
 
-public class HistorialCuenta {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class HistorialCuenta  extends SerenityStory {
 }
