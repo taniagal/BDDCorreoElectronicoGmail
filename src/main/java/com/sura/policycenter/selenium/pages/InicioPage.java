@@ -288,6 +288,10 @@ public class InicioPage extends Guidewire {
     public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta(){
         return navegacion.irACuentaNuevoEnvioCuenta();
     }
+    public CuentaNuevoEnvioPage irANuevoEnvioDeCuenta() {
+        return navegacion.irANuevoEnvioDeCuenta();
+    }
+
     public CuentaRevisaNuevoCorreoPage irACuentaRevisaNuevoCorreo(){
         return navegacion.irACuentaRevisaNuevoCorreo();
     }

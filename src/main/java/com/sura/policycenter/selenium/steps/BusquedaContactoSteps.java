@@ -118,4 +118,10 @@ public class BusquedaContactoSteps extends ScenarioSteps {
     public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto){
         busquedaContactoPage.validarLabelsPersonaJuridica(labelsContacto);
     }
+
+    @Step
+    public void consultarContactoPorTipoDocumentoCotizacion(String tipoId, String numeroId) {
+        busquedaContactoPage.consultarContactoPorTipoDocumentoCotizacion(tipoId, numeroId);
+    }
 }
+
