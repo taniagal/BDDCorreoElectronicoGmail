@@ -36,16 +36,17 @@ public class Guidewire {
     @Test
     public void cargarDatos() throws Exception {
         driver.get(baseUrl + "/pc/PolicyCenter.do");
-        driver.findElement(By.xpath("./*//*[@id='country']")).sendKeys("Colombia");
+        driver.findElement(By.xpath(".//*[@id='country']")).sendKeys("Colombia");
         driver.findElement(By.id("username")).clear();
         driver.findElement(By.id("username")).sendKeys("pedrvevi");
-        driver.findElement(By.xpath("./*//*[@id='password']")).clear();
-        driver.findElement(By.xpath("./*//*[@id='password']")).sendKeys("pedrvevi");
-        driver.findElement(By.xpath("./*//*[@id='lower']/input")).click();
+        driver.findElement(By.xpath(".//*[@id='password']")).clear();
+        driver.findElement(By.xpath(".//*[@id='password']")).sendKeys("pedrvevi");
+        driver.findElement(By.xpath(".//*[@id='lower']/input")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
         elegirLenguaje();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
         driver.findElement(By.xpath(".//input[@id='QuickJump-inputEl']")).sendKeys(Keys.ALT,Keys.SHIFT, "t");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']"))).isDisplayed();
         driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']")).click();
         driver.findElement(By.xpath(".//*[@id='UnsupportedTools:MenuLinks:UnsupportedTools_PCSampleData']/div")).click();
         driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:SampleDataSetsLV:0:LoadSampleData']")).click();
