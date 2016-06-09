@@ -79,19 +79,42 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:RetrieveMVRButton-btnInnerEl']")
     WebElementFacade botonRecuperarMVR;
 
+    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
+    WebElementFacade menuPoliza;
+
+    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']")
+    WebElementFacade menuPolizaNuevoEnvio;
+
+    private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:";
+
     public IngresoDeAseguradoACotizacionPage(WebDriver driver){
         super(driver);
     }
 
+
+    public void seleccionarAgente(String nombreAgente) {
+        element(campoNombreAgente).waitUntilClickable();
+        element(campoNombreAgente).click();
+        List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
+        if (!listaNombresAgentesElement.isEmpty()) {
+            for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
+                if (agenteElemento.containsText(nombreAgente)){
+                    agenteElemento.click();
+                    break;
+                }
+            }
+        }
+    }
+
     public void irAIngresarAsegurado() {
-        waitABit(1500);
-        campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
-        campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
-        campoNombreAgente.sendKeys(Keys.ENTER);
-        WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
-        botonElegirProducto.click();
-        waitFor(botonAsegurados);
-        botonAsegurados.click();
+            element(campoNombreAgente).shouldBeVisible();
+            element(campoNombreAgente).shouldBeEnabled();
+            seleccionarAgente("DIRECTO");
+            String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto().toString() + ":addSubmission']";
+            WebElementFacade botonElegirProducto = findBy(xpathBotonElegirProducto);
+            botonElegirProducto.click();
+            waitFor(botonAsegurados);
+            botonAsegurados.click();
     }
 
     public void agregarAsegurado() {
@@ -153,7 +176,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
     public void validarAseguradosAgregados(ExamplesTable asegurados) {
         Map<String, String> aseguradosAgregados;
-        waitABit(1000);
+        waitABit(2000);
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         for (int i=0; i<allRows.size(); i++){
             aseguradosAgregados = asegurados.getRows().get(i);
@@ -190,7 +213,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void validarAseguradoEliminado() {
-        waitABit(1000);
+        waitABit(2000);
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         if(allRows.isEmpty()){
             MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados vacía")));
@@ -209,17 +232,18 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void irACrearNuevaCotizacion() {
-        WebElementFacade menuPoliza = withTimeoutOf(5, TimeUnit.SECONDS).find(".//*[@id='TabBar:PolicyTab']");
-        menuPoliza.waitUntilClickable().click();
-        waitABit(2000);
-        menuPoliza.waitUntilClickable().click();
+        waitABit(1500);
+        menuPoliza.click();
+        waitABit(1500);
+        menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
-        WebElementFacade menuPolizaNuevoEnvio = withTimeoutOf(5, TimeUnit.SECONDS).find(".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']");
         menuPolizaNuevoEnvio.waitUntilVisible().click();
     }
 
     public void ingresarCuenta(String cuenta) {
-        campoNumeroCuenta.waitUntilVisible().sendKeys(cuenta);
+        campoNumeroCuenta.waitUntilVisible();
+        campoNumeroCuenta.waitUntilEnabled();
+        campoNumeroCuenta.sendKeys(cuenta);
         campoNumeroCuenta.sendKeys(Keys.TAB);
     }
 
