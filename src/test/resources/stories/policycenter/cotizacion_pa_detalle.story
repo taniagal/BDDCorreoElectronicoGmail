@@ -15,11 +15,11 @@ Examples:
 |cotizacion |
 |33334444   |
 
-Scenario: Quote - Termino de la cobertura
-Given he realizado la cotizacion <cotizacion>
-When ingrese al detalle de la cotizacion
-Then se debe mostrar en la columna "Termino" el limite o deducible de la cobertura en el caso de que aplique
+#Scenario: Quote - Termino de la cobertura
+#Given he realizado la cotizacion <cotizacion>
+#When ingrese al detalle de la cotizacion
+#Then se debe mostrar en la columna "Termino" el limite o deducible de la cobertura en el caso de que aplique
 
-Examples:
-|cotizacion |
-|33334444   |
+#Examples:
+#|cotizacion |
+#|33334444   |
