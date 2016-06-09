@@ -28,7 +28,7 @@ public class Guidewire {
 		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
 		driver = new ChromeDriver();
         act = new Actions(driver);
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 60);
 		baseUrl = "http://dllocoreseguros.suramericana.com:7003";
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -51,14 +51,10 @@ public class Guidewire {
         driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']")).click();
         driver.findElement(By.xpath(".//*[@id='UnsupportedTools:MenuLinks:UnsupportedTools_PCSampleData']/div")).click();
         driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:SampleDataSetsLV:0:LoadSampleData']")).click();
-        if(wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:_msgs']/div/div"))).isDisplayed()){
-            assertEquals("Conjunto cargado \"Sura\" correctamente.", driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:_msgs']/div/div")).getText());
-        } else if(wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']"))).isDisplayed()){
-            assertEquals("Conjunto cargado \"Sura\" correctamente.", driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")).getText());
-            driver.findElement(By.xpath(".//*[@id=':TabLinkMenuButton-btnIconEl']")).click();
-            driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:LogoutTabBarLink']")).click();
-        }
-
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']"))).isDisplayed();
+        assertEquals("Conjunto cargado \"Sura\" correctamente.", driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")).getText());
+        driver.findElement(By.xpath(".//*[@id=':TabLinkMenuButton-btnIconEl']")).click();
+        driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:LogoutTabBarLink']")).click();
 
     }
 
