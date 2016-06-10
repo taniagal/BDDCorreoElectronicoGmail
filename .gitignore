@@ -1,5 +1,7 @@
 #Directorios Ignorados
 .idea
+CargarDatosGW/build/
+CargarDatosGW/.gradle/
 target
 BDDCore.iml
-pom.xml
+
