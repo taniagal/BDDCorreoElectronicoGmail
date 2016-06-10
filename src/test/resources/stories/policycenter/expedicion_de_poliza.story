@@ -9,15 +9,15 @@ Scenario: Validación de riesgo consultable al momento de querer expedir la pól
 el tomador sea un riesgo consultable
 
 GivenStories: stories/policycenter/login_policy.story
-Given Estoy ingresando la informacion de una poliza para ser expedida <numCuenta>
+Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
 When   vaya a expedir una poliza nueva para una propiedad comercial <nomProducto> donde el tomador sea un riesgo consultable
 Then  Se debe bloquear la expedicion
 And   debe mostrar el mensaje <mensaje>
 
 
 Examples:
-|numCuenta  |mensaje                  |nomProducto        |
-|C000888888 |es un riesgo consuultable|Propiedad comercial|
+|cotizacion|mensaje                  |nomProducto        |
+|22222225|es un riesgo consultable|Propiedad comercial|
 
 
 
