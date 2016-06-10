@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.bytedeco.javacpp.opencv_core;
 import org.hamcrest.MatcherAssert;
@@ -8,15 +9,14 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Map;
+import java.util.*;
 
 public class OpcionesInformacionPolizaPage extends Guidewire {
 
@@ -26,6 +26,9 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
+
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']")
+    WebElementFacade tablaProductos;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PrimaryNamedInsuredLabel-labelEl']")
     private WebElementFacade labelAseguradoPrimario;
@@ -93,7 +96,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:4']")
     private WebElementFacade labelModificadorPoliza;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyDiscount-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:modifier-labelEl']")
     private WebElementFacade labelDescuentoPoliza;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
@@ -183,7 +186,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:UWCompanyInputSet:0']")
     private WebElementFacade labelOficinaRadicacion;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyDiscount-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:modifier-inputEl']")
     private WebElementFacade textoDescuentoPoliza;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:QuestionFundedPolicy_true-inputEl']")
@@ -209,14 +212,17 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void seleccionarAgenteCotizacion() {
+        waitFor(campoNombreAgente).shouldBeVisible();
         campoNombreAgente.waitUntilVisible().sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ENTER);
         WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
+        waitFor(botonElegirProducto).shouldBeVisible();
         botonElegirProducto.click();
     }
 
     public Integer encontrarProducto(){
+        waitFor(tablaProductos).shouldBeVisible();
         tablaProductos.waitUntilVisible();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
@@ -233,28 +239,28 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     public void visualizarInformacionPoliza(Map<String, String> infoPoliza) {
         String validacion = null;
         try{
-            MatcherAssert.assertThat(labelAseguradoPrimario.getText(), Is.is(Matchers.equalTo(infoPoliza.get("labelAseguradoPrimario"))));
-            MatcherAssert.assertThat(labelTipoDocumento.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoDocumento"))));
-            MatcherAssert.assertThat(labelNumeroDocumento.getText(), Is.is(Matchers.equalTo(infoPoliza.get("numeroDocumento"))));
-            MatcherAssert.assertThat(labelNombre.getText(), Is.is(Matchers.equalTo(infoPoliza.get("nombre"))));
-            MatcherAssert.assertThat(labelTelefono.getText(), Is.is(Matchers.equalTo(infoPoliza.get("telefono"))));
-            MatcherAssert.assertThat(labelDireccionPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("direccionPoliza"))));
-            MatcherAssert.assertThat(labelTipoDireccion.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoDireccion"))));
-            MatcherAssert.assertThat(labelDescripcionDireccion.getText(), Is.is(Matchers.equalTo(infoPoliza.get("descripcionDireccion"))));
-            MatcherAssert.assertThat(labelDetallesPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("labelDetallesPoliza"))));
-            MatcherAssert.assertThat(labelOrganizacion.getText(), Is.is(Matchers.equalTo(infoPoliza.get("organizacion"))));
-            MatcherAssert.assertThat(labelCanal.getText(), Is.is(Matchers.equalTo(infoPoliza.get("canal"))));
-            MatcherAssert.assertThat(labelTipoPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoPoliza"))));
-            MatcherAssert.assertThat(labelTipoPlazo.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoPlazo"))));
-            MatcherAssert.assertThat(labelFechaVigencia.getText(), Is.is(Matchers.equalTo(infoPoliza.get("fechaVigencia"))));
-            MatcherAssert.assertThat(labelFechaExpiracion.getText(), Is.is(Matchers.equalTo(infoPoliza.get("fechaExpiracion"))));
-            MatcherAssert.assertThat(labelFechaEscrita.getText(), Is.is(Matchers.equalTo(infoPoliza.get("fechaEscrita"))));
-            MatcherAssert.assertThat(labelPolizaFinanciada.getText(), Is.is(Matchers.equalTo(infoPoliza.get("polizaFinanciada"))));
-            MatcherAssert.assertThat(labelAgenteRegistro.getText(), Is.is(Matchers.equalTo(infoPoliza.get("labelAgenteRegistro"))));
-            MatcherAssert.assertThat(labelOrganizacionAgente.getText(), Is.is(Matchers.equalTo(infoPoliza.get("organizacionAgente"))));
-            MatcherAssert.assertThat(labelCodigoAgente.getText(), Is.is(Matchers.equalTo(infoPoliza.get("codigoAgente"))));
-            MatcherAssert.assertThat(labelModificadorPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("modificadorPoliza"))));
-            MatcherAssert.assertThat(labelDescuentoPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("descuentoPoliza"))));
+            MatcherAssert.assertThat(this.labelAseguradoPrimario.getText(), Is.is(Matchers.equalTo(infoPoliza.get("labelAseguradoPrimario"))));
+            MatcherAssert.assertThat(this.labelTipoDocumento.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoDocumento"))));
+            MatcherAssert.assertThat(this.labelNumeroDocumento.getText(), Is.is(Matchers.equalTo(infoPoliza.get("numeroDocumento"))));
+            MatcherAssert.assertThat(this.labelNombre.getText(), Is.is(Matchers.equalTo(infoPoliza.get("nombre"))));
+            MatcherAssert.assertThat(this.labelTelefono.getText(), Is.is(Matchers.equalTo(infoPoliza.get("telefono"))));
+            MatcherAssert.assertThat(this.labelDireccionPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("direccionPoliza"))));
+            MatcherAssert.assertThat(this.labelTipoDireccion.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoDireccion"))));
+            MatcherAssert.assertThat(this.labelDescripcionDireccion.getText(), Is.is(Matchers.equalTo(infoPoliza.get("descripcionDireccion"))));
+            MatcherAssert.assertThat(this.labelDetallesPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("labelDetallesPoliza"))));
+            MatcherAssert.assertThat(this.labelOrganizacion.getText(), Is.is(Matchers.equalTo(infoPoliza.get("organizacion"))));
+            MatcherAssert.assertThat(this.labelCanal.getText(), Is.is(Matchers.equalTo(infoPoliza.get("canal"))));
+            MatcherAssert.assertThat(this.labelTipoPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoPoliza"))));
+            MatcherAssert.assertThat(this.labelTipoPlazo.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoPlazo"))));
+            MatcherAssert.assertThat(this.labelFechaVigencia.getText(), Is.is(Matchers.equalTo(infoPoliza.get("fechaVigencia"))));
+            MatcherAssert.assertThat(this.labelFechaExpiracion.getText(), Is.is(Matchers.equalTo(infoPoliza.get("fechaExpiracion"))));
+            MatcherAssert.assertThat(this.labelFechaEscrita.getText(), Is.is(Matchers.equalTo(infoPoliza.get("fechaEscrita"))));
+            MatcherAssert.assertThat(this.labelPolizaFinanciada.getText(), Is.is(Matchers.equalTo(infoPoliza.get("polizaFinanciada"))));
+            MatcherAssert.assertThat(this.labelAgenteRegistro.getText(), Is.is(Matchers.equalTo(infoPoliza.get("labelAgenteRegistro"))));
+            MatcherAssert.assertThat(this.labelOrganizacionAgente.getText(), Is.is(Matchers.equalTo(infoPoliza.get("organizacionAgente"))));
+            MatcherAssert.assertThat(this.labelCodigoAgente.getText(), Is.is(Matchers.equalTo(infoPoliza.get("codigoAgente"))));
+            MatcherAssert.assertThat(this.labelModificadorPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("modificadorPoliza"))));
+            MatcherAssert.assertThat(this.labelDescuentoPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("descuentoPoliza"))));
         }catch (Exception e){
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
@@ -271,24 +277,28 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
             validacion = e.getMessage();
         }
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
-        waitFor(botonTipoPlazo);
+        waitFor(botonTipoPlazo).shouldBeVisible();
         botonTipoPlazo.click();
-        waitFor(tipoPlazoPoliza);
-        tipoPlazoPoliza.type(tipoPlazo);
-        waitFor(itemTipoPlazo);
+        waitFor(tipoPlazoPoliza).shouldBeVisible();
+        $(tipoPlazoPoliza).type(tipoPlazo);
+        waitFor(itemTipoPlazo).shouldBeVisible();
         itemTipoPlazo.click();
         waitABit(1000);
-        waitFor(fechaVigenciaPoliza);
-        fechaVigenciaPoliza.type(fechaInicioVigencia);
-        waitFor(fechaExpiracionPoliza);
+        waitFor(fechaVigenciaPoliza).shouldBeVisible();
+        fechaVigenciaPoliza.click();
+        $(fechaVigenciaPoliza).type(fechaInicioVigencia);
+        waitFor(fechaExpiracionPoliza).shouldBeVisible();
         waitABit(1000);
         fechaExpiracionPoliza.click();
     }
 
     public void calcularFechaFinVigencia(String fechaInicioVigencia) {
 
+        waitFor(tipoPlazoPoliza).shouldBeVisible();
         String tipoPlazo = tipoPlazoPoliza.getValue();
+        waitFor(fechaVigenciaPoliza).shouldBeVisible();
         String fechaVigencia = fechaVigenciaPoliza.getValue();
+        waitFor(fechaExpiracionPoliza).shouldBeVisible();
         String fechaExpiracion = fechaExpiracionPoliza.getTextValue();
         String aniovig = fechaVigencia.substring(6,10);
         String anioexp = fechaExpiracion.substring(6,10);
@@ -321,48 +331,49 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
             }
             MatcherAssert.assertThat(restadia, Is.is(Matchers.equalTo(0)));
         }else if(tipoPlazo.equals("Otra")){
+            waitFor(fechaExpiracionPoliza).shouldBeVisible();
             MatcherAssert.assertThat(fechaExpiracionPoliza.getTagName(), Is.is(Matchers.equalTo("input")));
         }
 
     }
 
     public void adicionarSegundoTomador(String tipoDocumento, String primerNombre, String primerApellido) {
-        waitFor(botonAseguradoSecundario);
+        waitFor(botonAseguradoSecundario).shouldBeVisible();
         botonAseguradoSecundario.click();
-        waitFor(itemPersonaDelDirectorio);
+        waitFor(itemPersonaDelDirectorio).shouldBeVisible();
         itemPersonaDelDirectorio.click();
         waitABit(1000);
-        waitFor(botonTipoDocumento);
+        waitFor(botonTipoDocumento).shouldBeVisible();
         botonTipoDocumento.click();
-        waitFor(textoTipoDocumento);
+        waitFor(textoTipoDocumento).shouldBeVisible();
         textoTipoDocumento.type(tipoDocumento);
-        waitFor(itemTipoDocumento);
+        waitFor(itemTipoDocumento).shouldBeVisible();
         itemTipoDocumento.click();
-        waitFor(textoPrimerNombre);
+        waitFor(textoPrimerNombre).shouldBeVisible();
         textoPrimerNombre.type(primerNombre);
-        waitFor(textoPrimerApellido);
+        waitFor(textoPrimerApellido).shouldBeVisible();
         textoPrimerApellido.type(primerApellido);
-        waitFor(botonBuscarContacto);
+        waitFor(botonBuscarContacto).shouldBeVisible();
         botonBuscarContacto.click();
-        waitFor(botonSeleccionarContacto);
+        waitFor(botonSeleccionarContacto).shouldBeVisible();
         botonSeleccionarContacto.click();
     }
 
     public void validarRegistroSegundoTomador(Map<String, String> datosSegundoTomador) {
         String validacion = null;
         try {
-            MatcherAssert.assertThat(labelTipoDocumentoSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("tipoDocumento"))));
-            MatcherAssert.assertThat(labelNumeroDocumentoSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("numeroDocumento"))));
-            MatcherAssert.assertThat(labelTelefonoSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("telefono"))));
-            MatcherAssert.assertThat(labelDireccionSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("direccion"))));
-            MatcherAssert.assertThat(labelTipoDireccionSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("tipoDireccion"))));
-            MatcherAssert.assertThat(labelDescripcionDireccionSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("descripcionDireccion"))));
-            MatcherAssert.assertThat(textoTipoDocumentoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
-            MatcherAssert.assertThat(textoNumeroDocumentoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
-            MatcherAssert.assertThat(textoTelefonoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
-            MatcherAssert.assertThat(textoDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
-            MatcherAssert.assertThat(textoTipoDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
-            MatcherAssert.assertThat(textoDescripcionDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+            MatcherAssert.assertThat(this.labelTipoDocumentoSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("tipoDocumento"))));
+            MatcherAssert.assertThat(this.labelNumeroDocumentoSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("numeroDocumento"))));
+            MatcherAssert.assertThat(this.labelTelefonoSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("telefono"))));
+            MatcherAssert.assertThat(this.labelDireccionSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("direccion"))));
+            MatcherAssert.assertThat(this.labelTipoDireccionSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("tipoDireccion"))));
+            MatcherAssert.assertThat(this.labelDescripcionDireccionSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("descripcionDireccion"))));
+            MatcherAssert.assertThat(this.textoTipoDocumentoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+            MatcherAssert.assertThat(this.textoNumeroDocumentoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+            MatcherAssert.assertThat(this.textoTelefonoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+            MatcherAssert.assertThat(this.textoDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+            MatcherAssert.assertThat(this.textoTipoDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+            MatcherAssert.assertThat(this.textoDescripcionDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
         }catch (Exception e){
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
@@ -378,9 +389,24 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void validarMensajePorcentajePoliza(String mensaje) {
-        int descuentoPoliza = Integer.parseInt(textoDescuentoPoliza.getValue());
-        if(descuentoPoliza > 50.00){
+        waitFor(textoDescuentoPoliza).shouldBeVisible();
+        String descuentoPoliza = textoDescuentoPoliza.getValue();
+        waitFor(mensajeValidacion).shouldBeVisible();
+        if(esNumerico(descuentoPoliza)){
+            if(Integer.parseInt(descuentoPoliza) > 50 || Integer.parseInt(descuentoPoliza) < 0){
+                MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
+            }
+        } else{
             MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
+        }
+    }
+
+    private static boolean esNumerico(String cadena){
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException nfe){
+            return false;
         }
     }
 
@@ -390,24 +416,26 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         double pDecimal = descuentoPoliza - pEntera;
         String parteEntera = Integer.toString(pEntera);
         String parteDecimal = Double.toString(pDecimal);
-
+        waitFor(mensajeValidacion).shouldBeVisible();
         if(parteEntera.length()>2 || parteDecimal.length()>2){
             MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
         }
     }
 
     public void definirPolizaFinanciada() {
-        waitFor(polizaFinanciada);
+        waitFor(polizaFinanciada).shouldBeVisible();
         polizaFinanciada.click();
     }
 
     public void ingresarNumeroCuotas() {
-        waitFor(labelNumeroCuotas);
+        waitFor(labelNumeroCuotas).shouldBeVisible();
+        waitFor(textoNumeroCuotas).shouldBeVisible();
         MatcherAssert.assertThat(labelNumeroCuotas.getText(), labelNumeroCuotas.isCurrentlyVisible());
         MatcherAssert.assertThat(textoNumeroCuotas.getText(), textoNumeroCuotas.isCurrentlyVisible());
+        waitFor(botonNumeroCuotas).shouldBeVisible();
         botonNumeroCuotas.click();
         itemNumeroCuotas.click();
-        waitFor(fechaExpiracionPoliza);
+        waitFor(fechaExpiracionPoliza).shouldBeVisible();
         fechaExpiracionPoliza.click();
         waitABit(500);
     }
@@ -424,6 +452,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
             fechaActual = formato.parse(strFechaactual);
             long dif = Math.abs(fechaActual.getTime() - fechaVigencia.getTime());
             long dias = dif/(1000*60*60*24);
+            waitFor(mensajeValidacion).shouldBeVisible();
             if(dias>60){
                 MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
             }

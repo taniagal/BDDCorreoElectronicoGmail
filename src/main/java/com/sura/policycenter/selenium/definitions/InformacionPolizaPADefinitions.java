@@ -48,8 +48,8 @@ public class InformacionPolizaPADefinitions {
         infoPoliza.put("labelAgenteRegistro", "Agente de registro");
         infoPoliza.put("organizacionAgente", "Oficina de radicación");
         infoPoliza.put("codigoAgente", "Código de agente");
-        infoPoliza.put("modificadorPoliza", "Modificador póliza"); //Modificador póliza
-        infoPoliza.put("descuentoPoliza", "Descuento de póliza");
+        infoPoliza.put("modificadorPoliza", "Modificador póliza");
+        infoPoliza.put("descuentoPoliza", "Descuento Póliza"); //Descuento póliza
     }
 
     @Given("ya se inicio una nueva suscripcion <numeroCuenta>")
@@ -60,14 +60,14 @@ public class InformacionPolizaPADefinitions {
     @Given("se visualiza la informacion de la poliza")
     public void verInformacionPoliza(){
         informacionPolizaPASteps.accionarNuevaCotizacion();
-        informacionPolizaPASteps.accionarInformacionPoliza();
+        informacionPolizaPASteps.seleccionarAgenteCotizacion();
         informacionPolizaPASteps.accionarInformacionPoliza();
     }
 
     @When("estoy expidiendo una poliza de autos")
     public void accionarExpedirPolizaAuto(){
-        //disponibilidadDetalleProductoSteps.accionarNuevoEnvio();
         informacionPolizaPASteps.accionarNuevaCotizacion();
+        informacionPolizaPASteps.seleccionarAgenteCotizacion();
         informacionPolizaPASteps.accionarInformacionPoliza();
     }
 
@@ -106,13 +106,13 @@ public class InformacionPolizaPADefinitions {
     }
 
     @Then("se debe visalizar los datos del tomador, como son: tipo y numero de identificacion, nombre completo,\n" +
-            "telefono, dirección, vigencia de la poliza (valor por defecto), nombre del agente, fecha de suscripción y\n" +
+            "telefono, direccion, vigencia de la poliza (valor por defecto), nombre del agente, fecha de suscripcion y\n" +
             "nombre de la compania aseguradora")
     public void visualizarInformacionPoliza(){
         informacionPolizaPASteps.visualizarInformacionPoliza(infoPoliza);
     }
 
-    @Then("esta debe calcular de forma automativa la fecha de fin de vigencia <fechaInicioVigencia>, la cual depende del tipo de plazo")
+    @Then("esta <fechaInicioVigencia> debe calcular de forma automatica la fecha de fin de vigencia, la cual depende del tipo de plazo")
     public void calcularFechaFinVigencia(@Named("fechaInicioVigencia") String fechaInicioVigencia){
         informacionPolizaPASteps.calcularFechaFinVigencia(fechaInicioVigencia);
     }

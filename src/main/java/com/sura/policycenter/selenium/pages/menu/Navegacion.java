@@ -1087,6 +1087,8 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaNuevaCotizacionPage irANuevaCotizacion() {
+        waitFor(mnuAccionesCuenta).shouldBeVisible();
+        mnuAccionesCuenta.click();
         waitFor(mnuNuevaCotizacion).shouldBeVisible();
         mnuNuevaCotizacion.click();
         return new CuentaNuevaCotizacionPage(getDriver());
