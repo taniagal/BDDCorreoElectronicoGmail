@@ -145,9 +145,9 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void editarContacto(){
-        espera(botonEditarContacto,10);
+        botonEditarContacto.waitUntilPresent();
         botonEditarContacto.click();
-        waitABit(800);
+        waitABit(1000);
     }
 
     public void actualizaContacto(){
@@ -158,13 +158,13 @@ public class  DetallesContactoPage extends Guidewire {
     public void irADirecciones(){
         waitABit(500);
         botonDirecciones.click();
-        waitABit(1000);
+        waitABit(1500);
         botonAgregar.click();
     }
 
     public void agregarDireccion(){
         botonAgregar.click();
-        waitABit(500);
+        waitABit(1000);
     }
 
     public void agregarNombre(String segundoNombre){
@@ -219,7 +219,7 @@ public class  DetallesContactoPage extends Guidewire {
      * DETALLE CONTACTO EDICION PERSONA JURIDICA
      */
     public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
-        campoTxtNombreComercial.clear();
+        campoTxtNombreComercial.waitUntilPresent();
         campoTxtNombreComercial.sendKeys(nombreComercial);
         selectItem(comboBoxActividadComercial, actividadComercial);
         dtlCntJ[0]= nombreComercial;
@@ -291,11 +291,10 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void verificarActualizacionJuridico(){
         espera(campoTxtNombreComercial,6);
+        labelActividadComercial.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!dtlCntJ[0].equals(campoTxtNombreComercial.getText()))
-            right.append("nombre comercial,");
         if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
-            right.append("activida comercual,");
+            right.append("activida comercial,");
         if(!dtlCntJ[2].equals(campoTxtNumeroEmpleados.getText()))
             right.append("numero de empleados,");
         if(!dtlCntJ[3].equals(campoTxtValorActivos.getText()))
@@ -420,6 +419,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void validarCampos() {
+        comboBoxPais.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!"Colombia".equals(comboBoxPais.getValue().toString()))
             right.append(" pais,");
