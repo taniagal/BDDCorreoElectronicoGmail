@@ -5,22 +5,26 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
+import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
 
-public class NuevaCotizacionPage extends PageObject implements Serializable{
+public class NuevaCotizacionPage extends PageObject implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     // TODO: 08/06/2016 Validar con Liliana este formato
@@ -36,10 +40,10 @@ public class NuevaCotizacionPage extends PageObject implements Serializable{
     public static final String TXT_NOMBRE_AGENTE = ".//input[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']";
     public static final String TXT_CODIGO_AGENTE = ".//input[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-inputEl']";
     public static final String CBO_NOMBRE_AGENTE = ".//li[@role='option']";
-    public static final String LINK_BOTONES_ELEGIR_PRODUCTO = ".//a[contains(@id,'addSubmission')]";
+    public static final String PRODUCTOS = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr";
 
     public NuevaCotizacionPage() {
-        listaAgentesModel = new ArrayList<>();
+
     }
 
     public Boolean buscarInputHabilitadoEnElemento(String xpath) {
@@ -49,8 +53,11 @@ public class NuevaCotizacionPage extends PageObject implements Serializable{
             input = elemento(xpath).findBy(By.tagName("input"));
             input.shouldBeEnabled();
             elementoEncontrado = Boolean.TRUE;
-        } catch (NoSuchElementException nosee){
+        } catch (NoSuchElementException nosee) {
             LOGGER.info("Elemento input no encontrado: " + nosee);
+            elementoEncontrado = Boolean.FALSE;
+        } catch (StaleElementReferenceException sere) {
+            LOGGER.info("StaleElementReferenceException : " + sere);
             elementoEncontrado = Boolean.FALSE;
         }
 
@@ -61,11 +68,13 @@ public class NuevaCotizacionPage extends PageObject implements Serializable{
         WebElementFacade elemento = null;
 
         try {
-            $(xpath).shouldBeCurrentlyVisible();
+            waitFor($(xpath)).shouldBeVisible();
             elemento = element(find(By.xpath(xpath)));
 
         } catch (NoSuchElementException e) {
             throw new NoSuchElementException(" \nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
+        } catch (StaleElementReferenceException sere){
+            throw new StaleElementReferenceException(" \nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
         } catch (Exception e) {
             LOGGER.error("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
         }
@@ -74,6 +83,8 @@ public class NuevaCotizacionPage extends PageObject implements Serializable{
     }
 
     public Boolean esFechaCotizacionHOY() {
+        waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(LABEL_FECHA_POR_DEFECTO)));
+        //waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(LABEL_FECHA_POR_DEFECTO)));
         return esFechaPorDefectoHOY(obtenerFechaCotizacionElemento());
     }
 
@@ -92,17 +103,28 @@ public class NuevaCotizacionPage extends PageObject implements Serializable{
         setNombreAgente(nombreAgente);
         validarAutocompletarNombreAgente();
         seleccionarAgente();
+        Boolean esFechaVisible = elemento(LABEL_FECHA_POR_DEFECTO).isVisible();
+        System.out.println("NuevaCotizacionPage.seleccionarAgente -> FECHA VISIBLE : " + esFechaVisible);
     }
 
     public void seleccionarAgente() {
-        List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(CBO_NOMBRE_AGENTE));
-        if (!listaNombresAgentesElement.isEmpty()) {
-            for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
-                if (agenteElemento.containsText(getNombreAgente())){
-                    agenteElemento.click();
-                    break;
+        /*elemento(TXT_NOMBRE_AGENTE).selectByVisibleText(getNombreAgente());
+        System.out.println("NuevaCotizacionPage.seleccionarAgente");*/
+       try {
+
+            List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(CBO_NOMBRE_AGENTE));
+            if (!listaNombresAgentesElement.isEmpty()) {
+                for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
+                    if (agenteElemento.containsText(getNombreAgente())) {
+                        agenteElemento.click();
+                        break;
+                    }
                 }
             }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -110,14 +132,29 @@ public class NuevaCotizacionPage extends PageObject implements Serializable{
         waitFor($(TXT_NOMBRE_AGENTE)).shouldBeCurrentlyVisible();
         waitFor($(TXT_NOMBRE_AGENTE)).shouldBeEnabled();
         enter(caracteresDigitados).into($(TXT_NOMBRE_AGENTE));
-        $(TXT_NOMBRE_AGENTE).clear();
-
         // TODO: 08/06/2016 COmo usar el de el impl bien??? para hacer el assertion si esta vacio el combo
-        //WebElementFacadeImpl pp = WebElementFacadeImpl()
-        //then().shouldContainElements(CBO_NOMBRE_AGENTE);
-        return findAll(By.xpath(CBO_NOMBRE_AGENTE)).size();
+        Integer tamanio = findAll(By.xpath(CBO_NOMBRE_AGENTE)).size();
+        $(TXT_NOMBRE_AGENTE).clear();
+        return tamanio;
     }
 
+    public void validarExistenciaDeTodosLosProductosOrdenadosAlfabeticamente(ExamplesTable productosET) {
+        // TODO: 08/06/2016 COmo usar el de el impl bien??? para hacer el assertion si esta vacio el combo
+        List<WebElementFacade> listaDeProductosElement = findAll(By.xpath(PRODUCTOS));
+        assertThat(listaDeProductosElement.size(), greaterThan(0));
+        listaAgentesModel = new ArrayList<>();
+        List<String> listaProductos = new ArrayList<>();
+
+        for (WebElementFacade producto : listaDeProductosElement) {
+            String productoString = producto.findBy("td[2]").getText();
+            listaProductos.add(productoString);
+        }
+        List<String> listaProductosOrdenados = new ArrayList<>(listaProductos);
+        Collections.sort(listaProductosOrdenados);
+
+        Boolean estaEnOrden = listaProductosOrdenados.equals(listaProductos);
+        assertThat(estaEnOrden, equalTo(true));
+    }
 
 
     public void validarAutocompletarSeMuestreNombreYCodigoRespectivamente() {
@@ -125,7 +162,7 @@ public class NuevaCotizacionPage extends PageObject implements Serializable{
         // TODO: 08/06/2016 COmo usar el de el impl bien??? para hacer el assertion si esta vacio el combo
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(CBO_NOMBRE_AGENTE));
 
-        if (listaNombresAgentesElement.isEmpty()) {
+        if (!listaNombresAgentesElement.isEmpty()) {
             for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
                 String[] agenteArray = agenteElemento.getText().split("-");
                 Integer codigo = Integer.parseInt(agenteArray[1].trim());
@@ -137,26 +174,28 @@ public class NuevaCotizacionPage extends PageObject implements Serializable{
                 }
             }
         }
-        assertThat(listaNombresAgentesElement.size() , is(equalTo(listaAgentesModel.size())));
+        assertThat(listaNombresAgentesElement.size(), is(equalTo(listaAgentesModel.size())));
 
         LOGGER.info("NuevaCotizacionPage.validarAutocompletarSeMuestreNombreYCodigoRespectivamente");
     }
 
+
     public void validarAutocompletarNombreAgente() {
-        waitFor($(TXT_NOMBRE_AGENTE)).shouldBeCurrentlyVisible();
-        waitFor($(TXT_NOMBRE_AGENTE)).shouldBeEnabled();
-        enter(getNombreAgente()).into($(TXT_NOMBRE_AGENTE));
+        waitFor(elemento(TXT_NOMBRE_AGENTE)).shouldBeCurrentlyVisible();
+        waitFor(elemento(TXT_NOMBRE_AGENTE)).shouldBeEnabled();
+        elemento(TXT_NOMBRE_AGENTE).type(getNombreAgente());
 
-        // TODO: 08/06/2016 COmo usar el de el impl bien??? para hacer el assertion si esta vacio el combo
-        //WebElementFacadeImpl p = new WebElementFacadeImpl(getDriver(), null , getWaitForTimeout().in(TimeUnit.MILLISECONDS));
-        //p.shouldContainElements(CBO_NOMBRE_AGENTE);
+        waitForTextToAppear("DELIMA MEDELLIN - 5676");
+        shouldContainText("DELIMA MEDELLIN - 5676");
 
-        elemento(CBO_NOMBRE_AGENTE).shouldContainText(getNombreAgente());
         seleccionarAgente();
-        assertThat(elemento(TXT_NOMBRE_AGENTE).getValue(), containsString(getNombreAgente()));
+
+        waitForTextToAppear("Fecha efectiva de cotización");
+        shouldContainText("Fecha efectiva de cotización");
+
+        // TODO: 10/06/2016 ACTIVAR
         //assertThat(elemento(TXT_CODIGO_AGENTE).getValue(), containsString("5676"));
     }
-
 
 
     public WebElementFacade obtenerFechaCotizacionElemento() {

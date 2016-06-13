@@ -21,19 +21,12 @@ Then espero ver el nombre de la persona natural YURLEDYS GALLEGO TORRES de la cu
 When se ingrese la primera letra del nombre del agente DELIMA MEDELLIN
 Then se deberá activar la lista de los nombres de los agentes que empiecen por dicha letra
 And validar que se autocompleta el campo nombre y sólo aparece el nombre del agente en este campo y el código respectivo en el campo código de agente
-And validar que al autocompletar se muestren las opciones nombre y código respectivamente
 
-When se ingrese el primer número del código del agente XX
-Then se deberá activar la lista de los códigos de los agentes que empiecen por dicha letra
-And validar que se autocompleta el campo código
-And validar que al autocompletar se muestren las opciones código y nombre respectivamente
-And validar que al seleccionar sólo aparece el código del agente en este campo
 
 Given que he seleccionado en el nombre del agente DELIMA MEDELLIN
 When se muestre la fecha de efecto de la cotización
 Then se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable
-And se mostrarán los productos <productos> en orden alfabetico
-|productos|
-|Auto personal|
+Then se mostrarán en orden alfabetico los:
+|productos          |
+|Auto personal      |
 |Propiedad comercial|
-And solo se podra seleccionar un producto por cotización

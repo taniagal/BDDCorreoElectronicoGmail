@@ -16,6 +16,8 @@ import static org.hamcrest.core.Is.is;
 
 public class CotizacionDefinitions {
 
+    // TODO: 09/06/2016 Pendiente definir composici'on de Gherkin 
+    
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     @Steps
@@ -23,7 +25,7 @@ public class CotizacionDefinitions {
 
     @Given("deseo crear nueva cotización buscando por número de cuenta")
     public void crearNuevaCotizacion(){
-       
+
         cotizador.ir_al_menu_escritorio_del_panel_superior();
         cotizador.clic_en_la_opcion_acciones_del_panel_izquierdo();
         Serenity.takeScreenshot();
@@ -62,7 +64,7 @@ public class CotizacionDefinitions {
     @Given("que he seleccionado en el nombre del agente $nombre")
     public void seleccionoNombreDeAgente(String nombre){
         cotizador.getCotizacionPage().seleccionarAgente(nombre);
-        LOGGER.info("CotizacionDefinitions.ingresarCaracteresEnNombreAgente");
+        LOGGER.info("CotizacionDefinitions.seleccionoNombreDeAgente");
     }
 
     @Then("se deberá activar la lista de los nombres de los agentes que empiecen por dicha letra")
@@ -78,10 +80,17 @@ public class CotizacionDefinitions {
         LOGGER.info("CotizacionDefinitions.validarAutocompletarDelCampoNombreDeAgente");
     }
 
-    @Then("validar que al autocompletar se muestren las opciones nombre y código respectivamente")
+    @Then("svalidar que al autocompletar se muestren las opciones nombre y código respectivamente")
+    @Pending
     public void validarAutocompletarSeMuestreNombreYCodigoRespectivamente(){
         cotizador.getCotizacionPage().validarAutocompletarSeMuestreNombreYCodigoRespectivamente();
         LOGGER.info("CotizacionDefinitions.validarAutocompletarDelCampoNombreDeAgente");
+    }
+
+    @Then("se mostrarán en orden alfabetico los: $productos")
+    public void xx(ExamplesTable productos){
+        cotizador.getCotizacionPage().validarExistenciaDeTodosLosProductosOrdenadosAlfabeticamente(productos);
+        LOGGER.info("CotizacionDefinitions.validarQueEstenLosProductosRequeridosMostradosYSeanOrdenadosAlfabeticamente");
     }
 
     @When("se muestre la fecha de efecto de la cotización")
@@ -93,16 +102,13 @@ public class CotizacionDefinitions {
 
     @Then("se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable")
     public void validarFechaSeaFechaHOYYSeaNoEditable(){
+
         assertThat(cotizador.getCotizacionPage().esFechaCotizacionHOY(), is(true));
         assertThat(cotizador.getCotizacionPage().esFechaEditable(), is(false));
 
         LOGGER.info("CotizacionDefinitions.validarFechaSeaFechaHOYYSeaNoEditable");
     }
-    @Then("se mostrarán los productos <productos> en orden alfabetico")
-    public void validarProductosSeMuestrenYEstenEnOrdenAlfabeticoPorNombreDeProducto(ExamplesTable productos){
 
-        LOGGER.info("CotizacionDefinitions.validarFechaSeaFechaHOYYSeaNoEditable");
-    }
 
     @AfterStory
     public void finalizarHistoria(){
