@@ -25,17 +25,23 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy']")
     WebElementFacade botonExpedirPoliza;
 
-    @FindBy(xpath = "")
+    @FindBy(linkText = "link=Aceptar")
     WebElementFacade botonAceptarMensaje;
+
+    @FindBy(linkText = "link=Cancelar")
+    WebElementFacade botonCancelarMensaje;
 
     @FindBy(xpath = "")
     WebElementFacade mensajeConfirmacion;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
     WebElementFacade campoNumeroCotizacion;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
     WebElementFacade campoNumeroPoliza;
+
+    @FindBy(xpath = "")
+    WebElementFacade mensajeValidacionRiesgo;
 
     public void irABuscarCotizacion(String cotizacion){
         menuPoliza.click();
@@ -52,10 +58,9 @@ public class ExpedicionDePolizaPage extends PageObject{
         botonExpedirPoliza.click();
     }
 
-    public void aceptarExpedirPoliza(String mensaje) {
+    public void aceptarExpedirPoliza() {
         waitFor(ExpectedConditions.visibilityOf(botonAceptarMensaje));
         waitFor(ExpectedConditions.elementToBeClickable(botonAceptarMensaje));
-        this.validarMensajeDeConfirmacion(mensaje);
         botonAceptarMensaje.click();
     }
 
@@ -68,5 +73,10 @@ public class ExpedicionDePolizaPage extends PageObject{
         waitFor(ExpectedConditions.visibilityOf(campoNumeroPoliza));
         MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(numCotizacion)));
         MatcherAssert.assertThat(campoNumeroPoliza.getText(), Is.is(Matchers.equalTo(poliza)));
+    }
+
+    public void validarMensajeDeRiesgos(String mensaje) {
+        waitFor(ExpectedConditions.visibilityOf(mensajeValidacionRiesgo));
+        MatcherAssert.assertThat(mensajeValidacionRiesgo.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 }
