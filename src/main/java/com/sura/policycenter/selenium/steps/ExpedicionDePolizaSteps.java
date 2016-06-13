@@ -15,14 +15,17 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void navega_barra_acciones (){
+    public void clic_en_expedir_poliza() {
+        expedicionDePolizaPage.expedirPoliza();
     }
 
-   @Step
-    public void navega_page_tipo_propiedad(String nomProducto){
-   }
+    @Step
+    public void clic_en_aceptar_del_mensaje_de_confirmacion(String mensaje) {
+        expedicionDePolizaPage.aceptarExpedirPoliza(mensaje);
+    }
 
     @Step
-    public void inicia_cotizacion_de_poliza_propiedad_comercial(){
+    public void validar_resumen_de_la_poliza_expedida(String numCotizacion, String poliza) {
+        expedicionDePolizaPage.validarResumenDeLaPolizaExpedida(numCotizacion, poliza);
     }
 }

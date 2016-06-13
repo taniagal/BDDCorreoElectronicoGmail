@@ -18,20 +18,19 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.navegar_barra_superior(cotizacion);
     }
 
-    @When(" vaya a expedir una poliza nueva para una propiedad comercial <nomProducto> donde el tomador sea un riesgo consultable")
-    public void expidePolizaNombreComercial(@Named("nomProducto")String nomProducto) {
-        expedicionDePolizaSteps.navega_barra_acciones();
-        expedicionDePolizaSteps.navega_page_tipo_propiedad(nomProducto);
-        expedicionDePolizaSteps.inicia_cotizacion_de_poliza_propiedad_comercial();
-
-    }
-    @Then(" Se debe bloquear la expedicion")
-    public void thenSeDebeBloquearLaExpedicion() {
-
+    @When("voy a expedir una poliza")
+    public void expedirPoliza() {
+        expedicionDePolizaSteps.clic_en_expedir_poliza();
     }
 
-    @Then("  debe mostrar el mensaje <mensaje>")
-    public void thenDebeMostrarElMensajemensaje() {
-        // PENDING
+    @When("confirmo el mensaje <mensaje> de expedir poliza")
+    public void confirmarMensajeDeExpedirPoliza(@Named("mensaje") String mensaje) {
+        expedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion(mensaje);
+    }
+
+    @Then("debe mostrar el resumen de la poliza expedida con numero de la cotizacion <numCotizacion> y numero de poliza <poliza>")
+    public void validarResumenDeLaPolizaExpedida(@Named("numCotizacion") String numCotizacion,
+                                                 @Named("poliza") String poliza) {
+        expedicionDePolizaSteps.validar_resumen_de_la_poliza_expedida(numCotizacion, poliza);
     }
 }
