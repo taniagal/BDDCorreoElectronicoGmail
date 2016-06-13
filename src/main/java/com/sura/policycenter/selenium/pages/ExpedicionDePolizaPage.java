@@ -16,6 +16,12 @@ public class ExpedicionDePolizaPage extends PageObject{
         super(driver);
     }
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
+    WebElementFacade tituloVentana;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']")
+    WebElementFacade campoNumeroEnvio;
+
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
     WebElementFacade menuPoliza;
 
@@ -31,7 +37,7 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(linkText = "link=Cancelar")
     WebElementFacade botonCancelarMensaje;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//td[contains(.,'¿Está seguro de que desea expedir esta póliza?')]")
     WebElementFacade mensajeConfirmacion;
 
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
@@ -40,7 +46,7 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
     WebElementFacade campoNumeroPoliza;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:_msgs']/div")
     WebElementFacade mensajeValidacionRiesgo;
 
     public void irABuscarCotizacion(String cotizacion){
@@ -64,19 +70,27 @@ public class ExpedicionDePolizaPage extends PageObject{
         botonAceptarMensaje.click();
     }
 
-    private void validarMensajeDeConfirmacion(String mensaje) {
-        MatcherAssert.assertThat(mensajeConfirmacion.getText(), Is.is(Matchers.equalTo(mensaje)));
-    }
-
     public void validarResumenDeLaPolizaExpedida(String numCotizacion, String poliza) {
         waitFor(ExpectedConditions.visibilityOf(campoNumeroCotizacion));
         waitFor(ExpectedConditions.visibilityOf(campoNumeroPoliza));
-        MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(numCotizacion)));
-        MatcherAssert.assertThat(campoNumeroPoliza.getText(), Is.is(Matchers.equalTo(poliza)));
+        MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.containsString(numCotizacion)));
+        MatcherAssert.assertThat(campoNumeroPoliza.getText(), Is.is(Matchers.containsString(poliza)));
     }
 
     public void validarMensajeDeRiesgos(String mensaje) {
         waitFor(ExpectedConditions.visibilityOf(mensajeValidacionRiesgo));
         MatcherAssert.assertThat(mensajeValidacionRiesgo.getText(), Is.is(Matchers.equalTo(mensaje)));
+    }
+
+    public void cancelarExpedicionDeLaPoliza(String mensaje) {
+        waitFor(ExpectedConditions.visibilityOf(botonCancelarMensaje));
+        waitFor(ExpectedConditions.elementToBeClickable(botonCancelarMensaje));
+        MatcherAssert.assertThat(mensajeConfirmacion.getText(), Is.is(Matchers.equalTo(mensaje)));
+        botonCancelarMensaje.click();
+    }
+
+    public void validarCancelacionDeExpedicionDePoliza() {
+        tituloVentana.shouldBeVisible();
+        campoNumeroEnvio.shouldBeVisible();
     }
 }

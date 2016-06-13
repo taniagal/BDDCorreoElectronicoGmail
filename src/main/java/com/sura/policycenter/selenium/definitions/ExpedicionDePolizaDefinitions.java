@@ -28,14 +28,24 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion();
     }
 
-    @Then("debe mostrar el resumen de la poliza expedida con numero de la cotizacion <numCotizacion> y numero de poliza <poliza>")
-    public void validarResumenDeLaPolizaExpedida(@Named("numCotizacion") String numCotizacion,
+    @When("cancelo el mensaje <mensaje> de expedir poliza")
+    public void cancelarExpedicionDePoliza(@Named("mensaje") String mensaje){
+        expedicionDePolizaSteps.clic_en_cancelar_del_mensaje_de_confirmacion(mensaje);
+    }
+
+    @Then("debe mostrar el resumen de la poliza expedida con numero de la cotizacion <cotizacion> y numero de poliza <poliza>")
+    public void validarResumenDeLaPolizaExpedida(@Named("cotizacion") String cotizacion,
                                                  @Named("poliza") String poliza) {
-        expedicionDePolizaSteps.validar_resumen_de_la_poliza_expedida(numCotizacion, poliza);
+        expedicionDePolizaSteps.validar_resumen_de_la_poliza_expedida(cotizacion, poliza);
     }
 
     @Then("El proceso se debe frenar y debe mostrar el mensaje <mensaje> que retorna el servicio de riesgos")
     public void validarMensajeDeRiesgos(@Named("mensaje") String mensaje){
         expedicionDePolizaSteps.validar_mensaje_de_riesgos(mensaje);
+    }
+
+    @Then("debe volver a la pantalla de cotizacion")
+    public void validarCancelacionDeExpedicionDePoliza(){
+        expedicionDePolizaSteps.validar_que_vuelve_a_la_ventana_de_cotizacion();
     }
 }

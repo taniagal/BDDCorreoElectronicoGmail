@@ -32,4 +32,12 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     public void validar_mensaje_de_riesgos(String mensaje) {
         expedicionDePolizaPage.validarMensajeDeRiesgos(mensaje);
     }
+
+    public void clic_en_cancelar_del_mensaje_de_confirmacion(String mensaje) {
+        expedicionDePolizaPage.cancelarExpedicionDeLaPoliza(mensaje);
+    }
+
+    public void validar_que_vuelve_a_la_ventana_de_cotizacion() {
+        expedicionDePolizaPage.validarCancelacionDeExpedicionDePoliza();
+    }
 }
