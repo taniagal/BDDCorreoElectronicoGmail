@@ -8,15 +8,17 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
+import javax.swing.*;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CuentaPage extends Guidewire{
 
-    Actions act = null;
+    Actions actions = null;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
-    private WebElementFacade mnuCuenta;
+    private WebElementFacade menuCuenta;
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
-    private WebElementFacade mnuNuevaCuenta;
+    private WebElementFacade menuNuevaCuenta;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade campoTxtNombreCompania;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -57,7 +59,7 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade comboBoxTipoDocumentoNuevaCuenta;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:BasicPersonInfo:CreateNewContactInputSet:DateOfBirth-inputEl']")
     private WebElementFacade campoTxtFechaNacimiento;
-    @FindBy(id = "CreateAccount:CreateAccountScreen:_msgs")
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:_msgs']")
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
     private WebElementFacade comboBoxCodigoAgente;
@@ -65,17 +67,20 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade comboBoxDepartamento;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
     private WebElementFacade comboBoxCiudad;
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:EditAccount-btnInnerEl']")
+    private WebElementFacade botonEditarCuenta;
 
     public CuentaPage(WebDriver driver){
         super(driver);
     }
 
     public void navNuevaCuenta(){
-        act = deployMenu(mnuCuenta);
-        act.moveToElement(mnuNuevaCuenta).click().build().perform();
+        actions = deployMenu(menuCuenta);
+        actions.moveToElement(menuNuevaCuenta).click().build().perform();
     }
 
     public void agregarTipoDocumento(String tipoDocumento, String documento) {
+        comboBoxTipoDocumentoNuevaCuenta.waitUntilPresent();
         comboBoxTipoDocumentoNuevaCuenta.clear();
         comboBoxTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
         comboBoxTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
@@ -96,20 +101,21 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(1000);
+        waitABit(2000);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(1000);
+        waitABit(2000);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        waitABit(1500);
+        waitABit(1000);
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         espera(botonAgregarOrganizacion,5);
         botonAgregarOrganizacion.click();
+        waitABit(500);
         campoTxtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
-        waitABit(1000);
+        waitABit(500);
         selectItem(comboBoxCodigoAgente,agente);
     }
 
@@ -132,26 +138,28 @@ public class CuentaPage extends Guidewire{
     }
 
     public void verificarCrearCuenta(String nombreCuenta){
-        waitABit(1000);
+        labelNombreDeCuenta.waitUntilPresent();
         assertThat("Falló la creación de la cuenta", labelNombreDeCuenta.containsText(nombreCuenta));
     }
 
     public void validarLogeoPolicyCenter(){
-        assertThat("Falló verificar el logueo", mnuCuenta.isPresent());
+        assertThat("Falló verificar el logueo", menuCuenta.isPresent());
     }
 
     public  void verificarEdadMenor(String mensaje){
-        waitABit(1000);
+        divMensaje.waitUntilPresent();
         assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
     }
 
     public  void verificarMensaje(String mensaje){
         waitABit(1000);
+        divMensaje.waitUntilPresent();
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
-        waitABit(1000);
+        waitABit(1500);
+        botonEditarCuenta.waitUntilPresent();
         assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
     }
 }

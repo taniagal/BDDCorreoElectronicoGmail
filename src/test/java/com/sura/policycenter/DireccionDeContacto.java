@@ -2,5 +2,5 @@ package com.sura.policycenter;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
-public class CrearNuevoContactoJuridico extends SerenityStory{
+public class DireccionDeContacto extends SerenityStory{
 }

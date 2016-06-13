@@ -4,13 +4,17 @@ import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
+import javax.swing.*;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class DetallesContactoPage extends Guidewire {
+public class  DetallesContactoPage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
     private WebElementFacade labelPrimerNombre;
@@ -143,24 +147,26 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void editarContacto(){
-        espera(botonEditarContacto,10);
+        botonEditarContacto.waitUntilPresent();
         botonEditarContacto.click();
-        waitABit(800);
+        waitABit(1000);
     }
 
     public void actualizaContacto(){
         botonActualizar.click();
-        waitABit(2000);
+        waitABit(1500);
     }
 
     public void irADirecciones(){
+        waitABit(500);
         botonDirecciones.click();
-        waitABit(2000);
+        botonAgregar.waitUntilPresent();
         botonAgregar.click();
     }
 
     public void agregarDireccion(){
         botonAgregar.click();
+        waitABit(1000);
     }
 
     public void agregarNombre(String segundoNombre){
@@ -201,8 +207,8 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
-        campoTxtCorreoElectronicoPrimario.clear();
-        waitABit(500);
+        campoTxtCorreoElectronicoPrimario.click();
+        waitABit(1000);
         campoTxtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
         waitABit(500);
         campoTxtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
@@ -215,7 +221,7 @@ public class DetallesContactoPage extends Guidewire {
      * DETALLE CONTACTO EDICION PERSONA JURIDICA
      */
     public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
-        campoTxtNombreComercial.clear();
+        campoTxtNombreComercial.waitUntilPresent();
         campoTxtNombreComercial.sendKeys(nombreComercial);
         selectItem(comboBoxActividadComercial, actividadComercial);
         dtlCntJ[0]= nombreComercial;
@@ -225,7 +231,7 @@ public class DetallesContactoPage extends Guidewire {
 
     public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
         waitABit(500);
-        campoTxtNumeroEmpleados.clear();
+        campoTxtNumeroEmpleados.click();
         campoTxtNumeroEmpleados.sendKeys(numeroEmpleados);
         campoTxtValorActivos.clear();
         campoTxtValorActivos.sendKeys(valorActivos);
@@ -238,12 +244,12 @@ public class DetallesContactoPage extends Guidewire {
 
     public void agregarCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario){
         campoTxtCorreoElectronicoPrimarioEmpresa.clear();
-        waitABit(100);
+        waitABit(300);
         campoTxtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
         campoTxtTelefonoOficina.sendKeys(telefonoOficina);
         campoTxtCorreoElectronicoSecundarioEmpresa.clear();
-        waitABit(500);
+        waitABit(700);
         campoTxtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
         dtlCntJ[5]= telefonoOficina;
         dtlCntJ[6]= correoElectronicoPrimario;
@@ -287,11 +293,10 @@ public class DetallesContactoPage extends Guidewire {
 
     public void verificarActualizacionJuridico(){
         espera(campoTxtNombreComercial,6);
+        labelActividadComercial.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!dtlCntJ[0].equals(campoTxtNombreComercial.getText()))
-            right.append("nombre comercial,");
         if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
-            right.append("activida comercual,");
+            right.append("activida comercial,");
         if(!dtlCntJ[2].equals(campoTxtNumeroEmpleados.getText()))
             right.append("numero de empleados,");
         if(!dtlCntJ[3].equals(campoTxtValorActivos.getText()))
@@ -416,13 +421,12 @@ public class DetallesContactoPage extends Guidewire {
     }
 
     public void validarCampos() {
+        comboBoxPais.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!"Colombia".equals(comboBoxPais.getValue().toString()))
             right.append(" pais,");
         if(!"<ninguno>".equals(comboBoxDepartamento.getValue().toString()))
             right.append(" departamento,");
-        if(!"CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203".equals(campoTxtDireccion.getAttribute("placeholder")))
-            right.append("drireccion placeholder,");
         if(!"Esta Direccion podria estandarizarse automáticamente".equals(campoTxtDireccion.getAttribute("data-qtip")))
             right.append("drireccion data-tip,");
         if(!"200".equals(campoTxtDireccion.getAttribute("maxlength")))
