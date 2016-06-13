@@ -216,6 +216,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         campoNombreAgente.waitUntilVisible().sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ENTER);
+        waitForTextToAppear("Productos ofrecidos", 10000);
         WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
         waitFor(botonElegirProducto).shouldBeVisible();
         botonElegirProducto.click();
@@ -270,6 +271,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     public void modificarFechaVigencia(String tipoPlazo, String fechaInicioVigencia) {
         String validacion = null;
+        waitFor(fechaVigenciaPoliza).shouldBeVisible();
         try{
             MatcherAssert.assertThat(fechaVigenciaPoliza.getTextValue(), Is.is(Matchers.equalTo(fechaEscrita.getTextValue())));
         }catch (Exception e){
@@ -293,7 +295,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void calcularFechaFinVigencia(String fechaInicioVigencia) {
-
+        waitForTextToAppear("Tomador primario",1000);
         waitFor(tipoPlazoPoliza).shouldBeVisible();
         String tipoPlazo = tipoPlazoPoliza.getValue();
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
@@ -338,6 +340,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void adicionarSegundoTomador(String tipoDocumento, String primerNombre, String primerApellido) {
+        waitForTextToAppear("Tomador secundario",1000);
         waitFor(botonAseguradoSecundario).shouldBeVisible();
         botonAseguradoSecundario.click();
         waitFor(itemPersonaDelDirectorio).shouldBeVisible();
@@ -389,6 +392,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void validarMensajePorcentajePoliza(String mensaje) {
+        waitForTextToAppear("Descuento Póliza",1000);
         waitFor(textoDescuentoPoliza).shouldBeVisible();
         String descuentoPoliza = textoDescuentoPoliza.getValue();
         waitFor(mensajeValidacion).shouldBeVisible();
