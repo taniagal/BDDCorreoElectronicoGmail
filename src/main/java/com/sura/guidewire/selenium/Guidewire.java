@@ -20,7 +20,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class Guidewire extends PageObject {
 
-    private final Actions act = new Actions(getDriver());
+    private final Actions actions = new Actions(getDriver());
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     WebElementFacade configuracion;
     @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
@@ -85,8 +85,8 @@ public class Guidewire extends PageObject {
         waitABit(1500);
         menu.withTimeoutOf(3, TimeUnit.SECONDS).waitUntilClickable().click();
         waitABit(500);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        return act;
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        return actions;
     }
 
 
@@ -119,11 +119,11 @@ public class Guidewire extends PageObject {
         if(!("Mis actividades").equals(lblMisActividades.getText())){
         configuracion.click();
         waitABit(300);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         waitABit(300);
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         waitABit(300);
         espaniol.click();
         waitABit(850);

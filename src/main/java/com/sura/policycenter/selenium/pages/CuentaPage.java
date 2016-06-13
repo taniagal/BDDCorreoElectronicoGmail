@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CuentaPage extends Guidewire{
 
-    Actions act = null;
+    Actions actions = null;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
@@ -71,11 +71,12 @@ public class CuentaPage extends Guidewire{
     }
 
     public void navNuevaCuenta(){
-        act = deployMenu(mnuCuenta);
-        act.moveToElement(mnuNuevaCuenta).click().build().perform();
+        actions = deployMenu(mnuCuenta);
+        actions.moveToElement(mnuNuevaCuenta).click().build().perform();
     }
 
     public void agregarTipoDocumento(String tipoDocumento, String documento) {
+        comboBoxTipoDocumentoNuevaCuenta.waitUntilPresent();
         comboBoxTipoDocumentoNuevaCuenta.clear();
         comboBoxTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
         comboBoxTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
@@ -96,9 +97,9 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(900);
+        waitABit(1500);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(700);
+        waitABit(1000);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         waitABit(1000);
     }
@@ -133,7 +134,7 @@ public class CuentaPage extends Guidewire{
     }
 
     public void verificarCrearCuenta(String nombreCuenta){
-        waitABit(1000);
+        labelNombreDeCuenta.waitUntilPresent();
         assertThat("Falló la creación de la cuenta", labelNombreDeCuenta.containsText(nombreCuenta));
     }
 
