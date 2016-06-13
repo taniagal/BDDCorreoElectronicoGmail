@@ -16,6 +16,8 @@ Examples:
 |cotizacion|mensaje|
 |22222225|¿Está seguro de que desea expedir esta póliza?|
 
+
+
 Scenario: Validacion de resumen de la poliza al expedirla
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
 When voy a expedir una poliza
@@ -45,6 +47,31 @@ Then El proceso se debe frenar y debe mostrar el mensaje <mensaje> que retorna e
 Examples:
 |cotizacion|mensaje|
 |22222226|xxxxx|
+
+Scenario: Validación de riesgo consultable al momento de querer expedir la póliza cuando
+el tomador sea un riesgo consultable
+
+GivenStories: stories/policycenter/login_policy.story
+When   vaya a expedir una poliza nueva para una propiedad comercial <nomProducto> donde el tomador sea un riesgo consultable
+Then  Se debe bloquear la expedicion
+And   debe mostrar el mensaje <mensaje>
+
+
+Examples:
+|numCuenta  |mensaje                  |nomProducto        |
+|C000777779 |es un riesgo consuultable|Propiedad comercial|
+
+GivenStories: stories/policycenter/login_policy.story
+Given Estoy ingresando la informacion de una poliza para ser expedida <numCuenta>
+When   vaya a expedir una poliza nueva para una propiedad comercial <nomProducto> donde el tomador sea un riesgo consultable
+Then  Se debe bloquear la expedicion
+And   debe mostrar el mensaje <mensaje>
+
+
+Examples:
+|numCuenta  |mensaje                  |nomProducto        |
+|C000777779 |es un riesgo consuultable|Propiedad comercial|
+
 
 
 

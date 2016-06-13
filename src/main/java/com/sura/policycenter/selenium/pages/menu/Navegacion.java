@@ -362,7 +362,6 @@ public class Navegacion extends Guidewire {
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
         waitFor(mnuCuenta).shouldBeVisible();
         mnuCuenta.click();
-        //act.sendKeys(Keys.ARROW_DOWN).build().perform();
         if(!((WebElementFacade) panel).isVisible()){
             lblNumCuenta.sendKeys(numCuenta);
             btnBuscaCuenta.click();
@@ -372,7 +371,7 @@ public class Navegacion extends Guidewire {
             waitFor(txtNumCuenta).shouldBeVisible();
             waitFor(txtNumCuenta).waitUntilClickable();
             $(txtNumCuenta).click();
-            waitABit(500);
+            waitABit(1000);
             enter(numCuenta).into(txtNumCuenta);
             $(txtNumCuenta).sendKeys(Keys.ENTER);
         }
@@ -738,7 +737,7 @@ public class Navegacion extends Guidewire {
 
     public CuentaNuevaCotizacionPage irACuentaNuevaCotizacion() {
         waitFor(panel2).waitUntilVisible();
-        waitABit(500);
+        waitABit(1000);
         waitFor(mnuAccionesCuenta).click();
         waitFor(mnuAccionesCuenta).waitUntilVisible();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();

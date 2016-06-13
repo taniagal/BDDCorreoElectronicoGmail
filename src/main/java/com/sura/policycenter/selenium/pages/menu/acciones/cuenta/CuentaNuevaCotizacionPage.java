@@ -17,11 +17,23 @@ public class CuentaNuevaCotizacionPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade ListNomAgente;
 
+    @FindBy (xpath = ".//*[@id='CPBuildingPopup:DetailsDV:CoverageForm-inputEl']")
+    WebElementFacade lstFormCobertura;
+
     @FindBy(xpath = ".//*[@id='infoBar-innerCt']")
     WebElementFacade panel;
 
     @FindBy (xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SelectProducts']")
     WebElementFacade panelOfrecidos;
+
+    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:ttlBar']")
+    WebElementFacade panelUbicaciones;
+
+    @FindBy (xpath = ".//*[@id='CPBuildingPopup:ttlBar']")
+    WebElementFacade panelEdificioNuevo;
+
+    @FindBy (xpath = ".//*[@id='CPBuildingPopup:CPBldgSuggestedCovDV:bldgAndPropIterator:0:CoverageInputSet:CovPatternInputGroup-body']")
+    WebElementFacade panelCoberturas;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     WebElementFacade btnSiguinete;
@@ -32,13 +44,20 @@ public class CuentaNuevaCotizacionPage extends Guidewire {
     @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddBuilding:AddNewBuilding-textEl']")
     WebElementFacade btnEdfNuevo;
 
-    @FindBy (xpath = ".//*[@id='CPBuildingPopup:DetailsDV:ClassCode:SelectClassCode']")
-    WebElementFacade btnBusca;
+    @FindBy (xpath = ".//*[@id='CPBuildingPopup:BuildingCoveragesTab-btnIconEl']")
+    WebElementFacade btnCobertura;
+
+    @FindBy (xpath = ".//*[@id='CPBuildingPopup:Update-btnInnerEl']")
+    WebElementFacade btnAceptaEdificioNuevo;
+
+    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    WebElementFacade btnFinalCotizacion;
 
     @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:ActionsMenuIcon']")
     WebElementFacade lstEdificioAccion;
 
-
+    @FindBy (xpath = ".//*[@id='CPBuildingPopup:DetailsDV:ClassCode-inputEl']")
+    WebElementFacade lblCodClasePropi;
 
     private final Actions act = new Actions(getDriver());
 
@@ -76,19 +95,32 @@ public class CuentaNuevaCotizacionPage extends Guidewire {
                 i++;
             }
         }
+
     }
 
     public void creaCotizacion() {
         waitFor(panel).shouldBePresent();
         btnSiguinete.click();
-        waitFor(panel).shouldBePresent();
+        waitFor(panelUbicaciones).shouldBePresent();
         lstEdificioAccion.click();
+        waitFor(btnAgregaEdicio).waitUntilVisible();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        waitFor(btnEdfNuevo).waitUntilVisible();
         act.sendKeys(Keys.ENTER).build().perform();
+        waitFor(panelEdificioNuevo).shouldBeVisible();
     }
 
-    public void edificioNuevo (){
-
+    public void CreaEdificioNuevoDetalle (){
+        lblCodClasePropi.type("0001");
+        lstFormCobertura.clear();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.sendKeys(Keys.ENTER).build().perform();
+        btnCobertura.click();
+        waitFor(panelCoberturas).shouldBeVisible();
+        btnAceptaEdificioNuevo.click();
+        waitFor(panelUbicaciones).shouldBeVisible();
+        btnFinalCotizacion.click();
     }
+
 }
