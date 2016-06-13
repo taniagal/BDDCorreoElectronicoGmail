@@ -420,7 +420,6 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         double pDecimal = descuentoPoliza - pEntera;
         String parteEntera = Integer.toString(pEntera);
         String parteDecimal = Double.toString(pDecimal);
-        waitFor(mensajeValidacion).shouldBeVisible();
         if(parteEntera.length()>2 || parteDecimal.length()>2){
             MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
         }
