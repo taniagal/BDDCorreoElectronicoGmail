@@ -55,4 +55,14 @@ public class CotizacionPADetalleDefinitions {
     public void thenValidarTerminoCobertura(){
         cotizacionPADetalleSteps.validarTerminoCobertura();
     }
+
+    @Then("se debe mostrar en la columna \"Termino\" el limite de la cobertura en el caso de que aplique")
+    public void thenValidarLimiteCobertura(){
+        cotizacionPADetalleSteps.validarTerminoCobertura();
+    }
+
+    @Then("se debe mostrar en la columna \"Termino\" el deducible de la cobertura en el caso de que aplique")
+    public void thenValidarDeducibleCobertura(){
+        cotizacionPADetalleSteps.validarTerminoCobertura();
+    }
 }
