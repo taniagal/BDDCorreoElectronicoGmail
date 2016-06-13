@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.CotizacionPADetalleSteps;
 import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
+import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -51,18 +52,27 @@ public class CotizacionPADetalleDefinitions {
         cotizacionPADetalleSteps.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Then("se debe mostrar en la columna \"Termino\" el limite o deducible de la cobertura en el caso de que aplique")
+    @Manual
     public void thenValidarTerminoCobertura(){
-        cotizacionPADetalleSteps.validarTerminoCobertura();
+        //se ejecuta manualmente
+        //cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Then("se debe mostrar en la columna \"Termino\" el limite de la cobertura en el caso de que aplique")
+    @Manual
     public void thenValidarLimiteCobertura(){
-        cotizacionPADetalleSteps.validarTerminoCobertura();
+        //se ejecuta manualmente
+        //cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Then("se debe mostrar en la columna \"Termino\" el deducible de la cobertura en el caso de que aplique")
+    @Manual
     public void thenValidarDeducibleCobertura(){
-        cotizacionPADetalleSteps.validarTerminoCobertura();
+        //se ejecuta manualmente
+        //cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 }

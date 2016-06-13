@@ -92,6 +92,7 @@ public class CotizacionPADetallePage extends Guidewire {
     }
 
     public void verDetalleCotizacion() {
+        waitForTextToAppear("Cotización");
         waitFor(tituloDePagina).shouldBeVisible();
         MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
