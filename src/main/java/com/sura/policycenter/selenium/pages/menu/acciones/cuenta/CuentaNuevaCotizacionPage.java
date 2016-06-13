@@ -95,6 +95,7 @@ public class CuentaNuevaCotizacionPage extends Guidewire {
                 i++;
             }
         }
+
     }
 
     public void creaCotizacion() {

@@ -18,20 +18,34 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.navegar_barra_superior(cotizacion);
     }
 
-    @When(" vaya a expedir una poliza nueva para una propiedad comercial <nomProducto> donde el tomador sea un riesgo consultable")
-    public void expidePolizaNombreComercial(@Named("nomProducto")String nomProducto) {
-        expedicionDePolizaSteps.navega_barra_acciones();
-        expedicionDePolizaSteps.navega_page_tipo_propiedad(nomProducto);
-        expedicionDePolizaSteps.inicia_cotizacion_de_poliza_propiedad_comercial();
-
-    }
-    @Then(" Se debe bloquear la expedicion")
-    public void thenSeDebeBloquearLaExpedicion() {
-
+    @When("voy a expedir una poliza")
+    public void expedirPoliza() {
+        expedicionDePolizaSteps.clic_en_expedir_poliza();
     }
 
-    @Then("  debe mostrar el mensaje <mensaje>")
-    public void thenDebeMostrarElMensajemensaje() {
-        // PENDING
+    @When("confirmo el mensaje de expedir poliza")
+    public void confirmarMensajeDeExpedirPoliza() {
+        expedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion();
+    }
+
+    @When("cancelo el mensaje <mensaje> de expedir poliza")
+    public void cancelarExpedicionDePoliza(@Named("mensaje") String mensaje){
+        expedicionDePolizaSteps.clic_en_cancelar_del_mensaje_de_confirmacion(mensaje);
+    }
+
+    @Then("debe mostrar el resumen de la poliza expedida con numero de la cotizacion <cotizacion> y numero de poliza <poliza>")
+    public void validarResumenDeLaPolizaExpedida(@Named("cotizacion") String cotizacion,
+                                                 @Named("poliza") String poliza) {
+        expedicionDePolizaSteps.validar_resumen_de_la_poliza_expedida(cotizacion, poliza);
+    }
+
+    @Then("El proceso se debe frenar y debe mostrar el mensaje <mensaje> que retorna el servicio de riesgos")
+    public void validarMensajeDeRiesgos(@Named("mensaje") String mensaje){
+        expedicionDePolizaSteps.validar_mensaje_de_riesgos(mensaje);
+    }
+
+    @Then("debe volver a la pantalla de cotizacion")
+    public void validarCancelacionDeExpedicionDePoliza(){
+        expedicionDePolizaSteps.validar_que_vuelve_a_la_ventana_de_cotizacion();
     }
 }
