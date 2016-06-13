@@ -67,6 +67,8 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade comboBoxDepartamento;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
     private WebElementFacade comboBoxCiudad;
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:EditAccount-btnInnerEl']")
+    private WebElementFacade botonEditarCuenta;
 
     public CuentaPage(WebDriver driver){
         super(driver);
@@ -150,12 +152,14 @@ public class CuentaPage extends Guidewire{
     }
 
     public  void verificarMensaje(String mensaje){
+        waitABit(1000);
         divMensaje.waitUntilPresent();
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
         waitABit(1500);
+        botonEditarCuenta.waitUntilPresent();
         assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
     }
 }
