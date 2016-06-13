@@ -5,6 +5,7 @@ import com.sura.policycenter.constantes.EnumContacto;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 
@@ -61,7 +62,9 @@ public class NuevoContactoPage extends Guidewire {
 
     public void seleccionarTipoDocumento(String tipoDocumento) {
         this.tipoDocumento.waitUntilPresent();
-        selectItem(this.tipoDocumento,tipoDocumento);
+        this.tipoDocumento.clear();
+        this.tipoDocumento.sendKeys(tipoDocumento);
+        this.tipoDocumento.sendKeys(Keys.ENTER);
     }
 
     public void ingresarNumeroDocumento(String numeroDocumento) {
@@ -83,17 +86,17 @@ public class NuevoContactoPage extends Guidewire {
     public void ingresarDireccion(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
         selectItem(cboDepartamento,departamento);
-        waitABit(1800);
+        waitABit(2000);
         selectItem(cboCiudad,ciudad);
-        waitABit(500);
+        waitABit(1000);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
         direccion2.sendKeys(direccion);
         selectItem(cboDepartamento2,departamento);
-        waitABit(1800);
+        waitABit(2000);
         selectItem(cboCiudad2,ciudad);
-        waitABit(1000);
+        waitABit(1200);
         selectItem(tipoDireccion2,tipoDireccion);
     }
 
