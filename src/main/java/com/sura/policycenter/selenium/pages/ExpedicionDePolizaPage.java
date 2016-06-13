@@ -49,6 +49,7 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:_msgs']/div")
     WebElementFacade mensajeValidacionRiesgo;
 
+
     public void irABuscarCotizacion(String cotizacion){
         menuPoliza.click();
         waitForAnyTextToAppear("Cotización", "Buscar pólizas");
@@ -70,16 +71,30 @@ public class ExpedicionDePolizaPage extends PageObject{
         botonAceptarMensaje.click();
     }
 
-    public void validarResumenDeLaPolizaExpedida(String numCotizacion, String poliza) {
+    public void validarResumenDeLaPolizaExpedida(String cotizacion, String poliza) {
         waitFor(ExpectedConditions.visibilityOf(campoNumeroCotizacion));
         waitFor(ExpectedConditions.visibilityOf(campoNumeroPoliza));
-        MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.containsString(numCotizacion)));
+        MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.containsString(cotizacion)));
         MatcherAssert.assertThat(campoNumeroPoliza.getText(), Is.is(Matchers.containsString(poliza)));
     }
 
     public void validarMensajeDeRiesgos(String mensaje) {
         waitFor(ExpectedConditions.visibilityOf(mensajeValidacionRiesgo));
         MatcherAssert.assertThat(mensajeValidacionRiesgo.getText(), Is.is(Matchers.equalTo(mensaje)));
+    }
+
+    public void validarVariosMensajeDeRiesgos(String mensaje) {
+        String mensajes[] = mensaje.split("\\^");
+        if(mensajes.length > 1){
+            for(Integer i = 0; i < mensajes.length; i++) {
+                WebElementFacade mensajeRiesgo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:_msgs']/div["+i.toString()+"]");
+                MatcherAssert.assertThat(mensajes[i], Is.is(Matchers.equalTo(mensajeRiesgo.getText())));
+            }
+        }
+        else {
+            waitFor(ExpectedConditions.visibilityOf(mensajeValidacionRiesgo));
+            MatcherAssert.assertThat(mensajeValidacionRiesgo.getText(), Is.is(Matchers.equalTo(mensajes[0])));
+        }
     }
 
     public void cancelarExpedicionDeLaPoliza(String mensaje) {

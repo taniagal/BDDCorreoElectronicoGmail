@@ -24,7 +24,7 @@ Then debe mostrar el resumen de la poliza expedida con numero de la cotizacion <
 
 Examples:
 |cotizacion|poliza|
-|22222225|xxxxxx|
+|22222225|Ver póliza (N.°|
 
 Scenario: Validacion de identificacion de cliente PEP en tomador
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
@@ -34,7 +34,17 @@ Then El proceso se debe frenar y debe mostrar el mensaje <mensaje> que retorna e
 
 Examples:
 |cotizacion|mensaje|
-|22222237|xxxxx|
+|xxxxx|xxxxx|
+
+Scenario: Validacion placa, motor y chasis que son riesgo consultable
+Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
+When voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+Then El proceso se debe frenar y debe mostrar el mensaje <mensaje> que retorna el servicio de riesgos
+
+Examples:
+|cotizacion|mensaje|
+|22222226|xxxxx|
 
 
 

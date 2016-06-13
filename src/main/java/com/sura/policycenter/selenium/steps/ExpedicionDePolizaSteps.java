@@ -25,18 +25,21 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validar_resumen_de_la_poliza_expedida(String numCotizacion, String poliza) {
-        expedicionDePolizaPage.validarResumenDeLaPolizaExpedida(numCotizacion, poliza);
+    public void validar_resumen_de_la_poliza_expedida(String cotizacion, String poliza) {
+        expedicionDePolizaPage.validarResumenDeLaPolizaExpedida(cotizacion, poliza);
     }
 
+    @Step
     public void validar_mensaje_de_riesgos(String mensaje) {
         expedicionDePolizaPage.validarMensajeDeRiesgos(mensaje);
     }
 
+    @Step
     public void clic_en_cancelar_del_mensaje_de_confirmacion(String mensaje) {
         expedicionDePolizaPage.cancelarExpedicionDeLaPoliza(mensaje);
     }
 
+    @Step
     public void validar_que_vuelve_a_la_ventana_de_cotizacion() {
         expedicionDePolizaPage.validarCancelacionDeExpedicionDePoliza();
     }
