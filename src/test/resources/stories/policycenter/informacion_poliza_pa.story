@@ -30,8 +30,6 @@ Then esta <fechaInicioVigencia> debe calcular de forma automatica la fecha de fi
 Examples:
 |numeroCuenta  |fechaInicioVigencia|tipoPlazo |
 |C000888888    |07/15/2016         |6 meses   |
-|C000888888    |07/15/2016         |Anual     |
-|C000888888    |07/15/2016         |Otra      |
 
 Scenario: Ingresar segundo tomador
 Given ya se inicio una nueva suscripcion <numeroCuenta>
@@ -64,7 +62,6 @@ Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exce
 Examples:
 |numeroCuenta   |porcentaje |mensaje                                                                          |
 |C000888888     |60         |Descuento Póliza : El descuento de la póliza debe estar en un rango de 0% a 50%. |
-|C000888888     |-10        |Descuento Póliza : El descuento de la póliza debe estar en un rango de 0% a 50%. |
 |C000888888     |abc        |Descuento Póliza : debe ser un valor numérico.                                   |
 
 Scenario: Validar longitud decimales porcentaje descuento de poliza
@@ -97,5 +94,3 @@ Then se debe cumplir con la retroactividad permitida <fechaInicioVigencia> <mens
 Examples:
 |numeroCuenta |tipoPlazo |fechaInicioVigencia|mensaje|
 |C000888888   |6 meses   |01/01/2016         |Fecha de vigencia : La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
-|C000888888   |Anual     |01/01/2017         |Fecha de vigencia : La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
-|C000888888   |Otra      |01/01/2016         |Fecha de vigencia : La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
