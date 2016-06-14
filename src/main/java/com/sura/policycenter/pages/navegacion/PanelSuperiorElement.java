@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import java.io.Serializable;
 
 public class PanelSuperiorElement extends PageObject implements Serializable {
+
+    
+
     private static final long serialVersionUID = 1L;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 

@@ -1,6 +1,6 @@
 package com.sura.policycenter;
 
-import net.serenitybdd.jbehave.SerenityStory;
+import net.serenitybdd.jbehave.SerenityStories;
 
-public class PruebaMenu extends SerenityStory {
+public class PruebaMenu extends SerenityStories {
 }

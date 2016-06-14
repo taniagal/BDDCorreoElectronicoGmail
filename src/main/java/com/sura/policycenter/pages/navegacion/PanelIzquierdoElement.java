@@ -11,10 +11,11 @@ public class PanelIzquierdoElement extends PageObject implements Serializable{
     public static final String LINK_ACCIONES = "//a[contains(@id,'Desktop:DesktopMenuActions')]";
     public static final String LINK_NUEVA_COTIZACION = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']";
 
-    public void opcion(String opcion){
+    public void opcion(String opcionXPath){
         try {
-            waitFor(opcion).shouldBeDisplayed();
-            $(opcion).click();
+            waitFor(opcionXPath).shouldBeDisplayed();
+            $(opcionXPath).waitUntilClickable().click();
+           // $(opcionXPath).click();
         } catch (Exception e){
             e.printStackTrace();
         }

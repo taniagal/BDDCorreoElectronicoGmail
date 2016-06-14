@@ -27,14 +27,21 @@ public class CotizacionDefinitions {
     public void crearNuevaCotizacion(){
 
         cotizador.ir_al_menu_escritorio_del_panel_superior();
+        cotizador.waitFor(1).second();
         cotizador.clic_en_la_opcion_acciones_del_panel_izquierdo();
         Serenity.takeScreenshot();
         cotizador.clic_en_la_opcion_nueva_cotizacion();
-
-        assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF(), is(equalTo("Nueva cotización")));
+        assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF("Nueva cotización"), is(equalTo("Nueva cotización")));
 
         LOGGER.info("CotizacionDefinitions.crearNuevaCotizacion");
     }
+
+    @Given("ya existe una cotización en estado $cotizado del cliente con número de cuenta $numCuenta para el producto $producto")
+    public void existeCotizacionCotizadaEnProductoMultiriesgoCorporativo(){
+
+        LOGGER.info("CotizacionDefinitions.existeCotizacionCotizadaEnProductoMultiriesgoCorporativo");
+    }
+
 
     @When("digíte el número de cuenta $numeroCuenta de una persona jurídica y digite la tecla $teclaAccion para activar la búsqueda")
     @Alias("digíte el número de cuenta $numeroCuenta de una persona natural y digite la tecla $teclaAccion para activar la búsqueda")
@@ -47,8 +54,8 @@ public class CotizacionDefinitions {
 
     @Then("espero ver el nombre de la persona jurídica $nombre de la cuenta existente junto con la etiqueta $tipoPersona")
     @Alias("espero ver el nombre de la persona natural $nombre de la cuenta existente junto con la etiqueta $tipoPersona")
-    public void validarEtiquetaNombreYNombre(String nombre, String tipoPersona){
-        assertEquals(nombre, cotizador.getCotizacionPage().obtenerTextoLinkNombrePersonaWEF());
+    public void validarEtiquetaNombreYNombre(String nombre, String tipoPersona) throws InterruptedException {
+        assertEquals(nombre, cotizador.getCotizacionPage().obtenerTextoLinkNombrePersonaWEF(nombre));
         assertEquals(tipoPersona, cotizador.getCotizacionPage().obtenerTextoLabelNombrePersonaWEF());
 
         LOGGER.info("CotizacionDefinitions.validarEtiquetaNombreYNombre");
@@ -61,7 +68,7 @@ public class CotizacionDefinitions {
         LOGGER.info("CotizacionDefinitions.ingresarCaracteresEnNombreAgente");
     }
 
-    @Given("que he seleccionado en el nombre del agente $nombre")
+    @When("he seleccionado en el nombre del agente $nombre")
     public void seleccionoNombreDeAgente(String nombre){
         cotizador.getCotizacionPage().seleccionarAgente(nombre);
         LOGGER.info("CotizacionDefinitions.seleccionoNombreDeAgente");
@@ -88,9 +95,34 @@ public class CotizacionDefinitions {
     }
 
     @Then("se mostrarán en orden alfabetico los: $productos")
-    public void xx(ExamplesTable productos){
+    public void validarExistenciaYOrdenDeLosProductos(ExamplesTable productos){
         cotizador.getCotizacionPage().validarExistenciaDeTodosLosProductosOrdenadosAlfabeticamente(productos);
         LOGGER.info("CotizacionDefinitions.validarQueEstenLosProductosRequeridosMostradosYSeanOrdenadosAlfabeticamente");
+    }
+
+    @Then("seleccionar nombre de producto $producto")
+    public void seleccionarNombreDeProducto(String productos){
+        cotizador.seleccionar_el_boton_elegir(productos);
+        LOGGER.info("CotizacionDefinitions.seleccionarNombreDeProducto");
+    }
+
+    @Then("deberá observar un mensaje emergente de información: $mensaje")
+    public void deberaObservarUnMensajeEmergenteDeInformacion(String mensaje){
+        assertThat(mensaje, is(equalTo(cotizador.getCotizacionPage().obtenerMensajeEmergenteDeInformacion())));
+        LOGGER.info("CotizacionDefinitions.deberaObservarUnMensajeEmergenteDeInformacion");
+    }
+    @Then("deberá observar los botones: $btns")
+    public void deberaObservarLosBotones(String btns){
+        String[] arrayBtns = btns.split(",");
+        assertThat(cotizador.getCotizacionPage().validarExistenciaDeLosBotonesVisibles(arrayBtns), is(true));
+        LOGGER.info("CotizacionDefinitions.deberaObservarUnMensajeEmergenteDeInformacion");
+    }
+
+    @Then("al seleccionar el botón $boton deberá ver la página $pagina")
+    public void seleccionarBtnYValidarPaginaMostrada(String boton, String pagina){
+        cotizador.getCotizacionPage().seleccionarBtn(boton);
+        assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF(pagina), is(equalTo(pagina)));
+        LOGGER.info("CotizacionDefinitions.seleccionarBtnYValidarPaginaMostrada");
     }
 
     @When("se muestre la fecha de efecto de la cotización")
@@ -116,4 +148,7 @@ public class CotizacionDefinitions {
 
         LOGGER.info("CotizacionDefinitions.finalizarHistoria");
     }
+
+
+
 }

@@ -2,16 +2,17 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.serinitybdd.util.GwNavegacionUtil;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DisponibilidadDetalleProductoPage extends Guidewire {
 
@@ -67,7 +68,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
         for (String tipo : elementosRequeridos) {
             elementosTipoCanalVentas = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'"+tipo+"')]");
             for (WebElementFacade lista : elementosTipoCanalVentas){
-                assertThat(tipo, containsText(lista.getText()));
+                MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }
         }
     }
@@ -93,10 +94,10 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
     }
 
     public void validarActualizacionDeListaTipoCanal() {
-        assertThat(listaTipoCanalDeVenta.getText(), containsText(""));
+        MatcherAssert.assertThat(listaTipoCanalDeVenta.getText(), containsText(""));
     }
 
     public void validarActualizacionDeListaPATipoPoliza() {
-        assertThat(listaPATipoPoliza.getText(), containsText(""));
+        MatcherAssert.assertThat(listaPATipoPoliza.getText(), containsText(""));
     }
 }

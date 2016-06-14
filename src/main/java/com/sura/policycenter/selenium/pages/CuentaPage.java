@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CuentaPage extends Guidewire{
 
-    Actions act = null;
+    Actions actions = null;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
@@ -47,10 +47,12 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade botonBuscarOrganizacion;
     @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchResultsLV:0:_Select']")
     private WebElementFacade botonSeleccionarOrganizacion;
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update-botonInnerEl']")
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update']")
     private WebElementFacade botonActualizar;
-    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:Name-inputEl']")
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade labelNombreDeCuenta;
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileInfoBar:AccountName-btnInnerEl']")
+    private WebElementFacade labelCuentaNumero;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade comboBoxTipoDocumentoNuevaCuenta;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:BasicPersonInfo:CreateNewContactInputSet:DateOfBirth-inputEl']")
@@ -69,11 +71,12 @@ public class CuentaPage extends Guidewire{
     }
 
     public void navNuevaCuenta(){
-        act = deployMenu(mnuCuenta);
-        act.moveToElement(mnuNuevaCuenta).click().build().perform();
+        actions = deployMenu(mnuCuenta);
+        actions.moveToElement(mnuNuevaCuenta).click().build().perform();
     }
 
     public void agregarTipoDocumento(String tipoDocumento, String documento) {
+        comboBoxTipoDocumentoNuevaCuenta.waitUntilPresent();
         comboBoxTipoDocumentoNuevaCuenta.clear();
         comboBoxTipoDocumentoNuevaCuenta.sendKeys(tipoDocumento);
         comboBoxTipoDocumentoNuevaCuenta.sendKeys(Keys.ENTER);
@@ -94,19 +97,21 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
+        waitABit(1500);
+        selectItem(comboBoxCiudad,ciudad);
         waitABit(1000);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        selectItem(comboBoxCiudad,ciudad);
-        waitABit(1500);
+        waitABit(1000);
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         espera(botonAgregarOrganizacion,5);
         botonAgregarOrganizacion.click();
+        waitABit(500);
         campoTxtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
-        waitABit(1000);
+        waitABit(500);
         selectItem(comboBoxCodigoAgente,agente);
     }
 
@@ -129,7 +134,7 @@ public class CuentaPage extends Guidewire{
     }
 
     public void verificarCrearCuenta(String nombreCuenta){
-        waitABit(1000);
+        labelNombreDeCuenta.waitUntilPresent();
         assertThat("Falló la creación de la cuenta", labelNombreDeCuenta.containsText(nombreCuenta));
     }
 
@@ -145,5 +150,10 @@ public class CuentaPage extends Guidewire{
     public  void verificarMensaje(String mensaje){
         waitABit(1000);
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
+    }
+
+    public void verificarCuentaNumero(String nombreCuenta) {
+        waitABit(1000);
+        assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
     }
 }

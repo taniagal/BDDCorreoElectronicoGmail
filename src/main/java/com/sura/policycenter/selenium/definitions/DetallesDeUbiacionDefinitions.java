@@ -22,11 +22,11 @@ public class DetallesDeUbiacionDefinitions {
     public void agregarPoliza(@Named("cuenta")String cuenta,@Named("organizacion")String organizacion,@Named("agente")String agente) {
         loginSteps.login();
         detallesDeUbicacionSteps.irANuevaPoliza(cuenta,organizacion,agente);
-        detallesDeUbicacionSteps.validarCamposnuevos();
     }
 
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>")
     public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad){
+        detallesDeUbicacionSteps.validarCamposnuevos();
         detallesDeUbicacionSteps.agregarDireccion(direccion, departamento, ciudad);
     }
 

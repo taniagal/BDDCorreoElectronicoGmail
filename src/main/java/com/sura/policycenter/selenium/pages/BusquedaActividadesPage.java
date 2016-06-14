@@ -2,6 +2,9 @@ package com.sura.policycenter.selenium.pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,11 +13,6 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.Map;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.hamcrest.core.StringContains.containsString;
 
 public class BusquedaActividadesPage extends PageObject {
 
@@ -67,15 +65,15 @@ public class BusquedaActividadesPage extends PageObject {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         btnBuscar.click();
         waitABit(1000);
-        assertThat(this.grdFechaVencimiento.getText(), is(notNullValue()));
-        assertThat(this.grdPrioridad.getText(), is(equalTo(exampleTable.get("prioridad"))));
-        assertThat(this.grdEstadoActividad.getText(), is(equalTo(exampleTable.get("estadoActividad"))));
-        assertThat(this.grdAsunto.getText(), is(equalTo(exampleTable.get("asunto"))));
-        assertThat(this.grdId.getText(), is(equalTo(exampleTable.get("id"))));
-        assertThat(this.grdCuenta.getText(), is(equalTo(exampleTable.get("titularCuenta"))));
-        assertThat(this.grdProducto.getText(), containsString(exampleTable.get("producto")));
-        assertThat(this.grdAsignadoPor.getText(), containsString(exampleTable.get("asignadoPor")));
-        assertThat(this.grdEstado.getText(), is(equalTo(exampleTable.get("estado"))));
+        MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
+        MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
+        MatcherAssert.assertThat(this.grdAsunto.getText(), Is.is(Matchers.equalTo(exampleTable.get("asunto"))));
+        MatcherAssert.assertThat(this.grdId.getText(), Is.is(Matchers.equalTo(exampleTable.get("id"))));
+        MatcherAssert.assertThat(this.grdCuenta.getText(), Is.is(Matchers.equalTo(exampleTable.get("titularCuenta"))));
+        MatcherAssert.assertThat(this.grdProducto.getText(), Matchers.containsString(exampleTable.get("producto")));
+        MatcherAssert.assertThat(this.grdAsignadoPor.getText(), Matchers.containsString(exampleTable.get("asignadoPor")));
+        MatcherAssert.assertThat(this.grdEstado.getText(), Is.is(Matchers.equalTo(exampleTable.get("estado"))));
     }
 
     public void limpiarFiltros(){
@@ -105,7 +103,7 @@ public class BusquedaActividadesPage extends PageObject {
     public void validarMensjeFiltroRequerido(String mensaje) {
         btnBuscar.click();
         txtNumeroCuenta.clear();
-        assertThat(this.msgFiltrosRequeridos.getText(), containsString(mensaje));
+        MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
     }
 
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {

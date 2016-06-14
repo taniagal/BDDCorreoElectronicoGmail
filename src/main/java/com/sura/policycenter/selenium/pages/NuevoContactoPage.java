@@ -2,11 +2,11 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.constantes.EnumContacto;
-import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -83,17 +83,17 @@ public class NuevoContactoPage extends Guidewire {
     public void ingresarDireccion(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
         selectItem(cboDepartamento,departamento);
-        waitABit(2000);
+        waitABit(1800);
         selectItem(cboCiudad,ciudad);
-        waitABit(2000);
+        waitABit(500);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
         direccion2.sendKeys(direccion);
         selectItem(cboDepartamento2,departamento);
-        waitABit(2000);
+        waitABit(1800);
         selectItem(cboCiudad2,ciudad);
-        waitABit(2000);
+        waitABit(1000);
         selectItem(tipoDireccion2,tipoDireccion);
     }
 
@@ -107,6 +107,7 @@ public class NuevoContactoPage extends Guidewire {
     private void actualizar() {
         this.btnActualizar.waitUntilClickable();
         this.btnActualizar.click();
+
         waitABit(1000);
     }
 

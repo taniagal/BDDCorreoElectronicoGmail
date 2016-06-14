@@ -3,12 +3,11 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 
 public class BusquedaDeCuentasPage extends Guidewire {
 
@@ -121,20 +120,20 @@ public class BusquedaDeCuentasPage extends Guidewire {
     }
 
     public void mostrarInformacionDeLaCuenta(String numeroCuenta, String nombre, String direccion) {
-        assertThat(this.grdNumeroCuenta.getText(), containsString(numeroCuenta));
-        assertThat(this.grdNombre.getText(), containsString(nombre));
-        assertThat(this.grdDireccion.getText(), containsString(direccion));
+        MatcherAssert.assertThat(this.grdNumeroCuenta.getText(), Matchers.containsString(numeroCuenta));
+        MatcherAssert.assertThat(this.grdNombre.getText(), Matchers.containsString(nombre));
+        MatcherAssert.assertThat(this.grdDireccion.getText(), Matchers.containsString(direccion));
     }
 
     public void validarMensaje(String mensaje) {
         msjMensajeInformativo.waitUntilVisible();
-        assertThat(this.msjMensajeInformativo.getText(), containsString(mensaje));
+        MatcherAssert.assertThat(this.msjMensajeInformativo.getText(), Matchers.containsString(mensaje));
     }
 
     private void validarCheckNoSeleccionado(WebElementFacade elemento){
         if(elemento.isSelected()){
-            assertThat("Check seleccionado", containsString("Check no seleccionado"));
-        }else assertThat("Check no seleccionado", containsString("Check no seleccionado"));
+            MatcherAssert.assertThat("Check seleccionado", Matchers.containsString("Check no seleccionado"));
+        }else MatcherAssert.assertThat("Check no seleccionado", Matchers.containsString("Check no seleccionado"));
     }
 
     public void validarCamposDelFormulario() {
@@ -153,18 +152,18 @@ public class BusquedaDeCuentasPage extends Guidewire {
     }
 
     public void validarEtiquetasDelFormulario(){
-        assertThat(this.lblNumeroCuenta.getText().toLowerCase(), containsString("número de cuenta"));
-        assertThat(this.lblTipoDocumento.getText().toLowerCase(), containsString("tipo documento"));
-        assertThat(this.lblNumeroDocumento.getText().toLowerCase(), containsString("número documento"));
-        assertThat(this.lblPrimerNombre.getText().toLowerCase(), containsString("primer nombre"));
-        assertThat(this.lblSegundoNombre.getText().toLowerCase(), containsString("segundo nombre"));
-        assertThat(this.lblPrimerApellido.getText().toLowerCase(), containsString("primer apellido"));
-        assertThat(this.lblSegundoApellido.getText().toLowerCase(), containsString("segundo apellido"));
-        assertThat(this.lblPrimerNombreExacto.getText().toLowerCase(), containsString("el primer nombre es una coincidencia exacta"));
-        assertThat(this.lblPrimerApellidoExacto.getText().toLowerCase(), containsString("el primer apellido es una coincidencia exacta"));
-        assertThat(this.lblRazonSocial.getText().toLowerCase(), containsString("razón social"));
-        assertThat(this.lblNombreComercialExacto.getText().toLowerCase(), containsString("razón social es una coincidencia exacta"));
-        assertThat(this.lblNombreComercial.getText().toLowerCase(), containsString("nombre comercial"));
+        MatcherAssert.assertThat(this.lblNumeroCuenta.getText().toLowerCase(), Matchers.containsString("número de cuenta"));
+        MatcherAssert.assertThat(this.lblTipoDocumento.getText().toLowerCase(), Matchers.containsString("tipo documento"));
+        MatcherAssert.assertThat(this.lblNumeroDocumento.getText().toLowerCase(), Matchers.containsString("número documento"));
+        MatcherAssert.assertThat(this.lblPrimerNombre.getText().toLowerCase(), Matchers.containsString("primer nombre"));
+        MatcherAssert.assertThat(this.lblSegundoNombre.getText().toLowerCase(), Matchers.containsString("segundo nombre"));
+        MatcherAssert.assertThat(this.lblPrimerApellido.getText().toLowerCase(), Matchers.containsString("primer apellido"));
+        MatcherAssert.assertThat(this.lblSegundoApellido.getText().toLowerCase(), Matchers.containsString("segundo apellido"));
+        MatcherAssert.assertThat(this.lblPrimerNombreExacto.getText().toLowerCase(), Matchers.containsString("el primer nombre es una coincidencia exacta"));
+        MatcherAssert.assertThat(this.lblPrimerApellidoExacto.getText().toLowerCase(), Matchers.containsString("el primer apellido es una coincidencia exacta"));
+        MatcherAssert.assertThat(this.lblRazonSocial.getText().toLowerCase(), Matchers.containsString("razón social"));
+        MatcherAssert.assertThat(this.lblNombreComercialExacto.getText().toLowerCase(), Matchers.containsString("razón social es una coincidencia exacta"));
+        MatcherAssert.assertThat(this.lblNombreComercial.getText().toLowerCase(), Matchers.containsString("nombre comercial"));
     }
 
     public void buscarCuentaPorRazonSocial(String razonSocial) {
@@ -196,9 +195,9 @@ public class BusquedaDeCuentasPage extends Guidewire {
         this.rbtnExportar.shouldBeVisible();
         this.rbtnImprimir.shouldBeVisible();
         this.rbtnExportarPersonalizado.shouldBeVisible();
-        assertThat(this.lblImprimir.getText(), containsString(imprimir));
-        assertThat(this.lblExportar.getText(), containsString(exportar));
-        assertThat(this.lblExportarPersonalizado.getText(), containsString(exportarPersonalizado));
+        MatcherAssert.assertThat(this.lblImprimir.getText(), Matchers.containsString(imprimir));
+        MatcherAssert.assertThat(this.lblExportar.getText(), Matchers.containsString(exportar));
+        MatcherAssert.assertThat(this.lblExportarPersonalizado.getText(), Matchers.containsString(exportarPersonalizado));
         btnVolverBuscarCuentas.click();
     }
 

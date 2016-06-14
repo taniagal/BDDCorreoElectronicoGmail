@@ -1,7 +1,6 @@
 package com.sura.guidewire.selenium;
 
 import com.google.common.base.Function;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
@@ -14,13 +13,14 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class Guidewire extends PageObject {
 
-    private final Actions act = new Actions(getDriver());
+    private final Actions actions = new Actions(getDriver());
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     WebElementFacade configuracion;
     @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
@@ -80,12 +80,13 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
+        waitFor(menu).shouldBeVisible();
         menu.waitUntilClickable().click();
         waitABit(1500);
-        menu.waitUntilClickable().click();
+        menu.withTimeoutOf(3, TimeUnit.SECONDS).waitUntilClickable().click();
         waitABit(500);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        return act;
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        return actions;
     }
 
 
@@ -118,11 +119,11 @@ public class Guidewire extends PageObject {
         if(!("Mis actividades").equals(lblMisActividades.getText())){
         configuracion.click();
         waitABit(300);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         waitABit(300);
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         waitABit(300);
         espaniol.click();
         waitABit(850);

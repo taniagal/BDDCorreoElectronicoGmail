@@ -1,12 +1,12 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -70,12 +70,13 @@ public class DetallesDeUbicacionPage extends Guidewire{
         numeroDeCuenta.sendKeys(cuenta);
         espera(botonAgregarOrganizacion,5);
         botonAgregarOrganizacion.click();
-        waitABit(2000);
+        waitABit(1500);
         campoTxtNombreDeOrganizacion.sendKeys(organizacion);
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
         waitABit(1000);
         selectItem(comboBoxCodigoAgente,agente);
+        waitABit(500);
         selectItem(comboBoxEstadoBase,"Antioquia");
         waitABit(1000);
         botonElegir.click();
