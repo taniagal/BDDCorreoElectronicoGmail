@@ -77,9 +77,9 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
             elemento = element(find(By.xpath(xpath)));
 
         } catch (NoSuchElementException e) {
-            throw new NoSuchElementException(" \nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.error("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
         } catch (StaleElementReferenceException sere) {
-            throw new StaleElementReferenceException(" \nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
+            LOGGER.error("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
         } catch (Exception e) {
             LOGGER.error("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
         }
@@ -96,9 +96,9 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
             elementos = findAll(By.xpath(xpath));
 
         } catch (NoSuchElementException e) {
-            throw new NoSuchElementException(" \nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.error("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
         } catch (StaleElementReferenceException sere) {
-            throw new StaleElementReferenceException(" \nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
+            LOGGER.error("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
         } catch (Exception e) {
             LOGGER.error("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
         }
@@ -257,6 +257,8 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
         } else {
             titulo = elemento(TITULO_PAGINA).getText();
         }
+
+
         return titulo;
     }
 
@@ -282,7 +284,8 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
         this.nombreAgente = nombreAgente;
     }
 
-    public String obtenerMensajeEmergenteDeInformacion() {
+    public String obtenerMensajeEmergenteDeInformacion(String mensaje) {
+        waitForTextToAppear(mensaje);
         return elemento(MENSAJE_EMERGENTE_DE_INFORMACION).getText();
     }
 

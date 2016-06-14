@@ -25,7 +25,7 @@ public class CotizacionDefinitions {
 
     @Given("deseo crear nueva cotización buscando por número de cuenta")
     public void crearNuevaCotizacion(){
-
+        cotizador.waitFor(2).second();
         cotizador.ir_al_menu_escritorio_del_panel_superior();
         cotizador.waitFor(1).second();
         cotizador.clic_en_la_opcion_acciones_del_panel_izquierdo();
@@ -108,7 +108,7 @@ public class CotizacionDefinitions {
 
     @Then("deberá observar un mensaje emergente de información: $mensaje")
     public void deberaObservarUnMensajeEmergenteDeInformacion(String mensaje){
-        assertThat(mensaje, is(equalTo(cotizador.getCotizacionPage().obtenerMensajeEmergenteDeInformacion())));
+        assertThat(mensaje, is(equalTo(cotizador.getCotizacionPage().obtenerMensajeEmergenteDeInformacion(mensaje))));
         LOGGER.info("CotizacionDefinitions.deberaObservarUnMensajeEmergenteDeInformacion");
     }
     @Then("deberá observar los botones: $btns")

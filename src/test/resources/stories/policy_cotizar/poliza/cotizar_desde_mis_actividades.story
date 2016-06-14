@@ -43,9 +43,6 @@ Then deberá observar un mensaje emergente de información: Ya existe la cotizac
 Then deberá observar los botones: Aceptar,Cancelar
 Then al seleccionar el botón Aceptar deberá ver la página Nueva cotización
 
-
-
-
 Given ya existe una cotización en estado "cotizado" del cliente con número de cuenta C000777777 para el producto Multiriesgo corporativo
 And deseo crear nueva cotización buscando por número de cuenta
 When digíte el número de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la búsqueda
