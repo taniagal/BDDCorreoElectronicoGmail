@@ -6,9 +6,12 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
 
 public class ExpedicionDePolizaPage extends PageObject{
 
@@ -31,10 +34,10 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy']")
     WebElementFacade botonExpedirPoliza;
 
-    @FindBy(linkText = "link=Aceptar")
+    @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
 
-    @FindBy(linkText = "link=Cancelar")
+    @FindBy(xpath = ".//a[contains(.,'Cancelar')]")
     WebElementFacade botonCancelarMensaje;
 
     @FindBy(xpath = ".//td[contains(.,'¿Está seguro de que desea expedir esta póliza?')]")
@@ -46,17 +49,22 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
     WebElementFacade campoNumeroPoliza;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:_msgs']/div")
-    WebElementFacade mensajeValidacionRiesgo;
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab']")
+    WebElementFacade botonEscritorio;
 
 
     public void irABuscarCotizacion(String cotizacion){
+        waitFor(ExpectedConditions.elementToBeClickable(menuPoliza));
         menuPoliza.click();
         waitForAnyTextToAppear("Cotización", "Buscar pólizas");
+        waitFor(ExpectedConditions.elementToBeClickable(menuPoliza));
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
-        menuNumeroCotizacion.type(cotizacion);
+        waitFor(ExpectedConditions.visibilityOf(menuNumeroCotizacion));
+        waitABit(1000);
+        enter(cotizacion).into(menuNumeroCotizacion);
         menuNumeroCotizacion.sendKeys(Keys.ENTER);
+        waitForTextToAppear("Cotización");
     }
 
     public void expedirPoliza() {
@@ -79,22 +87,21 @@ public class ExpedicionDePolizaPage extends PageObject{
     }
 
     public void validarMensajeDeRiesgos(String mensaje) {
-        waitFor(ExpectedConditions.visibilityOf(mensajeValidacionRiesgo));
-        MatcherAssert.assertThat(mensajeValidacionRiesgo.getText(), Is.is(Matchers.equalTo(mensaje)));
-    }
-
-    public void validarVariosMensajeDeRiesgos(String mensaje) {
         String mensajes[] = mensaje.split("\\^");
-        if(mensajes.length > 1){
-            for(Integer i = 0; i < mensajes.length; i++) {
-                WebElementFacade mensajeRiesgo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:_msgs']/div["+i.toString()+"]");
-                MatcherAssert.assertThat(mensajes[i], Is.is(Matchers.equalTo(mensajeRiesgo.getText())));
+        Integer contadorMensajesOk = 0;
+        Integer numeroMensajes = mensajes.length;
+        waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")));
+        List<WebElementFacade> mensajesRiesgos = findAll(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div");
+        for(int i = 0; i < numeroMensajes; i++) {
+            System.out.println(mensajes[i]);
+            for (WebElementFacade lista : mensajesRiesgos) {
+                if(lista.getText().equals(mensajes[i])){
+                    contadorMensajesOk++;
+                    break;
+                }
             }
         }
-        else {
-            waitFor(ExpectedConditions.visibilityOf(mensajeValidacionRiesgo));
-            MatcherAssert.assertThat(mensajeValidacionRiesgo.getText(), Is.is(Matchers.equalTo(mensajes[0])));
-        }
+        MatcherAssert.assertThat(contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
     }
 
     public void cancelarExpedicionDeLaPoliza(String mensaje) {
@@ -107,5 +114,13 @@ public class ExpedicionDePolizaPage extends PageObject{
     public void validarCancelacionDeExpedicionDePoliza() {
         tituloVentana.shouldBeVisible();
         campoNumeroEnvio.shouldBeVisible();
+        this.volverAEscritorio();
+    }
+
+    public void volverAEscritorio() {
+        waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='TabBar:DesktopTab']")));
+        waitFor(ExpectedConditions.elementToBeClickable(botonEscritorio));
+        botonEscritorio.click();
+        waitForTextToAppear("Mis actividades");
     }
 }
