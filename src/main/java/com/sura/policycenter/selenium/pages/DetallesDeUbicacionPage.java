@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 
@@ -54,6 +55,16 @@ public class DetallesDeUbicacionPage extends Guidewire{
     private WebElementFacade labelNumeroDePisos;
     @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BuildYear-labelEl']")
     private WebElementFacade labelAnioDeConstruccion;
+    @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions-btnInnerEl']")
+    private WebElementFacade botonAcciones;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:AccountName-inputEl']")
+    private WebElementFacade linkNombre;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
+    private WebElementFacade comboBoxNombreAgente;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
+    private WebElementFacade comboboxCodigoDeAgente;
+    @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']")
+    private WebElementFacade subMenuNuevaCotizacion;
     @FindBy(css=".message")
     private WebElementFacade divMensaje;
 
@@ -65,26 +76,47 @@ public class DetallesDeUbicacionPage extends Guidewire{
         super(driver);
     }
 
+    public void  seleccionarProducto(String nomProducto) {
+        int i = 0;
+        if (!getListaDescripcion().isEmpty()) {
+            for (WebElementFacade descripcion : getListaDescripcion()) {
+                if (nomProducto.equals(descripcion.getText())) {
+                    getListaBotones().get(i).click();
+                }
+                i++;
+            }
+        }
+    }
+
+    private List<WebElementFacade> getListaBotones() {
+        List<WebElementFacade> botones = withTimeoutOf(8, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
+        return botones;
+    }
+
+    private List<WebElementFacade> getListaDescripcion() {
+        List<WebElementFacade> DescripcionProductos = withTimeoutOf(8,TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
+        return DescripcionProductos;
+    }
+
+    public void irANuevaCotizacion(){
+        botonAcciones.click();
+        subMenuNuevaCotizacion.waitUntilPresent().click();
+    }
+
     public void agregarDatos(String cuenta, String organizacion, String agente) {
         espera(numeroDeCuenta,5);
         numeroDeCuenta.sendKeys(cuenta);
-        espera(botonAgregarOrganizacion,5);
-        botonAgregarOrganizacion.click();
-        waitABit(1500);
-        campoTxtNombreDeOrganizacion.sendKeys(organizacion);
-        botonBuscarOrganizacion.click();
-        botonSeleccionarOrganizacion.click();
+        comboBoxNombreAgente.click();
         waitABit(1000);
-        selectItem(comboBoxCodigoAgente,agente);
-        waitABit(500);
-        selectItem(comboBoxEstadoBase,"Antioquia");
-        waitABit(1000);
-        botonElegir.click();
+        comboBoxNombreAgente.sendKeys(agente);
+        comboBoxNombreAgente.sendKeys(Keys.ENTER);
+        seleccionarProducto(organizacion);
     }
 
+
     public void irAUbicacion(){
-        botonSiguiente.click();
-        botonAgregarUbicacion.click();
+        botonSiguiente.waitUntilPresent().click();
+        botonAgregarUbicacion.waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
     }
 

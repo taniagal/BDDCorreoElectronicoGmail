@@ -15,8 +15,8 @@ And descripcion <descripcion>, actividad economica <actividad>
 Then espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaciones la nueva ubicaciOn ingresada
 
 Examples:
-|cuenta     |organizacion|agente|departamento|ciudad  |direccion        |descripcion  |actividad|
-|C000888888 |Sura        |INT-3 |Antioquia   |Medellin|KR 44 A # 45 - 00|Edificio Core|Actividad Economica|
+|cuenta     |organizacion       |agente      |departamento|ciudad  |direccion        |descripcion  |actividad|
+|C000888888 |Propiedad comercial|null - INT-3|Antioquia   |Medellin|KR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 
