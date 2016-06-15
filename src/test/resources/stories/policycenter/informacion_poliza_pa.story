@@ -7,7 +7,7 @@ Como usuario de PolicyCenter
 Quiero ser capaz de ingresar y visualizar la informacion de la poliza incluyendo el nombre tomador,
 incluir un segundo tomador, vigencia de la poliza y la informacion de asesor
 
-@Issue 10900 Policy Info - PA
+@Issue SUGWUSC-10900 Policy Info - PA
 
 Scenario: Visualizacion de los datos de la poliza
 GivenStories: stories/policycenter/login_policy.story

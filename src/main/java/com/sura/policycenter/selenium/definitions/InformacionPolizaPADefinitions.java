@@ -27,7 +27,7 @@ public class InformacionPolizaPADefinitions {
     private Map<String, String> infoPoliza = new HashMap<>();
 
     public InformacionPolizaPADefinitions(){
-        infoPoliza.put("labelAseguradoPrimario", "Tomador primario");
+        infoPoliza.put("labelAseguradoPrimario", "Tomador");
         infoPoliza.put("tipoDocumento", "Tipo documento");
         infoPoliza.put("numeroDocumento", "Número documento");
         infoPoliza.put("nombre", "Nombre");
