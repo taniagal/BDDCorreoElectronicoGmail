@@ -3,15 +3,19 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.constantes.EnumContacto;
 import java.util.List;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.greaterThan;
 
 public class NuevoContactoPage extends Guidewire {
 
@@ -44,13 +48,13 @@ public class NuevoContactoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade telefonoResidencia;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade cboDepartamento;
+    private WebElementFacade comboBoxDepartamento;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
-    private WebElementFacade cboCiudad;
+    private WebElementFacade comboBoxCiudad;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade cboDepartamento2;
+    private WebElementFacade comboBoxDepartamento2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
-    private WebElementFacade cboCiudad2;
+    private WebElementFacade comboBoxCiudad2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
     private WebElementFacade tipoDireccion2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
@@ -79,23 +83,23 @@ public class NuevoContactoPage extends Guidewire {
         this.primerApellido.type(primerApellido);
     }
 
-    public void seleccionarTipoDireccion(String tipoDireccion) {
-        selectItem(this.tipoDireccion,tipoDireccion);
+    public void seleccionarTipoDireccion(String tipoDireccion) {selectItem(this.tipoDireccion,tipoDireccion);
     }
 
-    public void ingresarDireccion(String direccion, String departamento, String ciudad) {
+
+    public void ingresarDireccionDepartamenteYCiudad(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
-        selectItem(cboDepartamento,departamento);
-        waitABit(2000);
-        selectItem(cboCiudad,ciudad);
+        enter(departamento).into(comboBoxDepartamento);
+        seleccionarCombo(departamento, comboBoxDepartamento);
+        selectItem(comboBoxCiudad,ciudad);
         waitABit(1000);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
         direccion2.sendKeys(direccion);
-        selectItem(cboDepartamento2,departamento);
-        waitABit(2000);
-        selectItem(cboCiudad2,ciudad);
+        selectItem(comboBoxDepartamento2,departamento);
+        waitABit(2200);
+        selectItem(comboBoxCiudad2,ciudad);
         waitABit(1200);
         selectItem(tipoDireccion2,tipoDireccion);
     }
@@ -104,6 +108,7 @@ public class NuevoContactoPage extends Guidewire {
         this.btnActualizar.waitUntilClickable();
         this.btnActualizar.click();
         waitABit(1000);
+        nombreContact.waitUntilPresent();
         assertThat(this.nombreContact.getText(), containsString(primerNombre));
     }
 
@@ -153,8 +158,6 @@ public class NuevoContactoPage extends Guidewire {
     public void verificarContactoExistente() {
         this.btnActualizar.waitUntilClickable();
         this.btnActualizar.click();
-        /**COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
-         */
         waitABit(1000);
         assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
     }

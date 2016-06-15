@@ -1,3 +1,6 @@
+Meta:
+@issue #SUGWUSC-14969
+
 Narrative:
 Como usuario
 Quiero poder ver el detalle de la informacion de contactos en policy center
