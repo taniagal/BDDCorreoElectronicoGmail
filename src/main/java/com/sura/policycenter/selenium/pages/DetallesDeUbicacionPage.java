@@ -7,6 +7,8 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -89,12 +91,12 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     private List<WebElementFacade> getListaBotones() {
-        List<WebElementFacade> botones = withTimeoutOf(8, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
+        List<WebElementFacade> botones = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
         return botones;
     }
 
     private List<WebElementFacade> getListaDescripcion() {
-        List<WebElementFacade> DescripcionProductos = withTimeoutOf(8,TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
+        List<WebElementFacade> DescripcionProductos = withTimeoutOf(10,TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         return DescripcionProductos;
     }
 
@@ -108,8 +110,10 @@ public class DetallesDeUbicacionPage extends Guidewire{
         numeroDeCuenta.sendKeys(cuenta);
         comboBoxNombreAgente.click();
         waitABit(1000);
-        comboBoxNombreAgente.sendKeys(agente);
-        comboBoxNombreAgente.sendKeys(Keys.ENTER);
+        Actions actions =  new Actions(getDriver());
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ENTER).build().perform();
         seleccionarProducto(organizacion);
     }
 

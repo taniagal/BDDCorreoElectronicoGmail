@@ -45,6 +45,7 @@ public class CoaseguroPage extends Guidewire {
     public void validarCampos() {
         linkAgregarCoaseguro.waitUntilPresent().click();
         radioBotonAceptado.waitUntilPresent().click();
+        campoTxtDastosAdministrativos.waitUntilPresent();
 
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(radioBotonAceptado.isSelected())
