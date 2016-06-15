@@ -58,10 +58,5 @@ public class PolicySteps extends ScenarioSteps {
         gw.logout();
     }
 
-    @Step
-    public void elegirLenguaje(){
-        gw.elegirLenguaje();
-    }
-
 
 }

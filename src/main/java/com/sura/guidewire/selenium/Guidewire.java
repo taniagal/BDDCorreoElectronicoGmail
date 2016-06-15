@@ -1,7 +1,6 @@
 package com.sura.guidewire.selenium;
 
 import com.google.common.base.Function;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
@@ -14,6 +13,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -115,20 +115,7 @@ public class Guidewire extends PageObject {
         return Integer.toString(nit);
     }
 
-    public void elegirLenguaje(){
-        if(!("Mis actividades").equals(lblMisActividades.getText())){
-        configuracion.click();
-        waitABit(300);
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
-        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
-        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
-        espaniol.click();
-        waitABit(850);
-        }
-    }
+
 
     protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
         final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
