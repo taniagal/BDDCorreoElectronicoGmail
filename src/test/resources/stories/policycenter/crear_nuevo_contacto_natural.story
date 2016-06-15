@@ -1,4 +1,6 @@
 Meta:
+@issue #SUGWUSC-10650
+
 Narrative:
 Crear contacto persona natural
 que estoy en logado en PC y estoy en contactos

@@ -49,7 +49,7 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade botonBuscarOrganizacion;
     @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchResultsLV:0:_Select']")
     private WebElementFacade botonSeleccionarOrganizacion;
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update']")
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:ForceDupCheckUpdate-btnInnerEl']")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade labelNombreDeCuenta;
@@ -100,8 +100,8 @@ public class CuentaPage extends Guidewire{
 
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        selectItem(comboBoxDepartamento,departamento);
-        waitABit(2000);
+        enter(departamento).into(comboBoxDepartamento);
+        seleccionarCombo(departamento, comboBoxDepartamento);
         selectItem(comboBoxCiudad,ciudad);
         waitABit(2000);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
@@ -158,7 +158,7 @@ public class CuentaPage extends Guidewire{
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
-        waitABit(1500);
+        waitABit(2000);
         botonEditarCuenta.waitUntilPresent();
         assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
     }

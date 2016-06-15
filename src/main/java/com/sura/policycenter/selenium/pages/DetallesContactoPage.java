@@ -166,7 +166,7 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarDireccion(){
         botonAgregar.click();
-        waitABit(1000);
+        waitABit(1500);
     }
 
     public void agregarNombre(String segundoNombre){

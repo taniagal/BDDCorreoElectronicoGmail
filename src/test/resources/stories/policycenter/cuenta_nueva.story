@@ -1,4 +1,6 @@
 Meta:
+@issue #SUGWUSC-10630
+
 Narrative:
 Como usuario
 Quiero ser capaz de crear nuevas cuentas en policy center
