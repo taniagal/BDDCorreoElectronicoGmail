@@ -25,6 +25,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 
+// TODO: 15/06/2016 Pendiente refactor
 public class NuevaCotizacionPage extends PageObject implements Serializable {
     private static final long serialVersionUID = 1L;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
@@ -47,6 +48,7 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
     public static final String CBO_NOMBRE_AGENTE = ".//li[@role='option']";
     public static final String PRODUCTOS = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr";
     public static final String MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'displayfield') and contains(@id,'inputEl')]";
+    public static final String MENSAJES_DE_INFORMACION = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div";
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
 
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
@@ -62,6 +64,9 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
             elementoEncontrado = Boolean.FALSE;
         } catch (StaleElementReferenceException sere) {
             LOGGER.info("StaleElementReferenceException : " + sere);
+            elementoEncontrado = Boolean.FALSE;
+        }catch (AssertionError ae) {
+            LOGGER.info("StaleElementReferenceException : " + ae);
             elementoEncontrado = Boolean.FALSE;
         }
 
@@ -159,6 +164,10 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
         waitFor($(TXT_NOMBRE_AGENTE)).shouldBeCurrentlyVisible();
         waitFor($(TXT_NOMBRE_AGENTE)).shouldBeEnabled();
         enter(caracteresDigitados).into($(TXT_NOMBRE_AGENTE));
+        waitFor(1).second();
+        //waitForTextToAppear($(TXT_NOMBRE_AGENTE), caracteresDigitados);
+        //waitFor(ExpectedConditions.attributeContains($(TXT_NOMBRE_AGENTE),"value",caracteresDigitados));
+        //waitForTextToAppear(caracteresDigitados);
         // TODO: 08/06/2016 COmo usar el de el impl bien??? para hacer el assertion si esta vacio el combo
         Integer tamanio = findAll(By.xpath(CBO_NOMBRE_AGENTE)).size();
         $(TXT_NOMBRE_AGENTE).clear();
@@ -211,7 +220,7 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
 
         if (!listaNombresAgentesElement.isEmpty()) {
             for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
-                String[] agenteArray = agenteElemento.getText().split("-");
+                String[] agenteArray = agenteElemento.getText().split(">");
                 Integer codigo = Integer.parseInt(agenteArray[1].trim());
                 String nombre = agenteArray[0];
 
@@ -249,7 +258,7 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
     }
 
     public String obtenerTextoTituloPaginaWEF(String pagina) {
-        //waitForPresenceOf(TITULO_PAGINA);
+        waitForPresenceOf(TITULO_PAGINA);
         waitForTextToAppear(pagina);
         String titulo;
         if (elemento(TITULO_PAGINA) == null ){
@@ -285,7 +294,9 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
     }
 
     public String obtenerMensajeEmergenteDeInformacion(String mensaje) {
-        waitForTextToAppear(mensaje);
+        //waitForTextToAppear("Nueva cotización");
+        //waitForTextToAppear(mensaje);
+        waitFor(1).second();
         return elemento(MENSAJE_EMERGENTE_DE_INFORMACION).getText();
     }
 
@@ -316,4 +327,20 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
             return Boolean.FALSE;
         }
     }
+
+    public Boolean validarOcurrenciaDeMensajeDeAplicacion(String mensajesApp){
+        Boolean existeOcurrencia = Boolean.FALSE;
+        String mensajeMostrado="";
+        List<WebElementFacade> divsMensajes = elementos(MENSAJES_DE_INFORMACION);
+        for (WebElementFacade div : divsMensajes) {
+            mensajeMostrado = div.getText();
+            if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
+                existeOcurrencia = Boolean.TRUE;
+                break;
+            }
+        }
+
+        return existeOcurrencia;
+    }
+
 }
