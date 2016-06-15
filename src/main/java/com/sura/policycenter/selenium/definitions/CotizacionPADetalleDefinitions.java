@@ -4,10 +4,7 @@ import com.sura.policycenter.selenium.steps.CotizacionPADetalleSteps;
 import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,27 +49,24 @@ public class CotizacionPADetalleDefinitions {
         cotizacionPADetalleSteps.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
     }
 
-    @SuppressWarnings("EmptyMethod")
     @Then("se debe mostrar en la columna \"Termino\" el limite o deducible de la cobertura en el caso de que aplique")
-    @Manual
+    @Pending
     public void thenValidarTerminoCobertura(){
-        //se ejecuta manualmente
-        //cotizacionPADetalleSteps.validarTerminoCobertura();
+        //se ejecuta manualmente hasta que se realice la configuracion de rating
+        cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 
-    @SuppressWarnings("EmptyMethod")
     @Then("se debe mostrar en la columna \"Termino\" el limite de la cobertura en el caso de que aplique")
-    @Manual
+    @Pending
     public void thenValidarLimiteCobertura(){
-        //se ejecuta manualmente
-        //cotizacionPADetalleSteps.validarTerminoCobertura();
+        //se ejecuta manualmente hasta que se realice la configuracion de rating
+        cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 
-    @SuppressWarnings("EmptyMethod")
     @Then("se debe mostrar en la columna \"Termino\" el deducible de la cobertura en el caso de que aplique")
-    @Manual
+    @Pending
     public void thenValidarDeducibleCobertura(){
-        //se ejecuta manualmente
-        //cotizacionPADetalleSteps.validarTerminoCobertura();
+        //se ejecuta manualmente hasta que se realice la configuracion de rating
+        cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 }
