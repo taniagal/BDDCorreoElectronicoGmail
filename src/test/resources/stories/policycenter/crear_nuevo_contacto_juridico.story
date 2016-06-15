@@ -16,5 +16,5 @@ And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 Then se debe crear una persona juridica con razon social <razonSocial>
 
 Examples:
-|tipoDocumento|numeroDeDocumento|razonSocial     | tipoDireccion  |direccion|departamento|ciudad  |
-|NIT          |12452267         |UMBRELLA SA     |Negocio         |CRA 50   |Antioquia   |Medellin|
+|tipoDocumento|numeroDeDocumento|razonSocial| tipoDireccion  |direccion|departamento|ciudad  |
+|NIT          |12452267         |UMBRELLA   |Negocio         |CRA 50   |Antioquia   |Medellin|
