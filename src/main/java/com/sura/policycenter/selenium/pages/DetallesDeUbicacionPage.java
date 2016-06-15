@@ -7,7 +7,6 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
 
@@ -105,16 +104,16 @@ public class DetallesDeUbicacionPage extends Guidewire{
         subMenuNuevaCotizacion.waitUntilPresent().click();
     }
 
-    public void agregarDatos(String cuenta, String organizacion, String agente) {
+    public void agregarDatos(String cuenta, String producto) {
         espera(numeroDeCuenta,5);
         numeroDeCuenta.sendKeys(cuenta);
         comboBoxNombreAgente.click();
-        waitABit(1000);
+        waitABit(200);
         Actions actions =  new Actions(getDriver());
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
-        seleccionarProducto(organizacion);
+        seleccionarProducto(producto);
     }
 
 

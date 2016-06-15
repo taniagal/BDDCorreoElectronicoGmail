@@ -7,34 +7,34 @@ quiero poder agregar la información de coseguro aceptado o cedido en una póliz
 Feacture: Registro de Coaseguro
 
 Scenario: agregar el coaseguro a una poliza
-Given estoy cotizando una poliza de MRC en cuenta <cuenta>, organizacion <organizacion> y agente <agente>
+Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 And puedo ingresar los datos del coaseguro
 When agregue las aseguradoras y su porcentaje de participacion
 Then el proceso debe ser exitoso
 
 Examples:
-|cuenta     |organizacion       |agente|
-|C001888888 |Propiedad comercial|INT-3 |
+|cuenta     |producto           |
+|C001888888 |Propiedad comercial|
 
 
 Scenario: agregar el coaseguro a una poliza con una sola aseguradora
-Given estoy cotizando una poliza de MRC en cuenta <cuenta>, organizacion <organizacion> y agente <agente>
+Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 And puedo ingresar los datos del coaseguro
 When no agregue mas de una aseguradora y/o porcentaje de participacion
 Then debe aparecer el mensaje <mensaje> y/o mensaje <mensaje2>
 
 Examples:
-|cuenta     |organizacion       |agente|mensaje|mensaje2|
-|C001888888 |Propiedad comercial|INT-3 |Aseguradora : Falta el campo obligatorio "Aseguradora"|% de participación : Falta el campo obligatorio "% de participación"|
+|cuenta     |producto           |mensaje|mensaje2|
+|C001888888 |Propiedad comercial|Aseguradora : Falta el campo obligatorio "Aseguradora"|% de participación : Falta el campo obligatorio "% de participación"|
 
 
 
 Scenario: agregar el coaseguro a una poliza sin el porcentaje de participacion completo
-Given estoy cotizando una poliza de MRC en cuenta <cuenta>, organizacion <organizacion> y agente <agente>
+Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 And puedo ingresar los datos del coaseguro
 When el porcentaje de paticipacion total no sea 100%
 Then debe aparecer el mensaje <mensaje>
 
 Examples:
-|cuenta     |organizacion       |agente|mensaje|
-|C001888888 |Propiedad comercial|INT-3 |El total de % de participación de coaseguro debe ser igual al 100%|
+|cuenta     |producto           |mensaje|
+|C001888888 |Propiedad comercial|El total de % de participación de coaseguro debe ser igual al 100%|

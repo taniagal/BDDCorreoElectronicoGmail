@@ -5,8 +5,6 @@ public class Aseguradora {
     private String nombre;
     private String participacion;
 
-    public Aseguradora(){}
-
     public String getNombre() {
         return nombre;
     }

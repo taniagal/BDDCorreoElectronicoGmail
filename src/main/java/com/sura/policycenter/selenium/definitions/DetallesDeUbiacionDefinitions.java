@@ -18,10 +18,10 @@ public class DetallesDeUbiacionDefinitions {
     /**
      * ESCENARIO 1
      */
-    @Given("estoy cotizando una poliza de MRC en cuenta <cuenta>, organizacion <organizacion> y agente <agente>")
-    public void agregarPoliza(@Named("cuenta")String cuenta,@Named("organizacion")String organizacion,@Named("agente")String agente) {
+    @Given("estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>")
+    public void agregarPoliza(@Named("cuenta")String cuenta,@Named("producto")String producto) {
         loginSteps.login();
-        detallesDeUbicacionSteps.irANuevaPoliza(cuenta,organizacion,agente);
+        detallesDeUbicacionSteps.irANuevaPoliza(cuenta,producto);
     }
 
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>")

@@ -18,9 +18,9 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void irANuevaPoliza(String cuenta, String organizacion, String agente){
+    public void irANuevaPoliza(String cuenta, String producto){
         detallesDeUbicacionPage.irANuevaCotizacion();
-        detallesDeUbicacionPage.agregarDatos(cuenta,organizacion,agente);
+        detallesDeUbicacionPage.agregarDatos(cuenta,producto);
     }
 
     @Step

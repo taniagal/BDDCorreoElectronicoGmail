@@ -9,10 +9,11 @@ Feature: Entrar y mantener detalles de la ubicación
 
 Scenario: Agregar una nueva ubicación en una póliza de MRC.
 
-Given estoy cotizando una poliza de MRC en cuenta <cuenta>, organizacion <organizacion> y agente <agente>
+Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
+When vaya a agregar un cobertura global
 
 
 Examples:
-|cuenta     |organizacion|agente|departamento|ciudad  |direccion        |descripcion  |actividad|
-|C000888888 |Propiedad comercial|null - INT-3|Antioquia   |Medellin|KR 44 A # 45 - 00|Edificio Core|Actividad Economica|
+|cuenta     |producto           |departamento|ciudad  |direccion        |descripcion  |actividad|
+|C001888888 |Propiedad comercial|Antioquia   |Medellin|KR 44 A # 45 - 00|Edificio Core|Actividad Economica|
 
