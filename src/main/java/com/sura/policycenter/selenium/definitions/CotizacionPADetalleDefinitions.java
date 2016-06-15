@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.CotizacionPADetalleSteps;
 import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
-import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
 
@@ -36,17 +35,17 @@ public class CotizacionPADetalleDefinitions {
 
     @Given("he realizado la cotizacion <cotizacion>")
     public void givenIrALaCotizacion(@Named("cotizacion") String cotizacion) {
-        cotizacionPADetalleSteps.irABuscarSubPoliza(cotizacion);
+        cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
     }
 
     @When("ingrese al detalle de la cotizacion")
     public void verDetalleCotizacion() {
-        cotizacionPADetalleSteps.verDetalleCotizacion();
+        cotizacionPADetalleSteps.ver_Detalle_Cotizacion();
     }
 
     @Then("se debe mostrar la informacion del detalle de cotizacion por riesgo")
     public void thenMostrarInformacionDetalleCotizacion(){
-        cotizacionPADetalleSteps.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
+        cotizacionPADetalleSteps.validar_Informacion_Detalle_Cotizacion(infoDetalleCotizacion);
     }
 
     @Then("se debe mostrar en la columna \"Termino\" el limite o deducible de la cobertura en el caso de que aplique")

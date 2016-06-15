@@ -3,11 +3,11 @@ Cotizacion PA Detalle
 Meta:
 
 Narrative:
-Como Como usuario de policyCenter
-Quiero poder solicitar una cotización
-Asi ver los detalles de la cotización de una poliza de Autos por cada uno de los Riesgos (Vehiculos)
+Como usuario de policyCenter
+Quiero poder solicitar una cotizacion
+Asi ver los detalles de la cotizacion de una poliza de Autos por cada uno de los Riesgos (Vehiculos)
 
-@Issue 15119 Quote PA Detalle
+@Issue SUGWUSC-15119 Quote PA Detalle
 
 Scenario: Quote
 GivenStories: stories/policycenter/login_policy.story

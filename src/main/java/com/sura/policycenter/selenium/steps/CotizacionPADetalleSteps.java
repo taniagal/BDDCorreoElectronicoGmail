@@ -21,17 +21,17 @@ public class CotizacionPADetalleSteps extends ScenarioSteps {
     }
 
     @Step
-    public void irABuscarSubPoliza(String cotizacion) {
+    public void ir_A_Buscar_Cotizacion_Poliza(String cotizacion) {
         inicioPage().irABuscarSubPoliza(cotizacion);
     }
 
     @Step
-    public void verDetalleCotizacion() {
+    public void ver_Detalle_Cotizacion() {
         cotizacionPADetallePage.verDetalleCotizacion();
     }
 
     @Step
-    public void validarInformacionDetalleCotizacion(Map<String, String> infoDetalleCotizacion) {
+    public void validar_Informacion_Detalle_Cotizacion(Map<String, String> infoDetalleCotizacion) {
         cotizacionPADetallePage.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
     }
 
