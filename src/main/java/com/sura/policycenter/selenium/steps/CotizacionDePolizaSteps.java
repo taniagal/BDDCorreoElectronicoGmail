@@ -1,9 +1,12 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.CotizacionDePolizaPage;
+import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
+
+import java.util.Map;
 
 public class CotizacionDePolizaSteps extends ScenarioSteps  {
 
@@ -13,15 +16,38 @@ public class CotizacionDePolizaSteps extends ScenarioSteps  {
         super(pages);
     }
 
+    @Step
+    public void ingresarARevisionPoliza() {
+        cotizacionDePolizaPage.ingresarARevisionPoliza();
+    }
+
+    @Step
     public void verDetalleCotizacion() {
         cotizacionDePolizaPage.verDetalleCotizacion();
     }
 
-    public void validarInformacionCotizacion(ExamplesTable informacionCotizacion) {
-        cotizacionDePolizaPage.validarInformacionCotizacion(informacionCotizacion);
+    @Step
+    public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
+        cotizacionDePolizaPage.validarInformacionCotizacion(infoCotizacionPoliza, informacionCotizacion);
     }
 
+    @Step
     public void validarDireccion(String direccion) {
         cotizacionDePolizaPage.validarDireccion(direccion);
+    }
+
+    @Step
+    public void validarTipoRiesgoCausalFinanciera() {
+        cotizacionDePolizaPage.validarTipoRiesgoCausalFinanciera();
+    }
+
+    @Step
+    public void validarBloqueoCotizacion(String mensaje) {
+        cotizacionDePolizaPage.validarBloqueoCotizacion(mensaje);
+    }
+
+    @Step
+    public void validarFigurasCotizacion() {
+        cotizacionDePolizaPage.validarFigurasCotizacion();
     }
 }
