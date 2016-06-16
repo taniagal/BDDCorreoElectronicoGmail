@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.*;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class  DetallesContactoPage extends Guidewire {
@@ -156,13 +158,13 @@ public class  DetallesContactoPage extends Guidewire {
     public void irADirecciones(){
         waitABit(500);
         botonDirecciones.click();
-        waitABit(1500);
+        botonAgregar.waitUntilPresent();
         botonAgregar.click();
     }
 
     public void agregarDireccion(){
         botonAgregar.click();
-        waitABit(1000);
+        waitABit(1500);
     }
 
     public void agregarNombre(String segundoNombre){
@@ -423,8 +425,6 @@ public class  DetallesContactoPage extends Guidewire {
             right.append(" pais,");
         if(!"<ninguno>".equals(comboBoxDepartamento.getValue().toString()))
             right.append(" departamento,");
-        if(!"CRA 11 B #11 A - 11 Unidad SURA Torre 1 Apto 203".equals(campoTxtDireccion.getAttribute("placeholder")))
-            right.append("drireccion placeholder,");
         if(!"Esta Direccion podria estandarizarse automáticamente".equals(campoTxtDireccion.getAttribute("data-qtip")))
             right.append("drireccion data-tip,");
         if(!"200".equals(campoTxtDireccion.getAttribute("maxlength")))

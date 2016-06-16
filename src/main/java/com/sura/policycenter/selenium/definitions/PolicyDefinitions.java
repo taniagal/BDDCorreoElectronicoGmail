@@ -28,10 +28,9 @@ public class PolicyDefinitions {
         pcs.login(user, password);
     }
 
-    @When("el usuario ingresa pais $country, username $username y password $password")
-    public void login(String country, String username, String password) {
-        pcs.loginSeus(country ,username, password);
-        pcs.elegirLenguaje();
+    @When("el usuario ingresa pais <country>, username <usr> y password <pass>")
+    public void login(@Named("country") String country, @Named("usr") String user, @Named("pass") String password) {
+        pcs.loginSeus(country ,user, password);
     }
 
     @Then("el usuario deberia ver la pagina de inicio correspondiente a su rol <message>")
@@ -48,7 +47,6 @@ public class PolicyDefinitions {
     public void logout() {
         pcs.logout();
     }
-
 }
 
 
