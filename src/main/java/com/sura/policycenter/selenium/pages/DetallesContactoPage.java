@@ -170,6 +170,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void agregarNombre(String segundoNombre){
+        campoTxtSegundoNombre.waitUntilPresent();
         campoTxtSegundoNombre.clear();
         campoTxtSegundoNombre.sendKeys(segundoNombre);
         dtlContact[2]= segundoNombre;

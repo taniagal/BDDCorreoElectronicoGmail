@@ -152,7 +152,7 @@ public class CuentaPage extends Guidewire{
     }
 
     public  void verificarMensaje(String mensaje){
-        waitABit(1000);
+        waitABit(2000);
         divMensaje.waitUntilPresent();
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
