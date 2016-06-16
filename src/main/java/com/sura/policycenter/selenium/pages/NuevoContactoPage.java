@@ -28,7 +28,7 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade tipoDireccion;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade direccion;
-    @FindBy(xpath = ".//*[@id='NewContact:Update-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='NewContact:ForceDupCheckUpdate-btnInnerEl']")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade nombreContact;
@@ -104,7 +104,7 @@ public class NuevoContactoPage extends Guidewire {
     public void actualizarPersonaNatural(String primerNombre) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitABit(1000);
+        waitABit(2000);
         nombreContact.waitUntilPresent();
         assertThat(this.nombreContact.getText(), containsString(primerNombre));
     }
@@ -147,7 +147,8 @@ public class NuevoContactoPage extends Guidewire {
     public void actualizarJuridica(String razonSocial) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitABit(1000);
+        waitABit(2000);
+        desRazonSocial.waitUntilPresent();
         assertThat(this.desRazonSocial.getText().toString(), containsString(razonSocial));
 
     }
