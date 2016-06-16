@@ -85,10 +85,9 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        waitFor(menu).shouldBeVisible();
-        menu.waitUntilClickable().click();
+        menu.waitUntilPresent().click();
         waitABit(1500);
-        menu.withTimeoutOf(3, TimeUnit.SECONDS).waitUntilClickable().click();
+        menu.click();
         waitABit(500);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         return actions;
@@ -159,5 +158,6 @@ public class Guidewire extends PageObject {
             e.printStackTrace();
 
         }
+        waitABit(500);
     }
 }
