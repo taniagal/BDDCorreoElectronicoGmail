@@ -54,7 +54,7 @@ public class Guidewire {
         driver.findElement(By.xpath(".//*[@id='UnsupportedTools:MenuLinks:UnsupportedTools_PCSampleData']/div")).click();
         driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:SampleDataSetsLV:0:LoadSampleData']")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']"))).isDisplayed();
-        assertEquals("Conjunto cargado \"Sura\" correctamente.", driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")).getText());
+        assertEquals("Conjunto cargado \"Sura\" correctamente." || "Loaded set \"Sura\" successfully.", driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")).getText());
         driver.findElement(By.xpath(".//*[@id=':TabLinkMenuButton-btnIconEl']")).click();
         driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:LogoutTabBarLink']")).click();
     }
