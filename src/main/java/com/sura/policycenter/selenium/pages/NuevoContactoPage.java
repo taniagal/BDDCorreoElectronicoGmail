@@ -7,14 +7,11 @@ import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.greaterThan;
 
 public class NuevoContactoPage extends Guidewire {
 
@@ -30,8 +27,8 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade tipoDireccion;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade direccion;
-    @FindBy(xpath = ".//*[@id='NewContact:ForceDupCheckUpdate-btnInnerEl']")
-    private WebElementFacade btnActualizar;
+    @FindBy(xpath = ".//*[@id='NewContact:Update-btnInnerEl']")
+    private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade nombreContact;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
@@ -104,17 +101,16 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void actualizarPersonaNatural(String primerNombre) {
-        this.btnActualizar.waitUntilClickable();
-        this.btnActualizar.click();
+        this.botonActualizar.waitUntilClickable();
+        this.botonActualizar.click();
         waitABit(1000);
         nombreContact.waitUntilPresent();
         assertThat(this.nombreContact.getText(), containsString(primerNombre));
     }
 
     private void actualizar() {
-        this.btnActualizar.waitUntilClickable();
-        this.btnActualizar.click();
-
+        this.botonActualizar.waitUntilClickable();
+        this.botonActualizar.click();
         waitABit(1000);
     }
 
@@ -148,16 +144,16 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void actualizarJuridica(String razonSocial) {
-        this.btnActualizar.waitUntilClickable();
-        this.btnActualizar.click();
+        this.botonActualizar.waitUntilClickable();
+        this.botonActualizar.click();
         waitABit(1000);
         assertThat(this.desRazonSocial.getText().toString(), containsString(razonSocial));
 
     }
 
     public void verificarContactoExistente() {
-        this.btnActualizar.waitUntilClickable();
-        this.btnActualizar.click();
+        this.botonActualizar.waitUntilClickable();
+        this.botonActualizar.click();
         waitABit(1000);
         assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
     }
@@ -199,6 +195,6 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void btnActualizarPersonaNatural() {
-        btnActualizar.click();
+        botonActualizar.click();
     }
 }

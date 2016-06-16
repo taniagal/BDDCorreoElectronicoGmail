@@ -37,6 +37,6 @@ Then se deben habilitar la edicion de cierta informacion del contacto, actualiza
 
 
 Examples:
-|razon_social   |tipo_direccion |direccion        |nombre_comercial  |actividad_comercial                    |numero_empleados  |valor_activos  |ventas_anuales |telefono_oficina  |correo_electronico_primario  |correo_electronico_secundario|
-|UMBRELLA SA    |Vivienda       |CALLE 54B #50-25 |BDD Sura          |Acabado de productos textiles          |400               |190000000      |135000000      |888-7896      |primario@mail.com            |secundario@mail.com          |
+|razon_social|tipo_direccion |direccion        |nombre_comercial  |actividad_comercial                    |numero_empleados  |valor_activos  |ventas_anuales |telefono_oficina  |correo_electronico_primario  |correo_electronico_secundario|
+|UMBRELLA    |Vivienda       |CALLE 54B #50-25 |BDD Sura          |Acabado de productos textiles          |400               |190000000      |135000000      |888-7896          |primario@mail.com            |secundario@mail.com          |
 
