@@ -33,10 +33,14 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.clic_en_cancelar_del_mensaje_de_confirmacion(mensaje);
     }
 
-    @Then("debe mostrar el resumen de la poliza expedida con numero de la cotizacion <cotizacion> y numero de poliza <poliza>")
-    public void validarResumenDeLaPolizaExpedida(@Named("cotizacion") String cotizacion,
-                                                 @Named("poliza") String poliza) {
-        expedicionDePolizaSteps.validar_resumen_de_la_poliza_expedida(cotizacion, poliza);
+    @Then("debe mostrar el resumen de la poliza expedida con la informacion de cotizacion <infoCotizacion>, poliza <infoPoliza>, administrador de contizaciones <admorCotizacion>, nueva cotizacion <nuevaCotizacion>, escritorio <escritorio>")
+    public void validarResumenDeLaPolizaExpedida(@Named("infoCotizacion") String infoCotizacion,
+                                                 @Named("infoPoliza") String infoPoliza,
+                                                 @Named("admorCotizacion") String admorCotizacion,
+                                                 @Named("nuevaCotizacion") String nuevaCotizacion,
+                                                 @Named("escritorio") String escritorio) {
+        expedicionDePolizaSteps.validar_resumen_de_la_poliza_expedida(infoCotizacion, infoPoliza, admorCotizacion,
+                                                                      nuevaCotizacion, escritorio);
     }
 
     @Then("El proceso se debe frenar y debe mostrar el mensaje <mensaje> que retorna el servicio de riesgos")

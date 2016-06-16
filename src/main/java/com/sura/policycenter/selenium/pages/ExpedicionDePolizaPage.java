@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ExpedicionDePolizaPage extends PageObject{
 
@@ -49,6 +50,15 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
     WebElementFacade campoNumeroPoliza;
 
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:SubmissionManager-inputEl']")
+    WebElementFacade campoAdministradorDeCotizaciones;
+
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:SubmitAnother-inputEl']")
+    WebElementFacade campoCotizacionParaCuentaDiferente;
+
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToDesktop-inputEl']")
+    WebElementFacade campoIrAlEscritorio;
+
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab']")
     WebElementFacade botonEscritorio;
 
@@ -79,11 +89,15 @@ public class ExpedicionDePolizaPage extends PageObject{
         botonAceptarMensaje.click();
     }
 
-    public void validarResumenDeLaPolizaExpedida(String cotizacion, String poliza) {
-        waitFor(ExpectedConditions.visibilityOf(campoNumeroCotizacion));
-        waitFor(ExpectedConditions.visibilityOf(campoNumeroPoliza));
-        MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.containsString(cotizacion)));
-        MatcherAssert.assertThat(campoNumeroPoliza.getText(), Is.is(Matchers.containsString(poliza)));
+    public void validarResumenDeLaPolizaExpedida(String infoCotizacion, String infoPoliza, String admorCotizacion,
+                                                 String nuevaCotizacion, String escritorio) {
+        withTimeoutOf(8, TimeUnit.SECONDS).waitFor(ExpectedConditions.visibilityOf(campoNumeroCotizacion));
+        MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacion)));
+        MatcherAssert.assertThat(campoNumeroPoliza.getText(), Is.is(Matchers.containsString(infoPoliza)));
+        MatcherAssert.assertThat(campoAdministradorDeCotizaciones.getText(), Is.is(Matchers.equalTo(admorCotizacion)));
+        MatcherAssert.assertThat(campoCotizacionParaCuentaDiferente.getText(), Is.is(Matchers.equalTo(nuevaCotizacion)));
+        MatcherAssert.assertThat(campoIrAlEscritorio.getText(), Is.is(Matchers.equalTo(escritorio)));
+        waitFor(ExpectedConditions.elementToBeClickable(botonEscritorio));
     }
 
     public void validarMensajeDeRiesgos(String mensaje) {
