@@ -26,29 +26,29 @@ public class CuentaNuevaDefinitions {
 
     @When("quiera crear una cuenta para un contacto persona natural e ingrese documento, tipo de documento <tipo_documento>")
     public void crearCuentaNuevaPersonaNatural(@Named("tipo_documento")String tipoDocumento){
-        cns.abrirNuevaCuenta();
-        cns.agregarTipoDocumento(tipoDocumento);
+        cns.abrir_nueva_cuenta();
+        cns.agregar_tipo_documento(tipoDocumento);
     }
 
     @When("fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>")
     public void agregarNombres(@Named("fecha_nacimiento")String fechaNacimiento,@Named("primer_nombre")String primerNombre,
                                        @Named("primer_apellido")String primerApellido){
-        cns.agregarNombre(primerNombre,primerApellido,fechaNacimiento);
+        cns.agregar_nombre(primerNombre,primerApellido,fechaNacimiento);
     }
 
     @When("tipo de direccion <tipo_direccion>, direccion <direccion>, departamento <departamento>, ciudad <ciudad>")
     public void agregarDireccion( @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
                                   @Named("departamento")String departamento,@Named("ciudad")String ciudad){
-        cns.agregarDireccion(tipoDireccion,direccion,departamento,ciudad);
+        cns.agregar_direccion(tipoDireccion,direccion,departamento,ciudad);
     }
     @When("nombre de organizacion <nombre_organizacion> <agente>")
     public void agregarOrganizacion( @Named("nombre_organizacion")String nombreOrganizacion, @Named("agente") String agente){
-        cns.agregarOrganizacion(nombreOrganizacion,agente);
+        cns.agregar_organizacion(nombreOrganizacion,agente);
     }
 
     @Then("se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural")
     public void assertCrearNuevaCuentaPersonaNatural(@Named("primer_apellido")String primerApellido, @Named("primer_nombre")String primerNombre){
-        cns.verificarCrearCuenta(primerNombre);
+        cns.verificar_cuenta(primerNombre);
     }
 
 
@@ -57,23 +57,23 @@ public class CuentaNuevaDefinitions {
      */
     @Given("me ecnuentro en Policy Center")
     public void validarLogeoPolicyCenter(){
-        cns.validarLogeoPolicyCenter();
+        cns.validar_logeo_policyCenter();
     }
 
     @When("quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento>")
     public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento){
-        cns.abrirNuevaCuenta();
-        cns.agregarTipoDocumento(tipoDocumento);
+        cns.abrir_nueva_cuenta();
+        cns.agregar_tipo_documento(tipoDocumento);
     }
 
     @When("nombre empresa <razon_social>")
     public void agregarRazonSocial(@Named("razon_social")String razonSocial){
-        cns.agregarRazonSocial(razonSocial);
+        cns.agregar_razon_social(razonSocial);
     }
 
     @Then("se debe crear la cuenta con el cliente <razon_social> persona juridica")
     public void assertCrearNuevaCuentaPersonaJuridica(@Named("razon_social")String razonSocial){
-        cns.verificarCrearCuenta(razonSocial);
+        cns.verificar_cuenta(razonSocial);
     }
 
     /**
@@ -81,12 +81,12 @@ public class CuentaNuevaDefinitions {
      */
     @Given("que un contacto ya tiene una cuenta creada")
     public  void verificarCuentaCreada(){
-        cns.validarLogeoPolicyCenter();
+        cns.validar_logeo_policyCenter();
     }
 
     @Then("No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje> y <mensaje2>")
     public void verificarMensaje(@Named("mensaje")String mensaje){
-        cns.verificarMensaje(mensaje);
-        cns.verificarEdadMenor(mensaje);
+        cns.verificar_mensaje(mensaje);
+        cns.verificar_edad_menor(mensaje);
     }
 }

@@ -170,6 +170,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void agregarNombre(String segundoNombre){
+        campoTxtSegundoNombre.waitUntilPresent();
         campoTxtSegundoNombre.clear();
         campoTxtSegundoNombre.sendKeys(segundoNombre);
         dtlContact[2]= segundoNombre;
@@ -182,7 +183,7 @@ public class  DetallesContactoPage extends Guidewire {
         dtlContact[3]= segundoApellido;
     }
 
-    public void agregarLists(String profesion,String estadoCivil,String tipoFamilia){
+    public void agregarCombos(String profesion, String estadoCivil, String tipoFamilia){
         selectItem(comboBoxProfesion, profesion);
         selectItem(comboBoxEstadoCivil,estadoCivil);
         selectItem(comboBoxTipoFamilia, tipoFamilia);

@@ -121,6 +121,7 @@ public class BusquedaContactoPage extends Guidewire {
             nombreEmpresaContact.type(nombre);
         }
         botonBuscar.click();
+        selectContact.waitUntilPresent();
         selectContact.click();
     }
 
@@ -138,6 +139,7 @@ public class BusquedaContactoPage extends Guidewire {
         nombreContact.type(nombre);
         apellidoContact.type(apellido);
         botonBuscar.click();
+        selectContact.waitUntilPresent();
         selectContact.click();
     }
 
@@ -322,6 +324,7 @@ public class BusquedaContactoPage extends Guidewire {
         waitABit(1000);
         txtNombreEmpresa.type(nombreEmpresa);
         botonBuscar.click();
+        selectContact.waitUntilPresent();
         selectContact.click();
     }
 
