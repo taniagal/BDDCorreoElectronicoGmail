@@ -18,8 +18,8 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_coberturas_globales(String descripcion, String tipoCobertura, String valor){
-        coberturaGlobalPage.agregarCoberturasGlobales(descripcion, tipoCobertura, valor);
+    public void agregar_coberturas_globales(String descripcion, String tipoCobertura, String valor, String nombreCobertura){
+        coberturaGlobalPage.agregarCoberturasGlobales(descripcion, tipoCobertura, valor,nombreCobertura);
     }
 
     @Step

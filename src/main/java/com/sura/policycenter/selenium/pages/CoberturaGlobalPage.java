@@ -39,6 +39,12 @@ public class CoberturaGlobalPage extends Guidewire {
     private WebElementFacade linkUbicacionDisponible;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketCovLV:0:Description']")
     private WebElementFacade linkCobertura1;
+    @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:coverageSelect-inputEl']")
+    private WebElementFacade comboTextCoberturas;
+    @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxGenerico;
+    @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
+    private WebElementFacade campoTxtGenerico;
 
 
     public CoberturaGlobalPage(WebDriver driver){
@@ -49,19 +55,40 @@ public class CoberturaGlobalPage extends Guidewire {
         menuItemCoberturaGlobal.click();
     }
 
-    public void agregarCoberturasGlobales(String descripcion, String tipoCobertura, String valor){
+    public void agregarCoberturasGlobales(String descripcion, String tipoCobertura, String valor, String nombreCobertura){
         botonAgregarCoberturaGeneral.waitUntilPresent().click();
         campoTxtDescripcion.sendKeys(descripcion);
         selectItem(comboBoxTipoCobertura,tipoCobertura);
         waitABit(1000);
+        switch(tipoCobertura) {
+            case "Multiples ubicaciones":
+                cargarMultiplesUbicaciones(valor);
+                break;
+            case "Una cobertura":
+                cargarCoberturaUnica(nombreCobertura, valor);
+                break;
+        }
+
+        waitABit(1000);
+        botonAceptar.click();
+    }
+
+    public void cargarCoberturaUnica(String nombreCobertura,String valor){
+        comboTextCoberturas.waitUntilPresent();
+        selectItem(comboTextCoberturas,nombreCobertura);
+        waitABit(500);
+        linkCoberturas.click();
+        checkBoxGenerico.waitUntilPresent().click();
+        campoTxtGenerico.sendKeys(valor);
+        linkDetalles.click();
+    }
+
+    public void cargarMultiplesUbicaciones(String valor){
         linkCoberturas.click();
         checkBoxDanosMateriales.click();
         campoTxtValorAseguradoDanosMateriales.sendKeys(valor);
         linkDetalles.click();
-        if(tipoCobertura.equals("Multiples ubicaciones"))
-            linkUbicacionDisponible.waitUntilPresent().click();
-        waitABit(1000);
-        botonAceptar.click();
+        linkUbicacionDisponible.waitUntilPresent().click();
     }
 
     public void verificarCoberturasIncluidas() {
