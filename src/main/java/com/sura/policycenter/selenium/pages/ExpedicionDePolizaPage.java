@@ -100,7 +100,7 @@ public class ExpedicionDePolizaPage extends PageObject{
         waitFor(ExpectedConditions.elementToBeClickable(botonEscritorio));
     }
 
-    public void validarMensajeDeRiesgos(String mensaje) {
+    public void validarMensaje( String mensaje) {
         String mensajes[] = mensaje.split("\\^");
         Integer contadorMensajesOk = 0;
         Integer numeroMensajes = mensajes.length;

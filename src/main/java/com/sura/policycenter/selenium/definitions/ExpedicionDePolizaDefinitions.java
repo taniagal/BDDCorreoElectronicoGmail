@@ -43,9 +43,9 @@ public class ExpedicionDePolizaDefinitions {
                                                                       nuevaCotizacion, escritorio);
     }
 
-    @Then("El proceso se debe frenar y debe mostrar el mensaje <mensaje> que retorna el servicio de riesgos")
-    public void validarMensajeDeRiesgos(@Named("mensaje") String mensaje){
-        expedicionDePolizaSteps.validar_mensaje_de_riesgos(mensaje);
+    @Then("El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>")
+    public void validarMensajeDeRiesgos(@Named("mensaje") String mensaje) {
+        expedicionDePolizaSteps.validar_mensaje(mensaje);
     }
 
     @Then("debe volver a la pantalla de cotizacion")

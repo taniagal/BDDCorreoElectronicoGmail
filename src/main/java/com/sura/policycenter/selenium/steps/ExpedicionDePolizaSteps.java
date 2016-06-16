@@ -32,8 +32,8 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validar_mensaje_de_riesgos(String mensaje) {
-        expedicionDePolizaPage.validarMensajeDeRiesgos(mensaje);
+    public void validar_mensaje(String mensaje) {
+        expedicionDePolizaPage.validarMensaje(mensaje);
     }
 
     @Step
