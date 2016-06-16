@@ -89,7 +89,7 @@ public class NuevoContactoPage extends Guidewire {
         enter(departamento).into(comboBoxDepartamento);
         seleccionarCombo(departamento, comboBoxDepartamento);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(1000);
+        waitABit(1200);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
