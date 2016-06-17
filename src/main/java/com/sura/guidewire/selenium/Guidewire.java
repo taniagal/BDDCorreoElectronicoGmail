@@ -158,6 +158,6 @@ public class Guidewire extends PageObject {
             e.printStackTrace();
 
         }
-        waitABit(500);
+        waitABit(1000);
     }
 }
