@@ -14,11 +14,11 @@ Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 
 Examples:
 |cotizacion|mensaje|
-#PEPS: Asegurado - Tomador - Tomador adicional - Intereses adicionales
+!-- PEPS: Asegurado - Tomador - Tomador adicional - Intereses adicionales
 |22222228|ANTONIO RESTREPO con el(los) rol(es) (CONDUCTOR) es un riesgo no estándar y debe ser autorizado.|
 |22222238|FRANK RAMIREZ ALZATE con el(los) rol(es) (ASEGURADO NOMBRADO, TITULAR DE LA CUENTA) es un riesgo no estándar y debe ser autorizado.|
 |22222228|ANTONIO RESTREPO
-#Riesgos Consultables: Tomador - Asegurado - Placa, motor, chasis
+!-- Riesgos Consultables: Tomador - Asegurado - Placa, motor, chasis
 |22222210|JOSE PAEZ ALZATE, El tomador es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 |22222227|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 |22222226|La placa AFF56, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
@@ -34,9 +34,9 @@ Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 
 Examples:
 |cotizacion|mensaje|
-#PEPS: Tomador
+!-- PEPS: Tomador
 |22222237|FRANK RAMIREZ ALZATE con el(los) rol(es) (ASEGURADO NOMBRADO, TITULAR DE LA CUENTA) es un riesgo no estándar y debe ser autorizado.|
-#Riesgos consultables: Tomador - interes adicional
+!-- Riesgos consultables: Tomador - interes adicional
 |22222211|JOSE PAEZ ALZATE, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 |22222211|JOSE MORALES, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 
