@@ -21,9 +21,9 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
 
     @Step
-    public void abrir_detalles_contacto_persona(String primerNombre, String primerApellido){
+    public void abrir_detalles_contacto(String tipoDocumento, String documento){
         inicioPage().irABuscarContacto();
-        busquedaContactoPage.consultarContactoPorNombresYApellidos("CEDULA DE CIUDADANIA",primerNombre,"",primerApellido,"");
+        busquedaContactoPage.consultarContactoNumDoc(tipoDocumento,documento);
         busquedaContactoPage.seleccionarContacto();
     }
 
@@ -40,8 +40,12 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_nombre(String segundoNombre) {
+    public void editar_contacto(){
         detallesContactoPage.editarContacto();
+    }
+
+    @Step
+    public void agregar_nombre(String segundoNombre) {
         detallesContactoPage.agregarNombre(segundoNombre);
     }
 
@@ -82,7 +86,6 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
     @Step
     public void agregar_razon_social(String nombreComercial, String actividadComercial) {
-        detallesContactoPage.editarContacto();
         detallesContactoPage.agregarRazonSocial(nombreComercial,actividadComercial);
     }
 
@@ -98,7 +101,6 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
     @Step
     public void ir_a_direcciones() {
-        detallesContactoPage.editarContacto();
         detallesContactoPage.irADirecciones();
     }
 

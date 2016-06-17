@@ -8,31 +8,32 @@ quiero poder utilizar el modo de entrada para direcciones de contacto
 
 Scenario: Agregar direccion a un contacto
 
-GivenStories: stories/policycenter/crear_nuevo_contacto_natural.story
-Given que ya tengo un contacto creado
-When se vaya a ingresar la nueva direccion y valide los campos en pantalla
+GivenStories: stories/policycenter/login_policy.story
+Given tengo un contacto con <tipo_documento> c. <documento>
+When quiera editar la informacion del contacto con <tipo_documento> c. <documento>
+And se vaya a ingresar la nueva direccion y valide los campos en pantalla
 And valide la informacion en los campos
 And ingreso la informacion de direccion <direccion>, <departamento>, <ciudad>, tipo de direccion <tipoDireccion>
 And se actualiza el contacto
 Then en la lista de direcciones agregadas se debe ver la nueva direccion <tipoDireccion>
 
-
 Examples:
-|tipoDocumento       |numeroDeDocumento|primerNombre|primerApellido|tipoDireccion|direccion        |departamento|ciudad  |
-|CEDULA DE CIUDADANIA|564-36-5489      |SASHA       |AKERMAN       |Negocio      |CALLE 60B #10-157|ANTIOQUIA   |MEDELLIN|
+|tipo_documento      |documento |tipoDireccion|direccion        |departamento|ciudad  |
+|CEDULA DE CIUDADANIA|1234567891|Negocio      |CALLE 60B #10-157|ANTIOQUIA   |MEDELLIN|
+
 
 Scenario: Agregar direccion a un contacto del mismo tipo
 
-
-Given que ya tengo un contacto creado
-When se vaya a ingresar la nueva direccion y valide los campos en pantalla
+GivenStories: stories/policycenter/login_policy.story
+Given tengo un contacto con <tipo_documento> c. <documento>
+When quiera editar la informacion del contacto con <tipo_documento> c. <documento>
+And se vaya a ingresar la nueva direccion y valide los campos en pantalla
 And ingreso la informacion de direccion <direccion>, <departamento>, <ciudad>, tipo de direccion <tipoDireccion>
 And agrego fila de direccion
 And ingreso la informacion de direccion <direccion>, <departamento>, <ciudad>, tipo de direccion <tipoDireccion>
 And se actualiza el contacto
 Then el sistema me debe impedir la repeticion del tipo de direccion y mostrar el mensaje <mensaje>
 
-
 Examples:
-|tipoDocumento       |numeroDeDocumento|primerNombre|primerApellido|tipoDireccion|direccion      |departamento|ciudad  |mensaje|
-|CEDULA DE CIUDADANIA|564-36-5489      |SASHA       |AKERMAN       |Vivienda     |CRA 60B #10-157|ANTIOQUIA   |MEDELLIN|No se puede ingresar más de una dirección al contacto con el mismo Tipo de dirección|
+|tipo_documento      |documento |tipoDireccion|direccion      |departamento|ciudad  |mensaje|
+|CEDULA DE CIUDADANIA|1234567891|Vivienda     |CRA 60B #10-157|ANTIOQUIA   |MEDELLIN|No se puede ingresar más de una dirección al contacto con el mismo Tipo de dirección|

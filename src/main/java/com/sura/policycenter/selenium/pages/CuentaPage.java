@@ -100,8 +100,8 @@ public class CuentaPage extends Guidewire{
 
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        enter(departamento).into(comboBoxDepartamento);
-        seleccionarCombo(departamento, comboBoxDepartamento);
+        selectItem(comboBoxDepartamento,departamento);
+        waitABit(4000);
         selectItem(comboBoxCiudad,ciudad);
         waitABit(2000);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);

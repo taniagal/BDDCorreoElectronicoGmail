@@ -3,6 +3,7 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.DetallesContactoSteps;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -14,35 +15,33 @@ public class DetallesContactoDefinitions {
     private SeusLoginSteps seusLogin;
 
     @Steps
-    private DetallesContactoSteps dcs;
+    private DetallesContactoSteps detallesContactoSteps;
 
     /**
      * ESCENARIO 1
      */
-    @When("quiera ver informacion detallada del contacto  con nombre <primer_nombre> y con apellido <primer_apellido>")
-    public void whenConsultarDetallePersonaNatural(@Named("primer_nombre") String primerNombre, @Named("primer_apellido") String primerApellido) {
-        dcs.abrir_detalles_contacto_persona(primerNombre,primerApellido);
+    @Given("tengo un contacto con <tipo_documento> c. <documento>")
+    public void givenConsultarContacto(@Named("tipo_documento") String tipo_documento,@Named("documento") String documento){
     }
 
-    @Then("se debe ver minimo la siguiente informacion: Primer nombre, Segundo nombre, Primer apellido, Segundo apellido,\r\nTipo de documento, Numero de documento, Sexo,Fecha de nacimiento, Fecha de fallecimiento, Causa de fallecimiento,\r\nProfesion, Estado civil, Tipo familia,  Telefono primario, Telefono celular y Correo electronico primario")
+    @When("quiera ver informacion detallada del contacto con <tipo_documento> c. <documento>")
+    public void whenConsultarDetallePersonaNatural(@Named("tipo_documento") String tipo_documento,@Named("documento") String documento) {
+        detallesContactoSteps.abrir_detalles_contacto(tipo_documento,documento);
+    }
+
+    @Then("se debe ver minimo la siguiente informacion definida para el panel de detalles de persona narural")
     public void assertConsultarDetallePersonaNatural() {
-        dcs.verificar_campos_persona_natural();
+        detallesContactoSteps.verificar_campos_persona_natural();
         seusLogin.close();
     }
 
     /**
      * ESCENARIO 2
      */
-    @When("quiera ver informacion detallada del contacto con nombre empresa <nombre_empresa>")
-    public void whenConsultarDetallePersonaJuridica(@Named("nombre_empresa")String nombreEmpresa) {
-        dcs.abrir_detalles_contacto_empresa(nombreEmpresa);
-    }
-
-    @Then("se debe ver minimo la siguiente informacion: Razon social, Nombre comercial, Tipo de documento, Numero de\n" +
-            "documento, Actividad economica, Numero de empleados, Valor de activos, ventas anuales, Telefono de la oficina, Fax,\n" +
-            "Correo electronico primario")
+    @Then("se debe ver minimo la siguiente informacion definida para el panel de detalles de persona juridica")
     public void assertConsultarDetallePersonaJuridica(){
-        dcs.verificar_campos_persona_juridica();
+        detallesContactoSteps.verificar_campos_persona_juridica();
+        seusLogin.close();
     }
 
 }
