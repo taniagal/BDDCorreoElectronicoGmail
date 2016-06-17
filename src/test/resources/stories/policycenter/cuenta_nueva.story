@@ -7,7 +7,7 @@ Quiero ser capaz de crear nuevas cuentas en policy center
 
 Scenario: crear una cuenta para un contacto persona natural.
 
-Given que me encuentro en el sistema de policy center
+GivenStories: stories/policycenter/login_policy.story
 When quiera crear una cuenta para un contacto persona natural e ingrese documento, tipo de documento <tipo_documento>
 And nombre de organizacion <nombre_organizacion> <agente>
 And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>
@@ -20,7 +20,7 @@ Examples:
 
 Scenario: crear una cuenta para un contacto persona juridica.
 
-Given me ecnuentro en Policy Center
+GivenStories: stories/policycenter/login_policy.story
 When quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento>
 And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>

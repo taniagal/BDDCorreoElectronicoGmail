@@ -193,24 +193,31 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void agregarTelefonosResidencial(String telefonoResidencial){
+        campoTxtTelefonoResidencial.clear();
+        waitABit(200);
         campoTxtTelefonoResidencial.type(telefonoResidencial);
         dtlContact[11]= telefonoResidencial;
     }
 
     public void agregarTelefonoTrabajo(String telefonoTrabajo){
+        campoTxtTelefonoTrabajo.clear();
+        waitABit(200);
         campoTxtTelefonoTrabajo.sendKeys(telefonoTrabajo);
         dtlContact[12]= telefonoTrabajo;
     }
 
     public void agregarTelefonoCelular(String telefonoCelular){
+        campoTxtTelefonoCelular.clear();
+        waitABit(200);
         campoTxtTelefonoCelular.sendKeys(telefonoCelular);
         dtlContact[10]= telefonoCelular;
     }
 
     public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
-        campoTxtCorreoElectronicoPrimario.click();
+        campoTxtCorreoElectronicoPrimario.clear();
         waitABit(1000);
         campoTxtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
+        campoTxtCorreoElectronicoSecundario.clear();
         waitABit(500);
         campoTxtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
         dtlContact[13]= correoElectronicoPrimario;
@@ -222,7 +229,7 @@ public class  DetallesContactoPage extends Guidewire {
      * DETALLE CONTACTO EDICION PERSONA JURIDICA
      */
     public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
-        campoTxtNombreComercial.waitUntilPresent();
+        campoTxtNombreComercial.waitUntilPresent().clear();
         campoTxtNombreComercial.sendKeys(nombreComercial);
         selectItem(comboBoxActividadComercial, actividadComercial);
         dtlCntJ[0]= nombreComercial;

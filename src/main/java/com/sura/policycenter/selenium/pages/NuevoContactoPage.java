@@ -86,8 +86,8 @@ public class NuevoContactoPage extends Guidewire {
 
     public void ingresarDireccionDepartamenteYCiudad(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
-        enter(departamento).into(comboBoxDepartamento);
-        seleccionarCombo(departamento, comboBoxDepartamento);
+        selectItem(comboBoxDepartamento,departamento);
+        waitABit(4000);
         selectItem(comboBoxCiudad,ciudad);
         waitABit(1200);
     }
@@ -95,7 +95,7 @@ public class NuevoContactoPage extends Guidewire {
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
         direccion2.sendKeys(direccion);
         selectItem(comboBoxDepartamento2,departamento);
-        waitABit(2200);
+        waitABit(4000);
         selectItem(comboBoxCiudad2,ciudad);
         waitABit(1200);
         selectItem(tipoDireccion2,tipoDireccion);

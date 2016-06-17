@@ -18,7 +18,13 @@ public class DetallesContactoEdicionDefinitions {
     /**
      * ESCENARIO 1
      */
-    @When("quiera editar la informacion del contacto con segundo nombre <segundo_nombre>")
+    @When("quiera editar la informacion del contacto con <tipo_documento> c. <documento>")
+    public void editarContacto(@Named("tipo_documento") String tipo_documento,@Named("documento") String documento){
+        detallesContactoSteps.abrir_detalles_contacto(tipo_documento,documento);
+        detallesContactoSteps.editar_contacto();
+    }
+
+    @When("segundo nombre <segundo_nombre>")
     public void agregarNombre(@Named("segundo_nombre")String segundoNombre){
         detallesContactoSteps.agregar_nombre(segundoNombre);
         detallesContactoSteps.verificar_estado_de_documento();
@@ -59,7 +65,7 @@ public class DetallesContactoEdicionDefinitions {
     /**
      * ESCENARIO 2
      */
-    @When("quiera editar la informacion del contacto con razon social <razon_social>, nombre comercial <nombre_comercial>, actividad comercial <actividad_comercial>")
+    @When("razon social <razon_social>, nombre comercial <nombre_comercial>, actividad comercial <actividad_comercial>")
     public void agregarRazonSocial(@Named("nombre_comercial")String nombreComercial, @Named("actividad_comercial")String actividadComercial){
         detallesContactoSteps.agregar_razon_social(nombreComercial,actividadComercial);
         detallesContactoSteps.verificar_estado_de_documento();
