@@ -6,9 +6,11 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 import java.util.Map;
@@ -50,9 +52,25 @@ public class BusquedaActividadesPage extends PageObject {
     private WebElementFacade grdEstado;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
     private WebElementFacade msgFiltrosRequeridos;
+    private @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
+    WebElementFacade menuBuscar;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ActivitySearch']")
+    private WebElementFacade menuBuscarActividades;
 
     public BusquedaActividadesPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void irABuscarActividades() {
+        waitFor(ExpectedConditions.elementToBeClickable(menuBuscar));
+        menuBuscar.click();
+        waitForAnyTextToAppear("Buscar", "Búsqueda");
+        waitFor(ExpectedConditions.elementToBeClickable(menuBuscarActividades));
+        menuBuscar.click();
+        menuBuscar.sendKeys(Keys.ARROW_DOWN);
+        waitFor(ExpectedConditions.visibilityOf(menuBuscarActividades));
+        menuBuscarActividades.click();
+        waitForTextToAppear("Búsqueda");
     }
 
     public void filtrarPorAsignado(String usuario) {
@@ -61,10 +79,10 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
-        waitABit(1000);
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
+        waitFor(ExpectedConditions.elementToBeClickable(btnBuscar));
         btnBuscar.click();
-        waitABit(1000);
+        waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitiesSearchLV-body']")));
         MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
         MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
@@ -86,7 +104,8 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
-        waitABit(2000);
+//        waitABit(2000);
+        waitFor(ExpectedConditions.visibilityOf(txtNumeroPoliza));
         txtNumeroPoliza.sendKeys(numeroPoliza);
     }
 
