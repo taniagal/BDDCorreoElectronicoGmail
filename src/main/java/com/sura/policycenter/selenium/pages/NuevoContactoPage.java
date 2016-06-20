@@ -89,7 +89,7 @@ public class NuevoContactoPage extends Guidewire {
         selectItem(comboBoxDepartamento,departamento);
         waitABit(4000);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(1200);
+        waitABit(1500);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
@@ -99,6 +99,7 @@ public class NuevoContactoPage extends Guidewire {
         selectItem(comboBoxCiudad2,ciudad);
         waitABit(1200);
         selectItem(tipoDireccion2,tipoDireccion);
+        waitABit(1500);
     }
 
     public void actualizarPersonaNatural(String primerNombre) {

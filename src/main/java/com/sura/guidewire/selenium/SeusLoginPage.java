@@ -3,8 +3,12 @@ package com.sura.guidewire.selenium;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class SeusLoginPage extends Guidewire {
@@ -25,10 +29,10 @@ public class SeusLoginPage extends Guidewire {
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
         getDriver().manage().window().maximize();
-        pais.waitUntilVisible();
     }
 
     public void login(String pais, String usuario, String contrasenia) {
+        withTimeoutOf(100, SECONDS).waitForPresenceOf(By.xpath(".//*[@id='country']"));
         this.usuario.clear();
         this.contrasenia.clear();
         this.pais.click();

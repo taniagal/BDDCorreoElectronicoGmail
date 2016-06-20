@@ -239,7 +239,7 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
         waitABit(500);
-        campoTxtNumeroEmpleados.click();
+        campoTxtNumeroEmpleados.clear();
         campoTxtNumeroEmpleados.sendKeys(numeroEmpleados);
         campoTxtValorActivos.clear();
         campoTxtValorActivos.sendKeys(valorActivos);

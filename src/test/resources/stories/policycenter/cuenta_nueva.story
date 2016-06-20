@@ -35,7 +35,7 @@ Examples:
 
 Scenario: Creacion unica de cuenta persona natural y crear una cuenta para un contacto menor de edad
 
-Given que un contacto ya tiene una cuenta creada
+GivenStories: stories/policycenter/login_policy.story
 When quiera crear una cuenta para un contacto persona natural e ingrese documento, tipo de documento <tipo_documento>
 And nombre de organizacion <nombre_organizacion> <agente>
 And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>

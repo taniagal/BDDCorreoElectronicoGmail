@@ -52,11 +52,6 @@ public class CuentaNuevaDefinitions {
     /**
      * ESCENARIO 2
      */
-    @Given("me ecnuentro en Policy Center")
-    public void validarLogeoPolicyCenter(){
-        cuentaNuevaSteps.validar_logeo_policyCenter();
-    }
-
     @When("quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento>")
     public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento){
         cuentaNuevaSteps.abrir_nueva_cuenta();
@@ -77,11 +72,6 @@ public class CuentaNuevaDefinitions {
     /**
      * ESCENARIO 3
      */
-    @Given("que un contacto ya tiene una cuenta creada")
-    public  void verificarCuentaCreada(){
-        cuentaNuevaSteps.validar_logeo_policyCenter();
-    }
-
     @Then("No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje> y <mensaje2>")
     public void verificarMensaje(@Named("mensaje")String mensaje){
         cuentaNuevaSteps.verificar_mensaje(mensaje);
