@@ -34,8 +34,6 @@ public class Guidewire extends PageObject {
     WebElementFacade internacional;
     @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
     WebElementFacade idioma;
-    @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
-    private WebElementFacade espaniol;
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
     private WebElementFacade usuario;
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
@@ -48,8 +46,6 @@ public class Guidewire extends PageObject {
     private WebElementFacade btnLogout;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     private WebElementFacade btnLogout2;
-    @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
-    private WebElementFacade lblMisActividades;
 
     public Guidewire(WebDriver driver) {
         super(driver);

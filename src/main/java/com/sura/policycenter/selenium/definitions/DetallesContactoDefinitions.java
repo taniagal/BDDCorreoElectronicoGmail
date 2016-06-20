@@ -21,12 +21,12 @@ public class DetallesContactoDefinitions {
      * ESCENARIO 1
      */
     @Given("tengo un contacto con <tipo_documento> c. <documento>")
-    public void givenConsultarContacto(@Named("tipo_documento") String tipo_documento,@Named("documento") String documento){
+    public void givenConsultarContacto(@Named("tipo_documento") String tipoDocumento,@Named("documento") String documento){
     }
 
     @When("quiera ver informacion detallada del contacto con <tipo_documento> c. <documento>")
-    public void whenConsultarDetallePersonaNatural(@Named("tipo_documento") String tipo_documento,@Named("documento") String documento) {
-        detallesContactoSteps.abrir_detalles_contacto(tipo_documento,documento);
+    public void whenConsultarDetallePersonaNatural(@Named("tipo_documento") String tipoDocumento,@Named("documento") String documento) {
+        detallesContactoSteps.abrir_detalles_contacto(tipoDocumento,documento);
     }
 
     @Then("se debe ver minimo la siguiente informacion definida para el panel de detalles de persona narural")
