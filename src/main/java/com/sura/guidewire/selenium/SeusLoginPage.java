@@ -32,7 +32,6 @@ public class SeusLoginPage extends Guidewire {
     }
 
     public void login(String pais, String usuario, String contrasenia) {
-        withTimeoutOf(100, SECONDS).waitForPresenceOf(By.xpath(".//*[@id='country']"));
         this.usuario.clear();
         this.contrasenia.clear();
         this.pais.click();

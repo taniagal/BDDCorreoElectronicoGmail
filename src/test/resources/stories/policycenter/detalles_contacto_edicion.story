@@ -42,5 +42,5 @@ Then se deben habilitar la edicion de cierta informacion del contacto, actualiza
 
 Examples:
 |tipo_documento|documento |razon_social|tipo_direccion|direccion       |nombre_comercial|actividad_comercial          |numero_empleados|valor_activos|ventas_anuales|telefono_oficina|correo_electronico_primario|correo_electronico_secundario|
-|NIT           |9202086745|UMBRELLA    |Vivienda      |CALLE 54B #50-25|Taxi Medellín   |Acabado de productos textiles|400             |190000000    |135000000     |888-7896        |primario@mail.com          |secundario@mail.com          |
+|NIT           |9202086745|UMBRELLA    |Vivienda      |CALLE 54B #50-25|Taxi Medellin   |Acabado de productos textiles|400             |190000000    |135000000     |888-7896        |primario@mail.com          |secundario@mail.com          |
 

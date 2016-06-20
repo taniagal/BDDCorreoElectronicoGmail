@@ -167,6 +167,7 @@ public class BusquedaContactoPage extends Guidewire {
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
         waitABit(2500);
+        txtTipoDoc.waitUntilPresent();
         txtTipoDoc.clear();
         txtTipoDoc.sendKeys(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
@@ -292,7 +293,6 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void buscarContacto(String tipoContacto, String nombre, String apellido, String numero){
-
         waitABit(1000);
         txtTipoDoc.waitUntilClickable();
         txtTipoDoc.click();

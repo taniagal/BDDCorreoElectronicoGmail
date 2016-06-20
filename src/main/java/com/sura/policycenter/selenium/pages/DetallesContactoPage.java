@@ -334,6 +334,7 @@ public class  DetallesContactoPage extends Guidewire {
     */
     public  void verificarCamposPersonaNatural(){
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
+        labelPrimerNombre.waitUntilPresent();
         if(!labelPrimerNombre.isPresent())
             notPresent.append(" primer_nombre,");
         if(!labelSegundoNombre.isPresent())
@@ -370,6 +371,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void verificarCamposPersonaJuridica() {
+        labelRazonSocial.waitUntilPresent();
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelRazonSocial.isPresent())
             notPresent.append(" razon_social,");
