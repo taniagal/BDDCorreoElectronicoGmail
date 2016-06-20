@@ -161,6 +161,7 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
     }
 
     public Integer tamanioListaAgentesPorFiltro(String caracteresDigitados) {
+
         waitFor($(TXT_NOMBRE_AGENTE)).shouldBeCurrentlyVisible();
         waitFor($(TXT_NOMBRE_AGENTE)).shouldBeEnabled();
         enter(caracteresDigitados).into($(TXT_NOMBRE_AGENTE));

@@ -39,8 +39,8 @@ public class CotizacionDefinitions {
         LOGGER.info("CotizacionDefinitions.crearNuevaCotizacion");
     }
 
-    @Given("ya existe una cotización en estado $cotizado del cliente con número de cuenta $numCuenta para el producto $producto")
-    @Alias("existe una cuenta/cliente en $estado para el cliente con número de cuenta $cuenta")
+    @Given("ya existe una $objeto en estado $cotizado del cliente con número de cuenta $numCuenta para el producto $producto")
+    @Alias("existe una $objeto en $estado para el cliente con número de cuenta $cuenta")
     public void existeCotizacionCotizadaEnProductoMultiriesgoCorporativo(){
         LOGGER.info("CotizacionDefinitions.existeCotizacionCotizadaEnProductoMultiriesgoCorporativo");
     }
@@ -142,7 +142,6 @@ public class CotizacionDefinitions {
 
     // TODO: 15/06/2016 Entra en otras HUs
     @Then("al seleccionar el botón $boton deberá ver la página $pagina")
-    @Pending
     public void seleccionarBtnYValidarPaginaMostrada(String boton, String pagina){
         cotizador.getCotizacionPage().seleccionarBtn(boton);
         assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF(pagina), is(equalTo(pagina)));
