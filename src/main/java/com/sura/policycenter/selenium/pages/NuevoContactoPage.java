@@ -93,6 +93,7 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
+        direccion2.waitUntilPresent();
         direccion2.sendKeys(direccion);
         selectItem(comboBoxDepartamento2,departamento);
         waitABit(4000);

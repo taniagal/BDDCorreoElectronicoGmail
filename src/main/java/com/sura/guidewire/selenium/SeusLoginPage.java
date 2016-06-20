@@ -32,6 +32,7 @@ public class SeusLoginPage extends Guidewire {
     }
 
     public void login(String pais, String usuario, String contrasenia) {
+        this.usuario.waitUntilPresent();
         this.usuario.clear();
         this.contrasenia.clear();
         this.pais.click();
