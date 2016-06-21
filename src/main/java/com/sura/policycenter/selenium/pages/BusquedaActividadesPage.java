@@ -8,6 +8,7 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -54,27 +55,30 @@ public class BusquedaActividadesPage extends PageObject {
     private WebElementFacade msgFiltrosRequeridos;
     private @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
     WebElementFacade menuBuscar;
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab:Search_ActivitySearch']")
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ActivitySearch']/div")
     private WebElementFacade menuBuscarActividades;
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab']")
+    private WebElementFacade menuEscritorio;
 
     public BusquedaActividadesPage(WebDriver driver) {
         super(driver);
     }
 
     public void irABuscarActividades() {
-        waitFor(ExpectedConditions.elementToBeClickable(menuBuscar));
+        waitFor(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:SearchTab']")));
+        waitABit(1000);
         menuBuscar.click();
-        waitForAnyTextToAppear("Buscar", "Búsqueda");
-        waitFor(ExpectedConditions.elementToBeClickable(menuBuscarActividades));
-        menuBuscar.click();
-        menuBuscar.sendKeys(Keys.ARROW_DOWN);
+        waitForTextToAppear("Buscar");
         waitFor(ExpectedConditions.visibilityOf(menuBuscarActividades));
+        waitFor(ExpectedConditions.elementToBeClickable(By.xpath("//td[@id='Search:MenuLinks:Search_ActivitySearch']/div/span")));
+        waitABit(1000);
         menuBuscarActividades.click();
         waitForTextToAppear("Búsqueda");
+        this.limpiarFiltros();
     }
 
     public void filtrarPorAsignado(String usuario) {
-        this.limpiarFiltros();
+        waitFor(ExpectedConditions.visibilityOf(txtAsignadoA));
         txtAsignadoA.sendKeys(usuario);
     }
 
@@ -82,7 +86,10 @@ public class BusquedaActividadesPage extends PageObject {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         waitFor(ExpectedConditions.elementToBeClickable(btnBuscar));
         btnBuscar.click();
+//        waitForTextToAppear("Normal", 5000);
+        waitABit(1000);
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitiesSearchLV-body']")));
+        waitFor(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitiesSearchLV-body']")));
         MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
         MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
@@ -92,6 +99,8 @@ public class BusquedaActividadesPage extends PageObject {
         MatcherAssert.assertThat(this.grdProducto.getText(), Matchers.containsString(exampleTable.get("producto")));
         MatcherAssert.assertThat(this.grdAsignadoPor.getText(), Matchers.containsString(exampleTable.get("asignadoPor")));
         MatcherAssert.assertThat(this.grdEstado.getText(), Is.is(Matchers.equalTo(exampleTable.get("estado"))));
+        menuEscritorio.click();
+        waitForTextToAppear("Mis actividades");
     }
 
     public void limpiarFiltros(){
@@ -104,50 +113,59 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
-//        waitABit(2000);
         waitFor(ExpectedConditions.visibilityOf(txtNumeroPoliza));
         txtNumeroPoliza.sendKeys(numeroPoliza);
     }
 
     public void filtrarPorNumeroDeCuenta(String numeroCuenta) {
-        waitABit(2000);
+        waitFor(ExpectedConditions.visibilityOf(txtNumeroCuenta));
         txtNumeroCuenta.sendKeys(numeroCuenta);
     }
 
     public void buscarSinFiltro() {
         waitABit(2000);
-        limpiarFiltros();
+        this.limpiarFiltros();
     }
 
     public void validarMensjeFiltroRequerido(String mensaje) {
-        btnBuscar.click();
-        txtNumeroCuenta.clear();
-        MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
+        try {
+            waitFor(ExpectedConditions.elementToBeClickable(btnBuscar));
+            btnBuscar.click();
+            waitForPresenceOf(".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div");
+            MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
-        this.limpiarFiltros();
+        waitFor(ExpectedConditions.visibilityOf(txtAsignadoA));
         txtAsignadoA.sendKeys(usuario);
+        txtPrioridad.clear();
         txtPrioridad.sendKeys(prioridad);
         txtPrioridad.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(String usuario, String estadoActividad) {
-        this.limpiarFiltros();
+        waitFor(ExpectedConditions.visibilityOf(txtAsignadoA));
+        waitFor(ExpectedConditions.elementToBeClickable(txtAsignadoA));
         txtAsignadoA.sendKeys(usuario);
+        txtEstadoActividad.clear();
         txtEstadoActividad.sendKeys(estadoActividad);
         txtEstadoActividad.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltrosUsuarioYVencida(String usuario, String vencida) {
-        this.limpiarFiltros();
+        waitFor(ExpectedConditions.visibilityOf(txtAsignadoA));
         txtAsignadoA.sendKeys(usuario);
+        txtVencida.clear();
         txtVencida.sendKeys(vencida);
         txtVencida.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltroOpcional(String estadoActividad) {
-        this.limpiarFiltros();
+        waitFor(ExpectedConditions.visibilityOf(txtEstadoActividad));
+        txtEstadoActividad.clear();
         txtEstadoActividad.sendKeys(estadoActividad);
         txtEstadoActividad.sendKeys(Keys.ENTER);
     }
