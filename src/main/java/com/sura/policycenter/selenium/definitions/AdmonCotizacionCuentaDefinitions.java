@@ -8,12 +8,12 @@ import org.jbehave.core.annotations.When;
 public class AdmonCotizacionCuentaDefinitions {
 
 
-
+    
 
 
     @Given("que estoy visualizando las cotizaciones de la cuenta <numCuenta>")
     public void visualizaCotizacion() {
-        // PENDING
+
     }
 
     @When("quiera declinar la cotizacion por cualquiera de la razones")
