@@ -16,4 +16,4 @@ And desahabilitar la opcion de acciones para no ser modificada
 
 Examples:
 |numCuenta|
-|C000777777|su
+|C000777777|
