@@ -127,7 +127,7 @@ public class CotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
 
-    public void validarTipoRiesgoCausalFinanciera() {
+    public void validarTipoRiesgoCausal() {
         waitForTextToAppear("Revisión de póliza", 1500);
         waitFor(botonCotizacion).shouldBeVisible();
         botonCotizacion.click();
@@ -144,9 +144,5 @@ public class CotizacionDePolizaPage extends PageObject{
             validacion = e.getMessage();
         }
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
-    }
-
-    public void validarFigurasCotizacion() {
-
     }
 }

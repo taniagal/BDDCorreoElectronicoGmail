@@ -54,14 +54,21 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.ingresarARevisionPoliza();
     }
 
-    @When("el tipo de causal es FINANCIERA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
-    public void validarTipoRiesgoCausalFinanciera(){
-        cotizacionDePolizaSteps.validarTipoRiesgoCausalFinanciera();
+    @When("el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
+    public void validarTipoRiesgoCausalTecnica(){
+        cotizacionDePolizaSteps.validarTipoRiesgoCausal();
     }
 
+    @When("el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
+    public void validarTipoRiesgoCausalMoral(){
+        cotizacionDePolizaSteps.validarTipoRiesgoCausal();
+    }
+
+    @SuppressWarnings("EmptyMethod")
     @When("las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable")
+    @Manual
     public void validarFigurasCotizacion(){
-        cotizacionDePolizaSteps.validarFigurasCotizacion();
+        //Se ejecuta manualmente
     }
 
     @Then("debo ver la siguiente informacion $informacionCotizacion")
@@ -77,5 +84,12 @@ public class CotizacionDePolizaDefinitions {
     @Then("no se debe permitir continuar con la cotizacion <mensaje>, no se debe mostrar ningun valor de cotizacion al cliente")
     public void validarBloqueoCotizacion(@Named("mensaje") String mensaje){
         cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
+    }
+
+    @SuppressWarnings("EmptyMethod")
+    @Then("no se debe permitir continuar con la cotizacion, no se debe mostrar ningun valor de cotizacion al cliente")
+    @Manual
+    public void thenValidarBloqueo(){
+        //Se ejecuta manualmente
     }
 }

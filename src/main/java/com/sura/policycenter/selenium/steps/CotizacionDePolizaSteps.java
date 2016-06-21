@@ -37,17 +37,12 @@ public class CotizacionDePolizaSteps extends ScenarioSteps  {
     }
 
     @Step
-    public void validarTipoRiesgoCausalFinanciera() {
-        cotizacionDePolizaPage.validarTipoRiesgoCausalFinanciera();
+    public void validarTipoRiesgoCausal() {
+        cotizacionDePolizaPage.validarTipoRiesgoCausal();
     }
 
     @Step
     public void validarBloqueoCotizacion(String mensaje) {
         cotizacionDePolizaPage.validarBloqueoCotizacion(mensaje);
-    }
-
-    @Step
-    public void validarFigurasCotizacion() {
-        cotizacionDePolizaPage.validarFigurasCotizacion();
     }
 }

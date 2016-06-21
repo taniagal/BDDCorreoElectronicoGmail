@@ -15,27 +15,40 @@ Given he realizado la cotizacion <cotizacion>
 When ingrese al detalle de la cotizacion
 Then debo ver la siguiente informacion
 |numeroCotizacion|tomador|tipoDocumento|numeroDocumento|direccion|tipoDireccion|descripcionDireccion|empresaAseguradora|prima|impuestos|total|
-|22222225|DORIAN EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$1,338.00|$80.00|$1,418.00|
+|22222225|DORIAN EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$669.00|$40.00|$709.00|
 
 Examples:
 |cotizacion|
 |22222225|
 
-Scenario: Riesgos consultables - Tipo riesgo - Bloqueo
+Scenario: Riesgos consultables - Tipo Causal Tecnica
 Given he realizado la cotizacion <cotizacion>
 When ingrese a la revision de la poliza
-And el tipo de causal es FINANCIERA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
+And el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
 Then no se debe permitir continuar con la cotizacion <mensaje>, no se debe mostrar ningun valor de cotizacion al cliente
 
 Examples:
-|cotizacion|mensaje                                                                                               |
-|0000180617|Por favor revisar la parametrizacion con el Comité de Evaluación, la parametrización no está definida.|
-|0000313826|La placa es un riesgo no estandar y no es posible gestionar la solicitud por este canal.              |
+|cotizacion|mensaje                             |
+|0000045907|La placa es un riesgo no estandar.. |
+
+Scenario: Riesgos consultables - Tipo Causal Moral
+Given he realizado la cotizacion <cotizacion>
+When ingrese a la revision de la poliza
+And el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
+Then no se debe permitir continuar con la cotizacion <mensaje>, no se debe mostrar ningun valor de cotizacion al cliente
+
+Examples:
+|cotizacion|mensaje                                                                                 |
+|0000144996|La placa es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 
 Scenario: Riesgos consultables - Figuras - Bloqueo
+Meta:
+@Manual
 Given he realizado la cotizacion <cotizacion>
 When ingrese a la revision de la poliza
 And las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable
-Then no se debe permitir continuar con la cotizacion <mensaje>, no se debe mostrar ningun valor de cotizacion al cliente
+Then no se debe permitir continuar con la cotizacion, no se debe mostrar ningun valor de cotizacion al cliente
 
 Examples:
+|cotizacion|
+|0000014358|
