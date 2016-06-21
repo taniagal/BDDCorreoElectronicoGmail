@@ -6,8 +6,8 @@ import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
-//@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
+//@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
+@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class SeusLoginPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='country']")
@@ -31,7 +31,7 @@ public class SeusLoginPage extends Guidewire {
     }
 
     public void login(String pais, String usuario, String contrasenia) {
-        if (mnuContact.isPresent()) return;
+        if (!mnuContact.isPresent()){
         this.usuario.waitUntilPresent();
         this.usuario.clear();
         this.contrasenia.clear();
@@ -40,6 +40,7 @@ public class SeusLoginPage extends Guidewire {
         this.usuario.type(usuario);
         this.contrasenia.type(contrasenia);
         this.btnSubmit.click();
+        }
     }
 
 }
