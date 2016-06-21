@@ -1,11 +1,15 @@
 package com.sura.guidewire.selenium;
 
 import com.google.common.base.Function;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -15,8 +19,10 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
 
 public class Guidewire extends PageObject {
 
@@ -27,8 +33,6 @@ public class Guidewire extends PageObject {
     WebElementFacade internacional;
     @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
     WebElementFacade idioma;
-    @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
-    private WebElementFacade espaniol;
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
     private WebElementFacade usuario;
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
@@ -41,8 +45,6 @@ public class Guidewire extends PageObject {
     private WebElementFacade btnLogout;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     private WebElementFacade btnLogout2;
-    @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
-    private WebElementFacade lblMisActividades;
 
     public Guidewire(WebDriver driver) {
         super(driver);
@@ -80,10 +82,10 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        waitFor(menu).shouldBeVisible();
-        menu.waitUntilClickable().click();
-        waitABit(1500);
-        menu.withTimeoutOf(3, TimeUnit.SECONDS).waitUntilClickable().click();
+        menu.waitUntilPresent().click();
+        waitABit(2500);
+        getDriver().manage().timeouts().pageLoadTimeout(20, SECONDS);
+        menu.click();
         waitABit(500);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         return actions;
@@ -115,20 +117,7 @@ public class Guidewire extends PageObject {
         return Integer.toString(nit);
     }
 
-    public void elegirLenguaje(){
-        if(!("Mis actividades").equals(lblMisActividades.getText())){
-        configuracion.click();
-        waitABit(300);
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
-        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
-        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
-        espaniol.click();
-        waitABit(850);
-        }
-    }
+
 
     protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
         final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
@@ -145,5 +134,28 @@ public class Guidewire extends PageObject {
                 return false;
             }
         });
+    }
+
+    public void seleccionarCombo(String nombreElemento, WebElementFacade campoTxt){
+        try {
+            List<WebElementFacade> listaItemElementEE = findAll(".//li[contains(@role,'option') and contains(@class, 'x-boundlist-item')]");
+            assertThat(listaItemElementEE.size(), greaterThan(0));
+            if (!listaItemElementEE.isEmpty()) {
+                for (WebElementFacade item : listaItemElementEE) {
+                    if (item.containsText(nombreElemento.toUpperCase())) {
+                        waitFor(ExpectedConditions.elementToBeClickable(item));
+                        item.shouldBeVisible();
+                        item.click();
+                        waitFor(ExpectedConditions.attributeContains(item, "value", nombreElemento.toUpperCase()));
+                        break;
+                    }
+                }
+            }
+        }catch (TimeoutException e) {
+            System.out.println("TRAZA");
+            e.printStackTrace();
+
+        }
+        waitABit(1000);
     }
 }

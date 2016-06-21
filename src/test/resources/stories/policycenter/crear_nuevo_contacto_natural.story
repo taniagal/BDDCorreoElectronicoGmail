@@ -1,4 +1,6 @@
 Meta:
+@issue #SUGWUSC-10650
+
 Narrative:
 Crear contacto persona natural
 que estoy en logado en PC y estoy en contactos
@@ -18,4 +20,4 @@ Then se debe crear una persona natural con primer nombre <primerNombre>
 
 Examples:
 |tipoDocumento         |numeroDeDocumento  |primerNombre  |primerApellido|tipoDireccion  |direccion       |departamento|ciudad  |
-|CEDULA DE CIUDADANIA  |564-36-5489        |SASHA         |AKERMAN       |Otros          |C 54B #50-25    |Antioquia   |Medellin|
+|CEDULA DE CIUDADANIA  |564-36-5489        |SASHA         |AKERMAN       |Otros          |C 54B #50-25    |ANTIOQUIA   |MEDELLIN|

@@ -29,12 +29,12 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void abrirNuevaCuenta() {
+    public void abrir_nueva_cuenta() {
         inicioPage().irANuevaCuenta();
     }
 
     @Step
-    public void agregarTipoDocumento(String tipoDocumento) {
+    public void agregar_tipo_documento(String tipoDocumento) {
         if("".equals(cedula) || "".equals(nit)) {
             initRandoms();
         }
@@ -48,43 +48,43 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
+    public void agregar_direccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         cp.agregarDireccion(tipoDireccion,direccion,departamento,ciudad);
         cp.actualizar();
     }
 
     @Step
-    public void agregarOrganizacion(String nombreOrganizacion, String agente) {
+    public void agregar_organizacion(String nombreOrganizacion, String agente) {
         cp.agregarOrganizacion(nombreOrganizacion,agente);
     }
 
     @Step
-    public void agregarNombre(String primerNombre, String primerApellido, String fechaNacimiento){
+    public void agregar_nombre(String primerNombre, String primerApellido, String fechaNacimiento){
         cp.agregarNombres(primerNombre,primerApellido,fechaNacimiento);
     }
 
     @Step
-    public void agregarRazonSocial(String razonSocial) {
+    public void agregar_razon_social(String razonSocial) {
         cp.agregarRazonsocial(razonSocial);
     }
 
     @Step
-    public void verificarCrearCuenta(String nombreCuenta){
-        cp.verificarCuentaNumero(nombreCuenta);
-    }
-
-    @Step
-    public void validarLogeoPolicyCenter(){
+    public void validar_logeo_policyCenter(){
         cp.validarLogeoPolicyCenter();
     }
 
     @Step
-    public void verificarEdadMenor(String mensaje){
+    public void verificar_cuenta(String nombreCuenta){
+        cp.verificarCuentaNumero(nombreCuenta);
+    }
+
+    @Step
+    public void verificar_edad_menor(String mensaje){
         cp.verificarEdadMenor(mensaje);
     }
 
     @Step
-    public void verificarMensaje(String mensaje){
+    public void verificar_mensaje(String mensaje){
         cp.verificarMensaje(mensaje);
     }
 

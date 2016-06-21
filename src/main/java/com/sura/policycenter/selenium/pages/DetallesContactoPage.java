@@ -4,13 +4,9 @@ import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-
-import javax.swing.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -166,10 +162,11 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarDireccion(){
         botonAgregar.click();
-        waitABit(1000);
+        waitABit(2500);
     }
 
     public void agregarNombre(String segundoNombre){
+        campoTxtSegundoNombre.waitUntilPresent();
         campoTxtSegundoNombre.clear();
         campoTxtSegundoNombre.sendKeys(segundoNombre);
         dtlContact[2]= segundoNombre;
@@ -182,7 +179,7 @@ public class  DetallesContactoPage extends Guidewire {
         dtlContact[3]= segundoApellido;
     }
 
-    public void agregarLists(String profesion,String estadoCivil,String tipoFamilia){
+    public void agregarCombos(String profesion, String estadoCivil, String tipoFamilia){
         selectItem(comboBoxProfesion, profesion);
         selectItem(comboBoxEstadoCivil,estadoCivil);
         selectItem(comboBoxTipoFamilia, tipoFamilia);
@@ -192,24 +189,31 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void agregarTelefonosResidencial(String telefonoResidencial){
+        campoTxtTelefonoResidencial.clear();
+        waitABit(200);
         campoTxtTelefonoResidencial.type(telefonoResidencial);
         dtlContact[11]= telefonoResidencial;
     }
 
     public void agregarTelefonoTrabajo(String telefonoTrabajo){
+        campoTxtTelefonoTrabajo.clear();
+        waitABit(200);
         campoTxtTelefonoTrabajo.sendKeys(telefonoTrabajo);
         dtlContact[12]= telefonoTrabajo;
     }
 
     public void agregarTelefonoCelular(String telefonoCelular){
+        campoTxtTelefonoCelular.clear();
+        waitABit(200);
         campoTxtTelefonoCelular.sendKeys(telefonoCelular);
         dtlContact[10]= telefonoCelular;
     }
 
     public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
-        campoTxtCorreoElectronicoPrimario.click();
+        campoTxtCorreoElectronicoPrimario.clear();
         waitABit(1000);
         campoTxtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
+        campoTxtCorreoElectronicoSecundario.clear();
         waitABit(500);
         campoTxtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
         dtlContact[13]= correoElectronicoPrimario;
@@ -221,7 +225,7 @@ public class  DetallesContactoPage extends Guidewire {
      * DETALLE CONTACTO EDICION PERSONA JURIDICA
      */
     public void agregarRazonSocial(String nombreComercial, String actividadComercial) {
-        campoTxtNombreComercial.waitUntilPresent();
+        campoTxtNombreComercial.waitUntilPresent().clear();
         campoTxtNombreComercial.sendKeys(nombreComercial);
         selectItem(comboBoxActividadComercial, actividadComercial);
         dtlCntJ[0]= nombreComercial;
@@ -231,7 +235,7 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
         waitABit(500);
-        campoTxtNumeroEmpleados.click();
+        campoTxtNumeroEmpleados.clear();
         campoTxtNumeroEmpleados.sendKeys(numeroEmpleados);
         campoTxtValorActivos.clear();
         campoTxtValorActivos.sendKeys(valorActivos);
@@ -330,6 +334,7 @@ public class  DetallesContactoPage extends Guidewire {
     */
     public  void verificarCamposPersonaNatural(){
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
+        labelPrimerNombre.waitUntilPresent();
         if(!labelPrimerNombre.isPresent())
             notPresent.append(" primer_nombre,");
         if(!labelSegundoNombre.isPresent())
@@ -366,6 +371,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void verificarCamposPersonaJuridica() {
+        labelRazonSocial.waitUntilPresent();
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelRazonSocial.isPresent())
             notPresent.append(" razon_social,");

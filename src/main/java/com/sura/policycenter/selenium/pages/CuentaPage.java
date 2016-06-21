@@ -8,8 +8,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
-import javax.swing.*;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CuentaPage extends Guidewire{
@@ -49,7 +47,7 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade botonBuscarOrganizacion;
     @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchResultsLV:0:_Select']")
     private WebElementFacade botonSeleccionarOrganizacion;
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update']")
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:ForceDupCheckUpdate-btnInnerEl']")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade labelNombreDeCuenta;
@@ -101,7 +99,7 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(2000);
+        waitABit(4000);
         selectItem(comboBoxCiudad,ciudad);
         waitABit(2000);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
@@ -152,13 +150,13 @@ public class CuentaPage extends Guidewire{
     }
 
     public  void verificarMensaje(String mensaje){
-        waitABit(1000);
+        waitABit(2000);
         divMensaje.waitUntilPresent();
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
-        waitABit(1500);
+        waitABit(2000);
         botonEditarCuenta.waitUntilPresent();
         assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
     }
