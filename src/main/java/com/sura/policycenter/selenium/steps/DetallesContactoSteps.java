@@ -120,8 +120,8 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validar_direccion(String tipoDireccion){
-        detallesContactoPage.validarDireccion(tipoDireccion);
+    public void validar_direccion(){
+        detallesContactoPage.validarDireccion();
     }
 
     @Step

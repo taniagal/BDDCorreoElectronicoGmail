@@ -144,6 +144,8 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void editarContacto(){
         botonEditarContacto.waitUntilPresent();
+        botonEditarContacto.waitUntilVisible();
+        assertThat("El boton de editar no está presente en el DOM",botonEditarContacto.isPresent());
         botonEditarContacto.click();
         waitABit(1000);
     }
@@ -162,7 +164,7 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarDireccion(){
         botonAgregar.click();
-        waitABit(2500);
+        waitABit(2000);
     }
 
     public void agregarNombre(String segundoNombre){
@@ -404,6 +406,7 @@ public class  DetallesContactoPage extends Guidewire {
      * AGREGAR DIRECCION A CONTACTO
      */
     public void validarDatosPantalla() {
+        waitABit(2000);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelPais.isPresent())
             notPresent.append(" pais,");
@@ -444,8 +447,8 @@ public class  DetallesContactoPage extends Guidewire {
         assertThat(res,"No estan correctos los valores".equals(res));
     }
 
-    public void validarDireccion(String tipoDireccion){
-        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains(tipoDireccion));
+    public void validarDireccion(){
+        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains("CL 60 B # 10 - 157"));
     }
 
     public List<WebElementFacade> getListaContactos() {
