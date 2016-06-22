@@ -18,6 +18,7 @@ public class CrearNuevoContactoDefinitions {
 
     @Given("estoy en la pantalla de crear contacto persona natural")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaNatural() {
+        seusLoginSteps.login();
         crearNuevoContactoSteps.nuevo_contacto_persona();
     }
 

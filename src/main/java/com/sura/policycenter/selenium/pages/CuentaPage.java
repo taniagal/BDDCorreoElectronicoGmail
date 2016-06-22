@@ -133,6 +133,7 @@ public class CuentaPage extends Guidewire{
             botonCrearCuentaNueva.click();
             botonNuevaCuentaPersonal.click();
         }
+        waitABit(1000);
     }
 
     public void verificarCrearCuenta(String nombreCuenta){

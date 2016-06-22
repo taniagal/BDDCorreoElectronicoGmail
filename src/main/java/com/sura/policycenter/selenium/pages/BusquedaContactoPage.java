@@ -101,6 +101,7 @@ public class BusquedaContactoPage extends Guidewire {
         super(driver);
     }
 
+
     public void login(String usuario, String contrasena){
         txtusuario.type(usuario);
         txtcontrasena.type(contrasena);
