@@ -16,7 +16,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Map;
 
-
 public class BusquedaActividadesPage extends PageObject {
 
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:AssignedUser-inputEl']")
@@ -66,12 +65,12 @@ public class BusquedaActividadesPage extends PageObject {
 
     public void irABuscarActividades() {
         waitFor(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:SearchTab']")));
-        waitABit(1000);
+        waitABit(2000);
         menuBuscar.click();
         waitForTextToAppear("Buscar");
         waitFor(ExpectedConditions.visibilityOf(menuBuscarActividades));
         waitFor(ExpectedConditions.elementToBeClickable(By.xpath("//td[@id='Search:MenuLinks:Search_ActivitySearch']/div/span")));
-        waitABit(1000);
+        waitABit(2000);
         menuBuscarActividades.click();
         waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();
@@ -84,12 +83,8 @@ public class BusquedaActividadesPage extends PageObject {
 
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
-        waitFor(ExpectedConditions.elementToBeClickable(btnBuscar));
         btnBuscar.click();
-//        waitForTextToAppear("Normal", 5000);
         waitABit(1000);
-        waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitiesSearchLV-body']")));
-        waitFor(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitiesSearchLV-body']")));
         MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
         MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
