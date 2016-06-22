@@ -17,7 +17,7 @@ Then espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaci
 
 Examples:
 |cuenta     |organizacion|agente|departamento|ciudad  |direccion        |descripcion  |actividad|
-|C000888888 |Sura        |INT-3 |Antioquia   |Medellin|KR 44 A # 45 - 00|Edificio Core|Actividad Economica|
+|C000888888 |Sura        |INT-3 |ANTIOQUIA   |MEDELLIN|KR 44 A # 45 - 00|Edificio Core|Actividad Economica|
 
 
 
@@ -30,7 +30,7 @@ Then que se muestre el mensaje <mensaje>
 
 Examples:
 |cuenta     |organizacion|agente|departamento|ciudad  |direccion        |descripcion  |mensaje                                                    |actividad          |
-|C000888888 |Sura        |INT-3 |Antioquia   |Medellin|KR 65 # 25 -36   |Edificio Core|La dirección es un riesgo no estandar y debe ser autorizado|Actividad Economica|
+|C000888888 |Sura        |INT-3 |ANTIOQUIA   |MEDELLIN|KR 65 # 25 -36   |Edificio Core|La dirección es un riesgo no estandar y debe ser autorizado|Actividad Economica|
 
 
 Scenario: Validar direccion al agregar una nueva ubicación en una póliza de MRC.
@@ -42,5 +42,5 @@ Then que se muestre el mensaje de direccion <mensaje>
 
 Examples:
 |cuenta     |organizacion|agente|departamento|ciudad  |direccion     |descripcion  |mensaje                   |actividad          |
-|C000888888 |Sura        |INT-3 |Antioquia   |Medellin|2X´H !2 ~0+ **|Edificio Core|La dirección  no es válida|Actividad Economica|
+|C000888888 |Sura        |INT-3 |ANTIOQUIA   |MEDELLIN|2X´H !2 ~0+ **|Edificio Core|La dirección  no es válida|Actividad Economica|
 

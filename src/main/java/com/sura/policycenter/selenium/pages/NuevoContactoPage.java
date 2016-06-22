@@ -27,7 +27,7 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade tipoDireccion;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade direccion;
-    @FindBy(xpath = ".//*[@id='NewContact:Update-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='NewContact:ForceDupCheckUpdate-btnInnerEl']")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade nombreContact;
@@ -85,25 +85,27 @@ public class NuevoContactoPage extends Guidewire {
 
     public void ingresarDireccionDepartamenteYCiudad(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
-        enter(departamento).into(comboBoxDepartamento);
-        seleccionarCombo(departamento, comboBoxDepartamento);
+        selectItem(comboBoxDepartamento,departamento);
+        waitABit(4000);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(1000);
+        waitABit(1500);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
+        waitABit(2000);
         direccion2.sendKeys(direccion);
         selectItem(comboBoxDepartamento2,departamento);
-        waitABit(2200);
+        waitABit(4000);
         selectItem(comboBoxCiudad2,ciudad);
         waitABit(1200);
         selectItem(tipoDireccion2,tipoDireccion);
+        waitABit(1500);
     }
 
     public void actualizarPersonaNatural(String primerNombre) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitABit(1000);
+        waitABit(2000);
         nombreContact.waitUntilPresent();
         assertThat(this.nombreContact.getText(), containsString(primerNombre));
     }
@@ -146,7 +148,8 @@ public class NuevoContactoPage extends Guidewire {
     public void actualizarJuridica(String razonSocial) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitABit(1000);
+        waitABit(2000);
+        desRazonSocial.waitUntilPresent();
         assertThat(this.desRazonSocial.getText().toString(), containsString(razonSocial));
 
     }

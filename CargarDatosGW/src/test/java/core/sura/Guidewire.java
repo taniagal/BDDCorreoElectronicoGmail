@@ -13,7 +13,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.hamcrest.CoreMatchers.anyOf;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class Guidewire {
 	
@@ -27,7 +30,7 @@ public class Guidewire {
 		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
 		driver = new ChromeDriver();
         act = new Actions(driver);
-        wait = new WebDriverWait(driver, 120);
+        wait = new WebDriverWait(driver, 1000);
 		baseUrl = "http://dllocoreseguros.suramericana.com:7003";
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -54,7 +57,8 @@ public class Guidewire {
         driver.findElement(By.xpath(".//*[@id='UnsupportedTools:MenuLinks:UnsupportedTools_PCSampleData']/div")).click();
         driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:SampleDataSetsLV:0:LoadSampleData']")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']"))).isDisplayed();
-        assertEquals("Conjunto cargado \"Sura\" correctamente.", driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")).getText());
+        assertThat(driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")).getText(), anyOf(is
+               ("Conjunto cargado \"Sura\" correctamente."), is("Loaded set \"Sura\" successfully.")));
         driver.findElement(By.xpath(".//*[@id=':TabLinkMenuButton-btnIconEl']")).click();
         driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:LogoutTabBarLink']")).click();
     }
@@ -81,7 +85,6 @@ public class Guidewire {
             driver.findElement(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs']")).click();
             Thread.sleep(2200);
     }
-
 
     @After
     public void tearDown() throws Exception {
