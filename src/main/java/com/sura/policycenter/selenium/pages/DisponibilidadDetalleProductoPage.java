@@ -4,7 +4,7 @@ import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.sura.serinitybdd.util.GwNavegacionUtil;
+import com.sura.serenitybdd.util.GwNavegacionUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;

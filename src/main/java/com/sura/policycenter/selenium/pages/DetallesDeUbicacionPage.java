@@ -108,7 +108,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
         espera(numeroDeCuenta,5);
         numeroDeCuenta.sendKeys(cuenta);
         comboBoxNombreAgente.click();
-        waitABit(200);
+        waitABit(1000);
         Actions actions =  new Actions(getDriver());
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();

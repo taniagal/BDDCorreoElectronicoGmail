@@ -1,4 +1,4 @@
-package com.sura.serinitybdd.util;
+package com.sura.serenitybdd.util;
 
 import java.util.ArrayList;
 import java.util.HashSet;

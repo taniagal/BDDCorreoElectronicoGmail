@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.serinitybdd.util.GwNavegacionUtil;
+import com.sura.serenitybdd.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
