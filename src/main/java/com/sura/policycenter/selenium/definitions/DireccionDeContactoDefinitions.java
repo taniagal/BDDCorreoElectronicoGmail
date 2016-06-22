@@ -3,7 +3,6 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.DetallesContactoSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -37,14 +36,14 @@ public class DireccionDeContactoDefinitions {
         detallesContactoSteps.agregar_nueva_direccion();
     }
 
-    @Then("en la lista de direcciones agregadas se debe ver la nueva direccion <tipoDireccion>")
-    public void assertDireccion(@Named("tipoDireccion") String tipoDireccion){
-        detallesContactoSteps.validar_direccion(tipoDireccion);
+    @Then("en la lista de direcciones agregadas se debe ver la nueva direccion <direccion> estandarizada")
+    public void verificarDireccion(){
+        detallesContactoSteps.validar_direccion();
         seusLoginSteps.close();
     }
 
     @Then("el sistema me debe impedir la repeticion del tipo de direccion y mostrar el mensaje <mensaje>")
-    public void assertRepeticionTipoDirreccion (@Named("mensaje") String mensaje){
+    public void verificarRepeticionTipoDirreccion (@Named("mensaje") String mensaje){
         detallesContactoSteps.validar_mensaje(mensaje);
         seusLoginSteps.close();
     }

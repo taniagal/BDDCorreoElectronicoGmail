@@ -1,5 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
+import java.util.Map;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -14,7 +15,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-import java.util.Map;
 
 public class BusquedaActividadesPage extends PageObject {
 
