@@ -166,7 +166,6 @@ public class BusquedaContactoPage extends Guidewire {
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
         waitABit(3000);
-        getDriver().manage().timeouts().pageLoadTimeout(10, SECONDS);
         txtTipoDoc.waitUntilPresent();
         txtTipoDoc.clear();
         txtTipoDoc.sendKeys(tipoDoc);
