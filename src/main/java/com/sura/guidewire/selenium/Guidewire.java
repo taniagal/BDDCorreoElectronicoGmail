@@ -81,9 +81,10 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
+        getDriver().manage().timeouts().pageLoadTimeout(10, SECONDS);
         menu.waitUntilPresent().click();
-        waitABit(2500);
-        getDriver().manage().timeouts().pageLoadTimeout(20, SECONDS);
+        waitABit(3000);
+        getDriver().manage().timeouts().pageLoadTimeout(10, SECONDS);
         menu.click();
         waitABit(500);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();

@@ -156,7 +156,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void irADirecciones(){
-        waitABit(500);
+        waitABit(1000);
         botonDirecciones.click();
         botonAgregar.waitUntilPresent();
         botonAgregar.click();
