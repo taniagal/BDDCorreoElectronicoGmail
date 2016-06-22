@@ -27,4 +27,15 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
         coberturaGlobalPage.verificarCoberturasIncluidas();
         coberturaGlobalPage.verificarUbicacionesCubiertas();
     }
+
+    @Step
+    public void seleccionar_cobertura_unica(String descripcion, String tipoCobertura, String nombreCobertura) {
+        coberturaGlobalPage.seleccionarCoberturaUnica(descripcion,tipoCobertura,nombreCobertura);
+    }
+
+    @Step
+    public void verificar_mensaje_error(String mensaje) {
+        coberturaGlobalPage.verificarMensajeError(mensaje);
+    }
+
 }

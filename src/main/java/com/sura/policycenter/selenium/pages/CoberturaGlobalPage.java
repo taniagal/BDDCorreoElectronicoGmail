@@ -37,7 +37,7 @@ public class CoberturaGlobalPage extends Guidewire {
     private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:locations3LV:0:location']")
     private WebElementFacade linkUbicacionDisponible;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketCovLV:0:Description']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketCovLV:0:CoverageName']")
     private WebElementFacade linkCobertura1;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:coverageSelect-inputEl']")
     private WebElementFacade comboTextCoberturas;
@@ -45,22 +45,33 @@ public class CoberturaGlobalPage extends Guidewire {
     private WebElementFacade checkBoxGenerico;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
     private WebElementFacade campoTxtGenerico;
+    @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
+    private WebElementFacade mensajePantalla;
+    @FindBy(id = ".//*[@id='wsTabBar:wsTab_0:panelId']")
+    private WebElementFacade panelMensaje;
 
 
-    public CoberturaGlobalPage(WebDriver driver){
+
+
+
+
+    public CoberturaGlobalPage(WebDriver driver) {
         super(driver);
     }
 
-    public void irACoberturasGlobales(){
+    public void irACoberturasGlobales() {
         menuItemCoberturaGlobal.click();
     }
 
-    public void agregarCoberturasGlobales(String descripcion, String tipoCobertura, String valor, String nombreCobertura){
+    public void navegarPorCobertura(String descripcion, String tipoCobertura){
         botonAgregarCoberturaGeneral.waitUntilPresent().click();
         campoTxtDescripcion.sendKeys(descripcion);
-        selectItem(comboBoxTipoCobertura,tipoCobertura);
+        selectItem(comboBoxTipoCobertura, tipoCobertura);
         waitABit(1000);
-        switch(tipoCobertura) {
+    }
+    public void agregarCoberturasGlobales(String descripcion, String tipoCobertura, String valor, String nombreCobertura) {
+        navegarPorCobertura(descripcion, tipoCobertura);
+        switch (tipoCobertura) {
             case "Multiples ubicaciones":
                 cargarMultiplesUbicaciones(valor);
                 break;
@@ -73,9 +84,9 @@ public class CoberturaGlobalPage extends Guidewire {
         botonAceptar.click();
     }
 
-    public void cargarCoberturaUnica(String nombreCobertura,String valor){
+    public void cargarCoberturaUnica(String nombreCobertura, String valor) {
         comboTextCoberturas.waitUntilPresent();
-        selectItem(comboTextCoberturas,nombreCobertura);
+        selectItem(comboTextCoberturas, nombreCobertura);
         waitABit(500);
         linkCoberturas.click();
         checkBoxGenerico.waitUntilPresent().click();
@@ -83,7 +94,7 @@ public class CoberturaGlobalPage extends Guidewire {
         linkDetalles.click();
     }
 
-    public void cargarMultiplesUbicaciones(String valor){
+    public void cargarMultiplesUbicaciones(String valor) {
         linkCoberturas.click();
         checkBoxDanosMateriales.click();
         campoTxtValorAseguradoDanosMateriales.sendKeys(valor);
@@ -92,12 +103,28 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void verificarCoberturasIncluidas() {
-        assertThat("Error al Agregar la cobertura",linkCobertura1.isPresent());
+        assertThat("Error al Agregar la cobertura", linkCobertura1.isPresent());
     }
 
     public void verificarUbicacionesCubiertas() {
         List<WebElementFacade> tablaUbicaciones = withTimeoutOf(5, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody");
-        assertThat("Error al Agregar la ubicacion",tablaUbicaciones.size() > 0 );
+        assertThat("Error al Agregar la ubicacion", tablaUbicaciones.size() > 0);
     }
-}
 
+    public void seleccionarCoberturaUnica(String descripcion, String tipoCobertura, String nombreCobertura) {
+        navegarPorCobertura(descripcion, tipoCobertura);
+        comboTextCoberturas.waitUntilPresent();
+        selectItem(comboTextCoberturas, nombreCobertura);
+        waitABit(1000);
+        botonAceptar.click();
+        waitABit(1000);
+    }
+
+    public void verificarMensajeError(String mensaje) {
+        /*waitFor(panelMensaje).shouldBePresent();
+        waitFor(panelMensaje).shouldBeVisible();
+        waitFor(mensajePantalla).shouldBeEnabled();*/
+        assertThat("Error el Mensaje no existe", mensajePantalla.containsText(mensaje));
+    }
+
+}

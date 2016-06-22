@@ -29,5 +29,17 @@ public class CoberturaGlobalDefinitions {
         seusLoginSteps.close();
     }
 
+    @When("agregue coberturas globales con descripcion <descripcion> , tipo de cobertura <tipoCobertura> y nombreCobertura <nombreCobertura>")
+    public void agregarCobertura(@Named("descripcion") String descripcion, @Named("tipoCobertura") String tipoCobertura,
+                                 @Named("nombreCobertura") String nombreCobertura){
+        coberturaGlobalSteps.ir_a_coberturas_globales();
+        coberturaGlobalSteps.seleccionar_cobertura_unica(descripcion, tipoCobertura,nombreCobertura);
+    }
+
+    @Then("debe mostrarme un mensaje<mensaje> de error")
+    public void verificarMensajeError(@Named("mensaje")String mensaje){
+        coberturaGlobalSteps.verificar_mensaje_error(mensaje);
+        seusLoginSteps.close();
+    }
 
 }
