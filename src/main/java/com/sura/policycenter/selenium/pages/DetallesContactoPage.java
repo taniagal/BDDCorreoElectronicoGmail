@@ -4,13 +4,9 @@ import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-
-import javax.swing.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -148,6 +144,8 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void editarContacto(){
         botonEditarContacto.waitUntilPresent();
+        botonEditarContacto.waitUntilVisible();
+        assertThat("El boton de editar no está presente en el DOM",botonEditarContacto.isPresent());
         botonEditarContacto.click();
         waitABit(1000);
     }
@@ -158,7 +156,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void irADirecciones(){
-        waitABit(500);
+        waitABit(1000);
         botonDirecciones.click();
         botonAgregar.waitUntilPresent();
         botonAgregar.click();
@@ -166,7 +164,7 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarDireccion(){
         botonAgregar.click();
-        waitABit(1500);
+        waitABit(2000);
     }
 
     public void agregarNombre(String segundoNombre){
@@ -239,7 +237,7 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
         waitABit(500);
-        campoTxtNumeroEmpleados.click();
+        campoTxtNumeroEmpleados.clear();
         campoTxtNumeroEmpleados.sendKeys(numeroEmpleados);
         campoTxtValorActivos.clear();
         campoTxtValorActivos.sendKeys(valorActivos);
@@ -338,6 +336,7 @@ public class  DetallesContactoPage extends Guidewire {
     */
     public  void verificarCamposPersonaNatural(){
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
+        labelPrimerNombre.waitUntilPresent();
         if(!labelPrimerNombre.isPresent())
             notPresent.append(" primer_nombre,");
         if(!labelSegundoNombre.isPresent())
@@ -374,6 +373,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void verificarCamposPersonaJuridica() {
+        labelRazonSocial.waitUntilPresent();
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelRazonSocial.isPresent())
             notPresent.append(" razon_social,");
@@ -406,6 +406,7 @@ public class  DetallesContactoPage extends Guidewire {
      * AGREGAR DIRECCION A CONTACTO
      */
     public void validarDatosPantalla() {
+        waitABit(2000);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelPais.isPresent())
             notPresent.append(" pais,");
@@ -446,12 +447,12 @@ public class  DetallesContactoPage extends Guidewire {
         assertThat(res,"No estan correctos los valores".equals(res));
     }
 
-    public void validarDireccion(String tipoDireccion){
-        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains(tipoDireccion));
+    public void validarDireccion(){
+        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains("CL 60 B # 10 - 157"));
     }
 
     public List<WebElementFacade> getListaContactos() {
-        return withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
+        return withTimeoutOf(5, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
     }
 
     public void validarMensaje(String mensaje) {

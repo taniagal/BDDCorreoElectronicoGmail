@@ -5,6 +5,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class SeusLoginPage extends Guidewire {
@@ -17,6 +18,8 @@ public class SeusLoginPage extends Guidewire {
     private WebElementFacade contrasenia;
     @FindBy(xpath=".//*[@id='lower']/input")
     private WebElementFacade btnSubmit;
+    @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
+    private WebElementFacade mnuContact;
 
     public SeusLoginPage(WebDriver driver) {
         super(driver);
@@ -25,10 +28,11 @@ public class SeusLoginPage extends Guidewire {
     @WhenPageOpens
     public void waitUntilMainElementsAppears() {
         getDriver().manage().window().maximize();
-        pais.waitUntilVisible();
     }
 
     public void login(String pais, String usuario, String contrasenia) {
+        if (!mnuContact.isPresent()){
+        this.usuario.waitUntilPresent();
         this.usuario.clear();
         this.contrasenia.clear();
         this.pais.click();
@@ -36,6 +40,7 @@ public class SeusLoginPage extends Guidewire {
         this.usuario.type(usuario);
         this.contrasenia.type(contrasenia);
         this.btnSubmit.click();
+        }
     }
 
 }

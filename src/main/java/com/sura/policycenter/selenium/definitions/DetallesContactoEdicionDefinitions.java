@@ -19,8 +19,8 @@ public class DetallesContactoEdicionDefinitions {
      * ESCENARIO 1
      */
     @When("quiera editar la informacion del contacto con <tipo_documento> c. <documento>")
-    public void editarContacto(@Named("tipo_documento") String tipo_documento,@Named("documento") String documento){
-        detallesContactoSteps.abrir_detalles_contacto(tipo_documento,documento);
+    public void editarContacto(@Named("tipo_documento") String tipoDocumento,@Named("documento") String documento){
+        detallesContactoSteps.abrir_detalles_contacto(tipoDocumento,documento);
         detallesContactoSteps.editar_contacto();
     }
 

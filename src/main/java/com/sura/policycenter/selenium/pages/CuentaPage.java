@@ -8,8 +8,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
-import javax.swing.*;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CuentaPage extends Guidewire{
