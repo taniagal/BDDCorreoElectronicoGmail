@@ -18,7 +18,7 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void irANuevaPoliza(String cuenta, String producto){
+    public void ir_a_nueva_poliza(String cuenta, String producto){
         detallesDeUbicacionPage.irANuevaCotizacion();
         detallesDeUbicacionPage.agregarDatos(cuenta,producto);
     }
@@ -37,12 +37,6 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     @Step
     public void agregar_direccion(String direccion, String departamento, String ciudad) {
         detallesDeUbicacionPage.agregarDireccion(direccion, departamento, ciudad);
-    }
-
-    @Step
-    public void ir_a_nueva_poliza(String cuenta, String organizacion, String agente){
-        inicioPage().irANuevoEnvio();
-        detallesDeUbicacionPage.agregarDatos(cuenta,organizacion,agente);
     }
 
     @Step

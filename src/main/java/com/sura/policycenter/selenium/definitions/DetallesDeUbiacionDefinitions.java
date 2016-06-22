@@ -21,7 +21,7 @@ public class DetallesDeUbiacionDefinitions {
     @Given("estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>")
     public void agregarPoliza(@Named("cuenta")String cuenta,@Named("producto")String producto) {
         loginSteps.login();
-        detallesDeUbicacionSteps.irANuevaPoliza(cuenta,producto);
+        detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta,producto);
     }
 
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>")
