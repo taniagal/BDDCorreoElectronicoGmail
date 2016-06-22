@@ -1,26 +1,18 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaDeCuentasPage;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class BusquedaDeCuentasSteps extends ScenarioSteps{
 
-    private final BusquedaDeCuentasPage busquedaDeCuentasPage = new BusquedaDeCuentasPage(getDriver());
+    BusquedaDeCuentasPage busquedaDeCuentasPage;
 
-    public BusquedaDeCuentasSteps(Pages pages){
-        super(pages);
-    }
-
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
 
     @Step
-    public void ingresarABuscarCuentas(String buscar, String cuenta) {
-        inicioPage().irABuscarCuentas();
+    public void ingresarABuscarCuentas() {
+        busquedaDeCuentasPage.irABuscarCuentas();
     }
 
     @Step

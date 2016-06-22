@@ -1,12 +1,15 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 
 
 public class BusquedaDeCuentasPage extends Guidewire {
@@ -85,9 +88,26 @@ public class BusquedaDeCuentasPage extends Guidewire {
     private WebElementFacade rbtnExportarPersonalizado;
     @FindBy(xpath=".//*[@id='PrintOptionPopup:__crumb__']")
     private WebElementFacade btnVolverBuscarCuentas;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
+    private  WebElementFacade menuBuscar;
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']/div")
+    private  WebElementFacade menuBuscarCuentas;
 
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
+    }
+
+
+    public void irABuscarCuentas() {
+        waitFor(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:SearchTab']")));
+//        waitABit(2000);
+        menuBuscar.click();
+        waitForTextToAppear("Buscar");
+        waitFor(ExpectedConditions.visibilityOf(menuBuscarCuentas));
+        waitFor(ExpectedConditions.elementToBeClickable(menuBuscarCuentas));
+//        waitABit(2000);
+        menuBuscarCuentas.click();
+        waitForTextToAppear("Búsqueda");
     }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
@@ -221,4 +241,5 @@ public class BusquedaDeCuentasPage extends Guidewire {
         this.txtRazonSocial.sendKeys(razonSocial);
         btnBuscar.click();
     }
+
 }

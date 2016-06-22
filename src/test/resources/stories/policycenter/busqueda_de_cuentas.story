@@ -7,8 +7,18 @@ Como usuario PolicyCenter
 quiero ser capaz de buscar una cuenta
 para ver el detalle de la misma
 
-Scenario: campos de la busqueda de cuentas por tipo de documento NIT
+Scenario: Validar las opciones de imprimir y exportar
 GivenStories: stories/policycenter/login_policy.story
+Given que me encuentro en la busqueda de cuentas
+When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
+And quiera exportar o imprimir los resultados de la busqueda
+Then me debe mostrar las opciones permitidas Imprimir como pdf <imprimir>, Exportar como CSV <exportar>, Exportación personalizada como CSV <exportarPersonalizado>
+
+Examples:
+|primerNombre|segundoNombre|primerApellido|segundoApellido|imprimir|exportar|exportarPersonalizado
+|Yurledys|Paola|Gallego|Torres|Imprimir (como PDF)|Exportar (como CSV)|Exportación personalizada (como CSV)
+
+Scenario: Validar los campos de la busqueda de cuentas por tipo de documento NIT y CEDULA DE CIUDADANIA
 Given que me encuentro en la busqueda de cuentas
 When seleccione el tipo de identificacion <tipoDocumento>
 Then me debe mostrar los campos tipo identificacion, numero identificacion, primer nombre, segundo nombre, primer apellido, segundo apellido, razon social, nombre comercial, pais, departamento, ciudad, direccion, telefono
@@ -17,15 +27,6 @@ And los label tipo identificacion, numero identificacion, razon social, nombre c
 Examples:
 |tipoDocumento|
 |NIT|
-
-Scenario: campos de la busqueda de cuentas por tipo de documento CEDULA DE CIUDADANIA
-Given que me encuentro en la busqueda de cuentas
-When seleccione el tipo de identificacion <tipoDocumento>
-Then me debe mostrar los campos tipo identificacion, numero identificacion, primer nombre, segundo nombre, primer apellido, segundo apellido, razon social, nombre comercial, pais, departamento, ciudad, direccion, telefono
-And los label tipo identificacion, numero identificacion, razon social, nombre comercial, pais, departamento, ciudad, direccion, telefono
-
-Examples:
-|tipoDocumento|
 |CEDULA DE CIUDADANIA|
 
 Scenario: Busqueda de cuenta persona natural por primer nombre y primer apellido
@@ -234,16 +235,6 @@ Then me debe mostrar el mensaje <mensaje>
 Examples:
 |nombreComercial|mensaje
 |Variedades Yuyeimi|La búsqueda no devolvió resultados.
-
-Scenario: Opcion de imprimir y exportar
-Given que me encuentro en la busqueda de cuentas
-When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
-And quiera exportar o imprimir los resultados de la busqueda
-Then me debe mostrar las opciones permitidas Imprimir como pdf <imprimir>, Exportar como CSV <exportar>, Exportación personalizada como CSV <exportarPersonalizado>
-
-Examples:
-|primerNombre|segundoNombre|primerApellido|segundoApellido|imprimir|exportar|exportarPersonalizado
-|Yurledys|Paola|Gallego|Torres|Imprimir (como PDF)|Exportar (como CSV)|Exportación personalizada (como CSV)
 
 Scenario: Longitud mimina de caracteres persona natural, primer nombre con longitud menor
 Given que me encuentro en la busqueda de cuentas
