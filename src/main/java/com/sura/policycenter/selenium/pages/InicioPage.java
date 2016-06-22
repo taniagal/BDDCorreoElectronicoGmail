@@ -124,7 +124,6 @@ public class InicioPage extends Guidewire {
     }
 
     public void assertion(String element) {
-        waitABit(15000);
         labelIngreso.waitUntilPresent();
         assertThat(labelIngreso.getText().toString(), containsString(element));
     }

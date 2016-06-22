@@ -42,7 +42,6 @@ public class SeusLoginPage extends Guidewire {
             this.usuario.type(usuario);
             this.contrasenia.type(contrasenia);
             this.btnSubmit.click();
-            getDriver().manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         }
     }
 
