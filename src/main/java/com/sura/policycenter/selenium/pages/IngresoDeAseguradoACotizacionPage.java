@@ -1,9 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.serinitybdd.util.GwNavegacionUtil;
-import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -35,7 +35,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     WebElementFacade contactoDeCuenta;
 
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']")
-    WebElementFacade seleccionarContactoDelDirectorio;
+    WebElementFacade selectContactoDelDirectorio;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV-body']")
     WebElementFacade tablaAsegurados;
@@ -135,7 +135,8 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
             for (WebElementFacade opciones : elementosAgregar) {
                 if(elementosRequeridos.get(i).equals(opciones.getText()) && elementosAgregar.size()==(elementosRequeridos.size()-1)){
                     opcionesOk = "Elementos de la opción Agregar correctos";
-                }else { opcionesOk = "Elementos de la opción Agregar no están presentes";}
+                }else { opcionesOk = "Elementos de la opción Agregar no están presentes";
+                }
             }
         }
         return opcionesOk;
@@ -153,7 +154,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void seleccionarContactoDelDirectorio() {
-        seleccionarContactoDelDirectorio.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+        selectContactoDelDirectorio.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
     }
 
     public void seleccionarNuevaPersonaNatural() {
@@ -189,7 +190,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (columna.get(1).getText().equals("Auto personal")){
+            if ("Auto personal".equals(columna.get(1).getText())){
                 return filaBoton;
             }
             filaBoton++;
