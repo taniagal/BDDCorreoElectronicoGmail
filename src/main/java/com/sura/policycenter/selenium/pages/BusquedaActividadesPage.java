@@ -64,9 +64,7 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void irABuscarActividades() {
-        waitFor(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:SearchTab']")));
-        waitABit(2000);
-        menuBuscar.click();
+        menuBuscar.waitUntilPresent().click();
         waitForTextToAppear("Buscar");
         waitFor(ExpectedConditions.visibilityOf(menuBuscarActividades));
         waitFor(ExpectedConditions.elementToBeClickable(By.xpath("//td[@id='Search:MenuLinks:Search_ActivitySearch']/div/span")));

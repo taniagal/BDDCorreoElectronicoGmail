@@ -1,4 +1,4 @@
-Busqueda de Actividades
+Busqueda Actividades
 
 Meta:
 
