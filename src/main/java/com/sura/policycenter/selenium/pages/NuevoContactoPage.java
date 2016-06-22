@@ -98,7 +98,7 @@ public class NuevoContactoPage extends Guidewire {
         selectItem(comboBoxDepartamento2,departamento);
         waitABit(4000);
         selectItem(comboBoxCiudad2,ciudad);
-        waitABit(1200);
+        waitABit(2000);
         selectItem(tipoDireccion2,tipoDireccion);
         waitABit(1500);
     }

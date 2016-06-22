@@ -126,6 +126,7 @@ public class InicioPage extends Guidewire {
     public void assertion(String element) {
         labelIngreso.waitUntilPresent();
         assertThat(labelIngreso.getText().toString(), containsString(element));
+        waitABit(2000);
     }
 
     // Metodos navegacion Escritorio
