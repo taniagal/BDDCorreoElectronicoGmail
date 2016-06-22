@@ -15,9 +15,8 @@ public class PanelIzquierdoElement extends PageObject implements Serializable{
         try {
             waitFor(opcionXPath).shouldBeDisplayed();
             $(opcionXPath).waitUntilClickable().click();
-           // $(opcionXPath).click();
         } catch (Exception e){
-            e.printStackTrace();
+            throw e;
         }
     }
 }

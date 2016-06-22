@@ -49,7 +49,7 @@ public class CotizacionSteps extends ScenarioSteps implements Serializable {
     }
 
     @Step
-    public void digitar_la_tecla(String teclaAccion) {
+    public void digitar_la_tecla() {
         // TODO: 08/06/2016 \VALIDAR QUE LO QUE SE ENVIA EN LA HISTORIA SEA UNA TECLA 
         getCotizacionPage().getDriver().switchTo().activeElement().sendKeys(Keys.TAB);
     }

@@ -5,7 +5,6 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
-import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -14,11 +13,9 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -26,12 +23,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 
 // TODO: 15/06/2016 Pendiente refactor
-public class NuevaCotizacionPage extends PageObject implements Serializable {
+public class NuevaCotizacionPage extends PageObject {
     private static final long serialVersionUID = 1L;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-    private static Map<Integer, String> constantNames = null;
 
-    // TODO: 08/06/2016 Validar con Liliana este formato
     private DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
     private List<AgenteModel> listaAgentesModel = null;
     private String nombreAgente;
@@ -65,7 +60,7 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
         } catch (StaleElementReferenceException sere) {
             LOGGER.info("StaleElementReferenceException : " + sere);
             elementoEncontrado = Boolean.FALSE;
-        }catch (AssertionError ae) {
+        } catch (AssertionError ae) {
             LOGGER.info("StaleElementReferenceException : " + ae);
             elementoEncontrado = Boolean.FALSE;
         }
@@ -113,7 +108,6 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
 
     public Boolean esFechaCotizacionHOY() {
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(LABEL_FECHA_POR_DEFECTO)));
-        //waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(LABEL_FECHA_POR_DEFECTO)));
         return esFechaPorDefectoHOY(obtenerFechaCotizacionElemento());
     }
 
@@ -134,29 +128,24 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
         validarAutocompletarNombreAgente();
         seleccionarAgente();
         Boolean esFechaVisible = elemento(LABEL_FECHA_POR_DEFECTO).isVisible();
-        System.out.println("NuevaCotizacionPage.seleccionarAgente -> FECHA VISIBLE : " + esFechaVisible);
+        LOGGER.info("NuevaCotizacionPage.seleccionarAgente -> FECHA VISIBLE : " + esFechaVisible);
     }
 
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
     public void seleccionarAgente() {
-        /*elemento(TXT_NOMBRE_AGENTE).selectByVisibleText(getNombreAgente());
-        System.out.println("NuevaCotizacionPage.seleccionarAgente");*/
         try {
 
             List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(CBO_NOMBRE_AGENTE));
-            //assertThat(listaNombresAgentesElement.size(), greaterThan(0));
-            if (!listaNombresAgentesElement.isEmpty()) {
-                for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
-                    if (agenteElemento.containsText(getNombreAgente())) {
-                        agenteElemento.click();
-                        break;
-                    }
+            for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
+                if (agenteElemento.containsText(getNombreAgente())) {
+                    agenteElemento.click();
+                    break;
                 }
             }
 
 
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.error("ERROR EN NUEVACOTIZACIONPAGE TRAZA:" +e);
         }
     }
 
@@ -166,9 +155,7 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
         waitFor($(TXT_NOMBRE_AGENTE)).shouldBeEnabled();
         enter(caracteresDigitados).into($(TXT_NOMBRE_AGENTE));
         waitFor(1).second();
-        //waitForTextToAppear($(TXT_NOMBRE_AGENTE), caracteresDigitados);
-        //waitFor(ExpectedConditions.attributeContains($(TXT_NOMBRE_AGENTE),"value",caracteresDigitados));
-        //waitForTextToAppear(caracteresDigitados);
+
         // TODO: 08/06/2016 COmo usar el de el impl bien??? para hacer el assertion si esta vacio el combo
         Integer tamanio = findAll(By.xpath(CBO_NOMBRE_AGENTE)).size();
         $(TXT_NOMBRE_AGENTE).clear();
@@ -176,7 +163,7 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
     }
 
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
-    public void validarExistenciaDeTodosLosProductosOrdenadosAlfabeticamente(ExamplesTable productosET) {
+    public void validarLosProductosOrdenadosAlfabeticamente() {
 
         List<String> listaProductos = new ArrayList<>(obtenerListaDeProductos());
 
@@ -244,9 +231,6 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
 
         seleccionarAgente();
         waitFor(1).second();
-
-        // TODO: 10/06/2016 ACTIVAR
-        //assertThat(elemento(TXT_CODIGO_AGENTE).getValue(), containsString("5676"));
     }
 
 
@@ -262,7 +246,7 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
         waitForPresenceOf(TITULO_PAGINA);
         waitForTextToAppear(pagina);
         String titulo;
-        if (elemento(TITULO_PAGINA) == null ){
+        if (elemento(TITULO_PAGINA) == null) {
             titulo = elemento(TITULO_PAGINA_SIGUIENTE).getText();
         } else {
             titulo = elemento(TITULO_PAGINA).getText();
@@ -294,9 +278,7 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
         this.nombreAgente = nombreAgente;
     }
 
-    public String obtenerMensajeEmergenteDeInformacion(String mensaje) {
-        //waitForTextToAppear("Nueva cotización");
-        //waitForTextToAppear(mensaje);
+    public String obtenerMensajeEmergenteDeInformacion() {
         waitFor(1).second();
         return elemento(MENSAJE_EMERGENTE_DE_INFORMACION).getText();
     }
@@ -329,9 +311,9 @@ public class NuevaCotizacionPage extends PageObject implements Serializable {
         }
     }
 
-    public Boolean validarOcurrenciaDeMensajeDeAplicacion(String mensajesApp){
+    public Boolean validarOcurrenciaDeMensajeDeAplicacion(String mensajesApp) {
         Boolean existeOcurrencia = Boolean.FALSE;
-        String mensajeMostrado="";
+        String mensajeMostrado;
         List<WebElementFacade> divsMensajes = elementos(MENSAJES_DE_INFORMACION);
         for (WebElementFacade div : divsMensajes) {
             mensajeMostrado = div.getText();

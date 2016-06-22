@@ -5,7 +5,6 @@ import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import org.jbehave.core.annotations.*;
-import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
 import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
@@ -50,9 +49,9 @@ public class CotizacionDefinitions {
      */
     @When("digíte el número de cuenta $numeroCuenta de una persona jurídica y digite la tecla $teclaAccion para activar la búsqueda")
     @Alias("digíte el número de cuenta $numeroCuenta de una persona natural y digite la tecla $teclaAccion para activar la búsqueda")
-    public void buscarCuentaPorNumeroDeCuenta(String numeroCuenta, String teclaAccion){
+    public void buscarCuentaPorNumeroDeCuenta(String numeroCuenta){
         cotizador.digitar_numero_de_cuenta(numeroCuenta);
-        cotizador.digitar_la_tecla(teclaAccion);
+        cotizador.digitar_la_tecla();
 
         LOGGER.info("CotizacionDefinitions.buscarCuentaPorNumeroDeCuenta");
     }
@@ -111,8 +110,8 @@ public class CotizacionDefinitions {
     }
 
     @Then("se mostrarán en orden alfabetico los: $productos")
-    public void validarExistenciaYOrdenDeLosProductos(ExamplesTable productos){
-        cotizador.getCotizacionPage().validarExistenciaDeTodosLosProductosOrdenadosAlfabeticamente(productos);
+    public void validarOrdenDeLosProductos(){
+        cotizador.getCotizacionPage().validarLosProductosOrdenadosAlfabeticamente();
         LOGGER.info("CotizacionDefinitions.validarExistenciaYOrdenDeLosProductos");
     }
 
@@ -124,7 +123,7 @@ public class CotizacionDefinitions {
 
     @Then("deberá observar un mensaje emergente de información: $mensaje")
     public void deberaObservarUnMensajeEmergenteDeInformacion(String mensaje){
-        assertThat(mensaje, is(equalTo(cotizador.getCotizacionPage().obtenerMensajeEmergenteDeInformacion(mensaje))));
+        assertThat(mensaje, is(equalTo(cotizador.getCotizacionPage().obtenerMensajeEmergenteDeInformacion())));
         LOGGER.info("CotizacionDefinitions.deberaObservarUnMensajeEmergenteDeInformacion");
     }
     @Then("deberá observar un mensaje de error: $mensaje")
