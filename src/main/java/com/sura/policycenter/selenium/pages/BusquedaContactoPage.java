@@ -9,13 +9,11 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
 
 
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -103,6 +101,7 @@ public class BusquedaContactoPage extends Guidewire {
         super(driver);
     }
 
+
     public void login(String usuario, String contrasena){
         txtusuario.type(usuario);
         txtcontrasena.type(contrasena);
@@ -121,6 +120,8 @@ public class BusquedaContactoPage extends Guidewire {
             nombreEmpresaContact.type(nombre);
         }
         botonBuscar.click();
+        selectContact.waitUntilPresent();
+        selectContact.waitUntilVisible();
         selectContact.click();
     }
 
@@ -138,6 +139,8 @@ public class BusquedaContactoPage extends Guidewire {
         nombreContact.type(nombre);
         apellidoContact.type(apellido);
         botonBuscar.click();
+        selectContact.waitUntilPresent();
+        selectContact.waitUntilVisible();
         selectContact.click();
     }
 
@@ -162,9 +165,13 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
-
-        waitABit(1000);
-        txtTipoDoc.type(tipoDoc);
+        waitABit(3000);
+        getDriver().manage().timeouts().pageLoadTimeout(10, SECONDS);
+        txtTipoDoc.waitUntilPresent();
+        txtTipoDoc.clear();
+        txtTipoDoc.sendKeys(tipoDoc);
+        txtTipoDoc.sendKeys(Keys.ENTER);
+        txtRazonSocial.waitUntilPresent();
         txtNumDoc.type(numDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
@@ -286,7 +293,6 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void buscarContacto(String tipoContacto, String nombre, String apellido, String numero){
-
         waitABit(1000);
         txtTipoDoc.waitUntilClickable();
         txtTipoDoc.click();
@@ -322,6 +328,8 @@ public class BusquedaContactoPage extends Guidewire {
         waitABit(1000);
         txtNombreEmpresa.type(nombreEmpresa);
         botonBuscar.click();
+        selectContact.waitUntilPresent();
+        selectContact.waitUntilVisible();
         selectContact.click();
     }
 
@@ -372,6 +380,8 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void seleccionarContacto() {
+        selectContact.waitUntilPresent();
+        selectContact.waitUntilVisible();
         selectContact.click();
     }
 

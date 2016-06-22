@@ -10,13 +10,14 @@ public class BusquedaActividadesSteps extends ScenarioSteps {
 
     private final BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
 
+    public BusquedaActividadesSteps(Pages pages) {
+        super(pages);
+    }
+
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
 
-    public BusquedaActividadesSteps(Pages pages) {
-        super(pages);
-    }
 
     public void buscarActividades() {
         inicioPage().irABuscarActividades();

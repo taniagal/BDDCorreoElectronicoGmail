@@ -127,7 +127,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
         campoTxtDireccion.sendKeys(direccion);
         this.direccion = direccion;
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(1500);
+        waitABit(2200);
         selectItem(comboBoxCiudad,ciudad);
     }
 
@@ -162,11 +162,12 @@ public class DetallesDeUbicacionPage extends Guidewire{
         }
 
     public void verificarMensaje(String mensaje) {
-        waitABit(1000);
+        divMensaje.waitUntilPresent();
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
     public void verificarMensajeDireccion(String mensaje) {
+        divMensaje.waitUntilPresent();
         String validaMensaje;
         validaMensaje = mensaje.substring(0,13)+direccion+mensaje.substring(13,mensaje.length());
         waitABit(1000);
