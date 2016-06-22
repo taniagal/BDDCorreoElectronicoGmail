@@ -49,23 +49,17 @@ public class CotizacionPADetalleDefinitions {
     }
 
     @Then("se debe mostrar en la columna \"Termino\" el limite o deducible de la cobertura en el caso de que aplique")
-    @Pending
     public void thenValidarTerminoCobertura(){
-        //se ejecuta manualmente hasta que se realice la configuracion de rating
         cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 
     @Then("se debe mostrar en la columna \"Termino\" el limite de la cobertura en el caso de que aplique")
-    @Pending
     public void thenValidarLimiteCobertura(){
-        //se ejecuta manualmente hasta que se realice la configuracion de rating
         cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 
     @Then("se debe mostrar en la columna \"Termino\" el deducible de la cobertura en el caso de que aplique")
-    @Pending
     public void thenValidarDeducibleCobertura(){
-        //se ejecuta manualmente hasta que se realice la configuracion de rating
         cotizacionPADetalleSteps.validarTerminoCobertura();
     }
 }
