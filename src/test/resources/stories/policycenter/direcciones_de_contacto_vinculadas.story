@@ -10,7 +10,8 @@ GivenStories: stories/policycenter/login_policy.story
 Given que me encuentro en las direcciones de un contacto asociado a una cuenta <numeroCuenta>
 When este en una direccion que esta asociada a otro contacto y la desee editar
 Then me debe mostrar la siguiente informacion:
-
+|pais|departamento|ciudad|direccion|codigoPostal|tipoDeDireccion|descripcion
+|Estados Unidos|California|SAN FRANCISCO|CRA 65 # 48-162|91007|Vivienda|Created by the Address Builder with code 0
 Examples:
-|numeroCuenta|
-|C000484848|
+|numeroCuenta
+|C000484848
