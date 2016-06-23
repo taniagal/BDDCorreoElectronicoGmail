@@ -79,7 +79,6 @@ public class CoberturaGlobalPage extends Guidewire {
                 cargarCoberturaUnica(nombreCobertura, valor);
                 break;
         }
-
         waitABit(1000);
         botonAceptar.click();
     }
