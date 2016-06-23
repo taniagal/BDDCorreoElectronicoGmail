@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -9,6 +10,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.concurrent.TimeUnit;
 
 
 public class BusquedaDeCuentasPage extends Guidewire {
@@ -207,12 +209,12 @@ public class BusquedaDeCuentasPage extends Guidewire {
     }
 
     public void seleccionarImprimir() {
-        waitABit(500);
+        waitForTextToAppear("YURLEDYS");
         btnImprimir.click();
     }
 
     public void validarOpcionesDeImprimir(String imprimir, String exportar, String exportarPersonalizado) {
-        espera(rbtnImprimir, 4);
+        waitForTextToAppear("Opciones de impresión");
         this.rbtnExportar.shouldBeVisible();
         this.rbtnImprimir.shouldBeVisible();
         this.rbtnExportarPersonalizado.shouldBeVisible();
