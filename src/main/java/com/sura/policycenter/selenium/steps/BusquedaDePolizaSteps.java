@@ -1,27 +1,17 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaDePolizaPage;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 public class BusquedaDePolizaSteps extends ScenarioSteps{
 
-    private final BusquedaDePolizaPage busquedaDePolizaPage = new BusquedaDePolizaPage(getDriver());
-
-    public BusquedaDePolizaSteps(Pages pages) {
-        super(pages);
-    }
-
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
+    private BusquedaDePolizaPage busquedaDePolizaPage;
 
     @Step
     public void irABuscarPoliza() {
-        inicioPage().irABuscarPolizas();
+        busquedaDePolizaPage.irABuscarPoliza();
     }
 
     @Step

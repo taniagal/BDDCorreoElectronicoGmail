@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -99,7 +98,9 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
 
     public void irABuscarCuentas() {
-        waitFor(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:SearchTab']")));
+        menuBuscar.waitUntilPresent();
+        menuBuscar.waitUntilVisible();
+        waitFor(ExpectedConditions.elementToBeClickable(menuBuscar));
 //        waitABit(2000);
         menuBuscar.click();
         waitForTextToAppear("Buscar");
