@@ -45,7 +45,8 @@ Then al seleccionar el botón Cancelar deberá ver la página Nueva cotización
 
 Given ya existe una cotización en estado "cotizado" del cliente con número de cuenta C000777777 para el producto Multiriesgo corporativo
 And deseo crear nueva cotización buscando por número de cuenta
-When digíte el número de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la búsqueda
+When digíte el número de cuenta
+ de una persona natural y digite la tecla Tab para activar la búsqueda
 And he seleccionado en el nombre del agente DELIMA MEDELLIN
 Then se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable
 Then se mostrarán en orden alfabetico los:
@@ -60,28 +61,4 @@ And deseo crear nueva cotización buscando por número de cuenta
 When digíte el número de cuenta C000777778 de una persona natural y digite la tecla Tab para activar la búsqueda
 When he seleccionado en el nombre del agente DELIMA MEDELLIN
 Then seleccionar nombre de producto Propiedad comercial
-Then deberá observar un mensaje de error: FRANK RAMIREZ ALZATE, Por favor revisar la parametrizacion con el Comité de Evaluación, la parametrización no está definida.
-
-
-Scenario: Validaciones y reglas como precondición en el ingreso de información de un vehículo de una cotización
-Meta:
-
-Given existe una cuenta <numeroDeCuenta> con transacción de póliza <numeroTransaccion> con el Estado en Cotizado con el Producto en Auto personal
-When consulte dicha transacción de póliza <numeroTransaccion>
-And en el Contrato de póliza en Vehículos
-And seleccione el botón Editar transacción de póliza
-And seleccione el botón Aceptar de la ventana emergente
-And ingrese placa <placa>
-And ingrese chasis <chasis>
-And ingrese motor <motor>
-And seleccione el botón Siguiente
-Then validar riesgos consultables en <placa>, <chasis>, <motor>
-Then validar ingreso de campos Chasis, Motor
-Then validar existencia de campos Chasis, Motor
-When marca de vehículo sea importada
-Then validar mensaje <mensaje> y solicitar aprobacion
-Then validar riesgos consultables en <placa>, <chasis>, <motor>
-
-Examples:
-|numeroDeCuenta |numeroTransaccion  |placa    |chasis     |motor  |
-|C001888888     |22222225           |T64497   |CHAS1254   |AFF56  |
+Then deberá observar un mensaje de error: FRANK RAMIREZ ALZATE,Por favor revisar la parametrizacion con el Comité de Evaluación, la parametrización no está definida

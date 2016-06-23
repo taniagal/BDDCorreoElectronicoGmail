@@ -315,6 +315,7 @@ public class NuevaCotizacionPage extends PageObject {
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado;
         List<WebElementFacade> divsMensajes = elementos(MENSAJES_DE_INFORMACION);
+
         for (WebElementFacade div : divsMensajes) {
             mensajeMostrado = div.getText();
             if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
