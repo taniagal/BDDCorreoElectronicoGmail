@@ -22,6 +22,7 @@ public class DetallesContactoDefinitions {
      */
     @Given("tengo un contacto con <tipo_documento> c. <documento>")
     public void givenConsultarContacto(@Named("tipo_documento") String tipoDocumento,@Named("documento") String documento){
+        seusLogin.login();
     }
 
     @When("quiera ver informacion detallada del contacto con <tipo_documento> c. <documento>")

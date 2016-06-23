@@ -1,25 +1,15 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaActividadesPage;
-import com.sura.policycenter.selenium.pages.InicioPage;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 public class BusquedaActividadesSteps extends ScenarioSteps {
 
-    private final BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
-
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
-    public BusquedaActividadesSteps(Pages pages) {
-        super(pages);
-    }
+    BusquedaActividadesPage busquedaActividades;
 
     public void buscarActividades() {
-        inicioPage().irABuscarActividades();
+        busquedaActividades.irABuscarActividades();
     }
 
     public void filtrarPorAsignado(String usuario) {

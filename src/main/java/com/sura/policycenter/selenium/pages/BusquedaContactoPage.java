@@ -9,13 +9,11 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-
-
 import org.slf4j.LoggerFactory;
 
 
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -109,6 +107,7 @@ public class BusquedaContactoPage extends Guidewire {
         super(driver);
     }
 
+
     public void login(String usuario, String contrasena){
         txtusuario.type(usuario);
         txtcontrasena.type(contrasena);
@@ -176,7 +175,8 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
-        waitABit(2500);
+        waitABit(3000);
+        getDriver().manage().timeouts().pageLoadTimeout(10, SECONDS);
         txtTipoDoc.waitUntilPresent();
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.clear();

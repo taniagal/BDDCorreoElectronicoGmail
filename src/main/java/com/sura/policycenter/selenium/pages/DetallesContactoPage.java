@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -132,6 +133,18 @@ public class  DetallesContactoPage extends Guidewire {
     private WebElementFacade campoTxtDocumento;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
+    private WebElementFacade mnuContact;
+    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact-arrowEl']")
+    private WebElementFacade mnuItemNuevoContacto;
+    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewCompany-textEl']")
+    private WebElementFacade mnuItemNuevaCompania;
+    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewPerson']")
+    private WebElementFacade mnuItemNuevaPersona;
+    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:Search-itemEl']")
+    private WebElementFacade mnuItemContactoBusqueda;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
+    private WebElementFacade mnuBuscar;
 
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
@@ -142,8 +155,14 @@ public class  DetallesContactoPage extends Guidewire {
         super(driver);
     }
 
+    public void irABuscarContacto() {
+        Actions actions = deployMenu(mnuContact);
+        actions.moveToElement(mnuItemContactoBusqueda).release(mnuItemContactoBusqueda).click().build().perform();
+    }
     public void editarContacto(){
         botonEditarContacto.waitUntilPresent();
+        botonEditarContacto.waitUntilVisible();
+        assertThat("El boton de editar no está presente en el DOM",botonEditarContacto.isPresent());
         botonEditarContacto.click();
         waitABit(1000);
     }
@@ -154,7 +173,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void irADirecciones(){
-        waitABit(500);
+        waitABit(1000);
         botonDirecciones.click();
         botonAgregar.waitUntilPresent();
         botonAgregar.click();
@@ -162,7 +181,7 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarDireccion(){
         botonAgregar.click();
-        waitABit(2500);
+        waitABit(2000);
     }
 
     public void agregarNombre(String segundoNombre){
@@ -404,6 +423,7 @@ public class  DetallesContactoPage extends Guidewire {
      * AGREGAR DIRECCION A CONTACTO
      */
     public void validarDatosPantalla() {
+        waitABit(2000);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelPais.isPresent())
             notPresent.append(" pais,");
@@ -444,12 +464,12 @@ public class  DetallesContactoPage extends Guidewire {
         assertThat(res,"No estan correctos los valores".equals(res));
     }
 
-    public void validarDireccion(String tipoDireccion){
-        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains(tipoDireccion));
+    public void validarDireccion(){
+        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains("CL 60 B # 10 - 157"));
     }
 
     public List<WebElementFacade> getListaContactos() {
-        return withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
+        return withTimeoutOf(5, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
     }
 
     public void validarMensaje(String mensaje) {
