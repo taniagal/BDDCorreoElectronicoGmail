@@ -90,7 +90,7 @@ public class CotizacionPADetallePage extends Guidewire {
     }
 
     public void verDetalleCotizacion() {
-        waitForTextToAppear("Cotización");
+        waitForTextToAppear("Cotización",1000);
         waitFor(tituloDePagina).shouldBeVisible();
         MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
@@ -142,6 +142,7 @@ public class CotizacionPADetallePage extends Guidewire {
 
             waitFor(botonCoberturasPA).shouldBeVisible();
             botonCoberturasPA.click();
+            waitForTextToAppear("Coberturas de auto personal",1000);
 
             for(int j=1; j<=i; j++){
                 WebElementFacade coberturaAuto= findBy(".//div[contains(.,'"+terminoCoberturas.get("dato"+j)+"')]");
@@ -151,6 +152,7 @@ public class CotizacionPADetallePage extends Guidewire {
 
             waitFor(botonCotizacion).shouldBeVisible();
             botonCotizacion.click();
+            waitForTextToAppear("Cotización",1000);
 
         }catch(Exception e) {
             LOGGER.error("This is error", e);
