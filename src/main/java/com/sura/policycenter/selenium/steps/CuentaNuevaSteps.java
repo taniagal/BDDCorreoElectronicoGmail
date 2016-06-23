@@ -48,6 +48,28 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
+    public void agregar_tipo_documento2(String tipoDocumento) {
+            initRandoms();
+        if("NIT".equals(tipoDocumento)){
+            cp.buscarPersona("Busqueda","Compania");
+            cp.agregarTipoDocumento(tipoDocumento,nit);
+        } else {
+            cp.buscarPersona("Busqueda","Persona");
+            cp.agregarTipoDocumento(tipoDocumento,cedula);
+        }
+    }
+
+    @Step
+    public void agregar_documento(String tipoDocumento) {
+        initRandoms();
+        StringBuilder documento = new StringBuilder("us");
+        documento.append(nit.substring(0,6));
+        documento.append("c");
+        cp.buscarPersona("Busqueda","Compania");
+        cp.agregarTipoDocumento(tipoDocumento,documento.toString());
+    }
+
+    @Step
     public void agregar_direccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         cp.agregarDireccion(tipoDireccion,direccion,departamento,ciudad);
         cp.actualizar();
@@ -66,11 +88,6 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     @Step
     public void agregar_razon_social(String razonSocial) {
         cp.agregarRazonsocial(razonSocial);
-    }
-
-    @Step
-    public void validar_logeo_policyCenter(){
-        cp.validarLogeoPolicyCenter();
     }
 
     @Step

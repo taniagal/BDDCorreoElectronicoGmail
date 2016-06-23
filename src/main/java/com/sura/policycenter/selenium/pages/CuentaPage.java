@@ -99,7 +99,7 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(4000);
+        waitABit(3000);
         selectItem(comboBoxCiudad,ciudad);
         waitABit(2000);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
@@ -153,7 +153,7 @@ public class CuentaPage extends Guidewire{
     public  void verificarMensaje(String mensaje){
         waitABit(2000);
         divMensaje.waitUntilPresent();
-        assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
+        assertThat("Falló la validacion del mensaje de rechazo", divMensaje.containsText(mensaje));
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
