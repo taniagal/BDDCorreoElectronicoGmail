@@ -1,17 +1,12 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.concurrent.TimeUnit;
-
 
 public class BusquedaDeCuentasPage extends Guidewire {
 
@@ -100,17 +95,10 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
 
     public void irABuscarCuentas() {
-        menuBuscar.waitUntilPresent();
-        menuBuscar.waitUntilVisible();
-        waitFor(ExpectedConditions.elementToBeClickable(menuBuscar));
-//        waitABit(2000);
-        menuBuscar.click();
-        waitForTextToAppear("Buscar");
-        waitFor(ExpectedConditions.visibilityOf(menuBuscarCuentas));
-        waitFor(ExpectedConditions.elementToBeClickable(menuBuscarCuentas));
-        waitABit(1000);
+        waitABit(1500);
+        menuBuscar.waitUntilPresent().click();
+        waitABit(1500);
         menuBuscarCuentas.click();
-        waitForTextToAppear("Búsqueda");
     }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
@@ -131,7 +119,6 @@ public class BusquedaDeCuentasPage extends Guidewire {
         txtSegundoNombre.clear();
         txtPrimerApellido.clear();
         txtSegundoApellido.clear();
-        waitABit(500);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
