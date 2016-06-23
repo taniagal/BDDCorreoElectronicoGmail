@@ -1204,6 +1204,7 @@ public class Navegacion extends Guidewire {
     }
 
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
+        waitFor(mnuAdmCotizaciones).shouldBeVisible();
         mnuAdmCotizaciones.click();
         waitABit(800);
         return new OpcionesAdminitradorCotizaciones(getDriver());
