@@ -115,8 +115,8 @@
                     <excludes>
                         <exclude>**/policycenter/MainStories.java</exclude>
                     </excludes>
-                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
-                    <!--<perCoreThreadCount>true</perCoreThreadCount>
+                    <!--<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                    <perCoreThreadCount>true</perCoreThreadCount>
                     <!--<threadCount>2</threadCount>
                     <forkCount>3</forkCount>-->
                     <systemPropertyVariables>
