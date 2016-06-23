@@ -12,7 +12,7 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     private String cedula = "";
     private String nit = "";
     private final Guidewire gw = new Guidewire(getDriver());
-    private final CuentaPage cp = new CuentaPage(getDriver());
+    private final CuentaPage cuentaPage = new CuentaPage(getDriver());
 
     public CuentaNuevaSteps(Pages pages) {
         super(pages);
@@ -39,11 +39,11 @@ public class CuentaNuevaSteps extends ScenarioSteps {
             initRandoms();
         }
         if("NIT".equals(tipoDocumento)){
-            cp.buscarPersona("Busqueda","Compania");
-            cp.agregarTipoDocumento(tipoDocumento,nit);
+            cuentaPage.buscarPersona("Busqueda","Compania");
+            cuentaPage.agregarTipoDocumento(tipoDocumento,nit);
         } else {
-            cp.buscarPersona("Busqueda","Persona");
-            cp.agregarTipoDocumento(tipoDocumento,cedula);
+            cuentaPage.buscarPersona("Busqueda","Persona");
+            cuentaPage.agregarTipoDocumento(tipoDocumento,cedula);
         }
     }
 
@@ -51,11 +51,11 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     public void agregar_tipo_documento2(String tipoDocumento) {
             initRandoms();
         if("NIT".equals(tipoDocumento)){
-            cp.buscarPersona("Busqueda","Compania");
-            cp.agregarTipoDocumento(tipoDocumento,nit);
+            cuentaPage.buscarPersona("Busqueda","Compania");
+            cuentaPage.agregarTipoDocumento(tipoDocumento,nit);
         } else {
-            cp.buscarPersona("Busqueda","Persona");
-            cp.agregarTipoDocumento(tipoDocumento,cedula);
+            cuentaPage.buscarPersona("Busqueda","Persona");
+            cuentaPage.agregarTipoDocumento(tipoDocumento,cedula);
         }
     }
 
@@ -65,44 +65,54 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         StringBuilder documento = new StringBuilder("us");
         documento.append(nit.substring(0,6));
         documento.append("c");
-        cp.buscarPersona("Busqueda","Compania");
-        cp.agregarTipoDocumento(tipoDocumento,documento.toString());
+        cuentaPage.buscarPersona("Busqueda","Compania");
+        cuentaPage.agregarTipoDocumento(tipoDocumento,documento.toString());
     }
 
     @Step
     public void agregar_direccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
-        cp.agregarDireccion(tipoDireccion,direccion,departamento,ciudad);
-        cp.actualizar();
+        cuentaPage.agregarDireccion(tipoDireccion,direccion,departamento,ciudad);
+        cuentaPage.actualizar();
     }
 
     @Step
     public void agregar_organizacion(String nombreOrganizacion, String agente) {
-        cp.agregarOrganizacion(nombreOrganizacion,agente);
+        cuentaPage.agregarOrganizacion(nombreOrganizacion,agente);
     }
 
     @Step
     public void agregar_nombre(String primerNombre, String primerApellido, String fechaNacimiento){
-        cp.agregarNombres(primerNombre,primerApellido,fechaNacimiento);
+        cuentaPage.agregarNombres(primerNombre,primerApellido,fechaNacimiento);
+    }
+
+    @Step
+    public void agregar_nombre_comecial(String nombreComercial) {
+        cuentaPage.agregarNombrecomercial(nombreComercial);
+    }
+
+    @Step
+    public void agregar_telefono_oficina(String telefonoOficina) {
+        cuentaPage.agregarTelefonoOficina(telefonoOficina);
     }
 
     @Step
     public void agregar_razon_social(String razonSocial) {
-        cp.agregarRazonsocial(razonSocial);
+        cuentaPage.agregarRazonsocial(razonSocial);
     }
 
     @Step
     public void verificar_cuenta(String nombreCuenta){
-        cp.verificarCuentaNumero(nombreCuenta);
+        cuentaPage.verificarCuentaNumero(nombreCuenta);
     }
 
     @Step
     public void verificar_edad_menor(String mensaje){
-        cp.verificarEdadMenor(mensaje);
+        cuentaPage.verificarEdadMenor(mensaje);
     }
 
     @Step
     public void verificar_mensaje(String mensaje){
-        cp.verificarMensaje(mensaje);
+        cuentaPage.verificarMensaje(mensaje);
     }
 
 }
