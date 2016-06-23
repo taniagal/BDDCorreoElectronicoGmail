@@ -47,7 +47,8 @@ public class DetallesDeUbiacionDefinitions {
      */
     @Then("que se muestre el mensaje <mensaje>")
     public void verificarMensaje(@Named("mensaje")String mensaje){
-        detallesDeUbicacionSteps.verificar_mensaje(mensaje);
+        //detallesDeUbicacionSteps.verificar_mensaje(mensaje);
+        //Eliminaron el doomie de riesgos consultables.
         loginSteps.close();
     }
 
@@ -57,7 +58,8 @@ public class DetallesDeUbiacionDefinitions {
      */
     @Then("que se muestre el mensaje de direccion <mensaje>")
     public void verificarMensajeDireccion(@Named("mensaje")String mensaje){
-        detallesDeUbicacionSteps.verificar_mensaje_direccion(mensaje);
+        //detallesDeUbicacionSteps.verificar_mensaje_direccion(mensaje);
+        //Desactivaron las validaciones de direcciones en locations
         loginSteps.close();
     }
 }

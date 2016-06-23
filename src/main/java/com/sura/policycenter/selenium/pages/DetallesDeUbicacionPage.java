@@ -129,6 +129,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
         selectItem(comboBoxDepartamento,departamento);
         waitABit(2200);
         selectItem(comboBoxCiudad,ciudad);
+        waitABit(1000);
     }
 
     public void agregarUbicacion(String descripcion, String actividad){
