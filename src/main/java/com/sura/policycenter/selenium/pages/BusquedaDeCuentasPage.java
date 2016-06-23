@@ -106,7 +106,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         waitForTextToAppear("Buscar");
         waitFor(ExpectedConditions.visibilityOf(menuBuscarCuentas));
         waitFor(ExpectedConditions.elementToBeClickable(menuBuscarCuentas));
-//        waitABit(2000);
+        waitABit(1000);
         menuBuscarCuentas.click();
         waitForTextToAppear("Búsqueda");
     }
