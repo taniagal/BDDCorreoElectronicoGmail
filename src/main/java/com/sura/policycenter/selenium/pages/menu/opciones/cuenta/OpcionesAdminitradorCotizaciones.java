@@ -14,7 +14,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -344,7 +343,6 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
 
     public void ingresaRechazoNoTomar(String razon) {
         waitFor(listaTipoRazonNoTomar).shouldBeEnabled();
-        JOptionPane.showMessageDialog(null, razon);
         listaTipoRazonNoTomar.clear();
         listaTipoRazonNoTomar.sendKeys(razon);
         txtRazonCartaNoTomar.click();
