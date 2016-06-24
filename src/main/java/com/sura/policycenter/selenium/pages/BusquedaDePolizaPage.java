@@ -47,9 +47,27 @@ public class BusquedaDePolizaPage extends PageObject{
     WebElementFacade grdAgente;
     @FindBy(xpath = "//div[@id='PolicySearch:PolicySearchScreen:_msgs']/div")
     WebElementFacade msjValidacion;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
+    WebElementFacade menuBuscar;
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_PolicySearch']")
+    WebElementFacade menuBuscarPoliza;
+    @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:ttlBar']")
+    WebElementFacade tituloBuscarPoliza;
 
     public BusquedaDePolizaPage(WebDriver driver){
         super(driver);
+    }
+
+    public void irABuscarPoliza() {
+        menuBuscar.waitUntilPresent();
+        menuBuscar.waitUntilVisible();
+        menuBuscar.waitUntilClickable();
+        menuBuscar.click();
+        waitForAnyTextToAppear("Buscar", "Búsqueda");
+        if(!tituloBuscarPoliza.isVisible()){
+            menuBuscarPoliza.click();
+            waitForTextToAppear("Buscar Póliza");
+        }
     }
 
     public void buscarPolizaPorNumeroDePoliza(String buscarNumeroPoliza) {
