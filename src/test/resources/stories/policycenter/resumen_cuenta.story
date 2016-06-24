@@ -1,4 +1,4 @@
-Resumen de la cuenta
+Resumen Cuenta
 
 Meta:
 
