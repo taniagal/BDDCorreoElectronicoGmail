@@ -10,7 +10,7 @@ Profesion, Estado civil, Tipo familia,  Telefono primario, Telefono celular y Co
 
 Para el contacto tipo persona juridica esta informacion debe ser Razon social, Nombre comercial, Tipo de documento, Numero de
 documento, Actividad economica, Numero de empleados, Valor de activos, ventas anuales, Telefono de la oficina, Fax,
-Correo electronico primario
+Correo electronico primario.
 
 Scenario: ver informacion detallada de un contacto tipo persona natural.
 
