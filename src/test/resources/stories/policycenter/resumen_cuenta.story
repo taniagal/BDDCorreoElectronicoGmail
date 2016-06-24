@@ -1,8 +1,12 @@
+Resumen de la cuenta
+
 Meta:
 
 Narrative:
 Como usuario PolicyCenter
 Quiero poder ver el resumen de la cuenta de una persona juridica o natural, teniendo la posibilidad de editar dicha informacion
+
+@Issue SUGWUSC-10130 Account Summary
 
 Scenario: Mostrar resumen de la cuenta de persona juridica
 GivenStories: stories/policycenter/login_policy.story
