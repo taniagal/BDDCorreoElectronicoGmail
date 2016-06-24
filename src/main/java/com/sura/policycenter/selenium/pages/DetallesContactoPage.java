@@ -1,14 +1,14 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -206,23 +206,23 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarTelefonosResidencial(String telefonoResidencial){
         campoTxtTelefonoResidencial.clear();
-        waitABit(200);
+        waitABit(500);
         campoTxtTelefonoResidencial.type(telefonoResidencial);
         dtlContact[11]= telefonoResidencial;
     }
 
     public void agregarTelefonoTrabajo(String telefonoTrabajo){
         campoTxtTelefonoTrabajo.clear();
-        waitABit(200);
+        waitABit(300);
         campoTxtTelefonoTrabajo.sendKeys(telefonoTrabajo);
         dtlContact[12]= telefonoTrabajo;
     }
 
     public void agregarTelefonoCelular(String telefonoCelular){
         campoTxtTelefonoCelular.clear();
-        waitABit(200);
+        waitABit(300);
         campoTxtTelefonoCelular.sendKeys(telefonoCelular);
-        dtlContact[10]= telefonoCelular;
+        dtlContact[10]= "+1 "+telefonoCelular;
     }
 
     public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
@@ -230,7 +230,7 @@ public class  DetallesContactoPage extends Guidewire {
         waitABit(1000);
         campoTxtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
         campoTxtCorreoElectronicoSecundario.clear();
-        waitABit(500);
+        waitABit(300);
         campoTxtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
         dtlContact[13]= correoElectronicoPrimario;
         dtlContact[14]= correoElectronicoSecundario;
