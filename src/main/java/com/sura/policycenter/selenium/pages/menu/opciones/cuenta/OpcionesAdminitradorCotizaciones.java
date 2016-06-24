@@ -328,6 +328,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     }
 
     public void ingresaRechazo(String razon) {
+        waitFor(txtCodRazon).shouldBeEnabled();
         txtCodRazon.clear();
         txtCodRazon.sendKeys(razon);
         txtRazonCartaDeclina.click();

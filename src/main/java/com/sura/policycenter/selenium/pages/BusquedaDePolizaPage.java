@@ -1,7 +1,5 @@
 package com.sura.policycenter.selenium.pages;
 
-import java.util.List;
-import java.util.Map;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -13,6 +11,9 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
+import java.util.Map;
 
 
 public class BusquedaDePolizaPage extends PageObject{
@@ -47,9 +48,27 @@ public class BusquedaDePolizaPage extends PageObject{
     WebElementFacade grdAgente;
     @FindBy(xpath = "//div[@id='PolicySearch:PolicySearchScreen:_msgs']/div")
     WebElementFacade msjValidacion;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
+    WebElementFacade menuBuscar;
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_PolicySearch']")
+    WebElementFacade menuBuscarPoliza;
+    @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:ttlBar']")
+    WebElementFacade tituloBuscarPoliza;
 
     public BusquedaDePolizaPage(WebDriver driver){
         super(driver);
+    }
+
+    public void irABuscarPoliza() {
+        menuBuscar.waitUntilPresent();
+        menuBuscar.waitUntilVisible();
+        menuBuscar.waitUntilClickable();
+        menuBuscar.click();
+        waitForAnyTextToAppear("Buscar", "Búsqueda");
+        if(!tituloBuscarPoliza.isVisible()){
+            menuBuscarPoliza.click();
+            waitForTextToAppear("Buscar Póliza");
+        }
     }
 
     public void buscarPolizaPorNumeroDePoliza(String buscarNumeroPoliza) {

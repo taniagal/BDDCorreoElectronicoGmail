@@ -15,22 +15,11 @@ public class DetallesContactoSteps extends ScenarioSteps {
         super(pages);
     }
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
 
     @Step
     public void abrir_detalles_contacto(String tipoDocumento, String documento){
-        inicioPage().irABuscarContacto();
+        detallesContactoPage.irABuscarContacto();
         busquedaContactoPage.consultarContactoNumDoc(tipoDocumento,documento);
-        busquedaContactoPage.seleccionarContacto();
-    }
-
-    @Step
-    public void abrir_detalles_contacto_empresa(String nombreEmpresa) {
-        inicioPage().irABuscarContacto();
-        busquedaContactoPage.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
         busquedaContactoPage.seleccionarContacto();
     }
 

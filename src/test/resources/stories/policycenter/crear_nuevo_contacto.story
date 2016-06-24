@@ -6,7 +6,7 @@ Quiera crear una persona natural e ingrese la información en los campos tipo de
 se debe crear una persona tipo natural
 
 Scenario: Crear contacto persona natural
-GivenStories: stories/policycenter/login_policy.story
+
 Given estoy en la pantalla de crear contacto persona natural
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
@@ -22,7 +22,7 @@ Examples:
 
 
 Scenario: Crear contacto persona juridica
-GivenStories: stories/policycenter/login_policy.story
+
 Given estoy en la pantalla de crear contacto persona juridica
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
@@ -37,7 +37,7 @@ Examples:
 
 
 Scenario: Validar Contacto Existente
-GivenStories: stories/policycenter/login_policy.story
+
 Given estoy en la pantalla de crear contacto persona juridica
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
@@ -53,7 +53,7 @@ Examples:
 
 
 Scenario: Campo ciudad obligatorio si se ingresa el telefono
-GivenStories: stories/policycenter/login_policy.story
+
 Given estoy en la pantalla de crear contacto persona natural
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>

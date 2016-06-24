@@ -1,14 +1,11 @@
 package com.sura.guidewire.selenium;
 
 import com.google.common.base.Function;
-
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -83,7 +80,7 @@ public class Guidewire extends PageObject {
     public Actions deployMenu(WebElementFacade menu) {
         getDriver().manage().timeouts().pageLoadTimeout(10, SECONDS);
         menu.waitUntilPresent().click();
-        waitABit(3000);
+        waitABit(2500);
         getDriver().manage().timeouts().pageLoadTimeout(10, SECONDS);
         menu.click();
         waitABit(500);

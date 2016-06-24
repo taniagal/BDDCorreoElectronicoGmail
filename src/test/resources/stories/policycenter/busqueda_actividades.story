@@ -1,6 +1,7 @@
-Busqueda de Actividades
+Busqueda Actividades
 
 Meta:
+@issue #SUGWUSC-14986
 
 Narrative:
 Como usuario PolicyCenter

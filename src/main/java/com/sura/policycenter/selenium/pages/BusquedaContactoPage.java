@@ -1,8 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import java.util.List;
-import java.util.Map;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -11,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+import java.util.Map;
 
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -100,6 +100,7 @@ public class BusquedaContactoPage extends Guidewire {
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
     }
+
 
     public void login(String usuario, String contrasena){
         txtusuario.type(usuario);
@@ -379,8 +380,8 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void seleccionarContacto() {
+        waitABit(2000);
         selectContact.waitUntilPresent();
-        selectContact.waitUntilVisible();
         selectContact.click();
     }
 

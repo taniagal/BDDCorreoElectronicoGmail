@@ -9,7 +9,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -98,7 +97,7 @@ public class NuevoContactoPage extends Guidewire {
         selectItem(comboBoxDepartamento2,departamento);
         waitABit(4000);
         selectItem(comboBoxCiudad2,ciudad);
-        waitABit(1200);
+        waitABit(2000);
         selectItem(tipoDireccion2,tipoDireccion);
         waitABit(1500);
     }

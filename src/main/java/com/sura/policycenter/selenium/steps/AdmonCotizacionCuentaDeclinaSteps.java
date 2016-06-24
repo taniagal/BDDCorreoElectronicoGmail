@@ -7,9 +7,9 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-public class AdmonCotizacionCuentaSteps extends ScenarioSteps {
+public class AdmonCotizacionCuentaDeclinaSteps extends ScenarioSteps {
 
-    public AdmonCotizacionCuentaSteps(Pages pages) {
+    public AdmonCotizacionCuentaDeclinaSteps(Pages pages) {
         super(pages);
     }
 
@@ -41,8 +41,8 @@ public class AdmonCotizacionCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void valida_estado_de_la_cotizacion(String numCotizacion, String razon) {
-        opcionesAdminitradorCotizaciones.validaEstado(numCotizacion, razon);
+    public void valida_estado_de_la_cotizacion(String numCotizacion, String accion) {
+        opcionesAdminitradorCotizaciones.validaEstado(numCotizacion, accion);
     }
 
     @Step

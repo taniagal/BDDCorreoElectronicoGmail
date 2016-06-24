@@ -14,7 +14,6 @@ Pendiente por definir en la historia la validacion de direcciones con la histori
 
 Scenario: Editar detalles de contacto de tipo persona natural
 
-GivenStories: stories/policycenter/login_policy.story
 Given tengo un contacto con <tipo_documento> c. <documento>
 When quiera editar la informacion del contacto con <tipo_documento> c. <documento>
 And segundo nombre <segundo_nombre>
@@ -26,12 +25,11 @@ Then se deben habilitar la edicion de cierta informacion del contacto, actualiza
 
 Examples:
 |tipo_documento      |documento |segundo_nombre|segundo_apellido|tipo_direccion|direccion       |profesion|estado_civil|tipo_familia|telefono_celular|telefono_residencial|telefono_trabajo|correo_electronico_primario|correo_electronico_secundario|
-|CEDULA DE CIUDADANIA|1234567891|BUSH          |PEREZ           |Vivienda      |CALLE 54B #50-25|ABOGADO  |Soltero     |Nuclear     |354-985-1236    |789-7856            |456-7896        |primario@mail.com          |secundario@mail.com          |
+|CEDULA DE CIUDADANIA|1234567892|BUSH          |PEREZ           |Vivienda      |CALLE 54B #50-25|ABOGADO  |Soltero     |Nuclear     |311-321-2470    |789-7856            |456-7896        |primario@mail.com          |secundario@mail.com          |
 
 
 Scenario: Editar detalles de contacto de tipo persona juridica
 
-GivenStories: stories/policycenter/login_policy.story
 Given tengo un contacto con <tipo_documento> c. <documento>
 When quiera editar la informacion del contacto con <tipo_documento> c. <documento>
 And razon social <razon_social>, nombre comercial <nombre_comercial>, actividad comercial <actividad_comercial>
