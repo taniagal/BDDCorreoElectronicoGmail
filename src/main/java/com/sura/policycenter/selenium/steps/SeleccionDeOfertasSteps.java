@@ -10,12 +10,12 @@ public class SeleccionDeOfertasSteps extends ScenarioSteps {
 
     private final SeleccionDeOfertasPage seleccionDeOfertasPage = new SeleccionDeOfertasPage(getDriver());
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
     public SeleccionDeOfertasSteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step
