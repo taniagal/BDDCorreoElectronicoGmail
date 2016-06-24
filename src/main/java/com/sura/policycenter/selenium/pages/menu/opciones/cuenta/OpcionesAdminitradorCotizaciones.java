@@ -296,7 +296,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
      * Metodos Ingresados para re-usar el mismo Page.
      * Intervenido por: Jonathan Mejia Leon
      * Fecha de intervencion: 21/06/2016
-     * Motivo: Uso del mismo Page
+     * Motivo: Uso del page para Administracion de cotización (Declinar-No Tomar)
      * Story usada: admon_cotizacion_cuenta.story
      */
 
@@ -304,6 +304,12 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         waitFor(btnAcciones2).waitUntilClickable();
         btnAcciones2.click();
         $(itmDeclinar).click();
+    }
+
+    public void seleccionarAccionesNoTomar() {
+        waitFor(btnAcciones).waitUntilClickable();
+        btnAcciones.click();
+        $(itmNoTomar).click();
     }
 
     public void ingresaRechazo(String razon) {
