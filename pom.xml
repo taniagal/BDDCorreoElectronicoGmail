@@ -110,7 +110,8 @@
                     <includes>
                         <!--<include>**/claims/*.java</include>
                         <include>**/billing/*.java</include>-->
-                        <include>**/policycenter/*.java</include>
+                        <include>**/policycenter/AdmonCotizacionCuenta.java</include>
+                        <include>**/policycenter/AdmonCotizacionCuentaNoTomar.java</include>
                     </includes>
                     <excludes>
                         <exclude>**/policycenter/MainStories.java</exclude>

@@ -120,19 +120,34 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     private WebElementFacade txtCodRazon;
 
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReasonText-inputEl']")
-    private WebElementFacade txtRazonCarta;
+    private WebElementFacade txtRazonCartaDeclina;
+
+    @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReasonText-inputEl']")
+    private WebElementFacade txtRazonCartaNoTomar;
 
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:Update-btnInnerEl']")
     private WebElementFacade btnRechazar;
 
+    @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:Update']")
+    private WebElementFacade btnNoTomar;
+
     @FindBy (xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:Cancel-btnInnerEl']")
     private WebElementFacade btnCancelar;
+
+    @FindBy (xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:Cancel-btnInnerEl']")
+    private WebElementFacade btnCancelarNoTomar;
 
     @FindBy (xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade listaTipoRazon;
 
+    @FindBy (xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
+    private WebElementFacade listaTipoRazonNoTomar;
+
     @FindBy(id = "DeclineReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msg;
+
+    @FindBy(id = "NotTakenReasonPopup:RejectScreen:_msgs")
+    private WebElementFacade msgNoTomar;
 
 
     public OpcionesAdminitradorCotizaciones(WebDriver driver) {
@@ -315,15 +330,29 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     public void ingresaRechazo(String razon) {
         txtCodRazon.clear();
         txtCodRazon.sendKeys(razon);
-        txtRazonCarta.click();
-        txtRazonCarta.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
+        txtRazonCartaDeclina.click();
+        txtRazonCartaDeclina.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
         btnRechazar.click();
     }
 
     public void noIngresaRechazo() {
-        txtRazonCarta.click();
-        txtRazonCarta.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
+        txtRazonCartaDeclina.click();
+        txtRazonCartaDeclina.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
         btnRechazar.click();
+    }
+
+    public void ingresaRechazoNoTomar(String razon) {
+        listaTipoRazonNoTomar.clear();
+        listaTipoRazonNoTomar.sendKeys(razon);
+        txtRazonCartaNoTomar.click();
+        txtRazonCartaNoTomar.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
+        btnNoTomar.click();
+    }
+
+    public void noIngresaRechazoNoTomar() {
+        txtRazonCartaNoTomar.click();
+        txtRazonCartaNoTomar.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
+        btnNoTomar.click();
     }
 
     private List<WebElementFacade> getListaCotizaciones() {
@@ -338,14 +367,14 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         return numeroEstado;
     }
 
-    public void validaEstado(String numCotizacion) {
+    public void validaEstado(String numCotizacion, String razon) {
         int i = 0;
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
         if (getListaCotizaciones().size()>0) {
             for (WebElementFacade cotizacion : getListaCotizaciones()) {
                 if (numCotizacion.equals(cotizacion.getText())) {
-                   assertThat("El estado no pertenece a la accion dada", "Declinada".equals(getListaEstado().get(i).getText()));
-                    break;
+                   assertThat("El estado no pertenece a la accion dada", razon.equals(getListaEstado().get(i).getText()));
+                   break;
                 }
                 i++;
             }
@@ -357,9 +386,21 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         assertThat("Boton Acciones no esta presente", !btnAcciones2.isPresent());
     }
 
-    public void validaMensaje(String mensaje) {waitFor(msg).waitUntilVisible();
+    public void validaAccionDesabilitaNoTomar (){
+        assertThat("Boton Acciones no esta presente", !btnAcciones.isPresent());
+    }
+
+    public void validaMensaje(String mensaje) {
+        waitFor(msg).waitUntilVisible();
         assertThat("Fallo mensaje en campo obligatorio RAZON", msg.containsText(mensaje));
         btnCancelar.click();
+        waitFor(lblCotizacionesCuenta).waitUntilVisible();
+    }
+
+    public void validaMensajeNoTomar(String mensaje) {
+        waitFor(msgNoTomar).waitUntilVisible();
+        assertThat("Fallo mensaje en campo obligatorio RAZON", msgNoTomar.containsText(mensaje));
+        btnCancelarNoTomar.click();
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
 
@@ -367,6 +408,13 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         listaTipoRazon.click();
         this.validarDatosDeLaLista(listaRazones);
         btnCancelar.click();
+        waitFor(lblCotizacionesCuenta).waitUntilVisible();
+    }
+
+    public void validarOpcionesDeAgregarNoTomar (ExamplesTable listaRazones) throws Exception{
+        listaTipoRazonNoTomar.click();
+        this.validarDatosDeLaLista(listaRazones);
+        btnCancelarNoTomar.click();
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
 

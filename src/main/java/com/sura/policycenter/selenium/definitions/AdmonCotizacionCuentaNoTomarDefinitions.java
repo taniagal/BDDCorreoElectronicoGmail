@@ -5,12 +5,14 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 
 public class AdmonCotizacionCuentaNoTomarDefinitions {
 
     @Steps
     AdmonCotizacionCuentaNoTomarSteps admonCotizacionCuentaNoTomarSteps;
+
 
     @When("no quiera tomar la cotizacion sin ingresar una razon")
     public void tomarCotizacionSinRazon() {
@@ -26,24 +28,29 @@ public class AdmonCotizacionCuentaNoTomarDefinitions {
 
     @When("no quiera tomar la cotizacion")
     public void noTomarCotizacion() {
-        // PENDING
+        admonCotizacionCuentaNoTomarSteps.seleccionar_opcion_en_acciones();
     }
 
-    @When("quiera no tomar la cotizacion por una razon <razon>")
-    public void whenQuieraNoTomarLaCotizacionPorUnaRazonrazon() {
-        // PENDING
+    @When("no quiera tomar la cotizacion por una razon <razon>")
+    public void whenQuieraNoTomarLaCotizacionPorUnaRazonrazon(@Named("razon") String razon) {
+        admonCotizacionCuentaNoTomarSteps.seleccionar_opcion_en_acciones();
+        admonCotizacionCuentaNoTomarSteps.ingresar_informacion_al_momento_de_rechazar(razon);
     }
 
-    @Then("el sistema debe mostrar el estado No tomada <numCotizacion>")
-    public void thenElSistemaDebeMostrarElEstadoNoTomadanumCotizacion() {
-        // PENDING
+    @Then("el sistema debe mostrar el estado no tomada <numCotizacion> <razon>")
+    public void thenElSistemaDebeMostrarElEstadoNoTomadanumCotizacion(@Named("numCotizacion") String numCotizacion,
+                                                                      @Named("razon") String razon) {
+        admonCotizacionCuentaNoTomarSteps.valida_estado_de_la_cotizacion(numCotizacion, razon);
     }
 
     @Then("desahabilitar la opcion de acciones")
     public void thenDesahabilitarLaOpcionDeAcciones() {
-        // PENDING
+        admonCotizacionCuentaNoTomarSteps.inhabilita_acciones();
     }
-
+    @Then("el sistema debe mostrarme todas las stes opciones: $listaCodRazon")
+    public void validarOpciones(ExamplesTable listaCodRazon) throws Exception {
+        admonCotizacionCuentaNoTomarSteps.valida_lista_de_razones(listaCodRazon);
+    }
 
 }
 

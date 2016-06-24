@@ -25,9 +25,10 @@ public class AdmonCotizacionCuentaDefinitions {
         admonCotizacionCuentaSteps.ingresar_informacion_al_momento_de_rechazar(razon);
     }
 
-    @Then("el sistema debe mostrar el estado declinada <numCotizacion>")
-    public void estadoDeclinarCotizacion(@Named("numCotizacion") String numCotizacion) {
-        admonCotizacionCuentaSteps.valida_estado_de_la_cotizacion(numCotizacion);
+    @Then("el sistema debe mostrar el estado declinada <numCotizacion> <razon>")
+    public void estadoDeclinarCotizacion(@Named("numCotizacion") String numCotizacion,
+                                         @Named("razon") String razon) {
+        admonCotizacionCuentaSteps.valida_estado_de_la_cotizacion(numCotizacion,razon);
     }
 
     @Then("desahabilitar la opcion de acciones para no ser modificada")
