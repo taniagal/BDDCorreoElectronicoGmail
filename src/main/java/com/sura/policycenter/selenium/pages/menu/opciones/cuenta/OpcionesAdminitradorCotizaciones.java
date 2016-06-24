@@ -1,10 +1,12 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.guidewire.selenium.Guidewire;
-import java.util.List;
-import java.util.Map;
+import com.sura.serinitybdd.util.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,9 +14,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static com.thoughtworks.selenium.SeleneseTestBase.assertFalse;
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -31,7 +37,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuIcon']")
     private WebElementFacade btnAcciones;
 
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuItemSet:Decline-textEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:2:SubmissionActions:SubmissionActionsMenuItemSet:Decline']")
     private WebElementFacade itmDeclinar;
 
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-textEl']")
@@ -103,16 +109,42 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     @FindBy(xpath = "//tbody/tr/td[10]/div")
     private WebElementFacade campoCartas;
 
+    /*
+    * WebElementFacade ingresados para story Nueva
+    * */
+
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:2:SubmissionActions:SubmissionActionsMenuIcon']")
+    private WebElementFacade btnAcciones2;
+
+    @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
+    private WebElementFacade txtCodRazon;
+
+    @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReasonText-inputEl']")
+    private WebElementFacade txtRazonCarta;
+
+    @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:Update-btnInnerEl']")
+    private WebElementFacade btnRechazar;
+
+    @FindBy (xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:Cancel-btnInnerEl']")
+    private WebElementFacade btnCancelar;
+
+    @FindBy (xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
+    private WebElementFacade listaTipoRazon;
+
+    @FindBy(id = "DeclineReasonPopup:RejectScreen:_msgs")
+    private WebElementFacade msg;
+
+
     public OpcionesAdminitradorCotizaciones(WebDriver driver) {
         super(driver);
     }
 
-    public void seleccionarAcciones(){
-        waitABit(1000);
+    public void seleccionarAcciones() {
+        waitFor(btnAcciones).waitUntilClickable();
         btnAcciones.click();
     }
 
-    public void validarEstadosCotizacion(String estadoDeclinar, String estadoNoTomar){
+    public void validarEstadosCotizacion(String estadoDeclinar, String estadoNoTomar) {
         assertThat(itmDeclinar.getText(), is(equalTo(estadoDeclinar)));
         assertThat(itmNoTomar.getText(), is(equalTo(estadoNoTomar)));
     }
@@ -122,31 +154,30 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         btnNuevaCotizacion.click();
     }
 
-    public void validarCreacionCotizacion(){
+    public void validarCreacionCotizacion() {
         waitABit(1000);
         boolean validacion = false;
-        if(lblEnviosNuevos.isPresent() && lblOrganizacion.isPresent()){
+        if (lblEnviosNuevos.isPresent() && lblOrganizacion.isPresent()) {
             validacion = true;
         }
         assertTrue(validacion);
     }
 
-    public void validarOpcionRetirar(String retirar){
+    public void validarOpcionRetirar(String retirar) {
         Boolean validacion = false;
         validacion = lstAcciones.containsElements(retirar);
         assertFalse(validacion);
     }
 
-    public void seleccionarFiltros(String cotizacion, String producto){
+    public void seleccionarFiltros(String cotizacion, String producto) {
         waitABit(1000);
         txtCotizaciones.click();
-        WebElementFacade cbxCotizacion = findBy(".//li[contains(.,'"+cotizacion+"')]");
+        WebElementFacade cbxCotizacion = findBy(".//li[contains(.,'" + cotizacion + "')]");
         waitABit(1000);
         cbxCotizacion.click();
-
         waitABit(1000);
         txtProductos.click();
-        WebElementFacade cbxProducto = findBy(".//li[contains(.,'"+producto+"')]");
+        WebElementFacade cbxProducto = findBy(".//li[contains(.,'" + producto + "')]");
         waitABit(1000);
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
@@ -158,17 +189,16 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if(tProductos.equals(producto) && !(" ".equals(cells.get(1).getText()))) {
+            if (tProductos.equals(producto) && !(" ".equals(cells.get(1).getText()))) {
                 assertThat(cells.get(1).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(2).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(3).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(4).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(5).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(7).getText(), is(not(equalTo(null))));
-            } else if(!(" ".equals(cells.get(1).getText()))){
+            } else if (!(" ".equals(cells.get(1).getText()))) {
                 boolean valido = cells.get(1).getText().equals(producto);
                 assertTrue(valido);
-
                 assertThat(cells.get(1).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(2).getText(), is(not(equalTo(null))));
                 assertThat(cells.get(3).getText(), is(not(equalTo(null))));
@@ -183,19 +213,19 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     public void validarLabelsCotizaciones(Map<String, String> labelsCotizaciones) {
         try {
             Thread.sleep(2000);
-            assertThat(lblCotizacionesCuenta.getText().toString(),is(equalTo(labelsCotizaciones.get("lblCotizaciones"))));
-            assertThat(btnNuevaCotizacion.getText().toString(),is(equalTo(labelsCotizaciones.get("btnNuevaCotizacion"))));
-            assertThat(colAcciones.getText().toString(),is(equalTo(labelsCotizaciones.get("acciones"))));
-            assertThat(colProducto.getText().toString(),is(equalTo(labelsCotizaciones.get("producto"))));
-            assertThat(colNumCotizacion.getText().toString(),is(equalTo(labelsCotizaciones.get("numCotizacion"))));
-            assertThat(colTipoCotizacion.getText().toString(),is(equalTo(labelsCotizaciones.get("tipoCotizacion"))));
-            assertThat(colFechaIniVigencia.getText().toString(),is(equalTo(labelsCotizaciones.get("fechaIniVigencia"))));
-            assertThat(colFechaFinVigencia.getText().toString(),is(equalTo(labelsCotizaciones.get("fechaFinVigencia"))));
-            assertThat(colNumeroPoliza.getText().toString(),is(equalTo(labelsCotizaciones.get("numPoliza"))));
-            assertThat(colEstado.getText().toString(),is(equalTo(labelsCotizaciones.get("estado"))));
-            assertThat(colCostoTotal.getText().toString(),is(equalTo(labelsCotizaciones.get("costoTotal"))));
-            assertThat(colCartas.getText().toString(),is(equalTo(labelsCotizaciones.get("cartas"))));
-        } catch(InterruptedException e) {
+            assertThat(lblCotizacionesCuenta.getText().toString(), is(equalTo(labelsCotizaciones.get("lblCotizaciones"))));
+            assertThat(btnNuevaCotizacion.getText().toString(), is(equalTo(labelsCotizaciones.get("btnNuevaCotizacion"))));
+            assertThat(colAcciones.getText().toString(), is(equalTo(labelsCotizaciones.get("acciones"))));
+            assertThat(colProducto.getText().toString(), is(equalTo(labelsCotizaciones.get("producto"))));
+            assertThat(colNumCotizacion.getText().toString(), is(equalTo(labelsCotizaciones.get("numCotizacion"))));
+            assertThat(colTipoCotizacion.getText().toString(), is(equalTo(labelsCotizaciones.get("tipoCotizacion"))));
+            assertThat(colFechaIniVigencia.getText().toString(), is(equalTo(labelsCotizaciones.get("fechaIniVigencia"))));
+            assertThat(colFechaFinVigencia.getText().toString(), is(equalTo(labelsCotizaciones.get("fechaFinVigencia"))));
+            assertThat(colNumeroPoliza.getText().toString(), is(equalTo(labelsCotizaciones.get("numPoliza"))));
+            assertThat(colEstado.getText().toString(), is(equalTo(labelsCotizaciones.get("estado"))));
+            assertThat(colCostoTotal.getText().toString(), is(equalTo(labelsCotizaciones.get("costoTotal"))));
+            assertThat(colCartas.getText().toString(), is(equalTo(labelsCotizaciones.get("cartas"))));
+        } catch (InterruptedException e) {
             LOGGER.error("This is error", e);
         }
     }
@@ -212,10 +242,10 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
             }
         }
 
-        if("Expedida".equals(estado)){
-            assertThat(contador,is(equalTo(1)));
-        }else if (!"Expedida".equals(estado)){
-            assertThat(contador,is(equalTo(1)));
+        if ("Expedida".equals(estado)) {
+            assertThat(contador, is(equalTo(1)));
+        } else if (!"Expedida".equals(estado)) {
+            assertThat(contador, is(equalTo(1)));
         }
     }
 
@@ -230,7 +260,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
                 contador++;
             }
         }
-        assertThat(contador,is(equalTo(1)));
+        assertThat(contador, is(equalTo(1)));
     }
 
     public void validarEstadoCotizacionDeclinado(String propiedadComercial, String declinado) {
@@ -255,10 +285,99 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     public void mostrarTodosLosProductos(String producto) {
         waitABit(1000);
         txtProductos.click();
-        WebElementFacade cbxProducto = findBy(".//li[contains(.,'"+producto+"')]");
+        WebElementFacade cbxProducto = findBy(".//li[contains(.,'" + producto + "')]");
         waitABit(1000);
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
         waitABit(1500);
     }
+
+    /**
+     * Metodos Ingresados para re-usar el mismo Page.
+     * Intervenido por: Jonathan Mejia Leon
+     * Fecha de intervencion: 21/06/2016
+     * Motivo: Uso del mismo Page
+     * Story usada: admon_cotizacion_cuenta.story
+     */
+
+    public void seleccionarAccionesDeclinar() {
+        waitFor(btnAcciones2).waitUntilClickable();
+        btnAcciones2.click();
+        $(itmDeclinar).click();
+    }
+
+    public void ingresaRechazo(String razon) {
+        waitFor(txtCodRazon).shouldBeEnabled();
+        txtCodRazon.clear();
+        txtCodRazon.sendKeys(razon);
+        txtRazonCarta.click();
+        txtRazonCarta.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
+        btnRechazar.click();
+    }
+
+    public void noIngresaRechazo() {
+        txtRazonCarta.click();
+        txtRazonCarta.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
+        btnRechazar.click();
+    }
+
+    private List<WebElementFacade> getListaCotizaciones() {
+        List<WebElementFacade> numerosCotizacion;
+        numerosCotizacion = withTimeoutOf(1, SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[3]");
+        return numerosCotizacion;
+    }
+
+    private List<WebElementFacade> getListaEstado() {
+        List<WebElementFacade> numeroEstado;
+        numeroEstado = withTimeoutOf(1, SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[8]");
+        return numeroEstado;
+    }
+
+    public void validaEstado(String numCotizacion, String accion) {
+        int i = 0;
+        waitFor(lblCotizacionesCuenta).waitUntilVisible();
+        if (getListaCotizaciones().size()>0) {
+            for (WebElementFacade cotizacion : getListaCotizaciones()) {
+                if (numCotizacion.equals(cotizacion.getText())) {
+                   assertThat("El estado no pertenece a la accion dada", accion.equals(getListaEstado().get(i).getText()));
+                    break;
+                }
+                i++;
+            }
+
+        }
+    }
+
+    public void validaAccionDesabilita (){
+        assertThat("Boton Acciones no esta presente", !btnAcciones2.isPresent());
+    }
+
+    public void validaMensaje(String mensaje) {waitFor(msg).waitUntilVisible();
+        assertThat("Fallo mensaje en campo obligatorio RAZON", msg.containsText(mensaje));
+        btnCancelar.click();
+        waitFor(lblCotizacionesCuenta).waitUntilVisible();
+    }
+
+    public void validarOpcionesDeAgregar (ExamplesTable listaRazones) throws Exception{
+        listaTipoRazon.click();
+        this.validarDatosDeLaLista(listaRazones);
+        btnCancelar.click();
+        waitFor(lblCotizacionesCuenta).waitUntilVisible();
+    }
+
+    public void validarTodasLasCotizaciones (){
+        assertThat("No se pudieron visualizar las polizas", getListaCotizaciones().size()<=0);
+    }
+
+    private  void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception{
+        List<WebElementFacade> elementosTipoCanalVentas;
+        List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
+        for (String tipo : elementosRequeridos) {
+            elementosTipoCanalVentas = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'"+tipo+"')]");
+            for (WebElementFacade lista : elementosTipoCanalVentas){
+                MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
+            }
+        }
+    }
 }
+
