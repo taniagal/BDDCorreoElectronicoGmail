@@ -14,6 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
+import javax.swing.*;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -342,6 +343,8 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     }
 
     public void ingresaRechazoNoTomar(String razon) {
+        waitFor(listaTipoRazonNoTomar).shouldBeEnabled();
+        JOptionPane.showMessageDialog(null, razon);
         listaTipoRazonNoTomar.clear();
         listaTipoRazonNoTomar.sendKeys(razon);
         txtRazonCartaNoTomar.click();
@@ -367,13 +370,13 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         return numeroEstado;
     }
 
-    public void validaEstado(String numCotizacion, String razon) {
+    public void validaEstado(String numCotizacion, String accion) {
         int i = 0;
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
         if (getListaCotizaciones().size()>0) {
             for (WebElementFacade cotizacion : getListaCotizaciones()) {
                 if (numCotizacion.equals(cotizacion.getText())) {
-                   assertThat("El estado no pertenece a la accion dada", razon.equals(getListaEstado().get(i).getText()));
+                   assertThat("El estado no pertenece a la accion dada", accion.equals(getListaEstado().get(i).getText()));
                    break;
                 }
                 i++;

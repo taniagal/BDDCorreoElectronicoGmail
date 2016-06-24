@@ -37,10 +37,10 @@ public class AdmonCotizacionCuentaNoTomarDefinitions {
         admonCotizacionCuentaNoTomarSteps.ingresar_informacion_al_momento_de_rechazar(razon);
     }
 
-    @Then("el sistema debe mostrar el estado no tomada <numCotizacion> <razon>")
+    @Then("el sistema debe mostrar el estado no tomada <numCotizacion> <accion>")
     public void thenElSistemaDebeMostrarElEstadoNoTomadanumCotizacion(@Named("numCotizacion") String numCotizacion,
-                                                                      @Named("razon") String razon) {
-        admonCotizacionCuentaNoTomarSteps.valida_estado_de_la_cotizacion(numCotizacion, razon);
+                                                                      @Named("accion") String accion) {
+        admonCotizacionCuentaNoTomarSteps.valida_estado_de_la_cotizacion(numCotizacion, accion);
     }
 
     @Then("desahabilitar la opcion de acciones")

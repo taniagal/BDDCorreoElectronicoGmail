@@ -33,10 +33,10 @@ Examples:
 Scenario: No tomar una cotizacion desde una cuenta
 Given que estoy visualizando las cotizaciones de la cuenta <numCuenta>
 When no quiera tomar la cotizacion por una razon <razon>
-Then el sistema debe mostrar el estado no tomada <numCotizacion> <razon>
+Then el sistema debe mostrar el estado no tomada <numCotizacion> <accion>
 And desahabilitar la opcion de acciones
 
 Examples:
-|numCuenta|razon|numCotizacion|razon|
-|C000777777|No acuerdo de pago|22223224|No Tomada|
+|numCuenta|razon|numCotizacion|accion|
+|C000777777|No acuerdo de pago|22223224|No tomada|
 
