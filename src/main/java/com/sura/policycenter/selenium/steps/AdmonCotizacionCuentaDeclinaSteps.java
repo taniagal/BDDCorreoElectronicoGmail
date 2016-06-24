@@ -7,9 +7,9 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-public class AdmonCotizacionCuentaSteps extends ScenarioSteps {
+public class AdmonCotizacionCuentaDeclinaSteps extends ScenarioSteps {
 
-    public AdmonCotizacionCuentaSteps(Pages pages) {
+    public AdmonCotizacionCuentaDeclinaSteps(Pages pages) {
         super(pages);
     }
 

@@ -9,7 +9,7 @@ import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
 
-public class AdmonCotizacionCuentaDefinitions {
+public class AdmonCotizacionCuentaDeclinaDefinitions {
 
     @Steps
     AdmonCotizacionCuentaSteps admonCotizacionCuentaSteps;
