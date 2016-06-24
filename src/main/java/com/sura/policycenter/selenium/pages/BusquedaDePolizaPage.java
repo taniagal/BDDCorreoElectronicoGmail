@@ -2,6 +2,8 @@ package com.sura.policycenter.selenium.pages;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -13,6 +15,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class BusquedaDePolizaPage extends PageObject{
@@ -53,16 +56,15 @@ public class BusquedaDePolizaPage extends PageObject{
     WebElementFacade menuBuscarPoliza;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:ttlBar']")
     WebElementFacade tituloBuscarPoliza;
+    @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
+    WebElementFacade botonRestablecer;
 
     public BusquedaDePolizaPage(WebDriver driver){
         super(driver);
     }
 
     public void irABuscarPoliza() {
-        menuBuscar.waitUntilPresent();
-        menuBuscar.waitUntilVisible();
-        menuBuscar.waitUntilClickable();
-        menuBuscar.click();
+        menuBuscar.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilPresent().click();
         waitForAnyTextToAppear("Buscar", "Búsqueda");
         if(!tituloBuscarPoliza.isVisible()){
             menuBuscarPoliza.click();
@@ -77,8 +79,7 @@ public class BusquedaDePolizaPage extends PageObject{
     }
 
     public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda) {
-        waitABit(2000);
-        tablaResultados.waitUntilClickable();
+        tablaResultados.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilPresent();
         List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
         Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
         MatcherAssert.assertThat(grdNumeroPoliza.getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
@@ -96,14 +97,16 @@ public class BusquedaDePolizaPage extends PageObject{
     }
 
     public void limpiarCampos(){
-        waitABit(2000);
+/*        waitABit(2000);
         txtNumeroPoliza.waitUntilClickable();
         txtNumeroPoliza.clear();
         txtNumeroCuenta.waitUntilClickable();
         txtNumeroCuenta.clear();
         txtAgente.clear();
         txtCodigoAgente.clear();
-        waitABit(2000);
+        waitABit(2000);*/
+        botonRestablecer.click();
+        waitABit(1000);
     }
 
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
@@ -119,33 +122,33 @@ public class BusquedaDePolizaPage extends PageObject{
         MatcherAssert.assertThat(msjValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
-    public void limpiarCampoProducto(){
+   /* public void limpiarCampoProducto(){
         txtProducto.waitUntilClickable();
         txtProducto.clear();
         txtProducto.sendKeys("<ninguno>");
         txtProducto.sendKeys(Keys.ENTER);
     }
-
+*/
     public void buscarPolizaPorProducto(String producto) {
         this.limpiarCampos();
         txtProducto.waitUntilClickable();
         txtProducto.clear();
         txtProducto.sendKeys(producto);
         txtProducto.sendKeys(Keys.ENTER);
-        waitABit(2000);
+        waitFor(ExpectedConditions.elementToBeClickable(btnBuscar));
         btnBuscar.click();
     }
 
     public void buscarPolizaPorAgente(String agente) {
         this.limpiarCampos();
-        this.limpiarCampoProducto();
+//        this.limpiarCampoProducto();
         txtAgente.sendKeys(agente);
         btnBuscar.click();
     }
 
     public void buscarPolizaPorCodigoAgente(String codigoAgente) {
         this.limpiarCampos();
-        this.limpiarCampoProducto();
+//        this.limpiarCampoProducto();
         txtCodigoAgente.sendKeys(codigoAgente);
         btnBuscar.click();
     }
@@ -161,16 +164,16 @@ public class BusquedaDePolizaPage extends PageObject{
 
     public void buscarPorNumerocuentaYAgente(String numeroCuenta, String agente) {
         this.limpiarCampos();
-        this.limpiarCampoProducto();
+//        this.limpiarCampoProducto();
         txtNumeroCuenta.sendKeys(numeroCuenta);
-        waitABit(2000);
+//        waitABit(2000);
         txtAgente.sendKeys(agente);
         btnBuscar.click();
     }
 
     public void buscarPolizaPorNumeroCuentaYCodigoAgente(String numeroCuenta, String codigoAgente) {
         this.limpiarCampos();
-        this.limpiarCampoProducto();
+//        this.limpiarCampoProducto();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         txtCodigoAgente.sendKeys(codigoAgente);
         btnBuscar.click();
