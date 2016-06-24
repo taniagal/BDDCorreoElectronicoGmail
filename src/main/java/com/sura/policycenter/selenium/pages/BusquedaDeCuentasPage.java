@@ -90,6 +90,9 @@ public class BusquedaDeCuentasPage extends Guidewire {
     private  WebElementFacade menuBuscar;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']/div")
     private  WebElementFacade menuBuscarCuentas;
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
+    private  WebElementFacade botonRestablecer;
+
 
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
@@ -112,18 +115,13 @@ public class BusquedaDeCuentasPage extends Guidewire {
     }
 
     private void limpiarFormulario(){
-        txtTipoDocumento.clear();
-        txtNumeroDocumento.clear();
-        txtRazonSocial.clear();
-        txtNombreComercial.clear();
-        txtPrimerNombre.clear();
-        txtSegundoNombre.clear();
-        txtPrimerApellido.clear();
-        txtSegundoApellido.clear();
+        botonRestablecer.click();
+        waitABit(1000);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
         this.limpiarFormulario();
+        txtTipoDocumento.clear();
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
         txtNumeroDocumento.sendKeys(numeroDocumento);
@@ -186,6 +184,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
     public void seleccionarTipoIdentificacion(String tipoDocumento){
         txtTipoDocumento.waitUntilVisible();
         this.limpiarFormulario();
+        txtTipoDocumento.clear();
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
     }
