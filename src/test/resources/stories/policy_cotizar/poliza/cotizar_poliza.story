@@ -32,7 +32,7 @@ Then se mostrarán en orden alfabetico los:
 
 Given ya existe una cotización en estado "cotizado" del cliente con número de cuenta C000777777 para el producto Multiriesgo corporativo
 When digíte el número de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la búsqueda
-And he seleccionado en el nombre del agente Internal Producer Code - 3
+And he seleccionado en el nombre del agente DIRECTO
 Then se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable
 Then se mostrarán en orden alfabetico los:
 |productos          |
@@ -45,8 +45,7 @@ Then al seleccionar el botón Cancelar deberá ver la página Nueva cotización
 
 Given ya existe una cotización en estado "cotizado" del cliente con número de cuenta C000777777 para el producto Multiriesgo corporativo
 And deseo crear nueva cotización buscando por número de cuenta
-When digíte el número de cuenta
- de una persona natural y digite la tecla Tab para activar la búsqueda
+When digíte el número de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la búsqueda
 And he seleccionado en el nombre del agente DELIMA MEDELLIN
 Then se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable
 Then se mostrarán en orden alfabetico los:
@@ -61,4 +60,4 @@ And deseo crear nueva cotización buscando por número de cuenta
 When digíte el número de cuenta C000777778 de una persona natural y digite la tecla Tab para activar la búsqueda
 When he seleccionado en el nombre del agente DELIMA MEDELLIN
 Then seleccionar nombre de producto Propiedad comercial
-Then deberá observar un mensaje de error: FRANK RAMIREZ ALZATE,Por favor revisar la parametrizacion con el Comité de Evaluación, la parametrización no está definida
+Then deberá observar un mensaje de error: FRANK RAMIREZ ALZATE, El tomador es un riesgo no es estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial.
