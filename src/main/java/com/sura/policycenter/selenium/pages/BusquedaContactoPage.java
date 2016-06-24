@@ -380,8 +380,8 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void seleccionarContacto() {
+        waitABit(2000);
         selectContact.waitUntilPresent();
-        selectContact.waitUntilVisible();
         selectContact.click();
     }
 

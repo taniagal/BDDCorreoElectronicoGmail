@@ -8,6 +8,7 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
 
 public class BusquedaDeCuentasPage extends Guidewire {
 
@@ -85,9 +86,20 @@ public class BusquedaDeCuentasPage extends Guidewire {
     private WebElementFacade rbtnExportarPersonalizado;
     @FindBy(xpath=".//*[@id='PrintOptionPopup:__crumb__']")
     private WebElementFacade btnVolverBuscarCuentas;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
+    private  WebElementFacade menuBuscar;
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']/div")
+    private  WebElementFacade menuBuscarCuentas;
 
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
+    }
+
+
+    public void irABuscarCuentas() {
+        menuBuscar.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilPresent().click();
+        waitABit(1500);
+        menuBuscarCuentas.click();
     }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
@@ -108,7 +120,6 @@ public class BusquedaDeCuentasPage extends Guidewire {
         txtSegundoNombre.clear();
         txtPrimerApellido.clear();
         txtSegundoApellido.clear();
-        waitABit(500);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
@@ -186,12 +197,12 @@ public class BusquedaDeCuentasPage extends Guidewire {
     }
 
     public void seleccionarImprimir() {
-        waitABit(500);
+        waitForTextToAppear("YURLEDYS");
         btnImprimir.click();
     }
 
     public void validarOpcionesDeImprimir(String imprimir, String exportar, String exportarPersonalizado) {
-        espera(rbtnImprimir, 4);
+        waitForTextToAppear("Opciones de impresión");
         this.rbtnExportar.shouldBeVisible();
         this.rbtnImprimir.shouldBeVisible();
         this.rbtnExportarPersonalizado.shouldBeVisible();
@@ -221,4 +232,5 @@ public class BusquedaDeCuentasPage extends Guidewire {
         this.txtRazonSocial.sendKeys(razonSocial);
         btnBuscar.click();
     }
+
 }

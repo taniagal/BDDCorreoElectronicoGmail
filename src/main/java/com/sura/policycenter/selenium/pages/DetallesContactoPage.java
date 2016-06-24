@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -133,18 +134,11 @@ public class  DetallesContactoPage extends Guidewire {
     private WebElementFacade campoTxtDocumento;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
-    private WebElementFacade mnuContact;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact-arrowEl']")
-    private WebElementFacade mnuItemNuevoContacto;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewCompany-textEl']")
-    private WebElementFacade mnuItemNuevaCompania;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewPerson']")
-    private WebElementFacade mnuItemNuevaPersona;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:Search-itemEl']")
-    private WebElementFacade mnuItemContactoBusqueda;
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
-    private WebElementFacade mnuBuscar;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtIrA;
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ContactSearch']/div")
+    private WebElementFacade menuItemContactos;
+
 
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
@@ -156,8 +150,11 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void irABuscarContacto() {
-        Actions actions = deployMenu(mnuContact);
-        actions.moveToElement(mnuItemContactoBusqueda).release(mnuItemContactoBusqueda).click().build().perform();
+        campoTxtIrA.waitUntilPresent();
+        campoTxtIrA.sendKeys("Search");
+        campoTxtIrA.sendKeys(Keys.ENTER);
+        menuItemContactos.waitUntilPresent();
+        menuItemContactos.click();
     }
     public void editarContacto(){
         botonEditarContacto.waitUntilPresent();
