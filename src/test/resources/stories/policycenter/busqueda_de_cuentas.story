@@ -1,6 +1,7 @@
 Busqueda de Cuentas
 
 Meta:
+@issue #SUGWUSC-14984
 
 Narrative:
 Como usuario PolicyCenter

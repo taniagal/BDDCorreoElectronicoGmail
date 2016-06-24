@@ -97,7 +97,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
 
     public void irABuscarCuentas() {
-        menuBuscar.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
+        menuBuscar.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilPresent().click();
         waitABit(1500);
         menuBuscarCuentas.click();
     }
