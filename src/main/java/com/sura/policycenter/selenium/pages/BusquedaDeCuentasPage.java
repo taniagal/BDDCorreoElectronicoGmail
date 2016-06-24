@@ -8,6 +8,8 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class BusquedaDeCuentasPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-labelEl']")
@@ -95,8 +97,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
 
     public void irABuscarCuentas() {
-        waitABit(1500);
-        menuBuscar.waitUntilPresent().click();
+        menuBuscar.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().click();
         waitABit(1500);
         menuBuscarCuentas.click();
     }
