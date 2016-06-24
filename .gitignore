@@ -4,4 +4,5 @@ CargarDatosGW/build/
 CargarDatosGW/.gradle/
 target
 BDDCore.iml
+CargarDatosGW/src/main/resources/gradle.properties
 
