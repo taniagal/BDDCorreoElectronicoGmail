@@ -21,10 +21,16 @@ public class ValidacionesSuraDefinitions {
         seusLoginSteps.login();
     }
 
-    @When("quiera crear una cuenta para un contacto persona juridica e ingrese documento, tipo de documento <tipo_documento>")
+    @When("quiera crear una cuenta para un contacto e ingrese documento, tipo de documento <tipo_documento>")
     public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento){
         cuentaNuevaSteps.abrir_nueva_cuenta();
         cuentaNuevaSteps.agregar_documento(tipoDocumento);
+    }
+
+    @When("quiera crear una cuenta para un contacto e ingrese documento <documento>, tipo de documento <tipo_documento>")
+    public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento,@Named("documento")String documento){
+        cuentaNuevaSteps.abrir_nueva_cuenta();
+        cuentaNuevaSteps.agregar_documento(tipoDocumento,documento);
     }
 
     @When("quiera crear una cuenta para un contacto persona juridica e tipo de documento <tipo_documento>")
@@ -46,6 +52,12 @@ public class ValidacionesSuraDefinitions {
     @Then("no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>")
     public void verificarMensaje(@Named("mensaje") String mensaje){
         cuentaNuevaSteps.verificar_mensaje(mensaje);
+        seusLoginSteps.close();
+    }
+
+    @Then("no debe permitir crear una nueva cuenta y no debe mostrar el mensaje <mensaje>")
+    public void verificarEstadoDeMensaje(@Named("mensaje") String mensaje){
+        cuentaNuevaSteps.verificar_estado_de_mensaje(mensaje);
         seusLoginSteps.close();
     }
 }

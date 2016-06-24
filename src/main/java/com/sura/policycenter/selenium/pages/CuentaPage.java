@@ -136,7 +136,7 @@ public class CuentaPage extends Guidewire{
     }
 
     public void buscarPersona(String nombre, String persona){
-        waitABit(1000);
+        campoTxtNombreCompania.waitUntilPresent();
         campoTxtNombreCompania.sendKeys(nombre);
         botonBuscar.click();
         if("Compania".equals(persona)) {
@@ -167,6 +167,12 @@ public class CuentaPage extends Guidewire{
         waitABit(2000);
         divMensaje.waitUntilPresent();
         assertThat("Falló la validacion del mensaje de rechazo", divMensaje.containsText(mensaje));
+    }
+
+    public  void verificarEstadoDeMensaje(String mensaje){
+        waitABit(2000);
+        divMensaje.waitUntilPresent();
+        assertThat("El mensaje erroneo sigue apareciendo", !divMensaje.containsText(mensaje));
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {

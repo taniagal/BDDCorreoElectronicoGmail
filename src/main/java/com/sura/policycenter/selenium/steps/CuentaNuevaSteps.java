@@ -22,7 +22,7 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         return getPages().currentPageAt(InicioPage.class);
     }
 
-    private void  initRandoms(){
+    private void initRandoms() {
         cedula = gw.cedulaRandom();
         nit = gw.nitRandom();
 
@@ -35,27 +35,27 @@ public class CuentaNuevaSteps extends ScenarioSteps {
 
     @Step
     public void agregar_tipo_documento(String tipoDocumento) {
-        if("".equals(cedula) || "".equals(nit)) {
+        if ("".equals(cedula) || "".equals(nit)) {
             initRandoms();
         }
-        if("NIT".equals(tipoDocumento)){
-            cuentaPage.buscarPersona("Busqueda","Compania");
-            cuentaPage.agregarTipoDocumento(tipoDocumento,nit);
+        if ("NIT".equals(tipoDocumento)) {
+            cuentaPage.buscarPersona("Busqueda", "Compania");
+            cuentaPage.agregarTipoDocumento(tipoDocumento, nit);
         } else {
-            cuentaPage.buscarPersona("Busqueda","Persona");
-            cuentaPage.agregarTipoDocumento(tipoDocumento,cedula);
+            cuentaPage.buscarPersona("Busqueda", "Persona");
+            cuentaPage.agregarTipoDocumento(tipoDocumento, cedula);
         }
     }
 
     @Step
     public void agregar_tipo_documento2(String tipoDocumento) {
-            initRandoms();
-        if("NIT".equals(tipoDocumento)){
-            cuentaPage.buscarPersona("Busqueda","Compania");
-            cuentaPage.agregarTipoDocumento(tipoDocumento,nit);
+        initRandoms();
+        if ("NIT".equals(tipoDocumento)) {
+            cuentaPage.buscarPersona("Busqueda", "Compania");
+            cuentaPage.agregarTipoDocumento(tipoDocumento, nit);
         } else {
-            cuentaPage.buscarPersona("Busqueda","Persona");
-            cuentaPage.agregarTipoDocumento(tipoDocumento,cedula);
+            cuentaPage.buscarPersona("Busqueda", "Persona");
+            cuentaPage.agregarTipoDocumento(tipoDocumento, cedula);
         }
     }
 
@@ -63,26 +63,42 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     public void agregar_documento(String tipoDocumento) {
         initRandoms();
         StringBuilder documento = new StringBuilder("us");
-        documento.append(nit.substring(0,6));
-        documento.append("c");
-        cuentaPage.buscarPersona("Busqueda","Compania");
-        cuentaPage.agregarTipoDocumento(tipoDocumento,documento.toString());
+        if ("NIT".equals(tipoDocumento) || "IDENT. FISCAL PARA EXTRANJEROS".equals(tipoDocumento)) {
+            documento.append(nit.substring(0, 6));
+            documento.append("c");
+            cuentaPage.buscarPersona("Busqueda", "Compania");
+            cuentaPage.agregarTipoDocumento(tipoDocumento, documento.toString());
+        } else {
+            documento.append(cedula.substring(0, 5));
+            documento.append("c");
+            cuentaPage.buscarPersona("Busqueda", "Persona");
+            cuentaPage.agregarTipoDocumento(tipoDocumento, documento.toString());
+        }
+    }
+    @Step
+    public void agregar_documento(String tipoDocumento,String documento) {
+        if ("NIT".equals(tipoDocumento)) {
+            cuentaPage.buscarPersona("Busqueda", "Compania");
+        } else {
+            cuentaPage.buscarPersona("Busqueda", "Persona");
+        }
+            cuentaPage.agregarTipoDocumento(tipoDocumento, documento);
     }
 
     @Step
     public void agregar_direccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
-        cuentaPage.agregarDireccion(tipoDireccion,direccion,departamento,ciudad);
+        cuentaPage.agregarDireccion(tipoDireccion, direccion, departamento, ciudad);
         cuentaPage.actualizar();
     }
 
     @Step
     public void agregar_organizacion(String nombreOrganizacion, String agente) {
-        cuentaPage.agregarOrganizacion(nombreOrganizacion,agente);
+        cuentaPage.agregarOrganizacion(nombreOrganizacion, agente);
     }
 
     @Step
-    public void agregar_nombre(String primerNombre, String primerApellido, String fechaNacimiento){
-        cuentaPage.agregarNombres(primerNombre,primerApellido,fechaNacimiento);
+    public void agregar_nombre(String primerNombre, String primerApellido, String fechaNacimiento) {
+        cuentaPage.agregarNombres(primerNombre, primerApellido, fechaNacimiento);
     }
 
     @Step
@@ -101,18 +117,22 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificar_cuenta(String nombreCuenta){
+    public void verificar_cuenta(String nombreCuenta) {
         cuentaPage.verificarCuentaNumero(nombreCuenta);
     }
 
     @Step
-    public void verificar_edad_menor(String mensaje){
+    public void verificar_edad_menor(String mensaje) {
         cuentaPage.verificarEdadMenor(mensaje);
     }
 
     @Step
-    public void verificar_mensaje(String mensaje){
+    public void verificar_mensaje(String mensaje) {
         cuentaPage.verificarMensaje(mensaje);
     }
 
+    @Step
+    public void verificar_estado_de_mensaje(String mensaje) {
+        cuentaPage.verificarEstadoDeMensaje(mensaje);
+    }
 }
