@@ -62,7 +62,7 @@ Then se debe cargar el valor por defecto "<ninguno>" en el campo ciudad <ciudad>
 
 Examples:
 |tipoCuenta|numCuenta  |pais        |departamento  |ciudad      |
-|Compañía  |C010478975 |Colombia    |Antioquia     |            |
+|Compañía  |C010478975 |Colombia    |ANTIOQUIA     |            |
 
 Scenario: Editar cuenta - Dirección estandarizada
 Meta:
