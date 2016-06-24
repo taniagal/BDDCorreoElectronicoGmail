@@ -7,7 +7,7 @@ quiero poder utilizar el modo de entrada para direcciones de contacto
 
 
 Scenario: Agregar direccion a un contacto.
-GivenStories: stories/policycenter/login_policy.story
+
 Given tengo un contacto con <tipo_documento> c. <documento>
 When quiera editar la informacion del contacto con <tipo_documento> c. <documento>
 And se vaya a ingresar la nueva direccion y valide los campos en pantalla
@@ -18,11 +18,11 @@ Then en la lista de direcciones agregadas se debe ver la nueva direccion <direcc
 
 Examples:
 |tipo_documento      |documento |tipoDireccion|direccion        |departamento|ciudad  |
-|CEDULA DE CIUDADANIA|1234567891|Negocio      |CALLE 60B #10-157|ANTIOQUIA   |MEDELLIN|
+|CEDULA DE CIUDADANIA|1234567892|Negocio      |CALLE 60B #10-157|ANTIOQUIA   |MEDELLIN|
 
 
 Scenario: Agregar direccion a un contacto del mismo tipo.
-GivenStories: stories/policycenter/login_policy.story
+
 Given tengo un contacto con <tipo_documento> c. <documento>
 When quiera editar la informacion del contacto con <tipo_documento> c. <documento>
 And se vaya a ingresar la nueva direccion y valide los campos en pantalla

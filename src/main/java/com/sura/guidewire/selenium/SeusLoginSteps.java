@@ -22,7 +22,6 @@ public class SeusLoginSteps  extends ScenarioSteps {
 
         seus.open();
         seus.login(pais, usuario, contrasenia);
-        inicioPage.assertion(element);
     }
 
 
@@ -36,7 +35,6 @@ public class SeusLoginSteps  extends ScenarioSteps {
 
         seus.open();
         seus.login(pais,usuario, contrasenia);
-        inicioPage.assertion(element);
     }
 
     @Step

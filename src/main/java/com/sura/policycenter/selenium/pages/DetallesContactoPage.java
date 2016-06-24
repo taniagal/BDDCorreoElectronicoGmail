@@ -4,7 +4,9 @@ import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -132,6 +134,11 @@ public class  DetallesContactoPage extends Guidewire {
     private WebElementFacade campoTxtDocumento;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtIrA;
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ContactSearch']/div")
+    private WebElementFacade menuItemContactos;
+
 
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
@@ -142,6 +149,13 @@ public class  DetallesContactoPage extends Guidewire {
         super(driver);
     }
 
+    public void irABuscarContacto() {
+        campoTxtIrA.waitUntilPresent();
+        campoTxtIrA.sendKeys("Search");
+        campoTxtIrA.sendKeys(Keys.ENTER);
+        menuItemContactos.waitUntilPresent();
+        menuItemContactos.click();
+    }
     public void editarContacto(){
         botonEditarContacto.waitUntilPresent();
         botonEditarContacto.waitUntilVisible();

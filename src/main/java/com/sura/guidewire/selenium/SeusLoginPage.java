@@ -6,8 +6,6 @@ import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.concurrent.TimeUnit;
-
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class SeusLoginPage extends Guidewire {
@@ -42,7 +40,6 @@ public class SeusLoginPage extends Guidewire {
             this.usuario.type(usuario);
             this.contrasenia.type(contrasenia);
             this.btnSubmit.click();
-            getDriver().manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         }
     }
 
