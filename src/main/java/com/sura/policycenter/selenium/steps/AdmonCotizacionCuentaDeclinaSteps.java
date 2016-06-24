@@ -41,8 +41,8 @@ public class AdmonCotizacionCuentaDeclinaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void valida_estado_de_la_cotizacion(String numCotizacion) {
-        opcionesAdminitradorCotizaciones.validaEstado(numCotizacion);
+    public void valida_estado_de_la_cotizacion(String numCotizacion, String accion) {
+        opcionesAdminitradorCotizaciones.validaEstado(numCotizacion, accion);
     }
 
     @Step

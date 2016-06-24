@@ -34,12 +34,12 @@ Examples:
 Scenario: Declinar una cotizacion desde una cuenta
 Given que estoy visualizando las cotizaciones de la cuenta <numCuenta>
 When quiera declinar la cotizacion por cualquier razon <razon>
-Then el sistema debe mostrar el estado declinada <numCotizacion>
+Then el sistema debe mostrar el estado declinada <numCotizacion> <accion>
 And desahabilitar la opcion de acciones para no ser modificada
 
 Examples:
-|numCuenta|razon|numCotizacion|
-|C000777777|Cartera|22223226|
+|numCuenta|razon|numCotizacion|accion|
+|C000777777|Cartera|22223226|Declinada|
 
 
 

@@ -307,6 +307,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     }
 
     public void ingresaRechazo(String razon) {
+        waitFor(txtCodRazon).shouldBeEnabled();
         txtCodRazon.clear();
         txtCodRazon.sendKeys(razon);
         txtRazonCarta.click();
@@ -332,13 +333,13 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         return numeroEstado;
     }
 
-    public void validaEstado(String numCotizacion) {
+    public void validaEstado(String numCotizacion, String accion) {
         int i = 0;
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
         if (getListaCotizaciones().size()>0) {
             for (WebElementFacade cotizacion : getListaCotizaciones()) {
                 if (numCotizacion.equals(cotizacion.getText())) {
-                   assertThat("El estado no pertenece a la accion dada", "Declinada".equals(getListaEstado().get(i).getText()));
+                   assertThat("El estado no pertenece a la accion dada", accion.equals(getListaEstado().get(i).getText()));
                     break;
                 }
                 i++;

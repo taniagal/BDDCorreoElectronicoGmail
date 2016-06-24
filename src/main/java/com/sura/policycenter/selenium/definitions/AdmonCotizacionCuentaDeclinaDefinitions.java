@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.policycenter.selenium.steps.AdmonCotizacionCuentaSteps;
+import com.sura.policycenter.selenium.steps.AdmonCotizacionCuentaDeclinaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -12,7 +12,7 @@ import org.jbehave.core.model.ExamplesTable;
 public class AdmonCotizacionCuentaDeclinaDefinitions {
 
     @Steps
-    AdmonCotizacionCuentaSteps admonCotizacionCuentaSteps;
+    AdmonCotizacionCuentaDeclinaSteps admonCotizacionCuentaSteps;
 
     @Given("que estoy visualizando las cotizaciones de la cuenta <numCuenta>")
     public void visualizaCotizacion(@Named("numCuenta") String numCuenta) {
@@ -25,9 +25,10 @@ public class AdmonCotizacionCuentaDeclinaDefinitions {
         admonCotizacionCuentaSteps.ingresar_informacion_al_momento_de_rechazar(razon);
     }
 
-    @Then("el sistema debe mostrar el estado declinada <numCotizacion>")
-    public void estadoDeclinarCotizacion(@Named("numCotizacion") String numCotizacion) {
-        admonCotizacionCuentaSteps.valida_estado_de_la_cotizacion(numCotizacion);
+    @Then("el sistema debe mostrar el estado declinada <numCotizacion> <accion>")
+    public void estadoDeclinarCotizacion(@Named("numCotizacion") String numCotizacion,
+                                         @Named("accion") String accion) {
+        admonCotizacionCuentaSteps.valida_estado_de_la_cotizacion(numCotizacion, accion);
     }
 
     @Then("desahabilitar la opcion de acciones para no ser modificada")
