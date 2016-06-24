@@ -1,9 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.serinitybdd.util.GwNavegacionUtil;
-import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
