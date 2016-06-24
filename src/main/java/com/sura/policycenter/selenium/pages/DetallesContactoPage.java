@@ -206,23 +206,23 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarTelefonosResidencial(String telefonoResidencial){
         campoTxtTelefonoResidencial.clear();
-        waitABit(200);
+        waitABit(500);
         campoTxtTelefonoResidencial.type(telefonoResidencial);
         dtlContact[11]= telefonoResidencial;
     }
 
     public void agregarTelefonoTrabajo(String telefonoTrabajo){
         campoTxtTelefonoTrabajo.clear();
-        waitABit(200);
+        waitABit(300);
         campoTxtTelefonoTrabajo.sendKeys(telefonoTrabajo);
         dtlContact[12]= telefonoTrabajo;
     }
 
     public void agregarTelefonoCelular(String telefonoCelular){
         campoTxtTelefonoCelular.clear();
-        waitABit(200);
+        waitABit(300);
         campoTxtTelefonoCelular.sendKeys(telefonoCelular);
-        dtlContact[10]= telefonoCelular;
+        dtlContact[10]= "+1 "+telefonoCelular;
     }
 
     public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
@@ -230,7 +230,7 @@ public class  DetallesContactoPage extends Guidewire {
         waitABit(1000);
         campoTxtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
         campoTxtCorreoElectronicoSecundario.clear();
-        waitABit(500);
+        waitABit(300);
         campoTxtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
         dtlContact[13]= correoElectronicoPrimario;
         dtlContact[14]= correoElectronicoSecundario;
