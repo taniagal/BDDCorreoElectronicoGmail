@@ -24,4 +24,12 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
     public void validarInformacion(ExamplesTable resultadoFiltroActividades) {
         direccionesDeContactoVinculadas.validarInformacion(resultadoFiltroActividades);
     }
+
+    public void filtrarPorInfoObligatoria() {
+        direccionesDeContactoVinculadas.filtrarPorInfoObligatoria();
+    }
+
+    public void seleccionarContacto() {
+        direccionesDeContactoVinculadas.seleccionarContacto();
+    }
 }

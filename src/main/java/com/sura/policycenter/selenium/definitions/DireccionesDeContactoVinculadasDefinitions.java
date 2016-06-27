@@ -14,7 +14,7 @@ public class DireccionesDeContactoVinculadasDefinitions {
     @Steps
     private DireccionesDeContactoVinculadasSteps direccionesDeContactoVinculadasSteps;
 
-    @Given("que me encuentro en las direcciones de un contacto asociado a una cuenta <numeroCuenta>")
+    @Given("que me encuentro en los contactos de una cuenta <numeroCuenta>")
     public void buscarCuenta(@Named("numeroCuenta") String numeroCuenta) {
         direccionesDeContactoVinculadasSteps.buscarCuenta(numeroCuenta);
     }
@@ -23,9 +23,20 @@ public class DireccionesDeContactoVinculadasDefinitions {
     public void filtrarPorNumeroCuenta() {
         direccionesDeContactoVinculadasSteps.vincularDirecciones();
     }
-    @Pending
+
     @Then("me debe mostrar la siguiente informacion: $resultadoFiltroActividades")
     public void validarInformacion(ExamplesTable resultadoFiltroActividades){
         direccionesDeContactoVinculadasSteps.validarInformacion(resultadoFiltroActividades);
     }
+
+    @When("ingrese solo informacion obligatoria")
+    public void filtrarPorInfoObligatoria() {
+        direccionesDeContactoVinculadasSteps.filtrarPorInfoObligatoria();
+    }
+
+    @When("quiera actualizar la direccion de un contacto que tiene otros contactos que la usan")
+    public void seleccionarContacto() {
+        direccionesDeContactoVinculadasSteps.seleccionarContacto();
+    }
+
 }

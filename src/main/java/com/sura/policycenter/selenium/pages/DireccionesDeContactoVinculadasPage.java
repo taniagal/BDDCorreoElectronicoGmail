@@ -35,6 +35,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade grdContacto1;
     @FindBy(xpath=".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:2:Name']")
     private WebElementFacade grdContacto2;
+    @FindBy(xpath=".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:6:Name']")
+    private WebElementFacade grdContacto3;
     @FindBy(xpath=".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:LinkAddressMenuMenuIcon']/img")
     private WebElementFacade btnAsociarDireccion;
     @FindBy(xpath=".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail-arrowEl']")
@@ -59,6 +61,9 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade txtTipoDireccion;
     @FindBy(xpath=".//*[@id='LinkedAddressEditPopup:AddressDescription-inputEl']")
     private WebElementFacade txtDescripcion;
+    @FindBy(xpath=".//*[@id='LinkedAddressEditPopup:UpdateAllButton-btnInnerEl']")
+    private WebElementFacade btnActualizarDireccionesLigadas;
+
 
     public void buscarCuenta(String numeroCuenta) {
         btnBuscar.click();
@@ -66,12 +71,18 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         txtNumeroCuenta.sendKeys(numeroCuenta);
         btnBuscarCuenta.click();
         grdNumeroCuenta.click();
+        waitForTextToAppear("Resumen de la cuenta", 30000);
         mnuContactos.click();
     }
 
     public void vincularDirecciones() {
+        waitForTextToAppear("Contactos de archivo");
+        //contacto 1: speedy glass
         vincularDireccionAContacto(grdContacto1);
+        waitForTextToAppear("Contactos de archivo");
+        //contacto 2: carlos peralta
         vincularDireccionAContacto(grdContacto2);
+        waitForTextToAppear("Contactos de archivo");
         irAEditarDireccion();
     }
 
@@ -108,4 +119,15 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         MatcherAssert.assertThat(this.txtDescripcion.getText(), Matchers.containsString(exampleTable.get("descripcion")));
     }
 
+    public void filtrarPorInfoObligatoria() {
+        txtCodigoPostal.clear();
+        txtDescripcion.clear();
+        btnActualizarDireccionesLigadas.click();
+    }
+
+    public void seleccionarContacto() {
+        grdContacto3.click();
+        btnAsociarDireccion.click();
+        btnEditarDireccion.click();
+    }
 }
