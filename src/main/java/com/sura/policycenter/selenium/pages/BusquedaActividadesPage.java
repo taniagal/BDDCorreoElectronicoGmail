@@ -52,8 +52,8 @@ public class BusquedaActividadesPage extends PageObject {
     private WebElementFacade grdEstado;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
     private WebElementFacade msgFiltrosRequeridos;
-    private @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
-    WebElementFacade menuBuscar;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
+    private WebElementFacade menuBuscar;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ActivitySearch']/div")
     private WebElementFacade menuBuscarActividades;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab']")

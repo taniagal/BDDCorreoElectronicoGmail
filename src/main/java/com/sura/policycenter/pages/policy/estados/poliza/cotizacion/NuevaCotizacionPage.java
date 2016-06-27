@@ -1,6 +1,9 @@
 package com.sura.policycenter.pages.policy.estados.poliza.cotizacion;
 
 import com.sura.policycenter.model.AgenteModel;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -13,9 +16,6 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -27,7 +27,7 @@ public class NuevaCotizacionPage extends PageObject {
     private static final long serialVersionUID = 1L;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
-    private DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
+    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
     private List<AgenteModel> listaAgentesModel = null;
     private String nombreAgente;
     private List<WebElementFacade> listaDeProductosElement;
@@ -259,15 +259,13 @@ public class NuevaCotizacionPage extends PageObject {
     public String obtenerTextoLinkNombrePersonaWEF(String nombre2) {
         waitForRenderedElementsToBePresent(By.xpath(LINK_NOMBRE_PERSONA));
         waitForTextToAppear(nombre2);
-        String nombre = this.getRenderedView().find(LINK_NOMBRE_PERSONA).getText();
-        return nombre;
+        return this.getRenderedView().find(LINK_NOMBRE_PERSONA).getText();
     }
 
     public String obtenerTextoLabelNombrePersonaWEF() {
         waitForRenderedElementsToBePresent(By.xpath(LABEL_NOMBRE_PERSONA));
         shouldBeVisible(elemento(LABEL_NOMBRE_PERSONA));
-        String label = this.getRenderedView().find(LABEL_NOMBRE_PERSONA).getText();
-        return label;
+        return this.getRenderedView().find(LABEL_NOMBRE_PERSONA).getText();
     }
 
     public String getNombreAgente() {

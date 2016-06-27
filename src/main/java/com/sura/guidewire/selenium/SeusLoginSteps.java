@@ -9,7 +9,6 @@ public class SeusLoginSteps  extends ScenarioSteps {
 
     private final SeusLoginPage seus = new SeusLoginPage(getDriver());
     private final Guidewire gw = new Guidewire(getDriver());
-    private final InicioPage inicioPage = new InicioPage(getDriver());
 
     public SeusLoginSteps(Pages pages) {
         super(pages);
