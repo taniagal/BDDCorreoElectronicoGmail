@@ -71,18 +71,17 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         txtNumeroCuenta.sendKeys(numeroCuenta);
         btnBuscarCuenta.click();
         grdNumeroCuenta.click();
-        waitForTextToAppear("Resumen de la cuenta", 30000);
         mnuContactos.click();
     }
 
     public void vincularDirecciones() {
-        waitForTextToAppear("Contactos de archivo");
+        waitForTextToAppear("Contactos de archivo de cuenta");
         //contacto 1: speedy glass
         vincularDireccionAContacto(grdContacto1);
-        waitForTextToAppear("Contactos de archivo");
+        waitForTextToAppear("Contactos de archivo de cuenta");
         //contacto 2: carlos peralta
         vincularDireccionAContacto(grdContacto2);
-        waitForTextToAppear("Contactos de archivo");
+        waitForTextToAppear("Contactos de archivo de cuenta");
         irAEditarDireccion();
     }
 
@@ -96,13 +95,13 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
     public void vincularDireccionAContacto(WebElementFacade contacto) {
         contacto.click();
-        waitABit(2000);
+        waitABit(3000);
         btnAsociarDireccion.click();
-        waitABit(2000);
+        waitABit(3000);
         btnSeleccionar.click();
-        waitABit(2000);
+        waitABit(3000);
         direccionContacto.click();
-        waitABit(2000);
+        waitABit(3000);
         btnActualizar.click();
         waitABit(3000);
     }
@@ -110,13 +109,14 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     public void validarInformacion(ExamplesTable resultadoFiltroActividades) {
         waitABit(1000);
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
-        MatcherAssert.assertThat(this.txtPais.getText(), Is.is(Matchers.equalTo(exampleTable.get("pais"))));
-        MatcherAssert.assertThat(this.txtDepartamento.getText(), Is.is(Matchers.equalTo(exampleTable.get("departamento"))));
-        MatcherAssert.assertThat(this.txtCiudad.getText(), Is.is(Matchers.equalTo(exampleTable.get("ciudad"))));
-        MatcherAssert.assertThat(this.txtDireccion.getText(), Is.is(Matchers.equalTo(exampleTable.get("direccion"))));
-        MatcherAssert.assertThat(this.txtCodigoPostal.getText(), Is.is(Matchers.equalTo(exampleTable.get("codigoPostal"))));
-        MatcherAssert.assertThat(this.txtTipoDireccion.getText(), Matchers.containsString(exampleTable.get("tipoDeDireccion")));
-        MatcherAssert.assertThat(this.txtDescripcion.getText(), Matchers.containsString(exampleTable.get("descripcion")));
+
+        MatcherAssert.assertThat(this.txtPais.getValue(), Is.is(Matchers.equalTo(exampleTable.get("pais"))));
+        MatcherAssert.assertThat(this.txtDepartamento.getValue(), Is.is(Matchers.equalTo(exampleTable.get("departamento"))));
+        MatcherAssert.assertThat(this.txtCiudad.getValue(), Is.is(Matchers.equalTo(exampleTable.get("ciudad"))));
+        MatcherAssert.assertThat(this.txtDireccion.getValue(), Is.is(Matchers.equalTo(exampleTable.get("direccion"))));
+        MatcherAssert.assertThat(this.txtCodigoPostal.getValue(), Is.is(Matchers.equalTo(exampleTable.get("codigoPostal"))));
+        MatcherAssert.assertThat(this.txtTipoDireccion.getValue(), Matchers.containsString(exampleTable.get("tipoDeDireccion")));
+        MatcherAssert.assertThat(this.txtDescripcion.getValue(), Matchers.containsString(exampleTable.get("descripcion")));
     }
 
     public void filtrarPorInfoObligatoria() {
