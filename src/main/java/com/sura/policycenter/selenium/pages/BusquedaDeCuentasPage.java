@@ -7,6 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 
@@ -107,15 +108,19 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         this.limpiarFormulario();
-        txtPrimerNombre.sendKeys(primerNombre);
-        txtSegundoNombre.sendKeys(segundoNombre);
-        txtPrimerApellido.sendKeys(primerApellido);
-        txtSegundoApellido.sendKeys(segundoApellido);
-        btnBuscar.click();
+        try{
+            txtPrimerNombre.sendKeys(primerNombre);
+            txtSegundoNombre.sendKeys(segundoNombre);
+            txtPrimerApellido.sendKeys(primerApellido);
+            txtSegundoApellido.sendKeys(segundoApellido);
+            btnBuscar.click();
+        } catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
     private void limpiarFormulario(){
-        botonRestablecer.click();
+        botonRestablecer.waitUntilPresent().click();
         waitABit(1000);
     }
 
