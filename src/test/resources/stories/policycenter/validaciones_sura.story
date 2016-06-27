@@ -87,14 +87,32 @@ por parte de los analistas del negocio.
 #|CEDULA DE CIUDADANIA |02/12/1990      |SASHA        |AKERMAN        |Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |La longitud del número de documento de identificación no es válida, máximo 10 caracteres|
 
 
+#Scenario: crear una cuenta para un contacto persona natural.
+#GivenStories: stories/policycenter/login_policy.story
+#When quiera crear una cuenta para un contacto e ingrese documento <documento>, tipo de documento <tipo_documento>
+#And nombre de organizacion <nombre_organizacion> <agente>
+#And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>
+#And tipo de direccion <tipo_direccion>, direccion <direccion>, departamento <departamento>, ciudad <ciudad>
+#Then no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
+
+#Examples:
+#|tipo_documento              |documento|fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|mensaje|
+#|CEDULA DE EXTRANJERIA       |545*+456d|02/12/1990      |SASHA        |AKERMAN        |Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |El número de identificación contiene caracteres inválidos|
+#|DOC. IDENTIDAD DE EXTRANJERO|545*+456d|02/12/1990      |SASHA        |AKERMAN        |Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |El número de identificación contiene caracteres inválidos|
+#|NUIP                        |54545dssd|02/12/1990      |SASHA        |AKERMAN        |Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |El número de identificación contiene caracteres inválidos|
+#|PASAPORTE                   |545*+456d|02/12/1990      |SASHA        |AKERMAN        |Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |El número de identificación contiene caracteres inválidos|
+#|PERSONA NATURAL CON NIT     |545*+456d|02/12/1990      |SASHA        |AKERMAN        |Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |El número de identificación contiene caracteres inválidos|
+#|REGISTRO CIVIL DE NACIMIENTO|545*+456d|02/12/1990      |SASHA        |AKERMAN        |Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |El número de identificación contiene caracteres inválidos|
+
+
 Scenario: crear una cuenta para un contacto persona natural.
 GivenStories: stories/policycenter/login_policy.story
 When quiera crear una cuenta para un contacto e ingrese documento <documento>, tipo de documento <tipo_documento>
 And nombre de organizacion <nombre_organizacion> <agente>
 And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>
 And tipo de direccion <tipo_direccion>, direccion <direccion>, departamento <departamento>, ciudad <ciudad>
-Then no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
+Then no debe permitir crear una nueva cuenta y no debe mostrar el mensaje <mensaje>
 
 Examples:
-|tipo_documento       |documento|fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|mensaje|
-|CEDULA DE EXTRANJERIA|545*+456d|02/12/1990      |SASHA        |AKERMAN        |Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |La longitud del número de documento de identificación no es válida, máximo 11 caracteres|
+|tipo_documento              |documento|fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|mensaje|
+|TARJETA DE IDENTIDAD        |545*+456d|02/12/1990      |SASHA        |AKERMAN        |Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |La longitud del número de documento de identificación no es válida, máximo 14 caracteres|
