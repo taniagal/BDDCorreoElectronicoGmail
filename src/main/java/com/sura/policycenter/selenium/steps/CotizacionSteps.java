@@ -4,13 +4,13 @@ package com.sura.policycenter.selenium.steps;
 import com.sura.policycenter.pages.navegacion.PanelIzquierdoElement;
 import com.sura.policycenter.pages.navegacion.PanelSuperiorElement;
 import com.sura.policycenter.pages.policy.estados.poliza.cotizacion.NuevaCotizacionPage;
+import java.io.Serializable;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.openqa.selenium.Keys;
 
-import java.io.Serializable;
 
 import static com.sura.policycenter.pages.policy.estados.poliza.cotizacion.NuevaCotizacionPage.*;
 

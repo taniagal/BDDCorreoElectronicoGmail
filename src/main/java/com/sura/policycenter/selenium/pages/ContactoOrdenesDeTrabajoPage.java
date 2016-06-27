@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.SeusLoginPage;
+import java.util.List;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.apache.commons.lang3.ArrayUtils;
@@ -12,7 +13,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.sikuli.api.robot.Key;
 
-import java.util.List;
 
 
 public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {

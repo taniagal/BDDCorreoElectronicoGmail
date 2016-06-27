@@ -16,11 +16,6 @@ public class AdmonCotizacionCuentaNoTomarSteps extends ScenarioSteps {
         super(pages);
     }
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
-
     @Step
     public void seleccionar_opcion_en_acciones() {
         opcionesAdminitradorCotizaciones.seleccionarAccionesNoTomar();
