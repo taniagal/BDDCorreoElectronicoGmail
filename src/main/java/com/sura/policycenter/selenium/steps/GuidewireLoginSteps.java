@@ -10,7 +10,7 @@ import static com.sura.policycenter.selenium.pages.GuidewireLoginPages.*;
 
 public class GuidewireLoginSteps extends ScenarioSteps {
 
-    GuidewireLoginPages login;
+    GuidewireLoginPages login = new GuidewireLoginPages();
 
     @Step
     public String validar_que_el_titulo_de_la_pagina_principal_sea_mis_actividads() {

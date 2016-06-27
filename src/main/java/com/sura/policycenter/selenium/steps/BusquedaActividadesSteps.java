@@ -6,7 +6,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class BusquedaActividadesSteps extends ScenarioSteps {
 
-    BusquedaActividadesPage busquedaActividades;
+    BusquedaActividadesPage busquedaActividades = new BusquedaActividadesPage(getDriver());
 
     public void buscarActividades() {
         busquedaActividades.irABuscarActividades();

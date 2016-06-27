@@ -24,7 +24,7 @@ public class EscritorioPage extends PageObject {
     public ExpectedCondition<Boolean> existeOpcionEnMenuAcciones(String opcion) {
         return new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
-                return (lnkAcciones.isEnabled());
+                return lnkAcciones.isEnabled();
             }
         };
     }
@@ -34,7 +34,7 @@ public class EscritorioPage extends PageObject {
 
         return new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
-                return (lnkAcciones.isEnabled());
+                return lnkAcciones.isEnabled();
             }
         };
     }

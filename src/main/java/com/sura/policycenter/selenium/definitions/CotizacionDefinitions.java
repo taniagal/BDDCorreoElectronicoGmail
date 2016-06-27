@@ -4,8 +4,14 @@ import com.sura.policycenter.selenium.steps.CotizacionSteps;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.AfterStory;
+import org.jbehave.core.annotations.Alias;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Pending;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import org.slf4j.LoggerFactory;
+
 
 import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
 import static org.hamcrest.CoreMatchers.equalTo;
