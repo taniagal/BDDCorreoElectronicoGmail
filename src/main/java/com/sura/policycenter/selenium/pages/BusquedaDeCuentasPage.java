@@ -196,8 +196,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
     }
 
     public void seleccionarImprimir() {
-        waitForTextToAppear("YURLEDYS");
-        btnImprimir.click();
+        btnImprimir.waitUntilPresent().click();
     }
 
     public void validarOpcionesDeImprimir(String imprimir, String exportar, String exportarPersonalizado) {
