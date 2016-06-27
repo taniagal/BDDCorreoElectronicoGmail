@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
-import com.sun.tracing.dtrace.FunctionName;
+
 import com.sura.guidewire.selenium.Guidewire;
 import java.util.Map;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -144,14 +144,8 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade txtEstadoCivil;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Profession-inputEl']")
     private WebElementFacade txtProfesion;
-    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DateOfDeath-inputEl']")
-    private WebElementFacade txtFechaFallecimiento;
-    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DeathCause-inputEl']")
-    private WebElementFacade txtCausaFallecimiento;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:FamilyType-inputEl']")
     private WebElementFacade txtTipoFamilia;
-    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EconomyDependents-inputEl']")
-    private WebElementFacade txtDependientesEconomicos;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress1-inputEl']")
     private WebElementFacade txtEmailPrimario;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress2-inputEl']")

@@ -1,14 +1,15 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
 
 public class BusquedaDeCuentasPage extends Guidewire {
 
@@ -90,6 +91,9 @@ public class BusquedaDeCuentasPage extends Guidewire {
     private  WebElementFacade menuBuscar;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']/div")
     private  WebElementFacade menuBuscarCuentas;
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
+    private  WebElementFacade botonRestablecer;
+
 
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
@@ -104,26 +108,25 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         this.limpiarFormulario();
-        txtPrimerNombre.sendKeys(primerNombre);
-        txtSegundoNombre.sendKeys(segundoNombre);
-        txtPrimerApellido.sendKeys(primerApellido);
-        txtSegundoApellido.sendKeys(segundoApellido);
-        btnBuscar.click();
+        try{
+            txtPrimerNombre.sendKeys(primerNombre);
+            txtSegundoNombre.sendKeys(segundoNombre);
+            txtPrimerApellido.sendKeys(primerApellido);
+            txtSegundoApellido.sendKeys(segundoApellido);
+            btnBuscar.click();
+        } catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
     private void limpiarFormulario(){
-        txtTipoDocumento.clear();
-        txtNumeroDocumento.clear();
-        txtRazonSocial.clear();
-        txtNombreComercial.clear();
-        txtPrimerNombre.clear();
-        txtSegundoNombre.clear();
-        txtPrimerApellido.clear();
-        txtSegundoApellido.clear();
+        botonRestablecer.waitUntilPresent().click();
+        waitABit(1000);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
         this.limpiarFormulario();
+        txtTipoDocumento.clear();
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
         txtNumeroDocumento.sendKeys(numeroDocumento);
@@ -186,6 +189,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
     public void seleccionarTipoIdentificacion(String tipoDocumento){
         txtTipoDocumento.waitUntilVisible();
         this.limpiarFormulario();
+        txtTipoDocumento.clear();
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
     }
@@ -197,8 +201,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
     }
 
     public void seleccionarImprimir() {
-        waitForTextToAppear("YURLEDYS");
-        btnImprimir.click();
+        btnImprimir.waitUntilPresent().click();
     }
 
     public void validarOpcionesDeImprimir(String imprimir, String exportar, String exportarPersonalizado) {
