@@ -64,7 +64,7 @@ Then debe mostrar el mensaje <mensaje>
 
 Examples:
 |codigoAgente|mensaje|
-|Standard Code|Código de agente : Se encuentra más de un Producer Code con el código "Standard Code." Use el emergenteProducer Code para elegir el Producer Code.|
+|Standard Code 789|Código de agente : Se encuentra más de un Producer Code con el código "Standard Code 789." Use el emergenteProducer Code para elegir el Producer Code.|
 
 Scenario: Consultar polizas por numero de cuenta y producto
 Given que voy a buscar una poliza
@@ -89,7 +89,6 @@ Examples:
 |C001888888|SURA|
 
 Scenario: Consultar polizas por numero de cuenta  y codigo de agente
-Meta: @pending
 Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta> y codigo de agente <codigoAgente>
 Then se debe visualizar la siguiente información:
@@ -98,10 +97,9 @@ Then se debe visualizar la siguiente información:
 
 Examples:
 |numeroCuenta|codigoAgente|
-|C001888888|Standard Code|
+|C001888888|Standard Code 789|
 
 Scenario: Consultar polizas por numero de cuenta, producto y codigo de agente
-Meta: @pending
 Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta>, producto <producto> y codigo de agente <codigoAgente>
 Then se debe visualizar la siguiente información:
@@ -110,7 +108,7 @@ Then se debe visualizar la siguiente información:
 
 Examples:
 |numeroCuenta|producto|codigoAgente|
-|C001888888|Auto personal|Standard Code|
+|C001888888|Auto personal|Standard Code 789|
 
 Scenario: Consultar polizas por numero de cuenta que no existe, producto y codigo de agente
 Given que voy a buscar una poliza
@@ -119,7 +117,7 @@ Then debe mostrar el mensaje <mensaje>
 
 Examples:
 |numeroCuenta|producto|codigoAgente|mensaje|
-|C001887545|Auto personal|Standard Code 777|La búsqueda no devolvió resultados.|
+|C001887545|Auto personal|Standard Code 789|La búsqueda no devolvió resultados.|
 
 
 Scenario: Consultar polizas por numero de cuenta que no existe y producto
@@ -147,4 +145,4 @@ Then debe mostrar el mensaje <mensaje>
 
 Examples:
 |numeroCuenta|codigoAgente|mensaje|
-|C001888888|Standard Code 777|La búsqueda no devolvió resultados.|
+|C001888888|Standard Code 789|La búsqueda no devolvió resultados.|
