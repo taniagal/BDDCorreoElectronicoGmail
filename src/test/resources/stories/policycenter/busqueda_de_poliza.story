@@ -58,6 +58,7 @@ Examples:
 |SURA|Se debe ingresar un nombre, un apellido, un nombre de empresa, un ID oficial, un número de cuenta, un número de póliza, un número de teléfono, un agente o un código de agente. Además, si realiza una búsqueda solo por nombre y apellido, se debe especificar una coincidencia exacta. De lo contrario, debe especificar más información (como ciudad y estado o código postal). Si realiza una búsqueda inexacta, debe ingresar al menos tres letras del nombre y del apellido o cinco letras del nombre de empresa.|
 
 Scenario: Consultar polizas solo por código agente
+Meta: @skip
 Given que voy a buscar una poliza
 When la busco por codigo de agente <codigoAgente>
 Then debe mostrar el mensaje <mensaje>
@@ -89,6 +90,7 @@ Examples:
 |C001888888|SURA|
 
 Scenario: Consultar polizas por numero de cuenta  y codigo de agente
+Meta: @skip
 Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta> y codigo de agente <codigoAgente>
 Then se debe visualizar la siguiente información:
@@ -100,6 +102,7 @@ Examples:
 |C001888888|Standard Code 789|
 
 Scenario: Consultar polizas por numero de cuenta, producto y codigo de agente
+Meta: @skip
 Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta>, producto <producto> y codigo de agente <codigoAgente>
 Then se debe visualizar la siguiente información:
@@ -111,6 +114,7 @@ Examples:
 |C001888888|Auto personal|Standard Code 789|
 
 Scenario: Consultar polizas por numero de cuenta que no existe, producto y codigo de agente
+Meta: @skip
 Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta>, producto <producto> y codigo de agente <codigoAgente>
 Then debe mostrar el mensaje <mensaje>
@@ -139,6 +143,7 @@ Examples:
 |C001887456|SURA|La búsqueda no devolvió resultados.|
 
 Scenario: Consultar polizas por numero de cuenta  y codigo de agente no relacionado a la poliza
+Meta: @skip
 Given que voy a buscar una poliza
 When la busco por numero de cuenta <numeroCuenta> y codigo de agente <codigoAgente>
 Then debe mostrar el mensaje <mensaje>
