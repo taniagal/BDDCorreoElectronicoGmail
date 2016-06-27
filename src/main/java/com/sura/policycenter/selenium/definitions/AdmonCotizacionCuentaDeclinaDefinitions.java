@@ -55,7 +55,6 @@ public class AdmonCotizacionCuentaDeclinaDefinitions {
     @Then("el sistema debe mostrarme todas las opciones: $listaCodRazon")
     public void validarOpciones(ExamplesTable listaCodRazon) throws Exception {
         admonCotizacionCuentaSteps.valida_lista_de_razones(listaCodRazon);
-
     }
 
 }

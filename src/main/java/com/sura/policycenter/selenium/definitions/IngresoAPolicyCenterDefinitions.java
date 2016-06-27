@@ -15,7 +15,7 @@ public class IngresoAPolicyCenterDefinitions {
     @Steps
     GuidewireLoginSteps superUsuario;
 
-    GuidewireLoginPages guidewireLoginPages;
+    GuidewireLoginPages guidewireLoginPages = new GuidewireLoginPages();
 
     @Given("Deseo ingresar como super usuario a PolicyCenter")
     public void ingresarComoSuperUsuarioPolicyCenter(){

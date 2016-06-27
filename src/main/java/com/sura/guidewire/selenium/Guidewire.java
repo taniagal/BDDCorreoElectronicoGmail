@@ -15,7 +15,6 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
@@ -78,10 +77,8 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        getDriver().manage().timeouts().pageLoadTimeout(10, SECONDS);
         menu.waitUntilPresent().click();
         waitABit(2500);
-        getDriver().manage().timeouts().pageLoadTimeout(10, SECONDS);
         menu.click();
         waitABit(500);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
