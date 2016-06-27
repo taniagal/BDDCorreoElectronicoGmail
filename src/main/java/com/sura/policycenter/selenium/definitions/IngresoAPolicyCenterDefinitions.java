@@ -18,7 +18,9 @@ public class IngresoAPolicyCenterDefinitions {
     GuidewireLoginPages guidewireLoginPages;
 
     @Given("Deseo ingresar como super usuario a PolicyCenter")
-    public void ingresarComoSuperUsuarioPolicyCenter(){}
+    public void ingresarComoSuperUsuarioPolicyCenter(){
+        //Empty Method
+    }
 
     @When("Digíto usuario $usuario y contraseña $contrasenia, país $pais y enviar las credenciales")
     public void ingresarComoSuperUsuarioPolicyCenter(String usuario, String contrasenia, String pais){

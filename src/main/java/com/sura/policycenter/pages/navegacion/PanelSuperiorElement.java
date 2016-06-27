@@ -1,10 +1,10 @@
 package com.sura.policycenter.pages.navegacion;
 
+import java.io.Serializable;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 
-import java.io.Serializable;
 
 public class PanelSuperiorElement extends PageObject implements Serializable {
 

@@ -10,6 +10,8 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class AdmonCotizacionCuentaNoTomarSteps extends ScenarioSteps {
 
+    private final OpcionesAdminitradorCotizaciones opcionesAdminitradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());
+
     public AdmonCotizacionCuentaNoTomarSteps(Pages pages) {
         super(pages);
     }
@@ -18,7 +20,6 @@ public class AdmonCotizacionCuentaNoTomarSteps extends ScenarioSteps {
         return getPages().currentPageAt(InicioPage.class);
     }
 
-    private OpcionesAdminitradorCotizaciones opcionesAdminitradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());
 
     @Step
     public void seleccionar_opcion_en_acciones() {

@@ -9,6 +9,8 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class AdmonCotizacionCuentaDeclinaSteps extends ScenarioSteps {
 
+    private final OpcionesAdminitradorCotizaciones opcionesAdminitradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());
+
     public AdmonCotizacionCuentaDeclinaSteps(Pages pages) {
         super(pages);
     }
@@ -17,7 +19,6 @@ public class AdmonCotizacionCuentaDeclinaSteps extends ScenarioSteps {
         return getPages().currentPageAt(InicioPage.class);
     }
 
-    private OpcionesAdminitradorCotizaciones opcionesAdminitradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());
 
     @Step
     public void navegar_barra_superior(String numCuenta) {

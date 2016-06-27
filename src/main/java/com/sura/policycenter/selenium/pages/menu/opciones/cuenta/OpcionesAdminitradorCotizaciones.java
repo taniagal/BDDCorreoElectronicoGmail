@@ -2,6 +2,9 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.serinitybdd.util.GwNavegacionUtil;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -14,13 +17,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import static com.thoughtworks.selenium.SeleneseTestBase.assertFalse;
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -359,13 +358,13 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
 
     private List<WebElementFacade> getListaCotizaciones() {
         List<WebElementFacade> numerosCotizacion;
-        numerosCotizacion = withTimeoutOf(1, SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[3]");
+        numerosCotizacion = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[3]");
         return numerosCotizacion;
     }
 
     private List<WebElementFacade> getListaEstado() {
         List<WebElementFacade> numeroEstado;
-        numeroEstado = withTimeoutOf(1, SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[8]");
+        numeroEstado = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[8]");
         return numeroEstado;
     }
 
@@ -430,7 +429,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         for (String tipo : elementosRequeridos) {
             elementosTipoCanalVentas = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'"+tipo+"')]");
             for (WebElementFacade lista : elementosTipoCanalVentas){
-                MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
+                assertThat(tipo, Matchers.containsString(lista.getText()));
             }
         }
     }

@@ -3,13 +3,13 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.constantes.EnumContacto;
 import java.util.List;
-
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
@@ -174,7 +174,7 @@ public class NuevoContactoPage extends Guidewire {
     public void validarCampoPaisDepartamentoYCiudad() {
         if (esTelefonoFijo(this.tipoTelefono.getValue())) {
             actualizar();
-            List<WebElementFacade> tabs = withTimeoutOf(1, SECONDS).findAll(".//*[@id='NewContact:_msgs']//div");
+            List<WebElementFacade> tabs = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='NewContact:_msgs']//div");
             EnumContacto mensajeRequerido = null;
             boolean flag;
             for (WebElementFacade div : tabs) {
