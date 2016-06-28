@@ -1134,6 +1134,7 @@ public class Navegacion extends Guidewire {
     }
 
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
+        waitABit(1000);
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
         $(mnuAdmCotizaciones).click();
         waitABit(800);

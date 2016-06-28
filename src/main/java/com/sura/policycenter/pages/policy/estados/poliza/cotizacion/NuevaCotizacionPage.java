@@ -4,6 +4,8 @@ import com.sura.policycenter.model.AgenteModel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -45,6 +47,7 @@ public class NuevaCotizacionPage extends PageObject {
     public static final String MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'displayfield') and contains(@id,'inputEl')]";
     public static final String MENSAJES_DE_INFORMACION = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div";
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
+
 
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
     public Boolean buscarInputHabilitadoEnElemento(String xpath) {
@@ -93,7 +96,7 @@ public class NuevaCotizacionPage extends PageObject {
 
         try {
             waitFor($(xpath)).shouldBeVisible();
-            elementos = findAll(By.xpath(xpath));
+            elementos = withTimeoutOf(10, TimeUnit.SECONDS).findAll(By.xpath(xpath));
 
         } catch (NoSuchElementException e) {
             LOGGER.error("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
@@ -107,6 +110,7 @@ public class NuevaCotizacionPage extends PageObject {
     }
 
     public Boolean esFechaCotizacionHOY() {
+
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(LABEL_FECHA_POR_DEFECTO)));
         return esFechaPorDefectoHOY(obtenerFechaCotizacionElemento());
     }
@@ -316,7 +320,8 @@ public class NuevaCotizacionPage extends PageObject {
 
         for (WebElementFacade div : divsMensajes) {
             mensajeMostrado = div.getText();
-            if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
+            if (mensajeMostrado.toLowerCase().contains(mensajesApp.split("\n")[0].toLowerCase()) ||
+                    mensajeMostrado.toLowerCase().contains(mensajesApp.split("\n")[1].toLowerCase())) {
                 existeOcurrencia = Boolean.TRUE;
                 break;
             }

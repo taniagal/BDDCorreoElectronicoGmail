@@ -219,7 +219,7 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarTelefonoCelular(String telefonoCelular){
         campoTxtTelefonoCelular.clear();
-        waitABit(300);
+        waitABit(500);
         campoTxtTelefonoCelular.sendKeys(telefonoCelular);
         dtlContact[10]= "+1 "+telefonoCelular;
     }

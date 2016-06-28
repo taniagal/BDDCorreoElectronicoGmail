@@ -39,7 +39,7 @@ And desahabilitar la opcion de acciones para no ser modificada
 
 Examples:
 |numCuenta|razon|numCotizacion|accion|
-|C000777777|Cartera|22223226|Declinada|
+|C000777777|Cartera|22223228|Declinada|
 
 
 

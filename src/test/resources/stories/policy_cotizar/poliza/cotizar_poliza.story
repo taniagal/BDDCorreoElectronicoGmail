@@ -10,6 +10,7 @@ Scenario: Validaciones como precondición en la realización de una cotización 
 Meta:
 #GivenStories: stories/policycenter/ingresar_a_policyCenter.story#{@id1:login_policycenter_su}
 
+
 Given deseo crear nueva cotización buscando por número de cuenta
 
 When digíte el número de cuenta C010478975 de una persona jurídica y digite la tecla Tab para activar la búsqueda
@@ -32,7 +33,7 @@ Then se mostrarán en orden alfabetico los:
 
 Given ya existe una cotización en estado "cotizado" del cliente con número de cuenta C000777777 para el producto Multiriesgo corporativo
 When digíte el número de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la búsqueda
-And he seleccionado en el nombre del agente DIRECTO
+And he seleccionado en el nombre del agente Internal Producer Code - 3
 Then se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable
 Then se mostrarán en orden alfabetico los:
 |productos          |
@@ -55,9 +56,11 @@ Then se mostrarán en orden alfabetico los:
 Then seleccionar nombre de producto Propiedad comercial
 Then deberá observar un mensaje de error: El cliente JORGE PAISA ya tiene una cotización en curso para el producto seleccionado para la oficina OFICINA TUYA
 
+
 Given existe una cuenta/cliente en PEPS como riesgo consultable para el cliente con número de cuenta C000777778
 And deseo crear nueva cotización buscando por número de cuenta
 When digíte el número de cuenta C000777778 de una persona natural y digite la tecla Tab para activar la búsqueda
 When he seleccionado en el nombre del agente DELIMA MEDELLIN
 Then seleccionar nombre de producto Propiedad comercial
-Then deberá observar un mensaje de error: FRANK RAMIREZ ALZATE, El tomador es un riesgo no es estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial.
+Then deberá observar un mensaje de error: FRANK RAMIREZ ALZATE, El tomador es un riesgo no es estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial. |
+FRANK RAMIREZ ALZATE,El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal

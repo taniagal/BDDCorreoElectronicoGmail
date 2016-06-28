@@ -111,7 +111,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     * WebElementFacade ingresados para story Nueva
     * */
 
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:2:SubmissionActions:SubmissionActionsMenuIcon']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:4:SubmissionActions:SubmissionActionsMenuIcon']")
     private WebElementFacade btnAcciones2;
 
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
@@ -140,6 +140,9 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
 
     @FindBy (xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade listaTipoRazonNoTomar;
+
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:4:SubmissionActions:SubmissionActionsMenuItemSet:Decline']")
+    private WebElementFacade itmDeclinarComProp;
 
     @FindBy(id = "DeclineReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msg;
@@ -316,7 +319,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     public void seleccionarAccionesDeclinar() {
         waitFor(btnAcciones2).waitUntilClickable();
         btnAcciones2.click();
-        $(itmDeclinar).click();
+        $(itmDeclinarComProp).click();
     }
 
     public void seleccionarAccionesNoTomar() {
