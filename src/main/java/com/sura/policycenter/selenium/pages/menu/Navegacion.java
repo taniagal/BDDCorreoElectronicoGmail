@@ -418,6 +418,7 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
+        waitABit(1500);
         gw.deployMenu(mnuCuenta);
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
         waitABit(2000);
@@ -1206,7 +1207,7 @@ public class Navegacion extends Guidewire {
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
         waitFor(mnuAdmCotizaciones).shouldBeVisible();
         mnuAdmCotizaciones.click();
-        waitABit(800);
+        waitABit(1500);
         return new OpcionesAdminitradorCotizaciones(getDriver());
     }
 }

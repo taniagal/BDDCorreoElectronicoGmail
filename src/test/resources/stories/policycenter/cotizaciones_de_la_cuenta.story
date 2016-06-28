@@ -13,7 +13,7 @@ And seleccione las acciones de una cotizacion en particular
 Then me debe permitir cambiar el estado de acuerdo a la lista definida. Lista definida: Declinar <declinar>, No Tomar <noTomar>
 
 Examples:
-|numCuenta  |declinar|noTomar   |
+|numCuenta  |declinar|noTomar |
 |C000777777 |Declinar|No tomar|
 
 Scenario: Crear una nueva cotizacion
@@ -85,7 +85,7 @@ Then me debe permitir crear una carta de declinacion por medio de un boton. El l
 
 Examples:
 |numCuenta   |declinado|propiedadComercial |crearCarta                |
-|C000777777  |Declinado|Propiedad comercial|Crear carta de declinación|
+|C000777777  |Declinada|Propiedad comercial|Crear carta de declinación|
 
 Scenario: No permitir crear carta de declinacion
 Given estoy en una cuenta <numCuenta>
