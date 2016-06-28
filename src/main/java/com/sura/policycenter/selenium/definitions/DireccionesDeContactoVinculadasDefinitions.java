@@ -38,14 +38,29 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.seleccionarContacto();
     }
 
+    @When("ingrese a editar la direccion por <direccion>")
+    public void editarDireccion(@Named("direccion") String direccion){
+        direccionesDeContactoVinculadasSteps.editarDireccion(direccion);
+    }
+
+    @When("ingrese a editar la direccion por <direccion> en detalle contacto pestaña direcciones")
+    public void editarDireccionEnPestañaDirecciones(@Named("direccion") String direccion){
+        direccionesDeContactoVinculadasSteps.editarDireccionEnPestaniaDirecciones(direccion);
+    }
+
     @Then("me debe mostrar esta informacion: $resultadoModificacionDireccion")
     public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion){
         direccionesDeContactoVinculadasSteps.validarInformacionContacto(resultadoModificacionDireccion);
     }
 
-    @Then("me debe validar la informacion de los contactos que usan esa direccion")
-    public void validarInformacionContacto(){
-        direccionesDeContactoVinculadasSteps.validarInfoContactosAsociadosADireccion();
+    @Then("me debe validar la informacion de los contactos que usan esa direccion: $contactosDireccionVinculada")
+    public void validarInfoContactosAsociadosADireccion(ExamplesTable contactosDireccionVinculada){
+        direccionesDeContactoVinculadasSteps.validarInfoContactosAsociadosADireccion(contactosDireccionVinculada);
+    }
+
+    @Then("el campo direccion no debe permitir ingresar mas de 200 caracteres <direccionOk>")
+    public void validarLongitudDelCampoDireccion(@Named("direccionOk") String direccionOk){
+        direccionesDeContactoVinculadasSteps.validarLongitudDelCampoDireccion(direccionOk);
     }
 
 }

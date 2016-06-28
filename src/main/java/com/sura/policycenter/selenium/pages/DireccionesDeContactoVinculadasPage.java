@@ -86,7 +86,22 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade btnCancelar;
     @FindBy(xpath=".//*[@id='LinkedAddressEditPopup:LinkedAddressContactsLV-body']")
     private WebElementFacade tabla;
+    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV-body']")
+    private WebElementFacade tablaContactos;
+    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
+    private WebElementFacade campoDireccionDetalleDirecciones;
+    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
+    private WebElementFacade campoDireccionDetalle;
+    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
+    private WebElementFacade botonActualizarContacto;
+    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesCardTab-btnInnerEl']")
+    private WebElementFacade pestanaDirecciones;
+    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:__crumb__']")
+    private WebElementFacade linkVolverAContacto;
+    @FindBy(xpath = "//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptarMensaje;
 
+    WebElementFacade contactoAEditar;
 
     public void buscarCuenta(String numeroCuenta) {
         btnBuscar.click();
@@ -182,24 +197,55 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         }
     }
 
-    public void validarInfoContactosAsociadosADireccion() {
-        String[] listEstadosCompletos = {"Comprometida", "No tomado", "Retirado", "Vencida", "Rechazado",
-                "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida"};
-        String[] listEstadosAbiertos = {"Cotizado", "Borrador", "Nuevo", "Cotización", "Vinculación contractual",
-                "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
-        String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);
-
+    public void validarInfoContactosAsociadosADireccion(ExamplesTable contactosDireccionVinculada) {
+        Map<String, String> contactosVinculados = contactosDireccionVinculada.getRows().get(0);
         List<WebElement> allRows = tabla.findElements(By.tagName("tr"));
-        for (WebElement row : allRows) {
-            List<WebElement> cells = row.findElements(By.tagName("td"));
-            String estadoStr = cells.get(5).getText();
-            if(("Completo").equals("")){
-                MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosCompletos));
-            }else if (("Abierto").equals("")){
-                MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosAbiertos));
-            }else{
-                MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosTodos));
-            }
+        List<WebElement> cells;
+        for (int i = 0; i < contactosVinculados.size()-1; i++){
+            cells = allRows.get(i).findElements(By.tagName("td"));
+            contactosVinculados = contactosDireccionVinculada.getRows().get(i);
+            MatcherAssert.assertThat(cells.get(0).getText(), Is.is(Matchers.equalTo(contactosVinculados.get("nombre"))));
+            MatcherAssert.assertThat(cells.get(1).getText(), Is.is(Matchers.equalTo(contactosVinculados.get("primaria"))));
+            MatcherAssert.assertThat(cells.get(2).getText().replace(" ", ""), Is.is(Matchers.equalTo(contactosVinculados.get("telefono"))));
+            MatcherAssert.assertThat(cells.get(3).getText(), Is.is(Matchers.notNullValue()));
         }
+    }
+
+    public void editarDireccion(String direccion) {
+        contactoAEditar = findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:"+encontrarContacto().toString()+":Name']");
+        contactoAEditar.click();
+        campoDireccionDetalle.sendKeys(direccion);
+        botonActualizarContacto.click();
+    }
+
+    public void editarDireccionEnPestaniaDirecciones(String direccion) {
+        contactoAEditar = findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:"+encontrarContacto().toString()+":Name']");
+        contactoAEditar.click();
+        pestanaDirecciones.waitUntilPresent().click();
+        campoDireccionDetalleDirecciones.sendKeys(direccion);
+        botonActualizarContacto.click();
+    }
+
+    public void validarLongitudDelCampoDireccion(String direccionOk) {
+        contactoAEditar = findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:"+encontrarContacto().toString()+":Name']");
+        contactoAEditar.click();
+        Integer longitudCampo = campoDireccionDetalle.getValue().length();
+        MatcherAssert.assertThat(longitudCampo.toString(), Is.is(Matchers.equalTo(direccionOk)));
+        linkVolverAContacto.click();
+        botonAceptarMensaje.waitUntilPresent().click();
+    }
+
+    public Integer encontrarContacto(){
+        tablaContactos.waitUntilVisible();
+        Integer filaBoton = 0;
+        List<WebElement> filas = tablaContactos.findElements(By.tagName("tr"));
+        for (WebElement row : filas) {
+            List<WebElement> columna = row.findElements(By.tagName("td"));
+            if (columna.get(2).getText().equals("RICARDO GIRALDO")){
+                return filaBoton;
+            }
+            filaBoton++;
+        }
+        return filaBoton;
     }
 }

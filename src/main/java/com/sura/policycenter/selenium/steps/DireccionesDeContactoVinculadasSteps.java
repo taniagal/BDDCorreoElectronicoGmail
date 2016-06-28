@@ -7,37 +7,49 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
 
-    private final DireccionesDeContactoVinculadasPage direccionesDeContactoVinculadas = new DireccionesDeContactoVinculadasPage(getDriver());
+    DireccionesDeContactoVinculadasPage direccionesDeContactoVinculadasPage;
 
     public DireccionesDeContactoVinculadasSteps(Pages pages) {
         super(pages);
     }
 
     public void buscarCuenta(String numeroCuenta) {
-        direccionesDeContactoVinculadas.buscarCuenta(numeroCuenta);
+        direccionesDeContactoVinculadasPage.buscarCuenta(numeroCuenta);
     }
 
     public void vincularDirecciones() {
-        direccionesDeContactoVinculadas.vincularDirecciones();
+        direccionesDeContactoVinculadasPage.vincularDirecciones();
     }
 
     public void validarInformacion(ExamplesTable resultadoModificacionDireccion) {
-        direccionesDeContactoVinculadas.validarInformacion(resultadoModificacionDireccion);
+        direccionesDeContactoVinculadasPage.validarInformacion(resultadoModificacionDireccion);
     }
 
     public void filtrarPorInfoObligatoria() {
-        direccionesDeContactoVinculadas.filtrarPorInfoObligatoria();
+        direccionesDeContactoVinculadasPage.filtrarPorInfoObligatoria();
     }
 
     public void seleccionarContacto() {
-        direccionesDeContactoVinculadas.seleccionarContacto();
+        direccionesDeContactoVinculadasPage.seleccionarContacto();
     }
 
     public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion) {
-        direccionesDeContactoVinculadas.validarInformacionContacto(resultadoModificacionDireccion);
+        direccionesDeContactoVinculadasPage.validarInformacionContacto(resultadoModificacionDireccion);
     }
 
-    public void validarInfoContactosAsociadosADireccion() {
-        direccionesDeContactoVinculadas.validarInfoContactosAsociadosADireccion();
+    public void validarInfoContactosAsociadosADireccion(ExamplesTable contactosDireccionVinculada) {
+        direccionesDeContactoVinculadasPage.validarInfoContactosAsociadosADireccion(contactosDireccionVinculada);
+    }
+
+    public void editarDireccion(String direccion) {
+        direccionesDeContactoVinculadasPage.editarDireccion(direccion);
+    }
+
+    public void validarLongitudDelCampoDireccion(String direccionOk) {
+        direccionesDeContactoVinculadasPage.validarLongitudDelCampoDireccion(direccionOk);
+    }
+
+    public void editarDireccionEnPestaniaDirecciones(String direccion) {
+        direccionesDeContactoVinculadasPage.editarDireccionEnPestaniaDirecciones(direccion);
     }
 }
