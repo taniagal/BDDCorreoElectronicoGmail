@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.steps.DireccionesDeContactoVinculadasSteps;
-import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -42,6 +41,11 @@ public class DireccionesDeContactoVinculadasDefinitions {
     @Then("me debe mostrar esta informacion: $resultadoModificacionDireccion")
     public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion){
         direccionesDeContactoVinculadasSteps.validarInformacionContacto(resultadoModificacionDireccion);
+    }
+
+    @Then("me debe validar la informacion de los contactos que usan esa direccion")
+    public void validarInformacionContacto(){
+        direccionesDeContactoVinculadasSteps.validarInfoContactosAsociadosADireccion();
     }
 
 }

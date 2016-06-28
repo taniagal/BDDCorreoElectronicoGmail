@@ -1,7 +1,11 @@
 package com.sura.policycenter.selenium.pages;
+import java.util.List;
 import java.util.Map;
+
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.apache.commons.lang3.ArrayUtils;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -9,10 +13,9 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
-import javax.swing.*;
 
 public class DireccionesDeContactoVinculadasPage extends PageObject {
 
@@ -79,14 +82,22 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade txtTipoDireccionContacto;
     @FindBy(xpath=".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressDescription-bodyEl']")
     private WebElementFacade txtDescripcionContacto;
+    @FindBy(xpath=".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']")
+    private WebElementFacade btnCancelar;
+    @FindBy(xpath=".//*[@id='LinkedAddressEditPopup:LinkedAddressContactsLV-body']")
+    private WebElementFacade tabla;
 
 
     public void buscarCuenta(String numeroCuenta) {
         btnBuscar.click();
+        waitABit(2000);
         btnCuentas.click();
+        waitABit(2000);
         txtNumeroCuenta.sendKeys(numeroCuenta);
         btnBuscarCuenta.click();
+        waitABit(2000);
         grdNumeroCuenta.click();
+        waitABit(2000);
         mnuContactos.click();
     }
 
@@ -144,7 +155,9 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
     public void seleccionarContacto() {
         grdContacto3.click();
+        waitABit(2000);
         btnAsociarDireccion.click();
+        waitABit(2000);
         btnEditarDireccion.click();
     }
 
@@ -159,13 +172,34 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
             MatcherAssert.assertThat(this.txtDepartamentoContacto.getText(), Is.is(Matchers.equalTo(exampleTable.get("departamento"))));
             MatcherAssert.assertThat(this.txtCiudadContacto.getText(), Is.is(Matchers.equalTo(exampleTable.get("ciudad"))));
             MatcherAssert.assertThat(this.txtDireccionContacto.getText(), Is.is(Matchers.equalTo(exampleTable.get("direccion"))));
-            JOptionPane.showMessageDialog(null, this.txtCodigoPostalContacto.isPresent());
             MatcherAssert.assertThat(this.txtCodigoPostalContacto.getText(), Is.is(Matchers.equalTo(exampleTable.get("codigoPostal"))));
             MatcherAssert.assertThat(this.txtTipoDireccionContacto.getText(), Matchers.containsString(exampleTable.get("tipoDeDireccion")));
             MatcherAssert.assertThat(this.txtDescripcionContacto.getText(), Matchers.containsString(exampleTable.get("descripcion")));
+            btnCancelar.click();
 
         }catch (StaleElementReferenceException elemento){
             elemento.printStackTrace();
+        }
+    }
+
+    public void validarInfoContactosAsociadosADireccion() {
+        String[] listEstadosCompletos = {"Comprometida", "No tomado", "Retirado", "Vencida", "Rechazado",
+                "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida"};
+        String[] listEstadosAbiertos = {"Cotizado", "Borrador", "Nuevo", "Cotización", "Vinculación contractual",
+                "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
+        String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);
+
+        List<WebElement> allRows = tabla.findElements(By.tagName("tr"));
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            String estadoStr = cells.get(5).getText();
+            if(("Completo").equals("")){
+                MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosCompletos));
+            }else if (("Abierto").equals("")){
+                MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosAbiertos));
+            }else{
+                MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosTodos));
+            }
         }
     }
 }

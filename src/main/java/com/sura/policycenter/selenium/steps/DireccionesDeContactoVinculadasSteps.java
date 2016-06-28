@@ -36,4 +36,8 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
     public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion) {
         direccionesDeContactoVinculadas.validarInformacionContacto(resultadoModificacionDireccion);
     }
+
+    public void validarInfoContactosAsociadosADireccion() {
+        direccionesDeContactoVinculadas.validarInfoContactosAsociadosADireccion();
+    }
 }

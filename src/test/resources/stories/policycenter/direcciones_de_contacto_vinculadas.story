@@ -26,6 +26,14 @@ Examples:
 |numeroCuenta|
 |C000484848|
 
+Scenario: visualizar los contactos que hacen uso de la direccion de otro contacto
+Given que me encuentro en los contactos de una cuenta <numeroCuenta>
+When quiera actualizar la direccion de un contacto que tiene otros contactos que la usan
+Then me debe validar la informacion de los contactos que usan esa direccion
+Examples:
+|numeroCuenta|
+|C000484848|
+
 
 
 
