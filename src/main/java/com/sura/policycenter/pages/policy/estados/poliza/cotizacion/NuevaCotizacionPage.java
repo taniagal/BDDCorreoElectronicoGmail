@@ -46,6 +46,7 @@ public class NuevaCotizacionPage extends PageObject {
     public static final String MENSAJES_DE_INFORMACION = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div";
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
 
+
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
     public Boolean buscarInputHabilitadoEnElemento(String xpath) {
         WebElementFacade input = null;
@@ -316,7 +317,8 @@ public class NuevaCotizacionPage extends PageObject {
 
         for (WebElementFacade div : divsMensajes) {
             mensajeMostrado = div.getText();
-            if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
+            if (mensajeMostrado.toLowerCase().contains(mensajesApp.split("\n")[0].toLowerCase()) ||
+                    mensajeMostrado.toLowerCase().contains(mensajesApp.split("\n")[1].toLowerCase())) {
                 existeOcurrencia = Boolean.TRUE;
                 break;
             }
