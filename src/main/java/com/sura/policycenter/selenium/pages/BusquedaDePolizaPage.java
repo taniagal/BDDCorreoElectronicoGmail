@@ -12,6 +12,7 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -68,124 +69,148 @@ public class BusquedaDePolizaPage extends PageObject{
         waitForAnyTextToAppear("Buscar", "Búsqueda");
         if(!tituloBuscarPoliza.isVisible()){
             menuBuscarPoliza.click();
-            waitForTextToAppear("Buscar Póliza");
+            waitForTextToAppear("Buscar pólizas");
         }
     }
 
     public void buscarPolizaPorNumeroDePoliza(String buscarNumeroPoliza) {
         this.limpiarCampos();
-        txtNumeroPoliza.sendKeys(buscarNumeroPoliza);
-        btnBuscar.click();
+        try {
+            txtNumeroPoliza.sendKeys(buscarNumeroPoliza);
+            btnBuscar.click();
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
     public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda) {
-        tablaResultados.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilPresent();
-        List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
-        Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
-        MatcherAssert.assertThat(grdNumeroPoliza.getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
-        MatcherAssert.assertThat(grdAseguradoNombrado.getText(), Is.is(Matchers.equalTo(sampleData.get("nombreAsegurado"))));
-        MatcherAssert.assertThat(grdProducto.getText(), Is.is(Matchers.equalTo(sampleData.get("producto"))));
-        MatcherAssert.assertThat(grdEstado.getText(), Is.is(Matchers.equalTo(sampleData.get("estado"))));
-        MatcherAssert.assertThat(grdFechaVigencia.getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(grdFechaExpiracion.getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(grdAgente.getText(), Is.is(Matchers.equalTo(sampleData.get("agente"))));
+        try{
+            tablaResultados.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilPresent();
+            List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
+            Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
+            MatcherAssert.assertThat(grdNumeroPoliza.getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
+            MatcherAssert.assertThat(grdAseguradoNombrado.getText(), Is.is(Matchers.equalTo(sampleData.get("nombreAsegurado"))));
+            MatcherAssert.assertThat(grdProducto.getText(), Is.is(Matchers.equalTo(sampleData.get("producto"))));
+            MatcherAssert.assertThat(grdEstado.getText(), Is.is(Matchers.equalTo(sampleData.get("estado"))));
+            MatcherAssert.assertThat(grdFechaVigencia.getText(), Is.is(Matchers.notNullValue()));
+            MatcherAssert.assertThat(grdFechaExpiracion.getText(), Is.is(Matchers.notNullValue()));
+            MatcherAssert.assertThat(grdAgente.getText(), Is.is(Matchers.equalTo(sampleData.get("agente"))));
 
-        for (WebElement row : allRows) {
-            List<WebElement> cells = row.findElements(By.tagName("td"));
-            MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroCuenta"))));
+            for (WebElement row : allRows) {
+                List<WebElement> cells = row.findElements(By.tagName("td"));
+                MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroCuenta"))));
+            }
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
         }
     }
 
     public void limpiarCampos(){
-/*        waitABit(2000);
-        txtNumeroPoliza.waitUntilClickable();
-        txtNumeroPoliza.clear();
-        txtNumeroCuenta.waitUntilClickable();
-        txtNumeroCuenta.clear();
-        txtAgente.clear();
-        txtCodigoAgente.clear();
-        waitABit(2000);*/
-        botonRestablecer.click();
+        try{
+            botonRestablecer.waitUntilPresent().click();
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
         waitABit(1000);
     }
 
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
         this.limpiarCampos();
-        txtNumeroCuenta.sendKeys(numeroCuenta);
-        btnBuscar.waitUntilClickable();
-        btnBuscar.click();
+        try {
+            txtNumeroCuenta.sendKeys(numeroCuenta);
+            btnBuscar.waitUntilClickable();
+            btnBuscar.click();
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
 
     public void validarMensajeDeConsultaSinResultados(String mensaje) {
-        msjValidacion.waitUntilVisible();
+        msjValidacion.waitUntilPresent();
         MatcherAssert.assertThat(msjValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
-   /* public void limpiarCampoProducto(){
-        txtProducto.waitUntilClickable();
-        txtProducto.clear();
-        txtProducto.sendKeys("<ninguno>");
-        txtProducto.sendKeys(Keys.ENTER);
-    }
-*/
     public void buscarPolizaPorProducto(String producto) {
         this.limpiarCampos();
-        txtProducto.waitUntilClickable();
-        txtProducto.clear();
-        txtProducto.sendKeys(producto);
-        txtProducto.sendKeys(Keys.ENTER);
-        waitFor(ExpectedConditions.elementToBeClickable(btnBuscar));
-        btnBuscar.click();
+        try {
+            txtProducto.waitUntilClickable();
+            txtProducto.clear();
+            txtProducto.sendKeys(producto);
+            txtProducto.sendKeys(Keys.ENTER);
+            waitFor(ExpectedConditions.elementToBeClickable(btnBuscar));
+            btnBuscar.click();
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
     public void buscarPolizaPorAgente(String agente) {
         this.limpiarCampos();
-//        this.limpiarCampoProducto();
-        txtAgente.sendKeys(agente);
-        btnBuscar.click();
+        try {
+            txtAgente.sendKeys(agente);
+            btnBuscar.click();
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
     public void buscarPolizaPorCodigoAgente(String codigoAgente) {
         this.limpiarCampos();
-//        this.limpiarCampoProducto();
-        txtCodigoAgente.sendKeys(codigoAgente);
-        btnBuscar.click();
+        try{
+            txtCodigoAgente.sendKeys(codigoAgente);
+            btnBuscar.click();
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
     public void buscarPolizaPorNumeroCuentaYProducto(String numeroCuenta, String producto) {
         this.limpiarCampos();
-        txtNumeroCuenta.sendKeys(numeroCuenta);
-        txtProducto.clear();
-        txtProducto.sendKeys(producto);
-        txtProducto.sendKeys(Keys.ENTER);
-        btnBuscar.click();
+        try {
+            txtNumeroCuenta.sendKeys(numeroCuenta);
+            txtProducto.clear();
+            txtProducto.sendKeys(producto);
+            txtProducto.sendKeys(Keys.ENTER);
+            btnBuscar.click();
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
     public void buscarPorNumerocuentaYAgente(String numeroCuenta, String agente) {
         this.limpiarCampos();
-//        this.limpiarCampoProducto();
-        txtNumeroCuenta.sendKeys(numeroCuenta);
-//        waitABit(2000);
-        txtAgente.sendKeys(agente);
-        btnBuscar.click();
+        try {
+            txtNumeroCuenta.sendKeys(numeroCuenta);
+            txtAgente.sendKeys(agente);
+            btnBuscar.click();
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
     public void buscarPolizaPorNumeroCuentaYCodigoAgente(String numeroCuenta, String codigoAgente) {
         this.limpiarCampos();
-//        this.limpiarCampoProducto();
-        txtNumeroCuenta.sendKeys(numeroCuenta);
-        txtCodigoAgente.sendKeys(codigoAgente);
-        btnBuscar.click();
+        try{
+            txtNumeroCuenta.sendKeys(numeroCuenta);
+            txtCodigoAgente.sendKeys(codigoAgente);
+            btnBuscar.click();
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
     public void buscarPolizaPorNumeroCuentaYDosOpcionales(String numeroCuenta, String producto, String codigoAgente) {
         this.limpiarCampos();
-        txtNumeroCuenta.sendKeys(numeroCuenta);
-        txtProducto.clear();
-        txtProducto.sendKeys(producto);
-        txtProducto.sendKeys(Keys.ENTER);
-        txtCodigoAgente.sendKeys(codigoAgente);
-        btnBuscar.click();
+        try{
+            txtNumeroCuenta.sendKeys(numeroCuenta);
+            txtProducto.clear();
+            txtProducto.sendKeys(producto);
+            txtProducto.sendKeys(Keys.ENTER);
+            txtCodigoAgente.sendKeys(codigoAgente);
+            btnBuscar.click();
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 }
