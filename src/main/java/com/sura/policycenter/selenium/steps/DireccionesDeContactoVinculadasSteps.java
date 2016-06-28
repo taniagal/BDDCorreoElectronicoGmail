@@ -21,8 +21,8 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
         direccionesDeContactoVinculadas.vincularDirecciones();
     }
 
-    public void validarInformacion(ExamplesTable resultadoFiltroActividades) {
-        direccionesDeContactoVinculadas.validarInformacion(resultadoFiltroActividades);
+    public void validarInformacion(ExamplesTable resultadoModificacionDireccion) {
+        direccionesDeContactoVinculadas.validarInformacion(resultadoModificacionDireccion);
     }
 
     public void filtrarPorInfoObligatoria() {
@@ -31,5 +31,9 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
 
     public void seleccionarContacto() {
         direccionesDeContactoVinculadas.seleccionarContacto();
+    }
+
+    public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion) {
+        direccionesDeContactoVinculadas.validarInformacionContacto(resultadoModificacionDireccion);
     }
 }

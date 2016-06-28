@@ -19,9 +19,9 @@ Examples:
 Scenario: actualizar direccion solo ingresando campos obligatorios
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When ingrese solo informacion obligatoria
-Then me debe mostrar la siguiente informacion:
-|pais|departamento|ciudad|direccion|codigoPostal|tipoDeDireccion|descripcion|
-|Estados Unidos|California|SAN FRANCISCO|CRA 65 # 48-162||Vivienda||
+Then me debe mostrar esta informacion:
+|pais          |departamento|ciudad       |direccion      |codigoPostal|tipoDeDireccion|descripcion|
+|Estados Unidos|California  |SAN FRANCISCO|CRA 65 # 48-162|            |Vivienda       |           |
 Examples:
 |numeroCuenta|
 |C000484848|

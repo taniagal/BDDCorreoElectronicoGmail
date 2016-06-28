@@ -1,16 +1,18 @@
 package com.sura.policycenter.selenium.pages;
-
+import java.util.Map;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.Map;
+import javax.swing.*;
 
 public class DireccionesDeContactoVinculadasPage extends PageObject {
 
@@ -63,6 +65,20 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade txtDescripcion;
     @FindBy(xpath=".//*[@id='LinkedAddressEditPopup:UpdateAllButton-btnInnerEl']")
     private WebElementFacade btnActualizarDireccionesLigadas;
+    @FindBy(xpath=".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
+    private WebElementFacade txtPaisContacto;
+    @FindBy(xpath=".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    private WebElementFacade txtDepartamentoContacto;
+    @FindBy(xpath=".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
+    private WebElementFacade txtCiudadContacto;
+    @FindBy(xpath=".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
+    private WebElementFacade txtDireccionContacto;
+    @FindBy(xpath=".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-bodyEl']")
+    private WebElementFacade txtCodigoPostalContacto;
+    @FindBy(xpath=".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressType-inputEl']")
+    private WebElementFacade txtTipoDireccionContacto;
+    @FindBy(xpath=".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressDescription-bodyEl']")
+    private WebElementFacade txtDescripcionContacto;
 
 
     public void buscarCuenta(String numeroCuenta) {
@@ -95,21 +111,22 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
     public void vincularDireccionAContacto(WebElementFacade contacto) {
         contacto.click();
-        waitABit(3000);
-        btnAsociarDireccion.click();
-        waitABit(3000);
-        btnSeleccionar.click();
-        waitABit(3000);
-        direccionContacto.click();
-        waitABit(3000);
+        Actions actions = new Actions(getDriver());
+        btnAsociarDireccion.waitUntilPresent().click();
+        waitABit(300);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        waitABit(300);
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        waitABit(300);
+        actions.sendKeys(Keys.ENTER).build().perform();
+        waitABit(1000);
         btnActualizar.click();
-        waitABit(3000);
+        contacto.waitUntilPresent();
     }
 
-    public void validarInformacion(ExamplesTable resultadoFiltroActividades) {
+    public void validarInformacion(ExamplesTable resultadoModificacionDireccion) {
         waitABit(1000);
-        Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
-
+        Map<String, String> exampleTable = resultadoModificacionDireccion.getRows().get(0);
         MatcherAssert.assertThat(this.txtPais.getValue(), Is.is(Matchers.equalTo(exampleTable.get("pais"))));
         MatcherAssert.assertThat(this.txtDepartamento.getValue(), Is.is(Matchers.equalTo(exampleTable.get("departamento"))));
         MatcherAssert.assertThat(this.txtCiudad.getValue(), Is.is(Matchers.equalTo(exampleTable.get("ciudad"))));
@@ -129,5 +146,26 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         grdContacto3.click();
         btnAsociarDireccion.click();
         btnEditarDireccion.click();
+    }
+
+    public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion) {
+        waitABit(1000);
+
+        try {
+            this.txtCodigoPostalContacto.waitUntilPresent();
+            Map<String, String> exampleTable = resultadoModificacionDireccion.getRows().get(0);
+
+            MatcherAssert.assertThat(this.txtPaisContacto.getText(), Is.is(Matchers.equalTo(exampleTable.get("pais"))));
+            MatcherAssert.assertThat(this.txtDepartamentoContacto.getText(), Is.is(Matchers.equalTo(exampleTable.get("departamento"))));
+            MatcherAssert.assertThat(this.txtCiudadContacto.getText(), Is.is(Matchers.equalTo(exampleTable.get("ciudad"))));
+            MatcherAssert.assertThat(this.txtDireccionContacto.getText(), Is.is(Matchers.equalTo(exampleTable.get("direccion"))));
+            JOptionPane.showMessageDialog(null, this.txtCodigoPostalContacto.isPresent());
+            MatcherAssert.assertThat(this.txtCodigoPostalContacto.getText(), Is.is(Matchers.equalTo(exampleTable.get("codigoPostal"))));
+            MatcherAssert.assertThat(this.txtTipoDireccionContacto.getText(), Matchers.containsString(exampleTable.get("tipoDeDireccion")));
+            MatcherAssert.assertThat(this.txtDescripcionContacto.getText(), Matchers.containsString(exampleTable.get("descripcion")));
+
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 }

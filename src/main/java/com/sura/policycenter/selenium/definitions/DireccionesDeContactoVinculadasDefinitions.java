@@ -24,9 +24,9 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.vincularDirecciones();
     }
 
-    @Then("me debe mostrar la siguiente informacion: $resultadoFiltroActividades")
-    public void validarInformacion(ExamplesTable resultadoFiltroActividades){
-        direccionesDeContactoVinculadasSteps.validarInformacion(resultadoFiltroActividades);
+    @Then("me debe mostrar la siguiente informacion: $resultadoModificacionDireccion")
+    public void validarInformacion(ExamplesTable resultadoModificacionDireccion){
+        direccionesDeContactoVinculadasSteps.validarInformacion(resultadoModificacionDireccion);
     }
 
     @When("ingrese solo informacion obligatoria")
@@ -37,6 +37,11 @@ public class DireccionesDeContactoVinculadasDefinitions {
     @When("quiera actualizar la direccion de un contacto que tiene otros contactos que la usan")
     public void seleccionarContacto() {
         direccionesDeContactoVinculadasSteps.seleccionarContacto();
+    }
+
+    @Then("me debe mostrar esta informacion: $resultadoModificacionDireccion")
+    public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion){
+        direccionesDeContactoVinculadasSteps.validarInformacionContacto(resultadoModificacionDireccion);
     }
 
 }
