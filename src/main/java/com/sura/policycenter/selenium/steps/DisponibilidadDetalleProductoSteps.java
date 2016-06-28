@@ -7,11 +7,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
 
-    private final DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage = new DisponibilidadDetalleProductoPage(getDriver());
-
-    public DisponibilidadDetalleProductoSteps(Pages pages){
-        super(pages);
-    }
+    DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage;
 
     public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws Exception {
         disponibilidadDetalleProductoPage.validarTipoCanalVentas(tipoCanal);

@@ -21,8 +21,8 @@ Then tipo de canal ventas debe contener los valores
 |Sufi|
 
 Examples:
-|numCuenta|organizacion
-|C000888888|Bancolombia
+|numCuenta|organizacion|
+|C000888888|Bancolombia|
 
 Scenario: Filtrar Tipo de Producto por canal
 Given Estoy buscando una cuenta <numCuenta>
@@ -36,8 +36,8 @@ Then PA tipo de poliza debe contener los valores
 
 Examples:
 
-|numCuenta|organizacion|tipoCanal
-|C000888888|Bancolombia|Renting
+|numCuenta|organizacion|tipoCanal|
+|C000888888|Bancolombia|Renting|
 
 Scenario: Al cambiar filtro de organizacion se cambia canal y tipo de poliza
 Given Estoy buscando una cuenta <numCuenta>
@@ -52,8 +52,8 @@ And PA tipo de poliza debe tener el valor vacio
 
 Examples:
 
-|numCuenta|organizacion|tipoCanal|tipoPoliza|otraOrganizacion
-|C000888888|Bancolombia|Renting|Comercial - Personal Fleet|Exito
+|numCuenta|organizacion|tipoCanal|tipoPoliza|otraOrganizacion|
+|C000888888|Bancolombia|Renting|Comercial - Personal Fleet|Exito|
 
 Scenario: Al cambiar filtro de canal se cambia tipo de poliza
 Given Estoy buscando una cuenta <numCuenta>
@@ -67,5 +67,5 @@ Then PA tipo de poliza debe tener el valor vacio
 
 Examples:
 
-|numCuenta|organizacion|tipoCanal|tipoPoliza|otroTipoCanal
-|C000888888|Bancolombia|Renting|Comercial - Personal Fleet|Leasing
+|numCuenta|organizacion|tipoCanal|tipoPoliza|otroTipoCanal|
+|C000888888|Bancolombia|Renting|Comercial - Personal Fleet|Leasing|
