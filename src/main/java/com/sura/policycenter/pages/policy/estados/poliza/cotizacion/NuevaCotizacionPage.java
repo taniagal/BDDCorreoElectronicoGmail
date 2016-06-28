@@ -4,6 +4,8 @@ import com.sura.policycenter.model.AgenteModel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -94,7 +96,7 @@ public class NuevaCotizacionPage extends PageObject {
 
         try {
             waitFor($(xpath)).shouldBeVisible();
-            elementos = findAll(By.xpath(xpath));
+            elementos = withTimeoutOf(10, TimeUnit.SECONDS).findAll(By.xpath(xpath));
 
         } catch (NoSuchElementException e) {
             LOGGER.error("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
@@ -108,6 +110,7 @@ public class NuevaCotizacionPage extends PageObject {
     }
 
     public Boolean esFechaCotizacionHOY() {
+
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(LABEL_FECHA_POR_DEFECTO)));
         return esFechaPorDefectoHOY(obtenerFechaCotizacionElemento());
     }
