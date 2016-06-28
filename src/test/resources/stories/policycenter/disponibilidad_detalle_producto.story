@@ -1,4 +1,8 @@
+Disponibilidad Detalle Producto
+
 Meta:
+
+@issue #SUGWUSC-14951
 
 Narrative:
 Como usuario de policy center
