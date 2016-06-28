@@ -48,6 +48,11 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.editarDireccionEnPestaniaDirecciones(direccion);
     }
 
+    @When("ingrese a editar la direccion en ingrese el pais <pais>")
+    public void editarCampoPais(@Named("pais") String pais){
+
+    }
+
     @Then("me debe mostrar esta informacion: $resultadoModificacionDireccion")
     public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion){
         direccionesDeContactoVinculadasSteps.validarInformacionContacto(resultadoModificacionDireccion);
@@ -62,5 +67,11 @@ public class DireccionesDeContactoVinculadasDefinitions {
     public void validarLongitudDelCampoDireccion(@Named("direccionOk") String direccionOk){
         direccionesDeContactoVinculadasSteps.validarLongitudDelCampoDireccion(direccionOk);
     }
+
+    @Then("el campo departamento debe tener el valor <departamento>")
+    public void validarElCampoDepartamento(@Named("departamento")String departamento){}
+
+    @Then("el campo ciudad debe tener el valor <ciudad>")
+    public void validarElCampoCiudad(@Named("ciudad")String ciudad){}
 
 }

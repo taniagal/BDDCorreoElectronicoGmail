@@ -24,6 +24,17 @@ Examples:
 |numeroCuenta|direccion|direccionOk|
 |C000484848|CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162 CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162162CRA 65 # 48-162OT|200|
 
+Scenario: Edicion del campo Pais, Departamento y Ciudad
+GivenStories: stories/policycenter/login_policy.story
+Given que me encuentro en los contactos de una cuenta <numeroCuenta>
+When ingrese a editar la direccion en ingrese el pais <pais>
+Then el campo departamento debe tener el valor <departamento>
+And el campo ciudad debe tener el valor <ciudad>
+
+Examples:
+|numeroCuenta|pais|departamento|ciudad|
+|C000484848|Colombia|<ninguno>|<ninguno>|
+
 Scenario: consultar direccion de un contacto que tiene una direccion asociada a otro contacto
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When este en una direccion que esta asociada a otro contacto y la desee editar
