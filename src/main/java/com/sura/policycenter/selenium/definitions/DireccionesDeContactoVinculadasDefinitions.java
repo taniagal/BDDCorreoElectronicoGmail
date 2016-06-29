@@ -48,9 +48,39 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.editarDireccionEnPestaniaDirecciones(direccion);
     }
 
-    @When("ingrese a editar la direccion en ingrese el pais <pais>")
+    @When("ingrese a editar la direccion e ingrese el pais <pais>")
     public void editarCampoPais(@Named("pais") String pais){
         direccionesDeContactoVinculadasSteps.editarDireccionCampoPais(pais);
+    }
+
+    @When("seleccione el contacto a editar <nombreContacto>")
+    public void seleccionarContactoAEditar(@Named("nombreContacto") String nombreContacto){
+        direccionesDeContactoVinculadasSteps.seleccionarContactoAEditar(nombreContacto);
+    }
+
+    @When("ingrese a editar la direccion e ingrese el departamento <departamento>")
+    public void editarCampoDepartamento(@Named("departamento") String departamento){
+        direccionesDeContactoVinculadasSteps.editarCampoDepartamento(departamento);
+    }
+
+    @When("ingrese a editar la direccion e ingrese la ciudad <ciudad>")
+    public void editarCampoCiudad(@Named("ciudad") String ciudad){
+        direccionesDeContactoVinculadasSteps.editarCampoCiudad(ciudad);
+    }
+
+    @When("seleccione la opcion para editar la direccion")
+    public void seleccionarEditarDireccionVinculada(){
+        direccionesDeContactoVinculadasSteps.seleccionarEditarDireccionVinculada();
+    }
+
+    @When("ingrese a editar la direccion por <direccion> en la ventana de contactos vinculados")
+    public void editarDireccionVinculadaDelContacto(@Named("direccion") String direccion){
+        direccionesDeContactoVinculadasSteps.editarDireccionVinculadaDelContacto(direccion);
+    }
+
+    @When("ingrese a editar la direccion por <direccion> en la ventana de contactos vinculados y desligue la direccion")
+    public void editarDireccionYDesligar(@Named("direccion") String direccion){
+        direccionesDeContactoVinculadasSteps.editarDireccionYDesligar(direccion);
     }
 
     @Then("me debe mostrar esta informacion: $resultadoModificacionDireccion")
@@ -76,6 +106,29 @@ public class DireccionesDeContactoVinculadasDefinitions {
     @Then("el campo ciudad debe tener el valor <ciudad>")
     public void validarElCampoCiudad(@Named("ciudad")String ciudad){
         direccionesDeContactoVinculadasSteps.validarElCampoCiudad(ciudad);
+    }
+
+    @Then("la direccion debe quedar estandarizada <direccionEstandarizada> del contacto <nombreContacto>")
+    public void validarDireccionEstandarizada(@Named("direccionEstandarizada") String direccionEstandarizada,
+                                              @Named("nombreContacto") String nombreContacto){
+        direccionesDeContactoVinculadasSteps.validarDireccionEstandarizada(direccionEstandarizada, nombreContacto);
+    }
+
+    @Then("la direccion debe quedar como la ingreso el usuario <direccionUsuario> del contacto <nombreContacto>")
+    public void validarDireccionNoEstandarizada(@Named("direccionUsuario") String direccionUsuario,
+                                              @Named("nombreContacto") String nombreContacto){
+        direccionesDeContactoVinculadasSteps.validarDireccionEstandarizada(direccionUsuario, nombreContacto);
+    }
+
+    @Then("la direccion <direccionVinculada> fue actualizada <nombreContacto>")
+    public void validarDireccionVinculada(@Named("direccionVinculada") String direccionVinculada,
+                                          @Named("nombreContacto") String nombreContacto){
+        direccionesDeContactoVinculadasSteps.validarDireccionVinculada(direccionVinculada, nombreContacto);
+    }
+
+    @Then("las direcciones fueron desvinculas de los contactos: $contactosDireccionDesvinculada")
+    public void validarDireccionDesvinculada(ExamplesTable contactosDireccionDesvinculada){
+        direccionesDeContactoVinculadasSteps.validarDireccionDesvinculada(contactosDireccionDesvinculada);
     }
 
 }

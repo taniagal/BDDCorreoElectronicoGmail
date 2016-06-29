@@ -64,4 +64,40 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
     public void validarElCampoCiudad(String ciudad) {
         direccionesDeContactoVinculadasPage.validarElCampoCiudad(ciudad);
     }
+
+    public void editarCampoDepartamento(String departamento) {
+        direccionesDeContactoVinculadasPage.editarCampoDepartamento(departamento);
+    }
+
+    public void editarCampoCiudad(String ciudad) {
+        direccionesDeContactoVinculadasPage.editarCampoCiudad(ciudad);
+    }
+
+    public void validarDireccionEstandarizada(String direccionEstandarizada, String nombreContacto) {
+        direccionesDeContactoVinculadasPage.validarDireccionEstandarizada(direccionEstandarizada, nombreContacto);
+    }
+
+    public void seleccionarContactoAEditar(String nombreContacto) {
+        direccionesDeContactoVinculadasPage.seleccionarContactoAEditar(nombreContacto);
+    }
+
+    public void seleccionarEditarDireccionVinculada() {
+        direccionesDeContactoVinculadasPage.seleccionarEditarDireccionVinculada();
+    }
+
+    public void editarDireccionVinculadaDelContacto(String direccion) {
+        direccionesDeContactoVinculadasPage.editarDireccionVinculadaDelContacto(direccion);
+    }
+
+    public void validarDireccionVinculada(String direccionVinculada, String nombreContacto) {
+        direccionesDeContactoVinculadasPage.validarDireccionVinculada(direccionVinculada, nombreContacto);
+    }
+
+    public void editarDireccionYDesligar(String direccion) {
+        direccionesDeContactoVinculadasPage.editarDireccionYDesligar(direccion);
+    }
+
+    public void validarDireccionDesvinculada(ExamplesTable contactosDireccionDesvinculada) {
+        direccionesDeContactoVinculadasPage.validarDireccionDesvinculada(contactosDireccionDesvinculada);
+    }
 }

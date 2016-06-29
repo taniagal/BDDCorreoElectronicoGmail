@@ -8,39 +8,59 @@ para mantener la informacion actualizada de direcciones
 Scenario: Edicion del campo direccion - validar longitud maxima de 200 caracteres en Detalle de contacto
 GivenStories: stories/policycenter/login_policy.story
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
-When ingrese a editar la direccion por <direccion>
+When seleccione el contacto a editar <nombreContacto>
+And ingrese a editar la direccion por <direccion>
 Then el campo direccion no debe permitir ingresar mas de 200 caracteres <direccionOk>
 
 Examples:
-|numeroCuenta|direccion|direccionOk|
-|C000484848|CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162 CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162162CRA 65 # 48-162CA|200|
+|numeroCuenta|nombreContacto|direccion|direccionOk|
+|C000484848|RICARDO GIRALDO|CL 14 # 48 - 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162162 CRA 65 # 48 162 C PRU|200|
 
 Scenario: Edicion del campo direccion - validar longitud maxima de 200 caracteres en Detalle de contacto, Direcciones
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
-When ingrese a editar la direccion por <direccion> en detalle contacto pestaña direcciones
+When seleccione el contacto a editar <nombreContacto>
+And ingrese a editar la direccion por <direccion> en detalle contacto pestaña direcciones
 Then el campo direccion no debe permitir ingresar mas de 200 caracteres <direccionOk>
 
 Examples:
-|numeroCuenta|direccion|direccionOk|
-|C000484848|CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162 CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162CRA 65 # 48-162162CRA 65 # 48-162OT|200|
+|numeroCuenta|nombreContacto|direccion|direccionOk|
+|C000484848|RICARDO GIRALDO|CL 14 # 48 - 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162162 CRA 65 # 48 162 PRUEB|200|
 
-Scenario: Edicion del campo Pais, Departamento y Ciudad
-GivenStories: stories/policycenter/login_policy.story
+Scenario: Edicion del campo Pais validando que departamento y ciudad se actualizan a <ninguno>
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
-When ingrese a editar la direccion en ingrese el pais <pais>
+When seleccione el contacto a editar <nombreContacto>
+And ingrese a editar la direccion e ingrese el pais <pais>
 Then el campo departamento debe tener el valor <departamento>
 And el campo ciudad debe tener el valor <ciudad>
 
 Examples:
-|numeroCuenta|pais|departamento|ciudad|
-|C000484848|Colombia|<ninguno>|<ninguno>|
+|numeroCuenta|nombreContacto|pais|departamento|ciudad|
+|C000484848|RICARDO GIRALDO|Estados Unidos|<ninguno>|<ninguno>|
+
+Scenario: Edicion del campo Departamento validando que el campo ciudad se actualizan a <ninguno>
+When ingrese a editar la direccion e ingrese el pais <pais>
+And ingrese a editar la direccion e ingrese el departamento <departamento>
+Then el campo ciudad debe tener el valor <ciudad>
+
+Examples:
+|pais|departamento|ciudad|
+|Colombia|Antioquia|<ninguno>|
+
+Scenario: Edicion del campo Ciudad y Direccion validando que se estandariza la direccion ingresada
+When ingrese a editar la direccion e ingrese la ciudad <ciudad>
+And ingrese a editar la direccion por <direccion>
+Then la direccion debe quedar estandarizada <direccionEstandarizada> del contacto <nombreContacto>
+
+Examples:
+|ciudad|direccion|direccionEstandarizada|nombreContacto|
+|Medellin|Carrera 65 48 162|KR 65 # 48 - 162|RICARDO GIRALDO|
 
 Scenario: consultar direccion de un contacto que tiene una direccion asociada a otro contacto
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When este en una direccion que esta asociada a otro contacto y la desee editar
 Then me debe mostrar la siguiente informacion:
 |pais|departamento|ciudad|direccion|codigoPostal|tipoDeDireccion|descripcion|
-|Estados Unidos|California|SAN FRANCISCO|CRA 65 # 48-162|91007|Vivienda|Created by the Address Builder with code 0|
+|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|91007|Vivienda|Created by the Address Builder with code 0|
 Examples:
 |numeroCuenta|
 |C000484848|
@@ -50,7 +70,7 @@ Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When ingrese solo informacion obligatoria
 Then me debe mostrar esta informacion:
 |pais          |departamento|ciudad       |direccion      |codigoPostal|tipoDeDireccion|descripcion|
-|Estados Unidos|California  |SAN FRANCISCO|CRA 65 # 48-162|            |Vivienda       |           |
+|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|            |Vivienda       |           |
 Examples:
 |numeroCuenta|
 |C000484848|
@@ -67,6 +87,40 @@ Examples:
 |numeroCuenta|
 |C000484848|
 
+Scenario: validar cuando una direccion no se puede estandarizar la deje como la ingresa el usuario
+Given que me encuentro en los contactos de una cuenta <numeroCuenta>
+When seleccione el contacto a editar <nombreContacto>
+And seleccione la opcion para editar la direccion
+And ingrese a editar la direccion por <direccion> en la ventana de contactos vinculados
+Then la direccion debe quedar como la ingreso el usuario <direccionUsuario> del contacto <nombreContacto>
 
+Examples:
+|numeroCuenta|nombreContacto|direccion|direccionUsuario|
+|C000484848|RICARDO GIRALDO|Calle 89 F con circular 1 numero 77 FF 77 avenida guayabal por el centro|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
+
+Scenario: validar se actualiza la direccion vinculada de todos los contactos
+Given que me encuentro en los contactos de una cuenta <numeroCuenta>
+When seleccione el contacto a editar <nombreContacto>
+Then la direccion <direccionVinculada> fue actualizada <nombreContacto>
+
+Examples:
+|numeroCuenta|nombreContacto|direccionVinculada|
+|C000484848|RICARDO GIRALDO|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
+|C000484848|CARLOS PERALTA|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
+|C000484848|Speedy Glass Repair|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
+
+Scenario: validar cuando se actualiza y se desliga la direccion del contacto
+Given que me encuentro en los contactos de una cuenta <numeroCuenta>
+When seleccione el contacto a editar <nombreContacto>
+And ingrese a editar la direccion por <direccion> en la ventana de contactos vinculados y desligue la direccion
+Then las direcciones fueron desvinculas de los contactos:
+|contactoDesligado|direccionDesligada
+|CARLOS PERALTA|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
+|Speedy Glass Repair|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
+|RICARDO GIRALDO|KR 65 # 48 - 162|
+
+Examples:
+|numeroCuenta|nombreContacto|direccion|
+|C000484848|RICARDO GIRALDO|Carrera 65 #48-162|
 
 
