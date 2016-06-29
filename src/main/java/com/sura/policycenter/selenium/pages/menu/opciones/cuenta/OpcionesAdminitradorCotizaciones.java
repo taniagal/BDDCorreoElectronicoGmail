@@ -136,23 +136,21 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     }
 
     public void mostrarInfoCotizacion(String producto) {
+        waitForTextToAppear(producto,2000);
         String tProductos = "Todos Los Productos";
-        //String vacio = "";
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             if(tProductos.equals(producto) && !(cells.get(1).getText().equals("") || cells.get(1).getText().equals(" "))){
-            //if(tProductos.equals(producto) && !(" ".equals(cells.get(1).getText()))) {
                 MatcherAssert.assertThat(cells.get(1).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(2).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(3).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(5).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(7).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
-            } //else if(!("".equals(cells.get(1).getText()))){
-                else if(!(cells.get(1).getText().equals("") || cells.get(1).getText().equals(" "))){
+            } else if(!(cells.get(1).getText().equals("") || cells.get(1).getText().equals(" "))){
                 boolean valido = cells.get(1).getText().equals(producto);
-                MatcherAssert.assertThat(cells.get(1).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+                MatcherAssert.assertThat(cells.get(1).getText(), Is.is(Matchers.equalTo(producto)));
                 MatcherAssert.assertThat(cells.get(2).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(3).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
