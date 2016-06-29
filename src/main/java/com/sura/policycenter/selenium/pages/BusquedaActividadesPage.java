@@ -1,6 +1,8 @@
 package com.sura.policycenter.selenium.pages;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -64,8 +66,7 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void irABuscarActividades() {
-        menuBuscar.waitUntilPresent().click();
-        waitForTextToAppear("Buscar");
+        menuBuscar.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
         waitFor(ExpectedConditions.visibilityOf(menuBuscarActividades));
         waitFor(ExpectedConditions.elementToBeClickable(By.xpath("//td[@id='Search:MenuLinks:Search_ActivitySearch']/div/span")));
         waitABit(2000);

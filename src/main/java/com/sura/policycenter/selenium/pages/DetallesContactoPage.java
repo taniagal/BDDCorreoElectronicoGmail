@@ -149,14 +149,14 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void irABuscarContacto() {
-        campoTxtIrA.waitUntilPresent();
+        campoTxtIrA.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         campoTxtIrA.sendKeys("Search");
         campoTxtIrA.sendKeys(Keys.ENTER);
         menuItemContactos.waitUntilPresent();
         menuItemContactos.click();
     }
     public void editarContacto(){
-        botonEditarContacto.waitUntilPresent();
+        botonEditarContacto.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         botonEditarContacto.waitUntilVisible();
         assertThat("El boton de editar no está presente en el DOM",botonEditarContacto.isPresent());
         botonEditarContacto.click();
@@ -267,9 +267,11 @@ public class  DetallesContactoPage extends Guidewire {
         campoTxtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
         campoTxtTelefonoOficina.sendKeys(telefonoOficina);
-        campoTxtCorreoElectronicoSecundarioEmpresa.clear();
-        waitABit(700);
-        campoTxtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
+        do {
+            campoTxtCorreoElectronicoSecundarioEmpresa.clear();
+            waitFor(campoTxtCorreoElectronicoSecundarioEmpresa).shouldContainText("");
+            campoTxtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
+        }while (campoTxtCorreoElectronicoSecundarioEmpresa.containsText(correoElectronicoSecundario));
         dtlCntJ[5]= telefonoOficina;
         dtlCntJ[6]= correoElectronicoPrimario;
         dtlCntJ[7]= correoElectronicoSecundario;
@@ -281,7 +283,7 @@ public class  DetallesContactoPage extends Guidewire {
      * Valida si los datos ingresados es igual al que se muestran en el detalle
      */
     public void verificarActualizacion(){
-        espera(campoTxtSegundoNombre,6);
+        campoTxtSegundoNombre.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlContact[2].equals(campoTxtSegundoNombre.getText()))
             right.append("segundo nombre,");
@@ -311,8 +313,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void verificarActualizacionJuridico(){
-        espera(campoTxtNombreComercial,6);
-        labelActividadComercial.waitUntilPresent();
+        labelActividadComercial.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
             right.append("activida comercial,");
