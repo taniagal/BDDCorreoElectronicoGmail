@@ -9,7 +9,6 @@ Feature: Entrar y mantener detalles de la ubicación
 
 
 Scenario: Agregar una nueva ubicacion en una poliza de MRC.
-
 Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -22,7 +21,6 @@ Examples:
 
 
 Scenario: Agregar una nueva ubicacion "bloqueante" en una poliza de MRC.
-
 Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -35,7 +33,6 @@ Examples:
 
 
 Scenario: Validar direccion al agregar una nueva ubicacion en una poliza de MRC.
-
 Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
