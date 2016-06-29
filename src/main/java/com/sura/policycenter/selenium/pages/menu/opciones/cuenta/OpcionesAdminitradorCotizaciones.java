@@ -29,6 +29,12 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:0']")
     private WebElementFacade lblCotizacionesCuenta;
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuIcon']")
+    private WebElementFacade btnAcciones;
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuItemSet:Decline-textEl']")
+    private WebElementFacade itmDeclinar;
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-textEl']")
+    private WebElementFacade itmNoTomar;
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManager_NewSubmission-btnInnerEl']")
     private WebElementFacade btnNuevaCotizacion;
     @FindBy(xpath = "//td/div/div[3]/div/table")
@@ -374,7 +380,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         if (getListaCotizaciones().size()>0) {
             for (WebElementFacade cotizacion : getListaCotizaciones()) {
                 if (numCotizacion.equals(cotizacion.getText())) {
-                   assertThat("El estado no pertenece a la accion dada", accion.equals(getListaEstado().get(i).getText()));
+                   MatcherAssert.assertThat("El estado no pertenece a la accion dada", accion.equals(getListaEstado().get(i).getText()));
                    break;
                 }
                 i++;
@@ -384,23 +390,23 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     }
 
     public void validaAccionDesabilita (){
-        assertThat("Boton Acciones no esta presente", !btnAcciones2.isPresent());
+        MatcherAssert.assertThat("Boton Acciones no esta presente", !btnAcciones2.isPresent());
     }
 
     public void validaAccionDesabilitaNoTomar (){
-        assertThat("Boton Acciones no esta presente", !btnAcciones.isPresent());
+        MatcherAssert.assertThat("Boton Acciones no esta presente", !btnAcciones.isPresent());
     }
 
     public void validaMensaje(String mensaje) {
         waitFor(msg).waitUntilVisible();
-        assertThat("Fallo mensaje en campo obligatorio RAZON", msg.containsText(mensaje));
+        MatcherAssert.assertThat("Fallo mensaje en campo obligatorio RAZON", msg.containsText(mensaje));
         btnCancelar.click();
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
 
     public void validaMensajeNoTomar(String mensaje) {
         waitFor(msgNoTomar).waitUntilVisible();
-        assertThat("Fallo mensaje en campo obligatorio RAZON", msgNoTomar.containsText(mensaje));
+        MatcherAssert.assertThat("Fallo mensaje en campo obligatorio RAZON", msgNoTomar.containsText(mensaje));
         btnCancelarNoTomar.click();
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
@@ -420,7 +426,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     }
 
     public void validarTodasLasCotizaciones (){
-        assertThat("No se pudieron visualizar las polizas", getListaCotizaciones().size()<=0);
+        MatcherAssert.assertThat("No se pudieron visualizar las polizas", getListaCotizaciones().size()<=0);
     }
 
     private  void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception{
@@ -429,7 +435,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         for (String tipo : elementosRequeridos) {
             elementosTipoCanalVentas = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'"+tipo+"')]");
             for (WebElementFacade lista : elementosTipoCanalVentas){
-                assertThat(tipo, Matchers.containsString(lista.getText()));
+                MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }
         }
     }
