@@ -43,7 +43,8 @@ public class CoaseguroPage extends Guidewire {
     }
 
     public void validarCampos() {
-        linkAgregarCoaseguro.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
+        linkAgregarCoaseguro.click();
         radioBotonAceptado.waitUntilPresent().click();
         campoTxtDastosAdministrativos.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
@@ -94,7 +95,7 @@ public class CoaseguroPage extends Guidewire {
     }
 
     public void verificarCoaseguro() {
-        linkEditarCoaseguro.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
         assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
 

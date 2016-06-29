@@ -101,11 +101,11 @@ public class DetallesDeUbicacionPage extends Guidewire{
 
     public void irANuevaCotizacion(){
         botonAcciones.click();
-        subMenuNuevaCotizacion.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        subMenuNuevaCotizacion.waitUntilPresent().click();
     }
 
     public void agregarDatos(String cuenta, String producto) {
-        numeroDeCuenta.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(numeroDeCuenta).shouldBePresent();
         numeroDeCuenta.sendKeys(cuenta);
         comboBoxNombreAgente.click();
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkNombre).shouldBeVisible();
