@@ -1,12 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.policycenter.selenium.steps.CoberturaGlobalSteps;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
-
-import javax.swing.*;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -37,10 +34,10 @@ public class CoberturaGlobalPage extends Guidewire {
     private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:locations3LV:0:location']")
     private WebElementFacade linkUbicacionDisponible;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketCovLV:0:CoverageName']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:CPBlanketLV:0:GroupType']")
     private WebElementFacade linkCobertura1;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:coverageSelect-inputEl']")
-    private WebElementFacade comboTextCoberturas;
+    private WebElementFacade comboBoxCoberturas;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxGenerico;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
@@ -49,10 +46,6 @@ public class CoberturaGlobalPage extends Guidewire {
     private WebElementFacade mensajePantalla;
     @FindBy(id = ".//*[@id='wsTabBar:wsTab_0:panelId']")
     private WebElementFacade panelMensaje;
-
-
-
-
 
 
     public CoberturaGlobalPage(WebDriver driver) {
@@ -84,9 +77,9 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void cargarCoberturaUnica(String nombreCobertura, String valor) {
-        comboTextCoberturas.waitUntilPresent();
-        selectItem(comboTextCoberturas, nombreCobertura);
-        waitABit(500);
+        comboBoxCoberturas.waitUntilPresent();
+        selectItem(comboBoxCoberturas, nombreCobertura);
+        waitABit(1000);
         linkCoberturas.click();
         checkBoxGenerico.waitUntilPresent().click();
         campoTxtGenerico.sendKeys(valor);
@@ -102,6 +95,7 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void verificarCoberturasIncluidas() {
+        linkCobertura1.waitUntilPresent();
         assertThat("Error al Agregar la cobertura", linkCobertura1.isPresent());
     }
 
@@ -112,8 +106,8 @@ public class CoberturaGlobalPage extends Guidewire {
 
     public void seleccionarCoberturaUnica(String descripcion, String tipoCobertura, String nombreCobertura) {
         navegarPorCobertura(descripcion, tipoCobertura);
-        comboTextCoberturas.waitUntilPresent();
-        selectItem(comboTextCoberturas, nombreCobertura);
+        comboBoxCoberturas.waitUntilPresent();
+        selectItem(comboBoxCoberturas, nombreCobertura);
         waitABit(1000);
         botonAceptar.click();
         waitABit(1000);

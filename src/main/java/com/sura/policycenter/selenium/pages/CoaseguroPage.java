@@ -4,6 +4,8 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.model.Aseguradora;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.components.HtmlTable;
 import org.openqa.selenium.Keys;
@@ -41,7 +43,7 @@ public class CoaseguroPage extends Guidewire {
     }
 
     public void validarCampos() {
-        linkAgregarCoaseguro.waitUntilPresent().click();
+        linkAgregarCoaseguro.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
         radioBotonAceptado.waitUntilPresent().click();
         campoTxtDastosAdministrativos.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
@@ -92,13 +94,12 @@ public class CoaseguroPage extends Guidewire {
     }
 
     public void verificarCoaseguro() {
-        linkEditarCoaseguro.waitUntilPresent();
+        linkEditarCoaseguro.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
 
     public void verificarMensaje(String mensaje) {
-        waitABit(2000);
-        divMensaje.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         assertThat("Falló el mensaje de validacion", divMensaje.containsText(mensaje));
     }
 

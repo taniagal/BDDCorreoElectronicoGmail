@@ -101,14 +101,14 @@ public class DetallesDeUbicacionPage extends Guidewire{
 
     public void irANuevaCotizacion(){
         botonAcciones.click();
-        subMenuNuevaCotizacion.waitUntilPresent().click();
+        subMenuNuevaCotizacion.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
     }
 
     public void agregarDatos(String cuenta, String producto) {
-        espera(numeroDeCuenta,5);
+        numeroDeCuenta.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         numeroDeCuenta.sendKeys(cuenta);
         comboBoxNombreAgente.click();
-        waitABit(1000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkNombre).shouldBeVisible();
         Actions actions =  new Actions(getDriver());
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -163,15 +163,13 @@ public class DetallesDeUbicacionPage extends Guidewire{
         }
 
     public void verificarMensaje(String mensaje) {
-        divMensaje.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
     public void verificarMensajeDireccion(String mensaje) {
-        divMensaje.waitUntilPresent();
-        String validaMensaje;
-        validaMensaje = mensaje.substring(0,13)+direccion+mensaje.substring(13,mensaje.length());
-        waitABit(1000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        String validaMensaje = mensaje.substring(0,13)+direccion+mensaje.substring(13,mensaje.length());
         assertThat("Falló el mensaje de validacion de caracteres de la direccion", divMensaje.containsText(validaMensaje));
     }
 }
