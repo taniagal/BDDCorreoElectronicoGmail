@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaContactoPage;
 import com.sura.policycenter.selenium.pages.DetallesContactoPage;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -15,22 +14,11 @@ public class DetallesContactoSteps extends ScenarioSteps {
         super(pages);
     }
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
 
     @Step
     public void abrir_detalles_contacto(String tipoDocumento, String documento){
-        inicioPage().irABuscarContacto();
+        detallesContactoPage.irABuscarContacto();
         busquedaContactoPage.consultarContactoNumDoc(tipoDocumento,documento);
-        busquedaContactoPage.seleccionarContacto();
-    }
-
-    @Step
-    public void abrir_detalles_contacto_empresa(String nombreEmpresa) {
-        inicioPage().irABuscarContacto();
-        busquedaContactoPage.consultarPersonaJuridaPorRazonSocial("NIT", nombreEmpresa);
         busquedaContactoPage.seleccionarContacto();
     }
 

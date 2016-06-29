@@ -1,4 +1,4 @@
 package com.sura.policycenter;
 
-public class DireccionDeContacto{
+public class CotizarPoliza {
 }

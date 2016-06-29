@@ -1,15 +1,18 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.guidewire.selenium.Guidewire;
-
 import java.security.Key;
+import com.sura.serinitybdd.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
+import org.hamcrest.Matchers;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -64,6 +67,50 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     private WebElementFacade labelCodigoAgente;
 
     private int band=0;
+
+    /*
+    * WebElementFacade ingresados para story Nueva
+    * */
+
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:4:SubmissionActions:SubmissionActionsMenuIcon']")
+    private WebElementFacade btnAcciones2;
+
+    @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
+    private WebElementFacade txtCodRazon;
+
+    @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReasonText-inputEl']")
+    private WebElementFacade txtRazonCartaDeclina;
+
+    @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReasonText-inputEl']")
+    private WebElementFacade txtRazonCartaNoTomar;
+
+    @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:Update-btnInnerEl']")
+    private WebElementFacade btnRechazar;
+
+    @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:Update']")
+    private WebElementFacade btnNoTomar;
+
+    @FindBy (xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:Cancel-btnInnerEl']")
+    private WebElementFacade btnCancelar;
+
+    @FindBy (xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:Cancel-btnInnerEl']")
+    private WebElementFacade btnCancelarNoTomar;
+
+    @FindBy (xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
+    private WebElementFacade listaTipoRazon;
+
+    @FindBy (xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
+    private WebElementFacade listaTipoRazonNoTomar;
+
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:4:SubmissionActions:SubmissionActionsMenuItemSet:Decline']")
+    private WebElementFacade itmDeclinarComProp;
+
+    @FindBy(id = "DeclineReasonPopup:RejectScreen:_msgs")
+    private WebElementFacade msg;
+
+    @FindBy(id = "NotTakenReasonPopup:RejectScreen:_msgs")
+    private WebElementFacade msgNoTomar;
+
 
     public OpcionesAdminitradorCotizaciones(WebDriver driver) {
         super(driver);
@@ -257,5 +304,133 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
         waitABit(1500);
+    }
+
+    /**
+     * Metodos Ingresados para re-usar el mismo Page.
+     * Intervenido por: Jonathan Mejia Leon
+     * Fecha de intervencion: 21/06/2016
+     * Motivo: Uso del page para Administracion de cotización (Declinar-No Tomar)
+     * Story usada: admon_cotizacion_cuenta.story
+     */
+
+    public void seleccionarAccionesDeclinar() {
+        waitFor(btnAcciones2).waitUntilClickable();
+        btnAcciones2.click();
+        $(itmDeclinarComProp).click();
+    }
+
+    public void seleccionarAccionesNoTomar() {
+        waitFor(btnAcciones).waitUntilClickable();
+        btnAcciones.click();
+        $(itmNoTomar).click();
+    }
+
+    public void ingresaRechazo(String razon) {
+        waitFor(txtCodRazon).shouldBeEnabled();
+        txtCodRazon.clear();
+        txtCodRazon.sendKeys(razon);
+        txtRazonCartaDeclina.click();
+        txtRazonCartaDeclina.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
+        btnRechazar.click();
+    }
+
+    public void noIngresaRechazo() {
+        txtRazonCartaDeclina.click();
+        txtRazonCartaDeclina.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
+        btnRechazar.click();
+    }
+
+    public void ingresaRechazoNoTomar(String razon) {
+        waitFor(listaTipoRazonNoTomar).shouldBeEnabled();
+        listaTipoRazonNoTomar.clear();
+        listaTipoRazonNoTomar.sendKeys(razon);
+        txtRazonCartaNoTomar.click();
+        txtRazonCartaNoTomar.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
+        btnNoTomar.click();
+    }
+
+    public void noIngresaRechazoNoTomar() {
+        txtRazonCartaNoTomar.click();
+        txtRazonCartaNoTomar.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
+        btnNoTomar.click();
+    }
+
+    private List<WebElementFacade> getListaCotizaciones() {
+        List<WebElementFacade> numerosCotizacion;
+        numerosCotizacion = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[3]");
+        return numerosCotizacion;
+    }
+
+    private List<WebElementFacade> getListaEstado() {
+        List<WebElementFacade> numeroEstado;
+        numeroEstado = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[8]");
+        return numeroEstado;
+    }
+
+    public void validaEstado(String numCotizacion, String accion) {
+        int i = 0;
+        waitFor(lblCotizacionesCuenta).waitUntilVisible();
+        if (getListaCotizaciones().size()>0) {
+            for (WebElementFacade cotizacion : getListaCotizaciones()) {
+                if (numCotizacion.equals(cotizacion.getText())) {
+                   assertThat("El estado no pertenece a la accion dada", accion.equals(getListaEstado().get(i).getText()));
+                   break;
+                }
+                i++;
+            }
+
+        }
+    }
+
+    public void validaAccionDesabilita (){
+        assertThat("Boton Acciones no esta presente", !btnAcciones2.isPresent());
+    }
+
+    public void validaAccionDesabilitaNoTomar (){
+        assertThat("Boton Acciones no esta presente", !btnAcciones.isPresent());
+    }
+
+    public void validaMensaje(String mensaje) {
+        waitFor(msg).waitUntilVisible();
+        assertThat("Fallo mensaje en campo obligatorio RAZON", msg.containsText(mensaje));
+        btnCancelar.click();
+        waitFor(lblCotizacionesCuenta).waitUntilVisible();
+    }
+
+    public void validaMensajeNoTomar(String mensaje) {
+        waitFor(msgNoTomar).waitUntilVisible();
+        assertThat("Fallo mensaje en campo obligatorio RAZON", msgNoTomar.containsText(mensaje));
+        btnCancelarNoTomar.click();
+        waitFor(lblCotizacionesCuenta).waitUntilVisible();
+    }
+
+    public void validarOpcionesDeAgregar (ExamplesTable listaRazones) throws Exception{
+        listaTipoRazon.click();
+        this.validarDatosDeLaLista(listaRazones);
+        btnCancelar.click();
+        waitFor(lblCotizacionesCuenta).waitUntilVisible();
+    }
+
+    public void validarOpcionesDeAgregarNoTomar (ExamplesTable listaRazones) throws Exception{
+        listaTipoRazonNoTomar.click();
+        this.validarDatosDeLaLista(listaRazones);
+        btnCancelarNoTomar.click();
+        waitFor(lblCotizacionesCuenta).waitUntilVisible();
+    }
+
+    public void validarTodasLasCotizaciones (){
+        assertThat("No se pudieron visualizar las polizas", getListaCotizaciones().size()<=0);
+    }
+
+    private  void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception{
+        List<WebElementFacade> elementosTipoCanalVentas;
+        List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
+        for (String tipo : elementosRequeridos) {
+            elementosTipoCanalVentas = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'"+tipo+"')]");
+            for (WebElementFacade lista : elementosTipoCanalVentas){
+                assertThat(tipo, Matchers.containsString(lista.getText()));
+            }
+        }
     }
 }

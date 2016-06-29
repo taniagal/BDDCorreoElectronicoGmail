@@ -3,6 +3,7 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -175,10 +176,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
-        waitABit(3000);
-        getDriver().manage().timeouts().pageLoadTimeout(10, SECONDS);
-        txtTipoDoc.waitUntilPresent();
-        waitFor(txtTipoDoc).shouldBeVisible();
+        txtTipoDoc.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         txtTipoDoc.clear();
         txtTipoDoc.sendKeys(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
@@ -399,8 +397,8 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void seleccionarContacto() {
-        selectContact.waitUntilPresent();
-        selectContact.waitUntilVisible();
+        waitABit(2000);
+        selectContact.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         selectContact.click();
     }
 

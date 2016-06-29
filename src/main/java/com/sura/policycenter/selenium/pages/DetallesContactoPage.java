@@ -4,8 +4,8 @@ import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -133,18 +133,11 @@ public class  DetallesContactoPage extends Guidewire {
     private WebElementFacade campoTxtDocumento;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
-    private WebElementFacade mnuContact;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact-arrowEl']")
-    private WebElementFacade mnuItemNuevoContacto;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewCompany-textEl']")
-    private WebElementFacade mnuItemNuevaCompania;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:NewContact:NewPerson']")
-    private WebElementFacade mnuItemNuevaPersona;
-    @FindBy(xpath = ".//*[@id='TabBar:ContactTab:Search-itemEl']")
-    private WebElementFacade mnuItemContactoBusqueda;
-    @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnWrap']")
-    private WebElementFacade mnuBuscar;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtIrA;
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ContactSearch']/div")
+    private WebElementFacade menuItemContactos;
+
 
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
@@ -156,11 +149,14 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void irABuscarContacto() {
-        Actions actions = deployMenu(mnuContact);
-        actions.moveToElement(mnuItemContactoBusqueda).release(mnuItemContactoBusqueda).click().build().perform();
+        campoTxtIrA.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
+        campoTxtIrA.sendKeys("Search");
+        campoTxtIrA.sendKeys(Keys.ENTER);
+        menuItemContactos.waitUntilPresent();
+        menuItemContactos.click();
     }
     public void editarContacto(){
-        botonEditarContacto.waitUntilPresent();
+        botonEditarContacto.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         botonEditarContacto.waitUntilVisible();
         assertThat("El boton de editar no está presente en el DOM",botonEditarContacto.isPresent());
         botonEditarContacto.click();
@@ -209,23 +205,23 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void agregarTelefonosResidencial(String telefonoResidencial){
         campoTxtTelefonoResidencial.clear();
-        waitABit(200);
+        waitABit(500);
         campoTxtTelefonoResidencial.type(telefonoResidencial);
         dtlContact[11]= telefonoResidencial;
     }
 
     public void agregarTelefonoTrabajo(String telefonoTrabajo){
         campoTxtTelefonoTrabajo.clear();
-        waitABit(200);
+        waitABit(300);
         campoTxtTelefonoTrabajo.sendKeys(telefonoTrabajo);
         dtlContact[12]= telefonoTrabajo;
     }
 
     public void agregarTelefonoCelular(String telefonoCelular){
         campoTxtTelefonoCelular.clear();
-        waitABit(200);
+        waitABit(500);
         campoTxtTelefonoCelular.sendKeys(telefonoCelular);
-        dtlContact[10]= telefonoCelular;
+        dtlContact[10]= "+1 "+telefonoCelular;
     }
 
     public void agregarCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
@@ -233,7 +229,7 @@ public class  DetallesContactoPage extends Guidewire {
         waitABit(1000);
         campoTxtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
         campoTxtCorreoElectronicoSecundario.clear();
-        waitABit(500);
+        waitABit(300);
         campoTxtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
         dtlContact[13]= correoElectronicoPrimario;
         dtlContact[14]= correoElectronicoSecundario;
@@ -271,9 +267,11 @@ public class  DetallesContactoPage extends Guidewire {
         campoTxtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
         campoTxtTelefonoOficina.sendKeys(telefonoOficina);
-        campoTxtCorreoElectronicoSecundarioEmpresa.clear();
-        waitABit(700);
-        campoTxtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
+        do {
+            campoTxtCorreoElectronicoSecundarioEmpresa.clear();
+            waitFor(campoTxtCorreoElectronicoSecundarioEmpresa).shouldContainText("");
+            campoTxtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
+        }while (campoTxtCorreoElectronicoSecundarioEmpresa.containsText(correoElectronicoSecundario));
         dtlCntJ[5]= telefonoOficina;
         dtlCntJ[6]= correoElectronicoPrimario;
         dtlCntJ[7]= correoElectronicoSecundario;
@@ -285,7 +283,7 @@ public class  DetallesContactoPage extends Guidewire {
      * Valida si los datos ingresados es igual al que se muestran en el detalle
      */
     public void verificarActualizacion(){
-        espera(campoTxtSegundoNombre,6);
+        campoTxtSegundoNombre.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlContact[2].equals(campoTxtSegundoNombre.getText()))
             right.append("segundo nombre,");
@@ -315,8 +313,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void verificarActualizacionJuridico(){
-        espera(campoTxtNombreComercial,6);
-        labelActividadComercial.waitUntilPresent();
+        labelActividadComercial.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
             right.append("activida comercial,");
