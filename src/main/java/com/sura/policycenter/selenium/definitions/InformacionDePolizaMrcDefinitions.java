@@ -1,5 +1,7 @@
 package com.sura.policycenter.selenium.definitions;
 
+import com.sura.policycenter.selenium.steps.InformacionDePolizaMrcSteps;
+import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
@@ -7,10 +9,13 @@ import org.jbehave.core.annotations.When;
 
 public class InformacionDePolizaMrcDefinitions {
 
+    @Steps
+    InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
 
     @Given("se inicio una nueva suscripcion <numeroCuenta>")
     public void iniciaNuevaSuscripcionCuenta(@Named("numeroCuenta")String numeroCuenta) {
-        // PENDING
+        informacionDePolizaMrcSteps.navegar_barra_superior(numeroCuenta);
+        
     }
 
     @When("este expidiendo una poliza de propiedad comercial")
