@@ -50,7 +50,7 @@ public class DireccionesDeContactoVinculadasDefinitions {
 
     @When("ingrese a editar la direccion en ingrese el pais <pais>")
     public void editarCampoPais(@Named("pais") String pais){
-
+        direccionesDeContactoVinculadasSteps.editarDireccionCampoPais(pais);
     }
 
     @Then("me debe mostrar esta informacion: $resultadoModificacionDireccion")
@@ -69,9 +69,13 @@ public class DireccionesDeContactoVinculadasDefinitions {
     }
 
     @Then("el campo departamento debe tener el valor <departamento>")
-    public void validarElCampoDepartamento(@Named("departamento")String departamento){}
+    public void validarElCampoDepartamento(@Named("departamento")String departamento){
+        direccionesDeContactoVinculadasSteps.validarElCampoDepartamento(departamento);
+    }
 
     @Then("el campo ciudad debe tener el valor <ciudad>")
-    public void validarElCampoCiudad(@Named("ciudad")String ciudad){}
+    public void validarElCampoCiudad(@Named("ciudad")String ciudad){
+        direccionesDeContactoVinculadasSteps.validarElCampoCiudad(ciudad);
+    }
 
 }

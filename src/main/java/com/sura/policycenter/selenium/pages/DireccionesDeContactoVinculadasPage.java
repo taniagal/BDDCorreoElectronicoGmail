@@ -100,6 +100,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade linkVolverAContacto;
     @FindBy(xpath = "//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarMensaje;
+    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
+    private WebElementFacade campoPaisDetalle;
 
     WebElementFacade contactoAEditar;
 
@@ -249,18 +251,37 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         return filaBoton;
     }
 
-    public WebElement fluentWait(final By locator) {
+    public void editarDireccionCampoPais(String pais) {
+        WebElementFacade campoPais = fluentWait(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']");
+        campoPais.clear();
+        campoPais.sendKeys(pais);
+        campoPais.sendKeys(Keys.ENTER);
+    }
+
+    public WebElementFacade fluentWait(final String xpath) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(30, TimeUnit.SECONDS)
                 .pollingEvery(5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
 
-        WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver driver) {
-                return driver.findElement(locator);
+        WebElementFacade foo = wait.until(new Function<WebDriver, WebElementFacade>() {
+            public WebElementFacade apply(WebDriver driver) {
+                return findBy(xpath);
             }
         });
 
         return  foo;
-    };
+    }
+
+    public void validarElCampoDepartamento(String departamento) {
+        WebElementFacade campoDepartamento = fluentWait(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
+        MatcherAssert.assertThat(campoDepartamento.getValue(), Is.is(Matchers.equalTo(departamento)));
+    }
+
+    public void validarElCampoCiudad(String ciudad) {
+        WebElementFacade campoCiudad = fluentWait(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']");
+        MatcherAssert.assertThat(campoCiudad.getValue(), Is.is(Matchers.equalTo(ciudad)));
+        linkVolverAContacto.click();
+        botonAceptarMensaje.waitUntilPresent().click();
+    }
 }

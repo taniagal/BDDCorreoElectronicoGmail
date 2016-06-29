@@ -52,4 +52,16 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
     public void editarDireccionEnPestaniaDirecciones(String direccion) {
         direccionesDeContactoVinculadasPage.editarDireccionEnPestaniaDirecciones(direccion);
     }
+
+    public void editarDireccionCampoPais(String pais) {
+        direccionesDeContactoVinculadasPage.editarDireccionCampoPais(pais);
+    }
+
+    public void validarElCampoDepartamento(String departamento) {
+        direccionesDeContactoVinculadasPage.validarElCampoDepartamento(departamento);
+    }
+
+    public void validarElCampoCiudad(String ciudad) {
+        direccionesDeContactoVinculadasPage.validarElCampoCiudad(ciudad);
+    }
 }
