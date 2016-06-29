@@ -70,6 +70,10 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade botonCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyReview']/div/span")
     private WebElementFacade itemRevisionPoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:SubmissionWizard_ReviewSummaryDV:PrimaryNamedInsured-inputEl']")
+    private WebElementFacade tomadorPrimario;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:ReviewSummaryCV:0:PolicyLineSummaryPanelSet:0:0:drivername-inputEl']")
+    private WebElementFacade asegurado;
 
     public CotizacionDePolizaPage(WebDriver driver){
         super(driver);
@@ -127,12 +131,6 @@ public class CotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
 
-    public void validarTipoRiesgoCausal() {
-        waitForTextToAppear("Revisión de póliza", 1500);
-        waitFor(botonCotizacion).shouldBeVisible();
-        botonCotizacion.click();
-    }
-
     public void validarBloqueoCotizacion(String mensaje) {
         waitForTextToAppear("Resultados de validación", 10000);
         waitFor(mensajeRiesgoConsultable).shouldBeVisible();
@@ -144,5 +142,27 @@ public class CotizacionDePolizaPage extends PageObject{
             validacion = e.getMessage();
         }
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
+    }
+
+    public void validarFigurasCotizacion(String figura) {
+        waitForTextToAppear("Revisión de póliza", 1500);
+        boolean validacion = tomadorPrimario.getText().equals(figura)||
+                             asegurado.getText().equals(figura);
+        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(true)));
+        waitFor(botonCotizacion).shouldBeVisible();
+        botonCotizacion.click();
+    }
+
+    public void validarDatosCotizacion(String asegurado, String placa) {
+        waitForTextToAppear("Revisión de póliza", 1500);
+        boolean validacion = tomadorPrimario.getText().equals(asegurado) && "placa".equals(placa);
+        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(true)));
+        waitFor(botonCotizacion).shouldBeVisible();
+        botonCotizacion.click();
+    }
+
+    public void validarDireccionTomador(String direccion) {
+        waitForTextToAppear("Cotización", 2000);
+        MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
 }

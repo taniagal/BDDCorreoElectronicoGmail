@@ -9,7 +9,7 @@ para comenzar un proceso de expedicion con un cliente en caso de ser posible
 
 @Issue SUGWUSC-15118 Quote PA - Información General
 
-Scenario: informacion general de cotizacion
+Scenario: Informacion general de cotizacion
 GivenStories: stories/policycenter/login_policy.story
 Given he realizado la cotizacion <cotizacion>
 When ingrese al detalle de la cotizacion
@@ -21,34 +21,22 @@ Examples:
 |cotizacion|
 |22222225|
 
-Scenario: Riesgos consultables - Tipo Causal Tecnica
+Scenario: Validar direccion del tomador de la poliza
+GivenStories: stories/policycenter/login_policy.story
 Given he realizado la cotizacion <cotizacion>
-When ingrese a la revision de la poliza
-And el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
-Then no se debe permitir continuar con la cotizacion <mensaje>, no se debe mostrar ningun valor de cotizacion al cliente
+When ingrese al detalle de la cotizacion
+Then debo poder ver la direccion del tomador <direccionTomador> de la poliza la cual  indico como principal
 
 Examples:
-|cotizacion|mensaje                             |
-|0000045907|La placa es un riesgo no estandar.. |
-
-Scenario: Riesgos consultables - Tipo Causal Moral
-Given he realizado la cotizacion <cotizacion>
-When ingrese a la revision de la poliza
-And el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
-Then no se debe permitir continuar con la cotizacion <mensaje>, no se debe mostrar ningun valor de cotizacion al cliente
-
-Examples:
-|cotizacion|mensaje                                                                                 |
-|0000144996|La placa es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|cotizacion|direccionTomador                            |
+|22222225  |CRA 65 # 48-162, LOUISVILLE, Estados Unidos |
 
 Scenario: Riesgos consultables - Figuras - Bloqueo
-Meta:
-@Manual
 Given he realizado la cotizacion <cotizacion>
-When ingrese a la revision de la poliza
-And las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable
-Then no se debe permitir continuar con la cotizacion, no se debe mostrar ningun valor de cotizacion al cliente
+When ingrese a la 
+And las figuras asegurado, beneficiario, tomador y/o cuentahabiente <figura> sean riesgo consultable
+Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensaje>; no se debe mostrar ningun valor de cotizacion al cliente
 
 Examples:
-|cotizacion|
-|0000014358|
+|cotizacion|mensaje|
+|0000014358

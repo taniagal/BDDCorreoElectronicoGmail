@@ -54,21 +54,34 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.ingresarARevisionPoliza();
     }
 
+    @SuppressWarnings("EmptyMethod")
     @When("el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
+    @Manual
     public void validarTipoRiesgoCausalTecnica(){
-        cotizacionDePolizaSteps.validarTipoRiesgoCausal();
-    }
-
-    @When("el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
-    public void validarTipoRiesgoCausalMoral(){
-        cotizacionDePolizaSteps.validarTipoRiesgoCausal();
+        //Se ejecuta manualmente
     }
 
     @SuppressWarnings("EmptyMethod")
-    @When("las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable")
+    @When("el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
     @Manual
-    public void validarFigurasCotizacion(){
+    public void validarTipoRiesgoCausalMoral(){
         //Se ejecuta manualmente
+    }
+
+    @When("las figuras asegurado, beneficiario, tomador y/o cuentahabiente <figura> sean riesgo consultable")
+    public void validarFigurasCotizacion(@Named("figura") String figura){
+        cotizacionDePolizaSteps.validarFigurasCotizacion(figura);
+    }
+
+    @When("las figuras asegurado, beneficiario y/o tomador <figura>, fueron identificadas como PEP")
+    public void validarFigurasPEP(@Named("figura") String figura) {
+        cotizacionDePolizaSteps.validarFigurasCotizacion(figura);
+    }
+
+    @When("ya existe una cotizacion para el mismo Asegurado <asegurado>, diferente asesor y mismo numero de placa <placa>")
+    public void validarCotizacionDuplicada(@Named("asegurado") String asegurado,
+                                           @Named("placa") String placa){
+        cotizacionDePolizaSteps.validarDatosCotizacionPEP(asegurado, placa);
     }
 
     @Then("debo ver la siguiente informacion $informacionCotizacion")
@@ -76,13 +89,25 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.validarInformacionCotizacion(infoCotizacionPoliza, informacionCotizacion);
     }
 
+    @Then("debo poder ver la direccion del tomador <direccionTomador> de la poliza la cual  indico como principal")
+    public void validarDireccionTomador(@Named("direccionTomador") String direccion){
+        cotizacionDePolizaSteps.validarDireccionTomador(direccion);
+    }
+
     @Then("debo ver la siguiente direccion <direccion>")
     public void validarInformacionCotizacion(@Named("direccion") String direccion) {
         cotizacionDePolizaSteps.validarDireccion(direccion);
     }
 
-    @Then("no se debe permitir continuar con la cotizacion <mensaje>, no se debe mostrar ningun valor de cotizacion al cliente")
+    @Then("no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensaje>; no se debe mostrar ningun valor de cotizacion al cliente")
     public void validarBloqueoCotizacion(@Named("mensaje") String mensaje){
+        cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
+    }
+
+    @Then("se debe mostrar un mensaje <mensaje> que indique \"El cliente (nombre del Aegurado) ya tiene una cotizacion en curso\n" +
+            "para el producto seleccionado para la oficina (nombre de la oficina que se ingreso en la primera cotizacion)”,\n" +
+            "con dos opciones : Solicitar Aprobacion y cancelar")
+    public void validarBloqueoPEP(@Named("mensaje") String mensaje){
         cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
     }
 
