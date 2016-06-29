@@ -1,4 +1,4 @@
-Cotizacion de poliza
+Cotizacion De Poliza
 
 Meta:
 
