@@ -163,6 +163,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void validarInformacionTipoId() {
+        waitABit(1500);
         String msjSinReg = "No hay datos para mostrar";
         waitForTextToAppear(msjSinReg, 2000);
         assertThat(msjSinRegistros.getText(),is(equalTo(msjSinReg)));
