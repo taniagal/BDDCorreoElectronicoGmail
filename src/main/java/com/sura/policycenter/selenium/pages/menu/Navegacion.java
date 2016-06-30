@@ -654,7 +654,6 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta() {
-        //mnuCuenta.click();
         waitFor(mnuAccionesCuenta).waitUntilClickable();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
