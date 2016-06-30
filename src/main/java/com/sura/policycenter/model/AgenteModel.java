@@ -4,15 +4,15 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class AgenteModel {
     private final String nombre;
-    private final Integer codigo;
+    private final String codigo;
 
-    public AgenteModel(String nombre, Integer codigo) {
+    public AgenteModel(String nombre, String codigo) {
         this.nombre = nombre;
         this.codigo = codigo;
     }
 
 
-    public Integer getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 

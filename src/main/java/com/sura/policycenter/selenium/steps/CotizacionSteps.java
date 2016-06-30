@@ -73,4 +73,73 @@ public class CotizacionSteps extends ScenarioSteps implements Serializable {
     public void seleccionar_el_boton_elegir(String producto) {
         getCotizacionPage().seleccionarProducto(producto);
     }
+
+    @Step
+    public String obtenerTextoLinkNombrePersonaWEF(String nombre) {
+        return getCotizacionPage().obtenerTextoLinkNombrePersonaWEF(nombre);
+    }
+
+    @Step
+    public String obtenerTextoLabelNombrePersonaWEF() {
+        return  getCotizacionPage().obtenerTextoLabelNombrePersonaWEF();
+    }
+
+    @Step
+    public Integer tamanioListaAgentesPorFiltro(String nombreAgente) {
+        return getCotizacionPage().tamanioListaAgentesPorFiltro(nombreAgente);
+    }
+
+    @Step
+    public String getNombreAgente() {
+        return getCotizacionPage().getNombreAgente();
+    }
+
+    @Step
+    public void validarAutocompletarNombreAgente() {
+        getCotizacionPage().validarAutocompletarNombreAgente();
+    }
+
+    @Step
+    public void validarAutocompletarSeMuestreNombreYCodigoRespectivamente() {
+        getCotizacionPage().validarAutocompletarSeMuestreNombreYCodigoRespectivamente();
+    }
+
+    @Step
+    public void validarLosProductosOrdenadosAlfabeticamente() {
+        getCotizacionPage().validarLosProductosOrdenadosAlfabeticamente();
+    }
+
+    @Step
+    public String obtenerMensajeEmergenteDeInformacion() {
+        return getCotizacionPage().obtenerMensajeEmergenteDeInformacion();
+    }
+
+    @Step
+    public Boolean validarOcurrenciaDeMensajeDeAplicacion(String mensaje) {
+        return getCotizacionPage().validarOcurrenciaDeMensajeDeAplicacion(mensaje);
+    }
+
+    @Step
+    public Boolean validarExistenciaDeLosBotonesVisibles(String[] arrayBtns) {
+        return getCotizacionPage().validarExistenciaDeLosBotonesVisibles(arrayBtns);
+    }
+
+    @Step
+    public void seleccionarBtn(String boton) {
+        getCotizacionPage().seleccionarBtn(boton);
+    }
+
+    @Step
+    public String obtenerTextoTituloPaginaWEF(String pagina) {
+        return getCotizacionPage().obtenerTextoTituloPaginaWEF(pagina);
+    }
+
+    @Step
+    public Boolean esFechaCotizacionHOY() {
+        return getCotizacionPage().esFechaCotizacionHOY();
+    }
+
+    public Boolean esFechaEditable() {
+        return getCotizacionPage().esFechaEditable();
+    }
 }
