@@ -68,14 +68,14 @@ public class CotizacionDePolizaDefinitions {
         //Se ejecuta manualmente
     }
 
-    @When("las figuras asegurado, beneficiario, tomador y/o cuentahabiente <figura> sean riesgo consultable")
-    public void validarFigurasCotizacion(@Named("figura") String figura){
-        cotizacionDePolizaSteps.validarFigurasCotizacion(figura);
+    @When("las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable")
+    public void validarFigurasCotizacion(){
+        cotizacionDePolizaSteps.validarFigurasCotizacion();
     }
 
-    @When("las figuras asegurado, beneficiario y/o tomador <figura>, fueron identificadas como PEP")
-    public void validarFigurasPEP(@Named("figura") String figura) {
-        cotizacionDePolizaSteps.validarFigurasCotizacion(figura);
+    @When("las figuras asegurado, beneficiario y/o tomador, fueron identificadas como PEP")
+    public void validarFigurasPEP() {
+        cotizacionDePolizaSteps.validarFigurasCotizacion();
     }
 
     @When("ya existe una cotizacion para el mismo Asegurado <asegurado>, diferente asesor y mismo numero de placa <placa>")
@@ -89,8 +89,13 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.validarInformacionCotizacion(infoCotizacionPoliza, informacionCotizacion);
     }
 
-    @Then("debo poder ver la direccion del tomador <direccionTomador> de la poliza la cual  indico como principal")
+    /*@Then("debo poder ver la direccion del tomador <direccionTomador> de la poliza la cual indico como principal")
     public void validarDireccionTomador(@Named("direccionTomador") String direccion){
+        cotizacionDePolizaSteps.validarDireccionTomador(direccion);
+    }*/
+
+    @Then("debo poder ver la direccion del tomador de la poliza <direccion>, la cual se indico como principal")
+    public void validarDireccion(@Named("direccion") String direccion){
         cotizacionDePolizaSteps.validarDireccionTomador(direccion);
     }
 

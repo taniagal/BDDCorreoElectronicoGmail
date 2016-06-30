@@ -42,8 +42,8 @@ public class CotizacionDePolizaSteps extends ScenarioSteps  {
     }
 
     @Step
-    public void validarFigurasCotizacion(String figura) {
-        cotizacionDePolizaPage.validarFigurasCotizacion(figura);
+    public void validarFigurasCotizacion() {
+        cotizacionDePolizaPage.validarFigurasCotizacion();
     }
 
     @Step
