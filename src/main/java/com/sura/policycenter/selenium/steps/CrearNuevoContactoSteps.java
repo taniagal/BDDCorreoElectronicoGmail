@@ -29,18 +29,22 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void nuevoContactoPersona() {
-        inicioPage().irANuevaPersona();
+    public void actualizar(String primerNombre){
+        nuevoContactoPage.actualizarPersonaNatural(primerNombre);
     }
 
     @Step
-    public void seleccionarTipoDocumentoPersonaNatural(String tipoDocumento){
-        nuevoContactoPage.seleccionarTipoDocumento(tipoDocumento);
-        tipoDoc = tipoDocumento;
+    public void actualizar_juridica(String razonSocial){
+        nuevoContactoPage.actualizarJuridica(razonSocial);
     }
 
     @Step
-    public void ingresarNumeroDocumentoPersonaNatural(String numeroDocumento){
+    public void crear_persona(){
+        nuevoContactoPage.btnActualizarPersonaNatural();
+    }
+
+    @Step
+    public void ingresar_numero_documento_persona_natural(String numeroDocumento){
         if("".equals(cedula) || "".equals(nit)) {
             initRandoms();
         }
@@ -52,70 +56,65 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarPrimerNombrePersonaNatural(String primerNombre){
+    public void ingresar_primer_nombre_persona_natural(String primerNombre){
         nuevoContactoPage.ingresarPrimerNombre(primerNombre);
     }
 
     @Step
-    public void ingresarPrimerApellidoPersonaNatural(String primerApellido){
+    public void ingresar_primer_apellido_persona_natural(String primerApellido){
         nuevoContactoPage.ingresarPrimerApellido(primerApellido);
     }
 
     @Step
-    public void seleccionarTipoDireccionPersonaNatural(String tipoDireccion){
-        nuevoContactoPage.seleccionarTipoDireccion(tipoDireccion);
+    public void ingresar_direccion_persona_natural(String direccion, String departamento, String ciudad){
+        nuevoContactoPage.ingresarDireccionDepartamenteYCiudad(direccion, departamento, ciudad);
     }
 
-    @Step
-    public void ingresarDireccionPersonaNatural(String direccion, String departamento, String ciudad){
-        nuevoContactoPage.ingresarDireccion(direccion, departamento, ciudad);
-    }
 
     @Step
-    public void ingresarDireccionPersonaNatural2(String direccion, String departamento, String ciudad, String tipoDireccion){
-        nuevoContactoPage.ingresarDireccion2(direccion, departamento, ciudad, tipoDireccion);
-    }
-
-    @Step
-    public void actualizar(String primerNombre){
-        nuevoContactoPage.actualizarPersonaNatural(primerNombre);
-    }
-
-    @Step
-    public void btnCrearPersona(){
-        nuevoContactoPage.btnActualizarPersonaNatural();
-    }
-
-    /**
-     * Crear contacto persona juridica
-     */
-    @Step
-    public void nuevoContactoPersonaJuridica() {
-        inicioPage().irANuevaCompania();
-    }
-
-    @Step
-    public void ingresarRazonSocial( String razonSocial) {
-        nuevoContactoPage.ingresarRazonSocial(razonSocial);
-    }
-    @Step
-    public void actualizarJuridica(String razonSocial){
-        nuevoContactoPage.actualizarJuridica(razonSocial);
-    }
-
-    @Step
-    public void verificarContactoExistente(){
-        nuevoContactoPage.verificarContactoExistente();
-    }
-
-    @Step
-    public void ingresarNumeroTelefonoFijo(String tipoTelefonoFijo, String numeroTelefonoFijo){
+    public void ingresar_numero_telefono_fijo(String tipoTelefonoFijo, String numeroTelefonoFijo){
         nuevoContactoPage.ingresarTelefonoFijo(tipoTelefonoFijo,numeroTelefonoFijo);
     }
 
     @Step
-    public void validarCampoPaisDepartamentoYCiudad(){
+    public void ingresar_direccion_persona_natural2(String direccion, String departamento, String ciudad, String tipoDireccion){
+        nuevoContactoPage.ingresarDireccion2(direccion, departamento, ciudad, tipoDireccion);
+    }
+
+    @Step
+    public void ingresar_razon_social(String razonSocial) {
+        nuevoContactoPage.ingresarRazonSocial(razonSocial);
+    }
+
+    @Step
+    public void nuevo_contacto_persona() {
+        inicioPage().irANuevaPersona();
+    }
+
+    @Step
+    public void nuevo_contacto_persona_juridica() {
+        inicioPage().irANuevaCompania();
+    }
+
+    @Step
+    public void seleccionar_tipo_direccion_persona_natural(String tipoDireccion){
+        nuevoContactoPage.seleccionarTipoDireccion(tipoDireccion);
+    }
+
+    @Step
+    public void seleccionar_tipo_documento_persona_natural(String tipoDocumento){
+        nuevoContactoPage.seleccionarTipoDocumento(tipoDocumento);
+        tipoDoc = tipoDocumento;
+    }
+
+    @Step
+    public void validar_campo_pais_departamento_y_ciudad(){
         nuevoContactoPage.validarCampoPaisDepartamentoYCiudad();
+    }
+
+    @Step
+    public void verificar_contacto_existente(){
+        nuevoContactoPage.verificarContactoExistente();
     }
 
 }

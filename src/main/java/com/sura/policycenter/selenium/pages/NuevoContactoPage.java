@@ -3,13 +3,13 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.constantes.EnumContacto;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
@@ -27,8 +27,8 @@ public class NuevoContactoPage extends Guidewire {
     private WebElementFacade tipoDireccion;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade direccion;
-    @FindBy(xpath = ".//*[@id='NewContact:Update-btnInnerEl']")
-    private WebElementFacade btnActualizar;
+    @FindBy(xpath = ".//*[@id='NewContact:ForceDupCheckUpdate-btnInnerEl']")
+    private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade nombreContact;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
@@ -44,13 +44,13 @@ public class NuevoContactoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade telefonoResidencia;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade cboDepartamento;
+    private WebElementFacade comboBoxDepartamento;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
-    private WebElementFacade cboCiudad;
+    private WebElementFacade comboBoxCiudad;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade cboDepartamento2;
+    private WebElementFacade comboBoxDepartamento2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
-    private WebElementFacade cboCiudad2;
+    private WebElementFacade comboBoxCiudad2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
     private WebElementFacade tipoDireccion2;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
@@ -79,37 +79,40 @@ public class NuevoContactoPage extends Guidewire {
         this.primerApellido.type(primerApellido);
     }
 
-    public void seleccionarTipoDireccion(String tipoDireccion) {
-        selectItem(this.tipoDireccion,tipoDireccion);
+    public void seleccionarTipoDireccion(String tipoDireccion) {selectItem(this.tipoDireccion,tipoDireccion);
     }
 
-    public void ingresarDireccion(String direccion, String departamento, String ciudad) {
+
+    public void ingresarDireccionDepartamenteYCiudad(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
-        selectItem(cboDepartamento,departamento);
-        waitABit(2000);
-        selectItem(cboCiudad,ciudad);
-        waitABit(1000);
+        selectItem(comboBoxDepartamento,departamento);
+        waitABit(4000);
+        selectItem(comboBoxCiudad,ciudad);
+        waitABit(1500);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
-        direccion2.sendKeys(direccion);
-        selectItem(cboDepartamento2,departamento);
         waitABit(2000);
-        selectItem(cboCiudad2,ciudad);
-        waitABit(1200);
+        direccion2.sendKeys(direccion);
+        selectItem(comboBoxDepartamento2,departamento);
+        waitABit(4000);
+        selectItem(comboBoxCiudad2,ciudad);
+        waitABit(2000);
         selectItem(tipoDireccion2,tipoDireccion);
+        waitABit(1500);
     }
 
     public void actualizarPersonaNatural(String primerNombre) {
-        this.btnActualizar.waitUntilClickable();
-        this.btnActualizar.click();
-        waitABit(1000);
+        this.botonActualizar.waitUntilClickable();
+        this.botonActualizar.click();
+        waitABit(2000);
+        nombreContact.waitUntilPresent();
         assertThat(this.nombreContact.getText(), containsString(primerNombre));
     }
 
     private void actualizar() {
-        this.btnActualizar.waitUntilClickable();
-        this.btnActualizar.click();
+        this.botonActualizar.waitUntilClickable();
+        this.botonActualizar.click();
         waitABit(1000);
     }
 
@@ -143,18 +146,17 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void actualizarJuridica(String razonSocial) {
-        this.btnActualizar.waitUntilClickable();
-        this.btnActualizar.click();
-        waitABit(1000);
+        this.botonActualizar.waitUntilClickable();
+        this.botonActualizar.click();
+        waitABit(2000);
+        desRazonSocial.waitUntilPresent();
         assertThat(this.desRazonSocial.getText().toString(), containsString(razonSocial));
 
     }
 
     public void verificarContactoExistente() {
-        this.btnActualizar.waitUntilClickable();
-        this.btnActualizar.click();
-        /**COMENTADO HASTA QUE SE REACTIVEN LAS VALIDACIONES
-         */
+        this.botonActualizar.waitUntilClickable();
+        this.botonActualizar.click();
         waitABit(1000);
         assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
     }
@@ -172,7 +174,7 @@ public class NuevoContactoPage extends Guidewire {
     public void validarCampoPaisDepartamentoYCiudad() {
         if (esTelefonoFijo(this.tipoTelefono.getValue())) {
             actualizar();
-            List<WebElementFacade> tabs = withTimeoutOf(1, SECONDS).findAll(".//*[@id='NewContact:_msgs']//div");
+            List<WebElementFacade> tabs = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='NewContact:_msgs']//div");
             EnumContacto mensajeRequerido = null;
             boolean flag;
             for (WebElementFacade div : tabs) {
@@ -196,6 +198,6 @@ public class NuevoContactoPage extends Guidewire {
     }
 
     public void btnActualizarPersonaNatural() {
-        btnActualizar.click();
+        botonActualizar.click();
     }
 }

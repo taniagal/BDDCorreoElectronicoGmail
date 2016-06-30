@@ -1,8 +1,12 @@
+Resumen Cuenta
+
 Meta:
 
 Narrative:
 Como usuario PolicyCenter
 Quiero poder ver el resumen de la cuenta de una persona juridica o natural, teniendo la posibilidad de editar dicha informacion
+
+@Issue SUGWUSC-10130 Account Summary
 
 Scenario: Mostrar resumen de la cuenta de persona juridica
 GivenStories: stories/policycenter/login_policy.story
@@ -62,7 +66,7 @@ Then se debe cargar el valor por defecto "<ninguno>" en el campo ciudad <ciudad>
 
 Examples:
 |tipoCuenta|numCuenta  |pais        |departamento  |ciudad      |
-|Compañía  |C010478975 |Colombia    |Antioquia     |            |
+|Compañía  |C010478975 |Colombia    |ANTIOQUIA     |            |
 
 Scenario: Editar cuenta - Dirección estandarizada
 Meta:
