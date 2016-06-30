@@ -22,19 +22,43 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
     ValidacionesInformacionDeVehiculoSteps vehiculoSteps;
 
     @Given("estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>")
-    public void agregarPoliza(@Named("cuenta")String cuenta, @Named("producto")String producto) {
+    public void agregarPoliza(@Named("cuenta") String cuenta, @Named("producto") String producto) {
         loginSteps.login();
-        detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta,producto);
-    }
-
-    @When("vaya al agregar un vehiculo con datos faltantes")
-    public void irAVehiculos(){
+        detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta, producto);
         vehiculoSteps.ir_a_vehiculos();
     }
 
+    @When("vaya al agregar un vehiculo con datos faltantes")
+    public void irAVehiculos() {
+        vehiculoSteps.crear_vehiculo();
+    }
+
     @Then("deben aparecer los mensajes de validacion: $mensajes")
-    public void validarMensajes(ExamplesTable mensajes){
+    public void validarMensajes(ExamplesTable mensajes) {
         vehiculoSteps.verificar_mensajes(mensajes);
     }
+
+
+    /**
+     * ESCENARIO 2
+     */
+    @When("vaya al agregar un vehiculo con codigo fasecolda <codigo> no existente")
+    public void agregarCodigoFasecolda(@Named("codigo") String codigo) {
+        vehiculoSteps.agregar_codigo_fasecolda(codigo);
+    }
+
+    @Then("debo ingresar un nuevo codigo")
+    public void validarCampodeCodigo() {
+        vehiculoSteps.verificar_estado_del_campo_codigo();
+    }
+
+    /**
+     * ESCENARIO 3
+     */
+    @When("vaya al agregar un vehiculo con los datos: $datosVehiculo")
+    public void agregarVehiculo(ExamplesTable datosVehiculo) {
+        vehiculoSteps.agregar_vehiculo(datosVehiculo);
+    }
+
 
 }
