@@ -101,7 +101,7 @@ public class NuevaCotizacionPage extends PageObject {
 
         try {
             waitFor($(xpath)).shouldBeVisible();
-            elementos = withTimeoutOf(10, TimeUnit.SECONDS).findAll(By.xpath(xpath));
+            elementos = withTimeoutOf(15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
 
         } catch (NoSuchElementException e) {
             LOGGER.error("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
