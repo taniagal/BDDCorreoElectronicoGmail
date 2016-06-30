@@ -12,20 +12,22 @@ public class InformacionDePolizaMrcDefinitions {
     @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
 
+
+
     @Given("se inicio una nueva suscripcion <numeroCuenta>")
     public void iniciaNuevaSuscripcionCuenta(@Named("numeroCuenta")String numeroCuenta) {
         informacionDePolizaMrcSteps.navegar_barra_superior(numeroCuenta);
         informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
     }
 
-    @When("este expidiendo una poliza de propiedad comercial")
-    public void expidePolizaPropiedadComercial() {
-        // PENDING
+    @When("este expidiendo una poliza de propiedad comercial <nomProducto>")
+    public void expidePolizaPropiedadComercial(@Named("nomProducto")String nomProducto) {
+        informacionDePolizaMrcSteps.selecciona_cotizacion_para_propiedad_comercial(nomProducto);
     }
 
-    @Then("se debe visualizar los datos del tomador y tomador adicional completos")
-    public void datosDelTomadorYAdicional() {
-        // PENDING
+    @Then("se debe visualizar los datos del tomador <tomador>")
+    public void datosDelTomadorYAdicional(@Named("tomador")String tomador) {
+         informacionDePolizaMrcSteps.validacion_de_datos_del_tomador(tomador);
     }
 
     /*

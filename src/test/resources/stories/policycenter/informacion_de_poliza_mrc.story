@@ -8,12 +8,12 @@ Quiero ser capaz de ingresar y visualizar la informacion de la poliza incluyendo
 Scenario: visualizar datos de la poliza
 GivenStories: stories/policycenter/login_policy.story
 Given se inicio una nueva suscripcion <numeroCuenta>
-When este expidiendo una poliza de propiedad comercial
-Then se debe visualizar los datos del tomador y tomador adicional completos
+When este expidiendo una poliza de propiedad comercial <nomProducto>
+Then se debe visualizar los datos del tomador <tomador>
 
 Examples:
-|numeroCuenta|
-|C000888888  |
+|numeroCuenta|nomProducto        |tomador                      |
+|C000888888  |Propiedad comercial|YURLEDYS PAOLA GALLEGO TORRES|
 
 Scenario: Cambiar inicio de vigencia propiedad comercial
 Given se inicio una nueva suscripcion <numeroCuenta>
