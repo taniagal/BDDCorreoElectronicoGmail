@@ -137,6 +137,8 @@ public class  DetallesContactoPage extends Guidewire {
     private WebElementFacade campoTxtIrA;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ContactSearch']/div")
     private WebElementFacade menuItemContactos;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    private WebElementFacade comboBoxDepartamento2;
 
 
     private  String [] dtlContact = new String[15];
@@ -297,9 +299,8 @@ public class  DetallesContactoPage extends Guidewire {
             right.append("estado civil,");
         if(!dtlContact[8].equals(comboBoxTipoFamilia.getText()))
             right.append("tipo de familia,");
-        if(!dtlContact[10].equals(campoTxtTelefonoCelular2.getText())) {
+        if(!dtlContact[10].equals(campoTxtTelefonoCelular2.getText()))
             right.append("telefono celular,");
-        }
         if(!dtlContact[11].equals(campoTxtTelefonoResidencial2.getText()))
             right.append("telefono residencial,");
         if(!dtlContact[12].equals(campoTxtTelefonoTrabajo2.getText()))
@@ -316,7 +317,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void verificarActualizacionJuridico(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelActividadComercial).shouldBePresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(comboBoxActividadComercial).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
             right.append("activida comercial,");
@@ -423,7 +424,7 @@ public class  DetallesContactoPage extends Guidewire {
      * AGREGAR DIRECCION A CONTACTO
      */
     public void validarDatosPantalla() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelPais).shouldBePresent();
+        waitABit(1000);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelPais.isPresent())
             notPresent.append(" pais,");
@@ -473,7 +474,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void validarMensaje(String mensaje) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelActividadComercial).shouldBePresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         assertThat("No se puede ingresar más de una dirección al contacto con el mismo Tipo de dirección",divMensaje.containsText(mensaje));
     }
 }
