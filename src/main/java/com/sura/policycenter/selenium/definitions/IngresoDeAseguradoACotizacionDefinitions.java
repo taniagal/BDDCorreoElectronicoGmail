@@ -9,6 +9,7 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
+
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 public class IngresoDeAseguradoACotizacionDefinitions {

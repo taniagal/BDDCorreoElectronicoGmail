@@ -1,14 +1,13 @@
 package com.sura.policycenter.selenium.pages;
 
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class EdicionContactoAseguradoPage extends PageObject{
 
@@ -87,8 +86,8 @@ public class EdicionContactoAseguradoPage extends PageObject{
         campoPrimerApellido.sendKeys(datosNuevaPersona.get("primerApellido"));
     }
 
-    public void editarDatosNuevaPersonaJuridica(ExamplesTable EdicionPersonaJuridica) {
-        Map<String, String> datosNuevaEmpresa = EdicionPersonaJuridica.getRows().get(0);
+    public void editarDatosNuevaPersonaJuridica(ExamplesTable edicionPersonaJuridica) {
+        Map<String, String> datosNuevaEmpresa = edicionPersonaJuridica.getRows().get(0);
         campoTipoDocumento.shouldBeEnabled();
         campoNumeroDocumento.shouldBeEnabled();
         campoPais.shouldBeEnabled();

@@ -50,8 +50,7 @@ public class BusquedaActividadesDefinitions {
         busquedaActividadesSteps.buscarPorFiltrosUsuarioYPrioridad(usuario, filtroPrioridad);
     }
 
-    @When("quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y estado de actividad" +
-            " <estadoActividad>")
+    @When("quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y estado de actividad <estadoActividad>")
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(@Named("usuario") String usuario,
                                                           @Named("estadoActividad") String estadoActividad) {
         busquedaActividadesSteps.buscarPorFiltrosUsuarioYEstadoDeActividad(usuario, estadoActividad);

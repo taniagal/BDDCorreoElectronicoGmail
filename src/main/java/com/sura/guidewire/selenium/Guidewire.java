@@ -1,6 +1,7 @@
 package com.sura.guidewire.selenium;
 
 import com.google.common.base.Function;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
@@ -13,10 +14,10 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
 
 public class Guidewire extends PageObject {
 
@@ -27,8 +28,6 @@ public class Guidewire extends PageObject {
     WebElementFacade internacional;
     @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
     WebElementFacade idioma;
-    @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
-    private WebElementFacade espaniol;
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
     private WebElementFacade usuario;
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
@@ -41,8 +40,6 @@ public class Guidewire extends PageObject {
     private WebElementFacade btnLogout;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     private WebElementFacade btnLogout2;
-    @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
-    private WebElementFacade lblMisActividades;
 
     public Guidewire(WebDriver driver) {
         super(driver);
@@ -80,10 +77,9 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        waitFor(menu).shouldBeVisible();
-        menu.waitUntilClickable().click();
-        waitABit(1500);
-        menu.withTimeoutOf(3, TimeUnit.SECONDS).waitUntilClickable().click();
+        menu.waitUntilPresent().click();
+        waitABit(2500);
+        menu.click();
         waitABit(500);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         return actions;
@@ -125,8 +121,7 @@ public class Guidewire extends PageObject {
     public void waitUntil(int millis) {
         Integer i = 0;
         Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
-                TimeUnit.MILLISECONDS).pollingEvery(millis,
-                TimeUnit.MILLISECONDS);
+                TimeUnit.MILLISECONDS).pollingEvery(millis,TimeUnit.MILLISECONDS);
         waitUtil.until(new Function<Integer, Boolean>() {
             public Boolean apply(Integer i) {
                 return false;

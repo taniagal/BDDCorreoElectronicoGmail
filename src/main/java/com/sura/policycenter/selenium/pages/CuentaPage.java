@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
-import javax.swing.*;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -49,7 +49,7 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade botonBuscarOrganizacion;
     @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchResultsLV:0:_Select']")
     private WebElementFacade botonSeleccionarOrganizacion;
-    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update']")
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:ForceDupCheckUpdate-btnInnerEl']")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade labelNombreDeCuenta;
@@ -74,11 +74,6 @@ public class CuentaPage extends Guidewire{
         super(driver);
     }
 
-    public void navNuevaCuenta(){
-        actions = deployMenu(menuCuenta);
-        actions.moveToElement(menuNuevaCuenta).click().build().perform();
-    }
-
     public void agregarTipoDocumento(String tipoDocumento, String documento) {
         comboBoxTipoDocumentoNuevaCuenta.waitUntilPresent();
         comboBoxTipoDocumentoNuevaCuenta.clear();
@@ -101,7 +96,7 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(2000);
+        waitABit(3000);
         selectItem(comboBoxCiudad,ciudad);
         waitABit(2000);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
@@ -125,7 +120,8 @@ public class CuentaPage extends Guidewire{
     }
 
     public void buscarPersona(String nombre, String persona){
-        waitABit(1000);
+        waitFor(campoTxtNombreCompania).shouldBePresent();
+        //waitABit(1000);
         campoTxtNombreCompania.sendKeys(nombre);
         botonBuscar.click();
         if("Compania".equals(persona)) {
@@ -135,10 +131,11 @@ public class CuentaPage extends Guidewire{
             botonCrearCuentaNueva.click();
             botonNuevaCuentaPersonal.click();
         }
+        waitABit(1000);
     }
 
     public void verificarCrearCuenta(String nombreCuenta){
-        labelNombreDeCuenta.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelNombreDeCuenta).shouldBePresent();
         assertThat("Falló la creación de la cuenta", labelNombreDeCuenta.containsText(nombreCuenta));
     }
 
@@ -147,19 +144,17 @@ public class CuentaPage extends Guidewire{
     }
 
     public  void verificarEdadMenor(String mensaje){
-        divMensaje.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
     }
 
     public  void verificarMensaje(String mensaje){
-        waitABit(1000);
-        divMensaje.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
-        waitABit(1500);
-        botonEditarCuenta.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
         assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
     }
 }

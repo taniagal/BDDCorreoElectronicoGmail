@@ -45,18 +45,14 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade lblEmailEmpresa;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress1-labelEl']")
     private WebElementFacade lblEmailPersona;
-
     @FindBy(xpath = ".//label[contains(@id,'BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Segmentation-labelEl')]")
     private WebElementFacade lblSegmentacionPer;
-
     @FindBy(xpath = ".//label[contains(@id,'BasicInfoDV:ContactNameInputSet:Segmentation-labelEl')]")
     private WebElementFacade lblSegmentacionJur;
-
     @FindBy(xpath = ".//label[contains(@id,'BasicInfoDV:ContactNameInputSet:Behavior-labelEl')]")
     private WebElementFacade lblComportamientoJur;
     @FindBy(xpath = ".//label[contains(@id,'BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Behavior-labelEl')]")
     private WebElementFacade lblComportamientoPer;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-labelEl']")
     private WebElementFacade lblDireccion;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
@@ -73,7 +69,6 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade lblEstadoCivil;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Profession-labelEl']")
     private WebElementFacade lblProfesion;
-
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Sexo-labelEl']")
     private WebElementFacade lblSexo;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DeathCause-labelEl']")
@@ -82,8 +77,7 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade lblFechaFallecimiento;
     @FindBy(xpath = ".//label[contains(@id,'BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-labelEl')]")
     private WebElementFacade lblTipoTel;
-
-    @FindBy(xpath = ".//div[contains(@id,'BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl')]")
+    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl']")
     private WebElementFacade txtTipoTel;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade txtTelResidencial;
@@ -99,47 +93,34 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade lblTelCelular;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:0']")
     private WebElementFacade lblActividades;
-
     @FindBy(xpath = ".//span[contains(.,'Fecha de vencimiento')]")
     private WebElementFacade lblFechaVencAct;
-
     @FindBy(xpath = ".//span[contains(.,'Prioridad')]")
     private WebElementFacade lblPrioridadAct;
-
     @FindBy(xpath = ".//span[contains(.,'Tema')]")
     private WebElementFacade lblTemaAct;
-
     @FindBy(xpath = ".//span[contains(.,'Asignado a')]")
     private WebElementFacade lblAsignadoAct;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:1']")
     private WebElementFacade lblTerminosPol;
-
     @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div/div")
     private WebElementFacade lblNumPoliza;
-
     @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div[2]/div")
     private WebElementFacade lblProducto;
-
     @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div[3]/div")
     private WebElementFacade lblEstadoPol;
-
     @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div[4]/div")
     private WebElementFacade lblFechaVigPol;
-
     @FindBy(xpath = ".//div[5]/div")
     private WebElementFacade lblFechaExpPol;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:2']")
     private WebElementFacade lblTransPolPendientes;
-
     @FindBy(xpath = ".//div[3]/div/div/div[2]/div")
     private WebElementFacade lblNumTrans;
-
     @FindBy(xpath = ".//div[3]/div/div/div[3]/div")
     private WebElementFacade lblEstadoTrans;
-
     @FindBy(xpath = ".//div[3]/div/div/div[4]/div")
     private WebElementFacade lblNumPolTrans;
-
     @FindBy(xpath = ".//div[3]/div/div/div[5]/div")
     private WebElementFacade lblProductoTrans;
 
@@ -162,14 +143,8 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade txtEstadoCivil;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:Profession-inputEl']")
     private WebElementFacade txtProfesion;
-    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DateOfDeath-inputEl']")
-    private WebElementFacade txtFechaFallecimiento;
-    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DeathCause-inputEl']")
-    private WebElementFacade txtCausaFallecimiento;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:FamilyType-inputEl']")
     private WebElementFacade txtTipoFamilia;
-    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EconomyDependents-inputEl']")
-    private WebElementFacade txtDependientesEconomicos;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress1-inputEl']")
     private WebElementFacade txtEmailPrimario;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress2-inputEl']")
@@ -206,6 +181,8 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade txtTipoDireccion;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressDescription-inputEl']")
     private WebElementFacade txtDescripcionDireccion;
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-inputEl']")
+    private WebElementFacade labelTipoTelefono;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:Update-btnInnerEl']")
     private WebElementFacade btnActualizar;
 
@@ -216,9 +193,8 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     }
 
     public void verInfoResumenCuenta(Map<String, String> infoResumenCuenta) {
-
+        waitForTextToAppear("Resumen de la cuenta",2000);
         String validacion = null;
-
         try {
             MatcherAssert.assertThat(lblResumenCuenta.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblResumenCuenta"))));
             MatcherAssert.assertThat(lblTipoDoc.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoDocumento"))));
@@ -255,13 +231,13 @@ public class OpcionesResumenCuentaPage extends Guidewire {
                 MatcherAssert.assertThat(lblComportamientoPer.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("comportamiento"))));
                 MatcherAssert.assertThat(lblTipoTel.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoTel"))));
 
-                if(txtTipoTel.getText().compareTo("Vivienda") == 0){
+                if(labelTipoTelefono.getText().compareTo("Vivienda") == 0){
                     MatcherAssert.assertThat(lblTelResidencial.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("telResidencial"))));
                     MatcherAssert.assertThat(lblTelCelular.isCurrentlyVisible(), Is.is(Matchers.equalTo(false)));
                     MatcherAssert.assertThat(lblTelTrabajo.isCurrentlyVisible(), Is.is(Matchers.equalTo(false)));
-                } else if(txtTipoTel.getText().compareTo("Trabajo") == 0){
+                } else if(labelTipoTelefono.getText().compareTo("Trabajo") == 0){
                     MatcherAssert.assertThat(lblTelTrabajo.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("telTrabajo"))));
-                } else if(txtTipoTel.getText().compareTo("Movil") == 0){
+                } else if(labelTipoTelefono.getText().compareTo("Movil") == 0){
                     MatcherAssert.assertThat(lblTelCelular.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("telCelular"))));
                 }
             }
@@ -292,20 +268,20 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     }
 
     public void editarResumenCuenta() {
+        waitABit(1500);
+        waitFor(btnEditarCuenta).shouldBeVisible();
         btnEditarCuenta.click();
     }
 
     public void validarCamposEditablesPersona() {
+        waitForTextToAppear("Editar cuenta",1000);
         MatcherAssert.assertThat(txtPrimerNombre.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtSegundoNombre.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtPrimerApellido.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtSegundoApellido.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtProfesion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtEstadoCivil.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
-        MatcherAssert.assertThat(txtFechaFallecimiento.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
-        MatcherAssert.assertThat(txtCausaFallecimiento.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtTipoFamilia.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
-        MatcherAssert.assertThat(txtDependientesEconomicos.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtEmailPrimario.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtEmailSecundario.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtTipoTel.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
@@ -322,6 +298,7 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     }
 
     public void validarCamposEditablesCompania() {
+        waitForTextToAppear("Editar cuenta",1000);
         MatcherAssert.assertThat(txtRazonSocial.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtNombreComercial.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtActEconomica.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
@@ -345,7 +322,8 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     }
 
     public void editarPais(String pais) {
-        waitABit(2000);
+        waitForTextToAppear("Editar cuenta",2000);
+        waitFor(txtPais).shouldBeVisible();
         txtPais.click();
         WebElementFacade itmPais = findBy(".//li[contains(.,'"+pais+"')]");
         itmPais.click();
@@ -354,11 +332,12 @@ public class OpcionesResumenCuentaPage extends Guidewire {
 
     public void validarDepartamento(String departamento) {
         waitABit(4000);
+        waitFor(txtDepartamento).shouldBeVisible();
         MatcherAssert.assertThat(txtDepartamento.getText(), Is.is(Matchers.equalTo(departamento)));
     }
 
     public void editarDepto(String departamento) {
-        waitABit(1000);
+        waitFor(txtDepartamento).shouldBeVisible();
         txtDepartamento.click();
         WebElementFacade itmDepto = findBy(".//li[contains(.,'"+departamento+"')]");
         itmDepto.click();
@@ -367,6 +346,7 @@ public class OpcionesResumenCuentaPage extends Guidewire {
 
     public void validarCiudad(String ciudad) {
         waitABit(4000);
+        waitFor(txtCiudad).shouldBeVisible();
         MatcherAssert.assertThat(txtCiudad.getText(), Is.is(Matchers.equalTo(ciudad)));
     }
 }

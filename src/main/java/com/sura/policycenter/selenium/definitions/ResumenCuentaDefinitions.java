@@ -112,14 +112,12 @@ public class ResumenCuentaDefinitions {
 
     @When("edite el campo pais <pais>")
     public void editarPais(@Named("pais") String pais){
-        resumenCuentaSteps.editarResumenCuenta();
         resumenCuentaSteps.editarPais(pais);
     }
 
     @When("edite el campo departamento <pais> <departamento>")
     public void editarDepto(@Named("pais") String pais,
                             @Named("departamento") String departamento){
-        resumenCuentaSteps.editarResumenCuenta();
         resumenCuentaSteps.editarPais(pais);
         resumenCuentaSteps.editarDepto(departamento);
     }
