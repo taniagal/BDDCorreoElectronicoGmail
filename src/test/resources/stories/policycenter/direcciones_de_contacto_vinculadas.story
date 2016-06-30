@@ -61,13 +61,13 @@ Examples:
 
 Scenario: consultar direccion de un contacto que tiene una direccion asociada a otro contacto
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
-When este en una direccion que esta asociada a otro contacto y la desee editar
+When cuando vincule las direcciones del contacto <nombreContactoUno> y contacto <nombreContactoDos> y la desee editar
 Then me debe mostrar la siguiente informacion:
 |pais|departamento|ciudad|direccion|codigoPostal|tipoDeDireccion|descripcion|
 |Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|91007|Vivienda|Created by the Address Builder with code 0|
 Examples:
-|numeroCuenta|
-|C000484848|
+|numeroCuenta|nombreContactoUno|nombreContactoDos|
+|C000484848|Speedy Glass Repair|CARLOS PERALTA|
 
 Scenario: actualizar direccion solo ingresando campos obligatorios
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>

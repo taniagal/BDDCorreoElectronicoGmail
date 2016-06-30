@@ -17,8 +17,8 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
         direccionesDeContactoVinculadasPage.buscarCuenta(numeroCuenta);
     }
 
-    public void vincularDirecciones() {
-        direccionesDeContactoVinculadasPage.vincularDirecciones();
+    public void vincularDirecciones(String nombreContacto, String nombreContactoDos) {
+        direccionesDeContactoVinculadasPage.vincularDirecciones(nombreContacto, nombreContactoDos);
     }
 
     public void validarInformacion(ExamplesTable resultadoModificacionDireccion) {

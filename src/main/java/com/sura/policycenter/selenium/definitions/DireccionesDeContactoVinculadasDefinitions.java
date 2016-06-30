@@ -18,9 +18,10 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.buscarCuenta(numeroCuenta);
     }
 
-    @When("este en una direccion que esta asociada a otro contacto y la desee editar")
-    public void filtrarPorNumeroCuenta() {
-        direccionesDeContactoVinculadasSteps.vincularDirecciones();
+    @When("cuando vincule las direcciones del contacto <nombreContactoUno> y contacto <nombreContactoDos> y la desee editar")
+    public void filtrarPorNumeroCuenta(@Named("nombreContactoUno") String nombreContactoUno,
+                                       @Named("nombreContactoDos") String nombreContactoDos) {
+        direccionesDeContactoVinculadasSteps.vincularDirecciones(nombreContactoUno, nombreContactoDos);
     }
 
     @Then("me debe mostrar la siguiente informacion: $resultadoModificacionDireccion")
@@ -117,7 +118,7 @@ public class DireccionesDeContactoVinculadasDefinitions {
     @Then("la direccion debe quedar como la ingreso el usuario <direccionUsuario> del contacto <nombreContacto>")
     public void validarDireccionNoEstandarizada(@Named("direccionUsuario") String direccionUsuario,
                                               @Named("nombreContacto") String nombreContacto){
-        direccionesDeContactoVinculadasSteps.validarDireccionEstandarizada(direccionUsuario, nombreContacto);
+        direccionesDeContactoVinculadasSteps.validarDireccionVinculada(direccionUsuario, nombreContacto);
     }
 
     @Then("la direccion <direccionVinculada> fue actualizada <nombreContacto>")
