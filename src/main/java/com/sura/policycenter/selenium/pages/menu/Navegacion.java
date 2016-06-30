@@ -654,8 +654,8 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta() {
-        mnuCuenta.click();
-        waitFor(mnuAccionesCuenta);
+        //mnuCuenta.click();
+        waitFor(mnuAccionesCuenta).waitUntilClickable();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
@@ -1100,15 +1100,6 @@ public class Navegacion extends Guidewire {
         waitABit(300);
         act.moveToElement(mnuAccionCodAgenteNuevo).release(mnuAccionCodAgenteNuevo).click().build().perform();
         return new AdminCodAgenteNuevoPage(getDriver());
-    }
-
-    public CuentaNuevaCotizacionPage irANuevaCotizacion() {
-        waitFor(mnuAccionesCuenta).shouldBeVisible();
-        mnuAccionesCuenta.click();
-        waitForTextToAppear("Nueva cotización");
-        waitFor(mnuNuevaCotizacion).shouldBeVisible();
-        mnuNuevaCotizacion.click();
-        return new CuentaNuevaCotizacionPage(getDriver());
     }
 
     public AdminNuevoGrupoAfinidadPage irAAdminNuevoGrupoAfinidad() {
