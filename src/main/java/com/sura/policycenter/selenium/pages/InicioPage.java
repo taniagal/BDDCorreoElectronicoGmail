@@ -353,6 +353,7 @@ public class InicioPage extends Guidewire {
     public CuentaObtCotizReaseguroPage irACuentaObtCotizReaseguro() {
         return navegacion.irACuentaObtCotizReaseguro();
     }
+    public CuentaNuevaCotizacionPage irANuevaCotizacion() { return navegacion.irANuevaCotizacion();}
     public CuentaObtDatoOficPage irACuentaObtDatoOfic() {
         return navegacion.irACuentaObtDatoOfic();
     }

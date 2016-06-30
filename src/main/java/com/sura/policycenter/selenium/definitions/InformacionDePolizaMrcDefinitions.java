@@ -15,7 +15,7 @@ public class InformacionDePolizaMrcDefinitions {
     @Given("se inicio una nueva suscripcion <numeroCuenta>")
     public void iniciaNuevaSuscripcionCuenta(@Named("numeroCuenta")String numeroCuenta) {
         informacionDePolizaMrcSteps.navegar_barra_superior(numeroCuenta);
-        
+        informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
     }
 
     @When("este expidiendo una poliza de propiedad comercial")

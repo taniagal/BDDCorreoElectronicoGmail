@@ -1102,6 +1102,15 @@ public class Navegacion extends Guidewire {
         return new AdminCodAgenteNuevoPage(getDriver());
     }
 
+    public CuentaNuevaCotizacionPage irANuevaCotizacion() {
+        waitFor(mnuAccionesCuenta).shouldBeVisible();
+        mnuAccionesCuenta.click();
+        waitForTextToAppear("Nueva cotización");
+        waitFor(mnuNuevaCotizacion).shouldBeVisible();
+        mnuNuevaCotizacion.click();
+        return new CuentaNuevaCotizacionPage(getDriver());
+    }
+
     public AdminNuevoGrupoAfinidadPage irAAdminNuevoGrupoAfinidad() {
         mnuAdministracion.click();
         gw.deployMenu(mnuAccionesAdministracion);

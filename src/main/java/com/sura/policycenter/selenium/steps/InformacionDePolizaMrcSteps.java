@@ -20,4 +20,10 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         inicioPage().irACuentaBuscar(numCuenta);
     }
 
+    @Step void navegar_por_las_opciones_de_acciones (){
+        inicioPage().irANuevaCotizacion();
+    }
+
+
+
 }
