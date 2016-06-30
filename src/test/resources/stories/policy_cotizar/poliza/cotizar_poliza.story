@@ -6,7 +6,8 @@ Narrative:
 
 GivenStories: stories/precondiciones/ingreso_a_policycenter.story
 
-Scenario: Validaciones como precondición en la realización de una cotización para el Producto comercial buscando por número de cuenta
+Scenario: Validaciones como precondición en la realización de una cotización para el Producto comercial buscando por
+número de cuenta y persona juridica
 Meta:
 #GivenStories: stories/policycenter/ingresar_a_policyCenter.story#{@id1:login_policycenter_su}
 
@@ -71,18 +72,10 @@ para este cliente y producto. ¿Desea solicitar aprobación?
 Then deberá observar los botones: Aceptar,Cancelar
 Then al seleccionar el botón Cancelar deberá ver la página Nueva cotización
 
-Scenario: Validaciones como precondición en la realización de una cotización para el Producto comercial buscando por
-número de cuenta y persona juridica
-Meta:
-#GivenStories: stories/policycenter/ingresar_a_policyCenter.story#{@id1:login_policycenter_su}
-
 Scenario:  Validaciones como precondición en la realización de una cotización para el Producto comercial con una
 cotizacion ya existente para un agente diferente
 
 Given deseo crear nueva cotización buscando por número de cuenta
-And ya existe una cotización en estado "cotizado" del cliente con número de cuenta C000777777 para el producto
-Multiriesgo corporativo
-And deseo crear nueva cotización buscando por número de cuenta
 When digíte el número de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la búsqueda
 And he seleccionado en el nombre del agente DELIMA MEDELLIN
 Then se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable
@@ -98,8 +91,6 @@ Scenario:  Validaciones como precondición en la realización de una cotización
 cotizacion de un tomador que es riesgo consultable y PEPS
 
 Given deseo crear nueva cotización buscando por número de cuenta
-And existe una cuenta/cliente en PEPS como riesgo consultable para el cliente con número de cuenta C000777778
-And deseo crear nueva cotización buscando por número de cuenta
 When digíte el número de cuenta C000777778 de una persona natural y digite la tecla Tab para activar la búsqueda
 When he seleccionado en el nombre del agente DELIMA MEDELLIN
 Then seleccionar nombre de producto Propiedad comercial
