@@ -5,7 +5,6 @@ import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.model.Aseguradora;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.components.HtmlTable;
 import org.openqa.selenium.Keys;

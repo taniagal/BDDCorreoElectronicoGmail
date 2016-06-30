@@ -1,7 +1,6 @@
 package com.sura.guidewire.selenium;
 
 import com.google.common.base.Function;
-
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
@@ -18,7 +17,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 
 
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
@@ -82,7 +80,7 @@ public class Guidewire extends PageObject {
 
     public Actions deployMenu(WebElementFacade menu) {
         menu.waitUntilPresent().click();
-        waitABit(3000);
+        waitABit(2500);
         menu.click();
         waitABit(500);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();

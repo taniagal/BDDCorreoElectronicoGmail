@@ -21,6 +21,9 @@ public class GwNavegacionUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
+    private GwNavegacionUtil(){
+    }
+
     @SuppressWarnings("SameParameterValue")
     public static Boolean existenOpcionesPorMenuHastaSegundoNivel(WebDriver driver, Keys keyNav, String tipoElementoMenu, ExamplesTable opcionesPorMenu, Boolean darClick) {
         LOGGER.error("GuidewireUtil.existenOpcionesPorMenu");

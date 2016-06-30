@@ -18,7 +18,6 @@ public class SeleccionDeOfertasSteps extends ScenarioSteps {
         return getPages().currentPageAt(InicioPage.class);
     }
 
-
     @Step
     public void iniciarCotizacion() {
         inicioPage().irAEscritorioNuevoEnvio();

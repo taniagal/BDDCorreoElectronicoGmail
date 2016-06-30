@@ -3,6 +3,7 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -13,7 +14,6 @@ import org.slf4j.LoggerFactory;
 
 
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -165,8 +165,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
-        waitABit(3000);
-        txtTipoDoc.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBePresent();
         txtTipoDoc.clear();
         txtTipoDoc.sendKeys(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
@@ -379,8 +378,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void seleccionarContacto() {
-        selectContact.waitUntilPresent();
-        selectContact.waitUntilVisible();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(selectContact).shouldBePresent();
         selectContact.click();
     }
 
