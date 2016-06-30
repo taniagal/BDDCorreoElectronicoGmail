@@ -1,4 +1,8 @@
+Direcciones De Contacto Vinculadas
+
 Meta:
+
+@issue #SUGWUSC-14987
 
 Narrative:
 Como usuario PolicyCenter
@@ -112,12 +116,13 @@ Examples:
 Scenario: validar cuando se actualiza y se desliga la direccion del contacto
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When seleccione el contacto a editar <nombreContacto>
+And seleccione la opcion para editar la direccion
 And ingrese a editar la direccion por <direccion> en la ventana de contactos vinculados y desligue la direccion
 Then las direcciones fueron desvinculas de los contactos:
-|contactoDesligado|direccionDesligada
+|contactoDesligado|direccionDesligada|
+|RICARDO GIRALDO|KR 65 # 48 - 162|
 |CARLOS PERALTA|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
 |Speedy Glass Repair|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
-|RICARDO GIRALDO|KR 65 # 48 - 162|
 
 Examples:
 |numeroCuenta|nombreContacto|direccion|
