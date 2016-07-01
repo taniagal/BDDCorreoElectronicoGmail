@@ -65,7 +65,7 @@ public class BusquedaDePolizaPage extends PageObject{
     }
 
     public void irABuscarPoliza() {
-        menuBuscar.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilPresent().click();
+        menuBuscar.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().click();
         waitForAnyTextToAppear("Buscar", "Búsqueda");
         if(!tituloBuscarPoliza.isVisible()){
             menuBuscarPoliza.click();
@@ -85,7 +85,7 @@ public class BusquedaDePolizaPage extends PageObject{
 
     public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda) {
         try{
-            tablaResultados.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilPresent();
+            tablaResultados.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
             List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
             Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
             MatcherAssert.assertThat(grdNumeroPoliza.getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
@@ -107,7 +107,7 @@ public class BusquedaDePolizaPage extends PageObject{
 
     public void limpiarCampos(){
         try{
-            botonRestablecer.waitUntilPresent().click();
+            botonRestablecer.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().click();
         }catch (StaleElementReferenceException elemento){
             elemento.printStackTrace();
         }
@@ -117,8 +117,8 @@ public class BusquedaDePolizaPage extends PageObject{
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
         this.limpiarCampos();
         try {
-            txtNumeroCuenta.sendKeys(numeroCuenta);
-            btnBuscar.waitUntilClickable();
+            txtNumeroCuenta.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().sendKeys(numeroCuenta);
+            btnBuscar.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
             btnBuscar.click();
         }catch (StaleElementReferenceException elemento){
             elemento.printStackTrace();
@@ -127,14 +127,14 @@ public class BusquedaDePolizaPage extends PageObject{
 
 
     public void validarMensajeDeConsultaSinResultados(String mensaje) {
-        msjValidacion.waitUntilPresent();
+        msjValidacion.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
         MatcherAssert.assertThat(msjValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
     public void buscarPolizaPorProducto(String producto) {
         this.limpiarCampos();
         try {
-            txtProducto.waitUntilClickable();
+            txtProducto.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
             txtProducto.clear();
             txtProducto.sendKeys(producto);
             txtProducto.sendKeys(Keys.ENTER);
