@@ -52,7 +52,8 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade campoTipoDocumento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:ID:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     private WebElementFacade campoNumeroDocumento;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:Address-inputEl']")
+    //@FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:Address-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-inputEl']")
     private WebElementFacade campoDireccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:AddressType-inputEl']")
     private WebElementFacade campoTipoDireccion;
@@ -78,7 +79,7 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade tomadorPrimario;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:ReviewSummaryCV:0:PolicyLineSummaryPanelSet:0:0:drivername-inputEl']")
     private WebElementFacade asegurado;
-    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[2]")
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[3]")
     private WebElementFacade mensajeValidacion1;
 
     public CotizacionDePolizaPage(WebDriver driver){
@@ -92,11 +93,14 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void verDetalleCotizacion() {
+        waitABit(1500);
         if(tituloDePagina.isPresent()){
-            waitFor(tituloDePagina).shouldBeVisible();
+            //waitFor(tituloDePagina).shouldBeVisible();
+            waitForTextToAppear(tituloDePagina.getText(),2000);
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
         }else if(tituloCalificacion.isPresent()){
-            waitFor(tituloCalificacion).shouldBeVisible();
+            //waitFor(tituloCalificacion).shouldBeVisible();
+            waitForTextToAppear(tituloCalificacion.getText(),2000);
             MatcherAssert.assertThat(tituloCalificacion.getText(), Is.is(Matchers.equalTo("Calificación")));
         }
         /*waitFor(tituloDePagina).shouldBeVisible();
@@ -182,7 +186,7 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarDireccionTomador(String direccion) {
-        //waitForTextToAppear("Cotización", 2000);
+        //waitForTextToAppear("Cotización", 4000);
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
 }

@@ -54,6 +54,11 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.ingresarARevisionPoliza();
     }
 
+    @When("estoy expidiendo una poliza de autos")
+    public void accionarNuevaCotizacion(){
+
+    }
+
     @SuppressWarnings("EmptyMethod")
     @When("el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
     @Manual
