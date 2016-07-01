@@ -68,7 +68,7 @@ Examples:
 |tipoCuenta|numCuenta  |pais        |departamento  |ciudad      |
 |Compañía  |C010478975 |Colombia    |ANTIOQUIA     |            |
 
-Scenario: Editar cuenta - Dirección estandarizada
+Scenario: Editar cuenta - Direccion estandarizada
 Meta:
 @Manual
 Given estoy en el resumen de una cuenta <numCuenta> de tipo persona juridica <tipoCuenta>
@@ -79,7 +79,7 @@ Examples:
 |tipoCuenta|numCuenta  |direccion       |
 |Compañía  |C010478975 |CRA 65 # 40 - 50|
 
-Scenario: Editar cuenta - Dirección no estandarizada
+Scenario: Editar cuenta - Direccion no estandarizada
 Meta:
 @Manual
 Given estoy en el resumen de una cuenta <numCuenta> de tipo persona juridica <tipoCuenta>
