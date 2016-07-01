@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
@@ -33,6 +34,9 @@ public class NuevaCotizacionPage extends PageObject {
     private List<AgenteModel> listaAgentesModel = null;
     private String nombreAgente;
     private List<WebElementFacade> listaDeProductosElement;
+
+    @FindBy (id = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div")
+    WebElementFacade mng;
 
     public static final String TITULO_PAGINA = "//span[@id='NewSubmission:NewSubmissionScreen:ttlBar']";
     public static final String TITULO_PAGINA_SIGUIENTE = "//span[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:ttlBar']";
@@ -94,9 +98,10 @@ public class NuevaCotizacionPage extends PageObject {
     public List<WebElementFacade> elementos(String xpath) {
         List<WebElementFacade> elementos = null;
 
+
         try {
             waitFor($(xpath)).shouldBeVisible();
-            elementos = withTimeoutOf(10, TimeUnit.SECONDS).findAll(By.xpath(xpath));
+            elementos = withTimeoutOf(15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
 
         } catch (NoSuchElementException e) {
             LOGGER.error("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
@@ -184,7 +189,6 @@ public class NuevaCotizacionPage extends PageObject {
         WebElementFacade producto = listaDeProductosElement.get(indiceDelProducto);
         WebElementFacade btnSeleccionar = producto.findBy("td/div/a");
         btnSeleccionar.click();
-
     }
 
 
@@ -209,11 +213,12 @@ public class NuevaCotizacionPage extends PageObject {
         elemento(TXT_NOMBRE_AGENTE).click();
         // TODO: 08/06/2016 COmo usar el de el impl bien??? para hacer el assertion si esta vacio el combo
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(CBO_NOMBRE_AGENTE));
+        listaAgentesModel = new ArrayList<AgenteModel>();
 
         if (!listaNombresAgentesElement.isEmpty()) {
             for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
                 String[] agenteArray = agenteElemento.getText().split(">");
-                Integer codigo = Integer.parseInt(agenteArray[1].trim());
+                String codigo = agenteArray[1];
                 String nombre = agenteArray[0];
 
                 if (agenteArray.length == 2) {
@@ -314,16 +319,18 @@ public class NuevaCotizacionPage extends PageObject {
     }
 
     public Boolean validarOcurrenciaDeMensajeDeAplicacion(String mensajesApp) {
+
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado;
         List<WebElementFacade> divsMensajes = elementos(MENSAJES_DE_INFORMACION);
 
         for (WebElementFacade div : divsMensajes) {
             mensajeMostrado = div.getText();
-            if (mensajeMostrado.toLowerCase().contains(mensajesApp.split("\n")[0].toLowerCase()) ||
-                    mensajeMostrado.toLowerCase().contains(mensajesApp.split("\n")[1].toLowerCase())) {
-                existeOcurrencia = Boolean.TRUE;
-                break;
+            for(String etiqueta : mensajesApp.split("|")){
+                if (mensajeMostrado.toLowerCase().contains(etiqueta)) {
+                    existeOcurrencia = Boolean.TRUE;
+                    break;
+                }
             }
         }
 

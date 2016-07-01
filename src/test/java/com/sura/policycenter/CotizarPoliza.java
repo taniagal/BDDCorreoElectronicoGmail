@@ -1,4 +1,6 @@
 package com.sura.policycenter;
 
-public class CotizarPoliza {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class CotizarPoliza extends SerenityStory {
 }
