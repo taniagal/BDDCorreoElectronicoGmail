@@ -222,6 +222,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void editarDireccion(String direccion) {
+        WebElementFacade campoDireccionDetalle = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']");
         campoDireccionDetalle.clear();
         campoDireccionDetalle.sendKeys(direccion);
         botonActualizarContacto.click();
@@ -241,10 +242,11 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
     public void validarLongitudDelCampoDireccion(String direccionOk) {
         this.seleccionarUnContacto("RICARDO GIRALDO");
+        WebElementFacade campoDireccionDetalle = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']");
         Integer longitudCampo = campoDireccionDetalle.getValue().length();
         MatcherAssert.assertThat(longitudCampo.toString(), Is.is(Matchers.equalTo(direccionOk)));
         linkVolverAContacto.click();
-        botonAceptarMensaje.waitUntilPresent().click();
+        botonAceptarMensaje.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
     }
 
     public void editarDireccionCampoPais(String pais) {
