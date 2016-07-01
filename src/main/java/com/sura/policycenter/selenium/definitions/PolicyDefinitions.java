@@ -7,23 +7,30 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-/**
- * Created by jorghome on 16/03/2016.
- */
+@SuppressWarnings("WeakerAccess")
 public class PolicyDefinitions {
 
     @Steps
-    PolicySteps pcs;
-
+    private PolicySteps pcs;
 
     @Given("el usuario ingresa a la pagina de autenticacion de PolicyCenter")
     public void open() {
         pcs.open();
     }
 
+    @Given("el usuario ingresa a la pagina de autenticacion de PolicyCenter - Seus")
+    public void openSeus() {
+        pcs.openSeus();
+    }
+
     @When("el usuario ingresa username <usr> y password <pass>")
     public void login(@Named("usr") String user, @Named("pass") String password) {
         pcs.login(user, password);
+    }
+
+    @When("el usuario ingresa pais <country>, username <usr> y password <pass>")
+    public void login(@Named("country") String country, @Named("usr") String user, @Named("pass") String password) {
+        pcs.loginSeus(country ,user, password);
     }
 
     @Then("el usuario deberia ver la pagina de inicio correspondiente a su rol <message>")
@@ -40,7 +47,6 @@ public class PolicyDefinitions {
     public void logout() {
         pcs.logout();
     }
-
 }
 
 

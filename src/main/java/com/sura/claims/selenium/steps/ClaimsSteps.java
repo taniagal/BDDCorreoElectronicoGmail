@@ -1,21 +1,17 @@
 package com.sura.claims.selenium.steps;
 
 import com.sura.claims.selenium.pages.AbrirApp;
-import com.sura.claims.selenium.pages.Escritorio;
+import com.sura.claims.selenium.pages.Reclamacion;
 import com.sura.guidewire.selenium.Guidewire;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-/**
- * Created by edwabuac on 15/04/2016.
- */
-
 public class ClaimsSteps extends ScenarioSteps{
-    Guidewire gw;
-    AbrirApp abrir;
-    Escritorio escritorio;
 
+    private final Guidewire gw = new Guidewire(getDriver());
+    private final AbrirApp abrirApp = new AbrirApp(getDriver());
+    private final Reclamacion reclamacion = new Reclamacion(getDriver());
 
     public ClaimsSteps(Pages pages) {
         super(pages);
@@ -23,7 +19,7 @@ public class ClaimsSteps extends ScenarioSteps{
 
     @Step
     public void open() {
-        abrir.open();
+        abrirApp.open();
     }
 
     @Step
@@ -32,8 +28,14 @@ public class ClaimsSteps extends ScenarioSteps{
     }
 
     @Step
-    public void assertion(String element) {
-        escritorio.assertion(element);
+    public void llenarReclamacion(String npoliza) {
+        reclamacion.llenarReclamacion(npoliza);
     }
+
+    @Step
+    public void logout() {
+        gw.logout();
+    }
+
 
 }
