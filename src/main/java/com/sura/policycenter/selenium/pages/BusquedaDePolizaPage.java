@@ -148,7 +148,7 @@ public class BusquedaDePolizaPage extends PageObject{
     public void buscarPolizaPorAgente(String agente) {
         this.limpiarCampos();
         try {
-            txtAgente.sendKeys(agente);
+            txtAgente.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().sendKeys(agente);
             btnBuscar.click();
         }catch (StaleElementReferenceException elemento){
             elemento.printStackTrace();
@@ -158,7 +158,7 @@ public class BusquedaDePolizaPage extends PageObject{
     public void buscarPolizaPorCodigoAgente(String codigoAgente) {
         this.limpiarCampos();
         try{
-            txtCodigoAgente.sendKeys(codigoAgente);
+            txtCodigoAgente.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().sendKeys(codigoAgente);
             btnBuscar.click();
         }catch (StaleElementReferenceException elemento){
             elemento.printStackTrace();
@@ -168,7 +168,7 @@ public class BusquedaDePolizaPage extends PageObject{
     public void buscarPolizaPorNumeroCuentaYProducto(String numeroCuenta, String producto) {
         this.limpiarCampos();
         try {
-            txtNumeroCuenta.sendKeys(numeroCuenta);
+            txtNumeroCuenta.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().sendKeys(numeroCuenta);
             txtProducto.clear();
             txtProducto.sendKeys(producto);
             txtProducto.sendKeys(Keys.ENTER);
@@ -181,7 +181,7 @@ public class BusquedaDePolizaPage extends PageObject{
     public void buscarPorNumerocuentaYAgente(String numeroCuenta, String agente) {
         this.limpiarCampos();
         try {
-            txtNumeroCuenta.sendKeys(numeroCuenta);
+            txtNumeroCuenta.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().sendKeys(numeroCuenta);
             txtAgente.sendKeys(agente);
             btnBuscar.click();
         }catch (StaleElementReferenceException elemento){
@@ -192,7 +192,7 @@ public class BusquedaDePolizaPage extends PageObject{
     public void buscarPolizaPorNumeroCuentaYCodigoAgente(String numeroCuenta, String codigoAgente) {
         this.limpiarCampos();
         try{
-            txtNumeroCuenta.sendKeys(numeroCuenta);
+            txtNumeroCuenta.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().sendKeys(numeroCuenta);
             txtCodigoAgente.sendKeys(codigoAgente);
             btnBuscar.click();
         }catch (StaleElementReferenceException elemento){
@@ -203,7 +203,7 @@ public class BusquedaDePolizaPage extends PageObject{
     public void buscarPolizaPorNumeroCuentaYDosOpcionales(String numeroCuenta, String producto, String codigoAgente) {
         this.limpiarCampos();
         try{
-            txtNumeroCuenta.sendKeys(numeroCuenta);
+            txtNumeroCuenta.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().sendKeys(numeroCuenta);
             txtProducto.clear();
             txtProducto.sendKeys(producto);
             txtProducto.sendKeys(Keys.ENTER);
