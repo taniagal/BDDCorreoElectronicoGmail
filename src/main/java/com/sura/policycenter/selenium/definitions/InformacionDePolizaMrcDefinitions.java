@@ -27,7 +27,7 @@ public class InformacionDePolizaMrcDefinitions {
 
     @Then("se debe visualizar los datos del tomador <tomador>")
     public void datosDelTomadorYAdicional(@Named("tomador")String tomador) {
-         informacionDePolizaMrcSteps.validacion_de_datos_del_tomador(tomador);
+         informacionDePolizaMrcSteps.valida_datos_del_tomador(tomador);
     }
 
     /*
@@ -36,17 +36,17 @@ public class InformacionDePolizaMrcDefinitions {
 
     @When("modifique la fecha de inicio de vigencia de la poliza <fechaInicioVigencia>")
     public void modificaFechaInicioFechaFin(@Named("fechaInicioVigencia")String fechaInicioVigencia) {
-        // PENDING
+         informacionDePolizaMrcSteps.ingresar_fecha_de_vigencia(fechaInicioVigencia);
     }
 
     @Then("se debe mostrar un mensaje <mensaje> de error")
     public void mostarMensaError(@Named("mensaje")String mensaje) {
-        // PENDING
+        informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
     }
 
     @Then("bloquear la operacion")
     public void bloqueoDeAplicacion() {
-        // PENDING
+        informacionDePolizaMrcSteps.bloqueo_de_aplicacion();
     }
 
     /*
@@ -55,13 +55,14 @@ public class InformacionDePolizaMrcDefinitions {
 
     @When("quiera agregar un tomador adicional que es riesgo consultable <cedula>")
     public void tomadorAdicionalRiesgoConsultabale(@Named("cedula")String cedula) {
-
+         informacionDePolizaMrcSteps.ingresar_tomador_adicional(cedula);
     }
 
     @Then("se debe mostrar un mensaje de error <mensaje> <mensaje2>")
     public void mensajesDeErrorRiesgosYPeps(@Named("mensaje")String mensaje,
                                             @Named("mensaje2")String mensaje2) {
-
+        informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
+        informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje2);
     }
 
 

@@ -34,9 +34,26 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validacion_de_datos_del_tomador (String tomador){
+    public void valida_datos_del_tomador (String tomador){
+        opcionesInformacionPolizaMrcPage.validaNombreTomador(tomador);
+    }
+
+    @Step
+    public void ingresar_fecha_de_vigencia(String fechaInicioVigencia){
+        opcionesInformacionPolizaMrcPage.ingresarFechaVigencia(fechaInicioVigencia);
+    }
+
+    @Step
+    public void valida_mensaje_en_pantalla (String mensaje){
+        opcionesInformacionPolizaMrcPage.validaMensajeEnPantalla(mensaje);
 
     }
 
+    public void bloqueo_de_aplicacion() {
+        opcionesInformacionPolizaMrcPage.bloqueaSiguiente();
+    }
 
+    public void ingresar_tomador_adicional(String cedula) {
+        opcionesInformacionPolizaMrcPage.ingresarTomadorAdicional(cedula);
+    }
 }
