@@ -1,4 +1,8 @@
+Expedicion De Poliza
+
 Meta:
+
+@issue #SUGWUSC-15128
 
 Narrative:
 Como usuario de policy center
@@ -17,7 +21,6 @@ Examples:
 !-- PEPS: Asegurado - Tomador - Tomador adicional - Intereses adicionales
 |22222228|ANTONIO RESTREPO con el(los) rol(es) (CONDUCTOR) es un riesgo no estándar y debe ser autorizado.|
 |22222238|FRANK RAMIREZ ALZATE con el(los) rol(es) (ASEGURADO NOMBRADO, TITULAR DE LA CUENTA) es un riesgo no estándar y debe ser autorizado.|
-|22222228|ANTONIO RESTREPO
 !-- Riesgos Consultables: Tomador - Asegurado - Placa, motor, chasis
 |22222210|JOSE PAEZ ALZATE, El tomador es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 |22222227|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
