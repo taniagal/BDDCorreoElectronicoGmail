@@ -6,95 +6,95 @@ Narrative:
 
 GivenStories: stories/precondiciones/ingreso_a_policycenter.story
 
-Scenario: Validaciones como precondición en la realización de una cotización para el Producto comercial buscando por
-número de cuenta y persona juridica
+Scenario: Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial buscando por
+numero de cuenta y persona juridica
 Meta:
 #GivenStories: stories/policycenter/ingresar_a_policyCenter.story#{@id1:login_policycenter_su}
 
-Given deseo crear nueva cotización buscando por número de cuenta
+Given deseo crear nueva cotizacion buscando por numero de cuenta
 
-When digíte el número de cuenta C010478975 de una persona jurídica y digite la tecla Tab para activar la búsqueda
+When digite el numero de cuenta C010478975 de una persona juridica y digite la tecla Tab para activar la busqueda
 Then espero ver el nombre de la persona jurídica VARIEDADES YURLEDYS S.A de la cuenta existente junto con la etiqueta
 Razón social
 
 When se ingrese la primera letra del nombre del agente D
-Then se deberá activar la lista de los nombres de los agentes que empiecen por dicha letra
-And validar que se autocompleta el campo nombre y sólo aparece el nombre del agente en este campo y el código respectivo
- en el campo código de agente
+Then se debera activar la lista de los nombres de los agentes que empiecen por dicha letra
+And validar que se autocompleta el campo nombre y solo aparece el nombre del agente en este campo y el codigo respectivo
+ en el campo codigo de agente
 
 When he seleccionado en el nombre del agente DELIMA MEDELLIN
-And se muestre la fecha de efecto de la cotización
-Then se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable
-Then se mostrarán en orden alfabetico los:
+And se muestre la fecha de efecto de la cotizacion
+Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
+Then se mostraran en orden alfabetico los:
 |productos          |
 |Auto personal      |
 |Propiedad comercial|
 
-Scenario: Validaciones como precondición en la realización de una cotización para el Producto comercial buscando
-por número de cuenta y persona natural
+Scenario: Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial buscando
+por numero de cuenta y persona natural
 
-Given deseo crear nueva cotización buscando por número de cuenta
+Given deseo crear nueva cotizacion buscando por numero de cuenta
 
-When digíte el número de cuenta C000888888 de una persona natural y digite la tecla Tab para activar la búsqueda
+When digite el numero de cuenta C000888888 de una persona natural y digite la tecla Tab para activar la busqueda
 Then espero ver el nombre de la persona natural YURLEDYS GALLEGO TORRES de la cuenta existente junto con la etiqueta
 Nombre
 
 When se ingrese la primera letra del nombre del agente D
-Then se deberá activar la lista de los nombres de los agentes que empiecen por dicha letra
-And validar que se autocompleta el campo nombre y sólo aparece el nombre del agente en este campo y el código
-respectivo en el campo código de agente
+Then se debera activar la lista de los nombres de los agentes que empiecen por dicha letra
+And validar que se autocompleta el campo nombre y solo aparece el nombre del agente en este campo y el codigo
+respectivo en el campo codigo de agente
 
 When he seleccionado en el nombre del agente DELIMA MEDELLIN
-And se muestre la fecha de efecto de la cotización
-Then se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable
-Then se mostrarán en orden alfabetico los:
+And se muestre la fecha de efecto de la cotizacion
+Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
+Then se mostraran en orden alfabetico los:
 |productos          |
 |Auto personal      |
 |Propiedad comercial|
 
 
-Scenario:  Validaciones como precondición en la realización de una cotización para el Producto comercial con una
+Scenario:  Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial con una
 cotizacion ya existente para un mismo agente
 
-Given deseo crear nueva cotización buscando por número de cuenta
-And ya existe una cotización en estado "cotizado" del cliente con número de cuenta C000777777 para el producto
+Given deseo crear nueva cotizacion buscando por numero de cuenta
+And ya existe una cotización en estado "cotizado" del cliente con numero de cuenta C000777777 para el producto
 Multiriesgo corporativo
-When digíte el número de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la búsqueda
+When digite el numero de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la busqueda
 And he seleccionado en el nombre del agente Internal Producer Code - 3
-Then se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable
-Then se mostrarán en orden alfabetico los:
+Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
+Then se mostraran en orden alfabetico los:
 |productos          |
 |Auto personal      |
 |Propiedad comercial|
 Then seleccionar nombre de producto Propiedad comercial
-Then deberá observar un mensaje emergente de información: Ya existe la cotización # 22223226 y se encuentra en proceso
+Then debera observar un mensaje emergente de informacion: Ya existe la cotización # 22223226 y se encuentra en proceso
 para este cliente y producto. ¿Desea solicitar aprobación?
-Then deberá observar los botones: Aceptar,Cancelar
+Then debera observar los botones: Aceptar,Cancelar
 Then al seleccionar el botón Cancelar deberá ver la página Nueva cotización
 
-Scenario:  Validaciones como precondición en la realización de una cotización para el Producto comercial con una
+Scenario:  Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial con una
 cotizacion ya existente para un agente diferente
 
-Given deseo crear nueva cotización buscando por número de cuenta
-When digíte el número de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la búsqueda
+Given deseo crear nueva cotizacion buscando por numero de cuenta
+When digite el numero de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la busqueda
 And he seleccionado en el nombre del agente DELIMA MEDELLIN
-Then se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable
-Then se mostrarán en orden alfabetico los:
+Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
+Then se mostraran en orden alfabetico los:
 |productos          |
 |Auto personal      |
 |Propiedad comercial|
 Then seleccionar nombre de producto Propiedad comercial
-Then deberá observar un mensaje de error: El cliente JORGE PAISA ya tiene una cotización en curso para el producto
+Then debera observar un mensaje de error: El cliente JORGE PAISA ya tiene una cotización en curso para el producto
 seleccionado para la oficina OFICINA TUYA
 
-Scenario:  Validaciones como precondición en la realización de una cotización para el Producto comercial con una
+Scenario:  Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial con una
 cotizacion de un tomador que es riesgo consultable y PEPS
 
-Given deseo crear nueva cotización buscando por número de cuenta
-When digíte el número de cuenta C000777778 de una persona natural y digite la tecla Tab para activar la búsqueda
+Given deseo crear nueva cotizacion buscando por numero de cuenta
+When digite el numero de cuenta C000777778 de una persona natural y digite la tecla Tab para activar la busqueda
 When he seleccionado en el nombre del agente DELIMA MEDELLIN
 Then seleccionar nombre de producto Propiedad comercial
-Then deberá observar un mensaje de error: FRANK RAMIREZ ALZATE, El tomador es un riesgo no es estandar y debe ser
+Then debera observar un mensaje de error: FRANK RAMIREZ ALZATE, El tomador es un riesgo no es estandar y debe ser
 analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial. |
 FRANK RAMIREZ ALZATE,El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal
 
