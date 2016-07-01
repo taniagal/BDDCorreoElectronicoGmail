@@ -10,11 +10,10 @@ Profesion, Estado civil, Tipo familia,  Telefono primario, Telefono celular y Co
 
 Para el contacto tipo persona juridica esta informacion debe ser Razon social, Nombre comercial, Tipo de documento, Numero de
 documento, Actividad economica, Numero de empleados, Valor de activos, ventas anuales, Telefono de la oficina, Fax,
-Correo electronico primario
+Correo electronico primario.
 
 Scenario: ver informacion detallada de un contacto tipo persona natural.
 
-GivenStories: stories/policycenter/login_policy.story
 Given tengo un contacto con <tipo_documento> c. <documento>
 When quiera ver informacion detallada del contacto con <tipo_documento> c. <documento>
 Then se debe ver minimo la siguiente informacion definida para el panel de detalles de persona narural
@@ -25,7 +24,6 @@ Examples:
 
 Scenario: ver informacion detallada de un contacto tipo persona juridica.
 
-GivenStories: stories/policycenter/login_policy.story
 Given tengo un contacto con <tipo_documento> c. <documento>
 When quiera ver informacion detallada del contacto con <tipo_documento> c. <documento>
 Then se debe ver minimo la siguiente informacion definida para el panel de detalles de persona juridica

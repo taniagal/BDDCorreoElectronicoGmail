@@ -11,6 +11,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.anyOf;
@@ -28,11 +32,12 @@ public class Guidewire {
 	@Before
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-		driver = new ChromeDriver();
+        driver = new ChromeDriver();
         act = new Actions(driver);
         wait = new WebDriverWait(driver, 1000);
-		baseUrl = "http://dllocoreseguros.suramericana.com:7003";
-		driver.manage().window().maximize();
+        Properties prop = loadProperty();
+		baseUrl = prop.getProperty("url");
+        driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
@@ -47,6 +52,30 @@ public class Guidewire {
     public void cargaDeDatos() throws Exception {
         login("pedrvevi","pedrvevi");
         cargarDatos();
+    }
+
+    public Properties loadProperty() throws Exception {
+
+        Properties prop = new Properties();
+        InputStream input = null;
+
+        try {
+
+            input = new FileInputStream("src/main/resources/gradle.properties");
+            prop.load(input);
+        }
+        catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return prop;
     }
 
     public void cargarDatos() throws Exception {
