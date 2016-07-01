@@ -39,7 +39,7 @@ And el campo ciudad debe tener el valor <ciudad>
 
 Examples:
 |numeroCuenta|nombreContacto|pais|departamento|ciudad|
-|C000484848|RICARDO GIRALDO|Estados Unidos|<ninguno>|<ninguno>|
+|C000484848|RICARDO GIRALDO|Colombia|<ninguno>|<ninguno>|
 
 Scenario: Edicion del campo Departamento validando que el campo ciudad se actualizan a <ninguno>
 When ingrese a editar la direccion e ingrese el pais <pais>
