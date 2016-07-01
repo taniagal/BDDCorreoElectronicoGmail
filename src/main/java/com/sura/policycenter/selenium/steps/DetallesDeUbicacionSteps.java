@@ -18,40 +18,45 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void irANuevaPoliza(String cuenta, String organizacion, String agente){
-        inicioPage().irANuevoEnvio();
-        detallesDeUbicacionPage.agregarDatos(cuenta,organizacion,agente);
-        detallesDeUbicacionPage.irAUbicacion();
+    public void ir_a_nueva_poliza(String cuenta, String producto){
+        detallesDeUbicacionPage.irANuevaCotizacion();
+        detallesDeUbicacionPage.agregarDatos(cuenta,producto);
     }
 
     @Step
     public void validarCamposnuevos(){
+        detallesDeUbicacionPage.irAUbicacion();
         detallesDeUbicacionPage.validarCamposNuevos();
     }
 
     @Step
-    public void agregarUbicacion(String descripcion, String actividad){
+    public void agregar_ubicacion(String descripcion, String actividad){
        detallesDeUbicacionPage.agregarUbicacion(descripcion, actividad);
     }
 
     @Step
-    public void agregarDireccion(String direccion, String departamento, String ciudad) {
+    public void agregar_direccion(String direccion, String departamento, String ciudad) {
         detallesDeUbicacionPage.agregarDireccion(direccion, departamento, ciudad);
     }
 
     @Step
-    public void validarIngresoUbicacion(){
-        detallesDeUbicacionPage.validarIngresoDeUbicacion();
-        waitABit(5000);
+    public void validar_campos_nuevos(){
+        detallesDeUbicacionPage.irAUbicacion();
+        detallesDeUbicacionPage.validarCamposNuevos();
     }
 
     @Step
-    public void verificarMensaje(String mensaje) {
+    public void validar_ingreso_ubicacion(){
+        detallesDeUbicacionPage.validarIngresoDeUbicacion();
+    }
+
+    @Step
+    public void verificar_mensaje(String mensaje) {
         detallesDeUbicacionPage.verificarMensaje(mensaje);
     }
 
     @Step
-    public void verificarMensajeDireccion(String mensaje) {
+    public void verificar_mensaje_direccion(String mensaje) {
         detallesDeUbicacionPage.verificarMensajeDireccion(mensaje);
     }
 }

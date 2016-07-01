@@ -18,26 +18,26 @@ public class DetallesDeUbiacionDefinitions {
     /**
      * ESCENARIO 1
      */
-    @Given("estoy cotizando una poliza de MRC en cuenta <cuenta>, organizacion <organizacion> y agente <agente>")
-    public void agregarPoliza(@Named("cuenta")String cuenta,@Named("organizacion")String organizacion,@Named("agente")String agente) {
+    @Given("estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>")
+    public void agregarPoliza(@Named("cuenta")String cuenta,@Named("producto")String producto) {
         loginSteps.login();
-        detallesDeUbicacionSteps.irANuevaPoliza(cuenta,organizacion,agente);
-        detallesDeUbicacionSteps.validarCamposnuevos();
+        detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta,producto);
     }
 
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>")
     public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad){
-        detallesDeUbicacionSteps.agregarDireccion(direccion, departamento, ciudad);
+        detallesDeUbicacionSteps.validar_campos_nuevos();
+        detallesDeUbicacionSteps.agregar_direccion(direccion, departamento, ciudad);
     }
 
     @When("descripcion <descripcion>, actividad economica <actividad>")
     public void agregarUbicacion(@Named("actividad")String actividad, @Named("descripcion")String descripcion){
-        detallesDeUbicacionSteps.agregarUbicacion(descripcion, actividad);
+        detallesDeUbicacionSteps.agregar_ubicacion(descripcion, actividad);
     }
 
     @Then("espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaciones la nueva ubicaciOn ingresada")
     public void verificarUbicacion(){
-        detallesDeUbicacionSteps.validarIngresoUbicacion();
+        detallesDeUbicacionSteps.validar_ingreso_ubicacion();
         loginSteps.close();
     }
 
@@ -47,7 +47,8 @@ public class DetallesDeUbiacionDefinitions {
      */
     @Then("que se muestre el mensaje <mensaje>")
     public void verificarMensaje(@Named("mensaje")String mensaje){
-        detallesDeUbicacionSteps.verificarMensaje(mensaje);
+        //detallesDeUbicacionSteps.verificar_mensaje(mensaje);
+        //Eliminaron el doomie de riesgos consultables.
         loginSteps.close();
     }
 
@@ -57,7 +58,8 @@ public class DetallesDeUbiacionDefinitions {
      */
     @Then("que se muestre el mensaje de direccion <mensaje>")
     public void verificarMensajeDireccion(@Named("mensaje")String mensaje){
-        detallesDeUbicacionSteps.verificarMensajeDireccion(mensaje);
+        //detallesDeUbicacionSteps.verificar_mensaje_direccion(mensaje);
+        //Desactivaron las validaciones de direcciones en locations
         loginSteps.close();
     }
 }
