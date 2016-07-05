@@ -27,6 +27,8 @@ public class CotizacionDePolizaDefinitions {
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
         infoCotizacionPoliza.put("vigenciaPoliza", "Vigencia de la póliza");
         infoCotizacionPoliza.put("tomador", "Tomador");
+        infoCotizacionPoliza.put("tipoDocumento", "Tipo documento");
+        infoCotizacionPoliza.put("numeroDocumento", "Número documento");
         infoCotizacionPoliza.put("direccion", "Dirección");
         infoCotizacionPoliza.put("tipoDireccion", "Tipo de dirección");
         infoCotizacionPoliza.put("descripcionDireccion", "Descripción de dirección");
@@ -54,9 +56,14 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.ingresarARevisionPoliza();
     }
 
-    @When("estoy expidiendo una poliza de autos")
-    public void accionarNuevaCotizacion(){
+    @When("ingrese a la cotizacion")
+    public void ingresarACotizacion(){
+        cotizacionDePolizaSteps.ingresarACotizacion();
+    }
 
+    @When("el tipo de riesgo es CHASIS")
+    public void validarTipoRiesgoChasis(){
+        cotizacionDePolizaSteps.validarTipoRiesgo();
     }
 
     @SuppressWarnings("EmptyMethod")
@@ -87,6 +94,12 @@ public class CotizacionDePolizaDefinitions {
     public void validarCotizacionDuplicada(@Named("asegurado") String asegurado,
                                            @Named("placa") String placa){
         cotizacionDePolizaSteps.validarDatosCotizacionPEP(asegurado, placa);
+    }
+
+    @When("ya existe una cotizacion para el mismo Asegurado (Numero de identificacion, Tipo de identificacion, diferente asesor\n" +
+            "y mismo numero de placa)")
+    public void validarExclusividad(){
+        cotizacionDePolizaSteps.validarTipoRiesgo();
     }
 
     @Then("debo ver la siguiente informacion $informacionCotizacion")
@@ -121,10 +134,29 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
     }
 
+    @Then("no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensaje> que indique el chasis es un riesgo")
+    public void validarBloqueoChasis(@Named("mensaje") String mensaje){
+        cotizacionDePolizaSteps.validarBloqueoChasis(mensaje);
+    }
+
+    @Then("se debe mostrar un mensaje  <mensaje >que indique \"El cliente (nombre del Aegurado) ya tiene una cotizacion en curso para\n" +
+            "el producto seleccionado para la oficina (nombre de la oficina que se ingreso en la primera cotizacion)”,\n" +
+            "con dos opciones : Solicitar Aprobacion y cancelar")
+    public void validarBloqueoPorExclusividad(@Named("mensaje") String mensaje){
+        cotizacionDePolizaSteps.validarBloqueoPorExclusividad(mensaje);
+    }
+
     @SuppressWarnings("EmptyMethod")
     @Then("no se debe permitir continuar con la cotizacion, no se debe mostrar ningun valor de cotizacion al cliente")
     @Manual
     public void thenValidarBloqueo(){
+        //Se ejecuta manualmente
+    }
+
+    @SuppressWarnings("EmptyMethod")
+    @Then("no se debe permitir continuar con la cotizacion y mostrar un mensaje")
+    @Manual
+    public void thenMostrarMensaje(){
         //Se ejecuta manualmente
     }
 }

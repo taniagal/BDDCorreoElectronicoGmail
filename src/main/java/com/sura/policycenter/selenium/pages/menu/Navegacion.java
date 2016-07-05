@@ -383,7 +383,8 @@ public class Navegacion extends Guidewire {
     public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza) {
         gw.deployMenu(mnuPoliza);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitABit(1500);
+        waitForTextToAppear("Nueva cotización",5000);
         mnuNumeroSub.typeAndEnter(numSubPoliza);
         return new PolizaBuscarPage(getDriver());
     }

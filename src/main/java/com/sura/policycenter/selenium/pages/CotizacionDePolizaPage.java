@@ -1,18 +1,24 @@
 package com.sura.policycenter.selenium.pages;
 
+import com.google.common.base.Function;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.bytedeco.javacpp.annotation.ValueGetter;
 import org.bytedeco.javacpp.opencv_core;
 import org.eclipse.jetty.websocket.client.masks.Masker;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class CotizacionDePolizaPage extends PageObject{
 
@@ -28,6 +34,10 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade labelVigenciaPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:Insured-labelEl']")
     private WebElementFacade labelTomador;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:DocumentType-labelEl']")
+    private WebElementFacade labelTipoDocumento;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:DocumentNumber-labelEl']")
+    private WebElementFacade labelNumeroDocumento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-labelEl']")
     private WebElementFacade labelDireccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:AddressType-labelEl']")
@@ -48,11 +58,10 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade campoVigenciaDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:Insured-inputEl']")
     private WebElementFacade campoTomador;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:ID:OfficialIDInputSet:DocumentType-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:DocumentType-inputEl']")
     private WebElementFacade campoTipoDocumento;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:ID:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:DocumentNumber-inputEl']")
     private WebElementFacade campoNumeroDocumento;
-    //@FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:Address-inputEl']")
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-inputEl']")
     private WebElementFacade campoDireccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:AddressType-inputEl']")
@@ -79,8 +88,16 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade tomadorPrimario;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:ReviewSummaryCV:0:PolicyLineSummaryPanelSet:0:0:drivername-inputEl']")
     private WebElementFacade asegurado;
-    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[3]")
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[2]")
     private WebElementFacade mensajeValidacion1;
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[3]")
+    private WebElementFacade mensajeValidacion2;
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[4]")
+    private WebElementFacade mensajeValidacion3;
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[5]")
+    private WebElementFacade mensajeValidacion4;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PreQualification']/div/span")
+    private WebElementFacade botonCalificacion;
 
     public CotizacionDePolizaPage(WebDriver driver){
         super(driver);
@@ -88,35 +105,39 @@ public class CotizacionDePolizaPage extends PageObject{
 
     public void ingresarARevisionPoliza() {
         waitForTextToAppear("Revisión de póliza", 1000);
-        waitFor(itemRevisionPoliza).shouldBeVisible();
         itemRevisionPoliza.click();
     }
 
+    public void ingresarACotizacion() {
+        WebElementFacade titulo = esperarElemento(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']");
+        if(titulo.isCurrentlyVisible()){
+            waitForTextToAppear("Calificación",5000);
+        }else{
+            waitFor(botonCalificacion).shouldBeVisible();
+            botonCalificacion.click();
+        }
+    }
+
     public void verDetalleCotizacion() {
-        waitABit(1500);
+        WebElementFacade titulo = esperarElemento("//td/div/table/tbody/tr/td/div");
         if(tituloDePagina.isPresent()){
-            //waitFor(tituloDePagina).shouldBeVisible();
             waitForTextToAppear(tituloDePagina.getText(),2000);
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
         }else if(tituloCalificacion.isPresent()){
-            //waitFor(tituloCalificacion).shouldBeVisible();
             waitForTextToAppear(tituloCalificacion.getText(),2000);
             MatcherAssert.assertThat(tituloCalificacion.getText(), Is.is(Matchers.equalTo("Calificación")));
         }
-        /*waitFor(tituloDePagina).shouldBeVisible();
-        boolean validarTitulo = tituloDePagina.getText().equals("Cotización") || tituloCalificacion.getText().equals("Calificación");
-        MatcherAssert.assertThat(validarTitulo, Is.is(Matchers.equalTo(true)));
-        //MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));*/
     }
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
         waitForTextToAppear("Cotización", 1000);
         waitFor(campoNumeroDeCotizacion).shouldBeVisible();
         Map<String, String> datosCotizacion;
-
         MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroCotizacion"))));
         MatcherAssert.assertThat(labelVigenciaPoliza.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("vigenciaPoliza"))));
         MatcherAssert.assertThat(labelTomador.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("tomador"))));
+        MatcherAssert.assertThat(labelTipoDocumento.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("tipoDocumento"))));
+        MatcherAssert.assertThat(labelNumeroDocumento.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroDocumento"))));
         MatcherAssert.assertThat(labelDireccion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("direccion"))));
         MatcherAssert.assertThat(labelTipoDireccion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("tipoDireccion"))));
         MatcherAssert.assertThat(labelDescripcionDireccion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("descripcionDireccion"))));
@@ -133,9 +154,9 @@ public class CotizacionDePolizaPage extends PageObject{
         }
         MatcherAssert.assertThat(campoNumeroDeCotizacion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("numeroCotizacion"))));
         MatcherAssert.assertThat(campoTomador.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tomador"))));
-        //MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDocumento"))));
-        //MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("numeroDocumento"))));
-        //MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("direccion"))));
+        MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDocumento"))));
+        MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("numeroDocumento"))));
+        MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("direccion"))));
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("empresaAseguradora"))));
@@ -151,23 +172,14 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        waitForTextToAppear("Resultados de validación", 10000);
-        MatcherAssert.assertThat(mensajeValidacion1.getText(), Matchers.containsString(mensaje));
-        //waitFor(mensajeRiesgoConsultable).shouldBeVisible();
-
-        /*String validacion = null;
-        Boolean mensajeVal = mensajeValidacion1.getText().contains(mensaje);
-        try {
-            //MatcherAssert.assertThat(mensajeRiesgoConsultable.getText(), Matchers.containsString(mensaje));
-            MatcherAssert.assertThat(mensajeVal, Is.is(Matchers.equalTo(true)));
-        }catch (Exception e){
-            LOGGER.error(validacion, e);
-            validacion = e.getMessage();
-        }
-        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));*/
+        waitForTextToAppear("Resultados de validación",10000);
+        boolean validacionMensaje = mensajeValidacion1.getText().contains(mensaje)||mensajeValidacion2.getText().contains(mensaje)||
+                                    mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje);
+        MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
+        waitABit(10000);
     }
 
-    public void validarFigurasCotizacion() {
+    public void validarTipoRiesgo() {
         if(tituloDePagina.isPresent()){
             waitForTextToAppear("Cotización", 1500);
         }else if(tituloCalificacion.isPresent()){
@@ -186,7 +198,19 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarDireccionTomador(String direccion) {
-        //waitForTextToAppear("Cotización", 4000);
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
+    }
+
+    public WebElementFacade esperarElemento(final String xpath) {
+        Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
+                .withTimeout(30, TimeUnit.SECONDS)
+                .pollingEvery(5, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class);
+        WebElementFacade elemento = espera.until(new Function<WebDriver, WebElementFacade>() {
+            public WebElementFacade apply(WebDriver driver) {
+                return findBy(xpath);
+            }
+        });
+        return  elemento;
     }
 }

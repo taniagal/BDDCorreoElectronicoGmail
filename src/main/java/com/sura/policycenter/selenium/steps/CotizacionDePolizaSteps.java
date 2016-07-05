@@ -43,7 +43,7 @@ public class CotizacionDePolizaSteps extends ScenarioSteps  {
 
     @Step
     public void validarFigurasCotizacion() {
-        cotizacionDePolizaPage.validarFigurasCotizacion();
+        cotizacionDePolizaPage.validarTipoRiesgo();
     }
 
     @Step
@@ -54,5 +54,25 @@ public class CotizacionDePolizaSteps extends ScenarioSteps  {
     @Step
     public void validarDireccionTomador(String direccion) {
         cotizacionDePolizaPage.validarDireccionTomador(direccion);
+    }
+
+    @Step
+    public void ingresarACotizacion() {
+        cotizacionDePolizaPage.ingresarACotizacion();
+    }
+
+    @Step
+    public void validarTipoRiesgo() {
+        cotizacionDePolizaPage.validarTipoRiesgo();
+    }
+
+    public void validarBloqueoChasis(String mensaje) {
+        cotizacionDePolizaPage.validarBloqueoCotizacion(mensaje);
+        //cotizacionDePolizaPage.validarBloqueoChasis(mensaje);
+    }
+
+    public void validarBloqueoPorExclusividad(String mensaje) {
+        cotizacionDePolizaPage.validarBloqueoCotizacion(mensaje);
+        //cotizacionDePolizaPage.validarBloqueoPorExclusividad(mensaje);
     }
 }
