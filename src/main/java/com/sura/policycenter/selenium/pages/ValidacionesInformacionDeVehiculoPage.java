@@ -19,6 +19,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     private WebElementFacade menuItemVehiculos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
     private WebElementFacade botonCrearVehiculo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
+    private WebElementFacade botonsiguiente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
     private WebElementFacade campoTxtPlaca;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
@@ -53,16 +55,20 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         botonCrearVehiculo.click();
     }
 
+    public void clickSiguiente(){
+        botonsiguiente.click();
+    }
+
     public void agregarVehiculo(ExamplesTable datosVehiculo){
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
         campoTxtPlaca.waitUntilPresent().sendKeys(vehiculo.get("placa"));
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitABit(800);
+        waitABit(1000);
         campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
         campoTxtPlaca.click();
-        waitABit(1000);
+        waitABit(1500);
         selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
-        waitABit(1000);
+        waitABit(1500);
         selectItem(comboBoxVehiculoServicio,vehiculo.get("vehiculo_servicio"));
         if(!"null".equals(vehiculo.get("motor"))){
         campoTxtMotor.sendKeys(vehiculo.get("motor"));
