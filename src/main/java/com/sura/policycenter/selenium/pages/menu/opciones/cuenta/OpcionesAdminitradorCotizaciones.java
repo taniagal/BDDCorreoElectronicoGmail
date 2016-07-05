@@ -321,19 +321,19 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
      */
 
     public void seleccionarAccionesDeclinar() {
-        waitFor(btnAcciones2).waitUntilClickable();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAcciones2).waitUntilClickable();
         btnAcciones2.click();
         $(itmDeclinarComProp).click();
     }
 
     public void seleccionarAccionesNoTomar() {
-        waitFor(btnAcciones).waitUntilClickable();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilClickable();
         btnAcciones.click();
         $(itmNoTomar).click();
     }
 
     public void ingresaRechazo(String razon) {
-        waitFor(txtCodRazon).shouldBeEnabled();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtCodRazon).shouldBeEnabled();
         txtCodRazon.clear();
         txtCodRazon.sendKeys(razon);
         txtRazonCartaDeclina.click();
@@ -348,7 +348,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     }
 
     public void ingresaRechazoNoTomar(String razon) {
-        waitFor(listaTipoRazonNoTomar).shouldBeEnabled();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(listaTipoRazonNoTomar).shouldBeEnabled();
         listaTipoRazonNoTomar.clear();
         listaTipoRazonNoTomar.sendKeys(razon);
         txtRazonCartaNoTomar.click();
