@@ -18,6 +18,11 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.buscarCuenta(numeroCuenta);
     }
 
+    @Given("quiera crear un contacto secundario persona natural")
+    public void seleccionarCrearContactoSecundarioPersonaNatural(){
+        direccionesDeContactoVinculadasSteps.seleccionarCrearContactoSecundarioPersonaNatural();
+    }
+
     @When("cuando vincule las direcciones del contacto <nombreContactoUno> y contacto <nombreContactoDos> y la desee editar")
     public void filtrarPorNumeroCuenta(@Named("nombreContactoUno") String nombreContactoUno,
                                        @Named("nombreContactoDos") String nombreContactoDos) {
@@ -84,6 +89,11 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.editarDireccionYDesligar(direccion);
     }
 
+    @When("despliegue la lista de contactos")
+    public void desplegarListaDeContactosParaAsignarLaDireccion(){
+        direccionesDeContactoVinculadasSteps.desplegarListaDeContactosParaAsignarLaDireccion();
+    }
+
     @Then("me debe mostrar esta informacion: $resultadoModificacionDireccion")
     public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion){
         direccionesDeContactoVinculadasSteps.validarInformacionContacto(resultadoModificacionDireccion);
@@ -130,6 +140,16 @@ public class DireccionesDeContactoVinculadasDefinitions {
     @Then("las direcciones fueron desvinculas de los contactos: $contactosDireccionDesvinculada")
     public void validarDireccionDesvinculada(ExamplesTable contactosDireccionDesvinculada){
         direccionesDeContactoVinculadasSteps.validarDireccionDesvinculada(contactosDireccionDesvinculada);
+    }
+
+    @Then("la lista de contactos debe ser la siguiente: $contactosAsociados")
+    public void validarContactosAsociados(ExamplesTable contactosAsociados){
+        direccionesDeContactoVinculadasSteps.validarContactosAsociados(contactosAsociados);
+    }
+
+    @Then("debo poder asociar una direccion de otro contacto y se debe asociar la dirección seleccionada al nuevo contacto  y mostrar los datos de la dirección $direccionAsociada")
+    public void asociarDireccionAContactoSecundario(ExamplesTable direccionAsociada){
+        direccionesDeContactoVinculadasSteps.validarAsociacionDeDireccionAContactoSecundario(direccionAsociada);
     }
 
 }

@@ -30,7 +30,7 @@ Examples:
 |numeroCuenta|nombreContacto|direccion|direccionOk|
 |C000484848|RICARDO GIRALDO|CL 14 # 48 - 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162162 CRA 65 # 48 162 PRUEB|200|
 
-Scenario: Edicion del campo Pais validando que departamento y ciudad se actualizan a <ninguno>
+Scenario: Edicion del campo Pais validando que departamento y ciudad se actualizan a ninguno
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When seleccione el contacto a editar <nombreContacto>
 And ingrese a editar la direccion e ingrese el pais <pais>
@@ -39,9 +39,9 @@ And el campo ciudad debe tener el valor <ciudad>
 
 Examples:
 |numeroCuenta|nombreContacto|pais|departamento|ciudad|
-|C000484848|RICARDO GIRALDO|Colombia|<ninguno>|<ninguno>|
+|C000484848|RICARDO GIRALDO|Estados Unidos|<ninguno>|<ninguno>|
 
-Scenario: Edicion del campo Departamento validando que el campo ciudad se actualizan a <ninguno>
+Scenario: Edicion del campo Departamento validando que el campo ciudad se actualizan a ninguno
 When ingrese a editar la direccion e ingrese el pais <pais>
 And ingrese a editar la direccion e ingrese el departamento <departamento>
 Then el campo ciudad debe tener el valor <ciudad>
@@ -86,7 +86,7 @@ Then me debe validar la informacion de los contactos que usan esa direccion:
 |nombre|primaria|telefono|correo|
 |Speedy Glass Repair|Sí||0010@guidewire.com|
 |RICARDO GIRALDO|Sí|408-2211|0019@guidewire.com|
-|CARLOS PERALTA|Sí|300-685-9674|0037@guidewire.com|
+|CARLOS PERALTA|Sí|+1300-685-9674|0037@guidewire.com|
 Examples:
 |numeroCuenta|
 |C000484848|
@@ -104,7 +104,6 @@ Examples:
 
 Scenario: validar se actualiza la direccion vinculada de todos los contactos
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
-When seleccione el contacto a editar <nombreContacto>
 Then la direccion <direccionVinculada> fue actualizada <nombreContacto>
 
 Examples:
@@ -127,5 +126,27 @@ Then las direcciones fueron desvinculas de los contactos:
 Examples:
 |numeroCuenta|nombreContacto|direccion|
 |C000484848|RICARDO GIRALDO|Carrera 65 #48-162|
+
+Scenario: validar en la creacion de contacto secundario se puede seleccionar la misma direccion de otro contacto
+Given que me encuentro en los contactos de una cuenta <numeroCuenta>
+And quiera crear un contacto secundario persona natural
+When despliegue la lista de contactos
+Then la lista de contactos debe ser la siguiente:
+|contactosAsociados|
+|RICARDO GIRALDO (Titular de la cuenta)|
+|Acta Motors (Asegurado nombrado)|
+|BlackBurn's Plumbing (Asegurado nombrado)|
+|EverReady Rentals (Asegurado nombrado)|
+|Harry's Towing (Asegurado nombrado)|
+|Metals Unlimited (Asegurado nombrado)|
+|Speedy Glass Repair (Asegurado nombrado)|
+And debo poder asociar una direccion de otro contacto y se debe asociar la dirección seleccionada al nuevo contacto  y mostrar los datos de la dirección
+|pais|departamento|ciudad|direccion|codigoPostal|tipoDireccion|descripcion|
+|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|91007|Vivienda|Created by the Address Builder with code 0|
+
+Examples:
+|numeroCuenta|
+|C000484848|
+
 
 

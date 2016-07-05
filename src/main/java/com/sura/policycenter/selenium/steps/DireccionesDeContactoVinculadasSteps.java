@@ -100,4 +100,20 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
     public void validarDireccionDesvinculada(ExamplesTable contactosDireccionDesvinculada) {
         direccionesDeContactoVinculadasPage.validarDireccionDesvinculada(contactosDireccionDesvinculada);
     }
+
+    public void validarContactosAsociados(ExamplesTable contactosAsociados) {
+        direccionesDeContactoVinculadasPage.validarContactosAsociados(contactosAsociados);
+    }
+
+    public void seleccionarCrearContactoSecundarioPersonaNatural() {
+        direccionesDeContactoVinculadasPage.seleccionarCrearContactoSecundarioPersonaNatural();
+    }
+
+    public void desplegarListaDeContactosParaAsignarLaDireccion() {
+        direccionesDeContactoVinculadasPage.desplegarListaDeContactosParaAsignarLaDireccion();
+    }
+
+    public void validarAsociacionDeDireccionAContactoSecundario(ExamplesTable direccionAsociada) {
+        direccionesDeContactoVinculadasPage.validarAsociacionDeDireccionAContactoSecundario(direccionAsociada);
+    }
 }
