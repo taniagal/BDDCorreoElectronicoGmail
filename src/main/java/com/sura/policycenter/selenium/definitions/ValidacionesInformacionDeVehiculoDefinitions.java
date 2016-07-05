@@ -23,7 +23,6 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
 
     @Given("estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>")
     public void agregarPoliza(@Named("cuenta") String cuenta, @Named("producto") String producto) {
-        loginSteps.login();
         detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta, producto);
         vehiculoSteps.ir_a_vehiculos();
     }
@@ -42,7 +41,7 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
     /**
      * ESCENARIO 2
      */
-    @When("vaya al agregar un vehiculo con codigo fasecolda <codigo> no existente")
+    @When("agrege un vehiculo con codigo fasecolda <codigo> que no existe")
     public void agregarCodigoFasecolda(@Named("codigo") String codigo) {
         vehiculoSteps.agregar_codigo_fasecolda(codigo);
     }
@@ -55,7 +54,7 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
     /**
      * ESCENARIO 3
      */
-    @When("vaya al agregar un vehiculo con los datos: $datosVehiculo")
+    @When("vaya a agregar un vehiculo con los datos: $datosVehiculo")
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         vehiculoSteps.agregar_vehiculo(datosVehiculo);
     }

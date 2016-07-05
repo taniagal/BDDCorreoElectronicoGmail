@@ -33,7 +33,6 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
     @Step
     public void agregar_codigo_fasecolda(String codigo) {
         vehiculoPage.agregarCodigoFasecolda(codigo);
-
     }
 
     @Step
@@ -44,5 +43,6 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
     @Step
     public void agregar_vehiculo(ExamplesTable datosVehiculo) {
         vehiculoPage.agregarVehiculo(datosVehiculo);
+        vehiculoPage.crearVehiculo();
     }
 }

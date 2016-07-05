@@ -66,6 +66,8 @@ public class DetallesDeUbicacionPage extends Guidewire{
     private WebElementFacade comboboxCodigoDeAgente;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']")
     private WebElementFacade subMenuNuevaCotizacion;
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    private WebElementFacade menuItemEscritorio;
     @FindBy(css=".message")
     private WebElementFacade divMensaje;
 
@@ -100,7 +102,9 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public void irANuevaCotizacion(){
-        botonAcciones.click();
+        if(!botonAcciones.isPresent())
+            menuItemEscritorio.click();
+        waitFor(botonAcciones).click();
         subMenuNuevaCotizacion.waitUntilPresent().click();
     }
 

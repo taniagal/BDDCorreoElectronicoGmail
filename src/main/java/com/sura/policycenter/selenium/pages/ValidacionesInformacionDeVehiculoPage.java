@@ -29,14 +29,12 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     private WebElementFacade campoTxtCodigoFasecolda;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:service_DV-inputEl']")
     private WebElementFacade comboBoxVehiculoServicio;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Type_DV-inputEl']")
-    private WebElementFacade comboBoxClaseVehiculo;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Make_DV-inputEl']")
-    private WebElementFacade comboBoxMarca;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
     private WebElementFacade comboBoxCiudadCirculacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
-    private WebElementFacade campoTxtValorAsegurado;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Engine_DV-inputEl']")
+    private WebElementFacade campoTxtMotor;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']")
+    private WebElementFacade campoTxtchasis;
 
 
 
@@ -63,26 +61,25 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
         campoTxtPlaca.click();
         waitABit(1000);
-        selectItem(comboBoxClaseVehiculo,vehiculo.get("clase_vehiculo"));
-        waitABit(1000);
-        //selectItem(comboBoxMarca,vehiculo.get("marca"));
         selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
-        waitABit(800);
+        waitABit(1000);
         selectItem(comboBoxVehiculoServicio,vehiculo.get("vehiculo_servicio"));
-        campoTxtValorAsegurado.sendKeys(vehiculo.get("valor_asegurado"));
+        if(!"null".equals(vehiculo.get("motor"))){
+        campoTxtMotor.sendKeys(vehiculo.get("motor"));
+        campoTxtchasis.sendKeys(vehiculo.get("chasis"));
+        }
     }
 
     public void agregarCodigoFasecolda(String codigo) {
         campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
-        waitABit(5000);
         campoTxtPlaca.click();
-        waitABit(5000);
+        waitABit(1000);
     }
 
     public void verificarMensajes(ExamplesTable mensajes){
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         for(Map<String, String> mensaje: mensajes.getRows()){
-            MatcherAssert.assertThat("Error en el mensaje "+mensaje.get("mensaje"), divMensaje.containsText(mensaje.get("mensaje")));
+            MatcherAssert.assertThat("Error: el servicio de riegos consultables no está disponible.", divMensaje.containsText(mensaje.get("mensaje")));
         }
     }
 
