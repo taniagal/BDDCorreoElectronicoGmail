@@ -27,6 +27,17 @@ Examples:
 |C000888888    |Propiedad comercial|01/01/2016         |La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
 |C000888888    |Propiedad comercial|12/01/2016         |La fecha de vigencia no cumple con el parámetro de emisión anticipada definido (60 días)|
 
+Scenario: Validar campos especiales de reaseguros
+Given se inicio una nueva suscripcion <numeroCuenta>
+When este expidiendo una poliza de propiedad comercial <nomProducto>
+And seleccione la poliza como reaseguro aceptado
+Then la etiqueta del tomador debe cambiar a tomador cedente
+And la etiqueta reaseguro debe marcarce a (si) automaticamente sin ser editable
+And se debe ocultar la opcion de tomadores adicionales
+
+Examples:
+|numeroCuenta|nomProducto        |
+|C000888888  |Propiedad comercial|
 
 Scenario: Agregar tomador adicional cuando es un riesgo consultable
 Given se inicio una nueva suscripcion <numeroCuenta>
@@ -38,3 +49,5 @@ And bloquear la operacion
 Examples:
 |numeroCuenta  |cedula|nomProducto        |mensaje                                                                                 |mensaje2                                                                               |
 |C000888888    |123456|Propiedad comercial|con el(los) rol(es) (ASEGURADO NOMBRADO) es un riesgo no estándar y debe ser autorizado.|Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal|
+
+

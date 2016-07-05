@@ -36,6 +36,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     @Step
     public void valida_datos_del_tomador (String tomador){
         opcionesInformacionPolizaMrcPage.validaNombreTomador(tomador);
+        opcionesInformacionPolizaMrcPage.validaCamposPoliza();
     }
 
     @Step
@@ -49,11 +50,24 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
 
     }
 
+    @Step
     public void bloqueo_de_aplicacion() {
         opcionesInformacionPolizaMrcPage.bloqueaSiguiente();
     }
 
+    @Step
     public void ingresar_tomador_adicional(String cedula) {
         opcionesInformacionPolizaMrcPage.ingresarTomadorAdicional(cedula);
     }
+
+    @Step
+    public void seleccionar_si_en_reaseguro(){
+        opcionesInformacionPolizaMrcPage.seleccionaRiesgoAceptado();
+    }
+
+    @Step
+    public void valida_opciones_reaseguro() {
+        opcionesInformacionPolizaMrcPage.validaReaseguro();
+    }
+
 }

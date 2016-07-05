@@ -7,6 +7,8 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+import javax.swing.*;
+
 public class InformacionDePolizaMrcDefinitions {
 
     @Steps
@@ -64,6 +66,32 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
         informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje2);
     }
+
+     /*
+    * 4 Historia
+    */
+
+
+    @When("seleccione la poliza como reaseguro aceptado")
+    public void whenSeleccioneLaPolizaComoReaseguroAceptado() {
+        informacionDePolizaMrcSteps.seleccionar_si_en_reaseguro();
+    }
+
+    @Then("la etiqueta del tomador debe cambiar a tomador cedente")
+    public void thenLaEtiquetaDelTomadorDebeCambiarATomadorCedente() {
+        informacionDePolizaMrcSteps.valida_opciones_reaseguro();
+    }
+
+    @Then("la etiqueta reaseguro debe marcarce a (si) automaticamente sin ser editable")
+    public void cambioTomadorReaseguro() {
+        informacionDePolizaMrcSteps.valida_opciones_reaseguro();
+    }
+
+    @Then("se debe ocultar la opcion de tomadores adicionales")
+    public void thenSeDebeOcultarLaOpcionDeTomadoresAdicionales() {
+        informacionDePolizaMrcSteps.valida_opciones_reaseguro();
+    }
+
 
 
 }

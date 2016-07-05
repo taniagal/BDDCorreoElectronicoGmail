@@ -64,13 +64,72 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
     WebElementFacade itemTipoDocumento;
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:reaseguroAceptado_true-inputEl']")
+    WebElementFacade radioBotReaseguro;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-labelEl']")
+    WebElementFacade lblTipoDocumento;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
+    WebElementFacade lblNumeroDocumento;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
+    WebElementFacade lblNumeroTelefono;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:ChangePolicyAddressButton-labelEl']")
+    WebElementFacade lblDireccion;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-labelEl']")
+    WebElementFacade lblFechaVigencia;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-labelEl']")
+    WebElementFacade lblFechaExpiracion;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:WrittenDate-labelEl']")
+    WebElementFacade lblFechaescrita;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:AddressType-labelEl']")
+    WebElementFacade lblTipoDireccion;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:AddressDescription-labelEl']")
+    WebElementFacade lblDescripcionDir;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-inputEl']")
+    WebElementFacade inputTipoDocumento;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
+    WebElementFacade inputNumeroDocumento;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-bodyEl']")
+    WebElementFacade inputNumeroTelefono;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-inputEl']")
+    WebElementFacade inputDireccion;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:reaseguroAceptado_false-inputEl']")
+    WebElementFacade inputReaseguroAceptado;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:reaseguroEspecial_false-inputEl']")
+    WebElementFacade inputReaseguroEspecial;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PrimaryNamedInsuredLabel-labelEl']")
+    WebElementFacade lblTomador;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:reaseguroEspecial-inputEl']")
+    WebElementFacade inputValidaReaseguroEspecial;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:AdditionalNamedInsuredsDV']")
+    WebElementFacade tblTomadoresAdicionales;
+
+    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
         super(driver);
     }
 
     Actions actions = new Actions(getDriver());
 
-    public void ingresaAgente (){
+    public void ingresaAgente() {
         waitInfoPoliza(lblNuevaCotizacion);
         txtNomAgente.clear();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -78,7 +137,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
         waitInfoPoliza(lblTabla);
     }
 
-    public void ingresarFechaVigencia(String fechaInicioVigencia){
+    public void ingresarFechaVigencia(String fechaInicioVigencia) {
         waitInfoPoliza(lblInformaPoliza);
         txtFechaVigencia.clear();
         txtFechaVigencia.sendKeys(fechaInicioVigencia);
@@ -108,7 +167,13 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
         waitInfoPoliza(mensajePantalla);
     }
 
-    public void  seleccionarProducto(String nomProducto) {
+    public void seleccionaRiesgoAceptado() {
+        waitInfoPoliza(lblInformaPoliza);
+        radioBotReaseguro.click();
+    }
+
+
+    public void seleccionarProducto(String nomProducto) {
         int i = 0;
         if (!getListaDescripcion().isEmpty()) {
             for (WebElementFacade descripcion : getListaDescripcion()) {
@@ -126,7 +191,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     }
 
     private List<WebElementFacade> getListaDescripcion() {
-        List<WebElementFacade> DescripcionProductos = withTimeoutOf(10,TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
+        List<WebElementFacade> DescripcionProductos = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         return DescripcionProductos;
     }
 
@@ -135,14 +200,82 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
         assertThat("el al mostrar nombre completo", nombreCompleto.equals(lblNombreCompleto.getText()));
     }
 
-    public void validaMensajeEnPantalla(String mensaje){
+    public void validaCamposPoliza() {
+        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
+        if (!lblTipoDocumento.isPresent())
+            notPresent.append("Label errado: Tipo documento|");
+        if (!lblNumeroDocumento.isPresent())
+            notPresent.append("Label errado: Numero documento|");
+        if (!lblNumeroTelefono.isPresent())
+            notPresent.append("label errado: Teléfono|");
+        if (!lblDireccion.isPresent())
+            notPresent.append("label errado: Dirección de la poliza|");
+        if ("".equals(inputTipoDocumento.getText()))
+            notPresent.append("salida errada: Tipo cedula|");
+        if ("".equals(inputNumeroDocumento.getText()))
+            notPresent.append("salida errada: Numero cedula|");
+        if ("".equals(inputNumeroTelefono.getText()))
+            notPresent.append("salida errada: Telefono|");
+        if ("".equals(inputDireccion.getText()))
+            notPresent.append("salida errada: Direccion|");
+        if ("".equals(inputReaseguroAceptado.getText()))
+            notPresent.append("radio boton nulo: Reaseguro aceptado|");
+        if ("".equals(inputReaseguroEspecial.getText()))
+            notPresent.append("radio boton nulo: Reaseguro especial|");
+        if (!"Fecha inicio de vigencia".equals(lblFechaVigencia.getText()))
+            notPresent.append("salida errada: Fecha inicio de vigencia|");
+        if (!"Fecha fin de vigencia".equals(lblFechaExpiracion.getText()))
+            notPresent.append("salida errada: Fecha fin de vigencia|");
+        if (!"Fecha de expedición".equals(lblFechaescrita.getText()))
+            notPresent.append("salida errada: Fecha de expedición|");
+        if (!"Descripción de la dirección".equals(lblDescripcionDir.getText()))
+            notPresent.append("salida errada: Descripcion direccion|");
+        String res = notPresent.toString();
+        if (MSJVALIDARELEMENTOS.equals(res)) {
+            res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
+        }
+        assertThat(res, "No estan presentes los elementos ".equals(res));
+    }
+
+    public void validaMensajeEnPantalla(String mensaje) {
         assertThat("Falto Mensaje validacion en pantalla", mensajePantalla.containsText(mensaje));
     }
 
-    // TODO: 30/06/2016 Metodo wait para implementar generico
-    public void waitInfoPoliza (WebElementFacade webElementFacade){
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
+    public void validaReaseguro() {
+        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
+        if (!lblTomador.getText().equals("Compañía cedente,"))
+            notPresent.append("salida errada: Tomador cendente|");
+        if (tblTomadoresAdicionales.isPresent())
+            notPresent.append("los tomadores adicionales no pueden estar presentes|");
+        if (inputValidaReaseguroEspecial.getAttribute("class").contains("x-form-text"))
+            notPresent.append("la etiqueta no puede ser modificada|");
+        if (inputValidaReaseguroEspecial.getText().equals("Si,"))
+            notPresent.append("salida errada: debio cambia a reaseguro especial SI|");
+        String res = notPresent.toString();
+        if (MSJVALIDARELEMENTOS.equals(res)) {
+            res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
+        }
+        assertThat(res, "No estan presentes los elementos ".equals(res));
+
     }
 
+   /* public void validaTomadorCambie() {
+        assertThat("Tomador no cambia a Compañía cedente", lblTomador.getText().equals("Compañía cedente"));
+    }
+
+    public void validaCambioReaseguro() {
+        assertThat("no cambia a (si) el reaseguro especial", inputValidaReaseguroEspecial.getText().equals("Si"));
+        assertThat("El reaseguro especial no es editable", !inputValidaReaseguroEspecial.getAttribute("class").contains("x-form-text"));
+    }
+
+    public void validaTablaTomadorAdicional() {
+        assertThat("el tomador adicional es riesgo ", tblTomadoresAdicionales.isPresent());
+
+    }*/
+
+    // TODO: 30/06/2016 Metodo wait para implementar generico
+    public void waitInfoPoliza(WebElementFacade webElementFacade) {
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
+    }
 
 }
