@@ -1,15 +1,11 @@
 package com.sura.guidewire.selenium;
 
 import com.google.common.base.Function;
-
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -19,7 +15,6 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
@@ -84,7 +79,6 @@ public class Guidewire extends PageObject {
     public Actions deployMenu(WebElementFacade menu) {
         menu.waitUntilPresent().click();
         waitABit(2500);
-        getDriver().manage().timeouts().pageLoadTimeout(20, SECONDS);
         menu.click();
         waitABit(500);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -127,35 +121,11 @@ public class Guidewire extends PageObject {
     public void waitUntil(int millis) {
         Integer i = 0;
         Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
-                TimeUnit.MILLISECONDS).pollingEvery(millis,
-                TimeUnit.MILLISECONDS);
+                TimeUnit.MILLISECONDS).pollingEvery(millis,TimeUnit.MILLISECONDS);
         waitUtil.until(new Function<Integer, Boolean>() {
             public Boolean apply(Integer i) {
                 return false;
             }
         });
-    }
-
-    public void seleccionarCombo(String nombreElemento, WebElementFacade campoTxt){
-        try {
-            List<WebElementFacade> listaItemElementEE = findAll(".//li[contains(@role,'option') and contains(@class, 'x-boundlist-item')]");
-            assertThat(listaItemElementEE.size(), greaterThan(0));
-            if (!listaItemElementEE.isEmpty()) {
-                for (WebElementFacade item : listaItemElementEE) {
-                    if (item.containsText(nombreElemento.toUpperCase())) {
-                        waitFor(ExpectedConditions.elementToBeClickable(item));
-                        item.shouldBeVisible();
-                        item.click();
-                        waitFor(ExpectedConditions.attributeContains(item, "value", nombreElemento.toUpperCase()));
-                        break;
-                    }
-                }
-            }
-        }catch (TimeoutException e) {
-            System.out.println("TRAZA");
-            e.printStackTrace();
-
-        }
-        waitABit(1000);
     }
 }

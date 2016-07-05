@@ -3,15 +3,13 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-
-
 import org.slf4j.LoggerFactory;
 
 
@@ -103,6 +101,7 @@ public class BusquedaContactoPage extends Guidewire {
         super(driver);
     }
 
+
     public void login(String usuario, String contrasena){
         txtusuario.type(usuario);
         txtcontrasena.type(contrasena);
@@ -166,8 +165,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
-        waitABit(2500);
-        txtTipoDoc.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBePresent();
         txtTipoDoc.clear();
         txtTipoDoc.sendKeys(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
@@ -380,8 +378,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void seleccionarContacto() {
-        selectContact.waitUntilPresent();
-        selectContact.waitUntilVisible();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(selectContact).shouldBePresent();
         selectContact.click();
     }
 
