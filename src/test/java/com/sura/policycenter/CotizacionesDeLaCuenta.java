@@ -1,5 +1,6 @@
 package com.sura.policycenter;
 
+import net.serenitybdd.jbehave.SerenityStory;
 
-public class CotizacionesDeLaCuenta{
+public class CotizacionesDeLaCuenta extends SerenityStory {
 }
