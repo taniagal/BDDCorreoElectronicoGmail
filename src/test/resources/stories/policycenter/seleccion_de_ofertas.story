@@ -1,9 +1,9 @@
 Meta:
 
 Narrative:
-As a user
-I want to perform an action
-So that I can achieve a business goal
+Como usuario de Policy Center
+debo poder seleccionar ofertas de una linea en caso de que existan
+para poder realizar una cotizacion sobre la misma
 
 Scenario: Opcion ofertas del menu ocultas
 GivenStories: stories/policycenter/login_policy.story
