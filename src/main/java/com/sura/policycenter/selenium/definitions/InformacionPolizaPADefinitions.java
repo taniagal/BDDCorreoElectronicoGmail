@@ -86,7 +86,7 @@ public class InformacionPolizaPADefinitions {
 
     @When("seleccione, digite o busque la oficina de radicacion <oficinaRadicacion>")
     @Manual
-    public void seleccionarOficinaRadicacion(@Named("oficinaRadicacion") String oficinaRadicacion){
+    public void seleccionarOficinaRadicacion(){
         // Se realiza manualmente.
     }
 
@@ -131,7 +131,7 @@ public class InformacionPolizaPADefinitions {
 
     @Then("debe quedar registrada la oficina seleccionada <oficinaRadicacion> en la informacion de la poliza")
     @Manual
-    public void validarSeleccionOficinaRadicacion(@Named("oficinaRadicacion") String oficinaRadicacion){
+    public void validarSeleccionOficinaRadicacion(){
         // Se realiza manualmente.
     }
 
@@ -152,8 +152,8 @@ public class InformacionPolizaPADefinitions {
     }
 
     @Then("se debe cumplir con la retroactividad permitida <fechaInicioVigencia> <mensaje>")
-    public void validarRetroactividadPoliza(@Named("fechaInicioVigencia") String fechaInicioVigencia,
-                                            @Named("mensaje") String mensaje){
-        informacionPolizaPASteps.validarRetroactividadPoliza(fechaInicioVigencia, mensaje);
+    @Manual
+    public void validarRetroactividadPoliza(){
+        //Se ejecuta manualmente
     }
 }

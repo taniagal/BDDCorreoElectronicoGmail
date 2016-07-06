@@ -1,9 +1,13 @@
+Cotizaciones De La Cuenta
+
 Meta:
 
 Narrative:
 Como usuario PolicyCenter
 quiero ser capaz de actualizar el estado de las cotizaciones creadas para una cuenta
 y así poder crear, actualizar, copiar y retirar cotizaciones para una cuenta dada.
+
+@Issue SUGWUSC-10230 Account Submission Manager
 
 Scenario: Cambiar el estado de una cotizacion
 GivenStories: stories/policycenter/login_policy.story

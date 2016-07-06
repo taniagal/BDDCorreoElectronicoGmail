@@ -86,6 +86,8 @@ Examples:
 |C000888888   |
 
 Scenario: Validar retroactividad en la vigencia de la poliza
+Meta:
+@Manual
 Given ya se inicio una nueva suscripcion <numeroCuenta>
 And se visualiza la informacion de la poliza
 When modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>

@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class OpcionesInformacionPolizaPage extends Guidewire {
 
@@ -418,6 +419,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         String parteEntera = Integer.toString(pEntera);
         String parteDecimal = Double.toString(pDecimal);
         if(parteEntera.length()>2 || parteDecimal.length()>2){
+            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldBePresent();
             MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
         }
     }
