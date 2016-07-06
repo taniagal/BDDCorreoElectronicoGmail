@@ -25,6 +25,6 @@ public class InformacionDeVehiculoDefinitions {
 
     @Then("el sistema debe mostrar los datos correspondiente al vehiculo")
     public void thenElSistemaDebeMostrarLosDatosCorrespondienteAlVehiculo() {
-
+        informacionDeVehiculoSteps.validar_campos_del_vehiculo();
     }
 }

@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.steps;
 
 
 import com.sura.policycenter.selenium.pages.InicioPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionDelVehiculoPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
@@ -19,4 +20,9 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
         return getPages().currentPageAt(InicioPage.class);
     }
 
+    OpcionesInformacionDelVehiculoPage opcionesInformacionDelVehiculoPage = new OpcionesInformacionDelVehiculoPage(getDriver());
+
+    public void validar_campos_del_vehiculo() {
+        opcionesInformacionDelVehiculoPage.validaCamposInformacionVehiculo();
+    }
 }
