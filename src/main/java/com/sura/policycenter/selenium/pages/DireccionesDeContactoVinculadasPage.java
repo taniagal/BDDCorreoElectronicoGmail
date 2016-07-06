@@ -11,7 +11,11 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -102,7 +106,6 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
     private WebElementFacade campoPaisDetalle;
 
-    WebElementFacade contactoAEditar;
 
     public void buscarCuenta(String numeroCuenta) {
         btnBuscar.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
@@ -221,7 +224,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void seleccionarUnContacto(String nombreContacto){
-        contactoAEditar = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:"+encontrarContacto(nombreContacto).toString()+":Name']");
+        WebElementFacade contactoAEditar = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:"+encontrarContacto(nombreContacto).toString()+":Name']");
         contactoAEditar.click();
     }
 
@@ -260,8 +263,20 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void validarElCampoCiudad(String ciudad) {
+        int intentos = 0;
         WebElementFacade campoCiudad = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']");
-        MatcherAssert.assertThat(campoCiudad.getValue(), Is.is(Matchers.equalTo(ciudad)));
+
+        while (intentos < 3) {
+            try {
+                if (campoCiudad.getAttribute("value").equals(ciudad)) {
+                    MatcherAssert.assertThat(campoCiudad.getValue(), Is.is(Matchers.equalTo(ciudad)));
+                    break;
+                }
+            }catch(StaleElementReferenceException elemento){
+
+            }
+            intentos++;
+        }
     }
 
     public void editarCampoDepartamento(String departamento) {
