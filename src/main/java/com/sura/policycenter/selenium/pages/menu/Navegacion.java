@@ -27,6 +27,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
+
 public class Navegacion extends Guidewire {
 
     private final Guidewire gw = new Guidewire(getDriver());
@@ -435,6 +437,7 @@ public class Navegacion extends Guidewire {
     }
 
     public BuscarContactosPage irABuscarContactos() {
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mnuBuscar).shouldBePresent();
         gw.deployMenu(mnuBuscar);
         act.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();
         return new BuscarContactosPage(getDriver());
@@ -1163,8 +1166,9 @@ public class Navegacion extends Guidewire {
     }
 
     public OpcionesInformacionPolizaPage irAInformacionDePoliza() {
-        waitForTextToAppear("Información de póliza");
-        waitFor(mnuInformacionDePoliza);
+        //waitForTextToAppear("Información de póliza");
+        //waitFor(mnuInformacionDePoliza);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuInformacionDePoliza).shouldBePresent();
         mnuInformacionDePoliza.click();
         waitABit(1000);
         return new OpcionesInformacionPolizaPage(getDriver());
