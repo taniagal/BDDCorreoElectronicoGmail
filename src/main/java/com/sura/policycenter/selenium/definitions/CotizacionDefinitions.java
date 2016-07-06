@@ -31,7 +31,7 @@ public class CotizacionDefinitions {
     /**
      * GIVENs
      */
-    @Given("deseo crear nueva cotización buscando por número de cuenta")
+    @Given("deseo crear nueva cotizacion buscando por numero de cuenta")
     public void crearNuevaCotizacion(){
         cotizador.waitFor(2).second();
         cotizador.ir_al_menu_escritorio_del_panel_superior();
@@ -44,8 +44,8 @@ public class CotizacionDefinitions {
         LOGGER.info("CotizacionDefinitions.crearNuevaCotizacion");
     }
 
-    @Given("ya existe una $objeto en estado $cotizado del cliente con número de cuenta $numCuenta para el producto $producto")
-    @Alias("existe una $objeto en $estado para el cliente con número de cuenta $cuenta")
+    @Given("ya existe una $objeto en estado $cotizado del cliente con numero de cuenta $numCuenta para el producto $producto")
+    @Alias("existe una $objeto en $estado para el cliente con numero de cuenta $cuenta")
     public void existeCotizacionCotizadaEnProductoMultiriesgoCorporativo(){
         LOGGER.info("CotizacionDefinitions.existeCotizacionCotizadaEnProductoMultiriesgoCorporativo");
     }
@@ -53,8 +53,8 @@ public class CotizacionDefinitions {
     /**
      * WHENs
      */
-    @When("digíte el número de cuenta $numeroCuenta de una persona jurídica y digite la tecla $teclaAccion para activar la búsqueda")
-    @Alias("digíte el número de cuenta $numeroCuenta de una persona natural y digite la tecla $teclaAccion para activar la búsqueda")
+    @When("digite el numero de cuenta $numeroCuenta de una persona juridica y digite la tecla $teclaAccion para activar la busqueda")
+    @Alias("digite el numero de cuenta $numeroCuenta de una persona natural y digite la tecla $teclaAccion para activar la busqueda")
     public void buscarCuentaPorNumeroDeCuenta(String numeroCuenta){
         cotizador.digitar_numero_de_cuenta(numeroCuenta);
         cotizador.digitar_la_tecla();
@@ -74,7 +74,7 @@ public class CotizacionDefinitions {
         LOGGER.info("CotizacionDefinitions.seleccionoNombreDeAgente");
     }
 
-    @When("se muestre la fecha de efecto de la cotización")
+    @When("se muestre la fecha de efecto de la cotizacion")
     public void esVisibleFechaDefecto(){
         cotizador.getCotizacionPage().obtenerFechaCotizacionElemento().shouldBeCurrentlyVisible();
 
@@ -93,15 +93,15 @@ public class CotizacionDefinitions {
         LOGGER.info("CotizacionDefinitions.validarEtiquetaNombreYNombre");
     }
 
-    @Then("se deberá activar la lista de los nombres de los agentes que empiecen por dicha letra")
-    @Alias("se deberá activar la lista de los nombres de los agentes que empiecen por dicha palabra ingresada")
+    @Then("se debera activar la lista de los nombres de los agentes que empiecen por dicha letra")
+    @Alias("se debera activar la lista de los nombres de los agentes que empiecen por dicha palabra ingresada")
     public void validarSiSeActivaListaDeNombres(){
 
         assertThat(cotizador.tamanioListaAgentesPorFiltro(cotizador.getNombreAgente()), greaterThan(0));
         LOGGER.info("CotizacionDefinitions.validarSiSeActivaListaDeNombres");
     }
 
-    @Then("validar que se autocompleta el campo nombre y sólo aparece el nombre del agente en este campo y el código respectivo en el campo código de agente")
+    @Then("validar que se autocompleta el campo nombre y solo aparece el nombre del agente en este campo y el codigo respectivo en el campo codigo de agente")
     public void validarAutocompletarDelCampoNombreDeAgente(){
         cotizador.validarAutocompletarNombreAgente();
         LOGGER.info("CotizacionDefinitions.validarAutocompletarDelCampoNombreDeAgente");
@@ -115,7 +115,7 @@ public class CotizacionDefinitions {
         LOGGER.info("CotizacionDefinitions.validarAutocompletarSeMuestreNombreYCodigoRespectivamente");
     }
 
-    @Then("se mostrarán en orden alfabetico los: $productos")
+    @Then("se mostraran en orden alfabetico los: $productos")
     public void validarOrdenDeLosProductos(){
         cotizador.validarLosProductosOrdenadosAlfabeticamente();
         LOGGER.info("CotizacionDefinitions.validarExistenciaYOrdenDeLosProductos");
@@ -127,18 +127,18 @@ public class CotizacionDefinitions {
         LOGGER.info("CotizacionDefinitions.seleccionarNombreDeProducto");
     }
 
-    @Then("deberá observar un mensaje emergente de información: $mensaje")
+    @Then("debera observar un mensaje emergente de informacion: $mensaje")
     public void deberaObservarUnMensajeEmergenteDeInformacion(String mensaje){
         assertThat(mensaje.replace("\r","").replace("\n"," "), is(equalTo(cotizador.obtenerMensajeEmergenteDeInformacion())));
         LOGGER.info("CotizacionDefinitions.deberaObservarUnMensajeEmergenteDeInformacion");
     }
-    @Then("deberá observar un mensaje de error: $mensaje")
-    @Alias("deberá observar un mensaje de información: $mensaje")
+    @Then("debera observar un mensaje de error: $mensaje")
+    @Alias("debera observar un mensaje de información: $mensaje")
     public void deberaObservarUnMensaje(String mensaje){
         assertThat(cotizador.validarOcurrenciaDeMensajeDeAplicacion(mensaje.replace("\n","").replace("\r", " ")), is(true));
         LOGGER.info("CotizacionDefinitions.deberaObservarUnMensajeDeError");
     }
-    @Then("deberá observar los botones: $btns")
+    @Then("debera observar los botones: $btns")
     public void deberaObservarLosBotones(String btns){
         String[] arrayBtns = btns.split(",");
         assertThat(cotizador.validarExistenciaDeLosBotonesVisibles(arrayBtns), is(true));
@@ -153,7 +153,7 @@ public class CotizacionDefinitions {
         LOGGER.info("CotizacionDefinitions.seleccionarBtnYValidarPaginaMostrada");
     }
 
-    @Then("se mostrará por defecto la fecha de hoy en la que se está cotizando y no podrá ser editable")
+    @Then("se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable")
     public void validarFechaSeaFechaHOYYSeaNoEditable(){
 
         assertThat(cotizador.esFechaCotizacionHOY(), is(true));
