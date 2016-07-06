@@ -91,6 +91,16 @@ Examples:
 |numeroCuenta|
 |C000484848|
 
+Scenario: validar las etiquetas de los campos
+Given que me encuentro en los contactos de una cuenta <numeroCuenta>
+When seleccione el contacto a editar <nombreContacto>
+And seleccione la opcion para editar la direccion
+Then los nombres de las etiquetas de la ventana son correctos para el titulo <titulo> y los botones <botonLigagas> y <botonDesligar>
+
+Examples:
+|numeroCuenta|nombreContacto|titulo|botonLigagas|botonDesligar|
+|C000484848|RICARDO GIRALDO|Detalle de la dirección|Actualizar todas las direcciones ligadas|Actualizar sólo esta dirección y desligar|
+
 Scenario: validar cuando una direccion no se puede estandarizar la deje como la ingresa el usuario
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When seleccione el contacto a editar <nombreContacto>
@@ -147,6 +157,3 @@ And debo poder asociar una direccion de otro contacto y se debe asociar la direc
 Examples:
 |numeroCuenta|
 |C000484848|
-
-
-

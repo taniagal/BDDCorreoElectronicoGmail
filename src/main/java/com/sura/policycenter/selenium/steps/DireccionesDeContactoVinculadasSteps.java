@@ -116,4 +116,8 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
     public void validarAsociacionDeDireccionAContactoSecundario(ExamplesTable direccionAsociada) {
         direccionesDeContactoVinculadasPage.validarAsociacionDeDireccionAContactoSecundario(direccionAsociada);
     }
+
+    public void validarEtiquetasDeLaVentana(String titulo, String botonLigagas, String botonDesligar) {
+        direccionesDeContactoVinculadasPage.validarEtiquetasDeLaVentana(titulo, botonLigagas, botonDesligar);
+    }
 }

@@ -152,4 +152,11 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.validarAsociacionDeDireccionAContactoSecundario(direccionAsociada);
     }
 
+    @Then("los nombres de las etiquetas de la ventana son correctos para el titulo <titulo> y los botones <botonLigagas> y <botonDesligar>")
+    public void validarEtiquetasDeLaVentana(@Named("titulo") String titulo,
+                                            @Named("botonLigagas") String botonLigagas,
+                                            @Named("botonDesligar") String botonDesligar){
+        direccionesDeContactoVinculadasSteps.validarEtiquetasDeLaVentana(titulo, botonLigagas, botonDesligar);
+    }
+
 }

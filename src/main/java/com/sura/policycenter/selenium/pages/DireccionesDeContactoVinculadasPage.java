@@ -13,6 +13,7 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -339,12 +340,13 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
 
     public void seleccionarCrearContactoSecundarioPersonaNatural() {
+        Actions accion = new Actions(getDriver());
         WebElementFacade botonCrearNuevoContacto = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:addContactButton-btnInnerEl']");
         botonCrearNuevoContacto.click();
         WebElementFacade opcionContactoSecundario = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:addContactButton:3:roleType']");
-        opcionContactoSecundario.click();
+        accion.moveToElement(opcionContactoSecundario).release(opcionContactoSecundario).build().perform();
         WebElementFacade opcionNuevoContactoPersonaNatural = esperarElemento(".//span[contains(@id,'AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:addContactButton:3:roleType:0:contactType-textEl')]");
-        opcionNuevoContactoPersonaNatural.click();
+        accion.moveToElement(opcionNuevoContactoPersonaNatural).release(opcionNuevoContactoPersonaNatural).click().build().perform();
     }
 
     public void desplegarListaDeContactosParaAsignarLaDireccion() {
@@ -388,6 +390,29 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         MatcherAssert.assertThat(campoDescripcion.getText(), Is.is(Matchers.equalTo(direccionContacto.get("descripcion"))));
     }
 
+
+    public void validarEtiquetasDeLaVentana(String titulo, String botonLigagas, String botonDesligar) {
+        WebElementFacade tituloDeVentana = esperarElemento(".//*[@id='LinkedAddressEditPopup:ttlBar']");
+        WebElementFacade botonActualizarLigadas = esperarElemento(".//*[@id='LinkedAddressEditPopup:UpdateAllButton-btnInnerEl']");
+        WebElementFacade botonActualizarDesligar = findBy(".//*[@id='LinkedAddressEditPopup:UpdateAndUnlinkButton-btnInnerEl']");
+        WebElementFacade tituloEdicionDirecciones = findBy(".//*[@id='LinkedAddressEditPopup:EditAddress']");
+        WebElementFacade botonCancelarEdidion = findBy(".//*[@id='LinkedAddressEditPopup:Cancel-btnInnerEl']");
+
+        MatcherAssert.assertThat(tituloDeVentana.getText(), Is.is(Matchers.equalTo(titulo)));
+        MatcherAssert.assertThat(tituloEdicionDirecciones.getText(), Is.is(Matchers.equalTo(titulo)));
+        MatcherAssert.assertThat(botonActualizarLigadas.getText(), Is.is(Matchers.equalTo(botonLigagas)));
+        MatcherAssert.assertThat(botonActualizarDesligar.getText(), Is.is(Matchers.equalTo(botonDesligar)));
+        botonCancelarEdidion.click();
+
+        WebElementFacade botonCancelarDetalle = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']");
+        botonCancelarDetalle.click();
+
+        WebElementFacade pestaniaDirecciones = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesCardTab-btnInnerEl']");
+        pestaniaDirecciones.click();
+
+        WebElementFacade tituloPanelPestaniaDirecciones = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet:0']");
+        MatcherAssert.assertThat(tituloPanelPestaniaDirecciones.getText(), Is.is(Matchers.equalTo(titulo)));
+    }
 
     public WebElementFacade esperarElemento(final String xpath) {
         Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
