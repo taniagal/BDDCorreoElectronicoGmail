@@ -121,7 +121,6 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void verDetalleCotizacion() {
-
         waitForTextToAppear("Calificación",5000);
         if(tituloDePagina.isPresent()){
             waitForTextToAppear(tituloDePagina.getText(),2000);
@@ -133,8 +132,9 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        waitForTextToAppear("Cotización", 1000);
-        waitFor(campoNumeroDeCotizacion).shouldBeVisible();
+        //waitForTextToAppear("Cotización", 1000);
+        //waitFor(campoNumeroDeCotizacion).shouldBeVisible();
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
         Map<String, String> datosCotizacion;
         MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroCotizacion"))));
         MatcherAssert.assertThat(labelVigenciaPoliza.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("vigenciaPoliza"))));
@@ -175,7 +175,9 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        waitForTextToAppear("Resultados de validación",10000);
+        //waitForTextToAppear("Resultados de validación",10000);
+        WebElementFacade resultadoValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(resultadoValidacion).shouldBePresent();
         boolean validacionMensaje = mensajeValidacion1.getText().contains(mensaje)||mensajeValidacion2.getText().contains(mensaje)||
                                     mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje)||
                                     mensajeValidacion5.getText().contains(mensaje);
@@ -185,11 +187,14 @@ public class CotizacionDePolizaPage extends PageObject{
 
     public void validarTipoRiesgo() {
         if(tituloDePagina.isPresent()){
-            waitForTextToAppear("Cotización", 1500);
+            //waitForTextToAppear("Cotización", 1500);
+            withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
         }else if(tituloCalificacion.isPresent()){
-            waitForTextToAppear("Calificación", 1500);
+            withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloCalificacion).shouldBePresent();
+            //waitForTextToAppear("Calificación", 1500);
         }
-        waitFor(botonCotizacionCalificacion).shouldBeVisible();
+        //waitFor(botonCotizacionCalificacion).shouldBeVisible();
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizacionCalificacion).shouldBePresent();
         botonCotizacionCalificacion.click();
     }
 
@@ -202,6 +207,7 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarDireccionTomador(String direccion) {
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoDireccion).shouldBePresent();
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
 
