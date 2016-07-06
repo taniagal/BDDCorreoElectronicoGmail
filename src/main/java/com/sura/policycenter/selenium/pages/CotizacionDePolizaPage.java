@@ -121,7 +121,8 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void verDetalleCotizacion() {
-        WebElementFacade titulo = esperarElemento("//td/div/table/tbody/tr/td/div");
+
+        waitForTextToAppear("Calificación",5000);
         if(tituloDePagina.isPresent()){
             waitForTextToAppear(tituloDePagina.getText(),2000);
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
