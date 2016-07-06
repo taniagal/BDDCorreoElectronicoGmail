@@ -66,8 +66,8 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void irABuscarActividades() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuBuscar).shouldBePresent();
-        menuBuscar.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuBuscar).shouldBePresent();
+        menuBuscar.click();
         waitFor(ExpectedConditions.visibilityOf(menuBuscarActividades));
         waitFor(ExpectedConditions.elementToBeClickable(By.xpath("//td[@id='Search:MenuLinks:Search_ActivitySearch']/div/span")));
         waitABit(2000);
@@ -85,7 +85,7 @@ public class BusquedaActividadesPage extends PageObject {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         btnBuscar.click();
         waitABit(1000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(grdFechaVencimiento).shouldBePresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(grdFechaVencimiento).shouldBePresent();
         MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
         MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
