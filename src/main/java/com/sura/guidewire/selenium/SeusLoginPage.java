@@ -7,18 +7,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
-//@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class SeusLoginPage extends Guidewire {
 
-    @FindBy(xpath = "./[@id='country']")
+    @FindBy(xpath = ".//*[@id='country']")
     private WebElementFacade pais;
     @FindBy(id = "username")
     private WebElementFacade usuario;
-    @FindBy(xpath = "./[@id='password']")
+    @FindBy(xpath = ".//*[@id='password']")
     private WebElementFacade contrasenia;
-    @FindBy(xpath = "./[@id='lower']/input")
+    @FindBy(xpath = ".//*[@id='lower']/input")
     private WebElementFacade btnSubmit;
-    @FindBy(xpath = "./[@id='TabBar:ContactTab-btnWrap']")
+    @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
     private WebElementFacade mnuContact;
 
     public SeusLoginPage(WebDriver driver) {
@@ -42,4 +41,5 @@ public class SeusLoginPage extends Guidewire {
             this.btnSubmit.click();
         }
     }
+
 }
