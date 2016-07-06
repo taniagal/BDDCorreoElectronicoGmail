@@ -21,12 +21,14 @@ Examples:
 Scenario: verificar validaciones de riesgo consultable para motor, placa o chasis.
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis    |motor     |
-|T64497|2017  |01601146        |ALTAMIRA          |Particular       |HGFDF45632|MG65768803|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|
+|T64497|2017  |01601146        |ALTAMIRA          |Particular       |CHAS63215|AB3C2|
 
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                          |
 |Placa : La placa T64497, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|Chasis : El chasis CHAS63215, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|Motor : El motor AB3C2, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 
 Examples:
 |cuenta     |producto     |
