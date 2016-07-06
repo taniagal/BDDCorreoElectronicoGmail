@@ -8,6 +8,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioN
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
@@ -25,6 +26,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.concurrent.TimeUnit;
 
 public class Navegacion extends Guidewire {
 
@@ -222,6 +225,8 @@ public class Navegacion extends Guidewire {
     private WebElementFacade mnuAccionReescribirPolizas;
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_MergeAccounts-textEl']")
     private WebElementFacade mnuAccionCombinarCuentas;
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission-itemEl']")
+    private WebElementFacade mnuNuevaCotizacion;
 
     // Objetos menu Acciones Contacto
     @FindBy(xpath = ".//*[@id='ContactFile:ContactFileMenuActions-btnInnerEl']")
@@ -278,6 +283,9 @@ public class Navegacion extends Guidewire {
     @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
     WebElementFacade mnuResumenCuenta;
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span")
+    private WebElementFacade mnuInformacionDePoliza;
+
     @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_SubmissionManager']/div/span")
     private WebElementFacade mnuAdmCotizaciones;
 
@@ -303,9 +311,11 @@ public class Navegacion extends Guidewire {
     }
 
     public PolizaBuscarPage irABuscarPoliza(String numPoliza) {
+        waitFor(mnuPoliza).shouldBeVisible();
         gw.deployMenu(mnuPoliza);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
+        waitFor(mnuPoliza).shouldBeVisible();
         mnuNumPoliza.typeAndEnter(numPoliza);
         return new PolizaBuscarPage(getDriver());
     }
@@ -359,13 +369,14 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
+        waitABit(1500);
         gw.deployMenu(mnuCuenta);
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
+        waitForTextToAppear("Nueva cuenta", 5000);
         waitABit(2000);
         txtNumCuenta.waitUntilEnabled();
         txtNumCuenta.type(numCuenta);
-        waitABit(2000);
-        btnBuscarCuenta.waitUntilEnabled();
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(btnBuscarCuenta).shouldBePresent();
         btnBuscarCuenta.click();
         waitABit(2000);
         return new CuentaBuscarPage(getDriver());
@@ -426,6 +437,7 @@ public class Navegacion extends Guidewire {
     }
 
     public BuscarContactosPage irABuscarContactos() {
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mnuBuscar).shouldBePresent();
         gw.deployMenu(mnuBuscar);
         act.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();
         return new BuscarContactosPage(getDriver());
@@ -1066,6 +1078,15 @@ public class Navegacion extends Guidewire {
         return new CuentaTazaCotPoliManuPage(getDriver());
     }
 
+    public CuentaNuevaCotizacionPage irANuevaCotizacion() {
+        waitFor(mnuAccionesCuenta).shouldBeVisible();
+        mnuAccionesCuenta.click();
+        waitForTextToAppear("Nueva cotización",2000);
+        waitFor(mnuNuevaCotizacion).shouldBeVisible();
+        mnuNuevaCotizacion.click();
+        return new CuentaNuevaCotizacionPage(getDriver());
+    }
+
     // Navegacion menu Acciones Contacto
     public ContactoNuevaCuentaPage irAContactoNuevaCuenta() {
         mnuContact.click();
@@ -1144,8 +1165,15 @@ public class Navegacion extends Guidewire {
         return new OpcionesResumenCuentaPage(getDriver());
     }
 
-    public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
+    public OpcionesInformacionPolizaPage irAInformacionDePoliza() {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuInformacionDePoliza).shouldBePresent();
+        mnuInformacionDePoliza.click();
         waitABit(1000);
+        return new OpcionesInformacionPolizaPage(getDriver());
+    }
+
+    public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
+        waitForTextToAppear("Cotizaciones de la cuenta", 5000);
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
         $(mnuAdmCotizaciones).click();
         waitABit(800);

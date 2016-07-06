@@ -1,4 +1,4 @@
-Cotizaciones De la Cuenta
+Cotizaciones De La Cuenta
 
 Meta:
 
@@ -17,8 +17,8 @@ And seleccione las acciones de una cotizacion en particular
 Then me debe permitir cambiar el estado de acuerdo a la lista definida. Lista definida: Declinar <declinar>, No Tomar <noTomar>
 
 Examples:
-|numCuenta  |declinar|noTomar   |
-|C000777777 |Declinar|No tomar  |
+|numCuenta  |declinar|noTomar |
+|C000777777 |Declinar|No tomar|
 
 Scenario: Crear una nueva cotizacion
 Given estoy en una cuenta <numCuenta>
@@ -60,7 +60,6 @@ Examples:
 |numCuenta   |
 |C000777777  |
 
-
 Scenario: Mostrar numero de poliza
 Given estoy en una cuenta <numCuenta>
 When ingrese a cotizaciones de la cuenta
@@ -69,9 +68,8 @@ And una cotizacion se encuentre en un estado 'Expedida' <estado>
 Then se debe mostrar el numero de la poliza.
 
 Examples:
-|numCuenta |estado  |producto          |
+|numCuenta |estado  |producto           |
 |C000777777|Expedida|Todos los productos|
-
 
 Scenario: No mostrar numero de poliza
 Given estoy en una cuenta <numCuenta>
@@ -83,7 +81,6 @@ Examples:
 |numCuenta   |estado  |
 |C000777777  |Borrador|
 
-
 Scenario: Permitir crear carta de declinacion
 Given estoy en una cuenta <numCuenta>
 When ingrese a cotizaciones de la cuenta
@@ -92,8 +89,7 @@ Then me debe permitir crear una carta de declinacion por medio de un boton. El l
 
 Examples:
 |numCuenta   |declinado|propiedadComercial |crearCarta                |
-|C000777777  |Declinado|Propiedad comercial|Crear carta de declinación|
-
+|C000777777  |Declinada|Propiedad comercial|Crear carta de declinación|
 
 Scenario: No permitir crear carta de declinacion
 Given estoy en una cuenta <numCuenta>
@@ -105,7 +101,6 @@ Examples:
 |numCuenta   |producto     |crearCarta                |
 |C000777777  |Auto personal|Crear carta de declinación|
 
-
 Scenario: Permitir descargar cartas
 Given estoy en una cuenta <numCuenta>
 When ingrese a cotizaciones de la cuenta
@@ -115,4 +110,3 @@ Then me debe permitir descargar esta carta. Esta funcionalidad queda tal cual co
 Examples:
 |numCuenta  |
 |C000777777 |
-

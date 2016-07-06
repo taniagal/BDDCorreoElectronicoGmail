@@ -132,8 +132,6 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        //waitForTextToAppear("Cotización", 1000);
-        //waitFor(campoNumeroDeCotizacion).shouldBeVisible();
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
         Map<String, String> datosCotizacion;
         MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroCotizacion"))));
@@ -175,9 +173,7 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        //waitForTextToAppear("Resultados de validación",10000);
-        WebElementFacade resultadoValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(resultadoValidacion).shouldBePresent();
+        waitForTextToAppear("Resultados de validación",10000);
         boolean validacionMensaje = mensajeValidacion1.getText().contains(mensaje)||mensajeValidacion2.getText().contains(mensaje)||
                                     mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje)||
                                     mensajeValidacion5.getText().contains(mensaje);
@@ -187,13 +183,10 @@ public class CotizacionDePolizaPage extends PageObject{
 
     public void validarTipoRiesgo() {
         if(tituloDePagina.isPresent()){
-            //waitForTextToAppear("Cotización", 1500);
             withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
         }else if(tituloCalificacion.isPresent()){
             withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloCalificacion).shouldBePresent();
-            //waitForTextToAppear("Calificación", 1500);
         }
-        //waitFor(botonCotizacionCalificacion).shouldBeVisible();
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizacionCalificacion).shouldBePresent();
         botonCotizacionCalificacion.click();
     }

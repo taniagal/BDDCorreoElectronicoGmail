@@ -60,7 +60,7 @@ Given deseo crear nueva cotizacion buscando por numero de cuenta
 And ya existe una cotización en estado "cotizado" del cliente con numero de cuenta C000777777 para el producto
 Multiriesgo corporativo
 When digite el numero de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la busqueda
-And he seleccionado en el nombre del agente Internal Producer Code - 3
+And he seleccionado en el nombre del agente DIRECTO
 Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
 Then se mostraran en orden alfabetico los:
 |productos          |
