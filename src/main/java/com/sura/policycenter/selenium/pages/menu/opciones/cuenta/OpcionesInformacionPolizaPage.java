@@ -269,7 +269,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     public void modificarFechaVigencia(String tipoPlazo, String fechaInicioVigencia) {
         String validacion = null;
-        waitFor(fechaVigenciaPoliza).shouldBeVisible();
+        withTimeoutOf(15,TimeUnit.SECONDS).waitFor(fechaVigenciaPoliza).shouldBePresent();
         try{
             MatcherAssert.assertThat(fechaVigenciaPoliza.getTextValue(), Is.is(Matchers.equalTo(fechaEscrita.getTextValue())));
         }catch (Exception e){

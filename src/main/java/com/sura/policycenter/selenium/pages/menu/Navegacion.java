@@ -375,8 +375,7 @@ public class Navegacion extends Guidewire {
         waitABit(2000);
         txtNumCuenta.waitUntilEnabled();
         txtNumCuenta.type(numCuenta);
-        waitABit(2000);
-        btnBuscarCuenta.waitUntilEnabled();
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(btnBuscarCuenta).shouldBePresent();
         btnBuscarCuenta.click();
         waitABit(2000);
         return new CuentaBuscarPage(getDriver());
@@ -1081,7 +1080,7 @@ public class Navegacion extends Guidewire {
     public CuentaNuevaCotizacionPage irANuevaCotizacion() {
         waitFor(mnuAccionesCuenta).shouldBeVisible();
         mnuAccionesCuenta.click();
-        waitForTextToAppear("Nueva cotización");
+        waitForTextToAppear("Nueva cotización",2000);
         waitFor(mnuNuevaCotizacion).shouldBeVisible();
         mnuNuevaCotizacion.click();
         return new CuentaNuevaCotizacionPage(getDriver());

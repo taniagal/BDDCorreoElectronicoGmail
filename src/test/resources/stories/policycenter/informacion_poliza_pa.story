@@ -44,8 +44,8 @@ Examples:
 Scenario: Seleccionar oficina de radicacion
 Meta:
 @Manual
-Given ya se inicio una nueva suscripcion <numeroCuenta>
-And se visualiza la informacion de la poliza
+Given ya se inicio una nueva suscripcion
+And se puede visualizar la informacion de la poliza
 When seleccione, digite o busque la oficina de radicacion <oficinaRadicacion>
 Then debe quedar registrada la oficina seleccionada <oficinaRadicacion> en la informacion de la poliza
 

@@ -64,6 +64,18 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.accionarInformacionPoliza();
     }
 
+    @Given("ya se inicio una nueva suscripcion")
+    @Manual
+    public void iniciarSuscripcion(){
+        //Se ejecuta manualmente
+    }
+
+    @Given("se puede visualizar la informacion de la poliza")
+    @Manual
+    public void visualizarSuscripcion(){
+        //Se ejecuta manualmente
+    }
+
     @When("estoy expidiendo una poliza de autos")
     public void accionarExpedirPolizaAuto(){
         informacionPolizaPASteps.accionarNuevaCotizacion();
