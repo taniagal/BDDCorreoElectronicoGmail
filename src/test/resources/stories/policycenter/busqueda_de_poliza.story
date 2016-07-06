@@ -5,9 +5,6 @@ Como usuario de PolicyCenter
 Quiero ser capaz de buscar una poliza asociada a un contacto
 Para ver el detalle de la misma
 
-
-
-
 Scenario: Consultar polizas por número de poliza no existente
 GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar una poliza
