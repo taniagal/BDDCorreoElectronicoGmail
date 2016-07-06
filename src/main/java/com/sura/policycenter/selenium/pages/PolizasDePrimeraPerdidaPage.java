@@ -3,20 +3,22 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class PolizasDePrimeraPerdidaPage extends Guidewire{
     @FindBy(xpath=".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB-btnInnerEl']")
-    private WebElementFacade botonAgregarUbicacion;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
+    @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
+    private WebElementFacade botonActualizar;
     @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade checkBoxEdificios;
-    @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']")
+    @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxDañosmateriales;
     @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']")
     private WebElementFacade campoTxtValorReconstruccion;
@@ -34,7 +36,15 @@ public class PolizasDePrimeraPerdidaPage extends Guidewire{
 
     public void irAArticulos() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
-        
+        botonAgregarArticulos.waitUntilPresent().click();
+    }
 
+    public void agregarArticulo(ExamplesTable datos){
+        Map<String,String> dato = datos.getRow(0);
+        checkBoxEdificios.waitUntilPresent().click();
+        campoTxtValorReconstruccion.waitUntilPresent().sendKeys(dato.get("valor"));
+        checkBoxDañosmateriales.click();
+        campoTxtValorasegurado.waitUntilPresent().sendKeys(dato.get("limite"));
+        botonActualizar.click();
     }
 }

@@ -16,5 +16,6 @@ public class PolizasDePrimeraPerdidaSteps extends ScenarioSteps{
     @Step
     public void ingresar_articulo(ExamplesTable datos) {
         polizasDePrimeraPerdidaPage.irAArticulos();
+        polizasDePrimeraPerdidaPage.agregarArticulo(datos);
     }
 }
