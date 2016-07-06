@@ -120,4 +120,8 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
     public void validarEtiquetasDeLaVentana(String titulo, String botonLigagas, String botonDesligar) {
         direccionesDeContactoVinculadasPage.validarEtiquetasDeLaVentana(titulo, botonLigagas, botonDesligar);
     }
+
+    public void editarDireccionSinEstandarizar(String direccionSinEstandarizar) {
+        direccionesDeContactoVinculadasPage.editarDireccionSinEstandarizar(direccionSinEstandarizar);
+    }
 }

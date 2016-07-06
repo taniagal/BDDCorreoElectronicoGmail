@@ -52,11 +52,11 @@ Examples:
 
 Scenario: Edicion del campo Ciudad y Direccion validando que se estandariza la direccion ingresada
 When ingrese a editar la direccion e ingrese la ciudad <ciudad>
-And ingrese a editar la direccion por <direccion>
+And ingrese a editar la direccion por <direccionSinEstandarizar>
 Then la direccion debe quedar estandarizada <direccionEstandarizada> del contacto <nombreContacto>
 
 Examples:
-|ciudad|direccion|direccionEstandarizada|nombreContacto|
+|ciudad|direccionSinEstandarizar|direccionEstandarizada|nombreContacto|
 |Medellin|Carrera 65 48 162|KR 65 # 48 - 162|RICARDO GIRALDO|
 
 Scenario: consultar direccion de un contacto que tiene una direccion asociada a otro contacto
@@ -67,7 +67,7 @@ Then me debe mostrar la siguiente informacion:
 |Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|91007|Vivienda|Created by the Address Builder with code 0|
 Examples:
 |numeroCuenta|nombreContactoUno|nombreContactoDos|
-|C000484848|Speedy Glass Repair|CARLOS PERALTA|
+|C000484848|OSCAR GOMEZ|CARLOS PERALTA|
 
 Scenario: actualizar direccion solo ingresando campos obligatorios
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
@@ -84,9 +84,9 @@ Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When quiera actualizar la direccion de un contacto que tiene otros contactos que la usan
 Then me debe validar la informacion de los contactos que usan esa direccion:
 |nombre|primaria|telefono|correo|
-|Speedy Glass Repair|Sí||0010@guidewire.com|
+|OSCAR GOMEZ|Sí|408-2211|0010@guidewire.com|
 |RICARDO GIRALDO|Sí|408-2211|0019@guidewire.com|
-|CARLOS PERALTA|Sí|+1300-685-9674|0037@guidewire.com|
+|CARLOS PERALTA|Sí|408-2211|0037@guidewire.com|
 Examples:
 |numeroCuenta|
 |C000484848|
@@ -120,7 +120,7 @@ Examples:
 |numeroCuenta|nombreContacto|direccionVinculada|
 |C000484848|RICARDO GIRALDO|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
 |C000484848|CARLOS PERALTA|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
-|C000484848|Speedy Glass Repair|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
+|C000484848|OSCAR GOMEZ|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
 
 Scenario: validar cuando se actualiza y se desliga la direccion del contacto
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
@@ -131,7 +131,7 @@ Then las direcciones fueron desvinculas de los contactos:
 |contactoDesligado|direccionDesligada|
 |RICARDO GIRALDO|KR 65 # 48 - 162|
 |CARLOS PERALTA|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
-|Speedy Glass Repair|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
+|OSCAR GOMEZ|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
 
 Examples:
 |numeroCuenta|nombreContacto|direccion|
@@ -144,12 +144,8 @@ When despliegue la lista de contactos
 Then la lista de contactos debe ser la siguiente:
 |contactosAsociados|
 |RICARDO GIRALDO (Titular de la cuenta)|
-|Acta Motors (Asegurado nombrado)|
-|BlackBurn's Plumbing (Asegurado nombrado)|
-|EverReady Rentals (Asegurado nombrado)|
-|Harry's Towing (Asegurado nombrado)|
-|Metals Unlimited (Asegurado nombrado)|
-|Speedy Glass Repair (Asegurado nombrado)|
+|CARLOS PERALTA (Asegurado nombrado)|
+|OSCAR GOMEZ (Asegurado nombrado)|
 And debo poder asociar una direccion de otro contacto y se debe asociar la dirección seleccionada al nuevo contacto  y mostrar los datos de la dirección
 |pais|departamento|ciudad|direccion|codigoPostal|tipoDireccion|descripcion|
 |Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|91007|Vivienda|Created by the Address Builder with code 0|

@@ -7,7 +7,6 @@ import com.google.common.base.Function;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.codehaus.groovy.runtime.powerassert.SourceText;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -106,10 +105,9 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     WebElementFacade contactoAEditar;
 
     public void buscarCuenta(String numeroCuenta) {
-        btnBuscar = esperarElemento(".//*[@id='TabBar:SearchTab-btnInnerEl']");
-        btnBuscar.click();
+        btnBuscar.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
         btnCuentas = esperarElemento(".//*[@id='Search:MenuLinks:Search_AccountSearch']");
-        btnCuentas.click();
+        btnCuentas.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
         txtNumeroCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");
         txtNumeroCuenta.sendKeys(numeroCuenta);
         btnBuscarCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
@@ -121,9 +119,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void vincularDirecciones(String nombreContactoUno, String nombreContactoDos) {
-        //contacto 1: speedy glass
         vincularDireccionAContacto(nombreContactoUno);
-        //contacto 2: carlos peralta
         vincularDireccionAContacto(nombreContactoDos);
         this.irAEditarDireccion(nombreContactoDos);
     }
@@ -168,8 +164,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void seleccionarContacto() {
-        grdContacto3.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
-        grdContacto3.click();
+        seleccionarUnContacto("OSCAR GOMEZ");
         btnAsociarDireccion = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:LinkAddressMenuMenuIcon']/img");
         btnAsociarDireccion.click();
         btnEditarDireccion = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:EditAddress']");
@@ -178,7 +173,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
     public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion) {
         txtPaisContacto = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']");
-        this.txtCodigoPostalContacto.waitUntilPresent();
+        this.txtCodigoPostalContacto.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         Map<String, String> exampleTable = resultadoModificacionDireccion.getRows().get(0);
 
         MatcherAssert.assertThat(this.txtPaisContacto.getText(), Is.is(Matchers.equalTo(exampleTable.get("pais"))));
@@ -188,6 +183,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         MatcherAssert.assertThat(this.txtCodigoPostalContacto.getText(), Is.is(Matchers.equalTo(exampleTable.get("codigoPostal"))));
         MatcherAssert.assertThat(this.txtTipoDireccionContacto.getText(), Matchers.containsString(exampleTable.get("tipoDeDireccion")));
         MatcherAssert.assertThat(this.txtDescripcionContacto.getText(), Matchers.containsString(exampleTable.get("descripcion")));
+        WebElementFacade btnCancelar = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']");
         btnCancelar.click();
     }
 
@@ -236,18 +232,31 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         MatcherAssert.assertThat(longitudCampo.toString(), Is.is(Matchers.equalTo(direccionOk)));
         linkVolverAContacto.click();
         botonAceptarMensaje.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        waitForTextToAppear("Contactos de archivo de cuenta", 10);
     }
 
     public void editarDireccionCampoPais(String pais) {
-            WebElementFacade campoPais = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']");
-            campoPais.clear();
-            campoPais.sendKeys(pais);
-            campoPais.sendKeys(Keys.ENTER);
+        WebElementFacade campoPais = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']");
+        campoPais.clear();
+        campoPais.sendKeys(pais);
+        campoPais.sendKeys(Keys.ENTER);
     }
 
     public void validarElCampoDepartamento(String departamento) {
-        WebElementFacade campoDepartamento = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
-        MatcherAssert.assertThat(campoDepartamento.getValue(), Is.is(Matchers.equalTo(departamento)));
+    int intentos = 0;
+    WebElementFacade campoDepartamento = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
+
+        while (intentos < 3) {
+            try {
+                if (campoDepartamento.getAttribute("value").equals(departamento)) {
+                    MatcherAssert.assertThat(campoDepartamento.getValue(), Is.is(Matchers.equalTo(departamento)));
+                    break;
+                }
+            }catch(StaleElementReferenceException elemento){
+
+            }
+            intentos++;
+        }
     }
 
     public void validarElCampoCiudad(String ciudad) {
@@ -256,13 +265,27 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void editarCampoDepartamento(String departamento) {
-        WebElementFacade campoDepartamento = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
-        campoDepartamento.clear();
-        campoDepartamento.sendKeys(departamento);
-        campoDepartamento.sendKeys(Keys.ENTER);
+        int elementoPresente = 0;
+        while(elementoPresente<3) {
+            try {
+                WebElementFacade campoDepartamento = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
+                campoDepartamento.clear();
+                campoDepartamento.sendKeys(departamento);
+                campoDepartamento.sendKeys(Keys.ENTER);
+                if (campoDepartamento.getAttribute("value").equals(departamento)) {
+                    break;
+                }
+            }catch (StaleElementReferenceException elemento){
+                }
+            elementoPresente = elementoPresente + 1;
+        }
     }
 
     public void editarCampoCiudad(String ciudad) {
+        WebElementFacade campoDepartamento = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
+        while (campoDepartamento.getAttribute("value").equals("<ninguno>")) {
+            editarCampoDepartamento("ANTIOQUIA");
+        }
         WebElementFacade campoCiudad = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']");
         campoCiudad.clear();
         campoCiudad.sendKeys(ciudad);
@@ -412,6 +435,14 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
         WebElementFacade tituloPanelPestaniaDirecciones = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet:0']");
         MatcherAssert.assertThat(tituloPanelPestaniaDirecciones.getText(), Is.is(Matchers.equalTo(titulo)));
+    }
+
+    public void editarDireccionSinEstandarizar(String direccionSinEstandarizar) {
+        WebElementFacade campoDireccionDetalle = findBy(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']");
+        campoDireccionDetalle.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
+        campoDireccionDetalle.clear();
+        campoDireccionDetalle.sendKeys(direccionSinEstandarizar);
+        botonActualizarContacto.click();
     }
 
     public WebElementFacade esperarElemento(final String xpath) {

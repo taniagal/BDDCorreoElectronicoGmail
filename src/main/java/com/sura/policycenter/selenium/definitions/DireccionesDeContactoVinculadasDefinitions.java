@@ -49,6 +49,11 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.editarDireccion(direccion);
     }
 
+    @When("ingrese a editar la direccion por <direccionSinEstandarizar>")
+    public void editarDireccionSinEstandarizar(@Named("direccionSinEstandarizar") String direccionSinEstandarizar){
+        direccionesDeContactoVinculadasSteps.editarDireccionSinEstandarizar(direccionSinEstandarizar);
+    }
+
     @When("ingrese a editar la direccion por <direccion> en detalle contacto pestaña direcciones")
     public void editarDireccionEnPestañaDirecciones(@Named("direccion") String direccion){
         direccionesDeContactoVinculadasSteps.editarDireccionEnPestaniaDirecciones(direccion);
