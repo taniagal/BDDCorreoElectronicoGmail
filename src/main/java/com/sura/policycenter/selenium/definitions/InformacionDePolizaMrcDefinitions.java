@@ -24,7 +24,7 @@ public class InformacionDePolizaMrcDefinitions {
 
     @When("este expidiendo una poliza de propiedad comercial <nomProducto>")
     public void expidePolizaPropiedadComercial(@Named("nomProducto")String nomProducto) {
-        informacionDePolizaMrcSteps.selecciona_cotizacion_para_propiedad_comercial(nomProducto);
+        informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto(nomProducto);
     }
 
     @Then("se debe visualizar los datos del tomador <tomador>")
