@@ -66,3 +66,19 @@ Examples:
 |cuenta     |producto     |
 |C000888888 |Auto personal|
 
+
+
+Scenario:  validar si la placa se encuentra vigente en otra poliza
+Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
+When vaya a agregar un vehiculo con los datos:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|
+|BLE863|2011  |01601146        |ALTAMIRA          |Particular       |null  |null |
+
+Then deben aparecer los mensajes de validacion:
+|mensaje                                                                                 |
+|Valor asegurado : El valor del vehículo es inferior al tope mínimo. Por favor verifique.|
+
+Examples:
+|cuenta     |producto     |
+|C000888888 |Auto personal|
+
