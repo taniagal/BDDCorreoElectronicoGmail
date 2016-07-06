@@ -21,6 +21,8 @@ public class InformacionDeVehiculoDefinitions {
     public void whenQuieraRegistrarLaInformacionDelVehiculo(@Named("nomProducto")String nomProducto) {
         informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
         informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto(nomProducto);
+        informacionDeVehiculoSteps.ingresar_a_cotizacion_de_vehiculo();
+        informacionDeVehiculoSteps.ingresar_informacion_del_vehiculo();
     }
 
     @Then("el sistema debe mostrar los datos correspondiente al vehiculo")

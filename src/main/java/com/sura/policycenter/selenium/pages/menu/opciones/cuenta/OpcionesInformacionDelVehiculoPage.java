@@ -60,9 +60,6 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:trailer-labelEl']")
     WebElementFacade lblRemolque;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:trailer-labelEl']")
-    WebElementFacade lblRemolque;
-
     @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Imported-labelEl']")
     WebElementFacade lblImportado;
 
@@ -84,22 +81,23 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:8:vehmod-labelEl']")
     WebElementFacade lblSuavizacion;
 
+    @FindBy (xpath = "//td[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
+    WebElementFacade itemVehiculo;
+
+    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
+    WebElementFacade btnCrearVehiculo;
+
+    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:0']")
+    WebElementFacade lblDetallesVehiculo;
+
+
+    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
+    WebElementFacade txtPlaca;
+
+    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
+    WebElementFacade lstModelo;
+
    /* @FindBy (xpath = "")
-    WebElementFacade;
-
-    @FindBy (xpath = "")
-    WebElementFacade;
-
-    @FindBy (xpath = "")
-    WebElementFacade;
-
-    @FindBy (xpath = "")
-    WebElementFacade;
-
-    @FindBy (xpath = "")
-    WebElementFacade;
-
-    @FindBy (xpath = "")
     WebElementFacade;
 
     @FindBy (xpath = "")
@@ -124,7 +122,21 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
 
     Actions actions = new Actions(getDriver());
 
+    OpcionesInformacionPolizaMrcPage opcionPolizaMrc = new OpcionesInformacionPolizaMrcPage (getDriver());
 
+
+    public void ingresarOpcionVehiculo() {
+        opcionPolizaMrc.waitInfoPoliza(itemVehiculo);
+        itemVehiculo.click();
+        btnCrearVehiculo.click();
+        opcionPolizaMrc.waitInfoPoliza(lblDetallesVehiculo);
+    }
+
+    public void llenarFormularioDetalleVehiculo(){
+        txtPlaca.clear();
+        txtPlaca.type("1984");
+
+    }
     public void validaCamposInformacionVehiculo() {
         /**
          *Clase Vehículo
@@ -157,7 +169,7 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
          * Descuento
          * Recargo
          * Suavización
-         */
+
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if (!lblTipoDocumento.isPresent())
             notPresent.append("Label errado: Tipo documento|");
@@ -192,5 +204,8 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
         }
         assertThat(res, "No estan presentes los elementos ".equals(res));
+    }
+         */
+
     }
 }

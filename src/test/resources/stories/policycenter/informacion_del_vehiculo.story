@@ -10,10 +10,11 @@ Scenario: Ingreso de informacion del vehiculo
 GivenStories: stories/policycenter/login_policy.story
 Given Estoy buscando una cuenta <numCuenta>
 When quiera registrar la informacion del vehiculo <nomProducto>
+And registre los datos del vehiculo <placa>
 Then el sistema debe mostrar los datos correspondiente al vehiculo
 
 
 Examples:
-|numCuenta |nomProducto  |
-|C000888888|Auto personal|
+|numCuenta |nomProducto  |placa |
+|C000888888|Auto personal|OFI19C|
 

@@ -22,7 +22,18 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
 
     OpcionesInformacionDelVehiculoPage opcionesInformacionDelVehiculoPage = new OpcionesInformacionDelVehiculoPage(getDriver());
 
+    @Step
     public void validar_campos_del_vehiculo() {
         opcionesInformacionDelVehiculoPage.validaCamposInformacionVehiculo();
+    }
+
+    @Step
+    public void ingresar_a_cotizacion_de_vehiculo() {
+        opcionesInformacionDelVehiculoPage.ingresarOpcionVehiculo();
+    }
+
+    @Step
+    public void ingresar_informacion_del_vehiculo (){
+        opcionesInformacionDelVehiculoPage.llenarFormularioDetalleVehiculo();
     }
 }
