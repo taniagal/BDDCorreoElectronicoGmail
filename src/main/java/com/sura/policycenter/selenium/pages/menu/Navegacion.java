@@ -8,6 +8,7 @@ import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioN
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
@@ -222,6 +223,8 @@ public class Navegacion extends Guidewire {
     private WebElementFacade mnuAccionReescribirPolizas;
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_MergeAccounts-textEl']")
     private WebElementFacade mnuAccionCombinarCuentas;
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission-itemEl']")
+    private WebElementFacade mnuNuevaCotizacion;
 
     // Objetos menu Acciones Contacto
     @FindBy(xpath = ".//*[@id='ContactFile:ContactFileMenuActions-btnInnerEl']")
@@ -278,6 +281,9 @@ public class Navegacion extends Guidewire {
     @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
     WebElementFacade mnuResumenCuenta;
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span")
+    private WebElementFacade mnuInformacionDePoliza;
+
     @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_SubmissionManager']/div/span")
     private WebElementFacade mnuAdmCotizaciones;
 
@@ -303,9 +309,11 @@ public class Navegacion extends Guidewire {
     }
 
     public PolizaBuscarPage irABuscarPoliza(String numPoliza) {
+        waitFor(mnuPoliza).shouldBeVisible();
         gw.deployMenu(mnuPoliza);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
+        waitFor(mnuPoliza).shouldBeVisible();
         mnuNumPoliza.typeAndEnter(numPoliza);
         return new PolizaBuscarPage(getDriver());
     }
@@ -1067,6 +1075,15 @@ public class Navegacion extends Guidewire {
         return new CuentaTazaCotPoliManuPage(getDriver());
     }
 
+    public CuentaNuevaCotizacionPage irANuevaCotizacion() {
+        waitFor(mnuAccionesCuenta).shouldBeVisible();
+        mnuAccionesCuenta.click();
+        waitForTextToAppear("Nueva cotización");
+        waitFor(mnuNuevaCotizacion).shouldBeVisible();
+        mnuNuevaCotizacion.click();
+        return new CuentaNuevaCotizacionPage(getDriver());
+    }
+
     // Navegacion menu Acciones Contacto
     public ContactoNuevaCuentaPage irAContactoNuevaCuenta() {
         mnuContact.click();
@@ -1143,6 +1160,14 @@ public class Navegacion extends Guidewire {
         mnuResumenCuenta.click();
         waitABit(800);
         return new OpcionesResumenCuentaPage(getDriver());
+    }
+
+    public OpcionesInformacionPolizaPage irAInformacionDePoliza() {
+        waitForTextToAppear("Información de póliza");
+        waitFor(mnuInformacionDePoliza);
+        mnuInformacionDePoliza.click();
+        waitABit(1000);
+        return new OpcionesInformacionPolizaPage(getDriver());
     }
 
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
