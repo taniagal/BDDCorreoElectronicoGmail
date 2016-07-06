@@ -28,7 +28,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void selecciona_cotizacion_para_propiedad_comercial (String nomProducto){
+    public void selecciona_cotizacion_para_producto (String nomProducto){
         opcionesInformacionPolizaMrcPage.ingresaAgente();
         opcionesInformacionPolizaMrcPage.seleccionarProducto(nomProducto);
     }
