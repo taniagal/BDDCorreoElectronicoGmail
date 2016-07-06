@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class CotizacionPADetallePage extends Guidewire {
 
@@ -90,8 +91,7 @@ public class CotizacionPADetallePage extends Guidewire {
     }
 
     public void verDetalleCotizacion() {
-        waitForTextToAppear("Cotización",2000);
-        waitFor(tituloDePagina).shouldBeVisible();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
         MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
 
