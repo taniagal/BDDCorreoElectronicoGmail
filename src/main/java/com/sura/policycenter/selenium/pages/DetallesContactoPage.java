@@ -466,7 +466,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void validarDireccion(){
-        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains("CL 60 B # 10 - 157"));
+        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains("CL 60 B # 10 - 157") || getListaContactos().get(1).getText().contains("CALLE 60B #10-157"));
     }
 
     public List<WebElementFacade> getListaContactos() {

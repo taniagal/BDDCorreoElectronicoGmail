@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
-
 import com.sura.guidewire.selenium.Guidewire;
 import java.util.Map;
 import net.serenitybdd.core.pages.WebElementFacade;

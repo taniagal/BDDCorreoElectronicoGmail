@@ -91,14 +91,17 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
         opcionesAdministradorCotizaciones.mostrarBotonCrearCartaDeclinacion(crearCarta);
     }
 
+    @Step
     public void validarEstadoAutoPersonal(String producto) {
         opcionesAdministradorCotizaciones.validarEstadoAutoPersonal(producto);
     }
 
+    @Step
     public void noMostrarBotonCrearCarta(String crearCarta) {
         opcionesAdministradorCotizaciones.noMostrarBotonCrearCarta(crearCarta);
     }
 
+    @Step
     public void mostrarTodosLosProductos(String producto) {
         opcionesAdministradorCotizaciones.mostrarTodosLosProductos(producto);
     }
