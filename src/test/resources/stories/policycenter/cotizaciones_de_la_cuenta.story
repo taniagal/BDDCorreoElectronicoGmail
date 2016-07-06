@@ -1,9 +1,13 @@
+Cotizaciones De la Cuenta
+
 Meta:
 
 Narrative:
 Como usuario PolicyCenter
 quiero ser capaz de actualizar el estado de las cotizaciones creadas para una cuenta
 y así poder crear, actualizar, copiar y retirar cotizaciones para una cuenta dada.
+
+@Issue SUGWUSC-10230 Account Submission Manager
 
 Scenario: Cambiar el estado de una cotizacion
 GivenStories: stories/policycenter/login_policy.story
@@ -14,7 +18,7 @@ Then me debe permitir cambiar el estado de acuerdo a la lista definida. Lista de
 
 Examples:
 |numCuenta  |declinar|noTomar   |
-|C000777777 |Declinar|No tomar|
+|C000777777 |Declinar|No tomar  |
 
 Scenario: Crear una nueva cotizacion
 Given estoy en una cuenta <numCuenta>
