@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -54,6 +56,18 @@ public class DetallesDeUbicacionPage extends Guidewire{
     private WebElementFacade labelNumeroDePisos;
     @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BuildYear-labelEl']")
     private WebElementFacade labelAnioDeConstruccion;
+    @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions-btnInnerEl']")
+    private WebElementFacade botonAcciones;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:AccountName-inputEl']")
+    private WebElementFacade linkNombre;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
+    private WebElementFacade comboBoxNombreAgente;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
+    private WebElementFacade comboboxCodigoDeAgente;
+    @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']")
+    private WebElementFacade subMenuNuevaCotizacion;
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    private WebElementFacade menuItemEscritorio;
     @FindBy(css=".message")
     private WebElementFacade divMensaje;
 
@@ -65,26 +79,51 @@ public class DetallesDeUbicacionPage extends Guidewire{
         super(driver);
     }
 
-    public void agregarDatos(String cuenta, String organizacion, String agente) {
-        espera(numeroDeCuenta,5);
-        numeroDeCuenta.sendKeys(cuenta);
-        espera(botonAgregarOrganizacion,5);
-        botonAgregarOrganizacion.click();
-        waitABit(1500);
-        campoTxtNombreDeOrganizacion.sendKeys(organizacion);
-        botonBuscarOrganizacion.click();
-        botonSeleccionarOrganizacion.click();
-        waitABit(1000);
-        selectItem(comboBoxCodigoAgente,agente);
-        waitABit(500);
-        selectItem(comboBoxEstadoBase,"Antioquia");
-        waitABit(1000);
-        botonElegir.click();
+    public void  seleccionarProducto(String nomProducto) {
+        int i = 0;
+        if (!getListaDescripcion().isEmpty()) {
+            for (WebElementFacade descripcion : getListaDescripcion()) {
+                if (nomProducto.equals(descripcion.getText())) {
+                    getListaBotones().get(i).click();
+                }
+                i++;
+            }
+        }
     }
 
+    private List<WebElementFacade> getListaBotones() {
+        List<WebElementFacade> botones = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
+        return botones;
+    }
+
+    private List<WebElementFacade> getListaDescripcion() {
+        List<WebElementFacade> DescripcionProductos = withTimeoutOf(10,TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
+        return DescripcionProductos;
+    }
+
+    public void irANuevaCotizacion(){
+        if(!botonAcciones.isPresent())
+            menuItemEscritorio.click();
+        waitFor(botonAcciones).click();
+        subMenuNuevaCotizacion.waitUntilPresent().click();
+    }
+
+    public void agregarDatos(String cuenta, String producto) {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(numeroDeCuenta).shouldBePresent();
+        numeroDeCuenta.sendKeys(cuenta);
+        comboBoxNombreAgente.click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkNombre).shouldBeVisible();
+        Actions actions =  new Actions(getDriver());
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ENTER).build().perform();
+        seleccionarProducto(producto);
+    }
+
+
     public void irAUbicacion(){
-        botonSiguiente.click();
-        botonAgregarUbicacion.click();
+        botonSiguiente.waitUntilPresent().click();
+        botonAgregarUbicacion.waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
     }
 
@@ -94,6 +133,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
         selectItem(comboBoxDepartamento,departamento);
         waitABit(2200);
         selectItem(comboBoxCiudad,ciudad);
+        waitABit(1000);
     }
 
     public void agregarUbicacion(String descripcion, String actividad){
@@ -127,15 +167,13 @@ public class DetallesDeUbicacionPage extends Guidewire{
         }
 
     public void verificarMensaje(String mensaje) {
-        divMensaje.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
     }
 
     public void verificarMensajeDireccion(String mensaje) {
-        divMensaje.waitUntilPresent();
-        String validaMensaje;
-        validaMensaje = mensaje.substring(0,13)+direccion+mensaje.substring(13,mensaje.length());
-        waitABit(1000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        String validaMensaje = mensaje.substring(0,13)+direccion+mensaje.substring(13,mensaje.length());
         assertThat("Falló el mensaje de validacion de caracteres de la direccion", divMensaje.containsText(validaMensaje));
     }
 }

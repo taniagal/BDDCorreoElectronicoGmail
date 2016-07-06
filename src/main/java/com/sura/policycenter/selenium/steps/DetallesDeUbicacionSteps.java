@@ -18,6 +18,18 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
+    public void ir_a_nueva_poliza(String cuenta, String producto){
+        detallesDeUbicacionPage.irANuevaCotizacion();
+        detallesDeUbicacionPage.agregarDatos(cuenta,producto);
+    }
+
+    @Step
+    public void validarCamposnuevos(){
+        detallesDeUbicacionPage.irAUbicacion();
+        detallesDeUbicacionPage.validarCamposNuevos();
+    }
+
+    @Step
     public void agregar_ubicacion(String descripcion, String actividad){
        detallesDeUbicacionPage.agregarUbicacion(descripcion, actividad);
     }
@@ -25,12 +37,6 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     @Step
     public void agregar_direccion(String direccion, String departamento, String ciudad) {
         detallesDeUbicacionPage.agregarDireccion(direccion, departamento, ciudad);
-    }
-
-    @Step
-    public void ir_a_nueva_poliza(String cuenta, String organizacion, String agente){
-        inicioPage().irANuevoEnvio();
-        detallesDeUbicacionPage.agregarDatos(cuenta,organizacion,agente);
     }
 
     @Step
