@@ -107,11 +107,6 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.validarInformacionCotizacion(infoCotizacionPoliza, informacionCotizacion);
     }
 
-    /*@Then("debo poder ver la direccion del tomador <direccionTomador> de la poliza la cual indico como principal")
-    public void validarDireccionTomador(@Named("direccionTomador") String direccion){
-        cotizacionDePolizaSteps.validarDireccionTomador(direccion);
-    }*/
-
     @Then("debo poder ver la direccion del tomador de la poliza <direccion>, la cual se indico como principal")
     public void validarDireccion(@Named("direccion") String direccion){
         cotizacionDePolizaSteps.validarDireccionTomador(direccion);

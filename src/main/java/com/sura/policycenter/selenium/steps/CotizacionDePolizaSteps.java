@@ -68,11 +68,9 @@ public class CotizacionDePolizaSteps extends ScenarioSteps  {
 
     public void validarBloqueoChasis(String mensaje) {
         cotizacionDePolizaPage.validarBloqueoCotizacion(mensaje);
-        //cotizacionDePolizaPage.validarBloqueoChasis(mensaje);
     }
 
     public void validarBloqueoPorExclusividad(String mensaje) {
         cotizacionDePolizaPage.validarBloqueoCotizacion(mensaje);
-        //cotizacionDePolizaPage.validarBloqueoPorExclusividad(mensaje);
     }
 }

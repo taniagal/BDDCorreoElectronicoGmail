@@ -96,6 +96,8 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade mensajeValidacion3;
     @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[5]")
     private WebElementFacade mensajeValidacion4;
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[6]")
+    private WebElementFacade mensajeValidacion5;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PreQualification']/div/span")
     private WebElementFacade botonCalificacion;
 
@@ -174,7 +176,8 @@ public class CotizacionDePolizaPage extends PageObject{
     public void validarBloqueoCotizacion(String mensaje) {
         waitForTextToAppear("Resultados de validación",10000);
         boolean validacionMensaje = mensajeValidacion1.getText().contains(mensaje)||mensajeValidacion2.getText().contains(mensaje)||
-                                    mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje);
+                                    mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje)||
+                                    mensajeValidacion5.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
         waitABit(10000);
     }
