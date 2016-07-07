@@ -1,15 +1,20 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.AdmonCotizacionCuentaDeclinaSteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.WebDriver;
 
 
 public class AdmonCotizacionCuentaDeclinaDefinitions {
+
+    @Managed
+    WebDriver driver;
 
     @Steps
     AdmonCotizacionCuentaDeclinaSteps admonCotizacionCuentaSteps;

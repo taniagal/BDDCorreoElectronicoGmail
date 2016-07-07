@@ -3,17 +3,22 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.policycenter.selenium.steps.CuentasOrdenesDeTrabajoSteps;
 import com.sura.policycenter.selenium.steps.DisponibilidadDetalleProductoSteps;
 import com.sura.policycenter.selenium.steps.InformacionPolizaPASteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class InformacionPolizaPADefinitions {
+
+    @Managed
+    WebDriver driver;
 
     @Steps
     private CuentasOrdenesDeTrabajoSteps cuentasOrdenesTrabajoSteps;
