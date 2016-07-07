@@ -215,15 +215,14 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         campoNombreAgente.waitUntilVisible().sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ENTER);
-        //waitForTextToAppear("Productos ofrecidos", 10000);
         WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonElegirProducto).shouldBePresent();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonElegirProducto).shouldBePresent();
         waitFor(botonElegirProducto).shouldBeVisible();
         botonElegirProducto.click();
     }
 
     public Integer encontrarProducto(){
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tablaProductos).shouldBeVisible();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(tablaProductos).shouldBeVisible();
         tablaProductos.waitUntilVisible();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
