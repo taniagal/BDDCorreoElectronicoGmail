@@ -18,4 +18,15 @@ public class PolizasDePrimeraPerdidaSteps extends ScenarioSteps{
         polizasDePrimeraPerdidaPage.irAArticulos();
         polizasDePrimeraPerdidaPage.agregarArticulo(datos);
     }
+
+    @Step
+    public void seleccionar_tipo_primera_perdida(String tipoPrimeraPerdida) {
+        polizasDePrimeraPerdidaPage.seleccionartipoPrimeraPerdida(tipoPrimeraPerdida);
+    }
+
+    @Step
+    public void validar_mensaje(String mensaje) {
+        polizasDePrimeraPerdidaPage.validarMensaje(mensaje);
+    }
+
 }
