@@ -121,7 +121,6 @@ public class CuentaPage extends Guidewire{
 
     public void buscarPersona(String nombre, String persona){
         waitFor(campoTxtNombreCompania).shouldBePresent();
-        //waitABit(1000);
         campoTxtNombreCompania.sendKeys(nombre);
         botonBuscar.click();
         if("Compania".equals(persona)) {
@@ -132,11 +131,6 @@ public class CuentaPage extends Guidewire{
             botonNuevaCuentaPersonal.click();
         }
         waitABit(1000);
-    }
-
-    public void verificarCrearCuenta(String nombreCuenta){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelNombreDeCuenta).shouldBePresent();
-        assertThat("Falló la creación de la cuenta", labelNombreDeCuenta.containsText(nombreCuenta));
     }
 
     public void validarLogeoPolicyCenter(){

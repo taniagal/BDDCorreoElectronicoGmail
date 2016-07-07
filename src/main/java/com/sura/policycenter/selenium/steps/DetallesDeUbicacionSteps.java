@@ -54,9 +54,4 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     public void verificar_mensaje(String mensaje) {
         detallesDeUbicacionPage.verificarMensaje(mensaje);
     }
-
-    @Step
-    public void verificar_mensaje_direccion(String mensaje) {
-        detallesDeUbicacionPage.verificarMensajeDireccion(mensaje);
-    }
 }

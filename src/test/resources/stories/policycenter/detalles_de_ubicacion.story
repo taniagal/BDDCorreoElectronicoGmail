@@ -8,7 +8,8 @@ Quiero ser capaz de entrar y mantener detalles de la ubicación.
 Feature: Entrar y mantener detalles de la ubicación
 
 
-Scenario: Agregar una nueva ubicacion en una poliza de MRC.
+Scenario: Agregar una nueva ubicacion en una poliza de MRC
+GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -20,7 +21,7 @@ Examples:
 
 
 
-Scenario: Agregar una nueva ubicacion "bloqueante" en una poliza de MRC.
+Scenario: Agregar una nueva ubicacion "bloqueante" en una poliza de MRC
 Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -32,13 +33,13 @@ Examples:
 
 
 
-Scenario: Validar direccion al agregar una nueva ubicacion en una poliza de MRC.
+Scenario: Validar direccion al agregar una nueva ubicacion en una poliza de MRC
 Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-Then que se muestre el mensaje de direccion <mensaje>
+Then que se muestre el mensaje <mensaje>
 
 Examples:
-|cuenta     |producto           |departamento|ciudad  |direccion     |descripcion  |mensaje                   |actividad                    |
-|C001888888 |Propiedad comercial|Antioquia   |Medellin|2X´H !2 ~0+ **|Edificio Core|La dirección  no es válida|Acabado de productos textiles|
+|cuenta     |producto           |departamento|ciudad  |direccion     |descripcion  |mensaje                                 |actividad                    |
+|C001888888 |Propiedad comercial|Antioquia   |Medellin|2X´H !2 ~0+ **|Edificio Core|La dirección 2X´H !2 ~0+ ** no es válida|Acabado de productos textiles|
 

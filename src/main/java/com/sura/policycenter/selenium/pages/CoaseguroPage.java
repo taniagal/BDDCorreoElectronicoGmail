@@ -4,6 +4,7 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.policycenter.model.Aseguradora;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.components.HtmlTable;
 import org.openqa.selenium.Keys;
@@ -15,13 +16,13 @@ import org.openqa.selenium.support.FindBy;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CoaseguroPage extends Guidewire {
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade linkAgregarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:ReferencePolicyNumber-inputEl']")
     private WebElementFacade campoTxtPolizaDeReferencia;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:administrativeExpenses-inputEl']")
     private WebElementFacade campoTxtDastosAdministrativos;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:editConinsuranceLink']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:editConinsuranceLink']")
     private WebElementFacade linkEditarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptar;
@@ -31,7 +32,7 @@ public class CoaseguroPage extends Guidewire {
     private WebElementFacade radioBotonAceptado;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[1]/td[4]")
     private WebElementFacade radioBotonLider;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:_msgs']")
+    @FindBy(id = "Coinsurance_ExtPopup:_msgs")
     private WebElementFacade divMensaje;
 
     private static final String MSJVALIDARVALORES = "No estan correctos los elementos:";
@@ -41,9 +42,10 @@ public class CoaseguroPage extends Guidewire {
     }
 
     public void validarCampos() {
-        linkAgregarCoaseguro.waitUntilPresent().click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
+        linkAgregarCoaseguro.click();
         radioBotonAceptado.waitUntilPresent().click();
-
+        campoTxtDastosAdministrativos.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(radioBotonAceptado.isSelected())
             right.append("radio_boton_cedido, ");
@@ -53,7 +55,6 @@ public class CoaseguroPage extends Guidewire {
             right.append("Gastos_Administrativos, ");
         if(!radioBotonLider.getAttribute("class").contains("radio"))
             right.append("radio_boton_lider ");
-
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
@@ -93,12 +94,13 @@ public class CoaseguroPage extends Guidewire {
     }
 
     public void verificarCoaseguro() {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
         assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
 
     public void verificarMensaje(String mensaje) {
-        waitABit(1000);
-        assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        assertThat("Falló el mensaje de validacion", divMensaje.containsText(mensaje));
     }
 
 }
