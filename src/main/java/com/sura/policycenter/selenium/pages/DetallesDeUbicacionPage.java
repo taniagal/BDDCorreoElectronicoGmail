@@ -122,7 +122,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
 
 
     public void irAUbicacion(){
-        botonSiguiente.waitUntilPresent().click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
         botonAgregarUbicacion.waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
     }
@@ -131,7 +131,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
         campoTxtDireccion.sendKeys(direccion);
         this.direccion = direccion;
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(2200);
+        waitABit(3000);
         selectItem(comboBoxCiudad,ciudad);
         waitABit(1000);
     }
@@ -147,7 +147,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public List<WebElementFacade> getDatosTabla() {
-        return withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/div/table/tbody/tr");
+        return withTimeoutOf(8, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/div/table/tbody/tr");
     }
 
     public void validarCamposNuevos(){
@@ -168,12 +168,6 @@ public class DetallesDeUbicacionPage extends Guidewire{
 
     public void verificarMensaje(String mensaje) {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
-        assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
-    }
-
-    public void verificarMensajeDireccion(String mensaje) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
-        String validaMensaje = mensaje.substring(0,13)+direccion+mensaje.substring(13,mensaje.length());
-        assertThat("Falló el mensaje de validacion de caracteres de la direccion", divMensaje.containsText(validaMensaje));
+        assertThat("Falló el mensaje de validacion"+mensaje, divMensaje.containsText(mensaje));
     }
 }

@@ -53,7 +53,7 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void irACoberturasGlobales() {
-        menuItemCoberturaGlobal.click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
     }
 
     public void navegarPorCobertura(String descripcion, String tipoCobertura){
@@ -95,12 +95,12 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void verificarCoberturasIncluidas() {
-        linkCobertura1.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkCobertura1).waitUntilPresent().click();
         assertThat("Error al Agregar la cobertura", linkCobertura1.isPresent());
     }
 
     public void verificarUbicacionesCubiertas() {
-        List<WebElementFacade> tablaUbicaciones = withTimeoutOf(5, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody");
+        List<WebElementFacade> tablaUbicaciones = withTimeoutOf(8, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody");
         assertThat("Error al Agregar la ubicacion", tablaUbicaciones.size() > 0);
     }
 
@@ -114,9 +114,7 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void verificarMensajeError(String mensaje) {
-        /*waitFor(panelMensaje).shouldBePresent();
-        waitFor(panelMensaje).shouldBeVisible();
-        waitFor(mensajePantalla).shouldBeEnabled();*/
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mensajePantalla).shouldBePresent();
         assertThat("Error el Mensaje no existe", mensajePantalla.containsText(mensaje));
     }
 

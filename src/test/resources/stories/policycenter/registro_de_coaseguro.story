@@ -7,7 +7,8 @@ quiero poder agregar la información de coseguro aceptado o cedido en una póliz
 
 Feacture: Registro de Coaseguro
 
-Scenario: agregar el coaseguro a una poliza
+Scenario: Agregar el coaseguro a una poliza
+GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 And puedo ingresar los datos del coaseguro
 When agregue las aseguradoras y su porcentaje de participacion
@@ -18,7 +19,7 @@ Examples:
 |C001888888 |Propiedad comercial|
 
 
-Scenario: agregar el coaseguro a una poliza con una sola aseguradora
+Scenario: Agregar el coaseguro a una poliza con una sola aseguradora
 Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 And puedo ingresar los datos del coaseguro
 When no agregue mas de una aseguradora y/o porcentaje de participacion
@@ -30,7 +31,7 @@ Examples:
 
 
 
-Scenario: agregar el coaseguro a una poliza sin el porcentaje de participacion completo
+Scenario: Agregar el coaseguro a una poliza sin el porcentaje de participacion completo
 Given estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>
 And puedo ingresar los datos del coaseguro
 When el porcentaje de paticipacion total no sea 100%

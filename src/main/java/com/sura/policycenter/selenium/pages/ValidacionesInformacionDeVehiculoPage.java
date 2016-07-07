@@ -61,14 +61,15 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
 
     public void agregarVehiculo(ExamplesTable datosVehiculo){
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        campoTxtPlaca.waitUntilPresent().sendKeys(vehiculo.get("placa"));
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtPlaca).shouldBePresent();
+        campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitABit(1000);
+        waitABit(2000);
         campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
         campoTxtPlaca.click();
-        waitABit(1500);
+        waitABit(2000);
         selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
-        waitABit(1500);
+        waitABit(2000);
         selectItem(comboBoxVehiculoServicio,vehiculo.get("vehiculo_servicio"));
         if(!"null".equals(vehiculo.get("motor"))){
         campoTxtMotor.sendKeys(vehiculo.get("motor"));

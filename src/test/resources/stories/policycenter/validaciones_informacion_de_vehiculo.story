@@ -6,7 +6,7 @@ Como usuario
 Al cotizar una poliza de PA quiero ser capaz de registrar toda la información del vehiculo.
 
 
-Scenario: verificar validacion de codigo facecolda erroneo
+Scenario:  Verificar validacion de codigo facecolda erroneo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When agrege un vehiculo con codigo fasecolda <codigo> que no existe
@@ -18,7 +18,7 @@ Examples:
 
 
 
-Scenario: verificar validaciones de riesgo consultable para motor, placa o chasis.
+Scenario:  Validar riesgo consultable para motor, placa o chasis
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|
@@ -36,7 +36,7 @@ Examples:
 
 
 
-Scenario:  validar si el valor asegurado del vehículo supera el tope maximo del valor permitido
+Scenario:  Validar si el valor asegurado del vehículo supera el tope maximo del valor permitido
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|
@@ -52,7 +52,7 @@ Examples:
 
 
 
-Scenario:  validar si el valor asegurado del vehículo supera el tope minimo del valor permitido
+Scenario:  Validar si el valor asegurado del vehículo supera el tope minimo del valor permitido
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|
@@ -65,20 +65,3 @@ Then deben aparecer los mensajes de validacion:
 Examples:
 |cuenta     |producto     |
 |C000888888 |Auto personal|
-
-
-
-Scenario:  validar si la placa se encuentra vigente en otra poliza
-Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
-When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|
-|BLE863|2011  |01601146        |ALTAMIRA          |Particular       |null  |null |
-
-Then deben aparecer los mensajes de validacion:
-|mensaje                                                                                 |
-|Valor asegurado : El valor del vehículo es inferior al tope mínimo. Por favor verifique.|
-
-Examples:
-|cuenta     |producto     |
-|C000888888 |Auto personal|
-

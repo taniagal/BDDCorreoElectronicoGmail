@@ -26,7 +26,6 @@ public class CoberturaGlobalDefinitions {
     @Then("debe mostrarme las coberturas incluidas y las ubicaciones cubiertas")
     public void verificarCoberturasyUbicaciones(){
         coberturaGlobalSteps.verificar_coberturas_y_ubicaciones();
-        seusLoginSteps.close();
     }
 
     @When("agregue coberturas globales con descripcion <descripcion> , tipo de cobertura <tipoCobertura> y nombreCobertura <nombreCobertura>")
