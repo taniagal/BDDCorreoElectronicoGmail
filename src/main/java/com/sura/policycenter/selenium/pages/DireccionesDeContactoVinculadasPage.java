@@ -23,10 +23,6 @@ import org.openqa.selenium.support.ui.Wait;
 
 public class DireccionesDeContactoVinculadasPage extends PageObject {
 
-    public DireccionesDeContactoVinculadasPage(WebDriver driver) {
-        super(driver);
-    }
-
     @FindBy(xpath=".//*[@id='TabBar:SearchTab-btnInnerEl']")
     private WebElementFacade btnBuscar;
     @FindBy(xpath=".//*[@id='Search:MenuLinks:Search_AccountSearch']")
@@ -105,6 +101,10 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade botonAceptarMensaje;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
     private WebElementFacade campoPaisDetalle;
+
+    public DireccionesDeContactoVinculadasPage(WebDriver driver) {
+        super(driver);
+    }
 
 
     public void buscarCuenta(String numeroCuenta) {
