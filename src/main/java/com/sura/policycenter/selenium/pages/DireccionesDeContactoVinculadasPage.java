@@ -277,6 +277,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
             }
             intentos++;
         }
+        WebElementFacade botonCancelar = findBy(".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']");
+        botonCancelar.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
     }
 
     public void editarCampoDepartamento(String departamento) {

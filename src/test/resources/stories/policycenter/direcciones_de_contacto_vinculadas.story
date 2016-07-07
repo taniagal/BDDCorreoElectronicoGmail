@@ -41,17 +41,9 @@ Examples:
 |numeroCuenta|nombreContacto|pais|departamento|ciudad|
 |C000484848|RICARDO GIRALDO|Estados Unidos|<ninguno>|<ninguno>|
 
-Scenario: Edicion del campo Departamento validando que el campo ciudad se actualizan a ninguno
-When ingrese a editar la direccion e ingrese el pais <pais>
-And ingrese a editar la direccion e ingrese el departamento <departamento>
-Then el campo ciudad debe tener el valor <ciudad>
-
-Examples:
-|pais|departamento|ciudad|
-|Colombia|Antioquia|<ninguno>|
-
 Scenario: Edicion del campo Ciudad y Direccion validando que se estandariza la direccion ingresada
-When ingrese a editar la direccion e ingrese la ciudad <ciudad>
+Given que me encuentro en los contactos de una cuenta <numeroCuenta>
+When seleccione el contacto a editar <nombreContacto>
 And ingrese a editar la direccion por <direccionSinEstandarizar>
 Then la direccion debe quedar estandarizada <direccionEstandarizada> del contacto <nombreContacto>
 
