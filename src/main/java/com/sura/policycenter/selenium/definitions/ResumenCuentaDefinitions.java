@@ -11,6 +11,9 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ResumenCuentaDefinitions {
 
     @Steps

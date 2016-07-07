@@ -25,9 +25,27 @@ public class DetalleRegistrosSuscripcionDefinitions {
         inicioPage().irACuentaBuscar(numeroCuenta);
     }
 
-    @When("busque el de detalle de los registros de suscripcion")
+    @When("consulte los registros de suscripcion")
     public void buscarRegistrosDeSucripcion() {
-        detalleRegistrosSuscripcionSteps.buscarRegistrosDeSucripcion();
+        detalleRegistrosSuscripcionSteps.buscarRegistrosSucripcion();
+    }
+
+    @Then("los filtros deben ser <estado>, <transaccion>")
+    public void validarNombresFiltros(@Named("estado") String estado,
+                                      @Named("transaccion") String transaccion) {
+        detalleRegistrosSuscripcionSteps.validarNombresFiltros(estado, transaccion);
+    }
+
+    @Then("debo ver la siguiente informacion <nombre>, <tipoDeTransaccion>, <nroDeTransacciones>")
+    public void verDetalleRegistrosDeSuscripcion(@Named("nombre") String nombre,
+                                                 @Named("tipoDeTransaccion") String tipoDeTransaccion,
+                                                 @Named("nroDeTransacciones") String nroDeTransacciones) {
+        detalleRegistrosSuscripcionSteps.validarCamposRegistros(nombre, tipoDeTransaccion, nroDeTransacciones);
+    }
+
+    @When("busque el de detalle de los registros de suscripcion")
+    public void buscarDetalleDeRegistrosDeSucripcion() {
+        detalleRegistrosSuscripcionSteps.buscarDetalleRegistrosDeSucripcion();
     }
 
     @Then("debo ver la siguiente informacion producto <producto>, <nroEnvio>, <estado>, <nroPoliza>")
@@ -57,4 +75,9 @@ public class DetalleRegistrosSuscripcionDefinitions {
     public void validarVisibilidadMenuAnalisisDeRiesgo() {
         detalleRegistrosSuscripcionSteps.validarVisibilidadMenuAnalisisDeRiesgo();
     }
+    @Then("en la sumatoria de cotizaciones me debe mostrar el titulo de <titulo>")
+    public void validarTituloSumatoriaDeCotizaciones(@Named("titulo") String titulo) {
+        detalleRegistrosSuscripcionSteps.validarTituloSumatoriaDeCotizaciones(titulo);
+    }
+
 }
