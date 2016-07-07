@@ -1078,10 +1078,10 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaNuevaCotizacionPage irANuevaCotizacion() {
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mnuAccionesCuenta).shouldBePresent();
         waitFor(mnuAccionesCuenta).shouldBeVisible();
         mnuAccionesCuenta.click();
-        waitForTextToAppear("Nueva cotización",2000);
-        waitFor(mnuNuevaCotizacion).shouldBeVisible();
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mnuNuevaCotizacion).shouldBePresent();
         mnuNuevaCotizacion.click();
         return new CuentaNuevaCotizacionPage(getDriver());
     }

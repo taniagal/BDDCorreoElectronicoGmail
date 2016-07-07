@@ -31,7 +31,7 @@ public class CotizacionDePolizaDefinitions {
         infoCotizacionPoliza.put("numeroDocumento", "Número documento");
         infoCotizacionPoliza.put("direccion", "Dirección");
         infoCotizacionPoliza.put("tipoDireccion", "Tipo de dirección");
-        infoCotizacionPoliza.put("descripcionDireccion", "Descripción de dirección");
+        infoCotizacionPoliza.put("descripcionDireccion", "Descripción de la dirección");
         infoCotizacionPoliza.put("empresaAseguradora", "Empresa aseguradora");
         infoCotizacionPoliza.put("primaTotal", "Prima total");
         infoCotizacionPoliza.put("impuestos", "Impuestos y cargos extra");
