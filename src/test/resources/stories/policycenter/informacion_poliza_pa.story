@@ -1,4 +1,4 @@
-Informacion Poliza - PA
+Informacion Poliza Pa
 
 Meta:
 

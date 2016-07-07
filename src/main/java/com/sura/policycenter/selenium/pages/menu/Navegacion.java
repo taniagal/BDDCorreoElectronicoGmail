@@ -323,7 +323,8 @@ public class Navegacion extends Guidewire {
     public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza) {
         gw.deployMenu(mnuPoliza);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitABit(1500);
+        waitForTextToAppear("Nueva cotización",5000);
         mnuNumeroSub.typeAndEnter(numSubPoliza);
         return new PolizaBuscarPage(getDriver());
     }
@@ -676,8 +677,7 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta() {
-        mnuCuenta.click();
-        waitFor(mnuAccionesCuenta);
+        waitFor(mnuAccionesCuenta).waitUntilClickable();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
@@ -1165,8 +1165,6 @@ public class Navegacion extends Guidewire {
     }
 
     public OpcionesInformacionPolizaPage irAInformacionDePoliza() {
-        //waitForTextToAppear("Información de póliza");
-        //waitFor(mnuInformacionDePoliza);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuInformacionDePoliza).shouldBePresent();
         mnuInformacionDePoliza.click();
         waitABit(1000);
