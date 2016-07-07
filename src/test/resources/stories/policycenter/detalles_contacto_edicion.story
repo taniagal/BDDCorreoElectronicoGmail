@@ -13,7 +13,7 @@ Pendiente por definir en la historia la validacion de direcciones con la histori
 
 
 Scenario: Editar detalles de contacto de tipo persona natural
-Given tengo un contacto con <tipo_documento> c. <documento>
+GivenStories: stories/policycenter/login_policy.story
 When quiera editar la informacion del contacto con <tipo_documento> c. <documento>
 And segundo nombre <segundo_nombre>
 And profesion <profesion>, estado civil <estado_civil>,tipo familia <tipo_familia>
@@ -28,7 +28,6 @@ Examples:
 
 
 Scenario: Editar detalles de contacto de tipo persona juridica
-Given tengo un contacto con <tipo_documento> c. <documento>
 When quiera editar la informacion del contacto con <tipo_documento> c. <documento>
 And razon social <razon_social>, nombre comercial <nombre_comercial>, actividad comercial <actividad_comercial>
 And numero de empleados <numero_empleados>, valor activos <valor_activos>, ventas anuales <ventas_anuales>
