@@ -84,8 +84,8 @@ Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When quiera actualizar la direccion de un contacto que tiene otros contactos que la usan
 Then me debe validar la informacion de los contactos que usan esa direccion:
 |nombre|primaria|telefono|correo|
-|OSCAR GOMEZ|Sí|408-2211|0010@guidewire.com|
 |RICARDO GIRALDO|Sí|408-2211|0019@guidewire.com|
+|OSCAR GOMEZ|Sí|408-2211|0010@guidewire.com|
 |CARLOS PERALTA|Sí|408-2211|0037@guidewire.com|
 Examples:
 |numeroCuenta|
