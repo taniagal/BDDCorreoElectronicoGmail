@@ -2,13 +2,18 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.CotizacionPADetalleSteps;
 import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
+import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class CotizacionPADetalleDefinitions {
+
+    @Managed
+    WebDriver driver;
 
     @Steps
     CotizacionPADetalleSteps cotizacionPADetalleSteps;
