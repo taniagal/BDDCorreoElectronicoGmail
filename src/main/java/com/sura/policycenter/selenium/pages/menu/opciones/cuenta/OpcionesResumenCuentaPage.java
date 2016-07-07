@@ -175,8 +175,6 @@ public class OpcionesResumenCuentaPage extends Guidewire {
     private WebElementFacade txtCiudad;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade txtDireccion;
-    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-inputEl']")
-    private WebElementFacade txtCodigoPostal;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressType-inputEl']")
     private WebElementFacade txtTipoDireccion;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressDescription-inputEl']")
@@ -292,7 +290,6 @@ public class OpcionesResumenCuentaPage extends Guidewire {
         MatcherAssert.assertThat(txtDepartamento.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtCiudad.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
-        MatcherAssert.assertThat(txtCodigoPostal.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtTipoDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtDescripcionDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
     }
@@ -312,7 +309,6 @@ public class OpcionesResumenCuentaPage extends Guidewire {
         MatcherAssert.assertThat(txtDepartamento.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtCiudad.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
-        MatcherAssert.assertThat(txtCodigoPostal.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtTipoDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtDescripcionDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
     }

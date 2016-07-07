@@ -3,17 +3,22 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.policycenter.selenium.steps.CuentasOrdenesDeTrabajoSteps;
 import com.sura.policycenter.selenium.steps.DisponibilidadDetalleProductoSteps;
 import com.sura.policycenter.selenium.steps.InformacionPolizaPASteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class InformacionPolizaPADefinitions {
+
+    @Managed
+    WebDriver driver;
 
     @Steps
     private CuentasOrdenesDeTrabajoSteps cuentasOrdenesTrabajoSteps;
@@ -34,22 +39,22 @@ public class InformacionPolizaPADefinitions {
         infoPoliza.put("telefono", "Teléfono");
         infoPoliza.put("direccionPoliza", "Dirección de la póliza");
         infoPoliza.put("tipoDireccion", "Tipo de dirección");
-        infoPoliza.put("descripcionDireccion", "Descripción de dirección");
+        infoPoliza.put("descripcionDireccion", "Descripción de la dirección");
         infoPoliza.put("labelDetallesPoliza", "Detalles de la póliza");
         infoPoliza.put("organizacion", "Organización");
         infoPoliza.put("canal", "Canal");
         infoPoliza.put("tipoPoliza", "Tipo de póliza");
         infoPoliza.put("tipoPlazo", "Tipo de plazo");
-        infoPoliza.put("fechaVigencia", "Fecha de vigencia");
-        infoPoliza.put("fechaExpiracion", "Fecha de expiración");
-        infoPoliza.put("fechaEscrita", "Fecha escrita");
+        infoPoliza.put("fechaVigencia", "Fecha inicio de vigencia");
+        infoPoliza.put("fechaExpiracion", "Fecha fin de vigencia");
+        infoPoliza.put("fechaEscrita", "Fecha de expedición");
         infoPoliza.put("polizaFinanciada", "¿Póliza financiada?");
         infoPoliza.put("numeroCuotas", "Número de cuotas");
         infoPoliza.put("labelAgenteRegistro", "Agente de registro");
         infoPoliza.put("organizacionAgente", "Oficina de radicación");
         infoPoliza.put("codigoAgente", "Código de agente");
         infoPoliza.put("modificadorPoliza", "Modificador póliza");
-        infoPoliza.put("descuentoPoliza", "Descuento Póliza"); //Descuento póliza
+        infoPoliza.put("descuentoPoliza", "Descuento Póliza");
     }
 
     @Given("ya se inicio una nueva suscripcion <numeroCuenta>")
@@ -137,7 +142,7 @@ public class InformacionPolizaPADefinitions {
         datosSegundoTomador.put("telefono", "Teléfono");
         datosSegundoTomador.put("direccion", "Dirección");
         datosSegundoTomador.put("tipoDireccion", "Tipo de dirección");
-        datosSegundoTomador.put("descripcionDireccion", "Descripción de dirección");
+        datosSegundoTomador.put("descripcionDireccion", "Descripción de la dirección");
         informacionPolizaPASteps.validarRegistroSegundoTomador(datosSegundoTomador);
     }
 
