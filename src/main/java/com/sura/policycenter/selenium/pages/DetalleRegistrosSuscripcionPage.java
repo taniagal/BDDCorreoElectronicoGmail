@@ -90,7 +90,7 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
         assertThat(lblTransaccion.getText(), is(equalTo(transaccion)));
     }
 
-    public void buscarDetalleRegistrosDeSucripcion() {
+    public void buscarDetalleRegistrosDeSuscripcion() {
         buscarRegistrosSuscripcion();
         lblTransaccionDetalle.withTimeoutOf(7, TimeUnit.SECONDS).waitUntilPresent();
         lblTransaccionDetalle.click();

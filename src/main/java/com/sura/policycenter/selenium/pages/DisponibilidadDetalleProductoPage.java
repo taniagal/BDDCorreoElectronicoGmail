@@ -1,9 +1,10 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.serinitybdd.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import com.sura.serenitybdd.util.GwNavegacionUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
