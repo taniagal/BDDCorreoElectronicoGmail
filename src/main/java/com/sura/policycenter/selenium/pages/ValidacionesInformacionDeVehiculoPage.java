@@ -47,7 +47,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     public void irAVehiculos() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuItemVehiculos).shouldBePresent();
         menuItemVehiculos.click();
-        botonCrearVehiculo.click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
     }
 
     public void crearVehiculo(){
