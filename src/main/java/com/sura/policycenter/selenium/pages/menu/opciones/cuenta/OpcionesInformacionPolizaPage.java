@@ -210,7 +210,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void seleccionarAgenteCotizacion() {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoNombreAgente).shouldBePresent();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(campoNombreAgente).shouldBePresent();
         waitFor(campoNombreAgente).shouldBeVisible();
         campoNombreAgente.waitUntilVisible().sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
