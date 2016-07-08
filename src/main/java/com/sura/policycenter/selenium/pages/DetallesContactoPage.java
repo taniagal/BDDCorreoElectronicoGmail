@@ -137,6 +137,8 @@ public class  DetallesContactoPage extends Guidewire {
     private WebElementFacade campoTxtIrA;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ContactSearch']/div")
     private WebElementFacade menuItemContactos;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    private WebElementFacade comboBoxDepartamento2;
 
 
     private  String [] dtlContact = new String[15];
@@ -149,14 +151,14 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void irABuscarContacto() {
-        campoTxtIrA.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
         campoTxtIrA.sendKeys("Search");
         campoTxtIrA.sendKeys(Keys.ENTER);
         menuItemContactos.waitUntilPresent();
         menuItemContactos.click();
     }
     public void editarContacto(){
-        botonEditarContacto.waitUntilPresent();
+        withTimeoutOf(11, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
         botonEditarContacto.waitUntilVisible();
         assertThat("El boton de editar no está presente en el DOM",botonEditarContacto.isPresent());
         botonEditarContacto.click();
@@ -228,9 +230,11 @@ public class  DetallesContactoPage extends Guidewire {
         campoTxtCorreoElectronicoPrimario.clear();
         waitABit(1000);
         campoTxtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
-        campoTxtCorreoElectronicoSecundario.clear();
-        waitABit(300);
-        campoTxtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
+        do {
+            campoTxtCorreoElectronicoSecundario.clear();
+            waitFor(campoTxtCorreoElectronicoSecundario).shouldContainText("");
+            campoTxtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
+        }while (!campoTxtCorreoElectronicoSecundario.getValue().equals(correoElectronicoSecundario));
         dtlContact[13]= correoElectronicoPrimario;
         dtlContact[14]= correoElectronicoSecundario;
     }
@@ -267,9 +271,11 @@ public class  DetallesContactoPage extends Guidewire {
         campoTxtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
         campoTxtTelefonoOficina.sendKeys(telefonoOficina);
-        campoTxtCorreoElectronicoSecundarioEmpresa.clear();
-        waitABit(700);
-        campoTxtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
+        do {
+            campoTxtCorreoElectronicoSecundarioEmpresa.clear();
+            waitFor(campoTxtCorreoElectronicoSecundarioEmpresa).shouldContainText("");
+            campoTxtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
+        }while (!campoTxtCorreoElectronicoSecundarioEmpresa.getValue().equals(correoElectronicoSecundario));
         dtlCntJ[5]= telefonoOficina;
         dtlCntJ[6]= correoElectronicoPrimario;
         dtlCntJ[7]= correoElectronicoSecundario;
@@ -281,7 +287,7 @@ public class  DetallesContactoPage extends Guidewire {
      * Valida si los datos ingresados es igual al que se muestran en el detalle
      */
     public void verificarActualizacion(){
-        espera(campoTxtSegundoNombre,6);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtSegundoNombre).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlContact[2].equals(campoTxtSegundoNombre.getText()))
             right.append("segundo nombre,");
@@ -311,8 +317,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void verificarActualizacionJuridico(){
-        espera(campoTxtNombreComercial,6);
-        labelActividadComercial.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(comboBoxActividadComercial).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
             right.append("activida comercial,");
@@ -419,7 +424,7 @@ public class  DetallesContactoPage extends Guidewire {
      * AGREGAR DIRECCION A CONTACTO
      */
     public void validarDatosPantalla() {
-        waitABit(2000);
+        waitABit(1000);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelPais.isPresent())
             notPresent.append(" pais,");
@@ -465,10 +470,11 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public List<WebElementFacade> getListaContactos() {
-        return withTimeoutOf(5, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
+        return withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
     }
 
     public void validarMensaje(String mensaje) {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         assertThat("No se puede ingresar más de una dirección al contacto con el mismo Tipo de dirección",divMensaje.containsText(mensaje));
     }
 }

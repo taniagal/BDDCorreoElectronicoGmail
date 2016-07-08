@@ -165,9 +165,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
-        waitABit(3000);
-        getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        txtTipoDoc.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBePresent();
         txtTipoDoc.clear();
         txtTipoDoc.sendKeys(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
@@ -380,8 +378,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void seleccionarContacto() {
-        waitABit(2000);
-        selectContact.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(selectContact).shouldBePresent();
         selectContact.click();
     }
 
