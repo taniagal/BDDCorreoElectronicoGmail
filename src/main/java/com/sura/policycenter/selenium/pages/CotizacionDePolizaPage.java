@@ -178,7 +178,7 @@ public class CotizacionDePolizaPage extends PageObject{
                 mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje)||
                 mensajeValidacion5.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
-        waitABit(10000);
+        waitABit(15000);
     }
 
     public void validarTipoRiesgo() {

@@ -1,23 +1,25 @@
 package com.sura.guidewire.selenium;
 
 import com.google.common.base.Function;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.hamcrest.MatcherAssert;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebDriver;
 
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
 
 public class Guidewire extends PageObject {
 
@@ -45,15 +47,8 @@ public class Guidewire extends PageObject {
         super(driver);
     }
 
-    @WhenPageOpens
-    public void waitUntilMainElementsAppears() {
-        getDriver().manage().window().maximize();
-        usuario.waitUntilVisible();
-        contrasena.waitUntilVisible();
-    }
-
     public void asercion(String element, String mensaje) {
-        assertThat(element, containsString(mensaje));
+        MatcherAssert.assertThat(element, containsString(mensaje));
     }
 
     public void login(String user, String pass) {
@@ -77,18 +72,17 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(menu).waitUntilPresent().click();
-        waitABit(2500);
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menu).click();
+        waitUntil(2500);
         menu.click();
-        waitABit(500);
+        waitUntil(500);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         return actions;
     }
 
-
     public void selectItem(WebElementFacade element, String option){
         element.click();
-        waitABit(200);
+        waitUntil(200);
         element.sendKeys(option);
         element.sendKeys(Keys.ENTER);
     }
@@ -112,7 +106,6 @@ public class Guidewire extends PageObject {
     }
 
 
-
     protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
         final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -120,12 +113,25 @@ public class Guidewire extends PageObject {
 
     public void waitUntil(int millis) {
         Integer i = 0;
-        Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
-                TimeUnit.MILLISECONDS).pollingEvery(millis,TimeUnit.MILLISECONDS);
-        waitUtil.until(new Function<Integer, Boolean>() {
-            public Boolean apply(Integer i) {
-                return false;
-            }
-        });
+        Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
+                TimeUnit.MILLISECONDS).pollingEvery(millis,
+                TimeUnit.MILLISECONDS);
+        try {
+            wait.until(new Function<Integer, Boolean>() {
+                public Boolean apply(Integer i) {
+
+                    return false;
+                }
+            });
+        } catch (TimeoutException e) {}
+    }
+
+    public  void verificarMensaje(WebElementFacade divMensaje, String mensaje){
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
+        MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
+    }
+
+    public List<WebElementFacade> getLista(String locator) {
+         return withTimeoutOf(15, TimeUnit.SECONDS).findAll(locator);
     }
 }
