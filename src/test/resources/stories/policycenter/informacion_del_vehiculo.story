@@ -8,9 +8,9 @@ con un perfil que tenga permisos quiero ser capaz de registrar toda la informaci
 
 Scenario: Ingreso de informacion del vehiculo
 GivenStories: stories/policycenter/login_policy.story
-Given Estoy buscando una cuenta <numCuenta>
-When quiera registrar la informacion del vehiculo <nomProducto>
-And registre los datos del vehiculo <placa>
+Given se inicio una nueva suscripcion <numeroCuenta>
+When ingrese una nueva cotizacion para vehiculo <nomProducto>
+And vaya a registrar los datos del vehiculo
 Then el sistema debe mostrar los datos correspondiente al vehiculo
 
 

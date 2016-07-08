@@ -17,12 +17,17 @@ public class InformacionDeVehiculoDefinitions {
     @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
 
-    @When("quiera registrar la informacion del vehiculo <nomProducto>")
+    @When("ingrese una nueva cotizacion para vehiculo <nomProducto>")
     public void whenQuieraRegistrarLaInformacionDelVehiculo(@Named("nomProducto")String nomProducto) {
         informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
         informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto(nomProducto);
+    }
+
+    @When("vaya a registrar los datos del vehiculo")
+    public void whenvayaARegistrarLosDatosDelVehiculo(){
         informacionDeVehiculoSteps.ingresar_a_cotizacion_de_vehiculo();
         informacionDeVehiculoSteps.ingresar_informacion_del_vehiculo();
+
     }
 
     @Then("el sistema debe mostrar los datos correspondiente al vehiculo")
