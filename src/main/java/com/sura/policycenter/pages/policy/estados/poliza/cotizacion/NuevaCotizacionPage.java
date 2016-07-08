@@ -4,7 +4,10 @@ import com.sura.policycenter.model.AgenteModel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
@@ -32,6 +35,9 @@ public class NuevaCotizacionPage extends PageObject {
     private String nombreAgente;
     private List<WebElementFacade> listaDeProductosElement;
 
+    @FindBy (id = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div")
+    WebElementFacade mng;
+
     public static final String TITULO_PAGINA = "//span[@id='NewSubmission:NewSubmissionScreen:ttlBar']";
     public static final String TITULO_PAGINA_SIGUIENTE = "//span[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:ttlBar']";
     public static final String TXT_NUMERO_CUENTA = "//input[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']";
@@ -45,6 +51,7 @@ public class NuevaCotizacionPage extends PageObject {
     public static final String MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'displayfield') and contains(@id,'inputEl')]";
     public static final String MENSAJES_DE_INFORMACION = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div";
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
+
 
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
     public Boolean buscarInputHabilitadoEnElemento(String xpath) {
@@ -91,9 +98,10 @@ public class NuevaCotizacionPage extends PageObject {
     public List<WebElementFacade> elementos(String xpath) {
         List<WebElementFacade> elementos = null;
 
+
         try {
             waitFor($(xpath)).shouldBeVisible();
-            elementos = findAll(By.xpath(xpath));
+            elementos = withTimeoutOf(15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
 
         } catch (NoSuchElementException e) {
             LOGGER.error("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
@@ -107,6 +115,7 @@ public class NuevaCotizacionPage extends PageObject {
     }
 
     public Boolean esFechaCotizacionHOY() {
+
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(LABEL_FECHA_POR_DEFECTO)));
         return esFechaPorDefectoHOY(obtenerFechaCotizacionElemento());
     }
@@ -180,7 +189,6 @@ public class NuevaCotizacionPage extends PageObject {
         WebElementFacade producto = listaDeProductosElement.get(indiceDelProducto);
         WebElementFacade btnSeleccionar = producto.findBy("td/div/a");
         btnSeleccionar.click();
-
     }
 
 
@@ -205,11 +213,12 @@ public class NuevaCotizacionPage extends PageObject {
         elemento(TXT_NOMBRE_AGENTE).click();
         // TODO: 08/06/2016 COmo usar el de el impl bien??? para hacer el assertion si esta vacio el combo
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(CBO_NOMBRE_AGENTE));
+        listaAgentesModel = new ArrayList<AgenteModel>();
 
         if (!listaNombresAgentesElement.isEmpty()) {
             for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
                 String[] agenteArray = agenteElemento.getText().split(">");
-                Integer codigo = Integer.parseInt(agenteArray[1].trim());
+                String codigo = agenteArray[1];
                 String nombre = agenteArray[0];
 
                 if (agenteArray.length == 2) {
@@ -310,15 +319,18 @@ public class NuevaCotizacionPage extends PageObject {
     }
 
     public Boolean validarOcurrenciaDeMensajeDeAplicacion(String mensajesApp) {
+
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado;
         List<WebElementFacade> divsMensajes = elementos(MENSAJES_DE_INFORMACION);
 
         for (WebElementFacade div : divsMensajes) {
             mensajeMostrado = div.getText();
-            if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
-                existeOcurrencia = Boolean.TRUE;
-                break;
+            for(String etiqueta : mensajesApp.split("|")){
+                if (mensajeMostrado.toLowerCase().contains(etiqueta)) {
+                    existeOcurrencia = Boolean.TRUE;
+                    break;
+                }
             }
         }
 

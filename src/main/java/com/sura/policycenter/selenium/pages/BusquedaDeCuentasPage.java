@@ -134,6 +134,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
     }
 
     public void mostrarInformacionDeLaCuenta(String numeroCuenta, String nombre, String direccion) {
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(this.grdNumeroCuenta).shouldBePresent();
         MatcherAssert.assertThat(this.grdNumeroCuenta.getText(), Matchers.containsString(numeroCuenta));
         MatcherAssert.assertThat(this.grdNombre.getText(), Matchers.containsString(nombre));
         MatcherAssert.assertThat(this.grdDireccion.getText(), Matchers.containsString(direccion));

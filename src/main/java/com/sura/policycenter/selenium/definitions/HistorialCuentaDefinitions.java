@@ -2,15 +2,20 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.openqa.selenium.WebDriver;
 
 @SuppressWarnings({"WeakerAccess", "EmptyMethod"})
 public class HistorialCuentaDefinitions {
+
+    @Managed
+    WebDriver driver;
 
     @Steps
     private SeusLoginSteps seusLoginSteps;
