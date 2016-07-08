@@ -115,8 +115,6 @@ public class  DetallesContactoPage extends Guidewire {
     private WebElementFacade labelCiudad;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-labelEl']")
     private WebElementFacade labelDireccion;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-labelEl']")
-    private WebElementFacade labelCodigoPostal;
     @FindBy(xpath = " .//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-labelEl']")
     private WebElementFacade labelTipoDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-labelEl']")
@@ -434,8 +432,6 @@ public class  DetallesContactoPage extends Guidewire {
             notPresent.append(" ciudad,");
         if(!labelDireccion.isPresent())
             notPresent.append(" direccion,");
-        if(!labelCodigoPostal.isPresent())
-            notPresent.append(" codigo postal,");
         if(!labelTipoDireccion.isPresent())
             notPresent.append(" tipo dirección,");
         if(!labelDescripcionDireccion.isPresent())
@@ -466,7 +462,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void validarDireccion(){
-        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains("CL 60 B # 10 - 157"));
+        assertThat("Error en la direccion agregada",getListaContactos().get(1).getText().contains("CL 60 B # 10 - 157") || getListaContactos().get(1).getText().contains("CALLE 60B #10-157"));
     }
 
     public List<WebElementFacade> getListaContactos() {
