@@ -7,11 +7,11 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
 
-    private final DetalleRegistrosSuscripcionPage detalleRegistrosSuscripcionPage = new DetalleRegistrosSuscripcionPage(getDriver());
+    private DetalleRegistrosSuscripcionPage detalleRegistrosSuscripcionPage;
 
-    public DetalleRegistrosSuscripcionSteps(Pages pages){
-        super(pages);
-    }
+//    public DetalleRegistrosSuscripcionSteps(Pages pages){
+//        super(pages);
+//    }
 
     @Step
     public void validarCamposDetalle(String producto, String nroEnvio, String estado, String nroPoliza) {
@@ -34,7 +34,7 @@ public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
     }
 
     @Step
-    public void buscarDetalleRegistrosDeSucripcion() {
+    public void buscarDetalleRegistrosDeSuscripcion() {
         detalleRegistrosSuscripcionPage.buscarDetalleRegistrosDeSucripcion();
     }
 
