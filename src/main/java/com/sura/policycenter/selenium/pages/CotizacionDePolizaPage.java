@@ -173,10 +173,10 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        waitForTextToAppear("Resultados de validación",10000);
+        waitForTextToAppear("Resultados de validación",20000);
         boolean validacionMensaje = mensajeValidacion1.getText().contains(mensaje)||mensajeValidacion2.getText().contains(mensaje)||
-                                    mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje)||
-                                    mensajeValidacion5.getText().contains(mensaje);
+                mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje)||
+                mensajeValidacion5.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
         waitABit(10000);
     }
