@@ -132,7 +132,7 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
+        withTimeoutOf(15,TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
         Map<String, String> datosCotizacion;
         MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroCotizacion"))));
         MatcherAssert.assertThat(labelVigenciaPoliza.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("vigenciaPoliza"))));
@@ -173,10 +173,10 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        waitForTextToAppear("Resultados de validación",10000);
+        waitForTextToAppear("Resultados de validación",20000);
         boolean validacionMensaje = mensajeValidacion1.getText().contains(mensaje)||mensajeValidacion2.getText().contains(mensaje)||
-                                    mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje)||
-                                    mensajeValidacion5.getText().contains(mensaje);
+                mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje)||
+                mensajeValidacion5.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
         waitABit(10000);
     }
