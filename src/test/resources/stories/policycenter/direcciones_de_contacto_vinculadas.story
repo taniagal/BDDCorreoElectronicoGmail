@@ -41,15 +41,15 @@ Examples:
 |numeroCuenta|nombreContacto|pais|departamento|ciudad|
 |C000484848|RICARDO GIRALDO|Estados Unidos|<ninguno>|<ninguno>|
 
-Scenario: Edicion del campo Ciudad y Direccion validando que se estandariza la direccion ingresada
+Scenario: Edicion del campo Direccion validando que se estandariza la direccion ingresada
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When seleccione el contacto a editar <nombreContacto>
 And ingrese a editar la direccion por <direccionSinEstandarizar>
 Then la direccion debe quedar estandarizada <direccionEstandarizada> del contacto <nombreContacto>
 
 Examples:
-|ciudad|direccionSinEstandarizar|direccionEstandarizada|nombreContacto|
-|Medellin|Carrera 65 48 162|KR 65 # 48 - 162|RICARDO GIRALDO|
+|numeroCuenta|direccionSinEstandarizar|direccionEstandarizada|nombreContacto|
+|C000484848|Carrera 65 48 162|KR 65 # 48 - 162|RICARDO GIRALDO|
 
 Scenario: consultar direccion de un contacto que tiene una direccion asociada a otro contacto
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>

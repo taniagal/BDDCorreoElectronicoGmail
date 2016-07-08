@@ -74,16 +74,6 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.seleccionarContactoAEditar(nombreContacto);
     }
 
-    @When("ingrese a editar la direccion e ingrese el departamento <departamento>")
-    public void editarCampoDepartamento(@Named("departamento") String departamento){
-        direccionesDeContactoVinculadasSteps.editarCampoDepartamento(departamento);
-    }
-
-    @When("ingrese a editar la direccion e ingrese la ciudad <ciudad>")
-    public void editarCampoCiudad(@Named("ciudad") String ciudad){
-        direccionesDeContactoVinculadasSteps.editarCampoCiudad(ciudad);
-    }
-
     @When("seleccione la opcion para editar la direccion")
     public void seleccionarEditarDireccionVinculada(){
         direccionesDeContactoVinculadasSteps.seleccionarEditarDireccionVinculada();

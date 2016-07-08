@@ -281,34 +281,6 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         botonCancelar.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
     }
 
-    public void editarCampoDepartamento(String departamento) {
-        int elementoPresente = 0;
-        while(elementoPresente<3) {
-            try {
-                WebElementFacade campoDepartamento = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
-                campoDepartamento.clear();
-                campoDepartamento.sendKeys(departamento);
-                campoDepartamento.sendKeys(Keys.ENTER);
-                if (campoDepartamento.getAttribute("value").equals(departamento)) {
-                    break;
-                }
-            }catch (StaleElementReferenceException elemento){
-                }
-            elementoPresente = elementoPresente + 1;
-        }
-    }
-
-    public void editarCampoCiudad(String ciudad) {
-        WebElementFacade campoDepartamento = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
-        while (campoDepartamento.getAttribute("value").equals("<ninguno>")) {
-            editarCampoDepartamento("ANTIOQUIA");
-        }
-        WebElementFacade campoCiudad = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']");
-        campoCiudad.clear();
-        campoCiudad.sendKeys(ciudad);
-        campoCiudad.sendKeys(Keys.ENTER);
-    }
-
     public void validarDireccionEstandarizada(String direccionEstandarizada, String nombreContacto) {
         this.seleccionarUnContacto(nombreContacto);
         WebElementFacade campoDireccionContacto = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']");
