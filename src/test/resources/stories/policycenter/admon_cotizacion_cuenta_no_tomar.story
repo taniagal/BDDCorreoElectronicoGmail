@@ -20,7 +20,7 @@ Examples:
 Scenario: Validar campos obligatorios de lista despleglable razon de no tomar
 Given que estoy visualizando las cotizaciones de la cuenta <numCuenta>
 When no quiera tomar la cotizacion
-Then el sistema debe mostrarme todas las stes opciones:
+Then el sistema debe mostrarme todas las siguientes opciones:
 |Precio y condiciones no satisfactorias|
 |Se aseguró en otra compañía|
 |No acuerdo de pago|
