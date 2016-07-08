@@ -62,17 +62,23 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab']")
     WebElementFacade botonEscritorio;
 
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
+    WebElementFacade mensajesRiesgos;
+
 
     public void irABuscarCotizacion(String cotizacion){
-        waitFor(ExpectedConditions.elementToBeClickable(menuPoliza));
+//        waitFor(ExpectedConditions.elementToBeClickable(menuPoliza));
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuPoliza).waitUntilPresent();
         menuPoliza.click();
         waitForAnyTextToAppear("Cotización", "Buscar pólizas");
-        waitFor(ExpectedConditions.elementToBeClickable(menuPoliza));
+//        waitFor(ExpectedConditions.elementToBeClickable(menuPoliza));
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuPoliza).waitUntilPresent();
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
-        waitFor(ExpectedConditions.visibilityOf(menuNumeroCotizacion));
+//        waitFor(ExpectedConditions.visibilityOf(menuNumeroCotizacion));
         waitABit(1000);
-        enter(cotizacion).into(menuNumeroCotizacion);
+//        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuNumeroCotizacion).waitUntilPresent();
+        menuNumeroCotizacion.sendKeys(cotizacion);
         menuNumeroCotizacion.sendKeys(Keys.ENTER);
         waitForTextToAppear("Cotización");
     }
@@ -104,7 +110,8 @@ public class ExpedicionDePolizaPage extends PageObject{
         String mensajes[] = mensaje.split("\\^");
         Integer contadorMensajesOk = 0;
         Integer numeroMensajes = mensajes.length;
-        waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")));
+//        waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")));
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(mensajesRiesgos).waitUntilPresent();
         List<WebElementFacade> mensajesRiesgos = findAll(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div");
         for(int i = 0; i < numeroMensajes; i++) {
             System.out.println(mensajes[i]);
