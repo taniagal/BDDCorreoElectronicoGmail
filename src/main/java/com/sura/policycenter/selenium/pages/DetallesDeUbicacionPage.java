@@ -5,12 +5,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-
-
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DetallesDeUbicacionPage extends Guidewire{
 
@@ -80,25 +78,17 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public void  seleccionarProducto(String nomProducto) {
+        List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
+        List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
         int i = 0;
-        if (!getListaDescripcion().isEmpty()) {
-            for (WebElementFacade descripcion : getListaDescripcion()) {
+        if (!descripcionProductos.isEmpty()) {
+            for (WebElementFacade descripcion : descripcionProductos) {
                 if (nomProducto.equals(descripcion.getText())) {
-                    getListaBotones().get(i).click();
+                    botones.get(i).click();
                 }
                 i++;
             }
         }
-    }
-
-    private List<WebElementFacade> getListaBotones() {
-        List<WebElementFacade> botones = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
-        return botones;
-    }
-
-    private List<WebElementFacade> getListaDescripcion() {
-        List<WebElementFacade> DescripcionProductos = withTimeoutOf(10,TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
-        return DescripcionProductos;
     }
 
     public void irANuevaCotizacion(){
@@ -108,7 +98,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
         subMenuNuevaCotizacion.waitUntilPresent().click();
     }
 
-    public void agregarDatos(String cuenta, String producto) {
+    public void setDatos(String cuenta, String producto) {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(numeroDeCuenta).shouldBePresent();
         numeroDeCuenta.sendKeys(cuenta);
         comboBoxNombreAgente.click();
@@ -120,34 +110,25 @@ public class DetallesDeUbicacionPage extends Guidewire{
         seleccionarProducto(producto);
     }
 
-
     public void irAUbicacion(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
         botonAgregarUbicacion.waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
     }
 
-    public void agregarDireccion(String direccion, String departamento, String ciudad) {
+    public void setDireccion(String direccion, String departamento, String ciudad) {
         campoTxtDireccion.sendKeys(direccion);
         this.direccion = direccion;
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(3000);
+        waitUntil(3000);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(1000);
+        waitUntil(1000);
     }
 
-    public void agregarUbicacion(String descripcion, String actividad){
-        campoTxtDescripcionDeUbicacion.sendKeys(descripcion);
+    public void setUbicacion(String descripcion, String actividad){
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
         selectItem(comboBoxActividadEconomica,actividad);
         botonAceptar.click();
-    }
-
-    public void validarIngresoDeUbicacion(){
-        assertThat("Error al agregar la ubicacion", getDatosTabla().get(1).getText().contains(direccion));
-    }
-
-    public List<WebElementFacade> getDatosTabla() {
-        return withTimeoutOf(8, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/div/table/tbody/tr");
     }
 
     public void validarCamposNuevos(){
@@ -163,11 +144,14 @@ public class DetallesDeUbicacionPage extends Guidewire{
             String res = notPresent.toString();
             if(MSJVALIDARELEMENTOS.equals(res))
                 res = notPresent.toString().substring(0,notPresent.toString().length()-1);
-            assertThat(res,"No estan presentes los elementos".equals(res));
+        MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
         }
 
+    public void validarIngresoDeUbicacion(){
+        MatcherAssert.assertThat("Error al agregar la ubicacion", getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/div/table/tbody/tr").get(1).getText().contains(direccion));
+    }
+
     public void verificarMensaje(String mensaje) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
-        assertThat("Falló el mensaje de validacion"+mensaje, divMensaje.containsText(mensaje));
+        verificarMensaje(divMensaje,mensaje);
     }
 }

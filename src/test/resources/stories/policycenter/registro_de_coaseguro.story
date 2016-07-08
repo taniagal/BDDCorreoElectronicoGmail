@@ -15,8 +15,8 @@ When agregue las aseguradoras y su porcentaje de participacion
 Then el proceso debe ser exitoso
 
 Examples:
-|cuenta     |producto           |
-|C001888888 |Propiedad comercial|
+|cuenta     |producto               |
+|C001888888 |Multiriesgo corporativo|
 
 
 Scenario: Agregar el coaseguro a una poliza con una sola aseguradora
@@ -26,8 +26,8 @@ When no agregue mas de una aseguradora y/o porcentaje de participacion
 Then debe aparecer el mensaje <mensaje> y/o mensaje <mensaje2>
 
 Examples:
-|cuenta     |producto           |mensaje|mensaje2|
-|C001888888 |Propiedad comercial|Aseguradora : Falta el campo obligatorio "Aseguradora"|% de participación : Falta el campo obligatorio "% de participación"|
+|cuenta     |producto             |mensaje|mensaje2|
+|C001888888 |Multiriesgo corporativo|Aseguradora : Falta el campo obligatorio "Aseguradora"|% de participación : Falta el campo obligatorio "% de participación"|
 
 
 
@@ -38,5 +38,5 @@ When el porcentaje de paticipacion total no sea 100%
 Then debe aparecer el mensaje <mensaje>
 
 Examples:
-|cuenta     |producto           |mensaje|
-|C001888888 |Propiedad comercial|El total de % de participación de coaseguro debe ser igual al 100%|
+|cuenta     |producto               |mensaje|
+|C001888888 |Multiriesgo corporativo|El total de % de participación de coaseguro debe ser igual al 100%|

@@ -7,13 +7,11 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.components.HtmlTable;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
-
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CoaseguroPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
@@ -59,7 +57,7 @@ public class CoaseguroPage extends Guidewire {
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
         }
-        assertThat(res+"verifique su codigo","No estan correctos los elementos".equals(res));
+        MatcherAssert.assertThat(res+"verifique su codigo","No estan correctos los elementos".equals(res));
     }
 
     public void agregarCoaseguro(List<Aseguradora> aseguradoras) {
@@ -73,7 +71,7 @@ public class CoaseguroPage extends Guidewire {
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(aseguradora.getParticipacion()).build().perform();
-                assertThat("Sura debe estar por defecto en las aseguradoras", campoAseguradora.containsText("Sura"));
+                MatcherAssert.assertThat("Sura debe estar por defecto en las aseguradoras", campoAseguradora.containsText("Sura"));
             } else {
                 act.click().build().perform();
                 act.sendKeys(aseguradora.getNombre()).build().perform();
@@ -86,7 +84,7 @@ public class CoaseguroPage extends Guidewire {
     }
     public void verificarPorcentajeParticipacion(){
         HtmlTable htmlTable = new HtmlTable(findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table"));
-        assertThat("El total no es del 100%", htmlTable.getHeadings().toString().contains("100"));
+        MatcherAssert.assertThat("El total no es del 100%", htmlTable.getHeadings().toString().contains("100"));
     }
 
     public void guardarcosaeguro(){
@@ -95,12 +93,11 @@ public class CoaseguroPage extends Guidewire {
 
     public void verificarCoaseguro() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
-        assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
+        MatcherAssert.assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
 
     public void verificarMensaje(String mensaje) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
-        assertThat("Falló el mensaje de validacion", divMensaje.containsText(mensaje));
+        verificarMensaje(divMensaje,mensaje);
     }
 
 }

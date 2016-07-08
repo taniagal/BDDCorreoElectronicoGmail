@@ -1,14 +1,12 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.WebDriver;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.MatcherAssert.assertThat;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.openqa.selenium.WebDriver;
 
 
 public class CoberturaGlobalPage extends Guidewire {
@@ -43,7 +41,7 @@ public class CoberturaGlobalPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
     private WebElementFacade campoTxtGenerico;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
-    private WebElementFacade mensajePantalla;
+    private WebElementFacade divMensaje;
     @FindBy(id = ".//*[@id='wsTabBar:wsTab_0:panelId']")
     private WebElementFacade panelMensaje;
 
@@ -60,7 +58,7 @@ public class CoberturaGlobalPage extends Guidewire {
         botonAgregarCoberturaGeneral.waitUntilPresent().click();
         campoTxtDescripcion.sendKeys(descripcion);
         selectItem(comboBoxTipoCobertura, tipoCobertura);
-        waitABit(1000);
+        waitUntil(1000);
     }
     public void agregarCoberturasGlobales(String descripcion, String tipoCobertura, String valor, String nombreCobertura) {
         navegarPorCobertura(descripcion, tipoCobertura);
@@ -72,14 +70,14 @@ public class CoberturaGlobalPage extends Guidewire {
                 cargarCoberturaUnica(nombreCobertura, valor);
                 break;
         }
-        waitABit(1000);
+        waitUntil(1000);
         botonAceptar.click();
     }
 
     public void cargarCoberturaUnica(String nombreCobertura, String valor) {
         comboBoxCoberturas.waitUntilPresent();
         selectItem(comboBoxCoberturas, nombreCobertura);
-        waitABit(1000);
+        waitUntil(1000);
         linkCoberturas.click();
         checkBoxGenerico.waitUntilPresent().click();
         campoTxtGenerico.sendKeys(valor);
@@ -96,26 +94,24 @@ public class CoberturaGlobalPage extends Guidewire {
 
     public void verificarCoberturasIncluidas() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkCobertura1).waitUntilPresent().click();
-        assertThat("Error al Agregar la cobertura", linkCobertura1.isPresent());
+        MatcherAssert.assertThat("Error al Agregar la cobertura", linkCobertura1.isPresent());
     }
 
     public void verificarUbicacionesCubiertas() {
-        List<WebElementFacade> tablaUbicaciones = withTimeoutOf(8, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody");
-        assertThat("Error al Agregar la ubicacion", tablaUbicaciones.size() > 0);
+        List<WebElementFacade> tablaUbicaciones = getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody");
+        MatcherAssert.assertThat("Error al Agregar la ubicacion", tablaUbicaciones.size() > 0);
     }
 
     public void seleccionarCoberturaUnica(String descripcion, String tipoCobertura, String nombreCobertura) {
         navegarPorCobertura(descripcion, tipoCobertura);
         comboBoxCoberturas.waitUntilPresent();
         selectItem(comboBoxCoberturas, nombreCobertura);
-        waitABit(1000);
+        waitUntil(1000);
         botonAceptar.click();
-        waitABit(1000);
+        waitUntil(1000);
     }
 
     public void verificarMensajeError(String mensaje) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mensajePantalla).shouldBePresent();
-        assertThat("Error el Mensaje no existe", mensajePantalla.containsText(mensaje));
+        verificarMensaje(divMensaje,mensaje);
     }
-
 }

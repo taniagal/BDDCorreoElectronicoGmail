@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
@@ -34,11 +33,9 @@ public class PolizasDePrimeraPerdidaPage extends Guidewire{
     @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:10:CovTermInputSet:TypekeyTermInput-inputEl']")
     private WebElementFacade comboBoxTipoPrimeraPerdida;
 
-
     public PolizasDePrimeraPerdidaPage(WebDriver driver){
         super(driver);
     }
-
 
     public void irAArticulos() {
         withTimeoutOf(25, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
@@ -61,7 +58,6 @@ public class PolizasDePrimeraPerdidaPage extends Guidewire{
     }
 
     public void validarMensaje(String mensaje) {
-        waitFor(divMensaje).shouldContainText(mensaje);
-        MatcherAssert.assertThat("Error al validar el mensaje", divMensaje.containsText(mensaje));
+        verificarMensaje(divMensaje,mensaje);
     }
 }

@@ -13,8 +13,8 @@ When agrege un vehiculo con codigo fasecolda <codigo> que no existe
 Then debo ingresar un nuevo codigo
 
 Examples:
-|cuenta     |producto     |codigo|
-|C000888888 |Auto personal|acb123|
+|cuenta     |producto|codigo|
+|C000888888 |Autos   |acb123|
 
 
 
@@ -31,8 +31,8 @@ Then deben aparecer los mensajes de validacion:
 |Motor : El motor AB3C2, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 
 Examples:
-|cuenta     |producto     |
-|C000888888 |Auto personal|
+|cuenta     |producto|
+|C000888888 |Autos   |
 
 
 
@@ -47,8 +47,8 @@ Then deben aparecer los mensajes de validacion:
 |Valor asegurado : El valor asegurado del vehículo supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
 
 Examples:
-|cuenta     |producto     |
-|C000888888 |Auto personal|
+|cuenta     |producto|
+|C000888888 |Autos   |
 
 
 
@@ -63,5 +63,5 @@ Then deben aparecer los mensajes de validacion:
 |Valor asegurado : El valor del vehículo es inferior al tope mínimo. Por favor verifique.|
 
 Examples:
-|cuenta     |producto     |
-|C000888888 |Auto personal|
+|cuenta     |producto|
+|C000888888 |Autos   |

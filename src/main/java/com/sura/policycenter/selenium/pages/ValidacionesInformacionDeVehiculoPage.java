@@ -84,7 +84,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     }
 
     public void verificarMensajes(ExamplesTable mensajes){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         for(Map<String, String> mensaje: mensajes.getRows()){
             MatcherAssert.assertThat("Error: el servicio de riegos consultables no está disponible.", divMensaje.containsText(mensaje.get("mensaje")));
         }

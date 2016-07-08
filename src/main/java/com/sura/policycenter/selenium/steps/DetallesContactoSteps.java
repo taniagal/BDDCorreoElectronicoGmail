@@ -34,57 +34,57 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
     @Step
     public void agregar_nombre(String segundoNombre) {
-        detallesContactoPage.agregarNombre(segundoNombre);
+        detallesContactoPage.setNombre(segundoNombre);
     }
 
     @Step
     public void agregar_apellido(String segundoApellido){
-        detallesContactoPage.agregarApellido(segundoApellido);
+        detallesContactoPage.setApellido(segundoApellido);
     }
 
     @Step
     public void agregar_profesion_estado_civil_y_tipo_familia(String profesion, String estadoCivil, String tipoFamilia) {
-        detallesContactoPage.agregarCombos(profesion,estadoCivil,tipoFamilia);
+        detallesContactoPage.setDatosComboBoxes(profesion,estadoCivil,tipoFamilia);
     }
 
     @Step
     public void agregar_telefono_residencia(String telefonoResidencial) {
-        detallesContactoPage.agregarTelefonosResidencial(telefonoResidencial);
+        detallesContactoPage.setTelefonosResidencial(telefonoResidencial);
     }
 
     @Step
     public void agregar_telefono_trabajo(String telefonoTrabajo){
-        detallesContactoPage.agregarTelefonoTrabajo(telefonoTrabajo);
+        detallesContactoPage.setTelefonoTrabajo(telefonoTrabajo);
     }
 
     @Step
     public void agregar_telefono_celular(String telefonoCelular){
-        detallesContactoPage.agregarTelefonoCelular(telefonoCelular);
+        detallesContactoPage.setTelefonoCelular(telefonoCelular);
     }
 
     @Step
     public void agregar_correos(String correoElectronicoPrimario, String correoElectronicoSecundario) {
-        detallesContactoPage.agregarCorreo(correoElectronicoPrimario,correoElectronicoSecundario);
+        detallesContactoPage.setCorreo(correoElectronicoPrimario,correoElectronicoSecundario);
     }
 
     @Step
     public void agregar_nueva_direccion(){
-        detallesContactoPage.agregarDireccion();
+        detallesContactoPage.setDireccion();
     }
 
     @Step
     public void agregar_razon_social(String nombreComercial, String actividadComercial) {
-        detallesContactoPage.agregarRazonSocial(nombreComercial,actividadComercial);
+        detallesContactoPage.setRazonSocial(nombreComercial,actividadComercial);
     }
 
     @Step
     public void agregar_empleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
-        detallesContactoPage.agregarEmpleados(numeroEmpleados,ventasAnuales,valorActivos);
+        detallesContactoPage.setEmpleados(numeroEmpleados,ventasAnuales,valorActivos);
     }
 
     @Step
     public void agregar_correos_persona_juridica(String telefonoOficina, String correoPrimario, String correoSecundario) {
-        detallesContactoPage.agregarCorreosJ(telefonoOficina,correoPrimario,correoSecundario);
+        detallesContactoPage.setCorreosJ(telefonoOficina,correoPrimario,correoSecundario);
     }
 
     @Step
