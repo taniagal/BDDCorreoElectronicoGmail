@@ -26,6 +26,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
+
 public class Navegacion extends Guidewire {
 
     private final Guidewire gw = new Guidewire(getDriver());
@@ -348,6 +350,7 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
         gw.deployMenu(mnuCuenta);
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
         waitABit(2000);

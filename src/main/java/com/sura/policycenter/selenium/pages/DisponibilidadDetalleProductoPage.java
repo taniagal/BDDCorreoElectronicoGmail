@@ -15,6 +15,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -22,7 +23,7 @@ import org.openqa.selenium.support.ui.Wait;
 
 public class DisponibilidadDetalleProductoPage extends Guidewire {
 
-    @FindBy(xpath=".//input[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
+    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
     private WebElementFacade listaTipoCanalDeVenta;
     @FindBy(xpath=".//*[@id='AccountFile:AccountFileMenuActions']")
     private WebElementFacade btnAccionesCuenta;
@@ -32,9 +33,9 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
     private WebElementFacade btnElegirAutoPersonal;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div")
     private WebElementFacade opcionVerInformacionPoliza;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
+    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
     private WebElementFacade listaOrganizacionDeVentas;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
+    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
     private WebElementFacade listaPATipoPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']")
     WebElementFacade tablaProductos;
@@ -49,31 +50,33 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
 
     public void accionarNuevoEnvio() {
         btnAccionesCuenta.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().click();
-//        btnAccionesCuenta.click();
         opcionNuevoEnvio.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().click();
-//        waitABit(1000);
         this.irAVerInformacionDePoliza();
-//        btnElegirAutoPersonal.click();
     }
 
     public void verInformacionDePoliza() {
-//        waitABit(1000);
-        WebElementFacade opcionVerInformacionPoliza = esperarElemento(".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div");
-        opcionVerInformacionPoliza.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().click();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(opcionVerInformacionPoliza).waitUntilPresent().click();
     }
 
     public void seleccionarOrganizacionDeVentas(String organizacion) {
-//        espera(listaOrganizacionDeVentas, 2);
-        WebElementFacade listaOrganizacionDeVentas = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']");
-        listaOrganizacionDeVentas.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().clear();
-        listaOrganizacionDeVentas.sendKeys(organizacion);
-//        waitABit(2000);
-        listaOrganizacionDeVentas.sendKeys(Keys.ENTER);
-//        waitABit(2000);
+        int intentos = 0;
+        while(intentos < 2) {
+            withTimeoutOf(15, TimeUnit.SECONDS).waitFor(listaOrganizacionDeVentas).waitUntilPresent();
+            listaOrganizacionDeVentas.clear();
+            listaOrganizacionDeVentas.sendKeys(organizacion);
+            listaOrganizacionDeVentas.sendKeys(Keys.ENTER);
+            if (listaOrganizacionDeVentas.getValue().equals("<ninguno>")) {
+                intentos++;
+                waitUntil(1000);
+            }else {
+                break;
+            }
+        }
     }
 
     public void validarTipoCanalVentas(ExamplesTable tipoCanal) throws Exception {
-        listaTipoCanalDeVenta.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().click();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(listaTipoCanalDeVenta).waitUntilPresent();
+        listaTipoCanalDeVenta.sendKeys(Keys.ARROW_DOWN);
         this.validarDatosDeLaLista(tipoCanal);
     }
 
@@ -90,49 +93,65 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
 
 
     public void seleccionarTipoCanalDeVentas(String tipoCanal) {
-        listaTipoCanalDeVenta.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().clear();
-        listaTipoCanalDeVenta.sendKeys(tipoCanal);
-        listaTipoCanalDeVenta.sendKeys(Keys.ENTER);
-//        waitABit(2000);
+        int intentos = 0;
+        while(intentos < 2) {
+            withTimeoutOf(15, TimeUnit.SECONDS).waitFor(listaTipoCanalDeVenta).waitUntilPresent();
+            listaTipoCanalDeVenta.clear();
+            listaTipoCanalDeVenta.sendKeys(tipoCanal);
+            listaTipoCanalDeVenta.sendKeys(Keys.ENTER);
+            if (listaTipoCanalDeVenta.getValue().equals("<ninguno>")) {
+                intentos++;
+                waitUntil(1000);
+            }else {
+                break;
+            }
+        }
     }
 
     public void validarPATipoPoliza(ExamplesTable paTipoPoliza) throws Exception {
-        listaPATipoPoliza.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().click();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(listaPATipoPoliza).waitUntilPresent();
+        listaPATipoPoliza.sendKeys(Keys.ARROW_DOWN);
         this.validarDatosDeLaLista(paTipoPoliza);
     }
 
     public void seleccionarPATipoPoliza(String tipoPoliza) {
-        listaPATipoPoliza.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().clear();
-        listaPATipoPoliza.sendKeys(tipoPoliza);
-        listaPATipoPoliza.sendKeys(Keys.ENTER);
-//        waitABit(2000);
+        int intentos = 0;
+        while(intentos < 2) {
+            withTimeoutOf(15, TimeUnit.SECONDS).waitFor(listaPATipoPoliza).waitUntilPresent();
+            listaPATipoPoliza.clear();
+            listaPATipoPoliza.sendKeys(tipoPoliza);
+            listaPATipoPoliza.sendKeys(Keys.ENTER);
+            if (listaTipoCanalDeVenta.getValue().equals("<ninguno>")) {
+                intentos++;
+                waitUntil(1000);
+            }else {
+                break;
+            }
+        }
     }
 
     public void validarActualizacionDeListaTipoCanal() {
-        listaTipoCanalDeVenta.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(listaTipoCanalDeVenta).waitUntilPresent();
         MatcherAssert.assertThat(listaTipoCanalDeVenta.getText(), containsText(""));
     }
 
     public void validarActualizacionDeListaPATipoPoliza() {
-        listaPATipoPoliza.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(listaPATipoPoliza).waitUntilPresent();
         MatcherAssert.assertThat(listaPATipoPoliza.getText(), containsText(""));
     }
 
     public void irAVerInformacionDePoliza() {
-//        waitABit(2000);
         this.seleccionarAgente("DIRECTO");
         waitForTextToAppear("Productos ofrecidos", 30000);
         String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto().toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.click();
-        /*waitFor(botonAsegurados);
-        botonAsegurados.click();*/
     }
 
     public void seleccionarAgente(String nombreAgente) {
-        element(campoNombreAgente).withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
-        element(campoNombreAgente).withTimeoutOf(15, TimeUnit.SECONDS).waitUntilClickable();
-        element(campoNombreAgente).click();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoNombreAgente).waitUntilPresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoNombreAgente).waitUntilClickable();
+        campoNombreAgente.click();
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
         if (!listaNombresAgentesElement.isEmpty()) {
             for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
@@ -145,7 +164,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
     }
 
     public Integer encontrarProducto(){
-        tablaProductos.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilVisible();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
@@ -171,5 +190,20 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
         });
 
         return  elemento;
+    }
+
+    public void waitUntil(int millis) {
+        Integer i = 0;
+        Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
+                TimeUnit.MILLISECONDS).pollingEvery(millis,
+                TimeUnit.MILLISECONDS);
+        try {
+            wait.until(new Function<Integer, Boolean>() {
+                public Boolean apply(Integer i) {
+
+                    return false;
+                }
+            });
+        } catch (TimeoutException e) {}
     }
 }
