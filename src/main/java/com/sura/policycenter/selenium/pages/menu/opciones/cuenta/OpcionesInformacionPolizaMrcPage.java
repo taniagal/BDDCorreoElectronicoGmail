@@ -151,6 +151,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     }
 
     public void ingresarTomadorAdicional(String cedula) {
+        waitInfoPoliza(lblInformaPoliza);
         btnAgregar.click();
         itemDirectorio.click();
         waitInfoPoliza(lblBuscarDirectorio);
