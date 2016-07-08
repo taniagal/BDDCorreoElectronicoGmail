@@ -15,8 +15,8 @@ When ingrese un limite de cobertura inferior al valor asegurable del articulo
 Then se debe mostrar el mensaje <mensaje>
 
 Examples:
-|cuenta     |producto               |mensaje                                                                       |
-|C001888888 |Multiriesgo corporativo|Debe seleccionar un tipo de primera perdida para la cobertura Danos materiales|
+|cuenta     |producto               |mensaje                                                                                   |
+|C001888888 |Multiriesgo corporativo|Debe seleccionar un tipo de primera perdida para la cobertura Danos materiales en Edificio|
 
 
 
@@ -30,4 +30,4 @@ Then se debe mostrar el mensaje <mensaje>
 
 Examples:
 |cuenta     |producto               |tipo    |mensaje|
-|C001888888 |Multiriesgo corporativo|Absoluta|Recuerde que para la primera perdida absoluta, debe relacionar el avaluo del predio|
+|C001888888 |Multiriesgo corporativo|Absoluta|Recuerde que para la primera perdida absoluta, debe relacionar el avaluo del bien|
