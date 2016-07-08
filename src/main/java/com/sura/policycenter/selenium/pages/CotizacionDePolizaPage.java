@@ -132,7 +132,7 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
+        withTimeoutOf(15,TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
         Map<String, String> datosCotizacion;
         MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroCotizacion"))));
         MatcherAssert.assertThat(labelVigenciaPoliza.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("vigenciaPoliza"))));
