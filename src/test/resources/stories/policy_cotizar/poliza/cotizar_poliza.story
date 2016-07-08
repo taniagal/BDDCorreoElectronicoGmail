@@ -1,4 +1,4 @@
-Realizar una cotización
+Realizar una cotizacion
 
 Meta:
 @tag capability: cotizacion
@@ -63,9 +63,9 @@ When digite el numero de cuenta C000777777 de una persona natural y digite la te
 And he seleccionado en el nombre del agente DIRECTO
 Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
 Then se mostraran en orden alfabetico los:
-|productos          |
-|Auto personal      |
-|Propiedad comercial|
+|productos              |
+|Auto personal          |
+|Multiriesgo corporativo|
 Then seleccionar nombre de producto Propiedad comercial
 Then debera observar un mensaje emergente de informacion: Ya existe la cotización # 22223226 y se encuentra en proceso
 para este cliente y producto. ¿Desea solicitar aprobación?
@@ -80,9 +80,9 @@ When digite el numero de cuenta C000777777 de una persona natural y digite la te
 And he seleccionado en el nombre del agente DELIMA MEDELLIN
 Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
 Then se mostraran en orden alfabetico los:
-|productos          |
-|Auto personal      |
-|Propiedad comercial|
+|productos              |
+|Auto personal          |
+|Multiriesgo corporativo|
 Then seleccionar nombre de producto Propiedad comercial
 Then debera observar un mensaje de error: El cliente JORGE PAISA ya tiene una cotización en curso para el producto
 seleccionado para la oficina OFICINA TUYA

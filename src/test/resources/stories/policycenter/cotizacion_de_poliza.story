@@ -58,7 +58,7 @@ Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensa
 
 Examples:
 |cotizacion|mensaje|
-|22270001  |El chasis es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|22270001  |Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 
 Scenario: Validar exclusividad
 Given he realizado la cotizacion <cotizacion>
