@@ -25,7 +25,7 @@ And bloquear la operacion
 Examples:
 |numeroCuenta  |nomProducto        |fechaInicioVigencia|mensaje                                                                             |
 |C000888888    |Propiedad comercial|01/01/2016         |La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
-|C000888888    |Propiedad comercial|12/01/2016         |La fecha de vigencia no cumple con el parámetro de emisión anticipada definido (60 días)|
+|C000888888    |Propiedad comercial|12/01/2016         |La fecha de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
 Scenario: Validar campos especiales de reaseguros
 Given se inicio una nueva suscripcion <numeroCuenta>

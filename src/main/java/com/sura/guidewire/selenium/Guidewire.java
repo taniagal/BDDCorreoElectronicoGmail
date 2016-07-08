@@ -77,7 +77,7 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        menu.waitUntilPresent().click();
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(menu).waitUntilPresent().click();
         waitABit(2500);
         menu.click();
         waitABit(500);

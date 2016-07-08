@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.CotizacionSteps;
 import net.serenitybdd.core.Serenity;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import org.jbehave.core.annotations.AfterStory;
@@ -10,6 +11,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
 
@@ -24,6 +26,9 @@ public class CotizacionDefinitions {
     // TODO: 09/06/2016 Pendiente definir composici'on de Gherkin 
     
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
+    @Managed
+    WebDriver driver;
 
     @Steps
     CotizacionSteps cotizador;
