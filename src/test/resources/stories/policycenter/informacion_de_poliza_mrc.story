@@ -15,18 +15,6 @@ Examples:
 |numeroCuenta|nomProducto        |tomador                      |
 |C000888888  |Propiedad comercial|YURLEDYS PAOLA GALLEGO TORRES|
 
-Scenario: Cambiar inicio de vigencia propiedad comercial
-Given se inicio una nueva suscripcion <numeroCuenta>
-When este expidiendo una poliza de propiedad comercial <nomProducto>
-And modifique la fecha de inicio de vigencia de la poliza <fechaInicioVigencia>
-Then se debe mostrar un mensaje <mensaje> de error
-And bloquear la operacion
-
-Examples:
-|numeroCuenta  |nomProducto        |fechaInicioVigencia|mensaje                                                                             |
-|C000888888    |Propiedad comercial|01/01/2016         |La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
-|C000888888    |Propiedad comercial|12/01/2016         |La fecha de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
-
 Scenario: Validar campos especiales de reaseguros
 Given se inicio una nueva suscripcion <numeroCuenta>
 When este expidiendo una poliza de propiedad comercial <nomProducto>
