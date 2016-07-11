@@ -1,29 +1,26 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.google.inject.name.Named;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.BusquedaDeCuentasSteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-
-
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
+import org.openqa.selenium.WebDriver;
 
 @SuppressWarnings("WeakerAccess")
 public class BusquedaDeCuentasDefinitions {
 
+    @Managed
+    WebDriver driver;
+
     @Steps
     private BusquedaDeCuentasSteps busquedaDeCuentasSteps;
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
     @Given("que me encuentro en la busqueda de cuentas")
     public void ingresarABuscarCuentas() {
-        inicioPage().irABuscarCuentas();
+        busquedaDeCuentasSteps.ingresarABuscarCuentas();
     }
 
     @When("seleccione el tipo de identificacion <tipoDocumento>")

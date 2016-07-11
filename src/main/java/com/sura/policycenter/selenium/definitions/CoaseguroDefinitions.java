@@ -7,14 +7,19 @@ import com.sura.policycenter.selenium.steps.CoaseguroSteps;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.openqa.selenium.WebDriver;
 
 
 public class CoaseguroDefinitions {
+
+    @Managed
+    WebDriver driver;
     @Steps
     CoaseguroSteps coaseguroSteps;
     @Steps
@@ -43,7 +48,6 @@ public class CoaseguroDefinitions {
     @Then("el proceso debe ser exitoso")
     public void verificarCoaseguro(){
         coaseguroSteps.verificarCoaseguro();
-        seusLoginSteps.close();
     }
 
 
@@ -60,7 +64,6 @@ public class CoaseguroDefinitions {
     public void verificarMensaje(@Named("mensaje")String mensaje,@Named("mensaje2")String mensaje2){
         coaseguroSteps.verificarMensaje(mensaje);
         coaseguroSteps.verificarMensaje(mensaje2);
-        seusLoginSteps.close();
     }
 
     /**
@@ -77,7 +80,6 @@ public class CoaseguroDefinitions {
     @Then("debe aparecer el mensaje <mensaje>")
     public void verificarMensaje2(@Named("mensaje")String mensaje){
         coaseguroSteps.verificarMensaje(mensaje);
-        seusLoginSteps.close();
     }
 
 

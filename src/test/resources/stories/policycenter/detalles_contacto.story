@@ -12,9 +12,9 @@ Para el contacto tipo persona juridica esta informacion debe ser Razon social, N
 documento, Actividad economica, Numero de empleados, Valor de activos, ventas anuales, Telefono de la oficina, Fax,
 Correo electronico primario.
 
-Scenario: ver informacion detallada de un contacto tipo persona natural.
 
-Given tengo un contacto con <tipo_documento> c. <documento>
+Scenario: ver informacion detallada de un contacto tipo persona natural.
+GivenStories: stories/policycenter/login_policy.story
 When quiera ver informacion detallada del contacto con <tipo_documento> c. <documento>
 Then se debe ver minimo la siguiente informacion definida para el panel de detalles de persona narural
 
@@ -22,9 +22,8 @@ Examples:
 |tipo_documento      |documento |
 |CEDULA DE CIUDADANIA|1234567891|
 
-Scenario: ver informacion detallada de un contacto tipo persona juridica.
 
-Given tengo un contacto con <tipo_documento> c. <documento>
+Scenario: ver informacion detallada de un contacto tipo persona juridica.
 When quiera ver informacion detallada del contacto con <tipo_documento> c. <documento>
 Then se debe ver minimo la siguiente informacion definida para el panel de detalles de persona juridica
 

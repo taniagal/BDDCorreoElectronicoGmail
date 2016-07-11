@@ -1,6 +1,8 @@
 package com.sura.policycenter.selenium.pages;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -52,8 +54,8 @@ public class BusquedaActividadesPage extends PageObject {
     private WebElementFacade grdEstado;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
     private WebElementFacade msgFiltrosRequeridos;
-    private @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
-    WebElementFacade menuBuscar;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
+    private WebElementFacade menuBuscar;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ActivitySearch']/div")
     private WebElementFacade menuBuscarActividades;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab']")
@@ -64,8 +66,8 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void irABuscarActividades() {
-        menuBuscar.waitUntilPresent().click();
-        waitForTextToAppear("Buscar");
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuBuscar).shouldBePresent();
+        menuBuscar.click();
         waitFor(ExpectedConditions.visibilityOf(menuBuscarActividades));
         waitFor(ExpectedConditions.elementToBeClickable(By.xpath("//td[@id='Search:MenuLinks:Search_ActivitySearch']/div/span")));
         waitABit(2000);
@@ -83,6 +85,7 @@ public class BusquedaActividadesPage extends PageObject {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         btnBuscar.click();
         waitABit(1000);
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(grdFechaVencimiento).shouldBePresent();
         MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
         MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
