@@ -96,32 +96,31 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(3000);
+        waitUntil(3000);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(2000);
+        waitUntil(2000);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        waitABit(1000);
+        waitUntil(1000);
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         espera(botonAgregarOrganizacion,5);
         botonAgregarOrganizacion.click();
-        waitABit(500);
+        waitUntil(500);
         campoTxtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
-        waitABit(500);
+        waitUntil(500);
         selectItem(comboBoxCodigoAgente,agente);
     }
 
     public void actualizar(){
         botonActualizar.click();
-        waitABit(1000);
+        waitUntil(1000);
     }
 
     public void buscarPersona(String nombre, String persona){
         waitFor(campoTxtNombreCompania).shouldBePresent();
-        //waitABit(1000);
         campoTxtNombreCompania.sendKeys(nombre);
         botonBuscar.click();
         if("Compania".equals(persona)) {
@@ -131,30 +130,15 @@ public class CuentaPage extends Guidewire{
             botonCrearCuentaNueva.click();
             botonNuevaCuentaPersonal.click();
         }
-        waitABit(1000);
-    }
-
-    public void verificarCrearCuenta(String nombreCuenta){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelNombreDeCuenta).shouldBePresent();
-        assertThat("Falló la creación de la cuenta", labelNombreDeCuenta.containsText(nombreCuenta));
-    }
-
-    public void validarLogeoPolicyCenter(){
-        assertThat("Falló verificar el logueo", menuCuenta.isPresent());
-    }
-
-    public  void verificarEdadMenor(String mensaje){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
-        assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
+        waitUntil(1000);
     }
 
     public  void verificarMensaje(String mensaje){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
-        assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
+        verificarMensaje(divMensaje,mensaje);
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
         assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
     }
 }

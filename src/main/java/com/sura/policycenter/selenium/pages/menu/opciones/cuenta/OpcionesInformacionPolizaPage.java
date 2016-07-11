@@ -210,7 +210,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void seleccionarAgenteCotizacion() {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoNombreAgente).shouldBePresent();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(campoNombreAgente).shouldBePresent();
         waitFor(campoNombreAgente).shouldBeVisible();
         campoNombreAgente.waitUntilVisible().sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
@@ -228,7 +228,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (columna.get(1).getText().equals("Auto personal")){
+            if (columna.get(1).getText().equals("Autos")){
                 return filaBoton;
             }
             filaBoton++;

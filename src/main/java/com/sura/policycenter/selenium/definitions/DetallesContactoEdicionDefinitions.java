@@ -61,8 +61,6 @@ public class DetallesContactoEdicionDefinitions {
     public void ralizarEdicionInformacionContacto() {
         detallesContactoSteps.actualizar_contacto();
         detallesContactoSteps.verificar_actualizacion_persona();
-        seusLoginSteps.close();
-
     }
 
 

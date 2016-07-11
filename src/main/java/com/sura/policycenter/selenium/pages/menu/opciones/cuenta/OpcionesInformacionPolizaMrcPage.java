@@ -262,7 +262,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
 
     // TODO: 30/06/2016 Metodo wait para implementar generico
     public void waitInfoPoliza(WebElementFacade webElementFacade) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
 
 }
