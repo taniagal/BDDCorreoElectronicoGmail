@@ -1,9 +1,14 @@
+Contacto Ordenes De Trabajo
+
 Meta:
+
+@issue #SUGWUSC-10670
 
 Narrative:
 Como usuario
 Quiero ser capaz de ver la informacion de nivel de contacto
 para obtener información de órdenes de trabajo
+
 
 Scenario: Ver informacion de las transacciones asociadas al contacto
 GivenStories: stories/policycenter/login_policy.story
