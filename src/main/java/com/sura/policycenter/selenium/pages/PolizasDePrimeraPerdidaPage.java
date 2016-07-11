@@ -39,7 +39,7 @@ public class PolizasDePrimeraPerdidaPage extends Guidewire{
 
     public void irAArticulos() {
         withTimeoutOf(25, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
-        botonAgregarArticulos.waitUntilPresent().click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonAgregarArticulos).waitUntilPresent().click();
     }
 
     public void agregarArticulo(ExamplesTable datos){
