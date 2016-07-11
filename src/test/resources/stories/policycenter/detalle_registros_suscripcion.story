@@ -35,7 +35,7 @@ Then debo ver la informacion del registro de suscripcion producto <producto>, <n
 
 Examples:
 |numeroCuenta|producto|nroEnvio|estado|nroPoliza|
-|C000902244|Auto personal|22222227|Cotizado|Sin asignar|
+|C000902244|Autos|22222227|Cotizado|Sin asignar|
 
 Scenario: Consultar el valor total de un grupo de cotizaciones
 Given busco una cuenta existente como <numeroCuenta>

@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 
+import java.util.concurrent.TimeUnit;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class UbicacionesDeUnaCuentaPage extends Guidewire{
@@ -44,7 +46,7 @@ public class UbicacionesDeUnaCuentaPage extends Guidewire{
     }
 
     public void irAUbicacionesDeUnaCuenta(String cuenta) {
-        campoTxtIrA.waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtIrA).waitUntilPresent();
         campoTxtIrA.sendKeys("Search");
         campoTxtIrA.sendKeys(Keys.ENTER);
         menuItemCuentas.waitUntilPresent();

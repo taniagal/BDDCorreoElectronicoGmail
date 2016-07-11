@@ -151,7 +151,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     }
 
     public void ingresarTomadorAdicional(String cedula) {
-        btnAgregar.click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAgregar).waitUntilPresent().click();
         itemDirectorio.click();
         waitInfoPoliza(lblBuscarDirectorio);
         itemTipoDocumento.sendKeys("CEDULA DE CIU");
@@ -261,7 +261,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
 
     // TODO: 30/06/2016 Metodo wait para implementar generico
     public void waitInfoPoliza(WebElementFacade webElementFacade) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
 
 }

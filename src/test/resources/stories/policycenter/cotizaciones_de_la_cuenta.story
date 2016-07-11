@@ -48,8 +48,8 @@ Then se debe mostrar la información de acuerdo a los filtros <productos>: Accio
 Fecha inicio de vigencia, Fecha fin de vigencia, Estado, Costo total
 
 Examples:
-|numCuenta  |cotizaciones           |productos           |
-|C000777777 |Todas las cotizaciones |Propiedad comercial |
+|numCuenta  |cotizaciones           |productos              |
+|C000777777 |Todas las cotizaciones |Multiriesgo corporativo|
 
 Scenario: Mostrar labels correctos en espanol
 Given estoy en una cuenta <numCuenta>
@@ -88,8 +88,8 @@ And una cotizacion este en estado 'Declinado' <declinado> y no se haya generado 
 Then me debe permitir crear una carta de declinacion por medio de un boton. El label del boton debe ser 'Crear carta de declinacion' <crearCarta>.
 
 Examples:
-|numCuenta   |declinado|propiedadComercial |crearCarta                |
-|C000777777  |Declinada|Propiedad comercial|Crear carta de declinación|
+|numCuenta   |declinado|propiedadComercial     |crearCarta                |
+|C000777777  |Declinada|Multiriesgo corporativo|Crear carta de declinación|
 
 Scenario: No permitir crear carta de declinacion
 Given estoy en una cuenta <numCuenta>
@@ -98,8 +98,8 @@ And una cotizacion sea producto Auto Personal <producto>
 Then no debe aparecer la opcion de crear carta de declinacion <crearCarta>.
 
 Examples:
-|numCuenta   |producto     |crearCarta                |
-|C000777777  |Auto personal|Crear carta de declinación|
+|numCuenta   |producto|crearCarta                |
+|C000777777  |Autos   |Crear carta de declinación|
 
 Scenario: Permitir descargar cartas
 Given estoy en una cuenta <numCuenta>

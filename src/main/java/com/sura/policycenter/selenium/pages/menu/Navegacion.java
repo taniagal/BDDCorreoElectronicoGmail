@@ -369,6 +369,7 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
         waitABit(1500);
         gw.deployMenu(mnuCuenta);
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();

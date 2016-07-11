@@ -43,8 +43,8 @@ public class DetalleRegistrosSuscripcionDefinitions {
 
     @Then("debo ver la informacion del registro de suscripcion <nombre>, <tipoDeTransaccion>, <nroDeTransacciones>")
     public void validarCamposRegistros(@Named("nombre") String nombre,
-                                                 @Named("tipoDeTransaccion") String tipoDeTransaccion,
-                                                 @Named("nroDeTransacciones") String nroDeTransacciones) {
+                                       @Named("tipoDeTransaccion") String tipoDeTransaccion,
+                                       @Named("nroDeTransacciones") String nroDeTransacciones) {
         detalleRegistrosSuscripcionSteps.validarCamposRegistros(nombre, tipoDeTransaccion, nroDeTransacciones);
     }
 
@@ -55,9 +55,9 @@ public class DetalleRegistrosSuscripcionDefinitions {
 
     @Then("debo ver la informacion del registro de suscripcion producto <producto>, <nroEnvio>, <estado>, <nroPoliza>")
     public void validarCamposDetalle(@Named("producto") String producto,
-                                                 @Named("nroEnvio") String nroEnvio,
-                                                 @Named("estado") String estado,
-                                                 @Named("nroPoliza") String nroPoliza) {
+                                     @Named("nroEnvio") String nroEnvio,
+                                     @Named("estado") String estado,
+                                     @Named("nroPoliza") String nroPoliza) {
         detalleRegistrosSuscripcionSteps.validarCamposDetalle(producto, nroEnvio, estado, nroPoliza);
     }
 

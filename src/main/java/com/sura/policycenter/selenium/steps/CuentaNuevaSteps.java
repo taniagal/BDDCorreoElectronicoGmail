@@ -69,18 +69,13 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validar_logeo_policyCenter(){
-        cp.validarLogeoPolicyCenter();
-    }
-
-    @Step
     public void verificar_cuenta(String nombreCuenta){
         cp.verificarCuentaNumero(nombreCuenta);
     }
 
     @Step
     public void verificar_edad_menor(String mensaje){
-        cp.verificarEdadMenor(mensaje);
+        cp.verificarMensaje(mensaje);
     }
 
     @Step

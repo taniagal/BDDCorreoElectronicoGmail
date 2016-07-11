@@ -38,7 +38,6 @@ public class DetallesContactoDefinitions {
     @Then("se debe ver minimo la siguiente informacion definida para el panel de detalles de persona narural")
     public void assertConsultarDetallePersonaNatural() {
         detallesContactoSteps.verificar_campos_persona_natural();
-        seusLogin.close();
     }
 
     /**
