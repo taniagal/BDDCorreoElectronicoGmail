@@ -104,6 +104,11 @@ public class BusquedaContactoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade btnBuscarDirectorioCotizacion;
 
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnInnerEl']")
+    private WebElementFacade menuBuscar;
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ContactSearch']/div/span")
+    private WebElementFacade menuBuscarContacto;
+
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
     }
@@ -115,20 +120,28 @@ public class BusquedaContactoPage extends Guidewire {
         submit.click();
     }
 
+    //METODO BUSCAR CONTACTO DE ELI
+
     public void buscarContacto(String tipoContacto, String nombre, String apellido){
-        tipoContact.waitUntilClickable();
-        tipoContact.type(tipoContacto);
-        tipoContact.sendKeys(Keys.ENTER);
-        waitABit(1000);
-        if ("Personal".equals(tipoContacto)){
-            nombreContact.type(nombre);
-            apellidoContact.type(apellido);
-        }else{
-            nombreEmpresaContact.type(nombre);
+        boolean seleccionado = false;
+        while (!seleccionado) {
+            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tipoContact).waitUntilClickable();
+            tipoContact.sendKeys(tipoContacto);
+            tipoContact.sendKeys(Keys.ENTER);
+            waitABit(1000);
+            if(tipoContact.getValue().equals("<ninguno>")) {
+                
+                if (tipoContact.getValue().equals("CEDULA DE CIUDADANIA")) {
+                    nombreContact.type(nombre);
+                    apellidoContact.type(apellido);
+                } else {
+                    nombreEmpresaContact.type(nombre);
+                }
+            }
         }
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilClickable();
         botonBuscar.click();
-        selectContact.waitUntilPresent();
-        selectContact.waitUntilVisible();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(selectContact).waitUntilPresent();
         selectContact.click();
     }
 
@@ -409,5 +422,13 @@ public class BusquedaContactoPage extends Guidewire {
         txtNumDocDirectorioCotizacion.sendKeys(numeroId);
         btnBuscarDirectorioCotizacion.click();
         waitForWithRefresh();
+    }
+
+    public void irABuscarContacto() {
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent();
+        menuBuscar.click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuBuscarContacto).waitUntilPresent();
+        menuBuscarContacto.click();
+        waitForTextToAppear("Búsqueda de contactos", 15000);
     }
 }
