@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -19,6 +20,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class BusquedaDePolizaPage extends PageObject {
+
+    Guidewire guidewire = new Guidewire(getDriver());
 
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:PolicyNumberCriterion-inputEl']")
     WebElementFacade txtNumeroPoliza;
@@ -64,7 +67,8 @@ public class BusquedaDePolizaPage extends PageObject {
     }
 
     public void irABuscarPoliza() {
-        menuBuscar.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().click();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent();
+        menuBuscar.click();
         waitForAnyTextToAppear("Buscar", "Búsqueda");
         if (!tituloBuscarPoliza.isVisible()) {
             menuBuscarPoliza.click();
@@ -76,6 +80,7 @@ public class BusquedaDePolizaPage extends PageObject {
         this.limpiarCampos();
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtNumeroPoliza).waitUntilPresent();
         txtNumeroPoliza.sendKeys(buscarNumeroPoliza);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -99,14 +104,14 @@ public class BusquedaDePolizaPage extends PageObject {
 
     public void limpiarCampos() {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent().click();
-        waitABit(1000);
+        guidewire.waitUntil(3000);
     }
 
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
         this.limpiarCampos();
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
-        btnBuscar.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -144,9 +149,11 @@ public class BusquedaDePolizaPage extends PageObject {
         this.limpiarCampos();
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtProducto).waitUntilPresent();
         txtProducto.clear();
         txtProducto.sendKeys(producto);
         txtProducto.sendKeys(Keys.ENTER);
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -163,6 +170,7 @@ public class BusquedaDePolizaPage extends PageObject {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         txtCodigoAgente.sendKeys(codigoAgente);
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
