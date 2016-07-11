@@ -31,7 +31,33 @@ public class CotizacionMRCSteps extends ScenarioSteps {
         cotizacionMRCPage.verDetalleCotizacion();
     }
 
+    @Step
     public void validar_Informacion_Cotizacion(Map<String, String> labelsCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        cotizacionMRCPage.validarInformacionCotizacion(labelsCotizacionPoliza,informacionCotizacion);
+        cotizacionMRCPage.validarInformacionCotizacion(labelsCotizacionPoliza, informacionCotizacion);
+    }
+
+    @Step
+    public void validar_Prima(String primaTotal) {
+        cotizacionMRCPage.validarPrima(primaTotal);
+    }
+
+    @Step
+    public void mostrar_Detalle_Prima_Por_Riesgo(Map<String, String> labelsCotizacionPoliza) {
+        cotizacionMRCPage.mostrarDetallePrima(labelsCotizacionPoliza);
+    }
+
+    @Step
+    public void validar_Bloqueo_Cotizacion(String mensaje) {
+        cotizacionMRCPage.validarBloqueoCotizacion(mensaje);
+    }
+
+    @Step
+    public void ingresar_A_Cotizacion() {
+        cotizacionMRCPage.ingresarACotizacion();
+    }
+
+    @Step
+    public void validar_Tipo_Riesgo() {
+        cotizacionMRCPage.validarTipoRiesgo();
     }
 }
