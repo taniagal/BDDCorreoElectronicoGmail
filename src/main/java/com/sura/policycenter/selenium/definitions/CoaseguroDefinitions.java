@@ -48,7 +48,6 @@ public class CoaseguroDefinitions {
     @Then("el proceso debe ser exitoso")
     public void verificarCoaseguro(){
         coaseguroSteps.verificarCoaseguro();
-        seusLoginSteps.close();
     }
 
 
@@ -65,7 +64,6 @@ public class CoaseguroDefinitions {
     public void verificarMensaje(@Named("mensaje")String mensaje,@Named("mensaje2")String mensaje2){
         coaseguroSteps.verificarMensaje(mensaje);
         coaseguroSteps.verificarMensaje(mensaje2);
-        seusLoginSteps.close();
     }
 
     /**
@@ -82,7 +80,6 @@ public class CoaseguroDefinitions {
     @Then("debe aparecer el mensaje <mensaje>")
     public void verificarMensaje2(@Named("mensaje")String mensaje){
         coaseguroSteps.verificarMensaje(mensaje);
-        seusLoginSteps.close();
     }
 
 
