@@ -36,7 +36,7 @@ Examples:
 
 
 
-Scenario:  Validar si el valor asegurado del vehículo supera el tope maximo del valor permitido
+Scenario:  Validar si el valor asegurado del vehiculo supera el tope maximo del valor permitido
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|
@@ -52,7 +52,7 @@ Examples:
 
 
 
-Scenario:  Validar si el valor asegurado del vehículo supera el tope minimo del valor permitido
+Scenario:  Validar si el valor asegurado del vehiculo supera el tope minimo del valor permitido
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|
