@@ -169,7 +169,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if ("Auto personal".equals(columna.get(1).getText())){
+            if ("Autos".equals(columna.get(1).getText())){
                 return filaBoton;
             }
             filaBoton++;
