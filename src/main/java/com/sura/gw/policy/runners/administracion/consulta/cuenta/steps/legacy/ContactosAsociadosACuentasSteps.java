@@ -41,8 +41,7 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
         contactosAsociadosACuentasPage.consultarContactos();
 
         // WHEN
-        navegacionSuperior.buscar().en().cuenta().
-                        por().numeroDeCuenta("CUENTA").entonces().buscar().luego().seleccionarDichaCuenta();
+        //navegacionSuperior.buscar().en().cuenta().por().numeroDeCuenta("CUENTA").entonces().buscar().luego().seleccionarDichaCuenta();
         // AND
         //contactosDeCuenta.deseoVerLosContactosAsociados();
         //THEN

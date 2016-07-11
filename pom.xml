@@ -11,15 +11,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.1.34</serenity.version>
-        <serenity.jbehave.version>1.12.0</serenity.jbehave.version>
+        <serenity.version>1.1.37-rc.6</serenity.version>
+        <serenity.jbehave.version>1.13.0</serenity.jbehave.version>
         <junit.version>4.12</junit.version>
         <slf4j.simple.version>1.7.7</slf4j.simple.version>
         <assertj.core.version>3.4.0</assertj.core.version>
         <lambdaj.version>2.3.3</lambdaj.version>
         <jbehave.core.version>4.0.5</jbehave.core.version>
-        <sikuli.api.version>1.2.0</sikuli.api.version>
-        <serenity.maven.plugin.version>1.1.9</serenity.maven.plugin.version>
+        <serenity.maven.plugin.version>1.1.36</serenity.maven.plugin.version>
         <maven.surefire.plugin>2.19.1</maven.surefire.plugin>
         <maven.failsafe.plugin>2.19.1</maven.failsafe.plugin>
         <maven.compiler.plugin>3.2</maven.compiler.plugin>
@@ -87,11 +86,6 @@
             <artifactId>jbehave-core</artifactId>
             <version>${jbehave.core.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.sikuli</groupId>
-            <artifactId>sikuli-api</artifactId>
-            <version>${sikuli.api.version}</version>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -117,8 +111,9 @@
                     </excludes>
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                     <perCoreThreadCount>true</perCoreThreadCount>
-                    <!--<threadCount>2</threadCount>-->
-                    <forkCount>3</forkCount>
+                    <parallel>classes</parallel>
+                    <threadCount>3</threadCount>
+                    <forkCount>3C</forkCount>
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
                     </systemPropertyVariables>
