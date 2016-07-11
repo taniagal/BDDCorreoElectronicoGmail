@@ -70,4 +70,12 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         opcionesInformacionPolizaMrcPage.validaReaseguro();
     }
 
+    @Step
+    public void eliminar_descripcion_de_direccion_en_contacto (){
+        opcionesInformacionPolizaMrcPage.editarDescripDireccionTomador();
+    }
+
+    public void validar_descipcion_de_direccion() {
+        opcionesInformacionPolizaMrcPage.validaFormularioDescripDireccion();
+    }
 }
