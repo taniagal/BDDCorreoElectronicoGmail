@@ -1,9 +1,13 @@
+Cotizaciones De La Cuenta
+
 Meta:
 
 Narrative:
 Como usuario PolicyCenter
 quiero ser capaz de actualizar el estado de las cotizaciones creadas para una cuenta
 y así poder crear, actualizar, copiar y retirar cotizaciones para una cuenta dada.
+
+@Issue SUGWUSC-10230 Account Submission Manager
 
 Scenario: Cambiar el estado de una cotizacion
 GivenStories: stories/policycenter/login_policy.story
@@ -13,7 +17,7 @@ And seleccione las acciones de una cotizacion en particular
 Then me debe permitir cambiar el estado de acuerdo a la lista definida. Lista definida: Declinar <declinar>, No Tomar <noTomar>
 
 Examples:
-|numCuenta  |declinar|noTomar   |
+|numCuenta  |declinar|noTomar |
 |C000777777 |Declinar|No tomar|
 
 Scenario: Crear una nueva cotizacion
@@ -44,8 +48,8 @@ Then se debe mostrar la información de acuerdo a los filtros <productos>: Accio
 Fecha inicio de vigencia, Fecha fin de vigencia, Estado, Costo total
 
 Examples:
-|numCuenta  |cotizaciones           |productos           |
-|C000777777 |Todas las cotizaciones |Propiedad comercial |
+|numCuenta  |cotizaciones           |productos              |
+|C000777777 |Todas las cotizaciones |Multiriesgo corporativo|
 
 Scenario: Mostrar labels correctos en espanol
 Given estoy en una cuenta <numCuenta>
@@ -56,7 +60,6 @@ Examples:
 |numCuenta   |
 |C000777777  |
 
-
 Scenario: Mostrar numero de poliza
 Given estoy en una cuenta <numCuenta>
 When ingrese a cotizaciones de la cuenta
@@ -65,9 +68,8 @@ And una cotizacion se encuentre en un estado 'Expedida' <estado>
 Then se debe mostrar el numero de la poliza.
 
 Examples:
-|numCuenta |estado  |producto          |
+|numCuenta |estado  |producto           |
 |C000777777|Expedida|Todos los productos|
-
 
 Scenario: No mostrar numero de poliza
 Given estoy en una cuenta <numCuenta>
@@ -79,7 +81,6 @@ Examples:
 |numCuenta   |estado  |
 |C000777777  |Borrador|
 
-
 Scenario: Permitir crear carta de declinacion
 Given estoy en una cuenta <numCuenta>
 When ingrese a cotizaciones de la cuenta
@@ -87,9 +88,8 @@ And una cotizacion este en estado 'Declinado' <declinado> y no se haya generado 
 Then me debe permitir crear una carta de declinacion por medio de un boton. El label del boton debe ser 'Crear carta de declinacion' <crearCarta>.
 
 Examples:
-|numCuenta   |declinado|propiedadComercial |crearCarta                |
-|C000777777  |Declinado|Propiedad comercial|Crear carta de declinación|
-
+|numCuenta   |declinado|propiedadComercial     |crearCarta                |
+|C000777777  |Declinada|Multiriesgo corporativo|Crear carta de declinación|
 
 Scenario: No permitir crear carta de declinacion
 Given estoy en una cuenta <numCuenta>
@@ -98,9 +98,8 @@ And una cotizacion sea producto Auto Personal <producto>
 Then no debe aparecer la opcion de crear carta de declinacion <crearCarta>.
 
 Examples:
-|numCuenta   |producto     |crearCarta                |
-|C000777777  |Auto personal|Crear carta de declinación|
-
+|numCuenta   |producto|crearCarta                |
+|C000777777  |Autos   |Crear carta de declinación|
 
 Scenario: Permitir descargar cartas
 Given estoy en una cuenta <numCuenta>
@@ -111,4 +110,3 @@ Then me debe permitir descargar esta carta. Esta funcionalidad queda tal cual co
 Examples:
 |numCuenta  |
 |C000777777 |
-

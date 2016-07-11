@@ -1,20 +1,22 @@
 package com.sura.policycenter.selenium.pages;
 
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.hamcrest.core.StringContains.containsString;
 
 public class BusquedaActividadesPage extends PageObject {
 
@@ -52,30 +54,49 @@ public class BusquedaActividadesPage extends PageObject {
     private WebElementFacade grdEstado;
     @FindBy(xpath=".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
     private WebElementFacade msgFiltrosRequeridos;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
+    private WebElementFacade menuBuscar;
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ActivitySearch']/div")
+    private WebElementFacade menuBuscarActividades;
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab']")
+    private WebElementFacade menuEscritorio;
 
     public BusquedaActividadesPage(WebDriver driver) {
         super(driver);
     }
 
-    public void filtrarPorAsignado(String usuario) {
+    public void irABuscarActividades() {
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuBuscar).shouldBePresent();
+        menuBuscar.click();
+        waitFor(ExpectedConditions.visibilityOf(menuBuscarActividades));
+        waitFor(ExpectedConditions.elementToBeClickable(By.xpath("//td[@id='Search:MenuLinks:Search_ActivitySearch']/div/span")));
+        waitABit(2000);
+        menuBuscarActividades.click();
+        waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();
+    }
+
+    public void filtrarPorAsignado(String usuario) {
+        waitFor(ExpectedConditions.visibilityOf(txtAsignadoA));
         txtAsignadoA.sendKeys(usuario);
     }
 
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
-        waitABit(1000);
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         btnBuscar.click();
         waitABit(1000);
-        assertThat(this.grdFechaVencimiento.getText(), is(notNullValue()));
-        assertThat(this.grdPrioridad.getText(), is(equalTo(exampleTable.get("prioridad"))));
-        assertThat(this.grdEstadoActividad.getText(), is(equalTo(exampleTable.get("estadoActividad"))));
-        assertThat(this.grdAsunto.getText(), is(equalTo(exampleTable.get("asunto"))));
-        assertThat(this.grdId.getText(), is(equalTo(exampleTable.get("id"))));
-        assertThat(this.grdCuenta.getText(), is(equalTo(exampleTable.get("titularCuenta"))));
-        assertThat(this.grdProducto.getText(), containsString(exampleTable.get("producto")));
-        assertThat(this.grdAsignadoPor.getText(), containsString(exampleTable.get("asignadoPor")));
-        assertThat(this.grdEstado.getText(), is(equalTo(exampleTable.get("estado"))));
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(grdFechaVencimiento).shouldBePresent();
+        MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
+        MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
+        MatcherAssert.assertThat(this.grdAsunto.getText(), Is.is(Matchers.equalTo(exampleTable.get("asunto"))));
+        MatcherAssert.assertThat(this.grdId.getText(), Is.is(Matchers.equalTo(exampleTable.get("id"))));
+        MatcherAssert.assertThat(this.grdCuenta.getText(), Is.is(Matchers.equalTo(exampleTable.get("titularCuenta"))));
+        MatcherAssert.assertThat(this.grdProducto.getText(), Matchers.containsString(exampleTable.get("producto")));
+        MatcherAssert.assertThat(this.grdAsignadoPor.getText(), Matchers.containsString(exampleTable.get("asignadoPor")));
+        MatcherAssert.assertThat(this.grdEstado.getText(), Is.is(Matchers.equalTo(exampleTable.get("estado"))));
+        menuEscritorio.click();
+        waitForTextToAppear("Mis actividades");
     }
 
     public void limpiarFiltros(){
@@ -88,49 +109,59 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
-        waitABit(2000);
+        waitFor(ExpectedConditions.visibilityOf(txtNumeroPoliza));
         txtNumeroPoliza.sendKeys(numeroPoliza);
     }
 
     public void filtrarPorNumeroDeCuenta(String numeroCuenta) {
-        waitABit(2000);
+        waitFor(ExpectedConditions.visibilityOf(txtNumeroCuenta));
         txtNumeroCuenta.sendKeys(numeroCuenta);
     }
 
     public void buscarSinFiltro() {
         waitABit(2000);
-        limpiarFiltros();
+        this.limpiarFiltros();
     }
 
     public void validarMensjeFiltroRequerido(String mensaje) {
-        btnBuscar.click();
-        txtNumeroCuenta.clear();
-        assertThat(this.msgFiltrosRequeridos.getText(), containsString(mensaje));
+        try {
+            waitFor(ExpectedConditions.elementToBeClickable(btnBuscar));
+            btnBuscar.click();
+            waitForPresenceOf(".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div");
+            MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
+        }catch (StaleElementReferenceException elemento){
+            elemento.printStackTrace();
+        }
     }
 
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
-        this.limpiarFiltros();
+        waitFor(ExpectedConditions.visibilityOf(txtAsignadoA));
         txtAsignadoA.sendKeys(usuario);
+        txtPrioridad.clear();
         txtPrioridad.sendKeys(prioridad);
         txtPrioridad.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(String usuario, String estadoActividad) {
-        this.limpiarFiltros();
+        waitFor(ExpectedConditions.visibilityOf(txtAsignadoA));
+        waitFor(ExpectedConditions.elementToBeClickable(txtAsignadoA));
         txtAsignadoA.sendKeys(usuario);
+        txtEstadoActividad.clear();
         txtEstadoActividad.sendKeys(estadoActividad);
         txtEstadoActividad.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltrosUsuarioYVencida(String usuario, String vencida) {
-        this.limpiarFiltros();
+        waitFor(ExpectedConditions.visibilityOf(txtAsignadoA));
         txtAsignadoA.sendKeys(usuario);
+        txtVencida.clear();
         txtVencida.sendKeys(vencida);
         txtVencida.sendKeys(Keys.ENTER);
     }
 
     public void buscarPorFiltroOpcional(String estadoActividad) {
-        this.limpiarFiltros();
+        waitFor(ExpectedConditions.visibilityOf(txtEstadoActividad));
+        txtEstadoActividad.clear();
         txtEstadoActividad.sendKeys(estadoActividad);
         txtEstadoActividad.sendKeys(Keys.ENTER);
     }

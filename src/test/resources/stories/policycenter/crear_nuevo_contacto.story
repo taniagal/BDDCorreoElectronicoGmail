@@ -6,6 +6,7 @@ Quiera crear una persona natural e ingrese la información en los campos tipo de
 se debe crear una persona tipo natural
 
 Scenario: Crear contacto persona natural
+
 Given estoy en la pantalla de crear contacto persona natural
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
@@ -21,6 +22,7 @@ Examples:
 
 
 Scenario: Crear contacto persona juridica
+
 Given estoy en la pantalla de crear contacto persona juridica
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
@@ -35,6 +37,7 @@ Examples:
 
 
 Scenario: Validar Contacto Existente
+
 Given estoy en la pantalla de crear contacto persona juridica
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
@@ -45,11 +48,12 @@ Then debe validar que el contacto ya existe
 
 Examples:
 |tipoDocumento|numeroDeDocumento|razonSocial| tipoDireccion  |direccion|departamento|ciudad  |
-|NIT          |1245226          |LA VAQUITA ||Negocio        |CRA 50   |Antioquia   |Medellin|
+|NIT          |1245226          |LA VAQUITA |Negocio        |CRA 50   |Antioquia   |Medellin|
 
 
 
 Scenario: Campo ciudad obligatorio si se ingresa el telefono
+
 Given estoy en la pantalla de crear contacto persona natural
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>

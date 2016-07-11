@@ -13,14 +13,10 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
         super(pages);
     }
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
     @Step
     public void ir_a_nueva_poliza(String cuenta, String producto){
         detallesDeUbicacionPage.irANuevaCotizacion();
-        detallesDeUbicacionPage.agregarDatos(cuenta,producto);
+        detallesDeUbicacionPage.setDatos(cuenta,producto);
     }
 
     @Step
@@ -31,12 +27,12 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
 
     @Step
     public void agregar_ubicacion(String descripcion, String actividad){
-       detallesDeUbicacionPage.agregarUbicacion(descripcion, actividad);
+       detallesDeUbicacionPage.setUbicacion(descripcion, actividad);
     }
 
     @Step
     public void agregar_direccion(String direccion, String departamento, String ciudad) {
-        detallesDeUbicacionPage.agregarDireccion(direccion, departamento, ciudad);
+        detallesDeUbicacionPage.setDireccion(direccion, departamento, ciudad);
     }
 
     @Step
@@ -53,10 +49,5 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     @Step
     public void verificar_mensaje(String mensaje) {
         detallesDeUbicacionPage.verificarMensaje(mensaje);
-    }
-
-    @Step
-    public void verificar_mensaje_direccion(String mensaje) {
-        detallesDeUbicacionPage.verificarMensajeDireccion(mensaje);
     }
 }

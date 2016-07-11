@@ -1,9 +1,11 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import com.sura.serinitybdd.util.GwNavegacionUtil;
+import com.sura.serenitybdd.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
@@ -12,7 +14,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
@@ -74,7 +75,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     }
 
     public void existeEncabezadoDeTabla(ExamplesTable encabezados, String keyElement, String xPathElementos) {
-        List<WebElementFacade> listEncabezados = withTimeoutOf(1, SECONDS).findAll(xPathElementos);
+        List<WebElementFacade> listEncabezados = withTimeoutOf(1, TimeUnit.SECONDS).findAll(xPathElementos);
         int countCoincidencias = 0;
         for (Map<String, String> enc : encabezados.getRows()) {
             if (enc.containsKey(keyElement)) {
@@ -91,19 +92,19 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
     private List<WebElementFacade> getListaContactos() {
         List<WebElementFacade> contactos;
-        contactos = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+        contactos = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return contactos;
     }
 
     private List<WebElementFacade> getListaRolesFunciones() {
         List<WebElementFacade> rolesFunciones;
-        rolesFunciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+        rolesFunciones = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return rolesFunciones;
     }
 
     private List<WebElementFacade> getListaDirecciones() {
         List<WebElementFacade> direcciones;
-        direcciones = withTimeoutOf(1, SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
+        direcciones = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
         return direcciones;
     }
 
@@ -194,7 +195,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
     public Boolean validarOcurrenciaDeMensajeDeAplicacion(String idXpathDivMensajes, String mensajesApp){
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado="";
-        List<WebElementFacade> divsMensajes = withTimeoutOf(1, SECONDS).findAll(idXpathDivMensajes);
+        List<WebElementFacade> divsMensajes = withTimeoutOf(1, TimeUnit.SECONDS).findAll(idXpathDivMensajes);
         for (WebElementFacade div : divsMensajes) {
             mensajeMostrado = div.getText();
             if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
@@ -214,7 +215,7 @@ public class ContactosAsociadosACuentasPage extends Guidewire {
 
     public void ElimnarContactoAsociado(String nombreContacto) {
 
-        List<WebElementFacade> checkBoxes = withTimeoutOf(1, SECONDS)
+        List<WebElementFacade> checkBoxes = withTimeoutOf(1, TimeUnit.SECONDS)
                 .findAll("//img[contains(@class,'x-grid-checkcolumn')]");
         int cont = 0;
         for (WebElementFacade contacto : getListaContactos()) {

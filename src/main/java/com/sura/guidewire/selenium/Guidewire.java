@@ -1,34 +1,35 @@
 package com.sura.guidewire.selenium;
 
 import com.google.common.base.Function;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.hamcrest.MatcherAssert;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class Guidewire extends PageObject {
 
-    private final Actions act = new Actions(getDriver());
+    private final Actions actions = new Actions(getDriver());
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
     WebElementFacade configuracion;
     @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
     WebElementFacade internacional;
     @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
     WebElementFacade idioma;
-    @FindBy(xpath=".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
-    private WebElementFacade espaniol;
     @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
     private WebElementFacade usuario;
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
@@ -41,22 +42,13 @@ public class Guidewire extends PageObject {
     private WebElementFacade btnLogout;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     private WebElementFacade btnLogout2;
-    @FindBy(xpath = ".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")
-    private WebElementFacade lblMisActividades;
 
     public Guidewire(WebDriver driver) {
         super(driver);
     }
 
-    @WhenPageOpens
-    public void waitUntilMainElementsAppears() {
-        getDriver().manage().window().maximize();
-        usuario.waitUntilVisible();
-        contrasena.waitUntilVisible();
-    }
-
     public void asercion(String element, String mensaje) {
-        assertThat(element, containsString(mensaje));
+        MatcherAssert.assertThat(element, containsString(mensaje));
     }
 
     public void login(String user, String pass) {
@@ -80,18 +72,17 @@ public class Guidewire extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menu).click();
+        waitUntil(2500);
         menu.click();
-        waitABit(1500);
-        menu.click();
-        waitABit(500);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        return act;
+        waitUntil(500);
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        return actions;
     }
-
 
     public void selectItem(WebElementFacade element, String option){
         element.click();
-        waitABit(200);
+        waitUntil(200);
         element.sendKeys(option);
         element.sendKeys(Keys.ENTER);
     }
@@ -114,20 +105,6 @@ public class Guidewire extends PageObject {
         return Integer.toString(nit);
     }
 
-    public void elegirLenguaje(){
-        if(!("Mis actividades").equals(lblMisActividades.getText())){
-        configuracion.click();
-        waitABit(300);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
-        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
-        espaniol.click();
-        waitABit(850);
-        }
-    }
 
     protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
         final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
@@ -136,13 +113,25 @@ public class Guidewire extends PageObject {
 
     public void waitUntil(int millis) {
         Integer i = 0;
-        Wait<Integer> waitUtil = new FluentWait<Integer>(i).withTimeout(millis,
+        Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
                 TimeUnit.MILLISECONDS).pollingEvery(millis,
                 TimeUnit.MILLISECONDS);
-        waitUtil.until(new Function<Integer, Boolean>() {
-            public Boolean apply(Integer i) {
-                return false;
-            }
-        });
+        try {
+            wait.until(new Function<Integer, Boolean>() {
+                public Boolean apply(Integer i) {
+
+                    return false;
+                }
+            });
+        } catch (TimeoutException e) {}
+    }
+
+    public  void verificarMensaje(WebElementFacade divMensaje, String mensaje){
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
+        MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
+    }
+
+    public List<WebElementFacade> getLista(String locator) {
+         return withTimeoutOf(15, TimeUnit.SECONDS).findAll(locator);
     }
 }

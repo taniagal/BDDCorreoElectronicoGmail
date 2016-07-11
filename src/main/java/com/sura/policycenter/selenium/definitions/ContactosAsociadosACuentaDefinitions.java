@@ -3,15 +3,20 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.pages.NuevoAseguradoNombradoPage;
 import com.sura.policycenter.selenium.steps.ContactosAsociadosACuentasSteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.WebDriver;
 
 @SuppressWarnings("WeakerAccess")
 public class ContactosAsociadosACuentaDefinitions {
 
     private static final String ENCABEZADO = "encabezados";
+
+    @Managed
+    WebDriver driver;
 
     @Steps
     SeusLoginSteps seusSteps;
@@ -84,7 +89,7 @@ public class ContactosAsociadosACuentaDefinitions {
 
     @Then("debo poder visualizar el contacto recien asociado con su rol seleccionado")
     public void thenVisualizarContactoAsociado() throws Exception {
-        contactosAsociadosACuentaSteps.esContactoAsociado("JOHAN MUSTACHE");
+        contactosAsociadosACuentaSteps.esContactoAsociado("DORIAN STIWAR EASTMOND PULGARIN");
     }
 
     @Given("busco un contacto del directorio  que no exista en la cuenta con un rol existente")

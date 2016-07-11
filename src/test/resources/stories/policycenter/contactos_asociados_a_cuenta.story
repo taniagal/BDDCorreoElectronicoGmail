@@ -76,7 +76,7 @@ And quiera ver el detalle de los contactos de la cuenta <numCuenta>
 And y desee crear un nuevo contacto
 And debo darClick <darClick>  y ver las opciones de menú para los roles
 |Contacto de facturación|
-|Nuevo Persona Natural|
+|Nuevo Personal|
 And asocie un nuevo contacto a la cuenta con el rol seleccionado
 Then debo poder visualizar el contacto recien asociado con su rol seleccionado
 Examples:

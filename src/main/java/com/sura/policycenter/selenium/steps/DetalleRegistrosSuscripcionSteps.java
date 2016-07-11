@@ -19,8 +19,23 @@ public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
     }
 
     @Step
-    public void buscarRegistrosDeSucripcion() {
-        detalleRegistrosSuscripcionPage.buscarRegistrosDeSucripcion();
+    public void buscarRegistrosSucripcion() {
+        detalleRegistrosSuscripcionPage.buscarRegistrosSuscripcion();
+    }
+
+    @Step
+    public void validarNombresFiltros(String estado, String transaccion) {
+        detalleRegistrosSuscripcionPage.validarNombresFiltros(estado, transaccion);
+    }
+
+    @Step
+    public void validarCamposRegistros(String nombre, String tipoDeTransaccion, String nroDeTransacciones) {
+        detalleRegistrosSuscripcionPage.validarCamposRegistros(nombre, tipoDeTransaccion, nroDeTransacciones);
+    }
+
+    @Step
+    public void buscarDetalleRegistrosDeSuscripcion() {
+        detalleRegistrosSuscripcionPage.buscarDetalleRegistrosDeSuscripcion();
     }
 
     @Step
@@ -31,6 +46,21 @@ public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
     @Step
     public void validarSumaGrupo(String suma) {
         detalleRegistrosSuscripcionPage.validarSumaGrupo(suma);
+    }
+
+    @Step
+    public void validarVisibilidadMenuAnalisisDeRiesgo(){
+        detalleRegistrosSuscripcionPage.validarVisibilidadMenuAnalisisDeRiesgo();
+    }
+
+    @Step
+    public void validarVisibilidadMenuActividades(){
+        detalleRegistrosSuscripcionPage.validarVisibilidadMenuActividades();
+    }
+
+    @Step
+    public void validarTituloSumatoriaDeCotizaciones(String titulo) {
+        detalleRegistrosSuscripcionPage.validarTituloSumatoriaDeCotizaciones(titulo);
     }
 
 }

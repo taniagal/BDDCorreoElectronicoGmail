@@ -2,14 +2,19 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.steps.BusquedaActividadesSteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.WebDriver;
 
 @SuppressWarnings("WeakerAccess")
 public class BusquedaActividadesDefinitions {
+
+    @Managed
+    WebDriver driver;
 
     @Steps
     private BusquedaActividadesSteps busquedaActividadesSteps;
@@ -50,8 +55,7 @@ public class BusquedaActividadesDefinitions {
         busquedaActividadesSteps.buscarPorFiltrosUsuarioYPrioridad(usuario, filtroPrioridad);
     }
 
-    @When("quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y estado de actividad" +
-            " <estadoActividad>")
+    @When("quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y estado de actividad <estadoActividad>")
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(@Named("usuario") String usuario,
                                                           @Named("estadoActividad") String estadoActividad) {
         busquedaActividadesSteps.buscarPorFiltrosUsuarioYEstadoDeActividad(usuario, estadoActividad);

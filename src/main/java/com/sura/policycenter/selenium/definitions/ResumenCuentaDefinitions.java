@@ -4,14 +4,23 @@ import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
 import com.sura.policycenter.selenium.steps.ResumenCuentaSteps;
 import java.util.HashMap;
 import java.util.Map;
+
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.openqa.selenium.WebDriver;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ResumenCuentaDefinitions {
+
+    @Managed
+    WebDriver driver;
 
     @Steps
     ResumenCuentaSteps resumenCuentaSteps;
@@ -22,7 +31,7 @@ public class ResumenCuentaDefinitions {
     private final Map<String, String> infoResumenCuenta = new HashMap<>();
 
     public ResumenCuentaDefinitions(){
-        infoResumenCuenta.put("lblResumenCuenta", "Resumen del archivo de cuenta");
+        infoResumenCuenta.put("lblResumenCuenta", "Resumen de la cuenta");
         infoResumenCuenta.put("tipoDocumento", "Tipo documento");
         infoResumenCuenta.put("numDocumento", "Número documento");
         infoResumenCuenta.put("codigoAgente", "Código de agente");
@@ -32,7 +41,7 @@ public class ResumenCuentaDefinitions {
         infoResumenCuenta.put("lblPersonaJuridica", "Compañía");
         infoResumenCuenta.put("razonSocial", "Razón social");
         infoResumenCuenta.put("nombreComercial", "Nombre comercial");
-        infoResumenCuenta.put("actComercial", "Actividad comercial");
+        infoResumenCuenta.put("actComercial", "Actividad económica");
         infoResumenCuenta.put("numEmpleados", "Número de empleados"); //Número de empleados
         infoResumenCuenta.put("telOficina", "Teléfono de la oficina");
         infoResumenCuenta.put("emailPersona", "Correo electrónico primario");
@@ -109,14 +118,12 @@ public class ResumenCuentaDefinitions {
 
     @When("edite el campo pais <pais>")
     public void editarPais(@Named("pais") String pais){
-        resumenCuentaSteps.editarResumenCuenta();
         resumenCuentaSteps.editarPais(pais);
     }
 
     @When("edite el campo departamento <pais> <departamento>")
     public void editarDepto(@Named("pais") String pais,
                             @Named("departamento") String departamento){
-        resumenCuentaSteps.editarResumenCuenta();
         resumenCuentaSteps.editarPais(pais);
         resumenCuentaSteps.editarDepto(departamento);
     }

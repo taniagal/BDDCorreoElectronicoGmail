@@ -1,14 +1,20 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
-import com.sura.policycenter.selenium.pages.menu.Navegacion;
-import com.sura.policycenter.selenium.pages.menu.acciones.administracion.*;
+ import com.sura.guidewire.selenium.Guidewire;
+ import com.sura.policycenter.selenium.pages.menu.Navegacion;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminCodAgenteNuevoPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminGrupoNuevoPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminNuevoGrupoAfinidadPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminOrganizacionNuevaPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminUsuarioNuevoPage;
+import com.sura.policycenter.selenium.pages.menu.acciones.administracion.AdminVerificarErrorPatronPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.contacto.ContactoNuevaCuentaPage;
-import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.*;
-import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
+ import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.*;
+ import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.superior.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.superior.buscar.*;
@@ -25,6 +31,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesResumenCuentaPage;
 import org.openqa.selenium.support.FindBy;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -54,6 +61,7 @@ public class InicioPage extends Guidewire {
 
     public void assertion(String element) {
         assertThat(labelIngreso.getText().toString(), containsString(element));
+        waitABit(2000);
     }
 
     // Metodos navegacion Escritorio
@@ -80,7 +88,8 @@ public class InicioPage extends Guidewire {
     public NuevaCuentaPage irANuevaCuenta() {
         return navegacion.irANuevaCuenta();
     }
-    public CuentaBuscarPage irACuentaBuscar(String numCuenta) {return navegacion.irACuentaBuscar(numCuenta);
+    public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
+        return navegacion.irACuentaBuscar(numCuenta);
     }
 
     // Metodos navegacion Poliza
@@ -89,6 +98,9 @@ public class InicioPage extends Guidewire {
     }
     public PolizaBuscarPage irABuscarPoliza(String numPoliza) {
         return navegacion.irABuscarPoliza(numPoliza);
+    }
+    public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza){
+        return  navegacion.irABuscarSubPoliza(numSubPoliza);
     }
 
     // Metodos navegacion Contacto
@@ -213,9 +225,13 @@ public class InicioPage extends Guidewire {
     public CuentaNuevoCorreoElecPage irACuentaNuevoCorreoElect(){
         return navegacion.irACuentaNuevoCorreoElect();
     }
-    public CuentaNuevaCotizacionPage irACuentaNuevaCotizacion(){
-        return navegacion.irACuentaNuevaCotizacion();
+    public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta(){
+        return navegacion.irACuentaNuevoEnvioCuenta();
     }
+    public CuentaNuevoEnvioPage irANuevoEnvioDeCuenta() {
+        return navegacion.irANuevoEnvioDeCuenta();
+    }
+
     public CuentaRevisaNuevoCorreoPage irACuentaRevisaNuevoCorreo(){
         return navegacion.irACuentaRevisaNuevoCorreo();
     }
@@ -309,6 +325,7 @@ public class InicioPage extends Guidewire {
     public CuentaCombPoliACuentaPage irACuentaCombPoliACuenta() {
         return navegacion.irACuentaCombPoliACuenta();
     }
+    public CuentaNuevaCotizacionPage irANuevaCotizacion() { return navegacion.irANuevaCotizacion();}
 
     // Metodos Acciones navegacion Contacto
     public ContactoNuevaCuentaPage irAContactoNuevaCuenta() {
@@ -346,5 +363,8 @@ public class InicioPage extends Guidewire {
 
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
         return navegacion.irAOpcionesAdministradorCotizaciones();
+    }
+
+    public OpcionesInformacionPolizaPage irAInformacionDePoliza(){return navegacion.irAInformacionDePoliza();
     }
 }
