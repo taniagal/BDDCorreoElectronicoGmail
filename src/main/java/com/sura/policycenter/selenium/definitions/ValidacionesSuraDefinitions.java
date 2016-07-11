@@ -36,7 +36,7 @@ public class ValidacionesSuraDefinitions {
     @When("quiera crear una cuenta para un contacto persona juridica e tipo de documento <tipo_documento>")
     public void crearCuentaNuevaJuridica(@Named("tipo_documento")String tipoDocumento){
         cuentaNuevaSteps.abrir_nueva_cuenta();
-        cuentaNuevaSteps.agregar_tipo_documento2(tipoDocumento);
+        cuentaNuevaSteps.agregar_tipo_documento_b(tipoDocumento);
     }
 
     @When("nombre comercial <nombre_comercial>")
