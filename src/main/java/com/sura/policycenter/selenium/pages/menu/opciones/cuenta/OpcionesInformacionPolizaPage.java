@@ -210,24 +210,25 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void seleccionarAgenteCotizacion() {
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(campoNombreAgente).shouldBePresent();
         waitFor(campoNombreAgente).shouldBeVisible();
         campoNombreAgente.waitUntilVisible().sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
         campoNombreAgente.sendKeys(Keys.ENTER);
-        waitForTextToAppear("Productos ofrecidos", 10000);
         WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonElegirProducto).shouldBePresent();
         waitFor(botonElegirProducto).shouldBeVisible();
         botonElegirProducto.click();
     }
 
     public Integer encontrarProducto(){
-        waitFor(tablaProductos).shouldBeVisible();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(tablaProductos).shouldBeVisible();
         tablaProductos.waitUntilVisible();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (columna.get(1).getText().equals("Auto personal")){
+            if (columna.get(1).getText().equals("Autos")){
                 return filaBoton;
             }
             filaBoton++;
@@ -238,7 +239,6 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     public void visualizarInformacionPoliza(Map<String, String> infoPoliza) {
         String validacion = null;
         try{
-            MatcherAssert.assertThat(this.labelAseguradoPrimario.getText(), Is.is(Matchers.equalTo(infoPoliza.get("labelAseguradoPrimario"))));
             MatcherAssert.assertThat(this.labelTipoDocumento.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoDocumento"))));
             MatcherAssert.assertThat(this.labelNumeroDocumento.getText(), Is.is(Matchers.equalTo(infoPoliza.get("numeroDocumento"))));
             MatcherAssert.assertThat(this.labelNombre.getText(), Is.is(Matchers.equalTo(infoPoliza.get("nombre"))));
@@ -467,3 +467,4 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         MatcherAssert.assertThat(validacion,Is.is(Matchers.equalTo(null)));
     }
 }
+

@@ -4,6 +4,7 @@ package com.sura.policycenter.selenium.definitions;
 import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.CotizacionDePolizaSteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
@@ -11,6 +12,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +25,9 @@ public class CotizacionDePolizaDefinitions {
 
     private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
+    @Managed
+    WebDriver driver;
+
     public CotizacionDePolizaDefinitions(){
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
         infoCotizacionPoliza.put("vigenciaPoliza", "Vigencia de la póliza");
@@ -31,7 +36,7 @@ public class CotizacionDePolizaDefinitions {
         infoCotizacionPoliza.put("numeroDocumento", "Número documento");
         infoCotizacionPoliza.put("direccion", "Dirección");
         infoCotizacionPoliza.put("tipoDireccion", "Tipo de dirección");
-        infoCotizacionPoliza.put("descripcionDireccion", "Descripción de dirección");
+        infoCotizacionPoliza.put("descripcionDireccion", "Descripción de la dirección");
         infoCotizacionPoliza.put("empresaAseguradora", "Empresa aseguradora");
         infoCotizacionPoliza.put("primaTotal", "Prima total");
         infoCotizacionPoliza.put("impuestos", "Impuestos y cargos extra");
@@ -48,7 +53,7 @@ public class CotizacionDePolizaDefinitions {
 
     @When("ingrese al detalle de la cotizacion")
     public void verDetalleCotizacion() {
-       cotizacionDePolizaSteps.verDetalleCotizacion();
+        cotizacionDePolizaSteps.verDetalleCotizacion();
     }
 
     @When("ingrese a la revision de la poliza")

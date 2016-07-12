@@ -2,13 +2,17 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CuentaNuevaSteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.openqa.selenium.WebDriver;
 
 @SuppressWarnings("WeakerAccess")
 public class CuentaNuevaDefinitions {
+    @Managed
+    WebDriver driver;
     @Steps
     private SeusLoginSteps seusLoginSteps;
     @Steps
@@ -44,7 +48,6 @@ public class CuentaNuevaDefinitions {
     @Then("se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural")
     public void assertCrearNuevaCuentaPersonaNatural(@Named("primer_apellido")String primerApellido, @Named("primer_nombre")String primerNombre){
         cuentaNuevaSteps.verificar_cuenta(primerNombre);
-        seusLoginSteps.close();
     }
 
 
@@ -65,7 +68,6 @@ public class CuentaNuevaDefinitions {
     @Then("se debe crear la cuenta con el cliente <razon_social> persona juridica")
     public void assertCrearNuevaCuentaPersonaJuridica(@Named("razon_social")String razonSocial){
         cuentaNuevaSteps.verificar_cuenta(razonSocial);
-        seusLoginSteps.close();
     }
 
     /**

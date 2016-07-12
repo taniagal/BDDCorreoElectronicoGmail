@@ -3,15 +3,20 @@ package com.sura.policycenter.selenium.definitions;
 import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.DetalleRegistrosSuscripcionSteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.openqa.selenium.WebDriver;
 
 
 import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 public class DetalleRegistrosSuscripcionDefinitions {
+
+    @Managed
+    WebDriver driver;
 
     @Steps
     DetalleRegistrosSuscripcionSteps detalleRegistrosSuscripcionSteps;
@@ -36,23 +41,23 @@ public class DetalleRegistrosSuscripcionDefinitions {
         detalleRegistrosSuscripcionSteps.validarNombresFiltros(estado, transaccion);
     }
 
-    @Then("debo ver la siguiente informacion <nombre>, <tipoDeTransaccion>, <nroDeTransacciones>")
-    public void verDetalleRegistrosDeSuscripcion(@Named("nombre") String nombre,
-                                                 @Named("tipoDeTransaccion") String tipoDeTransaccion,
-                                                 @Named("nroDeTransacciones") String nroDeTransacciones) {
+    @Then("debo ver la informacion del registro de suscripcion <nombre>, <tipoDeTransaccion>, <nroDeTransacciones>")
+    public void validarCamposRegistros(@Named("nombre") String nombre,
+                                       @Named("tipoDeTransaccion") String tipoDeTransaccion,
+                                       @Named("nroDeTransacciones") String nroDeTransacciones) {
         detalleRegistrosSuscripcionSteps.validarCamposRegistros(nombre, tipoDeTransaccion, nroDeTransacciones);
     }
 
     @When("busque el de detalle de los registros de suscripcion")
-    public void buscarDetalleDeRegistrosDeSucripcion() {
-        detalleRegistrosSuscripcionSteps.buscarDetalleRegistrosDeSucripcion();
+    public void buscarDetalleDeRegistrosDeSuscripcion() {
+        detalleRegistrosSuscripcionSteps.buscarDetalleRegistrosDeSuscripcion();
     }
 
-    @Then("debo ver la siguiente informacion producto <producto>, <nroEnvio>, <estado>, <nroPoliza>")
-    public void verDetalleRegistrosDeSuscripcion(@Named("producto") String producto,
-                                                 @Named("nroEnvio") String nroEnvio,
-                                                 @Named("estado") String estado,
-                                                 @Named("nroPoliza") String nroPoliza) {
+    @Then("debo ver la informacion del registro de suscripcion producto <producto>, <nroEnvio>, <estado>, <nroPoliza>")
+    public void validarCamposDetalle(@Named("producto") String producto,
+                                     @Named("nroEnvio") String nroEnvio,
+                                     @Named("estado") String estado,
+                                     @Named("nroPoliza") String nroPoliza) {
         detalleRegistrosSuscripcionSteps.validarCamposDetalle(producto, nroEnvio, estado, nroPoliza);
     }
 

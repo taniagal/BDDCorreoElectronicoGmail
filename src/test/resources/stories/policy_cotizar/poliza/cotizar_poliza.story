@@ -1,7 +1,4 @@
-Realizar una cotización
-
 Meta:
-@tag capability: cotizacion
 Narrative:
 
 GivenStories: stories/precondiciones/ingreso_a_policycenter.story
@@ -26,9 +23,9 @@ When he seleccionado en el nombre del agente DELIMA MEDELLIN
 And se muestre la fecha de efecto de la cotizacion
 Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
 Then se mostraran en orden alfabetico los:
-|productos          |
-|Auto personal      |
-|Propiedad comercial|
+|productos              |
+|Autos                  |
+|Multiriesgo corporativo|
 
 Scenario: Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial buscando
 por numero de cuenta y persona natural
@@ -48,9 +45,9 @@ When he seleccionado en el nombre del agente DELIMA MEDELLIN
 And se muestre la fecha de efecto de la cotizacion
 Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
 Then se mostraran en orden alfabetico los:
-|productos          |
-|Auto personal      |
-|Propiedad comercial|
+|productos              |
+|Autos                  |
+|Multiriesgo corporativo|
 
 
 Scenario:  Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial con una
@@ -63,10 +60,10 @@ When digite el numero de cuenta C000777777 de una persona natural y digite la te
 And he seleccionado en el nombre del agente DIRECTO
 Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
 Then se mostraran en orden alfabetico los:
-|productos          |
-|Auto personal      |
-|Propiedad comercial|
-Then seleccionar nombre de producto Propiedad comercial
+|productos              |
+|Autos                  |
+|Multiriesgo corporativo|
+Then seleccionar nombre de producto Multiriesgo corporativo
 Then debera observar un mensaje emergente de informacion: Ya existe la cotización # 22223226 y se encuentra en proceso
 para este cliente y producto. ¿Desea solicitar aprobación?
 Then debera observar los botones: Aceptar,Cancelar
@@ -75,15 +72,16 @@ Then al seleccionar el botón Cancelar deberá ver la página Nueva cotización
 Scenario:  Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial con una
 cotizacion ya existente para un agente diferente
 
+Meta: @manual
 Given deseo crear nueva cotizacion buscando por numero de cuenta
 When digite el numero de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la busqueda
 And he seleccionado en el nombre del agente DELIMA MEDELLIN
 Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
 Then se mostraran en orden alfabetico los:
-|productos          |
-|Auto personal      |
-|Propiedad comercial|
-Then seleccionar nombre de producto Propiedad comercial
+|productos              |
+|Autos                  |
+|Multiriesgo corporativo|
+Then seleccionar nombre de producto Multiriesgo corporativo
 Then debera observar un mensaje de error: El cliente JORGE PAISA ya tiene una cotización en curso para el producto
 seleccionado para la oficina OFICINA TUYA
 
@@ -93,7 +91,7 @@ cotizacion de un tomador que es riesgo consultable y PEPS
 Given deseo crear nueva cotizacion buscando por numero de cuenta
 When digite el numero de cuenta C000777778 de una persona natural y digite la tecla Tab para activar la busqueda
 When he seleccionado en el nombre del agente DELIMA MEDELLIN
-Then seleccionar nombre de producto Propiedad comercial
+Then seleccionar nombre de producto Multiriesgo corporativo
 Then debera observar un mensaje de error: FRANK RAMIREZ ALZATE, El tomador es un riesgo no es estandar y debe ser
 analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial. |
 FRANK RAMIREZ ALZATE,El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal

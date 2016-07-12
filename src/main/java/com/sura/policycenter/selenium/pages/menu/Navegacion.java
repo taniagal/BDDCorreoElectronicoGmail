@@ -369,6 +369,7 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
         waitABit(1500);
         gw.deployMenu(mnuCuenta);
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
@@ -677,8 +678,7 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta() {
-        mnuCuenta.click();
-        waitFor(mnuAccionesCuenta);
+        waitFor(mnuAccionesCuenta).waitUntilClickable();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitABit(300);
@@ -1079,10 +1079,10 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaNuevaCotizacionPage irANuevaCotizacion() {
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mnuAccionesCuenta).shouldBePresent();
         waitFor(mnuAccionesCuenta).shouldBeVisible();
         mnuAccionesCuenta.click();
-        waitForTextToAppear("Nueva cotización",2000);
-        waitFor(mnuNuevaCotizacion).shouldBeVisible();
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mnuNuevaCotizacion).shouldBePresent();
         mnuNuevaCotizacion.click();
         return new CuentaNuevaCotizacionPage(getDriver());
     }
