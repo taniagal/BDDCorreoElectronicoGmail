@@ -15,7 +15,7 @@ Given se ha realizado la cotizacion MRC <cotizacion>
 When ingrese a consultar la cotizacion
 Then debo ver la informacion de la cotizacion
 |cotizacion|vigencia                |tomador              |tipoDocumento       |numeroDocumento|direccion                                  |tipoDireccion|descripcionDireccion                      |empresaAseguradora       |prima     |impuestos|total     |
-|22222237  |06/11/2016 - 06/11/2017 |FRANK RAMIREZ ALZATE |CEDULA DE CIUDADANIA|123456         |CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda     |Created by the Address Builder with code 0|Acme Low Hazard Insurance|$19,480.00|$1,071.00|$20,551.00|
+|22222237  |06/12/2016 - 06/12/2017 |FRANK RAMIREZ ALZATE |CEDULA DE CIUDADANIA|123456         |CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda     |Created by the Address Builder with code 0|Acme Low Hazard Insurance|$19,342.00|$1,064.00|$20,406.00|
 
 Examples:
 |cotizacion |
@@ -28,7 +28,7 @@ Then debo ver la prima <primaTotal> a cobrar al cliente
 
 Examples:
 |cotizacion |primaTotal |
-|22222237   |$19,480.00 |
+|22222237   |$19,342.00 |
 
 Scenario: Validar informacion detalle cotizacion
 Given se ha realizado la cotizacion MRC <cotizacion>

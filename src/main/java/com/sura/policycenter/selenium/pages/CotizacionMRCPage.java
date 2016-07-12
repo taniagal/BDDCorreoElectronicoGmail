@@ -104,9 +104,10 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void irABuscarCotizacion(String cotizacion) {
-        withTimeoutOf(15,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
+        waitUntil(10000);
+        //withTimeoutOf(15,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
         menuPoliza.click();
-        waitUntil(1500);
+        waitUntil(3000);
         menuPoliza.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(3000);
@@ -167,7 +168,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void validarPrima(String primaTotal) {
-        waitUntil(5000);
+        waitUntil(7000);
         MatcherAssert.assertThat(campoPrimaTotal.getText(),Is.is(Matchers.equalTo(primaTotal)));
     }
 
@@ -190,6 +191,8 @@ public class CotizacionMRCPage extends PageObject {
         WebElementFacade resultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
+        //withTimeoutOf(10, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
+        waitUntil(10000);
         MatcherAssert.assertThat(tablaMensajes.getText(),Matchers.containsString(mensaje));
         waitUntil(5000);
     }
