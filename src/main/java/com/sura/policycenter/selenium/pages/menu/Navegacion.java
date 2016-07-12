@@ -438,6 +438,7 @@ public class Navegacion extends Guidewire {
     }
 
     public BuscarContactosPage irABuscarContactos() {
+        waitUntil(2000);
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mnuBuscar).shouldBePresent();
         gw.deployMenu(mnuBuscar);
         act.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();

@@ -119,7 +119,7 @@ public class BusquedaContactoPage extends Guidewire {
         tipoContact.waitUntilClickable();
         tipoContact.type(tipoContacto);
         tipoContact.sendKeys(Keys.ENTER);
-        waitABit(1000);
+        waitUntil(1000);
         if ("Personal".equals(tipoContacto)){
             nombreContact.type(nombre);
             apellidoContact.type(apellido);
@@ -152,7 +152,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial){
-        waitForTextToAppear("Búsqueda de contactos",2000);
+        waitUntil(2000);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
@@ -163,9 +163,9 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void validarInformacionTipoId() {
-        waitABit(1500);
         String msjSinReg = "No hay datos para mostrar";
-        waitForTextToAppear(msjSinReg, 2000);
+        waitUntil(2000);
+        //waitForTextToAppear(msjSinReg, 2000);
         assertThat(msjSinRegistros.getText(),is(equalTo(msjSinReg)));
     }
 
@@ -188,7 +188,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarContactoTipoDoc(String tipoDoc) {
-        waitForTextToAppear("Búsqueda de contactos",2000);
+        waitUntil(2000);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
         waitFor(botonBuscar).shouldBeVisible();
@@ -196,7 +196,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarPersonaJuridicaTipoNumDoc(String numDoc) {
-        waitForTextToAppear("Búsqueda de contactos",2000);
+        waitUntil(2500);
         waitFor(itmNIT).shouldBeVisible();
         itmNIT.click();
         txtNumDoc.type(numDoc);
@@ -208,7 +208,7 @@ public class BusquedaContactoPage extends Guidewire {
         String primerElemento = primerElementoTabla.getText();
         waitForTextToAppear(primerElemento,2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
-        waitABit(1000);
+        waitUntil(1000);
 
         try {
 
@@ -227,6 +227,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void verInfoPersonaNatural(String filtro1, String filtro2) {
+        waitUntil(1000);
         String primerElemento = primerElementoTabla.getText();
         waitForTextToAppear(primerElemento,2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
@@ -254,14 +255,14 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarContactoTipoNumDoc(String tipoDoc, String numDoc) {
-        waitForTextToAppear("Búsqueda de contactos",5000);
+        waitUntil(3500);
         if(!tipoDoc.equals("<ninguno>")) {
             waitFor(botonTipoDoc).shouldBeVisible();
             botonTipoDoc.click();
             WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'" + tipoDoc + "')]");
             waitForTextToAppear(tipoDoc, 2000);
             cbxTipoDoc.click();
-            waitABit(1500);
+            waitUntil(2000);
             divNombre.waitUntilVisible();
             txtNumDoc.type(numDoc);
             botonBuscar.click();
@@ -275,7 +276,7 @@ public class BusquedaContactoPage extends Guidewire {
     public void consultarContactoPorNombresYApellidos(String tipoDoc, String primerNombre,
                                                       String segundoNombre, String primerApellido,
                                                       String segundoApellido) {
-        waitForTextToAppear("Búsqueda de contactos",3000);
+        waitUntil(5000);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
@@ -299,7 +300,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarContactoNombreComercial(String tipoDoc, String nombreComercial) {
-        waitForTextToAppear("Búsqueda de contactos",2000);
+        waitUntil(2000);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
@@ -310,7 +311,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void buscarContacto(String tipoContacto, String nombre, String apellido, String numero){
-        waitForTextToAppear("Búsqueda de contactos",2000);
+        waitUntil(2000);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.click();
         WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'"+tipoContacto+"')]");
@@ -342,7 +343,7 @@ public class BusquedaContactoPage extends Guidewire {
     public void buscarContactoEmpresa(String nombreEmpresa){
         tipoContact.type("Empresa");
         tipoContact.sendKeys(Keys.ENTER);
-        waitABit(1000);
+        waitUntil(1000);
         txtNombreEmpresa.type(nombreEmpresa);
         botonBuscar.click();
         selectContact.waitUntilPresent();
@@ -405,7 +406,7 @@ public class BusquedaContactoPage extends Guidewire {
         waitFor(txtTipoDocDirectorioCotizacion).clear();
         txtTipoDocDirectorioCotizacion.sendKeys(tipoId);
         txtTipoDocDirectorioCotizacion.sendKeys(Keys.ENTER);
-        waitABit(1000);
+        waitUntil(1000);
         txtNumDocDirectorioCotizacion.sendKeys(numeroId);
         btnBuscarDirectorioCotizacion.click();
         waitForWithRefresh();
