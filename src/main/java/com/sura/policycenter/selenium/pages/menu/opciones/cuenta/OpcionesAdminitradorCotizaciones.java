@@ -124,6 +124,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     public void seleccionarAcciones(){
         band=0;
         int i=0;
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tblCotizaciones).waitUntilPresent();
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
@@ -189,6 +190,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
 
     public void mostrarInfoCotizacion(String producto) {
         waitForTextToAppear(producto,2000);
+        waitUntil(1000);
         String tProductos = "Todos Los Productos";
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {

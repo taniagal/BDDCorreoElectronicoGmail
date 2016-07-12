@@ -121,7 +121,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
             listaPATipoPoliza.clear();
             listaPATipoPoliza.sendKeys(tipoPoliza);
             listaPATipoPoliza.sendKeys(Keys.ENTER);
-            if (listaTipoCanalDeVenta.getValue().equals("<ninguno>")) {
+            if (listaPATipoPoliza.getValue().equals("<ninguno>")) {
                 intentos++;
                 waitUntil(1000);
             }else {
