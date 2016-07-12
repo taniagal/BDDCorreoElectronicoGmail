@@ -230,12 +230,13 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         $(tipoPlazoPoliza).type(tipoPlazo);
         waitFor(itemTipoPlazo).shouldBeVisible();
         itemTipoPlazo.click();
-        waitABit(1000);
+        waitUntil(1000);
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
+        waitUntil(1000);
         fechaVigenciaPoliza.click();
         $(fechaVigenciaPoliza).type(fechaInicioVigencia);
         waitFor(fechaExpiracionPoliza).shouldBeVisible();
-        waitABit(1000);
+        waitUntil(1000);
         fechaExpiracionPoliza.click();
     }
 
@@ -290,7 +291,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         botonAseguradoSecundario.click();
         waitFor(itemPersonaDelDirectorio).shouldBeVisible();
         itemPersonaDelDirectorio.click();
-        waitABit(1000);
+        waitUntil(1000);
         waitFor(botonTipoDocumento).shouldBeVisible();
         botonTipoDocumento.click();
         waitFor(textoTipoDocumento).shouldBeVisible();
