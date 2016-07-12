@@ -37,3 +37,13 @@ And bloquear la operacion
 Examples:
 |numeroCuenta  |cedula|nomProducto            |mensaje                                        |mensaje2                                                                                                                                              |
 |C000888888    |123456|Multiriesgo corporativo|es un riesgo no estándar y debe ser autorizado.|El asegurado es un riesgo no estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial.|
+
+Scenario: ocultar descipcion de la direccion cuando el campo no tenga datos informativos
+Given se inicio una nueva suscripcion <numeroCuenta>
+When este expidiendo una poliza de propiedad comercial <nomProducto>
+And requiera quitar la descripcion de la direccion del contacto
+Then debe desaparecer del formulario principal
+
+Examples:
+|numeroCuenta  |nomProducto            |
+|C000888888    |Multiriesgo corporativo|
