@@ -151,7 +151,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     }
 
     public void ingresarTomadorAdicional(String cedula) {
-        btnAgregar.click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAgregar).waitUntilPresent().click();
         itemDirectorio.click();
         waitInfoPoliza(lblBuscarDirectorio);
         itemTipoDocumento.sendKeys("CEDULA DE CIU");
