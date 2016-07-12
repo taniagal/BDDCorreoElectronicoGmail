@@ -62,4 +62,4 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 |tipoContacto|nombre|apellido|filtroEstado|filtroTransaccion|filtroProducto
-|CEDULA DE CIUDADANIA|Dorian|Eastmond|Todos|Todos|Auto personal
+|CEDULA DE CIUDADANIA|Dorian|Eastmond|Todos|Todos|Autos

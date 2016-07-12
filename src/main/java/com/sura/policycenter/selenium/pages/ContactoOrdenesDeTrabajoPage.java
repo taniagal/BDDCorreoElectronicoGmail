@@ -53,6 +53,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorEstado(String estado){
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(filtroEstado).waitUntilPresent();
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
         filtroEstado.sendKeys(Key.ENTER);
