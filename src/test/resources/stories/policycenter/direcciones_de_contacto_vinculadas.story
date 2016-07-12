@@ -55,8 +55,8 @@ Scenario: consultar direccion de un contacto que tiene una direccion asociada a 
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When cuando vincule las direcciones del contacto <nombreContactoUno> y contacto <nombreContactoDos> y la desee editar
 Then me debe mostrar la siguiente informacion:
-|pais|departamento|ciudad|direccion|codigoPostal|tipoDeDireccion|descripcion|
-|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|91007|Vivienda|Created by the Address Builder with code 0|
+|pais|departamento|ciudad|direccion|tipoDeDireccion|descripcion|
+|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|Vivienda|Created by the Address Builder with code 0|
 Examples:
 |numeroCuenta|nombreContactoUno|nombreContactoDos|
 |C000484848|OSCAR GOMEZ|CARLOS PERALTA|
@@ -65,8 +65,8 @@ Scenario: actualizar direccion solo ingresando campos obligatorios
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When ingrese solo informacion obligatoria
 Then me debe mostrar esta informacion:
-|pais          |departamento|ciudad       |direccion      |codigoPostal|tipoDeDireccion|descripcion|
-|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|            |Vivienda       |           |
+|pais          |departamento|ciudad       |direccion      |tipoDeDireccion|descripcion|
+|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|Vivienda       |           |
 Examples:
 |numeroCuenta|
 |C000484848|
@@ -139,8 +139,8 @@ Then la lista de contactos debe ser la siguiente:
 |CARLOS PERALTA (Asegurado nombrado)|
 |OSCAR GOMEZ (Asegurado nombrado)|
 And debo poder asociar una direccion de otro contacto y se debe asociar la dirección seleccionada al nuevo contacto  y mostrar los datos de la dirección
-|pais|departamento|ciudad|direccion|codigoPostal|tipoDireccion|descripcion|
-|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|91007|Vivienda|Created by the Address Builder with code 0|
+|pais|departamento|ciudad|direccion|tipoDireccion|descripcion|
+|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|Vivienda|Created by the Address Builder with code 0|
 
 Examples:
 |numeroCuenta|

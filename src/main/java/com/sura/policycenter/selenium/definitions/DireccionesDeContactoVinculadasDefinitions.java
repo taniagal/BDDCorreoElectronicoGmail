@@ -4,6 +4,7 @@ import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.steps.DireccionesDeContactoVinculadasSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.AfterStory;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -157,6 +158,11 @@ public class DireccionesDeContactoVinculadasDefinitions {
                                             @Named("botonLigagas") String botonLigagas,
                                             @Named("botonDesligar") String botonDesligar){
         direccionesDeContactoVinculadasSteps.validarEtiquetasDeLaVentana(titulo, botonLigagas, botonDesligar);
+    }
+
+    @AfterStory
+    public void despuesDeLaHistoria(){
+        driver.close();
     }
 
 }
