@@ -1,5 +1,7 @@
 Meta:
 
+@issue #SUGWUSC-14460
+
 Narrative:
 Como usuario PolicyCenter
 Quiero ser capaz de ingresar y visualizar la informacion de la poliza incluyendo el nombre tomador
