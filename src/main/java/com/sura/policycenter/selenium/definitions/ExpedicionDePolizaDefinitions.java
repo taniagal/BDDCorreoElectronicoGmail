@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.ExpedicionDePolizaSteps;
+import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -51,5 +52,12 @@ public class ExpedicionDePolizaDefinitions {
     @Then("debe volver a la pantalla de cotizacion")
     public void validarCancelacionDeExpedicionDePoliza(){
         expedicionDePolizaSteps.validar_que_vuelve_a_la_ventana_de_cotizacion();
+    }
+
+    @SuppressWarnings("EmptyMethod")
+    @Then("debe enviar un mensaje a un buzon previamente configurado cuando existe un interes adicional riesgo consultable")
+    @Manual
+    public void validacionBeneficiarioRiesgoConsultable() {
+        // Se realiza manualmente.
     }
 }
