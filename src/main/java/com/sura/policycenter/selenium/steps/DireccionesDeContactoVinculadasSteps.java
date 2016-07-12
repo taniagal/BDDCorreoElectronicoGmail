@@ -75,16 +75,6 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void editarCampoDepartamento(String departamento) {
-        direccionesDeContactoVinculadasPage.editarCampoDepartamento(departamento);
-    }
-
-    @Step
-    public void editarCampoCiudad(String ciudad) {
-        direccionesDeContactoVinculadasPage.editarCampoCiudad(ciudad);
-    }
-
-    @Step
     public void validarDireccionEstandarizada(String direccionEstandarizada, String nombreContacto) {
         direccionesDeContactoVinculadasPage.validarDireccionEstandarizada(direccionEstandarizada, nombreContacto);
     }
