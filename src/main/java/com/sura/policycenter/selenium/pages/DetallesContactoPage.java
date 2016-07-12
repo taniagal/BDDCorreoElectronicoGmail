@@ -147,14 +147,14 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void irABuscarContacto() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
         campoTxtIrA.sendKeys("Search");
         campoTxtIrA.sendKeys(Keys.ENTER);
-        menuItemContactos.waitUntilPresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuItemContactos).shouldBePresent();
         menuItemContactos.click();
     }
     public void editarContacto(){
-        withTimeoutOf(11, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
         botonEditarContacto.waitUntilVisible();
         MatcherAssert.assertThat("El boton de editar no está presente en el DOM",botonEditarContacto.isPresent());
         botonEditarContacto.click();
