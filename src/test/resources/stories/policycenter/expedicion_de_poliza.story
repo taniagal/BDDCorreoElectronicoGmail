@@ -18,13 +18,14 @@ Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 
 Examples:
 |cotizacion|mensaje|
-!-- PEPS: Asegurado - Tomador - Tomador adicional
+!-- PEPS: Asegurado - Tomador - Tomador adicional - Interes adicional
 |22222238|FRANK RAMIREZ ALZATE con el(los) rol(es) (ASEGURADO NOMBRADO, TITULAR DE LA CUENTA) es un riesgo no estándar y debe ser autorizado.|
 |22222228|CAROLINA OCHOA con el(los) rol(es) (CONDUCTOR) es un riesgo no estándar y debe ser autorizado.
 |22222228|ANTONIO RESTREPO con el(los) rol(es) (ASEGURADO NOMBRADO) es un riesgo no estándar y debe ser autorizado.|
+!-- falta interes adicional
 !-- Riesgos Consultables: Tomador - Asegurado - Placa, motor, chasis
 |22222210|JOSE PAEZ ALZATE, El tomador es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
----|22222227|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|22222227|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 |22222226|El motor AFF56, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 |22222226|La placa BLE848, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 |22222226|El chasis CHAS1254, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
@@ -51,7 +52,7 @@ And confirmo el mensaje de expedir poliza
 Then debe enviar un mensaje a un buzon previamente configurado cuando existe un interes adicional riesgo consultable
 Examples:
 |cotizacion|
-|22222228|
+|22222227|
 
 Scenario: Validacion de cancelar expedicion de poliza
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
