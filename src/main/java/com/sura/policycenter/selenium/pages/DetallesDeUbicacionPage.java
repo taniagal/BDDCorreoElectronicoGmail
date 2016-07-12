@@ -112,7 +112,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
 
     public void irAUbicacion(){
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
     }
 
