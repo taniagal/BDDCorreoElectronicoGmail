@@ -57,7 +57,6 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
         filtroEstado.sendKeys(Key.ENTER);
-//        waitABit(2000);
     }
 
     public void seleccionarTransacciones(){
@@ -106,7 +105,6 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(filtroTipoTransaccion).waitUntilPresent();
         this.filtroTipoTransaccion.click();
         this.filtroTipoTransaccion.sendKeys(filtroTransaccion);
-//        waitABit(1000);
         this.filtroTipoTransaccion.sendKeys(Key.ENTER);
     }
 
@@ -125,7 +123,6 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(this.filtroProducto).waitUntilPresent();
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
-//        waitABit(1000);
         this.filtroProducto.sendKeys(Key.ENTER);
     }
 
