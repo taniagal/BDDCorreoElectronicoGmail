@@ -18,3 +18,16 @@ Examples:
 |numCuenta |nomProducto  |placa |
 |C000888888|Auto personal|OFI19C|
 
+Scenario: Validacion de campos de la informacion de vehiculos
+Given Estoy buscando una cuenta <numCuenta>
+When quiera ingresar la placa, motor el chasis <placa> <motor> <chasis>
+And quiera ingresar el descuento, recargo y suavizacion <descuento> <recargo> <suavizacion>
+Then el sistema debe validar
+And debe permitir seleccionar la tecla siguinete
+
+Examples:
+|numCuenta |placa |motor          |chasis         |descuento|recargo|suavizacion|
+|C000888888|OFI19C|C00008745678684|X48964788762144|99.99    |99.99  |99.99      |
+
+
+
