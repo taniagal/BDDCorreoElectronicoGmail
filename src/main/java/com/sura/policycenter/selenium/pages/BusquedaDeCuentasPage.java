@@ -103,7 +103,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
 
     public void irABuscarCuentas() {
-        menuBuscar.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent().click();
         waitUntil(1500);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuBuscarCuentas).waitUntilPresent();
         menuBuscarCuentas.click();
@@ -116,6 +116,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         txtSegundoNombre.sendKeys(segundoNombre);
         txtPrimerApellido.sendKeys(primerApellido);
         txtSegundoApellido.sendKeys(segundoApellido);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -132,6 +133,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
         txtNumeroDocumento.sendKeys(numeroDocumento);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 

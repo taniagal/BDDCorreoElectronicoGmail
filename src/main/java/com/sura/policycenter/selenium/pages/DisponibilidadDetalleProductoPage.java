@@ -67,7 +67,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
             listaOrganizacionDeVentas.sendKeys(Keys.ENTER);
             if (listaOrganizacionDeVentas.getValue().equals("<ninguno>")) {
                 intentos++;
-                waitUntil(1000);
+                waitUntil(2000);
             }else {
                 break;
             }
@@ -101,7 +101,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
             listaTipoCanalDeVenta.sendKeys(Keys.ENTER);
             if (listaTipoCanalDeVenta.getValue().equals("<ninguno>")) {
                 intentos++;
-                waitUntil(1000);
+                waitUntil(2000);
             }else {
                 break;
             }
@@ -123,7 +123,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
             listaPATipoPoliza.sendKeys(Keys.ENTER);
             if (listaPATipoPoliza.getValue().equals("<ninguno>")) {
                 intentos++;
-                waitUntil(1000);
+                waitUntil(2000);
             }else {
                 break;
             }
