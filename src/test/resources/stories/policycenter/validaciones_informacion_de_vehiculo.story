@@ -22,7 +22,7 @@ Scenario:  Validar riesgo consultable para motor, placa o chasis
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|
-|T64497|2017  |01601146        |ALTAMIRA          |Particular       |CHAS63215|AB3C2|
+|T64497|2016  |01601146        |ALTAMIRA          |Particular       |CHAS63215|AB3C2|
 
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                          |
@@ -36,7 +36,7 @@ Examples:
 
 
 
-Scenario:  Validar si el valor asegurado del vehículo supera el tope maximo del valor permitido
+Scenario:  Validar si el valor asegurado del vehiculo supera el tope maximo del valor permitido
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|
@@ -52,7 +52,7 @@ Examples:
 
 
 
-Scenario:  Validar si el valor asegurado del vehículo supera el tope minimo del valor permitido
+Scenario:  Validar si el valor asegurado del vehiculo supera el tope minimo del valor permitido
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|

@@ -2,16 +2,11 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaDeCuentasPage;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class BusquedaDeCuentasSteps extends ScenarioSteps{
 
-    BusquedaDeCuentasPage busquedaDeCuentasPage = new BusquedaDeCuentasPage(getDriver());
-
-    public BusquedaDeCuentasSteps(Pages pages){
-        super(pages);
-    }
+    BusquedaDeCuentasPage busquedaDeCuentasPage;
 
     @Step
     public void ingresarABuscarCuentas() {
@@ -58,26 +53,32 @@ public class BusquedaDeCuentasSteps extends ScenarioSteps{
         busquedaDeCuentasPage.validarEtiquetasDelFormulario();
     }
 
+    @Step
     public void buscarCuentaPorNombreComercial(String nombreComercial) {
         busquedaDeCuentasPage.buscarCuentaPorNombreComercial(nombreComercial);
     }
 
+    @Step
     public void seleccionarImprimir() {
         busquedaDeCuentasPage.seleccionarImprimir();
     }
 
+    @Step
     public void validarOpcionesDeImprimir(String imprimir, String exportar, String exportarPersonalizado) {
         busquedaDeCuentasPage.validarOpcionesDeImprimir(imprimir, exportar, exportarPersonalizado);
     }
 
+    @Step
     public void ingresarRazonSocialYPrimerNombre(String razonSocial, String primerNombre) {
         busquedaDeCuentasPage.ingresarRazonSocialYPrimerNombre(razonSocial, primerNombre);
     }
 
+    @Step
     public void ingresarNombreComercialYPrimerNombre(String nombreComercial, String primerNombre) {
         busquedaDeCuentasPage.ingresarNombreComercialYPrimerNombre(nombreComercial, primerNombre);
     }
 
+    @Step
     public void ingresarRazonSocialYNombreComercial(String nombreComercial, String razonSocial) {
         busquedaDeCuentasPage.ingresarRazonSocialYNombreComercial(nombreComercial, razonSocial);
     }
