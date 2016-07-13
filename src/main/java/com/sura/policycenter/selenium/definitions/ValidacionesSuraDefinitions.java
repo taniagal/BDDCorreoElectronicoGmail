@@ -52,12 +52,10 @@ public class ValidacionesSuraDefinitions {
     @Then("no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>")
     public void verificarMensaje(@Named("mensaje") String mensaje){
         cuentaNuevaSteps.verificar_mensaje(mensaje);
-        seusLoginSteps.close();
     }
 
     @Then("no debe permitir crear una nueva cuenta y no debe mostrar el mensaje <mensaje>")
     public void verificarEstadoDeMensaje(@Named("mensaje") String mensaje){
         cuentaNuevaSteps.verificar_estado_de_mensaje(mensaje);
-        seusLoginSteps.close();
     }
 }

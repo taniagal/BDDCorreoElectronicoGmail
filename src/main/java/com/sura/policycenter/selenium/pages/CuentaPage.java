@@ -1,20 +1,14 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-
 public class CuentaPage extends Guidewire{
-
-    Actions actions = null;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade menuCuenta;
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
@@ -153,12 +147,11 @@ public class CuentaPage extends Guidewire{
 
     public void verificarCuentaNumero(String nombreCuenta) {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
-        assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
+        MatcherAssert.assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
     }
 
     public  void verificarEstadoDeMensaje(String mensaje){
-        waitABit(2000);
-        divMensaje.waitUntilPresent();
-        assertThat("El mensaje erroneo sigue apareciendo", !divMensaje.containsText(mensaje));
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        MatcherAssert.assertThat("El mensaje erroneo sigue apareciendo", !divMensaje.containsText(mensaje));
     }
 }
