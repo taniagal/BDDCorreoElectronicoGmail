@@ -15,9 +15,6 @@ public class DetallesContactoEdicionDefinitions {
     WebDriver driver;
     @Steps
     private DetallesContactoSteps detallesContactoSteps;
-    @Steps
-    private SeusLoginSteps seusLoginSteps;
-
 
     /**
      * ESCENARIO 1

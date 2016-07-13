@@ -133,8 +133,6 @@ public class  DetallesContactoPage extends Guidewire {
     private WebElementFacade campoTxtIrA;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ContactSearch']/div")
     private WebElementFacade menuItemContactos;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade comboBoxDepartamento2;
 
 
     private  String [] dtlContact = new String[15];

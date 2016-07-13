@@ -2,7 +2,7 @@ Meta:
 @issue #SUGWUSC-15127
 
 Narrative:
-Como usuario
+Como usuario de policy center
 Al cotizar una poliza de PA quiero ser capaz de registrar toda la información del vehiculo.
 
 
