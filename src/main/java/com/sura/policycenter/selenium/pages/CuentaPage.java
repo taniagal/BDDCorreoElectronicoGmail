@@ -94,16 +94,15 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitUntil(3000);
+        waitUntil(3500);
         selectItem(comboBoxCiudad,ciudad);
-        waitUntil(2000);
+        waitUntil(3000);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
         waitUntil(1000);
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
-        espera(botonAgregarOrganizacion,5);
-        botonAgregarOrganizacion.click();
+        waitFor(botonAgregarOrganizacion).click();
         waitUntil(500);
         campoTxtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         botonBuscarOrganizacion.click();

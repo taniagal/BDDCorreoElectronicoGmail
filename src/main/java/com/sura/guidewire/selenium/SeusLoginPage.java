@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 //@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
-//@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
-@DefaultUrl("https://qacoreseguros.suramericana.com/pc/PolicyCenter.do")
+@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
+//@DefaultUrl("https://qacoreseguros.suramericana.com/pc/PolicyCenter.do")
 public class SeusLoginPage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='country']")
