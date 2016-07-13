@@ -2,16 +2,15 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.guidewire.selenium.Guidewire;
+
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-
-import javax.swing.*;
 
 
 public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
@@ -64,12 +63,12 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitABit(2000);
+        waitForAllTextToAppear(vehiculo.get("modelo"));
         campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
         campoTxtPlaca.click();
-        waitABit(3000);
+        waitUntil(3500);
         selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
-        waitABit(2000);
+        waitUntil(2500);
         selectItem(comboBoxVehiculoServicio,vehiculo.get("vehiculo_servicio"));
         if(!"null".equals(vehiculo.get("motor"))){
         campoTxtMotor.sendKeys(vehiculo.get("motor"));
@@ -78,9 +77,9 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     }
 
     public void agregarCodigoFasecolda(String codigo) {
-        campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
-        campoTxtPlaca.click();
-        waitABit(1000);
+       campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
+       campoTxtPlaca.click();
+       waitUntil(1000);
     }
 
     public void verificarMensajes(ExamplesTable mensajes){

@@ -3,9 +3,9 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CoberturaGlobalSteps;
-import net.thucydides.core.annotations.Step;
+
 import net.thucydides.core.annotations.Steps;
-import org.bytedeco.javacpp.annotation.Name;
+
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
