@@ -154,9 +154,10 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAgregar).waitUntilPresent().click();
         itemDirectorio.click();
         waitInfoPoliza(lblBuscarDirectorio);
-        itemTipoDocumento.sendKeys("CEDULA DE CIU");
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        actions.sendKeys(Keys.ENTER).build().perform();
+        itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
+        itemTipoDocumento.sendKeys(Keys.ENTER);
+//        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+//        actions.sendKeys(Keys.ENTER).build().perform();
         waitInfoPoliza(lblPrimerNombre);
         txtNumDocumento.sendKeys(cedula);
         btnBuscar.click();

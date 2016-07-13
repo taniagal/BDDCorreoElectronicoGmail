@@ -128,6 +128,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
     public void validarTransaccionesPorProducto(String filtroProducto) {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(table).waitUntilPresent();
+        waitUntil(2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {
