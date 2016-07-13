@@ -27,7 +27,8 @@ Given que he ingresado a PolicyCenter como usuario <rolUsuario>
 Given existe una cuenta <numCuenta>
 And existe contactos asociados a la cuenta
 When busque la cuenta
-When filtre los contactos asociados a una cuenta por el rol <rol> en el combo con valor <combo>
+And desee visualizar los contactos asociados a la cuenta
+And filtre los contactos asociados a una cuenta por el rol <rol> en el combo con valor <combo>
 Then debo ver contactos asociados a esta cuenta que cumplan con el filtro <rol>
 
 Examples:

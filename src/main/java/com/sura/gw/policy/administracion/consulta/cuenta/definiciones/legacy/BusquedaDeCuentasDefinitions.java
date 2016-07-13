@@ -1,8 +1,8 @@
-package com.sura.gw.policy.runners.administracion.consulta.cuenta.definiciones.legacy;
+package com.sura.gw.policy.administracion.consulta.cuenta.definiciones.legacy;
 
 
 import com.google.inject.name.Named;
-import com.sura.gw.policy.runners.administracion.consulta.cuenta.steps.legacy.BusquedaDeCuentasSteps;
+import com.sura.gw.policy.administracion.consulta.cuenta.steps.legacy.BusquedaDeCuentasSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;

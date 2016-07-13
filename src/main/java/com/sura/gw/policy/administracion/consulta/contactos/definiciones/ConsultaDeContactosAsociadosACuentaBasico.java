@@ -1,7 +1,7 @@
-package com.sura.gw.policy.runners.administracion.consulta.contactos.definiciones;
+package com.sura.gw.policy.administracion.consulta.contactos.definiciones;
 
 import com.sura.gw.navegacion.steps.GuidewireLoginSteps;
-import com.sura.gw.policy.runners.administracion.consulta.cuenta.steps.CuentaSteps;
+import com.sura.gw.policy.administracion.consulta.cuenta.steps.CuentaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
@@ -50,7 +50,6 @@ public class ConsultaDeContactosAsociadosACuentaBasico {
 
     }
 
-
     @When("desee visualizar los contactos asociados a la cuenta")
     public void deseeVisualizarLosContactosAsociadosALaCuenta() {
         cuenta.verContactosAsociados();
@@ -59,30 +58,25 @@ public class ConsultaDeContactosAsociadosACuentaBasico {
 
     @Then("debo ver contactos asociados a esta cuenta")
     public void deboVerContactosAsociadosAEstaCuenta() {
-        assertThat(cuenta.contactosAsociados().existeContactosAsociadosALaCuenta(numCuenta), is(equalTo(Boolean.TRUE)));
+        assertThat(cuenta.contactosAsociados().existenContactosAsociados(), is(equalTo(Boolean.TRUE)));
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuenta");
     }
 
+
     @Given("que he ingresado a PolicyCenter como usuario $rolUsuario")
     public void accesoAPolicyCenter(@Named("rolUsuario") String rolUsuario) {
-        SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
-
-        login.abrir_navegador(driver);
-        login.loguearse_a_policycenter_con_rol(rolUsuario);
-
+        cuenta.login(driver, rolUsuario);
         LOGGER.info("IngresoAPolicyCenterDefinitions.accesoAPolicyCenter");
 
     }
 
     /**
-     * POST SCENARY
+     * AFTER SCENARY
      */
     @AfterScenario
 
     public void finalizarEscenario(){
-        SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
-        //Serenity.done();
-        //SerenityWebdriverManager.inThisTestThread().closeAllDrivers();
+        SerenityWebdriverManager.inThisTestThread().closeCurrentDriver();
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.finalizarEscenario");
     }
 }

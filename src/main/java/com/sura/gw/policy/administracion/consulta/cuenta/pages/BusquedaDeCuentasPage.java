@@ -1,4 +1,4 @@
-package com.sura.gw.policy.runners.administracion.consulta.cuenta.pages;
+package com.sura.gw.policy.administracion.consulta.cuenta.pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;

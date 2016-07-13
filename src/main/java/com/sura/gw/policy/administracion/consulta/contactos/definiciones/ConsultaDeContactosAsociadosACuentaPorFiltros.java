@@ -1,13 +1,11 @@
-package com.sura.gw.policy.runners.administracion.consulta.contactos.definiciones;
+package com.sura.gw.policy.administracion.consulta.contactos.definiciones;
 
 import com.sura.gw.navegacion.steps.GuidewireLoginSteps;
-import com.sura.gw.policy.runners.administracion.consulta.cuenta.steps.CuentaSteps;
-import net.serenitybdd.core.Serenity;
+import com.sura.gw.policy.administracion.consulta.cuenta.steps.CuentaSteps;
 import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.StepInterceptor;
+import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.jbehave.core.annotations.*;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
@@ -25,15 +23,12 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
 
     @Steps
     GuidewireLoginSteps login;
+
     @Steps
     CuentaSteps cuenta;
 
     @Managed
     public WebDriver driver;
-
-
-    @ManagedPages
-    public Pages pages;
 
     private String numCuenta;
     private Boolean existeContactosAsociados;
@@ -57,29 +52,27 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
     @When("filtre los contactos asociados a una cuenta por el rol $filtro en el combo con valor $combo")
     @Alias("filtre los contactos asociados a una cuenta por el tipo de persona $filtro en el combo con valor $combo")
     public void filtreLosContactosAsociadosAEstaCuenta(@Named("filtro") String filtro, @Named("combo") String combo) {
-
+        cuenta.contactosAsociados().filtrarContactosAsociados(filtro,combo);
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.filtreLosContactosAsociadosAEstaCuenta");
 
     }
 
     @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro $filtro")
     public void deboVerContactosAsociadosAEstaCuentaConFiltros(@Named("filtro") String filtro) {
-        assertThat(cuenta.contactosAsociados().existeContactosAsociadosALaCuenta(numCuenta), is(equalTo(Boolean.TRUE)));
+        assertThat(cuenta.contactosAsociados().existenContactosAsociados(), is(equalTo(Boolean.TRUE)));
+        assertThat(cuenta.contactosAsociados().existenContactosAsociados(), is(equalTo(Boolean.TRUE)));
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltros");
     }
 
     @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro <tipoPersona> y <rol>")
     public void deboVerContactosAsociadosAEstaCuentaConFiltros(@Named("tipoPersona") String filtroTipoPersona, @Named("rol") String filtroRol) {
-        assertThat(cuenta.contactosAsociados().existeContactosAsociadosALaCuenta(numCuenta), is(equalTo(Boolean.TRUE)));
+        assertThat(cuenta.contactosAsociados().existenContactosAsociados(), is(equalTo(Boolean.TRUE)));
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltros");
     }
 
     @When("ingrese a PolicyCenter y me loguee con un usuario de rol $rolUsuario")
     public void accesoAPolicyCenter(@Named("rolUsuario") String rolUsuario) {
-        login.abrir_navegador(driver);
-        login.loguearse_a_policycenter_con_rol(rolUsuario);
-        LOGGER.info("IngresoAPolicyCenterDefinitions.accesoAPolicyCenter");
-
+        cuenta.login(driver, rolUsuario);
     }
 
 /*
@@ -105,7 +98,7 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
      */
     @AfterScenario
     public void finalizarEscenario(){
-        Serenity.done();
+        SerenityWebdriverManager.inThisTestThread().closeCurrentDriver();
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.finalizarEscenario");
     }
 

@@ -1,4 +1,4 @@
-package com.sura.gw.policy.runners.administracion.consulta.cuenta.pages.legacy;
+package com.sura.gw.policy.administracion.consulta.cuenta.pages.legacy;
 
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.FindBy;

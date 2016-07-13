@@ -1,7 +1,7 @@
 package com.sura.gw.navegacion.util.widget;
 
 
-import com.sura.gw.policy.runners.administracion.consulta.cuenta.pages.BusquedaDeCuentasPage;
+import com.sura.gw.policy.administracion.consulta.cuenta.pages.BusquedaDeCuentasPage;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.steps.StepInterceptor;

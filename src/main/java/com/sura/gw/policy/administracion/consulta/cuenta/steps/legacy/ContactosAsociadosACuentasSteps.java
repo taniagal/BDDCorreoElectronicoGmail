@@ -1,7 +1,7 @@
-package com.sura.gw.policy.runners.administracion.consulta.cuenta.steps.legacy;
+package com.sura.gw.policy.administracion.consulta.cuenta.steps.legacy;
 
 import com.sura.guidewire.acciones.navegacion.AccionBuscarNavBar;
-import com.sura.gw.policy.runners.administracion.consulta.cuenta.pages.ContactosCuentaWidgetPage;
+import com.sura.gw.policy.administracion.consulta.contactos.pages.ContactosAsociadosACuentaWidgetPage;
 import com.sura.policycenter.selenium.pages.ContactosAsociadosACuentasPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.superior.cuenta.panel.contactos.BusquedaContactoDelDirectorioPage;
@@ -21,7 +21,7 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     private final BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage = new BusquedaContactoDelDirectorioPage(getDriver());
 
     private AccionBuscarNavBar navegacionSuperior;
-    private ContactosCuentaWidgetPage contactosDeCuenta;
+    private ContactosAsociadosACuentaWidgetPage contactosDeCuenta;
 
     public ContactosAsociadosACuentasSteps(Pages pages) {
         super(pages);

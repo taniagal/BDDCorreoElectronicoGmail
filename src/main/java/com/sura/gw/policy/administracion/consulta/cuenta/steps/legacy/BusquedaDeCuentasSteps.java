@@ -1,7 +1,7 @@
-package com.sura.gw.policy.runners.administracion.consulta.cuenta.steps.legacy;
+package com.sura.gw.policy.administracion.consulta.cuenta.steps.legacy;
 
 
-import com.sura.gw.policy.runners.administracion.consulta.cuenta.pages.legacy.BusquedaDeCuentasPage;
+import com.sura.gw.policy.administracion.consulta.cuenta.pages.legacy.BusquedaDeCuentasPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
