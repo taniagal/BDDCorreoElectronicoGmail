@@ -103,7 +103,8 @@ public class BusquedaDePolizaPage extends PageObject {
     }
 
     public void limpiarCampos() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent().click();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent();
+        botonRestablecer.click();
         guidewire.waitUntil(3000);
     }
 
@@ -135,6 +136,7 @@ public class BusquedaDePolizaPage extends PageObject {
         this.limpiarCampos();
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAgente).waitUntilPresent();
         txtAgente.sendKeys(agente);
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -142,6 +144,7 @@ public class BusquedaDePolizaPage extends PageObject {
         this.limpiarCampos();
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtCodigoAgente).waitUntilPresent();
         txtCodigoAgente.sendKeys(codigoAgente);
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -162,6 +165,7 @@ public class BusquedaDePolizaPage extends PageObject {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         txtAgente.sendKeys(agente);
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -182,6 +186,7 @@ public class BusquedaDePolizaPage extends PageObject {
         txtProducto.sendKeys(producto);
         txtProducto.sendKeys(Keys.ENTER);
         txtCodigoAgente.sendKeys(codigoAgente);
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 }

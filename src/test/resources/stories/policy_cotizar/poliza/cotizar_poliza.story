@@ -72,6 +72,7 @@ Then al seleccionar el botón Cancelar deberá ver la página Nueva cotización
 Scenario:  Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial con una
 cotizacion ya existente para un agente diferente
 
+Meta: @manual
 Given deseo crear nueva cotizacion buscando por numero de cuenta
 When digite el numero de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la busqueda
 And he seleccionado en el nombre del agente DELIMA MEDELLIN
