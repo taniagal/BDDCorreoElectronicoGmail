@@ -121,7 +121,7 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void verDetalleCotizacion() {
-        waitForTextToAppear("Calificación",5000);
+        waitForTextToAppear("Calificación",10000);
         if(tituloDePagina.isPresent()){
             waitForTextToAppear(tituloDePagina.getText(),2000);
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
