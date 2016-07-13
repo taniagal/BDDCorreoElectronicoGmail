@@ -187,7 +187,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        waitUntil(5000);
+        waitUntil(10000);
         WebElementFacade resultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
