@@ -24,10 +24,6 @@ public class PolizasDePrimeraPerdidaPage extends Guidewire{
     private WebElementFacade campoTxtValorReconstruccion;
     @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
     private WebElementFacade campoTxtValorasegurado;
-    @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:1:CovTermInputSet:PackageTermInput-inputEl']")
-    private WebElementFacade comboBoxDeducible;
-    @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:2:CovTermInputSet:BooleanTermInput_true-inputEl']")
-    private WebElementFacade radioBotonAsegurado;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
     @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:10:CovTermInputSet:TypekeyTermInput-inputEl']")

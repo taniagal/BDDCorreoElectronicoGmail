@@ -9,10 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class CuentaPage extends Guidewire{
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
-    private WebElementFacade menuCuenta;
-    @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
-    private WebElementFacade menuNuevaCuenta;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade campoTxtNombreCompania;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -45,8 +41,6 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade botonSeleccionarOrganizacion;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:ForceDupCheckUpdate-btnInnerEl']")
     private WebElementFacade botonActualizar;
-    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    private WebElementFacade labelNombreDeCuenta;
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileInfoBar:AccountName-btnInnerEl']")
     private WebElementFacade labelCuentaNumero;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:DocumentType-inputEl']")
