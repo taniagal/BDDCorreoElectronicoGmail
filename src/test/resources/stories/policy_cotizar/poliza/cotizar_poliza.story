@@ -67,7 +67,7 @@ Then se mostraran en orden alfabetico los:
 |Multiriesgo corporativo|
 Then seleccionar nombre de producto Multiriesgo corporativo
 Then debera observar un mensaje emergente de informacion: Ya existe la cotización # 22223226 y se encuentra en proceso
-para este cliente y producto. ¿Desea solicitar aprobación?
+para este cliente y producto. ¿Desea continuar esta nueva cotización?
 Then debera observar los botones: Aceptar,Cancelar
 Then al seleccionar el botón Cancelar deberá ver la página Nueva cotización
 
