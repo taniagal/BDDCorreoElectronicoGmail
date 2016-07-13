@@ -49,12 +49,11 @@ And vaya a la opcion agregar
 And agregue un asegurado que es contacto de la cuenta
 Then deben quedar agregados como asegurados:
 |nombre|tipoDocumento|numeroDocumento|
-|DONIA GLORIA GALLEGO|CEDULA DE CIUDADANIA|1264567899|
+|GLORIA GALLEGO|CEDULA DE CIUDADANIA|1264567899|
 
 Examples:
 |cuenta|
 |C000888888|
-
 
 Scenario: Agregar varios asegurados (validar asegurado del directorio riesgo consultable)
 Given voy a crear una nueva cotizacion
@@ -70,12 +69,12 @@ And vaya al siguiente paso de la cotizacion
 Then muestre el mensaje de validacion del asegurado <mensaje>
 And deben quedar agregados como asegurados:
 |nombre|tipoDocumento|numeroDocumento|
-|DIEGO VELEZ|CEDULA DE CIUDADANIA|16796652|
-|DONIA GLORIA GALLEGO|CEDULA DE CIUDADANIA|1264567899|
+|DIEGO VELEZ|CEDULA DE CIUDADANIA|32536001|
+|GLORIA GALLEGO|CEDULA DE CIUDADANIA|1264567899|
 
 Examples:
 |cuenta|tipoId|numeroId|mensaje|
-|C000888888|CEDULA DE CIUDADANIA|16796652|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|C000888888|CEDULA DE CIUDADANIA|32536001|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 
 Scenario: Agregar asegurado y Editar campos en creacion tipo persona natural
 Given voy a crear una nueva cotizacion
@@ -154,4 +153,3 @@ Then la lista de asegurados debe quedar vacia
 Examples:
 |cuenta|tipoId|numeroId|
 |C000888888|NIT|9202086744|
-

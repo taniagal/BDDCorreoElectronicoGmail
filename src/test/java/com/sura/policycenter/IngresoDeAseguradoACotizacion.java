@@ -1,4 +1,6 @@
 package com.sura.policycenter;
 
-public class IngresoDeAseguradoACotizacion{
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class IngresoDeAseguradoACotizacion extends SerenityStory {
 }

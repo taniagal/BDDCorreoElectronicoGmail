@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 
 
 import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
-import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -402,10 +401,11 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarContactoPorTipoDocumentoCotizacion(String tipoId, String numeroId) {
-        waitFor(txtTipoDocDirectorioCotizacion).clear();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(txtTipoDocDirectorioCotizacion).waitUntilPresent();
+        txtTipoDocDirectorioCotizacion.clear();
         txtTipoDocDirectorioCotizacion.sendKeys(tipoId);
         txtTipoDocDirectorioCotizacion.sendKeys(Keys.ENTER);
-        waitABit(1000);
+        waitUntil(2000);
         txtNumDocDirectorioCotizacion.sendKeys(numeroId);
         btnBuscarDirectorioCotizacion.click();
         waitForWithRefresh();
