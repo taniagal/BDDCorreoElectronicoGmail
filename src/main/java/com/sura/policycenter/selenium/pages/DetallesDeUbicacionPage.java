@@ -92,8 +92,10 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public void irANuevaCotizacion(){
+        setImplicitTimeout(2,TimeUnit.SECONDS);
         if(!botonAcciones.isPresent())
             menuItemEscritorio.click();
+        resetImplicitTimeout();
         waitFor(botonAcciones).click();
         subMenuNuevaCotizacion.waitUntilPresent().click();
     }
