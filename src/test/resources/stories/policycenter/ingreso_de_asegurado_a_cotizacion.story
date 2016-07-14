@@ -1,13 +1,14 @@
-Ingreso de asegurado a cotizacion
+Ingreso De Asegurado A Cotizacion
 
 Meta:
+
+@Issue #CDSEG-1027
 
 Narrative:
 Como usuario de PolicyCenter
 Quiero poder ingresar la información de uno o varios asegurados
 Para agregarlos a la cotizacion
 
-@Issue 15114 Driver Details
 
 Scenario: Validar asegurado que es persona publicamente expuesta
 GivenStories: stories/policycenter/login_policy.story

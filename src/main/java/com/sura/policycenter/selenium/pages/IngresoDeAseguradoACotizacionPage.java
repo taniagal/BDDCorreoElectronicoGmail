@@ -22,6 +22,7 @@ import org.openqa.selenium.interactions.Actions;
 public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
     Guidewire guidewire = new Guidewire(getDriver());
+    Actions acciones = new Actions(getDriver());
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']/div")
     WebElementFacade botonAsegurados;
@@ -97,8 +98,8 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
 
     public void seleccionarAgente(String nombreAgente) {
-        element(campoNombreAgente).waitUntilClickable();
-        element(campoNombreAgente).click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoNombreAgente).waitUntilPresent();
+        campoNombreAgente.click();
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
         if (!listaNombresAgentesElement.isEmpty()) {
             for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
@@ -113,15 +114,17 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     public void irAIngresarAsegurado() {
         guidewire.waitUntil(2000);
         seleccionarAgente("DIRECTO");
-        guidewire.waitUntil(3000);
+        waitForTextToAppear("Productos ofrecidos", 20000);
+//        guidewire.waitUntil(3000);
         String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto().toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = findBy(xpathBotonElegirProducto);
         botonElegirProducto.click();
-        waitFor(botonAsegurados);
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAsegurados).waitUntilPresent();
         botonAsegurados.click();
     }
 
     public void agregarAsegurado() {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonAgregar).waitUntilPresent();
         botonAgregar.click();
     }
 
@@ -134,7 +137,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        elementosAgregar = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@class='x-box-inner x-vertical-box-overflow-body']/div/div/a/span");
+        elementosAgregar = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@class='x-box-inner x-vertical-box-overflow-body']/div/div/a/span");
         for (int i = 1; i < elementosRequeridos.size(); i++) {
             for (WebElementFacade opciones : elementosAgregar) {
                 if(elementosRequeridos.get(i).equals(opciones.getText()) && elementosAgregar.size()==(elementosRequeridos.size()-1)){
@@ -147,7 +150,6 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void agregarAseguradoContactoDeLaCuenta() {
-        Actions acciones = new Actions(getDriver());
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionContactoDeCuenta).waitUntilPresent();
         acciones.moveToElement(opcionContactoDeCuenta).release(opcionContactoDeCuenta).build().perform();
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(contactoDeCuenta).waitUntilPresent();
@@ -156,7 +158,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void agregarAseguradoContactoDelDirectorio() {
-        withTimeoutOf(5, TimeUnit.SECONDS).waitFor(opcionContactoDelDirectorio).waitUntilPresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionContactoDelDirectorio).waitUntilPresent();
         opcionContactoDelDirectorio.click();
     }
 
@@ -167,14 +169,16 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
     public void seleccionarNuevaPersonaNatural() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevo).waitUntilPresent();
-        opcionNuevo.click();
+        acciones.moveToElement(opcionNuevo).release(opcionNuevo).build().perform();
+//        acciones.moveToElement(contactoDeCuenta).release().click().build().perform();
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevoPersonaNatural).waitUntilPresent();
         opcionNuevoPersonaNatural.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible().click();
     }
 
     public void seleccionarNuevaPersonaJuridica() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevo).waitUntilPresent();
-        opcionNuevo.click();
+        acciones.moveToElement(opcionNuevo).release(opcionNuevo).build().perform();
+//        opcionNuevo.click();
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevoPersonaJuridica).waitUntilPresent();
         opcionNuevoPersonaJuridica.click();
     }
@@ -185,6 +189,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
     public void validarAseguradosAgregados(ExamplesTable asegurados) {
         Map<String, String> aseguradosAgregados;
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaAsegurados).waitUntilPresent();
         guidewire.waitUntil(2000);
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         for (int i=0; i<allRows.size(); i++){
@@ -226,6 +231,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
     public void validarAseguradoEliminado() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaAsegurados).waitUntilPresent();
+        guidewire.waitUntil(2000);
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         if(allRows.isEmpty()){
             MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados vacía")));
@@ -255,8 +261,9 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void ingresarCuenta(String cuenta) {
-        campoNumeroCuenta.waitUntilVisible();
-        campoNumeroCuenta.waitUntilEnabled();
+//        campoNumeroCuenta.waitUntilVisible();
+//        campoNumeroCuenta.waitUntilEnabled();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(campoNumeroCuenta).waitUntilPresent();
         campoNumeroCuenta.sendKeys(cuenta);
         campoNumeroCuenta.sendKeys(Keys.TAB);
     }
