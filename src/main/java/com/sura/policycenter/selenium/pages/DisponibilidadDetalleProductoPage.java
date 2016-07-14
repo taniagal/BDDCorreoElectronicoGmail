@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
 import com.sura.guidewire.selenium.Guidewire;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -23,19 +24,19 @@ import org.openqa.selenium.support.ui.Wait;
 
 public class DisponibilidadDetalleProductoPage extends Guidewire {
 
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
     private WebElementFacade listaTipoCanalDeVenta;
-    @FindBy(xpath=".//*[@id='AccountFile:AccountFileMenuActions']")
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions']")
     private WebElementFacade btnAccionesCuenta;
-    @FindBy(xpath=".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission']")
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission']")
     private WebElementFacade opcionNuevoEnvio;
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:7:addSubmission']")
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:7:addSubmission']")
     private WebElementFacade btnElegirAutoPersonal;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div")
     private WebElementFacade opcionVerInformacionPoliza;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
     private WebElementFacade listaOrganizacionDeVentas;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
     private WebElementFacade listaPATipoPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']")
     WebElementFacade tablaProductos;
@@ -49,9 +50,9 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
     }
 
     public void accionarNuevoEnvio() {
-        btnAccionesCuenta.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().click();
-        opcionNuevoEnvio.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent().click();
-        this.irAVerInformacionDePoliza();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnAccionesCuenta).waitUntilPresent().click();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(opcionNuevoEnvio).waitUntilPresent().click();
+//        this.seleccionarAgente();
     }
 
     public void verInformacionDePoliza() {
@@ -60,7 +61,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
 
     public void seleccionarOrganizacionDeVentas(String organizacion) {
         int intentos = 0;
-        while(intentos < 2) {
+        while (intentos < 2) {
             withTimeoutOf(15, TimeUnit.SECONDS).waitFor(listaOrganizacionDeVentas).waitUntilPresent();
             listaOrganizacionDeVentas.clear();
             listaOrganizacionDeVentas.sendKeys(organizacion);
@@ -68,7 +69,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
             if (listaOrganizacionDeVentas.getValue().equals("<ninguno>")) {
                 intentos++;
                 waitUntil(2000);
-            }else {
+            } else {
                 break;
             }
         }
@@ -80,12 +81,12 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
         this.validarDatosDeLaLista(tipoCanal);
     }
 
-    private  void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
+    private void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {
-            elementosTipoCanalVentas = withTimeoutOf(10, TimeUnit.SECONDS).findAll("//li[contains(.,'"+tipo+"')]");
-            for (WebElementFacade lista : elementosTipoCanalVentas){
+            elementosTipoCanalVentas = withTimeoutOf(10, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
+            for (WebElementFacade lista : elementosTipoCanalVentas) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }
         }
@@ -94,7 +95,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
 
     public void seleccionarTipoCanalDeVentas(String tipoCanal) {
         int intentos = 0;
-        while(intentos < 2) {
+        while (intentos < 2) {
             withTimeoutOf(15, TimeUnit.SECONDS).waitFor(listaTipoCanalDeVenta).waitUntilPresent();
             listaTipoCanalDeVenta.clear();
             listaTipoCanalDeVenta.sendKeys(tipoCanal);
@@ -102,7 +103,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
             if (listaTipoCanalDeVenta.getValue().equals("<ninguno>")) {
                 intentos++;
                 waitUntil(2000);
-            }else {
+            } else {
                 break;
             }
         }
@@ -116,7 +117,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
 
     public void seleccionarPATipoPoliza(String tipoPoliza) {
         int intentos = 0;
-        while(intentos < 2) {
+        while (intentos < 2) {
             withTimeoutOf(15, TimeUnit.SECONDS).waitFor(listaPATipoPoliza).waitUntilPresent();
             listaPATipoPoliza.clear();
             listaPATipoPoliza.sendKeys(tipoPoliza);
@@ -124,7 +125,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
             if (listaPATipoPoliza.getValue().equals("<ninguno>")) {
                 intentos++;
                 waitUntil(2000);
-            }else {
+            } else {
                 break;
             }
         }
@@ -140,22 +141,25 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
         MatcherAssert.assertThat(listaPATipoPoliza.getText(), containsText(""));
     }
 
-    public void irAVerInformacionDePoliza() {
-        this.seleccionarAgente("DIRECTO");
+    public void seleccionarAgente(String agente) {
+        this.seleccionarAgentePorNombre(agente);
         waitForTextToAppear("Productos ofrecidos", 30000);
-        String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto().toString() + ":addSubmission']";
+    }
+
+    public void seleccionarProducto(String producto) {
+        String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto(producto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.click();
     }
 
-    public void seleccionarAgente(String nombreAgente) {
+    public void seleccionarAgentePorNombre(String nombreAgente) {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoNombreAgente).waitUntilPresent();
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoNombreAgente).waitUntilClickable();
         campoNombreAgente.click();
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
         if (!listaNombresAgentesElement.isEmpty()) {
             for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
-                if (agenteElemento.containsText(nombreAgente)){
+                if (agenteElemento.containsText(nombreAgente)) {
                     agenteElemento.click();
                     break;
                 }
@@ -163,13 +167,13 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
         }
     }
 
-    public Integer encontrarProducto(){
+    public Integer encontrarProducto(String producto) {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if ("Autos".equals(columna.get(1).getText())){
+            if (producto.equals(columna.get(1).getText())) {
                 return filaBoton;
             }
             filaBoton++;
@@ -189,7 +193,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
             }
         });
 
-        return  elemento;
+        return elemento;
     }
 
     public void waitUntil(int millis) {
@@ -204,6 +208,7 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
                     return false;
                 }
             });
-        } catch (TimeoutException e) {}
+        } catch (TimeoutException e) {
+        }
     }
 }

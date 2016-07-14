@@ -12,7 +12,8 @@ para que se muestren las coberturas, terminos y opciones segun la disponibilidad
 Scenario: Filtrar canal por organizacion
 GivenStories: stories/policycenter/login_policy.story
 Given Estoy buscando una cuenta <numCuenta>
-And Estoy expidiendo una poliza de autos
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
 And viendo Informacion de poliza
 When seleccione Organizacion de ventas: <organizacion>
 Then tipo de canal ventas debe contener los valores
@@ -21,8 +22,8 @@ Then tipo de canal ventas debe contener los valores
 |Sufi|
 
 Examples:
-|numCuenta|organizacion|
-|C000888888|Bancolombia|
+|numCuenta|agente|organizacion|
+|C000888888|DIRECTO|Bancolombia|
 
 Scenario: Filtrar Tipo de Producto por canal
 Given Estoy buscando una cuenta <numCuenta>
