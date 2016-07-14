@@ -30,7 +30,7 @@ public class PolizasDePrimeraPerdidaPage extends Guidewire{
     private WebElementFacade radioBotonAsegurado;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
-    @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:10:CovTermInputSet:TypekeyTermInput-inputEl']")
+    @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:12:CovTermInputSet:TypekeyTermInput-inputEl']")
     private WebElementFacade comboBoxTipoPrimeraPerdida;
 
     public PolizasDePrimeraPerdidaPage(WebDriver driver){
@@ -53,6 +53,7 @@ public class PolizasDePrimeraPerdidaPage extends Guidewire{
     }
 
     public void seleccionartipoPrimeraPerdida(String tipoPrimeraPerdida){
+        waitUntil(200);
         selectItem(comboBoxTipoPrimeraPerdida,tipoPrimeraPerdida);
         botonActualizar.click();
     }

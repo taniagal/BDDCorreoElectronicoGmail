@@ -209,9 +209,11 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void setTelefonoTrabajo(String telefonoTrabajo){
-        campoTxtTelefonoTrabajo.clear();
-        waitUntil(300);
-        campoTxtTelefonoTrabajo.sendKeys(telefonoTrabajo);
+        do {
+            campoTxtTelefonoTrabajo.clear();
+            waitFor(campoTxtTelefonoTrabajo).shouldContainText("");
+            campoTxtTelefonoTrabajo.sendKeys(telefonoTrabajo);
+        }while (!campoTxtTelefonoTrabajo.getValue().equals(telefonoTrabajo));
         dtlContact[12]= telefonoTrabajo;
     }
 

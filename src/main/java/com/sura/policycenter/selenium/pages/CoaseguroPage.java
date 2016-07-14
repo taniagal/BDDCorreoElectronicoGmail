@@ -44,6 +44,7 @@ public class CoaseguroPage extends Guidewire {
         linkAgregarCoaseguro.click();
         radioBotonAceptado.waitUntilPresent().click();
         campoTxtDastosAdministrativos.waitUntilPresent();
+        radioBotonLider.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(radioBotonAceptado.isSelected())
             right.append("radio_boton_cedido, ");
@@ -51,8 +52,6 @@ public class CoaseguroPage extends Guidewire {
             right.append("boton_agregar, ");
         if(!campoTxtDastosAdministrativos.containsText("2%") || campoTxtDastosAdministrativos.getAttribute("class").contains("x-form-text"))
             right.append("Gastos_Administrativos, ");
-        if(!radioBotonLider.getAttribute("class").contains("radio"))
-            right.append("radio_boton_lider ");
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
