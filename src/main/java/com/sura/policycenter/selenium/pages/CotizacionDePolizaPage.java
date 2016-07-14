@@ -122,6 +122,7 @@ public class CotizacionDePolizaPage extends PageObject{
 
     public void verDetalleCotizacion() {
         waitForTextToAppear("Calificación",5000);
+        setImplicitTimeout(2, TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
             waitForTextToAppear(tituloDePagina.getText(),2000);
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
@@ -129,6 +130,7 @@ public class CotizacionDePolizaPage extends PageObject{
             waitForTextToAppear(tituloCalificacion.getText(),2000);
             MatcherAssert.assertThat(tituloCalificacion.getText(), Is.is(Matchers.equalTo("Calificación")));
         }
+        resetImplicitTimeout();
     }
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
@@ -182,11 +184,13 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarTipoRiesgo() {
+        setImplicitTimeout(2, TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
             withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
         }else if(tituloCalificacion.isPresent()){
             withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloCalificacion).shouldBePresent();
         }
+        resetImplicitTimeout();
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizacionCalificacion).shouldBePresent();
         botonCotizacionCalificacion.click();
     }
