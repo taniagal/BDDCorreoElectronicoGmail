@@ -103,11 +103,12 @@
                 <configuration>
                     <includes>
                         <!--<include>**/claims/*.java</include>
-                        <include>**/billing/*.java</include>-->
-                        <include>**/policycenter/*.java</include>
+                        <include>**/billing/*.java</include>
+                        <include>**/policycenter/*.java</include>-->
+                        <include>**/policy/administracion/consulta/contactos/**/*.java</include>
                     </includes>
                     <excludes>
-                        <exclude>**/policycenter/MainStories.java</exclude>
+                       <exclude>**/policycenter/MainStories.java</exclude>
                     </excludes>
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                     <perCoreThreadCount>true</perCoreThreadCount>

@@ -10,9 +10,9 @@ import org.jbehave.core.annotations.*;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
 
 
 /**
@@ -52,21 +52,20 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
     @When("filtre los contactos asociados a una cuenta por el rol $filtro en el combo con valor $combo")
     @Alias("filtre los contactos asociados a una cuenta por el tipo de persona $filtro en el combo con valor $combo")
     public void filtreLosContactosAsociadosAEstaCuenta(@Named("filtro") String filtro, @Named("combo") String combo) {
-        cuenta.contactosAsociados().filtrarContactosAsociados(filtro,combo);
+        cuenta.obtenerContactosAsociadosWO().filtrarContactosAsociados(filtro,combo);
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.filtreLosContactosAsociadosAEstaCuenta");
 
     }
 
-    @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro $filtro")
-    public void deboVerContactosAsociadosAEstaCuentaConFiltros(@Named("filtro") String filtro) {
-        assertThat(cuenta.contactosAsociados().existenContactosAsociados(), is(equalTo(Boolean.TRUE)));
-        assertThat(cuenta.contactosAsociados().existenContactosAsociados(), is(equalTo(Boolean.TRUE)));
-        LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltros");
+    @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro $filtro en la columna $columna")
+    public void deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna(@Named("filtro") String filtro, @Named("columna") String columna) {
+        assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), hasItem(containsString(filtro)));
+
+        LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna");
     }
 
     @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro <tipoPersona> y <rol>")
     public void deboVerContactosAsociadosAEstaCuentaConFiltros(@Named("tipoPersona") String filtroTipoPersona, @Named("rol") String filtroRol) {
-        assertThat(cuenta.contactosAsociados().existenContactosAsociados(), is(equalTo(Boolean.TRUE)));
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltros");
     }
 

@@ -398,8 +398,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
         for(int i = 0; i < contactosAsociados.getRowCount(); i++){
             contactos = contactosAsociados.getRows().get(i);
-            if(elementosContactosAsociados.get(0).getText().contains(contactos.get("contactosAsociados"))){
-                MatcherAssert.assertThat(elementosContactosAsociados.get(0).getText(), Matchers.containsString(contactos.get("contactosAsociados")));
+            if(elementosContactosAsociados.get(0).getText().contains(contactos.get("obtenerContactosAsociadosWO"))){
+                MatcherAssert.assertThat(elementosContactosAsociados.get(0).getText(), Matchers.containsString(contactos.get("obtenerContactosAsociadosWO")));
             }
         }
 

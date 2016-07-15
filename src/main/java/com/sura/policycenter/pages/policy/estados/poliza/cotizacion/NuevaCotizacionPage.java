@@ -1,11 +1,6 @@
 package com.sura.policycenter.pages.policy.estados.poliza.cotizacion;
 
 import com.sura.policycenter.model.AgenteModel;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -19,6 +14,10 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -322,16 +321,20 @@ public class NuevaCotizacionPage extends PageObject {
 
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado;
-        List<WebElementFacade> divsMensajes = elementos(MENSAJES_DE_INFORMACION);
+        try {
+            List<WebElementFacade> divsMensajes = elementos(MENSAJES_DE_INFORMACION);
 
-        for (WebElementFacade div : divsMensajes) {
-            mensajeMostrado = div.getText();
-            for(String etiqueta : mensajesApp.split("|")){
-                if (mensajeMostrado.toLowerCase().contains(etiqueta)) {
-                    existeOcurrencia = Boolean.TRUE;
-                    break;
+            for (WebElementFacade div : divsMensajes) {
+                mensajeMostrado = div.getText();
+                for (String etiqueta : mensajesApp.split("|")) {
+                    if (mensajeMostrado.toLowerCase().contains(etiqueta)) {
+                        existeOcurrencia = Boolean.TRUE;
+                        break;
+                    }
                 }
             }
+        } catch (Exception e) {
+            LOGGER.error("NO EXISTE MENSAJE DE ERROR " + e.getMessage());
         }
 
         return existeOcurrencia;

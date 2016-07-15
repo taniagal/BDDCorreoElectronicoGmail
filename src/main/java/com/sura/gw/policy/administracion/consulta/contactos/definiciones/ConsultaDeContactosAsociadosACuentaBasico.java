@@ -58,7 +58,7 @@ public class ConsultaDeContactosAsociadosACuentaBasico {
 
     @Then("debo ver contactos asociados a esta cuenta")
     public void deboVerContactosAsociadosAEstaCuenta() {
-        assertThat(cuenta.contactosAsociados().existenContactosAsociados(), is(equalTo(Boolean.TRUE)));
+        assertThat(cuenta.obtenerContactosAsociadosWO().existenContactosAsociados(), is(equalTo(Boolean.TRUE)));
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuenta");
     }
 

@@ -53,7 +53,8 @@ public class CuentaSteps extends ScenarioSteps {
         contactosAsociados = this.cuenta.enContactos();
     }
 
-    public ContactosAsociadosACuentaWidgetPage contactosAsociados() {
+    public ContactosAsociadosACuentaWidgetPage obtenerContactosAsociadosWO() {
         return contactosAsociados;
     }
+
 }

@@ -2,6 +2,10 @@ package com.sura.gw.policy.administracion.consulta.contactos.pages;
 
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.pages.PageObject;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactosAsociadosACuentaWidgetPage extends PageObject {
 
@@ -31,6 +35,19 @@ public class ContactosAsociadosACuentaWidgetPage extends PageObject {
 
         System.out.println("ContactosAsociadosACuentaWidgetPage.filtrarContactosAsociados");
     }
+
+    public List<String> obtenerColumna(String columna ){
+
+        List<String> filasPorColumna = new ArrayList<>();
+        for (WebElement celda : tablaContactos.obtenerColumnaDeTabla(columna)){
+            filasPorColumna.add(celda.getText());
+        }
+
+        System.out.println("ContactosAsociadosACuentaWidgetPage.obtenerColumna");
+
+        return filasPorColumna;
+    }
+
 
 }
 

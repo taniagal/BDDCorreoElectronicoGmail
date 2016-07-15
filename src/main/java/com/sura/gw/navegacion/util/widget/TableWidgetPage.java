@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class TableWidgetPage extends PageObject {
@@ -41,7 +42,7 @@ public class TableWidgetPage extends PageObject {
     }
 
     public List<WebElement> obtenerFilas() {
-        filasDeTabla = tablaWE.findElements(By.xpath("tbody/tr"));
+        filasDeTabla = getDriver().findElements(By.xpath(TABLA.concat("/tbody/tr")));
         return filasDeTabla;
     }
 
@@ -50,7 +51,7 @@ public class TableWidgetPage extends PageObject {
     }
 
     public List<WebElement> obtenerEncabezado() {
-        encabezadoListWE = contenedorWE.findElements(By.xpath(ENCABEZADO_TABLA));
+        encabezadoListWE = getDriver().findElements(By.xpath(ENCABEZADO_TABLA));
         return encabezadoListWE;
     }
 
@@ -88,7 +89,7 @@ public class TableWidgetPage extends PageObject {
     public void seleccionarDeComboConValor(String valorInputDeComboBox) {
         for (WebElement opcionToolbar : toolbarListWE) {
             try {
-                WebElement combo = opcionToolbar.findElement(By.xpath("//input[contains(@value,'" + valorInputDeComboBox + "')]"));
+                combo = opcionToolbar.findElement(By.xpath("//input[contains(@value,'" + valorInputDeComboBox + "')]"));
                 combo.click();
                 findBy(LISTA_COMBO_DESPLEGABLE).waitUntilVisible();
                 shouldBeVisible(findBy(LISTA_COMBO_DESPLEGABLE));
@@ -110,6 +111,7 @@ public class TableWidgetPage extends PageObject {
         for (WebElement opcion : opcionesDeCombo) {
             if (opcion.getText().contains(nombreDeOpcionDeCombo)) {
                 opcion.click();
+                fluent().await().atMost(5, TimeUnit.SECONDS);
             }
         }
 
@@ -119,25 +121,33 @@ public class TableWidgetPage extends PageObject {
         opcionDeCombo(nombreDeOpcionDeCombo, LISTA_COMBO_DESPLEGABLE.concat("/li"));
     }
 
-    public Integer obtenerIndiceDeColumna(String nombreColumnaDeTabla){
+    public Integer obtenerIndiceDeColumna(String nombreColumnaDeTabla) {
         int indiceDeColumna = 0;
-        for (WebElement columna : obtenerEncabezado()){
+        for (WebElement columna : obtenerEncabezado()) {
             ++indiceDeColumna;
-            if (columna.getText().contains(nombreColumnaDeTabla)){
+            if (columna.getText().contains(nombreColumnaDeTabla)) {
                 break;
             }
         }
         return indiceDeColumna;
     }
 
-    public List<WebElement> obtenerColumnaDeTabla(String nombreColumnaDeTabla){
+    public List<WebElement> obtenerColumnaDeTabla(String nombreColumnaDeTabla) {
         Integer indiceDeColumna = obtenerIndiceDeColumna(nombreColumnaDeTabla);
+        List<WebElement> filasPorColumna = new ArrayList<>();
 
-        if (indiceDeColumna> 0 && indiceDeColumna < obtenerEncabezado().size()) {
-            for (WebElement fila : obtenerFilas()) {
-                WebElement celda = fila.findElement(By.xpath("td[" + indiceDeColumna  + "]"));
+        if (indiceDeColumna > 0 && indiceDeColumna < obtenerEncabezado().size()) {
+            if (existenFilasEnTabla()) {
+                System.out.printf("SOPA : " + filasDeTabla);
+                System.out.printf("SOPA WE : " + obtenerFilas().toArray().toString());
+                for (WebElement fila : obtenerFilas()) {
+                    WebElement celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
+                    filasPorColumna.add(celda);
+                }
             }
         }
+
+        return filasPorColumna;
     }
 
 }
