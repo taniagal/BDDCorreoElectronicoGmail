@@ -6,8 +6,10 @@ import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-//@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
-@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
+import java.util.concurrent.TimeUnit;
+
+@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
+//@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 //@DefaultUrl("https://qacoreseguros.suramericana.com/pc/PolicyCenter.do")
 public class SeusLoginPage extends Guidewire {
 
@@ -32,6 +34,7 @@ public class SeusLoginPage extends Guidewire {
     }
 
     public void login(String pais, String usuario, String contrasenia) {
+        setImplicitTimeout(2, TimeUnit.SECONDS);
         if (!mnuContact.isPresent()) {
             this.usuario.waitUntilPresent();
             this.usuario.clear();
@@ -42,6 +45,7 @@ public class SeusLoginPage extends Guidewire {
             this.contrasenia.type(contrasenia);
             this.btnSubmit.click();
         }
+        resetImplicitTimeout();
     }
 
 }
