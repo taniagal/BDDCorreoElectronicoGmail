@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.google.common.base.Function;
 import com.sura.guidewire.selenium.Guidewire;
 
 import java.util.List;
@@ -13,14 +12,9 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-
 
 public class DisponibilidadDetalleProductoPage extends Guidewire {
 
@@ -52,7 +46,6 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
     public void accionarNuevoEnvio() {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnAccionesCuenta).waitUntilPresent().click();
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(opcionNuevoEnvio).waitUntilPresent().click();
-//        this.seleccionarAgente();
     }
 
     public void verInformacionDePoliza() {
@@ -179,36 +172,5 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
             filaBoton++;
         }
         return filaBoton;
-    }
-
-    public WebElementFacade esperarElemento(final String xpath) {
-        Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(30, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
-                .ignoring(NoSuchElementException.class);
-
-        WebElementFacade elemento = wait.until(new Function<WebDriver, WebElementFacade>() {
-            public WebElementFacade apply(WebDriver driver) {
-                return findBy(xpath);
-            }
-        });
-
-        return elemento;
-    }
-
-    public void waitUntil(int millis) {
-        Integer i = 0;
-        Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
-                TimeUnit.MILLISECONDS).pollingEvery(millis,
-                TimeUnit.MILLISECONDS);
-        try {
-            wait.until(new Function<Integer, Boolean>() {
-                public Boolean apply(Integer i) {
-
-                    return false;
-                }
-            });
-        } catch (TimeoutException e) {
-        }
     }
 }

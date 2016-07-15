@@ -9,6 +9,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
@@ -24,6 +25,16 @@ public class NuevaPolizaPage extends PageObject {
     private WebElementFacade listaOrganizacion;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-inputEl']")
     private WebElementFacade listaCanal;
+    @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnInnerEl']")
+    private WebElementFacade btnBuscar;
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']")
+    private WebElementFacade btnCuentas;
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
+    private WebElementFacade txtNumeroCuenta;
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    private WebElementFacade btnBuscarCuenta;
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
+    private WebElementFacade grdNumeroCuenta;
 
     public NuevaPolizaPage(WebDriver driver) {
         super(driver);
@@ -56,31 +67,42 @@ public class NuevaPolizaPage extends PageObject {
     public void validaListaCanalDeAcuerdoALaOrganizacion(String datosListaCanal) {
         String[] listaCanal = datosListaCanal.split("[,]");
         WebElementFacade elemetoDeLaLista;
-        System.out.println("longitud" + listaCanal.length);
         for(int i = 0; i <listaCanal.length; i++){
             elemetoDeLaLista = withTimeoutOf(10, TimeUnit.SECONDS).find("//li[contains(.,'" + listaCanal[i] + "')]");
-            System.out.println("lista en posicion " + i + " " + listaCanal[i]);
             MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(listaCanal[i])));
         }
-
     }
 
     public void seleccionarOrganizacion(String organizacion) {
-        this.seleccionarElementoDeLaLista(organizacion, listaOrganizacion);
+        listaOrganizacion.sendKeys(Keys.ESCAPE);
+        this.desplegarElementoDeLaLista(listaOrganizacion);
+        this.seleccionarElementoDeLaLista(organizacion);
     }
 
-    public void seleccionarElementoDeLaLista(String elementoLista, WebElementFacade elementoPantalla) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(elementoPantalla).waitUntilPresent();
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(elementoPantalla).waitUntilClickable();
-        elementoPantalla.click();
-        List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
-        if (!listaNombresAgentesElement.isEmpty()) {
-            for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
-                if (agenteElemento.containsText(elementoLista)) {
-                    agenteElemento.click();
+    public void seleccionarElementoDeLaLista(String elementoLista) {
+        List<WebElementFacade> listaElementosCotizacion = findAll(By.xpath(".//li[@role='option']"));
+        if (!listaElementosCotizacion.isEmpty()) {
+            for (WebElementFacade listaElemento : listaElementosCotizacion) {
+                if (listaElemento.containsText(elementoLista)) {
+                    listaElemento.click();
                     break;
                 }
             }
         }
     }
+
+    public void buscarCuenta(String numeroCuenta) {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        guidewire.waitUntil(2000);
+        btnBuscar.click();
+        btnCuentas = guidewire.esperarElemento(".//*[@id='Search:MenuLinks:Search_AccountSearch']");
+        btnCuentas.click();
+        txtNumeroCuenta = guidewire.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");
+        txtNumeroCuenta.sendKeys(numeroCuenta);
+        btnBuscarCuenta = guidewire.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
+        btnBuscarCuenta.click();
+        grdNumeroCuenta = guidewire.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']");
+        grdNumeroCuenta.click();
+    }
+
 }

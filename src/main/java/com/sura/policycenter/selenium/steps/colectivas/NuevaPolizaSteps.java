@@ -27,4 +27,8 @@ public class NuevaPolizaSteps extends ScenarioSteps{
     public void validaListaCanalDeAcuerdoALaOrganizacion(String datosListaCanal) {
         nuevaPolizaPage.validaListaCanalDeAcuerdoALaOrganizacion(datosListaCanal);
     }
+
+    public void buscarCuenta(String numCuenta) {
+        nuevaPolizaPage.buscarCuenta(numCuenta);
+    }
 }

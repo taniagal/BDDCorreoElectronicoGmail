@@ -4,6 +4,7 @@ import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.steps.colectivas.NuevaPolizaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
@@ -16,6 +17,11 @@ public class NuevaPolizaDefinitions {
 
     @Steps
     NuevaPolizaSteps nuevaPolizaSteps;
+
+    @Given("que voy a buscar la cuenta <numCuenta>")
+    public void buscarCuenta(@Named("numCuenta") String numCuenta){
+        nuevaPolizaSteps.buscarCuenta(numCuenta);
+    }
 
     @When("despliegue la lista de organizacion")
     public void dar_clic_en_la_lista_organizacion(){

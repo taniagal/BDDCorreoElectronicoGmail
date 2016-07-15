@@ -11,7 +11,7 @@ Para
 
 Scenario: Validar la lista de organizaciones disponibles para crear una poliza nueva
 GivenStories: stories/policycenter/login_policy.story
-Given Estoy buscando una cuenta <numCuenta>
+Given que voy a buscar la cuenta <numCuenta>
 And quiero expedir una poliza nueva
 And seleccione el agente <agente>
 When despliegue la lista de organizacion
