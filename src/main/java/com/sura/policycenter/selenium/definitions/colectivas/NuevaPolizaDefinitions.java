@@ -38,6 +38,13 @@ public class NuevaPolizaDefinitions {
         nuevaPolizaSteps.seleccionarCanal();
     }
 
+    @Then("debo poder ver las listas de organizacion y canal, las opciones de individual y colectiva, la opcion individual\n" +
+            "seleccionada por defecto, la tabla de productos con los productos de Autos y Multiriesgo corporativo y los botones\n" +
+            "para elegir producto deshabilitados")
+    public void validar_campos_de_la_ventana_nueva_cotizacion(){
+        nuevaPolizaSteps.validarCamposDeLaVentanaNuevaCotizacion();
+    }
+
     @Then("me debe mostrar las organizaciones: $listaOrganizaciones")
     public void validar_lista_de_organizaciones(ExamplesTable listaOrganizaciones){
         nuevaPolizaSteps.validarListaDeOrganizaciones(listaOrganizaciones);

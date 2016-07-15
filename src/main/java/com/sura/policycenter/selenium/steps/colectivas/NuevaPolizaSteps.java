@@ -31,4 +31,8 @@ public class NuevaPolizaSteps extends ScenarioSteps{
     public void buscarCuenta(String numCuenta) {
         nuevaPolizaPage.buscarCuenta(numCuenta);
     }
+
+    public void validarCamposDeLaVentanaNuevaCotizacion() {
+        nuevaPolizaPage.validarCamposDeLaVentanaNuevaCotizacion();
+    }
 }

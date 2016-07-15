@@ -25,6 +25,10 @@ public class NuevaPolizaPage extends PageObject {
     private WebElementFacade listaOrganizacion;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-inputEl']")
     private WebElementFacade listaCanal;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:CreateIndividualPolicy_true-inputEl']")
+    private WebElementFacade radioBotonIndividual;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:CreateIndividualPolicy_false-inputEl']")
+    private WebElementFacade radioBotonColectiva;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnInnerEl']")
     private WebElementFacade btnBuscar;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']")
@@ -89,6 +93,18 @@ public class NuevaPolizaPage extends PageObject {
                 }
             }
         }
+    }
+
+    public void validarCamposDeLaVentanaNuevaCotizacion() {
+        listaOrganizacion.shouldBeVisible();
+        listaCanal.shouldBeVisible();
+        radioBotonIndividual.shouldBeVisible();
+        radioBotonIndividual.isSelected();
+        radioBotonColectiva.shouldBeVisible();
+        List<WebElementFacade> botonesProductos = findAll("//a[contains(.,'Elegir')]");
+        botonesProductos.get(0).shouldNotBeEnabled();
+        botonesProductos.get(1).shouldNotBeEnabled();
+        System.out.println("botones elegir " + botonesProductos.size());
     }
 
     public void buscarCuenta(String numeroCuenta) {
