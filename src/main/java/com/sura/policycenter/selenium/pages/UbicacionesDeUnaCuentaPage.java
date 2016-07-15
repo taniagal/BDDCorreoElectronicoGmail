@@ -67,7 +67,7 @@ public class UbicacionesDeUnaCuentaPage extends Guidewire{
         selectItem(comboBoxDepartamento,departamento);
         waitABit(3000);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(2000);
+        waitABit(2500);
         selectItem(comboBoxTipoDireccion,tipoDireccion);
         botonActualizar.click();
     }

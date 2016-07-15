@@ -154,9 +154,10 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAgregar).waitUntilPresent().click();
         itemDirectorio.click();
         waitInfoPoliza(lblBuscarDirectorio);
-        itemTipoDocumento.sendKeys("CEDULA DE CIU");
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        actions.sendKeys(Keys.ENTER).build().perform();
+        itemTipoDocumento.clear();
+        waitUntil(200);
+        itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
+        itemTipoDocumento.sendKeys(Keys.ENTER);
         waitInfoPoliza(lblPrimerNombre);
         txtNumDocumento.sendKeys(cedula);
         btnBuscar.click();
@@ -242,6 +243,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     }
 
     public void validaReaseguro() {
+        setImplicitTimeout(3, TimeUnit.SECONDS);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if (!lblTomador.getText().equals("Compañía cedente"))
             notPresent.append("salida errada: Compañía cedente|");
@@ -256,7 +258,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
         }
         assertThat(res, "No estan presentes los elementos".equals(res));
-
+        resetImplicitTimeout();
     }
 
     // TODO: 30/06/2016 Metodo wait para implementar generico
