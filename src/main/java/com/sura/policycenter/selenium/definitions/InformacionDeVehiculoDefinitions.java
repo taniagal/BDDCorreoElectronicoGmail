@@ -9,6 +9,8 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+import javax.swing.*;
+
 public class InformacionDeVehiculoDefinitions {
 
     @Steps
@@ -19,19 +21,16 @@ public class InformacionDeVehiculoDefinitions {
 
     @When("ingrese una nueva cotizacion para vehiculo <nomProducto>")
     public void whenQuieraRegistrarLaInformacionDelVehiculo(@Named("nomProducto")String nomProducto) {
-        informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
         informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto(nomProducto);
     }
 
     @When("vaya a registrar los datos del vehiculo")
     public void whenvayaARegistrarLosDatosDelVehiculo(){
         informacionDeVehiculoSteps.ingresar_a_cotizacion_de_vehiculo();
-        informacionDeVehiculoSteps.ingresar_informacion_del_vehiculo();
-
     }
 
-    @Then("el sistema debe mostrar los datos correspondiente al vehiculo")
+    @Then("el sistema debe permitir pasar a la siguinete pagina")
     public void thenElSistemaDebeMostrarLosDatosCorrespondienteAlVehiculo() {
-        informacionDeVehiculoSteps.validar_campos_del_vehiculo();
+        informacionDeVehiculoSteps.pasar_a_pagina_siguiente();
     }
 }

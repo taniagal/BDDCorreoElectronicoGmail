@@ -11,23 +11,14 @@ GivenStories: stories/policycenter/login_policy.story
 Given se inicio una nueva suscripcion <numeroCuenta>
 When ingrese una nueva cotizacion para vehiculo <nomProducto>
 And vaya a registrar los datos del vehiculo
-Then el sistema debe mostrar los datos correspondiente al vehiculo
-
-
-Examples:
-|numCuenta |nomProducto  |placa |
-|C000888888|Auto personal|OFI19C|
-
-Scenario: Validacion de campos de la informacion de vehiculos
-Given Estoy buscando una cuenta <numCuenta>
-When quiera ingresar la placa, motor el chasis <placa> <motor> <chasis>
-And quiera ingresar el descuento, recargo y suavizacion <descuento> <recargo> <suavizacion>
-Then el sistema debe validar
-And debe permitir seleccionar la tecla siguinete
+And vaya a agregar un vehiculo con los datos:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|
+|T64498|2009  |00601122        |ALTAMIRA          |Particular       |PR3B4  |SnR4 |
+Then el sistema debe permitir pasar a la siguinete pagina
 
 Examples:
-|numCuenta |placa |motor          |chasis         |descuento|recargo|suavizacion|
-|C000888888|OFI19C|C00008745678684|X48964788762144|99.99    |99.99  |99.99      |
+|numeroCuenta|nomProducto|
+|C000888888  |Autos      |
 
 
 

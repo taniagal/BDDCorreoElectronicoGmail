@@ -7,100 +7,35 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.*;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class OpcionesInformacionDelVehiculoPage extends Guidewire {
 
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-labelEl']")
-    WebElementFacade lblPlaca;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-labelEl']")
-    WebElementFacade lblModelo;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-labelEl']")
-    WebElementFacade lblCodFasecolda;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Type_DV-labelEl']")
-    WebElementFacade lblClaseVehículo;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-labelEl']")
-    WebElementFacade lblLinea;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-labelEl']")
-    WebElementFacade lblCiudadDeCirculacion;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-labelEl']")
-    WebElementFacade lblvalorAsegurado;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Engine_DV-labelEl']")
-    WebElementFacade lblMotor;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-labelEl']")
-    WebElementFacade lblChasis;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosValue_DV-labelEl']")
-    WebElementFacade lblValorAccesorios;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosEspValue_DV-labelEl'")
-    WebElementFacade lblValorAccesoriosEsp;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:totalInsured_DV-labelEl']")
-    WebElementFacade lblValorTotalAsegurado;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm-labelEl']")
-    WebElementFacade lblVehiculo0Km;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:use_DV-labelEl']")
-    WebElementFacade lblConsecionario;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:transportFuel-labelEl']")
-    WebElementFacade lblTransportaCombustible;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:trailer-labelEl']")
-    WebElementFacade lblRemolque;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Imported-labelEl']")
-    WebElementFacade lblImportado;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:foreignEnrollment-labelEl']")
-    WebElementFacade lblMatriculaExtranjera;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:2:vehmod-labelEl']")
-    WebElementFacade lblVehiculoBlindado;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:3:vehmod-labelEl']")
-    WebElementFacade lblDescuentoDispositivo;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:6:vehmod-labelEl']")
-    WebElementFacade lblDescuento;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:7:vehmod-labelEl']")
-    WebElementFacade lblRecargo;
-
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:8:vehmod-labelEl']")
-    WebElementFacade lblSuavizacion;
-
-    @FindBy (xpath = "//td[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
+    @FindBy(xpath = "//td[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     WebElementFacade itemVehiculo;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
     WebElementFacade btnCrearVehiculo;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:0']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:0']")
     WebElementFacade lblDetallesVehiculo;
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:0']")
+    WebElementFacade lblCoberturaPersona;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
     WebElementFacade txtPlaca;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
     WebElementFacade lstModelo;
 
-   /* @FindBy (xpath = "")
-    WebElementFacade;
+    @FindBy (xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
+    WebElementFacade btnSiguinete;
 
-    @FindBy (xpath = "")
+    /*@FindBy (xpath = "")
     WebElementFacade;*/
 
 
@@ -112,8 +47,6 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
      */
 
 
-
-
     public OpcionesInformacionDelVehiculoPage(WebDriver driver) {
         super(driver);
     }
@@ -122,7 +55,7 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
 
     Actions actions = new Actions(getDriver());
 
-    OpcionesInformacionPolizaMrcPage opcionPolizaMrc = new OpcionesInformacionPolizaMrcPage (getDriver());
+    OpcionesInformacionPolizaMrcPage opcionPolizaMrc = new OpcionesInformacionPolizaMrcPage(getDriver());
 
 
     public void ingresarOpcionVehiculo() {
@@ -132,53 +65,39 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         opcionPolizaMrc.waitInfoPoliza(lblDetallesVehiculo);
     }
 
-    public void llenarFormularioDetalleVehiculo(){
-        txtPlaca.clear();
-        txtPlaca.type("1984");
-
+    public void validarPaginaSiguiente() {
+        btnSiguinete.click();
+        assertThat("el al mostrar nombre completo", !lblCoberturaPersona.isPresent());
     }
-    public void validaCamposInformacionVehiculo() {
-        /**
-         *Clase Vehículo
-         * Modelo
-         * Línea
-         * Placa
-         * Clase Vehículo
-         * Modelo
-         * Línea
-         * Placa
-         * Valor Asegurado
-         * Tipo de beneficiario
-         * Motor
-         * Chasis
-         * Tipo de servicio
-         * Ciudad de Circulación
-         * Valor Accesorios
-         * Valor Accesorios Especiales
-         * Valor Total asegurado
-         * Vehiculo 0km
-         * Concesionario
-         * Transporta combustible
-         * Remolque
-         * Importado
-         * Matricula extranjera
-         * Vehículo blindado?
-         * Descuento dispositivo
-         * Comercial
-         * Técnica
-         * Descuento
-         * Recargo
-         * Suavización
 
-        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if (!lblTipoDocumento.isPresent())
-            notPresent.append("Label errado: Tipo documento|");
-        if (!lblNumeroDocumento.isPresent())
-            notPresent.append("Label errado: Numero documento|");
-        if (!lblNumeroTelefono.isPresent())
-            notPresent.append("label errado: Teléfono|");
-        if (!lblDireccion.isPresent())
+    public void validaCamposInformacionVehiculo() {
+       /* StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
+        if (!lblModelo.isPresent())
+            notPresent.append("Label errado: Modelo|");
+        if (!lblLinea.isPresent())
+            notPresent.append("Label errado: Linea|");
+        if (!lblPlaca.isPresent())
+            notPresent.append("label errado: Placa|");
+        if (!lblClaseVehículo.isPresent())
+            notPresent.append("label errado: Clase Vehículo|");
+        if (!lblValorAsegurado.isPresent())
             notPresent.append("label errado: Dirección de la poliza|");
+        if (!lblT.isPresent())
+            notPresent.append("label errado: Dirección de la poliza|");
+        if (!.isPresent())
+        notPresent.append("label errado: Dirección de la poliza|");
+        if (!.isPresent())
+        notPresent.append("label errado: Dirección de la poliza|");
+        if (!.isPresent())
+        notPresent.append("label errado: Dirección de la poliza|");
+        if (!.isPresent())
+        notPresent.append("label errado: Dirección de la poliza|");
+        if (!.isPresent())
+        notPresent.append("label errado: Dirección de la poliza|");
+        if (!.isPresent())
+        notPresent.append("label errado: Dirección de la poliza|");
+        if (!.isPresent())
+        notPresent.append("label errado: Dirección de la poliza|");
         if ("".equals(inputTipoDocumento.getText()))
             notPresent.append("salida errada: Tipo cedula|");
         if ("".equals(inputNumeroDocumento.getText()))
@@ -204,8 +123,10 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
         }
         assertThat(res, "No estan presentes los elementos ".equals(res));
+    */
     }
-         */
 
-    }
+
+
 }
+
