@@ -2,12 +2,11 @@ package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.bytedeco.javacpp.annotation.ValueGetter;
-import org.bytedeco.javacpp.opencv_core;
-import org.eclipse.jetty.websocket.client.masks.Masker;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -18,8 +17,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class CotizacionDePolizaPage extends PageObject{
 
@@ -77,8 +74,6 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade campoImpuestosYCargos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
     private WebElementFacade campoCostoTotal;
-    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
-    private WebElementFacade mensajeRiesgoConsultable;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade botonCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
@@ -87,8 +82,6 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade itemRevisionPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:SubmissionWizard_ReviewSummaryDV:PrimaryNamedInsured-inputEl']")
     private WebElementFacade tomadorPrimario;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:ReviewSummaryCV:0:PolicyLineSummaryPanelSet:0:0:drivername-inputEl']")
-    private WebElementFacade asegurado;
     @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[2]")
     private WebElementFacade mensajeValidacion1;
     @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[3]")
@@ -216,11 +209,10 @@ public class CotizacionDePolizaPage extends PageObject{
                 .withTimeout(30, TimeUnit.SECONDS)
                 .pollingEvery(5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
-        WebElementFacade elemento = espera.until(new Function<WebDriver, WebElementFacade>() {
+        return  espera.until(new Function<WebDriver, WebElementFacade>() {
             public WebElementFacade apply(WebDriver driver) {
                 return findBy(xpath);
             }
         });
-        return  elemento;
     }
 }

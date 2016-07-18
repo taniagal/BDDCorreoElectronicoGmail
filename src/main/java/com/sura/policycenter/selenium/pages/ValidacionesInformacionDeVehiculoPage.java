@@ -3,7 +3,6 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
 
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -65,7 +64,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitForAllTextToAppear(vehiculo.get("modelo"));
+        waitUntil(2000);
         campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
         waitUntil(200);
         campoTxtPlaca.click();

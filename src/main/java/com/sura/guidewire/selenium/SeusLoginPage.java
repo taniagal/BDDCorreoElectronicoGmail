@@ -7,8 +7,6 @@ import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.concurrent.TimeUnit;
-
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 //@DefaultUrl("https://qacoreseguros.suramericana.com/pc/PolicyCenter.do")
