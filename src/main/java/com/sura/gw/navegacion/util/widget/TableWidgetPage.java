@@ -138,8 +138,7 @@ public class TableWidgetPage extends PageObject {
 
         if (indiceDeColumna > 0 && indiceDeColumna < obtenerEncabezado().size()) {
             if (existenFilasEnTabla()) {
-                System.out.printf("SOPA : " + filasDeTabla);
-                System.out.printf("SOPA WE : " + obtenerFilas().toArray().toString());
+
                 for (WebElement fila : obtenerFilas()) {
                     WebElement celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
                     filasPorColumna.add(celda);
