@@ -152,16 +152,19 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
     WebElementFacade campoTipoPoliza;
 
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
+    private WebElementFacade comboBoxNombreAgente;
+
     public OpcionesInformacionPolizaPage(WebDriver driver) {
         super(driver);
     }
 
     public void seleccionarAgenteCotizacion() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(campoNombreAgente).shouldBePresent();
-        waitFor(campoNombreAgente).shouldBeVisible();
-        campoNombreAgente.waitUntilVisible().sendKeys(Keys.ARROW_DOWN);
-        campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
-        campoNombreAgente.sendKeys(Keys.ENTER);
+        comboBoxNombreAgente.click();
+        Actions actions =  new Actions(getDriver());
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ENTER).build().perform();
         WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonElegirProducto).shouldBePresent();
         waitFor(botonElegirProducto).shouldBeVisible();
