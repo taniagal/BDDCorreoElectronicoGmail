@@ -1,5 +1,6 @@
 package com.sura.guidewire.selenium;
 
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;

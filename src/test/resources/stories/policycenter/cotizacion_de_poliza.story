@@ -38,7 +38,7 @@ Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensa
 
 Examples:
 |cotizacion|mensaje|
-|22270002|el(los) rol(es) (ASEGURADO NOMBRADO, CONDUCTOR, INTERÉS ADICIONAL) es un riesgo no estándar y debe ser autorizado.|
+|22270002  |El tomador es un riesgo no estandar y no es posible gestionar la solicitud por este canal|
 
 Scenario: PEP - Figuras - Bloqueo
 Given he realizado la cotizacion <cotizacion>
@@ -48,7 +48,7 @@ Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensa
 
 Examples:
 |cotizacion|mensaje|
-|22270002  |el(los) rol(es) (ASEGURADO NOMBRADO, CONDUCTOR, INTERÉS ADICIONAL) es un riesgo no estándar y debe ser autorizado.|
+|22270002  |es un riesgo no estándar y debe ser autorizado|
 
 Scenario: Riesgos consultables - Chasis - Bloqueo
 Given he realizado la cotizacion <cotizacion>
