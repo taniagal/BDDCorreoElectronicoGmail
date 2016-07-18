@@ -79,3 +79,4 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         opcionesInformacionPolizaMrcPage.validaFormularioDescripDireccion();
     }
 }
+

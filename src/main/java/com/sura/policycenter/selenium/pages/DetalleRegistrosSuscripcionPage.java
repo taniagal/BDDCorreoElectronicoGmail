@@ -70,7 +70,7 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
     }
 
     public void validarCamposRegistros(String nombre, String tipoDeTransaccion, String nroDeTransacciones) {
-        lblNombre.withTimeoutOf(20, TimeUnit.SECONDS).waitUntilPresent();
+        lblTransaccionDetalle.withTimeoutOf(8, TimeUnit.SECONDS).waitUntilPresent();
         assertThat(lblNombre.getText(), is(equalTo(nombre)));
         assertThat(lblPrimeraFechaVigencia.getText(), is(notNullValue()));
         assertThat(lblUltimaFechaVigencia.getText(), is(notNullValue()));
@@ -79,7 +79,7 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
     }
 
     public void buscarRegistrosSuscripcion() {
-        mnuRegistrosSuscripcion.withTimeoutOf(20, TimeUnit.SECONDS).waitUntilPresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(mnuRegistrosSuscripcion).waitUntilPresent();
         mnuRegistrosSuscripcion.click();
     }
 

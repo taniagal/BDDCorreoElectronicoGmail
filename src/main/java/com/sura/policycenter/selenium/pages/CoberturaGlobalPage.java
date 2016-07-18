@@ -26,8 +26,6 @@ public class CoberturaGlobalPage extends Guidewire {
     private WebElementFacade checkBoxDanosMateriales;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
     private WebElementFacade campoTxtValorAseguradoDanosMateriales;
-    @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:locations3LV_header']")
-    private WebElementFacade labelUbicacionPoliza;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:locations3LV:0:location']")
@@ -42,8 +40,6 @@ public class CoberturaGlobalPage extends Guidewire {
     private WebElementFacade campoTxtGenerico;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
-    @FindBy(id = ".//*[@id='wsTabBar:wsTab_0:panelId']")
-    private WebElementFacade panelMensaje;
 
 
     public CoberturaGlobalPage(WebDriver driver) {
@@ -62,14 +58,10 @@ public class CoberturaGlobalPage extends Guidewire {
     }
     public void agregarCoberturasGlobales(String descripcion, String tipoCobertura, String valor, String nombreCobertura) {
         navegarPorCobertura(descripcion, tipoCobertura);
-        switch (tipoCobertura) {
-            case "Multiples ubicaciones":
-                cargarMultiplesUbicaciones(valor);
-                break;
-            case "Una cobertura":
+        if("Multiples ubicaciones".equals(tipoCobertura))
+            cargarMultiplesUbicaciones(valor);
+        else if ("Una cobertura".equals(tipoCobertura))
                 cargarCoberturaUnica(nombreCobertura, valor);
-                break;
-        }
         waitUntil(1000);
         botonAceptar.click();
     }
@@ -99,7 +91,7 @@ public class CoberturaGlobalPage extends Guidewire {
 
     public void verificarUbicacionesCubiertas() {
         List<WebElementFacade> tablaUbicaciones = getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody");
-        MatcherAssert.assertThat("Error al Agregar la ubicacion", tablaUbicaciones.size() > 0);
+        MatcherAssert.assertThat("Error al Agregar la ubicacion", !tablaUbicaciones.isEmpty());
     }
 
     public void seleccionarCoberturaUnica(String descripcion, String tipoCobertura, String nombreCobertura) {
