@@ -11,6 +11,7 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
@@ -39,12 +40,16 @@ public class NuevaPolizaPage extends PageObject {
     private WebElementFacade btnBuscarCuenta;
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
     private WebElementFacade grdNumeroCuenta;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
+    WebElementFacade tablaProductosIndividual;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV-body']")
+    WebElementFacade tablaProductosColectiva;
 
     public NuevaPolizaPage(WebDriver driver) {
         super(driver);
     }
 
-    public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista){
+    public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(elementoDeLaLista).waitUntilPresent();
         guidewire.waitUntil(2000);
         elementoDeLaLista.click();
@@ -54,7 +59,7 @@ public class NuevaPolizaPage extends PageObject {
         this.desplegarElementoDeLaLista(listaOrganizacion);
     }
 
-    public void seleccionarCanal() {
+    public void desplegarListaCanal() {
         this.desplegarElementoDeLaLista(listaCanal);
     }
 
@@ -71,8 +76,8 @@ public class NuevaPolizaPage extends PageObject {
     public void validaListaCanalDeAcuerdoALaOrganizacion(String datosListaCanal) {
         String[] listaCanal = datosListaCanal.split("[,]");
         WebElementFacade elemetoDeLaLista;
-        for(int i = 0; i <listaCanal.length; i++){
-            elemetoDeLaLista = withTimeoutOf(10, TimeUnit.SECONDS).find("//li[contains(.,'" + listaCanal[i] + "')]");
+        for (int i = 0; i < listaCanal.length; i++) {
+            elemetoDeLaLista = withTimeoutOf(15, TimeUnit.SECONDS).find("//li[contains(.,'" + listaCanal[i] + "')]");
             MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(listaCanal[i])));
         }
     }
@@ -99,13 +104,81 @@ public class NuevaPolizaPage extends PageObject {
         listaOrganizacion.shouldBeVisible();
         listaCanal.shouldBeVisible();
         radioBotonIndividual.shouldBeVisible();
-        radioBotonIndividual.isSelected();
         radioBotonColectiva.shouldBeVisible();
-        List<WebElementFacade> botonesProductos = findAll("//a[contains(.,'Elegir')]");
-        botonesProductos.get(0).shouldNotBeEnabled();
-        botonesProductos.get(1).shouldNotBeEnabled();
-        System.out.println("botones elegir " + botonesProductos.size());
+
+        if (!radioBotonIndividual.getCssValue("background-position").equals("0% 0%")) {
+            MatcherAssert.assertThat("Individual está seleccionado", Is.is(Matchers.equalTo("Individual está seleccionado")));
+        } else {
+            MatcherAssert.assertThat("Individual no está seleccionado", Is.is(Matchers.equalTo("Individual está seleccionado")));
+        }
     }
+
+    public void validarBotonesDeshabilitadosPorProducto() {
+        this.validarBotonesDeLaTablaProductos(false);
+    }
+
+    public void validarBotonesDeLaTablaProductos(boolean habilitados) {
+        List<WebElementFacade> botonesProductos = findAll("//a[contains(.,'Elegir')]");
+        if (habilitados) {
+            for (int i = 0; i < botonesProductos.size(); i++) {
+                botonesProductos.get(i).shouldBeEnabled();
+            }
+        } else {
+            for (int i = 0; i < botonesProductos.size(); i++) {
+                botonesProductos.get(i).shouldNotBeEnabled();
+            }
+        }
+    }
+
+    public void seleccionarCanal(String canal) {
+        this.desplegarElementoDeLaLista(listaCanal);
+        this.seleccionarElementoDeLaLista(canal);
+    }
+
+    public void seleccionarElTipoDePoliza(String tipoPoliza) {
+        if ("Individual".equals(tipoPoliza)) {
+            if (radioBotonIndividual.getCssValue("background-position").equals("0% 0%")) {
+                guidewire.waitUntil(2000);
+                radioBotonIndividual.click();
+            }
+        } else {
+            if (!radioBotonIndividual.getCssValue("background-position").equals("0% 0%")) {
+                guidewire.waitUntil(2000);
+                radioBotonColectiva.click();
+            }
+        }
+    }
+
+    public void validarProductos(String productos, String tipoPoliza) {
+        String[] listaProductos = productos.split("[,]");
+        List<WebElement> filas;
+        if ("Individual".equals(tipoPoliza)) {
+            withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductosIndividual).waitUntilVisible();
+            filas = tablaProductosIndividual.findElements(By.tagName("tr"));
+        } else {
+            withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductosColectiva).waitUntilVisible();
+            filas = tablaProductosColectiva.findElements(By.tagName("tr"));
+        }
+        Integer productosEnLista = 0;
+        Integer productosEsperados = listaProductos.length;
+        if (!filas.isEmpty()) {
+            for (WebElement row : filas) {
+                List<WebElement> columna = row.findElements(By.tagName("td"));
+                for (int i = 0; i < listaProductos.length; i++) {
+                    if (listaProductos[i].equals(columna.get(1).getText())) {
+                        productosEnLista++;
+                        break;
+                    }
+                }
+            }
+        }
+        MatcherAssert.assertThat(productosEnLista.toString(), Is.is(Matchers.equalTo(productosEsperados.toString())));
+    }
+
+    public void validarBotonesHabilitados() {
+        this.validarBotonesDeLaTablaProductos(true);
+    }
+
 
     public void buscarCuenta(String numeroCuenta) {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
@@ -120,5 +193,4 @@ public class NuevaPolizaPage extends PageObject {
         grdNumeroCuenta = guidewire.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']");
         grdNumeroCuenta.click();
     }
-
 }

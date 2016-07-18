@@ -20,8 +20,8 @@ public class NuevaPolizaSteps extends ScenarioSteps{
         nuevaPolizaPage.seleccionarOrganizacion(organizacion);
     }
 
-    public void seleccionarCanal() {
-        nuevaPolizaPage.seleccionarCanal();
+    public void desplegarListaCanal() {
+        nuevaPolizaPage.desplegarListaCanal();
     }
 
     public void validaListaCanalDeAcuerdoALaOrganizacion(String datosListaCanal) {
@@ -34,5 +34,25 @@ public class NuevaPolizaSteps extends ScenarioSteps{
 
     public void validarCamposDeLaVentanaNuevaCotizacion() {
         nuevaPolizaPage.validarCamposDeLaVentanaNuevaCotizacion();
+    }
+
+    public void validarBotonesDeLaTablaProductosDeshabilitados() {
+        nuevaPolizaPage.validarBotonesDeshabilitadosPorProducto();
+    }
+
+    public void seleccionarCanal(String canal) {
+        nuevaPolizaPage.seleccionarCanal(canal);
+    }
+
+    public void seleccionarElTipoDePoliza(String tipoPoliza) {
+        nuevaPolizaPage.seleccionarElTipoDePoliza(tipoPoliza);
+    }
+
+    public void validarProductos(String productos, String tipoPoliza) {
+        nuevaPolizaPage.validarProductos(productos, tipoPoliza);
+    }
+
+    public void validarBotonesHabilitados() {
+        nuevaPolizaPage.validarBotonesHabilitados();
     }
 }
