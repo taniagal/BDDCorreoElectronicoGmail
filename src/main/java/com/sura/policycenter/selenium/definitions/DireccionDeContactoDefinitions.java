@@ -44,7 +44,6 @@ public class DireccionDeContactoDefinitions {
     @Then("en la lista de direcciones agregadas se debe ver la nueva direccion <direccion> estandarizada")
     public void verificarDireccion(){
         detallesContactoSteps.validar_direccion();
-        seusLoginSteps.close();
     }
 
     @Then("el sistema me debe impedir la repeticion del tipo de direccion y mostrar el mensaje <mensaje>")

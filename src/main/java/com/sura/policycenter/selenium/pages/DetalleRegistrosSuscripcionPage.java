@@ -79,7 +79,7 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
     }
 
     public void buscarRegistrosSuscripcion() {
-        mnuRegistrosSuscripcion.withTimeoutOf(8, TimeUnit.SECONDS).waitUntilPresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(mnuRegistrosSuscripcion).waitUntilPresent();
         mnuRegistrosSuscripcion.click();
     }
 
@@ -90,7 +90,7 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
         assertThat(lblTransaccion.getText(), is(equalTo(transaccion)));
     }
 
-    public void buscarDetalleRegistrosDeSucripcion() {
+    public void buscarDetalleRegistrosDeSuscripcion() {
         buscarRegistrosSuscripcion();
         lblTransaccionDetalle.withTimeoutOf(7, TimeUnit.SECONDS).waitUntilPresent();
         lblTransaccionDetalle.click();

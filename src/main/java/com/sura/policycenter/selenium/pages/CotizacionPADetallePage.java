@@ -134,7 +134,7 @@ public class CotizacionPADetallePage extends Guidewire {
                 List<WebElement> cells = row.findElements(By.tagName("td"));
                 String descCob = cells.get(0).getText();
                 String terminoCob = cells.get(1).getText();
-                if(!terminoCob.equals(" ")) {
+                if(!terminoCob.equals("-")) {
                     i++;
                     terminoCoberturas.put("dato" + i, terminoCob);
                 }

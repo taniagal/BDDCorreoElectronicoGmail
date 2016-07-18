@@ -34,8 +34,8 @@ public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
     }
 
     @Step
-    public void buscarDetalleRegistrosDeSucripcion() {
-        detalleRegistrosSuscripcionPage.buscarDetalleRegistrosDeSucripcion();
+    public void buscarDetalleRegistrosDeSuscripcion() {
+        detalleRegistrosSuscripcionPage.buscarDetalleRegistrosDeSuscripcion();
     }
 
     @Step
