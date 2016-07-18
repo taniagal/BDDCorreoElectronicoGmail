@@ -2,6 +2,8 @@ package com.sura.policycenter.selenium.definitions;
 
 
 import com.google.inject.name.Named;
+import java.util.HashMap;
+import java.util.Map;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.CotizacionDePolizaSteps;
 import net.thucydides.core.annotations.Managed;
@@ -14,8 +16,6 @@ import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class CotizacionDePolizaDefinitions {
 
@@ -25,8 +25,8 @@ public class CotizacionDePolizaDefinitions {
 
     private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
-    @Managed
-    WebDriver driver;
+    @Steps
+    CotizacionDePolizaSteps cotizacionDePolizaSteps;
 
     public CotizacionDePolizaDefinitions(){
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
@@ -42,9 +42,6 @@ public class CotizacionDePolizaDefinitions {
         infoCotizacionPoliza.put("impuestos", "Impuestos y cargos extra");
         infoCotizacionPoliza.put("costoTotal", "Costo total");
     }
-
-    @Steps
-    CotizacionDePolizaSteps cotizacionDePolizaSteps;
 
     @Given("he realizado la cotizacion <cotizacion>")
     public void irALaCotizacion(@Named("cotizacion") String cotizacion) {

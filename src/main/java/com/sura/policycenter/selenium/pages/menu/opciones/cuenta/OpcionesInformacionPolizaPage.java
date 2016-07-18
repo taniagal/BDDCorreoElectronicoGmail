@@ -3,16 +3,15 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.bytedeco.javacpp.opencv_core;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
@@ -364,14 +363,18 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void validarDecimalesPorcentaje(String mensaje) {
-        double descuentoPoliza = Double.parseDouble(textoDescuentoPoliza.getValue());
-        int pEntera = (int)descuentoPoliza;
-        double pDecimal = descuentoPoliza - pEntera;
-        String parteEntera = Integer.toString(pEntera);
-        String parteDecimal = Double.toString(pDecimal);
-        if(parteEntera.length()>2 || parteDecimal.length()>2){
-            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldBePresent();
-            MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
+        try {
+            double descuentoPoliza = Double.parseDouble(textoDescuentoPoliza.getValue());
+            int pEntera = (int) descuentoPoliza;
+            double pDecimal = descuentoPoliza - pEntera;
+            String parteEntera = Integer.toString(pEntera);
+            String parteDecimal = Double.toString(pDecimal);
+            if (parteEntera.length() > 2 || parteDecimal.length() > 2) {
+                withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldBePresent();
+                MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
+            }
+        }catch (StaleElementReferenceException element){
+            element.printStackTrace();
         }
     }
 

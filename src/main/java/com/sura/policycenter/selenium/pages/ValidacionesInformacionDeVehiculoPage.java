@@ -2,7 +2,7 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.guidewire.selenium.Guidewire;
-import java.util.List;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -70,9 +70,9 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
         waitUntil(200);
         campoTxtPlaca.click();
-        waitUntil(3000);
+        waitUntil(3500);
         selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
-        waitUntil(2000);
+        waitUntil(2500);
         selectItem(comboBoxVehiculoServicio,vehiculo.get("vehiculo_servicio"));
         if(!"null".equals(vehiculo.get("motor"))){
         campoTxtMotor.sendKeys(vehiculo.get("motor"));
@@ -85,9 +85,9 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     }
 
     public void agregarCodigoFasecolda(String codigo) {
-        campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
-        campoTxtPlaca.click();
-        waitUntil(1000);
+       campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
+       campoTxtPlaca.click();
+       waitUntil(1000);
     }
 
     public void verificarMensajes(ExamplesTable mensajes){

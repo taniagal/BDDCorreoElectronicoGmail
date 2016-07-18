@@ -46,8 +46,6 @@ public class DetallesDeUbicacionPage extends Guidewire{
     private WebElementFacade linkNombre;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     private WebElementFacade comboBoxNombreAgente;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
-    private WebElementFacade comboboxCodigoDeAgente;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']")
     private WebElementFacade subMenuNuevaCotizacion;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
