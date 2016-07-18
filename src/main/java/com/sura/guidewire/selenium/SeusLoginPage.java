@@ -1,5 +1,6 @@
 package com.sura.guidewire.selenium;
 
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;
@@ -34,7 +35,7 @@ public class SeusLoginPage extends Guidewire {
     }
 
     public void login(String pais, String usuario, String contrasenia) {
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(2,TimeUnit.SECONDS);
         if (!mnuContact.isPresent()) {
             this.usuario.waitUntilPresent();
             this.usuario.clear();

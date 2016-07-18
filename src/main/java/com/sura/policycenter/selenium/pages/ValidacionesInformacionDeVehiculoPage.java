@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.guidewire.selenium.Guidewire;
-
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -10,8 +9,10 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import javax.swing.*;
 
 public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
@@ -36,6 +37,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     private WebElementFacade campoTxtMotor;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']")
     private WebElementFacade campoTxtchasis;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
+    private WebElementFacade campoTxtValorAsegurado;
 
 
 
@@ -63,29 +66,34 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitForAllTextToAppear(vehiculo.get("modelo"));
+        waitUntil(2000);
         campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
+        waitUntil(200);
         campoTxtPlaca.click();
-        waitUntil(3500);
+        waitUntil(3000);
         selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
-        waitUntil(2500);
+        waitUntil(2000);
         selectItem(comboBoxVehiculoServicio,vehiculo.get("vehiculo_servicio"));
         if(!"null".equals(vehiculo.get("motor"))){
         campoTxtMotor.sendKeys(vehiculo.get("motor"));
         campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
+        if(!"null".equals(vehiculo.get("valor_asegurado"))) {
+            campoTxtValorAsegurado.clear();
+            campoTxtValorAsegurado.sendKeys(vehiculo.get("valor_asegurado"));
+        }
     }
 
     public void agregarCodigoFasecolda(String codigo) {
-       campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
-       campoTxtPlaca.click();
-       waitUntil(1000);
+        campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
+        campoTxtPlaca.click();
+        waitUntil(1000);
     }
 
     public void verificarMensajes(ExamplesTable mensajes){
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         for(Map<String, String> mensaje: mensajes.getRows()){
-            MatcherAssert.assertThat("Error: el servicio de riegos consultables no está disponible.", divMensaje.containsText(mensaje.get("mensaje")));
+            MatcherAssert.assertThat("Error: en la validacion del mensaje "+mensaje.get("mensaje"), divMensaje.containsText(mensaje.get("mensaje")));
         }
     }
 

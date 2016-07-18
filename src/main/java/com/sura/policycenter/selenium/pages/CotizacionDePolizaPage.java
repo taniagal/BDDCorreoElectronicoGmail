@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
+import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -111,7 +112,7 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void ingresarACotizacion() {
-        WebElementFacade titulo = esperarElemento(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']");
+        WebElementFacade titulo = withTimeoutOf(10, TimeUnit.SECONDS).find(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']");
         if(titulo.isCurrentlyVisible()){
             waitForTextToAppear("Calificación",5000);
         }else{
@@ -180,11 +181,13 @@ public class CotizacionDePolizaPage extends PageObject{
                 mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje)||
                 mensajeValidacion5.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
-        waitABit(15000);
+        Guidewire gw = new Guidewire(getDriver());
+        gw.waitUntil(15000);
+
     }
 
     public void validarTipoRiesgo() {
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(2,TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
             withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
         }else if(tituloCalificacion.isPresent()){
