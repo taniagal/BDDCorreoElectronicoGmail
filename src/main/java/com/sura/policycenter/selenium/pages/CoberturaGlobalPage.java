@@ -77,7 +77,8 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void cargarMultiplesUbicaciones(String valor) {
-        linkCoberturas.click();
+    	waitUntil(1000);
+        waitFor(linkCoberturas).click();
         checkBoxDanosMateriales.click();
         campoTxtValorAseguradoDanosMateriales.sendKeys(valor);
         linkDetalles.click();
