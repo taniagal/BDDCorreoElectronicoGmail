@@ -88,6 +88,8 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade grupoMensajes;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PreQualification']/div/span")
     private WebElementFacade botonCalificacion;
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
+    private WebElementFacade divMensaje;
 
     public CotizacionDePolizaPage(WebDriver driver){
         super(driver);
@@ -200,11 +202,10 @@ public class CotizacionDePolizaPage extends PageObject{
                 .withTimeout(30, TimeUnit.SECONDS)
                 .pollingEvery(5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
-        WebElementFacade elemento = espera.until(new Function<WebDriver, WebElementFacade>() {
+        return  espera.until(new Function<WebDriver, WebElementFacade>() {
             public WebElementFacade apply(WebDriver driver) {
                 return findBy(xpath);
             }
         });
-        return  elemento;
     }
 }
