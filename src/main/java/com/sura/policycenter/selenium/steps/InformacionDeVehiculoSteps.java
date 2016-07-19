@@ -32,4 +32,10 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
     public void pasar_a_pagina_siguiente() {
         opcionesInformacionDelVehiculoPage.validarPaginaSiguiente();
     }
+
+    @Step
+    public void ingresar_intereses_adicionales_o_conductor() {
+        opcionesInformacionDelVehiculoPage.ingresaBeneficiario();
+    }
+
 }

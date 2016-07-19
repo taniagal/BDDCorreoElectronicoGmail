@@ -12,8 +12,9 @@ Given se inicio una nueva suscripcion <numeroCuenta>
 When ingrese una nueva cotizacion para vehiculo <nomProducto>
 And vaya a registrar los datos del vehiculo
 And vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|
-|T64498|2009  |00601122        |ALTAMIRA          |Particular       |PR3B4  |SnR4 |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|
+|OFI19D|2009  |01601225        |ALTAMIRA          |Particular       |PR3B4  |SnR4 |null           |
+And ingrese el beneficiario o conductor en los intereses adicionales
 Then el sistema debe permitir pasar a la siguinete pagina
 
 Examples:

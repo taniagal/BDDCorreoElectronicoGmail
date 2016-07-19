@@ -22,7 +22,7 @@ Given se inicio una nueva suscripcion <numeroCuenta>
 When este expidiendo una poliza de propiedad comercial <nomProducto>
 And seleccione la poliza como reaseguro aceptado
 Then la etiqueta del tomador debe cambiar a tomador cedente
-And la etiqueta reaseguro debe marcarce a (si) automaticamente sin ser editable
+And la etiqueta reaseguro debe marcarce (si) automaticamente sin ser editable
 And se debe ocultar la opcion de tomadores adicionales
 
 Examples:

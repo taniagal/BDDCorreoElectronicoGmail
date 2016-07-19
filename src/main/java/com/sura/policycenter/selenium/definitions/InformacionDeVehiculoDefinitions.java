@@ -29,6 +29,11 @@ public class InformacionDeVehiculoDefinitions {
         informacionDeVehiculoSteps.ingresar_a_cotizacion_de_vehiculo();
     }
 
+    @When("ingrese el beneficiario o conductor en los intereses adicionales")
+    public void whenvayaARegistrarLosDatosDelBeneficiario(){
+        informacionDeVehiculoSteps.ingresar_intereses_adicionales_o_conductor();
+    }
+
     @Then("el sistema debe permitir pasar a la siguinete pagina")
     public void thenElSistemaDebeMostrarLosDatosCorrespondienteAlVehiculo() {
         informacionDeVehiculoSteps.pasar_a_pagina_siguiente();

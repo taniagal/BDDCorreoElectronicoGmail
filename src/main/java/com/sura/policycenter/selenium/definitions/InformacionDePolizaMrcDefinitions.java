@@ -87,7 +87,7 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.valida_opciones_reaseguro();
     }
 
-    @Then("la etiqueta reaseguro debe marcarce a (si) automaticamente sin ser editable")
+    @Then("la etiqueta reaseguro debe marcarce (si) automaticamente sin ser editable")
     public void cambioTomadorReaseguro() {
         informacionDePolizaMrcSteps.valida_opciones_reaseguro();
     }

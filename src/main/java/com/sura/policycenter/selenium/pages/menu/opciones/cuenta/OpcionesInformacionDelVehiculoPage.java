@@ -3,11 +3,14 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import javax.swing.*;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -32,19 +35,47 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
     WebElementFacade lstModelo;
 
-    @FindBy (xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     WebElementFacade btnSiguinete;
 
-    /*@FindBy (xpath = "")
-    WebElementFacade;*/
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestCardTab-btnInnerEl']")
+    WebElementFacade btnInteresAdicional;
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
+    WebElementFacade btnAgregar;
 
-    /*
-     * Tipo de beneficiario (interes adicional)
-     * Tipo de servicio  .//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:service_DV-labelEl']
-     * Comercial
-     * Técnica
-     */
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-itemEl']")
+    WebElementFacade btnItemDirec;
+
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ttlBar']")
+    WebElementFacade lblBuscarDirec;
+
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
+    WebElementFacade txtTipoDoc;
+
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
+    WebElementFacade txtNumDoc;
+
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
+    WebElementFacade lblPrimerNombre;
+
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    WebElementFacade btnBuscar;
+
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']")
+    WebElementFacade btnSeleccion;
+
+    @FindBy(xpath = ".//div[3]/div/table/tbody/tr/td[5]/div")
+    WebElementFacade lstTipoBeneficia;
+
+    @FindBy(xpath = ".//li[contains(.,'Asegurado')]")
+    WebElementFacade itmAsegurado;
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:VehicleDetailCardTab-btnInnerEl']")
+    WebElementFacade btnDetalleVehiculo;
+
+    @FindBy(xpath = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs")
+    WebElementFacade cajaMensaje;
 
 
     public OpcionesInformacionDelVehiculoPage(WebDriver driver) {
@@ -65,9 +96,33 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         opcionPolizaMrc.waitInfoPoliza(lblDetallesVehiculo);
     }
 
+
+    public void ingresaBeneficiario() {
+        btnInteresAdicional.click();
+        btnAgregar.click();
+        btnItemDirec.click();
+        opcionPolizaMrc.waitInfoPoliza(lblBuscarDirec);
+        txtTipoDoc.clear();
+        waitUntil(800);
+        txtTipoDoc.sendKeys("CEDULA DE CIUDADANIA");
+        txtTipoDoc.sendKeys(Keys.ENTER);
+        opcionPolizaMrc.waitInfoPoliza(lblPrimerNombre);
+        txtNumDoc.sendKeys("1234567892");
+        btnBuscar.click();
+        opcionPolizaMrc.waitInfoPoliza(btnSeleccion);
+        btnSeleccion.click();
+        opcionPolizaMrc.waitInfoPoliza(btnDetalleVehiculo);
+        lstTipoBeneficia.click();
+        itmAsegurado.click();
+        btnDetalleVehiculo.click();
+        opcionPolizaMrc.waitInfoPoliza(btnSiguinete);
+    }
+
     public void validarPaginaSiguiente() {
         btnSiguinete.click();
-        assertThat("el al mostrar nombre completo", !lblCoberturaPersona.isPresent());
+        opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
+        assertThat("el al mostrar nombre completo", !cajaMensaje.containsText("No hay conductores"));
+       JOptionPane.showMessageDialog(null, "sos puto");
     }
 
     public void validaCamposInformacionVehiculo() {
@@ -125,7 +180,6 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         assertThat(res, "No estan presentes los elementos ".equals(res));
     */
     }
-
 
 
 }
