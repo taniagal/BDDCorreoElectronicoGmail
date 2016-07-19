@@ -15,7 +15,7 @@ Given se ha realizado la cotizacion MRC <cotizacion>
 When ingrese a consultar la cotizacion
 Then debo ver la informacion de la cotizacion
 |cotizacion|vigencia                |tomador              |tipoDocumento       |numeroDocumento|direccion                                  |tipoDireccion|descripcionDireccion                      |empresaAseguradora       |prima     |impuestos|total     |
-|22222237  |06/12/2016 - 06/12/2017 |FRANK RAMIREZ ALZATE |CEDULA DE CIUDADANIA|123456         |CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda     |Created by the Address Builder with code 0|Acme Low Hazard Insurance|$19,342.00|$1,064.00|$20,406.00|
+|22222237  |06/19/2016 - 06/19/2017 |FRANK RAMIREZ ALZATE |CEDULA DE CIUDADANIA|123456         |CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda     |Created by the Address Builder with code 0|Acme Low Hazard Insurance|$20,656.00|$1,136.00|$21,792.00|
 
 Examples:
 |cotizacion |
@@ -47,7 +47,7 @@ Then no debe permitir cotizar; se debe mostrar el mensaje de respuesta <mensaje>
 
 Examples:
 |cotizacion|mensaje|
-|22223230  |el(los) rol(es) (ASEGURADO NOMBRADO, TITULAR DE LA CUENTA) es un riesgo no estándar y debe ser autorizado.|
+|22223230  |El tomador es un riesgo no es estandar y debe ser analizado por el Comité de Evaluación|
 
 Scenario: cotizar una poliza MRC con un riesgo PEP
 Given se registraron los riesgos y coberturas que se desean cotizar <cotizacion>
@@ -57,7 +57,7 @@ Then no debe permitir cotizar; se debe mostrar el mensaje de respuesta <mensaje>
 
 Examples:
 |cotizacion|mensaje|
-|22223230  |Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|22223230  |es un riesgo no estándar y debe ser autorizado.|
 
 Scenario: validacion de exclusividad en la cotizacion
 Given se registraron los riesgos y coberturas que se desean cotizar <cotizacion>
