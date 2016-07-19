@@ -82,18 +82,14 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade itemRevisionPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:SubmissionWizard_ReviewSummaryDV:PrimaryNamedInsured-inputEl']")
     private WebElementFacade tomadorPrimario;
-    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[2]")
-    private WebElementFacade mensajeValidacion1;
-    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[3]")
-    private WebElementFacade mensajeValidacion2;
-    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[4]")
-    private WebElementFacade mensajeValidacion3;
-    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[5]")
-    private WebElementFacade mensajeValidacion4;
-    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[6]")
-    private WebElementFacade mensajeValidacion5;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:ReviewSummaryCV:0:PolicyLineSummaryPanelSet:0:0:drivername-inputEl']")
+    private WebElementFacade asegurado;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
+    private WebElementFacade grupoMensajes;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PreQualification']/div/span")
     private WebElementFacade botonCalificacion;
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
+    private WebElementFacade divMensaje;
 
     public CotizacionDePolizaPage(WebDriver driver){
         super(driver);
@@ -170,17 +166,14 @@ public class CotizacionDePolizaPage extends PageObject{
 
     public void validarBloqueoCotizacion(String mensaje) {
         waitForTextToAppear("Resultados de validación",20000);
-        boolean validacionMensaje = mensajeValidacion1.getText().contains(mensaje)||mensajeValidacion2.getText().contains(mensaje)||
-                mensajeValidacion3.getText().contains(mensaje)||mensajeValidacion4.getText().contains(mensaje)||
-                mensajeValidacion5.getText().contains(mensaje);
+        boolean validacionMensaje = grupoMensajes.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
         Guidewire gw = new Guidewire(getDriver());
         gw.waitUntil(15000);
-
     }
 
     public void validarTipoRiesgo() {
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(2,TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
             withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
         }else if(tituloCalificacion.isPresent()){
