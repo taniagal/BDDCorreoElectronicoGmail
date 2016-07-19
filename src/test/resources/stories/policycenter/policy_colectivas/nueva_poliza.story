@@ -46,7 +46,7 @@ Examples:
 |Sura|Autos + Soat,Canal Tradicional,Televentas,Venta directa|
 |Tuya|Tuya|
 
-Scenario: validar tabla de productos cuando es poliza individual y selecciona la organizacion y el canal
+Scenario: validar tabla de productos de acuerdo al tipo de poliza, organizacion y canal
 When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
@@ -69,11 +69,20 @@ Examples:
 |Bancolombia    |Leasing            |Colectiva |Bank Autos                   |
 |Bancolombia    |Renting            |Colectiva |Commercial Personal Fleet    |
 |Bancolombia    |Sufi               |Colectiva |Bank Autos                   |
-|Bancolombia    |Televentas         |Colectiva |                             |
-|Exito          |Exito              |Colectiva |                             |
-|GMAC           |GMAC               |Colectiva |                             |
-|Sura           |Autos + Soat       |Colectiva |                             |
 |Sura           |Canal Tradicional  |Colectiva |Commercial Fleet,Commercial Personal Fleet|
-|Sura           |Televentas         |Colectiva |                             |
-|Sura           |Venta directa      |Colectiva |                             |
 |Tuya           |Tuya               |Colectiva |Bank Autos                   |
+
+Scenario: validar tabla de productos vacia cuando la organizacion y el canal no puede expedir
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+Then no debe mostrar la lista de productos
+
+Examples:
+|organizacion   |canal              |tipoPoliza|
+|Bancolombia    |Televentas         |Colectiva |
+|Exito          |Exito              |Colectiva |
+|GMAC           |GMAC               |Colectiva |
+|Sura           |Autos + Soat       |Colectiva |
+|Sura           |Televentas         |Colectiva |
+|Sura           |Venta directa      |Colectiva |

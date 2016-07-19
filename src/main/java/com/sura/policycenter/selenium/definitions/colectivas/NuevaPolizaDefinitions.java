@@ -79,4 +79,9 @@ public class NuevaPolizaDefinitions {
     public void validar_botones_para_elegir_producto_habilitados(){
         nuevaPolizaSteps.validarBotonesHabilitados();
     }
+
+    @Then("no debe mostrar la lista de productos")
+    public void validar_que_no_se_listan_productos(){
+        nuevaPolizaSteps.validarNoSeListanProductos();
+    }
 }

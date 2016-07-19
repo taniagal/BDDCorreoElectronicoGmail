@@ -50,7 +50,6 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(elementoDeLaLista).waitUntilPresent();
         guidewire.waitUntil(2000);
         elementoDeLaLista.click();
     }
@@ -83,6 +82,7 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void seleccionarOrganizacion(String organizacion) {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(listaOrganizacion).shouldBePresent();
         listaOrganizacion.sendKeys(Keys.ESCAPE);
         this.desplegarElementoDeLaLista(listaOrganizacion);
         this.seleccionarElementoDeLaLista(organizacion);
@@ -131,6 +131,7 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void seleccionarCanal(String canal) {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(listaCanal).waitUntilPresent();
         this.desplegarElementoDeLaLista(listaCanal);
         this.seleccionarElementoDeLaLista(canal);
     }
@@ -138,12 +139,12 @@ public class NuevaPolizaPage extends PageObject {
     public void seleccionarElTipoDePoliza(String tipoPoliza) {
         if ("Individual".equals(tipoPoliza)) {
             if (radioBotonIndividual.getCssValue("background-position").equals("0% 0%")) {
-                guidewire.waitUntil(2000);
+                guidewire.waitUntil(1500);
                 radioBotonIndividual.click();
             }
         } else {
             if (!radioBotonIndividual.getCssValue("background-position").equals("0% 0%")) {
-                guidewire.waitUntil(2000);
+                guidewire.waitUntil(1500);
                 radioBotonColectiva.click();
             }
         }
@@ -152,15 +153,19 @@ public class NuevaPolizaPage extends PageObject {
     public void validarProductos(String productos, String tipoPoliza) {
         String[] listaProductos = productos.split("[,]");
         List<WebElement> filas;
-        if ("Individual".equals(tipoPoliza)) {
-            withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductosIndividual).waitUntilVisible();
-            filas = tablaProductosIndividual.findElements(By.tagName("tr"));
-        } else {
-            withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductosColectiva).waitUntilVisible();
-            filas = tablaProductosColectiva.findElements(By.tagName("tr"));
-        }
         Integer productosEnLista = 0;
         Integer productosEsperados = listaProductos.length;
+        if ("Individual".equals(tipoPoliza)) {
+            waitForTextToAppear(listaProductos[0], 10000);
+            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaProductosIndividual).waitUntilPresent();
+            filas = tablaProductosIndividual.findElements(By.tagName("tr"));
+
+        } else {
+            waitForTextToAppear(listaProductos[0], 10000);
+            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaProductosColectiva).waitUntilPresent();
+            filas = tablaProductosColectiva.findElements(By.tagName("tr"));
+        }
+
         if (!filas.isEmpty()) {
             for (WebElement row : filas) {
                 List<WebElement> columna = row.findElements(By.tagName("td"));
@@ -179,6 +184,10 @@ public class NuevaPolizaPage extends PageObject {
         this.validarBotonesDeLaTablaProductos(true);
     }
 
+
+    public void validarNoSeListanProductos(){
+        MatcherAssert.assertThat(waitFor(tablaProductosColectiva).getText(), Is.is(Matchers.equalTo("")));
+    }
 
     public void buscarCuenta(String numeroCuenta) {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
