@@ -1,6 +1,6 @@
 package com.sura.guidewire.acciones.navegacion;
 
-import com.sura.gw.policy.administracion.consulta.cuenta.pages.BusquedaDeCuentasPage;
+import com.sura.gw.policy.cuenta.pages.BusquedaDeCuentasPage;
 import net.serenitybdd.core.pages.PageObject;
 
 public class AccionBuscarNavBar extends PageObject{

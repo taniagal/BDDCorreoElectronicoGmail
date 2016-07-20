@@ -1,7 +1,10 @@
 package com.sura.gw.navegacion.util.widget;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.RenderedPageObjectView;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +20,8 @@ public class TableWidgetPage extends PageObject {
 
     private static String TOOLBAR = ".//*[contains(@id,'gtoolbar') and contains(@id,'targetEl') and  contains(@class,'x-box-target')]/*";
     private static String ENCABEZADO_TABLA = ".//div[ (descendant::*[contains(@id, 'gridcolumn')]) and contains(@id,'headercontainer') and contains(@id,'targetEl') and contains(@class,'x-box-target') and contains(@role,'presentation')]/div";
-    private static String TABLA = ".//*[(parent::*[contains(@tabindex, '-1')]) and contains(@id,'gridview') and contains(@id,'table') and contains(@class,'x-gridview') and contains(@class,'table') and contains(@class,'x-grid-table')]";
+    private static String TABLA = ".//*[contains(@id,'gridview') and contains(@id,'table') and contains(@class,'x-gridview') and contains(@class,'table') and contains(@class,'x-grid-table')]";
+    ///    private static String TABLA = ".//*[(parent::*[contains(@tabindex, '-1')]) and contains(@id,'gridview') and contains(@id,'table') and contains(@class,'x-gridview') and contains(@class,'table') and contains(@class,'x-grid-table')]";
     private static String LISTA_COMBO_DESPLEGABLE = ".//ul[contains(@class,'x-list-plain')]";
 
     private List<WebElement> encabezadoListWE;
@@ -25,7 +29,7 @@ public class TableWidgetPage extends PageObject {
     private WebElement contenedorWE = null;
     private WebElement combo;
     private WebElement tablaWE;
-    private List<WebElement> filasDeTabla;
+    private List<WebElementFacade> filasDeTabla;
 
     public TableWidgetPage(WebDriver driver) {
         super(driver);
@@ -34,15 +38,22 @@ public class TableWidgetPage extends PageObject {
 
     public void buscarTabla(String xpathDivContenedorDeTabla) {
 
-        contenedorWE = getDriver().findElement(By.xpath(xpathDivContenedorDeTabla));
-        if (contenedorWE != null) {
-            tablaWE = contenedorWE.findElement(By.xpath(TABLA));
+        try {
+            contenedorWE = getDriver().findElement(By.xpath(xpathDivContenedorDeTabla));
+            if (contenedorWE != null) {
+                tablaWE = contenedorWE.findElement(By.xpath(TABLA));
+            }
+        } catch (Exception e) {
+            Serenity.throwExceptionsImmediately();
         }
+
 
     }
 
-    public List<WebElement> obtenerFilas() {
-        filasDeTabla = getDriver().findElements(By.xpath(TABLA.concat("/tbody/tr")));
+    public List<WebElementFacade> obtenerFilas() {
+        RenderedPageObjectView renderedView = new RenderedPageObjectView(getDriver(), this, getWaitForTimeout(), true);
+        filasDeTabla = renderedView.findAll(TABLA.concat("/tbody/tr"));
+        //filasDeTabla = getDriver().findElements(By.xpath(TABLA.concat("/tbody/tr")));
         return filasDeTabla;
     }
 
@@ -60,7 +71,7 @@ public class TableWidgetPage extends PageObject {
         return this;
     }
 
-    protected TableWidgetPage seleccionarDeComboConLabel(String nombreLabelDeComboBox) {
+    public void seleccionarDeComboConLabel(String nombreLabelDeComboBox) {
         String label = null;
         Boolean capturarElementoSiguiente = false;
         for (WebElement opcionToolbar : toolbarListWE) {
@@ -69,21 +80,15 @@ public class TableWidgetPage extends PageObject {
                 continue;
             }
             if (capturarElementoSiguiente == true) {
-                label = opcionToolbar.findElement(By.xpath("/tbody/tr/td/label")).getText();
-                if (label.equals(nombreLabelDeComboBox)) {
-                    combo = opcionToolbar.findElement(By.xpath("/tbody/tr/td/table/tbody/tr/td/input"));
-                    combo.click();
-                    findBy(".//ul[contains(@class,'x-list-plain')]").waitUntilVisible();
-                    shouldBeVisible(findBy(".//ul[contains(@class,'x-list-plain')]"));
-                }
+                combo = opcionToolbar.findElement(By.xpath("tbody/tr/td/table/tbody/tr/td/input"));
+                combo.click();
+                findBy(".//ul[contains(@class,'x-list-plain')]").waitUntilVisible();
+                shouldBeVisible(findBy(".//ul[contains(@class,'x-list-plain')]"));
             }
 
-            if (label == null) {
-                LOGGER.error("COMBO DE NOMBRE:" + label + " NO EXISTENTE EN EL TOOLBAR");
-            }
         }
 
-        return this;
+
     }
 
     public void seleccionarDeComboConValor(String valorInputDeComboBox) {
@@ -111,7 +116,7 @@ public class TableWidgetPage extends PageObject {
         for (WebElement opcion : opcionesDeCombo) {
             if (opcion.getText().contains(nombreDeOpcionDeCombo)) {
                 opcion.click();
-                fluent().await().atMost(5, TimeUnit.SECONDS);
+                fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
             }
         }
 

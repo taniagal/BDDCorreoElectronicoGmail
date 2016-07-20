@@ -3,13 +3,16 @@ package com.sura.gw.navegacion.steps;
 import com.sura.gw.navegacion.pages.GuidewireLoginPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import net.thucydides.core.steps.StepInterceptor;
+import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.LoggerFactory;
 
 import static com.sura.gw.navegacion.pages.GuidewireLoginPages.*;
 
 public class GuidewireLoginSteps extends ScenarioSteps {
 
-
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     private GuidewireLoginPages loginPage;
 
@@ -31,6 +34,9 @@ public class GuidewireLoginSteps extends ScenarioSteps {
 
     @Step
     public void loguearse_a_policycenter_con_rol(String rolUsuario){
+
+        SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
+        abrir_navegador(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
 
         if (loginPage.elemento(TXT_USUARIO_SEUS) == null && loginPage.elemento(TXT_CONTRASENIA_SEUS) == null) {
             if ("Asesor".equals(rolUsuario)){
@@ -67,4 +73,6 @@ public class GuidewireLoginSteps extends ScenarioSteps {
         }
 
     }
+
+
 }

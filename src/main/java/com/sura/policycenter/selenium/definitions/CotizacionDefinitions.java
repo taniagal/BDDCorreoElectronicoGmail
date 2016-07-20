@@ -64,7 +64,7 @@ public class CotizacionDefinitions {
         cotizador.digitar_numero_de_cuenta(numeroCuenta);
         cotizador.digitar_la_tecla();
 
-        LOGGER.info("CotizacionDefinitions.buscarCuentaPorNumeroDeCuenta");
+        LOGGER.info("CotizacionDefinitions.cuandoBusqueCuentaExistenteNumero");
     }
     @When("se ingrese la primera letra del nombre del agente $nombre")
     @Alias("se ingrese una palabra completa $nombre")

@@ -41,8 +41,6 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
 
     @WhenPageOpens
     public void accionesPreviasEnLaCargaDeLaPagina() {
-        getDriver().manage().window().maximize();
-
     }
 
     public void clicBotonLogIn(){
@@ -62,11 +60,11 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
             elemento = element(find(By.xpath(xpath)));
 
         } catch (NoSuchElementException e) {
-            LOGGER.error(" \nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("Elemento de NuevaCotizacionPage no encontrado Elemento: " + xpath + "TRACE: " + e);
         } catch (StaleElementReferenceException sere){
-            LOGGER.error(" \nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
+            LOGGER.info("Elemento de NuevaCotizacionPage no existe en el DOM Elemento: " + xpath + "TRACE: " + sere);
         } catch (Exception e) {
-            LOGGER.error("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("Error desconocido en: NuevaCotizacionPage.elemento Elemento: " + xpath + "TRACE: " + e);
         }
 
         return elemento;
