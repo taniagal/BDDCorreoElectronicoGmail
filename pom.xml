@@ -104,7 +104,7 @@
                 <configuration>
                     <includes>
                         <include>**/policycenter/*.java</include>
-                        <include>**/policy/coberturas/CoberturaMultiriesgoCorporativoValidaciones.java</include>
+                    <!--    <include>**/policy/coberturas/CoberturaMultiriesgoCorporativoValidaciones.java</include> -->
                     </includes>
                     <excludes>
                         <exclude>**/policycenter/MainStories.java</exclude>
