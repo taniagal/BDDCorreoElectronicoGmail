@@ -23,7 +23,7 @@ Examples:
 |numeroCuenta|estado|transaccion|
 |C000902244|Estado|Transacción|
 
-Scenario: Consultar el detalle de los grupos de cotización y renovación
+Scenario: Consultar el detalle de los grupos de cotizacion y renovación
 Given busco una cuenta existente como <numeroCuenta>
 When busque el de detalle de los registros de suscripcion
 Then debo ver la siguiente informacion producto <producto>, <nroEnvio>, <estado>, <nroPoliza>
