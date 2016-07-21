@@ -34,7 +34,7 @@ public class CoberturaMultiriesgoCorporativoValidacionesBasica {
     InformacionDePoliza informacionDePoliza;
 
 
-    @Given("que estoy en la información de la póliza con numero de subscripción <numSubscripcion>")
+    @Given("que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>")
     public void dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcion(@Named("numSubscripcion") String numSubscripcion) {
 
         guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
@@ -45,7 +45,7 @@ public class CoberturaMultiriesgoCorporativoValidacionesBasica {
         LOGGER.info("CoberturaMultiriesgoCorporativoValidacionesBasica.dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcion");
     }
 
-    @When("cuando intente ingresar un artículo para una ubicación para comprobar las validaciones de error del artículo")
+    @When("cuando intente ingresar un articulo para una ubicacion para comprobar las validaciones de error del articulo")
     public void cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo() {
 
         informacionDePoliza.cuandoEditeInformacionDeLaPoliza();
@@ -57,7 +57,7 @@ public class CoberturaMultiriesgoCorporativoValidacionesBasica {
     }
 
 
-    @Then("espero ver mensajes de advertencia indicándome que sobrepasé los límites de valores para el valor del artículo")
+    @Then("espero ver mensajes de advertencia indicandome que sobrepase los limites de valores para el valor del articulo")
     public void esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo() {
         informacionDePoliza.entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo();
         LOGGER.info("CoberturaMultiriesgoCorporativoValidacionesBasica.esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo");
