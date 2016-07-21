@@ -12,6 +12,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.Map;
@@ -134,16 +135,18 @@ public class NuevaPolizaPage extends PageObject {
         waitFor(listaCanal);
         this.desplegarElementoDeLaLista(listaCanal);
         this.seleccionarElementoDeLaLista(canal);
+        waitFor(ExpectedConditions.attributeToBe(listaCanal, "value", canal));
     }
 
     public void seleccionarElTipoDePoliza(String tipoPoliza) {
+        guidewire.waitUntil(500);
         if ("Individual".equals(tipoPoliza)) {
-            if (radioBotonIndividual.getCssValue("background-position").equals("0% 0%")) {
+            if ($(radioBotonIndividual).getCssValue("background-position").equals("0% 0%")) {
                 guidewire.waitUntil(1500);
                 radioBotonIndividual.click();
             }
         } else {
-            if (!radioBotonIndividual.getCssValue("background-position").equals("0% 0%")) {
+            if (!$(radioBotonIndividual).getCssValue("background-position").equals("0% 0%")) {
                 guidewire.waitUntil(1500);
                 radioBotonColectiva.click();
             }

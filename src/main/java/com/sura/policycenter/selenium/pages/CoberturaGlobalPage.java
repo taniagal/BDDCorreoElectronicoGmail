@@ -47,7 +47,7 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void irACoberturasGlobales() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
     }
 
     public void navegarPorCobertura(String descripcion, String tipoCobertura){
