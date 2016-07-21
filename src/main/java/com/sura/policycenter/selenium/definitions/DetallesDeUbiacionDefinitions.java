@@ -17,9 +17,9 @@ public class DetallesDeUbiacionDefinitions {
     /**
      * ESCENARIO 1
      */
-    @Given("estoy cotizando una poliza de MRC en cuenta <cuenta> y producto <producto>")
-    public void agregarPoliza(@Named("cuenta")String cuenta,@Named("producto")String producto) {
-        detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta,producto);
+    @Given("estoy cotizando una poliza de MRC en cuenta <cuenta>")
+    public void agregarPoliza(@Named("cuenta")String cuenta) {
+        detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta);
     }
 
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>")
@@ -31,6 +31,11 @@ public class DetallesDeUbiacionDefinitions {
     @When("descripcion <descripcion>, actividad economica <actividad>")
     public void agregarUbicacion(@Named("actividad")String actividad, @Named("descripcion")String descripcion){
         detallesDeUbicacionSteps.agregar_ubicacion(descripcion, actividad);
+    }
+
+    @When("seleccione el producto <producto> para expedir la poliza")
+    public void elegirProducto(@Named("producto") String producto){
+        detallesDeUbicacionSteps.elegirProducto(producto);
     }
 
     @Then("espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaciones la nueva ubicaciOn ingresada")

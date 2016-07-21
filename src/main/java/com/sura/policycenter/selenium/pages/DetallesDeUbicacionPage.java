@@ -9,6 +9,7 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class DetallesDeUbicacionPage extends Guidewire{
 
@@ -62,12 +63,14 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public void  seleccionarProducto(String nomProducto) {
-        List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
-        List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
+        List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
+        List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
         int i = 0;
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
                 if (nomProducto.equals(descripcion.getText())) {
+                    waitFor(botones.get(i));
+                    botones.get(i).waitUntilEnabled();
                     botones.get(i).click();
                 }
                 i++;
@@ -84,7 +87,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
         subMenuNuevaCotizacion.waitUntilPresent().click();
     }
 
-    public void setDatos(String cuenta, String producto) {
+    public void setDatos(String cuenta) {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(numeroDeCuenta).shouldBePresent();
         numeroDeCuenta.sendKeys(cuenta);
         comboBoxNombreAgente.click();
@@ -93,6 +96,9 @@ public class DetallesDeUbicacionPage extends Guidewire{
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
+    }
+
+    public void elegirProducto(String producto){
         seleccionarProducto(producto);
     }
 

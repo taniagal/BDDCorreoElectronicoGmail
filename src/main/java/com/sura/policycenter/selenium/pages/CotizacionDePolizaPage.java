@@ -111,7 +111,7 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void verDetalleCotizacion() {
-        waitForTextToAppear("Calificación",5000);
+        waitForTextToAppear("Calificación",10000);
         setImplicitTimeout(2, TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
             waitForTextToAppear(tituloDePagina.getText(),2000);

@@ -32,20 +32,6 @@ Then me debe mostrar las organizaciones:
 |Sura|
 |Tuya|
 
-Scenario: Validar la lista canal cuando la organizacion
-When seleccione la organizacion <organizacion>
-And despliegue la lista canal
-Then la lista de canal debe mostrar los siguientes datos <datosListaCanal>
-And la tabla de productos con los productos de Autos y Multiriesgo corporativo y los botones para elegir producto deshabilitados
-
-Examples:
-|organizacion|datosListaCanal|
-|Bancolombia|Leasing,Renting,Sufi,Televentas|
-|Exito|Exito|
-|GMAC|GMAC|
-|Sura|Autos + Soat,Canal Tradicional,Televentas,Venta directa|
-|Tuya|Tuya|
-
 Scenario: validar tabla de productos de acuerdo al tipo de poliza, organizacion y canal
 When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>

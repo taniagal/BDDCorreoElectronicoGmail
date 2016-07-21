@@ -50,7 +50,7 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
-        guidewire.waitUntil(2000);
+        guidewire.waitUntil(2500);
         elementoDeLaLista.click();
     }
 
@@ -82,7 +82,7 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void seleccionarOrganizacion(String organizacion) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(listaOrganizacion).shouldBePresent();
+        waitFor(listaOrganizacion);
         listaOrganizacion.sendKeys(Keys.ESCAPE);
         this.desplegarElementoDeLaLista(listaOrganizacion);
         this.seleccionarElementoDeLaLista(organizacion);
@@ -131,7 +131,7 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void seleccionarCanal(String canal) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(listaCanal).waitUntilPresent();
+        waitFor(listaCanal);
         this.desplegarElementoDeLaLista(listaCanal);
         this.seleccionarElementoDeLaLista(canal);
     }
