@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -10,11 +11,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class ModificacionInformacionPolizaPAPage extends Guidewire{
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionInformacionPolizaPAPage.class);
 
     Actions act = new Actions(getDriver());
 
@@ -86,6 +90,10 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
     private WebElementFacade campoFechaFinVigencia;
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:WrittenDate-inputEl']")
     private WebElementFacade campoFechaExpedicion;
+    @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton-labelEl']")
+    private WebElementFacade labelTomadorSecundario;
+    @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    private WebElementFacade botonCotizar;
 
     public ModificacionInformacionPolizaPAPage(WebDriver driver) {
         super(driver);
@@ -103,12 +111,14 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
     }
 
     public void irAModificarInformacionPoliza() {
+        waitUntil(2500);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuAcciones).shouldBePresent();
         menuAcciones.click();
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(itemCambiarPoliza).shouldBeVisible();
         itemCambiarPoliza.click();
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
         botonSiguienteInfoPoliza.click();
+        waitUntil(2000);
     }
 
     public void validarInformacionPoliza(Map<String, String> labelsInformacionPoliza, ExamplesTable informacionPoliza) {
@@ -150,5 +160,88 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
         MatcherAssert.assertThat(campoFechaInicioVigencia.getText(), Is.is(Matchers.equalTo(datosPoliza.get("fechaInicioVigencia"))));
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(datosPoliza.get("fechaFinVigencia"))));
         MatcherAssert.assertThat(campoFechaExpedicion.getText(), Is.is(Matchers.equalTo(datosPoliza.get("fechaExpedicion"))));
+    }
+
+    public void adicionarSegundoTomador(String tipoDocumento, String numeroDocumento) {
+        waitUntil(5000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTomadorSecundario).shouldBePresent();
+        WebElementFacade botonTomadorSecundario = findBy(".//tr[12]/td/table/tbody/tr/td[2]/table/tbody/tr/td[3]/a/img");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonTomadorSecundario).click();
+        WebElementFacade itemPersonaDirectorio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-textEl']");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
+        waitUntil(1000);
+        WebElementFacade campoTipoDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTipoDocumento).typeAndTab(tipoDocumento);
+        waitUntil(1000);
+        WebElementFacade campoNumeroDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoNumeroDocumento).type(numeroDocumento);
+        WebElementFacade botonBuscarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonBuscarContacto).click();
+        WebElementFacade botonSeleccionarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSeleccionarContacto).shouldBeVisible();
+        botonSeleccionarContacto.click();
+    }
+
+    public void validarRegistroSegundoTomador(Map<String, String> datosSegundoTomador) {
+        WebElementFacade labelTipoDocumentoSegundoTomador = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:DocumentType-labelEl']");
+        WebElementFacade labelNumeroDocumentoSegundoTomador = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:OfficialIDDV_Input-labelEl']");
+        WebElementFacade labelTelefonoSegundoTomador = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-labelEl']");
+        WebElementFacade labelDireccionSegundoTomador = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:SecondaryAddress-labelEl']");
+        WebElementFacade labelTipoDireccionSegundoTomador = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:AddressType-labelEl']");
+        WebElementFacade labelDescripcionDireccionSegundoTomador = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:AddressDescription-labelEl']");
+        WebElementFacade campoTipoDocumentoSegundoTomador = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:DocumentType-inputEl']");
+        WebElementFacade campoNumeroDocumentoSegundoTomador = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']");
+        WebElementFacade campoDireccionSegundoTomador = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:SecondaryAddress-inputEl']");
+        WebElementFacade campoTipoDireccionSegundoTomador = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:AddressType-inputEl']");
+        WebElementFacade campoDescripcionDireccionSegundoTomador = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:AddressDescription-inputEl']");
+        String validacion = null;
+        try {
+            MatcherAssert.assertThat(labelTipoDocumentoSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("tipoDocumento"))));
+            MatcherAssert.assertThat(labelNumeroDocumentoSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("numeroDocumento"))));
+            MatcherAssert.assertThat(labelTelefonoSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("telefono"))));
+            MatcherAssert.assertThat(labelDireccionSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("direccion"))));
+            MatcherAssert.assertThat(labelTipoDireccionSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("tipoDireccion"))));
+            MatcherAssert.assertThat(labelDescripcionDireccionSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("descripcionDireccion"))));
+            MatcherAssert.assertThat(campoTipoDocumentoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+            MatcherAssert.assertThat(campoNumeroDocumentoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+            //MatcherAssert.assertThat(textoTelefonoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+            MatcherAssert.assertThat(campoDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+            MatcherAssert.assertThat(campoTipoDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+            MatcherAssert.assertThat(campoDescripcionDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
+        }catch (Exception e){
+            LOGGER.error(validacion, e);
+            validacion = e.getMessage();
+        }
+        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
+    }
+
+    public void validarTomadorRiesgo() {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCotizar).click();
+        waitUntil(1000);
+    }
+
+    public void validarBloqueoSegundoTomador(String mensaje) {
+        String validacion = null;
+        WebElementFacade labelResultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelResultadosValidacion).shouldBePresent();
+        WebElementFacade grupoMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
+        try {
+            MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
+        }catch (Exception e){
+            LOGGER.error(validacion, e);
+            validacion = e.getMessage();
+        }
+        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
+    }
+
+    public void validarRestriccionEdicionTomador() {
+        String validacion = null;
+        try {
+            MatcherAssert.assertThat(campoTipoDocumento.getTagName(), Is.is(Matchers.not(Matchers.equalTo("input"))));
+            MatcherAssert.assertThat(campoNumeroDocumento.getTagName(), Is.is(Matchers.not(Matchers.equalTo("input"))));
+        }catch (Exception e){
+            LOGGER.error(validacion, e);
+            validacion = e.getMessage();
+        }
     }
 }

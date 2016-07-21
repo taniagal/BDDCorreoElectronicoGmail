@@ -31,4 +31,29 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
     public void validarInformacionPoliza(Map<String, String> labelsInformacionPoliza, ExamplesTable informacionPoliza){
         modificacionInformacionPolizaPAPage.validarInformacionPoliza(labelsInformacionPoliza, informacionPoliza);
     }
+
+    @Step
+    public void adicionarSegundoTomador(String tipoDocumento, String numeroDocumento) {
+        modificacionInformacionPolizaPAPage.adicionarSegundoTomador(tipoDocumento, numeroDocumento);
+    }
+
+    @Step
+    public void validarRegistroSegundoTomador(Map<String, String> datosSegundoTomador) {
+        modificacionInformacionPolizaPAPage.validarRegistroSegundoTomador(datosSegundoTomador);
+    }
+
+    @Step
+    public void validarTomadorRiesgo() {
+        modificacionInformacionPolizaPAPage.validarTomadorRiesgo();
+    }
+
+    @Step
+    public void validarBloqueoSegundoTomador(String mensaje) {
+        modificacionInformacionPolizaPAPage.validarBloqueoSegundoTomador(mensaje);
+    }
+
+    @Step
+    public void validarRestriccionEdicionTomador() {
+        modificacionInformacionPolizaPAPage.validarRestriccionEdicionTomador();
+    }
 }
