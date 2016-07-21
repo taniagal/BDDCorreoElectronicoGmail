@@ -40,3 +40,6 @@ Then debe aparecer el mensaje <mensaje>
 Examples:
 |cuenta     |producto               |mensaje|
 |C001888888 |Multiriesgo corporativo|El total de % de participación de coaseguro debe ser igual al 100%|
+
+
+
