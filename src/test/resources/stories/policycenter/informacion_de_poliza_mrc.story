@@ -15,35 +15,4 @@ Examples:
 |numeroCuenta|nomProducto            |tomador                      |
 |C000888888  |Multiriesgo corporativo|YURLEDYS PAOLA GALLEGO TORRES|
 
-Scenario: Validar campos especiales de reaseguros
-Given se inicio una nueva suscripcion <numeroCuenta>
-When este expidiendo una poliza de propiedad comercial <nomProducto>
-And seleccione la poliza como reaseguro aceptado
-Then la etiqueta del tomador debe cambiar a tomador cedente
-And la etiqueta reaseguro debe marcarce a (si) automaticamente sin ser editable
-And se debe ocultar la opcion de tomadores adicionales
 
-Examples:
-|numeroCuenta|nomProducto            |
-|C000888888  |Multiriesgo corporativo|
-
-Scenario: Agregar tomador adicional cuando es un riesgo consultable
-Given se inicio una nueva suscripcion <numeroCuenta>
-When este expidiendo una poliza de propiedad comercial <nomProducto>
-And quiera agregar un tomador adicional que es riesgo consultable <cedula>
-Then se debe mostrar un mensaje de error <mensaje> <mensaje2>
-And bloquear la operacion
-
-Examples:
-|numeroCuenta  |cedula|nomProducto            |mensaje                                       |mensaje2                                                                                                                                              |
-|C000888888    |123456|Multiriesgo corporativo|es un riesgo no estándar y debe ser autorizado|El tomador es un riesgo no es estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial|
-
-Scenario: ocultar descipcion de la direccion cuando el campo no tenga datos informativos
-Given se inicio una nueva suscripcion <numeroCuenta>
-When este expidiendo una poliza de propiedad comercial <nomProducto>
-And requiera quitar la descripcion de la direccion del contacto
-Then debe desaparecer del formulario principal
-
-Examples:
-|numeroCuenta  |nomProducto            |
-|C000888888    |Multiriesgo corporativo|
