@@ -2,17 +2,12 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaDePolizaPage;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 public class BusquedaDePolizaSteps extends ScenarioSteps{
 
-    private BusquedaDePolizaPage busquedaDePolizaPage = new BusquedaDePolizaPage(getDriver());
-
-    public BusquedaDePolizaSteps(Pages pages){
-        super(pages);
-    }
+    private BusquedaDePolizaPage busquedaDePolizaPage;
 
     @Step
     public void irABuscarPoliza() {

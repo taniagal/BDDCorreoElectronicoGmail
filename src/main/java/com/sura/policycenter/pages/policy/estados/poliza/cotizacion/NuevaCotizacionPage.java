@@ -97,8 +97,6 @@ public class NuevaCotizacionPage extends PageObject {
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable 
     public List<WebElementFacade> elementos(String xpath) {
         List<WebElementFacade> elementos = null;
-
-
         try {
             waitFor($(xpath)).shouldBeVisible();
             elementos = withTimeoutOf(15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
@@ -322,17 +320,22 @@ public class NuevaCotizacionPage extends PageObject {
 
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado;
-        List<WebElementFacade> divsMensajes = elementos(MENSAJES_DE_INFORMACION);
+        try {
+            List<WebElementFacade> divsMensajes = elementos(MENSAJES_DE_INFORMACION);
 
-        for (WebElementFacade div : divsMensajes) {
-            mensajeMostrado = div.getText();
-            for(String etiqueta : mensajesApp.split("|")){
-                if (mensajeMostrado.toLowerCase().contains(etiqueta)) {
-                    existeOcurrencia = Boolean.TRUE;
-                    break;
+            for (WebElementFacade div : divsMensajes) {
+                mensajeMostrado = div.getText();
+                for(String etiqueta : mensajesApp.split("|")){
+                    if (mensajeMostrado.toLowerCase().contains(etiqueta)) {
+                        existeOcurrencia = Boolean.TRUE;
+                        break;
+                    }
                 }
             }
+        }catch (Exception e){
+            LOGGER.error("No se encontró mensajes de error" + e.getMessage());
         }
+
 
         return existeOcurrencia;
     }

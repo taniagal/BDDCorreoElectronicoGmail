@@ -24,13 +24,9 @@ public class PolizasDePrimeraPerdidaPage extends Guidewire{
     private WebElementFacade campoTxtValorReconstruccion;
     @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
     private WebElementFacade campoTxtValorasegurado;
-    @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:1:CovTermInputSet:PackageTermInput-inputEl']")
-    private WebElementFacade comboBoxDeducible;
-    @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:2:CovTermInputSet:BooleanTermInput_true-inputEl']")
-    private WebElementFacade radioBotonAsegurado;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
-    @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:10:CovTermInputSet:TypekeyTermInput-inputEl']")
+    @FindBy(xpath=".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:12:CovTermInputSet:TypekeyTermInput-inputEl']")
     private WebElementFacade comboBoxTipoPrimeraPerdida;
 
     public PolizasDePrimeraPerdidaPage(WebDriver driver){
@@ -39,7 +35,7 @@ public class PolizasDePrimeraPerdidaPage extends Guidewire{
 
     public void irAArticulos() {
         withTimeoutOf(25, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
-        botonAgregarArticulos.waitUntilPresent().click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonAgregarArticulos).waitUntilPresent().click();
     }
 
     public void agregarArticulo(ExamplesTable datos){
@@ -53,6 +49,7 @@ public class PolizasDePrimeraPerdidaPage extends Guidewire{
     }
 
     public void seleccionartipoPrimeraPerdida(String tipoPrimeraPerdida){
+        waitUntil(200);
         selectItem(comboBoxTipoPrimeraPerdida,tipoPrimeraPerdida);
         botonActualizar.click();
     }

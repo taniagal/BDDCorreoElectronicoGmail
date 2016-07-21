@@ -1,7 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -101,8 +103,9 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
 
     public void irABuscarCuentas() {
-        menuBuscar.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilPresent().click();
-        waitABit(1500);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent().click();
+        waitUntil(1500);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuBuscarCuentas).waitUntilPresent();
         menuBuscarCuentas.click();
     }
 
@@ -119,29 +122,32 @@ public class BusquedaDeCuentasPage extends Guidewire {
         }
     }
 
-    private void limpiarFormulario(){
+    private void limpiarFormulario() {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent();
         botonRestablecer.waitUntilPresent().click();
-        waitABit(1000);
+        waitUntil(2000);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
         this.limpiarFormulario();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtTipoDocumento).waitUntilPresent();
         txtTipoDocumento.clear();
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
         txtNumeroDocumento.sendKeys(numeroDocumento);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
     public void mostrarInformacionDeLaCuenta(String numeroCuenta, String nombre, String direccion) {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(this.grdNumeroCuenta).shouldBePresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(this.grdNumeroCuenta).shouldBePresent();
         MatcherAssert.assertThat(this.grdNumeroCuenta.getText(), Matchers.containsString(numeroCuenta));
         MatcherAssert.assertThat(this.grdNombre.getText(), Matchers.containsString(nombre));
         MatcherAssert.assertThat(this.grdDireccion.getText(), Matchers.containsString(direccion));
     }
 
     public void validarMensaje(String mensaje) {
-        msjMensajeInformativo.waitUntilVisible();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(msjMensajeInformativo).waitUntilPresent();
         MatcherAssert.assertThat(this.msjMensajeInformativo.getText(), Matchers.containsString(mensaje));
     }
 
@@ -184,6 +190,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
     public void buscarCuentaPorRazonSocial(String razonSocial) {
         this.limpiarFormulario();
         txtRazonSocial.sendKeys(razonSocial);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -198,6 +205,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
     public void buscarCuentaPorNombreComercial(String nombreComercial) {
         this.limpiarFormulario();
         txtNombreComercial.sendKeys(nombreComercial);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -220,6 +228,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         this.limpiarFormulario();
         this.txtRazonSocial.sendKeys(razonSocial);
         this.txtPrimerNombre.sendKeys(primerNombre);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -227,6 +236,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         this.limpiarFormulario();
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtPrimerNombre.sendKeys(primerNombre);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -234,6 +244,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         this.limpiarFormulario();
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtRazonSocial.sendKeys(razonSocial);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 

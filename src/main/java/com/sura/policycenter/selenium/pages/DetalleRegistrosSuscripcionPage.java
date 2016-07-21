@@ -79,7 +79,7 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
     }
 
     public void buscarRegistrosSuscripcion() {
-        mnuRegistrosSuscripcion.withTimeoutOf(8, TimeUnit.SECONDS).waitUntilPresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(mnuRegistrosSuscripcion).waitUntilPresent();
         mnuRegistrosSuscripcion.click();
     }
 
