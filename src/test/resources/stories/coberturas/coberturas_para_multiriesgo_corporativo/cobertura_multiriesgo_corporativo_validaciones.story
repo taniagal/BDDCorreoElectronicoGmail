@@ -16,8 +16,8 @@ When cuando intente ingresar un artículo para una ubicación para comprobar las
 Then espero ver mensajes de advertencia indicándome que sobrepasé los límites de valores para el valor del artículo
 
 Examples:
-| numSubscripcion | rolUsuario |
-| 22222237        | Asesor     |
+| numSubscripcion | rolUsuario |descripcion|
+| 22221237        | Asesor     |Numero de subscripcion que cuenta con ubicaciones y que pertenece a |
 
 
 

@@ -45,7 +45,11 @@ public class InformacionDePoliza {
     }
 
     public void entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo(){
-        assertThat(informacionDePolizaSteps.espacioDeTrabajo(), hasItems("","",""));
+        assertThat(informacionDePolizaSteps.espacioDeTrabajo(),
+                hasItems("EL valor Asegurado de la cobertura Danos materiales NO debe ser mayor al valor asegurable del Artículo Edificio",
+                        "El valor de \"Sublimite para traslados temporales de maquinaria y equipo\" debe ser menor al valor asegurado de la cobertura \"Danos materiales\".",
+                        "El valor de \"Sublimite para combustion espontanea de mercancias a granel\" debe ser menor al valor asegurado de la cobertura \"Danos materiales\"."
+                ));
     }
 
 

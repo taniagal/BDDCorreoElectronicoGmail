@@ -71,6 +71,6 @@ public class InformacionDePolizaSteps {
 
     public List<String> espacioDeTrabajo() {
         espacioDeTrabajoWidget.desplegarEspacioDeTrabajo();
-        return  espacioDeTrabajoWidget.obtenerMensajesDeTrabajo();
+        return espacioDeTrabajoWidget.obtenerMensajesDeTrabajo();
     }
 }

@@ -37,6 +37,7 @@ public class InformacionPolizaPage extends PageObject {
     }
 
     public void editarTransaccion() {
+        LOGGER.info("InformacionPolizaPage.editarTransaccion");
         WebElementFacade btnEditarTransaccion = null;
         String BTN_ACEPTAR_CONFIRMACION = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
 
@@ -47,24 +48,31 @@ public class InformacionPolizaPage extends PageObject {
         }
 
         if (btnEditarTransaccion != null) {
-            btnEditarTransaccion.click();
-            findBy(BTN_ACEPTAR_CONFIRMACION).click();
+            btnEditarTransaccion.waitUntilClickable().click();
+            findBy(BTN_ACEPTAR_CONFIRMACION).waitUntilClickable().click();
+            waitForTextToAppear("Revisión de póliza");
         }
 
     }
 
     public void seleccionarOpcionEdificiosyUbicaciones() {
-        WebElementFacade opcionEdificiosyUbicaciones = findBy(Opcion.LINK_EDIFICIOS_Y_UBICACIONES.xpath()).waitUntilVisible();
-        shouldBeVisible(opcionEdificiosyUbicaciones);
-        opcionEdificiosyUbicaciones.click();
+        LOGGER.info("InformacionPolizaPage.seleccionarOpcionEdificiosyUbicaciones");
+        try {
+            WebElementFacade opcionEdificiosyUbicaciones = findBy(Opcion.LINK_EDIFICIOS_Y_UBICACIONES.xpath()).waitUntilVisible();
+            shouldBeVisible(opcionEdificiosyUbicaciones);
+            opcionEdificiosyUbicaciones.waitUntilClickable().click();
 
-        String tituloDePaginaContactos = "Edificios y ubicaciones";
-        waitForTextToAppear(tituloDePaginaContactos);
-        shouldContainText(tituloDePaginaContactos);
+            String tituloDePaginaContactos = "Edificios y ubicaciones";
+            waitForTextToAppear(tituloDePaginaContactos);
+            shouldContainText(tituloDePaginaContactos);
+        } catch (Exception e){
+            LOGGER.info("PROBLEMA DESCONOCIDO " + e.getMessage());
+        }
 
     }
 
     public String obtenerEnvio() {
+        LOGGER.info("InformacionPolizaPage.obtenerEnvio");
         WebElementFacade envio = findBy(Opcion.ENVIO.xpath()).waitUntilVisible();
         shouldBeVisible(envio);
         return envio.getText();

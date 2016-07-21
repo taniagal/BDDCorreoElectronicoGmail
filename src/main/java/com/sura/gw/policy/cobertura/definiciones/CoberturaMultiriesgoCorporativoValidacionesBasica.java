@@ -46,14 +46,14 @@ public class CoberturaMultiriesgoCorporativoValidacionesBasica {
     }
 
     @When("cuando intente ingresar un artículo para una ubicación para comprobar las validaciones de error del artículo")
-    public void cuandoIntenteIngreseUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo() {
+    public void cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo() {
 
-        //informacionDePoliza.cuandoEditeInformacionDeLaPoliza();
+        informacionDePoliza.cuandoEditeInformacionDeLaPoliza();
         informacionDePoliza.cuandoSeleccioneOpcionDeInformacionDePolizaEdificiosYUbicaciones();
         informacionDePoliza.cuandoDeseeIngresarArticuloAUnaUbicacion();
         informacionDePoliza.cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo();
 
-        LOGGER.info("CoberturaMultiriesgoCorporativoValidacionesBasica.cuandoIntenteIngreseUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo");
+        LOGGER.info("CoberturaMultiriesgoCorporativoValidacionesBasica.cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo");
     }
 
 

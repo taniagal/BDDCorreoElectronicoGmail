@@ -12,7 +12,7 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
     private static String TXT_VALOR_ASEGURADO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl')]";
     private static String TXT_VALOR_SUBLIMITE_TRANSLADO = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:7:CovTermInputSet:DirectTermInput-inputEl')]";
     private static String TXT_VALOR_SUBLIMITE_COMBUSTION = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:8:CovTermInputSet:DirectTermInput-inputEl')]";
-    private static String LINK_ACEPTAR_AGREGAR_ARTICULO = "a[contains(@id,'CPBuildingSuraPopup:Update')]";
+    private static String LINK_ACEPTAR_AGREGAR_ARTICULO = ".//*[@id='CPBuildingSuraPopup:Update']";
 
 
     public void seleccionarCheck(String xpath){
@@ -53,6 +53,8 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
     }
 
     public void seleccionarBotonAceptarParaAgregarArticulo() {
+        findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).shouldBeVisible();
+        findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).shouldBeEnabled();
         findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).click();
     }
 }
