@@ -19,10 +19,10 @@ Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 Examples:
 |cotizacion|mensaje|
 !-- PEPS: Asegurado - Tomador - Tomador adicional - Interes adicional
-|22222238|FRANK RAMIREZ ALZATE con el(los) rol(es) (ASEGURADO NOMBRADO, TITULAR DE LA CUENTA) es un riesgo no estándar y debe ser autorizado.|
-|22222228|CAROLINA OCHOA con el(los) rol(es) (CONDUCTOR) es un riesgo no estándar y debe ser autorizado.
-|22222228|ANTONIO RESTREPO con el(los) rol(es) (ASEGURADO NOMBRADO) es un riesgo no estándar y debe ser autorizado.|
-!-- falta interes adicional
+|22222238|FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
+|22222228|CAROLINA OCHOA con CEDULA DE CIUDADANIA - 71318883 es un riesgo no estándar y debe ser autorizado.|
+|22222228|ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado.|
+|22222228|GLADYS OCHOA con CEDULA DE CIUDADANIA - 94372371 es un riesgo no estándar y debe ser autorizado.|
 !-- Riesgos Consultables: Tomador - Asegurado - Placa, motor, chasis
 |22222210|JOSE PAEZ ALZATE, El tomador es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 |22222227|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
@@ -39,9 +39,9 @@ Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 Examples:
 |cotizacion|mensaje|
 !-- PEPS: Tomador
-|22222237|FRANK RAMIREZ ALZATE con el(los) rol(es) (ASEGURADO NOMBRADO, TITULAR DE LA CUENTA) es un riesgo no estándar y debe ser autorizado.|
+|22222237|FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
 !-- Riesgos consultables: Tomador - interes adicional
-|22222211|JOSE PAEZ ALZATE, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|22222211|JOSE PAEZ ALZATE, El tomador es un riesgo no es estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial.|
 
 Scenario: Validacion de riesgos consultables para intereses adicionales
 Meta:
