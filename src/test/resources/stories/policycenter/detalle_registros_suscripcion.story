@@ -1,4 +1,8 @@
+Detalle Registros Suscripcion
+
 Meta:
+
+@issue #SUGWUSC-14959
 
 Narrative:
 Como usuario PolicyCenter
@@ -9,7 +13,8 @@ Scenario: Consultar los registros de suscripcion
 GivenStories: stories/policycenter/login_policy.story
 Given busco una cuenta existente como <numeroCuenta>
 When consulte los registros de suscripcion
-Then debo ver la siguiente informacion <nombre>, <tipoDeTransaccion>, <nroDeTransacciones>
+Then debo ver la informacion del registro de suscripcion <nombre>, <tipoDeTransaccion>, <nroDeTransacciones>
+
 Examples:
 |numeroCuenta|nombre|tipoDeTransaccion|nroDeTransacciones|
 |C000902244|SG22222227|Grupo de envíos|1|
@@ -26,11 +31,11 @@ Examples:
 Scenario: Consultar el detalle de los grupos de cotizacion y renovación
 Given busco una cuenta existente como <numeroCuenta>
 When busque el de detalle de los registros de suscripcion
-Then debo ver la siguiente informacion producto <producto>, <nroEnvio>, <estado>, <nroPoliza>
+Then debo ver la informacion del registro de suscripcion producto <producto>, <nroEnvio>, <estado>, <nroPoliza>
 
 Examples:
 |numeroCuenta|producto|nroEnvio|estado|nroPoliza|
-|C000902244|Auto personal|22222227|Cotizado|Sin asignar|
+|C000902244|Autos|22222227|Cotizado|Sin asignar|
 
 Scenario: Consultar el valor total de un grupo de cotizaciones
 Given busco una cuenta existente como <numeroCuenta>

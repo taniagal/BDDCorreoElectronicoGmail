@@ -97,6 +97,20 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.valida_opciones_reaseguro();
     }
 
+    /*
+    *Bug Automatizado: Ocultar dirección en formulario
+     */
+
+    @When("requiera quitar la descripcion de la direccion del contacto")
+    public void whenRequieraQuitarLaDescripcionDeLaDireccionDelContacto() {
+        informacionDePolizaMrcSteps.eliminar_descripcion_de_direccion_en_contacto();
+    }
+
+    @Then("debe desaparecer del formulario principal")
+    public void thenDebeDesaparecerDelFormularioPrincipal() {
+        informacionDePolizaMrcSteps.validar_descipcion_de_direccion();
+    }
 
 
 }
+

@@ -7,8 +7,7 @@ quiero poder utilizar el modo de entrada para direcciones de contacto
 
 
 Scenario: Agregar direccion a un contacto.
-
-Given tengo un contacto con <tipo_documento> c. <documento>
+GivenStories: stories/policycenter/login_policy.story
 When quiera editar la informacion del contacto con <tipo_documento> c. <documento>
 And se vaya a ingresar la nueva direccion y valide los campos en pantalla
 And valide la informacion en los campos
@@ -22,12 +21,8 @@ Examples:
 
 
 Scenario: Agregar direccion a un contacto del mismo tipo.
-
-Given tengo un contacto con <tipo_documento> c. <documento>
 When quiera editar la informacion del contacto con <tipo_documento> c. <documento>
 And se vaya a ingresar la nueva direccion y valide los campos en pantalla
-And ingreso la informacion de direccion <direccion>, <departamento>, <ciudad>, tipo de direccion <tipoDireccion>
-And agrego fila de direccion
 And ingreso la informacion de direccion <direccion>, <departamento>, <ciudad>, tipo de direccion <tipoDireccion>
 And se actualiza el contacto
 Then el sistema me debe impedir la repeticion del tipo de direccion y mostrar el mensaje <mensaje>

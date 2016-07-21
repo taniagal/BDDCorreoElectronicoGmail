@@ -4,6 +4,7 @@ import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.steps.DireccionesDeContactoVinculadasSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.AfterStory;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -72,16 +73,6 @@ public class DireccionesDeContactoVinculadasDefinitions {
     @When("seleccione el contacto a editar <nombreContacto>")
     public void seleccionarContactoAEditar(@Named("nombreContacto") String nombreContacto){
         direccionesDeContactoVinculadasSteps.seleccionarContactoAEditar(nombreContacto);
-    }
-
-    @When("ingrese a editar la direccion e ingrese el departamento <departamento>")
-    public void editarCampoDepartamento(@Named("departamento") String departamento){
-        direccionesDeContactoVinculadasSteps.editarCampoDepartamento(departamento);
-    }
-
-    @When("ingrese a editar la direccion e ingrese la ciudad <ciudad>")
-    public void editarCampoCiudad(@Named("ciudad") String ciudad){
-        direccionesDeContactoVinculadasSteps.editarCampoCiudad(ciudad);
     }
 
     @When("seleccione la opcion para editar la direccion")
@@ -167,6 +158,11 @@ public class DireccionesDeContactoVinculadasDefinitions {
                                             @Named("botonLigagas") String botonLigagas,
                                             @Named("botonDesligar") String botonDesligar){
         direccionesDeContactoVinculadasSteps.validarEtiquetasDeLaVentana(titulo, botonLigagas, botonDesligar);
+    }
+
+    @AfterStory
+    public void despuesDeLaHistoria(){
+        driver.close();
     }
 
 }

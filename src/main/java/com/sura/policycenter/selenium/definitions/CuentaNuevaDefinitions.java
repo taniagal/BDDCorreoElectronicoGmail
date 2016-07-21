@@ -48,7 +48,6 @@ public class CuentaNuevaDefinitions {
     @Then("se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural")
     public void assertCrearNuevaCuentaPersonaNatural(@Named("primer_apellido")String primerApellido, @Named("primer_nombre")String primerNombre){
         cuentaNuevaSteps.verificar_cuenta(primerNombre);
-        seusLoginSteps.close();
     }
 
 
@@ -69,7 +68,6 @@ public class CuentaNuevaDefinitions {
     @Then("se debe crear la cuenta con el cliente <razon_social> persona juridica")
     public void assertCrearNuevaCuentaPersonaJuridica(@Named("razon_social")String razonSocial){
         cuentaNuevaSteps.verificar_cuenta(razonSocial);
-        seusLoginSteps.close();
     }
 
     /**

@@ -2,16 +2,12 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.DetalleRegistrosSuscripcionPage;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
 
-    private final DetalleRegistrosSuscripcionPage detalleRegistrosSuscripcionPage = new DetalleRegistrosSuscripcionPage(getDriver());
+    private DetalleRegistrosSuscripcionPage detalleRegistrosSuscripcionPage;
 
-    public DetalleRegistrosSuscripcionSteps(Pages pages){
-        super(pages);
-    }
 
     @Step
     public void validarCamposDetalle(String producto, String nroEnvio, String estado, String nroPoliza) {
@@ -34,8 +30,8 @@ public class DetalleRegistrosSuscripcionSteps extends ScenarioSteps{
     }
 
     @Step
-    public void buscarDetalleRegistrosDeSucripcion() {
-        detalleRegistrosSuscripcionPage.buscarDetalleRegistrosDeSucripcion();
+    public void buscarDetalleRegistrosDeSuscripcion() {
+        detalleRegistrosSuscripcionPage.buscarDetalleRegistrosDeSuscripcion();
     }
 
     @Step

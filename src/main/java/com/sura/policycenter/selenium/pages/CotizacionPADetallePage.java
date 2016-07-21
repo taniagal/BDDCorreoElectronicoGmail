@@ -1,11 +1,13 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.google.common.collect.Table;
+
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.assertj.core.condition.Not;
-import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -14,10 +16,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class CotizacionPADetallePage extends Guidewire {
 
@@ -31,9 +29,6 @@ public class CotizacionPADetallePage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:LicensePlate-labelEl']")
     private WebElementFacade labelPlaca;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:LicensePlate-inputEl']")
-    private WebElementFacade inputPlaca;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:FasecoldaCode-labelEl']")
     private WebElementFacade labelCodigoFasecolda;
@@ -134,7 +129,7 @@ public class CotizacionPADetallePage extends Guidewire {
                 List<WebElement> cells = row.findElements(By.tagName("td"));
                 String descCob = cells.get(0).getText();
                 String terminoCob = cells.get(1).getText();
-                if(!terminoCob.equals(" ")) {
+                if(!terminoCob.equals("-")) {
                     i++;
                     terminoCoberturas.put("dato" + i, terminoCob);
                 }

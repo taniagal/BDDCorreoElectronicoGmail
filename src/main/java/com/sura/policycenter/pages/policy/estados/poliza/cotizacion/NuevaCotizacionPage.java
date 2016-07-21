@@ -96,8 +96,6 @@ public class NuevaCotizacionPage extends PageObject {
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable 
     public List<WebElementFacade> elementos(String xpath) {
         List<WebElementFacade> elementos = null;
-
-
         try {
             waitFor($(xpath)).shouldBeVisible();
             elementos = withTimeoutOf(15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
@@ -336,6 +334,7 @@ public class NuevaCotizacionPage extends PageObject {
         } catch (Exception e) {
             LOGGER.error("NO EXISTE MENSAJE DE ERROR " + e.getMessage());
         }
+
 
         return existeOcurrencia;
     }

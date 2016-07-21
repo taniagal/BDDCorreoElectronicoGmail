@@ -1,24 +1,14 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-
 public class CuentaPage extends Guidewire{
-
-    Actions actions = null;
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
-    private WebElementFacade menuCuenta;
-    @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-textEl']")
-    private WebElementFacade menuNuevaCuenta;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade campoTxtNombreCompania;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -51,8 +41,6 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade botonSeleccionarOrganizacion;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:ForceDupCheckUpdate-btnInnerEl']")
     private WebElementFacade botonActualizar;
-    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    private WebElementFacade labelNombreDeCuenta;
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileInfoBar:AccountName-btnInnerEl']")
     private WebElementFacade labelCuentaNumero;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:DocumentType-inputEl']")
@@ -69,6 +57,10 @@ public class CuentaPage extends Guidewire{
     private WebElementFacade comboBoxCiudad;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:EditAccount-btnInnerEl']")
     private WebElementFacade botonEditarCuenta;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
+    private WebElementFacade campoTxtNombreComercial;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:Phone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
+    private WebElementFacade campoTxtTelefonoOficina;
 
     public CuentaPage(WebDriver driver){
         super(driver);
@@ -96,32 +88,40 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(3000);
+        waitUntil(3500);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(2000);
+        waitUntil(3000);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        waitABit(1000);
+        waitUntil(1000);
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
-        espera(botonAgregarOrganizacion,5);
-        botonAgregarOrganizacion.click();
-        waitABit(500);
+        waitFor(botonAgregarOrganizacion).click();
+        waitUntil(500);
         campoTxtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
-        waitABit(500);
+        waitUntil(500);
         selectItem(comboBoxCodigoAgente,agente);
     }
 
+    public void agregarNombrecomercial(String nombreComercial) {
+        campoTxtNombreComercial.sendKeys(nombreComercial);
+    }
+
+
+    public void agregarTelefonoOficina(String telefonoOficina) {
+        campoTxtTelefonoOficina.sendKeys(telefonoOficina);
+    }
+
+
     public void actualizar(){
         botonActualizar.click();
-        waitABit(1000);
+        waitUntil(1000);
     }
 
     public void buscarPersona(String nombre, String persona){
         waitFor(campoTxtNombreCompania).shouldBePresent();
-        //waitABit(1000);
         campoTxtNombreCompania.sendKeys(nombre);
         botonBuscar.click();
         if("Compania".equals(persona)) {
@@ -131,30 +131,20 @@ public class CuentaPage extends Guidewire{
             botonCrearCuentaNueva.click();
             botonNuevaCuentaPersonal.click();
         }
-        waitABit(1000);
-    }
-
-    public void verificarCrearCuenta(String nombreCuenta){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelNombreDeCuenta).shouldBePresent();
-        assertThat("Falló la creación de la cuenta", labelNombreDeCuenta.containsText(nombreCuenta));
-    }
-
-    public void validarLogeoPolicyCenter(){
-        assertThat("Falló verificar el logueo", menuCuenta.isPresent());
-    }
-
-    public  void verificarEdadMenor(String mensaje){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
-        assertThat("Falló verificar la edad", divMensaje.containsText(mensaje));
+        waitUntil(1000);
     }
 
     public  void verificarMensaje(String mensaje){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
-        assertThat("Falló el mensaje de documento registrado", divMensaje.containsText(mensaje));
+        verificarMensaje(divMensaje,mensaje);
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
-        assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
+        MatcherAssert.assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
+    }
+
+    public  void verificarEstadoDeMensaje(String mensaje){
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        MatcherAssert.assertThat("El mensaje erroneo sigue apareciendo", !divMensaje.containsText(mensaje));
     }
 }
