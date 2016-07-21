@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -10,7 +10,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class DetallesDeUbicacionPage extends Guidewire{
+public class DetallesDeUbicacionPage extends Commons {
 
     @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     private WebElementFacade numeroDeCuenta;

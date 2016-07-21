@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
+import com.sura.commons.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CotizacionesDeLaCuentaSteps;
 import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
 import java.util.HashMap;

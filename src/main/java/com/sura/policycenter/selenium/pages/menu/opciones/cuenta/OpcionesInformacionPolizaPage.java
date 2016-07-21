@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -14,11 +14,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class OpcionesInformacionPolizaPage extends Guidewire {
+public class OpcionesInformacionPolizaPage extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesInformacionPolizaPage.class);
 

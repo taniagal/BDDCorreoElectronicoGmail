@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +10,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
-import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,9 +18,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
-
-public class OpcionesAdminitradorCotizaciones extends Guidewire {
+public class OpcionesAdminitradorCotizaciones extends Commons {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
 
     Actions act = new Actions(getDriver());

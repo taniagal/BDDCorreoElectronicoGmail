@@ -1,4 +1,4 @@
-package com.sura.guidewire.selenium;
+package com.sura.commons.selenium;
 
 import com.google.common.base.Function;
 import java.util.List;
@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 
-public class Guidewire extends PageObject {
+public class Commons extends PageObject {
 
     private final Actions actions = new Actions(getDriver());
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
@@ -39,7 +39,7 @@ public class Guidewire extends PageObject {
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     private WebElementFacade btnLogout2;
 
-    public Guidewire(WebDriver driver) {
+    public Commons(WebDriver driver) {
         super(driver);
     }
 

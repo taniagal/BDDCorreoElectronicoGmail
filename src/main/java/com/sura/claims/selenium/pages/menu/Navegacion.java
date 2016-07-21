@@ -2,14 +2,14 @@ package com.sura.claims.selenium.pages.menu;
 
 import com.sura.claims.selenium.pages.menu.superior.reclamacion.NuevaReclamacionPage;
 import com.sura.claims.selenium.pages.menu.superior.reclamacion.ReclamacionBuscarPage;
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class Navegacion extends Guidewire {
+public class Navegacion extends Commons {
 
     Actions act = new Actions(getDriver());
 

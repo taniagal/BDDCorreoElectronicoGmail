@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +17,7 @@ import org.openqa.selenium.support.FindBy;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
-public class ContactosAsociadosACuentasPage extends Guidewire {
+public class ContactosAsociadosACuentasPage extends Commons {
 
     private static final String ASSERTMENUCREARNUEVOCONTACTO = "Elementos del menú encontrados";
     @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")

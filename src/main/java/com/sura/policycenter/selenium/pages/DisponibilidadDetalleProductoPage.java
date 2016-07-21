@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
 
-public class DisponibilidadDetalleProductoPage extends Guidewire {
+public class DisponibilidadDetalleProductoPage extends Commons {
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
     private WebElementFacade listaTipoCanalDeVenta;

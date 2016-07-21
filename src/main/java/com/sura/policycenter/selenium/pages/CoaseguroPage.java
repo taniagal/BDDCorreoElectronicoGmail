@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.policycenter.model.Aseguradora;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -14,7 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class CoaseguroPage extends Guidewire {
+public class CoaseguroPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade linkAgregarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:ReferencePolicyNumber-inputEl']")

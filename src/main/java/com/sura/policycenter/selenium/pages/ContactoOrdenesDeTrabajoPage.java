@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.SeusLoginPage;
+import com.sura.commons.selenium.SeusLoginPage;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;

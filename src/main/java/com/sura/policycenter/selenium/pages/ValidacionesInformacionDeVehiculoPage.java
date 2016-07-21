@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -9,12 +9,9 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
-
-public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
+public class ValidacionesInformacionDeVehiculoPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade menuItemVehiculos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
@@ -58,7 +55,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     }
 
     public void clickSiguiente(){
-        botonsiguiente.click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonsiguiente).click();
     }
 
     public void agregarVehiculo(ExamplesTable datosVehiculo){

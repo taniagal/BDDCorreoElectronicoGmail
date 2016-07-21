@@ -45,4 +45,6 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
         vehiculoPage.agregarVehiculo(datosVehiculo);
         vehiculoPage.clickSiguiente();
     }
+
+
 }

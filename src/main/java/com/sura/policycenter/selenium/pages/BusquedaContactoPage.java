@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +18,7 @@ import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class BusquedaContactoPage extends Guidewire {
+public class BusquedaContactoPage extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaContactoPage.class);
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")

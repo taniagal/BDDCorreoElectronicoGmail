@@ -1,6 +1,6 @@
 package com.sura.claims.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.Keys;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
 
-public class Reclamacion extends Guidewire {
+public class Reclamacion extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     @FindBy(xpath = ".//*[@id='FNOLWizard:AutoWorkersCompWizardStepSet:FNOLWizard_NewLossDetailsScreen" +

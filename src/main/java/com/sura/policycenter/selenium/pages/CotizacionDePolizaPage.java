@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -168,7 +168,7 @@ public class CotizacionDePolizaPage extends PageObject{
         waitForTextToAppear("Resultados de validación",20000);
         boolean validacionMensaje = grupoMensajes.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
-        Guidewire gw = new Guidewire(getDriver());
+        Commons gw = new Commons(getDriver());
         gw.waitUntil(15000);
     }
 

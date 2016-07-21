@@ -1,12 +1,12 @@
 package com.sura.claims.selenium.pages.menu.acciones.escritorio;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import org.openqa.selenium.WebDriver;
 
 /**
  * Created by jorghome on 11/05/2016.
  */
-public class EstadoDeVacacionesPage extends Guidewire {
+public class EstadoDeVacacionesPage extends Commons {
     public EstadoDeVacacionesPage(WebDriver driver) {
         super(driver);
     }

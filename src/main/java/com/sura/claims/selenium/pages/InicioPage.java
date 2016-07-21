@@ -3,7 +3,7 @@ package com.sura.claims.selenium.pages;
 import com.sura.claims.selenium.pages.menu.Navegacion;
 import com.sura.claims.selenium.pages.menu.superior.reclamacion.NuevaReclamacionPage;
 import com.sura.claims.selenium.pages.menu.superior.reclamacion.ReclamacionBuscarPage;
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.WhenPageOpens;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
-public class InicioPage extends Guidewire {
+public class InicioPage extends Commons {
 
     Navegacion navegacion;
     Actions act = new Actions(getDriver());

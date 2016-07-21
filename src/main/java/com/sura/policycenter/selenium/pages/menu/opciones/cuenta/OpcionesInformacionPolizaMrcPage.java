@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
@@ -9,14 +9,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class OpcionesInformacionPolizaMrcPage extends Guidewire {
+public class OpcionesInformacionPolizaMrcPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade txtNomAgente;

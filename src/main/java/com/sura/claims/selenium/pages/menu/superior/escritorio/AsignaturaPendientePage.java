@@ -1,12 +1,12 @@
 package com.sura.claims.selenium.pages.menu.superior.escritorio;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import org.openqa.selenium.WebDriver;
 
 /**
  * Created by jorghome on 10/05/2016.
  */
-public class AsignaturaPendientePage extends Guidewire {
+public class AsignaturaPendientePage extends Commons {
     public AsignaturaPendientePage(WebDriver driver) {
         super(driver);
     }

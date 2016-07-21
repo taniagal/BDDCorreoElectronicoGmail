@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
@@ -17,7 +17,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class HistorialCuentaPage extends Guidewire {
+public class HistorialCuentaPage extends Commons {
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")

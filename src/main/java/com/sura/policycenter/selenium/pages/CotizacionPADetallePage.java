@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +17,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
 
-public class CotizacionPADetallePage extends Guidewire {
+public class CotizacionPADetallePage extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(CotizacionPADetallePage.class);
 

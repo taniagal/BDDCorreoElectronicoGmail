@@ -2,14 +2,14 @@ package com.sura.claims.selenium.steps;
 
 import com.sura.claims.selenium.pages.AbrirApp;
 import com.sura.claims.selenium.pages.Reclamacion;
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class ClaimsSteps extends ScenarioSteps{
 
-    private final Guidewire gw = new Guidewire(getDriver());
+    private final Commons gw = new Commons(getDriver());
     private final AbrirApp abrirApp = new AbrirApp(getDriver());
     private final Reclamacion reclamacion = new Reclamacion(getDriver());
 
