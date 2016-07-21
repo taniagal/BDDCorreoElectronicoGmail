@@ -52,7 +52,7 @@ public class CoberturaGlobalPage extends Guidewire {
 
     public void navegarPorCobertura(String descripcion, String tipoCobertura){
         botonAgregarCoberturaGeneral.waitUntilPresent().click();
-        campoTxtDescripcion.sendKeys(descripcion);
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoTxtDescripcion).sendKeys(descripcion);
         selectItem(comboBoxTipoCobertura, tipoCobertura);
         waitUntil(1000);
     }
@@ -62,7 +62,7 @@ public class CoberturaGlobalPage extends Guidewire {
             cargarMultiplesUbicaciones(valor);
         else if ("Una cobertura".equals(tipoCobertura))
                 cargarCoberturaUnica(nombreCobertura, valor);
-        waitUntil(1000);
+        waitUntil(1500);
         botonAceptar.click();
     }
 
@@ -77,7 +77,8 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void cargarMultiplesUbicaciones(String valor) {
-        linkCoberturas.click();
+    	waitUntil(1000);
+        waitFor(linkCoberturas).click();
         checkBoxDanosMateriales.click();
         campoTxtValorAseguradoDanosMateriales.sendKeys(valor);
         linkDetalles.click();
