@@ -10,6 +10,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 import javax.swing.*;
@@ -62,25 +63,29 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     }
 
     public void agregarVehiculo(ExamplesTable datosVehiculo){
-        Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtPlaca).shouldBePresent();
-        campoTxtPlaca.sendKeys(vehiculo.get("placa"));
-        selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitUntil(3200);
-        campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
-        waitUntil(1000);
-        campoTxtPlaca.click();
-        waitUntil(3500);
-        selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
-        waitUntil(2500);
-        selectItem(comboBoxVehiculoServicio,vehiculo.get("vehiculo_servicio"));
-        if(!"null".equals(vehiculo.get("motor"))){
-        campoTxtMotor.sendKeys(vehiculo.get("motor"));
-        campoTxtchasis.sendKeys(vehiculo.get("chasis"));
-        }
-        if(!"null".equals(vehiculo.get("valor_asegurado"))) {
-            campoTxtValorAsegurado.clear();
-            campoTxtValorAsegurado.sendKeys(vehiculo.get("valor_asegurado"));
+        try {
+            Map<String, String> vehiculo = datosVehiculo.getRow(0);
+            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtPlaca).shouldBePresent();
+            campoTxtPlaca.sendKeys(vehiculo.get("placa"));
+            selectItem(comboBoxModelo, vehiculo.get("modelo"));
+            waitUntil(3200);
+            campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
+            waitUntil(1000);
+            campoTxtPlaca.click();
+            waitUntil(3500);
+            selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+            waitUntil(2500);
+            selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
+            if (!"null".equals(vehiculo.get("motor"))) {
+                campoTxtMotor.sendKeys(vehiculo.get("motor"));
+                campoTxtchasis.sendKeys(vehiculo.get("chasis"));
+            }
+            if (!"null".equals(vehiculo.get("valor_asegurado"))) {
+                campoTxtValorAsegurado.clear();
+                campoTxtValorAsegurado.sendKeys(vehiculo.get("valor_asegurado"));
+            }
+        }catch (StaleElementReferenceException e){
+            e.printStackTrace();
         }
     }
 
