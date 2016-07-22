@@ -1,4 +1,4 @@
-Nueva Poliza
+Nueva Poliza Individual
 
 Meta:
 
@@ -52,23 +52,3 @@ Examples:
 |Sura           |Televentas         |Individual|Autos,Multiriesgo corporativo|
 |Sura           |Venta directa      |Individual|Autos,Multiriesgo corporativo|
 |Tuya           |Tuya               |Individual|Autos,Multiriesgo corporativo|
-|Bancolombia    |Leasing            |Colectiva |Bank Autos                   |
-|Bancolombia    |Renting            |Colectiva |Commercial Personal Fleet    |
-|Bancolombia    |Sufi               |Colectiva |Bank Autos                   |
-|Sura           |Canal Tradicional  |Colectiva |Commercial Fleet,Commercial Personal Fleet|
-|Tuya           |Tuya               |Colectiva |Bank Autos                   |
-
-Scenario: validar tabla de productos vacia cuando la organizacion y el canal no puede expedir
-When seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
-And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
-Then no debe mostrar la lista de productos
-
-Examples:
-|organizacion   |canal              |tipoPoliza|
-|Bancolombia    |Televentas         |Colectiva |
-|Exito          |Exito              |Colectiva |
-|GMAC           |GMAC               |Colectiva |
-|Sura           |Autos + Soat       |Colectiva |
-|Sura           |Televentas         |Colectiva |
-|Sura           |Venta directa      |Colectiva |

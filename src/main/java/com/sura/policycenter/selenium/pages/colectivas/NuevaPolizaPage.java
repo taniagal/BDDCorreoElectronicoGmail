@@ -45,13 +45,15 @@ public class NuevaPolizaPage extends PageObject {
     WebElementFacade tablaProductosIndividual;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV-body']")
     WebElementFacade tablaProductosColectiva;
+    @FindBy(xpath = "//li")
+    WebElementFacade listaDesplegable;
 
     public NuevaPolizaPage(WebDriver driver) {
         super(driver);
     }
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
-        guidewire.waitUntil(2500);
+        guidewire.waitUntil(3000);
         elementoDeLaLista.click();
     }
 
@@ -135,11 +137,11 @@ public class NuevaPolizaPage extends PageObject {
         waitFor(listaCanal);
         this.desplegarElementoDeLaLista(listaCanal);
         this.seleccionarElementoDeLaLista(canal);
-        waitFor(ExpectedConditions.attributeToBe(listaCanal, "value", canal));
+        waitForAbsenceOf("//li");
     }
 
     public void seleccionarElTipoDePoliza(String tipoPoliza) {
-        guidewire.waitUntil(500);
+        WebElementFacade radioBotonIndividual = guidewire.esperarElemento(".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:CreateIndividualPolicy_true-inputEl']");
         if ("Individual".equals(tipoPoliza)) {
             if ($(radioBotonIndividual).getCssValue("background-position").equals("0% 0%")) {
                 guidewire.waitUntil(1500);

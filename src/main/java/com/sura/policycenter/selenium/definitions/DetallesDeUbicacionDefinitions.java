@@ -10,7 +10,7 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;
 
-public class DetallesDeUbiacionDefinitions {
+public class DetallesDeUbicacionDefinitions {
     @Steps
     private DetallesDeUbicacionSteps detallesDeUbicacionSteps;
 

@@ -120,6 +120,7 @@ public class NuevaCotizacionPage extends PageObject {
     }
 
     public Boolean esFechaPorDefectoHOY(WebElementFacade fecha) {
+        waitFor(fecha);
         if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getText()).toLocalDate())) {
             return Boolean.TRUE;
         }

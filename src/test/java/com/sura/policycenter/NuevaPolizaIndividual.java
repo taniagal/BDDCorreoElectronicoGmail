@@ -2,5 +2,5 @@ package com.sura.policycenter;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
-public class NuevaPoliza extends SerenityStory {
+public class NuevaPolizaIndividual extends SerenityStory {
 }
