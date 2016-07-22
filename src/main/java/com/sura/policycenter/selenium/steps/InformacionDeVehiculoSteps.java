@@ -38,4 +38,8 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
         opcionesInformacionDelVehiculoPage.ingresaBeneficiario();
     }
 
+    @Step
+    public void validar_campos_informacion_vehiculo() {
+        opcionesInformacionDelVehiculoPage.validaMensajePantalla();
+    }
 }

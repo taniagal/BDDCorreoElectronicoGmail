@@ -37,6 +37,11 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     private WebElementFacade campoTxtchasis;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
     private WebElementFacade campoTxtValorAsegurado;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:6:RateModifier-inputEl']")
+    private WebElementFacade campoTxtDescuento;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:7:RateModifier-inputEl']")
+    private WebElementFacade campoTxtRecargo;
+
 
 
 
@@ -72,6 +77,10 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
         waitUntil(2500);
         selectItem(comboBoxVehiculoServicio,vehiculo.get("vehiculo_servicio"));
+        if(!"null".equals(vehiculo.get("descuento"))){
+            campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
+            campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
+        }
         if(!"null".equals(vehiculo.get("motor"))){
         campoTxtMotor.sendKeys(vehiculo.get("motor"));
         campoTxtchasis.sendKeys(vehiculo.get("chasis"));

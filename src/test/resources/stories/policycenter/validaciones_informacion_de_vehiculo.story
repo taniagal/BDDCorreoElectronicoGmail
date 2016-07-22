@@ -21,8 +21,8 @@ Examples:
 Scenario:  Validar riesgo consultable para motor, placa o chasis
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|valor_asegurado|
-|T64497|2011  |01601225        |ALTAMIRA          |Particular       |CHAS63215|AB3C2|null           |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|valor_asegurado|descuento|
+|T64497|2011  |01601225        |ALTAMIRA          |Particular       |CHAS63215|AB3C2|null           |null     |
 
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                          |
@@ -39,8 +39,8 @@ Examples:
 Scenario:  Validar si el valor asegurado del vehiculo supera el tope maximo del valor permitido
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|
-|T64498|2009  |00601122        |ALTAMIRA          |Particular       |null  |null |null           |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|
+|T64498|2009  |00601122        |ALTAMIRA          |Particular       |null  |null |null           |null     |
 
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                          |
@@ -55,8 +55,8 @@ Examples:
 Scenario:  Validar si el valor asegurado del vehiculo supera el tope minimo del valor permitido
 Given estoy cotizando una poliza de PA en cuenta <cuenta> y producto <producto>
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|
-|T64498|1993  |07015010        |ALTAMIRA          |Particular       |null  |null |4000000        |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|
+|T64498|1993  |07015010        |ALTAMIRA          |Particular       |null  |null |4000000        |null     |
 
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                 |

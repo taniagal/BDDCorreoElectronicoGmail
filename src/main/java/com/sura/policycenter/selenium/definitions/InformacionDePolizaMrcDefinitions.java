@@ -17,7 +17,6 @@ public class InformacionDePolizaMrcDefinitions {
     @Steps
     SeusLoginSteps seusLoginSteps;
 
-    @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
 
 
