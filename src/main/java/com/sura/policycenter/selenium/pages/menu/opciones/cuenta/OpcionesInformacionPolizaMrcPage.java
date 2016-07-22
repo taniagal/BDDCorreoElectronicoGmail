@@ -9,12 +9,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
 
 public class OpcionesInformacionPolizaMrcPage extends Guidewire {
 
@@ -127,6 +125,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
         btnSiguinete.click();
         assertThat("No puede seguir si la fecha es mayor a 60 Dias o menor a 45 dias", mensajePantalla.isPresent());
         waitInfoPoliza(btnEscritorio);
+        waitUntil(4000);
     }
 
     public void ingresarTomadorAdicional(String cedula) {

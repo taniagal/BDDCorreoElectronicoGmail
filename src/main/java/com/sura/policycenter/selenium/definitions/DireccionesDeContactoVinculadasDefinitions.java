@@ -143,7 +143,7 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.validarDireccionDesvinculada(contactosDireccionDesvinculada);
     }
 
-    @Then("la lista de contactos debe ser la siguiente: $contactosAsociados")
+    @Then("la lista de contactos debe ser la siguiente: $obtenerContactosAsociadosWO")
     public void validarContactosAsociados(ExamplesTable contactosAsociados){
         direccionesDeContactoVinculadasSteps.validarContactosAsociados(contactosAsociados);
     }

@@ -15,7 +15,9 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class OpcionesInformacionPolizaPage extends Guidewire {
