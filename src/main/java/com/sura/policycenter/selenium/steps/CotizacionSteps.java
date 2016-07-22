@@ -29,17 +29,19 @@ public class CotizacionSteps extends ScenarioSteps implements Serializable {
 
     @Step
     public void ir_al_menu_escritorio_del_panel_superior(){
+        panelSuperior.waitForTextToAppear("Escritorio");
         panelSuperior.irMenu(PanelSuperiorElement.MENU_ESCRITORIO);
     }
 
     @Step
     public void clic_en_la_opcion_acciones_del_panel_izquierdo(){
+        panelIzquierdo.waitForTextToAppear("Acciones");
         panelIzquierdo.opcion(PanelIzquierdoElement.LINK_ACCIONES);
     }
 
     @Step
     public void clic_en_la_opcion_nueva_cotizacion(){
-
+        panelIzquierdo.waitForTextToAppear("Nueva cotización");
         panelIzquierdo.opcion(PanelIzquierdoElement.LINK_NUEVA_COTIZACION);
     }
 

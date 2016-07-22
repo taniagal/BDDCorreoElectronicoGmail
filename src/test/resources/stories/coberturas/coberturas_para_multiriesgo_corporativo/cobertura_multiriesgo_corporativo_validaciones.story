@@ -1,4 +1,4 @@
-Validaciones de valores de articulo, cobertura y sublimites en Multiriesgo corporativo
+Cobertura Multiriesgo Corporativo Validaciones
 
 Meta:
 @Story CDSEG-753

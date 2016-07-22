@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.definitions;
 
+import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.policycenter.selenium.steps.CotizacionSteps;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
@@ -9,7 +9,6 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.jbehave.core.annotations.*;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
-import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 
 import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -40,10 +39,9 @@ public class CotizacionDefinitions {
     public void crearNuevaCotizacion(){
 
         guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
-
+        cotizador.waitFor(5).seconds();
         cotizador.ir_al_menu_escritorio_del_panel_superior();
         cotizador.clic_en_la_opcion_acciones_del_panel_izquierdo();
-        Serenity.takeScreenshot();
         cotizador.clic_en_la_opcion_nueva_cotizacion();
         assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF("Nueva cotización"), is(equalTo("Nueva cotización")));
 
