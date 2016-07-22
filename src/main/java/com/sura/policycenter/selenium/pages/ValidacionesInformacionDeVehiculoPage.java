@@ -9,8 +9,10 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import javax.swing.*;
 
 public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
@@ -69,9 +71,9 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitUntil(2000);
+        waitUntil(3200);
         campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
-        waitUntil(200);
+        waitUntil(1000);
         campoTxtPlaca.click();
         waitUntil(3500);
         selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
