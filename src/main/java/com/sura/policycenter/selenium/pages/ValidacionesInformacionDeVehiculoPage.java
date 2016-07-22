@@ -68,7 +68,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
         waitUntil(3200);
         campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
-        waitUntil(1000);
+        waitUntil(2000);
         campoTxtPlaca.click();
         waitUntil(3500);
         selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
