@@ -49,6 +49,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='EditPolicyContactRolePopup:ContactDetailScreen:Update-btnInnerEl']")
     WebElementFacade btnActualizaAsegurado;
 
+
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton:AddFromSearch-itemEl']")
     WebElementFacade itemDirectorio;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
@@ -124,8 +125,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
 
     public void bloqueaSiguiente() {
         btnSiguinete.click();
-        assertThat("No puede seguir si la fecha es mayor a 60 Dias o menor a 45 dias", mensajePantalla.isPresent());
-        waitInfoPoliza(btnEscritorio);
+        assertThat("No puede seguir si la fecha es mnayor a 60 Dias", mensajePantalla.isPresent());
     }
 
     public void ingresarTomadorAdicional(String cedula) {

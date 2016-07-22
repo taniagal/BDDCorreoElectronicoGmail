@@ -63,6 +63,15 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     WebElementFacade btnDetalleVehiculo;
     @FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs")
     WebElementFacade cajaMensaje;
+    @FindBy(id = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:AdditionalCoveragesTab-btnInnerEl']")
+    WebElementFacade btnPaginaSiguiente;
+    @FindBy(id = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
+    WebElementFacade txtLimite;
+
+
+
+
+
 
 
     public OpcionesInformacionDelVehiculoPage(WebDriver driver) {
@@ -114,8 +123,9 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     public void validarPaginaSiguiente() {
         btnSiguinete.click();
         opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
-        assertThat("debe tener minimo un conductor", cajaMensaje.containsText("No hay conductores asignados a vehículo(s)"));
+        txtPlaca.click();
         btnSiguinete.click();
+        assertThat("Error: debio pasar a siguinete pagina", cajaMensaje.isVisible());
     }
 
     public void validaMensajePantalla() {

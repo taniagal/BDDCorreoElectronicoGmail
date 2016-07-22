@@ -76,15 +76,23 @@ Examples:
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:
 @Manual
-Given se ha realizado la cotizacion
-When seleccione dicha cotizacion
+Given he realizado la cotizacion <cotizacion>
+When ingrese a la cotizacion
 And el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
 Then no se debe permitir continuar con la cotizacion y mostrar un mensaje
+
+Examples:
+|cotizacion|
+|22270002  |
 
 Scenario: Riesgos consultables - Tipo Causal Moral
 Meta:
 @Manual
-Given se ha realizado la cotizacion
-When seleccione dicha cotizacion
+Given he realizado la cotizacion <cotizacion>
+When ingrese a la cotizacion
 And el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
 Then no se debe permitir continuar con la cotizacion y mostrar un mensaje
+
+Examples:
+|cotizacion|
+|22270002  |
