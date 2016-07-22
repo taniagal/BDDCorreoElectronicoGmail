@@ -53,7 +53,6 @@ public class CoaseguroPage extends Guidewire {
         }catch (StaleElementReferenceException e){
             e.printStackTrace();
         }
-
         if(!botonAgregar.isPresent())
             right.append("boton_agregar, ");
         if(!campoTxtDastosAdministrativos.containsText("2%") || campoTxtDastosAdministrativos.getAttribute("class").contains("x-form-text"))
