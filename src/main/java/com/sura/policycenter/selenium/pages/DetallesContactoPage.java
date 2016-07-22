@@ -133,8 +133,6 @@ public class  DetallesContactoPage extends Guidewire {
     private WebElementFacade campoTxtIrA;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ContactSearch']/div")
     private WebElementFacade menuItemContactos;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade comboBoxDepartamento2;
 
 
     private  String [] dtlContact = new String[15];
@@ -209,30 +207,18 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void setTelefonoTrabajo(String telefonoTrabajo){
-        do {
-            campoTxtTelefonoTrabajo.clear();
-            waitFor(campoTxtTelefonoTrabajo).shouldContainText("");
-            campoTxtTelefonoTrabajo.sendKeys(telefonoTrabajo);
-        }while (!campoTxtTelefonoTrabajo.getValue().equals(telefonoTrabajo));
+        ingresarDato(campoTxtTelefonoTrabajo, telefonoTrabajo);
         dtlContact[12]= telefonoTrabajo;
     }
 
     public void setTelefonoCelular(String telefonoCelular){
-        campoTxtTelefonoCelular.clear();
-        waitUntil(500);
-        campoTxtTelefonoCelular.sendKeys(telefonoCelular);
+        ingresarDato(campoTxtTelefonoCelular, telefonoCelular);
         dtlContact[10]= "+1 "+telefonoCelular;
     }
 
     public void setCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
-        campoTxtCorreoElectronicoPrimario.clear();
-        waitUntil(1000);
-        campoTxtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
-        do {
-            campoTxtCorreoElectronicoSecundario.clear();
-            waitFor(campoTxtCorreoElectronicoSecundario).shouldContainText("");
-            campoTxtCorreoElectronicoSecundario.sendKeys(correoElectronicoSecundario);
-        }while (!campoTxtCorreoElectronicoSecundario.getValue().equals(correoElectronicoSecundario));
+        ingresarDato(campoTxtCorreoElectronicoPrimario,correoElectronicoPrimario);
+        ingresarDato(campoTxtCorreoElectronicoSecundario, correoElectronicoSecundario);
         dtlContact[13]= correoElectronicoPrimario;
         dtlContact[14]= correoElectronicoSecundario;
     }
@@ -269,14 +255,18 @@ public class  DetallesContactoPage extends Guidewire {
         campoTxtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
         campoTxtTelefonoOficina.sendKeys(telefonoOficina);
-        do {
-            campoTxtCorreoElectronicoSecundarioEmpresa.clear();
-            waitFor(campoTxtCorreoElectronicoSecundarioEmpresa).shouldContainText("");
-            campoTxtCorreoElectronicoSecundarioEmpresa.sendKeys(correoElectronicoSecundario);
-        }while (!campoTxtCorreoElectronicoSecundarioEmpresa.getValue().equals(correoElectronicoSecundario));
+        ingresarDato(campoTxtCorreoElectronicoSecundarioEmpresa, correoElectronicoSecundario);
         dtlCntJ[5]= telefonoOficina;
         dtlCntJ[6]= correoElectronicoPrimario;
         dtlCntJ[7]= correoElectronicoSecundario;
+    }
+
+    public void ingresarDato(WebElementFacade elemento, String dato){
+        do {
+            elemento.clear();
+            waitFor(elemento).shouldContainText("");
+            elemento.sendKeys(dato);
+        }while (!elemento.getValue().equals(dato));
     }
 
 

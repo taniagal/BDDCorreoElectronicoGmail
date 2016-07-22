@@ -14,20 +14,6 @@ public class DetallesDeUbicacionPage extends Guidewire{
 
     @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     private WebElementFacade numeroDeCuenta;
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:Producer:SelectOrganization']")
-    private WebElementFacade botonAgregarOrganizacion;
-    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchDV:GlobalContactNameInputSet:Name-inputEl']")
-    private WebElementFacade campoTxtNombreDeOrganizacion;
-    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    private WebElementFacade botonBuscarOrganizacion;
-    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchResultsLV:0:_Select']")
-    private WebElementFacade botonSeleccionarOrganizacion;
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
-    private WebElementFacade comboBoxCodigoAgente;
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultBaseState-inputEl']")
-    private WebElementFacade comboBoxEstadoBase;
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:3:addSubmission']")
-    private WebElementFacade botonElegir;
     @FindBy(xpath=".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB-btnInnerEl']")
@@ -60,8 +46,6 @@ public class DetallesDeUbicacionPage extends Guidewire{
     private WebElementFacade linkNombre;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     private WebElementFacade comboBoxNombreAgente;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
-    private WebElementFacade comboboxCodigoDeAgente;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']")
     private WebElementFacade subMenuNuevaCotizacion;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
@@ -92,7 +76,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public void irANuevaCotizacion(){
-        setImplicitTimeout(2,TimeUnit.SECONDS);
+        setImplicitTimeout(2, TimeUnit.SECONDS);
         if(!botonAcciones.isPresent())
             menuItemEscritorio.click();
         resetImplicitTimeout();
@@ -128,7 +112,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public void setUbicacion(String descripcion, String actividad){
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
         selectItem(comboBoxActividadEconomica,actividad);
         botonAceptar.click();
     }

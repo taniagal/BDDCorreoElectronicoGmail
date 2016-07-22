@@ -9,6 +9,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.components.HtmlTable;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -42,12 +43,16 @@ public class CoaseguroPage extends Guidewire {
     public void validarCampos() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
         linkAgregarCoaseguro.click();
-        radioBotonAceptado.waitUntilPresent().click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
         campoTxtDastosAdministrativos.waitUntilPresent();
         radioBotonLider.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(radioBotonAceptado.isSelected())
-            right.append("radio_boton_cedido, ");
+        try {
+            if (radioBotonAceptado.isSelected())
+                right.append("radio_boton_cedido, ");
+        }catch (StaleElementReferenceException e){
+            e.printStackTrace();
+        }
         if(!botonAgregar.isPresent())
             right.append("boton_agregar, ");
         if(!campoTxtDastosAdministrativos.containsText("2%") || campoTxtDastosAdministrativos.getAttribute("class").contains("x-form-text"))

@@ -121,22 +121,22 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
         txtFechaVigencia.clear();
         txtFechaVigencia.sendKeys(fechaInicioVigencia);
         actions.sendKeys(Keys.ENTER).build().perform();
+        waitInfoPoliza(mensajePantalla);
     }
 
     public void bloqueaSiguiente() {
         btnSiguinete.click();
-        assertThat("No puede seguir si la fecha es mayor a 60 Dias o menor a 45 dias", mensajePantalla.isPresent());
-        waitInfoPoliza(btnEscritorio);
+        assertThat("No puede seguir si la fecha es mnayor a 60 Dias", mensajePantalla.isPresent());
     }
 
     public void ingresarTomadorAdicional(String cedula) {
-        waitInfoPoliza(lblInformaPoliza);
-        btnAgregar.click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAgregar).waitUntilPresent().click();
         itemDirectorio.click();
         waitInfoPoliza(lblBuscarDirectorio);
-        itemTipoDocumento.sendKeys("CEDULA DE CIU");
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        actions.sendKeys(Keys.ENTER).build().perform();
+        itemTipoDocumento.clear();
+        waitUntil(200);
+        itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
+        itemTipoDocumento.sendKeys(Keys.ENTER);
         waitInfoPoliza(lblPrimerNombre);
         txtNumDocumento.sendKeys(cedula);
         btnBuscar.click();
@@ -241,6 +241,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     }
 
     public void validaReaseguro() {
+        setImplicitTimeout(3, TimeUnit.SECONDS);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if (!lblTomador.getText().equals("Compañía cedente"))
             notPresent.append("salida errada: Compañía cedente|");
@@ -255,6 +256,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
         }
         assertThat(res, "No estan presentes los elementos".equals(res));
+        resetImplicitTimeout();
     }
 
     public void validaFormularioDescripDireccion() {
