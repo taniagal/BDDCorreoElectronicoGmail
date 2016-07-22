@@ -5,6 +5,7 @@ import com.sura.commons.selenium.Commons;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -38,7 +39,6 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade campoTxtValorAsegurado;
 
 
-
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
     }
@@ -46,51 +46,52 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     public void irAVehiculos() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuItemVehiculos).shouldBePresent();
         menuItemVehiculos.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
     }
 
-    public void crearVehiculo(){
+    public void crearVehiculo() {
         campoTxtPlaca.waitUntilPresent();
         botonCrearVehiculo.click();
     }
 
-    public void clickSiguiente(){
+    public void clickSiguiente() {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonsiguiente).click();
     }
 
-    public void agregarVehiculo(ExamplesTable datosVehiculo){
+    public void agregarVehiculo(ExamplesTable datosVehiculo) {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
-        selectItem(comboBoxModelo,vehiculo.get("modelo"));
+        selectItem(comboBoxModelo, vehiculo.get("modelo"));
         waitUntil(3200);
         campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
         waitUntil(1000);
         campoTxtPlaca.click();
         waitUntil(3500);
-        selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
+        selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitUntil(2500);
-        selectItem(comboBoxVehiculoServicio,vehiculo.get("vehiculo_servicio"));
-        if(!"null".equals(vehiculo.get("motor"))){
-        campoTxtMotor.sendKeys(vehiculo.get("motor"));
-        campoTxtchasis.sendKeys(vehiculo.get("chasis"));
+        selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
+        if (!"null".equals(vehiculo.get("motor"))) {
+            campoTxtMotor.sendKeys(vehiculo.get("motor"));
+            campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
-        if(!"null".equals(vehiculo.get("valor_asegurado"))) {
+        if (!"null".equals(vehiculo.get("valor_asegurado"))) {
             campoTxtValorAsegurado.clear();
             campoTxtValorAsegurado.sendKeys(vehiculo.get("valor_asegurado"));
         }
     }
 
     public void agregarCodigoFasecolda(String codigo) {
-       campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
-       campoTxtPlaca.click();
-       waitUntil(1000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
+        campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
+        campoTxtPlaca.click();
+        waitUntil(1000);
     }
 
-    public void verificarMensajes(ExamplesTable mensajes){
+    public void verificarMensajes(ExamplesTable mensajes) {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
-        for(Map<String, String> mensaje: mensajes.getRows()){
-            MatcherAssert.assertThat("Error: en la validacion del mensaje "+mensaje.get("mensaje"), divMensaje.containsText(mensaje.get("mensaje")));
+        for (Map<String, String> mensaje : mensajes.getRows()) {
+            MatcherAssert.assertThat("Error: en la validacion del mensaje " + mensaje.get("mensaje"), divMensaje.containsText(mensaje.get("mensaje")));
         }
     }
 

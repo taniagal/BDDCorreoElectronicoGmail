@@ -26,9 +26,9 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregar_informacion_de_poliza(datosPoliza);
     }
 
-    @When("ingrese los datos del asegurado: $datosAsegurado")
-    public void agregarAsegurado(ExamplesTable datosAsegurado) {
-        tarifaAutosSteps.agregar_asegurados(datosAsegurado);
+    @When("ingrese los datos del asegurado")
+    public void agregarAsegurado() {
+        tarifaAutosSteps.agregar_asegurados();
     }
 
     @When("ingrese los datos del vehiculo: $datosVehiculo")
