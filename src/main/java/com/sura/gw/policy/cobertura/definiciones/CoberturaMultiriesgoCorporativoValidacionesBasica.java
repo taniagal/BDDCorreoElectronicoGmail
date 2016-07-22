@@ -50,7 +50,10 @@ public class CoberturaMultiriesgoCorporativoValidacionesBasica {
 
         try {
             informacionDePoliza.cuandoEditeInformacionDeLaPoliza();
-        }catch (Exception e){}
+        }catch (Exception e){
+            LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO");
+        }
+
         informacionDePoliza.cuandoSeleccioneOpcionDeInformacionDePolizaEdificiosYUbicaciones();
         informacionDePoliza.cuandoDeseeIngresarArticuloAUnaUbicacion();
         informacionDePoliza.cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo();
