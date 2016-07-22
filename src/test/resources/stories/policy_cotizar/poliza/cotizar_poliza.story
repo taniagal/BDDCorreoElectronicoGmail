@@ -1,15 +1,10 @@
 Meta:
 Narrative:
 
-GivenStories: stories/precondiciones/ingreso_a_policycenter.story
-
 Scenario: Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial buscando por
 numero de cuenta y persona juridica
 Meta:
-#GivenStories: stories/policycenter/ingresar_a_policyCenter.story#{@id1:login_policycenter_su}
-
 Given deseo crear nueva cotizacion buscando por numero de cuenta
-
 When digite el numero de cuenta C010478975 de una persona juridica y digite la tecla Tab para activar la busqueda
 Then espero ver el nombre de la persona jurídica VARIEDADES YURLEDYS S.A de la cuenta existente junto con la etiqueta
 Razón social
@@ -31,7 +26,6 @@ Scenario: Validaciones como precondicion en la realizacion de una cotizacion par
 por numero de cuenta y persona natural
 
 Given deseo crear nueva cotizacion buscando por numero de cuenta
-
 When digite el numero de cuenta C000888888 de una persona natural y digite la tecla Tab para activar la busqueda
 Then espero ver el nombre de la persona natural YURLEDYS GALLEGO TORRES de la cuenta existente junto con la etiqueta
 Nombre
