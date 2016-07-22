@@ -27,6 +27,7 @@ And se visualiza la informacion de la poliza
 When modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
 Then esta <fechaInicioVigencia> debe calcular de forma automatica la fecha de fin de vigencia, la cual depende del tipo de plazo
 
+
 Examples:
 |numeroCuenta  |fechaInicioVigencia|tipoPlazo |
 |C000888888    |07/15/2016         |6 meses   |
@@ -64,6 +65,7 @@ Examples:
 |C000888888     |60         |Descuento Póliza : El descuento de la póliza debe estar en un rango de 0% a 50%. |
 |C000888888     |abc        |Descuento Póliza : debe ser un valor numérico.                                   |
 
+
 Scenario: Validar longitud decimales porcentaje descuento de poliza
 Given ya se inicio una nueva suscripcion <numeroCuenta>
 And se visualiza la informacion de la poliza
@@ -85,6 +87,7 @@ Examples:
 |numeroCuenta |organizacion|canal     |tipoPoliza |
 |C000888888   |Bancolombia |Televentas|PPAutos    |
 
+
 Scenario: Validar retroactividad en la vigencia de la poliza
 Given ya se inicio una nueva suscripcion <numeroCuenta>
 And se visualiza la informacion de la poliza
@@ -94,3 +97,5 @@ Then se debe cumplir con la retroactividad permitida <mensaje>
 Examples:
 |numeroCuenta |organizacion|canal     |tipoPoliza |tipoPlazo |fechaInicioVigencia|mensaje|
 |C000888888   |Bancolombia |Televentas|PPAutos    |6 meses   |01/01/2016         |La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
+
+
