@@ -48,7 +48,9 @@ public class CoberturaMultiriesgoCorporativoValidacionesBasica {
     @When("cuando intente ingresar un articulo para una ubicacion para comprobar las validaciones de error del articulo")
     public void cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo() {
 
-        informacionDePoliza.cuandoEditeInformacionDeLaPoliza();
+        try {
+            informacionDePoliza.cuandoEditeInformacionDeLaPoliza();
+        }catch (Exception e){}
         informacionDePoliza.cuandoSeleccioneOpcionDeInformacionDePolizaEdificiosYUbicaciones();
         informacionDePoliza.cuandoDeseeIngresarArticuloAUnaUbicacion();
         informacionDePoliza.cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo();
