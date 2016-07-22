@@ -265,6 +265,7 @@ public class  DetallesContactoPage extends Guidewire {
 
     public void ingresarDato(WebElementFacade elemento, String dato){
         do {
+            waitFor(elemento);
             elemento.clear();
             waitFor(elemento).shouldContainText("");
             elemento.sendKeys(dato);

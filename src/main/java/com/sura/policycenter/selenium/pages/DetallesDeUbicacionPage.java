@@ -73,6 +73,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
         String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
+        waitUntil(1000);
         botonElegirProducto.click();
     }
 
