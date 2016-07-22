@@ -41,6 +41,16 @@ public class TarifaAutosPage extends Commons{
     private WebElementFacade botonRelacionarAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver']")
     private WebElementFacade navItemAseguradoR;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV:0:numDocument']")
+    private WebElementFacade itemdocNum;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
+    private WebElementFacade botonBorrar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxDaniosCarro;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxHurto;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxAsistencia;
 
 
     public TarifaAutosPage(WebDriver driver){
@@ -69,15 +79,20 @@ public class TarifaAutosPage extends Commons{
 
     public void relacionarAsegurado(){
         botonRelacionarAsegurado.click();
-        waitUntil(200);
         navItemAseguradoR.click();
+        itemdocNum.waitUntilPresent();
     }
 
-    public void setCoberturas(ExamplesTable datosPoliza) {
-        comboBoxLimite.sendKeys();
-        comboBoxDeducible.sendKeys();
-        comboBoxPerdidaTotalHurto.sendKeys();
+    public void setCoberturas(ExamplesTable datosCoberturas) {
+        Map<String, String> dato = datosCoberturas.getRow(0);
+        botonBorrar.click();
+        selectItem(comboBoxLimite,dato.get("limite"));
+        selectItem(comboBoxDeducible,dato.get("deducible"));
+        checkBoxDaniosCarro.click();
+        checkBoxAsistencia.click();
+        checkBoxHurto.click();
+        /*comboBoxPerdidaTotalHurto.sendKeys();
         comboBoxPerdidaParcialHurto.sendKeys();
-        comboBoxPerdidaParcialHurtoFranquisia.sendKeys();
+        comboBoxPerdidaParcialHurtoFranquisia.sendKeys();*/
     }
 }

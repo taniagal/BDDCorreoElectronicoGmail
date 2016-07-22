@@ -35,7 +35,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_coberturas(ExamplesTable datosPoliza) {
-        tarifaAutosPage.setCoberturas(datosPoliza);
+    public void agregar_coberturas(ExamplesTable datosCoberturas) {
+        tarifaAutosPage.setCoberturas(datosCoberturas);
     }
 }
