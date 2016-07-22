@@ -157,9 +157,9 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(datosPoliza.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosPoliza.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoTipoPlazo.getText(), Is.is(Matchers.equalTo(datosPoliza.get("tipoPlazo"))));
-        MatcherAssert.assertThat(campoFechaInicioVigencia.getText(), Is.is(Matchers.equalTo(datosPoliza.get("fechaInicioVigencia"))));
-        MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(datosPoliza.get("fechaFinVigencia"))));
-        MatcherAssert.assertThat(campoFechaExpedicion.getText(), Is.is(Matchers.equalTo(datosPoliza.get("fechaExpedicion"))));
+        MatcherAssert.assertThat(campoFechaInicioVigencia.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(campoFechaExpedicion.getText(), Is.is(Matchers.notNullValue()));
     }
 
     public void adicionarSegundoTomador(String tipoDocumento, String numeroDocumento) {
