@@ -11,7 +11,7 @@ public class InformacionPolizaPage extends PageObject {
 
     public enum Opcion {
         LINK_EDIFICIOS_Y_UBICACIONES(".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div"),
-        ENVIO(".//*[@id='SubmissionWizard:0_header_hd-textEl']");
+        ENVIO(".//*[contains(@id,'SubmissionWizard') and contains(@id,'_header_hd-textEl')]");
         private String opcion;
 
         Opcion(String opcion) {

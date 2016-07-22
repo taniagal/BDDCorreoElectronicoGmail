@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
 
     private static String CHECK_EDIFICIO = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']";
-    private static String CHECK_EDIFICIO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox')]";
+    private static String CHECK_EDIFICIO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV') and contains(@id,'CoverageInputSet:CovPatternInputGroup:_checkbox')]";
     private static String TXT_VALOR_RECONSTRUCCION = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl')]";
-    private static String TXT_VALOR_ASEGURADO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl')]";
-    private static String TXT_VALOR_SUBLIMITE_TRANSLADO = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:7:CovTermInputSet:DirectTermInput-inputEl')]";
-    private static String TXT_VALOR_SUBLIMITE_COMBUSTION = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:8:CovTermInputSet:DirectTermInput-inputEl')]";
+    private static String TXT_VALOR_ASEGURADO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV') and contains(@id,'CoverageInputSet:CovPatternInputGroup') and contains(@id,'CovTermInputSet:DirectTermInput-inputEl')]";
+    private static String TXT_VALOR_SUBLIMITE_TRANSLADO = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:') and contains(@id,'CoverageInputSet:CovPatternInputGroup:') and contains(@id,'CovTermInputSet:DirectTermInput-inputEl')]";
+    private static String TXT_VALOR_SUBLIMITE_COMBUSTION = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:') and contains(@id,'CoverageInputSet:CovPatternInputGroup') and contains(@id,'CovTermInputSet:DirectTermInput-inputEl')]";
     private static String LINK_ACEPTAR_AGREGAR_ARTICULO = ".//*[@id='CPBuildingSuraPopup:Update']";
 
 
@@ -22,10 +22,10 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
     }
 
     public void ingresarValorAInput(String xpath, String valor) {
-        WebElement txtValorReconstruccion = getDriver().findElement(By.xpath(xpath));
-        $(txtValorReconstruccion).shouldBeCurrentlyVisible();
-        $(txtValorReconstruccion).shouldBeEnabled();
-        enter(valor).into(txtValorReconstruccion);
+        WebElement txt = getDriver().findElement(By.xpath(xpath));
+        $(txt).shouldBeCurrentlyVisible();
+        $(txt).shouldBeEnabled();
+        enter(valor).into(txt);
     }
 
     public void seleccionarArticuloEdificio() {

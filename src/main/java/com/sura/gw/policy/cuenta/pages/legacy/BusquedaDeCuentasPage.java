@@ -106,17 +106,17 @@ public class BusquedaDeCuentasPage extends Guidewire {
     public void irABuscarCuentas() {
         menuBuscar.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilPresent().click();
         waitABit(1500);
-        menuBuscarCuentas.click();
+        menuBuscarCuentas.waitUntilVisible().waitUntilClickable().click();
     }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         this.limpiarFormulario();
         try{
-            txtPrimerNombre.sendKeys(primerNombre);
-            txtSegundoNombre.sendKeys(segundoNombre);
-            txtPrimerApellido.sendKeys(primerApellido);
-            txtSegundoApellido.sendKeys(segundoApellido);
-            btnBuscar.click();
+            txtPrimerNombre.waitUntilVisible().waitUntilEnabled().sendKeys(primerNombre);
+            txtSegundoNombre.waitUntilVisible().waitUntilEnabled().sendKeys(segundoNombre);
+            txtPrimerApellido.waitUntilVisible().waitUntilEnabled().sendKeys(primerApellido);
+            txtSegundoApellido.waitUntilVisible().waitUntilEnabled().sendKeys(segundoApellido);
+            btnBuscar.waitUntilClickable().click();
         } catch (StaleElementReferenceException elemento){
             elemento.printStackTrace();
         }
@@ -199,8 +199,8 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void buscarCuentaPorNombreComercial(String nombreComercial) {
         this.limpiarFormulario();
-        txtNombreComercial.sendKeys(nombreComercial);
-        btnBuscar.click();
+        txtNombreComercial.waitUntilVisible().waitUntilEnabled().sendKeys(nombreComercial);
+        btnBuscar.waitUntilClickable().click();
     }
 
     public void seleccionarImprimir() {
@@ -234,9 +234,9 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void ingresarRazonSocialYNombreComercial(String nombreComercial, String razonSocial) {
         this.limpiarFormulario();
-        this.txtNombreComercial.sendKeys(nombreComercial);
-        this.txtRazonSocial.sendKeys(razonSocial);
-        btnBuscar.click();
+        this.txtNombreComercial.waitUntilEnabled().sendKeys(nombreComercial);
+        this.txtRazonSocial.waitUntilEnabled().sendKeys(razonSocial);
+        btnBuscar.waitUntilClickable().click();
     }
 
 }
