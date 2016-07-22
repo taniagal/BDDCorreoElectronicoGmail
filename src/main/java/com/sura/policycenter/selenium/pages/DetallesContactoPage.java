@@ -217,7 +217,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void setCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
-        ingresarDato(campoTxtCorreoElectronicoPrimario, correoElectronicoPrimario);
+        ingresarDato(campoTxtCorreoElectronicoPrimario,correoElectronicoPrimario);
         ingresarDato(campoTxtCorreoElectronicoSecundario, correoElectronicoSecundario);
         dtlContact[13]= correoElectronicoPrimario;
         dtlContact[14]= correoElectronicoSecundario;
