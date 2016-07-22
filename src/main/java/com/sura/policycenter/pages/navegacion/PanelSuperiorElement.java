@@ -1,8 +1,10 @@
 package com.sura.policycenter.pages.navegacion;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
@@ -18,9 +20,14 @@ public class PanelSuperiorElement extends PageObject implements Serializable {
 
     public void irMenu(String opcion){
         try {
+
+            findBy(opcion).waitUntilVisible();
+
+            WebElement menuEscritorio = getDriver().findElement(By.xpath(opcion));
+            menuEscritorio.click();
+
             fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
-            waitFor(opcion).shouldBeDisplayed();
-            $(opcion).waitUntilVisible().waitUntilClickable().click();
+
         } catch (TimeoutException e){
             throw new NoSuchElementException("ERROR000: Elemento del menú no encontrado | Elemento: " + opcion + "\n TRAZA: " + e);
         } catch (Exception e){

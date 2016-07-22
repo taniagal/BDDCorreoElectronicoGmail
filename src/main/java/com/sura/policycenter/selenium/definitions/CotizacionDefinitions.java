@@ -5,15 +5,11 @@ import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.jbehave.core.annotations.AfterStory;
-import org.jbehave.core.annotations.Alias;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Pending;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import net.thucydides.core.webdriver.SerenityWebdriverManager;
+import org.jbehave.core.annotations.*;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
-
+import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 
 import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -30,6 +26,10 @@ public class CotizacionDefinitions {
     @Managed
     WebDriver driver;
 
+
+    @Steps
+    IngresoAPolicyCenterDefinitions guidewire;
+
     @Steps
     CotizacionSteps cotizador;
 
@@ -38,9 +38,10 @@ public class CotizacionDefinitions {
      */
     @Given("deseo crear nueva cotizacion buscando por numero de cuenta")
     public void crearNuevaCotizacion(){
-        cotizador.waitFor(2).second();
+
+        guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
+
         cotizador.ir_al_menu_escritorio_del_panel_superior();
-        cotizador.waitFor(1).second();
         cotizador.clic_en_la_opcion_acciones_del_panel_izquierdo();
         Serenity.takeScreenshot();
         cotizador.clic_en_la_opcion_nueva_cotizacion();
@@ -168,13 +169,16 @@ public class CotizacionDefinitions {
     }
 
     /**
-     * POST HU
+     * AFTER SCENARY
      */
-    @AfterStory
-    public void finalizarHistoria(){
-        Serenity.done();
-        LOGGER.info("CotizacionDefinitions.finalizarHistoria");
+    @AfterScenario
+
+    public void finalizarEscenario(){
+        SerenityWebdriverManager.inThisTestThread().closeCurrentDriver();
+        LOGGER.info("CotizacionDefinitions.finalizarEscenario");
     }
+
+
 
 
 
