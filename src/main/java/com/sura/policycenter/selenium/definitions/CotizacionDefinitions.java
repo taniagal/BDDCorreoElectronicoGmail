@@ -80,6 +80,7 @@ public class CotizacionDefinitions {
 
     @When("se muestre la fecha de efecto de la cotizacion")
     public void esVisibleFechaDefecto(){
+
         cotizador.getCotizacionPage().obtenerFechaCotizacionElemento().shouldBeCurrentlyVisible();
 
         LOGGER.info("CotizacionDefinitions.esVisibleFechaDefecto");
