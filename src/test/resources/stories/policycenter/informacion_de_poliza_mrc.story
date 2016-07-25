@@ -16,7 +16,7 @@ Then se debe visualizar los datos del tomador <tomador>
 
 Examples:
 |numeroCuenta|organizacion|canal            |nomProducto            |tomador                      |
-|C001888888  |Sura        |Canal Tradicional|Multiriesgo corporativo|YURLEDYS PAOLA GALLEGO TORRES|
+|C001888888  |Sura        |Canal Tradicional|Multiriesgo corporativo|DORIAN STIWAR EASTMOND PULGARIN|
 
 Scenario: Validar campos especiales de reaseguros
 Given se inicio una nueva suscripcion <numeroCuenta>
