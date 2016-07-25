@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.BusquedaContactoSteps;
 import com.sura.policycenter.selenium.steps.PolicySteps;
 import java.util.HashMap;
@@ -25,19 +24,18 @@ public class BusquedaContactoDefinitions {
     PolicySteps pcs;
 
     @Steps
-    SeusLoginSteps seusLoginSteps;
-
-    @Steps
     private BusquedaContactoSteps buscarContactoSteps;
 
     @Given("estoy en busqueda de contactos")
     public void givenEstoyEnBusquedaContactos() {
-        buscarContactoSteps.navegarBarraSuperior();
+        //buscarContactoSteps.navegarBarraSuperior();
+        buscarContactoSteps.ir_A_Buscar_Contacto();
     }
 
     @Given("estoy en contactos para buscar")
     public void givenContactosBuscar(){
-        buscarContactoSteps.navegarBarraSuperior();
+        //buscarContactoSteps.navegarBarraSuperior();
+        buscarContactoSteps.ir_A_Busqueda_Contacto();
     }
 
     @When("quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre> y apellido <apellido>")

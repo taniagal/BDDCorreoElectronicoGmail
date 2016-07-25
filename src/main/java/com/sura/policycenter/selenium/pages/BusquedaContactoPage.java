@@ -10,6 +10,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.slf4j.LoggerFactory;
 
 
@@ -22,6 +23,15 @@ import static org.hamcrest.Matchers.is;
 public class BusquedaContactoPage extends Guidewire {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaContactoPage.class);
+    Actions act = new Actions(getDriver());
+    @FindBy(xpath=".//*[@id='TabBar:ContactTab-btnWrap']")
+    private WebElementFacade menuContacto;
+    @FindBy(xpath=".//*[@id='TabBar:ContactTab:Search-itemEl']")
+    private WebElementFacade itemBuscarContacto;
+    @FindBy(xpath=".//*[@id='TabBar:SearchTab-btnWrap']")
+    private WebElementFacade menuBuscar;
+    @FindBy(xpath=".//*[@id='TabBar:SearchTab:Search_ContactSearch-itemEl']")
+    private WebElementFacade itemContactos;
     @FindBy(xpath=".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")
     private WebElementFacade tipoContact;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
@@ -96,7 +106,6 @@ public class BusquedaContactoPage extends Guidewire {
     private WebElementFacade primerElementoTabla;
     @FindBy(xpath="//td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade botonTipoDoc;
-
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
     private WebElementFacade txtTipoDocDirectorioCotizacion;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
@@ -108,11 +117,26 @@ public class BusquedaContactoPage extends Guidewire {
         super(driver);
     }
 
+    public void irABuscarContacto() {
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuContacto).shouldBePresent();
+        menuContacto.click();
+        waitUntil(5000);
+        menuContacto.click();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        waitUntil(3000);
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(itemBuscarContacto).click();
+        waitUntil(1500);
+    }
 
-    public void login(String usuario, String contrasena){
-        txtusuario.type(usuario);
-        txtcontrasena.type(contrasena);
-        submit.click();
+    public void irABusquedaDeContacto() {
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuBuscar).shouldBePresent();
+        menuBuscar.click();
+        waitUntil(5000);
+        menuBuscar.click();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        waitUntil(3000);
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(itemContactos).click();
+        waitUntil(1500);
     }
 
     public void buscarContacto(String tipoContacto, String nombre, String apellido){
@@ -165,7 +189,6 @@ public class BusquedaContactoPage extends Guidewire {
     public void validarInformacionTipoId() {
         String msjSinReg = "No hay datos para mostrar";
         waitUntil(2000);
-        //waitForTextToAppear(msjSinReg, 2000);
         assertThat(msjSinRegistros.getText(),is(equalTo(msjSinReg)));
     }
 
