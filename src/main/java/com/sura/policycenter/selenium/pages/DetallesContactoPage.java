@@ -251,19 +251,16 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void setCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario){
-        campoTxtCorreoElectronicoPrimarioEmpresa.clear();
-        waitUntil(300);
-        campoTxtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
+        ingresarDato(campoTxtCorreoElectronicoPrimarioEmpresa,correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
-        fluent().await().atMost(2,TimeUnit.SECONDS);
         campoTxtTelefonoOficina.sendKeys(telefonoOficina);
         ingresarDato(campoTxtCorreoElectronicoSecundarioEmpresa, correoElectronicoSecundario);
-        fluent().await().atMost(2,TimeUnit.SECONDS);
         dtlCntJ[5]= telefonoOficina;
         dtlCntJ[6]= correoElectronicoPrimario;
         dtlCntJ[7]= correoElectronicoSecundario;
     }
 
+    // TODO: 25/07/2016 Existe un riesgo de que se quede en este ciclo permanentemente 
     public void ingresarDato(WebElementFacade elemento, String dato){
         do {
             elemento.clear();
