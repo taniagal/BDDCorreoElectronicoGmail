@@ -51,7 +51,12 @@ public class TarifaAutosPage extends Commons{
     private WebElementFacade checkBoxHurto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxAsistencia;
-
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
+    private WebElementFacade botonCotizar;
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:DetailsButton-btnInnerEl']")
+    private WebElementFacade botonDetalles;
+    @FindBy(id = "SubmissionWizard:ViewQuote")
+    private WebElementFacade menuItemCotizacion;
 
     public TarifaAutosPage(WebDriver driver){
         super(driver);
@@ -60,11 +65,11 @@ public class TarifaAutosPage extends Commons{
     public void setInformacionDePoliza(ExamplesTable datosPoliza) {
         Map<String, String> dato = datosPoliza.getRow(0);
         selectItem(comboBoxOrganizacion, dato.get("organizacion"));
-        waitUntil(2500);
+        waitUntil(1500);
         selectItem(comboBoxCanal, dato.get("canal"));
-        waitUntil(2500);
+        waitUntil(1500);
         selectItem(comboBoxTipoPoliza,dato.get("tipo_poliza"));
-        waitUntil(2500);
+        waitUntil(1500);
     }
 
 
@@ -86,13 +91,19 @@ public class TarifaAutosPage extends Commons{
     public void setCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
         botonBorrar.click();
-        selectItem(comboBoxLimite,dato.get("limite"));
+        waitUntil(1000);
+        comboBoxLimite.clear();
+        waitUntil(500);
+        comboBoxLimite.sendKeys(dato.get("limite"));
+        comboBoxLimite.sendKeys(Keys.ENTER);
         selectItem(comboBoxDeducible,dato.get("deducible"));
         checkBoxDaniosCarro.click();
         checkBoxAsistencia.click();
         checkBoxHurto.click();
-        /*comboBoxPerdidaTotalHurto.sendKeys();
-        comboBoxPerdidaParcialHurto.sendKeys();
-        comboBoxPerdidaParcialHurtoFranquisia.sendKeys();*/
+        botonCotizar.click();
+        botonBorrar.waitUntilPresent().click();
+        botonDetalles.waitUntilPresent();
+        waitUntil(500);
+        menuItemCotizacion.click();
     }
 }

@@ -43,7 +43,6 @@ public class TarifaAutosDefinitions {
 
     @Then("el resultado de la cotizacion debe ser")
     public void verificarResultado(){
-
     }
 
 }
