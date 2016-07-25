@@ -1,4 +1,4 @@
-Consulta de contactos asociados a cuenta
+Consulta contactos en cuenta
 
 Meta:
 @Story SUGWUSC-14962
