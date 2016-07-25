@@ -1,4 +1,4 @@
-Cobertura Multiriesgo Corporativo Validaciones
+Cobertura mrc Validaciones
 
 Meta:
 @Story CDSEG-753
