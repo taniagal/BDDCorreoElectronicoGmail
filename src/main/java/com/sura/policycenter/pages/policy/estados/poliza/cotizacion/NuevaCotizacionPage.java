@@ -1,11 +1,6 @@
 package com.sura.policycenter.pages.policy.estados.poliza.cotizacion;
 
 import com.sura.policycenter.model.AgenteModel;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -19,6 +14,10 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -84,11 +83,11 @@ public class NuevaCotizacionPage extends PageObject {
             elemento = element(find(By.xpath(xpath)));
 
         } catch (NoSuchElementException e) {
-            LOGGER.error("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
         } catch (StaleElementReferenceException sere) {
-            LOGGER.error("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
+            LOGGER.info("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
         } catch (Exception e) {
-            LOGGER.error("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
         }
 
         return elemento;
@@ -102,11 +101,11 @@ public class NuevaCotizacionPage extends PageObject {
             elementos = withTimeoutOf(15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
 
         } catch (NoSuchElementException e) {
-            LOGGER.error("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
         } catch (StaleElementReferenceException sere) {
-            LOGGER.error("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
+            LOGGER.info("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
         } catch (Exception e) {
-            LOGGER.error("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
         }
 
         return elementos;
@@ -328,15 +327,15 @@ public class NuevaCotizacionPage extends PageObject {
 
             for (WebElementFacade div : divsMensajes) {
                 mensajeMostrado = div.getText();
-                for(String etiqueta : mensajesApp.split("|")){
+                for (String etiqueta : mensajesApp.split("|")) {
                     if (mensajeMostrado.toLowerCase().contains(etiqueta)) {
                         existeOcurrencia = Boolean.TRUE;
                         break;
                     }
                 }
             }
-        }catch (Exception e){
-            LOGGER.error("No se encontró mensajes de error" + e.getMessage());
+        } catch (Exception e) {
+            LOGGER.error("NO EXISTE MENSAJE DE ERROR " + e.getMessage());
         }
 
 
