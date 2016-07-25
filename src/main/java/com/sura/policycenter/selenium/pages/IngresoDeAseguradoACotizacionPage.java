@@ -78,7 +78,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
 
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']")
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade tablaProductos;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:RetrieveMVRButton-btnInnerEl']")
@@ -90,7 +90,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']")
     WebElementFacade menuPolizaNuevoEnvio;
 
-    private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:";
+    private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
 
     public IngresoDeAseguradoACotizacionPage(WebDriver driver){
         super(driver);
@@ -99,6 +99,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
 
     public void seleccionarAgente(String nombreAgente) {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoNombreAgente).waitUntilPresent();
+        campoNombreAgente.waitUntilClickable();
         campoNombreAgente.click();
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
         if (!listaNombresAgentesElement.isEmpty()) {
@@ -112,15 +113,32 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void irAIngresarAsegurado() {
-        guidewire.waitUntil(2000);
+        waitForTextToAppear("Nombre");
+        guidewire.waitUntil(1000);
         seleccionarAgente("DIRECTO");
         waitForTextToAppear("Productos ofrecidos", 20000);
-//        guidewire.waitUntil(3000);
+        //provisional
+        WebElementFacade organizacion = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-inputEl']");
+        organizacion.clear();
+        organizacion.sendKeys("Sura");
+        organizacion.sendKeys(Keys.ENTER);
+        guidewire.waitUntil(2000);
+        WebElementFacade canal = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-inputEl']");
+        canal.clear();
+        canal.sendKeys("Canal Tradicional");
+        canal.sendKeys(Keys.ENTER);
+        seleccionarProducto();
+        //Fin Provisional
+    }
+
+    public void seleccionarProducto(){
         String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto().toString() + ":addSubmission']";
-        WebElementFacade botonElegirProducto = findBy(xpathBotonElegirProducto);
+        System.out.println("xpath botón elegir " + xpathBotonElegirProducto);
+        WebElementFacade botonElegirProducto = withTimeoutOf(15, TimeUnit.SECONDS).find(xpathBotonElegirProducto);
+        guidewire.waitUntil(2000);
         botonElegirProducto.click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAsegurados).waitUntilPresent();
-        botonAsegurados.click();
+//        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAsegurados).waitUntilPresent();
+//        botonAsegurados.click();
     }
 
     public void agregarAsegurado() {
@@ -252,7 +270,8 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void irACrearNuevaCotizacion() {
-        guidewire.waitUntil(2000);
+//        guidewire.waitUntil(2000);
+        waitFor(menuPoliza).waitUntilPresent();
         menuPoliza.click();
         guidewire.waitUntil(2000);
         menuPoliza.click();

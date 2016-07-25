@@ -2,7 +2,7 @@ Ingreso De Asegurado A Cotizacion
 
 Meta:
 
-@Issue #CDSEG-1027
+@issue #CDSEG-1027
 
 Narrative:
 Como usuario de PolicyCenter
