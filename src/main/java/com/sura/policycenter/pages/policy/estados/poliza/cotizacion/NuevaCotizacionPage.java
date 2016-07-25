@@ -243,7 +243,7 @@ public class NuevaCotizacionPage extends PageObject {
 
 
     public WebElementFacade obtenerFechaCotizacionElemento() {
-        waitFor(LABEL_FECHA_POR_DEFECTO);
+        fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
         return elemento(LABEL_FECHA_POR_DEFECTO);
     }
 
