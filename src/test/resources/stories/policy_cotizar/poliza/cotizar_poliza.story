@@ -1,15 +1,10 @@
 Meta:
 Narrative:
 
-GivenStories: stories/precondiciones/ingreso_a_policycenter.story
-
 Scenario: Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial buscando por
 numero de cuenta y persona juridica
 Meta:
-#GivenStories: stories/policycenter/ingresar_a_policyCenter.story#{@id1:login_policycenter_su}
-
 Given deseo crear nueva cotizacion buscando por numero de cuenta
-
 When digite el numero de cuenta C010478975 de una persona juridica y digite la tecla Tab para activar la busqueda
 Then espero ver el nombre de la persona jurídica VARIEDADES YURLEDYS S.A de la cuenta existente junto con la etiqueta
 Razón social
@@ -31,7 +26,6 @@ Scenario: Validaciones como precondicion en la realizacion de una cotizacion par
 por numero de cuenta y persona natural
 
 Given deseo crear nueva cotizacion buscando por numero de cuenta
-
 When digite el numero de cuenta C000888888 de una persona natural y digite la tecla Tab para activar la busqueda
 Then espero ver el nombre de la persona natural YURLEDYS GALLEGO TORRES de la cuenta existente junto con la etiqueta
 Nombre
@@ -65,24 +59,10 @@ Then se mostraran en orden alfabetico los:
 |Multiriesgo corporativo|
 Then seleccionar nombre de producto Multiriesgo corporativo
 Then debera observar un mensaje emergente de informacion: Ya existe la cotización # 22223226 y se encuentra en proceso
-para este cliente y producto. ¿Desea solicitar aprobación?
+para este cliente y producto. ¿Desea continuar esta nueva cotización?
 Then debera observar los botones: Aceptar,Cancelar
 Then al seleccionar el botón Cancelar deberá ver la página Nueva cotización
 
-Scenario:  Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial con una
-cotizacion ya existente para un agente diferente
-
-Given deseo crear nueva cotizacion buscando por numero de cuenta
-When digite el numero de cuenta C000777777 de una persona natural y digite la tecla Tab para activar la busqueda
-And he seleccionado en el nombre del agente DELIMA MEDELLIN
-Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
-Then se mostraran en orden alfabetico los:
-|productos              |
-|Autos                  |
-|Multiriesgo corporativo|
-Then seleccionar nombre de producto Multiriesgo corporativo
-Then debera observar un mensaje de error: El cliente JORGE PAISA ya tiene una cotización en curso para el producto
-seleccionado para la oficina OFICINA TUYA
 
 Scenario:  Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial con una
 cotizacion de un tomador que es riesgo consultable y PEPS
@@ -94,6 +74,7 @@ Then seleccionar nombre de producto Multiriesgo corporativo
 Then debera observar un mensaje de error: FRANK RAMIREZ ALZATE, El tomador es un riesgo no es estandar y debe ser
 analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial. |
 FRANK RAMIREZ ALZATE,El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal
+
 
 
 

@@ -117,9 +117,20 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.ingresarPorcentajeDescuentoPoliza(porcentaje);
     }
 
-    @When("defina una poliza como financiada")
-    public void definirPolizaFinanciada(){
-        informacionPolizaPASteps.definirPolizaFinanciada();
+    @When("defina una poliza como financiada <organizacion> <canal> <tipoPoliza>")
+    public void definirPolizaFinanciada(@Named("organizacion") String organizacion,
+                                        @Named("canal") String canal,
+                                        @Named("tipoPoliza") String tipoPoliza){
+        informacionPolizaPASteps.definirPolizaFinanciada(organizacion, canal, tipoPoliza);
+    }
+
+    @When("modifique la fecha de inicio de vigencia <organizacion> <canal> <tipoPoliza> <tipoPlazo> <fechaInicioVigencia>")
+    public void modificarfechaInicioVigencia(@Named("organizacion") String organizacion,
+                                             @Named("canal") String canal,
+                                             @Named("tipoPoliza") String tipoPoliza,
+                                             @Named("tipoPlazo") String tipoPlazo,
+                                             @Named("fechaInicioVigencia") String fechaInicioVigencia) {
+        informacionPolizaPASteps.modificarFechaInicioVigencia(organizacion, canal, tipoPoliza, tipoPlazo, fechaInicioVigencia);
     }
 
     @Then("se debe visalizar los datos del tomador, como son: tipo y numero de identificacion, nombre completo,\n" +
@@ -168,9 +179,8 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.ingresarNumeroCuotas();
     }
 
-    @Then("se debe cumplir con la retroactividad permitida <fechaInicioVigencia> <mensaje>")
-    @Manual
-    public void validarRetroactividadPoliza(){
-        //Se ejecuta manualmente
+    @Then("se debe cumplir con la retroactividad permitida <mensaje>")
+    public void validarRetroactividadPoliza(@Named("mensaje") String mensaje){
+        informacionPolizaPASteps.validarRetroactividadPoliza(mensaje);
     }
 }

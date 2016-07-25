@@ -3,20 +3,21 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.bytedeco.javacpp.opencv_core;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class OpcionesInformacionPolizaPage extends Guidewire {
@@ -27,194 +28,144 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
-
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']")
     WebElementFacade tablaProductos;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PrimaryNamedInsuredLabel-labelEl']")
     private WebElementFacade labelAseguradoPrimario;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-labelEl']")
     private WebElementFacade labelTipoDocumento;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
     private WebElementFacade labelNumeroDocumento;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Name-labelEl']")
     private WebElementFacade labelNombre;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
     private WebElementFacade labelTelefono;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:ChangePolicyAddressButton-labelEl']")
     private WebElementFacade labelDireccionPoliza;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:AddressType-labelEl']")
     private WebElementFacade labelTipoDireccion;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:AddressDescription-labelEl']")
     private WebElementFacade labelDescripcionDireccion;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:0']")
     private WebElementFacade labelDetallesPoliza;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-labelEl']")
     private WebElementFacade labelOrganizacion;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-labelEl']")
     private WebElementFacade labelCanal;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-labelEl']")
     private WebElementFacade labelTipoPoliza;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:TermType-labelEl']")
     private WebElementFacade labelTipoPlazo;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-labelEl']")
     private WebElementFacade labelFechaVigencia;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-labelEl']")
     private WebElementFacade labelFechaExpiracion;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:WrittenDate-labelEl']")
     private WebElementFacade labelFechaEscrita;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:QuestionFundedPolicy-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy-labelEl']")
     private WebElementFacade labelPolizaFinanciada;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:FundedPolicyQuotaNumber-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumber-labelEl']")
     private WebElementFacade labelNumeroCuotas;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:0']")
     private WebElementFacade labelAgenteRegistro;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:Producer-labelEl']")
     private WebElementFacade labelOrganizacionAgente;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducerCode-labelEl']")
     private WebElementFacade labelCodigoAgente;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:4']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:3']")
     private WebElementFacade labelModificadorPoliza;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:modifier-labelEl']")
     private WebElementFacade labelDescuentoPoliza;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
     private WebElementFacade fechaVigenciaPoliza;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-inputEl']")
     private WebElementFacade fechaExpiracionPoliza;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:WrittenDate-inputEl']")
     private WebElementFacade fechaEscrita;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:TermType-inputEl']")
     private WebElementFacade tipoPlazoPoliza;
-
     @FindBy(xpath = "//tr[5]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade botonTipoPlazo;
-
     @FindBy(xpath = ".//li")
     private WebElementFacade itemTipoPlazo;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']/img")
     private WebElementFacade botonAseguradoSecundario;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-itemEl']")
     private WebElementFacade itemPersonaDelDirectorio;
-
     @FindBy(xpath = ".//td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade botonTipoDocumento;
-
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
     private WebElementFacade textoTipoDocumento;
-
     @FindBy(xpath = ".//li")
     private WebElementFacade itemTipoDocumento;
-
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade textoPrimerNombre;
-
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     private WebElementFacade textoPrimerApellido;
-
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade botonBuscarContacto;
-
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']")
     private WebElementFacade botonSeleccionarContacto;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton-labelEl']")
     private WebElementFacade labelNombreSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:DocumentType-labelEl']")
     private WebElementFacade labelTipoDocumentoSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
     private WebElementFacade labelNumeroDocumentoSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
     private WebElementFacade labelTelefonoSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:SecondaryAddress-labelEl']")
     private WebElementFacade labelDireccionSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:AddressType-labelEl']")
     private WebElementFacade labelTipoDireccionSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:AddressDescription-labelEl']")
     private WebElementFacade labelDescripcionDireccionSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade textoTipoDocumentoSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     private WebElementFacade textoNumeroDocumentoSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-bodyEl']")
     private WebElementFacade textoTelefonoSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:SecondaryAddress-inputEl']")
     private WebElementFacade textoDireccionSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:AddressType-inputEl']")
     private WebElementFacade textoTipoDireccionSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:AddressDescription-inputEl']")
     private WebElementFacade textoDescripcionDireccionSegundoTomador;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:modifier-inputEl']")
     private WebElementFacade textoDescuentoPoliza;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:QuestionFundedPolicy_true-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-inputEl']")
     private WebElementFacade polizaFinanciada;
-
-    @FindBy(xpath = ".//tr[11]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
+    @FindBy(xpath = "//tr[11]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade botonNumeroCuotas;
-
-    @FindBy(xpath = ".//li[2]")
+    @FindBy(xpath = "//div[8]/div/ul/li[2]")
     private WebElementFacade itemNumeroCuotas;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:FundedPolicyQuotaNumber-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumber-inputEl']")
     private WebElementFacade textoNumeroCuotas;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:_msgs']/div")
     private WebElementFacade mensajeValidacion;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
+    private WebElementFacade campoOrganizacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
+    private WebElementFacade campoCanal;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
+    WebElementFacade campoTipoPoliza;
+
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
+    private WebElementFacade comboBoxNombreAgente;
 
     public OpcionesInformacionPolizaPage(WebDriver driver) {
         super(driver);
     }
 
     public void seleccionarAgenteCotizacion() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(campoNombreAgente).shouldBePresent();
-        waitFor(campoNombreAgente).shouldBeVisible();
-        campoNombreAgente.waitUntilVisible().sendKeys(Keys.ARROW_DOWN);
-        campoNombreAgente.sendKeys(Keys.ARROW_DOWN);
-        campoNombreAgente.sendKeys(Keys.ENTER);
+        comboBoxNombreAgente.click();
+        Actions actions =  new Actions(getDriver());
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ENTER).build().perform();
         WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonElegirProducto).shouldBePresent();
         waitFor(botonElegirProducto).shouldBeVisible();
@@ -283,12 +234,13 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         $(tipoPlazoPoliza).type(tipoPlazo);
         waitFor(itemTipoPlazo).shouldBeVisible();
         itemTipoPlazo.click();
-        waitABit(1000);
+        waitUntil(1000);
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
+        waitUntil(1000);
         fechaVigenciaPoliza.click();
         $(fechaVigenciaPoliza).type(fechaInicioVigencia);
         waitFor(fechaExpiracionPoliza).shouldBeVisible();
-        waitABit(1000);
+        waitUntil(1000);
         fechaExpiracionPoliza.click();
     }
 
@@ -343,7 +295,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         botonAseguradoSecundario.click();
         waitFor(itemPersonaDelDirectorio).shouldBeVisible();
         itemPersonaDelDirectorio.click();
-        waitABit(1000);
+        waitUntil(1000);
         waitFor(botonTipoDocumento).shouldBeVisible();
         botonTipoDocumento.click();
         waitFor(textoTipoDocumento).shouldBeVisible();
@@ -413,58 +365,79 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void validarDecimalesPorcentaje(String mensaje) {
-        double descuentoPoliza = Double.parseDouble(textoDescuentoPoliza.getValue());
-        int pEntera = (int)descuentoPoliza;
-        double pDecimal = descuentoPoliza - pEntera;
-        String parteEntera = Integer.toString(pEntera);
-        String parteDecimal = Double.toString(pDecimal);
-        if(parteEntera.length()>2 || parteDecimal.length()>2){
-            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldBePresent();
-            MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
+        try {
+            double descuentoPoliza = Double.parseDouble(textoDescuentoPoliza.getValue());
+            int pEntera = (int) descuentoPoliza;
+            double pDecimal = descuentoPoliza - pEntera;
+            String parteEntera = Integer.toString(pEntera);
+            String parteDecimal = Double.toString(pDecimal);
+            if (parteEntera.length() > 2 || parteDecimal.length() > 2) {
+                withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldBePresent();
+                MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
+            }
+        }catch (StaleElementReferenceException element){
+            element.printStackTrace();
         }
     }
 
-    public void definirPolizaFinanciada() {
-        waitFor(polizaFinanciada).shouldBeVisible();
+    public void definirPolizaFinanciada(String organizacion, String canal, String tipoPoliza) {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoOrganizacion).shouldBePresent();
+        campoOrganizacion.typeAndTab(organizacion);
+        waitUntil(3000);
+        campoCanal.typeAndTab(canal);
+        waitUntil(3000);
+        campoTipoPoliza.typeAndTab(tipoPoliza);
+        waitUntil(3000);
         polizaFinanciada.click();
     }
 
     public void ingresarNumeroCuotas() {
-        waitFor(labelNumeroCuotas).shouldBeVisible();
-        waitFor(textoNumeroCuotas).shouldBeVisible();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelNumeroCuotas).shouldBePresent();
         MatcherAssert.assertThat(labelNumeroCuotas.getText(), labelNumeroCuotas.isCurrentlyVisible());
         MatcherAssert.assertThat(textoNumeroCuotas.getText(), textoNumeroCuotas.isCurrentlyVisible());
-        waitFor(botonNumeroCuotas).shouldBeVisible();
+        waitUntil(2000);
         botonNumeroCuotas.click();
         itemNumeroCuotas.click();
         waitFor(fechaExpiracionPoliza).shouldBeVisible();
         fechaExpiracionPoliza.click();
-        waitABit(500);
+        waitUntil(1000);
     }
 
-    public void validarRetroactividadPoliza(String fechaInicioVigencia, String mensaje) {
+    public void validarRetroactividadPoliza(String mensaje) {
+        waitUntil(3000);
+        botonSiguiente.click();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldBePresent();
+        MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
+    }
+
+    public void modificarFechaInicioVigencia(String organizacion, String canal, String tipoPoliza, String tipoPlazo, String fechaInicioVigencia) {
+        waitUntil(3000);
+        campoOrganizacion.typeAndTab(organizacion);
+        waitUntil(3000);
+        campoCanal.typeAndTab(canal);
+        waitUntil(3000);
+        campoTipoPoliza.typeAndTab(tipoPoliza);
+        waitUntil(3000);
         String validacion = null;
-        SimpleDateFormat formato = new SimpleDateFormat("MM/dd/yyyy");
-        Date fechaVigencia = null;
-        Date fechaActual = new Date();
-        String strFechaactual = formato.format(fechaActual);
-
-        try {
-            fechaVigencia = formato.parse(fechaInicioVigencia);
-            fechaActual = formato.parse(strFechaactual);
-            long dif = Math.abs(fechaActual.getTime() - fechaVigencia.getTime());
-            long dias = dif/(1000*60*60*24);
-            waitFor(mensajeValidacion).shouldBeVisible();
-            if(dias>60){
-                MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
-            }
-
-        }catch (Exception e) {
+        withTimeoutOf(15,TimeUnit.SECONDS).waitFor(fechaVigenciaPoliza).shouldBePresent();
+        try{
+            MatcherAssert.assertThat(fechaVigenciaPoliza.getTextValue(), Is.is(Matchers.equalTo(fechaEscrita.getTextValue())));
+        }catch (Exception e){
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
         }
-
-        MatcherAssert.assertThat(validacion,Is.is(Matchers.equalTo(null)));
+        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
+        waitFor(botonTipoPlazo).shouldBeVisible();
+        botonTipoPlazo.click();
+        waitFor(tipoPlazoPoliza).shouldBeVisible();
+        $(tipoPlazoPoliza).typeAndTab(tipoPlazo);
+        waitUntil(1000);
+        waitFor(fechaVigenciaPoliza).shouldBeVisible();
+        fechaVigenciaPoliza.click();
+        $(fechaVigenciaPoliza).type(fechaInicioVigencia);
+        waitFor(fechaExpiracionPoliza).shouldBeVisible();
+        waitUntil(2000);
+        fechaExpiracionPoliza.click();
     }
 }
 

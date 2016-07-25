@@ -78,21 +78,19 @@ Examples:
 Scenario: Validar campo poliza financiada
 Given ya se inicio una nueva suscripcion <numeroCuenta>
 And se visualiza la informacion de la poliza
-When defina una poliza como financiada
+When defina una poliza como financiada <organizacion> <canal> <tipoPoliza>
 Then se debe poder ingresar el numero de cuotas
 
 Examples:
-|numeroCuenta |
-|C000888888   |
+|numeroCuenta |organizacion|canal     |tipoPoliza |
+|C000888888   |Bancolombia |Televentas|PPAutos    |
 
 Scenario: Validar retroactividad en la vigencia de la poliza
-Meta:
-@Manual
 Given ya se inicio una nueva suscripcion <numeroCuenta>
 And se visualiza la informacion de la poliza
-When modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
-Then se debe cumplir con la retroactividad permitida <fechaInicioVigencia> <mensaje>
+When modifique la fecha de inicio de vigencia <organizacion> <canal> <tipoPoliza> <tipoPlazo> <fechaInicioVigencia>
+Then se debe cumplir con la retroactividad permitida <mensaje>
 
 Examples:
-|numeroCuenta |tipoPlazo |fechaInicioVigencia|mensaje|
-|C000888888   |6 meses   |01/01/2016         |Fecha de vigencia : La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
+|numeroCuenta |organizacion|canal     |tipoPoliza |tipoPlazo |fechaInicioVigencia|mensaje|
+|C000888888   |Bancolombia |Televentas|PPAutos    |6 meses   |01/01/2016         |La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
