@@ -47,8 +47,8 @@ public class CoaseguroPage extends Guidewire {
         campoTxtDastosAdministrativos.waitUntilPresent();
         radioBotonLider.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        try {
-            if (radioBotonAceptado.isSelected())
+        try{
+            if(radioBotonAceptado.isSelected())
                 right.append("radio_boton_cedido, ");
         }catch (StaleElementReferenceException e){
             e.printStackTrace();
