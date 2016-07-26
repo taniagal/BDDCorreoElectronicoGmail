@@ -41,6 +41,19 @@ public class ModificacionCotizacionDePolizaPADefinitions {
         infoCotizacionPoliza.put("impuestos", "Impuestos y cargos extra");
         infoCotizacionPoliza.put("costoTotal", "Costo total");
 
+        infoCotizacionPoliza.put("labelVehiculo", "Vehículo 3");
+        infoCotizacionPoliza.put("placa", "Placa");
+        infoCotizacionPoliza.put("codigoFasecolda", "Código fasecolda");
+        infoCotizacionPoliza.put("marca", "Marca");
+        infoCotizacionPoliza.put("modelo", "Modelo");
+        infoCotizacionPoliza.put("linea", "Línea");
+        infoCotizacionPoliza.put("descripcion", "Descripción");
+        infoCotizacionPoliza.put("valorTermino", "Valor término");
+        infoCotizacionPoliza.put("prima", "Prima");
+        infoCotizacionPoliza.put("subtotal", "Subtotal");
+        infoCotizacionPoliza.put("subtotalPrimas", "Subtotal de primas");
+        infoCotizacionPoliza.put("impuesto", "Impuesto");
+
         infoCotizacionPoliza.put("DC_labelVehiculo", "Vehículo 1");
         infoCotizacionPoliza.put("DC_placa", "Placa");
         infoCotizacionPoliza.put("DC_codigoFasecolda", "Código fasecolda");
@@ -48,6 +61,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
         infoCotizacionPoliza.put("DC_modelo", "Modelo");
         infoCotizacionPoliza.put("DC_linea", "Línea");
         infoCotizacionPoliza.put("DC_descripcion", "Descripción");
+        infoCotizacionPoliza.put("DC_valorTermino", "Valor término");
         infoCotizacionPoliza.put("DC_prima", "Prima");
         infoCotizacionPoliza.put("DC_subtotal", "Subtotal");
         infoCotizacionPoliza.put("DC_subtotalPrimas", "Subtotal de primas");
