@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.steps;
 import com.sura.policycenter.selenium.pages.DetallesDeUbicacionPage;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -14,9 +13,9 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ir_a_nueva_poliza(String cuenta, String producto){
+    public void ir_a_nueva_poliza(String cuenta){
         detallesDeUbicacionPage.irANuevaCotizacion();
-        detallesDeUbicacionPage.setDatos(cuenta,producto);
+        detallesDeUbicacionPage.setDatos(cuenta);
     }
 
     @Step
@@ -49,5 +48,10 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     @Step
     public void verificar_mensaje(String mensaje) {
         detallesDeUbicacionPage.verificarMensaje(mensaje);
+    }
+
+    @Step
+    public void elegirProducto(String producto) {
+        detallesDeUbicacionPage.elegirProducto(producto);
     }
 }

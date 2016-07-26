@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.DetallesContactoSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -15,9 +14,6 @@ public class DetallesContactoEdicionDefinitions {
     WebDriver driver;
     @Steps
     private DetallesContactoSteps detallesContactoSteps;
-    @Steps
-    private SeusLoginSteps seusLoginSteps;
-
 
     /**
      * ESCENARIO 1

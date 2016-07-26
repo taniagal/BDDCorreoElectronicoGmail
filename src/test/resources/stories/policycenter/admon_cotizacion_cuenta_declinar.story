@@ -1,11 +1,11 @@
 Meta:
 
+@issue #SUGWUSC-14966
+
 Narrative:
 Como usuario de policy center
 con un perfil que tenga permisos quiero ser capaz de actualizar el estado de las cotizaciones creadas para una cuenta y
 así poder crear, actualizar,copiar y retirar cotizaciones para una cuenta dada
-
-@issue #SUGWUSC-14966
 
 Scenario: Declinar una cotizacion sin razon
 GivenStories: stories/policycenter/login_policy.story

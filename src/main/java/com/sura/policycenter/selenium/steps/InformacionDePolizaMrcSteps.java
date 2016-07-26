@@ -28,8 +28,12 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void selecciona_cotizacion_para_producto (String nomProducto){
+    public void selecciona_cotizacion_para_producto (){
         opcionesInformacionPolizaMrcPage.ingresaAgente();
+    }
+
+    @Step
+    public void seleccionar_producto(String nomProducto){
         opcionesInformacionPolizaMrcPage.seleccionarProducto(nomProducto);
     }
 
@@ -70,4 +74,13 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         opcionesInformacionPolizaMrcPage.validaReaseguro();
     }
 
+    @Step
+    public void eliminar_descripcion_de_direccion_en_contacto (){
+        opcionesInformacionPolizaMrcPage.editarDescripDireccionTomador();
+    }
+
+    public void validar_descipcion_de_direccion() {
+        opcionesInformacionPolizaMrcPage.validaFormularioDescripDireccion();
+    }
 }
+

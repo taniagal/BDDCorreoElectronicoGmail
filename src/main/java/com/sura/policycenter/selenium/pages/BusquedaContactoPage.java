@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -188,14 +189,14 @@ public class BusquedaContactoPage extends Guidewire {
 
     public void validarInformacionTipoId() {
         String msjSinReg = "No hay datos para mostrar";
-        waitUntil(2000);
-        assertThat(msjSinRegistros.getText(),is(equalTo(msjSinReg)));
+        waitForTextToAppear(msjSinReg, 2000);
+        MatcherAssert.assertThat(msjSinRegistros.getText(),is(equalTo(msjSinReg)));
     }
 
     public void validarMensaje(String msjVal) {
         waitForTextToAppear(msjVal, 2000);
         waitFor(msjSinCriterios).shouldBeVisible();
-        assertThat(msjSinCriterios.getText(),is(equalTo(msjVal)));
+        MatcherAssert.assertThat(msjSinCriterios.getText(),is(equalTo(msjVal)));
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
@@ -207,7 +208,6 @@ public class BusquedaContactoPage extends Guidewire {
         txtNumDoc.type(numDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
-        espera(botonBuscar,2);
     }
 
     public void consultarContactoTipoDoc(String tipoDoc) {
@@ -334,7 +334,7 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void buscarContacto(String tipoContacto, String nombre, String apellido, String numero){
-        waitUntil(2000);
+        waitForTextToAppear("Búsqueda de contactos",2000);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.click();
         WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'"+tipoContacto+"')]");
@@ -389,16 +389,16 @@ public class BusquedaContactoPage extends Guidewire {
     public void validarLabelsPersonaNatural(Map<String, String> labelsContacto){
         try {
             Thread.sleep(2000);
-            assertThat(lblTipoId.getText().toString(),is(equalTo(labelsContacto.get("tipoId"))));
-            assertThat(lblNumId.getText().toString(),is(equalTo(labelsContacto.get("numId"))));
-            assertThat(lblPrimNombre.getText().toString(),is(equalTo(labelsContacto.get("priNombre"))));
-            assertThat(lblSegNombre.getText().toString(),is(equalTo(labelsContacto.get("segNombre"))));
-            assertThat(lblPriApellido.getText().toString(),is(equalTo(labelsContacto.get("priApellido"))));
-            assertThat(lblSegApellido.getText().toString(),is(equalTo(labelsContacto.get("segApellido"))));
-            assertThat(lblDireccion.getText().toString(),is(equalTo(labelsContacto.get("direccion"))));
-            assertThat(lblTelefono.getText().toString(),is(equalTo(labelsContacto.get("telefono"))));
-            assertThat(lblEmail.getText().toString(),is(equalTo(labelsContacto.get("email"))));
-            assertThat(lblExterna.getText().toString(),is(equalTo(labelsContacto.get("externa"))));
+            MatcherAssert.assertThat(lblTipoId.getText().toString(),is(equalTo(labelsContacto.get("tipoId"))));
+            MatcherAssert.assertThat(lblNumId.getText().toString(),is(equalTo(labelsContacto.get("numId"))));
+            MatcherAssert.assertThat(lblPrimNombre.getText().toString(),is(equalTo(labelsContacto.get("priNombre"))));
+            MatcherAssert.assertThat(lblSegNombre.getText().toString(),is(equalTo(labelsContacto.get("segNombre"))));
+            MatcherAssert.assertThat(lblPriApellido.getText().toString(),is(equalTo(labelsContacto.get("priApellido"))));
+            MatcherAssert.assertThat(lblSegApellido.getText().toString(),is(equalTo(labelsContacto.get("segApellido"))));
+            MatcherAssert.assertThat(lblDireccion.getText().toString(),is(equalTo(labelsContacto.get("direccion"))));
+            MatcherAssert.assertThat(lblTelefono.getText().toString(),is(equalTo(labelsContacto.get("telefono"))));
+            MatcherAssert.assertThat(lblEmail.getText().toString(),is(equalTo(labelsContacto.get("email"))));
+            MatcherAssert.assertThat(lblExterna.getText().toString(),is(equalTo(labelsContacto.get("externa"))));
         } catch(InterruptedException e) {
             LOGGER.error("This is error", e);
         }
@@ -407,14 +407,14 @@ public class BusquedaContactoPage extends Guidewire {
     public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto) {
         try {
             Thread.sleep(2000);
-            assertThat(lblTipoId.getText().toString(), is(equalTo(labelsContacto.get("tipoId"))));
-            assertThat(lblNumId.getText().toString(), is(equalTo(labelsContacto.get("numId"))));
-            assertThat(lblNomComercial.getText().toString(), is(equalTo(labelsContacto.get("nomComercial"))));
-            assertThat(lblRazonSocial.getText().toString(), is(equalTo(labelsContacto.get("razonSocial"))));
-            assertThat(lblDireccion.getText().toString(), is(equalTo(labelsContacto.get("direccion"))));
-            assertThat(lblTelefono.getText().toString(), is(equalTo(labelsContacto.get("telefono"))));
-            assertThat(lblEmail.getText().toString(), is(equalTo(labelsContacto.get("email"))));
-            assertThat(lblExterna.getText().toString(), is(equalTo(labelsContacto.get("externa"))));
+            MatcherAssert.assertThat(lblTipoId.getText().toString(), is(equalTo(labelsContacto.get("tipoId"))));
+            MatcherAssert.assertThat(lblNumId.getText().toString(), is(equalTo(labelsContacto.get("numId"))));
+            MatcherAssert.assertThat(lblNomComercial.getText().toString(), is(equalTo(labelsContacto.get("nomComercial"))));
+            MatcherAssert.assertThat(lblRazonSocial.getText().toString(), is(equalTo(labelsContacto.get("razonSocial"))));
+            MatcherAssert.assertThat(lblDireccion.getText().toString(), is(equalTo(labelsContacto.get("direccion"))));
+            MatcherAssert.assertThat(lblTelefono.getText().toString(), is(equalTo(labelsContacto.get("telefono"))));
+            MatcherAssert.assertThat(lblEmail.getText().toString(), is(equalTo(labelsContacto.get("email"))));
+            MatcherAssert.assertThat(lblExterna.getText().toString(), is(equalTo(labelsContacto.get("externa"))));
         } catch (InterruptedException e) {
             LOGGER.error("This is error", e);
         }

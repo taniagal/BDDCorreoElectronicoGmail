@@ -27,6 +27,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 public class Navegacion extends Guidewire {
@@ -283,7 +284,7 @@ public class Navegacion extends Guidewire {
     @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
     WebElementFacade mnuResumenCuenta;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade mnuInformacionDePoliza;
 
     @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_SubmissionManager']/div/span")
@@ -297,7 +298,7 @@ public class Navegacion extends Guidewire {
     public MisActividadesPage irAMisActividades() {
         gw.deployMenu(menuEscritorio);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(itemMisActividades).release(itemMisActividades).click().build().perform();
         return new MisActividadesPage(getDriver());
     }
@@ -305,7 +306,7 @@ public class Navegacion extends Guidewire {
     public MisCuentasPage irAMisCuentas() {
         gw.deployMenu(menuEscritorio);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuItemMisCuentas).release(mnuItemMisCuentas).click().build().perform();
         return new MisCuentasPage(getDriver());
     }
@@ -314,25 +315,26 @@ public class Navegacion extends Guidewire {
         waitFor(mnuPoliza).shouldBeVisible();
         gw.deployMenu(mnuPoliza);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         waitFor(mnuPoliza).shouldBeVisible();
         mnuNumPoliza.typeAndEnter(numPoliza);
+        waitUntil(300);
         return new PolizaBuscarPage(getDriver());
     }
 
     public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza) {
         gw.deployMenu(mnuPoliza);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(1500);
-        waitForTextToAppear("Nueva cotización",5000);
-        mnuNumeroSub.typeAndEnter(numSubPoliza);
+        waitUntil(1500);
+        waitForTextToAppear("Nueva cotización");
+        mnuNumeroSub.waitUntilVisible().waitUntilEnabled().typeAndEnter(numSubPoliza);
         return new PolizaBuscarPage(getDriver());
     }
 
     public MisEnviosPage irAMisEnvios() {
         gw.deployMenu(menuEscritorio);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuItemMisEnvios).release(mnuItemMisEnvios).click().build().perform();
         return new MisEnviosPage(getDriver());
     }
@@ -340,7 +342,7 @@ public class Navegacion extends Guidewire {
     public MisRenovacionesPage irAMisRenovaciones() {
         gw.deployMenu(menuEscritorio);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuItemMisRenovaciones).release(mnuItemMisRenovaciones).click().build().perform();
         return new MisRenovacionesPage(getDriver());
     }
@@ -348,7 +350,7 @@ public class Navegacion extends Guidewire {
     public MisOtrasTransacPage irAMisOtrasTransacciones() {
         gw.deployMenu(menuEscritorio);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuItemMisOtrasTrans).release(mnuItemMisOtrasTrans).click().build().perform();
         return new MisOtrasTransacPage(getDriver());
     }
@@ -356,7 +358,7 @@ public class Navegacion extends Guidewire {
     public MisColasPage irAMisColas() {
         gw.deployMenu(menuEscritorio);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuItemMisColas).release(mnuItemMisColas).click().build().perform();
         return new MisColasPage(getDriver());
     }
@@ -369,17 +371,16 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
-        waitABit(1500);
+        waitUntil(1500);
         gw.deployMenu(mnuCuenta);
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
-        waitForTextToAppear("Nueva cuenta", 5000);
-        waitABit(2000);
-        txtNumCuenta.waitUntilEnabled();
-        txtNumCuenta.type(numCuenta);
+        waitForTextToAppear("Nueva cuenta");
+        waitUntil(2000);
+        waitFor(txtNumCuenta).waitUntilEnabled();
+        txtNumCuenta.waitUntilEnabled().type(numCuenta);
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(btnBuscarCuenta).shouldBePresent();
-        btnBuscarCuenta.click();
-        waitABit(2000);
+        btnBuscarCuenta.waitUntilVisible().waitUntilClickable().click();
+        waitUntil(2000);
         return new CuentaBuscarPage(getDriver());
     }
 
@@ -632,7 +633,7 @@ public class Navegacion extends Guidewire {
     // Navegacion menu Acciones Escritorio
     public EscritorioNuevoEnvioPage irAEscritorioNuevoEnvio() {
         menuEscritorio.click();
-        waitABit(1000);
+        waitUntil(1000);
         gw.deployMenu(mnuAccionesEscritorio);
         act.moveToElement(mnuAccionNuevoEnvio).release(mnuAccionNuevoEnvio).click().build().perform();
         return new EscritorioNuevoEnvioPage(getDriver());
@@ -682,7 +683,7 @@ public class Navegacion extends Guidewire {
         waitFor(mnuAccionesCuenta).waitUntilClickable();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionNuevoEnvio2).release(mnuAccionNuevoEnvio2).click().build().perform();
         return new CuentaNuevoEnvioPage(getDriver());
     }
@@ -699,7 +700,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionCorreoNuevo).release(mnuAccionCorreoNuevo).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionRevisarNuevoCorreo).release(mnuAccionRevisarNuevoCorreo).click().build().perform();
@@ -711,7 +712,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionEntrevista).release(mnuAccionEntrevista).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionReunirseAgenteAgencia).release(mnuAccionReunirseAgenteAgencia).click().build().perform();
@@ -723,7 +724,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionEntrevista).release(mnuAccionEntrevista).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionReunirseAsegurado).release(mnuAccionReunirseAsegurado).click().build().perform();
@@ -735,7 +736,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionCancelPolizaDividida).release(mnuAccionCancelPolizaDividida).click().build().perform();
@@ -747,7 +748,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionCotizacionReq).release(mnuAccionCotizacionReq).click().build().perform();
@@ -759,7 +760,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionDiarioX30).release(mnuAccionDiarioX30).click().build().perform();
@@ -771,7 +772,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionDiarioX60).release(mnuAccionDiarioX60).click().build().perform();
@@ -783,7 +784,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionDiarioX90).release(mnuAccionDiarioX90).click().build().perform();
@@ -795,7 +796,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionNotificacionPoliza).release(mnuAccionNotificacionPoliza).click().build().perform();
@@ -807,7 +808,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionRecordatorioGeneral).release(mnuAccionRecordatorioGeneral).click().build().perform();
@@ -819,7 +820,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionRevisarAgente).release(mnuAccionRevisarAgente).click().build().perform();
@@ -831,7 +832,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionRevisarX30).release(mnuAccionRevisarX30).click().build().perform();
@@ -843,7 +844,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionRevisarX45).release(mnuAccionRevisarX45).click().build().perform();
@@ -855,7 +856,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionRevisarX60).release(mnuAccionRevisarX60).click().build().perform();
@@ -867,7 +868,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionRevisarRendimiento).release(mnuAccionRevisarRendimiento).click().build().perform();
@@ -879,7 +880,7 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuAccionesCuenta);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionRecordatorio).release(mnuAccionRecordatorio).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionVerificarCobertura).release(mnuAccionVerificarCobertura).click().build().perform();
@@ -897,7 +898,7 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionReescribirPolizas).release(mnuAccionReescribirPolizas).click().build().perform();
         return new CuentaReescrPoliACuentaPage(getDriver());
     }
@@ -906,7 +907,7 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionCombinarCuentas).release(mnuAccionCombinarCuentas).click().build().perform();
         return new CuentaCombPoliACuentaPage(getDriver());
     }
@@ -915,10 +916,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionAgenteNuevo).release(mnuAccionAgenteNuevo).click().build().perform();
@@ -929,10 +930,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionAuditoriaInterno).release(mnuAccionAuditoriaInterno).click().build().perform();
@@ -943,10 +944,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionAuditoriaExterna).release(mnuAccionAuditoriaExterna).click().build().perform();
@@ -957,10 +958,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionCotizacionReaseguro).release(mnuAccionCotizacionReaseguro).click().build().perform();
@@ -971,10 +972,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionDatosOf).release(mnuAccionDatosOf).click().build().perform();
@@ -985,10 +986,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionInformesMotorizado).release(mnuAccionInformesMotorizado).click().build().perform();
@@ -999,10 +1000,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionInspeccionSiniestro).release(mnuAccionInspeccionSiniestro).click().build().perform();
@@ -1013,10 +1014,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionInspeccionExterno).release(mnuAccionInspeccionExterno).click().build().perform();
@@ -1027,10 +1028,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionReportesCredito).release(mnuAccionReportesCredito).click().build().perform();
@@ -1041,10 +1042,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionRevisionLegal).release(mnuAccionRevisionLegal).click().build().perform();
@@ -1055,10 +1056,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionInfoAgente).release(mnuAccionInfoAgente).click().build().perform();
@@ -1069,10 +1070,10 @@ public class Navegacion extends Guidewire {
         mnuCuenta.click();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionActNueva).release(mnuAccionActNueva).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionSolicitud).release(mnuAccionSolicitud).build().perform();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         act.moveToElement(mnuAccionCotizarManual).release(mnuAccionCotizarManual).click().build().perform();
@@ -1093,7 +1094,7 @@ public class Navegacion extends Guidewire {
         mnuContact.click();
         gw.deployMenu(mnuAccionesContacto);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionNuevaCuentaC).release(mnuAccionNuevaCuentaC).click().build().perform();
         return new ContactoNuevaCuentaPage(getDriver());
     }
@@ -1103,7 +1104,7 @@ public class Navegacion extends Guidewire {
         mnuAdministracion.click();
         gw.deployMenu(mnuAccionesAdministracion);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionUsuarioNuevo).release(mnuAccionUsuarioNuevo).click().build().perform();
         return new AdminUsuarioNuevoPage(getDriver());
     }
@@ -1112,7 +1113,7 @@ public class Navegacion extends Guidewire {
         mnuAdministracion.click();
         gw.deployMenu(mnuAccionesAdministracion);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionGrupoNuevo).release(mnuAccionGrupoNuevo).click().build().perform();
         return new AdminGrupoNuevoPage(getDriver());
     }
@@ -1121,7 +1122,7 @@ public class Navegacion extends Guidewire {
         mnuAdministracion.click();
         gw.deployMenu(mnuAccionesAdministracion);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionOrganizacionNueva).release(mnuAccionOrganizacionNueva).click().build().perform();
         return new AdminOrganizacionNuevaPage(getDriver());
     }
@@ -1130,7 +1131,7 @@ public class Navegacion extends Guidewire {
         mnuAdministracion.click();
         gw.deployMenu(mnuAccionesAdministracion);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionCodAgenteNuevo).release(mnuAccionCodAgenteNuevo).click().build().perform();
         return new AdminCodAgenteNuevoPage(getDriver());
     }
@@ -1139,7 +1140,7 @@ public class Navegacion extends Guidewire {
         mnuAdministracion.click();
         gw.deployMenu(mnuAccionesAdministracion);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionNuevoGrupoAfiinidad).release(mnuAccionNuevoGrupoAfiinidad).click().build().perform();
         return new AdminNuevoGrupoAfinidadPage(getDriver());
     }
@@ -1148,36 +1149,36 @@ public class Navegacion extends Guidewire {
         mnuAdministracion.click();
         gw.deployMenu(mnuAccionesAdministracion);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitABit(300);
+        waitUntil(300);
         act.moveToElement(mnuAccionVerificarErroresPatron).release(mnuAccionVerificarErroresPatron).click().build().perform();
         return new AdminVerificarErrorPatronPage(getDriver());
     }
 
     public OpcionesCrearPartcCuentaPage irAOpcionesCrearPartcCuenta() {
         mnuCuenta.click();
-        waitABit(800);
+        waitUntil(800);
         mnuOpcionesCuenta.click();
         return new OpcionesCrearPartcCuentaPage(getDriver());
     }
 
     public OpcionesResumenCuentaPage irAOpcionesResumenCuenta() {
         mnuResumenCuenta.click();
-        waitABit(800);
+        waitUntil(800);
         return new OpcionesResumenCuentaPage(getDriver());
     }
 
     public OpcionesInformacionPolizaPage irAInformacionDePoliza() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuInformacionDePoliza).shouldBePresent();
         mnuInformacionDePoliza.click();
-        waitABit(1000);
+        waitUntil(1000);
         return new OpcionesInformacionPolizaPage(getDriver());
     }
 
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
-        waitForTextToAppear("Cotizaciones de la cuenta", 5000);
+        waitForTextToAppear("Cotizaciones de la cuenta");
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
-        $(mnuAdmCotizaciones).click();
-        waitABit(800);
+        mnuAdmCotizaciones.waitUntilVisible().waitUntilClickable().click();
+        waitUntil(800);
         return new OpcionesAdminitradorCotizaciones(getDriver());
     }
 }

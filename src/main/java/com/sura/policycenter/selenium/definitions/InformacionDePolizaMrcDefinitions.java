@@ -27,9 +27,14 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
     }
 
-    @When("este expidiendo una poliza de propiedad comercial <nomProducto>")
-    public void expidePolizaPropiedadComercial(@Named("nomProducto")String nomProducto) {
-        informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto(nomProducto);
+    @When("este expidiendo una poliza de propiedad comercial")
+    public void expidePolizaPropiedadComercial() {
+        informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto();
+    }
+
+    @When("seleccione el producto <nomProducto> a expedir")
+    public void seleccione_el_producto(@Named("nomProducto") String nomProducto){
+        informacionDePolizaMrcSteps.seleccionar_producto(nomProducto);
     }
 
     @Then("se debe visualizar los datos del tomador <tomador>")
@@ -97,6 +102,20 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.valida_opciones_reaseguro();
     }
 
+    /*
+    *Bug Automatizado: Ocultar dirección en formulario
+     */
+
+    @When("requiera quitar la descripcion de la direccion del contacto")
+    public void whenRequieraQuitarLaDescripcionDeLaDireccionDelContacto() {
+        informacionDePolizaMrcSteps.eliminar_descripcion_de_direccion_en_contacto();
+    }
+
+    @Then("debe desaparecer del formulario principal")
+    public void thenDebeDesaparecerDelFormularioPrincipal() {
+        informacionDePolizaMrcSteps.validar_descipcion_de_direccion();
+    }
 
 
 }
+

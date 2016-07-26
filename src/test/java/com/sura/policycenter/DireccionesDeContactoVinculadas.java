@@ -1,5 +1,7 @@
 package com.sura.policycenter;
 
-public class DireccionesDeContactoVinculadas{
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class DireccionesDeContactoVinculadas extends SerenityStory{
 
 }

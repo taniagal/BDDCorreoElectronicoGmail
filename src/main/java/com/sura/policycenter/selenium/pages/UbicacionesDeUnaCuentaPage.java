@@ -1,15 +1,14 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class UbicacionesDeUnaCuentaPage extends Guidewire{
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
@@ -68,7 +67,7 @@ public class UbicacionesDeUnaCuentaPage extends Guidewire{
         selectItem(comboBoxDepartamento,departamento);
         waitABit(3000);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(2000);
+        waitABit(2500);
         selectItem(comboBoxTipoDireccion,tipoDireccion);
         botonActualizar.click();
     }
@@ -76,6 +75,6 @@ public class UbicacionesDeUnaCuentaPage extends Guidewire{
     public void verificarTipoDeDireccion(){
         waitABit(2000);
         labelTipoDeDireccion.waitUntilPresent();
-        assertThat("No está el campo tipo de direccion", labelTipoDeDireccion.isPresent());
+        MatcherAssert.assertThat("No está el campo tipo de direccion", labelTipoDeDireccion.isPresent());
     }
 }

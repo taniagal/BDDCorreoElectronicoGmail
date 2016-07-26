@@ -3,31 +3,21 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.guidewire.selenium.Guidewire;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class DetallesDeUbicacionPage extends Guidewire{
 
     @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     private WebElementFacade numeroDeCuenta;
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:Producer:SelectOrganization']")
-    private WebElementFacade botonAgregarOrganizacion;
-    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchDV:GlobalContactNameInputSet:Name-inputEl']")
-    private WebElementFacade campoTxtNombreDeOrganizacion;
-    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    private WebElementFacade botonBuscarOrganizacion;
-    @FindBy(xpath = ".//*[@id='OrganizationSearchPopup:OrganizationSearchPopupScreen:OrganizationSearchResultsLV:0:_Select']")
-    private WebElementFacade botonSeleccionarOrganizacion;
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
-    private WebElementFacade comboBoxCodigoAgente;
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultBaseState-inputEl']")
-    private WebElementFacade comboBoxEstadoBase;
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:3:addSubmission']")
-    private WebElementFacade botonElegir;
     @FindBy(xpath=".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB-btnInnerEl']")
@@ -60,17 +50,19 @@ public class DetallesDeUbicacionPage extends Guidewire{
     private WebElementFacade linkNombre;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     private WebElementFacade comboBoxNombreAgente;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
-    private WebElementFacade comboboxCodigoDeAgente;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']")
     private WebElementFacade subMenuNuevaCotizacion;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
     private WebElementFacade menuItemEscritorio;
     @FindBy(css=".message")
     private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
+    WebElementFacade tablaProductos;
+
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     String direccion = "";
+    private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
 
 
     public DetallesDeUbicacionPage(WebDriver driver) {
@@ -78,27 +70,37 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public void  seleccionarProducto(String nomProducto) {
-        List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
-        List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
-        int i = 0;
-        if (!descripcionProductos.isEmpty()) {
-            for (WebElementFacade descripcion : descripcionProductos) {
-                if (nomProducto.equals(descripcion.getText())) {
-                    botones.get(i).click();
-                }
-                i++;
+        String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
+        WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
+        botonElegirProducto.waitUntilEnabled();
+        waitUntil(1000);
+        botonElegirProducto.click();
+    }
+
+    public Integer encontrarProducto(String producto) {
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
+        Integer filaBoton = 0;
+        List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
+        for (WebElement row : filas) {
+            List<WebElement> columna = row.findElements(By.tagName("td"));
+            if (producto.equals(columna.get(1).getText())) {
+                return filaBoton;
             }
+            filaBoton++;
         }
+        return filaBoton;
     }
 
     public void irANuevaCotizacion(){
+        setImplicitTimeout(2,TimeUnit.SECONDS);
         if(!botonAcciones.isPresent())
             menuItemEscritorio.click();
+        resetImplicitTimeout();
         waitFor(botonAcciones).click();
         subMenuNuevaCotizacion.waitUntilPresent().click();
     }
 
-    public void setDatos(String cuenta, String producto) {
+    public void setDatos(String cuenta) {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(numeroDeCuenta).shouldBePresent();
         numeroDeCuenta.sendKeys(cuenta);
         comboBoxNombreAgente.click();
@@ -107,6 +109,9 @@ public class DetallesDeUbicacionPage extends Guidewire{
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
+    }
+
+    public void elegirProducto(String producto){
         seleccionarProducto(producto);
     }
 
