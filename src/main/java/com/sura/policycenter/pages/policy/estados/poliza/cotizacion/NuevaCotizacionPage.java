@@ -1,11 +1,6 @@
 package com.sura.policycenter.pages.policy.estados.poliza.cotizacion;
 
 import com.sura.policycenter.model.AgenteModel;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -19,6 +14,10 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -43,11 +42,11 @@ public class NuevaCotizacionPage extends PageObject {
     public static final String TXT_NUMERO_CUENTA = "//input[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']";
     public static final String LINK_NOMBRE_PERSONA = "//div[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:AccountName-inputEl']";
     public static final String LABEL_NOMBRE_PERSONA = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:AccountName-labelCell']";
-    public static final String LABEL_FECHA_POR_DEFECTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultPPEffDate-bodyEl']";
+    public static final String LABEL_FECHA_POR_DEFECTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultPPEffDate-inputEl']";
     public static final String TXT_NOMBRE_AGENTE = ".//input[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']";
     public static final String TXT_CODIGO_AGENTE = ".//input[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-inputEl']";
     public static final String CBO_NOMBRE_AGENTE = ".//li[@role='option']";
-    public static final String PRODUCTOS = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr";
+    public static final String PRODUCTOS = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr";
     public static final String MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'displayfield') and contains(@id,'inputEl')]";
     public static final String MENSAJES_DE_INFORMACION = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div";
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
@@ -84,11 +83,11 @@ public class NuevaCotizacionPage extends PageObject {
             elemento = element(find(By.xpath(xpath)));
 
         } catch (NoSuchElementException e) {
-            LOGGER.error("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
         } catch (StaleElementReferenceException sere) {
-            LOGGER.error("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
+            LOGGER.info("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
         } catch (Exception e) {
-            LOGGER.error("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
         }
 
         return elemento;
@@ -102,11 +101,11 @@ public class NuevaCotizacionPage extends PageObject {
             elementos = withTimeoutOf(15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
 
         } catch (NoSuchElementException e) {
-            LOGGER.error("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
         } catch (StaleElementReferenceException sere) {
-            LOGGER.error("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
+            LOGGER.info("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
         } catch (Exception e) {
-            LOGGER.error("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
         }
 
         return elementos;
@@ -114,11 +113,13 @@ public class NuevaCotizacionPage extends PageObject {
 
     public Boolean esFechaCotizacionHOY() {
 
+        waitFor(LABEL_FECHA_POR_DEFECTO);
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(LABEL_FECHA_POR_DEFECTO)));
         return esFechaPorDefectoHOY(obtenerFechaCotizacionElemento());
     }
 
     public Boolean esFechaPorDefectoHOY(WebElementFacade fecha) {
+        waitFor(fecha);
         if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getText()).toLocalDate())) {
             return Boolean.TRUE;
         }
@@ -242,6 +243,7 @@ public class NuevaCotizacionPage extends PageObject {
 
 
     public WebElementFacade obtenerFechaCotizacionElemento() {
+        fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
         return elemento(LABEL_FECHA_POR_DEFECTO);
     }
 
@@ -325,15 +327,15 @@ public class NuevaCotizacionPage extends PageObject {
 
             for (WebElementFacade div : divsMensajes) {
                 mensajeMostrado = div.getText();
-                for(String etiqueta : mensajesApp.split("|")){
+                for (String etiqueta : mensajesApp.split("|")) {
                     if (mensajeMostrado.toLowerCase().contains(etiqueta)) {
                         existeOcurrencia = Boolean.TRUE;
                         break;
                     }
                 }
             }
-        }catch (Exception e){
-            LOGGER.error("No se encontró mensajes de error" + e.getMessage());
+        } catch (Exception e) {
+            LOGGER.error("NO EXISTE MENSAJE DE ERROR " + e.getMessage());
         }
 
 

@@ -111,15 +111,13 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         this.limpiarFormulario();
-        try{
-            txtPrimerNombre.sendKeys(primerNombre);
-            txtSegundoNombre.sendKeys(segundoNombre);
-            txtPrimerApellido.sendKeys(primerApellido);
-            txtSegundoApellido.sendKeys(segundoApellido);
-            btnBuscar.click();
-        } catch (StaleElementReferenceException elemento){
-            elemento.printStackTrace();
-        }
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtPrimerNombre).waitUntilPresent();
+        txtPrimerNombre.sendKeys(primerNombre);
+        txtSegundoNombre.sendKeys(segundoNombre);
+        txtPrimerApellido.sendKeys(primerApellido);
+        txtSegundoApellido.sendKeys(segundoApellido);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        btnBuscar.click();
     }
 
     private void limpiarFormulario() {
