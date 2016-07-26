@@ -4,7 +4,6 @@ import com.sura.policycenter.selenium.steps.BusquedaDePolizaSteps;
 import com.sura.policycenter.selenium.steps.CambioDePolizaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.bytedeco.javacpp.annotation.Name;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
