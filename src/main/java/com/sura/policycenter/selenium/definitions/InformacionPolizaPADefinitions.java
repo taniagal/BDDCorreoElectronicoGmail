@@ -54,7 +54,7 @@ public class InformacionPolizaPADefinitions {
         infoPoliza.put("organizacionAgente", "Oficina de radicación");
         infoPoliza.put("codigoAgente", "Código de agente");
         infoPoliza.put("modificadorPoliza", "Modificador póliza");
-        infoPoliza.put("descuentoPoliza", "Descuento Póliza");
+        infoPoliza.put("descuentoPoliza", "Descuento póliza");
     }
 
     @Given("ya se inicio una nueva suscripcion <numeroCuenta>")
