@@ -27,9 +27,14 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
     }
 
-    @When("este expidiendo una poliza de propiedad comercial <nomProducto>")
-    public void expidePolizaPropiedadComercial(@Named("nomProducto")String nomProducto) {
-        informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto(nomProducto);
+    @When("este expidiendo una poliza de propiedad comercial")
+    public void expidePolizaPropiedadComercial() {
+        informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto();
+    }
+
+    @When("seleccione el producto <nomProducto> a expedir")
+    public void seleccione_el_producto(@Named("nomProducto") String nomProducto){
+        informacionDePolizaMrcSteps.seleccionar_producto(nomProducto);
     }
 
     @Then("se debe visualizar los datos del tomador <tomador>")

@@ -2,10 +2,12 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 
 import com.sura.guidewire.selenium.Guidewire;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
@@ -26,7 +28,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     WebElementFacade lblInformaPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
     WebElementFacade lblNuevaCotizacion;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']")
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade lblTabla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Name-inputEl']")
     WebElementFacade lblNombreCompleto;
@@ -95,8 +97,11 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     WebElementFacade lblDescripDireccion;
     @FindBy(xpath = ".//*[@id='EditPolicyContactRolePopup:ContactDetailScreen:PolicyContactRoleDetailsCV:PolicyContactDetailsDV:AddressDescription-inputEl']")
     WebElementFacade txtDescripDireccion;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
+    WebElementFacade tablaProductos;
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
     public static boolean esVisible;
 
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
@@ -170,25 +175,35 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
         }
     }
 
-    public void seleccionarProducto(String nomProducto) {
-        int i = 0;
-        if (!getListaDescripcion().isEmpty()) {
-            for (WebElementFacade descripcion : getListaDescripcion()) {
-                if (nomProducto.equals(descripcion.getText())) {
-                    getListaBotones().get(i).click();
-                }
-                i++;
+    public void  seleccionarProducto(String nomProducto) {
+        String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
+        WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
+        botonElegirProducto.waitUntilEnabled();
+        waitUntil(1000);
+        botonElegirProducto.click();
+    }
+
+    public Integer encontrarProducto(String producto) {
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
+        Integer filaBoton = 0;
+        List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
+        for (WebElement row : filas) {
+            List<WebElement> columna = row.findElements(By.tagName("td"));
+            if (producto.equals(columna.get(1).getText())) {
+                return filaBoton;
             }
+            filaBoton++;
         }
+        return filaBoton;
     }
 
     private List<WebElementFacade> getListaBotones() {
-        List<WebElementFacade> botones = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
+        List<WebElementFacade> botones = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
         return botones;
     }
 
     private List<WebElementFacade> getListaDescripcion() {
-        List<WebElementFacade> DescripcionProductos = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
+        List<WebElementFacade> DescripcionProductos = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         return DescripcionProductos;
     }
 

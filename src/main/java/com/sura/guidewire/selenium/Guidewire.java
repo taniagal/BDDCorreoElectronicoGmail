@@ -1,10 +1,15 @@
 package com.sura.guidewire.selenium;
 
 import com.google.common.base.Function;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -134,5 +139,20 @@ public class Guidewire extends PageObject {
         List<WebElementFacade> listaWE = findAll(locator);
          //return withTimeoutOf(15, TimeUnit.SECONDS).findAll(locator);
         return listaWE;
+    }
+
+    public WebElementFacade esperarElemento(final String xpath) {
+        Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
+                .withTimeout(20, TimeUnit.SECONDS)
+                .pollingEvery(5, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
+
+        WebElementFacade elemento = espera.until(new Function<WebDriver, WebElementFacade>() {
+            public WebElementFacade apply(WebDriver driver) {
+                return findBy(xpath);
+            }
+        });
+
+        return elemento;
     }
 }

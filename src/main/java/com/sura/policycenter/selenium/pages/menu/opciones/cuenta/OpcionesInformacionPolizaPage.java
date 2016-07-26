@@ -28,7 +28,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']")
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade tablaProductos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PrimaryNamedInsuredLabel-labelEl']")
     private WebElementFacade labelAseguradoPrimario;
@@ -166,15 +166,15 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
-        WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonElegirProducto).shouldBePresent();
-        waitFor(botonElegirProducto).shouldBeVisible();
+    }
+
+    public void seleccionarProducto(){
+        WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
         botonElegirProducto.click();
     }
 
     public Integer encontrarProducto(){
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(tablaProductos).shouldBeVisible();
-        tablaProductos.waitUntilVisible();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilPresent();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
@@ -383,11 +383,11 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         }
     }
 
-    public void definirPolizaFinanciada(String organizacion, String canal, String tipoPoliza) {
+    public void definirPolizaFinanciada(String organizacionDetalle, String canalDetalle, String tipoPoliza) {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoOrganizacion).shouldBePresent();
-        campoOrganizacion.typeAndTab(organizacion);
+        campoOrganizacion.typeAndTab(organizacionDetalle);
         waitUntil(3000);
-        campoCanal.typeAndTab(canal);
+        campoCanal.typeAndTab(canalDetalle);
         waitUntil(3000);
         campoTipoPoliza.typeAndTab(tipoPoliza);
         waitUntil(3000);
@@ -413,11 +413,11 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
-    public void modificarFechaInicioVigencia(String organizacion, String canal, String tipoPoliza, String tipoPlazo, String fechaInicioVigencia) {
+    public void modificarFechaInicioVigencia(String organizacionDetalle, String canalDetalle, String tipoPoliza, String tipoPlazo, String fechaInicioVigencia) {
         waitUntil(3000);
-        campoOrganizacion.typeAndTab(organizacion);
+        campoOrganizacion.typeAndTab(organizacionDetalle);
         waitUntil(3000);
-        campoCanal.typeAndTab(canal);
+        campoCanal.typeAndTab(canalDetalle);
         waitUntil(3000);
         campoTipoPoliza.typeAndTab(tipoPoliza);
         waitUntil(3000);
