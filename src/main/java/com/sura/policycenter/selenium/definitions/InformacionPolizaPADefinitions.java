@@ -66,6 +66,11 @@ public class InformacionPolizaPADefinitions {
     public void verInformacionPoliza(){
         informacionPolizaPASteps.accionarNuevaCotizacion();
         informacionPolizaPASteps.seleccionarAgenteCotizacion();
+    }
+
+    @When("seleccione el producto para expedir la poliza")
+    public void elegirElProductoParaLaPoliza(){
+        informacionPolizaPASteps.seleccionarProducto();
         informacionPolizaPASteps.accionarInformacionPoliza();
     }
 
@@ -85,7 +90,6 @@ public class InformacionPolizaPADefinitions {
     public void accionarExpedirPolizaAuto(){
         informacionPolizaPASteps.accionarNuevaCotizacion();
         informacionPolizaPASteps.seleccionarAgenteCotizacion();
-        informacionPolizaPASteps.accionarInformacionPoliza();
     }
 
     @When("modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>")
@@ -117,9 +121,20 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.ingresarPorcentajeDescuentoPoliza(porcentaje);
     }
 
-    @When("defina una poliza como financiada")
-    public void definirPolizaFinanciada(){
-        informacionPolizaPASteps.definirPolizaFinanciada();
+    @When("defina una poliza como financiada <organizacionDetalle> <canalDetalle> <tipoPoliza>")
+    public void definirPolizaFinanciada(@Named("organizacionDetalle") String organizacionDetalle,
+                                        @Named("canal") String canalDetalle,
+                                        @Named("tipoPoliza") String tipoPoliza){
+        informacionPolizaPASteps.definirPolizaFinanciada(organizacionDetalle, canalDetalle, tipoPoliza);
+    }
+
+    @When("modifique la fecha de inicio de vigencia <organizacionDetalle> <canalDetalle> <tipoPoliza> <tipoPlazo> <fechaInicioVigencia>")
+    public void modificarfechaInicioVigencia(@Named("organizacionDetalle") String organizacionDetalle,
+                                             @Named("canalDetalle") String canalDetalle,
+                                             @Named("tipoPoliza") String tipoPoliza,
+                                             @Named("tipoPlazo") String tipoPlazo,
+                                             @Named("fechaInicioVigencia") String fechaInicioVigencia) {
+        informacionPolizaPASteps.modificarFechaInicioVigencia(organizacionDetalle, canalDetalle, tipoPoliza, tipoPlazo, fechaInicioVigencia);
     }
 
     @Then("se debe visalizar los datos del tomador, como son: tipo y numero de identificacion, nombre completo,\n" +
@@ -168,9 +183,8 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.ingresarNumeroCuotas();
     }
 
-    @Then("se debe cumplir con la retroactividad permitida <fechaInicioVigencia> <mensaje>")
-    @Manual
-    public void validarRetroactividadPoliza(){
-        //Se ejecuta manualmente
+    @Then("se debe cumplir con la retroactividad permitida <mensaje>")
+    public void validarRetroactividadPoliza(@Named("mensaje") String mensaje){
+        informacionPolizaPASteps.validarRetroactividadPoliza(mensaje);
     }
 }

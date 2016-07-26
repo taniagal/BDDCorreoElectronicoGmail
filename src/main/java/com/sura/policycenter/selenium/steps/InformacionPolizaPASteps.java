@@ -72,8 +72,8 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     }
 
     @Step
-    public void definirPolizaFinanciada() {
-        opcionesInformacionPoliza.definirPolizaFinanciada();
+    public void definirPolizaFinanciada(String organizacionDetalle, String canalDetalle, String tipoPoliza) {
+        opcionesInformacionPoliza.definirPolizaFinanciada(organizacionDetalle, canalDetalle, tipoPoliza);
     }
 
     @Step
@@ -82,7 +82,17 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarRetroactividadPoliza(String fechaInicioVigencia, String mensaje) {
-        opcionesInformacionPoliza.validarRetroactividadPoliza(fechaInicioVigencia, mensaje);
+    public void validarRetroactividadPoliza(String mensaje) {
+        opcionesInformacionPoliza.validarRetroactividadPoliza(mensaje);
+    }
+
+    @Step
+    public void modificarFechaInicioVigencia(String organizacionDetalle, String canalDetalle, String tipoPoliza, String tipoPlazo, String fechaInicioVigencia) {
+        opcionesInformacionPoliza.modificarFechaInicioVigencia(organizacionDetalle, canalDetalle, tipoPoliza, tipoPlazo, fechaInicioVigencia);
+    }
+
+    @Step
+    public void seleccionarProducto() {
+        opcionesInformacionPoliza.seleccionarProducto();
     }
 }
