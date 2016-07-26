@@ -72,15 +72,21 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     WebElementFacade lblSumaValor;
 
 
-    public OpcionesInformacionDelVehiculoPage(WebDriver driver) {
-        super(driver);
-    }
+    String [] compara = new String[2];
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
 
     Actions actions = new Actions(getDriver());
 
     OpcionesInformacionPolizaMrcPage opcionPolizaMrc = new OpcionesInformacionPolizaMrcPage(getDriver());
+
+
+
+    public OpcionesInformacionDelVehiculoPage(WebDriver driver) {
+        super(driver);
+    }
+
+
 
     public void ingresarOpcionVehiculo() {
         opcionPolizaMrc.waitInfoPoliza(itemVehiculo);
@@ -110,8 +116,7 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         opcionPolizaMrc.waitInfoPoliza(btnSiguinete);
     }
 
-    public String[] calculaTotalValorAsegurado (String valorAccesorio, String valorAccesorioEsp){
-        String [] compara = new String[2];
+    public void calculaTotalValorAsegurado (String valorAccesorio, String valorAccesorioEsp){
         int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0,8));
         int valorAccesorioEntero = Integer.parseInt(valorAccesorio);
         int valorAccesorioEspEntero = Integer.parseInt(valorAccesorioEsp);
@@ -120,8 +125,6 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         valorDeLabel = valorDeLabel.replaceAll("\\$","").replaceAll(",","");
         compara[0] = Integer.toString(valorTotalizado);
         compara[1] = valorDeLabel;
-        return compara;
-
     }
 
     public void ingresaValoresAccesorios(String valorAccesorio, String valorAccesorioEsp) {
@@ -151,8 +154,9 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     }
 
     public void comparaValorAseguradoTotal(){
-        AssertTrue("El campo de " )
+        assertThat("Los valor final no corresponde al calculado", compara[0].equals(compara[1]));
     }
+
 
 }
 
