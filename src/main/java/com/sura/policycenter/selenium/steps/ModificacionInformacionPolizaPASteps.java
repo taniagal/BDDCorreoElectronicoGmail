@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.ModificacionInformacionPolizaPAPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.reports.html.ExampleTable;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -10,6 +11,7 @@ import org.jbehave.core.model.ExamplesTable;
 import java.util.Map;
 
 public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
+
 
     ModificacionInformacionPolizaPAPage modificacionInformacionPolizaPAPage = new ModificacionInformacionPolizaPAPage(getDriver());
 
