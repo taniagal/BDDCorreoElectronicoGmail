@@ -220,7 +220,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     public void modificarFechaVigencia(String tipoPlazo, String fechaInicioVigencia) {
         String validacion = null;
-        withTimeoutOf(15,TimeUnit.SECONDS).waitFor(fechaVigenciaPoliza).shouldBePresent();
+       waitFor(fechaVigenciaPoliza).shouldBePresent();
         try{
             MatcherAssert.assertThat(fechaVigenciaPoliza.getTextValue(), Is.is(Matchers.equalTo(fechaEscrita.getTextValue())));
         }catch (Exception e){
@@ -245,7 +245,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void calcularFechaFinVigencia(String fechaInicioVigencia) {
-        waitForTextToAppear("Tomador",1000);
+        waitForTextToAppear("Tomador");
         waitFor(tipoPlazoPoliza).shouldBeVisible();
         String tipoPlazo = tipoPlazoPoliza.getValue();
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
@@ -290,7 +290,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void adicionarSegundoTomador(String tipoDocumento, String primerNombre, String primerApellido) {
-        waitForTextToAppear("Tomador secundario",1000);
+        waitForTextToAppear("Tomador secundario");
         waitFor(botonAseguradoSecundario).shouldBeVisible();
         botonAseguradoSecundario.click();
         waitFor(itemPersonaDelDirectorio).shouldBeVisible();
@@ -342,7 +342,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void validarMensajePorcentajePoliza(String mensaje) {
-        waitForTextToAppear("Descuento Póliza",1000);
+        waitForTextToAppear("Descuento Póliza");
         waitFor(textoDescuentoPoliza).shouldBeVisible();
         String descuentoPoliza = textoDescuentoPoliza.getValue();
         waitFor(mensajeValidacion).shouldBeVisible();
@@ -372,7 +372,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
             String parteEntera = Integer.toString(pEntera);
             String parteDecimal = Double.toString(pDecimal);
             if (parteEntera.length() > 2 || parteDecimal.length() > 2) {
-                withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldBePresent();
+                waitFor(mensajeValidacion).shouldBePresent();
                 MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
             }
         }catch (StaleElementReferenceException element){
@@ -380,19 +380,25 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         }
     }
 
+    public void selectCombo(WebElementFacade element, String option){
+        element.clear();
+        waitUntil(200);
+        element.sendKeys(option);
+        element.sendKeys(Keys.ENTER);
+    }
+    
     public void definirPolizaFinanciada(String organizacionDetalle, String canalDetalle, String tipoPoliza) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoOrganizacion).shouldBePresent();
-        campoOrganizacion.typeAndTab(organizacionDetalle);
-        waitUntil(3000);
-        campoCanal.typeAndTab(canalDetalle);
-        waitUntil(3000);
-        campoTipoPoliza.typeAndTab(tipoPoliza);
-        waitUntil(3000);
+        selectCombo(campoOrganizacion,organizacionDetalle);
+        waitUntil(2000);
+        selectCombo(campoCanal,canalDetalle);
+        waitUntil(2000);
+        selectCombo(campoTipoPoliza,tipoPoliza);
+        waitUntil(2000);
         polizaFinanciada.click();
     }
 
     public void ingresarNumeroCuotas() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelNumeroCuotas).shouldBePresent();
+        waitFor(labelNumeroCuotas).shouldBePresent();
         MatcherAssert.assertThat(labelNumeroCuotas.getText(), labelNumeroCuotas.isCurrentlyVisible());
         MatcherAssert.assertThat(textoNumeroCuotas.getText(), textoNumeroCuotas.isCurrentlyVisible());
         waitUntil(2000);
@@ -406,7 +412,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     public void validarRetroactividadPoliza(String mensaje) {
         waitUntil(3000);
         botonSiguiente.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldBePresent();
+        waitFor(mensajeValidacion).shouldBePresent();
         MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
@@ -419,7 +425,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         campoTipoPoliza.typeAndTab(tipoPoliza);
         waitUntil(3000);
         String validacion = null;
-        withTimeoutOf(15,TimeUnit.SECONDS).waitFor(fechaVigenciaPoliza).shouldBePresent();
+        waitFor(fechaVigenciaPoliza).shouldBePresent();
         try{
             MatcherAssert.assertThat(fechaVigenciaPoliza.getTextValue(), Is.is(Matchers.equalTo(fechaEscrita.getTextValue())));
         }catch (Exception e){
