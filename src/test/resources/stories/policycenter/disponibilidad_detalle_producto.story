@@ -40,6 +40,7 @@ Examples:
 |numCuenta|organizacion|tipoCanal|
 |C000888888|Bancolombia|Renting|
 
+
 Scenario: Al cambiar filtro de organizacion se cambia canal y tipo de poliza
 Given Estoy buscando una cuenta <numCuenta>
 And Estoy expidiendo una poliza de autos
@@ -70,3 +71,4 @@ Examples:
 
 |numCuenta|organizacion|tipoCanal|tipoPoliza|otroTipoCanal|
 |C000888888|Bancolombia|Renting|Comercial - Personal Fleet|Leasing|
+

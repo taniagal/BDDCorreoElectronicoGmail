@@ -33,6 +33,7 @@ And seleccione el producto para expedir la poliza
 And modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
 Then esta <fechaInicioVigencia> debe calcular de forma automatica la fecha de fin de vigencia, la cual depende del tipo de plazo
 
+
 Examples:
 |numeroCuenta  |organizacion|canal            |fechaInicioVigencia|tipoPlazo |
 |C000888888    |Sura        |Canal Tradicional|07/15/2016         |6 meses   |
@@ -76,6 +77,7 @@ Examples:
 |C000888888     |Sura        |Canal Tradicional|60         |Descuento Póliza : El descuento de la póliza debe estar en un rango de 0% a 50%. |
 |C000888888     |Sura        |Canal Tradicional|abc        |Descuento Póliza : debe ser un valor numérico.                                   |
 
+
 Scenario: Validar longitud decimales porcentaje descuento de poliza
 Given ya se inicio una nueva suscripcion <numeroCuenta>
 And se visualiza la informacion de la poliza
@@ -102,6 +104,7 @@ Then se debe poder ingresar el numero de cuotas
 Examples:
 |numeroCuenta |organizacion|canal            |organizacionDetalle|canalDetalle     |tipoPoliza|
 |C000888888   |Sura        |Canal Tradicional|Sura               |Canal Tradicional|PPAutos   |
+
 
 Scenario: Validar retroactividad en la vigencia de la poliza
 Given ya se inicio una nueva suscripcion <numeroCuenta>

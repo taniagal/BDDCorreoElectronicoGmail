@@ -93,7 +93,7 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void verificarUbicacionesCubiertas() {
-        List<WebElementFacade> tablaUbicaciones = getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody");
+        List<WebElementFacade> tablaUbicaciones = getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody/tr");
         MatcherAssert.assertThat("Error al Agregar la ubicacion", !tablaUbicaciones.isEmpty());
     }
 
