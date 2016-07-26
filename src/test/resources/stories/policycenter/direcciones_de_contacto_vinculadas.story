@@ -57,6 +57,7 @@ When cuando vincule las direcciones del contacto <nombreContactoUno> y contacto 
 Then me debe mostrar la siguiente informacion:
 |pais|departamento|ciudad|direccion|tipoDeDireccion|descripcion|
 |Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|Vivienda|Created by the Address Builder with code 0|
+
 Examples:
 |numeroCuenta|nombreContactoUno|nombreContactoDos|
 |C000484848|OSCAR GOMEZ|CARLOS PERALTA|

@@ -125,20 +125,18 @@ public class Guidewire extends PageObject {
                     return false;
                 }
             });
-        } catch (TimeoutException e) {
+        }
+        catch (TimeoutException e) {
         }
     }
 
     public  void verificarMensaje(WebElementFacade divMensaje, String mensaje){
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
-
         MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
     }
 
     public List<WebElementFacade> getLista(String locator) {
-        List<WebElementFacade> listaWE = findAll(locator);
-         //return withTimeoutOf(15, TimeUnit.SECONDS).findAll(locator);
-        return listaWE;
+        return findAll(locator);
     }
 
     public WebElementFacade esperarElemento(final String xpath) {

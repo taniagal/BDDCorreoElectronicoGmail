@@ -18,7 +18,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class DisponibilidadDetalleProductoPage extends Guidewire {
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
+    @FindBy(xpath=".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
     private WebElementFacade listaTipoCanalDeVenta;
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions']")
     private WebElementFacade btnAccionesCuenta;
@@ -26,11 +26,11 @@ public class DisponibilidadDetalleProductoPage extends Guidewire {
     private WebElementFacade opcionNuevoEnvio;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:7:addSubmission']")
     private WebElementFacade btnElegirAutoPersonal;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div")
+    @FindBy(xpath=".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade opcionVerInformacionPoliza;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
+    @FindBy(xpath=".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
     private WebElementFacade listaOrganizacionDeVentas;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
+    @FindBy(xpath=".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
     private WebElementFacade listaPATipoPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']")
     WebElementFacade tablaProductos;

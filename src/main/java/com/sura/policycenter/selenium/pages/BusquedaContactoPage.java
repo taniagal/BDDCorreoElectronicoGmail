@@ -173,7 +173,6 @@ public class BusquedaContactoPage extends Guidewire {
         txtNumDoc.type(numDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
-        espera(botonBuscar, 2);
     }
 
     public void consultarContactoTipoDoc(String tipoDoc) {
