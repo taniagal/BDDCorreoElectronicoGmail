@@ -55,7 +55,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(filtroEstado).waitUntilPresent();
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
-        filtroEstado.sendKeys(Key.ENTER);
+        filtroEstado.sendKeys(Keys.ENTER);
         waitUntil(2000);
     }
 

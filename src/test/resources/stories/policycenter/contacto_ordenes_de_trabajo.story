@@ -29,7 +29,7 @@ Then se muestra el mensaje informativo de transaccion no encontrada <mensaje>
 
 Examples:
 |tipoContacto|nombre|apellido|mensaje|
-|CEDULA DE CIUDADANIA|Yurledys|Gallego|El contacto no tiene transacciones asociadas|
+|CEDULA DE CIUDADANIA|Ray|Newton|El contacto no tiene transacciones asociadas|
 
 Scenario: Ver informacion filtrada por estado
 Given que voy a consultar un contacto
