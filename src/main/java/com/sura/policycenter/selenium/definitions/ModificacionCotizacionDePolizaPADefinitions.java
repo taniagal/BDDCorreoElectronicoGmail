@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.definitions;
 
 
 import com.google.inject.name.Named;
+import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.ModificacionCotizacionDePolizaSteps;
 import net.thucydides.core.annotations.Manual;
@@ -25,6 +26,9 @@ public class ModificacionCotizacionDePolizaPADefinitions {
 
     @Steps
     ModificacionCotizacionDePolizaSteps cotizacionDePolizaSteps;
+
+    @Steps
+    Navegacion navegacion;
 
     public ModificacionCotizacionDePolizaPADefinitions(){
         infoCotizacionPoliza.put("numeroPoliza", "Número de póliza");
@@ -72,7 +76,8 @@ public class ModificacionCotizacionDePolizaPADefinitions {
 
     @Given("se ha realizado la cotizacion de la modificacion <cotizacion>")
     public void irALaCotizacion(@Named("cotizacion") String cotizacion) {
-        inicioPage().irABuscarSubPoliza(cotizacion);
+        navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
+        navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(cotizacion);
     }
 
     @When("ingrese al detalle de la modificacion")
