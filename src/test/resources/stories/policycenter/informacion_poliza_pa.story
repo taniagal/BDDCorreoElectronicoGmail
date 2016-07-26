@@ -102,8 +102,8 @@ And defina una poliza como financiada <organizacionDetalle> <canalDetalle> <tipo
 Then se debe poder ingresar el numero de cuotas
 
 Examples:
-|numeroCuenta |organizacion|canal            |organizacionDetalle|canalDetalle     |tipoPoliza |
-|C000888888   |Sura        |Canal Tradicional|Bancolombia |Televentas|PPAutos    |
+|numeroCuenta |organizacion|canal            |organizacionDetalle|canalDetalle     |tipoPoliza|
+|C000888888   |Sura        |Canal Tradicional|Sura               |Canal Tradicional|PPAutos   |
 
 
 Scenario: Validar retroactividad en la vigencia de la poliza
