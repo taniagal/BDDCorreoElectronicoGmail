@@ -24,6 +24,8 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
 
     @FindBy(xpath=".//*[@id='TabBar:PolicyTab-btnWrap']")
     private WebElementFacade menuPoliza;
+    @FindBy(xpath=".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']")
+    private WebElementFacade labelNuevaCotizacion;
     @FindBy(xpath=".//*[@id='TabBar:PolicyTab:PolicyTab_PolicyRetrievalItem-inputEl']")
     private WebElementFacade campoBuscarPoliza;
     @FindBy(xpath=".//*[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")
@@ -106,6 +108,7 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
         waitUntil(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(2000);
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(labelNuevaCotizacion).shouldBePresent();
         campoBuscarPoliza.typeAndEnter(numeroPoliza);
         waitUntil(2000);
     }
