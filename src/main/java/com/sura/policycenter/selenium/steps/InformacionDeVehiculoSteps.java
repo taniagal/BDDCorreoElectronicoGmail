@@ -42,4 +42,9 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
     public void validar_campos_informacion_vehiculo() {
         opcionesInformacionDelVehiculoPage.validaMensajePantalla();
     }
+
+    @Step
+    public void ingresar_valores_accesorios(String valorAccesorio, String valorAccesorioEsp) {
+        opcionesInformacionDelVehiculoPage.ingresaValoresAccesorios(valorAccesorio, valorAccesorioEsp);
+    }
 }

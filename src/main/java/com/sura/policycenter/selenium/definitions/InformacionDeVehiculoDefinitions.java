@@ -43,4 +43,27 @@ public class InformacionDeVehiculoDefinitions {
     public void thenElSistemaNoDebepasar() {
         informacionDeVehiculoSteps.validar_campos_informacion_vehiculo();
     }
+
+    @When("ingrese los valores de accesorios <valorAccesorio> <valorAccesorioEsp>")
+    public void valoresEspecialesAccesorios(@Named("valorAccesorio")String valorAccesorio,
+                                  @Named("valorAccesorioEsp")String valorAccesorioEsp) {
+        informacionDeVehiculoSteps.ingresar_valores_accesorios(valorAccesorio, valorAccesorioEsp);
+    }
+
+    @When("valor de bonificacion tecnica <valorBoniTecnica> y comercial <valorBoniComercial>")
+    public void valorBonificacionTecnicaComercial(@Named("valorBoniTecnica")String valorBoniTecnica,
+                                                  @Named("valorBoniComercial")String valorBoniComercial){
+
+
+
+    }
+
+
+    @Then("el sistema debe totalizar el valor asegurado")
+    public void thenElSistemaDebeTotalizarElValorAsegurado() {
+        // PENDING
+    }
+
+
+
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import javax.swing.*;
+import javax.validation.constraints.AssertTrue;
 
 import java.util.concurrent.TimeUnit;
 
@@ -63,15 +64,12 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     WebElementFacade btnDetalleVehiculo;
     @FindBy(id = "SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs")
     WebElementFacade cajaMensaje;
-    @FindBy(id = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:AdditionalCoveragesTab-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:AdditionalCoveragesTab-btnInnerEl']")
     WebElementFacade btnPaginaSiguiente;
-    @FindBy(id = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     WebElementFacade txtLimite;
-
-
-
-
-
+    @FindBy(xpath = "//div[contains(@id,'SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:totalInsured_DV-inputEl')]")
+    WebElementFacade lblSumaValor;
 
 
     public OpcionesInformacionDelVehiculoPage(WebDriver driver) {
@@ -112,12 +110,29 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         opcionPolizaMrc.waitInfoPoliza(btnSiguinete);
     }
 
-    public void calculaValorAccesorioAsegurado() {
-        String valorAsegurado = txtValorAsegurado.getText();
-        txtValorAccesorios.sendKeys("2800000");
-        txtValorAccesorios.sendKeys(Keys.ENTER);
-        opcionPolizaMrc.waitInfoPoliza(txtAcceEspeciales);
-        txtValorAccesorios.sendKeys("4000000");
+    public String[] calculaTotalValorAsegurado (String valorAccesorio, String valorAccesorioEsp){
+        String [] compara = new String[2];
+        int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0,8));
+        int valorAccesorioEntero = Integer.parseInt(valorAccesorio);
+        int valorAccesorioEspEntero = Integer.parseInt(valorAccesorioEsp);
+        int valorTotalizado = valorAccesorioEntero + valorAccesorioEspEntero + valorAsegurado;
+        String valorDeLabel = lblSumaValor.getText().substring(0,11);
+        valorDeLabel = valorDeLabel.replaceAll("\\$","").replaceAll(",","");
+        compara[0] = Integer.toString(valorTotalizado);
+        compara[1] = valorDeLabel;
+        return compara;
+
+    }
+
+    public void ingresaValoresAccesorios(String valorAccesorio, String valorAccesorioEsp) {
+        txtValorAccesorios.clear();
+        txtValorAccesorios.sendKeys(valorAccesorio);
+        txtValorAsegurado.click();
+        waitUntil(1000);
+        txtAcceEspeciales.sendKeys(valorAccesorioEsp);
+        txtValorAsegurado.click();
+        waitUntil(1000);
+        calculaTotalValorAsegurado(valorAccesorio , valorAccesorioEsp);
     }
 
     public void validarPaginaSiguiente() {
@@ -135,37 +150,9 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         assertThat("el campo descuento, recargo y suavizacion deben ser decimales", cajaMensaje.containsText("debe tener máximo dos enteros y máximo dos decimales"));
     }
 
-    public void validaCamposInformacionVehiculo() {
-        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if ("12345678".equals(txtPlaca.getText()))
-            notPresent.append("el campo no puede tener mas de 8 caracteres|");
-            /*
-            if ("".equals(inputNumeroDocumento.getText()))
-            notPresent.append("salida errada: Numero cedula|");
-        if ("".equals(inputNumeroTelefono.getText()))
-            notPresent.append("salida errada: Telefono|");
-        if ("".equals(inputDireccion.getText()))
-            notPresent.append("salida errada: Direccion|");
-        if ("".equals(inputReaseguroAceptado.getText()))
-            notPresent.append("radio boton nulo: Reaseguro aceptado|");
-        if ("".equals(inputReaseguroEspecial.getText()))
-            notPresent.append("radio boton nulo: Reaseguro especial|");
-        if (!"Fecha inicio de vigencia".equals(lblFechaVigencia.getText()))
-            notPresent.append("salida errada: Fecha inicio de vigencia|");
-        if (!"Fecha fin de vigencia".equals(lblFechaExpiracion.getText()))
-            notPresent.append("salida errada: Fecha fin de vigencia|");
-        if (!"Fecha de expedición".equals(lblFechaescrita.getText()))
-            notPresent.append("salida errada: Fecha de expedición|");
-        if (!"Descripción de la dirección".equals(lblDescripcionDir.getText()))
-            notPresent.append("salida errada: Descripcion direccion|");
-             */
-        String res = notPresent.toString();
-        if (MSJVALIDARELEMENTOS.equals(res)) {
-            res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
-        }
-        assertThat(res, "No estan presentes los elementos ".equals(res));
+    public void comparaValorAseguradoTotal(){
+        AssertTrue("El campo de " )
     }
-
 
 }
 
