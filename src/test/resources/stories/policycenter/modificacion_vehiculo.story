@@ -26,3 +26,14 @@ Then se debe mostrar un mensaje <mensaje> indicando la restriccion
 Examples:
 |numeroPoliza |ciudadCirculacion|mensaje                                                                                |
 |TEST_22222222|ACANDI           |Por política de la compañía no esta permitido vehículos que circulen en esta ubicación.|
+
+Scenario: Consultar bonificaciones
+Meta:
+@Manual
+Given se tiene una poliza expedida <numeroPoliza>
+When se ingrese a modificar la informacion del vehiculo
+Then se debe mostrar en los campos de bonificación tecnica y comercial el porcentaje en cada uno de ellos
+
+Examples:
+|numeroPoliza |
+|TEST_22223223|

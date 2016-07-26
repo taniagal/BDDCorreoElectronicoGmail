@@ -16,12 +16,6 @@ public class ModificacionVehiculoPage extends Guidewire{
 
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
-    @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Type_DV-inputEl']")
-    private WebElementFacade campoClaseVehiculo;
-    @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Make_DV-inputEl']")
-    private WebElementFacade campoMarca;
-    @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']")
-    private WebElementFacade campoLinea;
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
     private WebElementFacade campoCiudadCirculacion;
 
@@ -53,24 +47,18 @@ public class ModificacionVehiculoPage extends Guidewire{
     }
 
     public void mostrarDatosVehiculo(String claseVehiculo, String marca, String linea) {
-        WebElementFacade camClaseVehiculo = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Type_DV-inputEl']");
-        MatcherAssert.assertThat(camClaseVehiculo.getText(), Is.is(Matchers.equalTo(claseVehiculo)));
-        WebElementFacade camMarca = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Make_DV-inputEl']");
-        MatcherAssert.assertThat(camMarca.getText(), Is.is(Matchers.equalTo(marca)));
-        WebElementFacade camLinea = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']");
-        MatcherAssert.assertThat(camLinea.getText(), Is.is(Matchers.equalTo(linea)));
-        waitUntil(1000);
-        /*WebElementFacade botonVolver = findBy(".//*[@id='PolicyChangeWizard:Prev-btnInnerEl']");
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonVolver).click();
-        waitUntil(1000);*/
-        WebElementFacade botonEscritorio = findBy(".//*[@id='TabBar:DesktopTab-btnInnerEl']");
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonEscritorio).click();
+        WebElementFacade campoClaseVehiculo = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Type_DV-inputEl']");
+        MatcherAssert.assertThat(campoClaseVehiculo.getText(), Is.is(Matchers.equalTo(claseVehiculo)));
+        WebElementFacade campoMarca = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Make_DV-inputEl']");
+        MatcherAssert.assertThat(campoMarca.getText(), Is.is(Matchers.equalTo(marca)));
+        WebElementFacade campoLinea = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']");
+        MatcherAssert.assertThat(campoLinea.getText(), Is.is(Matchers.equalTo(linea)));
         waitUntil(1000);
     }
 
     public void registrarZonaCirculacion(String ciudadCirculacion) {
-        //WebElementFacade campoCiudadCirculacion = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoCiudadCirculacion).typeAndEnter(ciudadCirculacion);
+        waitUntil(2000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
         waitUntil(1000);
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonSiguiente).click();
         waitUntil(3000);

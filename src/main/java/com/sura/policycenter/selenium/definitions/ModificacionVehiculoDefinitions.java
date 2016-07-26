@@ -4,6 +4,7 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.policycenter.selenium.steps.ModificacionInformacionPolizaPASteps;
 import com.sura.policycenter.selenium.steps.ModificacionVehiculoSteps;
+import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -40,6 +41,13 @@ public class ModificacionVehiculoDefinitions{
         modificacionVehiculoSteps.registrar_Zona_De_Circulacion(ciudadCirculacion);
     }
 
+    @SuppressWarnings("EmptyMethod")
+    @When("se ingrese a modificar la informacion del vehiculo")
+    @Manual
+    public void modificarInformacionVehiculo(){
+        //Se ejecuta manualmente
+    }
+
     @Then("se deben recuperar los datos del vehiculo: clase vehiculo <claseVehiculo>, marca <marca>  y linea <linea>")
     public void recuperarDatosVehiculo(@Named("claseVehiculo") String claseVehiculo,
                                        @Named("marca") String marca,
@@ -50,5 +58,12 @@ public class ModificacionVehiculoDefinitions{
     @Then("se debe mostrar un mensaje <mensaje> indicando la restriccion")
     public void validarZonaCirculacion(@Named("mensaje") String mensaje){
         modificacionVehiculoSteps.validar_Zona_De_Circulacion(mensaje);
+    }
+
+    @SuppressWarnings("EmptyMethod")
+    @Then("se debe mostrar en los campos de bonificación tecnica y comercial el porcentaje en cada uno de ellos")
+    @Manual
+    public void validarBonificacionesVehiculo(){
+        //Se ejecuta manualmente
     }
 }
