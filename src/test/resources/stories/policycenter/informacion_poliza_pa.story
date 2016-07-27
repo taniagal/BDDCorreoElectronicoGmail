@@ -85,8 +85,7 @@ When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
 And ingrese un porcentaje <porcentaje> de poliza con mas de dos enteros y dos decimales
-Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder la longitud de dos digitos a
-izquierda o derecha
+Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder la longitud de dos digitos a izquierda o derecha
 
 Examples:
 |numeroCuenta   |organizacion|canal            |porcentaje     |mensaje                                                                                 |

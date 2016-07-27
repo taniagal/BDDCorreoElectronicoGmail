@@ -42,10 +42,46 @@ Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | cantidadAniosVigencia |
 | C000888888 | DIRECTO | Bancolombia  | Leasing           | Colectiva  | Bank Autos       | 5                     |
 
-Scenario: Validar cuando se cambia fecha inicio de vigencia se recalcula la fecha de fin vigencia correctamente
-
-Scenario: Validar retroactividad en la vigencia de la poliza colectiva
-
 Scenario: Validar datos de tomador secundario en poliza colectiva
 
+When seleccione segundo tomador para la poliza colectiva
+Then debo ver los siguientes datos del segundo tomador en la pantalla:
+| tipoDocumentoSegundo | numeroDocumentoSegundo | nombreSegundo  | telefonoSegundo | direccionSegundo                               | tipoDireccionSegundo | descripcionDireccionSegundo                |
+| CEDULA DE CIUDADANIA | 1264567899             | GLORIA GALLEGO | 408-2211        | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 |
+
+Scenario: Validar retroactividad en la vigencia de la poliza colectiva
+When cambie la fecha de inicio de vigencia de la poliza colectiva mas de 60 dias  hacia atrás o 60 hacia adelante <sesentaDias>
+And de clic en boton siguiente para pasar al siguiente paso de la poliza colectiva
+Then me debe mostrar el mensaje <mensaje> indicando que no cumple con la retroactividad permitida
+
+Examples:
+| sesentaDias | mensaje                                                                              |
+| mas         | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+| menos       | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+
 Scenario: validar descuento mayor a 50% y con mas de 2 decimales
+
+When ingrese el porcentaje de descuento invalido <porcentaje>
+And de clic en boton siguiente para pasar al siguiente paso de la poliza colectiva
+Then me debe mostrar el mensaje <mensaje> indicando la inconsistencia en el valor del descuento
+
+Examples:
+| porcentaje | mensaje                                                         |
+| 50.1       | El descuento de la póliza debe estar en un rango de 0% a 50%    |
+| 5.111      | El descuento de la póliza puede tener máximo 2 cifras decimales |
+
+Scenario: Validar cuando se cambia fecha inicio de vigencia se recalcula la fecha de fin vigencia correctamente
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> de poliza colectiva para expedirla
+When cambie la fecha de inicio de vigencia de la poliza colectiva (un mes antes de la fecha actual)
+Then debe recalcular la fecha fin de vigencia <aniosFinVigencia> de acuerdo al producto seleccionado <productoSeleccionado>
+
+Examples:
+| aniosFinVigencia | productoSeleccionado |
+| 5                | Bank Autos           |
+| 1                | Commercial Fleet     |

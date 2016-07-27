@@ -6,20 +6,20 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+
 import java.lang.String;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -57,7 +57,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:EffectiveDate-inputEl']")
     WebElementFacade fechaInicioVigencia;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:ExpirationDate-bodyEl']")
-    WebElementFacade fechaFinVigencia;
+    WebElementFacade campoFechaFinVigencia;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:IssueDate-inputEl']")
     WebElementFacade fechaExpedicion;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-boxLabelEl']")
@@ -78,17 +78,38 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade linkAgregarCoaseguro;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV-body']")
     WebElementFacade tablaProductos;
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']/img")
+    WebElementFacade botonTomadorSecundario;
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ChangeSecondaryNamedInsuredButton:ExistingNamedInsured-textEl']")
+    WebElementFacade submenuContactoExistente;
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ChangeSecondaryNamedInsuredButton:ExistingNamedInsured:0:UnassignedAccountContact-textEl']")
+    WebElementFacade submenuContacto;
     @FindBy(xpath = "")
     WebElementFacade mensajeDescuento;
     @FindBy(xpath = "")
     WebElementFacade mensajeRetroactividad;
+    @FindBy(xpath = "")
+    WebElementFacade tipoDocumentoSegundo;
+    @FindBy(xpath = "")
+    WebElementFacade numeroDocumentoSegundo;
+    @FindBy(xpath = "")
+    WebElementFacade nombreSegundo;
+    @FindBy(xpath = "")
+    WebElementFacade telefonoSegundo;
+    @FindBy(xpath = "")
+    WebElementFacade direccionSegundo;
+    @FindBy(xpath = "")
+    WebElementFacade tipoDireccionSegundo;
+    @FindBy(xpath = "")
+    WebElementFacade descripcionDireccionSegundo;
+    @FindBy(xpath = "")
+    WebElementFacade botonSiguiente;
 
     private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV:";
 
     private Guidewire guidewire = new Guidewire(getDriver());
 
     private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-    private Date date = new Date();
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {
         super(driver);
@@ -111,9 +132,9 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         MatcherAssert.assertThat(canal.getText(), Is.is(Matchers.equalTo(infoPoliza.get("canal"))));
         MatcherAssert.assertThat(tipoDePoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoPoliza"))));
         MatcherAssert.assertThat(tipoPlazo.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("tipoPlazo"))));
-        MatcherAssert.assertThat(fechaInicioVigencia.getValue(), Is.is(Matchers.equalTo(dateFormat.format(date))));
-        MatcherAssert.assertThat(fechaFinVigencia.getText(), containsText(infoPoliza.get("fechaFin")));
-        MatcherAssert.assertThat(fechaExpedicion.getText(), Is.is(Matchers.equalTo(dateFormat.format(date))));
+        MatcherAssert.assertThat(fechaInicioVigencia.getValue(), Is.is(Matchers.equalTo(dateFormat.format(LocalDateTime.now()))));
+        MatcherAssert.assertThat(campoFechaFinVigencia.getText(), containsText(infoPoliza.get("fechaFin")));
+        MatcherAssert.assertThat(fechaExpedicion.getText(), Is.is(Matchers.equalTo(dateFormat.format(LocalDateTime.now()))));
         MatcherAssert.assertThat(polizaFinanciadaSi.getText(), Is.is(Matchers.equalTo(infoPoliza.get("polizaFinanciadaSi"))));
         MatcherAssert.assertThat(polizaFinanciadaNo.getText(), Is.is(Matchers.equalTo(infoPoliza.get("polizaFinanciadaNo"))));
         MatcherAssert.assertThat(oficinaRadicacion.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("oficina"))));
@@ -125,7 +146,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         radioPolizaFinanciadaNo.shouldNotBeEnabled();
     }
 
-    public void seleccionarProductoPolizaColectiva(String producto){
+    public void seleccionarProductoPolizaColectiva(String producto) {
         String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto(producto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = findBy(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
@@ -148,41 +169,79 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         return filaBoton;
     }
 
-    public String validarFechaFinDeVigencia(int aniosFinVigencia){
-        int anioVigenciaProducto = LocalDateTime.now().getYear() + aniosFinVigencia;
-        String fechaFinVigencia = LocalDateTime.now().getMonthOfYear() + "/" + LocalDateTime.now().getDayOfMonth() + "/" + anioVigenciaProducto  ;
-        return fechaFinVigencia;
-    }
-
-    public void validarFechaFinDeVigenciaCambiada(int aniosFinVigencia){
-        String nuevaFechaFin = fechaInicioVigencia.getValue();
-        Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 9)) + aniosFinVigencia;
-        String fechaFinVigencia =  nuevaFechaFin.replace(nuevaFechaFin.substring(6, 9), anioVigenciaProducto.toString());
-    }
-
-    public void cambiarFechaInicioVigencia(String nuevaFechaInicio){
+    public void cambiarFechaInicioVigencia() {
+        LocalDateTime nuevaFechaInicio = LocalDateTime.now().minusMonths(1);
         fechaInicioVigencia.clear();
-        fechaInicioVigencia.typeAndTab(nuevaFechaInicio);
+        fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString());
     }
 
-    public void ingresarDescuentoPoliza(String descuento){
+    public void ingresarDescuentoPoliza(String descuento) {
         descuentoPoliza.clear();
         descuentoPoliza.sendKeys(descuento);
     }
 
-    public void validarMensaje(WebElementFacade mensajePantalla, String mensaje){
+    public void seleccionarSegundoTomador() {
+        Actions accion = new Actions(getDriver());
+        botonTomadorSecundario.click();
+        waitFor(submenuContactoExistente);
+        accion.moveToElement(submenuContactoExistente).release(submenuContactoExistente).build().perform();
+        waitFor(submenuContacto);
+        accion.moveToElement(submenuContacto).release(submenuContacto).click().build().perform();
+    }
+
+    public void validarMensaje(WebElementFacade mensajePantalla, String mensaje) {
         waitFor(mensajePantalla).waitUntilVisible();
         MatcherAssert.assertThat(mensajePantalla.getText(), containsText(mensaje));
     }
 
-    public void validarMensajeDescuentoInvalido(String mensaje){
+    public void validarMensajeDescuentoInvalido(String mensaje) {
         validarMensaje(mensajeDescuento, mensaje);
     }
 
-    public void ingresarFechaInicioInvalidaParaRetroactividad(){}
+    public void ingresarFechaInicioInvalidaParaRetroactividad(String sesentaDias) {
+        LocalDateTime nuevaFechaInicio;
+        if ("menos".equals(sesentaDias)) {
+            nuevaFechaInicio = (LocalDateTime.now().minusMonths(2).minusDays(1));
+            fechaInicioVigencia.clear();
+            fechaInicioVigencia.typeAndTab(dateFormat.format(nuevaFechaInicio));
+        } else {
+            nuevaFechaInicio = (LocalDateTime.now().plusMonths(2).plusDays(1));
+            fechaInicioVigencia.clear();
+            fechaInicioVigencia.typeAndTab(dateFormat.format(nuevaFechaInicio));
+        }
+    }
 
-    public void validarMensajeRetroactividadInvalida(String mensaje){
+    public void clicEnSiguiente() {
+        botonSiguiente.click();
+    }
+
+    public void validarFechaFinDeVigencia(int aniosFinVigencia) {
+        int anioVigenciaProducto = LocalDateTime.now().getYear() + aniosFinVigencia;
+        String fechaFinVigencia = LocalDateTime.now().getMonthOfYear() + "/" + LocalDateTime.now().getDayOfMonth() + "/" + anioVigenciaProducto;
+        MatcherAssert.assertThat(fechaFinVigencia, Is.is(Matchers.equalTo(campoFechaFinVigencia.getText())));
+    }
+
+    public void validarFechaFinDeVigenciaCambiada(int aniosFinVigencia) {
+        String nuevaFechaFin = fechaInicioVigencia.getValue();
+        Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 9)) + aniosFinVigencia;
+        String fechaFinVigencia = nuevaFechaFin.replace(nuevaFechaFin.substring(6, 9), anioVigenciaProducto.toString());
+        MatcherAssert.assertThat(fechaFinVigencia, Is.is(Matchers.equalTo(campoFechaFinVigencia.getText())));
+    }
+
+    public void validarMensajeRetroactividadInvalida(String mensaje) {
         validarMensaje(mensajeRetroactividad, mensaje);
+    }
+
+    public void validarDatosDeSegundoTomador(ExamplesTable informacionSegundoTomador) {
+        Map<String, String> infoSegundoTomador = informacionSegundoTomador.getRows().get(0);
+        waitForTextToAppear(infoSegundoTomador.get("numeroDocumentoSegundo"));
+        MatcherAssert.assertThat(tipoDocumentoSegundo.getText(), containsText(infoSegundoTomador.get("tipoDocumentoSegundo")));
+        MatcherAssert.assertThat(numeroDocumentoSegundo.getText(), containsText(infoSegundoTomador.get("numeroDocumentoSegundo")));
+        MatcherAssert.assertThat(nombreSegundo.getText(), containsText(infoSegundoTomador.get("nombreSegundo")));
+        MatcherAssert.assertThat(telefonoSegundo.getText(), containsText(infoSegundoTomador.get("telefonoSegundo")));
+        MatcherAssert.assertThat(direccionSegundo.getText(), containsText(infoSegundoTomador.get("direccionSegundo")));
+        MatcherAssert.assertThat(tipoDireccionSegundo.getText(), containsText(infoSegundoTomador.get("tipoDireccionSegundo")));
+        MatcherAssert.assertThat(descripcionDireccionSegundo.getText(), containsText(infoSegundoTomador.get("descripcionDireccionSegundo")));
     }
 
 }
