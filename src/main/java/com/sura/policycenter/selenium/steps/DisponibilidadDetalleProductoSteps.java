@@ -44,4 +44,7 @@ public class DisponibilidadDetalleProductoSteps extends ScenarioSteps {
         disponibilidadDetalleProductoPage.validarActualizacionDeListaPATipoPoliza();
     }
 
+    public void seleccionarAgente(String agente) {
+        disponibilidadDetalleProductoPage.seleccionarAgente(agente);
+    }
 }

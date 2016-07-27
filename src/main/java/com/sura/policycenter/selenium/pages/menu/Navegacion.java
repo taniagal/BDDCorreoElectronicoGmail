@@ -27,6 +27,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 public class Navegacion extends Guidewire {
@@ -283,7 +284,7 @@ public class Navegacion extends Guidewire {
     @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
     WebElementFacade mnuResumenCuenta;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade mnuInformacionDePoliza;
 
     @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_SubmissionManager']/div/span")
@@ -317,6 +318,7 @@ public class Navegacion extends Guidewire {
         waitUntil(300);
         waitFor(mnuPoliza).shouldBeVisible();
         mnuNumPoliza.typeAndEnter(numPoliza);
+        waitUntil(300);
         return new PolizaBuscarPage(getDriver());
     }
 

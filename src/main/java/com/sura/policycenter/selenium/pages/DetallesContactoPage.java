@@ -263,6 +263,7 @@ public class  DetallesContactoPage extends Guidewire {
     // TODO: 25/07/2016 Existe un riesgo de que se quede en este ciclo permanentemente 
     public void ingresarDato(WebElementFacade elemento, String dato){
         do {
+            waitFor(elemento);
             elemento.clear();
             waitFor(elemento).shouldContainText("");
             elemento.sendKeys(dato);
