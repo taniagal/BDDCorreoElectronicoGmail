@@ -12,4 +12,12 @@ public class InformacionDePolizaColectivaSteps extends ScenarioSteps{
     public void validarInformacionDePolizaColectiva(ExamplesTable informacionPolizaColectiva) {
         informacionDePolizaColectivaPage.validarInformacionDePolizaColectiva(informacionPolizaColectiva);
     }
+
+    public void seleccionarProductoDePolizaColectiva(String producto) {
+        informacionDePolizaColectivaPage.seleccionarProductoPolizaColectiva(producto);
+    }
+
+    public void validarFechaFinVigencia(int cantidadAniosVigencia) {
+        informacionDePolizaColectivaPage.validarFechaFinDeVigencia(cantidadAniosVigencia);
+    }
 }
