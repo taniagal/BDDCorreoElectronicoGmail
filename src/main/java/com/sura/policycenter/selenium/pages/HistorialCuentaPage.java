@@ -15,6 +15,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class HistorialCuentaPage extends Guidewire {
+
+    Actions act = new Actions(getDriver());
+
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
@@ -70,8 +73,18 @@ public class HistorialCuentaPage extends Guidewire {
         super(driver);
     }
 
+    public void seleccionarCuenta(String numCuenta) {
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(mnuCuenta).click();
+        waitUntil(2000);
+        mnuCuenta.click();
+        waitUntil(1000);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        waitUntil(2000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtNumCuenta).typeAndEnter(numCuenta);
+        waitUntil(2000);
+    }
+
     public void buscarCuenta(String numCuenta) {
-        Actions act = new Actions(getDriver());
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuCuenta).shouldBePresent();
         act.sendKeys(mnuCuenta,Keys.ARROW_DOWN).build().perform();
         act.moveToElement(txtNumCuenta).click().build().perform();
@@ -85,7 +98,7 @@ public class HistorialCuentaPage extends Guidewire {
     }
 
     public void seleccionarHistorial() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuHistorial).shouldBePresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(mnuHistorial).shouldBePresent();
         mnuHistorial.click();
         waitUntil(3000);
     }
