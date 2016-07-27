@@ -5,6 +5,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
+import org.openqa.selenium.Keys;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -12,8 +13,8 @@ import java.util.concurrent.TimeUnit;
 public class EdificiosyUbicacionesWidget extends PageObject {
 
     private static String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
-    private static String LINK_AGREGAR_UBICACION = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB']";
-    private static String LINK_OPCION_UBICACION_NUEVA = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB:AddNewLocation-itemEl']";
+    private static String LINK_AGREGAR_UBICACION = "//a[contains(.,'Agregar ubicación')]";
+    private static String LINK_OPCION_UBICACION_NUEVA = "//a[contains(.,'Ubicación nueva')]";
 
     TableWidgetPage tabla;
 
@@ -44,7 +45,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         waitForTextToAppear("Edificios y ubicaciones");
         findBy(LINK_AGREGAR_UBICACION).waitUntilVisible().waitUntilClickable().click();
         findBy(LINK_OPCION_UBICACION_NUEVA).waitUntilVisible().waitUntilClickable().click();
-
+        waitForTextToAppear("Información de ubicación");
         String XPATH_PAIS = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']";
         String XPATH_DEPTO = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']";
         String XPATH_CIUDAD = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']";
@@ -52,14 +53,23 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         String XPATH_ACTIVIDAD_ECONOMICA = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']";
 
         enter(pais).into($(XPATH_PAIS));
+        getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
         fluent().await().atMost(1, TimeUnit.SECONDS);
+
         enter(depto).into($(XPATH_DEPTO));
+        getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
         fluent().await().atMost(1, TimeUnit.SECONDS);
+
         enter(ciudad).into($(XPATH_CIUDAD));
+        getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
         fluent().await().atMost(1, TimeUnit.SECONDS);
+
         enter(direccion).into($(XPATH_DIRECCION));
+        getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
         fluent().await().atMost(1, TimeUnit.SECONDS);
+
         enter(actividadEconomica).into($(XPATH_ACTIVIDAD_ECONOMICA));
+        getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
         fluent().await().atMost(1, TimeUnit.SECONDS);
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();

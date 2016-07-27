@@ -74,7 +74,7 @@ public class InformacionDePoliza {
     @Given("que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>")
     public void dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar(@Named("numSubscripcion") String numSubscripcion) {
         LOGGER.info("InformacionDePoliza.dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar");
-        try {
+
             // TODO: 27/07/2016 Capturar el rol desde el gherkin en i am Asesor
             guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
             navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
@@ -82,9 +82,7 @@ public class InformacionDePoliza {
 
             assertThat(informacionDePoliza.esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), is(equalTo(true)));
 
-        } catch (Exception e) {
-            LOGGER.error("ERROR INESPERADO " + e.getMessage());
-        }
+
 
     }
 
@@ -166,7 +164,7 @@ public class InformacionDePoliza {
     @When("cuando intente ingresar una ubicacion para comprobar las validaciones de riesgos consultables")
     public void cuandoIntenteIngresarUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables() {
         LOGGER.info("InformacionDePoliza.cuandoIntenteIngresarUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables");
-        try {
+
             try {
                 informacionDePoliza.cuandoEditeInformacionDeLaPoliza();
             } catch (Exception e) {
@@ -175,11 +173,6 @@ public class InformacionDePoliza {
 
             informacionDePolizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
             informacionDePolizaSteps.ingresar_nueva_ubicacion();
-
-
-        } catch (Exception e) {
-            LOGGER.error("ERROR INESPERADO " + e.getMessage());
-        }
     }
 
 
