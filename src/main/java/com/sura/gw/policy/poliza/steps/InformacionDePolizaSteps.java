@@ -23,6 +23,11 @@ public class InformacionDePolizaSteps extends ScenarioSteps {
         informacionPolizaPage.seleccionarOpcionEdificiosyUbicaciones();
     }
 
+    @Step
+    public void ingresar_nueva_ubicacion() {
+        edificiosyUbicacionesWidget.ingresarNuevaUbicacionConRiesgoConsultable();
+    }
+
     public Boolean esperoVerNumeroDeSubscripcionEnEnvio(String numeroSubscripcion) {
         return informacionPolizaPage.obtenerEnvio().contains("Envío ".concat(numeroSubscripcion));
     }

@@ -43,10 +43,6 @@ public class InformacionDePoliza {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
 
-    public void cuandoSeleccioneOpcionDeInformacionDePolizaEdificiosYUbicaciones() {
-        informacionDePolizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
-    }
-
     public Boolean esperoVerNumeroDeSubscripcionEnEnvio(String numeroSubscripcion) {
         return informacionDePolizaSteps.esperoVerNumeroDeSubscripcionEnEnvio(numeroSubscripcion);
     }
@@ -101,7 +97,7 @@ public class InformacionDePoliza {
             LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO");
         }
 
-        informacionDePoliza.cuandoSeleccioneOpcionDeInformacionDePolizaEdificiosYUbicaciones();
+        informacionDePolizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
         informacionDePoliza.cuandoDeseeIngresarArticuloAUnaUbicacion();
         informacionDePoliza.cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo();
 
@@ -112,7 +108,7 @@ public class InformacionDePoliza {
     @Then("espero ver mensajes de advertencia indicandome que sobrepase los limites de valores para el valor del articulo")
     public void esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo() {
         informacionDePoliza.entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo();
-        LOGGER.info("CoberturaMultiriesgoCorporativoValidacionesBasica.esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo");
+        LOGGER.info("InformacionDePoliza.esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo");
     }
 
     public void entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo() {
@@ -138,12 +134,12 @@ public class InformacionDePoliza {
         navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
         navegacion.cuandoBusquePorNumeroDeDePoliza(numPoliza);
 
-        LOGGER.info("Poliza.dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza");
+        LOGGER.info("InformacionDePoliza.dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza");
     }
 
     @When("cuando intente cambiar informacion de la poliza MRC")
     public void cuandoIntenteCambiarInformacionDeLaPolizaMRC() {
-        LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
+        LOGGER.info("InformacionDePoliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
         try {
             informacionDePolizaSteps.seleccionar_boton_acciones();
             informacionDePolizaSteps.seleccionar_opcion_cambiar_poliza();
@@ -164,8 +160,37 @@ public class InformacionDePoliza {
             assertThat("ELEMENTO ".concat(campo).concat(" NO CUMPLE CON EL CRITERIO DE BLOQUEO"), informacionDePolizaSteps.elementoEsEditable(campo), is(equalTo(false)));
         }
 
-        LOGGER.info("Poliza.esperoVerInhabilitadoParaModificacionLosSiguientesCampos");
+        LOGGER.info("InformacionDePoliza.esperoVerInhabilitadoParaModificacionLosSiguientesCampos");
     }
+
+    @When("cuando intente ingresar una ubicacion para comprobar las validaciones de riesgos consultables")
+    public void cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables() {
+        LOGGER.info("InformacionDePoliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
+        try {
+            try {
+                informacionDePoliza.cuandoEditeInformacionDeLaPoliza();
+            } catch (Exception e) {
+                LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO");
+            }
+
+            informacionDePolizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
+            informacionDePolizaSteps.ingresar_nueva_ubicacion();
+
+
+        } catch (Exception e) {
+            LOGGER.error("ERROR INESPERADO " + e.getMessage());
+        }
+    }
+
+
+    @Then("espero ver mensajes de advertencia indicandome la direccion es un riesgo consultable")
+    public void entoncesEsperoVerMensajeDeAdvertenciaQueUbicacionEsRiesgoConsultable() {
+        assertThat(informacionDePolizaSteps.espacioDeTrabajo(),
+                hasItems("2: CR 65 # 45 - 45, 05001000, La dirección un riesgo no estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
+                ));
+
+    }
+
 
 
 }

@@ -7,6 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class EdificiosyUbicacionesWidget extends PageObject {
 
@@ -39,12 +40,35 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         shouldContainText(tituloDePaginaAgregarArticulos);
     }
 
-    public void agregarNuevaUbicacion(){
+    public void agregarNuevaUbicacion(String pais, String depto, String ciudad, String direccion, String actividadEconomica){
         waitForTextToAppear("Edificios y ubicaciones");
         findBy(LINK_AGREGAR_UBICACION).waitUntilVisible().waitUntilClickable().click();
         findBy(LINK_OPCION_UBICACION_NUEVA).waitUntilVisible().waitUntilClickable().click();
+
+        String XPATH_PAIS = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']";
+        String XPATH_DEPTO = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']";
+        String XPATH_CIUDAD = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']";
+        String XPATH_DIRECCION = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']";
+        String XPATH_ACTIVIDAD_ECONOMICA = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']";
+
+        enter(pais).into($(XPATH_PAIS));
+        fluent().await().atMost(1, TimeUnit.SECONDS);
+        enter(depto).into($(XPATH_DEPTO));
+        fluent().await().atMost(1, TimeUnit.SECONDS);
+        enter(ciudad).into($(XPATH_CIUDAD));
+        fluent().await().atMost(1, TimeUnit.SECONDS);
+        enter(direccion).into($(XPATH_DIRECCION));
+        fluent().await().atMost(1, TimeUnit.SECONDS);
+        enter(actividadEconomica).into($(XPATH_ACTIVIDAD_ECONOMICA));
+        fluent().await().atMost(1, TimeUnit.SECONDS);
+
+        findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
     }
 
+
+    public void ingresarNuevaUbicacionConRiesgoConsultable() {
+        agregarNuevaUbicacion("Colombia", "ANTIOQUIA", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
+    }
 
 
 }

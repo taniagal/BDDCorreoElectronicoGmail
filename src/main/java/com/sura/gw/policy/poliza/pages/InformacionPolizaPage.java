@@ -13,6 +13,7 @@ public class InformacionPolizaPage extends PageObject {
 
 
 
+
     public enum Opcion {
         LINK_EDIFICIOS_Y_UBICACIONES(".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div"),
         LINK_INFORMACION_DE_LA_POLIZA(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PolicyInfo']/div"),
@@ -165,6 +166,8 @@ public class InformacionPolizaPage extends PageObject {
         LOGGER.info("PolizaPage.esEditableElemento");
         return esEditableElemento;
     }
+
+
 
 
 }
