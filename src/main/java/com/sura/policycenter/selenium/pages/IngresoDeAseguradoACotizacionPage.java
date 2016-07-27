@@ -63,7 +63,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//img[@class='x-grid-checkcolumn']")
     WebElementFacade seleccionarElemento;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:Remove']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:Remove-btnInnerEl']")
     WebElementFacade botonQuitar;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:_msgs']/div")
@@ -75,12 +75,6 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     WebElementFacade campoNumeroCuenta;
 
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
-    WebElementFacade campoNombreAgente;
-
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
-    WebElementFacade tablaProductos;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:RetrieveMVRButton-btnInnerEl']")
     WebElementFacade botonRecuperarMVR;
 
@@ -90,55 +84,14 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']")
     WebElementFacade menuPolizaNuevoEnvio;
 
-    private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
-
     public IngresoDeAseguradoACotizacionPage(WebDriver driver){
         super(driver);
     }
 
 
-    public void seleccionarAgente(String nombreAgente) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoNombreAgente).waitUntilPresent();
-        campoNombreAgente.waitUntilClickable();
-        campoNombreAgente.click();
-        List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
-        if (!listaNombresAgentesElement.isEmpty()) {
-            for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
-                if (agenteElemento.containsText(nombreAgente)){
-                    agenteElemento.click();
-                    break;
-                }
-            }
-        }
-    }
-
     public void irAIngresarAsegurado() {
-        waitForTextToAppear("Nombre");
-        guidewire.waitUntil(1000);
-        seleccionarAgente("DIRECTO");
-        waitForTextToAppear("Productos ofrecidos", 20000);
-        //provisional
-        WebElementFacade organizacion = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-inputEl']");
-        organizacion.clear();
-        organizacion.sendKeys("Sura");
-        organizacion.sendKeys(Keys.ENTER);
-        guidewire.waitUntil(2000);
-        WebElementFacade canal = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-inputEl']");
-        canal.clear();
-        canal.sendKeys("Canal Tradicional");
-        canal.sendKeys(Keys.ENTER);
-        seleccionarProducto();
-        //Fin Provisional
-    }
-
-    public void seleccionarProducto(){
-        String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto().toString() + ":addSubmission']";
-        System.out.println("xpath botón elegir " + xpathBotonElegirProducto);
-        WebElementFacade botonElegirProducto = withTimeoutOf(15, TimeUnit.SECONDS).find(xpathBotonElegirProducto);
-        guidewire.waitUntil(2000);
-        botonElegirProducto.click();
-//        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAsegurados).waitUntilPresent();
-//        botonAsegurados.click();
+        waitFor(botonAsegurados);
+        botonAsegurados.click();
     }
 
     public void agregarAsegurado() {
@@ -218,20 +171,6 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
         }
     }
 
-    public Integer encontrarProducto(){
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilPresent();
-        Integer filaBoton = 0;
-        List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
-        for (WebElement row : filas) {
-            List<WebElement> columna = row.findElements(By.tagName("td"));
-            if ("Autos".equals(columna.get(1).getText())){
-                return filaBoton;
-            }
-            filaBoton++;
-        }
-        return filaBoton;
-    }
-
     public void volverAAsegurados() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionVolverAAsegurados).waitUntilPresent();
         opcionVolverAAsegurados.click();
@@ -248,14 +187,17 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void validarAseguradoEliminado() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaAsegurados).waitUntilPresent();
-        guidewire.waitUntil(2000);
-        List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
-        if(allRows.isEmpty()){
-            MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados vacía")));
-        }else {
-            MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados no es vacía")));
-        }
+        waitFor(botonQuitar);
+        botonQuitar.shouldNotBeEnabled();
+//        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaAsegurados).waitUntilPresent();
+//        MatcherAssert.assertThat(tablaAsegurados.getText(), Is.is(Matchers.equalTo("")));
+///*        guidewire.waitUntil(2000);
+//        List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
+//        if(allRows.isEmpty()){
+//            MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados vacía")));
+//        }else {
+//            MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados no es vacía")));
+//        }*/
     }
 
     public void irASiguiente() {
@@ -285,6 +227,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(campoNumeroCuenta).waitUntilPresent();
         campoNumeroCuenta.sendKeys(cuenta);
         campoNumeroCuenta.sendKeys(Keys.TAB);
+        waitForTextToAppear("Nombre");
     }
 
     public void validarBotonNoVisible() {
