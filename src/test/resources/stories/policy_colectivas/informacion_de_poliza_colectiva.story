@@ -20,8 +20,8 @@ And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
 Then debo ver los siguiente campos en la pantalla con su respectiva informacion:
 | titulo                             | tomadorInfo | tipoDocumento        | numeroDocumento | nombre                        | telefono | tipoDireccion | descripcionDir                                                                                          | direccionDePoliza | detallePoliza         | organizacion | canal             | tipoPoliza      | tipoPlazo | fechaInicioVigencia | fechaFin | fechaExp   | polizaFinanciadaSi | polizaFinanciadaNo | oficina | codAgente   | descuentoPoliza | agregarCoaseguro  |
-| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 4082211  | Vivienda      | CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos | Cambiar a:        | Detalles de la póliza | Sura         | Canal Tradicional | CommercialFleet | Otra      | 07/26/2016          |          | 07/26/2016 | Sí                 | No                 | SURA    | 4999DIRECTO |                 | Agregar coaseguro |
-And debo ver el anio de fin de vigencia <cantidadAniosVigencia> calculado de acuerdo al producto seleccionado
+| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 4082211  | Vivienda      | CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos | Cambiar a:        | Detalles de la póliza | Sura         | Canal Tradicional | CommercialFleet | Anual     | 07/26/2016          |          | 07/26/2016 | Sí                 | No                 | SURA    | 4999DIRECTO |                 | Agregar coaseguro |
+And debo ver la fecha de fin de vigencia <cantidadAniosVigencia> calculado de acuerdo al producto seleccionado
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | cantidadAniosVigencia |
@@ -36,7 +36,7 @@ When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
-Then debo ver el anio de fin de vigencia <cantidadAniosVigencia> calculado de acuerdo al producto seleccionado
+Then debo ver la fecha de fin de vigencia <cantidadAniosVigencia> calculado de acuerdo al producto seleccionado
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | cantidadAniosVigencia |
@@ -79,9 +79,9 @@ And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
 When cambie la fecha de inicio de vigencia de la poliza colectiva (un mes antes de la fecha actual)
-Then debe recalcular la fecha fin de vigencia <aniosFinVigencia> de acuerdo al producto seleccionado <productoSeleccionado>
+Then debe recalcular la fecha fin de vigencia <aniosFinVigencia> de acuerdo al producto seleccionado
 
 Examples:
-| aniosFinVigencia | productoSeleccionado |
-| 5                | Bank Autos           |
-| 1                | Commercial Fleet     |
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | aniosFinVigencia |
+| C000888888 | DIRECTO | Tuya         | Tuya              | Colectiva  | Bank Autos       | 5                |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | 1                |

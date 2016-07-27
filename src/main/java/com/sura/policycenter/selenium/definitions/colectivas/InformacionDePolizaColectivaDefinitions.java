@@ -53,7 +53,7 @@ public class InformacionDePolizaColectivaDefinitions {
         informacionDePolizaColectivaSteps.validarInformacionDePolizaColectiva(informacionPolizaColectiva);
     }
 
-    @Then("debo ver el anio de fin de vigencia <cantidadAniosVigencia> calculado de acuerdo al producto seleccionado")
+    @Then("debo ver la fecha de fin de vigencia <cantidadAniosVigencia> calculado de acuerdo al producto seleccionado")
     public void validarFechaFinVigencia(@Named("cantidadAniosVigencia") int cantidadAniosVigencia){
         informacionDePolizaColectivaSteps.validarFechaFinVigencia(cantidadAniosVigencia);
     }
@@ -63,9 +63,8 @@ public class InformacionDePolizaColectivaDefinitions {
         informacionDePolizaColectivaSteps.validarInformacionDelSegundoTomador(informacionSegundoTomador);
     }
 
-    @Then("debe recalcular la fecha fin de vigencia <aniosFinVigencia> de acuerdo al producto seleccionado <productoSeleccionado>")
-    public void validarFechaDeFinDeVigenciaRecalculada(@Named("aniosFinVigencia") int aniosFinVigencia,
-                                                    @Named("productoSeleccionado") String productoSeleccionado){
+    @Then("debe recalcular la fecha fin de vigencia <aniosFinVigencia> de acuerdo al producto seleccionado")
+    public void validarFechaDeFinDeVigenciaRecalculada(@Named("aniosFinVigencia") int aniosFinVigencia){
         informacionDePolizaColectivaSteps.validarFechaDeFinDeVigenciaRecalculada(aniosFinVigencia);
     }
 

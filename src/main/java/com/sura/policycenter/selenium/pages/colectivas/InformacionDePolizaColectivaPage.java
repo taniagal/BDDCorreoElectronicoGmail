@@ -84,7 +84,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade submenuContactoExistente;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ChangeSecondaryNamedInsuredButton:ExistingNamedInsured:0:UnassignedAccountContact-textEl']")
     WebElementFacade submenuContacto;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:_msgs']/div")
     WebElementFacade mensajeDescuento;
     @FindBy(xpath = "")
     WebElementFacade mensajeRetroactividad;
