@@ -53,22 +53,27 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         String XPATH_ACTIVIDAD_ECONOMICA = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']";
 
         enter(pais).into($(XPATH_PAIS));
+        fluent().await().atMost(1, TimeUnit.SECONDS);
         getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
         fluent().await().atMost(1, TimeUnit.SECONDS);
 
         enter(depto).into($(XPATH_DEPTO));
+        fluent().await().atMost(1, TimeUnit.SECONDS);
         getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
         fluent().await().atMost(1, TimeUnit.SECONDS);
 
         enter(ciudad).into($(XPATH_CIUDAD));
+        fluent().await().atMost(1, TimeUnit.SECONDS);
         getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
         fluent().await().atMost(1, TimeUnit.SECONDS);
 
         enter(direccion).into($(XPATH_DIRECCION));
+        fluent().await().atMost(1, TimeUnit.SECONDS);
         getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
         fluent().await().atMost(1, TimeUnit.SECONDS);
 
         enter(actividadEconomica).into($(XPATH_ACTIVIDAD_ECONOMICA));
+        fluent().await().atMost(1, TimeUnit.SECONDS);
         getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
         fluent().await().atMost(1, TimeUnit.SECONDS);
 
