@@ -217,9 +217,7 @@ public class  DetallesContactoPage extends Commons {
     }
 
     public void setCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
-        campoTxtCorreoElectronicoPrimario.clear();
-        waitUntil(1000);
-        campoTxtCorreoElectronicoPrimario.sendKeys(correoElectronicoPrimario);
+        ingresarDato(campoTxtCorreoElectronicoPrimario,correoElectronicoPrimario);
         ingresarDato(campoTxtCorreoElectronicoSecundario, correoElectronicoSecundario);
         dtlContact[13]= correoElectronicoPrimario;
         dtlContact[14]= correoElectronicoSecundario;
@@ -252,9 +250,7 @@ public class  DetallesContactoPage extends Commons {
     }
 
     public void setCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario){
-        campoTxtCorreoElectronicoPrimarioEmpresa.clear();
-        waitUntil(300);
-        campoTxtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
+        ingresarDato(campoTxtCorreoElectronicoPrimarioEmpresa,correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
         campoTxtTelefonoOficina.sendKeys(telefonoOficina);
         ingresarDato(campoTxtCorreoElectronicoSecundarioEmpresa, correoElectronicoSecundario);
@@ -263,8 +259,10 @@ public class  DetallesContactoPage extends Commons {
         dtlCntJ[7]= correoElectronicoSecundario;
     }
 
+    // TODO: 25/07/2016 Existe un riesgo de que se quede en este ciclo permanentemente 
     public void ingresarDato(WebElementFacade elemento, String dato){
         do {
+            waitFor(elemento);
             elemento.clear();
             waitFor(elemento).shouldContainText("");
             elemento.sendKeys(dato);

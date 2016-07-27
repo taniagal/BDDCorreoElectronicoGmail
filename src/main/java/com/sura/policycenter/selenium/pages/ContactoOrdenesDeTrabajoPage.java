@@ -8,10 +8,10 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.sikuli.api.robot.Key;
 
 
 
@@ -53,7 +53,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     public void filtrarTransaccionesPorEstado(String estado){
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
-        filtroEstado.sendKeys(Key.ENTER);
+        filtroEstado.sendKeys(Keys.ENTER);
         waitABit(2000);
     }
 
@@ -99,7 +99,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         this.filtroTipoTransaccion.click();
         this.filtroTipoTransaccion.sendKeys(filtroTransaccion);
         waitABit(1000);
-        this.filtroTipoTransaccion.sendKeys(Key.ENTER);
+        this.filtroTipoTransaccion.sendKeys(Keys.ENTER);
     }
 
     public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
@@ -116,7 +116,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
         waitABit(1000);
-        this.filtroProducto.sendKeys(Key.ENTER);
+        this.filtroProducto.sendKeys(Keys.ENTER);
     }
 
     public void validarTransaccionesPorProducto(String filtroProducto) {

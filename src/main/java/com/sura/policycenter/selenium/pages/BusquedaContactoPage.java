@@ -183,7 +183,6 @@ public class BusquedaContactoPage extends Commons {
         txtNumDoc.type(numDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
-        espera(botonBuscar,2);
     }
 
     public void consultarContactoTipoDoc(String tipoDoc) {

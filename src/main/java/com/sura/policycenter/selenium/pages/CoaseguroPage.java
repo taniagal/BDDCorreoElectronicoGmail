@@ -15,13 +15,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class CoaseguroPage extends Commons {
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
+    @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade linkAgregarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:ReferencePolicyNumber-inputEl']")
     private WebElementFacade campoTxtPolizaDeReferencia;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:administrativeExpenses-inputEl']")
     private WebElementFacade campoTxtDastosAdministrativos;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:editConinsuranceLink']")
+    @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:editConinsuranceLink']")
     private WebElementFacade linkEditarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptar;
@@ -53,7 +53,6 @@ public class CoaseguroPage extends Commons {
         }catch (StaleElementReferenceException e){
             e.printStackTrace();
         }
-
         if(!botonAgregar.isPresent())
             right.append("boton_agregar, ");
         if(!campoTxtDastosAdministrativos.containsText("2%") || campoTxtDastosAdministrativos.getAttribute("class").contains("x-form-text"))

@@ -30,7 +30,7 @@ public class CoaseguroDefinitions {
      * ESCENARIO 1
      */
 
-    @Given("puedo ingresar los datos del coaseguro")
+    @When("puedo ingresar los datos del coaseguro")
     public void validarCampos(){
         coaseguroSteps.validarCampos();
     }

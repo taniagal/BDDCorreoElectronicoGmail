@@ -214,7 +214,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     public void validarLabelsCotizaciones(Map<String, String> labelsCotizaciones) {
         String validacion = null;
         try {
-            waitForTextToAppear("Cotizaciones de la cuenta",1000);
+            waitForTextToAppear("Cotizaciones de la cuenta",10000);
             MatcherAssert.assertThat(lblCotizacionesCuenta.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("lblCotizaciones"))));
             MatcherAssert.assertThat(btnNuevaCotizacion.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("btnNuevaCotizacion"))));
             MatcherAssert.assertThat(colAcciones.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("acciones"))));
@@ -319,15 +319,15 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
      */
 
     public void seleccionarAccionesDeclinar() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAcciones2).waitUntilClickable();
-        btnAcciones2.click();
-        $(itmDeclinarComProp).click();
+        //withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAcciones2).waitUntilClickable();
+        btnAcciones2.waitUntilVisible().waitUntilClickable().click();
+        $(itmDeclinarComProp).waitUntilVisible().waitUntilClickable().click();
     }
 
     public void seleccionarAccionesNoTomar() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilClickable();
-        btnAcciones.click();
-        $(itmNoTomar).click();
+       // withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilClickable();
+        btnAcciones.waitUntilVisible().waitUntilClickable().click();
+        $(itmNoTomar).waitUntilVisible().waitUntilClickable().click();
     }
 
     public void ingresaRechazo(String razon) {
