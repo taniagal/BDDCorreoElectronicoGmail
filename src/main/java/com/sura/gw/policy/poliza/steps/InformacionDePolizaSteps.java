@@ -86,4 +86,17 @@ public class InformacionDePolizaSteps extends ScenarioSteps {
         espacioDeTrabajoWidget.desplegarEspacioDeTrabajo();
         return espacioDeTrabajoWidget.obtenerMensajesDeTrabajo();
     }
+
+    public Boolean elementoEsEditable(String elemento) {
+        return informacionPolizaPage.esEditableElemento(elemento);
+    }
+
+    @Step
+    public void seleccionar_opcion_informacion_de_poliza() {
+        informacionPolizaPage.seleccionarOpcionInformacionDeLaPoliza();
+    }
+
+    public void seleccionarBotonSiguienteParaIniciarCambioEnPoliza() {
+        informacionPolizaPage.seleccionarBotonSiguienteEnInicioDeCambioDePoliza();
+    }
 }

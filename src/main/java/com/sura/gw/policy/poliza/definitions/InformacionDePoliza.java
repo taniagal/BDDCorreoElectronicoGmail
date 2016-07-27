@@ -11,8 +11,11 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -38,7 +41,6 @@ public class InformacionDePoliza {
 
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
 
 
     public void cuandoSeleccioneOpcionDeInformacionDePolizaEdificiosYUbicaciones() {
@@ -73,15 +75,14 @@ public class InformacionDePoliza {
         informacionDePolizaSteps.seleccionar_boton_aceptar_para_agregar_articulo();
     }
 
-    @Given("que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion> que deseo cambiar")
+    @Given("que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>")
     public void dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar(@Named("numSubscripcion") String numSubscripcion) {
         LOGGER.info("InformacionDePoliza.dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar");
         try {
+            // TODO: 27/07/2016 Capturar el rol desde el gherkin en i am Asesor
             guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
             navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
             navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
-           // informacionDePolizaSteps.seleccionar_boton_acciones();
-           // informacionDePolizaSteps.seleccionar_opcion_cambiar_poliza();
 
             assertThat(informacionDePoliza.esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), is(equalTo(true)));
 
@@ -96,7 +97,7 @@ public class InformacionDePoliza {
 
         try {
             informacionDePoliza.cuandoEditeInformacionDeLaPoliza();
-        }catch (Exception e){
+        } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO");
         }
 
@@ -114,7 +115,7 @@ public class InformacionDePoliza {
         LOGGER.info("CoberturaMultiriesgoCorporativoValidacionesBasica.esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo");
     }
 
-    public void entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo(){
+    public void entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo() {
         assertThat(informacionDePolizaSteps.espacioDeTrabajo(),
                 hasItems("EL valor Asegurado de la cobertura Danos materiales NO debe ser mayor al valor asegurable del Artículo Edificio"
                 ));
@@ -126,6 +127,44 @@ public class InformacionDePoliza {
         assertThat(informacionDePolizaSteps.espacioDeTrabajo(),
                 hasItems("El valor de \"Sublimite para combustion espontanea de mercancias a granel\" debe ser menor al valor asegurado de la cobertura \"Danos materiales\"."
                 ));
+    }
+
+
+    @Given("que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza>")
+    public void dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza(@Named("numPoliza") String numPoliza) {
+
+        // TODO: 27/07/2016 Capturar el rol desde el gherkin en i am Asesor
+        guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
+        navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
+        navegacion.cuandoBusquePorNumeroDeDePoliza(numPoliza);
+
+        LOGGER.info("Poliza.dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza");
+    }
+
+    @When("cuando intente cambiar informacion de la poliza MRC")
+    public void cuandoIntenteCambiarInformacionDeLaPolizaMRC() {
+        LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
+        try {
+            informacionDePolizaSteps.seleccionar_boton_acciones();
+            informacionDePolizaSteps.seleccionar_opcion_cambiar_poliza();
+            informacionDePolizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
+            informacionDePolizaSteps.seleccionar_opcion_informacion_de_poliza();
+
+        } catch (Exception e) {
+            LOGGER.error("ERROR INESPERADO " + e.getMessage());
+        }
+    }
+
+    @Then("espero ver inhabilitado para modificacion los siguientes $campos")
+    public void esperoVerInhabilitadoParaModificacionLosSiguientesCampos(ExamplesTable campos) {
+
+        // TODO: 26/07/2016 implementar forma recurrente de reportar varios asserterror en el reporte
+        for (Map<String, String> fila : campos.getRows()) {
+            String campo = fila.get("CAMPOS");
+            assertThat("ELEMENTO ".concat(campo).concat(" NO CUMPLE CON EL CRITERIO DE BLOQUEO"), informacionDePolizaSteps.elementoEsEditable(campo), is(equalTo(false)));
+        }
+
+        LOGGER.info("Poliza.esperoVerInhabilitadoParaModificacionLosSiguientesCampos");
     }
 
 
