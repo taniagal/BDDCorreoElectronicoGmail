@@ -19,7 +19,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-public class OpcionesInformacionPolizaPage extends Guidewire {
+public class OpcionesInformacionPolizaPage extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesInformacionPolizaPage.class);
 

@@ -17,8 +17,8 @@ public class TarifaAutosDefinitions {
     TarifaAutosSteps tarifaAutosSteps;
 
     @Given("estoy cotizando una poliza para la cuenta <cuenta> y producto <producto>")
-    public void agregarPoliza(@Named("cuenta") String cuenta, @Named("producto") String producto) {
-        detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta, producto);
+    public void agregarPoliza(@Named("cuenta") String cuenta) {
+        detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta);
     }
 
     @When("ingrese la informacion de la poliza: $datosPoliza")

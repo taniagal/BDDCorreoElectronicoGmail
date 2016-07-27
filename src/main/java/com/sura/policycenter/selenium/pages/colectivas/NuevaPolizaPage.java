@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages.colectivas;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class NuevaPolizaPage extends PageObject {
 
 
-    Guidewire guidewire = new Guidewire(getDriver());
+    Commons Commons = new Commons(getDriver());
 
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-inputEl']")
     private WebElementFacade listaOrganizacion;
@@ -53,7 +53,7 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
-        guidewire.waitUntil(3000);
+        Commons.waitUntil(3000);
         elementoDeLaLista.click();
     }
 
@@ -141,16 +141,16 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void seleccionarElTipoDePoliza(String tipoPoliza) {
-        guidewire.waitUntil(1000);
-//        WebElementFacade radioBotonIndividual = guidewire.esperarElemento(".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:CreateIndividualPolicy_true-inputEl']");
+        Commons.waitUntil(1000);
+//        WebElementFacade radioBotonIndividual = Commons.esperarElemento(".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:CreateIndividualPolicy_true-inputEl']");
         if ("Individual".equals(tipoPoliza)) {
             if ($(radioBotonIndividual).getCssValue("background-position").equals("0% 0%")) {
-                guidewire.waitUntil(1500);
+                Commons.waitUntil(1500);
                 radioBotonIndividual.click();
             }
         } else {
             if (!$(radioBotonIndividual).getCssValue("background-position").equals("0% 0%")) {
-                guidewire.waitUntil(1500);
+                Commons.waitUntil(1500);
                 radioBotonColectiva.click();
             }
         }
@@ -197,15 +197,15 @@ public class NuevaPolizaPage extends PageObject {
 
     public void buscarCuenta(String numeroCuenta) {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
-        guidewire.waitUntil(2000);
+        Commons.waitUntil(2000);
         btnBuscar.click();
-        btnCuentas = guidewire.esperarElemento(".//*[@id='Search:MenuLinks:Search_AccountSearch']");
+        btnCuentas = Commons.esperarElemento(".//*[@id='Search:MenuLinks:Search_AccountSearch']");
         btnCuentas.click();
-        txtNumeroCuenta = guidewire.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");
+        txtNumeroCuenta = Commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");
         txtNumeroCuenta.sendKeys(numeroCuenta);
-        btnBuscarCuenta = guidewire.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
+        btnBuscarCuenta = Commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
         btnBuscarCuenta.click();
-        grdNumeroCuenta = guidewire.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']");
+        grdNumeroCuenta = Commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']");
         grdNumeroCuenta.click();
     }
 }

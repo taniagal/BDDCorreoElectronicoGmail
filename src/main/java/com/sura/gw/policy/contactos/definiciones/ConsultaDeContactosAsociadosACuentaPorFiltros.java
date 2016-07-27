@@ -6,7 +6,12 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.AfterScenario;
+import org.jbehave.core.annotations.Alias;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
@@ -23,15 +28,10 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
 
     @Steps
     GuidewireLoginSteps login;
-
     @Steps
     CuentaSteps cuenta;
-
     @Managed
     public WebDriver driver;
-
-    private String numCuenta;
-    private Boolean existeContactosAsociados;
 
 /*
     @Given("consultare una cuenta $numCuenta que tiene contactos asociados con un usuario de acceso de rol $rolUsuario")

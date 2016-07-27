@@ -51,6 +51,7 @@ public class CoaseguroPage extends Commons {
             if(radioBotonAceptado.isSelected())
                 right.append("radio_boton_cedido, ");
         }catch (StaleElementReferenceException e){
+
             e.printStackTrace();
         }
         if(!botonAgregar.isPresent())
