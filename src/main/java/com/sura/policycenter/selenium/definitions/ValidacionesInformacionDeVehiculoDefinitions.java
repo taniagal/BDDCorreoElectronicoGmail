@@ -23,7 +23,7 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
 
     @Given("estoy cotizando una poliza de PA en cuenta <cuenta>")
     public void agregarPoliza(@Named("cuenta") String cuenta) {
-        detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta);
+        //detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta);
     }
 
     @When("vaya al agregar un vehiculo con datos faltantes")

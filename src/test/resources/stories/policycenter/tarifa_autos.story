@@ -8,7 +8,9 @@ Al cotizar una poliza de PA quiero ser capaz de registrar toda la información d
 
 Scenario:  Tarifa Autos - Cobertura RC
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza para la cuenta <cuenta> y producto <producto>
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto|canal            |
+|C000888888|Sura        |Autos   |Canal Tradicional|
 When ingrese la informacion de la poliza:
 |organizacion|canal            |tipo_poliza|
 |Sura        |Canal Tradicional|PPAutos    |

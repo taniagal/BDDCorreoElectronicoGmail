@@ -63,8 +63,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         waitFor(botonCrearVehiculo).click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
         waitFor(campoTxtPlaca).shouldBePresent();
-        int placa = (int) Math.floor(Math.random() * (100 - 999) + 999);
-        campoTxtPlaca.sendKeys("AVC"+placa);
+        campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         selectItem(comboBoxModelo, vehiculo.get("modelo"));
         waitUntil(3200);
         campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));

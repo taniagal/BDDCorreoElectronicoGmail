@@ -33,7 +33,7 @@ public class SeusLoginPage extends Commons {
     }
 
     public void login(String pais, String usuario, String contrasenia) {
-        setImplicitTimeout(2,TimeUnit.SECONDS);
+        setImplicitTimeout(0,TimeUnit.SECONDS);
         if (!mnuContact.isPresent()) {
             this.usuario.waitUntilPresent();
             this.usuario.clear();

@@ -2,11 +2,13 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,63 +57,55 @@ public class DetallesDeUbicacionPage extends Commons {
     private WebElementFacade menuItemEscritorio;
     @FindBy(css=".message")
     private WebElementFacade divMensaje;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
-    WebElementFacade tablaProductos;
-
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-inputEl']")
+    private WebElementFacade comboBoxOrganizacion;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-inputEl']")
+    private WebElementFacade comboBoxCanal;
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     String direccion = "";
-    private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
-
 
     public DetallesDeUbicacionPage(WebDriver driver) {
         super(driver);
     }
 
     public void  seleccionarProducto(String nomProducto) {
-        String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
-        WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
-        botonElegirProducto.waitUntilEnabled();
-        waitUntil(1000);
-        botonElegirProducto.click();
-    }
-
-    public Integer encontrarProducto(String producto) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
-        Integer filaBoton = 0;
-        List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
-        for (WebElement row : filas) {
-            List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (producto.equals(columna.get(1).getText())) {
-                return filaBoton;
+        List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
+        List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
+        int i = 0;
+        if (!descripcionProductos.isEmpty()) {
+            for (WebElementFacade descripcion : descripcionProductos) {
+                if (nomProducto.equals(descripcion.getText())) {
+                    botones.get(i).click();
+                }
+                i++;
             }
-            filaBoton++;
         }
-        return filaBoton;
     }
 
     public void irANuevaCotizacion(){
-        setImplicitTimeout(2,TimeUnit.SECONDS);
+        setImplicitTimeout(0,TimeUnit.SECONDS);
         if(!botonAcciones.isPresent())
             menuItemEscritorio.click();
         resetImplicitTimeout();
-        waitFor(botonAcciones).click();
+        botonAcciones.click();
         subMenuNuevaCotizacion.waitUntilPresent().click();
     }
 
-    public void setDatos(String cuenta) {
-        waitFor(numeroDeCuenta).shouldBePresent();
-        numeroDeCuenta.sendKeys(cuenta);
+    public void setDatos(ExamplesTable datosCotizacion) {
+        Map<String, String> dato = datosCotizacion.getRow(0);
+        numeroDeCuenta.waitUntilPresent().sendKeys(dato.get("cuenta"));
         comboBoxNombreAgente.click();
-        waitFor(linkNombre).shouldBeVisible();
+        linkNombre.waitUntilVisible();
         Actions actions =  new Actions(getDriver());
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
-    }
-
-    public void elegirProducto(String producto){
-        seleccionarProducto(producto);
+        selectItem(comboBoxOrganizacion,dato.get("organizacion"));
+        waitUntil(1500);
+        selectItem(comboBoxCanal,dato.get("canal"));
+        waitUntil(1500);
+        seleccionarProducto(dato.get("producto"));
     }
 
     public void irAUbicacion(){
