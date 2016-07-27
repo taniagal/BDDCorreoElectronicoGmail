@@ -85,10 +85,10 @@ public class DetallesDeUbicacionPage extends Commons {
     }
 
     public void setDatos(String cuenta, String producto) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(numeroDeCuenta).shouldBePresent();
+        waitFor(numeroDeCuenta).shouldBePresent();
         numeroDeCuenta.sendKeys(cuenta);
         comboBoxNombreAgente.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkNombre).shouldBeVisible();
+        waitFor(linkNombre).shouldBeVisible();
         Actions actions =  new Actions(getDriver());
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();

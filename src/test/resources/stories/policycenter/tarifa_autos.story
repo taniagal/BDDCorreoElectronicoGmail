@@ -14,11 +14,11 @@ When ingrese la informacion de la poliza:
 |Sura        |Canal Tradicional|PPAutos    |
 And ingrese los datos del asegurado
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|mensaje|
-|T64701|2011  |01601225        |MEDELLIN          |Particular       |null  |null |null           |tiene un estado de licencia (CA) que no corresponde|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|
+|T64701|2011  |01601225        |MEDELLIN          |Particular       |null  |null |null           |
 And ingrese las coberturas:
-|limite|deducible|ptotal|pparcial |ppfracquicia|gastos|
-|840   |0        |10    |1.200.000|1.500.000   |40    |
+|limite|deducible|
+|840   |0        |
 Then el resultado de la cotizacion debe ser
 
 Examples:

@@ -47,12 +47,12 @@ public class CoberturaGlobalPage extends Commons {
     }
 
     public void irACoberturasGlobales() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
     }
 
     public void navegarPorCobertura(String descripcion, String tipoCobertura){
         botonAgregarCoberturaGeneral.waitUntilPresent().click();
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoTxtDescripcion).sendKeys(descripcion);
+        waitFor(campoTxtDescripcion).sendKeys(descripcion);
         selectItem(comboBoxTipoCobertura, tipoCobertura);
         waitUntil(1000);
     }
@@ -86,7 +86,7 @@ public class CoberturaGlobalPage extends Commons {
     }
 
     public void verificarCoberturasIncluidas() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkCobertura1).waitUntilPresent().click();
+        waitFor(linkCobertura1).waitUntilPresent().click();
         MatcherAssert.assertThat("Error al Agregar la cobertura", linkCobertura1.isPresent());
     }
 

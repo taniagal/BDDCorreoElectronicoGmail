@@ -44,7 +44,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     }
 
     public void irAVehiculos() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuItemVehiculos).shouldBePresent();
+        waitFor(menuItemVehiculos).shouldBePresent();
         menuItemVehiculos.click();
     }
 
@@ -58,9 +58,9 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     }
 
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
+        waitFor(botonCrearVehiculo).click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtPlaca).shouldBePresent();
+        waitFor(campoTxtPlaca).shouldBePresent();
         int placa = (int) Math.floor(Math.random() * (100 - 999) + 999);
         campoTxtPlaca.sendKeys("AVC"+placa);
         selectItem(comboBoxModelo, vehiculo.get("modelo"));
@@ -83,7 +83,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     }
 
     public void agregarCodigoFasecolda(String codigo) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
+        waitFor(botonCrearVehiculo).click();
         campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
         campoTxtPlaca.click();
         waitUntil(1000);
