@@ -1,19 +1,22 @@
 package com.sura.gw.policy.poliza.steps;
 
 import com.sura.gw.navegacion.util.widget.EspacioDeTrabajoWidget;
+import com.sura.gw.policy.poliza.pages.AccionesWidget;
 import com.sura.gw.policy.poliza.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
 import com.sura.gw.policy.poliza.pages.InformacionPolizaPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.steps.ScenarioSteps;
 
 import java.util.List;
 
-public class InformacionDePolizaSteps {
+public class InformacionDePolizaSteps extends ScenarioSteps {
 
     InformacionPolizaPage informacionPolizaPage;
     EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
     EspacioDeTrabajoWidget espacioDeTrabajoWidget;
+    AccionesWidget accionesWidget;
 
     @Step
     public void seleccionar_opcion_edificios_y_ubicaciones() {
@@ -67,6 +70,16 @@ public class InformacionDePolizaSteps {
     @Step
     public void seleccionar_boton_aceptar_para_agregar_articulo() {
         agregarArticuloEdificiosyUbicacionesWidget.seleccionarBotonAceptarParaAgregarArticulo();
+    }
+
+    @Step
+    public void seleccionar_boton_acciones() throws Exception{
+        accionesWidget.seleccionarBtnAcciones();
+    }
+
+    @Step
+    public void seleccionar_opcion_cambiar_poliza() throws Exception{
+        accionesWidget.seleccionarOpcionCambioDePoliza();
     }
 
     public List<String> espacioDeTrabajo() {

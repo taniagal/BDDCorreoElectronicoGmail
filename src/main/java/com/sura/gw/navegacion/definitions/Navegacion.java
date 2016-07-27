@@ -20,5 +20,8 @@ public class Navegacion {
         menuPoliza.ingresar_numero_de_subscripcion_y_teclear_enter(numeroSubscripcion);
     }
 
+    public void cuandoBusquePorNumeroDeDePoliza(String numeroDePoliza) {
+        menuPoliza.ingresar_numero_de_poliza_y_teclear_enter(numeroDePoliza);
+    }
 
 }
