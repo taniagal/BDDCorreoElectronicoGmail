@@ -12,12 +12,12 @@ Meta:
 @Sprint 4
 
 As a <rolUsuario>
-Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza>
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When cuando intente ingresar una ubicacion para comprobar las validaciones de riesgos consultables
 Then espero ver mensajes de advertencia indicandome la direccion es un riesgo consultable
 
 Examples:
-| numPoliza | rolUsuario | descripcion |
-| PENDIENTE   | Asesor     |             |
+| numSubscripcion | rolUsuario | descripcion |
+| 11111111        | Asesor     |             |
 
 

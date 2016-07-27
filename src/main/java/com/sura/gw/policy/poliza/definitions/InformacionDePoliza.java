@@ -164,8 +164,8 @@ public class InformacionDePoliza {
     }
 
     @When("cuando intente ingresar una ubicacion para comprobar las validaciones de riesgos consultables")
-    public void cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables() {
-        LOGGER.info("InformacionDePoliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
+    public void cuandoIntenteIngresarUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables() {
+        LOGGER.info("InformacionDePoliza.cuandoIntenteIngresarUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables");
         try {
             try {
                 informacionDePoliza.cuandoEditeInformacionDeLaPoliza();

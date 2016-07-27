@@ -11,13 +11,13 @@ Meta:
 @Sprint 4
 
 As a <rolUsuario>
-Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza>
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When cuando intente ingresar un articulo para una ubicacion para comprobar las validaciones de error del articulo
 Then espero ver mensajes de advertencia indicandome que sobrepase los limites de valores para el valor del articulo
 
 Examples:
-| numPoliza     | rolUsuario | descripcion |
-| TEST_11111111 | Asesor     |             |
+| numSubscripcion     | rolUsuario | descripcion |
+| 22222237 | Asesor     |             |
 
 
 
