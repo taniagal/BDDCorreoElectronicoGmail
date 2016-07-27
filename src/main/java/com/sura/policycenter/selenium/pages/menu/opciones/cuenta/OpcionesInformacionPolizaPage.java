@@ -345,7 +345,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void validarMensajePorcentajePoliza(String mensaje) {
-        waitForTextToAppear("Descuento Póliza");
+        waitForTextToAppear("Descuento póliza");
         waitFor(textoDescuentoPoliza).shouldBeVisible();
         String descuentoPoliza = textoDescuentoPoliza.getValue();
         waitFor(mensajeValidacion).shouldBeVisible();
