@@ -9,7 +9,7 @@ Como usuario de Policy Center
 Quiero ser capaz de crear polizas colectivas e individuales
 Para las diferentes organizaciones, canales y productos
 
-Scenario: Validar la lista de organizaciones disponibles para crear una poliza nueva
+Scenario: Validar elementos de la pantalla cuando voy a crear una poliza individual
 GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar la cuenta <numCuenta>
 And quiero expedir una poliza nueva
@@ -23,6 +23,9 @@ Examples:
 |C000888888|DIRECTO|
 
 Scenario: Validar la lista de organizaciones disponibles para crear una poliza nueva
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
 When despliegue la lista de organizacion
 Then me debe mostrar las organizaciones:
 |organizacion|
@@ -31,6 +34,10 @@ Then me debe mostrar las organizaciones:
 |GMAC|
 |Sura|
 |Tuya|
+
+Examples:
+|numCuenta|agente|
+|C000888888|DIRECTO|
 
 Scenario: validar tabla de productos de acuerdo al tipo de poliza, organizacion y canal
 When seleccione la organizacion <organizacion>
