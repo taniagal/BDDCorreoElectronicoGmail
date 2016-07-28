@@ -84,7 +84,7 @@ public class Poliza {
         try {
             cuandoEditeInformacionDeLaPoliza();
         } catch (Exception e) {
-            LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO");
+            LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
         }
 
         polizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
@@ -158,7 +158,7 @@ public class Poliza {
             try {
                 cuandoEditeInformacionDeLaPoliza();
             } catch (Exception e) {
-                LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO");
+                LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
             }
 
             polizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
