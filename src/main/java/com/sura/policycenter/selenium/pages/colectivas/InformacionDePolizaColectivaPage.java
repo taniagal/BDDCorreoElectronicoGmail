@@ -102,7 +102,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade tipoDireccionSegundo;
     @FindBy(xpath = "")
     WebElementFacade descripcionDireccionSegundo;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:Update-btnInnerEl']")
     WebElementFacade botonSiguiente;
     @FindBy(xpath = "//tbody/tr/td[3]/div")
     WebElementFacade campoPorcentajeParticipacionSura;

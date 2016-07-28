@@ -39,16 +39,9 @@ And seleccione el producto <producto> de poliza colectiva para expedirla
 Then debo ver la fecha de fin de vigencia <cantidadAniosVigencia> calculado de acuerdo al producto seleccionado
 
 Examples:
-| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | cantidadAniosVigencia |
-| C000888888 | DIRECTO | Bancolombia  | Leasing           | Colectiva  | Bank Autos       | 5                     |
-
-Scenario: Validar datos de tomador secundario en poliza colectiva
-
-When seleccione segundo tomador para la poliza colectiva
-Then debo ver los siguientes datos del segundo tomador en la pantalla:
-| tipoDocumentoSegundo | numeroDocumentoSegundo | nombreSegundo  | telefonoSegundo | direccionSegundo                               | tipoDireccionSegundo | descripcionDireccionSegundo                |
-| CEDULA DE CIUDADANIA | 1264567899             | GLORIA GALLEGO | 408-2211        | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 |
-
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto                  | cantidadAniosVigencia |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos                | 5                     |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Commercial Personal Fleet | 1                     |
 
 Scenario: validar descuento mayor a 50% y con mas de 2 decimales
 When ingrese el porcentaje de descuento invalido <porcentaje>
@@ -90,6 +83,12 @@ Scenario: Validar la opcion de eliminar coaseguro
 When de clic en Cancelar de la edicion de coaseguro
 And de clic en la opcion eliminar de coaseguro
 Then debo ver nuevamente el link de agregar coaseguro
+
+Scenario: Validar datos de tomador secundario en poliza colectiva
+When seleccione segundo tomador para la poliza colectiva
+Then debo ver los siguientes datos del segundo tomador en la pantalla:
+| tipoDocumentoSegundo | numeroDocumentoSegundo | nombreSegundo  | telefonoSegundo | direccionSegundo                               | tipoDireccionSegundo | descripcionDireccionSegundo                |
+| CEDULA DE CIUDADANIA | 1264567899             | GLORIA GALLEGO | 408-2211        | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 |
 
 Scenario: Validar retroactividad en la vigencia de la poliza colectiva
 Meta: @pending
