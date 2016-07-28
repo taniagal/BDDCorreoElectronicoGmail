@@ -1,4 +1,4 @@
-Detalles De Asegurado De Cotizacion
+Detalle De Asegurado De Cotizacion
 
 Meta:
 
@@ -50,25 +50,7 @@ Examples:
 |cuenta    | agente  | organizacion | canal             | producto |
 |C000888888| DIRECTO | Sura         | Canal Tradicional | Autos    |
 
-Scenario: Agregar asegurado de los contactos de la cuenta
-Given voy a crear una nueva cotizacion
-And crear una cotizacion nueva con la cuenta <cuenta>
-And seleccione el agente <agente>
-When seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
-And seleccione el producto <producto> para expedir la poliza
-And quiera agregar un asegurado
-And vaya a la opcion agregar
-And agregue un asegurado que es contacto de la cuenta
-Then deben quedar agregados como asegurados:
-|nombre|tipoDocumento|numeroDocumento|
-|GLORIA GALLEGO|CEDULA DE CIUDADANIA|1264567899|
-
-Examples:
-|cuenta    | agente  | organizacion | canal             | producto |
-|C000888888| DIRECTO | Sura         | Canal Tradicional | Autos    |
-
-Scenario: Agregar varios asegurados (validar asegurado del directorio riesgo consultable)
+Scenario: Agregar varios asegurados: Agregar asegurado de los contactos de la cuenta y validar asegurado del directorio riesgo consultable
 Given voy a crear una nueva cotizacion
 And crear una cotizacion nueva con la cuenta <cuenta>
 And seleccione el agente <agente>

@@ -158,8 +158,8 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
 
     public void validarAseguradosAgregados(ExamplesTable asegurados) {
         Map<String, String> aseguradosAgregados;
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaAsegurados).waitUntilPresent();
         guidewire.waitUntil(2000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaAsegurados).waitUntilPresent();
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         for (int i=0; i<allRows.size(); i++){
             aseguradosAgregados = asegurados.getRows().get(i);
@@ -191,8 +191,8 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
     }
 
     public void irASiguiente() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
         guidewire.waitUntil(2000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
         botonSiguiente.click();
     }
 
