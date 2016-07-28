@@ -2,7 +2,7 @@ package com.sura.policycenter.selenium.steps;
 
 
 import com.sura.policycenter.selenium.pages.EdicionContactoAseguradoPage;
-import com.sura.policycenter.selenium.pages.IngresoDeAseguradoACotizacionPage;
+import com.sura.policycenter.selenium.pages.DetalleDeAseguradoDeCotizacionPage;
 import com.sura.policycenter.selenium.pages.IngresoNuevoContactoAseguradoPage;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -11,42 +11,42 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 
-public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
+public class DetalleDeAseguradoDeCotizacionSteps extends ScenarioSteps{
 
-    private final IngresoDeAseguradoACotizacionPage ingresoDeAseguradoACotizacionPage = new IngresoDeAseguradoACotizacionPage(getDriver());
+    private final DetalleDeAseguradoDeCotizacionPage detalleDeAseguradoDeCotizacionPage = new DetalleDeAseguradoDeCotizacionPage(getDriver());
     private final IngresoNuevoContactoAseguradoPage ingresoNuevoContactoAseguradoPage = new IngresoNuevoContactoAseguradoPage(getDriver());
     private final EdicionContactoAseguradoPage edicionContactoAseguradoPage = new EdicionContactoAseguradoPage(getDriver());
 
-    public IngresoDeAseguradoACotizacionSteps (Pages pages){
+    public DetalleDeAseguradoDeCotizacionSteps(Pages pages){
         super(pages);
     }
 
     public void irAIngresarAsegurado() {
-        ingresoDeAseguradoACotizacionPage.irAIngresarAsegurado();
+        detalleDeAseguradoDeCotizacionPage.irAIngresarAsegurado();
     }
 
     public void agregarAsegurado() {
-        ingresoDeAseguradoACotizacionPage.agregarAsegurado();
+        detalleDeAseguradoDeCotizacionPage.agregarAsegurado();
     }
 
     public void validarOpcionesDeAgregar(ExamplesTable listaAgregar) {
-        MatcherAssert.assertThat(ingresoDeAseguradoACotizacionPage.validarOpcionesDeAgregar(listaAgregar), Is.is(Matchers.equalTo("Elementos de la opción Agregar correctos")));
+        MatcherAssert.assertThat(detalleDeAseguradoDeCotizacionPage.validarOpcionesDeAgregar(listaAgregar), Is.is(Matchers.equalTo("Elementos de la opción Agregar correctos")));
     }
 
     public void agregarAseguradoContactoDeLaCuenta() {
-        ingresoDeAseguradoACotizacionPage.agregarAseguradoContactoDeLaCuenta();
+        detalleDeAseguradoDeCotizacionPage.agregarAseguradoContactoDeLaCuenta();
     }
 
     public void agregarAseguradoContactoDelDirectorio() {
-        ingresoDeAseguradoACotizacionPage.agregarAseguradoContactoDelDirectorio();
+        detalleDeAseguradoDeCotizacionPage.agregarAseguradoContactoDelDirectorio();
     }
 
     public void seleccionarContactoDelDirectorio() {
-        ingresoDeAseguradoACotizacionPage.seleccionarContactoDelDirectorio();
+        detalleDeAseguradoDeCotizacionPage.seleccionarContactoDelDirectorio();
     }
 
     public void seleccionarNuevaPersonaNatural() {
-        ingresoDeAseguradoACotizacionPage.seleccionarNuevaPersonaNatural();
+        detalleDeAseguradoDeCotizacionPage.seleccionarNuevaPersonaNatural();
     }
 
     public void ingresarDatosNuevaPersonaNatural(ExamplesTable datosPersonaNatural) {
@@ -54,7 +54,7 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
     }
 
     public void seleccionarNuevaPersonaJuridica() {
-        ingresoDeAseguradoACotizacionPage.seleccionarNuevaPersonaJuridica();
+        detalleDeAseguradoDeCotizacionPage.seleccionarNuevaPersonaJuridica();
     }
 
     public void ingresarDatosNuevaPersonaJuridica(ExamplesTable datosPersonaJuridica) {
@@ -62,15 +62,15 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
     }
 
     public void validarMensaje(String mensaje) {
-        MatcherAssert.assertThat(ingresoDeAseguradoACotizacionPage.validarMensaje(), Is.is(Matchers.equalTo(mensaje)));
+        MatcherAssert.assertThat(detalleDeAseguradoDeCotizacionPage.validarMensaje(), Is.is(Matchers.equalTo(mensaje)));
     }
 
     public void validarAseguradosAgregados(ExamplesTable asegurados) {
-        ingresoDeAseguradoACotizacionPage.validarAseguradosAgregados(asegurados);
+        detalleDeAseguradoDeCotizacionPage.validarAseguradosAgregados(asegurados);
     }
 
     public void volverAAsegurados() {
-        ingresoDeAseguradoACotizacionPage.volverAAsegurados();
+        detalleDeAseguradoDeCotizacionPage.volverAAsegurados();
     }
 
     public void editarDatosNuevaPersonaNatural(ExamplesTable edicionPersonaNatural) {
@@ -82,34 +82,34 @@ public class IngresoDeAseguradoACotizacionSteps extends ScenarioSteps{
     }
 
     public void seleccionarContactoAgregado() {
-        ingresoDeAseguradoACotizacionPage.seleccionarContactoAgregado();
+        detalleDeAseguradoDeCotizacionPage.seleccionarContactoAgregado();
     }
 
     public void quitarAseguradoDeLaLista() {
-        ingresoDeAseguradoACotizacionPage.quitarAseguradoDeLaLista();
+        detalleDeAseguradoDeCotizacionPage.quitarAseguradoDeLaLista();
     }
 
     public void validarAseguradoEliminado() {
-        ingresoDeAseguradoACotizacionPage.validarAseguradoEliminado();
+        detalleDeAseguradoDeCotizacionPage.validarAseguradoEliminado();
     }
 
     public void irASiguiente() {
-        ingresoDeAseguradoACotizacionPage.irASiguiente();
+        detalleDeAseguradoDeCotizacionPage.irASiguiente();
     }
 
     public void validarMensajeDeIntegraciones(String mensaje) {
-        ingresoDeAseguradoACotizacionPage.validarMensajeDeIntegraciones(mensaje);
+        detalleDeAseguradoDeCotizacionPage.validarMensajeDeIntegraciones(mensaje);
     }
 
     public void irACrearNuevaCotizacion() {
-        ingresoDeAseguradoACotizacionPage.irACrearNuevaCotizacion();
+        detalleDeAseguradoDeCotizacionPage.irACrearNuevaCotizacion();
     }
 
     public void ingresarCuenta(String cuenta) {
-        ingresoDeAseguradoACotizacionPage.ingresarCuenta(cuenta);
+        detalleDeAseguradoDeCotizacionPage.ingresarCuenta(cuenta);
     }
 
     public void validarBotonNoVisible() {
-        ingresoDeAseguradoACotizacionPage.validarBotonNoVisible();
+        detalleDeAseguradoDeCotizacionPage.validarBotonNoVisible();
     }
 }

@@ -1,4 +1,4 @@
-Ingreso De Asegurado A Cotizacion
+Detalles De Asegurado De Cotizacion
 
 Meta:
 

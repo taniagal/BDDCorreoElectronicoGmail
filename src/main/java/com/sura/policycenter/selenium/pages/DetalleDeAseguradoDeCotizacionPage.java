@@ -19,7 +19,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 
-public class IngresoDeAseguradoACotizacionPage extends PageObject{
+public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
 
     Guidewire guidewire = new Guidewire(getDriver());
     Actions acciones = new Actions(getDriver());
@@ -84,7 +84,7 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']")
     WebElementFacade menuPolizaNuevoEnvio;
 
-    public IngresoDeAseguradoACotizacionPage(WebDriver driver){
+    public DetalleDeAseguradoDeCotizacionPage(WebDriver driver){
         super(driver);
     }
 
@@ -141,7 +141,6 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     public void seleccionarNuevaPersonaNatural() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevo).waitUntilPresent();
         acciones.moveToElement(opcionNuevo).release(opcionNuevo).build().perform();
-//        acciones.moveToElement(contactoDeCuenta).release().click().build().perform();
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevoPersonaNatural).waitUntilPresent();
         opcionNuevoPersonaNatural.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible().click();
     }
@@ -149,7 +148,6 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     public void seleccionarNuevaPersonaJuridica() {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevo).waitUntilPresent();
         acciones.moveToElement(opcionNuevo).release(opcionNuevo).build().perform();
-//        opcionNuevo.click();
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevoPersonaJuridica).waitUntilPresent();
         opcionNuevoPersonaJuridica.click();
     }
@@ -187,17 +185,9 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void validarAseguradoEliminado() {
-        waitFor(botonQuitar);
-        botonQuitar.shouldNotBeEnabled();
-//        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaAsegurados).waitUntilPresent();
-//        MatcherAssert.assertThat(tablaAsegurados.getText(), Is.is(Matchers.equalTo("")));
-///*        guidewire.waitUntil(2000);
-//        List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
-//        if(allRows.isEmpty()){
-//            MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados vacía")));
-//        }else {
-//            MatcherAssert.assertThat("Lista de asegurados vacía", Is.is(Matchers.equalTo("Lista de asegurados no es vacía")));
-//        }*/
+        guidewire.waitUntil(2000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaAsegurados).waitUntilPresent();
+        MatcherAssert.assertThat(tablaAsegurados.getText(), Is.is(Matchers.equalTo("")));
     }
 
     public void irASiguiente() {
@@ -212,7 +202,6 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void irACrearNuevaCotizacion() {
-//        guidewire.waitUntil(2000);
         waitFor(menuPoliza).waitUntilPresent();
         menuPoliza.click();
         guidewire.waitUntil(2000);
@@ -222,8 +211,6 @@ public class IngresoDeAseguradoACotizacionPage extends PageObject{
     }
 
     public void ingresarCuenta(String cuenta) {
-//        campoNumeroCuenta.waitUntilVisible();
-//        campoNumeroCuenta.waitUntilEnabled();
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(campoNumeroCuenta).waitUntilPresent();
         campoNumeroCuenta.sendKeys(cuenta);
         campoNumeroCuenta.sendKeys(Keys.TAB);
