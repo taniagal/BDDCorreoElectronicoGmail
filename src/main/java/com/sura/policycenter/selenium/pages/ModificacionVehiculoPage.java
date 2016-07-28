@@ -59,7 +59,7 @@ public class ModificacionVehiculoPage extends Guidewire{
     public void registrarZonaCirculacion(String ciudadCirculacion) {
         waitUntil(2000);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
-        waitUntil(1000);
+        waitUntil(1500);
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonSiguiente).click();
         waitUntil(3000);
     }

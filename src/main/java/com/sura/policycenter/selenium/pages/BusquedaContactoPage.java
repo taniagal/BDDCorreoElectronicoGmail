@@ -393,10 +393,11 @@ public class BusquedaContactoPage extends Guidewire {
     }
 
     public void consultarContactoPorTipoDocumentoCotizacion(String tipoId, String numeroId) {
-        waitFor(txtTipoDocDirectorioCotizacion).clear();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(txtTipoDocDirectorioCotizacion).waitUntilPresent();
+        txtTipoDocDirectorioCotizacion.clear();
         txtTipoDocDirectorioCotizacion.sendKeys(tipoId);
         txtTipoDocDirectorioCotizacion.sendKeys(Keys.ENTER);
-        waitABit(1000);
+        waitUntil(2000);
         txtNumDocDirectorioCotizacion.sendKeys(numeroId);
         btnBuscarDirectorioCotizacion.click();
         waitForWithRefresh();
