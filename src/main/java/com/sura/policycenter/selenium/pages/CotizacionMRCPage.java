@@ -115,8 +115,8 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void ingresarACotizacion() {
-        WebElementFacade botonInformacionPoliza = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span");
-        WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:ttlBar']");
+        WebElementFacade botonInformacionPoliza = findBy(".//*[@id='SubmissionWizard:PolicyInfo']/div/span");//(".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span");
+        WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']");//(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:ttlBar']");
         if(titulo.isCurrentlyVisible()){
             waitForTextToAppear("Información de póliza",5000);
         }else{
@@ -210,7 +210,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void validarTipoRiesgo() {
-        WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
+        WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");//(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
         botonCotizar.click();
         waitUntil(5000);

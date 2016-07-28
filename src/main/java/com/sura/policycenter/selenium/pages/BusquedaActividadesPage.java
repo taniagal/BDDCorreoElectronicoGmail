@@ -85,7 +85,7 @@ public class BusquedaActividadesPage extends PageObject {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         //withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.waitUntilVisible().waitUntilClickable().click();
-        grdFechaVencimiento.waitUntilPresent().waitUntilVisible();
+        grdFechaVencimiento.waitUntilVisible().waitUntilVisible();
         //withTimeoutOf(15, TimeUnit.SECONDS).waitFor(grdFechaVencimiento).waitUntilPresent();
         MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));

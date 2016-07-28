@@ -2,6 +2,7 @@ package com.sura.gw.policy.poliza.pages;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebElement;
 
 public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
@@ -15,9 +16,9 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
     private static String LINK_ACEPTAR_AGREGAR_ARTICULO = ".//*[@id='CPBuildingSuraPopup:Update']";
 
     public void seleccionarCheck(String xpath){
-        WebElement chk = null;
-        chk = getDriver().findElement(By.xpath(xpath));
-        $(chk).shouldBeCurrentlyVisible();
+        WebElementFacade chk = null;
+        chk = findBy(xpath).waitUntilVisible().waitUntilClickable();
+        chk.shouldBeCurrentlyVisible();
         chk.click();
     }
 
