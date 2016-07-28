@@ -4,15 +4,15 @@ import com.sura.gw.navegacion.util.widget.EspacioDeTrabajoWidget;
 import com.sura.gw.policy.poliza.pages.AccionesWidget;
 import com.sura.gw.policy.poliza.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
-import com.sura.gw.policy.poliza.pages.InformacionPolizaPage;
+import com.sura.gw.policy.poliza.pages.PolizaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 import java.util.List;
 
-public class InformacionDePolizaSteps extends ScenarioSteps {
+public class PolizaSteps extends ScenarioSteps {
 
-    private static InformacionPolizaPage informacionPolizaPage;
+    private static PolizaPage informacionPolizaPage;
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
     private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
