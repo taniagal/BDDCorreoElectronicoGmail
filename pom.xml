@@ -103,17 +103,17 @@
                 <version>${maven.failsafe.plugin}</version>
                 <configuration>
                     <includes>
-                      <!--  <include>**/policycenter/*.java</include> -->
-                        <include>**/policy/poliza/*.java</include>
+                        <include>**/policycenter/*.java</include>
+
                     </includes>
                     <excludes>
                         <exclude>**/policycenter/MainStories.java</exclude>
                     </excludes>
                     <argLine>-Xmx1024m -XX:MaxPermSize=1024m</argLine>
-               <!--     <perCoreThreadCount>true</perCoreThreadCount>
+                    <perCoreThreadCount>true</perCoreThreadCount>
                     <parallel>classes</parallel>
                     <threadCount>3</threadCount>
-                    <forkCount>3C</forkCount>-->
+                    <forkCount>3</forkCount>
 
                     <perCoreThreadCount>true</perCoreThreadCount>
                     <!--<threadCount>2</threadCount>-->

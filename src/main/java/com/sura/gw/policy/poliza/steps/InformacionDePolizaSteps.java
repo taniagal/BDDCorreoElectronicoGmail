@@ -12,11 +12,11 @@ import java.util.List;
 
 public class InformacionDePolizaSteps extends ScenarioSteps {
 
-    InformacionPolizaPage informacionPolizaPage;
-    EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
-    AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
-    EspacioDeTrabajoWidget espacioDeTrabajoWidget;
-    AccionesWidget accionesWidget;
+    private static InformacionPolizaPage informacionPolizaPage;
+    private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
+    private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
+    private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
+    private static AccionesWidget accionesWidget;
 
     @Step
     public void seleccionar_opcion_edificios_y_ubicaciones() {

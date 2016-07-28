@@ -15,12 +15,12 @@ public class PolizaNavBarPages extends PageObject {
         TXT_NUMERO_SUBSCRIPCION(".//input[contains(@name,'SubmissionNumberSearchItem')]"),
         TXT_NUMERO_POLIZA(".//input[contains(@name,'PolicyRetrievalItem')]");
 
-        private String opcion;
+        private String elemento;
         Opcion(String opcion) {
-            this.opcion = opcion;
+            this.elemento = opcion;
         }
         public String xpath() {
-            return opcion;
+            return elemento;
         }
     }
 

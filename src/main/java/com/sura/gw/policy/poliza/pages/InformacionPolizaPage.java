@@ -6,8 +6,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-
 public class InformacionPolizaPage extends PageObject {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -18,27 +16,27 @@ public class InformacionPolizaPage extends PageObject {
         LINK_EDIFICIOS_Y_UBICACIONES(".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div"),
         LINK_INFORMACION_DE_LA_POLIZA(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PolicyInfo']/div"),
         ENVIO(".//*[contains(@id,'SubmissionWizard') and contains(@id,'_header_hd-textEl')]");
-        private String opcion;
+        private String elemento;
 
         Opcion(String opcion) {
-            this.opcion = opcion;
+            this.elemento = opcion;
         }
 
         public String xpath() {
-            return opcion;
+            return elemento;
         }
     }
 
     public enum Boton {
         EDITAR_TRANSACCION_DE_POLIZA("//a[contains(@id,'SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy')]");
-        private String boton;
+        private String botonXP;
 
         Boton(String boton) {
-            this.boton = boton;
+            this.botonXP = boton;
         }
 
         public String xpath() {
-            return boton;
+            return botonXP;
         }
     }
 
@@ -79,7 +77,7 @@ public class InformacionPolizaPage extends PageObject {
         try {
             btnEditarTransaccion = findBy(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
         } catch (Exception e) {
-            LOGGER.info("BOTON EDITAR TRANSACCION DE POLIZA NO VISUALIZADO : " + e.getMessage());
+            LOGGER.info("BOTON EDITAR TRANSACCION DE POLIZA NO VISUALIZADO : " + e);
         }
 
         if (btnEditarTransaccion != null) {
@@ -110,7 +108,7 @@ public class InformacionPolizaPage extends PageObject {
             waitForTextToAppear(tituloPaginaEsperada);
             shouldContainText(tituloPaginaEsperada);
         } catch (Exception e) {
-            LOGGER.info("SE SELECCIONÓ UN ELEMENTO NO CLICLEABLE (EJ. DIV) " + e.getMessage());
+            LOGGER.info("SE SELECCIONÓ UN ELEMENTO NO CLICLEABLE (EJ. DIV) " + e);
         }
 
         LOGGER.info("PolizaPage.seleccionarOpcion");
@@ -126,7 +124,6 @@ public class InformacionPolizaPage extends PageObject {
 
     public Boolean esEditableElemento(String nombreElemento) {
         WebElementFacade elemento = null;
-        List<WebElementFacade> elementosLista = null;
         Boolean esEditableElemento = false;
 
         try {
@@ -152,6 +149,8 @@ public class InformacionPolizaPage extends PageObject {
                 case "Agregar coaseguro":
                     esEditableElemento = findBy(InformacionDeLaPolizaWidget.LINK_AGREGAR_COASEGURO.xpath()).isEnabled();
                     break;
+                default:
+                    break;
             }
         } catch (Exception e) {
 
@@ -159,7 +158,7 @@ public class InformacionPolizaPage extends PageObject {
                 esEditableElemento = false;
             }
 
-            LOGGER.info("NO SE ENCONTRO ELEMENTO > " + e.getMessage());
+            LOGGER.info("NO SE ENCONTRO ELEMENTO > " + e);
         }
 
 

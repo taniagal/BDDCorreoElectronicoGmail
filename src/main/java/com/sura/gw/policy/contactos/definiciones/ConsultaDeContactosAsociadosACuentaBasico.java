@@ -29,7 +29,6 @@ public class ConsultaDeContactosAsociadosACuentaBasico {
 
 
     private String numCuenta;
-    private Boolean existeContactosAsociados;
 
     @Given("existe una cuenta $numCuenta")
     public void existeUnaCuentaConContactosAsociados(@Named("numCuenta") String numCuenta) {

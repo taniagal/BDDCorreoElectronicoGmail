@@ -18,10 +18,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.core.IsCollectionContaining.hasItems;
+import static org.hamcrest.Matchers.*;
 
 public class InformacionDePoliza {
 
@@ -52,9 +49,6 @@ public class InformacionDePoliza {
         informacionDePolizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
     }
 
-    public void cuandoDeseeIngresarArticuloAUnaUbicacion() {
-        informacionDePolizaSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
-    }
 
     public void cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo() {
         informacionDePolizaSteps.seleccionar_check_del_articulo_a_agregar();
@@ -97,8 +91,8 @@ public class InformacionDePoliza {
         }
 
         informacionDePolizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
-        informacionDePoliza.cuandoDeseeIngresarArticuloAUnaUbicacion();
-        informacionDePoliza.cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo();
+        informacionDePolizaSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
+        cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo();
 
         LOGGER.info("InformacionDePoliza.cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo");
     }
@@ -106,11 +100,13 @@ public class InformacionDePoliza {
 
     @Then("espero ver mensajes de advertencia indicandome que sobrepase los limites de valores para el valor del articulo")
     public void esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo() {
-        informacionDePoliza.entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo();
+        entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo();
         LOGGER.info("InformacionDePoliza.esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo");
     }
 
     public void entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo() {
+
+
         assertThat(informacionDePolizaSteps.espacioDeTrabajo(),
                 hasItems("EL valor Asegurado de la cobertura Danos materiales NO debe ser mayor al valor asegurable del Artículo Edificio"
                 ));
@@ -163,7 +159,7 @@ public class InformacionDePoliza {
         LOGGER.info("InformacionDePoliza.cuandoIntenteIngresarUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables");
 
             try {
-                informacionDePoliza.cuandoEditeInformacionDeLaPoliza();
+                cuandoEditeInformacionDeLaPoliza();
             } catch (Exception e) {
                 LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO");
             }
@@ -175,11 +171,16 @@ public class InformacionDePoliza {
 
     @Then("espero ver mensajes de advertencia indicandome la direccion es un riesgo consultable")
     public void entoncesEsperoVerMensajeDeAdvertenciaQueUbicacionEsRiesgoConsultable() {
-        assertThat(informacionDePolizaSteps.espacioDeTrabajo(),
-                contains("La dirección un riesgo no estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
-                ));
+        for (String mensaje : informacionDePolizaSteps.espacioDeTrabajo()){
+            assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
+                    mensaje,
+                    containsString("La dirección un riesgo no estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
+                    ));
+        }
 
     }
+
+    
 
 
 

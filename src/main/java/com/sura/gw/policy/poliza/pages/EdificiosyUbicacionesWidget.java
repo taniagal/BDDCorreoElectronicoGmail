@@ -71,7 +71,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         $(XPATH_DIRECCION).click();
 
         waitFor(3).seconds();
-        enter("Acabado de productos textiles").into($(XPATH_ACTIVIDAD_ECONOMICA));
+        enter(actividadEconomica).into($(XPATH_ACTIVIDAD_ECONOMICA));
         waitFor(10).seconds();
         $(XPATH_ACTIVIDAD_ECONOMICA).sendKeys(Keys.ENTER);
         waitFor(3).seconds();
@@ -83,14 +83,6 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
         agregarNuevaUbicacion("Colombia", "ANTIOQUIA", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
-    }
-
-
-    private List<WebElementFacade> getListaDesplegable() {
-        String XPATH_LISTA_DESPLEGABLE = "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]/div/ul/li";
-        List<WebElementFacade> lista;
-        lista = findAll(XPATH_LISTA_DESPLEGABLE);
-        return lista;
     }
 
 }
