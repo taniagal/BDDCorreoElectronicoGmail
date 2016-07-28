@@ -104,6 +104,20 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade descripcionDireccionSegundo;
     @FindBy(xpath = "")
     WebElementFacade botonSiguiente;
+    @FindBy(xpath = "//tbody/tr/td[3]/div")
+    WebElementFacade campoPorcentajeParticipacionSura;
+    @FindBy(xpath = "//tr[2]/td[3]/div")
+    WebElementFacade campoPorcentajeParticipacionOtra;
+    @FindBy(xpath = "//tr[2]/td[2]/div")
+    WebElementFacade campoAseguradora;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
+    WebElementFacade botonAceptarCoaseguro;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Cancel-btnInnerEl']")
+    WebElementFacade botonCancelarCoaseguro;
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:editConinsuranceLink']")
+    WebElementFacade linkEditarCoaseguro;
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:editConinsuranceLink']")
+    WebElementFacade linkEliminarCoaseguro;
 
     private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV:";
 
@@ -243,5 +257,59 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         MatcherAssert.assertThat(tipoDireccionSegundo.getText(), containsText(infoSegundoTomador.get("tipoDireccionSegundo")));
         MatcherAssert.assertThat(descripcionDireccionSegundo.getText(), containsText(infoSegundoTomador.get("descripcionDireccionSegundo")));
     }
+
+    public void clicEnAgregarCoaseguro() {
+        linkAgregarCoaseguro.click();
+        waitForTextToAppear("Coaseguro");
+    }
+
+    public void ingresarPorcentajeDeParticipacion() {
+        campoPorcentajeParticipacionSura.click();
+        campoPorcentajeParticipacionSura.sendKeys("60");
+        campoPorcentajeParticipacionOtra.click();
+        campoPorcentajeParticipacionOtra.sendKeys("40");
+        campoAseguradora.click();
+        campoAseguradora.clear();
+        campoAseguradora.sendKeys("Axxa");
+    }
+
+    public void darClicEnAceptarDeCoaseuguro() {
+        botonAceptarCoaseguro.click();
+    }
+
+    public void validarLinksDeCoaseguroVisiblesYHabilitados(){
+        waitForTextToAppear("Información de la póliza colectiva");
+        linkEditarCoaseguro.shouldBeVisible();
+        linkEditarCoaseguro.shouldBeEnabled();
+        linkEliminarCoaseguro.shouldBeVisible();
+        linkEliminarCoaseguro.shouldBeEnabled();
+    }
+
+    public void clicEnEliminarCoaseguro(){
+        linkEliminarCoaseguro.click();
+    }
+
+    public void clicEnEditarCoaseguro(){
+        linkEditarCoaseguro.click();
+    }
+
+    public void validarEliminacionDeCoaseguro(){
+        linkEditarCoaseguro.shouldNotBeVisible();
+        linkEliminarCoaseguro.shouldNotBeVisible();
+        linkAgregarCoaseguro.shouldBeVisible();
+        linkAgregarCoaseguro.shouldBeEnabled();
+    }
+
+    public void validarPantallaDeEdicion(){
+        MatcherAssert.assertThat(campoPorcentajeParticipacionSura.getText(), containsText("60"));
+        MatcherAssert.assertThat(campoPorcentajeParticipacionOtra.getText(), containsText("40"));
+        MatcherAssert.assertThat(campoAseguradora.getText(), containsText("Axxa"));
+    }
+
+    public void clicEnCancelarDeCoaseguro(){
+        botonCancelarCoaseguro.click();
+        waitForTextToAppear("Información de la póliza colectiva");
+    }
+
 
 }

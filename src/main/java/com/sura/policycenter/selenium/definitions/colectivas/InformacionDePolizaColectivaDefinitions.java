@@ -5,6 +5,7 @@ import com.sura.policycenter.selenium.steps.colectivas.InformacionDePolizaColect
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
@@ -33,6 +34,7 @@ public class InformacionDePolizaColectivaDefinitions {
         informacionDePolizaColectivaSteps.cambiarLaFechaDeInicioDeVigencia();
     }
 
+    @Pending
     @When("cambie la fecha de inicio de vigencia de la poliza colectiva mas de 60 dias  hacia atrás o 60 hacia adelante <sesentaDias>")
     public void cambiarLaFechaDeInicioDeVigenciaSesentaDias(@Named("sesentaDias") String sesentaDias){
         informacionDePolizaColectivaSteps.cambiarLaFechaDeInicioDeVigenciaSesentaDias(sesentaDias);
@@ -46,6 +48,35 @@ public class InformacionDePolizaColectivaDefinitions {
     @When("ingrese el porcentaje de descuento invalido <porcentaje>")
     public void ingresarPorcentajeDeDescuentoDeLaPoliza(@Named("porcentaje") String porcentaje){
         informacionDePolizaColectivaSteps.ingresarPorcentajeDeDescuentoDeLaPoliza(porcentaje);
+    }
+
+    @When("de clic en agregar coaseguro")
+    public void darClicEnAgregarCoaseguro(){
+        informacionDePolizaColectivaSteps.darClicEnAgregarCoaseguro();
+    }
+
+    @When("ingrese el porcentaje de participacion de las aseguradoras")
+    public void ingresarPorcentajeDeParticipacion(){
+        informacionDePolizaColectivaSteps.ingresarPorcentajeDeParticipacion();
+    }
+    @When("de clic en Aceptar de la ventana Coaseguro")
+    public void darClicEnAceptarDeCoaseuguro(){
+        informacionDePolizaColectivaSteps.darClicEnAceptarDeCoaseuguro();
+    }
+
+    @When("de clic en la opcion de editar el coaseguro")
+    public void darClicEnEditarDeCoaseuguro(){
+        informacionDePolizaColectivaSteps.darClicEnEditarDeCoaseuguro();
+    }
+
+    @When("de clic en Cancelar de la edicion de coaseguro")
+    public void darClicEnCancelarDeCoaseuguro(){
+        informacionDePolizaColectivaSteps.darClicEnCancelarDeCoaseuguro();
+    }
+
+    @When("de clic en la opcion eliminar de coaseguro")
+    public void darClicEnEliminarCoaseuguro(){
+        informacionDePolizaColectivaSteps.darClicEnEliminarCoaseuguro();
     }
 
     @Then("debo ver los siguiente campos en la pantalla con su respectiva informacion: $informacionPolizaColectiva")
@@ -77,5 +108,22 @@ public class InformacionDePolizaColectivaDefinitions {
     public void validarMensajeDeValidacionDelCampoDescuento(@Named("mensaje") String mensaje){
         informacionDePolizaColectivaSteps.validarMensajeDeValidacionDelCampoDescuento(mensaje);
     }
+
+    @Then("debo ver en la ventana de informacion de la poliza colectiva las opciones de editar y eliminar coaseguro")
+    public void validarOpcionesDeEditarYEliminar(){
+        informacionDePolizaColectivaSteps.validarOpcionesDeEditarYEliminar();
+    }
+
+    @Then("debo ver la ventana de coaseguro con los datos diligenciados")
+    public void validarLaOpcionDeEditarCoaseguro(){
+        informacionDePolizaColectivaSteps.validarLaOpcionDeEditarCoaseguro();
+    }
+
+    @Then("debo ver nuevamente el link de agregar coaseguro")
+    public void validarEliminacionDeCoaseguro(){
+        informacionDePolizaColectivaSteps.validarEliminacionDeCoaseguro();
+    }
+
+
 }
 

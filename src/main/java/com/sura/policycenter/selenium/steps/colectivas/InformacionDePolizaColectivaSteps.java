@@ -65,7 +65,49 @@ public class InformacionDePolizaColectivaSteps extends ScenarioSteps{
         informacionDePolizaColectivaPage.ingresarDescuentoPoliza(porcentaje);
     }
 
+    @Step
     public void validarMensajeDeValidacionDelCampoDescuento(String mensaje) {
         informacionDePolizaColectivaPage.validarMensajeDescuentoInvalido(mensaje);
+    }
+
+    @Step
+    public void darClicEnAgregarCoaseguro() {
+        informacionDePolizaColectivaPage.clicEnAgregarCoaseguro();
+    }
+
+    @Step
+    public void ingresarPorcentajeDeParticipacion() {
+        informacionDePolizaColectivaPage.ingresarPorcentajeDeParticipacion();
+    }
+
+    @Step
+    public void darClicEnAceptarDeCoaseuguro() {
+        informacionDePolizaColectivaPage.darClicEnAceptarDeCoaseuguro();
+    }
+
+    @Step
+    public void validarOpcionesDeEditarYEliminar() {
+        informacionDePolizaColectivaPage.validarLinksDeCoaseguroVisiblesYHabilitados();
+    }
+
+    @Step
+    public void darClicEnEditarDeCoaseuguro() {
+        informacionDePolizaColectivaPage.clicEnEditarCoaseguro();
+    }
+
+    public void darClicEnCancelarDeCoaseuguro() {
+        informacionDePolizaColectivaPage.clicEnCancelarDeCoaseguro();
+    }
+
+    public void darClicEnEliminarCoaseuguro() {
+        informacionDePolizaColectivaPage.clicEnEliminarCoaseguro();
+    }
+
+    public void validarLaOpcionDeEditarCoaseguro() {
+        informacionDePolizaColectivaPage.validarPantallaDeEdicion();
+    }
+
+    public void validarEliminacionDeCoaseguro() {
+        informacionDePolizaColectivaPage.validarEliminacionDeCoaseguro();
     }
 }
