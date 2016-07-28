@@ -2,17 +2,16 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
-import java.util.concurrent.TimeUnit;
+
 
 
 public class CambioDePolizaPage extends PageObject {

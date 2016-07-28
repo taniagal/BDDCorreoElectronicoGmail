@@ -11,8 +11,6 @@ import org.slf4j.LoggerFactory;
 
 public class ConsultaDeCuentaSteps extends ScenarioSteps {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
     CuentaPages cuenta = null;
     BusquedaDeCuentasPage busquedaDeCuentas = null;
     BuscarNavBarPages navegacion;

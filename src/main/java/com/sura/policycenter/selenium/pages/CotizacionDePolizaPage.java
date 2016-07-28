@@ -20,7 +20,6 @@ import org.slf4j.LoggerFactory;
 
 public class CotizacionDePolizaPage extends PageObject{
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(CotizacionDePolizaPage.class);
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     private WebElementFacade tituloDePagina;
@@ -82,14 +81,10 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade itemRevisionPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:SubmissionWizard_ReviewSummaryDV:PrimaryNamedInsured-inputEl']")
     private WebElementFacade tomadorPrimario;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:ReviewSummaryCV:0:PolicyLineSummaryPanelSet:0:0:drivername-inputEl']")
-    private WebElementFacade asegurado;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade grupoMensajes;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PreQualification']/div/span")
     private WebElementFacade botonCalificacion;
-    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
-    private WebElementFacade divMensaje;
 
     public CotizacionDePolizaPage(WebDriver driver){
         super(driver);
@@ -141,8 +136,7 @@ public class CotizacionDePolizaPage extends PageObject{
 
         if (campoNumeroDeCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("numeroCotizacion"))) {
             datosCotizacion = informacionCotizacion.getRows().get(0);
-        }
-        else{
+        }else{
             datosCotizacion = informacionCotizacion.getRows().get(1);
         }
         MatcherAssert.assertThat(campoNumeroDeCotizacion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("numeroCotizacion"))));

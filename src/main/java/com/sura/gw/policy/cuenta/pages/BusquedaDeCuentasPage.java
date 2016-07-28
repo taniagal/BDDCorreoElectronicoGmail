@@ -1,17 +1,14 @@
 package com.sura.gw.policy.cuenta.pages;
 
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
-
-
 public class BusquedaDeCuentasPage extends PageObject {
     private static String TXT_NUMERO_DE_CUENTA = "//input[contains(@id,'AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl')]";
     private static String BTN_BUSCAR = "//a[contains(@id,'AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search')]";
-    private static String PRIMER_REGISTRO = "//a[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']";
 
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
@@ -44,7 +41,6 @@ public class BusquedaDeCuentasPage extends PageObject {
         WebElementFacade enlaceNumCuenta = find(By.linkText(numCuenta)).waitUntilVisible();
         shouldBeVisible(enlaceNumCuenta);
         enlaceNumCuenta.click();
-//        waitForTextToAppear("Resumen de la cuenta");
         fluent().await().atMost(5, TimeUnit.SECONDS);
         return switchToPage(CuentaPages.class);
     }

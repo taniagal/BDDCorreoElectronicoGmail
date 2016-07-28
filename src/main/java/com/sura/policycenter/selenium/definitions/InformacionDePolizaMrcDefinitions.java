@@ -9,8 +9,6 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
-
 public class InformacionDePolizaMrcDefinitions {
 
     @Managed
@@ -33,7 +31,7 @@ public class InformacionDePolizaMrcDefinitions {
     }
 
     @When("seleccione el producto <nomProducto> a expedir")
-    public void seleccione_el_producto(@Named("nomProducto") String nomProducto){
+    public void seleccioneElProducto(@Named("nomProducto") String nomProducto){
         informacionDePolizaMrcSteps.seleccionar_producto(nomProducto);
     }
 

@@ -9,11 +9,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-
-import javax.swing.*;
 
 public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
@@ -48,9 +44,9 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     }
 
     public void irAVehiculos() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuItemVehiculos).shouldBePresent();
+        waitFor(menuItemVehiculos).shouldBePresent();
         menuItemVehiculos.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
+        waitFor(botonCrearVehiculo).click();
     }
 
     public void crearVehiculo(){
@@ -64,7 +60,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
 
     public void agregarVehiculo(ExamplesTable datosVehiculo){
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtPlaca).shouldBePresent();
+        waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
         waitUntil(3200);
@@ -86,7 +82,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     }
 
     public void agregarCodigoFasecolda(String codigo) {
-       campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
+       withTimeoutOf(25,TimeUnit.SECONDS).waitFor(campoTxtCodigoFasecolda).sendKeys(codigo);
        campoTxtPlaca.click();
        waitUntil(1000);
     }

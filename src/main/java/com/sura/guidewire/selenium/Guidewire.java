@@ -2,6 +2,7 @@ package com.sura.guidewire.selenium;
 
 import com.google.common.base.Function;
 import java.util.List;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
@@ -10,7 +11,6 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -19,9 +19,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.Keys;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Guidewire extends PageObject {
 
@@ -125,8 +124,7 @@ public class Guidewire extends PageObject {
                     return false;
                 }
             });
-        }
-        catch (TimeoutException e) {
+        }catch (TimeoutException e) {
         }
     }
 
@@ -145,12 +143,10 @@ public class Guidewire extends PageObject {
                 .pollingEvery(5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
 
-        WebElementFacade elemento = espera.until(new Function<WebDriver, WebElementFacade>() {
+        return espera.until(new Function<WebDriver, WebElementFacade>() {
             public WebElementFacade apply(WebDriver driver) {
                 return findBy(xpath);
             }
         });
-
-        return elemento;
     }
 }

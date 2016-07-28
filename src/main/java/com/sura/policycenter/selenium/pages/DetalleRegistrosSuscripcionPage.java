@@ -1,15 +1,15 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 
-import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 
@@ -61,21 +61,21 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
     }
 
     public void validarCamposDetalle(String producto, String nroEnvio, String estado, String nroPoliza){
-        assertThat(lblProducto.getText(), is(equalTo(producto)));
-        assertThat(lblNroEnvio.getText(), is(equalTo(nroEnvio)));
-        assertThat(lblEstadoDetalle.getText(), is(equalTo(estado)));
-        assertThat(lblNroPoliza.getText(), is(equalTo(nroPoliza)));
-        assertThat(lblCrearFecha.getText(), is(notNullValue()));
+        MatcherAssert.assertThat(lblProducto.getText(), is(equalTo(producto)));
+        MatcherAssert.assertThat(lblNroEnvio.getText(), is(equalTo(nroEnvio)));
+        MatcherAssert.assertThat(lblEstadoDetalle.getText(), is(equalTo(estado)));
+        MatcherAssert.assertThat(lblNroPoliza.getText(), is(equalTo(nroPoliza)));
+        MatcherAssert.assertThat(lblCrearFecha.getText(), is(notNullValue()));
         lblFechaCierre.shouldBeVisible();
     }
 
     public void validarCamposRegistros(String nombre, String tipoDeTransaccion, String nroDeTransacciones) {
         lblTransaccionDetalle.withTimeoutOf(8, TimeUnit.SECONDS).waitUntilPresent();
-        assertThat(lblNombre.getText(), is(equalTo(nombre)));
-        assertThat(lblPrimeraFechaVigencia.getText(), is(notNullValue()));
-        assertThat(lblUltimaFechaVigencia.getText(), is(notNullValue()));
-        assertThat(lblTipoTransaccion.getText(), is(equalTo(tipoDeTransaccion)));
-        assertThat(lblNroTransaccion.getText(), is(equalTo(nroDeTransacciones)));
+        MatcherAssert.assertThat(lblNombre.getText(), is(equalTo(nombre)));
+        MatcherAssert.assertThat(lblPrimeraFechaVigencia.getText(), is(notNullValue()));
+        MatcherAssert.assertThat(lblUltimaFechaVigencia.getText(), is(notNullValue()));
+        MatcherAssert.assertThat(lblTipoTransaccion.getText(), is(equalTo(tipoDeTransaccion)));
+        MatcherAssert.assertThat(lblNroTransaccion.getText(), is(equalTo(nroDeTransacciones)));
     }
 
     public void buscarRegistrosSuscripcion() {
@@ -86,8 +86,8 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
     public void validarNombresFiltros(String estado, String transaccion) {
         waitForTextToAppear(estado, 7);
         waitForTextToAppear(transaccion, 7);
-        assertThat(lblEstado.getText(), is(equalTo(estado)));
-        assertThat(lblTransaccion.getText(), is(equalTo(transaccion)));
+        MatcherAssert.assertThat(lblEstado.getText(), is(equalTo(estado)));
+        MatcherAssert.assertThat(lblTransaccion.getText(), is(equalTo(transaccion)));
     }
 
     public void buscarDetalleRegistrosDeSuscripcion() {
@@ -97,11 +97,11 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
     }
 
     public void validarTotal(String total) {
-        assertThat(lblCostoTotal.getText(), is(equalTo(total)));
+        MatcherAssert.assertThat(lblCostoTotal.getText(), is(equalTo(total)));
     }
 
     public void validarSumaGrupo(String suma) {
-        assertThat(lblNroCotizaciones.getText(), is(equalTo(suma)));
+        MatcherAssert.assertThat(lblNroCotizaciones.getText(), is(equalTo(suma)));
     }
 
     public void validarVisibilidadMenuAnalisisDeRiesgo() {
@@ -113,7 +113,7 @@ public class DetalleRegistrosSuscripcionPage extends Guidewire{
     }
 
     public void validarTituloSumatoriaDeCotizaciones(String titulo){
-        assertThat(lblTituloNroCotizaciones.getText(), is(equalTo(titulo)));
+        MatcherAssert.assertThat(lblTituloNroCotizaciones.getText(), is(equalTo(titulo)));
     }
 
 }

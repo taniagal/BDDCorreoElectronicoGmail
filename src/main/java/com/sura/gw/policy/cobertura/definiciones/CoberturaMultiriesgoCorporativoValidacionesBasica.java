@@ -6,6 +6,7 @@ import com.sura.gw.policy.poliza.definitions.InformacionDePoliza;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
+import org.hamcrest.MatcherAssert;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
@@ -13,7 +14,7 @@ import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
@@ -40,7 +41,7 @@ public class CoberturaMultiriesgoCorporativoValidacionesBasica {
         guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
         navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
         navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
-        assertThat(informacionDePoliza.esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), is(equalTo(true)));
+        MatcherAssert.assertThat(informacionDePoliza.esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), is(equalTo(true)));
 
         LOGGER.info("CoberturaMultiriesgoCorporativoValidacionesBasica.dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcion");
     }

@@ -20,7 +20,7 @@ Then espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaci
 
 Examples:
 |cuenta     |organizacion|canal            |producto               |departamento|ciudad  |direccion        |descripcion  |actividad|
-|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|Antioquia   |Medellin|KR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 
@@ -34,8 +34,8 @@ And descripcion <descripcion>, actividad economica <actividad>
 Then que se muestre el mensaje <mensaje>
 
 Examples:
-|cuenta     |organizacion|canal            |producto               |departamento|ciudad  |direccion         |descripcion  |mensaje                                                    |actividad                    |
-|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|Antioquia   |Medellin|KR 65 # 25 - 36   |Edificio Core|La dirección es un riesgo no estandar y debe ser autorizado|Acabado de productos textiles|
+|cuenta     |organizacion|canal            |producto               |departamento|ciudad  |direccion  |descripcion  |mensaje                                                                            |actividad                    |
+|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|Antioquia   |Medellin|CR 65 45 45|Edificio Core|La dirección un riesgo no estandar y debe ser analizado por el Comité de Evaluación|Acabado de productos textiles|
 
 
 
@@ -44,10 +44,11 @@ Given estoy cotizando una poliza de MRC en cuenta <cuenta>
 When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto <producto> para expedir la poliza
-And  agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+And agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
 Then que se muestre el mensaje <mensaje>
 
 Examples:
 |cuenta     |organizacion|canal            |producto               |departamento|ciudad  |direccion     |descripcion  |mensaje                                 |actividad                    |
 |C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|Antioquia   |Medellin|2X´H !2 ~0+ **|Edificio Core|La dirección 2X´H !2 ~0+ ** no es válida|Acabado de productos textiles|
+
