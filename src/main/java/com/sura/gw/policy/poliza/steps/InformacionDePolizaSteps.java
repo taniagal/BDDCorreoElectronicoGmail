@@ -78,12 +78,12 @@ public class InformacionDePolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionar_boton_acciones() throws Exception{
+    public void seleccionar_boton_acciones() {
         accionesWidget.seleccionarBtnAcciones();
     }
 
     @Step
-    public void seleccionar_opcion_cambiar_poliza() throws Exception{
+    public void seleccionar_opcion_cambiar_poliza() {
         accionesWidget.seleccionarOpcionCambioDePoliza();
     }
 

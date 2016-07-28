@@ -8,7 +8,6 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.Keys;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class EdificiosyUbicacionesWidget extends PageObject {
 
@@ -52,32 +51,33 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         String XPATH_DIRECCION = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']";
         String XPATH_ACTIVIDAD_ECONOMICA = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']";
 
-        enter(pais).into($(XPATH_PAIS));
-        fluent().await().atMost(1, TimeUnit.SECONDS);
-        getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
-        fluent().await().atMost(1, TimeUnit.SECONDS);
 
+        $(XPATH_PAIS).type(pais);
+        $(XPATH_PAIS).click();
+
+        waitFor(3).seconds();
         enter(depto).into($(XPATH_DEPTO));
-        fluent().await().atMost(1, TimeUnit.SECONDS);
-        getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
-        fluent().await().atMost(1, TimeUnit.SECONDS);
+        waitFor(3).seconds();
+        $(XPATH_DEPTO).click();
 
+        waitFor(3).seconds();
         enter(ciudad).into($(XPATH_CIUDAD));
-        fluent().await().atMost(1, TimeUnit.SECONDS);
-        getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
-        fluent().await().atMost(1, TimeUnit.SECONDS);
+        waitFor(3).seconds();
+        $(XPATH_CIUDAD).click();
 
+        waitFor(3).seconds();
         enter(direccion).into($(XPATH_DIRECCION));
-        fluent().await().atMost(1, TimeUnit.SECONDS);
-        getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
-        fluent().await().atMost(1, TimeUnit.SECONDS);
+        waitFor(3).seconds();
+        $(XPATH_DIRECCION).click();
 
-        enter(actividadEconomica).into($(XPATH_ACTIVIDAD_ECONOMICA));
-        fluent().await().atMost(1, TimeUnit.SECONDS);
-        getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
-        fluent().await().atMost(1, TimeUnit.SECONDS);
+        waitFor(3).seconds();
+        enter("Acabado de productos textiles").into($(XPATH_ACTIVIDAD_ECONOMICA));
+        waitFor(10).seconds();
+        $(XPATH_ACTIVIDAD_ECONOMICA).sendKeys(Keys.ENTER);
+        waitFor(3).seconds();
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
+        waitFor(10).seconds();
     }
 
 
@@ -85,5 +85,12 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         agregarNuevaUbicacion("Colombia", "ANTIOQUIA", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
     }
 
+
+    private List<WebElementFacade> getListaDesplegable() {
+        String XPATH_LISTA_DESPLEGABLE = "//div[contains(@class,'x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box x-boundlist-above')]/div/ul/li";
+        List<WebElementFacade> lista;
+        lista = findAll(XPATH_LISTA_DESPLEGABLE);
+        return lista;
+    }
 
 }

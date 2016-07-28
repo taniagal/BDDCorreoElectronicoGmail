@@ -24,4 +24,4 @@ Then espero ver inhabilitado para modificacion los siguientes
 
 Examples:
 | numPoliza     | rolUsuario | descripcion |
-| TEST_11111111 | Asesor     |             |
+| TEST_11111211 | Asesor     |             |

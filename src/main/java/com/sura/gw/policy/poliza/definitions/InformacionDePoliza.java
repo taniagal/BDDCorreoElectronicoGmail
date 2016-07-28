@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
@@ -138,15 +139,11 @@ public class InformacionDePoliza {
     @When("cuando intente cambiar informacion de la poliza MRC")
     public void cuandoIntenteCambiarInformacionDeLaPolizaMRC() {
         LOGGER.info("InformacionDePoliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
-        try {
+
             informacionDePolizaSteps.seleccionar_boton_acciones();
             informacionDePolizaSteps.seleccionar_opcion_cambiar_poliza();
             informacionDePolizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
             informacionDePolizaSteps.seleccionar_opcion_informacion_de_poliza();
-
-        } catch (Exception e) {
-            LOGGER.error("ERROR INESPERADO " + e.getMessage());
-        }
     }
 
     @Then("espero ver inhabilitado para modificacion los siguientes $campos")
@@ -179,7 +176,7 @@ public class InformacionDePoliza {
     @Then("espero ver mensajes de advertencia indicandome la direccion es un riesgo consultable")
     public void entoncesEsperoVerMensajeDeAdvertenciaQueUbicacionEsRiesgoConsultable() {
         assertThat(informacionDePolizaSteps.espacioDeTrabajo(),
-                hasItems("2: CR 65 # 45 - 45, 05001000, La dirección un riesgo no estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
+                contains("La dirección un riesgo no estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
                 ));
 
     }
