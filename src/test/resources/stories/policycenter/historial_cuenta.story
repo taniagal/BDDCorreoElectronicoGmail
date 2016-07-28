@@ -1,3 +1,5 @@
+Historial Cuenta
+
 Meta:
 
 Narrative:
@@ -7,8 +9,8 @@ y que esta se actualice cada que se realice una transaccion a la cuenta o a una 
 
 Scenario: Historial de la cuenta
 GivenStories: stories/policycenter/login_policy.story
-Given estoy en una cuenta <numCuenta>
-When ingreso al historial
+Given ingreso a una cuenta <numCuenta>
+When ingrese al historial
 Then mostrar la informacion del historial de la cuenta
 
 Examples:

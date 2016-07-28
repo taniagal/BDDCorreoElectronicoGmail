@@ -49,5 +49,4 @@ public class PolizaNavBarPages extends PageObject {
         enter(valorInput).into(element(xpathInput));
         getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
     }
-
 }

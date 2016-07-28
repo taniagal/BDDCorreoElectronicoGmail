@@ -16,12 +16,12 @@ public class Navegacion {
         menuPoliza.seleccionar_opcion_desplegable_de_menu_superior_poliza();
     }
 
-    public void cuandoBusquePorNumeroDeSubscripcionDePoliza(String numeroSubscripcion) {
-        menuPoliza.ingresar_numero_de_subscripcion_y_teclear_enter(numeroSubscripcion);
-    }
-
     public void cuandoBusquePorNumeroDeDePoliza(String numeroDePoliza) {
         menuPoliza.ingresar_numero_de_poliza_y_teclear_enter(numeroDePoliza);
+    }
+
+    public void cuandoBusquePorNumeroDeSubscripcionDePoliza(String numeroSubscripcion) {
+        menuPoliza.ingresar_numero_de_subscripcion_y_teclear_enter(numeroSubscripcion);
     }
 
 }
