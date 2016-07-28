@@ -74,8 +74,8 @@ Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exce
 
 Examples:
 |numeroCuenta   |organizacion|canal            |porcentaje |mensaje                                                                          |
-|C000888888     |Sura        |Canal Tradicional|60         |Descuento Póliza : El descuento de la póliza debe estar en un rango de 0% a 50%. |
-|C000888888     |Sura        |Canal Tradicional|abc        |Descuento Póliza : debe ser un valor numérico.                                   |
+|C000888888     |Sura        |Canal Tradicional|60         |Descuento póliza : El descuento de la póliza debe estar en un rango de 0% a 50%. |
+|C000888888     |Sura        |Canal Tradicional|abc        |Descuento póliza : debe ser un valor numérico.                                   |
 
 
 Scenario: Validar longitud decimales porcentaje descuento de poliza
@@ -89,7 +89,7 @@ Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exce
 
 Examples:
 |numeroCuenta   |organizacion|canal            |porcentaje     |mensaje                                                                                 |
-|C000888888     |Sura        |Canal Tradicional|20.325         |Descuento Póliza : El descuento de la póliza puede tener máximo 2 cifras decimales.     |
+|C000888888     |Sura        |Canal Tradicional|20.325         |Descuento póliza : El descuento de la póliza puede tener máximo 2 cifras decimales.     |
 
 Scenario: Validar campo poliza financiada
 Given ya se inicio una nueva suscripcion <numeroCuenta>
