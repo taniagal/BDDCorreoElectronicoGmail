@@ -62,7 +62,7 @@ Examples:
 Scenario: validacion de exclusividad en la cotizacion
 Given se registraron los riesgos y coberturas que se desean cotizar <cotizacion>
 When realice la cotizacion
-And ya exista una cotizacion en estado "cotizado" del mismo cliente, para el producto Multiriesgo corporativo con un
+And ya exista una cotizacion en estado cotizado del mismo cliente, para el producto Multiriesgo corporativo con un
 agente diferente al que se ingreso
 Then no debe permitir cotizar; se debe mostrar el mensaje de error <mensaje>
 
