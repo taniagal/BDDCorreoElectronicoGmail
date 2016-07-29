@@ -39,12 +39,27 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
     }
 
     @Step
+    public void ingresar_valores_accesorios(String valorAccesorio, String valorAccesorioEsp) {
+        opcionesInformacionDelVehiculoPage.ingresaValoresAccesorios(valorAccesorio, valorAccesorioEsp);
+    }
+
+    @Step
+    public void ingresar_valores_de_bonificacion(String valorBoniTecnica, String valorBoniComercial) {
+        opcionesInformacionDelVehiculoPage.ingresaValoresBonificacion(valorBoniTecnica , valorBoniComercial);
+    }
+
+    @Step
     public void validar_campos_informacion_vehiculo() {
         opcionesInformacionDelVehiculoPage.validaMensajePantalla();
     }
 
     @Step
-    public void ingresar_valores_accesorios(String valorAccesorio, String valorAccesorioEsp) {
-        opcionesInformacionDelVehiculoPage.ingresaValoresAccesorios(valorAccesorio, valorAccesorioEsp);
+    public void validar_campos_informacion_vehiculo(String mensaje) {
+        opcionesInformacionDelVehiculoPage.validaMensajePantalla(mensaje);
+    }
+
+    @Step
+    public void validar_poliza_total(){
+        opcionesInformacionDelVehiculoPage.comparaValorAseguradoTotal();
     }
 }

@@ -70,23 +70,20 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     WebElementFacade txtLimite;
     @FindBy(xpath = "//div[contains(@id,'SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:totalInsured_DV-inputEl')]")
     WebElementFacade lblSumaValor;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:4:RateModifier-inputEl']")
+    WebElementFacade txtBonificacionTecnica;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:5:RateModifier-inputEl']")
+    WebElementFacade txtBonificacionComercial;
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    WebElementFacade btnEscritorio;
 
-
-    String [] compara = new String[2];
-
+    String [] comparaValores = new String[2];
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-
     Actions actions = new Actions(getDriver());
-
     OpcionesInformacionPolizaMrcPage opcionPolizaMrc = new OpcionesInformacionPolizaMrcPage(getDriver());
-
-
-
     public OpcionesInformacionDelVehiculoPage(WebDriver driver) {
         super(driver);
     }
-
-
 
     public void ingresarOpcionVehiculo() {
         opcionPolizaMrc.waitInfoPoliza(itemVehiculo);
@@ -116,16 +113,6 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         opcionPolizaMrc.waitInfoPoliza(btnSiguinete);
     }
 
-    public void calculaTotalValorAsegurado (String valorAccesorio, String valorAccesorioEsp){
-        int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0,8));
-        int valorAccesorioEntero = Integer.parseInt(valorAccesorio);
-        int valorAccesorioEspEntero = Integer.parseInt(valorAccesorioEsp);
-        int valorTotalizado = valorAccesorioEntero + valorAccesorioEspEntero + valorAsegurado;
-        String valorDeLabel = lblSumaValor.getText().substring(0,11);
-        valorDeLabel = valorDeLabel.replaceAll("\\$","").replaceAll(",","");
-        compara[0] = Integer.toString(valorTotalizado);
-        compara[1] = valorDeLabel;
-    }
 
     public void ingresaValoresAccesorios(String valorAccesorio, String valorAccesorioEsp) {
         txtValorAccesorios.clear();
@@ -135,15 +122,32 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         txtAcceEspeciales.sendKeys(valorAccesorioEsp);
         txtValorAsegurado.click();
         waitUntil(1000);
-        calculaTotalValorAsegurado(valorAccesorio , valorAccesorioEsp);
+        int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0,8));
+        int valorAccesorioEntero = Integer.parseInt(valorAccesorio);
+        int valorAccesorioEspEntero = Integer.parseInt(valorAccesorioEsp);
+        int valorTotalizado = valorAccesorioEntero + valorAccesorioEspEntero + valorAsegurado;
+        String valorDeLabel = lblSumaValor.getText().substring(0,11);
+        valorDeLabel = valorDeLabel.replaceAll("\\$","").replaceAll(",","");
+        comparaValores[0] = Integer.toString(valorTotalizado);
+        comparaValores[1] = valorDeLabel;
+    }
+
+    public void ingresaValoresBonificacion(String valorBoniTecnica, String valorBoniComercial) {
+        txtBonificacionTecnica.clear();
+        txtBonificacionTecnica.sendKeys(valorBoniTecnica);
+        txtBonificacionComercial.click();
+        txtBonificacionComercial.clear();
+        txtBonificacionComercial.sendKeys(valorBoniComercial);
     }
 
     public void validarPaginaSiguiente() {
+        String bug = "Ljava.lang.String";
         btnSiguinete.click();
         opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
-        txtPlaca.click();
+        assertThat("Error no controlado en la poliza (Java Lang)", !cajaMensaje.containsText(bug));
         btnSiguinete.click();
         assertThat("Error: debio pasar a siguinete pagina", cajaMensaje.isVisible());
+        waitUntil(10000);
     }
 
     public void validaMensajePantalla() {
@@ -153,10 +157,14 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         assertThat("el campo descuento, recargo y suavizacion deben ser decimales", cajaMensaje.containsText("debe tener máximo dos enteros y máximo dos decimales"));
     }
 
-    public void comparaValorAseguradoTotal(){
-        assertThat("Los valor final no corresponde al calculado", compara[0].equals(compara[1]));
+    public void validaMensajePantalla(String mensaje) {
+        btnSiguinete.click();
+        opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
+        assertThat("no se valido el campo bonificacion tecnica y comercial ", cajaMensaje.containsText(mensaje));
     }
 
-
+    public void comparaValorAseguradoTotal(){
+        assertThat("Los valor final no corresponde al calculado", comparaValores[0].equals(comparaValores[1]));
+    }
 }
 
