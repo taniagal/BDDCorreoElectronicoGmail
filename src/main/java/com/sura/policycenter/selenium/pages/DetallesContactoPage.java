@@ -1,13 +1,14 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class  DetallesContactoPage extends Guidewire {
 
@@ -250,9 +251,7 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void setCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario){
-        campoTxtCorreoElectronicoPrimarioEmpresa.clear();
-        waitUntil(300);
-        campoTxtCorreoElectronicoPrimarioEmpresa.sendKeys(correoElectronicoPrimario);
+        ingresarDato(campoTxtCorreoElectronicoPrimarioEmpresa,correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
         campoTxtTelefonoOficina.sendKeys(telefonoOficina);
         ingresarDato(campoTxtCorreoElectronicoSecundarioEmpresa, correoElectronicoSecundario);
@@ -261,8 +260,10 @@ public class  DetallesContactoPage extends Guidewire {
         dtlCntJ[7]= correoElectronicoSecundario;
     }
 
+    // TODO: 25/07/2016 Existe un riesgo de que se quede en este ciclo permanentemente 
     public void ingresarDato(WebElementFacade elemento, String dato){
         do {
+            waitFor(elemento);
             elemento.clear();
             waitFor(elemento).shouldContainText("");
             elemento.sendKeys(dato);
