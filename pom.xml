@@ -104,8 +104,7 @@
                 <configuration>
                     <includes>
                         <include>**/policycenter/*.java</include>
-                        <include>**/policy/poliza/*.java</include>
-
+                  
                     </includes>
                     <excludes>
                     </excludes>
