@@ -118,7 +118,7 @@ public class BusquedaDePolizaPage extends PageObject {
 
 
     public void validarMensajeDeConsultaSinResultados(String mensaje) {
-        msjValidacion.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(msjValidacion).waitUntilPresent();
         MatcherAssert.assertThat(msjValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
