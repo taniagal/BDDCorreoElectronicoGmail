@@ -41,6 +41,11 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregar_coberturas(coberturas);
     }
 
+    @When("seleccione todas las coberturas: $coberturas")
+    public void agregarTodasLasCoberturas(ExamplesTable coberturas) {
+        tarifaAutosSteps.seleciconar_coberturas(coberturas);
+    }
+
     @Then("el resultado de la cotizacion debe ser <valor>")
     public void verificarResultado(@Named("valor")String valor){
         tarifaAutosSteps.verificar_tarifacion(valor);

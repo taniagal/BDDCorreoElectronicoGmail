@@ -37,10 +37,23 @@ public class TarifaAutosSteps extends ScenarioSteps {
     @Step
     public void agregar_coberturas(ExamplesTable datosCoberturas) {
         tarifaAutosPage.setCoberturas(datosCoberturas);
+        tarifaAutosPage.desMarcarCoberturas();
+        tarifaAutosPage.cotizar();
+    }
+
+    @Step
+    public void seleciconar_coberturas(ExamplesTable coberturas) {
+        tarifaAutosPage.setCoberturas(coberturas);
+        tarifaAutosPage.selectCoberturas(coberturas);
+        vehiculoPage.volver();
+        vehiculoPage.clickSiguiente();
+        tarifaAutosPage.selectCoberturas2(coberturas);
+        tarifaAutosPage.cotizar();
     }
 
     @Step
     public void verificar_tarifacion(String valor) {
         tarifaAutosPage.verificarTarifacion(valor);
     }
+
 }

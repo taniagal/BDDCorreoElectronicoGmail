@@ -10,8 +10,6 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 public class ValidacionesInformacionDeVehiculoPage extends Commons {
@@ -20,7 +18,9 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
     private WebElementFacade botonCrearVehiculo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
-    private WebElementFacade botonsiguiente;
+    private WebElementFacade botonSiguiente;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Prev-btnInnerEl']")
+    private WebElementFacade botonVolver;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
     private WebElementFacade campoTxtPlaca;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
@@ -56,7 +56,12 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     }
 
     public void clickSiguiente() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonsiguiente).click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+    }
+
+    public void volver(){
+        botonVolver.click();
+        waitFor(campoTxtchasis).shouldBePresent();
     }
 
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
