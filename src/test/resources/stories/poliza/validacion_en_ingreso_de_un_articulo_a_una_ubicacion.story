@@ -16,8 +16,24 @@ When cuando intente ingresar un articulo para una ubicacion para comprobar las v
 Then espero ver mensajes de advertencia indicandome que sobrepase los limites de valores para el valor del articulo
 
 Examples:
+| numSubscripcion | rolUsuario |descripcion|
+| 22221237        | Asesor     |Numero de subscripcion que cuenta con ubicaciones|
+
+
+
+
+
+
 | numSubscripcion | rolUsuario | descripcion |
 | 22222237        | Asesor     |             |
+| numSubscripcion | rolUsuario |descripcion|
+| 22222237        | Asesor     |Numero de subscripcion que cuenta con ubicaciones|
+
+
+
+
+
+
 
 
 

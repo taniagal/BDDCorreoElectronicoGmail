@@ -242,10 +242,10 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         this.seleccionarUnContacto("RICARDO GIRALDO");
         WebElementFacade campoDireccionDetalle = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']");
         Integer longitudCampo = campoDireccionDetalle.getValue().length();
-        MatcherAssert.assertThat(longitudCampo.toString(), Is.is(Matchers.equalTo(direccionOk)));
         linkVolverAContacto.click();
         botonAceptarMensaje.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
         waitForTextToAppear("Contactos de archivo de cuenta", 10000);
+        MatcherAssert.assertThat(longitudCampo.toString(), Is.is(Matchers.equalTo(direccionOk)));
     }
 
     public void editarDireccionCampoPais(String pais) {
