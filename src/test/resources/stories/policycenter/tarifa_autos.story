@@ -19,10 +19,10 @@ And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|
 |T64701|2011  |01601225        |MEDELLIN          |Particular       |null  |null |null           |
 And ingrese las coberturas:
-|limite|deducible|
-|840   |0        |
-Then el resultado de la cotizacion debe ser
+|limite|deducible|abogado |
+|32    |0        |Opción 1|
+Then el resultado de la cotizacion debe ser <valor>
 
 Examples:
-|cuenta     |producto|
-|C000888888 |Autos   |
+|cuenta     |producto|valor     |
+|C000888888 |Autos   |247,667.00|

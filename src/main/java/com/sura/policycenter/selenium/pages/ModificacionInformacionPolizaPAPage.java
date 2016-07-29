@@ -1,7 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -13,10 +15,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-public class ModificacionInformacionPolizaPAPage extends Guidewire{
+public class ModificacionInformacionPolizaPAPage extends Commons{
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionInformacionPolizaPAPage.class);
 
@@ -115,11 +115,11 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
 
     public void irAModificarInformacionPoliza() {
         waitUntil(2500);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuAcciones).shouldBePresent();
+        waitFor(menuAcciones).shouldBePresent();
         menuAcciones.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(itemCambiarPoliza).shouldBeVisible();
+        waitFor(itemCambiarPoliza).shouldBeVisible();
         itemCambiarPoliza.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
+        waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
         botonSiguienteInfoPoliza.click();
         waitUntil(2000);
     }
@@ -167,21 +167,21 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
 
     public void adicionarSegundoTomador(String tipoDocumento, String numeroDocumento) {
         waitUntil(5000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTomadorSecundario).shouldBePresent();
+        waitFor(labelTomadorSecundario).shouldBePresent();
         WebElementFacade botonTomadorSecundario = findBy(".//tr[12]/td/table/tbody/tr/td[2]/table/tbody/tr/td[3]/a/img");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonTomadorSecundario).click();
+        waitFor(botonTomadorSecundario).click();
         WebElementFacade itemPersonaDirectorio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-textEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
+        waitFor(itemPersonaDirectorio).click();
         waitUntil(1000);
         WebElementFacade campoTipoDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTipoDocumento).typeAndTab(tipoDocumento);
+        waitFor(campoTipoDocumento).typeAndTab(tipoDocumento);
         waitUntil(1000);
         WebElementFacade campoNumeroDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoNumeroDocumento).type(numeroDocumento);
+        waitFor(campoNumeroDocumento).type(numeroDocumento);
         WebElementFacade botonBuscarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonBuscarContacto).click();
+        waitFor(botonBuscarContacto).click();
         WebElementFacade botonSeleccionarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSeleccionarContacto).shouldBeVisible();
+        waitFor(botonSeleccionarContacto).shouldBeVisible();
         botonSeleccionarContacto.click();
     }
 
@@ -207,7 +207,6 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
             MatcherAssert.assertThat(labelDescripcionDireccionSegundoTomador.getText(), Is.is(Matchers.equalTo(datosSegundoTomador.get("descripcionDireccion"))));
             MatcherAssert.assertThat(campoTipoDocumentoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
             MatcherAssert.assertThat(campoNumeroDocumentoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
-            //MatcherAssert.assertThat(textoTelefonoSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
             MatcherAssert.assertThat(campoDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
             MatcherAssert.assertThat(campoTipoDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
             MatcherAssert.assertThat(campoDescripcionDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
@@ -219,14 +218,14 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
     }
 
     public void validarTomadorRiesgo() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCotizar).click();
+        waitFor(botonCotizar).click();
         waitUntil(1000);
     }
 
     public void validarBloqueoSegundoTomador(String mensaje) {
         String validacion = null;
         WebElementFacade labelResultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelResultadosValidacion).shouldBePresent();
+        waitFor(labelResultadosValidacion).shouldBePresent();
         WebElementFacade grupoMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
         try {
             MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));

@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+
+import com.sura.commons.selenium.Commons;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +22,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
 
-    Guidewire guidewire = new Guidewire(getDriver());
+    Commons commons = new Commons(getDriver());
     Actions acciones = new Actions(getDriver());
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']/div")
@@ -95,7 +96,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
     }
 
     public void agregarAsegurado() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonAgregar).waitUntilPresent();
+        waitFor(botonAgregar).waitUntilPresent();
         botonAgregar.click();
     }
 
@@ -108,7 +109,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        elementosAgregar = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@class='x-box-inner x-vertical-box-overflow-body']/div/div/a/span");
+        elementosAgregar = findAll(".//*[@class='x-box-inner x-vertical-box-overflow-body']/div/div/a/span");
         for (int i = 1; i < elementosRequeridos.size(); i++) {
             for (WebElementFacade opciones : elementosAgregar) {
                 if(elementosRequeridos.get(i).equals(opciones.getText()) && elementosAgregar.size()==(elementosRequeridos.size()-1)){
@@ -121,45 +122,45 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
     }
 
     public void agregarAseguradoContactoDeLaCuenta() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionContactoDeCuenta).waitUntilPresent();
+        waitFor(opcionContactoDeCuenta).waitUntilPresent();
         acciones.moveToElement(opcionContactoDeCuenta).release(opcionContactoDeCuenta).build().perform();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(contactoDeCuenta).waitUntilPresent();
+        waitFor(contactoDeCuenta).waitUntilPresent();
         acciones.moveToElement(contactoDeCuenta).release().click().build().perform();
 
     }
 
     public void agregarAseguradoContactoDelDirectorio() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionContactoDelDirectorio).waitUntilPresent();
+        waitFor(opcionContactoDelDirectorio).waitUntilPresent();
         opcionContactoDelDirectorio.click();
     }
 
     public void seleccionarContactoDelDirectorio() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(selectContactoDelDirectorio).waitUntilPresent();
+        waitFor(selectContactoDelDirectorio).waitUntilPresent();
         selectContactoDelDirectorio.click();
     }
 
     public void seleccionarNuevaPersonaNatural() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevo).waitUntilPresent();
+        waitFor(opcionNuevo).waitUntilPresent();
         acciones.moveToElement(opcionNuevo).release(opcionNuevo).build().perform();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevoPersonaNatural).waitUntilPresent();
+        waitFor(opcionNuevoPersonaNatural).waitUntilPresent();
         opcionNuevoPersonaNatural.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible().click();
     }
 
     public void seleccionarNuevaPersonaJuridica() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevo).waitUntilPresent();
+        waitFor(opcionNuevo).waitUntilPresent();
         acciones.moveToElement(opcionNuevo).release(opcionNuevo).build().perform();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionNuevoPersonaJuridica).waitUntilPresent();
+        waitFor(opcionNuevoPersonaJuridica).waitUntilPresent();
         opcionNuevoPersonaJuridica.click();
     }
 
     public String validarMensaje() {
-       return withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mensajeBuscarDirectorio).waitUntilVisible().getText();
+       return waitFor(mensajeBuscarDirectorio).waitUntilVisible().getText();
     }
 
     public void validarAseguradosAgregados(ExamplesTable asegurados) {
         Map<String, String> aseguradosAgregados;
-        guidewire.waitUntil(2000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaAsegurados).waitUntilPresent();
+        commons.waitUntil(2000);
+        waitFor(tablaAsegurados).waitUntilPresent();
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         for (int i=0; i<allRows.size(); i++){
             aseguradosAgregados = asegurados.getRows().get(i);
@@ -170,29 +171,29 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
     }
 
     public void volverAAsegurados() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(opcionVolverAAsegurados).waitUntilPresent();
+        waitFor(opcionVolverAAsegurados).waitUntilPresent();
         opcionVolverAAsegurados.click();
     }
 
     public void seleccionarContactoAgregado() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(seleccionarElemento).waitUntilPresent();
+        waitFor(seleccionarElemento).waitUntilPresent();
         seleccionarElemento.click();
     }
 
     public void quitarAseguradoDeLaLista() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonQuitar).waitUntilPresent();
+        waitFor(botonQuitar).waitUntilPresent();
         botonQuitar.click();
     }
 
     public void validarAseguradoEliminado() {
-        guidewire.waitUntil(2000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaAsegurados).waitUntilPresent();
+        commons.waitUntil(2000);
+        waitFor(tablaAsegurados).waitUntilPresent();
         MatcherAssert.assertThat(tablaAsegurados.getText(), Is.is(Matchers.equalTo("")));
     }
 
     public void irASiguiente() {
-        guidewire.waitUntil(2000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        commons.waitUntil(2000);
+        waitFor(botonSiguiente).waitUntilPresent();
         botonSiguiente.click();
     }
 
@@ -204,7 +205,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
     public void irACrearNuevaCotizacion() {
         waitFor(menuPoliza).waitUntilPresent();
         menuPoliza.click();
-        guidewire.waitUntil(2000);
+        commons.waitUntil(2000);
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
         menuPolizaNuevoEnvio.waitUntilVisible().click();

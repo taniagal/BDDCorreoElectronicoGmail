@@ -71,7 +71,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         campoTxtPlaca.click();
         waitUntil(3500);
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitUntil(2500);
+        waitUntil(3000);
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         if (!"null".equals(vehiculo.get("motor"))) {
             campoTxtMotor.sendKeys(vehiculo.get("motor"));

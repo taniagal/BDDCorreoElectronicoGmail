@@ -14,11 +14,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class HistorialCuentaPage extends Guidewire {
+public class HistorialCuentaPage extends Commons {
 
     Actions act = new Actions(getDriver());
-
-public class HistorialCuentaPage extends Commons {
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
@@ -176,4 +174,5 @@ public class HistorialCuentaPage extends Commons {
             MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.equalTo(producto)));
         }
     }
+
 }

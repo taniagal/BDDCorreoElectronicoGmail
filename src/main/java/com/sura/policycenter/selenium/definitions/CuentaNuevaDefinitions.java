@@ -16,6 +16,8 @@ public class CuentaNuevaDefinitions {
     private SeusLoginSteps seusLoginSteps;
     @Steps
     private CuentaNuevaSteps cuentaNuevaSteps;
+    @Managed
+    WebDriver driver;
 
 
     /**

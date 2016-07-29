@@ -2,12 +2,15 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
 import java.util.Map;
 
 public class TarifaAutosPage extends Commons{
@@ -53,10 +56,12 @@ public class TarifaAutosPage extends Commons{
     private WebElementFacade checkBoxAsistencia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
-    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:DetailsButton-btnInnerEl']")
-    private WebElementFacade botonDetalles;
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:0']")
+    private WebElementFacade labelDetalles;
     @FindBy(id = "SubmissionWizard:ViewQuote")
     private WebElementFacade menuItemCotizacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
+    private WebElementFacade comboBoxAbogado;
 
     public TarifaAutosPage(WebDriver driver){
         super(driver);
@@ -90,20 +95,30 @@ public class TarifaAutosPage extends Commons{
 
     public void setCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
-        botonBorrar.click();
-        waitUntil(1000);
-        comboBoxLimite.clear();
-        waitUntil(500);
-        comboBoxLimite.sendKeys(dato.get("limite"));
-        comboBoxLimite.sendKeys(Keys.ENTER);
-        selectItem(comboBoxDeducible,dato.get("deducible"));
-        checkBoxDaniosCarro.click();
-        checkBoxAsistencia.click();
-        checkBoxHurto.click();
-        botonCotizar.click();
-        botonBorrar.waitUntilPresent().click();
-        botonDetalles.waitUntilPresent();
-        waitUntil(500);
-        menuItemCotizacion.click();
+            botonBorrar.click();
+            waitUntil(1000);
+            comboBoxLimite.clear();
+            waitUntil(500);
+            comboBoxLimite.sendKeys(dato.get("limite"));
+            comboBoxLimite.sendKeys(Keys.ENTER);
+            selectItem(comboBoxDeducible, dato.get("deducible"));
+            selectItem(comboBoxAbogado, dato.get(("abogado")));
+            checkBoxDaniosCarro.click();
+            checkBoxAsistencia.click();
+            checkBoxHurto.click();
+            botonCotizar.click();
+            botonBorrar.waitUntilPresent().click();
+        try {
+            waitFor(labelDetalles).shouldBePresent();
+        }catch (StaleElementReferenceException e){
+            e.printStackTrace();
+        }
+            waitUntil(500);
+            menuItemCotizacion.click();
+    }
+
+    public void verificarTarifacion(String valor){
+        WebElementFacade tablaDescripcion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[1]/td[3]");
+        MatcherAssert.assertThat("Error en el valor de la tarifacion", tablaDescripcion.containsText(valor));
     }
 }
