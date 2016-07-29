@@ -24,17 +24,6 @@ Examples:
 
 
 
-| numSubscripcion | rolUsuario | descripcion |
-| 22222237        | Asesor     |             |
-| numSubscripcion | rolUsuario |descripcion|
-| 22222237        | Asesor     |Numero de subscripcion que cuenta con ubicaciones|
-
-
-
-
-
-
-
 
 
 

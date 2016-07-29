@@ -104,10 +104,10 @@
                 <configuration>
                     <includes>
                         <include>**/policycenter/*.java</include>
+                        <include>**/policy/poliza/*.java</include>
 
                     </includes>
                     <excludes>
-                        <exclude>**/policycenter/MainStories.java</exclude>
                     </excludes>
                     <argLine>-Xmx1024m -XX:MaxPermSize=1024m</argLine>
                     <perCoreThreadCount>true</perCoreThreadCount>
