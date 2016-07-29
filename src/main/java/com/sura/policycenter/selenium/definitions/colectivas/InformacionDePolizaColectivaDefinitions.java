@@ -84,9 +84,10 @@ public class InformacionDePolizaColectivaDefinitions {
         informacionDePolizaColectivaSteps.validarInformacionDePolizaColectiva(informacionPolizaColectiva);
     }
 
-    @Then("debo ver la fecha de fin de vigencia <cantidadAniosVigencia> calculado de acuerdo al producto seleccionado")
-    public void validarFechaFinVigencia(@Named("cantidadAniosVigencia") int cantidadAniosVigencia){
-        informacionDePolizaColectivaSteps.validarFechaFinVigencia(cantidadAniosVigencia);
+    @Then("debo ver la fecha de fin de vigencia <cantidadAniosVigencia> <tipoPlazo> calculado de acuerdo al producto seleccionado")
+    public void validarFechaFinVigencia(@Named("cantidadAniosVigencia") int cantidadAniosVigencia,
+                                        @Named("tipoPlazo") String tipoPlazo){
+        informacionDePolizaColectivaSteps.validarFechaFinVigencia(cantidadAniosVigencia, tipoPlazo);
     }
 
     @Then("debo ver los siguientes datos del segundo tomador en la pantalla: $informacionSegundoTomador")

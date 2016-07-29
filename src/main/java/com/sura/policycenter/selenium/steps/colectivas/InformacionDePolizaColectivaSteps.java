@@ -21,8 +21,8 @@ public class InformacionDePolizaColectivaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void validarFechaFinVigencia(int cantidadAniosVigencia) {
-        informacionDePolizaColectivaPage.validarFechaFinDeVigencia(cantidadAniosVigencia);
+    public void validarFechaFinVigencia(int cantidadAniosVigencia, String tipoPlazo) {
+        informacionDePolizaColectivaPage.validarFechaFinDeVigencia(cantidadAniosVigencia, tipoPlazo);
     }
 
     @Step
@@ -95,18 +95,22 @@ public class InformacionDePolizaColectivaSteps extends ScenarioSteps{
         informacionDePolizaColectivaPage.clicEnEditarCoaseguro();
     }
 
+    @Step
     public void darClicEnCancelarDeCoaseuguro() {
         informacionDePolizaColectivaPage.clicEnCancelarDeCoaseguro();
     }
 
+    @Step
     public void darClicEnEliminarCoaseuguro() {
         informacionDePolizaColectivaPage.clicEnEliminarCoaseguro();
     }
 
+    @Step
     public void validarLaOpcionDeEditarCoaseguro() {
         informacionDePolizaColectivaPage.validarPantallaDeEdicion();
     }
 
+    @Step
     public void validarEliminacionDeCoaseguro() {
         informacionDePolizaColectivaPage.validarEliminacionDeCoaseguro();
     }

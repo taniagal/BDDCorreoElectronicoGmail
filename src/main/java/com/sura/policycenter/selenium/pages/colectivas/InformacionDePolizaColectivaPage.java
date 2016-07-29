@@ -36,7 +36,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade numeroDocumento;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:Name-inputEl']")
     WebElementFacade nombreTomador;
-    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:PhoneDisplay-inputEl']")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:Phone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
     WebElementFacade telefonoTomador;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:AddressType-inputEl']")
     WebElementFacade tipoDireccionTomador;
@@ -53,7 +53,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:PolicyType-inputEl']")
     WebElementFacade tipoDePoliza;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:TermType-inputEl']")
-    WebElementFacade tipoPlazo;
+    WebElementFacade campoTipoPlazo;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:EffectiveDate-inputEl']")
     WebElementFacade fechaInicioVigencia;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:ExpirationDate-bodyEl']")
@@ -88,19 +88,19 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade mensajeDescuento;
     @FindBy(xpath = "")
     WebElementFacade mensajeRetroactividad;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsuredInfo:OfficialIDInputSet:DocumentType-inputEl']")
     WebElementFacade tipoDocumentoSegundo;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsuredInfo:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     WebElementFacade numeroDocumentoSegundo;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ChangeSecondaryNamedInsuredButton-inputEl']")
     WebElementFacade nombreSegundo;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsuredPhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
     WebElementFacade telefonoSegundo;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryAddress-inputEl']")
     WebElementFacade direccionSegundo;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsureAddressType-inputEl']")
     WebElementFacade tipoDireccionSegundo;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsuredAddressDescription-inputEl']")
     WebElementFacade descripcionDireccionSegundo;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:Update-btnInnerEl']")
     WebElementFacade botonSiguiente;
@@ -145,7 +145,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         MatcherAssert.assertThat(organizacion.getText(), Is.is(Matchers.equalTo(infoPoliza.get("organizacion"))));
         MatcherAssert.assertThat(canal.getText(), Is.is(Matchers.equalTo(infoPoliza.get("canal"))));
         MatcherAssert.assertThat(tipoDePoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoPoliza"))));
-        MatcherAssert.assertThat(tipoPlazo.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("tipoPlazo"))));
+        MatcherAssert.assertThat(campoTipoPlazo.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("tipoPlazo"))));
         MatcherAssert.assertThat(fechaInicioVigencia.getValue(), Is.is(Matchers.equalTo(dateFormat.format(LocalDateTime.now()))));
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), containsText(infoPoliza.get("fechaFin")));
         MatcherAssert.assertThat(fechaExpedicion.getText(), Is.is(Matchers.equalTo(dateFormat.format(LocalDateTime.now()))));
@@ -229,10 +229,11 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         botonSiguiente.click();
     }
 
-    public void validarFechaFinDeVigencia(int aniosFinVigencia) {
+    public void validarFechaFinDeVigencia(int aniosFinVigencia, String tipoPlazo) {
         int anioVigenciaProducto = LocalDateTime.now().getYear() + aniosFinVigencia;
         String fechaFinVigencia = LocalDateTime.now().getMonthOfYear() + "/" + LocalDateTime.now().getDayOfMonth() + "/" + anioVigenciaProducto;
-        MatcherAssert.assertThat(fechaFinVigencia, Is.is(Matchers.equalTo(campoFechaFinVigencia.getText())));
+        MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(fechaFinVigencia)));
+        MatcherAssert.assertThat(campoTipoPlazo.getValue(), Is.is(Matchers.equalTo(tipoPlazo)));
     }
 
     public void validarFechaFinDeVigenciaCambiada(int aniosFinVigencia) {
@@ -310,6 +311,4 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         botonCancelarCoaseguro.click();
         waitForTextToAppear("Información de la póliza colectiva");
     }
-
-
 }
