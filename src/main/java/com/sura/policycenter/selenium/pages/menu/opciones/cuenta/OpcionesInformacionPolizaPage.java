@@ -344,7 +344,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
     }
 
     public void validarMensajePorcentajePoliza(String mensaje) {
-        waitForTextToAppear("Descuento Póliza");
+        waitForTextToAppear("Descuento póliza");
         waitFor(textoDescuentoPoliza).shouldBeVisible();
         String descuentoPoliza = textoDescuentoPoliza.getValue();
         waitFor(mensajeValidacion).shouldBeVisible();

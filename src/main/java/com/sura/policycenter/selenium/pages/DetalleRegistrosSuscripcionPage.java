@@ -84,8 +84,8 @@ public class DetalleRegistrosSuscripcionPage extends Commons {
     }
 
     public void validarNombresFiltros(String estado, String transaccion) {
-        waitForTextToAppear(estado, 7);
-        waitForTextToAppear(transaccion, 7);
+        waitForTextToAppear(estado, 20);
+        waitForTextToAppear(transaccion, 20);
         assertThat(lblEstado.getText(), is(equalTo(estado)));
         assertThat(lblTransaccion.getText(), is(equalTo(transaccion)));
     }

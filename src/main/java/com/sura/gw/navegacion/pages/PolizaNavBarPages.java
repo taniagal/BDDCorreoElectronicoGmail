@@ -43,6 +43,13 @@ public class PolizaNavBarPages extends PageObject {
         return switchToPage(InformacionPolizaPage.class);
     }
 
+    public void consultarNumeroDePoliza(String numeroDePoliza) {
+        ingresarValorEnInputYTeclearEnter(Opcion.TXT_NUMERO_POLIZA.xpath(), numeroDePoliza);
+    }
 
-
+    public void ingresarValorEnInputYTeclearEnter(String xpathInput, String valorInput) {
+        findBy(xpathInput).waitUntilEnabled();
+        enter(valorInput).into(element(xpathInput));
+        getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
+    }
 }

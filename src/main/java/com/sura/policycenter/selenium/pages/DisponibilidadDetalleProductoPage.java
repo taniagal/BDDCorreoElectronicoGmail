@@ -148,6 +148,7 @@ public class DisponibilidadDetalleProductoPage extends Commons {
     public void seleccionarAgentePorNombre(String nombreAgente) {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoNombreAgente).waitUntilPresent();
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoNombreAgente).waitUntilClickable();
+        waitUntil(1000);
         campoNombreAgente.click();
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
         if (!listaNombresAgentesElement.isEmpty()) {

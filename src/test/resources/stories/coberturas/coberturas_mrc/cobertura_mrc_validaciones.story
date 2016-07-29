@@ -17,7 +17,7 @@ Then espero ver mensajes de advertencia indicandome que sobrepase los limites de
 
 Examples:
 | numSubscripcion | rolUsuario |descripcion|
-| 22221237        | Asesor     |Numero de subscripcion que cuenta con ubicaciones|
+| 22222237        | Asesor     |Numero de subscripcion que cuenta con ubicaciones|
 
 
 

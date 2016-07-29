@@ -18,31 +18,16 @@ public class HistorialCuentaDefinitions {
     WebDriver driver;
 
     @Steps
-    private SeusLoginSteps seusLoginSteps;
-
-    @Steps
     private HistorialCuentaSteps historialCuentaSteps;
-
-    @Given("me encuentro autenticado en gw con un <country>, <user> y <password>")
-    public void givenMeEncuentroAutenticadoEnGwConUnpaisusuarioYcontrasena(@Named("country") String country,
-                                                                           @Named("user") String user,
-                                                                           @Named("password") String password) {
-        seusLoginSteps.login(country, user, password);
-    }
-
-    @Given("estoy en una cuenta <numCuenta>")
+    
+    @Given("ingreso a una cuenta <numCuenta>")
     public void givenEstoyEnUnaCuentanumCuenta(@Named("numCuenta") String numCuenta) {
         historialCuentaSteps.seleccionarCuenta(numCuenta);
     }
 
-    @When("ingreso al historial")
+    @When("ingrese al historial")
     public void whenIngresoAlHistorial() {
         historialCuentaSteps.seleccionarHistorial();
-    }
-
-    @Given("me encuentro autenticado en gw")
-    public void givenMeEncuentroAutenticadoEnGw() {
-        seusLoginSteps.login();
     }
 
     @Given("estoy en el historial de la cuenta <numCuenta>")

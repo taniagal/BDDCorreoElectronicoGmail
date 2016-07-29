@@ -4,6 +4,7 @@ import com.sura.commons.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CuentaNuevaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.AfterStory;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -76,5 +77,10 @@ public class CuentaNuevaDefinitions {
         cuentaNuevaSteps.verificar_mensaje(mensaje);
         cuentaNuevaSteps.verificar_edad_menor(mensaje);
         seusLoginSteps.close();
+    }
+
+    @AfterStory
+    public void despuesDeLaHistoria(){
+        driver.close();
     }
 }
