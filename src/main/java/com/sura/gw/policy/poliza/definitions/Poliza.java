@@ -104,6 +104,7 @@ public class Poliza {
     public void entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo() {
 
 
+
         assertThat(polizaSteps.espacioDeTrabajo(),
                 hasItems("EL valor Asegurado de la cobertura Danos materiales NO debe ser mayor al valor asegurable del Artículo Edificio"
                 ));
