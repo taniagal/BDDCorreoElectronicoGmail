@@ -136,7 +136,7 @@ public class TarifaAutosPage extends Commons {
 
     public void setCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
-        botonBorrar.click();
+        botonBorrar.waitUntilPresent().click();
         waitUntil(1000);
         comboBoxLimite.clear();
         waitUntil(500);
@@ -148,6 +148,9 @@ public class TarifaAutosPage extends Commons {
 
     public void cotizar() {
         botonCotizar.click();
+    }
+
+    public void irACotizacion() {
         botonBorrar.waitUntilPresent().click();
         waitFor(labelDetalles).shouldBePresent();
         waitUntil(500);
@@ -198,4 +201,10 @@ public class TarifaAutosPage extends Commons {
     }
 
 
+    public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
+        for (Map<String, String> valor : valores.getRows()) {
+            WebElementFacade tablaDescripcion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr["+valor.get("fila")+"]/td[3]");
+            MatcherAssert.assertThat("Error en el valor "+valor.get("fila")+" de la tarifacion ", tablaDescripcion.containsText(valor.get("valor")));
+        }
+    }
 }

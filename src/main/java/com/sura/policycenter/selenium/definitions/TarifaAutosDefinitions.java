@@ -51,4 +51,9 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.verificar_tarifacion(valor);
     }
 
+    @Then("el resultado de la cotizacion en cada cobertura debe ser: $valor")
+    public void verificarResultado(ExamplesTable valor){
+        tarifaAutosSteps.verificar_tarifacion_por_coberturas(valor);
+    }
+
 }
