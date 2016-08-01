@@ -9,7 +9,7 @@ public class CoberturaMultiriesgoCorporativoValidacionesSteps extends ScenarioSt
 
     @Step
     public void seleccionar_opcion_edificios_y_ubicaciones(){
-        //empty method
+        //Empty method
     }
 
 }

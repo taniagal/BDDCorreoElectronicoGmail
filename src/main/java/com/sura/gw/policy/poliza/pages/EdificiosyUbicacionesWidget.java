@@ -1,14 +1,12 @@
 package com.sura.gw.policy.poliza.pages;
 
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
+import java.util.List;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
 
 public class EdificiosyUbicacionesWidget extends PageObject {
 

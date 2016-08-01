@@ -39,7 +39,7 @@ public class InformacionPolizaPage extends PageObject {
     public void editarTransaccion() {
         LOGGER.info("InformacionPolizaPage.editarTransaccion");
         WebElementFacade btnEditarTransaccion = null;
-        String BTN_ACEPTAR_CONFIRMACION = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
+        String BTNACEPTARCONFIRMACION = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
 
         try {
             btnEditarTransaccion = findBy(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
@@ -49,7 +49,7 @@ public class InformacionPolizaPage extends PageObject {
 
         if (btnEditarTransaccion != null) {
             btnEditarTransaccion.waitUntilClickable().click();
-            findBy(BTN_ACEPTAR_CONFIRMACION).waitUntilClickable().click();
+            findBy(BTNACEPTARCONFIRMACION).waitUntilClickable().click();
             waitForTextToAppear("Revisión de póliza");
         }
 

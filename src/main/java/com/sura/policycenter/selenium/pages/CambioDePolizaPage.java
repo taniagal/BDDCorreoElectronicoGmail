@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 
-import com.sura.commons.selenium.Commons;
+import com.sura.guidewire.selenium.Guidewire;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -13,9 +13,10 @@ import org.openqa.selenium.WebDriver;
 
 
 
+
 public class CambioDePolizaPage extends PageObject {
 
-    Commons Commons = new Commons(getDriver());
+    Guidewire guidewire = new Guidewire(getDriver());
 
 
     @FindBy(xpath = ".//span[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")

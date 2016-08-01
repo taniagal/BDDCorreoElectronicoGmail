@@ -4,9 +4,8 @@ package com.sura.policycenter.selenium.definitions;
 import com.google.inject.name.Named;
 import java.util.HashMap;
 import java.util.Map;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.CotizacionDePolizaSteps;
-import net.thucydides.core.annotations.Managed;
+import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
@@ -19,14 +18,16 @@ import org.openqa.selenium.WebDriver;
 
 public class CotizacionDePolizaDefinitions {
 
+    @Steps
+    CotizacionDePolizaSteps cotizacionDePolizaSteps;
+
+    private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
+
     private InicioPage inicioPage() {
         return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
     }
 
-    private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
-    @Steps
-    CotizacionDePolizaSteps cotizacionDePolizaSteps;
 
     public CotizacionDePolizaDefinitions(){
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");

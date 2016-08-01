@@ -1,6 +1,6 @@
 package com.sura.gw.policy.cuenta.pages.legacy;
 
-import com.sura.commons.selenium.Commons;
+import com.sura.guidewire.selenium.Guidewire;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -11,7 +11,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 
-public class BusquedaDeCuentasPage extends Commons {
+public class BusquedaDeCuentasPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-labelEl']")
     private WebElementFacade lblTipoDocumento;
@@ -121,7 +121,7 @@ public class BusquedaDeCuentasPage extends Commons {
 
     private void limpiarFormulario(){
         botonRestablecer.waitUntilPresent().click();
-        waitUntil(1000);
+        waitABit(1000);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {

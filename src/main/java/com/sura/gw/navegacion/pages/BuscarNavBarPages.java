@@ -7,6 +7,7 @@ import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
+
 public class BuscarNavBarPages extends PageObject {
     private static String MENU_BUSCAR = ".//a[contains(@id,'TabBar:SearchTab')]";
 

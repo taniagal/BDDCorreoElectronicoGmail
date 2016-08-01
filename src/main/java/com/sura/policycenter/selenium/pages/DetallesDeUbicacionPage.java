@@ -13,7 +13,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class DetallesDeUbicacionPage extends Commons {
 
@@ -84,7 +83,7 @@ public class DetallesDeUbicacionPage extends Commons {
     }
 
     public void irANuevaCotizacion(){
-        setImplicitTimeout(0,TimeUnit.SECONDS);
+        setImplicitTimeout(1,TimeUnit.SECONDS);
         if(!botonAcciones.isPresent())
             menuItemEscritorio.click();
         resetImplicitTimeout();
@@ -109,8 +108,8 @@ public class DetallesDeUbicacionPage extends Commons {
     }
 
     public void irAUbicacion(){
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
     }
 
@@ -124,7 +123,7 @@ public class DetallesDeUbicacionPage extends Commons {
     }
 
     public void setUbicacion(String descripcion, String actividad){
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
+        waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
         selectItem(comboBoxActividadEconomica,actividad);
         botonAceptar.click();
     }

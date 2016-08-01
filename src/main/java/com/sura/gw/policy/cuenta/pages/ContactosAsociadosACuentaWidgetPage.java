@@ -1,11 +1,11 @@
 package com.sura.gw.policy.cuenta.pages;
 
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
+import java.util.ArrayList;
+import java.util.List;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ContactosAsociadosACuentaWidgetPage extends PageObject {
 

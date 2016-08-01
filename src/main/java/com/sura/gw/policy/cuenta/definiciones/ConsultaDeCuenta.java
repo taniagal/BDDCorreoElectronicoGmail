@@ -8,15 +8,12 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.When;
 import org.slf4j.LoggerFactory;
 
-/**
- * Created by andralgu on 18/07/2016.
- */
 public class ConsultaDeCuenta {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     @Steps
-    ConsultaDeCuentaSteps consultaDeCuenta;
+    ConsultaDeCuentaSteps consultaDeCuentaSteps;
 
     private String numCuenta;
 
@@ -28,7 +25,7 @@ public class ConsultaDeCuenta {
 
     @When("busque asesor por numero <numcuenta>")
     public void cuandoBusqueCuentaExistenteNumero(@Named("numCuenta") String numCuenta) {
-        consultaDeCuenta.consultar_cuenta_por_numero_de_cuenta(numCuenta);
+        consultaDeCuentaSteps.consultar_cuenta_por_numero_de_cuenta(numCuenta);
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.cuandoBusqueCuentaExistenteNumero");
     }
 }

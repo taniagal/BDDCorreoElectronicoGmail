@@ -24,20 +24,19 @@ public class CuentaSteps extends ScenarioSteps {
     ContactosAsociadosACuentaWidgetPage contactosAsociados;
     BusquedaDeCuentasPage busquedaDeCuentas = null;
     BuscarNavBarPages navegacion;
-
-    private String numCuenta;
+    String numCuenta;
 
     @Steps
-    GuidewireLoginSteps login;
+    GuidewireLoginSteps loginSteps;
 
 
     public void login(WebDriver driver, String rolUsuario) {
         SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
 
-        login.abrir_navegador(driver);
-        login.loguearse_a_policycenter_con_rol(rolUsuario);
+        loginSteps.abrir_navegador(driver);
+        loginSteps.loguearse_a_policycenter_con_rol(rolUsuario);
 
-        LOGGER.info("CuentaSteps.login");
+        LOGGER.info("CuentaSteps.loginSteps");
     }
 
 

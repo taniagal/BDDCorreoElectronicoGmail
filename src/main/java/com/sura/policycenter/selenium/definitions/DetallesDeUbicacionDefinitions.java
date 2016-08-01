@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.definitions;
 
 
 import com.sura.policycenter.selenium.steps.DetallesDeUbicacionSteps;
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -44,8 +43,6 @@ public class DetallesDeUbicacionDefinitions {
      */
     @Then("que se muestre el mensaje <mensaje>")
     public void verificarMensaje(@Named("mensaje")String mensaje){
-        /**
-         * Pendiente de una direccion que sea un riesgo consultable
-         * detallesDeUbicacionSteps.verificar_mensaje(mensaje);*/
+         detallesDeUbicacionSteps.verificar_mensaje(mensaje);
     }
 }

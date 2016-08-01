@@ -20,14 +20,9 @@ import java.util.concurrent.TimeUnit;
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class GuidewireLoginPages extends PageObject implements Serializable{
 
-    public GuidewireLoginPages(WebDriver driver){
-        super(driver);
-    }
 
 
-    private static final long serialVersionUID = 1L;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
     public static final String TITULO_PAGINA_PPL_DE_ACCESO = ".//span[@id='DesktopActivities:DesktopActivitiesScreen:0']";
     public static final String TXT_USUARIO_SEUS = "//input[@placeholder='Usuario']";
     public static final String TXT_USUARIO = "//input[@id='Login:LoginScreen:LoginDV:username-inputEl']";
@@ -36,11 +31,15 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
     public static final String CBO_PAIS = ".//*[@id='country']";
     public static final String BTN_LOGIN_SEUS = "//input[@type='submit']";
     public static final String BTN_LOGIN = "//span[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']";
+    private static final long serialVersionUID = 1L;
 
-
+    public GuidewireLoginPages(WebDriver driver){
+        super(driver);
+    }
 
     @WhenPageOpens
     public void accionesPreviasEnLaCargaDeLaPagina() {
+        //Empty Method
     }
 
     public void clicBotonLogIn(){

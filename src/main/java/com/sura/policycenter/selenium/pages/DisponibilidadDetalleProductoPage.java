@@ -1,11 +1,10 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.google.common.base.Function;
-import com.sura.commons.selenium.Commons;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.sura.guidewire.selenium.Guidewire;
 
 import com.sura.serenitybdd.util.GwNavegacionUtil;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -16,7 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class DisponibilidadDetalleProductoPage extends Commons {
+public class DisponibilidadDetalleProductoPage extends Guidewire {
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
     private WebElementFacade listaTipoCanalDeVenta;
@@ -24,8 +23,6 @@ public class DisponibilidadDetalleProductoPage extends Commons {
     private WebElementFacade btnAccionesCuenta;
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission']")
     private WebElementFacade opcionNuevoEnvio;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:7:addSubmission']")
-    private WebElementFacade btnElegirAutoPersonal;
     @FindBy(xpath=".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade opcionVerInformacionPoliza;
     @FindBy(xpath=".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
@@ -59,7 +56,7 @@ public class DisponibilidadDetalleProductoPage extends Commons {
             listaOrganizacionDeVentas.clear();
             listaOrganizacionDeVentas.sendKeys(organizacion);
             listaOrganizacionDeVentas.sendKeys(Keys.ENTER);
-            if (listaOrganizacionDeVentas.getValue().equals("<ninguno>")) {
+            if ("<ninguno>".equals(listaOrganizacionDeVentas.getValue())) {
                 intentos++;
                 waitUntil(2000);
             } else {
@@ -93,7 +90,7 @@ public class DisponibilidadDetalleProductoPage extends Commons {
             listaTipoCanalDeVenta.clear();
             listaTipoCanalDeVenta.sendKeys(tipoCanal);
             listaTipoCanalDeVenta.sendKeys(Keys.ENTER);
-            if (listaTipoCanalDeVenta.getValue().equals("<ninguno>")) {
+            if ("<ninguno>".equals(listaTipoCanalDeVenta.getValue())) {
                 intentos++;
                 waitUntil(2000);
             } else {
@@ -115,7 +112,7 @@ public class DisponibilidadDetalleProductoPage extends Commons {
             listaPATipoPoliza.clear();
             listaPATipoPoliza.sendKeys(tipoPoliza);
             listaPATipoPoliza.sendKeys(Keys.ENTER);
-            if (listaPATipoPoliza.getValue().equals("<ninguno>")) {
+            if ("<ninguno>".equals(listaPATipoPoliza.getValue())) {
                 intentos++;
                 waitUntil(2000);
             } else {
@@ -148,7 +145,6 @@ public class DisponibilidadDetalleProductoPage extends Commons {
     public void seleccionarAgentePorNombre(String nombreAgente) {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoNombreAgente).waitUntilPresent();
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoNombreAgente).waitUntilClickable();
-        waitUntil(1000);
         campoNombreAgente.click();
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
         if (!listaNombresAgentesElement.isEmpty()) {

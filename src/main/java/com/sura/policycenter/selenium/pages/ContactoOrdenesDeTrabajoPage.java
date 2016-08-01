@@ -1,8 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.commons.selenium.SeusLoginPage;
+import com.sura.guidewire.selenium.SeusLoginPage;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.apache.commons.lang3.ArrayUtils;
@@ -13,6 +12,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 
 
 
@@ -52,22 +52,18 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorEstado(String estado){
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(filtroEstado).waitUntilPresent();
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
         filtroEstado.sendKeys(Keys.ENTER);
-        waitUntil(2000);
+        waitABit(2000);
     }
 
     public void seleccionarTransacciones(){
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(mnuTransaccionesPoliza).waitUntilPresent();
         this.mnuTransaccionesPoliza.click();
     }
 
     public void validarCamposTransacciones(String poliza, String producto, String numeroTransaccion,
                                            String tipo, String estado, String participante) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(fechaCreacion).waitUntilPresent();
-        waitUntil(2000);
         MatcherAssert.assertThat(this.fechaCreacion.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.poliza.getText(), Matchers.containsString(poliza));
         MatcherAssert.assertThat(this.producto.getText(), Matchers.containsString(producto));
@@ -86,8 +82,6 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
         String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);
 
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(table).waitUntilPresent();
-
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
@@ -103,15 +97,13 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorTransaccion(String filtroTransaccion) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(filtroTipoTransaccion).waitUntilPresent();
         this.filtroTipoTransaccion.click();
         this.filtroTipoTransaccion.sendKeys(filtroTransaccion);
+        waitABit(1000);
         this.filtroTipoTransaccion.sendKeys(Keys.ENTER);
     }
 
     public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(table).waitUntilPresent();
-        waitUntil(2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {
@@ -122,16 +114,13 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(this.filtroProducto).waitUntilPresent();
-        waitUntil(2000);
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
+        waitABit(1000);
         this.filtroProducto.sendKeys(Keys.ENTER);
     }
 
     public void validarTransaccionesPorProducto(String filtroProducto) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(table).waitUntilPresent();
-        waitUntil(2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {
@@ -142,7 +131,6 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void validarMensaje(String mensaje) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(msjTransaccionNoEncontrada).waitUntilPresent();
         MatcherAssert.assertThat(msjTransaccionNoEncontrada.getText(), Matchers.containsString(mensaje));
     }
 }

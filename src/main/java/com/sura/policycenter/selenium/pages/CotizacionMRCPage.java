@@ -1,6 +1,10 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -15,11 +19,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class CotizacionMRCPage extends PageObject {
 
+    Guidewire gw = new Guidewire(getDriver());
     private final Actions act = new Actions(getDriver());
 
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
@@ -96,8 +99,6 @@ public class CotizacionMRCPage extends PageObject {
     private WebElementFacade columnaEstadoCargos;
     @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr[2]/td/div/div/div/div/div[3]/div")
     private WebElementFacade columnaMontoCargos;
-    @FindBy(xpath = "//tr[2]/td/div/div[2]/div/table")
-    private WebElementFacade tablaDetallePrima;
 
     public CotizacionMRCPage(WebDriver driver){
         super(driver);
@@ -106,12 +107,12 @@ public class CotizacionMRCPage extends PageObject {
     public void irABuscarCotizacion(String cotizacion) {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
         menuPoliza.click();
-        waitUntil(5000);
+        gw.waitUntil(5000);
         menuPoliza.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(3000);
+        gw.waitUntil(3000);
         buscarCotizacion.typeAndEnter(cotizacion);
-        waitUntil(1500);
+        gw.waitUntil(1500);
     }
 
     public void ingresarACotizacion() {
@@ -148,8 +149,7 @@ public class CotizacionMRCPage extends PageObject {
 
         if (campoNumeroCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("cotizacion"))) {
             datosCotizacion = informacionCotizacion.getRows().get(0);
-        }
-        else{
+        }else{
             datosCotizacion = informacionCotizacion.getRows().get(1);
         }
         MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("cotizacion"))));
@@ -167,7 +167,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void validarPrima(String primaTotal) {
-        waitUntil(7000);
+        gw.waitUntil(7000);
         MatcherAssert.assertThat(campoPrimaTotal.getText(),Is.is(Matchers.equalTo(primaTotal)));
     }
 
@@ -186,33 +186,21 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        waitUntil(10000);
+        gw.waitUntil(10000);
         WebElementFacade resultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
-        //withTimeoutOf(10, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
-        waitUntil(10000);
+        gw.waitUntil(10000);
         MatcherAssert.assertThat(tablaMensajes.getText(),Matchers.containsString(mensaje));
-        waitUntil(5000);
+        gw.waitUntil(5000);
     }
-
-    public void waitUntil(int millis) {
-        Integer i = 0;
-        Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
-                TimeUnit.MILLISECONDS).pollingEvery(millis,
-                TimeUnit.MILLISECONDS);
-        try {
-            wait.until(new Function<Integer, Boolean>() {
-                public Boolean apply(Integer i) {                    return false;
-                }
-            });
-        } catch (TimeoutException e) {}
-    }
+    
 
     public void validarTipoRiesgo() {
         WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
         botonCotizar.click();
-        waitUntil(5000);
+        gw.waitUntil(5000);
     }
+
 }

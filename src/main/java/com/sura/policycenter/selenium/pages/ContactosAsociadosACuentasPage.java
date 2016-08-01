@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 public class ContactosAsociadosACuentasPage extends Commons {
@@ -87,7 +87,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
                 }
             }
         }
-        assertThat("Se encontraron los encabezados esperados", countCoincidencias == encabezados.getRowCount());
+        MatcherAssert.assertThat("Se encontraron los encabezados esperados", countCoincidencias == encabezados.getRowCount());
     }
 
     private List<WebElementFacade> getListaContactos() {
@@ -141,42 +141,42 @@ public class ContactosAsociadosACuentasPage extends Commons {
 
     public void verificarListaContactoNoEsNulo() {
         List<WebElementFacade> contactos = getListaContactos();
-        assertThat("La cuenta debe tener contactos de tipo persona juridica o natural", !contactos.isEmpty());
+        MatcherAssert.assertThat("La cuenta debe tener contactos de tipo persona juridica o natural", !contactos.isEmpty());
     }
 
     public void verificarDetalleContactoNoEsNulo() {
 
-        assertThat("El campo tipo de documento es obligatorio", lblTipoDocumento.isPresent());
-        assertThat("El campo numero de documento es obligatorio", lblNumeroDocumento.isPresent());
+        MatcherAssert.assertThat("El campo tipo de documento es obligatorio", lblTipoDocumento.isPresent());
+        MatcherAssert.assertThat("El campo numero de documento es obligatorio", lblNumeroDocumento.isPresent());
         if ("PERSONAL".equalsIgnoreCase(lblTitulo.getText())) {
-            assertThat("El campo nombre es obligatorio", lblNombre.isPresent());
-            assertThat("El campo segundo nombre es obligatorio", lblSegundoNombre.isPresent());
-            assertThat("El campo apellido es obligatorio", lblApellido.isPresent());
-            assertThat("El campo segundo apellido es obligatorio", lblSegundoApellido.isPresent());
+            MatcherAssert.assertThat("El campo nombre es obligatorio", lblNombre.isPresent());
+            MatcherAssert.assertThat("El campo segundo nombre es obligatorio", lblSegundoNombre.isPresent());
+            MatcherAssert.assertThat("El campo apellido es obligatorio", lblApellido.isPresent());
+            MatcherAssert.assertThat("El campo segundo apellido es obligatorio", lblSegundoApellido.isPresent());
         } else {
-            assertThat("El campo razon social es obligatorio", lblRazonSocial.isPresent());
-            assertThat("El campo nombre comercial es obligatorio", lblNombreComercial.isPresent());
+            MatcherAssert.assertThat("El campo razon social es obligatorio", lblRazonSocial.isPresent());
+            MatcherAssert.assertThat("El campo nombre comercial es obligatorio", lblNombreComercial.isPresent());
 
         }
-        assertThat("El campo direccion es obligatorio", lblDireccion.isPresent());
-        assertThat("El campo telefono es obligatorio", lblTelefono.isPresent());
-        assertThat("El campo email es obligatorio", lblEmail.isPresent());
+        MatcherAssert.assertThat("El campo direccion es obligatorio", lblDireccion.isPresent());
+        MatcherAssert.assertThat("El campo telefono es obligatorio", lblTelefono.isPresent());
+        MatcherAssert.assertThat("El campo email es obligatorio", lblEmail.isPresent());
     }
 
     public void verificarRolesFuncionesNoEsNulo() {
         List<WebElementFacade> rolesFunciones = getListaRolesFunciones();
-        assertThat("El contacto debe tener roles o funciones asignados", !rolesFunciones.isEmpty());
+        MatcherAssert.assertThat("El contacto debe tener roles o funciones asignados", !rolesFunciones.isEmpty());
         waitABit(1000);
     }
 
     public void verificarDireccioneNoEsNulo() {
         List<WebElementFacade> direcciones = getListaDirecciones();
-        assertThat("El contacto debe tener direcciones asignados", !direcciones.isEmpty());
+        MatcherAssert.assertThat("El contacto debe tener direcciones asignados", !direcciones.isEmpty());
         waitABit(1000);
     }
 
     public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
-        assertThat(ASSERTMENUCREARNUEVOCONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
+        MatcherAssert.assertThat(ASSERTMENUCREARNUEVOCONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
     }
 
     public Boolean esContactoAsociado(String nombreContacto) throws Exception {
@@ -187,7 +187,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
                 break;
             }
         }
-        assertThat("El contacto se asocio a la cuenta exitosamente", esAsociado);
+        MatcherAssert.assertThat("El contacto se asocio a la cuenta exitosamente", esAsociado);
         return esAsociado;
     }
 
@@ -204,7 +204,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
             }
         }
         if (existeOcurrencia) {
-            assertThat(mensajeMostrado, containsString(mensajesApp));
+            MatcherAssert.assertThat(mensajeMostrado, containsString(mensajesApp));
         }
         return existeOcurrencia;
     }
@@ -238,7 +238,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
                 noExiste = false;
             }
         }
-        assertThat("No existe el contacto",noExiste);
+        MatcherAssert.assertThat("No existe el contacto",noExiste);
     }
 
 }

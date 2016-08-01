@@ -4,9 +4,9 @@ import com.sura.gw.navegacion.util.widget.EspacioDeTrabajoWidget;
 import com.sura.gw.policy.poliza.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
 import com.sura.gw.policy.poliza.pages.InformacionPolizaPage;
+import java.util.List;
 import net.thucydides.core.annotations.Step;
 
-import java.util.List;
 
 public class InformacionDePolizaSteps {
 

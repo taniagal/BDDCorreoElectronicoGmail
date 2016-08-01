@@ -5,7 +5,6 @@ import com.sura.commons.selenium.Commons;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
