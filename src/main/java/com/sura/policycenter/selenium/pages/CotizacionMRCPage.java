@@ -1,10 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
+import com.sura.commons.selenium.Commons;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
-import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -22,7 +21,7 @@ import org.openqa.selenium.support.ui.Wait;
 
 public class CotizacionMRCPage extends PageObject {
 
-    Guidewire gw = new Guidewire(getDriver());
+    Commons gw = new Commons(getDriver());
     private final Actions act = new Actions(getDriver());
 
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")

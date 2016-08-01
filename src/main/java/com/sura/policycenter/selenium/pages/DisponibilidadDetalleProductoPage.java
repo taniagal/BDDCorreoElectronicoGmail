@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
-
+import com.sura.commons.selenium.Commons;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -15,7 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class DisponibilidadDetalleProductoPage extends Guidewire {
+public class DisponibilidadDetalleProductoPage extends Commons {
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
     private WebElementFacade listaTipoCanalDeVenta;

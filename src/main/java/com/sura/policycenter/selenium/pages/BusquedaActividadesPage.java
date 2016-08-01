@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.PageObject;
@@ -18,7 +18,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class BusquedaActividadesPage extends PageObject {
 
-    Guidewire guidewire = new Guidewire(getDriver());
+    Commons commons = new Commons(getDriver());
 
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:AssignedUser-inputEl']")
     private WebElementFacade txtAsignadoA;
@@ -70,7 +70,7 @@ public class BusquedaActividadesPage extends PageObject {
     public void irABuscarActividades() {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuBuscar).shouldBePresent();
         menuBuscar.click();
-        guidewire.waitUntil(2000);
+        commons.waitUntil(2000);
         menuBuscarActividades.click();
         waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();
@@ -101,7 +101,7 @@ public class BusquedaActividadesPage extends PageObject {
     public void limpiarFiltros() {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent();
         botonRestablecer.click();
-        guidewire.waitUntil(2000);
+        commons.waitUntil(2000);
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
