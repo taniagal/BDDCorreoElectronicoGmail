@@ -391,6 +391,10 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
     
     public void definirPolizaFinanciada(String organizacionDetalle, String canalDetalle, String tipoPoliza) {
+        waitFor(campoOrganizacion);
+        campoOrganizacion.shouldNotBeEnabled();
+        campoCanal.shouldNotBeEnabled();
+        campoTipoPoliza.shouldNotBeEnabled();
         MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(organizacionDetalle)));
         MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(canalDetalle)));
         MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(tipoPoliza)));

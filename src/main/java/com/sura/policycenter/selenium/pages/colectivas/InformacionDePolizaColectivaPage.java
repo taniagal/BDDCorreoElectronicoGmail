@@ -14,8 +14,6 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.LocalDateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -65,10 +63,6 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade campoFechaFinVigencia;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:IssueDate-inputEl']")
     WebElementFacade fechaExpedicion;
-    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-boxLabelEl']")
-    WebElementFacade polizaFinanciadaSi;
-    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:FundedPolicyInputSet:QuestionFundedPolicy_false-boxLabelEl']")
-    WebElementFacade polizaFinanciadaNo;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-inputEl']")
     WebElementFacade radioPolizaFinanciadaSi;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:FundedPolicyInputSet:QuestionFundedPolicy_false-inputEl']")
@@ -127,7 +121,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade botonCancelarCoaseguro;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:editConinsuranceLink']")
     WebElementFacade linkEditarCoaseguro;
-    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:editConinsuranceLink']")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:deleteCoinsurance']")
     WebElementFacade linkEliminarCoaseguro;
 
     private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV:";
@@ -136,7 +130,6 @@ public class InformacionDePolizaColectivaPage extends PageObject {
 
     private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
     private Date fechaHoy = new Date();
-    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {
         super(driver);
@@ -245,14 +238,12 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void validarFechaFinDeVigencia(int aniosFinVigencia, String tipoPlazo) {
         String fechaFinVigencia = LocalDateTime.now().plusYears(aniosFinVigencia).toString("MM/dd/yyyy");
         System.out.println("fecha fin de vigencia obtenida " + fechaFinVigencia);
-//        guidewire.waitUntil(1000);
-//        int anioVigenciaProducto = LocalDateTime.now().getYear() + aniosFinVigencia;
-//        String fechaFinVigencia = LocalDateTime.now().getMonthOfYear() + "/" + LocalDateTime.now().getDayOfMonth() + "/" + anioVigenciaProducto;
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), containsText(fechaFinVigencia));
         MatcherAssert.assertThat(campoTipoPlazo.getValue(), Is.is(Matchers.equalTo(tipoPlazo)));
     }
 
     public void validarFechaFinDeVigenciaCambiada(int aniosFinVigencia) {
+        guidewire.waitUntil(1000);
         String nuevaFechaFin = fechaInicioVigencia.getValue();
         Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 10)) + aniosFinVigencia;
         System.out.println("año vigencia " + nuevaFechaFin.substring(6, 10));
@@ -314,6 +305,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void validarEliminacionDeCoaseguro(){
+        waitFor(linkAgregarCoaseguro);
         linkEditarCoaseguro.shouldNotBeVisible();
         linkEliminarCoaseguro.shouldNotBeVisible();
         linkAgregarCoaseguro.shouldBeVisible();
@@ -323,7 +315,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void validarPantallaDeEdicion(){
         MatcherAssert.assertThat(campoPorcentajeParticipacionSura.getText(), containsText("60"));
         MatcherAssert.assertThat(campoPorcentajeParticipacionOtra.getText(), containsText("40"));
-        MatcherAssert.assertThat(campoAseguradora.getText(), containsText("Axxa"));
+        MatcherAssert.assertThat(listaAseguradora.getText(), containsText("Axxa"));
     }
 
     public void clicEnCancelarDeCoaseguro(){
