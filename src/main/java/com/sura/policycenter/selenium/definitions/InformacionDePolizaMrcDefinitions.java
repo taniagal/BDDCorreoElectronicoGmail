@@ -24,9 +24,14 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
     }
 
-    @When("este expidiendo una poliza de propiedad comercial <nomProducto>")
-    public void expidePolizaPropiedadComercial(@Named("nomProducto") String nomProducto) {
-        informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto(nomProducto);
+    @When("este expidiendo una poliza de propiedad comercial")
+    public void expidePolizaPropiedadComercial() {
+        informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto();
+    }
+
+    @When("seleccione el producto <nomProducto> a expedir")
+    public void seleccione_el_producto(@Named("nomProducto") String nomProducto){
+        informacionDePolizaMrcSteps.seleccionar_producto(nomProducto);
     }
 
     @Then("se debe visualizar los datos del tomador <tomador>")
@@ -58,13 +63,13 @@ public class InformacionDePolizaMrcDefinitions {
     */
 
     @When("quiera agregar un tomador adicional que es riesgo consultable <cedula>")
-    public void tomadorAdicionalRiesgoConsultabale(@Named("cedula") String cedula) {
-        informacionDePolizaMrcSteps.ingresar_tomador_adicional(cedula);
+    public void tomadorAdicionalRiesgoConsultabale(@Named("cedula")String cedula) {
+         informacionDePolizaMrcSteps.ingresar_tomador_adicional(cedula);
     }
 
     @Then("se debe mostrar un mensaje de error <mensaje> <mensaje2>")
-    public void mensajesDeErrorRiesgosYPeps(@Named("mensaje") String mensaje,
-                                            @Named("mensaje2") String mensaje2) {
+    public void mensajesDeErrorRiesgosYPeps(@Named("mensaje")String mensaje,
+                                            @Named("mensaje2")String mensaje2) {
         informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
         informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje2);
     }
@@ -84,7 +89,7 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.valida_opciones_reaseguro();
     }
 
-    @Then("la etiqueta reaseguro debe marcarce (si) automaticamente sin ser editable")
+    @Then("la etiqueta reaseguro debe marcarce a (si) automaticamente sin ser editable")
     public void cambioTomadorReaseguro() {
         informacionDePolizaMrcSteps.valida_opciones_reaseguro();
     }
@@ -107,6 +112,7 @@ public class InformacionDePolizaMrcDefinitions {
     public void thenDebeDesaparecerDelFormularioPrincipal() {
         informacionDePolizaMrcSteps.validar_descipcion_de_direccion();
     }
+
 
 }
 

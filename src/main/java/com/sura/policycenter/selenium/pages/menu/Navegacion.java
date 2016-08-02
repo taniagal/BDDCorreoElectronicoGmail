@@ -27,6 +27,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 public class Navegacion extends Guidewire {
@@ -283,7 +284,7 @@ public class Navegacion extends Guidewire {
     @FindBy(xpath = "//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Summary']/div/span")
     WebElementFacade mnuResumenCuenta;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade mnuInformacionDePoliza;
 
     @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_SubmissionManager']/div/span")
@@ -317,6 +318,7 @@ public class Navegacion extends Guidewire {
         waitUntil(300);
         waitFor(mnuPoliza).shouldBeVisible();
         mnuNumPoliza.typeAndEnter(numPoliza);
+        waitUntil(300);
         return new PolizaBuscarPage(getDriver());
     }
 
@@ -324,8 +326,8 @@ public class Navegacion extends Guidewire {
         gw.deployMenu(mnuPoliza);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(1500);
-        waitForTextToAppear("Nueva cotización",5000);
-        mnuNumeroSub.typeAndEnter(numSubPoliza);
+        waitForTextToAppear("Nueva cotización");
+        mnuNumeroSub.waitUntilVisible().waitUntilEnabled().typeAndEnter(numSubPoliza);
         return new PolizaBuscarPage(getDriver());
     }
 
@@ -372,12 +374,12 @@ public class Navegacion extends Guidewire {
         waitUntil(1500);
         gw.deployMenu(mnuCuenta);
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
-        waitForTextToAppear("Nueva cuenta", 5000);
+        waitForTextToAppear("Nueva cuenta");
         waitUntil(2000);
         waitFor(txtNumCuenta).waitUntilEnabled();
-        txtNumCuenta.type(numCuenta);
+        txtNumCuenta.waitUntilEnabled().type(numCuenta);
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(btnBuscarCuenta).shouldBePresent();
-        btnBuscarCuenta.click();
+        btnBuscarCuenta.waitUntilVisible().waitUntilClickable().click();
         waitUntil(2000);
         return new CuentaBuscarPage(getDriver());
     }
@@ -1174,7 +1176,7 @@ public class Navegacion extends Guidewire {
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
         waitForTextToAppear("Cotizaciones de la cuenta");
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
-        $(mnuAdmCotizaciones).click();
+        mnuAdmCotizaciones.waitUntilVisible().waitUntilClickable().click();
         waitUntil(800);
         return new OpcionesAdminitradorCotizaciones(getDriver());
     }

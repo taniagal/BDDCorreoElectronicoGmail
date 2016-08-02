@@ -1,12 +1,13 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class CoberturaGlobalPage extends Guidewire {
@@ -47,7 +48,7 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void irACoberturasGlobales() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
     }
 
     public void navegarPorCobertura(String descripcion, String tipoCobertura){
@@ -85,12 +86,13 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void verificarCoberturasIncluidas() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkCobertura1).waitUntilPresent().click();
+        //withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkCobertura1).waitUntilPresent().click();
+        linkCobertura1.waitUntilVisible().waitUntilClickable().click();
         MatcherAssert.assertThat("Error al Agregar la cobertura", linkCobertura1.isPresent());
     }
 
     public void verificarUbicacionesCubiertas() {
-        List<WebElementFacade> tablaUbicaciones = getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody");
+        List<WebElementFacade> tablaUbicaciones = getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody/tr");
         MatcherAssert.assertThat("Error al Agregar la ubicacion", !tablaUbicaciones.isEmpty());
     }
 
