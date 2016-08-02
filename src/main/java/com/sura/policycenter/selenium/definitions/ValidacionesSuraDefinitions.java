@@ -3,13 +3,20 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CuentaNuevaSteps;
+import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.AfterStory;
+import org.openqa.selenium.WebDriver;
 
 public class ValidacionesSuraDefinitions {
+
+    @Managed
+    WebDriver driver;
+
     @Steps
     SeusLoginSteps seusLoginSteps;
 
@@ -57,5 +64,10 @@ public class ValidacionesSuraDefinitions {
     @Then("no debe permitir crear una nueva cuenta y no debe mostrar el mensaje <mensaje>")
     public void verificarEstadoDeMensaje(@Named("mensaje") String mensaje){
         cuentaNuevaSteps.verificar_estado_de_mensaje(mensaje);
+    }
+
+    @AfterStory
+    public void despuesDeLaHistoria(){
+        driver.close();
     }
 }

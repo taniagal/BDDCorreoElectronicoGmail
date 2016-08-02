@@ -1,9 +1,5 @@
 package com.sura.policycenter.selenium.pages;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import com.google.common.base.Function;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.By;
@@ -13,15 +9,15 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class DireccionesDeContactoVinculadasPage extends PageObject {
 
@@ -246,10 +242,10 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         this.seleccionarUnContacto("RICARDO GIRALDO");
         WebElementFacade campoDireccionDetalle = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']");
         Integer longitudCampo = campoDireccionDetalle.getValue().length();
-        MatcherAssert.assertThat(longitudCampo.toString(), Is.is(Matchers.equalTo(direccionOk)));
         linkVolverAContacto.click();
         botonAceptarMensaje.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
         waitForTextToAppear("Contactos de archivo de cuenta", 10000);
+        MatcherAssert.assertThat(longitudCampo.toString(), Is.is(Matchers.equalTo(direccionOk)));
     }
 
     public void editarDireccionCampoPais(String pais) {
@@ -390,7 +386,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
         for (int i = 0; i < contactosAsociados.getRowCount(); i++) {
             contactos = contactosAsociados.getRows().get(i);
-            if (elementosContactosAsociados.get(0).getText().contains(contactos.get("contactosAsociados"))) {
+            if(elementosContactosAsociados.get(0).getText().contains(contactos.get("contactosAsociados"))){
                 MatcherAssert.assertThat(elementosContactosAsociados.get(0).getText(), Matchers.containsString(contactos.get("contactosAsociados")));
             }
         }

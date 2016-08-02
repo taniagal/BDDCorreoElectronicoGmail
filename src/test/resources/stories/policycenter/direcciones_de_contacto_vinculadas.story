@@ -49,14 +49,15 @@ Then la direccion debe quedar estandarizada <direccionEstandarizada> del contact
 
 Examples:
 |numeroCuenta|direccionSinEstandarizar|direccionEstandarizada|nombreContacto|
-|C000484848|Carrera 65 48 162|KR 65 # 48 - 162|RICARDO GIRALDO|
+|C000484848|Carrera 65 48 162|CR 65 # 48 - 162|RICARDO GIRALDO|
 
 Scenario: consultar direccion de un contacto que tiene una direccion asociada a otro contacto
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When cuando vincule las direcciones del contacto <nombreContactoUno> y contacto <nombreContactoDos> y la desee editar
 Then me debe mostrar la siguiente informacion:
 |pais|departamento|ciudad|direccion|tipoDeDireccion|descripcion|
-|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|Vivienda|Created by the Address Builder with code 0|
+|Colombia|ANTIOQUIA|MEDELLIN|CR 65 # 48 - 162|Vivienda|Created by the Address Builder with code 0|
+
 Examples:
 |numeroCuenta|nombreContactoUno|nombreContactoDos|
 |C000484848|OSCAR GOMEZ|CARLOS PERALTA|
@@ -66,7 +67,7 @@ Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When ingrese solo informacion obligatoria
 Then me debe mostrar esta informacion:
 |pais          |departamento|ciudad       |direccion      |tipoDeDireccion|descripcion|
-|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|Vivienda       |           |
+|Colombia|ANTIOQUIA|MEDELLIN|CR 65 # 48 - 162|Vivienda       |           |
 Examples:
 |numeroCuenta|
 |C000484848|
@@ -121,7 +122,7 @@ And seleccione la opcion para editar la direccion
 And ingrese a editar la direccion por <direccion> en la ventana de contactos vinculados y desligue la direccion
 Then las direcciones fueron desvinculas de los contactos:
 |contactoDesligado|direccionDesligada|
-|RICARDO GIRALDO|KR 65 # 48 - 162|
+|RICARDO GIRALDO|CR 65 # 48 - 162|
 |CARLOS PERALTA|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
 |OSCAR GOMEZ|CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO|
 

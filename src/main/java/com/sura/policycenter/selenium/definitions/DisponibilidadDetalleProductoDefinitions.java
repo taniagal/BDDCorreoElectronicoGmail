@@ -19,9 +19,14 @@ public class DisponibilidadDetalleProductoDefinitions {
     @Steps
     private DisponibilidadDetalleProductoSteps disponibilidadDetalleProductoSteps;
 
-    @Given("Estoy expidiendo una poliza de autos")
+    @Given("quiero expedir una poliza nueva")
     public void accionarNuevoEnvio() {
         disponibilidadDetalleProductoSteps.accionarNuevoEnvio();
+    }
+
+    @Given("seleccione el agente <agente>")
+    public void seleccionarAgente(@Named("agente") String agente){
+        disponibilidadDetalleProductoSteps.seleccionarAgente(agente);
     }
 
     @Given("viendo Informacion de poliza")
