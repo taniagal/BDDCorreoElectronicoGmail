@@ -391,12 +391,13 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
     
     public void definirPolizaFinanciada(String organizacionDetalle, String canalDetalle, String tipoPoliza) {
-        selectCombo(campoOrganizacion,organizacionDetalle);
-        waitUntil(2000);
-        selectCombo(campoCanal,canalDetalle);
-        waitUntil(2000);
-        selectCombo(campoTipoPoliza,tipoPoliza);
-        waitUntil(2000);
+        waitFor(campoOrganizacion);
+        campoOrganizacion.shouldNotBeEnabled();
+        campoCanal.shouldNotBeEnabled();
+        campoTipoPoliza.shouldNotBeEnabled();
+        MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(organizacionDetalle)));
+        MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(canalDetalle)));
+        MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(tipoPoliza)));
         polizaFinanciada.click();
     }
 
@@ -420,13 +421,9 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void modificarFechaInicioVigencia(String organizacionDetalle, String canalDetalle, String tipoPoliza, String tipoPlazo, String fechaInicioVigencia) {
-        waitUntil(3000);
-        campoOrganizacion.typeAndTab(organizacionDetalle);
-        waitUntil(3000);
-        campoCanal.typeAndTab(canalDetalle);
-        waitUntil(3000);
-        campoTipoPoliza.typeAndTab(tipoPoliza);
-        waitUntil(3000);
+        MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(organizacionDetalle)));
+        MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(canalDetalle)));
+        MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(tipoPoliza)));
         String validacion = null;
         waitFor(fechaVigenciaPoliza).shouldBePresent();
         try{
