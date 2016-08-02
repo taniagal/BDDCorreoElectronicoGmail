@@ -3,7 +3,6 @@ package com.sura.gw.policy.cuenta.definiciones;
 import com.sura.gw.policy.cuenta.steps.ConsultaDeCuentaSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.When;
 import org.slf4j.LoggerFactory;
@@ -17,8 +16,8 @@ public class ConsultaDeCuenta {
 
     private String numCuenta;
 
-    @Given("existe asesor $numCuenta")
-    public void existeUnaCuenta(@Named("numCuenta") String numCuenta) {
+    //@Given("existe asesor $numCuenta")
+    public void existeUnaCuenta(/*@Named("numCuenta") String numCuenta*/) {
         this.numCuenta = numCuenta;
         LOGGER.info("ConsultaDeCuenta.existeUnaCuenta");
     }

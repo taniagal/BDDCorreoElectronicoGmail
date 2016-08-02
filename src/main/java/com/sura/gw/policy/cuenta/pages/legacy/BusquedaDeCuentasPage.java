@@ -4,14 +4,18 @@ import com.sura.commons.selenium.Commons;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.LoggerFactory;
 
 
 public class BusquedaDeCuentasPage extends Commons {
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-labelEl']")
     private WebElementFacade lblTipoDocumento;
@@ -115,7 +119,7 @@ public class BusquedaDeCuentasPage extends Commons {
             txtSegundoApellido.waitUntilVisible().waitUntilEnabled().sendKeys(segundoApellido);
             btnBuscar.waitUntilClickable().click();
         } catch (StaleElementReferenceException elemento){
-            elemento.printStackTrace();
+            LOGGER.info("Problema buscando cuenta" +  elemento);
         }
     }
 

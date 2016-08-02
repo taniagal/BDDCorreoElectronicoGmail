@@ -1,23 +1,31 @@
 package com.sura.gw.policy.poliza.steps;
 
 import com.sura.gw.navegacion.util.widget.EspacioDeTrabajoWidget;
+import com.sura.gw.policy.poliza.pages.AccionesWidget;
 import com.sura.gw.policy.poliza.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
-import com.sura.gw.policy.poliza.pages.InformacionPolizaPage;
+import com.sura.gw.policy.poliza.pages.PolizaPage;
 import java.util.List;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.steps.ScenarioSteps;
 
 
-public class InformacionDePolizaSteps {
+public class PolizaSteps extends ScenarioSteps {
 
-    InformacionPolizaPage informacionPolizaPage;
-    EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
-    AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
-    EspacioDeTrabajoWidget espacioDeTrabajoWidget;
+    private static PolizaPage informacionPolizaPage;
+    private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
+    private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
+    private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
+    private static AccionesWidget accionesWidget;
 
     @Step
     public void seleccionar_opcion_edificios_y_ubicaciones() {
         informacionPolizaPage.seleccionarOpcionEdificiosyUbicaciones();
+    }
+
+    @Step
+    public void ingresar_nueva_ubicacion() {
+        edificiosyUbicacionesWidget.ingresarNuevaUbicacionConRiesgoConsultable();
     }
 
     public Boolean esperoVerNumeroDeSubscripcionEnEnvio(String numeroSubscripcion) {
@@ -69,8 +77,31 @@ public class InformacionDePolizaSteps {
         agregarArticuloEdificiosyUbicacionesWidget.seleccionarBotonAceptarParaAgregarArticulo();
     }
 
+    @Step
+    public void seleccionar_boton_acciones() {
+        accionesWidget.seleccionarBtnAcciones();
+    }
+
+    @Step
+    public void seleccionar_opcion_cambiar_poliza() {
+        accionesWidget.seleccionarOpcionCambioDePoliza();
+    }
+
     public List<String> espacioDeTrabajo() {
         espacioDeTrabajoWidget.desplegarEspacioDeTrabajo();
         return espacioDeTrabajoWidget.obtenerMensajesDeTrabajo();
+    }
+
+    public Boolean elementoEsEditable(String elemento) {
+        return informacionPolizaPage.esEditableElemento(elemento);
+    }
+
+    @Step
+    public void seleccionar_opcion_informacion_de_poliza() {
+        informacionPolizaPage.seleccionarOpcionInformacionDeLaPoliza();
+    }
+
+    public void seleccionarBotonSiguienteParaIniciarCambioEnPoliza() {
+        informacionPolizaPage.seleccionarBotonSiguienteEnInicioDeCambioDePoliza();
     }
 }

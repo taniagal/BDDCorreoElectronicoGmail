@@ -5,7 +5,6 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -22,7 +21,9 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
 
 
 
+    private static final long serialVersionUID = 1L;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
     public static final String TITULO_PAGINA_PPL_DE_ACCESO = ".//span[@id='DesktopActivities:DesktopActivitiesScreen:0']";
     public static final String TXT_USUARIO_SEUS = "//input[@placeholder='Usuario']";
     public static final String TXT_USUARIO = "//input[@id='Login:LoginScreen:LoginDV:username-inputEl']";
@@ -37,10 +38,6 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
         super(driver);
     }
 
-    @WhenPageOpens
-    public void accionesPreviasEnLaCargaDeLaPagina() {
-        //Empty Method
-    }
 
     public void clicBotonLogIn(){
         findBy(BTN_LOGIN).then().click();

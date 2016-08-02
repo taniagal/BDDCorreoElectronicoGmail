@@ -19,21 +19,19 @@ public class ContactosAsociadosACuentaWidgetPage extends PageObject {
     }
 
     public Boolean existenContactosAsociados(){
-        Boolean existenContactos = false;
+        Boolean existe;
         if (tablaContactos == null){
             obtenerTablaContactosAsociados();
-            existenContactos = tablaContactos.existenFilasEnTabla();
+            existe = tablaContactos.existenFilasEnTabla();
         } else {
-            existenContactos = tablaContactos.existenFilasEnTabla();
+            existe = tablaContactos.existenFilasEnTabla();
         }
-        return existenContactos;
+        return existe;
     }
 
     public void filtrarContactosAsociados(String filtro, String combo ){
         tablaContactos.enToolbar().seleccionarDeComboConValor(combo);
         tablaContactos.opcionDeCombo(filtro);
-
-        System.out.println("ContactosAsociadosACuentaWidgetPage.filtrarContactosAsociados");
     }
 
     public List<String> obtenerColumna(String columna ){
@@ -42,8 +40,6 @@ public class ContactosAsociadosACuentaWidgetPage extends PageObject {
         for (WebElement celda : tablaContactos.obtenerColumnaDeTabla(columna)){
             filasPorColumna.add(celda.getText());
         }
-
-        System.out.println("ContactosAsociadosACuentaWidgetPage.obtenerColumna");
 
         return filasPorColumna;
     }

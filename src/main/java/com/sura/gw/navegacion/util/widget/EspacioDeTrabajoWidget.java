@@ -20,7 +20,7 @@ public class EspacioDeTrabajoWidget extends PageObject{
             waitForTextToAppear("Workspace");
             $(DESPLEGADORESPACIODETRABAJO).click();
         } catch (Exception e) {
-            LOGGER.info("PROBLEMA DESCONOCIDO " + e.getMessage() );
+            LOGGER.info("PROBLEMA DESCONOCIDO TRACE" + e );
         }
     }
 
