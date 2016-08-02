@@ -104,6 +104,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void irABuscarCotizacion(String cotizacion) {
+        waitUntil(2000);
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
         menuPoliza.click();
         waitUntil(5000);
