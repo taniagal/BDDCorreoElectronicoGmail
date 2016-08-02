@@ -111,7 +111,7 @@ public class CotizacionMRCPage extends PageObject {
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(3000);
         buscarCotizacion.typeAndEnter(cotizacion);
-        waitUntil(1500);
+        waitUntil(2000);
     }
 
     public void ingresarACotizacion() {
@@ -126,6 +126,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void verDetalleCotizacion() {
+        waitUntil(1500);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloPagina).shouldBePresent();
         MatcherAssert.assertThat(tituloPagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
@@ -190,7 +191,7 @@ public class CotizacionMRCPage extends PageObject {
         WebElementFacade resultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
-        waitUntil(10000);
+        waitUntil(3000);
         MatcherAssert.assertThat(tablaMensajes.getText(),Matchers.containsString(mensaje));
         waitUntil(5000);
     }
@@ -209,6 +210,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void validarTipoRiesgo() {
+        waitUntil(1500);
         WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");//(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
         botonCotizar.click();
