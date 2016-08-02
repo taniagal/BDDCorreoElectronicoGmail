@@ -55,7 +55,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     }
 
     public void clickSiguiente() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
     }
 
     public void volver(){
@@ -70,12 +70,12 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         selectItem(comboBoxModelo, vehiculo.get("modelo"));
         waitUntil(3200);
-        campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
+        ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
         waitUntil(2000);
         campoTxtPlaca.click();
-        waitUntil(3500);
+        waitUntil(4500);
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitUntil(3000);
+        waitUntil(4000);
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         if (!"null".equals(vehiculo.get("motor"))) {
             campoTxtMotor.sendKeys(vehiculo.get("motor"));

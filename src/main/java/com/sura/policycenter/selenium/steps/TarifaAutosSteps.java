@@ -39,7 +39,6 @@ public class TarifaAutosSteps extends ScenarioSteps {
         tarifaAutosPage.setCoberturas(datosCoberturas);
         tarifaAutosPage.desMarcarCoberturas();
         tarifaAutosPage.cotizar();
-        tarifaAutosPage.irACotizacion();
     }
 
     @Step

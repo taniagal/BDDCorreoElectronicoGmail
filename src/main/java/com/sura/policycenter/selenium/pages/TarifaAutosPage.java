@@ -12,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class TarifaAutosPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
@@ -111,11 +112,11 @@ public class TarifaAutosPage extends Commons {
     public void setInformacionDePoliza(ExamplesTable datosPoliza) {
         Map<String, String> dato = datosPoliza.getRow(0);
         selectItem(comboBoxOrganizacion, dato.get("organizacion"));
-        waitUntil(1500);
+        waitUntil(3000);
         selectItem(comboBoxCanal, dato.get("canal"));
-        waitUntil(1500);
+        waitUntil(4000);
         selectItem(comboBoxTipoPoliza, dato.get("tipo_poliza"));
-        waitUntil(1500);
+        waitUntil(3000);
     }
 
 
@@ -148,11 +149,8 @@ public class TarifaAutosPage extends Commons {
 
     public void cotizar() {
         botonCotizar.click();
-    }
-
-    public void irACotizacion() {
-        botonBorrar.waitUntilPresent().click();
-        waitFor(labelDetalles).shouldBePresent();
+        //botonBorrar.waitUntilPresent().click();
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(labelDetalles).shouldBePresent();
         waitUntil(500);
         menuItemCotizacion.click();
     }

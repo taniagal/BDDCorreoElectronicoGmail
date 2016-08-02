@@ -259,17 +259,6 @@ public class  DetallesContactoPage extends Commons {
         dtlCntJ[7]= correoElectronicoSecundario;
     }
 
-    // TODO: 25/07/2016 Existe un riesgo de que se quede en este ciclo permanentemente 
-    public void ingresarDato(WebElementFacade elemento, String dato){
-        do {
-            waitFor(elemento);
-            elemento.clear();
-            waitFor(elemento).shouldContainText("");
-            elemento.sendKeys(dato);
-        }while (!elemento.getValue().equals(dato));
-    }
-
-
     /**
      * DETALLE CONTACTO EDICION
      * Valida si los datos ingresados es igual al que se muestran en el detalle
