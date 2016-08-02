@@ -3,11 +3,13 @@ package com.sura.gw.policy.cuenta.pages.legacy;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,6 +17,8 @@ import java.util.concurrent.TimeUnit;
  * Created by andralgu on 06/07/2016.
  */
 public class BusquedaDeCuentasPage extends Guidewire {
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-labelEl']")
     private WebElementFacade lblTipoDocumento;
@@ -118,7 +122,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
             txtSegundoApellido.waitUntilVisible().waitUntilEnabled().sendKeys(segundoApellido);
             btnBuscar.waitUntilClickable().click();
         } catch (StaleElementReferenceException elemento){
-            elemento.printStackTrace();
+            LOGGER.info("Problema buscando cuenta" +  elemento);
         }
     }
 

@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -21,14 +22,12 @@ public class TableWidgetPage extends PageObject {
     private static String TOOLBAR = ".//*[contains(@id,'gtoolbar') and contains(@id,'targetEl') and  contains(@class,'x-box-target')]/*";
     private static String ENCABEZADO_TABLA = ".//div[ (descendant::*[contains(@id, 'gridcolumn')]) and contains(@id,'headercontainer') and contains(@id,'targetEl') and contains(@class,'x-box-target') and contains(@role,'presentation')]/div";
     private static String TABLA = ".//*[contains(@id,'gridview') and contains(@id,'table') and contains(@class,'x-gridview') and contains(@class,'table') and contains(@class,'x-grid-table')]";
-    ///    private static String TABLA = ".//*[(parent::*[contains(@tabindex, '-1')]) and contains(@id,'gridview') and contains(@id,'table') and contains(@class,'x-gridview') and contains(@class,'table') and contains(@class,'x-grid-table')]";
     private static String LISTA_COMBO_DESPLEGABLE = ".//ul[contains(@class,'x-list-plain')]";
 
     private List<WebElement> encabezadoListWE;
     private List<WebElement> toolbarListWE;
     private WebElement contenedorWE = null;
     private WebElement combo;
-    private WebElement tablaWE;
     private List<WebElementFacade> filasDeTabla;
 
     public TableWidgetPage(WebDriver driver) {
@@ -41,9 +40,10 @@ public class TableWidgetPage extends PageObject {
         try {
             contenedorWE = getDriver().findElement(By.xpath(xpathDivContenedorDeTabla));
             if (contenedorWE != null) {
-                tablaWE = contenedorWE.findElement(By.xpath(TABLA));
+                contenedorWE.findElement(By.xpath(TABLA));
             }
         } catch (Exception e) {
+            LOGGER.error("NO SE ENCONTRÓ EL DIV CONTENEDOR DE LA TABLA TRACE" + e);
             Serenity.throwExceptionsImmediately();
         }
 
@@ -53,12 +53,13 @@ public class TableWidgetPage extends PageObject {
     public List<WebElementFacade> obtenerFilas() {
         RenderedPageObjectView renderedView = new RenderedPageObjectView(getDriver(), this, getWaitForTimeout(), true);
         filasDeTabla = renderedView.findAll(TABLA.concat("/tbody/tr"));
-        //filasDeTabla = getDriver().findElements(By.xpath(TABLA.concat("/tbody/tr")));
         return filasDeTabla;
     }
 
     public Boolean existenFilasEnTabla() {
-        return obtenerFilas().size() > 0;
+        if (! obtenerFilas().isEmpty())
+            return false;
+        return true;
     }
 
     public List<WebElement> obtenerEncabezado() {
@@ -72,7 +73,6 @@ public class TableWidgetPage extends PageObject {
     }
 
     public void seleccionarDeComboConLabel(String nombreLabelDeComboBox) {
-        String label = null;
         Boolean capturarElementoSiguiente = false;
         for (WebElement opcionToolbar : toolbarListWE) {
             if (opcionToolbar.getText().contains(nombreLabelDeComboBox) && capturarElementoSiguiente == false) {
@@ -92,7 +92,25 @@ public class TableWidgetPage extends PageObject {
     }
 
     public void seleccionarDeComboConValor(String valorInputDeComboBox) {
-        for (WebElement opcionToolbar : toolbarListWE) {
+        Boolean iterara = true;
+
+        while (iterara == true){
+            try {
+                Iterator opcionToolbar = toolbarListWE.iterator();
+
+                combo = ((WebElementFacade) opcionToolbar).findElement(By.xpath("//input[contains(@value,'" + valorInputDeComboBox + "')]"));
+                combo.click();
+                findBy(LISTA_COMBO_DESPLEGABLE).waitUntilVisible();
+                shouldBeVisible(findBy(LISTA_COMBO_DESPLEGABLE));
+                iterara = false;
+            } catch (Exception e) {
+                LOGGER.error("NO SE ENCONTRÓ NINGÚN COMBO CON VALOR " + valorInputDeComboBox + "TRACE " + e);
+                continue;
+            }
+        }
+/*
+        for (WebElement opcionToolbar = toolbarListWE; iterara != true; ) {
+
             try {
                 combo = opcionToolbar.findElement(By.xpath("//input[contains(@value,'" + valorInputDeComboBox + "')]"));
                 combo.click();
@@ -100,9 +118,10 @@ public class TableWidgetPage extends PageObject {
                 shouldBeVisible(findBy(LISTA_COMBO_DESPLEGABLE));
                 break;
             } catch (Exception e) {
+                LOGGER.error("NO SE ENCONTRÓ NINGÚN COMBO CON VALOR " + valorInputDeComboBox + "TRACE " + e);
                 continue;
             }
-        }
+        }*/
     }
 
     protected TableWidgetPage seleccionarDeTablaEnlace(String nombreDeEnlace) {
@@ -141,14 +160,12 @@ public class TableWidgetPage extends PageObject {
         Integer indiceDeColumna = obtenerIndiceDeColumna(nombreColumnaDeTabla);
         List<WebElement> filasPorColumna = new ArrayList<>();
 
-        if (indiceDeColumna > 0 && indiceDeColumna < obtenerEncabezado().size()) {
-            if (existenFilasEnTabla()) {
-
-                for (WebElement fila : obtenerFilas()) {
-                    WebElement celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
-                    filasPorColumna.add(celda);
-                }
+        if (existenFilasEnTabla() && indiceDeColumna > 0 && indiceDeColumna < obtenerEncabezado().size()) {
+            for (WebElement fila : obtenerFilas()) {
+                WebElement celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
+                filasPorColumna.add(celda);
             }
+
         }
 
         return filasPorColumna;

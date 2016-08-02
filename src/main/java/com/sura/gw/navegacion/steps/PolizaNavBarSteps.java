@@ -19,6 +19,7 @@ public class PolizaNavBarSteps extends ScenarioSteps {
         menuPoliza._consultarNumeroDeSubscripcion(numeroSubscripcion);
     }
 
+
     @Step
     public void ingresar_numero_de_poliza_y_teclear_enter(String numeroDePoliza) {
         menuPoliza.consultarNumeroDePoliza(numeroDePoliza);
