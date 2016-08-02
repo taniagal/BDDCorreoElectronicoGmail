@@ -23,7 +23,7 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
 
     public void ingresarValorAInput(String xpath, String valor) {
         WebElement txt = null;
-        txt = getDriver().findElement(By.xpath(xpath));
+        txt =  getDriver().findElement(By.xpath(xpath));
         $(txt).shouldBeCurrentlyVisible();
         $(txt).shouldBeEnabled();
         enter(valor).into(txt);

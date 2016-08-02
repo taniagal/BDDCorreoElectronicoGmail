@@ -17,12 +17,12 @@ public class MenuBarNavWidgetPage extends PageObject {
 
     private static String MENU_EMERGENTE = ".//*[contains(@id, 'menu') and contains(@id, 'innerCt')]";
     private static String OPCIONES = ".//*[contains(@id, 'menu') and contains(@id, 'targetEl')]/div";
-    private List<WebElement> opciones;
+    private List<WebElement> opcionesWE;
 
     public MenuBarNavWidgetPage enMenuContextual() {
         findBy(MENU_EMERGENTE).waitUntilVisible();
         shouldBeVisible(By.xpath(MENU_EMERGENTE));
-        this.opciones = getDriver().findElements(By.xpath(OPCIONES));
+        this.opcionesWE = getDriver().findElements(By.xpath(OPCIONES));
         return this;
     }
 
@@ -31,10 +31,11 @@ public class MenuBarNavWidgetPage extends PageObject {
         String mensajeError = null;
 
         WebElement opcionASeleccionar = null;
-        for (WebElement opcionMenu : opciones){
+        for (WebElement opcionMenu : opcionesWE){
             try {
                 opcionASeleccionar = opcionMenu.findElement(By.xpath(".//a[contains(., '" + nombreDeOpcionDeMenu  + "')]"));
             } catch (Exception e) {
+                LOGGER.info("SELEVVION DE MENU CON ERRORES " + e);
                 continue;
             }
         }
@@ -44,18 +45,12 @@ public class MenuBarNavWidgetPage extends PageObject {
         if (opcionASeleccionar != null) {
 
             switch (nombreDeOpcionDeMenu){
-                case "Póliza":
-                    break;
+
                 case "Cuentas":
                     opcionASeleccionar.click();
                     pageObject = (T) switchToPage(BusquedaDeCuentasPage.class);
                     break;
-                case "Código de agente":
-                    break;
-                case "Actividades":
-                    break;
-                case "Contactos":
-                    break;
+
                 default:
                     mensajeError = "OPCION:" + nombreDeOpcionDeMenu + " DE MENU SIN DEFINIR PÁGINA DE RETORNO";
             }

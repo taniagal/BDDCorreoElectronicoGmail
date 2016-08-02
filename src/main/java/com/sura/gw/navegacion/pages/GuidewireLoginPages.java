@@ -5,7 +5,6 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.annotations.WhenPageOpens;
 import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -36,12 +35,7 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
     public static final String CBO_PAIS = ".//*[@id='country']";
     public static final String BTN_LOGIN_SEUS = "//input[@type='submit']";
     public static final String BTN_LOGIN = "//span[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']";
-
-
-
-    @WhenPageOpens
-    public void accionesPreviasEnLaCargaDeLaPagina() {
-    }
+    
 
     public void clicBotonLogIn(){
         findBy(BTN_LOGIN).then().click();
