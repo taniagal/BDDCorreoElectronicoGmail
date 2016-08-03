@@ -1,12 +1,10 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.policycenter.selenium.pages.BusquedaDePolizaPage;
 import com.sura.policycenter.selenium.pages.CambioDePolizaPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
-import org.jbehave.core.model.ExamplesTable;
 
 public class CambioDePolizaSteps extends ScenarioSteps{
 

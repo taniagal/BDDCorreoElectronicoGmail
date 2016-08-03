@@ -6,14 +6,19 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import org.jbehave.core.annotations.*;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.jbehave.core.annotations.Alias;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.Pending;
+import org.jbehave.core.annotations.AfterScenario;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
 import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
 
 public class CotizacionDefinitions {
@@ -43,7 +48,7 @@ public class CotizacionDefinitions {
         cotizador.ir_al_menu_escritorio_del_panel_superior();
         cotizador.clic_en_la_opcion_acciones_del_panel_izquierdo();
         cotizador.clic_en_la_opcion_nueva_cotizacion();
-        assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF("Nueva cotización"), is(equalTo("Nueva cotización")));
+        MatcherAssert.assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF("Nueva cotización"), is(CoreMatchers.equalTo("Nueva cotización")));
 
         LOGGER.info("CotizacionDefinitions.crearNuevaCotizacion");
     }
@@ -102,7 +107,7 @@ public class CotizacionDefinitions {
     @Alias("se debera activar la lista de los nombres de los agentes que empiecen por dicha palabra ingresada")
     public void validarSiSeActivaListaDeNombres(){
 
-        assertThat(cotizador.tamanioListaAgentesPorFiltro(cotizador.getNombreAgente()), greaterThan(0));
+        MatcherAssert.assertThat(cotizador.tamanioListaAgentesPorFiltro(cotizador.getNombreAgente()), Matchers.greaterThan(0));
         LOGGER.info("CotizacionDefinitions.validarSiSeActivaListaDeNombres");
     }
 
@@ -134,19 +139,19 @@ public class CotizacionDefinitions {
 
     @Then("debera observar un mensaje emergente de informacion: $mensaje")
     public void deberaObservarUnMensajeEmergenteDeInformacion(String mensaje){
-        assertThat(mensaje.replace("\r","").replace("\n"," "), is(equalTo(cotizador.obtenerMensajeEmergenteDeInformacion())));
+        MatcherAssert.assertThat(mensaje.replace("\r","").replace("\n"," "), is(CoreMatchers.equalTo(cotizador.obtenerMensajeEmergenteDeInformacion())));
         LOGGER.info("CotizacionDefinitions.deberaObservarUnMensajeEmergenteDeInformacion");
     }
     @Then("debera observar un mensaje de error: $mensaje")
     @Alias("debera observar un mensaje de información: $mensaje")
     public void deberaObservarUnMensaje(String mensaje){
-        assertThat(cotizador.validarOcurrenciaDeMensajeDeAplicacion(mensaje.replace("\n","").replace("\r", " ")), is(true));
+        MatcherAssert.assertThat(cotizador.validarOcurrenciaDeMensajeDeAplicacion(mensaje.replace("\n","").replace("\r", " ")), is(true));
         LOGGER.info("CotizacionDefinitions.deberaObservarUnMensajeDeError");
     }
     @Then("debera observar los botones: $btns")
     public void deberaObservarLosBotones(String btns){
         String[] arrayBtns = btns.split(",");
-        assertThat(cotizador.validarExistenciaDeLosBotonesVisibles(arrayBtns), is(true));
+        MatcherAssert.assertThat(cotizador.validarExistenciaDeLosBotonesVisibles(arrayBtns), is(true));
         LOGGER.info("CotizacionDefinitions.deberaObservarLosBotones");
     }
 
@@ -154,15 +159,15 @@ public class CotizacionDefinitions {
     @Then("al seleccionar el botón $boton deberá ver la página $pagina")
     public void seleccionarBtnYValidarPaginaMostrada(String boton, String pagina){
         cotizador.seleccionarBtn(boton);
-        assertThat(cotizador.obtenerTextoTituloPaginaWEF(pagina), is(equalTo(pagina)));
+        MatcherAssert.assertThat(cotizador.obtenerTextoTituloPaginaWEF(pagina), is(CoreMatchers.equalTo(pagina)));
         LOGGER.info("CotizacionDefinitions.seleccionarBtnYValidarPaginaMostrada");
     }
 
     @Then("se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable")
     public void validarFechaSeaFechaHOYYSeaNoEditable(){
 
-        assertThat(cotizador.esFechaCotizacionHOY(), is(true));
-        assertThat(cotizador.esFechaEditable(), is(false));
+        MatcherAssert.assertThat(cotizador.esFechaCotizacionHOY(), is(true));
+        MatcherAssert.assertThat(cotizador.esFechaEditable(), is(false));
 
         LOGGER.info("CotizacionDefinitions.validarFechaSeaFechaHOYYSeaNoEditable");
     }

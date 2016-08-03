@@ -33,26 +33,14 @@ public class CotizacionPADetallePage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:FasecoldaCode-labelEl']")
     private WebElementFacade labelCodigoFasecolda;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:FasecoldaCode-inputEl']")
-    private WebElementFacade inputCodigoFasecolda;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Make-labelEl']")
     private WebElementFacade labelMarca;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Make-inputEl']")
-    private WebElementFacade inputMarca;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Year-labelEl']")
     private WebElementFacade labelModelo;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Year-inputEl']")
-    private WebElementFacade inputModelo;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Line-labelEl']")
     private WebElementFacade labelLinea;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Line-inputEl']")
-    private WebElementFacade inputLinea;
 
     @FindBy(xpath = ".//td[2]/div/div/div/div/div/div/span")
     private WebElementFacade labelDescripcionCobertura;
@@ -129,7 +117,7 @@ public class CotizacionPADetallePage extends Guidewire {
                 List<WebElement> cells = row.findElements(By.tagName("td"));
                 String descCob = cells.get(0).getText();
                 String terminoCob = cells.get(1).getText();
-                if(!terminoCob.equals("-")) {
+                if(!"-".equals(terminoCob)) {
                     i++;
                     terminoCoberturas.put("dato" + i, terminoCob);
                 }

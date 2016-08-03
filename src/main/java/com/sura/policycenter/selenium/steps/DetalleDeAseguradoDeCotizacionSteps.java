@@ -1,8 +1,8 @@
 package com.sura.policycenter.selenium.steps;
 
 
-import com.sura.policycenter.selenium.pages.EdicionContactoAseguradoPage;
 import com.sura.policycenter.selenium.pages.DetalleDeAseguradoDeCotizacionPage;
+import com.sura.policycenter.selenium.pages.EdicionContactoAseguradoPage;
 import com.sura.policycenter.selenium.pages.IngresoNuevoContactoAseguradoPage;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
