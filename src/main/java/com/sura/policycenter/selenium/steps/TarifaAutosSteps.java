@@ -15,13 +15,6 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_informacion_de_poliza(ExamplesTable datosPoliza) {
-        vehiculoPage.clickSiguiente();
-        tarifaAutosPage.setInformacionDePoliza(datosPoliza);
-        vehiculoPage.clickSiguiente();
-    }
-
-    @Step
     public void agregar_asegurados() {
         tarifaAutosPage.setAsegurados();
         vehiculoPage.clickSiguiente();

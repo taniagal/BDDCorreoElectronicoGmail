@@ -15,12 +15,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class TarifaAutosPage extends Commons {
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:SalesOrganizationType-inputEl']")
-    private WebElementFacade comboBoxOrganizacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
-    private WebElementFacade comboBoxCanal;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
-    private WebElementFacade comboBoxTipoPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnInnerEl']")
     private WebElementFacade botonAgregarAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact:1:UnassignedDriver-textEl']")
@@ -103,26 +97,18 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade checkBoxConductorElegido;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:4:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxConductorElegido;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
+    private WebElementFacade meniItemAsegurados;
 
 
     public TarifaAutosPage(WebDriver driver) {
         super(driver);
     }
 
-    public void setInformacionDePoliza(ExamplesTable datosPoliza) {
-        Map<String, String> dato = datosPoliza.getRow(0);
-        selectItem(comboBoxOrganizacion, dato.get("organizacion"));
-        waitUntil(3000);
-        selectItem(comboBoxCanal, dato.get("canal"));
-        waitUntil(4000);
-        selectItem(comboBoxTipoPoliza, dato.get("tipo_poliza"));
-        waitUntil(3000);
-    }
-
-
     public void setAsegurados() {
+        withTimeoutOf(28,TimeUnit.SECONDS).waitFor(meniItemAsegurados).waitUntilPresent().click();
         Actions actions = new Actions(getDriver());
-        botonAgregarAsegurado.click();
+        withTimeoutOf(28,TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         actions.moveToElement(navItemContastosDeLaCuenta).build().perform();
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         navItemAsegurado.click();
@@ -161,27 +147,31 @@ public class TarifaAutosPage extends Commons {
     }
 
     public void selectCoberturas(ExamplesTable coberturas) {
-        Map<String, String> dato = coberturas.getRow(0);
-        selectItem(comboBoxPerdidaTotalHurto,dato.get("PTH"));
-        selectItem(comboBoxPerdidaParcialHurto,dato.get("PPH"));
-        selectItem(comboBoxPerdidaParcialHurtoFranquisia,dato.get("PPHF"));
-        selectItem(comboBoxGastosDeTransporte,dato.get("GTH"));
-        checkBoxAccidentes.click();
-        selectItem(comboBoxAccidentes,dato.get("AC"));
-        selectItem(comboBoxAsistencia,dato.get("AS"));
-        checkBoxTaller.click();
-        selectItem(comboBoxTaller,dato.get("Taller"));
-        checkBoxGrua.click();
-        selectItem(comboBoxGrua,dato.get("Grua"));
-        checkBoxCentroDeServicios.click();
-        selectItem(comboBoxCentroDeServicios,dato.get("CS"));
-        selectItem(comboBoxPerdidaTotalDaniosDeducible,dato.get("PTD"));
-        selectItem(comboBoxPerdidaParcialDaniosDeducible,dato.get("PPD"));
-        selectItem(comboBoxPerdidaParcialDaniosFranquicia,dato.get("PPDF"));
-        selectItem(comboBoxGastosDeTransporteCarro,dato.get("GT"));
-        checkBoxCarroDeReemplazo.click();
-        selectItem(comboBoxPerdidaParcial,dato.get("PP"));
-        selectItem(comboBoxPerdidaTotal,dato.get("PT"));
+        try {
+            Map<String, String> dato = coberturas.getRow(0);
+            selectItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
+            selectItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
+            selectItem(comboBoxPerdidaParcialHurtoFranquisia, dato.get("PPHF"));
+            selectItem(comboBoxGastosDeTransporte, dato.get("GTH"));
+            checkBoxAccidentes.click();
+            selectItem(comboBoxAccidentes, dato.get("AC"));
+            selectItem(comboBoxAsistencia, dato.get("AS"));
+            checkBoxTaller.click();
+            selectItem(comboBoxTaller, dato.get("Taller"));
+            checkBoxGrua.click();
+            selectItem(comboBoxGrua, dato.get("Grua"));
+            checkBoxCentroDeServicios.click();
+            selectItem(comboBoxCentroDeServicios, dato.get("CS"));
+            selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
+            selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
+            selectItem(comboBoxPerdidaParcialDaniosFranquicia, dato.get("PPDF"));
+            selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
+            checkBoxCarroDeReemplazo.click();
+            selectItem(comboBoxPerdidaParcial, dato.get("PP"));
+            selectItem(comboBoxPerdidaTotal, dato.get("PT"));
+        }catch (StaleElementReferenceException e){
+            e.printStackTrace();
+        }
     }
 
     public void selectCoberturas2(ExamplesTable coberturas) {

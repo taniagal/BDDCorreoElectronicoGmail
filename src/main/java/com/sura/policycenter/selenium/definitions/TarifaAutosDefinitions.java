@@ -16,15 +16,6 @@ public class TarifaAutosDefinitions {
     @Steps
     TarifaAutosSteps tarifaAutosSteps;
 
-    @Given("estoy cotizando una poliza para la cuenta <cuenta> y producto <producto>")
-    public void agregarPoliza(@Named("cuenta") String cuenta) {
-        //detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta);
-    }
-
-    @When("ingrese la informacion de la poliza: $datosPoliza")
-    public void agregarDatosPoliza(ExamplesTable datosPoliza) {
-        tarifaAutosSteps.agregar_informacion_de_poliza(datosPoliza);
-    }
 
     @When("ingrese los datos del asegurado")
     public void agregarAsegurado() {

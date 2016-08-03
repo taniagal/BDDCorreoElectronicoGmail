@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages.colectivas;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -126,7 +126,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
 
     private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV:";
 
-    private Guidewire guidewire = new Guidewire(getDriver());
+    private Commons commons = new Commons(getDriver());
 
     private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
     private Date fechaHoy = new Date();
@@ -169,7 +169,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto(producto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = findBy(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
-        guidewire.waitUntil(1000);
+        commons.waitUntil(1000);
         botonElegirProducto.click();
     }
 
@@ -210,7 +210,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
 
     public void validarMensaje(WebElementFacade mensajePantalla, String mensaje) {
         waitFor(mensajePantalla).waitUntilVisible();
-        guidewire.waitUntil(1500);
+        commons.waitUntil(1500);
         MatcherAssert.assertThat(mensajePantalla.getText(), containsText(mensaje));
     }
 
@@ -243,7 +243,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void validarFechaFinDeVigenciaCambiada(int aniosFinVigencia) {
-        guidewire.waitUntil(1000);
+        commons.waitUntil(1000);
         String nuevaFechaFin = fechaInicioVigencia.getValue();
         Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 10)) + aniosFinVigencia;
         System.out.println("año vigencia " + nuevaFechaFin.substring(6, 10));

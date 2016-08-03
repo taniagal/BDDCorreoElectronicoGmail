@@ -5,11 +5,16 @@ import com.sura.commons.selenium.Commons;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.exceptions.SerenityManagedException;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
+
+import javax.swing.*;
 
 public class ValidacionesInformacionDeVehiculoPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
@@ -36,9 +41,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade campoTxtMotor;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']")
     private WebElementFacade campoTxtchasis;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
-    private WebElementFacade campoTxtValorAsegurado;
-
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:totalInsured_DV-inputEl']")
+    private WebElementFacade labelValorAsegurado;
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
@@ -69,22 +73,22 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         selectItem(comboBoxModelo, vehiculo.get("modelo"));
-        waitUntil(3200);
+        waitForTextToAppear(vehiculo.get("modelo"));
         ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
         waitUntil(2000);
         campoTxtPlaca.click();
-        waitUntil(4500);
-        MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtCodigoFasecolda.containsText(vehiculo.get("codigo_fasecolda")));
+        try {
+            waitForTextToAppear(vehiculo.get("valor_asegurado"));
+        }catch (org.openqa.selenium.TimeoutException e){
+            e.printStackTrace();
+        }
+        MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitUntil(4000);
+        waitForTextToAppear("2");
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         if (!"null".equals(vehiculo.get("motor"))) {
             campoTxtMotor.sendKeys(vehiculo.get("motor"));
             campoTxtchasis.sendKeys(vehiculo.get("chasis"));
-        }
-        if (!"null".equals(vehiculo.get("valor_asegurado"))) {
-            campoTxtValorAsegurado.clear();
-            campoTxtValorAsegurado.sendKeys(vehiculo.get("valor_asegurado"));
         }
     }
 
