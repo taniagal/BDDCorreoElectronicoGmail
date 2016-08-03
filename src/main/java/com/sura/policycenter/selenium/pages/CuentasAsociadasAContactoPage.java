@@ -1,13 +1,13 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.SeusLoginPage;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.concurrent.TimeUnit;
 
 
 public class CuentasAsociadasAContactoPage extends SeusLoginPage {

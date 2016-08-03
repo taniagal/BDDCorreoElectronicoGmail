@@ -2,7 +2,8 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.CotizacionDePolizaSteps;
 import com.sura.policycenter.selenium.steps.CotizacionMRCSteps;
-import com.sura.policycenter.selenium.steps.CotizacionPADetalleSteps;
+import java.util.HashMap;
+import java.util.Map;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -10,12 +11,16 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class CotizacionMRCDefinitions {
 
     private final Map<String, String> labelsCotizacionPoliza = new HashMap<>();
+
+    @Steps
+    CotizacionMRCSteps cotizacionMRCSteps;
+
+    @Steps
+    CotizacionDePolizaSteps cotizacionDePolizaSteps;
 
     public CotizacionMRCDefinitions(){
         labelsCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
@@ -42,11 +47,6 @@ public class CotizacionMRCDefinitions {
         labelsCotizacionPoliza.put("columnaMontoCargos", "Monto");
     }
 
-    @Steps
-    CotizacionMRCSteps cotizacionMRCSteps;
-
-    @Steps
-    CotizacionDePolizaSteps cotizacionDePolizaSteps;
 
     @Given("se ha realizado la cotizacion MRC <cotizacion>")
     public void givenIrALaCotizacion(@Named("cotizacion") String cotizacion) {

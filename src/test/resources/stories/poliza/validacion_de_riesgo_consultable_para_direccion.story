@@ -1,4 +1,4 @@
-Cobertura mrc Validaciones
+Validacion de riesgo consultable para direccion
 
 Meta:
 

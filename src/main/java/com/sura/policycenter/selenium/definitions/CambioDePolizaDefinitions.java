@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.policycenter.selenium.steps.BusquedaDePolizaSteps;
 import com.sura.policycenter.selenium.steps.CambioDePolizaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;

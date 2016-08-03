@@ -60,9 +60,9 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         waitFor(3).seconds();
         $(XPATH_DEPTO).click();
 
-        waitFor(3).seconds();
+        waitFor(6).seconds();
         enter(ciudad).into($(XPATH_CIUDAD));
-        waitFor(3).seconds();
+        waitFor(6).seconds();
         $(XPATH_CIUDAD).click();
 
         waitFor(3).seconds();
@@ -78,6 +78,10 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
         waitFor(10).seconds();
+    }
+
+    public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
+        findBy(".//*[@id='CPLocationPopup:Cancel']").waitUntilVisible().waitUntilClickable().click();
     }
 
 
