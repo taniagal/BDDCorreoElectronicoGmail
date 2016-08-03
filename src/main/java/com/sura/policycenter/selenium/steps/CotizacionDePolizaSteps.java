@@ -10,7 +10,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class CotizacionDePolizaSteps extends ScenarioSteps  {
 
-    private CotizacionDePolizaPage cotizacionDePolizaPage = new CotizacionDePolizaPage(getDriver());
+    private final CotizacionDePolizaPage cotizacionDePolizaPage = new CotizacionDePolizaPage(getDriver());
 
     public CotizacionDePolizaSteps(Pages pages){
         super(pages);

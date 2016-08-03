@@ -1,6 +1,8 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -15,8 +17,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class CotizacionMRCPage extends PageObject {
 
@@ -96,8 +96,6 @@ public class CotizacionMRCPage extends PageObject {
     private WebElementFacade columnaEstadoCargos;
     @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr[2]/td/div/div/div/div/div[3]/div")
     private WebElementFacade columnaMontoCargos;
-    @FindBy(xpath = "//tr[2]/td/div/div[2]/div/table")
-    private WebElementFacade tablaDetallePrima;
 
     public CotizacionMRCPage(WebDriver driver){
         super(driver);
@@ -116,8 +114,8 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void ingresarACotizacion() {
-        WebElementFacade botonInformacionPoliza = findBy(".//*[@id='SubmissionWizard:PolicyInfo']/div/span");//(".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span");
-        WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']");//(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:ttlBar']");
+        WebElementFacade botonInformacionPoliza = findBy(".//*[@id='SubmissionWizard:PolicyInfo']/div/span");
+        WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']");
         if(titulo.isCurrentlyVisible()){
             waitForTextToAppear("Información de póliza",5000);
         }else{
@@ -150,8 +148,7 @@ public class CotizacionMRCPage extends PageObject {
 
         if (campoNumeroCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("cotizacion"))) {
             datosCotizacion = informacionCotizacion.getRows().get(0);
-        }
-        else{
+        }else{
             datosCotizacion = informacionCotizacion.getRows().get(1);
         }
         MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("cotizacion"))));
@@ -207,12 +204,13 @@ public class CotizacionMRCPage extends PageObject {
                 public Boolean apply(Integer i) {                    return false;
                 }
             });
-        } catch (TimeoutException e) {}
+        } catch (TimeoutException e) {
+        }
     }
 
     public void validarTipoRiesgo() {
         waitUntil(1500);
-        WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");//(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
+        WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
         botonCotizar.click();
         waitUntil(5000);

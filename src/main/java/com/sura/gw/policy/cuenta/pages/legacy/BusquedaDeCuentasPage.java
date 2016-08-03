@@ -1,6 +1,7 @@
 package com.sura.gw.policy.cuenta.pages.legacy;
 
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
@@ -11,11 +12,8 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.TimeUnit;
 
-/**
- * Created by andralgu on 06/07/2016.
- */
+
 public class BusquedaDeCuentasPage extends Guidewire {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);

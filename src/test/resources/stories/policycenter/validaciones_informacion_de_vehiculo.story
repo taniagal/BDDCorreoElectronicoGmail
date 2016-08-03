@@ -50,7 +50,6 @@ And seleccione el producto <producto> para expedir la poliza
 And  vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|
 |T64498|2009  |00601122        |ALTAMIRA          |Particular       |null  |null |null           |
-
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                          |
 |Valor asegurado : El valor asegurado del vehículo supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
