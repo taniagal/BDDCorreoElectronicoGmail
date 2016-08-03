@@ -137,6 +137,17 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.modificarFechaInicioVigencia(organizacionDetalle, canalDetalle, tipoPoliza, tipoPlazo, fechaInicioVigencia);
     }
 
+    @When("pase a la siguiente opcion")
+    public void pasarASiguienteOpcion(){
+        informacionPolizaPASteps.pasar_A_Siguiente_Opcion();
+    }
+
+    @When("se identifique el tipo <tipoDocumento> y numero de documento <numeroDocumento> del tomador como PEPS")
+    public void identificarTipoYNumeroIdentificacion(@Named("tipoDocumento") String tipoDocumento,
+                                                     @Named("numeroDocumento") String numeroDocumento){
+        informacionPolizaPASteps.identificar_Tipo_Y_Numero_De_Identificacion(tipoDocumento, numeroDocumento);
+    }
+
     @Then("se debe visalizar los datos del tomador, como son: tipo y numero de identificacion, nombre completo,\n" +
             "telefono, direccion, vigencia de la poliza (valor por defecto), nombre del agente, fecha de suscripcion y\n" +
             "nombre de la compania aseguradora")
@@ -186,5 +197,15 @@ public class InformacionPolizaPADefinitions {
     @Then("se debe cumplir con la retroactividad permitida <mensaje>")
     public void validarRetroactividadPoliza(@Named("mensaje") String mensaje){
         informacionPolizaPASteps.validarRetroactividadPoliza(mensaje);
+    }
+
+    @Then("se debe mostrar el mensaje <mensaje> que se obtenga de Riesgos PEPS como warning")
+    public void validarMensajeBloqueoPEP(@Named("mensaje") String mensaje){
+        informacionPolizaPASteps.validar_Mensaje_Bloqueo_PEP(mensaje);
+    }
+
+    @Then("se debe permitir continuar la cotizacion")
+    public void permitirContinuarCotizacion(){
+        informacionPolizaPASteps.permitir_Continuar_Cotizacion();
     }
 }

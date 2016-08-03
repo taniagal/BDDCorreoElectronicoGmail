@@ -95,4 +95,24 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     public void seleccionarProducto() {
         opcionesInformacionPoliza.seleccionarProducto();
     }
+
+    @Step
+    public void pasar_A_Siguiente_Opcion() {
+        opcionesInformacionPoliza.pasarASiguienteOpcion();
+    }
+
+    @Step
+    public void identificar_Tipo_Y_Numero_De_Identificacion(String tipoDocumento, String numeroDocumento) {
+        opcionesInformacionPoliza.identificarTipoYNumeroIdentificacion(tipoDocumento, numeroDocumento);
+    }
+
+    @Step
+    public void validar_Mensaje_Bloqueo_PEP(String mensaje) {
+        opcionesInformacionPoliza.validarMensajeBloqueoPEP(mensaje);
+    }
+
+    @Step
+    public void permitir_Continuar_Cotizacion() {
+        opcionesInformacionPoliza.permitirContinuarCotizacion();
+    }
 }
