@@ -127,7 +127,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void verDetalleCotizacion() {
-        waitUntil(1500);
+        waitUntil(2000);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloPagina).shouldBePresent();
         MatcherAssert.assertThat(tituloPagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
