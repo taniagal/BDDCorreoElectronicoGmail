@@ -32,7 +32,6 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
     public static final String CBO_PAIS = ".//*[@id='country']";
     public static final String BTN_LOGIN_SEUS = "//input[@type='submit']";
     public static final String BTN_LOGIN = "//span[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']";
-    private static final long serialVersionUID = 1L;
 
     public GuidewireLoginPages(WebDriver driver){
         super(driver);

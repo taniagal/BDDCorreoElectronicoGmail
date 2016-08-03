@@ -74,6 +74,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         waitUntil(2000);
         campoTxtPlaca.click();
         waitUntil(4500);
+        MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtCodigoFasecolda.containsText(vehiculo.get("codigo_fasecolda")));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitUntil(4000);
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));

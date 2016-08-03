@@ -149,7 +149,6 @@ public class TarifaAutosPage extends Commons {
 
     public void cotizar() {
         botonCotizar.click();
-        //botonBorrar.waitUntilPresent().click();
         withTimeoutOf(28, TimeUnit.SECONDS).waitFor(labelDetalles).shouldBePresent();
         waitUntil(500);
         menuItemCotizacion.click();
