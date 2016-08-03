@@ -84,7 +84,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         }
         MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitForTextToAppear("2");
+        waitUntil(3000);
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         if (!"null".equals(vehiculo.get("motor"))) {
             campoTxtMotor.sendKeys(vehiculo.get("motor"));

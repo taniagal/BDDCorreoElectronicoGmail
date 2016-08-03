@@ -129,7 +129,7 @@ public class Commons extends PageObject {
     }
 
     public  void verificarMensaje(WebElementFacade divMensaje, String mensaje){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
     }
 

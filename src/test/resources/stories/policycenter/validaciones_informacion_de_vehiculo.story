@@ -26,7 +26,7 @@ Given estoy cotizando una poliza:
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|valor_asegurado|
-|T64497|2011  |01601225        |ALTAMIRA          |Particular       |CHAS63215|AB3C2|null           |
+|T64497|2011  |01601225        |MEDELLIN          |Particular       |CHAS63215|AB3C2|$17,900,000.00 |
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                |
 |Placa : La placa T64497, La placa es un riesgo no estandar y no es posible gestionar la solicitud por este canal.      |
@@ -44,7 +44,7 @@ Given estoy cotizando una poliza:
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|
-|T64498|2017  |09403011        |ALTAMIRA          |Particular       |null  |null |null           |
+|T64498|2017  |09403011        |MEDELLIN          |Particular       |null  |null |$830,000,000.00|
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                                                                                                                                             |
 |Valor asegurado : El valor asegurado del vehículo supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
@@ -61,7 +61,7 @@ Given estoy cotizando una poliza:
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|
-|T64498|1993  |07015010        |ALTAMIRA          |Particular       |null  |null |null           |
+|T64498|1993  |07015010        |MEDELLIN          |Particular       |null  |null |$1,400,000.00  |
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                 |
 |Valor asegurado : El valor del vehículo es inferior al tope mínimo. Por favor verifique.|

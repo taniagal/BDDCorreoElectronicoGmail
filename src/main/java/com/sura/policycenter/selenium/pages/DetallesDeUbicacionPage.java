@@ -103,7 +103,7 @@ public class DetallesDeUbicacionPage extends Commons {
         selectItem(comboBoxOrganizacion,dato.get("organizacion"));
         waitUntil(3000);
         selectItem(comboBoxCanal,dato.get("canal"));
-        waitUntil(2500);
+        waitUntil(3500);
         seleccionarProducto(dato.get("producto"));
     }
 
