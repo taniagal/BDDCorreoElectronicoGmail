@@ -73,7 +73,7 @@ And deben quedar agregados como asegurados:
 
 Examples:
 |cuenta    | agente  | organizacion | canal             | producto |tipoId|numeroId|mensaje|
-|C000888888| DIRECTO | Sura         | Canal Tradicional | Autos    |CEDULA DE CIUDADANIA|32536001|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|C000888888| DIRECTO | Sura         | Canal Tradicional | Autos    |CEDULA DE CIUDADANIA|32536001|DIEGO VELEZ, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
 
 Scenario: Agregar asegurado y Editar campos en creacion tipo persona natural
 Given voy a crear una nueva cotizacion
