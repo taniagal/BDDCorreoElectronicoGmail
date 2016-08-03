@@ -8,7 +8,7 @@ Meta:
 @URL https://jira.suramericana.com.co/browse/CDSEG-1900
 @Informador alejandro esteban villada marin
 @Automatizador andres alarcon guerrero
-@tag bug, cobertura, sublimites
+@tag bug:CDSEG-1900
 @Sprint 4
 
 As a <rolUsuario>

@@ -2,14 +2,13 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.pages.GuidewireLoginPages;
 import com.sura.policycenter.selenium.steps.GuidewireLoginSteps;
+import com.thoughtworks.selenium.SeleneseTestNgHelper;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;
-
-import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
 
 public class IngresoAPolicyCenterDefinitions {
 
@@ -33,7 +32,7 @@ public class IngresoAPolicyCenterDefinitions {
     }
     @Then("Debería acceder a PolicyCenter y ver página $tituloPagina")
     public void ingresarAPolicyCenter(String tituloPagina){
-        assertEquals(tituloPagina, superUsuario.validar_que_el_titulo_de_la_pagina_principal_sea_mis_actividads());
+        SeleneseTestNgHelper.assertEquals(tituloPagina, superUsuario.validar_que_el_titulo_de_la_pagina_principal_sea_mis_actividads());
     }
 
 

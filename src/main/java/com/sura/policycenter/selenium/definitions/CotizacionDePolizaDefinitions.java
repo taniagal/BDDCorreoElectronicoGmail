@@ -2,11 +2,10 @@ package com.sura.policycenter.selenium.definitions;
 
 
 import com.google.inject.name.Named;
-import java.util.HashMap;
-import java.util.Map;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.CotizacionDePolizaSteps;
-import net.thucydides.core.annotations.Managed;
+import java.util.HashMap;
+import java.util.Map;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
@@ -14,19 +13,13 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.WebDriver;
 
 
 public class CotizacionDePolizaDefinitions {
-
-    private InicioPage inicioPage() {
-        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
-    }
-
-    private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
-
     @Steps
     CotizacionDePolizaSteps cotizacionDePolizaSteps;
+
+    private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
     public CotizacionDePolizaDefinitions(){
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
@@ -41,6 +34,10 @@ public class CotizacionDePolizaDefinitions {
         infoCotizacionPoliza.put("primaTotal", "Prima total");
         infoCotizacionPoliza.put("impuestos", "Impuestos y cargos extra");
         infoCotizacionPoliza.put("costoTotal", "Costo total");
+    }
+
+    private InicioPage inicioPage() {
+        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
     }
 
     @Given("he realizado la cotizacion <cotizacion>")
