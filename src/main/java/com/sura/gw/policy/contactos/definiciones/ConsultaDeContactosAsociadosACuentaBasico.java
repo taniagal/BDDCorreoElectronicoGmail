@@ -6,12 +6,16 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import org.jbehave.core.annotations.*;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.AfterScenario;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class ConsultaDeContactosAsociadosACuentaBasico {
@@ -57,7 +61,7 @@ public class ConsultaDeContactosAsociadosACuentaBasico {
 
     @Then("debo ver contactos asociados a esta cuenta")
     public void deboVerContactosAsociadosAEstaCuenta() {
-        assertThat(cuenta.obtenerContactosAsociadosWO().existenContactosAsociados(), is(equalTo(Boolean.TRUE)));
+        MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().existenContactosAsociados(), is(CoreMatchers.equalTo(Boolean.TRUE)));
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuenta");
     }
 

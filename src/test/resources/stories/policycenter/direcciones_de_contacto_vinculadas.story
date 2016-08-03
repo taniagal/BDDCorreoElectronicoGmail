@@ -141,7 +141,7 @@ Then la lista de contactos debe ser la siguiente:
 |OSCAR GOMEZ (Asegurado nombrado)|
 And debo poder asociar una direccion de otro contacto y se debe asociar la dirección seleccionada al nuevo contacto  y mostrar los datos de la dirección
 |pais|departamento|ciudad|direccion|tipoDireccion|descripcion|
-|Colombia|ANTIOQUIA|MEDELLIN|KR 65 # 48 - 162|Vivienda|Created by the Address Builder with code 0|
+|Colombia|ANTIOQUIA|MEDELLIN|CR 65 # 48 - 162|Vivienda|Created by the Address Builder with code 0|
 
 Examples:
 |numeroCuenta|
