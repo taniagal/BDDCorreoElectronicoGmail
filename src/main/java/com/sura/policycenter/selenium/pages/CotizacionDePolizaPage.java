@@ -20,7 +20,6 @@ import org.slf4j.LoggerFactory;
 
 public class CotizacionDePolizaPage extends PageObject{
 
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     private WebElementFacade tituloDePagina;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']")

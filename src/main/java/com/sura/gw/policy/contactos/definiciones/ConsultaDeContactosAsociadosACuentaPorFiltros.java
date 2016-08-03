@@ -6,6 +6,7 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Named;
@@ -15,8 +16,6 @@ import org.jbehave.core.annotations.AfterScenario;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.hasItem;
 
 /**
  * @escenario: Consultar contactos asociados a una cuenta haciendo uso de los filtros rol y tipo persona
@@ -33,7 +32,8 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
     @Managed
     public WebDriver driver;
 
-/*
+
+/**
     @Given("consultare una cuenta $numCuenta que tiene contactos asociados con un usuario de acceso de rol $rolUsuario")
     @Composite(
             steps = {"Given existe una cuenta $numCuenta",
@@ -59,12 +59,12 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
 
     @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro $filtro en la columna $columna")
     public void deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna(@Named("filtro") String filtro, @Named("columna") String columna) {
-        MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), hasItem(containsString(filtro)));
+        MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), CoreMatchers.hasItem(CoreMatchers.containsString(filtro)));
 
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna");
     }
 
-/* dejar este pilas
+/** dejar este pilas
     @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro <tipoPersona> y <rol>")
     public void deboVerContactosAsociadosAEstaCuentaConFiltros(@Named("tipoPersona") String filtroTipoPersona, @Named("rol") String filtroRol) {
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltros");
@@ -76,7 +76,7 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
         cuenta.login(driver, rolUsuario);
     }
 
-/*
+/**
     @Then("debo ver contactos asociados a esta cuenta que cumplan con el rol <rol>")
     public void deboVerContactosAsociadosAEstaCuentaQueCumplaConElRol() {
     }

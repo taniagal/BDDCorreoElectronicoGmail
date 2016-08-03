@@ -53,7 +53,7 @@ Examples:
 
 Scenario: Seleccionar oficina de radicacion
 Meta:
-@Manual
+@manual
 Given ya se inicio una nueva suscripcion
 And se puede visualizar la informacion de la poliza
 When seleccione, digite o busque la oficina de radicacion <oficinaRadicacion>

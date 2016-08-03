@@ -2,10 +2,10 @@ package com.sura.policycenter.selenium.definitions;
 
 
 import com.google.inject.name.Named;
+import com.sura.policycenter.selenium.pages.InicioPage;
+import com.sura.policycenter.selenium.steps.CotizacionDePolizaSteps;
 import java.util.HashMap;
 import java.util.Map;
-import com.sura.policycenter.selenium.steps.CotizacionDePolizaSteps;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
@@ -13,11 +13,9 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.WebDriver;
 
 
 public class CotizacionDePolizaDefinitions {
-
     @Steps
     CotizacionDePolizaSteps cotizacionDePolizaSteps;
 
@@ -26,8 +24,6 @@ public class CotizacionDePolizaDefinitions {
     private InicioPage inicioPage() {
         return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
     }
-
-
 
     public CotizacionDePolizaDefinitions(){
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");

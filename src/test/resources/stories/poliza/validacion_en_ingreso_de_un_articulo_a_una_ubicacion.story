@@ -2,12 +2,13 @@ Validacion en ingreso de un articulo a una ubicacion
 
 Meta:
 
-Scenario: Bug #  VALIDACIONES EN VALORES DE SUBLIMITES COBERTURA
+Scenario: Bug CDSEG-1900 Validaciones en valores de los sublimites cobertura
 Meta:
-@Story CDSEG-753
-@URL https://jira.suramericana.com.co/browse/CDSEG-753
+@Story CDSEG-1900
+@URL https://jira.suramericana.com.co/browse/CDSEG-1900
 @Informador alejandro esteban villada marin
 @Automatizador andres alarcon guerrero
+@tag bug, cobertura, sublimites
 @Sprint 4
 
 As a <rolUsuario>

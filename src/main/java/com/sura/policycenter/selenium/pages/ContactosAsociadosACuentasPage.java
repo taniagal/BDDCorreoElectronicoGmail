@@ -8,14 +8,12 @@ import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-
-import static org.hamcrest.Matchers.containsString;
 
 public class ContactosAsociadosACuentasPage extends Commons {
 
@@ -204,7 +202,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
             }
         }
         if (existeOcurrencia) {
-            MatcherAssert.assertThat(mensajeMostrado, containsString(mensajesApp));
+            MatcherAssert.assertThat(mensajeMostrado, Matchers.containsString(mensajesApp));
         }
         return existeOcurrencia;
     }

@@ -24,7 +24,6 @@ public class CuentaSteps extends ScenarioSteps {
     ContactosAsociadosACuentaWidgetPage contactosAsociados;
     BusquedaDeCuentasPage busquedaDeCuentas = null;
     BuscarNavBarPages navegacion;
-    String numCuenta;
 
     @Steps
     GuidewireLoginSteps loginSteps;
@@ -46,7 +45,7 @@ public class CuentaSteps extends ScenarioSteps {
     }
 
     public void consultarCuentaPorNumeroDeCuenta(String numCuenta) {
-        this.numCuenta = numCuenta;
+        String numeroCuenta = numCuenta;
         this.cuenta = irAPaginaBusquedaDeCuentas().luego().ingresar().numeroDeCuenta(numCuenta).luego().buscar().seleccionarCuenta(numCuenta);
     }
 

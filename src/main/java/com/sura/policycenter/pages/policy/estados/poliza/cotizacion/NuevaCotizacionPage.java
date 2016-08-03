@@ -287,7 +287,9 @@ public class NuevaCotizacionPage extends PageObject {
 
     public String obtenerMensajeEmergenteDeInformacion() {
         waitFor(1).second();
-        return elemento(MENSAJE_EMERGENTE_DE_INFORMACION).getText();
+        WebElementFacade mensaje = elemento(MENSAJE_EMERGENTE_DE_INFORMACION).waitUntilVisible();
+        mensaje.shouldBeVisible();
+        return mensaje.getText();
     }
 
     public void seleccionarBtn(String nombreBtn) {

@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
-import com.sura.commons.selenium.Commons;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -21,7 +20,6 @@ import org.openqa.selenium.support.ui.Wait;
 
 public class CotizacionMRCPage extends PageObject {
 
-    Commons gw = new Commons(getDriver());
     private final Actions act = new Actions(getDriver());
 
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
@@ -104,19 +102,20 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void irABuscarCotizacion(String cotizacion) {
+        waitUntil(2000);
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
         menuPoliza.click();
-        gw.waitUntil(5000);
+        waitUntil(5000);
         menuPoliza.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        gw.waitUntil(3000);
+        waitUntil(3000);
         buscarCotizacion.typeAndEnter(cotizacion);
-        gw.waitUntil(1500);
+        waitUntil(2000);
     }
 
     public void ingresarACotizacion() {
-        WebElementFacade botonInformacionPoliza = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span");
-        WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:ttlBar']");
+        WebElementFacade botonInformacionPoliza = findBy(".//*[@id='SubmissionWizard:PolicyInfo']/div/span");
+        WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']");
         if(titulo.isCurrentlyVisible()){
             waitForTextToAppear("Información de póliza",5000);
         }else{
@@ -126,6 +125,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void verDetalleCotizacion() {
+        waitUntil(2000);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloPagina).shouldBePresent();
         MatcherAssert.assertThat(tituloPagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
@@ -166,7 +166,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void validarPrima(String primaTotal) {
-        gw.waitUntil(7000);
+        waitUntil(7000);
         MatcherAssert.assertThat(campoPrimaTotal.getText(),Is.is(Matchers.equalTo(primaTotal)));
     }
 
@@ -185,21 +185,34 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        gw.waitUntil(10000);
+        waitUntil(10000);
         WebElementFacade resultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
-        gw.waitUntil(10000);
+        waitUntil(3000);
         MatcherAssert.assertThat(tablaMensajes.getText(),Matchers.containsString(mensaje));
-        gw.waitUntil(5000);
+        waitUntil(5000);
     }
-    
+
+    public void waitUntil(int millis) {
+        Integer i = 0;
+        Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
+                TimeUnit.MILLISECONDS).pollingEvery(millis,
+                TimeUnit.MILLISECONDS);
+        try {
+            wait.until(new Function<Integer, Boolean>() {
+                public Boolean apply(Integer i) {                    return false;
+                }
+            });
+        } catch (TimeoutException e) {
+        }
+    }
 
     public void validarTipoRiesgo() {
-        WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
+        waitUntil(1500);
+        WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
         botonCotizar.click();
-        gw.waitUntil(5000);
+        waitUntil(5000);
     }
-
 }

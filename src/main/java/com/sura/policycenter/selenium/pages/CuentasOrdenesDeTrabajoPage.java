@@ -4,12 +4,11 @@ import com.sura.commons.selenium.SeusLoginPage;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-
-import static org.hamcrest.Matchers.containsString;
 
 public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     @FindBy(xpath=".//tr[5]/td/div/span")
@@ -42,7 +41,7 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void validarMensaje(String mensaje) {
-        MatcherAssert.assertThat(msjTransaccionNoEncontrada.getText().toString(), containsString(mensaje));
+        MatcherAssert.assertThat(msjTransaccionNoEncontrada.getText().toString(), Matchers.containsString(mensaje));
     }
 
     public void filtrarTransaccionesPorTransaccion(String filtroTransaccion) {

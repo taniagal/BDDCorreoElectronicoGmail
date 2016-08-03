@@ -84,7 +84,7 @@ public class BusquedaActividadesPage extends PageObject {
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         btnBuscar.waitUntilVisible().waitUntilClickable().click();
-        grdFechaVencimiento.waitUntilPresent().waitUntilVisible();
+        grdFechaVencimiento.waitUntilVisible().waitUntilVisible();
         MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
         MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));

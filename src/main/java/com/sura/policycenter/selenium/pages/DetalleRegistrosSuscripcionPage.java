@@ -4,14 +4,13 @@ import com.sura.commons.selenium.Commons;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.core.IsNull;
 import org.openqa.selenium.WebDriver;
 
 
-
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.notNullValue;
 
 public class DetalleRegistrosSuscripcionPage extends Commons{
 
@@ -61,21 +60,21 @@ public class DetalleRegistrosSuscripcionPage extends Commons{
     }
 
     public void validarCamposDetalle(String producto, String nroEnvio, String estado, String nroPoliza){
-        MatcherAssert.assertThat(lblProducto.getText(), is(equalTo(producto)));
-        MatcherAssert.assertThat(lblNroEnvio.getText(), is(equalTo(nroEnvio)));
-        MatcherAssert.assertThat(lblEstadoDetalle.getText(), is(equalTo(estado)));
-        MatcherAssert.assertThat(lblNroPoliza.getText(), is(equalTo(nroPoliza)));
-        MatcherAssert.assertThat(lblCrearFecha.getText(), is(notNullValue()));
+        MatcherAssert.assertThat(lblProducto.getText(), is(CoreMatchers.equalTo(producto)));
+        MatcherAssert.assertThat(lblNroEnvio.getText(), is(CoreMatchers.equalTo(nroEnvio)));
+        MatcherAssert.assertThat(lblEstadoDetalle.getText(), is(CoreMatchers.equalTo(estado)));
+        MatcherAssert.assertThat(lblNroPoliza.getText(), is(CoreMatchers.equalTo(nroPoliza)));
+        MatcherAssert.assertThat(lblCrearFecha.getText(), is(IsNull.notNullValue()));
         lblFechaCierre.shouldBeVisible();
     }
 
     public void validarCamposRegistros(String nombre, String tipoDeTransaccion, String nroDeTransacciones) {
         lblTransaccionDetalle.withTimeoutOf(8, TimeUnit.SECONDS).waitUntilPresent();
-        MatcherAssert.assertThat(lblNombre.getText(), is(equalTo(nombre)));
-        MatcherAssert.assertThat(lblPrimeraFechaVigencia.getText(), is(notNullValue()));
-        MatcherAssert.assertThat(lblUltimaFechaVigencia.getText(), is(notNullValue()));
-        MatcherAssert.assertThat(lblTipoTransaccion.getText(), is(equalTo(tipoDeTransaccion)));
-        MatcherAssert.assertThat(lblNroTransaccion.getText(), is(equalTo(nroDeTransacciones)));
+        MatcherAssert.assertThat(lblNombre.getText(), is(CoreMatchers.equalTo(nombre)));
+        MatcherAssert.assertThat(lblPrimeraFechaVigencia.getText(), is(IsNull.notNullValue()));
+        MatcherAssert.assertThat(lblUltimaFechaVigencia.getText(), is(IsNull.notNullValue()));
+        MatcherAssert.assertThat(lblTipoTransaccion.getText(), is(CoreMatchers.equalTo(tipoDeTransaccion)));
+        MatcherAssert.assertThat(lblNroTransaccion.getText(), is(CoreMatchers.equalTo(nroDeTransacciones)));
     }
 
     public void buscarRegistrosSuscripcion() {
@@ -84,10 +83,10 @@ public class DetalleRegistrosSuscripcionPage extends Commons{
     }
 
     public void validarNombresFiltros(String estado, String transaccion) {
-        waitForTextToAppear(estado, 7);
-        waitForTextToAppear(transaccion, 7);
-        MatcherAssert.assertThat(lblEstado.getText(), is(equalTo(estado)));
-        MatcherAssert.assertThat(lblTransaccion.getText(), is(equalTo(transaccion)));
+        waitForTextToAppear(estado, 20);
+        waitForTextToAppear(transaccion, 20);
+        MatcherAssert.assertThat(lblEstado.getText(), is(CoreMatchers.equalTo(estado)));
+        MatcherAssert.assertThat(lblTransaccion.getText(), is(CoreMatchers.equalTo(transaccion)));
     }
 
     public void buscarDetalleRegistrosDeSuscripcion() {
@@ -97,11 +96,11 @@ public class DetalleRegistrosSuscripcionPage extends Commons{
     }
 
     public void validarTotal(String total) {
-        MatcherAssert.assertThat(lblCostoTotal.getText(), is(equalTo(total)));
+        MatcherAssert.assertThat(lblCostoTotal.getText(), is(CoreMatchers.equalTo(total)));
     }
 
     public void validarSumaGrupo(String suma) {
-        MatcherAssert.assertThat(lblNroCotizaciones.getText(), is(equalTo(suma)));
+        MatcherAssert.assertThat(lblNroCotizaciones.getText(), is(CoreMatchers.equalTo(suma)));
     }
 
     public void validarVisibilidadMenuAnalisisDeRiesgo() {
@@ -113,7 +112,7 @@ public class DetalleRegistrosSuscripcionPage extends Commons{
     }
 
     public void validarTituloSumatoriaDeCotizaciones(String titulo){
-        MatcherAssert.assertThat(lblTituloNroCotizaciones.getText(), is(equalTo(titulo)));
+        MatcherAssert.assertThat(lblTituloNroCotizaciones.getText(), is(CoreMatchers.equalTo(titulo)));
     }
 
 }

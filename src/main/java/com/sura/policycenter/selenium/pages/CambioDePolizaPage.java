@@ -12,8 +12,6 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
 
-
-
 public class CambioDePolizaPage extends PageObject {
 
     Commons commons = new Commons(getDriver());

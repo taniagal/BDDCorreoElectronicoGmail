@@ -13,13 +13,14 @@ import org.jbehave.core.model.ExamplesTable;
 
 
 public class CotizacionMRCDefinitions {
+
+    private final Map<String, String> labelsCotizacionPoliza = new HashMap<>();
+
     @Steps
     CotizacionMRCSteps cotizacionMRCSteps;
 
     @Steps
     CotizacionDePolizaSteps cotizacionDePolizaSteps;
-
-    private final Map<String, String> labelsCotizacionPoliza = new HashMap<>();
 
     public CotizacionMRCDefinitions(){
         labelsCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
@@ -45,6 +46,7 @@ public class CotizacionMRCDefinitions {
         labelsCotizacionPoliza.put("columnaEstadoCargos", "Estado");
         labelsCotizacionPoliza.put("columnaMontoCargos", "Monto");
     }
+
 
     @Given("se ha realizado la cotizacion MRC <cotizacion>")
     public void givenIrALaCotizacion(@Named("cotizacion") String cotizacion) {
@@ -76,7 +78,7 @@ public class CotizacionMRCDefinitions {
         cotizacionMRCSteps.validar_Tipo_Riesgo();
     }
 
-    @When("ya exista una cotizacion en estado \"cotizado\" del mismo cliente, para el producto Multiriesgo corporativo con un\n" +
+    @When("ya exista una cotizacion en estado cotizado del mismo cliente, para el producto Multiriesgo corporativo con un\n" +
             "agente diferente al que se ingreso")
     public void validarExclusividadCotizacion(){
         cotizacionMRCSteps.validar_Tipo_Riesgo();
