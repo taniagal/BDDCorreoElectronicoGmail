@@ -53,7 +53,7 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
-        guidewire.waitUntil(3000);
+        guidewire.waitUntil(4000);
         elementoDeLaLista.click();
     }
 
