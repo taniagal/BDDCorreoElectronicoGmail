@@ -78,7 +78,7 @@ public class CotizacionMRCDefinitions {
         cotizacionMRCSteps.validar_Tipo_Riesgo();
     }
 
-    @When("ya exista una cotizacion en estado \"cotizado\" del mismo cliente, para el producto Multiriesgo corporativo con un\n" +
+    @When("ya exista una cotizacion en estado cotizado del mismo cliente, para el producto Multiriesgo corporativo con un\n" +
             "agente diferente al que se ingreso")
     public void validarExclusividadCotizacion(){
         cotizacionMRCSteps.validar_Tipo_Riesgo();

@@ -104,6 +104,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void irABuscarCotizacion(String cotizacion) {
+        waitUntil(2000);
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
         menuPoliza.click();
         waitUntil(5000);
@@ -111,12 +112,12 @@ public class CotizacionMRCPage extends PageObject {
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(3000);
         buscarCotizacion.typeAndEnter(cotizacion);
-        waitUntil(1500);
+        waitUntil(2000);
     }
 
     public void ingresarACotizacion() {
-        WebElementFacade botonInformacionPoliza = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span");
-        WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:ttlBar']");
+        WebElementFacade botonInformacionPoliza = findBy(".//*[@id='SubmissionWizard:PolicyInfo']/div/span");//(".//*[@id='SubmissionWizard:LOBWizardStepGroup:PolicyInfo']/div/span");
+        WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']");//(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:ttlBar']");
         if(titulo.isCurrentlyVisible()){
             waitForTextToAppear("Información de póliza",5000);
         }else{
@@ -126,6 +127,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void verDetalleCotizacion() {
+        waitUntil(2000);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloPagina).shouldBePresent();
         MatcherAssert.assertThat(tituloPagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
@@ -190,8 +192,7 @@ public class CotizacionMRCPage extends PageObject {
         WebElementFacade resultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
-        //withTimeoutOf(10, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
-        waitUntil(10000);
+        waitUntil(3000);
         MatcherAssert.assertThat(tablaMensajes.getText(),Matchers.containsString(mensaje));
         waitUntil(5000);
     }
@@ -210,7 +211,8 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void validarTipoRiesgo() {
-        WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
+        waitUntil(1500);
+        WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");//(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
         botonCotizar.click();
         waitUntil(5000);
