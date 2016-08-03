@@ -48,9 +48,9 @@ And los botones de elegir producto deben estar habilitados
 
 Examples:
 |organizacion   |canal              |tipoPoliza|productos                    |
-|Bancolombia    |Leasing            |Individual|Autos,Multiriesgo corporativo|
-|Bancolombia    |Renting            |Individual|Autos,Multiriesgo corporativo|
-|Bancolombia    |Sufi               |Individual|Autos,Multiriesgo corporativo|
+|Bancolombia    |Leasing            |Individual|Multiriesgo corporativo|
+|Bancolombia    |Renting            |Individual|Multiriesgo corporativo|
+|Bancolombia    |Sufi               |Individual|Multiriesgo corporativo|
 |Bancolombia    |Televentas         |Individual|Autos,Multiriesgo corporativo|
 |Exito          |Exito              |Individual|Autos,Multiriesgo corporativo|
 |GMAC           |GMAC               |Individual|Autos,Multiriesgo corporativo|
@@ -58,4 +58,4 @@ Examples:
 |Sura           |Canal Tradicional  |Individual|Autos,Multiriesgo corporativo|
 |Sura           |Televentas         |Individual|Autos,Multiriesgo corporativo|
 |Sura           |Venta directa      |Individual|Autos,Multiriesgo corporativo|
-|Tuya           |Tuya               |Individual|Autos,Multiriesgo corporativo|
+|Tuya           |Tuya               |Individual|Multiriesgo corporativo|
