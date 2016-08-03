@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
