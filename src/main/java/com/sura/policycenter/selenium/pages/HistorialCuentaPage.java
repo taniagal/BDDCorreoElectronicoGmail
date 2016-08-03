@@ -80,7 +80,7 @@ public class HistorialCuentaPage extends Guidewire {
         waitUntil(1000);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(2000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtNumCuenta).typeAndEnter(numCuenta);
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(txtNumCuenta).typeAndEnter(numCuenta);
         waitUntil(2000);
     }
 
