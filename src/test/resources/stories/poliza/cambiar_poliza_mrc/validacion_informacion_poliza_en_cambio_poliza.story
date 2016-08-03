@@ -2,7 +2,7 @@ Validacion informacion poliza en cambio poliza
 Meta:
 
 
-Scenario: Validación de elementos bloqueados en informacion de la poliza en el proceso del cambio de poliza
+Scenario: Validacion de elementos bloqueados en informacion de la poliza en el proceso del cambio de poliza
 Meta:
 @Story CDSEG-920
 @URL https://jira.suramericana.com.co/browse/CDSEG-920

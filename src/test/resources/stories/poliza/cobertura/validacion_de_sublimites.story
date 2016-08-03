@@ -323,3 +323,113 @@ Examples:
 | Asesor     |             |
 
 
+
+
+Scenario: Sublímite de pérdidas de contenidos en tanques (Coberturas del riesgo)
+Meta:
+@Story CDSEG-767
+@URL https://jira.suramericana.com.co/browse/CDSEG-767
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@tags coberturas, riesgo, sublimite, perdidas, contenido, tanques
+@Sprint 5
+
+As a <rolUsuario>
+Given he ingresado la informacion de coberturas a nivel de riesgo
+When ingrese el sublímite de pérdidas de contenidos en tanques dentro de la cobertura daños materiales mayor a la sumatoria de los valores asegurables de los articulos de existencia fija, existencia flotante y existencia a granel (categoria otors y normal)
+When haga clic en el boton Aceptar
+Then espero ver el mensaje: El valor del -Nombre del sublímite de las pérdidas de contenidos en tanques- debe ser menor o igual a la sumatoria de los valores asegurables de las existencias fijas, flotantes y a granel.
+Then debe permanecer en Edificios y Ubicaciones
+
+Examples:
+| rolUsuario | descripcion |
+| Asesor     |             |
+
+
+
+Scenario: Portadores externos de datos (Coberturas del riesgo)
+Meta:
+@Story CDSEG-767
+@URL https://jira.suramericana.com.co/browse/CDSEG-767
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@tags coberturas, riesgo, portadores, externos, datos
+@Sprint 5
+
+As a <rolUsuario>
+Given he ingresado la informacion de coberturas para una ubicacion
+When seleccione la cobertura de portadores externos de dato
+When haga clic en el boton Aceptar
+Then Se debe validar que para el riesgo se debe tener asegurado el artículo "Equipo electrónico fijo" (categoría otros o normal). Si no se tiene asegurado se debe mostrar el siguiente mensaje: "Para seleccionar la cobertura de -Nombre de la cobertura de portadores externos de datos- se debe tener asegurado el equipo electrónico fijo." y no debe dejar continuar.
+
+Examples:
+| rolUsuario | descripcion |
+| Asesor     |             |
+
+
+
+Scenario: Gastos por arrendamiento de sistema electrónico de procesamiento de datos (Coberturas del riesgo)
+Meta:
+@Story CDSEG-767
+@URL https://jira.suramericana.com.co/browse/CDSEG-767
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@tags coberturas, riesgo, portadores, externos, datos
+@Sprint 5
+
+As a <rolUsuario>
+Given he ingresado la informacion de coberturas para una ubicacion
+When seleccione la cobertura de Gastos por arrendamiento de sistema electrónico de procesamiento de datos
+When haga clic en el boton Aceptar
+Then Se debe validar que para el riesgo se debe tener asegurado el artículo "Equipo electrónico fijo" (categoría otros o normal). Si no se tiene asegurado se debe mostrar el siguiente mensaje: "Para seleccionar la cobertura de -Nombre de la cobertura de gastos por arrendamiento de sistema electrónico de procesamiento de datos- se debe tener asegurado el equipo electrónico fijo." y no debe dejar continuar
+
+Examples:
+| rolUsuario | descripcion |
+| Asesor     |             |
+
+
+Scenario: Sublimite todo riesgo construccion y|o todo riesgo montaje dentro de los predios asegurados (Coberturas del riesgo) - Porcentaje
+Meta:
+@Story CDSEG-767
+@URL https://jira.suramericana.com.co/browse/CDSEG-767
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@tags coberturas, riesgo, portadores, externos, datos
+@Sprint 5
+
+As a <rolUsuario>
+Given he ingresado la informacion de coberturas para una ubicacion
+When Ingrese el sublímite de la cobertura de todo riesgo construcción y/o montaje dentro de los predios asegurados
+When haga clic en el boton Aceptar
+Then Se debe validar que el valor asegurado sea menor o igual al 10% de la sumatoria de los valores asegurables de todos los artículos (categoría otros y normal). Si no cumple con lo anterior debe salir el siguiente mensaje de advertencia (warning): "El valor asegurado de la cobertura -Nombre de la cobertura todo riesgo construcción y/o montaje- debe ser menor o igual al 10% de la sumatoria de los valores asegurables de todos los artículos del predio." pero puede continuar con el proceso.
+
+Examples:
+| rolUsuario | descripcion |
+| Asesor     |             |
+
+Scenario: Sublímites menores a valor asegurado daños (coberturas a nivel de riesgo)
+Meta:
+@Story CDSEG-767
+@URL https://jira.suramericana.com.co/browse/CDSEG-767
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@tags coberturas, riesgo, portadores, externos, datos
+@Sprint 5
+
+As a <rolUsuario>
+Given he ingresado la informacion de coberturas para una ubicacion
+When quiera devolverme a la pantalla de ubicaciones (clic en el botón aceptar)
+When haga clic en el boton Aceptar
+Then Se debe validar que el valor asegurado sea menor o igual al 10% de la sumatoria de los valores asegurables de todos los artículos (categoría otros y normal). Si no cumple con lo anterior debe salir el siguiente mensaje de advertencia (warning): "El valor asegurado de la cobertura -Nombre de la cobertura todo riesgo construcción y/o montaje- debe ser menor o igual al 10% de la sumatoria de los valores asegurables de todos los artículos del predio." pero puede continuar con el proceso.
+
+Examples:
+| rolUsuario | descripcion |
+| Asesor     |             |
+
+
+

@@ -4,13 +4,11 @@ package com.sura.gw.policy.poliza.definitions;
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
@@ -178,8 +176,14 @@ public class Poliza {
 
     }
 
-    
 
+    /**
+     * AFTER STORY
+     */
+    @AfterStories
+    public void finalizarStoria(){
+        Serenity.done();
+    }
 
 
 }
