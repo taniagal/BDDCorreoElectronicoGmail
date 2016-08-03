@@ -1,7 +1,5 @@
 package com.sura.gw.policy.cuenta.steps.legacy;
 
-import com.sura.guidewire.acciones.navegacion.AccionBuscarNavBar;
-import com.sura.gw.policy.cuenta.pages.ContactosAsociadosACuentaWidgetPage;
 import com.sura.policycenter.selenium.pages.ContactosAsociadosACuentasPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.superior.cuenta.panel.contactos.BusquedaContactoDelDirectorioPage;

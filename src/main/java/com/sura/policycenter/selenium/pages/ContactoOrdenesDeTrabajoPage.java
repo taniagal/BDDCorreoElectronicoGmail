@@ -67,7 +67,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     public void validarCamposTransacciones(String poliza, String producto, String numeroTransaccion,
                                            String tipo, String estado, String participante) {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(fechaCreacion).waitUntilPresent();
-        waitUntil(2000);
+        waitUntil(3000);
         MatcherAssert.assertThat(this.fechaCreacion.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.poliza.getText(), Matchers.containsString(poliza));
         MatcherAssert.assertThat(this.producto.getText(), Matchers.containsString(producto));
@@ -111,7 +111,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
     public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(table).waitUntilPresent();
-        waitUntil(2000);
+        waitUntil(3000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {

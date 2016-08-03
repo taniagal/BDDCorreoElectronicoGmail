@@ -32,9 +32,9 @@ And vaya a agregar un vehiculo con los datos:
 
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                          |
-|Placa : La placa T64497, La placa es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
-|Chasis : El chasis CHAS63215, El chasis es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
-|Motor : El motor AB3C2, El motor es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|Placa : La placa T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
+|Chasis : El chasis CHAS63215, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
+|Motor : El motor AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
 
 Examples:
 |cuenta     |organizacion|canal            |producto|

@@ -1,6 +1,7 @@
 package com.sura.gw.navegacion.definitions;
 
 import com.sura.gw.navegacion.steps.GuidewireLoginSteps;
+import com.thoughtworks.selenium.SeleneseTestNgHelper;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
@@ -10,8 +11,6 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
-
-import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
 
 public class IngresoAPolicyCenterDefinitions {
 
@@ -35,7 +34,7 @@ public class IngresoAPolicyCenterDefinitions {
     }
     @Then("Debería acceder a PolicyCenter y ver página $tituloPagina")
     public void ingresarAPolicyCenter(String tituloPagina){
-        assertEquals(tituloPagina, login.validar_que_el_titulo_de_la_pagina_principal_sea_mis_actividads());
+        SeleneseTestNgHelper.assertEquals(tituloPagina, login.validar_que_el_titulo_de_la_pagina_principal_sea_mis_actividads());
     }
 
     @Given("que ingrese a PolicyCenter como usuario $rolUsuario")

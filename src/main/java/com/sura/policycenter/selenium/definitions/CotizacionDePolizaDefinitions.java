@@ -21,10 +21,6 @@ public class CotizacionDePolizaDefinitions {
 
     private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
-    private InicioPage inicioPage() {
-        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
-    }
-
     public CotizacionDePolizaDefinitions(){
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
         infoCotizacionPoliza.put("vigenciaPoliza", "Vigencia de la póliza");
@@ -38,6 +34,10 @@ public class CotizacionDePolizaDefinitions {
         infoCotizacionPoliza.put("primaTotal", "Prima total");
         infoCotizacionPoliza.put("impuestos", "Impuestos y cargos extra");
         infoCotizacionPoliza.put("costoTotal", "Costo total");
+    }
+
+    private InicioPage inicioPage() {
+        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
     }
 
     @Given("he realizado la cotizacion <cotizacion>")

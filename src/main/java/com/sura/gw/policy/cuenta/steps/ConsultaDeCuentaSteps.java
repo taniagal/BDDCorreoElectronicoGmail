@@ -5,8 +5,6 @@ import com.sura.gw.policy.cuenta.pages.BusquedaDeCuentasPage;
 import com.sura.gw.policy.cuenta.pages.CuentaPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.thucydides.core.steps.StepInterceptor;
-import org.slf4j.LoggerFactory;
 
 
 public class ConsultaDeCuentaSteps extends ScenarioSteps {

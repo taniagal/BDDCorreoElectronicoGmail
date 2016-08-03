@@ -8,11 +8,12 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.openqa.selenium.WebDriver;
 
 public class InformacionDePolizaMrcDefinitions {
 
-    @Steps
-    SeusLoginSteps seusLoginSteps;
+    @Managed
+    WebDriver driver;
 
     @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
@@ -30,7 +31,7 @@ public class InformacionDePolizaMrcDefinitions {
     }
 
     @When("seleccione el producto <nomProducto> a expedir")
-    public void seleccione_el_producto(@Named("nomProducto") String nomProducto){
+    public void seleccioneElProducto(@Named("nomProducto") String nomProducto){
         informacionDePolizaMrcSteps.seleccionar_producto(nomProducto);
     }
 
