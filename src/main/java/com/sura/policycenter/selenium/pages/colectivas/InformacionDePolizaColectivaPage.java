@@ -81,7 +81,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade botonTomadorSecundario;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ChangeSecondaryNamedInsuredButton:ExistingNamedInsured-textEl']")
     WebElementFacade submenuContactoExistente;
-    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ChangeSecondaryNamedInsuredButton:ExistingNamedInsured:0:UnassignedAccountContact-textEl']")
+    @FindBy(xpath = "//span[contains(.,'GLORIA GALLEGO')]")
     WebElementFacade submenuContacto;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:_msgs']/div")
     WebElementFacade mensajeDescuento;
