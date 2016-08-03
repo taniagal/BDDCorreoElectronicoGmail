@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import com.thoughtworks.selenium.SeleneseTestBase;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -15,9 +16,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
-
-
-import static com.thoughtworks.selenium.SeleneseTestBase.assertTrue;
 
 public class BusquedaContactoPage extends Guidewire {
 
@@ -205,7 +203,7 @@ public class BusquedaContactoPage extends Guidewire {
                         cells.get(1).getText().equals(filtro) ||
                         cells.get(2).getText().equals(filtro) ||
                         cells.get(3).getText().equals(filtro);
-                assertTrue(valido);
+                SeleneseTestBase.assertTrue(valido);
             }
 
         } catch (Exception e) {
@@ -226,7 +224,7 @@ public class BusquedaContactoPage extends Guidewire {
                         cells.get(3).getText().equals(filtro1) ||
                         cells.get(4).getText().equals(filtro1) ||
                         cells.get(5).getText().equals(filtro1);
-                assertTrue(valido1);
+                SeleneseTestBase.assertTrue(valido1);
             }
             if (!("").equals(filtro2)) {
                 boolean valido2 = cells.get(0).getText().equals(filtro1) ||
@@ -235,7 +233,7 @@ public class BusquedaContactoPage extends Guidewire {
                         cells.get(3).getText().equals(filtro1) ||
                         cells.get(4).getText().equals(filtro1) ||
                         cells.get(5).getText().equals(filtro1);
-                assertTrue(valido2);
+                SeleneseTestBase.assertTrue(valido2);
             }
         }
     }
@@ -344,12 +342,12 @@ public class BusquedaContactoPage extends Guidewire {
     public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
 
         boolean valido = primerNombre.length() < 2 || segundoNombre.length() < 2 || primerApellido.length() < 2 || segundoApellido.length() < 2;
-        assertTrue(valido);
+        SeleneseTestBase.assertTrue(valido);
     }
 
     public void validarLongitudPersonaJuridica(String razonSocial, String nombreComercial) {
         boolean valido = razonSocial.length() < 4 || nombreComercial.length() < 4;
-        assertTrue(valido);
+        SeleneseTestBase.assertTrue(valido);
     }
 
     public void validarLabelsPersonaNatural(Map<String, String> labelsContacto) {

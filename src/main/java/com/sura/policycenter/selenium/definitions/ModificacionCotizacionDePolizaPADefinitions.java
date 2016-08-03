@@ -5,7 +5,8 @@ import com.google.inject.name.Named;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.ModificacionCotizacionDePolizaSteps;
-import net.thucydides.core.annotations.Manual;
+import java.util.HashMap;
+import java.util.Map;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.jbehave.core.annotations.Given;
@@ -13,15 +14,8 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class ModificacionCotizacionDePolizaPADefinitions {
-
-    private InicioPage inicioPage() {
-        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
-    }
-
     private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
     @Steps
@@ -70,8 +64,6 @@ public class ModificacionCotizacionDePolizaPADefinitions {
         infoCotizacionPoliza.put("DC_subtotal", "Subtotal");
         infoCotizacionPoliza.put("DC_subtotalPrimas", "Subtotal de primas");
         infoCotizacionPoliza.put("DC_impuesto", "Impuesto");
-
-
     }
 
     @Given("se ha realizado la cotizacion de la modificacion <cotizacion>")
