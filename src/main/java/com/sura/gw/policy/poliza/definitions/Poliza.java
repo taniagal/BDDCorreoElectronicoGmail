@@ -176,6 +176,7 @@ public class Poliza {
                     ));
         }
 
+        polizaSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
 
     

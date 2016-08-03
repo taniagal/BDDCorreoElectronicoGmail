@@ -20,9 +20,6 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
     private final BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage = new BusquedaContactoDelDirectorioPage(getDriver());
 
-    private AccionBuscarNavBar navegacionSuperior;
-    private ContactosAsociadosACuentaWidgetPage contactosDeCuenta;
-
     public ContactosAsociadosACuentasSteps(Pages pages) {
         super(pages);
     }
@@ -40,13 +37,12 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     public void consultarContactos() {
         contactosAsociadosACuentasPage.consultarContactos();
 
-        // WHEN
-        //navegacionSuperior.buscar().en().cuenta().por().numeroDeCuenta("CUENTA").entonces().buscar().luego().seleccionarDichaCuenta();
-        // AND
-        //contactosDeCuenta.deseoVerLosContactosAsociados();
-        //THEN
-        //contactosDeCuenta.deberiaVerLosContactosAsociados();
-
+        /**WHEN
+        *navegacionSuperior.buscar().en().cuenta().por().numeroDeCuenta("CUENTA").entonces().buscar().luego().seleccionarDichaCuenta();
+        *AND
+        *contactosDeCuenta.deseoVerLosContactosAsociados();
+        *THEN
+        *contactosDeCuenta.deberiaVerLosContactosAsociados();*/
     }
 
 

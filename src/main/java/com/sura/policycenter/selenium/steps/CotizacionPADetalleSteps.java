@@ -2,11 +2,11 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.CotizacionPADetallePage;
 import com.sura.policycenter.selenium.pages.InicioPage;
+import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import java.util.Map;
 
 public class CotizacionPADetalleSteps extends ScenarioSteps {
 

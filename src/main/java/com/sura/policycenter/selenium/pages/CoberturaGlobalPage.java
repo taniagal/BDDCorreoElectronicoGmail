@@ -1,14 +1,12 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 
 public class CoberturaGlobalPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBlanket']/div")
@@ -86,7 +84,6 @@ public class CoberturaGlobalPage extends Guidewire {
     }
 
     public void verificarCoberturasIncluidas() {
-        //withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkCobertura1).waitUntilPresent().click();
         linkCobertura1.waitUntilVisible().waitUntilClickable().click();
         MatcherAssert.assertThat("Error al Agregar la cobertura", linkCobertura1.isPresent());
     }
