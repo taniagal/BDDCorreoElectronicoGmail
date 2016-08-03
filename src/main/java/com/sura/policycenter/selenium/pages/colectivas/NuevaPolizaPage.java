@@ -142,7 +142,6 @@ public class NuevaPolizaPage extends PageObject {
 
     public void seleccionarElTipoDePoliza(String tipoPoliza) {
         Commons.waitUntil(1000);
-//        WebElementFacade radioBotonIndividual = Commons.esperarElemento(".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:CreateIndividualPolicy_true-inputEl']");
         if ("Individual".equals(tipoPoliza)) {
             if ($(radioBotonIndividual).getCssValue("background-position").equals("0% 0%")) {
                 Commons.waitUntil(1500);
