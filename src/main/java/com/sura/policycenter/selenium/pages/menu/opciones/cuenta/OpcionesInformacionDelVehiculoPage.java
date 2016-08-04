@@ -4,10 +4,13 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.concurrent.TimeUnit;
 
 public class OpcionesInformacionDelVehiculoPage extends Guidewire {
 
@@ -25,7 +28,7 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
     WebElementFacade lstModelo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguinete;
+    WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestCardTab-btnInnerEl']")
     WebElementFacade btnInteresAdicional;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
@@ -70,6 +73,8 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     WebElementFacade txtBonificacionComercial;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
     WebElementFacade btnEscritorio;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']")
+    WebElementFacade grupoMensajes;
 
     String [] comparaValores = new String[2];
     Actions actions = new Actions(getDriver());
@@ -85,17 +90,19 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         opcionPolizaMrc.waitInfoPoliza(lblDetallesVehiculo);
     }
 
-    public void ingresaBeneficiario() {
+    public void ingresaBeneficiario(String tipoDocumento, String numeroDocumento) {
         btnInteresAdicional.click();
         btnAgregar.click();
         btnItemDirec.click();
         opcionPolizaMrc.waitInfoPoliza(lblBuscarDirec);
         txtTipoDoc.clear();
         waitUntil(800);
-        txtTipoDoc.sendKeys("CEDULA DE CIUDADANIA");
+        //txtTipoDoc.sendKeys("CEDULA DE CIUDADANIA");
+        txtTipoDoc.sendKeys(tipoDocumento);
         txtTipoDoc.sendKeys(Keys.ENTER);
         opcionPolizaMrc.waitInfoPoliza(lblPrimerNombre);
-        txtNumDoc.sendKeys("1234567892");
+        //txtNumDoc.sendKeys("1234567892");
+        txtNumDoc.sendKeys(numeroDocumento);
         btnBuscar.click();
         opcionPolizaMrc.waitInfoPoliza(btnSeleccion);
         btnSeleccion.click();
@@ -103,7 +110,7 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         lstTipoBeneficia.click();
         itmAsegurado.click();
         btnDetalleVehiculo.click();
-        opcionPolizaMrc.waitInfoPoliza(btnSiguinete);
+        opcionPolizaMrc.waitInfoPoliza(botonSiguiente);
     }
 
 
@@ -135,29 +142,40 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
 
     public void validarPaginaSiguiente() {
         String bug = "Ljava.lang.String";
-        btnSiguinete.click();
+        botonSiguiente.click();
         opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
         MatcherAssert.assertThat("Error no controlado en la poliza (Java Lang)", !cajaMensaje.containsText(bug));
-        btnSiguinete.click();
+        botonSiguiente.click();
         MatcherAssert.assertThat("Error: debio pasar a siguinete pagina", cajaMensaje.isVisible());
         waitUntil(10000);
     }
 
     public void validaMensajePantalla() {
-        btnSiguinete.click();
+        botonSiguiente.click();
         opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
         MatcherAssert.assertThat("el campo motor o chasis no debe aceptar ccaracteres especiales", cajaMensaje.containsText("Este campo no puede tener caracteres especiales, sólo números y letras"));
         MatcherAssert.assertThat("el campo descuento, recargo y suavizacion deben ser decimales", cajaMensaje.containsText("debe tener máximo dos enteros y máximo dos decimales"));
     }
 
     public void validaMensajePantalla(String mensaje) {
-        btnSiguinete.click();
+        botonSiguiente.click();
         opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
         MatcherAssert.assertThat("no se valido el campo bonificacion tecnica y comercial ", cajaMensaje.containsText(mensaje));
     }
 
     public void comparaValorAseguradoTotal(){
         MatcherAssert.assertThat("Los valor final no corresponde al calculado", comparaValores[0].equals(comparaValores[1]));
+    }
+
+    public void validarInteresAdicionalPEP() {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        waitUntil(1500);
+    }
+
+    public void validarMensajePEPInteresAdicional(String mensaje) {
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
+        waitUntil(2000);
     }
 }
 

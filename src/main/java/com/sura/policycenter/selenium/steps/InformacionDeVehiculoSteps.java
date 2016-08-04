@@ -34,8 +34,8 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresar_intereses_adicionales_o_conductor() {
-        opcionesInformacionDelVehiculoPage.ingresaBeneficiario();
+    public void ingresar_intereses_adicionales_o_conductor(String tipoDocumento, String numeroDocumento) {
+        opcionesInformacionDelVehiculoPage.ingresaBeneficiario(tipoDocumento, numeroDocumento);
     }
 
     @Step
@@ -61,5 +61,15 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
     @Step
     public void validar_poliza_total(){
         opcionesInformacionDelVehiculoPage.comparaValorAseguradoTotal();
+    }
+
+    @Step
+    public void validar_Interes_Adicional_PEP() {
+        opcionesInformacionDelVehiculoPage.validarInteresAdicionalPEP();
+    }
+
+    @Step
+    public void validar_Mensaje_PEP_Interes_Adicional(String mensaje) {
+        opcionesInformacionDelVehiculoPage.validarMensajePEPInteresAdicional(mensaje);
     }
 }
