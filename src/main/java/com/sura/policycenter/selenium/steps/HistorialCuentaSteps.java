@@ -21,7 +21,6 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
 
     @Step
     public void seleccionarHistorial() {
-
         historialCuentaPage.seleccionarHistorial();
     }
 
