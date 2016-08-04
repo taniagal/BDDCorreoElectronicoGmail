@@ -19,7 +19,7 @@ Examples:
 
 Scenario: Busqueda de historial por usuario
 Meta:
-@Manual
+@manual
 Given estoy en el historial de la cuenta <numCuenta>
 When indique un <usuario> para realizar la busqueda
 Then debo poder ver las transacciones asociadas a ese usuario especifico, que estan relacionadas con la cuenta y las polizas asociadas a ella.
@@ -58,7 +58,7 @@ Examples:
 
 Scenario: Busqueda del historial por rango de fechas, Sin indicar  la opción de fecha  Hasta
 Meta:
-@Manual
+@manual
 Given estoy en el historial de la cuenta <numCuenta>
 When se realiza la busqueda por <fecha> y solo se indique la opcion desde
 Then debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion hasta corresponde a la fecha actual.
@@ -69,7 +69,7 @@ Examples:
 
 Scenario: Busqueda del historial por rango de fechas, sin indicar la opcion de fecha Desde
 Meta:
-@Manual
+@manual
 Given estoy en el historial de la cuenta <numCuenta>
 When se realiza la busqueda por <fecha> y solo se indique la opcion hasta
 Then debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion desde corresponde a la fecha de inicio de la cuenta
@@ -80,7 +80,7 @@ Examples:
 
 Scenario: Busqueda del historial por rango de fechas
 Meta:
-@Manual
+@manual
 Given estoy en el historial de la cuenta <numCuenta>
 When se realiza la busqueda por fecha ( <desde> - <hasta>)
 Then debo poder ver las transacciones en el rango de fechas seleccionado.

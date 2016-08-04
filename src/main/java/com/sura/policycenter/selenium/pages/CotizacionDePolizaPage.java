@@ -15,7 +15,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.slf4j.LoggerFactory;
 
 
 public class CotizacionDePolizaPage extends PageObject{
@@ -162,6 +161,7 @@ public class CotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
         Guidewire gw = new Guidewire(getDriver());
         gw.waitUntil(15000);
+
     }
 
     public void validarTipoRiesgo() {

@@ -4,15 +4,12 @@ import com.sura.policycenter.selenium.pages.ValidacionesCambioDePolizaVehiculosP
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.jbehave.core.model.ExamplesTable;
-
-import java.util.Map;
 
 public class ValidacionesCambioDePolizaVehiculosSteps extends ScenarioSteps  {
 
-    private ValidacionesCambioDePolizaVehiculosPage validacionesCambioDePolizaVehiculosPage = new ValidacionesCambioDePolizaVehiculosPage(getDriver());
+    private final ValidacionesCambioDePolizaVehiculosPage validacionesCambioDePolizaVehiculosPage = new ValidacionesCambioDePolizaVehiculosPage(getDriver());
 
-    private ModificacionCotizacionDePolizaPage cotizacionDePolizaPage = new ModificacionCotizacionDePolizaPage(getDriver());
+    private final ModificacionCotizacionDePolizaPage cotizacionDePolizaPage = new ModificacionCotizacionDePolizaPage(getDriver());
 
     public ValidacionesCambioDePolizaVehiculosSteps(Pages pages){
         super(pages);

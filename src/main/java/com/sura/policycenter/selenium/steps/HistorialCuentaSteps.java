@@ -14,10 +14,6 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
         super(pages);
     }
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
     @Step
     public void seleccionarCuenta(String numCuenta) {
         historialCuentaPage.seleccionarCuenta(numCuenta);
@@ -25,7 +21,6 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
 
     @Step
     public void seleccionarHistorial() {
-
         historialCuentaPage.seleccionarHistorial();
     }
 

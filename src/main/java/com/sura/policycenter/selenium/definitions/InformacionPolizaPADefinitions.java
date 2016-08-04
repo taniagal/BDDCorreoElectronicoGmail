@@ -3,6 +3,8 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.policycenter.selenium.steps.CuentasOrdenesDeTrabajoSteps;
 import com.sura.policycenter.selenium.steps.DisponibilidadDetalleProductoSteps;
 import com.sura.policycenter.selenium.steps.InformacionPolizaPASteps;
+import java.util.HashMap;
+import java.util.Map;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
@@ -12,8 +14,6 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class InformacionPolizaPADefinitions {
 
@@ -24,12 +24,9 @@ public class InformacionPolizaPADefinitions {
     private CuentasOrdenesDeTrabajoSteps cuentasOrdenesTrabajoSteps;
 
     @Steps
-    private DisponibilidadDetalleProductoSteps disponibilidadDetalleProductoSteps;
-
-    @Steps
     private InformacionPolizaPASteps informacionPolizaPASteps;
 
-    private Map<String, String> infoPoliza = new HashMap<>();
+    private final Map<String, String> infoPoliza = new HashMap<>();
 
     public InformacionPolizaPADefinitions(){
         infoPoliza.put("labelAseguradoPrimario", "Tomador");

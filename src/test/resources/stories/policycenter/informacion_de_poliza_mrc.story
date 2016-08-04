@@ -1,5 +1,7 @@
 Meta:
 
+@issue #SUGWUSC-14460
+
 Narrative:
 Como usuario PolicyCenter
 Quiero ser capaz de ingresar y visualizar la informacion de la poliza incluyendo el nombre tomador
@@ -26,12 +28,24 @@ And seleccione el canal <canal>
 And seleccione el producto <nomProducto> a expedir
 And seleccione la poliza como reaseguro aceptado
 Then la etiqueta del tomador debe cambiar a tomador cedente
-And la etiqueta reaseguro debe marcarce a (si) automaticamente sin ser editable
+And la etiqueta reaseguro debe marcarce (si) automaticamente sin ser editable
 And se debe ocultar la opcion de tomadores adicionales
 
 Examples:
 |numeroCuenta|organizacion|canal            |nomProducto            |
 |C001888888  |Sura        |Canal Tradicional|Multiriesgo corporativo|
+
+Scenario: Cambiar inicio de vigencia propiedad comercial
+Given se inicio una nueva suscripcion <numeroCuenta>
+When este expidiendo una poliza de propiedad comercial <nomProducto>
+And modifique la fecha de inicio de vigencia de la poliza <fechaInicioVigencia>
+Then se debe mostrar un mensaje <mensaje> de error
+And bloquear la operacion
+
+Examples:
+|numeroCuenta  |nomProducto            |fechaInicioVigencia|mensaje                                                                                 |
+|C000888888    |Multiriesgo corporativo|01/01/2016         |La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)    |
+|C000888888    |Multiriesgo corporativo|12/01/2016         |La fecha de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
 Scenario: Agregar tomador adicional cuando es un riesgo consultable
 Given se inicio una nueva suscripcion <numeroCuenta>

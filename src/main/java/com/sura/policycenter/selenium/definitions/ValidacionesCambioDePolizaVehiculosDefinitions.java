@@ -3,7 +3,6 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.google.inject.name.Named;
 import com.sura.gw.navegacion.definitions.Navegacion;
-import com.sura.policycenter.selenium.steps.ModificacionCotizacionDePolizaSteps;
 import com.sura.policycenter.selenium.steps.ValidacionesCambioDePolizaVehiculosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;

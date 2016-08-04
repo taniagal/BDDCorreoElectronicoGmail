@@ -2,19 +2,22 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
+import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import java.util.Map;
 
 public class InformacionPolizaPASteps extends ScenarioSteps {
 
     OpcionesInformacionPolizaPage opcionesInformacionPoliza = new OpcionesInformacionPolizaPage(getDriver());
 
-    private InicioPage inicioPage() { return getPages().currentPageAt(InicioPage.class); }
     public InformacionPolizaPASteps(Pages pages) {
         super(pages);
+    }
+
+    private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step

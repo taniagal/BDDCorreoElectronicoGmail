@@ -8,11 +8,11 @@ import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
+import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import org.jbehave.core.annotations.AfterScenario;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
