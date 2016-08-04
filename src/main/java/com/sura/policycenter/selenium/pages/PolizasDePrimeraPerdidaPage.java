@@ -35,7 +35,7 @@ public class PolizasDePrimeraPerdidaPage extends Commons {
 
     public void irAArticulos() {
         withTimeoutOf(25, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonAgregarArticulos).waitUntilPresent().click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAgregarArticulos).waitUntilPresent().click();
     }
 
     public void agregarArticulo(ExamplesTable datos){

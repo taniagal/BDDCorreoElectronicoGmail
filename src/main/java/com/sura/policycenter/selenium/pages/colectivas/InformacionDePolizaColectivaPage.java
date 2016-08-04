@@ -2,13 +2,16 @@ package com.sura.policycenter.selenium.pages.colectivas;
 
 
 import com.sura.commons.selenium.Commons;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-
-import java.lang.String;
-
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -18,12 +21,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class InformacionDePolizaColectivaPage extends PageObject {
 
@@ -125,11 +122,12 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade linkEliminarCoaseguro;
 
     private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV:";
+    private static final String MM_DD_YYYY = "MM/dd/yyyy";
 
     private Commons commons = new Commons(getDriver());
+    private final DateFormat dateFormat = new SimpleDateFormat(MM_DD_YYYY);
+    private final Date fechaHoy = new Date();
 
-    private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-    private Date fechaHoy = new Date();
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {
         super(driver);
@@ -191,7 +189,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void cambiarFechaInicioVigencia() {
         LocalDateTime nuevaFechaInicio = LocalDateTime.now().minusMonths(1);
         fechaInicioVigencia.clear();
-        fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString("MM/dd/yyyy"));
+        fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
     }
 
     public void ingresarDescuentoPoliza(String descuento) {
@@ -223,11 +221,11 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         if ("menos".equals(sesentaDias)) {
             nuevaFechaInicio = (LocalDateTime.now().minusMonths(2).minusDays(1));
             fechaInicioVigencia.clear();
-            fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString("MM/dd/yyyy"));
+            fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
         } else {
             nuevaFechaInicio = (LocalDateTime.now().plusMonths(2).plusDays(1));
             fechaInicioVigencia.clear();
-            fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString("MM/dd/yyyy"));
+            fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
         }
     }
 
@@ -236,8 +234,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void validarFechaFinDeVigencia(int aniosFinVigencia, String tipoPlazo) {
-        String fechaFinVigencia = LocalDateTime.now().plusYears(aniosFinVigencia).toString("MM/dd/yyyy");
-        System.out.println("fecha fin de vigencia obtenida " + fechaFinVigencia);
+        String fechaFinVigencia = LocalDateTime.now().plusYears(aniosFinVigencia).toString(MM_DD_YYYY);
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), containsText(fechaFinVigencia));
         MatcherAssert.assertThat(campoTipoPlazo.getValue(), Is.is(Matchers.equalTo(tipoPlazo)));
     }
@@ -246,10 +243,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         commons.waitUntil(1000);
         String nuevaFechaFin = fechaInicioVigencia.getValue();
         Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 10)) + aniosFinVigencia;
-        System.out.println("año vigencia " + nuevaFechaFin.substring(6, 10));
-        System.out.println("anioVigenciaProducto " + anioVigenciaProducto);
         String fechaFinVigencia = nuevaFechaFin.replace(nuevaFechaFin.substring(6, 10), anioVigenciaProducto.toString());
-        System.out.println("fecha fin vigencia cambiada " + fechaFinVigencia);
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(fechaFinVigencia)));
     }
 

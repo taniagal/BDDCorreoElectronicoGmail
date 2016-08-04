@@ -80,8 +80,7 @@ public class CoberturaGlobalPage extends Commons {
     }
 
     public void cargarMultiplesUbicaciones(String valor) {
-    	waitUntil(1000);
-        waitFor(linkCoberturas).click();
+        linkCoberturas.click();
         checkBoxDanosMateriales.click();
         campoTxtValorAseguradoDanosMateriales.sendKeys(valor);
         linkDetalles.click();

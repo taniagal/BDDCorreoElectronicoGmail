@@ -8,13 +8,14 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class InformacionDePolizaMrcSteps extends ScenarioSteps {
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage (getDriver());
 
     public InformacionDePolizaMrcSteps (Pages pages) {
         super(pages);
+    }
+
+   private InicioPage inicioPage() {
+        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step
@@ -83,5 +84,6 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     public void validar_descipcion_de_direccion() {
         opcionesInformacionPolizaMrcPage.validaFormularioDescripDireccion();
     }
+
 }
 

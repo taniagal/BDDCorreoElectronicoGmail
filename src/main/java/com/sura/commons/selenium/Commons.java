@@ -11,7 +11,6 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -124,7 +123,7 @@ public class Commons extends PageObject {
                     return false;
                 }
             });
-        }catch (TimeoutException e) {
+        } catch (TimeoutException e) {
         }
     }
 

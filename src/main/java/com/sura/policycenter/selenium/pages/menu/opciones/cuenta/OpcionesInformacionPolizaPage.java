@@ -1,8 +1,6 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.commons.selenium.Commons;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -29,8 +27,6 @@ public class OpcionesInformacionPolizaPage extends Commons {
     WebElementFacade campoNombreAgente;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade tablaProductos;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PrimaryNamedInsuredLabel-labelEl']")
-    private WebElementFacade labelAseguradoPrimario;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-labelEl']")
     private WebElementFacade labelTipoDocumento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
@@ -105,8 +101,6 @@ public class OpcionesInformacionPolizaPage extends Commons {
     private WebElementFacade botonBuscarContacto;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']")
     private WebElementFacade botonSeleccionarContacto;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton-labelEl']")
-    private WebElementFacade labelNombreSegundoTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:DocumentType-labelEl']")
     private WebElementFacade labelTipoDocumentoSegundoTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
@@ -179,7 +173,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (columna.get(1).getText().equals("Autos")) {
+            if ("Autos".equals(columna.get(1).getText())) {
                 return filaBoton;
             }
             filaBoton++;
@@ -269,11 +263,11 @@ public class OpcionesInformacionPolizaPage extends Commons {
         int restames = mesexpnum - mesvignum;
         int restadia = diaexpnum - diavignum;
 
-        if (tipoPlazo.equals("Anual")) {
+        if ("Anual".equals(tipoPlazo)) {
             MatcherAssert.assertThat(restaanio, Is.is(Matchers.equalTo(1)));
             MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(0)));
             MatcherAssert.assertThat(restadia, Is.is(Matchers.equalTo(0)));
-        } else if (tipoPlazo.equals("6 meses")) {
+        } else if ("6 meses".equals(tipoPlazo)) {
             if (mesvignum > 6) {
                 MatcherAssert.assertThat(restaanio, Is.is(Matchers.equalTo(1)));
                 MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(-6)));
@@ -282,7 +276,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
                 MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(6)));
             }
             MatcherAssert.assertThat(restadia, Is.is(Matchers.equalTo(0)));
-        } else if (tipoPlazo.equals("Otra")) {
+        } else if ("Otra".equals(tipoPlazo)) {
             waitFor(fechaExpiracionPoliza).shouldBeVisible();
             MatcherAssert.assertThat(fechaExpiracionPoliza.getTagName(), Is.is(Matchers.equalTo("input")));
         }
@@ -291,6 +285,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
 
     public void adicionarSegundoTomador(String tipoDocumento, String primerNombre, String primerApellido) {
         waitForTextToAppear("Tomador secundario");
+        waitUntil(2000);
         waitFor(botonAseguradoSecundario).shouldBeVisible();
         botonAseguradoSecundario.click();
         waitFor(itemPersonaDelDirectorio).shouldBeVisible();

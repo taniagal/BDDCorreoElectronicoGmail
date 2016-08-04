@@ -4,7 +4,6 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -14,7 +13,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class OpcionesInformacionPolizaMrcPage extends Commons {
 
@@ -100,14 +98,14 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
     WebElementFacade tablaProductos;
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
-    public static boolean esVisible;
+    private static String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
+    private boolean esVisible;
+
+    Actions actions = new Actions(getDriver());
 
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
         super(driver);
     }
-
-    Actions actions = new Actions(getDriver());
 
     public void ingresaAgente() {
         waitInfoPoliza(lblNuevaCotizacion);
@@ -122,12 +120,11 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
         txtFechaVigencia.clear();
         txtFechaVigencia.sendKeys(fechaInicioVigencia);
         actions.sendKeys(Keys.ENTER).build().perform();
-        waitInfoPoliza(mensajePantalla);
     }
 
     public void bloqueaSiguiente() {
         btnSiguinete.click();
-        assertThat("No puede seguir si la fecha es mayor a 60 Dias o menor a 45 dias", mensajePantalla.isPresent());
+        MatcherAssert.assertThat("No puede seguir si la fecha es mayor a 60 Dias o menor a 45 dias", mensajePantalla.isPresent());
         waitInfoPoliza(btnEscritorio);
         waitUntil(4000);
     }
@@ -162,7 +159,7 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
             txtDescripDireccion.clear();
             btnActualizaAsegurado.click();
             waitInfoPoliza(lblInformaPoliza);
-            return esVisible = true;
+            esVisible = true;
         } else {
             lblNombreCompleto.click();
             waitInfoPoliza(txtDescripDireccion);
@@ -170,12 +167,13 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
             txtDescripDireccion.sendKeys("Direccion Presente");
             btnActualizaAsegurado.click();
             waitInfoPoliza(lblInformaPoliza);
-            return esVisible = false;
+            esVisible = false;
         }
+        return  esVisible;
     }
 
     public void  seleccionarProducto(String nomProducto) {
-        String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
+        String xpathBotonElegirProducto = BTNELEGIRPRODUCTO + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
         waitUntil(1000);
@@ -197,18 +195,12 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
     }
 
     private List<WebElementFacade> getListaBotones() {
-        List<WebElementFacade> botones = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
-        return botones;
-    }
-
-    private List<WebElementFacade> getListaDescripcion() {
-        List<WebElementFacade> DescripcionProductos = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
-        return DescripcionProductos;
+        return withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
     }
 
     public void validaNombreTomador(String nombreCompleto) {
         waitInfoPoliza(lblInformaPoliza);
-        assertThat("el al mostrar nombre completo", nombreCompleto.equals(lblNombreCompleto.getText()));
+        MatcherAssert.assertThat("el al mostrar nombre completo", nombreCompleto.equals(lblNombreCompleto.getText()));
     }
 
     public void validaCamposPoliza() {
@@ -245,22 +237,22 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
         if (MSJVALIDARELEMENTOS.equals(res)) {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
         }
-        assertThat(res, "No estan presentes los elementos".equals(res));
+        MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
     public void validaMensajeEnPantalla(String mensaje) {
         waitInfoPoliza(mensajePantalla);
-        assertThat("Falto Mensaje validacion en pantalla", mensajePantalla.containsText(mensaje));
+        MatcherAssert.assertThat("Falto Mensaje validacion en pantalla", mensajePantalla.containsText(mensaje));
     }
 
     public void validaReaseguro() {
         setImplicitTimeout(3, TimeUnit.SECONDS);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if (!lblTomador.getText().equals("Compañía cedente"))
+        if (!"Compañía cedente".equals(lblTomador.getText()))
             notPresent.append("salida errada: Compañía cedente|");
         if (tblTomadoresAdicionales.isPresent())
             notPresent.append("los tomadores adicionales no pueden estar presentes|");
-        if (inputValidaReaseguroEspecial.getText().equals("Si,"))
+        if ("Si,".equals(inputValidaReaseguroEspecial.getText()))
             notPresent.append("salida errada: debio cambia a reaseguro especial SI|");
         if (inputValidaReaseguroEspecial.getAttribute("class").contains("x-form-text"))
             notPresent.append("la etiqueta no puede ser modificada|");
@@ -268,17 +260,15 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
         if (MSJVALIDARELEMENTOS.equals(res)) {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
         }
-        assertThat(res, "No estan presentes los elementos".equals(res));
+        MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
         resetImplicitTimeout();
     }
 
     public void validaFormularioDescripDireccion() {
-        if (esVisible = true) {
-            MatcherAssert.assertThat("el campo Descripcion direccion no debe estar presente"
-                    , !lblDescripDireccion.isPresent());
+        if (esVisible) {
+            MatcherAssert.assertThat("el campo Descripcion direccion no debe estar presente", !lblDescripDireccion.isPresent());
         }else{
-            MatcherAssert.assertThat("el campo Descripcion direccion debe estar presente al ingresar direccion"
-                    , lblDescripDireccion.isPresent());
+            MatcherAssert.assertThat("el campo Descripcion direccion debe estar presente al ingresar direccion", lblDescripDireccion.isPresent());
         }
     }
     // TODO: 30/06/2016 Metodo wait para implementar generico

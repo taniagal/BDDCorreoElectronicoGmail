@@ -6,12 +6,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 
 public class NuevoContactoPage extends Commons {
 
@@ -107,7 +105,7 @@ public class NuevoContactoPage extends Commons {
         this.botonActualizar.click();
         waitABit(2000);
         nombreContact.waitUntilPresent();
-        assertThat(this.nombreContact.getText(), containsString(primerNombre));
+        MatcherAssert.assertThat(this.nombreContact.getText(), Matchers.containsString(primerNombre));
     }
 
     private void actualizar() {
@@ -150,7 +148,7 @@ public class NuevoContactoPage extends Commons {
         this.botonActualizar.click();
         waitABit(2000);
         desRazonSocial.waitUntilPresent();
-        assertThat(this.desRazonSocial.getText().toString(), containsString(razonSocial));
+        MatcherAssert.assertThat(this.desRazonSocial.getText().toString(), Matchers.containsString(razonSocial));
 
     }
 
@@ -158,7 +156,7 @@ public class NuevoContactoPage extends Commons {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
         waitABit(1000);
-        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
+        MatcherAssert.assertThat(this.contactoExistente.getText().toString(), Matchers.containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 
     private Boolean esTelefonoFijo(String tipoTelefono) {
@@ -190,7 +188,7 @@ public class NuevoContactoPage extends Commons {
                     flag = true;
                 }
                 if (flag) {
-                    assertThat(textoRequerido, containsString(mensajeRequerido.getMensajeRequerido()));
+                    MatcherAssert.assertThat(textoRequerido, Matchers.containsString(mensajeRequerido.getMensajeRequerido()));
                 }
             }
         }

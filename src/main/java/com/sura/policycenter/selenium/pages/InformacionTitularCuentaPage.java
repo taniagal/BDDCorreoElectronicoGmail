@@ -3,12 +3,10 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
 
 public class InformacionTitularCuentaPage extends Commons {
 
@@ -117,90 +115,90 @@ public class InformacionTitularCuentaPage extends Commons {
                                                String metricas,
                                                String transacciones,
                                                String siniestros){
-        MatcherAssert.assertThat(tituloInformacionTitularCuenta.getText().toString(), is(equalTo(informacionBasica)));
-        MatcherAssert.assertThat(tituloMetricas.getText().toString(), is(equalTo(metricas)));
-        MatcherAssert.assertThat(tituloTransacciones.getText().toString(), is(equalTo(transacciones)));
-        MatcherAssert.assertThat(tituloSiniestros.getText().toString(), is(equalTo(siniestros)));
+        MatcherAssert.assertThat(tituloInformacionTitularCuenta.getText().toString(), Matchers.is(Matchers.equalTo(informacionBasica)));
+        MatcherAssert.assertThat(tituloMetricas.getText().toString(), Matchers.is(Matchers.equalTo(metricas)));
+        MatcherAssert.assertThat(tituloTransacciones.getText().toString(), Matchers.is(Matchers.equalTo(transacciones)));
+        MatcherAssert.assertThat(tituloSiniestros.getText().toString(), Matchers.is(Matchers.equalTo(siniestros)));
     }
 
     public void validarInformacionBasica(String titularCuenta, String tipoDocumento, String nroDocumento, String primaVigencia,
                                          String segmentacion, String comportamniento,
                                          String totalNoFacturado, String totalFacturado, String totalVencido, String totalPendiente){
-        MatcherAssert.assertThat(txtTitularCuenta.getText().toString(), is(equalTo(titularCuenta)));
-        MatcherAssert.assertThat(txtTipoDocumento.getText().toString(), is(equalTo(tipoDocumento)));
-        MatcherAssert.assertThat(txtNumeroDocumento.getText().toString(), is(equalTo(nroDocumento)));
-        MatcherAssert.assertThat(txtPrimaVigencia.getText().toString(), is(equalTo(primaVigencia)));
-        MatcherAssert.assertThat(txtSegmentacion.getText().toString(), is(equalTo(segmentacion)));
-        MatcherAssert.assertThat(txtComportamiento.getText().toString(), is(equalTo(comportamniento)));
-        MatcherAssert.assertThat(txtTotalNoFacturado.getText().toString(), is(equalTo(totalNoFacturado)));
-        MatcherAssert.assertThat(txtTotalFacturado.getText().toString(), is(equalTo(totalFacturado)));
-        MatcherAssert.assertThat(txtTotalVencido.getText().toString(), is(equalTo(totalVencido)));
-        MatcherAssert.assertThat(txtTotalPendiente.getText().toString(), is(equalTo(totalPendiente)));
+        MatcherAssert.assertThat(txtTitularCuenta.getText().toString(), Matchers.is(Matchers.equalTo(titularCuenta)));
+        MatcherAssert.assertThat(txtTipoDocumento.getText().toString(), Matchers.is(Matchers.equalTo(tipoDocumento)));
+        MatcherAssert.assertThat(txtNumeroDocumento.getText().toString(), Matchers.is(Matchers.equalTo(nroDocumento)));
+        MatcherAssert.assertThat(txtPrimaVigencia.getText().toString(), Matchers.is(Matchers.equalTo(primaVigencia)));
+        MatcherAssert.assertThat(txtSegmentacion.getText().toString(), Matchers.is(Matchers.equalTo(segmentacion)));
+        MatcherAssert.assertThat(txtComportamiento.getText().toString(), Matchers.is(Matchers.equalTo(comportamniento)));
+        MatcherAssert.assertThat(txtTotalNoFacturado.getText().toString(), Matchers.is(Matchers.equalTo(totalNoFacturado)));
+        MatcherAssert.assertThat(txtTotalFacturado.getText().toString(), Matchers.is(Matchers.equalTo(totalFacturado)));
+        MatcherAssert.assertThat(txtTotalVencido.getText().toString(), Matchers.is(Matchers.equalTo(totalVencido)));
+        MatcherAssert.assertThat(txtTotalPendiente.getText().toString(), Matchers.is(Matchers.equalTo(totalPendiente)));
     }
 
     public void validarInformacionMetricas(String anioVigencia, String polizasActivas, String canceladoPorCliente,
                                                 String canceladoPorCompania, String otrasCancelaciones, String primaVitalicia,
                                                 String totalSiniestrosAbiertos, String totalNetoIncurrido){
-        MatcherAssert.assertThat(lblAnioVigencia.getText().toString(), is(equalTo(anioVigencia)));
-        MatcherAssert.assertThat(txtPolizasActivas.getText().toString(), is(equalTo(polizasActivas)));
-        MatcherAssert.assertThat(txtCanceladoPorCliente.getText().toString(), is(equalTo(canceladoPorCliente)));
-        MatcherAssert.assertThat(txtCanceladoPorCompania.getText().toString(), is(equalTo(canceladoPorCompania)));
-        MatcherAssert.assertThat(txtOtrasCancelaciones.getText().toString(), is(equalTo(otrasCancelaciones)));
-        MatcherAssert.assertThat(lblPrimaVitalicia.getText().toString(), is(equalTo(primaVitalicia)));
-        MatcherAssert.assertThat(txtTotalSiniestrosAbiertos.getText().toString(), is(equalTo(totalSiniestrosAbiertos)));
-        MatcherAssert.assertThat(lblTotalNetoIncurrido.getText().toString(), is(equalTo(totalNetoIncurrido)));
+        MatcherAssert.assertThat(lblAnioVigencia.getText().toString(), Matchers.is(Matchers.equalTo(anioVigencia)));
+        MatcherAssert.assertThat(txtPolizasActivas.getText().toString(), Matchers.is(Matchers.equalTo(polizasActivas)));
+        MatcherAssert.assertThat(txtCanceladoPorCliente.getText().toString(), Matchers.is(Matchers.equalTo(canceladoPorCliente)));
+        MatcherAssert.assertThat(txtCanceladoPorCompania.getText().toString(), Matchers.is(Matchers.equalTo(canceladoPorCompania)));
+        MatcherAssert.assertThat(txtOtrasCancelaciones.getText().toString(), Matchers.is(Matchers.equalTo(otrasCancelaciones)));
+        MatcherAssert.assertThat(lblPrimaVitalicia.getText().toString(), Matchers.is(Matchers.equalTo(primaVitalicia)));
+        MatcherAssert.assertThat(txtTotalSiniestrosAbiertos.getText().toString(), Matchers.is(Matchers.equalTo(totalSiniestrosAbiertos)));
+        MatcherAssert.assertThat(lblTotalNetoIncurrido.getText().toString(), Matchers.is(Matchers.equalTo(totalNetoIncurrido)));
 
     }
 
     public void validarNombreCompletoPersonaNatural(String nombreCompleto){
-        MatcherAssert.assertThat(txtTitularCuenta.getText().toString(), is(equalTo(nombreCompleto)));
+        MatcherAssert.assertThat(txtTitularCuenta.getText().toString(), Matchers.is(Matchers.equalTo(nombreCompleto)));
     }
 
     public void validarInformacionTransacciones(String fechaCreacion, String nroPoliza, String producto,
                                                 String nroTransaccion, String tipo, String estado){
-        MatcherAssert.assertThat(colCrearFecha.getText().toString(), is(equalTo(fechaCreacion)));
-        MatcherAssert.assertThat(colNroPoliza.getText().toString(), is(equalTo(nroPoliza)));
-        MatcherAssert.assertThat(colProducto.getText().toString(), is(equalTo(producto)));
-        MatcherAssert.assertThat(colNroTransaccion.getText().toString(), is(equalTo(nroTransaccion)));
-        MatcherAssert.assertThat(colTipo.getText().toString(), is(equalTo(tipo)));
-        MatcherAssert.assertThat(colEstado.getText().toString(), is(equalTo(estado)));
+        MatcherAssert.assertThat(colCrearFecha.getText().toString(), Matchers.is(Matchers.equalTo(fechaCreacion)));
+        MatcherAssert.assertThat(colNroPoliza.getText().toString(), Matchers.is(Matchers.equalTo(nroPoliza)));
+        MatcherAssert.assertThat(colProducto.getText().toString(), Matchers.is(Matchers.equalTo(producto)));
+        MatcherAssert.assertThat(colNroTransaccion.getText().toString(), Matchers.is(Matchers.equalTo(nroTransaccion)));
+        MatcherAssert.assertThat(colTipo.getText().toString(), Matchers.is(Matchers.equalTo(tipo)));
+        MatcherAssert.assertThat(colEstado.getText().toString(), Matchers.is(Matchers.equalTo(estado)));
     }
 
     public void validarInformacionSiniestros(String nroPoliza, String producto, String asegurado, String fechaPerdida,
                                                 String numeroSiniestros, String estado, String totalIncurrido){
-        MatcherAssert.assertThat(colNumeroPoliza.getText().toString(), is(equalTo(nroPoliza)));
-        MatcherAssert.assertThat(colProductoSiniestros.getText().toString(), is(equalTo(producto)));
-        MatcherAssert.assertThat(colAsegurado.getText().toString(), is(equalTo(asegurado)));
-        MatcherAssert.assertThat(colFechaPerdida.getText().toString(), is(equalTo(fechaPerdida)));
-        MatcherAssert.assertThat(colNumeroSiniestros.getText().toString(), is(equalTo(numeroSiniestros)));
-        MatcherAssert.assertThat(colEstadoSiniestro.getText().toString(), is(equalTo(estado)));
-        MatcherAssert.assertThat(colTotalIncurrido.getText().toString(), is(equalTo(totalIncurrido)));
+        MatcherAssert.assertThat(colNumeroPoliza.getText().toString(), Matchers.is(Matchers.equalTo(nroPoliza)));
+        MatcherAssert.assertThat(colProductoSiniestros.getText().toString(), Matchers.is(Matchers.equalTo(producto)));
+        MatcherAssert.assertThat(colAsegurado.getText().toString(), Matchers.is(Matchers.equalTo(asegurado)));
+        MatcherAssert.assertThat(colFechaPerdida.getText().toString(), Matchers.is(Matchers.equalTo(fechaPerdida)));
+        MatcherAssert.assertThat(colNumeroSiniestros.getText().toString(), Matchers.is(Matchers.equalTo(numeroSiniestros)));
+        MatcherAssert.assertThat(colEstadoSiniestro.getText().toString(), Matchers.is(Matchers.equalTo(estado)));
+        MatcherAssert.assertThat(colTotalIncurrido.getText().toString(), Matchers.is(Matchers.equalTo(totalIncurrido)));
     }
 
     public void validarCamposComoNoEditables(){
-        MatcherAssert.assertThat(txtTitularCuenta.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtTipoDocumento.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtNumeroDocumento.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtPrimaVigencia.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtSegmentacion.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtComportamiento.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtTotalNoFacturado.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtTotalFacturado.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtTotalVencido.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtTotalPendiente.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtPolizasActivas.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtCanceladoPorCliente.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtCanceladoPorCompania.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtOtrasCancelaciones.getTagName(), is(equalTo(DIV)));
-        MatcherAssert.assertThat(txtTotalSiniestrosAbiertos.getTagName(), is(equalTo(DIV)));
+        MatcherAssert.assertThat(txtTitularCuenta.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtTipoDocumento.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtNumeroDocumento.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtPrimaVigencia.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtSegmentacion.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtComportamiento.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtTotalNoFacturado.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtTotalFacturado.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtTotalVencido.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtTotalPendiente.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtPolizasActivas.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtCanceladoPorCliente.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtCanceladoPorCompania.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtOtrasCancelaciones.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
+        MatcherAssert.assertThat(txtTotalSiniestrosAbiertos.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
     }
 
     public void validarInformacionFallecimiento(String fechaFallecimiento, String causaFallecimiento){
-        MatcherAssert.assertThat(lblFechaFallecimiento.getText().toString(), is(equalTo(fechaFallecimiento)));
-        MatcherAssert.assertThat(txtCausaFallecimiento.getText().toString(), is(equalTo(causaFallecimiento)));
+        MatcherAssert.assertThat(lblFechaFallecimiento.getText().toString(), Matchers.is(Matchers.equalTo(fechaFallecimiento)));
+        MatcherAssert.assertThat(txtCausaFallecimiento.getText().toString(), Matchers.is(Matchers.equalTo(causaFallecimiento)));
     }
 
     public void validarCampoActividadEconomica(String actividadEconomica){
-        MatcherAssert.assertThat(lblActividadEconomica.getText().toString(), is(equalTo(actividadEconomica)));
+        MatcherAssert.assertThat(lblActividadEconomica.getText().toString(), Matchers.is(Matchers.equalTo(actividadEconomica)));
     }
 }

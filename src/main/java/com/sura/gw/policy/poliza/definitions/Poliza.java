@@ -4,9 +4,13 @@ package com.sura.gw.policy.poliza.definitions;
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
+import java.util.Map;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
@@ -14,11 +18,6 @@ import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
-
-import java.util.Map;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 public class Poliza {
 
@@ -72,7 +71,7 @@ public class Poliza {
             navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
             navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
 
-            assertThat(esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), is(equalTo(true)));
+            MatcherAssert.assertThat(esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), Is.is(Matchers.equalTo(true)));
 
 
 
@@ -105,16 +104,16 @@ public class Poliza {
 
 
 
-        assertThat(polizaSteps.espacioDeTrabajo(),
-                hasItems("EL valor Asegurado de la cobertura Danos materiales NO debe ser mayor al valor asegurable del Artículo Edificio"
+        MatcherAssert.assertThat(polizaSteps.espacioDeTrabajo(),
+                Matchers.hasItems("EL valor Asegurado de la cobertura Danos materiales NO debe ser mayor al valor asegurable del Artículo Edificio"
                 ));
 
-        assertThat(polizaSteps.espacioDeTrabajo(),
-                hasItems("El valor de \"Sublimite para traslados temporales de maquinaria y equipo\" debe ser menor al valor asegurado de la cobertura \"Danos materiales\"."
+        MatcherAssert.assertThat(polizaSteps.espacioDeTrabajo(),
+                Matchers.hasItems("El valor de \"Sublimite para traslados temporales de maquinaria y equipo\" debe ser menor al valor asegurado de la cobertura \"Danos materiales\"."
                 ));
 
-        assertThat(polizaSteps.espacioDeTrabajo(),
-                hasItems("El valor de \"Sublimite para combustion espontanea de mercancias a granel\" debe ser menor al valor asegurado de la cobertura \"Danos materiales\"."
+        MatcherAssert.assertThat(polizaSteps.espacioDeTrabajo(),
+                Matchers.hasItems("El valor de \"Sublimite para combustion espontanea de mercancias a granel\" debe ser menor al valor asegurado de la cobertura \"Danos materiales\"."
                 ));
     }
 
@@ -146,7 +145,7 @@ public class Poliza {
         // TODO: 26/07/2016 implementar forma recurrente de reportar varios asserterror en el reporte
         for (Map<String, String> fila : campos.getRows()) {
             String campo = fila.get("CAMPOS");
-            assertThat("ELEMENTO ".concat(campo).concat(" NO CUMPLE CON EL CRITERIO DE BLOQUEO"), polizaSteps.elementoEsEditable(campo), is(equalTo(false)));
+            MatcherAssert.assertThat("ELEMENTO ".concat(campo).concat(" NO CUMPLE CON EL CRITERIO DE BLOQUEO"), polizaSteps.elementoEsEditable(campo), Is.is(Matchers.equalTo(false)));
         }
 
         LOGGER.info("InformacionDePoliza.esperoVerInhabilitadoParaModificacionLosSiguientesCampos");
@@ -170,12 +169,13 @@ public class Poliza {
     @Then("espero ver mensajes de advertencia indicandome la direccion es un riesgo consultable")
     public void entoncesEsperoVerMensajeDeAdvertenciaQueUbicacionEsRiesgoConsultable() {
         for (String mensaje : polizaSteps.espacioDeTrabajo()){
-            assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
+            MatcherAssert.assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
                     mensaje,
-                    containsString("La dirección un riesgo no estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
+                    Matchers.containsString("La dirección un riesgo no estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
                     ));
         }
 
+        polizaSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
 
     

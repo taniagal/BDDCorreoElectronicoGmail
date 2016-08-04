@@ -104,4 +104,8 @@ public class PolizaSteps extends ScenarioSteps {
     public void seleccionarBotonSiguienteParaIniciarCambioEnPoliza() {
         informacionPolizaPage.seleccionarBotonSiguienteEnInicioDeCambioDePoliza();
     }
+
+    public void cancelar_ingreso_de_nueva_ubicacion() {
+        edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
+    }
 }

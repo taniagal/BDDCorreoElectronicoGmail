@@ -1,6 +1,9 @@
 package com.sura.policycenter.selenium.pages.colectivas;
 
 import com.sura.commons.selenium.Commons;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -13,9 +16,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 
 public class NuevaPolizaPage extends PageObject {
 
@@ -108,7 +109,7 @@ public class NuevaPolizaPage extends PageObject {
         radioBotonIndividual.shouldBeVisible();
         radioBotonColectiva.shouldBeVisible();
 
-        if (!radioBotonIndividual.getCssValue("background-position").equals("0% 0%")) {
+        if (!"0% 0%".equals(radioBotonIndividual.getCssValue("background-position"))) {
             MatcherAssert.assertThat("Individual está seleccionado", Is.is(Matchers.equalTo("Individual está seleccionado")));
         } else {
             MatcherAssert.assertThat("Individual no está seleccionado", Is.is(Matchers.equalTo("Individual está seleccionado")));
@@ -142,12 +143,12 @@ public class NuevaPolizaPage extends PageObject {
     public void seleccionarElTipoDePoliza(String tipoPoliza) {
         commons.waitUntil(1000);
         if ("Individual".equals(tipoPoliza)) {
-            if ($(radioBotonIndividual).getCssValue("background-position").equals("0% 0%")) {
+            if ("0% 0%".equals($(radioBotonIndividual).getCssValue("background-position"))) {
                 commons.waitUntil(1500);
                 radioBotonIndividual.click();
             }
         } else {
-            if (!$(radioBotonIndividual).getCssValue("background-position").equals("0% 0%")) {
+            if (!"0% 0%".equals($(radioBotonIndividual).getCssValue("background-position"))) {
                 commons.waitUntil(1500);
                 radioBotonColectiva.click();
             }

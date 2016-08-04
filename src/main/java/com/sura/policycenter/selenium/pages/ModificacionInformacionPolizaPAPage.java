@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
-import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -52,7 +51,7 @@ public class ModificacionInformacionPolizaPAPage extends Commons{
     private WebElementFacade labelOrganizacion;
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-labelEl']")
     private WebElementFacade labelCanal;
-    @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-labelEl']")
+    @FindBy(xpath=".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-labelEl']")
     private WebElementFacade labelTipoPoliza;
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:TermType-labelEl']")
     private WebElementFacade labelTipoPlazo;
@@ -148,8 +147,7 @@ public class ModificacionInformacionPolizaPAPage extends Commons{
 
         if (campoNumeroDocumento.getText().equals(informacionPoliza.getRows().get(0).get("numeroDocumento"))) {
             datosPoliza = informacionPoliza.getRows().get(0);
-        }
-        else{
+        }else{
             datosPoliza = informacionPoliza.getRows().get(1);
         }
         MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(datosPoliza.get("tipoDocumento"))));

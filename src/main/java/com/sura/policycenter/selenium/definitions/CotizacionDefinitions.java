@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.policycenter.selenium.steps.CotizacionSteps;
+import com.thoughtworks.selenium.SeleneseTestNgHelper;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
@@ -9,17 +10,16 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
+import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import org.jbehave.core.annotations.Pending;
-import org.jbehave.core.annotations.AfterScenario;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
-import static org.hamcrest.core.Is.is;
 
 public class CotizacionDefinitions {
 
@@ -48,7 +48,7 @@ public class CotizacionDefinitions {
         cotizador.ir_al_menu_escritorio_del_panel_superior();
         cotizador.clic_en_la_opcion_acciones_del_panel_izquierdo();
         cotizador.clic_en_la_opcion_nueva_cotizacion();
-        MatcherAssert.assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF("Nueva cotización"), is(CoreMatchers.equalTo("Nueva cotización")));
+        MatcherAssert.assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF("Nueva cotización"), Is.is(CoreMatchers.equalTo("Nueva cotización")));
 
         LOGGER.info("CotizacionDefinitions.crearNuevaCotizacion");
     }
@@ -97,8 +97,8 @@ public class CotizacionDefinitions {
     @Then("espero ver el nombre de la persona jurídica $nombre de la cuenta existente junto con la etiqueta $tipoPersona")
     @Alias("espero ver el nombre de la persona natural $nombre de la cuenta existente junto con la etiqueta $tipoPersona")
     public void validarEtiquetaNombreYNombre(String nombre, String tipoPersona) throws InterruptedException {
-        assertEquals(nombre, cotizador.obtenerTextoLinkNombrePersonaWEF(nombre));
-        assertEquals(tipoPersona, cotizador.obtenerTextoLabelNombrePersonaWEF());
+        SeleneseTestNgHelper.assertEquals(nombre, cotizador.obtenerTextoLinkNombrePersonaWEF(nombre));
+        SeleneseTestNgHelper.assertEquals(tipoPersona, cotizador.obtenerTextoLabelNombrePersonaWEF());
 
         LOGGER.info("CotizacionDefinitions.validarEtiquetaNombreYNombre");
     }
@@ -139,19 +139,19 @@ public class CotizacionDefinitions {
 
     @Then("debera observar un mensaje emergente de informacion: $mensaje")
     public void deberaObservarUnMensajeEmergenteDeInformacion(String mensaje){
-        MatcherAssert.assertThat(mensaje.replace("\r","").replace("\n"," "), is(CoreMatchers.equalTo(cotizador.obtenerMensajeEmergenteDeInformacion())));
+        MatcherAssert.assertThat(mensaje.replace("\r","").replace("\n"," "), Is.is(CoreMatchers.equalTo(cotizador.obtenerMensajeEmergenteDeInformacion())));
         LOGGER.info("CotizacionDefinitions.deberaObservarUnMensajeEmergenteDeInformacion");
     }
     @Then("debera observar un mensaje de error: $mensaje")
     @Alias("debera observar un mensaje de información: $mensaje")
     public void deberaObservarUnMensaje(String mensaje){
-        MatcherAssert.assertThat(cotizador.validarOcurrenciaDeMensajeDeAplicacion(mensaje.replace("\n","").replace("\r", " ")), is(true));
+        MatcherAssert.assertThat(cotizador.validarOcurrenciaDeMensajeDeAplicacion(mensaje.replace("\n","").replace("\r", " ")), Is.is(true));
         LOGGER.info("CotizacionDefinitions.deberaObservarUnMensajeDeError");
     }
     @Then("debera observar los botones: $btns")
     public void deberaObservarLosBotones(String btns){
         String[] arrayBtns = btns.split(",");
-        MatcherAssert.assertThat(cotizador.validarExistenciaDeLosBotonesVisibles(arrayBtns), is(true));
+        MatcherAssert.assertThat(cotizador.validarExistenciaDeLosBotonesVisibles(arrayBtns), Is.is(true));
         LOGGER.info("CotizacionDefinitions.deberaObservarLosBotones");
     }
 
@@ -159,15 +159,15 @@ public class CotizacionDefinitions {
     @Then("al seleccionar el botón $boton deberá ver la página $pagina")
     public void seleccionarBtnYValidarPaginaMostrada(String boton, String pagina){
         cotizador.seleccionarBtn(boton);
-        MatcherAssert.assertThat(cotizador.obtenerTextoTituloPaginaWEF(pagina), is(CoreMatchers.equalTo(pagina)));
+        MatcherAssert.assertThat(cotizador.obtenerTextoTituloPaginaWEF(pagina), Is.is(CoreMatchers.equalTo(pagina)));
         LOGGER.info("CotizacionDefinitions.seleccionarBtnYValidarPaginaMostrada");
     }
 
     @Then("se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable")
     public void validarFechaSeaFechaHOYYSeaNoEditable(){
 
-        MatcherAssert.assertThat(cotizador.esFechaCotizacionHOY(), is(true));
-        MatcherAssert.assertThat(cotizador.esFechaEditable(), is(false));
+        MatcherAssert.assertThat(cotizador.esFechaCotizacionHOY(), Is.is(true));
+        MatcherAssert.assertThat(cotizador.esFechaEditable(), Is.is(false));
 
         LOGGER.info("CotizacionDefinitions.validarFechaSeaFechaHOYYSeaNoEditable");
     }

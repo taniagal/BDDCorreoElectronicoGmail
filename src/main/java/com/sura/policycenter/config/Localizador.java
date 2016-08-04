@@ -3,7 +3,7 @@ package com.sura.policycenter.config;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 
-public class Localizador {
+public final class Localizador {
 
     private static Config localizadorConfig = ConfigFactory.load("localizadores");
 

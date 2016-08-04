@@ -41,9 +41,9 @@ public class CoaseguroPage extends Commons {
     }
 
     public void validarCampos() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
         linkAgregarCoaseguro.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
         campoTxtDastosAdministrativos.waitUntilPresent();
         radioBotonLider.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);

@@ -26,7 +26,7 @@ public class InformacionPolizaPADefinitions {
     @Steps
     private InformacionPolizaPASteps informacionPolizaPASteps;
 
-    private Map<String, String> infoPoliza = new HashMap<>();
+    private final Map<String, String> infoPoliza = new HashMap<>();
 
     public InformacionPolizaPADefinitions(){
         infoPoliza.put("labelAseguradoPrimario", "Tomador");
