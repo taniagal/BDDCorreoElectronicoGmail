@@ -72,4 +72,9 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
     public void validar_Mensaje_PEP_Interes_Adicional(String mensaje) {
         opcionesInformacionDelVehiculoPage.validarMensajePEPInteresAdicional(mensaje);
     }
+
+    @Step
+    public void permitir_Conticuar_Cotizacion() {
+        opcionesInformacionDelVehiculoPage.permitirContinuarCotizacion();
+    }
 }

@@ -74,7 +74,7 @@ public class InformacionDeVehiculoDefinitions {
 
     @Then("permitir continuar con la cotizacion")
     public void permitirContinuarCotizacion(){
-        informacionDeVehiculoSteps.
+        informacionDeVehiculoSteps.permitir_Conticuar_Cotizacion();
     }
 
     @Then("se deben visualizar todos los campos de informacion")

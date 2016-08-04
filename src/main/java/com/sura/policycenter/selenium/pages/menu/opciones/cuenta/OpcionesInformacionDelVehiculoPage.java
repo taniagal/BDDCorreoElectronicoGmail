@@ -98,11 +98,11 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         txtTipoDoc.clear();
         waitUntil(800);
         //txtTipoDoc.sendKeys("CEDULA DE CIUDADANIA");
-        txtTipoDoc.sendKeys(tipoDocumento);
+        txtTipoDoc.type(tipoDocumento);
         txtTipoDoc.sendKeys(Keys.ENTER);
         opcionPolizaMrc.waitInfoPoliza(lblPrimerNombre);
         //txtNumDoc.sendKeys("1234567892");
-        txtNumDoc.sendKeys(numeroDocumento);
+        txtNumDoc.type(numeroDocumento);
         btnBuscar.click();
         opcionPolizaMrc.waitInfoPoliza(btnSeleccion);
         btnSeleccion.click();
@@ -176,6 +176,14 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         waitUntil(2000);
+    }
+
+    public void permitirContinuarCotizacion() {
+        waitUntil(2000);
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        waitUntil(1000);
+        WebElementFacade labelCoberturasAuto = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelCoberturasAuto).click();
     }
 }
 
