@@ -14,20 +14,22 @@ Meta:
 @Sprint 5
 
 As a <rolUsuario>
-Given he ingresado la informacion de coberturas a nivel de riesgo
-When ingrese los sublimites de las diferentes coberturas de sustraccion
-| SUBLIMITES                                                |
-| Sustracción sin violencia dentro de predios               |
-| Sustracción con violencia de bienes fuera de predios      |
-| Sustracción sin violencia de bienes fuera de predios      |
-| Sustracción con violencia de dinero dentro de caja fuerte |
-| Sustracción con violencia de dinero fuera de caja fuerte  |
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When ingrese las entradas de las diferentes coberturas
+!-- Solo se permiten en TAB Coberturas del Riesgo, Información de Artículos y Otros Articulos
+!-- La columna TIPO_ARTICULO debe llenarse si escoguio el TAB Otros Articulos
+| TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                  | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               | Sustraccion | Sustracción sin violencia dentro de predios               | 10             |
+| Coberturas del Riesgo |               | Sustraccion | Sustracción con violencia de bienes fuera de predios      | 10             |
+| Coberturas del Riesgo |               | Sustraccion | Sustracción sin violencia de bienes fuera de predios      | 10             |
+| Coberturas del Riesgo |               | Sustraccion | Sustracción con violencia de dinero dentro de caja fuerte | 10             |
+| Coberturas del Riesgo |               | Sustraccion | Sustracción con violencia de dinero fuera de caja fuerte  | 10             |
 Then se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal)
 Then no debe dejar continuar
 
 Examples:
-|  | rolUsuario | mensajeDeNoCumplimientoDeValidacionEsperado                                                              | descripcion |
-|  | Asesor     | La *sublimiteDeSustraccion* debe ser menor o igual al valor asegurado de la cobertura de *coberturaDeSustraccion* |             |
+| numSubscripcion | rolUsuario | mensajeDeNoCumplimientoDeValidacionEsperado                                                                       | descripcion |
+| 99999999        | Asesor     | La *sublimiteDeSustraccion* debe ser menor o igual al valor asegurado de la cobertura de *coberturaDeSustraccion* |             |
 
 
 Scenario: Sublimite de sustraccion con violencia de bienes fuera de predios (cobertura de riesgos) - Sublimite menor a valor asegurable Equipos moviles y portatiles
@@ -39,6 +41,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags cobertura, sustraccion, con violencia, bienes, fuera, predio, sublimites, validacion de sublimites
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas a nivel de riesgo
@@ -62,6 +65,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags cobertura, sustraccion, sin violencia, bienes, fuera, predio, sublimites, validacion de sublimites
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas a nivel de riesgo
@@ -85,6 +89,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags cobertura, sustraccion, con violencia, dinero, dentro, caja fuerte, sublimites, validacion de sublimites
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas a nivel de riesgo
@@ -108,6 +113,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags cobertura, sustraccion, con violencia, dinero, fuera, caja fuerte, sublimites, validacion de sublimites
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas a nivel de riesgo
@@ -132,6 +138,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags cobertura, sublimites, validacion de sublimites, deterioro, bienes, refrigeracion, rotura, maquinaria
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas a nivel de riesgo
@@ -159,6 +166,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags cobertura, sublimites, validacion de sublimites, deterioro, bienes, refrigeracion, rotura, maquinaria, valor asegurado
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas a nivel de riesgo
@@ -185,6 +193,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags cobertura, sublimites, validacion de sublimites, deterioro, bienes, refrigeracion, rotura, maquinaria, valor asegurado
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas a nivel de riesgo
@@ -210,6 +219,7 @@ Meta:
 @tags parametrizable
 @manual
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas a nivel de riesgo
@@ -230,6 +240,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags cobertura, sublimites, validacion de sublimites, suelos, terrenos, valor asegurable
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas para el articulo suelos y terrenos (categoria otros)
@@ -256,6 +267,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags cobertura, sublimites, validacion de sublimites, suelos, terrenos, valor asegurable
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas para el articulo suelos y terrenos (categoria otros)
@@ -283,6 +295,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags cobertura, sublimites, validacion de sublimites, suelos, terrenos, valor asegurable
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas para el articulo suelos y terrenos (categoria otros)
@@ -312,6 +325,7 @@ Meta:
 @manual
 @tags cobertura, sublimites, validacion de sublimites, suelos, terrenos, valor asegurable
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given estoy ingresando la información de coberturas a nivel de riesgo
@@ -334,6 +348,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags coberturas, riesgo, sublimite, perdidas, contenido, tanques
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas a nivel de riesgo
@@ -357,6 +372,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags coberturas, riesgo, portadores, externos, datos
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas para una ubicacion
@@ -379,6 +395,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags coberturas, riesgo, portadores, externos, datos
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas para una ubicacion
@@ -400,6 +417,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags coberturas, riesgo, portadores, externos, datos
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas para una ubicacion
@@ -420,6 +438,7 @@ Meta:
 @LOB Multiriesgo corporativo
 @tags coberturas, riesgo, portadores, externos, datos
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given he ingresado la informacion de coberturas para una ubicacion

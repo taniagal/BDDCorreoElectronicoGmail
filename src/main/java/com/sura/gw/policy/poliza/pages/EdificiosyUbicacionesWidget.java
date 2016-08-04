@@ -1,12 +1,17 @@
 package com.sura.gw.policy.poliza.pages;
 
+import com.google.common.base.Function;
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
-import java.util.List;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class EdificiosyUbicacionesWidget extends PageObject {
@@ -95,4 +100,60 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         agregarNuevaUbicacion("Colombia", "ANTIOQUIA", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
     }
 
+
+    public void seleccionarTab(String tab) {
+        waitForAnyTextToAppear(tab);
+        shouldContainText(tab);
+        String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + "')])]";
+        withAction().moveToElement($(xpathTab)).perform();
+        $(xpathTab).click();
+    }
+
+
+/*    public void seleccionarCoberturaDeArticulo(String cobertura) {
+        waitForAnyTextToAppear(cobertura);
+        shouldContainText(cobertura);
+        String xpathTDCobertura = ".//tr[ (descendant::label[contains(., '" + cobertura + "')]) and contains(@class,'x-form-item-input-row')]";
+        withAction().moveToElement($(xpathTDCobertura)).perform();
+        String xpathCHKCobertura = ".//input[contains(@class, 'x-form-field x-form-checkbox x-form-cb')";
+        WebElementFacade chk = $(xpathTDCobertura).findBy(xpathCHKCobertura);
+        withAction().moveToElement($(chk)).perform();
+        chk.click();
+    }*/
+
+    public void seleccionarCoberturaDelRiesgo(String cobertura) {
+        waitForAnyTextToAppear(cobertura);
+        shouldContainText(cobertura);
+        String xpathLegendCoberturaDeRiesgo = ".//legend[ (descendant::div[contains(., '" + cobertura + "')])]";
+        WebElementFacade inputCoberturaDeRiesgo = findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName("input"));
+        withAction().moveToElement(inputCoberturaDeRiesgo).perform();
+        inputCoberturaDeRiesgo.click();
+    }
+
+    public void ingresarValorAEntradaDeArticuloDeCoberturaDeRiesgo(String entrada, String valorEntrada) {
+        waitForAnyTextToAppear(entrada);
+        shouldContainText(entrada);
+        String xpathTREntrada = ".//tr[ (descendant::label[contains(., '" + entrada + "') ]) and @class='x-form-item-input-row' ]";
+        WebElementFacade inputValorEntrada = findBy(xpathTREntrada).find(By.tagName("input"));
+        withAction().moveToElement(inputValorEntrada).perform();
+
+        enter(valorEntrada).into(inputValorEntrada);
+        esperarAQueElementoTengaValor(inputValorEntrada, valorEntrada);
+    }
+
+    private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
+        waitForCondition()
+                .withTimeout(waitForTimeoutInMilliseconds(), TimeUnit.SECONDS)
+                .pollingEvery(250,TimeUnit.MILLISECONDS)
+                .until(inputEsActualizadoA(elemento, valorEntrada));
+    }
+
+    private Function<? super WebDriver, Boolean> inputEsActualizadoA(final WebElementFacade elemento, final String valorEntrada) {
+        return new Function<WebDriver, Boolean>() {
+            @Override
+            public Boolean apply(WebDriver webDriver) {
+                return elemento.getValue().equalsIgnoreCase(valorEntrada);
+            }
+        };
+    }
 }
