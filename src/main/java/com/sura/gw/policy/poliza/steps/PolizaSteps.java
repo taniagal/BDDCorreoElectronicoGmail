@@ -5,10 +5,10 @@ import com.sura.gw.policy.poliza.pages.AccionesWidget;
 import com.sura.gw.policy.poliza.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
 import com.sura.gw.policy.poliza.pages.PolizaPage;
+import java.util.List;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import java.util.List;
 
 public class PolizaSteps extends ScenarioSteps {
 
@@ -103,5 +103,9 @@ public class PolizaSteps extends ScenarioSteps {
 
     public void seleccionarBotonSiguienteParaIniciarCambioEnPoliza() {
         informacionPolizaPage.seleccionarBotonSiguienteEnInicioDeCambioDePoliza();
+    }
+
+    public void cancelar_ingreso_de_nueva_ubicacion() {
+        edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
     }
 }

@@ -11,9 +11,6 @@ import org.slf4j.LoggerFactory;
 import static com.sura.gw.navegacion.pages.GuidewireLoginPages.*;
 
 public class GuidewireLoginSteps extends ScenarioSteps {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
     private GuidewireLoginPages loginPage;
 
     public GuidewireLoginPages getLoginPage() {

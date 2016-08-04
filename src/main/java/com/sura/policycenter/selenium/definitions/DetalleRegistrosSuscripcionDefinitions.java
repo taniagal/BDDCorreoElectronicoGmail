@@ -5,13 +5,11 @@ import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.DetalleRegistrosSuscripcionSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;
-
-
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
 
 public class DetalleRegistrosSuscripcionDefinitions {
 
@@ -22,7 +20,7 @@ public class DetalleRegistrosSuscripcionDefinitions {
     DetalleRegistrosSuscripcionSteps detalleRegistrosSuscripcionSteps;
 
     private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
+        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
     }
 
     @Given("busco una cuenta existente como <numeroCuenta>")

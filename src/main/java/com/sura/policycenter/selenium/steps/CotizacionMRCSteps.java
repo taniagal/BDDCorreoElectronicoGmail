@@ -1,24 +1,19 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.CotizacionMRCPage;
-import com.sura.policycenter.selenium.pages.InicioPage;
+import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-import java.util.Map;
 
 public class CotizacionMRCSteps extends ScenarioSteps {
 
-    private CotizacionMRCPage cotizacionMRCPage = new CotizacionMRCPage(getDriver());
+    private final CotizacionMRCPage cotizacionMRCPage = new CotizacionMRCPage(getDriver());
 
     public CotizacionMRCSteps(Pages pages) {
         super(pages);
-    }
-
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
     }
 
     @Step

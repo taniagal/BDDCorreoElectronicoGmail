@@ -1,6 +1,9 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.guidewire.selenium.Guidewire;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -14,11 +17,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class OpcionesInformacionPolizaPage extends Guidewire {
 
@@ -30,8 +28,6 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     WebElementFacade campoNombreAgente;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade tablaProductos;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PrimaryNamedInsuredLabel-labelEl']")
-    private WebElementFacade labelAseguradoPrimario;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-labelEl']")
     private WebElementFacade labelTipoDocumento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
@@ -52,7 +48,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     private WebElementFacade labelOrganizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-labelEl']")
     private WebElementFacade labelCanal;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-labelEl']")
     private WebElementFacade labelTipoPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:TermType-labelEl']")
     private WebElementFacade labelTipoPlazo;
@@ -106,8 +102,6 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     private WebElementFacade botonBuscarContacto;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']")
     private WebElementFacade botonSeleccionarContacto;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton-labelEl']")
-    private WebElementFacade labelNombreSegundoTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:DocumentType-labelEl']")
     private WebElementFacade labelTipoDocumentoSegundoTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
@@ -138,7 +132,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     private WebElementFacade polizaFinanciada;
     @FindBy(xpath = ".//tr[11]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade botonNumeroCuotas;
-    @FindBy(xpath = "//div[8]/div/ul/li[2]")
+    @FindBy(xpath = "//li[contains(.,'12')]")
     private WebElementFacade itemNumeroCuotas;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumber-inputEl']")
     private WebElementFacade textoNumeroCuotas;
@@ -150,7 +144,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     private WebElementFacade campoOrganizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ChannelType-inputEl']")
     private WebElementFacade campoCanal;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PAPolicyType-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
     WebElementFacade campoTipoPoliza;
 
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
@@ -162,24 +156,25 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     public void seleccionarAgenteCotizacion() {
         comboBoxNombreAgente.click();
-        Actions actions =  new Actions(getDriver());
+        Actions actions = new Actions(getDriver());
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
     }
 
-    public void seleccionarProducto(){
-        WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:"+this.encontrarProducto().toString()+":addSubmission']");
+    public void seleccionarProducto() {
+        waitUntil(1500);
+        WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:" + this.encontrarProducto().toString() + ":addSubmission']");
         botonElegirProducto.click();
     }
 
-    public Integer encontrarProducto(){
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilPresent();
+    public Integer encontrarProducto() {
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilPresent();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (columna.get(1).getText().equals("Autos")){
+            if ("Autos".equals(columna.get(1).getText())) {
                 return filaBoton;
             }
             filaBoton++;
@@ -189,7 +184,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     public void visualizarInformacionPoliza(Map<String, String> infoPoliza) {
         String validacion = null;
-        try{
+        try {
             MatcherAssert.assertThat(this.labelTipoDocumento.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoDocumento"))));
             MatcherAssert.assertThat(this.labelNumeroDocumento.getText(), Is.is(Matchers.equalTo(infoPoliza.get("numeroDocumento"))));
             MatcherAssert.assertThat(this.labelNombre.getText(), Is.is(Matchers.equalTo(infoPoliza.get("nombre"))));
@@ -212,7 +207,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
             MatcherAssert.assertThat(this.labelCodigoAgente.getText(), Is.is(Matchers.equalTo(infoPoliza.get("codigoAgente"))));
             MatcherAssert.assertThat(this.labelModificadorPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("modificadorPoliza"))));
             MatcherAssert.assertThat(this.labelDescuentoPoliza.getText(), Is.is(Matchers.equalTo(infoPoliza.get("descuentoPoliza"))));
-        }catch (Exception e){
+        } catch (Exception e) {
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
         }
@@ -221,10 +216,10 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     public void modificarFechaVigencia(String tipoPlazo, String fechaInicioVigencia) {
         String validacion = null;
-       waitFor(fechaVigenciaPoliza).shouldBePresent();
-        try{
+        waitFor(fechaVigenciaPoliza).shouldBePresent();
+        try {
             MatcherAssert.assertThat(fechaVigenciaPoliza.getTextValue(), Is.is(Matchers.equalTo(fechaEscrita.getTextValue())));
-        }catch (Exception e){
+        } catch (Exception e) {
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
         }
@@ -253,12 +248,12 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         String fechaVigencia = fechaVigenciaPoliza.getValue();
         waitFor(fechaExpiracionPoliza).shouldBeVisible();
         String fechaExpiracion = fechaExpiracionPoliza.getTextValue();
-        String aniovig = fechaVigencia.substring(6,10);
-        String anioexp = fechaExpiracion.substring(6,10);
-        String mesvig = fechaVigencia.substring(0,2);
-        String mesexp = fechaExpiracion.substring(0,2);
-        String diavig = fechaVigencia.substring(3,5);
-        String diaexp = fechaExpiracion.substring(3,5);
+        String aniovig = fechaVigencia.substring(6, 10);
+        String anioexp = fechaExpiracion.substring(6, 10);
+        String mesvig = fechaVigencia.substring(0, 2);
+        String mesexp = fechaExpiracion.substring(0, 2);
+        String diavig = fechaVigencia.substring(3, 5);
+        String diaexp = fechaExpiracion.substring(3, 5);
         int aniovignum = Integer.parseInt(aniovig);
         int anioexpnum = Integer.parseInt(anioexp);
         int mesvignum = Integer.parseInt(mesvig);
@@ -269,21 +264,20 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         int restames = mesexpnum - mesvignum;
         int restadia = diaexpnum - diavignum;
 
-        if(tipoPlazo.equals("Anual")){
+        if ("Anual".equals(tipoPlazo)) {
             MatcherAssert.assertThat(restaanio, Is.is(Matchers.equalTo(1)));
             MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(0)));
             MatcherAssert.assertThat(restadia, Is.is(Matchers.equalTo(0)));
-        }else if(tipoPlazo.equals("6 meses")){
-            if(mesvignum>6){
+        } else if ("6 meses".equals(tipoPlazo)) {
+            if (mesvignum > 6) {
                 MatcherAssert.assertThat(restaanio, Is.is(Matchers.equalTo(1)));
                 MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(-6)));
-            }
-            else {
+            } else {
                 MatcherAssert.assertThat(restaanio, Is.is(Matchers.equalTo(0)));
                 MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(6)));
             }
             MatcherAssert.assertThat(restadia, Is.is(Matchers.equalTo(0)));
-        }else if(tipoPlazo.equals("Otra")){
+        } else if ("Otra".equals(tipoPlazo)) {
             waitFor(fechaExpiracionPoliza).shouldBeVisible();
             MatcherAssert.assertThat(fechaExpiracionPoliza.getTagName(), Is.is(Matchers.equalTo("input")));
         }
@@ -292,6 +286,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
 
     public void adicionarSegundoTomador(String tipoDocumento, String primerNombre, String primerApellido) {
         waitForTextToAppear("Tomador secundario");
+        waitUntil(2000);
         waitFor(botonAseguradoSecundario).shouldBeVisible();
         botonAseguradoSecundario.click();
         waitFor(itemPersonaDelDirectorio).shouldBeVisible();
@@ -330,7 +325,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
             MatcherAssert.assertThat(this.textoDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
             MatcherAssert.assertThat(this.textoTipoDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
             MatcherAssert.assertThat(this.textoDescripcionDireccionSegundoTomador, Is.is(Matchers.not(Matchers.equalTo(null))));
-        }catch (Exception e){
+        } catch (Exception e) {
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
         }
@@ -349,20 +344,20 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         waitFor(textoDescuentoPoliza).shouldBeVisible();
         String descuentoPoliza = textoDescuentoPoliza.getValue();
         waitFor(mensajeValidacion).shouldBeVisible();
-        if(esNumerico(descuentoPoliza)){
-            if(Integer.parseInt(descuentoPoliza) > 50 || Integer.parseInt(descuentoPoliza) < 0){
+        if (esNumerico(descuentoPoliza)) {
+            if (Integer.parseInt(descuentoPoliza) > 50 || Integer.parseInt(descuentoPoliza) < 0) {
                 MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
             }
-        } else{
+        } else {
             MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
         }
     }
 
-    private static boolean esNumerico(String cadena){
+    private static boolean esNumerico(String cadena) {
         try {
             Integer.parseInt(cadena);
             return true;
-        } catch (NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             return false;
         }
     }
@@ -378,26 +373,24 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
                 waitFor(mensajeValidacion).shouldBePresent();
                 MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
             }
-        }catch (StaleElementReferenceException element){
+        } catch (StaleElementReferenceException element) {
             element.printStackTrace();
         }
     }
 
-    public void selectCombo(WebElementFacade element, String option){
+    public void selectCombo(WebElementFacade element, String option) {
         element.clear();
         waitUntil(200);
         element.sendKeys(option);
         element.sendKeys(Keys.ENTER);
     }
-    
+
     public void definirPolizaFinanciada(String organizacionDetalle, String canalDetalle, String tipoPoliza) {
-        selectCombo(campoOrganizacion,organizacionDetalle);
-        waitUntil(2000);
-        selectCombo(campoCanal,canalDetalle);
-        waitUntil(2000);
-        selectCombo(campoTipoPoliza,tipoPoliza);
-        waitUntil(2000);
+        waitFor(campoOrganizacion);
         polizaFinanciada.click();
+        MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(organizacionDetalle)));
+        MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(canalDetalle)));
+        MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(tipoPoliza)));
     }
 
     public void ingresarNumeroCuotas() {
@@ -420,18 +413,14 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void modificarFechaInicioVigencia(String organizacionDetalle, String canalDetalle, String tipoPoliza, String tipoPlazo, String fechaInicioVigencia) {
-        waitUntil(3000);
-        campoOrganizacion.typeAndTab(organizacionDetalle);
-        waitUntil(3000);
-        campoCanal.typeAndTab(canalDetalle);
-        waitUntil(3000);
-        campoTipoPoliza.typeAndTab(tipoPoliza);
-        waitUntil(3000);
+        MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(organizacionDetalle)));
+        MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(canalDetalle)));
+        MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(tipoPoliza)));
         String validacion = null;
         waitFor(fechaVigenciaPoliza).shouldBePresent();
-        try{
+        try {
             MatcherAssert.assertThat(fechaVigenciaPoliza.getTextValue(), Is.is(Matchers.equalTo(fechaEscrita.getTextValue())));
-        }catch (Exception e){
+        } catch (Exception e) {
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
         }

@@ -2,15 +2,16 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.guidewire.selenium.Guidewire;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
-import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,9 +20,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class OpcionesAdminitradorCotizaciones extends Guidewire {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
@@ -32,8 +30,6 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     private WebElementFacade lblCotizacionesCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuIcon']")
     private WebElementFacade btnAcciones;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuItemSet:Decline-textEl']")
-    private WebElementFacade itmDeclinar;
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-textEl']")
     private WebElementFacade itmNoTomar;
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManager_NewSubmission-btnInnerEl']")
@@ -73,7 +69,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-labelEl']")
     private WebElementFacade labelCodigoAgente;
 
-    private int band=0;
+    private int band = 0;
 
     /*
     * WebElementFacade ingresados para story Nueva
@@ -81,73 +77,60 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
 
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:4:SubmissionActions:SubmissionActionsMenuIcon']")
     private WebElementFacade btnAcciones2;
-
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade txtCodRazon;
-
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReasonText-inputEl']")
     private WebElementFacade txtRazonCartaDeclina;
-
     @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReasonText-inputEl']")
     private WebElementFacade txtRazonCartaNoTomar;
-
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:Update-btnInnerEl']")
     private WebElementFacade btnRechazar;
-
     @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:Update']")
     private WebElementFacade btnNoTomar;
-
-    @FindBy (xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:Cancel-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:Cancel-btnInnerEl']")
     private WebElementFacade btnCancelar;
-
-    @FindBy (xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:Cancel-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:Cancel-btnInnerEl']")
     private WebElementFacade btnCancelarNoTomar;
-
-    @FindBy (xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
+    @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade listaTipoRazon;
-
-    @FindBy (xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
+    @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade listaTipoRazonNoTomar;
-
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:4:SubmissionActions:SubmissionActionsMenuItemSet:Decline']")
     private WebElementFacade itmDeclinarComProp;
-
     @FindBy(id = "DeclineReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msg;
-
     @FindBy(id = "NotTakenReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msgNoTomar;
-
 
     public OpcionesAdminitradorCotizaciones(WebDriver driver) {
         super(driver);
     }
 
-    public void seleccionarAcciones(){
-        band=0;
-        int i=0;
+    public void seleccionarAcciones() {
+        band = 0;
+        int i = 0;
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tblCotizaciones).waitUntilPresent();
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if(!(cells.get(2).getText().equals("") || cells.get(2).getText().equals(" "))) {
-                if ((cells.get(7).getText().equals("Cotizado") || cells.get(7).getText().equals("Borrador")) && band==0) {
+            if (!("".equals(cells.get(2).getText()) || " ".equals(cells.get(2).getText()))) {
+                if (("Cotizado".equals(cells.get(7).getText()) || "Borrador".equals(cells.get(7).getText())) && band == 0) {
                     WebElementFacade botonAccciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + i + ":SubmissionActions:SubmissionActionsMenuIcon']");
                     botonAccciones.click();
-                    band=i;
+                    band = i;
                 }
                 i++;
             }
         }
     }
 
-    public void validarEstadosCotizacion(String estadoDeclinar, String estadoNoTomar){
-        if(band!=0){
-            WebElementFacade itemDeclinar = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:"+band+":SubmissionActions:SubmissionActionsMenuItemSet:Decline-itemEl']");
-            WebElementFacade itemNoTomar  = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:"+band+":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-itemEl']");
+    public void validarEstadosCotizacion(String estadoDeclinar, String estadoNoTomar) {
+        if (band != 0) {
+            WebElementFacade itemDeclinar = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + band + ":SubmissionActions:SubmissionActionsMenuItemSet:Decline-itemEl']");
+            WebElementFacade itemNoTomar = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + band + ":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-itemEl']");
             MatcherAssert.assertThat(itemDeclinar.getText(), Is.is(Matchers.equalTo(estadoDeclinar)));
             MatcherAssert.assertThat(itemNoTomar.getText(), Is.is(Matchers.equalTo(estadoNoTomar)));
-        }else{
+        } else {
             MatcherAssert.assertThat(null, Is.is(Matchers.nullValue()));
         }
     }
@@ -157,54 +140,54 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         btnNuevaCotizacion.click();
     }
 
-    public void validarCreacionCotizacion(){
+    public void validarCreacionCotizacion() {
         waitForTextToAppear("Nueva cotización", 1000);
         boolean validacion = false;
-        if(labelCodigoAgente.isPresent() && labelNombreAgente.isPresent()){
+        if (labelCodigoAgente.isPresent() && labelNombreAgente.isPresent()) {
             validacion = true;
         }
-        MatcherAssert.assertThat(validacion,Is.is(true));
+        MatcherAssert.assertThat(validacion, Is.is(true));
     }
 
-    public void validarOpcionRetirar(String retirar){
+    public void validarOpcionRetirar(String retirar) {
         Boolean validacion = false;
-        WebElementFacade listaAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:"+band+":SubmissionActions:SubmissionActionsMenuIcon-fieldMenu']");
+        WebElementFacade listaAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + band + ":SubmissionActions:SubmissionActionsMenuIcon-fieldMenu']");
         validacion = listaAcciones.containsElements(retirar);
-        MatcherAssert.assertThat(validacion,Is.is(false));
+        MatcherAssert.assertThat(validacion, Is.is(false));
     }
 
-    public void seleccionarFiltros(String cotizacion, String producto){
-        waitForTextToAppear("Cotizaciones de la cuenta",1000);
+    public void seleccionarFiltros(String cotizacion, String producto) {
+        waitForTextToAppear("Cotizaciones de la cuenta", 1000);
         waitFor(txtCotizaciones).shouldBeVisible();
         txtCotizaciones.click();
-        WebElementFacade cbxCotizacion = findBy(".//li[contains(.,'"+cotizacion+"')]");
-        waitForTextToAppear(cotizacion,1000);
+        WebElementFacade cbxCotizacion = findBy(".//li[contains(.,'" + cotizacion + "')]");
+        waitForTextToAppear(cotizacion, 1000);
         waitFor(cbxCotizacion).shouldBeVisible();
         cbxCotizacion.click();
         waitFor(txtProductos).shouldBeVisible();
         txtProductos.click();
-        WebElementFacade cbxProducto = findBy(".//li[contains(.,'"+producto+"')]");
-        waitForTextToAppear(producto,1000);
+        WebElementFacade cbxProducto = findBy(".//li[contains(.,'" + producto + "')]");
+        waitForTextToAppear(producto, 1000);
         waitFor(cbxProducto).shouldBeVisible();
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
     }
 
     public void mostrarInfoCotizacion(String producto) {
-        waitForTextToAppear(producto,2000);
+        waitForTextToAppear(producto, 2000);
         waitUntil(1000);
         String tProductos = "Todos Los Productos";
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if(tProductos.equals(producto) && !(cells.get(1).getText().equals("") || cells.get(1).getText().equals(" "))){
+            if (tProductos.equals(producto) && !("".equals(cells.get(1).getText()) || " ".equals(cells.get(1).getText()))) {
                 MatcherAssert.assertThat(cells.get(1).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(2).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(3).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(5).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
                 MatcherAssert.assertThat(cells.get(7).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
-            } else if(!(cells.get(1).getText().equals("") || cells.get(1).getText().equals(" "))){
+            } else if (!("".equals(cells.get(1).getText()) || " ".equals(cells.get(1).getText()))) {
                 boolean valido = cells.get(1).getText().equals(producto);
                 MatcherAssert.assertThat(cells.get(1).getText(), Is.is(Matchers.equalTo(producto)));
                 MatcherAssert.assertThat(cells.get(2).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
@@ -219,20 +202,20 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     public void validarLabelsCotizaciones(Map<String, String> labelsCotizaciones) {
         String validacion = null;
         try {
-            waitForTextToAppear("Cotizaciones de la cuenta",10000);
-            MatcherAssert.assertThat(lblCotizacionesCuenta.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("lblCotizaciones"))));
-            MatcherAssert.assertThat(btnNuevaCotizacion.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("btnNuevaCotizacion"))));
-            MatcherAssert.assertThat(colAcciones.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("acciones"))));
-            MatcherAssert.assertThat(colProducto.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("producto"))));
-            MatcherAssert.assertThat(colNumCotizacion.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("numCotizacion"))));
-            MatcherAssert.assertThat(colTipoCotizacion.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("tipoCotizacion"))));
-            MatcherAssert.assertThat(colFechaIniVigencia.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("fechaIniVigencia"))));
-            MatcherAssert.assertThat(colFechaFinVigencia.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("fechaFinVigencia"))));
-            MatcherAssert.assertThat(colNumeroPoliza.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("numPoliza"))));
-            MatcherAssert.assertThat(colEstado.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("estado"))));
-            MatcherAssert.assertThat(colCostoTotal.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("costoTotal"))));
-            MatcherAssert.assertThat(colCartas.getText().toString(),Is.is(Matchers.equalTo(labelsCotizaciones.get("cartas"))));
-        } catch(Exception e) {
+            waitForTextToAppear("Cotizaciones de la cuenta", 10000);
+            MatcherAssert.assertThat(lblCotizacionesCuenta.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("lblCotizaciones"))));
+            MatcherAssert.assertThat(btnNuevaCotizacion.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("btnNuevaCotizacion"))));
+            MatcherAssert.assertThat(colAcciones.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("acciones"))));
+            MatcherAssert.assertThat(colProducto.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("producto"))));
+            MatcherAssert.assertThat(colNumCotizacion.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("numCotizacion"))));
+            MatcherAssert.assertThat(colTipoCotizacion.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("tipoCotizacion"))));
+            MatcherAssert.assertThat(colFechaIniVigencia.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("fechaIniVigencia"))));
+            MatcherAssert.assertThat(colFechaFinVigencia.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("fechaFinVigencia"))));
+            MatcherAssert.assertThat(colNumeroPoliza.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("numPoliza"))));
+            MatcherAssert.assertThat(colEstado.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("estado"))));
+            MatcherAssert.assertThat(colCostoTotal.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("costoTotal"))));
+            MatcherAssert.assertThat(colCartas.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("cartas"))));
+        } catch (Exception e) {
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
         }
@@ -248,10 +231,10 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if(!vacio.equals(cells.get(2).getText()) && cells.get(7).getText().equals(expedida)){
-                MatcherAssert.assertThat(cells.get(6).getText(),Is.is(Matchers.notNullValue()));
-            }else if(!vacio.equals(cells.get(2).getText()) && !expedida.equals(cells.get(7).getText())){
-                MatcherAssert.assertThat(cells.get(6).getText(),Is.is(Matchers.equalTo(vacio)));
+            if (!vacio.equals(cells.get(2).getText()) && cells.get(7).getText().equals(expedida)) {
+                MatcherAssert.assertThat(cells.get(6).getText(), Is.is(Matchers.notNullValue()));
+            } else if (!vacio.equals(cells.get(2).getText()) && !expedida.equals(cells.get(7).getText())) {
+                MatcherAssert.assertThat(cells.get(6).getText(), Is.is(Matchers.equalTo(vacio)));
             }
         }
     }
@@ -268,19 +251,19 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
                 contador++;
             }
         }
-        MatcherAssert.assertThat(contador,Is.is(Matchers.equalTo(1)));
+        MatcherAssert.assertThat(contador, Is.is(Matchers.equalTo(1)));
     }
 
     public void validarEstadoCotizacionDeclinado(String propiedadComercial, String declinado) {
         boolean validacion = false;
         String excepcion = null;
-        int i=0;
+        int i = 0;
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if(!cells.get(2).getText().equals(" ")) {
+            if (!" ".equals(cells.get(2).getText())) {
                 if (cells.get(1).getText().equals(propiedadComercial) && cells.get(7).getText().equals(declinado)) {
-                    band=i;
+                    band = i;
                 }
                 i++;
             }
@@ -288,11 +271,11 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     }
 
     public void mostrarBotonCrearCartaDeclinacion(String crearCarta) {
-        if(band!=0){
-            WebElementFacade botonCrearCartaDeclinacion = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:"+band+":DeclineLetter']");
+        if (band != 0) {
+            WebElementFacade botonCrearCartaDeclinacion = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + band + ":DeclineLetter']");
             MatcherAssert.assertThat(botonCrearCartaDeclinacion.getText(), Is.is(Matchers.equalTo(crearCarta)));
-            band=0;
-        }else{
+            band = 0;
+        } else {
             MatcherAssert.assertThat(null, Is.is(Matchers.nullValue()));
         }
     }
@@ -308,7 +291,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     public void mostrarTodosLosProductos(String producto) {
         waitABit(1000);
         txtProductos.click();
-        WebElementFacade cbxProducto = findBy(".//li[contains(.,'"+producto+"')]");
+        WebElementFacade cbxProducto = findBy(".//li[contains(.,'" + producto + "')]");
         waitABit(1000);
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
@@ -324,13 +307,11 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
      */
 
     public void seleccionarAccionesDeclinar() {
-        //withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAcciones2).waitUntilClickable();
         btnAcciones2.waitUntilVisible().waitUntilClickable().click();
         $(itmDeclinarComProp).waitUntilVisible().waitUntilClickable().click();
     }
 
     public void seleccionarAccionesNoTomar() {
-       // withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilClickable();
         btnAcciones.waitUntilVisible().waitUntilClickable().click();
         $(itmNoTomar).waitUntilVisible().waitUntilClickable().click();
     }
@@ -380,11 +361,11 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     public void validaEstado(String numCotizacion, String accion) {
         int i = 0;
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
-        if (getListaCotizaciones().size()>0) {
+        if (!getListaCotizaciones().isEmpty()) {
             for (WebElementFacade cotizacion : getListaCotizaciones()) {
                 if (numCotizacion.equals(cotizacion.getText())) {
-                   MatcherAssert.assertThat("El estado no pertenece a la accion dada", accion.equals(getListaEstado().get(i).getText()));
-                   break;
+                    MatcherAssert.assertThat("El estado no pertenece a la accion dada", accion.equals(getListaEstado().get(i).getText()));
+                    break;
                 }
                 i++;
             }
@@ -392,11 +373,11 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         }
     }
 
-    public void validaAccionDesabilita (){
+    public void validaAccionDesabilita() {
         MatcherAssert.assertThat("Boton Acciones no esta presente", !btnAcciones2.isPresent());
     }
 
-    public void validaAccionDesabilitaNoTomar (){
+    public void validaAccionDesabilitaNoTomar() {
         MatcherAssert.assertThat("Boton Acciones no esta presente", !btnAcciones.isPresent());
     }
 
@@ -414,30 +395,30 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
 
-    public void validarOpcionesDeAgregar (ExamplesTable listaRazones) throws Exception{
+    public void validarOpcionesDeAgregar(ExamplesTable listaRazones) throws Exception {
         listaTipoRazon.click();
         this.validarDatosDeLaLista(listaRazones);
         btnCancelar.click();
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
 
-    public void validarOpcionesDeAgregarNoTomar (ExamplesTable listaRazones) throws Exception{
+    public void validarOpcionesDeAgregarNoTomar(ExamplesTable listaRazones) throws Exception {
         listaTipoRazonNoTomar.click();
         this.validarDatosDeLaLista(listaRazones);
         btnCancelarNoTomar.click();
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
 
-    public void validarTodasLasCotizaciones (){
-        MatcherAssert.assertThat("No se pudieron visualizar las polizas", getListaCotizaciones().size()<=0);
+    public void validarTodasLasCotizaciones() {
+        MatcherAssert.assertThat("No se pudieron visualizar las polizas", getListaCotizaciones().isEmpty());
     }
 
-    private  void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception{
+    private void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {
-            elementosTipoCanalVentas = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'"+tipo+"')]");
-            for (WebElementFacade lista : elementosTipoCanalVentas){
+            elementosTipoCanalVentas = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
+            for (WebElementFacade lista : elementosTipoCanalVentas) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }
         }

@@ -53,7 +53,7 @@ Examples:
 
 Scenario: Seleccionar oficina de radicacion
 Meta:
-@Manual
+@manual
 Given ya se inicio una nueva suscripcion
 And se puede visualizar la informacion de la poliza
 When seleccione, digite o busque la oficina de radicacion <oficinaRadicacion>
@@ -85,8 +85,7 @@ When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
 And ingrese un porcentaje <porcentaje> de poliza con mas de dos enteros y dos decimales
-Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder la longitud de dos digitos a
-izquierda o derecha
+Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder la longitud de dos digitos a izquierda o derecha
 
 Examples:
 |numeroCuenta   |organizacion|canal            |porcentaje     |mensaje                                                                                 |
@@ -116,5 +115,5 @@ And modifique la fecha de inicio de vigencia <organizacionDetalle> <canalDetalle
 Then se debe cumplir con la retroactividad permitida <mensaje>
 
 Examples:
-|numeroCuenta |organizacion|canal            |organizacionDetalle|canalDetalle     |tipoPoliza |tipoPlazo |fechaInicioVigencia|mensaje|
-|C000888888   |Sura        |Canal Tradicional|Bancolombia        |Televentas       |PPAutos    |6 meses   |01/01/2016         |La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
+| numeroCuenta | organizacion | canal      | organizacionDetalle | canalDetalle | tipoPoliza | tipoPlazo | fechaInicioVigencia | mensaje                                                                              |
+| C000888888   | Bancolombia  | Televentas | Bancolombia         | Televentas   | PPAutos    | 6 meses   | 01/01/2016          | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |

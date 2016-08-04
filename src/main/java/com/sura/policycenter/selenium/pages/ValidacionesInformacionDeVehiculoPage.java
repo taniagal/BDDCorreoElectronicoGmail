@@ -2,18 +2,15 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.guidewire.selenium.Guidewire;
-
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
+
 
 public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
@@ -40,6 +37,11 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     private WebElementFacade campoTxtchasis;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
     private WebElementFacade campoTxtValorAsegurado;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:4:RateModifier-inputEl']")
+    private WebElementFacade campoTxtDescuento;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:5:RateModifier-inputEl']")
+    private WebElementFacade campoTxtRecargo;
+
 
 
 
@@ -75,6 +77,10 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
         waitUntil(2500);
         selectItem(comboBoxVehiculoServicio,vehiculo.get("vehiculo_servicio"));
+        if(!"null".equals(vehiculo.get("descuento"))){
+            campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
+            campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
+        }
         if(!"null".equals(vehiculo.get("motor"))){
         campoTxtMotor.sendKeys(vehiculo.get("motor"));
         campoTxtchasis.sendKeys(vehiculo.get("chasis"));
