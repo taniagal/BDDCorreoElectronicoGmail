@@ -92,7 +92,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public void irANuevaCotizacion(){
-        setImplicitTimeout(2,TimeUnit.SECONDS);
+        setImplicitTimeout(2, TimeUnit.SECONDS);
         if(!botonAcciones.isPresent())
             menuItemEscritorio.click();
         resetImplicitTimeout();
@@ -131,7 +131,7 @@ public class DetallesDeUbicacionPage extends Guidewire{
     }
 
     public void setUbicacion(String descripcion, String actividad){
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
         selectItem(comboBoxActividadEconomica,actividad);
         botonAceptar.click();
     }

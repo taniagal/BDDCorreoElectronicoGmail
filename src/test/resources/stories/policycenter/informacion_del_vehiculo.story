@@ -6,28 +6,51 @@ Narrative:
 Como usuario de policy center
 con un perfil que tenga permisos quiero ser capaz de registrar toda la informacion del vehiculo
 
-
 Scenario: Ingreso de informacion del vehiculo
-Given Estoy buscando una cuenta <numCuenta>
-When quiera registrar la informacion del vehiculo
-Then el sistema debe mostrar los datos correspondiente al vehiculo
-And debe permitir seleccionar la tecla siguinete
+GivenStories: stories/policycenter/login_policy.story
+Given se inicio una nueva suscripcion <numeroCuenta>
+And ingrese el agente
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And ingrese una nueva cotizacion para vehiculo <nomProducto>
+And vaya a agregar un vehiculo con los datos:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|
+|AKN019  |2009  |08001111        |MEDELLIN          |Particular       |PR3B4  |SnR4 |null           |null     |null   |
+And ingrese el beneficiario o conductor en los intereses adicionales
+Then el sistema debe permitir pasar a la siguinete pagina
 
 Examples:
-|numCuenta|mensaje|
-|C000888888|Falta el campo obligatorio "Código de razón"|
+|numeroCuenta|organizacion|canal            |nomProducto|
+|C000888888  |Sura        |Canal Tradicional|Autos      |
 
-Scenario: Validacion de campos de la informacion de vehiculos
-Given Estoy buscando una cuenta <numCuenta>
-When quiera ingresar la placa, motor el chasis <placa> <motor> <chasis>
-And quiera ingresar el descuento, recargo y suavizacion <descuento> <recargo> <suavizacion>
-Then el sistema debe validar
-And debe permitir seleccionar la tecla siguinete
+
+Scenario: Validacion de caracteres especiales en campos informacion del vehiculo
+Given se inicio una nueva suscripcion <numeroCuenta>
+And ingrese el agente
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And ingrese una nueva cotizacion para vehiculo <nomProducto>
+And vaya a agregar un vehiculo con los datos:
+|placa     |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis                 |motor                       |valor_asegurado|descuento|recargo|
+|AKN019W |2009  |08001111       |MEDELLIN            |Particular      |PR3B4_-/-#$%&/()=?¡¿'  |86-51/*4213486+145646!"_#$% |null           |9.9999   |100    |
+Then Then el sistema NO debe permitir pasar a la siguinete pagina
 
 Examples:
-|numCuenta |placa |motor          |chasis         |descuento|recargo|suavizacion|
-|C000888888|OFI19C|C00008745678684|X48964788762144|99.99    |99.99  |99.99      |
+|numeroCuenta|organizacion|canal            |nomProducto|
+|C000888888  |Sura        |Canal Tradicional|Autos      |
 
+Scenario: Validar campos de valores asegurados, accesorios y tope definido por perfil
+Given se inicio una nueva suscripcion <numeroCuenta>
+And ingrese el agente
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And ingrese una nueva cotizacion para vehiculo <nomProducto>
+And vaya a agregar un vehiculo con los datos:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|
+|AKU019  |2009  |08001111        |MEDELLIN          |Particular       |PR3B4  |SnR4 |null           |null     |null    |
+And ingrese los valores de accesorios y <valorAccesorio> <valorAccesorioEsp> valor de bonificacion tecnica <boniTecnica> y comercial <boniComercial>
+Then el sistema debe totalizar el valor asegurado y mostrar un mensaje de error <mensaje>
 
-
-
+Examples:
+|numeroCuenta|organizacion|canal            |nomProducto|valorAccesorio|valorAccesorioEsp|boniComercial|boniTecnica|mensaje                                             |
+|C000888888  |Sura        |Canal Tradicional|Autos      |1750000       |4000000          |25           |30         |La suma de las bonificaciones no debe ser mayor a 50|

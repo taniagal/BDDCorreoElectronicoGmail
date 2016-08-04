@@ -1,5 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -8,7 +9,6 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.TimeUnit;
 
 
 public class ValidacionesCambioDePolizaVehiculosPage extends PageObject{
@@ -26,7 +26,6 @@ public class ValidacionesCambioDePolizaVehiculosPage extends PageObject{
     }
 
     public void emitirPoliza(){
-        //waitFor(botonEmitirPoliza).shouldBeVisible();
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonEmitirPoliza).shouldBePresent();
         botonEmitirPoliza.click();
         waitForTextToAppear("¿Está seguro de que desea emitir esta póliza?");
