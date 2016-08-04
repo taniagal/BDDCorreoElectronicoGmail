@@ -184,6 +184,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void buscarCuentaPorRazonSocial(String razonSocial) {
         this.limpiarFormulario();
+        waitFor(txtRazonSocial);
         txtRazonSocial.sendKeys(razonSocial);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
@@ -199,6 +200,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void buscarCuentaPorNombreComercial(String nombreComercial) {
         this.limpiarFormulario();
+        waitFor(txtNombreComercial);
         txtNombreComercial.sendKeys(nombreComercial);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
@@ -221,6 +223,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void ingresarRazonSocialYPrimerNombre(String razonSocial, String primerNombre) {
         this.limpiarFormulario();
+        waitFor(txtRazonSocial);
         this.txtRazonSocial.sendKeys(razonSocial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
@@ -229,6 +232,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void ingresarNombreComercialYPrimerNombre(String nombreComercial, String primerNombre) {
         this.limpiarFormulario();
+        waitFor(txtNombreComercial);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
@@ -237,6 +241,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
     public void ingresarRazonSocialYNombreComercial(String nombreComercial, String razonSocial) {
         this.limpiarFormulario();
+        waitFor(txtNombreComercial);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtRazonSocial.sendKeys(razonSocial);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();

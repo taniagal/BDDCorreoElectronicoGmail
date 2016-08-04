@@ -2,11 +2,12 @@ Modificacion Informacion Poliza Pa
 
 Meta:
 
+@issue SUGWUSC-10900 Policy Info - PA
+
 Narrative:
 Como usuario de PolicyCenter
 Quiero poder realizar cambios en la informacion de cliente, vehiculo o coberturas en una poliza de automoviles.
 
-@Issue SUGWUSC-10900 Policy Info - PA
 
 Scenario: Visualizacion de los datos de la poliza
 GivenStories: stories/policycenter/login_policy.story
@@ -40,7 +41,7 @@ Examples:
 
 Scenario: Validar campo poliza financiada
 Meta:
-@Manual
+@manual
 Given ya se tiene una poliza expedida <numeroPoliza>
 When el tipo de poliza es PPAutos
 Then se debe habilitar el campo poliza financiada
