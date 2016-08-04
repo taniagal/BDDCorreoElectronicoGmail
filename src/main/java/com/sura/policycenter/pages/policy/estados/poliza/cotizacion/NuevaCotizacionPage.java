@@ -1,11 +1,18 @@
 package com.sura.policycenter.pages.policy.estados.poliza.cotizacion;
 
 import com.sura.policycenter.model.AgenteModel;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -13,16 +20,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
 
 // TODO: 15/06/2016 Pendiente refactor
 public class NuevaCotizacionPage extends PageObject {
@@ -179,7 +176,7 @@ public class NuevaCotizacionPage extends PageObject {
         Collections.sort(listaProductosOrdenados);
 
         Boolean estaEnOrden = listaProductosOrdenados.equals(listaProductos);
-        assertThat(estaEnOrden, equalTo(true));
+        MatcherAssert.assertThat(estaEnOrden, CoreMatchers.equalTo(true));
     }
 
     public void seleccionarProducto(String nombreDeProducto) {
@@ -195,7 +192,7 @@ public class NuevaCotizacionPage extends PageObject {
     public List<String> obtenerListaDeProductos() {
         // TODO: 08/06/2016 COmo usar el de el impl bien??? para hacer el assertion si esta vacio el combo
         listaDeProductosElement = elementos(PRODUCTOS);
-        assertThat(listaDeProductosElement.size(), greaterThan(0));
+        MatcherAssert.assertThat(listaDeProductosElement.size(), Matchers.greaterThan(0));
         listaAgentesModel = new ArrayList<>();
         List<String> listaProductos = new ArrayList<>();
 
@@ -226,7 +223,7 @@ public class NuevaCotizacionPage extends PageObject {
                 }
             }
         }
-        assertThat(listaNombresAgentesElement.size(), is(equalTo(listaAgentesModel.size())));
+        MatcherAssert.assertThat(listaNombresAgentesElement.size(), CoreMatchers.is(CoreMatchers.equalTo(listaAgentesModel.size())));
 
         LOGGER.info("NuevaCotizacionPage.validarAutocompletarSeMuestreNombreYCodigoRespectivamente");
     }
@@ -287,7 +284,9 @@ public class NuevaCotizacionPage extends PageObject {
 
     public String obtenerMensajeEmergenteDeInformacion() {
         waitFor(1).second();
-        return elemento(MENSAJE_EMERGENTE_DE_INFORMACION).getText();
+        WebElementFacade mensaje = elemento(MENSAJE_EMERGENTE_DE_INFORMACION).waitUntilVisible();
+        mensaje.shouldBeVisible();
+        return mensaje.getText();
     }
 
     public void seleccionarBtn(String nombreBtn) {

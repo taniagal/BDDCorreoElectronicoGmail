@@ -123,7 +123,6 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
         txtFechaVigencia.clear();
         txtFechaVigencia.sendKeys(fechaInicioVigencia);
         actions.sendKeys(Keys.ENTER).build().perform();
-        waitInfoPoliza(mensajePantalla);
     }
 
     public void bloqueaSiguiente() {

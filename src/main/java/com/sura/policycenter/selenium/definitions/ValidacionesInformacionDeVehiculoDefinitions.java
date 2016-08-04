@@ -60,5 +60,10 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
         vehiculoSteps.agregar_vehiculo(datosVehiculo);
     }
 
+    @When("voy a realizar el siguiente paso")
+    public void siguiente(){
+        vehiculoSteps.siguiente();
+    }
+
 
 }

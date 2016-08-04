@@ -1,7 +1,10 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
-import com.sura.guidewire.selenium.Guidewire;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -17,10 +20,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class ModificacionCotizacionDePolizaPage extends PageObject{
@@ -55,8 +54,6 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
     private WebElementFacade labelImpuestos;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:TotalCost-labelEl']")
     private WebElementFacade labelCostoTotal;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:PolicyNumber-inputEl']")
-    private WebElementFacade campoNumeroDePoliza;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']")
     private WebElementFacade campoNumeroDeCotizacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:PolicyPeriod-inputEl']")
@@ -81,77 +78,60 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
     private WebElementFacade campoImpuestosYCargos;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
     private WebElementFacade campoCostoTotal;
-
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:1']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:1']")
     private WebElementFacade labelVehiculo;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:LicensePlate-labelEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:LicensePlate-labelEl']")
     private WebElementFacade labelPlaca;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:FasecoldaCode-labelEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:FasecoldaCode-labelEl']")
     private WebElementFacade labelCodigoFasecolda;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:FasecoldaCode-inputEl']")
-    private WebElementFacade inputCodigoFasecolda;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Make-labelEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Make-labelEl']")
     private WebElementFacade labelMarca;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Make-inputEl']")
-    private WebElementFacade inputMarca;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Year-labelEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Year-labelEl']")
     private WebElementFacade labelModelo;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Year-inputEl']")
-    private WebElementFacade inputModelo;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Line-labelEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Line-labelEl']")
     private WebElementFacade labelLinea;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Line-inputEl']")
-    private WebElementFacade inputLinea;
-    @org.openqa.selenium.support.FindBy(xpath = ".//td[2]/div/div/div/div/div/div/span")
+    @FindBy(xpath = ".//td[2]/div/div/div/div/div/div/span")
     private WebElementFacade labelDescripcionCobertura;
-    @org.openqa.selenium.support.FindBy(xpath = ".//div/div/div[2]/div/span")
+    @FindBy(xpath = ".//div/div/div[2]/div/span")
     private WebElementFacade labelValorTerminoCobertura;
-    @org.openqa.selenium.support.FindBy(xpath = ".//div[7]/div/span")
+    @FindBy(xpath = ".//div[7]/div/span")
     private WebElementFacade labelPrima;
-    @org.openqa.selenium.support.FindBy(xpath = ".//tfoot/tr/td/div")
+    @FindBy(xpath = ".//tfoot/tr/td/div")
     private WebElementFacade labelSubtotal;
-    @org.openqa.selenium.support.FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
+    @FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
     private WebElementFacade labelSubtotalPrimas;
-    @org.openqa.selenium.support.FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td/div")
+    @FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td/div")
     private WebElementFacade labelImpuesto;
-    @org.openqa.selenium.support.FindBy(xpath = ".//td[2]/div/div[2]/div/table")
+    @FindBy(xpath = ".//td[2]/div/div[2]/div/table")
     private WebElementFacade tablaCoberturas;
-    @org.openqa.selenium.support.FindBy(xpath = ".//td[@id='PolicyChangeWizard:LOBWizardStepGroup:PALine']/div/span")
+    @FindBy(xpath = ".//td[@id='PolicyChangeWizard:LOBWizardStepGroup:PALine']/div/span")
     private WebElementFacade botonCoberturasPA;
-    @org.openqa.selenium.support.FindBy(xpath = ".//td[@id='PolicyChangeWizard:ViewQuote']/div")
+    @FindBy(xpath = ".//td[@id='PolicyChangeWizard:ViewQuote']/div")
     private WebElementFacade botonCotizacion;
 
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:PolicyChangeWizard_Quote_TransactionCardTab-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:PolicyChangeWizard_Quote_TransactionCardTab-btnInnerEl']")
     private WebElementFacade botonDetalleCambioCosto;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:2']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:2']")
     private WebElementFacade labelDCVehiculo;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:LicensePlate-labelEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:LicensePlate-labelEl']")
     private WebElementFacade labelDCPlaca;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:FasecoldaCode-labelEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:FasecoldaCode-labelEl']")
     private WebElementFacade labelDCCodigoFasecolda;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:FasecoldaCode-inputEl']']")
-    private WebElementFacade inputDCCodigoFasecolda;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:Make-labelEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:Make-labelEl']")
     private WebElementFacade labelDCMarca;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:Make-inputEl']")
-    private WebElementFacade inputDCMarca;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:Year-labelEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:Year-labelEl']")
     private WebElementFacade labelDCModelo;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:Year-inputEl']")
-    private WebElementFacade inputDCModelo;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:Line-labelEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:Line-labelEl']")
     private WebElementFacade labelDCLinea;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingTxDetailsPanelSet:0:Line-inputEl']")
-    private WebElementFacade inputDCLinea;
-    @org.openqa.selenium.support.FindBy(xpath = ".//td[2]/div/div/div/div/div/div/span")
+    @FindBy(xpath = ".//td[2]/div/div/div/div/div/div/span")
     private WebElementFacade labelDCDescripcionCobertura;
-    @org.openqa.selenium.support.FindBy(xpath = ".//div[6]/div/span")
+    @FindBy(xpath = ".//div[6]/div/span")
     private WebElementFacade labelDCPrima;
-    @org.openqa.selenium.support.FindBy(xpath = ".//tfoot/tr/td/div")
+    @FindBy(xpath = ".//tfoot/tr/td/div")
     private WebElementFacade labelDCSubtotal;
-    @org.openqa.selenium.support.FindBy(xpath = ".//tr[4]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
+    @FindBy(xpath = ".//tr[4]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
     private WebElementFacade labelDCSubtotalPrimas;
-    @org.openqa.selenium.support.FindBy(xpath = ".//tr[4]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td/div")
+    @FindBy(xpath = ".//tr[4]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td/div")
     private WebElementFacade labelDCImpuesto;
 
     public ModificacionCotizacionDePolizaPage(WebDriver driver){
@@ -187,8 +167,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
 
         if (campoNumeroDeCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("numeroCotizacion"))) {
             datosCotizacion = informacionCotizacion.getRows().get(0);
-        }
-        else{
+        }else{
             datosCotizacion = informacionCotizacion.getRows().get(1);
         }
         MatcherAssert.assertThat(campoNumeroDeCotizacion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("numeroCotizacion"))));
@@ -254,7 +233,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
                 List<WebElement> cells = row.findElements(By.tagName("td"));
                 String descCob = cells.get(0).getText();
                 String terminoCob = cells.get(1).getText();
-                if(!terminoCob.equals("-")) {
+                if(!"-".equals(terminoCob)) {
                     i++;
                     terminoCoberturas.put("dato" + i, terminoCob);
                 }

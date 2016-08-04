@@ -20,7 +20,7 @@ Then espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaci
 
 Examples:
 |cuenta     |organizacion|canal            |producto               |departamento|ciudad  |direccion        |descripcion  |actividad|
-|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|Antioquia   |Medellin|KR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 
@@ -35,7 +35,7 @@ Then que se muestre el mensaje <mensaje>
 
 Examples:
 |cuenta     |organizacion|canal            |producto               |departamento|ciudad  |direccion         |descripcion  |mensaje                                                    |actividad                    |
-|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|Antioquia   |Medellin|KR 65 # 25 - 36   |Edificio Core|La dirección es un riesgo no estandar y debe ser autorizado|Acabado de productos textiles|
+|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|Antioquia   |Medellin|CR 65 # 25 - 36   |Edificio Core|La dirección es un riesgo no estandar y debe ser autorizado|Acabado de productos textiles|
 
 
 

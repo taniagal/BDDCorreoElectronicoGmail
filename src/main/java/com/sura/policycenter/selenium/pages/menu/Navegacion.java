@@ -21,14 +21,13 @@ import com.sura.policycenter.selenium.pages.menu.superior.equipo.EquipoPage;
 import com.sura.policycenter.selenium.pages.menu.superior.escritorio.*;
 import com.sura.policycenter.selenium.pages.menu.superior.poliza.NuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.superior.poliza.PolizaBuscarPage;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
-import java.util.concurrent.TimeUnit;
 
 public class Navegacion extends Guidewire {
 
@@ -371,7 +370,7 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
-        waitUntil(1500);
+        waitUntil(3000);
         gw.deployMenu(mnuCuenta);
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
         waitForTextToAppear("Nueva cuenta");

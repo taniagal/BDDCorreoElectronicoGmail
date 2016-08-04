@@ -25,19 +25,17 @@ public class CuentaSteps extends ScenarioSteps {
     BusquedaDeCuentasPage busquedaDeCuentas = null;
     BuscarNavBarPages navegacion;
 
-    private String numCuenta;
-
     @Steps
-    GuidewireLoginSteps login;
+    GuidewireLoginSteps loginSteps;
 
 
     public void login(WebDriver driver, String rolUsuario) {
         SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
 
-        login.abrir_navegador(driver);
-        login.loguearse_a_policycenter_con_rol(rolUsuario);
+        loginSteps.abrir_navegador(driver);
+        loginSteps.loguearse_a_policycenter_con_rol(rolUsuario);
 
-        LOGGER.info("CuentaSteps.login");
+        LOGGER.info("CuentaSteps.loginSteps");
     }
 
 
@@ -47,7 +45,7 @@ public class CuentaSteps extends ScenarioSteps {
     }
 
     public void consultarCuentaPorNumeroDeCuenta(String numCuenta) {
-        this.numCuenta = numCuenta;
+        String numeroCuenta = numCuenta;
         this.cuenta = irAPaginaBusquedaDeCuentas().luego().ingresar().numeroDeCuenta(numCuenta).luego().buscar().seleccionarCuenta(numCuenta);
     }
 

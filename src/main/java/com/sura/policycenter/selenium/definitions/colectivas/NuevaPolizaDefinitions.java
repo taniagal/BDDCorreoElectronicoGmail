@@ -24,64 +24,64 @@ public class NuevaPolizaDefinitions {
     }
 
     @When("despliegue la lista de organizacion")
-    public void dar_clic_en_la_lista_organizacion(){
+    public void darClicEnLaListaOrganizacion(){
         nuevaPolizaSteps.desplegarListaDeOrganizaciones();
     }
 
     @When("seleccione la organizacion <organizacion>")
-    public void seleccionar_la_organizacion(@Named("organizacion") String organizacion){
+    public void seleccionarLaOrganizacion(@Named("organizacion") String organizacion){
         nuevaPolizaSteps.seleccionarOrganizacion(organizacion);
     }
 
     @When("despliegue la lista canal")
-    public void dar_clic_en_la_lista_canal(){
+    public void darClicEnLaListaCanal(){
         nuevaPolizaSteps.desplegarListaCanal();
     }
 
     @When("seleccione el canal <canal>")
-    public void seleccionar_el_canal(@Named("canal") String canal){
+    public void seleccionarElCanal(@Named("canal") String canal){
         nuevaPolizaSteps.seleccionarCanal(canal);
     }
 
     @When("seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion")
-    public void seleccionar_tipo_de_poliza(@Named("tipoPoliza") String tipoPoliza){
+    public void seleccionarTipoDePoliza(@Named("tipoPoliza") String tipoPoliza){
         nuevaPolizaSteps.seleccionarElTipoDePoliza(tipoPoliza);
     }
 
     @Then("debo poder ver las listas de organizacion y canal, las opciones de individual y colectiva, la opcion individual\n" +
             "seleccionada por defecto")
-    public void validar_campos_de_la_ventana_nueva_cotizacion(){
+    public void validarCamposDeLaVentanaNuevaCotizacion(){
         nuevaPolizaSteps.validarCamposDeLaVentanaNuevaCotizacion();
     }
 
     @Then("la tabla de productos con los productos de Autos y Multiriesgo corporativo y los botones para elegir producto deshabilitados")
-    public void validar_los_botones_de_la_tabla_productos_deshabilitados(){
+    public void validarLosBotonesDeLaTablaProductosDeshabilitados(){
         nuevaPolizaSteps.validarBotonesDeLaTablaProductosDeshabilitados();
     }
 
     @Then("me debe mostrar las organizaciones: $listaOrganizaciones")
-    public void validar_lista_de_organizaciones(ExamplesTable listaOrganizaciones){
+    public void validarListaDeOrganizaciones(ExamplesTable listaOrganizaciones){
         nuevaPolizaSteps.validarListaDeOrganizaciones(listaOrganizaciones);
     }
 
     @Then("la lista de canal debe mostrar los siguientes datos <datosListaCanal>")
-    public void validar_lista_canal_de_acuerdo_a_la_organizacion(@Named("datosListaCanal") String datosListaCanal){
+    public void validarListaCanalDeAcuerdoALaOrganizacion(@Named("datosListaCanal") String datosListaCanal){
         nuevaPolizaSteps.validaListaCanalDeAcuerdoALaOrganizacion(datosListaCanal);
     }
 
     @Then("debo ver los productos <productos> para el tipo de poliza <tipoPoliza> seleccionado")
-    public void validar_los_productos_disponibles(@Named("productos") String productos,
-                                                  @Named("tipoPoliza") String tipoPoliza){
+    public void validarLosProductosDisponibles(@Named("productos") String productos,
+                                               @Named("tipoPoliza") String tipoPoliza){
         nuevaPolizaSteps.validarProductos(productos, tipoPoliza);
     }
 
     @Then("los botones de elegir producto deben estar habilitados")
-    public void validar_botones_para_elegir_producto_habilitados(){
+    public void validarBotonesParaElegirProductoHabilitados(){
         nuevaPolizaSteps.validarBotonesHabilitados();
     }
 
     @Then("no debe mostrar la lista de productos")
-    public void validar_que_no_se_listan_productos(){
+    public void validarQueNoSeListanProductos(){
         nuevaPolizaSteps.validarNoSeListanProductos();
     }
 }

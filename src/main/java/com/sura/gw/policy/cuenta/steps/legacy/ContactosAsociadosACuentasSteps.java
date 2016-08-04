@@ -1,7 +1,5 @@
 package com.sura.gw.policy.cuenta.steps.legacy;
 
-import com.sura.guidewire.acciones.navegacion.AccionBuscarNavBar;
-import com.sura.gw.policy.cuenta.pages.ContactosAsociadosACuentaWidgetPage;
 import com.sura.policycenter.selenium.pages.ContactosAsociadosACuentasPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.superior.cuenta.panel.contactos.BusquedaContactoDelDirectorioPage;
@@ -20,9 +18,6 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
     private final BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage = new BusquedaContactoDelDirectorioPage(getDriver());
 
-    private AccionBuscarNavBar navegacionSuperior;
-    private ContactosAsociadosACuentaWidgetPage contactosDeCuenta;
-
     public ContactosAsociadosACuentasSteps(Pages pages) {
         super(pages);
     }
@@ -40,13 +35,12 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     public void consultarContactos() {
         contactosAsociadosACuentasPage.consultarContactos();
 
-        // WHEN
-        //navegacionSuperior.buscar().en().cuenta().por().numeroDeCuenta("CUENTA").entonces().buscar().luego().seleccionarDichaCuenta();
-        // AND
-        //contactosDeCuenta.deseoVerLosContactosAsociados();
-        //THEN
-        //contactosDeCuenta.deberiaVerLosContactosAsociados();
-
+        /**WHEN
+        *navegacionSuperior.buscar().en().cuenta().por().numeroDeCuenta("CUENTA").entonces().buscar().luego().seleccionarDichaCuenta();
+        *AND
+        *contactosDeCuenta.deseoVerLosContactosAsociados();
+        *THEN
+        *contactosDeCuenta.deberiaVerLosContactosAsociados();*/
     }
 
 

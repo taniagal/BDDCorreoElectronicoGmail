@@ -12,6 +12,7 @@ public class ContactosCuentaPage extends PageObject{
     }
 
     public void deberiaVerLosContactosAsociados() {
+        //Metodo vacio
     }
 }
 
