@@ -15,21 +15,20 @@ Meta:
 
 As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
-When ingrese las entradas de las diferentes coberturas
-!-- Solo se permiten en TAB Coberturas del Riesgo, Información de Artículos y Otros Articulos
-!-- La columna TIPO_ARTICULO debe llenarse si escoguio el TAB Otros Articulos
-| TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                  | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Sustraccion | Sustracción sin violencia dentro de predios               | 10             |
-| Coberturas del Riesgo |               | Sustraccion | Sustracción con violencia de bienes fuera de predios      | 10             |
-| Coberturas del Riesgo |               | Sustraccion | Sustracción sin violencia de bienes fuera de predios      | 10             |
-| Coberturas del Riesgo |               | Sustraccion | Sustracción con violencia de dinero dentro de caja fuerte | 10             |
-| Coberturas del Riesgo |               | Sustraccion | Sustracción con violencia de dinero fuera de caja fuerte  | 10             |
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                            | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               | Sustraccion | Valor asegurado sustraccion con violencia                           | 10             |
+| Coberturas del Riesgo |               | Sustraccion | Sublimite sustraccion sin violencia dentro de predios               | 11             |
+| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracción con violencia de bienes fuera de predios      | 11             |
+| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracción sin violencia de bienes fuera de predios      | 11             |
+| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracción con violencia de dinero dentro de caja fuerte | 11             |
+| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracción con violencia de dinero fuera de caja fuerte  | 11             |
 Then se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal)
 Then no debe dejar continuar
 
 Examples:
 | numSubscripcion | rolUsuario | mensajeDeNoCumplimientoDeValidacionEsperado                                                                       | descripcion |
-| 99999999        | Asesor     | La *sublimiteDeSustraccion* debe ser menor o igual al valor asegurado de la cobertura de *coberturaDeSustraccion* |             |
+| 22221237        | Asesor     | La *sublimiteDeSustraccion* debe ser menor o igual al valor asegurado de la cobertura de *coberturaDeSustraccion* |             |
 
 
 Scenario: Sublimite de sustraccion con violencia de bienes fuera de predios (cobertura de riesgos) - Sublimite menor a valor asegurable Equipos moviles y portatiles

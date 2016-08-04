@@ -51,28 +51,37 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionar_boton_aceptar_para_agregar_articulo() {
-        agregarArticuloEdificiosyUbicacionesWidget.seleccionarBotonAceptarParaAgregarArticulo();
+    public void seleccionar_boton_aceptar_en_la_parte_superior_izquierda() {
+        agregarArticuloEdificiosyUbicacionesWidget.seleccionarBotonAceptarParteSuperiorIzquierda();
     }
 
     public void cancelar_ingreso_de_nueva_ubicacion() {
         edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
     }
 
-    public void ingresarValorDeEntradaDeLaCobertura(String tab, String cobertura, String entrada, String valorEntrada) {
+    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada) {
 
         String mensajeStepReporte = "En tab " + tab +
                 " seleccionar la cobertura " + cobertura +
                 " para " + entrada +
                 " ingresar " + valorEntrada;
 
-        seleccionar_boton_agregar_articulo_a_una_ubicacion();
+        if (! edificiosyUbicacionesWidget.estaPresenteEnLaPaginaEdificiosyUbicaciones()){
+            seleccionar_boton_agregar_articulo_a_una_ubicacion();
+        }
+
         ingresar_valor_de_entrada_de_la_cobertura(mensajeStepReporte);
 
-        edificiosyUbicacionesWidget.seleccionarTab(tab);
-
         if("Coberturas del Riesgo".equals(tab)){
-            edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
+
+            if (! edificiosyUbicacionesWidget.estaSeleccionadoTab(tab)){
+                edificiosyUbicacionesWidget.seleccionarTab(tab);
+            }
+
+            if (! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {
+                edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
+            }
+
             edificiosyUbicacionesWidget.ingresarValorAEntradaDeArticuloDeCoberturaDeRiesgo(entrada, valorEntrada);
         }
 

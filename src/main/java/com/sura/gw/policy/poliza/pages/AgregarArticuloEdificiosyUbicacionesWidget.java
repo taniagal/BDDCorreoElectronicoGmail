@@ -54,7 +54,7 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
         ingresarValorAInput(TXT_VALOR_SUBLIMITE_COMBUSTION, valorCombustion);
     }
 
-    public void seleccionarBotonAceptarParaAgregarArticulo() {
+    public void seleccionarBotonAceptarParteSuperiorIzquierda() {
         findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).shouldBeVisible();
         findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).shouldBeEnabled();
         findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).click();

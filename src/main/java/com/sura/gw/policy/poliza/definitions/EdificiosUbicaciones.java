@@ -29,6 +29,9 @@ public class EdificiosUbicaciones {
 
     @Given("que estoy en edificios y ubicaciones de una poliza $numSubscripcion")
     public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion){
+
+        // TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
+
         LOGGER.info("EdificiosUbicaciones.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
 
         // TODO: 04/08/2016 Capturar el rol desde el gherkin en i am Asesor
@@ -36,11 +39,10 @@ public class EdificiosUbicaciones {
         navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
         navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
         polizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
-        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
     }
 
-    @When("ingrese las entradas de las diferentes coberturas $entradas")
-    public void cuandoIngreseLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas){
+    @When("intente ingresar las entradas de las diferentes coberturas $entradas")
+    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas){
 
         for (Map<String,String> entradaCobertura : entradas.getRows()) {
             String tab = entradaCobertura.get("TAB");
@@ -51,8 +53,9 @@ public class EdificiosUbicaciones {
             String entrada = entradaCobertura.get("ENTRADAS");
             String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
 
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCobertura(tab, cobertura, entrada, valorEntrada);
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada);
         }
+        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
 
     @When("cuando intente ingresar un articulo para una ubicacion para comprobar las validaciones de error del articulo")
@@ -89,7 +92,7 @@ public class EdificiosUbicaciones {
         edificiosUbicacionesSteps.ingresar_valor_asegurado_danos_materiales("10001");
         edificiosUbicacionesSteps.ingresar_valor_sublimite_translados("10002");
         edificiosUbicacionesSteps.ingresar_valor_sublimite_para_combustion("10002");
-        edificiosUbicacionesSteps.seleccionar_boton_aceptar_para_agregar_articulo();
+        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
 
 

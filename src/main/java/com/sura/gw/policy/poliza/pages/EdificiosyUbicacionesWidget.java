@@ -109,6 +109,19 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         $(xpathTab).click();
     }
 
+    public boolean estaSeleccionadoTab(String tab) {
+        Boolean esSeleccionado = false;
+        waitForAnyTextToAppear(tab);
+        shouldContainText(tab);
+        String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + "')])]";
+        String classProp = $(xpathTab).getAttribute("class");
+        if (classProp.contains("x-active") && classProp.contains("x-tab-active") && classProp.contains("x-tab-default-active") && classProp.contains("x-top-active") && classProp.contains("x-tab-top-active") && classProp.contains("x-tab-default-top-active") ){
+            esSeleccionado = true;
+        }
+        return esSeleccionado;
+    }
+
+
 
 /*    public void seleccionarCoberturaDeArticulo(String cobertura) {
         waitForAnyTextToAppear(cobertura);
@@ -138,7 +151,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         withAction().moveToElement(inputValorEntrada).perform();
 
         enter(valorEntrada).into(inputValorEntrada);
-        esperarAQueElementoTengaValor(inputValorEntrada, valorEntrada);
+        //esperarAQueElementoTengaValor(inputValorEntrada, valorEntrada);
     }
 
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
@@ -155,5 +168,26 @@ public class EdificiosyUbicacionesWidget extends PageObject {
                 return elemento.getValue().equalsIgnoreCase(valorEntrada);
             }
         };
+    }
+
+    public boolean estaSeleccionadaCoberturaDeRiesgo(String cobertura) {
+        Boolean estaSeleccionado;
+        waitForAnyTextToAppear(cobertura);
+        shouldContainText(cobertura);
+        String xpathLegendCoberturaDeRiesgo = ".//legend[ (descendant::div[contains(., '" + cobertura + "')])]";
+        WebElementFacade inputCoberturaDeRiesgo = findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName("input"));
+
+        if (inputCoberturaDeRiesgo.getCssValue("background-position").equals("-15px 0")){
+            estaSeleccionado = true;
+        } else {
+            estaSeleccionado = false;
+        }
+
+        return estaSeleccionado;
+
+    }
+
+    public boolean estaPresenteEnLaPaginaEdificiosyUbicaciones(){
+        return getRenderedView().containsText("Volver a Edificios y ubicaciones");
     }
 }
