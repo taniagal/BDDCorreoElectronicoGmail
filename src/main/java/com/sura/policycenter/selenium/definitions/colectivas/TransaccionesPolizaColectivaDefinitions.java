@@ -62,8 +62,8 @@ public class TransaccionesPolizaColectivaDefinitions {
         informacionDePolizaColectivaSteps.validarLosElementosDeshabilitados();
     }
 
-    @Then("me debe llevar a la pantalla de consulta de tomador de la poliza colectiva y no tener la opcion de editar")
-    public void validarConsultaDeTomador(){
-        transaccionesPolizaColectivaSteps.validarConsultaDeTomador();
+    @Then("me debe llevar a la pantalla de consulta de tomador <tomador> de la poliza colectiva y no tener la opcion de editar")
+    public void validarConsultaDeTomador(String tomador){
+        transaccionesPolizaColectivaSteps.validarConsultaDeTomador(tomador);
     }
 }

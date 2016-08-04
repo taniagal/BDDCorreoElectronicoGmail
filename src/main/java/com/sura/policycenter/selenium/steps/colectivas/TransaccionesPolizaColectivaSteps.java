@@ -36,8 +36,8 @@ public class TransaccionesPolizaColectivaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarConsultaDeTomador() {
-        transaccionesPolizaColectivaPage.validarConsultaDeTomador();
+    public void validarConsultaDeTomador(String tomador) {
+        transaccionesPolizaColectivaPage.validarConsultaDeTomador(tomador);
     }
 
     @Step

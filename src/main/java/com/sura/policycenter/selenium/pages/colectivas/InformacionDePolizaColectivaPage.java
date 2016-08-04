@@ -336,7 +336,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
             waitFor(nombreTomador);
             nombreTomador.click();
         }else{
-            waitFor(nombreSegundo);
+            waitFor(nombreSegundoLink);
             nombreSegundoLink.click();
         }
     }

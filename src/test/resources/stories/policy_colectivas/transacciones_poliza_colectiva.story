@@ -95,7 +95,7 @@ And seleccione el producto <producto> de poliza colectiva para expedirla
 And vaya a consultar las transacciones de la poliza colectiva
 And de clic en el numero de poliza de transacciones poliza colectiva
 And de clic en el nombre del tomador o el segundo tomador <tomador> de la poliza colectiva
-Then me debe llevar a la pantalla de consulta de tomador de la poliza colectiva y no tener la opcion de editar
+Then me debe llevar a la pantalla de consulta de tomador <tomador> de la poliza colectiva y no tener la opcion de editar
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  |tomador          |

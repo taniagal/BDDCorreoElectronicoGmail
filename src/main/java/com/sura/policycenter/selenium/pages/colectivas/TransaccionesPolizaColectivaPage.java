@@ -108,16 +108,18 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
     }
 
 
-    public void validarConsultaDeTomador() {
+    public void validarConsultaDeTomador(String tomador) {
         waitForTextToAppear("Contacto");
+        if("tomador".equals(tomador)){
+            MatcherAssert.assertThat(contactoSegundoNombre.getValue(), Matchers.nullValue());
+            MatcherAssert.assertThat(contactoSegundoApellido.getValue(), Matchers.nullValue());
+            MatcherAssert.assertThat(contactoTelefono.getValue(), Matchers.nullValue());
+        }
         MatcherAssert.assertThat(contactoPrimerNombre.getValue(), Matchers.nullValue());
-        MatcherAssert.assertThat(contactoSegundoNombre.getValue(), Matchers.nullValue());
         MatcherAssert.assertThat(contactoPrimerApellido.getValue(), Matchers.nullValue());
-        MatcherAssert.assertThat(contactoSegundoApellido.getValue(), Matchers.nullValue());
         MatcherAssert.assertThat(contactoEstadoCivil.getValue(), Matchers.nullValue());
         MatcherAssert.assertThat(contactoEmail.getValue(), Matchers.nullValue());
         MatcherAssert.assertThat(contactoFechaNacimiento.getValue(), Matchers.nullValue());
-        MatcherAssert.assertThat(contactoTelefono.getValue(), Matchers.nullValue());
         MatcherAssert.assertThat(contactoDireccion.getValue(), Matchers.nullValue());
     }
 
