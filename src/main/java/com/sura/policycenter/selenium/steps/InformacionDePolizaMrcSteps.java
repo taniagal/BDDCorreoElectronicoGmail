@@ -83,5 +83,6 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     public void validar_descipcion_de_direccion() {
         opcionesInformacionPolizaMrcPage.validaFormularioDescripDireccion();
     }
+
 }
 

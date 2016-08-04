@@ -45,13 +45,6 @@ public class CotizacionDePolizaDefinitions {
         inicioPage().irABuscarSubPoliza(cotizacion);
     }
 
-    @SuppressWarnings("EmptyMethod")
-    @Given("se ha realizado la cotizacion")
-    @Manual
-    public void realizarCotizacion(){
-        //Se ejecuta manualmenye
-    }
-
     @When("ingrese al detalle de la cotizacion")
     public void verDetalleCotizacion() {
         cotizacionDePolizaSteps.verDetalleCotizacion();
@@ -83,13 +76,6 @@ public class CotizacionDePolizaDefinitions {
     @When("el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
     @Manual
     public void validarTipoRiesgoCausalMoral(){
-        //Se ejecuta manualmente
-    }
-
-    @SuppressWarnings("EmptyMethod")
-    @When("seleccione dicha cotizacion")
-    @Manual
-    public void seleccionarCotizacion(){
         //Se ejecuta manualmente
     }
 

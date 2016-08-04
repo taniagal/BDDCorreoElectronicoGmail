@@ -161,6 +161,7 @@ public class CotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
         Guidewire gw = new Guidewire(getDriver());
         gw.waitUntil(15000);
+
     }
 
     public void validarTipoRiesgo() {
