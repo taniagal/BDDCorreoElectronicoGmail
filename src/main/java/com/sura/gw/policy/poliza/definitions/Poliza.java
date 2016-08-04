@@ -171,7 +171,7 @@ public class Poliza {
         for (String mensaje : polizaSteps.espacioDeTrabajo()){
             MatcherAssert.assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
                     mensaje,
-                    Matchers.containsString("La dirección un riesgo no estandar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
+                    Matchers.containsString("La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
                     ));
         }
 
