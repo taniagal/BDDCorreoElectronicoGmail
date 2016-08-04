@@ -3,12 +3,11 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.guidewire.selenium.Guidewire;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class OpcionesInformacionDelVehiculoPage extends Guidewire {
 
@@ -73,7 +72,6 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     WebElementFacade btnEscritorio;
 
     String [] comparaValores = new String[2];
-    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     Actions actions = new Actions(getDriver());
     OpcionesInformacionPolizaMrcPage opcionPolizaMrc = new OpcionesInformacionPolizaMrcPage(getDriver());
     public OpcionesInformacionDelVehiculoPage(WebDriver driver) {
@@ -139,27 +137,27 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         String bug = "Ljava.lang.String";
         btnSiguinete.click();
         opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
-        assertThat("Error no controlado en la poliza (Java Lang)", !cajaMensaje.containsText(bug));
+        MatcherAssert.assertThat("Error no controlado en la poliza (Java Lang)", !cajaMensaje.containsText(bug));
         btnSiguinete.click();
-        assertThat("Error: debio pasar a siguinete pagina", cajaMensaje.isVisible());
+        MatcherAssert.assertThat("Error: debio pasar a siguinete pagina", cajaMensaje.isVisible());
         waitUntil(10000);
     }
 
     public void validaMensajePantalla() {
         btnSiguinete.click();
         opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
-        assertThat("el campo motor o chasis no debe aceptar ccaracteres especiales", cajaMensaje.containsText("Este campo no puede tener caracteres especiales, sólo números y letras"));
-        assertThat("el campo descuento, recargo y suavizacion deben ser decimales", cajaMensaje.containsText("debe tener máximo dos enteros y máximo dos decimales"));
+        MatcherAssert.assertThat("el campo motor o chasis no debe aceptar ccaracteres especiales", cajaMensaje.containsText("Este campo no puede tener caracteres especiales, sólo números y letras"));
+        MatcherAssert.assertThat("el campo descuento, recargo y suavizacion deben ser decimales", cajaMensaje.containsText("debe tener máximo dos enteros y máximo dos decimales"));
     }
 
     public void validaMensajePantalla(String mensaje) {
         btnSiguinete.click();
         opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
-        assertThat("no se valido el campo bonificacion tecnica y comercial ", cajaMensaje.containsText(mensaje));
+        MatcherAssert.assertThat("no se valido el campo bonificacion tecnica y comercial ", cajaMensaje.containsText(mensaje));
     }
 
     public void comparaValorAseguradoTotal(){
-        assertThat("Los valor final no corresponde al calculado", comparaValores[0].equals(comparaValores[1]));
+        MatcherAssert.assertThat("Los valor final no corresponde al calculado", comparaValores[0].equals(comparaValores[1]));
     }
 }
 

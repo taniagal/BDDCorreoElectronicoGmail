@@ -61,10 +61,10 @@ public class PolizaPage extends PageObject {
     }
 
     public void seleccionarBotonSiguienteEnInicioDeCambioDePoliza() {
-        waitFor(10).seconds();
+        waitFor(20).seconds();
         waitForTextToAppear("Iniciar cambios en póliza");
-        String BTN_SIGUIENTE_CAMBIO_POLIZA = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange-btnInnerEl']";
-        findBy(BTN_SIGUIENTE_CAMBIO_POLIZA).waitUntilVisible().waitUntilClickable().click();
+        String BTNSIGUIENTECAMBIOPOLIZA = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange-btnInnerEl']";
+        findBy(BTNSIGUIENTECAMBIOPOLIZA).waitUntilVisible().waitUntilClickable().click();
     }
 
 
@@ -72,7 +72,7 @@ public class PolizaPage extends PageObject {
     public void editarTransaccion() {
         LOGGER.info("InformacionPolizaPage.editarTransaccion");
         WebElementFacade btnEditarTransaccion = null;
-        String BTN_ACEPTAR_CONFIRMACION = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
+        String BTNACEPTARCONFIRMACION = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
 
         try {
             btnEditarTransaccion = findBy(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
@@ -82,7 +82,7 @@ public class PolizaPage extends PageObject {
 
         if (btnEditarTransaccion != null) {
             btnEditarTransaccion.waitUntilClickable().click();
-            findBy(BTN_ACEPTAR_CONFIRMACION).waitUntilClickable().click();
+            findBy(BTNACEPTARCONFIRMACION).waitUntilClickable().click();
             waitForTextToAppear("Revisión de póliza");
         }
 
