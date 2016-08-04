@@ -143,6 +143,11 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
         detalleDeAseguradoDeCotizacionSteps.validarBotonNoVisible();
     }
 
+    @Then("se debe permitir continuar la cotizacion")
+    public void validarContinuacionDeCotizacion(){
+        detalleDeAseguradoDeCotizacionSteps.validarContinuacionDeCotizacion();
+    }
+
 }
 
 

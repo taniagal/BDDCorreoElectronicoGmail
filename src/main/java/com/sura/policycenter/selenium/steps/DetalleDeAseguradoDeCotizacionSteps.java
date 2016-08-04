@@ -112,4 +112,8 @@ public class DetalleDeAseguradoDeCotizacionSteps extends ScenarioSteps{
     public void validarBotonNoVisible() {
         detalleDeAseguradoDeCotizacionPage.validarBotonNoVisible();
     }
+
+    public void validarContinuacionDeCotizacion() {
+        detalleDeAseguradoDeCotizacionPage.validarContinuacionDeCotizacion();
+    }
 }

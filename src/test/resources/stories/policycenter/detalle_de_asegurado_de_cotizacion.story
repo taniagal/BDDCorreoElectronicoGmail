@@ -25,6 +25,7 @@ And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y nu
 And seleccione el contacto a agregar
 And vaya al siguiente paso de la cotizacion
 Then muestre el mensaje de validacion del asegurado <mensaje>
+And se debe permitir continuar la cotizacion
 
 Examples:
 | cuenta     | agente  | organizacion | canal             | producto | tipoId               | numeroId | mensaje                                                                                              |
@@ -73,7 +74,7 @@ And deben quedar agregados como asegurados:
 
 Examples:
 |cuenta    | agente  | organizacion | canal             | producto |tipoId|numeroId|mensaje|
-|C000888888| DIRECTO | Sura         | Canal Tradicional | Autos    |CEDULA DE CIUDADANIA|32536001|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|C000888888| DIRECTO | Sura         | Canal Tradicional | Autos    |CEDULA DE CIUDADANIA|32536001|DIEGO VELEZ, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
 
 Scenario: Agregar asegurado y Editar campos en creacion tipo persona natural
 Given voy a crear una nueva cotizacion

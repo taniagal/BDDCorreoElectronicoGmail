@@ -113,6 +113,6 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
 
     @Step
     public void permitir_Continuar_Cotizacion() {
-        opcionesInformacionPoliza.permitirContinuarCotizacion();
+        opcionesInformacionPoliza.permitirContinuarCotizacionAsegurados();
     }
 }

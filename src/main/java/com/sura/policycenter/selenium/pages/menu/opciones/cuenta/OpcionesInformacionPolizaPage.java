@@ -475,7 +475,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
         waitUntil(2000);
     }
 
-    public void permitirContinuarCotizacion() {
+    public void permitirContinuarCotizacionAsegurados() {
         waitUntil(1000);
         WebElementFacade labelTituloAsegurados = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTituloAsegurados).shouldBePresent();
