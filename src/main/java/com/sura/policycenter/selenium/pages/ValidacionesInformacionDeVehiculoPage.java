@@ -58,7 +58,6 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     public void irAVehiculos() {
         waitFor(menuItemVehiculos).shouldBePresent();
         menuItemVehiculos.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
     }
 
     public void crearVehiculo() {
@@ -92,7 +91,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         }
         MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitUntil(3000);
+        waitUntil(3500);
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         if(!"null".equals(vehiculo.get("descuento"))){
             campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
@@ -102,17 +101,13 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
             campoTxtMotor.sendKeys(vehiculo.get("motor"));
             campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
-        if(!"null".equals(vehiculo.get("valor_asegurado"))) {
-            campoTxtValorAsegurado.clear();
-            campoTxtValorAsegurado.sendKeys(vehiculo.get("valor_asegurado"));
-        }
     }
 
     public void agregarCodigoFasecolda(String codigo) {
         waitFor(botonCrearVehiculo).click();
         campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
         campoTxtPlaca.click();
-        waitUntil(1000);
+        waitUntil(2000);
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
