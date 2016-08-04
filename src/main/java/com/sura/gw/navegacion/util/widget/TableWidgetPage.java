@@ -1,5 +1,9 @@
 package com.sura.gw.navegacion.util.widget;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
@@ -10,10 +14,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class TableWidgetPage extends PageObject {
@@ -108,20 +108,6 @@ public class TableWidgetPage extends PageObject {
                 continue;
             }
         }
-/*
-        for (WebElement opcionToolbar = toolbarListWE; iterara != true; ) {
-
-            try {
-                combo = opcionToolbar.findElement(By.xpath("//input[contains(@value,'" + valorInputDeComboBox + "')]"));
-                combo.click();
-                findBy(LISTA_COMBO_DESPLEGABLE).waitUntilVisible();
-                shouldBeVisible(findBy(LISTA_COMBO_DESPLEGABLE));
-                break;
-            } catch (Exception e) {
-                LOGGER.error("NO SE ENCONTRÓ NINGÚN COMBO CON VALOR " + valorInputDeComboBox + "TRACE " + e);
-                continue;
-            }
-        }*/
     }
 
     protected TableWidgetPage seleccionarDeTablaEnlace(String nombreDeEnlace) {
