@@ -61,7 +61,7 @@ public class PolizaPage extends PageObject {
     }
 
     public void seleccionarBotonSiguienteEnInicioDeCambioDePoliza() {
-        waitFor(10).seconds();
+        waitFor(20).seconds();
         waitForTextToAppear("Iniciar cambios en póliza");
         String BTNSIGUIENTECAMBIOPOLIZA = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange-btnInnerEl']";
         findBy(BTNSIGUIENTECAMBIOPOLIZA).waitUntilVisible().waitUntilClickable().click();
