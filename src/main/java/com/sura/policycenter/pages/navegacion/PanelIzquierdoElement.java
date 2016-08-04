@@ -1,11 +1,11 @@
 package com.sura.policycenter.pages.navegacion;
 
+import java.io.Serializable;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import org.slf4j.LoggerFactory;
 
-import java.io.Serializable;
 
 
 public class PanelIzquierdoElement extends PageObject implements Serializable{
