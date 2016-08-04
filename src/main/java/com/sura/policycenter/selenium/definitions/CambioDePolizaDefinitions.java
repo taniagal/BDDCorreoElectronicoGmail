@@ -39,8 +39,4 @@ public class CambioDePolizaDefinitions {
         cambioDePolizaSteps.validarMensaje(mensaje);
     }
 
-
-
-
-
 }
