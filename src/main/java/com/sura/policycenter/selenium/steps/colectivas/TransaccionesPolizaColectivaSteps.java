@@ -34,4 +34,14 @@ public class TransaccionesPolizaColectivaSteps extends ScenarioSteps {
     public void darClicEnElNumeroDePoliza() {
         transaccionesPolizaColectivaPage.darClicEnElNumeroDePoliza();
     }
+
+    @Step
+    public void validarConsultaDeTomador() {
+        transaccionesPolizaColectivaPage.validarConsultaDeTomador();
+    }
+
+    @Step
+    public void clicEnTransaccionesDePolizaColectiva() {
+        transaccionesPolizaColectivaPage.clicEnTransaccionesDePolizaColectiva();
+    }
 }

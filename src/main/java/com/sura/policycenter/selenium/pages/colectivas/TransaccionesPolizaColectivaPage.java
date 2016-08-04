@@ -38,6 +38,24 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
     WebElementFacade columnaParticipante;
     @FindBy(xpath = ".//*[@id='AccountFile_CollectivePolicy_Ext:0:PolicyNumber']")
     WebElementFacade numeroPoliza;
+    @FindBy(xpath = ".//*[@id='EditContactPopup:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
+    WebElementFacade contactoPrimerNombre;
+    @FindBy(xpath = ".//*[@id='EditContactPopup:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl']")
+    WebElementFacade contactoSegundoNombre;
+    @FindBy(xpath = ".//*[@id='EditContactPopup:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
+    WebElementFacade contactoPrimerApellido;
+    @FindBy(xpath = ".//*[@id='EditContactPopup:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalPersonNameInputSet:Particle-inputEl']")
+    WebElementFacade contactoSegundoApellido;
+    @FindBy(xpath = ".//*[@id='EditContactPopup:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:DateOfBirth-inputEl']")
+    WebElementFacade contactoFechaNacimiento;
+    @FindBy(xpath = ".//*[@id='EditContactPopup:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:MaritalStatus-inputEl']")
+    WebElementFacade contactoEstadoCivil;
+    @FindBy(xpath = ".//*[@id='EditContactPopup:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress1-inputEl']")
+    WebElementFacade contactoEmail;
+    @FindBy(xpath = ".//*[@id='EditContactPopup:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:HomePhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
+    WebElementFacade contactoTelefono;
+    @FindBy(xpath = ".//*[@id='EditContactPopup:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-inputEl']")
+    WebElementFacade contactoDireccion;
 
 
     public TransaccionesPolizaColectivaPage(WebDriver driver){
@@ -87,5 +105,24 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
 
     public void darClicEnElNumeroDePoliza() {
         numeroPoliza.click();
+    }
+
+
+    public void validarConsultaDeTomador() {
+        waitForTextToAppear("Contacto");
+        MatcherAssert.assertThat(contactoPrimerNombre.getValue(), Matchers.nullValue());
+        MatcherAssert.assertThat(contactoSegundoNombre.getValue(), Matchers.nullValue());
+        MatcherAssert.assertThat(contactoPrimerApellido.getValue(), Matchers.nullValue());
+        MatcherAssert.assertThat(contactoSegundoApellido.getValue(), Matchers.nullValue());
+        MatcherAssert.assertThat(contactoEstadoCivil.getValue(), Matchers.nullValue());
+        MatcherAssert.assertThat(contactoEmail.getValue(), Matchers.nullValue());
+        MatcherAssert.assertThat(contactoFechaNacimiento.getValue(), Matchers.nullValue());
+        MatcherAssert.assertThat(contactoTelefono.getValue(), Matchers.nullValue());
+        MatcherAssert.assertThat(contactoDireccion.getValue(), Matchers.nullValue());
+    }
+
+    public void clicEnTransaccionesDePolizaColectiva() {
+        waitFor(menuTransaccionesColectivas);
+        menuTransaccionesColectivas.click();
     }
 }
