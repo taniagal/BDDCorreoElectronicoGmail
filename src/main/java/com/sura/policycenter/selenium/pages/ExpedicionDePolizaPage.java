@@ -111,7 +111,7 @@ public class ExpedicionDePolizaPage extends PageObject{
         for(int i = 0; i < numeroMensajes; i++) {
             System.out.println(mensajes[i]);
             for (WebElementFacade lista : mensajesRiesgos) {
-                if(lista.getText().equals(mensajes[i])){
+                if(lista.getText().contains(mensajes[i])){
                     contadorMensajesOk++;
                     break;
                 }
