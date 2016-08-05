@@ -19,7 +19,7 @@ Then debe mostrarme el listado de transacciones con su respectiva informacion: n
 
 Examples:
 |tipoContacto|razonSocial|filtroEstado|poliza|producto|transaccion|tipo|estado|participante|
-|NIT|Variedades Yurledys|Completo|TEST_22222223|Businessowners|22222223|Emisión|Expedida|Super User|
+|NIT|Variedades Yurledys|Completo|TEST_22222223|Businessowners|22222223|Cotización|Expedida|Super User|
 
 Scenario: Ver informacion de transacciones sin registros
 Given que voy a consultar un contacto
@@ -50,7 +50,7 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 |tipoContacto|razonSocial|filtroEstado|filtroTransaccion|
-|NIT|Variedades Yurledys|Todos|Emisión|
+|NIT|Variedades Yurledys|Todos|Cotización|
 
 Scenario: Ver informacion filtrada por producto
 Given que voy a consultar un contacto

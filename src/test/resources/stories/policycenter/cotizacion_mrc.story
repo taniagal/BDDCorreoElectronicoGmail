@@ -47,7 +47,7 @@ Then no debe permitir cotizar; se debe mostrar el mensaje de respuesta <mensaje>
 
 Examples:
 |cotizacion|mensaje|
-|22223230  |es un riesgo no es estándar y debe ser analizado por el Comité de Evaluación|
+|22223230  |El tomador es un riesgo no estándar y debe ser analizado por el Comité de Evaluación|
 
 Scenario: cotizar una poliza MRC con un riesgo PEP
 Given se registraron los riesgos y coberturas que se desean cotizar <cotizacion>
