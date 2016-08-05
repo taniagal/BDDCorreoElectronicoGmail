@@ -55,6 +55,8 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     WebElementFacade btnSeleccion;
     @FindBy(xpath = ".//div[3]/div/table/tbody/tr/td[5]/div")
     WebElementFacade lstTipoBeneficia;
+    @FindBy(xpath = ".//div[4]/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    WebElementFacade lstTipoBeneficia2;
     @FindBy(xpath = ".//li[contains(.,'Asegurado')]")
     WebElementFacade itmAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:VehicleDetailCardTab-btnInnerEl']")
@@ -107,8 +109,21 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         opcionPolizaMrc.waitInfoPoliza(btnSeleccion);
         btnSeleccion.click();
         opcionPolizaMrc.waitInfoPoliza(btnDetalleVehiculo);
-        lstTipoBeneficia.click();
-        itmAsegurado.click();
+        /*lstTipoBeneficia.click();
+        itmAsegurado.click();*/
+        //if(cont == 0){
+            //WebElementFacade listaTipoBenef = findBy(".//div[3]/div/table/tbody/tr/td[5]/div");
+        if(lstTipoBeneficia.isPresent()){
+            waitUntil(1500);
+            lstTipoBeneficia.clear();
+            withTimeoutOf(10,TimeUnit.SECONDS).waitFor(lstTipoBeneficia).type("Asegurado");
+            itmAsegurado.click();
+        }else if(lstTipoBeneficia2.isPresent()){
+            //WebElementFacade listaTipoBenef = findBy(".//div[4]/table/tbody/tr/td[2]/table/tbody/tr/td/input");
+            waitUntil(1500);
+            lstTipoBeneficia2.click();
+            itmAsegurado.click();
+        }
         btnDetalleVehiculo.click();
         opcionPolizaMrc.waitInfoPoliza(botonSiguiente);
     }
