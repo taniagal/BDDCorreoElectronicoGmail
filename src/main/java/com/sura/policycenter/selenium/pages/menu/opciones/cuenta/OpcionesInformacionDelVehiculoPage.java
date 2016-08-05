@@ -111,17 +111,12 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         opcionPolizaMrc.waitInfoPoliza(btnDetalleVehiculo);
         /*lstTipoBeneficia.click();
         itmAsegurado.click();*/
-        //if(cont == 0){
-            //WebElementFacade listaTipoBenef = findBy(".//div[3]/div/table/tbody/tr/td[5]/div");
-        if(lstTipoBeneficia.isPresent()){
-            waitUntil(1500);
-            lstTipoBeneficia.clear();
-            withTimeoutOf(10,TimeUnit.SECONDS).waitFor(lstTipoBeneficia).type("Asegurado");
+        waitUntil(1500);
+        if(lstTipoBeneficia.isCurrentlyVisible()){
+            lstTipoBeneficia.click();
             itmAsegurado.click();
-        }else if(lstTipoBeneficia2.isPresent()){
-            //WebElementFacade listaTipoBenef = findBy(".//div[4]/table/tbody/tr/td[2]/table/tbody/tr/td/input");
-            waitUntil(1500);
-            lstTipoBeneficia2.click();
+        }else if(lstTipoBeneficia2.isCurrentlyVisible()){
+            waitUntil(1000);
             itmAsegurado.click();
         }
         btnDetalleVehiculo.click();

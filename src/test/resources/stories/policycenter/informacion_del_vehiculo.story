@@ -40,5 +40,3 @@ And permitir continuar con la cotizacion
 Examples:
 |numeroCuenta|organizacion|canal            |nomProducto|tipoDocumento       |numeroDocumento|mensaje                                                                                               |
 |C000888888  |Sura        |Canal Tradicional|Autos      |CEDULA DE CIUDADANIA|123456         |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
-
-
