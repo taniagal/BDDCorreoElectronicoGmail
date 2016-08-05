@@ -21,7 +21,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-
 public class InformacionDePolizaColectivaPage extends PageObject {
 
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ttlBar']")
@@ -90,6 +89,8 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade numeroDocumentoSegundo;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ChangeSecondaryNamedInsuredButton-inputEl']")
     WebElementFacade nombreSegundo;
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ChangeSecondaryNamedInsuredLabel-inputEl']")
+    WebElementFacade nombreSegundoLink;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsuredPhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
     WebElementFacade telefonoSegundo;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryAddress-inputEl']")
@@ -127,7 +128,8 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     private Commons commons = new Commons(getDriver());
     private final DateFormat dateFormat = new SimpleDateFormat(MM_DD_YYYY);
     private final Date fechaHoy = new Date();
-
+    private String rolCampos = "presentation";
+    private String rolListas = "textbox";
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {
         super(driver);
@@ -230,6 +232,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void clicEnSiguiente() {
+        System.out.println("fecha " + fechaInicioVigencia.getCssValue("disabled"));
         botonSiguiente.click();
     }
 
@@ -315,5 +318,26 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void clicEnCancelarDeCoaseguro(){
         botonCancelarCoaseguro.click();
         waitForTextToAppear("Información de la póliza colectiva");
+    }
+
+    public void validarLosElementosDeshabilitados() {
+        guidewire.waitUntil(2000);
+        MatcherAssert.assertThat(linkAgregarCoaseguro.getAttribute("href"), Is.is(Matchers.equalTo("")));
+        MatcherAssert.assertThat(organizacion.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
+        MatcherAssert.assertThat(canal.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
+        MatcherAssert.assertThat(tipoDePoliza.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
+        MatcherAssert.assertThat(campoTipoPlazo.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
+        MatcherAssert.assertThat(fechaInicioVigencia.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
+        MatcherAssert.assertThat(codAgente.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
+    }
+
+    public void clicEnUnTomadorDeLaPoliza(String tomador) {
+        if("tomador".equals(tomador)){
+            waitFor(nombreTomador);
+            nombreTomador.click();
+        }else{
+            waitFor(nombreSegundoLink);
+            nombreSegundoLink.click();
+        }
     }
 }
