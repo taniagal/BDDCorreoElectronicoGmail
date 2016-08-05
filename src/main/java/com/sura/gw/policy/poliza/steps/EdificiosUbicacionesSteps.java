@@ -4,8 +4,13 @@ import com.sura.gw.policy.poliza.pages.AgregarArticuloEdificiosyUbicacionesWidge
 import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import net.thucydides.core.steps.StepInterceptor;
+import org.slf4j.LoggerFactory;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
 
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
@@ -65,10 +70,6 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
                 " seleccionar la cobertura " + cobertura +
                 " para " + entrada +
                 " ingresar " + valorEntrada;
-
-        if (! edificiosyUbicacionesWidget.estaPresenteEnLaPaginaEdificiosyUbicaciones()){
-            seleccionar_boton_agregar_articulo_a_una_ubicacion();
-        }
 
         ingresar_valor_de_entrada_de_la_cobertura(mensajeStepReporte);
 

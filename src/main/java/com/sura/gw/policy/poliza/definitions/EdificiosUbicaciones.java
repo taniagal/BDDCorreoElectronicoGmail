@@ -34,16 +34,25 @@ public class EdificiosUbicaciones {
 
         LOGGER.info("EdificiosUbicaciones.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
 
+
+
         // TODO: 04/08/2016 Capturar el rol desde el gherkin en i am Asesor
         guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
         navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
         navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
+        try {
+            polizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
+        } catch (Exception e) {
+            LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
+        }
+
         polizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
     }
 
     @When("intente ingresar las entradas de las diferentes coberturas $entradas")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas){
 
+        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
         for (Map<String,String> entradaCobertura : entradas.getRows()) {
             String tab = entradaCobertura.get("TAB");
 
@@ -62,7 +71,7 @@ public class EdificiosUbicaciones {
     public void cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo() {
 
         try {
-            cuandoEditeInformacionDeLaPoliza();
+            polizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
         }
@@ -72,10 +81,6 @@ public class EdificiosUbicaciones {
         cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo();
 
         LOGGER.info("Poliza.cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo");
-    }
-
-    public void cuandoEditeInformacionDeLaPoliza() {
-        polizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
     }
 
 
@@ -101,7 +106,7 @@ public class EdificiosUbicaciones {
         LOGGER.info("Poliza.cuandoIntenteIngresarUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables");
 
         try {
-            cuandoEditeInformacionDeLaPoliza();
+            polizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
         }

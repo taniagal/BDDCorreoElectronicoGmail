@@ -151,7 +151,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         withAction().moveToElement(inputValorEntrada).perform();
 
         enter(valorEntrada).into(inputValorEntrada);
-        //esperarAQueElementoTengaValor(inputValorEntrada, valorEntrada);
+        esperarAQueElementoTengaValor(findBy(xpathTREntrada).find(By.tagName("input")), valorEntrada);
     }
 
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
@@ -177,7 +177,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         String xpathLegendCoberturaDeRiesgo = ".//legend[ (descendant::div[contains(., '" + cobertura + "')])]";
         WebElementFacade inputCoberturaDeRiesgo = findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName("input"));
 
-        if (inputCoberturaDeRiesgo.getCssValue("background-position").equals("-15px 0")){
+        if (inputCoberturaDeRiesgo.getCssValue("background-position").equals("-15px 0") || inputCoberturaDeRiesgo.getCssValue("background-position").equals("0px -15px")){
             estaSeleccionado = true;
         } else {
             estaSeleccionado = false;
