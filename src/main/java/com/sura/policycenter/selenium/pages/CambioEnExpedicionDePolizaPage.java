@@ -27,6 +27,9 @@ public class CambioEnExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
 
+    @FindBy(xpath = ".//a[contains(.,'Cancelar')]")
+    WebElementFacade botonCancelarMensaje;
+
     @FindBy(xpath = ".//label[@id='JobComplete:JobCompleteScreen:Message']")
     WebElementFacade campoInformacionCambio;
 
@@ -57,4 +60,9 @@ public class CambioEnExpedicionDePolizaPage extends PageObject{
     }
 
 
+    public void cancelarExpedirPoliza() {
+        waitFor(ExpectedConditions.visibilityOf(botonCancelarMensaje));
+        waitFor(ExpectedConditions.elementToBeClickable(botonCancelarMensaje));
+        botonCancelarMensaje.click();
+    }
 }

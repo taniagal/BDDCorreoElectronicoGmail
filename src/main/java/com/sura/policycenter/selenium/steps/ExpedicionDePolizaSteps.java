@@ -36,10 +36,6 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
         expedicionDePolizaPage.validarMensaje(mensaje);
     }
 
-    @Step
-    public void clic_en_cancelar_del_mensaje_de_confirmacion(String mensaje) {
-        expedicionDePolizaPage.cancelarExpedicionDeLaPoliza(mensaje);
-    }
 
     @Step
     public void validar_que_vuelve_a_la_ventana_de_cotizacion() {

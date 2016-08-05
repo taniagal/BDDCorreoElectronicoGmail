@@ -29,5 +29,8 @@ public class CambioEnExpedicionDePolizaSteps extends ScenarioSteps {
         cambioEnExpedicionDePolizaPage.validarResumenDeLaPolizaExpedida(infoCambio, infoPoliza, escritorio);
     }
 
-
+    @Step
+    public void clic_en_cancelar_del_mensaje_de_confirmacion() {
+        cambioEnExpedicionDePolizaPage.cancelarExpedirPoliza();
+    }
 }
