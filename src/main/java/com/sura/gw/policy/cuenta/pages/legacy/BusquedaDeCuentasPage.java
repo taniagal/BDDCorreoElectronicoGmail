@@ -118,6 +118,7 @@ public class BusquedaDeCuentasPage extends Commons {
             txtSegundoNombre.waitUntilVisible().waitUntilEnabled().sendKeys(segundoNombre);
             txtPrimerApellido.waitUntilVisible().waitUntilEnabled().sendKeys(primerApellido);
             txtSegundoApellido.waitUntilVisible().waitUntilEnabled().sendKeys(segundoApellido);
+            waitUntil(1000);
             btnBuscar.waitUntilClickable().click();
         } catch (StaleElementReferenceException elemento){
             LOGGER.info("Problema buscando cuenta" +  elemento);

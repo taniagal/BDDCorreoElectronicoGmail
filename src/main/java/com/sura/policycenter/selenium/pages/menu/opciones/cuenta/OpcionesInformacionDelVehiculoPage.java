@@ -114,10 +114,10 @@ public class OpcionesInformacionDelVehiculoPage extends Commons {
         txtValorAccesorios.clear();
         txtValorAccesorios.sendKeys(valorAccesorio);
         txtValorAsegurado.click();
-        waitUntil(2000);
+        waitUntil(3000);
         txtAcceEspeciales.sendKeys(valorAccesorioEsp);
         txtValorAsegurado.click();
-        waitUntil(2000);
+        waitUntil(3000);
         int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0, 8));
         int valorAccesorioEntero = Integer.parseInt(valorAccesorio);
         int valorAccesorioEspEntero = Integer.parseInt(valorAccesorioEsp);

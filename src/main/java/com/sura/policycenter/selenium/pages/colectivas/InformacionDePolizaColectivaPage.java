@@ -154,7 +154,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), containsText(infoPoliza.get("fechaFin")));
         MatcherAssert.assertThat(fechaExpedicion.getValue(), Is.is(Matchers.equalTo(dateFormat.format(fechaHoy))));
         MatcherAssert.assertThat(oficinaRadicacion.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("oficina"))));
-        MatcherAssert.assertThat(codAgente.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("codAgente"))));
+        MatcherAssert.assertThat("Error, no se encontró el codigo de agente",codAgente.getValue().contains(infoPoliza.get("codAgente")));
         MatcherAssert.assertThat(descuentoPoliza.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("descuentoPoliza"))));
         botonCambiarDireccion.shouldBeVisible();
         linkAgregarCoaseguro.shouldBeVisible();

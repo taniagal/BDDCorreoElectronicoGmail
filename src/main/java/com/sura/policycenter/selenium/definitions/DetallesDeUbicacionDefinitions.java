@@ -45,4 +45,10 @@ public class DetallesDeUbicacionDefinitions {
     public void verificarMensaje(@Named("mensaje")String mensaje){
          detallesDeUbicacionSteps.verificar_mensaje(mensaje);
     }
+
+    @When("seleccione el producto <producto> para expedir la poliza")
+    public void elegirProducto(@Named("producto") String producto){
+        detallesDeUbicacionSteps.elegirProducto(producto);
+    }
+
 }

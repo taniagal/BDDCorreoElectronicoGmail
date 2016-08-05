@@ -83,6 +83,7 @@ public class DetallesDeUbicacionPage extends Commons {
         }
     }
 
+
     public void irANuevaCotizacion(){
         setImplicitTimeout(1,TimeUnit.SECONDS);
         if(!botonAcciones.isPresent())
@@ -120,7 +121,7 @@ public class DetallesDeUbicacionPage extends Commons {
         selectItem(comboBoxDepartamento,departamento);
         waitUntil(3000);
         selectItem(comboBoxCiudad,ciudad);
-        waitUntil(1000);
+        waitUntil(2000);
     }
 
     public void setUbicacion(String descripcion, String actividad){
@@ -152,4 +153,6 @@ public class DetallesDeUbicacionPage extends Commons {
     public void verificarMensaje(String mensaje) {
         verificarMensaje(divMensaje,mensaje);
     }
+
+
 }

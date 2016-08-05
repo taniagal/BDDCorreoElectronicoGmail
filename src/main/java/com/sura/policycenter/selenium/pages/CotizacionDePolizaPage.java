@@ -89,14 +89,14 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void ingresarARevisionPoliza() {
-        waitForTextToAppear("Revisión de póliza", 1000);
+        waitForTextToAppear("Revisión de póliza");
         itemRevisionPoliza.click();
     }
 
     public void ingresarACotizacion() {
-        WebElementFacade titulo = withTimeoutOf(10, TimeUnit.SECONDS).find(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']");
+        WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']");
         if(titulo.isCurrentlyVisible()){
-            waitForTextToAppear("Calificación",5000);
+            waitForTextToAppear("Calificación");
         }else{
             waitFor(botonCalificacion).shouldBeVisible();
             botonCalificacion.click();
@@ -104,13 +104,13 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void verDetalleCotizacion() {
-        waitForTextToAppear("Calificación",10000);
+        waitForTextToAppear("Calificación");
         setImplicitTimeout(2, TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
-            waitForTextToAppear(tituloDePagina.getText(),2000);
+            waitForTextToAppear(tituloDePagina.getText());
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
         }else if(tituloCalificacion.isPresent()){
-            waitForTextToAppear(tituloCalificacion.getText(),2000);
+            waitForTextToAppear(tituloCalificacion.getText());
             MatcherAssert.assertThat(tituloCalificacion.getText(), Is.is(Matchers.equalTo("Calificación")));
         }
         resetImplicitTimeout();

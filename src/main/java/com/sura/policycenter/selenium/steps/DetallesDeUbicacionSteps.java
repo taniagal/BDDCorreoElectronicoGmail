@@ -50,4 +50,9 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     public void verificar_mensaje(String mensaje) {
         detallesDeUbicacionPage.verificarMensaje(mensaje);
     }
+
+    @Step
+    public void elegirProducto(String producto) {
+        detallesDeUbicacionPage.seleccionarProducto(producto);
+    }
 }

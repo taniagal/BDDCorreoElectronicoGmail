@@ -108,12 +108,12 @@ public class BusquedaDeCuentasPage extends Commons {
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         this.limpiarFormulario();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtPrimerNombre).waitUntilPresent();
+        waitFor(txtPrimerNombre).waitUntilPresent();
         txtPrimerNombre.sendKeys(primerNombre);
         txtSegundoNombre.sendKeys(segundoNombre);
         txtPrimerApellido.sendKeys(primerApellido);
         txtSegundoApellido.sendKeys(segundoApellido);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -125,7 +125,7 @@ public class BusquedaDeCuentasPage extends Commons {
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
         this.limpiarFormulario();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtTipoDocumento).waitUntilPresent();
+        waitFor(txtTipoDocumento).waitUntilPresent();
         txtTipoDocumento.clear();
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
@@ -135,7 +135,7 @@ public class BusquedaDeCuentasPage extends Commons {
     }
 
     public void mostrarInformacionDeLaCuenta(String numeroCuenta, String nombre, String direccion) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(this.grdNumeroCuenta).shouldBePresent();
+        waitFor(this.grdNumeroCuenta).shouldBePresent();
         MatcherAssert.assertThat(this.grdNumeroCuenta.getText(), Matchers.containsString(numeroCuenta));
         MatcherAssert.assertThat(this.grdNombre.getText(), Matchers.containsString(nombre));
         MatcherAssert.assertThat(this.grdDireccion.getText(), Matchers.containsString(direccion));
