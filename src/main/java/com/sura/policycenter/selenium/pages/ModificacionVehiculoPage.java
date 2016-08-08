@@ -65,6 +65,6 @@ public class ModificacionVehiculoPage extends Commons{
 
     public void validarZonaCirculacion(String mensaje) {
         WebElementFacade grupoMensajes = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']");
-        MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
+        verificarMensaje(grupoMensajes, mensaje);
     }
 }

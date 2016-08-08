@@ -28,13 +28,14 @@ public class ValidacionesCambioDePolizaVehiculosPage extends PageObject{
     }
 
     public void emitirPoliza(){
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonEmitirPoliza).shouldBePresent();
+        withTimeoutOf(22, TimeUnit.SECONDS).waitFor(botonEmitirPoliza).shouldBePresent();
         Commons commons = new Commons(getDriver());
         commons.waitUntil(3000);
         botonEmitirPoliza.click();
         waitForTextToAppear("¿Está seguro de que desea emitir esta póliza?");
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAceptarEmitirPoliza).shouldBePresent();
+        withTimeoutOf(21, TimeUnit.SECONDS).waitFor(botonAceptarEmitirPoliza).shouldBePresent();
         botonAceptarEmitirPoliza.click();
+        withTimeoutOf(28,TimeUnit.SECONDS).waitFor(botonAceptarEmitirPoliza).waitUntilNotVisible();
     }
 
     public void validarMensaje(String mensaje){

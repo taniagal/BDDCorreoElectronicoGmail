@@ -106,9 +106,9 @@ public class TarifaAutosPage extends Commons {
     }
 
     public void setAsegurados() {
-        withTimeoutOf(28,TimeUnit.SECONDS).waitFor(meniItemAsegurados).waitUntilPresent().click();
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(meniItemAsegurados).waitUntilPresent().click();
         Actions actions = new Actions(getDriver());
-        withTimeoutOf(28,TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         actions.moveToElement(navItemContastosDeLaCuenta).build().perform();
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         navItemAsegurado.click();
@@ -124,11 +124,13 @@ public class TarifaAutosPage extends Commons {
     public void setCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
         botonBorrar.waitUntilPresent().click();
-        waitUntil(1000);
+        waitUntil(1500);
+        comboBoxLimite.waitUntilPresent();
         comboBoxLimite.clear();
         waitUntil(500);
         comboBoxLimite.sendKeys(dato.get("limite"));
         comboBoxLimite.sendKeys(Keys.ENTER);
+        waitUntil(800);
         selectItem(comboBoxDeducible, dato.get("deducible"));
         selectItem(comboBoxAbogado, dato.get(("abogado")));
     }
@@ -146,40 +148,36 @@ public class TarifaAutosPage extends Commons {
     }
 
     public void selectCoberturas(ExamplesTable coberturas) {
-        try {
-            Map<String, String> dato = coberturas.getRow(0);
-            selectItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
-            selectItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
-            selectItem(comboBoxPerdidaParcialHurtoFranquisia, dato.get("PPHF"));
-            selectItem(comboBoxGastosDeTransporte, dato.get("GTH"));
-            checkBoxAccidentes.click();
-            selectItem(comboBoxAccidentes, dato.get("AC"));
-            checkBoxAsistencia.click();
-            selectItem(comboBoxAsistencia, dato.get("AS"));
-            checkBoxTaller.click();
-            selectItem(comboBoxTaller, dato.get("Taller"));
-            checkBoxGrua.click();
-            selectItem(comboBoxGrua, dato.get("Grua"));
-            checkBoxCentroDeServicios.click();
-            selectItem(comboBoxCentroDeServicios, dato.get("CS"));
-            selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
-            selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
-            selectItem(comboBoxPerdidaParcialDaniosFranquicia, dato.get("PPDF"));
-            selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
-            checkBoxCarroDeReemplazo.click();
-            selectItem(comboBoxPerdidaParcial, dato.get("PP"));
-            selectItem(comboBoxPerdidaTotal, dato.get("PT"));
-        }catch (StaleElementReferenceException e){
-            e.printStackTrace();
-        }
+        Map<String, String> dato = coberturas.getRow(0);
+        selectItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
+        selectItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
+        selectItem(comboBoxPerdidaParcialHurtoFranquisia, dato.get("PPHF"));
+        selectItem(comboBoxGastosDeTransporte, dato.get("GTH"));
+        checkBoxAccidentes.click();
+        selectItem(comboBoxAccidentes, dato.get("AC"));
+        checkBoxAsistencia.click();
+        selectItem(comboBoxAsistencia, dato.get("AS"));
+        checkBoxTaller.click();
+        selectItem(comboBoxTaller, dato.get("Taller"));
+        checkBoxGrua.click();
+        selectItem(comboBoxGrua, dato.get("Grua"));
+        checkBoxCentroDeServicios.click();
+        selectItem(comboBoxCentroDeServicios, dato.get("CS"));
+        selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
+        selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
+        selectItem(comboBoxPerdidaParcialDaniosFranquicia, dato.get("PPDF"));
+        selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
+        checkBoxCarroDeReemplazo.click();
+        selectItem(comboBoxPerdidaParcial, dato.get("PP"));
+        selectItem(comboBoxPerdidaTotal, dato.get("PT"));
     }
 
     public void selectCoberturas2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         checkBoxTallerMovil.click();
-        selectItem(comboBoxTallerMovil,dato.get("TM"));
+        selectItem(comboBoxTallerMovil, dato.get("TM"));
         checkBoxConductorElegido.click();
-        selectItem(comboBoxConductorElegido,dato.get("CE"));
+        selectItem(comboBoxConductorElegido, dato.get("CE"));
     }
 
     public void verificarTarifacion(String valor) {
@@ -190,8 +188,8 @@ public class TarifaAutosPage extends Commons {
 
     public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
         for (Map<String, String> valor : valores.getRows()) {
-            WebElementFacade tablaDescripcion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr["+valor.get("fila")+"]/td[3]");
-            MatcherAssert.assertThat("Error en el valor "+valor.get("fila")+" de la tarifacion ", tablaDescripcion.containsText(valor.get("valor")));
+            WebElementFacade tablaDescripcion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[" + valor.get("fila") + "]/td[3]");
+            MatcherAssert.assertThat("Error en el valor " + valor.get("fila") + " de la tarifacion ", tablaDescripcion.containsText(valor.get("valor")));
         }
     }
 }
