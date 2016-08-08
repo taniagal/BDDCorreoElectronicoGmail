@@ -124,11 +124,6 @@ public class ModificacionInformacionPolizaPADefinitions {
         modificacionInformacionPolizaPASteps.validarMensajeWarningAsegurado(mensaje);
     }
 
-    @Then("se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de interes adicional")
-    public void validarMensajeWarningInteresAdicional(@Named("mensaje") String mensaje){
-        // Se realiza manualmente.
-    }
-
     @Then("se debe pemitir continuar la cotizacion")
     public void permitirContinuarCotizacion(){
         modificacionInformacionPolizaPASteps.permitirContinuarCotizacion();
@@ -173,10 +168,5 @@ public class ModificacionInformacionPolizaPADefinitions {
     public void validarContinuacionDeCotizacionVehiculos(){
         modificacionInformacionPolizaPASteps.validarContinuacionDeCotizacion("Coberturas de auto personal",
                 ".//span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
-    }
-
-    @Then("se debe permitir continuar a coberturas de auto personal")
-    public void validarContinuacionDeCotizacionInteresAdicional(){
-        // Se realiza manualmente
     }
 }
