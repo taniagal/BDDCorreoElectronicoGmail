@@ -114,4 +114,14 @@ public class InformacionDePolizaColectivaSteps extends ScenarioSteps{
     public void validarEliminacionDeCoaseguro() {
         informacionDePolizaColectivaPage.validarEliminacionDeCoaseguro();
     }
+
+    @Step
+    public void validarLosElementosDeshabilitados() {
+        informacionDePolizaColectivaPage.validarLosElementosDeshabilitados();
+    }
+
+    @Step
+    public void clicEnUnTomadorDeLaPoliza(String tomador) {
+        informacionDePolizaColectivaPage.clicEnUnTomadorDeLaPoliza(tomador);
+    }
 }
