@@ -39,6 +39,7 @@ public class CambioDePolizaSteps extends ScenarioSteps{
         cambioDePolizaPage.validarMensaje(mensaje);
     }
 
+
     @Step
     public void seleccionarInformacionPoliza() {
         cambioDePolizaPage.seleccionarInformacionPoliza();
