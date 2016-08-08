@@ -108,4 +108,75 @@ public class ModificacionInformacionPolizaPADefinitions {
     public void habilitarPolizaFinanciada(){
         //Se ejecuta manualmente
     }
+
+    @When("se presione el boton siguiente")
+    public void presionarBotonSiguiente(){
+        modificacionInformacionPolizaPASteps.presionarBotonSiguiente();
+    }
+
+    @Then("se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de tomador")
+    public void validarMensajeWarningTomador(@Named("mensaje") String mensaje){
+        modificacionInformacionPolizaPASteps.validarMensajeWarningTomador(mensaje);
+    }
+
+    @Then("se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de asegurado")
+    public void validarMensajeWarningAsegurado(@Named("mensaje") String mensaje){
+        modificacionInformacionPolizaPASteps.validarMensajeWarningAsegurado(mensaje);
+    }
+
+    @Then("se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de interes adicional")
+    public void validarMensajeWarningInteresAdicional(@Named("mensaje") String mensaje){
+        // Se realiza manualmente.
+    }
+
+    @Then("se debe pemitir continuar la cotizacion")
+    public void permitirContinuarCotizacion(){
+        modificacionInformacionPolizaPASteps.permitirContinuarCotizacion();
+    }
+
+    @When("ingrese a la opcion asegurados")
+    public void irAOpcionAsegurados(){
+        modificacionInformacionPolizaPASteps.irAOpcionAsegurados();
+    }
+
+    @When("adicione un asegurado <tipoDocumento> <numeroDocumento>")
+    public void adicionarAsegurado(@Named("tipoDocumento") String tipoDocumento,
+                                   @Named("numeroDocumento") String numeroDocumento){
+        modificacionInformacionPolizaPASteps.adicionarAsegurado(tipoDocumento, numeroDocumento);
+    }
+
+    @When("ingrese a la opcion vehiculos")
+    public void irAOpcionVehiculos(){
+        modificacionInformacionPolizaPASteps.irAOpcionVehiculos();
+    }
+
+    @When("adicione un interes adicional <tipoDocumento> <numeroDocumento>")
+    @Manual
+    public void adicionarInteresAdicional(@Named("tipoDocumento") String tipoDocumento,
+                                          @Named("numeroDocumento") String numeroDocumento){
+        // Se realiza manualmente
+    }
+
+    @Then("se debe permitir continuar a asegurados de la modificacion")
+    public void validarContinuacionDeCotizacionInformacion(){
+        modificacionInformacionPolizaPASteps.validarContinuacionDeCotizacion("Asegurados",
+                ".//span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
+    }
+
+    @Then("se debe permitir continuar a vehiculos de la modificacion")
+    public void validarContinuacionDeCotizacionAsegurados(){
+        modificacionInformacionPolizaPASteps.validarContinuacionDeCotizacion("Vehículos",
+                ".//span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
+    }
+
+    @Then("se debe permitir continuar a coberturas de la modificacion")
+    public void validarContinuacionDeCotizacionVehiculos(){
+        modificacionInformacionPolizaPASteps.validarContinuacionDeCotizacion("Coberturas de auto personal",
+                ".//span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
+    }
+
+    @Then("se debe permitir continuar a coberturas de auto personal")
+    public void validarContinuacionDeCotizacionInteresAdicional(){
+        // Se realiza manualmente
+    }
 }

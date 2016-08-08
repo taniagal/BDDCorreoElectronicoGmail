@@ -8,7 +8,6 @@ Narrative:
 Como usuario de PolicyCenter
 Quiero poder realizar cambios en la informacion de cliente, vehiculo o coberturas en una poliza de automoviles.
 
-
 Scenario: Visualizacion de los datos de la poliza
 GivenStories: stories/policycenter/login_policy.story
 Given ya se tiene una poliza expedida <numeroPoliza>
@@ -49,3 +48,45 @@ Then se debe habilitar el campo poliza financiada
 Examples:
 |numeroPoliza  |
 |TEST_22222222 |
+
+
+Scenario: Validar que muestre mensaje warning de PEPS para tomador - Información de la póliza
+Given ya se tiene una poliza expedida <numeroPoliza>
+When adicione un segundo tomador <tipoDocumento> <numeroDocumento>
+And se presione el boton siguiente
+Then se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de tomador
+And se debe permitir continuar a asegurados de la modificacion
+
+Examples:
+|numeroPoliza |tipoDocumento        |numeroDocumento |mensaje                                                                                               |
+|TEST_22222222|CEDULA DE CIUDADANIA |123456          |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
+
+
+Scenario: Validar que muestre mensaje warning de PEPS para asegurados - Asegurados
+Given ya se tiene una poliza expedida <numeroPoliza>
+When ingrese a modificar dicha cotizacion
+And ingrese a la opcion asegurados
+And adicione un asegurado <tipoDocumento> <numeroDocumento>
+And se presione el boton siguiente
+Then se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de asegurado
+And se debe permitir continuar a vehiculos de la modificacion
+
+Examples:
+|numeroPoliza  |tipoDocumento        |numeroDocumento |mensaje                                                                                               |
+|TEST_22222222 |CEDULA DE CIUDADANIA |123456          |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
+
+
+Scenario: Validar que muestre mensaje warning de PEPS para intereses adicionales - Vehiculos
+Meta:
+@manual
+Given ya se tiene una poliza expedida <numeroPoliza>
+When ingrese a modificar dicha cotizacion
+And ingrese a la opcion vehiculos
+And adicione un interes adicional <tipoDocumento> <numeroDocumento>
+And se presione el boton siguiente
+Then se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de interes adicional
+And se debe permitir continuar a coberturas de auto personal
+
+Examples:
+|numeroPoliza |tipoDocumento       |numeroDocumento|mensaje                                                                                               |
+|TEST_22222222|CEDULA DE CIUDADANIA|123456         |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
