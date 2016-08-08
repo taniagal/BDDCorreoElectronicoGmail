@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages.menu.superior.poliza;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 /**
  * Created by jonamele on 08/06/2016.
  */
-public class ExpedicionPolizaPage extends Guidewire {
+public class ExpedicionPolizaPage extends Commons {
     public ExpedicionPolizaPage(WebDriver driver) {
         super(driver);
     }
