@@ -71,4 +71,13 @@ Examples:
 |TEST_22266668            |Advertencia: La fecha de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
 
+Scenario:  Validacion de fecha exacta para cambio de poliza
+Meta: @manual
+Given que voy a buscar una poliza  <buscarNumeroPoliza>
+When quiero relizar el cambio de una poliza con la fecha vigente
+Then no debo visualizar la advertencia con el <mensaje>
+
+Examples:
+|buscarNumeroPoliza       |mensaje|
+|TEST_22266668            |Advertencia: La fecha de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
