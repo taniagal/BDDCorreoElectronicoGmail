@@ -99,18 +99,14 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         opcionPolizaMrc.waitInfoPoliza(lblBuscarDirec);
         txtTipoDoc.clear();
         waitUntil(800);
-        //txtTipoDoc.sendKeys("CEDULA DE CIUDADANIA");
         txtTipoDoc.type(tipoDocumento);
         txtTipoDoc.sendKeys(Keys.ENTER);
         opcionPolizaMrc.waitInfoPoliza(lblPrimerNombre);
-        //txtNumDoc.sendKeys("1234567892");
         txtNumDoc.type(numeroDocumento);
         btnBuscar.click();
         opcionPolizaMrc.waitInfoPoliza(btnSeleccion);
         btnSeleccion.click();
         opcionPolizaMrc.waitInfoPoliza(btnDetalleVehiculo);
-        /*lstTipoBeneficia.click();
-        itmAsegurado.click();*/
         waitUntil(1500);
         if(lstTipoBeneficia.isCurrentlyVisible()){
             lstTipoBeneficia.click();
@@ -122,7 +118,6 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         btnDetalleVehiculo.click();
         opcionPolizaMrc.waitInfoPoliza(botonSiguiente);
     }
-
 
     public void ingresaValoresAccesorios(String valorAccesorio, String valorAccesorioEsp) {
         txtValorAccesorios.clear();
