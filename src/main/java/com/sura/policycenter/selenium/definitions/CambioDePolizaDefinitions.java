@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.CambioDePolizaSteps;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -40,7 +41,16 @@ public class CambioDePolizaDefinitions {
     }
 
 
+    @Manual
+    @When("quiero relizar el cambio de una poliza con la fecha vigente")
+    public void whenQuieroRelizarElCambioDeUnaPolizaConLaFechaVigente() {
+        // Validacion Manual
+    }
 
-
+    @Manual
+    @Then("no debo visualizar la advertencia con el <mensaje>")
+    public void thenNoDeboVisualizarLaAdvertenciaConElmensaje() {
+        //Validacion Manual
+    }
 
 }

@@ -55,6 +55,8 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     WebElementFacade btnSeleccion;
     @FindBy(xpath = ".//div[3]/div/table/tbody/tr/td[5]/div")
     WebElementFacade lstTipoBeneficia;
+    @FindBy(xpath = ".//div[4]/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    WebElementFacade lstTipoBeneficia2;
     @FindBy(xpath = ".//li[contains(.,'Asegurado')]")
     WebElementFacade itmAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:VehicleDetailCardTab-btnInnerEl']")
@@ -97,22 +99,25 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         opcionPolizaMrc.waitInfoPoliza(lblBuscarDirec);
         txtTipoDoc.clear();
         waitUntil(800);
-        //txtTipoDoc.sendKeys("CEDULA DE CIUDADANIA");
         txtTipoDoc.type(tipoDocumento);
         txtTipoDoc.sendKeys(Keys.ENTER);
         opcionPolizaMrc.waitInfoPoliza(lblPrimerNombre);
-        //txtNumDoc.sendKeys("1234567892");
         txtNumDoc.type(numeroDocumento);
         btnBuscar.click();
         opcionPolizaMrc.waitInfoPoliza(btnSeleccion);
         btnSeleccion.click();
         opcionPolizaMrc.waitInfoPoliza(btnDetalleVehiculo);
-        lstTipoBeneficia.click();
-        itmAsegurado.click();
+        waitUntil(1500);
+        if(lstTipoBeneficia.isCurrentlyVisible()){
+            lstTipoBeneficia.click();
+            itmAsegurado.click();
+        }else if(lstTipoBeneficia2.isCurrentlyVisible()){
+            waitUntil(1000);
+            itmAsegurado.click();
+        }
         btnDetalleVehiculo.click();
         opcionPolizaMrc.waitInfoPoliza(botonSiguiente);
     }
-
 
     public void ingresaValoresAccesorios(String valorAccesorio, String valorAccesorioEsp) {
         txtValorAccesorios.clear();

@@ -129,20 +129,5 @@ Then se debe mostrar el mensaje <mensaje> que se obtenga de Riesgos PEPS como wa
 And se debe permitir continuar la cotizacion
 
 Examples:
-|numeroCuenta|tipoDocumento       |numeroDocumento|organizacion|canal             |
-|C000888888  |CEDULA DE CIUDADANIA|1234546        |Sura        |Canal Tradicional |
-
-Scenario: Validar warning por tomador riesgo PEP
-Given ya se inicio una nueva suscripcion <numeroCuenta>
-And se visualiza la informacion de la poliza
-When seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
-And seleccione el producto para expedir la poliza
-And pase a la siguiente opcion
-And se identifique el tipo <tipoDocumento> y numero de documento <numeroDocumento> del tomador como PEPS
-Then se debe mostrar el mensaje <mensaje> que se obtenga de Riesgos PEPS como warning
-And se debe permitir continuar la cotizacion
-
-Examples:
 |numeroCuenta|tipoDocumento       |numeroDocumento|organizacion|canal             |mensaje                                                                                               |
 |C000777778  |CEDULA DE CIUDADANIA|123456         |Sura        |Canal Tradicional |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
