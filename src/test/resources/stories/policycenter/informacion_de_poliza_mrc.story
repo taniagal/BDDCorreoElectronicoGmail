@@ -61,8 +61,8 @@ Then se debe mostrar un mensaje de error <mensaje> <mensaje2>
 And bloquear la operacion
 
 Examples:
-|numeroCuenta  |organizacion|canal            |cedula|nomProducto            |mensaje                                       |mensaje2                                                                                                                                              |
-|C001888888    |Sura        |Canal Tradicional|123456|Multiriesgo corporativo|es un riesgo no estándar y debe ser autorizado|El tomador es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial|
+|numeroCuenta  |organizacion|canal            |cedula|nomProducto            |mensaje                                      |mensaje2                                                                                                                                           |
+|C001888888    |Sura        |Canal Tradicional|123456|Multiriesgo corporativo|es un riesgo no estándar y debe ser analizado|El tomador es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial|
 
 Scenario: ocultar descipcion de la direccion cuando el campo no tenga datos informativos
 Given se inicio una nueva suscripcion <numeroCuenta>
