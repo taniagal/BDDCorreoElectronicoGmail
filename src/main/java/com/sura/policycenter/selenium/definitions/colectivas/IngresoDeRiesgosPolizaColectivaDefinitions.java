@@ -28,10 +28,10 @@ public class IngresoDeRiesgosPolizaColectivaDefinitions {
         ingresoDeRiesgosPolizaColectivaSteps.clicEnAgregarRiesgo();
     }
 
-    @When("ingrese los datos para realizar la busqueda de la cuenta persona natural <nombre> <apellido>")
-    public void ingresarDatosParaBuscarPersonalNatural(@Named("nombre") String nombre,
-                                                       @Named("apellido") String apellido){
-        ingresoDeRiesgosPolizaColectivaSteps.ingresarDatosParaBuscarPersonalNatural(nombre, apellido);
+    @When("ingrese los datos para realizar la busqueda de la cuenta persona natural <consultaNombre> <consultaApellido>")
+    public void ingresarDatosParaBuscarPersonalNatural(@Named("consultaNombre") String consultaNombre,
+                                                       @Named("consultaApellido") String consultaApellido){
+        ingresoDeRiesgosPolizaColectivaSteps.ingresarDatosParaBuscarPersonalNatural(consultaNombre, consultaApellido);
     }
 
     @When("ingrese los datos para crear un contacto tipo persona natural $cuentaNueva")

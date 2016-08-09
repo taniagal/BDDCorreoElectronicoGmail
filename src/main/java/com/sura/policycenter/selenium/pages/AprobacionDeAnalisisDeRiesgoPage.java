@@ -25,6 +25,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageObject {
     }
 
     public void aprobarAnalisisDeRiesgo() {
+        menuAnalisisDeRiesgo.click();
         waitForTextToAppear("Análisis de riesgo");
         boolean aprobaciones = true;
         while (aprobaciones) {
@@ -33,6 +34,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageObject {
                 botonAceptarMensaje.click();
                 waitFor(botonAceptarAprobacion);
                 botonAceptarAprobacion.click();
+                botonAceptarMensaje.click();
                 waitForTextToAppear("Análisis de riesgo");
             } catch (StaleElementReferenceException elemento) {
                 aprobaciones = false;

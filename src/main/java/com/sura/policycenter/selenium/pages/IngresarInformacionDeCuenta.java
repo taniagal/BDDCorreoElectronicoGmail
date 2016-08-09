@@ -33,12 +33,12 @@ public class IngresarInformacionDeCuenta extends PageObject {
         consultaRazonSocial.sendKeys(nombre);
     }
 
-    public void ingresarNombreYApellido(String nombre, String Apellido){
+    public void ingresarNombreYApellido(String nombre, String apellido){
         waitFor(consultaPrimerNombre);
         consultaPrimerApellido.clear();
         consultaPrimerNombre.sendKeys(nombre);
         consultaPrimerApellido.clear();
-        consultaPrimerApellido.sendKeys(nombre);
+        consultaPrimerApellido.sendKeys(apellido);
     }
 
     public void clicEnBuscar(){
