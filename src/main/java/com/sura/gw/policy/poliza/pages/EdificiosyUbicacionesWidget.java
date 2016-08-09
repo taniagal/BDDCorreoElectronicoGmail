@@ -6,15 +6,19 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
 public class EdificiosyUbicacionesWidget extends PageObject {
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     private static String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
     private static String LINK_AGREGAR_UBICACION = "//a[contains(.,'Agregar ubicación')]";
@@ -33,7 +37,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
     public void agregarArticuloAPrimerUbicacion() {
 
-        waitForTextToAppear("Edificios y ubicaciones");
+        waitForTextToAppear("Edificios y ubicaciones", 16000);
         if (tabla == null) {
             obtenerTabla();
         }
@@ -92,7 +96,13 @@ public class EdificiosyUbicacionesWidget extends PageObject {
     }
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
-        findBy(".//*[@id='CPLocationPopup:Cancel']").waitUntilVisible().waitUntilClickable().click();
+        try {
+            findBy(".//a[@id='CPLocationPopup:Cancel']").shouldBeVisible();
+            findBy(".//a[@id='CPLocationPopup:Cancel']").shouldBeEnabled();
+            findBy(".//a[@id='CPLocationPopup:Cancel']").click();
+        }catch (Exception e) {
+            LOGGER.info("ELEMENTO NO CLICKLEABLE" + e);
+        }
     }
 
 

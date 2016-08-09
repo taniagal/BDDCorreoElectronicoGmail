@@ -15,6 +15,8 @@ import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.hasItems;
@@ -141,10 +143,12 @@ public class EdificiosUbicaciones {
     @Alias("se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electrónico móvil y pórtatil (se suman los de la categoría otros y los normales). $mensajesEsperados")
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
 
+        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
+
         for (Map<String,String> mensajes : mensajesEsperados.getRows()) {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
 
-            assertThat(polizaSteps.espacioDeTrabajo(), hasItems(containsString(mensaje)));
+            assertThat(mensajesWSList, hasItems(containsString(mensaje)));
 
         }
 

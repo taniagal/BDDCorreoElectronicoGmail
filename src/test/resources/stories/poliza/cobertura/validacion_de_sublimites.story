@@ -1,4 +1,4 @@
-Validacion de sublimtes
+Validacion de sublimites
 
 Meta:
 
@@ -10,7 +10,6 @@ Meta:
 @Informador alejandro esteban villada marin
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
-@tags cobertura, nivel, riesgo, sustraccion, con violencia, sin violencia, bienes, fuera, dentro, predio, caja fuerte, mensaje, bloqueo, sublimites, validacion de sublimites
 @Sprint 5
 
 As a <rolUsuario>
@@ -44,7 +43,7 @@ Meta:
 @Informador alejandro esteban villada marin
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
-@manual
+@manual true
 @Sprint 5
 
 Given Estoy ingresando la información de coberturas a nivel de riesgo
@@ -56,6 +55,7 @@ Examples:
 | 22221237        | Asesor     |             |
 
 
+
 Scenario: Sublimite de sustraccion con violencia de bienes fuera de predios (cobertura de riesgos) - Sublimite menor a valor asegurable Equipos moviles y portatiles
 Meta:
 @Story CDSEG-847
@@ -63,7 +63,6 @@ Meta:
 @Informador alejandro esteban villada marin
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
-@tags cobertura, sustraccion, con violencia, bienes, fuera, predio, sublimites, validacion de sublimites
 @Sprint 5
 
 As a <rolUsuario>
@@ -107,7 +106,6 @@ Meta:
 @Informador alejandro esteban villada marin
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
-@tags cobertura, sustraccion, sin violencia, bienes, fuera, predio, sublimites, validacion de sublimites
 @Sprint 5
 
 As a <rolUsuario>
@@ -144,7 +142,6 @@ Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22221237        | Asesor     |             |
 
-
 Scenario: Sublímite de sustracción con violencia de dinero dentro de caja fuerte (Coberturas del riesgo) - Valor asegurado menor o igual a valor asegurable de dinero en efectivo
 Meta:
 @Story CDSEG-847
@@ -152,7 +149,6 @@ Meta:
 @Informador alejandro esteban villada marin
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
-@tags cobertura, sustraccion, con violencia, dinero, dentro, caja fuerte, sublimites, validacion de sublimites
 @Sprint 5
 @Pending true
 
@@ -191,6 +187,7 @@ Examples:
 | 22221237        | Asesor     |             |
 
 
+
 Scenario: Sublímite de sustracción con violencia de dinero fuera de caja fuerte (Coberturas del riesgo) - valor asegurado de este sublímite menor o igual al valor asegurado de otro sublímite
 Meta:
 @Story CDSEG-847
@@ -198,7 +195,6 @@ Meta:
 @Informador alejandro esteban villada marin
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
-@tags cobertura, sustraccion, con violencia, dinero, fuera, caja fuerte, sublimites, validacion de sublimites
 @Sprint 5
 @Pending true
 
