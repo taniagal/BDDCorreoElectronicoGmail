@@ -56,7 +56,7 @@ public class CambioEnExpedicionDePolizaDefinitios {
     @Manual
     @Then("se deben validar todos las etiquetas y mensajes del formulario <mensaje>")
     public void manual (@Named("mensaje")String mensaje){
-
+        //Metodo vacío
     }
 
 }
