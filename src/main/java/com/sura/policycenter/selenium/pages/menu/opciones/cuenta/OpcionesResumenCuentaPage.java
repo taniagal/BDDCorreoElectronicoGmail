@@ -1,7 +1,9 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.commons.selenium.Commons;
+
 import java.util.Map;
+
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -191,78 +193,71 @@ public class OpcionesResumenCuentaPage extends Commons {
     }
 
     public void verInfoResumenCuenta(Map<String, String> infoResumenCuenta) {
-        waitForTextToAppear("Resumen de la cuenta",2000);
-        String validacion = null;
-        try {
-            MatcherAssert.assertThat(lblResumenCuenta.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblResumenCuenta"))));
-            MatcherAssert.assertThat(lblTipoDoc.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoDocumento"))));
-            MatcherAssert.assertThat(lblNumDoc.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numDocumento"))));
-            MatcherAssert.assertThat(lblCodAgente.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("codigoAgente"))));
-            MatcherAssert.assertThat(lblDescAgente.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("descAgente"))));
-            MatcherAssert.assertThat(lblNumCuenta.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numCuenta"))));
-            MatcherAssert.assertThat(lblEstadoCuenta.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("estadoCuenta"))));
+        waitForTextToAppear("Resumen de la cuenta", 2000);
+        MatcherAssert.assertThat(lblResumenCuenta.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblResumenCuenta"))));
+        MatcherAssert.assertThat(lblTipoDoc.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoDocumento"))));
+        MatcherAssert.assertThat(lblNumDoc.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numDocumento"))));
+        MatcherAssert.assertThat(lblCodAgente.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("codigoAgente"))));
+        MatcherAssert.assertThat(lblDescAgente.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("descAgente"))));
+        MatcherAssert.assertThat(lblNumCuenta.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numCuenta"))));
+        MatcherAssert.assertThat(lblEstadoCuenta.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("estadoCuenta"))));
 
-            if (lblTipoPersona.getText().compareTo(infoResumenCuenta.get("lblPersonaJuridica")) == 0) {
-                MatcherAssert.assertThat(lblTipoPersona.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblPersonaJuridica"))));
-                MatcherAssert.assertThat(lblRazonSocial.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("razonSocial"))));
-                MatcherAssert.assertThat(lblNombreComercial.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("nombreComercial"))));
-                MatcherAssert.assertThat(lblEmailEmpresa.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("emailEmpresa"))));
-                MatcherAssert.assertThat(lblActComercial.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("actComercial"))));
-                MatcherAssert.assertThat(lblNumEmpleados.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numEmpleados"))));
-                MatcherAssert.assertThat(lblTelOficina.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("telOficina"))));
-                MatcherAssert.assertThat(lblSegmentacionJur.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("segmentacion"))));
-                MatcherAssert.assertThat(lblComportamientoJur.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("comportamiento"))));
-            } else if (lblTipoPersona.getText().compareTo(infoResumenCuenta.get("lblPersonaNatural")) == 0) {
-                MatcherAssert.assertThat(lblTipoPersona.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblPersonaNatural"))));
-                MatcherAssert.assertThat(lblPrimerNombre.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("primerNombre"))));
-                MatcherAssert.assertThat(lblSegundoNombre.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("segundoNombre"))));
-                MatcherAssert.assertThat(lblPrimerApellido.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("primerApellido"))));
-                MatcherAssert.assertThat(lblSegundoApellido.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("segundoApellido"))));
-                MatcherAssert.assertThat(lblFechaNac.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaNac"))));
-                MatcherAssert.assertThat(lblEstadoCivil.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("estadoCivil"))));
-                MatcherAssert.assertThat(lblProfesion.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("profesion"))));
-                MatcherAssert.assertThat(lblSexo.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("sexo"))));
-                MatcherAssert.assertThat(lblEmailPersona.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("emailPersona"))));
-                MatcherAssert.assertThat(lblCausaMuerte.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("causaMuerte"))));
-                MatcherAssert.assertThat(lblFechaFallecimiento.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaFallecimiento"))));
-                MatcherAssert.assertThat(lblSegmentacionPer.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("segmentacion"))));
-                MatcherAssert.assertThat(lblComportamientoPer.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("comportamiento"))));
-                MatcherAssert.assertThat(lblTipoTel.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoTel"))));
+        if (lblTipoPersona.getText().compareTo(infoResumenCuenta.get("lblPersonaJuridica")) == 0) {
+            MatcherAssert.assertThat(lblTipoPersona.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblPersonaJuridica"))));
+            MatcherAssert.assertThat(lblRazonSocial.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("razonSocial"))));
+            MatcherAssert.assertThat(lblNombreComercial.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("nombreComercial"))));
+            MatcherAssert.assertThat(lblEmailEmpresa.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("emailEmpresa"))));
+            MatcherAssert.assertThat(lblActComercial.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("actComercial"))));
+            MatcherAssert.assertThat(lblNumEmpleados.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numEmpleados"))));
+            MatcherAssert.assertThat(lblTelOficina.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("telOficina"))));
+            MatcherAssert.assertThat(lblSegmentacionJur.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("segmentacion"))));
+            MatcherAssert.assertThat(lblComportamientoJur.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("comportamiento"))));
+        } else if (lblTipoPersona.getText().compareTo(infoResumenCuenta.get("lblPersonaNatural")) == 0) {
+            MatcherAssert.assertThat(lblTipoPersona.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblPersonaNatural"))));
+            MatcherAssert.assertThat(lblPrimerNombre.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("primerNombre"))));
+            MatcherAssert.assertThat(lblSegundoNombre.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("segundoNombre"))));
+            MatcherAssert.assertThat(lblPrimerApellido.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("primerApellido"))));
+            MatcherAssert.assertThat(lblSegundoApellido.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("segundoApellido"))));
+            MatcherAssert.assertThat(lblFechaNac.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaNac"))));
+            MatcherAssert.assertThat(lblEstadoCivil.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("estadoCivil"))));
+            MatcherAssert.assertThat(lblProfesion.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("profesion"))));
+            MatcherAssert.assertThat(lblSexo.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("sexo"))));
+            MatcherAssert.assertThat(lblEmailPersona.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("emailPersona"))));
+            MatcherAssert.assertThat(lblCausaMuerte.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("causaMuerte"))));
+            MatcherAssert.assertThat(lblFechaFallecimiento.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaFallecimiento"))));
+            MatcherAssert.assertThat(lblSegmentacionPer.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("segmentacion"))));
+            MatcherAssert.assertThat(lblComportamientoPer.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("comportamiento"))));
+            MatcherAssert.assertThat(lblTipoTel.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoTel"))));
 
-                if(labelTipoTelefono.getText().compareTo("Vivienda") == 0){
-                    MatcherAssert.assertThat(lblTelResidencial.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("telResidencial"))));
-                    MatcherAssert.assertThat(lblTelCelular.isCurrentlyVisible(), Is.is(Matchers.equalTo(false)));
-                    MatcherAssert.assertThat(lblTelTrabajo.isCurrentlyVisible(), Is.is(Matchers.equalTo(false)));
-                } else if(labelTipoTelefono.getText().compareTo("Trabajo") == 0){
-                    MatcherAssert.assertThat(lblTelTrabajo.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("telTrabajo"))));
-                } else if(labelTipoTelefono.getText().compareTo("Movil") == 0){
-                    MatcherAssert.assertThat(lblTelCelular.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("telCelular"))));
-                }
+            if (labelTipoTelefono.getText().compareTo("Vivienda") == 0) {
+                MatcherAssert.assertThat(lblTelResidencial.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("telResidencial"))));
+                MatcherAssert.assertThat(lblTelCelular.isCurrentlyVisible(), Is.is(Matchers.equalTo(false)));
+                MatcherAssert.assertThat(lblTelTrabajo.isCurrentlyVisible(), Is.is(Matchers.equalTo(false)));
+            } else if (labelTipoTelefono.getText().compareTo("Trabajo") == 0) {
+                MatcherAssert.assertThat(lblTelTrabajo.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("telTrabajo"))));
+            } else if (labelTipoTelefono.getText().compareTo("Movil") == 0) {
+                MatcherAssert.assertThat(lblTelCelular.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("telCelular"))));
             }
-            MatcherAssert.assertThat(lblDireccion.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("direccion"))));
-            MatcherAssert.assertThat(lblActividades.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblActividades"))));
-            MatcherAssert.assertThat(lblFechaVencAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaVencimiento"))));
-            MatcherAssert.assertThat(lblPrioridadAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("prioridadAct"))));
-            MatcherAssert.assertThat(lblTemaAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("temaAct"))));
-            MatcherAssert.assertThat(lblAsignadoAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("asignadoAct"))));
-            MatcherAssert.assertThat(lblTerminosPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblTerminosPol"))));
-            MatcherAssert.assertThat(lblNumPoliza.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numPoliza"))));
-            MatcherAssert.assertThat(lblProducto.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("producto"))));
-            MatcherAssert.assertThat(lblEstadoPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("estadoPol"))));
-            MatcherAssert.assertThat(lblFechaVigPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaVigPol"))));
-            MatcherAssert.assertThat(lblFechaExpPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaExpPol"))));
-            MatcherAssert.assertThat(lblTransPolPendientes.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblTransPolPendientes"))));
-            MatcherAssert.assertThat(lblNumTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numTrans"))));
-            MatcherAssert.assertThat(lblEstadoTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("estadoTrans"))));
-            MatcherAssert.assertThat(lblNumPolTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numPolTrans"))));
-            MatcherAssert.assertThat(lblProductoTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("productoTrans"))));
-            MatcherAssert.assertThat(lblTipoTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoTrans"))));
-            MatcherAssert.assertThat(lblAseguradorTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("aseguradorTrans"))));
-        } catch (Exception e) {
-            LOGGER.error(validacion, e);
-            validacion = e.getMessage();
         }
-        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
+        MatcherAssert.assertThat(lblDireccion.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("direccion"))));
+        MatcherAssert.assertThat(lblActividades.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblActividades"))));
+        MatcherAssert.assertThat(lblFechaVencAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaVencimiento"))));
+        MatcherAssert.assertThat(lblPrioridadAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("prioridadAct"))));
+        MatcherAssert.assertThat(lblTemaAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("temaAct"))));
+        MatcherAssert.assertThat(lblAsignadoAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("asignadoAct"))));
+        MatcherAssert.assertThat(lblTerminosPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblTerminosPol"))));
+        MatcherAssert.assertThat(lblNumPoliza.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numPoliza"))));
+        MatcherAssert.assertThat(lblProducto.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("producto"))));
+        MatcherAssert.assertThat(lblEstadoPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("estadoPol"))));
+        MatcherAssert.assertThat(lblFechaVigPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaVigPol"))));
+        MatcherAssert.assertThat(lblFechaExpPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaExpPol"))));
+        MatcherAssert.assertThat(lblTransPolPendientes.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblTransPolPendientes"))));
+        MatcherAssert.assertThat(lblNumTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numTrans"))));
+        MatcherAssert.assertThat(lblEstadoTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("estadoTrans"))));
+        MatcherAssert.assertThat(lblNumPolTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numPolTrans"))));
+        MatcherAssert.assertThat(lblProductoTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("productoTrans"))));
+        MatcherAssert.assertThat(lblTipoTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoTrans"))));
+        MatcherAssert.assertThat(lblAseguradorTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("aseguradorTrans"))));
     }
 
     public void editarResumenCuenta() {
@@ -272,7 +267,7 @@ public class OpcionesResumenCuentaPage extends Commons {
     }
 
     public void validarCamposEditablesPersona() {
-        waitForTextToAppear("Editar cuenta",1000);
+        waitForTextToAppear("Editar cuenta", 1000);
         MatcherAssert.assertThat(txtPrimerNombre.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtSegundoNombre.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtPrimerApellido.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
@@ -295,7 +290,7 @@ public class OpcionesResumenCuentaPage extends Commons {
     }
 
     public void validarCamposEditablesCompania() {
-        waitForTextToAppear("Editar cuenta",1000);
+        waitForTextToAppear("Editar cuenta", 1000);
         MatcherAssert.assertThat(txtRazonSocial.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtNombreComercial.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtActEconomica.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
@@ -318,10 +313,10 @@ public class OpcionesResumenCuentaPage extends Commons {
     }
 
     public void editarPais(String pais) {
-        waitForTextToAppear("Editar cuenta",2000);
+        waitForTextToAppear("Editar cuenta", 2000);
         waitFor(txtPais).shouldBeVisible();
         txtPais.click();
-        WebElementFacade itmPais = findBy(".//li[contains(.,'"+pais+"')]");
+        WebElementFacade itmPais = findBy(".//li[contains(.,'" + pais + "')]");
         itmPais.click();
         waitABit(3000);
     }
@@ -335,7 +330,7 @@ public class OpcionesResumenCuentaPage extends Commons {
     public void editarDepto(String departamento) {
         waitFor(txtDepartamento).shouldBeVisible();
         txtDepartamento.click();
-        WebElementFacade itmDepto = findBy(".//li[contains(.,'"+departamento+"')]");
+        WebElementFacade itmDepto = findBy(".//li[contains(.,'" + departamento + "')]");
         itmDepto.click();
         waitABit(3000);
     }
