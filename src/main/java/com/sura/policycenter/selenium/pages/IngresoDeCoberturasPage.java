@@ -6,7 +6,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class IngresarCoberturasPage extends PageObject{
+public class IngresoDeCoberturasPage extends PageObject{
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade campoLimite;
@@ -15,7 +15,7 @@ public class IngresarCoberturasPage extends PageObject{
     @FindBy(xpath = "cotizar = .//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade botonCotizar;
 
-    public IngresarCoberturasPage(WebDriver driver){
+    public IngresoDeCoberturasPage(WebDriver driver){
         super(driver);
     }
 
@@ -27,7 +27,6 @@ public class IngresarCoberturasPage extends PageObject{
 
     public void ingresarDeducible(){
         campoDeducible.click();
-        campoDeducible.sendKeys(Keys.ARROW_DOWN);
         campoDeducible.sendKeys(Keys.ARROW_DOWN);
         campoDeducible.sendKeys(Keys.ENTER);
     }

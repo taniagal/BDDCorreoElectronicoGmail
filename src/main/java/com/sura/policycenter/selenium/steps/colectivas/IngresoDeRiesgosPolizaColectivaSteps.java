@@ -1,32 +1,32 @@
 package com.sura.policycenter.selenium.steps.colectivas;
 
-import com.sura.policycenter.selenium.pages.CuentaPage;
-import com.sura.policycenter.selenium.pages.DetalleDeAseguradoDeCotizacionPage;
-import com.sura.policycenter.selenium.pages.IngresarInformacionDeCuenta;
-import com.sura.policycenter.selenium.pages.ValidacionesInformacionDeVehiculoPage;
-import com.sura.policycenter.selenium.pages.colectivas.AgregarRiesgosPolizaColectivaPages;
+import com.sura.policycenter.selenium.pages.*;
+import com.sura.policycenter.selenium.pages.colectivas.IngresoDeRiesgosPolizaColectivaPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 import java.util.Map;
 
-public class AgregarRiesgosPolizaColectivaSteps extends ScenarioSteps {
+public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
 
-    AgregarRiesgosPolizaColectivaPages agregarRiesgosPolizaColectivaPages;
+    IngresoDeRiesgosPolizaColectivaPages ingresoDeRiesgosPolizaColectivaPages;
     IngresarInformacionDeCuenta ingresarInformacionDeCuenta;
     CuentaPage cuentaPage;
     DetalleDeAseguradoDeCotizacionPage detalleDeAseguradoDeCotizacionPage;
     ValidacionesInformacionDeVehiculoPage validacionesInformacionDeVehiculoPage;
+    IngresoDeCoberturasPage ingresoDeCoberturasPage;
+    AprobacionDeAnalisisDeRiesgoPage aprobacionDeAnalisisDeRiesgoPage;
+    ExpedicionDePolizaPage expedicionDePolizaPage;
 
     @Step
     public void clicEnAgregarRiesgoInfoPoliza() {
-        agregarRiesgosPolizaColectivaPages.clicEnAgregarRiesgoInfoPoliza();
+        ingresoDeRiesgosPolizaColectivaPages.clicEnAgregarRiesgoInfoPoliza();
     }
 
     @Step
     public void clicEnAgregarRiesgo() {
-        agregarRiesgosPolizaColectivaPages.clicEnAgregarRiesgo();
+        ingresoDeRiesgosPolizaColectivaPages.clicEnAgregarRiesgo();
     }
 
     @Step
@@ -62,6 +62,29 @@ public class AgregarRiesgosPolizaColectivaSteps extends ScenarioSteps {
 
     @Step
     public void ingresarCoberturas() {
+        ingresoDeCoberturasPage.ingresarLimite();
+        ingresoDeCoberturasPage.ingresarDeducible();
+        ingresoDeCoberturasPage.cotizar();
+    }
 
+    @Step
+    public void aprobarAnalisisDeRiesgo() {
+        aprobacionDeAnalisisDeRiesgoPage.aprobarAnalisisDeRiesgo();
+    }
+
+    @Step
+    public void expedirPoliza() {
+        aprobacionDeAnalisisDeRiesgoPage.expedirPoliza();
+    }
+
+    @Step
+    public void validarOpcionIrAPolizaColectiva() {
+        expedicionDePolizaPage.irAPolizaColectiva();
+    }
+
+    @Step
+    public void validarRiesgoIngresado(ExamplesTable riesgosColectiva) {
+        ingresoDeRiesgosPolizaColectivaPages.clicEnAgregarRiesgoInfoPoliza();
+        ingresoDeRiesgosPolizaColectivaPages.validarRiesgoIngresado(riesgosColectiva);
     }
 }

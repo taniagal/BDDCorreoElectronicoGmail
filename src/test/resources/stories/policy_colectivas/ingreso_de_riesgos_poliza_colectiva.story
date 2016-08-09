@@ -1,10 +1,12 @@
-Agregar Riesgos Poliza Colectiva
+Ingreso De Riesgos Poliza Colectiva
 
 Meta:
 
+@issue #CDSEG-916
+
 Narrative:
 Como usuario de PolicyCenter
-Quiero ser capaz de poder ingresar un riesgo a una póliza colectiva de Autos
+Quiero ser capaz de ingresar un riesgo a una póliza colectiva de Autos
 
 
 Scenario: Validar la creacion de un riesgo con cuenta nueva
@@ -32,14 +34,13 @@ And vaya a agregar un vehiculo con los datos:
 And relacione el asegurado a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
-And selecciono la opcion de cotizar
 And voy a la opcion de analisis de riesgo y autorizo
 And expido la poliza para agregar el riesgo a la poliza colectiva
-Then debo la opcion de ir a la poliza colectiva de la nueva poliza creada
-And Al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado con los datos correspondientes
-||
-||
+Then se debe visualizar la opcion de ir a la poliza colectiva de la nueva poliza creada
+And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado con los datos correspondientes
+| placa  | claseVehiculo | modelo | marca     | linea                   |
+| ZAZ741 | Automóviles   | 2008   | CHEVROLET | 1.4 L - MT 1400CC 4P AA |
 
 Examples:
-||
-||
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | nombre | apellido |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | Eliana | Alvarez  |
