@@ -32,11 +32,12 @@ public class IngresoDeCoberturasPage extends PageObject{
     public void ingresarDeducible(){
         campoDeducible.click();
         campoDeducible.sendKeys(Keys.ARROW_DOWN);
+        campoDeducible.sendKeys(Keys.ARROW_DOWN);
         campoDeducible.sendKeys(Keys.ENTER);
     }
 
     public void cotizar(){
         botonCotizar.click();
-        guidewire.waitUntil(3000);
+        waitForTextToAppear("Asuntos previos a la oferta");
     }
 }

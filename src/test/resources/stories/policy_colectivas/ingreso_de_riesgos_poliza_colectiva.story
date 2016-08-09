@@ -30,7 +30,7 @@ And la cuenta fue creada y agregada satisfactoriamente como asegurado
 |ELIANA ALVAREZ|CEDULA DE CIUDADANIA|1037500160|
 And vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor    |valor_asegurado|descuento|
-|ZAZ746|2008  |01601169        |MEDELLIN          |Particular       |AAA1451  |AAA1452  |15000000       |null     |
+|ZAZ741|2008  |01601169        |MEDELLIN          |Particular       |AAA1451  |AAA1452  |15000000       |null     |
 And relacione el asegurado a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
@@ -39,7 +39,7 @@ And expido la poliza para agregar el riesgo a la poliza colectiva
 Then se debe visualizar la opcion de ir a la poliza colectiva de la nueva poliza creada
 And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado con los datos correspondientes
 | placa  | claseVehiculo | modelo | marca     | linea                   |
-| ZAZ746 | Automóviles   | 2008   | CHEVROLET | 1.4 L - MT 1400CC 4P AA |
+| ZAZ741 | Automóviles   | 2008   | CHEVROLET | 1.4 L - MT 1400CC 4P AA |
 
 Examples:
 | numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | consultaNombre | consultaApellido |

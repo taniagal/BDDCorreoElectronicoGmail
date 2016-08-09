@@ -116,6 +116,6 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         waitFor(botonRelacionarAsegurado).click();
         waitFor(botonAsegurado);
         botonAsegurado.click();
-        waitUntil(10000);
+        waitUntil(2000);
     }
 }
