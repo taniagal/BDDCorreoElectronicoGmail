@@ -155,6 +155,7 @@ public class TarifaAutosPage extends Commons {
         selectItem(comboBoxGastosDeTransporte, dato.get("GTH"));
         checkBoxAccidentes.click();
         selectItem(comboBoxAccidentes, dato.get("AC"));
+        checkBoxAsistencia.click();
         selectItem(comboBoxAsistencia, dato.get("AS"));
         checkBoxTaller.click();
         selectItem(comboBoxTaller, dato.get("Taller"));
