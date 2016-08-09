@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -90,7 +91,7 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
     WebElementFacade tblTomadoresAdicionales;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
     WebElementFacade btnEscritorio;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:AddressDescription-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:AddressDescription-labelEl']")
     WebElementFacade lblDescripDireccion;
     @FindBy(xpath = ".//*[@id='EditPolicyContactRolePopup:ContactDetailScreen:PolicyContactRoleDetailsCV:PolicyContactDetailsDV:AddressDescription-inputEl']")
     WebElementFacade txtDescripDireccion;
@@ -173,10 +174,10 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
     }
 
     public void  seleccionarProducto(String nomProducto) {
+        waitUntil(1000);
         String xpathBotonElegirProducto = BTNELEGIRPRODUCTO + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
-        waitUntil(1000);
         botonElegirProducto.click();
     }
 
@@ -242,7 +243,7 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
 
     public void validaMensajeEnPantalla(String mensaje) {
         waitInfoPoliza(mensajePantalla);
-        MatcherAssert.assertThat("Falto Mensaje validacion en pantalla", mensajePantalla.containsText(mensaje));
+        MatcherAssert.assertThat(mensajePantalla.getText(), Matchers.containsString(mensaje));
     }
 
     public void validaReaseguro() {
