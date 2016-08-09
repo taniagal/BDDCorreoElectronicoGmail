@@ -56,4 +56,44 @@ public class ModificacionInformacionPolizaPASteps extends ScenarioSteps{
     public void validarRestriccionEdicionTomador() {
         modificacionInformacionPolizaPAPage.validarRestriccionEdicionTomador();
     }
+
+    @Step
+    public void presionarBotonSiguiente(){
+        modificacionInformacionPolizaPAPage.presionarBotonSiguiente();
+    }
+
+    @Step
+    public void validarMensajeWarningTomador(String mensaje) {
+        modificacionInformacionPolizaPAPage.validarMensajeWarningTomador(mensaje);
+    }
+
+    @Step
+    public void validarMensajeWarningAsegurado(String mensaje) {
+        modificacionInformacionPolizaPAPage.validarMensajeWarningAsegurado(mensaje);
+    }
+
+    @Step
+    public void permitirContinuarCotizacion() {
+        modificacionInformacionPolizaPAPage.permitirContinuarCotizacion();
+    }
+
+    @Step
+    public void irAOpcionAsegurados() {
+        modificacionInformacionPolizaPAPage.irAOpcionAsegurados();
+    }
+
+    @Step
+    public void adicionarAsegurado(String tipoDocumento, String numeroDocumento) {
+        modificacionInformacionPolizaPAPage.adicionarAsegurado(tipoDocumento, numeroDocumento);
+    }
+
+    @Step
+    public void irAOpcionVehiculos() {
+        modificacionInformacionPolizaPAPage.irAOpcionVehiculos();
+    }
+
+    @Step
+    public void validarContinuacionDeCotizacion(String encabezado, String xpathEncabezado) {
+        modificacionInformacionPolizaPAPage.validarContinuacionDeCotizacion(encabezado, xpathEncabezado);
+    }
 }
