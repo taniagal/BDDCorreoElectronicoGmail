@@ -168,7 +168,7 @@ public class OpcionesInformacionPolizaPage extends Guidewire {
     }
 
     public void seleccionarProducto() {
-        waitUntil(1500);
+        waitUntil(2000);
         WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:" + this.encontrarProducto().toString() + ":addSubmission']");
         botonElegirProducto.click();
     }
