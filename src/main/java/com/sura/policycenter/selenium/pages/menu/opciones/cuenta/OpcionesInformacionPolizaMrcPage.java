@@ -155,7 +155,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     }
 
     public boolean editarDescripDireccionTomador() {
-        if (lblDescripDireccion.isPresent()) {
+        if (lblDescripcionDir.isPresent()) {
             lblNombreCompleto.click();
             waitInfoPoliza(txtDescripDireccion);
             txtDescripDireccion.clear();
@@ -268,9 +268,9 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
 
     public void validaFormularioDescripDireccion() {
         if (esVisible) {
-            MatcherAssert.assertThat("el campo Descripcion direccion no debe estar presente", !lblDescripDireccion.isPresent());
+            MatcherAssert.assertThat("el campo Descripcion direccion no debe estar presente", !lblDescripcionDir.isPresent());
         }else{
-            MatcherAssert.assertThat("el campo Descripcion direccion debe estar presente al ingresar direccion", lblDescripDireccion.isPresent());
+            MatcherAssert.assertThat("el campo Descripcion direccion debe estar presente al ingresar direccion", lblDescripcionDir.isPresent());
         }
     }
     // TODO: 30/06/2016 Metodo wait para implementar generico

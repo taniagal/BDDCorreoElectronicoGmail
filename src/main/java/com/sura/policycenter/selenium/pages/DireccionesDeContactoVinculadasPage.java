@@ -12,12 +12,12 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -39,18 +39,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade grdNumeroCuenta;
     @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
     private WebElementFacade mnuContactos;
-    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:7:Name']")
-    private WebElementFacade grdContacto1;
-    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:2:Name']")
-    private WebElementFacade grdContacto2;
-    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:6:Name']")
-    private WebElementFacade grdContacto3;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:LinkAddressMenuMenuIcon']/img")
     private WebElementFacade btnAsociarDireccion;
-    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail-arrowEl']")
-    private WebElementFacade btnSeleccionar;
-    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail:PrimaryAddress-textEl']")
-    private WebElementFacade direccionContacto;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
     private WebElementFacade btnActualizar;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:EditAddress']")
@@ -63,8 +53,6 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade txtCiudad;
     @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade txtDireccion;
-    @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-inputEl']")
-    private WebElementFacade txtCodigoPostal;
     @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:AddressType-inputEl']")
     private WebElementFacade txtTipoDireccion;
     @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:AddressDescription-inputEl']")
@@ -79,36 +67,22 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade txtCiudadContacto;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade txtDireccionContacto;
-    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:PostalCode-bodyEl']")
-    private WebElementFacade txtCodigoPostalContacto;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressType-inputEl']")
     private WebElementFacade txtTipoDireccionContacto;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressDescription-bodyEl']")
     private WebElementFacade txtDescripcionContacto;
-    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']")
-    private WebElementFacade btnCancelar;
     @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:LinkedAddressContactsLV-body']")
     private WebElementFacade tabla;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV-body']")
     private WebElementFacade tablaContactos;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade campoDireccionDetalleDirecciones;
-    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
-    private WebElementFacade campoDireccionDetalle;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
     private WebElementFacade botonActualizarContacto;
-    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesCardTab-btnInnerEl']")
-    private WebElementFacade pestanaDirecciones;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:__crumb__']")
     private WebElementFacade linkVolverAContacto;
     @FindBy(xpath = "//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarMensaje;
-    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
-    private WebElementFacade campoPaisDetalle;
-    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']")
-    private WebElementFacade botonCancelarContacto;
-    @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:Cancel-btnInnerEl']")
-    private WebElementFacade botonCancelarDetalle;
 
     public DireccionesDeContactoVinculadasPage(WebDriver driver) {
         super(driver);
@@ -456,12 +430,10 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
                 .pollingEvery(5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
 
-        WebElementFacade elemento = espera.until(new Function<WebDriver, WebElementFacade>() {
+        return espera.until(new Function<WebDriver, WebElementFacade>() {
             public WebElementFacade apply(WebDriver driver) {
                 return findBy(xpath);
             }
         });
-
-        return elemento;
     }
 }
