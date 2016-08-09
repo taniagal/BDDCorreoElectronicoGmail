@@ -1,3 +1,4 @@
+
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
