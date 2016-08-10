@@ -112,10 +112,11 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
         MatcherAssert.assertThat("Error, no se validó el codigo fasecolda.", "".equals(campoTxtCodigoFasecolda.getValue()));
     }
 
-    public void relacionarAseguradoDelVehiculo(){
+    public void relacionarAseguradoDelVehiculo(String asegurado){
         waitFor(botonRelacionarAsegurado).click();
         waitFor(botonAsegurado);
         botonAsegurado.click();
-        waitUntil(2000);
+        waitForTextToAppear(asegurado);
+        waitUntil(3000);
     }
 }

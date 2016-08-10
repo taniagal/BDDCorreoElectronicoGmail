@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.steps.colectivas;
 
 import com.sura.policycenter.selenium.pages.*;
 import com.sura.policycenter.selenium.pages.colectivas.IngresoDeRiesgosPolizaColectivaPages;
+import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
@@ -18,6 +19,7 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     IngresoDeCoberturasPage ingresoDeCoberturasPage;
     AprobacionDeAnalisisDeRiesgoPage aprobacionDeAnalisisDeRiesgoPage;
     ExpedicionDePolizaPage expedicionDePolizaPage;
+    OpcionesInformacionPolizaPage opcionesInformacionPolizaPage;
 
     @Step
     public void clicEnAgregarRiesgoInfoPoliza() {
@@ -34,6 +36,12 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
         ingresarInformacionDeCuenta.ingresarNombreYApellido(nombre, apellido);
         ingresarInformacionDeCuenta.clicEnBuscar();
         ingresarInformacionDeCuenta.crearCuentaNuevaPersonal();
+    }
+
+    @Step
+    public void ingresarDatosParaBuscarRazonSocial(String razonSocial) {
+        ingresarInformacionDeCuenta.ingresarRazonSocial(razonSocial);
+        ingresarInformacionDeCuenta.clicEnBuscar();
     }
 
     @Step
@@ -56,8 +64,8 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void relacionarAsegurado() {
-        validacionesInformacionDeVehiculoPage.relacionarAseguradoDelVehiculo();
+    public void relacionarAsegurado(String asegurado) {
+        validacionesInformacionDeVehiculoPage.relacionarAseguradoDelVehiculo(asegurado);
     }
 
     @Step
@@ -86,5 +94,16 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     public void validarRiesgoIngresado(ExamplesTable riesgosColectiva) {
         ingresoDeRiesgosPolizaColectivaPages.clicEnAgregarRiesgoInfoPoliza();
         ingresoDeRiesgosPolizaColectivaPages.validarRiesgoIngresado(riesgosColectiva);
+    }
+
+    @Step
+    public void seleccionarLaCuenta() {
+        ingresarInformacionDeCuenta.seleccionarContactoExistente();
+    }
+
+    @Step
+    public void validarInformacionDePolizaPA(ExamplesTable infoPoliza) {
+        opcionesInformacionPolizaPage.irAInformacionDePoliza();
+        opcionesInformacionPolizaPage.validarInfoPolizaPA(infoPoliza);
     }
 }

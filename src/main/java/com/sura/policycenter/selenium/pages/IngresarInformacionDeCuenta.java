@@ -27,10 +27,10 @@ public class IngresarInformacionDeCuenta extends PageObject {
         super(driver);
     }
 
-    public void ingresarRazonSocial(String nombre){
+    public void ingresarRazonSocial(String razonSocial){
         waitFor(consultaRazonSocial);
         consultaRazonSocial.clear();
-        consultaRazonSocial.sendKeys(nombre);
+        consultaRazonSocial.sendKeys(razonSocial);
     }
 
     public void ingresarNombreYApellido(String nombre, String apellido){

@@ -4,7 +4,6 @@ package com.sura.policycenter.selenium.pages;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 public class AprobacionDeAnalisisDeRiesgoPage extends PageObject {
@@ -26,19 +25,12 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageObject {
 
     public void aprobarAnalisisDeRiesgo() {
         menuAnalisisDeRiesgo.click();
-        waitForTextToAppear("Análisis de riesgo");
-        boolean aprobaciones = true;
-        while (aprobaciones) {
-            try {
-                botonAprobacionEspecial.click();
-                botonAceptarMensaje.click();
-                waitFor(botonAceptarAprobacion);
-                botonAceptarAprobacion.click();
-                botonAceptarMensaje.click();
-                waitForTextToAppear("Análisis de riesgo");
-            } catch (StaleElementReferenceException elemento) {
-                aprobaciones = false;
-            }
+        while (botonAprobacionEspecial.isPresent()) {
+            waitForTextToAppear("Análisis de riesgo");
+            waitFor(botonAprobacionEspecial).click();
+            waitFor(botonAceptarMensaje).click();
+            waitFor(botonAceptarAprobacion);
+            botonAceptarAprobacion.click();
         }
     }
 

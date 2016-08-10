@@ -8,9 +8,44 @@ Narrative:
 Como usuario de PolicyCenter
 Quiero ser capaz de ingresar un riesgo a una póliza colectiva de Autos
 
+Scenario: Validar la creacion de un riesgo con cuenta existente
+GivenStories: stories/policycenter/login_policy.story
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> de poliza colectiva para expedirla
+And de clic en agregar riesgo para ir a la ventana de riesgos
+And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
+And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
+And seleccione la cuenta consultada para agregar al riesgo
+And valide la informacion de la poliza individual
+| tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador           | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal   | tipoPoliza  | tipoPlazo | oficina | agente      | descuento | aniosVigencia |
+| CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Bancolombia  | Leasing | Autos Banca | Anual     | SURA    | 1989DIRECTO | 0         | 1             |
+And quiera agregar un asegurado
+And la cuenta fue creada y agregada satisfactoriamente como asegurado
+| nombre                  | tipoDocumento | numeroDocumento |
+| VARIEDADES YURLEDYS S.A | NIT           | 9202086744      |
+And vaya a agregar un vehiculo con los datos:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor    |valor_asegurado|descuento|
+|ZAX740|2008  |01601169        |MEDELLIN          |Particular       |AAA1450  |AAA1450  |15000000       |null     |
+And relacione el asegurado <asegurado> a los datos del vehiculo
+And voy a realizar el siguiente paso
+And ingrese las coberturas minimas para realizar la cotizacion
+And voy a la opcion de analisis de riesgo y autorizo
+And expido la poliza para agregar el riesgo a la poliza colectiva
+Then se debe visualizar la opcion de ir a la poliza colectiva de la nueva poliza creada
+And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado con los datos correspondientes
+| placa  | claseVehiculo | modelo | marca     | linea                   |
+| ZAX740 | Automóviles   | 2008   | CHEVROLET | 1.4 L - MT 1400CC 4P AA |
+
+Examples:
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | razonSocial             |asegurado|
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | VARIEDADES YURLEDYS S.A |VARIEDADES YURLEDYS S.A |
 
 Scenario: Validar la creacion de un riesgo con cuenta nueva
-GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar la cuenta <numCuenta>
 And quiero expedir una poliza nueva
 And seleccione el agente <agente>
@@ -24,14 +59,17 @@ And ingrese los datos para realizar la busqueda de la cuenta persona natural <co
 And ingrese los datos para crear un contacto tipo persona natural
 | tipoDocumento        | numeroDocumento | nombre | apellido | fechaNacimiento | departamento | ciudad   | direccion        | tipoDireccion |organizacionCuenta|agenteCuenta|
 | CEDULA DE CIUDADANIA | 1037500160      |        |          | 01/01/1990      | ANTIOQUIA    | MEDELLIN | CARRERA 10 11 12 | Vivienda      |SURA              |4999DIRECTO |
+And valide la informacion de la poliza individual
+| tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador           | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal             | tipoPoliza       | tipoPlazo | oficina | agente      | descuento | aniosVigencia |
+| CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Sura         | Canal Tradicional | Commercial Fleet | Anual     | SURA    | 1989DIRECTO | 0         | 1             |
 And quiera agregar un asegurado
 And la cuenta fue creada y agregada satisfactoriamente como asegurado
-|nombre|tipoDocumento|numeroDocumento|
-|ELIANA ALVAREZ|CEDULA DE CIUDADANIA|1037500160|
+| nombre         | tipoDocumento        | numeroDocumento |
+| ELIANA ALVAREZ | CEDULA DE CIUDADANIA | 1037500160      |
 And vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor    |valor_asegurado|descuento|
 |ZAZ741|2008  |01601169        |MEDELLIN          |Particular       |AAA1451  |AAA1452  |15000000       |null     |
-And relacione el asegurado a los datos del vehiculo
+And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
 And voy a la opcion de analisis de riesgo y autorizo
@@ -42,5 +80,5 @@ And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado co
 | ZAZ741 | Automóviles   | 2008   | CHEVROLET | 1.4 L - MT 1400CC 4P AA |
 
 Examples:
-| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | consultaNombre | consultaApellido |
-| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | Eliana         | Alvarez          |
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | consultaNombre | consultaApellido | asegurado      |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | Eliana         | Alvarez          | ELIANA ALVAREZ |

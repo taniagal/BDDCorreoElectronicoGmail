@@ -34,9 +34,19 @@ public class IngresoDeRiesgosPolizaColectivaDefinitions {
         ingresoDeRiesgosPolizaColectivaSteps.ingresarDatosParaBuscarPersonalNatural(consultaNombre, consultaApellido);
     }
 
+    @When("ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>")
+    public void ingresarDatosParaBuscarRazonSocial(@Named("razonSocial") String razonSocial){
+        ingresoDeRiesgosPolizaColectivaSteps.ingresarDatosParaBuscarRazonSocial(razonSocial);
+    }
+
     @When("ingrese los datos para crear un contacto tipo persona natural $cuentaNueva")
     public void crearCuentaPersonaNatural(ExamplesTable cuentaNueva){
         ingresoDeRiesgosPolizaColectivaSteps.crearCuentaPersonaNatural(cuentaNueva);
+    }
+
+    @When("seleccione la cuenta consultada para agregar al riesgo")
+    public void seleccionarLaCuenta(){
+        ingresoDeRiesgosPolizaColectivaSteps.seleccionarLaCuenta();
     }
 
     @When("la cuenta fue creada y agregada satisfactoriamente como asegurado $asegurados")
@@ -44,9 +54,9 @@ public class IngresoDeRiesgosPolizaColectivaDefinitions {
         ingresoDeRiesgosPolizaColectivaSteps.validarAseguradoAgregado(asegurados);
     }
 
-    @When("relacione el asegurado a los datos del vehiculo")
-    public void relacionarAsegurado(){
-        ingresoDeRiesgosPolizaColectivaSteps.relacionarAsegurado();
+    @When("relacione el asegurado <asegurado> a los datos del vehiculo")
+    public void relacionarAsegurado(@Named("asegurado") String asegurado){
+        ingresoDeRiesgosPolizaColectivaSteps.relacionarAsegurado(asegurado);
     }
 
     @When("ingrese las coberturas minimas para realizar la cotizacion")
@@ -62,6 +72,11 @@ public class IngresoDeRiesgosPolizaColectivaDefinitions {
     @When("expido la poliza para agregar el riesgo a la poliza colectiva")
     public void expedirPoliza(){
         ingresoDeRiesgosPolizaColectivaSteps.expedirPoliza();
+    }
+
+    @When("valide la informacion de la poliza individual $infoPoliza")
+    public void validarInformacionDePolizaPA(ExamplesTable infoPoliza){
+        ingresoDeRiesgosPolizaColectivaSteps.validarInformacionDePolizaPA(infoPoliza);
     }
 
     @Then("se debe visualizar la opcion de ir a la poliza colectiva de la nueva poliza creada")
