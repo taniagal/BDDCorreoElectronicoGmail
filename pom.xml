@@ -103,7 +103,7 @@
                 <version>${maven.failsafe.plugin}</version>
                 <configuration>
                     <includes>
-                        <include>**/policycenter/*.java</include>
+                        <include>**/policycenter/CotizacionDePoliza.java</include>
                     </includes>
                     <excludes>
                         <exclude>**/policycenter/MainStories.java</exclude>

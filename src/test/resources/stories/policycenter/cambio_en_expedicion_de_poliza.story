@@ -33,10 +33,10 @@ Examples:
 
 Scenario: Validacion etiquetas y mensaje de ventana
 Meta: @manual
-Given Que tengo una cotizacion <cotizacion>
-When cuando vaya expedir el cambio de una poliza
-And confirmo el mensaje de expedir cambio de poliza
-Then se deben validar todos las etiquetas y mensajes del formulario <mensaje>
+Given  Que tengo una cotizacion <cotizacion>
+When  cuando vaya expedir el cambio de una poliza
+And  confirmo el mensaje de expedir cambio de poliza
+Then  se deben validar todos las etiquetas y mensajes del formulario <mensaje>
 
 Examples:
 |cotizacion |mensaje
