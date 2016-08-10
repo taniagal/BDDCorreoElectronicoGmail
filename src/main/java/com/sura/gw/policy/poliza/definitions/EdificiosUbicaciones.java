@@ -140,7 +140,7 @@ public class EdificiosUbicaciones {
 
 
     @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
-    @Alias("se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electrónico móvil y pórtatil (se suman los de la categoría otros y los normales). $mensajesEsperados")
+    @Alias("se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados")
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
 
         List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
