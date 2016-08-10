@@ -58,7 +58,7 @@ Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensa
 
 Examples:
 |cotizacion|mensaje|
-|22270001  |El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
+|22270001  |El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
 
 Scenario: Validar exclusividad
 Given he realizado la cotizacion <cotizacion>
@@ -75,7 +75,7 @@ Examples:
 
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:
-@Manual
+@manual
 Given he realizado la cotizacion <cotizacion>
 When ingrese a la cotizacion
 And el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
@@ -87,7 +87,7 @@ Examples:
 
 Scenario: Riesgos consultables - Tipo Causal Moral
 Meta:
-@Manual
+@manual
 Given he realizado la cotizacion <cotizacion>
 When ingrese a la cotizacion
 And el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA

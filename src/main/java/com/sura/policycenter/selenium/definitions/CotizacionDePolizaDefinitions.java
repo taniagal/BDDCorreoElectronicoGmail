@@ -4,15 +4,15 @@ package com.sura.policycenter.selenium.definitions;
 import com.google.inject.name.Named;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.CotizacionDePolizaSteps;
-import java.util.HashMap;
-import java.util.Map;
-import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class CotizacionDePolizaDefinitions {
@@ -63,20 +63,6 @@ public class CotizacionDePolizaDefinitions {
     @When("el tipo de riesgo es CHASIS")
     public void validarTipoRiesgoChasis(){
         cotizacionDePolizaSteps.validarTipoRiesgo();
-    }
-
-    @SuppressWarnings("EmptyMethod")
-    @When("el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
-    @Manual
-    public void validarTipoRiesgoCausalTecnica(){
-        //Se ejecuta manualmente
-    }
-
-    @SuppressWarnings("EmptyMethod")
-    @When("el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
-    @Manual
-    public void validarTipoRiesgoCausalMoral(){
-        //Se ejecuta manualmente
     }
 
     @When("las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable")
@@ -140,17 +126,4 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.validarBloqueoPorExclusividad(mensaje);
     }
 
-    @SuppressWarnings("EmptyMethod")
-    @Then("no se debe permitir continuar con la cotizacion, no se debe mostrar ningun valor de cotizacion al cliente")
-    @Manual
-    public void thenValidarBloqueo(){
-        //Se ejecuta manualmente
-    }
-
-    @SuppressWarnings("EmptyMethod")
-    @Then("no se debe permitir continuar con la cotizacion y mostrar un mensaje")
-    @Manual
-    public void thenMostrarMensaje(){
-        //Se ejecuta manualmente
-    }
 }

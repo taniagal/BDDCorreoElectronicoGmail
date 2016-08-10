@@ -30,9 +30,10 @@ public class InformacionDeVehiculoDefinitions {
         informacionDeVehiculoSteps.ingresar_a_cotizacion_de_vehiculo();
     }
 
-    @When("ingrese el beneficiario o conductor en los intereses adicionales")
-    public void whenvayaARegistrarLosDatosDelBeneficiario(){
-        informacionDeVehiculoSteps.ingresar_intereses_adicionales_o_conductor();
+    @When("ingrese el beneficiario o conductor <tipoDocumento> <numeroDocumento> en los intereses adicionales")
+    public void whenvayaARegistrarLosDatosDelBeneficiario(@Named("tipoDocumento") String tipoDocumento,
+                                                          @Named("numeroDocumento") String numeroDocumento){
+        informacionDeVehiculoSteps.ingresar_intereses_adicionales_o_conductor(tipoDocumento, numeroDocumento);
     }
 
     @Then("el sistema debe permitir pasar a la siguinete pagina")
@@ -61,6 +62,21 @@ public class InformacionDeVehiculoDefinitions {
         informacionDeVehiculoSteps.validar_campos_informacion_vehiculo(mensaje);
     }
 
+    @When("el interes adicional este marcado como riesgo PEP")
+    public void validarInteresAdicionalPEP(){
+        informacionDeVehiculoSteps.validar_Interes_Adicional_PEP();
+    }
+
+    @Then("el sistema debe mostrar un mensaje <mensaje> obtenido desde Riesgos PEPS")
+    public void validarMensajePEPInteresAdicional(@Named("mensaje") String mensaje){
+        informacionDeVehiculoSteps.validar_Mensaje_PEP_Interes_Adicional(mensaje);
+    }
+
+    @Then("permitir continuar con la cotizacion")
+    public void permitirContinuarCotizacion(){
+        informacionDeVehiculoSteps.permitir_Conticuar_Cotizacion();
+    }
+
     @Then("se deben visualizar todos los campos de informacion")
 
     public void thenSeDebenVisualizarTodosLosCamposDeInformacion() {
@@ -87,6 +103,4 @@ public class InformacionDeVehiculoDefinitions {
     public void whenVayaARegistrarQlosDatosDelVehiculo() {
         // PENDING
     }
-
-
 }

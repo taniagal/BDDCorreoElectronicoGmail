@@ -95,6 +95,14 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
     private WebElementFacade labelTomadorSecundario;
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade botonCotizar;
+    @FindBy(xpath=".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
+    private WebElementFacade botonSiguiente;
+    @FindBy(xpath=".//td[@id='PolicyChangeWizard:LOBWizardStepGroup:PADrivers']/div/span")
+    private WebElementFacade itemAsegurados;
+    @FindBy(xpath=".//td[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div/span")
+    private WebElementFacade itemVehiculos;
+
+    //td[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div/span
 
     public ModificacionInformacionPolizaPAPage(WebDriver driver) {
         super(driver);
@@ -170,6 +178,10 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonTomadorSecundario).click();
         WebElementFacade itemPersonaDirectorio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-textEl']");
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
+        adicionarContacto(tipoDocumento, numeroDocumento);
+    }
+
+    public void adicionarContacto(String tipoDocumento, String numeroDocumento){
         waitUntil(1000);
         WebElementFacade campoTipoDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']");
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTipoDocumento).typeAndTab(tipoDocumento);
@@ -243,5 +255,66 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
         }
+    }
+
+    public void presionarBotonSiguiente(){
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBeVisible();
+        botonSiguiente.click();
+        waitUntil(1000);
+    }
+
+    public void validarMensajeWarningTomador(String mensaje) {
+        waitUntil(1000);
+        WebElementFacade grupoMensajes = findBy(".//div[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:_msgs']/div");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
+        botonSiguiente.click();
+        waitUntil(2000);
+    }
+
+    public void validarMensajeWarningAsegurado(String mensaje) {
+        waitUntil(1000);
+        WebElementFacade grupoMensajes = findBy(".//div[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:_msgs']/div");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
+        botonSiguiente.click();
+        waitUntil(2000);
+    }
+
+    public void permitirContinuarCotizacion() {
+        waitUntil(1000);
+        WebElementFacade labelTituloAsegurados = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTituloAsegurados).shouldBePresent();
+        MatcherAssert.assertThat(labelTituloAsegurados.getText(), Is.is(Matchers.equalTo("Asegurados")));
+        waitUntil(1000);
+    }
+
+    public void irAOpcionAsegurados() {
+        waitFor(itemAsegurados);
+        itemAsegurados.click();
+    }
+
+    public void adicionarAsegurado(String tipoDocumento, String numeroDocumento) {
+        waitUntil(5000);
+        WebElementFacade botonAgregar= findBy(". //span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnEl']/span");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonAgregar).click();
+        WebElementFacade itemPersonaDirectorio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddFromSearch-textEl']");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
+        adicionarContacto(tipoDocumento, numeroDocumento);
+    }
+
+    public void irAOpcionVehiculos() {
+        waitFor(itemVehiculos);
+        itemVehiculos.click();
+    }
+
+    public void validarContinuacionDeCotizacion(String encabezado, String xpathEncabezado) {
+        waitUntil(1000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBePresent();
+        botonSiguiente.click();
+        WebElementFacade labelTitulo = findBy(xpathEncabezado);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTitulo).shouldBePresent();
+        MatcherAssert.assertThat(labelTitulo.getText(), Is.is(Matchers.equalTo(encabezado)));
+        waitUntil(1000);
     }
 }

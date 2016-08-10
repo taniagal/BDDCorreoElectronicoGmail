@@ -37,3 +37,18 @@ Then se debe mostrar en los campos de bonificación tecnica y comercial el porce
 Examples:
 |numeroPoliza |
 |TEST_22223223|
+
+Scenario: Validar que muestre mensaje warning de PEPS para intereses adicionales - Vehiculos
+Meta:
+@manual
+Given ya se tiene una poliza expedida <numeroPoliza>
+When ingrese a modificar dicha cotizacion
+And ingrese a la opcion vehiculos
+And adicione un interes adicional <tipoDocumento> <numeroDocumento>
+And se presione el boton siguiente
+Then se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de interes adicional
+And se debe permitir continuar a coberturas de auto personal
+
+Examples:
+|numeroPoliza |tipoDocumento       |numeroDocumento|mensaje                                                                                               |
+|TEST_22222222|CEDULA DE CIUDADANIA|123456         |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
