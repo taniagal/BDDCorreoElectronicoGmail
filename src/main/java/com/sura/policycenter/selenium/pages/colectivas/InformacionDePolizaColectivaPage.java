@@ -128,7 +128,6 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     private final Guidewire guidewire = new Guidewire(getDriver());
     private final DateFormat dateFormat = new SimpleDateFormat(MM_DD_YYYY);
     private final Date fechaHoy = new Date();
-    private String rolCampos = "presentation";
     private String rolListas = "textbox";
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {
