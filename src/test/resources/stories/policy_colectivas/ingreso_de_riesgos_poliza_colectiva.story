@@ -82,3 +82,9 @@ And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado co
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | consultaNombre | consultaApellido | asegurado      |
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | Eliana         | Alvarez          | ELIANA ALVAREZ |
+
+Scenario: validar que la fecha de inicio de vigencia en Informacion de Poliza se puede modificar para autos y commercial fleet
+Meta: @manual
+Given que estoy en una poliza colectiva
+When agregue un riesgo y este en la informacion de la poliza
+Then debo poder cambiar la fecha de inicio de vigencia
