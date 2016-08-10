@@ -15,6 +15,8 @@ public class ValidacionDelNegocioCoberturaPage extends Guidewire{
     private WebElementFacade botonAgregarUbicacion;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB:AddNewLocation-itemEl']")
     private WebElementFacade botonAgregarNuevaUbicacion;
+    @FindBy(xpath=".//*[@id='SubmissionWizard:Next-btnInnerEl']")
+    private WebElementFacade botonSiguiente;
 
 
     Actions actions = new Actions(getDriver());
@@ -23,12 +25,9 @@ public class ValidacionDelNegocioCoberturaPage extends Guidewire{
         super(driver);
     }
 
-    public void agregaNuevaUbicacion (){
+    public void irAUbicacion(){
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
-        botonAgregarNuevaUbicacion.click();
-
+        botonSiguiente.click();
     }
-
-
-
 }
