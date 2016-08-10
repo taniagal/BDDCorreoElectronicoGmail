@@ -36,7 +36,7 @@ Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22221237        | Asesor     |             |
 
-Scenario: Sublímite sustracción con violencia de bienes fuera de predios (Coberturas del riesgo) - Tener asegurado Equipos móviles y portatiles
+Scenario: Sublimite sustraccion con violencia de bienes fuera de predios (Coberturas del riesgo) - Tener asegurado Equipos moviles y portatiles
 Meta:
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
@@ -46,9 +46,9 @@ Meta:
 @manual true
 @Sprint 5
 
-Given Estoy ingresando la información de coberturas a nivel de riesgo
-When Ingrese un valor en el sublímite de sustracción con violencia de bienes fuera de predios Y haga clic en el botón aceptar
-Then Se debe validar que el valor ingresado en este sublímite sea menor o igual a la suma de los valores asegurables del equipo electrónico móvil y pórtatil (se suman los de la categoría otros y los normales). Si no cumple lo anterior se debe mostrar el siguiente mensaje: "El -Nombre del sublímite de sustracción con violencia de bienes fuera de predios- debe ser menor o igual a la sumatoria de los valores asegurables del equipo electrónico móvil y portatil." y no debe dejar continuar
+Given Estoy ingresando la informacion de coberturas a nivel de riesgo
+When Ingrese un valor en el sublimite de sustraccion con violencia de bienes fuera de predios Y haga clic en el boton aceptar
+Then Se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). Si no cumple lo anterior se debe mostrar el siguiente mensaje: "El -Nombre del sublimite de sustraccion con violencia de bienes fuera de predios- debe ser menor o igual a la sumatoria de los valores asegurables del equipo electronico movil y portatil." y no debe dejar continuar
 
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
@@ -71,7 +71,7 @@ When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               | Sustraccion | Sublimite sustraccion con violencia de bienes fuera de predios                 | 11             |
 When haga clic en el boton Aceptar
-Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electrónico móvil y pórtatil (se suman los de la categoría otros y los normales).
+Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                                |
 | El "Sublimite sustraccion con violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
@@ -80,7 +80,7 @@ Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22221237        | Asesor     |             |
 
-Scenario: Sublímite sustracción sin violencia de bienes fuera de predios (Coberturas del riesgo) - Tener asegurados Equipos móviles y portatiles
+Scenario: Sublimite sustraccion sin violencia de bienes fuera de predios (Coberturas del riesgo) - Tener asegurados Equipos moviles y portatiles
 Meta:
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
@@ -90,9 +90,9 @@ Meta:
 @manual
 @Sprint 5
 
-Given Estoy ingresando la información de coberturas a nivel de riesgo
-When Ingrese un valor en el sublímite de sustracción sin violencia de bienes fuera de predios Y haga clic en el botón aceptar
-Then Se debe validar que el artículo "Equipo electrónico móvil y pórtatil" debe estar asegurado (en la categoría otros o en la normal). Si no se cumple lo anterior entonces se debe mostrar el siguiente mensaje: "Para poder seleccionar el - Nombre del sublímite de sustracción sin violencia de bienes fuera de predios- debe tener asegurado el equipo electrónico móvil y pórtatil." y no debe dejar continuar.
+Given Estoy ingresando la informacion de coberturas a nivel de riesgo
+When Ingrese un valor en el sublimite de sustraccion sin violencia de bienes fuera de predios Y haga clic en el boton aceptar
+Then Se debe validar que el articulo "Equipo electronico movil y portatil" debe estar asegurado (en la categoria otros o en la normal). Si no se cumple lo anterior entonces se debe mostrar el siguiente mensaje: "Para poder seleccionar el - Nombre del sublimite de sustraccion sin violencia de bienes fuera de predios- debe tener asegurado el equipo electronico movil y portatil." y no debe dejar continuar.
 
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
@@ -114,7 +114,7 @@ When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               | Sustraccion | Sublimite sustraccion sin violencia de bienes fuera de predios                 | 11             |
 When haga clic en el boton Aceptar
-Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electrónico móvil y pórtatil (se suman los de la categoría otros y los normales).
+Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                                |
 | El "Sublimite sustraccion sin violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
@@ -124,7 +124,7 @@ Examples:
 | 22221237        | Asesor     |             |
 
 
-Scenario: Sublímite sustracción con violencia de dinero dentro de caja fuerte (Coberturas del riesgo) - Tener asegurado el dinero en efectivo
+Scenario: Sublimite sustraccion con violencia de dinero dentro de caja fuerte (Coberturas del riesgo) - Tener asegurado el dinero en efectivo
 Meta:
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
@@ -134,15 +134,15 @@ Meta:
 @manual
 @Sprint 5
 
-Given Estoy ingresando la información de coberturas a nivel de riesgo
-When Ingrese un valor en el sublímite de sustracción con violencia de dinero dentro de caja fuerte Y haga clic en el botón aceptar
-Then Se debe validar que el artículo "Dinero en efectivo" debe estar asegurado (en la categoría otros o normal). Si no se cumple lo anterior entonces se debe mostrar el siguiente mensaje: "Para poder seleccionar el -Nombre del sublímite de sustracción con violencia de dinero dentro de caja fuerte- debe tener asegurado eldinero en efectivo." y no debe dejar continuar.
+Given Estoy ingresando la informacion de coberturas a nivel de riesgo
+When Ingrese un valor en el sublimite de sustraccion con violencia de dinero dentro de caja fuerte Y haga clic en el boton aceptar
+Then Se debe validar que el articulo "Dinero en efectivo" debe estar asegurado (en la categoria otros o normal). Si no se cumple lo anterior entonces se debe mostrar el siguiente mensaje: "Para poder seleccionar el -Nombre del sublimite de sustraccion con violencia de dinero dentro de caja fuerte- debe tener asegurado eldinero en efectivo." y no debe dejar continuar.
 
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22221237        | Asesor     |             |
 
-Scenario: Sublímite de sustracción con violencia de dinero dentro de caja fuerte (Coberturas del riesgo) - Valor asegurado menor o igual a valor asegurable de dinero en efectivo
+Scenario: Sublimite de sustraccion con violencia de dinero dentro de caja fuerte (Coberturas del riesgo) - Valor asegurado menor o igual a valor asegurable de dinero en efectivo
 Meta:
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
@@ -158,7 +158,7 @@ When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
 When haga clic en el boton Aceptar
-Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electrónico móvil y pórtatil (se suman los de la categoría otros y los normales).
+Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                             |
 | El "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual a la sumatoria de los valores asegurables de "Dinero en efectivo". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
@@ -168,7 +168,7 @@ Examples:
 | 22221237        | Asesor     |             |
 
 
-Scenario: Sustracción con violencia de dinero fuera de caja fuerte (Coberturas del riesgo) - Dependencia de otro sublímite
+Scenario: Sustraccion con violencia de dinero fuera de caja fuerte (Coberturas del riesgo) - Dependencia de otro sublimite
 Meta:
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
@@ -178,9 +178,9 @@ Meta:
 @manual
 @Sprint 5
 
-Given Estoy ingresando la información de coberturas a nivel de riesgo
-When Ingrese un valor en el sublímite de sustracción con violencia de dinero fuera de caja fuerte Y haga clic en el botón aceptar
-Then Se debe validar que exista el sublímite de sustracción con violencia de dinero dentro de caja fuerte. Si no cumple lo anterior debe mostrar un mensaje en una ventana emergente que diga: "Para ingresar el -Nombre del sublímite de sustracción con violencia de dinero fuera de caja fuerte- debe tener ingresado el -Nombre del sublímite de sustracción con violencia de dinero dentro de caja fuerte-" y no debe dejar continuar.
+Given Estoy ingresando la informacion de coberturas a nivel de riesgo
+When Ingrese un valor en el sublimite de sustraccion con violencia de dinero fuera de caja fuerte Y haga clic en el boton aceptar
+Then Se debe validar que exista el sublimite de sustraccion con violencia de dinero dentro de caja fuerte. Si no cumple lo anterior debe mostrar un mensaje en una ventana emergente que diga: "Para ingresar el -Nombre del sublimite de sustraccion con violencia de dinero fuera de caja fuerte- debe tener ingresado el -Nombre del sublimite de sustraccion con violencia de dinero dentro de caja fuerte-" y no debe dejar continuar.
 
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
@@ -188,7 +188,7 @@ Examples:
 
 
 
-Scenario: Sublímite de sustracción con violencia de dinero fuera de caja fuerte (Coberturas del riesgo) - valor asegurado de este sublímite menor o igual al valor asegurado de otro sublímite
+Scenario: Sublimite de sustraccion con violencia de dinero fuera de caja fuerte (Coberturas del riesgo) - valor asegurado de este sublimite menor o igual al valor asegurado de otro sublimite
 Meta:
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
@@ -204,7 +204,7 @@ When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
 When haga clic en el boton Aceptar
-Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electrónico móvil y pórtatil (se suman los de la categoría otros y los normales).
+Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                             |
 | El "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
