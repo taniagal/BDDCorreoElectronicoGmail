@@ -1,5 +1,8 @@
-package core.sura;
+package core.sura.tests;
 
+import core.sura.resources.MetodosComunes;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,35 +14,29 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-public class Guidewire {
-	
-	private WebDriver driver;
-	private String baseUrl;
+public class Precondiciones extends MetodosComunes{
+
+    private WebDriver driver;
+    private String baseUrl;
     private Actions act;
     WebDriverWait wait;
 
-	@Before
-	public void setUp() throws Exception {
-		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+    @Before
+    public void setUp() throws Exception {
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
         driver = new ChromeDriver();
         act = new Actions(driver);
         wait = new WebDriverWait(driver, 1000);
         Properties prop = loadProperty();
-		baseUrl = prop.getProperty("url");
+        baseUrl = prop.getProperty("url");
         driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	}
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
 
     @Test
     public void CambiarLenguaje() throws Exception {
@@ -54,30 +51,6 @@ public class Guidewire {
         cargarDatos();
     }
 
-    public Properties loadProperty() throws Exception {
-
-        Properties prop = new Properties();
-        InputStream input = null;
-
-        try {
-
-            input = new FileInputStream("src/main/resources/gradle.properties");
-            prop.load(input);
-        }
-        catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            if (input != null) {
-                try {
-                    input.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return prop;
-    }
-
     public void cargarDatos() throws Exception {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
         driver.findElement(By.xpath(".//input[@id='QuickJump-inputEl']")).sendKeys(Keys.ALT,Keys.SHIFT, "t");
@@ -87,12 +60,13 @@ public class Guidewire {
         driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:SampleDataSetsLV:0:LoadSampleData']")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']"))).isDisplayed();
         assertThat(driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']")).getText(), anyOf(is
-               ("Conjunto cargado \"Sura\" correctamente."), is("Loaded set \"Sura\" successfully.")));
+                ("Conjunto cargado \"Sura\" correctamente."), is("Loaded set \"Sura\" successfully.")));
         driver.findElement(By.xpath(".//*[@id=':TabLinkMenuButton-btnIconEl']")).click();
         driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:LogoutTabBarLink']")).click();
     }
 
     public void login(String usuario ,String contrasenia) {
+        System.out.println(baseUrl + "/pc/PolicyCenter.do");
         driver.get(baseUrl + "/pc/PolicyCenter.do");
         driver.findElement(By.xpath(".//*[@id='country']")).sendKeys("Colombia");
         driver.findElement(By.id("username")).clear();
@@ -104,15 +78,15 @@ public class Guidewire {
     }
 
     public void elegirLenguaje() throws Exception {
-            driver.findElement(By.xpath(".//*[@id=':TabLinkMenuButton-btnIconEl']")).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink']"))).isDisplayed();
-            act.sendKeys(Keys.ARROW_DOWN).build().perform();
-            act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher']"))).isDisplayed();
-            act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs']"))).isDisplayed();
-            driver.findElement(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs']")).click();
-            Thread.sleep(2200);
+        driver.findElement(By.xpath(".//*[@id=':TabLinkMenuButton-btnIconEl']")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink']"))).isDisplayed();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher']"))).isDisplayed();
+        act.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs']"))).isDisplayed();
+        driver.findElement(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs']")).click();
+        Thread.sleep(2200);
     }
 
     @After
