@@ -12,9 +12,9 @@ import java.util.Map;
 
 public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
 
-    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:RisksButton-btnInnerEl']")
-    WebElementFacade botonAgregarRiesgoInfoPoliza;
-    @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:add-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:AddRisksButton-btnInnerEl']")
+    WebElementFacade botonRiesgosInfoPoliza;
+    @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:AddButton-btnInnerEl']")
     WebElementFacade botonAgregarRiesgo;
     @FindBy(xpath = "//td/div/div[2]/div/table/tbody/tr/td/div")
     WebElementFacade columnaPlaca;
@@ -32,8 +32,8 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     }
 
     public void clicEnAgregarRiesgoInfoPoliza() {
-        waitFor(botonAgregarRiesgoInfoPoliza);
-        botonAgregarRiesgoInfoPoliza.click();
+        waitFor(botonRiesgosInfoPoliza);
+        botonRiesgosInfoPoliza.click();
         waitForTextToAppear("Riesgos");
     }
 
