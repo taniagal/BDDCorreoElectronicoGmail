@@ -30,7 +30,7 @@ And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | VARIEDADES YURLEDYS S.A | NIT           | 9202086744      |
 And vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor    |valor_asegurado|descuento|
-|ZAX740|2008  |01601169        |MEDELLIN          |Particular       |AAA1450  |AAA1450  |15000000       |null     |
+|ZAX740|2016  |00606031        |MEDELLIN          |Particular       |AAA1450  |AAA1450  |255900000       |null     |
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
@@ -38,8 +38,8 @@ And voy a la opcion de analisis de riesgo y autorizo
 And expido la poliza para agregar el riesgo a la poliza colectiva
 Then se debe visualizar la opcion de ir a la poliza colectiva de la nueva poliza creada
 And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado con los datos correspondientes
-| placa  | claseVehiculo | modelo | marca     | linea                   |
-| ZAX740 | Automóviles   | 2008   | CHEVROLET | 1.4 L - MT 1400CC 4P AA |
+| placa  | claseVehiculo      | modelo | marca | linea                           |
+| ZAX740 | Camperos y pickups | 2016   | AUDI  | [4M] 3.0 TDI Q - TP 3000CC TD V |
 
 Examples:
 | numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | razonSocial             |asegurado|
@@ -68,7 +68,7 @@ And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | ELIANA ALVAREZ | CEDULA DE CIUDADANIA | 1037500160      |
 And vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor    |valor_asegurado|descuento|
-|ZAZ741|2008  |01601169        |MEDELLIN          |Particular       |AAA1451  |AAA1452  |15000000       |null     |
+|ZAZ741|2016  |00606031        |MEDELLIN          |Particular       |AAA1451  |AAA1452  |255900000      |null     |
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
@@ -76,8 +76,8 @@ And voy a la opcion de analisis de riesgo y autorizo
 And expido la poliza para agregar el riesgo a la poliza colectiva
 Then se debe visualizar la opcion de ir a la poliza colectiva de la nueva poliza creada
 And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado con los datos correspondientes
-| placa  | claseVehiculo | modelo | marca     | linea                   |
-| ZAZ741 | Automóviles   | 2008   | CHEVROLET | 1.4 L - MT 1400CC 4P AA |
+| placa  | claseVehiculo      | modelo | marca | linea                           |
+| ZAZ741 | Camperos y pickups | 2016   | AUDI  | [4M] 3.0 TDI Q - TP 3000CC TD V |
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | consultaNombre | consultaApellido | asegurado      |

@@ -15,6 +15,9 @@ public class IngresoDeCoberturasPage extends PageObject{
     private WebElementFacade campoDeducible;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade botonCotizar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkHurto;
+
 
     Guidewire guidewire = new Guidewire(getDriver());
 
@@ -32,12 +35,18 @@ public class IngresoDeCoberturasPage extends PageObject{
     public void ingresarDeducible(){
         campoDeducible.click();
         campoDeducible.sendKeys(Keys.ARROW_DOWN);
-        campoDeducible.sendKeys(Keys.ARROW_DOWN);
         campoDeducible.sendKeys(Keys.ENTER);
     }
 
     public void cotizar(){
         botonCotizar.click();
         waitForTextToAppear("Asuntos previos a la oferta");
+    }
+
+    public void clickEnCheckHurto(){
+        waitFor(checkHurto);
+        if("0px -15px".equals(checkHurto.getCssValue("background-position"))){
+            checkHurto.click();
+        }
     }
 }

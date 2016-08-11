@@ -72,6 +72,7 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     public void ingresarCoberturas() {
         ingresoDeCoberturasPage.ingresarLimite();
         ingresoDeCoberturasPage.ingresarDeducible();
+        ingresoDeCoberturasPage.clickEnCheckHurto();
         ingresoDeCoberturasPage.cotizar();
     }
 
