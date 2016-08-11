@@ -48,6 +48,8 @@ public class NuevaPolizaPage extends PageObject {
     @FindBy(xpath = "//li")
     WebElementFacade listaDesplegable;
 
+    private List<WebElement> filas;
+
     public NuevaPolizaPage(WebDriver driver) {
         super(driver);
     }
@@ -76,11 +78,11 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void validaListaCanalDeAcuerdoALaOrganizacion(String datosListaCanal) {
-        String[] listaCanal = datosListaCanal.split("[,]");
+        String[] arregloListaCanal = datosListaCanal.split("[,]");
         WebElementFacade elemetoDeLaLista;
-        for (int i = 0; i < listaCanal.length; i++) {
-            elemetoDeLaLista = withTimeoutOf(15, TimeUnit.SECONDS).find("//li[contains(.,'" + listaCanal[i] + "')]");
-            MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(listaCanal[i])));
+        for (int i = 0; i < arregloListaCanal.length; i++) {
+            elemetoDeLaLista = withTimeoutOf(15, TimeUnit.SECONDS).find("//li[contains(.,'" + arregloListaCanal[i] + "')]");
+            MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(arregloListaCanal[i])));
         }
     }
 
@@ -155,22 +157,23 @@ public class NuevaPolizaPage extends PageObject {
         }
     }
 
-    public void validarProductos(String productos, String tipoPoliza) {
-        String[] listaProductos = productos.split("[,]");
-        List<WebElement> filas;
-        Integer productosEnLista = 0;
-        Integer productosEsperados = listaProductos.length;
+    public List<WebElement> obtenerTablaDeProductos(String tipoPoliza){
         if ("Individual".equals(tipoPoliza)) {
-            waitForTextToAppear(listaProductos[0], 10000);
             withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaProductosIndividual).waitUntilPresent();
             filas = tablaProductosIndividual.findElements(By.tagName("tr"));
-
         } else {
-            waitForTextToAppear(listaProductos[0], 10000);
             withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaProductosColectiva).waitUntilPresent();
             filas = tablaProductosColectiva.findElements(By.tagName("tr"));
         }
+        return filas;
+    }
 
+    public void validarProductos(String productos, String tipoPoliza) {
+        String[] listaProductos = productos.split("[,]");
+        Integer productosEnLista = 0;
+        Integer productosEsperados = listaProductos.length;
+        waitForTextToAppear(listaProductos[0]);
+        filas = this.obtenerTablaDeProductos(tipoPoliza);
         if (!filas.isEmpty()) {
             for (WebElement row : filas) {
                 List<WebElement> columna = row.findElements(By.tagName("td"));
