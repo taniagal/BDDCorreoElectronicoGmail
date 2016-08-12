@@ -18,8 +18,8 @@ Then se debe mostrar un mensaje <mensaje> de advertencia y pasar a la siguinete 
 
 
 Examples:
-|cuenta     |organizacion|canal            |producto               |mensaje|
-|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|debe ser menor o igual al 10% del valor asegurable total de todos los artículos de la póliza|
+|cotizacion |organizacion|canal            |producto               |mensaje|
+|11111334    |Sura        |Canal Tradicional|Multiriesgo corporativo|debe ser menor o igual al 10% del valor asegurable total de todos los artículos de la póliza|
 
 
 Scenario: Validacion regla de negocio cuando el valor es menor al 10%
@@ -32,4 +32,4 @@ Then debe permitir pasar a la siguinete pagina
 
 Examples:
 |cuenta     |organizacion|canal            |producto               |
-|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|
+|11111334   |Sura        |Canal Tradicional|Multiriesgo corporativo|
