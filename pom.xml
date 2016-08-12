@@ -24,7 +24,7 @@
         <maven.compiler.plugin>3.2</maven.compiler.plugin>
         <maven.compiler.plugin.source>1.7</maven.compiler.plugin.source>
         <maven.compiler.plugin.target>1.7</maven.compiler.plugin.target>
-        <webdriver.driver>phantomjs</webdriver.driver>
+        <webdriver.driver>chrome</webdriver.driver>
     </properties>
 
     <repositories>
