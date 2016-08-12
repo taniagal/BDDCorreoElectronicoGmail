@@ -196,10 +196,6 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
         return filaBoton;
     }
 
-    private List<WebElementFacade> getListaBotones() {
-        return withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
-    }
-
     public void validaNombreTomador(String nombreCompleto) {
         waitInfoPoliza(lblInformaPoliza);
         MatcherAssert.assertThat("el al mostrar nombre completo", nombreCompleto.equals(lblNombreCompleto.getText()));

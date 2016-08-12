@@ -76,11 +76,11 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void validaListaCanalDeAcuerdoALaOrganizacion(String datosListaCanal) {
-        String[] listaCanal = datosListaCanal.split("[,]");
+        String[] listaCanales = datosListaCanal.split("[,]");
         WebElementFacade elemetoDeLaLista;
-        for (int i = 0; i < listaCanal.length; i++) {
-            elemetoDeLaLista = withTimeoutOf(15, TimeUnit.SECONDS).find("//li[contains(.,'" + listaCanal[i] + "')]");
-            MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(listaCanal[i])));
+        for (int i = 0; i < listaCanales.length; i++) {
+            elemetoDeLaLista = withTimeoutOf(15, TimeUnit.SECONDS).find("//li[contains(.,'" + listaCanales[i] + "')]");
+            MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(listaCanales[i])));
         }
     }
 

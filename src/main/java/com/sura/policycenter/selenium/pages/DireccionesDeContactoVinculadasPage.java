@@ -12,8 +12,8 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -93,7 +93,6 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         guidewire.waitUntil(2000);
         btnBuscar.click();
-        btnCuentas = esperarElemento(".//*[@id='Search:MenuLinks:Search_AccountSearch']");
         btnCuentas.click();
         txtNumeroCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");
         txtNumeroCuenta.sendKeys(numeroCuenta);
@@ -244,7 +243,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
                     break;
                 }
             } catch (StaleElementReferenceException elemento) {
-
+                elemento.printStackTrace();
             }
             intentos++;
         }
@@ -263,7 +262,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
                     guidewire.waitUntil(1000);
                 }
             } catch (StaleElementReferenceException elemento) {
-
+                elemento.printStackTrace();
             }
             intentos++;
         }

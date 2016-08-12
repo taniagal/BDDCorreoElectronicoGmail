@@ -183,11 +183,11 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
 
     public void adicionarContacto(String tipoDocumento, String numeroDocumento){
         waitUntil(1000);
-        WebElementFacade campoTipoDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTipoDocumento).typeAndTab(tipoDocumento);
+        WebElementFacade campoTxtTipoDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtTipoDocumento).typeAndTab(tipoDocumento);
         waitUntil(1000);
-        WebElementFacade campoNumeroDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoNumeroDocumento).type(numeroDocumento);
+        WebElementFacade campoTxtNumeroDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtNumeroDocumento).type(numeroDocumento);
         WebElementFacade botonBuscarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']");
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonBuscarContacto).click();
         WebElementFacade botonSeleccionarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']");

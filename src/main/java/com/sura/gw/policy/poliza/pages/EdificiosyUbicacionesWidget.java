@@ -2,6 +2,8 @@ package com.sura.gw.policy.poliza.pages;
 
 import com.google.common.base.Function;
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -12,8 +14,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class EdificiosyUbicacionesWidget extends PageObject {
@@ -131,19 +131,6 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         return esSeleccionado;
     }
 
-
-
-/*    public void seleccionarCoberturaDeArticulo(String cobertura) {
-        waitForAnyTextToAppear(cobertura);
-        shouldContainText(cobertura);
-        String xpathTDCobertura = ".//tr[ (descendant::label[contains(., '" + cobertura + "')]) and contains(@class,'x-form-item-input-row')]";
-        withAction().moveToElement($(xpathTDCobertura)).perform();
-        String xpathCHKCobertura = ".//input[contains(@class, 'x-form-field x-form-checkbox x-form-cb')";
-        WebElementFacade chk = $(xpathTDCobertura).findBy(xpathCHKCobertura);
-        withAction().moveToElement($(chk)).perform();
-        chk.click();
-    }*/
-
     public void seleccionarCoberturaDelRiesgo(String cobertura) {
         waitForAnyTextToAppear(cobertura);
         shouldContainText(cobertura);
@@ -187,7 +174,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         String xpathLegendCoberturaDeRiesgo = ".//legend[ (descendant::div[contains(., '" + cobertura + "')])]";
         WebElementFacade inputCoberturaDeRiesgo = findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName("input"));
 
-        if (inputCoberturaDeRiesgo.getCssValue("background-position").equals("-15px 0") || inputCoberturaDeRiesgo.getCssValue("background-position").equals("0px -15px")){
+        if ("-15px 0".equals(inputCoberturaDeRiesgo.getCssValue("background-position")) || "0px -15px".equals(inputCoberturaDeRiesgo.getCssValue("background-position"))){
             estaSeleccionado = true;
         } else {
             estaSeleccionado = false;

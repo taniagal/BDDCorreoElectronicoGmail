@@ -128,8 +128,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     private final Guidewire guidewire = new Guidewire(getDriver());
     private final DateFormat dateFormat = new SimpleDateFormat(MM_DD_YYYY);
     private final Date fechaHoy = new Date();
-    private String rolCampos = "presentation";
-    private String rolListas = "textbox";
+    private final String rolListas = "textbox";
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {
         super(driver);
@@ -232,7 +231,6 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void clicEnSiguiente() {
-        System.out.println("fecha " + fechaInicioVigencia.getCssValue("disabled"));
         botonSiguiente.click();
     }
 

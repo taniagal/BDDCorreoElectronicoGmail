@@ -93,7 +93,7 @@ And seleccione el canal <canal>
 
 Then seleccionar nombre de producto Multiriesgo corporativo
 Then debera observar un mensaje de error: FRANK RAMIREZ ALZATE, El tomador es un riesgo no es estandar y debe ser
-analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial. |
+analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial. -
 FRANK RAMIREZ ALZATE,El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal
 
 Examples:
