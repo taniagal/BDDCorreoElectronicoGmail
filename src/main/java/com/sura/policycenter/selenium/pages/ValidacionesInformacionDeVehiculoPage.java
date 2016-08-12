@@ -12,8 +12,6 @@ import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class ValidacionesInformacionDeVehiculoPage extends Commons {

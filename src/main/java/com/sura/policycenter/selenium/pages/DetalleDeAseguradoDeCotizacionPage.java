@@ -221,4 +221,14 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
     public void validarBotonNoVisible() {
         botonRecuperarMVR.shouldNotBeVisible();
     }
+
+    public void validarContinuacionDeCotizacion() {
+        commons.waitUntil(1000);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBePresent();
+        botonSiguiente.click();
+        WebElementFacade labelTituloVehiculos = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).shouldBePresent();
+        MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
+        commons.waitUntil(1000);
+    }
 }

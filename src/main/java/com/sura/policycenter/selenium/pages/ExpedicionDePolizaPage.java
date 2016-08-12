@@ -1,5 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -11,15 +13,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class ExpedicionDePolizaPage extends PageObject{
-
-    public ExpedicionDePolizaPage(WebDriver driver){
-        super(driver);
-    }
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     WebElementFacade tituloVentana;
 
@@ -63,8 +58,11 @@ public class ExpedicionDePolizaPage extends PageObject{
     WebElementFacade botonEscritorio;
 
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
-    WebElementFacade mensajesRiesgos;
+    WebElementFacade mensajeRiesgos;
 
+    public ExpedicionDePolizaPage(WebDriver driver){
+        super(driver);
+    }
 
     public void irABuscarCotizacion(String cotizacion){
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuPoliza).waitUntilPresent();
@@ -103,13 +101,12 @@ public class ExpedicionDePolizaPage extends PageObject{
     }
 
     public void validarMensaje( String mensaje) {
-        String mensajes[] = mensaje.split("\\^");
+        String[] mensajes = mensaje.split("\\^");
         Integer contadorMensajesOk = 0;
         Integer numeroMensajes = mensajes.length;
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(mensajesRiesgos).waitUntilPresent();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(mensajeRiesgos).waitUntilPresent();
         List<WebElementFacade> mensajesRiesgos = findAll(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div");
         for(int i = 0; i < numeroMensajes; i++) {
-            System.out.println(mensajes[i]);
             for (WebElementFacade lista : mensajesRiesgos) {
                 if(lista.getText().contains(mensajes[i])){
                     contadorMensajesOk++;

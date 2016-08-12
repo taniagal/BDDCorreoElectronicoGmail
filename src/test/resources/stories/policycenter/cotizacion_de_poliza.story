@@ -75,7 +75,7 @@ Examples:
 
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:
-@Manual
+@manual
 Given he realizado la cotizacion <cotizacion>
 When ingrese a la cotizacion
 And el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
@@ -87,7 +87,7 @@ Examples:
 
 Scenario: Riesgos consultables - Tipo Causal Moral
 Meta:
-@Manual
+@manual
 Given he realizado la cotizacion <cotizacion>
 When ingrese a la cotizacion
 And el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA

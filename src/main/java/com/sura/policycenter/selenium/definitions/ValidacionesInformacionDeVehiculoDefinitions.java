@@ -65,5 +65,4 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
         vehiculoSteps.siguiente();
     }
 
-
 }

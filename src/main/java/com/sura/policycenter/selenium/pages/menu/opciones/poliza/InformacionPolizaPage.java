@@ -9,16 +9,4 @@ public class InformacionPolizaPage extends Commons {
     public InformacionPolizaPage(WebDriver driver) {
         super(driver);
     }
-
-    //mapeo informacion poliza xpat mensajepage
-
-    public void expedirPolizaMrc() {
-
-    }
-
-    public void validacion (String mensaje){
-       // assertThat(mensaje,containsString(mensajepage.getText()));
-    }
-
-
 }

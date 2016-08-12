@@ -65,4 +65,14 @@ public class ModificacionVehiculoDefinitions{
     public void validarBonificacionesVehiculo(){
         //Se ejecuta manualmente
     }
+
+    @Then("se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de interes adicional")
+    public void validarMensajeWarningInteresAdicional(@Named("mensaje") String mensaje){
+        // Se realiza manualmente.
+    }
+
+    @Then("se debe permitir continuar a coberturas de auto personal")
+    public void validarContinuacionDeCotizacionInteresAdicional(){
+        // Se realiza manualmente
+    }
 }

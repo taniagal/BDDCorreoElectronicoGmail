@@ -1,27 +1,19 @@
 package com.sura.policycenter.selenium.steps;
 
-
-import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionDelVehiculoPage;
-import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getPages;
+import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 
 public class InformacionDeVehiculoSteps extends ScenarioSteps {
+
+
+    OpcionesInformacionDelVehiculoPage opcionesInformacionDelVehiculoPage = new OpcionesInformacionDelVehiculoPage(getDriver());
 
     public InformacionDeVehiculoSteps(Pages pages) {
         super(pages);
     }
-
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
-    OpcionesInformacionDelVehiculoPage opcionesInformacionDelVehiculoPage = new OpcionesInformacionDelVehiculoPage(getDriver());
-
 
     @Step
     public void ingresar_a_cotizacion_de_vehiculo() {
@@ -34,8 +26,8 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresar_intereses_adicionales_o_conductor() {
-        opcionesInformacionDelVehiculoPage.ingresaBeneficiario();
+    public void ingresar_intereses_adicionales_o_conductor(String tipoDocumento, String numeroDocumento) {
+        opcionesInformacionDelVehiculoPage.ingresaBeneficiario(tipoDocumento, numeroDocumento);
     }
 
     @Step
@@ -61,5 +53,20 @@ public class InformacionDeVehiculoSteps extends ScenarioSteps {
     @Step
     public void validar_poliza_total(){
         opcionesInformacionDelVehiculoPage.comparaValorAseguradoTotal();
+    }
+
+    @Step
+    public void validar_Interes_Adicional_PEP() {
+        opcionesInformacionDelVehiculoPage.validarInteresAdicionalPEP();
+    }
+
+    @Step
+    public void validar_Mensaje_PEP_Interes_Adicional(String mensaje) {
+        opcionesInformacionDelVehiculoPage.validarMensajePEPInteresAdicional(mensaje);
+    }
+
+    @Step
+    public void permitir_Conticuar_Cotizacion() {
+        opcionesInformacionDelVehiculoPage.permitirContinuarCotizacion();
     }
 }

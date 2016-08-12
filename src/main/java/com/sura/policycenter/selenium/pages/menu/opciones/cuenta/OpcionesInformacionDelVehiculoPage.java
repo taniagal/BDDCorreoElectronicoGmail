@@ -2,12 +2,15 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 
 import com.sura.commons.selenium.Commons;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
 
 public class OpcionesInformacionDelVehiculoPage extends Commons {
 
@@ -25,7 +28,7 @@ public class OpcionesInformacionDelVehiculoPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
     WebElementFacade lstModelo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguinete;
+    WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestCardTab-btnInnerEl']")
     WebElementFacade btnInteresAdicional;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
@@ -52,6 +55,8 @@ public class OpcionesInformacionDelVehiculoPage extends Commons {
     WebElementFacade btnSeleccion;
     @FindBy(xpath = ".//div[3]/div/table/tbody/tr/td[5]/div")
     WebElementFacade lstTipoBeneficia;
+    @FindBy(xpath = ".//div[4]/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    WebElementFacade lstTipoBeneficia2;
     @FindBy(xpath = ".//li[contains(.,'Asegurado')]")
     WebElementFacade itmAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:VehicleDetailCardTab-btnInnerEl']")
@@ -70,6 +75,8 @@ public class OpcionesInformacionDelVehiculoPage extends Commons {
     WebElementFacade txtBonificacionComercial;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
     WebElementFacade btnEscritorio;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']")
+    WebElementFacade grupoMensajes;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxLimite;
 
@@ -88,27 +95,32 @@ public class OpcionesInformacionDelVehiculoPage extends Commons {
         opcionPolizaMrc.waitInfoPoliza(lblDetallesVehiculo);
     }
 
-    public void ingresaBeneficiario() {
+    public void ingresaBeneficiario(String tipoDocumento, String numeroDocumento) {
         btnInteresAdicional.click();
         btnAgregar.click();
         btnItemDirec.click();
         opcionPolizaMrc.waitInfoPoliza(lblBuscarDirec);
         txtTipoDoc.clear();
         waitUntil(800);
-        txtTipoDoc.sendKeys("CEDULA DE CIUDADANIA");
+        txtTipoDoc.type(tipoDocumento);
         txtTipoDoc.sendKeys(Keys.ENTER);
         opcionPolizaMrc.waitInfoPoliza(lblPrimerNombre);
-        txtNumDoc.sendKeys("1234567892");
+        txtNumDoc.type(numeroDocumento);
         btnBuscar.click();
         opcionPolizaMrc.waitInfoPoliza(btnSeleccion);
         btnSeleccion.click();
         opcionPolizaMrc.waitInfoPoliza(btnDetalleVehiculo);
-        lstTipoBeneficia.click();
-        itmAsegurado.click();
+        waitUntil(1500);
+        if(lstTipoBeneficia.isCurrentlyVisible()){
+            lstTipoBeneficia.click();
+            itmAsegurado.click();
+        }else if(lstTipoBeneficia2.isCurrentlyVisible()){
+            waitUntil(1000);
+            itmAsegurado.click();
+        }
         btnDetalleVehiculo.click();
-        waitFor(txtPlaca).waitUntilPresent();
+        opcionPolizaMrc.waitInfoPoliza(botonSiguiente);
     }
-
 
     public void ingresaValoresAccesorios(String valorAccesorio, String valorAccesorioEsp) {
         txtValorAccesorios.clear();
@@ -137,29 +149,48 @@ public class OpcionesInformacionDelVehiculoPage extends Commons {
     }
 
     public void validarPaginaSiguiente() {
-            String bug = "Ljava.lang.String";
-            btnSiguinete.click();
-            opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
-            MatcherAssert.assertThat("Error no controlado en la poliza (Java Lang)", !cajaMensaje.containsText(bug));
-            btnSiguinete.click();
-            MatcherAssert.assertThat("Error: debio pasar a siguinete pagina", comboBoxLimite.isPresent());
+        String bug = "Ljava.lang.String";
+        botonSiguiente.click();
+        opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
+        MatcherAssert.assertThat("Error no controlado en la poliza (Java Lang)", !cajaMensaje.containsText(bug));
+        botonSiguiente.click();
+        MatcherAssert.assertThat("Error: debio pasar a siguinete pagina", comboBoxLimite.isPresent());
     }
 
     public void validaMensajePantalla() {
-        btnSiguinete.click();
+        botonSiguiente.click();
         opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
         MatcherAssert.assertThat("el campo motor o chasis no debe aceptar ccaracteres especiales", cajaMensaje.containsText("Este campo no puede tener caracteres especiales, sólo números y letras"));
         MatcherAssert.assertThat("el campo descuento, recargo y suavizacion deben ser decimales", cajaMensaje.containsText("debe tener máximo dos enteros y máximo dos decimales"));
     }
 
     public void validaMensajePantalla(String mensaje) {
-        btnSiguinete.click();
+        botonSiguiente.click();
         opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
         MatcherAssert.assertThat("no se valido el campo bonificacion tecnica y comercial ", cajaMensaje.containsText(mensaje));
     }
 
     public void comparaValorAseguradoTotal() {
         MatcherAssert.assertThat("Los valor final no corresponde al calculado", comparaValores[0].equals(comparaValores[1]));
+    }
+
+    public void validarInteresAdicionalPEP() {
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        waitUntil(1500);
+    }
+
+    public void validarMensajePEPInteresAdicional(String mensaje) {
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
+        waitUntil(2000);
+    }
+
+    public void permitirContinuarCotizacion() {
+        waitUntil(2000);
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        waitUntil(1000);
+        WebElementFacade labelCoberturasAuto = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelCoberturasAuto).click();
     }
 }
 

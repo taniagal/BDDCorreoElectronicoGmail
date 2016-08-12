@@ -326,7 +326,7 @@ public class NuevaCotizacionPage extends PageObject {
 
             for (WebElementFacade div : divsMensajes) {
                 mensajeMostrado = div.getText();
-                for (String etiqueta : mensajesApp.split("|")) {
+                for (String etiqueta : mensajesApp.split("-")) {
                     if (mensajeMostrado.toLowerCase().contains(etiqueta)) {
                         existeOcurrencia = Boolean.TRUE;
                         break;

@@ -25,6 +25,7 @@ And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y nu
 And seleccione el contacto a agregar
 And vaya al siguiente paso de la cotizacion
 Then muestre el mensaje de validacion del asegurado <mensaje>
+And se debe permitir continuar la cotizacion
 
 Examples:
 | cuenta     | agente  | organizacion | canal             | producto | tipoId               | numeroId | mensaje                                                                                              |

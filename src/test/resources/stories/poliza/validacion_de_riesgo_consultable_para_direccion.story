@@ -20,4 +20,3 @@ Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 99999999        | Asesor     |             |
 
-

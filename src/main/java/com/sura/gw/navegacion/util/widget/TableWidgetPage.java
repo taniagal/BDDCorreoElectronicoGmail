@@ -75,11 +75,11 @@ public class TableWidgetPage extends PageObject {
     public void seleccionarDeComboConLabel(String nombreLabelDeComboBox) {
         Boolean capturarElementoSiguiente = false;
         for (WebElement opcionToolbar : toolbarListWE) {
-            if (opcionToolbar.getText().contains(nombreLabelDeComboBox) && capturarElementoSiguiente == false) {
+            if (opcionToolbar.getText().contains(nombreLabelDeComboBox) && capturarElementoSiguiente) {
                 capturarElementoSiguiente = true;
                 continue;
             }
-            if (capturarElementoSiguiente == true) {
+            if (capturarElementoSiguiente) {
                 combo = opcionToolbar.findElement(By.xpath("tbody/tr/td/table/tbody/tr/td/input"));
                 combo.click();
                 findBy(".//ul[contains(@class,'x-list-plain')]").waitUntilVisible();
@@ -94,7 +94,7 @@ public class TableWidgetPage extends PageObject {
     public void seleccionarDeComboConValor(String valorInputDeComboBox) {
         Boolean iterara = true;
 
-        while (iterara == true){
+        while (iterara){
             try {
                 Iterator opcionToolbar = toolbarListWE.iterator();
 

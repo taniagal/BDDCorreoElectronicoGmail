@@ -100,9 +100,9 @@ public class BusquedaDeCuentasPage extends Commons {
 
 
     public void irABuscarCuentas() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent().click();
+        waitFor(menuBuscar).waitUntilPresent().click();
         waitUntil(1500);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuBuscarCuentas).waitUntilPresent();
+        waitFor(menuBuscarCuentas).waitUntilPresent();
         menuBuscarCuentas.click();
     }
 
@@ -118,7 +118,7 @@ public class BusquedaDeCuentasPage extends Commons {
     }
 
     private void limpiarFormulario() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent();
+        waitFor(botonRestablecer).waitUntilPresent();
         botonRestablecer.waitUntilPresent().click();
         waitUntil(2000);
     }
@@ -130,7 +130,7 @@ public class BusquedaDeCuentasPage extends Commons {
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
         txtNumeroDocumento.sendKeys(numeroDocumento);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -142,7 +142,7 @@ public class BusquedaDeCuentasPage extends Commons {
     }
 
     public void validarMensaje(String mensaje) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(msjMensajeInformativo).waitUntilPresent();
+        waitFor(msjMensajeInformativo).waitUntilPresent();
         MatcherAssert.assertThat(this.msjMensajeInformativo.getText(), Matchers.containsString(mensaje));
     }
 
@@ -186,7 +186,7 @@ public class BusquedaDeCuentasPage extends Commons {
         this.limpiarFormulario();
         waitFor(txtRazonSocial);
         txtRazonSocial.sendKeys(razonSocial);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -202,7 +202,7 @@ public class BusquedaDeCuentasPage extends Commons {
         this.limpiarFormulario();
         waitFor(txtNombreComercial);
         txtNombreComercial.sendKeys(nombreComercial);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -226,7 +226,7 @@ public class BusquedaDeCuentasPage extends Commons {
         waitFor(txtRazonSocial);
         this.txtRazonSocial.sendKeys(razonSocial);
         this.txtPrimerNombre.sendKeys(primerNombre);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -235,7 +235,7 @@ public class BusquedaDeCuentasPage extends Commons {
         waitFor(txtNombreComercial);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtPrimerNombre.sendKeys(primerNombre);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -244,7 +244,7 @@ public class BusquedaDeCuentasPage extends Commons {
         waitFor(txtNombreComercial);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtRazonSocial.sendKeys(razonSocial);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
