@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -9,8 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-
-public class  DetallesContactoPage extends Guidewire {
+public class  DetallesContactoPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
     private WebElementFacade labelPrimerNombre;
@@ -259,17 +258,6 @@ public class  DetallesContactoPage extends Guidewire {
         dtlCntJ[6]= correoElectronicoPrimario;
         dtlCntJ[7]= correoElectronicoSecundario;
     }
-
-    // TODO: 25/07/2016 Existe un riesgo de que se quede en este ciclo permanentemente 
-    public void ingresarDato(WebElementFacade elemento, String dato){
-        do {
-            waitFor(elemento);
-            elemento.clear();
-            waitFor(elemento).shouldContainText("");
-            elemento.sendKeys(dato);
-        }while (!elemento.getValue().equals(dato));
-    }
-
 
     /**
      * DETALLE CONTACTO EDICION

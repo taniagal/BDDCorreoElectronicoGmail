@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.CuentasOrdenesDeTrabajoSteps;
-import com.sura.policycenter.selenium.steps.DisponibilidadDetalleProductoSteps;
 import com.sura.policycenter.selenium.steps.InformacionPolizaPASteps;
 import java.util.HashMap;
 import java.util.Map;

@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages.menu;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.policycenter.selenium.pages.menu.acciones.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.acciones.contacto.ContactoNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.*;
@@ -29,9 +29,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
-public class Navegacion extends Guidewire {
+public class Navegacion extends Commons {
 
-    private final Guidewire gw = new Guidewire(getDriver());
+    private final Commons gw = new Commons(getDriver());
     private final Actions act = new Actions(getDriver());
 
     // Objetos menu Escritorio

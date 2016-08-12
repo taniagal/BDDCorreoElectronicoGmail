@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.definitions;
 
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
+import com.sura.commons.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CoberturaGlobalSteps;
 
 import net.thucydides.core.annotations.Steps;
@@ -9,6 +9,7 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 public class CoberturaGlobalDefinitions {
     @Steps
@@ -16,11 +17,10 @@ public class CoberturaGlobalDefinitions {
     @Steps
     SeusLoginSteps seusLoginSteps;
 
-    @When("agregue coberturas globales con descripcion <descripcion> , tipo de cobertura <tipoCobertura>, valor <valor> y nombreCobertura <nombreCobertura>")
-    public void agregarCobertura(@Named("descripcion") String descripcion, @Named("tipoCobertura") String tipoCobertura,
-                                 @Named("valor")String valor, @Named("nombreCobertura") String nombreCobertura){
+    @When("agregue coberturas globales con datos: $datosCobertura")
+    public void agregarCoberturas(ExamplesTable datosCobertura){
         coberturaGlobalSteps.ir_a_coberturas_globales();
-        coberturaGlobalSteps.agregar_coberturas_globales(descripcion, tipoCobertura, valor, nombreCobertura);
+        coberturaGlobalSteps.agregar_coberturas_globales(datosCobertura);
     }
 
     @Then("debe mostrarme las coberturas incluidas y las ubicaciones cubiertas")
@@ -28,11 +28,10 @@ public class CoberturaGlobalDefinitions {
         coberturaGlobalSteps.verificar_coberturas_y_ubicaciones();
     }
 
-    @When("agregue coberturas globales con descripcion <descripcion> , tipo de cobertura <tipoCobertura> y nombreCobertura <nombreCobertura>")
-    public void agregarCobertura(@Named("descripcion") String descripcion, @Named("tipoCobertura") String tipoCobertura,
-                                 @Named("nombreCobertura") String nombreCobertura){
+    @When("agregue una cobertura global con datos: $datosCobertura")
+    public void agregarCobertura(ExamplesTable datosCobertura){
         coberturaGlobalSteps.ir_a_coberturas_globales();
-        coberturaGlobalSteps.seleccionar_cobertura_unica(descripcion, tipoCobertura,nombreCobertura);
+        coberturaGlobalSteps.seleccionar_cobertura_unica(datosCobertura);
     }
 
     @Then("debe mostrarme un mensaje<mensaje> de error")

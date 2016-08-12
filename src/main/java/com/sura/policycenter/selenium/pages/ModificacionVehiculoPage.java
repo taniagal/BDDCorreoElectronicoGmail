@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
-import java.util.Map;
+import com.sura.commons.selenium.Commons;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -11,7 +10,7 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
 
-public class ModificacionVehiculoPage extends Guidewire{
+public class ModificacionVehiculoPage extends Commons{
 
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
@@ -24,24 +23,24 @@ public class ModificacionVehiculoPage extends Guidewire{
 
     public void irAModificarVehiculo() {
         WebElementFacade tituloInformacionPoliza = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:ttlBar']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloInformacionPoliza).shouldBePresent();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        waitFor(tituloInformacionPoliza).shouldBePresent();
+        waitFor(botonSiguiente).click();
         WebElementFacade tituloAsegurados = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloAsegurados).shouldBePresent();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        waitFor(tituloAsegurados).shouldBePresent();
+        waitFor(botonSiguiente).click();
     }
 
     public void digitarFasecoldaYModelo(String numeroFasecolda, String modelo) {
         WebElementFacade modeloVehiculo = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(modeloVehiculo).typeAndTab(modelo);
+        waitFor(modeloVehiculo).typeAndTab(modelo);
         waitUntil(2000);
         WebElementFacade fasecolda = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-inputEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(fasecolda).typeAndTab(numeroFasecolda);
+        waitFor(fasecolda).typeAndTab(numeroFasecolda);
         waitUntil(2000);
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoCiudadCirculacion).typeAndTab("MEDELLIN");
+        waitFor(campoCiudadCirculacion).typeAndTab("MEDELLIN");
         waitUntil(2000);
         WebElementFacade tipoServicio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:service_DV-inputEl']");
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tipoServicio).typeAndTab("Particular");
+        waitFor(tipoServicio).typeAndTab("Particular");
         waitUntil(2000);
     }
 
@@ -57,14 +56,14 @@ public class ModificacionVehiculoPage extends Guidewire{
 
     public void registrarZonaCirculacion(String ciudadCirculacion) {
         waitUntil(2000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
+        waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
         waitUntil(1500);
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        waitFor(botonSiguiente).click();
         waitUntil(3000);
     }
 
     public void validarZonaCirculacion(String mensaje) {
         WebElementFacade grupoMensajes = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']");
-        MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
+        verificarMensaje(grupoMensajes, mensaje);
     }
 }

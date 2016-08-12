@@ -1,7 +1,8 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -10,9 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.concurrent.TimeUnit;
 
-public class OpcionesInformacionDelVehiculoPage extends Guidewire {
+public class OpcionesInformacionDelVehiculoPage extends Commons {
 
 
     @FindBy(xpath = "//td[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
@@ -77,10 +77,13 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
     WebElementFacade btnEscritorio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']")
     WebElementFacade grupoMensajes;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
+    private WebElementFacade comboBoxLimite;
 
-    String [] comparaValores = new String[2];
+    String[] comparaValores = new String[2];
     Actions actions = new Actions(getDriver());
     OpcionesInformacionPolizaMrcPage opcionPolizaMrc = new OpcionesInformacionPolizaMrcPage(getDriver());
+
     public OpcionesInformacionDelVehiculoPage(WebDriver driver) {
         super(driver);
     }
@@ -121,18 +124,18 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
 
     public void ingresaValoresAccesorios(String valorAccesorio, String valorAccesorioEsp) {
         txtValorAccesorios.clear();
-        txtValorAccesorios.sendKeys(valorAccesorio);
+        ingresarDato(txtValorAccesorios,valorAccesorio);
         txtValorAsegurado.click();
-        waitUntil(1000);
-        txtAcceEspeciales.sendKeys(valorAccesorioEsp);
+        waitUntil(3000);
+        ingresarDato(txtAcceEspeciales,valorAccesorioEsp);
         txtValorAsegurado.click();
-        waitUntil(1000);
-        int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0,8));
+        waitUntil(3000);
+        int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0, 8));
         int valorAccesorioEntero = Integer.parseInt(valorAccesorio);
         int valorAccesorioEspEntero = Integer.parseInt(valorAccesorioEsp);
         int valorTotalizado = valorAccesorioEntero + valorAccesorioEspEntero + valorAsegurado;
-        String valorDeLabel = lblSumaValor.getText().substring(0,11);
-        valorDeLabel = valorDeLabel.replaceAll("\\$","").replaceAll(",","");
+        String valorDeLabel = lblSumaValor.getText().substring(0, 11);
+        valorDeLabel = valorDeLabel.replaceAll("\\$", "").replaceAll(",", "");
         comparaValores[0] = Integer.toString(valorTotalizado);
         comparaValores[1] = valorDeLabel;
     }
@@ -151,8 +154,7 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         opcionPolizaMrc.waitInfoPoliza(cajaMensaje);
         MatcherAssert.assertThat("Error no controlado en la poliza (Java Lang)", !cajaMensaje.containsText(bug));
         botonSiguiente.click();
-        MatcherAssert.assertThat("Error: debio pasar a siguinete pagina", cajaMensaje.isVisible());
-        waitUntil(10000);
+        MatcherAssert.assertThat("Error: debio pasar a siguinete pagina", comboBoxLimite.isPresent());
     }
 
     public void validaMensajePantalla() {
@@ -168,7 +170,7 @@ public class OpcionesInformacionDelVehiculoPage extends Guidewire {
         MatcherAssert.assertThat("no se valido el campo bonificacion tecnica y comercial ", cajaMensaje.containsText(mensaje));
     }
 
-    public void comparaValorAseguradoTotal(){
+    public void comparaValorAseguradoTotal() {
         MatcherAssert.assertThat("Los valor final no corresponde al calculado", comparaValores[0].equals(comparaValores[1]));
     }
 

@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
@@ -15,7 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
-public class OpcionesInformacionPolizaMrcPage extends Guidewire {
+public class OpcionesInformacionPolizaMrcPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade txtNomAgente;
@@ -47,7 +47,6 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     WebElementFacade btnSelecciona;
     @FindBy(xpath = ".//*[@id='EditPolicyContactRolePopup:ContactDetailScreen:Update-btnInnerEl']")
     WebElementFacade btnActualizaAsegurado;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton:AddFromSearch-textEl']")
     WebElementFacade itemDirectorio;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
@@ -155,7 +154,7 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
     }
 
     public boolean editarDescripDireccionTomador() {
-        if (lblDescripcionDir.isPresent()) {
+        if (lblDescripDireccion.isPresent()) {
             lblNombreCompleto.click();
             waitInfoPoliza(txtDescripDireccion);
             txtDescripDireccion.clear();
@@ -194,10 +193,6 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
             filaBoton++;
         }
         return filaBoton;
-    }
-
-    private List<WebElementFacade> getListaBotones() {
-        return withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
     }
 
     public void validaNombreTomador(String nombreCompleto) {
@@ -268,9 +263,9 @@ public class OpcionesInformacionPolizaMrcPage extends Guidewire {
 
     public void validaFormularioDescripDireccion() {
         if (esVisible) {
-            MatcherAssert.assertThat("el campo Descripcion direccion no debe estar presente", !lblDescripcionDir.isPresent());
+            MatcherAssert.assertThat("el campo Descripcion direccion no debe estar presente", !lblDescripDireccion.isPresent());
         }else{
-            MatcherAssert.assertThat("el campo Descripcion direccion debe estar presente al ingresar direccion", lblDescripcionDir.isPresent());
+            MatcherAssert.assertThat("el campo Descripcion direccion debe estar presente al ingresar direccion", lblDescripDireccion.isPresent());
         }
     }
     // TODO: 30/06/2016 Metodo wait para implementar generico

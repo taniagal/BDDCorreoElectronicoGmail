@@ -49,4 +49,6 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
     public void siguiente(){
         vehiculoPage.clickSiguiente();
     }
+
+
 }
