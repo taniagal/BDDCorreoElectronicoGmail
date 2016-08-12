@@ -1,8 +1,8 @@
 package com.sura.policycenter.selenium.pages;
 
-import java.util.concurrent.TimeUnit;
 
 import com.sura.commons.selenium.Commons;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -14,8 +14,6 @@ import org.slf4j.LoggerFactory;
 
 
 public class ValidacionesCambioDePolizaVehiculosPage extends PageObject{
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ValidacionesCambioDePolizaVehiculosPage.class);
     @FindBy(xpath = ".//td/div/div/div/a[6]/span/span/span/span")
     private WebElementFacade botonEmitirPoliza;
     @FindBy(xpath = ".//div[5]/div[3]/div/div/a/span/span/span")

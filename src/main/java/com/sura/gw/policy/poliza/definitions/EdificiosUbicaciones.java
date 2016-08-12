@@ -12,7 +12,6 @@ import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.hamcrest.core.StringContains;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Given;
@@ -155,7 +154,7 @@ public class EdificiosUbicaciones {
 
     @Then("no debe dejar continuar y debe permanecer en la pagina $pagina")
     public void noDebeDejarContinuarYDebePermanecerEnLaPagina(String pagina) {
-
+        //Metodo Vacio
     }
 
 

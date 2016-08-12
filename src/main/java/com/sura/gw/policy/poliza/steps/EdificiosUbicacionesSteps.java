@@ -4,8 +4,6 @@ import com.sura.gw.policy.poliza.pages.AgregarArticuloEdificiosyUbicacionesWidge
 import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.thucydides.core.steps.StepInterceptor;
-import org.slf4j.LoggerFactory;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
 

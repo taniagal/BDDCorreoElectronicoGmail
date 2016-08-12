@@ -7,12 +7,10 @@ import com.sura.policycenter.selenium.steps.CoaseguroSteps;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import org.openqa.selenium.WebDriver;
 
 
 public class CoaseguroDefinitions {
