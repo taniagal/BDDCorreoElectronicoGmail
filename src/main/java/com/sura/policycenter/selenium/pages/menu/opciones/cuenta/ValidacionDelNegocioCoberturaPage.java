@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -11,7 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 
-public class ValidacionDelNegocioCoberturaPage extends Guidewire{
+public class ValidacionDelNegocioCoberturaPage extends Commons{
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB-btnInnerEl']")
     private WebElementFacade botonAgregarUbicacion;

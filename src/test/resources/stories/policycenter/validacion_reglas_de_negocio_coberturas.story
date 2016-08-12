@@ -9,7 +9,7 @@ algunas coberturas de multiriesgo corporativo.
 
 Scenario: Validacion regla de negocio cuando el valor es mayor al 10%
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza de MRC en cuenta <cuenta>
+Given se ha realizado la cotizacion MRC <cotizacion>
 When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto <producto> para expedir la poliza
@@ -23,7 +23,7 @@ Examples:
 
 
 Scenario: Validacion regla de negocio cuando el valor es menor al 10%
-Given estoy cotizando una poliza de MRC en cuenta <cuenta>
+Given se ha realizado la cotizacion MRC <cotizacion>
 When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto <producto> para expedir la poliza
