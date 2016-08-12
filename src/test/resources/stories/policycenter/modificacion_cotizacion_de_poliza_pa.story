@@ -15,7 +15,7 @@ Given se ha realizado la cotizacion de la modificacion <cotizacion>
 When ingrese al detalle de la modificacion
 Then debo ver de la cotizacion la siguiente informacion
 |numeroPoliza|numeroCotizacion|tomador|tipoDocumento|numeroDocumento|direccion|tipoDireccion|descripcionDireccion|empresaAseguradora|prima|impuestos|total|
-|TEST_22222222|55555555|DORIAN EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$44.00|$3.00|$47.00|
+|TEST_22222222|55555555|DORIAN EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$666,895.00|-|$666,895.00|
 
 Examples:
 |cotizacion|

@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class CambioEnExpedicionDePolizaPage extends PageObject{
-
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange']")
     WebElementFacade botonExpedirPoliza;
 
@@ -34,7 +33,6 @@ public class CambioEnExpedicionDePolizaPage extends PageObject{
     public CambioEnExpedicionDePolizaPage(WebDriver driver){
         super(driver);
     }
-
 
     public void expedirPoliza() {
         waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));

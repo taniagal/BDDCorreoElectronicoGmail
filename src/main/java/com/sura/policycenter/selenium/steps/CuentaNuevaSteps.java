@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.policycenter.selenium.pages.CuentaPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
@@ -11,10 +11,10 @@ public class CuentaNuevaSteps extends ScenarioSteps {
 
     private String cedula = "";
     private String nit = "";
-    private final Guidewire gw = new Guidewire(getDriver());
+    private final Commons gw = new Commons(getDriver());
     private final CuentaPage cuentaPage = new CuentaPage(getDriver());
     private static final String NOMBRECUENTA = "Busqueda";
-
+    
     public CuentaNuevaSteps(Pages pages) {
         super(pages);
     }
@@ -65,11 +65,11 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         initRandoms();
         StringBuilder documento = new StringBuilder("us");
         if ("NIT".equals(tipoDocumento) || "IDENT. FISCAL PARA EXTRANJEROS".equals(tipoDocumento)) {
-            documento.append(nit.substring(0, 6)+"c");
+            documento.append(nit.substring(0, 6) + "c");
             cuentaPage.buscarPersona(NOMBRECUENTA, "Compania");
             cuentaPage.agregarTipoDocumento(tipoDocumento, documento.toString());
         } else {
-            documento.append(cedula.substring(0, 5)+"c");
+            documento.append(cedula.substring(0, 5) + "c");
             cuentaPage.buscarPersona(NOMBRECUENTA, "Persona");
             cuentaPage.agregarTipoDocumento(tipoDocumento, documento.toString());
         }

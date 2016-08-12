@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 
-public class InformacionTitularCuentaPage extends Guidewire {
+public class InformacionTitularCuentaPage extends Commons {
 
     @FindBy(xpath="//tr[2]/td/DIV/span")
     WebElementFacade mnuInformacionTitularCuenta;

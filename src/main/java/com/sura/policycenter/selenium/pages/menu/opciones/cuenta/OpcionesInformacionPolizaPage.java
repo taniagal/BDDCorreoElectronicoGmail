@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
-import com.sura.guidewire.selenium.Guidewire;
-
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -21,8 +20,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-
-public class OpcionesInformacionPolizaPage extends Guidewire {
+public class OpcionesInformacionPolizaPage extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesInformacionPolizaPage.class);
     private static final String MM_DD_YYYY = "MM/dd/yyyy";

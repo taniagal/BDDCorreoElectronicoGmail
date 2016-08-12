@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.guidewire.selenium.Guidewire;
-import com.sura.guidewire.selenium.SeusLoginPage;
+import com.sura.commons.selenium.Commons;
+import com.sura.commons.selenium.SeusLoginPage;
 import com.sura.policycenter.selenium.pages.AbrirAppPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
@@ -11,7 +11,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class PolicySteps extends ScenarioSteps {
 
     private final SeusLoginPage seus = new SeusLoginPage(getDriver());
-    private final Guidewire gw = new Guidewire(getDriver());
+    private final Commons gw = new Commons(getDriver());
     private final AbrirAppPage abrirapp = new AbrirAppPage(getDriver());
 
     public PolicySteps(Pages pages) {

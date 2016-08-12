@@ -4,12 +4,8 @@ import com.sura.gw.policy.poliza.pages.AgregarArticuloEdificiosyUbicacionesWidge
 import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.thucydides.core.steps.StepInterceptor;
-import org.slf4j.LoggerFactory;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
 
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
@@ -71,8 +67,6 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
                 " para " + entrada +
                 " ingresar " + valorEntrada;
 
-        ingresar_valor_de_entrada_de_la_cobertura(mensajeStepReporte);
-
         if("Coberturas del Riesgo".equals(tab)){
 
             if (! edificiosyUbicacionesWidget.estaSeleccionadoTab(tab)){
@@ -93,10 +87,5 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         if("Otros Articulos".equals(tab)){
 
         }
-    }
-
-    @Step
-    public void ingresar_valor_de_entrada_de_la_cobertura(String valorDeEntradaDeCobertura) {
-
     }
 }

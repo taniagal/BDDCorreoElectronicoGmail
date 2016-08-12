@@ -12,8 +12,8 @@ public class EspacioDeTrabajoWidget extends PageObject{
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
-    private final String MENSAJESESPACIODETRABAJO = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div";
-    private final String DESPLEGADORESPACIODETRABAJO = "//img[contains(@class,'x-tool-img x-tool-expand-top')]";
+    private static final String MENSAJESESPACIODETRABAJO = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div";
+    private static final String DESPLEGADORESPACIODETRABAJO = "//img[contains(@class,'x-tool-img x-tool-expand-top')]";
 
     public void desplegarEspacioDeTrabajo() {
         try {

@@ -1,24 +1,26 @@
 package com.sura.policycenter.selenium.pages;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
-public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
+public class ValidacionesInformacionDeVehiculoPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade menuItemVehiculos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
     private WebElementFacade botonCrearVehiculo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
-    private WebElementFacade botonsiguiente;
+    private WebElementFacade botonSiguiente;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Prev-btnInnerEl']")
+    private WebElementFacade botonVolver;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
     private WebElementFacade campoTxtPlaca;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
@@ -35,8 +37,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     private WebElementFacade campoTxtMotor;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']")
     private WebElementFacade campoTxtchasis;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
-    private WebElementFacade campoTxtValorAsegurado;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:totalInsured_DV-inputEl']")
+    private WebElementFacade labelValorAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:4:RateModifier-inputEl']")
     private WebElementFacade campoTxtDescuento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:5:RateModifier-inputEl']")
@@ -54,57 +56,64 @@ public class ValidacionesInformacionDeVehiculoPage extends Guidewire {
     }
 
     public void irAVehiculos() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuItemVehiculos).shouldBePresent();
+        waitFor(menuItemVehiculos).shouldBePresent();
         menuItemVehiculos.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
     }
 
-    public void crearVehiculo(){
+    public void crearVehiculo() {
         campoTxtPlaca.waitUntilPresent();
         botonCrearVehiculo.click();
     }
 
-    public void clickSiguiente(){
-        botonsiguiente.click();
+    public void clickSiguiente() {
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
     }
 
-    public void agregarVehiculo(ExamplesTable datosVehiculo){
+    public void volver(){
+        botonVolver.click();
+        waitFor(campoTxtchasis).shouldBePresent();
+    }
+
+    public void agregarVehiculo(ExamplesTable datosVehiculo) {
+        waitFor(botonCrearVehiculo).click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtPlaca).shouldBePresent();
+        waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
-        selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitUntil(3200);
-        campoTxtCodigoFasecolda.sendKeys(vehiculo.get("codigo_fasecolda"));
+        selectItem(comboBoxModelo, vehiculo.get("modelo"));
+        waitForTextToAppear(vehiculo.get("modelo"));
+        ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
         waitUntil(2000);
         campoTxtPlaca.click();
-        waitUntil(3500);
-        selectItem(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
-        waitUntil(2500);
-        selectItem(comboBoxVehiculoServicio,vehiculo.get("vehiculo_servicio"));
+        try {
+            waitForTextToAppear(vehiculo.get("valor_asegurado"));
+        }catch (org.openqa.selenium.TimeoutException e){
+            e.printStackTrace();
+        }
+        MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
+        selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+        waitUntil(4000);
+        selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         if(!"null".equals(vehiculo.get("descuento"))){
             campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
             campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
         }
-        if(!"null".equals(vehiculo.get("motor"))){
-        campoTxtMotor.sendKeys(vehiculo.get("motor"));
-        campoTxtchasis.sendKeys(vehiculo.get("chasis"));
-        }
-        if(!"null".equals(vehiculo.get("valor_asegurado"))) {
-            campoTxtValorAsegurado.clear();
-            campoTxtValorAsegurado.sendKeys(vehiculo.get("valor_asegurado"));
+        if (!"null".equals(vehiculo.get("motor"))) {
+            campoTxtMotor.sendKeys(vehiculo.get("motor"));
+            campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
     }
 
     public void agregarCodigoFasecolda(String codigo) {
-       campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
-       campoTxtPlaca.click();
-       waitUntil(1000);
+        waitFor(botonCrearVehiculo).click();
+        campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
+        campoTxtPlaca.click();
+        waitUntil(2000);
     }
 
-    public void verificarMensajes(ExamplesTable mensajes){
+    public void verificarMensajes(ExamplesTable mensajes) {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
-        for(Map<String, String> mensaje: mensajes.getRows()){
-            MatcherAssert.assertThat("Error: en la validacion del mensaje "+mensaje.get("mensaje"), divMensaje.containsText(mensaje.get("mensaje")));
+        for (Map<String, String> mensaje : mensajes.getRows()) {
+            MatcherAssert.assertThat("Error: en la validacion del mensaje " + mensaje.get("mensaje"), divMensaje.containsText(mensaje.get("mensaje")));
         }
     }
 

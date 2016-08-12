@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.NuevoContactoPage;
 import net.thucydides.core.annotations.Step;
@@ -12,7 +12,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     private String cedula = "";
     private String nit = "";
     private String tipoDoc="";
-    private final Guidewire gw = new Guidewire(getDriver());
+    private final Commons gw = new Commons(getDriver());
     private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
 
     public CrearNuevoContactoSteps(Pages pages) {

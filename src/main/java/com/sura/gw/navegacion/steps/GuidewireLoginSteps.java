@@ -3,10 +3,10 @@ package com.sura.gw.navegacion.steps;
 import com.sura.gw.navegacion.pages.GuidewireLoginPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.thucydides.core.steps.StepInterceptor;
+
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.LoggerFactory;
+
 
 import static com.sura.gw.navegacion.pages.GuidewireLoginPages.*;
 
