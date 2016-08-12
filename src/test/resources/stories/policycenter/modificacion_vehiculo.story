@@ -2,11 +2,11 @@ Modificacion Vehiculo
 
 Meta:
 
+@Issue SUGW USC-11100-PA-Change - Enter Policy Change_Vehiculo
+
 Narrative:
 Como usuario de PolicyCenter
 Quiero poder realizar cambios en la informacion del vehiculo en una poliza de automoviles.
-
-@Issue SUGW USC-11100-PA-Change - Enter Policy Change_Vehiculo
 
 Scenario: Consulta codigo Fasecolda
 GivenStories: stories/policycenter/login_policy.story
