@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.policycenter.selenium.pages.AbrirAppPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
@@ -13,8 +13,8 @@ public class PruebaMenuSteps extends ScenarioSteps {
         super(pages);
     }
 
-    private Guidewire guidewire() {
-        return getPages().currentPageAt(Guidewire.class);
+    private Commons guidewire() {
+        return getPages().currentPageAt(Commons.class);
     }
     private AbrirAppPage abrirAppPage() {
         return getPages().currentPageAt(AbrirAppPage.class);

@@ -1,6 +1,7 @@
-package com.sura.guidewire.selenium;
+package com.sura.commons.selenium;
 
 import com.google.common.base.Function;
+import java.util.List;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -20,7 +21,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class Guidewire extends PageObject {
+public class Commons extends PageObject {
 
     private final Actions actions = new Actions(getDriver());
     @FindBy(id=":TabLinkMenuButton-btnIconEl")
@@ -42,7 +43,7 @@ public class Guidewire extends PageObject {
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     private WebElementFacade btnLogout2;
 
-    public Guidewire(WebDriver driver) {
+    public Commons(WebDriver driver) {
         super(driver);
     }
 
@@ -127,7 +128,7 @@ public class Guidewire extends PageObject {
     }
 
     public  void verificarMensaje(WebElementFacade divMensaje, String mensaje){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
     }
 
@@ -146,5 +147,14 @@ public class Guidewire extends PageObject {
                 return findBy(xpath);
             }
         });
+    }
+
+    public void ingresarDato(WebElementFacade elemento, String dato){
+        do {
+            waitFor(elemento);
+            elemento.clear();
+            waitFor(elemento).shouldContainText("");
+            elemento.sendKeys(dato);
+        }while (!elemento.getValue().equals(dato));
     }
 }

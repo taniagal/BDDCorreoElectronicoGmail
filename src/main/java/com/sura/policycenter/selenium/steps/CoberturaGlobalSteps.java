@@ -5,6 +5,7 @@ import com.sura.policycenter.selenium.pages.CoberturaGlobalPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class CoberturaGlobalSteps extends ScenarioSteps {
     CoberturaGlobalPage coberturaGlobalPage = new CoberturaGlobalPage(getDriver());
@@ -18,8 +19,8 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_coberturas_globales(String descripcion, String tipoCobertura, String valor, String nombreCobertura){
-        coberturaGlobalPage.agregarCoberturasGlobales(descripcion, tipoCobertura, valor,nombreCobertura);
+    public void agregar_coberturas_globales(ExamplesTable datosCobertura){
+        coberturaGlobalPage.agregarCoberturasGlobales(datosCobertura);
     }
 
     @Step
@@ -29,8 +30,8 @@ public class CoberturaGlobalSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionar_cobertura_unica(String descripcion, String tipoCobertura, String nombreCobertura) {
-        coberturaGlobalPage.seleccionarCoberturaUnica(descripcion,tipoCobertura,nombreCobertura);
+    public void seleccionar_cobertura_unica(ExamplesTable datosCobertura) {
+        coberturaGlobalPage.seleccionarCoberturaUnica(datosCobertura);
     }
 
     @Step

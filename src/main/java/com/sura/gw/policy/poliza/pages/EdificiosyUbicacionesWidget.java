@@ -60,35 +60,35 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         findBy(LINK_OPCION_UBICACION_NUEVA).click();
 
         waitForTextToAppear("Información de ubicación");
-        String xpathPais = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']";
-        String xpathDepto = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']";
-        String xpathCiudad = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']";
-        String xpathDireccion = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']";
-        String xpathActividadAconomica = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']";
+        String XPATHPAIS = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']";
+        String XPATHDEPTO = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']";
+        String XPATHCIUDAD = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']";
+        String XPATHDIRECCION = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']";
+        String XPATHACTIVIDADECONOMICA = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']";
 
 
-        $(xpathPais).type(pais);
-        $(xpathPais).click();
+        $(XPATHPAIS).type(pais);
+        $(XPATHPAIS).click();
 
         waitFor(3).seconds();
-        enter(depto).into($(xpathDepto));
+        enter(depto).into($(XPATHDEPTO));
         waitFor(3).seconds();
-        $(xpathDepto).click();
+        $(XPATHDEPTO).click();
 
         waitFor(6).seconds();
-        enter(ciudad).into($(xpathCiudad));
+        enter(ciudad).into($(XPATHCIUDAD));
         waitFor(6).seconds();
-        $(xpathCiudad).click();
+        $(XPATHCIUDAD).click();
 
         waitFor(3).seconds();
-        enter(direccion).into($(xpathDireccion));
+        enter(direccion).into($(XPATHDIRECCION));
         waitFor(3).seconds();
-        $(xpathDireccion).click();
+        $(XPATHDIRECCION).click();
 
         waitFor(3).seconds();
-        enter(actividadEconomica).into($(xpathActividadAconomica));
+        enter(actividadEconomica).into($(XPATHACTIVIDADECONOMICA));
         waitFor(10).seconds();
-        $(xpathActividadAconomica).sendKeys(Keys.ENTER);
+        $(XPATHACTIVIDADECONOMICA).sendKeys(Keys.ENTER);
         waitFor(3).seconds();
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();

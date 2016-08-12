@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -15,7 +15,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
 
-public class ModificacionInformacionPolizaPAPage extends Guidewire{
+public class ModificacionInformacionPolizaPAPage extends Commons{
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionInformacionPolizaPAPage.class);
 
@@ -122,11 +122,11 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
 
     public void irAModificarInformacionPoliza() {
         waitUntil(2500);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuAcciones).shouldBePresent();
+        waitFor(menuAcciones).shouldBePresent();
         menuAcciones.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(itemCambiarPoliza).shouldBeVisible();
+        waitFor(itemCambiarPoliza).shouldBeVisible();
         itemCambiarPoliza.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
+        waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
         botonSiguienteInfoPoliza.click();
         waitUntil(2000);
     }
@@ -173,9 +173,9 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
 
     public void adicionarSegundoTomador(String tipoDocumento, String numeroDocumento) {
         waitUntil(5000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTomadorSecundario).shouldBePresent();
+        waitFor(labelTomadorSecundario).shouldBePresent();
         WebElementFacade botonTomadorSecundario = findBy(".//tr[12]/td/table/tbody/tr/td[2]/table/tbody/tr/td[3]/a/img");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonTomadorSecundario).click();
+        waitFor(botonTomadorSecundario).click();
         WebElementFacade itemPersonaDirectorio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-textEl']");
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
         adicionarContacto(tipoDocumento, numeroDocumento);
@@ -189,9 +189,9 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
         WebElementFacade campoTxtNumeroDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']");
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtNumeroDocumento).type(numeroDocumento);
         WebElementFacade botonBuscarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonBuscarContacto).click();
+        waitFor(botonBuscarContacto).click();
         WebElementFacade botonSeleccionarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSeleccionarContacto).shouldBeVisible();
+        waitFor(botonSeleccionarContacto).shouldBeVisible();
         botonSeleccionarContacto.click();
     }
 
@@ -228,14 +228,14 @@ public class ModificacionInformacionPolizaPAPage extends Guidewire{
     }
 
     public void validarTomadorRiesgo() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCotizar).click();
+        waitFor(botonCotizar).click();
         waitUntil(1000);
     }
 
     public void validarBloqueoSegundoTomador(String mensaje) {
         String validacion = null;
         WebElementFacade labelResultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelResultadosValidacion).shouldBePresent();
+        waitFor(labelResultadosValidacion).shouldBePresent();
         WebElementFacade grupoMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
         try {
             MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));

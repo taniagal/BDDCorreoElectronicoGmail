@@ -15,7 +15,7 @@ Given he realizado la cotizacion <cotizacion>
 When ingrese al detalle de la cotizacion
 Then debo ver la siguiente informacion
 |numeroCotizacion|tomador|tipoDocumento|numeroDocumento|direccion|tipoDireccion|descripcionDireccion|empresaAseguradora|prima|impuestos|total|
-|22222225|DORIAN EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$44.00|$3.00|$47.00|
+|22222225|DORIAN EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$666,895.00|-|$$666,895.00|
 
 Examples:
 |cotizacion|
@@ -58,7 +58,7 @@ Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensa
 
 Examples:
 |cotizacion|mensaje|
-|22270001  |El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
+|22270001  |El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
 
 Scenario: Validar exclusividad
 Given he realizado la cotizacion <cotizacion>

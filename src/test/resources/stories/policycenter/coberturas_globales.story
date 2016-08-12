@@ -7,39 +7,42 @@ Quiero poder ver y agregar coberturas tipo blanket(Agregar las coberturas de est
 
 Feature: Gestion de Blankets(Cobertuas Globales)
 
-Scenario:  Agregar una cobertura global a multiples ubicaciones de una poliza de MRC
+Scenario:  Agregar una cobertura global a multiples ubicaciones de una poliza
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza de MRC en cuenta <cuenta>
-When seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
-And seleccione el producto <producto> para expedir la poliza
-And agregue coberturas globales con descripcion <descripcion> , tipo de cobertura <tipoCobertura>, valor <valor> y nombreCobertura <nombreCobertura>
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto               |canal           |
+|C001888888|Sura       |Multiriesgo corporativo|Canal Tradicional|
+When agregue coberturas globales con datos:
+|descripcion       |tipo_cobertura       |valor   |nombre_cobertura|
+|cobertura global 1|Multiples ubicaciones|15000000|Danos materiales|
+Then debe mostrarme las coberturas incluidas y las ubicaciones cubiertas
+Examples:
+||
+||
+
+
+Scenario:  Agregar una cobertura global a una poliza
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto               |canal           |
+|C001888888|Sura       |Multiriesgo corporativo|Canal Tradicional|
+When agregue coberturas globales con datos:
+|descripcion       |tipo_cobertura|valor   |nombre_cobertura    |
+|cobertura global 2|Una cobertura |15000000|Rotura de maquinaria|
 Then debe mostrarme las coberturas incluidas y las ubicaciones cubiertas
 
 Examples:
-|cuenta     |organizacion|canal            |producto               |descripcion        |tipoCobertura        | valor    | nombreCobertura |
-|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|cobertura global 1 |Multiples ubicaciones| 15000000 | Danos materiales |
-
-Scenario:  Agregar una cobertura global a una poliza de MRC
-Given estoy cotizando una poliza de MRC en cuenta <cuenta>
-When seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
-And seleccione el producto <producto> para expedir la poliza
-And agregue coberturas globales con descripcion <descripcion> , tipo de cobertura <tipoCobertura>, valor <valor> y nombreCobertura <nombreCobertura>
-Then debe mostrarme las coberturas incluidas y las ubicaciones cubiertas
-
-Examples:
-|cuenta     |organizacion|canal            |producto               |descripcion        |tipoCobertura | valor    | nombreCobertura |
-|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|cobertura global 2 |Una cobertura | 15000000 |Rotura de maquinaria|
+||
+||
 
 Scenario:  Validar la seleccion de une unica cobertura global cuando se selecciona el tipo Una Cobertura
-Given estoy cotizando una poliza de MRC en cuenta <cuenta>
-When seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
-And seleccione el producto <producto> para expedir la poliza
-And agregue coberturas globales con descripcion <descripcion> , tipo de cobertura <tipoCobertura> y nombreCobertura <nombreCobertura>
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto               |canal           |
+|C001888888|Sura       |Multiriesgo corporativo|Canal Tradicional|
+When agregue una cobertura global con datos:
+|descripcion       |tipo_cobertura|valor   |nombre_cobertura  |
+|cobertura global 2|Una cobertura |15000000|Gastos adicionales|
 Then debe mostrarme un mensaje<mensaje> de error
 
 Examples:
-|cuenta     |organizacion|canal            |producto               |descripcion        |tipoCobertura |nombreCobertura|mensaje|
-|C001888888 |Sura        |Canal Tradicional|Multiriesgo corporativo|cobertura global 2 |Una cobertura |Gastos adicionales|Debe definir los valores de la cobertura seleccionada|
+|mensaje                                              |
+|Debe definir los valores de la cobertura seleccionada|

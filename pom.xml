@@ -88,6 +88,7 @@
             <version>${jbehave.core.version}</version>
         </dependency>
     </dependencies>
+    
     <build>
         <plugins>
             <plugin>
@@ -105,9 +106,6 @@
                     <includes>
                         <include>**/policycenter/*.java</include>
                     </includes>
-                    <excludes>
-                        <exclude>**/policycenter/MainStories.java</exclude>
-                    </excludes>
                     <argLine>-Xmx1024m -XX:MaxPermSize=1024m</argLine>
                     <perCoreThreadCount>true</perCoreThreadCount>
                     <forkCount>3</forkCount>

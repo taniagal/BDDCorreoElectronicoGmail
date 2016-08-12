@@ -1,15 +1,15 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-public class NuevoAseguradoNombradoPage extends Guidewire {
+public class NuevoAseguradoNombradoPage extends Commons {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Guidewire.class);
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Commons.class);
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade cboTipoDocumento;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")

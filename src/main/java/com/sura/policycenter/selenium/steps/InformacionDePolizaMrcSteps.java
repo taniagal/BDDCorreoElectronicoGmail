@@ -14,7 +14,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         super(pages);
     }
 
-    private InicioPage inicioPage() {
+   private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
 
@@ -80,6 +80,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         opcionesInformacionPolizaMrcPage.editarDescripDireccionTomador();
     }
 
+    @Step
     public void validar_descipcion_de_direccion() {
         opcionesInformacionPolizaMrcPage.validaFormularioDescripDireccion();
     }

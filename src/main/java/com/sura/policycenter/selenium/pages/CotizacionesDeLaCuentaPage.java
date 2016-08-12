@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -10,8 +10,8 @@ import javax.swing.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
-public class CotizacionesDeLaCuentaPage extends Guidewire {
-    Guidewire gw = new Guidewire(getDriver());
+public class CotizacionesDeLaCuentaPage extends Commons {
+    Commons gw = new Commons(getDriver());
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
     WebElementFacade lblPrimerNombre;

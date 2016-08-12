@@ -1,12 +1,11 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
-
-
-import com.thoughtworks.selenium.SeleneseTestBase;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import com.thoughtworks.selenium.SeleneseTestBase;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -17,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
 
-public class BusquedaContactoPage extends Guidewire {
+public class BusquedaContactoPage extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaContactoPage.class);
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")

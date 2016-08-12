@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
+import com.sura.commons.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.pages.NuevoAseguradoNombradoPage;
 import com.sura.policycenter.selenium.steps.ContactosAsociadosACuentasSteps;
 import net.thucydides.core.annotations.Managed;
