@@ -3,12 +3,10 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.google.inject.name.Named;
 import com.sura.gw.navegacion.definitions.Navegacion;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.ModificacionCotizacionDePolizaSteps;
 import java.util.HashMap;
 import java.util.Map;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -50,7 +48,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
         infoCotizacionPoliza.put("prima", "Prima");
         infoCotizacionPoliza.put("subtotal", "Subtotal");
         infoCotizacionPoliza.put("subtotalPrimas", "Subtotal de primas");
-        infoCotizacionPoliza.put("impuesto", "Impuesto");
+        infoCotizacionPoliza.put("impuesto", "Impuestos y cargos extra");
 
         infoCotizacionPoliza.put("DC_labelVehiculo", "Vehículo 1");
         infoCotizacionPoliza.put("DC_placa", "Placa");
@@ -63,7 +61,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
         infoCotizacionPoliza.put("DC_prima", "Prima");
         infoCotizacionPoliza.put("DC_subtotal", "Subtotal");
         infoCotizacionPoliza.put("DC_subtotalPrimas", "Subtotal de primas");
-        infoCotizacionPoliza.put("DC_impuesto", "Impuesto");
+        infoCotizacionPoliza.put("DC_impuesto", "Impuestos y cargos extra");
     }
 
     @Given("se ha realizado la cotizacion de la modificacion <cotizacion>")

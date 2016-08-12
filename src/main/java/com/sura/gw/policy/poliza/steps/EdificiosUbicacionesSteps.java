@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
 
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
@@ -71,8 +69,6 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
                 " para " + entrada +
                 " ingresar " + valorEntrada;
 
-        ingresar_valor_de_entrada_de_la_cobertura(mensajeStepReporte);
-
         if("Coberturas del Riesgo".equals(tab)){
 
             if (! edificiosyUbicacionesWidget.estaSeleccionadoTab(tab)){
@@ -93,10 +89,5 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         if("Otros Articulos".equals(tab)){
 
         }
-    }
-
-    @Step
-    public void ingresar_valor_de_entrada_de_la_cobertura(String valorDeEntradaDeCobertura) {
-
     }
 }

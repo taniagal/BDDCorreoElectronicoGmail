@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
+import com.sura.commons.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.DetallesContactoSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -11,9 +11,6 @@ import org.openqa.selenium.WebDriver;
 
 @SuppressWarnings("WeakerAccess")
 public class DireccionDeContactoDefinitions {
-    @Managed
-    WebDriver driver;
-
     @Steps
     DetallesContactoSteps detallesContactoSteps;
 

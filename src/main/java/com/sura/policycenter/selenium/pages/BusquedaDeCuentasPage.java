@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -10,7 +10,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 
-public class BusquedaDeCuentasPage extends Guidewire {
+public class BusquedaDeCuentasPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-labelEl']")
     private WebElementFacade lblTipoDocumento;
@@ -100,49 +100,49 @@ public class BusquedaDeCuentasPage extends Guidewire {
 
 
     public void irABuscarCuentas() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent().click();
+        waitFor(menuBuscar).waitUntilPresent().click();
         waitUntil(1500);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(menuBuscarCuentas).waitUntilPresent();
+        waitFor(menuBuscarCuentas).waitUntilPresent();
         menuBuscarCuentas.click();
     }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         this.limpiarFormulario();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtPrimerNombre).waitUntilPresent();
+        waitFor(txtPrimerNombre).waitUntilPresent();
         txtPrimerNombre.sendKeys(primerNombre);
         txtSegundoNombre.sendKeys(segundoNombre);
         txtPrimerApellido.sendKeys(primerApellido);
         txtSegundoApellido.sendKeys(segundoApellido);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
     private void limpiarFormulario() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent();
+        waitFor(botonRestablecer).waitUntilPresent();
         botonRestablecer.waitUntilPresent().click();
         waitUntil(2000);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
         this.limpiarFormulario();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtTipoDocumento).waitUntilPresent();
+        waitFor(txtTipoDocumento).waitUntilPresent();
         txtTipoDocumento.clear();
         txtTipoDocumento.sendKeys(tipoDocumento);
         txtTipoDocumento.sendKeys(Keys.ENTER);
         txtNumeroDocumento.sendKeys(numeroDocumento);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
     public void mostrarInformacionDeLaCuenta(String numeroCuenta, String nombre, String direccion) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(this.grdNumeroCuenta).shouldBePresent();
+        waitFor(this.grdNumeroCuenta).shouldBePresent();
         MatcherAssert.assertThat(this.grdNumeroCuenta.getText(), Matchers.containsString(numeroCuenta));
         MatcherAssert.assertThat(this.grdNombre.getText(), Matchers.containsString(nombre));
         MatcherAssert.assertThat(this.grdDireccion.getText(), Matchers.containsString(direccion));
     }
 
     public void validarMensaje(String mensaje) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(msjMensajeInformativo).waitUntilPresent();
+        waitFor(msjMensajeInformativo).waitUntilPresent();
         MatcherAssert.assertThat(this.msjMensajeInformativo.getText(), Matchers.containsString(mensaje));
     }
 
@@ -186,7 +186,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         this.limpiarFormulario();
         waitFor(txtRazonSocial);
         txtRazonSocial.sendKeys(razonSocial);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -202,7 +202,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         this.limpiarFormulario();
         waitFor(txtNombreComercial);
         txtNombreComercial.sendKeys(nombreComercial);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -226,7 +226,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         waitFor(txtRazonSocial);
         this.txtRazonSocial.sendKeys(razonSocial);
         this.txtPrimerNombre.sendKeys(primerNombre);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -235,7 +235,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         waitFor(txtNombreComercial);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtPrimerNombre.sendKeys(primerNombre);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 
@@ -244,7 +244,7 @@ public class BusquedaDeCuentasPage extends Guidewire {
         waitFor(txtNombreComercial);
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtRazonSocial.sendKeys(razonSocial);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.click();
     }
 

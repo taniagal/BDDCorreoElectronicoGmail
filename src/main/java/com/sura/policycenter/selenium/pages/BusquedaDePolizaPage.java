@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class BusquedaDePolizaPage extends PageObject {
 
-    Guidewire guidewire = new Guidewire(getDriver());
+    Commons commons = new Commons(getDriver());
 
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:PolicyNumberCriterion-inputEl']")
     WebElementFacade txtNumeroPoliza;
@@ -105,7 +105,7 @@ public class BusquedaDePolizaPage extends PageObject {
     public void limpiarCampos() {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent();
         botonRestablecer.click();
-        guidewire.waitUntil(3000);
+        commons.waitUntil(3000);
     }
 
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {

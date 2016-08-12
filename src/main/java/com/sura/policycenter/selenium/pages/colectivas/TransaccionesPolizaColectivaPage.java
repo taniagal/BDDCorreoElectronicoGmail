@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages.colectivas;
 
 
+import java.util.Map;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -10,7 +11,6 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Map;
 
 public class TransaccionesPolizaColectivaPage extends PageObject{
 

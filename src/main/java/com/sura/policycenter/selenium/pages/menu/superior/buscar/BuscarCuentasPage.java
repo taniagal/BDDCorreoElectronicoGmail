@@ -1,11 +1,11 @@
 package com.sura.policycenter.selenium.pages.menu.superior.buscar;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class BuscarCuentasPage extends Guidewire {
+public class BuscarCuentasPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
     private WebElementFacade lblCuenta;
