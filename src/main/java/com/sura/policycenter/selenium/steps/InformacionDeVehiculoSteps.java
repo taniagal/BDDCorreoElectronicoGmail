@@ -4,7 +4,6 @@ import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInforma
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 
 public class InformacionDeVehiculoSteps extends ScenarioSteps {
 

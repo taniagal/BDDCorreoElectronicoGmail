@@ -1,18 +1,17 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 
 public class TarifaAutosPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnInnerEl']")
@@ -132,7 +131,7 @@ public class TarifaAutosPage extends Commons {
         comboBoxLimite.sendKeys(Keys.ENTER);
         waitUntil(800);
         selectItem(comboBoxDeducible, dato.get("deducible"));
-        selectItem(comboBoxAbogado, dato.get(("abogado")));
+        selectItem(comboBoxAbogado, dato.get("abogado"));
     }
 
     public void cotizar() {

@@ -125,9 +125,9 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV:";
     private static final String MM_DD_YYYY = "MM/dd/yyyy";
 
-    private Commons commons = new Commons(getDriver());
+    private final Commons commons = new Commons(getDriver());
     private final DateFormat dateFormat = new SimpleDateFormat(MM_DD_YYYY);
-    private final Date fechaHoy = new Date();
+    private static final Date fechaHoy = new Date();
     private final String rolListas = "textbox";
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {

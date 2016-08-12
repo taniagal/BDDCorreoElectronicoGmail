@@ -14,8 +14,6 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
 public class OpcionesResumenCuentaPage extends Commons {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesResumenCuentaPage.class);
     Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:ttlBar']")
     private WebElementFacade lblResumenCuenta;

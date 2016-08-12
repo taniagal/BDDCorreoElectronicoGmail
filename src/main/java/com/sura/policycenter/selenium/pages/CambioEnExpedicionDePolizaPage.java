@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.commons.selenium.Commons;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -13,13 +12,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class CambioEnExpedicionDePolizaPage extends PageObject{
-
-
-    public CambioEnExpedicionDePolizaPage(WebDriver driver){
-        super(driver);
-    }
-
-
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange']")
     WebElementFacade botonExpedirPoliza;
 
@@ -38,6 +30,9 @@ public class CambioEnExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToDesktop-inputEl']")
     WebElementFacade campoIrAlEscritorio;
 
+    public CambioEnExpedicionDePolizaPage(WebDriver driver){
+        super(driver);
+    }
 
     public void expedirPoliza() {
         waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));
