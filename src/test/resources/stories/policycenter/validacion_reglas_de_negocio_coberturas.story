@@ -1,6 +1,8 @@
 Meta:
 
 @issue #SUGWUSC-11480
+@Automatizador Jonathan Mejia
+@Sprint 5
 
 Narrative:
 Como usuario de policy center
@@ -9,27 +11,33 @@ algunas coberturas de multiriesgo corporativo.
 
 Scenario: Validacion regla de negocio cuando el valor es mayor al 10%
 GivenStories: stories/policycenter/login_policy.story
-Given se ha realizado la cotizacion MRC <cotizacion>
-When seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
-And seleccione el producto <producto> para expedir la poliza
-And agregue cada una de las ubicaciones
+Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
+When quiera mostrar los edificios y ubicaciones
 Then se debe mostrar un mensaje <mensaje> de advertencia y pasar a la siguinete pagina
 
+Examples:
+|cotizacion |mensaje|
+|11111335   |del valor asegurable total de todos los artículos de la póliza|
+
+
+Scenario: Validacion regla de negocio cuando el valor es mayor al 10%
+Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
+When quiera mostrar los edificios y ubicaciones
+Then debe pasar a la siguinete pagina sin mostrar mensajes
 
 Examples:
-|cotizacion |organizacion|canal            |producto               |mensaje|
-|11111334    |Sura        |Canal Tradicional|Multiriesgo corporativo|debe ser menor o igual al 10% del valor asegurable total de todos los artículos de la póliza|
+|cotizacion |
+|11111334   |
 
-
-Scenario: Validacion regla de negocio cuando el valor es menor al 10%
-Given se ha realizado la cotizacion MRC <cotizacion>
-When seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
-And seleccione el producto <producto> para expedir la poliza
-And agregue cada una de las ubicaciones
-Then debe permitir pasar a la siguinete pagina
+Scenario: Modificar una cotizacion cuando el valor es mayor al 10%
+Meta: @manual
+Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
+When quiera mostrar los edificios y ubicaciones
+Then debe pasar a la siguinete pagina sin mostrar mensajes
 
 Examples:
-|cuenta     |organizacion|canal            |producto               |
-|11111334   |Sura        |Canal Tradicional|Multiriesgo corporativo|
+||
+||
+
+
+
