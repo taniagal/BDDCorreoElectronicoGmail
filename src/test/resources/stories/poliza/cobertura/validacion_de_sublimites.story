@@ -212,3 +212,29 @@ Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22221237        | Asesor     |             |
+
+
+
+Scenario:
+Meta:
+@Story CDSEG-
+@URL https://jira.suramericana.com.co/browse/CDSEG-
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@Sprint 5
+
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                   | TIPO_ARTICULO | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 11             |
+When haga clic en el boton Aceptar
+Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
+| MENSAJES_WORKSPACE                                                                                                                                                             |
+| El "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ". |
+Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
+
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |
