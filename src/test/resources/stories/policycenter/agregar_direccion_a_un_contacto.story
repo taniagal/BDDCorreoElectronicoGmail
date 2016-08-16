@@ -16,8 +16,8 @@ And se actualiza el contacto
 Then en la lista de direcciones agregadas se debe ver la nueva direccion <direccion> estandarizada
 
 Examples:
-|tipo_documento      |documento |tipoDireccion|direccion        |departamento|ciudad  |
-|CEDULA DE CIUDADANIA|1234567892|Negocio      |CALLE 60B #10-157|ANTIOQUIA   |MEDELLIN|
+|tipo_documento      |documento |tipoDireccion       |direccion        |departamento|ciudad  |
+|CEDULA DE CIUDADANIA|1234567892|DIRECCION DE TRABAJO|CALLE 60B #10-157|ANTIOQUIA   |MEDELLIN|
 
 
 Scenario: Agregar direccion a un contacto del mismo tipo.
@@ -29,4 +29,4 @@ Then el sistema me debe impedir la repeticion del tipo de direccion y mostrar el
 
 Examples:
 |tipo_documento      |documento |tipoDireccion|direccion      |departamento|ciudad  |mensaje|
-|CEDULA DE CIUDADANIA|1234567891|Vivienda     |CRA 60B #10-157|ANTIOQUIA   |MEDELLIN|No se puede ingresar más de una dirección al contacto con el mismo Tipo de dirección|
+|CEDULA DE CIUDADANIA|1234567891|DIRECCION DE TRABAJO|CRA 60B #10-157|ANTIOQUIA   |MEDELLIN|No se puede ingresar más de una dirección al contacto con el mismo Tipo de dirección|

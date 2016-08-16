@@ -27,7 +27,7 @@ public class UbicacionesDeUnaCuentaPage extends Commons {
     private WebElementFacade campoTxtNombreUbicacion;
     @FindBy(xpath = ".//*[@id='AccountLocationPopup:LocationScreen:AccountLocationDetailInputSet:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade comboBoxDepartamento;
-    @FindBy(xpath = ".//*[@id='AccountLocationPopup:LocationScreen:AccountLocationDetailInputSet:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
+    @FindBy(xpath = ".//*[@id='AccountLocationPopup:LocationScreen:AccountLocationDetailInputSet:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
     private WebElementFacade comboBoxCiudad;
     @FindBy(xpath = ".//*[@id='AccountLocationPopup:LocationScreen:AccountLocationDetailInputSet:AddressTypes-inputEl']")
     private WebElementFacade comboBoxTipoDireccion;

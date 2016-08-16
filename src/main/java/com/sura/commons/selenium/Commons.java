@@ -132,7 +132,7 @@ public class Commons extends PageObject {
     }
 
     public List<WebElementFacade> getLista(String locator) {
-        return findAll(locator);
+        return withTimeoutOf(28,TimeUnit.SECONDS).findAll(locator);
     }
 
     public WebElementFacade esperarElemento(final String xpath) {

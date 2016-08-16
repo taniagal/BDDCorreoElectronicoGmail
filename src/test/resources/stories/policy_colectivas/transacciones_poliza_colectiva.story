@@ -56,7 +56,7 @@ And vaya a consultar las transacciones de la poliza colectiva
 And de clic en el numero de poliza de transacciones poliza colectiva
 Then debo ver los siguiente campos en la pantalla con su respectiva informacion:
 | titulo                             | tomadorInfo | tipoDocumento        | numeroDocumento | nombre                        | telefono | tipoDireccion | descripcionDir                             | direccionDePoliza                           | detallePoliza         | organizacion | canal             | tipoPoliza                | tipoPlazo | fechaInicioVigencia | fechaFin | fechaExp   | oficina | codAgente   | descuentoPoliza | agregarCoaseguro  |
-| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 408-2211 | Vivienda      | Created by the Address Builder with code 0 | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Detalles de la póliza | Sura         | Canal Tradicional | Commercial Personal Fleet | Anual     | 07/26/2016          |          | 07/26/2016 |COLLECORG| 1989        |                 | Agregar coaseguro |
+| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 408-2211 | Vivienda      | Created by the Address Builder with code 0 | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Detalles de la póliza | Sura         | Canal Tradicional | Commercial Personal Fleet | Anual     | 26/07/2016          |          | 26/07/2016 |COLLECORG| 1989        |                 | Agregar coaseguro |
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  |

@@ -12,5 +12,5 @@ And departamento <departamento>, ciudad <ciudad>, tipo de direccion <tipo_direcc
 Then debo poder ver el tipo de vivienda en el detalle de la ubicacion
 
 Examples:
-|cuenta    |tipo_direccion|direccion        |departamento|ciudad  |nombre       |
-|C001888888|Negocio       |CALLE 60B #10-157|ANTIOQUIA   |MEDELLIN|Location 0001|
+|cuenta    |tipo_direccion      |direccion        |departamento|ciudad  |nombre       |
+|C001888888|DIRECCION DE TRABAJO|CALLE 60B #10-157|ANTIOQUIA   |MEDELLIN|Location 0001|

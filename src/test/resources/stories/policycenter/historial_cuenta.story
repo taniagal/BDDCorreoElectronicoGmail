@@ -45,7 +45,7 @@ Then debo poder ver las transacciones relacionadas a la opciones indicadas en lo
 
 Examples:
 |numCuenta|Usuario|FechaDesde|FechaHasta
-|C010478975|Super User|01/01/2016|12/30/2016
+|C010478975|Super User|01/01/2016|30/12/2016
 
 Scenario: Busqueda de historial por la opcion producto
 Given estoy en el historial de la cuenta <numCuenta>
