@@ -39,6 +39,6 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageObject {
         botonExpedirPoliza.click();
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
-        waitForTextToAppear("Cotización Expedida");
+        waitForTextToAppear("Cotización Expedida", 30000);
     }
 }

@@ -3,6 +3,8 @@ Ingreso De Riesgos Poliza Colectiva
 Meta:
 
 @issue #CDSEG-916
+@Automatizador Eliana Alvarez
+@Sprint 5
 
 Narrative:
 Como usuario de PolicyCenter
