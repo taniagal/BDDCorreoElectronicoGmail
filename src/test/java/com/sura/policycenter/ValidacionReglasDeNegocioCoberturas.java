@@ -1,4 +1,6 @@
 package com.sura.policycenter;
 
-public class ValidacionReglasDeNegocioCoberturas {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class ValidacionReglasDeNegocioCoberturas extends SerenityStory {
 }
