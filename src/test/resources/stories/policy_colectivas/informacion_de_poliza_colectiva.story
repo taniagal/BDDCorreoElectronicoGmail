@@ -80,7 +80,7 @@ And seleccione el producto <producto> de poliza colectiva para expedirla
 When seleccione segundo tomador para la poliza colectiva
 Then debo ver los siguientes datos del segundo tomador en la pantalla:
 | tipoDocumentoSegundo | numeroDocumentoSegundo | nombreSegundo  | telefonoSegundo | direccionSegundo                               | tipoDireccionSegundo | descripcionDireccionSegundo                |
-| CEDULA DE CIUDADANIA | 1264567899             | GLORIA GALLEGO | 408-2211        | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 |
+| CEDULA DE CIUDADANIA | 1264567899             | GLORIA GALLEGO | 408-2211        | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | DIRECCION DE RESIDENCIA             | Created by the Address Builder with code 0 |
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         |
