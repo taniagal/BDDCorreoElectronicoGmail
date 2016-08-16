@@ -16,7 +16,7 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     WebElementFacade botonRiesgosInfoPoliza;
     @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:AddButton-btnInnerEl']")
     WebElementFacade botonAgregarRiesgo;
-    @FindBy(xpath = "//td/div/div[2]/div/table/tbody/tr/td/div")
+    @FindBy(xpath = "//div[3]/div/table/tbody/tr/td/div")
     WebElementFacade columnaPlaca;
     @FindBy(xpath = "//div/table/tbody/tr/td[2]/div")
     WebElementFacade columnaClaseVehiculo;
