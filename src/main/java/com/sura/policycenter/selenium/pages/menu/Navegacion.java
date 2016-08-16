@@ -1175,6 +1175,7 @@ public class Navegacion extends Commons {
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
         waitForTextToAppear("Cotizaciones de la cuenta");
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
+        waitUntil(1000);
         mnuAdmCotizaciones.waitUntilVisible().waitUntilClickable().click();
         waitUntil(800);
         return new OpcionesAdminitradorCotizaciones(getDriver());
