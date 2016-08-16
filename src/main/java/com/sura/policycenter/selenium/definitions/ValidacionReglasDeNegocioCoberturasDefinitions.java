@@ -12,9 +12,9 @@ public class ValidacionReglasDeNegocioCoberturasDefinitions {
     @Steps
     ValidacionReglasDeNegocioCoberturasSteps validacionReglasDeNegocioCoberturasSteps;
 
-    @When("agregue cada una de las ubicaciones")
+    @When("quiera mostrar los edificios y ubicaciones")
     public void whenAgregueCadaUnaDeLasUbicaciones() {
-        validacionReglasDeNegocioCoberturasSteps.ingresa_primera_ubicacion();
+        validacionReglasDeNegocioCoberturasSteps.ingresa_edificios_y_ubicaciones();
     }
 
     @Then("se debe mostrar un mensaje <mensaje> de advertencia y pasar a la siguinete pagina")
@@ -22,8 +22,11 @@ public class ValidacionReglasDeNegocioCoberturasDefinitions {
         validacionReglasDeNegocioCoberturasSteps.valida_mensaje_pantalla(mensaje);
     }
 
-    @Then("debe permitir pasar a la siguinete pagina")
-    public void thendebePermitirPasarALaSiguinetePagina (){
-        validacionReglasDeNegocioCoberturasSteps.valida_paso_a_siguinete_pantalla();
+    @Then("debe pasar a la siguinete pagina sin mostrar mensajes")
+    public void validaPasoAAsiguinetePagina (){
+        validacionReglasDeNegocioCoberturasSteps.valida_paso_a_pantalla_siguiente();
     }
+
+
+
 }
