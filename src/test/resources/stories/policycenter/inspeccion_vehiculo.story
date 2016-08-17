@@ -2,7 +2,7 @@ Inspeccion Vehiculo
 
 Meta:
 
-@issue SUGW_USC-00107-PA-Vehicle_Information-Inspección
+@issue CDSEG-751
 @Automatizador Diego Cardona Acevedo
 @Sprint 5
 
