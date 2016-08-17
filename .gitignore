@@ -27,3 +27,4 @@ BDDCore.iml
 .sonar/.sonar_lock
 .sonar/report-task.txt
 sonar-project.properties
+phantomjsdriver.log

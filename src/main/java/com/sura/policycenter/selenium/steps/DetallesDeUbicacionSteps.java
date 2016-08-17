@@ -3,6 +3,7 @@ import com.sura.policycenter.selenium.pages.DetallesDeUbicacionPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 
 public class DetallesDeUbicacionSteps extends ScenarioSteps {
@@ -13,9 +14,9 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ir_a_nueva_poliza(String cuenta){
+    public void ir_a_nueva_poliza(ExamplesTable datosCotizacion){
         detallesDeUbicacionPage.irANuevaCotizacion();
-        detallesDeUbicacionPage.setDatos(cuenta);
+        detallesDeUbicacionPage.setDatos(datosCotizacion);
     }
 
     @Step
@@ -52,6 +53,6 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
 
     @Step
     public void elegirProducto(String producto) {
-        detallesDeUbicacionPage.elegirProducto(producto);
+        detallesDeUbicacionPage.seleccionarProducto(producto);
     }
 }

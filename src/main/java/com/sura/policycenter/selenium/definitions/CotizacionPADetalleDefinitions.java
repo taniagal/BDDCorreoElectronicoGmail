@@ -38,7 +38,7 @@ public class CotizacionPADetalleDefinitions {
         infoDetalleCotizacion.put("prima", "Prima");
         infoDetalleCotizacion.put("subtotal", "Subtotal");
         infoDetalleCotizacion.put("subtotalPrimas", "Subtotal de primas");
-        infoDetalleCotizacion.put("impuesto", "Impuesto");
+        infoDetalleCotizacion.put("impuesto", "Impuestos y cargos extra");
     }
 
     @Given("he realizado la cotizacion <cotizacion>")

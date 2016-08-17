@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
@@ -14,10 +14,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class HistorialCuentaPage extends Guidewire {
+public class HistorialCuentaPage extends Commons {
 
     Actions act = new Actions(getDriver());
-
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
@@ -88,7 +87,7 @@ public class HistorialCuentaPage extends Guidewire {
     }
 
     public void buscarCuenta(String numCuenta) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuCuenta).shouldBePresent();
+        waitFor(mnuCuenta).shouldBePresent();
         act.sendKeys(mnuCuenta,Keys.ARROW_DOWN).build().perform();
         act.moveToElement(txtNumCuenta).click().build().perform();
         setImplicitTimeout(1, TimeUnit.SECONDS);
@@ -107,7 +106,7 @@ public class HistorialCuentaPage extends Guidewire {
     }
 
     public void buscarCuentaRelacionadoCon(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnMostrarRelacionadoCon).shouldBePresent();
+        waitFor(btnMostrarRelacionadoCon).shouldBePresent();
         btnMostrarRelacionadoCon.click();
         itmRelacionadoCon.waitUntilEnabled();
         itmRelacionadoCon.click();
@@ -116,7 +115,7 @@ public class HistorialCuentaPage extends Guidewire {
     }
 
     public void buscarCuentaProducto(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnMostrarProducto).shouldBePresent();
+        waitFor(btnMostrarProducto).shouldBePresent();
         btnMostrarProducto.click();
         waitUntil(1500);
         itmProducto.click();
@@ -126,13 +125,13 @@ public class HistorialCuentaPage extends Guidewire {
     }
 
     public void validarResultadoBusqueda(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(itemTipoResultado).shouldBePresent();
+        waitFor(itemTipoResultado).shouldBePresent();
         MatcherAssert.assertThat(itemTipoResultado.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(""))));
         MatcherAssert.assertThat(itemTipoResultado.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
     }
 
     public void validarColumnasHistorialCuenta(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(colTipo).shouldBePresent();
+        waitFor(colTipo).shouldBePresent();
         MatcherAssert.assertThat(colTipo.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
         MatcherAssert.assertThat(colUsuario.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
         MatcherAssert.assertThat(colFechaTransaccion.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
@@ -145,7 +144,7 @@ public class HistorialCuentaPage extends Guidewire {
     }
 
     public void buscarCuentaConMultiplesOpciones(String usuario, String fechaDesde, String fechaHasta){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnMostrarRelacionadoCon).shouldBePresent();
+        waitFor(btnMostrarRelacionadoCon).shouldBePresent();
         btnMostrarRelacionadoCon.click();
         itmRelacionadoConRenovacion.click();
         txtUsuario.waitUntilEnabled();
@@ -178,4 +177,5 @@ public class HistorialCuentaPage extends Guidewire {
             MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.equalTo(producto)));
         }
     }
+
 }

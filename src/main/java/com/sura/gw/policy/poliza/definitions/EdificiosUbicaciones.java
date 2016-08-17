@@ -5,23 +5,20 @@ import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.hamcrest.Matchers;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.core.StringContains;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.hasItems;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.StringContains.containsString;
 
 public class EdificiosUbicaciones {
 
@@ -129,9 +126,9 @@ public class EdificiosUbicaciones {
     @Then("espero ver mensajes de advertencia indicandome la direccion es un riesgo consultable")
     public void entoncesEsperoVerMensajeDeAdvertenciaQueUbicacionEsRiesgoConsultable() {
         for (String mensaje : polizaSteps.espacioDeTrabajo()){
-            assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
+            MatcherAssert.assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
                     mensaje,
-                    Matchers.containsString("La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
+                    StringContains.containsString("La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
                     ));
         }
 
@@ -140,7 +137,7 @@ public class EdificiosUbicaciones {
 
 
     @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
-    @Alias("se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electrónico móvil y pórtatil (se suman los de la categoría otros y los normales). $mensajesEsperados")
+    @Alias("se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados")
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
 
         List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
@@ -148,7 +145,7 @@ public class EdificiosUbicaciones {
         for (Map<String,String> mensajes : mensajesEsperados.getRows()) {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
 
-            assertThat(mensajesWSList, hasItems(containsString(mensaje)));
+            MatcherAssert.assertThat(mensajesWSList, CoreMatchers.hasItems(StringContains.containsString(mensaje)));
 
         }
 
@@ -157,7 +154,7 @@ public class EdificiosUbicaciones {
 
     @Then("no debe dejar continuar y debe permanecer en la pagina $pagina")
     public void noDebeDejarContinuarYDebePermanecerEnLaPagina(String pagina) {
-
+        //Metodo Vacio
     }
 
 

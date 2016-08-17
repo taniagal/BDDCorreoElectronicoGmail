@@ -4,6 +4,7 @@ package com.sura.gw.policy.poliza.definitions;
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
+import java.util.Map;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
@@ -18,7 +19,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import java.util.Map;
 
 public class Poliza {
 

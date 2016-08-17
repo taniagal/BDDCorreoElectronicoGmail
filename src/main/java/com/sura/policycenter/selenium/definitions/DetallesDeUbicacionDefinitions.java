@@ -7,6 +7,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 
 public class DetallesDeUbicacionDefinitions {
@@ -16,9 +17,9 @@ public class DetallesDeUbicacionDefinitions {
     /**
      * ESCENARIO 1
      */
-    @Given("estoy cotizando una poliza de MRC en cuenta <cuenta>")
-    public void agregarPoliza(@Named("cuenta")String cuenta) {
-        detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta);
+    @Given("estoy cotizando una poliza: $datosCotizacion")
+    public void agregarPoliza(ExamplesTable datosCotizacion) {
+        detallesDeUbicacionSteps.ir_a_nueva_poliza(datosCotizacion);
     }
 
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>")
@@ -32,11 +33,6 @@ public class DetallesDeUbicacionDefinitions {
         detallesDeUbicacionSteps.agregar_ubicacion(descripcion, actividad);
     }
 
-    @When("seleccione el producto <producto> para expedir la poliza")
-    public void elegirProducto(@Named("producto") String producto){
-        detallesDeUbicacionSteps.elegirProducto(producto);
-    }
-
     @Then("espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaciones la nueva ubicaciOn ingresada")
     public void verificarUbicacion(){
         detallesDeUbicacionSteps.validar_ingreso_ubicacion();
@@ -47,8 +43,12 @@ public class DetallesDeUbicacionDefinitions {
      */
     @Then("que se muestre el mensaje <mensaje>")
     public void verificarMensaje(@Named("mensaje")String mensaje){
-        /**
-         * Pendiente de una direccion que sea un riesgo consultable
-         * detallesDeUbicacionSteps.verificar_mensaje(mensaje);*/
+         detallesDeUbicacionSteps.verificar_mensaje(mensaje);
     }
+
+    @When("seleccione el producto <producto> para expedir la poliza")
+    public void elegirProducto(@Named("producto") String producto){
+        detallesDeUbicacionSteps.elegirProducto(producto);
+    }
+
 }

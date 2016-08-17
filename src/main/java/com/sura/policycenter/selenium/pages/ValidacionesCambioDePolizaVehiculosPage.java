@@ -1,5 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
+
+import com.sura.commons.selenium.Commons;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -12,8 +14,6 @@ import org.slf4j.LoggerFactory;
 
 
 public class ValidacionesCambioDePolizaVehiculosPage extends PageObject{
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ValidacionesCambioDePolizaVehiculosPage.class);
     @FindBy(xpath = ".//td/div/div/div/a[6]/span/span/span/span")
     private WebElementFacade botonEmitirPoliza;
     @FindBy(xpath = ".//div[5]/div[3]/div/div/a/span/span/span")
@@ -26,19 +26,17 @@ public class ValidacionesCambioDePolizaVehiculosPage extends PageObject{
     }
 
     public void emitirPoliza(){
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonEmitirPoliza).shouldBePresent();
+        withTimeoutOf(22, TimeUnit.SECONDS).waitFor(botonEmitirPoliza).shouldBePresent();
+        Commons commons = new Commons(getDriver());
+        commons.waitUntil(3000);
         botonEmitirPoliza.click();
         waitForTextToAppear("¿Está seguro de que desea emitir esta póliza?");
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAceptarEmitirPoliza).shouldBePresent();
+        withTimeoutOf(21, TimeUnit.SECONDS).waitFor(botonAceptarEmitirPoliza).shouldBePresent();
         botonAceptarEmitirPoliza.click();
+        withTimeoutOf(28,TimeUnit.SECONDS).waitFor(botonAceptarEmitirPoliza).waitUntilNotVisible();
     }
 
     public void validarMensaje(String mensaje){
-        String validacion = null;
-        try{
-            MatcherAssert.assertThat(mensajesValidaciones.getText(), Matchers.containsString(mensaje));
-        }catch(Exception e){
-            LOGGER.error(validacion, e);
-        }
+        MatcherAssert.assertThat(mensajesValidaciones.getText(), Matchers.containsString(mensaje));
     }
 }

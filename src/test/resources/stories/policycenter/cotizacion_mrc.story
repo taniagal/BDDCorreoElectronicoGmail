@@ -57,7 +57,7 @@ Then no debe permitir cotizar; se debe mostrar el mensaje de respuesta <mensaje>
 
 Examples:
 |cotizacion|mensaje|
-|22223230  |es un riesgo no estándar y debe ser analizado|
+|22223230  |es un riesgo no estándar y debe ser autorizado.|
 
 Scenario: validacion de exclusividad en la cotizacion
 Given se registraron los riesgos y coberturas que se desean cotizar <cotizacion>

@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages.colectivas;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -125,11 +125,10 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV:";
     private static final String MM_DD_YYYY = "MM/dd/yyyy";
 
-    private final Guidewire guidewire = new Guidewire(getDriver());
+    private final Commons commons = new Commons(getDriver());
     private final DateFormat dateFormat = new SimpleDateFormat(MM_DD_YYYY);
-    private final Date fechaHoy = new Date();
-    private String rolCampos = "presentation";
-    private String rolListas = "textbox";
+    private static final Date fechaHoy = new Date();
+    private final String rolListas = "textbox";
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {
         super(driver);
@@ -156,7 +155,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), containsText(infoPoliza.get("fechaFin")));
         MatcherAssert.assertThat(fechaExpedicion.getValue(), Is.is(Matchers.equalTo(dateFormat.format(fechaHoy))));
         MatcherAssert.assertThat(oficinaRadicacion.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("oficina"))));
-        MatcherAssert.assertThat(codAgente.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("codAgente"))));
+        MatcherAssert.assertThat("Error, no se encontró el codigo de agente",codAgente.getValue().contains(infoPoliza.get("codAgente")));
         MatcherAssert.assertThat(descuentoPoliza.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("descuentoPoliza"))));
         botonCambiarDireccion.shouldBeVisible();
         linkAgregarCoaseguro.shouldBeVisible();
@@ -169,7 +168,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto(producto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = findBy(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
-        guidewire.waitUntil(1000);
+        commons.waitUntil(1000);
         botonElegirProducto.click();
     }
 
@@ -210,7 +209,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
 
     public void validarMensaje(WebElementFacade mensajePantalla, String mensaje) {
         waitFor(mensajePantalla).waitUntilVisible();
-        guidewire.waitUntil(1500);
+        commons.waitUntil(1500);
         MatcherAssert.assertThat(mensajePantalla.getText(), containsText(mensaje));
     }
 
@@ -232,7 +231,6 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void clicEnSiguiente() {
-        System.out.println("fecha " + fechaInicioVigencia.getCssValue("disabled"));
         botonSiguiente.click();
     }
 
@@ -243,7 +241,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void validarFechaFinDeVigenciaCambiada(int aniosFinVigencia) {
-        guidewire.waitUntil(1000);
+        commons.waitUntil(1000);
         String nuevaFechaFin = fechaInicioVigencia.getValue();
         Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 10)) + aniosFinVigencia;
         String fechaFinVigencia = nuevaFechaFin.replace(nuevaFechaFin.substring(6, 10), anioVigenciaProducto.toString());
@@ -321,7 +319,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void validarLosElementosDeshabilitados() {
-        guidewire.waitUntil(2000);
+        commons.waitUntil(2000);
         MatcherAssert.assertThat(linkAgregarCoaseguro.getAttribute("href"), Is.is(Matchers.equalTo("")));
         MatcherAssert.assertThat(organizacion.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
         MatcherAssert.assertThat(canal.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));

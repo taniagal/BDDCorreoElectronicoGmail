@@ -125,4 +125,4 @@ Then no se debe permitir continuar con la expedicion y debe mostrar el siguiente
 
 Examples:
 |cotizacion|mensaje                                                                      |
-|55555557  |El modelo es superior al maximo permitido por este canal. Por favor verifique|
+|55555557  |El valor asegurado del vehículo supera el límite máximo permitido por políticas.|

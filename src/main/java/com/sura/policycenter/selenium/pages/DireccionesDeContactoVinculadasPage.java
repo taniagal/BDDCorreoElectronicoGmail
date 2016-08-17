@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -12,8 +12,8 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,7 +25,7 @@ import org.openqa.selenium.support.ui.Wait;
 
 public class DireccionesDeContactoVinculadasPage extends PageObject {
 
-    Guidewire guidewire = new Guidewire(getDriver());
+    Commons commons = new Commons(getDriver());
 
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnInnerEl']")
     private WebElementFacade btnBuscar;
@@ -84,6 +84,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     @FindBy(xpath = "//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarMensaje;
 
+
     public DireccionesDeContactoVinculadasPage(WebDriver driver) {
         super(driver);
     }
@@ -91,9 +92,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
     public void buscarCuenta(String numeroCuenta) {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
-        guidewire.waitUntil(2000);
+        commons.waitUntil(2000);
         btnBuscar.click();
-        btnCuentas = esperarElemento(".//*[@id='Search:MenuLinks:Search_AccountSearch']");
         btnCuentas.click();
         txtNumeroCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");
         txtNumeroCuenta.sendKeys(numeroCuenta);
@@ -115,7 +115,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         this.seleccionarUnContacto(nombreContactoDos);
         WebElementFacade btnAsociarDireccion = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:LinkAddressMenuMenuIcon']/img");
         btnAsociarDireccion.click();
-        btnEditarDireccion.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        btnEditarDireccion.waitUntilPresent().click();
     }
 
     public void vincularDireccionAContacto(String nombreContacto) {
@@ -244,7 +244,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
                     break;
                 }
             } catch (StaleElementReferenceException elemento) {
-
+                elemento.printStackTrace();
             }
             intentos++;
         }
@@ -260,10 +260,10 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
                     MatcherAssert.assertThat(campoCiudad.getValue(), Is.is(Matchers.equalTo(ciudad)));
                     break;
                 } else {
-                    guidewire.waitUntil(1000);
+                    commons.waitUntil(1000);
                 }
             } catch (StaleElementReferenceException elemento) {
-
+                elemento.printStackTrace();
             }
             intentos++;
         }

@@ -2,10 +2,12 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -22,8 +24,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
 
 
-
-public class ModificacionCotizacionDePolizaPage extends PageObject{
+public class ModificacionCotizacionDePolizaPage extends PageObject {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionCotizacionDePolizaPage.class);
 
@@ -101,7 +102,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
     private WebElementFacade labelSubtotal;
     @FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
     private WebElementFacade labelSubtotalPrimas;
-    @FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td/div")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:Taxes-labelEl']")
     private WebElementFacade labelImpuesto;
     @FindBy(xpath = ".//td[2]/div/div[2]/div/table")
     private WebElementFacade tablaCoberturas;
@@ -132,25 +133,25 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
     private WebElementFacade labelDCSubtotal;
     @FindBy(xpath = ".//tr[4]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
     private WebElementFacade labelDCSubtotalPrimas;
-    @FindBy(xpath = ".//tr[4]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td/div")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:Taxes-labelEl']")
     private WebElementFacade labelDCImpuesto;
 
-    public ModificacionCotizacionDePolizaPage(WebDriver driver){
+    public ModificacionCotizacionDePolizaPage(WebDriver driver) {
         super(driver);
     }
 
     public void verDetalleCotizacion() {
-        waitForTextToAppear("Cotización",5000);
+        waitForTextToAppear("Cotización", 5000);
         setImplicitTimeout(2, TimeUnit.SECONDS);
-        if(tituloDePagina.isPresent()){
-            waitForTextToAppear(tituloDePagina.getText(),2000);
+        if (tituloDePagina.isPresent()) {
+            waitForTextToAppear(tituloDePagina.getText(), 2000);
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
         }
         resetImplicitTimeout();
     }
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        withTimeoutOf(15,TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
+        withTimeoutOf(21, TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
         Map<String, String> datosCotizacion;
         MatcherAssert.assertThat(labelNumeroPoliza.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroPoliza"))));
         MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroCotizacion"))));
@@ -168,7 +169,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
 
         if (campoNumeroDeCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("numeroCotizacion"))) {
             datosCotizacion = informacionCotizacion.getRows().get(0);
-        }else{
+        } else {
             datosCotizacion = informacionCotizacion.getRows().get(1);
         }
         MatcherAssert.assertThat(campoNumeroDeCotizacion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("numeroCotizacion"))));
@@ -187,27 +188,18 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
     }
 
     public void validarInformacionDetalleCotizacion(Map<String, String> infoDetalleCotizacion) {
-        String validacion = null;
-        try{
-            MatcherAssert.assertThat(labelVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("labelVehiculo"))));
-            MatcherAssert.assertThat(labelPlaca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("placa"))));
-            MatcherAssert.assertThat(labelCodigoFasecolda.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("codigoFasecolda"))));
-            MatcherAssert.assertThat(labelMarca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("marca"))));
-            MatcherAssert.assertThat(labelModelo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("modelo"))));
-            MatcherAssert.assertThat(labelLinea.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("linea"))));
-            MatcherAssert.assertThat(labelDescripcionCobertura.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("descripcion"))));
-            MatcherAssert.assertThat(labelValorTerminoCobertura.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("valorTermino"))));
-            MatcherAssert.assertThat(labelPrima.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("prima"))));
-            MatcherAssert.assertThat(labelSubtotal.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotal"))));
-            MatcherAssert.assertThat(labelSubtotalPrimas.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotalPrimas"))));
-            MatcherAssert.assertThat(labelImpuesto.getText(), Matchers.containsString(infoDetalleCotizacion.get("impuesto")));
-
-        }catch (Exception e){
-            LOGGER.error(validacion, e);
-            validacion = e.getMessage();
-        }
-
-        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
+        MatcherAssert.assertThat(labelVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("labelVehiculo"))));
+        MatcherAssert.assertThat(labelPlaca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("placa"))));
+        MatcherAssert.assertThat(labelCodigoFasecolda.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("codigoFasecolda"))));
+        MatcherAssert.assertThat(labelMarca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("marca"))));
+        MatcherAssert.assertThat(labelModelo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("modelo"))));
+        MatcherAssert.assertThat(labelLinea.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("linea"))));
+        MatcherAssert.assertThat(labelDescripcionCobertura.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("descripcion"))));
+        MatcherAssert.assertThat(labelValorTerminoCobertura.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("valorTermino"))));
+        MatcherAssert.assertThat(labelPrima.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("prima"))));
+        MatcherAssert.assertThat(labelSubtotal.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotal"))));
+        MatcherAssert.assertThat(labelSubtotalPrimas.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotalPrimas"))));
+        MatcherAssert.assertThat(labelImpuesto.getText(), Matchers.containsString(infoDetalleCotizacion.get("impuesto")));
     }
 
     public void validarDireccion(String direccion) {
@@ -215,7 +207,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
     }
 
     public void validarDireccionTomador(String direccion) {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoDireccion).shouldBePresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoDireccion).shouldBePresent();
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
 
@@ -225,16 +217,16 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
         List<WebElement> allRows = tablaCoberturas.findElements(By.tagName("tr"));
         waitABit(1000);
         String validacion = null;
-        Map<String,String> coberturas = new HashMap<>();
-        Map<String,String> terminoCoberturas = new HashMap<>();
+        Map<String, String> coberturas = new HashMap<>();
+        Map<String, String> terminoCoberturas = new HashMap<>();
         try {
 
-            int i=0;
+            int i = 0;
             for (WebElement row : allRows) {
                 List<WebElement> cells = row.findElements(By.tagName("td"));
                 String descCob = cells.get(0).getText();
                 String terminoCob = cells.get(1).getText();
-                if(!"-".equals(terminoCob)) {
+                if (!"-".equals(terminoCob)) {
                     i++;
                     terminoCoberturas.put("dato" + i, terminoCob);
                 }
@@ -242,19 +234,19 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
 
             waitFor(botonCoberturasPA).shouldBeVisible();
             botonCoberturasPA.click();
-            waitForTextToAppear("Coberturas de auto personal",1000);
+            waitForTextToAppear("Coberturas de auto personal", 1000);
 
-            for(int j=1; j<=i; j++){
-                WebElementFacade coberturaAuto= findBy(".//div[contains(.,'"+terminoCoberturas.get("dato"+j)+"')]");
+            for (int j = 1; j <= i; j++) {
+                WebElementFacade coberturaAuto = findBy(".//div[contains(.,'" + terminoCoberturas.get("dato" + j) + "')]");
                 waitFor(coberturaAuto).shouldBeVisible();
                 MatcherAssert.assertThat(coberturaAuto.getText(), Is.is(Matchers.notNullValue()));
             }
 
             waitFor(botonCotizacion).shouldBeVisible();
             botonCotizacion.click();
-            waitForTextToAppear("Cotización",1000);
+            waitForTextToAppear("Cotización", 1000);
 
-        }catch(Exception e) {
+        } catch (Exception e) {
             LOGGER.error("This is error", e);
             validacion = e.getMessage();
         }
@@ -262,30 +254,22 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
     }
 
-    public void validarDetallesCosto(Map<String, String> infoDetalleCotizacion){
-
-        String validacion = null;
+    public void validarDetallesCosto(Map<String, String> infoDetalleCotizacion) {
         waitFor(botonDetalleCambioCosto).shouldBeVisible();
         botonDetalleCambioCosto.click();
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonDetalleCambioCosto).shouldBePresent();
-        try{
-            MatcherAssert.assertThat(labelDCVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_labelVehiculo"))));
-            MatcherAssert.assertThat(labelDCPlaca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_placa"))));
-            MatcherAssert.assertThat(labelDCCodigoFasecolda.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_codigoFasecolda"))));
-            MatcherAssert.assertThat(labelDCMarca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_marca"))));
-            MatcherAssert.assertThat(labelDCModelo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_modelo"))));
-            MatcherAssert.assertThat(labelDCLinea.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_linea"))));
-            MatcherAssert.assertThat(labelDCDescripcionCobertura.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_descripcion"))));
-            MatcherAssert.assertThat(labelDCPrima.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_prima"))));
-            MatcherAssert.assertThat(labelDCSubtotal.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_subtotal"))));
-            MatcherAssert.assertThat(labelDCSubtotalPrimas.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_subtotalPrimas"))));
-            MatcherAssert.assertThat(labelDCImpuesto.getText(), Matchers.containsString(infoDetalleCotizacion.get("DC_impuesto")));
-        }catch (Exception e){
-            LOGGER.error(validacion, e);
-            validacion = e.getMessage();
-        }
-
-        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonDetalleCambioCosto).shouldBePresent();
+        MatcherAssert.assertThat(labelDCVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_labelVehiculo"))));
+        MatcherAssert.assertThat(labelDCPlaca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_placa"))));
+        MatcherAssert.assertThat(labelDCCodigoFasecolda.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_codigoFasecolda"))));
+        MatcherAssert.assertThat(labelDCMarca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_marca"))));
+        MatcherAssert.assertThat(labelDCModelo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_modelo"))));
+        MatcherAssert.assertThat(labelDCLinea.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_linea"))));
+        MatcherAssert.assertThat(labelDCDescripcionCobertura.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_descripcion"))));
+        MatcherAssert.assertThat(labelDCPrima.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_prima"))));
+        MatcherAssert.assertThat(labelDCSubtotal.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_subtotal"))));
+        MatcherAssert.assertThat(labelDCSubtotalPrimas.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_subtotalPrimas"))));
+        waitFor(labelDCImpuesto).shouldContainText(infoDetalleCotizacion.get("DC_impuesto"));
+        MatcherAssert.assertThat(labelDCImpuesto.getText(), Matchers.containsString(infoDetalleCotizacion.get("DC_impuesto")));
     }
 
     public WebElementFacade esperarElemento(final String xpath) {
@@ -293,7 +277,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject{
                 .withTimeout(30, TimeUnit.SECONDS)
                 .pollingEvery(5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
-        return  espera.until(new Function<WebDriver, WebElementFacade>() {
+        return espera.until(new Function<WebDriver, WebElementFacade>() {
             public WebElementFacade apply(WebDriver driver) {
                 return findBy(xpath);
             }

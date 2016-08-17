@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
 
 import java.util.List;
@@ -20,8 +20,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-
-public class OpcionesAdminitradorCotizaciones extends Guidewire {
+public class OpcionesAdminitradorCotizaciones extends Commons {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
 
     Actions act = new Actions(getDriver());
@@ -102,6 +101,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
     @FindBy(id = "NotTakenReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msgNoTomar;
 
+    private static final String SUBMITIONXPATH = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
     public OpcionesAdminitradorCotizaciones(WebDriver driver) {
         super(driver);
     }
@@ -115,7 +115,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             if (!("".equals(cells.get(2).getText()) || " ".equals(cells.get(2).getText()))) {
                 if (("Cotizado".equals(cells.get(7).getText()) || "Borrador".equals(cells.get(7).getText())) && band == 0) {
-                    WebElementFacade botonAccciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + i + ":SubmissionActions:SubmissionActionsMenuIcon']");
+                    WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon']");
                     botonAccciones.click();
                     band = i;
                 }
@@ -126,8 +126,8 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
 
     public void validarEstadosCotizacion(String estadoDeclinar, String estadoNoTomar) {
         if (band != 0) {
-            WebElementFacade itemDeclinar = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + band + ":SubmissionActions:SubmissionActionsMenuItemSet:Decline-itemEl']");
-            WebElementFacade itemNoTomar = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + band + ":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-itemEl']");
+            WebElementFacade itemDeclinar = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuItemSet:Decline-itemEl']");
+            WebElementFacade itemNoTomar = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-itemEl']");
             MatcherAssert.assertThat(itemDeclinar.getText(), Is.is(Matchers.equalTo(estadoDeclinar)));
             MatcherAssert.assertThat(itemNoTomar.getText(), Is.is(Matchers.equalTo(estadoNoTomar)));
         } else {
@@ -151,7 +151,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
 
     public void validarOpcionRetirar(String retirar) {
         Boolean validacion = false;
-        WebElementFacade listaAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + band + ":SubmissionActions:SubmissionActionsMenuIcon-fieldMenu']");
+        WebElementFacade listaAcciones = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuIcon-fieldMenu']");
         validacion = listaAcciones.containsElements(retirar);
         MatcherAssert.assertThat(validacion, Is.is(false));
     }
@@ -272,7 +272,7 @@ public class OpcionesAdminitradorCotizaciones extends Guidewire {
 
     public void mostrarBotonCrearCartaDeclinacion(String crearCarta) {
         if (band != 0) {
-            WebElementFacade botonCrearCartaDeclinacion = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + band + ":DeclineLetter']");
+            WebElementFacade botonCrearCartaDeclinacion = findBy(SUBMITIONXPATH + band + ":DeclineLetter']");
             MatcherAssert.assertThat(botonCrearCartaDeclinacion.getText(), Is.is(Matchers.equalTo(crearCarta)));
             band = 0;
         } else {
