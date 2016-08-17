@@ -280,17 +280,27 @@ Meta:
 As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 11             |
+| TAB                      | TIPO_ARTICULO  | COBERTURA                             | ENTRADAS                                                                 | VALOR_ENTRADAS |
+| Coberturas del Riesgo    |                | Danos materiales                      | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 9              |
+| Información de Artículos |                | Edificios                             | Valor Reconstrucción                                                     | 2              |
+| Información de Artículos |                | Maquinaria y equipo                   | Valor Asegurable                                                         | 2              |
+| Información de Artículos |                | Equipo electrónico móvil y/o portátil | Valor Asegurable                                                         | 2              |
+| Información de Artículos |                | Dinero en Efectivo                    | Valor Asegurable                                                         | 2              |
+| Información de Artículos |                | Equipo electrónico fijo               | Valor Asegurable                                                         | 2              |
+| Información de Artículos |                | Muebles y enseres                     | Valor Asegurable                                                         | 2              |
+| Información de Artículos |                | Existencias Flotantes                 | Valor asegurado máximo                                                   | 2              |
+| Información de Artículos |                | Existencias fijas                     | Valor Asegurable                                                         | 2              |
+| Otros Articulos          | Animales vivos |                                       | Valor Asegurable                                                         | 4              |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                     |
-| Para seleccionar el "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe tener seleccionada la cobertura de "Rotura de maquinaria" para el artículo "Maquinaria y equipo". |
+| El "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " deber ser menor o igual al "40.0%" de la sumatoria de los valores asegurables de "todos los articulos". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22221237        | Asesor     |             |
+
 
 Scenario: Parametro del 40%
 Meta:
@@ -302,6 +312,11 @@ Meta:
 @manual
 @Sprint 5
 
-Given Estoy ingresando la información de coberturas a nivel de riesgo
-When Quiera cambiar el valor del 40% a otro valor
-Then Se cambie simplemente en una tabla de parámetros. Este valor no debe estar quemado en el código. Se debe poder cambiar a números decimales
+Given he ingresado al Product Designer
+When seleccione en System Tables
+And seleccione cp_term_articles_rules_ext.xml
+And ingrese el porcentaje para el MRCBRefrigRotMaqLimSubUbic en la columna PercentInsuredValue
+And guarde los cambios y suba dichos cambios al servidor
+Then debe poner cambiar el porcentaje del parametro
+
+
