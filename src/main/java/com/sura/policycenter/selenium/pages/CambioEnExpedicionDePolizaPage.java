@@ -47,7 +47,7 @@ public class CambioEnExpedicionDePolizaPage extends PageObject{
     }
 
     public void validarResumenDeLaPolizaExpedida(String infoCambio, String infoPoliza, String escritorio) {
-        withTimeoutOf(8, TimeUnit.SECONDS).waitFor(ExpectedConditions.visibilityOf(campoInformacionCambio));
+        campoInformacionCambio.waitUntilPresent();
         MatcherAssert.assertThat(campoInformacionCambio.getText(), Is.is(Matchers.equalTo(infoCambio)));
         MatcherAssert.assertThat(campoVerPoliza.getText(), Is.is(Matchers.containsString(infoPoliza)));
         MatcherAssert.assertThat(campoIrAlEscritorio.getText(), Is.is(Matchers.equalTo(escritorio)));

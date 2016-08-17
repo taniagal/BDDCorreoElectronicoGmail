@@ -316,7 +316,7 @@ public class Navegacion extends Commons {
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(300);
         waitFor(mnuPoliza).shouldBeVisible();
-        mnuNumPoliza.typeAndEnter(numPoliza);
+        ingresarDato(mnuNumPoliza,numPoliza);
         waitUntil(300);
         return new PolizaBuscarPage(getDriver());
     }
@@ -678,7 +678,7 @@ public class Navegacion extends Commons {
     }
 
     public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta() {
-        waitFor(mnuAccionesCuenta).waitUntilClickable();
+        waitFor(mnuAccionesCuenta).waitUntilPresent();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(300);

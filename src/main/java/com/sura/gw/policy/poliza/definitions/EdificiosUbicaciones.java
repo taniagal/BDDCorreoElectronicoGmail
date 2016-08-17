@@ -8,6 +8,8 @@ import com.sura.gw.policy.poliza.steps.PolizaSteps;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import com.sura.policycenter.selenium.steps.DetallesDeUbicacionSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.CoreMatchers;
@@ -26,6 +28,8 @@ public class EdificiosUbicaciones {
     @Steps EdificiosUbicacionesSteps edificiosUbicacionesSteps;
     @Steps IngresoAPolicyCenterDefinitions guidewire;
     @Steps Navegacion navegacion;
+    @Steps
+    DetallesDeUbicacionSteps detallesDeUbicacionSteps;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -139,16 +143,9 @@ public class EdificiosUbicaciones {
     @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
     @Alias("se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados")
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
-
-        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
-
         for (Map<String,String> mensajes : mensajesEsperados.getRows()) {
-            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-
-            MatcherAssert.assertThat(mensajesWSList, CoreMatchers.hasItems(StringContains.containsString(mensaje)));
-
+            detallesDeUbicacionSteps.elegirProducto(mensajes.get("MENSAJES_WORKSPACE"));
         }
-
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
 
