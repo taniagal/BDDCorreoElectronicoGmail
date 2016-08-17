@@ -214,11 +214,10 @@ Examples:
 | 22221237        | Asesor     |             |
 
 
-
-Scenario:
+Scenario: Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo)
 Meta:
-@Story CDSEG-
-@URL https://jira.suramericana.com.co/browse/CDSEG-
+@Story CDSEG-943
+@URL https://jira.suramericana.com.co/browse/CDSEG-943
 @Informador alejandro esteban villada marin
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
@@ -227,12 +226,39 @@ Meta:
 As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 11             |
+| TAB                      | TIPO_ARTICULO | COBERTURA             | ENTRADAS                                                                       | VALOR_ENTRADAS |
+| Coberturas del Riesgo    |               | Sustraccion           | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
+| Información de Artículos |               | Existencias Flotantes | Valor asegurado máximo                                                         | 11             |
+| Información de Artículos |               | Existencias fijas     | Valor Asegurable                                                               | 11             |
 When haga clic en el boton Aceptar
-Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
-| MENSAJES_WORKSPACE                                                                                                                                                             |
-| El "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ". |
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                                                                            |
+| El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura "Danos materiales" de los articulos "-Existencias flotantes - Existencias fijas - ". |
+Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
+
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |
+
+
+Scenario: Sublimite deterioro de bienes refigerados por rotura maquinaria (coberturas del riesgo)
+Meta:
+@Story CDSEG-943
+@URL https://jira.suramericana.com.co/browse/CDSEG-943
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@Sprint 5
+
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
+When haga clic en el boton Aceptar
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                     |
+| Para seleccionar el "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe tener seleccionada la cobertura de "Rotura de maquinaria" para el artículo "Maquinaria y equipo". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
