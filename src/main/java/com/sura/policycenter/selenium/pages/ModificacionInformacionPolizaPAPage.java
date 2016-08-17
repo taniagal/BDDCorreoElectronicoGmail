@@ -1,8 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -13,6 +11,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class ModificacionInformacionPolizaPAPage extends Commons{
@@ -189,6 +190,7 @@ public class ModificacionInformacionPolizaPAPage extends Commons{
         WebElementFacade campoTxtNumeroDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']");
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtNumeroDocumento).type(numeroDocumento);
         WebElementFacade botonBuscarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']");
+        waitUntil(1000);
         waitFor(botonBuscarContacto).click();
         WebElementFacade botonSeleccionarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']");
         waitFor(botonSeleccionarContacto).shouldBeVisible();

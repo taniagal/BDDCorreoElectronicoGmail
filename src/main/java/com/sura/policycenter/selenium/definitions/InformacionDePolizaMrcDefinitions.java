@@ -53,10 +53,6 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
     }
 
-    @Then("bloquear la operacion")
-    public void bloqueoDeAplicacion() {
-        informacionDePolizaMrcSteps.bloqueo_de_aplicacion();
-    }
 
     /*
     * 3 Historia
