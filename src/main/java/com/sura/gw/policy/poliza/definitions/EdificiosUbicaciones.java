@@ -69,7 +69,7 @@ public class EdificiosUbicaciones {
             String entrada = entradaCobertura.get("ENTRADAS");
             String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
 
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada);
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo);
         }
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }

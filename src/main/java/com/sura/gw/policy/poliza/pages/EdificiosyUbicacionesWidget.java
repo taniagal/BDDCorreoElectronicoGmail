@@ -214,4 +214,12 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         return estaSeleccionado;
 
     }
+
+    public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada) {
+        WebElementFacade btnAgregarArticulo = findBy(".//a[@id='CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add']").waitUntilVisible().waitUntilClickable();
+        btnAgregarArticulo.click();
+
+        enter(tipoArticulo).into($(".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']"));
+        enter(tipoArticulo).into($(".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']"));
+    }
 }

@@ -60,7 +60,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
     }
 
-    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada) {
+    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo) {
 
         String mensajeStepReporte = "En tab " + tab +
                 " seleccionar la cobertura " + cobertura +
@@ -88,7 +88,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         }
 
         if("Otros Articulos".equals(tab)){
-
+            edificiosyUbicacionesWidget.ingresarOtroArticulo(tipoArticulo, cobertura, entrada, valorEntrada);
         }
     }
 
