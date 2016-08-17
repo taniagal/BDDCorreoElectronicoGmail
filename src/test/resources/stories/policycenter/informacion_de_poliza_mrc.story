@@ -43,12 +43,11 @@ And seleccione el canal <canal>
 And seleccione el producto <nomProducto> a expedir
 And modifique la fecha de inicio de vigencia de la poliza <fechaInicioVigencia>
 Then se debe mostrar un mensaje <mensaje> de error
-And bloquear la operacion
 
 Examples:
-|numeroCuenta  |organizacion|canal            |nomProducto            |fechaInicioVigencia|mensaje                                                                                 |
-|C000888888    |Sura        |Canal Tradicional|Multiriesgo corporativo|01/01/2016         |La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días)    |
-|C000888888    |Sura        |Canal Tradicional|Multiriesgo corporativo|12/01/2016         |La fecha de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
+|numeroCuenta  |organizacion|canal            |nomProducto            |fechaInicioVigencia|mensaje                                                                                        |
+|C000888888    |Sura        |Canal Tradicional|Multiriesgo corporativo|01/01/2016         |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días)    |
+|C000888888    |Sura        |Canal Tradicional|Multiriesgo corporativo|12/01/2016         |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
 Scenario: Agregar tomador adicional cuando es un riesgo consultable
 Given se inicio una nueva suscripcion <numeroCuenta>
@@ -58,7 +57,7 @@ And seleccione el canal <canal>
 And seleccione el producto <nomProducto> a expedir
 And quiera agregar un tomador adicional que es riesgo consultable <cedula>
 Then se debe mostrar un mensaje de error <mensaje> <mensaje2>
-And bloquear la operacion
+
 
 Examples:
 |numeroCuenta  |organizacion|canal            |cedula|nomProducto            |mensaje                                       |mensaje2                                                                                                                                              |
