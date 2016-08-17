@@ -20,6 +20,13 @@ public class InspeccionVehiculoDefinitions {
     @When("el vehiculo tenga inspeccion no valida")
     public void validarInspeccionVehiculo() {
         vehiculoSteps.ir_a_vehiculos();
+        inspeccionVehiculoSteps.crear_vehiculo();
+    }
+
+    @When("el vehiculo tenga inspeccion")
+    public void validarInspeccion() {
+        vehiculoSteps.ir_a_vehiculos();
+        inspeccionVehiculoSteps.crear_vehiculo();
     }
 
     @When("la placa <placa> estuvo vigente en la compañia")
@@ -27,11 +34,9 @@ public class InspeccionVehiculoDefinitions {
         inspeccionVehiculoSteps.validar_Vigencia_De_La_Placa(placa);
     }
 
-    //TODO: Validar con los configuradores cómo se obtiene la fecha
-    @When("la fecha de cancelacion o exclusion no sea mayor a 3 dias")
-    @Pending
-    public void validarFechaCancelacionOExclusion(){
-        //inspeccionVehiculoSteps.validarFechaCancelacionOExclusion();
+    @When("la placa <placa> estuvo vigente pero ahora esta cancelada")
+    public void validarPlacaCancelada(@Named("placa") String placa){
+        inspeccionVehiculoSteps.validar_Vigencia_De_La_Placa(placa);
     }
 
     @Then("se debe recuperar los siguientes datos: $datosVehiculo")

@@ -20,11 +20,6 @@ public class InspeccionVehiculoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarFechaCancelacionOExclusion() {
-        inspeccionVehiculoPage.validarFechaCancelacionOExclusion();
-    }
-
-    @Step
     public void validar_Informacion_Del_Vehiculo(ExamplesTable datosVehiculo) {
         inspeccionVehiculoPage.validarDatosVehiculo(datosVehiculo);
     }
@@ -32,5 +27,10 @@ public class InspeccionVehiculoSteps extends ScenarioSteps {
     @Step
     public void validar_Valor_Asegurado_Del_Vehiculo(String valorAsegurado) {
         inspeccionVehiculoPage.validarValorAsegurado(valorAsegurado);
+    }
+
+    @Step
+    public void crear_vehiculo() {
+        inspeccionVehiculoPage.crearVehiculo();
     }
 }
