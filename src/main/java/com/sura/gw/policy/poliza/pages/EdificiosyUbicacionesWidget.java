@@ -2,8 +2,6 @@ package com.sura.gw.policy.poliza.pages;
 
 import com.google.common.base.Function;
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -13,6 +11,9 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -140,7 +141,16 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         inputCoberturaDeRiesgo.click();
     }
 
-    public void ingresarValorAEntradaDeArticuloDeCoberturaDeRiesgo(String entrada, String valorEntrada) {
+    public void seleccionarCoberturaDeInformacionDeArticulo(String cobertura) {
+        waitForAnyTextToAppear(cobertura);
+        shouldContainText(cobertura);
+        String xpathTrCoberturaDeRiesgo = ".//tr[ (descendant::label[contains(., '" + cobertura + "')]) and @class='x-form-item-input-row' ]";
+        WebElementFacade inputCoberturaDeRiesgo = findBy(xpathTrCoberturaDeRiesgo).find(By.tagName("input"));
+        withAction().moveToElement(inputCoberturaDeRiesgo).perform();
+        inputCoberturaDeRiesgo.click();
+    }
+
+    public void ingresarValorAEntradaDeCobertura(String entrada, String valorEntrada) {
         waitForAnyTextToAppear(entrada);
         shouldContainText(entrada);
         String xpathTREntrada = ".//tr[ (descendant::label[contains(., '" + entrada + "') ]) and @class='x-form-item-input-row' ]";
@@ -186,5 +196,30 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
     public boolean estaPresenteEnLaPaginaEdificiosyUbicaciones(){
         return getRenderedView().containsText("Volver a Edificios y ubicaciones");
+    }
+
+    public boolean estaSeleccionadaCoberturaDeInformacionDeArticulo(String cobertura) {
+        Boolean estaSeleccionado;
+        waitForAnyTextToAppear(cobertura);
+        shouldContainText(cobertura);
+        String xpathTrCoberturaDeRiesgo = ".//tr[ (descendant::label[contains(., '" + cobertura + "')]) and @class='x-form-item-input-row' ]";
+        WebElementFacade inputCoberturaDeRiesgo = findBy(xpathTrCoberturaDeRiesgo).find(By.tagName("input"));
+
+        if ("-15px 0".equals(inputCoberturaDeRiesgo.getCssValue("background-position")) || "0px -15px".equals(inputCoberturaDeRiesgo.getCssValue("background-position"))){
+            estaSeleccionado = true;
+        } else {
+            estaSeleccionado = false;
+        }
+
+        return estaSeleccionado;
+
+    }
+
+    public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada) {
+        WebElementFacade btnAgregarArticulo = findBy(".//a[@id='CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add']").waitUntilVisible().waitUntilClickable();
+        btnAgregarArticulo.click();
+
+        enter(tipoArticulo).into($(".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']"));
+        enter(tipoArticulo).into($(".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']"));
     }
 }

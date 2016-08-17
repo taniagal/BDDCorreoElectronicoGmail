@@ -56,11 +56,6 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void bloqueo_de_aplicacion() {
-        opcionesInformacionPolizaMrcPage.bloqueaSiguiente();
-    }
-
-    @Step
     public void ingresar_tomador_adicional(String cedula) {
         opcionesInformacionPolizaMrcPage.ingresarTomadorAdicional(cedula);
     }
