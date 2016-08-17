@@ -1,5 +1,7 @@
 Meta:
 @issue #SUGWUSC-15127
+@Atomatizador Brayan s. Ruiz
+Sprint 5
 
 Narrative:
 Como usuario de policy center
@@ -73,7 +75,7 @@ Examples:
 
 Scenario:  Validacion de fecha exacta para cambio de poliza
 Meta: @manual
-Given que voy a buscar una poliza  <buscarNumeroPoliza>
+Given que voy a buscar una de las polizas <buscarNumeroPoliza>
 When quiero relizar el cambio de una poliza con la fecha vigente
 Then no debo visualizar la advertencia con el <mensaje>
 

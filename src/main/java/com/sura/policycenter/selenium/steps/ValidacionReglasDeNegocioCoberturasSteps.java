@@ -15,15 +15,15 @@ public class ValidacionReglasDeNegocioCoberturasSteps extends ScenarioSteps {
      private final ValidacionDelNegocioCoberturaPage validacionDelNegocioCoberturaPage = new ValidacionDelNegocioCoberturaPage(getDriver());
 
     @Step
-    public void ingresa_primera_ubicacion() {
-        validacionDelNegocioCoberturaPage.irAUbicacion();
+    public void ingresa_edificios_y_ubicaciones() {
+        validacionDelNegocioCoberturaPage.irAEdificiosYUbicaciones();
     }
 
     public void valida_mensaje_pantalla(String mensaje) {
         validacionDelNegocioCoberturaPage.validaMensajeEnPantalla(mensaje);
     }
 
-    public void valida_paso_a_siguinete_pantalla() {
-        validacionDelNegocioCoberturaPage.validaPasoAPantalla();
+    public void valida_paso_a_pantalla_siguiente() {
+        validacionDelNegocioCoberturaPage.validaPasoPantallaSiguinete();
     }
 }

@@ -59,7 +59,7 @@ public class InicioPage extends Commons {
 
     public void assertion(String element) {
         MatcherAssert.assertThat(labelIngreso.getText().toString(), CoreMatchers.containsString(element));
-        waitABit(2000);
+        waitABit(3000);
     }
 
     // Metodos navegacion Escritorio
