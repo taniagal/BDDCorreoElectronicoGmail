@@ -80,6 +80,7 @@ Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22221237        | Asesor     |             |
 
+
 Scenario: Sublimite sustraccion sin violencia de bienes fuera de predios (Coberturas del riesgo) - Tener asegurados Equipos moviles y portatiles
 Meta:
 @Story CDSEG-847
@@ -142,6 +143,7 @@ Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22221237        | Asesor     |             |
 
+
 Scenario: Sublimite de sustraccion con violencia de dinero dentro de caja fuerte (Coberturas del riesgo) - Valor asegurado menor o igual a valor asegurable de dinero en efectivo
 Meta:
 @Story CDSEG-847
@@ -167,7 +169,6 @@ Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22221237        | Asesor     |             |
 
-
 Scenario: Sustraccion con violencia de dinero fuera de caja fuerte (Coberturas del riesgo) - Dependencia de otro sublimite
 Meta:
 @Story CDSEG-847
@@ -187,7 +188,6 @@ Examples:
 | 22221237        | Asesor     |             |
 
 
-
 Scenario: Sublimite de sustraccion con violencia de dinero fuera de caja fuerte (Coberturas del riesgo) - valor asegurado de este sublimite menor o igual al valor asegurado de otro sublimite
 Meta:
 @Story CDSEG-847
@@ -196,17 +196,43 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-@Pending true
 
 As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
+| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 2              |
+| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte  | 11             |
 When haga clic en el boton Aceptar
-Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                             |
-| El "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ". |
+| El "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al valor de "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte". |
+Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
+
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |
+
+##
+
+Scenario: Sublimite deterioro de bienes refigerados por rotura maquinaria (coberturas del riesgo)
+Meta:
+@Story CDSEG-943
+@URL https://jira.suramericana.com.co/browse/CDSEG-943
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@Sprint 5
+
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                   | TIPO_ARTICULO | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 11             |
+When haga clic en el boton Aceptar
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                     |
+| Para seleccionar el "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe tener seleccionada la cobertura de "Rotura de maquinaria" para el artículo "Maquinaria y equipo". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
@@ -227,7 +253,7 @@ As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | COBERTURA             | ENTRADAS                                                                       | VALOR_ENTRADAS |
-| Coberturas del Riesgo    |               | Sustraccion           | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
+| Coberturas del Riesgo    |               | Danos materiales      | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria       | 11             |
 | Información de Artículos |               | Existencias Flotantes | Valor asegurado máximo                                                         | 11             |
 | Información de Artículos |               | Existencias fijas     | Valor Asegurable                                                               | 11             |
 When haga clic en el boton Aceptar
@@ -241,7 +267,7 @@ Examples:
 | 22221237        | Asesor     |             |
 
 
-Scenario: Sublimite deterioro de bienes refigerados por rotura maquinaria (coberturas del riesgo)
+Scenario: Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo) - 40 porciento
 Meta:
 @Story CDSEG-943
 @URL https://jira.suramericana.com.co/browse/CDSEG-943
@@ -249,12 +275,13 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
+@Pending true
 
 As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
+| TAB                   | TIPO_ARTICULO | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 11             |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                     |
@@ -264,3 +291,17 @@ Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22221237        | Asesor     |             |
+
+Scenario: Parametro del 40%
+Meta:
+@Story CDSEG-943
+@URL https://jira.suramericana.com.co/browse/CDSEG-943
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@manual
+@Sprint 5
+
+Given Estoy ingresando la información de coberturas a nivel de riesgo
+When Quiera cambiar el valor del 40% a otro valor
+Then Se cambie simplemente en una tabla de parámetros. Este valor no debe estar quemado en el código. Se debe poder cambiar a números decimales
