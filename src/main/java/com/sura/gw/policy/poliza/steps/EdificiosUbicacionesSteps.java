@@ -60,32 +60,40 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
     }
 
-    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada) {
+    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo) {
 
         String mensajeStepReporte = "En tab " + tab +
                 " seleccionar la cobertura " + cobertura +
                 " para " + entrada +
                 " ingresar " + valorEntrada;
 
+        ingresar_valor_de_entrada_de_la_cobertura(mensajeStepReporte);
+
+        if (! edificiosyUbicacionesWidget.estaSeleccionadoTab(tab)){
+            edificiosyUbicacionesWidget.seleccionarTab(tab);
+        }
+
         if("Coberturas del Riesgo".equals(tab)){
-
-            if (! edificiosyUbicacionesWidget.estaSeleccionadoTab(tab)){
-                edificiosyUbicacionesWidget.seleccionarTab(tab);
-            }
-
             if (! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {
                 edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
             }
-
-            edificiosyUbicacionesWidget.ingresarValorAEntradaDeArticuloDeCoberturaDeRiesgo(entrada, valorEntrada);
+            edificiosyUbicacionesWidget.ingresarValorAEntradaDeCobertura(entrada, valorEntrada);
         }
 
         if("Información de Artículos".equals(tab)){
-
+            if (! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeInformacionDeArticulo(cobertura)) {
+                edificiosyUbicacionesWidget.seleccionarCoberturaDeInformacionDeArticulo(cobertura);
+            }
+            edificiosyUbicacionesWidget.ingresarValorAEntradaDeCobertura(entrada, valorEntrada);
         }
 
         if("Otros Articulos".equals(tab)){
-
+            edificiosyUbicacionesWidget.ingresarOtroArticulo(tipoArticulo, cobertura, entrada, valorEntrada);
         }
+    }
+
+    @Step
+    public void ingresar_valor_de_entrada_de_la_cobertura(String valorDeEntradaDeCobertura) {
+        // este metodo vacio permite generar pasos en el reporte de Serenity de forma dinámica
     }
 }
