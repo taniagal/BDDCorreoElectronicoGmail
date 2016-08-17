@@ -13,20 +13,18 @@ import java.util.concurrent.TimeUnit;
 
 public class ValidacionDelNegocioCoberturaPage extends Commons{
 
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB-btnInnerEl']")
-    private WebElementFacade botonAgregarUbicacion;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB:AddNewLocation-itemEl']")
-    private WebElementFacade botonAgregarNuevaUbicacion;
+    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div")
+    private WebElementFacade btnEdificiosYUbicaciones;
+    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:ttlBar']")
+    private WebElementFacade lblEdificioYUbicaciones;
     @FindBy(xpath=".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']")
-    WebElementFacade mensajePantalla;
+    private WebElementFacade mensajePantalla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:ttlBar']")
-    WebElementFacade lblCorbeturasGlobales;
-
-
-
-
+    private WebElementFacade lblCorbeturasGlobales;
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    private WebElementFacade btnInicio;
 
     Actions actions = new Actions(getDriver());
 
@@ -35,22 +33,26 @@ public class ValidacionDelNegocioCoberturaPage extends Commons{
         super(driver);
     }
 
-    public void irAUbicacion(){
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
-        botonSiguiente.click();
+    public void irAEdificiosYUbicaciones(){
+       withTimeoutOf(20, TimeUnit.SECONDS).waitFor(btnEdificiosYUbicaciones).waitUntilPresent().click();
+       opcionesInformacionPolizaMrcPage.waitInfoPoliza(lblEdificioYUbicaciones);
     }
 
     public void validaMensajeEnPantalla(String mensaje) {
+        botonSiguiente.click();
         opcionesInformacionPolizaMrcPage.waitInfoPoliza(mensajePantalla);
         MatcherAssert.assertThat("El mensaje en pantalla no es el esperado",mensajePantalla.getText(), Matchers.containsString(mensaje));
-    }
-
-    public void validaPasoAPantalla() {
-        opcionesInformacionPolizaMrcPage.waitInfoPoliza(mensajePantalla);
         botonSiguiente.click();
         opcionesInformacionPolizaMrcPage.waitInfoPoliza(lblCorbeturasGlobales);
         MatcherAssert.assertThat("Error: este esenario debe pasar a la siguinete" +
-                        "pantalla",lblCorbeturasGlobales.isVisible());
+                "pantalla",lblCorbeturasGlobales.isVisible());
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilPresent().click();
+    }
+
+    public void validaPasoPantallaSiguinete() {
+        botonSiguiente.click();
+        opcionesInformacionPolizaMrcPage.waitInfoPoliza(lblCorbeturasGlobales);
+        MatcherAssert.assertThat("Error: este esenario debe pasar a la siguinete" +
+                "pantalla",lblCorbeturasGlobales.isVisible());
     }
 }

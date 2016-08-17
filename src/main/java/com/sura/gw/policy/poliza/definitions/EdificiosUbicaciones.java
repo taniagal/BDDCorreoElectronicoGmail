@@ -1,15 +1,9 @@
 package com.sura.gw.policy.poliza.definitions;
 
-
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import com.sura.policycenter.selenium.steps.DetallesDeUbicacionSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.CoreMatchers;
@@ -21,6 +15,14 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static ch.lambdaj.Lambda.filter;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.StringContains.containsString;
 
 public class EdificiosUbicaciones {
 
@@ -69,7 +71,7 @@ public class EdificiosUbicaciones {
             String entrada = entradaCobertura.get("ENTRADAS");
             String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
 
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada);
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo);
         }
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
@@ -141,7 +143,10 @@ public class EdificiosUbicaciones {
 
 
     @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
-    @Alias("se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados")
+    @Aliases(values={
+            "se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados",
+            "se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados"
+    })
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
         for (Map<String,String> mensajes : mensajesEsperados.getRows()) {
             detallesDeUbicacionSteps.elegirProducto(mensajes.get("MENSAJES_WORKSPACE"));
@@ -154,5 +159,27 @@ public class EdificiosUbicaciones {
         //Metodo Vacio
     }
 
+    private Matcher<? super List<String>> hasItemContainsString(String expectedValue) {
+        return new HasItemContainsString(expectedValue);
+    }
+
+    private static class HasItemContainsString extends TypeSafeMatcher<List<String>> {
+
+        private final String expectedValue;
+
+        private HasItemContainsString(String expectedValue) {
+            this.expectedValue = expectedValue;
+        }
+
+        @Override
+        protected boolean matchesSafely(List<String> values) {
+            return !filter(containsString(expectedValue), values).isEmpty();
+        }
+
+        @Override
+        public void describeTo(Description description) {
+            description.appendText("Se esperaba una lista que contuviera un strings ").appendValue(expectedValue);
+        }
+    }
 
 }
