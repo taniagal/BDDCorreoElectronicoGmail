@@ -80,7 +80,7 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
     public void validarTransaccionesDePolizaColectiva(ExamplesTable transacciones) {
         Map<String, String> transaccionesColectiva = transacciones.getRows().get(0);
         menuTransaccionesColectivas.click();
-        waitForTextToAppear("Transacciones de póliza colectiva del archivo de la cuenta");
+        waitForTextToAppear("Transacciones de póliza colectiva");
         waitFor(tablaTransaccionesColectiva);
         columnaCrearFecha.shouldBeVisible();
         columnaNumeroPoliza.shouldBeVisible();
@@ -100,7 +100,7 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
 
     public void validarTransaccionesDePolizaIndividual() {
         waitFor(tituloTransaccionesIndividual);
-        MatcherAssert.assertThat(tituloTransaccionesIndividual.getText(), Is.is(Matchers.equalTo("Transacciones de póliza del archivo de la cuenta")));
+        MatcherAssert.assertThat(tituloTransaccionesIndividual.getText(), Is.is(Matchers.equalTo("Transacciones de póliza colectiva")));
     }
 
     public void darClicEnElNumeroDePoliza() {
