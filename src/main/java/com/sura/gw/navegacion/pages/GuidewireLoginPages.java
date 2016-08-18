@@ -44,11 +44,13 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
     }
 
     public WebElementFacade elemento(String xpath) {
+        getDriver().manage().window().maximize();
         WebElementFacade elemento = null;
-
         try {
+            setImplicitTimeout(1, TimeUnit.SECONDS);
             waitFor($(xpath)).shouldBeVisible();
             elemento = element(find(By.xpath(xpath)));
+            resetImplicitTimeout();
 
         } catch (NoSuchElementException e) {
             LOGGER.info("Elemento de NuevaCotizacionPage no encontrado Elemento: " + xpath + "TRACE: " + e);

@@ -228,7 +228,8 @@ public class  DetallesContactoPage extends Commons {
      * DETALLE CONTACTO EDICION PERSONA JURIDICA
      */
     public void setRazonSocial(String nombreComercial, String actividadComercial) {
-        campoTxtNombreComercial.waitUntilPresent().clear();
+        campoTxtNombreComercial.waitUntilPresent();
+        campoTxtNombreComercial.clear();
         campoTxtNombreComercial.sendKeys(nombreComercial);
         selectItem(comboBoxActividadComercial, actividadComercial);
         dtlCntJ[0]= nombreComercial;

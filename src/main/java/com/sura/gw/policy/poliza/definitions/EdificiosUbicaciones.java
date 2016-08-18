@@ -4,15 +4,12 @@ import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
+import com.sura.policycenter.selenium.steps.DetallesDeUbicacionSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
+import org.hamcrest.*;
 import org.hamcrest.core.StringContains;
-import org.jbehave.core.annotations.Alias;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
@@ -30,8 +27,6 @@ public class EdificiosUbicaciones {
     @Steps EdificiosUbicacionesSteps edificiosUbicacionesSteps;
     @Steps IngresoAPolicyCenterDefinitions guidewire;
     @Steps Navegacion navegacion;
-    @Steps
-    DetallesDeUbicacionSteps detallesDeUbicacionSteps;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -148,9 +143,7 @@ public class EdificiosUbicaciones {
             "se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados"
     })
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
-        for (Map<String,String> mensajes : mensajesEsperados.getRows()) {
-            detallesDeUbicacionSteps.elegirProducto(mensajes.get("MENSAJES_WORKSPACE"));
-        }
+        edificiosUbicacionesSteps.verificar_mensajes(mensajesEsperados);
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
 

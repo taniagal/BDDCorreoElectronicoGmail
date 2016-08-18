@@ -8,6 +8,8 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 
 
@@ -75,19 +77,23 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
         waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
-        selectItem(comboBoxModelo, vehiculo.get("modelo"));
+        comboBoxModelo.click();
+        waitUntil(2500);
+        comboBoxModelo.sendKeys(vehiculo.get("modelo"));
+        comboBoxModelo.sendKeys(Keys.ENTER);
         waitForTextToAppear(vehiculo.get("modelo"));
         ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
         waitUntil(2000);
         campoTxtPlaca.click();
         try {
             waitForTextToAppear(vehiculo.get("valor_asegurado"));
-        }catch (org.openqa.selenium.TimeoutException e){
+        }catch (TimeoutException e){
             e.printStackTrace();
         }
         MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitUntil(4000);
+        waitForAbsenceOf("//li");
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         if(!"null".equals(vehiculo.get("descuento"))){
             campoTxtDescuento.sendKeys(vehiculo.get("descuento"));

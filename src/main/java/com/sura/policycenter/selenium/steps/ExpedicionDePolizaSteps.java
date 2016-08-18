@@ -2,10 +2,15 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.ExpedicionDePolizaPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 
 public class ExpedicionDePolizaSteps extends ScenarioSteps {
+
+    public ExpedicionDePolizaSteps(Pages pages){
+        super(pages);
+    }
 
     ExpedicionDePolizaPage expedicionDePolizaPage;
 
