@@ -119,8 +119,8 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void validarMensjeFiltroRequerido(String mensaje) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
-        btnBuscar.waitUntilVisible().waitUntilClickable().click();
+        waitFor(btnBuscar).waitUntilPresent();
+        btnBuscar.click();
         waitForPresenceOf(".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div");
         MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
     }

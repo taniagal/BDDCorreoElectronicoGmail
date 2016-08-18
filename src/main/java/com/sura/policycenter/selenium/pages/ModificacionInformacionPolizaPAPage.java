@@ -162,7 +162,7 @@ public class ModificacionInformacionPolizaPAPage extends Commons{
         MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(datosPoliza.get("numeroDocumento"))));
         MatcherAssert.assertThat(campoNombre.getText(), Is.is(Matchers.equalTo(datosPoliza.get("nombre"))));
         MatcherAssert.assertThat(campoTelefono.getText(), Is.is(Matchers.equalTo(datosPoliza.get("telefono"))));
-        MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(datosPoliza.get("direccion"))));
+        MatcherAssert.assertThat("Error en la direccion esperada",campoDireccion.getText().contains(datosPoliza.get("direccion")));
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(datosPoliza.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosPoliza.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoTipoPlazo.getText(), Is.is(Matchers.equalTo(datosPoliza.get("tipoPlazo"))));

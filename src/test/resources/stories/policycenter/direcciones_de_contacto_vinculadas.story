@@ -56,7 +56,7 @@ Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When cuando vincule las direcciones del contacto <nombreContactoUno> y contacto <nombreContactoDos> y la desee editar
 Then me debe mostrar la siguiente informacion:
 |pais|departamento|ciudad|direccion|tipoDeDireccion|descripcion|
-|Colombia|ANTIOQUIA|MEDELLIN|CR 65 # 48 - 162|Vivienda|Created by the Address Builder with code 0|
+|Colombia|ANTIOQUIA|MEDELLIN|CR 65 # 48 - 162|DIRECCION DE RESIDENCIA|Created by the Address Builder with code 0|
 
 Examples:
 |numeroCuenta|nombreContactoUno|nombreContactoDos|
@@ -67,7 +67,7 @@ Given que me encuentro en los contactos de una cuenta <numeroCuenta>
 When ingrese solo informacion obligatoria
 Then me debe mostrar esta informacion:
 |pais          |departamento|ciudad       |direccion      |tipoDeDireccion|descripcion|
-|Colombia|ANTIOQUIA|MEDELLIN|CR 65 # 48 - 162|Vivienda       |           |
+|Colombia|ANTIOQUIA|MEDELLIN|CR 65 # 48 - 162|DIRECCION DE RESIDENCIA       |           |
 Examples:
 |numeroCuenta|
 |C000484848|
@@ -141,7 +141,7 @@ Then la lista de contactos debe ser la siguiente:
 |OSCAR GOMEZ (Asegurado nombrado)|
 And debo poder asociar una direccion de otro contacto y se debe asociar la dirección seleccionada al nuevo contacto  y mostrar los datos de la dirección
 |pais|departamento|ciudad|direccion|tipoDireccion|descripcion|
-|Colombia|ANTIOQUIA|MEDELLIN|CR 65 # 48 - 162|Vivienda|Created by the Address Builder with code 0|
+|Colombia|ANTIOQUIA|MEDELLIN|CR 65 # 48 - 162|DIRECCION DE RESIDENCIA|Created by the Address Builder with code 0|
 
 Examples:
 |numeroCuenta|

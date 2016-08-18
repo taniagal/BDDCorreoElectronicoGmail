@@ -28,7 +28,7 @@ Then debo poder ver la direccion del tomador de la modificacion <direccion>, la 
 
 Examples:
 |cotizacion|direccion|
-|55555555  |CRA 65 # 48-162, LOUISVILLE, Estados Unidos |
+|55555555  |CRA 65 # 48-162Floor 0000Developer Unit Habitation Cube #0000LOUISVILLE, KY 40207Estados Unidos |
 
 Scenario: Quote
 Given se ha realizado la cotizacion de la modificacion <cotizacion>

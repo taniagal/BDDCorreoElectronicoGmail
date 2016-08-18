@@ -15,6 +15,8 @@ public class ModificacionVehiculoPage extends Commons{
     private WebElementFacade botonSiguiente;
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
     private WebElementFacade campoCiudadCirculacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']")
+    WebElementFacade grupoMensajes;
 
     public ModificacionVehiculoPage(WebDriver driver) {
         super(driver);
@@ -62,7 +64,6 @@ public class ModificacionVehiculoPage extends Commons{
     }
 
     public void validarZonaCirculacion(String mensaje) {
-        WebElementFacade grupoMensajes = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']");
         verificarMensaje(grupoMensajes, mensaje);
     }
 }

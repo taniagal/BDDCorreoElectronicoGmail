@@ -26,7 +26,7 @@ public class NuevaCotizacionPage extends PageObject {
     private static final long serialVersionUID = 1L;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
-    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
+    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private List<AgenteModel> listaAgentesModel = null;
     private String nombreAgente;
     private List<WebElementFacade> listaDeProductosElement;

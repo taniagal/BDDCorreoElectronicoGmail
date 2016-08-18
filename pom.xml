@@ -108,7 +108,7 @@
                     </includes>
                     <argLine>-Xmx1024m -XX:MaxPermSize=1024m</argLine>
                     <perCoreThreadCount>true</perCoreThreadCount>
-                    <forkCount>3</forkCount>
+                    <forkCount>2</forkCount>
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
                     </systemPropertyVariables>

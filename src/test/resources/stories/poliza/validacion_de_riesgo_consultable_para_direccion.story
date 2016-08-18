@@ -18,5 +18,5 @@ Then espero ver mensajes de advertencia indicandome la direccion es un riesgo co
 
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
-| 99999999        | Asesor     |             |
+| 0000115291        | Asesor     |             |
 

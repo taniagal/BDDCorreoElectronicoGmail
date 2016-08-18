@@ -105,6 +105,8 @@ public class CotizacionDePolizaPage extends PageObject{
 
     public void verDetalleCotizacion() {
         waitForTextToAppear("Calificación");
+        Commons commons = new Commons(getDriver());
+        commons.waitUntil(1000);
         setImplicitTimeout(2, TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
             waitForTextToAppear(tituloDePagina.getText());

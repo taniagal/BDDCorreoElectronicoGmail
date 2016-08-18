@@ -15,7 +15,7 @@ Given he realizado la cotizacion <cotizacion>
 When ingrese al detalle de la cotizacion
 Then debo ver la siguiente informacion
 |numeroCotizacion|tomador|tipoDocumento|numeroDocumento|direccion|tipoDireccion|descripcionDireccion|empresaAseguradora|prima|impuestos|total|
-|22222225|DORIAN EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$666,895.00|-|$$666,895.00|
+|22222225|DORIAN EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162Floor 0000Developer Unit Habitation Cube #0000LOUISVILLE, KY 40207Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$666,895.00|-|$$666,895.00|
 
 Examples:
 |cotizacion|

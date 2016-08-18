@@ -29,4 +29,4 @@ Then el sistema me debe impedir la repeticion del tipo de direccion y mostrar el
 
 Examples:
 |tipo_documento      |documento |tipoDireccion|direccion      |departamento|ciudad  |mensaje|
-|CEDULA DE CIUDADANIA|1234567891|DIRECCION DE TRABAJO|CRA 60B #10-157|ANTIOQUIA   |MEDELLIN|No se puede ingresar más de una dirección al contacto con el mismo Tipo de dirección|
+|CEDULA DE CIUDADANIA|1234567891|DIRECCION DE RESIDENCIA|CRA 60B #10-157|ANTIOQUIA   |MEDELLIN|No se puede ingresar más de una dirección al contacto con el mismo Tipo de dirección|
