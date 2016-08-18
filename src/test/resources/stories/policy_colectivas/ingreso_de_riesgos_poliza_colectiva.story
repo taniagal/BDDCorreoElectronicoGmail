@@ -48,7 +48,7 @@ Examples:
 | C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | VARIEDADES YURLEDYS S.A |VARIEDADES YURLEDYS S.A |
 
 Scenario: Validar la creacion de un riesgo con cuenta nueva
-Meta: @manual
+Meta: @pending
 Given que voy a buscar la cuenta <numCuenta>
 And quiero expedir una poliza nueva
 And seleccione el agente <agente>
