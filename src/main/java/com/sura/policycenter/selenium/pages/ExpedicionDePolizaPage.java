@@ -1,9 +1,8 @@
 package com.sura.policycenter.selenium.pages;
 
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -62,6 +61,9 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
     WebElementFacade mensajeRiesgos;
 
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToCollectivePolicy-inputEl']")
+    WebElementFacade linkIrAPolizaColectiva;
+    
     Commons commons = new Commons(getDriver());
 
     public ExpedicionDePolizaPage(WebDriver driver){
@@ -139,5 +141,11 @@ public class ExpedicionDePolizaPage extends PageObject{
         waitFor(ExpectedConditions.elementToBeClickable(botonEscritorio));
         botonEscritorio.click();
         waitForTextToAppear("Mis actividades");
+    }
+
+    public void irAPolizaColectiva(){
+        waitFor(linkIrAPolizaColectiva);
+        linkIrAPolizaColectiva.click();
+        waitForTextToAppear("Información de la póliza colectiva");
     }
 }

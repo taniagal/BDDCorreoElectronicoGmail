@@ -45,6 +45,10 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade campoTxtDescuento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:5:RateModifier-inputEl']")
     private WebElementFacade campoTxtRecargo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver-btnWrap']")
+    private WebElementFacade botonRelacionarAsegurado;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver-textEl']")
+    private WebElementFacade botonAsegurado;
 
 
 
@@ -121,5 +125,13 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
 
     public void verificarEstadoDelCampoCodigo() {
         MatcherAssert.assertThat("Error, no se validó el codigo fasecolda.", "".equals(campoTxtCodigoFasecolda.getValue()));
+    }
+
+    public void relacionarAseguradoDelVehiculo(String asegurado){
+        waitFor(botonRelacionarAsegurado).click();
+        waitFor(botonAsegurado);
+        botonAsegurado.click();
+        waitForTextToAppear(asegurado);
+        waitUntil(3000);
     }
 }
