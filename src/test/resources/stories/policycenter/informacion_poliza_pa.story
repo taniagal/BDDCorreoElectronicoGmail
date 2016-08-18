@@ -115,7 +115,7 @@ Then se debe cumplir con la retroactividad permitida <mensaje>
 
 Examples:
 | numCuenta    | organizacion | canal      | organizacionDetalle | canalDetalle | tipoPoliza | tipoPlazo | fechaInicioVigencia | mensaje                                                                              |
-| C000888888   | Bancolombia  | Televentas | Bancolombia         | Televentas   | PPAutos    | 6 meses   | 01/01/2016          | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+| C000888888   | Bancolombia  | Televentas | Bancolombia         | Televentas   | PPAutos    | 6 meses   | 01/01/2016          | La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
 
 Scenario: Validar warning por tomador riesgo PEP
 Given que voy a buscar la cuenta <numCuenta>

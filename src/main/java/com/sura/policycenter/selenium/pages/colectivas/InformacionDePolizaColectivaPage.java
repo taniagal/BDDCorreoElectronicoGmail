@@ -220,11 +220,11 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void ingresarFechaInicioInvalidaParaRetroactividad(String sesentaDias) {
         LocalDateTime nuevaFechaInicio;
         if ("menos".equals(sesentaDias)) {
-            nuevaFechaInicio = (LocalDateTime.now().minusMonths(2).minusDays(1));
+            nuevaFechaInicio = LocalDateTime.now().minusMonths(2).minusDays(1);
             fechaInicioVigencia.clear();
             fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(DD_MM_YYYY));
         } else {
-            nuevaFechaInicio = (LocalDateTime.now().plusMonths(2).plusDays(1));
+            nuevaFechaInicio = LocalDateTime.now().plusMonths(2).plusDays(1);
             fechaInicioVigencia.clear();
             fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(DD_MM_YYYY));
         }

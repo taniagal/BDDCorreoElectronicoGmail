@@ -20,7 +20,7 @@ And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
 Then debo ver los siguiente campos en la pantalla con su respectiva informacion:
 | titulo                             | tomadorInfo | tipoDocumento        | numeroDocumento | nombre                        | telefono | tipoDireccion | descripcionDir                             | direccionDePoliza                           | detallePoliza         | organizacion | canal             | tipoPoliza       | tipoPlazo | fechaInicioVigencia | fechaFin | fechaExp   | polizaFinanciadaSi | polizaFinanciadaNo | oficina   | codAgente | descuentoPoliza | agregarCoaseguro  |
-| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 408-2211 | DIRECCION DE RESIDENCIA| Created by the Address Builder with code 0 | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Detalles de la póliza | Sura         | Canal Tradicional | Commercial Fleet | Anual     | 12/07/2016          |          | 12/07/2016 | Sí                 | No                 | SURA      | 1989      |                 | Agregar coaseguro |
+| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 408-2211 | Vivienda      | Created by the Address Builder with code 0 | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Detalles de la póliza | Sura         | Canal Tradicional | Commercial Fleet | Anual     | 07/26/2016          |          | 07/26/2016 | Sí                 | No                 | SURA      | 4999      |                 | Agregar coaseguro |
 And debo ver la fecha de fin de vigencia <cantidadAniosVigencia> <tipoPlazo> calculado de acuerdo al producto seleccionado
 
 Examples:
@@ -40,7 +40,7 @@ Then debo ver la fecha de fin de vigencia <cantidadAniosVigencia> <tipoPlazo> ca
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | cantidadAniosVigencia | tipoPlazo |
-| C000888888 | DIRECTO | Bancolombia  | Leasing           | Colectiva  | Bank Autos                | 5                     | Cinco años    |
+| C000888888 | DIRECTO | Bancolombia  | Leasing           | Colectiva  | Bank Autos                | 5                     | 5 años    |
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | 1                     | Anual     |
 
 Scenario: validar descuento mayor a 50% y con mas de 2 decimales

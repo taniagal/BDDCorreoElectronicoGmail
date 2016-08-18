@@ -60,6 +60,9 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
     WebElementFacade mensajeRiesgos;
 
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToCollectivePolicy-inputEl']")
+    WebElementFacade linkIrAPolizaColectiva;
+
     public ExpedicionDePolizaPage(WebDriver driver){
         super(driver);
     }
@@ -135,5 +138,11 @@ public class ExpedicionDePolizaPage extends PageObject{
         waitFor(ExpectedConditions.elementToBeClickable(botonEscritorio));
         botonEscritorio.click();
         waitForTextToAppear("Mis actividades");
+    }
+
+    public void irAPolizaColectiva(){
+        waitFor(linkIrAPolizaColectiva);
+        linkIrAPolizaColectiva.click();
+        waitForTextToAppear("Información de la póliza colectiva");
     }
 }
