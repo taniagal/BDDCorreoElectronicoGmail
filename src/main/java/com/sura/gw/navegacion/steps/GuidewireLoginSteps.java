@@ -27,6 +27,7 @@ public class GuidewireLoginSteps extends ScenarioSteps {
     public void abrir_navegador(WebDriver driver) {
         this.loginPage = new GuidewireLoginPages(driver);
         this.loginPage.open();
+        this.loginPage.getDriver().manage().window().maximize();
     }
 
     @Step
