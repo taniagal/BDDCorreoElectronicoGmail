@@ -30,7 +30,7 @@ public class ValidacionesCambioDePolizaVehiculosPage extends PageObject{
         Commons commons = new Commons(getDriver());
         commons.waitUntil(3000);
         botonEmitirPoliza.click();
-        waitForTextToAppear("¿Está seguro de que desea emitir esta póliza?");
+        waitForTextToAppear("¿Está seguro de que desea expedir este cambio de póliza?");
         withTimeoutOf(21, TimeUnit.SECONDS).waitFor(botonAceptarEmitirPoliza).shouldBePresent();
         botonAceptarEmitirPoliza.click();
         withTimeoutOf(28,TimeUnit.SECONDS).waitFor(botonAceptarEmitirPoliza).waitUntilNotVisible();

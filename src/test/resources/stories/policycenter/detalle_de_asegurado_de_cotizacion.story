@@ -169,3 +169,23 @@ Then la lista de asegurados debe quedar vacia
 Examples:
 | cuenta   | agente  | organizacion | canal             | producto | tipoId | numeroId |
 |C000888888| DIRECTO | Sura         | Canal Tradicional | Autos    |NIT     |9202086744|
+
+Scenario: Validar asegurado que es riesgo consultable
+Given voy a crear una nueva cotizacion
+And crear una cotizacion nueva con la cuenta <cuenta>
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el producto <producto> para expedir la poliza
+And quiera agregar un asegurado
+And vaya a la opcion agregar
+And consulte un asegurado del directorio
+And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
+And seleccione el contacto a agregar
+And vaya al siguiente paso de la cotizacion
+Then muestre el mensaje de validacion del asegurado <mensaje> que viene de Riesgos Consultables
+And se debe permitir continuar la cotizacion
+
+Examples:
+| cuenta     | agente  | organizacion | canal             | producto | tipoId               | numeroId | mensaje                                                                                                |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Autos    | CEDULA DE CIUDADANIA | 123456   | FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado. |
