@@ -65,7 +65,7 @@ Scenario: Consultar polizas por numero de cuenta y producto
 When la busco por numero de cuenta <numeroCuenta> y producto <producto>
 Then se debe visualizar la siguiente información:
 |numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
-|TEST_22222222|YURLEDYS GALLEGO TORRES|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
+|TEST_22222222|DORIAN EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
 
 Examples:
 |numeroCuenta|producto|
@@ -75,7 +75,7 @@ Scenario: Consultar polizas por numero de cuenta y agente
 When la busco por numero de cuenta <numeroCuenta> y agente <agente>
 Then se debe visualizar la siguiente información:
 |numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
-|TEST_22222222|YURLEDYS GALLEGO TORRES|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
+|TEST_22222222|DORIAN EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
 
 Examples:
 |numeroCuenta|agente|
