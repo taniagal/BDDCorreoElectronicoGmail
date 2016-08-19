@@ -198,7 +198,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
     }
 
     public void validarMensajeDeIntegraciones(String mensaje) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(mensajeValidacion).waitUntilPresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldContainText(mensaje);
         MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 

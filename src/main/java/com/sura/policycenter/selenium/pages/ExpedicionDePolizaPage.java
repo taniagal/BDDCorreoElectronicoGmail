@@ -1,5 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -62,20 +63,22 @@ public class ExpedicionDePolizaPage extends PageObject{
 
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToCollectivePolicy-inputEl']")
     WebElementFacade linkIrAPolizaColectiva;
+    
+    Commons commons = new Commons(getDriver());
 
     public ExpedicionDePolizaPage(WebDriver driver){
         super(driver);
     }
 
     public void irABuscarCotizacion(String cotizacion){
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuPoliza).waitUntilPresent();
+        waitFor(menuPoliza).waitUntilPresent();
         menuPoliza.click();
         waitForAnyTextToAppear("Cotización", "Buscar pólizas");
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuPoliza).waitUntilPresent();
+        waitFor(menuPoliza).waitUntilPresent();
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
-        waitABit(1000);
-        menuNumeroCotizacion.sendKeys(cotizacion);
+        menuNumeroCotizacion.waitUntilPresent();
+        commons.ingresarDato(menuNumeroCotizacion,cotizacion);
         menuNumeroCotizacion.sendKeys(Keys.ENTER);
         waitForTextToAppear("Cotización");
     }

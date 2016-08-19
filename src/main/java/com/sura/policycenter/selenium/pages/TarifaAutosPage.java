@@ -123,6 +123,7 @@ public class TarifaAutosPage extends Commons {
     public void setCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
         botonBorrar.waitUntilPresent().click();
+        botonBorrar.waitUntilNotVisible();
         waitUntil(1500);
         comboBoxLimite.waitUntilPresent();
         comboBoxLimite.clear();
@@ -142,7 +143,7 @@ public class TarifaAutosPage extends Commons {
     }
 
     public void desMarcarCoberturas() {
-        checkBoxDaniosCarro.click();
+        //checkBoxDaniosCarro.click();
         checkBoxHurto.click();
     }
 
@@ -156,22 +157,27 @@ public class TarifaAutosPage extends Commons {
         selectItem(comboBoxAccidentes, dato.get("AC"));
         checkBoxAsistencia.click();
         selectItem(comboBoxAsistencia, dato.get("AS"));
+        checkBoxDaniosCarro.click();
+        selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
+        selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
+        selectItem(comboBoxPerdidaParcialDaniosFranquicia, dato.get("PPDF"));
+        selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
+    }
+
+    public void selectCoberturas2(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
         checkBoxTaller.click();
         selectItem(comboBoxTaller, dato.get("Taller"));
         checkBoxGrua.click();
         selectItem(comboBoxGrua, dato.get("Grua"));
         checkBoxCentroDeServicios.click();
         selectItem(comboBoxCentroDeServicios, dato.get("CS"));
-        selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
-        selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
-        selectItem(comboBoxPerdidaParcialDaniosFranquicia, dato.get("PPDF"));
-        selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
         checkBoxCarroDeReemplazo.click();
         selectItem(comboBoxPerdidaParcial, dato.get("PP"));
         selectItem(comboBoxPerdidaTotal, dato.get("PT"));
     }
 
-    public void selectCoberturas2(ExamplesTable coberturas) {
+    public void selectCoberturas3(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         checkBoxTallerMovil.click();
         selectItem(comboBoxTallerMovil, dato.get("TM"));

@@ -3,13 +3,20 @@ package com.sura.gw.policy.poliza.steps;
 import com.sura.gw.policy.poliza.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
 
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
+    private EdificiosyUbicacionesWidget edificiosWidget = new EdificiosyUbicacionesWidget(getDriver());
+
+    public EdificiosUbicacionesSteps(Pages pages){
+        super(pages);
+    }
 
     @Step
     public void ingresar_nueva_ubicacion() {
@@ -95,5 +102,10 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     @Step
     public void ingresar_valor_de_entrada_de_la_cobertura(String valorDeEntradaDeCobertura) {
         // este metodo vacio permite generar pasos en el reporte de Serenity de forma dinámica
+    }
+
+    @Step
+    public void verificar_mensajes(ExamplesTable mensajesEsperados) {
+        edificiosWidget.verificarMensajes(mensajesEsperados);
     }
 }
