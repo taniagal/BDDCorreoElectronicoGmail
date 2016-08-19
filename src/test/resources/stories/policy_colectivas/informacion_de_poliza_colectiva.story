@@ -40,7 +40,7 @@ Then debo ver la fecha de fin de vigencia <cantidadAniosVigencia> <tipoPlazo> ca
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | cantidadAniosVigencia | tipoPlazo |
-| C000888888 | DIRECTO | Bancolombia  | Leasing           | Colectiva  | Bank Autos                | 5                     | Cinco años    |
+| C000888888 | DIRECTO | Bancolombia  | Leasing           | Colectiva  | Bank Autos                | 5                     | Cinco años|
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | 1                     | Anual     |
 
 Scenario: validar descuento mayor a 50% y con mas de 2 decimales
