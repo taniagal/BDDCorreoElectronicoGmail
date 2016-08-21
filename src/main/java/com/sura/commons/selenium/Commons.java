@@ -152,6 +152,7 @@ public class Commons extends PageObject {
         do {
             waitFor(elemento);
             elemento.clear();
+            waitUntil(500);
             waitFor(elemento).shouldContainText("");
             elemento.sendKeys(dato);
         }while (!elemento.getValue().equals(dato));

@@ -79,6 +79,8 @@ public class OpcionesInformacionDelVehiculoPage extends Commons {
     WebElementFacade grupoMensajes;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxLimite;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
+    private WebElementFacade campoTxtPlaca;
 
     String[] comparaValores = new String[2];
     Actions actions = new Actions(getDriver());
@@ -119,7 +121,7 @@ public class OpcionesInformacionDelVehiculoPage extends Commons {
             itmAsegurado.click();
         }
         btnDetalleVehiculo.click();
-        opcionPolizaMrc.waitInfoPoliza(botonSiguiente);
+        campoTxtPlaca.waitUntilPresent();
     }
 
     public void ingresaValoresAccesorios(String valorAccesorio, String valorAccesorioEsp) {

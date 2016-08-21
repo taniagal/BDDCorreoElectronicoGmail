@@ -106,7 +106,7 @@ public class HistorialCuentaPage extends Commons {
     }
 
     public void buscarCuentaRelacionadoCon(){
-        waitFor(btnMostrarRelacionadoCon).shouldBePresent();
+        btnMostrarRelacionadoCon.waitUntilPresent();
         btnMostrarRelacionadoCon.click();
         itmRelacionadoCon.waitUntilEnabled();
         itmRelacionadoCon.click();

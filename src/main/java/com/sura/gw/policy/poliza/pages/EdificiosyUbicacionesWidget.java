@@ -1,6 +1,7 @@
 package com.sura.gw.policy.poliza.pages;
 
 import com.google.common.base.Function;
+import com.sura.commons.selenium.Commons;
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -8,16 +9,19 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
+import org.hamcrest.MatcherAssert;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
 
-public class EdificiosyUbicacionesWidget extends PageObject {
+public class EdificiosyUbicacionesWidget extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -29,6 +33,12 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
+    @FindBy(id = "WebMessageWorksheet")
+    private WebElementFacade divMensaje;
+
+    public EdificiosyUbicacionesWidget(WebDriver driver){
+        super(driver);
+    }
 
     private void obtenerTabla() {
         this.tabla = new TableWidgetPage(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
@@ -37,7 +47,6 @@ public class EdificiosyUbicacionesWidget extends PageObject {
     }
 
     public void agregarArticuloAPrimerUbicacion() {
-
         waitForTextToAppear("Edificios y ubicaciones", 16000);
         if (tabla == null) {
             obtenerTabla();
@@ -221,5 +230,13 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
         enter(tipoArticulo).into($(".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']"));
         enter(tipoArticulo).into($(".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']"));
+    }
+
+    public void verificarMensajes(ExamplesTable mensajesEsperados) {
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
+        for (Map<String, String> mensaje : mensajesEsperados.getRows()) {
+            waitFor(divMensaje).shouldContainText(mensaje.get("MENSAJES_WORKSPACE"));
+            MatcherAssert.assertThat("Error: en la validacion del mensaje " + mensaje.get("MENSAJES_WORKSPACE"), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
+        }
     }
 }
