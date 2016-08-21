@@ -91,7 +91,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
 
     public void buscarCuenta(String numeroCuenta) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         commons.waitUntil(2000);
         btnBuscar.click();
         btnCuentas.click();
@@ -133,7 +133,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void validarInformacion(ExamplesTable resultadoModificacionDireccion) {
-        txtPais.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
+        txtPais.waitUntilPresent();
         Map<String, String> exampleTable = resultadoModificacionDireccion.getRows().get(0);
         MatcherAssert.assertThat(this.txtPais.getValue(), Is.is(Matchers.equalTo(exampleTable.get("pais"))));
         MatcherAssert.assertThat(this.txtDepartamento.getValue(), Is.is(Matchers.equalTo(exampleTable.get("departamento"))));
@@ -144,7 +144,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void filtrarPorInfoObligatoria() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtDescripcion).waitUntilPresent();
+        waitFor(txtDescripcion).waitUntilPresent();
         txtDescripcion.clear();
         btnActualizarDireccionesLigadas.click();
     }
@@ -159,7 +159,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
     public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion) {
         txtPaisContacto = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']");
-        this.txtDireccionContacto.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
+        this.txtDireccionContacto.waitUntilPresent();
         Map<String, String> exampleTable = resultadoModificacionDireccion.getRows().get(0);
         String paisContacto = this.txtPaisContacto.getText();
         String departamentoContacto = this.txtDepartamentoContacto.getText();
@@ -192,8 +192,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         }
         WebElementFacade botonCancelarDetalles = esperarElemento(".//*[@id='LinkedAddressEditPopup:Cancel-btnInnerEl']");
         botonCancelarDetalles.click();
-        linkVolverAContacto.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
-        botonAceptarMensaje.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        linkVolverAContacto.waitUntilPresent().click();
+        botonAceptarMensaje.waitUntilPresent().click();
     }
 
     public void editarDireccion(String direccion) {
@@ -206,7 +206,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     public void editarDireccionEnPestaniaDirecciones(String direccion) {
         WebElementFacade pestanaDirecciones = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesCardTab-btnInnerEl']");
         pestanaDirecciones.click();
-        campoDireccionDetalleDirecciones.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().clear();
+        campoDireccionDetalleDirecciones.waitUntilPresent().clear();
         campoDireccionDetalleDirecciones.sendKeys(direccion);
         botonActualizarContacto.click();
     }
@@ -221,7 +221,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         WebElementFacade campoDireccionDetalle = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']");
         Integer longitudCampo = campoDireccionDetalle.getValue().length();
         linkVolverAContacto.click();
-        botonAceptarMensaje.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        botonAceptarMensaje.waitUntilPresent().click();
         waitForTextToAppear("Contactos de archivo de cuenta", 10000);
         MatcherAssert.assertThat(longitudCampo.toString(), Is.is(Matchers.equalTo(direccionOk)));
     }
@@ -252,7 +252,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
     public void validarElCampoCiudad(String ciudad) {
         int intentos = 0;
-        WebElementFacade campoCiudad = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']");
+        WebElementFacade campoCiudad = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City-inputEl']");
 
         while (intentos < 3) {
             try {
@@ -268,7 +268,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
             intentos++;
         }
         WebElementFacade botonCancelar = findBy(".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonCancelar).waitUntilPresent().click();
+        waitFor(botonCancelar).waitUntilPresent().click();
         waitForTextToAppear("Contactos de archivo de cuenta", 10000);
     }
 
@@ -276,8 +276,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         this.seleccionarUnContacto(nombreContacto);
         WebElementFacade campoDireccionContacto = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']");
         String getCampoDireccionContacto = campoDireccionContacto.getValue();
-        linkVolverAContacto.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
-        botonAceptarMensaje.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        linkVolverAContacto.waitUntilPresent().click();
+        botonAceptarMensaje.waitUntilPresent().click();
         MatcherAssert.assertThat(getCampoDireccionContacto, Is.is(Matchers.equalTo(direccionEstandarizada)));
     }
 
@@ -302,7 +302,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void editarDireccionVinculadaDelContacto(String direccion) {
-        txtDireccion.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
+        txtDireccion.waitUntilPresent();
         txtDireccion.clear();
         txtDireccion.sendKeys(direccion);
         btnActualizarDireccionesLigadas.click();
@@ -311,12 +311,12 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void editarDireccionYDesligar(String direccion) {
-        txtDireccion.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
+        txtDireccion.waitUntilPresent();
         txtDireccion.clear();
         txtDireccion.sendKeys(direccion);
         WebElementFacade botonActualizarDesligar = esperarElemento(".//*[@id='LinkedAddressEditPopup:UpdateAndUnlinkButton']");
         botonActualizarDesligar.click();
-        btnActualizar.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        btnActualizar.waitUntilPresent().click();
     }
 
     public void validarDireccionDesvinculada(ExamplesTable contactosDireccionDesvinculada) {
