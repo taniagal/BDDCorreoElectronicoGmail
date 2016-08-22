@@ -25,11 +25,11 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal)
 | MENSAJES_WORKSPACE                                                                                                                                                    |
-| El "Sublimite sustraccion sin violencia dentro de predios" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".                          |
-| El "Sublimite sustraccion con violencia de bienes fuera de predios" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".                 |
-| El "Sublimite sustraccion sin violencia de bienes fuera de predios" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".                 |
-| El "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".  |
-| El "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ". |
+| El valor del "Sublimite sustraccion sin violencia dentro de predios" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".                          |
+| El valor del "Sublimite sustraccion con violencia de bienes fuera de predios" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".                 |
+| El valor del "Sublimite sustraccion sin violencia de bienes fuera de predios" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".                 |
+| El valor del "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".  |
+| El valor del "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
@@ -73,7 +73,7 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                                |
-| El "Sublimite sustraccion con violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
+| El valor del "Sublimite sustraccion con violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
@@ -117,7 +117,7 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                                |
-| El "Sublimite sustraccion sin violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
+| El valor del "Sublimite sustraccion sin violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
@@ -162,7 +162,7 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                             |
-| El "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual a la sumatoria de los valores asegurables de "Dinero en efectivo". |
+| El valor del "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual a la sumatoria de los valores asegurables de "Dinero en efectivo". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
@@ -206,7 +206,7 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                             |
-| El "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al valor de "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte". |
+| El valor del "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al valor de "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
