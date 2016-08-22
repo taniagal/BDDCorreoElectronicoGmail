@@ -91,44 +91,7 @@ public class OpcionesResumenCuentaPage extends Commons {
     private WebElementFacade lblTelTrabajo;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_BasicInfoDV:ContactNameInputSet:CellPhone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
     private WebElementFacade lblTelCelular;
-    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:0']")
-    private WebElementFacade lblActividades;
-    @FindBy(xpath = ".//span[contains(.,'Fecha de vencimiento')]")
-    private WebElementFacade lblFechaVencAct;
-    @FindBy(xpath = ".//span[contains(.,'Prioridad')]")
-    private WebElementFacade lblPrioridadAct;
-    @FindBy(xpath = ".//span[contains(.,'Tema')]")
-    private WebElementFacade lblTemaAct;
-    @FindBy(xpath = ".//span[contains(.,'Asignado a')]")
-    private WebElementFacade lblAsignadoAct;
-    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:1']")
-    private WebElementFacade lblTerminosPol;
-    @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div/div")
-    private WebElementFacade lblNumPoliza;
-    @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div[2]/div")
-    private WebElementFacade lblProducto;
-    @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div[3]/div")
-    private WebElementFacade lblEstadoPol;
-    @FindBy(xpath = ".//tr[6]/td/div/div[2]/div/div/div[4]/div")
-    private WebElementFacade lblFechaVigPol;
-    @FindBy(xpath = ".//div[5]/div")
-    private WebElementFacade lblFechaExpPol;
-    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:2']")
-    private WebElementFacade lblTransPolPendientes;
-    @FindBy(xpath = ".//div[3]/div/div/div[2]/div")
-    private WebElementFacade lblNumTrans;
-    @FindBy(xpath = ".//div[3]/div/div/div[3]/div")
-    private WebElementFacade lblEstadoTrans;
-    @FindBy(xpath = ".//div[3]/div/div/div[4]/div")
-    private WebElementFacade lblNumPolTrans;
-    @FindBy(xpath = ".//div[3]/div/div/div[5]/div")
-    private WebElementFacade lblProductoTrans;
 
-    @FindBy(xpath = ".//div[6]/div")
-    private WebElementFacade lblTipoTrans;
-
-    @FindBy(xpath = ".//div[7]/div")
-    private WebElementFacade lblAseguradorTrans;
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:EditAccount-btnInnerEl']")
     private WebElementFacade btnEditarCuenta;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
@@ -184,6 +147,13 @@ public class OpcionesResumenCuentaPage extends Commons {
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:Update-btnInnerEl']")
     private WebElementFacade btnActualizar;
 
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_ActivitiesLV_header']")
+    private WebElementFacade tableActividadesActuales;
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_PolicyTermsLV_header']")
+    private WebElementFacade tableTerminosDeLaPoliza;
+    @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:AccountFile_Summary_WorkOrdersLV_header']")
+    private WebElementFacade tableTransaccionesPolizaPdtes;
+
     private static final String VALIDAREDITABLES = "input";
 
     public OpcionesResumenCuentaPage(WebDriver driver) {
@@ -238,24 +208,6 @@ public class OpcionesResumenCuentaPage extends Commons {
             }
         }
         MatcherAssert.assertThat(lblDireccion.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("direccion"))));
-        MatcherAssert.assertThat(lblActividades.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblActividades"))));
-        MatcherAssert.assertThat(lblFechaVencAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaVencimiento"))));
-        MatcherAssert.assertThat(lblPrioridadAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("prioridadAct"))));
-        MatcherAssert.assertThat(lblTemaAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("temaAct"))));
-        MatcherAssert.assertThat(lblAsignadoAct.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("asignadoAct"))));
-        MatcherAssert.assertThat(lblTerminosPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblTerminosPol"))));
-        MatcherAssert.assertThat(lblNumPoliza.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numPoliza"))));
-        MatcherAssert.assertThat(lblProducto.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("producto"))));
-        MatcherAssert.assertThat(lblEstadoPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("estadoPol"))));
-        MatcherAssert.assertThat(lblFechaVigPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaVigPol"))));
-        MatcherAssert.assertThat(lblFechaExpPol.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("fechaExpPol"))));
-        MatcherAssert.assertThat(lblTransPolPendientes.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblTransPolPendientes"))));
-        MatcherAssert.assertThat(lblNumTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numTrans"))));
-        MatcherAssert.assertThat(lblEstadoTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("estadoTrans"))));
-        MatcherAssert.assertThat(lblNumPolTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numPolTrans"))));
-        MatcherAssert.assertThat(lblProductoTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("productoTrans"))));
-        MatcherAssert.assertThat(lblTipoTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoTrans"))));
-        MatcherAssert.assertThat(lblAseguradorTrans.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("aseguradorTrans"))));
     }
 
     public void editarResumenCuenta() {
@@ -337,5 +289,11 @@ public class OpcionesResumenCuentaPage extends Commons {
         waitABit(4000);
         waitFor(txtCiudad).shouldBeVisible();
         MatcherAssert.assertThat(txtCiudad.getText(), Is.is(Matchers.equalTo(ciudad)));
+    }
+
+    public void validarInformacionOculta() {
+        MatcherAssert.assertThat(tableActividadesActuales.isVisible(), Is.is(Matchers.equalTo(false)));
+        MatcherAssert.assertThat(tableTerminosDeLaPoliza.isVisible(), Is.is(Matchers.equalTo(false)));
+        MatcherAssert.assertThat(tableTransaccionesPolizaPdtes.isVisible(), Is.is(Matchers.equalTo(false)));
     }
 }
