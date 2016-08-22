@@ -47,4 +47,9 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     public void validar_que_vuelve_a_la_ventana_de_cotizacion() {
         expedicionDePolizaPage.validarCancelacionDeExpedicionDePoliza();
     }
+
+    @Step
+    public void validar_que_permite_expedir_la_poliza_con_riesgos() {
+        expedicionDePolizaPage.expedirPoliza();
+    }
 }
