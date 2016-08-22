@@ -1,17 +1,24 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.SeusLoginPage;
+
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
 public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
-    @FindBy(xpath=".//tr[5]/td/div/span")
+    @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_WorkOrders']/div")
     private WebElementFacade mnuTransaccionesPoliza;
     @FindBy(xpath=".//td/div/div/div/div/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade filtroEstado;
@@ -21,13 +28,15 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     private WebElementFacade filtroTipoTransaccion;
     @FindBy(xpath=".//table[3]/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade filtroProducto;
+    @FindBy(xpath=".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:AccountWorkOrdersLV-body']")
+    private WebElementFacade tablaTransacciones;
 
     public CuentasOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);
     }
 
     public void seleccionarTransacciones(){
-        this.mnuTransaccionesPoliza.waitUntilClickable();
+        waitFor(mnuTransaccionesPoliza);
         this.mnuTransaccionesPoliza.click();
     }
 
@@ -59,4 +68,16 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
         this.filtroProducto.sendKeys(Keys.ENTER);
     }
 
+    public void validarTransaccionNoExistentePolizaColectiva(String transaccion) {
+        waitFor(tablaTransacciones);
+        List<WebElement> allRows = tablaTransacciones.findElements(By.tagName("tr"));
+        String existeTransaccion = "No existe la póliza";
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if(transaccion.equals(cells.get(3).getText())){
+                existeTransaccion = "Se encontró la póliza en las transacciones";
+            }
+        }
+        MatcherAssert.assertThat("No existe la póliza", Is.is(Matchers.equalTo(existeTransaccion)));
+    }
 }
