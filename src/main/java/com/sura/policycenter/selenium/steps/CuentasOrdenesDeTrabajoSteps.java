@@ -46,4 +46,8 @@ public class CuentasOrdenesDeTrabajoSteps extends ScenarioSteps {
         inicioPage().irACuentaBuscar(numCuenta);
     }
 
+    @Step
+    public void validarTransaccionNoExistente(String transaccion) {
+        cuentasOrdenesTrabajoPage.validarTransaccionNoExistentePolizaColectiva(transaccion);
+    }
 }
