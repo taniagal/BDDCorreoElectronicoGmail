@@ -25,7 +25,7 @@ Examples:
 |247,667.00|
 
 
-Scenario:  Realizar una cotizacion con todas las coberturas para autosGiven estoy cotizando una poliza:
+Scenario:  Realizar una cotizacion con todas las coberturas para autosGiven estoy cotizando una poliza
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
 |C000222333|Sura        |Autos   |Canal Tradicional|
