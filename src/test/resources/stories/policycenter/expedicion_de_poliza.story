@@ -26,9 +26,9 @@ Examples:
 !-- Riesgos Consultables: Tomador - Asegurado - Placa, motor, chasis
 |22222210|JOSE PAEZ ALZATE, El tomador es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
 |22222227|DIEGO VELEZ, El asegurado es un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
-|22222226|El motor AFF56, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
-|22222226|La placa BLE848, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
-|22222226|El chasis CHAS1254, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|22222226|T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
+|22222226|AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
+|22222226|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
 
 Scenario: Validacion de identificacion de participantes PEPS y riesgos asegurados propiedad comercial
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
