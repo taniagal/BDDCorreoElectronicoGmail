@@ -126,4 +126,8 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.validarBloqueoPorExclusividad(mensaje);
     }
 
+    @Then("se debe mostrar un mensaje <mensaje> de advertencia sin bloquear la cotizacion")
+    public void validarNoBloqueoCotizacion(@Named("mensaje") String mensaje){
+        cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
+    }
 }

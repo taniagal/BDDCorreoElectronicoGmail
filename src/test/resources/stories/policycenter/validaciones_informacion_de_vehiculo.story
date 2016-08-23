@@ -19,20 +19,20 @@ Examples:
 |acb123|
 
 
-
 Scenario:  Validar riesgo consultable para motor, placa o chasis
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|valor_asegurado|descuento|recargo|
-|T64497|2011  |01601225        |MEDELLIN          |Particular       |CHAS63215|AB3C2|$17,900,000.00 |null     |null   |
+|T64497|2011  |01601225        |MEDELLIN          |Particular       |CH212121 |AB3C2|$17,900,000.00 |null     |null   |
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                |
-|Placa : La placa T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.      |
-|Chasis : El chasis CHAS63215, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
-|Motor : El motor AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.       |
+|La placa T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.     |
+|El chasis CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. |
+|El motor AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.      |
+And debe permitir continuar la cotizacion
 
 Examples:
 ||
