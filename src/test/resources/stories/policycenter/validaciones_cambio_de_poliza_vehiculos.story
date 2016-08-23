@@ -53,7 +53,7 @@ Then no se debe permitir continuar con la expedicion y debe mostrar el siguiente
 
 Examples:
 |cotizacion|mensaje                                                          |
-|55555556  |Por política de la compañía este vehiculo no puede ser asegurado.|
+|55555556  |Por política de la compañía este vehículo no puede ser asegurado.|
 
 Scenario: Validar tipo de servicio
 Given se ha realizado la cotizacion de la modificacion <cotizacion>
