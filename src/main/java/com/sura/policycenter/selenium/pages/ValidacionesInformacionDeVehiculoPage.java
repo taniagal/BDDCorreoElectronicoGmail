@@ -52,7 +52,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver-textEl']")
     private WebElementFacade botonAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
-    private WebElementFacade campovehiculoCeroKm;
+    private WebElementFacade campoVehiculoCeroKm;
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
@@ -83,7 +83,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         comboBoxModelo.click();
-        waitUntil(2500);
+        waitUntil(3000);
         comboBoxModelo.sendKeys(vehiculo.get("modelo"));
         comboBoxModelo.sendKeys(Keys.ENTER);
         waitForTextToAppear(vehiculo.get("modelo"));
@@ -97,8 +97,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         }
         MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitUntil(4000);
         waitForAbsenceOf("//li");
+        waitUntil(4000);
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         if(!"null".equals(vehiculo.get("descuento"))){
             campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
@@ -109,7 +109,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
             campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
         waitUntil(500);
-        campovehiculoCeroKm.click();
+        campoVehiculoCeroKm.click();
     }
 
     public void agregarCodigoFasecolda(String codigo) {
