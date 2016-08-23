@@ -1,6 +1,8 @@
 package com.sura.policycenter.selenium.pages;
 
 import java.util.concurrent.TimeUnit;
+
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -30,24 +32,25 @@ public class CambioEnExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToDesktop-inputEl']")
     WebElementFacade campoIrAlEscritorio;
 
+    Commons commons = new Commons(getDriver());
+
     public CambioEnExpedicionDePolizaPage(WebDriver driver){
         super(driver);
     }
 
     public void expedirPoliza() {
-        waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));
-        waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPoliza));
+        botonExpedirPoliza.waitUntilPresent();
         botonExpedirPoliza.click();
     }
 
     public void aceptarExpedirPoliza() {
-        waitFor(ExpectedConditions.visibilityOf(botonAceptarMensaje));
-        waitFor(ExpectedConditions.elementToBeClickable(botonAceptarMensaje));
+        botonAceptarMensaje.waitUntilVisible();
         botonAceptarMensaje.click();
+        commons.waitUntil(1000);
     }
 
     public void validarResumenDeLaPolizaExpedida(String infoCambio, String infoPoliza, String escritorio) {
-        withTimeoutOf(8, TimeUnit.SECONDS).waitFor(ExpectedConditions.visibilityOf(campoInformacionCambio));
+        campoInformacionCambio.waitUntilPresent();
         MatcherAssert.assertThat(campoInformacionCambio.getText(), Is.is(Matchers.equalTo(infoCambio)));
         MatcherAssert.assertThat(campoVerPoliza.getText(), Is.is(Matchers.containsString(infoPoliza)));
         MatcherAssert.assertThat(campoIrAlEscritorio.getText(), Is.is(Matchers.equalTo(escritorio)));
@@ -55,8 +58,7 @@ public class CambioEnExpedicionDePolizaPage extends PageObject{
 
 
     public void cancelarExpedirPoliza() {
-        waitFor(ExpectedConditions.visibilityOf(botonCancelarMensaje));
-        waitFor(ExpectedConditions.elementToBeClickable(botonCancelarMensaje));
+        botonCancelarMensaje.waitUntilVisible();
         botonCancelarMensaje.click();
     }
 }

@@ -42,6 +42,8 @@ public class CoberturaGlobalPage extends Commons {
     private WebElementFacade campoTxtGenerico;
     @FindBy(id = "WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs")
     private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:locationsBlanLV:0:locationBlanket']")
+    private WebElementFacade labelDescripcion;
 
 
     public CoberturaGlobalPage(WebDriver driver) {
@@ -65,18 +67,18 @@ public class CoberturaGlobalPage extends Commons {
             cargarMultiplesUbicaciones(dato.get("valor"));
         else if ("Una cobertura".equals(dato.get("tipo_cobertura")))
                 cargarCoberturaUnica(dato.get("nombre_cobertura"), dato.get("valor"));
-        waitUntil(1500);
         botonAceptar.click();
     }
 
     public void cargarCoberturaUnica(String nombreCobertura, String valor) {
         comboBoxCoberturas.waitUntilPresent();
         selectItem(comboBoxCoberturas, nombreCobertura);
-        waitUntil(1000);
+        waitUntil(2500);
         linkCoberturas.click();
         checkBoxGenerico.waitUntilPresent().click();
         campoTxtGenerico.sendKeys(valor);
         linkDetalles.click();
+        comboBoxCoberturas.waitUntilPresent();
     }
 
     public void cargarMultiplesUbicaciones(String valor) {
@@ -85,6 +87,7 @@ public class CoberturaGlobalPage extends Commons {
         campoTxtValorAseguradoDanosMateriales.sendKeys(valor);
         linkDetalles.click();
         linkUbicacionDisponible.waitUntilPresent().click();
+        waitFor(labelDescripcion).shouldContainText("CRA 65");
     }
 
     public void verificarCoberturasIncluidas() {
@@ -102,7 +105,7 @@ public class CoberturaGlobalPage extends Commons {
         navegarPorCobertura(dato.get("descripcion"), dato.get("tipo_cobertura"));
         comboBoxCoberturas.waitUntilPresent();
         selectItem(comboBoxCoberturas, dato.get("nombre_cobertura"));
-        waitUntil(1000);
+        waitUntil(2500);
         botonAceptar.click();
         waitUntil(1000);
     }

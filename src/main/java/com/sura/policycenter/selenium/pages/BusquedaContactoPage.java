@@ -386,7 +386,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void seleccionarContacto() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(selectContact).shouldBePresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(selectContact).shouldBePresent();
         selectContact.click();
     }
 
@@ -403,9 +403,10 @@ public class BusquedaContactoPage extends Commons {
 
     public void irABuscarContacto() {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent();
+        waitUntil(1500);
         menuBuscar.click();
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuBuscarContacto).waitUntilPresent();
-        waitUntil(1500);
+        waitUntil(2500);
         menuBuscarContacto.click();
         waitForTextToAppear(BUSQUEDADECONTACTOS, 15000);
     }

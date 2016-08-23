@@ -64,16 +64,19 @@ public class UbicacionesDeUnaCuentaPage extends Commons {
     }
 
     public void agregaDireccion(String departamento, String ciudad, String tipoDireccion){
+        waitUntil(1000);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(3000);
+        waitUntil(3000);
+        waitForAbsenceOf("//li");
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(2500);
+        waitUntil(3000);
+        waitForAbsenceOf("//li");
         selectItem(comboBoxTipoDireccion,tipoDireccion);
         botonActualizar.click();
     }
 
     public void verificarTipoDeDireccion(){
-        waitABit(2000);
+        waitUntil(2000);
         labelTipoDeDireccion.waitUntilPresent();
         MatcherAssert.assertThat("No está el campo tipo de direccion", labelTipoDeDireccion.isPresent());
     }

@@ -41,6 +41,9 @@ public class TarifaAutosSteps extends ScenarioSteps {
         vehiculoPage.volver();
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.selectCoberturas2(coberturas);
+        vehiculoPage.volver();
+        vehiculoPage.clickSiguiente();
+        tarifaAutosPage.selectCoberturas3(coberturas);
         tarifaAutosPage.cotizar();
     }
 

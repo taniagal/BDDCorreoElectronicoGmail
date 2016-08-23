@@ -45,7 +45,7 @@ Given estoy cotizando una poliza:
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|
-|T64492|2017  |09403011        |MEDELLIN          |Particular       |null  |null |$830,000,000.00|null     |null   |
+|T64493|2017  |09403011        |MEDELLIN          |Particular       |null  |null |$830,000,000.00|null     |null   |
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                                                                                                                                             |
@@ -63,7 +63,7 @@ Given estoy cotizando una poliza:
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|
-|T64412|1993  |07015010        |MEDELLIN          |Particular       |null  |null |$1,400,000.00  |null     |null   |
+|T64413|1993  |07015010        |MEDELLIN          |Particular       |null  |null |$1,400,000.00  |null     |null   |
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                 |

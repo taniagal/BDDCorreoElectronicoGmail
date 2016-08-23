@@ -70,6 +70,7 @@ public class DetallesDeUbicacionPage extends Commons {
     public void  seleccionarProducto(String nomProducto) {
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
+        waitUntil(1000);
         int i = 0;
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
@@ -102,6 +103,7 @@ public class DetallesDeUbicacionPage extends Commons {
         actions.sendKeys(Keys.ENTER).build().perform();
         selectItem(comboBoxOrganizacion,dato.get("organizacion"));
         waitUntil(3000);
+        waitForAbsenceOf("//li");
         selectItem(comboBoxCanal,dato.get("canal"));
         waitUntil(3500);
         seleccionarProducto(dato.get("producto"));

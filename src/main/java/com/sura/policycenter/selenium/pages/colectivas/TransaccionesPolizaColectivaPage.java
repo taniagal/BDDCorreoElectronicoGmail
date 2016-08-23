@@ -80,7 +80,7 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
     public void validarTransaccionesDePolizaColectiva(ExamplesTable transacciones) {
         Map<String, String> transaccionesColectiva = transacciones.getRows().get(0);
         menuTransaccionesColectivas.click();
-        waitForTextToAppear("Transacciones de póliza colectiva del archivo de la cuenta");
+        waitForTextToAppear("Transacciones de póliza colectiva");
         waitFor(tablaTransaccionesColectiva);
         columnaCrearFecha.shouldBeVisible();
         columnaNumeroPoliza.shouldBeVisible();

@@ -55,12 +55,12 @@ public class CambioDePolizaPage extends PageObject {
     }
 
     public void validarMensaje(String mensaje) {
-        boolean validacionMensaje =  ("").equals(mensaje)?true: mensajeAdvertencia.getText().contains(mensaje);
-        MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
+        Commons commons = new Commons(getDriver());
+        commons.verificarMensaje(mensajeAdvertencia,mensaje);
     }
 
     public void seleccionarInformacionPoliza() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(informacionpoliza).waitUntilPresent();
+        waitFor(informacionpoliza).waitUntilPresent();
         informacionpoliza.click();
     }
 }
