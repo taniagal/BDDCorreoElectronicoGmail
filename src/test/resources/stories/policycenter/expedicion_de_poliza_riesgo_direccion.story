@@ -19,3 +19,13 @@ Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 Examples:
 |cotizacion|mensaje                                                                                                                                              |
 |22222219  |La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial|
+
+Scenario: Validacion de riesgos consultables en la expedicion de poliza - Bug
+Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
+When voy a expedir una poliza por cambio
+And confirmo el mensaje de expedir poliza
+Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
+
+Examples:
+|cotizacion|mensaje                                                                                                                                              |
+|55555559  |El tomador es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial|

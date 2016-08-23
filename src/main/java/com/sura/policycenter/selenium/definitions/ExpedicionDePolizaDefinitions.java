@@ -24,6 +24,12 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.clic_en_expedir_poliza();
     }
 
+    @When("voy a expedir una poliza por cambio")
+    public void expedirPolizaCambio() {
+        expedicionDePolizaSteps.clic_en_expedir_poliza_por_cambio();
+    }
+
+
     @When("confirmo el mensaje de expedir poliza")
     public void confirmarMensajeDeExpedirPoliza() {
         expedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion();
