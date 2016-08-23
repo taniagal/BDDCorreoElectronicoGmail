@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 //@DefaultUrl("https://qacoreseguros.suramericana.com/pc/PolicyCenter.do")
 public class SeusLoginPage extends Commons {
 
-    /*@FindBy(xpath = ".//*[@id='country']")
+    @FindBy(xpath = ".//*[@id='country']")
     private WebElementFacade pais;
     @FindBy(id = "username")
     private WebElementFacade usuario;
@@ -45,27 +45,5 @@ public class SeusLoginPage extends Commons {
             this.btnSubmit.click();
         }
         resetImplicitTimeout();
-    }*/
-
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-    private WebElementFacade usuario1;
-    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
-    private WebElementFacade contrasenia1;
-    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
-    private WebElementFacade btnSubmit1;
-
-    public SeusLoginPage(WebDriver driver) {
-        super(driver);
-    }
-
-    @WhenPageOpens
-    public void waitUntilMainElementsAppears() {
-        getDriver().manage().window().maximize();
-    }
-
-    public void login(String pais, String usuario, String contrasenia) {
-        usuario1.sendKeys("su");
-        contrasenia1.sendKeys("gw");
-        btnSubmit1.click();
     }
 }
