@@ -12,8 +12,8 @@ Deseo poder agregar la bonificacion comercial a un vehiculo durante una cotizaci
 Scenario:  Agregar bonificacion comercial a un vehiculo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto|canal            |
-|C000222333|Sura        |Autos   |Canal Tradicional|
+|cuenta      |organizacion|producto|canal            |
+|C1060447895 |Sura        |Autos   |Canal Tradicional|
 When ingrese los datos del asegurado
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|
