@@ -148,6 +148,11 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
         detalleDeAseguradoDeCotizacionSteps.validarContinuacionDeCotizacion();
     }
 
+    @Then("debo ver el detalle del asegurado y no debe permitir la modificacion de los datos $datosAsegurado")
+    public void validarDetalleDeRiesgo(ExamplesTable datosAsegurado){
+
+    }
+
 }
 
 
