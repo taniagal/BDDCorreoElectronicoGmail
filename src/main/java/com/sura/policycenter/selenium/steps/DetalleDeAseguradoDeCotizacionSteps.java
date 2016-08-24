@@ -37,7 +37,8 @@ public class DetalleDeAseguradoDeCotizacionSteps extends ScenarioSteps{
 
     @Step
     public void validarOpcionesDeAgregar(ExamplesTable listaAgregar) {
-        MatcherAssert.assertThat(detalleDeAseguradoDeCotizacionPage.validarOpcionesDeAgregar(listaAgregar), Is.is(Matchers.equalTo("Elementos de la opción Agregar correctos")));
+        Integer opcionesEsperadas = listaAgregar.getRowCount();
+        MatcherAssert.assertThat(detalleDeAseguradoDeCotizacionPage.validarOpcionesDeAgregar(listaAgregar).toString(), Is.is(Matchers.equalTo(opcionesEsperadas.toString())));
     }
 
     @Step

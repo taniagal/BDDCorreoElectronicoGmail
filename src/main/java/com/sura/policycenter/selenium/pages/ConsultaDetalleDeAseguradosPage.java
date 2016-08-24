@@ -31,10 +31,8 @@ public class ConsultaDetalleDeAseguradosPage extends PageObject{
     WebElementFacade campoFechaDeNacimiento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:MaritalStatus-inputEl']")
     WebElementFacade campoEstadoCivil;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:PrimaryPhone-inputEl']")
-    WebElementFacade campoTelefonoResidencia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:HomePhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
-    WebElementFacade campoTelefonoTrabajo;
+    WebElementFacade campoTelefonoResidencia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:CellPhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
     WebElementFacade campoCelular;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:EmailAddress1-inputEl']")
@@ -78,7 +76,6 @@ public class ConsultaDetalleDeAseguradosPage extends PageObject{
         MatcherAssert.assertThat(campoFechaDeNacimiento.getText(), Is.is(Matchers.equalTo(asegurados.get("fechaNacimiento"))));
         MatcherAssert.assertThat(campoEstadoCivil.getText(), Is.is(Matchers.equalTo(asegurados.get("estadoCivil"))));
         MatcherAssert.assertThat(campoTelefonoResidencia.getText(), Is.is(Matchers.equalTo(asegurados.get("telefonoResidencia"))));
-        MatcherAssert.assertThat(campoTelefonoTrabajo.getText(), Is.is(Matchers.equalTo(asegurados.get("telefonoTrabajo"))));
         MatcherAssert.assertThat(campoCelular.getText(), Is.is(Matchers.equalTo(asegurados.get("celular"))));
         MatcherAssert.assertThat(campoCorreoPrimario.getText(), Is.is(Matchers.equalTo(asegurados.get("correoPrimario"))));
         MatcherAssert.assertThat(campoCorreoSecundario.getText(), Is.is(Matchers.equalTo(asegurados.get("correoSecundario"))));

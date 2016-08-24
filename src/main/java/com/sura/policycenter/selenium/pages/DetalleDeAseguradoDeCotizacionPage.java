@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
-import com.sura.serenitybdd.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -81,45 +80,22 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
         botonAgregar.click();
     }
 
-    //cambié el metodo, probar que funcione correctamente la prueba de detalle asegurado de cotizacion
-    public String validarOpcionesDeAgregar(ExamplesTable listaAgregar) {
+    public Integer validarOpcionesDeAgregar(ExamplesTable listaAgregar) {
         List<WebElementFacade> elementosAgregar;
         Map<String, String> elementosRequeridos;
-        String opcionesOk = "Elementos de la opción Agregar no están presentes";
+        Integer opcionesAgregar = 0;
         elementosAgregar = findAll(".//*[@class='x-box-inner x-vertical-box-overflow-body']/div/div/a/span");
-        for (int i = 1; i < listaAgregar.getRowCount()-1; i++) {
+        for (int i = 0; i < listaAgregar.getRowCount(); i++) {
             for (WebElementFacade opciones : elementosAgregar) {
                 elementosRequeridos = listaAgregar.getRows().get(i);
-                if(elementosRequeridos.equals(opciones.getText()) && elementosAgregar.size()==(listaAgregar.getRowCount()-1)){
-                    opcionesOk = "Elementos de la opción Agregar correctos";
-                }else { opcionesOk = "Elementos de la opción Agregar no están presentes";
+                if((elementosRequeridos.get("agregar")).equals(opciones.getText())){
+                    opcionesAgregar ++;
                 }
             }
         }
-        return opcionesOk;
+        return opcionesAgregar;
     }
 
-
-/*    public String validarOpcionesDeAgregar(ExamplesTable listaAgregar) {
-        List<WebElementFacade> elementosAgregar;
-        List<String> elementosRequeridos = null;
-        String opcionesOk = "Elementos de la opción Agregar no están presentes";
-        try {
-            elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(listaAgregar);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        elementosAgregar = findAll("./*//*[@class='x-box-inner x-vertical-box-overflow-body']/div/div/a/span");
-        for (int i = 1; i < elementosRequeridos.size(); i++) {
-            for (WebElementFacade opciones : elementosAgregar) {
-                if(elementosRequeridos.get(i).equals(opciones.getText()) && elementosAgregar.size()==(elementosRequeridos.size()-1)){
-                    opcionesOk = "Elementos de la opción Agregar correctos";
-                }else { opcionesOk = "Elementos de la opción Agregar no están presentes";
-                }
-            }
-        }
-        return opcionesOk;
-    }*/
 
     public void agregarAseguradoContactoDeLaCuenta() {
         waitFor(opcionContactoDeCuenta).waitUntilPresent();
