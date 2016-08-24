@@ -11,6 +11,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class ConsultaDetalleDeAseguradosPage extends PageObject{
 
@@ -31,9 +32,9 @@ public class ConsultaDetalleDeAseguradosPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:MaritalStatus-inputEl']")
     WebElementFacade campoEstadoCivil;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:PrimaryPhone-inputEl']")
-    WebElementFacade campoTelefonoPrimario;
+    WebElementFacade campoTelefonoResidencia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:HomePhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
-    WebElementFacade campoTelefonoCasa;
+    WebElementFacade campoTelefonoTrabajo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:CellPhone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
     WebElementFacade campoCelular;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:EmailAddress1-inputEl']")
@@ -48,6 +49,18 @@ public class ConsultaDetalleDeAseguradosPage extends PageObject{
     WebElementFacade campoDescripcionDireccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:ContactCurrency:ContactCurrencyInputSet:PreferredSettlementCurrency-inputEl']")
     WebElementFacade campoMonedaPreferida;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnInnerEl']")
+    WebElementFacade botonAgregar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:Remove-btnInnerEl']")
+    WebElementFacade botonQuitar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:JobWizardToolbarButtonSet:Draft-btnInnerEl']")
+    WebElementFacade botonGuardarBorrador;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:JobWizardToolbarButtonSet:Versions-btnInnerEl']")
+    WebElementFacade botonVersiones;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:JobWizardToolbarButtonSet:CloseOptions-btnInnerEl']")
+    WebElementFacade botonOpcionesDeCierre;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    WebElementFacade botonCotizar;
 
     public ConsultaDetalleDeAseguradosPage(WebDriver driver){
         super(driver);
@@ -55,6 +68,7 @@ public class ConsultaDetalleDeAseguradosPage extends PageObject{
 
     public void validarDetalleDeRiesgo(ExamplesTable datosAsegurado) {
         Map<String, String> asegurados = datosAsegurado.getRows().get(0);
+        waitFor(campoTipoDocumento);
         MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(asegurados.get("tipoIdentificacion"))));
         MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(asegurados.get("numeroIdentificacion"))));
         MatcherAssert.assertThat(campoPrimerNombre.getText(), Is.is(Matchers.equalTo(asegurados.get("primerNombre"))));
@@ -63,8 +77,8 @@ public class ConsultaDetalleDeAseguradosPage extends PageObject{
         MatcherAssert.assertThat(campoSegundoApellido.getText(), Is.is(Matchers.equalTo(asegurados.get("segundoApellido"))));
         MatcherAssert.assertThat(campoFechaDeNacimiento.getText(), Is.is(Matchers.equalTo(asegurados.get("fechaNacimiento"))));
         MatcherAssert.assertThat(campoEstadoCivil.getText(), Is.is(Matchers.equalTo(asegurados.get("estadoCivil"))));
-        MatcherAssert.assertThat(campoTelefonoPrimario.getText(), Is.is(Matchers.equalTo(asegurados.get("telefonoPrimario"))));
-        MatcherAssert.assertThat(campoTelefonoCasa.getText(), Is.is(Matchers.equalTo(asegurados.get("telefonoCasa"))));
+        MatcherAssert.assertThat(campoTelefonoResidencia.getText(), Is.is(Matchers.equalTo(asegurados.get("telefonoResidencia"))));
+        MatcherAssert.assertThat(campoTelefonoTrabajo.getText(), Is.is(Matchers.equalTo(asegurados.get("telefonoTrabajo"))));
         MatcherAssert.assertThat(campoCelular.getText(), Is.is(Matchers.equalTo(asegurados.get("celular"))));
         MatcherAssert.assertThat(campoCorreoPrimario.getText(), Is.is(Matchers.equalTo(asegurados.get("correoPrimario"))));
         MatcherAssert.assertThat(campoCorreoSecundario.getText(), Is.is(Matchers.equalTo(asegurados.get("correoSecundario"))));
@@ -72,5 +86,13 @@ public class ConsultaDetalleDeAseguradosPage extends PageObject{
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(asegurados.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(asegurados.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoMonedaPreferida.getText(), Is.is(Matchers.equalTo(asegurados.get("moneda"))));
+        setImplicitTimeout(2, TimeUnit.SECONDS);
+        MatcherAssert.assertThat(botonAgregar.isVisible(), Is.is(Matchers.equalTo(false)));
+        MatcherAssert.assertThat(botonQuitar.isVisible(), Is.is(Matchers.equalTo(false)));
+        MatcherAssert.assertThat(botonCotizar.isVisible(), Is.is(Matchers.equalTo(false)));
+        MatcherAssert.assertThat(botonGuardarBorrador.isVisible(), Is.is(Matchers.equalTo(false)));
+        MatcherAssert.assertThat(botonVersiones.isVisible(), Is.is(Matchers.equalTo(false)));
+        MatcherAssert.assertThat(botonOpcionesDeCierre.isVisible(), Is.is(Matchers.equalTo(false)));
+        resetImplicitTimeout();
     }
 }

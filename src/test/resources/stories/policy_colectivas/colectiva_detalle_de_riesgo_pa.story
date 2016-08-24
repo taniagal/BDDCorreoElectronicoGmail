@@ -24,9 +24,9 @@ And de clic en el numero de poliza de transacciones poliza colectiva
 And de clic en agregar riesgo para ir a la ventana de riesgos
 And seleccione el riesgo <riesgo> para ver el detalle
 Then debo ver el detalle del asegurado y no debe permitir la modificacion de los datos
-|tipoIdentificacion|numeroIdentificacion|primerNombre|segundoNombre|primerApellido|segundoApellido|fechaNacimiento|estadoCivil|telefonoPrimario|telefonoCasa|celular|correoPrimario|correoSecundario|direccion|tipoDireccion|descripcionDireccion|moneda|
-|||||||||
+| tipoIdentificacion   | numeroIdentificacion | primerNombre | segundoNombre | primerApellido | segundoApellido | fechaNacimiento | estadoCivil | telefonoResidencia | telefonoTrabajo | celular         | correoPrimario     | correoSecundario | direccion                                   | tipoDireccion | descripcionDireccion                       | moneda |
+| CEDULA DE CIUDADANIA | 1234567891           | DORIAN       | STIWAR        | EASTMOND       | PULGARIN        | 01/01/1970      | Soltero     | 408-2211           |                 | +1 311-321-2470 | 0005@guidewire.com | 0005@hotmail.com | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda      | Created by the Address Builder with code 0 | COP    |
 
 Examples:
-| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  |riesgo|
-| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet |BLE860|
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | riesgo |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | BLE860 |
