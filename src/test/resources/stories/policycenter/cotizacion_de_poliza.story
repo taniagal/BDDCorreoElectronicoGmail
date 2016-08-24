@@ -2,12 +2,14 @@ Cotizacion De Poliza
 
 Meta:
 
+@issue #CDSEG-843
+@Automatizador Diego Cardona Acevedo
+@Sprint 3
+
 Narrative:
 Como usuario de Policy Center
 debo poder realizar una cotizacion
 para comenzar un proceso de expedicion con un cliente en caso de ser posible
-
-@issue SUGWUSC-15118 Quote PA - Informacion General
 
 Scenario: Informacion general de cotizacion
 GivenStories: stories/policycenter/login_policy.story

@@ -2,12 +2,14 @@ Cotizacion PA Detalle
 
 Meta:
 
+@issue #CDSEG-807
+@Automatizador Diego Cardona Acevedo
+@Sprint 3
+
 Narrative:
 Como usuario de policyCenter
 Quiero poder solicitar una cotizacion
 Asi ver los detalles de la cotizacion de una poliza de Autos por cada uno de los Riesgos (Vehiculos)
-
-@Issue SUGWUSC-15119 Quote PA Detalle
 
 Scenario: Quote
 GivenStories: stories/policycenter/login_policy.story

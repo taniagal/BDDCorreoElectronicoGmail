@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.HistorialCuentaSteps;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -56,4 +57,18 @@ public class HistorialCuentaDefinitions {
         historialCuentaSteps.buscarCuentaConMultiplesOpciones( usuario,  fechaDesde,  fechaHasta);
     }
 
+    @Then("debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda")
+    public void thenDeboPoderVerLasTransaccionesRelacionadasALosMultiplesOpciones() {
+        historialCuentaSteps.validarDatosOpcionesMultiples();
+    }
+
+    @When("indique el criterio de busqueda producto")
+    public void whenIndiqueElCriterioDeBusquedaProducto() {
+        historialCuentaSteps.buscarCuentaProducto();
+    }
+
+    @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto")
+    public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoProducto() {
+        historialCuentaSteps.validarResultadoProducto();
+    }
 }

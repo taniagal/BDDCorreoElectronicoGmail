@@ -2,23 +2,27 @@ Modificacion Informacion Poliza Pa
 
 Meta:
 
-@issue SUGWUSC-10900 Policy Info - PA
+@issue #CDSEG-977
+@Automatizador diego cardona
+@Sprint 4
 
 Narrative:
 Como usuario de PolicyCenter
 Quiero poder realizar cambios en la informacion de cliente, vehiculo o coberturas en una poliza de automoviles.
+
+@issue SUGWUSC-10900 Policy Info - PA
 
 Scenario: Visualizacion de los datos de la poliza
 GivenStories: stories/policycenter/login_policy.story
 Given ya se tiene una poliza expedida <numeroPoliza>
 When ingrese a modificar dicha cotizacion
 Then se debe visualizar los datos de la informacion de la poliza
-|tipoDocumento       |numeroDocumento|nombre                         |telefono |direccion                                  |tipoDireccion|descripcionDireccion                      |tipoPlazo|
-|CEDULA DE CIUDADANIA|1234567891     |DORIAN STIWAR EASTMOND PULGARIN|408-2211 |CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda     |Created by the Address Builder with code 0|Anual    |
+|tipoDocumento       |numeroDocumento|nombre            |telefono |direccion                                   |tipoDireccion|descripcionDireccion                      |tipoPlazo|
+|CEDULA DE CIUDADANIA|1356448711     |ALFREDO ANTIOQUIA |408-2211 |CRA 65 # 48-162, LOS ANGELES, Estados Unidos|Vivienda     |Created by the Address Builder with code 0|Anual    |
 
 Examples:
 |numeroPoliza  |
-|TEST_22222222 |
+|TEST_22223222 |
 
 Scenario: Adicionar segundo tomador
 Given ya se tiene una poliza expedida <numeroPoliza>
@@ -27,7 +31,7 @@ Then el tomador debe quedar registrado en la informacion de la poliza
 
 Examples:
 |numeroPoliza  |tipoDocumento        |numeroDocumento |
-|TEST_22222222 |CEDULA DE CIUDADANIA |1234567890      |
+|TEST_22223222 |CEDULA DE CIUDADANIA |1234567890      |
 
 Scenario: No permitir cambiar el tomador primario
 Given ya se tiene una poliza expedida <numeroPoliza>
@@ -36,7 +40,7 @@ Then no se debe permitir cambiar el tomador primario
 
 Examples:
 |numeroPoliza  |
-|TEST_22222222 |
+|TEST_22223222 |
 
 Scenario: Validar campo poliza financiada
 Meta:
@@ -47,8 +51,7 @@ Then se debe habilitar el campo poliza financiada
 
 Examples:
 |numeroPoliza  |
-|TEST_22222222 |
-
+|TEST_22223222 |
 
 Scenario: Validar que muestre mensaje warning de PEPS para tomador - Información de la póliza
 Given ya se tiene una poliza expedida <numeroPoliza>
@@ -59,4 +62,4 @@ And se debe permitir continuar a asegurados de la modificacion
 
 Examples:
 |numeroPoliza |tipoDocumento        |numeroDocumento |mensaje                                                                                               |
-|TEST_22222222|CEDULA DE CIUDADANIA |123456          |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
+|TEST_22223222|CEDULA DE CIUDADANIA |123456          |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
