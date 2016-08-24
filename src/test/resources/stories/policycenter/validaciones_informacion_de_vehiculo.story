@@ -12,7 +12,9 @@ Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When agrege un vehiculo con codigo fasecolda <codigo> que no existe
-Then debo ingresar un nuevo codigo
+Then deben aparecer los mensajes de validacion:
+|mensaje                                                                                                                |
+|El código fasecolda no existe. Por favor verifique|
 
 Examples:
 |codigo|
@@ -24,8 +26,8 @@ Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|valor_asegurado|descuento|recargo|
-|T64497|2011  |01601225        |MEDELLIN          |Particular       |CH212121 |AB3C2|$17,900,000.00 |null     |null   |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|valor_asegurado|descuento|recargo|zona|
+|T64497|2011  |01601225        |MEDELLIN          |Particular       |CH212121 |AB3C2|$17,900,000.00 |null     |null   |2|
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                |
@@ -44,8 +46,8 @@ Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|
-|T64493|2017  |09403011        |MEDELLIN          |Particular       |null  |null |$830,000,000.00|null     |null   |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
+|T64493|2017  |09403011        |MEDELLIN          |Particular       |null  |null |$830,000,000.00|null     |null   |2|
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                                                                                                                                             |
@@ -62,8 +64,8 @@ Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|
-|T64413|1993  |07015010        |MEDELLIN          |Particular       |null  |null |$1,400,000.00  |null     |null   |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
+|T64413|1993  |07015010        |MEDELLIN          |Particular       |null  |null |$1,400,000.00  |null     |null   |2|
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                 |
