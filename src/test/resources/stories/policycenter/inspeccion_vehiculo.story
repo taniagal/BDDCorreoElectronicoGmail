@@ -2,7 +2,7 @@ Inspeccion Vehiculo
 
 Meta:
 
-@issue CDSEG-751
+@issue #CDSEG-751
 @Automatizador Diego Cardona Acevedo
 @Sprint 5
 

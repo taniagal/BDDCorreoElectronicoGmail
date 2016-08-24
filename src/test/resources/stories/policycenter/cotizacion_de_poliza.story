@@ -2,12 +2,14 @@ Cotizacion De Poliza
 
 Meta:
 
+@issue #CDSEG-843
+@Automatizador Diego Cardona Acevedo
+@Sprint 3
+
 Narrative:
 Como usuario de Policy Center
 debo poder realizar una cotizacion
 para comenzar un proceso de expedicion con un cliente en caso de ser posible
-
-@Issue SUGWUSC-15118 Quote PA - Información General
 
 Scenario: Informacion general de cotizacion
 GivenStories: stories/policycenter/login_policy.story
@@ -15,7 +17,7 @@ Given he realizado la cotizacion <cotizacion>
 When ingrese al detalle de la cotizacion
 Then debo ver la siguiente informacion
 |numeroCotizacion|tomador|tipoDocumento|numeroDocumento|direccion|tipoDireccion|descripcionDireccion|empresaAseguradora|prima|impuestos|total|
-|22222225|DORIAN EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$666,895.00|-|$$666,895.00|
+|22222225|DORIAN EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$666,895.00|-|$666,895.00|
 
 Examples:
 |cotizacion|
@@ -40,11 +42,11 @@ Examples:
 |cotizacion|mensaje|
 |22270002  |El tomador es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
 
-Scenario: PEP - Figuras - Bloqueo
+Scenario: PEP - Figuras - Warning
 Given he realizado la cotizacion <cotizacion>
 When ingrese a la cotizacion
 And las figuras asegurado, beneficiario y/o tomador, fueron identificadas como PEP
-Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensaje>; no se debe mostrar ningun valor de cotizacion al cliente
+Then se debe mostrar un mensaje <mensaje> de advertencia sin bloquear la cotizacion
 
 Examples:
 |cotizacion|mensaje|
@@ -76,23 +78,15 @@ Examples:
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:
 @manual
-Given he realizado la cotizacion <cotizacion>
-When ingrese a la cotizacion
-And el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
-Then no se debe permitir continuar con la cotizacion y mostrar un mensaje
-
-Examples:
-|cotizacion|
-|22270002  |
+Given  he realizado la cotizacion
+When  ingrese a la cotizacion
+And  el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
+Then  no se debe permitir continuar con la cotizacion y mostrar un mensaje
 
 Scenario: Riesgos consultables - Tipo Causal Moral
 Meta:
 @manual
-Given he realizado la cotizacion <cotizacion>
-When ingrese a la cotizacion
-And el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
-Then no se debe permitir continuar con la cotizacion y mostrar un mensaje
-
-Examples:
-|cotizacion|
-|22270002  |
+Given  he realizado la cotizacion
+When  ingrese a la cotizacion
+And  el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
+Then  no se debe permitir continuar con la cotizacion y mostrar un mensaje
