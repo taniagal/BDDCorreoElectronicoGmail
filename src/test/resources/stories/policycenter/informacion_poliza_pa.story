@@ -2,7 +2,9 @@ Informacion Poliza Pa
 
 Meta:
 
-@issue SUGWUSC-10900 Policy Info - PA
+@issue #CDSEG-995
+@Automatizador diego cardona
+@Sprint 2
 
 Narrative:
 Como usuario de PolicyCenter
