@@ -1,9 +1,11 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -11,7 +13,7 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class DisponibilidadDetalleProductoPage extends Commons {
+public class DisponibilidadDetalleProductoPage extends PageObject {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
     private WebElementFacade listaTipoCanalDeVenta;
@@ -29,6 +31,8 @@ public class DisponibilidadDetalleProductoPage extends Commons {
     WebElementFacade tablaProductos;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
+
+    Commons commons = new Commons(getDriver());
 
 
     public DisponibilidadDetalleProductoPage(WebDriver driver) {
@@ -52,7 +56,7 @@ public class DisponibilidadDetalleProductoPage extends Commons {
 
     public void seleccionarAgentePorNombre(String nombreAgente) {
         waitFor(campoNombreAgente).waitUntilPresent();
-        waitUntil(3000);
+        commons.waitUntil(3000);
         campoNombreAgente.click();
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
         if (!listaNombresAgentesElement.isEmpty()) {
