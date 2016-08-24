@@ -11,66 +11,42 @@ Como usuario de policy center
 quiero poder configurar el modelo del producto teniendo en cuenta los canales de distribución
 para que se muestren las coberturas, terminos y opciones segun la disponibilidad
 
-Scenario: Filtrar canal por organizacion
+Scenario: Validar la organizacion, el canal y el tipo de poliza cuando el producto es Autos
 GivenStories: stories/policycenter/login_policy.story
-Given Estoy buscando una cuenta <numCuenta>
+Given que voy a buscar la cuenta <numCuenta>
 And quiero expedir una poliza nueva
 And seleccione el agente <agente>
-And viendo Informacion de poliza
-When seleccione Organizacion de ventas: <organizacion>
-Then tipo de canal ventas debe contener los valores
-|Leasing|
-|Renting|
-|Sufi|
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> para expedir la poliza
+And seleccione la opcion informacion de poliza
+Then debo ver la organizacion <infoOrganizacion> seleccionada
+And debor ver el canal <infoCanal> seleccionado
+And debo ver el tipo de poliza <infoTipoPoliza> seleccionado
+
 
 Examples:
-|numCuenta|agente|organizacion|
-|C000888888|DIRECTO|Bancolombia|
+| numCuenta  | agente  | organizacion | canal      | tipoPoliza | producto | infoTipoPoliza | infoOrganizacion | infoCanal         |
+| C000888888 | DIRECTO | Bancolombia  | Televentas | Individual | Autos    | PPAutos        | Bancolombia      | Televentas        |
 
-Scenario: Filtrar Tipo de Producto por canal
-Given Estoy buscando una cuenta <numCuenta>
-And Estoy expidiendo una poliza de autos
-And viendo Informacion de poliza
-When seleccione Organizacion de ventas: <organizacion>
-And seleccione Tipo de canal ventas: <tipoCanal>
-Then PA tipo de poliza debe contener los valores
-|<ninguno>|
-|Comercial - Personal Fleet|
-
-Examples:
-
-|numCuenta|organizacion|tipoCanal|
-|C000888888|Bancolombia|Renting|
-
-
-Scenario: Al cambiar filtro de organizacion se cambia canal y tipo de poliza
-Given Estoy buscando una cuenta <numCuenta>
-And Estoy expidiendo una poliza de autos
-And viendo Informacion de poliza
-When seleccione Organizacion de ventas: <organizacion>
-And seleccione Tipo de canal ventas: <tipoCanal>
-And seleccione PA tipo de poliza: <tipoPoliza>
-And seleccione Organizacion de ventas: <otraOrganizacion>
-Then tipo de canal ventas debe tener el valor vacio
-And PA tipo de poliza debe tener el valor vacio
+Scenario: Validar la organizacion, el canal y el tipo de poliza cuando el producto es Autos para las diferentes combinaciones
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> para expedir la poliza
+And seleccione la opcion informacion de poliza
+Then debo ver la organizacion <infoOrganizacion> seleccionada
+And debor ver el canal <infoCanal> seleccionado
+And debo ver el tipo de poliza <infoTipoPoliza> seleccionado
 
 Examples:
-
-|numCuenta|organizacion|tipoCanal|tipoPoliza|otraOrganizacion|
-|C000888888|Bancolombia|Renting|Comercial - Personal Fleet|Exito|
-
-Scenario: Al cambiar filtro de canal se cambia tipo de poliza
-Given Estoy buscando una cuenta <numCuenta>
-And Estoy expidiendo una poliza de autos
-And viendo Informacion de poliza
-When seleccione Organizacion de ventas: <organizacion>
-And seleccione Tipo de canal ventas: <tipoCanal>
-And seleccione PA tipo de poliza: <tipoPoliza>
-And seleccione Tipo de canal ventas: <otroTipoCanal>
-Then PA tipo de poliza debe tener el valor vacio
-
-Examples:
-
-|numCuenta|organizacion|tipoCanal|tipoPoliza|otroTipoCanal|
-|C000888888|Bancolombia|Renting|Comercial - Personal Fleet|Leasing|
-
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto | infoTipoPoliza | infoOrganizacion | infoCanal         |
+| C000888888 | DIRECTO | Exito        | Exito             | Individual | Autos    | PPAutos        | Exito            | Exito             |
+| C000888888 | DIRECTO | GMAC         | GMAC              | Individual | Autos    | PPAutos        | GMAC             | GMAC              |
+| C000888888 | DIRECTO | Sura         | Autos + Soat      | Individual | Autos    | PPAutos        | Sura             | Autos + Soat      |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Individual | Autos    | PPAutos        | Sura             | Canal Tradicional |
+| C000888888 | DIRECTO | Sura         | Televentas        | Individual | Autos    | PPAutos        | Sura             | Televentas        |
