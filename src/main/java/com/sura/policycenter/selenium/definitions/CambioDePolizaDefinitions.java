@@ -39,4 +39,9 @@ public class CambioDePolizaDefinitions {
         cambioDePolizaSteps.validarMensaje(mensaje);
     }
 
+    @Then("NO debo visualizar la advertencia")
+    public void validarMensajeNoReasegur() {
+        cambioDePolizaSteps.validarMensajeNoReaseguro();
+    }
+
 }
