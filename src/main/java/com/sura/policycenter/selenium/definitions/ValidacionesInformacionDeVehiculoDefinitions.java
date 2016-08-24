@@ -36,6 +36,11 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
         vehiculoSteps.verificar_mensajes(mensajes);
     }
 
+    @Then("debe permitir continuar la cotizacion")
+    public void permitirContinuarCotizacion(){
+        vehiculoSteps.siguiente();
+        vehiculoSteps.validarAvanceSiguientePagina();
+    }
 
     /**
      * ESCENARIO 2

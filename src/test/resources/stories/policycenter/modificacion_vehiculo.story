@@ -2,7 +2,9 @@ Modificacion Vehiculo
 
 Meta:
 
-@Issue SUGW USC-11100-PA-Change - Enter Policy Change_Vehiculo
+@issue #CDSEG-1248
+@Automatizador Diego Cardona Acevedo
+@Sprint 4
 
 Narrative:
 Como usuario de PolicyCenter

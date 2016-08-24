@@ -143,7 +143,6 @@ public class TarifaAutosPage extends Commons {
     }
 
     public void desMarcarCoberturas() {
-        //checkBoxDaniosCarro.click();
         checkBoxHurto.click();
     }
 
