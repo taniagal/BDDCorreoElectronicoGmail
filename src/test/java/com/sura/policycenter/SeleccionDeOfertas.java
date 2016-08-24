@@ -1,4 +1,6 @@
 package com.sura.policycenter;
 
-public class SeleccionDeOfertas{
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class SeleccionDeOfertas extends SerenityStory{
 }

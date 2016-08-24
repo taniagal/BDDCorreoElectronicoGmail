@@ -34,6 +34,11 @@ public class DisponibilidadDetalleProductoDefinitions {
         disponibilidadDetalleProductoSteps.verInformacionPoliza();
     }
 
+    @When("seleccione el agente <agente>")
+    public void seleccionarAgenteCotizacion(@Named("agente") String agente){
+        disponibilidadDetalleProductoSteps.seleccionarAgente(agente);
+    }
+
     @When("seleccione Organizacion de ventas: <organizacion>")
     public void seleccionarOrganizacionDeVentas(@Named("organizacion") String organizacion) {
         disponibilidadDetalleProductoSteps.seleccionarOrganizacionDeVentas(organizacion);

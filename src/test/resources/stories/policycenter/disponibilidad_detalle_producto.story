@@ -2,7 +2,9 @@ Disponibilidad Detalle Producto
 
 Meta:
 
-@issue #SUGWUSC-14951
+@issue #CDSEG-745
+@Automatizador Eliana Alvarez
+@Sprint 1
 
 Narrative:
 Como usuario de policy center

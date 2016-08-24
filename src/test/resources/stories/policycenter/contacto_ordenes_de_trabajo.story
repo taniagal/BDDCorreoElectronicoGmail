@@ -2,7 +2,9 @@ Contacto Ordenes De Trabajo
 
 Meta:
 
-@issue #SUGWUSC-10670
+@issue #CDSEG-875
+@Automatizador Eliana Alvarez
+@Sprint 1
 
 Narrative:
 Como usuario

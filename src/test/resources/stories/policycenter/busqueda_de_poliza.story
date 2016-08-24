@@ -1,7 +1,9 @@
 Busqueda De Poliza
 
 Meta:
-@issue #SUGWUSC-14985
+@issue #CDSEG-1012
+@Automatizador Eliana Alvarez
+@Sprint 1
 
 Narrative:
 Como usuario de PolicyCenter

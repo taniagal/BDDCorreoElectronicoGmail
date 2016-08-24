@@ -3,6 +3,8 @@ Informacion De Poliza Colectiva
 Meta:
 
 @issue #CDSEG-862
+@Automatizador Eliana Alvarez
+@Sprint 4
 
 Narrative:
 Como usuario de Policy Center
