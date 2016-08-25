@@ -17,8 +17,8 @@ And confirmo el mensaje de expedir poliza
 Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 
 Examples:
-| cotizacion | mensaje                                                                                                                                                                                                                                                                                                  |
-| 22222238   | FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.                                                                                                                                                                                                   |
+| cotizacion | mensaje                                                                                                |
+| 22222238   | FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado. |
 
 Scenario: Validacion de identificacion de participantes PEPS y riesgos asegurados para autos
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
