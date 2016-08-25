@@ -45,7 +45,6 @@ public class MetodosComunes {
         try {
             wait.until(new Function<Integer, Boolean>() {
                 public Boolean apply(Integer i) {
-
                     return false;
                 }
             });
