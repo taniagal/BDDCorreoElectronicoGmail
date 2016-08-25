@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
-import com.sura.serenitybdd.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -27,61 +26,42 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']/div")
     WebElementFacade botonAsegurados;
-
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver']")
     WebElementFacade botonAgregar;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact']")
     WebElementFacade opcionContactoDeCuenta;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddFromSearch']")
     WebElementFacade opcionContactoDelDirectorio;
-
     @FindBy(xpath = ".//span[contains(.,'GLORIA GALLEGO')]")
     WebElementFacade contactoDeCuenta;
-
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']")
     WebElementFacade selectContactoDelDirectorio;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV-body']")
     WebElementFacade tablaAsegurados;
-
     @FindBy(xpath = ".//span[contains(.,'Persona Natural')]")
     WebElementFacade opcionNuevoPersonaNatural;
-
     @FindBy(xpath = ".//span[contains(.,'Persona Jurídica')]")
     WebElementFacade opcionNuevoPersonaJuridica;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddNewDriver']")
     WebElementFacade opcionNuevo;
-
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:_msgs']/div")
     WebElementFacade mensajeBuscarDirectorio;
-
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:__crumb__']")
     WebElementFacade opcionVolverAAsegurados;
-
     @FindBy(xpath = ".//img[@class='x-grid-checkcolumn']")
     WebElementFacade seleccionarElemento;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:Remove-btnInnerEl']")
     WebElementFacade botonQuitar;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:_msgs']/div")
     WebElementFacade mensajeValidacion;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next']")
     WebElementFacade botonSiguiente;
-
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     WebElementFacade campoNumeroCuenta;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:RetrieveMVRButton-btnInnerEl']")
     WebElementFacade botonRecuperarMVR;
-
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
     WebElementFacade menuPoliza;
-
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']")
     WebElementFacade menuPolizaNuevoEnvio;
 
@@ -100,26 +80,22 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
         botonAgregar.click();
     }
 
-    public String validarOpcionesDeAgregar(ExamplesTable listaAgregar) {
+    public Integer validarOpcionesDeAgregar(ExamplesTable listaAgregar) {
         List<WebElementFacade> elementosAgregar;
-        List<String> elementosRequeridos = null;
-        String opcionesOk = "Elementos de la opción Agregar no están presentes";
-        try {
-            elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(listaAgregar);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Map<String, String> elementosRequeridos;
+        Integer opcionesAgregar = 0;
         elementosAgregar = findAll(".//*[@class='x-box-inner x-vertical-box-overflow-body']/div/div/a/span");
-        for (int i = 1; i < elementosRequeridos.size(); i++) {
+        for (int i = 0; i < listaAgregar.getRowCount(); i++) {
             for (WebElementFacade opciones : elementosAgregar) {
-                if(elementosRequeridos.get(i).equals(opciones.getText()) && elementosAgregar.size()==(elementosRequeridos.size()-1)){
-                    opcionesOk = "Elementos de la opción Agregar correctos";
-                }else { opcionesOk = "Elementos de la opción Agregar no están presentes";
+                elementosRequeridos = listaAgregar.getRows().get(i);
+                if((elementosRequeridos.get("agregar")).equals(opciones.getText())){
+                    opcionesAgregar ++;
                 }
             }
         }
-        return opcionesOk;
+        return opcionesAgregar;
     }
+
 
     public void agregarAseguradoContactoDeLaCuenta() {
         waitFor(opcionContactoDeCuenta).waitUntilPresent();
