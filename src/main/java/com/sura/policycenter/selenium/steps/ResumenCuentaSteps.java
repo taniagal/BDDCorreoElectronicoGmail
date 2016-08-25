@@ -68,4 +68,9 @@ public class ResumenCuentaSteps extends ScenarioSteps {
     public void validarCiudad(String ciudad) {
         opcionesResumenCuentaPage.validarCiudad(ciudad);
     }
+
+    @Step
+    public void validarInformacionOculta() {
+        opcionesResumenCuentaPage.validarInformacionOculta();
+    }
 }
