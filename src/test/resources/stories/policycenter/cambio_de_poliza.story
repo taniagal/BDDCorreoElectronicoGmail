@@ -1,6 +1,6 @@
 Meta:
 @issue #SUGWUSC-15127
-@Atomatizador Brayan s. Ruiz
+@Atomatizador Jonathan Mejia
 Sprint 5
 
 Narrative:
