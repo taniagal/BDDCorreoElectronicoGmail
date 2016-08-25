@@ -1,7 +1,9 @@
 Busqueda Actividades
 
 Meta:
-@issue #SUGWUSC-14986
+@issue #CDSEG-730
+@Automatizador Eliana Alvarez
+@Sprint 1
 
 Narrative:
 Como usuario PolicyCenter

@@ -100,7 +100,7 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
 
     public void validarTransaccionesDePolizaIndividual() {
         waitFor(tituloTransaccionesIndividual);
-        MatcherAssert.assertThat(tituloTransaccionesIndividual.getText(), Is.is(Matchers.equalTo("Transacciones de póliza del archivo de la cuenta")));
+        MatcherAssert.assertThat(tituloTransaccionesIndividual.getText(), Is.is(Matchers.equalTo("Transacciones de póliza individual")));
     }
 
     public void darClicEnElNumeroDePoliza() {
