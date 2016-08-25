@@ -22,8 +22,14 @@ public class ExpedirCambioDePolizaUWPEPSPage extends Commons{
     private WebElementFacade campoTipoDocumento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:DocumentNumber-inputEl']")
     private WebElementFacade campoNumeroDocumento;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:DocumentType-inputEl']")
+    private WebElementFacade campoTipoDocumentoModificacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:DocumentNumber-inputEl']")
+    private WebElementFacade campoNumeroDocumentoModificacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
     private WebElementFacade botonExpedirPoliza;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange-btnInnerEl']")
+    private WebElementFacade botonExpedirPolizaModificacion;
     @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']")
     private WebElementFacade tituloBloqueo;
     @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:0:ShortDescriptionAndSize-inputEl']")
@@ -38,17 +44,29 @@ public class ExpedirCambioDePolizaUWPEPSPage extends Commons{
     }
 
     public void validarFigurasIgualDNI(String tipoDocumento, String numeroDocumento) {
-        MatcherAssert.assertThat(campoTipoDocumento.getText(),Is.is(Matchers.equalTo(tipoDocumento)));
-        MatcherAssert.assertThat(campoNumeroDocumento.getText(),Is.is(Matchers.equalTo(numeroDocumento)));
+        waitUntil(1500);
+        if(campoTipoDocumento.isCurrentlyVisible()) {
+            withTimeoutOf(20,TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
+            MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(tipoDocumento)));
+            MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(numeroDocumento)));
+        }else if(campoTipoDocumentoModificacion.isCurrentlyVisible()) {
+            withTimeoutOf(20,TimeUnit.SECONDS).waitFor(campoTipoDocumentoModificacion).shouldBeVisible();
+            MatcherAssert.assertThat(campoTipoDocumentoModificacion.getText(), Is.is(Matchers.equalTo(tipoDocumento)));
+            MatcherAssert.assertThat(campoNumeroDocumentoModificacion.getText(), Is.is(Matchers.equalTo(numeroDocumento)));
+        }
     }
 
     public void emitirPoliza() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
+        waitUntil(1500);
+        if(botonExpedirPoliza.isCurrentlyVisible()){
+            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
+        }else if(botonExpedirPolizaModificacion.isCurrentlyVisible()){
+            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonExpedirPolizaModificacion).click();
+        }
     }
 
     public void irAPantallaUW() {
-        waitForTextToAppear("¿Está seguro de que desea expedir esta póliza?",5000);
-        waitUntil(1000);
+        waitUntil(2500);
         act.sendKeys(Keys.ENTER).build().perform();
         waitUntil(1500);
     }
@@ -59,21 +77,13 @@ public class ExpedirCambioDePolizaUWPEPSPage extends Commons{
     }
 
     public void validarMensajePEP(String mensaje) {
-
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mensajePEPTomador).shouldBeVisible();
         if(mensajePEPTomador.isPresent()) {
             boolean validacionMensaje = mensajePEPTomador.getText().contains(mensaje)||
                                         mensajePEPAsegurado.getText().contains(mensaje)||
                                         mensajePEPBeneficiario.getText().contains(mensaje);
             MatcherAssert.assertThat(validacionMensaje, Is.is(Matchers.equalTo(true)));
         }
-
-        /*if(mensajePEPTomador.isPresent()) {
-            MatcherAssert.assertThat(mensajePEPTomador.getText(), Matchers.containsString(mensaje));
-        }else if(mensajePEPAsegurado.isPresent()) {
-            MatcherAssert.assertThat(mensajePEPAsegurado.getText(), Matchers.containsString(mensaje));
-        }else if(mensajePEPBeneficiario.isPresent()) {
-            MatcherAssert.assertThat(mensajePEPBeneficiario.getText(), Matchers.containsString(mensaje));
-        }*/
     }
 
     public void validarConcatenacionMensaje(ExamplesTable texto) {

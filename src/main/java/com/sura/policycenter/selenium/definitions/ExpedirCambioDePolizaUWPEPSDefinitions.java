@@ -22,6 +22,11 @@ public class ExpedirCambioDePolizaUWPEPSDefinitions {
         cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(numeroCotizacion);
     }
 
+    @Given("existe una cotizacion <numeroCotizacion> la cual se va a modificar")
+    public void irAModificarCotizacion(@Named("numeroCotizacion") String numeroCotizacion){
+        cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(numeroCotizacion);
+    }
+
     @Given("el tomador <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS")
     public void validarTomadorPEP(@Named("tipoDocumento") String tipoDocumento,
                                        @Named("numeroDocumento") String numeroDocumento){
@@ -30,7 +35,13 @@ public class ExpedirCambioDePolizaUWPEPSDefinitions {
 
     @Given("el asegurado <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS")
     public void validarAseguradoPEP(@Named("tipoDocumento") String tipoDocumento,
-                                  @Named("numeroDocumento") String numeroDocumento){
+                                    @Named("numeroDocumento") String numeroDocumento){
+        expedirCambioDePolizaUWPEPSSteps.validar_Figuras_Igual_DNI(tipoDocumento, numeroDocumento);
+    }
+
+    @Given("el beneficiario <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS")
+    public void validarBeneficiarioPEP(@Named("tipoDocumento") String tipoDocumento,
+                                       @Named("numeroDocumento") String numeroDocumento){
         expedirCambioDePolizaUWPEPSSteps.validar_Figuras_Igual_DNI(tipoDocumento, numeroDocumento);
     }
 
