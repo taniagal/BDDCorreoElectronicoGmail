@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -10,6 +9,8 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class CambioDePolizaPage extends PageObject {
@@ -32,7 +33,8 @@ public class CambioDePolizaPage extends PageObject {
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PolicyInfo']")
     WebElementFacade informacionpoliza;
 
-
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    WebElementFacade btnInicio;
 
 
     public CambioDePolizaPage(WebDriver driver) {
@@ -41,12 +43,12 @@ public class CambioDePolizaPage extends PageObject {
 
 
     public void irAMenuAcciones() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuAcciones).waitUntilPresent();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(menuAcciones).waitUntilPresent();
         menuAcciones.click();
     }
 
     public void cambiarPoliza() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(opcionCambiarPoliza).waitUntilPresent();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(opcionCambiarPoliza).waitUntilPresent();
         opcionCambiarPoliza.click();
     }
 
@@ -62,5 +64,9 @@ public class CambioDePolizaPage extends PageObject {
     public void seleccionarInformacionPoliza() {
         waitFor(informacionpoliza).waitUntilPresent();
         informacionpoliza.click();
+    }
+
+    public void validarMensajeNoHayReaseguro() {
+        MatcherAssert.assertThat("Mensaje en reaseguro NO debe ser visible", !mensajeAdvertencia.isVisible());
     }
 }
