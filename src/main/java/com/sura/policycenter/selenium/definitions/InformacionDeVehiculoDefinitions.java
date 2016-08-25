@@ -44,7 +44,7 @@ public class InformacionDeVehiculoDefinitions {
         informacionDeVehiculoSteps.pasar_a_pagina_siguiente();
     }
 
-    @Then("Then el sistema NO debe permitir pasar a la siguinete pagina")
+    @Then("el sistema NO debe permitir pasar a la siguinete pagina")
     public void thenElSistemaNoDebepasar() {
         informacionDeVehiculoSteps.validar_campos_informacion_vehiculo();
     }

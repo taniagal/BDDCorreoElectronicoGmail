@@ -138,6 +138,11 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
         detalleDeAseguradoDeCotizacionSteps.validarMensajeDeIntegraciones(mensaje);
     }
 
+    @Then("muestre el mensaje de validacion del asegurado <mensaje> que viene de Riesgos Consultables")
+    public void validarMensajeRCC(@Named("mensaje") String mensaje){
+        detalleDeAseguradoDeCotizacionSteps.validarMensajeDeIntegraciones(mensaje);
+    }
+
     @Then("el boton recuperar mvr no es visible")
     public void validarBotonNoVisible(){
         detalleDeAseguradoDeCotizacionSteps.validarBotonNoVisible();

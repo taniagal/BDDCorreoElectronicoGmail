@@ -2,7 +2,9 @@ Resumen Cuenta
 
 Meta:
 
-@issue SUGWUSC-10130
+@issue #CDSEG-666
+@Automatizador Diego Cardona Acevedo
+@Sprint 2
 
 Narrative:
 Como usuario PolicyCenter
