@@ -6,7 +6,6 @@ Meta:
 @Atomatizador Jonathan Mejia
 Sprint 5
 
-
 Narrative:
 Como usuario de policy center
 Se requiere expedir la cotización para obtener el número de la póliza,con
