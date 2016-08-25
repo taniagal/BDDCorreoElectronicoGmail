@@ -2,7 +2,9 @@ Expedicion De Poliza
 
 Meta:
 
-@issue #SUGWUSC-15128
+@issue #SUGWUSC-15128, CDSEG-856
+@Automatizador Jonathan Mejia, Eliana Alvarez
+@Sprint 2
 
 Narrative:
 Como usuario de policy center

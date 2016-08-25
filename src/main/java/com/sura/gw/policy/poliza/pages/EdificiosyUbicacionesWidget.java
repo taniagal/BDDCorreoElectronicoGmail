@@ -5,18 +5,14 @@ import com.sura.commons.selenium.Commons;
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import org.hamcrest.MatcherAssert;
-import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
@@ -150,16 +146,16 @@ public class EdificiosyUbicacionesWidget extends Commons {
         inputCoberturaDeRiesgo.click();
     }
 
-    public void seleccionarCoberturaDeInformacionDeArticulo(String cobertura) {
-        waitForAnyTextToAppear(cobertura);
-        shouldContainText(cobertura);
-        String xpathTrCoberturaDeRiesgo = ".//tr[ (descendant::label[contains(., '" + cobertura + "')]) and @class='x-form-item-input-row' ]";
+    public void seleccionarTipoDeArticuloDeInformacionDeArticulo(String tipoArticulo) {
+        waitForAnyTextToAppear(tipoArticulo);
+        shouldContainText(tipoArticulo);
+        String xpathTrCoberturaDeRiesgo = ".//tr[ (descendant::label[contains(., '" + tipoArticulo + "')]) and @class='x-form-item-input-row' ]";
         WebElementFacade inputCoberturaDeRiesgo = findBy(xpathTrCoberturaDeRiesgo).find(By.tagName("input"));
         withAction().moveToElement(inputCoberturaDeRiesgo).perform();
         inputCoberturaDeRiesgo.click();
     }
 
-    public void ingresarValorAEntradaDeCobertura(String entrada, String valorEntrada) {
+    public void ingresarValorAEntrada(String entrada, String valorEntrada) {
         waitForAnyTextToAppear(entrada);
         shouldContainText(entrada);
         String xpathTREntrada = ".//tr[ (descendant::label[contains(., '" + entrada + "') ]) and @class='x-form-item-input-row' ]";
@@ -207,11 +203,11 @@ public class EdificiosyUbicacionesWidget extends Commons {
         return getRenderedView().containsText("Volver a Edificios y ubicaciones");
     }
 
-    public boolean estaSeleccionadaCoberturaDeInformacionDeArticulo(String cobertura) {
+    public boolean estaSeleccionadaTipoDeArticuloEnInformacionDeArticulo(String tipoArticulo) {
         Boolean estaSeleccionado;
-        waitForAnyTextToAppear(cobertura);
-        shouldContainText(cobertura);
-        String xpathTrCoberturaDeRiesgo = ".//tr[ (descendant::label[contains(., '" + cobertura + "')]) and @class='x-form-item-input-row' ]";
+        waitForAnyTextToAppear(tipoArticulo);
+        shouldContainText(tipoArticulo);
+        String xpathTrCoberturaDeRiesgo = ".//tr[ (descendant::label[contains(., '" + tipoArticulo + "')]) and @class='x-form-item-input-row' ]";
         WebElementFacade inputCoberturaDeRiesgo = findBy(xpathTrCoberturaDeRiesgo).find(By.tagName("input"));
 
         if ("-15px 0".equals(inputCoberturaDeRiesgo.getCssValue("background-position")) || "0px -15px".equals(inputCoberturaDeRiesgo.getCssValue("background-position"))){
@@ -229,14 +225,46 @@ public class EdificiosyUbicacionesWidget extends Commons {
         btnAgregarArticulo.click();
 
         enter(tipoArticulo).into($(".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']"));
-        enter(tipoArticulo).into($(".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']"));
-    }
+        waitFor(1).second();
+        $(".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']").sendKeys(Keys.ENTER);
+        esperarAQueElementoTengaValor(findBy(".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']"), tipoArticulo);
 
+        enter(tipoArticulo).into($(".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']"));
+        WebElementFacade divEntradasAgregarOtroArticulo = null;
+
+        if (cobertura.length() > 0){
+            if (isElementVisible(By.xpath(".//div[ (descendant::*[contains(., '" + cobertura + "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]"))){
+                divEntradasAgregarOtroArticulo = findBy(".//div[ (descendant::*[contains(., '" + cobertura + "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]");
+
+                String xpathTrCoberturaDeRiesgo = divEntradasAgregarOtroArticulo.findBy(".//tr[ (descendant::label[contains(., '" + cobertura + "')]) and @class='x-form-item-input-row' ]");
+                WebElementFacade inputCoberturaDeRiesgo = findBy(xpathTrCoberturaDeRiesgo).find(By.tagName("input"));
+                withAction().moveToElement(inputCoberturaDeRiesgo).perform();
+                inputCoberturaDeRiesgo.click();
+            }
+        } else {
+            if (isElementVisible(By.xpath(".//div[ (descendant::*[contains(., '" + entrada + "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]"))){
+                divEntradasAgregarOtroArticulo = findBy(".//div[ (descendant::*[contains(., '" + entrada + "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]");
+                WebElementFacade entradaOtroArticulo = divEntradasAgregarOtroArticulo.findBy(".//tr[ (descendant::label[contains(., '" + entrada + "')]) and @class='x-form-item-input-row' ]");
+                WebElementFacade inputValorEntrada = entradaOtroArticulo.find(By.tagName("input"));
+                enter(valorEntrada).into(inputValorEntrada);
+
+                // Para esta prueba no se toma en cuenta el indice variable desde el .story, ya que es irrelevante para esta prueba.
+                // TODO: 24/08/2016 Sin embargo esta pendiente de refactor que en entrada y valores sean varios por columna y hacer un split e ingresar las entradas
+                enter("1").into($(".//*[@id='AddOtherArticlesPopup:InputCoverageArticle:ArticleTypeDetailDV:VariableRate_Input-inputEl']"));
+            }
+        }
+
+
+
+        findBy(".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']").click();
+
+    }
+/*
     public void verificarMensajes(ExamplesTable mensajesEsperados) {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         for (Map<String, String> mensaje : mensajesEsperados.getRows()) {
             waitFor(divMensaje).shouldContainText(mensaje.get("MENSAJES_WORKSPACE"));
             MatcherAssert.assertThat("Error: en la validacion del mensaje " + mensaje.get("MENSAJES_WORKSPACE"), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
         }
-    }
+    }*/
 }

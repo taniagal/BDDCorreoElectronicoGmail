@@ -1,4 +1,10 @@
+Seleccion De Ofertas
+
 Meta:
+
+@issue CDSEG-1023
+@Automatizador Jennifer Perez
+@Sprint 2
 
 Narrative:
 Como usuario de Policy Center
@@ -8,10 +14,13 @@ para poder realizar una cotizacion sobre la misma
 Scenario: Opcion ofertas del menu ocultas
 GivenStories: stories/policycenter/login_policy.story
 Given inicio una nueva cotizacion
-When ingrese la cuenta <cuenta>, organizacion <organizacion> y agente <agente>
-And seleccione la linea de negocio de autos
+When ingrese la cuenta <cuenta>
+And seleccione el agente <agente>
+And seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el producto <producto> para expedir la poliza
 Then no debe mostrar el menu vertical <menu>
 
 Examples:
-|cuenta|organizacion|agente|menu|
-|C000888888|oficina bogota|100-002541|ofertas|
+| cuenta     | agente  | organizacion | canal             | producto | menu    |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Autos    | ofertas |
