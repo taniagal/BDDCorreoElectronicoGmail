@@ -84,6 +84,7 @@ public class ExpedicionDePolizaPage extends PageObject{
         commons.ingresarDato(menuNumeroCotizacion,cotizacion);
         menuNumeroCotizacion.sendKeys(Keys.ENTER);
         waitForTextToAppear("Cotización");
+        waitForTextToAppear(cotizacion);
     }
 
     public void expedirPoliza() {
