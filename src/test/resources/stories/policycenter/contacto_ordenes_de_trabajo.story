@@ -24,7 +24,7 @@ Examples:
 Scenario: Ver informacion de transacciones sin registros
 Given que voy a consultar un contacto
 And consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>
-When consulte las transacciones y no encuentre registros
+When consulte las transacciones del contacto
 Then se muestra el mensaje informativo de transaccion no encontrada <mensaje>
 
 Examples:
@@ -63,3 +63,13 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 Examples:
 |tipoContacto|nombre|apellido|filtroEstado|filtroTransaccion|filtroProducto|
 |CEDULA DE CIUDADANIA|Dorian|Eastmond|Todos|Todos|Autos|
+
+Scenario: validar que no se visualizan polizas hijas de una colectiva
+Given que voy a consultar un contacto
+And consulte  un contacto del tipo <tipoContacto> con transacciones como: <nombre> <apellido>
+When consulte las transacciones del contacto
+Then no debo ver la poliza <transaccion> asociada a una colectiva en las transacciones del contacto
+
+Examples:
+| tipoContacto         | nombre   | apellido | transaccion |
+| CEDULA DE CIUDADANIA | Yurledys | Gallego  | 34222225    |
