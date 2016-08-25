@@ -55,11 +55,6 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.validar_que_vuelve_a_la_ventana_de_cotizacion();
     }
 
-    @Then("cuando voy a expedir la poliza nuevamente permite expedir la poliza")
-    public void validarExpedicionDePolizaDespuesDeValidarRiesgos(){
-        expedicionDePolizaSteps.validar_que_permite_expedir_la_poliza_con_riesgos();
-    }
-
 
     @SuppressWarnings("EmptyMethod")
     @Then("debe enviar un mensaje a un buzon previamente configurado cuando existe un interes adicional riesgo consultable")

@@ -63,6 +63,9 @@ public class ExpedicionDePolizaPage extends PageObject{
 
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToCollectivePolicy-inputEl']")
     WebElementFacade linkIrAPolizaColectiva;
+
+    @FindBy(xpath = ".//img[@class='error_icon']")
+    WebElementFacade iconoError;
     
     Commons commons = new Commons(getDriver());
 
@@ -122,6 +125,7 @@ public class ExpedicionDePolizaPage extends PageObject{
             }
         }
         MatcherAssert.assertThat(contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
+        MatcherAssert.assertThat(iconoError.isVisible(), Is.is(Matchers.equalTo(true)));
     }
 
     public void cancelarExpedicionDeLaPoliza(String mensaje) {
