@@ -23,7 +23,7 @@ public class HistorialCuentaPage extends Commons {
     private WebElementFacade txtNumCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
     private WebElementFacade btnBuscarCuenta;
-    @FindBy(xpath="//tr[13]/td/div/span")
+    @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_History']/div")
     private WebElementFacade mnuHistorial;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
     private WebElementFacade btnMostrarRelacionadoCon;
