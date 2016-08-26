@@ -57,27 +57,27 @@ public class ExpedirCambioDePolizaUWPEPSPage extends Commons{
     }
 
     public void emitirPoliza() {
-        waitUntil(1500);
+        waitUntil(2000);
         if(botonExpedirPoliza.isCurrentlyVisible()){
-            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
+            withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
         }else if(botonExpedirPolizaModificacion.isCurrentlyVisible()){
-            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonExpedirPolizaModificacion).click();
+            withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonExpedirPolizaModificacion).click();
         }
     }
 
     public void irAPantallaUW() {
         waitUntil(2500);
         act.sendKeys(Keys.ENTER).build().perform();
-        waitUntil(1500);
+        waitUntil(2500);
     }
 
     public void verificarGeneracionUW() {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloBloqueo).shouldBePresent();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(tituloBloqueo).shouldBePresent();
         MatcherAssert.assertThat(tituloBloqueo.getText(),Is.is(Matchers.equalTo("Asuntos que bloquean la expedición")));
     }
 
     public void validarMensajePEP(String mensaje) {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mensajePEPTomador).shouldBeVisible();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mensajePEPTomador).shouldBeVisible();
         if(mensajePEPTomador.isPresent()) {
             boolean validacionMensaje = mensajePEPTomador.getText().contains(mensaje)||
                                         mensajePEPAsegurado.getText().contains(mensaje)||
