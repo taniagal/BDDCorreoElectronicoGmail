@@ -277,10 +277,10 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         campoPorcentajeParticipacionOtraTexto.sendKeys("40");
         listaAseguradora.click();
         commons.ingresarDato(campoAseguradora,"ALLIANZ SEGUROS S.A.");
-        /*Actions actions = new Actions(getDriver());
+        Actions actions = new Actions(getDriver());
         commons.waitUntil(1000);
         actions.sendKeys(Keys.TAB).build().perform();
-        actions.sendKeys(Keys.TAB).build().perform();*/
+        actions.sendKeys(Keys.TAB).build().perform();
     }
 
     public void darClicEnAceptarDeCoaseuguro() {
