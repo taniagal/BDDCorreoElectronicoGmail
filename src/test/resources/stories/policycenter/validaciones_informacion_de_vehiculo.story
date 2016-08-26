@@ -31,9 +31,9 @@ When vaya a agregar un vehiculo con los datos:
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                |
-|La placa T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.     |
-|El chasis CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. |
-|El motor AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.      |
+|T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.     |
+|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. |
+|AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.      |
 And debe permitir continuar la cotizacion
 
 Examples:

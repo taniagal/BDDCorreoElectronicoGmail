@@ -4,12 +4,15 @@ import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
-import com.sura.policycenter.selenium.steps.DetallesDeUbicacionSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.hamcrest.*;
-import org.hamcrest.core.StringContains;
-import org.jbehave.core.annotations.*;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
+import org.jbehave.core.annotations.Aliases;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +40,6 @@ public class EdificiosUbicaciones {
         // TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
 
         LOGGER.info("EdificiosUbicaciones.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
-
 
 
         // TODO: 04/08/2016 Capturar el rol desde el gherkin en i am Asesor
@@ -68,6 +70,7 @@ public class EdificiosUbicaciones {
 
             edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo);
         }
+
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
 
@@ -127,9 +130,9 @@ public class EdificiosUbicaciones {
     @Then("espero ver mensajes de advertencia indicandome la direccion es un riesgo consultable")
     public void entoncesEsperoVerMensajeDeAdvertenciaQueUbicacionEsRiesgoConsultable() {
         for (String mensaje : polizaSteps.espacioDeTrabajo()){
-            MatcherAssert.assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
+            assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
                     mensaje,
-                    StringContains.containsString("La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
+                    containsString("La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
                     ));
         }
 
@@ -143,7 +146,13 @@ public class EdificiosUbicaciones {
             "se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados"
     })
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
-        edificiosUbicacionesSteps.verificar_mensajes(mensajesEsperados);
+        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
+
+        for (Map<String,String> mensajes : mensajesEsperados.getRows()) {
+            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
+            assertThat(mensajesWSList, hasItemContainsString(mensaje));
+        }
+
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
 
