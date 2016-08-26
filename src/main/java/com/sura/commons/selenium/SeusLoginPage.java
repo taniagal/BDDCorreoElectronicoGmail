@@ -54,7 +54,7 @@ public class SeusLoginPage extends Commons {
                 this.pais.selectByVisibleText(pais);
                 this.usuario.type(usuario);
                 this.contrasenia.type(contrasenia);
-                btnSubmit.click();
+                this.btnSubmit.click();
             }
         }
         resetImplicitTimeout();
