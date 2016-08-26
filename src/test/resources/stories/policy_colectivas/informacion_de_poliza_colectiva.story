@@ -103,3 +103,19 @@ Then debo ver la ventana de coaseguro con los datos diligenciados
 When de clic en Cancelar de la edicion de coaseguro
 And de clic en la opcion eliminar de coaseguro
 Then debo ver nuevamente el link de agregar coaseguro
+
+Scenario: validar mensajes de retroactividad cuando esta sobrepasa la cantidad de dias permitidos
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> de poliza colectiva para expedirla
+When cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+Then me debe mostrar el mensaje <mensaje> indicando que no cumple con la retroactividad permitida
+
+Examples:
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto | numeroDias | masomenos | mensaje                                                                              |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Autos    | 61         | menos     | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Autos    | 61         | mas       | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |

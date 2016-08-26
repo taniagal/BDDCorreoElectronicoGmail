@@ -194,6 +194,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void ingresarDescuentoPoliza(String descuento) {
+        waitFor(descuentoPoliza);
         descuentoPoliza.clear();
         descuentoPoliza.sendKeys(descuento);
     }
@@ -217,14 +218,14 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         validarMensaje(mensajeDescuento, mensaje);
     }
 
-    public void ingresarFechaInicioInvalidaParaRetroactividad(String sesentaDias) {
+    public void ingresarFechaInicioInvalidaParaRetroactividad(String sesentaDias, int dias) {
         LocalDateTime nuevaFechaInicio;
         if ("menos".equals(sesentaDias)) {
-            nuevaFechaInicio = LocalDateTime.now().minusMonths(2).minusDays(1);
+            nuevaFechaInicio = LocalDateTime.now().minusDays(dias+1);
             fechaInicioVigencia.clear();
             fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
         } else {
-            nuevaFechaInicio = LocalDateTime.now().plusMonths(2).plusDays(1);
+            nuevaFechaInicio = LocalDateTime.now().plusDays(dias+1);
             fechaInicioVigencia.clear();
             fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
         }

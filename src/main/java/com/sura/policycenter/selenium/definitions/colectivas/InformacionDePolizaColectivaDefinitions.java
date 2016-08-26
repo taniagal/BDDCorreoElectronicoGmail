@@ -34,10 +34,10 @@ public class InformacionDePolizaColectivaDefinitions {
         informacionDePolizaColectivaSteps.cambiarLaFechaDeInicioDeVigencia();
     }
 
-    @Pending
-    @When("cambie la fecha de inicio de vigencia de la poliza colectiva mas de 60 dias  hacia atrás o 60 hacia adelante <sesentaDias>")
-    public void cambiarLaFechaDeInicioDeVigenciaSesentaDias(@Named("sesentaDias") String sesentaDias){
-        informacionDePolizaColectivaSteps.cambiarLaFechaDeInicioDeVigenciaSesentaDias(sesentaDias);
+    @When("cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual")
+    public void cambiarLaFechaDeInicioDeVigenciaSesentaDias(@Named("numeroDias") String numeroDias,
+                                                            @Named("masomenos") int masomenos){
+        informacionDePolizaColectivaSteps.cambiarLaFechaDeInicioDeVigenciaSesentaDias(numeroDias, masomenos);
     }
 
     @When("de clic en boton siguiente para pasar al siguiente paso de la poliza colectiva")
@@ -47,6 +47,11 @@ public class InformacionDePolizaColectivaDefinitions {
 
     @When("ingrese el porcentaje de descuento invalido <porcentaje>")
     public void ingresarPorcentajeDeDescuentoDeLaPoliza(@Named("porcentaje") String porcentaje){
+        informacionDePolizaColectivaSteps.ingresarPorcentajeDeDescuentoDeLaPoliza(porcentaje);
+    }
+
+    @When("ingrese el porcentaje de descuento valido <porcentaje>")
+    public void ingresarPorcentajeDeDescuentoValidoDeLaPoliza(@Named("porcentaje") String porcentaje){
         informacionDePolizaColectivaSteps.ingresarPorcentajeDeDescuentoDeLaPoliza(porcentaje);
     }
 

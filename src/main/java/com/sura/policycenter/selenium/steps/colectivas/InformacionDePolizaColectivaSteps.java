@@ -46,8 +46,8 @@ public class InformacionDePolizaColectivaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void cambiarLaFechaDeInicioDeVigenciaSesentaDias(String sesentaDias) {
-        informacionDePolizaColectivaPage.ingresarFechaInicioInvalidaParaRetroactividad(sesentaDias);
+    public void cambiarLaFechaDeInicioDeVigenciaSesentaDias(String sesentaDias, int dias) {
+        informacionDePolizaColectivaPage.ingresarFechaInicioInvalidaParaRetroactividad(sesentaDias, dias);
     }
 
     @Step
