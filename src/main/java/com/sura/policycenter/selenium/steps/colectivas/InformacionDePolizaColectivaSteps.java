@@ -124,4 +124,9 @@ public class InformacionDePolizaColectivaSteps extends ScenarioSteps{
     public void clicEnUnTomadorDeLaPoliza(String tomador) {
         informacionDePolizaColectivaPage.clicEnUnTomadorDeLaPoliza(tomador);
     }
+
+    @Step
+    public void validarFechaFinVigenciaPolizaColectivaAutos() {
+        informacionDePolizaColectivaPage.validarFechaFinVigenciaPolizaColectivaAutos();
+    }
 }

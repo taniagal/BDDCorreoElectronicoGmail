@@ -339,4 +339,8 @@ public class InformacionDePolizaColectivaPage extends PageObject {
             nombreSegundoLink.click();
         }
     }
+
+    public void validarFechaFinVigenciaPolizaColectivaAutos() {
+        MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().plusYears(1).toString(MM_DD_YYYY))));
+    }
 }

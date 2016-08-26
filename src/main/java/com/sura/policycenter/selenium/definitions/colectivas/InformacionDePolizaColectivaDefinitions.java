@@ -130,6 +130,11 @@ public class InformacionDePolizaColectivaDefinitions {
         informacionDePolizaColectivaSteps.validarEliminacionDeCoaseguro();
     }
 
+    @Then("debo ver la fecha de fin de vigencia de un ano para poliza de autos")
+    public void validarFechaFinVigenciaPolizaColectivaAutos(){
+        informacionDePolizaColectivaSteps.validarFechaFinVigenciaPolizaColectivaAutos();
+    }
+
 
 }
 

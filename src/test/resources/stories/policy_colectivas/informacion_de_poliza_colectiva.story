@@ -116,6 +116,22 @@ When cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha a
 Then me debe mostrar el mensaje <mensaje> indicando que no cumple con la retroactividad permitida
 
 Examples:
-| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto | numeroDias | masomenos | mensaje                                                                              |
-| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Autos    | 61         | menos     | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
-| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Autos    | 61         | mas       | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto     | numeroDias | masomenos | mensaje                                                                              |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos   | 61         | menos     | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos   | 61         | mas       | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+
+
+Scenario: validar fecha fin de vigencia a un ano para poliza de autos hija
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> de poliza colectiva para expedirla
+And cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+And de clic en agregar riesgo para ir a la ventana de riesgos
+And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
+And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
+And seleccione la cuenta consultada para agregar al riesgo
+Then debo ver la fecha de fin de vigencia de un ano para poliza de autos
