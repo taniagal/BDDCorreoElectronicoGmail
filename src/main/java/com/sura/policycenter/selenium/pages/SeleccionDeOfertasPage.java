@@ -2,6 +2,9 @@ package com.sura.policycenter.selenium.pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -27,18 +30,11 @@ public class SeleccionDeOfertasPage extends PageObject {
         super(driver);
     }
 
-    public void ingresarDatosInicialesCotizacion(String cuenta, String organizacion, String agente) {
-        waitABit(1000);
+    public void ingresarDatosInicialesCotizacion(String cuenta) {
+        waitFor(txtNumeroCuenta);
         txtNumeroCuenta.sendKeys(cuenta);
         txtNumeroCuenta.sendKeys(Keys.TAB);
-        waitABit(1000);
-        txtOrganizacion.sendKeys(organizacion);
-        txtOrganizacion.sendKeys(Keys.TAB);
-        waitABit(1000);
-        txtCodigoAgente.clear();
-        txtCodigoAgente.sendKeys(agente);
-        txtCodigoAgente.sendKeys(Keys.TAB);
-        waitABit(1000);
+        waitForTextToAppear("YURLEDYS");
     }
 
     public void seleccionarLineaPA() {
@@ -47,6 +43,6 @@ public class SeleccionDeOfertasPage extends PageObject {
     }
 
     public void validarVisibilidadMenu(String menu) {
-        mnuOfertas.shouldNotBeVisible();
+        MatcherAssert.assertThat(mnuOfertas.isVisible(), Is.is(Matchers.equalTo(false)));
     }
 }

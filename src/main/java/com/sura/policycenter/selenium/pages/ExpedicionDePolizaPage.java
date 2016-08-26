@@ -63,6 +63,9 @@ public class ExpedicionDePolizaPage extends PageObject{
 
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToCollectivePolicy-inputEl']")
     WebElementFacade linkIrAPolizaColectiva;
+
+    @FindBy(xpath = ".//img[@class='error_icon']")
+    WebElementFacade iconoError;
     
     Commons commons = new Commons(getDriver());
 
@@ -81,6 +84,7 @@ public class ExpedicionDePolizaPage extends PageObject{
         commons.ingresarDato(menuNumeroCotizacion,cotizacion);
         menuNumeroCotizacion.sendKeys(Keys.ENTER);
         waitForTextToAppear("Cotización");
+        waitForTextToAppear(cotizacion);
     }
 
     public void expedirPoliza() {
@@ -97,7 +101,8 @@ public class ExpedicionDePolizaPage extends PageObject{
 
     public void validarResumenDeLaPolizaExpedida(String infoCotizacion, String infoPoliza, String admorCotizacion,
                                                  String nuevaCotizacion, String escritorio) {
-        withTimeoutOf(8, TimeUnit.SECONDS).waitFor(ExpectedConditions.visibilityOf(campoNumeroCotizacion));
+        waitForTextToAppear("Cotización Expedida", 30000);
+        waitFor(campoNumeroCotizacion);
         MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacion)));
         MatcherAssert.assertThat(campoNumeroPoliza.getText(), Is.is(Matchers.containsString(infoPoliza)));
         MatcherAssert.assertThat(campoAdministradorDeCotizaciones.getText(), Is.is(Matchers.equalTo(admorCotizacion)));
@@ -121,6 +126,7 @@ public class ExpedicionDePolizaPage extends PageObject{
             }
         }
         MatcherAssert.assertThat(contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
+        MatcherAssert.assertThat(iconoError.isVisible(), Is.is(Matchers.equalTo(true)));
     }
 
     public void cancelarExpedicionDeLaPoliza(String mensaje) {

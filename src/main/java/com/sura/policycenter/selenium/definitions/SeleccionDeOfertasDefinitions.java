@@ -22,11 +22,9 @@ public class SeleccionDeOfertasDefinitions {
         seleccionDeOfertasSteps.iniciarCotizacion();
     }
 
-    @When("ingrese la cuenta <cuenta>, organizacion <organizacion> y agente <agente>")
-    public void ingresarDatosInicialesCotizacion(@Named("cuenta") String cuenta,
-                                                 @Named("organizacion") String organizacion,
-                                                 @Named("agente") String agente) {
-        seleccionDeOfertasSteps.ingresarDatosInicialesCotizacion(cuenta, organizacion, agente);
+    @When("ingrese la cuenta <cuenta>")
+    public void ingresarDatosInicialesCotizacion(@Named("cuenta") String cuenta) {
+        seleccionDeOfertasSteps.ingresarDatosInicialesCotizacion(cuenta);
     }
 
     @When("seleccione la linea de negocio de autos")

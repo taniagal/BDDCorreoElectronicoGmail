@@ -45,6 +45,8 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     private WebElementFacade filtroProducto;
     @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:message:InfoMessage_ExtDV:message']")
     private WebElementFacade msjTransaccionNoEncontrada;
+    @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']")
+    private WebElementFacade tablaTransaccionesDeContacto;
 
     public ContactoOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);
@@ -143,5 +145,18 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     public void validarMensaje(String mensaje) {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(msjTransaccionNoEncontrada).waitUntilPresent();
         MatcherAssert.assertThat(msjTransaccionNoEncontrada.getText(), Matchers.containsString(mensaje));
+    }
+
+    public void validarTransaccionNoExistentePolizaColectiva(String transaccion) {
+        waitFor(tablaTransaccionesDeContacto);
+        List<WebElement> allRows = tablaTransaccionesDeContacto.findElements(By.tagName("tr"));
+        String existeTransaccion = "No existe la póliza";
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if(transaccion.equals(cells.get(3).getText())){
+                existeTransaccion = "Se encontró la póliza en las transacciones";
+            }
+        }
+        MatcherAssert.assertThat("No existe la póliza", Is.is(Matchers.equalTo(existeTransaccion)));
     }
 }

@@ -2,7 +2,9 @@ Direcciones De Contacto Vinculadas
 
 Meta:
 
-@issue #SUGWUSC-14987
+@issue #CDSEG-732, CDSEG-876
+@Automatizador Eliana Alvarez
+@Sprint 3
 
 Narrative:
 Como usuario PolicyCenter

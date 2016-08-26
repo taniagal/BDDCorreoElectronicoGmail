@@ -77,6 +77,7 @@ public class DetallesDeUbicacionPage extends Commons {
     }
 
     public void  seleccionarProducto(String nomProducto) {
+        waitForTextToAppear(nomProducto);
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
         waitUntil(1000);
