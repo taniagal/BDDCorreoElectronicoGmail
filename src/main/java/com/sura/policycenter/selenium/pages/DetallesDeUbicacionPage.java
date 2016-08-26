@@ -112,11 +112,9 @@ public class DetallesDeUbicacionPage extends Commons {
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
         selectItem(comboBoxOrganizacion,dato.get("organizacion"));
-        waitFor(ExpectedConditions.textToBePresentInElementValue(comboBoxOrganizacionW,dato.get("organizacion")));
-        waitUntil(800);
+        waitForComboValue(comboBoxOrganizacionW,dato.get("organizacion"));
         selectItem(comboBoxCanal,dato.get("canal"));
-        waitFor(ExpectedConditions.textToBePresentInElementValue(comboBoxCanalW,dato.get("canal")));
-        waitUntil(800);
+        waitForComboValue(comboBoxCanalW,dato.get("canal"));
         seleccionarProducto(dato.get("producto"));
     }
 
@@ -130,9 +128,9 @@ public class DetallesDeUbicacionPage extends Commons {
         campoTxtDireccion.sendKeys(direccion);
         this.direccion = direccion;
         selectItem(comboBoxDepartamento,departamento);
-        waitUntil(3000);
+        waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);
-        waitUntil(2000);
+        waitForComboValue(comboBoxCiudad,ciudad);
     }
 
     public void setUbicacion(String descripcion, String actividad){

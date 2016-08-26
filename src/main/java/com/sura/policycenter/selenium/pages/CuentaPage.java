@@ -88,11 +88,11 @@ public class CuentaPage extends Commons {
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitUntil(3500);
+        waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);
-        waitUntil(3000);
+        waitForComboValue(comboBoxCiudad,ciudad);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        waitUntil(1000);
+        waitForComboValue(comboBoxTipoDireccionNuevaCuentaPersonal,tipoDireccion);
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
