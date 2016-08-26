@@ -110,6 +110,7 @@ public class Commons extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+
     public void waitUntil(int millis) {
         Integer i = 0;
         Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
@@ -118,7 +119,6 @@ public class Commons extends PageObject {
         try {
             wait.until(new Function<Integer, Boolean>() {
                 public Boolean apply(Integer i) {
-
                     return false;
                 }
             });
@@ -126,27 +126,30 @@ public class Commons extends PageObject {
         }
     }
 
+
     public  void verificarMensaje(WebElementFacade divMensaje, String mensaje){
         withTimeoutOf(28, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
     }
 
+
     public List<WebElementFacade> getLista(String locator) {
         return findAll(locator);
     }
+
 
     public WebElementFacade esperarElemento(final String xpath) {
         Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(20, TimeUnit.SECONDS)
                 .pollingEvery(5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
-
         return espera.until(new Function<WebDriver, WebElementFacade>() {
             public WebElementFacade apply(WebDriver driver) {
                 return findBy(xpath);
             }
         });
     }
+
 
     public void ingresarDato(WebElementFacade elemento, String dato){
         do {
@@ -156,5 +159,10 @@ public class Commons extends PageObject {
             waitFor(elemento).shouldContainText("");
             elemento.sendKeys(dato);
         }while (!elemento.getValue().equals(dato));
+    }
+
+    public void waitForComboValue(WebElementFacade element, String value ){
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element,value));
+        waitUntil(2000);
     }
 }

@@ -96,7 +96,7 @@ public class CoaseguroPage extends Commons {
     }
 
     public void verificarCoaseguro() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
         MatcherAssert.assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
 
