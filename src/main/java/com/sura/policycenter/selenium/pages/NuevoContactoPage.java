@@ -46,11 +46,11 @@ public class NuevoContactoPage extends Commons {
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
     private WebElementFacade comboBoxCiudad;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade comboBoxDepartamento2;
+    private WebElementFacade comboBoxDepartamentoEdit;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
-    private WebElementFacade comboBoxCiudad2;
+    private WebElementFacade comboBoxCiudadEdit;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
-    private WebElementFacade tipoDireccion2;
+    private WebElementFacade comboBoxTipoDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade direccion2;
 
@@ -84,20 +84,20 @@ public class NuevoContactoPage extends Commons {
     public void ingresarDireccionDepartamenteYCiudad(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(4000);
+        waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(1500);
+        waitForComboValue(comboBoxCiudad,ciudad);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
         waitABit(2000);
         direccion2.sendKeys(direccion);
-        selectItem(comboBoxDepartamento2,departamento);
-        waitABit(4000);
-        selectItem(comboBoxCiudad2,ciudad);
-        waitABit(2000);
-        selectItem(tipoDireccion2,tipoDireccion);
-        waitABit(1500);
+        selectItem(comboBoxDepartamentoEdit,departamento);
+        waitForComboValue(comboBoxDepartamentoEdit,departamento);
+        selectItem(comboBoxCiudadEdit,ciudad);
+        waitForComboValue(comboBoxCiudadEdit,ciudad);
+        selectItem(comboBoxTipoDireccion, tipoDireccion);
+        waitForComboValue(comboBoxTipoDireccion,tipoDireccion);
     }
 
     public void actualizarPersonaNatural(String primerNombre) {

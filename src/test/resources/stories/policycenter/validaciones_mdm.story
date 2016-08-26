@@ -17,7 +17,7 @@ Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
 |razon_social|tipo_documento                |tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|
-|KONAMI      |IDENT. FISCAL PARA EXTRANJEROS|Vivienda       |CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 |
+|KONAMI      |IDENT. FISCAL PARA EXTRANJEROS|Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |
 
 
 
@@ -30,8 +30,8 @@ Then no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
 |razon_social|documento|tipo_documento|tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|mensaje|
-|NO SE SABE  |NIT      |NIT           |Vivienda       |CALLE 32B #08-45|Antioquia   |Medellin|Sura               |INT-3 |Razón social: "NO SE SABE" no es válido|
-|NONONONONO  |NIT      |NIT           |Vivienda       |CALLE 32B #08-45|Antioquia   |Medellin|Sura               |INT-3 |Razón social: Existen letras o palabras repetidas, no se permiten palabras iguales seguidas o más de 2 letras iguales seguidas. Por favor valide el contenido "NONONONONO".|
+|NO SE SABE  |NIT      |NIT           |Vivienda       |CALLE 32B #08-45|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |Razón social: "NO SE SABE" no es válido|
+|NONONONONO  |NIT      |NIT           |Vivienda       |CALLE 32B #08-45|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |Razón social: Existen letras o palabras repetidas, no se permiten palabras iguales seguidas o más de 2 letras iguales seguidas. Por favor valide el contenido "NONONONONO".|
 
 
 
@@ -44,7 +44,7 @@ Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
 |razon_social|tipo_documento|tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|
-|CAMI-LO     |NIT           |Vivienda       |CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 |
+|CAMI-LO     |NIT           |Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |
 
 
 
@@ -58,7 +58,7 @@ Then no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
 |razon_social|documento|tipo_documento|nombre_comercial|tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|mensaje|
-|KONAMI      |NIT      |NIT           |+KJHJHB         |Vivienda       |CALLE 32B #08-45|Antioquia   |Medellin|Sura               |INT-3 |Nombre comercial: Sólo se permiten ingresar letras, números y los siguientes caracteres (espacio, (.), (&), (|), ("), ('), (/), ($), (-), (()), (\) (,), (#)). Nombre comercial: Existen letras o palabras repetidas, no se permiten palabras iguales seguidas o más de 2 letras iguales seguidas. Por favor valide el contenido "+KJHJHB".|
+|KONAMI      |NIT      |NIT           |+KJHJHB         |Vivienda       |CALLE 32B #08-45|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |Nombre comercial: Sólo se permiten ingresar letras, números y los siguientes caracteres (espacio, (.), (&), (|), ("), ('), (/), ($), (-), (()), (\) (,), (#)). Nombre comercial: Existen letras o palabras repetidas, no se permiten palabras iguales seguidas o más de 2 letras iguales seguidas. Por favor valide el contenido "+KJHJHB".|
 
 
 
@@ -72,7 +72,7 @@ Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
 |razon_social   |tipo_documento|tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|telefono_oficina  |
-|ELECTRONIC ARTS|NIT           |Vivienda       |CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 |5554142 ext. 12345|
+|ELECTRONIC ARTS|NIT           |Vivienda       |CALLE 54B #50-25|ANTIOQUIA   |MEDELLIN|Sura               |INT-3 |5554142 ext. 12345|
 
 
 Scenario: Crear una cuenta para un contacto persona natural con numero de nombre erroneo (validaciones MDM)
