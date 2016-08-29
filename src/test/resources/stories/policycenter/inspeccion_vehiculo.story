@@ -44,3 +44,11 @@ And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fa
 Examples:
 |numCuenta  |organizacion|canal             |nomProducto|placa |valorAsegurado|
 |C000888888 |Sura        |Canal Tradicional |Autos      |MJK289|21800000.00   |
+
+Scenario: Consultar inspeccion valida en SIA
+Given que voy a buscar la cuenta <numCuenta>
+When estoy expidiendo una poliza de autos
+And seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And ingrese una nueva cotizacion para vehiculo <nomProducto>
+And el vehiculo tenga inspeccion
