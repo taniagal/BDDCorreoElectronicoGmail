@@ -343,4 +343,12 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void validarFechaFinVigenciaPolizaColectivaAutos() {
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().plusYears(1).toString(MM_DD_YYYY))));
     }
+
+    public void validarFechaFinVigenciaPolizaColectivaCommercial(int numeroDias) {
+        MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().minusDays(numeroDias).plusYears(1).toString(MM_DD_YYYY))));
+    }
+
+    public void validarFechaInicioVigenciaMenorALaPolizaMadre(String mensaje) {
+        this.validarMensaje(mensajeRetroactividad, mensaje + " (" + LocalDateTime.now().plusDays(1).toString(MM_DD_YYYY) + ")");
+    }
 }

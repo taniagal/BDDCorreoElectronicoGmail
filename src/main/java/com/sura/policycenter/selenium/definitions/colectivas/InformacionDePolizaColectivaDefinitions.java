@@ -135,6 +135,16 @@ public class InformacionDePolizaColectivaDefinitions {
         informacionDePolizaColectivaSteps.validarFechaFinVigenciaPolizaColectivaAutos();
     }
 
+    @Then("debo ver la fecha de fin de vigencia de la poliza hija igual a la fecha de fin de vigencia de la poliza madre <numeroDias>")
+    public void validarFechaFinVigenciaPolizaColectivaCommercial(@Named("numeroDias") int numeroDias){
+        informacionDePolizaColectivaSteps.validarFechaFinVigenciaPolizaColectivaCommercial(numeroDias);
+    }
+
+    @Then("me debe mostrar el mensaje <mensaje> indicando que la fecha de inicio de vigencia no puede ser menor a la fecha de la poliza madre")
+    public void validarFechaInicioVigenciaMenorALaPolizaMadre(@Named("mensaje") String mensaje){
+        informacionDePolizaColectivaSteps.validarFechaInicioVigenciaMenorALaPolizaMadre(mensaje);
+    }
+
 
 }
 

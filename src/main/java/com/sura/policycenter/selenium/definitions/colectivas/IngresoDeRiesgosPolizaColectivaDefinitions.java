@@ -79,6 +79,11 @@ public class IngresoDeRiesgosPolizaColectivaDefinitions {
         ingresoDeRiesgosPolizaColectivaSteps.validarInformacionDePolizaPA(infoPoliza);
     }
 
+    @When("vaya a informacion de poliza del riesgo")
+    public void irAInformacionDePoliza(){
+        ingresoDeRiesgosPolizaColectivaSteps.irAInformacionDePoliza();
+    }
+
     @When("seleccione el riesgo <riesgo> para ver el detalle")
     public void seleccionarUnRiesgoParaVerDetalle(@Named("riesgo") String riesgo){
         ingresoDeRiesgosPolizaColectivaSteps.seleccionarRiesgoAConsultar(riesgo);

@@ -109,6 +109,11 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     }
 
     @Step
+    public void irAInformacionDePoliza(){
+        opcionesInformacionPolizaPage.irAInformacionDePoliza();
+    }
+
+    @Step
     public void seleccionarRiesgoAConsultar(String riesgo) {
         ingresoDeRiesgosPolizaColectivaPages.seleccionarRiesgoAConsultar(riesgo);
     }

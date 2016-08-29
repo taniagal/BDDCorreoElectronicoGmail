@@ -134,4 +134,51 @@ And de clic en agregar riesgo para ir a la ventana de riesgos
 And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
 And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
 And seleccione la cuenta consultada para agregar al riesgo
+And vaya a informacion de poliza del riesgo
 Then debo ver la fecha de fin de vigencia de un ano para poliza de autos
+
+Examples:
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto     | numeroDias | masomenos |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos   | 60         | menos     |
+
+Scenario: validar fecha fin de vigencia para la poliza hija igual a la poliza madre
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> de poliza colectiva para expedirla
+And cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+And de clic en agregar riesgo para ir a la ventana de riesgos
+And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
+And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
+And seleccione la cuenta consultada para agregar al riesgo
+And vaya a informacion de poliza del riesgo
+Then debo ver la fecha de fin de vigencia de la poliza hija igual a la fecha de fin de vigencia de la poliza madre <numeroDias>
+
+Examples:
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | numeroDias | masomenos |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet          | 30         | menos     |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | 30         | menos     |
+
+Scenario: validar fecha inicio de vigencia de la poliza hija no sea menor a la fecha de inicio de vigencia de la poliza madre
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> de poliza colectiva para expedirla
+And cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+And de clic en agregar riesgo para ir a la ventana de riesgos
+And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
+And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
+And seleccione la cuenta consultada para agregar al riesgo
+And vaya a informacion de poliza del riesgo
+And quiera agregar un asegurado
+Then me debe mostrar el mensaje <mensaje> indicando que la fecha de inicio de vigencia no puede ser menor a la fecha de la poliza madre
+
+Examples:
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | numeroDias | masomenos | mensaje                                                                                                        |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | 1          | mas       | La fecha inicio de vigencia del riesgo no puede ser menor a la fecha inicio de vigencia de la póliza colectiva |
