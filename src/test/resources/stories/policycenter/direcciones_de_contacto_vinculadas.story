@@ -51,7 +51,7 @@ Then la direccion debe quedar estandarizada <direccionEstandarizada> del contact
 
 Examples:
 |numeroCuenta|direccionSinEstandarizar|direccionEstandarizada|nombreContacto|
-|C000484848|Carrera 65 48 162|CR 65 # 48 - 162|RICARDO GIRALDO|
+|C000484848|CARRERA 65 48 162|CR 65 # 48 - 162|RICARDO GIRALDO|
 
 Scenario: consultar direccion de un contacto que tiene una direccion asociada a otro contacto
 Given que me encuentro en los contactos de una cuenta <numeroCuenta>
