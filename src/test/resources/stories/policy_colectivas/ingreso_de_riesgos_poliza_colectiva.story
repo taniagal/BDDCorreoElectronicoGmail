@@ -20,6 +20,7 @@ And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
 And ingrese el porcentaje de descuento valido <porcentaje>
+And actualice la poliza colectiva
 And de clic en agregar riesgo para ir a la ventana de riesgos
 And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
 And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
@@ -66,6 +67,7 @@ And ingrese los datos para crear un contacto tipo persona natural
 And valide la informacion de la poliza individual
 | tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador                 | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal             | tipoPoliza       | tipoPlazo | oficina | agente | descuento | aniosVigencia |
 | CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS PAOLA GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Sura         | Canal Tradicional | Commercial Fleet | Anual     | SURA    | 4999DIRECTO   | 0         | 1             |
+And actualice la poliza colectiva
 And quiera agregar un asegurado
 And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | nombre         | tipoDocumento        | numeroDocumento |

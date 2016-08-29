@@ -544,5 +544,19 @@ public class OpcionesInformacionPolizaPage extends Commons {
         MatcherAssert.assertThat(polizaFinanciada.isVisible(), Is.is(Matchers.equalTo(false)));
         resetImplicitTimeout();
     }
+
+    public void validarFechaFinVigenciaPolizaColectivaAutos() {
+        MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().plusYears(1).toString(MM_DD_YYYY))));
+    }
+
+    public void validarFechaFinVigenciaPolizaColectivaCommercial(int numeroDias) {
+        MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().minusDays(numeroDias).plusYears(1).toString(MM_DD_YYYY))));
+    }
+
+    public void validarFechaInicioVigenciaMenorALaPolizaMadre(String mensaje) {
+        WebElementFacade mensajeFechaInicioColectiva = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div");
+        MatcherAssert.assertThat(mensajeFechaInicioColectiva.getText(), Matchers.containsString(mensaje + " (" + LocalDateTime.now().plusDays(1).toString(MM_DD_YYYY) + ")"));
+    }
+
 }
 

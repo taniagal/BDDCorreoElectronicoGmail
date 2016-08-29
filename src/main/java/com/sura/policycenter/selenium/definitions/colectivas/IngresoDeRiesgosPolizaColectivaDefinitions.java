@@ -89,6 +89,11 @@ public class IngresoDeRiesgosPolizaColectivaDefinitions {
         ingresoDeRiesgosPolizaColectivaSteps.seleccionarRiesgoAConsultar(riesgo);
     }
 
+    @When("actualice la poliza colectiva")
+    public void actualizarPolizaColectiva(){
+        ingresoDeRiesgosPolizaColectivaSteps.clicEnActualizarInformacionDePolizaColectiva();
+    }
+
     @Then("se debe visualizar la opcion de ir a la poliza colectiva de la nueva poliza creada")
     public void validarOpcionIrAPolizaColectiva(){
         ingresoDeRiesgosPolizaColectivaSteps.validarOpcionIrAPolizaColectiva();

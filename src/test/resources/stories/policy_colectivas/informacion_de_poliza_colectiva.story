@@ -113,6 +113,7 @@ And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
 When cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+And actualice la poliza colectiva
 Then me debe mostrar el mensaje <mensaje> indicando que no cumple con la retroactividad permitida
 
 Examples:
@@ -130,6 +131,7 @@ And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
 And cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+And actualice la poliza colectiva
 And de clic en agregar riesgo para ir a la ventana de riesgos
 And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
 And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
@@ -150,6 +152,7 @@ And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
 And cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+And actualice la poliza colectiva
 And de clic en agregar riesgo para ir a la ventana de riesgos
 And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
 And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
@@ -171,6 +174,7 @@ And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
 And cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+And actualice la poliza colectiva
 And de clic en agregar riesgo para ir a la ventana de riesgos
 And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
 And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>

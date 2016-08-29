@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.definitions.colectivas;
 
 
 import com.sura.policycenter.selenium.steps.colectivas.InformacionDePolizaColectivaSteps;
+import com.sura.policycenter.selenium.steps.colectivas.IngresoDeRiesgosPolizaColectivaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
@@ -18,6 +19,8 @@ public class InformacionDePolizaColectivaDefinitions {
 
     @Steps
     InformacionDePolizaColectivaSteps informacionDePolizaColectivaSteps;
+    @Steps
+    IngresoDeRiesgosPolizaColectivaSteps ingresoDeRiesgosPolizaColectivaSteps;
 
     @When("seleccione el producto <producto> de poliza colectiva para expedirla")
     public void seleccionarProductoDePolizaColectiva(@Named("producto") String producto){
@@ -35,9 +38,9 @@ public class InformacionDePolizaColectivaDefinitions {
     }
 
     @When("cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual")
-    public void cambiarLaFechaDeInicioDeVigenciaSesentaDias(@Named("numeroDias") String numeroDias,
-                                                            @Named("masomenos") int masomenos){
-        informacionDePolizaColectivaSteps.cambiarLaFechaDeInicioDeVigenciaSesentaDias(numeroDias, masomenos);
+    public void cambiarLaFechaDeInicioDeVigenciaSesentaDias(@Named("numeroDias") int numeroDias,
+                                                            @Named("masomenos") String masomenos){
+        informacionDePolizaColectivaSteps.cambiarLaFechaDeInicioDeVigenciaSesentaDias(masomenos, numeroDias);
     }
 
     @When("de clic en boton siguiente para pasar al siguiente paso de la poliza colectiva")
@@ -132,17 +135,17 @@ public class InformacionDePolizaColectivaDefinitions {
 
     @Then("debo ver la fecha de fin de vigencia de un ano para poliza de autos")
     public void validarFechaFinVigenciaPolizaColectivaAutos(){
-        informacionDePolizaColectivaSteps.validarFechaFinVigenciaPolizaColectivaAutos();
+        ingresoDeRiesgosPolizaColectivaSteps.validarFechaFinVigenciaPolizaColectivaAutos();
     }
 
     @Then("debo ver la fecha de fin de vigencia de la poliza hija igual a la fecha de fin de vigencia de la poliza madre <numeroDias>")
     public void validarFechaFinVigenciaPolizaColectivaCommercial(@Named("numeroDias") int numeroDias){
-        informacionDePolizaColectivaSteps.validarFechaFinVigenciaPolizaColectivaCommercial(numeroDias);
+        ingresoDeRiesgosPolizaColectivaSteps.validarFechaFinVigenciaPolizaColectivaCommercial(numeroDias);
     }
 
     @Then("me debe mostrar el mensaje <mensaje> indicando que la fecha de inicio de vigencia no puede ser menor a la fecha de la poliza madre")
     public void validarFechaInicioVigenciaMenorALaPolizaMadre(@Named("mensaje") String mensaje){
-        informacionDePolizaColectivaSteps.validarFechaInicioVigenciaMenorALaPolizaMadre(mensaje);
+        ingresoDeRiesgosPolizaColectivaSteps.validarFechaInicioVigenciaMenorALaPolizaMadre(mensaje);
     }
 
 

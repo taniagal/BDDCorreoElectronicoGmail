@@ -222,11 +222,11 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void ingresarFechaInicioInvalidaParaRetroactividad(String sesentaDias, int dias) {
         LocalDateTime nuevaFechaInicio;
         if ("menos".equals(sesentaDias)) {
-            nuevaFechaInicio = LocalDateTime.now().minusDays(dias+1);
+            nuevaFechaInicio = LocalDateTime.now().minusDays(dias);
             fechaInicioVigencia.clear();
             fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
         } else {
-            nuevaFechaInicio = LocalDateTime.now().plusDays(dias+1);
+            nuevaFechaInicio = LocalDateTime.now().plusDays(dias);
             fechaInicioVigencia.clear();
             fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
         }
@@ -351,6 +351,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void validarFechaInicioVigenciaMenorALaPolizaMadre(String mensaje) {
-        this.validarMensaje(mensajeRetroactividad, mensaje + " (" + LocalDateTime.now().plusDays(1).toString(MM_DD_YYYY) + ")");
+        WebElementFacade mensajeFechaInicioColectiva = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div");
+        this.validarMensaje(mensajeFechaInicioColectiva, mensaje + " (" + LocalDateTime.now().plusDays(1).toString(MM_DD_YYYY) + ")");
     }
 }

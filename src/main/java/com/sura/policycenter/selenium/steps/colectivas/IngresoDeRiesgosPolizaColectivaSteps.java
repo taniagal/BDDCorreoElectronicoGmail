@@ -117,4 +117,23 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     public void seleccionarRiesgoAConsultar(String riesgo) {
         ingresoDeRiesgosPolizaColectivaPages.seleccionarRiesgoAConsultar(riesgo);
     }
+
+    public void clicEnActualizarInformacionDePolizaColectiva() {
+        ingresoDeRiesgosPolizaColectivaPages.clicEnActualizarInformacionDePolizaColectiva();
+    }
+
+    @Step
+    public void validarFechaFinVigenciaPolizaColectivaAutos() {
+        opcionesInformacionPolizaPage.validarFechaFinVigenciaPolizaColectivaAutos();
+    }
+
+    @Step
+    public void validarFechaFinVigenciaPolizaColectivaCommercial(int numeroDias) {
+        opcionesInformacionPolizaPage.validarFechaFinVigenciaPolizaColectivaCommercial(numeroDias);
+    }
+
+    @Step
+    public void validarFechaInicioVigenciaMenorALaPolizaMadre(String mensaje) {
+        opcionesInformacionPolizaPage.validarFechaInicioVigenciaMenorALaPolizaMadre(mensaje);
+    }
 }
