@@ -90,6 +90,7 @@ public class Servicios extends MetodosComunes{
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
     }
+
     @After
     public void tearDown() throws Exception {
         driver.quit();

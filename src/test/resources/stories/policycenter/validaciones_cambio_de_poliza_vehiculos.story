@@ -44,8 +44,8 @@ And presione el boton de emitir la poliza
 Then no se debe permitir continuar con la expedicion y debe mostrar el siguiente mensaje de error <mensaje>
 
 Examples:
-|cotizacion|mensaje                                                                                |
-|55555556  |Por política de la compañía no esta permitido vehículos que circulen en esta ubicación.|
+|cotizacion|mensaje                                                                                   |
+|55555556  |Por política de la compañía no esta permitido asegurar este tipo de vehículo en esta zona.|
 
 Scenario: Validar marca no permitida
 Given se ha realizado la cotizacion de la modificacion <cotizacion>
