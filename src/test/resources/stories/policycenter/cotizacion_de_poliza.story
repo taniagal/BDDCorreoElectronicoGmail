@@ -50,7 +50,7 @@ Then se debe mostrar un mensaje <mensaje> de advertencia sin bloquear la cotizac
 
 Examples:
 |cotizacion|mensaje|
-|22270002  |es un riesgo no estándar y debe ser autorizado|
+|22270002  |es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
 
 Scenario: Riesgos consultables - Chasis - Bloqueo
 Given he realizado la cotizacion <cotizacion>
