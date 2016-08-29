@@ -17,6 +17,7 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.LocalDateTime;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -276,8 +277,11 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         campoPorcentajeParticipacionOtra.click();
         campoPorcentajeParticipacionOtraTexto.sendKeys("40");
         listaAseguradora.click();
-        campoAseguradora.clear();
-        campoAseguradora.sendKeys("Axxa");
+        commons.ingresarDato(campoAseguradora,"ALLIANZ SEGUROS S.A.");
+        Actions actions = new Actions(getDriver());
+        commons.waitUntil(1000);
+        actions.sendKeys(Keys.TAB).build().perform();
+        actions.sendKeys(Keys.TAB).build().perform();
     }
 
     public void darClicEnAceptarDeCoaseuguro() {
@@ -286,10 +290,8 @@ public class InformacionDePolizaColectivaPage extends PageObject {
 
     public void validarLinksDeCoaseguroVisiblesYHabilitados(){
         waitForTextToAppear("Información de la póliza colectiva");
-        linkEditarCoaseguro.shouldBeVisible();
-        linkEditarCoaseguro.shouldBeEnabled();
-        linkEliminarCoaseguro.shouldBeVisible();
-        linkEliminarCoaseguro.shouldBeEnabled();
+        linkEditarCoaseguro.waitUntilPresent();
+        linkEliminarCoaseguro.waitUntilPresent();
     }
 
     public void clicEnEliminarCoaseguro(){
@@ -311,7 +313,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void validarPantallaDeEdicion(){
         MatcherAssert.assertThat(campoPorcentajeParticipacionSura.getText(), containsText("60"));
         MatcherAssert.assertThat(campoPorcentajeParticipacionOtra.getText(), containsText("40"));
-        MatcherAssert.assertThat(listaAseguradora.getText(), containsText("Axxa"));
+        MatcherAssert.assertThat(listaAseguradora.getText(), containsText("ALLIANZ SEGUROS S.A."));
     }
 
     public void clicEnCancelarDeCoaseguro(){
