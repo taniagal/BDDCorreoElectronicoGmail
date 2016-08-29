@@ -38,4 +38,11 @@ public class ExpedicionDePolizaMrcBloqueoAlertaDefinitions {
         expedicionDePolizaMrcBloqueoAlertaSteps.valida_mensaje_de_advertencia(mensaje);
     }
 
+    @When("voy a expedir una poliza que modifique")
+    public void expedirPolizaModificada() {
+        expedicionDePolizaMrcBloqueoAlertaSteps.click_en_aceptar_poliza();
+    }
+
+
+
 }

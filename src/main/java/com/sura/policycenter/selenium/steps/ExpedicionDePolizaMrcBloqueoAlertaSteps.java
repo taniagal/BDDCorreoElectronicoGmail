@@ -26,5 +26,10 @@ public class ExpedicionDePolizaMrcBloqueoAlertaSteps extends ScenarioSteps {
 
     public void valida_mensaje_de_advertencia(String mensaje) {
         expedicionDePolizaMrcBloqueoAlertaPage.validarMensaje(mensaje);
+        expedicionDePolizaMrcBloqueoAlertaPage.cancelar();
+    }
+
+    public void click_en_aceptar_poliza() {
+        expedicionDePolizaMrcBloqueoAlertaPage.clickAceptarDespuesDeModificada();
     }
 }

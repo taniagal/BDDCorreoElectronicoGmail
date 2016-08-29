@@ -8,7 +8,6 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +28,14 @@ public class ExpedicionDePolizaMrcBloqueoAlertaPage extends Commons {
 
     @FindBy(xpath = ".//img[@class='warning_icon']")
     WebElementFacade iconoAdvertencia;
+
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Cancel-btnInnerEl']")
+    WebElementFacade btnCancelar;
+
+    @FindBy(xpath =".//a[contains(.,'Expedir póliza')] ")
+    WebElementFacade btnExpedir;
+
+
 
     public ExpedicionDePolizaMrcBloqueoAlertaPage(WebDriver driver) {
         super(driver);
@@ -59,6 +66,13 @@ public class ExpedicionDePolizaMrcBloqueoAlertaPage extends Commons {
         }
         MatcherAssert.assertThat(contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
         MatcherAssert.assertThat(iconoAdvertencia.isVisible(), Is.is(Matchers.equalTo(true)));
-        JOptionPane.showMessageDialog(null, iconoAdvertencia.isVisible());
+    }
+
+    public void cancelar() {
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnCancelar).waitUntilEnabled();
+    }
+
+    public void clickAceptarDespuesDeModificada() {
+        btnExpedir.click();
     }
 }

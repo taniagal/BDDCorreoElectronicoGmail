@@ -24,10 +24,11 @@ Examples:
 
 Scenario: regla de negocio, estado en cotizacion, bloqueo de expedicion de asegurados nuevos
 Given Que tengo una cotizacion <cotizacion> modificada
-When voy a expedir una poliza
+When voy a expedir una poliza que modifique
 And confirmo el mensaje de expedir poliza
 Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 
 Examples:
-|cotizacion|mensaje1|
+|cotizacion|mensaje|
 |55555562  |GLADYS OCHOA con CEDULA DE CIUDADANIA - 94372371 es un riesgo no estándar y debe ser autorizado.^ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado.|
+
