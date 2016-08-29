@@ -2,7 +2,9 @@ Cuentas Asociadas A Contacto
 
 Meta:
 
-@issue #SUGWUSC-10590
+@issue #CDSEG-976
+@Automatizador Eliana Alvarez
+@Sprint 1
 
 Narrative:
 como usuario

@@ -24,15 +24,15 @@ And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
 And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
 And seleccione la cuenta consultada para agregar al riesgo
 And valide la informacion de la poliza individual
-| tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador           | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal   | tipoPoliza  | tipoPlazo | oficina | agente      | descuento | aniosVigencia |
-| CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Bancolombia  | Leasing | Autos Banca | Anual     | SURA    | 4999        | 0         | 1             |
+| tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador                 | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal   | tipoPoliza  | tipoPlazo | oficina | agente        | descuento | aniosVigencia |
+| CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS PAOLA GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Bancolombia  | Leasing | Autos Banca | Anual     | SURA    | 4999DIRECTO   | 0         | 1             |
 And quiera agregar un asegurado
 And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | nombre                  | tipoDocumento | numeroDocumento |
 | VARIEDADES YURLEDYS S.A | NIT           | 9202086744      |
 And vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor    |valor_asegurado|descuento|
-|ZAX740|2016  |00606031        |MEDELLIN          |Particular       |AAA1450  |AAA1450  |$255,900,000.00|null     |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor   | valor_asegurado | descuento | zona |
+| ZAX740 | 2016   | 00606031         | MEDELLIN           | Particular        | AAA1450 | AAA1450 | $255,900,000.00 | null      | 2    |
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
@@ -63,15 +63,15 @@ And ingrese los datos para crear un contacto tipo persona natural
 | tipoDocumento        | numeroDocumento | nombre | apellido | fechaNacimiento | departamento | ciudad   | direccion        | tipoDireccion |organizacionCuenta|agenteCuenta|
 | CEDULA DE CIUDADANIA | 1037500160      |        |          | 01/01/1990      | ANTIOQUIA    | MEDELLIN | CARRERA 10 11 12 | Vivienda      |SURA              |4999DIRECTO |
 And valide la informacion de la poliza individual
-| tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador           | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal             | tipoPoliza       | tipoPlazo | oficina | agente      | descuento | aniosVigencia |
-| CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Sura         | Canal Tradicional | Commercial Fleet | Anual     | SURA    | 4999        | 0         | 1             |
+| tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador                 | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal             | tipoPoliza       | tipoPlazo | oficina | agente | descuento | aniosVigencia |
+| CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS PAOLA GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Sura         | Canal Tradicional | Commercial Fleet | Anual     | SURA    | 4999DIRECTO   | 0         | 1             |
 And quiera agregar un asegurado
 And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | nombre         | tipoDocumento        | numeroDocumento |
 | ELIANA ALVAREZ | CEDULA DE CIUDADANIA | 1037500160      |
 And vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor    |valor_asegurado|descuento|
-|ZAZ741|2016  |00606031        |MEDELLIN          |Particular       |AAA1451  |AAA1452  |$255,900,000.00|null     |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor   | valor_asegurado | descuento | zona |
+| ZAZ741 | 2016   | 00606031         | MEDELLIN           | Particular        | AAA1451 | AAA1452 | $255,900,000.00 | null      | 2    |
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion

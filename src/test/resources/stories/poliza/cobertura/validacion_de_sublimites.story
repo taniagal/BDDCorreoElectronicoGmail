@@ -25,11 +25,11 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal)
 | MENSAJES_WORKSPACE                                                                                                                                                    |
-| El "Sublimite sustraccion sin violencia dentro de predios" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".                          |
-| El "Sublimite sustraccion con violencia de bienes fuera de predios" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".                 |
-| El "Sublimite sustraccion sin violencia de bienes fuera de predios" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".                 |
-| El "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ".  |
-| El "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual al valor de "Valor asegurado sustraccion con violencia ". |
+| El "Sublimite sustraccion sin violencia dentro de predios" deber ser menor o igual al "Valor asegurado sustraccion con violencia ".                          |
+| El "Sublimite sustraccion con violencia de bienes fuera de predios" deber ser menor o igual al "Valor asegurado sustraccion con violencia ".                 |
+| El "Sublimite sustraccion sin violencia de bienes fuera de predios" deber ser menor o igual al "Valor asegurado sustraccion con violencia ".                 |
+| El "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al "Valor asegurado sustraccion con violencia ".  |
+| El "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual al "Valor asegurado sustraccion con violencia ". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
@@ -73,7 +73,7 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                                |
-| El "Sublimite sustraccion con violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
+| El valor de "Sublimite sustraccion con violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
@@ -112,12 +112,12 @@ Meta:
 As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustraccion sin violencia de bienes fuera de predios                 | 11             |
+| TAB                      | TIPO_ARTICULO                         | COBERTURA        | ENTRADAS                                                       | VALOR_ENTRADAS |
+| Coberturas del Riesgo    |                                       | Sustraccion      | Sublimite sustraccion sin violencia de bienes fuera de predios | 12             |
 When haga clic en el boton Aceptar
 Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                                |
-| El "Sublimite sustraccion sin violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
+| El valor de "Sublimite sustraccion sin violencia de bienes fuera de predios" deber ser menor o igual a la sumatoria de los valores asegurables de "Equipo electrónico móvil y/o portátil". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
@@ -152,7 +152,7 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-@Pending true
+
 
 As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
@@ -162,7 +162,7 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                             |
-| El "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual a la sumatoria de los valores asegurables de "Dinero en efectivo". |
+| El valor de "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual a la sumatoria de los valores asegurables de "Dinero en efectivo". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
@@ -206,14 +206,14 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                             |
-| El "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al valor de "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte". |
+| El "Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte" deber ser menor o igual al "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22221237        | Asesor     |             |
 
-##
+
 
 Scenario: Sublimite deterioro de bienes refigerados por rotura maquinaria (coberturas del riesgo)
 Meta:
@@ -252,10 +252,12 @@ Meta:
 As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO | COBERTURA             | ENTRADAS                                                                       | VALOR_ENTRADAS |
-| Coberturas del Riesgo    |               | Danos materiales      | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria       | 11             |
-| Información de Artículos |               | Existencias Flotantes | Valor asegurado máximo                                                         | 11             |
-| Información de Artículos |               | Existencias fijas     | Valor Asegurable                                                               | 11             |
+| TAB                      | TIPO_ARTICULO         | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
+| Coberturas del Riesgo    |                       | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 11             |
+| Información de Artículos | Existencias Flotantes | Danos materiales | Valor asegurado danos materiales                                         | 2              |
+| Información de Artículos | Existencias fijas     | Danos materiales | Valor asegurado danos materiales                                         | 2             |
+| Información de Artículos | Existencias Flotantes |                  | Valor asegurado máximo                                                   | 11             |
+| Información de Artículos | Existencias fijas     |                  | Valor Asegurable                                                         | 11             |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                                                                            |
@@ -275,26 +277,20 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-@Pending true
+
 
 As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO  | COBERTURA                             | ENTRADAS                                                                 | VALOR_ENTRADAS |
-| Coberturas del Riesgo    |                | Danos materiales                      | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 9              |
-| Información de Artículos |                | Edificios                             | Valor Reconstrucción                                                     | 2              |
-| Información de Artículos |                | Maquinaria y equipo                   | Valor Asegurable                                                         | 2              |
-| Información de Artículos |                | Equipo electrónico móvil y/o portátil | Valor Asegurable                                                         | 2              |
-| Información de Artículos |                | Dinero en Efectivo                    | Valor Asegurable                                                         | 2              |
-| Información de Artículos |                | Equipo electrónico fijo               | Valor Asegurable                                                         | 2              |
-| Información de Artículos |                | Muebles y enseres                     | Valor Asegurable                                                         | 2              |
-| Información de Artículos |                | Existencias Flotantes                 | Valor asegurado máximo                                                   | 2              |
-| Información de Artículos |                | Existencias fijas                     | Valor Asegurable                                                         | 2              |
-| Otros Articulos          | Animales vivos |                                       | Valor Asegurable                                                         | 4              |
+| TAB                      | TIPO_ARTICULO       | COBERTURA | ENTRADAS                                                                 | VALOR_ENTRADAS |
+| Coberturas del Riesgo    | Danos materiales    |           | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 9              |
+| Información de Artículos | Edificios           |           | Valor Reconstrucción                                                     | 2              |
+| Información de Artículos | Maquinaria y equipo |           | Valor Asegurable                                                         | 2              |
+| Otros Articulos          | Animales vivos      |           | Valor Asegurable                                                         | 4              |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                     |
-| El "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " deber ser menor o igual al "40.0%" de la sumatoria de los valores asegurables de "todos los articulos". |
+| El valor de "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " deber ser menor o igual al "40.0%" de la sumatoria de los valores asegurables de "todos los articulos". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 
 Examples:
@@ -319,4 +315,262 @@ And ingrese el porcentaje para el MRCBRefrigRotMaqLimSubUbic en la columna Perce
 And guarde los cambios y suba dichos cambios al servidor
 Then debe poner cambiar el porcentaje del parametro
 
+Scenario: Cobertura de terremoto para suelos y terrenos (categoría otros)
 
+Meta:
+@Story CDSEG-844
+@URL https://jira.suramericana.com.co/browse/CDSEG-844
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@Sprint 5
+
+
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Información de Artículos | Edificios         |           | Valor Reconstrucción                                                                 | 100            |
+| Otros Articulos          | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 100            |
+| Otros Articulos          | Suelos y Terrenos |           | Valor Asegurable                                                                     | 25             |
+When haga clic en el boton Aceptar
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                     |
+| El valor de "Terremoto - Artículo: Suelos y Terrenos:" deber ser menor o igual al "20.0%" de la sumatoria de los valores asegurables de "todos los articulos". |
+
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |
+
+Scenario: Cobertura de terremoto para suelos y terrenos - máximo 1.000 millones
+
+Meta:
+@Story CDSEG-844
+@URL https://jira.suramericana.com.co/browse/CDSEG-844
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@Sprint 5
+
+
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Información de Artículos | Edificios         |           | Valor Reconstrucción                                                                 | 1000000000     |
+| Otros Articulos          | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000000     |
+When haga clic en el boton Aceptar
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                     |
+| El valor asegurado de la cobertura "Terremoto - Artículo: Suelos y Terrenos:" debe ser menor o igual a "1000000000.00" de pesos |
+
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |
+
+
+Scenario: Cobertura de terremoto para suelos y terrenos - Edificio obligatorio
+
+Meta:
+@Story CDSEG-844
+@URL https://jira.suramericana.com.co/browse/CDSEG-844
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@Sprint 5
+
+
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Otros Articulos          | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000000     |
+When haga clic en el boton Aceptar
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                     |
+| Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio". |
+
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |
+
+
+Scenario: Parametro de 1,000 millones y 20%
+Meta:
+@Story CDSEG-844
+@URL https://jira.suramericana.com.co/browse/CDSEG-844
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@manual
+@Sprint 5
+
+Given Estoy ingresando la información de coberturas a nivel de riesgo
+When Quiera cambiar el valor de 1,000 millones a otro valor o quiera cambiar el valor del 20% a otro valor
+Then Se cambie simplemente en una tabla de parámetros. Estos valores no deben estar quemados en el código.
+
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |
+
+
+Scenario: Sublímite de pérdidas de contenidos en tanques (Coberturas del riesgo)
+
+Meta:
+@Story CDSEG-767
+@URL https://jira.suramericana.com.co/browse/CDSEG-767
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@Sprint 5
+@Pending true
+
+
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO         | COBERTURA        | ENTRADAS                                       | VALOR_ENTRADAS |
+| Otros Articulos          | Mercancías a granel   |                  | Valor Asegurable                               | 10             |
+| Información de Artículos | Existencias Flotantes |                  | Valor asegurado máximo                         | 10             |
+| Información de Artículos | Existencias fijas     |                  | Valor Asegurable                               | 10             |
+| Coberturas del Riesgo    |                       | Danos materiales | Sublimite para perdida de contenido en tanques | 31             |
+When haga clic en el boton Aceptar
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                     |
+||
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |
+
+
+Scenario: Portadores externos de datos (Coberturas del riesgo)
+
+Meta:
+@Story CDSEG-767
+@URL https://jira.suramericana.com.co/browse/CDSEG-767
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@Sprint 5
+
+
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                   | TIPO_ARTICULO | COBERTURA                    | ENTRADAS                                     | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               | Portadores externos de datos | Valor asegurado portadores externos de datos | 11             |
+When haga clic en el boton Aceptar
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                     |
+| Para poder seleccionar el "Valor asegurado portadores externos de datos " debe tener asegurado "Equipo electrónico fijo" |
+
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |
+
+
+Scenario: Gastos por arrendamiento de sistema electrónico de procesamiento de datos (Coberturas del riesgo)
+
+Meta:
+@Story CDSEG-767
+@URL https://jira.suramericana.com.co/browse/CDSEG-767
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@Sprint 5
+@Pending true
+
+
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                   | TIPO_ARTICULO | COBERTURA                                                                 | ENTRADAS                                                                                  | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               | Gastos por arrendamiento de sistema electrónico de procesamiento de datos | Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos | 11             |
+When haga clic en el boton Aceptar
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                     |
+| Para poder seleccionar el "Gastos por arrendamiento de sistema electrónico de procesamiento de datos" debe tener asegurado "Equipo electrónico fijo" |
+
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |
+
+
+
+Scenario: Sublimite todo riesgo construccion y|o todo riesgo montaje dentro de los predios asegurados (Coberturas del riesgo) - Porcentaje
+
+Meta:
+@Story CDSEG-767
+@URL https://jira.suramericana.com.co/browse/CDSEG-767
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@Sprint 5
+
+
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO       | COBERTURA                                      | ENTRADAS                                                                                          | VALOR_ENTRADAS |
+| Información de Artículos | Edificios           |                                                | Valor Reconstrucción                                                                              | 50             |
+| Información de Artículos | Maquinaria y equipo |                                                | Valor Asegurable                                                                                  | 46             |
+| Otros Articulos          | Animales vivos      |                                                | Valor Asegurable                                                                                  | 4              |
+| Coberturas del Riesgo    |                     | Todo riesgo construcción y todo riesgo montaje | Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados | 11             |
+When haga clic en el boton Aceptar
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                     |
+|  |
+
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |
+
+
+Scenario: Sublímites menores a valor asegurado daños (coberturas a nivel de riesgo)
+
+Meta:
+@Story CDSEG-767
+@URL https://jira.suramericana.com.co/browse/CDSEG-767
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@Sprint 5
+
+
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO | COBERTURA        | ENTRADAS                                                                                                                                               | VALOR_ENTRADAS |
+| Información de Artículos | Edificios     |                  | Valor Reconstrucción                                                                                                                                   | 200            |
+| Información de Artículos | Edificios     | Danos materiales | Valor asegurado danos materiales                                                                                                                       | 51             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria                                                                               | 52             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para derrame de materiales en fusion                                                                                                         | 52             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para perdida de contenido en tanques                                                                                                         | 52             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para gastos para la obtencion de licencias y permisos para reconstruir el inmueble asegurado                                                 | 52             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para gastos adicionales por concepto de horas extras, trabajo nocturno y en feriados, flete expreso, flete aereo y gastos de viaje y estadia | 52             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para bienes de propiedad de directores y empleados                                                                                           | 52             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para gastos para la reposicion de documentos                                                                                                 | 52             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para gastos para demostrar la ocurrencia y la cuantia del siniestro                                                                          | 52             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para gastos por honorarios profesionales                                                                                                     | 52             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para gastos para la remocion de escombros                                                                                                    | 52             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para gastos para la preservacion de bienes y extincion del siniestro                                                                         | 52             |
+| Coberturas del Riesgo    |               | Sustraccion      | Sublimite para gastos asociados a la ocurrencia de una perdida                                                                                         | 52             |
+When haga clic en el boton Aceptar
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                     |
+| El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| El valor del "Sublimite para derrame de materiales en fusion" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| El valor del "Sublimite para perdida de contenido en tanques" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| El valor del "Sublimite para gastos para la obtencion de licencias y permisos para reconstruir el inmueble asegurado" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| El valor del "Sublimite para gastos adicionales por concepto de horas extras, trabajo nocturno y en feriados, flete expreso, flete aereo y gastos de viaje y estadia" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| El valor del "Sublimite para bienes de propiedad de directores y empleados" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| El valor del "Sublimite para gastos para la reposicion de documentos" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| El valor del "Sublimite para gastos para demostrar la ocurrencia y la cuantia del siniestro" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| El valor del "Sublimite para gastos por honorarios profesionales" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| El valor del "Sublimite para gastos para la remocion de escombros" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| El valor del "Sublimite para gastos para la preservacion de bienes y extincion del siniestro" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+| El valor del "Sublimite para gastos asociados a la ocurrencia de una perdida" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
+
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22221237        | Asesor     |             |

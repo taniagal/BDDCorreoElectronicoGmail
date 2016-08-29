@@ -265,8 +265,9 @@ public class  DetallesContactoPage extends Commons {
      * Valida si los datos ingresados es igual al que se muestran en el detalle
      */
     public void verificarActualizacion(){
-        waitUntil(2000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtSegundoNombre).shouldBePresent();
+        waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
+        //waitUntil(2000);
+        waitFor(campoTxtSegundoNombre).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlContact[2].equals(campoTxtSegundoNombre.getText()))
             right.append("segundo nombre,");
@@ -296,7 +297,8 @@ public class  DetallesContactoPage extends Commons {
     }
 
     public void verificarActualizacionJuridico(){
-        waitUntil(2000);
+        waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
+        //waitUntil(2000);
         waitFor(comboBoxActividadComercial).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
