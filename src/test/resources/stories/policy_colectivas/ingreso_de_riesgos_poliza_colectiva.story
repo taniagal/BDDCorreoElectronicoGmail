@@ -31,8 +31,8 @@ And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | nombre                  | tipoDocumento | numeroDocumento |
 | VARIEDADES YURLEDYS S.A | NIT           | 9202086744      |
 And vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor    |valor_asegurado|descuento|
-|ZAX740|2016  |00606031        |MEDELLIN          |Particular       |AAA1450  |AAA1450  |$255,900,000.00|null     |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor   | valor_asegurado | descuento | zona |
+| ZAX740 | 2016   | 00606031         | MEDELLIN           | Particular        | AAA1450 | AAA1450 | $255,900,000.00 | null      | 2    |
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
@@ -70,8 +70,8 @@ And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | nombre         | tipoDocumento        | numeroDocumento |
 | ELIANA ALVAREZ | CEDULA DE CIUDADANIA | 1037500160      |
 And vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor    |valor_asegurado|descuento|
-|ZAZ741|2016  |00606031        |MEDELLIN          |Particular       |AAA1451  |AAA1452  |$255,900,000.00|null     |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor   | valor_asegurado | descuento | zona |
+| ZAZ741 | 2016   | 00606031         | MEDELLIN           | Particular        | AAA1451 | AAA1452 | $255,900,000.00 | null      | 2    |
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
