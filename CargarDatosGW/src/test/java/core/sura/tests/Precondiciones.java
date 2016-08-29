@@ -68,12 +68,20 @@ public class Precondiciones extends MetodosComunes{
     public void login(String usuario ,String contrasenia) {
         System.out.println(baseUrl + "/pc/PolicyCenter.do");
         driver.get(baseUrl + "/pc/PolicyCenter.do");
-        driver.findElement(By.xpath(".//*[@id='country']")).sendKeys("Colombia");
-        driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys(usuario);
-        driver.findElement(By.xpath(".//*[@id='password']")).clear();
-        driver.findElement(By.xpath(".//*[@id='password']")).sendKeys(contrasenia);
-        driver.findElement(By.xpath(".//*[@id='lower']/input")).click();
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        if (driver.findElements(By.xpath(".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")).size() > 0) {
+            driver.findElement(By.xpath(".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")).sendKeys("su");
+            driver.findElement(By.xpath(".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")).sendKeys("gw");
+            driver.findElement(By.xpath(".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")).click();
+        } else {
+            driver.findElement(By.xpath(".//*[@id='country']")).sendKeys("Colombia");
+            driver.findElement(By.id("username")).clear();
+            driver.findElement(By.id("username")).sendKeys(usuario);
+            driver.findElement(By.xpath(".//*[@id='password']")).clear();
+            driver.findElement(By.xpath(".//*[@id='password']")).sendKeys(contrasenia);
+            driver.findElement(By.xpath(".//*[@id='lower']/input")).click();
+        }
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
     }
 
