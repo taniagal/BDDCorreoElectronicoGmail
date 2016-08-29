@@ -24,8 +24,8 @@ public class SeleccionDeOfertasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresarDatosInicialesCotizacion(String cuenta, String organizacion, String agente) {
-        seleccionDeOfertasPage.ingresarDatosInicialesCotizacion(cuenta, organizacion, agente);
+    public void ingresarDatosInicialesCotizacion(String cuenta) {
+        seleccionDeOfertasPage.ingresarDatosInicialesCotizacion(cuenta);
     }
 
     @Step

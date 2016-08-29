@@ -60,8 +60,7 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
 
     public void seleccionarBotonAceptarParteSuperiorIzquierda() {
         try {
-            findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).shouldBeVisible();
-            findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).shouldBeEnabled();
+            findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).waitUntilVisible().waitUntilClickable();
             findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).click();
         }catch (Exception e) {
             LOGGER.info("ELEMENTO NO CLICKLEABLE" + e);

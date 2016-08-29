@@ -8,10 +8,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class ExpedicionDePolizaSteps extends ScenarioSteps {
 
-    public ExpedicionDePolizaSteps(Pages pages){
-        super(pages);
-    }
-
     ExpedicionDePolizaPage expedicionDePolizaPage;
 
     @Step
@@ -33,7 +29,12 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     public void validar_resumen_de_la_poliza_expedida(String infoCotizacion, String infoPoliza, String admorCotizacion,
                                                       String nuevaCotizacion, String escritorio) {
         expedicionDePolizaPage.validarResumenDeLaPolizaExpedida(infoCotizacion, infoPoliza, admorCotizacion,
-                                                                nuevaCotizacion, escritorio);
+                nuevaCotizacion, escritorio);
+    }
+
+    @Step
+    public void clic_en_cancelar_del_mensaje_de_confirmacion(String mensaje) {
+        expedicionDePolizaPage.cancelarExpedicionDeLaPoliza(mensaje);
     }
 
     @Step
