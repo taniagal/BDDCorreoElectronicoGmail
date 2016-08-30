@@ -30,4 +30,4 @@ Then debo ver el detalle del asegurado y no debe permitir la modificacion de los
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | riesgo |
-| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | BLE860 |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | BLE861 |
