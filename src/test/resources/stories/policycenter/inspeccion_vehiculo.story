@@ -50,11 +50,11 @@ Given se ha realizado la cotizacion <cotizacion>
 And se tiene la informacion de la placa <placa> del vehiculo ingresada
 When la inspeccion es valida en SIA
 Then se debe permitir expedir la poliza
-And la fecha de inspeccion <fechaInspeccion> debe ser la fecha de inicio de vigencia de la poliza
+And la fecha de inspeccion debe ser la fecha de inicio de vigencia de la poliza
 
 Examples:
-|cotizacion |placa |fechaInspeccion|
-|22221122   |USU422|07/30/2016     |
+|cotizacion |placa |
+|22221122   |USU422|
 
 Scenario: Vehiculo sin requisito inspeccion para poder expedir
 Given se ha realizado la cotizacion <cotizacion>

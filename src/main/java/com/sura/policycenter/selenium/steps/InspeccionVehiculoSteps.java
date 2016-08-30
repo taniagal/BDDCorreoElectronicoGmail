@@ -40,11 +40,6 @@ public class InspeccionVehiculoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validar_Que_La_Fecha_De_Inspeccion_Sea_Igual_A_La_Fecha_De_Inicio_De_Vigencia(String fechaInspeccion) {
-        inspeccionVehiculoPage.validarFechaInspeccion(fechaInspeccion);
-    }
-
-    @Step
     public void validar_Informacion_De_La_Placa(String placa) {
         inspeccionVehiculoPage.validarVehiculoSinInspeccion(placa);
     }

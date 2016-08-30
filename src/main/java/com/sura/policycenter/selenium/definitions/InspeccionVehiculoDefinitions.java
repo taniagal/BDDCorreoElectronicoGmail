@@ -3,6 +3,7 @@ package com.sura.policycenter.selenium.definitions;
 import com.sura.policycenter.selenium.steps.CotizacionMRCSteps;
 import com.sura.policycenter.selenium.steps.InspeccionVehiculoSteps;
 import com.sura.policycenter.selenium.steps.ValidacionesInformacionDeVehiculoSteps;
+import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.*;
@@ -81,9 +82,11 @@ public class InspeccionVehiculoDefinitions {
         inspeccionVehiculoSteps.validar_Cotizacion_Expedida();
     }
 
-    @Then("la fecha de inspeccion <fechaInspeccion> debe ser la fecha de inicio de vigencia de la poliza")
-    public void validarFechaInspeccion(@Named("fechaInspeccion") String fechaInspeccion){
-        inspeccionVehiculoSteps.validar_Que_La_Fecha_De_Inspeccion_Sea_Igual_A_La_Fecha_De_Inicio_De_Vigencia(fechaInspeccion);
+    @SuppressWarnings("EmptyMethod")
+    @Then("la fecha de inspeccion debe ser la fecha de inicio de vigencia de la poliza")
+    @Manual
+    public void validarFechaInspeccion(){
+        //Se ejecuta manualmente este paso
     }
 
     @Then("se debe mostrar en la pantalla un mensaje <mensaje> indicando que el vehiculo no tiene inspeccion")

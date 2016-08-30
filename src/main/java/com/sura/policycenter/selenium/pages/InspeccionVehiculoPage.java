@@ -93,7 +93,7 @@ public class InspeccionVehiculoPage extends Commons {
     }
 
     public void validarDatosVehiculo(ExamplesTable datosVehiculo) {
-
+        waitUntil(1500);
         for (Map<String,String> row : datosVehiculo.getRows()){
             String modelo = row.get("modelo");
             String fasecolda = row.get("codigoFasecolda");
@@ -111,6 +111,7 @@ public class InspeccionVehiculoPage extends Commons {
     }
 
     public void validarValorAsegurado(String valorAsegurado) {
+        waitUntil(1000);
         String validacion = null;
         try{
             MatcherAssert.assertThat(campoValorAsegurado.getTextValue(),Is.is(Matchers.equalTo(valorAsegurado)));
@@ -126,15 +127,6 @@ public class InspeccionVehiculoPage extends Commons {
         waitUntil(1000);
         act.sendKeys(Keys.ENTER).build().perform();
         waitUntil(3000);
-        //MatcherAssert.assertThat(labelCotizacionExpedida.getText(),Is.is(Matchers.equalTo("Cotización Expedida")));
-        //waitUntil(1000);
-    }
-
-    public void validarFechaInspeccion(String fechaInspeccion) {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(opcionVerPoliza).click();
-        waitUntil(2000);
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(campoFechaInicioVigencia).shouldBeVisible();
-        MatcherAssert.assertThat(campoFechaInicioVigencia.getText(),Is.is(Matchers.equalTo(fechaInspeccion)));
     }
 
     public void validarVehiculoSinInspeccion(String placa) {
