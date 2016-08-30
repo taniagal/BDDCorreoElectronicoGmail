@@ -1,5 +1,9 @@
+Crear Cuenta Nueva
+
 Meta:
-@issue #SUGWUSC-10630
+@issue #CDSEG-990
+@automatizador Nelson Mosquera
+@sprint 1
 
 Narrative:
 Como usuario
