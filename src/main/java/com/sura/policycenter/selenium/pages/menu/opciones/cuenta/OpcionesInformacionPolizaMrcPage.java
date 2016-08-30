@@ -124,18 +124,6 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
         actions.sendKeys(Keys.ENTER).build().perform();
     }
 
-
-    /*
-    * Se bloquea metodo, dado que la funcionalidad cambio
-    * Los mensajes no son bloqueantes sino avisos de precaucion
-    * al pasar de una pantalla a otra*/
-   /* public void bloqueaSiguiente() {
-        btnSiguinete.click();
-        MatcherAssert.assertThat("No puede seguir si la fecha es mayor a 60 Dias o menor a 45 dias", mensajePantalla.isPresent());
-        waitInfoPoliza(btnEscritorio);
-        waitUntil(4000);
-    }*/
-
     public void ingresarTomadorAdicional(String cedula) {
         btnAgregar.waitUntilVisible().waitUntilClickable().click();
         itemDirectorio.waitUntilVisible().waitUntilClickable().click();
