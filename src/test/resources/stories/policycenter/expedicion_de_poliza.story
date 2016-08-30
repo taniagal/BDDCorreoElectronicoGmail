@@ -44,6 +44,7 @@ Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 Examples:
 |cotizacion|mensaje|
 |22222237|FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
+|22222211|JOSE PAEZ ALZATE, El tomador es un riesgo no es estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial.|
 
 Scenario: Validacion de riesgos consultables para intereses adicionales
 Meta:
@@ -76,3 +77,4 @@ Then debe mostrar el resumen de la poliza expedida con la informacion de cotizac
 Examples:
 |cotizacion|infoCotizacion|infoPoliza|admorCotizacion|nuevaCotizacion|escritorio|
 |22222225|Ver cotización (N.° 22222225)|Ver póliza (N.°|Ir al administrador de cotizaciones para esta cuenta|Hacer una cotización para una cuenta diferente|Ir al escritorio|
+|22223226|Ver cotización (N.° 22223226)|Ver póliza (N.°|Ir al administrador de cotizaciones para esta cuenta|Hacer una cotización para una cuenta diferente|Ir al escritorio|
