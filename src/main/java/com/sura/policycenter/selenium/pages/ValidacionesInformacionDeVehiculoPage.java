@@ -10,7 +10,6 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -96,9 +95,9 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         }catch (TimeoutException e){
             e.printStackTrace();
         }
-        MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitForComboValue(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
+        waitUntil(1000);
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona,vehiculo.get("zona")));
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         if(!"null".equals(vehiculo.get("descuento"))){
@@ -111,6 +110,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         }
         waitUntil(500);
         campoVehiculoCeroKm.click();
+        MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
     }
 
     public void agregarCodigoFasecolda(String codigo) {

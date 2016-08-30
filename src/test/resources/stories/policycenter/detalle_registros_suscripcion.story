@@ -44,7 +44,7 @@ Then debo ver el costo total <total> para las cotizaciones en estado cotizado
 
 Examples:
 |numeroCuenta|total|
-|C000902244|$666,895.00|
+|C000902244|$9,309,657.00|
 
 Scenario: Consultar numero de cotizaciones del grupo
 Given busco una cuenta existente como <numeroCuenta>
