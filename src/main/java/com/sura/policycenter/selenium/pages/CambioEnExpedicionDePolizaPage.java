@@ -1,7 +1,5 @@
 package com.sura.policycenter.selenium.pages;
 
-import java.util.concurrent.TimeUnit;
-
 import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -10,7 +8,6 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class CambioEnExpedicionDePolizaPage extends PageObject{

@@ -1,9 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import com.sura.commons.selenium.Commons;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;

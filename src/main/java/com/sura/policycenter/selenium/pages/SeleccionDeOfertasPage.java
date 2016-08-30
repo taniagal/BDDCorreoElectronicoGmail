@@ -14,12 +14,6 @@ public class SeleccionDeOfertasPage extends PageObject {
     @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     private WebElementFacade txtNumeroCuenta;
 
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:Producer-inputEl']")
-    private WebElementFacade txtOrganizacion;
-
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-inputEl']")
-    private WebElementFacade txtCodigoAgente;
-
     @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:7:addSubmission']")
     private WebElementFacade btnLineaAutosPersonal;
 

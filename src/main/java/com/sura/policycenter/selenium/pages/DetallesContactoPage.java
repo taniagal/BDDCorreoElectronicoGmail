@@ -266,7 +266,6 @@ public class  DetallesContactoPage extends Commons {
      */
     public void verificarActualizacion(){
         waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
-        //waitUntil(2000);
         waitFor(campoTxtSegundoNombre).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlContact[2].equals(campoTxtSegundoNombre.getText()))
@@ -298,7 +297,6 @@ public class  DetallesContactoPage extends Commons {
 
     public void verificarActualizacionJuridico(){
         waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
-        //waitUntil(2000);
         waitFor(comboBoxActividadComercial).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))

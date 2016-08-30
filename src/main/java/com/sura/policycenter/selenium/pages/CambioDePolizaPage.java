@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -10,7 +11,6 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
 
 
 public class CambioDePolizaPage extends PageObject {
@@ -57,7 +57,6 @@ public class CambioDePolizaPage extends PageObject {
     }
 
     public void validarMensaje(String mensaje) {
-        Commons commons = new Commons(getDriver());
         commons.verificarMensaje(mensajeAdvertencia,mensaje);
     }
 

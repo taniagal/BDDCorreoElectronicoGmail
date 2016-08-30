@@ -129,7 +129,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     private final Commons commons = new Commons(getDriver());
     private final DateFormat dateFormat = new SimpleDateFormat(MM_DD_YYYY);
     private static final Date fechaHoy = new Date();
-    private final String rolListas = "textbox";
+    private static final String rolListas = "textbox";
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {
         super(driver);

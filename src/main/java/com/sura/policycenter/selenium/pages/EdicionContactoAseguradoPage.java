@@ -89,12 +89,6 @@ public class EdicionContactoAseguradoPage extends PageObject{
     public void editarDatosNuevaPersonaJuridica(ExamplesTable edicionPersonaJuridica) {
         Map<String, String> datosNuevaEmpresa = edicionPersonaJuridica.getRows().get(0);
         campoTipoDocumento.shouldBeEnabled();
-       /* campoNumeroDocumento.shouldBeEnabled();
-        campoPais.shouldBeEnabled();
-        campoDepartamento.shouldBeEnabled();
-        campoCiudad.shouldBeEnabled();
-        campoDireccion.shouldBeEnabled();
-        campoTipoDireccion.shouldBeEnabled();*/
         campoRazonSocial.clear();
         campoRazonSocial.sendKeys(datosNuevaEmpresa.get("razonSocial"));
     }
