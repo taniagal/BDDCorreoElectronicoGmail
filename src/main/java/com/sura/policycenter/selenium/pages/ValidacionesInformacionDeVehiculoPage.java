@@ -53,7 +53,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade botonRelacionarAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver-textEl']")
     private WebElementFacade botonAsegurado;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_true-inputEl']")
+    //@FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
     private WebElementFacade campoVehiculoCeroKm;
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
@@ -81,6 +82,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
 
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         waitFor(botonCrearVehiculo).click();
+        waitUntil(500);
+        campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
         waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
@@ -109,8 +112,6 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
             campoTxtMotor.sendKeys(vehiculo.get("motor"));
             campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
-        waitUntil(500);
-        campoVehiculoCeroKm.click();
     }
 
     public void agregarCodigoFasecolda(String codigo) {
