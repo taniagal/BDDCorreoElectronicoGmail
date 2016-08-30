@@ -512,6 +512,9 @@ public class OpcionesInformacionPolizaPage extends Commons {
         waitFor(menuInformacionPoliza).click();
     }
 
+    /**
+     * Métodos para las validaciones de pólizas hija de pólizas colectivas
+     */
     public void validarInfoPolizaPA(ExamplesTable infoPolizaPA) {
         Map<String, String> informacionPoliza = infoPolizaPA.getRows().get(0);
         String fechaFin = LocalDateTime.now().plusYears(Integer.parseInt(informacionPoliza.get("aniosVigencia"))).toString(MM_DD_YYYY);
@@ -543,6 +546,10 @@ public class OpcionesInformacionPolizaPage extends Commons {
 
     public void validarFechaFinVigenciaPolizaColectivaAutos() {
         MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().plusYears(1).toString(MM_DD_YYYY))));
+    }
+
+    public void validarFechaInicioVigenciaPolizaColectiva() {
+        MatcherAssert.assertThat(fechaVigenciaPoliza.getValue(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
     }
 
     public void validarFechaFinVigenciaPolizaColectivaCommercial(int numeroDias) {

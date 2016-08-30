@@ -125,11 +125,13 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     @Step
     public void validarFechaFinVigenciaPolizaColectivaAutos() {
         opcionesInformacionPolizaPage.validarFechaFinVigenciaPolizaColectivaAutos();
+        opcionesInformacionPolizaPage.validarFechaInicioVigenciaPolizaColectiva();
     }
 
     @Step
     public void validarFechaFinVigenciaPolizaColectivaCommercial(int numeroDias) {
         opcionesInformacionPolizaPage.validarFechaFinVigenciaPolizaColectivaCommercial(numeroDias);
+        opcionesInformacionPolizaPage.validarFechaInicioVigenciaPolizaColectiva();
     }
 
     @Step
