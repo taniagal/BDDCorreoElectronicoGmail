@@ -71,39 +71,6 @@ Examples:
 | C000888888 | DIRECTO | Tuya         | Tuya              | Colectiva  | Bank Autos       | 5                |
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | 1                |
 
-Scenario: Validar datos de tomador secundario en poliza colectiva
-Given que voy a buscar la cuenta <numCuenta>
-And quiero expedir una poliza nueva
-And seleccione el agente <agente>
-When seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
-And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
-And seleccione el producto <producto> de poliza colectiva para expedirla
-When seleccione segundo tomador para la poliza colectiva
-Then debo ver los siguientes datos del segundo tomador en la pantalla:
-| tipoDocumentoSegundo | numeroDocumentoSegundo | nombreSegundo  | telefonoSegundo | direccionSegundo                               | tipoDireccionSegundo | descripcionDireccionSegundo                |
-| CEDULA DE CIUDADANIA | 1264567899             | GLORIA GALLEGO | 408-2211        | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 |
-
-Examples:
-| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         |
-| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet |
-
-Scenario: Validar las opciones de agregar, edita y eliminar coaseguro de poliza colectiva
-When de clic en agregar coaseguro
-And ingrese el porcentaje de participacion de las aseguradoras
-And de clic en Aceptar de la ventana Coaseguro
-Then debo ver en la ventana de informacion de la poliza colectiva las opciones de editar y eliminar coaseguro
-
-
-When de clic en la opcion de editar el coaseguro
-Then debo ver la ventana de coaseguro con los datos diligenciados
-
-
-
-When de clic en Cancelar de la edicion de coaseguro
-And de clic en la opcion eliminar de coaseguro
-Then debo ver nuevamente el link de agregar coaseguro
-
 Scenario: validar mensajes de retroactividad cuando esta sobrepasa la cantidad de dias permitidos
 Given que voy a buscar la cuenta <numCuenta>
 And quiero expedir una poliza nueva
@@ -186,3 +153,36 @@ Then me debe mostrar el mensaje <mensaje> indicando que la fecha de inicio de vi
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | numeroDias | masomenos | razonSocial             | mensaje                                                                                                        |
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | 1          | mas       | VARIEDADES YURLEDYS S.A | La fecha inicio de vigencia del riesgo no puede ser menor a la fecha inicio de vigencia de la póliza colectiva |
+
+Scenario: Validar datos de tomador secundario en poliza colectiva
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> de poliza colectiva para expedirla
+When seleccione segundo tomador para la poliza colectiva
+Then debo ver los siguientes datos del segundo tomador en la pantalla:
+| tipoDocumentoSegundo | numeroDocumentoSegundo | nombreSegundo  | telefonoSegundo | direccionSegundo                               | tipoDireccionSegundo | descripcionDireccionSegundo                |
+| CEDULA DE CIUDADANIA | 1264567899             | GLORIA GALLEGO | 408-2211        | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 |
+
+Examples:
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet |
+
+Scenario: Validar las opciones de agregar, editar y eliminar coaseguro de poliza colectiva
+When de clic en agregar coaseguro
+And ingrese el porcentaje de participacion de las aseguradoras
+And de clic en Aceptar de la ventana Coaseguro
+Then debo ver en la ventana de informacion de la poliza colectiva las opciones de editar y eliminar coaseguro
+
+
+When de clic en la opcion de editar el coaseguro
+Then debo ver la ventana de coaseguro con los datos diligenciados
+
+
+
+When de clic en Cancelar de la edicion de coaseguro
+And de clic en la opcion eliminar de coaseguro
+Then debo ver nuevamente el link de agregar coaseguro
