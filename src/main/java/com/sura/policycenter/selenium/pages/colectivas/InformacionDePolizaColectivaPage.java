@@ -82,8 +82,6 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade submenuContacto;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:_msgs']/div")
     WebElementFacade mensajeDescuento;
-    @FindBy(xpath = "")
-    WebElementFacade mensajeRetroactividad;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsuredInfo:OfficialIDInputSet:DocumentType-inputEl']")
     WebElementFacade tipoDocumentoSegundo;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsuredInfo:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
@@ -250,10 +248,6 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(fechaFinVigencia)));
     }
 
-    public void validarMensajeRetroactividadInvalida(String mensaje) {
-        validarMensaje(mensajeRetroactividad, mensaje);
-    }
-
     public void validarDatosDeSegundoTomador(ExamplesTable informacionSegundoTomador) {
         Map<String, String> infoSegundoTomador = informacionSegundoTomador.getRows().get(0);
         waitForTextToAppear(infoSegundoTomador.get("numeroDocumentoSegundo"));
@@ -340,18 +334,5 @@ public class InformacionDePolizaColectivaPage extends PageObject {
             waitFor(nombreSegundoLink);
             nombreSegundoLink.click();
         }
-    }
-
-    public void validarFechaFinVigenciaPolizaColectivaAutos() {
-        MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().plusYears(1).toString(MM_DD_YYYY))));
-    }
-
-    public void validarFechaFinVigenciaPolizaColectivaCommercial(int numeroDias) {
-        MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().minusDays(numeroDias).plusYears(1).toString(MM_DD_YYYY))));
-    }
-
-    public void validarFechaInicioVigenciaMenorALaPolizaMadre(String mensaje) {
-        WebElementFacade mensajeFechaInicioColectiva = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div");
-        this.validarMensaje(mensajeFechaInicioColectiva, mensaje + " (" + LocalDateTime.now().plusDays(1).toString(MM_DD_YYYY) + ")");
     }
 }

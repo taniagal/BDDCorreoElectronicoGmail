@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.steps.colectivas;
 
 
+import com.sura.policycenter.selenium.pages.PanelSurEspacioDeTrabajoPage;
 import com.sura.policycenter.selenium.pages.colectivas.InformacionDePolizaColectivaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -9,6 +10,7 @@ import org.jbehave.core.model.ExamplesTable;
 public class InformacionDePolizaColectivaSteps extends ScenarioSteps{
 
     InformacionDePolizaColectivaPage informacionDePolizaColectivaPage;
+    PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;
 
     @Step
     public void validarInformacionDePolizaColectiva(ExamplesTable informacionPolizaColectiva) {
@@ -57,7 +59,9 @@ public class InformacionDePolizaColectivaSteps extends ScenarioSteps{
 
     @Step
     public void validarMensajeDeRetroactividad(String mensaje) {
-        informacionDePolizaColectivaPage.validarMensajeRetroactividadInvalida(mensaje);
+        panelSurEspacioDeTrabajoPage.abrirPanelInferior();
+        panelSurEspacioDeTrabajoPage.validarMensaje(mensaje);
+        panelSurEspacioDeTrabajoPage.borrarEspacioDeTrabajo();
     }
 
     @Step

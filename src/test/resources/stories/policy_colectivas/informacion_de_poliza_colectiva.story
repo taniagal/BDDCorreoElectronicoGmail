@@ -117,9 +117,9 @@ And actualice la poliza colectiva
 Then me debe mostrar el mensaje <mensaje> indicando que no cumple con la retroactividad permitida
 
 Examples:
-| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto     | numeroDias | masomenos | mensaje                                                                              |
-| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos   | 61         | menos     | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
-| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos   | 61         | mas       | La fecha de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | numeroDias | masomenos | mensaje                                                                                     |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | 61         | menos     | La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | 61         | mas       | La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
 
 
 Scenario: validar fecha fin de vigencia a un ano para poliza de autos hija
@@ -140,8 +140,8 @@ And vaya a informacion de poliza del riesgo
 Then debo ver la fecha de fin de vigencia de un ano para poliza de autos
 
 Examples:
-| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto     | numeroDias | masomenos |
-| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos   | 60         | menos     |
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | numeroDias | masomenos | razonSocial             |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | 60         | menos     | VARIEDADES YURLEDYS S.A |
 
 Scenario: validar fecha fin de vigencia para la poliza hija igual a la poliza madre
 Given que voy a buscar la cuenta <numCuenta>
@@ -161,9 +161,9 @@ And vaya a informacion de poliza del riesgo
 Then debo ver la fecha de fin de vigencia de la poliza hija igual a la fecha de fin de vigencia de la poliza madre <numeroDias>
 
 Examples:
-| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | numeroDias | masomenos |
-| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet          | 30         | menos     |
-| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | 30         | menos     |
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | numeroDias | masomenos | razonSocial             |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet          | 30         | menos     | VARIEDADES YURLEDYS S.A |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | 30         | menos     | VARIEDADES YURLEDYS S.A |
 
 Scenario: validar fecha inicio de vigencia de la poliza hija no sea menor a la fecha de inicio de vigencia de la poliza madre
 Given que voy a buscar la cuenta <numCuenta>
@@ -184,5 +184,5 @@ And quiera agregar un asegurado
 Then me debe mostrar el mensaje <mensaje> indicando que la fecha de inicio de vigencia no puede ser menor a la fecha de la poliza madre
 
 Examples:
-| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | numeroDias | masomenos | mensaje                                                                                                        |
-| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | 1          | mas       | La fecha inicio de vigencia del riesgo no puede ser menor a la fecha inicio de vigencia de la póliza colectiva |
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | numeroDias | masomenos | razonSocial             | mensaje                                                                                                        |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | 1          | mas       | VARIEDADES YURLEDYS S.A | La fecha inicio de vigencia del riesgo no puede ser menor a la fecha inicio de vigencia de la póliza colectiva |
