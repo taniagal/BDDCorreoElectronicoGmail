@@ -1,5 +1,9 @@
+Validaciones Informacion De Vehiculo
+
 Meta:
-@issue #SUGWUSC-15127
+@issue #CDSEG-1013
+@automatizador Nelson Mosquera
+@sprint 3
 
 Narrative:
 Como usuario de policy center

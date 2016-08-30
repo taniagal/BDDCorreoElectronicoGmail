@@ -1,5 +1,9 @@
+Detalles De Ubicacion
+
 Meta:
-@issue #SUGWUSC-14470
+@issue #CDSEG-915
+@automatizador Nelson Mosquera
+@sprint 2
 
 Narrative:
 Como usuario PolicyCenter con el papel de agente, RSE , Suscriptor o el Administrador
