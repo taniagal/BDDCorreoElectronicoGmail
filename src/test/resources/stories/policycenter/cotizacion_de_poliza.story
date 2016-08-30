@@ -42,16 +42,6 @@ Examples:
 |cotizacion|mensaje|
 |22270002  |El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
 
-Scenario: PEP - Figuras - Warning
-Given he realizado la cotizacion <cotizacion>
-When ingrese a la cotizacion
-And las figuras asegurado, beneficiario y/o tomador, fueron identificadas como PEP
-Then se debe mostrar un mensaje <mensaje> de advertencia sin bloquear la cotizacion
-
-Examples:
-|cotizacion|mensaje|
-|22270002  |es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
-
 Scenario: Riesgos consultables - Chasis - Bloqueo
 Given he realizado la cotizacion <cotizacion>
 When ingrese a la cotizacion
