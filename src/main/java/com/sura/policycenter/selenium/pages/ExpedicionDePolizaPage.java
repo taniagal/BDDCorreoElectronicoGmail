@@ -1,6 +1,8 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,8 +14,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class ExpedicionDePolizaPage extends PageObject{

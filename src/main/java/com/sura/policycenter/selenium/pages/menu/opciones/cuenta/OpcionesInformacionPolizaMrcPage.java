@@ -2,6 +2,8 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 
 import com.sura.commons.selenium.Commons;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -12,8 +14,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class OpcionesInformacionPolizaMrcPage extends Commons {
@@ -123,18 +123,6 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
         txtFechaVigencia.sendKeys(fechaInicioVigencia);
         actions.sendKeys(Keys.ENTER).build().perform();
     }
-
-
-    /*
-    * Se bloquea metodo, dado que la funcionalidad cambio
-    * Los mensajes no son bloqueantes sino avisos de precaucion
-    * al pasar de una pantalla a otra*/
-   /* public void bloqueaSiguiente() {
-        btnSiguinete.click();
-        MatcherAssert.assertThat("No puede seguir si la fecha es mayor a 60 Dias o menor a 45 dias", mensajePantalla.isPresent());
-        waitInfoPoliza(btnEscritorio);
-        waitUntil(4000);
-    }*/
 
     public void ingresarTomadorAdicional(String cedula) {
         btnAgregar.waitUntilVisible().waitUntilClickable().click();

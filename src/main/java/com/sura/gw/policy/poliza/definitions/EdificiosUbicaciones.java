@@ -1,28 +1,26 @@
 package com.sura.gw.policy.poliza.definitions;
 
+import ch.lambdaj.Lambda;
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.MatcherAssert;
 import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.core.StringContains;
 import org.jbehave.core.annotations.Aliases;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import static ch.lambdaj.Lambda.filter;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.StringContains.containsString;
 
 public class EdificiosUbicaciones {
 
@@ -130,9 +128,9 @@ public class EdificiosUbicaciones {
     @Then("espero ver mensajes de advertencia indicandome la direccion es un riesgo consultable")
     public void entoncesEsperoVerMensajeDeAdvertenciaQueUbicacionEsRiesgoConsultable() {
         for (String mensaje : polizaSteps.espacioDeTrabajo()){
-            assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
+            MatcherAssert.assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
                     mensaje,
-                    containsString("La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
+                    StringContains.containsString("La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
                     ));
         }
 
@@ -150,7 +148,7 @@ public class EdificiosUbicaciones {
 
         for (Map<String,String> mensajes : mensajesEsperados.getRows()) {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            assertThat(mensajesWSList, hasItemContainsString(mensaje));
+            MatcherAssert.assertThat(mensajesWSList, hasItemContainsString(mensaje));
         }
 
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
@@ -165,7 +163,7 @@ public class EdificiosUbicaciones {
         return new HasItemContainsString(expectedValue);
     }
 
-    private static class HasItemContainsString extends TypeSafeMatcher<List<String>> {
+    private final static class HasItemContainsString extends TypeSafeMatcher<List<String>> {
 
         private final String expectedValue;
 
@@ -175,7 +173,7 @@ public class EdificiosUbicaciones {
 
         @Override
         protected boolean matchesSafely(List<String> values) {
-            return !filter(containsString(expectedValue), values).isEmpty();
+            return !Lambda.filter(StringContains.containsString(expectedValue), values).isEmpty();
         }
 
         @Override

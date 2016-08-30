@@ -127,7 +127,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     private final Commons commons = new Commons(getDriver());
     private final DateFormat dateFormat = new SimpleDateFormat(MM_DD_YYYY);
     private static final Date fechaHoy = new Date();
-    private final String rolListas = "textbox";
+    private static final String ROLLISTAS = "textbox";
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {
         super(driver);
@@ -318,12 +318,12 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void validarLosElementosDeshabilitados() {
         commons.waitUntil(2000);
         MatcherAssert.assertThat(linkAgregarCoaseguro.getAttribute("href"), Is.is(Matchers.equalTo("")));
-        MatcherAssert.assertThat(organizacion.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
-        MatcherAssert.assertThat(canal.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
-        MatcherAssert.assertThat(tipoDePoliza.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
-        MatcherAssert.assertThat(campoTipoPlazo.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
-        MatcherAssert.assertThat(fechaInicioVigencia.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
-        MatcherAssert.assertThat(codAgente.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
+        MatcherAssert.assertThat(organizacion.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
+        MatcherAssert.assertThat(canal.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
+        MatcherAssert.assertThat(tipoDePoliza.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
+        MatcherAssert.assertThat(campoTipoPlazo.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
+        MatcherAssert.assertThat(fechaInicioVigencia.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
+        MatcherAssert.assertThat(codAgente.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
     }
 
     public void clicEnUnTomadorDeLaPoliza(String tomador) {

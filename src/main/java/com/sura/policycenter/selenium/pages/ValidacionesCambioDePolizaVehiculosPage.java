@@ -11,16 +11,11 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.slf4j.LoggerFactory;
-
-
 
 public class ValidacionesCambioDePolizaVehiculosPage extends PageObject{
     Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//td/div/div/div/a[6]/span/span/span/span")
     private WebElementFacade botonEmitirPoliza;
-    @FindBy(xpath = ".//div[5]/div[3]/div/div/a/span/span/span")
-    private WebElementFacade botonAceptarEmitirPoliza;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade mensajesValidaciones;
 

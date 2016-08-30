@@ -6,13 +6,11 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class ValidacionReglasDeNegocioCoberturasSteps extends ScenarioSteps {
+     private final ValidacionDelNegocioCoberturaPage validacionDelNegocioCoberturaPage = new ValidacionDelNegocioCoberturaPage(getDriver());
 
     public ValidacionReglasDeNegocioCoberturasSteps(Pages pages) {
         super(pages);
     }
-
-
-     private final ValidacionDelNegocioCoberturaPage validacionDelNegocioCoberturaPage = new ValidacionDelNegocioCoberturaPage(getDriver());
 
     @Step
     public void ingresa_edificios_y_ubicaciones() {

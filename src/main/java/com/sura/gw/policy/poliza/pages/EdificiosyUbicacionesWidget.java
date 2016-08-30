@@ -3,6 +3,8 @@ package com.sura.gw.policy.poliza.pages;
 import com.google.common.base.Function;
 import com.sura.commons.selenium.Commons;
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,8 +14,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 
@@ -29,8 +29,6 @@ public class EdificiosyUbicacionesWidget extends Commons {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
-    @FindBy(id = "WebMessageWorksheet")
-    private WebElementFacade divMensaje;
 
     public EdificiosyUbicacionesWidget(WebDriver driver){
         super(driver);
@@ -259,12 +257,4 @@ public class EdificiosyUbicacionesWidget extends Commons {
         findBy(".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']").click();
 
     }
-/*
-    public void verificarMensajes(ExamplesTable mensajesEsperados) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
-        for (Map<String, String> mensaje : mensajesEsperados.getRows()) {
-            waitFor(divMensaje).shouldContainText(mensaje.get("MENSAJES_WORKSPACE"));
-            MatcherAssert.assertThat("Error: en la validacion del mensaje " + mensaje.get("MENSAJES_WORKSPACE"), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
-        }
-    }*/
 }

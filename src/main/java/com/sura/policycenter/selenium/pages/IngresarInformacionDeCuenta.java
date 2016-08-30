@@ -17,7 +17,7 @@ public class IngresarInformacionDeCuenta extends PageObject {
     @FindBy(xpath = ".//*[@id='NewAccountPopup:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     WebElementFacade botonBuscarCuenta;
     @FindBy(xpath = ".//*[@id='NewAccountPopup:NewAccountScreen:NewAccountSearchResultsLV:0:CreateCollectiveRisk']")
-    WebElementFacade seleccionarContactoExistente;
+    WebElementFacade botonSeleccionarContactoExistente;
     @FindBy(xpath = ".//*[@id='NewAccountPopup:NewAccountScreen:NewAccountButton']")
     WebElementFacade botonCrearCuenta;
     @FindBy(xpath = ".//*[@id='NewAccountPopup:NewAccountScreen:NewAccountButton:NewAccount_Person-textEl']")
@@ -53,7 +53,7 @@ public class IngresarInformacionDeCuenta extends PageObject {
     }
 
     public void seleccionarContactoExistente(){
-        waitFor(seleccionarContactoExistente);
-        seleccionarContactoExistente.click();
+        waitFor(botonSeleccionarContactoExistente);
+        botonSeleccionarContactoExistente.click();
     }
 }
