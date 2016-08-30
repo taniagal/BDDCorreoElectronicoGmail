@@ -1,5 +1,9 @@
+Tarifa Autos
+
 Meta:
-@issue CDSEG-1348
+@issue #CDSEG-1348
+@automatizador Nelson Mosquera
+@sprint 5
 
 Narrative:
 Como usuario de policy center

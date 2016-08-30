@@ -3,11 +3,11 @@ package com.sura.policycenter.selenium.steps.colectivas;
 import com.sura.policycenter.selenium.pages.*;
 import com.sura.policycenter.selenium.pages.colectivas.IngresoDeRiesgosPolizaColectivaPages;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
+import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-import java.util.Map;
 
 public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
 

@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 
 import com.sura.commons.selenium.Commons;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -9,7 +10,6 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import java.util.concurrent.TimeUnit;
 
 public class ValidacionDelNegocioCoberturaPage extends Commons{
 

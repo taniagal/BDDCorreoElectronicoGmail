@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.ExpedicionDePolizaPage;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 
@@ -40,11 +39,15 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     @Step
     public void validar_mensaje(String mensaje) {
         expedicionDePolizaPage.validarMensaje(mensaje);
+        expedicionDePolizaPage.vuelveInicio();
     }
-
 
     @Step
     public void validar_que_vuelve_a_la_ventana_de_cotizacion() {
         expedicionDePolizaPage.validarCancelacionDeExpedicionDePoliza();
+    }
+
+    public void clic_en_expedir_poliza_por_cambio() {
+        expedicionDePolizaPage.expedirPolizaPorCambio();
     }
 }

@@ -11,7 +11,6 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
 
 public class OpcionesResumenCuentaPage extends Commons {
     Actions act = new Actions(getDriver());

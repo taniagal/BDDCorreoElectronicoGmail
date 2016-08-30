@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
+
 public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     WebElementFacade tituloVentana;
@@ -28,14 +29,20 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
     WebElementFacade menuNumeroCotizacion;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy']")
+    @FindBy(id = "SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl")
     WebElementFacade botonExpedirPoliza;
+
+    @FindBy(id = "PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange-btnInnerEl")
+    WebElementFacade botonExpedirPolizaPorCambio;
 
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
 
     @FindBy(xpath = ".//a[contains(.,'Cancelar')]")
     WebElementFacade botonCancelarMensaje;
+
+    @FindBy(id="TabBar:DesktopTab-btnInnerEl")
+    WebElementFacade botonInicio;
 
     @FindBy(xpath = ".//td[contains(.,'¿Está seguro de que desea expedir esta póliza?')]")
     WebElementFacade mensajeConfirmacion;
@@ -91,6 +98,13 @@ public class ExpedicionDePolizaPage extends PageObject{
         waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));
         waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPoliza));
         botonExpedirPoliza.click();
+    }
+
+
+    public void expedirPolizaPorCambio() {
+        waitFor(ExpectedConditions.visibilityOf(botonExpedirPolizaPorCambio));
+        waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPolizaPorCambio));
+        botonExpedirPolizaPorCambio.click();
     }
 
     public void aceptarExpedirPoliza() {
@@ -153,5 +167,10 @@ public class ExpedicionDePolizaPage extends PageObject{
         waitFor(linkIrAPolizaColectiva);
         linkIrAPolizaColectiva.click();
         waitForTextToAppear("Información de la póliza colectiva");
+    }
+
+    public void vuelveInicio() {
+        waitFor(botonInicio);
+        botonInicio.click();
     }
 }
