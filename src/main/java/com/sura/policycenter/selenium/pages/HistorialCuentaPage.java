@@ -159,7 +159,7 @@ public class HistorialCuentaPage extends Commons {
     }
 
     public void validarDatosOpcionesMultiples(){
-        //withTimeoutOf(10, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String usuario = txtUsuario.getValue().toString();
         for (WebElement row : allRows) {
