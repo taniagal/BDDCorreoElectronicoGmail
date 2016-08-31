@@ -1,4 +1,10 @@
+Busqueda Contacto
+
 Meta:
+
+@issue #CDSEG-894
+@Automatizador Diego Cardona Acevedo
+@Sprint 1
 
 Narrative:
 Como usuario PolicyCenter
