@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.InicioPage;
-import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
@@ -9,13 +8,15 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class InformacionDePolizaMrcSteps extends ScenarioSteps {
 
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage (getDriver());
+
     public InformacionDePolizaMrcSteps (Pages pages) {
         super(pages);
     }
-    private InicioPage inicioPage() {
+
+   private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
     }
-    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage (getDriver());
 
     @Step
     public void navegar_barra_superior(String numCuenta) {
@@ -55,11 +56,6 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void bloqueo_de_aplicacion() {
-        opcionesInformacionPolizaMrcPage.bloqueaSiguiente();
-    }
-
-    @Step
     public void ingresar_tomador_adicional(String cedula) {
         opcionesInformacionPolizaMrcPage.ingresarTomadorAdicional(cedula);
     }
@@ -79,8 +75,10 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         opcionesInformacionPolizaMrcPage.editarDescripDireccionTomador();
     }
 
+    @Step
     public void validar_descipcion_de_direccion() {
         opcionesInformacionPolizaMrcPage.validaFormularioDescripDireccion();
     }
+
 }
 

@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 
 
-public class UbicacionesDeUnaCuentaPage extends Guidewire{
+public class UbicacionesDeUnaCuentaPage extends Commons {
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtIrA;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']/div")
@@ -64,16 +64,18 @@ public class UbicacionesDeUnaCuentaPage extends Guidewire{
     }
 
     public void agregaDireccion(String departamento, String ciudad, String tipoDireccion){
+        waitUntil(1000);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(3000);
+        waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(2500);
-        selectItem(comboBoxTipoDireccion,tipoDireccion);
+        waitForComboValue(comboBoxCiudad,ciudad);
+        selectItem(comboBoxTipoDireccion, tipoDireccion);
+        waitForComboValue(comboBoxTipoDireccion,tipoDireccion);
         botonActualizar.click();
     }
 
     public void verificarTipoDeDireccion(){
-        waitABit(2000);
+        waitUntil(2000);
         labelTipoDeDireccion.waitUntilPresent();
         MatcherAssert.assertThat("No está el campo tipo de direccion", labelTipoDeDireccion.isPresent());
     }

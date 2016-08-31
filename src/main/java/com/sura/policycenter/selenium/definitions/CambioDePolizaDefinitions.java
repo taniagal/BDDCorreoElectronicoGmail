@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.policycenter.selenium.steps.BusquedaDePolizaSteps;
 import com.sura.policycenter.selenium.steps.CambioDePolizaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -40,8 +39,9 @@ public class CambioDePolizaDefinitions {
         cambioDePolizaSteps.validarMensaje(mensaje);
     }
 
-
-
-
+    @Then("NO debo visualizar la advertencia")
+    public void validarMensajeNoReasegur() {
+        cambioDePolizaSteps.validarMensajeNoReaseguro();
+    }
 
 }

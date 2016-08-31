@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -9,7 +9,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 
-public class PolizasDePrimeraPerdidaPage extends Guidewire{
+public class PolizasDePrimeraPerdidaPage extends Commons {
     @FindBy(xpath=".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
@@ -35,7 +35,7 @@ public class PolizasDePrimeraPerdidaPage extends Guidewire{
 
     public void irAArticulos() {
         withTimeoutOf(25, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonAgregarArticulos).waitUntilPresent().click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAgregarArticulos).waitUntilPresent().click();
     }
 
     public void agregarArticulo(ExamplesTable datos){

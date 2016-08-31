@@ -1,16 +1,15 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-public class  DetallesContactoPage extends Guidewire {
+public class  DetallesContactoPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
     private WebElementFacade labelPrimerNombre;
@@ -229,7 +228,8 @@ public class  DetallesContactoPage extends Guidewire {
      * DETALLE CONTACTO EDICION PERSONA JURIDICA
      */
     public void setRazonSocial(String nombreComercial, String actividadComercial) {
-        campoTxtNombreComercial.waitUntilPresent().clear();
+        campoTxtNombreComercial.waitUntilPresent();
+        campoTxtNombreComercial.clear();
         campoTxtNombreComercial.sendKeys(nombreComercial);
         selectItem(comboBoxActividadComercial, actividadComercial);
         dtlCntJ[0]= nombreComercial;
@@ -260,23 +260,13 @@ public class  DetallesContactoPage extends Guidewire {
         dtlCntJ[7]= correoElectronicoSecundario;
     }
 
-    // TODO: 25/07/2016 Existe un riesgo de que se quede en este ciclo permanentemente 
-    public void ingresarDato(WebElementFacade elemento, String dato){
-        do {
-            waitFor(elemento);
-            elemento.clear();
-            waitFor(elemento).shouldContainText("");
-            elemento.sendKeys(dato);
-        }while (!elemento.getValue().equals(dato));
-    }
-
-
     /**
      * DETALLE CONTACTO EDICION
      * Valida si los datos ingresados es igual al que se muestran en el detalle
      */
     public void verificarActualizacion(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtSegundoNombre).shouldBePresent();
+        waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
+        waitFor(campoTxtSegundoNombre).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlContact[2].equals(campoTxtSegundoNombre.getText()))
             right.append("segundo nombre,");
@@ -306,7 +296,8 @@ public class  DetallesContactoPage extends Guidewire {
     }
 
     public void verificarActualizacionJuridico(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(comboBoxActividadComercial).shouldBePresent();
+        waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
+        waitFor(comboBoxActividadComercial).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
             right.append("activida comercial,");

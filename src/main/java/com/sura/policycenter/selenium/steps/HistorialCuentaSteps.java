@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.HistorialCuentaPage;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -14,18 +13,13 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
         super(pages);
     }
 
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
     @Step
     public void seleccionarCuenta(String numCuenta) {
-        inicioPage().irACuentaBuscar(numCuenta);
+        historialCuentaPage.seleccionarCuenta(numCuenta);
     }
 
     @Step
     public void seleccionarHistorial() {
-
         historialCuentaPage.seleccionarHistorial();
     }
 

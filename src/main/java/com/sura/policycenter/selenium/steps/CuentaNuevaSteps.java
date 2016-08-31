@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.steps;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.policycenter.selenium.pages.CuentaPage;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
@@ -11,9 +11,10 @@ public class CuentaNuevaSteps extends ScenarioSteps {
 
     private String cedula = "";
     private String nit = "";
-    private final Guidewire gw = new Guidewire(getDriver());
+    private final Commons gw = new Commons(getDriver());
     private final CuentaPage cuentaPage = new CuentaPage(getDriver());
-
+    private static final String NOMBRECUENTA = "Busqueda";
+    
     public CuentaNuevaSteps(Pages pages) {
         super(pages);
     }
@@ -39,10 +40,10 @@ public class CuentaNuevaSteps extends ScenarioSteps {
             initRandoms();
         }
         if ("NIT".equals(tipoDocumento)) {
-            cuentaPage.buscarPersona("Busqueda", "Compania");
+            cuentaPage.buscarPersona(NOMBRECUENTA, "Compania");
             cuentaPage.agregarTipoDocumento(tipoDocumento, nit);
         } else {
-            cuentaPage.buscarPersona("Busqueda", "Persona");
+            cuentaPage.buscarPersona(NOMBRECUENTA, "Persona");
             cuentaPage.agregarTipoDocumento(tipoDocumento, cedula);
         }
     }
@@ -51,10 +52,10 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     public void agregar_tipo_documento_b(String tipoDocumento) {
         initRandoms();
         if ("NIT".equals(tipoDocumento)) {
-            cuentaPage.buscarPersona("Busqueda", "Compania");
+            cuentaPage.buscarPersona(NOMBRECUENTA, "Compania");
             cuentaPage.agregarTipoDocumento(tipoDocumento, nit);
         } else {
-            cuentaPage.buscarPersona("Busqueda", "Persona");
+            cuentaPage.buscarPersona(NOMBRECUENTA, "Persona");
             cuentaPage.agregarTipoDocumento(tipoDocumento, cedula);
         }
     }
@@ -64,14 +65,12 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         initRandoms();
         StringBuilder documento = new StringBuilder("us");
         if ("NIT".equals(tipoDocumento) || "IDENT. FISCAL PARA EXTRANJEROS".equals(tipoDocumento)) {
-            documento.append(nit.substring(0, 6));
-            documento.append("c");
-            cuentaPage.buscarPersona("Busqueda", "Compania");
+            documento.append(nit.substring(0, 6) + "c");
+            cuentaPage.buscarPersona(NOMBRECUENTA, "Compania");
             cuentaPage.agregarTipoDocumento(tipoDocumento, documento.toString());
         } else {
-            documento.append(cedula.substring(0, 5));
-            documento.append("c");
-            cuentaPage.buscarPersona("Busqueda", "Persona");
+            documento.append(cedula.substring(0, 5) + "c");
+            cuentaPage.buscarPersona(NOMBRECUENTA, "Persona");
             cuentaPage.agregarTipoDocumento(tipoDocumento, documento.toString());
         }
     }
@@ -79,9 +78,9 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     @Step
     public void agregar_documento(String tipoDocumento,String documento) {
         if ("NIT".equals(tipoDocumento)) {
-            cuentaPage.buscarPersona("Busqueda", "Compania");
+            cuentaPage.buscarPersona(NOMBRECUENTA, "Compania");
         } else {
-            cuentaPage.buscarPersona("Busqueda", "Persona");
+            cuentaPage.buscarPersona(NOMBRECUENTA, "Persona");
         }
         cuentaPage.agregarTipoDocumento(tipoDocumento, documento);
     }

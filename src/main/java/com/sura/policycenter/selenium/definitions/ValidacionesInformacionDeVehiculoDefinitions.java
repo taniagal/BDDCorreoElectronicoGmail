@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.definitions;
 
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
+import com.sura.commons.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.DetallesDeUbicacionSteps;
 import com.sura.policycenter.selenium.steps.ValidacionesInformacionDeVehiculoSteps;
 import net.thucydides.core.annotations.Steps;
@@ -23,7 +23,7 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
 
     @Given("estoy cotizando una poliza de PA en cuenta <cuenta>")
     public void agregarPoliza(@Named("cuenta") String cuenta) {
-        detallesDeUbicacionSteps.ir_a_nueva_poliza(cuenta);
+        //Metodo Vacio
     }
 
     @When("vaya al agregar un vehiculo con datos faltantes")
@@ -36,6 +36,11 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
         vehiculoSteps.verificar_mensajes(mensajes);
     }
 
+    @Then("debe permitir continuar la cotizacion")
+    public void permitirContinuarCotizacion(){
+        vehiculoSteps.siguiente();
+        vehiculoSteps.validarAvanceSiguientePagina();
+    }
 
     /**
      * ESCENARIO 2
@@ -60,5 +65,9 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
         vehiculoSteps.agregar_vehiculo(datosVehiculo);
     }
 
+    @When("voy a realizar el siguiente paso")
+    public void siguiente(){
+        vehiculoSteps.siguiente();
+    }
 
 }

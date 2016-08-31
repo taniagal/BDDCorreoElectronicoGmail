@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +17,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
 
-public class CotizacionPADetallePage extends Guidewire {
+public class CotizacionPADetallePage extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(CotizacionPADetallePage.class);
 
@@ -33,26 +33,14 @@ public class CotizacionPADetallePage extends Guidewire {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:FasecoldaCode-labelEl']")
     private WebElementFacade labelCodigoFasecolda;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:FasecoldaCode-inputEl']")
-    private WebElementFacade inputCodigoFasecolda;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Make-labelEl']")
     private WebElementFacade labelMarca;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Make-inputEl']")
-    private WebElementFacade inputMarca;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Year-labelEl']")
     private WebElementFacade labelModelo;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Year-inputEl']")
-    private WebElementFacade inputModelo;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Line-labelEl']")
     private WebElementFacade labelLinea;
-
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Line-inputEl']")
-    private WebElementFacade inputLinea;
 
     @FindBy(xpath = ".//td[2]/div/div/div/div/div/div/span")
     private WebElementFacade labelDescripcionCobertura;
@@ -69,7 +57,7 @@ public class CotizacionPADetallePage extends Guidewire {
     @FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
     private WebElementFacade labelSubtotalPrimas;
 
-    @FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td/div")
+    @FindBy(id = "SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:Taxes-labelEl")
     private WebElementFacade labelImpuesto;
 
     @FindBy(xpath = "//td[@id='SubmissionWizard:LOBWizardStepGroup:PALine']/div")
@@ -91,8 +79,6 @@ public class CotizacionPADetallePage extends Guidewire {
     }
 
     public void validarInformacionDetalleCotizacion(Map<String, String> infoDetalleCotizacion) {
-        String validacion = null;
-        try{
             MatcherAssert.assertThat(labelVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("labelVehiculo"))));
             MatcherAssert.assertThat(labelPlaca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("placa"))));
             MatcherAssert.assertThat(labelCodigoFasecolda.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("codigoFasecolda"))));
@@ -105,13 +91,6 @@ public class CotizacionPADetallePage extends Guidewire {
             MatcherAssert.assertThat(labelSubtotal.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotal"))));
             MatcherAssert.assertThat(labelSubtotalPrimas.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotalPrimas"))));
             MatcherAssert.assertThat(labelImpuesto.getText(), Matchers.containsString(infoDetalleCotizacion.get("impuesto")));
-
-        }catch (Exception e){
-            LOGGER.error(validacion, e);
-            validacion = e.getMessage();
-        }
-
-        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
     }
 
     public void validarTerminoCobertura() {
@@ -129,7 +108,7 @@ public class CotizacionPADetallePage extends Guidewire {
                 List<WebElement> cells = row.findElements(By.tagName("td"));
                 String descCob = cells.get(0).getText();
                 String terminoCob = cells.get(1).getText();
-                if(!terminoCob.equals("-")) {
+                if(!"-".equals(terminoCob)) {
                     i++;
                     terminoCoberturas.put("dato" + i, terminoCob);
                 }

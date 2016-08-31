@@ -43,6 +43,15 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
     @Step
     public void agregar_vehiculo(ExamplesTable datosVehiculo) {
         vehiculoPage.agregarVehiculo(datosVehiculo);
+    }
+
+    @Step
+    public void siguiente(){
         vehiculoPage.clickSiguiente();
+    }
+
+    @Step
+    public void validarAvanceSiguientePagina() {
+        vehiculoPage.validarAvanceSiguientePagina();
     }
 }

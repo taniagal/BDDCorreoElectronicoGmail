@@ -18,13 +18,16 @@
         <assertj.core.version>3.4.0</assertj.core.version>
         <lambdaj.version>2.3.3</lambdaj.version>
         <jbehave.core.version>4.0.5</jbehave.core.version>
-        <serenity.maven.plugin.version>1.1.9</serenity.maven.plugin.version>
+        <serenity.maven.plugin.version>1.1.25</serenity.maven.plugin.version>
         <maven.surefire.plugin>2.19.1</maven.surefire.plugin>
         <maven.failsafe.plugin>2.19.1</maven.failsafe.plugin>
         <maven.compiler.plugin>3.2</maven.compiler.plugin>
         <maven.compiler.plugin.source>1.7</maven.compiler.plugin.source>
         <maven.compiler.plugin.target>1.7</maven.compiler.plugin.target>
+        <!--<webdriver.driver>phantomjs</webdriver.driver>-->
+        <!--<phantomjs.binary.path>phantomjs.exe</phantomjs.binary.path>-->
         <webdriver.driver>chrome</webdriver.driver>
+        <webdriver.chrome.driver>chromedriver.exe</webdriver.chrome.driver>
     </properties>
 
     <repositories>
@@ -62,6 +65,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-junit</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.simple.version}</version>
@@ -88,38 +96,40 @@
             <version>${jbehave.core.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin}</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
             </plugin>
+
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven.failsafe.plugin}</version>
                 <configuration>
                     <includes>
                         <include>**/policycenter/*.java</include>
-                        <include>**/policy/coberturas/CoberturaMrcValidaciones.java</include>
                     </includes>
                     <excludes>
                         <exclude>**/policycenter/MainStories.java</exclude>
                     </excludes>
-                    <argLine>-Xmx1024m -XX:MaxPermSize=1024m</argLine>
-               <!--     <perCoreThreadCount>true</perCoreThreadCount>
-                    <parallel>classes</parallel>
-                    <threadCount>3</threadCount>
-                    <forkCount>3C</forkCount>-->
 
-                    <perCoreThreadCount>true</perCoreThreadCount>
+                    <!--<parallel>methods</parallel>-->
+                    <!--<perCoreThreadCount>true</perCoreThreadCount>-->
                     <!--<threadCount>2</threadCount>-->
-                    <forkCount>3</forkCount>
+                    <!--<parallelTestsTimeoutForcedInSeconds>0</parallelTestsTimeoutForcedInSeconds>-->
+                    <reuseForks>false</reuseForks>
+                    <forkCount>1C</forkCount>
+                    <forkedProcessTimeoutInSeconds>0</forkedProcessTimeoutInSeconds>
+                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                    <!--<workingDirectory>FORK_DIRECTORY_${surefire.forkNumber}</workingDirectory>-->
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
+                        <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
+                        <!--<phantomjs.binary.path>${phantomjs.binary.path}</phantomjs.binary.path>-->
                     </systemPropertyVariables>
                 </configuration>
                 <executions>
@@ -131,6 +141,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -140,10 +151,18 @@
                     <target>${maven.compiler.plugin.target}</target>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.maven.plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.serenity-bdd</groupId>
+                        <artifactId>serenity-core</artifactId>
+                        <version>${serenity.version}</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <id>serenity-reports</id>
@@ -154,6 +173,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 </project>

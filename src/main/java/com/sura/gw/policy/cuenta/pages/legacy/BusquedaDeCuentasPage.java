@@ -1,20 +1,22 @@
 package com.sura.gw.policy.cuenta.pages.legacy;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.TimeUnit;
 
-/**
- * Created by andralgu on 06/07/2016.
- */
-public class BusquedaDeCuentasPage extends Guidewire {
+
+public class BusquedaDeCuentasPage extends Commons {
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     @FindBy(xpath=".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-labelEl']")
     private WebElementFacade lblTipoDocumento;
@@ -116,9 +118,10 @@ public class BusquedaDeCuentasPage extends Guidewire {
             txtSegundoNombre.waitUntilVisible().waitUntilEnabled().sendKeys(segundoNombre);
             txtPrimerApellido.waitUntilVisible().waitUntilEnabled().sendKeys(primerApellido);
             txtSegundoApellido.waitUntilVisible().waitUntilEnabled().sendKeys(segundoApellido);
+            waitUntil(1000);
             btnBuscar.waitUntilClickable().click();
         } catch (StaleElementReferenceException elemento){
-            elemento.printStackTrace();
+            LOGGER.info("Problema buscando cuenta" +  elemento);
         }
     }
 

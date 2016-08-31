@@ -2,31 +2,24 @@ package com.sura.policycenter.selenium.definitions;
 
 
 import com.google.inject.name.Named;
-import java.util.HashMap;
-import java.util.Map;
 import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.CotizacionDePolizaSteps;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Manual;
+import java.util.HashMap;
+import java.util.Map;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.WebDriver;
+
 
 
 public class CotizacionDePolizaDefinitions {
-
-    private InicioPage inicioPage() {
-        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
-    }
-
-    private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
-
     @Steps
     CotizacionDePolizaSteps cotizacionDePolizaSteps;
+
+    private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
     public CotizacionDePolizaDefinitions(){
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
@@ -43,16 +36,13 @@ public class CotizacionDePolizaDefinitions {
         infoCotizacionPoliza.put("costoTotal", "Costo total");
     }
 
+    private InicioPage inicioPage() {
+        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
+    }
+
     @Given("he realizado la cotizacion <cotizacion>")
     public void irALaCotizacion(@Named("cotizacion") String cotizacion) {
         inicioPage().irABuscarSubPoliza(cotizacion);
-    }
-
-    @SuppressWarnings("EmptyMethod")
-    @Given("se ha realizado la cotizacion")
-    @Manual
-    public void realizarCotizacion(){
-        //Se ejecuta manualmenye
     }
 
     @When("ingrese al detalle de la cotizacion")
@@ -73,27 +63,6 @@ public class CotizacionDePolizaDefinitions {
     @When("el tipo de riesgo es CHASIS")
     public void validarTipoRiesgoChasis(){
         cotizacionDePolizaSteps.validarTipoRiesgo();
-    }
-
-    @SuppressWarnings("EmptyMethod")
-    @When("el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
-    @Manual
-    public void validarTipoRiesgoCausalTecnica(){
-        //Se ejecuta manualmente
-    }
-
-    @SuppressWarnings("EmptyMethod")
-    @When("el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA")
-    @Manual
-    public void validarTipoRiesgoCausalMoral(){
-        //Se ejecuta manualmente
-    }
-
-    @SuppressWarnings("EmptyMethod")
-    @When("seleccione dicha cotizacion")
-    @Manual
-    public void seleccionarCotizacion(){
-        //Se ejecuta manualmente
     }
 
     @When("las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable")
@@ -157,17 +126,8 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.validarBloqueoPorExclusividad(mensaje);
     }
 
-    @SuppressWarnings("EmptyMethod")
-    @Then("no se debe permitir continuar con la cotizacion, no se debe mostrar ningun valor de cotizacion al cliente")
-    @Manual
-    public void thenValidarBloqueo(){
-        //Se ejecuta manualmente
-    }
-
-    @SuppressWarnings("EmptyMethod")
-    @Then("no se debe permitir continuar con la cotizacion y mostrar un mensaje")
-    @Manual
-    public void thenMostrarMensaje(){
-        //Se ejecuta manualmente
+    @Then("se debe mostrar un mensaje <mensaje> de advertencia sin bloquear la cotizacion")
+    public void validarNoBloqueoCotizacion(@Named("mensaje") String mensaje){
+        cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
     }
 }

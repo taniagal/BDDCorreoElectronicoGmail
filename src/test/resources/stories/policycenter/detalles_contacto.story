@@ -1,5 +1,9 @@
+Detalles Contacto
+
 Meta:
-@issue #SUGWUSC-14969
+@issue #CDSEG-940
+@automatizador Nelson Mosquera
+@sprint 1
 
 Narrative:
 Como usuario

@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.policycenter.model.Aseguradora;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -14,7 +14,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class CoaseguroPage extends Guidewire {
+public class CoaseguroPage extends Commons {
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade linkAgregarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:ReferencePolicyNumber-inputEl']")
@@ -41,9 +41,9 @@ public class CoaseguroPage extends Guidewire {
     }
 
     public void validarCampos() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
         linkAgregarCoaseguro.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
         campoTxtDastosAdministrativos.waitUntilPresent();
         radioBotonLider.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
@@ -96,7 +96,7 @@ public class CoaseguroPage extends Guidewire {
     }
 
     public void verificarCoaseguro() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
         MatcherAssert.assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
 

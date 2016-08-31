@@ -1,30 +1,29 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+public class HistorialCuentaPage extends Commons {
 
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-
-public class HistorialCuentaPage extends Guidewire {
+    Actions act = new Actions(getDriver());
     @FindBy(xpath=".//*[@id='TabBar:AccountTab-btnWrap']")
     private WebElementFacade mnuCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
     private WebElementFacade txtNumCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
     private WebElementFacade btnBuscarCuenta;
-    @FindBy(xpath="//tr[13]/td/div/span")
+    @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_History']/div")
     private WebElementFacade mnuHistorial;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
     private WebElementFacade btnMostrarRelacionadoCon;
@@ -73,13 +72,26 @@ public class HistorialCuentaPage extends Guidewire {
         super(driver);
     }
 
+    public void seleccionarCuenta(String numCuenta) {
+        waitUntil(2000);
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(mnuCuenta).shouldBePresent();
+        mnuCuenta.click();
+        waitUntil(3000);
+        mnuCuenta.click();
+        waitUntil(1000);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        waitUntil(2000);
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(txtNumCuenta).shouldBePresent();
+        txtNumCuenta.typeAndEnter(numCuenta);
+        waitUntil(2000);
+    }
+
     public void buscarCuenta(String numCuenta) {
-        Actions act = new Actions(getDriver());
-        mnuCuenta.waitUntilEnabled();
+        waitFor(mnuCuenta).shouldBePresent();
         act.sendKeys(mnuCuenta,Keys.ARROW_DOWN).build().perform();
         act.moveToElement(txtNumCuenta).click().build().perform();
         setImplicitTimeout(1, TimeUnit.SECONDS);
-        waitABit(1000);
+        waitUntil(2000);
         txtNumCuenta.waitUntilEnabled();
         txtNumCuenta.type(numCuenta);
         btnBuscarCuenta.waitUntilEnabled();
@@ -88,47 +100,51 @@ public class HistorialCuentaPage extends Guidewire {
     }
 
     public void seleccionarHistorial() {
-        mnuHistorial.waitUntilEnabled();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(mnuHistorial).shouldBePresent();
         mnuHistorial.click();
-        waitABit(3000);
+        waitUntil(3000);
     }
 
     public void buscarCuentaRelacionadoCon(){
-        btnMostrarRelacionadoCon.waitUntilEnabled();
+        btnMostrarRelacionadoCon.waitUntilPresent();
         btnMostrarRelacionadoCon.click();
         itmRelacionadoCon.waitUntilEnabled();
         itmRelacionadoCon.click();
         btnBuscarItem.click();
-        waitABit(3000);
+        waitUntil(3000);
     }
 
     public void buscarCuentaProducto(){
-        btnMostrarProducto.waitUntilEnabled();
+        waitFor(btnMostrarProducto).shouldBePresent();
         btnMostrarProducto.click();
+        waitUntil(1500);
         itmProducto.click();
+        waitUntil(1500);
         btnBuscarItem.click();
-        waitABit(3000);
+        waitUntil(3000);
     }
 
     public void validarResultadoBusqueda(){
-        assertThat(itemTipoResultado.getText().toString(), is(not(equalTo(""))));
-        assertThat(itemTipoResultado.getText().toString(), is(not(equalTo(null))));
+        waitFor(itemTipoResultado).shouldBePresent();
+        MatcherAssert.assertThat(itemTipoResultado.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(""))));
+        MatcherAssert.assertThat(itemTipoResultado.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
     }
 
     public void validarColumnasHistorialCuenta(){
-        assertThat(colTipo.getText().toString(), is(not(equalTo(null))));
-        assertThat(colUsuario.getText().toString(), is(not(equalTo(null))));
-        assertThat(colFechaTransaccion.getText().toString(), is(not(equalTo(null))));
-        assertThat(colDescripcion.getText().toString(), is(not(equalTo(null))));
-        assertThat(colProducto.getText().toString(), is(not(equalTo(null))));
-        assertThat(colPoliza.getText().toString(), is(not(equalTo(null))));
-        assertThat(colTransaccionPoliza.getText().toString(), is(not(equalTo(null))));
-        assertThat(colValorOriginal.getText().toString(), is(not(equalTo(null))));
-        assertThat(colValorNuevo.getText().toString(), is(not(equalTo(null))));
+        waitFor(colTipo).shouldBePresent();
+        MatcherAssert.assertThat(colTipo.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colUsuario.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colFechaTransaccion.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colDescripcion.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colProducto.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colPoliza.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colTransaccionPoliza.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colValorOriginal.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colValorNuevo.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
     }
 
     public void buscarCuentaConMultiplesOpciones(String usuario, String fechaDesde, String fechaHasta){
-        btnMostrarRelacionadoCon.waitUntilEnabled();
+        waitFor(btnMostrarRelacionadoCon).shouldBePresent();
         btnMostrarRelacionadoCon.click();
         itmRelacionadoConRenovacion.click();
         txtUsuario.waitUntilEnabled();
@@ -139,24 +155,27 @@ public class HistorialCuentaPage extends Guidewire {
         txtFechaHasta.type(fechaHasta);
         btnBuscarItem.waitUntilEnabled();
         btnBuscarItem.click();
-        waitABit(3000);
+        waitUntil(3000);
     }
 
     public void validarDatosOpcionesMultiples(){
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String usuario = txtUsuario.getValue().toString();
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            assertThat(cells.get(1).getText(), is(equalTo(usuario)));
+            MatcherAssert.assertThat(cells.get(1).getText(), Is.is(Matchers.equalTo(usuario)));
         }
     }
 
     public void validarResultadoProducto(){
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String producto = txtProducto.getValue().toString();
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            assertThat(cells.get(4).getText(), is(equalTo(producto)));
+            MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.equalTo(producto)));
         }
     }
+
 }

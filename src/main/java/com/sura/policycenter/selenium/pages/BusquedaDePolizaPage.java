@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class BusquedaDePolizaPage extends PageObject {
 
-    Guidewire guidewire = new Guidewire(getDriver());
+    Commons commons = new Commons(getDriver());
 
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:PolicyNumberCriterion-inputEl']")
     WebElementFacade txtNumeroPoliza;
@@ -88,13 +88,14 @@ public class BusquedaDePolizaPage extends PageObject {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaResultados).waitUntilPresent();
         List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
         Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
-        MatcherAssert.assertThat(grdNumeroPoliza.getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
-        MatcherAssert.assertThat(grdAseguradoNombrado.getText(), Is.is(Matchers.equalTo(sampleData.get("nombreAsegurado"))));
-        MatcherAssert.assertThat(grdProducto.getText(), Is.is(Matchers.equalTo(sampleData.get("producto"))));
-        MatcherAssert.assertThat(grdEstado.getText(), Is.is(Matchers.equalTo(sampleData.get("estado"))));
-        MatcherAssert.assertThat(grdFechaVigencia.getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(grdFechaExpiracion.getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(grdAgente.getText(), Is.is(Matchers.equalTo(sampleData.get("agente"))));
+        List<WebElement> celdas = allRows.get(this.encontrarPoliza(sampleData.get("numeroPoliza"), allRows)).findElements(By.tagName("td"));
+        MatcherAssert.assertThat(celdas.get(2).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
+        MatcherAssert.assertThat(celdas.get(3).getText(), Is.is(Matchers.equalTo(sampleData.get("nombreAsegurado"))));
+        MatcherAssert.assertThat(celdas.get(5).getText(), Is.is(Matchers.equalTo(sampleData.get("producto"))));
+        MatcherAssert.assertThat(celdas.get(6).getText(), Is.is(Matchers.equalTo(sampleData.get("estado"))));
+        MatcherAssert.assertThat(celdas.get(7).getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(celdas.get(8).getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(celdas.get(9).getText(), Is.is(Matchers.equalTo(sampleData.get("agente"))));
 
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
@@ -102,10 +103,22 @@ public class BusquedaDePolizaPage extends PageObject {
         }
     }
 
+    public Integer encontrarPoliza(String poliza, List<WebElement> filas) {
+        Integer filaPoliza = 0;
+        for (WebElement row : filas) {
+            List<WebElement> columna = row.findElements(By.tagName("td"));
+            if (poliza.equals(columna.get(2).getText())) {
+                return filaPoliza;
+            }
+            filaPoliza++;
+        }
+        return filaPoliza;
+    }
+
     public void limpiarCampos() {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent();
         botonRestablecer.click();
-        guidewire.waitUntil(3000);
+        commons.waitUntil(3500);
     }
 
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
@@ -118,7 +131,7 @@ public class BusquedaDePolizaPage extends PageObject {
 
 
     public void validarMensajeDeConsultaSinResultados(String mensaje) {
-        msjValidacion.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(msjValidacion).waitUntilPresent();
         MatcherAssert.assertThat(msjValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 

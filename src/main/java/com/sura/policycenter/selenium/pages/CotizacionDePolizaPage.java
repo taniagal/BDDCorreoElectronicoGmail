@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.google.common.base.Function;
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -15,12 +15,9 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.slf4j.LoggerFactory;
 
 
 public class CotizacionDePolizaPage extends PageObject{
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(CotizacionDePolizaPage.class);
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     private WebElementFacade tituloDePagina;
@@ -82,28 +79,24 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade itemRevisionPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:SubmissionWizard_ReviewSummaryDV:PrimaryNamedInsured-inputEl']")
     private WebElementFacade tomadorPrimario;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:ReviewSummaryCV:0:PolicyLineSummaryPanelSet:0:0:drivername-inputEl']")
-    private WebElementFacade asegurado;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade grupoMensajes;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PreQualification']/div/span")
     private WebElementFacade botonCalificacion;
-    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
-    private WebElementFacade divMensaje;
 
     public CotizacionDePolizaPage(WebDriver driver){
         super(driver);
     }
 
     public void ingresarARevisionPoliza() {
-        waitForTextToAppear("Revisión de póliza", 1000);
+        waitForTextToAppear("Revisión de póliza");
         itemRevisionPoliza.click();
     }
 
     public void ingresarACotizacion() {
-        WebElementFacade titulo = withTimeoutOf(10, TimeUnit.SECONDS).find(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']");
+        WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']");
         if(titulo.isCurrentlyVisible()){
-            waitForTextToAppear("Calificación",5000);
+            waitForTextToAppear("Calificación");
         }else{
             waitFor(botonCalificacion).shouldBeVisible();
             botonCalificacion.click();
@@ -111,13 +104,13 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void verDetalleCotizacion() {
-        waitForTextToAppear("Calificación",10000);
+        waitForTextToAppear("Calificación");
         setImplicitTimeout(2, TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
-            waitForTextToAppear(tituloDePagina.getText(),2000);
+            waitForTextToAppear(tituloDePagina.getText());
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
         }else if(tituloCalificacion.isPresent()){
-            waitForTextToAppear(tituloCalificacion.getText(),2000);
+            waitForTextToAppear(tituloCalificacion.getText());
             MatcherAssert.assertThat(tituloCalificacion.getText(), Is.is(Matchers.equalTo("Calificación")));
         }
         resetImplicitTimeout();
@@ -141,8 +134,7 @@ public class CotizacionDePolizaPage extends PageObject{
 
         if (campoNumeroDeCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("numeroCotizacion"))) {
             datosCotizacion = informacionCotizacion.getRows().get(0);
-        }
-        else{
+        }else{
             datosCotizacion = informacionCotizacion.getRows().get(1);
         }
         MatcherAssert.assertThat(campoNumeroDeCotizacion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("numeroCotizacion"))));
@@ -157,7 +149,6 @@ public class CotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(campoImpuestosYCargos.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("impuestos"))));
         MatcherAssert.assertThat(campoCostoTotal.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("total"))));
         MatcherAssert.assertThat(campoVigenciaDePoliza.getText(), Is.is(Matchers.notNullValue()));
-
     }
 
     public void validarDireccion(String direccion) {
@@ -168,19 +159,20 @@ public class CotizacionDePolizaPage extends PageObject{
         waitForTextToAppear("Resultados de validación",20000);
         boolean validacionMensaje = grupoMensajes.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
-        Guidewire gw = new Guidewire(getDriver());
+        Commons gw = new Commons(getDriver());
         gw.waitUntil(15000);
+
     }
 
     public void validarTipoRiesgo() {
         setImplicitTimeout(2,TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
-            withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
+            waitFor(tituloDePagina).shouldBePresent();
         }else if(tituloCalificacion.isPresent()){
-            withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloCalificacion).shouldBePresent();
+            waitFor(tituloCalificacion).shouldBePresent();
         }
         resetImplicitTimeout();
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizacionCalificacion).shouldBePresent();
+        waitFor(botonCotizacionCalificacion).shouldBePresent();
         botonCotizacionCalificacion.click();
     }
 
@@ -193,7 +185,7 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarDireccionTomador(String direccion) {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoDireccion).shouldBePresent();
+        waitFor(campoDireccion).shouldBePresent();
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
 

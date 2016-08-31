@@ -1,4 +1,6 @@
 package com.sura.policycenter;
 
-public class ContactoOrdenesDeTrabajo{
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class ContactoOrdenesDeTrabajo extends SerenityStory{
 }

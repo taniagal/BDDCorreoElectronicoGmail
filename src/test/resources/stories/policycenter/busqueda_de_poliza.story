@@ -1,7 +1,9 @@
 Busqueda De Poliza
 
 Meta:
-@issue #SUGWUSC-14985
+@issue #CDSEG-1012
+@Automatizador Eliana Alvarez
+@Sprint 1
 
 Narrative:
 Como usuario de PolicyCenter
@@ -9,7 +11,7 @@ Quiero ser capaz de buscar una poliza asociada a un contacto
 Para ver el detalle de la misma
 
 
-Scenario: Consultar polizas por número de poliza no existente
+Scenario: Consultar polizas por numero de poliza no existente
 GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar una poliza
 When la busco por numero de poliza <buscarNumeroPoliza>
@@ -19,17 +21,17 @@ Examples:
 |buscarNumeroPoliza|mensaje|
 |34565456543|La búsqueda no devolvió resultados.|
 
-Scenario: Consultar polizas por número de cuenta existente
+Scenario: Consultar polizas por numero de cuenta existente
 When la busco por numero de cuenta <numeroCuenta>
 Then se debe visualizar la siguiente información:
 |numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
-|TEST_22222222|DORIAN EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
+|TEST_22222222|DORIAN STIWAR EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
 
 Examples:
 |numeroCuenta|
 |C001888888|
 
-Scenario: Consultar polizas por número de cuenta no existente
+Scenario: Consultar polizas por numero de cuenta no existente
 When la busco por numero de cuenta <numeroCuenta>
 Then debe mostrar el mensaje <mensaje>
 
@@ -53,7 +55,7 @@ Examples:
 |agente|mensaje|
 |SURA|Se debe especificar al menos número de póliza o número de cuenta|
 
-Scenario: Consultar polizas solo por código agente
+Scenario: Consultar polizas solo por codigo agente
 When la busco por codigo de agente <codigoAgente>
 Then debe mostrar el mensaje <mensaje>
 
@@ -65,7 +67,7 @@ Scenario: Consultar polizas por numero de cuenta y producto
 When la busco por numero de cuenta <numeroCuenta> y producto <producto>
 Then se debe visualizar la siguiente información:
 |numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
-|TEST_22222222|DORIAN EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
+|TEST_22222222|DORIAN STIWAR EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
 
 Examples:
 |numeroCuenta|producto|
@@ -75,7 +77,7 @@ Scenario: Consultar polizas por numero de cuenta y agente
 When la busco por numero de cuenta <numeroCuenta> y agente <agente>
 Then se debe visualizar la siguiente información:
 |numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
-|TEST_22222222|DORIAN EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
+|TEST_22222222|DORIAN STIWAR EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
 
 Examples:
 |numeroCuenta|agente|
@@ -85,7 +87,7 @@ Scenario: Consultar polizas por numero de cuenta  y codigo de agente
 When la busco por numero de cuenta <numeroCuenta> y codigo de agente <codigoAgente>
 Then se debe visualizar la siguiente información:
 |numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
-|TEST_22222222|DORIAN EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
+|TEST_22222222|DORIAN STIWAR EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
 
 Examples:
 |numeroCuenta|codigoAgente|
@@ -95,7 +97,7 @@ Scenario: Consultar polizas por numero de cuenta, producto y codigo de agente
 When la busco por numero de cuenta <numeroCuenta>, producto <producto> y codigo de agente <codigoAgente>
 Then se debe visualizar la siguiente información:
 |numeroPoliza|nombreAsegurado|numeroCuenta|producto|estado|fechaVigencia|fechaExpiracion|agente|
-|TEST_22222222|DORIAN EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
+|TEST_22222222|DORIAN STIWAR EASTMOND PULGARIN|C001888888|Autos|Vigentes|04/18/2016|10/18/2016|SURA|
 
 Examples:
 |numeroCuenta|producto|codigoAgente|

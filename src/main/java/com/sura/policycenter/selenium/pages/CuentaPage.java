@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -8,7 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class CuentaPage extends Guidewire{
+public class CuentaPage extends Commons {
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade campoTxtNombreCompania;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -88,11 +88,11 @@ public class CuentaPage extends Guidewire{
     public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitUntil(3500);
+        waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);
-        waitUntil(3000);
+        waitForComboValue(comboBoxCiudad,ciudad);
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        waitUntil(1000);
+        waitForComboValue(comboBoxTipoDireccionNuevaCuentaPersonal,tipoDireccion);
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {

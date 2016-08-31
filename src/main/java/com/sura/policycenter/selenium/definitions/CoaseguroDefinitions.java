@@ -1,25 +1,19 @@
 package com.sura.policycenter.selenium.definitions;
 
 
-import com.sura.guidewire.selenium.SeusLoginSteps;
+import com.sura.commons.selenium.SeusLoginSteps;
 import com.sura.policycenter.model.Aseguradora;
 import com.sura.policycenter.selenium.steps.CoaseguroSteps;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import org.openqa.selenium.WebDriver;
 
 
 public class CoaseguroDefinitions {
-
-    @Managed
-    WebDriver driver;
     @Steps
     CoaseguroSteps coaseguroSteps;
     @Steps
@@ -41,7 +35,7 @@ public class CoaseguroDefinitions {
     @When("agregue las aseguradoras y su porcentaje de participacion")
     public void agregarCoaseguro(){
         agregarAseguradora("Sura","60");
-        agregarAseguradora("Axxa","40");
+        agregarAseguradora("ACE SEGUROS S.A.","40");
         coaseguroSteps.agregarCoaseguro(aseguradoras);
     }
 
@@ -73,7 +67,7 @@ public class CoaseguroDefinitions {
     @When("el porcentaje de paticipacion total no sea 100%")
     public void agregarCoaseguroParticipantes(){
         agregarAseguradora("Sura","60");
-        agregarAseguradora("Axxa","38");
+        agregarAseguradora("ACE SEGUROS S.A.","38");
         coaseguroSteps.agregarCoaseguro2(aseguradoras);
     }
 

@@ -9,8 +9,6 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
-
 public class InformacionDePolizaMrcDefinitions {
 
     @Managed
@@ -20,9 +18,8 @@ public class InformacionDePolizaMrcDefinitions {
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
 
 
-
     @Given("se inicio una nueva suscripcion <numeroCuenta>")
-    public void iniciaNuevaSuscripcionCuenta(@Named("numeroCuenta")String numeroCuenta) {
+    public void iniciaNuevaSuscripcionCuenta(@Named("numeroCuenta") String numeroCuenta) {
         informacionDePolizaMrcSteps.navegar_barra_superior(numeroCuenta);
         informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
     }
@@ -33,13 +30,13 @@ public class InformacionDePolizaMrcDefinitions {
     }
 
     @When("seleccione el producto <nomProducto> a expedir")
-    public void seleccione_el_producto(@Named("nomProducto") String nomProducto){
+    public void seleccioneElProducto(@Named("nomProducto") String nomProducto){
         informacionDePolizaMrcSteps.seleccionar_producto(nomProducto);
     }
 
     @Then("se debe visualizar los datos del tomador <tomador>")
-    public void datosDelTomadorYAdicional(@Named("tomador")String tomador) {
-         informacionDePolizaMrcSteps.valida_datos_del_tomador(tomador);
+    public void datosDelTomadorYAdicional(@Named("tomador") String tomador) {
+        informacionDePolizaMrcSteps.valida_datos_del_tomador(tomador);
     }
 
     /*
@@ -47,19 +44,15 @@ public class InformacionDePolizaMrcDefinitions {
     */
 
     @When("modifique la fecha de inicio de vigencia de la poliza <fechaInicioVigencia>")
-    public void modificaFechaInicioFechaFin(@Named("fechaInicioVigencia")String fechaInicioVigencia) {
-         informacionDePolizaMrcSteps.ingresar_fecha_de_vigencia(fechaInicioVigencia);
+    public void modificaFechaInicioFechaFin(@Named("fechaInicioVigencia") String fechaInicioVigencia) {
+        informacionDePolizaMrcSteps.ingresar_fecha_de_vigencia(fechaInicioVigencia);
     }
 
     @Then("se debe mostrar un mensaje <mensaje> de error")
-    public void mostarMensaError(@Named("mensaje")String mensaje) {
+    public void mostarMensaError(@Named("mensaje") String mensaje) {
         informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
     }
 
-    @Then("bloquear la operacion")
-    public void bloqueoDeAplicacion() {
-        informacionDePolizaMrcSteps.bloqueo_de_aplicacion();
-    }
 
     /*
     * 3 Historia

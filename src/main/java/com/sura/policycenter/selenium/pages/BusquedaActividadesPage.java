@@ -1,7 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -12,13 +14,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class BusquedaActividadesPage extends PageObject {
 
-    Guidewire guidewire = new Guidewire(getDriver());
+    Commons commons = new Commons(getDriver());
 
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:AssignedUser-inputEl']")
     private WebElementFacade txtAsignadoA;
@@ -70,7 +70,7 @@ public class BusquedaActividadesPage extends PageObject {
     public void irABuscarActividades() {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuBuscar).shouldBePresent();
         menuBuscar.click();
-        guidewire.waitUntil(2000);
+        commons.waitUntil(2000);
         menuBuscarActividades.click();
         waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();
@@ -83,10 +83,8 @@ public class BusquedaActividadesPage extends PageObject {
 
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
-        //withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.waitUntilVisible().waitUntilClickable().click();
-        grdFechaVencimiento.waitUntilPresent().waitUntilVisible();
-        //withTimeoutOf(15, TimeUnit.SECONDS).waitFor(grdFechaVencimiento).waitUntilPresent();
+        grdFechaVencimiento.waitUntilVisible().waitUntilVisible();
         MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
         MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
@@ -103,7 +101,7 @@ public class BusquedaActividadesPage extends PageObject {
     public void limpiarFiltros() {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent();
         botonRestablecer.click();
-        guidewire.waitUntil(2000);
+        commons.waitUntil(2000);
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {

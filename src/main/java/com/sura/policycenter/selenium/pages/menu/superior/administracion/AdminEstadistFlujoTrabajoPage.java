@@ -1,12 +1,12 @@
 package com.sura.policycenter.selenium.pages.menu.superior.administracion;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import org.openqa.selenium.WebDriver;
 
 /**
  * Created by jorghome on 11/05/2016.
  */
-public class AdminEstadistFlujoTrabajoPage extends Guidewire {
+public class AdminEstadistFlujoTrabajoPage extends Commons {
     public AdminEstadistFlujoTrabajoPage(WebDriver driver) {
         super(driver);
     }

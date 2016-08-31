@@ -1,19 +1,17 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.policycenter.constantes.EnumContacto;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-
-public class NuevoContactoPage extends Guidewire {
+public class NuevoContactoPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade tipoDocumento;
@@ -48,11 +46,11 @@ public class NuevoContactoPage extends Guidewire {
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
     private WebElementFacade comboBoxCiudad;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade comboBoxDepartamento2;
+    private WebElementFacade comboBoxDepartamentoEdit;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
-    private WebElementFacade comboBoxCiudad2;
+    private WebElementFacade comboBoxCiudadEdit;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
-    private WebElementFacade tipoDireccion2;
+    private WebElementFacade comboBoxTipoDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade direccion2;
 
@@ -86,20 +84,20 @@ public class NuevoContactoPage extends Guidewire {
     public void ingresarDireccionDepartamenteYCiudad(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(4000);
+        waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(1500);
+        waitForComboValue(comboBoxCiudad,ciudad);
     }
 
     public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
         waitABit(2000);
         direccion2.sendKeys(direccion);
-        selectItem(comboBoxDepartamento2,departamento);
-        waitABit(4000);
-        selectItem(comboBoxCiudad2,ciudad);
-        waitABit(2000);
-        selectItem(tipoDireccion2,tipoDireccion);
-        waitABit(1500);
+        selectItem(comboBoxDepartamentoEdit,departamento);
+        waitForComboValue(comboBoxDepartamentoEdit,departamento);
+        selectItem(comboBoxCiudadEdit,ciudad);
+        waitForComboValue(comboBoxCiudadEdit,ciudad);
+        selectItem(comboBoxTipoDireccion, tipoDireccion);
+        waitForComboValue(comboBoxTipoDireccion,tipoDireccion);
     }
 
     public void actualizarPersonaNatural(String primerNombre) {
@@ -107,7 +105,7 @@ public class NuevoContactoPage extends Guidewire {
         this.botonActualizar.click();
         waitABit(2000);
         nombreContact.waitUntilPresent();
-        assertThat(this.nombreContact.getText(), containsString(primerNombre));
+        MatcherAssert.assertThat(this.nombreContact.getText(), Matchers.containsString(primerNombre));
     }
 
     private void actualizar() {
@@ -150,7 +148,7 @@ public class NuevoContactoPage extends Guidewire {
         this.botonActualizar.click();
         waitABit(2000);
         desRazonSocial.waitUntilPresent();
-        assertThat(this.desRazonSocial.getText().toString(), containsString(razonSocial));
+        MatcherAssert.assertThat(this.desRazonSocial.getText().toString(), Matchers.containsString(razonSocial));
 
     }
 
@@ -158,7 +156,7 @@ public class NuevoContactoPage extends Guidewire {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
         waitABit(1000);
-        assertThat(this.contactoExistente.getText().toString(), containsString("Ya existe un contacto con el mismo número de identificación"));
+        MatcherAssert.assertThat(this.contactoExistente.getText().toString(), Matchers.containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 
     private Boolean esTelefonoFijo(String tipoTelefono) {
@@ -190,7 +188,7 @@ public class NuevoContactoPage extends Guidewire {
                     flag = true;
                 }
                 if (flag) {
-                    assertThat(textoRequerido, containsString(mensajeRequerido.getMensajeRequerido()));
+                    MatcherAssert.assertThat(textoRequerido, Matchers.containsString(mensajeRequerido.getMensajeRequerido()));
                 }
             }
         }

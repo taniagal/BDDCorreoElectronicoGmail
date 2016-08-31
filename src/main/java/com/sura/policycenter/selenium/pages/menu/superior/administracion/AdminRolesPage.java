@@ -1,12 +1,12 @@
 package com.sura.policycenter.selenium.pages.menu.superior.administracion;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import org.openqa.selenium.WebDriver;
 
 /**
  * Created by jorghome on 10/05/2016.
  */
-public class AdminRolesPage extends Guidewire {
+public class AdminRolesPage extends Commons {
     public AdminRolesPage(WebDriver driver) {
         super(driver);
     }

@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages.menu;
 
-import com.sura.guidewire.selenium.Guidewire;
+import com.sura.commons.selenium.Commons;
 import com.sura.policycenter.selenium.pages.menu.acciones.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.acciones.contacto.ContactoNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.*;
@@ -21,18 +21,18 @@ import com.sura.policycenter.selenium.pages.menu.superior.equipo.EquipoPage;
 import com.sura.policycenter.selenium.pages.menu.superior.escritorio.*;
 import com.sura.policycenter.selenium.pages.menu.superior.poliza.NuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.superior.poliza.PolizaBuscarPage;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
-import java.util.concurrent.TimeUnit;
 
-public class Navegacion extends Guidewire {
 
-    private final Guidewire gw = new Guidewire(getDriver());
+public class Navegacion extends Commons {
+
+    private final Commons gw = new Commons(getDriver());
     private final Actions act = new Actions(getDriver());
 
     // Objetos menu Escritorio
@@ -317,7 +317,8 @@ public class Navegacion extends Guidewire {
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(300);
         waitFor(mnuPoliza).shouldBeVisible();
-        mnuNumPoliza.typeAndEnter(numPoliza);
+        ingresarDato(mnuNumPoliza,numPoliza);
+        act.sendKeys(Keys.ENTER).build().perform();
         waitUntil(300);
         return new PolizaBuscarPage(getDriver());
     }
@@ -371,7 +372,7 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
-        waitUntil(1500);
+        waitUntil(3000);
         gw.deployMenu(mnuCuenta);
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
         waitForTextToAppear("Nueva cuenta");
@@ -680,7 +681,7 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta() {
-        waitFor(mnuAccionesCuenta).waitUntilClickable();
+        waitFor(mnuAccionesCuenta).waitUntilPresent();
         gw.deployMenu(mnuAccionesCuenta);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(300);
@@ -1081,10 +1082,10 @@ public class Navegacion extends Guidewire {
     }
 
     public CuentaNuevaCotizacionPage irANuevaCotizacion() {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mnuAccionesCuenta).shouldBePresent();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mnuAccionesCuenta).shouldBePresent();
         waitFor(mnuAccionesCuenta).shouldBeVisible();
         mnuAccionesCuenta.click();
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mnuNuevaCotizacion).shouldBePresent();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mnuNuevaCotizacion).shouldBePresent();
         mnuNuevaCotizacion.click();
         return new CuentaNuevaCotizacionPage(getDriver());
     }
@@ -1177,6 +1178,7 @@ public class Navegacion extends Guidewire {
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
         waitForTextToAppear("Cotizaciones de la cuenta");
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
+        waitUntil(1000);
         mnuAdmCotizaciones.waitUntilVisible().waitUntilClickable().click();
         waitUntil(800);
         return new OpcionesAdminitradorCotizaciones(getDriver());

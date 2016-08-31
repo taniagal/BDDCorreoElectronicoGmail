@@ -2,14 +2,16 @@ Nueva Poliza Individual
 
 Meta:
 
-@issue #CDSEG-812 SUW USC Polizas Colectivas
+@issue #CDSEG-812
+@Automatizador Eliana Alvarez
+@Sprint 4
 
 Narrative:
 Como usuario de Policy Center
 Quiero ser capaz de crear polizas colectivas e individuales
 Para las diferentes organizaciones, canales y productos
 
-Scenario: Validar la lista de organizaciones disponibles para crear una poliza nueva
+Scenario: Validar elementos de la pantalla cuando voy a crear una poliza individual
 GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar la cuenta <numCuenta>
 And quiero expedir una poliza nueva
@@ -23,6 +25,9 @@ Examples:
 |C000888888|DIRECTO|
 
 Scenario: Validar la lista de organizaciones disponibles para crear una poliza nueva
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
 When despliegue la lista de organizacion
 Then me debe mostrar las organizaciones:
 |organizacion|
@@ -31,6 +36,10 @@ Then me debe mostrar las organizaciones:
 |GMAC|
 |Sura|
 |Tuya|
+
+Examples:
+|numCuenta|agente|
+|C000888888|DIRECTO|
 
 Scenario: validar tabla de productos de acuerdo al tipo de poliza, organizacion y canal
 When seleccione la organizacion <organizacion>
@@ -41,9 +50,9 @@ And los botones de elegir producto deben estar habilitados
 
 Examples:
 |organizacion   |canal              |tipoPoliza|productos                    |
-|Bancolombia    |Leasing            |Individual|Autos,Multiriesgo corporativo|
-|Bancolombia    |Renting            |Individual|Autos,Multiriesgo corporativo|
-|Bancolombia    |Sufi               |Individual|Autos,Multiriesgo corporativo|
+|Bancolombia    |Leasing            |Individual|Multiriesgo corporativo|
+|Bancolombia    |Renting            |Individual|Multiriesgo corporativo|
+|Bancolombia    |Sufi               |Individual|Multiriesgo corporativo|
 |Bancolombia    |Televentas         |Individual|Autos,Multiriesgo corporativo|
 |Exito          |Exito              |Individual|Autos,Multiriesgo corporativo|
 |GMAC           |GMAC               |Individual|Autos,Multiriesgo corporativo|
@@ -51,4 +60,4 @@ Examples:
 |Sura           |Canal Tradicional  |Individual|Autos,Multiriesgo corporativo|
 |Sura           |Televentas         |Individual|Autos,Multiriesgo corporativo|
 |Sura           |Venta directa      |Individual|Autos,Multiriesgo corporativo|
-|Tuya           |Tuya               |Individual|Autos,Multiriesgo corporativo|
+|Tuya           |Tuya               |Individual|Multiriesgo corporativo|

@@ -2,11 +2,13 @@ Resumen Cuenta
 
 Meta:
 
+@issue #CDSEG-666
+@Automatizador Diego Cardona Acevedo
+@Sprint 2
+
 Narrative:
 Como usuario PolicyCenter
 Quiero poder ver el resumen de la cuenta de una persona juridica o natural, teniendo la posibilidad de editar dicha informacion
-
-@Issue SUGWUSC-10130 Account Summary
 
 Scenario: Mostrar resumen de la cuenta de persona juridica
 GivenStories: stories/policycenter/login_policy.story
@@ -89,3 +91,13 @@ Then se debe almacenar la direccion como la ingreso el usuario
 Examples:
 |tipoCuenta|numCuenta  |direccion       |
 |Compañía  |C010478975 |CRA 65 # 40 - 50|
+
+Scenario: Validar informacion oculta en resumen de la cuenta de persona natural
+Given estoy en una cuenta <numCuenta>
+When ingrese al resumen de la cuenta
+Then la informacion de actividades actuales, terminos de la poliza y transacciones de la poliza pendientes deben estar
+ocultos
+
+Examples:
+|numCuenta  |
+|C000888888 |

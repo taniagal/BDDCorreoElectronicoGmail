@@ -1,4 +1,10 @@
+Historial Cuenta
+
 Meta:
+
+@issue #CDSEG-925
+@Automatizador Diego Cardona Acevedo
+@Sprint 1
 
 Narrative:
 Como usuario de policy center
@@ -7,24 +13,13 @@ y que esta se actualice cada que se realice una transaccion a la cuenta o a una 
 
 Scenario: Historial de la cuenta
 GivenStories: stories/policycenter/login_policy.story
-Given estoy en una cuenta <numCuenta>
-When ingreso al historial
+Given ingreso a una cuenta <numCuenta>
+When ingrese al historial
 Then mostrar la informacion del historial de la cuenta
 
 Examples:
 |numCuenta |tipo|usuario|fechaTransaccion|descripcion|producto|poliza|transaccionPoliza|valorOriginal|valorNuevo|
-|C010478975|Tipo|Usuario|Fecha de transacción|Descripción|Producto|Póliza|Transacción de póliza|Valor original|Valor nuevo|
-
-Scenario: Busqueda de historial por usuario
-Meta:
-@Manual
-Given estoy en el historial de la cuenta <numCuenta>
-When indique un <usuario> para realizar la busqueda
-Then debo poder ver las transacciones asociadas a ese usuario especifico, que estan relacionadas con la cuenta y las polizas asociadas a ella.
-
-Examples:
-|numCuenta |usuario|
-|C010478975|Super User|
+|C000777777|Tipo|Usuario|Fecha de transacción|Descripción|Producto|Póliza|Transacción de póliza|Valor original|Valor nuevo|
 
 Scenario: Busqueda de historial por la opcion Relacionado con
 Given estoy en el historial de la cuenta <numCuenta>
@@ -33,8 +28,8 @@ Then debo poder ver las transacciones relacionadas a la opcion indicada en el ca
 And mostrar la informacion del historial de la cuenta
 
 Examples:
-|numCuenta|tipo|usuario|fechaTransaccion|descripcion|producto|poliza|transaccionPoliza|valorOriginal|valorNuevo|
-|C010478975|Tipo|Usuario|Fecha de transacción|Descripción|Producto|Póliza|Transacción de póliza|Valor original|Valor nuevo|
+|numCuenta |tipo|usuario|fechaTransaccion|descripcion|producto|poliza|transaccionPoliza|valorOriginal|valorNuevo|
+|C000777777|Tipo|Usuario|Fecha de transacción|Descripción|Producto|Póliza|Transacción de póliza|Valor original|Valor nuevo|
 
 Scenario: Busqueda de historial combinando multiples opciones: Usuario, Relacionado Con y Fechas
 Given estoy en el historial de la cuenta <numCuenta>
@@ -42,8 +37,8 @@ When indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> 
 Then debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda
 
 Examples:
-|numCuenta|Usuario|FechaDesde|FechaHasta
-|C010478975|Super User|01/01/2016|12/30/2016
+|numCuenta |Usuario   |FechaDesde|FechaHasta
+|C000777777|Super User|01/01/2016|12/30/2016
 
 Scenario: Busqueda de historial por la opcion producto
 Given estoy en el historial de la cuenta <numCuenta>
@@ -51,13 +46,24 @@ When indique el criterio de busqueda producto
 Then debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto
 
 Examples:
-|numCuenta|
-|C010478975|
+|numCuenta |
+|C000777777|
+
+Scenario: Busqueda de historial por usuario
+Meta:
+@manual
+Given estoy en el historial de la cuenta
+When indique un <usuario> para realizar la busqueda
+Then debo poder ver las transacciones asociadas a ese usuario especifico, que estan relacionadas con la cuenta y las polizas asociadas a ella.
+
+Examples:
+|numCuenta |usuario|
+|C010478975|Super User|
 
 Scenario: Busqueda del historial por rango de fechas, Sin indicar  la opción de fecha  Hasta
 Meta:
-@Manual
-Given estoy en el historial de la cuenta <numCuenta>
+@manual
+Given estoy en el historial de la cuenta
 When se realiza la busqueda por <fecha> y solo se indique la opcion desde
 Then debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion hasta corresponde a la fecha actual.
 
@@ -67,8 +73,8 @@ Examples:
 
 Scenario: Busqueda del historial por rango de fechas, sin indicar la opcion de fecha Desde
 Meta:
-@Manual
-Given estoy en el historial de la cuenta <numCuenta>
+@manual
+Given estoy en el historial de la cuenta
 When se realiza la busqueda por <fecha> y solo se indique la opcion hasta
 Then debo poder ver las transacciones en el rango de fechas seleccionado, teniendo en cuenta que la opcion desde corresponde a la fecha de inicio de la cuenta
 
@@ -78,8 +84,8 @@ Examples:
 
 Scenario: Busqueda del historial por rango de fechas
 Meta:
-@Manual
-Given estoy en el historial de la cuenta <numCuenta>
+@manual
+Given estoy en el historial de la cuenta
 When se realiza la busqueda por fecha ( <desde> - <hasta>)
 Then debo poder ver las transacciones en el rango de fechas seleccionado.
 
@@ -90,7 +96,7 @@ Examples:
 Scenario: Ver detalle de la transaccion - Poliza
 Meta:
 @manual
-Given estoy en el historial de la cuenta <numCuenta>
+Given estoy en el historial de la cuenta
 When seleccione  el  numero de la <poliza>
 Then debo poder ver el campo poliza habilitado como un vinculo para el detalle de la transaccion
 
@@ -101,7 +107,7 @@ Examples:
 Scenario: Ver detalle de la transaccion - Transaccion de Poliza
 Meta:
 @manual
-Given estoy en el historial de la cuenta <numCuenta>
+Given estoy en el historial de la cuenta
 When seleccione  el  numero de la transaccion <numeroTransaccion> de la poliza
 Then debo poder ver el detalle de la transaccion
 
@@ -112,7 +118,7 @@ Examples:
 Scenario: Valor original
 Meta:
 @manual
-Given estoy en el historial de la cuenta <numCuenta>
+Given estoy en el historial de la cuenta
 When se realice una modificacion valorable a la <poliza> de la cuenta
 Then poder ver el <valorOriginal> de la poliza antes de realizar el cambio
 
@@ -123,7 +129,7 @@ Examples:
 Scenario: Valor nuevo
 Meta:
 @manual
-Given estoy en el historial de la cuenta <numCuenta>
+Given estoy en el historial de la cuenta
 When se realice una modificacion valorable a la <poliza> de la cuenta
 Then poder ver el <valorNuevo> de la poliza despues de realizar el cambio
 
