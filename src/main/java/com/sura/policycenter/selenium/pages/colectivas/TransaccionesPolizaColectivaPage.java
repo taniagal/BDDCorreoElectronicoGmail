@@ -82,14 +82,12 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
         menuTransaccionesColectivas.click();
         waitForTextToAppear("Transacciones de póliza colectiva");
         waitFor(tablaTransaccionesColectiva);
-        columnaCrearFecha.shouldBeVisible();
         columnaNumeroPoliza.shouldBeVisible();
         columnaProducto.shouldBeVisible();
         columnaTipo.shouldBeVisible();
         columnaEstado.shouldBeVisible();
         columnaFechaFinalizacion.shouldBeVisible();
         columnaParticipante.shouldBeVisible();
-        MatcherAssert.assertThat(columnaCrearFecha.getText(), Matchers.notNullValue());
         MatcherAssert.assertThat(numeroPoliza.getText(), Is.is(Matchers.equalTo(transaccionesColectiva.get("numeroPoliza"))));
         MatcherAssert.assertThat(columnaProducto.getText(), Is.is(Matchers.equalTo(transaccionesColectiva.get("producto"))));
         MatcherAssert.assertThat(columnaTipo.getText(), Is.is(Matchers.equalTo(transaccionesColectiva.get("tipo"))));

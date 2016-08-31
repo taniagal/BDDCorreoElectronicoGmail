@@ -80,8 +80,9 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     }
 
     public void clicEnActualizarInformacionDePolizaColectiva() {
-        waitFor(botonActualizar);
-        botonActualizar.click();
-        waitForAbsenceOf(".//*[@id='CollectivePolicyInfo_Ext:Update-btnInnerEl']");
+        if(botonActualizar.isVisible()) {
+            botonActualizar.click();
+            waitForAbsenceOf(".//*[@id='CollectivePolicyInfo_Ext:Update-btnInnerEl']");
+        }
     }
 }
