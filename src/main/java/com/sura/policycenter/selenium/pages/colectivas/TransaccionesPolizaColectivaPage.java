@@ -22,7 +22,7 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
     WebElementFacade tablaTransaccionesColectiva;
     @FindBy(xpath = ".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:ttlBar']")
     WebElementFacade tituloTransaccionesIndividual;
-    @FindBy(xpath = "//td/div/div[2]/div/table/tbody/tr/td/div")
+    @FindBy(xpath = "//div[3]/div/table/tbody/tr/td/div")
     WebElementFacade columnaCrearFecha;
     @FindBy(xpath = "//div/table/tbody/tr/td[2]/div")
     WebElementFacade columnaNumeroPoliza;
