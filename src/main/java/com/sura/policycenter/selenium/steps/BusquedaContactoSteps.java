@@ -37,7 +37,7 @@ public class BusquedaContactoSteps extends ScenarioSteps {
 
     @Step
     public void ir_A_Busqueda_Contacto() {
-        busquedaContactoPage.irABusquedaDeContacto();
+        busquedaContactoPage.irABuscarContacto();
     }
 
     @Step

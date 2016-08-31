@@ -32,8 +32,6 @@ public class BusquedaContactoPage extends Commons {
     private WebElementFacade txtSegNombre;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:Particle-inputEl']")
     private WebElementFacade txtSegApellido;
-
-
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade botonBuscar;
     @FindBy(xpath = "//tr[3]/td/table/tbody/tr/td[2]/input\n")
@@ -110,45 +108,6 @@ public class BusquedaContactoPage extends Commons {
 
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
-    }
-
-    public void irABuscarContacto() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuContacto).shouldBePresent();
-        menuContacto.click();
-        waitUntil(5000);
-        menuContacto.click();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(3000);
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(itemBuscarContacto).click();
-        waitUntil(1500);
-    }
-
-    public void irABusquedaDeContacto() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuBuscar).shouldBePresent();
-        menuBuscar.click();
-        waitUntil(5000);
-        menuBuscar.click();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(3000);
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(itemContactos).click();
-        waitUntil(1500);
-    }
-
-    public void buscarContacto(String tipoContacto, String nombre, String apellido){
-        tipoContact.waitUntilClickable();
-        tipoContact.type(tipoContacto);
-        tipoContact.sendKeys(Keys.ENTER);
-        waitUntil(1000);
-        if ("Personal".equals(tipoContacto)){
-            nombreContact.type(nombre);
-            apellidoContact.type(apellido);
-        }else{
-            nombreEmpresaContact.type(nombre);
-        }
-        botonBuscar.click();
-        selectContact.waitUntilPresent();
-        selectContact.waitUntilVisible();
-        selectContact.click();
     }
 
     public void buscarContactoPersonaSinVerDetalle(String tipoDoc, String nombre, String apellido) {
