@@ -18,15 +18,15 @@ Given estoy cotizando una poliza:
 When ingrese los datos del asegurado
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
-|T11003|2011  |01601225        |MEDELLIN          |Particular       |null  |null |$17,900,000    |null     |null   |2|
+|T10006|2011  |01601225        |MEDELLIN          |Particular       |null  |null |$17,900,000    |null     |null   |2|
 And ingrese las coberturas:
 |limite|deducible|abogado |
 |32    |0        |Opción 1|
 Then el resultado de la cotizacion debe ser <valor>
 
 Examples:
-|valor     |
-|247,667|
+|valor  |
+|196,733|
 
 
 Scenario:  Realizar una cotizacion con todas las coberturas para autosGiven estoy cotizando una poliza:
@@ -36,22 +36,25 @@ Given estoy cotizando una poliza:
 When ingrese los datos del asegurado
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
-|T91003|2016  |00601182        |MEDELLIN          |Particular       |null  |null |$165,900,000   |null     |null   |2|
+|T91006|2016  |00601182        |MEDELLIN          |Particular       |null  |null |$165,900,000   |null     |null   |2|
 And seleccione todas las coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |Taller|Grua|TM    |CE|CS  |PTD|PPD|PPDF|GT|PP|PT|
 |32    |0        |Opción 1|10 |730|1.50|40.|35|Asistencia Clásica|Conces|Plus|Taller|6 |Plus|10 |0  |1.50|40|16|20|
 Then el resultado de la cotizacion en cada cobertura debe ser:
-|fila|valor     |
-|1 |639,374  |
-|4 |434      |
-|9 |27,087   |
-|14|3,115,831|
-|17|1        |
-|21|23,191   |
-|23|1,122,509|
-|25|218,582  |
-|27|8,960    |
-|29|11,329   |
+|fila|valor      |
+|1   |326,211    |
+|4   |170,130,521|
+|9   |120,923,703|
+|14  |$111,929   |
+|17  |7,000      |
+|19  |22,055     |
+|21  |190,000    |
+|23  |41,330     |
+|25  |22,055     |
+|27  |22,055     |
+|29  |22,055     |
+|31  |22,055     |
+|33  |22,055     |
 
 Examples:
 ||
