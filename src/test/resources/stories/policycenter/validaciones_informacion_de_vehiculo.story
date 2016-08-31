@@ -1,5 +1,9 @@
+Validaciones Informacion De Vehiculo
+
 Meta:
-@issue #SUGWUSC-15127
+@issue #CDSEG-1013
+@automatizador Nelson Mosquera
+@sprint 3
 
 Narrative:
 Como usuario de policy center
@@ -27,7 +31,7 @@ Given estoy cotizando una poliza:
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|valor_asegurado|descuento|recargo|zona|
-|T64497|2011  |01601225        |MEDELLIN          |Particular       |CH212121 |AB3C2|$17,900,000.00 |null     |null   |2|
+|T64497|2011  |01601225        |MEDELLIN          |Particular       |CH212121 |AB3C2|$17,900,000    |null     |null   |2|
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                |
@@ -47,7 +51,7 @@ Given estoy cotizando una poliza:
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
-|T64493|2017  |09403011        |MEDELLIN          |Particular       |null  |null |$830,000,000.00|null     |null   |2|
+|T64493|2017  |09403011        |MEDELLIN          |Particular       |null  |null |$830,000,000   |null     |null   |2|
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                                                                                                                                             |
@@ -65,7 +69,7 @@ Given estoy cotizando una poliza:
 |C000888888|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
-|T64413|1993  |07015010        |MEDELLIN          |Particular       |null  |null |$1,400,000.00  |null     |null   |2|
+|T64413|1993  |07015010        |MEDELLIN          |Particular       |null  |null |$1,400,000     |null     |null   |2|
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                 |

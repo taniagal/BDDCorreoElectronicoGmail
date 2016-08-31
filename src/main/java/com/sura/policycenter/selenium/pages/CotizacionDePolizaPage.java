@@ -167,12 +167,12 @@ public class CotizacionDePolizaPage extends PageObject{
     public void validarTipoRiesgo() {
         setImplicitTimeout(2,TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
-            withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
+            waitFor(tituloDePagina).shouldBePresent();
         }else if(tituloCalificacion.isPresent()){
-            withTimeoutOf(10,TimeUnit.SECONDS).waitFor(tituloCalificacion).shouldBePresent();
+            waitFor(tituloCalificacion).shouldBePresent();
         }
         resetImplicitTimeout();
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizacionCalificacion).shouldBePresent();
+        waitFor(botonCotizacionCalificacion).shouldBePresent();
         botonCotizacionCalificacion.click();
     }
 
@@ -185,7 +185,7 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarDireccionTomador(String direccion) {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(campoDireccion).shouldBePresent();
+        waitFor(campoDireccion).shouldBePresent();
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
 

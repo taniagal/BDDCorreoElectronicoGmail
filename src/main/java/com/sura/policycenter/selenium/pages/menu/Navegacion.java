@@ -440,6 +440,7 @@ public class Navegacion extends Commons {
     }
 
     public BuscarContactosPage irABuscarContactos() {
+        waitUntil(2500);
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mnuBuscar).shouldBePresent();
         gw.deployMenu(mnuBuscar);
         act.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();

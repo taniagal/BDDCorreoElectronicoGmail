@@ -1,4 +1,9 @@
+Validaciones MDM
+
 Meta:
+@issue #NotFound
+@automatizador Nelson Mosquera
+@sprint 2
 
 Narrative:
 Como usuario de policy center
