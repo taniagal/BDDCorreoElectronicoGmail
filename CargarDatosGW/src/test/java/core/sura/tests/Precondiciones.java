@@ -92,8 +92,8 @@ public class Precondiciones extends MetodosComunes{
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher']"))).isDisplayed();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs']"))).isDisplayed();
-        driver.findElement(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs']")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:3:langs-textEl']"))).isDisplayed();
+        driver.findElement(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:3:langs-textEl']")).click();
         Thread.sleep(2200);
     }
 
