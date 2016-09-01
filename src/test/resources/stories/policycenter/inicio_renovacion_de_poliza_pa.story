@@ -13,7 +13,6 @@ entonces se deben realiza las validaciones de PEPS y riesgos consultables.
 
 Scenario: validar mensaje y cancelar el inicio del proceso de renovacion
 GivenStories: stories/policycenter/login_policy.story
-GivenStories: stories/policycenter/login_policy.story
 Given que es necesario renovar una <poliza> de autos
 When quiera realizar esta renovacion
 Then se deben mostrar un mensaje <mensaje>
