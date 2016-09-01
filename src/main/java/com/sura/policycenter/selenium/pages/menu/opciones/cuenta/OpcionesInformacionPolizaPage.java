@@ -133,6 +133,8 @@ public class OpcionesInformacionPolizaPage extends Commons {
     private WebElementFacade textoDescuentoPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-inputEl']")
     private WebElementFacade polizaFinanciada;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_false-inputEl']")
+    private WebElementFacade polizaFinanciadaNo;
     @FindBy(xpath = ".//tr[11]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade botonNumeroCuotas;
     @FindBy(xpath = "//li[contains(.,'12')]")
@@ -153,7 +155,6 @@ public class OpcionesInformacionPolizaPage extends Commons {
     private WebElementFacade comboBoxNombreAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
     private WebElementFacade grupoMensajes;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducerCode-inputEl']")
     private WebElementFacade campoAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:Producer-inputEl']")
@@ -174,6 +175,8 @@ public class OpcionesInformacionPolizaPage extends Commons {
     private WebElementFacade descripcionDireccionTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
     private WebElementFacade menuInformacionPoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div")
+    private WebElementFacade mensajeFinanciacion;
 
 
     public OpcionesInformacionPolizaPage(WebDriver driver) {
@@ -410,12 +413,8 @@ public class OpcionesInformacionPolizaPage extends Commons {
         element.sendKeys(Keys.ENTER);
     }
 
-    public void definirPolizaFinanciada(String organizacionDetalle, String canalDetalle, String tipoPoliza) {
-        waitFor(campoOrganizacion);
-        polizaFinanciada.click();
-        MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(organizacionDetalle)));
-        MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(canalDetalle)));
-        MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(tipoPoliza)));
+    public void definirPolizaFinanciada() {
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(polizaFinanciada).click();
     }
 
     public void ingresarNumeroCuotas() {
@@ -527,6 +526,24 @@ public class OpcionesInformacionPolizaPage extends Commons {
         MatcherAssert.assertThat(campoOficina.getValue(), Is.is(Matchers.equalTo(informacionPoliza.get("oficina"))));
         MatcherAssert.assertThat(campoAgente.getValue(), Is.is(Matchers.equalTo(informacionPoliza.get("agente"))));
         MatcherAssert.assertThat(textoDescuentoPoliza.getValue(), Is.is(Matchers.equalTo(informacionPoliza.get("descuento"))));
+    }
+
+    public void noIndicarPolizaFinanciada() {
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(polizaFinanciadaNo).click();
+    }
+
+    public void noHabilitarNumeroCuotas() {
+        boolean validacion = labelNumeroCuotas.isCurrentlyEnabled();
+        MatcherAssert.assertThat(validacion, Is.is(Matchers.not(Matchers.equalTo(true))));
+    }
+
+    public void seleccionarOpcionSiguiente() {
+        botonSiguiente.click();
+        waitUntil(1500);
+    }
+
+    public void validarMensajeFinanciacion(String mensaje){
+        MatcherAssert.assertThat(mensajeFinanciacion.getText(),Is.is(Matchers.equalTo(mensaje)));
     }
 }
 

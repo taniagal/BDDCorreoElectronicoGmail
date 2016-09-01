@@ -87,6 +87,11 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.validarTipoRiesgo();
     }
 
+    @When("se haya definido la cotizacion con intencion de financiacion")
+    public void validarFinanciacion(){
+        cotizacionDePolizaSteps.validarTipoRiesgo();
+    }
+
     @Then("debo ver la siguiente informacion $informacionCotizacion")
     public void validarInformacionCotizacion(ExamplesTable informacionCotizacion) {
         cotizacionDePolizaSteps.validarInformacionCotizacion(infoCotizacionPoliza, informacionCotizacion);
@@ -128,6 +133,11 @@ public class CotizacionDePolizaDefinitions {
 
     @Then("se debe mostrar un mensaje <mensaje> de advertencia sin bloquear la cotizacion")
     public void validarNoBloqueoCotizacion(@Named("mensaje") String mensaje){
+        cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
+    }
+
+    @Then("se debe mostrar un mensaje <mensaje> como advertencia")
+    public void validarMensajeFinanciacion(@Named("mensaje") String mensaje){
         cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
     }
 }

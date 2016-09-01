@@ -65,6 +65,16 @@ Examples:
 |cotizacion|mensaje|
 |22270003  |ya tiene una cotización en curso para el producto seleccionado para la oficina SURA|
 
+Scenario: Poliza con intencion de financiacion
+Given he realizado la cotizacion <cotizacion>
+When ingrese a la cotizacion
+And se haya definido la cotizacion con intencion de financiacion
+Then se debe mostrar un mensaje <mensaje> como advertencia
+
+Examples:
+|cotizacion |mensaje|
+|0005613465 |La financiación de la póliza está sujeta a aprobación por parte del área de financiación|
+
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:
 @manual
