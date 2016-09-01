@@ -40,6 +40,7 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     }
 
     public void clicEnAgregarRiesgoInfoPoliza() {
+        waitForAbsenceOf(".//*[@id='CollectivePolicyInfo_Ext:Update-btnInnerEl']");
         waitFor(botonRiesgosInfoPoliza);
         botonRiesgosInfoPoliza.click();
         waitForTextToAppear("Riesgos");
@@ -82,7 +83,6 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     public void clicEnActualizarInformacionDePolizaColectiva() {
         if(botonActualizar.isVisible()) {
             botonActualizar.click();
-            waitForAbsenceOf(".//*[@id='CollectivePolicyInfo_Ext:Update-btnInnerEl']");
         }
     }
 }
