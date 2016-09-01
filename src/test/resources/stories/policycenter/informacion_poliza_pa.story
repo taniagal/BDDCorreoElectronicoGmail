@@ -64,5 +64,5 @@ And seleccione la opcion siguiente
 Then se debe mostrar un mensaje <mensaje> de advertencia
 
 Examples:
-|numCuenta    |organizacion|canal            |mensaje                                                                                 |
-|C000888888   |Sura        |Canal Tradicional|La financiación de la póliza está sujeta a aprobación por parte del área de financiación|
+|numCuenta    |organizacion|canal            |mensaje                                                                                  |
+|C000888888   |Sura        |Canal Tradicional|La financiación de la póliza está sujeta a aprobación por parte del área de financiación.|

@@ -92,6 +92,11 @@ public class CotizacionDePolizaDefinitions {
         cotizacionDePolizaSteps.validarTipoRiesgo();
     }
 
+    @When("la cotizacion tenga intencion de financiacion")
+    public void ingresarACotizacionFinanciada(){
+        cotizacionDePolizaSteps.ingresarACotizacion();
+    }
+
     @Then("debo ver la siguiente informacion $informacionCotizacion")
     public void validarInformacionCotizacion(ExamplesTable informacionCotizacion) {
         cotizacionDePolizaSteps.validarInformacionCotizacion(infoCotizacionPoliza, informacionCotizacion);
@@ -139,5 +144,12 @@ public class CotizacionDePolizaDefinitions {
     @Then("se debe mostrar un mensaje <mensaje> como advertencia")
     public void validarMensajeFinanciacion(@Named("mensaje") String mensaje){
         cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
+    }
+
+    @Then("se debe mostrar en el detalle de la cotizacion el Valor por cuota a pagar <valorCuota> y\n" +
+            "el numero de cotas <numeroCuotas> indicadas en la informacion de la poliza")
+    public void mostrarValorYNumeroDeCuotas(@Named("valorCuota") String valorCuota,
+                                            @Named("numeroCuotas") String numeroCuotas){
+        cotizacionDePolizaSteps.mostrar_Valor_A_Pagar_Por_Cuota_Y_Numero_De_Cuotas(valorCuota, numeroCuotas);
     }
 }

@@ -73,7 +73,17 @@ Then se debe mostrar un mensaje <mensaje> como advertencia
 
 Examples:
 |cotizacion |mensaje|
-|0005613465 |La financiación de la póliza está sujeta a aprobación por parte del área de financiación|
+|777111777  |La financiación de la póliza está sujeta a aprobación por parte del área de financiación|
+
+Scenario: Poliza con intencion de financiacion - Mostrar cuotas y valor
+Given he realizado la cotizacion <cotizacion>
+When la cotizacion tenga intencion de financiacion
+Then se debe mostrar en el detalle de la cotizacion el Valor por cuota a pagar <valorCuota> y
+el numero de cotas <numeroCuotas> indicadas en la informacion de la poliza
+
+Examples:
+|cotizacion |valorCuota|numeroCuotas |
+|777222777  |-         |11           |
 
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:

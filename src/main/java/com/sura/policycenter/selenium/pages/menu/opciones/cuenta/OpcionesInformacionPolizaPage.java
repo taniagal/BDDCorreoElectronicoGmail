@@ -511,6 +511,24 @@ public class OpcionesInformacionPolizaPage extends Commons {
         waitFor(menuInformacionPoliza).click();
     }
 
+    public void noIndicarPolizaFinanciada() {
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(polizaFinanciadaNo).click();
+    }
+
+    public void noHabilitarNumeroCuotas() {
+        boolean validacion = labelNumeroCuotas.isCurrentlyEnabled();
+        MatcherAssert.assertThat(validacion, Is.is(Matchers.not(Matchers.equalTo(true))));
+    }
+
+    public void seleccionarOpcionSiguiente() {
+        botonSiguiente.click();
+        waitUntil(1500);
+    }
+
+    public void validarMensajeFinanciacion(String mensaje){
+        MatcherAssert.assertThat(mensajeFinanciacion.getText(),Is.is(Matchers.equalTo(mensaje)));
+    }
+
     /**
      * Métodos para las validaciones de pólizas hija de pólizas colectivas
      */
@@ -541,24 +559,6 @@ public class OpcionesInformacionPolizaPage extends Commons {
         MatcherAssert.assertThat(linkCoaseguro.isVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(polizaFinanciada.isVisible(), Is.is(Matchers.equalTo(false)));
         resetImplicitTimeout();
-    }
-
-    public void noIndicarPolizaFinanciada() {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(polizaFinanciadaNo).click();
-    }
-
-    public void noHabilitarNumeroCuotas() {
-        boolean validacion = labelNumeroCuotas.isCurrentlyEnabled();
-        MatcherAssert.assertThat(validacion, Is.is(Matchers.not(Matchers.equalTo(true))));
-    }
-
-    public void seleccionarOpcionSiguiente() {
-        botonSiguiente.click();
-        waitUntil(1500);
-    }
-
-    public void validarMensajeFinanciacion(String mensaje){
-        MatcherAssert.assertThat(mensajeFinanciacion.getText(),Is.is(Matchers.equalTo(mensaje)));
     }
 
     public void validarFechaFinVigenciaPolizaColectivaAutos() {
