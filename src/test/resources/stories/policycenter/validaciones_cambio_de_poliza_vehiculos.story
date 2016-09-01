@@ -24,7 +24,7 @@ Then no se debe permitir continuar con la expedicion y debe mostrar el siguiente
 
 Examples:
 |cotizacion|mensaje                                 |
-|55555556  |El número de chasis no ha sido ingresado|
+|55555556  |El número de motor no ha sido ingresado|
 
 Scenario: Validar importado por tercero
 Given se ha realizado la cotizacion de la modificacion <cotizacion>
@@ -58,6 +58,7 @@ Examples:
 |55555556  |Por política de la compañía este vehículo no puede ser asegurado.|
 
 Scenario: Validar tipo de servicio
+Meta: @manual
 Given se ha realizado la cotizacion de la modificacion <cotizacion>
 When ingrese al detalle de la modificacion
 And presione el boton de emitir la poliza

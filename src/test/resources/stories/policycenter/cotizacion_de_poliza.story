@@ -17,7 +17,7 @@ Given he realizado la cotizacion <cotizacion>
 When ingrese al detalle de la cotizacion
 Then debo ver la siguiente informacion
 |numeroCotizacion|tomador|tipoDocumento|numeroDocumento|direccion|tipoDireccion|descripcionDireccion|empresaAseguradora|prima|impuestos|total|
-|22222225|DORIAN STIWAR EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$9,309,657.00|-|$9,309,657.00|
+|22222225|DORIAN STIWAR EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$8,313,490.00|-|$8,313,490.00|
 
 Examples:
 |cotizacion|
@@ -41,16 +41,6 @@ Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensa
 Examples:
 |cotizacion|mensaje|
 |22270002  |El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
-
-Scenario: PEP - Figuras - Warning
-Given he realizado la cotizacion <cotizacion>
-When ingrese a la cotizacion
-And las figuras asegurado, beneficiario y/o tomador, fueron identificadas como PEP
-Then se debe mostrar un mensaje <mensaje> de advertencia sin bloquear la cotizacion
-
-Examples:
-|cotizacion|mensaje|
-|22270002  |es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
 
 Scenario: Riesgos consultables - Chasis - Bloqueo
 Given he realizado la cotizacion <cotizacion>

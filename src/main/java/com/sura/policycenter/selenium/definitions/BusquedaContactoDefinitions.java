@@ -32,12 +32,12 @@ public class BusquedaContactoDefinitions {
 
     @Given("estoy en busqueda de contactos")
     public void givenEstoyEnBusquedaContactos() {
-        buscarContactoSteps.navegarBarraSuperior();
+        buscarContactoSteps.ir_A_Buscar_Contacto();
     }
 
     @Given("estoy en contactos para buscar")
     public void givenContactosBuscar(){
-        buscarContactoSteps.navegarBarraSuperior();
+        buscarContactoSteps.ir_A_Busqueda_Contacto();
     }
 
     @When("quiera consultar contacto de tipo persona natural <tipoDoc> por nombre <nombre> y apellido <apellido>")

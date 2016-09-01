@@ -80,6 +80,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
 
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         waitFor(botonCrearVehiculo).click();
+        waitUntil(500);
+        campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
         waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
@@ -88,28 +90,24 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
         waitForTextToAppear(vehiculo.get("modelo"));
         ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
-        waitUntil(2000);
+        waitUntil(1000);
         campoTxtPlaca.click();
-        try {
-            waitForTextToAppear(vehiculo.get("valor_asegurado"));
-        }catch (TimeoutException e){
-            e.printStackTrace();
-        }
+        waitForTextToAppear(vehiculo.get("valor_asegurado"));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitForComboValue(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
         waitUntil(1000);
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona,vehiculo.get("zona")));
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
+
         if(!"null".equals(vehiculo.get("descuento"))){
             campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
             campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
         }
+
         if (!"null".equals(vehiculo.get("motor"))) {
             campoTxtMotor.sendKeys(vehiculo.get("motor"));
             campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
-        waitUntil(500);
-        campoVehiculoCeroKm.click();
         MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
     }
 

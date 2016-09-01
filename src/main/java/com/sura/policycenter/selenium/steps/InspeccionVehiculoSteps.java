@@ -33,4 +33,29 @@ public class InspeccionVehiculoSteps extends ScenarioSteps {
     public void crear_vehiculo() {
         inspeccionVehiculoPage.crearVehiculo();
     }
+
+    @Step
+    public void permitir_Expedir_Poliza() {
+        inspeccionVehiculoPage.expedirPoliza();
+    }
+
+    @Step
+    public void validar_Informacion_De_La_Placa(String placa) {
+        inspeccionVehiculoPage.validarVehiculoSinInspeccion(placa);
+    }
+
+    @Step
+    public void mostrar_Mensaje_De_Bloqueo_De_Expedicion(String mensaje) {
+        inspeccionVehiculoPage.validarMensajeBloqueo(mensaje);
+    }
+
+    @Step
+    public void generarUW(String mensaje) {
+        inspeccionVehiculoPage.generarUW(mensaje);
+    }
+
+    @Step
+    public void validar_Cotizacion_Expedida() {
+        inspeccionVehiculoPage.validarCotizacionExpedida();
+    }
 }
