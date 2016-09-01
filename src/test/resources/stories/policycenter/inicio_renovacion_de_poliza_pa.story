@@ -40,7 +40,7 @@ Then validar campos informativos de vehiculo:
 
 Examples:
 |poliza       |
-|TEST_22266674|
+|TEST_22222222|
 
 
 
