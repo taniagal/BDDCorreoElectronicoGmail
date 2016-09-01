@@ -82,8 +82,6 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade submenuContacto;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:_msgs']/div")
     WebElementFacade mensajeDescuento;
-    @FindBy(xpath = "")
-    WebElementFacade mensajeRetroactividad;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsuredInfo:OfficialIDInputSet:DocumentType-inputEl']")
     WebElementFacade tipoDocumentoSegundo;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsuredInfo:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
@@ -195,6 +193,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void ingresarDescuentoPoliza(String descuento) {
+        waitFor(descuentoPoliza);
         descuentoPoliza.clear();
         descuentoPoliza.sendKeys(descuento);
     }
@@ -218,14 +217,14 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         validarMensaje(mensajeDescuento, mensaje);
     }
 
-    public void ingresarFechaInicioInvalidaParaRetroactividad(String sesentaDias) {
+    public void ingresarFechaInicioInvalidaParaRetroactividad(String sesentaDias, int dias) {
         LocalDateTime nuevaFechaInicio;
         if ("menos".equals(sesentaDias)) {
-            nuevaFechaInicio = LocalDateTime.now().minusMonths(2).minusDays(1);
+            nuevaFechaInicio = LocalDateTime.now().minusDays(dias);
             fechaInicioVigencia.clear();
             fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
         } else {
-            nuevaFechaInicio = LocalDateTime.now().plusMonths(2).plusDays(1);
+            nuevaFechaInicio = LocalDateTime.now().plusDays(dias);
             fechaInicioVigencia.clear();
             fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
         }
@@ -247,10 +246,6 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 10)) + aniosFinVigencia;
         String fechaFinVigencia = nuevaFechaFin.replace(nuevaFechaFin.substring(6, 10), anioVigenciaProducto.toString());
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(fechaFinVigencia)));
-    }
-
-    public void validarMensajeRetroactividadInvalida(String mensaje) {
-        validarMensaje(mensajeRetroactividad, mensaje);
     }
 
     public void validarDatosDeSegundoTomador(ExamplesTable informacionSegundoTomador) {

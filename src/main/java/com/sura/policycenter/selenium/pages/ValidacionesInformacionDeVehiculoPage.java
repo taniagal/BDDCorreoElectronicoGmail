@@ -52,7 +52,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade botonRelacionarAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver-textEl']")
     private WebElementFacade botonAsegurado;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_true-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
     private WebElementFacade campoVehiculoCeroKm;
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
@@ -90,27 +90,25 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
         waitForTextToAppear(vehiculo.get("modelo"));
         ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
-        waitUntil(2000);
+        waitUntil(1000);
         campoTxtPlaca.click();
-        try {
-            waitForTextToAppear(vehiculo.get("valor_asegurado"));
-        }catch (TimeoutException e){
-            e.printStackTrace();
-        }
-        MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
+        waitForTextToAppear(vehiculo.get("valor_asegurado"));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitForComboValue(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
         waitUntil(1000);
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona,vehiculo.get("zona")));
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
+
         if(!"null".equals(vehiculo.get("descuento"))){
             campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
             campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
         }
+
         if (!"null".equals(vehiculo.get("motor"))) {
             campoTxtMotor.sendKeys(vehiculo.get("motor"));
             campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
+        MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
     }
 
     public void agregarCodigoFasecolda(String codigo) {

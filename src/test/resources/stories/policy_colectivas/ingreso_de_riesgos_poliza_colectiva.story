@@ -19,6 +19,8 @@ When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
+And ingrese el porcentaje de descuento valido <porcentaje>
+And actualice la poliza colectiva
 And de clic en agregar riesgo para ir a la ventana de riesgos
 And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
 And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
@@ -32,7 +34,7 @@ And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | VARIEDADES YURLEDYS S.A | NIT           | 9202086744      |
 And vaya a agregar un vehiculo con los datos:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor   | valor_asegurado | descuento | zona |
-| ZAX740 | 2016   | 00606031         | MEDELLIN           | Particular        | AAA1450 | AAA1450 | $255,900,000.00 | null      | 2    |
+| ZAX740 | 2016   | 00606031         | MEDELLIN           | Particular        | AAA1450 | AAA1450 | $255,900,000    | null      | 2    |
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
@@ -44,8 +46,8 @@ And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado co
 | ZAX740 | Camperos y pickups | 2016   | AUDI  | [4M] 3.0 TDI Q - TP 3000CC TD V |
 
 Examples:
-| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | razonSocial             |asegurado|
-| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | VARIEDADES YURLEDYS S.A |VARIEDADES YURLEDYS S.A |
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | razonSocial             | asegurado               | porcentaje |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | VARIEDADES YURLEDYS S.A | VARIEDADES YURLEDYS S.A | 0          |
 
 Scenario: Validar la creacion de un riesgo con cuenta nueva
 Meta: @pending
@@ -71,7 +73,7 @@ And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | ELIANA ALVAREZ | CEDULA DE CIUDADANIA | 1037500160      |
 And vaya a agregar un vehiculo con los datos:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor   | valor_asegurado | descuento | zona |
-| ZAZ741 | 2016   | 00606031         | MEDELLIN           | Particular        | AAA1451 | AAA1452 | $255,900,000.00 | null      | 2    |
+| ZAZ741 | 2016   | 00606031         | MEDELLIN           | Particular        | AAA1451 | AAA1452 | $255,900,000    | null      | 2    |
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
