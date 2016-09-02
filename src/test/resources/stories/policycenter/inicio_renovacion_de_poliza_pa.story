@@ -11,19 +11,9 @@ Como usuario de policy center
 Se requiere renovar una poliza ya expedida
 entonces se debe asegurar los datos del tomador, vehiculo y coberturas.
 
-Scenario: validar mensaje y cancelar el inicio del proceso de renovacion
-GivenStories: stories/policycenter/login_policy.story
-Given que es necesario renovar una <poliza> de autos
-When quiera realizar esta renovacion
-Then se deben mostrar un mensaje <mensaje>
-And se cancela el proceso de renovacion
-
-Examples:
-|poliza       |mensaje|
-|TEST_22266674|¿Esta seguro de que desea renovar esta póliza?|
-
 
 Scenario: datos de renovacion en informacion de poliza
+GivenStories: stories/policycenter/login_policy.story
 Given que es necesario renovar una <poliza> de autos
 When quiera realizar esta renovacion
 And quiera aceptar esta renovacion
@@ -39,7 +29,7 @@ Then validar campos informativos de vehiculo:
 
 Examples:
 |poliza       |
-|TEST_22222222|
+|TEST_22266674|
 
 
 

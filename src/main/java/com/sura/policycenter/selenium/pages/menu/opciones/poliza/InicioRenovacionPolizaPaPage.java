@@ -45,6 +45,28 @@ public class InicioRenovacionPolizaPaPage extends Commons {
     WebElementFacade datoPrimerNombreAsegurado;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade datoPrimerApellidoAsegurado;
+    @FindBy(xpath = "")
+    WebElementFacade datoPlaca;
+    @FindBy(xpath = "")
+    WebElementFacade datoModelo;
+    @FindBy(xpath = "")
+    WebElementFacade datoCodFasecolda;
+    @FindBy(xpath = "")
+    WebElementFacade datoClaseVehiculo;
+    @FindBy(xpath = "")
+    WebElementFacade datoMarca;
+    @FindBy(xpath = "")
+    WebElementFacade datoLinea;
+    @FindBy(xpath = "")
+    WebElementFacade datoZona;
+    @FindBy(xpath = "")
+    WebElementFacade datoTipoServicio;
+    @FindBy(xpath = "")
+    WebElementFacade datoMotor;
+    @FindBy(xpath = "")
+    WebElementFacade datoChasis;
+    @FindBy(xpath = "")
+    WebElementFacade datoValorAsegura;
 
 
     Commons commons = new Commons(getDriver());
@@ -107,19 +129,18 @@ public class InicioRenovacionPolizaPaPage extends Commons {
            clickBotonSiguinete();
         }else
         if (datos.get("rol").equals("vehiculo")) {
-            MatcherAssert.assertThat("placa no valida", datoCedulaAsegurado.getText().equals(datos.get("cedulaAsegurado")));
-            MatcherAssert.assertThat("modelo no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
-            MatcherAssert.assertThat("codFasecolda no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
-            MatcherAssert.assertThat("clase Vehiculo no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
-            MatcherAssert.assertThat("marca no valida", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
-            MatcherAssert.assertThat("linea no valida", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
-            MatcherAssert.assertThat("zona no valida", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
-            MatcherAssert.assertThat("tipo Servicio no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
-            MatcherAssert.assertThat("motor no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
-            MatcherAssert.assertThat("chasis no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
-            MatcherAssert.assertThat("valor Asegurado no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
+            MatcherAssert.assertThat("placa no valida", datoPlaca.getText().equals(datos.get("placa")));
+            MatcherAssert.assertThat("modelo no valido", datoModelo.getText().equals(datos.get("modelo")));
+            MatcherAssert.assertThat("codFasecolda no valido", datoCodFasecolda.getText().equals(datos.get("codFasecolda")));
+            MatcherAssert.assertThat("clase Vehiculo no valido", datoClaseVehiculo.getText().equals(datos.get("claseVehiculo")));
+            MatcherAssert.assertThat("marca no valida", datoMarca.getText().equals(datos.get("marca")));
+            MatcherAssert.assertThat("linea no valida", datoLinea.getText().equals(datos.get("linea")));
+            MatcherAssert.assertThat("zona no valida", datoZona.getText().equals(datos.get("zona")));
+            MatcherAssert.assertThat("tipo Servicio no valido", datoTipoServicio.getText().equals(datos.get("pApellido")));
+            MatcherAssert.assertThat("motor no valido", datoMotor.getText().equals(datos.get("motor")));
+            MatcherAssert.assertThat("chasis no valido", datoChasis.getText().equals(datos.get("chasis")));
+            MatcherAssert.assertThat("valor Asegurado no valido", datoValorAsegura.getText().equals(datos.get("valorAsegura")));*/
             clickBotonSiguinete();
         }
-
     }
 }
