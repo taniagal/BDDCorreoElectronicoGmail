@@ -9,7 +9,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -84,6 +83,7 @@ public class InicioRenovacionPolizaPaPage extends Commons {
     }
 
     public void clickBotonSiguinete() {
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilPresent();
         btnSiguiente.click();
     }
 
@@ -92,23 +92,33 @@ public class InicioRenovacionPolizaPaPage extends Commons {
     }
 
     public void validacionesPantallaFormularios(ExamplesTable datosTomador) {
-
         Map<String, String> datos = datosTomador.getRow(0);
         if (datos.get("rol").equals("tomador")) {
-           /* MatcherAssert.assertThat("cedula del tomador no valida", datoCedeulaTomador.getText().equals(datos.get("cedulaTomador")));
+            MatcherAssert.assertThat("cedula del tomador no valida", datoCedeulaTomador.getText().equals(datos.get("cedulaTomador")));
             MatcherAssert.assertThat("el nombre del tomador no es valido", datoNombre.getText().equals(datos.get("nombre")));
             MatcherAssert.assertThat("el nombre de oficina de radicacion", datoOficinaDeRadicacion.getText().equals(datos.get("oficinaRadicacion")));
-            MatcherAssert.assertThat("el nombre de agente", datoAgente.getText().equals(datos.get("codAgente")));*/
+            MatcherAssert.assertThat("el nombre de agente", datoAgente.getText().equals(datos.get("codAgente")));
             clickBotonSiguinete();
         }else
         if (datos.get("rol").equals("asegurado")) {
-           /* MatcherAssert.assertThat("cedula del Asegurado no valida", datoCedulaAsegurado.getText().equals(datos.get("cedulaAsegurado")));
+            MatcherAssert.assertThat("cedula del Asegurado no valida", datoCedulaAsegurado.getText().equals(datos.get("cedulaAsegurado")));
             MatcherAssert.assertThat("primer nombre no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
-            MatcherAssert.assertThat("primer apellido no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));*/
-            clickBotonSiguinete();
+            MatcherAssert.assertThat("primer apellido no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
+           clickBotonSiguinete();
         }else
         if (datos.get("rol").equals("vehiculo")) {
-            JOptionPane.showMessageDialog(null, "ok");
+            MatcherAssert.assertThat("placa no valida", datoCedulaAsegurado.getText().equals(datos.get("cedulaAsegurado")));
+            MatcherAssert.assertThat("modelo no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
+            MatcherAssert.assertThat("codFasecolda no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
+            MatcherAssert.assertThat("clase Vehiculo no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
+            MatcherAssert.assertThat("marca no valida", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
+            MatcherAssert.assertThat("linea no valida", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
+            MatcherAssert.assertThat("zona no valida", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
+            MatcherAssert.assertThat("tipo Servicio no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
+            MatcherAssert.assertThat("motor no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
+            MatcherAssert.assertThat("chasis no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
+            MatcherAssert.assertThat("valor Asegurado no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
+            clickBotonSiguinete();
         }
 
     }

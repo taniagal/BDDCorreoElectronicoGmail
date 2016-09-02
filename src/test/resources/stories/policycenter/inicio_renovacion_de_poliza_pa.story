@@ -9,7 +9,7 @@ Sprint 6
 Narrative:
 Como usuario de policy center
 Se requiere renovar una poliza ya expedida
-entonces se deben realiza las validaciones de PEPS y riesgos consultables.
+entonces se debe asegurar los datos del tomador, vehiculo y coberturas.
 
 Scenario: validar mensaje y cancelar el inicio del proceso de renovacion
 GivenStories: stories/policycenter/login_policy.story
@@ -34,8 +34,8 @@ Then validar campos informativos de asegurado:
 |cedulaAsegurado|pNombre|pApellido|rol      |
 |1294567891     |VRALLAN|ESTIGUAR |asegurado|
 Then validar campos informativos de vehiculo:
-|placa|modelo|codFasecolda|claseVehiculo     |marca|linea|rol     |zona|tipoServicio|motor          |chasis          |valorAsegura|rol     |
-|TKC459|2016 |00601182    |Camperos y pickups|Mazda|MPV  |vehiculo|2   |Particular  |ENGINEEEEEEASDK|CHASIS83DSBNCLOA|10000000.00 |vehiculo|
+|placa|modelo|codFasecolda|claseVehiculo     |marca|linea|zona|tipoServicio|motor          |chasis          |valorAsegura|rol     |
+|TKC459|2016 |00601182    |Camperos y pickups|Mazda|MPV  |2   |Particular  |ENGINEEEEEEASDK|CHASIS83DSBNCLOA|10000000.00 |vehiculo|
 
 Examples:
 |poliza       |
