@@ -32,12 +32,8 @@ public class ExpedirCambioDePolizaUWPEPSPage extends Commons{
     private WebElementFacade botonExpedirPolizaModificacion;
     @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']")
     private WebElementFacade tituloBloqueo;
-    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:0:ShortDescriptionAndSize-inputEl']")
-    private WebElementFacade mensajePEPTomador;
-    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:1:ShortDescriptionAndSize-inputEl']")
-    private WebElementFacade mensajePEPAsegurado;
-    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:2:ShortDescriptionAndSize-inputEl']")
-    private WebElementFacade mensajePEPBeneficiario;
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']")
+    private WebElementFacade grupoMensajes;
 
     public ExpedirCambioDePolizaUWPEPSPage(WebDriver driver){
         super(driver);
@@ -77,23 +73,12 @@ public class ExpedirCambioDePolizaUWPEPSPage extends Commons{
     }
 
     public void validarMensajePEP(String mensaje) {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mensajePEPTomador).shouldBeVisible();
-        if(mensajePEPTomador.isPresent()) {
-            boolean validacionMensaje = mensajePEPTomador.getText().contains(mensaje)||
-                                        mensajePEPAsegurado.getText().contains(mensaje)||
-                                        mensajePEPBeneficiario.getText().contains(mensaje);
-            MatcherAssert.assertThat(validacionMensaje, Is.is(Matchers.equalTo(true)));
-        }
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBeVisible();
+        MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
     }
 
     public void validarConcatenacionMensaje(ExamplesTable texto) {
         Map<String, String> textoConcatenado = texto.getRows().get(0);
-        if(mensajePEPTomador.isPresent()) {
-            MatcherAssert.assertThat(mensajePEPTomador.getText(), Matchers.containsString(textoConcatenado.get("texto")));
-        }else if(mensajePEPAsegurado.isPresent()) {
-            MatcherAssert.assertThat(mensajePEPAsegurado.getText(), Matchers.containsString(textoConcatenado.get("texto")));
-        }else if(mensajePEPBeneficiario.isPresent()) {
-            MatcherAssert.assertThat(mensajePEPAsegurado.getText(), Matchers.containsString(textoConcatenado.get("texto")));
-        }
+        MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(textoConcatenado.get("texto")));
     }
 }
