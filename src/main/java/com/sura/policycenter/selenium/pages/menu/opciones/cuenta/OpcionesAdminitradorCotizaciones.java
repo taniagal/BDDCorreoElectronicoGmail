@@ -103,7 +103,10 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     @FindBy(id = "NotTakenReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msgNoTomar;
 
-    private static final String SUBMITIONXPATH = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+    private static final String SUBMITIONXPATH = ".//img[contains(@id,'SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+
+    private  static final String DECLINELETTER = "//a[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+
     public OpcionesAdminitradorCotizaciones(WebDriver driver) {
         super(driver);
     }
@@ -116,10 +119,16 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             if (!("".equals(cells.get(2).getText()) || " ".equals(cells.get(2).getText()))) {
-                if (("Cotizado".equals(cells.get(7).getText()) || "Borrador".equals(cells.get(7).getText())) && band == 0) {
-                    WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon']");
-                    botonAccciones.click();
-                    band = i;
+                if (("Cotizado".equals(cells.get(7).getText()) || "Borrador".equals(cells.get(7).getText()))) {
+                   try {
+                       WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon')]");
+                       botonAccciones.click();
+                       waitFor(2).seconds();
+                       band = i;
+                   } catch (Exception e){
+                       LOGGER.info("");
+                   }
+                    break;
                 }
                 i++;
             }
@@ -153,8 +162,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
 
     public void validarOpcionRetirar(String retirar) {
         Boolean validacion = false;
-        WebElementFacade listaAcciones = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuIcon-fieldMenu']");
-        validacion = listaAcciones.containsElements(retirar);
+        validacion = containsText(retirar);
         MatcherAssert.assertThat(validacion, Is.is(false));
     }
 
@@ -266,6 +274,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
             if (!" ".equals(cells.get(2).getText())) {
                 if (cells.get(1).getText().equals(propiedadComercial) && cells.get(7).getText().equals(declinado)) {
                     band = i;
+                    break;
                 }
                 i++;
             }
@@ -274,7 +283,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
 
     public void mostrarBotonCrearCartaDeclinacion(String crearCarta) {
         if (band != 0) {
-            WebElementFacade botonCrearCartaDeclinacion = findBy(SUBMITIONXPATH + band + ":DeclineLetter']");
+            WebElementFacade botonCrearCartaDeclinacion = findBy(DECLINELETTER+band+":DeclineLetter']");
             MatcherAssert.assertThat(botonCrearCartaDeclinacion.getText(), Is.is(Matchers.equalTo(crearCarta)));
             band = 0;
         } else {
