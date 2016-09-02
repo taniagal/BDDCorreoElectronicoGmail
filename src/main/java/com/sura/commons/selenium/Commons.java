@@ -29,12 +29,6 @@ public class Commons extends PageObject {
     WebElementFacade internacional;
     @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
     WebElementFacade idioma;
-    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-    private WebElementFacade usuario;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
-    private WebElementFacade contrasena;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
-    private WebElementFacade submit;
     @FindBy(xpath =".//*[@id=':TabLinkMenuButton-btnIconEl']")
     private WebElementFacade btnConfig;
     @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
