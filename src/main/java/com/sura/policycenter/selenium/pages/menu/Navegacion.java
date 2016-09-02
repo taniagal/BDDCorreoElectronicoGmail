@@ -366,7 +366,12 @@ public class Navegacion extends Commons {
 
     // Navegacion menu Cuenta
     public NuevaCuentaPage irANuevaCuenta() {
-        gw.deployMenu(mnuCuenta);
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mnuCuenta).click();
+        waitForAnyTextToAppear("Resumen de la cuenta","Búsqueda de cuentas");
+        waitUntil(2500);
+        mnuCuenta.waitUntilClickable().click();
+        waitUntil(500);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevaCuenta).release(mnuItemNuevaCuenta).click().build().perform();
         return new NuevaCuentaPage(getDriver());
     }
