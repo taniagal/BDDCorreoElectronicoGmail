@@ -111,33 +111,6 @@ public class EdificiosUbicaciones {
     }
 
 
-    @When("cuando intente ingresar una ubicacion para comprobar las validaciones de riesgos consultables")
-    public void cuandoIntenteIngresarUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables() {
-        LOGGER.info("Poliza.cuandoIntenteIngresarUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables");
-
-        try {
-            polizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
-        } catch (Exception e) {
-            LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
-        }
-
-        polizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
-        edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
-    }
-
-    @Then("espero ver mensajes de advertencia indicandome la direccion es un riesgo consultable")
-    public void entoncesEsperoVerMensajeDeAdvertenciaQueUbicacionEsRiesgoConsultable() {
-        for (String mensaje : polizaSteps.espacioDeTrabajo()){
-            MatcherAssert.assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
-                    mensaje,
-                    StringContains.containsString("La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
-                    ));
-        }
-
-        edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
-    }
-
-
     @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
     @Aliases(values={
             "se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados",
