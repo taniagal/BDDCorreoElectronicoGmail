@@ -18,7 +18,7 @@ import org.openqa.selenium.support.FindBy;
 public class ContactosAsociadosACuentasPage extends Commons {
 
     private static final String ASSERTMENUCREARNUEVOCONTACTO = "Elementos del menú encontrados";
-    @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
+    @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")
     private WebElementFacade linkAccountFileAccountFileContacts;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDetailCardTab']")
     private WebElementFacade tabDetalleContactos;
@@ -68,7 +68,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
     }
 
     public void consultarContactos() {
-        linkAccountFileAccountFileContacts.waitUntilClickable();
+        waitFor(linkAccountFileAccountFileContacts);
         linkAccountFileAccountFileContacts.click();
     }
 
