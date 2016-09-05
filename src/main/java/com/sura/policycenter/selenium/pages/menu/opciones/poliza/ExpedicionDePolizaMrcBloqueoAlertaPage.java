@@ -1,6 +1,8 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.poliza;
 
 import com.sura.commons.selenium.Commons;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -8,8 +10,6 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class ExpedicionDePolizaMrcBloqueoAlertaPage extends Commons {

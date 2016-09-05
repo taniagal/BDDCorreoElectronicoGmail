@@ -1,9 +1,12 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
+
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -85,14 +88,15 @@ public class CuentaPage extends Commons {
         campoTxtNombreNuevaPersonaJuridica.sendKeys(razonSocial);
     }
 
-    public void agregarDireccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
-        campoTxtDireccionNuevaCuentaPersonal.sendKeys(direccion);
-        selectItem(comboBoxDepartamento,departamento);
-        waitForComboValue(comboBoxDepartamento,departamento);
-        selectItem(comboBoxCiudad,ciudad);
-        waitForComboValue(comboBoxCiudad,ciudad);
-        selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, tipoDireccion);
-        waitForComboValue(comboBoxTipoDireccionNuevaCuentaPersonal,tipoDireccion);
+    public void agregarDireccion(ExamplesTable datos) {
+        Map<String,String> dato = datos.getRow(0);
+        campoTxtDireccionNuevaCuentaPersonal.sendKeys(dato.get("direccion"));
+        selectItem(comboBoxDepartamento,dato.get("departamento"));
+        waitForComboValue(comboBoxDepartamento,dato.get("departamento"));
+        selectItem(comboBoxCiudad,dato.get("ciudad"));
+        waitForComboValue(comboBoxCiudad,dato.get("ciudad"));
+        selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
+        waitForComboValue(comboBoxTipoDireccionNuevaCuentaPersonal,dato.get("tipo_direccion"));
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
