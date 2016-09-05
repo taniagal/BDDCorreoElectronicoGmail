@@ -38,7 +38,7 @@ Then se muestra el mensaje informativo de transaccionde poliza no encontrada <me
 
 Examples:
 | numCuenta  | mensaje                          |
-| 0058354349 | No tiene transacciones asociadas |
+| C000484848 | No tiene transacciones asociadas |
 
 Scenario: Ver informacion filtrada por estado
 Given que voy a buscar la cuenta <numCuenta>
@@ -47,7 +47,7 @@ Then debe mostrarme el listado de transacciones filtradas por estado <filtroEsta
 
 Examples:
 | numCuenta  | filtroEstado |
-| C010478975 | Abierto      |
+| C001888888 | Abierto      |
 
 
 Scenario: Ver informacion filtrada por tipo de transaccion
@@ -58,7 +58,7 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 | numCuenta  | filtroEstado | filtroTransaccion |
-| C010478975 | Todos        | Cotización        |
+| C001888888 | Todos        | Cotización        |
 
 Scenario: Ver informacion filtrada por producto
 Given que voy a buscar la cuenta <numCuenta>
@@ -69,4 +69,4 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 | numCuenta  | filtroEstado | filtroTransaccion | filtroProducto |
-| C010478975 | Todos        | Todos             | Autos          |
+| C001888888 | Todos        | Todos             | Autos          |
