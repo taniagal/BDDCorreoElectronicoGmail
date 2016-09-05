@@ -58,11 +58,6 @@ public class CrearNuevoContactoDefinitions {
         crearNuevoContactoSteps.ingresar_direccion_persona_natural(direccion, departamento, ciudad);
     }
 
-    @When("ingreso la informacion de direccion <direccion>, <departamento>, <ciudad>, tipo de direccion <tipoDireccion>")
-    public void whenIngresoLaInformacionDeDirecciondireccion2(@Named("direccion") String direccion, @Named("departamento") String departamento, @Named("ciudad") String ciudad, @Named("tipoDireccion") String tipoDireccion) {
-        crearNuevoContactoSteps.ingresar_direccion_persona_natural2(direccion, departamento, ciudad, tipoDireccion);
-    }
-
     @Then("se debe crear una persona tipo natural con primer nombre <primerNombre>")
     public void thenSeDebeCrearUnaPersonaTipoNatural(@Named("primerNombre") String primerNombre) {
         crearNuevoContactoSteps.actualizar(primerNombre);

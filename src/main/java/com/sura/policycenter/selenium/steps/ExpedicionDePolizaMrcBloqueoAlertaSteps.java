@@ -7,12 +7,12 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class ExpedicionDePolizaMrcBloqueoAlertaSteps extends ScenarioSteps {
 
+    ExpedicionDePolizaMrcBloqueoAlertaPage expedicionDePolizaMrcBloqueoAlertaPage = new ExpedicionDePolizaMrcBloqueoAlertaPage(getDriver());
 
     public ExpedicionDePolizaMrcBloqueoAlertaSteps (Pages pages){
         super (pages);
     }
 
-    ExpedicionDePolizaMrcBloqueoAlertaPage expedicionDePolizaMrcBloqueoAlertaPage = new ExpedicionDePolizaMrcBloqueoAlertaPage(getDriver());
 
     @Step
     public void ingresar_a_edificios_y_ubicaciones(){

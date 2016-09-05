@@ -49,7 +49,7 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void validarMensaje(String mensaje) {
-        MatcherAssert.assertThat(msjTransaccionNoEncontrada.getText().toString(), Matchers.containsString(mensaje));
+        MatcherAssert.assertThat(msjTransaccionNoEncontrada.getText(), Matchers.containsString(mensaje));
     }
 
     public void filtrarTransaccionesPorTransaccion(String filtroTransaccion) {

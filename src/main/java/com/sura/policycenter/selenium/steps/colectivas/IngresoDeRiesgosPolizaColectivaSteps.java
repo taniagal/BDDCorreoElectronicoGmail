@@ -51,8 +51,7 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
                 riesgoColectivas.get("numeroDocumento"));
         cuentaPage.agregarNombres(riesgoColectivas.get("nombre"), riesgoColectivas.get("apellido"),
                 riesgoColectivas.get("fechaNacimiento"));
-        cuentaPage.agregarDireccion(riesgoColectivas.get("tipoDireccion"), riesgoColectivas.get("direccion"),
-                riesgoColectivas.get("departamento"), riesgoColectivas.get("ciudad"));
+        cuentaPage.agregarDireccion(cuentaNueva);
         cuentaPage.agregarOrganizacion(riesgoColectivas.get("organizacionCuenta"),
                 riesgoColectivas.get("agenteCuenta"));
         cuentaPage.actualizar();
