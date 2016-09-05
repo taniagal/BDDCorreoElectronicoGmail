@@ -37,20 +37,6 @@ public class BusquedaDePolizaPage extends PageObject {
     WebElementFacade btnBuscar;
     @FindBy(xpath = ".//div[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearch_ResultsLV-body']/div/table")
     WebElementFacade tablaResultados;
-    @FindBy(xpath = "//a[contains(text(),'TEST_22222222')]")
-    WebElementFacade grdNumeroPoliza;
-    @FindBy(xpath = "//td[4]/div")
-    WebElementFacade grdAseguradoNombrado;
-    @FindBy(xpath = "//td[6]/div")
-    WebElementFacade grdProducto;
-    @FindBy(xpath = "//td[7]/div")
-    WebElementFacade grdEstado;
-    @FindBy(xpath = "//td[8]/div")
-    WebElementFacade grdFechaVigencia;
-    @FindBy(xpath = "//td[9]/div")
-    WebElementFacade grdFechaExpiracion;
-    @FindBy(xpath = "//td[10]/div")
-    WebElementFacade grdAgente;
     @FindBy(xpath = "//div[@id='PolicySearch:PolicySearchScreen:_msgs']/div")
     WebElementFacade msjValidacion;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
@@ -116,7 +102,7 @@ public class BusquedaDePolizaPage extends PageObject {
     }
 
     public void limpiarCampos() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent();
+        waitFor(botonRestablecer).waitUntilPresent().waitUntilClickable();
         botonRestablecer.click();
         commons.waitUntil(3500);
     }

@@ -29,12 +29,6 @@ public class Commons extends PageObject {
     WebElementFacade internacional;
     @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
     WebElementFacade idioma;
-    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-    private WebElementFacade usuario;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
-    private WebElementFacade contrasena;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
-    private WebElementFacade submit;
     @FindBy(xpath =".//*[@id=':TabLinkMenuButton-btnIconEl']")
     private WebElementFacade btnConfig;
     @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
@@ -46,31 +40,8 @@ public class Commons extends PageObject {
         super(driver);
     }
 
-    public void asercion(String element, String mensaje) {
-        MatcherAssert.assertThat(element, CoreMatchers.containsString(mensaje));
-    }
-
-    public void login(String user, String pass) {
-        usuario.clear();
-        contrasena.clear();
-        usuario.type(user);
-        contrasena.type(pass);
-        submit.click();
-    }
-
-    public void logout() {
-        btnConfig.click();
-        btnLogout.click();
-        if (btnLogout2.isCurrentlyVisible()) {
-            btnLogout2.click();
-        }
-    }
-
-    public void close() {
-        getDriver().quit();
-    }
-
     public Actions deployMenu(WebElementFacade menu) {
+        waitUntil(2000);
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menu).click();
         waitUntil(3000);
         menu.waitUntilClickable().click();
@@ -84,24 +55,6 @@ public class Commons extends PageObject {
         waitUntil(200);
         element.sendKeys(option);
         element.sendKeys(Keys.ENTER);
-    }
-
-    /**
-     * Crea numero de cedula
-     * @return numero de cedula de 8 digitos
-     */
-    public String cedulaRandom() {
-        int cedula = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
-        return Integer.toString(cedula);
-    }
-
-    /**
-     * Crea un numero de nit
-     * @return numero de nit de 9 digitos
-     */
-    public String nitRandom() {
-        int nit = (int) Math.floor(Math.random() * (900000000 - 999999999) + 999999999);
-        return Integer.toString(nit);
     }
 
 
@@ -164,5 +117,42 @@ public class Commons extends PageObject {
     public void waitForComboValue(WebElementFacade element, String value ){
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element,value));
         waitUntil(2000);
+    }
+
+
+    public void logout() {
+        btnConfig.click();
+        btnLogout.click();
+        if (btnLogout2.isCurrentlyVisible()) {
+            btnLogout2.click();
+        }
+    }
+
+
+    public void asercion(String element, String mensaje) {
+        MatcherAssert.assertThat(element, CoreMatchers.containsString(mensaje));
+    }
+
+
+    public void close() {
+        getDriver().quit();
+    }
+
+    /**
+     * Crea numero de cedula
+     * @return numero de cedula de 8 digitos
+     */
+    public String cedulaRandom() {
+        int cedula = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
+        return Integer.toString(cedula);
+    }
+
+    /**
+     * Crea un numero de nit
+     * @return numero de nit de 9 digitos
+     */
+    public String nitRandom() {
+        int nit = (int) Math.floor(Math.random() * (900000000 - 999999999) + 999999999);
+        return Integer.toString(nit);
     }
 }

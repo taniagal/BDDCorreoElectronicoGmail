@@ -395,7 +395,7 @@ public class BusquedaContactoPage extends Commons {
 
     public void irABuscarContacto() {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent();
-        waitUntil(1500);
+        waitUntil(2500);
         menuBuscar.click();
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuBuscarContacto).waitUntilPresent();
         waitUntil(2500);

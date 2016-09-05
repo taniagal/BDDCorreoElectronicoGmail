@@ -28,6 +28,12 @@ Examples:
 
 
 Scenario: Agregar una nueva ubicacion "bloqueante" en una poliza de MRC
+Meta:
+@Story CDSEG-731
+@URL https://jira.suramericana.com.co/browse/CDSEG-731
+@Informador alejandro esteban villada marin
+@Sprint 4
+
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto               |canal           |
 |C001888888|Sura       |Multiriesgo corporativo|Canal Tradicional|

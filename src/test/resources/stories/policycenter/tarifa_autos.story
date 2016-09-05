@@ -18,7 +18,7 @@ Given estoy cotizando una poliza:
 When ingrese los datos del asegurado
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
-|T10006|2011  |01601225        |MEDELLIN          |Particular       |null  |null |$17,900,000    |null     |null   |2|
+|T10000|2011  |01601225        |MEDELLIN          |Particular       |null  |null |$17,900,000    |null     |null   |2|
 And ingrese las coberturas:
 |limite|deducible|abogado |
 |32    |0        |Opción 1|
@@ -36,16 +36,16 @@ Given estoy cotizando una poliza:
 When ingrese los datos del asegurado
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
-|T91006|2016  |00601182        |MEDELLIN          |Particular       |null  |null |$165,900,000   |null     |null   |2|
+|T10000|2016  |00601182        |MEDELLIN          |Particular       |null  |null |$165,900,000   |null     |null   |2|
 And seleccione todas las coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |Taller|Grua|TM    |CE|CS  |PTD|PPD|PPDF|GT|PP|PT|
-|32    |0        |Opción 1|10 |730|1.50|40.|35|Asistencia Clásica|Conces|Plus|Taller|6 |Plus|10 |0  |1.50|40|16|20|
+|32    |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus|Taller|6 |Plus|10 |0  |1.50|40|16|20|
 Then el resultado de la cotizacion en cada cobertura debe ser:
 |fila|valor      |
 |1   |326,211    |
-|4   |170,130,521|
-|9   |120,923,703|
-|14  |$111,929   |
+|4   |4,279,806  |
+|9   |1,674,510  |
+|14  |$127,281   |
 |17  |7,000      |
 |19  |22,055     |
 |21  |190,000    |

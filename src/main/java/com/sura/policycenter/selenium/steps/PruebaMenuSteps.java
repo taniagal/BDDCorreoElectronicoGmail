@@ -28,10 +28,6 @@ public class PruebaMenuSteps extends ScenarioSteps {
         abrirAppPage().open();
     }
 
-    @Step
-    public void login(String usuario, String contrasenia) {
-        guidewire().login(usuario, contrasenia);
-    }
 
     @Step
     public void assertion(String element) {

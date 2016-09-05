@@ -142,9 +142,9 @@ public class CotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(labelTipoDireccion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("tipoDireccion"))));
         MatcherAssert.assertThat(labelDescripcionDireccion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("descripcionDireccion"))));
         MatcherAssert.assertThat(labelEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("empresaAseguradora"))));
-        MatcherAssert.assertThat(labelPrimaTotal.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("primaTotal"))));
+        MatcherAssert.assertThat(labelPrimaTotal.getText(), Matchers.containsString(infoCotizacionPoliza.get("primaTotal")));
         MatcherAssert.assertThat(labelImpuestos.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("impuestos"))));
-        MatcherAssert.assertThat(labelCostoTotal.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("costoTotal"))));
+        MatcherAssert.assertThat(labelCostoTotal.getText(), Matchers.containsString(infoCotizacionPoliza.get("costoTotal")));
 
         if (campoNumeroDeCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("numeroCotizacion"))) {
             datosCotizacion = informacionCotizacion.getRows().get(0);
@@ -159,9 +159,11 @@ public class CotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("empresaAseguradora"))));
-        MatcherAssert.assertThat(campoPrimaTotal.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("prima"))));
+        MatcherAssert.assertThat("Error e el valor de la prima, was "+campoPrimaTotal.getText()+" expected "+datosCotizacion.get("prima"),
+                campoPrimaTotal.containsText(datosCotizacion.get("prima")));
         MatcherAssert.assertThat(campoImpuestosYCargos.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("impuestos"))));
-        MatcherAssert.assertThat(campoCostoTotal.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("total"))));
+        MatcherAssert.assertThat("Error e el valor de la prima, was "+campoPrimaTotal.getText()+" expected "+datosCotizacion.get("total"),
+                campoPrimaTotal.containsText(datosCotizacion.get("total")));
         MatcherAssert.assertThat(campoVigenciaDePoliza.getText(), Is.is(Matchers.notNullValue()));
     }
 

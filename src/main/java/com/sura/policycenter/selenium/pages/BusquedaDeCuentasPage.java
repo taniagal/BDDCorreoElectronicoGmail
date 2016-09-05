@@ -117,8 +117,8 @@ public class BusquedaDeCuentasPage extends Commons {
     }
 
     private void limpiarFormulario() {
-        waitFor(botonRestablecer).waitUntilPresent();
-        botonRestablecer.waitUntilPresent().click();
+        waitFor(botonRestablecer).waitUntilPresent().waitUntilClickable();
+        botonRestablecer.click();
         waitUntil(2000);
     }
 
