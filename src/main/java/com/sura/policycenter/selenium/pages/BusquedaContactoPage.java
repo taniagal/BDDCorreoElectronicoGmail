@@ -109,25 +109,6 @@ public class BusquedaContactoPage extends Commons {
         super(driver);
     }
 
-    public void buscarContactoPersonaSinVerDetalle(String tipoDoc, String nombre, String apellido) {
-        tipoContact.type("Personal");
-        tipoContact.sendKeys(Keys.ENTER);
-        txtTipoDoc.type(tipoDoc);
-        nombreContact.type(nombre);
-        apellidoContact.type(apellido);
-    }
-
-    public void buscarContactoPersona(String nombre, String apellido) {
-        tipoContact.type("Personal");
-        tipoContact.sendKeys(Keys.ENTER);
-        nombreContact.type(nombre);
-        apellidoContact.type(apellido);
-        botonBuscar.click();
-        selectContact.waitUntilPresent();
-        selectContact.waitUntilVisible();
-        selectContact.click();
-    }
-
     public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial){
         waitUntil(2000);
         waitFor(txtTipoDoc).shouldBeVisible();
@@ -167,15 +148,6 @@ public class BusquedaContactoPage extends Commons {
         waitForTextToAppear(BUSQUEDADECONTACTOS);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
-        waitFor(botonBuscar).shouldBeVisible();
-        botonBuscar.click();
-    }
-
-    public void consultarPersonaJuridicaTipoNumDoc(String numDoc) {
-        waitForTextToAppear(BUSQUEDADECONTACTOS);
-        waitFor(itmNIT).shouldBeVisible();
-        itmNIT.click();
-        txtNumDoc.type(numDoc);
         waitFor(botonBuscar).shouldBeVisible();
         botonBuscar.click();
     }
@@ -319,16 +291,6 @@ public class BusquedaContactoPage extends Commons {
         }
     }
 
-    public void buscarContactoEmpresa(String nombreEmpresa) {
-        tipoContact.type("Empresa");
-        tipoContact.sendKeys(Keys.ENTER);
-        waitUntil(1000);
-        txtNombreEmpresa.type(nombreEmpresa);
-        botonBuscar.click();
-        selectContact.waitUntilPresent();
-        selectContact.waitUntilVisible();
-        selectContact.click();
-    }
 
     @SuppressWarnings("SameParameterValue")
     public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
