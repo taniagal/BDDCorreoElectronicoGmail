@@ -2,22 +2,16 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.commons.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CuentaNuevaSteps;
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.AfterStory;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import org.openqa.selenium.WebDriver;
+import org.jbehave.core.model.ExamplesTable;
 
 @SuppressWarnings("WeakerAccess")
 public class CuentaNuevaDefinitions {
     @Steps
-    private SeusLoginSteps seusLoginSteps;
-    @Steps
     private CuentaNuevaSteps cuentaNuevaSteps;
-    @Managed
-    WebDriver driver;
 
 
     /**
@@ -36,10 +30,9 @@ public class CuentaNuevaDefinitions {
         cuentaNuevaSteps.agregar_nombre(primerNombre,primerApellido,fechaNacimiento);
     }
 
-    @When("tipo de direccion <tipo_direccion>, direccion <direccion>, departamento <departamento>, ciudad <ciudad>")
-    public void agregarDireccion( @Named("tipo_direccion")String tipoDireccion, @Named("direccion")String direccion,
-                                  @Named("departamento")String departamento,@Named("ciudad")String ciudad){
-        cuentaNuevaSteps.agregar_direccion(tipoDireccion,direccion,departamento,ciudad);
+    @When("ingrese los datos de direccion: $datos")
+    public void agregarDireccion(ExamplesTable datos){
+        cuentaNuevaSteps.agregar_direccion(datos);
     }
     @When("nombre de organizacion <nombre_organizacion> <agente>")
     public void agregarOrganizacion( @Named("nombre_organizacion")String nombreOrganizacion, @Named("agente") String agente){
@@ -78,11 +71,5 @@ public class CuentaNuevaDefinitions {
     public void verificarMensaje(@Named("mensaje")String mensaje){
         cuentaNuevaSteps.verificar_mensaje(mensaje);
         cuentaNuevaSteps.verificar_edad_menor(mensaje);
-        seusLoginSteps.close();
-    }
-
-    @AfterStory
-    public void despuesDeLaHistoria(){
-        driver.close();
     }
 }
