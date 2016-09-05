@@ -122,10 +122,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
-        for (Map<String, String> mensaje : mensajes.getRows()) {
-            MatcherAssert.assertThat("Error: en la validacion del mensaje " + mensaje.get("mensaje"), divMensaje.containsText(mensaje.get("mensaje")));
-        }
+        verificarMensajes(divMensaje,mensajes);
     }
 
     public void verificarEstadoDelCampoCodigo() {
