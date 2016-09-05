@@ -2,13 +2,16 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.BusquedaContactoPage;
 import com.sura.policycenter.selenium.pages.DetallesContactoPage;
+import com.sura.policycenter.selenium.pages.DireccionPrincipalDeUnContactoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class DetallesContactoSteps extends ScenarioSteps {
     BusquedaContactoPage busquedaContactoPage = new BusquedaContactoPage(getDriver());
     DetallesContactoPage detallesContactoPage = new DetallesContactoPage(getDriver());
+    DireccionPrincipalDeUnContactoPage direccionPrincipalDeUnContactoPage = new DireccionPrincipalDeUnContactoPage(getDriver());
 
     public DetallesContactoSteps(Pages pages){
         super(pages);
@@ -88,8 +91,13 @@ public class DetallesContactoSteps extends ScenarioSteps {
     }
 
     @Step
+    public void agregar_direccion(ExamplesTable datos){
+        direccionPrincipalDeUnContactoPage.agregarDireccion(datos);
+    }
+
+    @Step
     public void ir_a_direcciones() {
-        detallesContactoPage.irADirecciones();
+        direccionPrincipalDeUnContactoPage.irADirecciones();
     }
 
     @Step
@@ -99,17 +107,17 @@ public class DetallesContactoSteps extends ScenarioSteps {
 
     @Step
     public void validar_datos_patalla() {
-        detallesContactoPage.validarDatosPantalla();
+        direccionPrincipalDeUnContactoPage.validarDatosPantalla();
     }
 
     @Step
     public void validar_campos() {
-        detallesContactoPage.validarCampos();
+        direccionPrincipalDeUnContactoPage.validarCampos();
     }
 
     @Step
     public void validar_direccion(){
-        detallesContactoPage.validarDireccion();
+        direccionPrincipalDeUnContactoPage.validarDireccion();
     }
 
     @Step
@@ -135,4 +143,5 @@ public class DetallesContactoSteps extends ScenarioSteps {
     public void verificar_estado_de_documento(){
         detallesContactoPage.verificarEstadoDeDocumento();
     }
+
 }

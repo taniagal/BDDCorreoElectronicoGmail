@@ -6,6 +6,7 @@ import com.sura.policycenter.selenium.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class CuentaNuevaSteps extends ScenarioSteps {
 
@@ -86,8 +87,8 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_direccion(String tipoDireccion, String direccion, String departamento, String ciudad) {
-        cuentaPage.agregarDireccion(tipoDireccion,direccion,departamento,ciudad);
+    public void agregar_direccion(ExamplesTable datos) {
+        cuentaPage.agregarDireccion(datos);
         cuentaPage.actualizar();
     }
 

@@ -14,7 +14,6 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.slf4j.LoggerFactory;
 
 public class BusquedaContactoPage extends Commons {
@@ -56,12 +55,6 @@ public class BusquedaContactoPage extends Commons {
     private WebElementFacade selectContact;
     @FindBy(xpath = "//div[3]/div/table")
     private WebElementFacade table;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
-    private WebElementFacade submit;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-    private WebElementFacade txtusuario;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
-    private WebElementFacade txtcontrasena;
     @FindBy(xpath = ".//div/div/div[2]/div/span")
     private WebElementFacade lblTipoId;
     @FindBy(xpath = ".//div/div/div[3]/div/span")
