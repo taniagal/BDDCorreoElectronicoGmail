@@ -113,7 +113,10 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
 
     public void agregarCodigoFasecolda(String codigo) {
         waitFor(botonCrearVehiculo).click();
-        campoTxtCodigoFasecolda.waitUntilPresent().sendKeys(codigo);
+        comboBoxModelo.waitUntilPresent();
+        selectItem(comboBoxModelo,"2015");
+        waitForTextToAppear("2015");
+        campoTxtCodigoFasecolda.sendKeys(codigo);
         campoTxtPlaca.click();
         waitUntil(2000);
     }

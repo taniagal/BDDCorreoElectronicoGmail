@@ -41,6 +41,7 @@ public class Commons extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
+        waitUntil(2000);
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menu).click();
         waitUntil(3000);
         menu.waitUntilClickable().click();
