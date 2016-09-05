@@ -8,8 +8,12 @@ Scenario: Validar la informacion del detalle de la cotizacion
 Given se ha realizado la renovacion de la cotizacion <cotizacion>
 When ingrese al detalle de la cotizacion
 Then se debe mostrar la informacion del detalle de cotizacion por riesgo, donde se muestre:
-|placa  |modelo |codigoFasecolda |marca     |linea                         |
-|ABC246 |2011   |01601225        |CHEVROLET |AVEO FAMILY - MT 1500CC 4P AA |
+|placa  |modelo |codigoFasecolda |marca |linea |
+|TKC459 |2016   |00601182        |Mazda |MPV   |
 And en el detalle por coberturas mostrar:
 |cobertura                         |terminoCobertura |valorCobertura |subtotal |subtotalPrima |valorImpuesto |
-|Cobertura de Responsabilidad Civil|Limite           |32.000.000     |
+|Cobertura de Responsabilidad Civil|Valor término    |$326,211.00    |
+
+Examples:
+|cotizacion |
+|32112330   |
