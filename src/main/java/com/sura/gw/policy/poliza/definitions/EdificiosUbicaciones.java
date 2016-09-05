@@ -9,7 +9,6 @@ import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.hamcrest.MatcherAssert;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.StringContains;
 import org.jbehave.core.annotations.Aliases;
@@ -22,6 +21,8 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class EdificiosUbicaciones {
@@ -122,7 +123,7 @@ public class EdificiosUbicaciones {
 
         for (Map<String,String> mensajes : mensajesEsperados.getRows()) {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, hasItemContainsString(mensaje));
+            assertThat(mensajesWSList, hasItemContainsString(mensaje));
         }
 
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();

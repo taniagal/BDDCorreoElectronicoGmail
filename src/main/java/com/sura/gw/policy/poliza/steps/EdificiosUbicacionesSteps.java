@@ -86,8 +86,8 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
             seleccionarTab(tab);
             seleccionarTipoDeArticulo(tipoArticulo);
 
-            if (cobertura.length() > 0 && ! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)){
-                edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
+            if (cobertura.length() > 0 && ! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura, tipoArticulo)){
+                edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura, tipoArticulo);
                 edificiosyUbicacionesWidget.ingresarValorAEntradaInformacionArticulo(tipoArticulo, entrada, valorEntrada);
             } else {
                 edificiosyUbicacionesWidget.ingresarValorAEntradaInformacionArticulo(tipoArticulo, entrada, valorEntrada);

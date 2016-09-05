@@ -124,11 +124,16 @@ public class EdificiosyUbicacionesWidget extends Commons {
 
     public boolean estaSeleccionadoTab(String tab) {
         Boolean esSeleccionado = false;
-        waitForAnyTextToAppear(tab);
-        shouldContainText(tab);
-        String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + "')])]";
-        String classProp = $(xpathTab).getAttribute("class");
-        if (classProp.contains("x-active") && classProp.contains("x-tab-active") && classProp.contains("x-tab-default-active") && classProp.contains("x-top-active") && classProp.contains("x-tab-top-active") && classProp.contains("x-tab-default-top-active")) {
+        try {
+            waitForAnyTextToAppear(tab);
+            shouldContainText(tab);
+            String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + "')])]";
+            String classProp = $(xpathTab).getAttribute("class");
+            if (classProp.contains("x-active") && classProp.contains("x-tab-active") && classProp.contains("x-tab-default-active") && classProp.contains("x-top-active") && classProp.contains("x-tab-top-active") && classProp.contains("x-tab-default-top-active")) {
+                esSeleccionado = true;
+            }
+        }catch (Exception e){
+            LOGGER.info("Pestaña no visualizada en Edificios y ubicaciones");
             esSeleccionado = true;
         }
         return esSeleccionado;
@@ -137,8 +142,21 @@ public class EdificiosyUbicacionesWidget extends Commons {
     public void seleccionarCoberturaDelRiesgo(String cobertura) {
         waitForAnyTextToAppear(cobertura);
         shouldContainText(cobertura);
+
         String xpathLegendCoberturaDeRiesgo = ".//legend[ (descendant::div[contains(., '" + cobertura + "')])]";
         WebElementFacade inputCoberturaDeRiesgo = findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName("input"));
+        withAction().moveToElement(inputCoberturaDeRiesgo).perform();
+        inputCoberturaDeRiesgo.click();
+    }
+
+    public void seleccionarCoberturaDelRiesgo(String cobertura, String tipoArticulo) {
+        waitForAnyTextToAppear(cobertura);
+        shouldContainText(cobertura);
+        WebElementFacade trWE = findBy(".//tbody/tr[preceding-sibling::tr[ (descendant::*[contains(., '" + tipoArticulo + "')]) and  (ancestor::div[contains(@class, 'x-container x-container-default x-table-layout-ct')])  and  (child::td/div[contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct g-no-divider')]) ] ]");
+
+
+        String xpathLegendCoberturaDeRiesgo = ".//legend[ (descendant::div[contains(., '" + cobertura + "')])]";
+        WebElementFacade inputCoberturaDeRiesgo = trWE.findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName("input"));
         withAction().moveToElement(inputCoberturaDeRiesgo).perform();
         inputCoberturaDeRiesgo.click();
     }
@@ -160,8 +178,10 @@ public class EdificiosyUbicacionesWidget extends Commons {
         withAction().moveToElement(inputValorEntrada).perform();
 
         enter(valorEntrada).into(inputValorEntrada);
+        inputValorEntrada.click();
         esperarAQueElementoTengaValor(findBy(xpathTREntrada).find(By.tagName("input")), valorEntrada);
     }
+
     public void ingresarValorAEntradaInformacionArticulo(String tipoArticulo, String entrada, String valorEntrada) {
         waitForAnyTextToAppear(entrada);
         shouldContainText(entrada);
@@ -173,6 +193,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
         withAction().moveToElement(inputValorEntrada).perform();
 
         enter(valorEntrada).into(inputValorEntrada);
+        inputValorEntrada.click();
         esperarAQueElementoTengaValor(trWE.findBy(xpathTREntrada).find(By.tagName("input")), valorEntrada);
     }
 
@@ -192,19 +213,42 @@ public class EdificiosyUbicacionesWidget extends Commons {
         };
     }
 
+    public boolean estaSeleccionadaCoberturaDeRiesgo(String cobertura, String tipoArticulo) {
+        Boolean estaSeleccionado = false;
+        try {
+            waitForAnyTextToAppear(cobertura);
+            shouldContainText(cobertura);
+
+            WebElementFacade trWE = findBy(".//tbody/tr[preceding-sibling::tr[ (descendant::*[contains(., '" + tipoArticulo + "')]) and  (ancestor::div[contains(@class, 'x-container x-container-default x-table-layout-ct')])  and  (child::td/div[contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct g-no-divider')]) ] ]");
+
+            String xpathLegendCoberturaDeRiesgo = ".//legend[ (descendant::div[contains(., '" + cobertura + "')])]";
+            WebElementFacade inputCoberturaDeRiesgo = trWE.findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName("input"));
+
+            if ("-15px 0".equals(inputCoberturaDeRiesgo.getCssValue("background-position")) || "0px -15px".equals(inputCoberturaDeRiesgo.getCssValue("background-position"))) {
+                estaSeleccionado = true;
+            }
+        } catch (Exception e) {
+            LOGGER.info("CHECK DE COBERTURA: " + cobertura + " NO ENCONTRADo EN EL DOM");
+        }
+        return estaSeleccionado;
+
+    }
+
     public boolean estaSeleccionadaCoberturaDeRiesgo(String cobertura) {
         Boolean estaSeleccionado = false;
         try {
             waitForAnyTextToAppear(cobertura);
             shouldContainText(cobertura);
+
+
             String xpathLegendCoberturaDeRiesgo = ".//legend[ (descendant::div[contains(., '" + cobertura + "')])]";
             WebElementFacade inputCoberturaDeRiesgo = findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName("input"));
 
             if ("-15px 0".equals(inputCoberturaDeRiesgo.getCssValue("background-position")) || "0px -15px".equals(inputCoberturaDeRiesgo.getCssValue("background-position"))) {
                 estaSeleccionado = true;
             }
-        }catch (Exception e){
-            LOGGER.info("CHECK DE COBERTURA: " + cobertura  + " NO ENCONTRADo EN EL DOM");
+        } catch (Exception e) {
+            LOGGER.info("CHECK DE COBERTURA: " + cobertura + " NO ENCONTRADo EN EL DOM");
         }
         return estaSeleccionado;
 
@@ -233,54 +277,88 @@ public class EdificiosyUbicacionesWidget extends Commons {
 
     // TODO: 01/09/2016 Code Smell
     public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esUltimaFilaDeExampleTable) {
-        String xBtnAgregarArticulo = ".//a[@id='CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add']";
-        String xInputTiposDeArticulos = ".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']";
-        String xTextAreaDescripcion = ".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']";
 
+        String xLinkAgregarOtrosArticulos = "//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]";
+
+        if (isElementVisible(By.xpath(xLinkAgregarOtrosArticulos))) {
+            cliclearBtnAgregarArticulo();
+            ingresarInputTiposDeArticulos(tipoArticulo);
+            ingresarTextAreaDescripcion(tipoArticulo);
+        }
+
+        if (cobertura.length() > 0) {
+            seleccionarCobertura(obtenerDivCobertura(cobertura), cobertura);
+            ingresarEntrada(entrada, valorEntrada);
+        } else {
+            ingresarEntrada(entrada, valorEntrada);
+        }
+
+        if (esUltimaFilaDeExampleTable) {
+            String xBtnAceptarAgregarOtroArticulo = ".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
+            findBy(xBtnAceptarAgregarOtroArticulo).click();
+        }
+
+
+    }
+
+    public void ingresarEntrada(String entrada, String valorEntrada){
         WebElementFacade divEntradasAgregarOtroArticulo = null;
 
-
-            WebElementFacade btnAgregarArticulo = findBy(xBtnAgregarArticulo).waitUntilVisible().waitUntilClickable();
-            btnAgregarArticulo.click();
-
-            enter(tipoArticulo).into($(xInputTiposDeArticulos));
-            waitFor(1).second();
-            $(xInputTiposDeArticulos).sendKeys(Keys.ENTER);
-            esperarAQueElementoTengaValor(findBy(xInputTiposDeArticulos), tipoArticulo);
-
-            enter(tipoArticulo).into($(xTextAreaDescripcion));
-            waitFor(1).second();
-            $(xTextAreaDescripcion).click();
-            esperarAQueElementoTengaValor(findBy(xTextAreaDescripcion), tipoArticulo);
-        if (cobertura.length() > 0) {
-            // Pregunta si es visible el div que contiene el nombre de la cobertura que deseo seleecionar
-            if (isElementVisible(By.xpath(".//div[ (descendant::*[contains(., '" + cobertura + "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]"))) {
-
-                // captura el elemento que contenga el div con el nombre de la cobertura que será el que se usará para capturar el checkbox de la cobertura a seleccionar
-                divEntradasAgregarOtroArticulo = findBy(".//div[ (descendant::*[contains(., '" + cobertura + "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]");
-                WebElementFacade xpathTrCoberturaDeRiesgo = divEntradasAgregarOtroArticulo.findBy(".//tr[ (descendant::div[contains(., '" + cobertura + "')])] ");
-                WebElementFacade inputCoberturaDeRiesgo = xpathTrCoberturaDeRiesgo.find(By.tagName("input"));
-
-                // Le da clic al checkbox de la cobertura siempre y cuando haya encontrado el elemento a cliclear
-                withAction().moveToElement(inputCoberturaDeRiesgo).perform();
-                inputCoberturaDeRiesgo.click();
-            }
-        }
         if (isElementVisible(By.xpath(".//div[ (descendant::*[contains(., '" + entrada + "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]"))) {
-            //divEntradasAgregarOtroArticulo = findBy(".//div[ (descendant::*[contains(., '" + entrada + "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]");
-            divEntradasAgregarOtroArticulo = findBy(".//tbody/tr[preceding-sibling::tr[ (descendant::*[contains(., '" + cobertura + "')]) and  (ancestor::div[contains(@class, 'x-container x-container-default x-table-layout-ct')])  and  (child::td/div[contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct g-no-divider')]) ] ]");
+            divEntradasAgregarOtroArticulo = findBy(".//div[ (descendant::*[contains(., '" + entrada + "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]");
 
             WebElementFacade entradaOtroArticulo = divEntradasAgregarOtroArticulo.findBy(".//tr[ (descendant::label[contains(., '" + entrada + "')]) and @class='x-form-item-input-row' ]");
             WebElementFacade inputValorEntrada = entradaOtroArticulo.find(By.tagName("input"));
             enter(valorEntrada).into(inputValorEntrada);
 
         }
+    }
 
-        if (esUltimaFilaDeExampleTable){
-            String xBtnAceptarAgregarOtroArticulo =".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
-            findBy(xBtnAceptarAgregarOtroArticulo).click();
+    public WebElementFacade obtenerDivCobertura(String cobertura){
+        WebElementFacade divEntradasAgregarOtroArticulo = null;
+
+        // Pregunta si es visible el div que contiene el nombre de la cobertura que deseo seleecionar
+        if (isElementVisible(By.xpath(".//div[ (descendant::*[contains(., '" + cobertura + "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]"))) {
+
+            // captura el elemento que contenga el div con el nombre de la cobertura que será el que se usará para capturar el checkbox de la cobertura a seleccionar
+            divEntradasAgregarOtroArticulo = findBy(".//div[ (descendant::*[contains(., '" + cobertura + "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]");
+
         }
 
+        return  divEntradasAgregarOtroArticulo;
+    }
 
+    public void seleccionarCobertura(WebElementFacade divEntradasAgregarOtroArticulo, String cobertura){
+
+            WebElementFacade xpathTrCoberturaDeRiesgo = divEntradasAgregarOtroArticulo.findBy(".//tr[ (descendant::div[contains(., '" + cobertura + "')])] ");
+            WebElementFacade inputCoberturaDeRiesgo = xpathTrCoberturaDeRiesgo.find(By.tagName("input"));
+
+            // Le da clic al checkbox de la cobertura siempre y cuando haya encontrado el elemento a cliclear
+            withAction().moveToElement(inputCoberturaDeRiesgo).perform();
+            inputCoberturaDeRiesgo.click();
+    }
+
+    public void cliclearBtnAgregarArticulo(){
+        String xBtnAgregarArticulo = ".//a[@id='CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add']";
+
+        WebElementFacade btnAgregarArticulo = findBy(xBtnAgregarArticulo).waitUntilVisible().waitUntilClickable();
+        btnAgregarArticulo.click();
+    }
+
+    public void ingresarInputTiposDeArticulos(String tipoArticulo){
+        String xInputTiposDeArticulos = ".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']";
+        enter(tipoArticulo).into($(xInputTiposDeArticulos));
+        waitFor(1).second();
+        $(xInputTiposDeArticulos).sendKeys(Keys.ENTER);
+        esperarAQueElementoTengaValor(findBy(xInputTiposDeArticulos), tipoArticulo);
+    }
+
+    public void ingresarTextAreaDescripcion(String tipoArticulo){
+        String xTextAreaDescripcion = ".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']";
+
+        enter(tipoArticulo).into($(xTextAreaDescripcion));
+        waitFor(1).second();
+        $(xTextAreaDescripcion).click();
+        esperarAQueElementoTengaValor(findBy(xTextAreaDescripcion), tipoArticulo);
     }
 }
