@@ -36,7 +36,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
     /*
     * Informacion tab detalle de contacto
     * */
-    @FindBy(xpath = ".//label[contains(@id,'ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl')]")
+    @FindBy(xpath = ".//label[contains(@id,'AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress1-labelEl')]")
     private WebElementFacade lblEmail;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AccountContactDV:OfficialIDInputSet:DocumentType-labelCell']")
     private WebElementFacade lblTipoDocumento;
@@ -73,7 +73,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
     }
 
     public void existeEncabezadoDeTabla(ExamplesTable encabezados, String keyElement, String xPathElementos) {
-        List<WebElementFacade> listEncabezados = withTimeoutOf(1, TimeUnit.SECONDS).findAll(xPathElementos);
+        List<WebElementFacade> listEncabezados = withTimeoutOf(15, TimeUnit.SECONDS).findAll(xPathElementos);
         int countCoincidencias = 0;
         for (Map<String, String> enc : encabezados.getRows()) {
             if (enc.containsKey(keyElement)) {
@@ -90,19 +90,19 @@ public class ContactosAsociadosACuentasPage extends Commons {
 
     private List<WebElementFacade> getListaContactos() {
         List<WebElementFacade> contactos;
-        contactos = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+        contactos = withTimeoutOf(15, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return contactos;
     }
 
     private List<WebElementFacade> getListaRolesFunciones() {
         List<WebElementFacade> rolesFunciones;
-        rolesFunciones = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+        rolesFunciones = withTimeoutOf(15, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return rolesFunciones;
     }
 
     private List<WebElementFacade> getListaDirecciones() {
         List<WebElementFacade> direcciones;
-        direcciones = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
+        direcciones = withTimeoutOf(15, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
         return direcciones;
     }
 

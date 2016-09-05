@@ -36,7 +36,7 @@ public class NuevoAseguradoNombradoPage extends Commons {
     private WebElementFacade cboDetalleTipoDireccion;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade cboDetalleDireccion;
-    @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:ForceDupCheckUpdate-btnInnerEl']")
     private WebElementFacade btnActualizar;
 
     public NuevoAseguradoNombradoPage(WebDriver driver) {
