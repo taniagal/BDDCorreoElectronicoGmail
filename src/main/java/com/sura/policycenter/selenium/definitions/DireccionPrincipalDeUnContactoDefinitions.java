@@ -6,9 +6,10 @@ import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 @SuppressWarnings("WeakerAccess")
-public class DireccionDeContactoDefinitions {
+public class DireccionPrincipalDeUnContactoDefinitions {
     @Steps
     DetallesContactoSteps detallesContactoSteps;
 
@@ -16,14 +17,19 @@ public class DireccionDeContactoDefinitions {
     SeusLoginSteps seusLoginSteps;
 
     @When("se vaya a ingresar la nueva direccion y valide los campos en pantalla")
-    public void whenSeVayaAIngresarLaNuevaDireccionYValideLosCamposEnPantalla() {
+    public void irADirecciones() {
         detallesContactoSteps.ir_a_direcciones();
         detallesContactoSteps.validar_datos_patalla();
     }
 
     @When("valide la informacion en los campos")
-    public void whenValideLaInformacionEnLosCampos() {
+    public void validarCampos() {
         detallesContactoSteps.validar_campos();
+    }
+
+    @When("ingrese los datos de la direccion: $datos")
+    public void agregarDireccion(ExamplesTable datos){
+        detallesContactoSteps.agregar_direccion(datos);
     }
 
     @When("se actualiza el contacto")
@@ -36,7 +42,7 @@ public class DireccionDeContactoDefinitions {
         detallesContactoSteps.agregar_nueva_direccion();
     }
 
-    @Then("en la lista de direcciones agregadas se debe ver la nueva direccion <direccion> estandarizada")
+    @Then("en la lista de direcciones agregadas se debe ver la nueva direccion estandarizada")
     public void verificarDireccion(){
         detallesContactoSteps.validar_direccion();
     }

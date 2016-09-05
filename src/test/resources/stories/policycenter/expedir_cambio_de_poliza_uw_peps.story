@@ -65,7 +65,7 @@ And concatenarlo con el texto
 
 Examples:
 |numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                             |
-|55566661         |CEDULA DE CIUDADANIA |1025312689      |ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado.|
+|55566669         |CEDULA DE CIUDADANIA |1025312689      |ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado.|
 
 Scenario: Modificacion - Identificacion cliente PEP en asegurado
 Given existe una cotizacion <numeroCotizacion> la cual se va a modificar
@@ -79,7 +79,7 @@ And concatenarlo con el texto
 
 Examples:
 |numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                           |
-|55566661         |CEDULA DE CIUDADANIA |1025312689      |CAROLINA OCHOA con CEDULA DE CIUDADANIA - 71318883 es un riesgo no estándar y debe ser autorizado.|
+|55566669         |CEDULA DE CIUDADANIA |1025312689      |CAROLINA OCHOA con CEDULA DE CIUDADANIA - 71318883 es un riesgo no estándar y debe ser autorizado.|
 
 Scenario: Modificacion - Identificacion cliente PEP en beneficiario
 Given existe una cotizacion <numeroCotizacion> la cual se va a modificar
@@ -93,7 +93,7 @@ And concatenarlo con el texto
 
 Examples:
 |numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                         |
-|55566661         |CEDULA DE CIUDADANIA |1025312689      |GLADYS OCHOA con CEDULA DE CIUDADANIA - 94372371 es un riesgo no estándar y debe ser autorizado.|
+|55566669         |CEDULA DE CIUDADANIA |1025312689      |GLADYS OCHOA con CEDULA DE CIUDADANIA - 94372371 es un riesgo no estándar y debe ser autorizado.|
 
 Scenario: Identificacion cliente PEP siendo el tomador, asegurado y beneficiario el mismo cliente nuevo
 Meta: @manual

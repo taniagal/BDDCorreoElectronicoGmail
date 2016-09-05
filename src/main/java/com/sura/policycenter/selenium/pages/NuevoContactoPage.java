@@ -45,14 +45,6 @@ public class NuevoContactoPage extends Commons {
     private WebElementFacade comboBoxDepartamento;
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
     private WebElementFacade comboBoxCiudad;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade comboBoxDepartamentoEdit;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
-    private WebElementFacade comboBoxCiudadEdit;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-inputEl']")
-    private WebElementFacade comboBoxTipoDireccion;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
-    private WebElementFacade direccion2;
 
     public NuevoContactoPage(WebDriver driver) {
         super(driver);
@@ -87,17 +79,6 @@ public class NuevoContactoPage extends Commons {
         waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);
         waitForComboValue(comboBoxCiudad,ciudad);
-    }
-
-    public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
-        waitABit(2000);
-        direccion2.sendKeys(direccion);
-        selectItem(comboBoxDepartamentoEdit,departamento);
-        waitForComboValue(comboBoxDepartamentoEdit,departamento);
-        selectItem(comboBoxCiudadEdit,ciudad);
-        waitForComboValue(comboBoxCiudadEdit,ciudad);
-        selectItem(comboBoxTipoDireccion, tipoDireccion);
-        waitForComboValue(comboBoxTipoDireccion,tipoDireccion);
     }
 
     public void actualizarPersonaNatural(String primerNombre) {

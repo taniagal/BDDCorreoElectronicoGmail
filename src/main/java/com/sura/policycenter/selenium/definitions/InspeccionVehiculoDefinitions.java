@@ -4,9 +4,11 @@ import com.sura.policycenter.selenium.steps.CotizacionMRCSteps;
 import com.sura.policycenter.selenium.steps.InspeccionVehiculoSteps;
 import com.sura.policycenter.selenium.steps.ValidacionesInformacionDeVehiculoSteps;
 import net.thucydides.core.annotations.Manual;
-import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
 public class InspeccionVehiculoDefinitions {
