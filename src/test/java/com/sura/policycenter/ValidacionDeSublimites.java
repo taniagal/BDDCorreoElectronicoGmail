@@ -5,9 +5,9 @@ import org.junit.Test;
 
 public class ValidacionDeSublimites{
 
-    public ValidacionDeSublimites(){
-        /**runSerenity().inASingleSession();*/
-    }
+    /**public ValidacionDeSublimites(){
+        runSerenity().inASingleSession();
+    }*/
 
    // @Test
     public void postStory(){
