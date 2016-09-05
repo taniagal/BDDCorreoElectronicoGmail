@@ -23,8 +23,8 @@ When ingrese a informacion del titular de la cuenta
 Then debe mostrarme en la informacion basica: Titular de la cuenta <titularCuenta>, tipo de documento <tipoDocumento>, Nro de documento <nroDocumento>, prima en vigencia <primaVigencia>, Segmentacion <segmentacion>, Comportamiento <comportamiento>, Total no Facturado <totalNoFacturado>, total actualmente facturado <totalFacturado>, total vencido <totalVencido> y total pendiente <totalPendiente>.
 
 Examples:
-|tipoDoc             |nombre  |apellido|titularCuenta                |tipoDocumento       |nroDocumento|primaVigencia|segmentacion    |comportamiento |totalNoFacturado|totalFacturado|totalVencido|totalPendiente|
-|CEDULA DE CIUDADANIA|Yurledys|Gallego |YURLEDYS PAOLA GALLEGO TORRES|CEDULA DE CIUDADANIA|1234567890  |-            |Sin información |Sin información|$35,999.38      |$11,077.18    |$1,000.18   |$12,077.18    |
+| tipoDoc              | nombre   | apellido | titularCuenta                 | tipoDocumento        | nroDocumento | primaVigencia | segmentacion        | comportamiento  | totalNoFacturado | totalFacturado | totalVencido | totalPendiente |
+| CEDULA DE CIUDADANIA | Yurledys | Gallego  | YURLEDYS PAOLA GALLEGO TORRES | CEDULA DE CIUDADANIA | 1234567890   | -             | PyF Sin Información | Sin Información | -                | -              | -            | -              |
 
 
 Scenario: Metricas de valor de cliente
@@ -33,8 +33,8 @@ When ingrese a informacion del titular de la cuenta
 Then debe mostrarme en metricas de valor del cliente: Anio de vigencia de la primera poliza <anioVigencia>, polizas activas <polizasActivas>, Cancelado por el cliente <canceladoPorCliente>, cancelado por la compania de seguros por falta de pago <canceladoPorCompania>, otras cancelaciones <otrasCancelaciones>, prima vitalicia <primaVitalicia>. Informacion de siniestros abiertos: Total de siniestros abiertos <totalSiniestrosAbiertos>, total neto incurrido <totalNetoIncurrido>.
 
 Examples:
-|tipoDoc             |nombre  |apellido|anioVigencia                        |polizasActivas|canceladoPorCliente|canceladoPorCompania|otrasCancelaciones|primaVitalicia |totalSiniestrosAbiertos|totalNetoIncurrido  |
-|CEDULA DE CIUDADANIA|Yurledys|Gallego |Año de vigencia de la primera póliza|0             |0                  |0                   |0                 |Prima vitalicia|0                         |Total neto incurrido|
+| tipoDoc              | nombre   | apellido | anioVigencia                         | polizasActivas | canceladoPorCliente | canceladoPorCompania | otrasCancelaciones | primaVitalicia | totalSiniestrosAbiertos | totalNetoIncurrido  |
+| CEDULA DE CIUDADANIA | Yurledys | Gallego  | Año de vigencia de la primera póliza | 0              | 0                   | 0                    | 0                  | Prima vitalicia| 0                       | Total neto incurrido|
 
 
 Scenario: Concatenar nombre completo de persona natural
@@ -43,8 +43,8 @@ When ingrese a informacion del titular de la cuenta
 Then el nombre del titular de la cuenta debe aparecer con el nombre completo <nombreCompleto>, es decir, nombre 1 seguido de nombre 2 seguido de apellido 1 seguido de apellido 2.
 
 Examples:
-|tipoDoc             |nombre  |apellido|nombreCompleto|
-|CEDULA DE CIUDADANIA|Yurledys|Gallego |YURLEDYS PAOLA GALLEGO TORRES|
+| tipoDoc              | nombre   | apellido | nombreCompleto                |
+| CEDULA DE CIUDADANIA | Yurledys | Gallego  | YURLEDYS PAOLA GALLEGO TORRES |
 
 
 Scenario: Transacciones de Pólizas pendientes
@@ -63,8 +63,8 @@ When ingrese a informacion del titular de la cuenta
 Then debe mostrarme Numero de poliza <nroPoliza>, producto <producto>, asegurado <asegurado>, Fecha de perdida <fechaPerdida>, numero de siniestros <numeroSiniestros>, Estado <estado>, total incurrido <totalIncurrido>.
 
 Examples:
-|tipoDoc             |nombre  |apellido|nroPoliza       |producto|asegurado|fechaPerdida       |numeroSiniestros       |estado|totalIncurrido |
-|CEDULA DE CIUDADANIA|Yurledys|Gallego |Número de póliza|Producto|Asegurado|Fecha de la pérdida|Número de siniestros|Estado|Total incurrido|
+| tipoDoc              | nombre   | apellido | nroPoliza        | producto | asegurado | fechaPerdida        | numeroSiniestros     | estado | totalIncurrido  |
+| CEDULA DE CIUDADANIA | Yurledys | Gallego  | Número de póliza | Producto | Asegurado | Fecha de la pérdida | Número de siniestros | Estado | Total incurrido |
 
 
 Scenario: No permitir edición en campos
@@ -84,7 +84,7 @@ Then los campos fecha de fallecimiento <fechaFallecimiento> y causa de fallecimi
 
 Examples:
 |tipoDoc             |nombre |apellido |fechaFallecimiento           |causaFallecimiento|
-|CEDULA DE CIUDADANIA|ALFREDO|ANTIOQUIA|Fecha de Fallecimiento       |ACCIDENTE         |
+|CEDULA DE CIUDADANIA|ALFREDO|ANTIOQUIA|Fecha de fallecimiento       |ACCIDENTE         |
 
 
 Scenario: Mostrar campo actividad economica
