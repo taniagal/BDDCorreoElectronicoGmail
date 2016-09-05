@@ -32,12 +32,15 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     WebElementFacade columnaLinea;
     @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:RisksLV-body']")
     WebElementFacade tablaRiesgos;
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:Update-btnInnerEl']")
+    WebElementFacade botonActualizar;
 
     public IngresoDeRiesgosPolizaColectivaPages(WebDriver driver) {
         super(driver);
     }
 
     public void clicEnAgregarRiesgoInfoPoliza() {
+        waitForAbsenceOf(".//*[@id='CollectivePolicyInfo_Ext:Update-btnInnerEl']");
         waitFor(botonRiesgosInfoPoliza);
         botonRiesgosInfoPoliza.click();
         waitForTextToAppear("Riesgos");
@@ -77,4 +80,9 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
         return filaRiesgo;
     }
 
+    public void clicEnActualizarInformacionDePolizaColectiva() {
+        if(botonActualizar.isVisible()) {
+            botonActualizar.click();
+        }
+    }
 }

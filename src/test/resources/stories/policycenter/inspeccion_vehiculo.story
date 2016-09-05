@@ -21,7 +21,7 @@ And el vehiculo tenga inspeccion no valida
 And la placa <placa> estuvo vigente en la compañia
 Then se debe recuperar los siguientes datos:
 |modelo|codigoFasecolda|motor|chasis|valorAccesorios|valorAccesoriosEspeciales|
-|2011  |01601225       |WE2  |QWE2  |               |                         |
+|2011  |01601225       |WE2  |QWE2  |0              |0                        |
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
@@ -38,7 +38,7 @@ And el vehiculo tenga inspeccion
 And la placa <placa> estuvo vigente pero ahora esta cancelada
 Then se debe recuperar los siguientes datos:
 |modelo|codigoFasecolda|motor |chasis |valorAccesorios|valorAccesoriosEspeciales|
-|2011  |01601225       |WE2   |QWE2   |               |                         |
+|2011  |01601225       |WE2   |QWE2   |0              |0                        |
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:

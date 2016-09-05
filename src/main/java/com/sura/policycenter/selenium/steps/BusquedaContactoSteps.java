@@ -20,14 +20,24 @@ public class BusquedaContactoSteps extends ScenarioSteps {
         return getPages().currentPageAt(InicioPage.class);
     }
 
-    @Step
+    /*@Step
     public void login(String usuario, String contrasena){
         busquedaContactoPage.login(usuario, contrasena);
-    }
+    }*/
 
     @Step
     public void navegarBarraSuperior() {
         inicioPage().irABuscarContactos();
+    }
+
+    @Step
+    public void ir_A_Buscar_Contacto() {
+        busquedaContactoPage.irABuscarContacto();
+    }
+
+    @Step
+    public void ir_A_Busqueda_Contacto() {
+        busquedaContactoPage.irABuscarContacto();
     }
 
     @Step

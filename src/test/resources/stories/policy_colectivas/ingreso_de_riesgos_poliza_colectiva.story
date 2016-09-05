@@ -19,13 +19,15 @@ When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
+And ingrese el porcentaje de descuento valido <porcentaje>
+And actualice la poliza colectiva
 And de clic en agregar riesgo para ir a la ventana de riesgos
 And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
 And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
 And seleccione la cuenta consultada para agregar al riesgo
 And valide la informacion de la poliza individual
-| tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador                 | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal   | tipoPoliza  | tipoPlazo | oficina | agente        | descuento | aniosVigencia |
-| CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS PAOLA GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Bancolombia  | Leasing | Autos Banca | Anual     | SURA    | 4999DIRECTO   | 0         | 1             |
+| tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador                 | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal   | tipoPoliza  | tipoPlazo | oficina | agente | descuento | aniosVigencia |
+| CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS PAOLA GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Bancolombia  | Leasing | Autos Banca | Anual     | SURA    | 4999   | 0         | 1             |
 And quiera agregar un asegurado
 And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | nombre                  | tipoDocumento | numeroDocumento |
@@ -44,8 +46,8 @@ And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado co
 | ZAX740 | Camperos y pickups | 2016   | AUDI  | [4M] 3.0 TDI Q - TP 3000CC TD V |
 
 Examples:
-| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | razonSocial             |asegurado|
-| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | VARIEDADES YURLEDYS S.A |VARIEDADES YURLEDYS S.A |
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | razonSocial             | asegurado               | porcentaje |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | VARIEDADES YURLEDYS S.A | VARIEDADES YURLEDYS S.A | 0          |
 
 Scenario: Validar la creacion de un riesgo con cuenta nueva
 Meta: @pending
@@ -60,11 +62,11 @@ And de clic en agregar riesgo para ir a la ventana de riesgos
 And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
 And ingrese los datos para realizar la busqueda de la cuenta persona natural <consultaNombre> <consultaApellido>
 And ingrese los datos para crear un contacto tipo persona natural
-| tipoDocumento        | numeroDocumento | nombre | apellido | fechaNacimiento | departamento | ciudad   | direccion        | tipoDireccion |organizacionCuenta|agenteCuenta|
-| CEDULA DE CIUDADANIA | 1037500160      |        |          | 01/01/1990      | ANTIOQUIA    | MEDELLIN | CARRERA 10 11 12 | Vivienda      |SURA              |4999 |
+| tipoDocumento        | numeroDocumento | nombre | apellido | fechaNacimiento | departamento | ciudad   | direccion        | tipoDireccion | organizacionCuenta | agenteCuenta |
+| CEDULA DE CIUDADANIA | 1037500160      |        |          | 01/01/1990      | ANTIOQUIA    | MEDELLIN | CARRERA 10 11 12 | Vivienda      | SURA               | 4999         |
 And valide la informacion de la poliza individual
-| tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador                 | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal             | tipoPoliza       | tipoPlazo | oficina | agente        | descuento | aniosVigencia |
-| CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS PAOLA GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Sura         | Canal Tradicional | Commercial Fleet | Anual     | SURA    | 4999DIRECTO   | 0         | 1             |
+| tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador                 | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal             | tipoPoliza       | tipoPlazo | oficina | agente | descuento | aniosVigencia |
+| CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS PAOLA GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Sura         | Canal Tradicional | Commercial Fleet | Anual     | SURA    | 4999   | 0         | 1             |
 And quiera agregar un asegurado
 And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | nombre         | tipoDocumento        | numeroDocumento |

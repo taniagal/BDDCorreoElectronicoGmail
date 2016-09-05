@@ -23,11 +23,6 @@ public class PolicyDefinitions {
         pcs.openSeus();
     }
 
-    @When("el usuario ingresa username <usr> y password <pass>")
-    public void login(@Named("usr") String user, @Named("pass") String password) {
-        pcs.login(user, password);
-    }
-
     @When("el usuario ingresa pais <country>, username <usr> y password <pass>")
     public void login(@Named("country") String country, @Named("usr") String user, @Named("pass") String password) {
         pcs.loginSeus(country ,user, password);

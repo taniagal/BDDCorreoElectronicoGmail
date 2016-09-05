@@ -2,11 +2,6 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.commons.selenium.Commons;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
-
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -19,6 +14,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class OpcionesAdminitradorCotizaciones extends Commons {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
@@ -73,8 +72,11 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     /*
     * WebElementFacade ingresados para story Nueva
     * */
-
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:4:SubmissionActions:SubmissionActionsMenuIcon']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:3:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']")
+    private WebElementFacade itmNoTomarJ;
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:3:SubmissionActions:SubmissionActionsMenuIcon']")
+    private WebElementFacade btnAccionesJ;
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:5:SubmissionActions:SubmissionActionsMenuIcon']")
     private WebElementFacade btnAcciones2;
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade txtCodRazon;
@@ -94,14 +96,17 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     private WebElementFacade listaTipoRazon;
     @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade listaTipoRazonNoTomar;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:4:SubmissionActions:SubmissionActionsMenuItemSet:Decline']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:5:SubmissionActions:SubmissionActionsMenuItemSet:Decline']")
     private WebElementFacade itmDeclinarComProp;
     @FindBy(id = "DeclineReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msg;
     @FindBy(id = "NotTakenReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msgNoTomar;
 
-    private static final String SUBMITIONXPATH = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+    private static final String SUBMITIONXPATH = ".//img[contains(@id,'SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+
+    private  static final String DECLINELETTER = "//a[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+
     public OpcionesAdminitradorCotizaciones(WebDriver driver) {
         super(driver);
     }
@@ -114,10 +119,16 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             if (!("".equals(cells.get(2).getText()) || " ".equals(cells.get(2).getText()))) {
-                if (("Cotizado".equals(cells.get(7).getText()) || "Borrador".equals(cells.get(7).getText())) && band == 0) {
-                    WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon']");
-                    botonAccciones.click();
-                    band = i;
+                if (("Cotizado".equals(cells.get(7).getText()) || "Borrador".equals(cells.get(7).getText()))) {
+                   try {
+                       WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon')]");
+                       botonAccciones.click();
+                       waitFor(2).seconds();
+                       band = i;
+                   } catch (Exception e){
+                       LOGGER.info("");
+                   }
+                    break;
                 }
                 i++;
             }
@@ -151,8 +162,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
 
     public void validarOpcionRetirar(String retirar) {
         Boolean validacion = false;
-        WebElementFacade listaAcciones = findBy(SUBMITIONXPATH + band + ":SubmissionActions:SubmissionActionsMenuIcon-fieldMenu']");
-        validacion = listaAcciones.containsElements(retirar);
+        validacion = containsText(retirar);
         MatcherAssert.assertThat(validacion, Is.is(false));
     }
 
@@ -264,6 +274,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
             if (!" ".equals(cells.get(2).getText())) {
                 if (cells.get(1).getText().equals(propiedadComercial) && cells.get(7).getText().equals(declinado)) {
                     band = i;
+                    break;
                 }
                 i++;
             }
@@ -272,7 +283,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
 
     public void mostrarBotonCrearCartaDeclinacion(String crearCarta) {
         if (band != 0) {
-            WebElementFacade botonCrearCartaDeclinacion = findBy(SUBMITIONXPATH + band + ":DeclineLetter']");
+            WebElementFacade botonCrearCartaDeclinacion = findBy(DECLINELETTER+band+":DeclineLetter']");
             MatcherAssert.assertThat(botonCrearCartaDeclinacion.getText(), Is.is(Matchers.equalTo(crearCarta)));
             band = 0;
         } else {
@@ -312,8 +323,8 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     }
 
     public void seleccionarAccionesNoTomar() {
-        btnAcciones.waitUntilVisible().waitUntilClickable().click();
-        $(itmNoTomar).waitUntilVisible().waitUntilClickable().click();
+        btnAccionesJ.waitUntilVisible().waitUntilClickable().click();
+        $(itmNoTomarJ).waitUntilVisible().waitUntilClickable().click();
     }
 
     public void ingresaRechazo(String razon) {
@@ -378,7 +389,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     }
 
     public void validaAccionDesabilitaNoTomar() {
-        MatcherAssert.assertThat("Boton Acciones no esta presente", !btnAcciones.isPresent());
+        MatcherAssert.assertThat("Boton Acciones no esta presente", !btnAccionesJ.isPresent());
     }
 
     public void validaMensaje(String mensaje) {

@@ -14,6 +14,7 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.slf4j.LoggerFactory;
 
 public class BusquedaContactoPage extends Commons {
@@ -31,8 +32,6 @@ public class BusquedaContactoPage extends Commons {
     private WebElementFacade txtSegNombre;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:Particle-inputEl']")
     private WebElementFacade txtSegApellido;
-
-
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade botonBuscar;
     @FindBy(xpath = "//tr[3]/td/table/tbody/tr/td[2]/input\n")
@@ -93,7 +92,6 @@ public class BusquedaContactoPage extends Commons {
     private WebElementFacade primerElementoTabla;
     @FindBy(xpath = "//td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade botonTipoDoc;
-
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
     private WebElementFacade txtTipoDocDirectorioCotizacion;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
@@ -110,13 +108,6 @@ public class BusquedaContactoPage extends Commons {
 
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
-    }
-
-
-    public void login(String usuario, String contrasena) {
-        txtusuario.type(usuario);
-        txtcontrasena.type(contrasena);
-        submit.click();
     }
 
     public void buscarContactoPersonaSinVerDetalle(String tipoDoc, String nombre, String apellido) {
@@ -138,8 +129,8 @@ public class BusquedaContactoPage extends Commons {
         selectContact.click();
     }
 
-    public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial) {
-        waitForTextToAppear(BUSQUEDADECONTACTOS, 2000);
+    public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial){
+        waitUntil(2000);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
@@ -194,7 +185,7 @@ public class BusquedaContactoPage extends Commons {
         String primerElemento = primerElementoTabla.getText();
         waitForTextToAppear(primerElemento, 2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
-        waitABit(1000);
+        waitUntil(1000);
 
         try {
 
@@ -213,6 +204,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void verInfoPersonaNatural(String filtro1, String filtro2) {
+        waitUntil(1000);
         String primerElemento = primerElementoTabla.getText();
         waitForTextToAppear(primerElemento, 2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
@@ -247,7 +239,7 @@ public class BusquedaContactoPage extends Commons {
             WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'" + tipoDoc + "')]");
             waitForTextToAppear(tipoDoc, 2000);
             cbxTipoDoc.click();
-            waitABit(1500);
+            waitUntil(2000);
             divNombre.waitUntilVisible();
             txtNumDoc.type(numDoc);
             botonBuscar.click();
@@ -331,7 +323,7 @@ public class BusquedaContactoPage extends Commons {
     public void buscarContactoEmpresa(String nombreEmpresa) {
         tipoContact.type("Empresa");
         tipoContact.sendKeys(Keys.ENTER);
-        waitABit(1000);
+        waitUntil(1000);
         txtNombreEmpresa.type(nombreEmpresa);
         botonBuscar.click();
         selectContact.waitUntilPresent();
@@ -403,7 +395,7 @@ public class BusquedaContactoPage extends Commons {
 
     public void irABuscarContacto() {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent();
-        waitUntil(1500);
+        waitUntil(2500);
         menuBuscar.click();
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuBuscarContacto).waitUntilPresent();
         waitUntil(2500);

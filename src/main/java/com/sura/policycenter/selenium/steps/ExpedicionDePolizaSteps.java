@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.ExpedicionDePolizaPage;
+import com.sura.policycenter.selenium.pages.PanelSurEspacioDeTrabajoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -8,6 +9,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class ExpedicionDePolizaSteps extends ScenarioSteps {
 
     ExpedicionDePolizaPage expedicionDePolizaPage;
+    PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;
 
     @Step
     public void navegar_barra_superior(String cotizacion) {
@@ -38,8 +40,11 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
 
     @Step
     public void validar_mensaje(String mensaje) {
-        expedicionDePolizaPage.validarMensaje(mensaje);
-        expedicionDePolizaPage.vuelveInicio();
+//        expedicionDePolizaPage.validarMensaje(mensaje);
+//        expedicionDePolizaPage.vuelveInicio();
+        panelSurEspacioDeTrabajoPage.abrirPanelInferior();
+        panelSurEspacioDeTrabajoPage.validarMensaje(mensaje);
+        panelSurEspacioDeTrabajoPage.borrarEspacioDeTrabajo();
     }
 
     @Step
