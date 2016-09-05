@@ -21,12 +21,14 @@ import com.sura.policycenter.selenium.pages.menu.superior.equipo.EquipoPage;
 import com.sura.policycenter.selenium.pages.menu.superior.escritorio.*;
 import com.sura.policycenter.selenium.pages.menu.superior.poliza.NuevoEnvioPage;
 import com.sura.policycenter.selenium.pages.menu.superior.poliza.PolizaBuscarPage;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.concurrent.TimeUnit;
+
 
 
 public class Navegacion extends Commons {
@@ -317,6 +319,7 @@ public class Navegacion extends Commons {
         waitUntil(300);
         waitFor(mnuPoliza).shouldBeVisible();
         ingresarDato(mnuNumPoliza,numPoliza);
+        act.sendKeys(Keys.ENTER).build().perform();
         waitUntil(300);
         return new PolizaBuscarPage(getDriver());
     }
@@ -364,7 +367,12 @@ public class Navegacion extends Commons {
 
     // Navegacion menu Cuenta
     public NuevaCuentaPage irANuevaCuenta() {
-        gw.deployMenu(mnuCuenta);
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mnuCuenta).click();
+        waitForAnyTextToAppear("Resumen de la cuenta","Búsqueda de cuentas");
+        waitUntil(2500);
+        mnuCuenta.waitUntilClickable().click();
+        waitUntil(500);
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevaCuenta).release(mnuItemNuevaCuenta).click().build().perform();
         return new NuevaCuentaPage(getDriver());
     }
@@ -377,7 +385,7 @@ public class Navegacion extends Commons {
         waitUntil(2000);
         waitFor(txtNumCuenta).waitUntilEnabled();
         txtNumCuenta.waitUntilEnabled().type(numCuenta);
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(btnBuscarCuenta).shouldBePresent();
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(btnBuscarCuenta).shouldBePresent();
         btnBuscarCuenta.waitUntilVisible().waitUntilClickable().click();
         waitUntil(2000);
         return new CuentaBuscarPage(getDriver());
@@ -438,6 +446,7 @@ public class Navegacion extends Commons {
     }
 
     public BuscarContactosPage irABuscarContactos() {
+        waitUntil(2500);
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(mnuBuscar).shouldBePresent();
         gw.deployMenu(mnuBuscar);
         act.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();

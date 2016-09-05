@@ -2,7 +2,9 @@ Modificacion Vehiculo
 
 Meta:
 
-@Issue SUGW USC-11100-PA-Change - Enter Policy Change_Vehiculo
+@issue #CDSEG-1248
+@Automatizador Diego Cardona Acevedo
+@Sprint 4
 
 Narrative:
 Como usuario de PolicyCenter
@@ -15,8 +17,8 @@ When digite el numero fasecolda <numeroFasecolda> y modelo <modelo> de un vehicu
 Then se deben recuperar los datos del vehiculo: clase vehiculo <claseVehiculo>, marca <marca>  y linea <linea>
 
 Examples:
-|numeroPoliza |numeroFasecolda|modelo|claseVehiculo   |marca|linea         |
-|TEST_22223223|03417101       |2007  |Motos 0 - 125 CC|HONDA|125 - MT 125CC|
+|numeroPoliza |numeroFasecolda|modelo|claseVehiculo   |marca|linea                 |
+|TEST_22223223|03417101       |2007  |Motos 0 - 125 CC|HONDA|E STORM 125 - MT 125CC|
 
 Scenario: Zona de circulacion no permitida
 Given se tiene una poliza expedida <numeroPoliza>
@@ -24,8 +26,8 @@ When registre una zona de circulacion no permitida <ciudadCirculacion>
 Then se debe mostrar un mensaje <mensaje> indicando la restriccion
 
 Examples:
-|numeroPoliza |ciudadCirculacion|mensaje                                                                                |
-|TEST_22222222|ACANDI           |Por política de la compañía no esta permitido vehículos que circulen en esta ubicación.|
+|numeroPoliza |ciudadCirculacion|mensaje                                                                                   |
+|TEST_22222222|ACANDI           |Por política de la compañía no esta permitido asegurar este tipo de vehículo en esta zona.|
 
 Scenario: Consultar bonificaciones
 Meta:

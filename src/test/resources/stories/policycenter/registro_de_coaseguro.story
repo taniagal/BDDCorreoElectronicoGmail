@@ -1,5 +1,9 @@
+Registro De Coaseguro
+
 Meta:
-@issue #SUGWUSC-14930
+@issue #NotFound
+@automatizador Nelson Mosquera
+@sprint 2
 
 Narrative:
 Como usuario de PolicyCenter

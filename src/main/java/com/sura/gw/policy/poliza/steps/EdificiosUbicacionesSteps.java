@@ -5,14 +5,12 @@ import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.jbehave.core.model.ExamplesTable;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
 
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
-    private EdificiosyUbicacionesWidget edificiosWidget = new EdificiosyUbicacionesWidget(getDriver());
 
     public EdificiosUbicacionesSteps(Pages pages){
         super(pages);
@@ -84,14 +82,20 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
             if (! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {
                 edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
             }
-            edificiosyUbicacionesWidget.ingresarValorAEntradaDeCobertura(entrada, valorEntrada);
+            edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
         }
 
         if("Información de Artículos".equals(tab)){
-            if (! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeInformacionDeArticulo(cobertura)) {
-                edificiosyUbicacionesWidget.seleccionarCoberturaDeInformacionDeArticulo(cobertura);
+            if (! edificiosyUbicacionesWidget.estaSeleccionadaTipoDeArticuloEnInformacionDeArticulo(tipoArticulo)) {
+                edificiosyUbicacionesWidget.seleccionarTipoDeArticuloDeInformacionDeArticulo(tipoArticulo);
             }
-            edificiosyUbicacionesWidget.ingresarValorAEntradaDeCobertura(entrada, valorEntrada);
+            if (cobertura.length() > 0 && ! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)){
+                edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
+                edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
+            } else {
+                edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
+            }
+
         }
 
         if("Otros Articulos".equals(tab)){
@@ -104,8 +108,5 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         // este metodo vacio permite generar pasos en el reporte de Serenity de forma dinámica
     }
 
-    @Step
-    public void verificar_mensajes(ExamplesTable mensajesEsperados) {
-        edificiosWidget.verificarMensajes(mensajesEsperados);
-    }
+
 }

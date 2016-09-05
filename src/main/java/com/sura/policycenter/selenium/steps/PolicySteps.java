@@ -33,12 +33,6 @@ public class PolicySteps extends ScenarioSteps {
     }
 
     @Step
-    public void login(String usuario, String contrasenia) {
-        open();
-        gw.login(usuario, contrasenia);
-    }
-
-    @Step
     public void loginSeus(String pais,String usuario, String contrasenia) {
         seus.login(pais,usuario, contrasenia);
     }

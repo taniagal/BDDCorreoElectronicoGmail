@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
+
 public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     WebElementFacade tituloVentana;
@@ -28,14 +29,20 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
     WebElementFacade menuNumeroCotizacion;
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy']")
+    @FindBy(id = "SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl")
     WebElementFacade botonExpedirPoliza;
+
+    @FindBy(id = "PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange-btnInnerEl")
+    WebElementFacade botonExpedirPolizaPorCambio;
 
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
 
     @FindBy(xpath = ".//a[contains(.,'Cancelar')]")
     WebElementFacade botonCancelarMensaje;
+
+    @FindBy(id="TabBar:DesktopTab-btnInnerEl")
+    WebElementFacade botonInicio;
 
     @FindBy(xpath = ".//td[contains(.,'¿Está seguro de que desea expedir esta póliza?')]")
     WebElementFacade mensajeConfirmacion;
@@ -63,6 +70,9 @@ public class ExpedicionDePolizaPage extends PageObject{
 
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToCollectivePolicy-inputEl']")
     WebElementFacade linkIrAPolizaColectiva;
+
+    @FindBy(xpath = ".//img[@class='error_icon']")
+    WebElementFacade iconoError;
     
     Commons commons = new Commons(getDriver());
 
@@ -81,12 +91,20 @@ public class ExpedicionDePolizaPage extends PageObject{
         commons.ingresarDato(menuNumeroCotizacion,cotizacion);
         menuNumeroCotizacion.sendKeys(Keys.ENTER);
         waitForTextToAppear("Cotización");
+        waitForTextToAppear(cotizacion);
     }
 
     public void expedirPoliza() {
         waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));
         waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPoliza));
         botonExpedirPoliza.click();
+    }
+
+
+    public void expedirPolizaPorCambio() {
+        waitFor(ExpectedConditions.visibilityOf(botonExpedirPolizaPorCambio));
+        waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPolizaPorCambio));
+        botonExpedirPolizaPorCambio.click();
     }
 
     public void aceptarExpedirPoliza() {
@@ -97,7 +115,8 @@ public class ExpedicionDePolizaPage extends PageObject{
 
     public void validarResumenDeLaPolizaExpedida(String infoCotizacion, String infoPoliza, String admorCotizacion,
                                                  String nuevaCotizacion, String escritorio) {
-        withTimeoutOf(8, TimeUnit.SECONDS).waitFor(ExpectedConditions.visibilityOf(campoNumeroCotizacion));
+        waitForTextToAppear("Cotización Expedida", 30000);
+        waitFor(campoNumeroCotizacion);
         MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacion)));
         MatcherAssert.assertThat(campoNumeroPoliza.getText(), Is.is(Matchers.containsString(infoPoliza)));
         MatcherAssert.assertThat(campoAdministradorDeCotizaciones.getText(), Is.is(Matchers.equalTo(admorCotizacion)));
@@ -121,6 +140,7 @@ public class ExpedicionDePolizaPage extends PageObject{
             }
         }
         MatcherAssert.assertThat(contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
+        MatcherAssert.assertThat(iconoError.isVisible(), Is.is(Matchers.equalTo(true)));
     }
 
     public void cancelarExpedicionDeLaPoliza(String mensaje) {
@@ -147,5 +167,10 @@ public class ExpedicionDePolizaPage extends PageObject{
         waitFor(linkIrAPolizaColectiva);
         linkIrAPolizaColectiva.click();
         waitForTextToAppear("Información de la póliza colectiva");
+    }
+
+    public void vuelveInicio() {
+        waitFor(botonInicio);
+        botonInicio.click();
     }
 }

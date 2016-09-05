@@ -1,8 +1,10 @@
-Expedicion De Poliza
+cambio en expedicion de Poliza
 
 Meta:
 
-@issue
+@issue #CDSEG-1251
+@Automatizador Jonathan Mejia
+Sprint 4
 
 Narrative:
 Como usuario de policy center
@@ -33,11 +35,11 @@ Examples:
 
 Scenario: Validacion etiquetas y mensaje de ventana
 Meta: @manual
-Given  Que tengo una cotizacion <cotizacion>
-When  cuando vaya expedir el cambio de una poliza
-And  confirmo el mensaje de expedir cambio de poliza
+Given  Que tengo una cotizacion <cotizacion >
+When cuando vaya expedir en el cambio de una poliza
+And  confirmo que el mensaje de expedir cambio de poliza
 Then  se deben validar todos las etiquetas y mensajes del formulario <mensaje>
 
 Examples:
-|cotizacion |mensaje
+|cotizacion |mensaje|
 |55555558   |Esta Seguro que desea expedir este cambio en la poliza?|

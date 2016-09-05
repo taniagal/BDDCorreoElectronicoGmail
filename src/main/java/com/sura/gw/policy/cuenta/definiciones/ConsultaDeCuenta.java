@@ -14,11 +14,9 @@ public class ConsultaDeCuenta {
     @Steps
     ConsultaDeCuentaSteps consultaDeCuentaSteps;
 
-    private String numCuenta;
 
     //@Given("existe asesor $numCuenta")
-    public void existeUnaCuenta(/*@Named("numCuenta") String numCuenta*/) {
-        this.numCuenta = numCuenta;
+    public void existeUnaCuenta() {
         LOGGER.info("ConsultaDeCuenta.existeUnaCuenta");
     }
 

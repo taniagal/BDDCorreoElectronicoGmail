@@ -4,6 +4,7 @@ import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -11,6 +12,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+
 
 
 public class DetallesDeUbicacionPage extends Commons {
@@ -59,6 +61,10 @@ public class DetallesDeUbicacionPage extends Commons {
     private WebElementFacade comboBoxOrganizacion;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-inputEl']")
     private WebElementFacade comboBoxCanal;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-triggerWrap']/tbody/tr/td/input")
+    private WebElementFacade comboBoxOrganizacionW;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-triggerWrap']/tbody/tr/td/input")
+    private WebElementFacade comboBoxCanalW;
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     String direccion = "";
@@ -68,6 +74,7 @@ public class DetallesDeUbicacionPage extends Commons {
     }
 
     public void  seleccionarProducto(String nomProducto) {
+        waitForTextToAppear(nomProducto);
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
         waitUntil(1000);
@@ -102,9 +109,10 @@ public class DetallesDeUbicacionPage extends Commons {
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
         selectItem(comboBoxOrganizacion,dato.get("organizacion"));
-        waitUntil(4000);
+        waitForComboValue(comboBoxOrganizacionW,dato.get("organizacion"));
+        waitUntil(1500);
         selectItem(comboBoxCanal,dato.get("canal"));
-        waitUntil(3500);
+        waitForComboValue(comboBoxCanalW,dato.get("canal"));
         seleccionarProducto(dato.get("producto"));
     }
 
@@ -118,9 +126,9 @@ public class DetallesDeUbicacionPage extends Commons {
         campoTxtDireccion.sendKeys(direccion);
         this.direccion = direccion;
         selectItem(comboBoxDepartamento,departamento);
-        waitUntil(3000);
+        waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);
-        waitUntil(2000);
+        waitForComboValue(comboBoxCiudad,ciudad);
     }
 
     public void setUbicacion(String descripcion, String actividad){

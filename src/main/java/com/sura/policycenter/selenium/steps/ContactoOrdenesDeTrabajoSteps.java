@@ -59,4 +59,9 @@ public class ContactoOrdenesDeTrabajoSteps extends ScenarioSteps {
     public void validarMensaje(String mensaje) {
         ordenesTrabajoPage.validarMensaje(mensaje);
     }
+
+    @Step
+    public void validarTransaccionNoExistentePolizaColectiva(String transaccion) {
+        ordenesTrabajoPage.validarTransaccionNoExistentePolizaColectiva(transaccion);
+    }
 }

@@ -2,7 +2,9 @@ Nueva Poliza Colectiva
 
 Meta:
 
-@issue #CDSEG-812 SUW USC Polizas Colectivas
+@issue #CDSEG-812
+@Automatizador Eliana Alvarez
+Sprint 4
 
 Narrative:
 Como usuario de Policy Center

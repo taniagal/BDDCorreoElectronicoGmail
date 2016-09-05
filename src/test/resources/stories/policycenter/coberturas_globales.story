@@ -1,5 +1,9 @@
+Coberturas Globales
+
 Meta:
-@issue #SUGWUSC-14490
+@issue #CDSEG-738
+@automatizador Nelson Mosquera
+@sprint 3
 
 Narrative:
 Como usuario de policyCenter

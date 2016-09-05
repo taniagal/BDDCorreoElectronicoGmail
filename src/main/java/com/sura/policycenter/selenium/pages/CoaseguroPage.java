@@ -7,14 +7,12 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.components.HtmlTable;
-import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
 
 public class CoaseguroPage extends Commons {
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
@@ -37,7 +35,6 @@ public class CoaseguroPage extends Commons {
     private WebElementFacade divMensaje;
 
     private static final String MSJVALIDARVALORES = "No estan correctos los elementos:";
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     public CoaseguroPage(WebDriver diver) {
         super(diver);
@@ -48,13 +45,14 @@ public class CoaseguroPage extends Commons {
         linkAgregarCoaseguro.click();
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
         campoTxtDastosAdministrativos.waitUntilPresent();
+        waitUntil(1000);
         radioBotonLider.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         try{
             if(radioBotonAceptado.isSelected())
                 right.append("radio_boton_cedido, ");
         }catch (StaleElementReferenceException e){
-            LOGGER.info("StaleElementReferenceException" + e);
+            e.printStackTrace();
         }
         if(!botonAgregar.isPresent())
             right.append("boton_agregar, ");
@@ -99,7 +97,7 @@ public class CoaseguroPage extends Commons {
     }
 
     public void verificarCoaseguro() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
         MatcherAssert.assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
 

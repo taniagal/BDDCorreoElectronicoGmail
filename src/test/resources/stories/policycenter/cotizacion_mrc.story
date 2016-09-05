@@ -2,20 +2,22 @@ Cotizacion MRC
 
 Meta:
 
+@issue #CDSEG-774
+@Automatizador Diego Cardona Acevedo
+@Sprint 3
+
 Narrative:
 Como usuario de Policy Center
 Quiero porder solicitar una cotizacion
 Asi ver los detalles de la cotizacion de una poliza MRC
-
-@Issue SUGWUSC-14530 Quote - CP
 
 Scenario: Cotizar una poliza MRC
 GivenStories: stories/policycenter/login_policy.story
 Given se ha realizado la cotizacion MRC <cotizacion>
 When ingrese a consultar la cotizacion
 Then debo ver la informacion de la cotizacion
-|cotizacion|tomador              |tipoDocumento       |numeroDocumento|direccion                                  |tipoDireccion|descripcionDireccion                      |empresaAseguradora       |prima     |impuestos|total     |
-|22222237  |FRANK RAMIREZ ALZATE |CEDULA DE CIUDADANIA|123456         |CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda     |Created by the Address Builder with code 0|Acme Low Hazard Insurance|$13,920.00|$766.00  |$14,686.00|
+|cotizacion|tomador              |tipoDocumento       |numeroDocumento|direccion                                  |tipoDireccion|descripcionDireccion                      |empresaAseguradora       |prima |impuestos|total |
+|22222237  |FRANK RAMIREZ ALZATE |CEDULA DE CIUDADANIA|123456         |CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda     |Created by the Address Builder with code 0|Acme Low Hazard Insurance|-     |-        |-     |
 
 Examples:
 |cotizacion |
@@ -28,7 +30,7 @@ Then debo ver la prima <primaTotal> a cobrar al cliente
 
 Examples:
 |cotizacion |primaTotal |
-|22222237   |$13,920.00 |
+|22222237   |-          |
 
 Scenario: Validar informacion detalle cotizacion
 Given se ha realizado la cotizacion MRC <cotizacion>

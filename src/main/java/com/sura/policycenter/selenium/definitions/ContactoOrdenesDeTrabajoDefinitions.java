@@ -85,7 +85,7 @@ public class ContactoOrdenesDeTrabajoDefinitions {
         ordenesTrabajoSteps.validarPorProducto(filtroProducto);
     }
 
-    @When("consulte las transacciones y no encuentre registros")
+    @When("consulte las transacciones del contacto")
     public void consultarTransaccionesVacias() {
         ordenesTrabajoSteps.verTransaccionesContacto();
     }
@@ -93,6 +93,11 @@ public class ContactoOrdenesDeTrabajoDefinitions {
     @Then("se muestra el mensaje informativo de transaccion no encontrada <mensaje>")
     public void validarMensajeInformativo(@Named("mensaje") String mensaje) {
         ordenesTrabajoSteps.validarMensaje(mensaje);
+    }
+
+    @Then("no debo ver la poliza <transaccion> asociada a una colectiva en las transacciones del contacto")
+    public void validarTransaccionNoExistentePolizaColectiva(@Named("transaccion") String transaccion) {
+        ordenesTrabajoSteps.validarTransaccionNoExistentePolizaColectiva(transaccion);
     }
 
 }

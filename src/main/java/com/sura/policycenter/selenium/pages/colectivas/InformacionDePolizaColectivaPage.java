@@ -17,6 +17,7 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.LocalDateTime;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -81,8 +82,6 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade submenuContacto;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:_msgs']/div")
     WebElementFacade mensajeDescuento;
-    @FindBy(xpath = "")
-    WebElementFacade mensajeRetroactividad;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsuredInfo:OfficialIDInputSet:DocumentType-inputEl']")
     WebElementFacade tipoDocumentoSegundo;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:SecondaryNamedInsuredInfo:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
@@ -128,7 +127,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     private final Commons commons = new Commons(getDriver());
     private final DateFormat dateFormat = new SimpleDateFormat(MM_DD_YYYY);
     private static final Date fechaHoy = new Date();
-    private final String rolListas = "textbox";
+    private static final String ROLLISTAS = "textbox";
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {
         super(driver);
@@ -155,7 +154,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), containsText(infoPoliza.get("fechaFin")));
         MatcherAssert.assertThat(fechaExpedicion.getValue(), Is.is(Matchers.equalTo(dateFormat.format(fechaHoy))));
         MatcherAssert.assertThat(oficinaRadicacion.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("oficina"))));
-        MatcherAssert.assertThat("Error, no se encontró el codigo de agente",codAgente.getValue().contains(infoPoliza.get("codAgente")));
+        MatcherAssert.assertThat("Error, no se encontró el código de agente",codAgente.getValue().contains(infoPoliza.get("codAgente")));
         MatcherAssert.assertThat(descuentoPoliza.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("descuentoPoliza"))));
         botonCambiarDireccion.shouldBeVisible();
         linkAgregarCoaseguro.shouldBeVisible();
@@ -194,6 +193,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void ingresarDescuentoPoliza(String descuento) {
+        waitFor(descuentoPoliza);
         descuentoPoliza.clear();
         descuentoPoliza.sendKeys(descuento);
     }
@@ -217,14 +217,14 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         validarMensaje(mensajeDescuento, mensaje);
     }
 
-    public void ingresarFechaInicioInvalidaParaRetroactividad(String sesentaDias) {
+    public void ingresarFechaInicioInvalidaParaRetroactividad(String sesentaDias, int dias) {
         LocalDateTime nuevaFechaInicio;
         if ("menos".equals(sesentaDias)) {
-            nuevaFechaInicio = LocalDateTime.now().minusMonths(2).minusDays(1);
+            nuevaFechaInicio = LocalDateTime.now().minusDays(dias);
             fechaInicioVigencia.clear();
             fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
         } else {
-            nuevaFechaInicio = LocalDateTime.now().plusMonths(2).plusDays(1);
+            nuevaFechaInicio = LocalDateTime.now().plusDays(dias);
             fechaInicioVigencia.clear();
             fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
         }
@@ -246,10 +246,6 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 10)) + aniosFinVigencia;
         String fechaFinVigencia = nuevaFechaFin.replace(nuevaFechaFin.substring(6, 10), anioVigenciaProducto.toString());
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(fechaFinVigencia)));
-    }
-
-    public void validarMensajeRetroactividadInvalida(String mensaje) {
-        validarMensaje(mensajeRetroactividad, mensaje);
     }
 
     public void validarDatosDeSegundoTomador(ExamplesTable informacionSegundoTomador) {
@@ -275,8 +271,11 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         campoPorcentajeParticipacionOtra.click();
         campoPorcentajeParticipacionOtraTexto.sendKeys("40");
         listaAseguradora.click();
-        campoAseguradora.clear();
-        campoAseguradora.sendKeys("Axxa");
+        commons.ingresarDato(campoAseguradora,"ALLIANZ SEGUROS S.A.");
+        Actions actions = new Actions(getDriver());
+        commons.waitUntil(1000);
+        actions.sendKeys(Keys.TAB).build().perform();
+        actions.sendKeys(Keys.TAB).build().perform();
     }
 
     public void darClicEnAceptarDeCoaseuguro() {
@@ -285,10 +284,8 @@ public class InformacionDePolizaColectivaPage extends PageObject {
 
     public void validarLinksDeCoaseguroVisiblesYHabilitados(){
         waitForTextToAppear("Información de la póliza colectiva");
-        linkEditarCoaseguro.shouldBeVisible();
-        linkEditarCoaseguro.shouldBeEnabled();
-        linkEliminarCoaseguro.shouldBeVisible();
-        linkEliminarCoaseguro.shouldBeEnabled();
+        linkEditarCoaseguro.waitUntilPresent();
+        linkEliminarCoaseguro.waitUntilPresent();
     }
 
     public void clicEnEliminarCoaseguro(){
@@ -310,7 +307,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void validarPantallaDeEdicion(){
         MatcherAssert.assertThat(campoPorcentajeParticipacionSura.getText(), containsText("60"));
         MatcherAssert.assertThat(campoPorcentajeParticipacionOtra.getText(), containsText("40"));
-        MatcherAssert.assertThat(listaAseguradora.getText(), containsText("Axxa"));
+        MatcherAssert.assertThat(listaAseguradora.getText(), containsText("ALLIANZ SEGUROS S.A."));
     }
 
     public void clicEnCancelarDeCoaseguro(){
@@ -321,12 +318,12 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void validarLosElementosDeshabilitados() {
         commons.waitUntil(2000);
         MatcherAssert.assertThat(linkAgregarCoaseguro.getAttribute("href"), Is.is(Matchers.equalTo("")));
-        MatcherAssert.assertThat(organizacion.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
-        MatcherAssert.assertThat(canal.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
-        MatcherAssert.assertThat(tipoDePoliza.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
-        MatcherAssert.assertThat(campoTipoPlazo.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
-        MatcherAssert.assertThat(fechaInicioVigencia.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
-        MatcherAssert.assertThat(codAgente.getAttribute("role"), Is.is(Matchers.equalTo(rolListas)));
+        MatcherAssert.assertThat(organizacion.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
+        MatcherAssert.assertThat(canal.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
+        MatcherAssert.assertThat(tipoDePoliza.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
+        MatcherAssert.assertThat(campoTipoPlazo.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
+        MatcherAssert.assertThat(fechaInicioVigencia.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
+        MatcherAssert.assertThat(codAgente.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
     }
 
     public void clicEnUnTomadorDeLaPoliza(String tomador) {

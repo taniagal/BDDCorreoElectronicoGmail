@@ -3,6 +3,8 @@ Informacion De Poliza Colectiva
 Meta:
 
 @issue #CDSEG-862
+@Automatizador Eliana Alvarez
+@Sprint 4
 
 Narrative:
 Como usuario de Policy Center
@@ -19,8 +21,8 @@ And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
 Then debo ver los siguiente campos en la pantalla con su respectiva informacion:
-| titulo                             | tomadorInfo | tipoDocumento        | numeroDocumento | nombre                        | telefono | tipoDireccion | descripcionDir                             | direccionDePoliza                           | detallePoliza         | organizacion | canal             | tipoPoliza       | tipoPlazo | fechaInicioVigencia | fechaFin | fechaExp   | polizaFinanciadaSi | polizaFinanciadaNo | oficina   | codAgente | descuentoPoliza | agregarCoaseguro  |
-| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 408-2211 | Vivienda      | Created by the Address Builder with code 0 | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Detalles de la póliza | Sura         | Canal Tradicional | Commercial Fleet | Anual     | 07/26/2016          |          | 07/26/2016 | Sí                 | No                 | SURA      | 4999      |                 | Agregar coaseguro |
+| titulo                             | tomadorInfo | tipoDocumento        | numeroDocumento | nombre                        | telefono | tipoDireccion | descripcionDir                             | direccionDePoliza                           | detallePoliza         | organizacion | canal             | tipoPoliza       | tipoPlazo | fechaInicioVigencia | fechaFin | fechaExp   | polizaFinanciadaSi | polizaFinanciadaNo | oficina | codAgente | descuentoPoliza | agregarCoaseguro  |
+| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 408-2211 | Vivienda      | Created by the Address Builder with code 0 | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Detalles de la póliza | Sura         | Canal Tradicional | Commercial Fleet | Anual     | 07/26/2016          |          | 07/26/2016 | Sí                 | No                 | SURA    | 4999      |                 | Agregar coaseguro |
 And debo ver la fecha de fin de vigencia <cantidadAniosVigencia> <tipoPlazo> calculado de acuerdo al producto seleccionado
 
 Examples:
@@ -40,7 +42,7 @@ Then debo ver la fecha de fin de vigencia <cantidadAniosVigencia> <tipoPlazo> ca
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | cantidadAniosVigencia | tipoPlazo |
-| C000888888 | DIRECTO | Bancolombia  | Leasing           | Colectiva  | Bank Autos                | 5                     | Cinco años|
+| C000888888 | DIRECTO | Bancolombia  | Leasing           | Colectiva  | Bank Autos                | 5                     | 5 años    |
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | 1                     | Anual     |
 
 Scenario: validar descuento mayor a 50% y con mas de 2 decimales
@@ -69,6 +71,89 @@ Examples:
 | C000888888 | DIRECTO | Tuya         | Tuya              | Colectiva  | Bank Autos       | 5                |
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | 1                |
 
+Scenario: validar mensajes de retroactividad cuando esta sobrepasa la cantidad de dias permitidos
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> de poliza colectiva para expedirla
+When cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+And actualice la poliza colectiva
+Then me debe mostrar el mensaje <mensaje> indicando que no cumple con la retroactividad permitida
+
+Examples:
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | numeroDias | masomenos | mensaje                                                                                     |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | 61         | menos     | La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | 61         | mas       | La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+
+
+Scenario: validar fecha fin de vigencia a un ano para poliza de autos hija
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> de poliza colectiva para expedirla
+And cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+And actualice la poliza colectiva
+And de clic en agregar riesgo para ir a la ventana de riesgos
+And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
+And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
+And seleccione la cuenta consultada para agregar al riesgo
+And vaya a informacion de poliza del riesgo
+Then debo ver la fecha de fin de vigencia de un ano para poliza de autos
+
+Examples:
+| numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | numeroDias | masomenos | razonSocial             |
+| C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | 60         | menos     | VARIEDADES YURLEDYS S.A |
+
+Scenario: validar fecha fin de vigencia para la poliza hija igual a la poliza madre
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> de poliza colectiva para expedirla
+And cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+And actualice la poliza colectiva
+And de clic en agregar riesgo para ir a la ventana de riesgos
+And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
+And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
+And seleccione la cuenta consultada para agregar al riesgo
+And vaya a informacion de poliza del riesgo
+Then debo ver la fecha de fin de vigencia de la poliza hija igual a la fecha de fin de vigencia de la poliza madre <numeroDias>
+
+Examples:
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | numeroDias | masomenos | razonSocial             |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet          | 30         | menos     | VARIEDADES YURLEDYS S.A |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | 30         | menos     | VARIEDADES YURLEDYS S.A |
+
+Scenario: validar fecha inicio de vigencia de la poliza hija no sea menor a la fecha de inicio de vigencia de la poliza madre
+Given que voy a buscar la cuenta <numCuenta>
+And quiero expedir una poliza nueva
+And seleccione el agente <agente>
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
+And seleccione el producto <producto> de poliza colectiva para expedirla
+And cambie la fecha de inicio vigencia a <numeroDias> <masomenos> de la fecha actual
+And actualice la poliza colectiva
+And de clic en agregar riesgo para ir a la ventana de riesgos
+And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
+And ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>
+And seleccione la cuenta consultada para agregar al riesgo
+And vaya a informacion de poliza del riesgo
+And quiera agregar un asegurado
+Then me debe mostrar el mensaje <mensaje> indicando que la fecha de inicio de vigencia no puede ser menor a la fecha de la poliza madre
+
+Examples:
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | numeroDias | masomenos | razonSocial             | mensaje                                                                                                        |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | 1          | mas       | VARIEDADES YURLEDYS S.A | La fecha inicio de vigencia del riesgo no puede ser menor a la fecha inicio de vigencia de la póliza colectiva |
+
 Scenario: Validar datos de tomador secundario en poliza colectiva
 Given que voy a buscar la cuenta <numCuenta>
 And quiero expedir una poliza nueva
@@ -86,7 +171,7 @@ Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         |
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet |
 
-Scenario: Validar las opciones de agregar, edita y eliminar coaseguro de poliza colectiva
+Scenario: Validar las opciones de agregar, editar y eliminar coaseguro de poliza colectiva
 When de clic en agregar coaseguro
 And ingrese el porcentaje de participacion de las aseguradoras
 And de clic en Aceptar de la ventana Coaseguro

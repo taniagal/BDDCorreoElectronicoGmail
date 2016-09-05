@@ -12,6 +12,7 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
 
+
 public class CambioDePolizaPage extends PageObject {
 
     Commons commons = new Commons(getDriver());
@@ -32,7 +33,8 @@ public class CambioDePolizaPage extends PageObject {
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PolicyInfo']")
     WebElementFacade informacionpoliza;
 
-
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    WebElementFacade btnInicio;
 
 
     public CambioDePolizaPage(WebDriver driver) {
@@ -41,12 +43,12 @@ public class CambioDePolizaPage extends PageObject {
 
 
     public void irAMenuAcciones() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuAcciones).waitUntilPresent();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(menuAcciones).waitUntilPresent();
         menuAcciones.click();
     }
 
     public void cambiarPoliza() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(opcionCambiarPoliza).waitUntilPresent();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(opcionCambiarPoliza).waitUntilPresent();
         opcionCambiarPoliza.click();
     }
 
@@ -55,12 +57,15 @@ public class CambioDePolizaPage extends PageObject {
     }
 
     public void validarMensaje(String mensaje) {
-        Commons commons = new Commons(getDriver());
         commons.verificarMensaje(mensajeAdvertencia,mensaje);
     }
 
     public void seleccionarInformacionPoliza() {
         waitFor(informacionpoliza).waitUntilPresent();
         informacionpoliza.click();
+    }
+
+    public void validarMensajeNoHayReaseguro() {
+        MatcherAssert.assertThat("Mensaje en reaseguro NO debe ser visible", !mensajeAdvertencia.isVisible());
     }
 }
