@@ -2,6 +2,10 @@ Cuentas Ordenes De Trabajo
 
 Meta:
 
+@issue #CDSEG-967
+@Automatizador Brayan Ruiz
+@Sprint 1
+
 Narrative:
 Como usuario de Policy Center
 Quiero ser capaz de consultar las transacciones de una cuenta
@@ -66,5 +70,3 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 Examples:
 | numCuenta  | filtroEstado | filtroTransaccion | filtroProducto |
 | C010478975 | Todos        | Todos             | Autos          |
-
-
