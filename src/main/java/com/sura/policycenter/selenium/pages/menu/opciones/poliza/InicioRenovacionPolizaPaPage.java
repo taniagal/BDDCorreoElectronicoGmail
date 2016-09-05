@@ -45,27 +45,27 @@ public class InicioRenovacionPolizaPaPage extends Commons {
     WebElementFacade datoPrimerNombreAsegurado;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
     WebElementFacade datoPrimerApellidoAsegurado;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
     WebElementFacade datoPlaca;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
     WebElementFacade datoModelo;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-inputEl']")
     WebElementFacade datoCodFasecolda;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Type_DV-inputEl']")
     WebElementFacade datoClaseVehiculo;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Make_DV-inputEl']")
     WebElementFacade datoMarca;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']")
     WebElementFacade datoLinea;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:VehiculeZone-inputEl']")
     WebElementFacade datoZona;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:service_DV-inputEl']")
     WebElementFacade datoTipoServicio;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Engine_DV-inputEl']")
     WebElementFacade datoMotor;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:chasisl_DV-inputEl']")
     WebElementFacade datoChasis;
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
     WebElementFacade datoValorAsegura;
 
 
@@ -102,10 +102,11 @@ public class InicioRenovacionPolizaPaPage extends Commons {
 
     public void aceptaOperacionRenovacion() {
         btnAceptarRenovacion.click();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilClickable();
     }
 
     public void clickBotonSiguinete() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilPresent();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilClickable();
         btnSiguiente.click();
     }
 
@@ -126,7 +127,7 @@ public class InicioRenovacionPolizaPaPage extends Commons {
             MatcherAssert.assertThat("cedula del Asegurado no valida", datoCedulaAsegurado.getText().equals(datos.get("cedulaAsegurado")));
             MatcherAssert.assertThat("primer nombre no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
             MatcherAssert.assertThat("primer apellido no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
-           clickBotonSiguinete();
+            clickBotonSiguinete();
         }else
         if (datos.get("rol").equals("vehiculo")) {
             MatcherAssert.assertThat("placa no valida", datoPlaca.getText().equals(datos.get("placa")));
@@ -136,10 +137,9 @@ public class InicioRenovacionPolizaPaPage extends Commons {
             MatcherAssert.assertThat("marca no valida", datoMarca.getText().equals(datos.get("marca")));
             MatcherAssert.assertThat("linea no valida", datoLinea.getText().equals(datos.get("linea")));
             MatcherAssert.assertThat("zona no valida", datoZona.getText().equals(datos.get("zona")));
-            MatcherAssert.assertThat("tipo Servicio no valido", datoTipoServicio.getText().equals(datos.get("pApellido")));
+            MatcherAssert.assertThat("tipo Servicio no valido", datoTipoServicio.getText().equals(datos.get("tipoServicio")));
             MatcherAssert.assertThat("motor no valido", datoMotor.getText().equals(datos.get("motor")));
             MatcherAssert.assertThat("chasis no valido", datoChasis.getText().equals(datos.get("chasis")));
-            MatcherAssert.assertThat("valor Asegurado no valido", datoValorAsegura.getText().equals(datos.get("valorAsegura")));*/
             clickBotonSiguinete();
         }
     }
