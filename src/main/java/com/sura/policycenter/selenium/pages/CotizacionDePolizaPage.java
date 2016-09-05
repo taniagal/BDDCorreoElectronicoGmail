@@ -145,9 +145,11 @@ public class CotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("empresaAseguradora"))));
-        MatcherAssert.assertThat(campoPrimaTotal.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("prima"))));
+        MatcherAssert.assertThat("Error e el valor de la prima, was "+campoPrimaTotal.getText()+" expected "+datosCotizacion.get("prima"),
+                campoPrimaTotal.containsText(datosCotizacion.get("prima")));
         MatcherAssert.assertThat(campoImpuestosYCargos.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("impuestos"))));
-        MatcherAssert.assertThat(campoCostoTotal.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("total"))));
+        MatcherAssert.assertThat("Error e el valor de la prima, was "+campoPrimaTotal.getText()+" expected "+datosCotizacion.get("total"),
+                campoPrimaTotal.containsText(datosCotizacion.get("total")));
         MatcherAssert.assertThat(campoVigenciaDePoliza.getText(), Is.is(Matchers.notNullValue()));
     }
 
