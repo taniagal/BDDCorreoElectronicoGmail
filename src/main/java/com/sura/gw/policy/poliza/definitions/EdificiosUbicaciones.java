@@ -5,14 +5,10 @@ import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.hamcrest.MatcherAssert;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.StringContains;
 import org.jbehave.core.annotations.Aliases;
@@ -21,6 +17,13 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+
 
 public class EdificiosUbicaciones {
 
@@ -32,16 +35,14 @@ public class EdificiosUbicaciones {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
 
-    @Given("que estoy en edificios y ubicaciones de una poliza $numSubscripcion")
-    public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion){
+    @Given("que estoy en edificios y ubicaciones de una poliza $numSubscripcion con el rol $rolUsuario")
+    public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion, String rolUsuario){
 
         // TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
 
         LOGGER.info("EdificiosUbicaciones.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
 
-
-        // TODO: 04/08/2016 Capturar el rol desde el gherkin en i am Asesor
-        guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
+        guidewire.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
         navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
         navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
         try {
@@ -57,16 +58,17 @@ public class EdificiosUbicaciones {
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas){
 
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
+        int index = 0;
         for (Map<String,String> entradaCobertura : entradas.getRows()) {
+            index++;
             String tab = entradaCobertura.get("TAB");
-
             String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
-
             String cobertura = entradaCobertura.get("COBERTURA");
             String entrada = entradaCobertura.get("ENTRADAS");
             String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
+            boolean esUltimaFilaDeExampleTable = index == entradas.getRows().size();
 
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo);
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esUltimaFilaDeExampleTable);
         }
 
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
@@ -121,7 +123,7 @@ public class EdificiosUbicaciones {
 
         for (Map<String,String> mensajes : mensajesEsperados.getRows()) {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, hasItemContainsString(mensaje));
+            assertThat(mensajesWSList, hasItemContainsString(mensaje));
         }
 
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
