@@ -3,6 +3,8 @@ package com.sura.gw.policy.poliza.pages;
 import com.google.common.base.Function;
 import com.sura.commons.selenium.Commons;
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -11,9 +13,6 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class EdificiosyUbicacionesWidget extends Commons {

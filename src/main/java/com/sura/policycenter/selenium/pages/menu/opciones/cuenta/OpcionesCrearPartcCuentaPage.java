@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -14,8 +15,10 @@ public class OpcionesCrearPartcCuentaPage extends Commons {
     private WebElementFacade btnEditCuenta;
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Add-btnInnerEl']")
     private WebElementFacade btnAgregaCuenta;
-    @FindBy(xpath = ".//tr[2]/td[2]/div")
+    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV-body']/*/table/tbody/tr[2]/td[1]")
     private WebElementFacade listRol;
+    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV-body']/*/table/tbody/tr[2]/td[2]")
+    private WebElementFacade Rol;
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV:1:AssignedUser:UserBrowseMenuItem']")
     private WebElementFacade btnSelecUsuar;
     @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchDV:Username-inputEl']")
@@ -26,40 +29,39 @@ public class OpcionesCrearPartcCuentaPage extends Commons {
     private WebElementFacade lblPartArc;
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Update-btnInnerEl']")
     private WebElementFacade btnActualiza;
-    @FindBy(xpath = ".//div[contains(.,'Director Sucursal')]")
-    private WebElementFacade lblvalidaRol;
+    @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchResultsLV:0:_Select']")
+    private WebElementFacade botonSeleccionar;
+
 
     public OpcionesCrearPartcCuentaPage(WebDriver driver) {
         super(driver);
     }
 
-    // TODO: 17/05/2016 Se deben parametrizar datos quemados de los contains en las listas
     public void navegacionCreaParticipante() {
-        btnEditCuenta.click();
-        act.moveToElement(btnAgregaCuenta).release(btnAgregaCuenta).click().build().perform();
+        btnEditCuenta.waitUntilPresent().click();
+        btnAgregaCuenta.waitUntilPresent().click();
+        waitUntil(1000);
         listRol.click();
-        WebElementFacade element = findBy(".//li[contains(.,'Director Sucursal')]");
-        element.click();
-        btnSelecUsuar.click();
-        lblNombreUsuario.sendKeys("a");
-        btnBuscarUsuario.click();
-        WebElementFacade elemntSelecUsuario = findBy(".//a[contains(.,'Seleccionar')]");
-        elemntSelecUsuario.click();
-        waitABit(1000);
-        lblPartArc.click();
-        waitABit(200);
-        act.sendKeys(Keys.RIGHT).build().perform();
-        waitABit(200);
-        act.sendKeys(Keys.RIGHT).build().perform();
-        waitABit(200);
+        act.sendKeys(Keys.TAB).build().perform();
         act.sendKeys(Keys.ENTER).build().perform();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        WebElementFacade elementGrupoAsign = findBy(".//li[contains(.,'Los Angeles Branch UW')]");
-        elementGrupoAsign.click();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.sendKeys(Keys.ENTER).build().perform();
+        btnSelecUsuar.click();
+        lblNombreUsuario.sendKeys("su");
+        btnBuscarUsuario.click();
+        botonSeleccionar.waitUntilPresent().click();
+        lblPartArc.waitUntilPresent();
+        waitUntil(1000);
+        act.sendKeys(Keys.TAB).build().perform();
+        act.sendKeys(Keys.TAB).build().perform();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        act.sendKeys(Keys.ENTER).build().perform();
         btnActualiza.click();
     }
 
     public void verificarCamposParticipantes() {
-        asercion(lblvalidaRol.getText(), "Director Sucursal");
+        MatcherAssert.assertThat("Error al agregar el Rol del participante de la cuenta", Rol.containsText("Agente"));
     }
 }

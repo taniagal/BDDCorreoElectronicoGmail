@@ -1164,7 +1164,7 @@ public class Navegacion extends Commons {
     public OpcionesCrearPartcCuentaPage irAOpcionesCrearPartcCuenta() {
         mnuCuenta.click();
         waitUntil(800);
-        mnuOpcionesCuenta.click();
+        mnuOpcionesCuenta.waitUntilPresent().click();
         return new OpcionesCrearPartcCuentaPage(getDriver());
     }
 
