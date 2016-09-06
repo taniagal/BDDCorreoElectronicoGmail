@@ -14,7 +14,7 @@ When ingreso el campo razon social <organizacion>
 Then me debe mostrar el registro asociado <organizacion>
 
 Examples:
-|organizacion|
-|SURA|
+| organizacion |
+| SURA         |
 
 

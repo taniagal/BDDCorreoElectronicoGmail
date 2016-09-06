@@ -40,8 +40,6 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
 
     @Step
     public void validar_mensaje(String mensaje) {
-//        expedicionDePolizaPage.validarMensaje(mensaje);
-//        expedicionDePolizaPage.vuelveInicio();
         panelSurEspacioDeTrabajoPage.abrirPanelInferior();
         panelSurEspacioDeTrabajoPage.validarMensaje(mensaje);
         panelSurEspacioDeTrabajoPage.borrarEspacioDeTrabajo();

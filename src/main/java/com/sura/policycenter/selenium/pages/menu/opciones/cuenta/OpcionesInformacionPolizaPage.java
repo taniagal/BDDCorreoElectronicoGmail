@@ -553,12 +553,10 @@ public class OpcionesInformacionPolizaPage extends Commons {
         MatcherAssert.assertThat(campoOficina.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("oficina"))));
         MatcherAssert.assertThat(campoAgente.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("agente"))));
         MatcherAssert.assertThat(textoDescuentoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descuento"))));
-        setImplicitTimeout(2, TimeUnit.SECONDS);
         MatcherAssert.assertThat(botonCambiarDireccion.isVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(botonCambiarTomador.isVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(linkCoaseguro.isVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(polizaFinanciada.isVisible(), Is.is(Matchers.equalTo(false)));
-        resetImplicitTimeout();
     }
 
     public void validarFechaFinVigenciaPolizaColectivaAutos() {
