@@ -9,13 +9,13 @@ import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 
@@ -41,7 +41,6 @@ public class Commons extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        waitUntil(2000);
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menu).click();
         waitUntil(3000);
         menu.waitUntilClickable().click();

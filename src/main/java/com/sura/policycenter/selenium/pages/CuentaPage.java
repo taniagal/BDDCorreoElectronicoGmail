@@ -138,11 +138,6 @@ public class CuentaPage extends Commons {
         waitUntil(1000);
     }
 
-
-    public void irACuentaNueva(){
-
-    }
-
     public  void verificarMensaje(String mensaje){
         verificarMensaje(divMensaje,mensaje);
     }

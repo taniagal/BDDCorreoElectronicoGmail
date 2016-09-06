@@ -23,7 +23,6 @@ public class CrearNuevoContactoDefinitions {
 
     @Given("estoy en la pantalla de crear contacto persona natural")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaNatural() {
-        seusLoginSteps.login();
         crearNuevoContactoSteps.nuevo_contacto_persona();
     }
 
@@ -61,7 +60,6 @@ public class CrearNuevoContactoDefinitions {
     @Then("se debe crear una persona tipo natural con primer nombre <primerNombre>")
     public void thenSeDebeCrearUnaPersonaTipoNatural(@Named("primerNombre") String primerNombre) {
         crearNuevoContactoSteps.actualizar(primerNombre);
-        seusLoginSteps.close();
     }
 
     @Then("se debe crear una persona natural con primer nombre <primerNombre>")
@@ -77,7 +75,6 @@ public class CrearNuevoContactoDefinitions {
     @Then("el campo de ciudad deben ser obligatorios")
     public void thenElCampoDePaispaisDepartamentodepartamentoYCiudadciudadDebenSerObligatorios() {
         crearNuevoContactoSteps.validar_campo_pais_departamento_y_ciudad();
-        seusLoginSteps.close();
     }
 
     /**
@@ -96,7 +93,6 @@ public class CrearNuevoContactoDefinitions {
     @Then("se debe crear una persona tipo juridica con razon social <razonSocial>")
     public void thenSeDebeCrearUnaPersonaTipoJuridica(@Named("razonSocial") String razonSocial) {
         crearNuevoContactoSteps.actualizar_juridica(razonSocial);
-        seusLoginSteps.close();
     }
 
     @Then("se debe crear una persona juridica con razon social <razonSocial>")
@@ -107,7 +103,6 @@ public class CrearNuevoContactoDefinitions {
     @Then("debe validar que el contacto ya existe")
     public void thenSeDebeValidarQueElContactoYaExiste() {
         crearNuevoContactoSteps.verificar_contacto_existente();
-        seusLoginSteps.close();
     }
 
 }

@@ -84,7 +84,7 @@ public class NuevoContactoPage extends Commons {
     public void actualizarPersonaNatural(String primerNombre) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitABit(2000);
+        waitUntil(2000);
         nombreContact.waitUntilPresent();
         MatcherAssert.assertThat(this.nombreContact.getText(), Matchers.containsString(primerNombre));
     }
@@ -92,7 +92,7 @@ public class NuevoContactoPage extends Commons {
     private void actualizar() {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitABit(1000);
+        waitUntil(1000);
     }
 
     public void ingresarTelefonoFijo(String tipoTelefono, String numeroTelefono) {
@@ -104,12 +104,12 @@ public class NuevoContactoPage extends Commons {
     private void ingresarTelefono(String tipoTelefono, String numeroTelefono) {
         if ("Trabajo".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            waitABit(1000);
+            waitUntil(1000);
             this.tipoTelefono.click();
             this.telefonoTrabajo.type(numeroTelefono);
         } else if ("Vivienda".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            waitABit(1000);
+            waitUntil(1000);
             this.tipoTelefono.click();
             this.telefonoResidencia.type(numeroTelefono);
         }
@@ -127,16 +127,16 @@ public class NuevoContactoPage extends Commons {
     public void actualizarJuridica(String razonSocial) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitABit(2000);
+        waitUntil(2000);
         desRazonSocial.waitUntilPresent();
         MatcherAssert.assertThat(this.desRazonSocial.getText().toString(), Matchers.containsString(razonSocial));
 
     }
 
     public void verificarContactoExistente() {
-        this.botonActualizar.waitUntilClickable();
-        this.botonActualizar.click();
-        waitABit(1000);
+        botonActualizar.waitUntilClickable();
+        botonActualizar.click();
+        waitUntil(1000);
         MatcherAssert.assertThat(this.contactoExistente.getText().toString(), Matchers.containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 
