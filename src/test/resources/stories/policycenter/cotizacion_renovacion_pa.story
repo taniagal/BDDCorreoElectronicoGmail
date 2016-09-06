@@ -1,4 +1,10 @@
+Cotizacion Renovacion Pa
+
 Meta:
+
+@issue #CDSEG-842
+@Automatizador Diego Cardona Acevedo
+@Sprint 6
 
 Narrative:
 Como usuario de policy center
