@@ -66,11 +66,18 @@ public class CotizacionDePolizaSteps extends ScenarioSteps  {
         cotizacionDePolizaPage.validarTipoRiesgo();
     }
 
+    @Step
     public void validarBloqueoChasis(String mensaje) {
         cotizacionDePolizaPage.validarBloqueoCotizacion(mensaje);
     }
 
+    @Step
     public void validarBloqueoPorExclusividad(String mensaje) {
         cotizacionDePolizaPage.validarBloqueoCotizacion(mensaje);
+    }
+
+    @Step
+    public void mostrar_Valor_A_Pagar_Por_Cuota_Y_Numero_De_Cuotas(String valorCuota, String numeroCuotas) {
+        cotizacionDePolizaPage.mostrarValorYCuotas(valorCuota, numeroCuotas);
     }
 }
