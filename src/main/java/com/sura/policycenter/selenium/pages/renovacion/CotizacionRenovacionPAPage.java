@@ -64,8 +64,6 @@ public class CotizacionRenovacionPAPage extends Commons{
     private WebElementFacade campoSubtotalSumaPrimas;
     @FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td[2]/div")
     private WebElementFacade campoSubtotalPrimas;
-    /*@FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-inputEl']")
-    private WebElementFacade campoDireccion;*/
 
     public CotizacionRenovacionPAPage (WebDriver driver){
         super(driver);
