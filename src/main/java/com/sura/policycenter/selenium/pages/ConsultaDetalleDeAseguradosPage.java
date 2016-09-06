@@ -83,13 +83,11 @@ public class ConsultaDetalleDeAseguradosPage extends PageObject{
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(asegurados.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(asegurados.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoMonedaPreferida.getText(), Is.is(Matchers.equalTo(asegurados.get("moneda"))));
-        setImplicitTimeout(2, TimeUnit.SECONDS);
         MatcherAssert.assertThat(botonAgregar.isVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(botonQuitar.isVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(botonCotizar.isVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(botonGuardarBorrador.isVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(botonVersiones.isVisible(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(botonOpcionesDeCierre.isVisible(), Is.is(Matchers.equalTo(false)));
-        resetImplicitTimeout();
     }
 }
