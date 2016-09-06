@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.commons.selenium.Commons;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -508,7 +509,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
         waitUntil(1000);
     }
 
-    public void irAInformacionDePoliza(){
+    public void irAInformacionDePoliza() {
         waitFor(menuInformacionPoliza).click();
     }
 
@@ -519,27 +520,34 @@ public class OpcionesInformacionPolizaPage extends Commons {
         Map<String, String> informacionPoliza = infoPolizaPA.getRows().get(0);
         String fechaFin = LocalDateTime.now().plusYears(Integer.parseInt(informacionPoliza.get("aniosVigencia"))).toString(MM_DD_YYYY);
         waitForTextToAppear("Información de póliza", 30000);
-        MatcherAssert.assertThat(tipoDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDocumentoTomador"))));
-        MatcherAssert.assertThat(numeroDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("numeroDocumentoTomador"))));
-        MatcherAssert.assertThat(nombreTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("nombreTomador"))));
-        MatcherAssert.assertThat(telefonoTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("telefonoTomador"))));
-        MatcherAssert.assertThat(tipoDirTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDireccionTomador"))));
-        MatcherAssert.assertThat(descripcionDireccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descripcionDirTomador"))));
-        MatcherAssert.assertThat(direccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("direccionTomador"))));
-        MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("organizacion"))));
-        MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("canal"))));
-        MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPoliza"))));
-        MatcherAssert.assertThat(tipoPlazoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPlazo"))));
-        MatcherAssert.assertThat(fechaVigenciaPoliza.getValue(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
-        MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), containsText(fechaFin));
-        MatcherAssert.assertThat(fechaEscrita.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
-        MatcherAssert.assertThat(campoOficina.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("oficina"))));
-        MatcherAssert.assertThat(campoAgente.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("agente"))));
-        MatcherAssert.assertThat(textoDescuentoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descuento"))));
-        MatcherAssert.assertThat(botonCambiarDireccion.isVisible(), Is.is(Matchers.equalTo(false)));
-        MatcherAssert.assertThat(botonCambiarTomador.isVisible(), Is.is(Matchers.equalTo(false)));
-        MatcherAssert.assertThat(linkCoaseguro.isVisible(), Is.is(Matchers.equalTo(false)));
-        MatcherAssert.assertThat(polizaFinanciada.isVisible(), Is.is(Matchers.equalTo(false)));
+        try {
+            MatcherAssert.assertThat(tipoDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDocumentoTomador"))));
+            MatcherAssert.assertThat(numeroDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("numeroDocumentoTomador"))));
+            MatcherAssert.assertThat(nombreTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("nombreTomador"))));
+            MatcherAssert.assertThat(telefonoTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("telefonoTomador"))));
+            MatcherAssert.assertThat(tipoDirTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDireccionTomador"))));
+            MatcherAssert.assertThat(descripcionDireccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descripcionDirTomador"))));
+            MatcherAssert.assertThat(direccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("direccionTomador"))));
+            MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("organizacion"))));
+            MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("canal"))));
+            MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPoliza"))));
+            MatcherAssert.assertThat(tipoPlazoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPlazo"))));
+            MatcherAssert.assertThat(fechaVigenciaPoliza.getValue(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
+            MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), containsText(fechaFin));
+            MatcherAssert.assertThat(fechaEscrita.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
+            MatcherAssert.assertThat(campoOficina.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("oficina"))));
+            MatcherAssert.assertThat(campoAgente.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("agente"))));
+            MatcherAssert.assertThat(textoDescuentoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descuento"))));
+            setImplicitTimeout(2, TimeUnit.SECONDS);
+            MatcherAssert.assertThat(botonCambiarDireccion.isVisible(), Is.is(Matchers.equalTo(false)));
+            MatcherAssert.assertThat(botonCambiarTomador.isVisible(), Is.is(Matchers.equalTo(false)));
+            MatcherAssert.assertThat(linkCoaseguro.isVisible(), Is.is(Matchers.equalTo(false)));
+            MatcherAssert.assertThat(polizaFinanciada.isVisible(), Is.is(Matchers.equalTo(false)));
+            resetImplicitTimeout();
+        } catch (AssertionError assertionError) {
+            resetImplicitTimeout();
+            LOGGER.error("Algún elemento de la pantalla no es válido", assertionError);
+        }
     }
 
     public void validarFechaFinVigenciaPolizaColectivaAutos() {
