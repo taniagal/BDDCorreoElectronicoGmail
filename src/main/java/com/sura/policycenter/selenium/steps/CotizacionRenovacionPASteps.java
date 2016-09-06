@@ -1,16 +1,26 @@
 package com.sura.policycenter.selenium.steps;
 
+import com.sura.policycenter.selenium.pages.renovacion.CotizacionRenovacionPAPage;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.pages.Pages;
+import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
+import org.jbehave.core.model.ExamplesTable;
 
-public class CotizacionRenovacionPASteps {
-    @Steps
-    CotizacionMRCSteps cotizacionMRCSteps;
+public class CotizacionRenovacionPASteps extends ScenarioSteps {
 
-    @Given("se ha realizado la renovacion de la cotizacion <cotizacion>")
-    public void buscarCotizacion(@Named("cotizacion") String cotizacion){
-        cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
+    private final CotizacionRenovacionPAPage cotizacionRenovacionPAPage = new CotizacionRenovacionPAPage(getDriver());
+
+    public CotizacionRenovacionPASteps(Pages pages) {
+        super(pages);
     }
 
+    public void validar_Detalle_De_Cotizacion(ExamplesTable detalleCotizacion) {
+        cotizacionRenovacionPAPage.validarDetalleCotizacion(detalleCotizacion);
+    }
+
+    public void validar_Detalle_Por_Cobertura(ExamplesTable detalleCobertura) {
+        cotizacionRenovacionPAPage.validarDetallePorCobertura(detalleCobertura);
+    }
 }
