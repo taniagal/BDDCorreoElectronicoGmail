@@ -15,7 +15,7 @@ Then el sistema debe mostrar un mesaje <mensaje>
 
 Examples:
 |numCuenta|mensaje|
-|C000777777|Falta el campo obligatorio "Código de razón"|
+|C002888992|Falta el campo obligatorio "Código de razón"|
 
 Scenario: Validar al seleccionar la opcion declinar
 Given que estoy visualizando las cotizaciones de la cuenta <numCuenta>
@@ -29,7 +29,7 @@ Then el sistema debe mostrarme todas las opciones:
 
 Examples:
 |numCuenta|
-|C000777777|
+|C002888992|
 
 Scenario: Declinar una cotizacion desde una cuenta
 Given que estoy visualizando las cotizaciones de la cuenta <numCuenta>
@@ -39,7 +39,7 @@ And desahabilitar la opcion de acciones para no ser modificada
 
 Examples:
 |numCuenta|razon|numCotizacion|accion|
-|C000777777|Cartera|22223228|Declinada|
+|C002888992|Cartera|22223228|Declinada|
 
 
 
