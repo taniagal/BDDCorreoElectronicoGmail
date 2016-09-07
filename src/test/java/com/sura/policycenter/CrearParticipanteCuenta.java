@@ -1,6 +1,8 @@
 package com.sura.policycenter;
 
-public class CrearParticipanteCuenta{
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class CrearParticipanteCuenta extends SerenityStory{
 }
 
 

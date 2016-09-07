@@ -1,10 +1,8 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.ContactosAsociadosACuentasPage;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.pages.menu.superior.cuenta.panel.contactos.BusquedaContactoDelDirectorioPage;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
@@ -15,21 +13,8 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     private static final String DIRECCIONES = "DIRECCIONES";
     private static final String TRANSACCIONES_ASOCIADAS = "TRANSACCIONES_ASOCIADAS";
     private static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
-    private final ContactosAsociadosACuentasPage contactosAsociadosACuentasPage = new ContactosAsociadosACuentasPage(getDriver());
-    private final BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage = new BusquedaContactoDelDirectorioPage(getDriver());
-
-    public ContactosAsociadosACuentasSteps(Pages pages) {
-        super(pages);
-    }
-
-    private InicioPage inicioPage() {
-        return getPages().currentPageAt(InicioPage.class);
-    }
-
-    @Step
-    public void consultarCuentaPorNum(String numCuenta) {
-        inicioPage().irACuentaBuscar(numCuenta);
-    }
+    private ContactosAsociadosACuentasPage contactosAsociadosACuentasPage;
+    private BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage;
 
     @Step
     public void consultarContactos() {
