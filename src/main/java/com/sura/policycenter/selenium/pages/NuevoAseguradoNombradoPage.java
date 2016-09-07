@@ -36,7 +36,7 @@ public class NuevoAseguradoNombradoPage extends Commons {
     private WebElementFacade cboDetalleTipoDireccion;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade cboDetalleDireccion;
-    @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
+    @FindBy(xpath = ".//a[contains(.,'Actualizar')]")
     private WebElementFacade btnActualizar;
 
     public NuevoAseguradoNombradoPage(WebDriver driver) {
@@ -66,13 +66,14 @@ public class NuevoAseguradoNombradoPage extends Commons {
             cboDepartamento.sendKeys(Keys.ENTER);
             waitABit(3000);
             cboCiudad.clear();
-            waitABit(3000);
+            waitABit(1500);
             cboCiudad.type("Medellin");
-            waitABit(3000);
             cboCiudad.sendKeys(Keys.ENTER);
-            txtDireccion.clear();
-            txtDireccion.type("CL 45 - 56 A 109");
             waitABit(3000);
+            txtDireccion.clear();
+            waitABit(1000);
+            txtDireccion.type("CL 45 - 56 A 109");
+            waitABit(2000);
             btnActualizar.click();
             esAsociado = Boolean.TRUE;
         } catch (Exception e) {
