@@ -1,11 +1,11 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.commons.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.pages.NuevoAseguradoNombradoPage;
 import com.sura.policycenter.selenium.steps.ContactosAsociadosACuentasSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
@@ -19,15 +19,7 @@ public class ContactosAsociadosACuentaDefinitions {
     WebDriver driver;
 
     @Steps
-    SeusLoginSteps seusSteps;
-
-    @Steps
     private ContactosAsociadosACuentasSteps contactosAsociadosACuentaSteps;
-
-    @Given("estoy en la pantalla de cuenta y existe una cuenta <numCuenta> con contactos asociados")
-    public void givenEstoyEnLaPantallaDeCuentaYExisteUnaCuentanumCuentaConContactosDeTipoPersonaJuridicaAsociados(String numCuenta) {
-        contactosAsociadosACuentaSteps.consultarCuentaPorNum(numCuenta);
-    }
 
     @Given("quiera ver el detalle de los contactos de la cuenta <numCuenta>")
     public void givenQuieraVerElDetalleDeLosContactosDeLaCuentanumCuenta() {
@@ -87,9 +79,9 @@ public class ContactosAsociadosACuentaDefinitions {
 
     }
 
-    @Then("debo poder visualizar el contacto recien asociado con su rol seleccionado")
-    public void thenVisualizarContactoAsociado() throws Exception {
-        contactosAsociadosACuentaSteps.esContactoAsociado("DORIAN STIWAR EASTMOND PULGARIN");
+    @Then("debo poder visualizar el contacto recien asociado con su rol seleccionado <contacto>")
+    public void thenVisualizarContactoAsociado(@Named("contacto") String contacto) throws Exception {
+        contactosAsociadosACuentaSteps.esContactoAsociado(contacto);
     }
 
     @Given("busco un contacto del directorio  que no exista en la cuenta con un rol existente")

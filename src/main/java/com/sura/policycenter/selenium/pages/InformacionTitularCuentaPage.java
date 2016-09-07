@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class InformacionTitularCuentaPage extends Commons {
 
-    @FindBy(xpath="//tr[2]/td/DIV/span")
+    @FindBy(xpath=".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_AccountHolder']/div/span")
     WebElementFacade mnuInformacionTitularCuenta;
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:ttlBar']")
     WebElementFacade tituloInformacionTitularCuenta;
@@ -100,15 +100,13 @@ public class InformacionTitularCuentaPage extends Commons {
     }
 
     public void clickTipoDocumento() {
-        itmTipoDocumento.waitUntilEnabled();
+        waitFor(itmTipoDocumento);
         itmTipoDocumento.click();
-        waitABit(3000);
     }
 
     public void seleccionarInformacionTitularCuenta() {
-        mnuInformacionTitularCuenta.waitUntilEnabled();
+        waitFor(mnuInformacionTitularCuenta);
         mnuInformacionTitularCuenta.click();
-        waitABit(3000);
     }
 
     public void validarEncabezadosInformacionTitularCuenta(String informacionBasica,

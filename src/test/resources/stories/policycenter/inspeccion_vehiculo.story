@@ -21,12 +21,12 @@ And el vehiculo tenga inspeccion no valida
 And la placa <placa> estuvo vigente en la compañia
 Then se debe recuperar los siguientes datos:
 |modelo|codigoFasecolda|motor|chasis|valorAccesorios|valorAccesoriosEspeciales|
-|2011  |01601225       |WE2  |QWE2  |0              |0                        |
+|2016  |00601182       |     |      |0              |0                        |
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
 |numCuenta  |organizacion|canal      |placa |valorAsegurado|
-|C000888888 |Bancolombia |Televentas |HZR123|17900000.00   |
+|C000888888 |Bancolombia |Televentas |HZR123|165900000.00  |
 
 Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
 Given que voy a buscar la cuenta <numCuenta>
@@ -37,13 +37,13 @@ And seleccione el producto para expedir la poliza
 And el vehiculo tenga inspeccion
 And la placa <placa> estuvo vigente pero ahora esta cancelada
 Then se debe recuperar los siguientes datos:
-|modelo|codigoFasecolda|motor |chasis |valorAccesorios|valorAccesoriosEspeciales|
-|2011  |01601225       |WE2   |QWE2   |0              |0                        |
+|modelo|codigoFasecolda|motor         |chasis           |valorAccesorios|valorAccesoriosEspeciales|
+|2013  |01601240       |B12D1740274KC3|9GAMF48D1DB016615|0              |0                        |
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
 |numCuenta  |organizacion|canal             |placa |valorAsegurado|
-|C000888888 |Sura        |Canal Tradicional |MJK289|17900000.00   |
+|C000888888 |Sura        |Canal Tradicional |MJK289|21800000.00   |
 
 Scenario: Consultar inspeccion valida en SIA
 Given se ha realizado la cotizacion <cotizacion>

@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.commons.selenium.Commons;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -133,6 +134,8 @@ public class OpcionesInformacionPolizaPage extends Commons {
     private WebElementFacade textoDescuentoPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-inputEl']")
     private WebElementFacade polizaFinanciada;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_false-inputEl']")
+    private WebElementFacade polizaFinanciadaNo;
     @FindBy(xpath = ".//tr[11]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade botonNumeroCuotas;
     @FindBy(xpath = "//li[contains(.,'12')]")
@@ -153,7 +156,6 @@ public class OpcionesInformacionPolizaPage extends Commons {
     private WebElementFacade comboBoxNombreAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
     private WebElementFacade grupoMensajes;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducerCode-inputEl']")
     private WebElementFacade campoAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:Producer-inputEl']")
@@ -174,6 +176,8 @@ public class OpcionesInformacionPolizaPage extends Commons {
     private WebElementFacade descripcionDireccionTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
     private WebElementFacade menuInformacionPoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div")
+    private WebElementFacade mensajeFinanciacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:ChangePolicyAddressButton:ChangePolicyAddressButtonMenuIcon']/img")
     private WebElementFacade botonCambiarDireccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']/img")
@@ -416,12 +420,8 @@ public class OpcionesInformacionPolizaPage extends Commons {
         element.sendKeys(Keys.ENTER);
     }
 
-    public void definirPolizaFinanciada(String organizacionDetalle, String canalDetalle, String tipoPoliza) {
-        waitFor(campoOrganizacion);
-        polizaFinanciada.click();
-        MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(organizacionDetalle)));
-        MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(canalDetalle)));
-        MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(tipoPoliza)));
+    public void definirPolizaFinanciada() {
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(polizaFinanciada).click();
     }
 
     public void ingresarNumeroCuotas() {
@@ -508,8 +508,26 @@ public class OpcionesInformacionPolizaPage extends Commons {
         waitUntil(1000);
     }
 
-    public void irAInformacionDePoliza(){
+    public void irAInformacionDePoliza() {
         waitFor(menuInformacionPoliza).click();
+    }
+
+    public void noIndicarPolizaFinanciada() {
+        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(polizaFinanciadaNo).click();
+    }
+
+    public void noHabilitarNumeroCuotas() {
+        boolean validacion = labelNumeroCuotas.isCurrentlyEnabled();
+        MatcherAssert.assertThat(validacion, Is.is(Matchers.not(Matchers.equalTo(true))));
+    }
+
+    public void seleccionarOpcionSiguiente() {
+        botonSiguiente.click();
+        waitUntil(1500);
+    }
+
+    public void validarMensajeFinanciacion(String mensaje){
+        MatcherAssert.assertThat(mensajeFinanciacion.getText(),Is.is(Matchers.equalTo(mensaje)));
     }
 
     /**
@@ -519,29 +537,34 @@ public class OpcionesInformacionPolizaPage extends Commons {
         Map<String, String> informacionPoliza = infoPolizaPA.getRows().get(0);
         String fechaFin = LocalDateTime.now().plusYears(Integer.parseInt(informacionPoliza.get("aniosVigencia"))).toString(MM_DD_YYYY);
         waitForTextToAppear("Información de póliza", 30000);
-        MatcherAssert.assertThat(tipoDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDocumentoTomador"))));
-        MatcherAssert.assertThat(numeroDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("numeroDocumentoTomador"))));
-        MatcherAssert.assertThat(nombreTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("nombreTomador"))));
-        MatcherAssert.assertThat(telefonoTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("telefonoTomador"))));
-        MatcherAssert.assertThat(tipoDirTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDireccionTomador"))));
-        MatcherAssert.assertThat(descripcionDireccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descripcionDirTomador"))));
-        MatcherAssert.assertThat(direccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("direccionTomador"))));
-        MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("organizacion"))));
-        MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("canal"))));
-        MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPoliza"))));
-        MatcherAssert.assertThat(tipoPlazoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPlazo"))));
-        MatcherAssert.assertThat(fechaVigenciaPoliza.getValue(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
-        MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), containsText(fechaFin));
-        MatcherAssert.assertThat(fechaEscrita.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
-        MatcherAssert.assertThat(campoOficina.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("oficina"))));
-        MatcherAssert.assertThat(campoAgente.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("agente"))));
-        MatcherAssert.assertThat(textoDescuentoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descuento"))));
-        setImplicitTimeout(2, TimeUnit.SECONDS);
-        MatcherAssert.assertThat(botonCambiarDireccion.isVisible(), Is.is(Matchers.equalTo(false)));
-        MatcherAssert.assertThat(botonCambiarTomador.isVisible(), Is.is(Matchers.equalTo(false)));
-        MatcherAssert.assertThat(linkCoaseguro.isVisible(), Is.is(Matchers.equalTo(false)));
-        MatcherAssert.assertThat(polizaFinanciada.isVisible(), Is.is(Matchers.equalTo(false)));
-        resetImplicitTimeout();
+        try {
+            MatcherAssert.assertThat(tipoDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDocumentoTomador"))));
+            MatcherAssert.assertThat(numeroDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("numeroDocumentoTomador"))));
+            MatcherAssert.assertThat(nombreTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("nombreTomador"))));
+            MatcherAssert.assertThat(telefonoTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("telefonoTomador"))));
+            MatcherAssert.assertThat(tipoDirTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDireccionTomador"))));
+            MatcherAssert.assertThat(descripcionDireccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descripcionDirTomador"))));
+            MatcherAssert.assertThat(direccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("direccionTomador"))));
+            MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("organizacion"))));
+            MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("canal"))));
+            MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPoliza"))));
+            MatcherAssert.assertThat(tipoPlazoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPlazo"))));
+            MatcherAssert.assertThat(fechaVigenciaPoliza.getValue(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
+            MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), containsText(fechaFin));
+            MatcherAssert.assertThat(fechaEscrita.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
+            MatcherAssert.assertThat(campoOficina.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("oficina"))));
+            MatcherAssert.assertThat(campoAgente.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("agente"))));
+            MatcherAssert.assertThat(textoDescuentoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descuento"))));
+            setImplicitTimeout(2, TimeUnit.SECONDS);
+            MatcherAssert.assertThat(botonCambiarDireccion.isVisible(), Is.is(Matchers.equalTo(false)));
+            MatcherAssert.assertThat(botonCambiarTomador.isVisible(), Is.is(Matchers.equalTo(false)));
+            MatcherAssert.assertThat(linkCoaseguro.isVisible(), Is.is(Matchers.equalTo(false)));
+            MatcherAssert.assertThat(polizaFinanciada.isVisible(), Is.is(Matchers.equalTo(false)));
+            resetImplicitTimeout();
+        } catch (AssertionError assertionError) {
+            resetImplicitTimeout();
+            LOGGER.error("Algún elemento de la pantalla no es válido", assertionError);
+        }
     }
 
     public void validarFechaFinVigenciaPolizaColectivaAutos() {
@@ -560,6 +583,5 @@ public class OpcionesInformacionPolizaPage extends Commons {
         WebElementFacade mensajeFechaInicioColectiva = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div");
         MatcherAssert.assertThat(mensajeFechaInicioColectiva.getText(), Matchers.containsString(mensaje + " (" + LocalDateTime.now().plusDays(1).toString(MM_DD_YYYY) + ")"));
     }
-
 }
 

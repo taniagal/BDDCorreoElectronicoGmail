@@ -1,6 +1,7 @@
 Meta:
 
 @issue #SUGWUSC-14966
+@Automatizador: Jonathan Mejia
 
 Narrative:
 Como usuario de policy center

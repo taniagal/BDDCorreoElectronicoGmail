@@ -2,9 +2,6 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.commons.selenium.Commons;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -17,6 +14,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class OpcionesAdminitradorCotizaciones extends Commons {
@@ -116,14 +117,14 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             if (!("".equals(cells.get(2).getText()) || " ".equals(cells.get(2).getText()))) {
                 if ("Cotizado".equals(cells.get(7).getText()) || "Borrador".equals(cells.get(7).getText())) {
-                   try {
-                       WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon')]");
-                       botonAccciones.click();
-                       waitFor(2).seconds();
-                       band = i;
-                   } catch (Exception e){
-                       LOGGER.info("");
-                   }
+                    try {
+                        WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon')]");
+                        botonAccciones.click();
+                        waitFor(2).seconds();
+                        band = i;
+                    } catch (Exception e){
+                        LOGGER.info("");
+                    }
                     break;
                 }
                 i++;
