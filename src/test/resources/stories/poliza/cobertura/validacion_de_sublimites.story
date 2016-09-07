@@ -529,3 +529,57 @@ Examples:
 | 22222236        | Asesor     |             |
 
 
+Meta:
+@Story CDSEG-2887
+@URL https://jira.suramericana.com.co/browse/CDSEG-2887
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@tag bug:CDSEG-2887
+@Sprint 6
+@Pending true
+@manual
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB             | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
+| Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
+| Otros Articulos | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
+| Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
+| Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
+| Otros Articulos | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
+When haga clic en el boton Aceptar
+Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22222236        | Asesor     |             |
+
+
+
+Scenario: 24
+Meta:
+@Story CDSEG-2756
+@URL https://jira.suramericana.com.co/browse/CDSEG-2756
+@Informador alejandro esteban villada marin
+@Automatizador andres alarcon guerrero
+@LOB Multiriesgo corporativo
+@tag bug:CDSEG-2756
+@Sprint 6
+@Pending true
+@manual
+As a <rolUsuario>
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB             | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
+| Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
+| Otros Articulos | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
+| Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
+| Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
+| Otros Articulos | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
+When haga clic en el boton Aceptar
+Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22222236        | Asesor     |             |
