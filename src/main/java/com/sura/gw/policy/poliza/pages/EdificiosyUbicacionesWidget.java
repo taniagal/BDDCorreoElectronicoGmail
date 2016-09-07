@@ -3,8 +3,6 @@ package com.sura.gw.policy.poliza.pages;
 import com.google.common.base.Function;
 import com.sura.commons.selenium.Commons;
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -13,6 +11,9 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class EdificiosyUbicacionesWidget extends Commons {
@@ -278,12 +279,13 @@ public class EdificiosyUbicacionesWidget extends Commons {
     public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esUltimaFilaDeExampleTable) {
 
         String xLinkAgregarOtrosArticulos = "//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]";
-
+        setImplicitTimeout(4, TimeUnit.SECONDS);
         if (isElementVisible(By.xpath(xLinkAgregarOtrosArticulos))) {
             cliclearBtnAgregarArticulo();
             ingresarInputTiposDeArticulos(tipoArticulo);
             ingresarTextAreaDescripcion(tipoArticulo);
         }
+        resetImplicitTimeout();
 
         if (cobertura.length() > 0) {
             seleccionarCobertura(obtenerDivCobertura(cobertura), cobertura);

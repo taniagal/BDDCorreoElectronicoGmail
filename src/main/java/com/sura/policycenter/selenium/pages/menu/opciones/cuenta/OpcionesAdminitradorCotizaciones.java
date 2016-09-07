@@ -2,9 +2,6 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.commons.selenium.Commons;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -17,6 +14,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class OpcionesAdminitradorCotizaciones extends Commons {
@@ -68,11 +69,11 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     /*
     * WebElementFacade ingresados para story Nueva
     * */
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:3:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']")
     private WebElementFacade itmNoTomarJ;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:3:SubmissionActions:SubmissionActionsMenuIcon']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuIcon']")
     private WebElementFacade btnAccionesJ;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:5:SubmissionActions:SubmissionActionsMenuIcon']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuIcon']")
     private WebElementFacade btnAcciones2;
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade txtCodRazon;
@@ -92,7 +93,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     private WebElementFacade listaTipoRazon;
     @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade listaTipoRazonNoTomar;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:5:SubmissionActions:SubmissionActionsMenuItemSet:Decline']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuItemSet:Decline']")
     private WebElementFacade itmDeclinarComProp;
     @FindBy(id = "DeclineReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msg;
