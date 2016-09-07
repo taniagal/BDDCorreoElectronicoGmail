@@ -18,7 +18,7 @@ public class InformacionDePagoDefinitions {
     InformacionDePagoSteps informacionDePagoSteps;
 
     @Given("que estoy en la pantalla de pago con la <cotizacion>")
-    public void givenQueEstoyEnLaPantallaDePagoConLacotizacion(@Named("cotizacion")String cotizacion) {
+    public void givenQueEstoyEnLaPantallaDePagoConLacotizacion(@Named("cotizacion") String cotizacion) {
         expedicionDePolizaSteps.navegar_barra_superior(cotizacion);
     }
 
@@ -29,7 +29,23 @@ public class InformacionDePagoDefinitions {
 
     @Then("se deben mostrar los datos correspondientes a formas de pago")
     public void thenSeDebenMostrarLosDatosCorrespondientesAFormasDePago() {
-        // PENDING
+        informacionDePagoSteps.valida_ingreso_a_pantalla_pago();
     }
+
+    @Then("se debe mostrar el <nombreMetodoPago>")
+    public void thenSeDebeMostrarElnombreMetodoPago(@Named("nombreMetodoPago") String nombreMetodoPago) {
+        informacionDePagoSteps.valida_metodo_de_pago(nombreMetodoPago);
+    }
+
+    @Then("se debe mostrar el plan de pago que retorna billing <programa>")
+    public void thenSeDebeMostrarElPlanDePagoQueRetornaBilling(@Named("programa") String programa) {
+        informacionDePagoSteps.valida_plan_de_pago(programa);
+    }
+
+    @Then("no debe permitir mas de una opcion para ser aplicada a la poliza")
+    public void thenNoDebePermitirMasDeUnaOpcionParaSerAplicadaALaPoliza() {
+
+    }
+
 
 }
