@@ -22,21 +22,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 
 public class EdificiosUbicaciones {
 
-    @Steps PolizaSteps polizaSteps;
-    @Steps EdificiosUbicacionesSteps edificiosUbicacionesSteps;
-    @Steps IngresoAPolicyCenterDefinitions guidewire;
-    @Steps Navegacion navegacion;
+    @Steps
+    PolizaSteps polizaSteps;
+    @Steps
+    EdificiosUbicacionesSteps edificiosUbicacionesSteps;
+    @Steps
+    IngresoAPolicyCenterDefinitions guidewire;
+    @Steps
+    Navegacion navegacion;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
 
     @Given("que estoy en edificios y ubicaciones de una poliza $numSubscripcion con el rol $rolUsuario")
-    public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion, String rolUsuario){
+    public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion, String rolUsuario) {
 
         // TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
 
@@ -55,11 +61,11 @@ public class EdificiosUbicaciones {
     }
 
     @When("intente ingresar las entradas de las diferentes coberturas $entradas")
-    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas){
+    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
 
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
         int index = 0;
-        for (Map<String,String> entradaCobertura : entradas.getRows()) {
+        for (Map<String, String> entradaCobertura : entradas.getRows()) {
             index++;
             String tab = entradaCobertura.get("TAB");
             String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
@@ -75,7 +81,7 @@ public class EdificiosUbicaciones {
     }
 
     @When("haga clic en el boton Aceptar")
-    public void cuandoHagaClicEnElBotonAceptar(){
+    public void cuandoHagaClicEnElBotonAceptar() {
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
 
@@ -114,17 +120,30 @@ public class EdificiosUbicaciones {
 
 
     @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
-    @Aliases(values={
+    @Aliases(values = {
             "se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados",
             "se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados"
     })
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
         List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
 
-        for (Map<String,String> mensajes : mensajesEsperados.getRows()) {
+        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
             assertThat(mensajesWSList, hasItemContainsString(mensaje));
         }
+
+        edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
+    }
+
+    @Then("se espera que el siguiente mensaje se muestre una sola vez: $mensajesEsperado")
+    public void entoncesSeEsperaQueElMensajeSeMuestreUnaSolaVez(String mensajesEsperado) {
+        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
+        int contadorDeOcurrencias = 0;
+
+        if (mensajesWSList.contains(mensajesEsperado)) {
+            contadorDeOcurrencias++;
+        }
+        assertThat("Ocurrencia de mensaje: " + mensajesEsperado + " es de " + contadorDeOcurrencias + "veces", contadorDeOcurrencias, is(equalTo(1)));
 
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
