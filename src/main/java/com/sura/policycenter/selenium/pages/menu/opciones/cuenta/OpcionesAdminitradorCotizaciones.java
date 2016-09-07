@@ -258,7 +258,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
                 contador++;
             }
         }
-        MatcherAssert.assertThat(contador, Is.is(Matchers.equalTo(1)));
+        MatcherAssert.assertThat(contador, Is.is(Matchers.greaterThan(0)));
     }
 
     public void validarEstadoCotizacionDeclinado(String propiedadComercial, String declinado) {

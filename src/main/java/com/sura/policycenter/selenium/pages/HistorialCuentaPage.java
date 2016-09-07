@@ -63,7 +63,7 @@ public class HistorialCuentaPage extends Commons {
     private WebElementFacade txtFechaDesde;
     @FindBy(xpath=".//tr[3]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade txtFechaHasta;
-    @FindBy(xpath=".//td/div/div[2]/div/table")
+    @FindBy(xpath=".//td/div/div[3]/div/table")
     private WebElementFacade table;
     @FindBy(xpath="//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade txtProducto;
@@ -177,5 +177,4 @@ public class HistorialCuentaPage extends Commons {
             MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.equalTo(producto)));
         }
     }
-
 }
