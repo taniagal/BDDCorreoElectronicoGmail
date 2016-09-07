@@ -17,7 +17,7 @@ public class OpcionesCrearPartcCuentaPage extends Commons {
     private WebElementFacade btnAgregaCuenta;
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV-body']/*/table/tbody/tr[2]/td[1]")
     private WebElementFacade listRol;
-    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV-body']/*/table/tbody/tr[2]/td[2]")
+    @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV-body']/*/table/tbody")
     private WebElementFacade Rol;
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV:1:AssignedUser:UserBrowseMenuItem']")
     private WebElementFacade btnSelecUsuar;
