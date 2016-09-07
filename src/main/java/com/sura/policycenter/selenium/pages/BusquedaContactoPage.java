@@ -14,7 +14,6 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.slf4j.LoggerFactory;
 
 public class BusquedaContactoPage extends Commons {
@@ -56,12 +55,6 @@ public class BusquedaContactoPage extends Commons {
     private WebElementFacade selectContact;
     @FindBy(xpath = "//div[3]/div/table")
     private WebElementFacade table;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
-    private WebElementFacade submit;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-    private WebElementFacade txtusuario;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
-    private WebElementFacade txtcontrasena;
     @FindBy(xpath = ".//div/div/div[2]/div/span")
     private WebElementFacade lblTipoId;
     @FindBy(xpath = ".//div/div/div[3]/div/span")
@@ -110,25 +103,6 @@ public class BusquedaContactoPage extends Commons {
         super(driver);
     }
 
-    public void buscarContactoPersonaSinVerDetalle(String tipoDoc, String nombre, String apellido) {
-        tipoContact.type("Personal");
-        tipoContact.sendKeys(Keys.ENTER);
-        txtTipoDoc.type(tipoDoc);
-        nombreContact.type(nombre);
-        apellidoContact.type(apellido);
-    }
-
-    public void buscarContactoPersona(String nombre, String apellido) {
-        tipoContact.type("Personal");
-        tipoContact.sendKeys(Keys.ENTER);
-        nombreContact.type(nombre);
-        apellidoContact.type(apellido);
-        botonBuscar.click();
-        selectContact.waitUntilPresent();
-        selectContact.waitUntilVisible();
-        selectContact.click();
-    }
-
     public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial){
         waitUntil(2000);
         waitFor(txtTipoDoc).shouldBeVisible();
@@ -141,14 +115,14 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void validarInformacionTipoId() {
-        waitABit(1500);
+        waitUntil(1500);
         String msjSinReg = "No hay datos para mostrar";
-        waitForTextToAppear(msjSinReg, 2000);
+        waitForTextToAppear(msjSinReg);
         MatcherAssert.assertThat(msjSinRegistros.getText(), Matchers.is(Matchers.equalTo(msjSinReg)));
     }
 
     public void validarMensaje(String msjVal) {
-        waitForTextToAppear(msjVal, 2000);
+        waitForTextToAppear(msjVal);
         waitFor(msjSinCriterios).shouldBeVisible();
         MatcherAssert.assertThat(msjSinCriterios.getText(),Matchers.is(Matchers.equalTo(msjVal)));
     }
@@ -165,25 +139,16 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void consultarContactoTipoDoc(String tipoDoc) {
-        waitForTextToAppear(BUSQUEDADECONTACTOS, 2000);
+        waitForTextToAppear(BUSQUEDADECONTACTOS);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
         waitFor(botonBuscar).shouldBeVisible();
         botonBuscar.click();
     }
 
-    public void consultarPersonaJuridicaTipoNumDoc(String numDoc) {
-        waitForTextToAppear(BUSQUEDADECONTACTOS, 2000);
-        waitFor(itmNIT).shouldBeVisible();
-        itmNIT.click();
-        txtNumDoc.type(numDoc);
-        waitFor(botonBuscar).shouldBeVisible();
-        botonBuscar.click();
-    }
-
     public void verInfoPersonaJuridica(String filtro) {
         String primerElemento = primerElementoTabla.getText();
-        waitForTextToAppear(primerElemento, 2000);
+        waitForTextToAppear(primerElemento);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         waitUntil(1000);
 
@@ -206,7 +171,7 @@ public class BusquedaContactoPage extends Commons {
     public void verInfoPersonaNatural(String filtro1, String filtro2) {
         waitUntil(1000);
         String primerElemento = primerElementoTabla.getText();
-        waitForTextToAppear(primerElemento, 2000);
+        waitForTextToAppear(primerElemento);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
@@ -232,12 +197,12 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void consultarContactoTipoNumDoc(String tipoDoc, String numDoc) {
-        waitForTextToAppear(BUSQUEDADECONTACTOS,5000);
+        waitForTextToAppear(BUSQUEDADECONTACTOS);
         if(!"<ninguno>".equals(tipoDoc)) {
             waitFor(botonTipoDoc).shouldBeVisible();
             botonTipoDoc.click();
             WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'" + tipoDoc + "')]");
-            waitForTextToAppear(tipoDoc, 2000);
+            waitForTextToAppear(tipoDoc);
             cbxTipoDoc.click();
             waitUntil(2000);
             divNombre.waitUntilVisible();
@@ -246,23 +211,23 @@ public class BusquedaContactoPage extends Commons {
         } else {
             txtNumDoc.type(numDoc);
             botonBuscar.click();
-            waitForTextToAppear("La búsqueda no devolvió resultados.", 2000);
+            waitForTextToAppear("La búsqueda no devolvió resultados.");
         }
     }
 
     public void consultarContactoPorNombresYApellidos(String tipoDoc, String primerNombre,
                                                       String segundoNombre, String primerApellido,
                                                       String segundoApellido) {
-        waitForTextToAppear(BUSQUEDADECONTACTOS, 3000);
+        waitForTextToAppear(BUSQUEDADECONTACTOS);
         waitFor(botonTipoDoc).shouldBeVisible();
         botonTipoDoc.click();
         WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'" + tipoDoc + "')]");
-        waitForTextToAppear(tipoDoc, 2000);
+        waitForTextToAppear(tipoDoc);
         cbxTipoDoc.click();
         waitUntil(1500);
         if (!"<ninguno>".equals(tipoDoc)) {
             String nombreElemento = divNombre.getText();
-            waitForTextToAppear(nombreElemento, 3000);
+            waitForTextToAppear(nombreElemento);
             waitFor(txtNombre).shouldBeVisible();
             txtNombre.type(primerNombre);
             txtSegNombre.type(segundoNombre);
@@ -274,13 +239,13 @@ public class BusquedaContactoPage extends Commons {
         } else {
             waitFor(botonBuscar).shouldBeVisible();
             botonBuscar.click();
-            waitForTextToAppear("La búsqueda no devolvió resultados", 2000);
+            waitForTextToAppear("La búsqueda no devolvió resultados");
         }
 
     }
 
     public void consultarContactoNombreComercial(String tipoDoc, String nombreComercial) {
-        waitForTextToAppear(BUSQUEDADECONTACTOS, 2000);
+        waitForTextToAppear(BUSQUEDADECONTACTOS);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
@@ -291,7 +256,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void buscarContacto(String tipoContacto, String nombre, String apellido, String numero) {
-        waitForTextToAppear(BUSQUEDADECONTACTOS, 2000);
+        waitForTextToAppear(BUSQUEDADECONTACTOS);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.click();
         WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'" + tipoContacto + "')]");
@@ -320,16 +285,6 @@ public class BusquedaContactoPage extends Commons {
         }
     }
 
-    public void buscarContactoEmpresa(String nombreEmpresa) {
-        tipoContact.type("Empresa");
-        tipoContact.sendKeys(Keys.ENTER);
-        waitUntil(1000);
-        txtNombreEmpresa.type(nombreEmpresa);
-        botonBuscar.click();
-        selectContact.waitUntilPresent();
-        selectContact.waitUntilVisible();
-        selectContact.click();
-    }
 
     @SuppressWarnings("SameParameterValue")
     public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
@@ -400,6 +355,6 @@ public class BusquedaContactoPage extends Commons {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuBuscarContacto).waitUntilPresent();
         waitUntil(2500);
         menuBuscarContacto.click();
-        waitForTextToAppear(BUSQUEDADECONTACTOS, 15000);
+        waitForTextToAppear(BUSQUEDADECONTACTOS);
     }
 }

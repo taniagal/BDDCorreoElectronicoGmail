@@ -251,8 +251,8 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
         if (MSJVALIDARELEMENTOS.equals(res)) {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
         }
-        MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
         resetImplicitTimeout();
+        MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
     public void validaFormularioDescripDireccion() {

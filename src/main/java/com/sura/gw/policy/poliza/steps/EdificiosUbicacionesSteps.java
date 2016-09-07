@@ -65,41 +65,59 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
     }
 
-    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo) {
+    // TODO: 01/09/2016 code smell
+    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo, boolean esUltimaFilaDeExampleTable) {
 
         String mensajeStepReporte = "En tab " + tab +
                 " seleccionar la cobertura " + cobertura +
                 " para " + entrada +
                 " ingresar " + valorEntrada;
 
+        // Registro de tarea dinámica en el reporte de Serenity
         ingresar_valor_de_entrada_de_la_cobertura(mensajeStepReporte);
 
-        if (! edificiosyUbicacionesWidget.estaSeleccionadoTab(tab)){
-            edificiosyUbicacionesWidget.seleccionarTab(tab);
-        }
-
         if("Coberturas del Riesgo".equals(tab)){
-            if (! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {
-                edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
-            }
+            seleccionarTab(tab);
+            seleccionarCoberturaDelRiesgo(cobertura);
             edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
         }
 
         if("Información de Artículos".equals(tab)){
-            if (! edificiosyUbicacionesWidget.estaSeleccionadaTipoDeArticuloEnInformacionDeArticulo(tipoArticulo)) {
-                edificiosyUbicacionesWidget.seleccionarTipoDeArticuloDeInformacionDeArticulo(tipoArticulo);
-            }
-            if (cobertura.length() > 0 && ! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)){
-                edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
-                edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
+            seleccionarTab(tab);
+            seleccionarTipoDeArticulo(tipoArticulo);
+
+            if (cobertura.length() > 0 && ! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura, tipoArticulo)){
+                edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura, tipoArticulo);
+                edificiosyUbicacionesWidget.ingresarValorAEntradaInformacionArticulo(tipoArticulo, entrada, valorEntrada);
             } else {
-                edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
+                edificiosyUbicacionesWidget.ingresarValorAEntradaInformacionArticulo(tipoArticulo, entrada, valorEntrada);
             }
 
         }
 
         if("Otros Articulos".equals(tab)){
-            edificiosyUbicacionesWidget.ingresarOtroArticulo(tipoArticulo, cobertura, entrada, valorEntrada);
+
+            seleccionarTab(tab);
+
+            edificiosyUbicacionesWidget.ingresarOtroArticulo(tipoArticulo, cobertura, entrada, valorEntrada, esUltimaFilaDeExampleTable);
+        }
+    }
+
+    private void seleccionarCoberturaDelRiesgo(String cobertura) {
+        if (! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {
+            edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
+        }
+    }
+
+    private void seleccionarTab(String tab){
+        if (! edificiosyUbicacionesWidget.estaSeleccionadoTab(tab)){
+            edificiosyUbicacionesWidget.seleccionarTab(tab);
+        }
+    }
+
+    private void seleccionarTipoDeArticulo(String tipoArticulo){
+        if (! edificiosyUbicacionesWidget.estaSeleccionadaTipoDeArticuloEnInformacionDeArticulo(tipoArticulo)) {
+            edificiosyUbicacionesWidget.seleccionarTipoDeArticuloDeInformacionDeArticulo(tipoArticulo);
         }
     }
 

@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -101,28 +100,8 @@ public class  DetallesContactoPage extends Commons {
     private WebElementFacade campoTxtCorreoElectronicoSecundarioEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update']")
     private WebElementFacade botonActualizar;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesCardTab']")
-    private WebElementFacade botonDirecciones;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV_tb:Add']")
-    private WebElementFacade botonAgregar;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-labelEl']")
-    private WebElementFacade labelPais;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-labelEl']")
-    private WebElementFacade labelDepartamento;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-labelEl']")
-    private WebElementFacade labelCiudad;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-labelEl']")
-    private WebElementFacade labelDireccion;
-    @FindBy(xpath = " .//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-labelEl']")
-    private WebElementFacade labelTipoDireccion;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-labelEl']")
-    private WebElementFacade labelDescripcionDireccion;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
-    private WebElementFacade comboBoxPais;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
-    private WebElementFacade comboBoxDepartamento;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
-    private WebElementFacade campoTxtDireccion;
+    public WebElementFacade botonAgregar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade campoTxtTipoDocumento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
@@ -137,8 +116,8 @@ public class  DetallesContactoPage extends Commons {
 
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
-    private static final String MSJVALIDARVALORES = "No estan correctos los valores:";
-    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
+    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
@@ -151,6 +130,8 @@ public class  DetallesContactoPage extends Commons {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuItemContactos).shouldBePresent();
         menuItemContactos.click();
     }
+
+
     public void editarContacto(){
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
         botonEditarContacto.waitUntilVisible();
@@ -159,22 +140,18 @@ public class  DetallesContactoPage extends Commons {
         waitUntil(1000);
     }
 
+
     public void actualizaContacto(){
         botonActualizar.click();
         waitUntil(1500);
     }
 
-    public void irADirecciones(){
-        waitUntil(1000);
-        botonDirecciones.click();
-        botonAgregar.waitUntilPresent();
-        botonAgregar.click();
-    }
 
     public void setDireccion(){
         botonAgregar.click();
         waitUntil(2000);
     }
+
 
     public void setNombre(String segundoNombre){
         campoTxtSegundoNombre.waitUntilPresent();
@@ -183,12 +160,14 @@ public class  DetallesContactoPage extends Commons {
         dtlContact[2]= segundoNombre;
     }
 
+
     public void setApellido(String segundoApellido){
         campoTxtSegundoApellido.clear();
         waitUntil(1500);
         campoTxtSegundoApellido.sendKeys(segundoApellido);
         dtlContact[3]= segundoApellido;
     }
+
 
     public void setDatosComboBoxes(String profesion, String estadoCivil, String tipoFamilia){
         selectItem(comboBoxProfesion, profesion);
@@ -199,6 +178,7 @@ public class  DetallesContactoPage extends Commons {
         dtlContact[8]= tipoFamilia;
     }
 
+
     public void setTelefonosResidencial(String telefonoResidencial){
         campoTxtTelefonoResidencial.clear();
         waitUntil(500);
@@ -206,15 +186,18 @@ public class  DetallesContactoPage extends Commons {
         dtlContact[11]= telefonoResidencial;
     }
 
+
     public void setTelefonoTrabajo(String telefonoTrabajo){
         ingresarDato(campoTxtTelefonoTrabajo, telefonoTrabajo);
         dtlContact[12]= telefonoTrabajo;
     }
 
+
     public void setTelefonoCelular(String telefonoCelular){
         ingresarDato(campoTxtTelefonoCelular, telefonoCelular);
         dtlContact[10]= "+1 "+telefonoCelular;
     }
+
 
     public void setCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
         ingresarDato(campoTxtCorreoElectronicoPrimario,correoElectronicoPrimario);
@@ -250,6 +233,7 @@ public class  DetallesContactoPage extends Commons {
         dtlCntJ[4]= ventasAnuales;
     }
 
+
     public void setCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario){
         ingresarDato(campoTxtCorreoElectronicoPrimarioEmpresa,correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
@@ -259,6 +243,16 @@ public class  DetallesContactoPage extends Commons {
         dtlCntJ[6]= correoElectronicoPrimario;
         dtlCntJ[7]= correoElectronicoSecundario;
     }
+
+
+    /**
+     * Verifica que el documento y el tipo de documento no sean editables por un error de codigo en policy.
+     */
+    public void verificarEstadoDeDocumento(){
+        MatcherAssert.assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo",
+                !campoTxtTipoDocumento.getAttribute("class").contains("x-form-text") || !campoTxtDocumento.getAttribute("class").contains("x-form-text"));
+    }
+
 
     /**
      * DETALLE CONTACTO EDICION
@@ -320,13 +314,6 @@ public class  DetallesContactoPage extends Commons {
         MatcherAssert.assertThat(res,"No estan correctos los valores".equals(res));
     }
 
-    /**
-     * Verifica que el documento y el tipo de documento no sean editables por un error de codigo en policy.
-     */
-    public void verificarEstadoDeDocumento(){
-        MatcherAssert.assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo",
-                !campoTxtTipoDocumento.getAttribute("class").contains("x-form-text") || !campoTxtDocumento.getAttribute("class").contains("x-form-text"));
-    }
 
     /**
      * DETALLE CONTACTO
@@ -370,6 +357,7 @@ public class  DetallesContactoPage extends Commons {
         MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
     }
 
+
     public void verificarCamposPersonaJuridica() {
         labelRazonSocial.waitUntilPresent();
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
@@ -400,53 +388,6 @@ public class  DetallesContactoPage extends Commons {
         MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
     }
 
-    /**
-     * AGREGAR DIRECCION A CONTACTO
-     */
-    public void validarDatosPantalla() {
-        waitUntil(1000);
-        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if(!labelPais.isPresent())
-            notPresent.append(" pais,");
-        if(!labelDepartamento.isPresent())
-            notPresent.append(" deprtamento,");
-        if(!labelCiudad.isPresent())
-            notPresent.append(" ciudad,");
-        if(!labelDireccion.isPresent())
-            notPresent.append(" direccion,");
-        if(!labelTipoDireccion.isPresent())
-            notPresent.append(" tipo dirección,");
-        if(!labelDescripcionDireccion.isPresent())
-            notPresent.append(" descripción direccion,");
-        String res = notPresent.toString();
-        if(MSJVALIDARELEMENTOS.equals(res)){
-            res = notPresent.toString().substring(0,notPresent.toString().length()-1);
-        }
-        MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
-    }
-
-    public void validarCampos() {
-        comboBoxPais.waitUntilPresent();
-        StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!"Colombia".equals(comboBoxPais.getValue().toString()))
-            right.append(" pais,");
-        if(!"<ninguno>".equals(comboBoxDepartamento.getValue().toString()))
-            right.append(" departamento,");
-        if(!"Esta Direccion podria estandarizarse automáticamente".equals(campoTxtDireccion.getAttribute("data-qtip")))
-            right.append("drireccion data-tip,");
-        if(!"200".equals(campoTxtDireccion.getAttribute("maxlength")))
-            right.append("direccion maxlength,");
-        String res = right.toString();
-        if(MSJVALIDARVALORES.equals(res)){
-            res = right.toString().substring(0,right.toString().length()-1);
-        }
-        MatcherAssert.assertThat(res,"No estan correctos los valores".equals(res));
-    }
-
-    public void validarDireccion(){
-        List<WebElementFacade> contactos = getLista(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
-        MatcherAssert.assertThat("Error en la direccion agregada",contactos.get(1).getText().contains("CL 60 B # 10 - 157") || contactos.get(1).getText().contains("CALLE 60B #10-157"));
-    }
 
     public void validarMensaje(String mensaje) {
         verificarMensaje(divMensaje,mensaje);

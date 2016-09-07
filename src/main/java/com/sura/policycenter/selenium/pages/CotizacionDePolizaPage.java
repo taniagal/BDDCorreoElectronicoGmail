@@ -19,10 +19,14 @@ import org.openqa.selenium.support.ui.Wait;
 
 public class CotizacionDePolizaPage extends PageObject{
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']")
+    private WebElementFacade titulo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     private WebElementFacade tituloDePagina;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']")
     private WebElementFacade tituloCalificacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
+    private WebElementFacade tituloCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-labelEl']")
     private WebElementFacade labelNumeroCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyPeriod-labelEl']")
@@ -69,8 +73,6 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade campoPrimaTotal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:Taxes-inputEl']")
     private WebElementFacade campoImpuestosYCargos;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
-    private WebElementFacade campoCostoTotal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyReviewScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade botonCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
@@ -83,6 +85,14 @@ public class CotizacionDePolizaPage extends PageObject{
     private WebElementFacade grupoMensajes;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PreQualification']/div/span")
     private WebElementFacade botonCalificacion;
+    @FindBy(xpath = ".//td[2]/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
+    private WebElementFacade labelValorCuota;
+    @FindBy(xpath = ".//td[2]/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td/div")
+    private WebElementFacade labelNumeroCuotas;
+    @FindBy(xpath = "//td[2]/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td[2]/div")
+    private WebElementFacade campoValorCuota;
+    @FindBy(xpath = "//td[2]/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td[2]/div")
+    private WebElementFacade campoNumeroCuotas;
 
     public CotizacionDePolizaPage(WebDriver driver){
         super(driver);
@@ -94,10 +104,12 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void ingresarACotizacion() {
-        WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']");
+        //WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']");
         if(titulo.isCurrentlyVisible()){
-            waitForTextToAppear("Calificación");
-        }else{
+            waitForTextToAppear("Calificación",1000);
+        }else if(tituloCotizacion.isCurrentlyVisible()){
+            waitForTextToAppear("Cotización",1000);
+        }else if(!titulo.isCurrentlyVisible()){
             waitFor(botonCalificacion).shouldBeVisible();
             botonCalificacion.click();
         }
@@ -128,9 +140,9 @@ public class CotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(labelTipoDireccion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("tipoDireccion"))));
         MatcherAssert.assertThat(labelDescripcionDireccion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("descripcionDireccion"))));
         MatcherAssert.assertThat(labelEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("empresaAseguradora"))));
-        MatcherAssert.assertThat(labelPrimaTotal.getText(), Matchers.containsString(infoCotizacionPoliza.get("primaTotal")));
+        MatcherAssert.assertThat(labelPrimaTotal.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("primaTotal"))));
         MatcherAssert.assertThat(labelImpuestos.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("impuestos"))));
-        MatcherAssert.assertThat(labelCostoTotal.getText(), Matchers.containsString(infoCotizacionPoliza.get("costoTotal")));
+        MatcherAssert.assertThat(labelCostoTotal.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("costoTotal"))));
 
         if (campoNumeroDeCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("numeroCotizacion"))) {
             datosCotizacion = informacionCotizacion.getRows().get(0);
@@ -145,10 +157,10 @@ public class CotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("empresaAseguradora"))));
-        MatcherAssert.assertThat("Error e el valor de la prima, was "+campoPrimaTotal.getText()+" expected "+datosCotizacion.get("prima"),
+        MatcherAssert.assertThat("Error en el valor de la prima, was "+campoPrimaTotal.getText()+" expected "+datosCotizacion.get("prima"),
                 campoPrimaTotal.containsText(datosCotizacion.get("prima")));
         MatcherAssert.assertThat(campoImpuestosYCargos.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("impuestos"))));
-        MatcherAssert.assertThat("Error e el valor de la prima, was "+campoPrimaTotal.getText()+" expected "+datosCotizacion.get("total"),
+        MatcherAssert.assertThat("Error en el valor de la prima, was "+campoPrimaTotal.getText()+" expected "+datosCotizacion.get("total"),
                 campoPrimaTotal.containsText(datosCotizacion.get("total")));
         MatcherAssert.assertThat(campoVigenciaDePoliza.getText(), Is.is(Matchers.notNullValue()));
     }
@@ -201,5 +213,12 @@ public class CotizacionDePolizaPage extends PageObject{
                 return findBy(xpath);
             }
         });
+    }
+
+    public void mostrarValorYCuotas(String valorCuota, String numeroCuotas) {
+        boolean validacion = labelValorCuota.isCurrentlyEnabled() && labelNumeroCuotas.isCurrentlyEnabled();
+        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat(campoValorCuota.getText(), Is.is(Matchers.equalTo(valorCuota)));
+        MatcherAssert.assertThat(campoNumeroCuotas.getText(), Is.is(Matchers.equalTo(numeroCuotas)));
     }
 }

@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+
 public class OpcionesAdminitradorCotizaciones extends Commons {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
 
@@ -26,10 +27,6 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
 
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:0']")
     private WebElementFacade lblCotizacionesCuenta;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuIcon']")
-    private WebElementFacade btnAcciones;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-textEl']")
-    private WebElementFacade itmNoTomar;
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManager_NewSubmission-btnInnerEl']")
     private WebElementFacade btnNuevaCotizacion;
     @FindBy(xpath = "//td/div/div[3]/div/table")
@@ -72,11 +69,11 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     /*
     * WebElementFacade ingresados para story Nueva
     * */
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:3:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']")
     private WebElementFacade itmNoTomarJ;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:3:SubmissionActions:SubmissionActionsMenuIcon']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuIcon']")
     private WebElementFacade btnAccionesJ;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:5:SubmissionActions:SubmissionActionsMenuIcon']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuIcon']")
     private WebElementFacade btnAcciones2;
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade txtCodRazon;
@@ -96,7 +93,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     private WebElementFacade listaTipoRazon;
     @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade listaTipoRazonNoTomar;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:5:SubmissionActions:SubmissionActionsMenuItemSet:Decline']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuItemSet:Decline']")
     private WebElementFacade itmDeclinarComProp;
     @FindBy(id = "DeclineReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msg;
@@ -119,7 +116,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             if (!("".equals(cells.get(2).getText()) || " ".equals(cells.get(2).getText()))) {
-                if (("Cotizado".equals(cells.get(7).getText()) || "Borrador".equals(cells.get(7).getText()))) {
+                if ("Cotizado".equals(cells.get(7).getText()) || "Borrador".equals(cells.get(7).getText())) {
                    try {
                        WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon')]");
                        botonAccciones.click();

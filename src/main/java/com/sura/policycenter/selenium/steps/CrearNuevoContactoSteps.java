@@ -11,7 +11,7 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
 
     private String cedula = "";
     private String nit = "";
-    private String tipoDoc="";
+    private String tipoDoc = "";
     private final Commons gw = new Commons(getDriver());
     private final NuevoContactoPage nuevoContactoPage = new NuevoContactoPage(getDriver());
 
@@ -23,62 +23,61 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
         return getPages().currentPageAt(InicioPage.class);
     }
 
-    private void  initRandoms(){
+    private void initRandoms() {
         cedula = gw.cedulaRandom();
         nit = gw.nitRandom();
     }
 
     @Step
-    public void actualizar(String primerNombre){
+    public void actualizar(String primerNombre) {
         nuevoContactoPage.actualizarPersonaNatural(primerNombre);
     }
 
     @Step
-    public void actualizar_juridica(String razonSocial){
+    public void actualizar_juridica(String razonSocial) {
         nuevoContactoPage.actualizarJuridica(razonSocial);
     }
 
     @Step
-    public void crear_persona(){
+    public void crear_persona() {
         nuevoContactoPage.btnActualizarPersonaNatural();
     }
 
     @Step
-    public void ingresar_numero_documento_persona_natural(String numeroDocumento){
-        if("".equals(cedula) || "".equals(nit)) {
+    public void ingresar_numero_documento_persona_natural(String numeroDocumento) {
+        if ("".equals(cedula) || "".equals(nit)) {
             initRandoms();
         }
-        if(("NIT").equals(tipoDoc)) {
-            nuevoContactoPage.ingresarNumeroDocumento(nit);
+        if (numeroDocumento.contains("920")) {
+            nuevoContactoPage.ingresarNumeroDocumento(numeroDocumento);
         } else {
-            nuevoContactoPage.ingresarNumeroDocumento(cedula);
+            if (("NIT").equals(tipoDoc)) {
+                nuevoContactoPage.ingresarNumeroDocumento(nit);
+            } else {
+                nuevoContactoPage.ingresarNumeroDocumento(cedula);
+            }
         }
     }
 
     @Step
-    public void ingresar_primer_nombre_persona_natural(String primerNombre){
+    public void ingresar_primer_nombre_persona_natural(String primerNombre) {
         nuevoContactoPage.ingresarPrimerNombre(primerNombre);
     }
 
     @Step
-    public void ingresar_primer_apellido_persona_natural(String primerApellido){
+    public void ingresar_primer_apellido_persona_natural(String primerApellido) {
         nuevoContactoPage.ingresarPrimerApellido(primerApellido);
     }
 
     @Step
-    public void ingresar_direccion_persona_natural(String direccion, String departamento, String ciudad){
+    public void ingresar_direccion_persona_natural(String direccion, String departamento, String ciudad) {
         nuevoContactoPage.ingresarDireccionDepartamenteYCiudad(direccion, departamento, ciudad);
     }
 
 
     @Step
-    public void ingresar_numero_telefono_fijo(String tipoTelefonoFijo, String numeroTelefonoFijo){
-        nuevoContactoPage.ingresarTelefonoFijo(tipoTelefonoFijo,numeroTelefonoFijo);
-    }
-
-    @Step
-    public void ingresar_direccion_persona_natural2(String direccion, String departamento, String ciudad, String tipoDireccion){
-        nuevoContactoPage.ingresarDireccion2(direccion, departamento, ciudad, tipoDireccion);
+    public void ingresar_numero_telefono_fijo(String tipoTelefonoFijo, String numeroTelefonoFijo) {
+        nuevoContactoPage.ingresarTelefonoFijo(tipoTelefonoFijo, numeroTelefonoFijo);
     }
 
     @Step
@@ -97,23 +96,23 @@ public class CrearNuevoContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionar_tipo_direccion_persona_natural(String tipoDireccion){
+    public void seleccionar_tipo_direccion_persona_natural(String tipoDireccion) {
         nuevoContactoPage.seleccionarTipoDireccion(tipoDireccion);
     }
 
     @Step
-    public void seleccionar_tipo_documento_persona_natural(String tipoDocumento){
+    public void seleccionar_tipo_documento_persona_natural(String tipoDocumento) {
         nuevoContactoPage.seleccionarTipoDocumento(tipoDocumento);
         tipoDoc = tipoDocumento;
     }
 
     @Step
-    public void validar_campo_pais_departamento_y_ciudad(){
+    public void validar_campo_pais_departamento_y_ciudad() {
         nuevoContactoPage.validarCampoPaisDepartamentoYCiudad();
     }
 
     @Step
-    public void verificar_contacto_existente(){
+    public void verificar_contacto_existente() {
         nuevoContactoPage.verificarContactoExistente();
     }
 
