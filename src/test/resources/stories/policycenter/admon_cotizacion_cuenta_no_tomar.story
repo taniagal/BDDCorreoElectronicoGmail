@@ -1,11 +1,15 @@
 Meta:
 
+@issue #SUGWUSC-14968
+@Automatizador: Jonathan Mejia
+
+
+
 Narrative:
 Como usuario de policy center
 con un perfil que tenga permisos quiero ser capaz de actualizar el estado de las cotizaciones creadas para una cuenta y
 así poder crear, actualizar,copiar y retirar cotizaciones para una cuenta dada
 
-@issue #SUGWUSC-14968
 
 Scenario: No tomar una cotizacion sin ingresar la razon
 GivenStories: stories/policycenter/login_policy.story

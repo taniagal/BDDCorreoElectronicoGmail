@@ -85,13 +85,13 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         waitFor(campoTxtPlaca).shouldBePresent();
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         comboBoxVehiculoServicio.click();
-        waitForTextToAppear(vehiculo.get("placa"), 28000);
+        waitForTextToAppear(vehiculo.get("placa"),28000);
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitForTextToAppear(vehiculo.get("modelo"));
+        waitForTextToAppear(vehiculo.get("modelo"),32000);
         ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
         waitUntil(1000);
         campoTxtPlaca.click();
-        waitForTextToAppear(vehiculo.get("valor_asegurado"),28000);
+        waitForTextToAppear(vehiculo.get("valor_asegurado"),32000);
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitForComboValue(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
         waitUntil(1000);
@@ -104,7 +104,9 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         }
 
         if (!"null".equals(vehiculo.get("motor"))) {
+            campoTxtMotor.clear();
             campoTxtMotor.sendKeys(vehiculo.get("motor"));
+            campoTxtchasis.clear();
             campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
         MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
