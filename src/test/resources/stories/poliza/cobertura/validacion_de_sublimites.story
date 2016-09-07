@@ -529,6 +529,10 @@ Examples:
 | 22222236        | Asesor     |             |
 
 
+
+
+Scenario: 23
+
 Meta:
 @Story CDSEG-2887
 @URL https://jira.suramericana.com.co/browse/CDSEG-2887
@@ -540,8 +544,8 @@ Meta:
 @Pending true
 @manual
 As a <rolUsuario>
-Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
-When intente ingresar las entradas de las diferentes coberturas
+Given _que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
+When _intente ingresar las entradas de las diferentes coberturas
 | TAB             | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
 | Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
 | Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
@@ -549,12 +553,11 @@ When intente ingresar las entradas de las diferentes coberturas
 | Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
 | Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
 | Otros Articulos | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
-When haga clic en el boton Aceptar
-Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
+When _haga clic en el boton Aceptar
+Then _se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |
-
 
 
 Scenario: 24
@@ -569,8 +572,8 @@ Meta:
 @Pending true
 @manual
 As a <rolUsuario>
-Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
-When intente ingresar las entradas de las diferentes coberturas
+Given _que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
+When _intente ingresar las entradas de las diferentes coberturas
 | TAB             | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
 | Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
 | Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
@@ -578,8 +581,8 @@ When intente ingresar las entradas de las diferentes coberturas
 | Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
 | Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
 | Otros Articulos | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
-When haga clic en el boton Aceptar
-Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
+When _haga clic en el boton Aceptar
+Then _se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |
