@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class InformacionTitularCuentaPage extends Commons {
 
-    @FindBy(xpath="//tr[2]/td/DIV/span")
+    @FindBy(xpath=".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_AccountHolder']/div/span")
     WebElementFacade mnuInformacionTitularCuenta;
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:ttlBar']")
     WebElementFacade tituloInformacionTitularCuenta;
@@ -58,7 +58,7 @@ public class InformacionTitularCuentaPage extends Commons {
     WebElementFacade txtTotalSiniestrosAbiertos;
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:NetTotalIncurred-labelEl']")
     WebElementFacade lblTotalNetoIncurrido;
-    @FindBy(xpath="//DIV[2]/DIV/DIV/DIV/DIV/span")
+    @FindBy(xpath="//DIV[3]/DIV/DIV/DIV/DIV/span")
     WebElementFacade colCrearFecha;
     @FindBy(xpath="//DIV/DIV/DIV[2]/DIV/span")
     WebElementFacade colNroPoliza;
@@ -100,15 +100,13 @@ public class InformacionTitularCuentaPage extends Commons {
     }
 
     public void clickTipoDocumento() {
-        itmTipoDocumento.waitUntilEnabled();
+        waitFor(itmTipoDocumento);
         itmTipoDocumento.click();
-        waitABit(3000);
     }
 
     public void seleccionarInformacionTitularCuenta() {
-        mnuInformacionTitularCuenta.waitUntilEnabled();
+        waitFor(mnuInformacionTitularCuenta);
         mnuInformacionTitularCuenta.click();
-        waitABit(3000);
     }
 
     public void validarEncabezadosInformacionTitularCuenta(String informacionBasica,
