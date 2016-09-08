@@ -2,12 +2,14 @@ Cotizacion MRC
 
 Meta:
 
+@issue #CDSEG-774
+@Automatizador Diego Cardona Acevedo
+@Sprint 3
+
 Narrative:
 Como usuario de Policy Center
 Quiero porder solicitar una cotizacion
 Asi ver los detalles de la cotizacion de una poliza MRC
-
-@Issue SUGWUSC-14530 Quote - CP
 
 Scenario: Cotizar una poliza MRC
 GivenStories: stories/policycenter/login_policy.story

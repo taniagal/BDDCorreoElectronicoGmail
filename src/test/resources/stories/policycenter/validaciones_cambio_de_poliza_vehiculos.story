@@ -1,7 +1,9 @@
 Validaciones Cambio De Poliza Vehiculos
 
 Meta:
-@Issue SUGW USC-11100-PA-Change - Enter Policy Change_Vehiculo_otras validaciones
+@issue CDSEG-1296
+@Automatizador Diego Cardona Acevedo
+@Sprint 4
 
 Scenario: Validar existencia de numero de chasis
 GivenStories: stories/policycenter/login_policy.story
@@ -22,7 +24,7 @@ Then no se debe permitir continuar con la expedicion y debe mostrar el siguiente
 
 Examples:
 |cotizacion|mensaje                                 |
-|55555556  |El número de chasis no ha sido ingresado|
+|55555556  |El número de motor no ha sido ingresado|
 
 Scenario: Validar importado por tercero
 Given se ha realizado la cotizacion de la modificacion <cotizacion>
@@ -42,8 +44,8 @@ And presione el boton de emitir la poliza
 Then no se debe permitir continuar con la expedicion y debe mostrar el siguiente mensaje de error <mensaje>
 
 Examples:
-|cotizacion|mensaje                                                                                |
-|55555556  |Por política de la compañía no esta permitido vehículos que circulen en esta ubicación.|
+|cotizacion|mensaje                                                                                   |
+|55555556  |Por política de la compañía no esta permitido asegurar este tipo de vehículo en esta zona.|
 
 Scenario: Validar marca no permitida
 Given se ha realizado la cotizacion de la modificacion <cotizacion>
@@ -53,9 +55,10 @@ Then no se debe permitir continuar con la expedicion y debe mostrar el siguiente
 
 Examples:
 |cotizacion|mensaje                                                          |
-|55555556  |Por política de la compañía este vehiculo no puede ser asegurado.|
+|55555556  |Por política de la compañía este vehículo no puede ser asegurado.|
 
 Scenario: Validar tipo de servicio
+Meta: @manual
 Given se ha realizado la cotizacion de la modificacion <cotizacion>
 When ingrese al detalle de la modificacion
 And presione el boton de emitir la poliza

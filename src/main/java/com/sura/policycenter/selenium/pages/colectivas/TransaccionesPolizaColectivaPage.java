@@ -22,7 +22,7 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
     WebElementFacade tablaTransaccionesColectiva;
     @FindBy(xpath = ".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:ttlBar']")
     WebElementFacade tituloTransaccionesIndividual;
-    @FindBy(xpath = "//td/div/div[2]/div/table/tbody/tr/td/div")
+    @FindBy(xpath = "//div[3]/div/table/tbody/tr/td/div")
     WebElementFacade columnaCrearFecha;
     @FindBy(xpath = "//div/table/tbody/tr/td[2]/div")
     WebElementFacade columnaNumeroPoliza;
@@ -82,14 +82,12 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
         menuTransaccionesColectivas.click();
         waitForTextToAppear("Transacciones de póliza colectiva");
         waitFor(tablaTransaccionesColectiva);
-        columnaCrearFecha.shouldBeVisible();
         columnaNumeroPoliza.shouldBeVisible();
         columnaProducto.shouldBeVisible();
         columnaTipo.shouldBeVisible();
         columnaEstado.shouldBeVisible();
         columnaFechaFinalizacion.shouldBeVisible();
         columnaParticipante.shouldBeVisible();
-        MatcherAssert.assertThat(columnaCrearFecha.getText(), Matchers.notNullValue());
         MatcherAssert.assertThat(numeroPoliza.getText(), Is.is(Matchers.equalTo(transaccionesColectiva.get("numeroPoliza"))));
         MatcherAssert.assertThat(columnaProducto.getText(), Is.is(Matchers.equalTo(transaccionesColectiva.get("producto"))));
         MatcherAssert.assertThat(columnaTipo.getText(), Is.is(Matchers.equalTo(transaccionesColectiva.get("tipo"))));
@@ -100,7 +98,7 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
 
     public void validarTransaccionesDePolizaIndividual() {
         waitFor(tituloTransaccionesIndividual);
-        MatcherAssert.assertThat(tituloTransaccionesIndividual.getText(), Is.is(Matchers.equalTo("Transacciones de póliza del archivo de la cuenta")));
+        MatcherAssert.assertThat(tituloTransaccionesIndividual.getText(), Is.is(Matchers.equalTo("Transacciones de póliza individual")));
     }
 
     public void darClicEnElNumeroDePoliza() {

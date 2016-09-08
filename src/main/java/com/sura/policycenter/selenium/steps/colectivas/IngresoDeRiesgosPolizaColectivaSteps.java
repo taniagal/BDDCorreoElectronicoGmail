@@ -3,11 +3,11 @@ package com.sura.policycenter.selenium.steps.colectivas;
 import com.sura.policycenter.selenium.pages.*;
 import com.sura.policycenter.selenium.pages.colectivas.IngresoDeRiesgosPolizaColectivaPages;
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
+import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-import java.util.Map;
 
 public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
 
@@ -51,8 +51,7 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
                 riesgoColectivas.get("numeroDocumento"));
         cuentaPage.agregarNombres(riesgoColectivas.get("nombre"), riesgoColectivas.get("apellido"),
                 riesgoColectivas.get("fechaNacimiento"));
-        cuentaPage.agregarDireccion(riesgoColectivas.get("tipoDireccion"), riesgoColectivas.get("direccion"),
-                riesgoColectivas.get("departamento"), riesgoColectivas.get("ciudad"));
+        cuentaPage.agregarDireccion(cuentaNueva);
         cuentaPage.agregarOrganizacion(riesgoColectivas.get("organizacionCuenta"),
                 riesgoColectivas.get("agenteCuenta"));
         cuentaPage.actualizar();
@@ -106,5 +105,36 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     public void validarInformacionDePolizaPA(ExamplesTable infoPoliza) {
         opcionesInformacionPolizaPage.irAInformacionDePoliza();
         opcionesInformacionPolizaPage.validarInfoPolizaPA(infoPoliza);
+    }
+
+    @Step
+    public void irAInformacionDePoliza(){
+        opcionesInformacionPolizaPage.irAInformacionDePoliza();
+    }
+
+    @Step
+    public void seleccionarRiesgoAConsultar(String riesgo) {
+        ingresoDeRiesgosPolizaColectivaPages.seleccionarRiesgoAConsultar(riesgo);
+    }
+
+    public void clicEnActualizarInformacionDePolizaColectiva() {
+        ingresoDeRiesgosPolizaColectivaPages.clicEnActualizarInformacionDePolizaColectiva();
+    }
+
+    @Step
+    public void validarFechaFinVigenciaPolizaColectivaAutos() {
+        opcionesInformacionPolizaPage.validarFechaFinVigenciaPolizaColectivaAutos();
+        opcionesInformacionPolizaPage.validarFechaInicioVigenciaPolizaColectiva();
+    }
+
+    @Step
+    public void validarFechaFinVigenciaPolizaColectivaCommercial(int numeroDias) {
+        opcionesInformacionPolizaPage.validarFechaFinVigenciaPolizaColectivaCommercial(numeroDias);
+        opcionesInformacionPolizaPage.validarFechaInicioVigenciaPolizaColectiva();
+    }
+
+    @Step
+    public void validarFechaInicioVigenciaMenorALaPolizaMadre(String mensaje) {
+        opcionesInformacionPolizaPage.validarFechaInicioVigenciaMenorALaPolizaMadre(mensaje);
     }
 }

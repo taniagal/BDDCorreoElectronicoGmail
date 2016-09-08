@@ -66,12 +66,11 @@ public class UbicacionesDeUnaCuentaPage extends Commons {
     public void agregaDireccion(String departamento, String ciudad, String tipoDireccion){
         waitUntil(1000);
         selectItem(comboBoxDepartamento,departamento);
-        waitUntil(3000);
-        waitForAbsenceOf("//li");
+        waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);
-        waitUntil(3000);
-        waitForAbsenceOf("//li");
-        selectItem(comboBoxTipoDireccion,tipoDireccion);
+        waitForComboValue(comboBoxCiudad,ciudad);
+        selectItem(comboBoxTipoDireccion, tipoDireccion);
+        waitForComboValue(comboBoxTipoDireccion,tipoDireccion);
         botonActualizar.click();
     }
 

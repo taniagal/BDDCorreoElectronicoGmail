@@ -2,12 +2,14 @@ Cotizacion De Poliza
 
 Meta:
 
+@issue #CDSEG-843
+@Automatizador Diego Cardona Acevedo
+@Sprint 3
+
 Narrative:
 Como usuario de Policy Center
 debo poder realizar una cotizacion
 para comenzar un proceso de expedicion con un cliente en caso de ser posible
-
-@Issue SUGWUSC-15118 Quote PA - Información General
 
 Scenario: Informacion general de cotizacion
 GivenStories: stories/policycenter/login_policy.story
@@ -15,7 +17,7 @@ Given he realizado la cotizacion <cotizacion>
 When ingrese al detalle de la cotizacion
 Then debo ver la siguiente informacion
 |numeroCotizacion|tomador|tipoDocumento|numeroDocumento|direccion|tipoDireccion|descripcionDireccion|empresaAseguradora|prima|impuestos|total|
-|22222225|DORIAN EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162Floor 0000Developer Unit Habitation Cube #0000LOUISVILLE, KY 40207Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$666,895.00|-|$$666,895.00|
+|22222225|DORIAN STIWAR EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$2,223,138|-|$2,223,138|
 
 Examples:
 |cotizacion|
@@ -38,17 +40,7 @@ Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensa
 
 Examples:
 |cotizacion|mensaje|
-|22270002  |El tomador es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
-
-Scenario: PEP - Figuras - Bloqueo
-Given he realizado la cotizacion <cotizacion>
-When ingrese a la cotizacion
-And las figuras asegurado, beneficiario y/o tomador, fueron identificadas como PEP
-Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensaje>; no se debe mostrar ningun valor de cotizacion al cliente
-
-Examples:
-|cotizacion|mensaje|
-|22270002  |es un riesgo no estándar y debe ser autorizado|
+|22270002  |El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
 
 Scenario: Riesgos consultables - Chasis - Bloqueo
 Given he realizado la cotizacion <cotizacion>
@@ -73,26 +65,38 @@ Examples:
 |cotizacion|mensaje|
 |22270003  |ya tiene una cotización en curso para el producto seleccionado para la oficina SURA|
 
+Scenario: Poliza con intencion de financiacion
+Given he realizado la cotizacion <cotizacion>
+When ingrese a la cotizacion
+And se haya definido la cotizacion con intencion de financiacion
+Then se debe mostrar un mensaje <mensaje> como advertencia
+
+Examples:
+|cotizacion |mensaje|
+|777111777  |La financiación de la póliza está sujeta a aprobación por parte del área de financiación|
+
+Scenario: Poliza con intencion de financiacion - Mostrar cuotas y valor
+Given he realizado la cotizacion <cotizacion>
+When la cotizacion tenga intencion de financiacion
+Then se debe mostrar en el detalle de la cotizacion el Valor por cuota a pagar <valorCuota> y
+el numero de cotas <numeroCuotas> indicadas en la informacion de la poliza
+
+Examples:
+|cotizacion |valorCuota |numeroCuotas |
+|777222777  |$743,571.00|11           |
+
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:
 @manual
-Given he realizado la cotizacion <cotizacion>
-When ingrese a la cotizacion
-And el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
-Then no se debe permitir continuar con la cotizacion y mostrar un mensaje
-
-Examples:
-|cotizacion|
-|22270002  |
+Given  he realizado la cotizacion
+When  ingrese a la cotizacion
+And  el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
+Then  no se debe permitir continuar con la cotizacion y mostrar un mensaje
 
 Scenario: Riesgos consultables - Tipo Causal Moral
 Meta:
 @manual
-Given he realizado la cotizacion <cotizacion>
-When ingrese a la cotizacion
-And el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
-Then no se debe permitir continuar con la cotizacion y mostrar un mensaje
-
-Examples:
-|cotizacion|
-|22270002  |
+Given  he realizado la cotizacion
+When  ingrese a la cotizacion
+And  el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
+Then  no se debe permitir continuar con la cotizacion y mostrar un mensaje

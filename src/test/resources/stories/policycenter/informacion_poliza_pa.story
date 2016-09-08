@@ -2,7 +2,9 @@ Informacion Poliza Pa
 
 Meta:
 
-@issue SUGWUSC-10900 Policy Info - PA
+@issue #CDSEG-995
+@Automatizador diego cardona
+@Sprint 2
 
 Narrative:
 Como usuario de PolicyCenter
@@ -51,18 +53,6 @@ Examples:
 |numCuenta  |organizacion|canal            |tipoDocumento        |primerNombre |primerApellido |
 |C000888888 |Sura        |Canal Tradicional|CEDULA DE CIUDADANIA |JORGE        |PAISA          |
 
-Scenario: Seleccionar oficina de radicacion
-Meta:
-@manual
-Given ya se inicio una nueva suscripcion
-And se puede visualizar la informacion de la poliza
-When seleccione, digite o busque la oficina de radicacion <oficinaRadicacion>
-Then debe quedar registrada la oficina seleccionada <oficinaRadicacion> en la informacion de la poliza
-
-Examples:
-|numeroCuenta   |oficinaRadicacion          |
-|C000888888     |Acme High Hazard Insurance |
-
 Scenario: Validar porcentaje descuento de poliza
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
@@ -77,7 +67,6 @@ Examples:
 |C000888888     |Sura        |Canal Tradicional|60         |Descuento póliza : El descuento de la póliza debe estar en un rango de 0% a 50%. |
 |C000888888     |Sura        |Canal Tradicional|abc        |Descuento póliza : debe ser un valor numérico.                                   |
 
-
 Scenario: Validar longitud decimales porcentaje descuento de poliza
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
@@ -91,18 +80,46 @@ Examples:
 |numCuenta      |organizacion|canal            |porcentaje     |mensaje                                                                                 |
 |C000888888     |Sura        |Canal Tradicional|20.325         |Descuento póliza : El descuento de la póliza puede tener máximo 2 cifras decimales.     |
 
-Scenario: Validar campo poliza financiada
+Scenario: Deseo de financiacion de poliza
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
-And defina una poliza como financiada <organizacionDetalle> <canalDetalle> <tipoPoliza>
-Then se debe poder ingresar el numero de cuotas
+And indique que deseo financiar la poliza
+Then se debe habilitar la opcion de numero de cuotas
 
 Examples:
-|numCuenta    |organizacion|canal            |organizacionDetalle|canalDetalle     |tipoPoliza|
-|C000888888   |Sura        |Canal Tradicional|Sura               |Canal Tradicional|PPAutos   |
+|numCuenta    |organizacion|canal            |
+|C000888888   |Sura        |Canal Tradicional|
+
+Scenario: No deseo de financiacion de poliza
+Given que voy a buscar la cuenta <numCuenta>
+And se visualiza la informacion de la poliza
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el producto para expedir la poliza
+And no indique que deseo financiar la poliza
+Then no se debe habilitar la opcion de numero de cuotas
+
+Examples:
+|numCuenta    |organizacion|canal            |
+|C000888888   |Sura        |Canal Tradicional|
+
+Scenario: Deseo de financiacion de poliza - opcion Siguiente
+Given que voy a buscar la cuenta <numCuenta>
+And se visualiza la informacion de la poliza
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el producto para expedir la poliza
+And indique que deseo financiar la poliza
+And indique el numero de cuotas
+And seleccione la opcion siguiente
+Then se debe mostrar un mensaje <mensaje> de advertencia
+
+Examples:
+|numCuenta    |organizacion|canal            |mensaje                                                                                  |
+|C000888888   |Sura        |Canal Tradicional|La financiación de la póliza está sujeta a aprobación por parte del área de financiación.|
 
 Scenario: Validar retroactividad en la vigencia de la poliza
 Given que voy a buscar la cuenta <numCuenta>
@@ -114,7 +131,7 @@ And modifique la fecha de inicio de vigencia <organizacionDetalle> <canalDetalle
 Then se debe cumplir con la retroactividad permitida <mensaje>
 
 Examples:
-| numCuenta    | organizacion | canal      | organizacionDetalle | canalDetalle | tipoPoliza | tipoPlazo | fechaInicioVigencia | mensaje                                                                              |
+| numCuenta    | organizacion | canal      | organizacionDetalle | canalDetalle | tipoPoliza | tipoPlazo | fechaInicioVigencia | mensaje                                                                                     |
 | C000888888   | Bancolombia  | Televentas | Bancolombia         | Televentas   | PPAutos    | 6 meses   | 01/01/2016          | La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
 
 Scenario: Validar warning por tomador riesgo PEP
@@ -131,3 +148,30 @@ And se debe permitir continuar la cotizacion
 Examples:
 |numCuenta   |tipoDocumento       |numeroDocumento|organizacion|canal             |mensaje                                                                                               |
 |C000777778  |CEDULA DE CIUDADANIA|123456         |Sura        |Canal Tradicional |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
+
+Scenario: Validar que no se bloquee el tomador riesgo consultable
+Given que voy a buscar la cuenta <numCuenta>
+And se visualiza la informacion de la poliza
+When seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el producto para expedir la poliza
+And pase a la siguiente opcion
+And se identifique el tipo <tipoDocumento> y numero de documento <numeroDocumento> del tomador como Riesgo Consultable
+Then se debe mostrar el mensaje <mensaje> que se obtenga de Riesgos Consultables como warning
+And se debe permitir continuar la cotizacion
+
+Examples:
+|numCuenta   |tipoDocumento       |numeroDocumento|organizacion|canal             |mensaje                                                                                   |
+|C000777778  |CEDULA DE CIUDADANIA|123456         |Sura        |Canal Tradicional |El tomador es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
+
+Scenario: Seleccionar oficina de radicacion
+Meta:
+@manual
+Given ya se inicio una nueva suscripcion
+And se puede visualizar la informacion de la poliza
+When seleccione, digite o busque la oficina de radicacion <oficinaRadicacion>
+Then debe quedar registrada la oficina seleccionada <oficinaRadicacion> en la informacion de la poliza
+
+Examples:
+|numeroCuenta   |oficinaRadicacion          |
+|C000888888     |Acme High Hazard Insurance |

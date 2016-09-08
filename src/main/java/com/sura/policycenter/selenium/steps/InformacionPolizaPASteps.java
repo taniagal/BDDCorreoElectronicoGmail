@@ -75,8 +75,8 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     }
 
     @Step
-    public void definirPolizaFinanciada(String organizacionDetalle, String canalDetalle, String tipoPoliza) {
-        opcionesInformacionPoliza.definirPolizaFinanciada(organizacionDetalle, canalDetalle, tipoPoliza);
+    public void definirPolizaFinanciada() {
+        opcionesInformacionPoliza.definirPolizaFinanciada();
     }
 
     @Step
@@ -117,5 +117,25 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     @Step
     public void permitir_Continuar_Cotizacion() {
         opcionesInformacionPoliza.permitirContinuarCotizacionAsegurados();
+    }
+
+    @Step
+    public void no_Indicar_Poliza_Financiada() {
+        opcionesInformacionPoliza.noIndicarPolizaFinanciada();
+    }
+
+    @Step
+    public void no_Habilitar_Numero_De_Cuotas() {
+        opcionesInformacionPoliza.noHabilitarNumeroCuotas();
+    }
+
+    @Step
+    public void seleccionar_Opcion_Siguiente() {
+        opcionesInformacionPoliza.seleccionarOpcionSiguiente();
+    }
+
+    @Step
+    public void mostrar_Mensaje_Advertencia_Financiacion(String mensaje) {
+        opcionesInformacionPoliza.validarMensajeFinanciacion(mensaje);
     }
 }

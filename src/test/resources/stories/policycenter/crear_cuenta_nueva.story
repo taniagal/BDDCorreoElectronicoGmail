@@ -1,5 +1,9 @@
+Crear Cuenta Nueva
+
 Meta:
-@issue #SUGWUSC-10630
+@issue #CDSEG-990
+@automatizador Nelson Mosquera
+@sprint 1
 
 Narrative:
 Como usuario
@@ -10,7 +14,9 @@ GivenStories: stories/policycenter/login_policy.story
 When quiera crear una cuenta para un contacto persona natural e ingrese documento, tipo de documento <tipo_documento>
 And nombre de organizacion <nombre_organizacion> <agente>
 And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>
-And tipo de direccion <tipo_direccion>, direccion <direccion>, departamento <departamento>, ciudad <ciudad>
+And ingrese los datos de direccion:
+|direccion       |tipo_direccion|departamento|ciudad  |
+|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
 Then se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural
 
 Examples:
@@ -23,7 +29,9 @@ Scenario: Crear una cuenta para un contacto persona juridica
 When quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento>
 And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
-And tipo de direccion <tipo_direccion>, direccion <direccion>, departamento <departamento>, ciudad <ciudad>
+And ingrese los datos de direccion:
+|direccion       |tipo_direccion|departamento|ciudad  |
+|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
 Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
@@ -36,7 +44,9 @@ Scenario: Creacion unica de cuenta persona natural y crear una cuenta para un co
 When quiera crear una cuenta para un contacto e ingrese documento <documento>, tipo de documento <tipo_documento>
 And nombre de organizacion <nombre_organizacion> <agente>
 And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>
-And tipo de direccion <tipo_direccion>, direccion <direccion>, departamento <departamento>, ciudad <ciudad>
+And ingrese los datos de direccion:
+|direccion       |tipo_direccion|departamento|ciudad  |
+|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
 Then No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje> y <mensaje2>
 
 Examples:

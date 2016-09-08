@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -101,8 +100,6 @@ public class  DetallesContactoPage extends Commons {
     private WebElementFacade campoTxtCorreoElectronicoSecundarioEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update']")
     private WebElementFacade botonActualizar;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesCardTab']")
-    private WebElementFacade botonDirecciones;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV_tb:Add']")
     private WebElementFacade botonAgregar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-labelEl']")
@@ -137,8 +134,8 @@ public class  DetallesContactoPage extends Commons {
 
     private  String [] dtlContact = new String[15];
     private String [] dtlCntJ = new String[8];
-    private static final String MSJVALIDARVALORES = "No estan correctos los valores:";
-    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
+    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
@@ -151,6 +148,8 @@ public class  DetallesContactoPage extends Commons {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuItemContactos).shouldBePresent();
         menuItemContactos.click();
     }
+
+
     public void editarContacto(){
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
         botonEditarContacto.waitUntilVisible();
@@ -159,22 +158,18 @@ public class  DetallesContactoPage extends Commons {
         waitUntil(1000);
     }
 
+
     public void actualizaContacto(){
         botonActualizar.click();
         waitUntil(1500);
     }
 
-    public void irADirecciones(){
-        waitUntil(1000);
-        botonDirecciones.click();
-        botonAgregar.waitUntilPresent();
-        botonAgregar.click();
-    }
 
     public void setDireccion(){
         botonAgregar.click();
         waitUntil(2000);
     }
+
 
     public void setNombre(String segundoNombre){
         campoTxtSegundoNombre.waitUntilPresent();
@@ -183,12 +178,14 @@ public class  DetallesContactoPage extends Commons {
         dtlContact[2]= segundoNombre;
     }
 
+
     public void setApellido(String segundoApellido){
         campoTxtSegundoApellido.clear();
         waitUntil(1500);
         campoTxtSegundoApellido.sendKeys(segundoApellido);
         dtlContact[3]= segundoApellido;
     }
+
 
     public void setDatosComboBoxes(String profesion, String estadoCivil, String tipoFamilia){
         selectItem(comboBoxProfesion, profesion);
@@ -199,6 +196,7 @@ public class  DetallesContactoPage extends Commons {
         dtlContact[8]= tipoFamilia;
     }
 
+
     public void setTelefonosResidencial(String telefonoResidencial){
         campoTxtTelefonoResidencial.clear();
         waitUntil(500);
@@ -206,15 +204,18 @@ public class  DetallesContactoPage extends Commons {
         dtlContact[11]= telefonoResidencial;
     }
 
+
     public void setTelefonoTrabajo(String telefonoTrabajo){
         ingresarDato(campoTxtTelefonoTrabajo, telefonoTrabajo);
         dtlContact[12]= telefonoTrabajo;
     }
 
+
     public void setTelefonoCelular(String telefonoCelular){
         ingresarDato(campoTxtTelefonoCelular, telefonoCelular);
         dtlContact[10]= "+1 "+telefonoCelular;
     }
+
 
     public void setCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
         ingresarDato(campoTxtCorreoElectronicoPrimario,correoElectronicoPrimario);
@@ -250,6 +251,7 @@ public class  DetallesContactoPage extends Commons {
         dtlCntJ[4]= ventasAnuales;
     }
 
+
     public void setCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario){
         ingresarDato(campoTxtCorreoElectronicoPrimarioEmpresa,correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
@@ -260,12 +262,23 @@ public class  DetallesContactoPage extends Commons {
         dtlCntJ[7]= correoElectronicoSecundario;
     }
 
+
+    /**
+     * Verifica que el documento y el tipo de documento no sean editables por un error de codigo en policy.
+     */
+    public void verificarEstadoDeDocumento(){
+        MatcherAssert.assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo",
+                !campoTxtTipoDocumento.getAttribute("class").contains("x-form-text") || !campoTxtDocumento.getAttribute("class").contains("x-form-text"));
+    }
+
+
     /**
      * DETALLE CONTACTO EDICION
      * Valida si los datos ingresados es igual al que se muestran en el detalle
      */
     public void verificarActualizacion(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtSegundoNombre).shouldBePresent();
+        waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
+        waitFor(campoTxtSegundoNombre).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlContact[2].equals(campoTxtSegundoNombre.getText()))
             right.append("segundo nombre,");
@@ -295,7 +308,8 @@ public class  DetallesContactoPage extends Commons {
     }
 
     public void verificarActualizacionJuridico(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(comboBoxActividadComercial).shouldBePresent();
+        waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
+        waitFor(comboBoxActividadComercial).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
             right.append("activida comercial,");
@@ -318,13 +332,6 @@ public class  DetallesContactoPage extends Commons {
         MatcherAssert.assertThat(res,"No estan correctos los valores".equals(res));
     }
 
-    /**
-     * Verifica que el documento y el tipo de documento no sean editables por un error de codigo en policy.
-     */
-    public void verificarEstadoDeDocumento(){
-        MatcherAssert.assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo",
-                !campoTxtTipoDocumento.getAttribute("class").contains("x-form-text") || !campoTxtDocumento.getAttribute("class").contains("x-form-text"));
-    }
 
     /**
      * DETALLE CONTACTO
@@ -367,6 +374,7 @@ public class  DetallesContactoPage extends Commons {
         }
         MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
     }
+
 
     public void verificarCamposPersonaJuridica() {
         labelRazonSocial.waitUntilPresent();

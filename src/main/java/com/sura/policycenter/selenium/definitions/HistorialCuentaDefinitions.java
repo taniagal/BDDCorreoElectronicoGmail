@@ -56,4 +56,18 @@ public class HistorialCuentaDefinitions {
         historialCuentaSteps.buscarCuentaConMultiplesOpciones( usuario,  fechaDesde,  fechaHasta);
     }
 
+    @Then("debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda")
+    public void thenDeboPoderVerLasTransaccionesRelacionadasALosMultiplesOpciones() {
+        historialCuentaSteps.validarDatosOpcionesMultiples();
+    }
+
+    @When("indique el criterio de busqueda producto")
+    public void whenIndiqueElCriterioDeBusquedaProducto() {
+        historialCuentaSteps.buscarCuentaProducto();
+    }
+
+    @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Producto")
+    public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoProducto() {
+        historialCuentaSteps.validarResultadoProducto();
+    }
 }

@@ -84,26 +84,15 @@ public class NuevoContactoPage extends Commons {
     public void ingresarDireccionDepartamenteYCiudad(String direccion, String departamento, String ciudad) {
         this.direccion.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
-        waitABit(4000);
+        waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);
-        waitABit(1500);
-    }
-
-    public void ingresarDireccion2(String direccion, String departamento, String ciudad, String tipoDireccion) {
-        waitABit(2000);
-        direccion2.sendKeys(direccion);
-        selectItem(comboBoxDepartamento2,departamento);
-        waitABit(4000);
-        selectItem(comboBoxCiudad2,ciudad);
-        waitABit(2000);
-        selectItem(tipoDireccion2,tipoDireccion);
-        waitABit(1500);
+        waitForComboValue(comboBoxCiudad,ciudad);
     }
 
     public void actualizarPersonaNatural(String primerNombre) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitABit(2000);
+        waitUntil(2000);
         nombreContact.waitUntilPresent();
         MatcherAssert.assertThat(this.nombreContact.getText(), Matchers.containsString(primerNombre));
     }
@@ -111,7 +100,7 @@ public class NuevoContactoPage extends Commons {
     private void actualizar() {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitABit(1000);
+        waitUntil(1000);
     }
 
     public void ingresarTelefonoFijo(String tipoTelefono, String numeroTelefono) {
@@ -123,12 +112,12 @@ public class NuevoContactoPage extends Commons {
     private void ingresarTelefono(String tipoTelefono, String numeroTelefono) {
         if ("Trabajo".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            waitABit(1000);
+            waitUntil(1000);
             this.tipoTelefono.click();
             this.telefonoTrabajo.type(numeroTelefono);
         } else if ("Vivienda".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            waitABit(1000);
+            waitUntil(1000);
             this.tipoTelefono.click();
             this.telefonoResidencia.type(numeroTelefono);
         }
@@ -146,16 +135,16 @@ public class NuevoContactoPage extends Commons {
     public void actualizarJuridica(String razonSocial) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitABit(2000);
+        waitUntil(2000);
         desRazonSocial.waitUntilPresent();
         MatcherAssert.assertThat(this.desRazonSocial.getText().toString(), Matchers.containsString(razonSocial));
 
     }
 
     public void verificarContactoExistente() {
-        this.botonActualizar.waitUntilClickable();
-        this.botonActualizar.click();
-        waitABit(1000);
+        botonActualizar.waitUntilClickable();
+        botonActualizar.click();
+        waitUntil(1000);
         MatcherAssert.assertThat(this.contactoExistente.getText().toString(), Matchers.containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 

@@ -198,7 +198,7 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void buscarCuenta(String numeroCuenta) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         commons.waitUntil(2000);
         btnBuscar.click();
         btnCuentas = commons.esperarElemento(".//*[@id='Search:MenuLinks:Search_AccountSearch']");

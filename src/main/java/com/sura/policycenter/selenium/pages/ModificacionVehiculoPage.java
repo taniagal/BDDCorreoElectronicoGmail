@@ -47,16 +47,16 @@ public class ModificacionVehiculoPage extends Commons{
 
     public void mostrarDatosVehiculo(String claseVehiculo, String marca, String linea) {
         WebElementFacade campoClaseVehiculo = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Type_DV-inputEl']");
-        MatcherAssert.assertThat(campoClaseVehiculo.getText(), Is.is(Matchers.equalTo(claseVehiculo)));
+        MatcherAssert.assertThat("Error en el valor de la clase de vehiculo",campoClaseVehiculo.getText(), Is.is(Matchers.equalTo(claseVehiculo)));
         WebElementFacade campoMarca = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Make_DV-inputEl']");
-        MatcherAssert.assertThat(campoMarca.getText(), Is.is(Matchers.equalTo(marca)));
+        MatcherAssert.assertThat("Error en el valor de la marca",campoMarca.containsText(marca));
         WebElementFacade campoLinea = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']");
-        MatcherAssert.assertThat(campoLinea.getText(), Is.is(Matchers.equalTo(linea)));
+        MatcherAssert.assertThat("Error en el valor de la linea",campoLinea.containsText(linea));
         waitUntil(1000);
     }
 
     public void registrarZonaCirculacion(String ciudadCirculacion) {
-        waitUntil(2000);
+        waitUntil(3000);
         waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
         waitUntil(1500);
         waitFor(botonSiguiente).click();

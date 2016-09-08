@@ -35,7 +35,7 @@ public class CoaseguroDefinitions {
     @When("agregue las aseguradoras y su porcentaje de participacion")
     public void agregarCoaseguro(){
         agregarAseguradora("Sura","60");
-        agregarAseguradora("Axxa","40");
+        agregarAseguradora("ACE SEGUROS S.A.","40");
         coaseguroSteps.agregarCoaseguro(aseguradoras);
     }
 
@@ -67,7 +67,7 @@ public class CoaseguroDefinitions {
     @When("el porcentaje de paticipacion total no sea 100%")
     public void agregarCoaseguroParticipantes(){
         agregarAseguradora("Sura","60");
-        agregarAseguradora("Axxa","38");
+        agregarAseguradora("ACE SEGUROS S.A.","38");
         coaseguroSteps.agregarCoaseguro2(aseguradoras);
     }
 

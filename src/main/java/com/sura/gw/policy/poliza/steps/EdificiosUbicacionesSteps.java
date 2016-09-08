@@ -5,14 +5,12 @@ import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.jbehave.core.model.ExamplesTable;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
 
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
-    private EdificiosyUbicacionesWidget edificiosWidget = new EdificiosyUbicacionesWidget(getDriver());
 
     public EdificiosUbicacionesSteps(Pages pages){
         super(pages);
@@ -67,35 +65,59 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
     }
 
-    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo) {
+    // TODO: 01/09/2016 code smell
+    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo, boolean esUltimaFilaDeExampleTable) {
 
         String mensajeStepReporte = "En tab " + tab +
                 " seleccionar la cobertura " + cobertura +
                 " para " + entrada +
                 " ingresar " + valorEntrada;
 
+        // Registro de tarea dinámica en el reporte de Serenity
         ingresar_valor_de_entrada_de_la_cobertura(mensajeStepReporte);
 
-        if (! edificiosyUbicacionesWidget.estaSeleccionadoTab(tab)){
-            edificiosyUbicacionesWidget.seleccionarTab(tab);
-        }
-
         if("Coberturas del Riesgo".equals(tab)){
-            if (! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {
-                edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
-            }
-            edificiosyUbicacionesWidget.ingresarValorAEntradaDeCobertura(entrada, valorEntrada);
+            seleccionarTab(tab);
+            seleccionarCoberturaDelRiesgo(cobertura);
+            edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
         }
 
         if("Información de Artículos".equals(tab)){
-            if (! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeInformacionDeArticulo(cobertura)) {
-                edificiosyUbicacionesWidget.seleccionarCoberturaDeInformacionDeArticulo(cobertura);
+            seleccionarTab(tab);
+            seleccionarTipoDeArticulo(tipoArticulo);
+
+            if (cobertura.length() > 0 && ! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura, tipoArticulo)){
+                edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura, tipoArticulo);
+                edificiosyUbicacionesWidget.ingresarValorAEntradaInformacionArticulo(tipoArticulo, entrada, valorEntrada);
+            } else {
+                edificiosyUbicacionesWidget.ingresarValorAEntradaInformacionArticulo(tipoArticulo, entrada, valorEntrada);
             }
-            edificiosyUbicacionesWidget.ingresarValorAEntradaDeCobertura(entrada, valorEntrada);
+
         }
 
         if("Otros Articulos".equals(tab)){
-            edificiosyUbicacionesWidget.ingresarOtroArticulo(tipoArticulo, cobertura, entrada, valorEntrada);
+
+            seleccionarTab(tab);
+
+            edificiosyUbicacionesWidget.ingresarOtroArticulo(tipoArticulo, cobertura, entrada, valorEntrada, esUltimaFilaDeExampleTable);
+        }
+    }
+
+    private void seleccionarCoberturaDelRiesgo(String cobertura) {
+        if (! edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {
+            edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);
+        }
+    }
+
+    private void seleccionarTab(String tab){
+        if (! edificiosyUbicacionesWidget.estaSeleccionadoTab(tab)){
+            edificiosyUbicacionesWidget.seleccionarTab(tab);
+        }
+    }
+
+    private void seleccionarTipoDeArticulo(String tipoArticulo){
+        if (! edificiosyUbicacionesWidget.estaSeleccionadaTipoDeArticuloEnInformacionDeArticulo(tipoArticulo)) {
+            edificiosyUbicacionesWidget.seleccionarTipoDeArticuloDeInformacionDeArticulo(tipoArticulo);
         }
     }
 
@@ -104,8 +126,5 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         // este metodo vacio permite generar pasos en el reporte de Serenity de forma dinámica
     }
 
-    @Step
-    public void verificar_mensajes(ExamplesTable mensajesEsperados) {
-        edificiosWidget.verificarMensajes(mensajesEsperados);
-    }
+
 }

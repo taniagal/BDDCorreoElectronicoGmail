@@ -45,13 +45,13 @@ public class CoaseguroPage extends Commons {
         linkAgregarCoaseguro.click();
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
         campoTxtDastosAdministrativos.waitUntilPresent();
+        waitUntil(1000);
         radioBotonLider.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         try{
             if(radioBotonAceptado.isSelected())
                 right.append("radio_boton_cedido, ");
         }catch (StaleElementReferenceException e){
-
             e.printStackTrace();
         }
         if(!botonAgregar.isPresent())
@@ -97,7 +97,7 @@ public class CoaseguroPage extends Commons {
     }
 
     public void verificarCoaseguro() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
         MatcherAssert.assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
 

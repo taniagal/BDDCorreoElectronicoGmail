@@ -23,47 +23,47 @@ public class HistorialCuentaPage extends Commons {
     private WebElementFacade txtNumCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
     private WebElementFacade btnBuscarCuenta;
-    @FindBy(xpath="//tr[13]/td/div/span")
+    @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_History']/div")
     private WebElementFacade mnuHistorial;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
     private WebElementFacade btnMostrarRelacionadoCon;
-    @FindBy(xpath="//li[5]")
+    @FindBy(xpath=".//li[5]")
     private WebElementFacade itmRelacionadoCon;
-    @FindBy(xpath="//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
+    @FindBy(xpath=".//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade btnMostrarProducto;
-    @FindBy(xpath="//li[2]")
+    @FindBy(xpath=".//li[2]")
     private WebElementFacade itmProducto;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:user-inputEl']")
     private WebElementFacade txtUsuario;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade btnBuscarItem;
-    @FindBy(xpath="//td/div/div[2]/div/table/tbody/tr/td/div")
+    @FindBy(xpath=".//td/div/div[2]/div/table/tbody/tr/td/div")
     private WebElementFacade itemTipoResultado;
-    @FindBy(xpath="//td/div/div/div/div/div/div/span")
+    @FindBy(xpath=".//td/div/div/div/div/div/div/span")
     private WebElementFacade colTipo;
-    @FindBy(xpath="//div/div/div[2]/div/span")
+    @FindBy(xpath=".//div/div/div[2]/div/span")
     private WebElementFacade colUsuario;
-    @FindBy(xpath="//div[3]/div/span")
+    @FindBy(xpath=".//div[3]/div/span")
     private WebElementFacade colFechaTransaccion;
-    @FindBy(xpath="//div/div/div[4]/div/span")
+    @FindBy(xpath=".//div/div/div[4]/div/span")
     private WebElementFacade colDescripcion;
-    @FindBy(xpath="//div[5]/div/span")
+    @FindBy(xpath=".//div[5]/div/span")
     private WebElementFacade colProducto;
-    @FindBy(xpath="//div[6]/div/span")
+    @FindBy(xpath=".//div[6]/div/span")
     private WebElementFacade colPoliza;
-    @FindBy(xpath="//div[7]/div/span")
+    @FindBy(xpath=".//div[7]/div/span")
     private WebElementFacade colTransaccionPoliza;
-    @FindBy(xpath="//div[8]/div/span")
+    @FindBy(xpath=".//div[8]/div/span")
     private WebElementFacade colValorOriginal;
-    @FindBy(xpath="//div[9]/div/span")
+    @FindBy(xpath=".//div[9]/div/span")
     private WebElementFacade colValorNuevo;
-    @FindBy(xpath="//li[2]")
+    @FindBy(xpath=".//li[2]")
     private WebElementFacade itmRelacionadoConRenovacion;
-    @FindBy(xpath="//td[3]/div/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    @FindBy(xpath=".//td[3]/div/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade txtFechaDesde;
-    @FindBy(xpath="//tr[3]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    @FindBy(xpath=".//tr[3]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade txtFechaHasta;
-    @FindBy(xpath="//td/div/div[2]/div/table")
+    @FindBy(xpath=".//td/div/div[3]/div/table")
     private WebElementFacade table;
     @FindBy(xpath="//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade txtProducto;
@@ -177,5 +177,4 @@ public class HistorialCuentaPage extends Commons {
             MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.equalTo(producto)));
         }
     }
-
 }

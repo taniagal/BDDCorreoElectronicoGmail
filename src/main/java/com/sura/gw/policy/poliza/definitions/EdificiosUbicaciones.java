@@ -1,15 +1,20 @@
 package com.sura.gw.policy.poliza.definitions;
 
+import ch.lambdaj.Lambda;
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
-import com.sura.policycenter.selenium.steps.DetallesDeUbicacionSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.hamcrest.*;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.StringContains;
-import org.jbehave.core.annotations.*;
+import org.jbehave.core.annotations.Aliases;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
@@ -17,31 +22,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static ch.lambdaj.Lambda.filter;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.StringContains.containsString;
+import static org.hamcrest.core.Is.is;
+
 
 public class EdificiosUbicaciones {
 
-    @Steps PolizaSteps polizaSteps;
-    @Steps EdificiosUbicacionesSteps edificiosUbicacionesSteps;
-    @Steps IngresoAPolicyCenterDefinitions guidewire;
-    @Steps Navegacion navegacion;
+    @Steps
+    PolizaSteps polizaSteps;
+    @Steps
+    EdificiosUbicacionesSteps edificiosUbicacionesSteps;
+    @Steps
+    IngresoAPolicyCenterDefinitions guidewire;
+    @Steps
+    Navegacion navegacion;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
 
-    @Given("que estoy en edificios y ubicaciones de una poliza $numSubscripcion")
-    public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion){
+    @Given("que estoy en edificios y ubicaciones de una poliza $numSubscripcion con el rol $rolUsuario")
+    public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion, String rolUsuario) {
 
         // TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
 
         LOGGER.info("EdificiosUbicaciones.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
 
-
-
-        // TODO: 04/08/2016 Capturar el rol desde el gherkin en i am Asesor
-        guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
+        guidewire.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
         navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
         navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
         try {
@@ -54,25 +61,27 @@ public class EdificiosUbicaciones {
     }
 
     @When("intente ingresar las entradas de las diferentes coberturas $entradas")
-    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas){
+    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
 
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
-        for (Map<String,String> entradaCobertura : entradas.getRows()) {
+        int index = 0;
+        for (Map<String, String> entradaCobertura : entradas.getRows()) {
+            index++;
             String tab = entradaCobertura.get("TAB");
-
             String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
-
             String cobertura = entradaCobertura.get("COBERTURA");
             String entrada = entradaCobertura.get("ENTRADAS");
             String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
+            boolean esUltimaFilaDeExampleTable = index == entradas.getRows().size();
 
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo);
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esUltimaFilaDeExampleTable);
         }
+
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
 
     @When("haga clic en el boton Aceptar")
-    public void cuandoHagaClicEnElBotonAceptar(){
+    public void cuandoHagaClicEnElBotonAceptar() {
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
 
@@ -110,40 +119,32 @@ public class EdificiosUbicaciones {
     }
 
 
-    @When("cuando intente ingresar una ubicacion para comprobar las validaciones de riesgos consultables")
-    public void cuandoIntenteIngresarUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables() {
-        LOGGER.info("Poliza.cuandoIntenteIngresarUnaUbicacionParaComprobarLasValidacionesDeRiesgosConsultables");
+    @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
+    @Aliases(values = {
+            "se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados",
+            "se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados"
+    })
+    public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
+        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
 
-        try {
-            polizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
-        } catch (Exception e) {
-            LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
-        }
-
-        polizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
-        edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
-    }
-
-    @Then("espero ver mensajes de advertencia indicandome la direccion es un riesgo consultable")
-    public void entoncesEsperoVerMensajeDeAdvertenciaQueUbicacionEsRiesgoConsultable() {
-        for (String mensaje : polizaSteps.espacioDeTrabajo()){
-            MatcherAssert.assertThat("Mensaje de advertencia de riesgo consultable no coincide con el esperado",
-                    mensaje,
-                    StringContains.containsString("La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial."
-                    ));
+        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
+            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
+            assertThat(mensajesWSList, hasItemContainsString(mensaje));
         }
 
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
 
+    @Then("se espera que el siguiente mensaje se muestre una sola vez: $mensajesEsperado")
+    public void entoncesSeEsperaQueElMensajeSeMuestreUnaSolaVez(String mensajesEsperado) {
+        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
+        int contadorDeOcurrencias = 0;
 
-    @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
-    @Aliases(values={
-            "se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados",
-            "se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados"
-    })
-    public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
-        edificiosUbicacionesSteps.verificar_mensajes(mensajesEsperados);
+        if (mensajesWSList.contains(mensajesEsperado)) {
+            contadorDeOcurrencias++;
+        }
+        assertThat("Ocurrencia de mensaje: " + mensajesEsperado + " es de " + contadorDeOcurrencias + "veces", contadorDeOcurrencias, is(equalTo(1)));
+
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
 
@@ -156,7 +157,7 @@ public class EdificiosUbicaciones {
         return new HasItemContainsString(expectedValue);
     }
 
-    private static class HasItemContainsString extends TypeSafeMatcher<List<String>> {
+    private final static class HasItemContainsString extends TypeSafeMatcher<List<String>> {
 
         private final String expectedValue;
 
@@ -166,7 +167,7 @@ public class EdificiosUbicaciones {
 
         @Override
         protected boolean matchesSafely(List<String> values) {
-            return !filter(containsString(expectedValue), values).isEmpty();
+            return !Lambda.filter(StringContains.containsString(expectedValue), values).isEmpty();
         }
 
         @Override

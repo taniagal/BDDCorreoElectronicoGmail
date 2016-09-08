@@ -1,7 +1,9 @@
 Busqueda de Cuentas
 
 Meta:
-@issue #SUGWUSC-14984
+@issue #CDSEG-921
+@Automatizador Eliana Alvarez
+@Sprint 1
 
 Narrative:
 Como usuario PolicyCenter

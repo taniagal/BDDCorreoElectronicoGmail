@@ -7,15 +7,15 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 
@@ -29,12 +29,6 @@ public class Commons extends PageObject {
     WebElementFacade internacional;
     @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
     WebElementFacade idioma;
-    @FindBy(xpath=".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-    private WebElementFacade usuario;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
-    private WebElementFacade contrasena;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
-    private WebElementFacade submit;
     @FindBy(xpath =".//*[@id=':TabLinkMenuButton-btnIconEl']")
     private WebElementFacade btnConfig;
     @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
@@ -44,30 +38,6 @@ public class Commons extends PageObject {
 
     public Commons(WebDriver driver) {
         super(driver);
-    }
-
-    public void asercion(String element, String mensaje) {
-        MatcherAssert.assertThat(element, CoreMatchers.containsString(mensaje));
-    }
-
-    public void login(String user, String pass) {
-        usuario.clear();
-        contrasena.clear();
-        usuario.type(user);
-        contrasena.type(pass);
-        submit.click();
-    }
-
-    public void logout() {
-        btnConfig.click();
-        btnLogout.click();
-        if (btnLogout2.isCurrentlyVisible()) {
-            btnLogout2.click();
-        }
-    }
-
-    public void close() {
-        getDriver().quit();
     }
 
     public Actions deployMenu(WebElementFacade menu) {
@@ -86,6 +56,87 @@ public class Commons extends PageObject {
         element.sendKeys(Keys.ENTER);
     }
 
+
+    protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
+        final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+
+    public void waitUntil(int millis) {
+        Integer i = 0;
+        Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
+                TimeUnit.MILLISECONDS).pollingEvery(millis,
+                TimeUnit.MILLISECONDS);
+        try {
+            wait.until(new Function<Integer, Boolean>() {
+                public Boolean apply(Integer i) {
+                    return false;
+                }
+            });
+        } catch (TimeoutException e) {
+        }
+    }
+
+
+    public  void verificarMensaje(WebElementFacade divMensaje, String mensaje){
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
+    }
+
+
+    public List<WebElementFacade> getLista(String locator) {
+        return withTimeoutOf(28,TimeUnit.SECONDS).findAll(locator);
+    }
+
+
+    public WebElementFacade esperarElemento(final String xpath) {
+        Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
+                .withTimeout(20, TimeUnit.SECONDS)
+                .pollingEvery(5, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
+        return espera.until(new Function<WebDriver, WebElementFacade>() {
+            public WebElementFacade apply(WebDriver driver) {
+                return findBy(xpath);
+            }
+        });
+    }
+
+
+    public void ingresarDato(WebElementFacade elemento, String dato){
+        do {
+            waitFor(elemento);
+            elemento.clear();
+            waitUntil(500);
+            waitFor(elemento).shouldContainText("");
+            elemento.sendKeys(dato);
+        }while (!elemento.getValue().equals(dato));
+    }
+
+    public void waitForComboValue(WebElementFacade element, String value ){
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element,value));
+        waitUntil(2000);
+    }
+
+
+    public void logout() {
+        btnConfig.click();
+        btnLogout.click();
+        if (btnLogout2.isCurrentlyVisible()) {
+            btnLogout2.click();
+        }
+    }
+
+
+    public void asercion(String element, String mensaje) {
+        MatcherAssert.assertThat(element, CoreMatchers.containsString(mensaje));
+    }
+
+
+    public void close() {
+        getDriver().quit();
+    }
+
     /**
      * Crea numero de cedula
      * @return numero de cedula de 8 digitos
@@ -102,59 +153,5 @@ public class Commons extends PageObject {
     public String nitRandom() {
         int nit = (int) Math.floor(Math.random() * (900000000 - 999999999) + 999999999);
         return Integer.toString(nit);
-    }
-
-
-    protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
-        final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
-    public void waitUntil(int millis) {
-        Integer i = 0;
-        Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
-                TimeUnit.MILLISECONDS).pollingEvery(millis,
-                TimeUnit.MILLISECONDS);
-        try {
-            wait.until(new Function<Integer, Boolean>() {
-                public Boolean apply(Integer i) {
-
-                    return false;
-                }
-            });
-        } catch (TimeoutException e) {
-        }
-    }
-
-    public  void verificarMensaje(WebElementFacade divMensaje, String mensaje){
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
-        MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
-    }
-
-    public List<WebElementFacade> getLista(String locator) {
-        return withTimeoutOf(28,TimeUnit.SECONDS).findAll(locator);
-    }
-
-    public WebElementFacade esperarElemento(final String xpath) {
-        Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(20, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
-                .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
-
-        return espera.until(new Function<WebDriver, WebElementFacade>() {
-            public WebElementFacade apply(WebDriver driver) {
-                return findBy(xpath);
-            }
-        });
-    }
-
-    public void ingresarDato(WebElementFacade elemento, String dato){
-        do {
-            waitFor(elemento);
-            elemento.clear();
-            waitUntil(500);
-            waitFor(elemento).shouldContainText("");
-            elemento.sendKeys(dato);
-        }while (!elemento.getValue().equals(dato));
     }
 }

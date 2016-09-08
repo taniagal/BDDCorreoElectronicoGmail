@@ -100,7 +100,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
     private WebElementFacade labelPrima;
     @FindBy(xpath = ".//tfoot/tr/td/div")
     private WebElementFacade labelSubtotal;
-    @FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
+    @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
     private WebElementFacade labelSubtotalPrimas;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:Taxes-labelEl']")
     private WebElementFacade labelImpuesto;
@@ -180,9 +180,9 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("empresaAseguradora"))));
-        MatcherAssert.assertThat(campoPrimaTotal.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("prima"))));
-        MatcherAssert.assertThat(campoImpuestosYCargos.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("impuestos"))));
-        MatcherAssert.assertThat(campoCostoTotal.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("total"))));
+        MatcherAssert.assertThat(campoPrimaTotal.getText(), Matchers.containsString(datosCotizacion.get("prima")));
+        MatcherAssert.assertThat(campoImpuestosYCargos.getText(), Matchers.containsString(datosCotizacion.get("impuestos")));
+        MatcherAssert.assertThat(campoCostoTotal.getText(), Matchers.containsString(datosCotizacion.get("total")));
         MatcherAssert.assertThat(campoVigenciaDePoliza.getText(), Is.is(Matchers.notNullValue()));
 
     }

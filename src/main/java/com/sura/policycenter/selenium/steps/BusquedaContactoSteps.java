@@ -20,10 +20,6 @@ public class BusquedaContactoSteps extends ScenarioSteps {
         return getPages().currentPageAt(InicioPage.class);
     }
 
-    @Step
-    public void login(String usuario, String contrasena){
-        busquedaContactoPage.login(usuario, contrasena);
-    }
 
     @Step
     public void navegarBarraSuperior() {
@@ -31,13 +27,13 @@ public class BusquedaContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void buscarContacto(){
-        inicioPage().irABuscarContacto();
+    public void ir_A_Buscar_Contacto() {
+        busquedaContactoPage.irABuscarContacto();
     }
 
     @Step
-    public void accionarBuscarContacto() {
-        inicioPage().irABuscarContacto();
+    public void ir_A_Busqueda_Contacto() {
+        busquedaContactoPage.irABuscarContacto();
     }
 
     @Step
@@ -56,19 +52,10 @@ public class BusquedaContactoSteps extends ScenarioSteps {
     }
 
     @Step
-    public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
-        busquedaContactoPage.consultarContactoNumDoc(tipoDoc, numDoc);
-    }
-
-    @Step
     public void consultarContactoTipoDoc(String tipoDoc) {
         busquedaContactoPage.consultarContactoTipoDoc(tipoDoc);
     }
 
-    @Step
-    public void consultarPersonaJuridicaTipoNumDoc(String numDoc) {
-        busquedaContactoPage.consultarPersonaJuridicaTipoNumDoc(numDoc);
-    }
 
     @Step
     @Pending

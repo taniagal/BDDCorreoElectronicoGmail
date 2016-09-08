@@ -1,5 +1,9 @@
+Validaciones Informacion De Vehiculo
+
 Meta:
-@issue #SUGWUSC-15127
+@issue #CDSEG-1013
+@automatizador Nelson Mosquera
+@sprint 3
 
 Narrative:
 Como usuario de policy center
@@ -10,29 +14,31 @@ Scenario:  Verificar validacion de codigo facecolda erroneo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|C000222333|Sura        |Autos   |Canal Tradicional|
 When agrege un vehiculo con codigo fasecolda <codigo> que no existe
-Then debo ingresar un nuevo codigo
+Then deben aparecer los mensajes de validacion:
+|mensaje                                                                                                                |
+|El código fasecolda no existe. Por favor verifique|
 
 Examples:
 |codigo|
 |acb123|
 
 
-
 Scenario:  Validar riesgo consultable para motor, placa o chasis
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|valor_asegurado|descuento|recargo|
-|T64497|2011  |01601225        |MEDELLIN          |Particular       |CHAS63215|AB3C2|$17,900,000.00 |null     |null   |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|valor_asegurado|descuento|recargo|zona|
+|T64497|2011  |01601225        |MEDELLIN          |Particular       |CH212121 |AB3C2|$17,900,000    |null     |null   |2|
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                |
-|Placa : La placa T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.      |
-|Chasis : El chasis CHAS63215, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
-|Motor : El motor AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.       |
+|T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.     |
+|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. |
+|AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.      |
+And debe permitir continuar la cotizacion
 
 Examples:
 ||
@@ -42,10 +48,10 @@ Examples:
 Scenario:  Validar si el valor asegurado del vehiculo supera el tope maximo del valor permitido
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|
-|T64493|2017  |09403011        |MEDELLIN          |Particular       |null  |null |$830,000,000.00|null     |null   |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado |descuento|recargo|zona|
+|T64493|2015  |07801049        |MEDELLIN          |Particular       |null  |null |$540,000,000.00 |null     |null   |2   |
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                                                                                                                                             |
@@ -60,10 +66,10 @@ Examples:
 Scenario:  Validar si el valor asegurado del vehiculo supera el tope minimo del valor permitido
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|
-|T64413|1993  |07015010        |MEDELLIN          |Particular       |null  |null |$1,400,000.00  |null     |null   |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
+|T64413|1995  |03201016        |MEDELLIN          |Particular       |null  |null |$400,000.00    |null     |null   |2|
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                 |
