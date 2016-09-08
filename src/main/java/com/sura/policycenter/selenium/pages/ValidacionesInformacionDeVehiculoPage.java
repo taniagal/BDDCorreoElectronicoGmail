@@ -53,6 +53,10 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade botonAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
     private WebElementFacade campoVehiculoCeroKm;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:4:RateModifier-inputEl']")
+    public WebElementFacade campoTxtBonificacionTecnica;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:5:RateModifier-inputEl']")
+    public WebElementFacade campoTxtBonificacionComercial;
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
@@ -64,8 +68,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     }
 
     public void crearVehiculo() {
+        botonCrearVehiculo.waitUntilPresent().click();
         campoTxtPlaca.waitUntilPresent();
-        botonCrearVehiculo.click();
     }
 
     public void clickSiguiente() {
@@ -78,8 +82,6 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     }
 
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        waitFor(botonCrearVehiculo).click();
-        waitUntil(500);
         campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
         waitFor(campoTxtPlaca).shouldBePresent();
@@ -87,11 +89,11 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         comboBoxVehiculoServicio.click();
         waitForTextToAppear(vehiculo.get("placa"),28000);
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitForTextToAppear(vehiculo.get("modelo"),32000);
+        waitForTextToAppear(vehiculo.get("modelo"),28000);
         ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
         waitUntil(1000);
         campoTxtPlaca.click();
-        waitForTextToAppear(vehiculo.get("valor_asegurado"),32000);
+        waitForTextToAppear(vehiculo.get("valor_asegurado"),28000);
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitForComboValue(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
         waitUntil(1000);
@@ -110,6 +112,16 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
             campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
         MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
+    }
+
+    public void agregarPlaca(String placa) {
+        campoTxtPlaca.sendKeys(placa);
+        campoTxtchasis.click();
+    }
+
+    public void VerificarBono(String bono){
+        waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtBonificacionTecnica,bono));
+        MatcherAssert.assertThat("Error en el valor de la bonificación, was "+campoTxtBonificacionTecnica.getValue(), campoTxtBonificacionTecnica.getValue().contains(bono));
     }
 
     public void agregarCodigoFasecolda(String codigo) {

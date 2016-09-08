@@ -26,6 +26,11 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregar_vehiculo(datosVehiculo);
     }
 
+    @When("ingrese la placa <placa> en la informacion del vehiculo")
+    public void agregraPlaca(@Named("placa") String placa){
+        tarifaAutosSteps.agregar_placa_y_asegurado(placa);
+    }
+
     @When("ingrese las coberturas: $coberturas")
     public void agregarcoberturas(ExamplesTable coberturas) {
         tarifaAutosSteps.agregar_coberturas(coberturas);
@@ -44,6 +49,11 @@ public class TarifaAutosDefinitions {
     @Then("el resultado de la cotizacion en cada cobertura debe ser: $valor")
     public void verificarResultado(ExamplesTable valor){
         tarifaAutosSteps.verificar_tarifacion_por_coberturas(valor);
+    }
+
+    @Then("se debe ver reflejada la bonificacion tecnica <bono> de esta placa")
+    public void verificarBono(@Named("bono")String bono){
+        tarifaAutosSteps.verificar_bono(bono);
     }
 
 }

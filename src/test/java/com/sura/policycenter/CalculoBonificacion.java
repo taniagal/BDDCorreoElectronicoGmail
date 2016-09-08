@@ -3,5 +3,5 @@ package com.sura.policycenter;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
-public class CalculoBonificacionComercial extends SerenityStory{
+public class CalculoBonificacion extends SerenityStory{
 }
