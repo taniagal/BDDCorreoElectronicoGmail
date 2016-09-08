@@ -14,7 +14,7 @@ Scenario:  Verificar validacion de codigo facecolda erroneo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|C000222333|Sura        |Autos   |Canal Tradicional|
 When agrege un vehiculo con codigo fasecolda <codigo> que no existe
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                |
@@ -28,7 +28,7 @@ Examples:
 Scenario:  Validar riesgo consultable para motor, placa o chasis
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|valor_asegurado|descuento|recargo|zona|
 |T64497|2011  |01601225        |MEDELLIN          |Particular       |CH212121 |AB3C2|$17,900,000    |null     |null   |2|
@@ -48,7 +48,7 @@ Examples:
 Scenario:  Validar si el valor asegurado del vehiculo supera el tope maximo del valor permitido
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
 |T64493|2017  |07801044        |MEDELLIN          |Particular       |null  |null |$500,000,000.00|null     |null   |2   |
@@ -66,7 +66,7 @@ Examples:
 Scenario:  Validar si el valor asegurado del vehiculo supera el tope minimo del valor permitido
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
 |T64413|1993  |00101001        |MEDELLIN          |Particular       |null  |null |$200,000.00    |null     |null   |2|

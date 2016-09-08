@@ -111,6 +111,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
             campoTxtchasis.clear();
             campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
+
         MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
     }
 
