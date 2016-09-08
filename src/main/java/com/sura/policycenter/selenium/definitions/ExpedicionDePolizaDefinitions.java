@@ -56,7 +56,7 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.validar_mensaje(mensaje);
     }
 
-    @Then("debe volver a la pantalla de cotizacion")
+    @Then("debe clickVolver a la pantalla de cotizacion")
     public void validarCancelacionDeExpedicionDePoliza(){
         expedicionDePolizaSteps.validar_que_vuelve_a_la_ventana_de_cotizacion();
     }

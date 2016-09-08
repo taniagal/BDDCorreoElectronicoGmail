@@ -60,9 +60,7 @@ public class InspeccionVehiculoPage extends Commons {
         super(driver);
     }
 
-    public void crearVehiculo() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonCrearVehiculo).shouldBePresent();
-        botonCrearVehiculo.click();
+    public void chekear0km() {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(radioButtonCeroKmNo).click();
         waitUntil(1000);
     }
@@ -70,8 +68,7 @@ public class InspeccionVehiculoPage extends Commons {
     public void validarVigenciaPlaca(String placa) {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoPlaca).shouldBePresent();
         campoPlaca.typeAndTab(placa);
-        waitUntil(10000);
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(campoModelo).shouldBeVisible();
+        waitForTextToAppear(placa,28000);
         campoNumeroVehiculo.click();
     }
 

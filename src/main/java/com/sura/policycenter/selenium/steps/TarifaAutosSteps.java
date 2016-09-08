@@ -22,8 +22,9 @@ public class TarifaAutosSteps extends ScenarioSteps {
 
     @Step
     public void agregar_vehiculo(ExamplesTable datosPoliza) {
-        vehiculoPage.agregarVehiculo(datosPoliza);
+        vehiculoPage.crearVehiculo();
         tarifaAutosPage.relacionarAsegurado();
+        vehiculoPage.agregarVehiculo(datosPoliza);
         vehiculoPage.clickSiguiente();
     }
 
@@ -38,10 +39,10 @@ public class TarifaAutosSteps extends ScenarioSteps {
     public void seleciconar_coberturas(ExamplesTable coberturas) {
         tarifaAutosPage.setCoberturas(coberturas);
         tarifaAutosPage.selectCoberturas(coberturas);
-        vehiculoPage.volver();
+        vehiculoPage.clickVolver();
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.selectCoberturas2(coberturas);
-        vehiculoPage.volver();
+        vehiculoPage.clickVolver();
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.selectCoberturas3(coberturas);
         tarifaAutosPage.cotizar();
