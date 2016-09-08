@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages.menu;
 
 import com.sura.commons.selenium.Commons;
+import com.sura.policycenter.selenium.pages.ValidacionesInformacionDeVehiculoPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.administracion.*;
 import com.sura.policycenter.selenium.pages.menu.acciones.contacto.ContactoNuevaCuentaPage;
 import com.sura.policycenter.selenium.pages.menu.acciones.cuenta.*;
@@ -1175,8 +1176,10 @@ public class Navegacion extends Commons {
     }
 
     public OpcionesInformacionPolizaPage irAInformacionDePoliza() {
+        ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuInformacionDePoliza).shouldBePresent();
         mnuInformacionDePoliza.click();
+        vehiculoPage.botonVolver.waitUntilPresent();
         waitUntil(1000);
         return new OpcionesInformacionPolizaPage(getDriver());
     }

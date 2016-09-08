@@ -17,6 +17,7 @@ When estoy expidiendo una poliza de autos
 And seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
+When ingrese los datos del asegurado
 And el vehiculo tenga inspeccion no valida
 And la placa <placa> estuvo vigente en la compañia
 Then se debe recuperar los siguientes datos:
@@ -34,6 +35,7 @@ When estoy expidiendo una poliza de autos
 And seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
+When ingrese los datos del asegurado
 And el vehiculo tenga inspeccion
 And la placa <placa> estuvo vigente pero ahora esta cancelada
 Then se debe recuperar los siguientes datos:
