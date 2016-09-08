@@ -58,7 +58,7 @@ public class InformacionTitularCuentaPage extends Commons {
     WebElementFacade txtTotalSiniestrosAbiertos;
     @FindBy(xpath=".//*[@id='ContactFile_AccountHolder:AccountHolderScreen:CustomerValueMetricsDV:NetTotalIncurred-labelEl']")
     WebElementFacade lblTotalNetoIncurrido;
-    @FindBy(xpath="//DIV[2]/DIV/DIV/DIV/DIV/span")
+    @FindBy(xpath="//DIV[3]/DIV/DIV/DIV/DIV/span")
     WebElementFacade colCrearFecha;
     @FindBy(xpath="//DIV/DIV/DIV[2]/DIV/span")
     WebElementFacade colNroPoliza;
