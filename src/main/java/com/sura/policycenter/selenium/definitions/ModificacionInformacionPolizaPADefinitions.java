@@ -35,7 +35,7 @@ public class ModificacionInformacionPolizaPADefinitions {
         labelsInformacionPoliza.put("fechaInicioVigencia", "Fecha inicio de vigencia");
         labelsInformacionPoliza.put("fechaFinVigencia", "Fecha fin de vigencia");
         labelsInformacionPoliza.put("fechaExpedicion", "Fecha de expedición");
-        labelsInformacionPoliza.put("polizaFinanciada", "¿Póliza financiada?");
+        labelsInformacionPoliza.put("polizaFinanciada", "Póliza financiada");
         labelsInformacionPoliza.put("oficinaRadicacion", "Oficina de radicación");
         labelsInformacionPoliza.put("codigoAgente", "Código de agente");
         labelsInformacionPoliza.put("descuentoPoliza", "Descuento póliza");
