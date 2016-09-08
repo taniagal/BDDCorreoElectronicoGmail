@@ -9,7 +9,7 @@ Narrative:
 Como usuario de policy center
 Deseo poder obtener y/o agregar la bonificacion comercial y la tecnica a un vehiculo durante una cotizacion
 
-Scenario:  Agregar bonificacion a un vehiculo
+Scenario:  Obtener la bonificacion tecnica de un vehiculo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta      |organizacion|producto|canal            |
@@ -25,7 +25,7 @@ Examples:
 |CYU123|45|
 
 
-Scenario:  Agregar bonificacion a un vehiculo
+Scenario:  Obtener la bonificacion comercial de un vehiculo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta      |organizacion|producto|canal            |

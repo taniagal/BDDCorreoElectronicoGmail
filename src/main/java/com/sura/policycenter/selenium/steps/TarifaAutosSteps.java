@@ -39,20 +39,13 @@ public class TarifaAutosSteps extends ScenarioSteps {
     public void seleciconar_coberturas(ExamplesTable coberturas) {
         tarifaAutosPage.setCoberturas(coberturas);
         tarifaAutosPage.selectCoberturas(coberturas);
-        vehiculoPage.volver();
+        vehiculoPage.clickVolver();
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.selectCoberturas2(coberturas);
-        vehiculoPage.volver();
+        vehiculoPage.clickVolver();
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.selectCoberturas3(coberturas);
         tarifaAutosPage.cotizar();
-    }
-
-    @Step
-    public void agregar_placa_y_asegurado(String placa) {
-        vehiculoPage.crearVehiculo();
-        tarifaAutosPage.relacionarAsegurado();
-        vehiculoPage.agregarPlaca(placa);
     }
 
     @Step
@@ -63,10 +56,5 @@ public class TarifaAutosSteps extends ScenarioSteps {
     @Step
     public void verificar_tarifacion_por_coberturas(ExamplesTable valor) {
         tarifaAutosPage.verificarTarifacionPorCoberturas(valor);
-    }
-
-    @Step
-    public void verificar_bono(String bono) {
-        vehiculoPage.VerificarBono(bono);
     }
 }

@@ -53,10 +53,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade botonAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
     private WebElementFacade campoVehiculoCeroKm;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:4:RateModifier-inputEl']")
-    public WebElementFacade campoTxtBonificacionTecnica;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:5:RateModifier-inputEl']")
-    public WebElementFacade campoTxtBonificacionComercial;
+
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
@@ -72,11 +69,16 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         campoTxtPlaca.waitUntilPresent();
     }
 
+    public void agregarPlaca(String placa) {
+        campoTxtPlaca.sendKeys(placa);
+        campoTxtchasis.click();
+    }
+
     public void clickSiguiente() {
         withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
     }
 
-    public void volver(){
+    public void clickVolver(){
         botonVolver.click();
         waitFor(campoTxtchasis).shouldBePresent();
     }
@@ -113,16 +115,6 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         }
 
         MatcherAssert.assertThat("Error en el servicio de fasecolda", labelValorAsegurado.containsText(vehiculo.get("valor_asegurado")));
-    }
-
-    public void agregarPlaca(String placa) {
-        campoTxtPlaca.sendKeys(placa);
-        campoTxtchasis.click();
-    }
-
-    public void VerificarBono(String bono){
-        waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtBonificacionTecnica,bono));
-        MatcherAssert.assertThat("Error en el valor de la bonificación, was "+campoTxtBonificacionTecnica.getValue(), campoTxtBonificacionTecnica.getValue().contains(bono));
     }
 
     public void agregarCodigoFasecolda(String codigo) {
