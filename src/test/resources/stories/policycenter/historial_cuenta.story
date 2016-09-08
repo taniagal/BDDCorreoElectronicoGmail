@@ -41,14 +41,13 @@ Examples:
 |C000777777|
 
 Scenario: Busqueda de historial combinando multiples opciones: Usuario, Relacionado Con y Fechas
-Meta: @manual
 Given estoy en el historial de la cuenta <numCuenta>
 When indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> y <FechaHasta>
 Then debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda
 
 Examples:
-|numCuenta |Usuario   |FechaDesde|FechaHasta
-|C000777777|Super User|01/01/2016|12/30/2016
+|numCuenta |Usuario   |FechaDesde|FechaHasta |
+|C000777777|Super User|01/01/2016|12/30/2016 |
 
 Scenario: Busqueda de historial por usuario
 Meta:

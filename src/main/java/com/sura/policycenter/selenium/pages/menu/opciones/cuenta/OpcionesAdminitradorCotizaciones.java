@@ -69,7 +69,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     /*
     * WebElementFacade ingresados para story Nueva
     * */
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']")
+    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-itemEl']")
     private WebElementFacade itmNoTomarJ;
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuIcon']")
     private WebElementFacade btnAccionesJ;
@@ -117,14 +117,14 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             if (!("".equals(cells.get(2).getText()) || " ".equals(cells.get(2).getText()))) {
                 if ("Cotizado".equals(cells.get(7).getText()) || "Borrador".equals(cells.get(7).getText())) {
-                   try {
-                       WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon')]");
-                       botonAccciones.click();
-                       waitFor(2).seconds();
-                       band = i;
-                   } catch (Exception e){
-                       LOGGER.info("");
-                   }
+                    try {
+                        WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon')]");
+                        botonAccciones.click();
+                        waitFor(2).seconds();
+                        band = i;
+                    } catch (Exception e){
+                        LOGGER.info("");
+                    }
                     break;
                 }
                 i++;
@@ -258,7 +258,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
                 contador++;
             }
         }
-        MatcherAssert.assertThat(contador, Is.is(Matchers.equalTo(1)));
+        MatcherAssert.assertThat(contador, Is.is(Matchers.greaterThan(0)));
     }
 
     public void validarEstadoCotizacionDeclinado(String propiedadComercial, String declinado) {
