@@ -279,7 +279,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
     public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esUltimaFilaDeExampleTable) {
 
         String xLinkAgregarOtrosArticulos = "//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]";
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(7, TimeUnit.SECONDS);
         if (isElementVisible(By.xpath(xLinkAgregarOtrosArticulos))) {
             resetImplicitTimeout();
             cliclearBtnAgregarArticulo();
