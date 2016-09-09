@@ -57,6 +57,7 @@ When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
+And actualice la poliza colectiva
 And de clic en agregar riesgo para ir a la ventana de riesgos
 And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
 And ingrese los datos para realizar la busqueda de la cuenta persona natural <consultaNombre> <consultaApellido>

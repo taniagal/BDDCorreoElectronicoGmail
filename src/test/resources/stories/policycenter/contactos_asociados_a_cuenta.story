@@ -1,5 +1,14 @@
+
+
 Meta:
 Narrative: Modificación de la lista de los  filtros de búsqueda de los contactos de la cuenta (Rol y tipo de persona)
+
+Meta:
+@Story CDSEG-845
+@URL https://jira.suramericana.com.co/browse/CDSEG-845
+@Informador liliana restrepo muñeton
+@Automatizador andres alarcon guerrero
+@Sprint 1
 
 Scenario: Detalle de la consulta para contactos asociados a una cuenta
 GivenStories: stories/policycenter/login_policy.story
