@@ -120,7 +120,7 @@ public class InicioRenovacionPolizaPaPage extends Commons {
             MatcherAssert.assertThat("cedula del tomador no valida", datoCedeulaTomador.getText().equals(datos.get("cedulaTomador")));
             MatcherAssert.assertThat("el nombre del tomador no es valido", datoNombre.getText().equals(datos.get("nombre")));
             MatcherAssert.assertThat("el nombre de oficina de radicacion", datoOficinaDeRadicacion.getText().equals(datos.get("oficinaRadicacion")));
-            MatcherAssert.assertThat("el nombre de agente", datoAgente.getText().equals(datos.get("codAgente")));
+            MatcherAssert.assertThat("el nombre de agente", datoAgente.getText().contains(datos.get("codAgente")));
             clickBotonSiguinete();
         }else
         if (datos.get("rol").equals("asegurado")) {
