@@ -18,7 +18,7 @@ Given ya se tiene una poliza expedida <numeroPoliza>
 When ingrese a modificar dicha cotizacion
 Then se debe visualizar los datos de la informacion de la poliza
 |tipoDocumento       |numeroDocumento|nombre            |telefono |direccion                                   |tipoDireccion|descripcionDireccion                      |tipoPlazo|
-|CEDULA DE CIUDADANIA|1356448711     |ALFREDO ANTIOQUIA |408-2211 |CRA 65 # 48-162, LOS ANGELES, Estados Unidos|Vivienda     |Created by the Address Builder with code 0|6 meses  |
+|CEDULA DE CIUDADANIA|1356448711     |ALFREDO ANTIOQUIA |408-2211 |CRA 65 # 48-162, LOS ANGELES, Estados Unidos|Vivienda     |Created by the Address Builder with code 0|Anual    |
 
 Examples:
 |numeroPoliza  |
