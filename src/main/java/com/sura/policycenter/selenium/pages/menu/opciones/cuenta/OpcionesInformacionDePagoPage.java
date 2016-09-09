@@ -7,12 +7,11 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 public class OpcionesInformacionDePagoPage extends Commons{
 
-    @FindBy (xpath = ".//div[contains(.,'Pago')]")
+    @FindBy (xpath = "//td[@id='SubmissionWizard:BillingInfo']/div")
     WebElementFacade btnPago;
     @FindBy (xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PaymentScreen:ttlBar']")
     WebElementFacade lblPago;
@@ -34,14 +33,9 @@ public class OpcionesInformacionDePagoPage extends Commons{
         MatcherAssert.assertThat("No ingreso a pantalla pago", lblPago.isVisible());
     }
 
-    public void validaMetodoPago(String nombreMetodoPago) {
-        JOptionPane.showMessageDialog(null, lblMetodoFacturacionMrc.getText());
-        //MatcherAssert.assertThat("Metodo de pago no corresponde a Factura Directa", nombreMetodoPago.equals(lblMetodoFacturacionMrc.getText()));
-    }
-
-    public void validaPlanDePago(String programa) {
-        JOptionPane.showMessageDialog(null, lblPrograma.getText());
-        //MatcherAssert.assertThat("El Programa de pagos cambio o no corresponde al enviado por Billing", programa.equals(lblPrograma.getText()));
+    public void validaPago(String nombreMetodoPago , String programa) {
+        MatcherAssert.assertThat("Metodo de pago no corresponde a Factura Directa", nombreMetodoPago.equals(lblMetodoFacturacionMrc.getText()));
+        MatcherAssert.assertThat("El Programa de pagos cambio o no corresponde al enviado por Billing", programa.equals(lblPrograma.getText()));
     }
 
     // TODO: 07/09/2016 Metodo wait para implementar generico
