@@ -199,7 +199,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
 
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
         waitForCondition()
-                .withTimeout(5, TimeUnit.SECONDS)
+                .withTimeout(16, TimeUnit.SECONDS)
                 .pollingEvery(250, TimeUnit.MILLISECONDS)
                 .until(inputEsActualizadoA(elemento, valorEntrada));
     }
