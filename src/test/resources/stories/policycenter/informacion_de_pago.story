@@ -25,11 +25,16 @@ Given que estoy en la pantalla de pago con la <cotizacion>
 When visualice la pantalla de pagos
 Then se debe mostrar el <nombreMetodoPago>
 And se debe mostrar el plan de pago que retorna billing <programa>
-And no debe permitir mas de una opcion para ser aplicada a la poliza
 
 Examples:
 |cotizacion|nombreMetodoPago|programa     |
 |22221238  |Factura directa |Plan de pagos|
 |22221239  |Factura directa |Plan de pagos|
+
+Scenario: Visualizar seleccion en programa de pagos retorno billing
+Meta: @manual
+Given que estoy en la pantalla de pago
+Then ingrese a la pantalla de pago
+Then debe dejarme seleccionar un SOLO plan de pagos en la tabla mostrada
 
 

@@ -39,13 +39,7 @@ public class InformacionDePagoDefinitions {
 
     @Then("se debe mostrar el plan de pago que retorna billing <programa>")
     public void thenSeDebeMostrarElPlanDePagoQueRetornaBilling(@Named("programa") String programa) {
-        informacionDePagoSteps.valida_plan_de_pago(programa);
+        informacionDePagoSteps.valida_programa(programa);
     }
-
-    @Then("no debe permitir mas de una opcion para ser aplicada a la poliza")
-    public void thenNoDebePermitirMasDeUnaOpcionParaSerAplicadaALaPoliza() {
-
-    }
-
 
 }

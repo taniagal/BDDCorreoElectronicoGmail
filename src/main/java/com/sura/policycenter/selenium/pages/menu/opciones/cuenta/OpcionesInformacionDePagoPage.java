@@ -19,6 +19,9 @@ public class OpcionesInformacionDePagoPage extends Commons{
     WebElementFacade lblMetodoFacturacionMrc;
     @FindBy (xpath = ".//label[contains(.,'Plan de pagos')]")
     WebElementFacade lblPrograma;
+    @FindBy (xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    WebElementFacade btnInicio;
+
 
     public OpcionesInformacionDePagoPage(WebDriver driver) {
         super(driver);
@@ -33,14 +36,19 @@ public class OpcionesInformacionDePagoPage extends Commons{
         MatcherAssert.assertThat("No ingreso a pantalla pago", lblPago.isVisible());
     }
 
-    public void validaPago(String nombreMetodoPago , String programa) {
+    public void validaPago(String nombreMetodoPago) {
         MatcherAssert.assertThat("Metodo de pago no corresponde a Factura Directa", nombreMetodoPago.equals(lblMetodoFacturacionMrc.getText()));
+    }
+
+    public void validaPrograma(String programa){
         MatcherAssert.assertThat("El Programa de pagos cambio o no corresponde al enviado por Billing", programa.equals(lblPrograma.getText()));
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilClickable();
     }
 
     // TODO: 07/09/2016 Metodo wait para implementar generico
     public void waitPayment(WebElementFacade webElementFacade) {
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
+
 
 }

@@ -8,13 +8,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class InformacionDePagoSteps extends ScenarioSteps{
 
-    nomclase.optenerinstancia.metodoallamar()
 
-    opcionesInformacionDePagoPage;
-
-    //OpcionesInformacionDePagoPage h = new OpcionesInformacionDePagoPage();
-
-
+    OpcionesInformacionDePagoPage opcionesInformacionDePagoPage;
 
     public InformacionDePagoSteps(Pages pages) {
         super(pages);
@@ -29,10 +24,13 @@ public class InformacionDePagoSteps extends ScenarioSteps{
     }
 
     @Step
-    public void valida_metodo_de_pago(String nombreMetodoPago) {opcionesInformacionDePagoPage.validaPago(nombreMetodoPago, null);
+    public void valida_metodo_de_pago(String nombreMetodoPago) {
+        opcionesInformacionDePagoPage.validaPago(nombreMetodoPago);
     }
 
-    public void valida_plan_de_pago(String programa) {
-        opcionesInformacionDePagoPage.validaPago(null, programa);
+    @Step
+    public void valida_programa(String programa) {
+        opcionesInformacionDePagoPage.validaPrograma(programa);
     }
+
 }
