@@ -65,7 +65,7 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                             |
-| El valor de "Terremoto - Artículo: Suelos y Terrenos:" deber ser menor o igual al "20.0%" de la sumatoria de los valores asegurables de "todos los articulos". |
+| El valor de "Terremoto - Artículo: Suelos y Terrenos" deber ser menor o igual al "20.0%" de la sumatoria de los valores asegurables de "todos los articulos". |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |
@@ -90,7 +90,7 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                              |
-| El valor asegurado de la cobertura "Terremoto - Artículo: Suelos y Terrenos:" debe ser menor o igual a "1000000000.00" de pesos |
+| El valor asegurado de la cobertura "Terremoto - Artículo: Suelos y Terrenos" debe ser menor o igual a "1000000000.00" de pesos |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |
