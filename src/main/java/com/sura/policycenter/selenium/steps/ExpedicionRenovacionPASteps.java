@@ -10,7 +10,9 @@ public class ExpedicionRenovacionPASteps extends ScenarioSteps{
 
     private final ExpedicionRenovacionPAPage expedicionRenovacionPAPage = new ExpedicionRenovacionPAPage(getDriver());
 
-    public ExpedicionRenovacionPASteps(Pages pages){super(pages);}
+    public ExpedicionRenovacionPASteps(Pages pages){
+        super(pages);
+    }
 
     @Step
     public void emitir_Renovacion() {

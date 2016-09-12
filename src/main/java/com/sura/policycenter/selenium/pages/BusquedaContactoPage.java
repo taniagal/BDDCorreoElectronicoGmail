@@ -19,10 +19,6 @@ import org.slf4j.LoggerFactory;
 public class BusquedaContactoPage extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaContactoPage.class);
-    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")
-    private WebElementFacade tipoContact;
-    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
-    private WebElementFacade txtNombreEmpresa;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade txtNombre;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
@@ -39,18 +35,12 @@ public class BusquedaContactoPage extends Commons {
     private WebElementFacade msjSinRegistros;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:SearchWarningMessagePanelSet:SearchWarningMessage']")
     private WebElementFacade msjSinCriterios;
-    @FindBy(xpath = "//li[2]")
-    private WebElementFacade itmNIT;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:DocumentType-inputEl']")
     private WebElementFacade txtTipoDoc;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:identificationNumber-inputEl']")
     private WebElementFacade txtNumDoc;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
     private WebElementFacade txtNombreComercial;
-    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    private WebElementFacade nombreContact;
-    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    private WebElementFacade apellidoContact;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:DocumentType']")
     private WebElementFacade selectContact;
     @FindBy(xpath = "//div[3]/div/table")
