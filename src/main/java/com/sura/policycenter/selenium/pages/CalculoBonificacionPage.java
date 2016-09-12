@@ -1,11 +1,13 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 
 public class CalculoBonificacionPage extends Commons{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:4:RateModifier-inputEl']")
@@ -19,7 +21,7 @@ public class CalculoBonificacionPage extends Commons{
     }
 
     public void verificarBonoTecnico(String bono){
-        waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtBonificacionTecnica,bono));
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtBonificacionTecnica,bono));
         MatcherAssert.assertThat("Error en el valor de la bonificación, was "+campoTxtBonificacionTecnica.getValue(), campoTxtBonificacionTecnica.getValue().contains(bono));
     }
 
