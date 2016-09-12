@@ -2,7 +2,7 @@ Calculo Bonificacion
 
 Meta:
 @issue #CDSEG-1938
-@Automatizador Nelson Mosquera
+@automatizador Nelson Mosquera
 @Sprint 6
 
 Narrative:
@@ -22,4 +22,4 @@ Then se debe ver reflejada la bonificacion tecnica <bono> de esta placa
 
 Examples:
 |placa |bono|
-|CYU123|45|
+|CYU123|35|
