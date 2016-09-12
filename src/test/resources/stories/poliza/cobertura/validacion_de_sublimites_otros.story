@@ -340,3 +340,5 @@ Then _se espera que el siguiente mensaje se muestre una sola vez: Para seleccion
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |
+
+
