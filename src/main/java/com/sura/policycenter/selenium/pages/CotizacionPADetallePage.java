@@ -23,49 +23,34 @@ public class CotizacionPADetallePage extends Commons {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     private WebElementFacade tituloDePagina;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:1']")
     private WebElementFacade labelVehiculo;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:LicensePlate-labelEl']")
     private WebElementFacade labelPlaca;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:FasecoldaCode-labelEl']")
     private WebElementFacade labelCodigoFasecolda;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Make-labelEl']")
     private WebElementFacade labelMarca;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Year-labelEl']")
     private WebElementFacade labelModelo;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:Line-labelEl']")
     private WebElementFacade labelLinea;
-
     @FindBy(xpath = ".//td[2]/div/div/div/div/div/div/span")
     private WebElementFacade labelDescripcionCobertura;
-
     @FindBy(xpath = ".//div/div/div[2]/div/span")
     private WebElementFacade labelValorTerminoCobertura;
-
     @FindBy(xpath = ".//div[7]/div/span")
     private WebElementFacade labelPrima;
-
     @FindBy(xpath = ".//tfoot/tr/td/div")
     private WebElementFacade labelSubtotal;
-
-    @FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
+    @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
     private WebElementFacade labelSubtotalPrimas;
-
     @FindBy(id = "SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:Taxes-labelEl")
     private WebElementFacade labelImpuesto;
-
     @FindBy(xpath = "//td[@id='SubmissionWizard:LOBWizardStepGroup:PALine']/div")
     private WebElementFacade botonCoberturasPA;
-
     @FindBy(xpath = "//td[2]/div/div[2]/div/table")
     private WebElementFacade tablaCoberturas;
-
     @FindBy(xpath = ".//*[@id='SubmissionWizard:ViewQuote']/div")
     private WebElementFacade botonCotizacion;
 

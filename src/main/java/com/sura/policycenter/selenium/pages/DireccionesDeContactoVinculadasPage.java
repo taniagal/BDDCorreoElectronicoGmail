@@ -63,8 +63,6 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade txtDescripcionContacto;
     @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:LinkedAddressContactsLV-body']")
     private WebElementFacade tabla;
-    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV-body']")
-    private WebElementFacade tablaContactos;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade campoDireccionDetalleDirecciones;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
@@ -148,7 +146,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion) {
-        txtPaisContacto = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']");
+        WebElementFacade txtPaisContacto = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']");
         this.txtDireccionContacto.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
         Map<String, String> exampleTable = resultadoModificacionDireccion.getRows().get(0);
         String paisContacto = this.txtPaisContacto.getText();
@@ -319,7 +317,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public Integer encontrarContacto(String nombreContacto) {
-        tablaContactos = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV-body']");
+        WebElementFacade tablaContactos = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV-body']");
         Integer filaBoton = 0;
         List<WebElement> filas = tablaContactos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {

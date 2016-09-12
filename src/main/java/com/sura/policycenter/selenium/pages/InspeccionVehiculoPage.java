@@ -37,8 +37,6 @@ public class InspeccionVehiculoPage extends Commons {
     private WebElementFacade campoValorAccesorios;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosEspValue_DV-inputEl']")
     private WebElementFacade campoValorAccesoriosEspeciales;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
-    private WebElementFacade botonCrearVehiculo;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
     private WebElementFacade campoValorAsegurado;
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
@@ -60,9 +58,7 @@ public class InspeccionVehiculoPage extends Commons {
         super(driver);
     }
 
-    public void crearVehiculo() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonCrearVehiculo).shouldBePresent();
-        botonCrearVehiculo.click();
+    public void chekear0km() {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(radioButtonCeroKmNo).click();
         waitUntil(1000);
     }
@@ -70,8 +66,7 @@ public class InspeccionVehiculoPage extends Commons {
     public void validarVigenciaPlaca(String placa) {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoPlaca).shouldBePresent();
         campoPlaca.typeAndTab(placa);
-        waitUntil(10000);
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(campoModelo).shouldBeVisible();
+        waitForTextToAppear(placa,28000);
         campoNumeroVehiculo.click();
     }
 

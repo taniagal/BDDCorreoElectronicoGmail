@@ -81,10 +81,11 @@ public class ExpedicionDePolizaPage extends PageObject{
     }
 
     public void irABuscarCotizacion(String cotizacion){
-        waitFor(menuPoliza).waitUntilPresent();
+        waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
         menuPoliza.click();
         waitForAnyTextToAppear("Cotización", "Buscar pólizas");
-        waitFor(menuPoliza).waitUntilPresent();
+        waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
+        commons.waitUntil(1500);
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
         menuNumeroCotizacion.waitUntilPresent();
@@ -167,10 +168,5 @@ public class ExpedicionDePolizaPage extends PageObject{
         waitFor(linkIrAPolizaColectiva);
         linkIrAPolizaColectiva.click();
         waitForTextToAppear("Información de la póliza colectiva");
-    }
-
-    public void vuelveInicio() {
-        waitFor(botonInicio);
-        botonInicio.click();
     }
 }

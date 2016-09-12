@@ -3,6 +3,8 @@ package com.sura.gw.policy.poliza.pages;
 import com.google.common.base.Function;
 import com.sura.commons.selenium.Commons;
 import com.sura.gw.navegacion.util.widget.TableWidgetPage;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,8 +14,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class EdificiosyUbicacionesWidget extends Commons {
@@ -199,7 +199,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
 
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
         waitForCondition()
-                .withTimeout(waitForTimeoutInMilliseconds(), TimeUnit.SECONDS)
+                .withTimeout(16, TimeUnit.SECONDS)
                 .pollingEvery(250, TimeUnit.MILLISECONDS)
                 .until(inputEsActualizadoA(elemento, valorEntrada));
     }
@@ -279,8 +279,9 @@ public class EdificiosyUbicacionesWidget extends Commons {
     public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esUltimaFilaDeExampleTable) {
 
         String xLinkAgregarOtrosArticulos = "//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]";
-        setImplicitTimeout(4, TimeUnit.SECONDS);
+        setImplicitTimeout(7, TimeUnit.SECONDS);
         if (isElementVisible(By.xpath(xLinkAgregarOtrosArticulos))) {
+            resetImplicitTimeout();
             cliclearBtnAgregarArticulo();
             ingresarInputTiposDeArticulos(tipoArticulo);
             ingresarTextAreaDescripcion(tipoArticulo);
@@ -296,7 +297,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
 
         if (esUltimaFilaDeExampleTable) {
             String xBtnAceptarAgregarOtroArticulo = ".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
-            findBy(xBtnAceptarAgregarOtroArticulo).click();
+            findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().waitUntilClickable().click();
         }
 
 
@@ -349,7 +350,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
     public void ingresarInputTiposDeArticulos(String tipoArticulo){
         String xInputTiposDeArticulos = ".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']";
         enter(tipoArticulo).into($(xInputTiposDeArticulos));
-        waitFor(1).second();
+        waitFor(4).second();
         $(xInputTiposDeArticulos).sendKeys(Keys.ENTER);
         esperarAQueElementoTengaValor(findBy(xInputTiposDeArticulos), tipoArticulo);
     }
@@ -358,8 +359,8 @@ public class EdificiosyUbicacionesWidget extends Commons {
         String xTextAreaDescripcion = ".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']";
 
         enter(tipoArticulo).into($(xTextAreaDescripcion));
-        waitFor(1).second();
-        $(xTextAreaDescripcion).click();
+        waitFor(4).second();
+        $(xTextAreaDescripcion).waitUntilClickable().click();
         esperarAQueElementoTengaValor(findBy(xTextAreaDescripcion), tipoArticulo);
     }
 }

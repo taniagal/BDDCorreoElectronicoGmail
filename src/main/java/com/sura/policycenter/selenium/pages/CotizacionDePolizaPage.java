@@ -104,7 +104,6 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void ingresarACotizacion() {
-        //WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']");
         if(titulo.isCurrentlyVisible()){
             waitForTextToAppear("Calificación",1000);
         }else if(tituloCotizacion.isCurrentlyVisible()){

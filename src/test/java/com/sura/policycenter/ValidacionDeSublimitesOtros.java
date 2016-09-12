@@ -5,9 +5,9 @@ import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.junit.Test;
 
 
-public class ValidacionDeSublimites extends SerenityStory {
+public class ValidacionDeSublimitesOtros extends SerenityStory {
 
-    public ValidacionDeSublimites(){
+    public ValidacionDeSublimitesOtros(){
         runSerenity().inASingleSession();
     }
 

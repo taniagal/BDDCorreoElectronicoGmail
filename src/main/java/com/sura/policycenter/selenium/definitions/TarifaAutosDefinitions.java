@@ -45,5 +45,4 @@ public class TarifaAutosDefinitions {
     public void verificarResultado(ExamplesTable valor){
         tarifaAutosSteps.verificar_tarifacion_por_coberturas(valor);
     }
-
 }

@@ -42,8 +42,8 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade checkBoxAsistencia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
-    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:0']")
-    private WebElementFacade labelDetalles;
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:DetailsButton-btnInnerEl']")
+    private WebElementFacade botonDetalles;
     @FindBy(id = "SubmissionWizard:ViewQuote")
     private WebElementFacade menuItemCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
@@ -90,8 +90,6 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade comboBoxPerdidaTotal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxTallerMovil;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:3:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
-    private WebElementFacade comboBoxTallerMovil;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:4:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxConductorElegido;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:4:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
@@ -104,6 +102,7 @@ public class TarifaAutosPage extends Commons {
         super(driver);
     }
 
+
     public void setAsegurados() {
         withTimeoutOf(28, TimeUnit.SECONDS).waitFor(meniItemAsegurados).waitUntilPresent().click();
         Actions actions = new Actions(getDriver());
@@ -114,11 +113,13 @@ public class TarifaAutosPage extends Commons {
         campoTxtNombre.waitUntilPresent();
     }
 
+
     public void relacionarAsegurado() {
         botonRelacionarAsegurado.click();
         navItemAseguradoR.click();
         itemdocNum.waitUntilPresent();
     }
+
 
     public void setCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
@@ -135,16 +136,19 @@ public class TarifaAutosPage extends Commons {
         selectItem(comboBoxAbogado, dato.get("abogado"));
     }
 
+
     public void cotizar() {
         botonCotizar.click();
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(labelDetalles).shouldBePresent();
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonDetalles).shouldBePresent();
         waitUntil(500);
         menuItemCotizacion.click();
     }
 
+
     public void desMarcarCoberturas() {
         checkBoxHurto.click();
     }
+
 
     public void selectCoberturas(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
@@ -163,6 +167,7 @@ public class TarifaAutosPage extends Commons {
         selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
     }
 
+
     public void selectCoberturas2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         checkBoxTaller.click();
@@ -176,13 +181,14 @@ public class TarifaAutosPage extends Commons {
         selectItem(comboBoxPerdidaTotal, dato.get("PT"));
     }
 
+
     public void selectCoberturas3(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         checkBoxTallerMovil.click();
-        selectItem(comboBoxTallerMovil, dato.get("TM"));
         checkBoxConductorElegido.click();
         selectItem(comboBoxConductorElegido, dato.get("CE"));
     }
+
 
     public void verificarTarifacion(String valor) {
         WebElementFacade tablaDescripcion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[1]/td[3]");

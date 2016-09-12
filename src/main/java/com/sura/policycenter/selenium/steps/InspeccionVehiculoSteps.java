@@ -1,6 +1,8 @@
 package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.InspeccionVehiculoPage;
+import com.sura.policycenter.selenium.pages.TarifaAutosPage;
+import com.sura.policycenter.selenium.pages.ValidacionesInformacionDeVehiculoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -8,7 +10,9 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class InspeccionVehiculoSteps extends ScenarioSteps {
 
+    ValidacionesInformacionDeVehiculoPage vehiculoPage =  new ValidacionesInformacionDeVehiculoPage(getDriver());
     InspeccionVehiculoPage inspeccionVehiculoPage = new InspeccionVehiculoPage(getDriver());
+    TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
 
     public InspeccionVehiculoSteps(Pages pages) {
         super(pages);
@@ -31,7 +35,9 @@ public class InspeccionVehiculoSteps extends ScenarioSteps {
 
     @Step
     public void crear_vehiculo() {
-        inspeccionVehiculoPage.crearVehiculo();
+        vehiculoPage.crearVehiculo();
+        tarifaAutosPage.relacionarAsegurado();
+        inspeccionVehiculoPage.chekear0km();
     }
 
     @Step

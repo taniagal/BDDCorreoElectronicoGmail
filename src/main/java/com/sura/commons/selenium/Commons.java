@@ -2,11 +2,13 @@ package com.sura.commons.selenium;
 
 import com.google.common.base.Function;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -82,6 +84,14 @@ public class Commons extends PageObject {
     public  void verificarMensaje(WebElementFacade divMensaje, String mensaje){
         withTimeoutOf(28, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
+    }
+
+
+    public void verificarMensajes(WebElementFacade divMensaje,ExamplesTable mensajes) {
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
+        for (Map<String, String> mensaje : mensajes.getRows()) {
+            MatcherAssert.assertThat("Error: en la validacion del mensaje " + mensaje.get("mensaje"), divMensaje.containsText(mensaje.get("mensaje")));
+        }
     }
 
 
