@@ -2,8 +2,6 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -12,6 +10,12 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+
+
 
 
 public class ValidacionesInformacionDeVehiculoPage extends Commons {
@@ -55,6 +59,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade campoVehiculoCeroKm;
 
 
+
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
     }
@@ -93,9 +98,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
         waitForTextToAppear(vehiculo.get("modelo"),28000);
         ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
-        waitUntil(1000);
         campoTxtPlaca.click();
-        waitForTextToAppear(vehiculo.get("valor_asegurado"),28000);
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(labelValorAsegurado, vehiculo.get("valor_asegurado")));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitForComboValue(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
         waitUntil(1000);
