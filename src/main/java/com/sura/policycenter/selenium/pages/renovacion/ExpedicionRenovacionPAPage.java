@@ -1,6 +1,8 @@
 package com.sura.policycenter.selenium.pages.renovacion;
 
 import com.sura.commons.selenium.Commons;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -11,8 +13,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class ExpedicionRenovacionPAPage extends Commons{
 
@@ -31,7 +31,9 @@ public class ExpedicionRenovacionPAPage extends Commons{
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:Message']")
     private WebElementFacade mensajeRenovacionRealizada;
 
-    public ExpedicionRenovacionPAPage(WebDriver driver){ super(driver);}
+    public ExpedicionRenovacionPAPage(
+            WebDriver driver){ super(driver);
+    }
 
     public void emitirRenovacion() {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();

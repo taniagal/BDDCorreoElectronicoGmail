@@ -2,6 +2,8 @@ package com.sura.policycenter.selenium.pages.menu.opciones.poliza;
 
 
 import com.sura.commons.selenium.Commons;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -9,8 +11,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class InicioRenovacionPolizaPaPage extends Commons {
 
@@ -116,20 +116,20 @@ public class InicioRenovacionPolizaPaPage extends Commons {
 
     public void validacionesPantallaFormularios(ExamplesTable datosTomador) {
         Map<String, String> datos = datosTomador.getRow(0);
-        if (datos.get("rol").equals("tomador")) {
+        if ("tomador".equals(datos.get("rol"))) {
             MatcherAssert.assertThat("cedula del tomador no valida", datoCedeulaTomador.getText().equals(datos.get("cedulaTomador")));
             MatcherAssert.assertThat("el nombre del tomador no es valido", datoNombre.getText().equals(datos.get("nombre")));
             MatcherAssert.assertThat("el nombre de oficina de radicacion", datoOficinaDeRadicacion.getText().equals(datos.get("oficinaRadicacion")));
             MatcherAssert.assertThat("el nombre de agente", datoAgente.getText().contains(datos.get("codAgente")));
             clickBotonSiguinete();
         }else
-        if (datos.get("rol").equals("asegurado")) {
+        if ("asegurado".equals(datos.get("rol"))) {
             MatcherAssert.assertThat("cedula del Asegurado no valida", datoCedulaAsegurado.getText().equals(datos.get("cedulaAsegurado")));
             MatcherAssert.assertThat("primer nombre no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
             MatcherAssert.assertThat("primer apellido no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
             clickBotonSiguinete();
         }else
-        if (datos.get("rol").equals("vehiculo")) {
+        if ("vehiculo".equals(datos.get("rol"))) {
             MatcherAssert.assertThat("placa no valida", datoPlaca.getText().equals(datos.get("placa")));
             MatcherAssert.assertThat("modelo no valido", datoModelo.getText().equals(datos.get("modelo")));
             MatcherAssert.assertThat("codFasecolda no valido", datoCodFasecolda.getText().equals(datos.get("codFasecolda")));

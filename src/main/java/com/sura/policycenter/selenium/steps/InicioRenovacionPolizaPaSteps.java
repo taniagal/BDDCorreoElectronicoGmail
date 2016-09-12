@@ -8,12 +8,12 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 public class InicioRenovacionPolizaPaSteps extends ScenarioSteps {
+    InicioRenovacionPolizaPaPage inicioRenovacionPolizaPaPage;
 
     public InicioRenovacionPolizaPaSteps(Pages pages) {
         super(pages);
     }
 
-    InicioRenovacionPolizaPaPage inicioRenovacionPolizaPaPage;
 
     @Step
     public void navegar_barra_superior(String cotizacion) {

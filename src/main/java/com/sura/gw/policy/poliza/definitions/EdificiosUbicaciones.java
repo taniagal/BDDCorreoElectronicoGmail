@@ -5,11 +5,13 @@ import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.*;
+import org.hamcrest.core.Is;
 import org.hamcrest.core.StringContains;
 import org.jbehave.core.annotations.Aliases;
 import org.jbehave.core.annotations.Given;
@@ -17,15 +19,6 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-
 
 public class EdificiosUbicaciones {
 
@@ -129,7 +122,7 @@ public class EdificiosUbicaciones {
 
         for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            assertThat(mensajesWSList, hasItemContainsString(mensaje));
+            MatcherAssert.assertThat(mensajesWSList, hasItemContainsString(mensaje));
         }
 
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
@@ -143,7 +136,7 @@ public class EdificiosUbicaciones {
         if (mensajesWSList.contains(mensajesEsperado)) {
             contadorDeOcurrencias++;
         }
-        assertThat("Ocurrencia de mensaje: " + mensajesEsperado + " es de " + contadorDeOcurrencias + "veces", contadorDeOcurrencias, is(equalTo(1)));
+        MatcherAssert.assertThat("Ocurrencia de mensaje: " + mensajesEsperado + " es de " + contadorDeOcurrencias + "veces", contadorDeOcurrencias, Is.is(CoreMatchers.equalTo(1)));
 
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }

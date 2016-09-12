@@ -1,9 +1,11 @@
 Meta:
+@issue #CDSEG-2415
+@automatizador Nelson Mosquera
+@sprint 6
 
 Narrative:
-As a user
-I want to perform an action
-So that I can achieve a business goal
+Como usuario de policy center
+Deseo poder realizar la carga del archivo de tasa unica para la cotizacion de un vehiculo
 
 Scenario: Validacion de los elementos de exportacion e importacion del archivo de tasa unica
 GivenStories: stories/policycenter/login_policy.story

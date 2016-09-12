@@ -33,14 +33,6 @@ public class NuevaPolizaPage extends PageObject {
     private WebElementFacade radioBotonColectiva;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnInnerEl']")
     private WebElementFacade btnBuscar;
-    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']")
-    private WebElementFacade btnCuentas;
-    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
-    private WebElementFacade txtNumeroCuenta;
-    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    private WebElementFacade btnBuscarCuenta;
-    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
-    private WebElementFacade grdNumeroCuenta;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade tablaProductosIndividual;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV-body']")
@@ -201,13 +193,13 @@ public class NuevaPolizaPage extends PageObject {
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         commons.waitUntil(2000);
         btnBuscar.click();
-        btnCuentas = commons.esperarElemento(".//*[@id='Search:MenuLinks:Search_AccountSearch']");
+        WebElementFacade btnCuentas = commons.esperarElemento(".//*[@id='Search:MenuLinks:Search_AccountSearch']");
         btnCuentas.click();
-        txtNumeroCuenta = commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");
+        WebElementFacade txtNumeroCuenta = commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");
         txtNumeroCuenta.sendKeys(numeroCuenta);
-        btnBuscarCuenta = commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
+        WebElementFacade btnBuscarCuenta = commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
         btnBuscarCuenta.click();
-        grdNumeroCuenta = commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']");
+        WebElementFacade grdNumeroCuenta = commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']");
         grdNumeroCuenta.click();
     }
 }

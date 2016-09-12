@@ -18,8 +18,6 @@ public class CrearNuevoContactoDefinitions {
 
     @Steps
     private CrearNuevoContactoSteps crearNuevoContactoSteps ;
-    @Steps
-    private SeusLoginSteps seusLoginSteps;
 
     @Given("estoy en la pantalla de crear contacto persona natural")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaNatural() {
