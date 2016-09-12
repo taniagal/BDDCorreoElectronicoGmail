@@ -68,7 +68,7 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void irABuscarActividades() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuBuscar).shouldBePresent();
+        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent();
         commons.waitUntil(2000);
         menuBuscar.click();
         waitFor(menuBuscarActividades);
@@ -86,7 +86,7 @@ public class BusquedaActividadesPage extends PageObject {
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         btnBuscar.waitUntilVisible().waitUntilClickable().click();
-        grdFechaVencimiento.waitUntilVisible().waitUntilVisible();
+        grdFechaVencimiento.waitUntilVisible();
         MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
         MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
@@ -96,8 +96,6 @@ public class BusquedaActividadesPage extends PageObject {
         MatcherAssert.assertThat(this.grdProducto.getText(), Matchers.containsString(exampleTable.get("producto")));
         MatcherAssert.assertThat(this.grdAsignadoPor.getText(), Matchers.containsString(exampleTable.get("asignadoPor")));
         MatcherAssert.assertThat(this.grdEstado.getText(), Is.is(Matchers.equalTo(exampleTable.get("estado"))));
-        menuEscritorio.click();
-        waitForTextToAppear("Mis actividades");
     }
 
     public void limpiarFiltros() {
@@ -130,32 +128,30 @@ public class BusquedaActividadesPage extends PageObject {
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
         txtAsignadoA.sendKeys(usuario);
-        txtPrioridad.clear();
-        txtPrioridad.sendKeys(prioridad);
-        txtPrioridad.sendKeys(Keys.ENTER);
+        this.ingresarDatoEnCombo(txtPrioridad, prioridad);
     }
 
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(String usuario, String estadoActividad) {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
         txtAsignadoA.sendKeys(usuario);
-        txtEstadoActividad.clear();
-        txtEstadoActividad.sendKeys(estadoActividad);
-        txtEstadoActividad.sendKeys(Keys.ENTER);
+        this.ingresarDatoEnCombo(txtEstadoActividad, estadoActividad);
     }
 
     public void buscarPorFiltrosUsuarioYVencida(String usuario, String vencida) {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
         txtAsignadoA.sendKeys(usuario);
-        txtVencida.clear();
-        txtVencida.sendKeys(vencida);
-        txtVencida.sendKeys(Keys.ENTER);
+        this.ingresarDatoEnCombo(txtVencida, vencida);
     }
 
     public void buscarPorFiltroOpcional(String estadoActividad) {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
-        txtEstadoActividad.clear();
-        txtEstadoActividad.sendKeys(estadoActividad);
-        txtEstadoActividad.sendKeys(Keys.ENTER);
+        this.ingresarDatoEnCombo(txtEstadoActividad, estadoActividad);
     }
 
+    public void ingresarDatoEnCombo(WebElementFacade elemento, String dato){
+        waitFor(elemento);
+        elemento.clear();
+        elemento.sendKeys(dato);
+        elemento.sendKeys(Keys.ENTER);
+    }
 }
