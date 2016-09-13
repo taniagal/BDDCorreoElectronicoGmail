@@ -4,7 +4,6 @@ package com.sura.policycenter.selenium.pages;
 import com.sura.commons.selenium.Commons;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -52,7 +51,7 @@ public class BusquedaDePolizaPage extends PageObject {
     }
 
     public void irABuscarPoliza() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent();
+        waitFor(menuBuscar).waitUntilPresent();
         menuBuscar.click();
         waitForAnyTextToAppear("Buscar", "Búsqueda");
         if (!tituloBuscarPoliza.isVisible()) {
@@ -63,13 +62,13 @@ public class BusquedaDePolizaPage extends PageObject {
 
     public void buscarPolizaPorNumeroDePoliza(String buscarNumeroPoliza) {
         this.limpiarCampos();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtNumeroPoliza).waitUntilPresent();
+        waitFor(txtNumeroPoliza).waitUntilPresent();
         txtNumeroPoliza.sendKeys(buscarNumeroPoliza);
         this.clicEnBotonBuscar();
     }
 
     public void validarResultadosDeLaBusqueda(ExamplesTable resultadoBusqueda) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaResultados).waitUntilPresent();
+        waitFor(tablaResultados).waitUntilPresent();
         List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
         Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
         List<WebElement> celdas = allRows.get(this.encontrarPoliza(sampleData.get("numeroPoliza"), allRows)).findElements(By.tagName("td"));
@@ -107,19 +106,19 @@ public class BusquedaDePolizaPage extends PageObject {
 
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
         this.limpiarCampos();
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroCuenta).waitUntilPresent();
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         this.clicEnBotonBuscar();
     }
 
     public void clicEnBotonBuscar(){
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent().waitUntilClickable();
+        waitFor(btnBuscar).waitUntilPresent().waitUntilClickable();
         btnBuscar.click();
     }
 
 
     public void validarMensajeDeConsultaSinResultados(String mensaje) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(msjValidacion).waitUntilPresent();
+        waitFor(msjValidacion).waitUntilPresent();
         MatcherAssert.assertThat(msjValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
@@ -130,7 +129,7 @@ public class BusquedaDePolizaPage extends PageObject {
     }
 
     public void ingresarDatoEnCampoProducto(String producto){
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtProducto).waitUntilPresent();
+        waitFor(txtProducto).waitUntilPresent();
         txtProducto.clear();
         txtProducto.sendKeys(producto);
         txtProducto.sendKeys(Keys.ENTER);
@@ -138,21 +137,21 @@ public class BusquedaDePolizaPage extends PageObject {
 
     public void buscarPolizaPorAgente(String agente) {
         this.limpiarCampos();
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAgente).waitUntilPresent();
+        waitFor(txtAgente).waitUntilPresent();
         txtAgente.sendKeys(agente);
         this.clicEnBotonBuscar();
     }
 
     public void buscarPolizaPorCodigoAgente(String codigoAgente) {
         this.limpiarCampos();
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtCodigoAgente).waitUntilPresent();
+        waitFor(txtCodigoAgente).waitUntilPresent();
         txtCodigoAgente.sendKeys(codigoAgente);
         this.clicEnBotonBuscar();
     }
 
     public void buscarPolizaPorNumeroCuentaYProducto(String numeroCuenta, String producto) {
         this.limpiarCampos();
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroCuenta).waitUntilPresent();
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         this.ingresarDatoEnCampoProducto(producto);
         this.clicEnBotonBuscar();
@@ -160,7 +159,7 @@ public class BusquedaDePolizaPage extends PageObject {
 
     public void buscarPorNumerocuentaYAgente(String numeroCuenta, String agente) {
         this.limpiarCampos();
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroCuenta).waitUntilPresent();
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         txtAgente.sendKeys(agente);
         this.clicEnBotonBuscar();
@@ -168,7 +167,7 @@ public class BusquedaDePolizaPage extends PageObject {
 
     public void buscarPolizaPorNumeroCuentaYCodigoAgente(String numeroCuenta, String codigoAgente) {
         this.limpiarCampos();
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroCuenta).waitUntilPresent();
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         txtCodigoAgente.sendKeys(codigoAgente);
         this.clicEnBotonBuscar();
@@ -176,7 +175,7 @@ public class BusquedaDePolizaPage extends PageObject {
 
     public void buscarPolizaPorNumeroCuentaYDosOpcionales(String numeroCuenta, String producto, String codigoAgente) {
         this.limpiarCampos();
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroCuenta).waitUntilPresent();
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
         this.ingresarDatoEnCampoProducto(producto);
         txtCodigoAgente.sendKeys(codigoAgente);
