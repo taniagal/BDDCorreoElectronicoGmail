@@ -1,7 +1,9 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.SeusLoginPage;
+
 import java.util.List;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.apache.commons.lang3.ArrayUtils;
@@ -16,42 +18,42 @@ import org.openqa.selenium.support.FindBy;
 
 public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
-    @FindBy(xpath=".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_WorkOrders']/div")
+    @FindBy(xpath = ".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_WorkOrders']/div")
     private WebElementFacade mnuTransaccionesPoliza;
-    @FindBy(xpath="//div[3]/div/table/tbody/tr/td/div")
+    @FindBy(xpath = "//div[3]/div/table/tbody/tr/td/div")
     private WebElementFacade fechaCreacion;
-    @FindBy(xpath="//div/table/tbody/tr/td[2]/div")
+    @FindBy(xpath = "//div/table/tbody/tr/td[2]/div")
     private WebElementFacade poliza;
-    @FindBy(xpath="//td[3]/div")
+    @FindBy(xpath = "//td[3]/div")
     private WebElementFacade producto;
-    @FindBy(xpath="//td[4]/div")
+    @FindBy(xpath = "//td[4]/div")
     private WebElementFacade numeroTransaccion;
-    @FindBy(xpath="//td[5]/div")
+    @FindBy(xpath = "//td[5]/div")
     private WebElementFacade tipo;
-    @FindBy(xpath="//td[6]/div")
+    @FindBy(xpath = "//td[6]/div")
     private WebElementFacade estado;
-    @FindBy(xpath="//td[7]/div")
+    @FindBy(xpath = "//td[7]/div")
     private WebElementFacade fechaFin;
-    @FindBy(xpath="//td[8]/div")
+    @FindBy(xpath = "//td[8]/div")
     private WebElementFacade participante;
-    @FindBy(xpath="//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrdersCompletenessFilter-inputEl']")
+    @FindBy(xpath = "//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrdersCompletenessFilter-inputEl']")
     private WebElementFacade filtroEstado;
-    @FindBy(xpath="//td/div/div[3]/div/table")
+    @FindBy(xpath = "//td/div/div[3]/div/table")
     private WebElementFacade table;
-    @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrderTypeFilter-inputEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrderTypeFilter-inputEl']")
     private WebElementFacade filtroTipoTransaccion;
-    @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:ProductFilter-inputEl']")
+    @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:ProductFilter-inputEl']")
     private WebElementFacade filtroProducto;
-    @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:message:InfoMessage_ExtDV:message']")
+    @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:message:InfoMessage_ExtDV:message']")
     private WebElementFacade msjTransaccionNoEncontrada;
-    @FindBy(xpath=".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']")
+    @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']")
     private WebElementFacade tablaTransaccionesDeContacto;
 
     public ContactoOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);
     }
 
-    public void filtrarTransaccionesPorEstado(String estado){
+    public void filtrarTransaccionesPorEstado(String estado) {
         waitFor(filtroEstado).waitUntilPresent();
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
@@ -59,7 +61,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         waitUntil(2000);
     }
 
-    public void seleccionarTransacciones(){
+    public void seleccionarTransacciones() {
         waitFor(mnuTransaccionesPoliza).waitUntilPresent();
         this.mnuTransaccionesPoliza.click();
     }
@@ -81,9 +83,9 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     //display key de los estados: typeList localization ---> TypeKey.PolicyPeriodStatus
     public void validarFiltroEstado(String filtroEstado) {
         String[] listEstadosCompletos = {"Comprometida", "No tomado", "Retirado", "Vencida", "Rechazado",
-        "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida"};
+                "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida"};
         String[] listEstadosAbiertos = {"Cotizado", "Borrador", "Nuevo", "Cotización", "Vinculación contractual",
-        "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
+                "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
         String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);
 
         waitFor(table).waitUntilPresent();
@@ -92,11 +94,11 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             String estadoStr = cells.get(5).getText();
-            if(("Completo").equals(filtroEstado)){
+            if (("Completo").equals(filtroEstado)) {
                 MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosCompletos));
-            }else if (("Abierto").equals(filtroEstado)){
+            } else if (("Abierto").equals(filtroEstado)) {
                 MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosAbiertos));
-            }else{
+            } else {
                 MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosTodos));
             }
         }
@@ -152,7 +154,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         String existeTransaccion = "No existe la póliza";
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if(transaccion.equals(cells.get(3).getText())){
+            if (transaccion.equals(cells.get(3).getText())) {
                 existeTransaccion = "Se encontró la póliza en las transacciones";
             }
         }

@@ -2,7 +2,9 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
+
 import java.util.Map;
+
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -12,7 +14,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
 
 
 public class BusquedaActividadesPage extends PageObject {
@@ -145,7 +146,7 @@ public class BusquedaActividadesPage extends PageObject {
         this.ingresarDatoEnCombo(txtEstadoActividad, estadoActividad);
     }
 
-    public void ingresarDatoEnCombo(WebElementFacade elemento, String dato){
+    public void ingresarDatoEnCombo(WebElementFacade elemento, String dato) {
         waitFor(elemento);
         elemento.clear();
         elemento.sendKeys(dato);
