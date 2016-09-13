@@ -24,13 +24,15 @@ public class GuidewireLoginSteps extends ScenarioSteps {
     public void abrir_navegador(WebDriver driver) {
         this.loginPage = new GuidewireLoginPages(driver);
         this.loginPage.open();
-        this.loginPage.getDriver().manage().window().maximize();
+        //this.loginPage.getDriver().manage().window().maximize();
     }
 
     @Step
     public void loguearse_a_policycenter_con_rol(String rolUsuario){
+        if (SerenityWebdriverManager.inThisTestThread().isDriverInstantiated()) {
+            SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
+        }
 
-        SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
         abrir_navegador(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
 
         if (loginPage.elemento(GuidewireLoginPages.TXT_USUARIO_SEUS) == null && loginPage.elemento(GuidewireLoginPages.TXT_CONTRASENIA_SEUS) == null) {
