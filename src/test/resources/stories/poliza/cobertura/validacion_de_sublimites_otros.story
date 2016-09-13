@@ -1,6 +1,8 @@
+Validacion de sublimites otros
 
+Meta:
 
-Scenario: 18 Sublimite de perdidas de contenidos en tanques  Coberturas del riesgo
+Scenario: 18 Sublimite de perdidas de contenidos en tanques... Coberturas del riesgo
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767

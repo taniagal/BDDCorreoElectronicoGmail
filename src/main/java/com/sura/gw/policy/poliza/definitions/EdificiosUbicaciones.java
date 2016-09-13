@@ -5,20 +5,19 @@ import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
+import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.*;
 import org.hamcrest.core.Is;
 import org.hamcrest.core.StringContains;
-import org.jbehave.core.annotations.Aliases;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class EdificiosUbicaciones {
 
@@ -169,4 +168,11 @@ public class EdificiosUbicaciones {
         }
     }
 
+    @AfterScenario
+    public void resetDriver(){
+        LOGGER.info("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
+        if (SerenityWebdriverManager.inThisTestThread().isDriverInstantiated()) {
+            SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
+        }
+    }
 }
