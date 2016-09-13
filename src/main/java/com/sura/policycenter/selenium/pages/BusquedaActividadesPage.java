@@ -58,8 +58,6 @@ public class BusquedaActividadesPage extends PageObject {
     private WebElementFacade menuBuscar;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ActivitySearch']/div")
     private WebElementFacade menuBuscarActividades;
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab']")
-    private WebElementFacade menuEscritorio;
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     private WebElementFacade botonRestablecer;
 
