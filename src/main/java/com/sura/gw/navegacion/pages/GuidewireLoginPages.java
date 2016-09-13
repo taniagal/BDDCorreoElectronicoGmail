@@ -85,8 +85,7 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
     }
 
     public void ingresar_por_rol(String rol){
-        LOGGER.info("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
-        LOGGER.info("GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
+        LOGGER.info("INICIO GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
         if ("Asesor".equals(rol)){
 
             enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
@@ -95,7 +94,7 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
         }
 
         waitForAnyTextToAppear("Mis actividades");
-        LOGGER.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        LOGGER.info("FIN GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
     }
 
 
