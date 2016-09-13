@@ -2,6 +2,18 @@ Validacion de sublimites otros
 
 Meta:
 
+Scenario: TEMPORAL
+Meta:
+@Automatizador andres alarcon guerrero
+@manual true
+Given XXX
+When XXX
+Then XXX
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22222236        | Asesor     |             |
+
+
 Scenario: 18 Sublimite de perdidas de contenidos en tanques... Coberturas del riesgo
 Meta:
 @Story CDSEG-767
