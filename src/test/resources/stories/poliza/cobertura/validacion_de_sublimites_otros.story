@@ -2,8 +2,7 @@ Validacion de sublimites otros
 
 Meta:
 
-
-Scenario: 18 Sublimite de perdidas de contenidos en tanques... Coberturas del riesgo
+Scenario: 18 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
@@ -11,21 +10,18 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO         | COBERTURA        | ENTRADAS                                       | VALOR_ENTRADAS |
-| Información de Artículos | Existencias Flotantes |                  | Valor asegurado máximo                         | 10             |
-| Información de Artículos | Existencias fijas     |                  | Valor Asegurable                               | 10             |
-| Coberturas del Riesgo    |                       | Danos materiales | Sublimite para perdida de contenido en tanques | 31             |
-| Otros Articulos          | Mercancías a granel   |                  | Valor Asegurable                               | 10             |
-| Otros Articulos          | Mercancías a granel   |                  | Índice variable                                | 1              |
-
+| TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                       | VALOR_ENTRADAS |
+| Información de Artículos | Existencias Flotantes |                     |                  | Valor asegurado máximo                         | 10             |
+| Información de Artículos | Existencias fijas     |                     |                  | Valor Asegurable                               | 10             |
+| Coberturas del Riesgo    |                       |                     | Danos materiales | Sublímite para perdida de contenido en tanques | 31             |
+| Otros Articulos          | Mercancías a granel   |                     |                  | Valor Asegurable                               | 10             |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                         |
-| El valor de "Sublimite para perdida de contenido en tanques" deber ser menor o igual a la sumatoria de los valores asegurables de " - Mercancías a granel - Existencias fijas - Existencias flotantes - ". |
- Examples:
+| El valor de "Sublímite para perdida de contenido en tanques" deber ser menor o igual a la sumatoria de los valores asegurables de " - Mercancías a granel - Existencias fijas - Existencias flotantes - ". |
+Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |
 
@@ -38,11 +34,10 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA                    | ENTRADAS                                     | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Portadores externos de datos | Valor asegurado portadores externos de datos | 11             |
+| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                    | ENTRADAS                                     | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               |                     | Portadores externos de datos | Valor asegurado portadores externos de datos | 11             |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                      |
@@ -60,11 +55,10 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA                                                                 | ENTRADAS                                                                                  | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Gastos por arrendamiento de sistema electrónico de procesamiento de datos | Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos | 11             |
+| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                                                                 | ENTRADAS                                                                                  | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               |                     | Gastos por arrendamiento de sistema electrónico de procesamiento de datos | Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos | 11             |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                  |
@@ -82,15 +76,14 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO       | COBERTURA                                      | ENTRADAS                                                                                          | VALOR_ENTRADAS |
-| Información de Artículos | Edificios           |                                                | Valor Reconstrucción                                                                              | 50             |
-| Información de Artículos | Maquinaria y equipo |                                                | Valor Asegurable                                                                                  | 46             |
-| Coberturas del Riesgo    |                     | Todo riesgo construcción y todo riesgo montaje | Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados | 11             |
-| Otros Articulos          | Animales vivos      |                                                | Valor Asegurable                                                                                  | 4              |
-| Otros Articulos          | Animales vivos      |                                                | Índice variable                                                                                   | 1              |
+| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA                                      | ENTRADAS                                                                                          | VALOR_ENTRADAS |
+| Información de Artículos | Edificios           |                     |                                                | Valor Reconstrucción                                                                              | 50             |
+| Información de Artículos | Maquinaria y equipo |                     |                                                | Valor Asegurable                                                                                  | 46             |
+| Coberturas del Riesgo    |                     |                     | Todo riesgo construcción y todo riesgo montaje | Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados | 11             |
+| Otros Articulos          | Animales vivos      |                     |                                                | Valor Asegurable                                                                                  | 4              |
+| Otros Articulos          | Animales vivos      |                     |                                                | Índice variable                                                                                   | 1              |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                                      |
@@ -108,50 +101,46 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO | COBERTURA        | ENTRADAS                                                                                                                                               | VALOR_ENTRADAS |
-| Información de Artículos | Edificios     |                  | Valor Reconstrucción                                                                                                                                   | 200            |
-| Información de Artículos | Edificios     | Danos materiales | Valor asegurado danos materiales                                                                                                                       | 51             |
-| Información de Artículos | Edificios     | Danos materiales | Tipo Primera Perdida                                                                                                                                   | Relativa       |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una perdida                                                                                         | 52             |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para gastos para la preservacion de bienes y extincion del siniestro                                                                         | 52             |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para gastos para la remocion de escombros                                                                                                    | 52             |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para gastos por honorarios profesionales                                                                                                     | 52             |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para gastos para demostrar la ocurrencia y la cuantia del siniestro                                                                          | 52             |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para gastos para la reposicion de documentos                                                                                                 | 52             |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para bienes de propiedad de directores y empleados                                                                                           | 52             |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para gastos adicionales por concepto de horas extras, trabajo nocturno y en feriados, flete expreso, flete aereo y gastos de viaje y estadia | 52             |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para gastos para la obtencion de licencias y permisos para reconstruir el inmueble asegurado                                                 | 52             |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para perdida de contenido en tanques                                                                                                         | 52             |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para derrame de materiales en fusion                                                                                                         | 52             |
-| Coberturas del Riesgo    |               | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria                                                                               | 52             |
+| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                                                                                               | VALOR_ENTRADAS |
+| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                                                                                                                   | 200            |
+| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                                                                                                                       | 51             |
+| Información de Artículos | Edificios     |                     | Danos materiales | Tipo Primera Perdida                                                                                                                                   | Relativa       |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos asociados a la ocurrencia de una pérdida                                                                                         | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la preservacion de bienes y extinción del siniestro                                                                         | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la remocion de escombros                                                                                                    | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos por honorarios profesionales                                                                                                     | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para demostrar la ocurrencia y la cuantia del siniestro                                                                          | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la reposicion de documentos                                                                                                 | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para bienes de propiedad de directores y empleados                                                                                           | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos adicionales por concepto de horas extras, trabajo nocturno y en feriados, flete expreso, flete aéreo y gastos de viaje y estadía | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para gastos para la obtencion de licencias y permisos para reconstruir el inmueble asegurado                                                 | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublímite para perdida de contenido en tanques                                                                                                         | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para derrame de materiales en fusion                                                                                                         | 52             |
+| Coberturas del Riesgo    |               |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria                                                                               | 52             |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                                                                                                                                  |
-| El valor del "Sublimite para gastos asociados a la ocurrencia de una perdida" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                         |
-| El valor del "Sublimite para gastos para la preservacion de bienes y extincion del siniestro" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                         |
-| El valor del "Sublimite para gastos para la remocion de escombros " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                   |
-| El valor del "Sublimite para gastos por honorarios profesionales " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                    |
-| El valor del "Sublimite para gastos para demostrar la ocurrencia y la cuantia del siniestro " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                         |
-| El valor del "Sublimite para gastos para la reposicion de documentos" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                 |
-| El valor del "Sublimite para bienes de propiedad de directores y empleados" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                           |
-| El valor del "Sublimite para gastos adicionales por concepto de horas extras, trabajo nocturno y en feriados, flete expreso, flete aereo y gastos de viaje y estadia" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación. |
-| El valor del "Sublimite para gastos para la obtencion de licencias y permisos para reconstruir el inmueble asegurado" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                 |
-| El valor del "Sublimite para gastos para la remocion de escombros " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                   |
-| El valor del "Sublimite para perdida de contenido en tanques" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                         |
-| El valor del "Sublimite para derrame de materiales en fusion" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                         |
-| El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                              |
+|El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura "Danos materiales" de los articulos "-Existencias flotantes - Existencias fijas - ".                                                           |
+|El valor del "Sublimite para gastos asociados a la ocurrencia de una pérdida" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                             |
+|El valor del "Sublimite para gastos para la preservacion de bienes y extinción del siniestro" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                             |
+|El valor del "Sublimite para gastos para la remocion de escombros " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                       |
+|El valor del "Sublimite para gastos por honorarios profesionales " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                        |
+|El valor del "Sublimite para gastos para demostrar la ocurrencia y la cuantia del siniestro " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                             |
+|El valor del "Sublimite para gastos para la reposicion de documentos" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación                                                                                                      |
+|El valor del "Sublimite para bienes de propiedad de directores y empleados " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                              |
+|El valor del "Sublimite para gastos adicionales por concepto de horas extras, trabajo nocturno y en feriados, flete expreso, flete aéreo y gastos de viaje y estadía" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.     |
+|El valor del "Sublimite para gastos para la obtencion de licencias y permisos para reconstruir el inmueble asegurado " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                    |
+|El valor del "Sublímite para perdida de contenido en tanques" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                             |
+|El valor del "Sublimite para derrame de materiales en fusion" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                             |
+|El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                  |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |
 
 
-
-
-Scenario: 23
-
+Scenario: 23 Bug CDSEG-2887
 Meta:
 @Story CDSEG-2887
 @URL https://jira.suramericana.com.co/browse/CDSEG-2887
@@ -160,26 +149,24 @@ Meta:
 @LOB Multiriesgo corporativo
 @tag bug:CDSEG-2887
 @Sprint 6
-@Pending true
-@manual
-As a <rolUsuario>
-Given _que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
-When _intente ingresar las entradas de las diferentes coberturas
-| TAB             | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
-| Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
-When _haga clic en el boton Aceptar
-Then _se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
+
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB             | TIPO_ARTICULO     | COBERTURA | OTRO_ARTICULO_OTROS | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Otros Articulos | Suelos y Terrenos | Terremoto |                     | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
+| Otros Articulos | Suelos y Terrenos | Terremoto | X                   | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
+When haga clic en el boton Aceptar
+Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |
 
 
-Scenario: 24
+Scenario: 24 Bug CDSEG-2756
 Meta:
 @Story CDSEG-2756
 @URL https://jira.suramericana.com.co/browse/CDSEG-2756
@@ -188,22 +175,19 @@ Meta:
 @LOB Multiriesgo corporativo
 @tag bug:CDSEG-2756
 @Sprint 6
-@Pending true
-@manual
-As a <rolUsuario>
-Given _que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
-When _intente ingresar las entradas de las diferentes coberturas
-| TAB             | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
-| Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
-When _haga clic en el boton Aceptar
-Then _se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
+
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB             | TIPO_ARTICULO     | COBERTURA | OTRO_ARTICULO_OTROS | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Otros Articulos | Suelos y Terrenos | Terremoto |                     | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
+| Otros Articulos | Suelos y Terrenos | Terremoto | X                   | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
+When haga clic en el boton Aceptar
+Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |
-
 
