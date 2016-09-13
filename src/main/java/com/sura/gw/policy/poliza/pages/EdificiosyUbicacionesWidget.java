@@ -116,16 +116,20 @@ public class EdificiosyUbicacionesWidget extends Commons {
 
 
     public void seleccionarTab(String tab) {
+        setImplicitTimeout(2,TimeUnit.SECONDS);
         waitForAnyTextToAppear(tab);
         shouldContainText(tab);
         String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + "')])]";
         withAction().moveToElement($(xpathTab)).perform();
         $(xpathTab).click();
+        resetImplicitTimeout();
     }
 
     public boolean estaSeleccionadoTab(String tab) {
         Boolean esSeleccionado = false;
+        setImplicitTimeout(2, TimeUnit.SECONDS);
         try {
+
             waitForAnyTextToAppear(tab);
             shouldContainText(tab);
             String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + "')])]";
@@ -137,6 +141,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
             LOGGER.info("Pestaña no visualizada en Edificios y ubicaciones");
             esSeleccionado = true;
         }
+        resetImplicitTimeout();
         return esSeleccionado;
     }
 
@@ -200,7 +205,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
 
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
         waitForCondition()
-                .withTimeout(16, TimeUnit.SECONDS)
+                .withTimeout(2, TimeUnit.SECONDS)
                 .pollingEvery(250, TimeUnit.MILLISECONDS)
                 .until(inputEsActualizadoA(elemento, valorEntrada));
     }
@@ -277,18 +282,26 @@ public class EdificiosyUbicacionesWidget extends Commons {
     }
 
     // TODO: 01/09/2016 Code Smell
-    public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esUltimaFilaDeExampleTable) {
+    public void ingresarOtroArticulo(String tipoArticulo, String cobertura, String entrada, String valorEntrada, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
 
         String xLinkAgregarOtrosArticulos = "//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]";
-        setImplicitTimeout(7, TimeUnit.SECONDS);
+
+        setImplicitTimeout(2, TimeUnit.SECONDS);
+
+
+        if (esOtroArticulo) {
+            String xBtnAceptarAgregarOtroArticulo = ".//*[@id='AddOtherArticlesPopup:Update-btnInnerEl']";
+            findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().waitUntilClickable().click();
+        }
+
         if (isElementVisible(By.xpath(xLinkAgregarOtrosArticulos))) {
-            resetImplicitTimeout();
+
             cliclearBtnAgregarArticulo();
             ingresarInputTiposDeArticulos(tipoArticulo);
             waitFor(3).seconds();
             ingresarTextAreaDescripcion(tipoArticulo);
         }
-        resetImplicitTimeout();
+
 
         if (cobertura.length() > 0) {
             seleccionarCobertura(obtenerDivCobertura(cobertura), cobertura);
@@ -303,6 +316,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
             findBy(xBtnAceptarAgregarOtroArticulo).waitUntilVisible().waitUntilClickable().click();
         }
 
+        resetImplicitTimeout();
 
     }
 
@@ -362,7 +376,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
         String xTextAreaDescripcion = ".//*[@id='AddOtherArticlesPopup:Desciption_Input-inputEl']";
 
         enter(tipoArticulo).into($(xTextAreaDescripcion));
-        waitFor(4).second();
+        waitFor(1).second();
         $(xTextAreaDescripcion).waitUntilClickable().click();
         esperarAQueElementoTengaValor(findBy(xTextAreaDescripcion), tipoArticulo);
     }

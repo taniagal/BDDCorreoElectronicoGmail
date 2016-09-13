@@ -10,16 +10,15 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Sustraccion | Valor asegurado sustraccion con violencia                                      | 10             |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustraccion sin violencia dentro de predios                          | 11             |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustraccion con violencia de bienes fuera de predios                 | 11             |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustraccion sin violencia de bienes fuera de predios                 | 11             |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte  | 11             |
+| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               |                     | Sustraccion | Valor asegurado sustraccion con violencia                                      | 10             |
+| Coberturas del Riesgo |               |                     | Sustraccion | Sublimite sustraccion sin violencia dentro de predios                          | 11             |
+| Coberturas del Riesgo |               |                     | Sustraccion | Sublimite sustraccion con violencia de bienes fuera de predios                 | 11             |
+| Coberturas del Riesgo |               |                     | Sustraccion | Sublimite sustraccion sin violencia de bienes fuera de predios                 | 11             |
+| Coberturas del Riesgo |               |                     | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
+| Coberturas del Riesgo |               |                     | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte  | 11             |
 When haga clic en el boton Aceptar
 Then se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal)
 | MENSAJES_WORKSPACE                                                                                                                                           |
@@ -59,11 +58,10 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                       | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustraccion con violencia de bienes fuera de predios | 11             |
+| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                       | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               |                     | Sustraccion | Sublimite sustraccion con violencia de bienes fuera de predios | 11             |
 When haga clic en el boton Aceptar
 Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                                         |
@@ -99,11 +97,10 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                       | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustraccion sin violencia de bienes fuera de predios | 12             |
+| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                       | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               |                     | Sustraccion | Sublimite sustraccion sin violencia de bienes fuera de predios | 12             |
 When haga clic en el boton Aceptar
 Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                                         |
@@ -139,11 +136,10 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
+| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               |                     | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
 When haga clic en el boton Aceptar
 Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                                      |
@@ -178,12 +174,11 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 2              |
-| Coberturas del Riesgo |               | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte  | 11             |
+| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               |                     | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 2              |
+| Coberturas del Riesgo |               |                     | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo fuera de caja fuerte  | 11             |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                              |
@@ -202,11 +197,10 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                   | TIPO_ARTICULO | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
-| Coberturas del Riesgo |               | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 11             |
+| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 11             |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                     |
@@ -225,15 +219,14 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO         | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
-| Coberturas del Riesgo    |                       | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 11             |
-| Información de Artículos | Existencias Flotantes | Danos materiales | Valor asegurado danos materiales                                         | 2              |
-| Información de Artículos | Existencias Flotantes |                  | Valor asegurado máximo                                                   | 11             |
-| Información de Artículos | Existencias fijas     | Danos materiales | Valor asegurado danos materiales                                         | 2              |
-| Información de Artículos | Existencias fijas     |                  | Valor Asegurable                                                         | 11             |
+| TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
+| Coberturas del Riesgo    |                       |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 11             |
+| Información de Artículos | Existencias Flotantes |                     | Danos materiales | Valor asegurado danos materiales                                         | 2              |
+| Información de Artículos | Existencias Flotantes |                     |                  | Valor asegurado máximo                                                   | 11             |
+| Información de Artículos | Existencias fijas     |                     | Danos materiales | Valor asegurado danos materiales                                         | 2              |
+| Información de Artículos | Existencias fijas     |                     |                  | Valor Asegurable                                                         | 11             |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                                                                            |
@@ -252,15 +245,14 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO       | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
-| Coberturas del Riesgo    |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 9              |
-| Información de Artículos | Edificios           |                  | Valor Reconstrucción                                                     | 2              |
-| Información de Artículos | Maquinaria y equipo |                  | Valor Asegurable                                                         | 2              |
-| Otros Articulos          | Animales vivos      |                  | Valor Asegurable                                                         | 4              |
-| Otros Articulos          | Animales vivos      |                  | Índice variable                                                          | 1              |
+| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
+| Coberturas del Riesgo    |                     |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 9              |
+| Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción                                                     | 2              |
+| Información de Artículos | Maquinaria y equipo |                     |                  | Valor Asegurable                                                         | 2              |
+| Otros Articulos          | Animales vivos      |                     |                  | Valor Asegurable                                                         | 4              |
+| Otros Articulos          | Animales vivos      |                     |                  | Índice variable                                                          | 1              |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                              |
@@ -299,14 +291,13 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Información de Artículos | Edificios         |           | Valor Reconstrucción                                                                 | 50            |
-| Otros Articulos          | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 25            |
-| Otros Articulos          | Suelos y Terrenos |           | Valor Asegurable                                                                     | 25             |
-| Otros Articulos          | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
+| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Información de Artículos | Edificios         |                     |           | Valor Reconstrucción                                                                 | 50             |
+| Otros Articulos          | Suelos y Terrenos |                     | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 25             |
+| Otros Articulos          | Suelos y Terrenos |                     |           | Valor Asegurable                                                                     | 25             |
+| Otros Articulos          | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                             |
@@ -324,14 +315,13 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Información de Artículos | Edificios         |           | Valor Reconstrucción                                                                 | 1000000001     |
-| Otros Articulos          | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000001     |
-| Otros Articulos          | Suelos y Terrenos |           | Valor Asegurable                                                                     | 25             |
-| Otros Articulos          | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
+| TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Información de Artículos | Edificios         |                     |           | Valor Reconstrucción                                                                 | 1000000001     |
+| Otros Articulos          | Suelos y Terrenos |                     | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000001     |
+| Otros Articulos          | Suelos y Terrenos |                     |           | Valor Asegurable                                                                     | 25             |
+| Otros Articulos          | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                              |
@@ -348,13 +338,12 @@ Meta:
 @Automatizador andres alarcon guerrero
 @LOB Multiriesgo corporativo
 @Sprint 5
-As a <rolUsuario>
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
-| TAB             | TIPO_ARTICULO     | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Otros Articulos | Suelos y Terrenos | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000000     |
-| Otros Articulos | Suelos y Terrenos |           | Valor Asegurable                                                                     | 25             |
-| Otros Articulos | Suelos y Terrenos |           | Índice variable                                                                      | 1              |
+| TAB             | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Otros Articulos | Suelos y Terrenos |                     | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000000     |
+| Otros Articulos | Suelos y Terrenos |                     |           | Valor Asegurable                                                                     | 25             |
+| Otros Articulos | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                             |
