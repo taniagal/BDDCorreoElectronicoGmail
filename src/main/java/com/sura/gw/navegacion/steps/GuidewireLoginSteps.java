@@ -29,9 +29,9 @@ public class GuidewireLoginSteps extends ScenarioSteps {
 
     @Step
     public void loguearse_a_policycenter_con_rol(String rolUsuario){
-        if (SerenityWebdriverManager.inThisTestThread().isDriverInstantiated()) {
+       /* if (SerenityWebdriverManager.inThisTestThread().isDriverInstantiated()) {
             SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
-        }
+        }*/
 
         abrir_navegador(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
 
