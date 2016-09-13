@@ -49,7 +49,8 @@ public class GuidewireLoginSteps extends ScenarioSteps {
             }
 
         }
-        
+
+        loginPage.waitForAnyTextToAppear("Mis actividades");
     }
 
     @Step
