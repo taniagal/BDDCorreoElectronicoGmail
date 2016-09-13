@@ -22,4 +22,4 @@ Then se debe ver reflejada la bonificacion tecnica <bono> de esta placa
 
 Examples:
 |placa |bono|
-|CYU123|35|
+|CYU123|45|
