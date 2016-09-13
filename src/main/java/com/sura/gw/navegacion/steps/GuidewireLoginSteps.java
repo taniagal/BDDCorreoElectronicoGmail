@@ -35,6 +35,8 @@ public class GuidewireLoginSteps extends ScenarioSteps {
 
         abrir_navegador(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
 
+        loginPage.waitForTextToAppear("Nombre de usuario");
+
         if (loginPage.elemento(GuidewireLoginPages.TXT_USUARIO_SEUS) == null && loginPage.elemento(GuidewireLoginPages.TXT_CONTRASENIA_SEUS) == null) {
             if ("Asesor".equals(rolUsuario)){
                 loginPage.enter("su").into(loginPage.elemento(GuidewireLoginPages.TXT_USUARIO));
