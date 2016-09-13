@@ -170,7 +170,6 @@ public class EdificiosUbicaciones {
 
     @AfterScenario
     public void resetDriver(){
-        LOGGER.info("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
         if (SerenityWebdriverManager.inThisTestThread().isDriverInstantiated()) {
             SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
         }

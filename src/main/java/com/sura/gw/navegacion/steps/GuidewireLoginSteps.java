@@ -32,8 +32,9 @@ public class GuidewireLoginSteps extends ScenarioSteps {
 
 
         abrir_navegador(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
+        loginPage.ingresar_por_rol(rolUsuario);
 
-
+/*
         if (loginPage.elemento(GuidewireLoginPages.TXT_USUARIO_SEUS) == null && loginPage.elemento(GuidewireLoginPages.TXT_CONTRASENIA_SEUS) == null) {
             if ("Asesor".equals(rolUsuario)){
                 loginPage.enter("su").into(loginPage.elemento(GuidewireLoginPages.TXT_USUARIO));
@@ -49,9 +50,8 @@ public class GuidewireLoginSteps extends ScenarioSteps {
                 loginPage.elemento(GuidewireLoginPages.BTN_LOGIN_SEUS).click();
             }
 
-        }
+        }*/
 
-        loginPage.waitForAnyTextToAppear("Mis actividades");
     }
 
     @Step

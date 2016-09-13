@@ -84,6 +84,21 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
         };
     }
 
+    public void ingresar_por_rol(String rol){
+        LOGGER.info("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
+        LOGGER.info("GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
+        if ("Asesor".equals(rol)){
+
+            enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
+            enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
+            elemento(GuidewireLoginPages.BTN_LOGIN).click();
+        }
+
+        waitForAnyTextToAppear("Mis actividades");
+
+    }
+
+
 }
 
 
