@@ -95,7 +95,7 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
         }
 
         waitForAnyTextToAppear("Mis actividades");
-
+        LOGGER.info("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     }
 
 
