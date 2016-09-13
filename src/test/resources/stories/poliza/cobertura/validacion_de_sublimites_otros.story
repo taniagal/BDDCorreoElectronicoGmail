@@ -1,6 +1,6 @@
 
 
-Scenario: 18 Sublímite de pérdidas de contenidos en tanques (Coberturas del riesgo)
+Scenario: 18 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
@@ -49,7 +49,7 @@ Examples:
 | 22222236        | Asesor     |             |
 
 
-Scenario: 20 Gastos por arrendamiento de sistema electrónico de procesamiento de datos (Coberturas del riesgo)
+Scenario: 20 Gastos por arrendamiento de sistema electronico de procesamiento de datos (Coberturas del riesgo)
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
@@ -97,7 +97,7 @@ Examples:
 | 22222236        | Asesor     |             |
 
 
-Scenario: 22 Sublímites menores a valor asegurado daños (coberturas a nivel de riesgo)
+Scenario: 22 Sublimites menores a valor asegurado daños (coberturas a nivel de riesgo)
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767

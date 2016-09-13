@@ -48,7 +48,7 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
         getDriver().manage().window().maximize();
         WebElementFacade elemento = null;
         try {
-            setImplicitTimeout(2, TimeUnit.SECONDS);
+            setImplicitTimeout(1, TimeUnit.SECONDS);
             waitFor($(xpath)).shouldBeVisible();
             elemento = element(find(By.xpath(xpath)));
             resetImplicitTimeout();
