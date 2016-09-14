@@ -7,7 +7,7 @@ Meta:
 Sprint 7
 
 Narrative:
-Yo como usuario de PolicyCenter
+Como usuario de PolicyCenter
 quiero poder registrar una instrucción previa a la renovación
 con el fin de  que al momento en el que se inicie la renovación automática de la póliza se frene.
 

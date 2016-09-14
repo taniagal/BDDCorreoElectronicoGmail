@@ -8,6 +8,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 public class ReglaPreRenovacionDirPaDefinitions {
 
@@ -26,12 +27,11 @@ public class ReglaPreRenovacionDirPaDefinitions {
     @When("desee registrar una direccion de prerenovacion")
     public void whenDeseeRegistrarUnaDireccionDePrerenovacion() {
         cambioDePolizaSteps.irAMenuAcciones();
-        reglaPreRenovacionDirPaSteps.
-
+        reglaPreRenovacionDirPaSteps.ingresar_instruccion_previa_a_renovacion();
     }
 
     @Then("se deben habilitar solo las opciones: $opcionesDir")
-    public void thenSeDebenHabilitarSoloLasOpcionesAltaSiniestralidadMalasPrácticasDeAsistenciaNegocioEstatal() {
-
+    public void thenhabilitarInstrucciones(ExamplesTable opcionesDir) throws Exception {
+        reglaPreRenovacionDirPaSteps.valida_opciones_intruccion_detalles(opcionesDir);
     }
 }
