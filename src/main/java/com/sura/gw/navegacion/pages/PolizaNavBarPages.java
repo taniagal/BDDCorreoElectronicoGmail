@@ -1,12 +1,17 @@
 package com.sura.gw.navegacion.pages;
 
 import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 
 public class PolizaNavBarPages extends PageObject {
+
+    @FindBy(xpath = ".//a[contains(@id,'TabBar:PolicyTab')]")
+    NavegacionBarraSuperiorWO navegacionBarraSuperiorWO;
+
     private static String MENU_POLIZA = ".//a[contains(@id,'TabBar:PolicyTab')]";
 
     public enum Opcion {
@@ -25,6 +30,7 @@ public class PolizaNavBarPages extends PageObject {
 
 
     public PolizaNavBarPages seleccionarMenu() {
+        navegacionBarraSuperiorWO.getPage();
         waitFor(5).seconds();
         findBy(MENU_POLIZA).waitUntilVisible();
 
