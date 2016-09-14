@@ -120,7 +120,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void validarInformacion(ExamplesTable resultadoModificacionDireccion) {
-        txtPais.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
+        waitFor(txtPais).waitUntilPresent();
         Map<String, String> exampleTable = resultadoModificacionDireccion.getRows().get(0);
         MatcherAssert.assertThat(this.txtPais.getValue(), Is.is(Matchers.equalTo(exampleTable.get(PAIS))));
         MatcherAssert.assertThat(this.txtDepartamento.getValue(), Is.is(Matchers.equalTo(exampleTable.get(DEPARTAMENTO))));
@@ -131,7 +131,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void filtrarPorInfoObligatoria() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtDescripcion).waitUntilPresent();
+        waitFor(txtDescripcion).waitUntilPresent();
         txtDescripcion.clear();
         btnActualizarDireccionesLigadas.click();
     }
@@ -146,7 +146,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
 
     public void validarInformacionContacto(ExamplesTable resultadoModificacionDireccion) {
         WebElementFacade txtPaisContacto = commons.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']");
-        this.txtDireccionContacto.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent();
+        this.waitFor(txtDireccionContacto).waitUntilPresent();
         Map<String, String> exampleTable = resultadoModificacionDireccion.getRows().get(0);
         String paisContacto = txtPaisContacto.getText();
         String departamentoContacto = this.txtDepartamentoContacto.getText();
@@ -177,8 +177,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         }
         WebElementFacade botonCancelarDetalles = commons.esperarElemento(".//*[@id='LinkedAddressEditPopup:Cancel-btnInnerEl']");
         botonCancelarDetalles.click();
-        linkVolverAContacto.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
-        botonAceptarMensaje.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        waitFor(linkVolverAContacto).waitUntilPresent().click();
+        waitFor(botonAceptarMensaje).waitUntilPresent().click();
     }
 
     public void editarDireccion(String direccion) {
@@ -191,9 +191,9 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     public void editarDireccionEnPestaniaDirecciones(String direccion) {
         WebElementFacade pestanaDirecciones = commons.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesCardTab-btnInnerEl']");
         pestanaDirecciones.click();
-        campoDireccionDetalleDirecciones.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().clear();
-        campoDireccionDetalleDirecciones.sendKeys(direccion);
-        botonActualizarContacto.click();
+        waitFor(campoDireccionDetalleDirecciones).waitUntilPresent().clear();
+        waitFor(campoDireccionDetalleDirecciones).sendKeys(direccion);
+        waitFor(botonActualizarContacto).click();
     }
 
     public void seleccionarUnContacto(String nombreContacto) {
@@ -206,7 +206,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         WebElementFacade campoDireccionDetalle = commons.esperarElemento(XPATH_DIRECCION_DETALLE);
         Integer longitudCampo = campoDireccionDetalle.getValue().length();
         linkVolverAContacto.click();
-        botonAceptarMensaje.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        waitFor(botonAceptarMensaje).waitUntilPresent().click();
         waitForTextToAppear("Contactos de archivo de cuenta");
         MatcherAssert.assertThat(longitudCampo.toString(), Is.is(Matchers.equalTo(direccionOk)));
     }
@@ -257,8 +257,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         this.seleccionarUnContacto(nombreContacto);
         WebElementFacade campoDireccionContacto = commons.esperarElemento(XPATH_DIRECCION_DETALLE);
         String getCampoDireccionContacto = campoDireccionContacto.getValue();
-        linkVolverAContacto.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
-        botonAceptarMensaje.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        waitFor(linkVolverAContacto).waitUntilPresent().click();
+        waitFor(botonAceptarMensaje).waitUntilPresent().click();
         MatcherAssert.assertThat(getCampoDireccionContacto, Is.is(Matchers.equalTo(direccionEstandarizada)));
     }
 
@@ -268,7 +268,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         MatcherAssert.assertThat(campoDireccionContacto.getText(), Is.is(Matchers.equalTo(direccionVinculada)));
         WebElementFacade botonCancelar = commons.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel']");
         botonCancelar.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(titulo).waitUntilPresent();
+        waitFor(titulo).waitUntilPresent();
     }
 
     public void seleccionarContactoAEditar(String nombreContacto) {
@@ -297,7 +297,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void escribirEnElCampo(String direccion, WebElementFacade campo) {
-        campo.withTimeoutOf(15, TimeUnit.SECONDS).waitUntilPresent();
+        waitFor(campo).waitUntilPresent();
         campo.clear();
         campo.sendKeys(direccion);
     }
@@ -356,7 +356,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         menuContactoTitular.click();
         WebElementFacade menuContactoDireccionPrincipal = commons.esperarElemento(".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail:PrimaryAddress']");
         menuContactoDireccionPrincipal.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(mensajeDireccionVinculada).waitUntilPresent();
+        waitFor(mensajeDireccionVinculada).waitUntilPresent();
     }
 
     public void validarAsociacionDeDireccionAContactoSecundario(ExamplesTable direccionAsociada) {
