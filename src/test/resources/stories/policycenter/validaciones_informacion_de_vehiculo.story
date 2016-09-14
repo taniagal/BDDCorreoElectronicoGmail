@@ -2,8 +2,8 @@ Validaciones Informacion De Vehiculo
 
 Meta:
 @issue #CDSEG-1013
-@automatizador Nelson Mosquera
 @sprint 3
+@tag automator: nelson_jhair_mosquera_palacios
 @local
 
 Narrative:

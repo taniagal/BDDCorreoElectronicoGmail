@@ -2,8 +2,9 @@ Detalles De Ubicacion
 
 Meta:
 @issue #CDSEG-915
-@automatizador Nelson Mosquera
 @sprint 2
+@tag automator: nelson_jhair_mosquera_palacios
+@local
 
 Narrative:
 Como usuario PolicyCenter con el papel de agente, RSE , Suscriptor o el Administrador

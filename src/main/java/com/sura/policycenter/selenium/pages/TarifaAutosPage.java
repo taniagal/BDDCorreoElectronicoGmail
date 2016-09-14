@@ -40,7 +40,7 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade checkBoxHurto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxAsistencia;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:DetailsButton-btnInnerEl']")
     private WebElementFacade botonDetalles;
@@ -48,8 +48,6 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade menuItemCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
     private WebElementFacade meniItemAsegurados;
-    @FindBy(id = "SubmissionWizard:PolicyInfo")
-    private WebElementFacade meniItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxAbogado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
@@ -94,8 +92,6 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade checkBoxConductorElegido;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:4:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxConductorElegido;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:TermType-inputEl']")
-    private WebElementFacade comboBoxTipoPlazo;
 
     public TarifaAutosPage(WebDriver driver) {
         super(driver);
@@ -120,6 +116,19 @@ public class TarifaAutosPage extends Commons {
     }
 
 
+    public void cotizar() {
+        botonCotizar.click();
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonDetalles).shouldBePresent();
+        waitUntil(500);
+        menuItemCotizacion.click();
+    }
+
+
+    public void desMarcarCoberturas() {
+        checkBoxHurto.click();
+    }
+
+
     public void setCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
         botonBorrar.waitUntilPresent().click();
@@ -133,24 +142,6 @@ public class TarifaAutosPage extends Commons {
         waitUntil(800);
         selectItem(comboBoxDeducible, dato.get("deducible"));
         selectItem(comboBoxAbogado, dato.get("abogado"));
-    }
-
-    public void cambiarTipoPlazo(){
-        meniItemInformacionDePoliza.click();
-        comboBoxTipoPlazo.waitUntilPresent();
-        selectItem(comboBoxTipoPlazo,"6 meses");
-    }
-
-    public void cotizar() {
-        botonCotizar.click();
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonDetalles).shouldBePresent();
-        waitUntil(500);
-        menuItemCotizacion.click();
-    }
-
-
-    public void desMarcarCoberturas() {
-        checkBoxHurto.click();
     }
 
 

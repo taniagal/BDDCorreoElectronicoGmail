@@ -2,8 +2,8 @@ Tarifa Autos
 
 Meta:
 @issue #CDSEG-1348
-@automatizador Nelson Mosquera
 @sprint 5
+@tag automator: nelson_jhair_mosquera_palacios
 @local
 
 Narrative:
