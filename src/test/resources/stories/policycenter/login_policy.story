@@ -1,4 +1,5 @@
 Meta:
+@local
 
 Narrative:
 Como un usuario de PolicyCenter con el rol de suscriptor, agente o CSR

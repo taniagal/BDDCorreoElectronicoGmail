@@ -70,7 +70,7 @@ public class EdificiosUbicaciones {
             String cobertura = entradaCobertura.get("COBERTURA");
             String entrada = entradaCobertura.get("ENTRADAS");
             boolean esOtroArticulo = false;
-            if (entradaCobertura.get("OTRO_ARTICULO_OTROS").equals("X")){
+            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))){
                 esOtroArticulo = true;
             }
             boolean esUltimaFilaDeExampleTable = index == entradas.getRows().size();
@@ -159,7 +159,7 @@ public class EdificiosUbicaciones {
         return new HasItemContainsString(expectedValue);
     }
 
-    private final static class HasItemContainsString extends TypeSafeMatcher<List<String>> {
+    private static final class HasItemContainsString extends TypeSafeMatcher<List<String>> {
 
         private final String expectedValue;
 

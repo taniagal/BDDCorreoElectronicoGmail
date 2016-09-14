@@ -18,7 +18,7 @@ public class OpcionesCrearPartcCuentaPage extends Commons {
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV-body']/*/table/tbody/tr[2]/td[1]")
     private WebElementFacade listRol;
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV-body']/*/table/tbody")
-    private WebElementFacade Rol;
+    private WebElementFacade rol;
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:AccountRolesLV:1:AssignedUser:UserBrowseMenuItem']")
     private WebElementFacade btnSelecUsuar;
     @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchDV:Username-inputEl']")
@@ -62,6 +62,6 @@ public class OpcionesCrearPartcCuentaPage extends Commons {
     }
 
     public void verificarCamposParticipantes() {
-        MatcherAssert.assertThat("Error al agregar el Rol del participante de la cuenta", Rol.containsText("Agente"));
+        MatcherAssert.assertThat("Error al agregar el rol del participante de la cuenta", rol.containsText("Agente"));
     }
 }

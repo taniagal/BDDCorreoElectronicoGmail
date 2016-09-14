@@ -66,14 +66,18 @@ public class DireccionPrincipalDeUnContactoPage extends Commons{
     public void validarCampos() {
         comboBoxPais.waitUntilPresent();
         StringBuilder right = new StringBuilder(contactoPage.MSJVALIDARVALORES);
-        if(!"Colombia".equals(comboBoxPais.getValue().toString()))
+        if(!"Colombia".equals(comboBoxPais.getValue().toString())) {
             right.append(" pais,");
-        if(!"<ninguno>".equals(comboBoxDepartamento.getValue().toString()))
+        }
+        if(!"<ninguno>".equals(comboBoxDepartamento.getValue().toString())) {
             right.append(" departamento,");
-        if(!"Esta Direccion podria estandarizarse automáticamente".equals(campoTxtDireccion.getAttribute("data-qtip")))
+        }
+        if(!"Esta Direccion podria estandarizarse automáticamente".equals(campoTxtDireccion.getAttribute("data-qtip"))) {
             right.append("drireccion data-tip,");
-        if(!"200".equals(campoTxtDireccion.getAttribute("maxlength")))
+        }
+        if(!"200".equals(campoTxtDireccion.getAttribute("maxlength"))) {
             right.append("direccion maxlength,");
+        }
         String res = right.toString();
         if(contactoPage.MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);

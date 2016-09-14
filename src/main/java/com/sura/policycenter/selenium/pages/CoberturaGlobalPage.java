@@ -63,10 +63,12 @@ public class CoberturaGlobalPage extends Commons {
     public void agregarCoberturasGlobales(ExamplesTable datosCobertura) {
         Map<String, String> dato = datosCobertura.getRow(0);
         navegarPorCobertura(dato.get("descripcion"), dato.get("tipo_cobertura"));
-        if("Multiples ubicaciones".equals(dato.get("tipo_cobertura")))
+        if("Multiples ubicaciones".equals(dato.get("tipo_cobertura"))) {
             cargarMultiplesUbicaciones(dato.get("valor"));
-        else if ("Una cobertura".equals(dato.get("tipo_cobertura")))
-                cargarCoberturaUnica(dato.get("nombre_cobertura"), dato.get("valor"));
+        }
+        else if ("Una cobertura".equals(dato.get("tipo_cobertura"))) {
+            cargarCoberturaUnica(dato.get("nombre_cobertura"), dato.get("valor"));
+        }
         botonAceptar.click();
     }
 

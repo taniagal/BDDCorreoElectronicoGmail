@@ -3,7 +3,7 @@ Busqueda Contacto
 Meta:
 
 @issue #CDSEG-894
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
 @Sprint 1
 
 Narrative:

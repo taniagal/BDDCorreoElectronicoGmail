@@ -2,8 +2,9 @@ Coberturas Globales
 
 Meta:
 @issue #CDSEG-738
-@automatizador Nelson Mosquera
 @sprint 3
+@tag automator: nelson_jhair_mosquera_palacios
+@local
 
 Narrative:
 Como usuario de policyCenter
