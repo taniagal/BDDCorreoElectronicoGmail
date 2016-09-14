@@ -2,8 +2,9 @@ Registro De Coaseguro
 
 Meta:
 @issue #NotFound
-@automatizador Nelson Mosquera
 @sprint 2
+@tag automator: nelson_jhair_mosquera_palacios
+
 
 Narrative:
 Como usuario de PolicyCenter

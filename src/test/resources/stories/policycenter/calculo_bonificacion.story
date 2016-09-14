@@ -2,8 +2,9 @@ Calculo Bonificacion
 
 Meta:
 @issue #CDSEG-1938
-@automatizador Nelson Mosquera
 @Sprint 6
+@tag automator: nelson_jhair_mosquera_palacios
+@local
 
 Narrative:
 Como usuario de policy center
