@@ -178,8 +178,7 @@ public class BusquedaContactoDefinitions {
     }
 
     @Then("no debo ver la informacion del contacto de tipo persona juridica")
-    public void thenValidarInformacionPersonaJuridica()
-    {
+    public void thenValidarInformacionPersonaJuridica(){
         buscarContactoSteps.validarInformacionTipoId();
     }
 
