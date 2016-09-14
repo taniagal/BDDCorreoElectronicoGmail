@@ -97,24 +97,6 @@ Examples:
 |tipoDoc             |primerApellido |segundoApellido |mensaje |
 |CEDULA DE CIUDADANIA|GALLEGO        |TORRES          |No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas).|
 
-Scenario: Consultar contacto de tipo persona juridica por razon social
-Given estoy en busqueda de contactos
-When quiera consultar contacto de tipo persona juridica <tipoDoc> por razon social <razonSocial>
-Then debo ver la informacion del contacto de tipo persona juridica <filtro>
-
-Examples:
-|tipoDoc |razonSocial         |filtro              |
-|NIT     |VARIEDADES YURLEDYS |VARIEDADES YURLEDYS |
-
-Scenario: Consultar contacto de tipo persona juridica por nombre comercial
-Given estoy en busqueda de contactos
-When quiera consultar contacto de tipo persona juridica <tipoDoc> por nombre comercial <nombreComercial>
-Then debo ver la informacion del contacto de tipo persona juridica <filtro>
-
-Examples:
-|tipoDoc  |nombreComercial     |filtro             |
-|NIT      |VARIEDADES YURLEDYS |VARIEDADES YURLEDYS|
-
 Scenario: Consultar contacto de tipo persona natural por tipo y numero de identificacion
 Given estoy en busqueda de contactos
 When quiera consultar contacto de tipo persona natural por tipo <tipoDoc> y numero de identificacion <numDoc>
@@ -123,15 +105,6 @@ Then debo ver la informacion del contacto de tipo persona natural <filtro1> <fil
 Examples:
 |tipoDoc              |numDoc      |filtro1              |filtro2     |
 |CEDULA DE CIUDADANIA |1234567890  |CEDULA DE CIUDADANIA |1234567890  |
-
-Scenario: Consultar contacto de tipo persona juridica por tipo y numero de identificacion
-Given estoy en busqueda de contactos
-When quiera consultar contacto de tipo persona juridica por tipo <tipoDoc> y numero de identificacion <numDoc>
-Then debo ver la informacion del contacto de tipo persona juridica <filtro>
-
-Examples:
-|tipoDoc|numDoc     |filtro    |
-|NIT    |9202086744 |9202086744|
 
 Scenario: Consultar contacto de tipo persona juridica unicamente por tipo de identificacion
 Given estoy en busqueda de contactos
@@ -200,11 +173,26 @@ Examples:
 |tipoDoc              |primerNombre |primerApellido|filtro1  |filtro2 |
 |CEDULA DE CIUDADANIA |YURLEDYS     |GALLEGO       |YURLEDYS |GALLEGO |
 
-Scenario: Opcion Contactos - Buscar, persona juridica por nombre comercial
-Given estoy en contactos para buscar
-When quiera consultar contacto de tipo persona juridica <tipoDoc> por nombre comercial <nombreComercial>
-Then debo ver la informacion del contacto de tipo persona juridica <filtro>
+Scenario: Consultar contacto de tipo persona juridica por razon social
+Meta: @manual
+Given estoy buscando un contacto
+When quiera consultar contacto de tipo persona juridica por razon social
+Then debo ver la informacion del contacto de tipo persona juridica
 
-Examples:
-|tipoDoc  |nombreComercial     |filtro              |
-|NIT      |VARIEDADES YURLEDYS |VARIEDADES YURLEDYS |
+Scenario: Consultar contacto de tipo persona juridica por nombre comercial
+Meta: @manual
+Given estoy buscando un contacto
+When quiera consultar contacto de tipo persona juridica por nombre comercial
+Then debo ver la informacion del contacto de tipo persona juridica
+
+Scenario: Opcion Contactos - Buscar, persona juridica por nombre comercial
+Meta: @manual
+Given estoy buscando un contacto
+When quiera consultar contacto de tipo persona juridica por nombre comercial
+Then debo ver la informacion del contacto de tipo persona juridica
+
+Scenario: Consultar contacto de tipo persona juridica por tipo y numero de identificacion
+Meta: @manual
+Given estoy buscando un contacto
+When quiera consultar contacto de tipo persona juridica por tipo y numero de identificacion
+Then debo ver la informacion del contacto de tipo persona juridica

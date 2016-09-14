@@ -136,28 +136,6 @@ public class BusquedaContactoPage extends Commons {
         botonBuscar.click();
     }
 
-    public void verInfoPersonaJuridica(String filtro) {
-        String primerElemento = primerElementoTabla.getText();
-        waitForTextToAppear(primerElemento);
-        List<WebElement> allRows = table.findElements(By.tagName("tr"));
-        waitUntil(1000);
-
-        try {
-
-            for (WebElement row : allRows) {
-                List<WebElement> cells = row.findElements(By.tagName("td"));
-                boolean valido = cells.get(0).getText().equals(filtro) ||
-                        cells.get(1).getText().equals(filtro) ||
-                        cells.get(2).getText().equals(filtro) ||
-                        cells.get(3).getText().equals(filtro);
-                SeleneseTestBase.assertTrue(valido);
-            }
-
-        } catch (Exception e) {
-            LOGGER.error("This is error", e);
-        }
-    }
-
     public void verInfoPersonaNatural(String filtro1, String filtro2) {
         waitUntil(1000);
         String primerElemento = primerElementoTabla.getText();
