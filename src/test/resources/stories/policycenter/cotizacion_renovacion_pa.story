@@ -3,7 +3,8 @@ Cotizacion Renovacion Pa
 Meta:
 
 @issue #CDSEG-842
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 6
 
 Narrative:
