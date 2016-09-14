@@ -99,7 +99,8 @@ public class BusquedaDeCuentasPage extends Commons {
 
 
     public void irABuscarCuentas() {
-        waitFor(menuBuscar).waitUntilPresent().click();
+        waitFor(menuBuscar).waitUntilPresent().waitUntilClickable();
+        menuBuscar.click();
         waitUntil(1500);
         waitFor(menuBuscarCuentas).waitUntilPresent();
         menuBuscarCuentas.click();
@@ -148,7 +149,9 @@ public class BusquedaDeCuentasPage extends Commons {
     private void validarCheckNoSeleccionado(WebElementFacade elemento) {
         if (elemento.isSelected()) {
             MatcherAssert.assertThat("Check seleccionado", Matchers.containsString("Check no seleccionado"));
-        } else MatcherAssert.assertThat("Check no seleccionado", Matchers.containsString("Check no seleccionado"));
+        } else {
+            MatcherAssert.assertThat("Check no seleccionado", Matchers.containsString("Check no seleccionado"));
+        }
     }
 
     public void validarCamposDelFormulario() {

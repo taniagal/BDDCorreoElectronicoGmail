@@ -10,8 +10,8 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
     DireccionesDeContactoVinculadasPage direccionesDeContactoVinculadasPage;
 
     @Step
-    public void buscarCuenta(String numeroCuenta) {
-        direccionesDeContactoVinculadasPage.buscarCuenta(numeroCuenta);
+    public void irALosContactosDeLaCuenta() {
+        direccionesDeContactoVinculadasPage.irALosContactosDeLaCuenta();
     }
 
     @Step
