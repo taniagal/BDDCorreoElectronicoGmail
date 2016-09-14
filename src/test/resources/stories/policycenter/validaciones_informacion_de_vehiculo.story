@@ -4,6 +4,7 @@ Meta:
 @issue #CDSEG-1013
 @automatizador Nelson Mosquera
 @sprint 3
+@local
 
 Narrative:
 Como usuario de policy center

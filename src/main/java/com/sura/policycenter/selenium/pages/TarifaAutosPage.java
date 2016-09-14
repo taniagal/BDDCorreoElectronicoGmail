@@ -40,12 +40,16 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade checkBoxHurto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxAsistencia;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:DetailsButton-btnInnerEl']")
     private WebElementFacade botonDetalles;
     @FindBy(id = "SubmissionWizard:ViewQuote")
     private WebElementFacade menuItemCotizacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
+    private WebElementFacade meniItemAsegurados;
+    @FindBy(id = "SubmissionWizard:PolicyInfo")
+    private WebElementFacade meniItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxAbogado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
@@ -94,9 +98,8 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade checkBoxConductorElegido;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:4:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxConductorElegido;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
-    private WebElementFacade meniItemAsegurados;
-
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:TermType-inputEl']")
+    private WebElementFacade comboBoxTipoPlazo;
 
     public TarifaAutosPage(WebDriver driver) {
         super(driver);
@@ -136,6 +139,11 @@ public class TarifaAutosPage extends Commons {
         selectItem(comboBoxAbogado, dato.get("abogado"));
     }
 
+    public void cambiarTipoPlazo(){
+        meniItemInformacionDePoliza.click();
+        comboBoxTipoPlazo.waitUntilPresent();
+        selectItem(comboBoxTipoPlazo,"6 meses");
+    }
 
     public void cotizar() {
         botonCotizar.click();
@@ -150,7 +158,7 @@ public class TarifaAutosPage extends Commons {
     }
 
 
-    public void selectCoberturas(ExamplesTable coberturas) {
+    public void seleccionarCoberturas(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         selectItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         selectItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
@@ -168,7 +176,7 @@ public class TarifaAutosPage extends Commons {
     }
 
 
-    public void selectCoberturas2(ExamplesTable coberturas) {
+    public void seleccionarCoberturas2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         checkBoxTaller.click();
         selectItem(comboBoxTaller, dato.get("Taller"));
@@ -182,7 +190,7 @@ public class TarifaAutosPage extends Commons {
     }
 
 
-    public void selectCoberturas3(ExamplesTable coberturas) {
+    public void seleccionarCoberturas3(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         checkBoxTallerMovil.click();
         checkBoxConductorElegido.click();
