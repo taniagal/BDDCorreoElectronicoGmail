@@ -3,7 +3,8 @@ Cotizacion PA Detalle
 Meta:
 
 @issue #CDSEG-807
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 3
 
 Narrative:

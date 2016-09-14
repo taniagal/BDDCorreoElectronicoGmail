@@ -2,8 +2,9 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
+
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -13,7 +14,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
 
 
 public class BusquedaActividadesPage extends PageObject {
@@ -66,7 +66,7 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void irABuscarActividades() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent();
+        waitFor(menuBuscar).waitUntilPresent();
         commons.waitUntil(2000);
         menuBuscar.click();
         waitFor(menuBuscarActividades);
@@ -77,7 +77,7 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void filtrarPorAsignado(String usuario) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
+        waitFor(txtAsignadoA).waitUntilPresent();
         txtAsignadoA.sendKeys(usuario);
     }
 
@@ -97,18 +97,18 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void limpiarFiltros() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent();
+        waitFor(botonRestablecer).waitUntilPresent();
         botonRestablecer.click();
         commons.waitUntil(2000);
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroPoliza).waitUntilPresent();
+        waitFor(txtNumeroPoliza).waitUntilPresent();
         txtNumeroPoliza.sendKeys(numeroPoliza);
     }
 
     public void filtrarPorNumeroDeCuenta(String numeroCuenta) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroCuenta).waitUntilPresent();
+        waitFor(txtNumeroCuenta).waitUntilPresent();
         txtNumeroCuenta.sendKeys(numeroCuenta);
     }
 
@@ -117,36 +117,36 @@ public class BusquedaActividadesPage extends PageObject {
     }
 
     public void validarMensjeFiltroRequerido(String mensaje) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        waitFor(btnBuscar).waitUntilPresent();
         btnBuscar.waitUntilVisible().waitUntilClickable().click();
         waitForPresenceOf(".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div");
         MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
     }
 
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
+        waitFor(txtAsignadoA).waitUntilPresent();
         txtAsignadoA.sendKeys(usuario);
         this.ingresarDatoEnCombo(txtPrioridad, prioridad);
     }
 
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(String usuario, String estadoActividad) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
+        waitFor(txtAsignadoA).waitUntilPresent();
         txtAsignadoA.sendKeys(usuario);
         this.ingresarDatoEnCombo(txtEstadoActividad, estadoActividad);
     }
 
     public void buscarPorFiltrosUsuarioYVencida(String usuario, String vencida) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
+        waitFor(txtAsignadoA).waitUntilPresent();
         txtAsignadoA.sendKeys(usuario);
         this.ingresarDatoEnCombo(txtVencida, vencida);
     }
 
     public void buscarPorFiltroOpcional(String estadoActividad) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
+        waitFor(txtAsignadoA).waitUntilPresent();
         this.ingresarDatoEnCombo(txtEstadoActividad, estadoActividad);
     }
 
-    public void ingresarDatoEnCombo(WebElementFacade elemento, String dato){
+    public void ingresarDatoEnCombo(WebElementFacade elemento, String dato) {
         waitFor(elemento);
         elemento.clear();
         elemento.sendKeys(dato);

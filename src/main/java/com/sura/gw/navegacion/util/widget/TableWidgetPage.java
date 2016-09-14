@@ -56,14 +56,14 @@ public class TableWidgetPage extends PageObject {
     }
 
     public Boolean existenFilasEnTabla() {
-        if (! obtenerFilas().isEmpty())
+        if (! obtenerFilas().isEmpty()) {
             return false;
+        }
         return true;
     }
 
     public List<WebElement> obtenerEncabezado() {
-        List<WebElement> encabezadoListWE = getDriver().findElements(By.xpath(ENCABEZADO_TABLA));
-        return encabezadoListWE;
+        return getDriver().findElements(By.xpath(ENCABEZADO_TABLA));
     }
 
     public TableWidgetPage enToolbar() {

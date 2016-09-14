@@ -58,12 +58,6 @@ public class BusquedaContactoSteps extends ScenarioSteps {
 
 
     @Step
-    @Pending
-    public void verInfoPersonaJuridica(String filtro) {
-        busquedaContactoPage.verInfoPersonaJuridica(filtro);
-    }
-
-    @Step
     public void verInfoPersonaNatural(String filtro1, String filtro2) {
         busquedaContactoPage.verInfoPersonaNatural(filtro1, filtro2);
     }

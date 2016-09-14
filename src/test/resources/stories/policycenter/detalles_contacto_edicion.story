@@ -2,8 +2,9 @@ Detalles Contacto Edicion
 
 Meta:
 @issue #CDSEG-830
-@automatizador Nelson Mosquera
 @sprint 1
+@tag automator: nelson_jhair_mosquera_palacios
+
 
 Narrative:
 As a user

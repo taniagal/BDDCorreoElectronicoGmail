@@ -46,14 +46,14 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade botonDetalles;
     @FindBy(id = "SubmissionWizard:ViewQuote")
     private WebElementFacade menuItemCotizacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
+    private WebElementFacade meniItemAsegurados;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxAbogado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxPerdidaTotalHurto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:1:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxPerdidaParcialHurto;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:2:CovTermInputSet:OptionTermInput-inputEl']")
-    private WebElementFacade comboBoxPerdidaParcialHurtoFranquisia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:3:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosDeTransporte;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
@@ -78,8 +78,6 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade comboBoxPerdidaTotalDaniosDeducible;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:1:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxPerdidaParcialDaniosDeducible;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:2:CovTermInputSet:OptionTermInput-inputEl']")
-    private WebElementFacade comboBoxPerdidaParcialDaniosFranquicia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:3:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosDeTransporteCarro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACarroDeReemplazoDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
@@ -94,9 +92,6 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade checkBoxConductorElegido;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:4:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxConductorElegido;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
-    private WebElementFacade meniItemAsegurados;
-
 
     public TarifaAutosPage(WebDriver driver) {
         super(driver);
@@ -121,6 +116,19 @@ public class TarifaAutosPage extends Commons {
     }
 
 
+    public void cotizar() {
+        botonCotizar.click();
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonDetalles).shouldBePresent();
+        waitUntil(500);
+        menuItemCotizacion.click();
+    }
+
+
+    public void desMarcarCoberturas() {
+        checkBoxHurto.click();
+    }
+
+
     public void setCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
         botonBorrar.waitUntilPresent().click();
@@ -137,24 +145,10 @@ public class TarifaAutosPage extends Commons {
     }
 
 
-    public void cotizar() {
-        botonCotizar.click();
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonDetalles).shouldBePresent();
-        waitUntil(500);
-        menuItemCotizacion.click();
-    }
-
-
-    public void desMarcarCoberturas() {
-        checkBoxHurto.click();
-    }
-
-
-    public void selectCoberturas(ExamplesTable coberturas) {
+    public void seleccionarCoberturas(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         selectItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         selectItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
-        selectItem(comboBoxPerdidaParcialHurtoFranquisia, dato.get("PPHF"));
         selectItem(comboBoxGastosDeTransporte, dato.get("GTH"));
         checkBoxAccidentes.click();
         selectItem(comboBoxAccidentes, dato.get("AC"));
@@ -163,12 +157,11 @@ public class TarifaAutosPage extends Commons {
         checkBoxDaniosCarro.click();
         selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
         selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
-        selectItem(comboBoxPerdidaParcialDaniosFranquicia, dato.get("PPDF"));
         selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
     }
 
 
-    public void selectCoberturas2(ExamplesTable coberturas) {
+    public void seleccionarCoberturas2(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         checkBoxTaller.click();
         selectItem(comboBoxTaller, dato.get("Taller"));
@@ -182,7 +175,7 @@ public class TarifaAutosPage extends Commons {
     }
 
 
-    public void selectCoberturas3(ExamplesTable coberturas) {
+    public void seleccionarCoberturas3(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         checkBoxTallerMovil.click();
         checkBoxConductorElegido.click();

@@ -112,7 +112,8 @@ public class CotizacionRenovacionPAPage extends Commons{
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("empresaAseguradora"))));
-        MatcherAssert.assertThat(campoPrimaTotal.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("primaTotal"))));
+        MatcherAssert.assertThat("Error en el valor de la cuota, expected '"+informacionRenovacion.get("primaTotal")+"' but was: "+
+                campoPrimaTotal.getText(),campoPrimaTotal.getText().contains(informacionRenovacion.get("primaTotal")));
         MatcherAssert.assertThat(campoImpuestos.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("impuestos"))));
         MatcherAssert.assertThat(campoCostoTotal.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("costoTotal"))));
     }
