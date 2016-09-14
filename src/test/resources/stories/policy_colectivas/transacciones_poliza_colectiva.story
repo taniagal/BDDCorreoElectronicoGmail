@@ -3,8 +3,9 @@ Transacciones Poliza Colectiva
 Meta:
 
 @issue #CDSEG-877
-@Automatizador Eliana Alvarez
+@tag automator: eliana_alvarez, sprint:5
 @Sprint 5
+@local
 
 Narrative:
 Como usuario de PolicyCenter

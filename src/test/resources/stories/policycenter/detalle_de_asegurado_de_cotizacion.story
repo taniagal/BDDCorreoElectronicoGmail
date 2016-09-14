@@ -3,7 +3,7 @@ Detalle De Asegurado De Cotizacion
 Meta:
 
 @issue #CDSEG-1027
-@Automatizador Eliana Alvarez
+@tag automator: eliana_alvarez, sprint:2
 @Sprint 2
 
 Narrative:
