@@ -52,8 +52,6 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade comboBoxPerdidaTotalHurto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:1:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxPerdidaParcialHurto;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:2:CovTermInputSet:OptionTermInput-inputEl']")
-    private WebElementFacade comboBoxPerdidaParcialHurtoFranquisia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:3:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosDeTransporte;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
@@ -78,8 +76,6 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade comboBoxPerdidaTotalDaniosDeducible;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:1:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxPerdidaParcialDaniosDeducible;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:2:CovTermInputSet:OptionTermInput-inputEl']")
-    private WebElementFacade comboBoxPerdidaParcialDaniosFranquicia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:3:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosDeTransporteCarro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACarroDeReemplazoDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
@@ -154,7 +150,6 @@ public class TarifaAutosPage extends Commons {
         Map<String, String> dato = coberturas.getRow(0);
         selectItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
         selectItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
-        selectItem(comboBoxPerdidaParcialHurtoFranquisia, dato.get("PPHF"));
         selectItem(comboBoxGastosDeTransporte, dato.get("GTH"));
         checkBoxAccidentes.click();
         selectItem(comboBoxAccidentes, dato.get("AC"));
@@ -163,7 +158,6 @@ public class TarifaAutosPage extends Commons {
         checkBoxDaniosCarro.click();
         selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
         selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
-        selectItem(comboBoxPerdidaParcialDaniosFranquicia, dato.get("PPDF"));
         selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
     }
 
