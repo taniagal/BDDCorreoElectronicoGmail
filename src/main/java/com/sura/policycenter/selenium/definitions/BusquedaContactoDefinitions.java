@@ -208,11 +208,6 @@ public class BusquedaContactoDefinitions {
         buscarContactoSteps.verInfoPersonaNatural(filtro1, filtro2);
     }
 
-    @Then("debo ver la informacion del contacto de tipo persona juridica <filtro>")
-    public void thenVerInfoPersonaJuridica(@Named("filtro") String filtro){
-        buscarContactoSteps.verInfoPersonaJuridica(filtro);
-    }
-
     @Then("debo ver un <mensaje> de alerta indicando que la longitud debe ser mayor o igual a dos caracteres")
     public void validarMensajeLongitudPersNat(@Named("mensaje") String mensaje){
         buscarContactoSteps.validarMensaje(mensaje);
