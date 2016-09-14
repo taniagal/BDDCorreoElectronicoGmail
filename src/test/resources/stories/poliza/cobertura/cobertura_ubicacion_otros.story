@@ -1,13 +1,12 @@
-Validacion de sublimites otros
+cobertura ubicacion otros
 
 Meta:
 
-Scenario: 18 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)
+Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
-@Informador alejandro esteban villada marin
-@Automatizador andres alarcon guerrero
+@tag automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -26,12 +25,11 @@ Examples:
 | 22222236        | Asesor     |             |
 
 
-Scenario: 19 Portadores externos de datos (Coberturas del riesgo)
+Scenario: 2 Portadores externos de datos (Coberturas del riesgo)
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
-@Informador alejandro esteban villada marin
-@Automatizador andres alarcon guerrero
+@tag automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -47,12 +45,11 @@ Examples:
 | 22222236        | Asesor     |             |
 
 
-Scenario: 20 Gastos por arrendamiento de sistema electronico de procesamiento de datos (Coberturas del riesgo)
+Scenario: 3 Gastos por arrendamiento de sistema electronico de procesamiento de datos (Coberturas del riesgo)
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
-@Informador alejandro esteban villada marin
-@Automatizador andres alarcon guerrero
+@tag automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -68,12 +65,11 @@ Examples:
 | 22222236        | Asesor     |             |
 
 
-Scenario: 21 Sublimite todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados (Coberturas del riesgo) - Porcentaje
+Scenario: 4 Sublimite todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados (Coberturas del riesgo) - Porcentaje
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
-@Informador alejandro esteban villada marin
-@Automatizador andres alarcon guerrero
+@tag automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -93,12 +89,11 @@ Examples:
 | 22222236        | Asesor     |             |
 
 
-Scenario: 22 Sublimites menores a valor asegurado daños (coberturas a nivel de riesgo)
+Scenario: 5 Sublimites menores a valor asegurado daños (coberturas a nivel de riesgo)
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
-@Informador alejandro esteban villada marin
-@Automatizador andres alarcon guerrero
+@tag automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -135,58 +130,6 @@ Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de tra
 |El valor del "Sublímite para perdida de contenido en tanques" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                             |
 |El valor del "Sublimite para derrame de materiales en fusion" debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                                             |
 |El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                  |
-Examples:
-| numSubscripcion | rolUsuario | descripcion |
-| 22222236        | Asesor     |             |
-
-
-Scenario: 23 Bug CDSEG-2887
-Meta:
-@Story CDSEG-2887
-@URL https://jira.suramericana.com.co/browse/CDSEG-2887
-@Informador alejandro esteban villada marin
-@Automatizador andres alarcon guerrero
-@LOB Multiriesgo corporativo
-@tag bug:CDSEG-2887
-@Sprint 6
-
-Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
-When intente ingresar las entradas de las diferentes coberturas
-| TAB             | TIPO_ARTICULO     | COBERTURA | OTRO_ARTICULO_OTROS | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Otros Articulos | Suelos y Terrenos | Terremoto |                     | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
-| Otros Articulos | Suelos y Terrenos | Terremoto | X                   | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
-When haga clic en el boton Aceptar
-Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
-Examples:
-| numSubscripcion | rolUsuario | descripcion |
-| 22222236        | Asesor     |             |
-
-
-Scenario: 24 Bug CDSEG-2756
-Meta:
-@Story CDSEG-2756
-@URL https://jira.suramericana.com.co/browse/CDSEG-2756
-@Informador alejandro esteban villada marin
-@Automatizador andres alarcon guerrero
-@LOB Multiriesgo corporativo
-@tag bug:CDSEG-2756
-@Sprint 6
-
-Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
-When intente ingresar las entradas de las diferentes coberturas
-| TAB             | TIPO_ARTICULO     | COBERTURA | OTRO_ARTICULO_OTROS | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Otros Articulos | Suelos y Terrenos | Terremoto |                     | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
-| Otros Articulos | Suelos y Terrenos | Terremoto | X                   | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
-When haga clic en el boton Aceptar
-Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |

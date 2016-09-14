@@ -4,7 +4,13 @@ import net.serenitybdd.jbehave.SerenityStory;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.junit.Test;
 
-public class ValidacionEnIngresoDeUnArticuloAUnaUbicacion extends SerenityStory {
+
+public class CoberturaUbicacionOtros extends SerenityStory {
+
+    public CoberturaUbicacionOtros(){
+
+        //runSerenity().inASingleSession();
+    }
 
     @Test
     public void postStory(){
