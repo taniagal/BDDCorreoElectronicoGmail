@@ -3,7 +3,8 @@ Cotizacion De Poliza
 Meta:
 
 @issue #CDSEG-843
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 3
 
 Narrative:

@@ -3,7 +3,8 @@ Modificacion Informacion Poliza Pa
 Meta:
 
 @issue #CDSEG-977
-@Automatizador diego cardona
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 4
 
 Narrative:

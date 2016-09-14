@@ -1,9 +1,10 @@
-Expedir Cambio De Poliza Uw Peps
+Expedicion Cambio De Poliza Uw Peps
 
 Meta:
 
 @issue #CDSEG-1252
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 6
 
 Narrative:

@@ -3,7 +3,7 @@ Resumen Cuenta
 Meta:
 
 @issue #CDSEG-666
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
 @Sprint 2
 
 Narrative:

@@ -3,7 +3,8 @@ Modificacion Cotizacion De Poliza Pa
 Meta:
 
 @issue #CDSEG-1286
-@Automatizador diego cardona
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 4
 
 Narrative:

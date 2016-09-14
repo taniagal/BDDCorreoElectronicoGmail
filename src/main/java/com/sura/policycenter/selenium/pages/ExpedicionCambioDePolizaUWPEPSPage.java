@@ -14,7 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
-public class ExpedirCambioDePolizaUWPEPSPage extends Commons{
+public class ExpedicionCambioDePolizaUWPEPSPage extends Commons{
 
     Actions act = new Actions(getDriver());
 
@@ -35,7 +35,7 @@ public class ExpedirCambioDePolizaUWPEPSPage extends Commons{
     @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']")
     private WebElementFacade grupoMensajes;
 
-    public ExpedirCambioDePolizaUWPEPSPage(WebDriver driver){
+    public ExpedicionCambioDePolizaUWPEPSPage(WebDriver driver){
         super(driver);
     }
 
