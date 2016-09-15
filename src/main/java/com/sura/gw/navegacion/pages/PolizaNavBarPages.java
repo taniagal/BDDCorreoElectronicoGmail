@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 
 public class PolizaNavBarPages extends PageObject {
 
-    // TODO: 15/09/2016 quitar 
+    // TODO: 15/09/2016 quitar
     @FindBy(xpath = ".//a[contains(@id,'TabBar:PolicyTab')]")
     NavegacionBarraSuperiorWO navegacionBarraSuperiorWO;
 
