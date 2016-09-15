@@ -5,10 +5,8 @@ import com.sura.gw.policy.cuenta.steps.CuentaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
-import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
@@ -97,10 +95,6 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
     /**
      * POST SCENARY
      */
-    @AfterScenario
-    public void finalizarEscenario(){
-        SerenityWebdriverManager.inThisTestThread().closeCurrentDriver();
-        LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.finalizarEscenario");
-    }
+
 
 }
