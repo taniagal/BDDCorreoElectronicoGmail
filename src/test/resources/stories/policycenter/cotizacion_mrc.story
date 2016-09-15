@@ -3,7 +3,8 @@ Cotizacion MRC
 Meta:
 
 @issue #CDSEG-774
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 3
 
 Narrative:
