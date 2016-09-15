@@ -3,7 +3,8 @@ expedicion de poliza mrc peps bloqueo alerta
 Meta:
 
 @issue #CDSEG-1653
-@Automatizador: Jonathan Mejia Leon
+@tag automator: Jonathan_Mejia_Leon
+@local
 Sprint 5
 
 Narrative:
