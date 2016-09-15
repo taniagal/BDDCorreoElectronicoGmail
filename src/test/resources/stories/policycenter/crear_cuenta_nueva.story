@@ -2,8 +2,8 @@ Crear Cuenta Nueva
 
 Meta:
 @issue #CDSEG-990
-@automatizador Nelson Mosquera
 @sprint 1
+@tag automator: nelson_jhair_mosquera_palacios
 
 Narrative:
 Como usuario

@@ -49,15 +49,18 @@ public class CoaseguroPage extends Commons {
         radioBotonLider.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         try{
-            if(radioBotonAceptado.isSelected())
+            if(radioBotonAceptado.isSelected()) {
                 right.append("radio_boton_cedido, ");
+            }
         }catch (StaleElementReferenceException e){
             e.printStackTrace();
         }
-        if(!botonAgregar.isPresent())
+        if(!botonAgregar.isPresent()) {
             right.append("boton_agregar, ");
-        if(!campoTxtDastosAdministrativos.containsText("2%") || campoTxtDastosAdministrativos.getAttribute("class").contains("x-form-text"))
+        }
+        if(!campoTxtDastosAdministrativos.containsText("2%") || campoTxtDastosAdministrativos.getAttribute("class").contains("x-form-text")) {
             right.append("Gastos_Administrativos, ");
+        }
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);

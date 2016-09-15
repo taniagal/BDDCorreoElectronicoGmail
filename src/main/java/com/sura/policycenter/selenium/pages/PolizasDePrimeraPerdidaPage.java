@@ -44,8 +44,9 @@ public class PolizasDePrimeraPerdidaPage extends Commons {
         campoTxtValorReconstruccion.waitUntilPresent().sendKeys(dato.get("valor"));
         checkBoxDanosmateriales.click();
         campoTxtValorasegurado.waitUntilPresent().sendKeys(dato.get("limite"));
-        if("350000".equals(dato.get("valor")))
+        if("350000".equals(dato.get("valor"))) {
             botonActualizar.click();
+        }
     }
 
     public void seleccionartipoPrimeraPerdida(String tipoPrimeraPerdida){

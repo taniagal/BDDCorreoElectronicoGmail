@@ -33,8 +33,8 @@ And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | nombre                  | tipoDocumento | numeroDocumento |
 | VARIEDADES YURLEDYS S.A | NIT           | 9202086744      |
 And vaya a agregar un vehiculo con los datos:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor   | valor_asegurado | descuento | zona |
-| ZAX740 | 2016   | 00606031         | MEDELLIN           | Particular        | AAA1450 | AAA1450 | $255,900,000    | null      | 2    |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor |valor_asegurado|descuento|recargo|zona|
+|TYR146|2011  |01601225        |MEDELLIN          |Particular       |asd456|dsa654|17900000       |null     |null   |2|
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
@@ -42,12 +42,13 @@ And voy a la opcion de analisis de riesgo y autorizo
 And expido la poliza para agregar el riesgo a la poliza colectiva
 Then se debe visualizar la opcion de ir a la poliza colectiva de la nueva poliza creada
 And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado con los datos correspondientes
-| placa  | claseVehiculo      | modelo | marca | linea                           |
-| ZAX740 | Camperos y pickups | 2016   | AUDI  | [4M] 3.0 TDI Q - TP 3000CC TD V |
+| placa  | claseVehiculo | modelo | marca     | linea                       |
+| TYR146 | Automóviles   | 2011   | CHEVROLET |AVEO FAMILY - MT 1500CC 4P AA|
 
 Examples:
 | numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | razonSocial             | asegurado               | porcentaje |
 | C000888888 | DIRECTO | Bancolombia  | Leasing | Colectiva  | Bank Autos | VARIEDADES YURLEDYS S.A | VARIEDADES YURLEDYS S.A | 0          |
+
 
 Scenario: Validar la creacion de un riesgo con cuenta nueva
 Given que voy a buscar la cuenta <numCuenta>
@@ -63,17 +64,17 @@ And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
 And ingrese los datos para realizar la busqueda de la cuenta persona natural <consultaNombre> <consultaApellido>
 And ingrese los datos para crear un contacto tipo persona natural
 | tipoDocumento        | numeroDocumento | nombre | apellido | fechaNacimiento | departamento | ciudad   | direccion        | tipo_direccion | organizacionCuenta | agenteCuenta |
-| CEDULA DE CIUDADANIA | 1037500160      |        |          | 01/01/1990      | ANTIOQUIA    | MEDELLIN | CARRERA 10 11 12 | Vivienda       | SURA               | 4999         |
+| CEDULA DE CIUDADANIA | 1037500161      |        |          | 01/01/1990      | ANTIOQUIA    | MEDELLIN | CARRERA 10 11 12 | Vivienda       | SURA               | 4999         |
 And valide la informacion de la poliza individual
 | tipoDocumentoTomador | numeroDocumentoTomador | nombreTomador                 | telefonoTomador | direccionTomador                            | tipoDireccionTomador | descripcionDirTomador                      | organizacion | canal             | tipoPoliza       | tipoPlazo | oficina | agente | descuento | aniosVigencia |
 | CEDULA DE CIUDADANIA | 1234567890             | YURLEDYS PAOLA GALLEGO TORRES | 408-2211        | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 | Sura         | Canal Tradicional | Commercial Fleet | Anual     | SURA    | 4999   | 0         | 1             |
 And quiera agregar un asegurado
 And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | nombre         | tipoDocumento        | numeroDocumento |
-| ELIANA ALVAREZ | CEDULA DE CIUDADANIA | 1037500160      |
+| ELIANA ALVAREZ | CEDULA DE CIUDADANIA | 1037500161      |
 And vaya a agregar un vehiculo con los datos:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis  | motor   | valor_asegurado | descuento | zona |
-| ZAZ741 | 2016   | 00606031         | MEDELLIN           | Particular        | AAA1451 | AAA1452 | $255,900,000    | null      | 2    |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor |valor_asegurado|descuento|recargo|zona|
+|TWU146|2011  |01601225        |MEDELLIN          |Particular       |asd455|dsa655|17900000       |null     |null   |2|
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
@@ -81,8 +82,8 @@ And voy a la opcion de analisis de riesgo y autorizo
 And expido la poliza para agregar el riesgo a la poliza colectiva
 Then se debe visualizar la opcion de ir a la poliza colectiva de la nueva poliza creada
 And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado con los datos correspondientes
-| placa  | claseVehiculo      | modelo | marca | linea                           |
-| ZAZ741 | Camperos y pickups | 2016   | AUDI  | [4M] 3.0 TDI Q - TP 3000CC TD V |
+| placa  | claseVehiculo | modelo | marca     |linea                        |
+| TWU146 | Automóviles   | 2011   | CHEVROLET |AVEO FAMILY - MT 1500CC 4P AA|
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | consultaNombre | consultaApellido | asegurado      |
