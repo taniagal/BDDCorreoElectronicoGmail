@@ -3,7 +3,7 @@ Cuentas Ordenes De Trabajo
 Meta:
 
 @issue #CDSEG-967
-@tag automator: brayan_ruiz, sprint:1
+@tag automator:Andres_Alarcon_Guerrero
 @Sprint 1
 @local
 
