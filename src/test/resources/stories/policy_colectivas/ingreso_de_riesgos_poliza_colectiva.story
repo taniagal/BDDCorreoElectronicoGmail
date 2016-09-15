@@ -3,8 +3,9 @@ Ingreso De Riesgos Poliza Colectiva
 Meta:
 
 @issue #CDSEG-916
-@Automatizador Eliana Alvarez
+@tag automator: eliana_alvarez, sprint:5
 @Sprint 5
+@local
 
 Narrative:
 Como usuario de PolicyCenter
@@ -58,6 +59,7 @@ When seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
+And ingrese el porcentaje de descuento valido <porcentaje>
 And actualice la poliza colectiva
 And de clic en agregar riesgo para ir a la ventana de riesgos
 And de clic en agregar riesgo para agregar un riesgo a la poliza colectiva
@@ -86,8 +88,8 @@ And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado co
 | TWU146 | Automóviles   | 2011   | CHEVROLET |AVEO FAMILY - MT 1500CC 4P AA|
 
 Examples:
-| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | consultaNombre | consultaApellido | asegurado      |
-| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | Eliana         | Alvarez          | ELIANA ALVAREZ |
+| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | consultaNombre | consultaApellido | asegurado      |porcentaje |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | Eliana         | Alvarez          | ELIANA ALVAREZ |0          |
 
 Scenario: validar que la fecha de inicio de vigencia en Informacion de Poliza se puede modificar para autos y commercial fleet
 Meta: @manual

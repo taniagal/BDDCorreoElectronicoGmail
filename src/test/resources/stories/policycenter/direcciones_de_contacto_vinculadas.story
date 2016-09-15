@@ -3,7 +3,7 @@ Direcciones De Contacto Vinculadas
 Meta:
 
 @issue #CDSEG-732, CDSEG-876
-@Automatizador Eliana Alvarez
+@tag automator: eliana_alvarez, sprint:3
 @Sprint 3
 
 Narrative:

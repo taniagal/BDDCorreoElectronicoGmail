@@ -2,7 +2,6 @@ package core.sura.resources;
 
 
 
-import org.junit.After;
 import com.google.common.base.Function;
 import java.io.FileInputStream;
 import java.io.IOException;

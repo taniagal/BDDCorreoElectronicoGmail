@@ -3,6 +3,7 @@ Detalle Registros Suscripcion
 Meta:
 
 @issue #SUGWUSC-14959
+@tag automator: jennifer_perez
 
 Narrative:
 Como usuario PolicyCenter
