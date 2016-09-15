@@ -3,7 +3,8 @@ regla prerenovacion direccion pa
 Meta:
 
 @issue #CDSEG-997
-@Automatizador: Jonathan Mejia Leon
+@tag automator: Jonathan_Mejia_Leon
+@local
 Sprint 7
 
 Narrative:
