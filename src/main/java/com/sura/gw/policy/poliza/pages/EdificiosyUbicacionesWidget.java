@@ -377,6 +377,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
     }
 
     public void ingresarInputTiposDeArticulos(String tipoArticulo) {
+        waitForTextToAppear("Tipos de Artículos");
         String xInputTiposDeArticulos = ".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']";
         enter(tipoArticulo).into($(xInputTiposDeArticulos));
         waitFor(4).second();
