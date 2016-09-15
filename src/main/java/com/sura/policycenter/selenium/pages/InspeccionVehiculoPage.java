@@ -66,7 +66,7 @@ public class InspeccionVehiculoPage extends Commons {
     public void validarVigenciaPlaca(String placa) {
         withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoPlaca).shouldBePresent();
         campoPlaca.typeAndTab(placa);
-        waitForTextToAppear(placa,28000);
+        waitForTextToAppear(placa,36000);
         campoNumeroVehiculo.click();
     }
 
