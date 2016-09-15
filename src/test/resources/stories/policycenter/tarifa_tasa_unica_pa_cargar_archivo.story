@@ -1,6 +1,6 @@
 Meta:
 @issue #CDSEG-2415
-@automatizador Nelson Mosquera
+@tag automator: nelson_jhair_mosquera_palacios
 @sprint 6
 
 Narrative:
