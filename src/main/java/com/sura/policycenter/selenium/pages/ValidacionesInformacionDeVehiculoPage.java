@@ -95,7 +95,6 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         waitForTextToAppear(vehiculo.get("modelo"),28000);
         ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
         campoTxtPlaca.click();
-        //JOptionPane.showMessageDialog(null, campoTxtValorAsegurado.getValue()+" -- "+campoTxtValorAsegurado.getText());
         withTimeoutOf(28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitForComboValue(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));

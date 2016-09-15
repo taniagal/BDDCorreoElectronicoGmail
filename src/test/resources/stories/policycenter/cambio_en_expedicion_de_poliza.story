@@ -4,6 +4,8 @@ Meta:
 
 @issue #CDSEG-1251
 @Automatizador Jonathan Mejia
+@tag automator: Jonathan_Mejia_Leon
+@local
 Sprint 4
 
 Narrative:
