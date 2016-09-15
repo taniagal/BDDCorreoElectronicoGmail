@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 
 public class PolizaNavBarPages extends PageObject {
 
+    // TODO: 15/09/2016 quitar 
     @FindBy(xpath = ".//a[contains(@id,'TabBar:PolicyTab')]")
     NavegacionBarraSuperiorWO navegacionBarraSuperiorWO;
 
@@ -30,7 +31,7 @@ public class PolizaNavBarPages extends PageObject {
 
 
     public PolizaNavBarPages seleccionarMenu() {
-        navegacionBarraSuperiorWO.getPage();
+    //    navegacionBarraSuperiorWO.getPage();
         waitFor(5).seconds();
         findBy(MENU_POLIZA).waitUntilVisible();
 
