@@ -195,7 +195,7 @@ public class  DetallesContactoPage extends Commons {
 
     public void setTelefonoCelular(String telefonoCelular){
         ingresarDato(campoTxtTelefonoCelular, telefonoCelular);
-        dtlContact[10]= "+1 "+telefonoCelular;
+        dtlContact[10]= telefonoCelular;
     }
 
 
@@ -277,7 +277,7 @@ public class  DetallesContactoPage extends Commons {
         if(!dtlContact[8].equals(comboBoxTipoFamilia.getText())) {
             right.append("tipo de familia,");
         }
-        if(!dtlContact[10].equals(campoTxtTelefonoCelular2.getText())) {
+        if(!campoTxtTelefonoCelular2.getText().contains(dtlContact[10])) {
             right.append("telefono celular,");
         }
         if(!dtlContact[11].equals(campoTxtTelefonoResidencial2.getText())) {
