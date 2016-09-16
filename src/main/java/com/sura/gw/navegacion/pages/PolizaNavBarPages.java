@@ -3,6 +3,7 @@ package com.sura.gw.navegacion.pages;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.WebElementFacadeImpl;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
@@ -20,9 +21,11 @@ public class PolizaNavBarPages extends PageObject {
         TXT_NUMERO_POLIZA(".//input[contains(@name,'PolicyRetrievalItem')]");
 
         private String elemento;
+
         Opcion(String opcion) {
             this.elemento = opcion;
         }
+
         public String xpath() {
             return elemento;
         }
@@ -30,8 +33,9 @@ public class PolizaNavBarPages extends PageObject {
 
 
     public PolizaNavBarPages seleccionarMenu() {
-    //    navegacionBarraSuperiorWO.getPage();
-        barraNavegacionSuperior.deplegarMenu(MenuNavegacionSuperiorEnum.POLIZA);
+        //    navegacionBarraSuperiorWO.getPage();
+        WebElementFacadeImpl pepe = barraNavegacionSuperior.deplegarMenu(MenuNavegacionSuperiorEnum.POLIZA);
+
         waitFor(5).seconds();
         findBy(MENU_POLIZA).waitUntilVisible();
 
