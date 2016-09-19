@@ -231,7 +231,9 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void clicEnSiguiente() {
-        botonSiguiente.click();
+        if(botonSiguiente.isVisible()) {
+            botonSiguiente.click();
+        }
     }
 
     public void validarFechaFinDeVigencia(int aniosFinVigencia, String tipoPlazo) {

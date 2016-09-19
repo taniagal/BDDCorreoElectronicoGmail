@@ -3,7 +3,7 @@ Cuentas Asociadas A Contacto
 Meta:
 
 @issue #CDSEG-976
-@Automatizador Eliana Alvarez
+@tag automator: eliana_alvarez, sprint:1
 @Sprint 1
 
 Narrative:

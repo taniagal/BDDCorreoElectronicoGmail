@@ -73,14 +73,6 @@ public class ConsultaDeContactosAsociadosACuentaBasico {
 
     }
 
-    /**
-     * AFTER SCENARY
-     */
-    @AfterScenario
 
-    public void finalizarEscenario(){
-        SerenityWebdriverManager.inThisTestThread().closeCurrentDriver();
-        LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.finalizarEscenario");
-    }
 
 }

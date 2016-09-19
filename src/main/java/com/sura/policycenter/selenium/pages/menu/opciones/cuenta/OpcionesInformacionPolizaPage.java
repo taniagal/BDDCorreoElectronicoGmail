@@ -26,8 +26,6 @@ public class OpcionesInformacionPolizaPage extends Commons {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesInformacionPolizaPage.class);
     private static final String MM_DD_YYYY = "MM/dd/yyyy";
 
-    Actions act = new Actions(getDriver());
-
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
@@ -205,7 +203,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
     }
 
     public Integer encontrarProducto() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilPresent();
+        waitFor(tablaProductos).waitUntilPresent();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
@@ -413,13 +411,6 @@ public class OpcionesInformacionPolizaPage extends Commons {
         }
     }
 
-    public void selectCombo(WebElementFacade element, String option) {
-        element.clear();
-        waitUntil(200);
-        element.sendKeys(option);
-        element.sendKeys(Keys.ENTER);
-    }
-
     public void definirPolizaFinanciada() {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(polizaFinanciada).click();
     }
@@ -487,14 +478,13 @@ public class OpcionesInformacionPolizaPage extends Commons {
             MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(numeroDocumento)));
         } catch (Exception e) {
             LOGGER.error(validacion, e);
-            validacion = e.getMessage();
         }
         waitUntil(1000);
     }
 
     public void validarMensajeBloqueoPEP(String mensaje) {
         waitUntil(1000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         botonSiguiente.click();
         waitUntil(2000);
@@ -503,7 +493,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
     public void permitirContinuarCotizacionAsegurados() {
         waitUntil(1000);
         WebElementFacade labelTituloAsegurados = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTituloAsegurados).shouldBePresent();
+        waitFor(labelTituloAsegurados).shouldBePresent();
         MatcherAssert.assertThat(labelTituloAsegurados.getText(), Is.is(Matchers.equalTo("Asegurados")));
         waitUntil(1000);
     }
@@ -513,7 +503,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
     }
 
     public void noIndicarPolizaFinanciada() {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(polizaFinanciadaNo).click();
+        waitFor(polizaFinanciadaNo).click();
     }
 
     public void noHabilitarNumeroCuotas() {

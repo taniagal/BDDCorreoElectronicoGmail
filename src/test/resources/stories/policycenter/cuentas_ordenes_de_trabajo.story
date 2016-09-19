@@ -3,8 +3,9 @@ Cuentas Ordenes De Trabajo
 Meta:
 
 @issue #CDSEG-967
-@Automatizador Brayan Ruiz
+@tag automator:Andres_Alarcon_Guerrero
 @Sprint 1
+@local
 
 Narrative:
 Como usuario de Policy Center

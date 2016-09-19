@@ -84,7 +84,7 @@ el numero de cotas <numeroCuotas> indicadas en la informacion de la poliza
 
 Examples:
 |cotizacion |valorCuota |numeroCuotas |
-|777222777  |$152,431   |11           |
+|777222777  | $101,620  |11           |
 
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:

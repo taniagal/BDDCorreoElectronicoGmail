@@ -73,16 +73,16 @@ public class HistorialCuentaPage extends Commons {
     }
 
     public void seleccionarCuenta(String numCuenta) {
+        waitUntil(2500);
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(mnuCuenta).shouldBePresent();
+        mnuCuenta.click();
         waitUntil(2000);
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(mnuCuenta).shouldBePresent();
         mnuCuenta.click();
-        waitUntil(3000);
-        mnuCuenta.click();
-        waitUntil(1000);
+        waitUntil(1500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(2000);
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(txtNumCuenta).shouldBePresent();
-        txtNumCuenta.typeAndEnter(numCuenta);
+        waitUntil(3500);
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(txtNumCuenta).type(numCuenta);
+        act.sendKeys(Keys.ENTER).build().perform();
         waitUntil(2000);
     }
 

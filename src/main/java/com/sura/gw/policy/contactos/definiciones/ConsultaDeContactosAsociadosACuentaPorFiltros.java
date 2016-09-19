@@ -31,22 +31,6 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
     public WebDriver driver;
 
 
-/**
-    @Given("consultare una cuenta $numCuenta que tiene contactos asociados con un usuario de acceso de rol $rolUsuario")
-    @Composite(
-            steps = {"Given existe una cuenta $numCuenta",
-                    "Given existe contactos asociados a la cuenta",
-                    "When ingrese a PolicyCenter y me loguee con un usuario de rol $rolUsuario",
-                    "When busque la cuenta",
-                    "Then debo ver contactos asociados a esta cuenta"
-            }
-    )
-    public void composite_ConsultareUnaCuentaYTieneContactosAsociados(@Named("numCuenta") String numCuenta, @Named("rolUsuario") String rolUsuario) {
-        this.numCuenta = numCuenta;
-        LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.composite_ConsultareUnaCuentaYTieneContactosAsociados");
-    }*/
-
-
     @When("filtre los contactos asociados a una cuenta por el rol $filtro en el combo con valor $combo")
     @Alias("filtre los contactos asociados a una cuenta por el tipo de persona $filtro en el combo con valor $combo")
     public void filtreLosContactosAsociadosAEstaCuenta(@Named("filtro") String filtro, @Named("combo") String combo) {
@@ -73,28 +57,5 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
     public void accesoAPolicyCenter(@Named("rolUsuario") String rolUsuario) {
         cuenta.login(driver, rolUsuario);
     }
-
-/**
-    @Then("debo ver contactos asociados a esta cuenta que cumplan con el rol <rol>")
-    public void deboVerContactosAsociadosAEstaCuentaQueCumplaConElRol() {
-    }
-
-    @When("filtre los contactos asociados a una cuenta por el tipo de persona <tipoPersona>")
-    public void filtreLosContactosAsociadosAUnaCuentaPorElTipoDePersona(String numCuenta) {
-    }
-
-    @Then("debo ver contactos asociados a esta cuenta que cumplan con el tipo de persona <tipoPersona>")
-    public void deboVerContactosAsociadosAEstaCuentaQueCumplanConElTipoDePersona(String tipoPersona) {
-    }
-
-
-    @Then("debo ver contactos asociados a esta cuenta que cumplan con el tipo de persona <tipoPersona> y el rol <rol>")
-    public void deboVerContactosAsociadosAEstaCuentaQueCumplanConElTipoDePersonaYElRol(String tipoPersona, String rol) {
-    }*/
-
-    /**
-     * POST SCENARY
-     */
-
 
 }

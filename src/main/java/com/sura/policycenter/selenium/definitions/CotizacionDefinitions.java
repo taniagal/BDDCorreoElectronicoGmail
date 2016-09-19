@@ -172,15 +172,7 @@ public class CotizacionDefinitions {
         LOGGER.info("CotizacionDefinitions.validarFechaSeaFechaHOYYSeaNoEditable");
     }
 
-    /**
-     * AFTER SCENARY
-     */
-    @AfterScenario
 
-    public void finalizarEscenario(){
-        SerenityWebdriverManager.inThisTestThread().closeCurrentDriver();
-        LOGGER.info("CotizacionDefinitions.finalizarEscenario");
-    }
 
 
 
