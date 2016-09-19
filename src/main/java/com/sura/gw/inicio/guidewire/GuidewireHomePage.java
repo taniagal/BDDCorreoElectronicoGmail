@@ -1,7 +1,6 @@
 package com.sura.gw.inicio.guidewire;
 
 import com.sura.gw.navegacion.pages.INavegacionSuperiorWidget;
-import com.sura.gw.navegacion.pages.MenuNavegacionSuperiorEnum;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.Managed;
@@ -21,7 +20,7 @@ public class GuidewireHomePage extends PageObject{
     Pages pages;
 
     public GuidewireHomePage(){
-        barraNavegacionSuperior.seleccionarMenu(MenuNavegacionSuperiorEnum.ESCRITORIO);
+        //switchToPage(EscritorioPage.class);
     }
 
 
