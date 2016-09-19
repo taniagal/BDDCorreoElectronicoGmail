@@ -8,7 +8,6 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Map;
@@ -16,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
-    private final Actions act = new Actions(getDriver());
 
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PALine']/div")
     private WebElementFacade itemCoberturasAuto;
