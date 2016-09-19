@@ -3,7 +3,7 @@ Informacion Titular Cuenta
 Meta:
 
 @issue #CDSEG-657
-@Automatizador Carlos Olaya Sandoval
+@tag automator: diego_cardona_acevedo
 @Sprint 1
 
 Narrative:

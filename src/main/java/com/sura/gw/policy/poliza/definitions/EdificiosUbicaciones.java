@@ -33,12 +33,17 @@ public class EdificiosUbicaciones {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
 
-    @Given("que estoy en edificios y ubicaciones de una poliza $numSubscripcion con el rol $rolUsuario")
+    @Given("que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>")
     public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion, String rolUsuario) {
 
-        // TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
+        //TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
+
 
         LOGGER.info("EdificiosUbicaciones.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
+
+        if (SerenityWebdriverManager.inThisTestThread().isDriverInstantiated()) {
+            SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
+        }
 
         guidewire.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
         navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
@@ -59,14 +64,19 @@ public class EdificiosUbicaciones {
         int index = 0;
         for (Map<String, String> entradaCobertura : entradas.getRows()) {
             index++;
+
             String tab = entradaCobertura.get("TAB");
             String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
             String cobertura = entradaCobertura.get("COBERTURA");
             String entrada = entradaCobertura.get("ENTRADAS");
-            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
+            boolean esOtroArticulo = false;
+            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))){
+                esOtroArticulo = true;
+            }
             boolean esUltimaFilaDeExampleTable = index == entradas.getRows().size();
+            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
 
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esUltimaFilaDeExampleTable);
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
         }
 
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
@@ -149,7 +159,7 @@ public class EdificiosUbicaciones {
         return new HasItemContainsString(expectedValue);
     }
 
-    private final static class HasItemContainsString extends TypeSafeMatcher<List<String>> {
+    private static final class HasItemContainsString extends TypeSafeMatcher<List<String>> {
 
         private final String expectedValue;
 
@@ -167,11 +177,7 @@ public class EdificiosUbicaciones {
             description.appendText("Se esperaba una lista que contuviera un strings ").appendValue(expectedValue);
         }
     }
+    
 
-    @AfterScenario
-    public void resetDriver(){
-        if (SerenityWebdriverManager.inThisTestThread().isDriverInstantiated()) {
-            SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
-        }
-    }
+
 }

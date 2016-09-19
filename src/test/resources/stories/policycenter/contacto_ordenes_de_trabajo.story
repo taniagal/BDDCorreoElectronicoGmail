@@ -3,8 +3,9 @@ Contacto Ordenes De Trabajo
 Meta:
 
 @issue #CDSEG-875
-@Automatizador Eliana Alvarez
+@tag automator: eliana_alvarez, sprint:1
 @Sprint 1
+@local
 
 Narrative:
 Como usuario

@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -10,6 +9,8 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
+
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -33,6 +34,9 @@ public class CambioDePolizaPage extends PageObject {
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PolicyInfo']")
     WebElementFacade informacionpoliza;
 
+    @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:ttlBar']")
+    WebElementFacade lblinicioCambioPoliza;
+
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
     WebElementFacade btnInicio;
 
@@ -43,13 +47,14 @@ public class CambioDePolizaPage extends PageObject {
 
 
     public void irAMenuAcciones() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(menuAcciones).waitUntilPresent();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(menuAcciones).waitUntilClickable();
         menuAcciones.click();
     }
 
     public void cambiarPoliza() {
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(opcionCambiarPoliza).waitUntilPresent();
         opcionCambiarPoliza.click();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblinicioCambioPoliza).waitUntilPresent();
     }
 
     public void esReaseguroEspecial(String reaseguro) {

@@ -43,15 +43,18 @@ public class TarifaTasaUnicaPage extends Commons {
         menuItemExportar.waitUntilPresent().click();
         botonExportarAHojaDeCalculo.waitUntilPresent();
         StringBuilder notPresent = new StringBuilder(contactoPage.MSJVALIDARELEMENTOS);
-        if (!comboBoxExportar.isPresent())
+        if (!comboBoxExportar.isPresent()) {
             notPresent.append(" combobox exportar,");
-        if (!comboBoxFormato.isPresent())
+        }
+        if (!comboBoxFormato.isPresent()) {
             notPresent.append(" combobox formato,");
-        if (!comboBoxLocal.isPresent())
+        }
+        if (!comboBoxLocal.isPresent()){
             notPresent.append(" combobox local,");
-        if (!comboBoxIdioma.isPresent())
+            }
+        if (!comboBoxIdioma.isPresent()) {
             notPresent.append(" combobox idioma,");
-
+        }
         String res = notPresent.toString();
         if (contactoPage.MSJVALIDARELEMENTOS.equals(res)) {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);

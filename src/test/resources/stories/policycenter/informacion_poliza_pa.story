@@ -3,7 +3,8 @@ Informacion Poliza Pa
 Meta:
 
 @issue #CDSEG-995
-@Automatizador diego cardona
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 2
 
 Narrative:

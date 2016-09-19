@@ -3,7 +3,8 @@ Modificacion Vehiculo
 Meta:
 
 @issue #CDSEG-1248
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 4
 
 Narrative:

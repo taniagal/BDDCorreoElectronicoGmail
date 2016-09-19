@@ -2,8 +2,8 @@ Polizas De Primera Perdida
 
 Meta:
 @issue #CDSEG-1010
-@automatizador Nelson Mosquera
 @sprint 3
+@tag automator: nelson_jhair_mosquera_palacios
 
 Narrative:
 Como usuario de PolicyCenter quiero poder registrar pólizas de primera perdida para el producto MRC

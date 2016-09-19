@@ -1,32 +1,15 @@
 package com.sura.policycenter.selenium.definitions;
 
 
-import com.sura.commons.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CuentaNuevaSteps;
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.AfterStory;
-import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import org.openqa.selenium.WebDriver;
 
 public class ValidacionesSuraDefinitions {
-
-    @Managed
-    WebDriver driver;
-
-    @Steps
-    SeusLoginSteps seusLoginSteps;
-
     @Steps
     CuentaNuevaSteps cuentaNuevaSteps;
-
-    @Given("que me encuentro en el sistema de policy center")
-    public void login(){
-        seusLoginSteps.login();
-    }
 
     @When("quiera crear una cuenta para un contacto e ingrese documento, tipo de documento <tipo_documento>")
     public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento){
@@ -64,10 +47,5 @@ public class ValidacionesSuraDefinitions {
     @Then("no debe permitir crear una nueva cuenta y no debe mostrar el mensaje <mensaje>")
     public void verificarEstadoDeMensaje(@Named("mensaje") String mensaje){
         cuentaNuevaSteps.verificar_estado_de_mensaje(mensaje);
-    }
-
-    @AfterStory
-    public void despuesDeLaHistoria(){
-        driver.close();
     }
 }

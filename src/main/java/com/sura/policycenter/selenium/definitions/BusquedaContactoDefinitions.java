@@ -178,8 +178,7 @@ public class BusquedaContactoDefinitions {
     }
 
     @Then("no debo ver la informacion del contacto de tipo persona juridica")
-    public void thenValidarInformacionPersonaJuridica()
-    {
+    public void thenValidarInformacionPersonaJuridica(){
         buscarContactoSteps.validarInformacionTipoId();
     }
 
@@ -207,11 +206,6 @@ public class BusquedaContactoDefinitions {
     public void thenVerInfoPersonaNatural(@Named("filtro1") String filtro1,
                                           @Named("filtro2") String filtro2) {
         buscarContactoSteps.verInfoPersonaNatural(filtro1, filtro2);
-    }
-
-    @Then("debo ver la informacion del contacto de tipo persona juridica <filtro>")
-    public void thenVerInfoPersonaJuridica(@Named("filtro") String filtro){
-        buscarContactoSteps.verInfoPersonaJuridica(filtro);
     }
 
     @Then("debo ver un <mensaje> de alerta indicando que la longitud debe ser mayor o igual a dos caracteres")

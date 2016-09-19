@@ -1,7 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.CoreMatchers;
@@ -67,7 +66,7 @@ public class DetalleRegistrosSuscripcionPage extends Commons{
     }
 
     public void validarCamposRegistros(String nombre, String tipoDeTransaccion, String nroDeTransacciones) {
-        lblTransaccionDetalle.withTimeoutOf(8, TimeUnit.SECONDS).waitUntilPresent();
+        waitFor(lblTransaccionDetalle);
         MatcherAssert.assertThat(lblNombre.getText(), Is.is(CoreMatchers.equalTo(nombre)));
         MatcherAssert.assertThat(lblPrimeraFechaVigencia.getText(), Is.is(IsNull.notNullValue()));
         MatcherAssert.assertThat(lblUltimaFechaVigencia.getText(), Is.is(IsNull.notNullValue()));
@@ -76,20 +75,20 @@ public class DetalleRegistrosSuscripcionPage extends Commons{
     }
 
     public void buscarRegistrosSuscripcion() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(mnuRegistrosSuscripcion).waitUntilPresent();
+        waitFor(mnuRegistrosSuscripcion).waitUntilPresent().waitUntilClickable();
         mnuRegistrosSuscripcion.click();
     }
 
     public void validarNombresFiltros(String estado, String transaccion) {
-        waitForTextToAppear(estado, 20);
-        waitForTextToAppear(transaccion, 20);
+        waitForTextToAppear(estado);
+        waitForTextToAppear(transaccion);
         MatcherAssert.assertThat(lblEstado.getText(), Is.is(CoreMatchers.equalTo(estado)));
         MatcherAssert.assertThat(lblTransaccion.getText(), Is.is(CoreMatchers.equalTo(transaccion)));
     }
 
     public void buscarDetalleRegistrosDeSuscripcion() {
         buscarRegistrosSuscripcion();
-        lblTransaccionDetalle.withTimeoutOf(7, TimeUnit.SECONDS).waitUntilPresent();
+        waitFor(lblTransaccionDetalle).waitUntilPresent().waitUntilClickable();
         lblTransaccionDetalle.click();
     }
 

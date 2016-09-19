@@ -2,7 +2,7 @@ Busqueda De Poliza
 
 Meta:
 @issue #CDSEG-1012
-@Automatizador Eliana Alvarez
+@tag automator: eliana_alvarez, sprint:1
 @Sprint 1
 
 Narrative:

@@ -2,7 +2,8 @@ Meta:
 
 @issue #SUGWUSC-14968
 @Automatizador: Jonathan Mejia
-
+@tag automator: Jonathan_Mejia_Leon
+@local
 
 
 Narrative:

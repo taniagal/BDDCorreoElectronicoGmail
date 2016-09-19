@@ -1,6 +1,8 @@
 Meta:
 @issue #SUGWUSC-15127
 @Atomatizador Jonathan Mejia
+@tag automator: Jonathan_Mejia_Leon
+@local
 Sprint 5
 
 Narrative:

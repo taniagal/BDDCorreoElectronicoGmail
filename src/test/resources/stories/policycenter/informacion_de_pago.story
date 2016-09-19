@@ -3,7 +3,8 @@ informacion de pago
 Meta:
 
 @issue #CDSEG-2305
-@Atomatizador Jonathan Mejia
+@tag automator: Jonathan_Mejia_Leon
+@local
 Sprint 6
 
 Narrative:
