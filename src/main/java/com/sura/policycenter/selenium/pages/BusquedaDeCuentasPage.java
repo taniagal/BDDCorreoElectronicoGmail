@@ -102,10 +102,10 @@ public class BusquedaDeCuentasPage extends Commons {
 
     public void irABuscarCuentas() {
         waitFor(menuBuscar).waitUntilPresent().waitUntilClickable();
-        actions.moveToElement(menuBuscar).click().build().perform();
+        actions.click(menuBuscar).build().perform();
         waitUntil(1500);
         waitFor(menuBuscarCuentas).waitUntilVisible();
-        actions.moveToElement(menuBuscarCuentas).click().build().perform();
+        actions.click(menuBuscarCuentas).build().perform();
     }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
@@ -116,12 +116,12 @@ public class BusquedaDeCuentasPage extends Commons {
         txtPrimerApellido.sendKeys(primerApellido);
         txtSegundoApellido.sendKeys(segundoApellido);
         waitFor(btnBuscar).waitUntilVisible();
-        actions.moveToElement(btnBuscar).click().build().perform();
+        actions.click(btnBuscar).build().perform();
     }
 
     private void limpiarFormulario() {
         waitFor(botonRestablecer).waitUntilPresent().waitUntilClickable();
-        actions.moveToElement(botonRestablecer).click().build().perform();
+        actions.click(botonRestablecer).build().perform();
         waitUntil(2000);
     }
 
@@ -132,7 +132,7 @@ public class BusquedaDeCuentasPage extends Commons {
         waitFor(txtNumeroDocumento).waitUntilVisible();
         txtNumeroDocumento.sendKeys(numeroDocumento);
         waitFor(btnBuscar).waitUntilVisible();
-        actions.moveToElement(btnBuscar).click().build().perform();
+        actions.click(btnBuscar).build().perform();
     }
 
     public void mostrarInformacionDeLaCuenta(String numeroCuenta, String nombre, String direccion) {
@@ -190,7 +190,7 @@ public class BusquedaDeCuentasPage extends Commons {
         waitFor(txtRazonSocial);
         txtRazonSocial.sendKeys(razonSocial);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.moveToElement(btnBuscar).click().build().perform();
+        actions.click(btnBuscar).build().perform();
     }
 
     public void seleccionarTipoIdentificacion(String tipoDocumento) {
@@ -204,7 +204,7 @@ public class BusquedaDeCuentasPage extends Commons {
         waitFor(txtNombreComercial);
         txtNombreComercial.sendKeys(nombreComercial);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.moveToElement(btnBuscar).click().build().perform();
+        actions.click(btnBuscar).build().perform();
     }
 
     public void seleccionarImprimir() {
@@ -219,7 +219,7 @@ public class BusquedaDeCuentasPage extends Commons {
         MatcherAssert.assertThat(this.lblImprimir.getText(), Matchers.containsString(imprimir));
         MatcherAssert.assertThat(this.lblExportar.getText(), Matchers.containsString(exportar));
         MatcherAssert.assertThat(this.lblExportarPersonalizado.getText(), Matchers.containsString(exportarPersonalizado));
-        actions.moveToElement(btnVolverBuscarCuentas).click().build().perform();
+        actions.click(btnVolverBuscarCuentas).build().perform();
     }
 
     public void ingresarRazonSocialYPrimerNombre(String razonSocial, String primerNombre) {
@@ -228,7 +228,7 @@ public class BusquedaDeCuentasPage extends Commons {
         this.txtRazonSocial.sendKeys(razonSocial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.moveToElement(btnBuscar).click().build().perform();
+        actions.click(btnBuscar).build().perform();
     }
 
     public void ingresarNombreComercialYPrimerNombre(String nombreComercial, String primerNombre) {
@@ -237,7 +237,7 @@ public class BusquedaDeCuentasPage extends Commons {
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.moveToElement(btnBuscar).click().build().perform();
+        actions.click(btnBuscar).build().perform();
     }
 
     public void ingresarRazonSocialYNombreComercial(String nombreComercial, String razonSocial) {
@@ -246,7 +246,7 @@ public class BusquedaDeCuentasPage extends Commons {
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtRazonSocial.sendKeys(razonSocial);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.moveToElement(btnBuscar).click().build().perform();
+        actions.click(btnBuscar).build().perform();
     }
 
     public void seleccionarItemEnCombo(WebElementFacade elemento, String dato){
