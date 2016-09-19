@@ -2,9 +2,7 @@ package com.sura.gw.policy.poliza.definitions;
 
 
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
-import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.navegacion.steps.GuidewireSteps;
-import com.sura.gw.navegacion.webelement.MenuNavegacionSuperiorEnum;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -35,9 +33,6 @@ public class Poliza {
     IngresoAPolicyCenterDefinitions guidewireLogin;
 
     @Steps
-    Navegacion navegacion;
-
-    @Steps
     GuidewireSteps guidewire;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
@@ -46,7 +41,7 @@ public class Poliza {
     public Boolean esperoVerNumeroDeSubscripcionEnEnvio(String numeroSubscripcion) {
         return polizaSteps.esperoVerNumeroDeSubscripcionEnEnvio(numeroSubscripcion);
     }
-
+/*
     @Given("que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>")
     public void dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar(@Named("numSubscripcion") String numSubscripcion) {
         LOGGER.info("Poliza.dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar");
@@ -55,15 +50,12 @@ public class Poliza {
         guidewireLogin.dadoQueAccedoAPolicyCenterConRol("Asesor");
 
         guidewire.ir_a_navegacion_superior()
-                .desplegar_menu(MenuNavegacionSuperiorEnum.POLIZA);
-
-        navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
-        navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
+                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
 
         MatcherAssert.assertThat(esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), Is.is(Matchers.equalTo(true)));
 
 
-    }
+    }*/
 
     @Then("espero ver mensajes de advertencia indicandome que sobrepase los limites de valores para el valor del articulo")
     public void esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo() {
@@ -87,13 +79,13 @@ public class Poliza {
     }
 
 
-    @Given("que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza>")
-    public void dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza(@Named("numPoliza") String numPoliza) {
+    @Given("que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>")
+    public void dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza(@Named("numPoliza") String numPoliza, @Named("rolUsuario") String rolUsuario) {
 
-        // TODO: 27/07/2016 Capturar el rol desde el gherkin en i am Asesor
-        guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
-        navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
-        navegacion.cuandoBusquePorNumeroDeDePoliza(numPoliza);
+        guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
+
+        guidewire.ir_a_navegacion_superior()
+                .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
 
         LOGGER.info("Poliza.dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza");
     }

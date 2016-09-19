@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 
 
-@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
+@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class GuidewireLoginPages extends PageObject implements Serializable{
     private static final long serialVersionUID = 1L;

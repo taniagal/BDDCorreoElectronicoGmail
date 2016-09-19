@@ -6,7 +6,7 @@ Scenario: 1 Bug CDSEG-2887
 Meta:
 @Story CDSEG-2887
 @URL https://jira.suramericana.com.co/browse/CDSEG-2887
-@tag bug:CDSEG-1900, automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:6
+@tag bug:CDSEG-1900, automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:6
 @LOB Multiriesgo corporativo
 @Sprint 6
 
