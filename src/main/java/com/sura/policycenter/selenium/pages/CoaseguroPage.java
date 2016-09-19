@@ -84,6 +84,7 @@ public class CoaseguroPage extends Commons {
                 act.click().build().perform();
                 act.sendKeys(aseguradora.getNombre()).build().perform();
                 act.sendKeys(Keys.TAB).build().perform();
+                waitUntil(500);
                 act.sendKeys(aseguradora.getParticipacion()).build().perform();
             }
             i++;
