@@ -70,9 +70,9 @@ public class BusquedaActividadesPage extends PageObject {
 
     public void irABuscarActividades() {
         waitFor(menuBuscar);
-        actions.moveToElement(menuBuscar).click().perform();
+        actions.moveToElement(menuBuscar).click().build().perform();
         waitFor(menuBuscarActividades).waitUntilVisible();
-        actions.moveToElement(menuBuscarActividades).click().perform();
+        actions.moveToElement(menuBuscarActividades).click().build().perform();
         waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();
     }
@@ -84,7 +84,7 @@ public class BusquedaActividadesPage extends PageObject {
 
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
-        actions.moveToElement(btnBuscar).click().perform();
+        actions.moveToElement(btnBuscar).click().build().perform();
         grdFechaVencimiento.waitUntilVisible();
         MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
@@ -99,7 +99,7 @@ public class BusquedaActividadesPage extends PageObject {
 
     public void limpiarFiltros() {
         waitFor(botonRestablecer).waitUntilVisible();
-        actions.moveToElement(botonRestablecer).click().perform();
+        actions.moveToElement(botonRestablecer).click().build().perform();
         commons.waitUntil(2000);
     }
 
@@ -119,7 +119,7 @@ public class BusquedaActividadesPage extends PageObject {
 
     public void validarMensjeFiltroRequerido(String mensaje) {
         waitFor(btnBuscar).waitUntilPresent();
-        actions.moveToElement(btnBuscar).click().perform();
+        actions.moveToElement(btnBuscar).click().build().perform();
         waitForPresenceOf(".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div");
         MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
     }
