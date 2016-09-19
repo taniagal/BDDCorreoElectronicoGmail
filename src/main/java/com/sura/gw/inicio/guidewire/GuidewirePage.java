@@ -24,8 +24,8 @@ public class GuidewirePage extends PageObject{
     @ManagedPages
     Pages pages;
 
-    public GuidewirePage(){
-        //switchToPage(EscritorioPage.class);
+    public INavegacionSuperiorWidget barraNavegacion(){
+        return this.barraNavegacionSuperior;
     }
 
 

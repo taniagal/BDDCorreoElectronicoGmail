@@ -4,6 +4,8 @@ import com.sura.gw.inicio.guidewire.GuidewirePage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import java.util.concurrent.TimeUnit;
+
 public class PolizaPage extends GuidewirePage {
 
     public enum Opcion {
@@ -56,7 +58,6 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public void seleccionarBotonSiguienteEnInicioDeCambioDePoliza() {
-
         waitFor(20).seconds();
         waitForTextToAppear("Iniciar cambios en póliza");
         String btnSiguienteCambioPoliza = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange-btnInnerEl']";
@@ -66,20 +67,23 @@ public class PolizaPage extends GuidewirePage {
 
 
     public void editarTransaccion() {
-        LOGGER.info("InformacionPolizaPage.editarTransaccion");
+        LOGGER.info("PolizaPage.editarTransaccion");
         WebElementFacade btnEditarTransaccion = null;
-        String btnAceptarConfirmacion = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
+        String xpatBtnAceptarConfirmacion = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
 
+        setImplicitTimeout(1, TimeUnit.SECONDS);
         try {
             btnEditarTransaccion = findBy(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION DE POLIZA NO VISUALIZADO : " + e);
         }
+        resetImplicitTimeout();
 
         if (btnEditarTransaccion != null) {
             btnEditarTransaccion.waitUntilClickable().click();
-            findBy(btnAceptarConfirmacion).waitUntilClickable().click();
+            findBy(xpatBtnAceptarConfirmacion).waitUntilClickable().click();
             waitForTextToAppear("Revisión de póliza");
+            shouldContainText("Revisión de póliza");
         }
 
     }

@@ -7,16 +7,13 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.core.pages.WebElementFacadeImpl;
 import net.serenitybdd.core.pages.WidgetObjectImpl;
-import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
 public class NavegacionSuperiorWidgetImpl extends WidgetObjectImpl implements INavegacionSuperiorWidget {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private static final String XPATH_CONTENEDOR_SUBMENU_DESPLEGABLE = "//div[contains(@class, 'x-panel x-layer x-panel-default x-menu x-border-box')]";
 
     private String nombreMenu;
@@ -46,12 +43,11 @@ public class NavegacionSuperiorWidgetImpl extends WidgetObjectImpl implements IN
 
         WebElementFacadeImpl webElementFacade = null;
 
-
         if (MenuNavegacionSuperiorEnum.ADMINISTRACION.name().equals(nombreMenu)){
            webElementFacade = new MenuAdministracionWE(getPage().getDriver(), null , getPage().getImplicitWaitTimeout().in(TimeUnit.MILLISECONDS));
         }
         if (MenuNavegacionSuperiorEnum.BUSCAR.name().equals(nombreMenu)){
-           // webElementFacade = new MenuBuscarWE(getPage().getDriver(), getPage().find() , getPage().getImplicitWaitTimeout().in(TimeUnit.MILLISECONDS));
+            webElementFacade = new MenuBuscarWE(getPage().getDriver(), null , getPage().getImplicitWaitTimeout().in(TimeUnit.MILLISECONDS));
         }
         if (MenuNavegacionSuperiorEnum.CONTACTO.name().equals(nombreMenu)){
             webElementFacade = new MenuContactoWE(getPage().getDriver(), null , getPage().getImplicitWaitTimeout().in(TimeUnit.MILLISECONDS));

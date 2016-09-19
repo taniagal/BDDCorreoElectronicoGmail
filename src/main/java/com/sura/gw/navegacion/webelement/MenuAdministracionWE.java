@@ -10,35 +10,25 @@ public class MenuAdministracionWE extends WebElementFacadeImpl{
 
     private static final String XPATH_CONTENEDOR_SUBMENU_DESPLEGABLE = "//div[contains(@class, 'x-panel x-layer x-panel-default x-menu x-border-box')]";
 
-    WebElementFacade subMenuDesplegado = null;
+    private static WebElementFacade subMenuDesplegado = null;
 
     public MenuAdministracionWE(WebDriver driver, ElementLocator locator, long implicitTimeoutInMilliseconds) {
         super(driver, locator, implicitTimeoutInMilliseconds);
         subMenuDesplegado = findBy(XPATH_CONTENEDOR_SUBMENU_DESPLEGABLE);
     }
-    public enum Opcion {
-        BTN_NUEVA_COTIZACION(".//a[contains(@id,'TabBar:PolicyTab:PolicyTab_NewSubmission-textEl')]"),
-        TXT_NUMERO_SUBSCRIPCION(".//input[contains(@name,'SubmissionNumberSearchItem')]"),
-        TXT_NUMERO_POLIZA(".//input[contains(@name,'PolicyRetrievalItem')]");
-
-        private String elemento;
-        Opcion(String opcion) {
-            this.elemento = opcion;
-        }
-        public String xpath() {
-            return elemento;
-        }
-    }
 
     public void consultarNumeroDeSubscripcion(String numSubscripcion) {
-        subMenuDesplegado.findBy(Opcion.TXT_NUMERO_SUBSCRIPCION.xpath()).and().typeAndEnter(numSubscripcion);
+        String xpathTxtNumeroSubscripcion = ".//input[contains(@name,'SubmissionNumberSearchItem')]";
+        subMenuDesplegado.findBy(xpathTxtNumeroSubscripcion).and().typeAndEnter(numSubscripcion);
     }
 
     public void consultarNumeroDePoliza(String numeroDepoliza) {
-        subMenuDesplegado.findBy(Opcion.TXT_NUMERO_POLIZA.xpath()).and().typeAndEnter(numeroDepoliza);
+        String xpathTxtNumeroDePoliza = ".//input[contains(@name,'PolicyRetrievalItem')]";
+        subMenuDesplegado.findBy(xpathTxtNumeroDePoliza).and().typeAndEnter(numeroDepoliza);
     }
 
     public void nuevaCotizacion(){
-        subMenuDesplegado.findBy(Opcion.BTN_NUEVA_COTIZACION.xpath()).and().click();
+        String xpathBtnNuevaCotizacion = ".//a[contains(@id,'TabBar:PolicyTab:PolicyTab_NewSubmission-textEl')]";
+        subMenuDesplegado.findBy(xpathBtnNuevaCotizacion).and().click();
     }
 }

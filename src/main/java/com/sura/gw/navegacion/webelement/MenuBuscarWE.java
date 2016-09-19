@@ -10,40 +10,29 @@ public class MenuBuscarWE extends WebElementFacadeImpl {
         super(driver, locator, implicitTimeoutInMilliseconds);
     }
 
-    public enum Opcion {
-        LINK_POLIZAS(".//a[contains(., 'Pólizas')]"),
-        LINK_CUENTAS(".//a[contains(., 'Cuentas')]"),
-        LINK_CODIGO_DE_AGENTE(".//a[contains(., 'Código de agente')]"),
-        LINK_ACTIVIDADES(".//a[contains(., 'Actividades')]"),
-        LINK_CONTACTOS(".//a[contains(., 'Contactos')]");
-
-        private String elemento;
-        Opcion(String opcion) {
-            this.elemento = opcion;
-        }
-        public String xpath() {
-            return elemento;
-        }
-    }
-
     public void polizas() {
-        findBy(Opcion.LINK_POLIZAS.xpath()).and().click();
+        String xpathLinkPolizas = ".//a[contains(., 'Pólizas')]";
+        findBy(xpathLinkPolizas).and().click();
     }
 
     public void cuentas() {
-        findBy(Opcion.LINK_CUENTAS.xpath()).and().click();
+        String xpathLinkCuentas = ".//a[contains(., 'Cuentas')]";
+        findBy(xpathLinkCuentas).and().click();
     }
 
     public void codigoDeAgente() {
-        findBy(Opcion.LINK_CODIGO_DE_AGENTE.xpath()).and().click();
+        String xpathLinkCodigoAgente = ".//a[contains(., 'Código de agente')]";
+        findBy(xpathLinkCodigoAgente).and().click();
     }
 
     public void actividades() {
-        findBy(Opcion.LINK_ACTIVIDADES.xpath()).and().click();
+        String xpathLinkActividades = ".//a[contains(., 'Actividades')]";
+        findBy(xpathLinkActividades).and().click();
     }
 
     public void contactos() {
-        findBy(Opcion.LINK_CONTACTOS.xpath()).and().click();
+        String xpathLinkContactos = ".//a[contains(., 'Contactos')]";
+        findBy(xpathLinkContactos).and().click();
     }
 
 }

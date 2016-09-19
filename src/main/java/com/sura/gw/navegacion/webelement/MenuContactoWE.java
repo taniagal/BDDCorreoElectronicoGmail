@@ -9,25 +9,15 @@ public class MenuContactoWE extends WebElementFacadeImpl {
     public MenuContactoWE(WebDriver driver, ElementLocator locator, long implicitTimeoutInMilliseconds) {
         super(driver, locator, implicitTimeoutInMilliseconds);
     }
-    public enum Opcion {
-        LINK_NUEVO_CONTACTO(".//a[contains(., 'Nuevo contacto')]"),
-        LINK_BUSCAR(".//a[contains(., 'Buscar')]");
-
-        private String elemento;
-        Opcion(String opcion) {
-            this.elemento = opcion;
-        }
-        public String xpath() {
-            return elemento;
-        }
-    }
 
     public void nuevoContacto() {
-        //
+        String xpathLinkNuevoContacto = ".//a[contains(., 'Nuevo contacto')]";
+        findBy(xpathLinkNuevoContacto).and().click();
     }
 
     public void buscar() {
-        findBy(Opcion.LINK_BUSCAR.xpath()).and().click();
+        String xpathLinkBuscar = ".//a[contains(., 'Buscar')]";
+        findBy(xpathLinkBuscar).and().click();
     }
 
 }

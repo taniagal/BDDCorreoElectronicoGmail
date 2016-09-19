@@ -3,8 +3,9 @@ package com.sura.gw.policy.poliza.definitions;
 
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.definitions.Navegacion;
+import com.sura.gw.navegacion.steps.GuidewireSteps;
+import com.sura.gw.navegacion.webelement.MenuNavegacionSuperiorEnum;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
-import java.util.Map;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
@@ -19,6 +20,8 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
+import java.util.Map;
+
 
 public class Poliza {
 
@@ -29,10 +32,13 @@ public class Poliza {
     PolizaSteps polizaSteps;
 
     @Steps
-    IngresoAPolicyCenterDefinitions guidewire;
+    IngresoAPolicyCenterDefinitions guidewireLogin;
 
     @Steps
     Navegacion navegacion;
+
+    @Steps
+    GuidewireSteps guidewire;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -46,7 +52,11 @@ public class Poliza {
         LOGGER.info("Poliza.dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar");
 
         // TODO: 27/07/2016 Capturar el rol desde el gherkin en i am Asesor
-        guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
+        guidewireLogin.dadoQueAccedoAPolicyCenterConRol("Asesor");
+
+        guidewire.ir_a_navegacion_superior()
+                .desplegar_menu(MenuNavegacionSuperiorEnum.POLIZA);
+
         navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
         navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
 
