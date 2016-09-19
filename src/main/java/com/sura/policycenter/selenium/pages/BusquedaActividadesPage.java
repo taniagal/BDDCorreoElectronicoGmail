@@ -71,7 +71,7 @@ public class BusquedaActividadesPage extends PageObject {
     public void irABuscarActividades() {
         waitFor(menuBuscar);
         actions.moveToElement(menuBuscar).click().perform();
-        waitFor(menuBuscarActividades);
+        waitFor(menuBuscarActividades).waitUntilVisible();
         actions.moveToElement(menuBuscarActividades).click().perform();
         waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();
