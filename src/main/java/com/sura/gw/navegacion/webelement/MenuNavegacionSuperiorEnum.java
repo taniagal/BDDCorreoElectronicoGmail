@@ -1,4 +1,4 @@
-package com.sura.gw.navegacion.pages;
+package com.sura.gw.navegacion.webelement;
 
 
 public enum MenuNavegacionSuperiorEnum {

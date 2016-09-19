@@ -1,5 +1,6 @@
-package com.sura.gw.navegacion.pages;
+package com.sura.gw.navegacion.widget;
 
+import com.sura.gw.navegacion.webelement.*;
 import com.sura.gw.policy.cuenta.pages.BusquedaDeCuentasPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;

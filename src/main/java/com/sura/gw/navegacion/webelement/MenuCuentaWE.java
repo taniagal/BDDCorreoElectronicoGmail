@@ -1,4 +1,4 @@
-package com.sura.gw.navegacion.pages;
+package com.sura.gw.navegacion.webelement;
 
 import net.serenitybdd.core.pages.WebElementFacadeImpl;
 import org.openqa.selenium.WebDriver;

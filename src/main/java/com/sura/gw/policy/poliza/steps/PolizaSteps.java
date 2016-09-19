@@ -3,16 +3,16 @@ package com.sura.gw.policy.poliza.steps;
 import com.sura.gw.navegacion.util.widget.EspacioDeTrabajoWidget;
 import com.sura.gw.policy.poliza.pages.AccionesWidget;
 import com.sura.gw.policy.poliza.pages.PolizaPage;
-import java.util.List;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
+import java.util.List;
 
 
 
 public class PolizaSteps extends ScenarioSteps {
 
     private static PolizaPage informacionPolizaPage;
-
     private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
     private static AccionesWidget accionesWidget;
 

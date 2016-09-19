@@ -1,5 +1,6 @@
-package com.sura.gw.navegacion.pages;
+package com.sura.gw.navegacion.widget;
 
+import com.sura.gw.navegacion.webelement.MenuNavegacionSuperiorEnum;
 import net.serenitybdd.core.annotations.ImplementedBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacadeImpl;

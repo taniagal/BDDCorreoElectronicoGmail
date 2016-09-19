@@ -1,5 +1,7 @@
 package com.sura.gw.navegacion.pages;
 
+import com.sura.gw.navegacion.webelement.MenuNavegacionSuperiorEnum;
+import com.sura.gw.navegacion.widget.INavegacionSuperiorWidget;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
