@@ -180,7 +180,20 @@ public class EdificiosUbicaciones {
             description.appendText("Se esperaba una lista que contuviera un strings ").appendValue(expectedValue);
         }
     }
-    
+
+    @Given("Estoy ingresando la información de coberturas a nivel de riesgo")
+    public void m1(){
+
+    }
+    @When("Quiera cambiar el valor de 1,000 millones a otro valor o quiera cambiar el valor del 20% a otro valor")
+    public void m2(){
+
+    }
+
+    @Then("Se cambie simplemente en una tabla de parámetros. Estos valores no deben estar quemados en el código.")
+    public void m3(){
+        assert true;
+    }
 
 
 }
