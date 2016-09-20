@@ -1,12 +1,15 @@
 package com.sura.gw.policy.poliza.pages;
 
-import com.sura.gw.inicio.guidewire.GuidewirePage;
 import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
+import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.TimeUnit;
+public class PolizaPage extends PageObject {
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
-public class PolizaPage extends GuidewirePage {
+
 
     public enum Opcion {
         LINK_EDIFICIOS_Y_UBICACIONES(".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div"),
@@ -67,23 +70,20 @@ public class PolizaPage extends GuidewirePage {
 
 
     public void editarTransaccion() {
-        LOGGER.info("PolizaPage.editarTransaccion");
+        LOGGER.info("InformacionPolizaPage.editarTransaccion");
         WebElementFacade btnEditarTransaccion = null;
-        String xpatBtnAceptarConfirmacion = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
+        String btnAceptarConfirmacion = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
 
-        setImplicitTimeout(1, TimeUnit.SECONDS);
         try {
             btnEditarTransaccion = findBy(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION DE POLIZA NO VISUALIZADO : " + e);
         }
-        resetImplicitTimeout();
 
         if (btnEditarTransaccion != null) {
             btnEditarTransaccion.waitUntilClickable().click();
-            findBy(xpatBtnAceptarConfirmacion).waitUntilClickable().click();
+            findBy(btnAceptarConfirmacion).waitUntilClickable().click();
             waitForTextToAppear("Revisión de póliza");
-            shouldContainText("Revisión de póliza");
         }
 
     }

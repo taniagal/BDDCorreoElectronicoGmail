@@ -1,5 +1,6 @@
 package com.sura.gw.policy.cuenta.steps;
 
+import com.sura.gw.navegacion.pages.BuscarNavBarPages;
 import com.sura.gw.navegacion.steps.GuidewireLoginSteps;
 import com.sura.gw.policy.cuenta.pages.BusquedaDeCuentasPage;
 import com.sura.gw.policy.cuenta.pages.ContactosAsociadosACuentaWidgetPage;
@@ -22,6 +23,7 @@ public class CuentaSteps extends ScenarioSteps {
     CuentaPages cuenta = null;
     ContactosAsociadosACuentaWidgetPage contactosAsociados;
     BusquedaDeCuentasPage busquedaDeCuentas = null;
+    BuscarNavBarPages navegacion;
 
     @Steps
     GuidewireLoginSteps loginSteps;
@@ -38,7 +40,7 @@ public class CuentaSteps extends ScenarioSteps {
 
 
     private BusquedaDeCuentasPage irAPaginaBusquedaDeCuentas(){
-        //busquedaDeCuentas = navegacion.seleccionarOpcion().enMenuContextual().seleccionarOpcion(BuscarNavBarPages.Opciones.CUENTAS.nombre());
+        busquedaDeCuentas = navegacion.seleccionarOpcion().enMenuContextual().seleccionarOpcion(BuscarNavBarPages.Opciones.CUENTAS.nombre());
         return busquedaDeCuentas;
     }
 
