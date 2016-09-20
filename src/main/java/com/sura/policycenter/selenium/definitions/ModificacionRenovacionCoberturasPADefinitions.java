@@ -8,6 +8,7 @@ import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 
 public class ModificacionRenovacionCoberturasPADefinitions {
+
     @Steps
     CotizacionMRCSteps cotizacionMRCSteps;
 
