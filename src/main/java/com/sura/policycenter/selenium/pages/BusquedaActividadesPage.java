@@ -72,6 +72,7 @@ public class BusquedaActividadesPage extends PageObject {
         waitFor(menuBuscar);
         actions.click(menuBuscar).build().perform();
         waitFor(menuBuscarActividades).waitUntilVisible();
+        commons.waitUntil(1500);
         actions.click(menuBuscarActividades).build().perform();
         waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();
