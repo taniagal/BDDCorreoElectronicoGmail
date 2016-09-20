@@ -26,6 +26,7 @@ public class ModificacionRenovacionCoberturasPADefinitions {
 
     @When("intente retirar coberturas obligatorias $cobertura")
     public void retirarCoberturasObligatorias(ExamplesTable cobertura){
+        modificacionRenovacionCoberturasPASteps.editar_Transaccion_De_Poliza();
         modificacionRenovacionCoberturasPASteps.intentar_Retirar_Cobertura_Obligatoria(cobertura);
     }
 

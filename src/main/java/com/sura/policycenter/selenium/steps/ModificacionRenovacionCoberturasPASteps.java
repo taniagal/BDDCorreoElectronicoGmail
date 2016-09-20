@@ -48,4 +48,9 @@ public class ModificacionRenovacionCoberturasPASteps extends ScenarioSteps {
     public void adicionar_Nueva_Cobertura() {
         modificacionRenovacionCoberturas.adicionarNuevaCobertura();
     }
+
+    @Step
+    public void editar_Transaccion_De_Poliza() {
+        modificacionRenovacionCoberturas.editarTransaccionPoliza();
+    }
 }

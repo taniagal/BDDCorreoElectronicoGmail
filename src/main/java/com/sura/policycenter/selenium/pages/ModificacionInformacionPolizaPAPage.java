@@ -14,8 +14,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-
-
 public class ModificacionInformacionPolizaPAPage extends Commons{
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionInformacionPolizaPAPage.class);
