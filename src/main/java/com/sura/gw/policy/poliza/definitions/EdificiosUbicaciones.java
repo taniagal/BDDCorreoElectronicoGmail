@@ -2,7 +2,7 @@ package com.sura.gw.policy.poliza.definitions;
 
 import ch.lambdaj.Lambda;
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
-import com.sura.gw.navegacion.steps.GuidewireSteps;
+import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
 import net.thucydides.core.annotations.Steps;
@@ -26,10 +26,9 @@ public class EdificiosUbicaciones {
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
     @Steps
-    IngresoAPolicyCenterDefinitions guidewireLogin;
-
+    IngresoAPolicyCenterDefinitions guidewire;
     @Steps
-    GuidewireSteps guidewire;
+    Navegacion navegacion;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -46,11 +45,9 @@ public class EdificiosUbicaciones {
             SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
         }
 
-        guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
-
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
-
+        guidewire.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
+        navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
+        navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
         try {
             polizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
         } catch (Exception e) {
@@ -181,19 +178,6 @@ public class EdificiosUbicaciones {
         }
     }
 
-    @Given("Estoy ingresando la información de coberturas a nivel de riesgo")
-    public void m1(){
-
-    }
-    @When("Quiera cambiar el valor de 1,000 millones a otro valor o quiera cambiar el valor del 20% a otro valor")
-    public void m2(){
-
-    }
-
-    @Then("Se cambie simplemente en una tabla de parámetros. Estos valores no deben estar quemados en el código.")
-    public void m3(){
-        assert true;
-    }
 
 
 }

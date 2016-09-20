@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.definitions;
 
 
-import com.sura.gw.navegacion.steps.GuidewireSteps;
+import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.policycenter.selenium.steps.ModificacionInformacionPolizaPASteps;
 import com.sura.policycenter.selenium.steps.ModificacionVehiculoSteps;
 import net.thucydides.core.annotations.Manual;
@@ -17,12 +17,14 @@ public class ModificacionVehiculoDefinitions{
 
     @Steps
     ModificacionInformacionPolizaPASteps modificacionInformacionPolizaPASteps;
+
     @Steps
-    GuidewireSteps guidewire;
+    Navegacion navegacion;
 
     @Given("se tiene una poliza expedida <numeroPoliza>")
     public void buscarPoliza(@Named("numeroPoliza") String numeroPoliza){
-        guidewire.ir_a_navegacion_superior().desplegar_menu_poliza().consultar_numero_de_poliza(numeroPoliza);
+        navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
+        navegacion.cuandoBusquePorNumeroDeDePoliza(numeroPoliza);
         modificacionInformacionPolizaPASteps.irAModificarInformacionPoliza();
         modificacionVehiculoSteps.ir_A_Modificar_Vehiculo();
     }

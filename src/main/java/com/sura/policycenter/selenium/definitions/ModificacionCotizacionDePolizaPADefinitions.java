@@ -2,7 +2,7 @@ package com.sura.policycenter.selenium.definitions;
 
 
 import com.google.inject.name.Named;
-import com.sura.gw.navegacion.steps.GuidewireSteps;
+import com.sura.gw.navegacion.definitions.Navegacion;
 import com.sura.policycenter.selenium.steps.ModificacionCotizacionDePolizaSteps;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +20,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
     ModificacionCotizacionDePolizaSteps cotizacionDePolizaSteps;
 
     @Steps
-    GuidewireSteps guidewire;
+    Navegacion navegacion;
 
     public ModificacionCotizacionDePolizaPADefinitions(){
         infoCotizacionPoliza.put("numeroPoliza", "Número de póliza");
@@ -66,7 +66,8 @@ public class ModificacionCotizacionDePolizaPADefinitions {
 
     @Given("se ha realizado la cotizacion de la modificacion <cotizacion>")
     public void irALaCotizacion(@Named("cotizacion") String cotizacion) {
-        guidewire.ir_a_navegacion_superior().desplegar_menu_poliza().consultar_numero_de_subscripcion(cotizacion);
+        navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
+        navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(cotizacion);
     }
 
     @When("ingrese al detalle de la modificacion")

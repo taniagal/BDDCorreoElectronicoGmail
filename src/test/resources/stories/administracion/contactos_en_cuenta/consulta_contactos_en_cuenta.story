@@ -1,10 +1,12 @@
 Consulta contactos en cuenta
 
 Meta:
-@Story CDSEG-845
-@url https://jira.suramericana.com.co/browse/CDSEG-845
-@tag automator:andres_alarcon_guerrero, informer:liliana_restrepo_munneton, sprint:1
+@Story SUGWUSC-14962
+@url https://jira.suramericana.com.co/browse/SUGWUSC-14962
+@tag mother:SUGWUSC-10140
 @Sprint 1
+@Type positive
+@Run yes
 
 Narrative: Consultar detalle de un contacto específico de la cuenta
 

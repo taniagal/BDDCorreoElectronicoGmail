@@ -7,7 +7,6 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 
 
 public class BusquedaDeCuentasPage extends Commons {
@@ -93,7 +92,6 @@ public class BusquedaDeCuentasPage extends Commons {
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     private WebElementFacade botonRestablecer;
 
-    Actions actions = new Actions(getDriver());
 
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
@@ -102,10 +100,10 @@ public class BusquedaDeCuentasPage extends Commons {
 
     public void irABuscarCuentas() {
         waitFor(menuBuscar).waitUntilPresent().waitUntilClickable();
-        actions.click(menuBuscar).build().perform();
+        menuBuscar.click();
         waitUntil(1500);
-        waitFor(menuBuscarCuentas).waitUntilVisible();
-        actions.click(menuBuscarCuentas).build().perform();
+        waitFor(menuBuscarCuentas).waitUntilPresent();
+        menuBuscarCuentas.click();
     }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
@@ -115,24 +113,25 @@ public class BusquedaDeCuentasPage extends Commons {
         txtSegundoNombre.sendKeys(segundoNombre);
         txtPrimerApellido.sendKeys(primerApellido);
         txtSegundoApellido.sendKeys(segundoApellido);
-        waitFor(btnBuscar).waitUntilVisible();
-        actions.click(btnBuscar).build().perform();
+        waitFor(btnBuscar).waitUntilPresent();
+        btnBuscar.click();
     }
 
     private void limpiarFormulario() {
         waitFor(botonRestablecer).waitUntilPresent().waitUntilClickable();
-        actions.click(botonRestablecer).build().perform();
+        botonRestablecer.click();
         waitUntil(2000);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
         this.limpiarFormulario();
-        waitFor(txtTipoDocumento).waitUntilVisible();
-        seleccionarItemEnCombo(txtTipoDocumento, tipoDocumento);
-        waitFor(txtNumeroDocumento).waitUntilVisible();
+        waitFor(txtTipoDocumento).waitUntilPresent();
+        txtTipoDocumento.clear();
+        txtTipoDocumento.sendKeys(tipoDocumento);
+        txtTipoDocumento.sendKeys(Keys.ENTER);
         txtNumeroDocumento.sendKeys(numeroDocumento);
-        waitFor(btnBuscar).waitUntilVisible();
-        actions.click(btnBuscar).build().perform();
+        waitFor(btnBuscar).waitUntilPresent();
+        btnBuscar.click();
     }
 
     public void mostrarInformacionDeLaCuenta(String numeroCuenta, String nombre, String direccion) {
@@ -143,7 +142,7 @@ public class BusquedaDeCuentasPage extends Commons {
     }
 
     public void validarMensaje(String mensaje) {
-        waitFor(msjMensajeInformativo).waitUntilVisible();
+        waitFor(msjMensajeInformativo).waitUntilPresent();
         MatcherAssert.assertThat(this.msjMensajeInformativo.getText(), Matchers.containsString(mensaje));
     }
 
@@ -190,13 +189,15 @@ public class BusquedaDeCuentasPage extends Commons {
         waitFor(txtRazonSocial);
         txtRazonSocial.sendKeys(razonSocial);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.click(btnBuscar).build().perform();
+        btnBuscar.click();
     }
 
     public void seleccionarTipoIdentificacion(String tipoDocumento) {
         txtTipoDocumento.waitUntilVisible();
         this.limpiarFormulario();
-        seleccionarItemEnCombo(txtTipoDocumento, tipoDocumento);
+        txtTipoDocumento.clear();
+        txtTipoDocumento.sendKeys(tipoDocumento);
+        txtTipoDocumento.sendKeys(Keys.ENTER);
     }
 
     public void buscarCuentaPorNombreComercial(String nombreComercial) {
@@ -204,7 +205,7 @@ public class BusquedaDeCuentasPage extends Commons {
         waitFor(txtNombreComercial);
         txtNombreComercial.sendKeys(nombreComercial);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.click(btnBuscar).build().perform();
+        btnBuscar.click();
     }
 
     public void seleccionarImprimir() {
@@ -219,7 +220,7 @@ public class BusquedaDeCuentasPage extends Commons {
         MatcherAssert.assertThat(this.lblImprimir.getText(), Matchers.containsString(imprimir));
         MatcherAssert.assertThat(this.lblExportar.getText(), Matchers.containsString(exportar));
         MatcherAssert.assertThat(this.lblExportarPersonalizado.getText(), Matchers.containsString(exportarPersonalizado));
-        actions.click(btnVolverBuscarCuentas).build().perform();
+        btnVolverBuscarCuentas.click();
     }
 
     public void ingresarRazonSocialYPrimerNombre(String razonSocial, String primerNombre) {
@@ -228,7 +229,7 @@ public class BusquedaDeCuentasPage extends Commons {
         this.txtRazonSocial.sendKeys(razonSocial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.click(btnBuscar).build().perform();
+        btnBuscar.click();
     }
 
     public void ingresarNombreComercialYPrimerNombre(String nombreComercial, String primerNombre) {
@@ -237,7 +238,7 @@ public class BusquedaDeCuentasPage extends Commons {
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.click(btnBuscar).build().perform();
+        btnBuscar.click();
     }
 
     public void ingresarRazonSocialYNombreComercial(String nombreComercial, String razonSocial) {
@@ -246,12 +247,7 @@ public class BusquedaDeCuentasPage extends Commons {
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtRazonSocial.sendKeys(razonSocial);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.click(btnBuscar).build().perform();
+        btnBuscar.click();
     }
 
-    public void seleccionarItemEnCombo(WebElementFacade elemento, String dato){
-        elemento.clear();
-        elemento.sendKeys(dato);
-        elemento.sendKeys(Keys.ENTER);
-    }
 }
