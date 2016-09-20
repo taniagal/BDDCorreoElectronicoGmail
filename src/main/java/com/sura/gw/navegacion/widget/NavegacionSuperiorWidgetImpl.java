@@ -1,6 +1,5 @@
 package com.sura.gw.navegacion.widget;
 
-import com.sura.gw.navegacion.webelement.MenuNavegacionSuperiorEnum;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -44,6 +43,6 @@ public class NavegacionSuperiorWidgetImpl extends WidgetObjectImpl implements IN
 
     @Override
     public void seleccionarMenu(MenuNavegacionSuperiorEnum menu) {
-        //return getPage().switchToPage(BusquedaDeCuentasPage.class);
+        // TODO: 19/09/2016
     }
 }
