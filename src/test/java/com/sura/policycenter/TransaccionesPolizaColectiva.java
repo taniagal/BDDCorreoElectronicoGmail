@@ -1,4 +1,6 @@
 package com.sura.policycenter;
 
-public class TransaccionesPolizaColectiva {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class TransaccionesPolizaColectiva extends SerenityStory{
 }

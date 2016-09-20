@@ -123,9 +123,3 @@ Then debo ver el detalle del asegurado y no debe permitir la modificacion de los
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | riesgo |
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | BLE861 |
-
-Scenario: validar que los botones de agregar tomador, direccion, y los campos de fecha se deshabiliten al actualizar la poliza colectiva
-Meta: @manual
-Given que estoy en una poliza colectiva
-When actualizo la poliza colectiva
-Then me debe deshabilitar todos los campos, botones y links de la pantalla que modifiquen la poliza
