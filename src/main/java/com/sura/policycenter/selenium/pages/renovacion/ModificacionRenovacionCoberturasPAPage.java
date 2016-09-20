@@ -14,7 +14,6 @@ import org.openqa.selenium.support.FindBy;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-
 public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
     private final Actions act = new Actions(getDriver());

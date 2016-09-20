@@ -6,7 +6,7 @@ Scenario: 1 Bug CDSEG-2887
 Meta:
 @Story CDSEG-2887
 @URL https://jira.suramericana.com.co/browse/CDSEG-2887
-@tag bug:CDSEG-1900, automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:6
+@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:6
 @LOB Multiriesgo corporativo
 @Sprint 6
 
@@ -30,7 +30,7 @@ Scenario: 2 Bug CDSEG-2756
 Meta:
 @Story CDSEG-2756
 @URL https://jira.suramericana.com.co/browse/CDSEG-2756
-@tag bug:CDSEG-1900, automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:6
+@tag bug:CDSEG-2756, automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:6
 @LOB Multiriesgo corporativo
 @Sprint 6
 
@@ -53,7 +53,7 @@ Scenario: 3 Bug CDSEG-1900 Validaciones en valores de los sublimites cobertura
 Meta:
 @Story CDSEG-1900
 @URL https://jira.suramericana.com.co/browse/CDSEG-1900
-@tag bug:CDSEG-1900, automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:4
+@tag bug:CDSEG-1900,  automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:4
 @Sprint 4
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas

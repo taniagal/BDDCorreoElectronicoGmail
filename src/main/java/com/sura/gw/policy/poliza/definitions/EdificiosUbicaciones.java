@@ -2,7 +2,7 @@ package com.sura.gw.policy.poliza.definitions;
 
 import ch.lambdaj.Lambda;
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
-import com.sura.gw.navegacion.definitions.Navegacion;
+import com.sura.gw.navegacion.steps.GuidewireSteps;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
 import net.thucydides.core.annotations.Steps;
@@ -26,9 +26,10 @@ public class EdificiosUbicaciones {
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
     @Steps
-    IngresoAPolicyCenterDefinitions guidewire;
+    IngresoAPolicyCenterDefinitions guidewireLogin;
+
     @Steps
-    Navegacion navegacion;
+    GuidewireSteps guidewire;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -41,13 +42,15 @@ public class EdificiosUbicaciones {
 
         LOGGER.info("EdificiosUbicaciones.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
 
-        if (SerenityWebdriverManager.inThisTestThread().isDriverInstantiated()) {
+        if (SerenityWebdriverManager.inThisTestThread().hasAnInstantiatedDriver()) {
             SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
         }
 
-        guidewire.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
-        navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
-        navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
+        guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
+
+        guidewire.ir_a_navegacion_superior()
+                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
+
         try {
             polizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
         } catch (Exception e) {
