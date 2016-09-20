@@ -5,9 +5,10 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Map;
@@ -15,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
+    private final Actions act = new Actions(getDriver());
 
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PALine']/div")
     private WebElementFacade itemCoberturasAuto;
@@ -72,31 +74,37 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
     }
 
     public void irAPantallaCoberturas() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
     }
 
     public void validarCoberturasPoliza(ExamplesTable coberturas) {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(labelCoberturasAutoPersonal).shouldBeVisible();
         Map<String, String> coberturasAuto = coberturas.getRows().get(0);
-        MatcherAssert.assertThat(labelDanosTerceros.getText(), Is.is(Matchers.equalTo(coberturasAuto.get("danosTerceros"))));
-        MatcherAssert.assertThat(labelResponsabilidadCivil.getText(), Is.is(Matchers.equalTo(coberturasAuto.get("responsabilidadCivil"))));
+        MatcherAssert.assertThat(labelDanosTerceros.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danosTerceros"))));
+        MatcherAssert.assertThat(labelResponsabilidadCivil.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("responsabilidadCivil"))));
         MatcherAssert.assertThat(coberturaResponsabilidadCivil.getText(), Matchers.containsString(coberturasAuto.get("limite")));
         MatcherAssert.assertThat(coberturaResponsabilidadCivil.getText(), Matchers.containsString(coberturasAuto.get("deducible")));
-        MatcherAssert.assertThat(labelDanosCarro.getText(), Is.is(Matchers.equalTo(coberturasAuto.get("danosCarro"))));
-        MatcherAssert.assertThat(labelDanos.getText(), Is.is(Matchers.equalTo(coberturasAuto.get("danos"))));
+        MatcherAssert.assertThat(labelDanosCarro.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danosCarro"))));
+        MatcherAssert.assertThat(labelDanos.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danos"))));
         MatcherAssert.assertThat(coberturaDanos.getText(), Matchers.containsString(coberturasAuto.get("perdidaTotalDanos")));
         MatcherAssert.assertThat(coberturaDanos.getText(), Matchers.containsString(coberturasAuto.get("perdidaParcialDanos")));
         MatcherAssert.assertThat(coberturaDanos.getText(), Matchers.containsString(coberturasAuto.get("gastosTransporteD")));
-        MatcherAssert.assertThat(labelHurtoCarro.getText(), Is.is(Matchers.equalTo(coberturasAuto.get("hurtoCarro"))));
-        MatcherAssert.assertThat(labelHurto.getText(), Is.is(Matchers.equalTo(coberturasAuto.get("hurto"))));
+        MatcherAssert.assertThat(labelHurtoCarro.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("hurtoCarro"))));
+        MatcherAssert.assertThat(labelHurto.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("hurto"))));
         MatcherAssert.assertThat(coberturaHurto.getText(), Matchers.containsString(coberturasAuto.get("perdidaTotalHurto")));
         MatcherAssert.assertThat(coberturaHurto.getText(), Matchers.containsString(coberturasAuto.get("gastosTransporteH")));
+    }
+
+    public void editarTransaccionPoliza() {
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
+        act.sendKeys(Keys.ENTER).build().perform();
+        waitUntil(1500);
     }
 
     public void retirarCoberturaObligatoria(ExamplesTable cobertura) {
         Map<String, String> coberturasObligatoria = cobertura.getRows().get(0);
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(labelResponsabilidadCivil).shouldBeVisible();
-        MatcherAssert.assertThat(labelResponsabilidadCivil.getText(), Is.is(Matchers.equalTo(coberturasObligatoria.get("cobertura"))));
+        MatcherAssert.assertThat(labelResponsabilidadCivil.getText(), Matchers.is(Matchers.equalTo(coberturasObligatoria.get("cobertura"))));
     }
 
     public void validarCoberturasObligatorias() {
