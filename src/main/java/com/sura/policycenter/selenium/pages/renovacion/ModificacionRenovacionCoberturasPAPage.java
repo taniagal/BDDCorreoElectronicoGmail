@@ -109,9 +109,9 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
     public void validarCoberturasObligatorias() {
         String xpathFieldsetRCSinCheckbox = ".//fieldset[(child::legend[contains(.,'Responsabilidad Civil')]) and not(descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaRC;
+        WebElementFacade grupoCoberturaRC = null;
         setImplicitTimeout(1,TimeUnit.SECONDS);
-        grupoCoberturaRC = find(By.xpath(xpathFieldsetRCSinCheckbox));
+        grupoCoberturaRC = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetRCSinCheckbox));
         resetImplicitTimeout();
         MatcherAssert.assertThat(grupoCoberturaRC, Matchers.notNullValue());
     }
@@ -133,9 +133,9 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
     public void retirarCoberturasOpcionales() {
         String xpathFieldsetHurto = ".//fieldset[(child::legend[contains(.,'Hurto')]) and (descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaHurto;
+        WebElementFacade grupoCoberturaHurto = null;
         setImplicitTimeout(1,TimeUnit.SECONDS);
-        grupoCoberturaHurto = find(By.xpath(xpathFieldsetHurto));
+        grupoCoberturaHurto = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetHurto));
         resetImplicitTimeout();
         MatcherAssert.assertThat(grupoCoberturaHurto, Matchers.notNullValue());
         checkBoxHurto.click();
@@ -143,9 +143,9 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
     public void adicionarNuevaCobertura() {
         String xpathFieldsetAccidentes = ".//fieldset[(child::legend[contains(.,'Accidentes al Conductor')]) and (descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaAccidentes;
+        WebElementFacade grupoCoberturaAccidentes = null;
         setImplicitTimeout(1,TimeUnit.SECONDS);
-        grupoCoberturaAccidentes = find(By.xpath(xpathFieldsetAccidentes));
+        grupoCoberturaAccidentes = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetAccidentes));
         resetImplicitTimeout();
         MatcherAssert.assertThat(grupoCoberturaAccidentes, Matchers.notNullValue());
         checkBoxAccidentes.click();

@@ -2,13 +2,17 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.renovacion.ModificacionRenovacionCoberturasPAPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 public class ModificacionRenovacionCoberturasPASteps extends ScenarioSteps {
 
-    private ModificacionRenovacionCoberturasPAPage modificacionRenovacionCoberturas;
+    private final ModificacionRenovacionCoberturasPAPage modificacionRenovacionCoberturas = new ModificacionRenovacionCoberturasPAPage(getDriver());
 
+    ModificacionRenovacionCoberturasPASteps(Pages pages){
+        super(pages);
+    }
 
     @Step
     public void ir_A_Pantalla_de_Coberturas_Auto_Personal() {
