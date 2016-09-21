@@ -3,8 +3,9 @@ Transacciones Poliza Colectiva
 Meta:
 
 @issue #CDSEG-877
-@Automatizador Eliana Alvarez
+@tag automator: eliana_alvarez, sprint:5
 @Sprint 5
+@local
 
 Narrative:
 Como usuario de PolicyCenter
@@ -94,6 +95,7 @@ And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
 And vaya a consultar las transacciones de la poliza colectiva
 And de clic en el numero de poliza de transacciones poliza colectiva
+And de clic en boton siguiente para pasar al siguiente paso de la poliza colectiva
 And de clic en el nombre del tomador o el segundo tomador <tomador> de la poliza colectiva
 Then me debe llevar a la pantalla de consulta de tomador <tomador> de la poliza colectiva y no tener la opcion de editar
 
@@ -121,9 +123,3 @@ Then debo ver el detalle del asegurado y no debe permitir la modificacion de los
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | riesgo |
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | BLE861 |
-
-Scenario: validar que los botones de agregar tomador, direccion, y los campos de fecha se deshabiliten al actualizar la poliza colectiva
-Meta: @manual
-Given que estoy en una poliza colectiva
-When actualizo la poliza colectiva
-Then me debe deshabilitar todos los campos, botones y links de la pantalla que modifiquen la poliza

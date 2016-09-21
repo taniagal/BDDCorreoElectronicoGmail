@@ -2,8 +2,8 @@ Direccion Principal De Un Contacto
 
 Meta:
 @issue #CDSEG-886
-@automatizador Nelson Mosquera
 @sprint 1
+@tag automator: nelson_jhair_mosquera_palacios
 
 Narrative:
 como usuario de PolicyCenter

@@ -47,6 +47,7 @@ public class NuevaCotizacionPage extends PageObject {
     public static final String MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'displayfield') and contains(@id,'inputEl')]";
     public static final String MENSAJES_DE_INFORMACION = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div";
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
+    public static final String TRACE = "\nTRACE: \n";
 
 
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
@@ -80,11 +81,11 @@ public class NuevaCotizacionPage extends PageObject {
             elemento = element(find(By.xpath(xpath)));
 
         } catch (NoSuchElementException e) {
-            LOGGER.info("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + TRACE + e);
         } catch (StaleElementReferenceException sere) {
-            LOGGER.info("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
+            LOGGER.info("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + TRACE + sere);
         } catch (Exception e) {
-            LOGGER.info("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + TRACE + e);
         }
 
         return elemento;
@@ -98,11 +99,11 @@ public class NuevaCotizacionPage extends PageObject {
             elementos = withTimeoutOf(15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
 
         } catch (NoSuchElementException e) {
-            LOGGER.info("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + TRACE + e);
         } catch (StaleElementReferenceException sere) {
-            LOGGER.info("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + "\nTRACE: \n" + sere);
+            LOGGER.info("\nERROR051: Elemento de NuevaCotizacionPage no existe en el DOM \nElemento: " + xpath + TRACE + sere);
         } catch (Exception e) {
-            LOGGER.info("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + "\nTRACE: \n" + e);
+            LOGGER.info("\nERROR: Error desconocido en: NuevaCotizacionPage.elemento \nElemento: " + xpath + TRACE + e);
         }
 
         return elementos;

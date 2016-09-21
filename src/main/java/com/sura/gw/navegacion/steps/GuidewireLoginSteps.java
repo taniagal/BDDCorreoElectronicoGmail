@@ -24,32 +24,12 @@ public class GuidewireLoginSteps extends ScenarioSteps {
     public void abrir_navegador(WebDriver driver) {
         this.loginPage = new GuidewireLoginPages(driver);
         this.loginPage.open();
-        this.loginPage.getDriver().manage().window().maximize();
     }
 
     @Step
     public void loguearse_a_policycenter_con_rol(String rolUsuario){
-
-        SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
         abrir_navegador(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
-
-        if (loginPage.elemento(GuidewireLoginPages.TXT_USUARIO_SEUS) == null && loginPage.elemento(GuidewireLoginPages.TXT_CONTRASENIA_SEUS) == null) {
-            if ("Asesor".equals(rolUsuario)){
-                loginPage.enter("su").into(loginPage.elemento(GuidewireLoginPages.TXT_USUARIO));
-                loginPage.enter("gw").into(loginPage.elemento(GuidewireLoginPages.TXT_CONTRASENIA));
-                loginPage.elemento(GuidewireLoginPages.BTN_LOGIN).click();
-            }
-
-        } else {
-            if ("Asesor".equals(rolUsuario)){
-                loginPage.enter("pedrvevi").into(loginPage.elemento(GuidewireLoginPages.TXT_USUARIO_SEUS));
-                loginPage.enter("pedrvevi").into(loginPage.elemento(GuidewireLoginPages.TXT_CONTRASENIA_SEUS));
-                loginPage.elemento(GuidewireLoginPages.CBO_PAIS).selectByVisibleText("Colombia");
-                loginPage.elemento(GuidewireLoginPages.BTN_LOGIN_SEUS).click();
-            }
-
-        }
-        
+        loginPage.ingresar_por_rol(rolUsuario);
     }
 
     @Step

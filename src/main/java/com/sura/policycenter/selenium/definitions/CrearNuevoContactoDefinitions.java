@@ -1,6 +1,5 @@
 package com.sura.policycenter.selenium.definitions;
 
-import com.sura.commons.selenium.SeusLoginSteps;
 import com.sura.policycenter.selenium.steps.CrearNuevoContactoSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -18,8 +17,6 @@ public class CrearNuevoContactoDefinitions {
 
     @Steps
     private CrearNuevoContactoSteps crearNuevoContactoSteps ;
-    @Steps
-    private SeusLoginSteps seusLoginSteps;
 
     @Given("estoy en la pantalla de crear contacto persona natural")
     public void givenEstoyEnLaPantallaDeCrearContactoPersonaNatural() {

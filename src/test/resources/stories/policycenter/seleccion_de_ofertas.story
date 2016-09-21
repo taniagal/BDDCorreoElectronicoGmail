@@ -3,7 +3,7 @@ Seleccion De Ofertas
 Meta:
 
 @issue CDSEG-1023
-@Automatizador Jennifer Perez
+@tag automator: eliana_alvarez, sprint:2
 @Sprint 2
 
 Narrative:

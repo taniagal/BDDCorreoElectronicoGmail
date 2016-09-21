@@ -196,34 +196,48 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
 
     public void validaCamposPoliza() {
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if (!lblTipoDocumento.isPresent())
+        if (!lblTipoDocumento.isPresent()) {
             notPresent.append("Label errado: Tipo documento|");
-        if (!lblNumeroDocumento.isPresent())
+        }
+        if (!lblNumeroDocumento.isPresent()) {
             notPresent.append("Label errado: Numero documento|");
-        if (!lblNumeroTelefono.isPresent())
+        }
+        if (!lblNumeroTelefono.isPresent()) {
             notPresent.append("label errado: Teléfono|");
-        if (!lblDireccion.isPresent())
+        }
+        if (!lblDireccion.isPresent()) {
             notPresent.append("label errado: Dirección de la poliza|");
-        if ("".equals(inputTipoDocumento.getText()))
+        }
+        if ("".equals(inputTipoDocumento.getText())) {
             notPresent.append("salida errada: Tipo cedula|");
-        if ("".equals(inputNumeroDocumento.getText()))
+        }
+        if ("".equals(inputNumeroDocumento.getText())) {
             notPresent.append("salida errada: Numero cedula|");
-        if ("".equals(inputNumeroTelefono.getText()))
+        }
+        if ("".equals(inputNumeroTelefono.getText())) {
             notPresent.append("salida errada: Telefono|");
-        if ("".equals(inputDireccion.getText()))
+        }
+        if ("".equals(inputDireccion.getText())) {
             notPresent.append("salida errada: Direccion|");
-        if (!"".equals(inputReaseguroAceptado.getText()))
+        }
+        if (!"".equals(inputReaseguroAceptado.getText())) {
             notPresent.append("radio boton nulo: Reaseguro aceptado|");
-        if (!"".equals(inputReaseguroEspecial.getText()))
+        }
+        if (!"".equals(inputReaseguroEspecial.getText())) {
             notPresent.append("radio boton nulo: Reaseguro especial|");
-        if (!"Fecha inicio de vigencia".equals(lblFechaVigencia.getText()))
+        }
+        if (!"Fecha inicio de vigencia".equals(lblFechaVigencia.getText())) {
             notPresent.append("salida errada: Fecha inicio de vigencia|");
-        if (!"Fecha fin de vigencia".equals(lblFechaExpiracion.getText()))
+        }
+        if (!"Fecha fin de vigencia".equals(lblFechaExpiracion.getText())) {
             notPresent.append("salida errada: Fecha fin de vigencia|");
-        if (!"Fecha de expedición".equals(lblFechaescrita.getText()))
+        }
+        if (!"Fecha de expedición".equals(lblFechaescrita.getText())) {
             notPresent.append("salida errada: Fecha de expedición|");
-        if (!"Descripción de la dirección".equals(lblDescripcionDir.getText()))
+        }
+        if (!"Descripción de la dirección".equals(lblDescripcionDir.getText())) {
             notPresent.append("salida errada: Descripcion direccion|");
+        }
         String res = notPresent.toString();
         if (MSJVALIDARELEMENTOS.equals(res)) {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);

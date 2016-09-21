@@ -1,6 +1,8 @@
 package com.sura.policycenter.selenium.pages.renovacion;
 
 import com.sura.commons.selenium.Commons;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -9,8 +11,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class CotizacionRenovacionPAPage extends Commons{
 
@@ -20,8 +20,6 @@ public class CotizacionRenovacionPAPage extends Commons{
     private WebElementFacade campoNumeroPoliza;
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']")
     private WebElementFacade campoNumeroRenovacion;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:PolicyPeriod-inputEl']")
-    private WebElementFacade campoVigenciaPoliza;
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:Insured-inputEl']")
     private WebElementFacade campoTomador;
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:DocumentType-inputEl']")
@@ -62,7 +60,7 @@ public class CotizacionRenovacionPAPage extends Commons{
     private WebElementFacade campoPrima;
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV:VehicleSubTotal']")
     private WebElementFacade campoSubtotalSumaPrimas;
-    @FindBy(xpath = ".//div[2]/div/table/tbody/tr/td/div/table/tbody/tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td[2]/div")
+    @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td[2]/div")
     private WebElementFacade campoSubtotalPrimas;
 
     public CotizacionRenovacionPAPage (WebDriver driver){
@@ -107,7 +105,6 @@ public class CotizacionRenovacionPAPage extends Commons{
         Map<String, String> informacionRenovacion = informacionGeneral.getRows().get(0);
         MatcherAssert.assertThat(campoNumeroPoliza.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("numeroPoliza"))));
         MatcherAssert.assertThat(campoNumeroRenovacion.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("numeroRenovacion"))));
-        MatcherAssert.assertThat(campoVigenciaPoliza.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("vigenciaPoliza"))));
         MatcherAssert.assertThat(campoTomador.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("tomador"))));
         MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("tipoDocumento"))));
         MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("numeroDocumento"))));
@@ -115,7 +112,8 @@ public class CotizacionRenovacionPAPage extends Commons{
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("empresaAseguradora"))));
-        MatcherAssert.assertThat(campoPrimaTotal.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("primaTotal"))));
+        MatcherAssert.assertThat("Error en el valor de la cuota, expected '"+informacionRenovacion.get("primaTotal")+"' but was: "+
+                campoPrimaTotal.getText(),campoPrimaTotal.getText().contains(informacionRenovacion.get("primaTotal")));
         MatcherAssert.assertThat(campoImpuestos.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("impuestos"))));
         MatcherAssert.assertThat(campoCostoTotal.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("costoTotal"))));
     }

@@ -3,7 +3,8 @@ Cotizacion Renovacion Pa
 Meta:
 
 @issue #CDSEG-842
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 6
 
 Narrative:
@@ -19,7 +20,7 @@ Then se debe mostrar la informacion del detalle de cotizacion por riesgo, donde 
 |TKC459 |2016   |00601182        |Mazda |MPV   |
 And en el detalle por coberturas mostrar:
 |cobertura                         |terminoCobertura |prima       |subtotal     |subtotalPrimas|
-|Cobertura de Responsabilidad Civil|32.000.000       |$326,211.00 |$2,223,138.00|$4,446,276    |
+|Cobertura de Responsabilidad Civil|32.000.000       |$326,211.00 |$2,303,011.00|$4,606,022.00 |
 
 Examples:
 |cotizacion |
@@ -51,8 +52,8 @@ Scenario: Validar informacion general de la cotizacion
 Given se ha realizado la renovacion de la cotizacion <cotizacion>
 When ingrese revisar la cotizacion
 Then se debe mostrar la informacion general de la poliza cotizada con los siguientes datos:
-|numeroPoliza |numeroRenovacion |vigenciaPoliza         |tomador    |tipoDocumento       |numeroDocumento |direccion                                     |tipoDireccion |descripcionDireccion                      |empresaAseguradora       |primaTotal   |impuestos |costoTotal   |
-|TEST_32112332|32112330         |08/06/2017 - 08/06/2018|JORGE PAISA|CEDULA DE CIUDADANIA|1356118711      |CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos|Vivienda      |Created by the Address Builder with code 0|Acme Low Hazard Insurance|$4,446,276.00|-         |$4,446,276.00|
+|numeroPoliza |numeroRenovacion |tomador    |tipoDocumento       |numeroDocumento |direccion                                     |tipoDireccion |descripcionDireccion                      |empresaAseguradora       |primaTotal   |impuestos |costoTotal   |
+|TEST_32112332|32112330         |JORGE PAISA|CEDULA DE CIUDADANIA|1356118711      |CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos|Vivienda      |Created by the Address Builder with code 0|Acme Low Hazard Insurance|$4,606,022.00|-         |$4,606,022.00|
 
 Examples:
 |cotizacion |

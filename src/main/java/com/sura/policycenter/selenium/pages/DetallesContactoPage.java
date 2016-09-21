@@ -1,6 +1,8 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -101,7 +103,7 @@ public class  DetallesContactoPage extends Commons {
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update']")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV_tb:Add']")
-    private WebElementFacade botonAgregar;
+    public WebElementFacade botonAgregar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-labelEl']")
     private WebElementFacade labelPais;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-labelEl']")
@@ -213,7 +215,7 @@ public class  DetallesContactoPage extends Commons {
 
     public void setTelefonoCelular(String telefonoCelular){
         ingresarDato(campoTxtTelefonoCelular, telefonoCelular);
-        dtlContact[10]= "+1 "+telefonoCelular;
+        dtlContact[10]= telefonoCelular;
     }
 
 
@@ -280,26 +282,36 @@ public class  DetallesContactoPage extends Commons {
         waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
         waitFor(campoTxtSegundoNombre).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!dtlContact[2].equals(campoTxtSegundoNombre.getText()))
+        if(!dtlContact[2].equals(campoTxtSegundoNombre.getText())) {
             right.append("segundo nombre,");
-        if(!dtlContact[3].equals(campoTxtSegundoApellido.getText()))
+        }
+        if(!dtlContact[3].equals(campoTxtSegundoApellido.getText())) {
             right.append("segundo apellido,");
-        if(!dtlContact[6].equals(comboBoxProfesion.getText()))
+        }
+        if(!dtlContact[6].equals(comboBoxProfesion.getText())) {
             right.append("profesion,");
-        if(!dtlContact[7].equals(comboBoxEstadoCivil.getText()))
+        }
+        if(!dtlContact[7].equals(comboBoxEstadoCivil.getText())) {
             right.append("estado civil,");
-        if(!dtlContact[8].equals(comboBoxTipoFamilia.getText()))
+        }
+        if(!dtlContact[8].equals(comboBoxTipoFamilia.getText())) {
             right.append("tipo de familia,");
-        if(!dtlContact[10].equals(campoTxtTelefonoCelular2.getText()))
+        }
+        if(!campoTxtTelefonoCelular2.getText().contains(dtlContact[10])) {
             right.append("telefono celular,");
-        if(!dtlContact[11].equals(campoTxtTelefonoResidencial2.getText()))
+        }
+        if(!dtlContact[11].equals(campoTxtTelefonoResidencial2.getText())) {
             right.append("telefono residencial,");
-        if(!dtlContact[12].equals(campoTxtTelefonoTrabajo2.getText()))
+        }
+        if(!dtlContact[12].equals(campoTxtTelefonoTrabajo2.getText())) {
             right.append("telefono tarbajo,");
-        if(!dtlContact[13].equals(campoTxtCorreoElectronicoPrimario.getText()))
+        }
+        if(!dtlContact[13].equals(campoTxtCorreoElectronicoPrimario.getText())) {
             right.append("correo primario,");
-        if(!dtlContact[14].equals(campoTxtCorreoElectronicoSecundario.getText()))
+        }
+        if(!dtlContact[14].equals(campoTxtCorreoElectronicoSecundario.getText())) {
             right.append("correo secundario,");
+        }
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
@@ -340,34 +352,48 @@ public class  DetallesContactoPage extends Commons {
     public  void verificarCamposPersonaNatural(){
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         labelPrimerNombre.waitUntilPresent();
-        if(!labelPrimerNombre.isPresent())
+        if(!labelPrimerNombre.isPresent()) {
             notPresent.append(" primer_nombre,");
-        if(!labelSegundoNombre.isPresent())
+        }
+        if(!labelSegundoNombre.isPresent()) {
             notPresent.append(" segundo_nombre,");
-        if(!labelPrimerApellido.isPresent())
+        }
+        if(!labelPrimerApellido.isPresent()) {
             notPresent.append(" primer_apellido,");
-        if(!labelSegundoApellido.isPresent())
+        }
+        if(!labelSegundoApellido.isPresent()) {
             notPresent.append(" segundo_apellido,");
-        if(!labelTipoDocumento.isPresent())
+        }
+        if(!labelTipoDocumento.isPresent()) {
             notPresent.append(" tipo_documento,");
-        if(!labelNumeroDocumento.isPresent())
+        }
+        if(!labelNumeroDocumento.isPresent()) {
             notPresent.append(" numero_documento,");
-        if(!labelSexo.isPresent())
+        }
+        if(!labelSexo.isPresent()) {
             notPresent.append(" sexo,");
-        if(!labelFechaNacimiento.isPresent())
+        }
+        if(!labelFechaNacimiento.isPresent()) {
             notPresent.append(" fecha_nacimiento,");
-        if(!labelProfesion.isPresent())
+        }
+        if(!labelProfesion.isPresent()) {
             notPresent.append(" profesion,");
-        if(!labelEstadoCivil.isPresent())
+        }
+        if(!labelEstadoCivil.isPresent()) {
             notPresent.append(" estado_civil,");
-        if(!labelTipoFamilia.isPresent())
+        }
+        if(!labelTipoFamilia.isPresent()) {
             notPresent.append(" tipo_familia,");
-        if(!labelTipoTelefono.isPresent())
+        }
+        if(!labelTipoTelefono.isPresent()) {
             notPresent.append(" tipo_telefono,");
-        if(!labelTelefonoCelular.isPresent())
+        }
+        if(!labelTelefonoCelular.isPresent()) {
             notPresent.append(" telefono_celular,");
-        if(!labelCorreoElectronicoPrimario.isPresent())
+        }
+        if(!labelCorreoElectronicoPrimario.isPresent()) {
             notPresent.append(" correo_electronico_primario,");
+        }
         String res = notPresent.toString();
         if(MSJVALIDARELEMENTOS.equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);
@@ -379,26 +405,36 @@ public class  DetallesContactoPage extends Commons {
     public void verificarCamposPersonaJuridica() {
         labelRazonSocial.waitUntilPresent();
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if(!labelRazonSocial.isPresent())
+        if(!labelRazonSocial.isPresent()) {
             notPresent.append(" razon_social,");
-        if(!labelNombreComercial.isPresent())
+        }
+        if(!labelNombreComercial.isPresent()) {
             notPresent.append(" nombre_comercial,");
-        if(!labelTipoDocumento.isPresent())
+        }
+        if(!labelTipoDocumento.isPresent()) {
             notPresent.append(" tipo_documento,");
-        if(!labelNumeroDocumento.isPresent())
+        }
+        if(!labelNumeroDocumento.isPresent()) {
             notPresent.append(" numero_documento,");
-        if(!labelActividadComercial.isPresent())
+        }
+        if(!labelActividadComercial.isPresent()) {
             notPresent.append(" actividad_comercial,");
-        if(!labelNumeroEmpleados.isPresent())
+        }
+        if(!labelNumeroEmpleados.isPresent()) {
             notPresent.append(" numero_empleados,");
-        if(!labelValorActivos.isPresent())
+        }
+        if(!labelValorActivos.isPresent()) {
             notPresent.append(" valor_activos,");
-        if(!labelVentasAnuales.isPresent())
+        }
+        if(!labelVentasAnuales.isPresent()) {
             notPresent.append(" ventas_anuales,");
-        if(!labelTelefonoOficinaEmpresa.isPresent())
+        }
+        if(!labelTelefonoOficinaEmpresa.isPresent()) {
             notPresent.append(" telefono_oficina,");
-        if(!getcampoTxtCorreoElectronicoPrimarioEmpresa.isPresent())
+        }
+        if(!getcampoTxtCorreoElectronicoPrimarioEmpresa.isPresent()) {
             notPresent.append(" correo_electronico_primario,");
+        }
         String res = notPresent.toString();
         if(MSJVALIDARELEMENTOS.equals(res)){
             res = notPresent.toString().substring(0,notPresent.toString().length()-1);

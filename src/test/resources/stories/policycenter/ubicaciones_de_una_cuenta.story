@@ -1,5 +1,7 @@
 Meta:
 @issue #SUGWUSC-14975
+@tag automator: nelson_jhair_mosquera_palacios
+
 
 Narrative:
 Como usuario de policyCenter

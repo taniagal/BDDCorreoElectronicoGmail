@@ -3,7 +3,7 @@ Historial Cuenta
 Meta:
 
 @issue #CDSEG-925
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
 @Sprint 1
 
 Narrative:

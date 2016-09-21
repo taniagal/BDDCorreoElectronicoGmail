@@ -2,8 +2,9 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
+
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -12,8 +13,8 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-
 
 
 public class BusquedaActividadesPage extends PageObject {
@@ -58,33 +59,34 @@ public class BusquedaActividadesPage extends PageObject {
     private WebElementFacade menuBuscar;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ActivitySearch']/div")
     private WebElementFacade menuBuscarActividades;
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab']")
-    private WebElementFacade menuEscritorio;
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     private WebElementFacade botonRestablecer;
+
+    Actions actions = new Actions(getDriver());
 
     public BusquedaActividadesPage(WebDriver driver) {
         super(driver);
     }
 
     public void irABuscarActividades() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(menuBuscar).shouldBePresent();
-        menuBuscar.click();
-        commons.waitUntil(2000);
-        menuBuscarActividades.click();
+        waitFor(menuBuscar);
+        actions.click(menuBuscar).build().perform();
+        waitFor(menuBuscarActividades).waitUntilVisible();
+        commons.waitUntil(1500);
+        actions.click(menuBuscarActividades).build().perform();
         waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();
     }
 
     public void filtrarPorAsignado(String usuario) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
+        waitFor(txtAsignadoA).waitUntilVisible();
         txtAsignadoA.sendKeys(usuario);
     }
 
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
-        btnBuscar.waitUntilVisible().waitUntilClickable().click();
-        grdFechaVencimiento.waitUntilVisible().waitUntilVisible();
+        actions.click(btnBuscar).build().perform();
+        grdFechaVencimiento.waitUntilVisible();
         MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
         MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
@@ -94,23 +96,21 @@ public class BusquedaActividadesPage extends PageObject {
         MatcherAssert.assertThat(this.grdProducto.getText(), Matchers.containsString(exampleTable.get("producto")));
         MatcherAssert.assertThat(this.grdAsignadoPor.getText(), Matchers.containsString(exampleTable.get("asignadoPor")));
         MatcherAssert.assertThat(this.grdEstado.getText(), Is.is(Matchers.equalTo(exampleTable.get("estado"))));
-        menuEscritorio.click();
-        waitForTextToAppear("Mis actividades");
     }
 
     public void limpiarFiltros() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonRestablecer).waitUntilPresent();
-        botonRestablecer.click();
+        waitFor(botonRestablecer).waitUntilVisible();
+        actions.click(botonRestablecer).build().perform();
         commons.waitUntil(2000);
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroPoliza).waitUntilPresent();
+        waitFor(txtNumeroPoliza).waitUntilVisible();
         txtNumeroPoliza.sendKeys(numeroPoliza);
     }
 
     public void filtrarPorNumeroDeCuenta(String numeroCuenta) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtNumeroCuenta).waitUntilPresent();
+        waitFor(txtNumeroCuenta).waitUntilVisible();
         txtNumeroCuenta.sendKeys(numeroCuenta);
     }
 
@@ -120,40 +120,38 @@ public class BusquedaActividadesPage extends PageObject {
 
     public void validarMensjeFiltroRequerido(String mensaje) {
         waitFor(btnBuscar).waitUntilPresent();
-        btnBuscar.click();
+        actions.click(btnBuscar).build().perform();
         waitForPresenceOf(".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div");
         MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
     }
 
     public void buscarPorFiltrosUsuarioYPrioridad(String usuario, String prioridad) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
+        waitFor(txtAsignadoA).waitUntilVisible();
         txtAsignadoA.sendKeys(usuario);
-        txtPrioridad.clear();
-        txtPrioridad.sendKeys(prioridad);
-        txtPrioridad.sendKeys(Keys.ENTER);
+        this.ingresarDatoEnCombo(txtPrioridad, prioridad);
     }
 
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(String usuario, String estadoActividad) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
+        waitFor(txtAsignadoA).waitUntilVisible();
         txtAsignadoA.sendKeys(usuario);
-        txtEstadoActividad.clear();
-        txtEstadoActividad.sendKeys(estadoActividad);
-        txtEstadoActividad.sendKeys(Keys.ENTER);
+        this.ingresarDatoEnCombo(txtEstadoActividad, estadoActividad);
     }
 
     public void buscarPorFiltrosUsuarioYVencida(String usuario, String vencida) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
+        waitFor(txtAsignadoA).waitUntilVisible();
         txtAsignadoA.sendKeys(usuario);
-        txtVencida.clear();
-        txtVencida.sendKeys(vencida);
-        txtVencida.sendKeys(Keys.ENTER);
+        this.ingresarDatoEnCombo(txtVencida, vencida);
     }
 
     public void buscarPorFiltroOpcional(String estadoActividad) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(txtAsignadoA).waitUntilPresent();
-        txtEstadoActividad.clear();
-        txtEstadoActividad.sendKeys(estadoActividad);
-        txtEstadoActividad.sendKeys(Keys.ENTER);
+        waitFor(txtAsignadoA).waitUntilVisible();
+        this.ingresarDatoEnCombo(txtEstadoActividad, estadoActividad);
     }
 
+    public void ingresarDatoEnCombo(WebElementFacade elemento, String dato) {
+        waitFor(elemento);
+        elemento.clear();
+        elemento.sendKeys(dato);
+        elemento.sendKeys(Keys.ENTER);
+    }
 }

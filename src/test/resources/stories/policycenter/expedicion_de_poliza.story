@@ -4,7 +4,9 @@ Meta:
 
 @issue #SUGWUSC-15128, CDSEG-856
 @Automatizador Jonathan Mejia, Eliana Alvarez
+@tag automator: eliana_alvarez, sprint:2
 @Sprint 2
+@local
 
 Narrative:
 Como usuario de policy center

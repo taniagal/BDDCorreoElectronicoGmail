@@ -1,6 +1,9 @@
 Meta:
 
 @issue #SUGWUSC-14460
+@tag automator: Jonathan_Mejia_Leon
+@local
+@Sprint 3
 
 Narrative:
 Como usuario PolicyCenter

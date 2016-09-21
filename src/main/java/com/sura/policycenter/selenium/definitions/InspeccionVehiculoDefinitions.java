@@ -34,13 +34,11 @@ public class InspeccionVehiculoDefinitions {
 
     @When("el vehiculo tenga inspeccion no valida")
     public void validarInspeccionVehiculo() {
-        vehiculoSteps.ir_a_vehiculos();
         inspeccionVehiculoSteps.crear_vehiculo();
     }
 
     @When("el vehiculo tenga inspeccion")
     public void validarInspeccion() {
-        vehiculoSteps.ir_a_vehiculos();
         inspeccionVehiculoSteps.crear_vehiculo();
     }
 

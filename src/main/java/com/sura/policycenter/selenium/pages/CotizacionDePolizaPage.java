@@ -104,7 +104,6 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void ingresarACotizacion() {
-        //WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']");
         if(titulo.isCurrentlyVisible()){
             waitForTextToAppear("Calificación",1000);
         }else if(tituloCotizacion.isCurrentlyVisible()){
@@ -220,7 +219,7 @@ public class CotizacionDePolizaPage extends PageObject{
     public void mostrarValorYCuotas(String valorCuota, String numeroCuotas) {
         boolean validacion = labelValorCuota.isCurrentlyEnabled() && labelNumeroCuotas.isCurrentlyEnabled();
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(true)));
-        MatcherAssert.assertThat(campoValorCuota.getText(), Is.is(Matchers.equalTo(valorCuota)));
+        MatcherAssert.assertThat("Error en el valor de la cuota, expected '"+valorCuota+"' but was: "+campoValorCuota.getText(),campoValorCuota.getText().contains(valorCuota));
         MatcherAssert.assertThat(campoNumeroCuotas.getText(), Is.is(Matchers.equalTo(numeroCuotas)));
     }
 }

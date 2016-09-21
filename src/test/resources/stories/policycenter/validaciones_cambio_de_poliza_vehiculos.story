@@ -2,7 +2,8 @@ Validaciones Cambio De Poliza Vehiculos
 
 Meta:
 @issue CDSEG-1296
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 4
 
 Scenario: Validar existencia de numero de chasis

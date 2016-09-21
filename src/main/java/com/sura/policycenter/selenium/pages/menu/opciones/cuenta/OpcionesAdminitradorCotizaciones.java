@@ -2,6 +2,9 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 import com.sura.commons.selenium.Commons;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -15,9 +18,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 public class OpcionesAdminitradorCotizaciones extends Commons {
@@ -168,20 +168,20 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
         waitFor(txtCotizaciones).shouldBeVisible();
         txtCotizaciones.click();
         WebElementFacade cbxCotizacion = findBy(".//li[contains(.,'" + cotizacion + "')]");
-        waitForTextToAppear(cotizacion, 1000);
+        waitForTextToAppear(cotizacion, 2000);
         waitFor(cbxCotizacion).shouldBeVisible();
         cbxCotizacion.click();
         waitFor(txtProductos).shouldBeVisible();
         txtProductos.click();
         WebElementFacade cbxProducto = findBy(".//li[contains(.,'" + producto + "')]");
-        waitForTextToAppear(producto, 1000);
+        waitForTextToAppear(producto, 2000);
         waitFor(cbxProducto).shouldBeVisible();
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
     }
 
     public void mostrarInfoCotizacion(String producto) {
-        waitForTextToAppear(producto, 2000);
+        waitForTextToAppear(producto, 2500);
         waitUntil(1000);
         String tProductos = "Todos Los Productos";
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));

@@ -4,7 +4,8 @@ import net.serenitybdd.jbehave.SerenityStory;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.junit.Test;
 
-public class ValidacionEnIngresoDeUnArticuloAUnaUbicacion extends SerenityStory {
+
+public class CoberturaUbicacionOtros extends SerenityStory {
 
     @Test
     public void postStory(){

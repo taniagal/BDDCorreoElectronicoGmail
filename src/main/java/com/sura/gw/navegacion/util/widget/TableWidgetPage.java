@@ -24,7 +24,6 @@ public class TableWidgetPage extends PageObject {
     private static String TABLA = ".//*[contains(@id,'gridview') and contains(@id,'table') and contains(@class,'x-gridview') and contains(@class,'table') and contains(@class,'x-grid-table')]";
     private static String LISTA_COMBO_DESPLEGABLE = ".//ul[contains(@class,'x-list-plain')]";
 
-    private List<WebElement> encabezadoListWE;
     private List<WebElement> toolbarListWE;
     private WebElement contenedorWE = null;
     private WebElement combo;
@@ -57,14 +56,14 @@ public class TableWidgetPage extends PageObject {
     }
 
     public Boolean existenFilasEnTabla() {
-        if (! obtenerFilas().isEmpty())
+        if (! obtenerFilas().isEmpty()) {
             return false;
+        }
         return true;
     }
 
     public List<WebElement> obtenerEncabezado() {
-        encabezadoListWE = getDriver().findElements(By.xpath(ENCABEZADO_TABLA));
-        return encabezadoListWE;
+        return getDriver().findElements(By.xpath(ENCABEZADO_TABLA));
     }
 
     public TableWidgetPage enToolbar() {

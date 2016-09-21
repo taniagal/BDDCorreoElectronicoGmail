@@ -25,7 +25,7 @@ public class PolizaNavBarPages extends PageObject {
 
 
     public PolizaNavBarPages seleccionarMenu() {
-        waitFor(2).seconds();
+        waitFor(5).seconds();
         findBy(MENU_POLIZA).waitUntilVisible();
 
         WebElement menuBuscar = getDriver().findElement(By.xpath(MENU_POLIZA));

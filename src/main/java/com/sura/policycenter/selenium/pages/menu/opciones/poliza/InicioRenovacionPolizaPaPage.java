@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+
 public class InicioRenovacionPolizaPaPage extends Commons {
 
 
@@ -105,9 +106,9 @@ public class InicioRenovacionPolizaPaPage extends Commons {
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilClickable();
     }
 
-    public void clickBotonSiguinete() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilClickable();
+    public void clickBotonSiguiente() {
         btnSiguiente.click();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilClickable();
     }
 
     public void validaMensajeEnPantalla(String mensaje) {
@@ -116,20 +117,20 @@ public class InicioRenovacionPolizaPaPage extends Commons {
 
     public void validacionesPantallaFormularios(ExamplesTable datosTomador) {
         Map<String, String> datos = datosTomador.getRow(0);
-        if (datos.get("rol").equals("tomador")) {
+        if ("tomador".equals(datos.get("rol"))) {
             MatcherAssert.assertThat("cedula del tomador no valida", datoCedeulaTomador.getText().equals(datos.get("cedulaTomador")));
             MatcherAssert.assertThat("el nombre del tomador no es valido", datoNombre.getText().equals(datos.get("nombre")));
             MatcherAssert.assertThat("el nombre de oficina de radicacion", datoOficinaDeRadicacion.getText().equals(datos.get("oficinaRadicacion")));
-            MatcherAssert.assertThat("el nombre de agente", datoAgente.getText().equals(datos.get("codAgente")));
-            clickBotonSiguinete();
+            MatcherAssert.assertThat("el nombre de agente", datoAgente.getText().contains(datos.get("codAgente")));
+            clickBotonSiguiente();
         }else
-        if (datos.get("rol").equals("asegurado")) {
+        if ("asegurado".equals(datos.get("rol"))) {
             MatcherAssert.assertThat("cedula del Asegurado no valida", datoCedulaAsegurado.getText().equals(datos.get("cedulaAsegurado")));
             MatcherAssert.assertThat("primer nombre no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
             MatcherAssert.assertThat("primer apellido no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
-            clickBotonSiguinete();
+            clickBotonSiguiente();
         }else
-        if (datos.get("rol").equals("vehiculo")) {
+        if ("vehiculo".equals(datos.get("rol"))) {
             MatcherAssert.assertThat("placa no valida", datoPlaca.getText().equals(datos.get("placa")));
             MatcherAssert.assertThat("modelo no valido", datoModelo.getText().equals(datos.get("modelo")));
             MatcherAssert.assertThat("codFasecolda no valido", datoCodFasecolda.getText().equals(datos.get("codFasecolda")));
@@ -140,7 +141,6 @@ public class InicioRenovacionPolizaPaPage extends Commons {
             MatcherAssert.assertThat("tipo Servicio no valido", datoTipoServicio.getText().equals(datos.get("tipoServicio")));
             MatcherAssert.assertThat("motor no valido", datoMotor.getText().equals(datos.get("motor")));
             MatcherAssert.assertThat("chasis no valido", datoChasis.getText().equals(datos.get("chasis")));
-            clickBotonSiguinete();
         }
     }
 }

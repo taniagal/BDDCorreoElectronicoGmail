@@ -19,9 +19,9 @@ public class DireccionesDeContactoVinculadasDefinitions {
     @Steps
     private DireccionesDeContactoVinculadasSteps direccionesDeContactoVinculadasSteps;
 
-    @Given("que me encuentro en los contactos de una cuenta <numeroCuenta>")
-    public void buscarCuenta(@Named("numeroCuenta") String numeroCuenta) {
-        direccionesDeContactoVinculadasSteps.buscarCuenta(numeroCuenta);
+    @Given("que me encuentro en los contactos de la cuenta")
+    public void irALosContactosDeLaCuenta() {
+        direccionesDeContactoVinculadasSteps.irALosContactosDeLaCuenta();
     }
 
     @Given("quiera crear un contacto secundario persona natural")
@@ -128,7 +128,7 @@ public class DireccionesDeContactoVinculadasDefinitions {
 
     @Then("la direccion debe quedar como la ingreso el usuario <direccionUsuario> del contacto <nombreContacto>")
     public void validarDireccionNoEstandarizada(@Named("direccionUsuario") String direccionUsuario,
-                                              @Named("nombreContacto") String nombreContacto){
+                                                @Named("nombreContacto") String nombreContacto){
         direccionesDeContactoVinculadasSteps.validarDireccionVinculada(direccionUsuario, nombreContacto);
     }
 

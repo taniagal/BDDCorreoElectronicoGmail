@@ -3,6 +3,7 @@ Detalle Registros Suscripcion
 Meta:
 
 @issue #SUGWUSC-14959
+@tag automator: Eliana_Alvarez
 
 Narrative:
 Como usuario PolicyCenter
@@ -44,7 +45,7 @@ Then debo ver el costo total <total> para las cotizaciones en estado cotizado
 
 Examples:
 | numeroCuenta | total         |
-| C000902244   | $2,223,138.00 |
+| C000902244   | $2,303,011.00 |
 
 Scenario: Consultar numero de cotizaciones del grupo
 Given busco una cuenta existente como <numeroCuenta>

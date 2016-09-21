@@ -19,10 +19,6 @@ import org.slf4j.LoggerFactory;
 public class BusquedaContactoPage extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaContactoPage.class);
-    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:ContactType-inputEl']")
-    private WebElementFacade tipoContact;
-    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:Name-inputEl']")
-    private WebElementFacade txtNombreEmpresa;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade txtNombre;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
@@ -39,18 +35,12 @@ public class BusquedaContactoPage extends Commons {
     private WebElementFacade msjSinRegistros;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:SearchWarningMessagePanelSet:SearchWarningMessage']")
     private WebElementFacade msjSinCriterios;
-    @FindBy(xpath = "//li[2]")
-    private WebElementFacade itmNIT;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:DocumentType-inputEl']")
     private WebElementFacade txtTipoDoc;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:identificationNumber-inputEl']")
     private WebElementFacade txtNumDoc;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalContactNameInputSet:CommercialName-inputEl']")
     private WebElementFacade txtNombreComercial;
-    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
-    private WebElementFacade nombreContact;
-    @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
-    private WebElementFacade apellidoContact;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:ContactSearchResultsLV:0:DocumentType']")
     private WebElementFacade selectContact;
     @FindBy(xpath = "//div[3]/div/table")
@@ -144,28 +134,6 @@ public class BusquedaContactoPage extends Commons {
         txtTipoDoc.type(tipoDoc);
         waitFor(botonBuscar).shouldBeVisible();
         botonBuscar.click();
-    }
-
-    public void verInfoPersonaJuridica(String filtro) {
-        String primerElemento = primerElementoTabla.getText();
-        waitForTextToAppear(primerElemento);
-        List<WebElement> allRows = table.findElements(By.tagName("tr"));
-        waitUntil(1000);
-
-        try {
-
-            for (WebElement row : allRows) {
-                List<WebElement> cells = row.findElements(By.tagName("td"));
-                boolean valido = cells.get(0).getText().equals(filtro) ||
-                        cells.get(1).getText().equals(filtro) ||
-                        cells.get(2).getText().equals(filtro) ||
-                        cells.get(3).getText().equals(filtro);
-                SeleneseTestBase.assertTrue(valido);
-            }
-
-        } catch (Exception e) {
-            LOGGER.error("This is error", e);
-        }
     }
 
     public void verInfoPersonaNatural(String filtro1, String filtro2) {

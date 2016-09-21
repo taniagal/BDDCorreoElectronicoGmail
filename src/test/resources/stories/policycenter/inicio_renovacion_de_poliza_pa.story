@@ -3,7 +3,8 @@ inicio renovacion de poliza pa
 Meta:
 
 @issue #CDSEG-821
-@Automatizador: Jonathan Mejia Leon
+@tag automator: Jonathan_Mejia_Leon
+@local
 Sprint 6
 
 Narrative:
@@ -27,8 +28,8 @@ Given que es necesario renovar una <poliza> de autos
 When quiera realizar esta renovacion
 And quiera aceptar esta renovacion
 Then se debe validar los datos del tomador:
-|cedulaTomador|nombre    |oficinaRadicacion|codAgente                                  |rol    |
-|1077567451   |EVANS RENE|SURA             |Standard Code 789Internal Producer Code - 1|tomador|
+|cedulaTomador|nombre    |oficinaRadicacion|codAgente        |rol    |
+|1077567451   |EVANS RENE|SURA             |Standard Code 789|tomador|
 Then validar campos informativos de asegurado:
 |cedulaAsegurado|pNombre|pApellido|rol      |
 |1294567891     |VRALLAN|ESTIGUAR |asegurado|

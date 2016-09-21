@@ -3,7 +3,8 @@ Inspeccion Vehiculo
 Meta:
 
 @issue #CDSEG-751
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 5
 
 Narrative:
@@ -17,6 +18,7 @@ When estoy expidiendo una poliza de autos
 And seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
+When ingrese los datos del asegurado
 And el vehiculo tenga inspeccion no valida
 And la placa <placa> estuvo vigente en la compañia
 Then se debe recuperar los siguientes datos:
@@ -26,7 +28,7 @@ And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fa
 
 Examples:
 |numCuenta  |organizacion|canal      |placa |valorAsegurado|
-|C000888888 |Bancolombia |Televentas |HZR123|165900000.00  |
+|C1060447895|Bancolombia |Televentas |HZR123|165900000.00  |
 
 Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
 Given que voy a buscar la cuenta <numCuenta>
@@ -34,6 +36,7 @@ When estoy expidiendo una poliza de autos
 And seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
+When ingrese los datos del asegurado
 And el vehiculo tenga inspeccion
 And la placa <placa> estuvo vigente pero ahora esta cancelada
 Then se debe recuperar los siguientes datos:
@@ -43,7 +46,7 @@ And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fa
 
 Examples:
 |numCuenta  |organizacion|canal             |placa |valorAsegurado|
-|C000888888 |Sura        |Canal Tradicional |MJK289|21800000.00   |
+|C1060447895|Sura        |Canal Tradicional |MJK289|21800000.00   |
 
 Scenario: Consultar inspeccion valida en SIA
 Given se ha realizado la cotizacion <cotizacion>

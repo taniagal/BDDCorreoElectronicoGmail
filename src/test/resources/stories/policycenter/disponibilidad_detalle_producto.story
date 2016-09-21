@@ -3,7 +3,7 @@ Disponibilidad Detalle Producto
 Meta:
 
 @issue #CDSEG-745
-@Automatizador Eliana Alvarez
+@tag automator: eliana_alvarez, sprint:1
 @Sprint 1
 
 Narrative:

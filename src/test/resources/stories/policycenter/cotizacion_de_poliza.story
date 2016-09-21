@@ -3,7 +3,8 @@ Cotizacion De Poliza
 Meta:
 
 @issue #CDSEG-843
-@Automatizador Diego Cardona Acevedo
+@tag automator: diego_cardona_acevedo
+@local
 @Sprint 3
 
 Narrative:
@@ -17,7 +18,7 @@ Given he realizado la cotizacion <cotizacion>
 When ingrese al detalle de la cotizacion
 Then debo ver la siguiente informacion
 |numeroCotizacion|tomador|tipoDocumento|numeroDocumento|direccion|tipoDireccion|descripcionDireccion|empresaAseguradora|prima|impuestos|total|
-|22222225|DORIAN STIWAR EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$2,223,138|-|$2,223,138|
+|22222225|DORIAN STIWAR EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$2,303,011|-|$2,303,011.00|
 
 Examples:
 |cotizacion|
@@ -83,7 +84,7 @@ el numero de cotas <numeroCuotas> indicadas en la informacion de la poliza
 
 Examples:
 |cotizacion |valorCuota |numeroCuotas |
-|777222777  |$743,571.00|11           |
+|777222777  | $101,620  |11           |
 
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:

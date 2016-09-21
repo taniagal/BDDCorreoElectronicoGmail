@@ -92,8 +92,9 @@ public class DetallesDeUbicacionPage extends Commons {
 
     public void irANuevaCotizacion(){
         setImplicitTimeout(1,TimeUnit.SECONDS);
-        if(!botonAcciones.isPresent())
+        if(!botonAcciones.isPresent()) {
             menuItemEscritorio.click();
+        }
         resetImplicitTimeout();
         botonAcciones.click();
         subMenuNuevaCotizacion.waitUntilPresent().click();
@@ -110,7 +111,7 @@ public class DetallesDeUbicacionPage extends Commons {
         actions.sendKeys(Keys.ENTER).build().perform();
         selectItem(comboBoxOrganizacion,dato.get("organizacion"));
         waitForComboValue(comboBoxOrganizacionW,dato.get("organizacion"));
-        waitUntil(1500);
+        waitUntil(1000);
         selectItem(comboBoxCanal,dato.get("canal"));
         waitForComboValue(comboBoxCanalW,dato.get("canal"));
         seleccionarProducto(dato.get("producto"));
@@ -139,14 +140,18 @@ public class DetallesDeUbicacionPage extends Commons {
 
     public void validarCamposNuevos(){
             StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-            if(!labelUsoPredominante.isPresent())
+            if(!labelUsoPredominante.isPresent()) {
                 notPresent.append(" uso_predominante,");
-            if(!labelNumeroDeSotanos.isPresent())
+            }
+            if(!labelNumeroDeSotanos.isPresent()) {
                 notPresent.append(" numero_de_sotanos,");
-            if(!labelNumeroDePisos.isPresent())
+            }
+            if(!labelNumeroDePisos.isPresent()) {
                 notPresent.append(" numero_de_pisos,");
-            if(!labelAnioDeConstruccion.isPresent())
+            }
+            if(!labelAnioDeConstruccion.isPresent()) {
                 notPresent.append(" anio_de_construccion,");
+            }
             String res = notPresent.toString();
             if(MSJVALIDARELEMENTOS.equals(res))
                 res = notPresent.toString().substring(0,notPresent.toString().length()-1);

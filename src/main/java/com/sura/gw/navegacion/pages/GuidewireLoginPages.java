@@ -1,8 +1,6 @@
 package com.sura.gw.navegacion.pages;
 
 import com.google.common.base.Function;
-import java.io.Serializable;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,6 +10,9 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
+
+import java.io.Serializable;
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -29,6 +30,7 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
     public static final String CBO_PAIS = ".//*[@id='country']";
     public static final String BTN_LOGIN_SEUS = "//input[@type='submit']";
     public static final String BTN_LOGIN = "//span[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']";
+    public static final String MNU_CONTACTO = "//span[@id='TabBar:ContactTab-btnInnerEl']";
 
     public GuidewireLoginPages(WebDriver driver){
         super(driver);
@@ -82,6 +84,23 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
             }
         };
     }
+
+    public void ingresar_por_rol(String rol){
+        LOGGER.info("INICIO GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
+        if ("Asesor".equals(rol)){
+            setImplicitTimeout(2,TimeUnit.SECONDS);
+            if(!findAll(TXT_USUARIO).isEmpty()) {
+                enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
+                enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
+                elemento(GuidewireLoginPages.BTN_LOGIN).click();
+            }
+            resetImplicitTimeout();
+        }
+
+        waitForPresenceOf(MNU_CONTACTO);
+        LOGGER.info("FIN GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
+    }
+
 
 }
 

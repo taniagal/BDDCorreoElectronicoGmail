@@ -2,30 +2,22 @@ package com.sura.gw.policy.poliza.definitions;
 
 import ch.lambdaj.Lambda;
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
-import com.sura.gw.navegacion.definitions.Navegacion;
+import com.sura.gw.navegacion.steps.GuidewireSteps;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
+import net.thucydides.core.webdriver.SerenityWebdriverManager;
+import org.hamcrest.*;
+import org.hamcrest.core.Is;
 import org.hamcrest.core.StringContains;
-import org.jbehave.core.annotations.Aliases;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-
 
 public class EdificiosUbicaciones {
 
@@ -34,23 +26,31 @@ public class EdificiosUbicaciones {
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
     @Steps
-    IngresoAPolicyCenterDefinitions guidewire;
+    IngresoAPolicyCenterDefinitions guidewireLogin;
+
     @Steps
-    Navegacion navegacion;
+    GuidewireSteps guidewire;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
 
-    @Given("que estoy en edificios y ubicaciones de una poliza $numSubscripcion con el rol $rolUsuario")
+    @Given("que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>")
     public void dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza(String numSubscripcion, String rolUsuario) {
 
-        // TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
+        //TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
+
 
         LOGGER.info("EdificiosUbicaciones.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
 
-        guidewire.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
-        navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
-        navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(numSubscripcion);
+        if (SerenityWebdriverManager.inThisTestThread().hasAnInstantiatedDriver()) {
+            SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
+        }
+
+        guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
+
+        guidewire.ir_a_navegacion_superior()
+                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
+
         try {
             polizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
         } catch (Exception e) {
@@ -67,14 +67,19 @@ public class EdificiosUbicaciones {
         int index = 0;
         for (Map<String, String> entradaCobertura : entradas.getRows()) {
             index++;
+
             String tab = entradaCobertura.get("TAB");
             String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
             String cobertura = entradaCobertura.get("COBERTURA");
             String entrada = entradaCobertura.get("ENTRADAS");
-            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
+            boolean esOtroArticulo = false;
+            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))){
+                esOtroArticulo = true;
+            }
             boolean esUltimaFilaDeExampleTable = index == entradas.getRows().size();
+            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
 
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esUltimaFilaDeExampleTable);
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
         }
 
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
@@ -129,7 +134,7 @@ public class EdificiosUbicaciones {
 
         for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            assertThat(mensajesWSList, hasItemContainsString(mensaje));
+            MatcherAssert.assertThat(mensajesWSList, hasItemContainsString(mensaje));
         }
 
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
@@ -143,7 +148,7 @@ public class EdificiosUbicaciones {
         if (mensajesWSList.contains(mensajesEsperado)) {
             contadorDeOcurrencias++;
         }
-        assertThat("Ocurrencia de mensaje: " + mensajesEsperado + " es de " + contadorDeOcurrencias + "veces", contadorDeOcurrencias, is(equalTo(1)));
+        MatcherAssert.assertThat("Ocurrencia de mensaje: " + mensajesEsperado + " es de " + contadorDeOcurrencias + "veces", contadorDeOcurrencias, Is.is(CoreMatchers.equalTo(1)));
 
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
@@ -157,7 +162,7 @@ public class EdificiosUbicaciones {
         return new HasItemContainsString(expectedValue);
     }
 
-    private final static class HasItemContainsString extends TypeSafeMatcher<List<String>> {
+    private static final class HasItemContainsString extends TypeSafeMatcher<List<String>> {
 
         private final String expectedValue;
 
@@ -175,5 +180,7 @@ public class EdificiosUbicaciones {
             description.appendText("Se esperaba una lista que contuviera un strings ").appendValue(expectedValue);
         }
     }
+    
+
 
 }
