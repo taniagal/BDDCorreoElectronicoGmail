@@ -18,7 +18,7 @@ Then se debe crear una persona tipo natural con primer nombre <primerNombre>
 
 Examples:
 |tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion  |direccion  |departamento|ciudad  |
-|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |DIRECCION DE TRABAJO|CRA 50     |Antioquia   |Medellin|
+|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |DIRECCION DE TRABAJO|CRA 50     |Antioquia   |MEDELLIN|
 
 
 Scenario: Crear contacto persona juridica

@@ -20,7 +20,7 @@ And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And ingrese los datos de direccion:
 |direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|CALLE 54B #50-25|Vivienda      |Antioquia   |MEDELLIN|
 Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
@@ -35,7 +35,7 @@ And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And ingrese los datos de direccion:
 |direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|CALLE 54B #50-25|Vivienda      |Antioquia   |MEDELLIN|
 Then no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
@@ -51,7 +51,7 @@ And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And ingrese los datos de direccion:
 |direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|CALLE 54B #50-25|Vivienda      |Antioquia   |MEDELLIN|
 Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
@@ -67,7 +67,7 @@ And nombre empresa <razon_social>
 And nombre comercial <nombre_comercial>
 And ingrese los datos de direccion:
 |direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|CALLE 54B #50-25|Vivienda      |Antioquia   |MEDELLIN|
 Then no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
@@ -83,7 +83,7 @@ And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And ingrese los datos de direccion:
 |direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|CALLE 54B #50-25|Vivienda      |Antioquia   |MEDELLIN|
 Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
@@ -97,7 +97,7 @@ And nombre de organizacion <nombre_organizacion> <agente>
 And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>
 And ingrese los datos de direccion:
 |direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|CALLE 54B #50-25|Vivienda      |Antioquia   |MEDELLIN|
 Then no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 Examples:
 |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|nombre_organizacion|agente|mensaje|

@@ -122,7 +122,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
 
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
-        agregarNuevaUbicacion("Colombia", "ANTIOQUIA", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
+        agregarNuevaUbicacion("Colombia", "Antioquia", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
     }
 
 

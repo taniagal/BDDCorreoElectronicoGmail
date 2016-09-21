@@ -15,4 +15,4 @@ Then debo poder ver el tipo de vivienda en el detalle de la ubicacion
 
 Examples:
 |cuenta    |tipo_direccion      |direccion        |departamento|ciudad  |nombre       |
-|C001888888|DIRECCION DE TRABAJO|CALLE 60B #10-157|ANTIOQUIA   |MEDELLIN|Location 0001|
+|C001888888|DIRECCION DE TRABAJO|CALLE 60B #10-157|Antioquia   |MEDELLIN|Location 0001|
