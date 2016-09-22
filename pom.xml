@@ -104,6 +104,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin}</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -111,7 +114,7 @@
                 <version>${maven.failsafe.plugin}</version>
                 <configuration>
                     <includes>
-                        <include>**/policycenter/ModificacionRenovacionCoberturasPa.java</include>
+                        <include>**/policycenter/*.java</include>
                     </includes>
                     <excludes>
                         <exclude>**/policycenter/MainStories.java</exclude>
