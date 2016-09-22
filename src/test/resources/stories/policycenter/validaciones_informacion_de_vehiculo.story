@@ -13,13 +13,26 @@ Al cotizar una poliza de PA quiero ser capaz de registrar toda la información d
 
 Scenario:  Verificar validacion de codigo facecolda erroneo
 GivenStories: stories/policycenter/login_policy.story
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto|canal            |
+|C000222333|Sura        |Autos   |Canal Tradicional|
+When agrege un vehiculo con codigo fasecolda <codigo> que no existe
+Then deben aparecer los mensajes de validacion:
+|mensaje                                                                                                                |
+|El código fasecolda no existe. Por favor verifique|
 
+Examples:
+|codigo|
+|acb123|
+
+
+Scenario:  Validar riesgo consultable para motor, placa o chasis
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
 |C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis   |motor|valor_asegurado|descuento|recargo|zona|
-|T64497|2011  |01601225        |MEDELLIN          |Particular       |CH212121 |AB3C2|17900000       |null     |null   |2|
+|T64497|2016  |00601182        |MEDELLIN          |Particular       |CH212121 |AB3C2|165900000      |null     |null   |2|
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                |
@@ -39,11 +52,11 @@ Given estoy cotizando una poliza:
 |C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
-|T64493|2017  |07801044        |MEDELLIN          |Particular       |null  |null |500000000      |null     |null   |2   |
+|T64493|2017  |09403011        |MEDELLIN          |Particular       |null  |null |830000000      |null     |null   |2   |
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                                                                                                                                                               |
-|Valor asegurado : El valor asegurado del vehículo ($500,000,000.00) supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
+|Valor asegurado : El valor asegurado del vehículo ($830.000.000,00) supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
 
 Examples:
 ||
@@ -57,11 +70,11 @@ Given estoy cotizando una poliza:
 |C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|
-|T64413|1996  |01601045        |MEDELLIN          |Particular       |null  |null |380000         |null     |null   |2   |
+|T64413|1993  |07015010        |MEDELLIN          |Particular       |null  |null |1400000        |null     |null   |2   |
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                               |
-|Valor asegurado : El valor del vehículo ($200,000.00) es inferior al tope mínimo. Por favor verifique.|
+|Valor asegurado : El valor del vehículo ($1.400.000,00) es inferior al tope mínimo. Por favor verifique.|
 
 Examples:
 ||

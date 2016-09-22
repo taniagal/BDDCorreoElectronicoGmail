@@ -6,13 +6,14 @@ import com.sura.policycenter.model.Aseguradora;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.components.HtmlTable;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.LoggerFactory;
 
 public class CoaseguroPage extends Commons {
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
@@ -34,6 +35,7 @@ public class CoaseguroPage extends Commons {
     @FindBy(id = "Coinsurance_ExtPopup:_msgs")
     private WebElementFacade divMensaje;
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private static final String MSJVALIDARVALORES = "No estan correctos los elementos:";
 
     public CoaseguroPage(WebDriver diver) {
@@ -52,8 +54,8 @@ public class CoaseguroPage extends Commons {
             if(radioBotonAceptado.isSelected()) {
                 right.append("radio_boton_cedido, ");
             }
-        }catch (StaleElementReferenceException e){
-            e.printStackTrace();
+        }catch (StaleElementReferenceException ex){
+            LOGGER.info("StaleElementReference.CoaseguroPage.line55"+ex);
         }
         if(!botonAgregar.isPresent()) {
             right.append("boton_agregar, ");
@@ -92,8 +94,7 @@ public class CoaseguroPage extends Commons {
         act.sendKeys(Keys.TAB).build().perform();
     }
     public void verificarPorcentajeParticipacion(){
-        HtmlTable htmlTable = new HtmlTable(findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table"));
-        MatcherAssert.assertThat("El total no es del 100%", htmlTable.getHeadings().toString().contains("100"));
+        MatcherAssert.assertThat("El total no es del 100%", findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tfoot/tr/td[3]").getText().contains("100"));
     }
 
     public void guardarcosaeguro(){
