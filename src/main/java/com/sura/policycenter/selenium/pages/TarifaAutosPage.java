@@ -198,7 +198,7 @@ public class TarifaAutosPage extends Commons {
 
     public void verificarTarifacion(String valor) {
         WebElementFacade tablaDescripcion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[1]/td[3]");
-        MatcherAssert.assertThat("Error en el valor de la tarifacion", tablaDescripcion.containsText(valor));
+        MatcherAssert.assertThat("Error en el valor de la tarifacion Extexted: "+valor+" but was: "+tablaDescripcion.getText(), tablaDescripcion.containsText(valor));
     }
 
 
