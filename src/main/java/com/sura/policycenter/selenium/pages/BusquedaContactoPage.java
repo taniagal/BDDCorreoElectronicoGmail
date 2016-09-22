@@ -89,6 +89,7 @@ public class BusquedaContactoPage extends Commons {
 
     private static final String BUSQUEDADECONTACTOS = "Búsqueda de contactos";
     private static final String LONGITUD_VALIDA = "Longitud válida";
+    private static final String XPATH_LI_CONTAINS = ".//li[contains(.,'";
 
     Actions actions = new Actions(getDriver());
 
@@ -158,7 +159,7 @@ public class BusquedaContactoPage extends Commons {
         if (!"<ninguno>".equals(tipoDoc)) {
             waitFor(botonTipoDoc).waitUntilVisible();
             botonTipoDoc.click();
-            WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'" + tipoDoc + "')]");
+            WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoDoc + "')]");
             waitForTextToAppear(tipoDoc);
             cbxTipoDoc.click();
             waitUntil(2000);
@@ -178,7 +179,7 @@ public class BusquedaContactoPage extends Commons {
         waitForTextToAppear(BUSQUEDADECONTACTOS);
         waitFor(botonTipoDoc).waitUntilVisible();
         botonTipoDoc.click();
-        WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'" + tipoDoc + "')]");
+        WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoDoc + "')]");
         waitForTextToAppear(tipoDoc);
         cbxTipoDoc.click();
         waitUntil(1500);
@@ -215,7 +216,7 @@ public class BusquedaContactoPage extends Commons {
         waitForTextToAppear(BUSQUEDADECONTACTOS);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.click();
-        WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'" + tipoContacto + "')]");
+        WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoContacto + "')]");
         waitFor(cbxTipoDoc).shouldBeVisible();
         cbxTipoDoc.click();
         int parada = Integer.parseInt(numero);
@@ -290,7 +291,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void consultarContactoPorTipoDocumentoCotizacion(String tipoId, String numeroId) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(txtTipoDocDirectorioCotizacion).waitUntilVisible();
+        waitFor(txtTipoDocDirectorioCotizacion).waitUntilVisible();
         txtTipoDocDirectorioCotizacion.clear();
         txtTipoDocDirectorioCotizacion.sendKeys(tipoId);
         txtTipoDocDirectorioCotizacion.sendKeys(Keys.ENTER);
