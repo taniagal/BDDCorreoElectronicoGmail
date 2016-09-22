@@ -250,4 +250,10 @@ public class BusquedaDeCuentasPage extends Commons {
         actions.click(btnBuscar).build().perform();
     }
 
+    public void seleccionarItemEnCombo(WebElementFacade elemento, String dato){
+        elemento.clear();
+        elemento.sendKeys(dato);
+        elemento.sendKeys(Keys.ENTER);
+    }
+
 }
