@@ -260,28 +260,28 @@ public class BusquedaContactoPage extends Commons {
 
     public void validarLabelsPersonaNatural(Map<String, String> labelsContacto) {
         waitFor(lblTipoId).waitUntilVisible();
-        MatcherAssert.assertThat(lblTipoId.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
-        MatcherAssert.assertThat(lblNumId.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
-        MatcherAssert.assertThat(lblPrimNombre.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("priNombre"))));
-        MatcherAssert.assertThat(lblSegNombre.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("segNombre"))));
-        MatcherAssert.assertThat(lblPriApellido.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("priApellido"))));
-        MatcherAssert.assertThat(lblSegApellido.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("segApellido"))));
-        MatcherAssert.assertThat(lblDireccion.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("direccion"))));
-        MatcherAssert.assertThat(lblTelefono.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("telefono"))));
-        MatcherAssert.assertThat(lblEmail.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("email"))));
-        MatcherAssert.assertThat(lblExterna.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("externa"))));
+        MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
+        MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
+        MatcherAssert.assertThat(lblPrimNombre.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("priNombre"))));
+        MatcherAssert.assertThat(lblSegNombre.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("segNombre"))));
+        MatcherAssert.assertThat(lblPriApellido.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("priApellido"))));
+        MatcherAssert.assertThat(lblSegApellido.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("segApellido"))));
+        MatcherAssert.assertThat(lblDireccion.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("direccion"))));
+        MatcherAssert.assertThat(lblTelefono.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("telefono"))));
+        MatcherAssert.assertThat(lblEmail.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("email"))));
+        MatcherAssert.assertThat(lblExterna.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("externa"))));
     }
 
     public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto) {
         waitFor(lblTipoId).waitUntilVisible();
-        MatcherAssert.assertThat(lblTipoId.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
-        MatcherAssert.assertThat(lblNumId.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
-        MatcherAssert.assertThat(lblNomComercial.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("nomComercial"))));
-        MatcherAssert.assertThat(lblRazonSocial.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("razonSocial"))));
-        MatcherAssert.assertThat(lblDireccion.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("direccion"))));
-        MatcherAssert.assertThat(lblTelefono.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("telefono"))));
-        MatcherAssert.assertThat(lblEmail.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("email"))));
-        MatcherAssert.assertThat(lblExterna.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("externa"))));
+        MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
+        MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
+        MatcherAssert.assertThat(lblNomComercial.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("nomComercial"))));
+        MatcherAssert.assertThat(lblRazonSocial.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("razonSocial"))));
+        MatcherAssert.assertThat(lblDireccion.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("direccion"))));
+        MatcherAssert.assertThat(lblTelefono.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("telefono"))));
+        MatcherAssert.assertThat(lblEmail.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("email"))));
+        MatcherAssert.assertThat(lblExterna.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("externa"))));
     }
 
     public void seleccionarContacto() {
