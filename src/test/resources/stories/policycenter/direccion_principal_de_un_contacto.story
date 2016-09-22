@@ -16,8 +16,8 @@ When quiera editar la informacion del contacto con <tipo_documento> c. <document
 And se vaya a ingresar la nueva direccion y valide los campos en pantalla
 And valide la informacion en los campos
 And ingrese los datos de la direccion:
-|direccion        |tipo_direccion|departamento|ciudad  |
-|CALLE 60B #10-157|Negocio       |Antioquia   |MEDELLIN|
+|direccion        |tipo_direccion      |departamento|ciudad  |
+|CALLE 60B #10-157|DIRECCION DE TRABAJO|Antioquia   |MEDELLIN|
 And se actualiza el contacto
 Then en la lista de direcciones agregadas se debe ver la nueva direccion estandarizada
 
