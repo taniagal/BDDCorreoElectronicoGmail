@@ -113,9 +113,8 @@ public class EdificiosyUbicacionesWidget extends Commons {
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
         try {
-            findBy(XPATH_CANCELAR_INGRESO).shouldBeVisible();
-            findBy(XPATH_CANCELAR_INGRESO).shouldBeEnabled();
-            findBy(XPATH_CANCELAR_INGRESO).click();
+            findBy(".//*[@id='CPLocationPopup:Cancel']").waitUntilVisible().waitUntilClickable().click();
+
         } catch (Exception e) {
             LOGGER.info("ELEMENTO NO CLICKEABLE" + e);
         }
