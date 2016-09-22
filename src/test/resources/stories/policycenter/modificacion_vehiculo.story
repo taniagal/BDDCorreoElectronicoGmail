@@ -44,13 +44,13 @@ Examples:
 Scenario: Validar que muestre mensaje warning de PEPS para intereses adicionales - Vehiculos
 Meta:
 @manual
-Given ya se tiene una poliza expedida <numeroPoliza>
-When ingrese a modificar dicha cotizacion
-And ingrese a la opcion vehiculos
-And adicione un interes adicional <tipoDocumento> <numeroDocumento>
-And se presione el boton siguiente
-Then se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de interes adicional
-And se debe permitir continuar a coberturas de auto personal
+Given que hay una poliza expedida <numeroPoliza>
+When ingrese a modificar la cotizacion
+And ingrese a la opcion vehiculo
+And adicione un interes adicional <tipoDocumento><numeroDocumento>
+And presione el boton siguiente
+Then debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de interes adicional
+And debe permitir continuar a coberturas de auto personal
 
 Examples:
 |numeroPoliza |tipoDocumento       |numeroDocumento|mensaje                                                                                               |
