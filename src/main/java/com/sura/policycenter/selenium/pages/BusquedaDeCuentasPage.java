@@ -95,6 +95,8 @@ public class BusquedaDeCuentasPage extends Commons {
 
     Actions actions = new Actions(getDriver());
 
+    private static final String CHECK_NO_SELECCIONADO = "Check no seleccionado";
+
     public BusquedaDeCuentasPage(WebDriver driver) {
         super(driver);
     }
@@ -122,7 +124,7 @@ public class BusquedaDeCuentasPage extends Commons {
 
     private void limpiarFormulario() {
         waitFor(botonRestablecer).waitUntilVisible().waitUntilClickable();
-        actions.click(botonRestablecer).build().perform();;
+        actions.click(botonRestablecer).build().perform();
         waitUntil(2000);
     }
 
@@ -151,9 +153,9 @@ public class BusquedaDeCuentasPage extends Commons {
 
     private void validarCheckNoSeleccionado(WebElementFacade elemento) {
         if (elemento.isSelected()) {
-            MatcherAssert.assertThat("Check seleccionado", Matchers.containsString("Check no seleccionado"));
+            MatcherAssert.assertThat("Check seleccionado", Matchers.containsString(CHECK_NO_SELECCIONADO));
         } else {
-            MatcherAssert.assertThat("Check no seleccionado", Matchers.containsString("Check no seleccionado"));
+            MatcherAssert.assertThat(CHECK_NO_SELECCIONADO, Matchers.containsString(CHECK_NO_SELECCIONADO));
         }
     }
 
