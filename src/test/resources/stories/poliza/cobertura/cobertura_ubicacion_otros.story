@@ -6,7 +6,7 @@ Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesg
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:5
+@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -29,7 +29,7 @@ Scenario: 2 Portadores externos de datos (Coberturas del riesgo)
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:5
+@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -49,7 +49,7 @@ Scenario: 3 Gastos por arrendamiento de sistema electronico de procesamiento de 
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:5
+@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -69,7 +69,7 @@ Scenario: 4 Sublimite todo riesgo construccion y/o todo riesgo montaje dentro de
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:5
+@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
@@ -93,7 +93,7 @@ Scenario: 5 Sublimites menores a valor asegurado daños (coberturas a nivel de r
 Meta:
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag automatizador:andres_alarcon_guerrero, informador:alejandro_esteban_villada_marin, sprint:5
+@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
