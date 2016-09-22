@@ -114,7 +114,7 @@
                 <version>${maven.failsafe.plugin}</version>
                 <configuration>
                     <includes>
-                        <include>**/policycenter/ModificacionRenovacionCoberturasPa.java</include>
+                        <include>**/policycenter/*.java</include>
                     </includes>
                     <excludes>
                         <exclude>**/policycenter/MainStories.java</exclude>
