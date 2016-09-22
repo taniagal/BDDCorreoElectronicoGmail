@@ -67,7 +67,7 @@ Then debo ver la informacion del contacto de tipo persona natural <filtro1> <fil
 
 Examples:
 |tipoDoc             |segundoNombre |segundoApellido|filtro1 |filtro2 |
-|CEDULA DE CIUDADANIA|PAOLA         |TORRES         |PAOLA   |TORRES  |
+|CEDULA DE CIUDADANIA|PAOLA         |TORRES         |YURLEDYS   |GALLEGO  |
 
 Scenario: Consultar contacto de tipo persona natural por primer nombre y segundo apellido
 Given estoy en busqueda de contactos
@@ -76,7 +76,7 @@ Then debo ver la informacion del contacto de tipo persona natural <filtro1> <fil
 
 Examples:
 |tipoDoc             |primerNombre  |segundoApellido|filtro1  |filtro2 |
-|CEDULA DE CIUDADANIA|YURLEDYS      |TORRES         |YURLEDYS |TORRES  |
+|CEDULA DE CIUDADANIA|YURLEDYS      |TORRES         |YURLEDYS |GALLEGO  |
 
 Scenario: Consultar contacto de tipo persona natural por segundo nombre y primer apellido
 Given estoy en busqueda de contactos
@@ -85,7 +85,7 @@ Then debo ver la informacion del contacto de tipo persona natural <filtro1> <fil
 
 Examples:
 |tipoDoc             |segundoNombre  |primerApellido |filtro1 |filtro2 |
-|CEDULA DE CIUDADANIA|PAOLA          |GALLEGO        |PAOLA   |GALLEGO |
+|CEDULA DE CIUDADANIA|PAOLA          |GALLEGO        |YURLEDYS   |GALLEGO |
 
 Scenario: Consultar contacto de tipo persona natural por primer apellido y segundo apellido
 Given estoy en busqueda de contactos
@@ -103,8 +103,8 @@ When quiera consultar contacto de tipo persona natural por tipo <tipoDoc> y nume
 Then debo ver la informacion del contacto de tipo persona natural <filtro1> <filtro2>
 
 Examples:
-|tipoDoc              |numDoc      |filtro1              |filtro2     |
-|CEDULA DE CIUDADANIA |1234567890  |CEDULA DE CIUDADANIA |1234567890  |
+|tipoDoc              |numDoc      |filtro1  |filtro2  |
+|CEDULA DE CIUDADANIA |1234567890  |YURLEDYS |GALLEGO  |
 
 Scenario: Consultar contacto de tipo persona juridica unicamente por tipo de identificacion
 Given estoy en busqueda de contactos

@@ -103,8 +103,9 @@ public class BusquedaDeCuentasPage extends Commons {
     public void irABuscarCuentas() {
         waitFor(menuBuscar).waitUntilVisible().waitUntilClickable();
         actions.click(menuBuscar).build().perform();
-        waitUntil(1500);
+        waitForTextToAppear("Buscar Póliza");
         waitFor(menuBuscarCuentas).waitUntilVisible();
+        waitUntil(1500);
         actions.click(menuBuscarCuentas).build().perform();
     }
 
