@@ -94,10 +94,10 @@ Examples:
 
 Scenario: Informacion basica
 Meta: @manual
-Given que existe titular de la cuenta con <tipoDoc>, <nombre> y <apellido>
+Given que existe titular de la cuenta
 When ingrese a informacion del titular de la cuenta
 Then debe mostrarme en la informacion basica: Titular de la cuenta <titularCuenta>, tipo de documento <tipoDocumento>, Nro de documento <nroDocumento>, prima en vigencia <primaVigencia>, Segmentacion <segmentacion>, Comportamiento <comportamiento>, Total no Facturado <totalNoFacturado>, total actualmente facturado <totalFacturado>, total vencido <totalVencido> y total pendiente <totalPendiente>.
 
 Examples:
-| tipoDoc              | nombre   | apellido | titularCuenta                 | tipoDocumento        | nroDocumento | primaVigencia | segmentacion        | comportamiento  | totalNoFacturado | totalFacturado | totalVencido | totalPendiente |
-| CEDULA DE CIUDADANIA | Yurledys | Gallego  | YURLEDYS PAOLA GALLEGO TORRES | CEDULA DE CIUDADANIA | 1234567890   | -             | PyF Sin Información | Sin Información | -                | -              | -            | -              |
+| |
+| |

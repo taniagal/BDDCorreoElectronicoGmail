@@ -46,7 +46,7 @@ Examples:
 Scenario: Validar campo poliza financiada
 Meta:
 @manual
-Given ya se tiene una poliza expedida <numeroPoliza>
+Given ya se tiene una poliza expedida
 When el tipo de poliza es PPAutos
 Then se debe habilitar el campo poliza financiada
 

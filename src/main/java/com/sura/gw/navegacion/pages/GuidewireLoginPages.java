@@ -85,23 +85,20 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
         };
     }
 
-    public void ingresar_por_rol(String rol){
+    public void ingresar_por_rol(String rol) {
         LOGGER.info("INICIO GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
-        if ("Asesor".equals(rol)){
-            setImplicitTimeout(2,TimeUnit.SECONDS);
-            if(!findAll(TXT_USUARIO).isEmpty()) {
+        if ("Asesor".equals(rol)) {
+            setImplicitTimeout(2, TimeUnit.SECONDS);
+            if (!findAll(TXT_USUARIO).isEmpty()) {
                 enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
                 enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
                 elemento(GuidewireLoginPages.BTN_LOGIN).click();
             }
             resetImplicitTimeout();
         }
-
         waitForPresenceOf(MNU_CONTACTO);
         LOGGER.info("FIN GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
     }
-
-
 }
 
 

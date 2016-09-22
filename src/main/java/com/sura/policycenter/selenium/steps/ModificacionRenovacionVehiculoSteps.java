@@ -2,7 +2,6 @@ package com.sura.policycenter.selenium.steps;
 
 import com.sura.policycenter.selenium.pages.renovacion.ModificacionRenovacionVehiculoPage;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class ModificacionRenovacionVehiculoSteps extends ScenarioSteps {
