@@ -36,7 +36,7 @@ And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | VARIEDADES YURLEDYS S.A | NIT           | 9202086744      |
 And vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor |valor_asegurado|descuento|recargo|zona|
-|TYR146|2011  |01601225        |MEDELLIN          |Particular       |asd456|dsa654|17900000       |null     |null   |2|
+|TYR146|2016  |00601182        |MEDELLIN          |Particular       |asd456|dsa654|165900000       |null     |null   |2|
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
@@ -45,7 +45,7 @@ And expido la poliza para agregar el riesgo a la poliza colectiva
 Then se debe visualizar la opcion de ir a la poliza colectiva de la nueva poliza creada
 And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado con los datos correspondientes
 | placa  | claseVehiculo | modelo | marca     | linea                       |
-| TYR146 | Automóviles   | 2011   | CHEVROLET |AVEO FAMILY - MT 1500CC 4P AA|
+| TYR146 | Automóviles   | 2016   | CHEVROLET |AVEO FAMILY - MT 1500CC 4P AA|
 
 Examples:
 | numCuenta  | agente  | organizacion | canal   | tipoPoliza | producto   | razonSocial             | asegurado               | porcentaje | numeroDias | masomenos |
@@ -78,7 +78,7 @@ And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | ELIANA ALVAREZ | CEDULA DE CIUDADANIA | 1037500161      |
 And vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor |valor_asegurado|descuento|recargo|zona|
-|TWU146|2011  |01601225        |MEDELLIN          |Particular       |asd455|dsa655|17900000       |null     |null   |2|
+|TWU146|2016  |00601182        |MEDELLIN          |Particular       |asd455|dsa655|165900000       |null     |null   |2|
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
@@ -87,7 +87,7 @@ And expido la poliza para agregar el riesgo a la poliza colectiva
 Then se debe visualizar la opcion de ir a la poliza colectiva de la nueva poliza creada
 And al ir a la poliza colectiva e ir a los riesgos, debo ver el riesgo creado con los datos correspondientes
 | placa  | claseVehiculo | modelo | marca     |linea                        |
-| TWU146 | Automóviles   | 2011   | CHEVROLET |AVEO FAMILY - MT 1500CC 4P AA|
+| TWU146 | Automóviles   | 2016   | CHEVROLET |AVEO FAMILY - MT 1500CC 4P AA|
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         | consultaNombre | consultaApellido | asegurado      |porcentaje | numeroDias | masomenos |
