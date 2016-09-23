@@ -3,10 +3,15 @@ package com.sura.gw.policy.poliza.pages;
 import com.sura.gw.inicio.guidewire.GuidewirePage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
 public class PolizaPage extends GuidewirePage {
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
+
 
     public enum Opcion {
         LINK_EDIFICIOS_Y_UBICACIONES(".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div"),
@@ -63,6 +68,7 @@ public class PolizaPage extends GuidewirePage {
         String btnSiguienteCambioPoliza = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange-btnInnerEl']";
         findBy(btnSiguienteCambioPoliza).waitUntilVisible().waitUntilClickable().click();
     }
+
 
 
 

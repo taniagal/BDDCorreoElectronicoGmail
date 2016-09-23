@@ -7,6 +7,7 @@ Meta:
 @Story CDSEG-845
 @URL https://jira.suramericana.com.co/browse/CDSEG-845
 @tag automator:andres_alarcon_guerrero, informer:liliana_restrepo_munneton, sprint:1
+
 @Sprint 1
 
 Scenario: Detalle de la consulta para contactos asociados a una cuenta

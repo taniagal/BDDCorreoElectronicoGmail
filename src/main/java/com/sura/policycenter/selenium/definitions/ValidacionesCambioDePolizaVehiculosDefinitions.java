@@ -15,8 +15,10 @@ public class ValidacionesCambioDePolizaVehiculosDefinitions {
     @Steps
     ValidacionesCambioDePolizaVehiculosSteps validacionesCambioDePolizaVehiculosSteps;
 
+
     @Steps
     GuidewireSteps guidewire;
+
 
     @Given("se ha realizado la cotizacion de la modificacion <cotizacion>")
     public void irALaCotizacion(@Named("cotizacion") String cotizacion) {

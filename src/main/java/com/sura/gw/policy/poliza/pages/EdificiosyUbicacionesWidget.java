@@ -78,7 +78,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
         waitForTextToAppear("Información de ubicación");
         String xpathPais = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']";
         String xpathDepto = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']";
-        String xpathCiudad = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']";
+        String xpathCiudad = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']";
         String xpathDireccion = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']";
         String xpathActividadEconomica = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']";
 
@@ -114,7 +114,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
         try {
             findBy(".//*[@id='CPLocationPopup:Cancel']").waitUntilVisible().waitUntilClickable().click();
-            findBy(XPATH_CANCELAR_INGRESO).click();
+
         } catch (Exception e) {
             LOGGER.info("ELEMENTO NO CLICKEABLE" + e);
         }
@@ -122,7 +122,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
 
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
-        agregarNuevaUbicacion("Colombia", "Antioquia", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
+        agregarNuevaUbicacion("Colombia", "ANTIOQUIA", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
     }
 
 

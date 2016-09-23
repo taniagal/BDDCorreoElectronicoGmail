@@ -41,21 +41,18 @@ public class Poliza {
     public Boolean esperoVerNumeroDeSubscripcionEnEnvio(String numeroSubscripcion) {
         return polizaSteps.esperoVerNumeroDeSubscripcionEnEnvio(numeroSubscripcion);
     }
-/*
-    @Given("que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>")
-    public void dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar(@Named("numSubscripcion") String numSubscripcion) {
-        LOGGER.info("Poliza.dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar");
 
-        // TODO: 27/07/2016 Capturar el rol desde el gherkin en i am Asesor
-        guidewireLogin.dadoQueAccedoAPolicyCenterConRol("Asesor");
+
+    @Given("que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>")
+    public void dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza(@Named("numPoliza") String numPoliza, @Named("rolUsuario") String rolUsuario) {
+
+        guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
 
         guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
+                .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
 
-        MatcherAssert.assertThat(esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), Is.is(Matchers.equalTo(true)));
-
-
-    }*/
+        LOGGER.info("Poliza.dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza");
+    }
 
     @Then("espero ver mensajes de advertencia indicandome que sobrepase los limites de valores para el valor del articulo")
     public void esperoVerMensajesDeAdvertenciaIndicandomeQueSobrepaseLosLimitesDeValoresParaElValorDelArticulo() {
@@ -79,15 +76,20 @@ public class Poliza {
     }
 
 
-    @Given("que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>")
-    public void dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza(@Named("numPoliza") String numPoliza, @Named("rolUsuario") String rolUsuario) {
 
-        guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
+    @Given("que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>")
+    public void dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar(@Named("numSubscripcion") String numSubscripcion) {
+        LOGGER.info("Poliza.dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar");
+
+        // TODO: 27/07/2016 Capturar el rol desde el gherkin en i am Asesor
+        guidewireLogin.dadoQueAccedoAPolicyCenterConRol("Asesor");
 
         guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
+                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
 
-        LOGGER.info("Poliza.dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza");
+        MatcherAssert.assertThat(esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), Is.is(Matchers.equalTo(true)));
+
+
     }
 
     // TODO: 04/08/2016 Esto va para la definicion de informacion de la poliza
