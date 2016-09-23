@@ -36,7 +36,7 @@ public class SeleccionDeOfertasPage extends PageObject {
         waitABit(1000);
     }
 
-    public void validarVisibilidadMenu(String menu) {
+    public void validarVisibilidadMenu() {
         MatcherAssert.assertThat(mnuOfertas.isVisible(), Is.is(Matchers.equalTo(false)));
     }
 }

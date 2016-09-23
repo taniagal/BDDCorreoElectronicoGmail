@@ -19,14 +19,6 @@ public class DetalleRegistrosSuscripcionDefinitions {
     @Steps
     DetalleRegistrosSuscripcionSteps detalleRegistrosSuscripcionSteps;
 
-    private InicioPage inicioPage() {
-        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
-    }
-
-    @Given("busco una cuenta existente como <numeroCuenta>")
-    public void buscarCuenta(@Named("numeroCuenta") String numeroCuenta) {
-        inicioPage().irACuentaBuscar(numeroCuenta);
-    }
 
     @When("consulte los registros de suscripcion")
     public void buscarRegistrosDeSucripcion() {
