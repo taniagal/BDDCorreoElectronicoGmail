@@ -5,7 +5,9 @@ import com.sura.policycenter.selenium.steps.CotizacionMRCSteps;
 import com.sura.policycenter.selenium.steps.CotizacionRenovacionPaValidacionesSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 public class CotizacionRenovacionPaValidacionesDefinitions {
 
@@ -20,8 +22,19 @@ public class CotizacionRenovacionPaValidacionesDefinitions {
         cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
     }
 
-    @When("cotice con algunas de las figuras que som Riesgo consultable bloqueante")
+    @When("cotice con algunas de las figuras que son Riesgo consultable bloqueante")
     public void validarFigurasRiesgoConsultable(){
+        cotizacionRenovacionPaValidacionesSteps.ir_A_Revision_De_Poliza();
         cotizacionRenovacionPaValidacionesSteps.seleccionar_Opcion_Cotizar();
+    }
+
+    @When("el motor, chasis y/o placa sean Riesgo consultable bloqueante")
+    public void validarMotorChasisYPlaca(){
+        cotizacionRenovacionPaValidacionesSteps.seleccionar_Opcion_Cotizar();
+    }
+
+    @Then("se debe bloquear la cotizacion y mostrar el mensaje que devuelve el servicio $mensajeRC")
+    public void validarMensajeValidacionRC(ExamplesTable mensajeRC){
+        cotizacionRenovacionPaValidacionesSteps.validar_Que_Se_Bloquee_Cotizacion_Y_Muestre_Mensaje(mensajeRC);
     }
 }
