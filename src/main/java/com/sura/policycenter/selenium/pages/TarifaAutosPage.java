@@ -1,8 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
@@ -10,6 +8,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -198,7 +199,7 @@ public class TarifaAutosPage extends Commons {
 
     public void verificarTarifacion(String valor) {
         WebElementFacade tablaDescripcion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[1]/td[3]");
-        MatcherAssert.assertThat("Error en el valor de la tarifacion Extexted: "+valor+" but was: "+tablaDescripcion.getText(), tablaDescripcion.containsText(valor));
+        MatcherAssert.assertThat("Error en el valor de la tarifacion", tablaDescripcion.containsText(valor));
     }
 
 
