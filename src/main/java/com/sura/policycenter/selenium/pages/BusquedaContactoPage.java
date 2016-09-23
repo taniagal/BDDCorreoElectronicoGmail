@@ -107,7 +107,6 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void validarInformacionTipoId() {
-        waitFor(msjSinRegistros).waitUntilVisible();
         String msjSinReg = "No hay datos para mostrar";
         waitForTextToAppear(msjSinReg);
         MatcherAssert.assertThat(msjSinRegistros.getText(), Matchers.is(Matchers.equalTo(msjSinReg)));
@@ -259,7 +258,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void validarLabelsPersonaNatural(Map<String, String> labelsContacto) {
-        waitFor(lblTipoId).waitUntilVisible();
+        waitFor(lblTipoId);
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblPrimNombre.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("priNombre"))));
@@ -273,7 +272,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto) {
-        waitFor(lblTipoId).waitUntilVisible();
+        waitFor(lblTipoId);
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblNomComercial.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("nomComercial"))));
