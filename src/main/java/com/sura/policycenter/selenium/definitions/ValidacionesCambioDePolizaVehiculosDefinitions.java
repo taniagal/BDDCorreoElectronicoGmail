@@ -2,7 +2,7 @@ package com.sura.policycenter.selenium.definitions;
 
 
 import com.google.inject.name.Named;
-import com.sura.gw.navegacion.definitions.Navegacion;
+import com.sura.gw.navegacion.steps.GuidewireSteps;
 import com.sura.policycenter.selenium.steps.ValidacionesCambioDePolizaVehiculosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -15,14 +15,14 @@ public class ValidacionesCambioDePolizaVehiculosDefinitions {
     @Steps
     ValidacionesCambioDePolizaVehiculosSteps validacionesCambioDePolizaVehiculosSteps;
 
+
     @Steps
-    Navegacion navegacion;
+    GuidewireSteps guidewire;
 
 
     @Given("se ha realizado la cotizacion de la modificacion <cotizacion>")
     public void irALaCotizacion(@Named("cotizacion") String cotizacion) {
-        navegacion.cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza();
-        navegacion.cuandoBusquePorNumeroDeSubscripcionDePoliza(cotizacion);
+        guidewire.ir_a_navegacion_superior().desplegar_menu_poliza().consultar_numero_de_subscripcion(cotizacion);
     }
 
     @When("ingrese al detalle de la modificacion")
