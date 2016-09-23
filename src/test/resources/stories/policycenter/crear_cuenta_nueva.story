@@ -16,7 +16,7 @@ And nombre de organizacion <nombre_organizacion> <agente>
 And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>
 And ingrese los datos de direccion:
 |direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |Antioquia   |MEDELLIN|
+|CALLE 54B #50-25|DIRECCION DE RESIDENCIA      |Antioquia   |MEDELLIN|
 Then se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural
 
 Examples:
@@ -31,7 +31,7 @@ And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And ingrese los datos de direccion:
 |direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |Antioquia   |MEDELLIN|
+|CALLE 54B #50-25|DIRECCION DE RESIDENCIA      |Antioquia   |MEDELLIN|
 Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
@@ -46,7 +46,7 @@ And nombre de organizacion <nombre_organizacion> <agente>
 And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>
 And ingrese los datos de direccion:
 |direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |Antioquia   |MEDELLIN|
+|CALLE 54B #50-25|DIRECCION DE RESIDENCIA      |Antioquia   |MEDELLIN|
 Then No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje> y <mensaje2>
 
 Examples:

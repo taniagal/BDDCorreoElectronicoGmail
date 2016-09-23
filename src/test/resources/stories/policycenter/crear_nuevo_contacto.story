@@ -17,7 +17,7 @@ And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 Then se debe crear una persona tipo natural con primer nombre <primerNombre>
 
 Examples:
-|tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion  |direccion  |departamento|ciudad  |
+|tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion       |direccion  |departamento|ciudad  |
 |CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |DIRECCION DE TRABAJO|CRA 50     |Antioquia   |MEDELLIN|
 
 
@@ -31,8 +31,8 @@ And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 Then se debe crear una persona tipo juridica con razon social <razonSocial>
 
 Examples:
-|tipoDocumento|numeroDeDocumento|razonSocial     | tipoDireccion  |direccion  |departamento|ciudad  |
-|NIT          |12452267         |LA VAQUITA      |DIRECCION DE TRABAJO |CRA 50     |Antioquia   |Medellin|
+|tipoDocumento|numeroDeDocumento|razonSocial     | tipoDireccion       |direccion  |departamento|ciudad  |
+|NIT          |12452267         |LA VAQUITA      |DIRECCION DE TRABAJO |CRA 50     |Antioquia   |MEDELLIN|
 
 
 Scenario: Validar Contacto Existente
@@ -46,8 +46,8 @@ And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 Then debe validar que el contacto ya existe
 
 Examples:
-|tipoDocumento|numeroDeDocumento|razonSocial| tipoDireccion  |direccion|departamento|ciudad  |
-|NIT          |1245226          |LA VAQUITA |DIRECCION DE TRABAJO|CRA 50   |Antioquia   |Medellin|
+|tipoDocumento|numeroDeDocumento|razonSocial| tipoDireccion      |direccion|departamento|ciudad  |
+|NIT          |9202086745       |LA VAQUITA |DIRECCION DE TRABAJO|CRA 50   |Antioquia   |MEDELLIN|
 
 
 
@@ -64,8 +64,8 @@ And selecciono el tipo de telefono fijo <tipoTelefonoFijo> e ingreso el numero d
 Then el campo de ciudad deben ser obligatorios
 
 Examples:
-|tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion  |direccion  |tipoTelefonoFijo     |numeroTelefonoFijo|departamento|ciudad  |
-|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |DIRECCION DE TRABAJO|CRA 50     |Vivienda             |12345678          |Antioquia   |Medellin|
+|tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion       |direccion  |tipoTelefonoFijo     |numeroTelefonoFijo|departamento|ciudad  |
+|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |DIRECCION DE TRABAJO|CRA 50     |Vivienda             |12345678          |Antioquia   |MEDELLIN|
 
 
 

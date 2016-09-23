@@ -255,5 +255,4 @@ public class BusquedaDeCuentasPage extends Commons {
         elemento.sendKeys(dato);
         elemento.sendKeys(Keys.ENTER);
     }
-
 }
