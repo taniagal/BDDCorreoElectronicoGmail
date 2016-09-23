@@ -121,6 +121,12 @@
                     <!--<perCoreThreadCount>true</perCoreThreadCount>-->
                     <!--<threadCount>2</threadCount>-->
                     <!--<parallelTestsTimeoutForcedInSeconds>0</parallelTestsTimeoutForcedInSeconds>-->
+                    <parallelTestsTimeoutInSeconds>300000</parallelTestsTimeoutInSeconds>
+                    <parallelTestsTimeoutForcedInSeconds>300000</parallelTestsTimeoutForcedInSeconds>
+                    <parallel>methods</parallel>
+                    <!-- Don't run any tests during the unit test phase -->
+                    <skipTests>true</skipTests>
+                    
                     <reuseForks>false</reuseForks>
                     <forkCount>1C</forkCount>
                     <forkedProcessTimeoutInSeconds>0</forkedProcessTimeoutInSeconds>
