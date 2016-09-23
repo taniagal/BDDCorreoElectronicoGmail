@@ -3,8 +3,7 @@ Scenario: 1 Tener deducible (porcentual o minimo) sin tipo de deducible (porcent
 Meta:
 @Story CDSEG-2443
 @URL https://jira.suramericana.com.co/browse/CDSEG-2443
-@Informador juan esteban restrepo castaño
-@Automatizador andres alarcon guerrero
+@tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo_castanno, sprint:6
 @LOB Multiriesgo corporativo
 @Sprint 6
 As a <rolUsuario>

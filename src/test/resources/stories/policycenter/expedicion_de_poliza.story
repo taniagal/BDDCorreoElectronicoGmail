@@ -39,7 +39,7 @@ Examples:
 Scenario: Validacion de riesgos consultables para intereses adicionales
 Meta:
 @manual
-Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
+Given que tengo una cotizacion y voy a crear una poliza
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then debe enviar un mensaje a un buzon previamente configurado cuando existe un interes adicional riesgo consultable
