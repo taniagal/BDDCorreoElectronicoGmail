@@ -53,6 +53,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade botonAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
     private WebElementFacade campoVehiculoCeroKm;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:plan_DV-inputEl']")
+    private WebElementFacade comboBoxPlan;
 
 
 
@@ -88,6 +90,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
         waitFor(campoTxtPlaca).shouldBePresent();
+        selectItem(comboBoxPlan, vehiculo.get("plan"));
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
         comboBoxVehiculoServicio.click();
         waitForTextToAppear(vehiculo.get("placa"),28000);

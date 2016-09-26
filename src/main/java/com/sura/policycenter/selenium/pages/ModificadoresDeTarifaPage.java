@@ -27,6 +27,9 @@ public class ModificadoresDeTarifaPage extends Commons{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:1:TypeKeyModifier-inputEl']")
     public WebElementFacade comboBoxDescuentoDipositivo;
 
+    private int bonoComercial = 0;
+    private int bonoTecnico = 0;
+    private int descuento = 0;
 
 
     public ModificadoresDeTarifaPage(WebDriver driver){
@@ -46,10 +49,23 @@ public class ModificadoresDeTarifaPage extends Commons{
     public void agregarModificadores(ExamplesTable valores) {
         Map<String,String> valor = valores.getRow(0);
         selectItem(comboBoxDescuentoDipositivo,valor.get("descientoD"));
+        campoTxtBonificacionComercial.clear();
         campoTxtBonificacionComercial.sendKeys(valor.get("bonificacionC"));
         campoTxtDescuento.sendKeys(valor.get("descuento"));
         campoTxtRecargo.sendKeys(valor.get("recargo"));
         campoTxtSuavizacion.sendKeys(valor.get("suavizacion"));
+        campoTxtBonificacionTecnica.clear();
         campoTxtBonificacionTecnica.sendKeys(valor.get("bonificacionT"));
+        bonoComercial = Integer.parseInt(valor.get("bonificacionC"));
+        bonoTecnico = Integer.parseInt(valor.get("bonificacionT"));
+    }
+
+    public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
+        String tablaxpth = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
+        for (Map<String, String> valor : valores.getRows()) {
+            WebElementFacade tablaDescripcion = findBy(tablaxpth + valor.get("fila") + "]/td[3]");
+            WebElementFacade cobertura = findBy(tablaxpth + valor.get("fila") + "]/td[1]");
+            MatcherAssert.assertThat("Error en el valor de la cobertura '" + valor.get("fila") + " - " + cobertura.getText() + "' de la tarifacion ", tablaDescripcion.containsText(valor.get("valor")));
+        }
     }
 }
