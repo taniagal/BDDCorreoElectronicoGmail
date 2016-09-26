@@ -9,6 +9,7 @@ import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -35,7 +36,21 @@ public class CotizacionRenovacionPaValidacionesPage extends Commons{
 
     public void validarBloqueoYMensajeRC(ExamplesTable mensajeRC) {
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(grupoMensajesRC).shouldBeVisible();
-        Map<String, String> mensajeRiesgosConsultables = mensajeRC.getRows().get(0);
-        MatcherAssert.assertThat(grupoMensajesRC.getText(), Matchers.containsString(mensajeRiesgosConsultables.get("mensaje")));
+        Boolean validacion = validarMensajeRC(mensajeRC);
+        MatcherAssert.assertThat(validacion, Matchers.is(Matchers.equalTo(true)));
+    }
+
+    public Boolean validarMensajeRC(ExamplesTable ListaMensajesRC) {
+        Map<String, String> mensajesRC;
+        Boolean validacionMensajes = false;
+        for (int i = 0; i < ListaMensajesRC.getRowCount(); i++) {
+            mensajesRC = ListaMensajesRC.getRows().get(i);
+            if(grupoMensajesRC.getText().contains((mensajesRC.get("mensaje")))){
+                validacionMensajes = true;
+            }else {
+                validacionMensajes = false;
+            }
+        }
+        return validacionMensajes;
     }
 }

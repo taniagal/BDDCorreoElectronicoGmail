@@ -16,17 +16,23 @@ GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando la renovacion de la poliza <cotizacion>
 When cotice con algunas de las figuras que son Riesgo consultable bloqueante
 Then se debe bloquear la cotizacion y mostrar el mensaje que devuelve el servicio
-|mensaje                                                                                                       |
-|FRANK RAMIREZ ALZATE, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.|
+|mensaje                                                                                                         |
+|CARLOS ACEVEDO DUQUE, El tomador es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
+|FRANK RAMIREZ ALZATE, Se trata de un riesgo no estandar y no es posible gestionar la solicitud por este canal.  |
 
 Examples:
 |cotizacion |
 |32112331   |
 
 Scenario: Quote - Riesgos Consultables - Motor, Chasis y Placa
-Meta: @manual
-Given estoy cotizando la renovacion de la poliza
+Given estoy cotizando la renovacion de la poliza <cotizacion>
 When el motor, chasis y/o placa sean Riesgo consultable bloqueante
 Then se debe bloquear la cotizacion y mostrar el mensaje que devuelve el servicio
-|mensaje|
-|       |
+|mensaje                                                                                            |
+|T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.   |
+|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
+|AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.    |
+
+Examples:
+|cotizacion |
+|32112331   |
