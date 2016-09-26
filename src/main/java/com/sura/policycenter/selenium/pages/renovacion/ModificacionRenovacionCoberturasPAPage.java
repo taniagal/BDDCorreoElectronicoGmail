@@ -97,6 +97,7 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
     public void editarTransaccionPoliza() {
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
+        waitForTextToAppear("Si se edita esta transacción de la póliza, se invalida la cotización actual");
         act.sendKeys(Keys.ENTER).build().perform();
         waitUntil(1500);
     }
@@ -109,10 +110,7 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
     public void validarCoberturasObligatorias() {
         String xpathFieldsetRCSinCheckbox = ".//fieldset[(child::legend[contains(.,'Responsabilidad Civil')]) and not(descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaRC = null;
-        setImplicitTimeout(1,TimeUnit.SECONDS);
-        grupoCoberturaRC = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetRCSinCheckbox));
-        resetImplicitTimeout();
+        WebElementFacade grupoCoberturaRC = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetRCSinCheckbox));
         MatcherAssert.assertThat(grupoCoberturaRC, Matchers.notNullValue());
     }
 
@@ -133,20 +131,14 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
     public void retirarCoberturasOpcionales() {
         String xpathFieldsetHurto = ".//fieldset[(child::legend[contains(.,'Hurto')]) and (descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaHurto = null;
-        setImplicitTimeout(1,TimeUnit.SECONDS);
-        grupoCoberturaHurto = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetHurto));
-        resetImplicitTimeout();
+        WebElementFacade grupoCoberturaHurto = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetHurto));
         MatcherAssert.assertThat(grupoCoberturaHurto, Matchers.notNullValue());
         checkBoxHurto.click();
     }
 
     public void adicionarNuevaCobertura() {
         String xpathFieldsetAccidentes = ".//fieldset[(child::legend[contains(.,'Accidentes al Conductor')]) and (descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaAccidentes = null;
-        setImplicitTimeout(1,TimeUnit.SECONDS);
-        grupoCoberturaAccidentes = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetAccidentes));
-        resetImplicitTimeout();
+        WebElementFacade grupoCoberturaAccidentes = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetAccidentes));
         MatcherAssert.assertThat(grupoCoberturaAccidentes, Matchers.notNullValue());
         checkBoxAccidentes.click();
     }

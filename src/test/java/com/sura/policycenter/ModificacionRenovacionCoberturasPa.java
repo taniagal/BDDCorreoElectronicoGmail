@@ -1,4 +1,6 @@
 package com.sura.policycenter;
 
-public class ModificacionRenovacionCoberturasPa {
+import net.serenitybdd.jbehave.SerenityStory;
+
+public class ModificacionRenovacionCoberturasPa extends SerenityStory{
 }
