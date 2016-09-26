@@ -36,13 +36,14 @@ public class CotizacionRenovacionPaValidacionesPage extends Commons{
 
     public void validarBloqueoYMensajeRC(ExamplesTable mensajeRC) {
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(grupoMensajesRC).shouldBeVisible();
-        Boolean validacion = validarMensajeRC(mensajeRC);
+        boolean validacion = false;
+        validacion = validarMensajeRC(mensajeRC);
         MatcherAssert.assertThat(validacion, Matchers.is(Matchers.equalTo(true)));
     }
 
-    public Boolean validarMensajeRC(ExamplesTable ListaMensajesRC) {
+    public boolean validarMensajeRC(ExamplesTable ListaMensajesRC) {
         Map<String, String> mensajesRC;
-        Boolean validacionMensajes = false;
+        boolean validacionMensajes = false;
         for (int i = 0; i < ListaMensajesRC.getRowCount(); i++) {
             mensajesRC = ListaMensajesRC.getRows().get(i);
             if(grupoMensajesRC.getText().contains((mensajesRC.get("mensaje")))){
