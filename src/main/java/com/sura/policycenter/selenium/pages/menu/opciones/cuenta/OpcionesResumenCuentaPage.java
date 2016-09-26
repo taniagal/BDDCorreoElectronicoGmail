@@ -133,8 +133,10 @@ public class OpcionesResumenCuentaPage extends Commons {
     private WebElementFacade txtPais;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade txtDepartamento;
-    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
+    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City-inputEl']")
     private WebElementFacade txtCiudad;
+    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
+    private WebElementFacade txtCiudadC;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade txtDireccion;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressType-inputEl']")
@@ -286,8 +288,8 @@ public class OpcionesResumenCuentaPage extends Commons {
 
     public void validarCiudad(String ciudad) {
         waitABit(4000);
-        waitFor(txtCiudad).shouldBeVisible();
-        MatcherAssert.assertThat(txtCiudad.getText(), Is.is(Matchers.equalTo(ciudad)));
+        waitFor(txtCiudadC).shouldBePresent();
+        MatcherAssert.assertThat(txtCiudadC.getText(), Is.is(Matchers.equalTo(ciudad)));
     }
 
     public void validarInformacionOculta() {
