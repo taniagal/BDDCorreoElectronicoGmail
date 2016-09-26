@@ -2,23 +2,23 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
-import com.thoughtworks.selenium.SeleneseTestBase;
+
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.slf4j.LoggerFactory;
+import org.openqa.selenium.interactions.Actions;
 
 public class BusquedaContactoPage extends Commons {
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(BusquedaContactoPage.class);
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade txtNombre;
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:LastName-inputEl']")
@@ -81,31 +81,32 @@ public class BusquedaContactoPage extends Commons {
     private WebElementFacade txtNumDocDirectorioCotizacion;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade btnBuscarDirectorioCotizacion;
-
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnInnerEl']")
     private WebElementFacade menuBuscar;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_ContactSearch']/div/span")
     private WebElementFacade menuBuscarContacto;
-    
+
     private static final String BUSQUEDADECONTACTOS = "Búsqueda de contactos";
+    private static final String LONGITUD_VALIDA = "Longitud válida";
+    private static final String XPATH_LI_CONTAINS = ".//li[contains(.,'";
+
+    Actions actions = new Actions(getDriver());
 
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
     }
 
-    public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial){
-        waitUntil(2000);
-        waitFor(txtTipoDoc).shouldBeVisible();
+    public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial) {
+        waitFor(txtTipoDoc).waitUntilVisible();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
-        waitFor(txtRazonSocial).shouldBeVisible();
+        waitFor(txtRazonSocial).waitUntilVisible();
         txtRazonSocial.type(razonSocial);
-        waitFor(botonBuscar).shouldBeVisible();
+        waitFor(botonBuscar).waitUntilVisible();
         botonBuscar.click();
     }
 
     public void validarInformacionTipoId() {
-        waitUntil(1500);
         String msjSinReg = "No hay datos para mostrar";
         waitForTextToAppear(msjSinReg);
         MatcherAssert.assertThat(msjSinRegistros.getText(), Matchers.is(Matchers.equalTo(msjSinReg)));
@@ -113,16 +114,16 @@ public class BusquedaContactoPage extends Commons {
 
     public void validarMensaje(String msjVal) {
         waitForTextToAppear(msjVal);
-        waitFor(msjSinCriterios).shouldBeVisible();
-        MatcherAssert.assertThat(msjSinCriterios.getText(),Matchers.is(Matchers.equalTo(msjVal)));
+        waitFor(msjSinCriterios).waitUntilVisible();
+        MatcherAssert.assertThat(msjSinCriterios.getText(), Matchers.is(Matchers.equalTo(msjVal)));
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBePresent();
+        waitFor(txtTipoDoc).waitUntilVisible();
         txtTipoDoc.clear();
         txtTipoDoc.sendKeys(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
-        txtRazonSocial.waitUntilPresent();
+        txtRazonSocial.waitUntilVisible();
         txtNumDoc.type(numDoc);
         botonBuscar.waitUntilEnabled();
         botonBuscar.click();
@@ -130,46 +131,33 @@ public class BusquedaContactoPage extends Commons {
 
     public void consultarContactoTipoDoc(String tipoDoc) {
         waitForTextToAppear(BUSQUEDADECONTACTOS);
-        waitFor(txtTipoDoc).shouldBeVisible();
+        waitFor(txtTipoDoc).waitUntilVisible();
         txtTipoDoc.type(tipoDoc);
-        waitFor(botonBuscar).shouldBeVisible();
+        waitFor(botonBuscar).waitUntilVisible();
         botonBuscar.click();
     }
 
     public void verInfoPersonaNatural(String filtro1, String filtro2) {
-        waitUntil(1000);
+        String valido = "Información persona natural no válida";
+        waitFor(primerElementoTabla).waitUntilVisible();
         String primerElemento = primerElementoTabla.getText();
         waitForTextToAppear(primerElemento);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (!("").equals(filtro1)) {
-                boolean valido1 = cells.get(0).getText().equals(filtro1) ||
-                        cells.get(1).getText().equals(filtro1) ||
-                        cells.get(2).getText().equals(filtro1) ||
-                        cells.get(3).getText().equals(filtro1) ||
-                        cells.get(4).getText().equals(filtro1) ||
-                        cells.get(5).getText().equals(filtro1);
-                SeleneseTestBase.assertTrue(valido1);
-            }
-            if (!("").equals(filtro2)) {
-                boolean valido2 = cells.get(0).getText().equals(filtro1) ||
-                        cells.get(1).getText().equals(filtro1) ||
-                        cells.get(2).getText().equals(filtro1) ||
-                        cells.get(3).getText().equals(filtro1) ||
-                        cells.get(4).getText().equals(filtro1) ||
-                        cells.get(5).getText().equals(filtro1);
-                SeleneseTestBase.assertTrue(valido2);
+            if (cells.get(3).getText().equals(filtro1) && cells.get(5).getText().equals(filtro2)) {
+                valido = "Información persona natural válida";
             }
         }
+        MatcherAssert.assertThat("Información persona natural válida", Is.is(Matchers.equalTo(valido)));
     }
 
     public void consultarContactoTipoNumDoc(String tipoDoc, String numDoc) {
         waitForTextToAppear(BUSQUEDADECONTACTOS);
-        if(!"<ninguno>".equals(tipoDoc)) {
-            waitFor(botonTipoDoc).shouldBeVisible();
+        if (!"<ninguno>".equals(tipoDoc)) {
+            waitFor(botonTipoDoc).waitUntilVisible();
             botonTipoDoc.click();
-            WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'" + tipoDoc + "')]");
+            WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoDoc + "')]");
             waitForTextToAppear(tipoDoc);
             cbxTipoDoc.click();
             waitUntil(2000);
@@ -187,39 +175,38 @@ public class BusquedaContactoPage extends Commons {
                                                       String segundoNombre, String primerApellido,
                                                       String segundoApellido) {
         waitForTextToAppear(BUSQUEDADECONTACTOS);
-        waitFor(botonTipoDoc).shouldBeVisible();
+        waitFor(botonTipoDoc).waitUntilVisible();
         botonTipoDoc.click();
-        WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'" + tipoDoc + "')]");
+        WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoDoc + "')]");
         waitForTextToAppear(tipoDoc);
         cbxTipoDoc.click();
         waitUntil(1500);
         if (!"<ninguno>".equals(tipoDoc)) {
             String nombreElemento = divNombre.getText();
             waitForTextToAppear(nombreElemento);
-            waitFor(txtNombre).shouldBeVisible();
+            waitFor(txtNombre).waitUntilVisible();
             txtNombre.type(primerNombre);
             txtSegNombre.type(segundoNombre);
-            waitFor(txtApellido).shouldBeVisible();
+            waitFor(txtApellido).waitUntilVisible();
             txtApellido.type(primerApellido);
             txtSegApellido.type(segundoApellido);
-            waitFor(botonBuscar).shouldBeVisible();
+            waitFor(botonBuscar).waitUntilVisible();
             botonBuscar.click();
         } else {
-            waitFor(botonBuscar).shouldBeVisible();
+            waitFor(botonBuscar).waitUntilVisible();
             botonBuscar.click();
             waitForTextToAppear("La búsqueda no devolvió resultados");
         }
-
     }
 
     public void consultarContactoNombreComercial(String tipoDoc, String nombreComercial) {
         waitForTextToAppear(BUSQUEDADECONTACTOS);
-        waitFor(txtTipoDoc).shouldBeVisible();
+        waitFor(txtTipoDoc).waitUntilVisible();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
-        waitFor(txtNombreComercial).shouldBeVisible();
+        waitFor(txtNombreComercial).waitUntilVisible();
         txtNombreComercial.type(nombreComercial);
-        waitFor(botonBuscar).shouldBeVisible();
+        waitFor(botonBuscar).waitUntilVisible();
         botonBuscar.click();
     }
 
@@ -227,7 +214,7 @@ public class BusquedaContactoPage extends Commons {
         waitForTextToAppear(BUSQUEDADECONTACTOS);
         waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.click();
-        WebElementFacade cbxTipoDoc = findBy(".//li[contains(.,'" + tipoContacto + "')]");
+        WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoContacto + "')]");
         waitFor(cbxTipoDoc).shouldBeVisible();
         cbxTipoDoc.click();
         int parada = Integer.parseInt(numero);
@@ -237,7 +224,7 @@ public class BusquedaContactoPage extends Commons {
         } else {
             txtRazonSocial.type(nombre);
         }
-        waitFor(botonBuscar).shouldBeVisible();
+        waitFor(botonBuscar).waitUntilVisible();
         botonBuscar.click();
 
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
@@ -253,60 +240,56 @@ public class BusquedaContactoPage extends Commons {
         }
     }
 
-
     @SuppressWarnings("SameParameterValue")
     public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
-
-        boolean valido = primerNombre.length() < 2 || segundoNombre.length() < 2 || primerApellido.length() < 2 || segundoApellido.length() < 2;
-        SeleneseTestBase.assertTrue(valido);
+        String valido = "Longitud no válida";
+        if (primerNombre.length() < 2 || segundoNombre.length() < 2 || primerApellido.length() < 2 || segundoApellido.length() < 2) {
+            valido = LONGITUD_VALIDA;
+        }
+        MatcherAssert.assertThat(LONGITUD_VALIDA, Is.is(Matchers.equalTo(valido)));
     }
 
     public void validarLongitudPersonaJuridica(String razonSocial, String nombreComercial) {
-        boolean valido = razonSocial.length() < 4 || nombreComercial.length() < 4;
-        SeleneseTestBase.assertTrue(valido);
+        String valido = "Longitud no válida";
+        if (razonSocial.length() < 4 || nombreComercial.length() < 4) {
+            valido = LONGITUD_VALIDA;
+        }
+        MatcherAssert.assertThat(LONGITUD_VALIDA, Is.is(Matchers.equalTo(valido)));
     }
 
     public void validarLabelsPersonaNatural(Map<String, String> labelsContacto) {
-        try {
-            Thread.sleep(2000);
-            MatcherAssert.assertThat(lblTipoId.getText().toString(),Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
-            MatcherAssert.assertThat(lblNumId.getText().toString(),Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
-            MatcherAssert.assertThat(lblPrimNombre.getText().toString(),Matchers.is(Matchers.equalTo(labelsContacto.get("priNombre"))));
-            MatcherAssert.assertThat(lblSegNombre.getText().toString(),Matchers.is(Matchers.equalTo(labelsContacto.get("segNombre"))));
-            MatcherAssert.assertThat(lblPriApellido.getText().toString(),Matchers.is(Matchers.equalTo(labelsContacto.get("priApellido"))));
-            MatcherAssert.assertThat(lblSegApellido.getText().toString(),Matchers.is(Matchers.equalTo(labelsContacto.get("segApellido"))));
-            MatcherAssert.assertThat(lblDireccion.getText().toString(),Matchers.is(Matchers.equalTo(labelsContacto.get("direccion"))));
-            MatcherAssert.assertThat(lblTelefono.getText().toString(),Matchers.is(Matchers.equalTo(labelsContacto.get("telefono"))));
-            MatcherAssert.assertThat(lblEmail.getText().toString(),Matchers.is(Matchers.equalTo(labelsContacto.get("email"))));
-            MatcherAssert.assertThat(lblExterna.getText().toString(),Matchers.is(Matchers.equalTo(labelsContacto.get("externa"))));
-        } catch(InterruptedException e) {
-            LOGGER.error("This is error", e);
-        }
+        waitFor(lblTipoId);
+        MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
+        MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
+        MatcherAssert.assertThat(lblPrimNombre.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("priNombre"))));
+        MatcherAssert.assertThat(lblSegNombre.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("segNombre"))));
+        MatcherAssert.assertThat(lblPriApellido.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("priApellido"))));
+        MatcherAssert.assertThat(lblSegApellido.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("segApellido"))));
+        MatcherAssert.assertThat(lblDireccion.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("direccion"))));
+        MatcherAssert.assertThat(lblTelefono.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("telefono"))));
+        MatcherAssert.assertThat(lblEmail.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("email"))));
+        MatcherAssert.assertThat(lblExterna.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("externa"))));
     }
 
     public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto) {
-        try {
-            Thread.sleep(2000);
-            MatcherAssert.assertThat(lblTipoId.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
-            MatcherAssert.assertThat(lblNumId.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
-            MatcherAssert.assertThat(lblNomComercial.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("nomComercial"))));
-            MatcherAssert.assertThat(lblRazonSocial.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("razonSocial"))));
-            MatcherAssert.assertThat(lblDireccion.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("direccion"))));
-            MatcherAssert.assertThat(lblTelefono.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("telefono"))));
-            MatcherAssert.assertThat(lblEmail.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("email"))));
-            MatcherAssert.assertThat(lblExterna.getText().toString(), Matchers.is(Matchers.equalTo(labelsContacto.get("externa"))));
-        } catch (InterruptedException e) {
-            LOGGER.error("This is error", e);
-        }
+        waitFor(lblTipoId);
+        MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
+        MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
+        MatcherAssert.assertThat(lblNomComercial.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("nomComercial"))));
+        MatcherAssert.assertThat(lblRazonSocial.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("razonSocial"))));
+        MatcherAssert.assertThat(lblDireccion.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("direccion"))));
+        MatcherAssert.assertThat(lblTelefono.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("telefono"))));
+        MatcherAssert.assertThat(lblEmail.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("email"))));
+        MatcherAssert.assertThat(lblExterna.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("externa"))));
     }
 
     public void seleccionarContacto() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(selectContact).shouldBePresent();
+        waitFor(selectContact).waitUntilVisible();
         selectContact.click();
     }
 
     public void consultarContactoPorTipoDocumentoCotizacion(String tipoId, String numeroId) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(txtTipoDocDirectorioCotizacion).waitUntilPresent();
+        waitFor(txtTipoDocDirectorioCotizacion).waitUntilVisible();
         txtTipoDocDirectorioCotizacion.clear();
         txtTipoDocDirectorioCotizacion.sendKeys(tipoId);
         txtTipoDocDirectorioCotizacion.sendKeys(Keys.ENTER);
@@ -317,12 +300,12 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void irABuscarContacto() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent();
-        waitUntil(2500);
-        menuBuscar.click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuBuscarContacto).waitUntilPresent();
-        waitUntil(2500);
-        menuBuscarContacto.click();
+        waitFor(menuBuscar).waitUntilVisible();
+        actions.click(menuBuscar).build().perform();
+        waitForTextToAppear("Buscar pólizas");
+        waitFor(menuBuscarContacto).waitUntilVisible();
+        waitUntil(1500);
+        actions.click(menuBuscarContacto).build().perform();
         waitForTextToAppear(BUSQUEDADECONTACTOS);
     }
 }

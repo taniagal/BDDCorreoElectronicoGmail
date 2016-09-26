@@ -3,7 +3,7 @@ Seleccion De Ofertas
 Meta:
 
 @issue CDSEG-1023
-@tag automator: jennifer_perez, sprint:2
+@tag automator: eliana_alvarez, sprint:2
 @Sprint 2
 
 Narrative:
@@ -19,8 +19,8 @@ And seleccione el agente <agente>
 And seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto <producto> para expedir la poliza
-Then no debe mostrar el menu vertical <menu>
+Then no debe mostrar el menu vertical
 
 Examples:
-| cuenta     | agente  | organizacion | canal             | producto | menu    |
-| C000888888 | DIRECTO | Sura         | Canal Tradicional | Autos    | ofertas |
+| cuenta     | agente  | organizacion | canal             | producto |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Autos    |

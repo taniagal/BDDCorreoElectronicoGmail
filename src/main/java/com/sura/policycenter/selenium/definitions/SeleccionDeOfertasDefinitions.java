@@ -32,8 +32,8 @@ public class SeleccionDeOfertasDefinitions {
         seleccionDeOfertasSteps.seleccionarLineaPA();
     }
 
-    @Then("no debe mostrar el menu vertical <menu>")
-    public void validarVisibilidadMenu(@Named("menu") String menu) {
-        seleccionDeOfertasSteps.validarVisibilidadMenu(menu);
+    @Then("no debe mostrar el menu vertical")
+    public void validarVisibilidadMenu() {
+        seleccionDeOfertasSteps.validarVisibilidadMenu();
     }
 }

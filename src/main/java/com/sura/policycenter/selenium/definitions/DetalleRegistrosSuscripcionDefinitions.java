@@ -1,12 +1,9 @@
 package com.sura.policycenter.selenium.definitions;
 
 import com.google.inject.name.Named;
-import com.sura.policycenter.selenium.pages.InicioPage;
 import com.sura.policycenter.selenium.steps.DetalleRegistrosSuscripcionSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
-import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;
@@ -19,14 +16,6 @@ public class DetalleRegistrosSuscripcionDefinitions {
     @Steps
     DetalleRegistrosSuscripcionSteps detalleRegistrosSuscripcionSteps;
 
-    private InicioPage inicioPage() {
-        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
-    }
-
-    @Given("busco una cuenta existente como <numeroCuenta>")
-    public void buscarCuenta(@Named("numeroCuenta") String numeroCuenta) {
-        inicioPage().irACuentaBuscar(numeroCuenta);
-    }
 
     @When("consulte los registros de suscripcion")
     public void buscarRegistrosDeSucripcion() {

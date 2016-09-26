@@ -57,7 +57,7 @@ When vaya a agregar un vehiculo con los datos:
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                                                                                                                                                               |
-|Valor asegurado : El valor asegurado del vehículo ($830,000,000.00) supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
+|Valor asegurado : El valor asegurado del vehículo ($830.000.000,00) supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
 
 Examples:
 ||
@@ -75,7 +75,7 @@ When vaya a agregar un vehiculo con los datos:
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                               |
-|Valor asegurado : El valor del vehículo ($1,400,000.00) es inferior al tope mínimo. Por favor verifique.|
+|Valor asegurado : El valor del vehículo ($1.400.000,00) es inferior al tope mínimo. Por favor verifique.|
 
 Examples:
 ||
