@@ -42,6 +42,11 @@ public class ModificadoresDeTarifaDefinitions {
         modificadoresDeTarifaSteps.verificar_bono_comercial(bono);
     }
 
+    @Then("el valor del monto en cada cobertura debe ser: $valor")
+    public void verificarResultado(ExamplesTable valor){
+        modificadoresDeTarifaSteps.verificar_tarifacion_por_coberturas(valor);
+    }
+
 
 
 
