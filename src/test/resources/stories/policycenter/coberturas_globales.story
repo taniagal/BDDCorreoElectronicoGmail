@@ -15,8 +15,8 @@ Feature: Gestion de Blankets(Cobertuas Globales)
 Scenario:  Agregar una cobertura global a multiples ubicaciones de una poliza
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal           |
-|C001888888|Sura       |Multiriesgo corporativo|Canal Tradicional|
+|cuenta     |organizacion|producto               |canal           |
+|C1060447895|Sura       |Multiriesgo corporativo|Canal Tradicional|
 When agregue coberturas globales con datos:
 |descripcion       |tipo_cobertura       |valor   |nombre_cobertura|
 |cobertura global 1|Multiples ubicaciones|15000000|Danos materiales|
@@ -28,8 +28,8 @@ Examples:
 
 Scenario:  Agregar una cobertura global a una poliza
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal           |
-|C001888888|Sura       |Multiriesgo corporativo|Canal Tradicional|
+|cuenta     |organizacion|producto               |canal           |
+|C1060447895|Sura       |Multiriesgo corporativo|Canal Tradicional|
 When agregue coberturas globales con datos:
 |descripcion       |tipo_cobertura|valor   |nombre_cobertura    |
 |cobertura global 2|Una cobertura |15000000|Rotura de maquinaria|
@@ -41,8 +41,8 @@ Examples:
 
 Scenario:  Validar la seleccion de une unica cobertura global cuando se selecciona el tipo Una Cobertura
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal           |
-|C001888888|Sura       |Multiriesgo corporativo|Canal Tradicional|
+|cuenta     |organizacion|producto               |canal           |
+|C1060447895|Sura       |Multiriesgo corporativo|Canal Tradicional|
 When agregue una cobertura global con datos:
 |descripcion       |tipo_cobertura|valor   |nombre_cobertura  |
 |cobertura global 2|Una cobertura |15000000|Gastos adicionales|
