@@ -13,37 +13,42 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ReglaPreRenovacionDirPaPage extends PageObject{
+public class ReglaPreRenovacionDirPaPage extends PageObject {
 
-    @FindBy (xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_PreRenewalDirection-textEl']")
+    @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_PreRenewalDirection-textEl']")
     WebElementFacade lstOpcionPreviasALaRenovacion;
-    @FindBy (xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:0']")
+    @FindBy(xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:0']")
     WebElementFacade lblInstruccionesPreviasRenovacion;
-    @FindBy (xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:Edit-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:Edit-btnInnerEl']")
     WebElementFacade btnEditar;
-    @FindBy (xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:PreRenewalDirection-labelEl']")
+    @FindBy(xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:PreRenewalDirection-labelEl']")
     WebElementFacade lblInstrucciones;
-    @FindBy (xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:PreRenewalDirection-inputEl']")
+    @FindBy(xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:PreRenewalDirection-inputEl']")
     WebElementFacade txtLista;
+    @FindBy(xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:Cancel']")
+    WebElementFacade btnCancelar;
+    @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:0']")
+    WebElementFacade lblResumen;
 
-    public ReglaPreRenovacionDirPaPage (WebDriver driver){
+    public ReglaPreRenovacionDirPaPage(WebDriver driver) {
         super(driver);
     }
 
-    public void ingresarARenovacion(){
+    public void ingresarARenovacion() {
         lstOpcionPreviasALaRenovacion.click();
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(lblInstruccionesPreviasRenovacion).shouldBeVisible();
     }
 
-    public void ingresaEditarInstrucciones(){
+    public void ingresaEditarInstrucciones() {
         btnEditar.click();
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(lblInstrucciones).waitUntilPresent();
     }
 
     public void validaLista(ExamplesTable opcionesDir) throws Exception {
         txtLista.click();
-        validarDatosDeLaLista(opcionesDir);
-
+        this.validarDatosDeLaLista(opcionesDir);
+        btnCancelar.click();
+        waitFor(lblResumen).waitUntilPresent();
     }
 
     private void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
