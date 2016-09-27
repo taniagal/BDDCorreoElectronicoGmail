@@ -62,4 +62,9 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps{
     public void verificar_bono_comercial(String bono) {
         modificadoresDeTarifaPage.verificarBonoComercial(bono);
     }
+
+    @Step
+    public void verificar_tarifacion_por_coberturas(ExamplesTable valor) {
+        modificadoresDeTarifaPage.verificarTarifacionPorCoberturas(valor);
+    }
 }
