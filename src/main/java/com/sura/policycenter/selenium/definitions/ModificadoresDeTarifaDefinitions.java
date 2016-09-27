@@ -32,14 +32,14 @@ public class ModificadoresDeTarifaDefinitions {
         modificadoresDeTarifaSteps.agregar_modificadores(valores);
     }
 
-    @Then("se debe ver reflejada la bonificacion tecnica <bono> de esta placa")
-    public void verificarBonoTecnico(@Named("bono")String bono){
-        modificadoresDeTarifaSteps.verificar_bono_tecnico(bono);
+    @Then("se debe ver reflejada la bonificacion <bonoComercial> <bonoTecnico> de esta placa")
+    public void verificarBonoTecnico(@Named("bonoComercial")String bonoComercial, @Named("bonoTecnico")String bonoTecnico){
+        modificadoresDeTarifaSteps.verificar_bonificacion(bonoComercial,bonoTecnico);
     }
 
-    @Then("se debe ver reflejada la bonificacion comercial <bono> de esta placa")
-    public void verificarBonoComercial(@Named("bono")String bono){
-        modificadoresDeTarifaSteps.verificar_bono_comercial(bono);
+    @Then("el valor del monto en cada cobertura debe ser: $valor")
+    public void verificarResultado(ExamplesTable valor){
+        modificadoresDeTarifaSteps.verificar_tarifacion_por_coberturas(valor);
     }
 
 

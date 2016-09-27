@@ -20,7 +20,7 @@ Then se debe mostrar la informacion del detalle de cotizacion por riesgo, donde 
 |TKC459 |2016   |00601182        |Mazda |MPV   |
 And en el detalle por coberturas mostrar:
 |cobertura                         |terminoCobertura |prima       |subtotal     |subtotalPrimas|
-|Cobertura de Responsabilidad Civil|32.000.000       |$326,211.00 |$2,303,011.00|$4,606,022.00 |
+|Cobertura de Responsabilidad Civil|32.000.000       |$319,655.00 |$2,257,093.00|$4,514,186.00 |
 
 Examples:
 |cotizacion |
