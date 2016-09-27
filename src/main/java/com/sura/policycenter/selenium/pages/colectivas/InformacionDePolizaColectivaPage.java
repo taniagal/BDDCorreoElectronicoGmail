@@ -231,6 +231,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void clicEnSiguiente() {
+        setImplicitTimeout(16, TimeUnit.SECONDS);
         if(botonSiguiente.isVisible()) {
             botonSiguiente.click();
         }
