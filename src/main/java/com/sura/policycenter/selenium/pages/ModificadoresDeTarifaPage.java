@@ -65,7 +65,8 @@ public class ModificadoresDeTarifaPage extends Commons{
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(tablaxpth + valor.get("fila") + "]/td[3]");
             WebElementFacade cobertura = findBy(tablaxpth + valor.get("fila") + "]/td[1]");
-            MatcherAssert.assertThat("Error en el valor de la cobertura '" + valor.get("fila") + " - " + cobertura.getText() + "' de la tarifacion ", tablaDescripcion.containsText(valor.get("valor")));
+            MatcherAssert.assertThat("Error en el valor de la cobertura '" + valor.get("fila") + " - " +
+                    cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
         }
     }
 }
