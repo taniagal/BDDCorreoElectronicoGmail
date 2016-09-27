@@ -65,8 +65,8 @@ When vaya a agregar un vehiculo con los datos:
 |T64493|2017  |09403011        |MEDELLIN          |Particular       |null  |null |830000000      |null     |null   |2   |Plan Autos Básico|
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
-|mensaje                                                                                                                                                                                                                                                               |
-|Valor asegurado : El valor asegurado del vehículo ($830.000.000,00) supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
+|mensaje                                                                                           |
+|Valor asegurado : El valor asegurado del vehículo supera el límite máximo permitido por políticas.|
 
 Examples:
 ||
@@ -84,7 +84,7 @@ When vaya a agregar un vehiculo con los datos:
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                 |
-|Valor asegurado : El valor del vehículo ($1.400.000,00) es inferior al tope mínimo. Por favor verifique.|
+|Valor asegurado : El valor del vehículo es inferior al tope mínimo. Por favor verifique.|
 
 Examples:
 ||

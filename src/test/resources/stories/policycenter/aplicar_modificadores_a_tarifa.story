@@ -18,7 +18,7 @@ Given estoy cotizando una poliza:
 When ingrese los datos del asegurado
 And ingrese los datos de vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan             |
-|TCU102|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Autos Básico|
+|TCU101|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Autos Básico|
 And ingrese los valores de los modificadores de la tarifa:
 |descientoD|bonificacionC|descuento|recargo|suavizacion|bonificacionT|
 |GPS Sura  | 45          |10       | 5     | 3         |5            |
@@ -27,20 +27,20 @@ And seleccione algunas las coberturas:
 |32    |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus|6 |Plus|10 |0  |1.50|40|16|20|Opción 1|Opción 1|
 Then el valor del monto en cada cobertura debe ser:
 |fila|valor     |valorSinMods|
-|1   |69,717    |147,549   |
-|4   |4,495,171 |9,512,648 |
-|9   |138,911   |2,422,538 |
-|14  |77,748    |159,752   |
-|17  |4,258     |8,750     |
-|19  |15,295    |31,429    |
+|1   |69,717    |98,858    |
+|4   |4,495,171 |6,373,473 |
+|9   |792,841   |1,623,100 |
+|14  |77,748    |107,034   |
+|17  |4,258     |5,863     |
+|19  |15,295    |21,057    |
 |21  |185,400   |180,000   |
-|23  |30,417    |62,500    |
-|25  |15,295    |31,429    |
-|27  |15,295    |31,429    |
-|29  |15,295    |31,429    |
-|31  |15,295    |31,429    |
-|31  |15,295    |31,429    |
-|31  |15,295    |31,429    |
+|23  |30,417    |41,875    |
+|25  |15,295    |21,057    |
+|27  |15,295    |21,057    |
+|29  |15,295    |21,057    |
+|31  |15,295    |21,057    |
+|33  |15,295    |21,057    |
+|35  |15,295    |21,057    |
 
 Examples:
 ||
