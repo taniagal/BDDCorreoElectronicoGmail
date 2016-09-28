@@ -4,7 +4,9 @@ import com.sura.gw.navegacion.steps.GuidewireSteps;
 import com.sura.gw.navegacion.util.widget.EspacioDeTrabajoWidget;
 import com.sura.gw.policy.poliza.pages.AccionesWidget;
 import com.sura.gw.policy.poliza.pages.PolizaPage;
+import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 
 import java.util.List;
 
@@ -13,9 +15,10 @@ import java.util.List;
 public class PolizaSteps extends GuidewireSteps {
 
     private static PolizaPage informacionPolizaPage;
-
     private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
     private static AccionesWidget accionesWidget;
+    @Steps private static BotonAccionesSteps botonAccionesSteps;
+
 
     @Step
     public void seleccionar_opcion_edificios_y_ubicaciones() {
@@ -32,8 +35,10 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
-    public void seleccionar_boton_acciones() {
-        accionesWidget.seleccionarBtnAcciones();
+    public BotonAccionesSteps seleccionar_boton_acciones() {
+        String xpathLinkAcciones = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]";
+        getDriver().findElement(By.xpath(xpathLinkAcciones)).click();
+        return botonAccionesSteps;
     }
 
     @Step
