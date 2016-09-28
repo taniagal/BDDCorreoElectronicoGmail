@@ -15,24 +15,24 @@ public class ExpedicionRenovacionPaValidacionesDefinitions {
     @Steps
     CotizacionRenovacionPaValidacionesSteps cotizacionRenovacionPaValidacionesSteps;
 
-    @When("no se tenga chasis ni motor ingresados")
-    public void validarMotorYChasis(){
+    @When("no se tenga motor ingresado")
+    public void validarMotor(){
         expedicionRenovacionPaValidacionesSteps.validar_Que_No_Se_Tenga_Motor_Ni_Chasis_Ingresados();
     }
 
-    @When("el valor de los accesorios y accesorios especiales superen el monto permitido")
+    @When("no se tenga chasis ingresado")
+    public void validarChasis(){
+        expedicionRenovacionPaValidacionesSteps.validar_Que_No_Se_Tenga_Motor_Ni_Chasis_Ingresados();
+    }
+
+    @When("el valor de los accesorios supere el monto permitido")
     public void validarAccesorios(){
         expedicionRenovacionPaValidacionesSteps.validar_Valor_Accesorios_Y_Accesorios_Especiales();
     }
 
-    @When("el valor asegurado es superior al 50% del valor de la vigencia anterior")
-    public void validarValorAseguradoSuperior(){
-        expedicionRenovacionPaValidacionesSteps.validar_Valor_Asegurado_Superior_A_Vigencia_Anterior();
-    }
-
-    @When("el valor asegurado es inferior al 20% del valor de la vigencia anterior")
-    public void validarValorAseguradoInferior(){
-        expedicionRenovacionPaValidacionesSteps.validar_Valor_Asegurado_Inferior_A_Vigencia_Anterior();
+    @When("el valor de los accesorios especiales supere el monto permitido")
+    public void validarAccesoriosEspeciales(){
+        expedicionRenovacionPaValidacionesSteps.validar_Valor_Accesorios_Y_Accesorios_Especiales();
     }
 
     @Then("se debe mostrar el siguiente mensaje $mensaje")

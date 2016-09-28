@@ -17,14 +17,4 @@ public class ExpedicionRenovacionPaValidacionesSteps extends ScenarioSteps{
     public void validar_Valor_Accesorios_Y_Accesorios_Especiales() {
         expedicionRenovacionPaValidacionesPage.validarExpedicionDeRenovacion();
     }
-
-    @Step
-    public void validar_Valor_Asegurado_Superior_A_Vigencia_Anterior() {
-        expedicionRenovacionPaValidacionesPage.validarExpedicionDeRenovacion();
-    }
-
-    @Step
-    public void validar_Valor_Asegurado_Inferior_A_Vigencia_Anterior() {
-        expedicionRenovacionPaValidacionesPage.validarExpedicionDeRenovacion();
-    }
 }
