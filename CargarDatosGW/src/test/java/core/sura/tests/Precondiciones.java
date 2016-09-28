@@ -39,16 +39,16 @@ public class Precondiciones extends MetodosComunes{
     }
 
     @Test
-    public void CambiarLenguaje() throws Exception {
-        login("pedrvevi","pedrvevi");
-        elegirLenguaje();
-        assertEquals("Mis actividades", driver.findElement(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")).getText());
-    }
-
-    @Test
     public void cargaDeDatos() throws Exception {
         login("pedrvevi","pedrvevi");
         cargarDatos();
+    }
+
+    @Test
+    public void cambiarLenguaje() throws Exception {
+        login("pedrvevi","pedrvevi");
+        elegirLenguaje();
+        assertEquals("Mis actividades", driver.findElement(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")).getText());
     }
 
     public void cargarDatos() throws Exception {
@@ -93,7 +93,7 @@ public class Precondiciones extends MetodosComunes{
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher']"))).isDisplayed();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:3:langs-textEl']"))).isDisplayed();
-        driver.findElement(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:3:langs-textEl']")).click();
+        driver.findElement(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")).click();
         Thread.sleep(2200);
     }
 

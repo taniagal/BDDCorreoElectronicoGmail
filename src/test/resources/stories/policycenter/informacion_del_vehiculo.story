@@ -11,8 +11,8 @@ Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
 |C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|
-|AK0249|2009  |08001111        |MEDELLIN          |Particular       |PR3B4  |SnR4 |13500000       |null     |null   |2|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan             |
+|AK0249|2009  |08001111        |MEDELLIN          |Particular       |PR3B4  |SnR4 |13500000       |null     |null   |2   |Plan Autos Básico|
 And ingrese el beneficiario o conductor <tipoDocumento> <numeroDocumento> en los intereses adicionales
 Then el sistema debe permitir pasar a la siguinete pagina
 
@@ -25,8 +25,8 @@ Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
 |C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
-|placa  |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis                 |motor                       |valor_asegurado|descuento|recargo|zona|
-|AKN0099|2009  |08001111        |MEDELLIN          |Particular       |PR3B4_-/-#$%&/()=?¡¿'  |86-51/*4213486+145646!"_#$% |13500000       |9.9999   |100    |2   |
+|placa  |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis                 |motor                       |valor_asegurado|descuento|recargo|zona|plan             |
+|AKN0099|2009  |08001111        |MEDELLIN          |Particular       |PR3B4_-/-#$%&/()=?¡¿'  |86-51/*4213486+145646!"_#$% |13500000       |9.9999   |100    |2   |Plan Autos Básico|
 Then el sistema NO debe permitir pasar a la siguinete pagina
 
 Examples:
@@ -39,8 +39,8 @@ Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
 |C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|
-|AKU009|2009  |08001111        |MEDELLIN          |Particular       |PR3B4  |SnR4 |13500000       |null     |null   |2|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan             |
+|AKU009|2009  |08001111        |MEDELLIN          |Particular       |PR3B4  |SnR4 |13500000       |null     |null   |2   |Plan Autos Básico|
 And ingrese los valores de accesorios y <valorAccesorio> <valorAccesorioEsp> valor de bonificacion tecnica <boniTecnica> y comercial <boniComercial>
 Then el sistema debe totalizar el valor asegurado y mostrar un mensaje de error <mensaje>
 
@@ -53,8 +53,8 @@ Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |
 |C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
-|placa   |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis  |motor |valor_asegurado|descuento|recargo|zona|
-|CAO199  |2009  |08001111        |MEDELLIN          |Particular       |PR3B41  |SnR41 |13500000       |null     |null   |2|
+|placa   |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis  |motor |valor_asegurado|descuento|recargo|zona|plan             |
+|CAO199  |2009  |08001111        |MEDELLIN          |Particular       |PR3B41  |SnR41 |13500000       |null     |null   |2   |Plan Autos Básico|
 And ingrese el beneficiario o conductor <tipoDocumento> <numeroDocumento> en los intereses adicionales
 And el interes adicional este marcado como riesgo PEP
 Then el sistema debe mostrar un mensaje <mensaje> obtenido desde Riesgos PEPS

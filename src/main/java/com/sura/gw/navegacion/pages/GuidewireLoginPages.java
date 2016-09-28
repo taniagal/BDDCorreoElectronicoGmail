@@ -30,6 +30,7 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
     public static final String CBO_PAIS = ".//*[@id='country']";
     public static final String BTN_LOGIN_SEUS = "//input[@type='submit']";
     public static final String BTN_LOGIN = "//span[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']";
+    public static final String MNU_CONTACTO = "//span[@id='TabBar:ContactTab-btnInnerEl']";
 
     public GuidewireLoginPages(WebDriver driver){
         super(driver);
@@ -84,16 +85,19 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
         };
     }
 
+
     public void ingresar_por_rol(String rol) {
         LOGGER.info("INICIO GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
-        if ("Asesor".equals(rol)){
-
-            enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
-            enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
-            elemento(GuidewireLoginPages.BTN_LOGIN).click();
+        if ("Asesor".equals(rol)) {
+            setImplicitTimeout(2, TimeUnit.SECONDS);
+            if (!findAll(TXT_USUARIO).isEmpty()) {
+                enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
+                enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
+                elemento(GuidewireLoginPages.BTN_LOGIN).click();
+            }
+            resetImplicitTimeout();
         }
-
-        waitForAnyTextToAppear("Mis actividades");
+        waitForPresenceOf(MNU_CONTACTO);
         LOGGER.info("FIN GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
     }
 }
