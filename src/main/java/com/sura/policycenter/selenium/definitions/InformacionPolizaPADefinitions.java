@@ -142,12 +142,6 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.identificar_Tipo_Y_Numero_De_Identificacion(tipoDocumento, numeroDocumento);
     }
 
-    @When("se identifique el tipo <tipoDocumento> y numero de documento <numeroDocumento> del tomador como Riesgo Consultable")
-    public void identificarRCC(@Named("tipoDocumento") String tipoDocumento,
-                               @Named("numeroDocumento") String numeroDocumento) {
-        informacionPolizaPASteps.identificar_Tipo_Y_Numero_De_Identificacion(tipoDocumento, numeroDocumento);
-    }
-
     @When("no indique que deseo financiar la poliza")
     public void noIndicarPolizaFinanciada() {
         informacionPolizaPASteps.no_Indicar_Poliza_Financiada();
@@ -216,11 +210,6 @@ public class InformacionPolizaPADefinitions {
 
     @Then("se debe mostrar el mensaje <mensaje> que se obtenga de Riesgos PEPS como warning")
     public void validarMensajeBloqueoPEP(@Named("mensaje") String mensaje) {
-        informacionPolizaPASteps.validar_Mensaje_Bloqueo_PEP(mensaje);
-    }
-
-    @Then("se debe mostrar el mensaje <mensaje> que se obtenga de Riesgos Consultables como warning")
-    public void validarMensajeBloqueoRCC(@Named("mensaje") String mensaje) {
         informacionPolizaPASteps.validar_Mensaje_Bloqueo_PEP(mensaje);
     }
 

@@ -1,10 +1,10 @@
 package com.sura.policycenter.selenium.pages.renovacion;
 
 
+import com.sura.commons.selenium.Commons;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ReglaPreRenovacionDirPaPage extends PageObject {
+public class ReglaPreRenovacionDirPaPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_PreRenewalDirection-textEl']")
     WebElementFacade lstOpcionPreviasALaRenovacion;
@@ -45,6 +45,7 @@ public class ReglaPreRenovacionDirPaPage extends PageObject {
     }
 
     public void validaLista(ExamplesTable opcionesDir) throws Exception {
+        waitUntil(800);
         txtLista.click();
         this.validarDatosDeLaLista(opcionesDir);
         btnCancelar.click();
