@@ -92,6 +92,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         waitFor(campoTxtPlaca).shouldBePresent();
         selectItem(comboBoxPlan, vehiculo.get("plan"));
         campoTxtPlaca.sendKeys(vehiculo.get("placa"));
+        waitUntil(1000);
         comboBoxVehiculoServicio.click();
         waitForTextToAppear(vehiculo.get("placa"),28000);
         selectItem(comboBoxModelo,vehiculo.get("modelo"));
