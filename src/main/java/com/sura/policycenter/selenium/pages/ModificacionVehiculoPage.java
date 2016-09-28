@@ -7,6 +7,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class ModificacionVehiculoPage extends Commons{
@@ -15,6 +16,8 @@ public class ModificacionVehiculoPage extends Commons{
     private WebElementFacade botonSiguiente;
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
     private WebElementFacade campoCiudadCirculacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:VehiculeZone-inputEl']")
+    private WebElementFacade campoTxtzona;
 
     public ModificacionVehiculoPage(WebDriver driver) {
         super(driver);
@@ -56,7 +59,7 @@ public class ModificacionVehiculoPage extends Commons{
     public void registrarZonaCirculacion(String ciudadCirculacion) {
         waitUntil(3000);
         waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
-        waitUntil(1500);
+        waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona,"11"));
         waitFor(botonSiguiente).click();
         waitUntil(3000);
     }
