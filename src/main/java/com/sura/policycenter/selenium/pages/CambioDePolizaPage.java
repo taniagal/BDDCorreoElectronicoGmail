@@ -3,7 +3,6 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -14,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 
 
-public class CambioDePolizaPage extends PageObject {
+public class CambioDePolizaPage extends Commons {
 
     Commons commons = new Commons(getDriver());
 
@@ -47,7 +46,7 @@ public class CambioDePolizaPage extends PageObject {
 
 
     public void irAMenuAcciones() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(menuAcciones).waitUntilClickable();
+        waitUntil(1000);
         menuAcciones.click();
     }
 
