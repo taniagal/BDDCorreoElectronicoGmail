@@ -64,7 +64,7 @@ con dos opciones : Solicitar Aprobacion y cancelar
 
 Examples:
 |cotizacion|mensaje|
-|22270003  |ya tiene una cotización en curso para el producto seleccionado para la oficina SURA|
+|22270003  |El cliente JORGE PAISA ya tiene una cotización en curso para el producto seleccionado para la oficina SURA|
 
 Scenario: Poliza con intencion de financiacion
 Given he realizado la cotizacion <cotizacion>
@@ -83,8 +83,13 @@ Then se debe mostrar en el detalle de la cotizacion el Valor por cuota a pagar <
 el numero de cotas <numeroCuotas> indicadas en la informacion de la poliza
 
 Examples:
+<<<<<<< HEAD
+|cotizacion |valorCuota   |numeroCuotas |
+|777222777  |$101,620.00  |11           |
+=======
 |cotizacion |valorCuota |numeroCuotas |
 |777222777  |$101,620   |11           |
+>>>>>>> develop
 
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:

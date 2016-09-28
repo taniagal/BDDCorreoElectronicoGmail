@@ -171,12 +171,11 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        waitForTextToAppear("Resultados de validación",20000);
+        waitForTextToAppear("Resultados de validación",30000);
         boolean validacionMensaje = grupoMensajes.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
-        Commons gw = new Commons(getDriver());
-        gw.waitUntil(15000);
-
+        WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBorrar).click();
     }
 
     public void validarTipoRiesgo() {
@@ -217,6 +216,7 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void mostrarValorYCuotas(String valorCuota, String numeroCuotas) {
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(labelValorCuota).shouldBeVisible();
         boolean validacion = labelValorCuota.isCurrentlyEnabled() && labelNumeroCuotas.isCurrentlyEnabled();
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(true)));
         MatcherAssert.assertThat("Error en el valor de la cuota, expected '"+valorCuota+"' but was: "+campoValorCuota.getText(),campoValorCuota.getText().contains(valorCuota));

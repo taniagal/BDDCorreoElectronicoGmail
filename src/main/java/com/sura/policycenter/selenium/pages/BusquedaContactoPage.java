@@ -5,6 +5,7 @@ import com.sura.commons.selenium.Commons;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -258,7 +259,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void validarLabelsPersonaNatural(Map<String, String> labelsContacto) {
-        waitFor(lblTipoId);
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblTipoId).shouldBeVisible();
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblPrimNombre.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("priNombre"))));
@@ -272,7 +273,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto) {
-        waitFor(lblTipoId);
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblTipoId).shouldBeVisible();
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblNomComercial.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("nomComercial"))));
