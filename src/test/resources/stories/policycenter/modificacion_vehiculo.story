@@ -18,8 +18,8 @@ When digite el numero fasecolda <numeroFasecolda> y modelo <modelo> de un vehicu
 Then se deben recuperar los datos del vehiculo: clase vehiculo <claseVehiculo>, marca <marca>  y linea <linea>
 
 Examples:
-|numeroPoliza |numeroFasecolda|modelo|claseVehiculo   |marca|linea                 |
-|TEST_22223223|03417101       |2007  |Motos 0 - 125 CC|HONDA|E STORM 125 - MT 125CC|
+|numeroPoliza |numeroFasecolda|modelo|claseVehiculo     |marca|linea|
+|TEST_22223223|00601182       |2016  |Camperos y pickups|Mazda|MPV  |
 
 Scenario: Zona de circulacion no permitida
 Given se tiene una poliza expedida <numeroPoliza>
@@ -28,7 +28,7 @@ Then se debe mostrar un mensaje <mensaje> indicando la restriccion
 
 Examples:
 |numeroPoliza |ciudadCirculacion|mensaje                                                                                   |
-|TEST_22222222|ACANDI           |Por política de la compañía no esta permitido asegurar este tipo de vehículo en esta zona.|
+|TEST_22222222|ACANDI           |Por política de la compañía no esta permitido vehículos que circulen en esta ubicación.|
 
 Scenario: Consultar bonificaciones
 Meta:
