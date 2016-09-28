@@ -1,16 +1,16 @@
 package com.sura.gw.policy.poliza.definitions;
 
-import ch.lambdaj.Lambda;
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.steps.GuidewireSteps;
 import com.sura.gw.policy.poliza.steps.EdificiosUbicacionesSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
+import com.sura.gw.util.AssertUtil;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import org.hamcrest.*;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.hamcrest.core.Is;
-import org.hamcrest.core.StringContains;
 import org.jbehave.core.annotations.Aliases;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -136,7 +136,7 @@ public class EdificiosUbicaciones {
 
         for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, hasItemContainsString(mensaje));
+            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
         }
 
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
@@ -160,28 +160,7 @@ public class EdificiosUbicaciones {
         //Metodo Vacio
     }
 
-    private Matcher<? super List<String>> hasItemContainsString(String expectedValue) {
-        return new HasItemContainsString(expectedValue);
-    }
 
-    private static final class HasItemContainsString extends TypeSafeMatcher<List<String>> {
-
-        private final String expectedValue;
-
-        private HasItemContainsString(String expectedValue) {
-            this.expectedValue = expectedValue;
-        }
-
-        @Override
-        protected boolean matchesSafely(List<String> values) {
-            return !Lambda.filter(StringContains.containsString(expectedValue), values).isEmpty();
-        }
-
-        @Override
-        public void describeTo(Description description) {
-            description.appendText("Se esperaba una lista que contuviera un strings ").appendValue(expectedValue);
-        }
-    }
     
 
 
