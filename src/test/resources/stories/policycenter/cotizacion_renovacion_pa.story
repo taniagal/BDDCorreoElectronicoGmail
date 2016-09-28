@@ -19,8 +19,8 @@ Then se debe mostrar la informacion del detalle de cotizacion por riesgo, donde 
 |placa  |modelo |codigoFasecolda |marca |linea |
 |TKC459 |2016   |00601182        |Mazda |MPV   |
 And en el detalle por coberturas mostrar:
-|cobertura                         |terminoCobertura |prima       |subtotal     |subtotalPrimas|
-|Cobertura de Responsabilidad Civil|32.000.000       |$319,655.00 |$2,257,093.00|$4,514,186.00 |
+| cobertura                          | terminoCobertura | prima             | subtotal            | subtotalPrimas      |
+| Cobertura de Responsabilidad Civil | 32.000.000       | $319.655,00 (COP) | $2.257.093,00 (COP) | $4.514.186,00 (COP) |
 
 Examples:
 |cotizacion |
@@ -52,8 +52,8 @@ Scenario: Validar informacion general de la cotizacion
 Given se ha realizado la renovacion de la cotizacion <cotizacion>
 When ingrese revisar la cotizacion
 Then se debe mostrar la informacion general de la poliza cotizada con los siguientes datos:
-|numeroPoliza |numeroRenovacion |tomador    |tipoDocumento       |numeroDocumento |direccion                                     |tipoDireccion          |descripcionDireccion                      |empresaAseguradora       |primaTotal   |impuestos |costoTotal   |
-|TEST_32112332|32112330         |JORGE PAISA|CEDULA DE CIUDADANIA|1356118711      |CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos|DIRECCION DE RESIDENCIA|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$4,606,022.00|-         |$4,606,022.00|
+| numeroPoliza  | numeroRenovacion | tomador     | tipoDocumento        | numeroDocumento | direccion                                      | tipoDireccion           | descripcionDireccion                       | empresaAseguradora        | primaTotal          | impuestos   | costoTotal          |
+| TEST_32112332 | 32112330         | JORGE PAISA | CEDULA DE CIUDADANIA | 1356118711      | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | Acme Low Hazard Insurance | $4.606.022,00 (COP) | $0,00 (COP) | $4.606.022,00 (COP) |
 
 Examples:
 |cotizacion |
