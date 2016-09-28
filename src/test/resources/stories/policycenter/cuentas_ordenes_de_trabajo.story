@@ -29,7 +29,7 @@ Then debe mostrarme el listado de transacciones con su respectiva informacion: n
 
 Examples:
 | numCuenta  | filtroEstado | poliza        | producto | transaccion | tipo       | estado   | participante |
-| C010478975 | Completo     | TEST_22222223 | Autos    | 22222223    | Cotización | Expedida | Super User   |
+| C000922810 | Completo     | TEST_22222297 | Autos    | 22222297    | Cotización | Expedida | Super User   |
 
 
 Scenario: Ver informacion de transacciones sin registros
@@ -50,7 +50,6 @@ Examples:
 | numCuenta  | filtroEstado |
 | C001888888 | Abierto      |
 
-
 Scenario: Ver informacion filtrada por tipo de transaccion
 Given que voy a buscar la cuenta <numCuenta>
 When consulte las transacciones de poliza por estado <filtroEstado>
@@ -59,7 +58,7 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 | numCuenta  | filtroEstado | filtroTransaccion |
-| C001888888 | Todos        | Cotización        |
+| C000922810 | Todos        | Cotización        |
 
 Scenario: Ver informacion filtrada por producto
 Given que voy a buscar la cuenta <numCuenta>
@@ -70,4 +69,4 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 | numCuenta  | filtroEstado | filtroTransaccion | filtroProducto |
-| C001888888 | Todos        | Todos             | Autos          |
+| C000922810 | Todos        | Todos             | Autos          |
