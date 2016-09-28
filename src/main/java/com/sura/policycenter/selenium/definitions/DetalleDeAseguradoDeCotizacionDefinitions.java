@@ -157,7 +157,6 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
     public void validarDetalleDeRiesgo(ExamplesTable datosAsegurado){
         detalleDeAseguradoDeCotizacionSteps.validarDetalleDeRiesgo(datosAsegurado);
     }
-
 }
 
 
