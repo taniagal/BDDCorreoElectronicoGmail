@@ -54,13 +54,9 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps{
 
 
     @Step
-    public void verificar_bono_tecnico(String bono) {
-        modificadoresDeTarifaPage.verificarBonoTecnico(bono);
-    }
-
-    @Step
-    public void verificar_bono_comercial(String bono) {
-        modificadoresDeTarifaPage.verificarBonoComercial(bono);
+    public void verificar_bonificacion(String bonoComercial, String bonoTecnico) {
+        modificadoresDeTarifaPage.verificarBonoTecnico(bonoTecnico);
+        modificadoresDeTarifaPage.verificarBonoComercial(bonoComercial);
     }
 
     @Step
