@@ -3,11 +3,12 @@ package com.sura.gw.policy.poliza.definitions;
 
 import com.sura.gw.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.gw.navegacion.steps.GuidewireSteps;
+import com.sura.gw.policy.poliza.steps.InstruccionesPreviasARenovacionSteps;
 import com.sura.gw.policy.poliza.steps.PolizaSteps;
+import com.sura.gw.util.AssertUtil;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.annotations.Given;
@@ -19,6 +20,8 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class Poliza {
@@ -32,8 +35,8 @@ public class Poliza {
     @Steps
     IngresoAPolicyCenterDefinitions guidewireLogin;
 
-    @Steps
-    GuidewireSteps guidewire;
+    @Steps GuidewireSteps guidewire;
+    @Steps InstruccionesPreviasARenovacionSteps instruccionesPreviasARenovacionSteps;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -62,15 +65,15 @@ public class Poliza {
 
     public void entoncesValidarValoresDeSublimitesYValorAseguradoParaElValorDelArticulo() {
 
-        MatcherAssert.assertThat(polizaSteps.espacioDeTrabajo(),
+        assertThat(polizaSteps.espacioDeTrabajo(),
                 Matchers.hasItems("EL valor Asegurado de la cobertura Danos materiales NO debe ser mayor al valor asegurable del Artículo Edificio"
                 ));
 
-        MatcherAssert.assertThat(polizaSteps.espacioDeTrabajo(),
+        assertThat(polizaSteps.espacioDeTrabajo(),
                 Matchers.hasItems("El valor de \"Sublimite para traslados temporales de maquinaria y equipo\" debe ser menor al valor asegurado de la cobertura \"Danos materiales\"."
                 ));
 
-        MatcherAssert.assertThat(polizaSteps.espacioDeTrabajo(),
+        assertThat(polizaSteps.espacioDeTrabajo(),
                 Matchers.hasItems("El valor de \"Sublimite para combustion espontanea de mercancias a granel\" debe ser menor al valor asegurado de la cobertura \"Danos materiales\"."
                 ));
     }
@@ -87,7 +90,7 @@ public class Poliza {
         guidewire.ir_a_navegacion_superior()
                 .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
 
-        MatcherAssert.assertThat(esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), Is.is(Matchers.equalTo(true)));
+        assertThat(esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), Is.is(Matchers.equalTo(true)));
 
 
     }
@@ -103,6 +106,16 @@ public class Poliza {
         polizaSteps.seleccionar_opcion_informacion_de_poliza();
     }
 
+    @When("desee seleccionar instrucciones previas a la renovacion")
+    public void cuandoDeseeSeleccionarInstruccionesPreviasALaRenovacion() {
+        LOGGER.info("Poliza.cuandoDeseeRealizarInstruccionesPreviasALaRenovacion");
+        polizaSteps.seleccionar_boton_acciones().
+                seleccionar_instrucciones_previas_a_la_renovacion();
+
+        instruccionesPreviasARenovacionSteps.seleccionar_boton_editar().
+                desplegar_lista_instruccion();
+    }
+
     // TODO: 04/08/2016 Esto va para la definicion de informacion de la poliza
     @Then("espero ver inhabilitado para modificacion los siguientes $campos")
     public void esperoVerInhabilitadoParaModificacionLosSiguientesCampos(ExamplesTable campos) {
@@ -110,9 +123,18 @@ public class Poliza {
         // TODO: 26/07/2016 implementar forma recurrente de reportar varios asserterror en el reporte
         for (Map<String, String> fila : campos.getRows()) {
             String campo = fila.get("CAMPOS");
-            MatcherAssert.assertThat("ELEMENTO ".concat(campo).concat(" NO CUMPLE CON EL CRITERIO DE BLOQUEO"), polizaSteps.elementoEsEditable(campo), Is.is(Matchers.equalTo(false)));
+            assertThat("ELEMENTO ".concat(campo).concat(" NO CUMPLE CON EL CRITERIO DE BLOQUEO"), polizaSteps.elementoEsEditable(campo), Is.is(Matchers.equalTo(false)));
         }
 
         LOGGER.info("Poliza.esperoVerInhabilitadoParaModificacionLosSiguientesCampos");
+    }
+
+    @Then("espero ver las opciones de instrucciones siguientes $instrucciones")
+    public void esperoVerLasOpcionesDeInstruccionesSiguientes(ExamplesTable instrucciones) {
+        LOGGER.info("Poliza.esperoVerLasOpcionesDeInstruccionesSiguientes");
+        for (Map<String, String> fila : instrucciones.getRows()) {
+            String instruccion = fila.get("INSTRUCCIONES");
+            org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.instruccionesPreviasARenovacionPage.obtenerInstruccionesDisponibles(), AssertUtil.hasItemContainsString(instruccion));
+        }
     }
 }

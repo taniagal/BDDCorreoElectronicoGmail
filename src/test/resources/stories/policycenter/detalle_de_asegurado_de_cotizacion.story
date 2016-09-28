@@ -67,12 +67,11 @@ And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y nu
 And seleccione el contacto a agregar
 And vaya a la opcion agregar
 And agregue un asegurado que es contacto de la cuenta
-And vaya al siguiente paso de la cotizacion
-Then muestre el mensaje de validacion del asegurado <mensaje>
-And deben quedar agregados como asegurados:
+Then deben quedar agregados como asegurados:
 |nombre|tipoDocumento|numeroDocumento|
 |DIEGO VELEZ|CEDULA DE CIUDADANIA|32536001|
 |GLORIA GALLEGO|CEDULA DE CIUDADANIA|1264567899|
+And se debe permitir continuar la cotizacion
 
 Examples:
 |cuenta    | agente  | organizacion | canal             | producto |tipoId|numeroId|mensaje|

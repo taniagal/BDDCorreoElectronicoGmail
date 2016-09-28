@@ -1,9 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.SeusLoginPage;
-
-import java.util.List;
-
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.apache.commons.lang3.ArrayUtils;
@@ -14,6 +11,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 
 public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
@@ -88,7 +87,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
                 "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
         String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);
 
-        waitFor(table).waitUntilPresent();
+        waitFor(table).waitUntilVisible();
 
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
@@ -112,8 +111,8 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
-        waitFor(table).waitUntilPresent();
-        waitUntil(3000);
+        waitFor(table).waitUntilVisible();
+
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {
@@ -124,16 +123,14 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
-        waitFor(this.filtroProducto).waitUntilPresent();
-        waitUntil(2000);
+        waitFor(this.filtroProducto).waitUntilVisible();
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
         this.filtroProducto.sendKeys(Keys.ENTER);
     }
 
     public void validarTransaccionesPorProducto(String filtroProducto) {
-        waitFor(table).waitUntilPresent();
-        waitUntil(2000);
+        waitFor(table).waitUntilVisible();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {
@@ -144,7 +141,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void validarMensaje(String mensaje) {
-        waitFor(msjTransaccionNoEncontrada).waitUntilPresent();
+        waitFor(msjTransaccionNoEncontrada).waitUntilVisible();
         MatcherAssert.assertThat(msjTransaccionNoEncontrada.getText(), Matchers.containsString(mensaje));
     }
 
