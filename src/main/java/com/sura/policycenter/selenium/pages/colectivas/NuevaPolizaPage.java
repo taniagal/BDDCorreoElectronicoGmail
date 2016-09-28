@@ -15,7 +15,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.interactions.Actions;
 
 
 public class NuevaPolizaPage extends PageObject {
@@ -41,6 +41,7 @@ public class NuevaPolizaPage extends PageObject {
     WebElementFacade listaDesplegable;
 
     private List<WebElement> filas;
+    Actions acciones = new Actions(getDriver());
 
     public NuevaPolizaPage(WebDriver driver) {
         super(driver);
@@ -48,7 +49,7 @@ public class NuevaPolizaPage extends PageObject {
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
         commons.waitUntil(3000);
-        elementoDeLaLista.click();
+        acciones.click(elementoDeLaLista).build().perform();
     }
 
     public void desplegarListaDeOrganizaciones() {
