@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
-
 public class TarifaAutosPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnInnerEl']")
     private WebElementFacade botonAgregarAsegurado;
@@ -45,6 +44,10 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade checkBoxConductorElegido;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PACarroDeReemplazoDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxCarroDeReemplazo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAGastosDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxGastosTaspaso;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAGastosDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxGAstosDeParqueadero;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:1:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxDeducible;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
@@ -83,6 +86,10 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade comboBoxConductorElegido;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:TermType-inputEl']")
     private WebElementFacade comboBoxTipoPlazo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAGastosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
+    private WebElementFacade comboBoxGastosTraspaso;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAGastosDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
+    private WebElementFacade comboBoxgastosDeParqueadero;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV:0:numDocument']")
     private WebElementFacade itemdocNum;
     @FindBy(id = "SubmissionWizard:ViewQuote")
@@ -97,6 +104,7 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade navItemContastosDeLaCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver']")
     private WebElementFacade navItemAseguradoR;
+    private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
 
 
     public TarifaAutosPage(WebDriver driver) {
@@ -104,11 +112,11 @@ public class TarifaAutosPage extends Commons {
     }
 
 
-    public void cambiarTipoPlazo(){
+    public void cambiarTipoPlazo() {
         meniItemInformacionDePoliza.click();
         comboBoxTipoPlazo.waitUntilPresent().clear();
-        selectItem(comboBoxTipoPlazo,"6 meses");
-        waitForComboValue(comboBoxTipoPlazo,"6 meses");
+        selectItem(comboBoxTipoPlazo, "6 meses");
+        waitForComboValue(comboBoxTipoPlazo, "6 meses");
     }
 
 
@@ -172,6 +180,10 @@ public class TarifaAutosPage extends Commons {
         selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
         selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
         selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
+        checkBoxGastosTaspaso.click();
+        selectItem(comboBoxGastosTraspaso, dato.get("GTR"));
+        checkBoxGAstosDeParqueadero.click();
+        selectItem(comboBoxgastosDeParqueadero, dato.get("GP"));
     }
 
 
@@ -198,16 +210,17 @@ public class TarifaAutosPage extends Commons {
 
 
     public void verificarTarifacion(String valor) {
-        WebElementFacade tablaDescripcion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[1]/td[3]");
-        MatcherAssert.assertThat("Error en el valor de la tarifacion", tablaDescripcion.containsText(valor));
+        WebElementFacade tablaDescripcion = findBy(TABLAXPATH + "1]/td[3]");
+        MatcherAssert.assertThat("Error en el valor de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor));
     }
 
 
     public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
         for (Map<String, String> valor : valores.getRows()) {
-            WebElementFacade tablaDescripcion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[" + valor.get("fila") + "]/td[3]");
-            WebElementFacade cobertura = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[" + valor.get("fila") + "]/td[1]");
-            MatcherAssert.assertThat("Error en el valor de la cobertura '" + valor.get("fila") + " - " + cobertura.getText() + "' de la tarifacion ", tablaDescripcion.containsText(valor.get("valor")));
+            WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
+            WebElementFacade cobertura = findBy(TABLAXPATH + valor.get("fila") + "]/td[1]");
+            MatcherAssert.assertThat("Error en el valor de la cobertura '" + valor.get("fila") + " - " +
+                            cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
         }
     }
 }

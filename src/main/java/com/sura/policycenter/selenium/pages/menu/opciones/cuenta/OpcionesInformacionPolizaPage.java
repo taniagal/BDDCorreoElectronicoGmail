@@ -500,6 +500,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
 
     public void irAInformacionDePoliza() {
         waitFor(menuInformacionPoliza).click();
+        waitForTextToAppear("Información de póliza");
     }
 
     public void noIndicarPolizaFinanciada() {

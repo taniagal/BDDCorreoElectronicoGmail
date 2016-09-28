@@ -52,6 +52,7 @@ public class Commons extends PageObject {
     }
 
     public void selectItem(WebElementFacade element, String option){
+        waitFor(ExpectedConditions.elementToBeClickable(element));
         element.click();
         waitUntil(200);
         element.sendKeys(option);
