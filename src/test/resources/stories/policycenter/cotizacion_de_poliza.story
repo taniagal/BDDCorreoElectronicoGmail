@@ -18,7 +18,7 @@ Given he realizado la cotizacion <cotizacion>
 When ingrese al detalle de la cotizacion
 Then debo ver la siguiente informacion
 |numeroCotizacion|tomador|tipoDocumento|numeroDocumento|direccion|tipoDireccion|descripcionDireccion|empresaAseguradora|prima|impuestos|total|
-|22222225|DORIAN STIWAR EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$2,303,011|-|$2,303,011.00|
+|22222225|DORIAN STIWAR EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$2,257,093|-|$2,257,093.00|
 
 Examples:
 |cotizacion|
@@ -64,7 +64,7 @@ con dos opciones : Solicitar Aprobacion y cancelar
 
 Examples:
 |cotizacion|mensaje|
-|22270003  |ya tiene una cotización en curso para el producto seleccionado para la oficina SURA|
+|22270003  |El cliente JORGE PAISA ya tiene una cotización en curso para el producto seleccionado para la oficina SURA|
 
 Scenario: Poliza con intencion de financiacion
 Given he realizado la cotizacion <cotizacion>
@@ -83,8 +83,13 @@ Then se debe mostrar en el detalle de la cotizacion el Valor por cuota a pagar <
 el numero de cotas <numeroCuotas> indicadas en la informacion de la poliza
 
 Examples:
+<<<<<<< HEAD
+|cotizacion |valorCuota   |numeroCuotas |
+|777222777  |$101,620.00  |11           |
+=======
 |cotizacion |valorCuota |numeroCuotas |
-|777222777  |$152,431   |11           |
+|777222777  |$101,620   |11           |
+>>>>>>> develop
 
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:

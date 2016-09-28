@@ -47,13 +47,14 @@ public class ExpedicionRenovacionPAPage extends Commons{
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mensajeAdvertenciaRenovacion).shouldBeVisible();
         MatcherAssert.assertThat(mensajeAdvertenciaRenovacion.getText(), Is.is(Matchers.equalTo(mensajeAdvertencia.get("mensaje"))));
         act.sendKeys(Keys.TAB).build().perform();
+        waitUntil(1000);
         act.sendKeys(Keys.ENTER).build().perform();
     }
 
     public void mostrarResumenRenovacion() {
+        waitForTextToAppear("¿Está seguro de que desea emitir la renovación de la póliza?");
         act.sendKeys(Keys.ENTER).build().perform();
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelRenovacionExpedida).shouldBeVisible();
-
     }
 
     public void validarMensajeRenovacionRealizada(String mensaje) {
