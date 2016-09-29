@@ -2,12 +2,14 @@ package com.sura.policycenter.selenium.pages.colectivas;
 
 
 import com.sura.commons.selenium.Commons;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -17,10 +19,9 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.LocalDateTime;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.slf4j.LoggerFactory;
 
 public class InformacionDePolizaColectivaPage extends PageObject {
 
@@ -121,6 +122,8 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:deleteCoinsurance']")
     WebElementFacade linkEliminarCoaseguro;
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(InformacionDePolizaColectivaPage.class);
+
     private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV:";
     private static final String DD_MM_YYYY = "dd/MM/yyyy";
 
@@ -154,7 +157,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), containsText(infoPoliza.get("fechaFin")));
         MatcherAssert.assertThat(fechaExpedicion.getValue(), Is.is(Matchers.equalTo(dateFormat.format(fechaHoy))));
         MatcherAssert.assertThat(oficinaRadicacion.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("oficina"))));
-        MatcherAssert.assertThat("Error, no se encontró el código de agente",codAgente.getValue().contains(infoPoliza.get("codAgente")));
+        MatcherAssert.assertThat("Error, no se encontró el código de agente", codAgente.getValue().contains(infoPoliza.get("codAgente")));
         MatcherAssert.assertThat(descuentoPoliza.getValue(), Is.is(Matchers.equalTo(infoPoliza.get("descuentoPoliza"))));
         botonCambiarDireccion.shouldBeVisible();
         linkAgregarCoaseguro.shouldBeVisible();
@@ -231,7 +234,8 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void clicEnSiguiente() {
-        if(botonSiguiente.isVisible()) {
+        if (botonSiguiente.isPresent()) {
+            waitFor(botonSiguiente);
             botonSiguiente.click();
         }
     }
@@ -273,7 +277,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         campoPorcentajeParticipacionOtra.click();
         campoPorcentajeParticipacionOtraTexto.sendKeys("40");
         listaAseguradora.click();
-        commons.ingresarDato(campoAseguradora,"ALLIANZ SEGUROS S.A.");
+        commons.ingresarDato(campoAseguradora, "ALLIANZ SEGUROS S.A.");
         Actions actions = new Actions(getDriver());
         commons.waitUntil(1000);
         actions.sendKeys(Keys.TAB).build().perform();
@@ -284,21 +288,21 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         botonAceptarCoaseguro.click();
     }
 
-    public void validarLinksDeCoaseguroVisiblesYHabilitados(){
+    public void validarLinksDeCoaseguroVisiblesYHabilitados() {
         waitForTextToAppear("Información de la póliza colectiva");
         linkEditarCoaseguro.waitUntilPresent();
         linkEliminarCoaseguro.waitUntilPresent();
     }
 
-    public void clicEnEliminarCoaseguro(){
+    public void clicEnEliminarCoaseguro() {
         linkEliminarCoaseguro.click();
     }
 
-    public void clicEnEditarCoaseguro(){
+    public void clicEnEditarCoaseguro() {
         linkEditarCoaseguro.click();
     }
 
-    public void validarEliminacionDeCoaseguro(){
+    public void validarEliminacionDeCoaseguro() {
         waitFor(linkAgregarCoaseguro);
         linkEditarCoaseguro.shouldNotBeVisible();
         linkEliminarCoaseguro.shouldNotBeVisible();
@@ -306,18 +310,19 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         linkAgregarCoaseguro.shouldBeEnabled();
     }
 
-    public void validarPantallaDeEdicion(){
+    public void validarPantallaDeEdicion() {
         MatcherAssert.assertThat(campoPorcentajeParticipacionSura.getText(), containsText("60"));
         MatcherAssert.assertThat(campoPorcentajeParticipacionOtra.getText(), containsText("40"));
         MatcherAssert.assertThat(listaAseguradora.getText(), containsText("ALLIANZ SEGUROS S.A."));
     }
 
-    public void clicEnCancelarDeCoaseguro(){
+    public void clicEnCancelarDeCoaseguro() {
         botonCancelarCoaseguro.click();
         waitForTextToAppear("Información de la póliza colectiva");
     }
 
     public void validarLosElementosDeshabilitados() {
+        waitFor(botonSiguiente).waitUntilNotVisible();
         commons.waitUntil(2000);
         MatcherAssert.assertThat(linkAgregarCoaseguro.getAttribute("href"), Is.is(Matchers.equalTo("")));
         MatcherAssert.assertThat(organizacion.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
@@ -329,10 +334,11 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void clicEnUnTomadorDeLaPoliza(String tomador) {
-        if("tomador".equals(tomador)){
+        if ("tomador".equals(tomador)) {
+            botonSiguiente.waitUntilNotVisible();
             waitFor(nombreTomador);
             nombreTomador.click();
-        }else{
+        } else {
             waitFor(nombreSegundoLink);
             nombreSegundoLink.click();
         }

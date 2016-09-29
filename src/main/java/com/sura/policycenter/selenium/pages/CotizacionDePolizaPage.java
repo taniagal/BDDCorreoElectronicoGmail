@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
 
-public class CotizacionDePolizaPage extends PageObject{
+public class CotizacionDePolizaPage extends Commons{
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']")
     private WebElementFacade titulo;
@@ -176,6 +176,7 @@ public class CotizacionDePolizaPage extends PageObject{
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
         WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBorrar).click();
+        waitUntil(2000);
     }
 
     public void validarTipoRiesgo() {

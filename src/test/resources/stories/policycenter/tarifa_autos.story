@@ -18,8 +18,8 @@ Given estoy cotizando una poliza:
 |C1060447895|Sura        |Autos   |Canal Tradicional|
 When ingrese los datos del asegurado
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan             |
-|TYU146|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Autos Básico|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
+|TYU140|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas:
 |limite|deducible|abogado |
 |32    |0        |Opción 1|
@@ -27,7 +27,7 @@ Then el resultado de la cotizacion debe ser <valor>
 
 Examples:
 |valor  |
-|98,858 |
+|282,623|
 
 
 Scenario:  Realizar una cotizacion con todas las coberturas para autosGiven estoy cotizando una poliza
@@ -36,27 +36,26 @@ Given estoy cotizando una poliza:
 |C1060447895|Sura        |Autos   |Canal Tradicional|
 When ingrese los datos del asegurado
 And ingrese los datos del vehiculo:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan             |
-|TAU106|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Autos Básico|
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
+|TAU100|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And seleccione todas las coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |Taller|Grua|CE|CS  |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |
 |32    |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus|6 |Plus|10 |0  |1.50|40|16|20|Opción 1|Opción 1|
 Then el resultado de la cotizacion en cada cobertura debe ser:
 |fila|valor     |
-|1   |98,858    |
-|4   |6,373,473 |
-|9   |1,623,100 |
-|14  |107,034   |
-|17  |5,863     |
-|19  |21,057    |
-|21  |180,000   |
-|23  |41,875    |
-|25  |21,057    |
-|27  |21,057    |
-|29  |21,057    |
-|31  |21,057    |
-|33  |21,057    |
-|35  |21,057    |
+|1   |282,623   |
+|4   |4,078,689 |
+|9   |927,774   |
+|14  |85,279    |
+|17  |11,725    |
+|19  |17,285    |
+|21  |38,195    |
+|23  |17,285    |
+|25  |17,285    |
+|27  |17,285    |
+|29  |17,285    |
+|31  |17,285    |
+|33  |17,285    |
 
 Examples:
 ||
