@@ -26,7 +26,7 @@ Scenario: 1 Validacion que existan todas las instrucciones esperadas
 Meta:
 @Story CDSEG-907
 @URL https://jira.suramericana.com.co/browse/CDSEG-907
-@tag automator:andres_alarcon_guerrero, informer:juan_esteban, sprint:7
+@tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
 @Sprint 7
 
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
@@ -48,7 +48,7 @@ Scenario: 2 Validacion que existan todas las razones de No renovable
 Meta:
 @Story CDSEG-907
 @URL https://jira.suramericana.com.co/browse/CDSEG-907
-@tag automator:andres_alarcon_guerrero, informer:juan_esteban, sprint:7
+@tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
 @Sprint 7
 
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
@@ -71,7 +71,7 @@ Scenario: 3 Validacion que existan todas las razones de No renovable y consultar
 Meta:
 @Story CDSEG-907
 @URL https://jira.suramericana.com.co/browse/CDSEG-907
-@tag automator:andres_alarcon_guerrero, informer:juan_esteban, sprint:7
+@tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
 @Sprint 7
 
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
@@ -94,7 +94,7 @@ Scenario: 4 Validacion que existan todas las razones de No tomada
 Meta:
 @Story CDSEG-907
 @URL https://jira.suramericana.com.co/browse/CDSEG-907
-@tag automator:andres_alarcon_guerrero, informer:juan_esteban, sprint:7
+@tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
 @Sprint 7
 
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
