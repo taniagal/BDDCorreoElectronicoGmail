@@ -335,6 +335,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
 
     public void clicEnUnTomadorDeLaPoliza(String tomador) {
         if ("tomador".equals(tomador)) {
+            botonSiguiente.waitUntilNotVisible();
             waitFor(nombreTomador);
             nombreTomador.click();
         } else {
