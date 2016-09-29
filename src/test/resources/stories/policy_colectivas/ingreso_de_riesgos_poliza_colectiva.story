@@ -35,8 +35,8 @@ And la cuenta fue creada y agregada satisfactoriamente como asegurado
 | nombre                  | tipoDocumento | numeroDocumento |
 | VARIEDADES YURLEDYS S.A | NIT           | 9202086744      |
 And vaya a agregar un vehiculo con los datos:
-| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor  | valor_asegurado | descuento | recargo | zona | plan              |
-| TYR146 | 2016   | 01601225         | MEDELLIN           | Particular        | asd456 | dsa654 | 165900000       | null      | null    | 2    | Plan Modular |
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor  | valor_asegurado | descuento | recargo | zona | plan         |
+| TYR146 | 2016   | 00601182         | MEDELLIN           | Particular        | asd456 | dsa654 | 165900000       | null      | null    | 2    | Plan Modular |
 And relacione el asegurado <asegurado> a los datos del vehiculo
 And voy a realizar el siguiente paso
 And ingrese las coberturas minimas para realizar la cotizacion
