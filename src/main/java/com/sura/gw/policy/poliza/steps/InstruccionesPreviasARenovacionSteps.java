@@ -19,5 +19,14 @@ public class InstruccionesPreviasARenovacionSteps extends ScenarioSteps {
         instruccionesPreviasARenovacionPage.seleccionarListaDesplegableDeInstruccion();
         return this;
     }
-
+    @Step
+    public InstruccionesPreviasARenovacionSteps seleccionar_instruccion(String instruccion) {
+        instruccionesPreviasARenovacionPage.seleccionarOpcion(instruccion);
+        return this;
+    }
+    @Step
+    public InstruccionesPreviasARenovacionSteps desplegar_lista_opcion(String opcion) {
+        instruccionesPreviasARenovacionPage.seleccionarListaDesplegableDeEtiqueta(opcion);
+        return this;
+    }
 }

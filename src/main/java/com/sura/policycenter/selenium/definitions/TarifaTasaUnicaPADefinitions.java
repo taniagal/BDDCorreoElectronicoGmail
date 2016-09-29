@@ -11,8 +11,8 @@ public class TarifaTasaUnicaPADefinitions {
     TarifaTasaUnicaSteps tasaUnicaSteps;
 
     @When("vaya a cargar el archivo con las tasas")
-    public void irACrearVehiculo(){
-        tasaUnicaSteps.ir_a_vehiculos();
+    public void irAInformacionDePoliza(){
+        tasaUnicaSteps.ir_a_informacion_de_poliza();
     }
 
     @Then("me deben aparecer las opciones de exportar el archivo")
