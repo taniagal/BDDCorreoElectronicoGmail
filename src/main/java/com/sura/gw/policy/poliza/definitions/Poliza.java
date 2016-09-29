@@ -9,6 +9,7 @@ import com.sura.gw.util.AssertUtil;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
+import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.annotations.Given;
@@ -48,6 +49,10 @@ public class Poliza {
 
     @Given("que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>")
     public void dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza(@Named("numPoliza") String numPoliza, @Named("rolUsuario") String rolUsuario) {
+
+        if (SerenityWebdriverManager.inThisTestThread().isDriverInstantiated()) {
+            SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
+        }
 
         guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
 
@@ -116,6 +121,18 @@ public class Poliza {
                 desplegar_lista_instruccion();
     }
 
+    @When("despliegue $opcion")
+    public void cuandoDespliegue(String opcion) {
+        LOGGER.info("Poliza.cuandoDespliegue");
+        instruccionesPreviasARenovacionSteps.desplegar_lista_opcion(opcion);
+    }
+
+    @When("seleccione instruccion $instruccion previa a la renovacion")
+    public void cuandoSeleccioneInstruccionPreviaALaRenovacion(String instruccion) {
+        LOGGER.info("Poliza.cuandoSeleccioneInstruccionPreviaALaRenovacion");
+        instruccionesPreviasARenovacionSteps.seleccionar_instruccion(instruccion);
+    }
+
     // TODO: 04/08/2016 Esto va para la definicion de informacion de la poliza
     @Then("espero ver inhabilitado para modificacion los siguientes $campos")
     public void esperoVerInhabilitadoParaModificacionLosSiguientesCampos(ExamplesTable campos) {
@@ -135,6 +152,15 @@ public class Poliza {
         for (Map<String, String> fila : instrucciones.getRows()) {
             String instruccion = fila.get("INSTRUCCIONES");
             org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.instruccionesPreviasARenovacionPage.obtenerInstruccionesDisponibles(), AssertUtil.hasItemContainsString(instruccion));
+        }
+    }
+
+    @Then("debe visualizarse las siguientes razones $razones")
+    public void esperoVisualizarLasSiguientesRazones(ExamplesTable razones) {
+        LOGGER.info("Poliza.esperoVerLasOpcionesDeInstruccionesSiguientes");
+        for (Map<String, String> fila : razones.getRows()) {
+            String razon = fila.get("RAZONES");
+            org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.instruccionesPreviasARenovacionPage.obtenerListaRazonesDeRenovacion(), AssertUtil.hasItemContainsString(razon));
         }
     }
 }
