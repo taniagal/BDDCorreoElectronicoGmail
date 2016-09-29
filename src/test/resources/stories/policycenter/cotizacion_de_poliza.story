@@ -18,7 +18,7 @@ Given he realizado la cotizacion <cotizacion>
 When ingrese al detalle de la cotizacion
 Then debo ver la siguiente informacion
 |numeroCotizacion|tomador|tipoDocumento|numeroDocumento|direccion|tipoDireccion|descripcionDireccion|empresaAseguradora|prima|impuestos|total|
-|22222225|DORIAN STIWAR EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$2,257,093|-|$2,257,093.00|
+|22222225|DORIAN STIWAR EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891|CRA 65 # 48-162, LOUISVILLE, Estados Unidos|Vivienda|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$2,438,403|-|$2,438,403.00|
 
 Examples:
 |cotizacion|
@@ -83,13 +83,9 @@ Then se debe mostrar en el detalle de la cotizacion el Valor por cuota a pagar <
 el numero de cotas <numeroCuotas> indicadas en la informacion de la poliza
 
 Examples:
-<<<<<<< HEAD
 |cotizacion |valorCuota   |numeroCuotas |
 |777222777  |$101,620.00  |11           |
-=======
-|cotizacion |valorCuota |numeroCuotas |
-|777222777  |$101,620   |11           |
->>>>>>> develop
+
 
 Scenario: Riesgos consultables - Tipo Causal Tecnica
 Meta:
