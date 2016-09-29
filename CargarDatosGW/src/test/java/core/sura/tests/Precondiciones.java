@@ -5,7 +5,9 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +21,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Precondiciones extends MetodosComunes{
 
     private WebDriver driver;
@@ -45,7 +48,7 @@ public class Precondiciones extends MetodosComunes{
     }
 
     @Test
-    public void cambiarLenguaje() throws Exception {
+    public void seleccionarLenguaje() throws Exception {
         login("pedrvevi","pedrvevi");
         elegirLenguaje();
         assertEquals("Mis actividades", driver.findElement(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']")).getText());
@@ -66,7 +69,6 @@ public class Precondiciones extends MetodosComunes{
     }
 
     public void login(String usuario ,String contrasenia) {
-        System.out.println(baseUrl + "/pc/PolicyCenter.do");
         driver.get(baseUrl + "/pc/PolicyCenter.do");
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         if (driver.findElements(By.xpath(".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")).size() > 0) {
