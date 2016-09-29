@@ -1,6 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
-import com.sura.commons.selenium.SeusLoginPage;
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.apache.commons.lang3.ArrayUtils;
@@ -15,7 +15,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 
-public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
+public class ContactoOrdenesDeTrabajoPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_WorkOrders']/div")
     private WebElementFacade mnuTransaccionesPoliza;
@@ -57,7 +57,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
         filtroEstado.sendKeys(Keys.ENTER);
-        waitUntil(2000);
+        waitUntil(3000);
     }
 
     public void seleccionarTransacciones() {
@@ -112,7 +112,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
     public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
         waitFor(table).waitUntilVisible();
-
+        waitUntil(2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {
@@ -123,7 +123,8 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
-        waitFor(this.filtroProducto).waitUntilVisible();
+        waitFor(this.filtroProducto).waitUntilPresent();
+        waitUntil(2000);
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
         this.filtroProducto.sendKeys(Keys.ENTER);
@@ -131,6 +132,7 @@ public class ContactoOrdenesDeTrabajoPage extends SeusLoginPage {
 
     public void validarTransaccionesPorProducto(String filtroProducto) {
         waitFor(table).waitUntilVisible();
+        waitUntil(2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {

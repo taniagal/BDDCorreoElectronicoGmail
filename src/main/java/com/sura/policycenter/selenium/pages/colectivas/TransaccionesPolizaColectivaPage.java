@@ -22,8 +22,6 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
     WebElementFacade tablaTransaccionesColectiva;
     @FindBy(xpath = ".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:ttlBar']")
     WebElementFacade tituloTransaccionesIndividual;
-    @FindBy(xpath = "//div[3]/div/table/tbody/tr/td/div")
-    WebElementFacade columnaCrearFecha;
     @FindBy(xpath = "//div/table/tbody/tr/td[2]/div")
     WebElementFacade columnaNumeroPoliza;
     @FindBy(xpath = "//td[3]/div")
@@ -103,6 +101,7 @@ public class TransaccionesPolizaColectivaPage extends PageObject{
 
     public void darClicEnElNumeroDePoliza() {
         numeroPoliza.click();
+        waitForTextToAppear("Información de la póliza colectiva");
     }
 
 
