@@ -10,8 +10,18 @@ Narrative:
 Como usuario PolicyCenter
 Quiero ser capaz de buscar elementos específicos asociados a un contacto
 
-Scenario: Consultar contacto de tipo persona natural unicamente por primer nombre
+Scenario: Mostrar labels correctos en espaniol para persona natural
 GivenStories: stories/policycenter/login_policy.story
+Given estoy en busqueda de contactos
+When quiera consultar contacto de tipo persona natural <tipoDoc> por primer nombre <primerNombre> y primer apellido <primerApellido>
+Then los labels se deben mostrar como se indica en el UIFields para persona natural
+
+Examples:
+| tipoDoc              | primerNombre | primerApellido |
+| CEDULA DE CIUDADANIA | YURLEDYS     | GALLEGO        |
+
+
+Scenario: Consultar contacto de tipo persona natural unicamente por primer nombre
 Given estoy en busqueda de contactos
 When quiera consultar contacto de tipo persona natural <tipoDoc> por primer nombre <primerNombre>
 Then no debo ver la informacion del contacto de tipo persona natural
@@ -106,6 +116,15 @@ Examples:
 | tipoDoc              | numDoc     | filtro1  | filtro2 |
 | CEDULA DE CIUDADANIA | 1234567890 | YURLEDYS | GALLEGO |
 
+Scenario: Mostrar labels correctos en espaniol para persona juridica
+Given estoy en busqueda de contactos
+When quiera consultar contacto de tipo persona juridica <tipoDoc> por razon social <razonSocial>
+Then los labels se deben mostrar como se indica en el UIFields para persona juridica
+
+Examples:
+| tipoDoc | razonSocial         |
+| NIT     | VARIEDADES YURLEDYS |
+
 Scenario: Consultar contacto de tipo persona juridica unicamente por tipo de identificacion
 Given estoy en busqueda de contactos
 When quiera consultar contacto de tipo persona juridica por tipo de documento <tipoDoc>
@@ -145,24 +164,6 @@ And debo ver un <mensaje> de alerta indicando que es necesario ingresar tipo y n
 Examples:
 | tipoDoc   | numDoc     | mensaje                                                                                                                                                                                                                                                                          |
 | <ninguno> | 1234567890 | No hay suficiente información para la búsqueda. Si desea buscar por tipo y número de documento ambos deben ser obligatorios. Si desea buscar por nombre debe ingresar al menos dos campos, incluido un nombre y al menos 2 caracteres por cada campo (4 en el caso de empresas). |
-
-Scenario: Mostrar labels correctos en espaniol para persona natural
-Given estoy en busqueda de contactos
-When quiera consultar contacto de tipo persona natural <tipoDoc> por primer nombre <primerNombre> y primer apellido <primerApellido>
-Then los labels se deben mostrar como se indica en el UIFields para persona natural
-
-Examples:
-| tipoDoc              | primerNombre | primerApellido |
-| CEDULA DE CIUDADANIA | YURLEDYS     | GALLEGO        |
-
-Scenario: Mostrar labels correctos en espaniol para persona juridica
-Given estoy en busqueda de contactos
-When quiera consultar contacto de tipo persona juridica <tipoDoc> por razon social <razonSocial>
-Then los labels se deben mostrar como se indica en el UIFields para persona juridica
-
-Examples:
-| tipoDoc | razonSocial         |
-| NIT     | VARIEDADES YURLEDYS |
 
 Scenario: Consultar contacto a traves de la opcion del menu Contactos - Buscar
 Given estoy en contactos para buscar
