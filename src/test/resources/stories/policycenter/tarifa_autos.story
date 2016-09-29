@@ -47,7 +47,7 @@ Then el resultado de la cotizacion en cada cobertura debe ser:
 |4   |4,078,689 |
 |9   |927,774   |
 |14  |85,279    |
-|17  |11,725     |
+|17  |11,725    |
 |19  |17,285    |
 |21  |38,195    |
 |23  |17,285    |
