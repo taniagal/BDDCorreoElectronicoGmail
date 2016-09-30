@@ -3,6 +3,8 @@ package com.sura.policycenter.selenium.pages.colectivas;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -34,6 +36,8 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     WebElementFacade tablaRiesgos;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:Update-btnInnerEl']")
     WebElementFacade botonActualizar;
+
+    Commons commons = new Commons(getDriver());
 
     public IngresoDeRiesgosPolizaColectivaPages(WebDriver driver) {
         super(driver);
@@ -81,6 +85,7 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     }
 
     public void clicEnActualizarInformacionDePolizaColectiva() {
+        commons.waitUntil(2000);
         if(botonActualizar.isVisible()) {
             botonActualizar.click();
         }

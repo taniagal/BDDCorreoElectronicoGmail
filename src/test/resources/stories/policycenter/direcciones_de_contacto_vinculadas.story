@@ -147,7 +147,7 @@ Scenario: validar en la creacion de contacto secundario se puede seleccionar la 
 Given que voy a buscar la cuenta <numCuenta>
 And que me encuentro en los contactos de la cuenta
 And quiera crear un contacto secundario persona natural
-When despliegue la lista de contactos
+When vaya a desplegar la lista de contactos para asignar la direccion
 Then la lista de contactos debe ser la siguiente:
 | contactosAsociados                     |
 | RICARDO GIRALDO (Titular de la cuenta) |

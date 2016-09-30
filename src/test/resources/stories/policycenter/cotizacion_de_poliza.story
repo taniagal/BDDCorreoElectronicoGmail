@@ -33,16 +33,6 @@ Examples:
 |cotizacion|direccion|
 |22222225  |CRA 65 # 48-162, LOUISVILLE, Estados Unidos |
 
-Scenario: Riesgos consultables - Figuras - Bloqueo
-Given he realizado la cotizacion <cotizacion>
-When ingrese a la cotizacion
-And las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable
-Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensaje>; no se debe mostrar ningun valor de cotizacion al cliente
-
-Examples:
-|cotizacion|mensaje|
-|22270002  |El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
-
 Scenario: Riesgos consultables - Chasis - Bloqueo
 Given he realizado la cotizacion <cotizacion>
 When ingrese a la cotizacion
@@ -65,6 +55,16 @@ con dos opciones : Solicitar Aprobacion y cancelar
 Examples:
 |cotizacion|mensaje|
 |22270003  |El cliente JORGE PAISA ya tiene una cotización en curso para el producto seleccionado para la oficina SURA|
+
+Scenario: Riesgos consultables - Figuras - Bloqueo
+Given he realizado la cotizacion <cotizacion>
+When ingrese a la cotizacion
+And las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable
+Then no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensaje>; no se debe mostrar ningun valor de cotizacion al cliente
+
+Examples:
+|cotizacion|mensaje|
+|22270002  |El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal|
 
 Scenario: Poliza con intencion de financiacion
 Given he realizado la cotizacion <cotizacion>
