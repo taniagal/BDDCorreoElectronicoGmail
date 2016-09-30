@@ -235,8 +235,13 @@ public class InformacionDePolizaColectivaPage extends PageObject {
 
     public void clicEnSiguiente() {
         if (botonSiguiente.isPresent()) {
-            waitFor(botonSiguiente);
-            botonSiguiente.click();
+            try {
+                waitFor(botonSiguiente);
+                botonSiguiente.click();
+            } catch (Exception e) {
+                commons.waitUntil(2000);
+                botonSiguiente.click();
+            }
         }
     }
 
