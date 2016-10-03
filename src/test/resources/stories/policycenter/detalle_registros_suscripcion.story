@@ -44,8 +44,8 @@ When busque el de detalle de los registros de suscripcion
 Then debo ver el costo total <total> para las cotizaciones en estado cotizado
 
 Examples:
-| numCuenta  | total         |
-| C000902244 | $2.438.403,00 |
+| numCuenta  | total               |
+| C000902244 | $2.438.403,00 (COP) |
 
 Scenario: Consultar numero de cotizaciones del grupo
 Given que voy a buscar la cuenta <numCuenta>
