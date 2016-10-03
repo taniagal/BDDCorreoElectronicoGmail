@@ -28,7 +28,7 @@ Then se debe mostrar un mensaje <mensaje> indicando la restriccion
 
 Examples:
 |numeroPoliza |ciudadCirculacion|mensaje                                                                                   |
-|TEST_22222222|ACANDI           |Por política de la compañía no esta permitido vehículos que circulen en esta ubicación.|
+|TEST_22222222|ACANDI           |Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.|
 
 Scenario: Consultar bonificaciones
 Meta:

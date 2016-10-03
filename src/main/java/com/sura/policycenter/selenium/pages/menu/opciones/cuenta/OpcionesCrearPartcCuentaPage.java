@@ -31,6 +31,8 @@ public class OpcionesCrearPartcCuentaPage extends Commons {
     private WebElementFacade btnActualiza;
     @FindBy(xpath = ".//*[@id='UserSearchPopup:UserSearchPopupScreen:UserSearchResultsLV:0:_Select']")
     private WebElementFacade botonSeleccionar;
+    @FindBy(xpath = ".//td[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Roles']/div")
+    private WebElementFacade mnuOpcionesCuenta;
 
 
     public OpcionesCrearPartcCuentaPage(WebDriver driver) {
@@ -38,27 +40,28 @@ public class OpcionesCrearPartcCuentaPage extends Commons {
     }
 
     public void navegacionCreaParticipante() {
-        btnEditCuenta.waitUntilPresent().click();
-        btnAgregaCuenta.waitUntilPresent().click();
-        waitUntil(1000);
-        listRol.click();
-        act.sendKeys(Keys.TAB).build().perform();
-        act.sendKeys(Keys.ENTER).build().perform();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.sendKeys(Keys.ENTER).build().perform();
-        btnSelecUsuar.click();
-        lblNombreUsuario.sendKeys("su");
-        btnBuscarUsuario.click();
-        botonSeleccionar.waitUntilPresent().click();
-        lblPartArc.waitUntilPresent();
-        waitUntil(1000);
-        act.sendKeys(Keys.TAB).build().perform();
-        act.sendKeys(Keys.TAB).build().perform();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        act.sendKeys(Keys.ENTER).build().perform();
-        btnActualiza.click();
+            mnuOpcionesCuenta.waitUntilPresent().click();
+            btnEditCuenta.waitUntilPresent().click();
+            btnAgregaCuenta.waitUntilPresent().click();
+            waitUntil(1000);
+            listRol.click();
+            act.sendKeys(Keys.TAB).build().perform();
+            act.sendKeys(Keys.ENTER).build().perform();
+            act.sendKeys(Keys.ARROW_DOWN).build().perform();
+            act.sendKeys(Keys.ARROW_DOWN).build().perform();
+            act.sendKeys(Keys.ENTER).build().perform();
+            btnSelecUsuar.click();
+            lblNombreUsuario.sendKeys("su");
+            btnBuscarUsuario.click();
+            botonSeleccionar.waitUntilPresent().click();
+            lblPartArc.waitUntilPresent();
+            waitUntil(1000);
+            act.sendKeys(Keys.TAB).build().perform();
+            act.sendKeys(Keys.TAB).build().perform();
+            act.sendKeys(Keys.ARROW_DOWN).build().perform();
+            act.sendKeys(Keys.ARROW_DOWN).build().perform();
+            act.sendKeys(Keys.ENTER).build().perform();
+            btnActualiza.click();
     }
 
     public void verificarCamposParticipantes() {

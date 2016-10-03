@@ -32,17 +32,11 @@ public class CrearParticipantesCuentaSteps extends ScenarioSteps {
 
     @Step
     public void creaParticipante (){
-        inicioPage().irAOpcionesCrearPartcCuenta();
         opcionesCrearPartcCuentaPage.navegacionCreaParticipante();
     }
 
     @Step
     public void validaParticipante (){
         opcionesCrearPartcCuentaPage.verificarCamposParticipantes();
-    }
-
-    @Step
-    public void logout() {
-        buscarCuentasPage.logout();
     }
 }
