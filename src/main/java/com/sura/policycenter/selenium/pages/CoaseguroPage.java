@@ -7,12 +7,14 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.components.HtmlTable;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.LoggerFactory;
 
 public class CoaseguroPage extends Commons {
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
@@ -34,6 +36,7 @@ public class CoaseguroPage extends Commons {
     @FindBy(id = "Coinsurance_ExtPopup:_msgs")
     private WebElementFacade divMensaje;
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private static final String MSJVALIDARVALORES = "No estan correctos los elementos:";
 
     public CoaseguroPage(WebDriver diver) {
@@ -53,7 +56,7 @@ public class CoaseguroPage extends Commons {
                 right.append("radio_boton_cedido, ");
             }
         }catch (StaleElementReferenceException e){
-            e.printStackTrace();
+            LOGGER.info("Stale element in line 56 "+e);
         }
         if(!botonAgregar.isPresent()) {
             right.append("boton_agregar, ");
