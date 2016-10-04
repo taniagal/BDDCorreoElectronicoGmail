@@ -90,7 +90,7 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
         Map<String, String> coberturasAuto = coberturas.getRows().get(0);
         MatcherAssert.assertThat(labelDanosTerceros.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danosTerceros"))));
         MatcherAssert.assertThat(labelResponsabilidadCivil.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("responsabilidadCivil"))));
-
+        lstLimite.click();
 
         JOptionPane.showMessageDialog(null, "texto limite: " + lstLimite.getText()+" Limite de la historia"+coberturasAuto.get("limite"));
 
