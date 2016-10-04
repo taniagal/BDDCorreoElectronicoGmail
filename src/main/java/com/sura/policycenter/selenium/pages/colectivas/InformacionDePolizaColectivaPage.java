@@ -125,10 +125,10 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(InformacionDePolizaColectivaPage.class);
 
     private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV:";
-    private static final String MM_DD_YYYY = "MM/dd/yyyy";
+    private static final String DD_MM_YYYY = "dd/MM/yyyy";
 
     private final Commons commons = new Commons(getDriver());
-    private final DateFormat dateFormat = new SimpleDateFormat(MM_DD_YYYY);
+    private final DateFormat dateFormat = new SimpleDateFormat(DD_MM_YYYY);
     private static final Date fechaHoy = new Date();
     private static final String ROLLISTAS = "textbox";
 
@@ -192,7 +192,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void cambiarFechaInicioVigencia() {
         LocalDateTime nuevaFechaInicio = LocalDateTime.now().minusMonths(1);
         fechaInicioVigencia.clear();
-        fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
+        fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(DD_MM_YYYY));
     }
 
     public void ingresarDescuentoPoliza(String descuento) {
@@ -225,11 +225,11 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         if ("menos".equals(sesentaDias)) {
             nuevaFechaInicio = LocalDateTime.now().minusDays(dias);
             fechaInicioVigencia.clear();
-            fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
+            fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(DD_MM_YYYY));
         } else {
             nuevaFechaInicio = LocalDateTime.now().plusDays(dias);
             fechaInicioVigencia.clear();
-            fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(MM_DD_YYYY));
+            fechaInicioVigencia.typeAndTab(nuevaFechaInicio.toString(DD_MM_YYYY));
         }
     }
 
@@ -246,7 +246,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void validarFechaFinDeVigencia(int aniosFinVigencia, String tipoPlazo) {
-        String fechaFinVigencia = LocalDateTime.now().plusYears(aniosFinVigencia).toString(MM_DD_YYYY);
+        String fechaFinVigencia = LocalDateTime.now().plusYears(aniosFinVigencia).toString(DD_MM_YYYY);
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), containsText(fechaFinVigencia));
         MatcherAssert.assertThat(campoTipoPlazo.getValue(), Is.is(Matchers.equalTo(tipoPlazo)));
     }

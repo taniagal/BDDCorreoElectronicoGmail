@@ -37,7 +37,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys||Ga||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys||Ga||C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona natural por primer nombre y segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -45,7 +45,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|||Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|||Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo nombre y primer apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -53,7 +53,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, primer apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -61,7 +61,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|Pa|||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|Pa|||C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, primer apellido y segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -69,7 +69,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys||Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys||Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -77,7 +77,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|||To|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|||To|C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo nombre, primer apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -85,7 +85,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona natural por segundo nombre, primer apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -93,7 +93,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-||Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+||Paola|Gallego||C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona natural por segundo nombre, primer apellido y segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -101,7 +101,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-||Paola|Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+||Paola|Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona natural por segundo nombre, segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -109,7 +109,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-||Paola||Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+||Paola||Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo nombre, primer apellido y segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -117,7 +117,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|Paola|Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|Paola|Gallego|Torres|C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona natural por primer nombre y segundo nombre
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
@@ -125,7 +125,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |primerNombre|segundoNombre|primerApellido|segundoApellido|numeroCuenta|nombre|direccion
-|Yurledys|Paola|||C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|Yurledys|Paola|||C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 
 Scenario: Busqueda de cuenta persona natural por primer nombre y primer apellido sin datos existentes
@@ -179,7 +179,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |tipoDocumento|numeroDocumento|numeroCuenta|nombre|direccion
-|CEDULA DE CIUDADANIA|1234567890|C000888888|YURLEDYS PAOLA GALLEGO TORRES|CRA 65 # 48-162, Floor 0000, Developer Unit Habitation Cube #0000, LOUISVILLE, KY 40207, Estados Unidos
+|CEDULA DE CIUDADANIA|1234567890|C000888888|YURLEDYS PAOLA GALLEGO TORRES|<vacío>
 
 Scenario: Busqueda de cuenta persona juridica por tipo y numero de documento
 When ingrese la informacion de tipo de documento <tipoDocumento> y numero de documento <numeroDocumento> del titular de la cuenta
@@ -187,15 +187,15 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |tipoDocumento|numeroDocumento|numeroCuenta|nombre|direccion
-|NIT|9202086744|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
+|NIT|9202086744|C010478975|VARIEDADES YURLEDYS|<vacío>
 
 Scenario: Busqueda cuenta por persona juridica por razon social
 When ingrese la informacion de tipo de razon social <razonSocial> del titular de la cuenta
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-|razonSocial|numeroCuenta|nombre|direccion
-|Variedades Yurledys S.A|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
+|razonSocial|numeroCuenta|nombre|direccion|
+|Variedades Yurledys S.A|C010478975|VARIEDADES YURLEDYS|vacío|
 
 Scenario: Busqueda de cuenta persona juridica por nombre comercial
 When ingrese la informacion de nombre comercial <nombreComercial> del titular de la cuenta
@@ -203,7 +203,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |nombreComercial|numeroCuenta|nombre|direccion
-|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
+|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|<vacío>
 
 Scenario: Busqueda de cuenta persona juridica por nombre comercial y razon social
 When ingrese la informacion de nombre comercial <nombreComercial> del titular de la cuenta e ingrese razon social <razonSocial>
@@ -211,7 +211,7 @@ Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccio
 
 Examples:
 |nombreComercial|razonSocial|numeroCuenta|nombre|direccion
-|Variedades Yurledys|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|CRA 65 ST, Floor 0000, Developer Unit Habitation Cube #0000, SHEBOYGAN, WI 40207, Estados Unidos
+|Variedades Yurledys|Variedades Yurledys|C010478975|VARIEDADES YURLEDYS|<vacío>
 
 Scenario: Busqueda de cuenta persona juridica por razon social sin datos existentes
 Given que me encuentro en la busqueda de cuentas
