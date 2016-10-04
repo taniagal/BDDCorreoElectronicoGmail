@@ -102,13 +102,12 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void irABuscarCotizacion(String cotizacion) {
-        waitUntil(2000);
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuPoliza).waitUntilPresent();
         menuPoliza.click();
-        waitUntil(5000);
+        waitUntil(3000);
         menuPoliza.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(3000);
+        waitUntil(1000);
         buscarCotizacion.typeAndEnter(cotizacion);
         waitUntil(2000);
     }

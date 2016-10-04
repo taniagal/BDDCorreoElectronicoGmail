@@ -6,6 +6,7 @@ import com.sura.policycenter.model.Aseguradora;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.pages.components.HtmlTable;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
@@ -54,8 +55,8 @@ public class CoaseguroPage extends Commons {
             if(radioBotonAceptado.isSelected()) {
                 right.append("radio_boton_cedido, ");
             }
-        }catch (StaleElementReferenceException ex){
-            LOGGER.info("StaleElementReference.CoaseguroPage.line55"+ex);
+        }catch (StaleElementReferenceException e){
+            LOGGER.info("Stale element in line 56 "+e);
         }
         if(!botonAgregar.isPresent()) {
             right.append("boton_agregar, ");

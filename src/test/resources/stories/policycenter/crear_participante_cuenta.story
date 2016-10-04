@@ -3,7 +3,7 @@ Meta:
 Narrative:
 Quiero ser capaz de crear un participante de una cuenta y obtener toda su informacion
 
-Scenario: scenario description
+Scenario: Crear un participante para una cuenta
 GivenStories: stories/policycenter/login_policy.story
 Given que existe una cuenta <numCuenta>
 When quiera crear participantes

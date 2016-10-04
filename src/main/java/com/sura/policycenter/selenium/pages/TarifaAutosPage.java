@@ -2,12 +2,15 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -104,8 +107,9 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade navItemContastosDeLaCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver']")
     private WebElementFacade navItemAseguradoR;
-    private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
 
+    private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     public TarifaAutosPage(WebDriver driver) {
         super(driver);
@@ -134,6 +138,7 @@ public class TarifaAutosPage extends Commons {
 
 
     public void relacionarAsegurado() {
+        botonRelacionarAsegurado.waitUntilPresent();
         botonRelacionarAsegurado.click();
         navItemAseguradoR.click();
         itemdocNum.waitUntilPresent();
@@ -216,6 +221,12 @@ public class TarifaAutosPage extends Commons {
 
 
     public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
+        for (Map<String, String> valor : valores.getRows()) {
+            WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
+            WebElementFacade cobertura = findBy(TABLAXPATH + valor.get("fila") + "]/td[1]");
+            LOGGER.info(valor.get("valor")+" | "+tablaDescripcion.getText());
+        }
+
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
             WebElementFacade cobertura = findBy(TABLAXPATH + valor.get("fila") + "]/td[1]");

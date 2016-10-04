@@ -7,10 +7,12 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.slf4j.LoggerFactory;
 
 
 public class ModificadoresDeTarifaPage extends Commons{
@@ -26,6 +28,8 @@ public class ModificadoresDeTarifaPage extends Commons{
     public WebElementFacade campoTxtSuavizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:1:TypeKeyModifier-inputEl']")
     public WebElementFacade comboBoxDescuentoDipositivo;
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     private int bonoComercial = 0;
     private int bonoTecnico = 0;
@@ -62,6 +66,12 @@ public class ModificadoresDeTarifaPage extends Commons{
 
     public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
         String tablaxpth = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
+        for (Map<String, String> valor : valores.getRows()) {
+            WebElementFacade tablaDescripcion = findBy(tablaxpth + valor.get("fila") + "]/td[3]");
+            WebElementFacade cobertura = findBy(tablaxpth + valor.get("fila") + "]/td[1]");
+            LOGGER.info(valor.get("valor")+" | "+tablaDescripcion.getText());
+        }
+
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(tablaxpth + valor.get("fila") + "]/td[3]");
             WebElementFacade cobertura = findBy(tablaxpth + valor.get("fila") + "]/td[1]");
