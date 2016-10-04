@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -68,6 +69,10 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
     private WebElementFacade checkBoxHurto;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAccidentesDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxAccidentes;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
+    private WebElementFacade lblMensaje;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
+    private WebElementFacade lstLimite;
 
     public ModificacionRenovacionCoberturasPAPage (WebDriver driver){
         super(driver);
@@ -75,15 +80,28 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
     public void irAPantallaCoberturas() {
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilVisible();
+        itemCoberturasAuto.click();
     }
+
 
     public void validarCoberturasPoliza(ExamplesTable coberturas) {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(labelCoberturasAutoPersonal).shouldBeVisible();
         Map<String, String> coberturasAuto = coberturas.getRows().get(0);
         MatcherAssert.assertThat(labelDanosTerceros.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danosTerceros"))));
         MatcherAssert.assertThat(labelResponsabilidadCivil.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("responsabilidadCivil"))));
-        MatcherAssert.assertThat(coberturaResponsabilidadCivil.getText(), Matchers.containsString(coberturasAuto.get("limite")));
+
+
+        JOptionPane.showMessageDialog(null, "texto limite: " + lstLimite.getText()+" Limite de la historia"+coberturasAuto.get("limite"));
+
+
+
+
+
+        MatcherAssert.assertThat(lstLimite.getText(), Matchers.containsString(coberturasAuto.get("limite")));
         MatcherAssert.assertThat(coberturaResponsabilidadCivil.getText(), Matchers.containsString(coberturasAuto.get("deducible")));
+
+
         MatcherAssert.assertThat(labelDanosCarro.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danosCarro"))));
         MatcherAssert.assertThat(labelDanos.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danos"))));
         MatcherAssert.assertThat(coberturaDanos.getText(), Matchers.containsString(coberturasAuto.get("perdidaTotalDanos")));
