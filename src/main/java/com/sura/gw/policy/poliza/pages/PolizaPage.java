@@ -24,7 +24,7 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public enum Boton {
-        EDITAR_TRANSACCION_DE_POLIZA("//a[contains(@id,'SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy')]");
+        EDITAR_TRANSACCION_DE_POLIZA(".//a[contains(.,'Editar transacción de póliza')]");
         private String botonXP;
 
         Boton(String boton) {
@@ -105,6 +105,11 @@ public class PolizaPage extends GuidewirePage {
             WebElementFacade opcion = findBy(xpath).waitUntilVisible();
             shouldBeVisible(opcion);
             opcion.waitUntilClickable().click();
+            String xpathimgMensajesWarnig = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']//div//img[@class='warning_icon']";
+
+            if (isElementVisible(By.xpath(xpathimgMensajesWarnig))){
+                opcion.waitUntilClickable().click();
+            }
 
             waitForTextToAppear(tituloPaginaEsperada);
             shouldContainText(tituloPaginaEsperada);
