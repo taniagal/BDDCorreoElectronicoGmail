@@ -22,8 +22,8 @@ And seleccione el canal <canal>
 And seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
 And seleccione el producto <producto> de poliza colectiva para expedirla
 Then debo ver los siguiente campos en la pantalla con su respectiva informacion:
-| titulo                             | tomadorInfo | tipoDocumento        | numeroDocumento | nombre                        | telefono | tipoDireccion | descripcionDir                             | direccionDePoliza                           | detallePoliza         | organizacion | canal             | tipoPoliza       | tipoPlazo | fechaInicioVigencia | fechaFin | fechaExp   | polizaFinanciadaSi | polizaFinanciadaNo | oficina | codAgente | descuentoPoliza | agregarCoaseguro  |
-| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 408-2211 | Vivienda      | Created by the Address Builder with code 0 | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Detalles de la póliza | Sura         | Canal Tradicional | Commercial Fleet | Anual     | 07/26/2016          |          | 07/26/2016 | Sí                 | No                 | SURA    | 4999      |                 | Agregar coaseguro |
+| titulo                             | tomadorInfo | tipoDocumento        | numeroDocumento | nombre                        | telefono | tipoDireccion | descripcionDir                             | direccionDePoliza                           | detallePoliza         | organizacion | canal             | tipoPoliza       | tipoPlazo | fechaInicioVigencia | fechaFin | fechaExp   | polizaFinanciadaSi | polizaFinanciadaNo | oficina   | codAgente | descuentoPoliza | agregarCoaseguro  |
+| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 408-2211 | DIRECCION DE RESIDENCIA      | Created by the Address Builder with code 0 | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Detalles de la póliza | Sura         | Canal Tradicional | Commercial Fleet | Anual     | 07/26/2016          |          | 07/26/2016 | Sí                 | No                 | SURA      | 4999      |                 | Agregar coaseguro |
 And debo ver la fecha de fin de vigencia <cantidadAniosVigencia> <tipoPlazo> calculado de acuerdo al producto seleccionado
 
 Examples:
@@ -53,8 +53,8 @@ Then me debe mostrar el mensaje <mensaje> indicando la inconsistencia en el valo
 
 Examples:
 | porcentaje | mensaje                                                         |
-| 50.1       | El descuento de la póliza debe estar en un rango de 0% a 50%    |
-| 5.111      | El descuento de la póliza puede tener máximo 2 cifras decimales |
+| 50,1       | El descuento de la póliza debe estar en un rango de 0% a 50%    |
+| 5,111      | El descuento de la póliza puede tener máximo 2 cifras decimales |
 
 Scenario: Validar cuando se cambia fecha inicio de vigencia se recalcula la fecha de fin vigencia correctamente
 Given que voy a buscar la cuenta <numCuenta>
@@ -166,7 +166,7 @@ And seleccione el producto <producto> de poliza colectiva para expedirla
 When seleccione segundo tomador para la poliza colectiva
 Then debo ver los siguientes datos del segundo tomador en la pantalla:
 | tipoDocumentoSegundo | numeroDocumentoSegundo | nombreSegundo  | telefonoSegundo | direccionSegundo                               | tipoDireccionSegundo | descripcionDireccionSegundo                |
-| CEDULA DE CIUDADANIA | 1264567899             | GLORIA GALLEGO | 408-2211        | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | Vivienda             | Created by the Address Builder with code 0 |
+| CEDULA DE CIUDADANIA | 1264567899             | GLORIA GALLEGO | 408-2211        | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | DIRECCION DE RESIDENCIA             | Created by the Address Builder with code 0 |
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto         |

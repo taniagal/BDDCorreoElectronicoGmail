@@ -87,6 +87,7 @@ public class CoaseguroPage extends Commons {
                 act.click().build().perform();
                 act.sendKeys(aseguradora.getNombre()).build().perform();
                 act.sendKeys(Keys.TAB).build().perform();
+                waitUntil(500);
                 act.sendKeys(aseguradora.getParticipacion()).build().perform();
             }
             i++;
@@ -94,8 +95,7 @@ public class CoaseguroPage extends Commons {
         act.sendKeys(Keys.TAB).build().perform();
     }
     public void verificarPorcentajeParticipacion(){
-        HtmlTable htmlTable = new HtmlTable(findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table"));
-        MatcherAssert.assertThat("El total no es del 100%", htmlTable.getHeadings().toString().contains("100"));
+        MatcherAssert.assertThat("El total no es del 100%", findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tfoot/tr/td[3]").getText().contains("100"));
     }
 
     public void guardarcosaeguro(){
