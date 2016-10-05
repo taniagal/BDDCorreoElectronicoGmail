@@ -19,7 +19,7 @@ Given estoy cotizando una poliza:
 When ingrese los datos del asegurado
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
-|TYU143|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+|TYU140|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas:
 |limite|deducible|abogado |
 |32    |0        |Opción 1|
@@ -27,7 +27,7 @@ Then el resultado de la cotizacion debe ser <valor>
 
 Examples:
 |valor  |
-|282,623|
+|210.912|
 
 
 Scenario:  Realizar una cotizacion con todas las coberturas para autosGiven estoy cotizando una poliza
@@ -43,19 +43,19 @@ And seleccione todas las coberturas:
 |32    |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus|6 |Plus|10 |0  |1.50|40|16|20|Opción 1|Opción 1|
 Then el resultado de la cotizacion en cada cobertura debe ser:
 |fila|valor     |
-|1   |282,623   |
-|4   |4,078,689 |
-|9   |927,774   |
-|14  |85,279    |
-|17  |11,725    |
-|19  |17,285    |
-|21  |38,195    |
-|23  |17,285    |
-|25  |17,285    |
-|27  |17,285    |
-|29  |17,285    |
-|31  |17,285    |
-|33  |17,285    |
+|1   |210.912   |
+|4   |3.043.799 |
+|9   |692.369   |
+|14  |63.641    |
+|17  |8.750     |
+|19  |12.900    |
+|21  |28.503    |
+|23  |12.900    |
+|25  |12.900    |
+|27  |12.900    |
+|29  |12.900    |
+|31  |12.900    |
+|33  |12.900    |
 
 Examples:
 ||
