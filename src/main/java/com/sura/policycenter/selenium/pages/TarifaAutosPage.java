@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class TarifaAutosPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnInnerEl']")
     private WebElementFacade botonAgregarAsegurado;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:RatingOverrideButtonDV:RatingOverrideButtonDV:ViewWorksheet']")
     private WebElementFacade botonMostrarHojaDeCalculo;
@@ -121,6 +121,7 @@ public class TarifaAutosPage extends Commons {
         comboBoxTipoPlazo.waitUntilPresent().clear();
         selectItem(comboBoxTipoPlazo, "6 meses");
         waitForComboValue(comboBoxTipoPlazo, "6 meses");
+        waitUntil(1000);
     }
 
 
@@ -223,7 +224,6 @@ public class TarifaAutosPage extends Commons {
     public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
-            WebElementFacade cobertura = findBy(TABLAXPATH + valor.get("fila") + "]/td[1]");
             LOGGER.info(valor.get("valor")+" | "+tablaDescripcion.getText());
         }
 
