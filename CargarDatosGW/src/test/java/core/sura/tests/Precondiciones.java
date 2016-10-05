@@ -57,8 +57,8 @@ public class Precondiciones extends MetodosComunes{
     public void cargarDatos() throws Exception {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
         driver.findElement(By.xpath(".//input[@id='QuickJump-inputEl']")).sendKeys(Keys.ALT,Keys.SHIFT, "t");
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab']"))).isDisplayed();
-        driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab']")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']"))).isDisplayed();
+        driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']")).click();
         driver.findElement(By.xpath(".//*[@id='UnsupportedTools:MenuLinks:UnsupportedTools_PCSampleData']/div")).click();
         driver.findElement(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:SampleDataSetsLV:0:LoadSampleData']")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='PCSampleData:PCSampleDataScreen:0']"))).isDisplayed();
