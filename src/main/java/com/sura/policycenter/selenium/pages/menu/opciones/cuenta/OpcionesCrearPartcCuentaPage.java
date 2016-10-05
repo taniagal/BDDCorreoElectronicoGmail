@@ -66,6 +66,6 @@ public class OpcionesCrearPartcCuentaPage extends Commons {
 
     public void verificarCamposParticipantes() {
         waitUntil(1000);
-        MatcherAssert.assertThat("Error al agregar el rol del participante de la cuenta", rol.containsText("Agente"));
+        MatcherAssert.assertThat("Error al agregar el rol del participante de la cuenta", rol.containsText("Asegurador"));
     }
 }

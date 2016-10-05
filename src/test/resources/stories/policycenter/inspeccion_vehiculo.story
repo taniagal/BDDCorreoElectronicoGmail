@@ -28,7 +28,7 @@ And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fa
 
 Examples:
 |numCuenta  |organizacion|canal      |placa |valorAsegurado|
-|C1060447895|Bancolombia |Televentas |HZR123|165900000.00  |
+|C1060447895|Bancolombia |Televentas |HZR123|165900000,00  |
 
 Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
 Given que voy a buscar la cuenta <numCuenta>
@@ -46,7 +46,7 @@ And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fa
 
 Examples:
 |numCuenta  |organizacion|canal             |placa |valorAsegurado|
-|C1060447895|Sura        |Canal Tradicional |MJK289|21800000.00   |
+|C1060447895|Sura        |Canal Tradicional |MJK289|21800000,00   |
 
 Scenario: Consultar inspeccion valida en SIA
 Given se ha realizado la cotizacion <cotizacion>

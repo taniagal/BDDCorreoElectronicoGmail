@@ -68,7 +68,6 @@ public class ModificadoresDeTarifaPage extends Commons{
         String tablaxpth = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(tablaxpth + valor.get("fila") + "]/td[3]");
-            WebElementFacade cobertura = findBy(tablaxpth + valor.get("fila") + "]/td[1]");
             LOGGER.info(valor.get("valor")+" | "+tablaDescripcion.getText());
         }
 
