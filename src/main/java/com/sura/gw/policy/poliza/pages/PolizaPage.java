@@ -3,6 +3,7 @@ package com.sura.gw.policy.poliza.pages;
 import com.sura.gw.inicio.guidewire.GuidewirePage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
 
 import java.util.concurrent.TimeUnit;
 
@@ -65,8 +66,6 @@ public class PolizaPage extends GuidewirePage {
     }
 
 
-
-
     public void editarTransaccion() {
         LOGGER.info("PolizaPage.editarTransaccion");
         WebElementFacade btnEditarTransaccion = null;
@@ -107,7 +106,7 @@ public class PolizaPage extends GuidewirePage {
             opcion.waitUntilClickable().click();
             String xpathimgMensajesWarnig = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']//div//img[@class='warning_icon']";
 
-            if (isElementVisible(By.xpath(xpathimgMensajesWarnig))){
+            if (isElementVisible(By.xpath(xpathimgMensajesWarnig))) {
                 opcion.waitUntilClickable().click();
             }
 
@@ -172,5 +171,20 @@ public class PolizaPage extends GuidewirePage {
         return esEditableElemento;
     }
 
+    public void ingresarMotivosCancelacion(String fuente, String motivo, String descripcion) {
+        waitForTextToAppear("Iniciar cancelación de póliza");
+        shouldContainText("Iniciar cancelación de póliza");
+
+        String xpathInputFuente = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Source-inputEl']";
+        String xpathInputMotivo = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Reason-inputEl']";
+        String xpathTextareaDescripcion = "//textarea[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:ReasonDescription-inputEl']";
+
+        findBy(xpathInputFuente).type(fuente).and().sendKeys(Keys.ENTER);
+        waitFor(2).seconds();
+        findBy(xpathInputMotivo).type(motivo).and().sendKeys(Keys.ENTER);
+        waitFor(2).seconds();
+        findBy(xpathTextareaDescripcion).type(descripcion).and().sendKeys(Keys.ENTER);
+
+    }
 
 }
