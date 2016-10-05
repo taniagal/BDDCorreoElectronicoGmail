@@ -1,6 +1,8 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -98,10 +100,28 @@ public class  DetallesContactoPage extends Commons {
     private WebElementFacade campoTxtCorreoElectronicoPrimarioEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress2-inputEl']")
     private WebElementFacade campoTxtCorreoElectronicoSecundarioEmpresa;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update']")
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Update-btnInnerEl']")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV_tb:Add']")
     public WebElementFacade botonAgregar;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-labelEl']")
+    private WebElementFacade labelPais;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-labelEl']")
+    private WebElementFacade labelDepartamento;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-labelEl']")
+    private WebElementFacade labelCiudad;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-labelEl']")
+    private WebElementFacade labelDireccion;
+    @FindBy(xpath = " .//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressType-labelEl']")
+    private WebElementFacade labelTipoDireccion;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-labelEl']")
+    private WebElementFacade labelDescripcionDireccion;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
+    private WebElementFacade comboBoxPais;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    private WebElementFacade comboBoxDepartamento;
+    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
+    private WebElementFacade campoTxtDireccion;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade campoTxtTipoDocumento;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
@@ -422,6 +442,53 @@ public class  DetallesContactoPage extends Commons {
         MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
     }
 
+    /**
+     * AGREGAR DIRECCION A CONTACTO
+     */
+    public void validarDatosPantalla() {
+        waitUntil(1000);
+        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
+        if(!labelPais.isPresent())
+            notPresent.append(" pais,");
+        if(!labelDepartamento.isPresent())
+            notPresent.append(" deprtamento,");
+        if(!labelCiudad.isPresent())
+            notPresent.append(" ciudad,");
+        if(!labelDireccion.isPresent())
+            notPresent.append(" direccion,");
+        if(!labelTipoDireccion.isPresent())
+            notPresent.append(" tipo dirección,");
+        if(!labelDescripcionDireccion.isPresent())
+            notPresent.append(" descripción direccion,");
+        String res = notPresent.toString();
+        if(MSJVALIDARELEMENTOS.equals(res)){
+            res = notPresent.toString().substring(0,notPresent.toString().length()-1);
+        }
+        MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
+    }
+
+    public void validarCampos() {
+        comboBoxPais.waitUntilPresent();
+        StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
+        if(!"Colombia".equals(comboBoxPais.getValue().toString()))
+            right.append(" pais,");
+        if(!"<ninguno>".equals(comboBoxDepartamento.getValue().toString()))
+            right.append(" departamento,");
+        if(!"Esta Direccion podria estandarizarse automáticamente".equals(campoTxtDireccion.getAttribute("data-qtip")))
+            right.append("drireccion data-tip,");
+        if(!"200".equals(campoTxtDireccion.getAttribute("maxlength")))
+            right.append("direccion maxlength,");
+        String res = right.toString();
+        if(MSJVALIDARVALORES.equals(res)){
+            res = right.toString().substring(0,right.toString().length()-1);
+        }
+        MatcherAssert.assertThat(res,"No estan correctos los valores".equals(res));
+    }
+
+    public void validarDireccion(){
+        List<WebElementFacade> contactos = getLista(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
+        MatcherAssert.assertThat("Error en la direccion agregada",contactos.get(1).getText().contains("CL 60 B # 10 - 157") || contactos.get(1).getText().contains("CALLE 60B #10-157"));
+    }
 
     public void validarMensaje(String mensaje) {
         verificarMensaje(divMensaje,mensaje);

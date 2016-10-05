@@ -14,8 +14,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-
-
 public class ModificacionInformacionPolizaPAPage extends Commons{
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionInformacionPolizaPAPage.class);
@@ -161,7 +159,8 @@ public class ModificacionInformacionPolizaPAPage extends Commons{
         MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(datosPoliza.get("numeroDocumento"))));
         MatcherAssert.assertThat(campoNombre.getText(), Is.is(Matchers.equalTo(datosPoliza.get("nombre"))));
         MatcherAssert.assertThat(campoTelefono.getText(), Is.is(Matchers.equalTo(datosPoliza.get("telefono"))));
-        MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(datosPoliza.get("direccion"))));
+        MatcherAssert.assertThat("Error en la direccion esperada Expected: "+datosPoliza.get("direccion")+" But was: "+campoDireccion.getText(),
+                campoDireccion.getText().contains(datosPoliza.get("direccion")));
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(datosPoliza.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosPoliza.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoTipoPlazo.getText(), Is.is(Matchers.equalTo(datosPoliza.get("tipoPlazo"))));
@@ -173,7 +172,7 @@ public class ModificacionInformacionPolizaPAPage extends Commons{
     public void adicionarSegundoTomador(String tipoDocumento, String numeroDocumento) {
         waitUntil(5000);
         waitFor(labelTomadorSecundario).shouldBePresent();
-        WebElementFacade botonTomadorSecundario = findBy(".//tr[12]/td/table/tbody/tr/td[2]/table/tbody/tr/td[3]/a/img");
+        WebElementFacade botonTomadorSecundario = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']");
         waitFor(botonTomadorSecundario).click();
         WebElementFacade itemPersonaDirectorio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-textEl']");
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();

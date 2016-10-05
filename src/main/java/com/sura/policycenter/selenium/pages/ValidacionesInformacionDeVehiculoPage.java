@@ -89,7 +89,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        waitFor(campoTxtPlaca).shouldBePresent();
+        waitUntil(1000);
         selectItem(comboBoxPlan, vehiculo.get("plan"));
         ingresarDato(campoTxtPlaca,vehiculo.get("placa"));
         waitUntil(1000);

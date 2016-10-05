@@ -73,7 +73,7 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends Commons{
     }
 
     public void validarMensajePEP(String mensaje) {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBeVisible();
+        withTimeoutOf(40,TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBeVisible();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
     }
 

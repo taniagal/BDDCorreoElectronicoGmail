@@ -53,7 +53,7 @@ public class EdificiosyUbicacionesWidget extends Commons {
     }
 
     public void agregarArticuloAPrimerUbicacion() {
-        waitForTextToAppear("Edificios y ubicaciones", 16000);
+        waitForTextToAppear("Edificios y ubicaciones");
         if (tabla == null) {
             obtenerTabla();
         }

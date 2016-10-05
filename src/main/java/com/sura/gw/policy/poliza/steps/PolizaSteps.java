@@ -11,10 +11,9 @@ import net.thucydides.core.annotations.Steps;
 import java.util.List;
 
 
-
 public class PolizaSteps extends GuidewireSteps {
 
-    private static PolizaPage informacionPolizaPage;
+    private static PolizaPage polizaPage;
     private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
     private static AccionesWidget accionesWidget;
     @Steps private static BotonAccionesSteps botonAccionesSteps;
@@ -22,16 +21,16 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public void seleccionar_opcion_edificios_y_ubicaciones() {
-        informacionPolizaPage.seleccionarOpcionEdificiosyUbicaciones();
+        polizaPage.seleccionarOpcionEdificiosyUbicaciones();
     }
 
     public Boolean esperoVerNumeroDeSubscripcionEnEnvio(String numeroSubscripcion) {
-        return informacionPolizaPage.obtenerEnvio().contains("Envío ".concat(numeroSubscripcion));
+        return polizaPage.obtenerEnvio().contains("Envío ".concat(numeroSubscripcion));
     }
 
     @Step
     public void seleccionar_boton_llamado_editar_transaccion_de_poliza() {
-        informacionPolizaPage.editarTransaccion();
+        polizaPage.editarTransaccion();
     }
 
     @Step
@@ -52,16 +51,50 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     public Boolean elementoEsEditable(String elemento) {
-        return informacionPolizaPage.esEditableElemento(elemento);
+        return polizaPage.esEditableElemento(elemento);
     }
 
     @Step
     public void seleccionar_opcion_informacion_de_poliza() {
-        informacionPolizaPage.seleccionarOpcionInformacionDeLaPoliza();
+        polizaPage.seleccionarOpcionInformacionDeLaPoliza();
     }
 
     public void seleccionarBotonSiguienteParaIniciarCambioEnPoliza() {
-        informacionPolizaPage.seleccionarBotonSiguienteEnInicioDeCambioDePoliza();
+        polizaPage.seleccionarBotonSiguienteEnInicioDeCambioDePoliza();
     }
 
+    @Step
+    public void ingresar_motivos_cancelacion(String fuente, String motivo, String descripcion) {
+        polizaPage.ingresarMotivosCancelacion(fuente, motivo, descripcion);
+    }
+
+    @Step
+    public void iniciar_cancelacion_de_poliza() {
+        String xpathBttonCancelacion = "//a[contains(.,'Iniciar cancelación')]";
+        getDriver().findElement(By.xpath(xpathBttonCancelacion)).click();
+    }
+    @Step
+    public void seleccionar_opcion_compromiso() {
+        waitFor(2).seconds();
+        String xpathBttonCompromiso = "//a[contains(.,'Opciones de compromiso')]";
+        getDriver().findElement(By.xpath(xpathBttonCompromiso)).click();
+    }
+
+    @Step
+    public void seleccionar_opcion_cancelar_ahora() {
+        waitFor(1).second();
+        String xpathBttonCancelarAhora = "//a[contains(.,'Cancelar ahora')]";
+        getDriver().findElement(By.xpath(xpathBttonCancelarAhora)).click();
+    }
+    @Step
+    public void confirmar_cancelacion(){
+        waitFor(5).seconds();
+        String xpathBttonConfirmarCancelacion = ".//a[contains(@class, 'x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon') and contains(., 'Aceptar')]";
+        getDriver().findElement(By.xpath(xpathBttonConfirmarCancelacion)).click();
+    }
+
+    public String obtenerTituloPagina(){
+       return getDriver().findElement(By.xpath("//span[@id='JobComplete:JobCompleteScreen:ttlBar']")).getText();
+
+    }
 }

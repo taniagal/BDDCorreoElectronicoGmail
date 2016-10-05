@@ -34,7 +34,6 @@ public class CrearParticipanteCuentaDefinitions {
     @Then("debo poder visualizar el participante asociado en el listado de\r\nparticipante de la cuenta")
     public void thenDeboPoderVisualizarElParticipanteAsociadoEnElListadoDeParticipanteDeLaCuenta() {
         crearParticipantesCuentaSteps.validaParticipante();
-        crearParticipantesCuentaSteps.logout();
     }
 
 }

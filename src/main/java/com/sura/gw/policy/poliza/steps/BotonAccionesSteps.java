@@ -20,4 +20,11 @@ public class BotonAccionesSteps extends ScenarioSteps {
         getPages().getDriver().findElement(By.xpath(xpathLinkInstruccionesPreviasARenovacion)).click();
     }
 
+    @Step
+    public void seleccionar_cancelar_poliza() {
+        waitFor(1).seconds();
+        String xpathLinkCancelarPoliza = "//a[contains(.,'Cancelar póliza')]";
+        getPages().getDriver().findElement(By.xpath(xpathLinkCancelarPoliza)).click();
+    }
+
 }

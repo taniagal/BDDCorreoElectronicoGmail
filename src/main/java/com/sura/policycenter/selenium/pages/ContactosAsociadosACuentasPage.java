@@ -212,7 +212,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
     }
 
     public void ElimnarContactoAsociado(String nombreContacto) {
-
+        waitUntil(1000);
         List<WebElementFacade> checkBoxes = withTimeoutOf(1, TimeUnit.SECONDS)
                 .findAll("//img[contains(@class,'x-grid-checkcolumn')]");
         int cont = 0;

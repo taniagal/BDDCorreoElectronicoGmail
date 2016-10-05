@@ -44,7 +44,7 @@ public class EdificiosUbicaciones {
 
         LOGGER.info("EdificiosUbicaciones.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
 
-        if (SerenityWebdriverManager.inThisTestThread().isDriverInstantiated()) {
+        if (SerenityWebdriverManager.inThisTestThread().hasAnInstantiatedDriver()) {
             SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
         }
 

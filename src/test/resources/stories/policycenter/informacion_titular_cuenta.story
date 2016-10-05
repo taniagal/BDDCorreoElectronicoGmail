@@ -80,7 +80,7 @@ Then los campos fecha de fallecimiento <fechaFallecimiento> y causa de fallecimi
 
 Examples:
 | tipoDoc              | nombre  | apellido  | fechaFallecimiento     | causaFallecimiento |
-| CEDULA DE CIUDADANIA | ALFREDO | ANTIOQUIA | Fecha de fallecimiento | ACCIDENTE          |
+| CEDULA DE CIUDADANIA | ALFREDO | Antioquia | Fecha de fallecimiento | ACCIDENTE          |
 
 
 Scenario: Mostrar campo actividad economica
@@ -90,7 +90,7 @@ Then si el dato actividad economica esta vacio, este campo se debe ocultar, de l
 
 Examples:
 | tipoDoc              | nombre  | apellido  | actividadEconomica  |
-| CEDULA DE CIUDADANIA | ALFREDO | ANTIOQUIA | Actividad económica |
+| CEDULA DE CIUDADANIA | ALFREDO | Antioquia | Actividad económica |
 
 Scenario: Informacion basica
 Meta: @manual
