@@ -28,3 +28,4 @@ BDDCore.iml
 .sonar/report-task.txt
 sonar-project.properties
 phantomjsdriver.log
+CargarDatosGW/src/main/resources/gradle.properties
