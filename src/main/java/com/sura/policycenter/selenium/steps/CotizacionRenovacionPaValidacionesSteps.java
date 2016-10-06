@@ -15,6 +15,11 @@ public class CotizacionRenovacionPaValidacionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void ir_A_Revision_De_Poliza_Sin_Renovaciones() {
+        cotizacionRenovacionPAValidacionesPage.irAPantallairARevisionDePolizaSinValidacionFecha();
+    }
+
+    @Step
     public void seleccionar_Opcion_Cotizar() {
         cotizacionRenovacionPAValidacionesPage.cotizarRenovacion();
     }

@@ -11,11 +11,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class ModificacionRenovacionCoberturasPAPage extends Commons{
+public class ModificacionRenovacionCoberturasPAPage extends Commons {
 
     private final Actions act = new Actions(getDriver());
 
@@ -73,48 +72,44 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
     private WebElementFacade lblMensaje;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade lstLimite;
+    @FindBy(xpath = ".//li[contains(.,'32.000.000')]")
+    private WebElementFacade vlrLimite;
 
-    public ModificacionRenovacionCoberturasPAPage (WebDriver driver){
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:1:CovTermInputSet:OptionTermInput-inputEl']")
+    private WebElementFacade lstDeducible;
+    @FindBy(xpath = "//li[contains(.,'0')]")
+    private WebElementFacade vlrDeducible;
+
+
+    public ModificacionRenovacionCoberturasPAPage(WebDriver driver) {
         super(driver);
     }
 
-    public void irAPantallaCoberturas() {
+
+    public void irAPantallaCoberturasSinValidacionFecha() {
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilVisible();
         itemCoberturasAuto.click();
     }
 
+    public void irAPantallaCoberturas() {
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
+    }
+
 
     public void validarCoberturasPoliza(ExamplesTable coberturas) {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(labelCoberturasAutoPersonal).shouldBeVisible();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelCoberturasAutoPersonal).shouldBeVisible();
         Map<String, String> coberturasAuto = coberturas.getRows().get(0);
         MatcherAssert.assertThat(labelDanosTerceros.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danosTerceros"))));
         MatcherAssert.assertThat(labelResponsabilidadCivil.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("responsabilidadCivil"))));
-        lstLimite.click();
-
-        JOptionPane.showMessageDialog(null, "texto limite: " + lstLimite.getText()+" Limite de la historia"+coberturasAuto.get("limite"));
-
-
-
-
-
-        MatcherAssert.assertThat(lstLimite.getText(), Matchers.containsString(coberturasAuto.get("limite")));
-        MatcherAssert.assertThat(coberturaResponsabilidadCivil.getText(), Matchers.containsString(coberturasAuto.get("deducible")));
-
-
         MatcherAssert.assertThat(labelDanosCarro.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danosCarro"))));
         MatcherAssert.assertThat(labelDanos.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danos"))));
-        MatcherAssert.assertThat(coberturaDanos.getText(), Matchers.containsString(coberturasAuto.get("perdidaTotalDanos")));
-        MatcherAssert.assertThat(coberturaDanos.getText(), Matchers.containsString(coberturasAuto.get("perdidaParcialDanos")));
-        MatcherAssert.assertThat(coberturaDanos.getText(), Matchers.containsString(coberturasAuto.get("gastosTransporteD")));
         MatcherAssert.assertThat(labelHurtoCarro.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("hurtoCarro"))));
         MatcherAssert.assertThat(labelHurto.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("hurto"))));
-        MatcherAssert.assertThat(coberturaHurto.getText(), Matchers.containsString(coberturasAuto.get("perdidaTotalHurto")));
-        MatcherAssert.assertThat(coberturaHurto.getText(), Matchers.containsString(coberturasAuto.get("gastosTransporteH")));
     }
 
     public void editarTransaccionPoliza() {
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
         waitForTextToAppear("Si se edita esta transacción de la póliza, se invalida la cotización actual");
         act.sendKeys(Keys.ENTER).build().perform();
         waitUntil(1500);
@@ -122,13 +117,13 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
     public void retirarCoberturaObligatoria(ExamplesTable cobertura) {
         Map<String, String> coberturasObligatoria = cobertura.getRows().get(0);
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(labelResponsabilidadCivil).shouldBeVisible();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelResponsabilidadCivil).shouldBeVisible();
         MatcherAssert.assertThat(labelResponsabilidadCivil.getText(), Matchers.is(Matchers.equalTo(coberturasObligatoria.get("cobertura"))));
     }
 
     public void validarCoberturasObligatorias() {
         String xpathFieldsetRCSinCheckbox = ".//fieldset[(child::legend[contains(.,'Responsabilidad Civil')]) and not(descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaRC = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetRCSinCheckbox));
+        WebElementFacade grupoCoberturaRC = withTimeoutOf(1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetRCSinCheckbox));
         MatcherAssert.assertThat(grupoCoberturaRC, Matchers.notNullValue());
     }
 
@@ -149,14 +144,14 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons{
 
     public void retirarCoberturasOpcionales() {
         String xpathFieldsetHurto = ".//fieldset[(child::legend[contains(.,'Hurto')]) and (descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaHurto = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetHurto));
+        WebElementFacade grupoCoberturaHurto = withTimeoutOf(1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetHurto));
         MatcherAssert.assertThat(grupoCoberturaHurto, Matchers.notNullValue());
         checkBoxHurto.click();
     }
 
     public void adicionarNuevaCobertura() {
         String xpathFieldsetAccidentes = ".//fieldset[(child::legend[contains(.,'Accidentes al Conductor')]) and (descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaAccidentes = withTimeoutOf(1,TimeUnit.SECONDS).find(By.xpath(xpathFieldsetAccidentes));
+        WebElementFacade grupoCoberturaAccidentes = withTimeoutOf(1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetAccidentes));
         MatcherAssert.assertThat(grupoCoberturaAccidentes, Matchers.notNullValue());
         checkBoxAccidentes.click();
     }

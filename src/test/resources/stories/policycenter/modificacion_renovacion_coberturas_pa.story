@@ -14,7 +14,7 @@ Quiero ser capaz de actualizar o realizar modificaciones de datos de una poliza 
 Scenario: Editar transaccion - Coberturas
 GivenStories: stories/policycenter/login_policy.story
 Given estoy renovando una poliza <cotizacionRenovacion>
-When este en la pantalla de coberturas
+When este en la pantalla de coberturas sin validar fecha
 Then se deben cargar todas las coberturas con las que venia la poliza
 |danosTerceros   |responsabilidadCivil |limite    |deducible|danosCarro    |danos |perdidaTotalDanos|perdidaParcialDanos|gastosTransporteD|hurtoCarro    |hurto|perdidaTotalHurto|gastosTransporteH|
 |Daños a Terceros|Responsabilidad Civil|32.000.000|0        |Daños al Carro|Daños |10%              |0                  |40.000/DIA (PT)  |Hurto al Carro|Hurto|10%              |40.000/DIA (PT)  |
@@ -24,6 +24,7 @@ Examples:
 |32222330            |
 
 Scenario: Validar que no se puedan retirar coberturas obligatorias
+GivenStories: stories/policycenter/login_policy.story
 Given estoy renovando una poliza <cotizacionRenovacion>
 When este en la pantalla de coberturas
 And intente retirar coberturas obligatorias
@@ -61,3 +62,13 @@ Then debo poder adicionar una nueva cobertura
 Examples:
 |cotizacionRenovacion|
 |32222330            |
+
+Scenario: Editar transaccion - Valida datos en lista Coberturas
+Meta: @manual
+Given estoy renovando una poliza <cotizacionRenovacion >
+When este en la pantalla de coberturas con datos
+Then se deben validar en las listas los datos que tenia la poliza al inicio de la renovacion
+|limite    |deducible|perdidaTotalDanos|perdidaParcialDanos|gastosTransporteD|hurtoCarro    |perdidaTotalHurto|gastosTransporteH|
+|32.000.000|0        |10%              |0                  |40.000/DIA (PT)  |Hurto al Carro|10%              |40.000/DIA (PT)  |
+
+

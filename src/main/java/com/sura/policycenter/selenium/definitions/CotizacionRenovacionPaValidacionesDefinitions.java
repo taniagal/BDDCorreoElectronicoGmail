@@ -28,6 +28,7 @@ public class CotizacionRenovacionPaValidacionesDefinitions {
         cotizacionRenovacionPaValidacionesSteps.seleccionar_Opcion_Cotizar();
     }
 
+
     @When("el motor, chasis y/o placa sean Riesgo consultable bloqueante")
     public void validarMotorChasisYPlaca(){
         cotizacionRenovacionPaValidacionesSteps.seleccionar_Opcion_Cotizar();
