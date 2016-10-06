@@ -50,7 +50,7 @@ Then se debe mostrar un mensaje <mensaje> de error
 Examples:
 |numeroCuenta  |organizacion|canal            |nomProducto            |fechaInicioVigencia|mensaje                                                                                    |
 |C000888888    |Sura        |Canal Tradicional|Multiriesgo corporativo|01/01/2016         |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
-|C000888888    |Sura        |Canal Tradicional|Multiriesgo corporativo|12/01/2016         |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
+|C000888888    |Sura        |Canal Tradicional|Multiriesgo corporativo|30/12/2016         |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
 Scenario: Agregar tomador adicional cuando es un riesgo consultable
 Given se inicio una nueva suscripcion <numeroCuenta>
