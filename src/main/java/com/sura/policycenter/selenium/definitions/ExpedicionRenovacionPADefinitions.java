@@ -31,13 +31,4 @@ public class ExpedicionRenovacionPADefinitions {
         expedicionRenovacionPASteps.validar_Mensaje_Advertencia_De_Renovacion(mensaje);
     }
 
-    @Then("se debe mostrar el resumen de la renovacion")
-    public void mostrarResumenRenovacion(){
-        expedicionRenovacionPASteps.mostrar_El_Resumen_De_La_Renovacion();
-    }
-
-    @Then("el mensaje de renovacion realizada <mensaje>")
-    public void validarMensajeRenovacionRealizada(@Named("mensaje") String mensaje){
-        expedicionRenovacionPASteps.validar_Que_Se_Muestre_Mensaje_De_Renovacion_Realizada(mensaje);
-    }
 }
