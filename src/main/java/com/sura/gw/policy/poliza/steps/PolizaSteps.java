@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PolizaSteps extends GuidewireSteps {
 
-    private static PolizaPage polizaPage;
+    private PolizaPage polizaPage;
     private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
     private static AccionesWidget accionesWidget;
     @Steps private static BotonAccionesSteps botonAccionesSteps;
@@ -64,8 +64,8 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
-    public void ingresar_motivos_cancelacion(String fuente, String motivo, String descripcion) {
-        polizaPage.ingresarMotivosCancelacion(fuente, motivo, descripcion);
+    public void ingresar_motivos_cancelacion(String motivo, String descripcion) {
+        polizaPage.ingresarMotivosCancelacion(motivo, descripcion);
     }
 
     @Step
@@ -97,4 +97,25 @@ public class PolizaSteps extends GuidewireSteps {
        return getDriver().findElement(By.xpath("//span[@id='JobComplete:JobCompleteScreen:ttlBar']")).getText();
 
     }
+    @Step
+    public void desplegar_lista_motivos_cancelacion() {
+          polizaPage.desplegarMotivosCancelacion();
+
+
+    }
+
+    public PolizaPage obtenerPolizaPage(){
+        return this.polizaPage;
+    }
+
+    @Step
+    public Boolean es_fecha_cancelacion_nHOY() {
+        return obtenerPolizaPage().esFechaCancelacionHOY();
+    }
+
+    public void ingresarFechaAnteriorA61Dias(){
+        obtenerPolizaPage().ingresarFechaAnteriorA61Dias(obtenerPolizaPage().obtenerFechacancelacionElemento());
+    }
+
+
 }

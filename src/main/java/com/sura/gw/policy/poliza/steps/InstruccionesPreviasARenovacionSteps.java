@@ -6,7 +6,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class InstruccionesPreviasARenovacionSteps extends ScenarioSteps {
 
-    public InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
+    private InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
 
     @Step
     public InstruccionesPreviasARenovacionSteps seleccionar_boton_editar() {
@@ -28,5 +28,8 @@ public class InstruccionesPreviasARenovacionSteps extends ScenarioSteps {
     public InstruccionesPreviasARenovacionSteps desplegar_lista_opcion(String opcion) {
         instruccionesPreviasARenovacionPage.seleccionarListaDesplegableDeEtiqueta(opcion);
         return this;
+    }
+    public InstruccionesPreviasARenovacionPage obtenerPaginInstruccionesPreviasARenovacion(){
+        return this.instruccionesPreviasARenovacionPage;
     }
 }
