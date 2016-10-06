@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
 public class OpcionesInformacionPolizaPage extends Commons {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesInformacionPolizaPage.class);
-    private static final String MM_DD_YYYY = "MM/dd/yyyy";
+    private static final String DD_MM_YYYY = "dd/MM/yyyy";
 
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
@@ -396,19 +396,8 @@ public class OpcionesInformacionPolizaPage extends Commons {
     }
 
     public void validarDecimalesPorcentaje(String mensaje) {
-        try {
-            double descuentoPoliza = Double.parseDouble(textoDescuentoPoliza.getValue());
-            int pEntera = (int) descuentoPoliza;
-            double pDecimal = descuentoPoliza - pEntera;
-            String parteEntera = Integer.toString(pEntera);
-            String parteDecimal = Double.toString(pDecimal);
-            if (parteEntera.length() > 2 || parteDecimal.length() > 2) {
-                waitFor(mensajeValidacion).shouldBePresent();
+                waitFor(mensajeValidacion).shouldContainText(mensaje);
                 MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
-            }
-        } catch (StaleElementReferenceException element) {
-            element.printStackTrace();
-        }
     }
 
     public void definirPolizaFinanciada() {
@@ -526,7 +515,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
      */
     public void validarInfoPolizaPA(ExamplesTable infoPolizaPA) {
         Map<String, String> informacionPoliza = infoPolizaPA.getRows().get(0);
-        String fechaFin = LocalDateTime.now().plusYears(Integer.parseInt(informacionPoliza.get("aniosVigencia"))).toString(MM_DD_YYYY);
+        String fechaFin = LocalDateTime.now().plusYears(Integer.parseInt(informacionPoliza.get("aniosVigencia"))).toString(DD_MM_YYYY);
         waitForTextToAppear("Información de póliza", 30000);
         try {
             MatcherAssert.assertThat(tipoDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDocumentoTomador"))));
@@ -540,9 +529,9 @@ public class OpcionesInformacionPolizaPage extends Commons {
             MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("canal"))));
             MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPoliza"))));
             MatcherAssert.assertThat(tipoPlazoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPlazo"))));
-            MatcherAssert.assertThat(fechaVigenciaPoliza.getValue(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
+            MatcherAssert.assertThat(fechaVigenciaPoliza.getValue(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(DD_MM_YYYY))));
             MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), containsText(fechaFin));
-            MatcherAssert.assertThat(fechaEscrita.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
+            MatcherAssert.assertThat(fechaEscrita.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(DD_MM_YYYY))));
             MatcherAssert.assertThat(campoOficina.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("oficina"))));
             MatcherAssert.assertThat(campoAgente.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("agente"))));
             MatcherAssert.assertThat(textoDescuentoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descuento"))));
@@ -559,20 +548,20 @@ public class OpcionesInformacionPolizaPage extends Commons {
     }
 
     public void validarFechaFinVigenciaPolizaColectivaAutos() {
-        MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().plusYears(1).toString(MM_DD_YYYY))));
+        MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().plusYears(1).toString(DD_MM_YYYY))));
     }
 
     public void validarFechaInicioVigenciaPolizaColectiva() {
-        MatcherAssert.assertThat(fechaVigenciaPoliza.getValue(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(MM_DD_YYYY))));
+        MatcherAssert.assertThat(fechaVigenciaPoliza.getValue(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(DD_MM_YYYY))));
     }
 
     public void validarFechaFinVigenciaPolizaColectivaCommercial(int numeroDias) {
-        MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().minusDays(numeroDias).plusYears(1).toString(MM_DD_YYYY))));
+        MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().minusDays(numeroDias).plusYears(1).toString(DD_MM_YYYY))));
     }
 
     public void validarFechaInicioVigenciaMenorALaPolizaMadre(String mensaje) {
         WebElementFacade mensajeFechaInicioColectiva = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div");
-        MatcherAssert.assertThat(mensajeFechaInicioColectiva.getText(), Matchers.containsString(mensaje + " (" + LocalDateTime.now().plusDays(1).toString(MM_DD_YYYY) + ")"));
+        MatcherAssert.assertThat(mensajeFechaInicioColectiva.getText(), Matchers.containsString(mensaje + " (" + LocalDateTime.now().plusDays(1).toString(DD_MM_YYYY) + ")"));
     }
 }
 

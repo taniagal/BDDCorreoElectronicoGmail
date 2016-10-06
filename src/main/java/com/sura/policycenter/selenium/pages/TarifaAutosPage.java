@@ -99,7 +99,7 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade menuItemCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
     private WebElementFacade meniItemAsegurados;
-    @FindBy(id = "SubmissionWizard:PolicyInfo")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
     private WebElementFacade meniItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact:1:UnassignedDriver-textEl']")
     private WebElementFacade navItemAsegurado;
@@ -121,6 +121,7 @@ public class TarifaAutosPage extends Commons {
         comboBoxTipoPlazo.waitUntilPresent().clear();
         selectItem(comboBoxTipoPlazo, "6 meses");
         waitForComboValue(comboBoxTipoPlazo, "6 meses");
+        waitUntil(1000);
     }
 
 
@@ -223,7 +224,6 @@ public class TarifaAutosPage extends Commons {
     public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
-            WebElementFacade cobertura = findBy(TABLAXPATH + valor.get("fila") + "]/td[1]");
             LOGGER.info(valor.get("valor")+" | "+tablaDescripcion.getText());
         }
 

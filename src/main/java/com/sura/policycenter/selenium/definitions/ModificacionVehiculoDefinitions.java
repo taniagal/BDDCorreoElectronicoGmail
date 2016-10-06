@@ -17,7 +17,6 @@ public class ModificacionVehiculoDefinitions{
 
     @Steps
     ModificacionInformacionPolizaPASteps modificacionInformacionPolizaPASteps;
-
     @Steps
     GuidewireSteps guidewire;
 

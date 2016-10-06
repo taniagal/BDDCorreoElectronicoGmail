@@ -5,6 +5,7 @@ import com.sura.gw.policy.poliza.pages.EdificiosyUbicacionesWidget;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
@@ -143,6 +144,11 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     @Step
     public void ingresar_valor_de_entrada_de_la_cobertura(String valorDeEntradaDeCobertura) {
         // este metodo vacio permite generar pasos en el reporte de Serenity de forma dinámica
+    }
+
+    @Step
+    public void verificar_mensaje(ExamplesTable mensajes){
+        edificiosyUbicacionesWidget.verificarMensajes(mensajes);
     }
 
 

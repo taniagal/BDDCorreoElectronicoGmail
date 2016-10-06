@@ -19,13 +19,13 @@ When quiera crear una cuenta para un contacto e ingrese documento, tipo de docum
 And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And ingrese los datos de direccion:
-|direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|direccion       |tipo_direccion         |departamento|ciudad  |
+|CALLE 54B #50-25|DIRECCION DE RESIDENCIA|Antioquia   |MEDELLIN|
 Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
-|razon_social|tipo_documento                |nombre_organizacion|agente|
-|KONAMI      |IDENT. FISCAL PARA EXTRANJEROS|Sura               |INT-3 |
+|razon_social|tipo_documento                |tipo_direccion |direccion       |departamento|ciudad  |nombre_organizacion|agente|
+|KONAMI      |IDENT. FISCAL PARA EXTRANJEROS|DIRECCION DE RESIDENCIA       |CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 |
 
 
 
@@ -34,8 +34,8 @@ When quiera crear una cuenta para un contacto persona juridica e ingrese nit, ti
 And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And ingrese los datos de direccion:
-|direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|direccion       |tipo_direccion         |departamento|ciudad  |
+|CALLE 54B #50-25|DIRECCION DE RESIDENCIA|Antioquia   |MEDELLIN|
 Then no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
@@ -50,8 +50,8 @@ When quiera crear una cuenta para un contacto persona juridica e tipo de documen
 And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And ingrese los datos de direccion:
-|direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|direccion       |tipo_direccion         |departamento|ciudad  |
+|CALLE 54B #50-25|DIRECCION DE RESIDENCIA|Antioquia   |MEDELLIN|
 Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
@@ -66,8 +66,8 @@ And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And nombre comercial <nombre_comercial>
 And ingrese los datos de direccion:
-|direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|direccion       |tipo_direccion         |departamento|ciudad  |
+|CALLE 54B #50-25|DIRECCION DE RESIDENCIA|Antioquia   |MEDELLIN|
 Then no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
@@ -82,8 +82,8 @@ And telefono oficina <telefono_oficina>
 And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And ingrese los datos de direccion:
-|direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|direccion       |tipo_direccion         |departamento|ciudad  |
+|CALLE 54B #50-25|DIRECCION DE RESIDENCIA|Antioquia   |MEDELLIN|
 Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
@@ -96,8 +96,8 @@ When quiera crear una cuenta para un contacto e ingrese documento, tipo de docum
 And nombre de organizacion <nombre_organizacion> <agente>
 And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>
 And ingrese los datos de direccion:
-|direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|Vivienda      |ANTIOQUIA   |MEDELLIN|
+|direccion       |tipo_direccion         |departamento|ciudad  |
+|CALLE 54B #50-25|DIRECCION DE RESIDENCIA|Antioquia   |MEDELLIN|
 Then no debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 Examples:
 |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|nombre_organizacion|agente|mensaje|

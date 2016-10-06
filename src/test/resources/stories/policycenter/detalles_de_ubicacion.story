@@ -24,7 +24,7 @@ Then espero ver en la lista de ubicaciones de la pantalla de edificios y ubicaci
 
 Examples:
 |departamento|ciudad  |direccion        |descripcion  |actividad|
-|ANTIOQUIA   |MEDELLIN|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|Antioquia   |MEDELLIN|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 
@@ -44,7 +44,7 @@ Then que se muestre el mensaje <mensaje>
 
 Examples:
 |departamento|ciudad  |direccion         |descripcion  |mensaje                                                    |actividad                    |
-|ANTIOQUIA   |MEDELLIN|CR 65 45 45  |Edificio Core|La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial.|Acabado de productos textiles|
+|Antioquia   |MEDELLIN|CR 65 45 45  |Edificio Core|La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial.|Acabado de productos textiles|
 
 
 
@@ -58,4 +58,4 @@ Then que se muestre el mensaje <mensaje>
 
 Examples:
 |departamento|ciudad  |direccion     |descripcion  |mensaje                                 |actividad                    |
-|ANTIOQUIA   |MEDELLIN|2X´H !2 ~0+ **|Edificio Core|La dirección 2X´H !2 ~0+ ** no es válida|Acabado de productos textiles|
+|Antioquia   |MEDELLIN|2X´H !2 ~0+ **|Edificio Core|La dirección 2X´H !2 ~0+ ** no es válida|Acabado de productos textiles|

@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
@@ -50,7 +51,7 @@ public class Poliza {
     @Given("que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>")
     public void dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza(@Named("numPoliza") String numPoliza, @Named("rolUsuario") String rolUsuario) {
 
-        if (SerenityWebdriverManager.inThisTestThread().isDriverInstantiated()) {
+        if (SerenityWebdriverManager.inThisTestThread().hasAnInstantiatedDriver()) {
             SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
         }
 
@@ -121,6 +122,23 @@ public class Poliza {
                 desplegar_lista_instruccion();
     }
 
+    @When("ingrese los motivos de cancelacion de la poliza fuente: $fuente, Motivo: $motivo, Descripción: $descripcion")
+    public void cuandoIngreseLosMotivosDeCancelacion(String fuente, String motivo, String descripcion) {
+        LOGGER.info("Poliza.cuandoIngreseLosMotivosDeCancelacion");
+        polizaSteps.seleccionar_boton_acciones().seleccionar_cancelar_poliza();
+        polizaSteps.ingresar_motivos_cancelacion(fuente, motivo, descripcion);
+    }
+
+    @When("realice la cancelacion de poliza")
+    public void cuandoRealiceCancelacionDeLaPoliza() {
+        LOGGER.info("Poliza.cuandoRealiceCancelacionDeLaPoliza");
+        polizaSteps.iniciar_cancelacion_de_poliza();
+        polizaSteps.seleccionar_opcion_compromiso();
+        polizaSteps.seleccionar_opcion_cancelar_ahora();
+        polizaSteps.confirmar_cancelacion();
+
+    }
+
     @When("despliegue $opcion")
     public void cuandoDespliegue(String opcion) {
         LOGGER.info("Poliza.cuandoDespliegue");
@@ -163,4 +181,10 @@ public class Poliza {
             org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.instruccionesPreviasARenovacionPage.obtenerListaRazonesDeRenovacion(), AssertUtil.hasItemContainsString(razon));
         }
     }
+    @Then("la cancelacion de la poliza es correcta si se muestra el texto: $tituloDePagina")
+    public void entoncesLaCancionDeLaPolizaEsCorrecta(String tituloDePagina) {
+        LOGGER.info("Poliza.entoncesLaCancionDeLaPolizaEsCorrecta");
+        assertThat(polizaSteps.obtenerTituloPagina(), equalTo(tituloDePagina));
+    }
+
 }
