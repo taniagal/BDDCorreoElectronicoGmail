@@ -1,6 +1,6 @@
 Meta:
 
-Scenario: 2 Cancelacion de poliza
+Scenario: Cancelacion de poliza
 
 Meta:
 @Story CDSEG-
