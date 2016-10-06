@@ -75,7 +75,7 @@ public class EdificiosUbicaciones {
             String cobertura = entradaCobertura.get("COBERTURA");
             String entrada = entradaCobertura.get("ENTRADAS");
             boolean esOtroArticulo = false;
-            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))){
+            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))) {
                 esOtroArticulo = true;
             }
             boolean esUltimaFilaDeExampleTable = index == entradas.getRows().size();
@@ -132,13 +132,7 @@ public class EdificiosUbicaciones {
             "se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados"
     })
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
-        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
-
-        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
-            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
-            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
-        }
-
+        edificiosUbicacionesSteps.verificar_mensaje(mensajesEsperados);
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
 
@@ -159,9 +153,6 @@ public class EdificiosUbicaciones {
     public void noDebeDejarContinuarYDebePermanecerEnLaPagina(String pagina) {
         //Metodo Vacio
     }
-
-
-    
 
 
 }
