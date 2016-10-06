@@ -15,7 +15,7 @@ public class CotizacionRenovacionPaValidacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ir_A_Revision_De_Poliza_Sin_Renovaciones() {
+    public void ir_A_Revision_De_Poliza_Sin_Valida_Fecha() {
         cotizacionRenovacionPAValidacionesPage.irAPantallairARevisionDePolizaSinValidacionFecha();
     }
 
@@ -28,4 +28,11 @@ public class CotizacionRenovacionPaValidacionesSteps extends ScenarioSteps {
     public void validar_Que_Se_Bloquee_Cotizacion_Y_Muestre_Mensaje(ExamplesTable mensajeRC) {
         cotizacionRenovacionPAValidacionesPage.validarBloqueoYMensajeRC(mensajeRC);
     }
+
+    @Step
+    public void limpiar_espacio_de_trabajo() {
+        cotizacionRenovacionPAValidacionesPage.limpiarMensajes();
+    }
+
+
 }
