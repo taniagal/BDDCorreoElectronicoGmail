@@ -26,7 +26,7 @@ Given estoy cotizando una poliza:
 |C000222333|Sura        |Autos   |Canal Tradicional|
 When vaya a agregar un vehiculo con los datos:
 |placa  |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis                 |motor                       |valor_asegurado|descuento|recargo|zona|plan             |
-|AKN0099|2009  |08001111        |MEDELLIN          |Particular       |PR3B4_-/-#$%&/()=?¡¿'  |86-51/*4213486+145646!"_#$% |13500000       |9.9999   |100    |2   |Plan Autos Básico|
+|AKN0099|2009  |08001111        |MEDELLIN          |Particular       |PR3B4_-/-#$%&/()=?¡¿'  |86-51/*4213486+145646!"_#$% |13500000       |9,9999   |100    |2   |Plan Autos Básico|
 Then el sistema NO debe permitir pasar a la siguinete pagina
 
 Examples:
