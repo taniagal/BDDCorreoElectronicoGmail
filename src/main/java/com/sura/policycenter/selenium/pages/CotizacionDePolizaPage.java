@@ -171,7 +171,7 @@ public class CotizacionDePolizaPage extends Commons{
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        waitForTextToAppear("Resultados de validación",30000);
+        waitForTextToAppear("Resultados de validación",40000);
         boolean validacionMensaje = grupoMensajes.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
         WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");

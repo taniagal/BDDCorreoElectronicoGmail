@@ -49,6 +49,7 @@ public class ExpedicionRenovacionPAPage extends Commons{
         act.sendKeys(Keys.TAB).build().perform();
         waitUntil(1000);
         act.sendKeys(Keys.ENTER).build().perform();
+        waitForAbsenceOf(".//span/div/table/tbody/tr/td[2]/div");
     }
 
     public void mostrarResumenRenovacion() {

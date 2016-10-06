@@ -24,6 +24,11 @@ public class ModificacionRenovacionCoberturasPADefinitions {
         modificacionRenovacionCoberturasPASteps.ir_A_Pantalla_de_Coberturas_Auto_Personal();
     }
 
+    @When("este en la pantalla de coberturas sin validar fecha")
+    public void irAPantallaCoberturasSinValidaRetroactividad(){
+        modificacionRenovacionCoberturasPASteps.ir_A_Pantalla_de_Coberturas_Auto_Personal_sin_retroactividad();
+    }
+
     @When("intente retirar coberturas obligatorias $cobertura")
     public void retirarCoberturasObligatorias(ExamplesTable cobertura){
         modificacionRenovacionCoberturasPASteps.editar_Transaccion_De_Poliza();

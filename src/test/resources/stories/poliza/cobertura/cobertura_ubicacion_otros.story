@@ -81,9 +81,9 @@ When intente ingresar las entradas de las diferentes coberturas
 | Otros Articulos          | Animales vivos      |                     |                                                | Valor Asegurable                                                                                  | 4              |
 | Otros Articulos          | Animales vivos      |                     |                                                | Índice variable                                                                                   | 1              |
 When haga clic en el boton Aceptar
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+Then se debe mostrar el siguiente mensaje
 | MENSAJES_WORKSPACE                                                                                                                                                                                                      |
-| El valor de "Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados" deber ser menor o igual al "10.0%" de la sumatoria de los valores asegurables de "todos los articulos". |
+| El valor de "Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados" deber ser menor o igual al "10,0%" de la sumatoria de los valores asegurables de "todos los articulos". |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |

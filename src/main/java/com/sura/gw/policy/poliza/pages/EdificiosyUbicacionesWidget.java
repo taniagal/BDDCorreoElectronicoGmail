@@ -8,11 +8,14 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
+import org.hamcrest.MatcherAssert;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
@@ -41,6 +44,8 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
+    @FindBy(css = ".message")
+    private WebElementFacade divMensaje;
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -391,5 +396,12 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         waitFor(1).second();
         $(xTextAreaDescripcion).waitUntilClickable().click();
         esperarAQueElementoTengaValor(findBy(xTextAreaDescripcion), tipoArticulo);
+    }
+
+    public void verificarMensajes(ExamplesTable mensajes) {
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
+        for (Map<String, String> mensaje : mensajes.getRows()) {
+            MatcherAssert.assertThat("Error: en la validacion del mensaje " + mensaje.get("MENSAJES_WORKSPACE"), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
+        }
     }
 }

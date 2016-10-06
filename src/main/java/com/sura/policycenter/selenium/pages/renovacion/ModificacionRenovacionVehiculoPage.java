@@ -63,7 +63,7 @@ public class ModificacionRenovacionVehiculoPage extends Commons{
     }
 
     public void irAModificarVehiculo() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).shouldBeVisible();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).waitUntilPresent();
         botonEditarTransaccionPoliza.click();
         waitUntil(1000);
         act.sendKeys(Keys.ENTER).build().perform();
