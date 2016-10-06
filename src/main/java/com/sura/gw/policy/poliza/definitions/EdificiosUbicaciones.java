@@ -132,7 +132,18 @@ public class EdificiosUbicaciones {
             "se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados"
     })
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
-        edificiosUbicacionesSteps.verificar_mensaje(mensajesEsperados);
+        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
+
+        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
+            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
+            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
+        }
+        edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
+    }
+
+    @Then("se debe mostrar el siguiente mensaje $mensajesEsperados")
+    public void entoncesValidarQueAparezcanLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
+edificiosUbicacionesSteps.verificar_mensaje(mensajesEsperados);
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
 
