@@ -331,7 +331,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void validarLosElementosDeshabilitados() {
         waitFor(botonSiguiente).waitUntilNotVisible();
         commons.waitUntil(2000);
-        MatcherAssert.assertThat(linkAgregarCoaseguro.getAttribute("href"), Is.is(Matchers.equalTo("")));
+        linkAgregarCoaseguro.shouldNotBeVisible();
         MatcherAssert.assertThat(organizacion.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
         MatcherAssert.assertThat(canal.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
         MatcherAssert.assertThat(tipoDePoliza.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
