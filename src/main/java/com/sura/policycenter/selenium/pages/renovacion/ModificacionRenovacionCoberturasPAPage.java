@@ -74,11 +74,14 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons {
     private WebElementFacade lstLimite;
     @FindBy(xpath = ".//li[contains(.,'32.000.000')]")
     private WebElementFacade vlrLimite;
-
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:1:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade lstDeducible;
     @FindBy(xpath = "//li[contains(.,'0')]")
     private WebElementFacade vlrDeducible;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
+    private WebElementFacade btnBorrar;
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    private WebElementFacade btnInicio;
 
 
     public ModificacionRenovacionCoberturasPAPage(WebDriver driver) {
@@ -154,5 +157,9 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons {
         WebElementFacade grupoCoberturaAccidentes = withTimeoutOf(1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetAccidentes));
         MatcherAssert.assertThat(grupoCoberturaAccidentes, Matchers.notNullValue());
         checkBoxAccidentes.click();
+    }
+
+    public void borrarEspacioTrabajo() {
+        btnBorrar.click();
     }
 }
