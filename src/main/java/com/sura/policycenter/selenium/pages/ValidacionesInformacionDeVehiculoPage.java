@@ -87,7 +87,6 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     }
 
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        try {
             campoVehiculoCeroKm.click();
             Map<String, String> vehiculo = datosVehiculo.getRow(0);
             waitUntil(1500);
@@ -100,6 +99,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
             waitForTextToAppear(vehiculo.get("modelo"), 28000);
             ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
             campoTxtPlaca.click();
+            waitUntil(1000);
             withTimeoutOf(28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
             selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
             waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
@@ -120,9 +120,6 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
             }
 
         MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     public void agregarCodigoFasecolda(String codigo) {

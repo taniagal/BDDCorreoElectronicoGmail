@@ -85,6 +85,7 @@ public class NuevoContactoPage extends Commons {
         this.direccion.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
         waitForComboValue(comboBoxDepartamento,departamento);
+        waitUntil(2000);
         selectItem(comboBoxCiudad,ciudad);
         waitForComboValue(comboBoxCiudad,ciudad);
     }

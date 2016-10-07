@@ -15,6 +15,11 @@ public class ModificacionRenovacionCoberturasPASteps extends ScenarioSteps {
     }
 
     @Step
+    public void ir_A_Pantalla_de_Coberturas_Auto_Personal_sin_retroactividad() {
+        modificacionRenovacionCoberturas.irAPantallaCoberturasSinValidacionFecha();
+    }
+
+    @Step
     public void validar_Coberturas_De_La_Poliza(ExamplesTable coberturas) {
         modificacionRenovacionCoberturas.validarCoberturasPoliza(coberturas);
     }

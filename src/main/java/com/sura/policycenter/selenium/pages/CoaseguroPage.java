@@ -14,6 +14,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
 public class CoaseguroPage extends Commons {
@@ -33,6 +34,8 @@ public class CoaseguroPage extends Commons {
     private WebElementFacade radioBotonAceptado;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[1]/td[4]")
     private WebElementFacade radioBotonLider;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tfoot/tr/td[3]")
+    private WebElementFacade pieDeTabla;
     @FindBy(id = "Coinsurance_ExtPopup:_msgs")
     private WebElementFacade divMensaje;
 
@@ -95,7 +98,8 @@ public class CoaseguroPage extends Commons {
         act.sendKeys(Keys.TAB).build().perform();
     }
     public void verificarPorcentajeParticipacion(){
-        MatcherAssert.assertThat("El total no es del 100%", findBy(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tfoot/tr/td[3]").getText().contains("100"));
+        waitFor(ExpectedConditions.textToBePresentInElement(pieDeTabla,"100"));
+        MatcherAssert.assertThat("El total no es del 100%", pieDeTabla.getText().contains("100"));
     }
 
     public void guardarcosaeguro(){

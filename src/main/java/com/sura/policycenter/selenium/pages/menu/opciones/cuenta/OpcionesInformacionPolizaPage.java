@@ -398,19 +398,8 @@ public class OpcionesInformacionPolizaPage extends Commons {
     }
 
     public void validarDecimalesPorcentaje(String mensaje) {
-        try {
-            double descuentoPoliza = Double.parseDouble(textoDescuentoPoliza.getValue());
-            int pEntera = (int) descuentoPoliza;
-            double pDecimal = descuentoPoliza - pEntera;
-            String parteEntera = Integer.toString(pEntera);
-            String parteDecimal = Double.toString(pDecimal);
-            if (parteEntera.length() > 2 || parteDecimal.length() > 2) {
-                waitFor(mensajeValidacion).shouldBePresent();
+                waitFor(mensajeValidacion).shouldContainText(mensaje);
                 MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
-            }
-        } catch (StaleElementReferenceException element) {
-            element.printStackTrace();
-        }
     }
 
     public void definirPolizaFinanciada() {

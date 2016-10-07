@@ -79,7 +79,7 @@ Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exce
 
 Examples:
 |numCuenta      |organizacion|canal            |porcentaje     |mensaje                                                                                 |
-|C000888888     |Sura        |Canal Tradicional|20.325         |Descuento póliza : El descuento de la póliza puede tener máximo 2 cifras decimales.     |
+|C000888888     |Sura        |Canal Tradicional|20,325         |Descuento póliza : El descuento de la póliza puede tener máximo 2 cifras decimales.     |
 
 Scenario: Deseo de financiacion de poliza
 Given que voy a buscar la cuenta <numCuenta>

@@ -76,7 +76,7 @@ public class HistorialCuentaPage extends Commons {
         waitUntil(2500);
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(mnuCuenta).shouldBePresent();
         mnuCuenta.click();
-        waitUntil(2000);
+        waitUntil(4000);
         mnuCuenta.click();
         waitUntil(1500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
