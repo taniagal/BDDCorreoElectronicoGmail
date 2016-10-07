@@ -7,10 +7,6 @@ Meta:
 @local
 @Sprint 7
 
-Narrative:
-Como usuario de  policy center con el perfil X
-Quiero ser capaz de actualizar o realizar modificaciones de datos de una poliza en el proceso de renovacion de una poliza
-
 Scenario: Editar transaccion - Coberturas
 GivenStories: stories/policycenter/login_policy.story
 Given estoy renovando una poliza <cotizacionRenovacion>
@@ -37,7 +33,7 @@ Examples:
 
 Scenario: Validar que se puedan modificar deducibles y limites
 Given estoy renovando una poliza <cotizacionRenovacion>
-When este en la pantalla de coberturas
+When este en la pantalla de coberturas sin validar fecha
 Then debo poder modificar los deducibles y limites tanto de las coberturas opcionales como obligatorias
 
 Examples:
