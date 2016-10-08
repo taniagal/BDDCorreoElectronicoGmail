@@ -3,8 +3,7 @@ Busqueda De Riesgos Poliza Colectiva
 Meta:
 
 @issue #CDSEG-2793
-@tag automator: jennifer_perez, sprint:8
-@pendiente de automatizacion
+@tag automator: Jonathan Mejia, sprint:8
 @Sprint 8
 @local
 
@@ -16,51 +15,13 @@ Scenario: Buscar riesgo existente por placa
 GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar la cuenta <numCuenta>
 When vaya a consultar las transacciones de la poliza colectiva
-And de clic en el numero de poliza de transacciones poliza colectiva
+And de clic en el numero de <poliza> de transacciones poliza colectiva
 And de clic en riesgos
 And realice la busqueda por la placa <placa>
 Then debe listar la informacion del riesgo
 | placa  | claseVehiculo        | modelo | marca| linea |
-| BLE861 | Camperos y pickups   | 2016   | Mazda| MPV   |
+| BLE125 | Camperos y pickups   | 2016   | Mazda| MPV   |
 
 Examples:
-| numCuenta  | placa  |
-| C000888888 | BLE123 |
-
-Scenario: Buscar riesgo no existente por placa
-Given que voy a buscar la cuenta <numCuenta>
-When vaya a consultar las transacciones de la poliza colectiva
-And de clic en el numero de poliza de transacciones poliza colectiva
-And de clic en riesgos
-And realice la busqueda por la placa <placa>
-Then debe generar error con el mensaje <mensaje>
-
-Examples:
-| numCuenta  | placa  | mensaje |
-| C000888888 | BLE356 | El riesgo N.° BLE869 no se encuentra o no tiene permiso de acceso al mismo. |
-
-Scenario: Listar todos los riesgos
-Given que voy a buscar la cuenta <numCuenta>
-When vaya a consultar las transacciones de la poliza colectiva
-And de clic en el numero de poliza de transacciones poliza colectiva
-And de clic en riesgos
-And realice la busqueda por la placa <placa>
-And de clic en listar todos los riesgos
-Then debe listar los 5 riesgos de la poliza
-
-Examples:
-| numCuenta  | placa  |
-| C000888888 | BLE123 |
-
-Scenario: Validar accion en listar todos los riesgos cuando todos los riesgos ya estan listados
-Meta: @manual
-Given que voy a buscar una cuenta <numCuenta>
-When vaya a consultar las transacciones en la poliza colectiva
-And de clic en el numero de la poliza de transacciones poliza colectiva
-And de clic en riesgos
-And de clic en listar todos los riesgos
-Then no se debe ejecutar ninguna accion
-
-Examples:
-| numCuenta  |
-| C000888888 |
+| numCuenta  | placa  | poliza   |
+| C000888888 | BLE125 | 22221910 |
