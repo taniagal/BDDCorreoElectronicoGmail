@@ -55,4 +55,9 @@ public class InicioRenovacionPolizaPaSteps extends ScenarioSteps {
         inicioRenovacionPolizaPaPage.validacionesPantallaFormularios(datosVehiculo);
     }
 
+    @Step
+    public void opciones_de_cierre() {
+        inicioRenovacionPolizaPaPage.retirarTransaccion();
+    }
+
 }
