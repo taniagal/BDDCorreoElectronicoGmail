@@ -23,8 +23,10 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
     WebElementFacade btnBuscaPlaca;
     @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:search-inputEl']")
     WebElementFacade txtPlaca;
-    @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:_msgs']/div")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:_msgs']")
     WebElementFacade lblMensaje;
+    @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:ListRisksButton-btnInnerEl']")
+    WebElementFacade btnListarRiesgos;
 
 
     private static final String TABLAXPATH = ".//*[@id='AccountFile_CollectivePolicy_Ext:";
@@ -85,9 +87,13 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
         }
     }
 
+    public void validaBotonListarRiesgos() {
+        MatcherAssert.assertThat("No contiene los 5 registros", getListaFiltroPlaca().size() == 5);
+    }
+
     public void ValidaMensaje(String mensaje){
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
-        MatcherAssert.assertThat("Error: No aparecio mensaje de advertencia en el filtro", mensaje.contains(lblMensaje.getText()));
+        MatcherAssert.assertThat("Error: No aparecio mensaje de advertencia en el filtro", lblMensaje.getText().contains(mensaje));
     }
 
     public void clicRiesgos() {
@@ -99,5 +105,11 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
         txtPlaca.sendKeys(placa);
         btnBuscaPlaca.click();
     }
+
+    public void listarRiesgos(){
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnListarRiesgos).waitUntilEnabled();
+        btnListarRiesgos.click();
+    }
+
 
 }

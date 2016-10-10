@@ -34,4 +34,13 @@ public class BusquedaDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     public void valida_mensaje_en_pantalla(String mensaje) {
         busquedaDeRiesgosPolizaColectivaPage.ValidaMensaje(mensaje);
     }
+
+    @Step
+    public void clic_en_listar_riesgos() {
+        busquedaDeRiesgosPolizaColectivaPage.listarRiesgos();
+    }
+
+    public void valida_listado_de_registros() {
+        busquedaDeRiesgosPolizaColectivaPage.validaBotonListarRiesgos();
+    }
 }

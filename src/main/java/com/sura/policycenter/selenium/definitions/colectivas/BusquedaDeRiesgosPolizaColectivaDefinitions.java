@@ -27,6 +27,11 @@ public class BusquedaDeRiesgosPolizaColectivaDefinitions {
         busquedaDeRiesgosPolizaColectivaSteps.ingresar_la_placa(placa);
     }
 
+    @When("de clic en listar todos los riesgos")
+    public void whenclicEnListarLosRiesgosDeTabla() {
+        busquedaDeRiesgosPolizaColectivaSteps.clic_en_listar_riesgos();
+    }
+
     @Then("debe listar la informacion del riesgo $infoRiesgo")
     public void thenDebeListarLaInformacionDelRiesgo(ExamplesTable infoRiesgo) {
         busquedaDeRiesgosPolizaColectivaSteps.valida_resultado_de_riesgos(infoRiesgo);
@@ -35,5 +40,10 @@ public class BusquedaDeRiesgosPolizaColectivaDefinitions {
     @Then("debe generar error con el mensaje <mensaje>")
     public void thenGenerarMensaje(@Named("mensaje")String mensaje) {
         busquedaDeRiesgosPolizaColectivaSteps.valida_mensaje_en_pantalla(mensaje);
+    }
+
+    @Then("debe listar los 5 riesgos de la poliza")
+    public void thenGenerarMensaje() {
+        busquedaDeRiesgosPolizaColectivaSteps.valida_listado_de_registros();
     }
 }
