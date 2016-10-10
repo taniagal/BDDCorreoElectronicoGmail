@@ -10,6 +10,7 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
+import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.annotations.Given;
@@ -39,6 +40,7 @@ public class Poliza {
 
     @Steps GuidewireSteps guidewire;
     @Steps InstruccionesPreviasARenovacionSteps instruccionesPreviasARenovacionSteps;
+
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -122,11 +124,11 @@ public class Poliza {
                 desplegar_lista_instruccion();
     }
 
-    @When("ingrese los motivos de cancelacion de la poliza fuente: $fuente, Motivo: $motivo, Descripción: $descripcion")
-    public void cuandoIngreseLosMotivosDeCancelacion(String fuente, String motivo, String descripcion) {
+    @When("ingrese los motivos de cancelacion de la poliza Motivo: $motivo, Descripción: $descripcion")
+    public void cuandoIngreseLosMotivosDeCancelacion(String motivo, String descripcion) {
         LOGGER.info("Poliza.cuandoIngreseLosMotivosDeCancelacion");
         polizaSteps.seleccionar_boton_acciones().seleccionar_cancelar_poliza();
-        polizaSteps.ingresar_motivos_cancelacion(fuente, motivo, descripcion);
+        polizaSteps.ingresar_motivos_cancelacion(motivo, descripcion);
     }
 
     @When("realice la cancelacion de poliza")
@@ -169,16 +171,16 @@ public class Poliza {
         LOGGER.info("Poliza.esperoVerLasOpcionesDeInstruccionesSiguientes");
         for (Map<String, String> fila : instrucciones.getRows()) {
             String instruccion = fila.get("INSTRUCCIONES");
-            org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.instruccionesPreviasARenovacionPage.obtenerInstruccionesDisponibles(), AssertUtil.hasItemContainsString(instruccion));
+            org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.obtenerPaginInstruccionesPreviasARenovacion().obtenerInstruccionesDisponibles(), AssertUtil.hasItemContainsString(instruccion));
         }
     }
 
     @Then("debe visualizarse las siguientes razones $razones")
     public void esperoVisualizarLasSiguientesRazones(ExamplesTable razones) {
-        LOGGER.info("Poliza.esperoVerLasOpcionesDeInstruccionesSiguientes");
+        LOGGER.info("Poliza.esperoVisualizarLasSiguientesRazones");
         for (Map<String, String> fila : razones.getRows()) {
             String razon = fila.get("RAZONES");
-            org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.instruccionesPreviasARenovacionPage.obtenerListaRazonesDeRenovacion(), AssertUtil.hasItemContainsString(razon));
+            org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.obtenerPaginInstruccionesPreviasARenovacion().obtenerListaRazonesDeRenovacion(), AssertUtil.hasItemContainsString(razon));
         }
     }
     @Then("la cancelacion de la poliza es correcta si se muestra el texto: $tituloDePagina")
@@ -186,5 +188,51 @@ public class Poliza {
         LOGGER.info("Poliza.entoncesLaCancionDeLaPolizaEsCorrecta");
         assertThat(polizaSteps.obtenerTituloPagina(), equalTo(tituloDePagina));
     }
+    @When("seleccione la lista motivo de cancelacion")
+    public void cuandoSeleccioneLaListaMotivoDeCancelacion() {
+        LOGGER.info("Poliza.cuandoSeleccioneLaListaMotivoDeCancelacion");
+        polizaSteps.seleccionar_boton_acciones().seleccionar_cancelar_poliza();
+        polizaSteps. desplegar_lista_motivos_cancelacion();
+
+    }
+    @Then("se debe visualizar los siguientes motivos $motivos")
+    public void entoncesSeDebeVisualizarLosSiguientesMotivos(ExamplesTable motivos) {
+        LOGGER.info("Poliza.entoncesSeDebeVisualizarLosSiguientesMotivos");
+        for (Map<String, String> fila : motivos.getRows()) {
+            String motivo = fila.get("MOTIVOS");
+            org.hamcrest.MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMotivosDisponibles(),AssertUtil.hasItemContainsString(motivo));
+        }
+
+    }
+    @Then("se debe mostrar la fecha del dia de hoy")
+    public void entoncesValidarFechaSeaFechadeHOY(){
+        MatcherAssert.assertThat(polizaSteps.es_fecha_cancelacion_nHOY(), Is.is(true));
+        LOGGER.info("CotizacionDefinitions.ValidarFechaSeaFechadeHOY");
+    }
+    @When("ingrese fecha superior a 61 dias")
+    public void cuandoIngresoFechaSuperiora61Dias(){
+        LOGGER.info("CotizacionDefinitions.cuandoIngresoFechaSuperiora61Dias");
+        polizaSteps.ingresarFechaAnteriorA61Dias();
+    }
+
+    @Then("se debe mostrar mensaje con el texto: $advertencia")
+    public void entoncesSeDebeMostrarMensajeConElTexto(String advertencia) {
+        LOGGER.info("Poliza.entoncesSeDebeMostrarMensajeConElTexto");
+        assertThat(polizaSteps.validar_mensaje(), equalTo(advertencia));
+    }
+    @When("ingrese a la opcion de cancelar poliza")
+    public void cuandoIngreseALaOpcionDeCancelarPoliza(){
+        LOGGER.info("Poliza.cuandoIngreseALaOpcionDeCancelarPoliza");
+        polizaSteps.seleccionar_boton_acciones().seleccionar_cancelar_poliza();
+
+    }
+    @Then("se debe mostrar la opcion de cancelar transaccion")
+    public void entoncesSeDebeMostrarLaOpcionDeCancelarTransaccion() {
+        LOGGER.info("Poliza.entoncesSeDebeMostrarLaOpcionDeCancelarTransaccion");
+        polizaSteps.validar_opcion_cancelar_transaccion();
+    }
+
+
+
 
 }
