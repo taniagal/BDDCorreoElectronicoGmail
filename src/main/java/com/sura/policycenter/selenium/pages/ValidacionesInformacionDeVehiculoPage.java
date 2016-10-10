@@ -64,6 +64,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
 
     public void irAVehiculos() {
         waitFor(menuItemVehiculos).shouldBePresent();
+        waitUntil(2000);
         menuItemVehiculos.click();
     }
 

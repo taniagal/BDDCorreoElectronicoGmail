@@ -5,6 +5,7 @@ import com.sura.policycenter.selenium.pages.ValidacionesInformacionDeVehiculoPag
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class TarifaTasaUnicaSteps extends ScenarioSteps{
     ValidacionesInformacionDeVehiculoPage vehiculoPage =  new ValidacionesInformacionDeVehiculoPage(getDriver());
@@ -27,5 +28,10 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
     @Step
     public void verificar_elementos_importacion() {
         tasaUnicaPage.verificarElementosImportacion();
+    }
+
+    @Step
+    public void agregar_vehiculo(ExamplesTable datosVehiculo) {
+        vehiculoPage.agregarVehiculo(datosVehiculo);
     }
 }

@@ -1,12 +1,15 @@
 package com.sura.policycenter.selenium.definitions;
 
+import com.sura.policycenter.selenium.pages.ValidacionesInformacionDeVehiculoPage;
 import com.sura.policycenter.selenium.steps.CotizacionPADetalleSteps;
 import com.sura.policycenter.selenium.steps.TarifaTasaUnicaSteps;
+import com.sura.policycenter.selenium.steps.ValidacionesInformacionDeVehiculoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 public class TarifaTasaUnicaPADefinitions {
     @Steps
@@ -14,6 +17,9 @@ public class TarifaTasaUnicaPADefinitions {
 
     @Steps
     CotizacionPADetalleSteps cotizacionPADetalleSteps;
+
+    @Steps
+    ValidacionesInformacionDeVehiculoSteps vehiculoSteps;
 
     @When("vaya a cargar el archivo con las tasas")
     public void irAInformacionDePoliza(){
@@ -56,5 +62,11 @@ public class TarifaTasaUnicaPADefinitions {
     @Given("que tengo una cotizacion <cotizacion>")
     public void givenIrALaCotizacion(@Named("cotizacion") String cotizacion) {
         cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
+    }
+
+    @When("vaya a agregar el vehiculo con los datos: $datosVehiculo")
+    public void agregarVehiculo(ExamplesTable datosVehiculo) {
+        vehiculoSteps.ir_a_vehiculos();
+        tasaUnicaSteps.agregar_vehiculo(datosVehiculo);
     }
 }

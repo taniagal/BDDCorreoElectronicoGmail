@@ -327,10 +327,14 @@ public class Navegacion extends Commons {
 
     public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza) {
         gw.deployMenu(mnuPoliza);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(1500);
-        waitForTextToAppear("Nueva cotización");
-        mnuNumeroSub.waitUntilVisible().waitUntilEnabled().typeAndEnter(numSubPoliza);
+        //act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        //waitUntil(1500);
+        //waitForTextToAppear("Nueva cotización");
+        //mnuNumeroSub.waitUntilVisible().waitUntilEnabled().typeAndEnter(numSubPoliza);
+        ingresarDato(mnuNumeroSub,numSubPoliza);
+        mnuNumeroSub.sendKeys(Keys.ENTER);
+        waitForAbsenceOf(".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']");
+        //waitUntil(2000);
         return new PolizaBuscarPage(getDriver());
     }
 
