@@ -19,6 +19,7 @@ public class PolizaPage extends GuidewirePage {
 
     private static String XPATH_MENU_DESPLEGABLE = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
+    private String XpathMetodoDeReembolso = "//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CalcMethod-inputEl']";
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private List<String> listaMotivos;
     private List<WebElementFacade> listaMotivosWE;
@@ -244,6 +245,10 @@ public class PolizaPage extends GuidewirePage {
     public void validarBotones (String path){
          findBy(path);
 
+    }
+    public String obtenerMotivoDeReembolso(){
+        waitFor(2).seconds();
+        return findBy(XpathMetodoDeReembolso).getText();
     }
 
 }

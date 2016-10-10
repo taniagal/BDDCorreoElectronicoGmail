@@ -16,7 +16,8 @@ public class InstruccionesPreviasARenovacionSteps extends ScenarioSteps {
 
     @Step
     public InstruccionesPreviasARenovacionSteps desplegar_lista_instruccion() {
-        instruccionesPreviasARenovacionPage.seleccionarListaDesplegableDeInstruccion();
+        String xpathListaInstruccion = "//input[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:PreRenewalDirection-inputEl']";
+        instruccionesPreviasARenovacionPage.seleccionarListaDesplegable(xpathListaInstruccion);
         return this;
     }
     @Step
@@ -32,4 +33,5 @@ public class InstruccionesPreviasARenovacionSteps extends ScenarioSteps {
     public InstruccionesPreviasARenovacionPage obtenerPaginInstruccionesPreviasARenovacion(){
         return this.instruccionesPreviasARenovacionPage;
     }
+
 }
