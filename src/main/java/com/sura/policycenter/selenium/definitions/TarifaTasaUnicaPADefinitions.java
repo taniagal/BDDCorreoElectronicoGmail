@@ -1,14 +1,19 @@
 package com.sura.policycenter.selenium.definitions;
 
+import com.sura.policycenter.selenium.steps.CotizacionPADetalleSteps;
 import com.sura.policycenter.selenium.steps.TarifaTasaUnicaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 public class TarifaTasaUnicaPADefinitions {
     @Steps
     TarifaTasaUnicaSteps tasaUnicaSteps;
+
+    @Steps
+    CotizacionPADetalleSteps cotizacionPADetalleSteps;
 
     @When("vaya a cargar el archivo con las tasas")
     public void irAInformacionDePoliza(){
@@ -45,5 +50,11 @@ public class TarifaTasaUnicaPADefinitions {
     @Then("se debe poder cargar el archivo donde se tienen definidas las tasas para la poliza")
     public void thenSeDebePoderCargarElArchivoDondeSeTienenDefinidasLasTasasParaLaPoliza() {
         // Manual
+    }
+
+
+    @Given("que tengo una cotizacion <cotizacion>")
+    public void givenIrALaCotizacion(@Named("cotizacion") String cotizacion) {
+        cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
     }
 }
