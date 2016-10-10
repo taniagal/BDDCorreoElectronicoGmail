@@ -24,6 +24,7 @@ Then se debe visualizar los siguientes motivos
 | Por error en expedición       |
 | Por pérdida total             |
 | Por políticas de Suramericana |
+
 Examples:
 | numPoliza     | rolUsuario |
 | TEST_99999999 | Asesor     |
@@ -77,6 +78,28 @@ Then se debe mostrar la opcion de cancelar transaccion
 Examples:
 | numPoliza     | rolUsuario |
 | TEST_99999999 | Asesor     |
+
+
+Scenario: 5 Validacion metodo de reembolso y campo fuente
+
+Meta:
+@Story CDSEG-3417
+@URL https://jira.suramericana.com.co/browse/CDSEG-
+@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
+@Sprint 8
+
+Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
+When seleccione la lista motivo de cancelacion
+And seleccione el <motivo> de cancelacion
+Then se debe mostrar el metodo de reembolso <reembolso> sin el campo fuente
+
+
+Examples:
+| numPoliza     | rolUsuario | motivo                  | descripcion             | reembolso      |
+| TEST_99999999 | Asesor     | Por pérdida total       | prueba perdida total    | Sin devolución |
+| TEST_99999999 | Asesor     | Por error de trámite    | prueba error tramite    | Fijo           |
+| TEST_99999999 | Asesor     | Por error en expedición | prueba error expedicion | Fijo           |
+| TEST_99999999 | Asesor     | Por no renovada         | prueba error prorrata   | Prorrata       |
 
 
 

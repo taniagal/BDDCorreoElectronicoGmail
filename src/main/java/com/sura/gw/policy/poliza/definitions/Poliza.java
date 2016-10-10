@@ -231,8 +231,23 @@ public class Poliza {
         LOGGER.info("Poliza.entoncesSeDebeMostrarLaOpcionDeCancelarTransaccion");
         polizaSteps.validar_opcion_cancelar_transaccion();
     }
+    @When("desee seleccionar motivos de cancelacion")
+        public void cuandoSeleccioneMotivosdeCancelacion(){
+            LOGGER.info("Poliza.cuandoSeleccioneMotivosdeCancelacion");
+            polizaSteps.desplegar_lista_motivos_cancelacion();
 
 
 
-
+        }
+    @When("seleccione el <motivo> de cancelacion")
+    public void cuandoSeleccioneelMotivodeCancelacion(@Named("motivo") String motivo,@Named("descripcion") String descripcion){
+        LOGGER.info("Poliza.cuandoSeleccioneelMotivodeCancelacion");
+        polizaSteps.ingresar_motivos_cancelacion(motivo, descripcion);
+    }
+    @Then("se debe mostrar el metodo de reembolso <reembolso> sin el campo fuente")
+    public void entoncesSedebeMostrarElMetodoDeReembolsoSinElcampofuente(@Named("reembolso") String reembolso){
+        LOGGER.info("Poliza.entoncesSedebeMostrarElMetodoDeReembolsoSinElcampofuente");
+        org.hamcrest.MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMotivoDeReembolso(), equalTo(reembolso));
+        polizaSteps.validar_ocultacion_campo_fuente();
+    }
 }

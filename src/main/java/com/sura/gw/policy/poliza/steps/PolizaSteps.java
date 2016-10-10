@@ -3,6 +3,7 @@ package com.sura.gw.policy.poliza.steps;
 import com.sura.gw.navegacion.steps.GuidewireSteps;
 import com.sura.gw.navegacion.util.widget.EspacioDeTrabajoWidget;
 import com.sura.gw.policy.poliza.pages.AccionesWidget;
+import com.sura.gw.policy.poliza.pages.InstruccionesPreviasARenovacionPage;
 import com.sura.gw.policy.poliza.pages.PolizaPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.Step;
@@ -16,6 +17,7 @@ public class PolizaSteps extends GuidewireSteps {
     private PolizaPage polizaPage;
     private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
     private static AccionesWidget accionesWidget;
+    private InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
     @Steps private static BotonAccionesSteps botonAccionesSteps;
 
 
@@ -111,6 +113,10 @@ public class PolizaSteps extends GuidewireSteps {
     public PolizaPage obtenerPolizaPage(){
         return this.polizaPage;
     }
+    public InstruccionesPreviasARenovacionPage obtenerInstruccionesPreviasPage()
+    {
+        return this.instruccionesPreviasARenovacionPage;
+    }
 
     @Step
     public Boolean es_fecha_cancelacion_nHOY() {
@@ -125,6 +131,9 @@ public class PolizaSteps extends GuidewireSteps {
         String XpathBtnCancelarTransaccion = ".//a[contains(.,'Cancelar transacción')]";
         obtenerPolizaPage().validarBotones(XpathBtnCancelarTransaccion);
     }
-
-
+    @Step
+    public void validar_ocultacion_campo_fuente() {
+        String XpathBtnCancelarTransaccion = ".//tr[contains(.,'Fuente')]";
+        obtenerPolizaPage().validarBotones(XpathBtnCancelarTransaccion);
+    }
 }
