@@ -31,4 +31,9 @@ public class BusquedaDeRiesgosPolizaColectivaDefinitions {
     public void thenDebeListarLaInformacionDelRiesgo(ExamplesTable infoRiesgo) {
         busquedaDeRiesgosPolizaColectivaSteps.valida_resultado_de_riesgos(infoRiesgo);
     }
+
+    @Then("debe generar error con el mensaje <mensaje>")
+    public void thenGenerarMensaje(@Named("mensaje")String mensaje) {
+        busquedaDeRiesgosPolizaColectivaSteps.valida_mensaje_en_pantalla(mensaje);
+    }
 }

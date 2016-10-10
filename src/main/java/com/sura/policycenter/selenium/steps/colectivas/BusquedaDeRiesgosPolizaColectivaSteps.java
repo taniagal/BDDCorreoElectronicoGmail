@@ -29,4 +29,9 @@ public class BusquedaDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     public void valida_resultado_de_riesgos(ExamplesTable infoRiesgo) {
        busquedaDeRiesgosPolizaColectivaPage.validaResultadoRiesgos(infoRiesgo);
     }
+
+    @Step
+    public void valida_mensaje_en_pantalla(String mensaje) {
+        busquedaDeRiesgosPolizaColectivaPage.ValidaMensaje(mensaje);
+    }
 }

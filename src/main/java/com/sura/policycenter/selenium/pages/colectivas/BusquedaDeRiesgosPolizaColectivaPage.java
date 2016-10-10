@@ -23,6 +23,8 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
     WebElementFacade btnBuscaPlaca;
     @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:search-inputEl']")
     WebElementFacade txtPlaca;
+    @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:_msgs']/div")
+    WebElementFacade lblMensaje;
 
 
     private static final String TABLAXPATH = ".//*[@id='AccountFile_CollectivePolicy_Ext:";
@@ -81,6 +83,11 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
                 i++;
             }
         }
+    }
+
+    public void ValidaMensaje(String mensaje){
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
+        MatcherAssert.assertThat("Error: No aparecio mensaje de advertencia en el filtro", mensaje.contains(lblMensaje.getText()));
     }
 
     public void clicRiesgos() {
