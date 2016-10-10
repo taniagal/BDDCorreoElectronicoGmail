@@ -98,10 +98,14 @@ public class PolizaSteps extends GuidewireSteps {
 
     }
     @Step
+    public String validar_mensaje(){
+        return getDriver().findElement(By.xpath(".//*[@id='StartCancellation:StartCancellationScreen:WarningMessageCancellation']")).getText();
+    }
+
+
+    @Step
     public void desplegar_lista_motivos_cancelacion() {
           polizaPage.desplegarMotivosCancelacion();
-
-
     }
 
     public PolizaPage obtenerPolizaPage(){
@@ -115,6 +119,11 @@ public class PolizaSteps extends GuidewireSteps {
 
     public void ingresarFechaAnteriorA61Dias(){
         obtenerPolizaPage().ingresarFechaAnteriorA61Dias(obtenerPolizaPage().obtenerFechacancelacionElemento());
+    }
+    @Step
+    public void validar_opcion_cancelar_transaccion(){
+        String XpathBtnCancelarTransaccion = ".//a[contains(.,'Cancelar transacción')]";
+        obtenerPolizaPage().validarBotones(XpathBtnCancelarTransaccion);
     }
 
 

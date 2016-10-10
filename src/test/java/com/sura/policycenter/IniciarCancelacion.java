@@ -2,6 +2,5 @@ package com.sura.policycenter;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
-
-public class CancelacionDePoliza extends SerenityStory {
+public class IniciarCancelacion extends SerenityStory{
 }

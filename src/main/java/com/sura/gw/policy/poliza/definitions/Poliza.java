@@ -125,7 +125,7 @@ public class Poliza {
     }
 
     @When("ingrese los motivos de cancelacion de la poliza Motivo: $motivo, Descripción: $descripcion")
-    public void cuandoIngreseLosMotivosDeCancelacion(String fuente, String motivo, String descripcion) {
+    public void cuandoIngreseLosMotivosDeCancelacion(String motivo, String descripcion) {
         LOGGER.info("Poliza.cuandoIngreseLosMotivosDeCancelacion");
         polizaSteps.seleccionar_boton_acciones().seleccionar_cancelar_poliza();
         polizaSteps.ingresar_motivos_cancelacion(motivo, descripcion);
@@ -177,7 +177,7 @@ public class Poliza {
 
     @Then("debe visualizarse las siguientes razones $razones")
     public void esperoVisualizarLasSiguientesRazones(ExamplesTable razones) {
-        LOGGER.info("Poliza.esperoVerLasOpcionesDeInstruccionesSiguientes");
+        LOGGER.info("Poliza.esperoVisualizarLasSiguientesRazones");
         for (Map<String, String> fila : razones.getRows()) {
             String razon = fila.get("RAZONES");
             org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.obtenerPaginInstruccionesPreviasARenovacion().obtenerListaRazonesDeRenovacion(), AssertUtil.hasItemContainsString(razon));
@@ -197,7 +197,7 @@ public class Poliza {
     }
     @Then("se debe visualizar los siguientes motivos $motivos")
     public void entoncesSeDebeVisualizarLosSiguientesMotivos(ExamplesTable motivos) {
-        LOGGER.info("Poliza.esperoVerLasOpcionesDeInstruccionesSiguientes");
+        LOGGER.info("Poliza.entoncesSeDebeVisualizarLosSiguientesMotivos");
         for (Map<String, String> fila : motivos.getRows()) {
             String motivo = fila.get("MOTIVOS");
             org.hamcrest.MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMotivosDisponibles(),AssertUtil.hasItemContainsString(motivo));
@@ -217,9 +217,22 @@ public class Poliza {
 
     @Then("se debe mostrar mensaje con el texto: $advertencia")
     public void entoncesSeDebeMostrarMensajeConElTexto(String advertencia) {
-        LOGGER.info("Poliza.entoncesLaCancionDeLaPolizaEsCorrecta");
-        assertThat(polizaSteps.obtenerTituloPagina(), equalTo(advertencia));
+        LOGGER.info("Poliza.entoncesSeDebeMostrarMensajeConElTexto");
+        assertThat(polizaSteps.validar_mensaje(), equalTo(advertencia));
     }
+    @When("ingrese a la opcion de cancelar poliza")
+    public void cuandoIngreseALaOpcionDeCancelarPoliza(){
+        LOGGER.info("Poliza.cuandoIngreseALaOpcionDeCancelarPoliza");
+        polizaSteps.seleccionar_boton_acciones().seleccionar_cancelar_poliza();
+
+    }
+    @Then("se debe mostrar la opcion de cancelar transaccion")
+    public void entoncesSeDebeMostrarLaOpcionDeCancelarTransaccion() {
+        LOGGER.info("Poliza.entoncesSeDebeMostrarLaOpcionDeCancelarTransaccion");
+        polizaSteps.validar_opcion_cancelar_transaccion();
+    }
+
+
 
 
 }

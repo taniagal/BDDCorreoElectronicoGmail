@@ -234,11 +234,15 @@ public class PolizaPage extends GuidewirePage {
         LocalDate fechaHace61Dias = formatter.parseDateTime(fecha.getValue()).toLocalDate().minusDays(61);
         obtenerFechacancelacionElemento().clear();
         obtenerFechacancelacionElemento().sendKeys(formatter.print(fechaHace61Dias));
+        obtenerFechacancelacionElemento().sendKeys(Keys.TAB);
     }
 
     public WebElementFacade obtenerFechacancelacionElemento() {
         waitFor(2).seconds();
         return findBy(xpathFechaVigenteCancelacion);
+    }
+    public void validarBotones (String path){
+         findBy(path);
 
     }
 
