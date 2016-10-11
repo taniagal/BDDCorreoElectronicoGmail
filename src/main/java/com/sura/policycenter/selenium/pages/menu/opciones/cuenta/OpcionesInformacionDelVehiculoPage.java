@@ -138,7 +138,7 @@ public class OpcionesInformacionDelVehiculoPage extends Commons {
         int valorAccesorioEspEntero = Integer.parseInt(valorAccesorioEsp);
         int valorTotalizado = valorAccesorioEntero + valorAccesorioEspEntero + valorAsegurado;
         String valorDeLabel = lblSumaValor.getText().substring(0, 11);
-        valorDeLabel = valorDeLabel.replaceAll("\\$", "").replaceAll(",", "");
+        valorDeLabel = valorDeLabel.replaceAll("\\$", "").replaceAll("\\.", "");
         comparaValores[0] = Integer.toString(valorTotalizado);
         comparaValores[1] = valorDeLabel;
     }

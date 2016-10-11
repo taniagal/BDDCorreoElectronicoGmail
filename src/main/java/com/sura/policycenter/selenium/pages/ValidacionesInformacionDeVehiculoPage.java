@@ -87,36 +87,37 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     }
 
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        campoVehiculoCeroKm.click();
-        Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        waitUntil(1000);
-        selectItem(comboBoxPlan, vehiculo.get("plan"));
-        ingresarDato(campoTxtPlaca,vehiculo.get("placa"));
-        waitUntil(1000);
-        comboBoxVehiculoServicio.click();
-        waitForTextToAppear(vehiculo.get("placa"),28000);
-        selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitForTextToAppear(vehiculo.get("modelo"),28000);
-        ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
-        campoTxtPlaca.click();
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
-        selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitForComboValue(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
-        waitUntil(1000);
-        waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona,vehiculo.get("zona")));
-        selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
+            campoVehiculoCeroKm.click();
+            Map<String, String> vehiculo = datosVehiculo.getRow(0);
+            waitUntil(1500);
+            selectItem(comboBoxPlan, vehiculo.get("plan"));
+            ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
+            waitUntil(1000);
+            comboBoxVehiculoServicio.click();
+            waitForTextToAppear(vehiculo.get("placa"), 28000);
+            selectItem(comboBoxModelo, vehiculo.get("modelo"));
+            waitForTextToAppear(vehiculo.get("modelo"), 28000);
+            ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
+            campoTxtPlaca.click();
+            waitUntil(1000);
+            withTimeoutOf(28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
+            selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+            waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+            waitUntil(1000);
+            waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
+            selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
 
-        if(!"null".equals(vehiculo.get("descuento"))){
-            campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
-            campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
-        }
+            if (!"null".equals(vehiculo.get("descuento"))) {
+                campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
+                campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
+            }
 
-        if (!"null".equals(vehiculo.get("motor"))) {
-            campoTxtMotor.clear();
-            campoTxtMotor.sendKeys(vehiculo.get("motor"));
-            campoTxtchasis.clear();
-            campoTxtchasis.sendKeys(vehiculo.get("chasis"));
-        }
+            if (!"null".equals(vehiculo.get("motor"))) {
+                campoTxtMotor.clear();
+                campoTxtMotor.sendKeys(vehiculo.get("motor"));
+                campoTxtchasis.clear();
+                campoTxtchasis.sendKeys(vehiculo.get("chasis"));
+            }
 
         MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
     }

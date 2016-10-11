@@ -3,6 +3,7 @@ package com.sura.gw.policy.poliza.steps;
 import com.sura.gw.navegacion.steps.GuidewireSteps;
 import com.sura.gw.navegacion.util.widget.EspacioDeTrabajoWidget;
 import com.sura.gw.policy.poliza.pages.AccionesWidget;
+import com.sura.gw.policy.poliza.pages.InstruccionesPreviasARenovacionPage;
 import com.sura.gw.policy.poliza.pages.PolizaPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.Step;
@@ -13,9 +14,10 @@ import java.util.List;
 
 public class PolizaSteps extends GuidewireSteps {
 
-    private static PolizaPage polizaPage;
+    private PolizaPage polizaPage;
     private static EspacioDeTrabajoWidget espacioDeTrabajoWidget;
     private static AccionesWidget accionesWidget;
+    private InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
     @Steps private static BotonAccionesSteps botonAccionesSteps;
 
 
@@ -64,8 +66,8 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
-    public void ingresar_motivos_cancelacion(String fuente, String motivo, String descripcion) {
-        polizaPage.ingresarMotivosCancelacion(fuente, motivo, descripcion);
+    public void ingresar_motivos_cancelacion(String motivo, String descripcion) {
+        polizaPage.ingresarMotivosCancelacion(motivo, descripcion);
     }
 
     @Step
@@ -96,5 +98,42 @@ public class PolizaSteps extends GuidewireSteps {
     public String obtenerTituloPagina(){
        return getDriver().findElement(By.xpath("//span[@id='JobComplete:JobCompleteScreen:ttlBar']")).getText();
 
+    }
+    @Step
+    public String validar_mensaje(){
+        return getDriver().findElement(By.xpath(".//*[@id='StartCancellation:StartCancellationScreen:WarningMessageCancellation']")).getText();
+    }
+
+
+    @Step
+    public void desplegar_lista_motivos_cancelacion() {
+          polizaPage.desplegarMotivosCancelacion();
+    }
+
+    public PolizaPage obtenerPolizaPage(){
+        return this.polizaPage;
+    }
+    public InstruccionesPreviasARenovacionPage obtenerInstruccionesPreviasPage()
+    {
+        return this.instruccionesPreviasARenovacionPage;
+    }
+
+    @Step
+    public Boolean es_fecha_cancelacion_nHOY() {
+        return obtenerPolizaPage().esFechaCancelacionHOY();
+    }
+
+    public void ingresarFechaAnteriorA61Dias(){
+        obtenerPolizaPage().ingresarFechaAnteriorA61Dias(obtenerPolizaPage().obtenerFechacancelacionElemento());
+    }
+    @Step
+    public void validar_opcion_cancelar_transaccion(){
+        String XpathBtnCancelarTransaccion = ".//a[contains(.,'Cancelar transacción')]";
+        obtenerPolizaPage().validarBotones(XpathBtnCancelarTransaccion);
+    }
+    @Step
+    public void validar_ocultacion_campo_fuente() {
+        String XpathBtnCancelarTransaccion = ".//tr[contains(.,'Fuente')]";
+        obtenerPolizaPage().validarBotones(XpathBtnCancelarTransaccion);
     }
 }
