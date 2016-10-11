@@ -23,4 +23,4 @@ Then se debe ver reflejada la bonificacion <bonoComercial> <bonoTecnico> de esta
 
 Examples:
 |placa |bonoComercial|bonoTecnico|
-|CYU123|0            |50         |
+|CYU123|0            |20         |
