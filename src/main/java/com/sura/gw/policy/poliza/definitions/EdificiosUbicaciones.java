@@ -143,7 +143,7 @@ public class EdificiosUbicaciones {
 
     @Then("se debe mostrar el siguiente mensaje $mensajesEsperados")
     public void entoncesValidarQueAparezcanLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
-edificiosUbicacionesSteps.verificar_mensaje(mensajesEsperados);
+        edificiosUbicacionesSteps.verificar_mensaje(mensajesEsperados);
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
 

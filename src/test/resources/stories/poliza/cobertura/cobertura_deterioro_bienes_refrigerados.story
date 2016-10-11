@@ -89,8 +89,8 @@ When intente ingresar las entradas de las diferentes coberturas
 | Otros Articulos          | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje
-| MENSAJES_WORKSPACE                                                                                                                                             |
-| El valor de "Terremoto - Artículo: Suelos y Terrenos" deber ser menor o igual al "20.0%" de la sumatoria de los valores asegurables de "todos los articulos". |
+| MENSAJES_WORKSPACE                                                                                                                                            |
+| El valor de "Terremoto - Artículo: Suelos y Terrenos" deber ser menor o igual al "20,0%" de la sumatoria de los valores asegurables de "todos los articulos". |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |
