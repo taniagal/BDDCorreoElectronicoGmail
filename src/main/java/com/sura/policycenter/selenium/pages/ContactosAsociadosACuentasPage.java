@@ -223,6 +223,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
                     if (i == cont){
                         checkBoxes.get(cont-1).click();
                         btnEliminar.click();
+                        waitUntil(300);
                     }
                 }
                 break;
@@ -236,8 +237,12 @@ public class ContactosAsociadosACuentasPage extends Commons {
             if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(contactoEliminado)) {
                 noExiste = false;
             }
+            else
+            {
+                MatcherAssert.assertThat("No existe el contacto",noExiste);
+                break;
+            }
         }
-        MatcherAssert.assertThat("No existe el contacto",!noExiste);
     }
 
 }
