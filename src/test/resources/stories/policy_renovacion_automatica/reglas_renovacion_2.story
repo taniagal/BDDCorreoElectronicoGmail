@@ -8,12 +8,17 @@ Meta:
 Sprint 8
 
 
-
-Scenario:
+Scenario: Valor accesorios superior al 20% del valor asegurado
 GivenStories: stories/policycenter/login_policy.story
 Given que es necesario renovar una <poliza> de autos
-When
-Then
+When quiera realizar esta renovacion
+And quiera aceptar esta renovacion
+And ingrese a la pestana vehiculos
+And quiera editar la transaccion
 
+When se identifique que el valor de los accesorios es superior al 20% del valor asegurado del vehículo
+Then Se debe mostrar el mensaje de  ALERTA  "El valor de los accesorios es mayor al 20% del valor asegurado."
+
+Examples:
 |poliza       |mensaje|
 |TEST_22266674|¿Esta seguro de que desea renovar esta póliza?|
