@@ -33,7 +33,7 @@ public class CotizacionMRCDefinitions {
         labelsCotizacionPoliza.put("descripcionDireccion", "Descripción de la dirección");
         labelsCotizacionPoliza.put("empresaAseguradora", "Empresa aseguradora");
         labelsCotizacionPoliza.put("primaTotal", "Prima total");
-        labelsCotizacionPoliza.put("impuestos", "Impuestos y cargos extra");
+        labelsCotizacionPoliza.put("impuestos", "Iva");
         labelsCotizacionPoliza.put("costoTotal", "Costo total");
         labelsCotizacionPoliza.put("tabPrimaPoliza", "Prima de póliza");
         labelsCotizacionPoliza.put("botonAnularClasificacion", "Anular clasificación");

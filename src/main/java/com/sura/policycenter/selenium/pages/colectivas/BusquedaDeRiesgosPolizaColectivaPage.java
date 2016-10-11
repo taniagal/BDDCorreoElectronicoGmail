@@ -1,6 +1,7 @@
 package com.sura.policycenter.selenium.pages.colectivas;
 
 
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
@@ -28,6 +29,8 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
     @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:ListRisksButton-btnInnerEl']")
     WebElementFacade btnListarRiesgos;
 
+
+    Commons cmm = new Commons(getDriver());
 
     private static final String TABLAXPATH = ".//*[@id='AccountFile_CollectivePolicy_Ext:";
     private static final String TABLAXPATHFILTRO = ".//*[@id='CollectivePolicyPARisksPopup:RisksLV-body']/div/table/tbody/tr/td[";
@@ -104,6 +107,7 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
     public void ingresePlaca(String placa) {
         txtPlaca.sendKeys(placa);
         btnBuscaPlaca.click();
+        cmm.waitUntil(1000);
     }
 
     public void listarRiesgos(){
