@@ -1,9 +1,6 @@
 package com.sura.policycenter.selenium.pages.colectivas;
 
 import com.sura.commons.selenium.Commons;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -16,6 +13,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class NuevaPolizaPage extends PageObject {
@@ -191,8 +192,8 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void buscarCuenta(String numeroCuenta) {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
-        commons.waitUntil(2000);
+        withTimeoutOf(35, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        //commons.waitUntil(3000);
         btnBuscar.click();
         WebElementFacade btnCuentas = commons.esperarElemento(".//*[@id='Search:MenuLinks:Search_AccountSearch']");
         btnCuentas.click();
