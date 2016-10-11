@@ -2,10 +2,6 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
 import com.sura.serenitybdd.util.GwNavegacionUtil;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -14,6 +10,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class ContactosAsociadosACuentasPage extends Commons {
 
@@ -225,6 +225,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
                         btnEliminar.click();
                     }
                 }
+                break;
             }
         }
     }
@@ -236,7 +237,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
                 noExiste = false;
             }
         }
-        MatcherAssert.assertThat("No existe el contacto",noExiste);
+        MatcherAssert.assertThat("No existe el contacto",!noExiste);
     }
 
 }
