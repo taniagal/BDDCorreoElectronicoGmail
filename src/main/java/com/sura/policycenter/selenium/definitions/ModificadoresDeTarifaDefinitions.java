@@ -12,8 +12,8 @@ public class ModificadoresDeTarifaDefinitions {
     @Steps
     ModificadoresDeTarifaSteps modificadoresDeTarifaSteps;
 
-    @When("seleccione algunas las coberturas: $coberturas")
-    public void agregarTodasLasCoberturas(ExamplesTable coberturas) {
+    @When("seleccione algunas coberturas: $coberturas")
+    public void agregarCoberturas(ExamplesTable coberturas) {
         modificadoresDeTarifaSteps.seleciconar_coberturas(coberturas);
     }
 
