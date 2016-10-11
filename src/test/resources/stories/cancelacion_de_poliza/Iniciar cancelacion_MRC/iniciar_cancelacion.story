@@ -102,5 +102,24 @@ Examples:
 | TEST_99999999 | Asesor     | Por no renovada         | prueba error prorrata   | Prorrata       |
 
 
+Scenario: 6 Validacion lista de motivos para poliza bancolombia
 
+Meta: @manual
+@Story CDSEG-3417
+@URL https://jira.suramericana.com.co/browse/CDSEG-
+@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
+@Sprint 8
 
+Given que estoy en el resumen de la poliza MRC  de bancolombia con numero de poliza <numPoliza> con el rol <rolUsuario>
+When seleccione la lista motivos de cancelacion
+Then se deben visualizar los siguientes motivos
+| MOTIVOS                                       |
+| El cliente termino el crédito                 |
+| El cliente prepago el crédito                 |
+| El cliente tomo otra póliza con Suramericana  |
+| El cliente tomo otra póliza con otra compañía |
+| Por cambio en la fecha de vigencia            |
+
+Examples:
+| numPoliza  | rolUsuario |
+| 6076942934 | Asesor     |
