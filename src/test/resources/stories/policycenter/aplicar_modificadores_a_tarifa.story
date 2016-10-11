@@ -27,7 +27,7 @@ And seleccione algunas las coberturas:
 |32    |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus|6 |Plus|10 |0  |1.50|40|16|20|Opción 1|Opción 1|
 Then el valor del monto en cada cobertura debe ser:
 |fila|valor     |valorSinMods|
-|1   |386.666   |282,623   |
+|1   |193.333   |282,623   |
 |4   |2.790.097 |4,078,689 |
 |9   |437.552   |927,774   |
 |14  |58.336    |85,279    |

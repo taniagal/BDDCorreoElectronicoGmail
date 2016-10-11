@@ -22,7 +22,7 @@ public class NuevoAseguradoNombradoPage extends Commons {
     private WebElementFacade txtDireccion;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade cboDepartamento;
-    @FindBy(xpath = ".//input[@name='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext']")
+    @FindBy(xpath = "//input[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
     private WebElementFacade cboCiudad;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:ContactNameInputSet:WorkPhone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade txtTelefonoTrabajo;
@@ -58,16 +58,16 @@ public class NuevoAseguradoNombradoPage extends Commons {
             cboDetalleDireccion.type("CL 45 - 56 A 109");
             tabDetalleContacto.waitUntilClickable();
             tabDetalleContacto.click();
-            cboTipoDireccion.type("Otros");
+            cboTipoDireccion.type("DIRECCION DE RESIDENCIA");
             cboTipoDireccion.sendKeys(Keys.ENTER);
             cboTipoDocumento.type("CEDULA DE CIUDADANIA");
             cboTipoDocumento.sendKeys(Keys.ENTER);
-            cboDepartamento.type("Antioquia");
+            cboDepartamento.type("ANTIOQUIA");
             cboDepartamento.sendKeys(Keys.ENTER);
             waitABit(3000);
-            cboCiudad.clear();
+            //cboCiudad.clear();
             waitABit(1500);
-            cboCiudad.type("Medellin");
+            cboCiudad.type("MEDELLIN");
             cboCiudad.sendKeys(Keys.ENTER);
             waitABit(3000);
             txtDireccion.clear();

@@ -3,7 +3,7 @@ Busqueda De Riesgos Poliza Colectiva
 Meta:
 
 @issue #CDSEG-2793
-@tag automator: Jonathan Mejia, sprint:8
+@tag automator: Jonathan Mejia Leon, sprint:8
 @Sprint 8
 @local
 
