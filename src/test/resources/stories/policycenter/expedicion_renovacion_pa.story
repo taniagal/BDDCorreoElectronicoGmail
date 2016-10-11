@@ -52,6 +52,6 @@ Meta: @manual
 Given he cotizando una renovacion de poliza
 And indique el plan de pagos
 When emita la renovacion de la poliza
-Then se debe permitir expedir la poliza
+Then se debe permitir expedir poliza
 
 
