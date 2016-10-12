@@ -31,15 +31,11 @@ public class IngresoDeCoberturasPage extends PageObject{
 
     public void ingresarLimite(){
         waitForTextToAppear("Cobertura");
-        waitFor(campoLimite).click();
-        campoLimite.sendKeys(Keys.ARROW_DOWN);
-        campoLimite.sendKeys(Keys.ENTER);
+        commons.selectItem(campoLimite,"32.000.000");
     }
 
     public void ingresarDeducible(){
-        campoDeducible.click();
-        campoDeducible.sendKeys(Keys.ARROW_DOWN);
-        campoDeducible.sendKeys(Keys.ENTER);
+        commons.selectItem(campoDeducible,"0");
     }
 
     public void cotizar(){

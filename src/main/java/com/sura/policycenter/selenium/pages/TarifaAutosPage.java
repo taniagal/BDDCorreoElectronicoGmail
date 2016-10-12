@@ -131,7 +131,7 @@ public class TarifaAutosPage extends Commons {
         comboBoxTipoPlazo.waitUntilPresent().clear();
         selectItem(comboBoxTipoPlazo, "6 meses");
         waitForComboValue(comboBoxTipoPlazo, "6 meses");
-        waitUntil(1000);
+        waitUntil(2000);
     }
 
 

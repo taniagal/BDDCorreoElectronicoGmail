@@ -4,6 +4,10 @@ Narrative:
 Scenario: Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial buscando por
 numero de cuenta y persona juridica
 Meta:
+@Story CDSEG-907
+@URL https://jira.suramericana.com.co/browse/CDSEG-907
+@tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
+@Sprint 7
 Given deseo crear nueva cotizacion buscando por numero de cuenta
 When digite el numero de cuenta C010478975 de una persona juridica y digite la tecla Tab para activar la busqueda
 Then espero ver el nombre de la persona jurídica VARIEDADES YURLEDYS S.A de la cuenta existente junto con la etiqueta
