@@ -160,6 +160,6 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons {
     }
 
     public void borrarEspacioTrabajo() {
-        btnBorrar.click();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(btnBorrar).click();
     }
 }
