@@ -116,6 +116,16 @@ public class TarifaAutosPage extends Commons {
     }
 
 
+    public void desMarcarCoberturaHurto() {
+        checkBoxHurto.click();
+    }
+
+
+    public void desMarcarCoberturaDanios() {
+        checkBoxDaniosCarro.click();
+    }
+
+
     public void cambiarTipoPlazo() {
         meniItemInformacionDePoliza.click();
         comboBoxTipoPlazo.waitUntilPresent().clear();
@@ -131,12 +141,7 @@ public class TarifaAutosPage extends Commons {
         waitUntil(500);
         menuItemCotizacion.waitUntilPresent().click();
     }
-
-
-    public void desMarcarCoberturas() {
-        checkBoxHurto.click();
-    }
-
+    
 
     public void relacionarAsegurado() {
         botonRelacionarAsegurado.waitUntilPresent();
@@ -161,15 +166,19 @@ public class TarifaAutosPage extends Commons {
         Map<String, String> dato = datosCoberturas.getRow(0);
 //        botonBorrar.waitUntilPresent().click();
 //        botonBorrar.waitUntilNotVisible();
-        comboBoxLimite.waitUntilPresent();
-        waitUntil(1500);
-        comboBoxLimite.clear();
-        waitUntil(500);
-        comboBoxLimite.sendKeys(dato.get("limite"));
-        comboBoxLimite.sendKeys(Keys.ENTER);
-        waitUntil(800);
-        selectItem(comboBoxDeducible, dato.get("deducible"));
-        selectItem(comboBoxAbogado, dato.get("abogado"));
+        try {
+            comboBoxLimite.waitUntilPresent();
+            waitUntil(1500);
+            comboBoxLimite.clear();
+            waitUntil(500);
+            comboBoxLimite.sendKeys(dato.get("limite"));
+            comboBoxLimite.sendKeys(Keys.ENTER);
+            waitUntil(800);
+            selectItem(comboBoxDeducible, dato.get("deducible"));
+            selectItem(comboBoxAbogado, dato.get("abogado"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -180,16 +189,18 @@ public class TarifaAutosPage extends Commons {
         selectItem(comboBoxGastosDeTransporte, dato.get("GTH"));
         checkBoxAccidentes.click();
         selectItem(comboBoxAccidentes, dato.get("AC"));
-        //checkBoxAsistencia.click();
-        //selectItem(comboBoxAsistencia, dato.get("AS"));
-        checkBoxDaniosCarro.click();
-        selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
-        selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
-        selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
         checkBoxGastosTaspaso.click();
         selectItem(comboBoxGastosTraspaso, dato.get("GTR"));
         checkBoxGAstosDeParqueadero.click();
         selectItem(comboBoxgastosDeParqueadero, dato.get("GP"));
+    }
+
+
+    public void seleccionarCoberturasDeDanios(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
+        selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
+        selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
+        selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
     }
 
 
@@ -212,25 +223,6 @@ public class TarifaAutosPage extends Commons {
         checkBoxTallerMovil.click();
         checkBoxConductorElegido.click();
         selectItem(comboBoxConductorElegido, dato.get("CE"));
-    }
-
-
-    public void seleccionarCoberturasMinimas(ExamplesTable coberturas) {
-        Map<String, String> dato = coberturas.getRow(0);
-        selectItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
-        selectItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
-        selectItem(comboBoxGastosDeTransporte, dato.get("GTH"));
-        checkBoxAccidentes.click();
-        selectItem(comboBoxAccidentes, dato.get("AC"));
-        //checkBoxAsistencia.click();
-        //selectItem(comboBoxAsistencia, dato.get("AS"));
-        selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
-        selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
-        selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
-        checkBoxGastosTaspaso.click();
-        selectItem(comboBoxGastosTraspaso, dato.get("GTR"));
-        checkBoxGAstosDeParqueadero.click();
-        selectItem(comboBoxgastosDeParqueadero, dato.get("GP"));
     }
 
 
