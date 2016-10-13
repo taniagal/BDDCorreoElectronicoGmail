@@ -22,7 +22,7 @@ Then se debe mostrar el siguiente mensaje
 
 Examples:
 |cotizacion |
-|0000474343 |
+|33445566   |
 
 Scenario: Validar Chasis
 GivenStories: stories/policycenter/login_policy.story
@@ -35,7 +35,7 @@ Then se debe mostrar el siguiente mensaje
 
 Examples:
 |cotizacion |
-|0000474343 |
+|33445566   |
 
 Scenario: Maximo valor accesorios
 Given se esta cotizando una renovacion de poliza <cotizacion>
@@ -47,7 +47,7 @@ Then se debe mostrar el siguiente mensaje
 
 Examples:
 |cotizacion |
-|0000474343 |
+|33445566   |
 
 Scenario: Maximo valor accesorios especiales
 Given se esta cotizando una renovacion de poliza <cotizacion>
@@ -59,7 +59,7 @@ Then se debe mostrar el siguiente mensaje
 
 Examples:
 |cotizacion |
-|0000474343 |
+|33445566   |
 
 Scenario: Valor asegurado superior al 50% del valor de la vigencia anterior
 Meta: @manual
