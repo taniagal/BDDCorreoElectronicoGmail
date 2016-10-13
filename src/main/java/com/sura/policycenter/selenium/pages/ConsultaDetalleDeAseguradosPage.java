@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 
 public class ConsultaDetalleDeAseguradosPage extends PageObject{
 
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:OfficialIDInputSet:DocumentType-inputEl']")
+    @FindBy(xpath = ".//*[@id='PolicyFile_PersonalAuto_Drivers:PolicyFile_PersonalAuto_DriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:OfficialIDInputSet:DocumentType-inputEl']")
     WebElementFacade campoTipoDocumento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     WebElementFacade campoNumeroDocumento;

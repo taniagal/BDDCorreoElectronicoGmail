@@ -103,4 +103,10 @@ public class IngresoDeRiesgosPolizaColectivaDefinitions {
     public void validarRiesgoIngresado(ExamplesTable riesgosColectiva){
         ingresoDeRiesgosPolizaColectivaSteps.validarRiesgoIngresado(riesgosColectiva);
     }
+
+    @Then("se debe visualizar la opcion de ir a la lista de riesgos")
+    public void validarOpcionIrAListaDeRiesgos(){
+        ingresoDeRiesgosPolizaColectivaSteps.validarOpcionIrAListaDeRiesgos();
+    }
+
 }
