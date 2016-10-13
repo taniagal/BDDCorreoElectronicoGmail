@@ -42,8 +42,14 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps{
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.setCoberturas(coberturas);
         tarifaAutosPage.seleccionarCoberturas(coberturas);
-        tarifaAutosPage.desMarcarCoberturaDanios();
+        tarifaAutosPage.marcarCoberturaDanios();
         tarifaAutosPage.seleccionarCoberturasDeDanios(coberturas);
+        vehiculoPage.clickVolver();
+        vehiculoPage.clickSiguiente();
+        tarifaAutosPage.seleccionarCoberturas2(coberturas);
+        vehiculoPage.clickVolver();
+        vehiculoPage.clickSiguiente();
+        tarifaAutosPage.seleccionarCoberturas3(coberturas);
         tarifaAutosPage.cambiarTipoPlazo();
         tarifaAutosPage.cotizar();
     }

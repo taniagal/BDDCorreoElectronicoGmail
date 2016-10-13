@@ -12,7 +12,7 @@ public class ModificadoresDeTarifaDefinitions {
     @Steps
     ModificadoresDeTarifaSteps modificadoresDeTarifaSteps;
 
-    @When("seleccione algunas coberturas: $coberturas")
+    @When("seleccione algunas las coberturas: $coberturas")
     public void agregarCoberturas(ExamplesTable coberturas) {
         modificadoresDeTarifaSteps.seleciconar_coberturas(coberturas);
     }

@@ -121,7 +121,7 @@ public class TarifaAutosPage extends Commons {
     }
 
 
-    public void desMarcarCoberturaDanios() {
+    public void marcarCoberturaDanios() {
         checkBoxDaniosCarro.click();
     }
 
@@ -164,8 +164,8 @@ public class TarifaAutosPage extends Commons {
 
     public void setCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
-//        botonBorrar.waitUntilPresent().click();
-//        botonBorrar.waitUntilNotVisible();
+        botonBorrar.waitUntilPresent().click();
+        botonBorrar.waitUntilNotVisible();
         try {
             comboBoxLimite.waitUntilPresent();
             waitUntil(1500);
