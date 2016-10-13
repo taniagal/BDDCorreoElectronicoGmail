@@ -69,7 +69,7 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
 
     private List<WebElementFacade> getListaFiltroPlaca() {
         List<WebElementFacade> listaPlaca;
-        listaPlaca = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='CollectivePolicyPARisksPopup:RisksLV-body']/div/table/tbody/tr/td[1]");
+        listaPlaca = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='CollectivePolicyPARisksPopup:RisksLV-body']/div/table/tbody/tr/td[1]");
         return listaPlaca;
     }
 
@@ -91,6 +91,7 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
     }
 
     public void validaBotonListarRiesgos() {
+        cmm.waitUntil(2000);
         MatcherAssert.assertThat("No contiene los 5 registros", getListaFiltroPlaca().size() == 5);
     }
 

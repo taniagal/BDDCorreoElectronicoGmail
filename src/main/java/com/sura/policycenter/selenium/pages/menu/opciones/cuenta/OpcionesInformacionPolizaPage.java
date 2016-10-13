@@ -405,14 +405,9 @@ public class OpcionesInformacionPolizaPage extends Commons {
     }
 
     public void ingresarNumeroCuotas() {
-        waitFor(labelNumeroCuotas).shouldBePresent();
-        MatcherAssert.assertThat(labelNumeroCuotas.getText(), labelNumeroCuotas.isCurrentlyVisible());
-        MatcherAssert.assertThat(textoNumeroCuotas.getText(), textoNumeroCuotas.isCurrentlyVisible());
-        waitUntil(2000);
-        botonNumeroCuotas.click();
-        itemNumeroCuotas.click();
-        waitFor(fechaExpiracionPoliza).shouldBeVisible();
-        fechaExpiracionPoliza.click();
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelNumeroCuotas).shouldBePresent();
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(textoNumeroCuotas).clear();
+        textoNumeroCuotas.typeAndTab("11");
         waitUntil(1000);
     }
 
