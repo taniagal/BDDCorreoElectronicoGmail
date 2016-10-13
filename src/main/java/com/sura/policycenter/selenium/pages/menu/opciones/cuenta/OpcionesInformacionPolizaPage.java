@@ -146,7 +146,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
     private WebElementFacade mensajeValidacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
+    @FindBy(id = "SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl")
     private WebElementFacade campoOrganizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
     private WebElementFacade campoCanal;
@@ -184,7 +184,8 @@ public class OpcionesInformacionPolizaPage extends Commons {
     private WebElementFacade botonCambiarTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade linkCoaseguro;
-
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardInfoBar:PolicyNum-btnInnerEl']")
+    private WebElementFacade nroPolizaColectiva;
 
     public OpcionesInformacionPolizaPage(WebDriver driver) {
         super(driver);
@@ -527,6 +528,8 @@ public class OpcionesInformacionPolizaPage extends Commons {
             MatcherAssert.assertThat(tipoDirTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDireccionTomador"))));
             MatcherAssert.assertThat(descripcionDireccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descripcionDirTomador"))));
             MatcherAssert.assertThat(direccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("direccionTomador"))));
+//            JOptionPane.showMessageDialog(null, "formulario" + " " + campoOrganizacion.getText());
+//            JOptionPane.showMessageDialog(null, "historia" + " " + informacionPoliza.get("organizacion"));
             MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("organizacion"))));
             MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("canal"))));
             MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPoliza"))));
@@ -542,6 +545,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
             MatcherAssert.assertThat(botonCambiarTomador.isVisible(), Is.is(Matchers.equalTo(false)));
             MatcherAssert.assertThat(linkCoaseguro.isVisible(), Is.is(Matchers.equalTo(false)));
             MatcherAssert.assertThat(polizaFinanciada.isVisible(), Is.is(Matchers.equalTo(false)));
+            MatcherAssert.assertThat(nroPolizaColectiva.isPresent(), Is.is(Matchers.equalTo(true)));
             resetImplicitTimeout();
         } catch (AssertionError assertionError) {
             resetImplicitTimeout();
