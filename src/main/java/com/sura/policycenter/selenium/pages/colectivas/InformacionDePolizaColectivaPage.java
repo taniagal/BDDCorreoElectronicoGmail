@@ -23,6 +23,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.slf4j.LoggerFactory;
 
+import javax.swing.*;
+
 public class InformacionDePolizaColectivaPage extends PageObject {
 
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ttlBar']")
@@ -57,7 +59,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     WebElementFacade campoTipoPlazo;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:EffectiveDate-inputEl']")
     WebElementFacade fechaInicioVigencia;
-    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:ExpirationDate-bodyEl']")
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:ExpirationDate-inputEl']")
     WebElementFacade campoFechaFinVigencia;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:IssueDate-inputEl']")
     WebElementFacade fechaExpedicion;
@@ -329,7 +331,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     public void validarLosElementosDeshabilitados() {
         waitFor(botonSiguiente).waitUntilNotVisible();
         commons.waitUntil(2000);
-        MatcherAssert.assertThat(linkAgregarCoaseguro.getAttribute("href"), Is.is(Matchers.equalTo("")));
+        linkAgregarCoaseguro.shouldNotBeVisible();
         MatcherAssert.assertThat(organizacion.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
         MatcherAssert.assertThat(canal.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
         MatcherAssert.assertThat(tipoDePoliza.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));

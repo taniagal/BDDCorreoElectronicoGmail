@@ -71,7 +71,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
 
 
     public void irAIngresarAsegurado() {
-        waitFor(botonAsegurados);
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonAsegurados).waitUntilClickable();
         botonAsegurados.click();
     }
 
