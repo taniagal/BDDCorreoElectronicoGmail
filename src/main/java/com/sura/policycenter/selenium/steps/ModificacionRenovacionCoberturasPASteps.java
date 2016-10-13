@@ -53,4 +53,9 @@ public class ModificacionRenovacionCoberturasPASteps extends ScenarioSteps {
     public void editar_Transaccion_De_Poliza() {
         modificacionRenovacionCoberturas.editarTransaccionPoliza();
     }
+
+    @Step
+    public void borrar_espacio_trabajo() {
+        modificacionRenovacionCoberturas.borrarEspacioTrabajo();
+    }
 }

@@ -53,6 +53,7 @@ public class InicioRenovacionPolizaPaDefinitions {
     @Then("validar campos informativos de vehiculo: $datosVehiculo")
     public void validaDatosDeVehiculo(ExamplesTable datosVehiculo) {
         inicioRenovacionPolizaPaSteps.validacion_en_pantalla_vehiculo(datosVehiculo);
+        inicioRenovacionPolizaPaSteps.opciones_de_cierre();
     }
 
 

@@ -6,7 +6,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class InstruccionesPreviasARenovacionSteps extends ScenarioSteps {
 
-    public InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
+    private InstruccionesPreviasARenovacionPage instruccionesPreviasARenovacionPage;
 
     @Step
     public InstruccionesPreviasARenovacionSteps seleccionar_boton_editar() {
@@ -16,7 +16,8 @@ public class InstruccionesPreviasARenovacionSteps extends ScenarioSteps {
 
     @Step
     public InstruccionesPreviasARenovacionSteps desplegar_lista_instruccion() {
-        instruccionesPreviasARenovacionPage.seleccionarListaDesplegableDeInstruccion();
+        String xpathListaInstruccion = "//input[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:PreRenewalDirection-inputEl']";
+        instruccionesPreviasARenovacionPage.seleccionarListaDesplegable(xpathListaInstruccion);
         return this;
     }
     @Step
@@ -29,4 +30,8 @@ public class InstruccionesPreviasARenovacionSteps extends ScenarioSteps {
         instruccionesPreviasARenovacionPage.seleccionarListaDesplegableDeEtiqueta(opcion);
         return this;
     }
+    public InstruccionesPreviasARenovacionPage obtenerPaginInstruccionesPreviasARenovacion(){
+        return this.instruccionesPreviasARenovacionPage;
+    }
+
 }

@@ -53,7 +53,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-labelEl']")
     private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:Taxes-labelEl']")
-    private WebElementFacade labelImpuestos;
+    private WebElementFacade labelIva;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:TotalCost-labelEl']")
     private WebElementFacade labelCostoTotal;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']")
@@ -77,7 +77,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade campoPrimaTotal;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:Taxes-inputEl']")
-    private WebElementFacade campoImpuestosYCargos;
+    private WebElementFacade campoIva;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
     private WebElementFacade campoCostoTotal;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:1']")
@@ -134,7 +134,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
     @FindBy(xpath = ".//tr[4]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td/div")
     private WebElementFacade labelDCSubtotalPrimas;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:Taxes-labelEl']")
-    private WebElementFacade labelDCImpuesto;
+    private WebElementFacade labelDCIva;
 
     public ModificacionCotizacionDePolizaPage(WebDriver driver) {
         super(driver);
@@ -164,7 +164,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
         MatcherAssert.assertThat(labelDescripcionDireccion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("descripcionDireccion"))));
         MatcherAssert.assertThat(labelEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("empresaAseguradora"))));
         MatcherAssert.assertThat(labelPrimaTotal.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("primaTotal"))));
-        MatcherAssert.assertThat(labelImpuestos.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("impuestos"))));
+        MatcherAssert.assertThat(labelIva.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("iva"))));
         MatcherAssert.assertThat(labelCostoTotal.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("costoTotal"))));
 
         if (campoNumeroDeCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("numeroCotizacion"))) {
@@ -181,7 +181,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("empresaAseguradora"))));
         MatcherAssert.assertThat(campoPrimaTotal.getText(), Matchers.containsString(datosCotizacion.get("prima")));
-        MatcherAssert.assertThat(campoImpuestosYCargos.getText(), Matchers.containsString(datosCotizacion.get("impuestos")));
+        MatcherAssert.assertThat(campoIva.getText(), Matchers.containsString(datosCotizacion.get("iva")));
         MatcherAssert.assertThat(campoCostoTotal.getText(), Matchers.containsString(datosCotizacion.get("total")));
         MatcherAssert.assertThat(campoVigenciaDePoliza.getText(), Is.is(Matchers.notNullValue()));
 
@@ -199,7 +199,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
         MatcherAssert.assertThat(labelPrima.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("prima"))));
         MatcherAssert.assertThat(labelSubtotal.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotal"))));
         MatcherAssert.assertThat(labelSubtotalPrimas.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotalPrimas"))));
-        MatcherAssert.assertThat(labelImpuesto.getText(), Matchers.containsString(infoDetalleCotizacion.get("impuesto")));
+        MatcherAssert.assertThat(labelImpuesto.getText(), Matchers.containsString(infoDetalleCotizacion.get("iva")));
     }
 
     public void validarDireccion(String direccion) {
@@ -268,8 +268,8 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
         MatcherAssert.assertThat(labelDCPrima.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_prima"))));
         MatcherAssert.assertThat(labelDCSubtotal.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_subtotal"))));
         MatcherAssert.assertThat(labelDCSubtotalPrimas.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_subtotalPrimas"))));
-        waitFor(labelDCImpuesto).shouldContainText(infoDetalleCotizacion.get("DC_impuesto"));
-        MatcherAssert.assertThat(labelDCImpuesto.getText(), Matchers.containsString(infoDetalleCotizacion.get("DC_impuesto")));
+        waitFor(labelDCIva).shouldContainText(infoDetalleCotizacion.get("DC_iva"));
+        MatcherAssert.assertThat(labelDCIva.getText(), Matchers.containsString(infoDetalleCotizacion.get("DC_iva")));
     }
 
     public WebElementFacade esperarElemento(final String xpath) {

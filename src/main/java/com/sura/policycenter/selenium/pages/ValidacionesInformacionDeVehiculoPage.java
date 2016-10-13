@@ -78,6 +78,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     public void agregarPlaca(String placa) {
         campoTxtPlaca.sendKeys(placa);
         campoTxtchasis.click();
+        waitForTextToAppear(placa, 28000);
     }
 
     public void clickSiguiente() {

@@ -30,9 +30,9 @@ public class InstruccionesPreviasARenovacionPage extends PageObject {
         shouldContainText("Instrucción");
     }
 
-    public void seleccionarListaDesplegableDeInstruccion() {
+    public void seleccionarListaDesplegable(String xpath) {
 
-        String xpathDropdownInstruccion = "//input[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:PreRenewalDirection-inputEl']";
+        String xpathDropdownInstruccion = xpath;
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
 
 
