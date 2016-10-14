@@ -116,7 +116,7 @@ public class Commons extends PageObject {
 
     public void ingresarDato(WebElementFacade elemento, String dato){
         do {
-            waitFor(elemento);
+            waitFor(elemento).waitUntilPresent();
             elemento.clear();
             waitUntil(500);
             waitFor(elemento).shouldContainText("");
