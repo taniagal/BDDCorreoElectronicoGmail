@@ -96,7 +96,11 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
         waitUntil(1500);
         selectItem(comboBoxPlan, vehiculo.get("plan"));
-        ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
+        if (!"random".equals(vehiculo.get("placa"))) {
+            ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
+        } else {
+            campoTxtPlaca.sendKeys("QWE" + (int) Math.floor(Math.random() * (100 - 999) + 999));
+        }
         waitUntil(1000);
         comboBoxVehiculoServicio.click();
         waitForTextToAppear(vehiculo.get("placa"), 28000);
