@@ -47,7 +47,7 @@ When intente ingresar las entradas de las diferentes coberturas
 When haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                              |
-| El valor de "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " deber ser menor o igual al "40.0%" de la sumatoria de los valores asegurables de "todos los articulos". |
+| El valor de "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " deber ser menor o igual al "40,0%" de la sumatoria de los valores asegurables de "todos los articulos". |
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
@@ -88,9 +88,9 @@ When intente ingresar las entradas de las diferentes coberturas
 | Otros Articulos          | Suelos y Terrenos |                     |           | Valor Asegurable                                                                     | 25             |
 | Otros Articulos          | Suelos y Terrenos |                     |           | Índice variable                                                                      | 1              |
 When haga clic en el boton Aceptar
-Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
-| MENSAJES_WORKSPACE                                                                                                                                             |
-| El valor de "Terremoto - Artículo: Suelos y Terrenos" deber ser menor o igual al "20.0%" de la sumatoria de los valores asegurables de "todos los articulos". |
+Then se debe mostrar el siguiente mensaje
+| MENSAJES_WORKSPACE                                                                                                                                            |
+| El valor de "Terremoto - Artículo: Suelos y Terrenos" deber ser menor o igual al "20,0%" de la sumatoria de los valores asegurables de "todos los articulos". |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |

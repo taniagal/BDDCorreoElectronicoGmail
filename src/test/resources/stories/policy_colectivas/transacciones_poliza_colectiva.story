@@ -57,8 +57,8 @@ And seleccione el producto <producto> de poliza colectiva para expedirla
 And vaya a consultar las transacciones de la poliza colectiva
 And de clic en el numero de poliza de transacciones poliza colectiva
 Then debo ver los siguiente campos en la pantalla con su respectiva informacion:
-| titulo                             | tomadorInfo | tipoDocumento        | numeroDocumento | nombre                        | telefono | tipoDireccion | descripcionDir                             | direccionDePoliza                           | detallePoliza         | organizacion | canal             | tipoPoliza                | tipoPlazo | fechaInicioVigencia | fechaFin | fechaExp   | oficina | codAgente   | descuentoPoliza | agregarCoaseguro  |
-| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 408-2211 | Vivienda      | Created by the Address Builder with code 0 | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Detalles de la póliza | Sura         | Canal Tradicional | Commercial Personal Fleet | Anual     | 07/26/2016          |          | 07/26/2016 |SURA     | 1989        | 10              | Agregar coaseguro |
+| titulo                             | tomadorInfo | tipoDocumento        | numeroDocumento | nombre                        | telefono | tipoDireccion           | descripcionDir                             | direccionDePoliza                           | detallePoliza         | organizacion | canal             | tipoPoliza                | tipoPlazo | fechaInicioVigencia | fechaFin | fechaExp   | oficina | codAgente | descuentoPoliza | agregarCoaseguro  |
+| Información de la póliza colectiva | Tomador     | CEDULA DE CIUDADANIA | 1234567890      | YURLEDYS PAOLA GALLEGO TORRES | 408-2211 | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | Detalles de la póliza | Sura         | Canal Tradicional | Commercial Personal Fleet | Anual     | 07/26/2016          |          | 07/26/2016 | SURA    | 1989      | 10              | Agregar coaseguro |
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  |
@@ -123,9 +123,3 @@ Then debo ver el detalle del asegurado y no debe permitir la modificacion de los
 Examples:
 | numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto                  | riesgo |
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Personal Fleet | BLE861 |
-
-Scenario: validar que los botones de agregar tomador, direccion, y los campos de fecha se deshabiliten al actualizar la poliza colectiva
-Meta: @manual
-Given que estoy en una poliza colectiva
-When actualizo la poliza colectiva
-Then me debe deshabilitar todos los campos, botones y links de la pantalla que modifiquen la poliza

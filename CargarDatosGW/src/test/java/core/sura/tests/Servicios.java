@@ -62,8 +62,8 @@ public class Servicios extends MetodosComunes{
     }
 
     public void irAServicios() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='TabBar:AdminTab-btnInnerEl']"))).isDisplayed();
-        driver.findElement(By.xpath(".//*[@id='TabBar:AdminTab-btnInnerEl']")).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='TabBar:AdminTab']"))).isDisplayed();
+        driver.findElement(By.xpath(".//*[@id='TabBar:AdminTab']")).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='Admin:MenuLinks:Admin_Utilities']/div"))).isDisplayed();
         driver.findElement(By.xpath(".//*[@id='Admin:MenuLinks:Admin_Utilities']/div")).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='ImportWizard:Cancel-btnInnerEl']"))).isDisplayed();

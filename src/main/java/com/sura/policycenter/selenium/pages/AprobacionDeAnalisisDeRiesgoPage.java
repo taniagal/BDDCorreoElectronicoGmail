@@ -16,7 +16,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageObject {
     private WebElementFacade botonAceptarMensaje;
     @FindBy(xpath = ".//*[@id='RiskApprovalDetailsPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptarAprobacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
     private WebElementFacade botonExpedirPoliza;
 
     public AprobacionDeAnalisisDeRiesgoPage(WebDriver driver) {

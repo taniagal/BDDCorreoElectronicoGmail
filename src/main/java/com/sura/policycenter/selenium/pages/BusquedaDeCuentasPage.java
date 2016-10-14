@@ -200,9 +200,7 @@ public class BusquedaDeCuentasPage extends Commons {
     public void seleccionarTipoIdentificacion(String tipoDocumento) {
         txtTipoDocumento.waitUntilVisible();
         this.limpiarFormulario();
-        txtTipoDocumento.clear();
-        txtTipoDocumento.sendKeys(tipoDocumento);
-        txtTipoDocumento.sendKeys(Keys.ENTER);
+        seleccionarItemEnCombo(txtTipoDocumento, tipoDocumento);
     }
 
     public void buscarCuentaPorNombreComercial(String nombreComercial) {
@@ -255,4 +253,9 @@ public class BusquedaDeCuentasPage extends Commons {
         actions.click(btnBuscar).build().perform();
     }
 
+    public void seleccionarItemEnCombo(WebElementFacade elemento, String dato){
+        elemento.clear();
+        elemento.sendKeys(dato);
+        elemento.sendKeys(Keys.ENTER);
+    }
 }

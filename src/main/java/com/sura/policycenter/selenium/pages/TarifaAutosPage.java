@@ -2,12 +2,15 @@ package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -96,7 +99,7 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade menuItemCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
     private WebElementFacade meniItemAsegurados;
-    @FindBy(id = "SubmissionWizard:PolicyInfo")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
     private WebElementFacade meniItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact:1:UnassignedDriver-textEl']")
     private WebElementFacade navItemAsegurado;
@@ -104,11 +107,22 @@ public class TarifaAutosPage extends Commons {
     private WebElementFacade navItemContastosDeLaCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver']")
     private WebElementFacade navItemAseguradoR;
-    private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
 
+    private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     public TarifaAutosPage(WebDriver driver) {
         super(driver);
+    }
+
+
+    public void desMarcarCoberturaHurto() {
+        checkBoxHurto.click();
+    }
+
+
+    public void marcarCoberturaDanios() {
+        checkBoxDaniosCarro.click();
     }
 
 
@@ -117,6 +131,7 @@ public class TarifaAutosPage extends Commons {
         comboBoxTipoPlazo.waitUntilPresent().clear();
         selectItem(comboBoxTipoPlazo, "6 meses");
         waitForComboValue(comboBoxTipoPlazo, "6 meses");
+        waitUntil(2000);
     }
 
 
@@ -126,14 +141,10 @@ public class TarifaAutosPage extends Commons {
         waitUntil(500);
         menuItemCotizacion.waitUntilPresent().click();
     }
-
-
-    public void desMarcarCoberturas() {
-        checkBoxHurto.click();
-    }
-
+    
 
     public void relacionarAsegurado() {
+        botonRelacionarAsegurado.waitUntilPresent();
         botonRelacionarAsegurado.click();
         navItemAseguradoR.click();
         itemdocNum.waitUntilPresent();
@@ -155,15 +166,19 @@ public class TarifaAutosPage extends Commons {
         Map<String, String> dato = datosCoberturas.getRow(0);
         botonBorrar.waitUntilPresent().click();
         botonBorrar.waitUntilNotVisible();
-        waitUntil(1500);
-        comboBoxLimite.waitUntilPresent();
-        comboBoxLimite.clear();
-        waitUntil(500);
-        comboBoxLimite.sendKeys(dato.get("limite"));
-        comboBoxLimite.sendKeys(Keys.ENTER);
-        waitUntil(800);
-        selectItem(comboBoxDeducible, dato.get("deducible"));
-        selectItem(comboBoxAbogado, dato.get("abogado"));
+        try {
+            comboBoxLimite.waitUntilPresent();
+            waitUntil(1500);
+            comboBoxLimite.clear();
+            waitUntil(500);
+            comboBoxLimite.sendKeys(dato.get("limite"));
+            comboBoxLimite.sendKeys(Keys.ENTER);
+            waitUntil(800);
+            selectItem(comboBoxDeducible, dato.get("deducible"));
+            selectItem(comboBoxAbogado, dato.get("abogado"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -174,16 +189,18 @@ public class TarifaAutosPage extends Commons {
         selectItem(comboBoxGastosDeTransporte, dato.get("GTH"));
         checkBoxAccidentes.click();
         selectItem(comboBoxAccidentes, dato.get("AC"));
-        checkBoxAsistencia.click();
-        selectItem(comboBoxAsistencia, dato.get("AS"));
-        checkBoxDaniosCarro.click();
-        selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
-        selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
-        selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
         checkBoxGastosTaspaso.click();
         selectItem(comboBoxGastosTraspaso, dato.get("GTR"));
         checkBoxGAstosDeParqueadero.click();
         selectItem(comboBoxgastosDeParqueadero, dato.get("GP"));
+    }
+
+
+    public void seleccionarCoberturasDeDanios(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
+        selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
+        selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
+        selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
     }
 
 
@@ -216,6 +233,11 @@ public class TarifaAutosPage extends Commons {
 
 
     public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
+        for (Map<String, String> valor : valores.getRows()) {
+            WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
+            LOGGER.info(valor.get("valor")+" | "+tablaDescripcion.getText());
+        }
+
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
             WebElementFacade cobertura = findBy(TABLAXPATH + valor.get("fila") + "]/td[1]");

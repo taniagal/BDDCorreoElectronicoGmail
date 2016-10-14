@@ -35,7 +35,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
         infoCotizacionPoliza.put("descripcionDireccion", "Descripción de la dirección");
         infoCotizacionPoliza.put("empresaAseguradora", "Empresa aseguradora");
         infoCotizacionPoliza.put("primaTotal", "Prima total");
-        infoCotizacionPoliza.put("impuestos", "Impuestos y cargos extra");
+        infoCotizacionPoliza.put("iva", "Iva");
         infoCotizacionPoliza.put("costoTotal", "Costo total");
 
         infoCotizacionPoliza.put("labelVehiculo", "Vehículo 3");
@@ -49,7 +49,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
         infoCotizacionPoliza.put("prima", "Prima");
         infoCotizacionPoliza.put("subtotal", "Subtotal");
         infoCotizacionPoliza.put("subtotalPrimas", "Subtotal de primas");
-        infoCotizacionPoliza.put("impuesto", "Impuestos y cargos extra");
+        infoCotizacionPoliza.put("iva", "Iva");
 
         infoCotizacionPoliza.put("DC_labelVehiculo", "Vehículo 1");
         infoCotizacionPoliza.put("DC_placa", "Placa");
@@ -62,7 +62,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
         infoCotizacionPoliza.put("DC_prima", "Prima");
         infoCotizacionPoliza.put("DC_subtotal", "Subtotal");
         infoCotizacionPoliza.put("DC_subtotalPrimas", "Subtotal de primas");
-        infoCotizacionPoliza.put("DC_impuesto", "Impuestos y cargos extra");
+        infoCotizacionPoliza.put("DC_iva", "Iva");
     }
 
     @Given("se ha realizado la cotizacion de la modificacion <cotizacion>")

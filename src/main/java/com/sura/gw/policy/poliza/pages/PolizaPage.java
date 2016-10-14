@@ -3,14 +3,26 @@ package com.sura.gw.policy.poliza.pages;
 import com.sura.gw.inicio.guidewire.GuidewirePage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.steps.StepInterceptor;
-import org.slf4j.LoggerFactory;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class PolizaPage extends GuidewirePage {
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+import static ch.lambdaj.Lambda.extract;
+import static ch.lambdaj.Lambda.on;
 
+public class PolizaPage extends GuidewirePage {
+
+    private static String XPATH_MENU_DESPLEGABLE = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
+    private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
+    private String XpathMetodoDeReembolso = "//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CalcMethod-inputEl']";
+    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
+    private List<String> listaMotivos;
+    private List<WebElementFacade> listaMotivosWE;
 
 
     public enum Opcion {
@@ -29,7 +41,7 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public enum Boton {
-        EDITAR_TRANSACCION_DE_POLIZA("//a[contains(@id,'SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy')]");
+        EDITAR_TRANSACCION_DE_POLIZA(".//a[contains(.,'Editar transacción de póliza')]");
         private String botonXP;
 
         Boton(String boton) {
@@ -70,8 +82,6 @@ public class PolizaPage extends GuidewirePage {
     }
 
 
-
-
     public void editarTransaccion() {
         LOGGER.info("PolizaPage.editarTransaccion");
         WebElementFacade btnEditarTransaccion = null;
@@ -110,6 +120,11 @@ public class PolizaPage extends GuidewirePage {
             WebElementFacade opcion = findBy(xpath).waitUntilVisible();
             shouldBeVisible(opcion);
             opcion.waitUntilClickable().click();
+            String xpathimgMensajesWarnig = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']//div//img[@class='warning_icon']";
+
+            if (isElementVisible(By.xpath(xpathimgMensajesWarnig))) {
+                opcion.waitUntilClickable().click();
+            }
 
             waitForTextToAppear(tituloPaginaEsperada);
             shouldContainText(tituloPaginaEsperada);
@@ -172,7 +187,68 @@ public class PolizaPage extends GuidewirePage {
         return esEditableElemento;
     }
 
+    public void ingresarMotivosCancelacion(String motivo, String descripcion) {
+        waitForTextToAppear("Iniciar cancelación de póliza");
+        shouldContainText("Iniciar cancelación de póliza");
 
 
+        String xpathInputMotivo = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Reason-inputEl']";
+        String xpathTextareaDescripcion = "//textarea[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:ReasonDescription-inputEl']";
+
+        findBy(xpathInputMotivo).type(motivo);
+        waitFor(2).seconds();
+        findBy(xpathInputMotivo).sendKeys(Keys.ENTER);
+        waitFor(2).seconds();
+        findBy(xpathTextareaDescripcion).type(descripcion);
+        waitFor(2).seconds();
+        findBy(xpathTextareaDescripcion).sendKeys(Keys.ENTER);
+
+    }
+    public void desplegarMotivosCancelacion() {
+        String xpathDropdownInstruccion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Reason-inputEl']";
+        findBy(xpathDropdownInstruccion).waitUntilVisible().click();
+
+
+        waitFor(findBy(XPATH_MENU_DESPLEGABLE)).waitUntilVisible();
+        shouldBeVisible(getDriver().findElement(By.xpath(XPATH_MENU_DESPLEGABLE)));
+        listaMotivosWE = findBy(XPATH_MENU_DESPLEGABLE).thenFindAll("//li");
+        listaMotivos = extract(listaMotivosWE, on(WebElementFacade.class).getText());
+    }
+    public List<String> obtenerMotivosDisponibles(){
+        return  this.listaMotivos;
+    }
+    public Boolean esFechaCancelacionHOY() {
+
+        waitFor(xpathFechaVigenteCancelacion);
+        waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathFechaVigenteCancelacion)));
+        return esFechaPorDefectoHOY(obtenerFechacancelacionElemento());
+    }
+    public Boolean esFechaPorDefectoHOY(WebElementFacade fecha) {
+        waitFor(fecha);
+        if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getValue()).toLocalDate())) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
+    public void ingresarFechaAnteriorA61Dias(WebElementFacade fecha) {
+        LocalDate fechaHace61Dias = formatter.parseDateTime(fecha.getValue()).toLocalDate().minusDays(61);
+        obtenerFechacancelacionElemento().clear();
+        obtenerFechacancelacionElemento().sendKeys(formatter.print(fechaHace61Dias));
+        obtenerFechacancelacionElemento().sendKeys(Keys.TAB);
+    }
+
+    public WebElementFacade obtenerFechacancelacionElemento() {
+        waitFor(2).seconds();
+        return findBy(xpathFechaVigenteCancelacion);
+    }
+    public void validarBotones (String path){
+         findBy(path);
+
+    }
+    public String obtenerMotivoDeReembolso(){
+        waitFor(2).seconds();
+        return findBy(XpathMetodoDeReembolso).getText();
+    }
 
 }

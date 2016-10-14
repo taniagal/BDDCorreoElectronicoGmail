@@ -99,6 +99,7 @@ public class CoberturaGlobalPage extends Commons {
 
     public void verificarUbicacionesCubiertas() {
         List<WebElementFacade> tablaUbicaciones = getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody/tr");
+        waitUntil(2000);
         MatcherAssert.assertThat("Error al Agregar la ubicacion", !tablaUbicaciones.isEmpty());
     }
 

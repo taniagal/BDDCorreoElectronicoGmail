@@ -16,7 +16,6 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 public class BusquedaContactoPage extends Commons {
 
@@ -91,19 +90,24 @@ public class BusquedaContactoPage extends Commons {
     private static final String LONGITUD_VALIDA = "Longitud válida";
     private static final String XPATH_LI_CONTAINS = ".//li[contains(.,'";
 
-    Actions actions = new Actions(getDriver());
-
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
     }
 
+    public void irABuscarContacto() {
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(menuBuscar).click();
+        waitForTextToAppear("Buscar pólizas",5000);
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(menuBuscarContacto).click();
+        waitForTextToAppear(BUSQUEDADECONTACTOS,5000);
+    }
+
     public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial) {
-        waitFor(txtTipoDoc).waitUntilVisible();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
         waitFor(txtRazonSocial).waitUntilVisible();
         txtRazonSocial.type(razonSocial);
-        waitFor(botonBuscar).waitUntilVisible();
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
         botonBuscar.click();
     }
 
@@ -120,21 +124,21 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
-        waitFor(txtTipoDoc).waitUntilVisible();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.clear();
         txtTipoDoc.sendKeys(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
         txtRazonSocial.waitUntilVisible();
         txtNumDoc.type(numDoc);
-        botonBuscar.waitUntilEnabled();
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
         botonBuscar.click();
     }
 
     public void consultarContactoTipoDoc(String tipoDoc) {
         waitForTextToAppear(BUSQUEDADECONTACTOS);
-        waitFor(txtTipoDoc).waitUntilVisible();
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
-        waitFor(botonBuscar).waitUntilVisible();
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
         botonBuscar.click();
     }
 
@@ -191,10 +195,10 @@ public class BusquedaContactoPage extends Commons {
             waitFor(txtApellido).waitUntilVisible();
             txtApellido.type(primerApellido);
             txtSegApellido.type(segundoApellido);
-            waitFor(botonBuscar).waitUntilVisible();
+            withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
             botonBuscar.click();
         } else {
-            waitFor(botonBuscar).waitUntilVisible();
+            withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
             botonBuscar.click();
             waitForTextToAppear("La búsqueda no devolvió resultados");
         }
@@ -207,7 +211,7 @@ public class BusquedaContactoPage extends Commons {
         txtTipoDoc.sendKeys(Keys.ENTER);
         waitFor(txtNombreComercial).waitUntilVisible();
         txtNombreComercial.type(nombreComercial);
-        waitFor(botonBuscar).waitUntilVisible();
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
         botonBuscar.click();
     }
 
@@ -225,7 +229,7 @@ public class BusquedaContactoPage extends Commons {
         } else {
             txtRazonSocial.type(nombre);
         }
-        waitFor(botonBuscar).waitUntilVisible();
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
         botonBuscar.click();
 
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
@@ -259,7 +263,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void validarLabelsPersonaNatural(Map<String, String> labelsContacto) {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblTipoId).shouldBeVisible();
+        waitUntil(2000);
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblPrimNombre.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("priNombre"))));
@@ -273,7 +277,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto) {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblTipoId).shouldBeVisible();
+        waitUntil(2000);
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblNomComercial.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("nomComercial"))));
@@ -298,15 +302,5 @@ public class BusquedaContactoPage extends Commons {
         txtNumDocDirectorioCotizacion.sendKeys(numeroId);
         btnBuscarDirectorioCotizacion.click();
         waitForWithRefresh();
-    }
-
-    public void irABuscarContacto() {
-        waitFor(menuBuscar).waitUntilVisible();
-        actions.click(menuBuscar).build().perform();
-        waitForTextToAppear("Buscar pólizas");
-        waitFor(menuBuscarContacto).waitUntilVisible();
-        waitUntil(1500);
-        actions.click(menuBuscarContacto).build().perform();
-        waitForTextToAppear(BUSQUEDADECONTACTOS);
     }
 }

@@ -9,7 +9,6 @@ import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -17,9 +16,25 @@ public class CotizacionRenovacionPaValidacionesPage extends Commons{
 
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade grupoMensajesRC;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
+    private WebElementFacade borraMensajeEspacioTrabajo;
+    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PALine']/div")
+    private WebElementFacade itemCoberturasAuto;
+    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
+    private WebElementFacade lblMensaje;
+
 
     public CotizacionRenovacionPaValidacionesPage (WebDriver driver){
         super(driver);
+    }
+
+
+    public void irAPantallairARevisionDePolizaSinValidacionFecha() {
+        String xpathItemRevisionPoliza = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyReview']/div";
+        WebElementFacade itemRevisionPoliza = withTimeoutOf(1, TimeUnit.SECONDS).find(By.xpath(xpathItemRevisionPoliza));
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemRevisionPoliza).click();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilVisible();
+        itemRevisionPoliza.click();
     }
 
     public void irARevisionDePoliza() {
@@ -54,4 +69,9 @@ public class CotizacionRenovacionPaValidacionesPage extends Commons{
         }
         return validacionMensajes;
     }
+
+    public void limpiarMensajes (){
+        borraMensajeEspacioTrabajo.click();
+    }
+
 }

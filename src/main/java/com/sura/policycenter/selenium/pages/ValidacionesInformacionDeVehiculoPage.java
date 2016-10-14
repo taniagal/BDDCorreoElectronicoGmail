@@ -2,8 +2,10 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -47,7 +49,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade campoTxtRecargo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:VehiculeZone-bodyEl']")
     private WebElementFacade campoTxtzona;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver-btnWrap']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver-btnInnerEl']")
     private WebElementFacade botonRelacionarAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver-textEl']")
     private WebElementFacade botonAsegurado;
@@ -55,7 +57,8 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade campoVehiculoCeroKm;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:plan_DV-inputEl']")
     private WebElementFacade comboBoxPlan;
-
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV:0:tipoDocument']")
+    private WebElementFacade nitAsegurado;
 
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
@@ -64,6 +67,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
 
     public void irAVehiculos() {
         waitFor(menuItemVehiculos).shouldBePresent();
+        waitUntil(2000);
         menuItemVehiculos.click();
     }
 
@@ -75,13 +79,14 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     public void agregarPlaca(String placa) {
         campoTxtPlaca.sendKeys(placa);
         campoTxtchasis.click();
+        waitForTextToAppear(placa, 28000);
     }
 
     public void clickSiguiente() {
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
     }
 
-    public void clickVolver(){
+    public void clickVolver() {
         botonVolver.click();
         waitFor(campoTxtchasis).shouldBePresent();
     }
@@ -89,24 +94,25 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        waitFor(campoTxtPlaca).shouldBePresent();
+        waitUntil(1500);
         selectItem(comboBoxPlan, vehiculo.get("plan"));
-        campoTxtPlaca.sendKeys(vehiculo.get("placa"));
+        ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
         waitUntil(1000);
         comboBoxVehiculoServicio.click();
-        waitForTextToAppear(vehiculo.get("placa"),28000);
-        selectItem(comboBoxModelo,vehiculo.get("modelo"));
-        waitForTextToAppear(vehiculo.get("modelo"),28000);
-        ingresarDato(campoTxtCodigoFasecolda,vehiculo.get("codigo_fasecolda"));
+        waitForTextToAppear(vehiculo.get("placa"), 28000);
+        selectItem(comboBoxModelo, vehiculo.get("modelo"));
+        waitForTextToAppear(vehiculo.get("modelo"), 28000);
+        ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
         campoTxtPlaca.click();
+        waitUntil(2000);
         withTimeoutOf(28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitForComboValue(comboBoxCiudadCirculacion,vehiculo.get("ciudad_circulacion"));
+        waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitUntil(1000);
-        waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona,vehiculo.get("zona")));
+        waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
 
-        if(!"null".equals(vehiculo.get("descuento"))){
+        if (!"null".equals(vehiculo.get("descuento"))) {
             campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
             campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
         }
@@ -124,7 +130,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     public void agregarCodigoFasecolda(String codigo) {
         waitFor(botonCrearVehiculo).click();
         comboBoxModelo.waitUntilPresent();
-        selectItem(comboBoxModelo,"2015");
+        selectItem(comboBoxModelo, "2015");
         waitForTextToAppear("2015");
         campoTxtCodigoFasecolda.sendKeys(codigo);
         campoTxtPlaca.click();
@@ -132,18 +138,19 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
-        verificarMensajes(divMensaje,mensajes);
+        verificarMensajes(divMensaje, mensajes);
     }
 
     public void verificarEstadoDelCampoCodigo() {
         MatcherAssert.assertThat("Error, no se validó el codigo fasecolda.", "".equals(campoTxtCodigoFasecolda.getValue()));
     }
 
-    public void relacionarAseguradoDelVehiculo(String asegurado){
-        waitFor(botonRelacionarAsegurado).click();
+    public void relacionarAseguradoDelVehiculo(String asegurado) {
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonRelacionarAsegurado).waitUntilClickable();
+        botonRelacionarAsegurado.click();
         waitFor(botonAsegurado);
         botonAsegurado.click();
-        waitForTextToAppear(asegurado);
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(nitAsegurado).shouldBePresent();
         waitUntil(3000);
     }
 

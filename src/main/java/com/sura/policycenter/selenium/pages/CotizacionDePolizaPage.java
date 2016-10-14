@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
 
-public class CotizacionDePolizaPage extends PageObject{
+public class CotizacionDePolizaPage extends Commons{
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']")
     private WebElementFacade titulo;
@@ -116,6 +116,8 @@ public class CotizacionDePolizaPage extends PageObject{
 
     public void verDetalleCotizacion() {
         waitForTextToAppear("Calificación");
+        Commons commons = new Commons(getDriver());
+        commons.waitUntil(1000);
         setImplicitTimeout(2, TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
             waitForTextToAppear(tituloDePagina.getText());
@@ -169,11 +171,12 @@ public class CotizacionDePolizaPage extends PageObject{
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        waitForTextToAppear("Resultados de validación",30000);
+        waitForTextToAppear("Resultados de validación",40000);
         boolean validacionMensaje = grupoMensajes.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
         WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBorrar).click();
+        waitUntil(2000);
     }
 
     public void validarTipoRiesgo() {

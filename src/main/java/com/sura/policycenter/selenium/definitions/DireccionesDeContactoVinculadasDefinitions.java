@@ -90,7 +90,7 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.editarDireccionYDesligar(direccion);
     }
 
-    @When("despliegue la lista de contactos")
+    @When("vaya a desplegar la lista de contactos para asignar la direccion")
     public void desplegarListaDeContactosParaAsignarLaDireccion(){
         direccionesDeContactoVinculadasSteps.desplegarListaDeContactosParaAsignarLaDireccion();
     }

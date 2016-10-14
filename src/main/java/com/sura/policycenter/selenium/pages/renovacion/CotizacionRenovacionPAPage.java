@@ -37,7 +37,7 @@ public class CotizacionRenovacionPAPage extends Commons{
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade campoPrimaTotal;
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:Taxes-inputEl']")
-    private WebElementFacade campoImpuestos;
+    private WebElementFacade campoIva;
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
     private WebElementFacade campoCostoTotal;
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:LicensePlate-inputEl']")
@@ -114,7 +114,7 @@ public class CotizacionRenovacionPAPage extends Commons{
         MatcherAssert.assertThat(campoEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("empresaAseguradora"))));
         MatcherAssert.assertThat("Error en el valor de la cuota, expected '"+informacionRenovacion.get("primaTotal")+"' but was: "+
                 campoPrimaTotal.getText(),campoPrimaTotal.getText().contains(informacionRenovacion.get("primaTotal")));
-        MatcherAssert.assertThat(campoImpuestos.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("impuestos"))));
+        MatcherAssert.assertThat(campoIva.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("iva"))));
         MatcherAssert.assertThat(campoCostoTotal.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("costoTotal"))));
     }
 }

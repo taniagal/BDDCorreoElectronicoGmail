@@ -7,6 +7,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class IngresoDeCoberturasPage extends PageObject{
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
@@ -17,6 +19,8 @@ public class IngresoDeCoberturasPage extends PageObject{
     private WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkHurto;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:RatingOverrideButtonDV:RatingOverrideButtonDV:ViewWorksheet']")
+    private WebElementFacade botonMostrarHojaDeCalculo;
 
 
     Commons commons = new Commons(getDriver());
@@ -27,20 +31,16 @@ public class IngresoDeCoberturasPage extends PageObject{
 
     public void ingresarLimite(){
         waitForTextToAppear("Cobertura");
-        waitFor(campoLimite).click();
-        campoLimite.sendKeys(Keys.ARROW_DOWN);
-        campoLimite.sendKeys(Keys.ENTER);
+        commons.selectItem(campoLimite,"32.000.000");
     }
 
     public void ingresarDeducible(){
-        campoDeducible.click();
-        campoDeducible.sendKeys(Keys.ARROW_DOWN);
-        campoDeducible.sendKeys(Keys.ENTER);
+        commons.selectItem(campoDeducible,"0");
     }
 
     public void cotizar(){
         botonCotizar.click();
-        waitForTextToAppear("Asuntos previos a la oferta");
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).waitUntilPresent();
     }
 
     public void clickEnCheckHurto(){

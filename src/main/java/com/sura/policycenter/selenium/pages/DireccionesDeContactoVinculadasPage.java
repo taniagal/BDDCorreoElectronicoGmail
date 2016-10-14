@@ -46,6 +46,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade txtDescripcion;
     @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:UpdateAllButton-btnInnerEl']")
     private WebElementFacade btnActualizarDireccionesLigadas;
+    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']")
+    private WebElementFacade txtPaisContacto;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade txtDepartamentoContacto;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
@@ -58,6 +60,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade txtDescripcionContacto;
     @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:LinkedAddressContactsLV-body']")
     private WebElementFacade tabla;
+    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV-body']")
+    private WebElementFacade tablaContactos;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade campoDireccionDetalleDirecciones;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
@@ -251,6 +255,9 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
             }
             intentos++;
         }
+        WebElementFacade botonCancelar = findBy(".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']");
+        waitFor(botonCancelar).waitUntilPresent().click();
+        waitForTextToAppear("Contactos de archivo de cuenta", 10000);
     }
 
     public void validarDireccionEstandarizada(String direccionEstandarizada, String nombreContacto) {
@@ -293,7 +300,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         this.escribirEnElCampo(direccion, txtDireccion);
         WebElementFacade botonActualizarDesligar = commons.esperarElemento(".//*[@id='LinkedAddressEditPopup:UpdateAndUnlinkButton']");
         botonActualizarDesligar.click();
-        btnActualizar.withTimeoutOf(10, TimeUnit.SECONDS).waitUntilPresent().click();
+        btnActualizar.waitUntilPresent().click();
     }
 
     public void escribirEnElCampo(String direccion, WebElementFacade campo) {

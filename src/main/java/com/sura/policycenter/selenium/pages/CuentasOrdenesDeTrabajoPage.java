@@ -1,10 +1,6 @@
 package com.sura.policycenter.selenium.pages;
 
 import com.sura.commons.selenium.SeusLoginPage;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -14,6 +10,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
@@ -40,6 +39,7 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorEstado(String estado){
+        waitFor(2).seconds();
         filtroEstado.click();
         getDriver().manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
         filtroEstado.sendKeys(estado);
@@ -53,6 +53,7 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorTransaccion(String filtroTransaccion) {
+        waitFor(2).seconds();
         this.filtroTipoTransaccion.waitUntilClickable();
         this.filtroTipoTransaccion.click();
         this.filtroTipoTransaccion.clear();
@@ -61,9 +62,9 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
+        waitFor(2).seconds();
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
-        waitABit(1000);
         this.filtroProducto.sendKeys(Keys.ENTER);
     }
 
