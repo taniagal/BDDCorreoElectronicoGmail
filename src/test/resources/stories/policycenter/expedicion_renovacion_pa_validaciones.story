@@ -25,7 +25,6 @@ Examples:
 |33445566   |
 
 Scenario: Validar Chasis
-GivenStories: stories/policycenter/login_policy.story
 Given se esta cotizando una renovacion de poliza <cotizacion>
 When emita la renovacion
 And no se tenga chasis ingresado
@@ -78,4 +77,3 @@ And el valor asegurado es inferior al 20% del valor de la vigencia anterior
 Then se debe mostrar el siguiente mensaje
 |mensaje                                                                        |
 |El Valor del vehículo no se encuentra en los rangos estimados por Suramericana |
-
