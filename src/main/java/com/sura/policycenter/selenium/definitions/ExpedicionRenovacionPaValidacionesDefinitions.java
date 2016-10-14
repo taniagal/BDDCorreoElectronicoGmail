@@ -2,6 +2,7 @@ package com.sura.policycenter.selenium.definitions;
 
 import com.sura.policycenter.selenium.steps.CotizacionRenovacionPaValidacionesSteps;
 import com.sura.policycenter.selenium.steps.ExpedicionRenovacionPaValidacionesSteps;
+import com.sura.policycenter.selenium.steps.ModificacionRenovacionCoberturasPASteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -14,6 +15,9 @@ public class ExpedicionRenovacionPaValidacionesDefinitions {
 
     @Steps
     CotizacionRenovacionPaValidacionesSteps cotizacionRenovacionPaValidacionesSteps;
+
+    @Steps
+    ModificacionRenovacionCoberturasPASteps modificacionRenovacionCoberturasPASteps;
 
     @When("no se tenga motor ingresado")
     public void validarMotor(){
@@ -35,8 +39,9 @@ public class ExpedicionRenovacionPaValidacionesDefinitions {
         expedicionRenovacionPaValidacionesSteps.validar_Valor_Accesorios_Y_Accesorios_Especiales();
     }
 
-    @Then("se debe mostrar el siguiente mensaje $mensaje")
+    @Then("mostrar el siguiente mensaje de bloqueo $mensaje")
     public void validarMensajeMotorYChasis(ExamplesTable mensaje){
         cotizacionRenovacionPaValidacionesSteps.validar_Que_Se_Bloquee_Cotizacion_Y_Muestre_Mensaje(mensaje);
+        modificacionRenovacionCoberturasPASteps.borrar_espacio_trabajo();
     }
 }
