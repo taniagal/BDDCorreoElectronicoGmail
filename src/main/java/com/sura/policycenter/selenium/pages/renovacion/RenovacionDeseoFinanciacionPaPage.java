@@ -64,10 +64,11 @@ public class RenovacionDeseoFinanciacionPaPage extends PageObject{
 
     public void validarNumeroDeCuotas(ExamplesTable numeroCuotas) {
         Map<String, String> cuotas = numeroCuotas.getRows().get(0);
-        WebElementFacade botonNumeroCuotas = findBy(".//tr[12]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div");
+        WebElementFacade campoNumeroCuotas = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumber-inputEl']");
+        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(campoNumeroCuotas).click();
         WebElementFacade cuota11 = findBy(".//li[contains(.,'11')]");
         WebElementFacade cuota12 = findBy(".//li[contains(.,'12')]");
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonNumeroCuotas).click();
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(cuota11).shouldBeCurrentlyVisible();
         MatcherAssert.assertThat(cuota11.getText(), Matchers.is(Matchers.equalTo(cuotas.get("cuota11"))));
         MatcherAssert.assertThat(cuota12.getText(), Matchers.is(Matchers.equalTo(cuotas.get("cuota12"))));
     }
