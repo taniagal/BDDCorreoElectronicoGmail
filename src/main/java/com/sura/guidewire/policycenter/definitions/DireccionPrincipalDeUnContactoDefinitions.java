@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.util.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.SeusLoginSteps;
 import com.sura.guidewire.policycenter.steps.DetallesContactoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
@@ -50,7 +50,6 @@ public class DireccionPrincipalDeUnContactoDefinitions {
     @Then("el sistema me debe impedir la repeticion del tipo de direccion y mostrar el mensaje <mensaje>")
     public void verificarRepeticionTipoDirreccion (@Named("mensaje") String mensaje){
         detallesContactoSteps.validar_mensaje(mensaje);
-        seusLoginSteps.close();
     }
 
 }

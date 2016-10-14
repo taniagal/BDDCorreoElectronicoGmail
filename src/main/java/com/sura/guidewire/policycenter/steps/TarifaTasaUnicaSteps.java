@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps;
 
-import com.sura.guidewire.policycenter.util.SeusLoginPage;
+import com.sura.guidewire.policycenter.pages.SeusLoginPage;
 import com.sura.guidewire.policycenter.pages.AprobacionDeAnalisisDeRiesgoPage;
 import com.sura.guidewire.policycenter.pages.TarifaAutosPage;
 import com.sura.guidewire.policycenter.pages.TarifaTasaUnicaPage;

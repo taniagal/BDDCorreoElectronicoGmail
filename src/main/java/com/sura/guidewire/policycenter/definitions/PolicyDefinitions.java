@@ -13,11 +13,6 @@ public class PolicyDefinitions {
     @Steps
     private PolicySteps pcs;
 
-    @Given("el usuario ingresa a la pagina de autenticacion de PolicyCenter")
-    public void open() {
-        pcs.open();
-    }
-
     @Given("el usuario ingresa a la pagina de autenticacion de PolicyCenter - Seus")
     public void openSeus() {
         pcs.openSeus();
@@ -36,10 +31,5 @@ public class PolicyDefinitions {
     @Then("el usuario deberia poder acceder a nuevo contacto persona")
     public void nuevoContactoPersona() throws InterruptedException {
         pcs.nuevoContactoPersona();
-    }
-
-    @Then("el usuario deberia cerrar sesion")
-    public void logout() {
-        pcs.logout();
     }
 }

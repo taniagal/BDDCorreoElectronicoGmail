@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.steps.colectivas;
 
 import com.sura.guidewire.policycenter.pages.colectivas.IngresoDeRiesgosPolizaColectivaPages;
-import com.sura.guidewire.policycenter.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
+import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import java.util.Map;
 
 import com.sura.guidewire.policycenter.pages.*;

@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.InicioPage;
-import com.sura.guidewire.policycenter.pages.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
-import com.sura.guidewire.policycenter.pages.menu.superior.buscar.BuscarCuentasPage;
+import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
+import com.sura.guidewire.policycenter.util.menu.superior.buscar.BuscarCuentasPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;

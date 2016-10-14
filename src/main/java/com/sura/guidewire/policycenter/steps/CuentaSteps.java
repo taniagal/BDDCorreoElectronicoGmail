@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireLoginSteps;
-import com.sura.guidewire.policycenter.pages.pages.BusquedaDeCuentasPage;
+import com.sura.guidewire.policycenter.pages.BusquedaDeCuentaPage;
 import com.sura.guidewire.policycenter.pages.ContactosAsociadosACuentaWidgetPage;
 import com.sura.guidewire.policycenter.pages.CuentaPages;
 import com.sura.guidewire.policycenter.pages.TransaccionesDePolizaWidgetObject;
@@ -21,7 +21,7 @@ public class CuentaSteps extends ScenarioSteps {
 
     CuentaPages cuenta = null;
     ContactosAsociadosACuentaWidgetPage contactosAsociados;
-    BusquedaDeCuentasPage busquedaDeCuentas = null;
+    BusquedaDeCuentaPage busquedaDeCuentas = null;
 
     @Steps
     GuidewireLoginSteps loginSteps;
@@ -37,7 +37,7 @@ public class CuentaSteps extends ScenarioSteps {
     }
 
 
-    private BusquedaDeCuentasPage irAPaginaBusquedaDeCuentas(){
+    private BusquedaDeCuentaPage irAPaginaBusquedaDeCuentas(){
         //busquedaDeCuentas = navegacion.seleccionarOpcion().enMenuContextual().seleccionarOpcion(BuscarNavBarPages.Opciones.CUENTAS.nombre());
         return busquedaDeCuentas;
     }

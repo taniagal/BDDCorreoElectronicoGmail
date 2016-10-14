@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.util.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.SeusLoginSteps;
 import com.sura.guidewire.policycenter.steps.DetallesContactoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -40,7 +40,6 @@ public class DetallesContactoDefinitions {
     @Then("se debe ver minimo la siguiente informacion definida para el panel de detalles de persona juridica")
     public void assertConsultarDetallePersonaJuridica(){
         detallesContactoSteps.verificar_campos_persona_juridica();
-        seusLogin.close();
     }
 
 }

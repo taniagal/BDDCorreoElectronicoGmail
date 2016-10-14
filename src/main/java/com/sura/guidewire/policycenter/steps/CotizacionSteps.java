@@ -3,7 +3,7 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.util.navegacion.PanelIzquierdoElement;
 import com.sura.guidewire.policycenter.util.navegacion.PanelSuperiorElement;
-import com.sura.guidewire.policycenter.pages.policy.estados.poliza.cotizacion.NuevaCotizacionPage;
+import com.sura.guidewire.policycenter.pages.NuevaCotizacionPage;
 import java.io.Serializable;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Step;
@@ -11,9 +11,9 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.openqa.selenium.Keys;
 
-import static com.sura.guidewire.policycenter.pages.policy.estados.poliza.cotizacion.NuevaCotizacionPage.TXT_CODIGO_AGENTE;
-import static com.sura.guidewire.policycenter.pages.policy.estados.poliza.cotizacion.NuevaCotizacionPage.TXT_NOMBRE_AGENTE;
-import static com.sura.guidewire.policycenter.pages.policy.estados.poliza.cotizacion.NuevaCotizacionPage.TXT_NUMERO_CUENTA;
+import static com.sura.guidewire.policycenter.pages.NuevaCotizacionPage.TXT_CODIGO_AGENTE;
+import static com.sura.guidewire.policycenter.pages.NuevaCotizacionPage.TXT_NOMBRE_AGENTE;
+import static com.sura.guidewire.policycenter.pages.NuevaCotizacionPage.TXT_NUMERO_CUENTA;
 
 public class CotizacionSteps extends ScenarioSteps implements Serializable {
 

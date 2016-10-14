@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.util.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.SeusLoginSteps;
 import com.sura.guidewire.policycenter.steps.BusquedaContactoSteps;
 import com.sura.guidewire.policycenter.steps.PolicySteps;
 import java.util.HashMap;

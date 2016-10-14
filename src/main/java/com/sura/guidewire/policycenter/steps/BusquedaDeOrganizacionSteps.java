@@ -24,7 +24,6 @@ public class BusquedaDeOrganizacionSteps extends ScenarioSteps {
     @Step
     public void validaOrganizacion(String organizacion) {
         busquedaDeOrganizacionPage.validarOrganizacion(organizacion);
-        commons.logout();
     }
 
 }

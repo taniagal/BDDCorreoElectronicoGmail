@@ -129,25 +129,6 @@ public class Commons extends PageObject {
         waitUntil(2000);
     }
 
-
-    public void logout() {
-        btnConfig.click();
-        btnLogout.click();
-        if (btnLogout2.isCurrentlyVisible()) {
-            btnLogout2.click();
-        }
-    }
-
-
-    public void asercion(String element, String mensaje) {
-        MatcherAssert.assertThat(element, CoreMatchers.containsString(mensaje));
-    }
-
-
-    public void close() {
-        getDriver().quit();
-    }
-
     /**
      * Crea numero de cedula
      * @return numero de cedula de 8 digitos

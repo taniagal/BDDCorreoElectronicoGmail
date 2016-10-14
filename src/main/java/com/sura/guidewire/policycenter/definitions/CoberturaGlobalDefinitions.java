@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 
-import com.sura.guidewire.policycenter.util.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.SeusLoginSteps;
 import com.sura.guidewire.policycenter.steps.CoberturaGlobalSteps;
 
 import net.thucydides.core.annotations.Steps;
@@ -37,7 +37,6 @@ public class CoberturaGlobalDefinitions {
     @Then("debe mostrarme un mensaje<mensaje> de error")
     public void verificarMensajeError(@Named("mensaje")String mensaje){
         coberturaGlobalSteps.verificar_mensaje_error(mensaje);
-        seusLoginSteps.close();
     }
 
 }

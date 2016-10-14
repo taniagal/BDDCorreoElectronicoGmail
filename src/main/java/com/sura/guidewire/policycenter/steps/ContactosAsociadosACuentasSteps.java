@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.ContactosAsociadosACuentasPage;
-import com.sura.guidewire.policycenter.pages.menu.superior.cuenta.panel.contactos.BusquedaContactoDelDirectorioPage;
+import com.sura.guidewire.policycenter.util.menu.superior.cuenta.panel.contactos.BusquedaContactoDelDirectorioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;

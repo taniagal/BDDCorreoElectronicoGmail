@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.InicioPage;
-import com.sura.guidewire.policycenter.pages.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
-import com.sura.guidewire.policycenter.pages.menu.superior.buscar.BuscarCuentasPage;
+import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
+import com.sura.guidewire.policycenter.util.menu.superior.buscar.BuscarCuentasPage;
 import java.util.Map;
 
 import net.thucydides.core.annotations.Step;
@@ -20,11 +20,6 @@ public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
 
     private InicioPage inicioPage() {
         return getPages().currentPageAt(InicioPage.class);
-    }
-
-    @Step
-    public void logout() {
-        buscarCuentasPage.logout();
     }
 
     @Step
