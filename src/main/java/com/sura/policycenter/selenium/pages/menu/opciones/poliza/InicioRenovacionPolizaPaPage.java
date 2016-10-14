@@ -68,6 +68,14 @@ public class InicioRenovacionPolizaPaPage extends Commons {
     WebElementFacade datoChasis;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
     WebElementFacade datoValorAsegura;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:CloseOptions']")
+    WebElementFacade btnOpcionDeCierre;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:CloseOptions:Withdraw']")
+    WebElementFacade btnRetiraTransaccion;
+    @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
+    WebElementFacade btnAceptarRetiraTransaccion;
+    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
+    WebElementFacade btnPoliza;
 
 
     Commons commons = new Commons(getDriver());
@@ -123,14 +131,12 @@ public class InicioRenovacionPolizaPaPage extends Commons {
             MatcherAssert.assertThat("el nombre de oficina de radicacion", datoOficinaDeRadicacion.getText().equals(datos.get("oficinaRadicacion")));
             MatcherAssert.assertThat("el nombre de agente", datoAgente.getText().contains(datos.get("codAgente")));
             clickBotonSiguiente();
-        }else
-        if ("asegurado".equals(datos.get("rol"))) {
+        } else if ("asegurado".equals(datos.get("rol"))) {
             MatcherAssert.assertThat("cedula del Asegurado no valida", datoCedulaAsegurado.getText().equals(datos.get("cedulaAsegurado")));
             MatcherAssert.assertThat("primer nombre no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
             MatcherAssert.assertThat("primer apellido no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
             clickBotonSiguiente();
-        }else
-        if ("vehiculo".equals(datos.get("rol"))) {
+        } else if ("vehiculo".equals(datos.get("rol"))) {
             MatcherAssert.assertThat("placa no valida", datoPlaca.getText().equals(datos.get("placa")));
             MatcherAssert.assertThat("modelo no valido", datoModelo.getText().equals(datos.get("modelo")));
             MatcherAssert.assertThat("codFasecolda no valido", datoCodFasecolda.getText().equals(datos.get("codFasecolda")));
@@ -141,6 +147,17 @@ public class InicioRenovacionPolizaPaPage extends Commons {
             MatcherAssert.assertThat("tipo Servicio no valido", datoTipoServicio.getText().equals(datos.get("tipoServicio")));
             MatcherAssert.assertThat("motor no valido", datoMotor.getText().equals(datos.get("motor")));
             MatcherAssert.assertThat("chasis no valido", datoChasis.getText().equals(datos.get("chasis")));
+            btnPoliza.click();
         }
+    }
+
+    public void retirarTransaccion() {
+
+        withTimeoutOf(40, TimeUnit.SECONDS).waitFor(btnOpcionDeCierre).waitUntilClickable();
+        btnOpcionDeCierre.click();
+        withTimeoutOf(40, TimeUnit.SECONDS).waitFor(btnRetiraTransaccion).waitUntilClickable();
+        btnRetiraTransaccion.click();
+        withTimeoutOf(40, TimeUnit.SECONDS).waitFor(btnAceptarRetiraTransaccion).waitUntilClickable();
+        btnAceptarRetiraTransaccion.click();
     }
 }

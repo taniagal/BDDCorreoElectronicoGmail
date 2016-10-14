@@ -27,27 +27,6 @@ Examples:
 |Antioquia   |MEDELLIN|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
-
-Scenario: Agregar una nueva ubicacion "bloqueante" en una poliza de MRC
-Meta:
-@Story CDSEG-731
-@URL https://jira.suramericana.com.co/browse/CDSEG-731
-@Informador alejandro esteban villada marin
-@Sprint 4
-
-Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto               |canal           |
-|C001888888|Sura       |Multiriesgo corporativo|Canal Tradicional|
-When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
-And descripcion <descripcion>, actividad economica <actividad>
-Then que se muestre el mensaje <mensaje>
-
-Examples:
-|departamento|ciudad  |direccion         |descripcion  |mensaje                                                    |actividad                    |
-|Antioquia   |MEDELLIN|CR 65 45 45  |Edificio Core|La dirección es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial.|Acabado de productos textiles|
-
-
-
 Scenario: Validar direccion al agregar una nueva ubicacion en una poliza de MRC
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto               |canal           |

@@ -71,6 +71,9 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToCollectivePolicy-inputEl']")
     WebElementFacade linkIrAPolizaColectiva;
 
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToRisks-inputEl']")
+    WebElementFacade linkIrAListaDeRiesgos;
+
     @FindBy(xpath = ".//img[@class='error_icon']")
     WebElementFacade iconoError;
     
@@ -168,5 +171,11 @@ public class ExpedicionDePolizaPage extends PageObject{
         waitFor(linkIrAPolizaColectiva);
         linkIrAPolizaColectiva.click();
         waitForTextToAppear("Información de la póliza colectiva");
+    }
+
+    public void validarOpcionIrAListaDeRiesgos() {
+        waitFor(linkIrAListaDeRiesgos);
+        linkIrAListaDeRiesgos.click();
+        waitForTextToAppear("Riesgos");
     }
 }

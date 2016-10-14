@@ -15,6 +15,8 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import javax.swing.*;
+
 
 public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
 
@@ -62,6 +64,9 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
         MatcherAssert.assertThat(columnaClaseVehiculo.getText(), Matchers.containsString(informacionRiesgo.get("claseVehiculo")));
         MatcherAssert.assertThat(columnaModelo.getText(), Matchers.containsString(informacionRiesgo.get("modelo")));
         MatcherAssert.assertThat(columnaMarca.getText(), Matchers.containsString(informacionRiesgo.get("marca")));
+        JOptionPane.showMessageDialog(null, columnaLinea.getText().equals(informacionRiesgo.get("linea")));
+        JOptionPane.showMessageDialog(null, columnaLinea.getText());
+        JOptionPane.showMessageDialog(null, informacionRiesgo.get("linea"));
         MatcherAssert.assertThat(columnaLinea.getText(), Matchers.containsString(informacionRiesgo.get("linea")));
     }
 

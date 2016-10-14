@@ -48,8 +48,8 @@ When quiera realizar la renovacion
 Then se debe validar que el proceso termine con exito
 
 Examples:
-|||
-|||
+||
+||
 
 Scenario: validar campos de tomador adicional cuando NO es un riesgo consultable
 Meta: @manual
