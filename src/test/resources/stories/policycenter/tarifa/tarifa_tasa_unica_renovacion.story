@@ -12,7 +12,7 @@ Quiero ser capaz de poder renovar una póliza que este bajo el esquema de tarifa
 para los negocios que se definan bajo este esquema de tarifa ya que comercialemente se requiere tener una tarifa diferencial
 
 Scenario: Realizar una modificacion de datos de asegurado, beneficiario a una poliza
-GivenStories: stories/policycenter/tarifa_tasa_unica_expedicion_de_poliza.story
+GivenStories: stories/policycenter/tarifa/tarifa_tasa_unica_expedicion_de_poliza.story
 Given que tengo una poliza expedida
 When realize la renovacion de una poliza
 Then se debe tarifar con el esquema de tasa unica, generando el valor de la prima

@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.pages;
+package com.sura.guidewire.policycenter.pages.tarifa;
 
 import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;

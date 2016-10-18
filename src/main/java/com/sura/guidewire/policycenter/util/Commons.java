@@ -23,20 +23,7 @@ import org.openqa.selenium.WebDriver;
 
 
 public class Commons extends PageObject {
-
     private final Actions actions = new Actions(getDriver());
-    @FindBy(id=":TabLinkMenuButton-btnIconEl")
-    WebElementFacade configuracion;
-    @FindBy(id=":TabBar:LanguageTabBarLink-textEl")
-    WebElementFacade internacional;
-    @FindBy(id=":TabBar:LanguageTabBarLink:languageSwitcher-itemEl")
-    WebElementFacade idioma;
-    @FindBy(xpath =".//*[@id=':TabLinkMenuButton-btnIconEl']")
-    private WebElementFacade btnConfig;
-    @FindBy(xpath = ".//*[@id='TabBar:LogoutTabBarLink-itemEl']")
-    private WebElementFacade btnLogout;
-    @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
-    private WebElementFacade btnLogout2;
 
     public Commons(WebDriver driver) {
         super(driver);
@@ -61,13 +48,7 @@ public class Commons extends PageObject {
     }
 
 
-    protected void espera(final WebElementFacade element, final int timeoutInSeconds) {
-        final WebDriverWait wait = new WebDriverWait(getDriver(), timeoutInSeconds);
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
-
-    public void waitUntil(int millis) {
+    public static void waitUntil(int millis) {
         Integer i = 0;
         Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
                 TimeUnit.MILLISECONDS).pollingEvery(millis,
@@ -83,7 +64,7 @@ public class Commons extends PageObject {
     }
 
 
-    public  void verificarMensaje(WebElementFacade divMensaje, String mensaje){
+    public void verificarMensaje(WebElementFacade divMensaje, String mensaje){
         withTimeoutOf(28, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
     }

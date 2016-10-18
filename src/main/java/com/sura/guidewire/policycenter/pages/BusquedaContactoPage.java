@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -17,7 +18,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class BusquedaContactoPage extends Commons {
+public class BusquedaContactoPage extends PageObject {
 
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade txtNombre;
@@ -165,7 +166,7 @@ public class BusquedaContactoPage extends Commons {
             WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoDoc + "')]");
             waitForTextToAppear(tipoDoc);
             cbxTipoDoc.click();
-            waitUntil(2000);
+            Commons.waitUntil(2000);
             divNombre.waitUntilVisible();
             txtNumDoc.type(numDoc);
             botonBuscar.click();
@@ -185,7 +186,7 @@ public class BusquedaContactoPage extends Commons {
         WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoDoc + "')]");
         waitForTextToAppear(tipoDoc);
         cbxTipoDoc.click();
-        waitUntil(1500);
+        Commons.waitUntil(1500);
         if (!"<ninguno>".equals(tipoDoc)) {
             String nombreElemento = divNombre.getText();
             waitForTextToAppear(nombreElemento);
@@ -263,7 +264,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void validarLabelsPersonaNatural(Map<String, String> labelsContacto) {
-        waitUntil(2000);
+        Commons.waitUntil(2000);
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblPrimNombre.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("priNombre"))));
@@ -277,7 +278,7 @@ public class BusquedaContactoPage extends Commons {
     }
 
     public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto) {
-        waitUntil(2000);
+        Commons.waitUntil(2000);
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblNomComercial.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("nomComercial"))));
@@ -298,7 +299,7 @@ public class BusquedaContactoPage extends Commons {
         txtTipoDocDirectorioCotizacion.clear();
         txtTipoDocDirectorioCotizacion.sendKeys(tipoId);
         txtTipoDocDirectorioCotizacion.sendKeys(Keys.ENTER);
-        waitUntil(2000);
+        Commons.waitUntil(2000);
         txtNumDocDirectorioCotizacion.sendKeys(numeroId);
         btnBuscarDirectorioCotizacion.click();
         waitForWithRefresh();

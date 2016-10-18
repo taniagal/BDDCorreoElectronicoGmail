@@ -18,12 +18,6 @@ import org.openqa.selenium.WebDriver;
 
 public class CotizacionesDeLaCuentaDefinitions {
 
-    @Managed
-    WebDriver driver;
-
-    @Steps
-    SeusLoginSteps seusLogin;
-
     @Steps
     HistorialCuentaSteps historialCuentaSteps;
 

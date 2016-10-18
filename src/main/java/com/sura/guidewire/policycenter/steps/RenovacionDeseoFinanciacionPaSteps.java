@@ -1,6 +1,6 @@
-package com.sura.policycenter.selenium.steps;
+package com.sura.guidewire.policycenter.steps;
 
-import com.sura.policycenter.selenium.pages.renovacion.RenovacionDeseoFinanciacionPaPage;
+import com.sura.guidewire.policycenter.pages.renovacion.RenovacionDeseoFinanciacionPaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;

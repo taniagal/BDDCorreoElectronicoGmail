@@ -1,7 +1,7 @@
-package com.sura.guidewire.policycenter.definitions;
+package com.sura.guidewire.policycenter.definitions.tarifa;
 
 
-import com.sura.guidewire.policycenter.steps.ModificadoresDeTarifaSteps;
+import com.sura.guidewire.policycenter.steps.tarifa.ModificadoresDeTarifaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;

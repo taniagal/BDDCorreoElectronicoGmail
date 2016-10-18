@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -10,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 
-public class BusquedaDeCuentasPage extends Commons {
+public class BusquedaDeCuentasPage extends PageObject {
 
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-labelEl']")
     private WebElementFacade lblTipoDocumento;
@@ -107,7 +108,7 @@ public class BusquedaDeCuentasPage extends Commons {
         actions.click(menuBuscar).build().perform();
         waitForTextToAppear("Buscar pólizas");
         waitFor(menuBuscarCuentas).waitUntilVisible();
-        waitUntil(1500);
+        Commons.waitUntil(1500);
         actions.click(menuBuscarCuentas).build().perform();
     }
 
@@ -125,7 +126,7 @@ public class BusquedaDeCuentasPage extends Commons {
     private void limpiarFormulario() {
         waitFor(botonRestablecer).waitUntilVisible().waitUntilClickable();
         actions.click(botonRestablecer).build().perform();
-        waitUntil(2000);
+        Commons.waitUntil(2000);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {

@@ -74,6 +74,7 @@ public class CoaseguroPage extends Commons {
         MatcherAssert.assertThat(res+"verifique su codigo","No estan correctos los elementos".equals(res));
     }
 
+
     public void agregarCoaseguro(List<Aseguradora> aseguradoras) {
         campoTxtPolizaDeReferencia.waitUntilPresent().sendKeys("poliza123");
         Actions act = new Actions(getDriver());
@@ -97,19 +98,24 @@ public class CoaseguroPage extends Commons {
         }
         act.sendKeys(Keys.TAB).build().perform();
     }
+
+
     public void verificarPorcentajeParticipacion(){
         waitFor(ExpectedConditions.textToBePresentInElement(pieDeTabla,"100"));
         MatcherAssert.assertThat("El total no es del 100%", pieDeTabla.getText().contains("100"));
     }
 
+
     public void guardarcosaeguro(){
         botonAceptar.click();
     }
+
 
     public void verificarCoaseguro() {
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
         MatcherAssert.assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
+
 
     public void verificarMensaje(String mensaje) {
         verificarMensaje(divMensaje,mensaje);

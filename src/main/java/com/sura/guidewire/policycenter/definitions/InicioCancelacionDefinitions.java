@@ -1,7 +1,7 @@
-package com.sura.policycenter.selenium.definitions;
+package com.sura.guidewire.policycenter.definitions;
 
 
-import com.sura.policycenter.selenium.steps.InicioCancelacionSteps;
+import com.sura.guidewire.policycenter.steps.InicioCancelacionSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Named;

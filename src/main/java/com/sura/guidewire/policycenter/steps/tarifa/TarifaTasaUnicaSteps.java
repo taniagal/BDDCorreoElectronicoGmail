@@ -1,9 +1,9 @@
-package com.sura.guidewire.policycenter.steps;
+package com.sura.guidewire.policycenter.steps.tarifa;
 
 import com.sura.guidewire.policycenter.pages.SeusLoginPage;
 import com.sura.guidewire.policycenter.pages.AprobacionDeAnalisisDeRiesgoPage;
-import com.sura.guidewire.policycenter.pages.TarifaAutosPage;
-import com.sura.guidewire.policycenter.pages.TarifaTasaUnicaPage;
+import com.sura.guidewire.policycenter.pages.tarifa.TarifaAutosPage;
+import com.sura.guidewire.policycenter.pages.tarifa.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;

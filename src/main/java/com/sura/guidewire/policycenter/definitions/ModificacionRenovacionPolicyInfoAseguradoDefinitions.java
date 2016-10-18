@@ -1,6 +1,6 @@
-package com.sura.policycenter.selenium.definitions;
+package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.policycenter.selenium.steps.ModificacionRenovacionPolicyInfoAseguradoSteps;
+import com.sura.guidewire.policycenter.steps.ModificacionRenovacionPolicyInfoAseguradoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;

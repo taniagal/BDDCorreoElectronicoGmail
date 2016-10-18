@@ -10,8 +10,6 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class CotizacionesDeLaCuentaSteps extends ScenarioSteps {
-
-    private final BuscarCuentasPage buscarCuentasPage = new BuscarCuentasPage (getDriver());
     private final OpcionesAdminitradorCotizaciones opcionesAdministradorCotizaciones = new OpcionesAdminitradorCotizaciones(getDriver());
 
     public CotizacionesDeLaCuentaSteps(Pages pages) {
