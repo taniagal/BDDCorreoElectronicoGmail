@@ -2,15 +2,19 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.commons.selenium.Commons;
+import com.sura.serenitybdd.util.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class InicioCancelacionPage extends PageObject {
@@ -32,6 +36,8 @@ public class InicioCancelacionPage extends PageObject {
     WebElementFacade lblMensaje;
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Reason-inputEl']")
     WebElementFacade txtMotivo;
+    @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Reason-inputEl']")
+    WebElementFacade txtLista;
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']")
     WebElementFacade txtFechaVigenciaCancelacion;
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:ReasonDescription-inputEl']")
@@ -80,7 +86,7 @@ public class InicioCancelacionPage extends PageObject {
     public String calculaEmisionAnticipada61Dias(String fecha) {
         DateTimeFormatter formato = DateTimeFormat.forPattern("dd/MM/yyyy");
         DateTime fechaEnFormatoDate = formato.parseDateTime(fecha);
-        String fechaEnFormatoString = fechaEnFormatoDate.minusDays(61).toString(formato);
+        String fechaEnFormatoString = fechaEnFormatoDate.plusDays(61).toString(formato);
         return fechaEnFormatoString;
     }
 
@@ -98,6 +104,26 @@ public class InicioCancelacionPage extends PageObject {
 
 
     public void validaMensajeEnPantalla(String mensaje) {
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
         MatcherAssert.assertThat("Mensaje no corresponde al referenciado", lblMensaje.getText().contains(mensaje));
+    }
+
+    public void validaListaMotivoDiferenteBancolombia(ExamplesTable listaMotivo) throws Exception {
+        cm.waitUntil(800);
+        txtLista.click();
+        this.validarDatosDeLaLista(listaMotivo);
+        btnCancelarTransaccion.click();
+    }
+
+
+    public void validarDatosDeLaLista(ExamplesTable listaMotivo) throws Exception{
+        List<WebElementFacade> elementoInstruccion;
+        List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(listaMotivo);
+        for (String tipo : elementosRequeridos) {
+            elementoInstruccion = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
+            for (WebElementFacade lista : elementoInstruccion) {
+                MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
+            }
+        }
     }
 }

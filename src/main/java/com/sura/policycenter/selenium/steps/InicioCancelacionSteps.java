@@ -4,6 +4,7 @@ package com.sura.policycenter.selenium.steps;
 import com.sura.policycenter.selenium.pages.InicioCancelacionPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class InicioCancelacionSteps extends ScenarioSteps {
 
@@ -37,4 +38,7 @@ public class InicioCancelacionSteps extends ScenarioSteps {
     }
 
 
+    public void valida_lista_de_motivos_diferente_bancolombia(ExamplesTable listaMotivo) throws Exception {
+        inicioCancelacionPage.validaListaMotivoDiferenteBancolombia(listaMotivo);
+    }
 }

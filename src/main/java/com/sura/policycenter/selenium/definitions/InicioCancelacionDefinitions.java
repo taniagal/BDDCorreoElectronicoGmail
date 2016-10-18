@@ -7,6 +7,7 @@ import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 
 public class InicioCancelacionDefinitions {
 
@@ -39,6 +40,11 @@ public class InicioCancelacionDefinitions {
     @Alias("Se debe validar la emision anticipada con <mensaje>")
     public void thenSeDebeValidarLaRetroactividadSinoCumpleConmensaje(@Named("mensaje")String mensaje) {
         inicioCancelacionSteps.validar_mensaje_en_pantalla(mensaje);
+    }
+
+    @Then("Se debe validar en la lista cuando la poliza NO es de bancolombia: $listaMotivo")
+    public void thenSeDebeValidarEnLaListaCuandoLaPolizaNOEsDeBancolombia(ExamplesTable listaMotivo) throws Exception{
+        inicioCancelacionSteps.valida_lista_de_motivos_diferente_bancolombia(listaMotivo);
     }
 
 
