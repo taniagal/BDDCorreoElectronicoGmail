@@ -53,7 +53,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
     private WebElementFacade botonRelacionarAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver-textEl']")
     private WebElementFacade botonAsegurado;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_true-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
     private WebElementFacade campoVehiculoCeroKm;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:plan_DV-inputEl']")
     private WebElementFacade comboBoxPlan;
@@ -67,6 +67,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
 
     public void irAVehiculos() {
         waitFor(menuItemVehiculos).shouldBePresent();
+        waitUntil(2000);
         menuItemVehiculos.click();
     }
 
@@ -95,10 +96,15 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
         waitUntil(1500);
         selectItem(comboBoxPlan, vehiculo.get("plan"));
-        ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
+        if (!"random".equals(vehiculo.get("placa"))) {
+            ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
+        } else {
+            campoTxtPlaca.clear();
+            campoTxtPlaca.sendKeys("QWE" + (int) Math.floor(Math.random() * (100 - 999) + 999));
+        }
         waitUntil(1000);
         comboBoxVehiculoServicio.click();
-        waitForTextToAppear(vehiculo.get("placa"), 28000);
+        waitForTextToAppear(campoTxtPlaca.getText(), 28000);
         selectItem(comboBoxModelo, vehiculo.get("modelo"));
         waitForTextToAppear(vehiculo.get("modelo"), 28000);
         ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
