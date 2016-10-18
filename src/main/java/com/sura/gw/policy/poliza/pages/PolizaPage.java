@@ -20,6 +20,7 @@ public class PolizaPage extends GuidewirePage {
     private static String XPATH_MENU_DESPLEGABLE = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
     private String XpathMetodoDeReembolso = "//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CalcMethod-inputEl']";
+    private String XpathMensajeBloqueoCancelacionPoliza = "//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']";
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private List<String> listaMotivos;
     private List<WebElementFacade> listaMotivosWE;
@@ -238,6 +239,13 @@ public class PolizaPage extends GuidewirePage {
         obtenerFechacancelacionElemento().sendKeys(Keys.TAB);
     }
 
+    public void ingresarFechaSuperior(WebElementFacade fecha) {
+        LocalDate fechaSuperior = formatter.parseDateTime(fecha.getValue()).toLocalDate().plusDays(10);
+        obtenerFechacancelacionElemento().clear();
+        obtenerFechacancelacionElemento().sendKeys(formatter.print(fechaSuperior));
+        obtenerFechacancelacionElemento().sendKeys(Keys.TAB);
+    }
+
     public WebElementFacade obtenerFechacancelacionElemento() {
         waitFor(2).seconds();
         return findBy(xpathFechaVigenteCancelacion);
@@ -246,9 +254,14 @@ public class PolizaPage extends GuidewirePage {
          findBy(path);
 
     }
-    public String obtenerMotivoDeReembolso(){
+    public String obtenerMetodoDeReembolso(){
         waitFor(2).seconds();
         return findBy(XpathMetodoDeReembolso).getText();
     }
+    public WebElementFacade obtenerTituloBloqueoCancelacionPoliza(){
+        return
+
+    }
+
 
 }
