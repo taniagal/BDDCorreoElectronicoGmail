@@ -106,4 +106,15 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
     public void verificar_cambio_de_tarifa() {
         tasaUnicaPage.verificarCambioDeTarifa();
     }
+
+    @Step
+    public void renovar_poliza() {
+        tasaUnicaPage.comenzarRenovacionDePoliza();
+        tasaUnicaPage.renovarPoliza();
+    }
+
+    @Step
+    public void verificar_renovacion_tarifa() {
+        tasaUnicaPage.verificarTarifaRenovacionSinCambio();
+    }
 }

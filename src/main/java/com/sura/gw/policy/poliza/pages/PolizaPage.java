@@ -89,7 +89,7 @@ public class PolizaPage extends GuidewirePage {
 
         setImplicitTimeout(1, TimeUnit.SECONDS);
         try {
-            btnEditarTransaccion = findBy(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
+            btnEditarTransaccion = withTimeoutOf(1,TimeUnit.SECONDS).find(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION DE POLIZA NO VISUALIZADO : " + e);
         }
@@ -121,11 +121,11 @@ public class PolizaPage extends GuidewirePage {
             shouldBeVisible(opcion);
             opcion.waitUntilClickable().click();
             String xpathimgMensajesWarnig = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']//div//img[@class='warning_icon']";
-
-            if (isElementVisible(By.xpath(xpathimgMensajesWarnig))) {
+            setImplicitTimeout(2,TimeUnit.SECONDS);
+            if (findBy(xpathimgMensajesWarnig).isVisible()) {
                 opcion.waitUntilClickable().click();
             }
-
+            resetImplicitTimeout();
             waitForTextToAppear(tituloPaginaEsperada);
             shouldContainText(tituloPaginaEsperada);
         } catch (Exception e) {

@@ -8,11 +8,17 @@ import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.concurrent.TimeUnit;
+
 public class TarifaTasaUnicaPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet-btnInnerEl']")
     private WebElementFacade botonHojaDeCalculo;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:Spreadsheet']")
+    private WebElementFacade botonHojaDeCalculoRenovacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet:Export-textEl']")
     private WebElementFacade menuItemExportar;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:Spreadsheet:Export']")
+    private WebElementFacade menuItemExportarRenovacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet:Import-textEl']")
     private WebElementFacade menuItemImportar;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Export-inputEl']")
@@ -41,14 +47,20 @@ public class TarifaTasaUnicaPage extends Commons {
     private WebElementFacade menuItemArchivoDePoliza;
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_ChangePolicy']")
     private WebElementFacade menuItemCambiarPoliza;
+    @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_RenewPolicy']")
+    private WebElementFacade menuItemRenovarPoliza;
     @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange']")
     private WebElementFacade botonSiguienteCambioDePoliza;
+    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade menuItemVehiculos;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
     private WebElementFacade campoTxtValorasegurado;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:RenewalQuote']")
+    private WebElementFacade botonCotizarRenovacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizarAsegurado;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']")
@@ -69,6 +81,12 @@ public class TarifaTasaUnicaPage extends Commons {
     private WebElementFacade labelPrimaTotalCotizacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotalCambio;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
+    private WebElementFacade labelPrimaTotalRenovacion;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicyWorkflow']")
+    private WebElementFacade botonEditarTransaccion;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']")
+    private WebElementFacade checkBoxTasaUnica;
 
     private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
@@ -146,9 +164,45 @@ public class TarifaTasaUnicaPage extends Commons {
         botonCotizarAsegurado.click();
     }
 
+
+    public void comenzarRenovacionDePoliza() {
+        menuiItemCotizacion.waitUntilPresent().click();
+        guardarMontoPorCoberturas();
+        menuAccionesEnvio.waitUntilPresent().click();
+        menuItemArchivoDePoliza.waitUntilPresent().click();
+        menuAccionesPoliza.waitUntilPresent().click();
+        menuItemRenovarPoliza.waitUntilPresent().click();
+        botonAceptar.waitUntilPresent().click();
+        for (int i = 0; i < 5; i++) {
+            botonHojaDeCalculoRenovacion.waitUntilPresent().click();
+            menuItemExportarRenovacion.waitUntilPresent().click();
+            waitUntil(2000);
+            linkVonverAVehiculos.waitUntilPresent().click();
+            setImplicitTimeout(1, TimeUnit.SECONDS);
+            if (botonEditarTransaccion.isPresent()) {
+                botonEditarTransaccion.waitUntilPresent().click();
+                i = 5;
+            }
+            resetImplicitTimeout();
+        }
+    }
+
+
+    public void renovarPoliza() {
+        botonCotizarRenovacion.waitUntilPresent();
+        waitUntil(1000);
+        checkBoxTasaUnica.shouldBePresent();
+        botonCotizarRenovacion.click();
+    }
+
     public void verificarTarifacionSinCambio() {
         MatcherAssert.assertThat("Error, hubo un cambio en el valor de la tarifa durante el policy change, Expected: " +
                 primaTotal + " but was: " + labelPrimaTotalCambio.getText(), primaTotal.equals(labelPrimaTotalCambio.getText()));
+    }
+
+    public void verificarTarifaRenovacionSinCambio() {
+        labelPrimaTotalRenovacion.waitUntilPresent();
+        MatcherAssert.assertThat("No hay tarifa en la renovacion", labelPrimaTotalRenovacion.containsText("00 (COP)"));
     }
 
     public void verificarCambioDeTarifa() {
