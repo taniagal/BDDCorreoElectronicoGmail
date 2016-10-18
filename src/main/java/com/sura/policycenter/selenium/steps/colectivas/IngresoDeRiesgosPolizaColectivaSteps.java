@@ -137,4 +137,9 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     public void validarFechaInicioVigenciaMenorALaPolizaMadre(String mensaje) {
         opcionesInformacionPolizaPage.validarFechaInicioVigenciaMenorALaPolizaMadre(mensaje);
     }
+
+    @Step
+    public void validarOpcionIrAListaDeRiesgos() {
+        expedicionDePolizaPage.validarOpcionIrAListaDeRiesgos();
+    }
 }

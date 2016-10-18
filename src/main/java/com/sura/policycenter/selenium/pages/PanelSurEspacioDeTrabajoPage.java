@@ -26,6 +26,8 @@ public class PanelSurEspacioDeTrabajoPage extends PageObject {
     WebElementFacade panelInferiorBotonBorrar;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
     WebElementFacade panelInferiorTablaDeMensajes;
+    @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:Cancel-btnInnerEl']")
+    WebElementFacade btnCancelar;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesInformacionPolizaPage.class);
 
@@ -66,5 +68,6 @@ public class PanelSurEspacioDeTrabajoPage extends PageObject {
     public void borrarEspacioDeTrabajo(){
         panelInferiorBotonBorrar.click();
         waitForTextToDisappear("Workspace");
+        btnCancelar.click();
     }
 }
