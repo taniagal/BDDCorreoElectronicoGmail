@@ -7,7 +7,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -39,7 +38,6 @@ public class ReglasRenovacionDosPage extends PageObject {
     WebElementFacade lblMensajes;
 
     Commons cm = new Commons(getDriver());
-    Actions act = new Actions(getDriver());
 
     public ReglasRenovacionDosPage(WebDriver driver) {
         super(driver);

@@ -36,7 +36,6 @@ Examples:
 |acb123|
 
 
-
 Scenario:  Validar si el valor asegurado del vehiculo supera el tope maximo del valor permitido
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |

@@ -1,4 +1,4 @@
-Reglas Renovacion 2
+Reglas Renovacion Dos
 
 Meta:
 
