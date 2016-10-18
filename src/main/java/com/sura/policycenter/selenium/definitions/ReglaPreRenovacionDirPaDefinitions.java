@@ -34,4 +34,5 @@ public class ReglaPreRenovacionDirPaDefinitions {
     public void thenhabilitarInstrucciones(ExamplesTable opcionesDir) throws Exception {
         reglaPreRenovacionDirPaSteps.valida_opciones_intruccion_detalles(opcionesDir);
     }
+
 }
