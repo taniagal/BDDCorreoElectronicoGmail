@@ -5,8 +5,8 @@ Meta:
 Scenario: 1 Programar cancelacion de poliza
 
 Meta:
-@Story CDSEG-3435
-@URL https://jira.suramericana.com.co/browse/CDSEG-3435
+@Story CDSEG-3425
+@URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
@@ -25,8 +25,8 @@ Examples:
 Scenario: 2 Cancelar poliza con beneficiario oneroso
 
 Meta:
-@Story CDSEG-3435
-@URL https://jira.suramericana.com.co/browse/CDSEG-3435
+@Story CDSEG-3425
+@URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
@@ -43,8 +43,8 @@ Examples:
 Scenario: 3 Cancelacion de  poliza con beneficiario oneroso sin aprobar UW
 
 Meta:
-@Story CDSEG-3435
-@URL https://jira.suramericana.com.co/browse/CDSEG-3435
+@Story CDSEG-3425
+@URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
@@ -61,8 +61,8 @@ Examples:
 Scenario: 4 Cancelar poliza
 
 Meta:
-@Story CDSEG-3435
-@URL https://jira.suramericana.com.co/browse/CDSEG-3435
+@Story CDSEG-3425
+@URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
@@ -81,8 +81,8 @@ Examples:
 Scenario: 5 Cancelar poliza con retroactividad
 
 Meta: @manual
-@Story CDSEG-3435
-@URL https://jira.suramericana.com.co/browse/CDSEG-
+@Story CDSEG-3425
+@URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
