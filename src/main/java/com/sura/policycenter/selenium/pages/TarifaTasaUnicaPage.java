@@ -174,7 +174,7 @@ public class TarifaTasaUnicaPage extends Commons {
         menuItemRenovarPoliza.waitUntilPresent().click();
         botonAceptar.waitUntilPresent().click();
         for (int i = 0; i < 5; i++) {
-            botonHojaDeCalculoRenovacion.waitUntilPresent().click();
+            withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonHojaDeCalculoRenovacion).waitUntilPresent().click();
             menuItemExportarRenovacion.waitUntilPresent().click();
             waitUntil(2000);
             linkVonverAVehiculos.waitUntilPresent().click();
