@@ -259,7 +259,7 @@ public class PolizaPage extends GuidewirePage {
         return findBy(XpathMetodoDeReembolso).getText();
     }
     public WebElementFacade obtenerTituloBloqueoCancelacionPoliza(){
-        return
+        return findBy(XpathMensajeBloqueoCancelacionPoliza);
 
     }
 

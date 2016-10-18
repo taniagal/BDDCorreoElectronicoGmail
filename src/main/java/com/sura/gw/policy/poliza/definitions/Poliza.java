@@ -172,7 +172,7 @@ public class Poliza {
     @Then("se debe mostrar un mensaje con el texto: $Mensaje")
     public void entoncesSeDebeMostrarUnMensajeConElTexto(String mensaje){
         LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion");
-        polizaSteps.es
+        polizaSteps.se_muestra_bloqueo_cancelacion_de_poliza(mensaje);
     }
 
     @When("despliegue $opcion")

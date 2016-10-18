@@ -110,7 +110,7 @@ public class PolizaSteps extends GuidewireSteps {
     @Step
     public void se_muestra_bloqueo_cancelacion_de_poliza(String mensaje) {
 
-        MatcherAssert.assertThat(obtenerPolizaPage().getText(), Matchers.containsString(mensaje));
+        MatcherAssert.assertThat(obtenerPolizaPage().obtenerTituloBloqueoCancelacionPoliza().getText(), Matchers.containsString(mensaje));
 
     }
     @Step

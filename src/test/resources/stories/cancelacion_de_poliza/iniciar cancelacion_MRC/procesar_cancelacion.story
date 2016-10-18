@@ -19,7 +19,7 @@ Then la programacion de la poliza es correcta si se muestra el texto: Cancelaci�
 
 Examples:
 | numPoliza     | rolUsuario |
-| 9979873851   | Asesor     |
+| 6306954333    | Asesor     |
 
 
 Scenario: 2 Cancelar poliza con beneficiario oneroso
@@ -37,7 +37,7 @@ Then se debe generar un UW Issue para solicitar la autorización y el mensaje de
 
 Examples:
 | numPoliza     | rolUsuario |
-| 9979873851   | Asesor     |
+| 6887167414    | Asesor     |
 
 
 Scenario: 3 Cancelacion de  poliza con beneficiario oneroso sin aprobar UW
@@ -51,11 +51,11 @@ Meta:
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba cancelacion  de poliza
 And realice la cancelacion de poliza
-Then se debe mostrar un mensaje con el texto: Asuntos que bloquean la expedicíon
+Then se debe mostrar un mensaje con el texto: Asuntos que bloquean la expedición
 
 Examples:
 | numPoliza     | rolUsuario |
-| 9979873851   | Asesor     |
+| 6887167414    | Asesor     |
 
 
 Scenario: 4 Cancelar poliza
@@ -78,7 +78,7 @@ Examples:
 
 
 
-Scenario: 4 Cancelar poliza con retroactividad
+Scenario: 5 Cancelar poliza con retroactividad
 
 Meta: @manual
 @Story CDSEG-3435
@@ -86,9 +86,9 @@ Meta: @manual
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
-Given que quiero expedir la cancelación de una poliza con retroactividad superior a 60 días
-When intente procesar la cancelación
-Then se debe generar un UW Issue para solicitar la autorización, el mensaje debe ser: "La fecha de cancelación no cumple con el parametro de retraoctividad de 60 días"
+Given  que quiero expedir la cancelación de una poliza con retroactividad superior a 60 días
+When  intente procesar la cancelación
+Then  se debe generar un UW Issue para solicitar la autorización, el mensaje debe ser: "La fecha de cancelación no cumple con el parametro de retraoctividad de 60 días"
 
 
 
