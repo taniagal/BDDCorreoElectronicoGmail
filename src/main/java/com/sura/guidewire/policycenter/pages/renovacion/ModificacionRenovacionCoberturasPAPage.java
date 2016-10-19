@@ -161,5 +161,7 @@ public class ModificacionRenovacionCoberturasPAPage extends Commons {
 
     public void borrarEspacioTrabajo() {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(btnBorrar).click();
+        Commons espera = new Commons(getDriver());
+        espera.waitUntil(2000);
     }
 }

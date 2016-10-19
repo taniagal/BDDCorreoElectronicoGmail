@@ -71,7 +71,7 @@ public class CotizacionRenovacionPaValidacionesPage extends Commons{
     }
 
     public void limpiarMensajes (){
-        borraMensajeEspacioTrabajo.click();
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(borraMensajeEspacioTrabajo).click();
     }
 
 }
