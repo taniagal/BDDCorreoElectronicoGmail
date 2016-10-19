@@ -115,11 +115,6 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.validarElCampoDepartamento(departamento);
     }
 
-    @Then("el campo ciudad debe tener el valor <ciudad>")
-    public void validarElCampoCiudad(@Named("ciudad")String ciudad){
-        direccionesDeContactoVinculadasSteps.validarElCampoCiudad(ciudad);
-    }
-
     @Then("la direccion debe quedar estandarizada <direccionEstandarizada> del contacto <nombreContacto>")
     public void validarDireccionEstandarizada(@Named("direccionEstandarizada") String direccionEstandarizada,
                                               @Named("nombreContacto") String nombreContacto){
