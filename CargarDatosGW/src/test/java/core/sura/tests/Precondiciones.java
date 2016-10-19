@@ -70,7 +70,7 @@ public class Precondiciones extends MetodosComunes{
 
     public void login(String usuario ,String contrasenia) {
         driver.get(baseUrl + "/pc/PolicyCenter.do");
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         if (driver.findElements(By.xpath(".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")).size() > 0) {
             driver.findElement(By.xpath(".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")).sendKeys("su");
             driver.findElement(By.xpath(".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")).sendKeys("gw");

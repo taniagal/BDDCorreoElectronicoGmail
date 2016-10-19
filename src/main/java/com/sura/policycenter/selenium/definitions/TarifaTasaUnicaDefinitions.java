@@ -114,4 +114,15 @@ public class TarifaTasaUnicaDefinitions {
     public void agregarCoberturas(ExamplesTable coberturas) {
         tasaUnicaSteps.seleciconar_coberturas(coberturas);
     }
+
+    @When("realize la renovacion de una poliza")
+    public void renovarPoliza() {
+        tasaUnicaSteps.renovar_poliza();
+    }
+
+    @Then("se debe tarifar con el esquema de tasa unica, generando el valor de la prima")
+    public void verificarTarifaRenovacion(){
+        tasaUnicaSteps.verificar_renovacion_tarifa();
+    }
+
 }
