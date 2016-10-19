@@ -1,4 +1,4 @@
-package com.sura.policycenter.selenium.pages.renovacion;
+package com.sura.guidewire.policycenter.pages.renovacion;
 
 import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.Keys;
