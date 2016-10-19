@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.concurrent.TimeUnit;
 
-public class TarifaTasaUnicaPage extends Commons {
+public class TarifaTasaUnicaPAPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet-btnInnerEl']")
     private WebElementFacade botonHojaDeCalculo;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:Spreadsheet']")
@@ -93,7 +93,7 @@ public class TarifaTasaUnicaPage extends Commons {
     String vecMontos[] = new String[8];
     String primaTotal = "";
 
-    public TarifaTasaUnicaPage(WebDriver driver) {
+    public TarifaTasaUnicaPAPage(WebDriver driver) {
         super(driver);
     }
 
@@ -211,6 +211,18 @@ public class TarifaTasaUnicaPage extends Commons {
 
     public void irAInformacionDePoliza() {
         linkVerCotizacion.waitUntilPresent().click();
+    }
+
+    public void verificarValoresDeTarifa(String valorAsegurado){
+        double valor = Integer.parseInt(valorAsegurado);
+        double tasa = 0.02;
+        double dias = 181;
+        String prima = Double.toString(((valor * tasa) * dias) / 365);
+        String primaEntera[] = prima.split("\\.");
+        String valorLabel = labelPrimaTotalCotizacion.getText().replace("$","");
+        valorLabel = valorLabel.replace(".","");
+        valorLabel = valorLabel.replace(",00 (COP)","");
+        MatcherAssert.assertThat("Error en el valor de la prima, Expected: "+primaEntera[0]+" but was: "+valorLabel, valorLabel.equals(primaEntera[0].toString()));
     }
 
     public void guardarMontoPorCoberturas() {
