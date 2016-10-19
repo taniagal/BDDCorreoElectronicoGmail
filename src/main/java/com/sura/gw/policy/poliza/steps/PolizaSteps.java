@@ -8,6 +8,8 @@ import com.sura.gw.policy.poliza.pages.PolizaPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 
 import java.util.List;
 
@@ -72,6 +74,7 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public void iniciar_cancelacion_de_poliza() {
+        waitFor(2).seconds();
         String xpathBttonCancelacion = "//a[contains(.,'Iniciar cancelación')]";
         getDriver().findElement(By.xpath(xpathBttonCancelacion)).click();
     }
@@ -81,12 +84,17 @@ public class PolizaSteps extends GuidewireSteps {
         String xpathBttonCompromiso = "//a[contains(.,'Opciones de compromiso')]";
         getDriver().findElement(By.xpath(xpathBttonCompromiso)).click();
     }
-
     @Step
     public void seleccionar_opcion_cancelar_ahora() {
         waitFor(1).second();
         String xpathBttonCancelarAhora = "//a[contains(.,'Cancelar ahora')]";
         getDriver().findElement(By.xpath(xpathBttonCancelarAhora)).click();
+    }
+    @Step
+    public void seleccionar_opcion_programar_cancelacion() {
+        waitFor(1).second();
+        String xpathBttonProgramarCancelacion = "//a[contains(.,'Programar cancelación')]";
+        getDriver().findElement(By.xpath(xpathBttonProgramarCancelacion)).click();
     }
     @Step
     public void confirmar_cancelacion(){
@@ -99,6 +107,19 @@ public class PolizaSteps extends GuidewireSteps {
        return getDriver().findElement(By.xpath("//span[@id='JobComplete:JobCompleteScreen:ttlBar']")).getText();
 
     }
+    @Step
+    public void se_muestra_bloqueo_cancelacion_de_poliza(String mensaje) {
+
+        MatcherAssert.assertThat(obtenerPolizaPage().obtenerTituloBloqueoCancelacionPoliza().getText(), Matchers.containsString(mensaje));
+
+    }
+    @Step
+    public void se_muestra_mensaje__de_beneficiario_oneroso(String mensaje) {
+
+        MatcherAssert.assertThat(obtenerPolizaPage().obtenerMensajeDeCancelacionPolizaConOneroso().getText(), Matchers.containsString(mensaje));
+
+    }
+
     @Step
     public String validar_mensaje(){
         return getDriver().findElement(By.xpath(".//*[@id='StartCancellation:StartCancellationScreen:WarningMessageCancellation']")).getText();
@@ -113,6 +134,7 @@ public class PolizaSteps extends GuidewireSteps {
     public PolizaPage obtenerPolizaPage(){
         return this.polizaPage;
     }
+
     public InstruccionesPreviasARenovacionPage obtenerInstruccionesPreviasPage()
     {
         return this.instruccionesPreviasARenovacionPage;
@@ -126,6 +148,10 @@ public class PolizaSteps extends GuidewireSteps {
     public void ingresarFechaAnteriorA61Dias(){
         obtenerPolizaPage().ingresarFechaAnteriorA61Dias(obtenerPolizaPage().obtenerFechacancelacionElemento());
     }
+    public void ingresarFechaSuperior(){
+        obtenerPolizaPage().ingresarFechaSuperior(obtenerPolizaPage().obtenerFechacancelacionElemento());
+    }
+
     @Step
     public void validar_opcion_cancelar_transaccion(){
         String XpathBtnCancelarTransaccion = ".//a[contains(.,'Cancelar transacción')]";
