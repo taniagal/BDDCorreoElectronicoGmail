@@ -114,6 +114,13 @@ public class PolizaSteps extends GuidewireSteps {
 
     }
     @Step
+    public void se_muestra_mensaje__de_beneficiario_oneroso(String mensaje) {
+
+        MatcherAssert.assertThat(obtenerPolizaPage().obtenerMensajeDeCancelacionPolizaConOneroso().getText(), Matchers.containsString(mensaje));
+
+    }
+
+    @Step
     public String validar_mensaje(){
         return getDriver().findElement(By.xpath(".//*[@id='StartCancellation:StartCancellationScreen:WarningMessageCancellation']")).getText();
     }

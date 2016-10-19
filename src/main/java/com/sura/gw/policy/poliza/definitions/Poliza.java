@@ -175,6 +175,12 @@ public class Poliza {
         polizaSteps.se_muestra_bloqueo_cancelacion_de_poliza(mensaje);
     }
 
+    @Then("se debe visualizar un mensaje con el texto: $Mensaje")
+    public void entoncesSeDebevisualizarrUnMensajeConElTexto(String mensaje){
+        LOGGER.info("Poliza.entoncesSeDebevisualizarrUnMensajeConElTexto");
+        polizaSteps.se_muestra_mensaje__de_beneficiario_oneroso(mensaje);
+    }
+
     @When("despliegue $opcion")
     public void cuandoDespliegue(String opcion) {
         LOGGER.info("Poliza.cuandoDespliegue");
