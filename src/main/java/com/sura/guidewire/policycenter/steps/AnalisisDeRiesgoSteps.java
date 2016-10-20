@@ -1,7 +1,7 @@
-package com.sura.gw.policy.poliza.steps;
+package com.sura.guidewire.policycenter.steps;
 
 
-import com.sura.gw.policy.poliza.pages.AnalisisDeRiesgosPage;
+import com.sura.guidewire.policycenter.pages.AnalisisDeRiesgosPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.hamcrest.Matchers;

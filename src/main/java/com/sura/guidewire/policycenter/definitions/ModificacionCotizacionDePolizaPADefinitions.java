@@ -2,9 +2,8 @@ package com.sura.guidewire.policycenter.definitions;
 
 
 import com.google.inject.name.Named;
-import com.sura.gw.navegacion.steps.GuidewireSteps;
-import com.sura.policycenter.selenium.steps.CotizacionPADetalleSteps;
-import com.sura.policycenter.selenium.steps.ModificacionCotizacionDePolizaSteps;
+import com.sura.guidewire.policycenter.steps.CotizacionPADetalleSteps;
+import com.sura.guidewire.policycenter.steps.ModificacionCotizacionDePolizaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;

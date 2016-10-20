@@ -1,4 +1,4 @@
-package com.sura.policycenter;
+package com.sura.guidewire.policycenter;
 
 
 import net.serenitybdd.jbehave.SerenityStory;

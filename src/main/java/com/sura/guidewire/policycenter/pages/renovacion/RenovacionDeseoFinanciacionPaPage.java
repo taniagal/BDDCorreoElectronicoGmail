@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
-import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;

@@ -1,8 +1,5 @@
-package com.sura.gw.policy.poliza.pages;
+package com.sura.guidewire.policycenter.pages;
 
-
-import com.sura.gw.inicio.guidewire.GuidewirePage;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 

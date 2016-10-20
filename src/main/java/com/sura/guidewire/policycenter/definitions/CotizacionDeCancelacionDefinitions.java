@@ -1,7 +1,7 @@
-package com.sura.policycenter.selenium.definitions;
+package com.sura.guidewire.policycenter.definitions;
 
 
-import com.sura.policycenter.selenium.steps.CotizacionDeCancelacionSteps;
+import com.sura.guidewire.policycenter.steps.CotizacionDeCancelacionSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;

@@ -6,6 +6,7 @@ import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireSteps;
 import com.sura.guidewire.policycenter.steps.InstruccionesPreviasARenovacionSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
 import com.sura.guidewire.policycenter.util.AssertUtil;
+import com.sura.guidewire.policycenter.steps.AnalisisDeRiesgoSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
