@@ -69,7 +69,6 @@ public class EdificiosUbicaciones {
         int index = 0;
         for (Map<String, String> entradaCobertura : entradas.getRows()) {
             index++;
-
             String tab = entradaCobertura.get("TAB");
             String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
             String cobertura = entradaCobertura.get("COBERTURA");

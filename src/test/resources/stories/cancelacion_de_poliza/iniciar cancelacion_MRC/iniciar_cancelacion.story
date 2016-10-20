@@ -15,9 +15,9 @@ When seleccione la lista motivo de cancelacion
 Then se debe visualizar los siguientes motivos
 | MOTIVOS                       |
 | Por no pago                   |
-| por petición del cliente      |
-| por error de cobro            |
-| por orden de la compañía      |
+| Por petición del cliente      |
+| Por error de cobro            |
+| Por orden de la compañía      |
 | Por no renovada               |
 | Por sustitución               |
 | Por error de trámite          |
