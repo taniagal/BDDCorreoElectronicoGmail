@@ -62,24 +62,6 @@ Examples:
 |poliza       |
 |TEST_22266674|
 
-Scenario: motivos de cancelacion para polizas diferentes a Bancolombia
-Given que existe una <poliza> y esta dentro de la vigencia
-When necesito iniciar la cancelacion
-Then Se debe validar en la lista cuando la poliza NO es de bancolombia:
-|Financiación cancelación por muerte|
-|Financiación cancelación por no pago|
-|Financiación cancelación por petición cliente|
-|Por error de trámite|
-|Por no pago|
-|Por no renovada|
-|por orden de la compañía|
-|Por pérdida total|
-|por petición del cliente|
-
-Examples:
-|poliza       |
-|TEST_22266674|
-
 
 Scenario: validar metodo de reembolso
 Meta: @manual
