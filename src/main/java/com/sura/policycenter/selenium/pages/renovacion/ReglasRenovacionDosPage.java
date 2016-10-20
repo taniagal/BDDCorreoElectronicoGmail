@@ -102,7 +102,4 @@ public class ReglasRenovacionDosPage extends PageObject {
         btnAceptarRetirarTransaccion.click();
     }
 
-    public void cerrarTransaccionEnValidacion() {
-
-    }
 }

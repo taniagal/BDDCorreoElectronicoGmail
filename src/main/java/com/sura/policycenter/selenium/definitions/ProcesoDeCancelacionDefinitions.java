@@ -31,4 +31,19 @@ public class ProcesoDeCancelacionDefinitions {
     public void thenDebeGenerarUnaAutorizacion() {
         procesoDeCancelacionSteps.valida_autorizacion_en_formulario();
     }
+
+    /*
+    * Escenario II
+    */
+
+    @Then("debe permitir programar la cancelacion")
+    public void thenDebePermitirProgramarLaCancelacion() {
+        procesoDeCancelacionSteps.inicia_la_programacion_en_poliza();
+    }
+
+    @Then("debe mostrar una ventana con un <mensaje> de autorizacion")
+    public void thenDebeMostrarUnaVentanaConUnmensajeDeAutorizacion(@Named("mensaje")String mensaje) {
+        procesoDeCancelacionSteps.valida_mensaje_en_pantanlla_programar_cancelacion(mensaje);
+    }
+
 }

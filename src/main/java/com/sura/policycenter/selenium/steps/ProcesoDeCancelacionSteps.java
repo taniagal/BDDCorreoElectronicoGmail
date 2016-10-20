@@ -1,13 +1,14 @@
 package com.sura.policycenter.selenium.steps;
 
+import com.sura.policycenter.selenium.pages.CotizacionDeCancelacionPage;
 import com.sura.policycenter.selenium.pages.ProcesoDeCancelacionPage;
-import com.sura.policycenter.selenium.pages.renovacion.ReglasRenovacionDosPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class ProcesoDeCancelacionSteps extends ScenarioSteps {
 
     ProcesoDeCancelacionPage procesoDeCancelacionPage;
+    CotizacionDeCancelacionPage cotizacionDeCancelacionPage;
 
     @Step
     public void iniciarProcesoCancelacion() {
@@ -28,5 +29,16 @@ public class ProcesoDeCancelacionSteps extends ScenarioSteps {
     public void valida_autorizacion_en_formulario() {
         procesoDeCancelacionPage.validaAutorizacionEnFormulario();
         procesoDeCancelacionPage.cerrarTransaccionEnValidacion();
+    }
+
+    @Step
+    public void inicia_la_programacion_en_poliza() {
+        procesoDeCancelacionPage.iniciaProgramacionDeCancelacion();
+    }
+
+    @Step
+    public void valida_mensaje_en_pantanlla_programar_cancelacion(String mensaje) {
+        procesoDeCancelacionPage.validaVentanaMensaje(mensaje);
+        cotizacionDeCancelacionPage.cerrarTransaccionPoliza();
     }
 }

@@ -25,3 +25,16 @@ Examples:
 |poliza       |mensaje                                          |
 |TEST_22221241|Esta oferta necesita de aprobación del asegurador|
 
+
+Scenario: programar cancelacion
+Given que existe una <poliza> y esta dentro de la vigencia
+When necesito iniciar la cancelacion
+And se ingrese la fecha con emision anticipada mayor a la politica
+And se empiece la cancelacion
+Then debe permitir programar la cancelacion
+And debe mostrar una ventana con un <mensaje> de autorizacion
+
+Examples:
+|poliza       |mensaje                                      |                                            |
+|TEST_22221241|¿Está seguro de que desea cancelar la póliza?|
+

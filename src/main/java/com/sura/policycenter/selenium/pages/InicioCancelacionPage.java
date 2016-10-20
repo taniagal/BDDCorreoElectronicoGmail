@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 
 public class InicioCancelacionPage extends PageObject {
 
-
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")
     WebElementFacade btnAcciones;
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_CancelPolicy']")
@@ -55,7 +54,6 @@ public class InicioCancelacionPage extends PageObject {
         btnCancelarPoliza.click();
     }
 
-
     public void ingresarFechaRetroactiva() {
         cm.selectItem(txtMotivo, "Financiación cancelación por");
         cm.waitUntil(1000);
@@ -67,6 +65,7 @@ public class InicioCancelacionPage extends PageObject {
     }
 
     public void ingresarFechaEmisionAnticipada() {
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(txtMotivo).waitUntilClickable();
         String cadenaAux = "Financiación cancelación por";
         cm.selectItem(txtMotivo, cadenaAux);
         cm.waitUntil(1000);
@@ -75,6 +74,7 @@ public class InicioCancelacionPage extends PageObject {
         txtFechaVigenciaCancelacion.click();
         txtFechaVigenciaCancelacion.sendKeys(fecha);
         txtDescripMotivo.click();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
         txtDescripMotivo.sendKeys(cadenaAux);
     }
 
