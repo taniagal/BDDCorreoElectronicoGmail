@@ -58,15 +58,16 @@ public class ModificacionRenovacionVehiculoPage extends Commons{
     }
 
     public void irAVehiculos(){
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemVehiculos).shouldBeVisible();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
+        waitUntil(1500);
         itemVehiculos.click();
     }
 
     public void irAModificarVehiculo() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).waitUntilPresent();
-        botonEditarTransaccionPoliza.click();
-        waitUntil(1000);
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
+        waitForTextToAppear("Si se edita esta transacción de la póliza, se invalida la cotización actual");
         act.sendKeys(Keys.ENTER).build().perform();
+        waitUntil(1500);
     }
 
     private void validarQueNoSeaVisibleBtnCrearVehiculo(){
