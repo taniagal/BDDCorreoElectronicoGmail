@@ -16,3 +16,12 @@ GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto               |canal            |
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
+When ingrese un limite de cobertura inferior al valor asegurable del articulo
+|valor    |limite  |
+|100000000|90000000|
+And seleccionde el tipo de primera perdida <tipo>
+Then debo poder ver el valor de la prima <prima> en la cotizacion
+
+Examples:
+|tipo    |prima       |
+|Relativa|2,000,000.00|
