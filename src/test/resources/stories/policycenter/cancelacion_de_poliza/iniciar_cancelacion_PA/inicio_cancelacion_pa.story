@@ -101,7 +101,7 @@ Examples:
 |poliza       |
 |TEST_22266674|
 
-Scenario: motivos de cancelacion para polizas de Bancolombia
+Scenario: motivos de cancelacion para polizas de bancolombia
 Meta: @manual
 Given que existe <poliza> y esta dentro de la vigencia
 When se necesita iniciar la cancelacion

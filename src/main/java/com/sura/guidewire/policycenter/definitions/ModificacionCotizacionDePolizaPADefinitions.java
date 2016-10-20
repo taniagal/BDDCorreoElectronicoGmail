@@ -2,8 +2,9 @@ package com.sura.guidewire.policycenter.definitions;
 
 
 import com.google.inject.name.Named;
-import com.sura.guidewire.policycenter.steps.ModificacionCotizacionDePolizaSteps;
-import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireSteps;
+import com.sura.gw.navegacion.steps.GuidewireSteps;
+import com.sura.policycenter.selenium.steps.CotizacionPADetalleSteps;
+import com.sura.policycenter.selenium.steps.ModificacionCotizacionDePolizaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -21,7 +22,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
     ModificacionCotizacionDePolizaSteps cotizacionDePolizaSteps;
 
     @Steps
-    GuidewireSteps guidewire;
+    CotizacionPADetalleSteps cotizacionPADetalleSteps;
 
     public ModificacionCotizacionDePolizaPADefinitions(){
         infoCotizacionPoliza.put("numeroPoliza", "Número de póliza");
@@ -67,7 +68,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
 
     @Given("se ha realizado la cotizacion de la modificacion <cotizacion>")
     public void irALaCotizacion(@Named("cotizacion") String cotizacion) {
-        guidewire.ir_a_navegacion_superior().desplegar_menu_poliza().consultar_numero_de_subscripcion(cotizacion);
+        cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
     }
 
     @When("ingrese al detalle de la modificacion")

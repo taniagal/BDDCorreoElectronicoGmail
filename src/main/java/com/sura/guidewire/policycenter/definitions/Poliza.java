@@ -36,6 +36,9 @@ public class Poliza {
     PolizaSteps polizaSteps;
 
     @Steps
+    AnalisisDeRiesgoSteps analisisDeRiesgoSteps;
+
+    @Steps
     IngresoAPolicyCenterDefinitions guidewireLogin;
 
     @Steps GuidewireSteps guidewire;
@@ -140,6 +143,42 @@ public class Poliza {
         polizaSteps.confirmar_cancelacion();
 
     }
+    @When("ingrese fecha superior al dia actual")
+    public void cuandoIngreseFechaSueperiorAlDiaActual(){
+        LOGGER.info("Poliza.cuandoIngreseFechaSueperiorAlDiaActual");
+        polizaSteps.ingresarFechaSuperior();
+    }
+    @When("realice la programacion de cancelacion")
+        public void cuandoRealiceLaProgramacionDeCancelacion(){
+            LOGGER.info("Poliza.cuandoRealiceLaProgramacionDeCancelacion");
+            polizaSteps.iniciar_cancelacion_de_poliza();
+            polizaSteps.seleccionar_opcion_compromiso();
+            polizaSteps.seleccionar_opcion_programar_cancelacion();
+            polizaSteps.confirmar_cancelacion();
+        }
+
+    @When("inicie la cancelacion")
+    public void cuandoInicieLaCancelacion(){
+        LOGGER.info("Poliza.cuandocuandoInicieLaCancelacion");
+        polizaSteps.iniciar_cancelacion_de_poliza();
+    }
+    @Then("se debe generar un UW Issue para solicitar la autorización y el mensaje debe ser: $mensaje")
+    public void entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion(String mensaje) {
+        LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion");
+        analisisDeRiesgoSteps.seleccion_opcion_analisis_de_riesgos();
+        analisisDeRiesgoSteps.se_muestra_compromiso_bloqueado(mensaje);
+    }
+    @Then("se debe mostrar un mensaje con el texto: $Mensaje")
+    public void entoncesSeDebeMostrarUnMensajeConElTexto(String mensaje){
+        LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion");
+        polizaSteps.se_muestra_bloqueo_cancelacion_de_poliza(mensaje);
+    }
+
+    @Then("se debe visualizar un mensaje con el texto: $Mensaje")
+    public void entoncesSeDebevisualizarrUnMensajeConElTexto(String mensaje){
+        LOGGER.info("Poliza.entoncesSeDebevisualizarrUnMensajeConElTexto");
+        polizaSteps.se_muestra_mensaje__de_beneficiario_oneroso(mensaje);
+    }
 
     @When("despliegue $opcion")
     public void cuandoDespliegue(String opcion) {
@@ -183,11 +222,13 @@ public class Poliza {
             org.hamcrest.MatcherAssert.assertThat(instruccionesPreviasARenovacionSteps.obtenerPaginInstruccionesPreviasARenovacion().obtenerListaRazonesDeRenovacion(), AssertUtil.hasItemContainsString(razon));
         }
     }
-    @Then("la cancelacion de la poliza es correcta si se muestra el texto: $tituloDePagina")
-    public void entoncesLaCancionDeLaPolizaEsCorrecta(String tituloDePagina) {
+    @Then("la $proceso es correcta si se muestra el texto: $tituloDePagina")
+    public void entoncesLaCancelacionDeLaPolizaEsCorrecta(String tituloDePagina) {
         LOGGER.info("Poliza.entoncesLaCancionDeLaPolizaEsCorrecta");
         assertThat(polizaSteps.obtenerTituloPagina(), equalTo(tituloDePagina));
     }
+
+
     @When("seleccione la lista motivo de cancelacion")
     public void cuandoSeleccioneLaListaMotivoDeCancelacion() {
         LOGGER.info("Poliza.cuandoSeleccioneLaListaMotivoDeCancelacion");
@@ -247,7 +288,7 @@ public class Poliza {
     @Then("se debe mostrar el metodo de reembolso <reembolso> sin el campo fuente")
     public void entoncesSedebeMostrarElMetodoDeReembolsoSinElcampofuente(@Named("reembolso") String reembolso){
         LOGGER.info("Poliza.entoncesSedebeMostrarElMetodoDeReembolsoSinElcampofuente");
-        org.hamcrest.MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMotivoDeReembolso(), equalTo(reembolso));
+        org.hamcrest.MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMetodoDeReembolso(), equalTo(reembolso));
         polizaSteps.validar_ocultacion_campo_fuente();
     }
 }

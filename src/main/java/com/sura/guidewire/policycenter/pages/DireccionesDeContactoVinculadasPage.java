@@ -35,7 +35,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade txtPais;
     @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade txtDepartamento;
-    @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
+    @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
     private WebElementFacade txtCiudad;
     @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade txtDireccion;
@@ -49,7 +49,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade txtPaisContacto;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade txtDepartamentoContacto;
-    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']")
+    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
     private WebElementFacade txtCiudadContacto;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade txtDireccionContacto;
@@ -73,6 +73,8 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     private WebElementFacade mensajeDireccionVinculada;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:ttlBar']")
     private WebElementFacade titulo;
+    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    private WebElementFacade campoDepartamento;
 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
@@ -115,7 +117,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         botonLaMismaDireccionQue.click();
         WebElementFacade menuContactoTitular = commons.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail']");
         accion.moveToElement(menuContactoTitular).release(menuContactoTitular).build().perform();
-        WebElementFacade menuContactoDireccionPrincipal = commons.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail:PrimaryAddress']");
+        WebElementFacade menuContactoDireccionPrincipal = commons.esperarElemento(".//*[@id='EditAccountPopup:EditAccountScreen:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail']");
         accion.moveToElement(menuContactoDireccionPrincipal).release(menuContactoDireccionPrincipal).click().build().perform();
         waitForTextToAppear("Esta dirección está vinculada a otras direcciones");
         WebElementFacade botonActualizar = commons.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']");
@@ -222,16 +224,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void validarElCampoDepartamento(String departamento) {
-        WebElementFacade campoDepartamento = commons.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
         this.ingresarDatoEnCombo(campoDepartamento, departamento);
-    }
-
-    public void validarElCampoCiudad(String ciudad) {
-        WebElementFacade campoCiudad = commons.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']");
-        this.ingresarDatoEnCombo(campoCiudad, ciudad);
-
-        this.clicEnBotonCancelar();
-        waitForTextToAppear("Contactos de archivo de cuenta");
     }
 
     public void clicEnBotonCancelar(){
@@ -369,7 +362,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         Map<String, String> direccionContacto = direccionAsociada.getRows().get(0);
         WebElementFacade campoPais = commons.esperarElemento(".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']");
         WebElementFacade campoDepartamento = findBy(".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
-        WebElementFacade campoCiudad = findBy(".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']");
+        WebElementFacade campoCiudad = findBy(".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']");
         WebElementFacade campoDireccion = findBy(".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']");
         WebElementFacade campoTipoDireccion = findBy(".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressType-inputEl']");
         WebElementFacade campoDescripcion = findBy(".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressDescription-inputEl']");

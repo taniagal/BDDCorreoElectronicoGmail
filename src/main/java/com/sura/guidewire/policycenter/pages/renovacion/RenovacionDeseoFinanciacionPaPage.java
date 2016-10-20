@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
+import com.sura.commons.selenium.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -20,6 +21,8 @@ public class RenovacionDeseoFinanciacionPaPage extends PageObject{
     private WebElementFacade mensajeValidacion;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade grupoMensajesValidacion;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
+    private WebElementFacade mensajesAdvertencia;
 
     public RenovacionDeseoFinanciacionPaPage(WebDriver driver){
         super(driver);
@@ -47,7 +50,7 @@ public class RenovacionDeseoFinanciacionPaPage extends PageObject{
     public void irARevisionDePoliza(){
         WebElementFacade revisionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyReview']/div");
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(revisionPoliza).click();
-        waitABit(500);
+        mensajesAdvertencia.waitUntilPresent();
         revisionPoliza.click();
     }
 
