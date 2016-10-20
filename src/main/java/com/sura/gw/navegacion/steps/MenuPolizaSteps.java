@@ -20,10 +20,4 @@ public class MenuPolizaSteps extends ScenarioSteps {
         getDriver().findElement(By.xpath(xpathTxtNumeroPoliza)).sendKeys(numeroDePoliza);
         getDriver().switchTo().activeElement().sendKeys(Keys.ENTER);
     }
-
-    @Step
-    public void nueva_cotizacion(){
-        String xpathBtnNuevaCotizacion = ".//a[contains(@id,'TabBar:PolicyTab:PolicyTab_NewSubmission-textEl')]";
-        getDriver().findElement(By.xpath(xpathBtnNuevaCotizacion)).click();
-    }
 }

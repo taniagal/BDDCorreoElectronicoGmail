@@ -106,15 +106,10 @@ public class ModificacionInformacionPolizaPAPage extends Commons{
     }
 
     public void ingresarPoliza(String numeroPoliza) {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuPoliza).click();
-        waitUntil(2000);
-        menuPoliza.click();
-        waitUntil(1000);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(2000);
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(labelNuevaCotizacion).shouldBePresent();
-        campoBuscarPoliza.typeAndEnter(numeroPoliza);
-        waitUntil(2000);
+        deployMenu(menuPoliza);
+        ingresarDato(campoBuscarPoliza,numeroPoliza);
+        campoBuscarPoliza.sendKeys(Keys.ENTER);
+        waitForAbsenceOf(".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']");
     }
 
     public void irAModificarInformacionPoliza() {
@@ -313,6 +308,7 @@ public class ModificacionInformacionPolizaPAPage extends Commons{
         botonSiguiente.click();
         WebElementFacade labelTitulo = findBy(xpathEncabezado);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTitulo).shouldBePresent();
+        waitUntil(1000);
         MatcherAssert.assertThat(labelTitulo.getText(), Is.is(Matchers.equalTo(encabezado)));
         waitUntil(1000);
     }
