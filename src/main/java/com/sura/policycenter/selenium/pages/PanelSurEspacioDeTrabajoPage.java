@@ -11,7 +11,6 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -68,7 +67,6 @@ public class PanelSurEspacioDeTrabajoPage extends PageObject {
     }
 
     public void borrarEspacioDeTrabajo(){
-        JOptionPane.showMessageDialog(null, "esto es horrible");
         panelInferiorBotonBorrar.click();
         waitForTextToDisappear("Workspace");
         btnCancelar.click();
