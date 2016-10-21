@@ -1,4 +1,4 @@
-package com.sura.gw.navegacion.steps;
+package com.sura.guidewire.policycenter.steps;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.Step;
