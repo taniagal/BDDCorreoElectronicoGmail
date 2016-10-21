@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.google.inject.name.Named;
-import com.sura.guidewire.policycenter.steps.BusquedaContactoSteps;
+import com.sura.guidewire.policycenter.steps.contacto.BusquedaContactoSteps;
 import com.sura.guidewire.policycenter.steps.DetalleDeAseguradoDeCotizacionSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;

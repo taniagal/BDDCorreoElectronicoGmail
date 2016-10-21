@@ -4,11 +4,10 @@ Meta:
 @issue #CDSEG-2417
 @sprint 8
 @tag automator: nelson_jhair_mosquera_palacios
-@local
 
 Narrative:
 Como usuario de PolicyCenter
-Quiero ser capaz de poder modificar una póliza que este bajo el esquema de tarifa tasa única,
+Quiero ser capaz de expedir una póliza que este bajo el esquema de tarifa tasa única,
 para los negocios que se definan bajo este esquema de tarifa ya que comercialemente se requiere tener una tarifa diferencial.
 
 Scenario: Expedicion de poliza con tarifa tasa unica
