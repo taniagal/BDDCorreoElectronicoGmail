@@ -23,7 +23,6 @@ import org.slf4j.LoggerFactory;
 
 // TODO: 15/06/2016 Pendiente refactor
 public class NuevaCotizacionPage extends PageObject {
-    private static final long serialVersionUID = 1L;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
@@ -31,8 +30,8 @@ public class NuevaCotizacionPage extends PageObject {
     private String nombreAgente;
     private List<WebElementFacade> listaDeProductosElement;
 
-    @FindBy (id = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div")
-    WebElementFacade mng;
+    @FindBy (xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultPPEffDate-inputEl']")
+    WebElementFacade labelFecha;
 
     public static final String TITULO_PAGINA = "//span[@id='NewSubmission:NewSubmissionScreen:ttlBar']";
     public static final String TITULO_PAGINA_SIGUIENTE = "//span[@id='SubmissionWizard:LOBWizardStepGroup:SubmissionWizard_PolicyInfoScreen:ttlBar']";
@@ -110,14 +109,11 @@ public class NuevaCotizacionPage extends PageObject {
     }
 
     public Boolean esFechaCotizacionHOY() {
-
-        waitFor(LABEL_FECHA_POR_DEFECTO);
-        waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(LABEL_FECHA_POR_DEFECTO)));
-        return esFechaPorDefectoHOY(obtenerFechaCotizacionElemento());
+        labelFecha.waitUntilPresent();
+        return esFechaPorDefectoHOY(labelFecha);
     }
 
     public Boolean esFechaPorDefectoHOY(WebElementFacade fecha) {
-        waitFor(fecha);
         if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getText()).toLocalDate())) {
             return Boolean.TRUE;
         }
@@ -243,10 +239,6 @@ public class NuevaCotizacionPage extends PageObject {
     public WebElementFacade obtenerFechaCotizacionElemento() {
         fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
         return elemento(LABEL_FECHA_POR_DEFECTO);
-    }
-
-    public List<AgenteModel> getListaAgentesModel() {
-        return listaAgentesModel;
     }
 
     public String obtenerTextoTituloPaginaWEF(String pagina) {
