@@ -10,6 +10,7 @@ import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
+import javax.swing.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -45,7 +46,6 @@ public class ReglaPreRenovacionDirPaPage extends Commons {
     }
 
     public void validaLista(ExamplesTable opcionesDir) throws Exception {
-        waitUntil(800);
         txtLista.click();
         this.validarDatosDeLaLista(opcionesDir);
         btnCancelar.click();
@@ -59,6 +59,7 @@ public class ReglaPreRenovacionDirPaPage extends Commons {
             elementoInstruccion = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
             for (WebElementFacade lista : elementoInstruccion) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
+                JOptionPane.showMessageDialog(null, lista.getText());
             }
         }
     }

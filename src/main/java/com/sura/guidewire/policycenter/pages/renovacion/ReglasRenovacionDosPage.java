@@ -101,4 +101,5 @@ public class ReglasRenovacionDosPage extends PageObject {
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
         btnAceptarRetirarTransaccion.click();
     }
+
 }

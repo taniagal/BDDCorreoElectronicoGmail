@@ -45,6 +45,9 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
     @FindBy(xpath = ".//*[@id='NewContactPopup:ContactPanelSet:ContactCV:ContactDV:ContactNameInputSet:GlobalContactNameInputSet:Name-inputEl']")
     WebElementFacade campoRazonSocial;
 
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:ContactCurrency:ContactCurrencyInputSet:PreferredSettlementCurrency-inputEl']")
+    WebElementFacade campoMonedaPreferida;
+
     @FindBy(xpath=".//*[@id='NewContactPopup:ForceDupCheckUpdate-btnInnerEl']")
     WebElementFacade botonAceptar;
 
@@ -85,6 +88,8 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
         campoPrimerApellido.sendKeys(datosNuevaPersona.get("primerApellido"));
         commons.waitUntil(3000);
         botonAceptar.click();
+        campoMonedaPreferida.waitUntilPresent();
+        commons.selectItem(campoMonedaPreferida,"COP");
     }
 
     public void ingresarDatosNuevaPersonaJuridica(ExamplesTable datosPersonaJuridica) {

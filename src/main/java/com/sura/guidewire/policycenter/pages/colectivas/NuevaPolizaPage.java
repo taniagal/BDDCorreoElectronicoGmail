@@ -81,7 +81,7 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void seleccionarOrganizacion(String organizacion) {
-        waitFor(listaOrganizacion);
+        listaOrganizacion.waitUntilPresent();
         listaOrganizacion.sendKeys(Keys.ESCAPE);
         this.desplegarElementoDeLaLista(listaOrganizacion);
         this.seleccionarElementoDeLaLista(organizacion);

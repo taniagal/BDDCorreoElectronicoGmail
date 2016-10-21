@@ -109,6 +109,7 @@ public class DetallesDeUbicacionPage extends Commons {
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
+        comboBoxOrganizacion.waitUntilPresent();
         selectItem(comboBoxOrganizacion,dato.get("organizacion"));
         waitForComboValue(comboBoxOrganizacionW,dato.get("organizacion"));
         waitUntil(1000);

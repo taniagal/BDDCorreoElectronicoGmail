@@ -123,6 +123,7 @@ public class ContactoOrdenesDeTrabajoPage extends Commons {
     }
 
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
+        waitUntil(1000);
         waitFor(this.filtroProducto).waitUntilPresent();
         waitUntil(2000);
         this.filtroProducto.click();
