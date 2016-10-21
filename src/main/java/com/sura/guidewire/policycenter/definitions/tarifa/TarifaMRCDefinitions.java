@@ -1,6 +1,6 @@
-package com.sura.policycenter.selenium.definitions;
+package com.sura.guidewire.policycenter.definitions.tarifa;
 
-import com.sura.policycenter.selenium.steps.TarifaMRCSteps;
+import com.sura.guidewire.policycenter.steps.tarifa.TarifaMRCSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
