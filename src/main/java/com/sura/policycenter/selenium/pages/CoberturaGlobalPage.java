@@ -9,6 +9,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import javax.swing.*;
 
 
 public class CoberturaGlobalPage extends Commons {
@@ -44,6 +47,8 @@ public class CoberturaGlobalPage extends Commons {
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='CPBlanketSura_ExtPopup:locationsBlanLV:0:locationBlanket']")
     private WebElementFacade labelDescripcion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody/tr[1]/td[2]")
+    private WebElementFacade tablaUbicaciones;
 
 
     public CoberturaGlobalPage(WebDriver driver) {
@@ -93,14 +98,13 @@ public class CoberturaGlobalPage extends Commons {
     }
 
     public void verificarCoberturasIncluidas() {
-        waitFor(linkCobertura1).waitUntilPresent().click();
+        linkCobertura1.waitUntilPresent();
         MatcherAssert.assertThat("Error al Agregar la cobertura", linkCobertura1.isPresent());
     }
 
     public void verificarUbicacionesCubiertas() {
-        List<WebElementFacade> tablaUbicaciones = getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody/tr");
-        waitUntil(2000);
-        MatcherAssert.assertThat("Error al Agregar la ubicacion", !tablaUbicaciones.isEmpty());
+        waitFor(ExpectedConditions.textToBePresentInElement(tablaUbicaciones,"CRA 65 # 48-162"));
+        MatcherAssert.assertThat("Error al Agregar la ubicacion, la tabla de ubicaciones agregadas está vacía", tablaUbicaciones.containsText("CRA 65 # 48-162"));
     }
 
     public void seleccionarCoberturaUnica(ExamplesTable datosCobertura) {
