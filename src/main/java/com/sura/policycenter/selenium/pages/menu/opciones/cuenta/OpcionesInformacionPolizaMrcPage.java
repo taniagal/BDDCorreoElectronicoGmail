@@ -2,8 +2,6 @@ package com.sura.policycenter.selenium.pages.menu.opciones.cuenta;
 
 
 import com.sura.commons.selenium.Commons;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -13,6 +11,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import javax.swing.*;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -68,8 +70,6 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
     WebElementFacade lblFechaExpiracion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:WrittenDate-labelEl']")
     WebElementFacade lblFechaescrita;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPPolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:AddressType-labelEl']")
-    WebElementFacade lblTipoDireccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:AddressDescription-labelEl']")
     WebElementFacade lblDescripcionDir;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-inputEl']")
@@ -247,6 +247,7 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
 
     public void validaMensajeEnPantalla(String mensaje) {
         waitInfoPoliza(mensajePantalla);
+        JOptionPane.showMessageDialog(null, mensajePantalla.getText().contains(mensaje));
         MatcherAssert.assertThat(mensajePantalla.getText(), Matchers.containsString(mensaje));
     }
 
