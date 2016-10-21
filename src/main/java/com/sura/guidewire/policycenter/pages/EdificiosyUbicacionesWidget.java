@@ -25,6 +25,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
     private static final String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
     private static final String LINK_AGREGAR_UBICACION = "//a[contains(.,'Agregar ubicación')]";
+    private static final String XPATH_COTIZAR = "//a[contains(.,'Cotizar')]";
     private static final String LINK_OPCION_UBICACION_NUEVA = "//a[contains(.,'Ubicación nueva')]";
     private static final String XPATH_CANCELAR_INGRESO = ".//a[@id='CPLocationPopup:Cancel']";
     private static final String XPATH_LEGEND_COBERTURA_DE_RIESGO = ".//legend[ (descendant::div[contains(., '";
@@ -39,6 +40,15 @@ public class EdificiosyUbicacionesWidget extends PageObject {
     private static final String CIERRE_XPATH1 = "')])]";
     private static final String XPATH2_PARTE2 = "')]) and @class='x-form-item-input-row' ]";
     private static final String XPATH_PARTE2 = "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]";
+    private static final String XPATH_BTON_AGREGAR = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnInnerEl']";
+    private static final String XPATH_BTON_DIRECTORIO = "//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl']";
+    private static final String XPATH_BUSCAR_DIRECTORIO = "//span[@id='ContactSearchPopup:ContactSearchScreen:ttlBar']";
+    private static final String XPATH_TIPO_DOCUMENTO = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']";
+    private static final String XPATH_LBL_PRIMER_NOMBRE = ".//*[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-labelEl']";
+    private static final String XPATH_NUM_DOCUMENTO = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']";
+    private static final String XPATH_BTN_BUSCAR = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']";
+    private static final String XPATH_BTN_SELECCIONA = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']";
+    private static final String XPATH_INTERES_ADICIONAL = "//label[contains(.,'Interes Adicional')]";
 
     TableWidgetPage tabla;
 
@@ -91,29 +101,33 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         $(xpathPais).type(pais);
         $(xpathPais).click();
 
-        waitFor(3).seconds();
+        waitFor(1).seconds();
         enter(depto).into($(xpathDepto));
-        waitFor(3).seconds();
+        waitFor(1).seconds();
+        //$(depto).sendKeys(Keys.TAB);
         $(xpathDepto).click();
 
-        waitFor(6).seconds();
+        waitFor(2).seconds();
         enter(ciudad).into($(xpathCiudad));
-        waitFor(6).seconds();
+        waitFor(2).seconds();
+        //$(ciudad).sendKeys(Keys.TAB);
         $(xpathCiudad).click();
 
-        waitFor(3).seconds();
+        waitFor(1).seconds();
         enter(direccion).into($(xpathDireccion));
-        waitFor(3).seconds();
+        waitFor(1).seconds();
         $(xpathDireccion).click();
 
-        waitFor(3).seconds();
+        waitFor(1).seconds();
         enter(actividadEconomica).into($(xpathActividadEconomica));
-        waitFor(10).seconds();
+        waitFor(5).seconds();
         $(xpathActividadEconomica).sendKeys(Keys.ENTER);
         waitFor(3).seconds();
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
-        waitFor(10).seconds();
+        waitFor(8).seconds();
+        findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
+        waitFor(5).seconds();
     }
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
@@ -127,7 +141,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
-        agregarNuevaUbicacion("Colombia", "ANTIOQUIA", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
+        agregarNuevaUbicacion("Colombia", "Antioquia", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
     }
 
 
@@ -380,6 +394,12 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         btnAgregarArticulo.click();
     }
 
+    public void cliclearBtnCotizar() {
+        WebElementFacade btnAgregarArticulo = findBy(XPATH_COTIZAR).waitUntilVisible().waitUntilClickable();
+        btnAgregarArticulo.click();
+        waitFor(4).second();
+    }
+
     public void ingresarInputTiposDeArticulos(String tipoArticulo) {
         waitForTextToAppear("Tipos de Artículos");
         String xInputTiposDeArticulos = ".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']";
@@ -404,4 +424,32 @@ public class EdificiosyUbicacionesWidget extends PageObject {
             MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE")+" but was: "+divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
         }
     }
+
+    public void ingresarInteresAdicional(String cedula) {
+
+        WebElementFacade btnAgregar = findBy(XPATH_BTON_AGREGAR);
+        WebElementFacade itemDirectorio = findBy(XPATH_BTON_DIRECTORIO);
+        WebElementFacade lblBuscarDirectorio = findBy(XPATH_BUSCAR_DIRECTORIO);
+        WebElementFacade itemTipoDocumento = findBy(XPATH_TIPO_DOCUMENTO);
+        WebElementFacade lblPrimerNombre = findBy(XPATH_LBL_PRIMER_NOMBRE);
+        WebElementFacade txtNumDocumento = findBy(XPATH_NUM_DOCUMENTO);
+        WebElementFacade btnBuscar = findBy(XPATH_BTN_BUSCAR);
+        WebElementFacade btnSelecciona = findBy(XPATH_BTN_SELECCIONA);
+        WebElementFacade lblInteresAdicional = findBy(XPATH_INTERES_ADICIONAL);
+
+        btnAgregar.waitUntilVisible().waitUntilClickable().click();
+        itemDirectorio.waitUntilVisible().waitUntilClickable().click();
+        waitFor(lblBuscarDirectorio);
+        itemTipoDocumento.clear();
+        fluent().await().atMost(200,TimeUnit.MILLISECONDS);
+        itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
+        itemTipoDocumento.sendKeys(Keys.ENTER);
+        waitFor(lblPrimerNombre);
+        txtNumDocumento.sendKeys(cedula);
+        btnBuscar.waitUntilVisible().waitUntilClickable().click();
+        waitFor(btnSelecciona);
+        btnSelecciona.waitUntilVisible().waitUntilClickable().click();
+        waitFor(lblInteresAdicional);
+    }
+
 }

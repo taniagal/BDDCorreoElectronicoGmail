@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.pages.EdificiosyUbicacionesWidget;
+import com.sura.guidewire.policycenter.pages.colectivas.NuevaPolizaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -12,6 +13,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
+    private static NuevaPolizaPage nuevaPolizaPage;
 
     public EdificiosUbicacionesSteps(Pages pages) {
         super(pages);
@@ -25,6 +27,21 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     @Step
     public void seleccionar_boton_agregar_articulo_a_una_ubicacion() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacion();
+    }
+
+    @Step
+    public void ingresar_interes_adicional_a_articulo(String numerocedula){
+        edificiosyUbicacionesWidget.ingresarInteresAdicional(numerocedula);
+    }
+
+    @Step
+    public void ingresar_tipo_beneficiario(String beneficiario){
+        agregarArticuloEdificiosyUbicacionesWidget.desplegarListaTipoBeneficiario();
+        nuevaPolizaPage.seleccionarElementoDeLaLista(beneficiario);
+    }
+    @Step
+    public void seleccionar_boton_cotizar(){
+        edificiosyUbicacionesWidget.cliclearBtnCotizar();
     }
 
     @Step

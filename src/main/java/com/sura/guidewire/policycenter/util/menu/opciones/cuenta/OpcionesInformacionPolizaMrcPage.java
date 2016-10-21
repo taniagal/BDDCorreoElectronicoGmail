@@ -140,8 +140,9 @@ public class OpcionesInformacionPolizaMrcPage extends Commons {
         btnSelecciona.waitUntilVisible().waitUntilClickable().click();
         waitInfoPoliza(lblInformaPoliza);
         btnSiguinete.waitUntilVisible().waitUntilClickable().click();
-        waitInfoPoliza(mensajePantalla);
+        //waitInfoPoliza(mensajePantalla);
     }
+
 
     public void seleccionaRiesgoAceptado() {
         waitInfoPoliza(lblInformaPoliza);
