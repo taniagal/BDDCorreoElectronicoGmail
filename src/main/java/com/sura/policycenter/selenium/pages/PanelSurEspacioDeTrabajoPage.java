@@ -2,8 +2,6 @@ package com.sura.policycenter.selenium.pages;
 
 
 import com.sura.policycenter.selenium.pages.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,6 +10,10 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
+
+import javax.swing.*;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class PanelSurEspacioDeTrabajoPage extends PageObject {
@@ -66,6 +68,7 @@ public class PanelSurEspacioDeTrabajoPage extends PageObject {
     }
 
     public void borrarEspacioDeTrabajo(){
+        JOptionPane.showMessageDialog(null, "esto es horrible");
         panelInferiorBotonBorrar.click();
         waitForTextToDisappear("Workspace");
         btnCancelar.click();

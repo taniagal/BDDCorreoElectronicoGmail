@@ -22,7 +22,7 @@ Examples:
 |cotizacion|
 |32112330  |
 
-!--Se precide de hacer manual, dado que hay validacion de fecha anticipada a 60 Dias
+
 Scenario: Expedir renovacion - Confirmacion expedicion
 Meta: @manual
 Given se esta cotizando una renovacion de poliza con <cotizacion>
