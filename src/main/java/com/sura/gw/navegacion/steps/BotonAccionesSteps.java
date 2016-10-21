@@ -1,4 +1,4 @@
-package com.sura.gw.policy.poliza.steps;
+package com.sura.gw.navegacion.steps;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.Step;
