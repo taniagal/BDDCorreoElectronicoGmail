@@ -3,7 +3,7 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.ConsultaDetalleDeAseguradosPage;
 import com.sura.guidewire.policycenter.pages.DetalleDeAseguradoDeCotizacionPage;
-import com.sura.guidewire.policycenter.pages.EdicionContactoAseguradoPage;
+import com.sura.guidewire.policycenter.pages.contacto.EdicionContactoAseguradoPage;
 import com.sura.guidewire.policycenter.pages.IngresoNuevoContactoAseguradoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;

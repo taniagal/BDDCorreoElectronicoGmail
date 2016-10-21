@@ -83,7 +83,7 @@ public class TarifaTasaUnicaPage extends Commons {
     private WebElementFacade labelPrimaTotalCambio;
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotalRenovacion;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicyWorkflow']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
     private WebElementFacade botonEditarTransaccion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']")
     private WebElementFacade checkBoxTasaUnica;
@@ -174,13 +174,14 @@ public class TarifaTasaUnicaPage extends Commons {
         menuItemRenovarPoliza.waitUntilPresent().click();
         botonAceptar.waitUntilPresent().click();
         for (int i = 0; i < 5; i++) {
-            withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonHojaDeCalculoRenovacion).waitUntilPresent().click();
+            withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonHojaDeCalculoRenovacion).waitUntilPresent().click();
             menuItemExportarRenovacion.waitUntilPresent().click();
             waitUntil(2000);
             linkVonverAVehiculos.waitUntilPresent().click();
             setImplicitTimeout(1, TimeUnit.SECONDS);
             if (botonEditarTransaccion.isPresent()) {
                 botonEditarTransaccion.waitUntilPresent().click();
+                botonAceptar.waitUntilPresent().click();
                 i = 5;
             }
             resetImplicitTimeout();
@@ -201,7 +202,7 @@ public class TarifaTasaUnicaPage extends Commons {
     }
 
     public void verificarTarifaRenovacionSinCambio() {
-        labelPrimaTotalRenovacion.waitUntilPresent();
+        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(labelPrimaTotalRenovacion).waitUntilPresent();
         MatcherAssert.assertThat("No hay tarifa en la renovacion", labelPrimaTotalRenovacion.containsText("00 (COP)"));
     }
 

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.steps.CuentasOrdenesDeTrabajoSteps;
+import com.sura.guidewire.policycenter.steps.cuenta.CuentasOrdenesDeTrabajoSteps;
 import com.sura.guidewire.policycenter.steps.InformacionPolizaPASteps;
 import java.util.HashMap;
 import java.util.Map;

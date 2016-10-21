@@ -1,19 +1,16 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.steps.SeusLoginSteps;
 import com.sura.guidewire.policycenter.steps.CotizacionesDeLaCuentaSteps;
-import com.sura.guidewire.policycenter.steps.HistorialCuentaSteps;
+import com.sura.guidewire.policycenter.steps.cuenta.HistorialCuentaSteps;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import org.openqa.selenium.WebDriver;
 
 
 public class CotizacionesDeLaCuentaDefinitions {
