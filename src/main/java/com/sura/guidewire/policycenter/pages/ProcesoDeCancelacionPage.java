@@ -1,6 +1,6 @@
-package com.sura.policycenter.selenium.pages;
+package com.sura.guidewire.policycenter.pages;
 
-import com.sura.commons.selenium.Commons;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
