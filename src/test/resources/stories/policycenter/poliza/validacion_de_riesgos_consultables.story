@@ -39,13 +39,15 @@ Meta: @manual
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
-Given _que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When _quiera agregar un tomador adicional que es riesgo consultable <cedula>
-And _intente ingresar una nueva ubicacion
-And _ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
-Then _se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
+Given que estoy en la informacion de la poliza con numero(s) de subscripcion <numSubscripcion>
+When  quiero agregar un tomador adicional que es riesgo consultable <cedula>
+And intente ingresar una nueva ubicacion(es)
+And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
+Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
 
-
+Examples:
+| numPoliza  | rolUsuario |
+| 6076942934 | Asesor     |
 
 Scenario: 3 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al renovar nueva poliza
 
@@ -55,13 +57,15 @@ Meta: @manual
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
-Given _que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When _quiera agregar un tomador adicional que es riesgo consultable <cedula>
-And _intente ingresar una nueva ubicacion
+Given que estoy en la informacion de la poliza con numero(s) de subscripcion <numSubscripcion>
+When  quiero agregar un tomador adicional que es riesgo consultable <cedula>
+And intente ingresar una nueva ubicacion(es)
 And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
-Then _se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
+Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
 
-
+Examples:
+| numPoliza  | rolUsuario |
+| 6076942934 | Asesor     |
 
 Scenario: 4 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al expedir nueva poliza
 
@@ -71,8 +75,12 @@ Meta: @manual
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
-Given _que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When _quiera agregar un tomador adicional que es riesgo consultable <cedula>
-And _intente ingresar una nueva ubicacion
+Given que estoy en la informacion de la poliza con numero(s) de subscripcion <numSubscripcion>
+When  quiero agregar un tomador adicional que es riesgo consultable <cedula>
+And intente ingresar una nueva ubicacion(es)
 And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
-Then _se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
+Then se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
+
+Examples:
+| numPoliza  | rolUsuario |
+| 6076942934 | Asesor     |
