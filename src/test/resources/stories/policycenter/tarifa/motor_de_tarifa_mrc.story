@@ -11,7 +11,7 @@ Quiero ser capaz de poder tarifar una póliza que este bajo el esquema de tarifa
 para los negocios que se definan bajo este esquema de tarifa ya que comercialemente se requiere tener una tarifa diferencial.
 
 
-Scenario: Verificacion del motor de tarifa de multiriesgo corporativo.
+Scenario: Verificacion del motor de tarifa de multiriesgo corporativo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto               |canal            |
@@ -24,4 +24,4 @@ Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
 |tipo    |prima       |
-|Relativa|2,000,000.00|
+|Relativa|2,088,000.00|
