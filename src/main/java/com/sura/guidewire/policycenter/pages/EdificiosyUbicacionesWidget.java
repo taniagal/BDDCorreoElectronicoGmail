@@ -113,9 +113,9 @@ public class EdificiosyUbicacionesWidget extends PageObject {
         //$(ciudad).sendKeys(Keys.TAB);
         $(xpathCiudad).click();
 
-        waitFor(1).seconds();
+        waitFor(2).seconds();
         enter(direccion).into($(xpathDireccion));
-        waitFor(1).seconds();
+        waitFor(2).seconds();
         $(xpathDireccion).click();
 
         waitFor(1).seconds();
