@@ -1,6 +1,7 @@
 Validacion de riesgos consultables
 
 Meta:
+
 Scenario: 1 Validacion de riesgos consultables (tomador adicional,asegurador,direccion) al cotizar nueva poliza
 
 Meta:
@@ -26,13 +27,10 @@ Then se deben validar los riesgos consultables mostrando los siguientes mensaje 
 
 Examples:
 | numSubscripcion    |rolUsuario|cedula  |tipoBeneficiario|
-| 0001271565         |Asesor    |98642460|Asegurado       |
+| 0000016656         |Asesor    |98642460|Asegurado       |
 
 
 
-
-
-Meta:
 Scenario: 2 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al modificar nueva poliza
 
 Meta: @manual
@@ -48,7 +46,7 @@ And _ingrese las entradas de las diferentes coberturas con interes <cedula> <tip
 Then _se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
 
 
-Meta:
+
 Scenario: 3 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al renovar nueva poliza
 
 Meta: @manual
@@ -64,7 +62,7 @@ And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipo
 Then _se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras
 
 
-Meta:
+
 Scenario: 4 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al expedir nueva poliza
 
 Meta: @manual

@@ -103,7 +103,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
         waitFor(1).seconds();
         enter(depto).into($(xpathDepto));
-        waitFor(1).seconds();
+        waitFor(2).seconds();
         //$(depto).sendKeys(Keys.TAB);
         $(xpathDepto).click();
 
@@ -120,14 +120,14 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
         waitFor(1).seconds();
         enter(actividadEconomica).into($(xpathActividadEconomica));
-        waitFor(5).seconds();
+        waitFor(2).seconds();
         $(xpathActividadEconomica).sendKeys(Keys.ENTER);
-        waitFor(3).seconds();
+        waitFor(2).seconds();
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
-        waitFor(8).seconds();
+        findBy("//div[@class='message']").waitUntilVisible();
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
-        waitFor(5).seconds();
+        findBy("//span[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:ttlBar']").waitUntilVisible();
     }
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
