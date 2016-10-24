@@ -1,10 +1,10 @@
 package com.sura.guidewire.policycenter.pages.colectivas;
 
+
+import com.sura.guidewire.policycenter.util.Commons;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
-import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -14,8 +14,6 @@ import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import javax.swing.*;
 
 
 public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
@@ -38,8 +36,6 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     WebElementFacade tablaRiesgos;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:Update-btnInnerEl']")
     WebElementFacade botonActualizar;
-
-    Commons commons = new Commons(getDriver());
 
     public IngresoDeRiesgosPolizaColectivaPages(WebDriver driver) {
         super(driver);
@@ -64,9 +60,6 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
         MatcherAssert.assertThat(columnaClaseVehiculo.getText(), Matchers.containsString(informacionRiesgo.get("claseVehiculo")));
         MatcherAssert.assertThat(columnaModelo.getText(), Matchers.containsString(informacionRiesgo.get("modelo")));
         MatcherAssert.assertThat(columnaMarca.getText(), Matchers.containsString(informacionRiesgo.get("marca")));
-        JOptionPane.showMessageDialog(null, columnaLinea.getText().equals(informacionRiesgo.get("linea")));
-        JOptionPane.showMessageDialog(null, columnaLinea.getText());
-        JOptionPane.showMessageDialog(null, informacionRiesgo.get("linea"));
         MatcherAssert.assertThat(columnaLinea.getText(), Matchers.containsString(informacionRiesgo.get("linea")));
     }
 
@@ -90,7 +83,7 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     }
 
     public void clicEnActualizarInformacionDePolizaColectiva() {
-        commons.waitUntil(2000);
+        Commons.waitUntil(2000);
         if(botonActualizar.isVisible()) {
             botonActualizar.click();
         }

@@ -65,6 +65,8 @@ public class DetallesDeUbicacionPage extends Commons {
     private WebElementFacade comboBoxOrganizacionW;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-triggerWrap']/tbody/tr/td/input")
     private WebElementFacade comboBoxCanalW;
+    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptarPopup;
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     String direccion = "";
@@ -82,6 +84,15 @@ public class DetallesDeUbicacionPage extends Commons {
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
                 if (nomProducto.equals(descripcion.getText())) {
+                    if ("Multiriesgo corporativo".equals(nomProducto)){
+                        setImplicitTimeout(2,TimeUnit.SECONDS);
+                        if (botonAceptarPopup.isPresent()){
+                            botonAceptarPopup.click();
+                            waitForAbsenceOf(".//span[contains(.,'Aceptar')]");
+                        }
+                        resetImplicitTimeout();
+                        waitUntil(1000);
+                    }
                     botones.get(i).click();
                 }
                 i++;
