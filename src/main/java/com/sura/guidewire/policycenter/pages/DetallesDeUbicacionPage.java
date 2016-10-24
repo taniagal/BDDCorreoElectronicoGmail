@@ -84,16 +84,15 @@ public class DetallesDeUbicacionPage extends Commons {
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
                 if (nomProducto.equals(descripcion.getText())) {
+                    botones.get(i).click();
                     if ("Multiriesgo corporativo".equals(nomProducto)){
-                        setImplicitTimeout(2,TimeUnit.SECONDS);
+                        setImplicitTimeout(1,TimeUnit.SECONDS);
                         if (botonAceptarPopup.isPresent()){
                             botonAceptarPopup.click();
                             waitForAbsenceOf(".//span[contains(.,'Aceptar')]");
                         }
                         resetImplicitTimeout();
-                        waitUntil(1000);
                     }
-                    botones.get(i).click();
                 }
                 i++;
             }
