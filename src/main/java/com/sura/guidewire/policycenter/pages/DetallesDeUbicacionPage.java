@@ -88,9 +88,10 @@ public class DetallesDeUbicacionPage extends Commons {
                         setImplicitTimeout(2,TimeUnit.SECONDS);
                         if (botonAceptarPopup.isPresent()){
                             botonAceptarPopup.click();
+                            waitForAbsenceOf(".//span[contains(.,'Aceptar')]");
                         }
                         resetImplicitTimeout();
-                        waitUntil(300);
+                        waitUntil(1000);
                     }
                     botones.get(i).click();
                 }
