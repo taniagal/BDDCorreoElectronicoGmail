@@ -24,4 +24,4 @@ Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
 |tipo    |prima       |
-|Relativa|2,088,000.00|
+|Relativa|2.088.000,00|
