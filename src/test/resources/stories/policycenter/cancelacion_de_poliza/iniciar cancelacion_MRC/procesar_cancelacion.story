@@ -132,6 +132,22 @@ Examples:
 |  |  |
 |  |  |
 
+Scenario: 8 Cancelar poliza adelantada (billing)
+
+Meta: @manual
+@Story CDSEG-3782
+@URL https://jira.suramericana.com.co/browse/CDSEG-3782
+@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
+@Sprint 8
+
+Given  que quiero cancelar la poliza con un fecha superior al día de hoy
+When  intente procesar la cancelación
+Then  se debe validar en Billing la fecha de cancelación sugerida con base en la facturación generada y no permitir cancelar si la fecha de cancelación ingresada supera la fecha sugerida por billing y se debe generar un UW Issue, el mesanje de la autorización debe ser: "La fecha de cancelación es posterior al último periodo pagado de la póliza. La cancelación debe ser autorizada"
+
+
+Examples:
+|  |  |
+|  |  |
 
 
 
