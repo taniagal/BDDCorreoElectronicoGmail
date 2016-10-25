@@ -307,7 +307,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     }
 
     /**
-     * Metodos Ingresados para re-usar el mismo Page.
+     * Metodos Ingresados para re-usar el mismo Page.TEST_22266665}
      * Intervenido por: Jonathan Mejia Leon
      * Fecha de intervencion: 21/06/2016
      * Motivo: Uso del page para Administracion de cotización (Declinar-No Tomar)
