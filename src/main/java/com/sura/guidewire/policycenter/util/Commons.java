@@ -40,7 +40,7 @@ public class Commons extends PageObject {
     }
 
     public void selectItem(WebElementFacade element, String option){
-        waitFor(ExpectedConditions.elementToBeClickable(element));
+        waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
         element.click();
         waitUntil(200);
         element.sendKeys(option);

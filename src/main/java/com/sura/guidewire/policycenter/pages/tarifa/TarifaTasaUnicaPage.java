@@ -15,30 +15,26 @@ public class TarifaTasaUnicaPage extends Commons {
     private WebElementFacade botonHojaDeCalculo;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:Spreadsheet']")
     private WebElementFacade botonHojaDeCalculoRenovacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet:Export-textEl']")
-    private WebElementFacade menuItemExportar;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:Spreadsheet:Export']")
-    private WebElementFacade menuItemExportarRenovacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet:Import-textEl']")
-    private WebElementFacade menuItemImportar;
-    @FindBy(xpath = ".//*[@id='ExcelExportPopup:Export-inputEl']")
-    private WebElementFacade comboBoxExportar;
-    @FindBy(xpath = ".//*[@id='ExcelExportPopup:Format-inputEl']")
-    private WebElementFacade comboBoxFormato;
-    @FindBy(xpath = ".//*[@id='ExcelExportPopup:Language-inputEl']")
-    private WebElementFacade comboBoxIdioma;
-    @FindBy(xpath = ".//*[@id='ExcelExportPopup:Locale-inputEl']")
-    private WebElementFacade comboBoxLocal;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:ExportAsynchronouslyButton']")
     private WebElementFacade botonExportarAHojaDeCalculo;
-    @FindBy(xpath = ".//*[@id='ExcelExportPopup:__crumb__']")
-    private WebElementFacade linkVonverAVehiculos;
+    @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange']")
+    private WebElementFacade botonSiguienteCambioDePoliza;
     @FindBy(xpath = ".//*[@id='ExcelImportFilePopup:ImportButton']")
     private WebElementFacade botonImportar;
-    @FindBy(css = ".x-table-layout-cell")
-    private WebElementFacade trExaminar;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header']")
-    private WebElementFacade headerEnvio;
+    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptar;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
+    private WebElementFacade botonCotizar;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:RenewalQuote']")
+    private WebElementFacade botonCotizarRenovacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
+    private WebElementFacade botonCotizarAsegurado;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet:Export-textEl']")
+    private WebElementFacade menuItemExportar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet:Import-textEl']")
+    private WebElementFacade menuItemImportar;
+    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
+    private WebElementFacade menuPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:WizardMenuActions']")
     private WebElementFacade menuAccionesEnvio;
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions']")
@@ -49,32 +45,38 @@ public class TarifaTasaUnicaPage extends Commons {
     private WebElementFacade menuItemCambiarPoliza;
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_RenewPolicy']")
     private WebElementFacade menuItemRenovarPoliza;
-    @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange']")
-    private WebElementFacade botonSiguienteCambioDePoliza;
-    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
-    private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade menuItemVehiculos;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
-    private WebElementFacade campoTxtValorasegurado;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
-    private WebElementFacade botonCotizar;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:RenewalQuote']")
-    private WebElementFacade botonCotizarRenovacion;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
-    private WebElementFacade botonCotizarAsegurado;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']")
-    private WebElementFacade tablaMonto;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PADrivers']/div")
     private WebElementFacade menuiItemAsegurados;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:ViewQuote']/div")
     private WebElementFacade menuiItemCotizacion;
+    @FindBy(xpath = ".//*[@id='ExcelExportPopup:Export-inputEl']")
+    private WebElementFacade comboBoxExportar;
+    @FindBy(xpath = ".//*[@id='ExcelExportPopup:Format-inputEl']")
+    private WebElementFacade comboBoxFormato;
+    @FindBy(xpath = ".//*[@id='ExcelExportPopup:Language-inputEl']")
+    private WebElementFacade comboBoxIdioma;
+    @FindBy(xpath = ".//*[@id='ExcelExportPopup:Locale-inputEl']")
+    private WebElementFacade comboBoxLocal;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:StatedValue_DV-inputEl']")
+    private WebElementFacade campoTxtValorasegurado;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade campoTxtNombre;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl']")
     private WebElementFacade campoTxtSegundoNombre;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:MaritalStatus-inputEl']")
     private WebElementFacade comboBoxEstadoCivil;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']")
+    private WebElementFacade checkBoxTasaUnica;
+    @FindBy(xpath = ".//*[@id='ExcelExportPopup:__crumb__']")
+    private WebElementFacade linkVonverAVehiculos;
+    @FindBy(css = ".x-table-layout-cell")
+    private WebElementFacade trExaminar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header']")
+    private WebElementFacade headerEnvio;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']")
+    private WebElementFacade tablaMonto;
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
     private WebElementFacade linkVerCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
@@ -83,14 +85,10 @@ public class TarifaTasaUnicaPage extends Commons {
     private WebElementFacade labelPrimaTotalCambio;
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotalRenovacion;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
-    private WebElementFacade botonEditarTransaccion;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']")
-    private WebElementFacade checkBoxTasaUnica;
+    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
+    private WebElementFacade linkDescartarCambios;
 
-    private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    String vecMontos[] = new String[8];
     String primaTotal = "";
 
     public TarifaTasaUnicaPage(WebDriver driver) {
@@ -173,18 +171,14 @@ public class TarifaTasaUnicaPage extends Commons {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemRenovarPoliza.waitUntilPresent().click();
         botonAceptar.waitUntilPresent().click();
-        for (int i = 0; i < 5; i++) {
-            withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonHojaDeCalculoRenovacion).waitUntilPresent().click();
-            menuItemExportarRenovacion.waitUntilPresent().click();
-            waitUntil(2000);
-            linkVonverAVehiculos.waitUntilPresent().click();
+        for (int i = 0; i < 3; i++) {
+            botonHojaDeCalculoRenovacion.waitUntilPresent();
+            waitUntil(3000);
+            menuPoliza.click();
             setImplicitTimeout(1, TimeUnit.SECONDS);
-            if (botonEditarTransaccion.isPresent()) {
-                botonEditarTransaccion.waitUntilPresent().click();
-                botonAceptar.waitUntilPresent().click();
-                i = 5;
+            if (botonCotizarRenovacion.isPresent()){
+                break;
             }
-            resetImplicitTimeout();
         }
     }
 
@@ -194,6 +188,12 @@ public class TarifaTasaUnicaPage extends Commons {
         waitUntil(1000);
         checkBoxTasaUnica.shouldBePresent();
         botonCotizarRenovacion.click();
+        setImplicitTimeout(1,TimeUnit.SECONDS);
+        if (linkDescartarCambios.isPresent()){
+            linkDescartarCambios.click();
+            botonCotizarRenovacion.click();
+        }
+        resetImplicitTimeout();
     }
 
     public void verificarTarifacionSinCambio() {
