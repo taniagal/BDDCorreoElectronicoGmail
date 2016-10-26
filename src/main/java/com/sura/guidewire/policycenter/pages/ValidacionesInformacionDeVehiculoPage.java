@@ -105,6 +105,7 @@ public class ValidacionesInformacionDeVehiculoPage extends Commons {
         waitUntil(1000);
         comboBoxVehiculoServicio.click();
         waitForTextToAppear(campoTxtPlaca.getText(), 28000);
+        waitUntil(2000);
         selectItem(comboBoxModelo, vehiculo.get("modelo"));
         waitForTextToAppear(vehiculo.get("modelo"), 28000);
         ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
