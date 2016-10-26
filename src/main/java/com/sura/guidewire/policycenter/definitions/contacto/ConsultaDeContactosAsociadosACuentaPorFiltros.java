@@ -39,6 +39,8 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
 
     }
 
+
+
     @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro $filtro en la columna $columna")
     public void deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna(@Named("filtro") String filtro, @Named("columna") String columna) {
         MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), CoreMatchers.hasItem(CoreMatchers.containsString(filtro)));
