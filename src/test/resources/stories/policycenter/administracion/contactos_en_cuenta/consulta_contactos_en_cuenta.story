@@ -58,7 +58,6 @@ When busque la cuenta
 And desee visualizar los contactos asociados a la cuenta
 And filtre los contactos asociados a una cuenta por el rol <rol> en el combo con valor <comboRol>
 And filtre los contactos asociados a una cuenta por el rol <tipoPersona> en el combo con valor <comboPersona>
-!--Then debo ver contactos asociados a esta cuenta que cumplan con el filtro <tipoPersona> y <rol>
 
 Examples:
 | numCuenta  | rolUsuario | rol                  | tipoPersona | comboPersona         | comboRol                | mensajeEsperado | descripcion |
