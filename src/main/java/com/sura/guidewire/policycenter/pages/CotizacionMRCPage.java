@@ -3,9 +3,12 @@ package com.sura.guidewire.policycenter.pages;
 import com.google.common.base.Function;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -16,6 +19,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.slf4j.LoggerFactory;
 
 
 public class CotizacionMRCPage extends PageObject {
@@ -97,6 +101,9 @@ public class CotizacionMRCPage extends PageObject {
     @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr[2]/td/div/div/div/div/div[3]/div")
     private WebElementFacade columnaMontoCargos;
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
+
     public CotizacionMRCPage(WebDriver driver){
         super(driver);
     }
@@ -104,12 +111,12 @@ public class CotizacionMRCPage extends PageObject {
     public void irABuscarCotizacion(String cotizacion) {
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
         menuPoliza.click();
-        waitUntil(3500);
+        Commons.waitUntil(3500);
         menuPoliza.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(1000);
+        Commons.waitUntil(1000);
         buscarCotizacion.typeAndEnter(cotizacion);
-        waitUntil(2000);
+        Commons.waitUntil(2000);
     }
 
     public void ingresarACotizacion() {
@@ -124,7 +131,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void verDetalleCotizacion() {
-        waitUntil(2000);
+        Commons.waitUntil(2000);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloPagina).shouldBePresent();
         MatcherAssert.assertThat(tituloPagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
@@ -165,7 +172,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void validarPrima(String primaTotal) {
-        waitUntil(7000);
+        Commons.waitUntil(7000);
         MatcherAssert.assertThat(campoPrimaTotal.getText(),Is.is(Matchers.equalTo(primaTotal)));
     }
 
@@ -187,30 +194,16 @@ public class CotizacionMRCPage extends PageObject {
         WebElementFacade resultadosValidacion = withTimeoutOf(28, TimeUnit.SECONDS).find(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(21, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
-        waitUntil(3000);
+        Commons.waitUntil(3000);
         MatcherAssert.assertThat(tablaMensajes.getText(),Matchers.containsString(mensaje));
-        waitUntil(5000);
-    }
-
-    public void waitUntil(int millis) {
-        Integer i = 0;
-        Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
-                TimeUnit.MILLISECONDS).pollingEvery(millis,
-                TimeUnit.MILLISECONDS);
-        try {
-            wait.until(new Function<Integer, Boolean>() {
-                public Boolean apply(Integer i) {                    return false;
-                }
-            });
-        } catch (TimeoutException e) {
-        }
+        Commons.waitUntil(5000);
     }
 
     public void validarTipoRiesgo() {
-        waitUntil(1500);
+        Commons.waitUntil(1500);
         WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
         botonCotizar.click();
-        waitUntil(5000);
+        Commons.waitUntil(5000);
     }
 }

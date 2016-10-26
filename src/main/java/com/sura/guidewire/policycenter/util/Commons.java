@@ -6,24 +6,27 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
-import org.hamcrest.CoreMatchers;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.LoggerFactory;
 
 
 public class Commons extends PageObject {
     private final Actions actions = new Actions(getDriver());
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
+    protected static final int WAIT_TIME_2000 = 2000;
+    protected static final int TIEMPO_ESPERA_2S = 2000;
 
     public Commons(WebDriver driver) {
         super(driver);
@@ -60,6 +63,7 @@ public class Commons extends PageObject {
                 }
             });
         } catch (TimeoutException e) {
+            LOGGER.info("TimeoutException in "+e);
         }
     }
 

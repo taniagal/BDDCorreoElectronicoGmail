@@ -9,7 +9,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class BusquedaDeOrganizacionSteps extends ScenarioSteps {
 
     private final BusquedaDeOrganizacionPage busquedaDeOrganizacionPage = new BusquedaDeOrganizacionPage(getDriver());
-    private final Commons commons = new Commons(getDriver());
 
     public BusquedaDeOrganizacionSteps(Pages pages) {
         super(pages);
