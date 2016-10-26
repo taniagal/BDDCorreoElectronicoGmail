@@ -113,16 +113,11 @@
                     <includes>
                         <include>**/policycenter/*.java</include>
                     </includes>
-                    <excludes>
-                        <exclude>**/policycenter/MainStories.java</exclude>
-                    </excludes>
-                    <reuseForks>false</reuseForks>
-                    <forkCount>1C</forkCount>
-                    <forkedProcessTimeoutInSeconds>900</forkedProcessTimeoutInSeconds>
-                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                    <argLine>-Xmx1024m -XX:MaxPermSize=1024m</argLine>
+                    <perCoreThreadCount>true</perCoreThreadCount>
+                    <forkCount>6</forkCount>
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
-                        <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
                     </systemPropertyVariables>
                 </configuration>
                 <executions>
