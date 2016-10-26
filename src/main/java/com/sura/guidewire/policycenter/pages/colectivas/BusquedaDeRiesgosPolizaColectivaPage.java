@@ -33,8 +33,6 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
     Commons cmm = new Commons(getDriver());
 
     private static final String TABLAXPATH = ".//*[@id='AccountFile_CollectivePolicy_Ext:";
-    private static final String TABLAXPATHFILTRO = ".//*[@id='CollectivePolicyPARisksPopup:RisksLV-body']/div/table/tbody/tr/td[";
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     public BusquedaDeRiesgosPolizaColectivaPage(WebDriver driver) {
         super(driver);

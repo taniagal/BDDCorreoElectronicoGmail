@@ -165,7 +165,6 @@ public class TarifaAutosPage extends Commons {
         Map<String, String> dato = datosCoberturas.getRow(0);
         botonBorrar.waitUntilPresent().click();
         botonBorrar.waitUntilNotVisible();
-        try {
             comboBoxLimite.waitUntilPresent();
             waitUntil(1500);
             comboBoxLimite.clear();
@@ -175,9 +174,6 @@ public class TarifaAutosPage extends Commons {
             waitUntil(800);
             selectItem(comboBoxDeducible, dato.get("deducible"));
             selectItem(comboBoxAbogado, dato.get("abogado"));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
 

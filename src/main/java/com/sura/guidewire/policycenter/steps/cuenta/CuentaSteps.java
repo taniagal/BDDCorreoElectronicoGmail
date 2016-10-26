@@ -46,7 +46,6 @@ public class CuentaSteps extends ScenarioSteps {
 
 
     private BusquedaDeCuentaPage irAPaginaBusquedaDeCuentas(){
-        //busquedaDeCuentas = navegacion.seleccionarOpcion().enMenuContextual().seleccionarOpcion(BuscarNavBarPages.Opciones.CUENTAS.nombre());
         return busquedaDeCuentas;
     }
 

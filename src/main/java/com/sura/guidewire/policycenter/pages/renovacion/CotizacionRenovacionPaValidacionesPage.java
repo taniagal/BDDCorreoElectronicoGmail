@@ -18,9 +18,7 @@ public class CotizacionRenovacionPaValidacionesPage extends Commons{
     private WebElementFacade grupoMensajesRC;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     private WebElementFacade borraMensajeEspacioTrabajo;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PALine']/div")
-    private WebElementFacade itemCoberturasAuto;
-    @org.openqa.selenium.support.FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
     private WebElementFacade lblMensaje;
 
 
@@ -56,12 +54,12 @@ public class CotizacionRenovacionPaValidacionesPage extends Commons{
         MatcherAssert.assertThat(validacion, Matchers.is(Matchers.equalTo(true)));
     }
 
-    public boolean validarMensajeRC(ExamplesTable ListaMensajesRC) {
+    public boolean validarMensajeRC(ExamplesTable listaMensajesRC) {
         Map<String, String> mensajesRC;
         boolean validacionMensajes = false;
-        for (int i = 0; i < ListaMensajesRC.getRowCount(); i++) {
-            mensajesRC = ListaMensajesRC.getRows().get(i);
-            if(grupoMensajesRC.getText().contains((mensajesRC.get("mensaje")))){
+        for (int i = 0; i < listaMensajesRC.getRowCount(); i++) {
+            mensajesRC = listaMensajesRC.getRows().get(i);
+            if(grupoMensajesRC.getText().contains(mensajesRC.get("mensaje"))){
                 validacionMensajes = true;
             }else {
                 validacionMensajes = false;

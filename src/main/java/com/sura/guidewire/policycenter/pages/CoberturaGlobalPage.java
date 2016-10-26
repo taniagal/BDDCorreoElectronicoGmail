@@ -1,7 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.util.Commons;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -70,8 +69,7 @@ public class CoberturaGlobalPage extends Commons {
         navegarPorCobertura(dato.get("descripcion"), dato.get("tipo_cobertura"));
         if("Multiples ubicaciones".equals(dato.get("tipo_cobertura"))) {
             cargarMultiplesUbicaciones(dato.get("valor"));
-        }
-        else if ("Una cobertura".equals(dato.get("tipo_cobertura"))) {
+        } else if ("Una cobertura".equals(dato.get("tipo_cobertura"))) {
             cargarCoberturaUnica(dato.get("nombre_cobertura"), dato.get("valor"));
         }
         botonAceptar.click();

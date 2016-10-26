@@ -323,20 +323,27 @@ public class  DetallesContactoPage extends Commons {
         waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
         waitFor(comboBoxActividadComercial).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
+        if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText())) {
             right.append("activida comercial,");
-        if(!dtlCntJ[2].equals(campoTxtNumeroEmpleados.getText()))
+        }
+        if(!dtlCntJ[2].equals(campoTxtNumeroEmpleados.getText())) {
             right.append("numero de empleados,");
-        if(!dtlCntJ[3].equals(campoTxtValorActivos.getText()))
+        }
+        if(!dtlCntJ[3].equals(campoTxtValorActivos.getText())) {
             right.append("valor activos,");
-        if(!dtlCntJ[4].equals(campoTxtVentasAnuales.getText()))
+        }
+        if(!dtlCntJ[4].equals(campoTxtVentasAnuales.getText())) {
             right.append("ventas anuales,");
-        if(!dtlCntJ[5].equals(campoTxtTelefonoTrabajo2.getText()))
+        }
+        if(!dtlCntJ[5].equals(campoTxtTelefonoTrabajo2.getText())) {
             right.append("telefono oficina,");
-        if(!dtlCntJ[6].equals(campoTxtCorreoElectronicoPrimarioEmpresa.getText()))
+        }
+        if(!dtlCntJ[6].equals(campoTxtCorreoElectronicoPrimarioEmpresa.getText())) {
             right.append("correo primario,");
-        if(!dtlCntJ[7].equals(campoTxtCorreoElectronicoSecundarioEmpresa.getText()))
+        }
+        if(!dtlCntJ[7].equals(campoTxtCorreoElectronicoSecundarioEmpresa.getText())) {
             right.append("correo secundario,");
+        }
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
