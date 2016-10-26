@@ -57,9 +57,9 @@ public class TableWidgetPage extends PageObject {
 
     public Boolean existenFilasEnTabla() {
         if (! obtenerFilas().isEmpty()) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public List<WebElement> obtenerEncabezado() {
@@ -97,10 +97,17 @@ public class TableWidgetPage extends PageObject {
             try {
                 Iterator opcionToolbar = toolbarListWE.iterator();
 
-                combo = ((WebElementFacade) opcionToolbar).findElement(By.xpath("//input[contains(@value,'" + valorInputDeComboBox + "')]"));
-                combo.click();
-                findBy(LISTA_COMBO_DESPLEGABLE).waitUntilVisible();
-                shouldBeVisible(findBy(LISTA_COMBO_DESPLEGABLE));
+                if(valorInputDeComboBox.equals("Mostrar todos los roles"))
+                {
+                    findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:roleFilters-inputEl']").click();
+                    findBy(LISTA_COMBO_DESPLEGABLE).waitUntilVisible();
+                    shouldBeVisible(findBy(LISTA_COMBO_DESPLEGABLE));
+                    iterara = false;
+                }
+                else
+                {
+                    findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:personCompanyFilters-inputEl']").click();
+                }
                 iterara = false;
             } catch (Exception e) {
                 LOGGER.error("NO SE ENCONTRÓ NINGÚN COMBO CON VALOR " + valorInputDeComboBox + "TRACE " + e);
@@ -118,7 +125,7 @@ public class TableWidgetPage extends PageObject {
 
         List<WebElement> opcionesDeCombo = getDriver().findElements(By.xpath(xpathDelCombo));
         for (WebElement opcion : opcionesDeCombo) {
-            if (opcion.getText().contains(nombreDeOpcionDeCombo)) {
+            if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
                 opcion.click();
                 fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
             }

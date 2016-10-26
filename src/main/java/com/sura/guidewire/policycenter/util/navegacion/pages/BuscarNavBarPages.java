@@ -13,7 +13,7 @@ public class BuscarNavBarPages extends PageObject {
 
     public enum Opciones {
         POLIZA("Pólizas"),
-        CUENTAS("Cuentas"),
+        CUENTAS(".//a[contains(*,'Cuentas')]"),
         CODIGO_AGENTE("Código de agente"),
         ACTIVIDADES("Actividades"),
         CONTACTOS("Contactos");
@@ -32,7 +32,6 @@ public class BuscarNavBarPages extends PageObject {
 
     public MenuBarNavWidgetPage seleccionarOpcion() {
         findBy(MENU_BUSCAR).waitUntilVisible();
-
         WebElement menuBuscar = getDriver().findElement(By.xpath(MENU_BUSCAR));
         element(menuBuscar).setWindowFocus();
         element(menuBuscar).sendKeys(Keys.ARROW_DOWN);
@@ -40,7 +39,7 @@ public class BuscarNavBarPages extends PageObject {
         return switchToPage(MenuBarNavWidgetPage.class);
     }
 
-
-
-
+    public void clicenOpcionCuentas() {
+        findBy(Opciones.CUENTAS.nombre()).waitUntilVisible().click();
+    }
 }

@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.util.navegacion.definitions;
 
+import com.sura.guidewire.policycenter.util.navegacion.steps.MenuBuscarSteps;
 import com.sura.guidewire.policycenter.util.navegacion.steps.PolizaNavBarSteps;
 import net.thucydides.core.annotations.Steps;
 
@@ -10,6 +11,10 @@ public class Navegacion {
 
     @Steps
     PolizaNavBarSteps menuPoliza;
+
+    @Steps
+    MenuBuscarSteps menuBuscar;
+
 
 
     public void cuandoSeleccioneOpcionDesplegableDeMenuSuperiorPoliza() {
@@ -22,6 +27,10 @@ public class Navegacion {
 
     public void cuandoBusquePorNumeroDeSubscripcionDePoliza(String numeroSubscripcion) {
         menuPoliza.ingresar_numero_de_subscripcion_y_teclear_enter(numeroSubscripcion);
+    }
+
+    public void cuandoIngresoALaOpcionBuscar(){
+        menuBuscar.ingresar_a_la_opcion_Buscar();
     }
 
 }

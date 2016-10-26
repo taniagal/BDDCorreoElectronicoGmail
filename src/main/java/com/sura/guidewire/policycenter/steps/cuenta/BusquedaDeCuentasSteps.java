@@ -9,9 +9,7 @@ public class BusquedaDeCuentasSteps extends ScenarioSteps{
     BusquedaDeCuentasPage busquedaDeCuentasPage;
 
     @Step
-    public void ingresarABuscarCuentas() {
-        busquedaDeCuentasPage.irABuscarCuentas();
-    }
+    public void ingresarABuscarCuentas() {busquedaDeCuentasPage.irABuscarCuentas();}
 
     @Step
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
