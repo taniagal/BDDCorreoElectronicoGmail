@@ -9,16 +9,16 @@ public class AnalisisDeRiesgosPage extends PageObject {
 
     public WebElementFacade obtenerCompromisoBloqueado() {
 
-        String XpathCompromisoBloqueado = "//a[@class='g-actionable']";
+        String xpathCompromisoBloqueado = "//a[@class='g-actionable']";
         waitFor(2).second();
-        return findBy(XpathCompromisoBloqueado);
+        return findBy(xpathCompromisoBloqueado);
     }
 
     public void ingresarAOpcionAnalisisdeRiesgo() {
 
         waitFor(2).second();
-        String XpathAnalisisRiesgos = ".//*[@id='CancellationWizard:RiskAnalysis']/div";
-        findBy(XpathAnalisisRiesgos).waitUntilClickable().click();
+        String xpathAnalisisRiesgos = ".//*[@id='CancellationWizard:RiskAnalysis']/div";
+        findBy(xpathAnalisisRiesgos).waitUntilClickable().click();
         waitFor(2).second();
 
     }

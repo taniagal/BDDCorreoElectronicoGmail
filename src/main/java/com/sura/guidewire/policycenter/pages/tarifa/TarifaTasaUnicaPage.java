@@ -72,7 +72,7 @@ public class TarifaTasaUnicaPage extends Commons {
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:__crumb__']")
     private WebElementFacade linkVonverAVehiculos;
     @FindBy(css = ".x-table-layout-cell")
-    private WebElementFacade trExaminar;
+    private WebElementFacade filaExaminar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header']")
     private WebElementFacade headerEnvio;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']")
@@ -127,13 +127,15 @@ public class TarifaTasaUnicaPage extends Commons {
         botonHojaDeCalculo.waitUntilPresent().click();
         menuItemImportar.waitUntilPresent().click();
         botonImportar.waitUntilPresent();
-        MatcherAssert.assertThat("No esta presente el boton examinar", trExaminar.containsText("Examinar..."));
+        MatcherAssert.assertThat("No esta presente el boton examinar", filaExaminar.containsText("Examinar..."));
     }
 
 
     public int verificarEstadoDelEnvio(String cotizacion) {
+        int val = 0;
         waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, cotizacion));
-        return (headerEnvio.containsText("Expedida")) ? 1 : 0;
+        val = (headerEnvio.containsText("Expedida")) ? 1 : 0;
+        return val;
     }
 
     public void comenzarCambioDePoliza() {

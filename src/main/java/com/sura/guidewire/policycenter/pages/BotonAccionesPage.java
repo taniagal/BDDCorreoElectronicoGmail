@@ -1,11 +1,8 @@
 package com.sura.guidewire.policycenter.pages;
 
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 
-/**
- * Created by juanzaag on 20/10/2016.
- */
+
 public class BotonAccionesPage extends PageObject{
 
     public void seleccionarOpcionCancelarPoliza() {

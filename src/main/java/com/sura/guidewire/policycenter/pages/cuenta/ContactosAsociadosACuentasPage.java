@@ -236,9 +236,7 @@ public class ContactosAsociadosACuentasPage extends Commons {
         for (WebElementFacade contacto : getListaContactos()) {
             if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(contactoEliminado)) {
                 noExiste = false;
-            }
-            else
-            {
+            } else {
                 MatcherAssert.assertThat("No existe el contacto",noExiste);
                 break;
             }

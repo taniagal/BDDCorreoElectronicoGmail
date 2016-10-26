@@ -45,14 +45,15 @@ public class CotizacionDeCancelacionPage extends PageObject {
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnAceptarRetirarTransaccion;
 
+    InicioCancelacionPage inicioCancelacionPage;
+    ReglasRenovacionDosPage reglasRenovacionDosPage;
+    Commons cm = new Commons(getDriver());
+
     public CotizacionDeCancelacionPage(WebDriver driver) {
         super(driver);
     }
 
-    InicioCancelacionPage inicioCancelacionPage;
-    ReglasRenovacionDosPage reglasRenovacionDosPage;
 
-    Commons cm = new Commons(getDriver());
 
     public void ingresaDatosFormulario() {
         cm.selectItem(inicioCancelacionPage.txtMotivo, "Por pérdida total");
@@ -75,7 +76,7 @@ public class CotizacionDeCancelacionPage extends PageObject {
         MatcherAssert.assertThat("Error, no se encuentra impuestos", inputImpuestoIva.isVisible());
         MatcherAssert.assertThat("Error, no se encuentra costo total", inputCostoTotal.isVisible());
         MatcherAssert.assertThat("Error, no se encuentra cambio del costo", inputCambioDeCosto.isVisible());
-        MatcherAssert.assertThat("El valor debe ser cero",  inputCambioDeCosto.getText().equals("$0"));
+        MatcherAssert.assertThat("El valor debe ser cero",  "$0".equals(inputCambioDeCosto.getText()));
         cerrarTransaccionPoliza();
     }
 
