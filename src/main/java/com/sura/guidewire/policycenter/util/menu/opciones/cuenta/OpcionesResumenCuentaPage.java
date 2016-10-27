@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 
 import java.util.Map;
 
@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class OpcionesResumenCuentaPage extends Commons {
+public class OpcionesResumenCuentaPage extends PageUtil {
     Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:ttlBar']")
     private WebElementFacade lblResumenCuenta;
@@ -162,7 +162,7 @@ public class OpcionesResumenCuentaPage extends Commons {
     }
 
     public void verInfoResumenCuenta(Map<String, String> infoResumenCuenta) {
-        waitForTextToAppear("Resumen de la cuenta", 2000);
+        waitForTextToAppear("Resumen de la cuentas", 2000);
         MatcherAssert.assertThat(lblResumenCuenta.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblResumenCuenta"))));
         MatcherAssert.assertThat(lblTipoDoc.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoDocumento"))));
         MatcherAssert.assertThat(lblNumDoc.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numDocumento"))));
@@ -218,7 +218,7 @@ public class OpcionesResumenCuentaPage extends Commons {
     }
 
     public void validarCamposEditablesPersona() {
-        waitForTextToAppear("Editar cuenta", 1000);
+        waitForTextToAppear("Editar cuentas", 1000);
         MatcherAssert.assertThat(txtPrimerNombre.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtSegundoNombre.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtPrimerApellido.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
@@ -241,7 +241,7 @@ public class OpcionesResumenCuentaPage extends Commons {
     }
 
     public void validarCamposEditablesCompania() {
-        waitForTextToAppear("Editar cuenta", 1000);
+        waitForTextToAppear("Editar cuentas", 1000);
         MatcherAssert.assertThat(txtRazonSocial.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtNombreComercial.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtActEconomica.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
@@ -264,7 +264,7 @@ public class OpcionesResumenCuentaPage extends Commons {
     }
 
     public void editarPais(String pais) {
-        waitForTextToAppear("Editar cuenta", 2000);
+        waitForTextToAppear("Editar cuentas", 2000);
         waitFor(txtPais).shouldBeVisible();
         txtPais.click();
         WebElementFacade itmPais = findBy(".//li[contains(.,'" + pais + "')]");

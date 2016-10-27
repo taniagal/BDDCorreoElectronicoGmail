@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.pages.SeusLoginPage;
 import com.sura.guidewire.policycenter.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
@@ -10,7 +10,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class PolicySteps extends ScenarioSteps {
 
     private final SeusLoginPage seus = new SeusLoginPage(getDriver());
-    private final Commons gw = new Commons(getDriver());
+    private final PageUtil gw = new PageUtil(getDriver());
 
     public PolicySteps(Pages pages) {
         super(pages);

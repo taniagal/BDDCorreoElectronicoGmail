@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.util.menu;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.util.menu.acciones.administracion.*;
 import com.sura.guidewire.policycenter.util.menu.acciones.contacto.ContactoNuevaCuentaPage;
@@ -33,9 +33,9 @@ import org.openqa.selenium.support.FindBy;
 
 
 
-public class Navegacion extends Commons {
+public class Navegacion extends PageUtil {
 
-    private final Commons gw = new Commons(getDriver());
+    private final PageUtil gw = new PageUtil(getDriver());
     private final Actions act = new Actions(getDriver());
 
     // Objetos menu Escritorio
@@ -369,7 +369,7 @@ public class Navegacion extends Commons {
     // Navegacion menu Cuenta
     public NuevaCuentaPage irANuevaCuenta() {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mnuCuenta).click();
-        waitForAnyTextToAppear("Resumen de la cuenta","Búsqueda de cuentas");
+        waitForAnyTextToAppear("Resumen de la cuentas","Búsqueda de cuentas");
         waitUntil(2500);
         mnuCuenta.waitUntilClickable().click();
         waitUntil(500);
@@ -382,7 +382,7 @@ public class Navegacion extends Commons {
         waitUntil(3000);
         gw.deployMenu(mnuCuenta);
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
-        waitForTextToAppear("Nueva cuenta");
+        waitForTextToAppear("Nueva cuentas");
         waitUntil(2000);
         waitFor(txtNumCuenta).waitUntilEnabled();
         txtNumCuenta.waitUntilEnabled().type(numCuenta);
@@ -1185,7 +1185,7 @@ public class Navegacion extends Commons {
     }
 
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
-        waitForTextToAppear("Cotizaciones de la cuenta");
+        waitForTextToAppear("Cotizaciones de la cuentas");
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
         waitUntil(1000);
         mnuAdmCotizaciones.waitUntilVisible().waitUntilClickable().click();

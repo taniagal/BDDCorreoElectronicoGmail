@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -15,7 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 
 
 
-public class DetallesDeUbicacionPage extends Commons {
+public class DetallesDeUbicacionPage extends PageUtil {
 
     @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     private WebElementFacade numeroDeCuenta;
@@ -112,7 +112,7 @@ public class DetallesDeUbicacionPage extends Commons {
 
     public void setDatos(ExamplesTable datosCotizacion) {
         Map<String, String> dato = datosCotizacion.getRow(0);
-        numeroDeCuenta.waitUntilPresent().sendKeys(dato.get("cuenta"));
+        numeroDeCuenta.waitUntilPresent().sendKeys(dato.get("cuentas"));
         comboBoxNombreAgente.click();
         linkNombre.waitUntilVisible();
         Actions actions =  new Actions(getDriver());

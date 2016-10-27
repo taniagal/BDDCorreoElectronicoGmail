@@ -38,7 +38,7 @@ public class CotizacionDefinitions {
     /**
      * GIVENs
      */
-    @Given("deseo crear nueva cotizacion buscando por numero de cuenta")
+    @Given("deseo crear nueva cotizacion buscando por numero de cuentas")
     public void crearNuevaCotizacion(){
 
         guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
@@ -51,8 +51,8 @@ public class CotizacionDefinitions {
         LOGGER.info("CotizacionDefinitions.crearNuevaCotizacion");
     }
 
-    @Given("ya existe una $objeto en estado $cotizado del cliente con numero de cuenta $numCuenta para el producto $producto")
-    @Alias("existe una $objeto en $estado para el cliente con numero de cuenta $cuenta")
+    @Given("ya existe una $objeto en estado $cotizado del cliente con numero de cuentas $numCuenta para el producto $producto")
+    @Alias("existe una $objeto en $estado para el cliente con numero de cuentas $cuentas")
     public void existeCotizacionCotizadaEnProductoMultiriesgoCorporativo(){
         LOGGER.info("CotizacionDefinitions.existeCotizacionCotizadaEnProductoMultiriesgoCorporativo");
     }
@@ -60,8 +60,8 @@ public class CotizacionDefinitions {
     /**
      * WHENs
      */
-    @When("digite el numero de cuenta $numeroCuenta de una persona juridica y digite la tecla $teclaAccion para activar la busqueda")
-    @Alias("digite el numero de cuenta $numeroCuenta de una persona natural y digite la tecla $teclaAccion para activar la busqueda")
+    @When("digite el numero de cuentas $numeroCuenta de una persona juridica y digite la tecla $teclaAccion para activar la busqueda")
+    @Alias("digite el numero de cuentas $numeroCuenta de una persona natural y digite la tecla $teclaAccion para activar la busqueda")
     public void buscarCuentaPorNumeroDeCuenta(String numeroCuenta){
         cotizador.digitar_numero_de_cuenta(numeroCuenta);
         cotizador.digitar_la_tecla();
@@ -92,8 +92,8 @@ public class CotizacionDefinitions {
     /**
      * THENs
      */
-    @Then("espero ver el nombre de la persona jurídica $nombre de la cuenta existente junto con la etiqueta $tipoPersona")
-    @Alias("espero ver el nombre de la persona natural $nombre de la cuenta existente junto con la etiqueta $tipoPersona")
+    @Then("espero ver el nombre de la persona jurídica $nombre de la cuentas existente junto con la etiqueta $tipoPersona")
+    @Alias("espero ver el nombre de la persona natural $nombre de la cuentas existente junto con la etiqueta $tipoPersona")
     public void validarEtiquetaNombreYNombre(String nombre, String tipoPersona) throws InterruptedException {
         SeleneseTestNgHelper.assertEquals(nombre, cotizador.obtenerTextoLinkNombrePersonaWEF(nombre));
         SeleneseTestNgHelper.assertEquals(tipoPersona, cotizador.obtenerTextoLabelNombrePersonaWEF());
