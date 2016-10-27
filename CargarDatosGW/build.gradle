@@ -25,7 +25,7 @@ task escribirArchivo << {
 		else if(project.getProperties().get("env") == "qa" ){
 			props.setProperty("url","https://qacoreseguros.suramericana.com")
 		}else if(project.getProperties().get("env") == "reaseguro" ){
-			props.setProperty("url","https://qacoreseguros.suramericana.com")
+			props.setProperty("url","http://dllocoreseguros.suramericana.com:7033")
 		}else{
 			props.setProperty("url","http://local.sura.com:8180")
 		}
