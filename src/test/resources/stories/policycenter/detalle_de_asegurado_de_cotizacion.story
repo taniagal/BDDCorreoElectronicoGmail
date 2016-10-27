@@ -26,8 +26,7 @@ And consulte un asegurado del directorio
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
 And seleccione el contacto a agregar
 And vaya al siguiente paso de la cotizacion
-Then muestre el mensaje de validacion del asegurado <mensaje>
-And se debe permitir continuar la cotizacion
+Then se debe continuar al siguiente paso de la cotizacion
 
 Examples:
 | cuenta     | agente  | organizacion | canal             | producto | tipoId               | numeroId | mensaje                                                                                              |
@@ -71,7 +70,7 @@ Then deben quedar agregados como asegurados:
 |nombre|tipoDocumento|numeroDocumento|
 |DIEGO VELEZ|CEDULA DE CIUDADANIA|32536001|
 |GLORIA GALLEGO|CEDULA DE CIUDADANIA|1264567899|
-And se debe permitir continuar la cotizacion
+And se debe continuar al siguiente paso de la cotizacion
 
 Examples:
 |cuenta    | agente  | organizacion | canal             | producto |tipoId|numeroId|mensaje|
@@ -185,7 +184,7 @@ And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y nu
 And seleccione el contacto a agregar
 And vaya al siguiente paso de la cotizacion
 Then muestre el mensaje de validacion del asegurado <mensaje> que viene de Riesgos Consultables
-And se debe permitir continuar la cotizacion
+And se debe continuar al siguiente paso de la cotizacion
 
 Examples:
 | cuenta     | agente  | organizacion | canal             | producto | tipoId               | numeroId | mensaje                                                                                                |
