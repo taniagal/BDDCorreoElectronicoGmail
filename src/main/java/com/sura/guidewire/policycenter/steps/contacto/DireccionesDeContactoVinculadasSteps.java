@@ -70,6 +70,11 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
     }
 
     @Step
+    public void validarElCampoCiudad(String ciudad) {
+        direccionesDeContactoVinculadasPage.validarElCampoCiudad(ciudad);
+    }
+
+    @Step
     public void validarDireccionEstandarizada(String direccionEstandarizada, String nombreContacto) {
         direccionesDeContactoVinculadasPage.validarDireccionEstandarizada(direccionEstandarizada, nombreContacto);
     }

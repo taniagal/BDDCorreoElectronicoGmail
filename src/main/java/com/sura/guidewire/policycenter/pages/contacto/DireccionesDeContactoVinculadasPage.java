@@ -224,7 +224,16 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void validarElCampoDepartamento(String departamento) {
+        WebElementFacade campoDepartamento = commons.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
         this.ingresarDatoEnCombo(campoDepartamento, departamento);
+    }
+
+    public void validarElCampoCiudad(String ciudad) {
+        WebElementFacade campoCiudad = commons.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']");
+        this.ingresarDatoEnCombo(campoCiudad, ciudad);
+
+        this.clicEnBotonCancelar();
+        waitForTextToAppear("Contactos de archivo de cuenta");
     }
 
     public void clicEnBotonCancelar(){
