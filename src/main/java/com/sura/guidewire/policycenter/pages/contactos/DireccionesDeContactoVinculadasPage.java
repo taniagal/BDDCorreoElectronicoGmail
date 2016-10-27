@@ -1,10 +1,10 @@
 package com.sura.guidewire.policycenter.pages.contactos;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
 
 import java.util.List;
 import java.util.Map;
 
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -212,7 +212,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         Integer longitudCampo = campoDireccionDetalle.getValue().length();
         linkVolverAContacto.click();
         waitFor(botonAceptarMensaje).waitUntilPresent().click();
-        waitForTextToAppear("Contactos de archivo de cuentas");
+        waitForTextToAppear("Contactos de archivo de cuenta");
         MatcherAssert.assertThat(longitudCampo.toString(), Is.is(Matchers.equalTo(direccionOk)));
     }
 
@@ -224,7 +224,16 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
     }
 
     public void validarElCampoDepartamento(String departamento) {
+        WebElementFacade campoDepartamento = pageUtil.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
         this.ingresarDatoEnCombo(campoDepartamento, departamento);
+    }
+
+    public void validarElCampoCiudad(String ciudad) {
+        WebElementFacade campoCiudad = pageUtil.esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']");
+        this.ingresarDatoEnCombo(campoCiudad, ciudad);
+
+        this.clicEnBotonCancelar();
+        waitForTextToAppear("Contactos de archivo de cuenta");
     }
 
     public void clicEnBotonCancelar(){
@@ -249,7 +258,7 @@ public class DireccionesDeContactoVinculadasPage extends PageObject {
         }
         WebElementFacade botonCancelar = findBy(".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']");
         waitFor(botonCancelar).waitUntilPresent().click();
-        waitForTextToAppear("Contactos de archivo de cuentas", 10000);
+        waitForTextToAppear("Contactos de archivo de cuenta", 10000);
     }
 
     public void validarDireccionEstandarizada(String direccionEstandarizada, String nombreContacto) {

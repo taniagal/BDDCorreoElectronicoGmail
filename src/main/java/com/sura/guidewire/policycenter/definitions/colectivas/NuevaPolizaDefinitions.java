@@ -18,7 +18,7 @@ public class NuevaPolizaDefinitions {
     @Steps
     NuevaPolizaSteps nuevaPolizaSteps;
 
-    @Given("que voy a buscar la cuentas <numCuenta>")
+    @Given("que voy a buscar la cuenta <numCuenta>")
     public void buscarCuenta(@Named("numCuenta") String numCuenta){
         nuevaPolizaSteps.buscarCuenta(numCuenta);
     }

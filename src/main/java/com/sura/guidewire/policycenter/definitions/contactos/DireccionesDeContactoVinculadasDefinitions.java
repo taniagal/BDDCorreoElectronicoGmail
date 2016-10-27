@@ -19,17 +19,17 @@ public class DireccionesDeContactoVinculadasDefinitions {
     @Steps
     private DireccionesDeContactoVinculadasSteps direccionesDeContactoVinculadasSteps;
 
-    @Given("que me encuentro en los contactos de la cuentas")
+    @Given("que me encuentro en los contactos de la cuenta")
     public void irALosContactosDeLaCuenta() {
         direccionesDeContactoVinculadasSteps.irALosContactosDeLaCuenta();
     }
 
-    @Given("quiera crear un contactos secundario persona natural")
+    @Given("quiera crear un contacto secundario persona natural")
     public void seleccionarCrearContactoSecundarioPersonaNatural(){
         direccionesDeContactoVinculadasSteps.seleccionarCrearContactoSecundarioPersonaNatural();
     }
 
-    @When("cuando vincule las direcciones del contactos <nombreContactoUno> y contactos <nombreContactoDos> y la desee editar")
+    @When("cuando vincule las direcciones del contacto <nombreContactoUno> y contacto <nombreContactoDos> y la desee editar")
     public void filtrarPorNumeroCuenta(@Named("nombreContactoUno") String nombreContactoUno,
                                        @Named("nombreContactoDos") String nombreContactoDos) {
         direccionesDeContactoVinculadasSteps.vincularDirecciones(nombreContactoUno, nombreContactoDos);
@@ -45,7 +45,7 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.filtrarPorInfoObligatoria();
     }
 
-    @When("quiera actualizar la direccion de un contactos que tiene otros contactos que la usan")
+    @When("quiera actualizar la direccion de un contacto que tiene otros contactos que la usan")
     public void seleccionarContacto() {
         direccionesDeContactoVinculadasSteps.seleccionarContacto();
     }
@@ -60,7 +60,7 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.editarDireccionSinEstandarizar(direccionSinEstandarizar);
     }
 
-    @When("ingrese a editar la direccion por <direccion> en detalle contactos pestaña direcciones")
+    @When("ingrese a editar la direccion por <direccion> en detalle contacto pestaña direcciones")
     public void editarDireccionEnPestañaDirecciones(@Named("direccion") String direccion){
         direccionesDeContactoVinculadasSteps.editarDireccionEnPestaniaDirecciones(direccion);
     }
@@ -70,7 +70,7 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.editarDireccionCampoPais(pais);
     }
 
-    @When("seleccione el contactos a editar <nombreContacto>")
+    @When("seleccione el contacto a editar <nombreContacto>")
     public void seleccionarContactoAEditar(@Named("nombreContacto") String nombreContacto){
         direccionesDeContactoVinculadasSteps.seleccionarContactoAEditar(nombreContacto);
     }
@@ -115,13 +115,18 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.validarElCampoDepartamento(departamento);
     }
 
-    @Then("la direccion debe quedar estandarizada <direccionEstandarizada> del contactos <nombreContacto>")
+    @Then("el campo ciudad debe tener el valor <ciudad>")
+    public void validarElCampoCiudad(@Named("ciudad")String ciudad){
+        direccionesDeContactoVinculadasSteps.validarElCampoCiudad(ciudad);
+    }
+
+    @Then("la direccion debe quedar estandarizada <direccionEstandarizada> del contacto <nombreContacto>")
     public void validarDireccionEstandarizada(@Named("direccionEstandarizada") String direccionEstandarizada,
                                               @Named("nombreContacto") String nombreContacto){
         direccionesDeContactoVinculadasSteps.validarDireccionEstandarizada(direccionEstandarizada, nombreContacto);
     }
 
-    @Then("la direccion debe quedar como la ingreso el usuario <direccionUsuario> del contactos <nombreContacto>")
+    @Then("la direccion debe quedar como la ingreso el usuario <direccionUsuario> del contacto <nombreContacto>")
     public void validarDireccionNoEstandarizada(@Named("direccionUsuario") String direccionUsuario,
                                                 @Named("nombreContacto") String nombreContacto){
         direccionesDeContactoVinculadasSteps.validarDireccionVinculada(direccionUsuario, nombreContacto);
@@ -143,7 +148,7 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.validarContactosAsociados(contactosAsociados);
     }
 
-    @Then("debo poder asociar una direccion de otro contactos y se debe asociar la dirección seleccionada al nuevo contactos  y mostrar los datos de la dirección $direccionAsociada")
+    @Then("debo poder asociar una direccion de otro contacto y se debe asociar la dirección seleccionada al nuevo contacto  y mostrar los datos de la dirección $direccionAsociada")
     public void asociarDireccionAContactoSecundario(ExamplesTable direccionAsociada){
         direccionesDeContactoVinculadasSteps.validarAsociacionDeDireccionAContactoSecundario(direccionAsociada);
     }
