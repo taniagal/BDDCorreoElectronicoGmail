@@ -60,7 +60,7 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     private WebElementFacade labelFechaFinVigencia;
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:WrittenDate-labelEl']")
     private WebElementFacade labelFechaExpedicion;
-    @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:QuestionFundedPolicy-labelEl']")
+    @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicy-labelEl']")
     private WebElementFacade labelPolizaFinanciada;
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:Producer-labelEl']")
     private WebElementFacade labelOficinaRadicacion;
@@ -304,8 +304,6 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
 
     public void validarContinuacionDeCotizacion(String encabezado, String xpathEncabezado) {
         waitUntil(1000);
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBePresent();
-        botonSiguiente.click();
         WebElementFacade labelTitulo = findBy(xpathEncabezado);
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(labelTitulo).shouldBePresent();
         waitUntil(1500);
