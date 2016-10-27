@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.CotizacionPADetalleSteps;
-import com.sura.guidewire.policycenter.steps.cuenta.HistorialCuentaSteps;
+import com.sura.guidewire.policycenter.steps.cuentas.HistorialCuentaSteps;
 import java.util.HashMap;
 import java.util.Map;
 

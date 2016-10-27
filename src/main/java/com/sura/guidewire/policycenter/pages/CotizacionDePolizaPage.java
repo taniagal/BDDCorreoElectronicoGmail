@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.google.common.base.Function;
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
 
-public class CotizacionDePolizaPage extends Commons{
+public class CotizacionDePolizaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:ttlBar']")
     private WebElementFacade titulo;

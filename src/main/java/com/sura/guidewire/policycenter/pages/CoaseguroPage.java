@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.model.Aseguradora;
 
 import java.util.List;
@@ -14,10 +14,9 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
-public class CoaseguroPage extends Commons {
+public class CoaseguroPage extends PageUtil {
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade linkAgregarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:ReferencePolicyNumber-inputEl']")
@@ -101,8 +100,8 @@ public class CoaseguroPage extends Commons {
 
 
     public void verificarPorcentajeParticipacion(){
-        waitFor(ExpectedConditions.textToBePresentInElement(pieDeTabla,"100"));
-        MatcherAssert.assertThat("El total no es del 100%", pieDeTabla.getText().contains("100"));
+        waitUntil(2000);
+        MatcherAssert.assertThat("El total asegurado no es del 100%", pieDeTabla.getText().contains("100"));
     }
 
 

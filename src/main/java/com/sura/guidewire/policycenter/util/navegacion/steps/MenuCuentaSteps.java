@@ -8,7 +8,7 @@ public class MenuCuentaSteps extends ScenarioSteps {
 
     @Step
     public void nueva_cuenta() {
-        String xpathBtnNuevaCuenta = "//a[contains(.,'Nueva cuenta')]";
+        String xpathBtnNuevaCuenta = "//a[contains(.,'Nueva cuentas')]";
         getDriver().findElement(By.xpath(xpathBtnNuevaCuenta)).click();
     }
 

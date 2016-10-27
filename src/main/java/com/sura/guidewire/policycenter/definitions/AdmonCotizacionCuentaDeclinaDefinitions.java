@@ -19,7 +19,7 @@ public class AdmonCotizacionCuentaDeclinaDefinitions {
     @Steps
     AdmonCotizacionCuentaDeclinaSteps admonCotizacionCuentaSteps;
 
-    @Given("que estoy visualizando las cotizaciones de la cuenta <numCuenta>")
+    @Given("que estoy visualizando las cotizaciones de la cuentas <numCuenta>")
     public void visualizaCotizacion(@Named("numCuenta") String numCuenta) {
         admonCotizacionCuentaSteps.navegar_barra_superior(numCuenta);
     }

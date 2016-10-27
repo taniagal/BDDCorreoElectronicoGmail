@@ -22,8 +22,8 @@ public class SeleccionDeOfertasDefinitions {
         seleccionDeOfertasSteps.iniciarCotizacion();
     }
 
-    @When("ingrese la cuenta <cuenta>")
-    public void ingresarDatosInicialesCotizacion(@Named("cuenta") String cuenta) {
+    @When("ingrese la cuentas <cuentas>")
+    public void ingresarDatosInicialesCotizacion(@Named("cuentas") String cuenta) {
         seleccionDeOfertasSteps.ingresarDatosInicialesCotizacion(cuenta);
     }
 

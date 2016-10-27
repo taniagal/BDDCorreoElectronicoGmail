@@ -21,8 +21,8 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
     @Steps
     ValidacionesInformacionDeVehiculoSteps vehiculoSteps;
 
-    @Given("estoy cotizando una poliza de PA en cuenta <cuenta>")
-    public void agregarPoliza(@Named("cuenta") String cuenta) {
+    @Given("estoy cotizando una poliza de PA en cuentas <cuentas>")
+    public void agregarPoliza(@Named("cuentas") String cuenta) {
         //Metodo Vacio
     }
 

@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.steps.colectivas;
 
 import com.sura.guidewire.policycenter.pages.colectivas.IngresoDeRiesgosPolizaColectivaPages;
-import com.sura.guidewire.policycenter.pages.cuenta.CuentaPage;
-import com.sura.guidewire.policycenter.pages.cuenta.IngresarInformacionDeCuenta;
+import com.sura.guidewire.policycenter.pages.cuentas.CuentaPage;
+import com.sura.guidewire.policycenter.pages.cuentas.IngresarInformacionDeCuenta;
 import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import java.util.Map;
 
