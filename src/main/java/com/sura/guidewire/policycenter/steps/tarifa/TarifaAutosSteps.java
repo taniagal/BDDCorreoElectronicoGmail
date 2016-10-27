@@ -40,7 +40,6 @@ public class TarifaAutosSteps extends ScenarioSteps {
     public void seleciconar_coberturas(ExamplesTable coberturas) {
         tarifaAutosPage.setCoberturas(coberturas);
         tarifaAutosPage.seleccionarCoberturas(coberturas);
-        tarifaAutosPage.marcarCoberturaDanios();
         tarifaAutosPage.seleccionarCoberturasDeDanios(coberturas);
         vehiculoPage.clickVolver();
         vehiculoPage.clickSiguiente();
