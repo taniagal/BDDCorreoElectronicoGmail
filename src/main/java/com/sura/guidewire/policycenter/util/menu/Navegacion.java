@@ -327,6 +327,7 @@ public class Navegacion extends Commons {
     }
 
     public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza) {
+        waitUntil(2000);
         gw.deployMenu(mnuPoliza);
         ingresarDato(mnuNumeroSub,numSubPoliza);
         mnuNumeroSub.sendKeys(Keys.ENTER);

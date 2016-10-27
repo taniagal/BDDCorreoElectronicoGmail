@@ -19,8 +19,8 @@ And de clic en el numero de <poliza> de transacciones poliza colectiva
 And de clic en riesgos
 And realice la busqueda por la placa <placa>
 Then debe listar la informacion del riesgo
-| placa  | claseVehiculo        | modelo | marca| linea |
-| BLE125 | Camperos y pickups   | 2016   | Mazda| MPV   |
+| placa  | claseVehiculo | modelo | marca| linea |
+| BLE125 | Automóviles   | 2016   | Mazda| MPV   |
 Examples:
 | numCuenta  | placa  | poliza   |
 | C000888888 | ble125 | 22221910 |

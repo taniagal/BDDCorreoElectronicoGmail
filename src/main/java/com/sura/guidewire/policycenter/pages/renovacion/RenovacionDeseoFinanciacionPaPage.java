@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -13,7 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class RenovacionDeseoFinanciacionPaPage extends PageObject{
+public class RenovacionDeseoFinanciacionPaPage extends Commons{
 
     Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
@@ -42,8 +43,7 @@ public class RenovacionDeseoFinanciacionPaPage extends PageObject{
 
     public void validarMensajeDeseoFinanciacion(ExamplesTable mensaje) {
         Map<String, String> mensajeFinanciacion = mensaje.getRows().get(0);
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldBeCurrentlyVisible();
-        MatcherAssert.assertThat(mensajeValidacion.getTextValue(), Matchers.containsString(mensajeFinanciacion.get("mensaje")));
+        verificarMensaje(mensajeValidacion,mensajeFinanciacion.get("mensaje"));
     }
 
     public void irARevisionDePoliza(){
