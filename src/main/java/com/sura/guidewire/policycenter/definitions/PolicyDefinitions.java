@@ -28,7 +28,7 @@ public class PolicyDefinitions {
         pcs.assertion(msjResult);
     }
 
-    @Then("el usuario deberia poder acceder a nuevo contacto persona")
+    @Then("el usuario deberia poder acceder a nuevo contactos persona")
     public void nuevoContactoPersona() throws InterruptedException {
         pcs.nuevoContactoPersona();
     }

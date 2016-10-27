@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.List;
 import java.util.Map;
 import net.serenitybdd.core.annotations.findby.By;
@@ -98,7 +98,7 @@ public class BusquedaDePolizaPage extends PageObject {
     public void limpiarCampos() {
         waitFor(botonRestablecer).waitUntilPresent().waitUntilClickable();
         botonRestablecer.click();
-        Commons.waitUntil(3500);
+        PageUtil.waitUntil(3500);
     }
 
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {

@@ -1,10 +1,9 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.google.common.base.Function;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -14,11 +13,8 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
 
 
@@ -111,12 +107,12 @@ public class CotizacionMRCPage extends PageObject {
     public void irABuscarCotizacion(String cotizacion) {
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
         menuPoliza.click();
-        Commons.waitUntil(3500);
+        PageUtil.waitUntil(3500);
         menuPoliza.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        Commons.waitUntil(1000);
+        PageUtil.waitUntil(1000);
         buscarCotizacion.typeAndEnter(cotizacion);
-        Commons.waitUntil(2000);
+        PageUtil.waitUntil(2000);
     }
 
     public void ingresarACotizacion() {
@@ -131,7 +127,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void verDetalleCotizacion() {
-        Commons.waitUntil(2000);
+        PageUtil.waitUntil(2000);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloPagina).shouldBePresent();
         MatcherAssert.assertThat(tituloPagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
@@ -172,7 +168,7 @@ public class CotizacionMRCPage extends PageObject {
     }
 
     public void validarPrima(String primaTotal) {
-        Commons.waitUntil(7000);
+        PageUtil.waitUntil(7000);
         MatcherAssert.assertThat(campoPrimaTotal.getText(),Is.is(Matchers.equalTo(primaTotal)));
     }
 
@@ -194,16 +190,16 @@ public class CotizacionMRCPage extends PageObject {
         WebElementFacade resultadosValidacion = withTimeoutOf(28, TimeUnit.SECONDS).find(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(21, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
-        Commons.waitUntil(3000);
+        PageUtil.waitUntil(3000);
         MatcherAssert.assertThat(tablaMensajes.getText(),Matchers.containsString(mensaje));
-        Commons.waitUntil(5000);
+        PageUtil.waitUntil(5000);
     }
 
     public void validarTipoRiesgo() {
-        Commons.waitUntil(1500);
+        PageUtil.waitUntil(1500);
         WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
         withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
         botonCotizar.click();
-        Commons.waitUntil(5000);
+        PageUtil.waitUntil(5000);
     }
 }

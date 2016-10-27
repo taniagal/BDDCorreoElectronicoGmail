@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -14,7 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-public class ModificacionInformacionPolizaPAPage extends Commons{
+public class ModificacionInformacionPolizaPAPage extends PageUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionInformacionPolizaPAPage.class);
 

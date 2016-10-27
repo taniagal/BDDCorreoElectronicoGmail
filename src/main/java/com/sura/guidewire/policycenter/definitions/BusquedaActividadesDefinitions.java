@@ -39,7 +39,7 @@ public class BusquedaActividadesDefinitions {
         busquedaActividadesSteps.filtrarPorNumeroDePoliza(numeroPoliza);
     }
 
-    @When("quiera realizar la busqueda de actividades por el filtro numero de cuenta<numeroCuenta>")
+    @When("quiera realizar la busqueda de actividades por el filtro numero de cuentas<numeroCuenta>")
     public void filtarPorNumeroDeCuenta(@Named("numeroCuenta") String numeroCuenta) {
         busquedaActividadesSteps.filtrarPorNumeroDeCuenta(numeroCuenta);
     }

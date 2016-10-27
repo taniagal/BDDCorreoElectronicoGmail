@@ -99,7 +99,7 @@ public class InformacionDePolizaMrcDefinitions {
     *Bug Automatizado: Ocultar dirección en formulario
      */
 
-    @When("requiera quitar la descripcion de la direccion del contacto")
+    @When("requiera quitar la descripcion de la direccion del contactos")
     public void whenRequieraQuitarLaDescripcionDeLaDireccionDelContacto() {
         informacionDePolizaMrcSteps.eliminar_descripcion_de_direccion_en_contacto();
     }

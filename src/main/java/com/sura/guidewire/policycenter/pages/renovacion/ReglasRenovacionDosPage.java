@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
@@ -37,7 +37,7 @@ public class ReglasRenovacionDosPage extends PageObject {
     @FindBy(id = "RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs")
     WebElementFacade lblMensajes;
 
-    Commons cm = new Commons(getDriver());
+    PageUtil cm = new PageUtil(getDriver());
 
     public ReglasRenovacionDosPage(WebDriver driver) {
         super(driver);

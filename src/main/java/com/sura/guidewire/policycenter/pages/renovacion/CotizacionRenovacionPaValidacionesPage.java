@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class CotizacionRenovacionPaValidacionesPage extends Commons{
+public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade grupoMensajesRC;
