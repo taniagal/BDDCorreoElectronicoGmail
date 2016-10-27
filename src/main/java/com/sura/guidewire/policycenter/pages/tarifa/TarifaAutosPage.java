@@ -140,7 +140,7 @@ public class TarifaAutosPage extends Commons {
         waitUntil(500);
         menuItemCotizacion.waitUntilPresent().click();
     }
-    
+
 
     public void relacionarAsegurado() {
         botonRelacionarAsegurado.waitUntilPresent();
@@ -165,15 +165,15 @@ public class TarifaAutosPage extends Commons {
         Map<String, String> dato = datosCoberturas.getRow(0);
         botonBorrar.waitUntilPresent().click();
         botonBorrar.waitUntilNotVisible();
-            comboBoxLimite.waitUntilPresent();
-            waitUntil(1500);
-            comboBoxLimite.clear();
-            waitUntil(500);
-            comboBoxLimite.sendKeys(dato.get("limite"));
-            comboBoxLimite.sendKeys(Keys.ENTER);
-            waitUntil(800);
-            selectItem(comboBoxDeducible, dato.get("deducible"));
-            selectItem(comboBoxAbogado, dato.get("abogado"));
+        comboBoxLimite.waitUntilPresent();
+        waitUntil(1500);
+        comboBoxLimite.clear();
+        waitUntil(500);
+        comboBoxLimite.sendKeys(dato.get("limite"));
+        comboBoxLimite.sendKeys(Keys.ENTER);
+        waitUntil(800);
+        selectItem(comboBoxDeducible, dato.get("deducible"));
+        selectItem(comboBoxAbogado, dato.get("abogado"));
     }
 
 
@@ -208,7 +208,6 @@ public class TarifaAutosPage extends Commons {
         checkBoxCentroDeServicios.click();
         selectItem(comboBoxCentroDeServicios, dato.get("CS"));
         checkBoxCarroDeReemplazo.click();
-        selectItem(comboBoxPerdidaParcial, dato.get("PP"));
         selectItem(comboBoxPerdidaTotal, dato.get("PT"));
     }
 
@@ -230,14 +229,14 @@ public class TarifaAutosPage extends Commons {
     public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
-            LOGGER.info(valor.get("valor")+" | "+tablaDescripcion.getText());
+            LOGGER.info(valor.get("valor") + " | " + tablaDescripcion.getText());
         }
 
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
             WebElementFacade cobertura = findBy(TABLAXPATH + valor.get("fila") + "]/td[1]");
             MatcherAssert.assertThat("Error en el valor de la cobertura '" + valor.get("fila") + " - " +
-                            cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
+                    cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
         }
     }
 }

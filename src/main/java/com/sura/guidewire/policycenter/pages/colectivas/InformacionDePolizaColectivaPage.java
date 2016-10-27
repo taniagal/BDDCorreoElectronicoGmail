@@ -239,7 +239,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
                 waitFor(botonSiguiente);
                 botonSiguiente.click();
             } catch (Exception e) {
-                commons.waitUntil(2000);
+                commons.waitUntil(5000);
                 botonSiguiente.click();
             }
         }
