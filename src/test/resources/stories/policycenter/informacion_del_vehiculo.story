@@ -47,19 +47,3 @@ Then el sistema debe totalizar el valor asegurado y mostrar un mensaje de error 
 Examples:
 |numeroCuenta|organizacion|canal            |nomProducto|valorAccesorio|valorAccesorioEsp|boniComercial|boniTecnica|mensaje                                             |
 |C000222333  |Sura        |Canal Tradicional|Autos      |1750000       |4000000          |25           |30         |La suma de las bonificaciones no debe ser mayor a 50|
-
-Scenario: Cambiar bloqueo por warning - Interes adicional
-Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto|canal            |
-|C000222333|Sura        |Autos   |Canal Tradicional|
-When vaya a agregar un vehiculo con los datos:
-|placa   |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis  |motor |valor_asegurado|descuento|recargo|zona|plan             |
-|CAO199  |2009  |08001111        |MEDELLIN          |Particular       |PR3B41  |SnR41 |13500000       |null     |null   |2   |Plan Autos Básico|
-And ingrese el beneficiario o conductor <tipoDocumento> <numeroDocumento> en los intereses adicionales
-And el interes adicional este marcado como riesgo PEP
-Then el sistema debe mostrar un mensaje <mensaje> obtenido desde Riesgos PEPS
-And permitir continuar con la cotizacion
-
-Examples:
-|numeroCuenta|organizacion|canal            |nomProducto|tipoDocumento       |numeroDocumento|mensaje                                                                                               |
-|C000222333  |Sura        |Canal Tradicional|Autos      |CEDULA DE CIUDADANIA|123456         |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|

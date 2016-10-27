@@ -16,39 +16,17 @@ GivenStories: stories/policycenter/login_policy.story
 Given existe una cotizacion <numeroCotizacion>
 And el tomador <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
 When intente expedir la poliza
-Then se debe generar un UW issue
-And mostrar el mensaje <mensaje> que devuelve el servicio
-And concatenarlo con el texto
-|texto|
-|Para solicitar la(s) autorización(es) diríjase a la opción Análisis de riesgo.|
+Then mostrar el mensaje <mensaje> que devuelve el servicio
 
 Examples:
 |numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                             |
 |22222228         |CEDULA DE CIUDADANIA |1025312689      |ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado.|
 
-Scenario: Identificacion cliente PEP en asegurado nuevo
-Given existe una cotizacion <numeroCotizacion>
-And el asegurado <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
-When intente expedir la poliza
-Then se debe generar un UW issue
-And mostrar el mensaje <mensaje> que devuelve el servicio
-And concatenarlo con el texto
-|texto|
-|Para solicitar la(s) autorización(es) diríjase a la opción Análisis de riesgo.|
-
-Examples:
-|numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                           |
-|22222228         |CEDULA DE CIUDADANIA |1025312689      |CAROLINA OCHOA con CEDULA DE CIUDADANIA - 71318883 es un riesgo no estándar y debe ser autorizado.|
-
 Scenario: Identificacion cliente PEP en beneficiario nuevo
 Given existe una cotizacion <numeroCotizacion>
 And el beneficiario <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
 When intente expedir la poliza
-Then se debe generar un UW issue
-And mostrar el mensaje <mensaje> que devuelve el servicio
-And concatenarlo con el texto
-|texto|
-|Para solicitar la(s) autorización(es) diríjase a la opción Análisis de riesgo.|
+Then mostrar el mensaje <mensaje> que devuelve el servicio
 
 Examples:
 |numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                         |
@@ -58,25 +36,18 @@ Scenario: Modificacion - Identificacion cliente PEP en tomador
 Given existe una cotizacion <numeroCotizacion> la cual se va a modificar
 And el tomador <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
 When intente expedir la poliza
-Then se debe generar un UW issue
-And mostrar el mensaje <mensaje> que devuelve el servicio
-And concatenarlo con el texto
-|texto|
-|Para solicitar la(s) autorización(es) diríjase a la opción Análisis de riesgo.|
+Then mostrar el mensaje <mensaje> que devuelve el servicio
 
 Examples:
 |numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                             |
 |55570000         |CEDULA DE CIUDADANIA |1025312689      |ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado.|
 
+
 Scenario: Modificacion - Identificacion cliente PEP en asegurado
 Given existe una cotizacion <numeroCotizacion> la cual se va a modificar
 And el asegurado <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
 When intente expedir la poliza
-Then se debe generar un UW issue
-And mostrar el mensaje <mensaje> que devuelve el servicio
-And concatenarlo con el texto
-|texto|
-|Para solicitar la(s) autorización(es) diríjase a la opción Análisis de riesgo.|
+Then mostrar el mensaje <mensaje> que devuelve el servicio
 
 Examples:
 |numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                           |
@@ -86,11 +57,7 @@ Scenario: Modificacion - Identificacion cliente PEP en beneficiario
 Given existe una cotizacion <numeroCotizacion> la cual se va a modificar
 And el beneficiario <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
 When intente expedir la poliza
-Then se debe generar un UW issue
-And mostrar el mensaje <mensaje> que devuelve el servicio
-And concatenarlo con el texto
-|texto|
-|Para solicitar la(s) autorización(es) diríjase a la opción Análisis de riesgo.|
+Then mostrar el mensaje <mensaje> que devuelve el servicio
 
 Examples:
 |numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                         |
@@ -107,8 +74,8 @@ And  mostrar el mensaje <mensaje> que devuelve el servicio
 And  concatenarlo con el texto "Para solicitar la autorización diríjase a la opción Análisis de riesgo"
 
 Examples:
-| |
-| |
+|||
+|||
 
 Scenario: DNI que ya existian en la poliza y son PEP
 Meta: @manual
@@ -121,5 +88,5 @@ And se identifique que los DNI son riesgo PEP que ya venian asegurados y habian 
 Then  se debe permitir expedir el cambio de la poliza y mostrar el número del cambio y de la póliza
 
 Examples:
-| |
-| |
+|||
+|||
