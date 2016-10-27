@@ -101,8 +101,8 @@ public class CoaseguroPage extends Commons {
 
 
     public void verificarPorcentajeParticipacion(){
-        waitFor(ExpectedConditions.textToBePresentInElement(pieDeTabla,"100"));
-        MatcherAssert.assertThat("El total no es del 100%", pieDeTabla.getText().contains("100"));
+        waitUntil(2000);
+        MatcherAssert.assertThat("El total asegurado no es del 100%", pieDeTabla.getText().contains("100"));
     }
 
 
