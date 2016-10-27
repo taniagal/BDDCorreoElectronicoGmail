@@ -51,6 +51,8 @@ public class RenovacionDeseoFinanciacionPaPage extends PageObject{
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(revisionPoliza).click();
         mensajesAdvertencia.waitUntilPresent();
         revisionPoliza.click();
+        WebElementFacade labelRevisionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_DifferencesScreen:ttlBar']");
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelRevisionPoliza).shouldBeVisible();
     }
 
     public void cotizarRenovacionPoliza() {
