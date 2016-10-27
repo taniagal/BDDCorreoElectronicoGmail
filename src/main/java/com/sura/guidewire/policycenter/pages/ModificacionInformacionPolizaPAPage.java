@@ -304,8 +304,6 @@ public class ModificacionInformacionPolizaPAPage extends Commons{
 
     public void validarContinuacionDeCotizacion(String encabezado, String xpathEncabezado) {
         waitUntil(1000);
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBePresent();
-        botonSiguiente.click();
         WebElementFacade labelTitulo = findBy(xpathEncabezado);
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(labelTitulo).shouldBePresent();
         waitUntil(1500);
