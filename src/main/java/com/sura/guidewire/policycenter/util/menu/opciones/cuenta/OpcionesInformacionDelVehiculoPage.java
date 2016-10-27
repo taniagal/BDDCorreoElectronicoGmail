@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -13,7 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.concurrent.TimeUnit;
 
 
-public class OpcionesInformacionDelVehiculoPage extends PageUtil {
+public class OpcionesInformacionDelVehiculoPage extends Commons {
 
 
     @FindBy(xpath = "//td[@id='SubmissionWizard:LOBWizardStepGroup:PersonalVehicles']/div")

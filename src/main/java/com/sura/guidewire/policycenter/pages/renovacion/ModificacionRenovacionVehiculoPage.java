@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,7 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 
-public class ModificacionRenovacionVehiculoPage extends PageUtil {
+public class ModificacionRenovacionVehiculoPage extends Commons{
 
     private final Actions act = new Actions(getDriver());
 

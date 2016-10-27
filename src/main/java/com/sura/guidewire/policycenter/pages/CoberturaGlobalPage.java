@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -10,8 +10,10 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import javax.swing.*;
 
-public class CoberturaGlobalPage extends PageUtil {
+
+public class CoberturaGlobalPage extends Commons {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBlanket']/div")
     private WebElementFacade menuItemCoberturaGlobal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket_tb:AddBlanket-btnInnerEl']")

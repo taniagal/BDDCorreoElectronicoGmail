@@ -3,7 +3,7 @@ package com.sura.guidewire.policycenter.pages.renovacion;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -85,7 +85,7 @@ public class ModificacionRenovacionPolicyInfoAseguradoPage extends PageObject{
     public void irAAsegurados(){
         WebElementFacade itemAsegurados = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PADrivers']/div/span");
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(itemAsegurados).click();
-        PageUtil.waitUntil(1000);
+        Commons.waitUntil(1000);
         itemAsegurados.click();
         WebElementFacade labelAsegurados = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelAsegurados).shouldBeVisible();

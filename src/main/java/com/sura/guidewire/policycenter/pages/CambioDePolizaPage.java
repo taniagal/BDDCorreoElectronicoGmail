@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class CambioDePolizaPage extends PageObject {
 
-    PageUtil pageUtil = new PageUtil(getDriver());
+    Commons commons = new Commons(getDriver());
 
 
     @FindBy(xpath = ".//span[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")
@@ -47,7 +47,7 @@ public class CambioDePolizaPage extends PageObject {
 
 
     public void irAMenuAcciones() {
-        PageUtil.waitUntil(1000);
+        Commons.waitUntil(1000);
         menuAcciones.click();
     }
 
@@ -62,7 +62,7 @@ public class CambioDePolizaPage extends PageObject {
     }
 
     public void validarMensaje(String mensaje) {
-        pageUtil.verificarMensaje(mensajeAdvertencia,mensaje);
+        commons.verificarMensaje(mensajeAdvertencia,mensaje);
     }
 
     public void seleccionarInformacionPoliza() {

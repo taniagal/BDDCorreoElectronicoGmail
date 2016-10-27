@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +21,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
 
-    PageUtil pageUtil = new PageUtil(getDriver());
+    Commons commons = new Commons(getDriver());
     Actions acciones = new Actions(getDriver());
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']/div")
@@ -135,7 +135,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
 
     public void validarAseguradosAgregados(ExamplesTable asegurados) {
         Map<String, String> aseguradosAgregados;
-        pageUtil.waitUntil(2000);
+        commons.waitUntil(2000);
         waitFor(tablaAsegurados).waitUntilPresent();
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         for (int i=0; i<allRows.size(); i++){
@@ -162,13 +162,13 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
     }
 
     public void validarAseguradoEliminado() {
-        pageUtil.waitUntil(2000);
+        commons.waitUntil(2000);
         waitFor(tablaAsegurados).waitUntilPresent();
         MatcherAssert.assertThat(tablaAsegurados.getText(), Is.is(Matchers.equalTo("")));
     }
 
     public void irASiguiente() {
-        pageUtil.waitUntil(2000);
+        commons.waitUntil(2000);
         waitFor(botonSiguiente).waitUntilPresent();
         botonSiguiente.click();
     }
@@ -181,7 +181,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
     public void irACrearNuevaCotizacion() {
         waitFor(menuPoliza).waitUntilPresent();
         menuPoliza.click();
-        pageUtil.waitUntil(3000);
+        commons.waitUntil(3000);
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
         menuPolizaNuevoEnvio.waitUntilVisible().click();
@@ -199,12 +199,12 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
     }
 
     public void validarContinuacionDeCotizacion() {
-        pageUtil.waitUntil(1000);
+        commons.waitUntil(1000);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBePresent();
         botonSiguiente.click();
         WebElementFacade labelTituloVehiculos = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).shouldBePresent();
         MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
-        pageUtil.waitUntil(1000);
+        commons.waitUntil(1000);
     }
 }

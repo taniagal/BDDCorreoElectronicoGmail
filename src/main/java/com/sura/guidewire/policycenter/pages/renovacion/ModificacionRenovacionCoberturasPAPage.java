@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -14,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
+public class ModificacionRenovacionCoberturasPAPage extends Commons {
 
     private final Actions act = new Actions(getDriver());
 
@@ -161,7 +161,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
 
     public void borrarEspacioTrabajo() {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(btnBorrar).click();
-        PageUtil espera = new PageUtil(getDriver());
+        Commons espera = new Commons(getDriver());
         espera.waitUntil(2000);
     }
 }

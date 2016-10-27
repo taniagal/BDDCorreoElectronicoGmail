@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.CoreMatchers;
@@ -9,7 +9,7 @@ import org.hamcrest.core.Is;
 import org.hamcrest.core.IsNull;
 import org.openqa.selenium.WebDriver;
 
-public class DetalleRegistrosSuscripcionPage extends PageUtil {
+public class DetalleRegistrosSuscripcionPage extends Commons{
 
     @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_UnderwritingFiles']/div/span")
     WebElementFacade mnuRegistrosSuscripcion;

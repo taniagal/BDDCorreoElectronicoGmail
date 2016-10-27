@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages.colectivas;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -83,7 +83,7 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     }
 
     public void clicEnActualizarInformacionDePolizaColectiva() {
-        PageUtil.waitUntil(2000);
+        Commons.waitUntil(2000);
         if(botonActualizar.isVisible()) {
             botonActualizar.click();
         }

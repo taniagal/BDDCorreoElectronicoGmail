@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 
 import java.util.Map;
 
@@ -69,7 +69,7 @@ public class BusquedaActividadesPage extends PageObject {
         waitFor(menuBuscar);
         actions.click(menuBuscar).build().perform();
         waitFor(menuBuscarActividades);
-        PageUtil.waitUntil(1500);
+        Commons.waitUntil(1500);
         actions.click(menuBuscarActividades).build().perform();
         waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();
@@ -98,7 +98,7 @@ public class BusquedaActividadesPage extends PageObject {
     public void limpiarFiltros() {
         waitFor(botonRestablecer).waitUntilVisible();
         actions.click(botonRestablecer).build().perform();
-        PageUtil.waitUntil(2000);
+        Commons.waitUntil(2000);
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {

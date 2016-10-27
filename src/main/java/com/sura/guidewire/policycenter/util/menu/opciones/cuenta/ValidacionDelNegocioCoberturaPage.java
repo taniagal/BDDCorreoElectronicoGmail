@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 
-public class ValidacionDelNegocioCoberturaPage extends PageUtil {
+public class ValidacionDelNegocioCoberturaPage extends Commons{
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div")
     private WebElementFacade btnEdificiosYUbicaciones;

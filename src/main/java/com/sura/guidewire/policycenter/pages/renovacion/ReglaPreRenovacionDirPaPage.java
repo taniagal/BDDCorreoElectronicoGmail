@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import com.sura.guidewire.policycenter.util.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -14,7 +14,7 @@ import javax.swing.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ReglaPreRenovacionDirPaPage extends PageUtil {
+public class ReglaPreRenovacionDirPaPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_PreRenewalDirection-textEl']")
     WebElementFacade lstOpcionPreviasALaRenovacion;

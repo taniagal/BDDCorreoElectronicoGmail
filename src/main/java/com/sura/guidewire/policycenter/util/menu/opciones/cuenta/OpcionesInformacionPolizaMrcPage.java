@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
@@ -14,8 +14,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class OpcionesInformacionPolizaMrcPage extends PageUtil {
+
+
+public class OpcionesInformacionPolizaMrcPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade txtNomAgente;

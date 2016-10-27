@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 
-public class InformacionTitularCuentaPage extends PageUtil {
+public class InformacionTitularCuentaPage extends Commons {
 
     @FindBy(xpath = ".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_AccountHolder']/div/span")
     WebElementFacade mnuInformacionTitularCuenta;

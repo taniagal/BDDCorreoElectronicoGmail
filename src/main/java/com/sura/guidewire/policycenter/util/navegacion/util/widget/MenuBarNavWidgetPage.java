@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.util.navegacion.util.widget;
 
 
-import com.sura.guidewire.policycenter.pages.cuentas.BusquedaDeCuentasPage;
+import com.sura.guidewire.policycenter.pages.cuenta.BusquedaDeCuentasPage;
 
 import java.util.List;
 

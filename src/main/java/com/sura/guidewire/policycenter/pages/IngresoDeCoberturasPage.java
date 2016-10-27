@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -22,7 +22,7 @@ public class IngresoDeCoberturasPage extends PageObject{
     private WebElementFacade botonMostrarHojaDeCalculo;
 
 
-    PageUtil pageUtil = new PageUtil(getDriver());
+    Commons commons = new Commons(getDriver());
 
     public IngresoDeCoberturasPage(WebDriver driver){
         super(driver);
@@ -30,11 +30,11 @@ public class IngresoDeCoberturasPage extends PageObject{
 
     public void ingresarLimite(){
         waitForTextToAppear("Cobertura");
-        pageUtil.selectItem(campoLimite,"32.000.000");
+        commons.selectItem(campoLimite,"32.000.000");
     }
 
     public void ingresarDeducible(){
-        pageUtil.selectItem(campoDeducible,"0");
+        commons.selectItem(campoDeducible,"0");
     }
 
     public void cotizar(){

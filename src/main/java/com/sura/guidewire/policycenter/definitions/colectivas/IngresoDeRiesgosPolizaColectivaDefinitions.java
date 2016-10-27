@@ -28,28 +28,28 @@ public class IngresoDeRiesgosPolizaColectivaDefinitions {
         ingresoDeRiesgosPolizaColectivaSteps.clicEnAgregarRiesgo();
     }
 
-    @When("ingrese los datos para realizar la busqueda de la cuentas persona natural <consultaNombre> <consultaApellido>")
+    @When("ingrese los datos para realizar la busqueda de la cuenta persona natural <consultaNombre> <consultaApellido>")
     public void ingresarDatosParaBuscarPersonalNatural(@Named("consultaNombre") String consultaNombre,
                                                        @Named("consultaApellido") String consultaApellido){
         ingresoDeRiesgosPolizaColectivaSteps.ingresarDatosParaBuscarPersonalNatural(consultaNombre, consultaApellido);
     }
 
-    @When("ingrese los datos para realizar la busqueda de una cuentas por razon social <razonSocial>")
+    @When("ingrese los datos para realizar la busqueda de una cuenta por razon social <razonSocial>")
     public void ingresarDatosParaBuscarRazonSocial(@Named("razonSocial") String razonSocial){
         ingresoDeRiesgosPolizaColectivaSteps.ingresarDatosParaBuscarRazonSocial(razonSocial);
     }
 
-    @When("ingrese los datos para crear un contactos tipo persona natural $cuentaNueva")
+    @When("ingrese los datos para crear un contacto tipo persona natural $cuentaNueva")
     public void crearCuentaPersonaNatural(ExamplesTable cuentaNueva){
         ingresoDeRiesgosPolizaColectivaSteps.crearCuentaPersonaNatural(cuentaNueva);
     }
 
-    @When("seleccione la cuentas consultada para agregar al riesgo")
+    @When("seleccione la cuenta consultada para agregar al riesgo")
     public void seleccionarLaCuenta(){
         ingresoDeRiesgosPolizaColectivaSteps.seleccionarLaCuenta();
     }
 
-    @When("la cuentas fue creada y agregada satisfactoriamente como asegurado $asegurados")
+    @When("la cuenta fue creada y agregada satisfactoriamente como asegurado $asegurados")
     public void validarAseguradoAgregado(ExamplesTable asegurados){
         ingresoDeRiesgosPolizaColectivaSteps.validarAseguradoAgregado(asegurados);
     }

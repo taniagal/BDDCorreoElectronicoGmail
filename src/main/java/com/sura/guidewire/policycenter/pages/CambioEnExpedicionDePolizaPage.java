@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -29,7 +29,7 @@ public class CambioEnExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToDesktop-inputEl']")
     WebElementFacade campoIrAlEscritorio;
 
-    PageUtil pageUtil = new PageUtil(getDriver());
+    Commons commons = new Commons(getDriver());
 
     public CambioEnExpedicionDePolizaPage(WebDriver driver){
         super(driver);
@@ -43,7 +43,7 @@ public class CambioEnExpedicionDePolizaPage extends PageObject{
     public void aceptarExpedirPoliza() {
         botonAceptarMensaje.waitUntilVisible();
         botonAceptarMensaje.click();
-        pageUtil.waitUntil(1000);
+        commons.waitUntil(1000);
     }
 
     public void validarResumenDeLaPolizaExpedida(String infoCambio, String infoPoliza, String escritorio) {

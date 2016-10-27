@@ -1,13 +1,13 @@
 package com.sura.guidewire.policycenter.util.menu.superior.cuenta.panel.contactos;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import java.util.List;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class BusquedaContactoDelDirectorioPage extends PageUtil {
+public class BusquedaContactoDelDirectorioPage extends Commons {
 
     @FindBy(xpath = ".//input[contains(@id,'ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl')]")
     private WebElementFacade cboTipoContacto;

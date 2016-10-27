@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
@@ -42,7 +42,7 @@ public class ProcesoDeCancelacionPage extends PageObject {
         super(drive);
     }
 
-    PageUtil cm = new PageUtil(getDriver());
+    Commons cm = new Commons(getDriver());
     InicioCancelacionPage iniCancelacion = new InicioCancelacionPage(getDriver());
 
     public void iniciarProcesoCancelacion() {

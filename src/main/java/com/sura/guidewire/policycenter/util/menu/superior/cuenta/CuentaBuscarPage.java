@@ -1,9 +1,9 @@
 package com.sura.guidewire.policycenter.util.menu.superior.cuenta;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import org.openqa.selenium.WebDriver;
 
-public class CuentaBuscarPage extends PageUtil {
+public class CuentaBuscarPage extends Commons {
     public CuentaBuscarPage(WebDriver driver) {
         super(driver);
     }

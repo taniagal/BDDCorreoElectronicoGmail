@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -77,7 +77,7 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//img[@class='error_icon']")
     WebElementFacade iconoError;
     
-    PageUtil pageUtil = new PageUtil(getDriver());
+    Commons commons = new Commons(getDriver());
 
     public ExpedicionDePolizaPage(WebDriver driver){
         super(driver);
@@ -88,11 +88,11 @@ public class ExpedicionDePolizaPage extends PageObject{
         menuPoliza.click();
         waitForAnyTextToAppear("Cotización", "Buscar pólizas");
         waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
-        pageUtil.waitUntil(1500);
+        commons.waitUntil(1500);
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
         menuNumeroCotizacion.waitUntilPresent();
-        pageUtil.ingresarDato(menuNumeroCotizacion,cotizacion);
+        commons.ingresarDato(menuNumeroCotizacion,cotizacion);
         menuNumeroCotizacion.sendKeys(Keys.ENTER);
         waitForTextToAppear("Cotización");
         waitForTextToAppear(cotizacion);

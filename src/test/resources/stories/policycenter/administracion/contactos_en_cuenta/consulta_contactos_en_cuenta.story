@@ -43,7 +43,7 @@ And existe contactos asociados a la cuenta
 When busque la cuenta
 And desee visualizar los contactos asociados a la cuenta
 When filtre los contactos asociados a una cuenta por el tipo de persona <tipoPersona> en el combo con valor <combo>
-!--Then debo ver contactos asociados a esta cuentas que cumplan con el filtro <rol> en la columna <columna>
+!--Then debo ver contactos asociados a esta cuenta que cumplan con el filtro <rol> en la columna <columna>
 
 Examples:
 | numCuenta  | rolUsuario | tipoPersona | combo                | descripcion |

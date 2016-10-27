@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
@@ -32,7 +32,7 @@ public class DisponibilidadDetalleProductoPage extends PageObject {
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
 
-    PageUtil pageUtil = new PageUtil(getDriver());
+    Commons commons = new Commons(getDriver());
 
 
     public DisponibilidadDetalleProductoPage(WebDriver driver) {
@@ -56,7 +56,7 @@ public class DisponibilidadDetalleProductoPage extends PageObject {
 
     public void seleccionarAgentePorNombre(String nombreAgente) {
         waitFor(campoNombreAgente).waitUntilPresent();
-        pageUtil.waitUntil(3000);
+        commons.waitUntil(3000);
         campoNombreAgente.click();
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
         if (!listaNombresAgentesElement.isEmpty()) {

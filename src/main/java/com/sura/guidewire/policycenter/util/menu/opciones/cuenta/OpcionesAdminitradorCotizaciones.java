@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import com.sura.guidewire.policycenter.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 
 
-public class OpcionesAdminitradorCotizaciones extends PageUtil {
+public class OpcionesAdminitradorCotizaciones extends Commons {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
 
     Actions act = new Actions(getDriver());
@@ -144,7 +144,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void crearNuevaCotizacion() {
-        waitForTextToAppear("Cotizaciones de la cuentas", 1000);
+        waitForTextToAppear("Cotizaciones de la cuenta", 1000);
         btnNuevaCotizacion.click();
     }
 
@@ -164,7 +164,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void seleccionarFiltros(String cotizacion, String producto) {
-        waitForTextToAppear("Cotizaciones de la cuentas", 1000);
+        waitForTextToAppear("Cotizaciones de la cuenta", 1000);
         waitFor(txtCotizaciones).shouldBeVisible();
         txtCotizaciones.click();
         WebElementFacade cbxCotizacion = findBy(".//li[contains(.,'" + cotizacion + "')]");
@@ -209,7 +209,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     public void validarLabelsCotizaciones(Map<String, String> labelsCotizaciones) {
         String validacion = null;
         try {
-            waitForTextToAppear("Cotizaciones de la cuentas", 10000);
+            waitForTextToAppear("Cotizaciones de la cuenta", 10000);
             MatcherAssert.assertThat(lblCotizacionesCuenta.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("lblCotizaciones"))));
             MatcherAssert.assertThat(btnNuevaCotizacion.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("btnNuevaCotizacion"))));
             MatcherAssert.assertThat(colAcciones.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("acciones"))));

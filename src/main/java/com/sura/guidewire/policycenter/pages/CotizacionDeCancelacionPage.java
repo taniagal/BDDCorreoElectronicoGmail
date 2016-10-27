@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.pages.renovacion.ReglasRenovacionDosPage;
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.Commons;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
@@ -47,7 +47,7 @@ public class CotizacionDeCancelacionPage extends PageObject {
 
     InicioCancelacionPage inicioCancelacionPage;
     ReglasRenovacionDosPage reglasRenovacionDosPage;
-    PageUtil cm = new PageUtil(getDriver());
+    Commons cm = new Commons(getDriver());
 
     public CotizacionDeCancelacionPage(WebDriver driver) {
         super(driver);
