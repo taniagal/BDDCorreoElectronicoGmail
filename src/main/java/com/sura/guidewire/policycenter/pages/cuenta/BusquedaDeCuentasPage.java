@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 
-public class BusquedaDeCuentasPage extends PageObject {
+public class BusquedaDeCuentasPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:IDType-labelEl']")
     private WebElementFacade lblTipoDocumento;
@@ -108,7 +108,7 @@ public class BusquedaDeCuentasPage extends PageObject {
         actions.click(menuBuscar).build().perform();
         waitForTextToAppear("Buscar pólizas");
         waitFor(menuBuscarCuentas).waitUntilVisible();
-        PageUtil.waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         actions.click(menuBuscarCuentas).build().perform();
     }
 
@@ -126,7 +126,7 @@ public class BusquedaDeCuentasPage extends PageObject {
     private void limpiarFormulario() {
         waitFor(botonRestablecer).waitUntilVisible().waitUntilClickable();
         actions.click(botonRestablecer).build().perform();
-        PageUtil.waitUntil(2000);
+        PageUtil.waitUntil(WAIT_TIME_2000);
     }
 
     public void buscarCuentaPorIdentificacion(String tipoDocumento, String numeroDocumento) {
