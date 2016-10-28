@@ -72,7 +72,7 @@ public class ProcesoDeCancelacionPage extends PageUtil {
         btnRetirarTransaccion.click();
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAceptarAhora).waitUntilPresent();
         btnAceptarAhora.click();
-        cm.waitUntil(1000);
+        waitUntil(1000);
     }
 
     public void iniciaProgramacionDeCancelacion() {
