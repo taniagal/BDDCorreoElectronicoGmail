@@ -1,8 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.util.PageUtil;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -13,6 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -79,6 +80,7 @@ public class ExpedicionDePolizaPage extends PageObject{
     
     PageUtil pageUtil = new PageUtil(getDriver());
 
+
     public ExpedicionDePolizaPage(WebDriver driver){
         super(driver);
     }
@@ -86,7 +88,8 @@ public class ExpedicionDePolizaPage extends PageObject{
     public void irABuscarCotizacion(String cotizacion){
         waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
         menuPoliza.click();
-        waitForAnyTextToAppear("Cotización", "Buscar pólizas");
+        pageUtil.waitUntil(3500);
+       // waitForAnyTextToAppear("Cotización", "Buscar pólizas");
         waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
         pageUtil.waitUntil(1500);
         menuPoliza.click();
