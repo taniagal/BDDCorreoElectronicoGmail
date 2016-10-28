@@ -86,6 +86,7 @@ public class CotizacionDeCancelacionPage extends PageObject {
         btnRetirarTransaccion.click();
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAceptarRetirarTransaccion).waitUntilClickable();
         btnAceptarRetirarTransaccion.click();
+        cm.waitUntil(1000);
     }
 
 

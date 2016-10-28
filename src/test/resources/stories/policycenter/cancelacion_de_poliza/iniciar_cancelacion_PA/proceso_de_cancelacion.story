@@ -25,7 +25,6 @@ Examples:
 |poliza       |mensaje                                          |
 |TEST_22221241|Esta oferta necesita de aprobación del asegurador|
 
-
 Scenario: programar cancelacion
 Given que existe una <poliza> y esta dentro de la vigencia
 When necesito iniciar la cancelacion
@@ -41,12 +40,12 @@ Examples:
 
 Scenario: validar retroactividad con autorizacion
 Meta: @manual
-Given que existe una <poliza> y esta dentro de la vigencia
-When necesito iniciar la cancelacion
+Given existe una <poliza> y esta dentro de la vigencia
+When necesito iniciar cancelacion
 And se ingrese la fecha con retroactividad menor a la politica dentro del periodo
-And se empiece la cancelacion
-Then se debe mostrar un <mensaje> de advertencia en el formulario
-And debe permitir realizar la cancelacion
+And se empiece cancelacion
+Then debe mostrar un <mensaje> de advertencia en el formulario
+And debe permitir realizar cancelacion
 And debe generar una autorizacion
 
 Examples:

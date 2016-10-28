@@ -74,6 +74,7 @@ public class ProcesoDeCancelacionPage extends PageObject {
         btnRetirarTransaccion.click();
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAceptarAhora).waitUntilPresent();
         btnAceptarAhora.click();
+        cm.waitUntil(1000);
     }
 
     public void iniciaProgramacionDeCancelacion() {
