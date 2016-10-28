@@ -75,7 +75,7 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public void iniciar_cancelacion_de_poliza() {
-        waitFor(2).seconds();
+        waitFor(3).seconds();
         String xpathBttonCancelacion = "//a[contains(.,'Iniciar cancelación')]";
         getDriver().findElement(By.xpath(xpathBttonCancelacion)).click();
     }
