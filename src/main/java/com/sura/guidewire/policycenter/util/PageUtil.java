@@ -25,6 +25,7 @@ public class PageUtil extends PageObject {
     private final Actions actions = new Actions(getDriver());
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
+    protected static final int WAIT_TIME_5000 = 5000;
     protected static final int WAIT_TIME_3000 = 3000;
     protected static final int WAIT_TIME_2500 = 2500;
     protected static final int WAIT_TIME_2000 = 2000;

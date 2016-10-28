@@ -10,7 +10,8 @@ import org.hamcrest.core.StringContains;
 import java.util.List;
 
 public class AssertUtil {
-    private AssertUtil(){}
+    private AssertUtil(){
+    }
 
     public static Matcher<? super List<String>> hasItemContainsString(String expectedValue) {
         return new HasItemContainsString(expectedValue);
