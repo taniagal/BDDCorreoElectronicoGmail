@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import net.serenitybdd.core.pages.PageObject;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -9,7 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class SeleccionDeOfertasPage extends PageObject {
+public class SeleccionDeOfertasPage extends PageUtil {
 
     @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     private WebElementFacade txtNumeroCuenta;
@@ -33,7 +33,7 @@ public class SeleccionDeOfertasPage extends PageObject {
 
     public void seleccionarLineaPA() {
         btnLineaAutosPersonal.click();
-        waitABit(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void validarVisibilidadMenu() {

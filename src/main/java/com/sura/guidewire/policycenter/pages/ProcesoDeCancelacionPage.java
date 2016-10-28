@@ -3,13 +3,12 @@ package com.sura.guidewire.policycenter.pages;
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class ProcesoDeCancelacionPage extends PageObject {
+public class ProcesoDeCancelacionPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:NewCancellation']")
     WebElementFacade btnIniciaCancelacion;
@@ -41,12 +40,11 @@ public class ProcesoDeCancelacionPage extends PageObject {
     public ProcesoDeCancelacionPage(WebDriver drive) {
         super(drive);
     }
-
-    PageUtil cm = new PageUtil(getDriver());
+    
     InicioCancelacionPage iniCancelacion = new InicioCancelacionPage(getDriver());
 
     public void iniciarProcesoCancelacion() {
-        cm.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         btnIniciaCancelacion.click();
     }
 
@@ -64,7 +62,7 @@ public class ProcesoDeCancelacionPage extends PageObject {
     public void validaAutorizacionEnFormulario() {
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnDetalle).waitUntilClickable();
         btnDetalle.click();
-        cm.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         MatcherAssert.assertThat("Autorizacion no presente, verificar", linkAutorizacion.isVisible());
     }
 

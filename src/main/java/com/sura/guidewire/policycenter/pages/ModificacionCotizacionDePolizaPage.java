@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -24,7 +24,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
 
 
-public class ModificacionCotizacionDePolizaPage extends PageObject {
+public class ModificacionCotizacionDePolizaPage extends PageUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionCotizacionDePolizaPage.class);
 
@@ -215,7 +215,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
 
         waitFor(tablaCoberturas).shouldBeVisible();
         List<WebElement> allRows = tablaCoberturas.findElements(By.tagName("tr"));
-        waitABit(1000);
+        waitUntil(WAIT_TIME_1000);
         String validacion = null;
         Map<String, String> coberturas = new HashMap<>();
         Map<String, String> terminoCoberturas = new HashMap<>();

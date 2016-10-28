@@ -46,11 +46,11 @@ public class CoaseguroPage extends PageUtil {
     }
 
     public void validarCampos() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
         linkAgregarCoaseguro.click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
         campoTxtDastosAdministrativos.waitUntilPresent();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         radioBotonLider.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         try{
@@ -90,7 +90,7 @@ public class CoaseguroPage extends PageUtil {
                 act.click().build().perform();
                 act.sendKeys(aseguradora.getNombre()).build().perform();
                 act.sendKeys(Keys.TAB).build().perform();
-                waitUntil(500);
+                waitUntil(WAIT_TIME_500);
                 act.sendKeys(aseguradora.getParticipacion()).build().perform();
             }
             i++;
@@ -100,7 +100,7 @@ public class CoaseguroPage extends PageUtil {
 
 
     public void verificarPorcentajeParticipacion(){
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         MatcherAssert.assertThat("El total asegurado no es del 100%", pieDeTabla.getText().contains("100"));
     }
 
@@ -111,7 +111,7 @@ public class CoaseguroPage extends PageUtil {
 
 
     public void verificarCoaseguro() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
         MatcherAssert.assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
 

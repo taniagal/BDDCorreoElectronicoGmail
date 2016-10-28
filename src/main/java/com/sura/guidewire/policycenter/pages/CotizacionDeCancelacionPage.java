@@ -4,13 +4,12 @@ import com.sura.guidewire.policycenter.pages.renovacion.ReglasRenovacionDosPage;
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class CotizacionDeCancelacionPage extends PageObject {
+public class CotizacionDeCancelacionPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:NewCancellation-btnInnerEl']")
     WebElementFacade btnIniciarCancelacion;
@@ -47,7 +46,6 @@ public class CotizacionDeCancelacionPage extends PageObject {
 
     InicioCancelacionPage inicioCancelacionPage;
     ReglasRenovacionDosPage reglasRenovacionDosPage;
-    PageUtil cm = new PageUtil(getDriver());
 
     public CotizacionDeCancelacionPage(WebDriver driver) {
         super(driver);
@@ -56,8 +54,8 @@ public class CotizacionDeCancelacionPage extends PageObject {
 
 
     public void ingresaDatosFormulario() {
-        cm.selectItem(inicioCancelacionPage.txtMotivo, "Por pérdida total");
-        cm.waitUntil(1000);
+        selectItem(inicioCancelacionPage.txtMotivo, "Por pérdida total");
+        waitUntil(WAIT_TIME_1000);
         inicioCancelacionPage.txtDescripMotivo.click();
         inicioCancelacionPage.txtDescripMotivo.sendKeys("Motivo");
         btnIniciarCancelacion.click();

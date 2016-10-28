@@ -138,7 +138,7 @@ public class NuevaPolizaPage extends PageUtil {
     }
 
     public void seleccionarElTipoDePoliza(String tipoPoliza) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         if ("Individual".equals(tipoPoliza)) {
             if ("0% 0%".equals($(radioBotonIndividual).getCssValue("background-position"))) {
                 waitUntil(1500);

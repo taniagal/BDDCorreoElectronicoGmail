@@ -60,7 +60,7 @@ public class InspeccionVehiculoPage extends PageUtil {
 
     public void chekear0km() {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(radioButtonCeroKmNo).click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void validarVigenciaPlaca(String placa) {
@@ -91,7 +91,7 @@ public class InspeccionVehiculoPage extends PageUtil {
     }
 
     public void validarValorAsegurado(String valorAsegurado) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         String validacion = null;
         try{
             MatcherAssert.assertThat(campoValorAsegurado.getTextValue(),Is.is(Matchers.equalTo(valorAsegurado)));
@@ -104,7 +104,7 @@ public class InspeccionVehiculoPage extends PageUtil {
     public void expedirPoliza() {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonExpedirPoliza).shouldBeVisible();
         botonExpedirPoliza.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         act.sendKeys(Keys.ENTER).build().perform();
         waitUntil(3000);
     }

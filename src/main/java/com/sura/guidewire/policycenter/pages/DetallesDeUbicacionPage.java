@@ -79,7 +79,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
         waitForTextToAppear(nomProducto);
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         int i = 0;
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
@@ -122,7 +122,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
         comboBoxOrganizacion.waitUntilPresent();
         selectItem(comboBoxOrganizacion,dato.get("organizacion"));
         waitForComboValue(comboBoxOrganizacionW,dato.get("organizacion"));
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         selectItem(comboBoxCanal,dato.get("canal"));
         waitForComboValue(comboBoxCanal,dato.get("canal"));
         seleccionarProducto(dato.get("producto"));

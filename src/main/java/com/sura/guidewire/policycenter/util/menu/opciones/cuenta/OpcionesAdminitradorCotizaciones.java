@@ -182,7 +182,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
 
     public void mostrarInfoCotizacion(String producto) {
         waitForTextToAppear(producto, 2500);
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         String tProductos = "Todos Los Productos";
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
@@ -297,10 +297,10 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void mostrarTodosLosProductos(String producto) {
-        waitABit(1000);
+        waitABit(WAIT_TIME_1000);
         txtProductos.click();
         WebElementFacade cbxProducto = findBy(".//li[contains(.,'" + producto + "')]");
-        waitABit(1000);
+        waitABit(WAIT_TIME_1000);
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
         waitABit(1500);

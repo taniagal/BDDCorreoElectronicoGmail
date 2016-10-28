@@ -55,7 +55,7 @@ public class ModificacionVehiculoPage extends PageUtil {
         MatcherAssert.assertThat("Error en el valor de la marca",campoMarca.containsText(marca));
         WebElementFacade campoLinea = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']");
         MatcherAssert.assertThat("Error en el valor de la linea",campoLinea.containsText(linea));
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void registrarZonaCirculacion(String ciudadCirculacion) {

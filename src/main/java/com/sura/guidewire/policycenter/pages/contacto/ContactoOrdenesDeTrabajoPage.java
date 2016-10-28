@@ -123,7 +123,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     }
 
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         waitFor(this.filtroProducto).waitUntilPresent();
         waitUntil(2000);
         this.filtroProducto.click();

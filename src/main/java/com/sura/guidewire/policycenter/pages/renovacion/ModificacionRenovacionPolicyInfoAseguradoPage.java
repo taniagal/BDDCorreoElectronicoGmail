@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import com.sura.guidewire.policycenter.util.PageUtil;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -12,7 +11,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 
-public class ModificacionRenovacionPolicyInfoAseguradoPage extends PageObject{
+public class ModificacionRenovacionPolicyInfoAseguradoPage extends PageUtil{
 
     public ModificacionRenovacionPolicyInfoAseguradoPage(WebDriver driver){
         super(driver);
@@ -85,7 +84,7 @@ public class ModificacionRenovacionPolicyInfoAseguradoPage extends PageObject{
     public void irAAsegurados(){
         WebElementFacade itemAsegurados = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PADrivers']/div/span");
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(itemAsegurados).click();
-        PageUtil.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         itemAsegurados.click();
         WebElementFacade labelAsegurados = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelAsegurados).shouldBeVisible();

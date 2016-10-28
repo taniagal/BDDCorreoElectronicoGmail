@@ -263,13 +263,13 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         $(tipoPlazoPoliza).type(tipoPlazo);
         waitFor(itemTipoPlazo).shouldBeVisible();
         itemTipoPlazo.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         fechaVigenciaPoliza.click();
         $(fechaVigenciaPoliza).type(fechaInicioVigencia);
         waitFor(fechaExpiracionPoliza).shouldBeVisible();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         fechaExpiracionPoliza.click();
     }
 
@@ -324,7 +324,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         botonAseguradoSecundario.click();
         waitFor(itemPersonaDelDirectorio).shouldBeVisible();
         itemPersonaDelDirectorio.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         waitFor(botonTipoDocumento).shouldBeVisible();
         botonTipoDocumento.click();
         waitFor(textoTipoDocumento).shouldBeVisible();
@@ -408,7 +408,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelNumeroCuotas).shouldBePresent();
         withTimeoutOf(30,TimeUnit.SECONDS).waitFor(textoNumeroCuotas).clear();
         textoNumeroCuotas.typeAndTab("11");
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void validarRetroactividadPoliza(String mensaje) {
@@ -435,7 +435,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         botonTipoPlazo.click();
         waitFor(tipoPlazoPoliza).shouldBeVisible();
         $(tipoPlazoPoliza).typeAndTab(tipoPlazo);
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
         fechaVigenciaPoliza.click();
         $(fechaVigenciaPoliza).type(fechaInicioVigencia);
@@ -447,11 +447,11 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     public void pasarASiguienteOpcion() {
         waitFor(botonSiguiente).shouldBeVisible();
         botonSiguiente.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void identificarTipoYNumeroIdentificacion(String tipoDocumento, String numeroDocumento) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         String validacion = null;
         WebElementFacade campoTipoDocumento = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-inputEl']");
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
@@ -463,11 +463,11 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         } catch (Exception e) {
             LOGGER.error(validacion, e);
         }
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void validarMensajeBloqueoPEP(String mensaje) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         botonSiguiente.click();
@@ -475,11 +475,11 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     }
 
     public void permitirContinuarCotizacionAsegurados() {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         WebElementFacade labelTituloAsegurados = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
         waitFor(labelTituloAsegurados).shouldBePresent();
         MatcherAssert.assertThat(labelTituloAsegurados.getText(), Is.is(Matchers.equalTo("Asegurados")));
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void irAInformacionDePoliza() {

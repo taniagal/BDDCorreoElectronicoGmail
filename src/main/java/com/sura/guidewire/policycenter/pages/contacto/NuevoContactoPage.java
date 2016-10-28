@@ -102,7 +102,7 @@ public class NuevoContactoPage extends PageUtil {
     private void actualizar() {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void ingresarTelefonoFijo(String tipoTelefono, String numeroTelefono) {
@@ -114,12 +114,12 @@ public class NuevoContactoPage extends PageUtil {
     private void ingresarTelefono(String tipoTelefono, String numeroTelefono) {
         if ("Trabajo".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            waitUntil(1000);
+            waitUntil(WAIT_TIME_1000);
             this.tipoTelefono.click();
             this.telefonoTrabajo.type(numeroTelefono);
         } else if ("Vivienda".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            waitUntil(1000);
+            waitUntil(WAIT_TIME_1000);
             this.tipoTelefono.click();
             this.telefonoResidencia.type(numeroTelefono);
         }
@@ -146,7 +146,7 @@ public class NuevoContactoPage extends PageUtil {
     public void verificarContactoExistente() {
         botonActualizar.waitUntilClickable();
         botonActualizar.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         MatcherAssert.assertThat(this.contactoExistente.getText().toString(), Matchers.containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 

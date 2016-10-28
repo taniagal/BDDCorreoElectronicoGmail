@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -90,6 +89,11 @@ public class BusquedaContactoPage extends PageUtil {
     private static final String BUSQUEDADECONTACTOS = "Búsqueda de contactos";
     private static final String LONGITUD_VALIDA = "Longitud válida";
     private static final String XPATH_LI_CONTAINS = ".//li[contains(.,'";
+    protected static final int CONSTANTE_5 = 5;
+    protected static final int CONSTANTE_4 = 4;
+    protected static final int CONSTANTE_3 = 3;
+    protected static final int CONSTANTE_2 = 2;
+
 
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
@@ -151,7 +155,7 @@ public class BusquedaContactoPage extends PageUtil {
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (cells.get(3).getText().equals(filtro1) && cells.get(5).getText().equals(filtro2)) {
+            if (cells.get(CONSTANTE_3).getText().equals(filtro1) && cells.get(CONSTANTE_5).getText().equals(filtro2)) {
                 valido = "Información persona natural válida";
             }
         }
@@ -249,7 +253,7 @@ public class BusquedaContactoPage extends PageUtil {
     @SuppressWarnings("SameParameterValue")
     public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         String valido = "Longitud no válida";
-        if (primerNombre.length() < 2 || segundoNombre.length() < 2 || primerApellido.length() < 2 || segundoApellido.length() < 2) {
+        if (primerNombre.length() < CONSTANTE_2 || segundoNombre.length() < CONSTANTE_2 || primerApellido.length() < CONSTANTE_2 || segundoApellido.length() < CONSTANTE_2) {
             valido = LONGITUD_VALIDA;
         }
         MatcherAssert.assertThat(LONGITUD_VALIDA, Is.is(Matchers.equalTo(valido)));
@@ -257,7 +261,7 @@ public class BusquedaContactoPage extends PageUtil {
 
     public void validarLongitudPersonaJuridica(String razonSocial, String nombreComercial) {
         String valido = "Longitud no válida";
-        if (razonSocial.length() < 4 || nombreComercial.length() < 4) {
+        if (razonSocial.length() < CONSTANTE_4 || nombreComercial.length() < CONSTANTE_4) {
             valido = LONGITUD_VALIDA;
         }
         MatcherAssert.assertThat(LONGITUD_VALIDA, Is.is(Matchers.equalTo(valido)));
@@ -299,7 +303,7 @@ public class BusquedaContactoPage extends PageUtil {
         txtTipoDocDirectorioCotizacion.clear();
         txtTipoDocDirectorioCotizacion.sendKeys(tipoId);
         txtTipoDocDirectorioCotizacion.sendKeys(Keys.ENTER);
-        PageUtil.waitUntil(WAIT_TIME_2000);
+        waitUntil(WAIT_TIME_2000);
         txtNumDocDirectorioCotizacion.sendKeys(numeroId);
         btnBuscarDirectorioCotizacion.click();
         waitForWithRefresh();

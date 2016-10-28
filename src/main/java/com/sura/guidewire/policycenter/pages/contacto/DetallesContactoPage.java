@@ -157,7 +157,7 @@ public class  DetallesContactoPage extends PageUtil {
         botonEditarContacto.waitUntilVisible();
         MatcherAssert.assertThat("El boton de editar no está presente en el DOM",botonEditarContacto.isPresent());
         botonEditarContacto.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
 
@@ -453,7 +453,7 @@ public class  DetallesContactoPage extends PageUtil {
      * AGREGAR DIRECCION A CONTACTO
      */
     public void validarDatosPantalla() {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelPais.isPresent())
             notPresent.append(" pais,");

@@ -60,7 +60,7 @@ public class CoberturaGlobalPage extends PageUtil {
         botonAgregarCoberturaGeneral.waitUntilPresent().click();
         waitFor(campoTxtDescripcion).sendKeys(descripcion);
         selectItem(comboBoxTipoCobertura, tipoCobertura);
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
     public void agregarCoberturasGlobales(ExamplesTable datosCobertura) {
         Map<String, String> dato = datosCobertura.getRow(0);
@@ -110,7 +110,7 @@ public class CoberturaGlobalPage extends PageUtil {
         selectItem(comboBoxCoberturas, dato.get("nombre_cobertura"));
         waitUntil(2500);
         botonAceptar.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void verificarMensajeError(String mensaje) {

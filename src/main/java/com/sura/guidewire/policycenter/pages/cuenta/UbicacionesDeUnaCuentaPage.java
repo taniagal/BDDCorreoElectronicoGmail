@@ -64,7 +64,7 @@ public class UbicacionesDeUnaCuentaPage extends PageUtil {
     }
 
     public void agregaDireccion(String departamento, String ciudad, String tipoDireccion){
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         selectItem(comboBoxDepartamento,departamento);
         waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);

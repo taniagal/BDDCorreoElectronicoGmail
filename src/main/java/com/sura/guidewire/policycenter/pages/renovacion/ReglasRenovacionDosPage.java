@@ -4,13 +4,12 @@ package com.sura.guidewire.policycenter.pages.renovacion;
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class ReglasRenovacionDosPage extends PageObject {
+public class ReglasRenovacionDosPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
     WebElementFacade btnSiguinete;
@@ -37,7 +36,6 @@ public class ReglasRenovacionDosPage extends PageObject {
     @FindBy(id = "RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs")
     WebElementFacade lblMensajes;
 
-    PageUtil cm = new PageUtil(getDriver());
 
     public ReglasRenovacionDosPage(WebDriver driver) {
         super(driver);
@@ -47,12 +45,12 @@ public class ReglasRenovacionDosPage extends PageObject {
     *El metodo contiene los waitUntil debido que espera un refresh en la pantalla para la aparicion de un botón
     */
     public void clicHastaVehiculo() {
-        cm.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnSiguinete).waitUntilClickable();
         btnSiguinete.click();
-        cm.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblAsegurado).waitUntilPresent();
-        cm.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         btnSiguinete.click();
     }
 
@@ -65,7 +63,7 @@ public class ReglasRenovacionDosPage extends PageObject {
     }
 
     public void ingresaValorMayorVeintePorciento() {
-        cm.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         int valorDeLabel = Integer.parseInt(txtValorAsegurado.getValue().substring(0, 8));
         int valorTotalAccesorio = 1 + logicaExtraeOSumaPorcentaje(valorDeLabel, 0.2);
         txtvalorAccesorios.clear();
@@ -90,7 +88,7 @@ public class ReglasRenovacionDosPage extends PageObject {
 
     public void validacionMensajeValores(String mensaje){
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensajes).waitUntilPresent();
-        cm.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         MatcherAssert.assertThat("No aparecio mensaje de alerta", lblMensajes.getText().contains(mensaje));
     }
 

@@ -642,7 +642,7 @@ public class Navegacion extends PageUtil {
     // Navegacion menu Acciones Escritorio
     public EscritorioNuevoEnvioPage irAEscritorioNuevoEnvio() {
         menuEscritorio.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         gw.deployMenu(mnuAccionesEscritorio);
         act.moveToElement(mnuAccionNuevoEnvio).release(mnuAccionNuevoEnvio).click().build().perform();
         return new EscritorioNuevoEnvioPage(getDriver());
@@ -1181,14 +1181,14 @@ public class Navegacion extends PageUtil {
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(mnuInformacionDePoliza).shouldBePresent();
         mnuInformacionDePoliza.click();
         vehiculoPage.botonVolver.waitUntilPresent();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         return new OpcionesInformacionPolizaPage(getDriver());
     }
 
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
         waitForTextToAppear("Cotizaciones de la cuenta");
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         mnuAdmCotizaciones.waitUntilVisible().waitUntilClickable().click();
         waitUntil(800);
         return new OpcionesAdminitradorCotizaciones(getDriver());

@@ -17,7 +17,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class InicioCancelacionPage extends PageObject {
+public class InicioCancelacionPage extends PageUtil{
 
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")
     WebElementFacade btnAcciones;
@@ -41,9 +41,6 @@ public class InicioCancelacionPage extends PageObject {
     WebElementFacade txtFechaVigenciaCancelacion;
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:ReasonDescription-inputEl']")
     WebElementFacade txtDescripMotivo;
-
-    PageUtil cm = new PageUtil(getDriver());
-
     public InicioCancelacionPage(WebDriver driver) {
         super(driver);
     }
@@ -55,8 +52,8 @@ public class InicioCancelacionPage extends PageObject {
     }
 
     public void ingresarFechaRetroactiva() {
-        cm.selectItem(txtMotivo, "Financiación cancelación por");
-        cm.waitUntil(1000);
+        selectItem(txtMotivo, "Financiación cancelación por");
+        waitUntil(WAIT_TIME_1000);
         String fecha = calculaRetroactividad31Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
         txtFechaVigenciaCancelacion.click();
@@ -67,8 +64,8 @@ public class InicioCancelacionPage extends PageObject {
     public void ingresarFechaEmisionAnticipada() {
         withTimeoutOf(30, TimeUnit.SECONDS).waitFor(txtMotivo).waitUntilClickable();
         String cadenaAux = "Financiación cancelación por";
-        cm.selectItem(txtMotivo, cadenaAux);
-        cm.waitUntil(1000);
+        selectItem(txtMotivo, cadenaAux);
+        waitUntil(WAIT_TIME_1000);
         String fecha = calculaEmisionAnticipada61Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
         txtFechaVigenciaCancelacion.click();
@@ -110,7 +107,7 @@ public class InicioCancelacionPage extends PageObject {
     }
 
     public void validaListaMotivoDiferenteBancolombia(ExamplesTable listaMotivo) throws Exception {
-        cm.waitUntil(800);
+        waitUntil(800);
         txtLista.click();
         this.validarDatosDeLaLista(listaMotivo);
         btnCancelarTransaccion.click();
