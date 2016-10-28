@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 
 import java.util.List;
 import java.util.Map;
@@ -166,7 +166,7 @@ public class BusquedaContactoPage extends PageObject {
             WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoDoc + "')]");
             waitForTextToAppear(tipoDoc);
             cbxTipoDoc.click();
-            Commons.waitUntil(2000);
+            PageUtil.waitUntil(2000);
             divNombre.waitUntilVisible();
             txtNumDoc.type(numDoc);
             botonBuscar.click();
@@ -186,7 +186,7 @@ public class BusquedaContactoPage extends PageObject {
         WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoDoc + "')]");
         waitForTextToAppear(tipoDoc);
         cbxTipoDoc.click();
-        Commons.waitUntil(1500);
+        PageUtil.waitUntil(1500);
         if (!"<ninguno>".equals(tipoDoc)) {
             String nombreElemento = divNombre.getText();
             waitForTextToAppear(nombreElemento);
@@ -264,7 +264,7 @@ public class BusquedaContactoPage extends PageObject {
     }
 
     public void validarLabelsPersonaNatural(Map<String, String> labelsContacto) {
-        Commons.waitUntil(2000);
+        PageUtil.waitUntil(2000);
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblPrimNombre.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("priNombre"))));
@@ -278,7 +278,7 @@ public class BusquedaContactoPage extends PageObject {
     }
 
     public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto) {
-        Commons.waitUntil(2000);
+        PageUtil.waitUntil(2000);
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblNomComercial.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("nomComercial"))));
@@ -299,7 +299,7 @@ public class BusquedaContactoPage extends PageObject {
         txtTipoDocDirectorioCotizacion.clear();
         txtTipoDocDirectorioCotizacion.sendKeys(tipoId);
         txtTipoDocDirectorioCotizacion.sendKeys(Keys.ENTER);
-        Commons.waitUntil(2000);
+        PageUtil.waitUntil(2000);
         txtNumDocDirectorioCotizacion.sendKeys(numeroId);
         btnBuscarDirectorioCotizacion.click();
         waitForWithRefresh();

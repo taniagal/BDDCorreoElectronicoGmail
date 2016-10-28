@@ -1,8 +1,7 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -14,7 +13,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class RenovacionDeseoFinanciacionPaPage extends Commons{
+public class RenovacionDeseoFinanciacionPaPage extends PageUtil {
 
     Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")

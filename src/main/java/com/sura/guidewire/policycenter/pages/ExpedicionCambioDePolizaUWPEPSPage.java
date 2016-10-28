@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
@@ -45,7 +45,7 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends PageObject{
     public ExpedicionCambioDePolizaUWPEPSPage(WebDriver driver){
         super(driver);
     }
-    Commons cm = new Commons(getDriver());
+    PageUtil cm = new PageUtil(getDriver());
 
 
 

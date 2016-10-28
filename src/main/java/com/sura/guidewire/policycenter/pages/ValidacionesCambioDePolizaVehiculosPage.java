@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -25,13 +25,13 @@ public class ValidacionesCambioDePolizaVehiculosPage extends PageObject{
 
     public void emitirPoliza(){
         withTimeoutOf(22, TimeUnit.SECONDS).waitFor(botonEmitirPoliza).shouldBePresent();
-        Commons commons = new Commons(getDriver());
-        commons.waitUntil(3000);
+        PageUtil pageUtil = new PageUtil(getDriver());
+        pageUtil.waitUntil(3000);
         botonEmitirPoliza.click();
         waitForTextToAppear("¿Está seguro de que desea expedir este cambio de póliza?");
-        commons.waitUntil(1000);
+        pageUtil.waitUntil(1000);
         act.sendKeys(Keys.ENTER).build().perform();
-        commons.waitUntil(1500);
+        pageUtil.waitUntil(1500);
     }
 
     public void validarMensaje(String mensaje){

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.GwNavegacionUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class ContactosAsociadosACuentasPage extends Commons {
+public class ContactosAsociadosACuentasPage extends PageUtil {
 
     private static final String ASSERTMENUCREARNUEVOCONTACTO = "Elementos del menú encontrados";
     @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Contacts']/div")

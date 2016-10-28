@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.poliza;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
-public class InicioRenovacionPolizaPaPage extends Commons {
+public class InicioRenovacionPolizaPaPage extends PageUtil {
 
 
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
@@ -78,7 +78,7 @@ public class InicioRenovacionPolizaPaPage extends Commons {
     WebElementFacade btnPoliza;
 
 
-    Commons commons = new Commons(getDriver());
+    PageUtil pageUtil = new PageUtil(getDriver());
 
     public InicioRenovacionPolizaPaPage(WebDriver driver) {
         super(driver);
@@ -93,7 +93,7 @@ public class InicioRenovacionPolizaPaPage extends Commons {
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
         menuNumeropoliza.waitUntilPresent();
-        commons.ingresarDato(menuNumeropoliza, cotizacion);
+        pageUtil.ingresarDato(menuNumeropoliza, cotizacion);
         menuNumeropoliza.sendKeys(Keys.ENTER);
         waitForTextToAppear("Cotización");
         waitForTextToAppear(cotizacion);
