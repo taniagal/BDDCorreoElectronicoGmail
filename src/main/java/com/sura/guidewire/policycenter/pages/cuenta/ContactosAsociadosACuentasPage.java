@@ -109,7 +109,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     public void selecionarContacto(String posicion) {
         List<WebElementFacade> contactos = getListaContactos();
         contactos.get(Integer.parseInt(posicion)).click();
-        waitABit(1000);
+        waitABit(WAIT_TIME_1000);
     }
 
     public void seleccionarTabDetalleContacto() {
@@ -164,13 +164,13 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     public void verificarRolesFuncionesNoEsNulo() {
         List<WebElementFacade> rolesFunciones = getListaRolesFunciones();
         MatcherAssert.assertThat("El contacto debe tener roles o funciones asignados", !rolesFunciones.isEmpty());
-        waitABit(1000);
+        waitABit(WAIT_TIME_1000);
     }
 
     public void verificarDireccioneNoEsNulo() {
         List<WebElementFacade> direcciones = getListaDirecciones();
         MatcherAssert.assertThat("El contacto debe tener direcciones asignados", !direcciones.isEmpty());
-        waitABit(1000);
+        waitABit(WAIT_TIME_1000);
     }
 
     public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
@@ -212,7 +212,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     }
 
     public void ElimnarContactoAsociado(String nombreContacto) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         List<WebElementFacade> checkBoxes = withTimeoutOf(1, TimeUnit.SECONDS)
                 .findAll("//img[contains(@class,'x-grid-checkcolumn')]");
         int cont = 0;

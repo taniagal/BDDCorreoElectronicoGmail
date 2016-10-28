@@ -18,14 +18,6 @@ public class BuscarCuentasPage extends PageUtil {
         super(driver);
     }
 
-    public void navegacionBuscarCuenta(String numCuenta) {
-        lblCuenta.clear();
-        lblCuenta.sendKeys(numCuenta);
-        btnBuscaCuenta.click();
-        waitABit(1000);
-        linkCuenta.click();
-    }
-
 }
 
 

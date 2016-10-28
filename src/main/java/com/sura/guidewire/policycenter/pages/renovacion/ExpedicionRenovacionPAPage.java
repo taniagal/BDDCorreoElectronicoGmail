@@ -47,7 +47,7 @@ public class ExpedicionRenovacionPAPage extends PageUtil {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mensajeAdvertenciaRenovacion).shouldBeVisible();
         MatcherAssert.assertThat(mensajeAdvertenciaRenovacion.getText(), Is.is(Matchers.equalTo(mensajeAdvertencia.get("mensaje"))));
         act.sendKeys(Keys.TAB).build().perform();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         act.sendKeys(Keys.ENTER).build().perform();
         waitForAbsenceOf(".//span/div/table/tbody/tr/td[2]/div");
     }

@@ -168,7 +168,7 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
         String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto(producto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = findBy(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         botonElegirProducto.click();
     }
 
@@ -250,7 +250,7 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
     }
 
     public void validarFechaFinDeVigenciaCambiada(int aniosFinVigencia) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         String nuevaFechaFin = fechaInicioVigencia.getValue();
         Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 10)) + aniosFinVigencia;
         String fechaFinVigencia = nuevaFechaFin.replace(nuevaFechaFin.substring(6, 10), anioVigenciaProducto.toString());
@@ -282,7 +282,7 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
         listaAseguradora.click();
         ingresarDato(campoAseguradora, "ALLIANZ SEGUROS S.A.");
         Actions actions = new Actions(getDriver());
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         actions.sendKeys(Keys.TAB).build().perform();
         actions.sendKeys(Keys.TAB).build().perform();
     }

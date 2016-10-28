@@ -163,7 +163,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void  seleccionarProducto(String nomProducto) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         String xpathBotonElegirProducto = BTNELEGIRPRODUCTO + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();

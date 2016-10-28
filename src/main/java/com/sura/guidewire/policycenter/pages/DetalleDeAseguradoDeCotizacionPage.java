@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -17,11 +18,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import static com.sura.guidewire.policycenter.util.PageUtil.waitUntil;
 
-
-public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
-
+public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
     Actions acciones = new Actions(getDriver());
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']/div")
@@ -199,12 +197,12 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageObject{
     }
 
     public void validarContinuacionDeCotizacion() {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBePresent();
         botonSiguiente.click();
         WebElementFacade labelTituloVehiculos = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
         withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).shouldBePresent();
         MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 }

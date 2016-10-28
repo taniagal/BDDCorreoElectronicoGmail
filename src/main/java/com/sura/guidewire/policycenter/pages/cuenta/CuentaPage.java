@@ -121,7 +121,7 @@ public class CuentaPage extends PageUtil {
 
     public void actualizar(){
         botonActualizar.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void buscarPersona(String nombre, String persona){
@@ -135,7 +135,7 @@ public class CuentaPage extends PageUtil {
             botonCrearCuentaNueva.click();
             botonNuevaCuentaPersonal.click();
         }
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public  void verificarMensaje(String mensaje){

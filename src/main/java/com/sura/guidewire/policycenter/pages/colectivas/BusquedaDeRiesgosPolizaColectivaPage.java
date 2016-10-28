@@ -4,7 +4,6 @@ package com.sura.guidewire.policycenter.pages.colectivas;
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
@@ -35,7 +34,7 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageUtil {
 
     private List<WebElementFacade> getListaPoliza() {
         List<WebElementFacade> numerosPoliza;
-        numerosPoliza = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='AccountFile_CollectivePolicy_Ext:1-body']/div/table/tbody/tr/td[2]");
+        numerosPoliza = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll(".//*[@id='AccountFile_CollectivePolicy_Ext:1-body']/div/table/tbody/tr/td[2]");
         return numerosPoliza;
     }
 
@@ -56,13 +55,13 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageUtil {
 
     private List<WebElementFacade> getResultadoPlaca() {
         List<WebElementFacade> listaPlaca;
-        listaPlaca = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='CollectivePolicyPARisksPopup:RisksLV-body']/div/table/tbody/tr/td");
+        listaPlaca = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll(".//*[@id='CollectivePolicyPARisksPopup:RisksLV-body']/div/table/tbody/tr/td");
         return listaPlaca;
     }
 
     private List<WebElementFacade> getListaFiltroPlaca() {
         List<WebElementFacade> listaPlaca;
-        listaPlaca = withTimeoutOf(10, TimeUnit.SECONDS).findAll(".//*[@id='CollectivePolicyPARisksPopup:RisksLV-body']/div/table/tbody/tr/td[1]");
+        listaPlaca = withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).findAll(".//*[@id='CollectivePolicyPARisksPopup:RisksLV-body']/div/table/tbody/tr/td[1]");
         return listaPlaca;
     }
 
@@ -84,28 +83,28 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageUtil {
     }
 
     public void validaBotonListarRiesgos() {
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         MatcherAssert.assertThat("No contiene los 5 registros", getListaFiltroPlaca().size() == 5);
     }
 
     public void ValidaMensaje(String mensaje){
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
         MatcherAssert.assertThat("Error: No aparecio mensaje de advertencia en el filtro", lblMensaje.getText().contains(mensaje));
     }
 
     public void clicRiesgos() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnRiesgos).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRiesgos).waitUntilPresent();
         btnRiesgos.click();
     }
 
     public void ingresePlaca(String placa) {
         txtPlaca.sendKeys(placa);
         btnBuscaPlaca.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void listarRiesgos(){
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnListarRiesgos).waitUntilEnabled();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnListarRiesgos).waitUntilEnabled();
         btnListarRiesgos.click();
     }
 

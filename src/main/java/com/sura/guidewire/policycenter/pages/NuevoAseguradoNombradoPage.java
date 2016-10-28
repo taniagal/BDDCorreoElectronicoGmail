@@ -71,7 +71,7 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
             cboCiudad.sendKeys(Keys.ENTER);
             waitABit(3000);
             txtDireccion.clear();
-            waitABit(1000);
+            waitABit(WAIT_TIME_1000);
             txtDireccion.type("CL 45 - 56 A 109");
             waitABit(2000);
             btnActualizar.click();

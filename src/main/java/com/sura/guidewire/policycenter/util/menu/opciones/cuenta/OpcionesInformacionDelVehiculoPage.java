@@ -118,7 +118,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
             lstTipoBeneficia.click();
             itmAsegurado.click();
         }else if(lstTipoBeneficia2.isCurrentlyVisible()){
-            waitUntil(1000);
+            waitUntil(WAIT_TIME_1000);
             itmAsegurado.click();
         }
         btnDetalleVehiculo.click();
@@ -192,7 +192,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
     public void permitirContinuarCotizacion() {
         waitUntil(2000);
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         WebElementFacade labelCoberturasAuto = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
         withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelCoberturasAuto).click();
     }

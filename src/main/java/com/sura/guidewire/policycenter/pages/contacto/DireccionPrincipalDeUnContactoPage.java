@@ -45,7 +45,7 @@ public class DireccionPrincipalDeUnContactoPage extends PageUtil {
 
 
     public void irADirecciones(){
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         botonDirecciones.click();
         contactoPage.botonAgregar.waitUntilPresent().click();
     }
@@ -87,7 +87,7 @@ public class DireccionPrincipalDeUnContactoPage extends PageUtil {
 
     
     public void validarDatosPantalla() {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         StringBuilder notPresent = new StringBuilder(contactoPage.MSJVALIDARELEMENTOS);
         if(!labelPais.isPresent())
             notPresent.append(" pais,");
