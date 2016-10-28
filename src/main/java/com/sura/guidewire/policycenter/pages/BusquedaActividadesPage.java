@@ -17,7 +17,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
-public class BusquedaActividadesPage extends PageObject {
+public class BusquedaActividadesPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:AssignedUser-inputEl']")
     private WebElementFacade txtAsignadoA;
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:ActivityStatus-inputEl']")
@@ -69,7 +69,7 @@ public class BusquedaActividadesPage extends PageObject {
         waitFor(menuBuscar);
         actions.click(menuBuscar).build().perform();
         waitFor(menuBuscarActividades);
-        PageUtil.waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         actions.click(menuBuscarActividades).build().perform();
         waitForTextToAppear("Búsqueda");
         this.limpiarFiltros();
@@ -98,7 +98,7 @@ public class BusquedaActividadesPage extends PageObject {
     public void limpiarFiltros() {
         waitFor(botonRestablecer).waitUntilVisible();
         actions.click(botonRestablecer).build().perform();
-        PageUtil.waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void filtrarPorNumeroDePoliza(String numeroPoliza) {

@@ -17,7 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-public class BusquedaDePolizaPage extends PageObject {
+public class BusquedaDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:PolicyNumberCriterion-inputEl']")
     WebElementFacade txtNumeroPoliza;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:AccountNumber-inputEl']")
@@ -42,6 +42,8 @@ public class BusquedaDePolizaPage extends PageObject {
     WebElementFacade tituloBuscarPoliza;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     WebElementFacade botonRestablecer;
+
+    protected static final int WAIT_TIME_3500 = 3500;
 
     public BusquedaDePolizaPage(WebDriver driver) {
         super(driver);
@@ -98,7 +100,7 @@ public class BusquedaDePolizaPage extends PageObject {
     public void limpiarCampos() {
         waitFor(botonRestablecer).waitUntilPresent().waitUntilClickable();
         botonRestablecer.click();
-        PageUtil.waitUntil(3500);
+        waitUntil(WAIT_TIME_3500);
     }
 
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {
