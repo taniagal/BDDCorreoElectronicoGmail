@@ -158,6 +158,24 @@ public class Poliza {
             polizaSteps.confirmar_cancelacion();
         }
 
+    @When("rescinda la cancelacion de la poliza <numPoliza>")
+    public void CuandoRescindaLaCancelacion(String numPoliza){
+        LOGGER.info("Poliza.CuandoRescindaLaCancelacion");
+        guidewire.ir_a_navegacion_superior()
+                .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
+        polizaSteps.seleccionar_boton_acciones().seleccionar_boton_rescindir_cancelacion().seleccionar_poliza_a_rescindir();
+        polizaSteps.seleccionar_opcion_cierre();
+        polizaSteps.seleccionar_opcion_rescindir_cancelacion();
+
+    }
+    @When("ingreso al resumen de la poliza")
+    public void CuandoIngreseAlResumenDeLaPoliza(String numPoliza){
+        LOGGER.info("Poliza.CuandoIngreseAlResumenDeLaPoliza");
+        guidewire.ir_a_navegacion_superior()
+                .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
+    }
+
+
     @When("inicie la cancelacion")
     public void cuandoInicieLaCancelacion(){
         LOGGER.info("Poliza.cuandocuandoInicieLaCancelacion");
@@ -228,6 +246,15 @@ public class Poliza {
         LOGGER.info("Poliza.entoncesLaCancionDeLaPolizaEsCorrecta");
         assertThat(polizaSteps.obtenerTituloPagina(), equalTo(tituloDePagina));
     }
+    @Then("la revocacion es correcta si no se se muestra el tipo en el campo <tipo> y se oculta el mensaje de cancelacion pendiente")
+    public void entoncesLaRevocacionesEsCorrectaSiNoSeMuestra(String tipo){
+        LOGGER.info("Poliza.entoncesLaRevocacionesEsCorrectaSiNoSeMuestra");
+        polizaSteps.validar_que_no_se_muestre_tipo_en_tabla_transacciones(tipo);
+        polizaSteps.validar_que_no_se_muestre_mensaje();
+
+
+    }
+
 
 
     @When("seleccione la lista motivo de cancelacion")

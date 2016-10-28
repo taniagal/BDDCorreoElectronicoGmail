@@ -6,6 +6,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class BotonAccionesSteps extends ScenarioSteps {
 
+
+    //To do: migrar los acciones de los metodos a un page
     @Step
     public void seleccionar_opcion_cambio_de_poliza() {
         waitFor(1).seconds();
@@ -25,6 +27,23 @@ public class BotonAccionesSteps extends ScenarioSteps {
         waitFor(1).seconds();
         String xpathLinkCancelarPoliza = "//a[contains(.,'Cancelar póliza')]";
         getPages().getDriver().findElement(By.xpath(xpathLinkCancelarPoliza)).click();
+    }
+    @Step
+    public BotonAccionesSteps seleccionar_boton_rescindir_cancelacion() {
+        waitFor(2).seconds();
+        String xpathLinkRescindirPoliza = "//a[contains(.,'Rescindir la cancelación')]";
+        getPages().getDriver().findElement(By.xpath(xpathLinkRescindirPoliza)).click();
+        waitFor(1).seconds();
+        return this;
+    }
+
+    @Step
+    public BotonAccionesSteps seleccionar_poliza_a_rescindir(){
+        waitFor(2).seconds();
+        String xpathLinkRescindirPrimeraPoliza = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_RescindCancellation:0:item-textEl')]";
+        waitFor(1).seconds();
+        getPages().getDriver().findElement(By.xpath(xpathLinkRescindirPrimeraPoliza)).click();
+        return this;
     }
 
 }

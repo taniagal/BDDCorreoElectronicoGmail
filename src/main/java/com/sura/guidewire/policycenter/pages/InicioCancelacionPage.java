@@ -54,6 +54,7 @@ public class InicioCancelacionPage extends PageUtil{
     public void ingresarFechaRetroactiva() {
         selectItem(txtMotivo, "Financiación cancelación por");
         waitUntil(WAIT_TIME_1000);
+        txtDescripMotivo.click();
         String fecha = calculaRetroactividad31Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
         txtFechaVigenciaCancelacion.click();

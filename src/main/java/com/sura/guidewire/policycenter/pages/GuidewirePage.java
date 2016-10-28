@@ -25,6 +25,7 @@ public class GuidewirePage extends PageObject{
     Pages pages;
 
     public INavegacionSuperiorWidget barraNavegacion(){
+        waitFor(3).second();
         return this.barraNavegacionSuperior;
     }
 
