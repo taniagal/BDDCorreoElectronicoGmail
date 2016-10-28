@@ -60,6 +60,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV:0:tipoDocument']")
     private WebElementFacade nitAsegurado;
 
+    protected static final int WAIT_TIME_28000 = 28000;
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
@@ -67,7 +68,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void irAVehiculos() {
         waitFor(menuItemVehiculos).shouldBePresent();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         menuItemVehiculos.click();
     }
 
@@ -79,11 +80,11 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     public void agregarPlaca(String placa) {
         campoTxtPlaca.sendKeys(placa);
         campoTxtchasis.click();
-        waitForTextToAppear(placa, 28000);
+        waitForTextToAppear(placa, WAIT_TIME_28000);
     }
 
     public void clickSiguiente() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
     }
 
     public void clickVolver() {
@@ -94,7 +95,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        waitUntil(2500);
+        waitUntil(WAIT_TIME_2500);
         selectItem(comboBoxPlan, vehiculo.get("plan"));
         if (!"random".equals(vehiculo.get("placa"))) {
             ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
@@ -102,19 +103,19 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             campoTxtPlaca.clear();
             campoTxtPlaca.sendKeys("QWE" + (int) Math.floor(Math.random() * (100 - 999) + 999));
         }
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         comboBoxVehiculoServicio.click();
-        waitForTextToAppear(campoTxtPlaca.getText(), 28000);
-        waitUntil(2500);
+        waitForTextToAppear(campoTxtPlaca.getText(), WAIT_TIME_28000);
+        waitUntil(WAIT_TIME_3000);
         selectItem(comboBoxModelo, vehiculo.get("modelo"));
-        waitForTextToAppear(vehiculo.get("modelo"), 28000);
+        waitForTextToAppear(vehiculo.get("modelo"), WAIT_TIME_28000);
         ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
         campoTxtPlaca.click();
-        waitUntil(2000);
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
+        waitUntil(WAIT_TIME_2000);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
 
@@ -140,7 +141,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitForTextToAppear("2015");
         campoTxtCodigoFasecolda.sendKeys(codigo);
         campoTxtPlaca.click();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
@@ -152,19 +153,19 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void relacionarAseguradoDelVehiculo(String asegurado) {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonRelacionarAsegurado).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonRelacionarAsegurado).waitUntilClickable();
         botonRelacionarAsegurado.click();
         waitFor(botonAsegurado);
         botonAsegurado.click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(nitAsegurado).shouldBePresent();
-        waitUntil(3000);
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(nitAsegurado).shouldBePresent();
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void validarAvanceSiguientePagina() {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         WebElementFacade labelTituloCoberturasAuto = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelTituloCoberturasAuto).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelTituloCoberturasAuto).shouldBePresent();
         MatcherAssert.assertThat(labelTituloCoberturasAuto.getText(), Is.is(Matchers.equalTo("Coberturas de auto personal")));
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 }

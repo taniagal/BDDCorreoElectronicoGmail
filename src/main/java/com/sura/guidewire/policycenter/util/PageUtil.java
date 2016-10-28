@@ -25,19 +25,31 @@ public class PageUtil extends PageObject {
     private final Actions actions = new Actions(getDriver());
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
+    protected static final int WAIT_TIME_3000 = 3000;
+    protected static final int WAIT_TIME_2500 = 2500;
     protected static final int WAIT_TIME_2000 = 2000;
-    protected static final int TIEMPO_ESPERA_2S = 2000;
+    protected static final int WAIT_TIME_1500 = 1500;
+    protected static final int WAIT_TIME_1000 = 1000;
+    protected static final int WAIT_TIME_800 = 800;
+    protected static final int WAIT_TIME_500 = 500;
+    protected static final int WAIT_TIME_300 = 300;
+    protected static final int WAIT_TIME_200 = 200;
+    protected static final int WAIT_TIME_28 = 28;
+    protected static final int WAIT_TIME_20 = 20;
+    protected static final int WAIT_TIME_10 = 10;
+    protected static final int WAIT_TIME_2 = 2;
+    protected static final int WAIT_TIME_1 = 1;
 
     public PageUtil(WebDriver driver) {
         super(driver);
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menu).click();
-        waitUntil(3000);
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(ExpectedConditions.elementToBeClickable(menu));
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(menu).click();
+        waitUntil(WAIT_TIME_3000);
+        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(ExpectedConditions.elementToBeClickable(menu));
         menu.click();
-        waitUntil(500);
+        waitUntil(WAIT_TIME_500);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         return actions;
     }
@@ -45,7 +57,7 @@ public class PageUtil extends PageObject {
     public void selectItem(WebElementFacade element, String option){
         waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
         element.click();
-        waitUntil(200);
+        waitUntil(WAIT_TIME_200);
         element.sendKeys(option);
         element.sendKeys(Keys.ENTER);
     }
@@ -69,13 +81,13 @@ public class PageUtil extends PageObject {
 
 
     public void verificarMensaje(WebElementFacade divMensaje, String mensaje){
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
     }
 
 
     public void verificarMensajes(WebElementFacade divMensaje,ExamplesTable mensajes) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         for (Map<String, String> mensaje : mensajes.getRows()) {
             MatcherAssert.assertThat("Error: en la validacion del mensaje " + mensaje.get("mensaje"), divMensaje.containsText(mensaje.get("mensaje")));
         }
@@ -83,13 +95,13 @@ public class PageUtil extends PageObject {
 
 
     public List<WebElementFacade> getLista(String locator) {
-        return withTimeoutOf(28,TimeUnit.SECONDS).findAll(locator);
+        return withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).findAll(locator);
     }
 
 
     public WebElementFacade esperarElemento(final String xpath) {
         Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(20, TimeUnit.SECONDS)
+                .withTimeout(WAIT_TIME_20, TimeUnit.SECONDS)
                 .pollingEvery(5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
         return espera.until(new Function<WebDriver, WebElementFacade>() {
@@ -104,15 +116,15 @@ public class PageUtil extends PageObject {
         do {
             waitFor(elemento).waitUntilPresent();
             elemento.clear();
-            waitUntil(500);
+            waitUntil(WAIT_TIME_500);
             waitFor(elemento).shouldContainText("");
             elemento.sendKeys(dato);
         }while (!elemento.getValue().equals(dato));
     }
 
     public void waitForComboValue(WebElementFacade element, String value ){
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element,value));
-        waitUntil(2000);
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element,value));
+        waitUntil(WAIT_TIME_2000);
     }
 
     /**

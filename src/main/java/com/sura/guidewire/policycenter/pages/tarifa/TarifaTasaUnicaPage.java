@@ -131,10 +131,10 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
 
-    public int verificarEstadoDelEnvio(String cotizacion) {
-        int val = 0;
+    public boolean verificarEstadoDelEnvio(String cotizacion) {
+        boolean val = false;
         waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, cotizacion));
-        val = (headerEnvio.containsText("Expedida")) ? 1 : 0;
+        val = (headerEnvio.containsText("Expedida")) ? true : false;
         return val;
     }
 
@@ -175,9 +175,9 @@ public class TarifaTasaUnicaPage extends PageUtil {
         botonAceptar.waitUntilPresent().click();
         for (int i = 0; i < 3; i++) {
             botonHojaDeCalculoRenovacion.waitUntilPresent();
-            waitUntil(3000);
+            waitUntil(WAIT_TIME_3000);
             menuPoliza.click();
-            setImplicitTimeout(1, TimeUnit.SECONDS);
+            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
             if (botonCotizarRenovacion.isPresent()){
                 break;
             }
@@ -187,10 +187,10 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public void renovarPoliza() {
         botonCotizarRenovacion.waitUntilPresent();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         checkBoxTasaUnica.shouldBePresent();
         botonCotizarRenovacion.click();
-        setImplicitTimeout(1,TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()){
             linkDescartarCambios.click();
             botonCotizarRenovacion.click();
@@ -204,7 +204,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
     public void verificarTarifaRenovacionSinCambio() {
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(labelPrimaTotalRenovacion).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelPrimaTotalRenovacion).waitUntilPresent();
         MatcherAssert.assertThat("No hay tarifa en la renovacion", labelPrimaTotalRenovacion.containsText("00 (COP)"));
     }
 

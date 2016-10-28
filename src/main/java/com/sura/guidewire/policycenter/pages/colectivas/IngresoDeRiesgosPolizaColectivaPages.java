@@ -16,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
+public class IngresoDeRiesgosPolizaColectivaPages extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:AddRisksButton-btnInnerEl']")
     WebElementFacade botonRiesgosInfoPoliza;
@@ -83,7 +83,7 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     }
 
     public void clicEnActualizarInformacionDePolizaColectiva() {
-        PageUtil.waitUntil(2000);
+        waitUntil(2000);
         if(botonActualizar.isVisible()) {
             botonActualizar.click();
         }
