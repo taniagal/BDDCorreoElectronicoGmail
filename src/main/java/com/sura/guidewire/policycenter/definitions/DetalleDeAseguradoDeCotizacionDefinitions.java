@@ -148,7 +148,7 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
         detalleDeAseguradoDeCotizacionSteps.validarBotonNoVisible();
     }
 
-    @Then("se debe permitir continuar la cotizacion")
+    @Then("se debe continuar al siguiente paso de la cotizacion")
     public void validarContinuacionDeCotizacion(){
         detalleDeAseguradoDeCotizacionSteps.validarContinuacionDeCotizacion();
     }

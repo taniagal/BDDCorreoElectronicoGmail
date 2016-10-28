@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 
 import java.util.Map;
 
@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class OpcionesResumenCuentaPage extends Commons {
+public class OpcionesResumenCuentaPage extends PageUtil {
     Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//*[@id='AccountFile_Summary:AccountFile_SummaryScreen:ttlBar']")
     private WebElementFacade lblResumenCuenta;

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.util.menu;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.util.menu.acciones.administracion.*;
 import com.sura.guidewire.policycenter.util.menu.acciones.contacto.ContactoNuevaCuentaPage;
@@ -33,9 +33,9 @@ import org.openqa.selenium.support.FindBy;
 
 
 
-public class Navegacion extends Commons {
+public class Navegacion extends PageUtil {
 
-    private final Commons gw = new Commons(getDriver());
+    private final PageUtil gw = new PageUtil(getDriver());
     private final Actions act = new Actions(getDriver());
 
     // Objetos menu Escritorio
@@ -327,6 +327,7 @@ public class Navegacion extends Commons {
     }
 
     public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza) {
+        waitUntil(2000);
         gw.deployMenu(mnuPoliza);
         ingresarDato(mnuNumeroSub,numSubPoliza);
         mnuNumeroSub.sendKeys(Keys.ENTER);

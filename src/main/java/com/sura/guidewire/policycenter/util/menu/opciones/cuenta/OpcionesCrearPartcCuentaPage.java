@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class OpcionesCrearPartcCuentaPage extends Commons {
+public class OpcionesCrearPartcCuentaPage extends PageUtil {
 
     private final Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Edit-btnInnerEl']")

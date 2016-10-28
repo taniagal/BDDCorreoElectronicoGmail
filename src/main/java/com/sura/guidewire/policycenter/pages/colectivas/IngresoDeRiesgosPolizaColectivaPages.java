@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages.colectivas;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -16,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
+public class IngresoDeRiesgosPolizaColectivaPages extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:AddRisksButton-btnInnerEl']")
     WebElementFacade botonRiesgosInfoPoliza;
@@ -83,7 +83,7 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageObject {
     }
 
     public void clicEnActualizarInformacionDePolizaColectiva() {
-        Commons.waitUntil(2000);
+        waitUntil(2000);
         if(botonActualizar.isVisible()) {
             botonActualizar.click();
         }

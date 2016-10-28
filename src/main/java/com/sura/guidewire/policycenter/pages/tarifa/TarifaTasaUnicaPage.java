@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages.tarifa;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.concurrent.TimeUnit;
 
-public class TarifaTasaUnicaPage extends Commons {
+public class TarifaTasaUnicaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet-btnInnerEl']")
     private WebElementFacade botonHojaDeCalculo;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:Spreadsheet']")
@@ -131,10 +131,10 @@ public class TarifaTasaUnicaPage extends Commons {
     }
 
 
-    public int verificarEstadoDelEnvio(String cotizacion) {
-        int val = 0;
+    public boolean verificarEstadoDelEnvio(String cotizacion) {
+        boolean val = false;
         waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, cotizacion));
-        val = (headerEnvio.containsText("Expedida")) ? 1 : 0;
+        val = (headerEnvio.containsText("Expedida")) ? true : false;
         return val;
     }
 
@@ -175,9 +175,9 @@ public class TarifaTasaUnicaPage extends Commons {
         botonAceptar.waitUntilPresent().click();
         for (int i = 0; i < 3; i++) {
             botonHojaDeCalculoRenovacion.waitUntilPresent();
-            waitUntil(3000);
+            waitUntil(WAIT_TIME_3000);
             menuPoliza.click();
-            setImplicitTimeout(1, TimeUnit.SECONDS);
+            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
             if (botonCotizarRenovacion.isPresent()){
                 break;
             }
@@ -187,10 +187,10 @@ public class TarifaTasaUnicaPage extends Commons {
 
     public void renovarPoliza() {
         botonCotizarRenovacion.waitUntilPresent();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         checkBoxTasaUnica.shouldBePresent();
         botonCotizarRenovacion.click();
-        setImplicitTimeout(1,TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()){
             linkDescartarCambios.click();
             botonCotizarRenovacion.click();
@@ -204,7 +204,7 @@ public class TarifaTasaUnicaPage extends Commons {
     }
 
     public void verificarTarifaRenovacionSinCambio() {
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(labelPrimaTotalRenovacion).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelPrimaTotalRenovacion).waitUntilPresent();
         MatcherAssert.assertThat("No hay tarifa en la renovacion", labelPrimaTotalRenovacion.containsText("00 (COP)"));
     }
 

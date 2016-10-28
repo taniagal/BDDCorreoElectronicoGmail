@@ -1,21 +1,19 @@
 package com.sura.guidewire.policycenter.pages.colectivas;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
-import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
+public class BusquedaDeRiesgosPolizaColectivaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='AccountFile_CollectivePolicy_Ext:ttlBar']")
     WebElementFacade lblTransacPolizaColectiva;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:AddRisksButton']")
@@ -28,9 +26,6 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
     WebElementFacade lblMensaje;
     @FindBy(xpath = ".//*[@id='CollectivePolicyPARisksPopup:ListRisksButton-btnInnerEl']")
     WebElementFacade btnListarRiesgos;
-
-
-    Commons cmm = new Commons(getDriver());
 
     private static final String TABLAXPATH = ".//*[@id='AccountFile_CollectivePolicy_Ext:";
 
@@ -89,7 +84,7 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
     }
 
     public void validaBotonListarRiesgos() {
-        cmm.waitUntil(2000);
+        waitUntil(2000);
         MatcherAssert.assertThat("No contiene los 5 registros", getListaFiltroPlaca().size() == 5);
     }
 
@@ -106,7 +101,7 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageObject {
     public void ingresePlaca(String placa) {
         txtPlaca.sendKeys(placa);
         btnBuscaPlaca.click();
-        cmm.waitUntil(1000);
+        waitUntil(1000);
     }
 
     public void listarRiesgos(){

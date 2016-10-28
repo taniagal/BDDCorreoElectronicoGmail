@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.tarifa;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
-public class TarifaAutosPage extends Commons {
+public class TarifaAutosPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnInnerEl']")
     private WebElementFacade botonAgregarAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
@@ -130,14 +130,14 @@ public class TarifaAutosPage extends Commons {
         comboBoxTipoPlazo.waitUntilPresent().clear();
         selectItem(comboBoxTipoPlazo, "6 meses");
         waitForComboValue(comboBoxTipoPlazo, "6 meses");
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
 
     public void cotizar() {
         botonCotizar.click();
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
-        waitUntil(500);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
+        waitUntil(WAIT_TIME_500);
         menuItemCotizacion.waitUntilPresent().click();
     }
 
@@ -151,9 +151,9 @@ public class TarifaAutosPage extends Commons {
 
 
     public void setAsegurados() {
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(meniItemAsegurados).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(meniItemAsegurados).waitUntilPresent().click();
         Actions actions = new Actions(getDriver());
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         actions.moveToElement(navItemContastosDeLaCuenta).build().perform();
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         navItemAsegurado.click();
@@ -166,12 +166,12 @@ public class TarifaAutosPage extends Commons {
         botonBorrar.waitUntilPresent().click();
         botonBorrar.waitUntilNotVisible();
         comboBoxLimite.waitUntilPresent();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         comboBoxLimite.clear();
-        waitUntil(500);
+        waitUntil(WAIT_TIME_500);
         comboBoxLimite.sendKeys(dato.get("limite"));
         comboBoxLimite.sendKeys(Keys.ENTER);
-        waitUntil(800);
+        waitUntil(WAIT_TIME_800);
         selectItem(comboBoxDeducible, dato.get("deducible"));
         selectItem(comboBoxAbogado, dato.get("abogado"));
     }

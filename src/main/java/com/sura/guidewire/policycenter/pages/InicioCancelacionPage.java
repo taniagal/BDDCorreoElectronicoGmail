@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -42,7 +42,7 @@ public class InicioCancelacionPage extends PageObject {
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:ReasonDescription-inputEl']")
     WebElementFacade txtDescripMotivo;
 
-    Commons cm = new Commons(getDriver());
+    PageUtil cm = new PageUtil(getDriver());
 
     public InicioCancelacionPage(WebDriver driver) {
         super(driver);

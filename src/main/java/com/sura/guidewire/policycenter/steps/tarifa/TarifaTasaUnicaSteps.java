@@ -16,7 +16,7 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
     AprobacionDeAnalisisDeRiesgoPage analisisDeRiesgoPage = new AprobacionDeAnalisisDeRiesgoPage(getDriver());
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
     SeusLoginPage seus = new SeusLoginPage(getDriver());
-    int token = 0;
+    boolean token = false;
 
     public TarifaTasaUnicaSteps(Pages pages){
         super(pages);
@@ -39,7 +39,7 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
 
     @Step
     public void agregar_vehiculo(ExamplesTable datosVehiculo) {
-        if (token == 0) {
+        if (token) {
             vehiculoPage.irAVehiculos();
             vehiculoPage.agregarVehiculo(datosVehiculo);
         }
@@ -47,21 +47,21 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
 
     @Step
     public void expedir_poliza() {
-        if (token == 0) {
+        if (token) {
             analisisDeRiesgoPage.expedirPoliza();
         }
     }
 
     @Step
     public void ir_a_informacion_de_poliza_expedida() {
-        if (token == 0) {
+        if (token) {
             tasaUnicaPage.irAInformacionDePoliza();
         }
     }
 
     @Step
     public void seleciconar_coberturas(ExamplesTable coberturas) {
-        if (token == 0) {
+        if (token) {
             vehiculoPage.clickSiguiente();
             tarifaAutosPage.setCoberturas(coberturas);
             tarifaAutosPage.seleccionarCoberturas(coberturas);

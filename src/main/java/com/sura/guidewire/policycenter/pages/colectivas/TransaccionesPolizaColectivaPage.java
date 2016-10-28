@@ -2,6 +2,8 @@ package com.sura.guidewire.policycenter.pages.colectivas;
 
 
 import java.util.Map;
+
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,7 +14,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 
-public class TransaccionesPolizaColectivaPage extends PageObject{
+public class TransaccionesPolizaColectivaPage extends PageUtil{
 
     @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_CollectivePolicy_Ext']/div/span")
     WebElementFacade menuTransaccionesColectivas;

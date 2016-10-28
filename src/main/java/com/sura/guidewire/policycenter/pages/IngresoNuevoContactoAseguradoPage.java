@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 
 public class IngresoNuevoContactoAseguradoPage extends PageObject{
 
-    Commons commons = new Commons(getDriver());
+    PageUtil pageUtil = new PageUtil(getDriver());
 
     @FindBy(xpath = ".//*[@id='NewContactPopup:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     WebElementFacade campoTipoDocumento;
@@ -64,18 +64,18 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
         campoPais.clear();
         campoPais.sendKeys(datosContacto.get("pais"));
         campoPais.sendKeys(Keys.ENTER);
-        commons.waitUntil(3000);
+        pageUtil.waitUntil(3000);
         campoDepartamento.clear();
         campoDepartamento.sendKeys(datosContacto.get("departamento"));
         campoDepartamento.sendKeys(Keys.ENTER);
-        commons.waitUntil(3000);
+        pageUtil.waitUntil(3000);
         campoCiudad.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoCiudad.sendKeys(datosContacto.get("ciudad"));
         campoCiudad.sendKeys(Keys.ENTER);
-        commons.waitUntil(2000);
+        pageUtil.waitUntil(2000);
         campoDireccion.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDireccion.sendKeys(datosContacto.get("direccion"));
-        commons.waitUntil(2000);
+        pageUtil.waitUntil(2000);
         campoTipoDireccion.clear();
         campoTipoDireccion.sendKeys(datosContacto.get("tipoDireccion"));
         campoTipoDireccion.sendKeys(Keys.ENTER);
@@ -86,10 +86,10 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
         this.ingresarDatosComunesDeContacto(datosNuevaPersona);
         campoPrimerNombre.sendKeys(datosNuevaPersona.get("primerNombre"));
         campoPrimerApellido.sendKeys(datosNuevaPersona.get("primerApellido"));
-        commons.waitUntil(3000);
+        pageUtil.waitUntil(3000);
         botonAceptar.click();
         campoMonedaPreferida.waitUntilPresent();
-        commons.selectItem(campoMonedaPreferida,"COP");
+        pageUtil.selectItem(campoMonedaPreferida,"COP");
     }
 
     public void ingresarDatosNuevaPersonaJuridica(ExamplesTable datosPersonaJuridica) {

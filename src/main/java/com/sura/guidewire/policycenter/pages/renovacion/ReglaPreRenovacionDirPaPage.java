@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -10,46 +10,42 @@ import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ReglaPreRenovacionDirPaPage extends Commons {
+public class ReglaPreRenovacionDirPaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_PreRenewalDirection-textEl']")
-    WebElementFacade lstOpcionPreviasALaRenovacion;
+    WebElementFacade listaOpcionPreviasALaRenovacion;
     @FindBy(xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:0']")
-    WebElementFacade lblInstruccionesPreviasRenovacion;
+    WebElementFacade labelInstruccionesPreviasRenovacion;
     @FindBy(xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:Edit-btnInnerEl']")
-    WebElementFacade btnEditar;
-    @FindBy(xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:PreRenewalDirection-labelEl']")
-    WebElementFacade lblInstrucciones;
+    WebElementFacade botonEditar;
     @FindBy(xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:PreRenewalDirection-inputEl']")
-    WebElementFacade txtLista;
+    WebElementFacade comboBoxLista;
     @FindBy(xpath = ".//*[@id='PreRenewalDirectionPage:PreRenewalDirectionScreen:Cancel']")
-    WebElementFacade btnCancelar;
+    WebElementFacade botonCancelar;
     @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:0']")
-    WebElementFacade lblResumen;
+    WebElementFacade labelResumen;
 
     public ReglaPreRenovacionDirPaPage(WebDriver driver) {
         super(driver);
     }
 
     public void ingresarARenovacion() {
-        lstOpcionPreviasALaRenovacion.click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(lblInstruccionesPreviasRenovacion).shouldBeVisible();
+        listaOpcionPreviasALaRenovacion.click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelInstruccionesPreviasRenovacion).shouldBeVisible();
     }
 
     public void ingresaEditarInstrucciones() {
-        btnEditar.click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(lblInstrucciones).waitUntilPresent();
+        botonEditar.click();
     }
 
     public void validaLista(ExamplesTable opcionesDir) throws Exception {
-        txtLista.click();
+        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(comboBoxLista).waitUntilPresent().click();
         this.validarDatosDeLaLista(opcionesDir);
-        btnCancelar.click();
-        waitFor(lblResumen).waitUntilPresent();
+        botonCancelar.click();
+        waitFor(labelResumen).waitUntilPresent();
     }
 
     private void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
@@ -59,7 +55,6 @@ public class ReglaPreRenovacionDirPaPage extends Commons {
             elementoInstruccion = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
             for (WebElementFacade lista : elementoInstruccion) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
-                JOptionPane.showMessageDialog(null, lista.getText());
             }
         }
     }

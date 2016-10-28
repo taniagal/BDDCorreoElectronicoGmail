@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.constantes.EnumContacto;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class NuevoContactoPage extends Commons {
+public class NuevoContactoPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade tipoDocumento;
