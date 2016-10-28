@@ -100,7 +100,7 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     }
 
     public void irARenovacion() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilPresent();
         btnAcciones.click();
         btnRenovarPoliza.click();
     }
@@ -111,12 +111,12 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
 
     public void aceptaOperacionRenovacion() {
         btnAceptarRenovacion.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilClickable();
     }
 
     public void clickBotonSiguiente() {
         btnSiguiente.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilClickable();
     }
 
     public void validaMensajeEnPantalla(String mensaje) {

@@ -26,6 +26,7 @@ public class PageUtil extends PageObject {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     protected static final int WAIT_TIME_5000 = 5000;
+    protected static final int WAIT_TIME_3500 = 3500;
     protected static final int WAIT_TIME_3000 = 3000;
     protected static final int WAIT_TIME_2500 = 2500;
     protected static final int WAIT_TIME_2000 = 2000;
@@ -37,7 +38,9 @@ public class PageUtil extends PageObject {
     protected static final int WAIT_TIME_200 = 200;
     protected static final int WAIT_TIME_28 = 28;
     protected static final int WAIT_TIME_20 = 20;
+    protected static final int WAIT_TIME_15 = 15;
     protected static final int WAIT_TIME_10 = 10;
+    protected static final int WAIT_TIME_3 = 3;
     protected static final int WAIT_TIME_2 = 2;
     protected static final int WAIT_TIME_1 = 1;
 

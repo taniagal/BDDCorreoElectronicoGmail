@@ -69,7 +69,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
 
 
     public void irAIngresarAsegurado() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonAsegurados).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAsegurados).waitUntilClickable();
         botonAsegurados.click();
     }
 
@@ -133,7 +133,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
 
     public void validarAseguradosAgregados(ExamplesTable asegurados) {
         Map<String, String> aseguradosAgregados;
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         waitFor(tablaAsegurados).waitUntilPresent();
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
         for (int i=0; i<allRows.size(); i++){
@@ -160,33 +160,33 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
     }
 
     public void validarAseguradoEliminado() {
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         waitFor(tablaAsegurados).waitUntilPresent();
         MatcherAssert.assertThat(tablaAsegurados.getText(), Is.is(Matchers.equalTo("")));
     }
 
     public void irASiguiente() {
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         waitFor(botonSiguiente).waitUntilPresent();
         botonSiguiente.click();
     }
 
     public void validarMensajeDeIntegraciones(String mensaje) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldContainText(mensaje);
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(mensajeValidacion).shouldContainText(mensaje);
         MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
     }
 
     public void irACrearNuevaCotizacion() {
         waitFor(menuPoliza).waitUntilPresent();
         menuPoliza.click();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
         menuPolizaNuevoEnvio.waitUntilVisible().click();
     }
 
     public void ingresarCuenta(String cuenta) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(campoNumeroCuenta).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoNumeroCuenta).waitUntilPresent();
         campoNumeroCuenta.sendKeys(cuenta);
         campoNumeroCuenta.sendKeys(Keys.TAB);
         waitForTextToAppear("Nombre");
@@ -198,10 +198,10 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
 
     public void validarContinuacionDeCotizacion() {
         waitUntil(WAIT_TIME_1000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBePresent();
         botonSiguiente.click();
         WebElementFacade labelTituloVehiculos = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).shouldBePresent();
         MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
         waitUntil(WAIT_TIME_1000);
     }

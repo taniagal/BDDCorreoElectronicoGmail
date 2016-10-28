@@ -2,7 +2,6 @@ package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -17,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 
 
-public class ExpedicionDePolizaPage extends PageObject{
+public class ExpedicionDePolizaPage extends PageUtil{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     WebElementFacade tituloVentana;
 
@@ -88,14 +87,14 @@ public class ExpedicionDePolizaPage extends PageObject{
     public void irABuscarCotizacion(String cotizacion){
         waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
         menuPoliza.click();
-        pageUtil.waitUntil(3500);
+        waitUntil(WAIT_TIME_3500);
        // waitForAnyTextToAppear("Cotización", "Buscar pólizas");
         waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
-        pageUtil.waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
         menuNumeroCotizacion.waitUntilPresent();
-        pageUtil.ingresarDato(menuNumeroCotizacion,cotizacion);
+        ingresarDato(menuNumeroCotizacion,cotizacion);
         menuNumeroCotizacion.sendKeys(Keys.ENTER);
         waitForTextToAppear("Cotización");
         waitForTextToAppear(cotizacion);
@@ -136,7 +135,7 @@ public class ExpedicionDePolizaPage extends PageObject{
         String[] mensajes = mensaje.split("\\^");
         Integer contadorMensajesOk = 0;
         Integer numeroMensajes = mensajes.length;
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(mensajeRiesgos).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mensajeRiesgos).waitUntilPresent();
         List<WebElementFacade> mensajesRiesgos = findAll(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div");
         for(int i = 0; i < numeroMensajes; i++) {
             for (WebElementFacade lista : mensajesRiesgos) {

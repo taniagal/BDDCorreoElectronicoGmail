@@ -111,7 +111,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     public void seleccionarAcciones() {
         band = 0;
         int i = 0;
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tblCotizaciones).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tblCotizaciones).waitUntilPresent();
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
@@ -303,7 +303,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         waitABit(WAIT_TIME_1000);
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
-        waitABit(1500);
+        waitABit(WAIT_TIME_1500);
     }
 
     /**
@@ -325,7 +325,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void ingresaRechazo(String razon) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtCodRazon).shouldBeEnabled();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(txtCodRazon).shouldBeEnabled();
         txtCodRazon.clear();
         txtCodRazon.sendKeys(razon);
         txtRazonCartaDeclina.click();
@@ -340,7 +340,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void ingresaRechazoNoTomar(String razon) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(listaTipoRazonNoTomar).shouldBeEnabled();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(listaTipoRazonNoTomar).shouldBeEnabled();
         listaTipoRazonNoTomar.clear();
         listaTipoRazonNoTomar.sendKeys(razon);
         txtRazonCartaNoTomar.click();
@@ -356,13 +356,13 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
 
     private List<WebElementFacade> getListaCotizaciones() {
         List<WebElementFacade> numerosCotizacion;
-        numerosCotizacion = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[3]");
+        numerosCotizacion = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[3]");
         return numerosCotizacion;
     }
 
     private List<WebElementFacade> getListaEstado() {
         List<WebElementFacade> numeroEstado;
-        numeroEstado = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[8]");
+        numeroEstado = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[8]");
         return numeroEstado;
     }
 
@@ -425,7 +425,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {
-            elementosTipoCanalVentas = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
+            elementosTipoCanalVentas = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
             for (WebElementFacade lista : elementosTipoCanalVentas) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }

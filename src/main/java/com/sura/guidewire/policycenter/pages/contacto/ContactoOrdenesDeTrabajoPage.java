@@ -57,7 +57,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
         filtroEstado.sendKeys(Keys.ENTER);
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void seleccionarTransacciones() {
@@ -68,7 +68,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     public void validarCamposTransacciones(String poliza, String producto, String numeroTransaccion,
                                            String tipo, String estado, String participante) {
         waitFor(fechaCreacion).waitUntilPresent();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         MatcherAssert.assertThat(this.fechaCreacion.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.poliza.getText(), Matchers.containsString(poliza));
         MatcherAssert.assertThat(this.producto.getText(), Matchers.containsString(producto));
@@ -112,7 +112,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
     public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
         waitFor(table).waitUntilVisible();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {
@@ -125,7 +125,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
         waitUntil(WAIT_TIME_1000);
         waitFor(this.filtroProducto).waitUntilPresent();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
         this.filtroProducto.sendKeys(Keys.ENTER);
@@ -133,7 +133,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
     public void validarTransaccionesPorProducto(String filtroProducto) {
         waitFor(table).waitUntilVisible();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {

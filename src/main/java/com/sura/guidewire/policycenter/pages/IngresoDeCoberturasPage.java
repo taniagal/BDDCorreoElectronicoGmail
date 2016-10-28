@@ -2,13 +2,12 @@ package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class IngresoDeCoberturasPage extends PageObject{
+public class IngresoDeCoberturasPage extends PageUtil{
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade campoLimite;
@@ -39,7 +38,7 @@ public class IngresoDeCoberturasPage extends PageObject{
 
     public void cotizar(){
         botonCotizar.click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).waitUntilPresent();
     }
 
     public void clickEnCheckHurto(){

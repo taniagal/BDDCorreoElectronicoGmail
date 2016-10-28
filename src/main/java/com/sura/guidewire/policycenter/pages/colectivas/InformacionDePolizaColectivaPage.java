@@ -174,7 +174,7 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
 
 
     public Integer encontrarProducto(String producto) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
+        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
@@ -210,7 +210,7 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
 
     public void validarMensaje(WebElementFacade mensajePantalla, String mensaje) {
         waitFor(mensajePantalla).waitUntilVisible();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         MatcherAssert.assertThat(mensajePantalla.getText(), containsText(mensaje));
     }
 
@@ -237,7 +237,7 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
                 waitFor(botonSiguiente);
                 botonSiguiente.click();
             } catch (Exception e) {
-                waitUntil(5000);
+                waitUntil(WAIT_TIME_5000);
                 botonSiguiente.click();
             }
         }
@@ -326,7 +326,7 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
 
     public void validarLosElementosDeshabilitados() {
         waitFor(botonSiguiente).waitUntilNotVisible();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         linkAgregarCoaseguro.shouldNotBeVisible();
         MatcherAssert.assertThat(organizacion.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
         MatcherAssert.assertThat(canal.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));

@@ -113,7 +113,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
         opcionPolizaMrc.waitInfoPoliza(btnSeleccion);
         btnSeleccion.click();
         opcionPolizaMrc.waitInfoPoliza(btnDetalleVehiculo);
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         if(lstTipoBeneficia.isCurrentlyVisible()){
             lstTipoBeneficia.click();
             itmAsegurado.click();
@@ -129,10 +129,10 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
         txtValorAccesorios.clear();
         ingresarDato(txtValorAccesorios,valorAccesorio);
         txtValorAsegurado.click();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         ingresarDato(txtAcceEspeciales,valorAccesorioEsp);
         txtValorAsegurado.click();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0, 8));
         int valorAccesorioEntero = Integer.parseInt(valorAccesorio);
         int valorAccesorioEspEntero = Integer.parseInt(valorAccesorioEsp);
@@ -179,22 +179,22 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
     }
 
     public void validarInteresAdicionalPEP() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
-        waitUntil(1500);
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        waitUntil(WAIT_TIME_1500);
     }
 
     public void validarMensajePEPInteresAdicional(String mensaje) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void permitirContinuarCotizacion() {
-        waitUntil(2000);
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        waitUntil(WAIT_TIME_2000);
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
         waitUntil(WAIT_TIME_1000);
         WebElementFacade labelCoberturasAuto = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']");
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelCoberturasAuto).click();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelCoberturasAuto).click();
     }
 }
 

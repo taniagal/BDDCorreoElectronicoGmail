@@ -59,7 +59,7 @@ public class CotizacionPADetallePage extends PageUtil {
     }
 
     public void verDetalleCotizacion() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
         MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
 

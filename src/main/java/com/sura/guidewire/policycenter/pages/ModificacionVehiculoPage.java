@@ -37,15 +37,15 @@ public class ModificacionVehiculoPage extends PageUtil {
     public void digitarFasecoldaYModelo(String numeroFasecolda, String modelo) {
         WebElementFacade modeloVehiculo = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']");
         waitFor(modeloVehiculo).typeAndTab(modelo);
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         WebElementFacade fasecolda = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-inputEl']");
         waitFor(fasecolda).typeAndTab(numeroFasecolda);
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         waitFor(campoCiudadCirculacion).typeAndTab("MEDELLIN");
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         WebElementFacade tipoServicio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:service_DV-inputEl']");
         waitFor(tipoServicio).typeAndTab("Particular");
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void mostrarDatosVehiculo(String claseVehiculo, String marca, String linea) {
@@ -59,11 +59,11 @@ public class ModificacionVehiculoPage extends PageUtil {
     }
 
     public void registrarZonaCirculacion(String ciudadCirculacion) {
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona,"11"));
         waitFor(botonSiguiente).click();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void validarZonaCirculacion(String mensaje) {

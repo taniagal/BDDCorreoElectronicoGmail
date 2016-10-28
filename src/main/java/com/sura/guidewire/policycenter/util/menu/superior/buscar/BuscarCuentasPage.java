@@ -7,13 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class BuscarCuentasPage extends PageUtil {
 
-    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
-    private WebElementFacade lblCuenta;
-    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
-    private WebElementFacade btnBuscaCuenta;
-    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
-    private WebElementFacade linkCuenta;
-
     public BuscarCuentasPage(WebDriver driver) {
         super(driver);
     }

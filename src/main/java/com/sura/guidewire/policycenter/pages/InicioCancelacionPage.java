@@ -46,7 +46,7 @@ public class InicioCancelacionPage extends PageUtil{
     }
 
     public void inicioCancelacion() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilClickable();
         btnAcciones.click();
         btnCancelarPoliza.click();
     }
@@ -63,7 +63,7 @@ public class InicioCancelacionPage extends PageUtil{
     }
 
     public void ingresarFechaEmisionAnticipada() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(txtMotivo).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(txtMotivo).waitUntilClickable();
         String cadenaAux = "Financiación cancelación por";
         selectItem(txtMotivo, cadenaAux);
         waitUntil(WAIT_TIME_1000);
@@ -72,7 +72,7 @@ public class InicioCancelacionPage extends PageUtil{
         txtFechaVigenciaCancelacion.click();
         txtFechaVigenciaCancelacion.sendKeys(fecha);
         txtDescripMotivo.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
         txtDescripMotivo.sendKeys(cadenaAux);
     }
 
@@ -98,12 +98,12 @@ public class InicioCancelacionPage extends PageUtil{
     }
 
     public void cancelaTransaccion() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnCancelarTransaccion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnCancelarTransaccion).waitUntilClickable();
         btnCancelarTransaccion.click();
     }
 
     public void validaMensajeEnPantalla(String mensaje) {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
         MatcherAssert.assertThat("Mensaje no corresponde al referenciado", lblMensaje.getText().contains(mensaje));
     }
 
@@ -119,7 +119,7 @@ public class InicioCancelacionPage extends PageUtil{
         List<WebElementFacade> elementoInstruccion;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(listaMotivo);
         for (String tipo : elementosRequeridos) {
-            elementoInstruccion = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
+            elementoInstruccion = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
             for (WebElementFacade lista : elementoInstruccion) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }

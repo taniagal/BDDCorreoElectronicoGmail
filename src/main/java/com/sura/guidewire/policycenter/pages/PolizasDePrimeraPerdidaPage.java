@@ -35,7 +35,7 @@ public class PolizasDePrimeraPerdidaPage extends PageUtil {
 
     public void irAArticulos() {
         withTimeoutOf(25, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonAgregarArticulos).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonAgregarArticulos).waitUntilPresent().click();
     }
 
     public void agregarArticulo(ExamplesTable datos){
@@ -50,7 +50,7 @@ public class PolizasDePrimeraPerdidaPage extends PageUtil {
     }
 
     public void seleccionartipoPrimeraPerdida(String tipoPrimeraPerdida){
-        waitUntil(200);
+        waitUntil(WAIT_TIME_200);
         selectItem(comboBoxTipoPrimeraPerdida,tipoPrimeraPerdida);
         botonActualizar.click();
     }

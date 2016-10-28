@@ -212,7 +212,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     }
 
     public void editarResumenCuenta() {
-        waitABit(1500);
+        waitABit(WAIT_TIME_1500);
         waitFor(btnEditarCuenta).shouldBeVisible();
         btnEditarCuenta.click();
     }
@@ -269,7 +269,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
         txtPais.click();
         WebElementFacade itmPais = findBy(".//li[contains(.,'" + pais + "')]");
         itmPais.click();
-        waitABit(3000);
+        waitABit(WAIT_TIME_3000);
     }
 
     public void validarDepartamento(String departamento) {
@@ -283,7 +283,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
         txtDepartamento.click();
         WebElementFacade itmDepto = findBy(".//li[contains(.,'" + departamento + "')]");
         itmDepto.click();
-        waitABit(3000);
+        waitABit(WAIT_TIME_3000);
     }
 
     public void validarCiudad(String ciudad) {

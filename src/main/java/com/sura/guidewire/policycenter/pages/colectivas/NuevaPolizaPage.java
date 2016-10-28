@@ -50,7 +50,7 @@ public class NuevaPolizaPage extends PageUtil {
     }
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         acciones.click(elementoDeLaLista).build().perform();
     }
 
@@ -67,7 +67,7 @@ public class NuevaPolizaPage extends PageUtil {
         Map<String, String> organizaciones;
         for (int i = 0; i < listaOrganizaciones.getRowCount(); i++) {
             organizaciones = listaOrganizaciones.getRows().get(i);
-            elemetoDeLaLista = withTimeoutOf(10, TimeUnit.SECONDS).find("//li[contains(.,'" + organizaciones.get("organizacion") + "')]");
+            elemetoDeLaLista = withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).find("//li[contains(.,'" + organizaciones.get("organizacion") + "')]");
             MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(organizaciones.get("organizacion"))));
         }
     }
@@ -76,7 +76,7 @@ public class NuevaPolizaPage extends PageUtil {
         String[] arregloListaCanal = datosListaCanal.split("[,]");
         WebElementFacade elemetoDeLaLista;
         for (int i = 0; i < arregloListaCanal.length; i++) {
-            elemetoDeLaLista = withTimeoutOf(15, TimeUnit.SECONDS).find("//li[contains(.,'" + arregloListaCanal[i] + "')]");
+            elemetoDeLaLista = withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).find("//li[contains(.,'" + arregloListaCanal[i] + "')]");
             MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(arregloListaCanal[i])));
         }
     }
@@ -141,12 +141,12 @@ public class NuevaPolizaPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
         if ("Individual".equals(tipoPoliza)) {
             if ("0% 0%".equals($(radioBotonIndividual).getCssValue("background-position"))) {
-                waitUntil(1500);
+                waitUntil(WAIT_TIME_1500);
                 radioBotonIndividual.click();
             }
         } else {
             if (!"0% 0%".equals($(radioBotonIndividual).getCssValue("background-position"))) {
-                waitUntil(1500);
+                waitUntil(WAIT_TIME_1500);
                 radioBotonColectiva.click();
             }
         }
@@ -154,10 +154,10 @@ public class NuevaPolizaPage extends PageUtil {
 
     public List<WebElement> obtenerTablaDeProductos(String tipoPoliza){
         if ("Individual".equals(tipoPoliza)) {
-            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaProductosIndividual).waitUntilPresent();
+            withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tablaProductosIndividual).waitUntilPresent();
             filas = tablaProductosIndividual.findElements(By.tagName("tr"));
         } else {
-            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaProductosColectiva).waitUntilPresent();
+            withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tablaProductosColectiva).waitUntilPresent();
             filas = tablaProductosColectiva.findElements(By.tagName("tr"));
         }
         return filas;
@@ -194,7 +194,7 @@ public class NuevaPolizaPage extends PageUtil {
 
     public void buscarCuenta(String numeroCuenta) {
         withTimeoutOf(35, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         btnBuscar.click();
         btnCuentas.click();
         WebElementFacade txtNumeroCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");

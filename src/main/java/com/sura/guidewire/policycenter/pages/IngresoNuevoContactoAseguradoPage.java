@@ -4,17 +4,13 @@ import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 
-public class IngresoNuevoContactoAseguradoPage extends PageObject{
-
-    PageUtil pageUtil = new PageUtil(getDriver());
-
+public class IngresoNuevoContactoAseguradoPage extends PageUtil{
     @FindBy(xpath = ".//*[@id='NewContactPopup:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     WebElementFacade campoTipoDocumento;
 
@@ -56,7 +52,7 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
     }
 
     public void ingresarDatosComunesDeContacto(Map<String, String> datosContacto){
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
         campoTipoDocumento.clear();
         campoTipoDocumento.sendKeys(datosContacto.get("tipoId"));
         campoTipoDocumento.sendKeys(Keys.ENTER);
@@ -64,18 +60,18 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
         campoPais.clear();
         campoPais.sendKeys(datosContacto.get("pais"));
         campoPais.sendKeys(Keys.ENTER);
-        pageUtil.waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         campoDepartamento.clear();
         campoDepartamento.sendKeys(datosContacto.get("departamento"));
         campoDepartamento.sendKeys(Keys.ENTER);
-        pageUtil.waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         campoCiudad.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoCiudad.sendKeys(datosContacto.get("ciudad"));
         campoCiudad.sendKeys(Keys.ENTER);
-        pageUtil.waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         campoDireccion.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDireccion.sendKeys(datosContacto.get("direccion"));
-        pageUtil.waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         campoTipoDireccion.clear();
         campoTipoDireccion.sendKeys(datosContacto.get("tipoDireccion"));
         campoTipoDireccion.sendKeys(Keys.ENTER);
@@ -86,10 +82,10 @@ public class IngresoNuevoContactoAseguradoPage extends PageObject{
         this.ingresarDatosComunesDeContacto(datosNuevaPersona);
         campoPrimerNombre.sendKeys(datosNuevaPersona.get("primerNombre"));
         campoPrimerApellido.sendKeys(datosNuevaPersona.get("primerApellido"));
-        pageUtil.waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         botonAceptar.click();
         campoMonedaPreferida.waitUntilPresent();
-        pageUtil.selectItem(campoMonedaPreferida,"COP");
+        selectItem(campoMonedaPreferida,"COP");
     }
 
     public void ingresarDatosNuevaPersonaJuridica(ExamplesTable datosPersonaJuridica) {

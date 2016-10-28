@@ -52,7 +52,7 @@ public class DireccionPrincipalDeUnContactoPage extends PageUtil {
 
     public void agregarDireccion(ExamplesTable datos) {
         Map<String,String> dato = datos.getRow(0);
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         campoTxtDireccion.sendKeys(dato.get("direccion"));
         selectItem(comboBoxDepartamento,dato.get("departamento"));
         waitForComboValue(comboBoxDepartamento,dato.get("departamento"));

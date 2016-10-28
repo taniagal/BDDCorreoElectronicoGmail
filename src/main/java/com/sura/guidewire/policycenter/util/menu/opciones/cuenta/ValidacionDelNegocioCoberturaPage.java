@@ -34,7 +34,7 @@ public class ValidacionDelNegocioCoberturaPage extends PageUtil {
     }
 
     public void irAEdificiosYUbicaciones(){
-       withTimeoutOf(20, TimeUnit.SECONDS).waitFor(btnEdificiosYUbicaciones).waitUntilPresent().click();
+       withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(btnEdificiosYUbicaciones).waitUntilPresent().click();
        opcionesInformacionPolizaMrcPage.waitInfoPoliza(lblEdificioYUbicaciones);
     }
 
@@ -46,7 +46,7 @@ public class ValidacionDelNegocioCoberturaPage extends PageUtil {
         opcionesInformacionPolizaMrcPage.waitInfoPoliza(lblCorbeturasGlobales);
         MatcherAssert.assertThat("Error: este esenario debe pasar a la siguinete" +
                 "pantalla",lblCorbeturasGlobales.isVisible());
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilPresent().click();
     }
 
     public void validaPasoPantallaSiguinete() {

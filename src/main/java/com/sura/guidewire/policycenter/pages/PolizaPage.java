@@ -28,6 +28,8 @@ public class PolizaPage extends GuidewirePage {
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private List<String> listaMotivos;
     private List<WebElementFacade> listaMotivosWE;
+    protected static final int WAIT_TIME_2 = 2;
+    protected static final int WAIT_TIME_1 = 1;
 
 
     public enum Opcion {
@@ -92,9 +94,9 @@ public class PolizaPage extends GuidewirePage {
         WebElementFacade btnEditarTransaccion = null;
         String xpatBtnAceptarConfirmacion = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
 
-        setImplicitTimeout(1, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         try {
-            btnEditarTransaccion = withTimeoutOf(1,TimeUnit.SECONDS).find(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
+            btnEditarTransaccion = withTimeoutOf(WAIT_TIME_1,TimeUnit.SECONDS).find(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION DE POLIZA NO VISUALIZADO : " + e);
         }
@@ -126,7 +128,7 @@ public class PolizaPage extends GuidewirePage {
             shouldBeVisible(opcion);
             opcion.waitUntilClickable().click();
             String xpathimgMensajesWarnig = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']//div//img[@class='warning_icon']";
-            setImplicitTimeout(2,TimeUnit.SECONDS);
+            setImplicitTimeout(WAIT_TIME_2,TimeUnit.SECONDS);
             if (findBy(xpathimgMensajesWarnig).isVisible()) {
                 opcion.waitUntilClickable().click();
             }

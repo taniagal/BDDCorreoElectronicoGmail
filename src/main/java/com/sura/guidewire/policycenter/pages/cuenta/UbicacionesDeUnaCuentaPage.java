@@ -45,7 +45,7 @@ public class UbicacionesDeUnaCuentaPage extends PageUtil {
     }
 
     public void irAUbicacionesDeUnaCuenta(String cuenta) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtIrA).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoTxtIrA).waitUntilPresent();
         campoTxtIrA.sendKeys("Search");
         campoTxtIrA.sendKeys(Keys.ENTER);
         menuItemCuentas.waitUntilPresent();
@@ -75,7 +75,7 @@ public class UbicacionesDeUnaCuentaPage extends PageUtil {
     }
 
     public void verificarTipoDeDireccion(){
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         labelTipoDeDireccion.waitUntilPresent();
         MatcherAssert.assertThat("No está el campo tipo de direccion", labelTipoDeDireccion.isPresent());
     }
