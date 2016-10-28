@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 
 
-public class OpcionesAdminitradorCotizaciones extends Commons {
+public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
 
     Actions act = new Actions(getDriver());

@@ -2,7 +2,7 @@ package com.sura.guidewire.policycenter.pages;
 
 import java.util.concurrent.TimeUnit;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;
@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 //@DefaultUrl("https://qacoreseguros.suramericana.com/pc/PolicyCenter.do")
-public class SeusLoginPage extends Commons {
+public class SeusLoginPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='country']")
     private WebElementFacade pais;

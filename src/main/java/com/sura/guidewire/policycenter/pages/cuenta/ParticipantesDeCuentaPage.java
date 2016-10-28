@@ -1,12 +1,12 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @SuppressWarnings("WeakerAccess")
-public class ParticipantesDeCuentaPage extends Commons {
+public class ParticipantesDeCuentaPage extends PageUtil {
 
     @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_Roles']/div")
     WebElementFacade mnuParticipantes;

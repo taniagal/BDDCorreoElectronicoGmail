@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.tarifa;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 
 import java.util.Map;
 
@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
 
-public class ModificadoresDeTarifaPage extends Commons{
+public class ModificadoresDeTarifaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:6:RateModifier-inputEl']")
     public WebElementFacade campoTxtBonificacionTecnica;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:2:RateModifier-inputEl']")
