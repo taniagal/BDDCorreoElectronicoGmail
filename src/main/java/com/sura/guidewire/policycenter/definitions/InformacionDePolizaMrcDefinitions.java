@@ -67,7 +67,7 @@ public class InformacionDePolizaMrcDefinitions {
     public void mensajesDeErrorRiesgosYPeps(@Named("mensaje")String mensaje,
                                             @Named("mensaje2")String mensaje2) {
         informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
-        informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje2);
+       // informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje2);
     }
 
      /*
@@ -75,7 +75,7 @@ public class InformacionDePolizaMrcDefinitions {
     */
 
 
-    @When("seleccione la poliza como reaseguro aceptado")
+    @When("seleccione la poliza como reaseguro especial")
     public void whenSeleccioneLaPolizaComoReaseguroAceptado() {
         informacionDePolizaMrcSteps.seleccionar_si_en_reaseguro();
     }
