@@ -142,7 +142,7 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
 
     public void verDetalleCotizacion() {
         waitForTextToAppear("Cotización", 5000);
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
         if (tituloDePagina.isPresent()) {
             waitForTextToAppear(tituloDePagina.getText(), 2000);
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
@@ -207,7 +207,7 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
     }
 
     public void validarDireccionTomador(String direccion) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoDireccion).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoDireccion).shouldBePresent();
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
 
@@ -257,7 +257,7 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
     public void validarDetallesCosto(Map<String, String> infoDetalleCotizacion) {
         waitFor(botonDetalleCambioCosto).shouldBeVisible();
         botonDetalleCambioCosto.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonDetalleCambioCosto).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonDetalleCambioCosto).shouldBePresent();
         MatcherAssert.assertThat(labelDCVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_labelVehiculo"))));
         MatcherAssert.assertThat(labelDCPlaca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_placa"))));
         MatcherAssert.assertThat(labelDCCodigoFasecolda.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_codigoFasecolda"))));
@@ -274,7 +274,7 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
 
     public WebElementFacade esperarElemento(final String xpath) {
         Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(30, TimeUnit.SECONDS)
+                .withTimeout(WAIT_TIME_28, TimeUnit.SECONDS)
                 .pollingEvery(5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
         return espera.until(new Function<WebDriver, WebElementFacade>() {

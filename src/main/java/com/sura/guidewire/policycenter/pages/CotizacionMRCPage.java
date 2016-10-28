@@ -104,14 +104,14 @@ public class CotizacionMRCPage extends PageUtil {
     }
 
     public void irABuscarCotizacion(String cotizacion) {
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
         menuPoliza.click();
-        waitUntil(3500);
+        waitUntil(WAIT_TIME_3500);
         menuPoliza.click();
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(WAIT_TIME_1000);
         buscarCotizacion.typeAndEnter(cotizacion);
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void ingresarACotizacion() {
@@ -126,13 +126,13 @@ public class CotizacionMRCPage extends PageUtil {
     }
 
     public void verDetalleCotizacion() {
-        waitUntil(2000);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloPagina).shouldBePresent();
+        waitUntil(WAIT_TIME_2000);
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tituloPagina).shouldBePresent();
         MatcherAssert.assertThat(tituloPagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
 
     public void validarInformacionCotizacion(Map<String, String> labelsCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(labelNumeroCotizacion).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(labelNumeroCotizacion).shouldBeVisible();
         Map<String, String> datosCotizacion;
         MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("numeroCotizacion"))));
         MatcherAssert.assertThat(labelVigenciaPoliza.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("vigenciaPoliza"))));
@@ -172,7 +172,7 @@ public class CotizacionMRCPage extends PageUtil {
     }
 
     public void mostrarDetallePrima(Map<String, String> labelsCotizacionPoliza) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tabPrimaPoliza).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tabPrimaPoliza).shouldBeVisible();
         MatcherAssert.assertThat(tabPrimaPoliza.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("tabPrimaPoliza"))));
         MatcherAssert.assertThat(botonAnularClasificacion.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("botonAnularClasificacion"))));
         MatcherAssert.assertThat(labelPrimas.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("primas"))));
@@ -186,19 +186,19 @@ public class CotizacionMRCPage extends PageUtil {
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        WebElementFacade resultadosValidacion = withTimeoutOf(28, TimeUnit.SECONDS).find(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
+        WebElementFacade resultadosValidacion = withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).find(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(21, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         MatcherAssert.assertThat(tablaMensajes.getText(),Matchers.containsString(mensaje));
-        waitUntil(5000);
+        waitUntil(WAIT_TIME_5000);
     }
 
     public void validarTipoRiesgo() {
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
         botonCotizar.click();
-        waitUntil(5000);
+        waitUntil(WAIT_TIME_5000);
     }
 }

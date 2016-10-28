@@ -1,12 +1,12 @@
 package com.sura.guidewire.policycenter.pages;
 
 
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -15,7 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
 
-public class PanelSurEspacioDeTrabajoPage extends PageObject {
+public class PanelSurEspacioDeTrabajoPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='southPanel_header']")
     WebElementFacade panelInferiorTitulo;
@@ -37,7 +37,7 @@ public class PanelSurEspacioDeTrabajoPage extends PageObject {
     }
 
     public void abrirPanelInferior() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(panelInferiorTitulo);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(panelInferiorTitulo);
         if (!panelInferiorBotonBorrar.isVisible()) {
             panelInferiorBotonArriba.click();
         }

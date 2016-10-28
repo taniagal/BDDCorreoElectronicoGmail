@@ -24,12 +24,12 @@ public class ValidacionesCambioDePolizaVehiculosPage extends PageUtil{
 
     public void emitirPoliza(){
         withTimeoutOf(22, TimeUnit.SECONDS).waitFor(botonEmitirPoliza).shouldBePresent();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         botonEmitirPoliza.click();
         waitForTextToAppear("¿Está seguro de que desea expedir este cambio de póliza?");
         waitUntil(WAIT_TIME_1000);
         act.sendKeys(Keys.ENTER).build().perform();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
     }
 
     public void validarMensaje(String mensaje){

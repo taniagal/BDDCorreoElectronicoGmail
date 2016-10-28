@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.util.navegacion.pages;
 
 import com.google.common.base.Function;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.steps.StepInterceptor;
@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
-public class GuidewireLoginPages extends PageObject implements Serializable{
+public class GuidewireLoginPages extends PageUtil implements Serializable{
     private static final long serialVersionUID = 1L;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -49,7 +49,7 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
         getDriver().manage().window().maximize();
         WebElementFacade elemento = null;
         try {
-            setImplicitTimeout(1, TimeUnit.SECONDS);
+            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
             waitFor($(xpath)).shouldBeVisible();
             elemento = element(find(By.xpath(xpath)));
             resetImplicitTimeout();
@@ -89,7 +89,7 @@ public class GuidewireLoginPages extends PageObject implements Serializable{
     public void ingresar_por_rol(String rol) {
         LOGGER.info("INICIO GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
         if ("Asesor".equals(rol)) {
-            setImplicitTimeout(2, TimeUnit.SECONDS);
+            setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
             if (!findAll(TXT_USUARIO).isEmpty()) {
                 enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
                 enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));

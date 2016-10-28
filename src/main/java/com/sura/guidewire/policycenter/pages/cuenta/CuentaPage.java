@@ -101,11 +101,11 @@ public class CuentaPage extends PageUtil {
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         waitFor(botonAgregarOrganizacion).click();
-        waitUntil(500);
+        waitUntil(WAIT_TIME_500);
         campoTxtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
-        waitUntil(500);
+        waitUntil(WAIT_TIME_500);
         selectItem(comboBoxCodigoAgente,agente);
     }
 
@@ -143,12 +143,12 @@ public class CuentaPage extends PageUtil {
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
         MatcherAssert.assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
     }
 
     public  void verificarEstadoDeMensaje(String mensaje){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         MatcherAssert.assertThat("El mensaje erroneo sigue apareciendo", !divMensaje.containsText(mensaje));
     }
 }

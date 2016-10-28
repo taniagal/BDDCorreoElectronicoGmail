@@ -73,36 +73,36 @@ public class HistorialCuentaPage extends PageUtil {
     }
 
     public void seleccionarCuenta(String numCuenta) {
-        waitUntil(2500);
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(mnuCuenta).shouldBePresent();
+        waitUntil(WAIT_TIME_2500);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mnuCuenta).shouldBePresent();
         mnuCuenta.click();
         waitUntil(4000);
         mnuCuenta.click();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(3500);
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(txtNumCuenta).type(numCuenta);
+        waitUntil(WAIT_TIME_3500);
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(txtNumCuenta).type(numCuenta);
         act.sendKeys(Keys.ENTER).build().perform();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void buscarCuenta(String numCuenta) {
         waitFor(mnuCuenta).shouldBePresent();
         act.sendKeys(mnuCuenta,Keys.ARROW_DOWN).build().perform();
         act.moveToElement(txtNumCuenta).click().build().perform();
-        setImplicitTimeout(1, TimeUnit.SECONDS);
-        waitUntil(2000);
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        waitUntil(WAIT_TIME_2000);
         txtNumCuenta.waitUntilEnabled();
         txtNumCuenta.type(numCuenta);
         btnBuscarCuenta.waitUntilEnabled();
         btnBuscarCuenta.click();
-        setImplicitTimeout(1, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
     }
 
     public void seleccionarHistorial() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(mnuHistorial).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mnuHistorial).shouldBePresent();
         mnuHistorial.click();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void buscarCuentaRelacionadoCon(){
@@ -111,17 +111,17 @@ public class HistorialCuentaPage extends PageUtil {
         itmRelacionadoCon.waitUntilEnabled();
         itmRelacionadoCon.click();
         btnBuscarItem.click();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void buscarCuentaProducto(){
         waitFor(btnMostrarProducto).shouldBePresent();
         btnMostrarProducto.click();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         itmProducto.click();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         btnBuscarItem.click();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void validarResultadoBusqueda(){
@@ -155,11 +155,11 @@ public class HistorialCuentaPage extends PageUtil {
         txtFechaHasta.type(fechaHasta);
         btnBuscarItem.waitUntilEnabled();
         btnBuscarItem.click();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void validarDatosOpcionesMultiples(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String usuario = txtUsuario.getValue().toString();
         for (WebElement row : allRows) {
@@ -169,7 +169,7 @@ public class HistorialCuentaPage extends PageUtil {
     }
 
     public void validarResultadoProducto(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String producto = txtProducto.getValue().toString();
         for (WebElement row : allRows) {

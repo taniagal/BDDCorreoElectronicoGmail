@@ -138,7 +138,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void seleccionaRiesgoAceptado() {
         waitInfoPoliza(lblInformaPoliza);
         radioBotReaseguroEspecial.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(checkiReaseguroAceptado).waitUntilVisible();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(checkiReaseguroAceptado).waitUntilVisible();
         checkiReaseguroAceptado.click();
     }
 
@@ -171,7 +171,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public Integer encontrarProducto(String producto) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
+        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
@@ -243,7 +243,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void validaReaseguro() {
-        setImplicitTimeout(3, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if (!"Compañía cedente".equals(lblTomador.getText()))
             notPresent.append("salida errada: Compañía cedente|");
@@ -266,7 +266,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
     // TODO: 30/06/2016 Metodo wait para implementar generico
     public void waitInfoPoliza(WebElementFacade webElementFacade) {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
 
 

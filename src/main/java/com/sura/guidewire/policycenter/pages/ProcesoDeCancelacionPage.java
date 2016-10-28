@@ -55,12 +55,12 @@ public class ProcesoDeCancelacionPage extends PageUtil {
     public void cancelacioConAutorizacion() {
         btnOpcionesDeCompromiso.click();
         btnCancelarAhora.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAceptarAhora).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarAhora).waitUntilClickable();
         btnAceptarAhora.click();
     }
 
     public void validaAutorizacionEnFormulario() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnDetalle).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnDetalle).waitUntilClickable();
         btnDetalle.click();
         waitUntil(WAIT_TIME_1000);
         MatcherAssert.assertThat("Autorizacion no presente, verificar", linkAutorizacion.isVisible());
@@ -68,21 +68,21 @@ public class ProcesoDeCancelacionPage extends PageUtil {
 
     public void cerrarTransaccionEnValidacion() {
         btnOpcionDeCierre.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
         btnRetirarTransaccion.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAceptarAhora).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarAhora).waitUntilPresent();
         btnAceptarAhora.click();
         waitUntil(1000);
     }
 
     public void iniciaProgramacionDeCancelacion() {
         btnOpcionesDeCompromiso.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnProgramarCancelacion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnProgramarCancelacion).waitUntilClickable();
         btnProgramarCancelacion.click();
     }
 
     public void validaVentanaMensaje(String mensaje) {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensajeVentana).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensajeVentana).waitUntilPresent();
         MatcherAssert.assertThat("Error, mensaje", lblMensajeVentana.getText().equals(mensaje));
         btnCancelarVentana.click();
 

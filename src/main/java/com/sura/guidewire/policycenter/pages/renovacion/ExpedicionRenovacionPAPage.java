@@ -36,15 +36,15 @@ public class ExpedicionRenovacionPAPage extends PageUtil {
     }
 
     public void emitirRenovacion() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();
         botonOpcionesCompromiso.click();
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(itemEmitirAhora).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(itemEmitirAhora).shouldBeVisible();
         itemEmitirAhora.click();
     }
 
     public void validarMensajeAdvertencia(ExamplesTable mensaje) {
         Map<String, String> mensajeAdvertencia = mensaje.getRows().get(0);
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mensajeAdvertenciaRenovacion).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(mensajeAdvertenciaRenovacion).shouldBeVisible();
         MatcherAssert.assertThat(mensajeAdvertenciaRenovacion.getText(), Is.is(Matchers.equalTo(mensajeAdvertencia.get("mensaje"))));
         act.sendKeys(Keys.TAB).build().perform();
         waitUntil(WAIT_TIME_1000);
@@ -55,7 +55,7 @@ public class ExpedicionRenovacionPAPage extends PageUtil {
     public void mostrarResumenRenovacion() {
         waitForTextToAppear("¿Está seguro de que desea emitir la renovación de la póliza?");
         act.sendKeys(Keys.ENTER).build().perform();
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelRenovacionExpedida).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelRenovacionExpedida).shouldBeVisible();
     }
 
     public void validarMensajeRenovacionRealizada(String mensaje) {

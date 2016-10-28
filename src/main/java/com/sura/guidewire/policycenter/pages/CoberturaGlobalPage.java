@@ -53,7 +53,7 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void irACoberturasGlobales() {
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
     }
 
     public void navegarPorCobertura(String descripcion, String tipoCobertura){
@@ -76,7 +76,7 @@ public class CoberturaGlobalPage extends PageUtil {
     public void cargarCoberturaUnica(String nombreCobertura, String valor) {
         comboBoxCoberturas.waitUntilPresent();
         selectItem(comboBoxCoberturas, nombreCobertura);
-        waitUntil(2500);
+        waitUntil(WAIT_TIME_2500);
         linkCoberturas.click();
         checkBoxGenerico.waitUntilPresent().click();
         campoTxtGenerico.sendKeys(valor);
@@ -108,7 +108,7 @@ public class CoberturaGlobalPage extends PageUtil {
         navegarPorCobertura(dato.get("descripcion"), dato.get("tipo_cobertura"));
         comboBoxCoberturas.waitUntilPresent();
         selectItem(comboBoxCoberturas, dato.get("nombre_cobertura"));
-        waitUntil(2500);
+        waitUntil(WAIT_TIME_2500);
         botonAceptar.click();
         waitUntil(WAIT_TIME_1000);
     }

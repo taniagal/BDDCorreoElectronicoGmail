@@ -86,7 +86,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
                 if (nomProducto.equals(descripcion.getText())) {
                     botones.get(i).click();
                     if ("Multiriesgo corporativo".equals(nomProducto)){
-                        setImplicitTimeout(1,TimeUnit.SECONDS);
+                        setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
                         if (botonAceptarPopup.isPresent()){
                             botonAceptarPopup.click();
                             waitForAbsenceOf(".//span[contains(.,'Aceptar')]");
@@ -101,7 +101,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
 
 
     public void irANuevaCotizacion(){
-        setImplicitTimeout(1,TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
         if(!botonAcciones.isPresent()) {
             menuItemEscritorio.click();
         }
@@ -129,8 +129,8 @@ public class DetallesDeUbicacionPage extends PageUtil {
     }
 
     public void irAUbicacion(){
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
     }
 

@@ -34,7 +34,7 @@ public class ReglaPreRenovacionDirPaPage extends PageUtil {
 
     public void ingresarARenovacion() {
         listaOpcionPreviasALaRenovacion.click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelInstruccionesPreviasRenovacion).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelInstruccionesPreviasRenovacion).shouldBeVisible();
     }
 
     public void ingresaEditarInstrucciones() {
@@ -42,7 +42,7 @@ public class ReglaPreRenovacionDirPaPage extends PageUtil {
     }
 
     public void validaLista(ExamplesTable opcionesDir) throws Exception {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(comboBoxLista).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(comboBoxLista).waitUntilPresent().click();
         this.validarDatosDeLaLista(opcionesDir);
         botonCancelar.click();
         waitFor(labelResumen).waitUntilPresent();
@@ -52,7 +52,7 @@ public class ReglaPreRenovacionDirPaPage extends PageUtil {
         List<WebElementFacade> elementoInstruccion;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {
-            elementoInstruccion = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
+            elementoInstruccion = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
             for (WebElementFacade lista : elementoInstruccion) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }

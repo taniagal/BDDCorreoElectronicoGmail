@@ -116,7 +116,7 @@ public class CotizacionDePolizaPage extends PageUtil {
     public void verDetalleCotizacion() {
         waitForTextToAppear("Calificación");
         waitUntil(WAIT_TIME_1000);
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
             waitForTextToAppear(tituloDePagina.getText());
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
@@ -128,7 +128,7 @@ public class CotizacionDePolizaPage extends PageUtil {
     }
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        withTimeoutOf(15,TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_15,TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
         Map<String, String> datosCotizacion;
         MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroCotizacion"))));
         MatcherAssert.assertThat(labelVigenciaPoliza.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("vigenciaPoliza"))));
@@ -173,12 +173,12 @@ public class CotizacionDePolizaPage extends PageUtil {
         boolean validacionMensaje = grupoMensajes.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
         WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBorrar).click();
-        waitUntil(2000);
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(botonBorrar).click();
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void validarTipoRiesgo() {
-        setImplicitTimeout(2,TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_2,TimeUnit.SECONDS);
         if(tituloDePagina.isPresent()){
             waitFor(tituloDePagina).shouldBePresent();
         }else if(tituloCalificacion.isPresent()){
@@ -204,7 +204,7 @@ public class CotizacionDePolizaPage extends PageUtil {
 
     public WebElementFacade esperarElemento(final String xpath) {
         Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(30, TimeUnit.SECONDS)
+                .withTimeout(WAIT_TIME_28, TimeUnit.SECONDS)
                 .pollingEvery(5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
         return  espera.until(new Function<WebDriver, WebElementFacade>() {
@@ -215,7 +215,7 @@ public class CotizacionDePolizaPage extends PageUtil {
     }
 
     public void mostrarValorYCuotas(String valorCuota, String numeroCuotas) {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(labelValorCuota).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(labelValorCuota).shouldBeVisible();
         boolean validacion = labelValorCuota.isCurrentlyEnabled() && labelNumeroCuotas.isCurrentlyEnabled();
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(true)));
         MatcherAssert.assertThat("Error en el valor de la cuota, expected '"+valorCuota+"' but was: "+campoValorCuota.getText(),campoValorCuota.getText().contains(valorCuota));

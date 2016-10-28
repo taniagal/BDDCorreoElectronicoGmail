@@ -2,7 +2,6 @@ package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -15,7 +14,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
-public class ExpedicionCambioDePolizaUWPEPSPage extends PageObject{
+public class ExpedicionCambioDePolizaUWPEPSPage extends PageUtil{
 
     Actions act = new Actions(getDriver());
 
@@ -45,46 +44,43 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends PageObject{
     public ExpedicionCambioDePolizaUWPEPSPage(WebDriver driver){
         super(driver);
     }
-    PageUtil cm = new PageUtil(getDriver());
-
-
 
     public void validarFigurasIgualDNI(String tipoDocumento, String numeroDocumento) {
-        cm.waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         if(campoTipoDocumento.isCurrentlyVisible()) {
-            withTimeoutOf(20,TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
+            withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
             MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(tipoDocumento)));
             MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(numeroDocumento)));
         }else if(campoTipoDocumentoModificacion.isCurrentlyVisible()) {
-            withTimeoutOf(20,TimeUnit.SECONDS).waitFor(campoTipoDocumentoModificacion).shouldBeVisible();
+            withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(campoTipoDocumentoModificacion).shouldBeVisible();
             MatcherAssert.assertThat(campoTipoDocumentoModificacion.getText(), Is.is(Matchers.equalTo(tipoDocumento)));
             MatcherAssert.assertThat(campoNumeroDocumentoModificacion.getText(), Is.is(Matchers.equalTo(numeroDocumento)));
         }
     }
 
     public void emitirPoliza() {
-        cm.waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         if(botonExpedirPoliza.isCurrentlyVisible()){
-            withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
+            withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
         }else if(botonExpedirPolizaModificacion.isCurrentlyVisible()){
-            withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonExpedirPolizaModificacion).click();
+            withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonExpedirPolizaModificacion).click();
         }
     }
 
    public void aceptarExpedir(){
-       withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAceptar).waitUntilClickable();
+       withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptar).waitUntilClickable();
        btnAceptar.click();
    }
 
     public void verificarGeneracionUW() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(tituloBloqueo).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(tituloBloqueo).shouldBePresent();
         MatcherAssert.assertThat(tituloBloqueo.getText(),Is.is(Matchers.equalTo("Asuntos que bloquean la expedición")));
     }
 
     public void validarMensajePEP(String mensaje) {
         withTimeoutOf(40,TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBeVisible();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(menuPoliza).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuPoliza).waitUntilClickable();
     }
 
     public void validarConcatenacionMensaje(ExamplesTable texto) {

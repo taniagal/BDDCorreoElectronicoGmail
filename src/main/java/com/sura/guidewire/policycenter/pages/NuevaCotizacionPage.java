@@ -47,6 +47,7 @@ public class NuevaCotizacionPage extends PageObject {
     public static final String MENSAJES_DE_INFORMACION = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div";
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
     public static final String TRACE = "\nTRACE: \n";
+    protected static final int WAIT_TIME_15 = 15;
 
 
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
@@ -95,7 +96,7 @@ public class NuevaCotizacionPage extends PageObject {
         List<WebElementFacade> elementos = null;
         try {
             waitFor($(xpath)).shouldBeVisible();
-            elementos = withTimeoutOf(15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
+            elementos = withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).findAll(By.xpath(xpath));
 
         } catch (NoSuchElementException e) {
             LOGGER.info("\nERROR050: Elemento de NuevaCotizacionPage no encontrado \nElemento: " + xpath + TRACE + e);

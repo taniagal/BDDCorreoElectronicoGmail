@@ -73,7 +73,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     }
 
     public void existeEncabezadoDeTabla(ExamplesTable encabezados, String keyElement, String xPathElementos) {
-        List<WebElementFacade> listEncabezados = withTimeoutOf(15, TimeUnit.SECONDS).findAll(xPathElementos);
+        List<WebElementFacade> listEncabezados = withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).findAll(xPathElementos);
         int countCoincidencias = 0;
         for (Map<String, String> enc : encabezados.getRows()) {
             if (enc.containsKey(keyElement)) {
@@ -90,19 +90,19 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
 
     private List<WebElementFacade> getListaContactos() {
         List<WebElementFacade> contactos;
-        contactos = withTimeoutOf(15, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+        contactos = withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return contactos;
     }
 
     private List<WebElementFacade> getListaRolesFunciones() {
         List<WebElementFacade> rolesFunciones;
-        rolesFunciones = withTimeoutOf(15, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
+        rolesFunciones = withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV']/div/div/table/tbody/tr");
         return rolesFunciones;
     }
 
     private List<WebElementFacade> getListaDirecciones() {
         List<WebElementFacade> direcciones;
-        direcciones = withTimeoutOf(15, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
+        direcciones = withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).findAll(".//div[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet_ref']/table/tbody/tr");
         return direcciones;
     }
 
@@ -193,7 +193,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     public Boolean validarOcurrenciaDeMensajeDeAplicacion(String idXpathDivMensajes, String mensajesApp){
         Boolean existeOcurrencia = Boolean.FALSE;
         String mensajeMostrado="";
-        List<WebElementFacade> divsMensajes = withTimeoutOf(1, TimeUnit.SECONDS).findAll(idXpathDivMensajes);
+        List<WebElementFacade> divsMensajes = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll(idXpathDivMensajes);
         for (WebElementFacade div : divsMensajes) {
             mensajeMostrado = div.getText();
             if (mensajeMostrado.toLowerCase().contains(mensajesApp.toLowerCase())) {
@@ -213,7 +213,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
 
     public void ElimnarContactoAsociado(String nombreContacto) {
         waitUntil(WAIT_TIME_1000);
-        List<WebElementFacade> checkBoxes = withTimeoutOf(1, TimeUnit.SECONDS)
+        List<WebElementFacade> checkBoxes = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS)
                 .findAll("//img[contains(@class,'x-grid-checkcolumn')]");
         int cont = 0;
         for (WebElementFacade contacto : getListaContactos()) {
@@ -223,7 +223,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
                     if (i == cont){
                         checkBoxes.get(cont-1).click();
                         btnEliminar.click();
-                        waitUntil(300);
+                        waitUntil(WAIT_TIME_300);
                     }
                 }
                 break;

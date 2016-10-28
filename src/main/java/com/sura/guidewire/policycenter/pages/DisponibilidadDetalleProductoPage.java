@@ -5,7 +5,6 @@ import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -13,7 +12,7 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class DisponibilidadDetalleProductoPage extends PageObject {
+public class DisponibilidadDetalleProductoPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
     private WebElementFacade listaTipoCanalDeVenta;
@@ -32,20 +31,17 @@ public class DisponibilidadDetalleProductoPage extends PageObject {
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
 
-    PageUtil pageUtil = new PageUtil(getDriver());
-
-
     public DisponibilidadDetalleProductoPage(WebDriver driver) {
         super(driver);
     }
 
     public void accionarNuevoEnvio() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(btnAccionesCuenta).waitUntilPresent().click();
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(opcionNuevoEnvio).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(btnAccionesCuenta).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(opcionNuevoEnvio).waitUntilPresent().click();
     }
 
     public void verInformacionDePoliza() {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(opcionVerInformacionPoliza).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(opcionVerInformacionPoliza).waitUntilPresent().click();
     }
 
 
@@ -56,7 +52,7 @@ public class DisponibilidadDetalleProductoPage extends PageObject {
 
     public void seleccionarAgentePorNombre(String nombreAgente) {
         waitFor(campoNombreAgente).waitUntilPresent();
-        pageUtil.waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         campoNombreAgente.click();
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(".//li[@role='option']"));
         if (!listaNombresAgentesElement.isEmpty()) {

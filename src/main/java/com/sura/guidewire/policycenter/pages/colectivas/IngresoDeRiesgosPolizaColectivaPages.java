@@ -69,7 +69,7 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageUtil {
     }
 
     public Integer encontrarRiesgo(String riesgo) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaRiesgos).waitUntilVisible();
+        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(tablaRiesgos).waitUntilVisible();
         Integer filaRiesgo = 0;
         List<WebElement> filas = tablaRiesgos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
@@ -83,7 +83,7 @@ public class IngresoDeRiesgosPolizaColectivaPages extends PageUtil {
     }
 
     public void clicEnActualizarInformacionDePolizaColectiva() {
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         if(botonActualizar.isVisible()) {
             botonActualizar.click();
         }

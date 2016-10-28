@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class NavegacionSuperiorWidgetImpl extends WidgetObjectImpl implements INavegacionSuperiorWidget {
 
     private static final String XPATH_CONTENEDOR_SUBMENU_DESPLEGABLE = "//div[contains(@class, 'x-panel x-layer x-panel-default x-menu x-border-box')]";
+    protected static final int WAIT_TIME_1 = 1;
 
     public NavegacionSuperiorWidgetImpl(PageObject page, ElementLocator locator, long timeoutInMilliseconds) {
         super(page, locator, timeoutInMilliseconds);
@@ -19,7 +20,7 @@ public class NavegacionSuperiorWidgetImpl extends WidgetObjectImpl implements IN
 
     @Override
     public void deplegarMenu(MenuNavegacionSuperiorEnum menu) {
-        getPage().setImplicitTimeout(1, TimeUnit.SECONDS);
+        getPage().setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (esMenuVisible(menu)) {
             WebElementFacade menuWE = getPage().moveTo(menu.xpath());
             menuWE.setWindowFocus();

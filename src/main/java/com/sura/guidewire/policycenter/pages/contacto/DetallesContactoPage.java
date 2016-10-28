@@ -144,16 +144,16 @@ public class  DetallesContactoPage extends PageUtil {
     }
 
     public void irABuscarContacto() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
         campoTxtIrA.sendKeys("Search");
         campoTxtIrA.sendKeys(Keys.ENTER);
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuItemContactos).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(menuItemContactos).shouldBePresent();
         menuItemContactos.click();
     }
 
 
     public void editarContacto(){
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
         botonEditarContacto.waitUntilVisible();
         MatcherAssert.assertThat("El boton de editar no está presente en el DOM",botonEditarContacto.isPresent());
         botonEditarContacto.click();
@@ -163,13 +163,13 @@ public class  DetallesContactoPage extends PageUtil {
 
     public void actualizaContacto(){
         botonActualizar.click();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
     }
 
 
     public void setDireccion(){
         botonAgregar.click();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
 
@@ -183,7 +183,7 @@ public class  DetallesContactoPage extends PageUtil {
 
     public void setApellido(String segundoApellido){
         campoTxtSegundoApellido.clear();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         campoTxtSegundoApellido.sendKeys(segundoApellido);
         dtlContact[3]= segundoApellido;
     }
@@ -201,7 +201,7 @@ public class  DetallesContactoPage extends PageUtil {
 
     public void setTelefonosResidencial(String telefonoResidencial){
         campoTxtTelefonoResidencial.clear();
-        waitUntil(500);
+        waitUntil(WAIT_TIME_500);
         campoTxtTelefonoResidencial.type(telefonoResidencial);
         dtlContact[11]= telefonoResidencial;
     }
@@ -241,7 +241,7 @@ public class  DetallesContactoPage extends PageUtil {
 
 
     public void setEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
-        waitUntil(500);
+        waitUntil(WAIT_TIME_500);
         campoTxtNumeroEmpleados.clear();
         campoTxtNumeroEmpleados.sendKeys(numeroEmpleados);
         campoTxtValorActivos.clear();

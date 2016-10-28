@@ -64,16 +64,16 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
             cboTipoDocumento.sendKeys(Keys.ENTER);
             cboDepartamento.type("ANTIOQUIA");
             cboDepartamento.sendKeys(Keys.ENTER);
-            waitABit(3000);
+            waitABit(WAIT_TIME_3000);
             //cboCiudad.clear();
-            waitABit(1500);
+            waitABit(WAIT_TIME_1500);
             cboCiudad.type("MEDELLIN");
             cboCiudad.sendKeys(Keys.ENTER);
-            waitABit(3000);
+            waitABit(WAIT_TIME_3000);
             txtDireccion.clear();
             waitABit(WAIT_TIME_1000);
             txtDireccion.type("CL 45 - 56 A 109");
-            waitABit(2000);
+            waitABit(WAIT_TIME_2000);
             btnActualizar.click();
             esAsociado = Boolean.TRUE;
         } catch (Exception e) {

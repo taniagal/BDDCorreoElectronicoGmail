@@ -86,7 +86,7 @@ public class NuevoContactoPage extends PageUtil {
         this.direccion.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
         waitForComboValue(comboBoxDepartamento,departamento);
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         selectItem(comboBoxCiudad,ciudad);
         waitForComboValue(comboBoxCiudad,ciudad);
     }
@@ -94,7 +94,7 @@ public class NuevoContactoPage extends PageUtil {
     public void actualizarPersonaNatural(String primerNombre) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         nombreContact.waitUntilPresent();
         MatcherAssert.assertThat(this.nombreContact.getText(), Matchers.containsString(primerNombre));
     }
@@ -137,7 +137,7 @@ public class NuevoContactoPage extends PageUtil {
     public void actualizarJuridica(String razonSocial) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         desRazonSocial.waitUntilPresent();
         MatcherAssert.assertThat(this.desRazonSocial.getText().toString(), Matchers.containsString(razonSocial));
 
@@ -163,7 +163,7 @@ public class NuevoContactoPage extends PageUtil {
     public void validarCampoPaisDepartamentoYCiudad() {
         if (esTelefonoFijo(this.tipoTelefono.getValue())) {
             actualizar();
-            List<WebElementFacade> tabs = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='NewContact:_msgs']//div");
+            List<WebElementFacade> tabs = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll(".//*[@id='NewContact:_msgs']//div");
             EnumContacto mensajeRequerido = null;
             boolean flag;
             for (WebElementFacade div : tabs) {

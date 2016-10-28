@@ -113,18 +113,18 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void irAModificarInformacionPoliza() {
-        waitUntil(2500);
+        waitUntil(WAIT_TIME_2500);
         waitFor(menuAcciones).shouldBePresent();
         menuAcciones.click();
         waitFor(itemCambiarPoliza).shouldBeVisible();
         itemCambiarPoliza.click();
         waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
         botonSiguienteInfoPoliza.click();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void validarInformacionPoliza(Map<String, String> labelsInformacionPoliza, ExamplesTable informacionPoliza) {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBePresent();
         Map<String, String> datosPoliza;
         MatcherAssert.assertThat(labelTipoDocumento.getText(), Is.is(Matchers.equalTo(labelsInformacionPoliza.get("tipoDocumento"))));
         MatcherAssert.assertThat(labelNumeroDocumento.getText(), Is.is(Matchers.equalTo(labelsInformacionPoliza.get("numeroDocumento"))));
@@ -165,22 +165,22 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void adicionarSegundoTomador(String tipoDocumento, String numeroDocumento) {
-        waitUntil(5000);
+        waitUntil(WAIT_TIME_5000);
         waitFor(labelTomadorSecundario).shouldBePresent();
         WebElementFacade botonTomadorSecundario = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']");
         waitFor(botonTomadorSecundario).click();
         WebElementFacade itemPersonaDirectorio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-textEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
         adicionarContacto(tipoDocumento, numeroDocumento);
     }
 
     public void adicionarContacto(String tipoDocumento, String numeroDocumento){
         waitUntil(WAIT_TIME_1000);
         WebElementFacade campoTxtTipoDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtTipoDocumento).typeAndTab(tipoDocumento);
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoTxtTipoDocumento).typeAndTab(tipoDocumento);
         waitUntil(WAIT_TIME_1000);
         WebElementFacade campoTxtNumeroDocumento = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtNumeroDocumento).type(numeroDocumento);
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoTxtNumeroDocumento).type(numeroDocumento);
         WebElementFacade botonBuscarContacto = findBy(".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']");
         waitUntil(WAIT_TIME_1000);
         waitFor(botonBuscarContacto).click();
@@ -252,7 +252,7 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void presionarBotonSiguiente(){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBeVisible();
         botonSiguiente.click();
         waitUntil(WAIT_TIME_1000);
     }
@@ -260,25 +260,25 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     public void validarMensajeWarningTomador(String mensaje) {
         waitUntil(WAIT_TIME_1000);
         WebElementFacade grupoMensajes = findBy(".//div[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:_msgs']/div");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         botonSiguiente.click();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void validarMensajeWarningAsegurado(String mensaje) {
         waitUntil(WAIT_TIME_1000);
         WebElementFacade grupoMensajes = findBy(".//div[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:_msgs']/div");
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         botonSiguiente.click();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void permitirContinuarCotizacion() {
         waitUntil(WAIT_TIME_1000);
         WebElementFacade labelTituloAsegurados = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelTituloAsegurados).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelTituloAsegurados).shouldBePresent();
         MatcherAssert.assertThat(labelTituloAsegurados.getText(), Is.is(Matchers.equalTo("Asegurados")));
         waitUntil(WAIT_TIME_1000);
     }
@@ -289,11 +289,11 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void adicionarAsegurado(String tipoDocumento, String numeroDocumento) {
-        waitUntil(5000);
+        waitUntil(WAIT_TIME_5000);
         WebElementFacade botonAgregar= findBy(". //span[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnEl']/span");
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonAgregar).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregar).click();
         WebElementFacade itemPersonaDirectorio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddFromSearch-textEl']");
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
         adicionarContacto(tipoDocumento, numeroDocumento);
     }
 
@@ -305,9 +305,9 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     public void validarContinuacionDeCotizacion(String encabezado, String xpathEncabezado) {
         waitUntil(WAIT_TIME_1000);
         WebElementFacade labelTitulo = findBy(xpathEncabezado);
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(labelTitulo).shouldBePresent();
-        waitUntil(1500);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelTitulo).shouldBePresent();
+        waitUntil(WAIT_TIME_1500);
         MatcherAssert.assertThat(labelTitulo.getText(), Is.is(Matchers.equalTo(encabezado)));
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
     }
 }

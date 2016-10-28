@@ -59,7 +59,7 @@ public class CotizacionDeCancelacionPage extends PageUtil {
         inicioCancelacionPage.txtDescripMotivo.click();
         inicioCancelacionPage.txtDescripMotivo.sendKeys("Motivo");
         btnIniciarCancelacion.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(inputNumPoliza).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(inputNumPoliza).waitUntilClickable();
     }
 
     public void validacionesCamposPoliza() {
@@ -80,9 +80,9 @@ public class CotizacionDeCancelacionPage extends PageUtil {
 
     public void cerrarTransaccionPoliza() {
         btnOpcionDeCierre.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilClickable();
         btnRetirarTransaccion.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAceptarRetirarTransaccion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarRetirarTransaccion).waitUntilClickable();
         btnAceptarRetirarTransaccion.click();
         waitUntil(1000);
     }

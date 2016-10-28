@@ -42,12 +42,12 @@ public class OpcionesInformacionDePagoPage extends PageUtil {
 
     public void validaPrograma(String programa){
         MatcherAssert.assertThat("El Programa de pagos cambio o no corresponde al enviado por Billing", programa.equals(lblPrograma.getText()));
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilClickable();
     }
 
     // TODO: 07/09/2016 Metodo wait para implementar generico
     public void waitPayment(WebElementFacade webElementFacade) {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
 
 

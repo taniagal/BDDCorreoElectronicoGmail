@@ -90,18 +90,18 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
 
 
     public void irAPantallaCoberturasSinValidacionFecha() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilVisible();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilVisible();
         itemCoberturasAuto.click();
     }
 
     public void irAPantallaCoberturas() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
     }
 
 
     public void validarCoberturasPoliza(ExamplesTable coberturas) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelCoberturasAutoPersonal).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelCoberturasAutoPersonal).shouldBeVisible();
         Map<String, String> coberturasAuto = coberturas.getRows().get(0);
         MatcherAssert.assertThat(labelDanosTerceros.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("danosTerceros"))));
         MatcherAssert.assertThat(labelResponsabilidadCivil.getText(), Matchers.is(Matchers.equalTo(coberturasAuto.get("responsabilidadCivil"))));
@@ -112,21 +112,21 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     }
 
     public void editarTransaccionPoliza() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
         waitForTextToAppear("Si se edita esta transacción de la póliza, se invalida la cotización actual");
         act.sendKeys(Keys.ENTER).build().perform();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
     }
 
     public void retirarCoberturaObligatoria(ExamplesTable cobertura) {
         Map<String, String> coberturasObligatoria = cobertura.getRows().get(0);
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelResponsabilidadCivil).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelResponsabilidadCivil).shouldBeVisible();
         MatcherAssert.assertThat(labelResponsabilidadCivil.getText(), Matchers.is(Matchers.equalTo(coberturasObligatoria.get("cobertura"))));
     }
 
     public void validarCoberturasObligatorias() {
         String xpathFieldsetRCSinCheckbox = ".//fieldset[(child::legend[contains(.,'Responsabilidad Civil')]) and not(descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaRC = withTimeoutOf(1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetRCSinCheckbox));
+        WebElementFacade grupoCoberturaRC = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetRCSinCheckbox));
         MatcherAssert.assertThat(grupoCoberturaRC, Matchers.notNullValue());
     }
 
@@ -147,21 +147,21 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
 
     public void retirarCoberturasOpcionales() {
         String xpathFieldsetHurto = ".//fieldset[(child::legend[contains(.,'Hurto')]) and (descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaHurto = withTimeoutOf(1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetHurto));
+        WebElementFacade grupoCoberturaHurto = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetHurto));
         MatcherAssert.assertThat(grupoCoberturaHurto, Matchers.notNullValue());
         checkBoxHurto.click();
     }
 
     public void adicionarNuevaCobertura() {
         String xpathFieldsetAccidentes = ".//fieldset[(child::legend[contains(.,'Accidentes al Conductor')]) and (descendant::input[contains(@role,'checkbox')])]";
-        WebElementFacade grupoCoberturaAccidentes = withTimeoutOf(1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetAccidentes));
+        WebElementFacade grupoCoberturaAccidentes = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetAccidentes));
         MatcherAssert.assertThat(grupoCoberturaAccidentes, Matchers.notNullValue());
         checkBoxAccidentes.click();
     }
 
     public void borrarEspacioTrabajo() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(btnBorrar).click();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(btnBorrar).click();
         PageUtil espera = new PageUtil(getDriver());
-        espera.waitUntil(2000);
+        espera.waitUntil(WAIT_TIME_2000);
     }
 }

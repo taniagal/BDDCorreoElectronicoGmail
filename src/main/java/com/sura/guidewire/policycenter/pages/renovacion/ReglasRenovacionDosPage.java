@@ -46,20 +46,20 @@ public class ReglasRenovacionDosPage extends PageUtil {
     */
     public void clicHastaVehiculo() {
         waitUntil(WAIT_TIME_1000);
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnSiguinete).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnSiguinete).waitUntilClickable();
         btnSiguinete.click();
         waitUntil(WAIT_TIME_1000);
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblAsegurado).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblAsegurado).waitUntilPresent();
         waitUntil(WAIT_TIME_1000);
         btnSiguinete.click();
     }
 
     public void editarTransaccion() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnEditarTransaccion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnEditarTransaccion).waitUntilClickable();
         btnEditarTransaccion.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAceptarEditarTransaccion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarEditarTransaccion).waitUntilClickable();
         btnAceptarEditarTransaccion.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilClickable();
     }
 
     public void ingresaValorMayorVeintePorciento() {
@@ -73,7 +73,7 @@ public class ReglasRenovacionDosPage extends PageUtil {
     }
 
     public void ingresaValorAccesoriosEspeciales() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(txtvalorAccesoriosEspe).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(txtvalorAccesoriosEspe).waitUntilClickable();
         int valorTotalAccesorioEsp = 1 + Integer.parseInt(txtValorAsegurado.getValue().substring(0, 8));
         txtvalorAccesoriosEspe.clear();
         txtvalorAccesoriosEspe.click();
@@ -87,16 +87,16 @@ public class ReglasRenovacionDosPage extends PageUtil {
     }
 
     public void validacionMensajeValores(String mensaje){
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensajes).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensajes).waitUntilPresent();
         waitUntil(WAIT_TIME_1000);
         MatcherAssert.assertThat("No aparecio mensaje de alerta", lblMensajes.getText().contains(mensaje));
     }
 
     public void cerrarTransaccion() {
         btnOpcionDeCierre.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
         btnRetirarTransaccion.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
         btnAceptarRetirarTransaccion.click();
     }
 
