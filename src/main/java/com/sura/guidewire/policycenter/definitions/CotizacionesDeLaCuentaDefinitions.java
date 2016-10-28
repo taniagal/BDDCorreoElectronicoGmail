@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.CotizacionesDeLaCuentaSteps;
-import com.sura.guidewire.policycenter.steps.cuentas.HistorialCuentaSteps;
+import com.sura.guidewire.policycenter.steps.cuenta.HistorialCuentaSteps;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,12 +22,12 @@ public class CotizacionesDeLaCuentaDefinitions {
     CotizacionesDeLaCuentaSteps cotizacionesDeLaCuentaSteps;
 
 
-    @Given("estoy en una cuentas <numCuenta>")
+    @Given("estoy en una cuenta <numCuenta>")
     public void givenEstoyEnUnaCuentanumCuenta(@Named("numCuenta") String numCuenta) {
         historialCuentaSteps.seleccionarCuenta(numCuenta);
     }
 
-    @When("ingrese a cotizaciones de la cuentas")
+    @When("ingrese a cotizaciones de la cuenta")
     public void whenIgreseACotizacionesDeLaCuenta() {
         cotizacionesDeLaCuentaSteps.seleccionarCotizacionesDeLaCuenta();
     }
@@ -78,7 +78,7 @@ public class CotizacionesDeLaCuentaDefinitions {
     @Then("los labels se deben mostrar tal cual como se indica en los UIFields")
     public void thenValidarLabelsCotizaciones(){
         Map<String, String> labelsCotizaciones = new HashMap<>();
-        labelsCotizaciones.put("lblCotizaciones", "Cotizaciones de la cuentas");
+        labelsCotizaciones.put("lblCotizaciones", "Cotizaciones de la cuenta");
         labelsCotizaciones.put("btnNuevaCotizacion", "Nueva cotización");
         labelsCotizaciones.put("acciones","Acciones");
         labelsCotizaciones.put("producto","Producto");

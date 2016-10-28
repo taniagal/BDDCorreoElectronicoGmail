@@ -112,7 +112,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
 
     public void setDatos(ExamplesTable datosCotizacion) {
         Map<String, String> dato = datosCotizacion.getRow(0);
-        numeroDeCuenta.waitUntilPresent().sendKeys(dato.get("cuentas"));
+        numeroDeCuenta.waitUntilPresent().sendKeys(dato.get("cuenta"));
         comboBoxNombreAgente.click();
         linkNombre.waitUntilVisible();
         Actions actions =  new Actions(getDriver());

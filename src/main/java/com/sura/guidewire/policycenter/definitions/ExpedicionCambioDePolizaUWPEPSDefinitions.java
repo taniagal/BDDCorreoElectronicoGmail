@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.CotizacionMRCSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionCambioDePolizaUWPEPSSteps;
+import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -17,9 +18,12 @@ public class ExpedicionCambioDePolizaUWPEPSDefinitions {
     @Steps
     ExpedicionCambioDePolizaUWPEPSSteps expedicionCambioDePolizaUWPEPSSteps;
 
+    @Steps
+    ExpedicionDePolizaSteps expedicionDePolizaSteps;
+
     @Given("existe una cotizacion <numeroCotizacion>")
-    public void irABuscarCotizacion(@Named("numeroCotizacion") String numeroCotizacion){
-        cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(numeroCotizacion);
+    public void irABuscarCotizacion(@Named("numeroCotizacion") String cotizacion){
+        expedicionDePolizaSteps.navegar_barra_superior(cotizacion);
     }
 
     @Given("existe una cotizacion <numeroCotizacion> la cual se va a modificar")
@@ -54,11 +58,6 @@ public class ExpedicionCambioDePolizaUWPEPSDefinitions {
     @When("intente expedir la poliza")
     public void emitirPoliza(){
         expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
-    }
-
-    @Then("se debe generar un UW issue")
-    public void irAPantallaUW(){
-        expedicionCambioDePolizaUWPEPSSteps.ir_A_Pantalla_UW();
     }
 
     @Then("mostrar el mensaje <mensaje> que devuelve el servicio")

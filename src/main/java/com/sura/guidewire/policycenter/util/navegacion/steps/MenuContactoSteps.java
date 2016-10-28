@@ -8,7 +8,7 @@ public class MenuContactoSteps extends ScenarioSteps {
 
     @Step
     public void nuevo_contacto() {
-        String xpathLinkNuevoContacto = ".//a[contains(., 'Nuevo contactos')]";
+        String xpathLinkNuevoContacto = ".//a[contains(., 'Nuevo contacto')]";
         getDriver().findElement(By.xpath(xpathLinkNuevoContacto)).click();
     }
 

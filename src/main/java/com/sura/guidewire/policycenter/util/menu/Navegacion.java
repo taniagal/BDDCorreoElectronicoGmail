@@ -327,6 +327,7 @@ public class Navegacion extends PageUtil {
     }
 
     public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza) {
+        waitUntil(2000);
         gw.deployMenu(mnuPoliza);
         ingresarDato(mnuNumeroSub,numSubPoliza);
         mnuNumeroSub.sendKeys(Keys.ENTER);
@@ -369,7 +370,7 @@ public class Navegacion extends PageUtil {
     // Navegacion menu Cuenta
     public NuevaCuentaPage irANuevaCuenta() {
         withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mnuCuenta).click();
-        waitForAnyTextToAppear("Resumen de la cuentas","Búsqueda de cuentas");
+        waitForAnyTextToAppear("Resumen de la cuenta","Búsqueda de cuentas");
         waitUntil(2500);
         mnuCuenta.waitUntilClickable().click();
         waitUntil(500);
@@ -382,7 +383,7 @@ public class Navegacion extends PageUtil {
         waitUntil(3000);
         gw.deployMenu(mnuCuenta);
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
-        waitForTextToAppear("Nueva cuentas");
+        waitForTextToAppear("Nueva cuenta");
         waitUntil(2000);
         waitFor(txtNumCuenta).waitUntilEnabled();
         txtNumCuenta.waitUntilEnabled().type(numCuenta);
@@ -1185,7 +1186,7 @@ public class Navegacion extends PageUtil {
     }
 
     public OpcionesAdminitradorCotizaciones irAOpcionesAdministradorCotizaciones() {
-        waitForTextToAppear("Cotizaciones de la cuentas");
+        waitForTextToAppear("Cotizaciones de la cuenta");
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
         waitUntil(1000);
         mnuAdmCotizaciones.waitUntilVisible().waitUntilClickable().click();

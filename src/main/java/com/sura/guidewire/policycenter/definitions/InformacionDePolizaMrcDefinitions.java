@@ -67,7 +67,7 @@ public class InformacionDePolizaMrcDefinitions {
     public void mensajesDeErrorRiesgosYPeps(@Named("mensaje")String mensaje,
                                             @Named("mensaje2")String mensaje2) {
         informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
-        informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje2);
+       // informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje2);
     }
 
      /*
@@ -75,7 +75,7 @@ public class InformacionDePolizaMrcDefinitions {
     */
 
 
-    @When("seleccione la poliza como reaseguro aceptado")
+    @When("seleccione la poliza como reaseguro especial")
     public void whenSeleccioneLaPolizaComoReaseguroAceptado() {
         informacionDePolizaMrcSteps.seleccionar_si_en_reaseguro();
     }
@@ -99,7 +99,7 @@ public class InformacionDePolizaMrcDefinitions {
     *Bug Automatizado: Ocultar dirección en formulario
      */
 
-    @When("requiera quitar la descripcion de la direccion del contactos")
+    @When("requiera quitar la descripcion de la direccion del contacto")
     public void whenRequieraQuitarLaDescripcionDeLaDireccionDelContacto() {
         informacionDePolizaMrcSteps.eliminar_descripcion_de_direccion_en_contacto();
     }

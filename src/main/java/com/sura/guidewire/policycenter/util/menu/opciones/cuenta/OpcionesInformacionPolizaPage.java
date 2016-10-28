@@ -520,8 +520,6 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
             MatcherAssert.assertThat(tipoDirTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDireccionTomador"))));
             MatcherAssert.assertThat(descripcionDireccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descripcionDirTomador"))));
             MatcherAssert.assertThat(direccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("direccionTomador"))));
-//            JOptionPane.showMessageDialog(null, "formulario" + " " + campoOrganizacion.getText());
-//            JOptionPane.showMessageDialog(null, "historia" + " " + informacionPoliza.get("organizacion"));
             MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("organizacion"))));
             MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("canal"))));
             MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPoliza"))));

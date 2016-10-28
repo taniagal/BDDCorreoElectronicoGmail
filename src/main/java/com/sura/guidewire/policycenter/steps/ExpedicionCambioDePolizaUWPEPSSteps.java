@@ -25,12 +25,8 @@ public class ExpedicionCambioDePolizaUWPEPSSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ir_A_Pantalla_UW() {
-        expedirCambioDePolizaUWPEPSPage.irAPantallaUW();
-    }
-
-    @Step
     public void validar_Mensaje_Que_Devuelve_El_Servicio_PEPS(String mensaje) {
+        expedirCambioDePolizaUWPEPSPage.aceptarExpedir();
         expedirCambioDePolizaUWPEPSPage.validarMensajePEP(mensaje);
     }
 
@@ -38,4 +34,5 @@ public class ExpedicionCambioDePolizaUWPEPSSteps extends ScenarioSteps {
     public void validar_Concatenacion_Mensaje(ExamplesTable texto) {
         expedirCambioDePolizaUWPEPSPage.validarConcatenacionMensaje(texto);
     }
+
 }

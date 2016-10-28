@@ -66,6 +66,6 @@ public class OpcionesCrearPartcCuentaPage extends PageUtil {
 
     public void verificarCamposParticipantes() {
         waitUntil(1000);
-        MatcherAssert.assertThat("Error al agregar el rol del participante de la cuentas", rol.containsText("Asegurador"));
+        MatcherAssert.assertThat("Error al agregar el rol del participante de la cuenta", rol.containsText("Asegurador"));
     }
 }

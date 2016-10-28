@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.google.inject.name.Named;
-import com.sura.guidewire.policycenter.steps.contactos.BusquedaContactoSteps;
+import com.sura.guidewire.policycenter.steps.contacto.BusquedaContactoSteps;
 import com.sura.guidewire.policycenter.steps.DetalleDeAseguradoDeCotizacionSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -23,12 +23,12 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
     private BusquedaContactoSteps busquedaContactoSteps;
 
     @Given("voy a crear una nueva cotizacion")
-    public void irACrearNuevaCotizacion(@Named("cuentas") String cuenta){
+    public void irACrearNuevaCotizacion(@Named("cuenta") String cuenta){
         detalleDeAseguradoDeCotizacionSteps.irACrearNuevaCotizacion();
         }
 
-    @Given("crear una cotizacion nueva con la cuentas <cuentas>")
-    public void crearNuevaCotizacion(@Named("cuentas") String cuenta){
+    @Given("crear una cotizacion nueva con la cuenta <cuenta>")
+    public void crearNuevaCotizacion(@Named("cuenta") String cuenta){
         detalleDeAseguradoDeCotizacionSteps.ingresarCuenta(cuenta);
     }
 
@@ -42,7 +42,7 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
         detalleDeAseguradoDeCotizacionSteps.agregarAsegurado();
     }
 
-    @When("agregue un asegurado que es contactos de la cuentas")
+    @When("agregue un asegurado que es contacto de la cuenta")
     public void agregarAseguradoContactoDeLaCuenta(){
         detalleDeAseguradoDeCotizacionSteps.agregarAseguradoContactoDeLaCuenta();
     }
@@ -52,13 +52,13 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
         detalleDeAseguradoDeCotizacionSteps.agregarAseguradoContactoDelDirectorio();
     }
 
-    @When("ingrese a buscar contactos del directorio con tipo de documento <tipoId> y numero de documento <numeroId>")
+    @When("ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>")
     public void buscarContactoPorIdentificacion(@Named("tipoId") String tipoId,
                                                 @Named("numeroId") String numeroId){
         busquedaContactoSteps.consultarContactoPorTipoDocumentoCotizacion(tipoId, numeroId);
     }
 
-    @When("seleccione el contactos a agregar")
+    @When("seleccione el contacto a agregar")
     public void seleccionarContactoAAgregarDelDirectorio(){
         detalleDeAseguradoDeCotizacionSteps.seleccionarContactoDelDirectorio();
     }
@@ -88,22 +88,22 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
         detalleDeAseguradoDeCotizacionSteps.volverAAsegurados();
     }
 
-    @When("quiera editar los datos del nuevo contactos persona natural: $edicionPersonaNatural")
+    @When("quiera editar los datos del nuevo contacto persona natural: $edicionPersonaNatural")
     public void editarDatosNuevaPersonaNatural(ExamplesTable edicionPersonaNatural){
         detalleDeAseguradoDeCotizacionSteps.editarDatosNuevaPersonaNatural(edicionPersonaNatural);
     }
 
-    @When("quiera editar los datos del nuevo contactos persona juridica: $edicionPersonaJuridica")
+    @When("quiera editar los datos del nuevo contacto persona juridica: $edicionPersonaJuridica")
     public void editarDatosNuevaPersonaJuridica(ExamplesTable edicionPersonaJuridica){
         detalleDeAseguradoDeCotizacionSteps.editarDatosNuevaPersonaJuridica(edicionPersonaJuridica);
     }
 
-    @When("seleccione el contactos agregado")
+    @When("seleccione el contacto agregado")
     public void seleccionarContactoAgregado(){
         detalleDeAseguradoDeCotizacionSteps.seleccionarContactoAgregado();
     }
 
-    @When("quite el contactos de la lista")
+    @When("quite el contacto de la lista")
     public void quitarAseguradoDeLaLista(){
         detalleDeAseguradoDeCotizacionSteps.quitarAseguradoDeLaLista();
     }
@@ -148,7 +148,7 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
         detalleDeAseguradoDeCotizacionSteps.validarBotonNoVisible();
     }
 
-    @Then("se debe permitir continuar la cotizacion")
+    @Then("se debe continuar al siguiente paso de la cotizacion")
     public void validarContinuacionDeCotizacion(){
         detalleDeAseguradoDeCotizacionSteps.validarContinuacionDeCotizacion();
     }

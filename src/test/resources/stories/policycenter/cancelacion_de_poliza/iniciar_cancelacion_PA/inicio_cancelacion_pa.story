@@ -12,7 +12,6 @@ Como usuario de PolicyCenter
 Cuando quiera iniciar una cancelación para pólizas de Autos
 Entonces deberia realizarce segun las reglas
 
-
 Scenario: registrar instruccion previa a la renovacion
 GivenStories: stories/policycenter/login_policy.story
 Given que existe una <poliza> y esta dentro de la vigencia
@@ -42,7 +41,6 @@ Then Se debe validar la emision anticipada con <mensaje>
 Examples:
 |poliza       |mensaje|
 |TEST_22266674|La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (60 días)|
-
 
 Scenario: motivos de cancelacion para polizas diferentes a Bancolombia
 Given que existe una <poliza> y esta dentro de la vigencia
