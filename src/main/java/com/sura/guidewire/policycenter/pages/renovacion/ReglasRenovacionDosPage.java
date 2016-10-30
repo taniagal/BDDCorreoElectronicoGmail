@@ -60,6 +60,7 @@ public class ReglasRenovacionDosPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarEditarTransaccion).waitUntilClickable();
         btnAceptarEditarTransaccion.click();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensajes).waitUntilPresent();
     }
 
     public void ingresaValorMayorVeintePorciento() {
