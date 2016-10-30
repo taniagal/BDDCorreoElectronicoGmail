@@ -322,7 +322,7 @@ public class Navegacion extends PageUtil {
         waitFor(mnuPoliza).shouldBeVisible();
         ingresarDato(mnuNumPoliza,numPoliza);
         act.sendKeys(Keys.ENTER).build().perform();
-        waitUntil(WAIT_TIME_300);
+        waitUntil(WAIT_TIME_500);
         return new PolizaBuscarPage(getDriver());
     }
 
