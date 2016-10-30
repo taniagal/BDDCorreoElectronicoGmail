@@ -103,6 +103,7 @@ public class InicioCancelacionPage extends PageUtil{
     public void cancelaTransaccion() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnCancelarTransaccion).waitUntilClickable();
         btnCancelarTransaccion.click();
+        waitUntil(WAIT_TIME_300);
     }
 
     public void validaMensajeEnPantalla(String mensaje) {
