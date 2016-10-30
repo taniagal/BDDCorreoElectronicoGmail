@@ -13,6 +13,8 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -55,6 +57,7 @@ public class InicioCancelacionPage extends PageUtil{
         selectItem(txtMotivo, "Financiación cancelación por");
         waitUntil(WAIT_TIME_1000);
         txtDescripMotivo.click();
+        txtDescripMotivo.sendKeys("Motivo de prueba");
         String fecha = calculaRetroactividad31Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
         txtFechaVigenciaCancelacion.click();
