@@ -71,7 +71,7 @@ Examples:
 |Compañía  |C010478975 |Colombia    |Antioquia     |            |
 
 Scenario: Editar cuenta - Direccion estandarizada
-Meta: @lote1
+Meta: @lote4
 @Manual
 Given estoy en el resumen de una cuenta <numCuenta> de tipo persona juridica <tipoCuenta>
 When ingrese a editar la direccion de la cuenta e indique una direccion <direccion> que se pueda estandarizar
@@ -82,7 +82,7 @@ Examples:
 |Compañía  |C010478975 |CRA 65 # 40 - 50|
 
 Scenario: Editar cuenta - Direccion no estandarizada
-Meta: @lote1
+Meta: @lote4
 @Manual
 Given estoy en el resumen de una cuenta <numCuenta> de tipo persona juridica <tipoCuenta>
 When ingrese a editar la direccion de la cuenta e indique una direccion <direccion> que no se pueda estandarizar

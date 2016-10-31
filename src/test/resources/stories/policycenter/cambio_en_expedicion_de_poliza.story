@@ -36,7 +36,8 @@ Examples:
 
 
 Scenario: Validacion etiquetas y mensaje de ventana
-Meta: @lote1 @manual
+Meta: @lote2
+@manual
 Given  Que tengo una cotizacion <cotizacion >
 When cuando vaya expedir en el cambio de una poliza
 And  confirmo que el mensaje de expedir cambio de poliza

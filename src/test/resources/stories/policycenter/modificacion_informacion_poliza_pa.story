@@ -42,7 +42,7 @@ Examples:
 |TEST_22223222 |
 
 Scenario: Validar campo poliza financiada
-Meta: @lote1
+Meta: @lote4
 @manual
 Given ya se tiene una poliza expedida
 When el tipo de poliza es PPAutos

@@ -31,7 +31,8 @@ Examples:
 |11111334   |
 
 Scenario: Modificar una cotizacion cuando el valor es mayor al 10%
-Meta: @lote1 @manual
+Meta: @lote4
+@manual
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
 When quiera mostrar los edificios y ubicaciones
 Then debe pasar a la siguinete pagina sin mostrar mensajes

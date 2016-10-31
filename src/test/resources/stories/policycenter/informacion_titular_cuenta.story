@@ -93,7 +93,8 @@ Examples:
 | CEDULA DE CIUDADANIA | ALFREDO | Antioquia | Actividad económica |
 
 Scenario: Informacion basica
-Meta: @lote1 @manual
+Meta: @lote4
+@manual
 Given que existe titular de la cuenta
 When ingrese a informacion del titular de la cuenta
 Then debe mostrarme en la informacion basica: Titular de la cuenta <titularCuenta>, tipo de documento <tipoDocumento>, Nro de documento <nroDocumento>, prima en vigencia <primaVigencia>, Segmentacion <segmentacion>, Comportamiento <comportamiento>, Total no Facturado <totalNoFacturado>, total actualmente facturado <totalFacturado>, total vencido <totalVencido> y total pendiente <totalPendiente>.
