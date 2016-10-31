@@ -1,6 +1,6 @@
 Transacciones Poliza Colectiva
 
-Meta: @lote1
+Meta: @lote2
 
 @issue #CDSEG-877
 @tag automator: eliana_alvarez, sprint:5

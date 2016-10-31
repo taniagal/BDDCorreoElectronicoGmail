@@ -50,7 +50,7 @@ Examples:
 |C000777777|Super User|01/01/2016|12/30/2016 |
 
 Scenario: Busqueda de historial por usuario
-Meta: @lote3
+Meta: @lote4
 @manual
 Given estoy en el historial de la cuenta
 When indique un <usuario> para realizar la busqueda

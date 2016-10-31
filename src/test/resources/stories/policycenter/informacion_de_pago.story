@@ -1,6 +1,6 @@
 informacion de pago
 
-Meta: @lote3
+Meta: @lote4
 
 @issue #CDSEG-2305
 @tag automator: Jonathan_Mejia_Leon

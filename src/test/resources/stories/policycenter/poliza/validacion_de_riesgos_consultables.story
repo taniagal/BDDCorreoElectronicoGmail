@@ -1,14 +1,15 @@
 Validacion de riesgos consultables
 
-Meta: @lote1
-Scenario: 1 Validacion de riesgos consultables en cotizacion de poliza
-
-Meta: @lote1
+Meta:
+@lote1
 @Story CDSEG-3124
 @URL https://jira.suramericana.com.co/browse/CDSEG-3124
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
+Scenario: 1 Validacion de riesgos consultables en cotizacion de poliza
+Meta:
+@manual
 Given que estoy en el resumen de la cuenta <numCuenta> con el rol <rolUsuario>
 When ingrese a cotizar una nueva poliza con la informacion: <NomAgente>, <Organizacion>, <Canal>, <Producto>
 And quiera agregar un tomador adicional que es riesgo consultable <cedula>
