@@ -1,5 +1,5 @@
 Tarifa Tasa Unica Pa Cargar Archivo
-Meta:
+Meta: @lote2
 @issue #CDSEG-2415
 @tag automator: nelson_jhair_mosquera_palacios
 @sprint 6
@@ -23,7 +23,7 @@ Examples:
 
 
 Scenario: Cargar archivo de tasas - exportar
-Meta: @manual
+Meta: @lote2 @manual
 Given estoy realizando una cotizacion
 When Cuando se vaya a realizar la carga del archivo
 Then se debe poder exportar la estructura del archivo para luego ser cargada
@@ -34,7 +34,7 @@ Examples:
 
 
 Scenario: Cargar archivo de tasas - importar
-Meta: @manual
+Meta: @lote2 @manual
 Given estoy realizando una cotizacion
 When Cuando se vaya a realizar la carga del archivo
 Then se debe poder cargar el archivo donde se tienen definidas las tasas para la poliza

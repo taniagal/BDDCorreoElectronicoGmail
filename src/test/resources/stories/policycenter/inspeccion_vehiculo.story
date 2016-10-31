@@ -1,6 +1,6 @@
 Inspeccion Vehiculo
 
-Meta:
+Meta: @lote4
 
 @issue #CDSEG-751
 @tag automator: diego_cardona_acevedo
@@ -71,7 +71,7 @@ Examples:
 |22221222  |COR219 |El vehículo no tiene una inspección vigente a la fecha de ingreso del riesgo. |
 
 Scenario: Consulta requisito inspeccion en el modelo
-Meta: @manual
+Meta: @lote1 @manual
 Given se tiene la informacion de la placa del vehiculo ingresada
 When el vehiculo tenga inspeccion no valida o no tenga inspeccion
 And la placa estuvo vigente en la compania
@@ -85,7 +85,7 @@ Examples:
 | |
 
 Scenario: Consulta requisito inspeccion en WS fasecolda
-Meta: @manual
+Meta: @lote1 @manual
 Given se tiene la informacion de la placa del vehiculo ingresada
 When se haga la busqueda de informacion en el WS de fasecolda
 And se cumplan las condiciones para el requisito de inspeccion

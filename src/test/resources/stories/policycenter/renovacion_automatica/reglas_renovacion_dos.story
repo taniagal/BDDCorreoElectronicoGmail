@@ -1,6 +1,6 @@
 Reglas Renovacion Dos
 
-Meta:
+Meta: @lote2
 
 @issue #CDSEG-3014
 @tag automator: Jonathan_Mejia_Leon
@@ -28,7 +28,7 @@ Examples:
 |TEST_22266674|  es mayor al 20% del valor Asegurado     | es mayor al valor Asegurado del vehículo.|
 
 Scenario: Tope maximo valor asegurado del vehiculo
-Meta: @manual
+Meta: @lote2 @manual
 Given que es necesario renovar una <poliza> autos
 When quiera realizar esta la renovacion
 And edite la renovacion de poliza

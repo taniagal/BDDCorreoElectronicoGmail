@@ -1,9 +1,9 @@
 bugs coberturas ubicacion
 
-Meta:
+Meta: @lote1
 
 Scenario: 1 Bug CDSEG-2887
-Meta:
+Meta: @lote1
 @Story CDSEG-2887
 @URL https://jira.suramericana.com.co/browse/CDSEG-2887
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:6
@@ -27,7 +27,7 @@ Examples:
 
 
 Scenario: 2 Bug CDSEG-2756
-Meta:
+Meta: @lote1
 @Story CDSEG-2756
 @URL https://jira.suramericana.com.co/browse/CDSEG-2756
 @tag bug:CDSEG-2756, automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:6
@@ -50,7 +50,7 @@ Examples:
 | 22222236        | Asesor     |             |
 
 Scenario: 3 Bug CDSEG-1900 Validaciones en valores de los sublimites cobertura
-Meta:
+Meta: @lote1
 @Story CDSEG-1900
 @URL https://jira.suramericana.com.co/browse/CDSEG-1900
 @tag bug:CDSEG-1900,  automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:4

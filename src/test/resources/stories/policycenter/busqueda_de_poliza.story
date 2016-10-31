@@ -1,6 +1,6 @@
 Busqueda De Poliza
 
-Meta:
+Meta: @lote2
 @issue #CDSEG-1012
 @tag automator: eliana_alvarez, sprint:1
 @Sprint 1

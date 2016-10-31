@@ -1,6 +1,6 @@
 Tarifa Autos
 
-Meta:
+Meta: @lote2
 @issue #CDSEG-1348
 @sprint 5
 @tag automator: nelson_jhair_mosquera_palacios

@@ -1,6 +1,6 @@
 Validaciones Informacion De Vehiculo
 
-Meta:
+Meta: @lote4
 @tag automator: nelson_jhair_mosquera_palacios
 @local
 @issue #CDSEG-1013

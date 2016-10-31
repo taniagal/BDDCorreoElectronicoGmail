@@ -1,9 +1,9 @@
 cobertura ubicacion sustraccion
 
-Meta:
+Meta: @lote1
 
 Scenario: 1 Validacion de sublimites maximos para las otras coberturas de sustraccion (coberturas de riesgo)
-Meta:
+Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -33,7 +33,7 @@ Examples:
 
 
 Scenario: 2 Sublimite sustraccion con violencia de bienes fuera de predios (Coberturas del riesgo) - Tener asegurado Equipos moviles y portatiles
-Meta:
+Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -49,7 +49,7 @@ Examples:
 
 
 Scenario: 3 Sublimite de sustraccion con violencia de bienes fuera de predios (cobertura de riesgos) - Sublimite menor a valor asegurable Equipos moviles y portatiles
-Meta:
+Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -70,7 +70,7 @@ Examples:
 
 
 Scenario: 4 Sublimite sustraccion sin violencia de bienes fuera de predios (Coberturas del riesgo) - Tener asegurados Equipos moviles y portatiles
-Meta:
+Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -86,7 +86,7 @@ Examples:
 
 
 Scenario: 5 Sublimite de sustraccion sin violencia de bienes fuera de predios (Coberturas del riesgo) - Valor asegurado menor a valor asegurable de Equipos moviles y portatiles
-Meta:
+Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -107,7 +107,7 @@ Examples:
 
 
 Scenario: 6 Sublimite sustraccion con violencia de dinero dentro de caja fuerte (Coberturas del riesgo) - Tener asegurado el dinero en efectivo
-Meta:
+Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -123,7 +123,7 @@ Examples:
 
 
 Scenario: 7 Sublimite de sustraccion con violencia de dinero dentro de caja fuerte (Coberturas del riesgo) - Valor asegurado menor o igual a valor asegurable de dinero en efectivo
-Meta:
+Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -143,7 +143,7 @@ Examples:
 | 22222236        | Asesor     |             |
 
 Scenario: 8 Sustraccion con violencia de dinero fuera de caja fuerte (Coberturas del riesgo) - Dependencia de otro sublimite
-Meta:
+Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -159,7 +159,7 @@ Examples:
 
 
 Scenario: 9 Sublimite de sustraccion con violencia de dinero fuera de caja fuerte (Coberturas del riesgo) - valor asegurado de este sublimite menor o igual al valor asegurado de otro sublimite
-Meta:
+Meta: @lote1
 @Story CDSEG-847
 @URL https://jira.suramericana.com.co/browse/CDSEG-847
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5

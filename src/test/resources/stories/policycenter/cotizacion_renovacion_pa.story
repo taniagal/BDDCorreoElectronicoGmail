@@ -1,6 +1,6 @@
 Cotizacion Renovacion Pa
 
-Meta:
+Meta: @lote3
 
 @issue #CDSEG-842
 @tag automator: diego_cardona_acevedo
