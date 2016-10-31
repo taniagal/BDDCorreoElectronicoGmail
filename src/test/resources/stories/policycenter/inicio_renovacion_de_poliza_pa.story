@@ -1,6 +1,6 @@
 inicio renovacion de poliza pa
 
-Meta:
+Meta: @lote4
 
 @issue #CDSEG-821
 @tag automator: Jonathan_Mejia_Leon
@@ -42,7 +42,7 @@ Examples:
 |TEST_22266674|
 
 Scenario: validar renovacion despues del vencimiento
-Meta: @manual
+Meta: @lote4 @manual
 Given que es necesario renovar una <poliza> de autos cuando ya esta vencida
 When quiera realizar la renovacion
 Then se debe validar que el proceso termine con exito
@@ -52,7 +52,7 @@ Examples:
 ||
 
 Scenario: validar campos de tomador adicional cuando NO es un riesgo consultable
-Meta: @manual
+Meta: @lote4 @manual
 Given que es necesario renovar una <poliza> de autos cuando ya esta vencida
 When quiera realizar la renovacion
 Then se debe validar que los campos del tomador adicional aparezcan en el fomrmulario

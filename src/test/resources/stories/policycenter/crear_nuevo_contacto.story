@@ -1,4 +1,4 @@
-Meta:
+Meta: @lote3
 Narrative:
 Crear contacto persona natural
 que estoy en logado en PC y estoy en contactos

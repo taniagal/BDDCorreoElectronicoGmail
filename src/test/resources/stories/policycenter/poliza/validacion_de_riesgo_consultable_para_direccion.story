@@ -1,10 +1,10 @@
 Validacion de riesgo consultable para direccion
 
-Meta:
+Meta: @lote1
 
 
 Scenario: Validacion en ingreso de un articulo a una ubicacion
-Meta:
+Meta: @lote1
 @Story CDSEG-731
 @URL https://jira.suramericana.com.co/browse/CDSEG-731
 @Informador alejandro esteban villada marin

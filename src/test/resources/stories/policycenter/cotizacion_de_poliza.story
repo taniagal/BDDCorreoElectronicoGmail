@@ -1,6 +1,6 @@
 Cotizacion De Poliza
 
-Meta:
+Meta: @lote3
 
 @issue #CDSEG-843
 @tag automator: diego_cardona_acevedo
@@ -36,7 +36,7 @@ Examples:
 
 
 Scenario: Riesgos consultables - Tipo Causal Tecnica
-Meta:
+Meta: @lote3
 @manual
 Given  he realizado la cotizacion
 When  ingrese a la cotizacion
@@ -44,7 +44,7 @@ And  el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
 Then  no se debe permitir continuar con la cotizacion y mostrar un mensaje
 
 Scenario: Riesgos consultables - Tipo Causal Moral
-Meta:
+Meta: @lote3
 @manual
 Given  he realizado la cotizacion
 When  ingrese a la cotizacion

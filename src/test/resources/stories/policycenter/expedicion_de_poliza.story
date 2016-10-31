@@ -1,6 +1,6 @@
 Expedicion De Poliza
 
-Meta:
+Meta: @lote3
 
 @issue #SUGWUSC-15128, CDSEG-856
 @Automatizador Jonathan Mejia, Eliana Alvarez
@@ -37,7 +37,7 @@ Examples:
 | 22222226   | T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.^AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.^CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal.     |
 
 Scenario: Validacion de riesgos consultables para intereses adicionales
-Meta:
+Meta: @lote3
 @manual
 Given que tengo una cotizacion y voy a crear una poliza
 When voy a expedir una poliza

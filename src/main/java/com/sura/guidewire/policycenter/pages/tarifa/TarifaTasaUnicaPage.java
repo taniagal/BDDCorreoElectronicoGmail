@@ -134,7 +134,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
     public boolean verificarEstadoDelEnvio(String cotizacion) {
         boolean val = false;
         waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, cotizacion));
-        val = (headerEnvio.containsText("Expedida")) ? true : false;
+        val = (headerEnvio.containsText("Expedida")) ? false : true;
         return val;
     }
 
@@ -178,7 +178,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
             waitUntil(WAIT_TIME_3000);
             menuPoliza.click();
             setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
-            if (botonCotizarRenovacion.isPresent()){
+            if (botonCotizarRenovacion.isPresent()) {
                 break;
             }
         }
@@ -190,8 +190,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
         checkBoxTasaUnica.shouldBePresent();
         botonCotizarRenovacion.click();
-        setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
-        if (linkDescartarCambios.isPresent()){
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
             botonCotizarRenovacion.click();
         }

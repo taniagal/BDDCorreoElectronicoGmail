@@ -12,6 +12,7 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -40,9 +41,12 @@ public class PageUtil extends PageObject {
     protected static final int WAIT_TIME_20 = 20;
     protected static final int WAIT_TIME_15 = 15;
     protected static final int WAIT_TIME_10 = 10;
+    protected static final int WAIT_TIME_7 = 7;
+    protected static final int WAIT_TIME_5 = 5;
     protected static final int WAIT_TIME_3 = 3;
     protected static final int WAIT_TIME_2 = 2;
     protected static final int WAIT_TIME_1 = 1;
+
 
     public PageUtil(WebDriver driver) {
         super(driver);
@@ -127,7 +131,11 @@ public class PageUtil extends PageObject {
     }
 
     public void waitForComboValue(WebElementFacade element, String value ){
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element,value));
+        try {
+            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
+        }catch (ElementNotVisibleException e){
+            LOGGER.info("ElementNotVisible at PageUtil 129 "+e);
+        }
         waitUntil(WAIT_TIME_2000);
     }
 

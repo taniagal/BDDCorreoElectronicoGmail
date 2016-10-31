@@ -1,6 +1,6 @@
 cambio en expedicion de Poliza
 
-Meta:
+Meta: @lote2
 
 @issue #CDSEG-1251
 @Automatizador Jonathan Mejia
@@ -36,7 +36,8 @@ Examples:
 
 
 Scenario: Validacion etiquetas y mensaje de ventana
-Meta: @manual
+Meta: @lote2
+@manual
 Given  Que tengo una cotizacion <cotizacion >
 When cuando vaya expedir en el cambio de una poliza
 And  confirmo que el mensaje de expedir cambio de poliza

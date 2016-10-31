@@ -1,9 +1,9 @@
 cobertura ubicacion otros
 
-Meta:
+Meta: @lote1
 
 Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)
-Meta:
+Meta: @lote1
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -26,7 +26,7 @@ Examples:
 
 
 Scenario: 2 Portadores externos de datos (Coberturas del riesgo)
-Meta:
+Meta: @lote1
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -46,7 +46,7 @@ Examples:
 
 
 Scenario: 3 Gastos por arrendamiento de sistema electronico de procesamiento de datos (Coberturas del riesgo)
-Meta:
+Meta: @lote1
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -66,7 +66,7 @@ Examples:
 
 
 Scenario: 4 Sublimite todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados (Coberturas del riesgo) - Porcentaje
-Meta:
+Meta: @lote1
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -90,7 +90,7 @@ Examples:
 
 
 Scenario: 5 Sublimites menores a valor asegurado daños (coberturas a nivel de riesgo)
-Meta:
+Meta: @lote1
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5

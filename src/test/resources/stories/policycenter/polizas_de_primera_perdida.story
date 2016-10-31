@@ -1,6 +1,6 @@
 Polizas De Primera Perdida
 
-Meta:
+Meta: @lote4
 @issue #CDSEG-1010
 @sprint 3
 @tag automator: nelson_jhair_mosquera_palacios

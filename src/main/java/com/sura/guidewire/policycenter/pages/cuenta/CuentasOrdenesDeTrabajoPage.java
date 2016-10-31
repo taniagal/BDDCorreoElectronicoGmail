@@ -29,6 +29,9 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     @FindBy(xpath=".//*[@id='AccountFile_WorkOrders:AccountFile_WorkOrdersScreen:AccountWorkOrdersLV-body']")
     private WebElementFacade tablaTransacciones;
 
+    protected static final int CONSTANTE_3 = 3;
+    protected static final int CONSTANTE_2 = 2;
+
     public CuentasOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);
     }
@@ -39,7 +42,7 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorEstado(String estado){
-        waitFor(2).seconds();
+        waitFor(CONSTANTE_2).seconds();
         filtroEstado.click();
         getDriver().manage().timeouts().implicitlyWait(WAIT_TIME_2,TimeUnit.SECONDS);
         filtroEstado.sendKeys(estado);
@@ -53,7 +56,7 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorTransaccion(String filtroTransaccion) {
-        waitFor(2).seconds();
+        waitFor(CONSTANTE_2).seconds();
         this.filtroTipoTransaccion.waitUntilClickable();
         this.filtroTipoTransaccion.click();
         this.filtroTipoTransaccion.clear();
@@ -62,7 +65,7 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     }
 
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
-        waitFor(2).seconds();
+        waitFor(CONSTANTE_2).seconds();
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
         this.filtroProducto.sendKeys(Keys.ENTER);
@@ -74,7 +77,7 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
         String existeTransaccion = "No existe la póliza";
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if(transaccion.equals(cells.get(3).getText())){
+            if(transaccion.equals(cells.get(CONSTANTE_3).getText())){
                 existeTransaccion = "Se encontró la póliza en las transacciones";
             }
         }

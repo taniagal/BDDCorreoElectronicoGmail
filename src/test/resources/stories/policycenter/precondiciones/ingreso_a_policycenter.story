@@ -5,6 +5,10 @@ Ingresar al módulo de PolicyCenter por medio de diferetentes roles o sistemas d
 
 Scenario: Ingresar a Login del Módulo PolicyCenter como Super Usuario
 Meta:
+@lote1
+@lote2
+@lote3
+@lote4
 @id1 login_policycenter_su
 Given Deseo ingresar como super usuario a PolicyCenter
 When Digíto usuario pedrvevi y contraseña pedrvevi, país Colombia y enviar las credenciales

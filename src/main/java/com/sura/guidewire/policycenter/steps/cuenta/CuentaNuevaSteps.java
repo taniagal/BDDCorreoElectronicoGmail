@@ -15,7 +15,9 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     private final PageUtil gw = new PageUtil(getDriver());
     private final CuentaPage cuentaPage = new CuentaPage(getDriver());
     private static final String NOMBRECUENTA = "Busqueda";
-    
+    protected static final int CONSTANTE_6 = 6;
+    protected static final int CONSTANTE_5 = 5;
+
     public CuentaNuevaSteps(Pages pages) {
         super(pages);
     }
@@ -66,11 +68,11 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         initRandoms();
         StringBuilder documento = new StringBuilder("us");
         if ("NIT".equals(tipoDocumento) || "IDENT. FISCAL PARA EXTRANJEROS".equals(tipoDocumento)) {
-            documento.append(nit.substring(0, 6) + "c");
+            documento.append(nit.substring(0, CONSTANTE_6) + "c");
             cuentaPage.buscarPersona(NOMBRECUENTA, "Compania");
             cuentaPage.agregarTipoDocumento(tipoDocumento, documento.toString());
         } else {
-            documento.append(cedula.substring(0, 5) + "c");
+            documento.append(cedula.substring(0, CONSTANTE_5) + "c");
             cuentaPage.buscarPersona(NOMBRECUENTA, "Persona");
             cuentaPage.agregarTipoDocumento(tipoDocumento, documento.toString());
         }

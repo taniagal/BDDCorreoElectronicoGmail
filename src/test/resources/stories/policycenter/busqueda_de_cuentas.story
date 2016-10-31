@@ -1,6 +1,6 @@
 Busqueda de Cuentas
 
-Meta:
+Meta: @lote2
 @issue #CDSEG-921
 @tag automator: eliana_alvarez, sprint:1
 @Sprint 1
@@ -304,7 +304,7 @@ Examples:
 |Variedades|Yurledys|Especifique ya sea un nombre de compañía o de una persona, pero no ambos.
 
 Scenario: Exportar resultados de busqueda en PDF, CSV y CSV Personalizado
-Meta:
+Meta: @lote2
 @manual
 Given que he buscado una cuenta y la busqueda arrojo resultados
 When quiera exportar el resultado arrojado en la busqueda

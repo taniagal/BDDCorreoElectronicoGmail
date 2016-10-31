@@ -1,6 +1,6 @@
 Informacion De Poliza Colectiva
 
-Meta:
+Meta: @lote1
 
 @issue #CDSEG-862
 @tag automator: eliana_alvarez, sprint:4

@@ -1,6 +1,6 @@
 Cotizacion MRC
 
-Meta:
+Meta: @lote3
 
 @issue #CDSEG-774
 @tag automator: diego_cardona_acevedo

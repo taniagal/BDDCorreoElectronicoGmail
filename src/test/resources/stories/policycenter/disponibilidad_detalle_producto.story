@@ -1,6 +1,6 @@
 Disponibilidad Detalle Producto
 
-Meta:
+Meta: @lote3
 
 @issue #CDSEG-745
 @tag automator: eliana_alvarez, sprint:1

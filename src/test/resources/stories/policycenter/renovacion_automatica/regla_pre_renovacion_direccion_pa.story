@@ -1,6 +1,6 @@
 Regla Pre Renovacion Direccion Pa
 
-Meta:
+Meta: @lote2
 
 @issue #CDSEG-997
 @tag automator: Jonathan_Mejia_Leon

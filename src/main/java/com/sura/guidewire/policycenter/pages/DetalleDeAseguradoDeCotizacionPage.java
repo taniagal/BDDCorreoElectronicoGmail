@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -63,6 +62,8 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']")
     WebElementFacade menuPolizaNuevoEnvio;
 
+    protected static final int CONSTANTE_5 = 5;
+
     public DetalleDeAseguradoDeCotizacionPage(WebDriver driver){
         super(driver);
     }
@@ -117,7 +118,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
         waitFor(opcionNuevo).waitUntilPresent();
         acciones.moveToElement(opcionNuevo).release(opcionNuevo).build().perform();
         waitFor(opcionNuevoPersonaNatural).waitUntilPresent();
-        opcionNuevoPersonaNatural.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilVisible().click();
+        opcionNuevoPersonaNatural.withTimeoutOf(CONSTANTE_5, TimeUnit.SECONDS).waitUntilVisible().click();
     }
 
     public void seleccionarNuevaPersonaJuridica() {

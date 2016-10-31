@@ -1,5 +1,5 @@
 Motor De Tarifa MRC
-Meta:
+Meta: @lote2
 
 @issue #CDSEG-3430
 @sprint 8

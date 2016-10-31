@@ -1,6 +1,6 @@
 Validaciones Cambio De Poliza Vehiculos
 
-Meta:
+Meta: @lote4
 @issue CDSEG-1296
 @tag automator: diego_cardona_acevedo
 @local
@@ -59,7 +59,7 @@ Examples:
 |55555556  |Por política de la compañía este vehículo no puede ser asegurado.|
 
 Scenario: Validar tipo de servicio
-Meta: @manual
+Meta: @lote1 @manual
 Given se ha realizado la cotizacion de la modificacion <cotizacion>
 When ingrese al detalle de la modificacion
 And presione el boton de emitir la poliza
