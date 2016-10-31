@@ -101,7 +101,7 @@ public class CotizacionPADetallePage extends PageUtil {
 
             waitFor(botonCoberturasPA).shouldBeVisible();
             botonCoberturasPA.click();
-            waitForTextToAppear("Coberturas de auto personal",1000);
+            waitForTextToAppear("Coberturas de auto personal",WAIT_TIME_1000);
 
             for(int j=1; j<=i; j++){
                 WebElementFacade coberturaAuto= findBy(".//div[contains(.,'"+terminoCoberturas.get("dato"+j)+"')]");
@@ -111,7 +111,7 @@ public class CotizacionPADetallePage extends PageUtil {
 
             waitFor(botonCotizacion).shouldBeVisible();
             botonCotizacion.click();
-            waitForTextToAppear("Cotización",1000);
+            waitForTextToAppear("Cotización",WAIT_TIME_1000);
 
         }catch(Exception e) {
             LOGGER.error("This is error", e);

@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.steps.cuenta;
 
-import com.sura.guidewire.policycenter.pages.cuenta.BusquedaDeCuentasPage;
 import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireLoginSteps;
 import com.sura.guidewire.policycenter.pages.cuenta.BusquedaDeCuentaPage;
 import com.sura.guidewire.policycenter.pages.cuenta.ContactosAsociadosACuentaWidgetPage;

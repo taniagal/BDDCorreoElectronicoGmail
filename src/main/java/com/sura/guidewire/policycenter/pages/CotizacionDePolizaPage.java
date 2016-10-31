@@ -93,6 +93,10 @@ public class CotizacionDePolizaPage extends PageUtil {
     @FindBy(xpath = "//td[2]/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td[2]/div")
     private WebElementFacade campoNumeroCuotas;
 
+    protected static final int CONSTANTE_5 = 5;
+    protected static final int WAIT_TIME_40000 = 40000;
+
+
     public CotizacionDePolizaPage(WebDriver driver){
         super(driver);
     }
@@ -104,9 +108,9 @@ public class CotizacionDePolizaPage extends PageUtil {
 
     public void ingresarACotizacion() {
         if(titulo.isCurrentlyVisible()){
-            waitForTextToAppear("Calificación",1000);
+            waitForTextToAppear("Calificación",WAIT_TIME_1000);
         }else if(tituloCotizacion.isCurrentlyVisible()){
-            waitForTextToAppear("Cotización",1000);
+            waitForTextToAppear("Cotización",WAIT_TIME_1000);
         }else if(!titulo.isCurrentlyVisible()){
             waitFor(botonCalificacion).shouldBeVisible();
             botonCalificacion.click();
@@ -169,7 +173,7 @@ public class CotizacionDePolizaPage extends PageUtil {
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
-        waitForTextToAppear("Resultados de validación",40000);
+        waitForTextToAppear("Resultados de validación",WAIT_TIME_40000);
         boolean validacionMensaje = grupoMensajes.getText().contains(mensaje);
         MatcherAssert.assertThat(validacionMensaje,Is.is(Matchers.equalTo(true)));
         WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
@@ -190,7 +194,7 @@ public class CotizacionDePolizaPage extends PageUtil {
     }
 
     public void validarDatosCotizacion(String asegurado, String placa) {
-        waitForTextToAppear("Revisión de póliza", 1500);
+        waitForTextToAppear("Revisión de póliza", WAIT_TIME_1500);
         boolean validacion = tomadorPrimario.getText().equals(asegurado) && "placa".equals(placa);
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(true)));
         waitFor(botonCotizacion).shouldBeVisible();

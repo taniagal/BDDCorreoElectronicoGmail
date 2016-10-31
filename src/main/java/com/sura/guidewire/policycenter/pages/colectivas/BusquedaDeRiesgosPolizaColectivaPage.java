@@ -27,6 +27,11 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageUtil {
     WebElementFacade btnListarRiesgos;
 
     private static final String TABLAXPATH = ".//*[@id='AccountFile_CollectivePolicy_Ext:";
+    protected static final int CONSTANTE_5 = 5;
+    protected static final int CONSTANTE_4 = 4;
+    protected static final int CONSTANTE_3 = 3;
+    protected static final int CONSTANTE_2 = 2;
+    protected static final int CONSTANTE_1 = 1;
 
     public BusquedaDeRiesgosPolizaColectivaPage(WebDriver driver) {
         super(driver);
@@ -71,10 +76,10 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageUtil {
         if (!getListaFiltroPlaca().isEmpty()) {
             for (WebElementFacade numPolizaTabla : getListaFiltroPlaca()) {
                 if (datoRiesgo.get("placa").equals(numPolizaTabla.getText())) {
-                    MatcherAssert.assertThat("la clase de vehiculo no pertenece al consultado", datoRiesgo.get("claseVehiculo").equals(getResultadoPlaca().get(1).getText()));
-                    MatcherAssert.assertThat("El modelo no pertenece al consultado", datoRiesgo.get("modelo").equals(getResultadoPlaca().get(2).getText()));
-                    MatcherAssert.assertThat("La marca no pertenece a la consultada", datoRiesgo.get("marca").equals(getResultadoPlaca().get(3).getText()));
-                    MatcherAssert.assertThat("La linea no pertenece a la consultada", datoRiesgo.get("linea").equals(getResultadoPlaca().get(4).getText()));
+                    MatcherAssert.assertThat("la clase de vehiculo no pertenece al consultado", datoRiesgo.get("claseVehiculo").equals(getResultadoPlaca().get(CONSTANTE_1).getText()));
+                    MatcherAssert.assertThat("El modelo no pertenece al consultado", datoRiesgo.get("modelo").equals(getResultadoPlaca().get(CONSTANTE_2).getText()));
+                    MatcherAssert.assertThat("La marca no pertenece a la consultada", datoRiesgo.get("marca").equals(getResultadoPlaca().get(CONSTANTE_3).getText()));
+                    MatcherAssert.assertThat("La linea no pertenece a la consultada", datoRiesgo.get("linea").equals(getResultadoPlaca().get(CONSTANTE_4).getText()));
                     break;
                 }
                 i++;
@@ -84,7 +89,7 @@ public class BusquedaDeRiesgosPolizaColectivaPage extends PageUtil {
 
     public void validaBotonListarRiesgos() {
         waitUntil(WAIT_TIME_2000);
-        MatcherAssert.assertThat("No contiene los 5 registros", getListaFiltroPlaca().size() == 5);
+        MatcherAssert.assertThat("No contiene los 5 registros", getListaFiltroPlaca().size() == CONSTANTE_5);
     }
 
     public void ValidaMensaje(String mensaje){

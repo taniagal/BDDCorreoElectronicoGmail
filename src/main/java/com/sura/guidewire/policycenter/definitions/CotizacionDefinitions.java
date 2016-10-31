@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 public class CotizacionDefinitions {
 
     // TODO: 09/06/2016 Pendiente definir composici'on de Gherkin 
-    
+    protected static final int CONSTANTE_5 = 5;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     @Managed
@@ -42,7 +42,7 @@ public class CotizacionDefinitions {
     public void crearNuevaCotizacion(){
 
         guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
-        cotizador.waitFor(5).seconds();
+        cotizador.waitFor(CONSTANTE_5).seconds();
         cotizador.ir_al_menu_escritorio_del_panel_superior();
         cotizador.clic_en_la_opcion_acciones_del_panel_izquierdo();
         cotizador.clic_en_la_opcion_nueva_cotizacion();

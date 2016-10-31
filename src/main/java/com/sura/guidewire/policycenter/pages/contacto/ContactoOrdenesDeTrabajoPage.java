@@ -48,6 +48,11 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']")
     private WebElementFacade tablaTransaccionesDeContacto;
 
+    protected static final int CONSTANTE_5 = 5;
+    protected static final int CONSTANTE_4 = 4;
+    protected static final int CONSTANTE_3 = 3;
+    protected static final int CONSTANTE_2 = 2;
+
     public ContactoOrdenesDeTrabajoPage(WebDriver driver) {
         super(driver);
     }
@@ -92,7 +97,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            String estadoStr = cells.get(5).getText();
+            String estadoStr = cells.get(CONSTANTE_5).getText();
             if (("Completo").equals(filtroEstado)) {
                 MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosCompletos));
             } else if (("Abierto").equals(filtroEstado)) {
@@ -117,7 +122,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            String transaccionStr = cells.get(4).getText();
+            String transaccionStr = cells.get(CONSTANTE_4).getText();
             MatcherAssert.assertThat(transaccionStr, Matchers.containsString(filtroTransaccion));
         }
     }
@@ -138,7 +143,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            String transaccionStr = cells.get(2).getText();
+            String transaccionStr = cells.get(CONSTANTE_2).getText();
             MatcherAssert.assertThat(transaccionStr, Matchers.containsString(filtroProducto));
         }
     }
@@ -154,7 +159,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         String existeTransaccion = "No existe la póliza";
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (transaccion.equals(cells.get(3).getText())) {
+            if (transaccion.equals(cells.get(CONSTANTE_3).getText())) {
                 existeTransaccion = "Se encontró la póliza en las transacciones";
             }
         }
