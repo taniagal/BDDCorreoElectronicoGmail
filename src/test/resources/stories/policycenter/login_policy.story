@@ -1,4 +1,8 @@
-Meta: @lote4
+Meta:
+@lote1
+@lote2
+@lote3
+@lote4
 @local
 
 Narrative:
