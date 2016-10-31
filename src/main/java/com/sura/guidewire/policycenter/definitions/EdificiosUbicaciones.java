@@ -118,6 +118,7 @@ public class EdificiosUbicaciones {
     //// TODO: 21/10/2016 Construilo con example table
     @When("intente ingresar una nueva ubicacion")
     public void cuandoIntenteIngresarUnaNuevaUbicacion(){
+        edificiosUbicacionesSteps.remover_riesgos();
         edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
     }
 

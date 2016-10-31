@@ -26,8 +26,8 @@ Then se deben validar los riesgos consultables mostrando los siguientes mensaje 
 
 
 Examples:
-| numSubscripcion    |rolUsuario|cedula  |tipoBeneficiario|
-| 0001599331         |Asesor    |9876543 |Asegurado       |
+| numSubscripcion | rolUsuario | cedula  | tipoBeneficiario |
+| 22266771        | Asesor     | 9876543 | Asegurado        |
 
 
 

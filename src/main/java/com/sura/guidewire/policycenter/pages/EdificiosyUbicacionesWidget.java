@@ -49,6 +49,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_BTN_BUSCAR = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']";
     private static final String XPATH_BTN_SELECCIONA = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']";
     private static final String XPATH_INTERES_ADICIONAL = "//label[contains(.,'Interes Adicional')]";
+    private static final String XPATH_SELECCIONAR__RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
+    private static final String XPATH_BTON_REMOVER_RIESGOS =  "//a[contains(.,'Remover Riesgo')]";
 
     TableWidgetPage tabla;
 
@@ -142,6 +144,16 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
         agregarNuevaUbicacion("Colombia", "Antioquia", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
+    }
+
+    public void removerRiesgos(){
+        waitFor(WAIT_TIME_3).second();
+        findBy(XPATH_SELECCIONAR__RIESGOS).click();
+        waitFor(WAIT_TIME_3).second();
+        findBy(XPATH_BTON_REMOVER_RIESGOS).waitUntilVisible().waitUntilClickable();
+        findBy(XPATH_BTON_REMOVER_RIESGOS).shouldBeVisible();
+        findBy(XPATH_BTON_REMOVER_RIESGOS).click();
+        waitFor(WAIT_TIME_3).second();
     }
 
 

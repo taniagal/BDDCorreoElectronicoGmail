@@ -78,9 +78,14 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void seleccionar_boton_aceptar_en_la_parte_superior_izquierda() {
         agregarArticuloEdificiosyUbicacionesWidget.seleccionarBotonAceptarParteSuperiorIzquierda();
     }
-
+    @Step
     public void cancelar_ingreso_de_nueva_ubicacion() {
         edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
+    }
+    @Step
+    public void remover_riesgos(){
+        edificiosyUbicacionesWidget.removerRiesgos();
+
     }
 
     public String armarMensajeParaElReporteDeSerenity(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo) {
