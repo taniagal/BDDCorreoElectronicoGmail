@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 
-public class ValidacionDelNegocioCoberturaPage extends Commons{
+public class ValidacionDelNegocioCoberturaPage extends PageUtil {
 
     @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div")
     private WebElementFacade btnEdificiosYUbicaciones;
@@ -34,7 +34,7 @@ public class ValidacionDelNegocioCoberturaPage extends Commons{
     }
 
     public void irAEdificiosYUbicaciones(){
-       withTimeoutOf(20, TimeUnit.SECONDS).waitFor(btnEdificiosYUbicaciones).waitUntilPresent().click();
+       withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(btnEdificiosYUbicaciones).waitUntilPresent().click();
        opcionesInformacionPolizaMrcPage.waitInfoPoliza(lblEdificioYUbicaciones);
     }
 
@@ -46,7 +46,7 @@ public class ValidacionDelNegocioCoberturaPage extends Commons{
         opcionesInformacionPolizaMrcPage.waitInfoPoliza(lblCorbeturasGlobales);
         MatcherAssert.assertThat("Error: este esenario debe pasar a la siguinete" +
                 "pantalla",lblCorbeturasGlobales.isVisible());
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilPresent().click();
     }
 
     public void validaPasoPantallaSiguinete() {

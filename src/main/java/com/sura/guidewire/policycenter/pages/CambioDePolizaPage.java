@@ -1,24 +1,19 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
+import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
 
 
 
-public class CambioDePolizaPage extends PageObject {
-
-    Commons commons = new Commons(getDriver());
-
-
+public class CambioDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//span[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")
     WebElementFacade menuAcciones;
 
@@ -47,22 +42,21 @@ public class CambioDePolizaPage extends PageObject {
 
 
     public void irAMenuAcciones() {
-        Commons.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         menuAcciones.click();
     }
 
     public void cambiarPoliza() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(opcionCambiarPoliza).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(opcionCambiarPoliza).waitUntilPresent();
         opcionCambiarPoliza.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblinicioCambioPoliza).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblinicioCambioPoliza).waitUntilPresent();
     }
 
     public void esReaseguroEspecial(String reaseguro) {
         MatcherAssert.assertThat(reaseguroEspecial.getText(), Is.is(Matchers.equalTo(reaseguro)));
     }
 
-    public void validarMensaje(String mensaje) {
-        commons.verificarMensaje(mensajeAdvertencia,mensaje);
+    public void validarMensaje(String mensaje) {verificarMensaje(mensajeAdvertencia,mensaje);
     }
 
     public void seleccionarInformacionPoliza() {

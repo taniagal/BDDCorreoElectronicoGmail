@@ -1,10 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -14,9 +11,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
-public class ExpedicionDePolizaPage extends PageObject{
+
+public class ExpedicionDePolizaPage extends PageUtil{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     WebElementFacade tituloVentana;
 
@@ -77,7 +77,8 @@ public class ExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//img[@class='error_icon']")
     WebElementFacade iconoError;
     
-    Commons commons = new Commons(getDriver());
+    PageUtil pageUtil = new PageUtil(getDriver());
+
 
     public ExpedicionDePolizaPage(WebDriver driver){
         super(driver);
@@ -88,11 +89,11 @@ public class ExpedicionDePolizaPage extends PageObject{
         menuPoliza.click();
         waitForAnyTextToAppear("Cotización", "Buscar pólizas");
         waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
-        commons.waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
         menuNumeroCotizacion.waitUntilPresent();
-        commons.ingresarDato(menuNumeroCotizacion,cotizacion);
+        ingresarDato(menuNumeroCotizacion,cotizacion);
         menuNumeroCotizacion.sendKeys(Keys.ENTER);
         waitForTextToAppear("Cotización");
         waitForTextToAppear(cotizacion);
@@ -133,7 +134,7 @@ public class ExpedicionDePolizaPage extends PageObject{
         String[] mensajes = mensaje.split("\\^");
         Integer contadorMensajesOk = 0;
         Integer numeroMensajes = mensajes.length;
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(mensajeRiesgos).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mensajeRiesgos).waitUntilPresent();
         List<WebElementFacade> mensajesRiesgos = findAll(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div");
         for(int i = 0; i < numeroMensajes; i++) {
             for (WebElementFacade lista : mensajesRiesgos) {

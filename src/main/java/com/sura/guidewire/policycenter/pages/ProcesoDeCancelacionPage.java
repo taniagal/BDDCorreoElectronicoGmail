@@ -1,15 +1,14 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class ProcesoDeCancelacionPage extends PageObject {
+public class ProcesoDeCancelacionPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:NewCancellation']")
     WebElementFacade btnIniciaCancelacion;
@@ -41,12 +40,11 @@ public class ProcesoDeCancelacionPage extends PageObject {
     public ProcesoDeCancelacionPage(WebDriver drive) {
         super(drive);
     }
-
-    Commons cm = new Commons(getDriver());
+    
     InicioCancelacionPage iniCancelacion = new InicioCancelacionPage(getDriver());
 
     public void iniciarProcesoCancelacion() {
-        cm.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         btnIniciaCancelacion.click();
     }
 
@@ -57,33 +55,34 @@ public class ProcesoDeCancelacionPage extends PageObject {
     public void cancelacioConAutorizacion() {
         btnOpcionesDeCompromiso.click();
         btnCancelarAhora.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAceptarAhora).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarAhora).waitUntilClickable();
         btnAceptarAhora.click();
     }
 
     public void validaAutorizacionEnFormulario() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnDetalle).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnDetalle).waitUntilClickable();
         btnDetalle.click();
-        cm.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         MatcherAssert.assertThat("Autorizacion no presente, verificar", linkAutorizacion.isVisible());
     }
 
     public void cerrarTransaccionEnValidacion() {
         btnOpcionDeCierre.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilPresent();
         btnRetirarTransaccion.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAceptarAhora).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarAhora).waitUntilPresent();
         btnAceptarAhora.click();
+        waitUntil(1000);
     }
 
     public void iniciaProgramacionDeCancelacion() {
         btnOpcionesDeCompromiso.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnProgramarCancelacion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnProgramarCancelacion).waitUntilClickable();
         btnProgramarCancelacion.click();
     }
 
     public void validaVentanaMensaje(String mensaje) {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensajeVentana).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensajeVentana).waitUntilPresent();
         MatcherAssert.assertThat("Error, mensaje", lblMensajeVentana.getText().equals(mensaje));
         btnCancelarVentana.click();
 

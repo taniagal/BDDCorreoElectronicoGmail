@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-public class OpcionesCrearPartcCuentaPage extends Commons {
+public class OpcionesCrearPartcCuentaPage extends PageUtil {
 
     private final Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//*[@id='AccountFile_Roles:AccountFile_RolesScreen:Edit-btnInnerEl']")
@@ -43,7 +43,7 @@ public class OpcionesCrearPartcCuentaPage extends Commons {
             mnuOpcionesCuenta.waitUntilPresent().click();
             btnEditCuenta.waitUntilPresent().click();
             btnAgregaCuenta.waitUntilPresent().click();
-            waitUntil(1000);
+            waitUntil(WAIT_TIME_1000);
             listRol.click();
             act.sendKeys(Keys.TAB).build().perform();
             act.sendKeys(Keys.ENTER).build().perform();
@@ -55,7 +55,7 @@ public class OpcionesCrearPartcCuentaPage extends Commons {
             btnBuscarUsuario.click();
             botonSeleccionar.waitUntilPresent().click();
             lblPartArc.waitUntilPresent();
-            waitUntil(1000);
+            waitUntil(WAIT_TIME_1000);
             act.sendKeys(Keys.TAB).build().perform();
             act.sendKeys(Keys.TAB).build().perform();
             act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -65,7 +65,7 @@ public class OpcionesCrearPartcCuentaPage extends Commons {
     }
 
     public void verificarCamposParticipantes() {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         MatcherAssert.assertThat("Error al agregar el rol del participante de la cuenta", rol.containsText("Asegurador"));
     }
 }

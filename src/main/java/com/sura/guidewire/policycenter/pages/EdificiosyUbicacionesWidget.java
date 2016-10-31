@@ -1,10 +1,10 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.google.common.base.Function;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
-public class EdificiosyUbicacionesWidget extends PageObject {
+public class EdificiosyUbicacionesWidget extends PageUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -146,7 +146,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
 
     public void seleccionarTab(String tab) {
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
         waitForAnyTextToAppear(tab);
         shouldContainText(tab);
         String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + CIERRE_XPATH1;
@@ -157,7 +157,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
     public boolean estaSeleccionadoTab(String tab) {
         Boolean esSeleccionado = false;
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
         try {
 
             waitForAnyTextToAppear(tab);
@@ -235,7 +235,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
         waitForCondition()
-                .withTimeout(2, TimeUnit.SECONDS)
+                .withTimeout(WAIT_TIME_2, TimeUnit.SECONDS)
                 .pollingEvery(250, TimeUnit.MILLISECONDS)
                 .until(inputEsActualizadoA(elemento, valorEntrada));
     }
@@ -316,7 +316,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
 
         String xLinkAgregarOtrosArticulos = "//a[contains(@id,'CPBuildingSuraPopup:OtherArticlePanelSet:AdditionaOtherArticleLV_tb:Add')]";
 
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
 
 
         if (esOtroArticulo) {
@@ -419,7 +419,7 @@ public class EdificiosyUbicacionesWidget extends PageObject {
     }
 
     public void verificarMensajes(ExamplesTable mensajes) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         for (Map<String, String> mensaje : mensajes.getRows()) {
             MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE")+" but was: "+divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
         }

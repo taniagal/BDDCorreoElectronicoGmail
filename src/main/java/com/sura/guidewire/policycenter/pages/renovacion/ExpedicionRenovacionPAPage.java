@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -14,7 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
-public class ExpedicionRenovacionPAPage extends Commons{
+public class ExpedicionRenovacionPAPage extends PageUtil {
 
     private final Actions act = new Actions(getDriver());
 
@@ -36,18 +36,18 @@ public class ExpedicionRenovacionPAPage extends Commons{
     }
 
     public void emitirRenovacion() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();
         botonOpcionesCompromiso.click();
-        withTimeoutOf(10,TimeUnit.SECONDS).waitFor(itemEmitirAhora).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(itemEmitirAhora).shouldBeVisible();
         itemEmitirAhora.click();
     }
 
     public void validarMensajeAdvertencia(ExamplesTable mensaje) {
         Map<String, String> mensajeAdvertencia = mensaje.getRows().get(0);
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(mensajeAdvertenciaRenovacion).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(mensajeAdvertenciaRenovacion).shouldBeVisible();
         MatcherAssert.assertThat(mensajeAdvertenciaRenovacion.getText(), Is.is(Matchers.equalTo(mensajeAdvertencia.get("mensaje"))));
         act.sendKeys(Keys.TAB).build().perform();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         act.sendKeys(Keys.ENTER).build().perform();
         waitForAbsenceOf(".//span/div/table/tbody/tr/td[2]/div");
     }
@@ -55,7 +55,7 @@ public class ExpedicionRenovacionPAPage extends Commons{
     public void mostrarResumenRenovacion() {
         waitForTextToAppear("¿Está seguro de que desea emitir la renovación de la póliza?");
         act.sendKeys(Keys.ENTER).build().perform();
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelRenovacionExpedida).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelRenovacionExpedida).shouldBeVisible();
     }
 
     public void validarMensajeRenovacionRealizada(String mensaje) {

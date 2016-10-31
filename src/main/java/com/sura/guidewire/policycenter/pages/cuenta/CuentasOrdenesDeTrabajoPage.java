@@ -41,11 +41,11 @@ public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
     public void filtrarTransaccionesPorEstado(String estado){
         waitFor(2).seconds();
         filtroEstado.click();
-        getDriver().manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(WAIT_TIME_2,TimeUnit.SECONDS);
         filtroEstado.sendKeys(estado);
-        getDriver().manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(WAIT_TIME_2,TimeUnit.SECONDS);
         filtroEstado.sendKeys(Keys.ENTER);
-        getDriver().manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(WAIT_TIME_2,TimeUnit.SECONDS);
     }
 
     public void validarMensaje(String mensaje) {

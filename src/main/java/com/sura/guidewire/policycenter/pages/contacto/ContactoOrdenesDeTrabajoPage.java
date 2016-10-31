@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.apache.commons.lang3.ArrayUtils;
@@ -15,7 +15,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 
-public class ContactoOrdenesDeTrabajoPage extends Commons {
+public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='ContactFile:MenuLinks:ContactFile_ContactFile_WorkOrders']/div")
     private WebElementFacade mnuTransaccionesPoliza;
@@ -57,7 +57,7 @@ public class ContactoOrdenesDeTrabajoPage extends Commons {
         filtroEstado.click();
         filtroEstado.sendKeys(estado);
         filtroEstado.sendKeys(Keys.ENTER);
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void seleccionarTransacciones() {
@@ -68,7 +68,7 @@ public class ContactoOrdenesDeTrabajoPage extends Commons {
     public void validarCamposTransacciones(String poliza, String producto, String numeroTransaccion,
                                            String tipo, String estado, String participante) {
         waitFor(fechaCreacion).waitUntilPresent();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         MatcherAssert.assertThat(this.fechaCreacion.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.poliza.getText(), Matchers.containsString(poliza));
         MatcherAssert.assertThat(this.producto.getText(), Matchers.containsString(producto));
@@ -112,7 +112,7 @@ public class ContactoOrdenesDeTrabajoPage extends Commons {
 
     public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
         waitFor(table).waitUntilVisible();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {
@@ -123,9 +123,9 @@ public class ContactoOrdenesDeTrabajoPage extends Commons {
     }
 
     public void filtrarTransaccionesPorProducto(String filtroProducto) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         waitFor(this.filtroProducto).waitUntilPresent();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         this.filtroProducto.click();
         this.filtroProducto.sendKeys(filtroProducto);
         this.filtroProducto.sendKeys(Keys.ENTER);
@@ -133,7 +133,7 @@ public class ContactoOrdenesDeTrabajoPage extends Commons {
 
     public void validarTransaccionesPorProducto(String filtroProducto) {
         waitFor(table).waitUntilVisible();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
 
         for (WebElement row : allRows) {

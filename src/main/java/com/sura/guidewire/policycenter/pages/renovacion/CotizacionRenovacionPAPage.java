@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 
-public class CotizacionRenovacionPAPage extends Commons{
+public class CotizacionRenovacionPAPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:ttlBar']")
     private WebElementFacade labelCotizacion;
@@ -68,7 +68,7 @@ public class CotizacionRenovacionPAPage extends Commons{
     }
 
     public void verDetalleCotizacion() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();
         MatcherAssert.assertThat(labelCotizacion.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
 

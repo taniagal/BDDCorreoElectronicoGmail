@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class ModificacionVehiculoPage extends Commons{
+public class ModificacionVehiculoPage extends PageUtil {
 
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
@@ -37,15 +37,15 @@ public class ModificacionVehiculoPage extends Commons{
     public void digitarFasecoldaYModelo(String numeroFasecolda, String modelo) {
         WebElementFacade modeloVehiculo = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']");
         waitFor(modeloVehiculo).typeAndTab(modelo);
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         WebElementFacade fasecolda = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-inputEl']");
         waitFor(fasecolda).typeAndTab(numeroFasecolda);
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         waitFor(campoCiudadCirculacion).typeAndTab("MEDELLIN");
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         WebElementFacade tipoServicio = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:service_DV-inputEl']");
         waitFor(tipoServicio).typeAndTab("Particular");
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void mostrarDatosVehiculo(String claseVehiculo, String marca, String linea) {
@@ -55,15 +55,15 @@ public class ModificacionVehiculoPage extends Commons{
         MatcherAssert.assertThat("Error en el valor de la marca",campoMarca.containsText(marca));
         WebElementFacade campoLinea = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']");
         MatcherAssert.assertThat("Error en el valor de la linea",campoLinea.containsText(linea));
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void registrarZonaCirculacion(String ciudadCirculacion) {
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona,"11"));
         waitFor(botonSiguiente).click();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void validarZonaCirculacion(String mensaje) {

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -15,7 +15,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
 
-public class InspeccionVehiculoPage extends Commons {
+public class InspeccionVehiculoPage extends PageUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(InspeccionVehiculoPage.class);
 
@@ -59,12 +59,12 @@ public class InspeccionVehiculoPage extends Commons {
     }
 
     public void chekear0km() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(radioButtonCeroKmNo).click();
-        waitUntil(1000);
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(radioButtonCeroKmNo).click();
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void validarVigenciaPlaca(String placa) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(campoPlaca).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(campoPlaca).shouldBePresent();
         campoPlaca.type(placa);
         act.sendKeys(Keys.TAB).build().perform();
         waitUntil(10000);
@@ -73,7 +73,7 @@ public class InspeccionVehiculoPage extends Commons {
     }
 
     public void validarDatosVehiculo(ExamplesTable datosVehiculo) {
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         for (Map<String,String> row : datosVehiculo.getRows()){
             String modelo = row.get("modelo");
             String fasecolda = row.get("codigoFasecolda");
@@ -91,7 +91,7 @@ public class InspeccionVehiculoPage extends Commons {
     }
 
     public void validarValorAsegurado(String valorAsegurado) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         String validacion = null;
         try{
             MatcherAssert.assertThat(campoValorAsegurado.getTextValue(),Is.is(Matchers.equalTo(valorAsegurado)));
@@ -102,15 +102,15 @@ public class InspeccionVehiculoPage extends Commons {
     }
 
     public void expedirPoliza() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(botonExpedirPoliza).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(botonExpedirPoliza).shouldBeVisible();
         botonExpedirPoliza.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         act.sendKeys(Keys.ENTER).build().perform();
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void validarVehiculoSinInspeccion(String placa) {
-    withTimeoutOf(20,TimeUnit.SECONDS).waitFor(labelPlaca).shouldBeVisible();
+    withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(labelPlaca).shouldBeVisible();
         MatcherAssert.assertThat(labelPlaca.getText(),Is.is(Matchers.equalTo(placa)));
     }
 
@@ -119,13 +119,13 @@ public class InspeccionVehiculoPage extends Commons {
     }
 
     public void generarUW(String mensaje) {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(menuAnalisisRiesgo).click();
-        waitUntil(2500);
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(menuAnalisisRiesgo).click();
+        waitUntil(WAIT_TIME_2500);
         MatcherAssert.assertThat(registroBloqueoInspeccion.getText(),Is.is(Matchers.equalTo(mensaje)));
     }
 
     public void validarCotizacionExpedida() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(labelCotizacionExpedida).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(labelCotizacionExpedida).shouldBeVisible();
         MatcherAssert.assertThat(labelCotizacionExpedida.getText(),Is.is(Matchers.equalTo("Cotización Expedida")));
     }
 }

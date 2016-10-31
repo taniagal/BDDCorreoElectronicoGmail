@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages.colectivas;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -23,7 +23,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.slf4j.LoggerFactory;
 
-public class InformacionDePolizaColectivaPage extends PageObject {
+public class InformacionDePolizaColectivaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:ttlBar']")
     WebElementFacade tituloDePagina;
@@ -124,13 +124,11 @@ public class InformacionDePolizaColectivaPage extends PageObject {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(InformacionDePolizaColectivaPage.class);
 
-    private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV:";
     private static final String DD_MM_YYYY = "dd/MM/yyyy";
-
-    private final Commons commons = new Commons(getDriver());
-    private final DateFormat dateFormat = new SimpleDateFormat(DD_MM_YYYY);
     private static final Date fechaHoy = new Date();
     private static final String ROLLISTAS = "textbox";
+    private static String BTN_ELEGIR_PRODUCTO_ = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV:";
+    private final DateFormat dateFormat = new SimpleDateFormat(DD_MM_YYYY);
 
     public InformacionDePolizaColectivaPage(WebDriver driver) {
         super(driver);
@@ -170,13 +168,13 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         String xpathBotonElegirProducto = BTN_ELEGIR_PRODUCTO_ + this.encontrarProducto(producto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = findBy(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
-        commons.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         botonElegirProducto.click();
     }
 
 
     public Integer encontrarProducto(String producto) {
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
+        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
         Integer filaBoton = 0;
         List<WebElement> filas = tablaProductos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
@@ -212,7 +210,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
 
     public void validarMensaje(WebElementFacade mensajePantalla, String mensaje) {
         waitFor(mensajePantalla).waitUntilVisible();
-        commons.waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         MatcherAssert.assertThat(mensajePantalla.getText(), containsText(mensaje));
     }
 
@@ -239,7 +237,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
                 waitFor(botonSiguiente);
                 botonSiguiente.click();
             } catch (Exception e) {
-                commons.waitUntil(2000);
+                waitUntil(WAIT_TIME_5000);
                 botonSiguiente.click();
             }
         }
@@ -252,7 +250,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
     }
 
     public void validarFechaFinDeVigenciaCambiada(int aniosFinVigencia) {
-        commons.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         String nuevaFechaFin = fechaInicioVigencia.getValue();
         Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 10)) + aniosFinVigencia;
         String fechaFinVigencia = nuevaFechaFin.replace(nuevaFechaFin.substring(6, 10), anioVigenciaProducto.toString());
@@ -282,9 +280,9 @@ public class InformacionDePolizaColectivaPage extends PageObject {
         campoPorcentajeParticipacionOtra.click();
         campoPorcentajeParticipacionOtraTexto.sendKeys("40");
         listaAseguradora.click();
-        commons.ingresarDato(campoAseguradora, "ALLIANZ SEGUROS S.A.");
+        ingresarDato(campoAseguradora, "ALLIANZ SEGUROS S.A.");
         Actions actions = new Actions(getDriver());
-        commons.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         actions.sendKeys(Keys.TAB).build().perform();
         actions.sendKeys(Keys.TAB).build().perform();
     }
@@ -328,7 +326,7 @@ public class InformacionDePolizaColectivaPage extends PageObject {
 
     public void validarLosElementosDeshabilitados() {
         waitFor(botonSiguiente).waitUntilNotVisible();
-        commons.waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         linkAgregarCoaseguro.shouldNotBeVisible();
         MatcherAssert.assertThat(organizacion.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));
         MatcherAssert.assertThat(canal.getAttribute("role"), Is.is(Matchers.equalTo(ROLLISTAS)));

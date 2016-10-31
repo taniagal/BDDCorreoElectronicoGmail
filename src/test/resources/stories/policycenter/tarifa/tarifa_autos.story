@@ -22,12 +22,12 @@ And ingrese los datos del vehiculo:
 |TYU140|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas:
 |limite|deducible|abogado |
-|32    |0        |Opción 1|
+|1.440 |0        |Opción 1|
 Then el resultado de la cotizacion debe ser <valor>
 
 Examples:
 |valor  |
-|210.912|
+|975.890|
 
 
 Scenario:  Realizar una cotizacion con todas las coberturas para autos
@@ -40,22 +40,22 @@ And ingrese los datos del vehiculo:
 |TAU103|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And seleccione todas las coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |Taller|Grua|CE|CS  |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |
-|32    |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus|6 |Plus|10 |0  |1.50|40|16|20|Opción 1|Opción 1|
+|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus|6 |Plus|10 |0  |1.50|40|16|20|Opción 1|Opción 1|
 Then el resultado de la cotizacion en cada cobertura debe ser:
 |fila|valor     |
-|1   |210.912   |
-|4   |3.043.799 |
-|9   |692.369   |
-|14  |63.641    |
-|17  |8.750     |
-|19  |12.900    |
-|21  |28.503    |
-|23  |12.900    |
-|25  |12.900    |
-|27  |12.900    |
-|29  |12.900    |
-|31  |12.900    |
-|33  |12.900    |
+|1   |975.890   |
+|4   |6.087.596 |
+|9   |1.384.737 |
+|14  |15.352    |
+|17  |17.500    |
+|19  |25.799    |
+|21  |57.007    |
+|23  |25.799    |
+|25  |25.799    |
+|27  |25.799    |
+|29  |25.799    |
+|31  |25.799    |
+|33  |25.799    |
 
 Examples:
 ||

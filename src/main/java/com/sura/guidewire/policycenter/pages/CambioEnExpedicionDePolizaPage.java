@@ -1,8 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -10,7 +9,7 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
 
-public class CambioEnExpedicionDePolizaPage extends PageObject{
+public class CambioEnExpedicionDePolizaPage extends PageUtil{
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange']")
     WebElementFacade botonExpedirPoliza;
 
@@ -29,8 +28,6 @@ public class CambioEnExpedicionDePolizaPage extends PageObject{
     @FindBy(xpath = ".//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToDesktop-inputEl']")
     WebElementFacade campoIrAlEscritorio;
 
-    Commons commons = new Commons(getDriver());
-
     public CambioEnExpedicionDePolizaPage(WebDriver driver){
         super(driver);
     }
@@ -43,7 +40,7 @@ public class CambioEnExpedicionDePolizaPage extends PageObject{
     public void aceptarExpedirPoliza() {
         botonAceptarMensaje.waitUntilVisible();
         botonAceptarMensaje.click();
-        commons.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void validarResumenDeLaPolizaExpedida(String infoCambio, String infoPoliza, String escritorio) {

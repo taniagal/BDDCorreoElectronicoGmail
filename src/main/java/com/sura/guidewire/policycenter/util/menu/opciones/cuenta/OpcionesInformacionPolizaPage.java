@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
-public class OpcionesInformacionPolizaPage extends Commons {
+public class OpcionesInformacionPolizaPage extends PageUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesInformacionPolizaPage.class);
     private static final String DD_MM_YYYY = "dd/MM/yyyy";
@@ -197,7 +197,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
     }
 
     public void seleccionarProducto() {
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         WebElementFacade botonElegirProducto = findBy(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:" + this.encontrarProducto().toString() + ":addSubmission']");
         botonElegirProducto.click();
     }
@@ -263,13 +263,13 @@ public class OpcionesInformacionPolizaPage extends Commons {
         $(tipoPlazoPoliza).type(tipoPlazo);
         waitFor(itemTipoPlazo).shouldBeVisible();
         itemTipoPlazo.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         fechaVigenciaPoliza.click();
         $(fechaVigenciaPoliza).type(fechaInicioVigencia);
         waitFor(fechaExpiracionPoliza).shouldBeVisible();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         fechaExpiracionPoliza.click();
     }
 
@@ -285,8 +285,8 @@ public class OpcionesInformacionPolizaPage extends Commons {
         String anioexp = fechaExpiracion.substring(6, 10);
         String mesvig = fechaVigencia.substring(0, 2);
         String mesexp = fechaExpiracion.substring(0, 2);
-        String diavig = fechaVigencia.substring(3, 5);
-        String diaexp = fechaExpiracion.substring(3, 5);
+        String diavig = fechaVigencia.substring(WAIT_TIME_3, 5);
+        String diaexp = fechaExpiracion.substring(WAIT_TIME_3, 5);
         int aniovignum = Integer.parseInt(aniovig);
         int anioexpnum = Integer.parseInt(anioexp);
         int mesvignum = Integer.parseInt(mesvig);
@@ -319,12 +319,12 @@ public class OpcionesInformacionPolizaPage extends Commons {
 
     public void adicionarSegundoTomador(String tipoDocumento, String primerNombre, String primerApellido) {
         waitForTextToAppear("Tomador secundario");
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         waitFor(botonAseguradoSecundario).shouldBeVisible();
         botonAseguradoSecundario.click();
         waitFor(itemPersonaDelDirectorio).shouldBeVisible();
         itemPersonaDelDirectorio.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         waitFor(botonTipoDocumento).shouldBeVisible();
         botonTipoDocumento.click();
         waitFor(textoTipoDocumento).shouldBeVisible();
@@ -401,18 +401,18 @@ public class OpcionesInformacionPolizaPage extends Commons {
     }
 
     public void definirPolizaFinanciada() {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(polizaFinanciada).click();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(polizaFinanciada).click();
     }
 
     public void ingresarNumeroCuotas() {
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelNumeroCuotas).shouldBePresent();
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(textoNumeroCuotas).clear();
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelNumeroCuotas).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(textoNumeroCuotas).clear();
         textoNumeroCuotas.typeAndTab("11");
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void validarRetroactividadPoliza(String mensaje) {
-        waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         botonSiguiente.click();
         waitFor(mensajeValidacion).shouldBePresent();
         MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
@@ -435,51 +435,51 @@ public class OpcionesInformacionPolizaPage extends Commons {
         botonTipoPlazo.click();
         waitFor(tipoPlazoPoliza).shouldBeVisible();
         $(tipoPlazoPoliza).typeAndTab(tipoPlazo);
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
         fechaVigenciaPoliza.click();
         $(fechaVigenciaPoliza).type(fechaInicioVigencia);
         waitFor(fechaExpiracionPoliza).shouldBeVisible();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         fechaExpiracionPoliza.click();
     }
 
     public void pasarASiguienteOpcion() {
         waitFor(botonSiguiente).shouldBeVisible();
         botonSiguiente.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void identificarTipoYNumeroIdentificacion(String tipoDocumento, String numeroDocumento) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         String validacion = null;
         WebElementFacade campoTipoDocumento = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-inputEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBeVisible();
         WebElementFacade campoNumeroDocumento = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']");
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoNumeroDocumento).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoNumeroDocumento).shouldBeVisible();
         try {
             MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(tipoDocumento)));
             MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(numeroDocumento)));
         } catch (Exception e) {
             LOGGER.error(validacion, e);
         }
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void validarMensajeBloqueoPEP(String mensaje) {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         waitFor(grupoMensajes).shouldBePresent();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         botonSiguiente.click();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void permitirContinuarCotizacionAsegurados() {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         WebElementFacade labelTituloAsegurados = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
         waitFor(labelTituloAsegurados).shouldBePresent();
         MatcherAssert.assertThat(labelTituloAsegurados.getText(), Is.is(Matchers.equalTo("Asegurados")));
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void irAInformacionDePoliza() {
@@ -498,7 +498,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
 
     public void seleccionarOpcionSiguiente() {
         botonSiguiente.click();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
     }
 
     public void validarMensajeFinanciacion(String mensaje){
@@ -520,8 +520,6 @@ public class OpcionesInformacionPolizaPage extends Commons {
             MatcherAssert.assertThat(tipoDirTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDireccionTomador"))));
             MatcherAssert.assertThat(descripcionDireccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descripcionDirTomador"))));
             MatcherAssert.assertThat(direccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("direccionTomador"))));
-//            JOptionPane.showMessageDialog(null, "formulario" + " " + campoOrganizacion.getText());
-//            JOptionPane.showMessageDialog(null, "historia" + " " + informacionPoliza.get("organizacion"));
             MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("organizacion"))));
             MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("canal"))));
             MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPoliza"))));
@@ -532,7 +530,7 @@ public class OpcionesInformacionPolizaPage extends Commons {
             MatcherAssert.assertThat(campoOficina.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("oficina"))));
             MatcherAssert.assertThat(campoAgente.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("agente"))));
             MatcherAssert.assertThat(textoDescuentoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descuento"))));
-            setImplicitTimeout(2, TimeUnit.SECONDS);
+            setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
             MatcherAssert.assertThat(botonCambiarDireccion.isVisible(), Is.is(Matchers.equalTo(false)));
             MatcherAssert.assertThat(botonCambiarTomador.isVisible(), Is.is(Matchers.equalTo(false)));
             MatcherAssert.assertThat(linkCoaseguro.isVisible(), Is.is(Matchers.equalTo(false)));

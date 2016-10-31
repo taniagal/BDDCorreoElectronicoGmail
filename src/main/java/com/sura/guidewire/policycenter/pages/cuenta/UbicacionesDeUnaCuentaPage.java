@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 
 
-public class UbicacionesDeUnaCuentaPage extends Commons {
+public class UbicacionesDeUnaCuentaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtIrA;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']/div")
@@ -45,7 +45,7 @@ public class UbicacionesDeUnaCuentaPage extends Commons {
     }
 
     public void irAUbicacionesDeUnaCuenta(String cuenta) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoTxtIrA).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoTxtIrA).waitUntilPresent();
         campoTxtIrA.sendKeys("Search");
         campoTxtIrA.sendKeys(Keys.ENTER);
         menuItemCuentas.waitUntilPresent();
@@ -64,7 +64,7 @@ public class UbicacionesDeUnaCuentaPage extends Commons {
     }
 
     public void agregaDireccion(String departamento, String ciudad, String tipoDireccion){
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         selectItem(comboBoxDepartamento,departamento);
         waitForComboValue(comboBoxDepartamento,departamento);
         selectItem(comboBoxCiudad,ciudad);
@@ -75,7 +75,7 @@ public class UbicacionesDeUnaCuentaPage extends Commons {
     }
 
     public void verificarTipoDeDireccion(){
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         labelTipoDeDireccion.waitUntilPresent();
         MatcherAssert.assertThat("No está el campo tipo de direccion", labelTipoDeDireccion.isPresent());
     }

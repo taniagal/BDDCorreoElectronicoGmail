@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -24,7 +24,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
 
 
-public class ModificacionCotizacionDePolizaPage extends PageObject {
+public class ModificacionCotizacionDePolizaPage extends PageUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionCotizacionDePolizaPage.class);
 
@@ -142,7 +142,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
 
     public void verDetalleCotizacion() {
         waitForTextToAppear("Cotización", 5000);
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
         if (tituloDePagina.isPresent()) {
             waitForTextToAppear(tituloDePagina.getText(), 2000);
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
@@ -207,7 +207,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
     }
 
     public void validarDireccionTomador(String direccion) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(campoDireccion).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoDireccion).shouldBePresent();
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
 
@@ -215,7 +215,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
 
         waitFor(tablaCoberturas).shouldBeVisible();
         List<WebElement> allRows = tablaCoberturas.findElements(By.tagName("tr"));
-        waitABit(1000);
+        waitUntil(WAIT_TIME_1000);
         String validacion = null;
         Map<String, String> coberturas = new HashMap<>();
         Map<String, String> terminoCoberturas = new HashMap<>();
@@ -257,7 +257,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
     public void validarDetallesCosto(Map<String, String> infoDetalleCotizacion) {
         waitFor(botonDetalleCambioCosto).shouldBeVisible();
         botonDetalleCambioCosto.click();
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(botonDetalleCambioCosto).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonDetalleCambioCosto).shouldBePresent();
         MatcherAssert.assertThat(labelDCVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_labelVehiculo"))));
         MatcherAssert.assertThat(labelDCPlaca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_placa"))));
         MatcherAssert.assertThat(labelDCCodigoFasecolda.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_codigoFasecolda"))));
@@ -274,7 +274,7 @@ public class ModificacionCotizacionDePolizaPage extends PageObject {
 
     public WebElementFacade esperarElemento(final String xpath) {
         Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(30, TimeUnit.SECONDS)
+                .withTimeout(WAIT_TIME_28, TimeUnit.SECONDS)
                 .pollingEvery(5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
         return espera.until(new Function<WebDriver, WebElementFacade>() {

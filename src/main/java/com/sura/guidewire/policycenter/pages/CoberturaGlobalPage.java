@@ -1,7 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
-import java.util.List;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -11,10 +10,8 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import javax.swing.*;
 
-
-public class CoberturaGlobalPage extends Commons {
+public class CoberturaGlobalPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBlanket']/div")
     private WebElementFacade menuItemCoberturaGlobal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket_tb:AddBlanket-btnInnerEl']")
@@ -56,22 +53,21 @@ public class CoberturaGlobalPage extends Commons {
     }
 
     public void irACoberturasGlobales() {
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
     }
 
     public void navegarPorCobertura(String descripcion, String tipoCobertura){
         botonAgregarCoberturaGeneral.waitUntilPresent().click();
         waitFor(campoTxtDescripcion).sendKeys(descripcion);
         selectItem(comboBoxTipoCobertura, tipoCobertura);
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
     public void agregarCoberturasGlobales(ExamplesTable datosCobertura) {
         Map<String, String> dato = datosCobertura.getRow(0);
         navegarPorCobertura(dato.get("descripcion"), dato.get("tipo_cobertura"));
         if("Multiples ubicaciones".equals(dato.get("tipo_cobertura"))) {
             cargarMultiplesUbicaciones(dato.get("valor"));
-        }
-        else if ("Una cobertura".equals(dato.get("tipo_cobertura"))) {
+        } else if ("Una cobertura".equals(dato.get("tipo_cobertura"))) {
             cargarCoberturaUnica(dato.get("nombre_cobertura"), dato.get("valor"));
         }
         botonAceptar.click();
@@ -80,7 +76,7 @@ public class CoberturaGlobalPage extends Commons {
     public void cargarCoberturaUnica(String nombreCobertura, String valor) {
         comboBoxCoberturas.waitUntilPresent();
         selectItem(comboBoxCoberturas, nombreCobertura);
-        waitUntil(2500);
+        waitUntil(WAIT_TIME_2500);
         linkCoberturas.click();
         checkBoxGenerico.waitUntilPresent().click();
         campoTxtGenerico.sendKeys(valor);
@@ -112,9 +108,9 @@ public class CoberturaGlobalPage extends Commons {
         navegarPorCobertura(dato.get("descripcion"), dato.get("tipo_cobertura"));
         comboBoxCoberturas.waitUntilPresent();
         selectItem(comboBoxCoberturas, dato.get("nombre_cobertura"));
-        waitUntil(2500);
+        waitUntil(WAIT_TIME_2500);
         botonAceptar.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void verificarMensajeError(String mensaje) {

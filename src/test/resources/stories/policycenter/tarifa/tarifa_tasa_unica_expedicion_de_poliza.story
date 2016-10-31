@@ -17,7 +17,7 @@ When vaya a agregar el vehiculo con los datos:
 |random|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
 And seleccione algunas coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|GTR     |GP      |
-|32    |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|Opción 1|Opción 1|
+|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|Opción 1|Opción 1|
 And expido la poliza
 Then debo poder verificar los datos de la poliza
 Examples:

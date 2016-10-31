@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -10,7 +10,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class  DetallesContactoPage extends Commons {
+public class  DetallesContactoPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
     private WebElementFacade labelPrimerNombre;
@@ -144,32 +144,32 @@ public class  DetallesContactoPage extends Commons {
     }
 
     public void irABuscarContacto() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoTxtIrA).shouldBePresent();
         campoTxtIrA.sendKeys("Search");
         campoTxtIrA.sendKeys(Keys.ENTER);
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(menuItemContactos).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(menuItemContactos).shouldBePresent();
         menuItemContactos.click();
     }
 
 
     public void editarContacto(){
-        withTimeoutOf(15, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
         botonEditarContacto.waitUntilVisible();
         MatcherAssert.assertThat("El boton de editar no está presente en el DOM",botonEditarContacto.isPresent());
         botonEditarContacto.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
 
     public void actualizaContacto(){
         botonActualizar.click();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
     }
 
 
     public void setDireccion(){
         botonAgregar.click();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
 
@@ -183,7 +183,7 @@ public class  DetallesContactoPage extends Commons {
 
     public void setApellido(String segundoApellido){
         campoTxtSegundoApellido.clear();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
         campoTxtSegundoApellido.sendKeys(segundoApellido);
         dtlContact[3]= segundoApellido;
     }
@@ -201,7 +201,7 @@ public class  DetallesContactoPage extends Commons {
 
     public void setTelefonosResidencial(String telefonoResidencial){
         campoTxtTelefonoResidencial.clear();
-        waitUntil(500);
+        waitUntil(WAIT_TIME_500);
         campoTxtTelefonoResidencial.type(telefonoResidencial);
         dtlContact[11]= telefonoResidencial;
     }
@@ -241,7 +241,7 @@ public class  DetallesContactoPage extends Commons {
 
 
     public void setEmpleados(String numeroEmpleados, String ventasAnuales, String valorActivos) {
-        waitUntil(500);
+        waitUntil(WAIT_TIME_500);
         campoTxtNumeroEmpleados.clear();
         campoTxtNumeroEmpleados.sendKeys(numeroEmpleados);
         campoTxtValorActivos.clear();
@@ -323,20 +323,27 @@ public class  DetallesContactoPage extends Commons {
         waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
         waitFor(comboBoxActividadComercial).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText()))
+        if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText())) {
             right.append("activida comercial,");
-        if(!dtlCntJ[2].equals(campoTxtNumeroEmpleados.getText()))
+        }
+        if(!dtlCntJ[2].equals(campoTxtNumeroEmpleados.getText())) {
             right.append("numero de empleados,");
-        if(!dtlCntJ[3].equals(campoTxtValorActivos.getText()))
+        }
+        if(!dtlCntJ[3].equals(campoTxtValorActivos.getText())) {
             right.append("valor activos,");
-        if(!dtlCntJ[4].equals(campoTxtVentasAnuales.getText()))
+        }
+        if(!dtlCntJ[4].equals(campoTxtVentasAnuales.getText())) {
             right.append("ventas anuales,");
-        if(!dtlCntJ[5].equals(campoTxtTelefonoTrabajo2.getText()))
+        }
+        if(!dtlCntJ[5].equals(campoTxtTelefonoTrabajo2.getText())) {
             right.append("telefono oficina,");
-        if(!dtlCntJ[6].equals(campoTxtCorreoElectronicoPrimarioEmpresa.getText()))
+        }
+        if(!dtlCntJ[6].equals(campoTxtCorreoElectronicoPrimarioEmpresa.getText())) {
             right.append("correo primario,");
-        if(!dtlCntJ[7].equals(campoTxtCorreoElectronicoSecundarioEmpresa.getText()))
+        }
+        if(!dtlCntJ[7].equals(campoTxtCorreoElectronicoSecundarioEmpresa.getText())) {
             right.append("correo secundario,");
+        }
         String res = right.toString();
         if(MSJVALIDARVALORES.equals(res)){
             res = right.toString().substring(0,right.toString().length()-1);
@@ -446,7 +453,7 @@ public class  DetallesContactoPage extends Commons {
      * AGREGAR DIRECCION A CONTACTO
      */
     public void validarDatosPantalla() {
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if(!labelPais.isPresent())
             notPresent.append(" pais,");

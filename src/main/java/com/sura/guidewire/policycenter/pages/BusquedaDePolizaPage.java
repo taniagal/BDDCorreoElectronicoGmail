@@ -1,12 +1,11 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.List;
 import java.util.Map;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -17,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-public class BusquedaDePolizaPage extends PageObject {
+public class BusquedaDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:PolicyNumberCriterion-inputEl']")
     WebElementFacade txtNumeroPoliza;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:AccountNumber-inputEl']")
@@ -42,6 +41,8 @@ public class BusquedaDePolizaPage extends PageObject {
     WebElementFacade tituloBuscarPoliza;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     WebElementFacade botonRestablecer;
+
+    protected static final int WAIT_TIME_3500 = 3500;
 
     public BusquedaDePolizaPage(WebDriver driver) {
         super(driver);
@@ -98,7 +99,7 @@ public class BusquedaDePolizaPage extends PageObject {
     public void limpiarCampos() {
         waitFor(botonRestablecer).waitUntilPresent().waitUntilClickable();
         botonRestablecer.click();
-        Commons.waitUntil(3500);
+        waitUntil(WAIT_TIME_3500);
     }
 
     public void buscarPolizaPorNumeroDeCuenta(String numeroCuenta) {

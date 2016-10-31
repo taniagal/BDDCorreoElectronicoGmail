@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.tarifa;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
-public class TarifaAutosPage extends Commons {
+public class TarifaAutosPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnInnerEl']")
     private WebElementFacade botonAgregarAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
@@ -130,17 +130,17 @@ public class TarifaAutosPage extends Commons {
         comboBoxTipoPlazo.waitUntilPresent().clear();
         selectItem(comboBoxTipoPlazo, "6 meses");
         waitForComboValue(comboBoxTipoPlazo, "6 meses");
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
     }
 
 
     public void cotizar() {
         botonCotizar.click();
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
-        waitUntil(500);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
+        waitUntil(WAIT_TIME_500);
         menuItemCotizacion.waitUntilPresent().click();
     }
-    
+
 
     public void relacionarAsegurado() {
         botonRelacionarAsegurado.waitUntilPresent();
@@ -151,9 +151,9 @@ public class TarifaAutosPage extends Commons {
 
 
     public void setAsegurados() {
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(meniItemAsegurados).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(meniItemAsegurados).waitUntilPresent().click();
         Actions actions = new Actions(getDriver());
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         actions.moveToElement(navItemContastosDeLaCuenta).build().perform();
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         navItemAsegurado.click();
@@ -165,19 +165,15 @@ public class TarifaAutosPage extends Commons {
         Map<String, String> dato = datosCoberturas.getRow(0);
         botonBorrar.waitUntilPresent().click();
         botonBorrar.waitUntilNotVisible();
-        try {
-            comboBoxLimite.waitUntilPresent();
-            waitUntil(1500);
-            comboBoxLimite.clear();
-            waitUntil(500);
-            comboBoxLimite.sendKeys(dato.get("limite"));
-            comboBoxLimite.sendKeys(Keys.ENTER);
-            waitUntil(800);
-            selectItem(comboBoxDeducible, dato.get("deducible"));
-            selectItem(comboBoxAbogado, dato.get("abogado"));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        comboBoxLimite.waitUntilPresent();
+        waitUntil(WAIT_TIME_1500);
+        comboBoxLimite.clear();
+        waitUntil(WAIT_TIME_500);
+        comboBoxLimite.sendKeys(dato.get("limite"));
+        comboBoxLimite.sendKeys(Keys.ENTER);
+        waitUntil(WAIT_TIME_800);
+        selectItem(comboBoxDeducible, dato.get("deducible"));
+        selectItem(comboBoxAbogado, dato.get("abogado"));
     }
 
 
@@ -212,7 +208,6 @@ public class TarifaAutosPage extends Commons {
         checkBoxCentroDeServicios.click();
         selectItem(comboBoxCentroDeServicios, dato.get("CS"));
         checkBoxCarroDeReemplazo.click();
-        selectItem(comboBoxPerdidaParcial, dato.get("PP"));
         selectItem(comboBoxPerdidaTotal, dato.get("PT"));
     }
 
@@ -234,14 +229,14 @@ public class TarifaAutosPage extends Commons {
     public void verificarTarifacionPorCoberturas(ExamplesTable valores) {
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
-            LOGGER.info(valor.get("valor")+" | "+tablaDescripcion.getText());
+            LOGGER.info(valor.get("valor") + " | " + tablaDescripcion.getText());
         }
 
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(TABLAXPATH + valor.get("fila") + "]/td[3]");
             WebElementFacade cobertura = findBy(TABLAXPATH + valor.get("fila") + "]/td[1]");
             MatcherAssert.assertThat("Error en el valor de la cobertura '" + valor.get("fila") + " - " +
-                            cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
+                    cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
         }
     }
 }

@@ -39,19 +39,14 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
 
     }
 
+
+
     @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro $filtro en la columna $columna")
     public void deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna(@Named("filtro") String filtro, @Named("columna") String columna) {
         MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), CoreMatchers.hasItem(CoreMatchers.containsString(filtro)));
 
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna");
     }
-
-/** dejar este pilas
-    @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro <tipoPersona> y <rol>")
-    public void deboVerContactosAsociadosAEstaCuentaConFiltros(@Named("tipoPersona") String filtroTipoPersona, @Named("rol") String filtroRol) {
-        LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltros");
-    }
-*/
 
     @When("ingrese a PolicyCenter y me loguee con un usuario de rol $rolUsuario")
     public void accesoAPolicyCenter(@Named("rolUsuario") String rolUsuario) {

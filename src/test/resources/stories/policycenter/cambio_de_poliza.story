@@ -30,17 +30,16 @@ Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
 |buscarNumeroPoliza       |mensaje|
-|TEST_22266665            |Advertencia: La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días)       |
+|TEST_22266665            |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días)       |
 
 Scenario:  Realizar cambio de una poliza PA con emision anticipada
-
 Given que voy a buscar una poliza  <buscarNumeroPoliza>
 When quiero relizar el cambio de una poliza
 Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
 |buscarNumeroPoliza       |mensaje|
-|TEST_22266666            |Advertencia: La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (60 días)       |
+|TEST_22266666            |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (60 días)       |
 
 Scenario:  Realizar cambio de una poliza CP con retroactividad
 
@@ -50,7 +49,7 @@ Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
 |buscarNumeroPoliza       |mensaje|
-|TEST_22266667            |Advertencia: La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días)       |
+|TEST_22266667            |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días)       |
 
 Scenario:  Realizar cambio de una poliza CP con emision anticipada
 
@@ -60,7 +59,7 @@ Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
 |buscarNumeroPoliza       |mensaje|
-|TEST_22266668            |Advertencia: La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
+|TEST_22266668            |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
 Scenario:  Realizar cambio de una poliza que no tiene reaseguro especial
 
@@ -81,5 +80,5 @@ Then no debo visualizar la advertencia con el <mensaje>
 
 Examples:
 |buscarNumeroPoliza       |mensaje|
-|TEST_22266668            |Advertencia: La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
+|TEST_22266668            |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 

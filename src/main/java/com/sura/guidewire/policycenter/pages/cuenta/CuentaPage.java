@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +11,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class CuentaPage extends Commons {
+public class CuentaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade campoTxtNombreCompania;
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -101,11 +101,11 @@ public class CuentaPage extends Commons {
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         waitFor(botonAgregarOrganizacion).click();
-        waitUntil(500);
+        waitUntil(WAIT_TIME_500);
         campoTxtNombreDeOrganizacion.sendKeys(nombreOrganizacion);
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
-        waitUntil(500);
+        waitUntil(WAIT_TIME_500);
         selectItem(comboBoxCodigoAgente,agente);
     }
 
@@ -121,7 +121,7 @@ public class CuentaPage extends Commons {
 
     public void actualizar(){
         botonActualizar.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void buscarPersona(String nombre, String persona){
@@ -135,7 +135,7 @@ public class CuentaPage extends Commons {
             botonCrearCuentaNueva.click();
             botonNuevaCuentaPersonal.click();
         }
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public  void verificarMensaje(String mensaje){
@@ -143,12 +143,12 @@ public class CuentaPage extends Commons {
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
         MatcherAssert.assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
     }
 
     public  void verificarEstadoDeMensaje(String mensaje){
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         MatcherAssert.assertThat("El mensaje erroneo sigue apareciendo", !divMensaje.containsText(mensaje));
     }
 }

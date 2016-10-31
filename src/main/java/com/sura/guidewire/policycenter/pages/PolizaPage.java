@@ -2,10 +2,14 @@ package com.sura.guidewire.policycenter.pages;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -24,6 +28,8 @@ public class PolizaPage extends GuidewirePage {
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private List<String> listaMotivos;
     private List<WebElementFacade> listaMotivosWE;
+    protected static final int WAIT_TIME_2 = 2;
+    protected static final int WAIT_TIME_1 = 1;
 
 
     public enum Opcion {
@@ -88,9 +94,9 @@ public class PolizaPage extends GuidewirePage {
         WebElementFacade btnEditarTransaccion = null;
         String xpatBtnAceptarConfirmacion = ".//span[contains(@id,'button') and contains(@id,'btnInnerEl')]";
 
-        setImplicitTimeout(1, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         try {
-            btnEditarTransaccion = withTimeoutOf(1,TimeUnit.SECONDS).find(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
+            btnEditarTransaccion = withTimeoutOf(WAIT_TIME_1,TimeUnit.SECONDS).find(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION DE POLIZA NO VISUALIZADO : " + e);
         }
@@ -122,7 +128,7 @@ public class PolizaPage extends GuidewirePage {
             shouldBeVisible(opcion);
             opcion.waitUntilClickable().click();
             String xpathimgMensajesWarnig = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']//div//img[@class='warning_icon']";
-            setImplicitTimeout(2,TimeUnit.SECONDS);
+            setImplicitTimeout(WAIT_TIME_2,TimeUnit.SECONDS);
             if (findBy(xpathimgMensajesWarnig).isVisible()) {
                 opcion.waitUntilClickable().click();
             }
@@ -266,6 +272,33 @@ public class PolizaPage extends GuidewirePage {
         return findBy(XpathMensajeDeCancelacionPolizaconOneroso);
 
     }
+    public void validarTransaccionPendienteNoExistenteEnResumenPoliza(String tipo){
+        String xPathTablaTransacciones = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_JobsInProgressLV-body']";
+        WebElementFacade tablaTransacciones = findBy(xPathTablaTransacciones);
+        waitFor(tablaTransacciones);
+        List<WebElement> allRows = tablaTransacciones.findElements(By.tagName("tr"));
+        String existeTransaccion = "No existe la póliza";
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if(tipo.equals(cells.get(5).getText())){
+                existeTransaccion = "Se encontró la póliza en las transacciones";
+            }
+        }
+        MatcherAssert.assertThat("No existe la póliza", Is.is(Matchers.equalTo(existeTransaccion)));
+    }
+    public boolean esVisibleMensaje(String xpath)
+    {
+        boolean visible;
+        visible= findBy(xpath).isVisible();
+
+        return visible;
+    }
+
+    public void validarQueNoSeMuestreMensaje(String xpath)
+    {
+        MatcherAssert.assertThat(esVisibleMensaje(xpath), Is.is(false));
+    }
+
 
 
 }

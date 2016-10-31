@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class OpcionesInformacionDePagoPage extends Commons{
+public class OpcionesInformacionDePagoPage extends PageUtil {
 
     @FindBy (xpath = "//td[@id='SubmissionWizard:BillingInfo']/div")
     WebElementFacade btnPago;
@@ -42,12 +42,12 @@ public class OpcionesInformacionDePagoPage extends Commons{
 
     public void validaPrograma(String programa){
         MatcherAssert.assertThat("El Programa de pagos cambio o no corresponde al enviado por Billing", programa.equals(lblPrograma.getText()));
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnInicio).waitUntilClickable();
     }
 
     // TODO: 07/09/2016 Metodo wait para implementar generico
     public void waitPayment(WebElementFacade webElementFacade) {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
 
 

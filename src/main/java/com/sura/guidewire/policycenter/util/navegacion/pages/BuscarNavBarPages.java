@@ -4,16 +4,27 @@ import com.sura.guidewire.policycenter.util.navegacion.util.widget.MenuBarNavWid
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 
 public class BuscarNavBarPages extends PageObject {
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
+    private WebElementFacade lblCuenta;
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    private WebElementFacade btnBuscaCuenta;
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
+    private WebElementFacade linkCuenta;
+
+    protected static final int WAIT_TIME_1000 = 1000;
+    protected static final int WAIT_TIME_2 = 2;
     private static String MENU_BUSCAR = ".//a[contains(@id,'TabBar:SearchTab')]";
 
     public enum Opciones {
         POLIZA("Pólizas"),
-        CUENTAS("Cuentas"),
+        CUENTAS(".//a[contains(*,'Cuentas')]"),
         CODIGO_AGENTE("Código de agente"),
         ACTIVIDADES("Actividades"),
         CONTACTOS("Contactos");
@@ -29,18 +40,25 @@ public class BuscarNavBarPages extends PageObject {
         }
     }
 
-
-    public MenuBarNavWidgetPage seleccionarOpcion() {
-        findBy(MENU_BUSCAR).waitUntilVisible();
-
-        WebElement menuBuscar = getDriver().findElement(By.xpath(MENU_BUSCAR));
-        element(menuBuscar).setWindowFocus();
-        element(menuBuscar).sendKeys(Keys.ARROW_DOWN);
-        fluent().await().atMost(2, TimeUnit.SECONDS);
-        return switchToPage(MenuBarNavWidgetPage.class);
+    public void navegacionBuscarCuenta(String numCuenta) {
+        lblCuenta.clear();
+        lblCuenta.sendKeys(numCuenta);
+        btnBuscaCuenta.click();
+        waitABit(WAIT_TIME_1000);
+        linkCuenta.click();
     }
 
 
+    public MenuBarNavWidgetPage seleccionarOpcion() {
+        findBy(MENU_BUSCAR).waitUntilVisible();
+        WebElement menuBuscar = getDriver().findElement(By.xpath(MENU_BUSCAR));
+        element(menuBuscar).setWindowFocus();
+        element(menuBuscar).sendKeys(Keys.ARROW_DOWN);
+        fluent().await().atMost(WAIT_TIME_2, TimeUnit.SECONDS);
+        return switchToPage(MenuBarNavWidgetPage.class);
+    }
 
-
+    public void clicenOpcionCuentas() {
+        findBy(Opciones.CUENTAS.nombre()).waitUntilVisible().click();
+    }
 }

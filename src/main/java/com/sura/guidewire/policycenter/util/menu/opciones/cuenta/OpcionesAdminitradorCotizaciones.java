@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.GwNavegacionUtil;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 
 
-public class OpcionesAdminitradorCotizaciones extends Commons {
+public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
 
     Actions act = new Actions(getDriver());
@@ -111,7 +111,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     public void seleccionarAcciones() {
         band = 0;
         int i = 0;
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tblCotizaciones).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tblCotizaciones).waitUntilPresent();
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
@@ -182,7 +182,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
 
     public void mostrarInfoCotizacion(String producto) {
         waitForTextToAppear(producto, 2500);
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         String tProductos = "Todos Los Productos";
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
@@ -297,17 +297,17 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     }
 
     public void mostrarTodosLosProductos(String producto) {
-        waitABit(1000);
+        waitABit(WAIT_TIME_1000);
         txtProductos.click();
         WebElementFacade cbxProducto = findBy(".//li[contains(.,'" + producto + "')]");
-        waitABit(1000);
+        waitABit(WAIT_TIME_1000);
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
-        waitABit(1500);
+        waitABit(WAIT_TIME_1500);
     }
 
     /**
-     * Metodos Ingresados para re-usar el mismo Page.
+     * Metodos Ingresados para re-usar el mismo Page.TEST_22266665}
      * Intervenido por: Jonathan Mejia Leon
      * Fecha de intervencion: 21/06/2016
      * Motivo: Uso del page para Administracion de cotización (Declinar-No Tomar)
@@ -325,7 +325,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     }
 
     public void ingresaRechazo(String razon) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(txtCodRazon).shouldBeEnabled();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(txtCodRazon).shouldBeEnabled();
         txtCodRazon.clear();
         txtCodRazon.sendKeys(razon);
         txtRazonCartaDeclina.click();
@@ -340,7 +340,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
     }
 
     public void ingresaRechazoNoTomar(String razon) {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(listaTipoRazonNoTomar).shouldBeEnabled();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(listaTipoRazonNoTomar).shouldBeEnabled();
         listaTipoRazonNoTomar.clear();
         listaTipoRazonNoTomar.sendKeys(razon);
         txtRazonCartaNoTomar.click();
@@ -356,13 +356,13 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
 
     private List<WebElementFacade> getListaCotizaciones() {
         List<WebElementFacade> numerosCotizacion;
-        numerosCotizacion = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[3]");
+        numerosCotizacion = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[3]");
         return numerosCotizacion;
     }
 
     private List<WebElementFacade> getListaEstado() {
         List<WebElementFacade> numeroEstado;
-        numeroEstado = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[8]");
+        numeroEstado = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV-body']/div/table/tbody/tr/td[8]");
         return numeroEstado;
     }
 
@@ -425,7 +425,7 @@ public class OpcionesAdminitradorCotizaciones extends Commons {
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {
-            elementosTipoCanalVentas = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
+            elementosTipoCanalVentas = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
             for (WebElementFacade lista : elementosTipoCanalVentas) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }

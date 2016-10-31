@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.model.Aseguradora;
 
 import java.util.List;
@@ -14,10 +14,9 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
-public class CoaseguroPage extends Commons {
+public class CoaseguroPage extends PageUtil {
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade linkAgregarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:ReferencePolicyNumber-inputEl']")
@@ -47,11 +46,11 @@ public class CoaseguroPage extends Commons {
     }
 
     public void validarCampos() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
         linkAgregarCoaseguro.click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
         campoTxtDastosAdministrativos.waitUntilPresent();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         radioBotonLider.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
         try{
@@ -91,7 +90,7 @@ public class CoaseguroPage extends Commons {
                 act.click().build().perform();
                 act.sendKeys(aseguradora.getNombre()).build().perform();
                 act.sendKeys(Keys.TAB).build().perform();
-                waitUntil(500);
+                waitUntil(WAIT_TIME_500);
                 act.sendKeys(aseguradora.getParticipacion()).build().perform();
             }
             i++;
@@ -101,8 +100,8 @@ public class CoaseguroPage extends Commons {
 
 
     public void verificarPorcentajeParticipacion(){
-        waitFor(ExpectedConditions.textToBePresentInElement(pieDeTabla,"100"));
-        MatcherAssert.assertThat("El total no es del 100%", pieDeTabla.getText().contains("100"));
+        waitUntil(WAIT_TIME_2000);
+        MatcherAssert.assertThat("El total asegurado no es del 100%", pieDeTabla.getText().contains("100"));
     }
 
 
@@ -112,7 +111,7 @@ public class CoaseguroPage extends Commons {
 
 
     public void verificarCoaseguro() {
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(linkEditarCoaseguro).shouldBePresent();
         MatcherAssert.assertThat("Error al agregar el coaseguro", linkEditarCoaseguro.isPresent());
     }
 

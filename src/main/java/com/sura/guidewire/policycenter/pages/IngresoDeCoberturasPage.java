@@ -1,14 +1,13 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class IngresoDeCoberturasPage extends PageObject{
+public class IngresoDeCoberturasPage extends PageUtil{
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade campoLimite;
@@ -22,7 +21,7 @@ public class IngresoDeCoberturasPage extends PageObject{
     private WebElementFacade botonMostrarHojaDeCalculo;
 
 
-    Commons commons = new Commons(getDriver());
+    PageUtil pageUtil = new PageUtil(getDriver());
 
     public IngresoDeCoberturasPage(WebDriver driver){
         super(driver);
@@ -30,16 +29,16 @@ public class IngresoDeCoberturasPage extends PageObject{
 
     public void ingresarLimite(){
         waitForTextToAppear("Cobertura");
-        commons.selectItem(campoLimite,"32.000.000");
+        pageUtil.selectItem(campoLimite,"32.000.000");
     }
 
     public void ingresarDeducible(){
-        commons.selectItem(campoDeducible,"0");
+        pageUtil.selectItem(campoDeducible,"0");
     }
 
     public void cotizar(){
         botonCotizar.click();
-        withTimeoutOf(20, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).waitUntilPresent();
     }
 
     public void clickEnCheckHurto(){

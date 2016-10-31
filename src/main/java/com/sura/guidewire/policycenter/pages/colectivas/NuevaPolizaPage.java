@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.colectivas;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -19,10 +19,8 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
-public class NuevaPolizaPage extends PageObject {
+public class NuevaPolizaPage extends PageUtil {
 
-
-    Commons commons = new Commons(getDriver());
 
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-inputEl']")
     private WebElementFacade listaOrganizacion;
@@ -35,11 +33,14 @@ public class NuevaPolizaPage extends PageObject {
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnInnerEl']")
     private WebElementFacade btnBuscar;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
-    WebElementFacade tablaProductosIndividual;
+    private WebElementFacade tablaProductosIndividual;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV-body']")
-    WebElementFacade tablaProductosColectiva;
+    private WebElementFacade tablaProductosColectiva;
     @FindBy(xpath = "//li")
-    WebElementFacade listaDesplegable;
+    private WebElementFacade listaDesplegable;
+    @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']")
+    private WebElementFacade btnCuentas;
+
 
     private List<WebElement> filas;
     Actions acciones = new Actions(getDriver());
@@ -49,7 +50,7 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
-        commons.waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         acciones.click(elementoDeLaLista).build().perform();
     }
 
@@ -66,7 +67,7 @@ public class NuevaPolizaPage extends PageObject {
         Map<String, String> organizaciones;
         for (int i = 0; i < listaOrganizaciones.getRowCount(); i++) {
             organizaciones = listaOrganizaciones.getRows().get(i);
-            elemetoDeLaLista = withTimeoutOf(10, TimeUnit.SECONDS).find("//li[contains(.,'" + organizaciones.get("organizacion") + "')]");
+            elemetoDeLaLista = withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).find("//li[contains(.,'" + organizaciones.get("organizacion") + "')]");
             MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(organizaciones.get("organizacion"))));
         }
     }
@@ -75,7 +76,7 @@ public class NuevaPolizaPage extends PageObject {
         String[] arregloListaCanal = datosListaCanal.split("[,]");
         WebElementFacade elemetoDeLaLista;
         for (int i = 0; i < arregloListaCanal.length; i++) {
-            elemetoDeLaLista = withTimeoutOf(15, TimeUnit.SECONDS).find("//li[contains(.,'" + arregloListaCanal[i] + "')]");
+            elemetoDeLaLista = withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).find("//li[contains(.,'" + arregloListaCanal[i] + "')]");
             MatcherAssert.assertThat(elemetoDeLaLista.getText(), Is.is(Matchers.equalTo(arregloListaCanal[i])));
         }
     }
@@ -137,15 +138,15 @@ public class NuevaPolizaPage extends PageObject {
     }
 
     public void seleccionarElTipoDePoliza(String tipoPoliza) {
-        commons.waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         if ("Individual".equals(tipoPoliza)) {
             if ("0% 0%".equals($(radioBotonIndividual).getCssValue("background-position"))) {
-                commons.waitUntil(1500);
+                waitUntil(WAIT_TIME_1500);
                 radioBotonIndividual.click();
             }
         } else {
             if (!"0% 0%".equals($(radioBotonIndividual).getCssValue("background-position"))) {
-                commons.waitUntil(1500);
+                waitUntil(WAIT_TIME_1500);
                 radioBotonColectiva.click();
             }
         }
@@ -153,10 +154,10 @@ public class NuevaPolizaPage extends PageObject {
 
     public List<WebElement> obtenerTablaDeProductos(String tipoPoliza){
         if ("Individual".equals(tipoPoliza)) {
-            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaProductosIndividual).waitUntilPresent();
+            withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tablaProductosIndividual).waitUntilPresent();
             filas = tablaProductosIndividual.findElements(By.tagName("tr"));
         } else {
-            withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tablaProductosColectiva).waitUntilPresent();
+            withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tablaProductosColectiva).waitUntilPresent();
             filas = tablaProductosColectiva.findElements(By.tagName("tr"));
         }
         return filas;
@@ -193,15 +194,14 @@ public class NuevaPolizaPage extends PageObject {
 
     public void buscarCuenta(String numeroCuenta) {
         withTimeoutOf(35, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
-        commons.waitUntil(3000);
+        waitUntil(WAIT_TIME_3000);
         btnBuscar.click();
-        WebElementFacade btnCuentas = commons.esperarElemento(".//*[@id='Search:MenuLinks:Search_AccountSearch']");
         btnCuentas.click();
-        WebElementFacade txtNumeroCuenta = commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");
+        WebElementFacade txtNumeroCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");
         txtNumeroCuenta.sendKeys(numeroCuenta);
-        WebElementFacade btnBuscarCuenta = commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
+        WebElementFacade btnBuscarCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
         btnBuscarCuenta.click();
-        WebElementFacade grdNumeroCuenta = commons.esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']");
+        WebElementFacade grdNumeroCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']");
         grdNumeroCuenta.click();
     }
 }

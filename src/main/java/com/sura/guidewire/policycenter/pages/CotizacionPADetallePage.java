@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +17,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
 
-public class CotizacionPADetallePage extends Commons {
+public class CotizacionPADetallePage extends PageUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(CotizacionPADetallePage.class);
 
@@ -59,7 +59,7 @@ public class CotizacionPADetallePage extends Commons {
     }
 
     public void verDetalleCotizacion() {
-        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tituloDePagina).shouldBePresent();
         MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
     }
 
@@ -82,7 +82,7 @@ public class CotizacionPADetallePage extends Commons {
 
         waitFor(tablaCoberturas).shouldBeVisible();
         List<WebElement> allRows = tablaCoberturas.findElements(By.tagName("tr"));
-        waitABit(1000);
+        waitABit(WAIT_TIME_1000);
         String validacion = null;
         Map<String,String> coberturas = new HashMap<>();
         Map<String,String> terminoCoberturas = new HashMap<>();

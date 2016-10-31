@@ -5,7 +5,6 @@ import net.serenitybdd.core.pages.PageObject;
 
 public class AccionesWidget extends PageObject {
 
-    private static final String LINK_ACCIONES = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]";
     private static final String LINK_OPCIONES_CAMBIAR_POLIZA = ".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_ChangePolicy-itemEl']";
 
     public void seleccionarOpcionCambioDePoliza() {

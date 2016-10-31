@@ -29,7 +29,7 @@ When este expidiendo una poliza de propiedad comercial
 And seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto <nomProducto> a expedir
-And seleccione la poliza como reaseguro aceptado
+And seleccione la poliza como reaseguro especial
 Then la etiqueta del tomador debe cambiar a tomador cedente
 And la etiqueta reaseguro debe marcarce a (si) automaticamente sin ser editable
 And se debe ocultar la opcion de tomadores adicionales

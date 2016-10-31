@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -18,7 +17,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class BusquedaContactoPage extends PageObject {
+public class BusquedaContactoPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='ContactSearch:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-inputEl']")
     private WebElementFacade txtNombre;
@@ -90,25 +89,30 @@ public class BusquedaContactoPage extends PageObject {
     private static final String BUSQUEDADECONTACTOS = "Búsqueda de contactos";
     private static final String LONGITUD_VALIDA = "Longitud válida";
     private static final String XPATH_LI_CONTAINS = ".//li[contains(.,'";
+    protected static final int CONSTANTE_5 = 5;
+    protected static final int CONSTANTE_4 = 4;
+    protected static final int CONSTANTE_3 = 3;
+    protected static final int CONSTANTE_2 = 2;
+
 
     public BusquedaContactoPage(WebDriver driver) {
         super(driver);
     }
 
     public void irABuscarContacto() {
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(menuBuscar).click();
-        waitForTextToAppear("Buscar pólizas",5000);
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(menuBuscarContacto).click();
-        waitForTextToAppear(BUSQUEDADECONTACTOS,5000);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuBuscar).click();
+        waitForTextToAppear("Buscar pólizas",WAIT_TIME_5000);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuBuscarContacto).click();
+        waitForTextToAppear(BUSQUEDADECONTACTOS,WAIT_TIME_5000);
     }
 
     public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial) {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
         waitFor(txtRazonSocial).waitUntilVisible();
         txtRazonSocial.type(razonSocial);
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
         botonBuscar.click();
     }
 
@@ -125,21 +129,21 @@ public class BusquedaContactoPage extends PageObject {
     }
 
     public void consultarContactoNumDoc(String tipoDoc, String numDoc) {
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.clear();
         txtTipoDoc.sendKeys(tipoDoc);
         txtTipoDoc.sendKeys(Keys.ENTER);
         txtRazonSocial.waitUntilVisible();
         txtNumDoc.type(numDoc);
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
         botonBuscar.click();
     }
 
     public void consultarContactoTipoDoc(String tipoDoc) {
         waitForTextToAppear(BUSQUEDADECONTACTOS);
-        withTimeoutOf(20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(txtTipoDoc).shouldBeVisible();
         txtTipoDoc.type(tipoDoc);
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
         botonBuscar.click();
     }
 
@@ -151,7 +155,7 @@ public class BusquedaContactoPage extends PageObject {
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (cells.get(3).getText().equals(filtro1) && cells.get(5).getText().equals(filtro2)) {
+            if (cells.get(CONSTANTE_3).getText().equals(filtro1) && cells.get(CONSTANTE_5).getText().equals(filtro2)) {
                 valido = "Información persona natural válida";
             }
         }
@@ -166,7 +170,7 @@ public class BusquedaContactoPage extends PageObject {
             WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoDoc + "')]");
             waitForTextToAppear(tipoDoc);
             cbxTipoDoc.click();
-            Commons.waitUntil(2000);
+            PageUtil.waitUntil(WAIT_TIME_2000);
             divNombre.waitUntilVisible();
             txtNumDoc.type(numDoc);
             botonBuscar.click();
@@ -186,7 +190,7 @@ public class BusquedaContactoPage extends PageObject {
         WebElementFacade cbxTipoDoc = findBy(XPATH_LI_CONTAINS + tipoDoc + "')]");
         waitForTextToAppear(tipoDoc);
         cbxTipoDoc.click();
-        Commons.waitUntil(1500);
+        PageUtil.waitUntil(WAIT_TIME_1500);
         if (!"<ninguno>".equals(tipoDoc)) {
             String nombreElemento = divNombre.getText();
             waitForTextToAppear(nombreElemento);
@@ -196,10 +200,10 @@ public class BusquedaContactoPage extends PageObject {
             waitFor(txtApellido).waitUntilVisible();
             txtApellido.type(primerApellido);
             txtSegApellido.type(segundoApellido);
-            withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
             botonBuscar.click();
         } else {
-            withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
             botonBuscar.click();
             waitForTextToAppear("La búsqueda no devolvió resultados");
         }
@@ -212,7 +216,7 @@ public class BusquedaContactoPage extends PageObject {
         txtTipoDoc.sendKeys(Keys.ENTER);
         waitFor(txtNombreComercial).waitUntilVisible();
         txtNombreComercial.type(nombreComercial);
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
         botonBuscar.click();
     }
 
@@ -230,7 +234,7 @@ public class BusquedaContactoPage extends PageObject {
         } else {
             txtRazonSocial.type(nombre);
         }
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilEnabled();
         botonBuscar.click();
 
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
@@ -249,7 +253,7 @@ public class BusquedaContactoPage extends PageObject {
     @SuppressWarnings("SameParameterValue")
     public void validarLongitudPersonaNatural(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
         String valido = "Longitud no válida";
-        if (primerNombre.length() < 2 || segundoNombre.length() < 2 || primerApellido.length() < 2 || segundoApellido.length() < 2) {
+        if (primerNombre.length() < CONSTANTE_2 || segundoNombre.length() < CONSTANTE_2 || primerApellido.length() < CONSTANTE_2 || segundoApellido.length() < CONSTANTE_2) {
             valido = LONGITUD_VALIDA;
         }
         MatcherAssert.assertThat(LONGITUD_VALIDA, Is.is(Matchers.equalTo(valido)));
@@ -257,14 +261,14 @@ public class BusquedaContactoPage extends PageObject {
 
     public void validarLongitudPersonaJuridica(String razonSocial, String nombreComercial) {
         String valido = "Longitud no válida";
-        if (razonSocial.length() < 4 || nombreComercial.length() < 4) {
+        if (razonSocial.length() < CONSTANTE_4 || nombreComercial.length() < CONSTANTE_4) {
             valido = LONGITUD_VALIDA;
         }
         MatcherAssert.assertThat(LONGITUD_VALIDA, Is.is(Matchers.equalTo(valido)));
     }
 
     public void validarLabelsPersonaNatural(Map<String, String> labelsContacto) {
-        Commons.waitUntil(2000);
+        PageUtil.waitUntil(WAIT_TIME_2000);
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblPrimNombre.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("priNombre"))));
@@ -278,7 +282,7 @@ public class BusquedaContactoPage extends PageObject {
     }
 
     public void validarLabelsPersonaJuridica(Map<String, String> labelsContacto) {
-        Commons.waitUntil(2000);
+        PageUtil.waitUntil(WAIT_TIME_2000);
         MatcherAssert.assertThat(lblTipoId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("tipoId"))));
         MatcherAssert.assertThat(lblNumId.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("numId"))));
         MatcherAssert.assertThat(lblNomComercial.getText(), Matchers.is(Matchers.equalTo(labelsContacto.get("nomComercial"))));
@@ -299,7 +303,7 @@ public class BusquedaContactoPage extends PageObject {
         txtTipoDocDirectorioCotizacion.clear();
         txtTipoDocDirectorioCotizacion.sendKeys(tipoId);
         txtTipoDocDirectorioCotizacion.sendKeys(Keys.ENTER);
-        Commons.waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         txtNumDocDirectorioCotizacion.sendKeys(numeroId);
         btnBuscarDirectorioCotizacion.click();
         waitForWithRefresh();

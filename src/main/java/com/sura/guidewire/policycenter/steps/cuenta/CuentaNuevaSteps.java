@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.cuenta;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.pages.cuenta.CuentaPage;
 import com.sura.guidewire.policycenter.pages.InicioPage;
 import net.thucydides.core.annotations.Step;
@@ -12,7 +12,7 @@ public class CuentaNuevaSteps extends ScenarioSteps {
 
     private String cedula = "";
     private String nit = "";
-    private final Commons gw = new Commons(getDriver());
+    private final PageUtil gw = new PageUtil(getDriver());
     private final CuentaPage cuentaPage = new CuentaPage(getDriver());
     private static final String NOMBRECUENTA = "Busqueda";
     

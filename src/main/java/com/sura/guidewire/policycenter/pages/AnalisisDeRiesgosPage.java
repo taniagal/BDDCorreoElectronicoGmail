@@ -5,21 +5,21 @@ import net.serenitybdd.core.pages.WebElementFacade;
 
 
 public class AnalisisDeRiesgosPage extends PageObject {
-
+    protected static final int WAIT_TIME_2 = 2;
 
     public WebElementFacade obtenerCompromisoBloqueado() {
 
-        String XpathCompromisoBloqueado = "//a[@class='g-actionable']";
-        waitFor(2).second();
-        return findBy(XpathCompromisoBloqueado);
+        String xpathCompromisoBloqueado = "//a[@class='g-actionable']";
+        waitFor(WAIT_TIME_2).second();
+        return findBy(xpathCompromisoBloqueado);
     }
 
     public void ingresarAOpcionAnalisisdeRiesgo() {
 
-        waitFor(2).second();
-        String XpathAnalisisRiesgos = ".//*[@id='CancellationWizard:RiskAnalysis']/div";
-        findBy(XpathAnalisisRiesgos).waitUntilClickable().click();
-        waitFor(2).second();
+        waitFor(WAIT_TIME_2).second();
+        String xpathAnalisisRiesgos = ".//*[@id='CancellationWizard:RiskAnalysis']/div";
+        findBy(xpathAnalisisRiesgos).waitUntilClickable().click();
+        waitFor(WAIT_TIME_2).second();
 
     }
 

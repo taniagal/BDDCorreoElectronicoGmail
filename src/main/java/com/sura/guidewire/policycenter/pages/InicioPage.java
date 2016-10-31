@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
- import com.sura.guidewire.policycenter.util.Commons;
+ import com.sura.guidewire.policycenter.util.PageUtil;
  import com.sura.guidewire.policycenter.util.menu.Navegacion;
 import com.sura.guidewire.policycenter.util.menu.acciones.administracion.AdminCodAgenteNuevoPage;
 import com.sura.guidewire.policycenter.util.menu.acciones.administracion.AdminGrupoNuevoPage;
@@ -36,7 +36,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @SuppressWarnings("UnusedReturnValue")
-public class InicioPage extends Commons {
+public class InicioPage extends PageUtil {
 
     private final Navegacion navegacion;
     Actions act = new Actions(getDriver());
@@ -59,7 +59,7 @@ public class InicioPage extends Commons {
 
     public void assertion(String element) {
         MatcherAssert.assertThat(labelIngreso.getText().toString(), CoreMatchers.containsString(element));
-        waitABit(3000);
+        waitABit(WAIT_TIME_3000);
     }
 
     // Metodos navegacion Escritorio

@@ -1,16 +1,15 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.pages.renovacion.ReglasRenovacionDosPage;
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class CotizacionDeCancelacionPage extends PageObject {
+public class CotizacionDeCancelacionPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:NewCancellation-btnInnerEl']")
     WebElementFacade btnIniciarCancelacion;
@@ -45,22 +44,22 @@ public class CotizacionDeCancelacionPage extends PageObject {
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnAceptarRetirarTransaccion;
 
+    InicioCancelacionPage inicioCancelacionPage;
+    ReglasRenovacionDosPage reglasRenovacionDosPage;
+
     public CotizacionDeCancelacionPage(WebDriver driver) {
         super(driver);
     }
 
-    InicioCancelacionPage inicioCancelacionPage;
-    ReglasRenovacionDosPage reglasRenovacionDosPage;
 
-    Commons cm = new Commons(getDriver());
 
     public void ingresaDatosFormulario() {
-        cm.selectItem(inicioCancelacionPage.txtMotivo, "Por pérdida total");
-        cm.waitUntil(1000);
+        selectItem(inicioCancelacionPage.txtMotivo, "Por pérdida total");
+        waitUntil(WAIT_TIME_1000);
         inicioCancelacionPage.txtDescripMotivo.click();
         inicioCancelacionPage.txtDescripMotivo.sendKeys("Motivo");
         btnIniciarCancelacion.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(inputNumPoliza).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(inputNumPoliza).waitUntilClickable();
     }
 
     public void validacionesCamposPoliza() {
@@ -75,16 +74,17 @@ public class CotizacionDeCancelacionPage extends PageObject {
         MatcherAssert.assertThat("Error, no se encuentra impuestos", inputImpuestoIva.isVisible());
         MatcherAssert.assertThat("Error, no se encuentra costo total", inputCostoTotal.isVisible());
         MatcherAssert.assertThat("Error, no se encuentra cambio del costo", inputCambioDeCosto.isVisible());
-        MatcherAssert.assertThat("El valor debe ser cero",  inputCambioDeCosto.getText().equals("$0"));
+        MatcherAssert.assertThat("El valor debe ser cero",  "$0".equals(inputCambioDeCosto.getText()));
         cerrarTransaccionPoliza();
     }
 
     public void cerrarTransaccionPoliza() {
         btnOpcionDeCierre.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRetirarTransaccion).waitUntilClickable();
         btnRetirarTransaccion.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAceptarRetirarTransaccion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarRetirarTransaccion).waitUntilClickable();
         btnAceptarRetirarTransaccion.click();
+        waitUntil(1000);
     }
 
 

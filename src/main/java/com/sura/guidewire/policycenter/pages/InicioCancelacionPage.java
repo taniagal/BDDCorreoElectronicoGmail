@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -13,11 +13,13 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class InicioCancelacionPage extends PageObject {
+public class InicioCancelacionPage extends PageUtil{
 
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")
     WebElementFacade btnAcciones;
@@ -41,22 +43,21 @@ public class InicioCancelacionPage extends PageObject {
     WebElementFacade txtFechaVigenciaCancelacion;
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:ReasonDescription-inputEl']")
     WebElementFacade txtDescripMotivo;
-
-    Commons cm = new Commons(getDriver());
-
     public InicioCancelacionPage(WebDriver driver) {
         super(driver);
     }
 
     public void inicioCancelacion() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilEnabled().waitUntilClickable();
         btnAcciones.click();
         btnCancelarPoliza.click();
     }
 
     public void ingresarFechaRetroactiva() {
-        cm.selectItem(txtMotivo, "Financiación cancelación por");
-        cm.waitUntil(1000);
+        selectItem(txtMotivo, "Financiación cancelación por");
+        waitUntil(WAIT_TIME_1000);
+        txtDescripMotivo.click();
+        txtDescripMotivo.sendKeys("Motivo de prueba");
         String fecha = calculaRetroactividad31Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
         txtFechaVigenciaCancelacion.click();
@@ -65,16 +66,16 @@ public class InicioCancelacionPage extends PageObject {
     }
 
     public void ingresarFechaEmisionAnticipada() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(txtMotivo).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(txtMotivo).waitUntilClickable();
         String cadenaAux = "Financiación cancelación por";
-        cm.selectItem(txtMotivo, cadenaAux);
-        cm.waitUntil(1000);
+        selectItem(txtMotivo, cadenaAux);
+        waitUntil(WAIT_TIME_1000);
         String fecha = calculaEmisionAnticipada61Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
         txtFechaVigenciaCancelacion.click();
         txtFechaVigenciaCancelacion.sendKeys(fecha);
         txtDescripMotivo.click();
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
         txtDescripMotivo.sendKeys(cadenaAux);
     }
 
@@ -100,17 +101,18 @@ public class InicioCancelacionPage extends PageObject {
     }
 
     public void cancelaTransaccion() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(btnCancelarTransaccion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnCancelarTransaccion).waitUntilClickable();
         btnCancelarTransaccion.click();
+        waitUntil(WAIT_TIME_300);
     }
 
     public void validaMensajeEnPantalla(String mensaje) {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
         MatcherAssert.assertThat("Mensaje no corresponde al referenciado", lblMensaje.getText().contains(mensaje));
     }
 
     public void validaListaMotivoDiferenteBancolombia(ExamplesTable listaMotivo) throws Exception {
-        cm.waitUntil(800);
+        waitUntil(800);
         txtLista.click();
         this.validarDatosDeLaLista(listaMotivo);
         btnCancelarTransaccion.click();
@@ -121,7 +123,7 @@ public class InicioCancelacionPage extends PageObject {
         List<WebElementFacade> elementoInstruccion;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(listaMotivo);
         for (String tipo : elementosRequeridos) {
-            elementoInstruccion = withTimeoutOf(1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
+            elementoInstruccion = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll("//li[contains(.,'" + tipo + "')]");
             for (WebElementFacade lista : elementoInstruccion) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }

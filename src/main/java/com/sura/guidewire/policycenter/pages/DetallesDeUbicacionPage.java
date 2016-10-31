@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -15,7 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 
 
 
-public class DetallesDeUbicacionPage extends Commons {
+public class DetallesDeUbicacionPage extends PageUtil {
 
     @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     private WebElementFacade numeroDeCuenta;
@@ -79,21 +79,20 @@ public class DetallesDeUbicacionPage extends Commons {
         waitForTextToAppear(nomProducto);
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         int i = 0;
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
                 if (nomProducto.equals(descripcion.getText())) {
+                    botones.get(i).click();
                     if ("Multiriesgo corporativo".equals(nomProducto)){
-                        setImplicitTimeout(2,TimeUnit.SECONDS);
+                        setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
                         if (botonAceptarPopup.isPresent()){
                             botonAceptarPopup.click();
                             waitForAbsenceOf(".//span[contains(.,'Aceptar')]");
                         }
                         resetImplicitTimeout();
-                        waitUntil(1000);
                     }
-                    botones.get(i).click();
                 }
                 i++;
             }
@@ -102,7 +101,7 @@ public class DetallesDeUbicacionPage extends Commons {
 
 
     public void irANuevaCotizacion(){
-        setImplicitTimeout(1,TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
         if(!botonAcciones.isPresent()) {
             menuItemEscritorio.click();
         }
@@ -123,15 +122,15 @@ public class DetallesDeUbicacionPage extends Commons {
         comboBoxOrganizacion.waitUntilPresent();
         selectItem(comboBoxOrganizacion,dato.get("organizacion"));
         waitForComboValue(comboBoxOrganizacionW,dato.get("organizacion"));
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         selectItem(comboBoxCanal,dato.get("canal"));
         waitForComboValue(comboBoxCanal,dato.get("canal"));
         seleccionarProducto(dato.get("producto"));
     }
 
     public void irAUbicacion(){
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
-        withTimeoutOf(28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
     }
 

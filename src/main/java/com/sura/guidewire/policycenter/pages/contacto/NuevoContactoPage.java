@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.constantes.EnumContacto;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class NuevoContactoPage extends Commons {
+public class NuevoContactoPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='NewContact:ContactPanelSet:ContactCV:ContactDV:OfficialIDInputSet:DocumentType-inputEl']")
     private WebElementFacade tipoDocumento;
@@ -86,7 +86,7 @@ public class NuevoContactoPage extends Commons {
         this.direccion.sendKeys(direccion);
         selectItem(comboBoxDepartamento,departamento);
         waitForComboValue(comboBoxDepartamento,departamento);
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         selectItem(comboBoxCiudad,ciudad);
         waitForComboValue(comboBoxCiudad,ciudad);
     }
@@ -94,7 +94,7 @@ public class NuevoContactoPage extends Commons {
     public void actualizarPersonaNatural(String primerNombre) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         nombreContact.waitUntilPresent();
         MatcherAssert.assertThat(this.nombreContact.getText(), Matchers.containsString(primerNombre));
     }
@@ -102,7 +102,7 @@ public class NuevoContactoPage extends Commons {
     private void actualizar() {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void ingresarTelefonoFijo(String tipoTelefono, String numeroTelefono) {
@@ -114,12 +114,12 @@ public class NuevoContactoPage extends Commons {
     private void ingresarTelefono(String tipoTelefono, String numeroTelefono) {
         if ("Trabajo".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            waitUntil(1000);
+            waitUntil(WAIT_TIME_1000);
             this.tipoTelefono.click();
             this.telefonoTrabajo.type(numeroTelefono);
         } else if ("Vivienda".equals(tipoTelefono)) {
             this.tipoTelefono.type(tipoTelefono);
-            waitUntil(1000);
+            waitUntil(WAIT_TIME_1000);
             this.tipoTelefono.click();
             this.telefonoResidencia.type(numeroTelefono);
         }
@@ -137,7 +137,7 @@ public class NuevoContactoPage extends Commons {
     public void actualizarJuridica(String razonSocial) {
         this.botonActualizar.waitUntilClickable();
         this.botonActualizar.click();
-        waitUntil(2000);
+        waitUntil(WAIT_TIME_2000);
         desRazonSocial.waitUntilPresent();
         MatcherAssert.assertThat(this.desRazonSocial.getText().toString(), Matchers.containsString(razonSocial));
 
@@ -146,7 +146,7 @@ public class NuevoContactoPage extends Commons {
     public void verificarContactoExistente() {
         botonActualizar.waitUntilClickable();
         botonActualizar.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
         MatcherAssert.assertThat(this.contactoExistente.getText().toString(), Matchers.containsString("Ya existe un contacto con el mismo número de identificación"));
     }
 
@@ -163,7 +163,7 @@ public class NuevoContactoPage extends Commons {
     public void validarCampoPaisDepartamentoYCiudad() {
         if (esTelefonoFijo(this.tipoTelefono.getValue())) {
             actualizar();
-            List<WebElementFacade> tabs = withTimeoutOf(1, TimeUnit.SECONDS).findAll(".//*[@id='NewContact:_msgs']//div");
+            List<WebElementFacade> tabs = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).findAll(".//*[@id='NewContact:_msgs']//div");
             EnumContacto mensajeRequerido = null;
             boolean flag;
             for (WebElementFacade div : tabs) {

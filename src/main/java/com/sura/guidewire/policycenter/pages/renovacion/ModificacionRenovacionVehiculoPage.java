@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
-import com.sura.guidewire.policycenter.util.Commons;
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,7 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 
-public class ModificacionRenovacionVehiculoPage extends Commons{
+public class ModificacionRenovacionVehiculoPage extends PageUtil {
 
     private final Actions act = new Actions(getDriver());
 
@@ -58,16 +58,16 @@ public class ModificacionRenovacionVehiculoPage extends Commons{
     }
 
     public void irAVehiculos(){
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
-        waitUntil(1500);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
+        waitUntil(WAIT_TIME_1500);
         itemVehiculos.click();
     }
 
     public void irAModificarVehiculo() {
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
         waitForTextToAppear("Si se edita esta transacción de la póliza, se invalida la cotización actual");
         act.sendKeys(Keys.ENTER).build().perform();
-        waitUntil(1500);
+        waitUntil(WAIT_TIME_1500);
     }
 
     private void validarQueNoSeaVisibleBtnCrearVehiculo(){

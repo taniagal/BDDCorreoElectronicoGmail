@@ -39,6 +39,7 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public BotonAccionesSteps seleccionar_boton_acciones() {
+        waitFor(1).second();
         String xpathLinkAcciones = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]";
         getDriver().findElement(By.xpath(xpathLinkAcciones)).click();
         return botonAccionesSteps;
@@ -74,7 +75,7 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public void iniciar_cancelacion_de_poliza() {
-        waitFor(2).seconds();
+        waitFor(3).seconds();
         String xpathBttonCancelacion = "//a[contains(.,'Iniciar cancelación')]";
         getDriver().findElement(By.xpath(xpathBttonCancelacion)).click();
     }
@@ -83,6 +84,13 @@ public class PolizaSteps extends GuidewireSteps {
         waitFor(2).seconds();
         String xpathBttonCompromiso = "//a[contains(.,'Opciones de compromiso')]";
         getDriver().findElement(By.xpath(xpathBttonCompromiso)).click();
+    }
+
+    @Step
+    public void seleccionar_opcion_cierre(){
+        waitFor(2).second();
+        String xpathBttonCierre = "//a[contains(.,'Opciones de cierre')]";
+        getDriver().findElement(By.xpath(xpathBttonCierre)).click();
     }
     @Step
     public void seleccionar_opcion_cancelar_ahora() {
@@ -96,6 +104,14 @@ public class PolizaSteps extends GuidewireSteps {
         String xpathBttonProgramarCancelacion = "//a[contains(.,'Programar cancelación')]";
         getDriver().findElement(By.xpath(xpathBttonProgramarCancelacion)).click();
     }
+
+    @Step
+    public void seleccionar_opcion_rescindir_cancelacion() {
+        waitFor(1).second();
+        String xpathBttonRescindirCancelacion = "//a[contains(.,'Rescindir la cancelación')]";
+        getDriver().findElement(By.xpath(xpathBttonRescindirCancelacion)).click();
+    }
+
     @Step
     public void confirmar_cancelacion(){
         waitFor(5).seconds();
@@ -161,5 +177,13 @@ public class PolizaSteps extends GuidewireSteps {
     public void validar_ocultacion_campo_fuente() {
         String XpathBtnCancelarTransaccion = ".//tr[contains(.,'Fuente')]";
         obtenerPolizaPage().validarBotones(XpathBtnCancelarTransaccion);
+    }
+    @Step
+    public void validar_que_no_se_muestre_tipo_en_tabla_transacciones(String tipo){
+        obtenerPolizaPage().validarTransaccionPendienteNoExistenteEnResumenPoliza(tipo);
+    }
+    public void validar_que_no_se_muestre_mensaje(){
+        String XpathMensajeCancelacionPendiente = ".//*[contains(.,'Esta póliza tiene Cancelación pendiente')]";
+        obtenerPolizaPage().validarQueNoSeMuestreMensaje(XpathMensajeCancelacionPendiente);
     }
 }
