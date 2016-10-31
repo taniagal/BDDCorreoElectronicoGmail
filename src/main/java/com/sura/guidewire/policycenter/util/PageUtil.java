@@ -44,6 +44,7 @@ public class PageUtil extends PageObject {
     protected static final int WAIT_TIME_2 = 2;
     protected static final int WAIT_TIME_1 = 1;
 
+
     public PageUtil(WebDriver driver) {
         super(driver);
     }

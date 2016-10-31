@@ -1,6 +1,6 @@
 Direcciones De Contacto Vinculadas
 
-Meta:
+Meta: @lote3
 
 @issue #CDSEG-732, CDSEG-876
 @tag automator: eliana_alvarez, sprint:3

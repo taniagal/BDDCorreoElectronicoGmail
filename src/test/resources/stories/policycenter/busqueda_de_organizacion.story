@@ -1,6 +1,6 @@
 Busqueda de Organizacion
 
-Meta:
+Meta: @lote2
 
 Narrative:
 Como usuario PolicyCenter

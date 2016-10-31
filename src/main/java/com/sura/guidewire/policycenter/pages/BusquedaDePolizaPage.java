@@ -43,6 +43,15 @@ public class BusquedaDePolizaPage extends PageUtil {
     WebElementFacade botonRestablecer;
 
     protected static final int WAIT_TIME_3500 = 3500;
+    protected static final int CONSTANTE_9 = 9;
+    protected static final int CONSTANTE_8 = 8;
+    protected static final int CONSTANTE_7 = 7;
+    protected static final int CONSTANTE_6 = 6;
+    protected static final int CONSTANTE_5 = 5;
+    protected static final int CONSTANTE_4 = 4;
+    protected static final int CONSTANTE_3 = 3;
+    protected static final int CONSTANTE_2 = 2;
+    protected static final int CONSTANTE_1 = 1;
 
     public BusquedaDePolizaPage(WebDriver driver) {
         super(driver);
@@ -70,17 +79,17 @@ public class BusquedaDePolizaPage extends PageUtil {
         List<WebElement> allRows = tablaResultados.findElements(By.tagName("tr"));
         Map<String, String> sampleData = resultadoBusqueda.getRows().get(0);
         List<WebElement> celdas = allRows.get(this.encontrarPoliza(sampleData.get("numeroPoliza"), allRows)).findElements(By.tagName("td"));
-        MatcherAssert.assertThat(celdas.get(2).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
-        MatcherAssert.assertThat(celdas.get(3).getText(), Is.is(Matchers.equalTo(sampleData.get("nombreAsegurado"))));
-        MatcherAssert.assertThat(celdas.get(5).getText(), Is.is(Matchers.equalTo(sampleData.get("producto"))));
-        MatcherAssert.assertThat(celdas.get(6).getText(), Is.is(Matchers.equalTo(sampleData.get("estado"))));
-        MatcherAssert.assertThat(celdas.get(7).getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(celdas.get(8).getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(celdas.get(9).getText(), Is.is(Matchers.equalTo(sampleData.get("agente"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_2).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroPoliza"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_3).getText(), Is.is(Matchers.equalTo(sampleData.get("nombreAsegurado"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_5).getText(), Is.is(Matchers.equalTo(sampleData.get("producto"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_6).getText(), Is.is(Matchers.equalTo(sampleData.get("estado"))));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_7).getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_8).getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(celdas.get(CONSTANTE_9).getText(), Is.is(Matchers.equalTo(sampleData.get("agente"))));
 
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroCuenta"))));
+            MatcherAssert.assertThat(cells.get(CONSTANTE_4).getText(), Is.is(Matchers.equalTo(sampleData.get("numeroCuenta"))));
         }
     }
 
@@ -88,7 +97,7 @@ public class BusquedaDePolizaPage extends PageUtil {
         Integer filaPoliza = 0;
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (poliza.equals(columna.get(2).getText())) {
+            if (poliza.equals(columna.get(CONSTANTE_2).getText())) {
                 return filaPoliza;
             }
             filaPoliza++;

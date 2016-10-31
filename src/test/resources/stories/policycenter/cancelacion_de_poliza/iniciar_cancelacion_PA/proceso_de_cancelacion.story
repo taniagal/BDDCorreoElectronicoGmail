@@ -1,6 +1,6 @@
 Procedo De Cancelacion
 
-Meta:
+Meta: @lote1
 
 @issue #USC-14750
 @tag automator: Jonathan_Mejia_Leon
@@ -39,7 +39,7 @@ Examples:
 
 
 Scenario: validar retroactividad con autorizacion
-Meta: @manual
+Meta: @lote1 @manual
 Given existe una <poliza> y esta dentro de la vigencia
 When necesito iniciar cancelacion
 And se ingrese la fecha con retroactividad menor a la politica dentro del periodo

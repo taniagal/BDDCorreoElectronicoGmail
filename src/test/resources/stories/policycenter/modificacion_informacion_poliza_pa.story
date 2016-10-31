@@ -1,6 +1,6 @@
 Modificacion Informacion Poliza Pa
 
-Meta:
+Meta: @lote4
 
 @issue #CDSEG-977
 @tag automator: diego_cardona_acevedo
@@ -42,7 +42,7 @@ Examples:
 |TEST_22223222 |
 
 Scenario: Validar campo poliza financiada
-Meta:
+Meta: @lote1
 @manual
 Given ya se tiene una poliza expedida
 When el tipo de poliza es PPAutos

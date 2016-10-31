@@ -1,6 +1,6 @@
 Busqueda De Riesgos Poliza Colectiva
 
-Meta:
+Meta: @lote1
 
 @issue #CDSEG-2793
 @tag automator: Jonathan_Mejia_Leon
@@ -53,7 +53,7 @@ Examples:
 | C000888888 | BLE123 | 22221910 |
 
 Scenario: Validar accion en listar todos los riesgos cuando todos los riesgos ya estan listados
-Meta: @manual
+Meta: @lote1 @manual
 Given que voy a buscar una cuenta <numCuenta>
 When vaya a consultar las transacciones en la poliza colectiva
 And de clic en el numero de la poliza de transacciones poliza colectiva

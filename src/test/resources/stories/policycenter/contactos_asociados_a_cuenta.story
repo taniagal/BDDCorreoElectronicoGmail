@@ -1,7 +1,7 @@
-Meta:
+Meta: @lote1
 Narrative: Modificación de la lista de los  filtros de búsqueda de los contactos de la cuenta (Rol y tipo de persona)
 
-Meta:
+Meta: @lote2
 @Story CDSEG-845
 @URL https://jira.suramericana.com.co/browse/CDSEG-845
 @tag automator:andres_alarcon_guerrero, informer:liliana_restrepo_munneton, sprint:1

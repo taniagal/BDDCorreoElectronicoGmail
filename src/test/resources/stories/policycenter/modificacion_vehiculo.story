@@ -1,6 +1,6 @@
 Modificacion Vehiculo
 
-Meta:
+Meta: @lote4
 
 @issue #CDSEG-1248
 @tag automator: diego_cardona_acevedo
@@ -31,7 +31,7 @@ Examples:
 |TEST_22222222|ACANDI           |Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.|
 
 Scenario: Consultar bonificaciones
-Meta:
+Meta: @lote1
 @Manual
 Given se tiene una poliza expedida <numeroPoliza>
 When se ingrese a modificar la informacion del vehiculo
@@ -42,7 +42,7 @@ Examples:
 |TEST_22223223|
 
 Scenario: Validar que muestre mensaje warning de PEPS para intereses adicionales - Vehiculos
-Meta:
+Meta: @lote1
 @manual
 Given que hay una poliza expedida <numeroPoliza>
 When ingrese a modificar la cotizacion

@@ -1,9 +1,9 @@
 Validacion de riesgos consultables
 
-Meta:
+Meta: @lote1
 Scenario: 1 Validacion de riesgos consultables en cotizacion de poliza
 
-Meta:
+Meta: @lote1
 @Story CDSEG-3124
 @URL https://jira.suramericana.com.co/browse/CDSEG-3124
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8

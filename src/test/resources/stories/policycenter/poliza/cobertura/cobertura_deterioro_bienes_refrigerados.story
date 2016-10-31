@@ -1,11 +1,11 @@
 cobertura deterioro bienes refrigerados
 
-Meta:
+Meta: @lote1
 
 
 
 Scenario: 1 Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo)
-Meta:
+Meta: @lote1
 @Story CDSEG-943
 @URL https://jira.suramericana.com.co/browse/CDSEG-943
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -30,7 +30,7 @@ Examples:
 
 
 Scenario: 2 Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo) - 40 porciento
-Meta:
+Meta: @lote1
 @Story CDSEG-943
 @URL https://jira.suramericana.com.co/browse/CDSEG-943
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -55,7 +55,7 @@ Examples:
 
 
 Scenario: 3 Parametro del 40 porciento
-Meta:
+Meta: @lote1
 @Story CDSEG-943
 @URL https://jira.suramericana.com.co/browse/CDSEG-943
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -74,7 +74,7 @@ Examples:
 
 
 Scenario: 4 Cobertura de terremoto para suelos y terrenos (categoría otros)
-Meta:
+Meta: @lote1
 @Story CDSEG-844
 @URL https://jira.suramericana.com.co/browse/CDSEG-844
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -97,7 +97,7 @@ Examples:
 
 
 Scenario: 5 Cobertura de terremoto para suelos y terrenos máximo 1000 millones
-Meta:
+Meta: @lote1
 @Story CDSEG-844
 @URL https://jira.suramericana.com.co/browse/CDSEG-844
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -119,7 +119,7 @@ Examples:
 | 22222236        | Asesor     |             |
 
 Scenario: 6 Cobertura de terremoto para suelos y terrenos  Edificio obligatorio
-Meta:
+Meta: @lote1
 @Story CDSEG-844
 @URL https://jira.suramericana.com.co/browse/CDSEG-844
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -141,7 +141,7 @@ Examples:
 
 
 Scenario: 7 Parametro de 1000 millones y 20%
-Meta:
+Meta: @lote1
 @Story CDSEG-844
 @URL https://jira.suramericana.com.co/browse/CDSEG-844
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5

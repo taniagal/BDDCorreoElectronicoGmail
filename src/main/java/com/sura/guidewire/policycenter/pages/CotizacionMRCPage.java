@@ -96,8 +96,7 @@ public class CotizacionMRCPage extends PageUtil {
     @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr[2]/td/div/div/div/div/div[3]/div")
     private WebElementFacade columnaMontoCargos;
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
+    protected static final int WAIT_TIME_7000 = 7000;
 
     public CotizacionMRCPage(WebDriver driver){
         super(driver);
@@ -118,7 +117,7 @@ public class CotizacionMRCPage extends PageUtil {
         WebElementFacade botonInformacionPoliza = findBy(".//*[@id='SubmissionWizard:PolicyInfo']/div/span");
         WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']");
         if(titulo.isCurrentlyVisible()){
-            waitForTextToAppear("Información de póliza",5000);
+            waitForTextToAppear("Información de póliza",WAIT_TIME_5000);
         }else{
             waitFor(botonInformacionPoliza).shouldBeVisible();
             botonInformacionPoliza.click();
@@ -167,7 +166,7 @@ public class CotizacionMRCPage extends PageUtil {
     }
 
     public void validarPrima(String primaTotal) {
-        waitUntil(7000);
+        waitUntil(WAIT_TIME_7000);
         MatcherAssert.assertThat(campoPrimaTotal.getText(),Is.is(Matchers.equalTo(primaTotal)));
     }
 
@@ -187,7 +186,7 @@ public class CotizacionMRCPage extends PageUtil {
 
     public void validarBloqueoCotizacion(String mensaje) {
         WebElementFacade resultadosValidacion = withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).find(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
-        withTimeoutOf(21, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
         waitUntil(WAIT_TIME_3000);
         MatcherAssert.assertThat(tablaMensajes.getText(),Matchers.containsString(mensaje));

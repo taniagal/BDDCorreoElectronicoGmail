@@ -1,6 +1,6 @@
 Scenario: 1 Tener deducible (porcentual o minimo) sin tipo de deducible (porcentual o minimo) en articulo
 
-Meta:
+Meta: @lote1
 @Story CDSEG-2443
 @URL https://jira.suramericana.com.co/browse/CDSEG-2443
 @tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo_castanno, sprint:6

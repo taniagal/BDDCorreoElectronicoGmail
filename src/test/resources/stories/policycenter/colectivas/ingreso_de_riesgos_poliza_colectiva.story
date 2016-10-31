@@ -1,6 +1,6 @@
 Ingreso De Riesgos Poliza Colectiva
 
-Meta:
+Meta: @lote1
 
 @issue #CDSEG-916
 @tag automator: eliana_alvarez, sprint:5
@@ -126,7 +126,7 @@ Examples:
 | C000888888 | DIRECTO | Sura         | Canal Tradicional | Colectiva  | Commercial Fleet | VARIEDADES YURLEDYS S.A | VARIEDADES YURLEDYS S.A | 0          | 59         | menos     |
 
 Scenario: validar que la fecha de inicio de vigencia en Informacion de Poliza se puede modificar para autos y commercial fleet
-Meta: @manual
+Meta: @lote1 @manual
 Given que estoy en una poliza colectiva
 When agregue un riesgo y este en la informacion de la poliza
 Then debo poder cambiar la fecha de inicio de vigencia

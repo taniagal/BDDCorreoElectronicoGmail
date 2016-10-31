@@ -1,6 +1,6 @@
 Cotizacion Renovacion Pa Validaciones
 
-Meta:
+Meta: @lote3
 
 @issue #CDSEG-2295
 @tag automator: diego_cardona_acevedo
@@ -25,7 +25,7 @@ Examples:
 |32112331   |
 
 Scenario: Quote - Riesgos Consultables - Motor, Chasis y Placa
-Meta: @manual
+Meta: @lote1 @manual
 Given estoy cotizando la renovacion de la poliza
 When el motor, chasis y/o placa sean Riesgo consultable bloqueante
 Then se debe bloquear la cotizacion y mostrar el mensaje que devuelve el servicio

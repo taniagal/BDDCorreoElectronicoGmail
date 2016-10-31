@@ -1,6 +1,6 @@
 Cotizacion PA Detalle
 
-Meta:
+Meta: @lote3
 
 @issue #CDSEG-807
 @tag automator: diego_cardona_acevedo

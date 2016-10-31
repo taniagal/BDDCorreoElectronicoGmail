@@ -1,6 +1,6 @@
 Expedicion Renovacion Pa Validaciones
 
-Meta:
+Meta: @lote3
 
 @issue #CDSEG-2296
 @tag automator: diego_cardona_acevedo
@@ -61,7 +61,7 @@ Examples:
 |33445566   |
 
 Scenario: Valor asegurado superior al 50% del valor de la vigencia anterior
-Meta: @manual
+Meta: @lote1 @manual
 Given se esta cotizando una renovacion de poliza
 When emita la renovacion
 And el valor asegurado es superior al 50% del valor de la vigencia anterior
@@ -70,7 +70,7 @@ Then se debe mostrar el siguiente mensaje
 |El Valor del vehículo no se encuentra en los rangos estimados por Suramericana |
 
 Scenario: Valor asegurado inferior al 20% del valor de la vigencia anterior
-Meta: @manual
+Meta: @lote1 @manual
 Given se esta cotizando una renovacion de poliza
 When emita la renovacion
 And el valor asegurado es inferior al 20% del valor de la vigencia anterior

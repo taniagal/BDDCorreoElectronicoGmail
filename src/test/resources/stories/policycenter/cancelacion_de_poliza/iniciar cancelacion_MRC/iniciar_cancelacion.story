@@ -1,10 +1,10 @@
 Iniciar Cancelacion
 
-Meta:
+Meta: @lote1
 
 Scenario: 1 Validacion lista de motivos
 
-Meta:
+Meta: @lote1
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -31,7 +31,7 @@ Examples:
 
 Scenario:  2 Validacion fecha de cancelacion
 
-Meta:
+Meta: @lote1
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -48,7 +48,7 @@ Examples:
 
 Scenario:  3 Ingreso de fecha superior a los 60 dias de retroactividad
 
-Meta:
+Meta: @lote1
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -65,7 +65,7 @@ Examples:
 
 Scenario: 4 Validacion opcion cancelar transaccion
 
-Meta:
+Meta: @lote1
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -82,7 +82,7 @@ Examples:
 
 Scenario: 5 Validacion metodo de reembolso y campo fuente
 
-Meta:
+Meta: @lote1
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -104,7 +104,7 @@ Examples:
 
 Scenario: 6 Validacion lista de motivos para poliza bancolombia
 
-Meta: @manual
+Meta: @lote1 @manual
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8

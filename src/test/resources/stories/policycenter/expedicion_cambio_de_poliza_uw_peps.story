@@ -1,6 +1,6 @@
 Expedicion Cambio De Poliza Uw Peps
 
-Meta:
+Meta: @lote3
 
 @issue #CDSEG-1252
 @tag automator: diego_cardona_acevedo
@@ -64,7 +64,7 @@ Examples:
 |55570000         |CEDULA DE CIUDADANIA |1025312689      |GLADYS OCHOA con CEDULA DE CIUDADANIA - 94372371 es un riesgo no estándar y debe ser autorizado.|
 
 Scenario: Identificacion cliente PEP siendo el tomador, asegurado y beneficiario el mismo cliente nuevo
-Meta: @manual
+Meta: @lote1 @manual
 Given  existe una cotizacion
 And  el tomador, asegurado y beneficiario son el mismo DNI
 And  se identifican como riesgo PEPS
@@ -78,7 +78,7 @@ Examples:
 |||
 
 Scenario: DNI que ya existian en la poliza y son PEP
-Meta: @manual
+Meta: @lote1 @manual
 Given  existe una cotizacion
 And  el tomador, asegurado y beneficiario son el mismo DNI
 And  se identifican como riesgo PEPS
