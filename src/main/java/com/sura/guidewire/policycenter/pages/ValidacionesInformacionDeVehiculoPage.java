@@ -108,7 +108,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
         comboBoxVehiculoServicio.click();
         withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(tablaVehiculo).shouldContainText(campoTxtPlaca.getText());
-        waitUntil(WAIT_TIME_1000);
+        waitUntil(WAIT_TIME_2500);
         selectItem(comboBoxModelo, vehiculo.get("modelo"));
         waitForTextToAppear(vehiculo.get("modelo"), WAIT_TIME_28000);
         ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
