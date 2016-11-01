@@ -97,7 +97,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        waitFor(ExpectedConditions.elementToBeSelected(campoVehiculoCeroKm));
         waitUntil(WAIT_TIME_3000);
         selectItem(comboBoxPlan, vehiculo.get("plan"));
         if (!"random".equals(vehiculo.get("placa"))) {
