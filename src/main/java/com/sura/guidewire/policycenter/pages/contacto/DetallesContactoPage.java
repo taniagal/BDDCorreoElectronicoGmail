@@ -4,13 +4,15 @@ import com.sura.guidewire.policycenter.util.PageUtil;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class  DetallesContactoPage extends PageUtil {
+
+public class DetallesContactoPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
     private WebElementFacade labelPrimerNombre;
@@ -134,10 +136,25 @@ public class  DetallesContactoPage extends PageUtil {
     private WebElementFacade menuItemContactos;
 
 
-    private  String [] dtlContact = new String[15];
-    private String [] dtlCntJ = new String[8];
+    private String[] dtlContact = new String[CONSTANTE_15];
+    private String[] dtlCntJ = new String[CONSTANTE_8];
     public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    public static final int CONSTANTE_15 = 15;
+    public static final int CONSTANTE_14 = 14;
+    public static final int CONSTANTE_13 = 13;
+    public static final int CONSTANTE_12 = 12;
+    public static final int CONSTANTE_11 = 11;
+    public static final int CONSTANTE_10 = 10;
+    public static final int CONSTANTE_9 = 9;
+    public static final int CONSTANTE_8 = 8;
+    public static final int CONSTANTE_7 = 7;
+    public static final int CONSTANTE_6 = 6;
+    public static final int CONSTANTE_5 = 5;
+    public static final int CONSTANTE_4 = 4;
+    public static final int CONSTANTE_3 = 3;
+    public static final int CONSTANTE_2 = 2;
+    public static final int CONSTANTE_1 = 1;
 
     public DetallesContactoPage(WebDriver driver) {
         super(driver);
@@ -152,78 +169,78 @@ public class  DetallesContactoPage extends PageUtil {
     }
 
 
-    public void editarContacto(){
+    public void editarContacto() {
         withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(botonEditarContacto).shouldBePresent();
         botonEditarContacto.waitUntilVisible();
-        MatcherAssert.assertThat("El boton de editar no está presente en el DOM",botonEditarContacto.isPresent());
+        MatcherAssert.assertThat("El boton de editar no está presente en el DOM", botonEditarContacto.isPresent());
         botonEditarContacto.click();
         waitUntil(WAIT_TIME_1000);
     }
 
 
-    public void actualizaContacto(){
+    public void actualizaContacto() {
         botonActualizar.click();
         waitUntil(WAIT_TIME_1500);
     }
 
 
-    public void setDireccion(){
+    public void setDireccion() {
         botonAgregar.click();
         waitUntil(WAIT_TIME_2000);
     }
 
 
-    public void setNombre(String segundoNombre){
+    public void setNombre(String segundoNombre) {
         campoTxtSegundoNombre.waitUntilPresent();
         campoTxtSegundoNombre.clear();
         campoTxtSegundoNombre.sendKeys(segundoNombre);
-        dtlContact[2]= segundoNombre;
+        dtlContact[CONSTANTE_2] = segundoNombre;
     }
 
 
-    public void setApellido(String segundoApellido){
+    public void setApellido(String segundoApellido) {
         campoTxtSegundoApellido.clear();
         waitUntil(WAIT_TIME_1500);
         campoTxtSegundoApellido.sendKeys(segundoApellido);
-        dtlContact[3]= segundoApellido;
+        dtlContact[CONSTANTE_3] = segundoApellido;
     }
 
 
-    public void setDatosComboBoxes(String profesion, String estadoCivil, String tipoFamilia){
+    public void setDatosComboBoxes(String profesion, String estadoCivil, String tipoFamilia) {
         selectItem(comboBoxProfesion, profesion);
-        selectItem(comboBoxEstadoCivil,estadoCivil);
+        selectItem(comboBoxEstadoCivil, estadoCivil);
         selectItem(comboBoxTipoFamilia, tipoFamilia);
-        dtlContact[6]= profesion;
-        dtlContact[7]= estadoCivil;
-        dtlContact[8]= tipoFamilia;
+        dtlContact[CONSTANTE_6] = profesion;
+        dtlContact[CONSTANTE_7] = estadoCivil;
+        dtlContact[CONSTANTE_8] = tipoFamilia;
     }
 
 
-    public void setTelefonosResidencial(String telefonoResidencial){
+    public void setTelefonosResidencial(String telefonoResidencial) {
         campoTxtTelefonoResidencial.clear();
         waitUntil(WAIT_TIME_500);
         campoTxtTelefonoResidencial.type(telefonoResidencial);
-        dtlContact[11]= telefonoResidencial;
+        dtlContact[CONSTANTE_11] = telefonoResidencial;
     }
 
 
-    public void setTelefonoTrabajo(String telefonoTrabajo){
+    public void setTelefonoTrabajo(String telefonoTrabajo) {
         ingresarDato(campoTxtTelefonoTrabajo, telefonoTrabajo);
-        dtlContact[12]= telefonoTrabajo;
+        dtlContact[CONSTANTE_12] = telefonoTrabajo;
     }
 
 
-    public void setTelefonoCelular(String telefonoCelular){
+    public void setTelefonoCelular(String telefonoCelular) {
         ingresarDato(campoTxtTelefonoCelular, telefonoCelular);
-        dtlContact[10]= telefonoCelular;
+        dtlContact[CONSTANTE_10] = telefonoCelular;
     }
 
 
-    public void setCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario){
-        ingresarDato(campoTxtCorreoElectronicoPrimario,correoElectronicoPrimario);
+    public void setCorreo(String correoElectronicoPrimario, String correoElectronicoSecundario) {
+        ingresarDato(campoTxtCorreoElectronicoPrimario, correoElectronicoPrimario);
         ingresarDato(campoTxtCorreoElectronicoSecundario, correoElectronicoSecundario);
-        dtlContact[13]= correoElectronicoPrimario;
-        dtlContact[14]= correoElectronicoSecundario;
+        dtlContact[CONSTANTE_13] = correoElectronicoPrimario;
+        dtlContact[CONSTANTE_14] = correoElectronicoSecundario;
     }
 
 
@@ -235,8 +252,8 @@ public class  DetallesContactoPage extends PageUtil {
         campoTxtNombreComercial.clear();
         campoTxtNombreComercial.sendKeys(nombreComercial);
         selectItem(comboBoxActividadComercial, actividadComercial);
-        dtlCntJ[0]= nombreComercial;
-        dtlCntJ[1]= actividadComercial;
+        dtlCntJ[0] = nombreComercial;
+        dtlCntJ[CONSTANTE_1] = actividadComercial;
     }
 
 
@@ -248,27 +265,27 @@ public class  DetallesContactoPage extends PageUtil {
         campoTxtValorActivos.sendKeys(valorActivos);
         campoTxtVentasAnuales.clear();
         campoTxtVentasAnuales.sendKeys(ventasAnuales);
-        dtlCntJ[2]= numeroEmpleados;
-        dtlCntJ[3]= valorActivos;
-        dtlCntJ[4]= ventasAnuales;
+        dtlCntJ[CONSTANTE_2] = numeroEmpleados;
+        dtlCntJ[CONSTANTE_3] = valorActivos;
+        dtlCntJ[CONSTANTE_4] = ventasAnuales;
     }
 
 
-    public void setCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario){
-        ingresarDato(campoTxtCorreoElectronicoPrimarioEmpresa,correoElectronicoPrimario);
+    public void setCorreosJ(String telefonoOficina, String correoElectronicoPrimario, String correoElectronicoSecundario) {
+        ingresarDato(campoTxtCorreoElectronicoPrimarioEmpresa, correoElectronicoPrimario);
         campoTxtTelefonoOficina.clear();
         campoTxtTelefonoOficina.sendKeys(telefonoOficina);
         ingresarDato(campoTxtCorreoElectronicoSecundarioEmpresa, correoElectronicoSecundario);
-        dtlCntJ[5]= telefonoOficina;
-        dtlCntJ[6]= correoElectronicoPrimario;
-        dtlCntJ[7]= correoElectronicoSecundario;
+        dtlCntJ[CONSTANTE_5] = telefonoOficina;
+        dtlCntJ[CONSTANTE_6] = correoElectronicoPrimario;
+        dtlCntJ[CONSTANTE_7] = correoElectronicoSecundario;
     }
 
 
     /**
      * Verifica que el documento y el tipo de documento no sean editables por un error de codigo en policy.
      */
-    public void verificarEstadoDeDocumento(){
+    public void verificarEstadoDeDocumento() {
         MatcherAssert.assertThat("El tipo de documento o el documento no pueden ser editables, verifique los cambios realizados en su codigo",
                 !campoTxtTipoDocumento.getAttribute("class").contains("x-form-text") || !campoTxtDocumento.getAttribute("class").contains("x-form-text"));
     }
@@ -278,175 +295,91 @@ public class  DetallesContactoPage extends PageUtil {
      * DETALLE CONTACTO EDICION
      * Valida si los datos ingresados es igual al que se muestran en el detalle
      */
-    public void verificarActualizacion(){
+    public void verificarActualizacion() {
         waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
         waitFor(campoTxtSegundoNombre).shouldBePresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!dtlContact[2].equals(campoTxtSegundoNombre.getText())) {
-            right.append("segundo nombre,");
-        }
-        if(!dtlContact[3].equals(campoTxtSegundoApellido.getText())) {
-            right.append("segundo apellido,");
-        }
-        if(!dtlContact[6].equals(comboBoxProfesion.getText())) {
-            right.append("profesion,");
-        }
-        if(!dtlContact[7].equals(comboBoxEstadoCivil.getText())) {
-            right.append("estado civil,");
-        }
-        if(!dtlContact[8].equals(comboBoxTipoFamilia.getText())) {
-            right.append("tipo de familia,");
-        }
-        if(!campoTxtTelefonoCelular2.getText().contains(dtlContact[10])) {
+        right = concatenarElementoDiferente(dtlContact[CONSTANTE_2], campoTxtSegundoNombre.getText(), "segundo nombre,", right);
+        right = concatenarElementoDiferente(dtlContact[CONSTANTE_3], campoTxtSegundoApellido.getText(), "segundo apellido,", right);
+        right = concatenarElementoDiferente(dtlContact[CONSTANTE_6], comboBoxProfesion.getText(), "profesion,", right);
+        right = concatenarElementoDiferente(dtlContact[CONSTANTE_7], comboBoxEstadoCivil.getText(), "estado civil,", right);
+        right = concatenarElementoDiferente(dtlContact[CONSTANTE_8], comboBoxTipoFamilia.getText(), "tipo de familia,", right);
+        right = concatenarElementoDiferente(dtlContact[CONSTANTE_11], campoTxtTelefonoResidencial2.getText(), "telefono residencial,", right);
+        right = concatenarElementoDiferente(dtlContact[CONSTANTE_12], campoTxtTelefonoTrabajo2.getText(), "telefono tarbajo,", right);
+        right = concatenarElementoDiferente(dtlContact[CONSTANTE_13], campoTxtCorreoElectronicoPrimario.getText(), "correo primario,", right);
+        right = concatenarElementoDiferente(dtlContact[CONSTANTE_14], campoTxtCorreoElectronicoSecundario.getText(), "correo secundario,", right);
+        if (!campoTxtTelefonoCelular2.getText().contains(dtlContact[CONSTANTE_10])) {
             right.append("telefono celular,");
         }
-        if(!dtlContact[11].equals(campoTxtTelefonoResidencial2.getText())) {
-            right.append("telefono residencial,");
-        }
-        if(!dtlContact[12].equals(campoTxtTelefonoTrabajo2.getText())) {
-            right.append("telefono tarbajo,");
-        }
-        if(!dtlContact[13].equals(campoTxtCorreoElectronicoPrimario.getText())) {
-            right.append("correo primario,");
-        }
-        if(!dtlContact[14].equals(campoTxtCorreoElectronicoSecundario.getText())) {
-            right.append("correo secundario,");
-        }
         String res = right.toString();
-        if(MSJVALIDARVALORES.equals(res)){
-            res = right.toString().substring(0,right.toString().length()-1);
+        if (MSJVALIDARVALORES.equals(res)) {
+            res = right.toString().substring(0, right.toString().length() - 1);
         }
-        MatcherAssert.assertThat(res,"No estan correctos los valores".equals(res));
+        MatcherAssert.assertThat(res, "No estan correctos los valores".equals(res));
     }
 
-    public void verificarActualizacionJuridico(){
+
+    public void verificarActualizacionJuridico() {
         waitForAbsenceOf("//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]");
         waitFor(comboBoxActividadComercial).shouldBePresent();
-        StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!dtlCntJ[1].equals(comboBoxActividadComercial.getText())) {
-            right.append("activida comercial,");
+        StringBuilder valor = new StringBuilder(MSJVALIDARVALORES);
+        valor = concatenarElementoDiferente(dtlCntJ[CONSTANTE_1], comboBoxActividadComercial.getText(), "activida comercial,", valor);
+        valor = concatenarElementoDiferente(dtlCntJ[CONSTANTE_2], campoTxtNumeroEmpleados.getText(), "numero de empleados,", valor);
+        valor = concatenarElementoDiferente(dtlCntJ[CONSTANTE_3], campoTxtValorActivos.getText(), "valor activos,", valor);
+        valor = concatenarElementoDiferente(dtlCntJ[CONSTANTE_4], campoTxtVentasAnuales.getText(), "ventas anuales,", valor);
+        valor = concatenarElementoDiferente(dtlCntJ[CONSTANTE_5], campoTxtTelefonoTrabajo2.getText(), "telefono oficina,", valor);
+        valor = concatenarElementoDiferente(dtlCntJ[CONSTANTE_6], campoTxtCorreoElectronicoPrimarioEmpresa.getText(), "correo primario,", valor);
+        valor = concatenarElementoDiferente(dtlCntJ[CONSTANTE_7], campoTxtCorreoElectronicoSecundarioEmpresa.getText(), "correo secundario,", valor);
+        String res = valor.toString();
+        if (MSJVALIDARVALORES.equals(res)) {
+            res = valor.toString().substring(0, valor.toString().length() - 1);
         }
-        if(!dtlCntJ[2].equals(campoTxtNumeroEmpleados.getText())) {
-            right.append("numero de empleados,");
-        }
-        if(!dtlCntJ[3].equals(campoTxtValorActivos.getText())) {
-            right.append("valor activos,");
-        }
-        if(!dtlCntJ[4].equals(campoTxtVentasAnuales.getText())) {
-            right.append("ventas anuales,");
-        }
-        if(!dtlCntJ[5].equals(campoTxtTelefonoTrabajo2.getText())) {
-            right.append("telefono oficina,");
-        }
-        if(!dtlCntJ[6].equals(campoTxtCorreoElectronicoPrimarioEmpresa.getText())) {
-            right.append("correo primario,");
-        }
-        if(!dtlCntJ[7].equals(campoTxtCorreoElectronicoSecundarioEmpresa.getText())) {
-            right.append("correo secundario,");
-        }
-        String res = right.toString();
-        if(MSJVALIDARVALORES.equals(res)){
-            res = right.toString().substring(0,right.toString().length()-1);
-        }
-        MatcherAssert.assertThat(res,"No estan correctos los valores".equals(res));
+        MatcherAssert.assertThat(res, "No estan correctos los valores".equals(res));
     }
-
 
     /**
      * DETALLE CONTACTO
      * Valida si estos elementos están presentes
-    */
-    public  void verificarCamposPersonaNatural(){
-        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
+     */
+    public void verificarCamposPersonaNatural() {
+        StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
         labelPrimerNombre.waitUntilPresent();
-        if(!labelPrimerNombre.isPresent()) {
-            notPresent.append(" primer_nombre,");
+        noPresente = concatenarElementoNoPresente(labelPrimerNombre, " primer_nombre,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelSegundoNombre, " segundo_nombre,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelPrimerApellido, " primer_apellido,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelSegundoApellido, " segundo_apellido,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelTipoDocumento, " tipo_documento,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelNumeroDocumento, " numero_documento,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelSexo, " sexo,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelFechaNacimiento, " fecha_nacimiento,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelProfesion, " profesion,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelEstadoCivil, " estado_civil,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelTipoFamilia, " tipo_familia,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelTelefonoCelular, " telefono_celular,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelCorreoElectronicoPrimario, " correo_electronico_primario,", noPresente);
+        String res = noPresente.toString();
+        if (MSJVALIDARELEMENTOS.equals(res)) {
+            res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
         }
-        if(!labelSegundoNombre.isPresent()) {
-            notPresent.append(" segundo_nombre,");
-        }
-        if(!labelPrimerApellido.isPresent()) {
-            notPresent.append(" primer_apellido,");
-        }
-        if(!labelSegundoApellido.isPresent()) {
-            notPresent.append(" segundo_apellido,");
-        }
-        if(!labelTipoDocumento.isPresent()) {
-            notPresent.append(" tipo_documento,");
-        }
-        if(!labelNumeroDocumento.isPresent()) {
-            notPresent.append(" numero_documento,");
-        }
-        if(!labelSexo.isPresent()) {
-            notPresent.append(" sexo,");
-        }
-        if(!labelFechaNacimiento.isPresent()) {
-            notPresent.append(" fecha_nacimiento,");
-        }
-        if(!labelProfesion.isPresent()) {
-            notPresent.append(" profesion,");
-        }
-        if(!labelEstadoCivil.isPresent()) {
-            notPresent.append(" estado_civil,");
-        }
-        if(!labelTipoFamilia.isPresent()) {
-            notPresent.append(" tipo_familia,");
-        }
-        if(!labelTipoTelefono.isPresent()) {
-            notPresent.append(" tipo_telefono,");
-        }
-        if(!labelTelefonoCelular.isPresent()) {
-            notPresent.append(" telefono_celular,");
-        }
-        if(!labelCorreoElectronicoPrimario.isPresent()) {
-            notPresent.append(" correo_electronico_primario,");
-        }
-        String res = notPresent.toString();
-        if(MSJVALIDARELEMENTOS.equals(res)){
-            res = notPresent.toString().substring(0,notPresent.toString().length()-1);
-        }
-        MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
+        MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
 
     public void verificarCamposPersonaJuridica() {
         labelRazonSocial.waitUntilPresent();
-        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if(!labelRazonSocial.isPresent()) {
-            notPresent.append(" razon_social,");
+        StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
+        noPresente = concatenarElementoNoPresente(labelRazonSocial, " razon_social,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelNombreComercial, " nombre_comercial,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelTipoDocumento, " tipo_documento,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelNumeroDocumento, " numero_documento,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelActividadComercial, " actividad_comercial,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelNumeroEmpleados, " numero_empleados,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelValorActivos, " valor_activos,", noPresente);
+        String res = noPresente.toString();
+        if (MSJVALIDARELEMENTOS.equals(res)) {
+            res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
         }
-        if(!labelNombreComercial.isPresent()) {
-            notPresent.append(" nombre_comercial,");
-        }
-        if(!labelTipoDocumento.isPresent()) {
-            notPresent.append(" tipo_documento,");
-        }
-        if(!labelNumeroDocumento.isPresent()) {
-            notPresent.append(" numero_documento,");
-        }
-        if(!labelActividadComercial.isPresent()) {
-            notPresent.append(" actividad_comercial,");
-        }
-        if(!labelNumeroEmpleados.isPresent()) {
-            notPresent.append(" numero_empleados,");
-        }
-        if(!labelValorActivos.isPresent()) {
-            notPresent.append(" valor_activos,");
-        }
-        if(!labelVentasAnuales.isPresent()) {
-            notPresent.append(" ventas_anuales,");
-        }
-        if(!labelTelefonoOficinaEmpresa.isPresent()) {
-            notPresent.append(" telefono_oficina,");
-        }
-        if(!getcampoTxtCorreoElectronicoPrimarioEmpresa.isPresent()) {
-            notPresent.append(" correo_electronico_primario,");
-        }
-        String res = notPresent.toString();
-        if(MSJVALIDARELEMENTOS.equals(res)){
-            res = notPresent.toString().substring(0,notPresent.toString().length()-1);
-        }
-        MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
+        MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
     /**
@@ -454,50 +387,59 @@ public class  DetallesContactoPage extends PageUtil {
      */
     public void validarDatosPantalla() {
         waitUntil(WAIT_TIME_1000);
-        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if(!labelPais.isPresent())
-            notPresent.append(" pais,");
-        if(!labelDepartamento.isPresent())
-            notPresent.append(" deprtamento,");
-        if(!labelCiudad.isPresent())
-            notPresent.append(" ciudad,");
-        if(!labelDireccion.isPresent())
-            notPresent.append(" direccion,");
-        if(!labelTipoDireccion.isPresent())
-            notPresent.append(" tipo dirección,");
-        if(!labelDescripcionDireccion.isPresent())
-            notPresent.append(" descripción direccion,");
-        String res = notPresent.toString();
-        if(MSJVALIDARELEMENTOS.equals(res)){
-            res = notPresent.toString().substring(0,notPresent.toString().length()-1);
+        StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
+        noPresente = concatenarElementoNoPresente(labelPais, " pais,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelDepartamento, " deprtamento,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelCiudad, " ciudad,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelTipoDireccion, "  tipo dirección,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelDescripcionDireccion, "  descripción direccion,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelDireccion, "direccion,", noPresente);
+        String res = noPresente.toString();
+        if (MSJVALIDARELEMENTOS.equals(res)) {
+            res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
         }
-        MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
+        MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
+
 
     public void validarCampos() {
         comboBoxPais.waitUntilPresent();
-        StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        if(!"Colombia".equals(comboBoxPais.getValue().toString()))
-            right.append(" pais,");
-        if(!"<ninguno>".equals(comboBoxDepartamento.getValue().toString()))
-            right.append(" departamento,");
-        if(!"Esta Direccion podria estandarizarse automáticamente".equals(campoTxtDireccion.getAttribute("data-qtip")))
-            right.append("drireccion data-tip,");
-        if(!"200".equals(campoTxtDireccion.getAttribute("maxlength")))
-            right.append("direccion maxlength,");
-        String res = right.toString();
-        if(MSJVALIDARVALORES.equals(res)){
-            res = right.toString().substring(0,right.toString().length()-1);
+        StringBuilder valor = new StringBuilder(MSJVALIDARVALORES);
+        valor = concatenarElementoDiferente("Colombia", comboBoxPais.getValue().toString(), " pais,", valor);
+        valor = concatenarElementoDiferente("<ninguno>", comboBoxDepartamento.getValue().toString(), "departamento,", valor);
+        valor = concatenarElementoDiferente("Esta Direccion podria estandarizarse automáticamente", campoTxtDireccion.getAttribute("data-qtip"), "drireccion data-tip,", valor);
+        valor = concatenarElementoDiferente("200", campoTxtDireccion.getAttribute("maxlength"), "direccion maxlength,", valor);
+        String res = valor.toString();
+        if (MSJVALIDARVALORES.equals(res)) {
+            res = valor.toString().substring(0, valor.toString().length() - 1);
         }
-        MatcherAssert.assertThat(res,"No estan correctos los valores".equals(res));
+        MatcherAssert.assertThat(res, "No estan correctos los valores".equals(res));
     }
 
-    public void validarDireccion(){
+
+    public void validarDireccion() {
         List<WebElementFacade> contactos = getLista(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
-        MatcherAssert.assertThat("Error en la direccion agregada",contactos.get(1).getText().contains("CL 60 B # 10 - 157") || contactos.get(1).getText().contains("CALLE 60B #10-157"));
+        MatcherAssert.assertThat("Error en la direccion agregada", contactos.get(1).getText().contains("CL 60 B # 10 - 157") || contactos.get(1).getText().contains("CALLE 60B #10-157"));
     }
+
 
     public void validarMensaje(String mensaje) {
-        verificarMensaje(divMensaje,mensaje);
+        verificarMensaje(divMensaje, mensaje);
+    }
+
+
+    public StringBuilder concatenarElementoDiferente(String valorElemento, String campo, String elemento, StringBuilder valor) {
+        if (!valorElemento.equals(campo)) {
+            valor.append(elemento);
+        }
+        return valor;
+    }
+
+
+    public StringBuilder concatenarElementoNoPresente(WebElementFacade campo, String elemento, StringBuilder notPresent) {
+        if (!campo.isPresent()) {
+            notPresent.append(elemento);
+        }
+        return notPresent;
     }
 }
