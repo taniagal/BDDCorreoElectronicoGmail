@@ -9,7 +9,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class SeusLoginSteps  extends ScenarioSteps {
 
     private final SeusLoginPage seus = new SeusLoginPage(getDriver());
-    private final PageUtil gw = new PageUtil(getDriver());
 
     public SeusLoginSteps(Pages pages) {
         super(pages);

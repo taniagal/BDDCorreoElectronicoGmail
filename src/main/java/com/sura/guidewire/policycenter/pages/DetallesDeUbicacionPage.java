@@ -63,8 +63,6 @@ public class DetallesDeUbicacionPage extends PageUtil {
     private WebElementFacade comboBoxCanal;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-triggerWrap']/tbody/tr/td/input")
     private WebElementFacade comboBoxOrganizacionW;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-triggerWrap']/tbody/tr/td/input")
-    private WebElementFacade comboBoxCanalW;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarPopup;
 
@@ -164,8 +162,9 @@ public class DetallesDeUbicacionPage extends PageUtil {
                 notPresent.append(" anio_de_construccion,");
             }
             String res = notPresent.toString();
-            if(MSJVALIDARELEMENTOS.equals(res))
-                res = notPresent.toString().substring(0,notPresent.toString().length()-1);
+            if(MSJVALIDARELEMENTOS.equals(res)) {
+                res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
+            }
         MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
         }
 

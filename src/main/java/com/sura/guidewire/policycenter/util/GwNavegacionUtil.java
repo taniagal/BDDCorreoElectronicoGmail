@@ -44,6 +44,7 @@ public final class GwNavegacionUtil {
             return Boolean.TRUE;
 
         } catch (Exception e) {
+            LOGGER.info(""+e);
             return Boolean.FALSE;
         }
     }
@@ -56,7 +57,6 @@ public final class GwNavegacionUtil {
             WebElement elementoSubMenu = obtenerMenuPorTextoContenido(driver, row.get(menuPrimerNivel), tipoElementoMenu);
             if(darClick){
                 elementoSubMenu.click();
-
             }
 
         }

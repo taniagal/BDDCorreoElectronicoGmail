@@ -141,17 +141,17 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
     }
 
     public void verDetalleCotizacion() {
-        waitForTextToAppear("Cotización", 5000);
+        waitForTextToAppear("Cotización", WAIT_TIME_5000);
         setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
         if (tituloDePagina.isPresent()) {
-            waitForTextToAppear(tituloDePagina.getText(), 2000);
+            waitForTextToAppear(tituloDePagina.getText(), WAIT_TIME_2000);
             MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo("Cotización")));
         }
         resetImplicitTimeout();
     }
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        withTimeoutOf(21, TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
         Map<String, String> datosCotizacion;
         MatcherAssert.assertThat(labelNumeroPoliza.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroPoliza"))));
         MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroCotizacion"))));
@@ -234,7 +234,7 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
 
             waitFor(botonCoberturasPA).shouldBeVisible();
             botonCoberturasPA.click();
-            waitForTextToAppear("Coberturas de auto personal", 1000);
+            waitForTextToAppear("Coberturas de auto personal", WAIT_TIME_1000);
 
             for (int j = 1; j <= i; j++) {
                 WebElementFacade coberturaAuto = findBy(".//div[contains(.,'" + terminoCoberturas.get("dato" + j) + "')]");
@@ -244,7 +244,7 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
 
             waitFor(botonCotizacion).shouldBeVisible();
             botonCotizacion.click();
-            waitForTextToAppear("Cotización", 1000);
+            waitForTextToAppear("Cotización", WAIT_TIME_1000);
 
         } catch (Exception e) {
             LOGGER.error("This is error", e);

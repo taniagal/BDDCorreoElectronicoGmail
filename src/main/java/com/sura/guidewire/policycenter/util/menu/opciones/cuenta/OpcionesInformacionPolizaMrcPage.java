@@ -122,7 +122,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         itemDirectorio.waitUntilVisible().waitUntilClickable().click();
         waitInfoPoliza(lblBuscarDirectorio);
         itemTipoDocumento.clear();
-        fluent().await().atMost(200,TimeUnit.MILLISECONDS);
+        fluent().await().atMost(WAIT_TIME_200,TimeUnit.MILLISECONDS);
         itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
         itemTipoDocumento.sendKeys(Keys.ENTER);
         waitInfoPoliza(lblPrimerNombre);
@@ -132,7 +132,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         btnSelecciona.waitUntilVisible().waitUntilClickable().click();
         waitInfoPoliza(lblInformaPoliza);
         btnSiguinete.waitUntilVisible().waitUntilClickable().click();
-        //waitInfoPoliza(mensajePantalla);
     }
 
 
@@ -246,10 +245,12 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void validaReaseguro() {
         setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if (!"Compañía cedente".equals(lblTomador.getText()))
+        if (!"Compañía cedente".equals(lblTomador.getText())) {
             notPresent.append("salida errada: Compañía cedente|");
-        if (tblTomadoresAdicionales.isPresent())
+        }
+        if (tblTomadoresAdicionales.isPresent()) {
             notPresent.append("los tomadores adicionales no pueden estar presentes|");
+        }
         String res = notPresent.toString();
         if (MSJVALIDARELEMENTOS.equals(res)) {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);

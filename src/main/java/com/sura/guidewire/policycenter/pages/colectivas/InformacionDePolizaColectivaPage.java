@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -122,8 +121,7 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:deleteCoinsurance']")
     WebElementFacade linkEliminarCoaseguro;
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(InformacionDePolizaColectivaPage.class);
-
+    protected static final int WAIT_TIME_30000 = 30000;
     private static final String DD_MM_YYYY = "dd/MM/yyyy";
     private static final Date fechaHoy = new Date();
     private static final String ROLLISTAS = "textbox";
@@ -136,7 +134,7 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
 
     public void validarInformacionDePolizaColectiva(ExamplesTable informacionPolizaColectiva) {
         Map<String, String> infoPoliza = informacionPolizaColectiva.getRows().get(0);
-        waitForTextToAppear("Información de la póliza colectiva", 30000);
+        waitForTextToAppear("Información de la póliza colectiva", WAIT_TIME_30000);
         MatcherAssert.assertThat(tituloDePagina.getText(), Is.is(Matchers.equalTo(infoPoliza.get("titulo"))));
         MatcherAssert.assertThat(tituloTomador.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tomadorInfo"))));
         MatcherAssert.assertThat(tipoDocumento.getText(), Is.is(Matchers.equalTo(infoPoliza.get("tipoDocumento"))));

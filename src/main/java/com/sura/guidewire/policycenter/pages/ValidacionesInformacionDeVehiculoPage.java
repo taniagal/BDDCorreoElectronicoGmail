@@ -95,6 +95,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
+            waitUntil(1000);
             botonSiguiente.click();
         }
         resetImplicitTimeout();
@@ -105,7 +106,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        try {
             campoVehiculoCeroKm.click();
             Map<String, String> vehiculo = datosVehiculo.getRow(0);
             waitUntil(WAIT_TIME_3000);
@@ -146,9 +146,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         }
 
         MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
-        }catch (Exception  e){
-            e.printStackTrace();
-        }
     }
 
     public void agregarCodigoFasecolda(String codigo) {

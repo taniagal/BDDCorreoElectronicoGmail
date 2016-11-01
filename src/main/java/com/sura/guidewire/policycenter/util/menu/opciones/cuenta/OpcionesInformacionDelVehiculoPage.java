@@ -104,7 +104,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
         btnItemDirec.click();
         opcionPolizaMrc.waitInfoPoliza(lblBuscarDirec);
         txtTipoDoc.clear();
-        waitUntil(800);
+        waitUntil(WAIT_TIME_800);
         txtTipoDoc.type(tipoDocumento);
         txtTipoDoc.sendKeys(Keys.ENTER);
         opcionPolizaMrc.waitInfoPoliza(lblPrimerNombre);

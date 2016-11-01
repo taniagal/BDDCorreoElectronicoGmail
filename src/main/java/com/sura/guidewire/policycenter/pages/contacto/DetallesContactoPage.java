@@ -1,10 +1,8 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
 import com.sura.guidewire.policycenter.util.PageUtil;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
@@ -13,7 +11,6 @@ import org.openqa.selenium.support.FindBy;
 
 
 public class DetallesContactoPage extends PageUtil {
-
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:FirstName-labelEl']")
     private WebElementFacade labelPrimerNombre;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-labelEl']")
@@ -36,8 +33,6 @@ public class DetallesContactoPage extends PageUtil {
     private WebElementFacade labelEstadoCivil;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:FamilyType-labelEl']")
     private WebElementFacade labelTipoFamilia;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:PrimaryPhone-labelEl']")
-    private WebElementFacade labelTipoTelefono;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:CellPhone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
     private WebElementFacade labelTelefonoCelular;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:PersonDataContact:CreateNewContactInputSet:EmailAddress1-labelEl']")
@@ -52,12 +47,6 @@ public class DetallesContactoPage extends PageUtil {
     private WebElementFacade labelNumeroEmpleados;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:Assets-labelEl']")
     private WebElementFacade labelValorActivos;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:AnualSells-labelEl']")
-    private WebElementFacade labelVentasAnuales;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalContactNameInputSet:AnualSells-labelEl']")
-    private WebElementFacade labelTelefonoOficinaEmpresa;
-    @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:EmailAddress1-labelEl']")
-    private WebElementFacade getcampoTxtCorreoElectronicoPrimarioEmpresa;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV_tb:Edit']")
     private WebElementFacade botonEditarContacto;
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AccountContactDV:ContactNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl']")
@@ -382,40 +371,6 @@ public class DetallesContactoPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
-    /**
-     * AGREGAR DIRECCION A CONTACTO
-     */
-    public void validarDatosPantalla() {
-        waitUntil(WAIT_TIME_1000);
-        StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
-        noPresente = concatenarElementoNoPresente(labelPais, " pais,", noPresente);
-        noPresente = concatenarElementoNoPresente(labelDepartamento, " deprtamento,", noPresente);
-        noPresente = concatenarElementoNoPresente(labelCiudad, " ciudad,", noPresente);
-        noPresente = concatenarElementoNoPresente(labelTipoDireccion, "  tipo dirección,", noPresente);
-        noPresente = concatenarElementoNoPresente(labelDescripcionDireccion, "  descripción direccion,", noPresente);
-        noPresente = concatenarElementoNoPresente(labelDireccion, "direccion,", noPresente);
-        String res = noPresente.toString();
-        if (MSJVALIDARELEMENTOS.equals(res)) {
-            res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
-        }
-        MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
-    }
-
-
-    public void validarCampos() {
-        comboBoxPais.waitUntilPresent();
-        StringBuilder valor = new StringBuilder(MSJVALIDARVALORES);
-        valor = concatenarElementoDiferente("Colombia", comboBoxPais.getValue().toString(), " pais,", valor);
-        valor = concatenarElementoDiferente("<ninguno>", comboBoxDepartamento.getValue().toString(), "departamento,", valor);
-        valor = concatenarElementoDiferente("Esta Direccion podria estandarizarse automáticamente", campoTxtDireccion.getAttribute("data-qtip"), "drireccion data-tip,", valor);
-        valor = concatenarElementoDiferente("200", campoTxtDireccion.getAttribute("maxlength"), "direccion maxlength,", valor);
-        String res = valor.toString();
-        if (MSJVALIDARVALORES.equals(res)) {
-            res = valor.toString().substring(0, valor.toString().length() - 1);
-        }
-        MatcherAssert.assertThat(res, "No estan correctos los valores".equals(res));
-    }
-
 
     public void validarDireccion() {
         List<WebElementFacade> contactos = getLista(".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressesLV-body']/div/table/tbody/tr");
@@ -425,21 +380,5 @@ public class DetallesContactoPage extends PageUtil {
 
     public void validarMensaje(String mensaje) {
         verificarMensaje(divMensaje, mensaje);
-    }
-
-
-    public StringBuilder concatenarElementoDiferente(String valorElemento, String campo, String elemento, StringBuilder valor) {
-        if (!valorElemento.equals(campo)) {
-            valor.append(elemento);
-        }
-        return valor;
-    }
-
-
-    public StringBuilder concatenarElementoNoPresente(WebElementFacade campo, String elemento, StringBuilder notPresent) {
-        if (!campo.isPresent()) {
-            notPresent.append(elemento);
-        }
-        return notPresent;
     }
 }

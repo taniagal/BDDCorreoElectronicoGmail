@@ -18,7 +18,6 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
 // TODO: 15/06/2016 Pendiente refactor
@@ -328,7 +327,7 @@ public class NuevaCotizacionPage extends PageObject {
                 }
             }
         } catch (Exception e) {
-            LOGGER.error("NO EXISTE MENSAJE DE ERROR " + e.getMessage());
+            LOGGER.error("NO EXISTE MENSAJE DE ERROR " + e);
         }
 
 

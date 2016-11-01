@@ -101,7 +101,6 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private WebElementFacade msgNoTomar;
 
     private static final String SUBMITIONXPATH = ".//img[contains(@id,'SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
-
     private  static final String DECLINELETTER = "//a[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
 
     public OpcionesAdminitradorCotizaciones(WebDriver driver) {
@@ -123,7 +122,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
                         waitFor(2).seconds();
                         band = i;
                     } catch (Exception e){
-                        LOGGER.info("");
+                        LOGGER.info(" "+e);
                     }
                     break;
                 }
@@ -144,12 +143,12 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void crearNuevaCotizacion() {
-        waitForTextToAppear("Cotizaciones de la cuenta", 1000);
+        waitForTextToAppear("Cotizaciones de la cuenta", WAIT_TIME_1000);
         btnNuevaCotizacion.click();
     }
 
     public void validarCreacionCotizacion() {
-        waitForTextToAppear("Nueva cotización", 1000);
+        waitForTextToAppear("Nueva cotización", WAIT_TIME_1000);
         boolean validacion = false;
         if (labelCodigoAgente.isPresent() && labelNombreAgente.isPresent()) {
             validacion = true;
@@ -164,24 +163,24 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void seleccionarFiltros(String cotizacion, String producto) {
-        waitForTextToAppear("Cotizaciones de la cuenta", 1000);
+        waitForTextToAppear("Cotizaciones de la cuenta", WAIT_TIME_1000);
         waitFor(txtCotizaciones).shouldBeVisible();
         txtCotizaciones.click();
         WebElementFacade cbxCotizacion = findBy(".//li[contains(.,'" + cotizacion + "')]");
-        waitForTextToAppear(cotizacion, 2000);
+        waitForTextToAppear(cotizacion, WAIT_TIME_2000);
         waitFor(cbxCotizacion).shouldBeVisible();
         cbxCotizacion.click();
         waitFor(txtProductos).shouldBeVisible();
         txtProductos.click();
         WebElementFacade cbxProducto = findBy(".//li[contains(.,'" + producto + "')]");
-        waitForTextToAppear(producto, 2000);
+        waitForTextToAppear(producto, WAIT_TIME_2000);
         waitFor(cbxProducto).shouldBeVisible();
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
     }
 
     public void mostrarInfoCotizacion(String producto) {
-        waitForTextToAppear(producto, 2500);
+        waitForTextToAppear(producto, WAIT_TIME_2500);
         waitUntil(WAIT_TIME_1000);
         String tProductos = "Todos Los Productos";
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
@@ -209,7 +208,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     public void validarLabelsCotizaciones(Map<String, String> labelsCotizaciones) {
         String validacion = null;
         try {
-            waitForTextToAppear("Cotizaciones de la cuenta", 10000);
+            waitForTextToAppear("Cotizaciones de la cuenta");
             MatcherAssert.assertThat(lblCotizacionesCuenta.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("lblCotizaciones"))));
             MatcherAssert.assertThat(btnNuevaCotizacion.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("btnNuevaCotizacion"))));
             MatcherAssert.assertThat(colAcciones.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("acciones"))));

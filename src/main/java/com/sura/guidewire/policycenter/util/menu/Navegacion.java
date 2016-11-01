@@ -1165,14 +1165,14 @@ public class Navegacion extends PageUtil {
 
     public OpcionesCrearPartcCuentaPage irAOpcionesCrearPartcCuenta() {
         mnuCuenta.click();
-        waitUntil(800);
+        waitUntil(WAIT_TIME_800);
         mnuOpcionesCuenta.waitUntilPresent().click();
         return new OpcionesCrearPartcCuentaPage(getDriver());
     }
 
     public OpcionesResumenCuentaPage irAOpcionesResumenCuenta() {
         mnuResumenCuenta.click();
-        waitUntil(800);
+        waitUntil(WAIT_TIME_800);
         return new OpcionesResumenCuentaPage(getDriver());
     }
 
@@ -1190,7 +1190,7 @@ public class Navegacion extends PageUtil {
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
         waitUntil(WAIT_TIME_1000);
         mnuAdmCotizaciones.waitUntilVisible().waitUntilClickable().click();
-        waitUntil(800);
+        waitUntil(WAIT_TIME_800);
         return new OpcionesAdminitradorCotizaciones(getDriver());
     }
 }

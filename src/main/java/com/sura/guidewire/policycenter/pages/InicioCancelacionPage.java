@@ -5,7 +5,6 @@ import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
@@ -13,11 +12,10 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 
 public class InicioCancelacionPage extends PageUtil{
 
@@ -94,10 +92,10 @@ public class InicioCancelacionPage extends PageUtil{
     }
 
     public void validaCamposEnPantalla() {
-        MatcherAssert.assertThat("No aparece fecha de vigencia de cancelacion", lblFechaInicioCancelacion.getText().equals("Fecha vigente de cancelación"));
-        MatcherAssert.assertThat("No aparece el motivo de cancelacion", lblMotivoCancelacion.getText().equals("Motivo"));
-        MatcherAssert.assertThat("No aparece metodo de reembolso cancelacion", lblMetodoReembolsoCancelacion.getText().equals("Método de reembolso"));
-        MatcherAssert.assertThat("No aparece el boton Cancelar Transaccion", btnCancelarTransaccion.getText().equals("Cancelar transacción"));
+        MatcherAssert.assertThat("No aparece fecha de vigencia de cancelacion", "Fecha vigente de cancelación".equals(lblFechaInicioCancelacion.getText()));
+        MatcherAssert.assertThat("No aparece el motivo de cancelacion", "Motivo".equals(lblMotivoCancelacion.getText()));
+        MatcherAssert.assertThat("No aparece metodo de reembolso cancelacion", "Método de reembolso".equals(lblMetodoReembolsoCancelacion.getText()));
+        MatcherAssert.assertThat("No aparece el boton Cancelar Transaccion", "Cancelar transacción".equals(btnCancelarTransaccion.getText()));
     }
 
     public void cancelaTransaccion() {
@@ -112,7 +110,7 @@ public class InicioCancelacionPage extends PageUtil{
     }
 
     public void validaListaMotivoDiferenteBancolombia(ExamplesTable listaMotivo) throws Exception {
-        waitUntil(800);
+        waitUntil(WAIT_TIME_800);
         txtLista.click();
         this.validarDatosDeLaLista(listaMotivo);
         btnCancelarTransaccion.click();

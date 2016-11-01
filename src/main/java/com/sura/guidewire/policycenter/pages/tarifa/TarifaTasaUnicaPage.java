@@ -75,8 +75,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade filaExaminar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header']")
     private WebElementFacade headerEnvio;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']")
-    private WebElementFacade tablaMonto;
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
     private WebElementFacade linkVerCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")

@@ -97,15 +97,12 @@ public class TableWidgetPage extends PageObject {
             try {
                 Iterator opcionToolbar = toolbarListWE.iterator();
 
-                if(valorInputDeComboBox.equals("Mostrar todos los roles"))
-                {
+                if("Mostrar todos los roles".equals(valorInputDeComboBox)){
                     findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:roleFilters-inputEl']").click();
                     findBy(LISTA_COMBO_DESPLEGABLE).waitUntilVisible();
                     shouldBeVisible(findBy(LISTA_COMBO_DESPLEGABLE));
                     iterara = false;
-                }
-                else
-                {
+                }else{
                     findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:personCompanyFilters-inputEl']").click();
                 }
                 iterara = false;

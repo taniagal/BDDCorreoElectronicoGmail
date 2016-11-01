@@ -22,8 +22,6 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
 
     @FindBy(xpath=".//*[@id='TabBar:PolicyTab-btnWrap']")
     private WebElementFacade menuPoliza;
-    @FindBy(xpath=".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']")
-    private WebElementFacade labelNuevaCotizacion;
     @FindBy(xpath=".//*[@id='TabBar:PolicyTab:PolicyTab_PolicyRetrievalItem-inputEl']")
     private WebElementFacade campoBuscarPoliza;
     @FindBy(xpath=".//*[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")

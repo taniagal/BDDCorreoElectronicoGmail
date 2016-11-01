@@ -159,8 +159,8 @@ public class Poliza {
         }
 
     @When("rescinda la cancelacion de la poliza <numPoliza>")
-    public void CuandoRescindaLaCancelacion(String numPoliza){
-        LOGGER.info("Poliza.CuandoRescindaLaCancelacion");
+    public void cuandoRescindaLaCancelacion(String numPoliza){
+        LOGGER.info("Poliza.cuandoRescindaLaCancelacion");
         guidewire.ir_a_navegacion_superior()
                 .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
         polizaSteps.seleccionar_boton_acciones().seleccionar_boton_rescindir_cancelacion().seleccionar_poliza_a_rescindir();
@@ -169,8 +169,8 @@ public class Poliza {
 
     }
     @When("ingreso al resumen de la poliza")
-    public void CuandoIngreseAlResumenDeLaPoliza(String numPoliza){
-        LOGGER.info("Poliza.CuandoIngreseAlResumenDeLaPoliza");
+    public void cuandoIngreseAlResumenDeLaPoliza(String numPoliza){
+        LOGGER.info("Poliza.cuandoIngreseAlResumenDeLaPoliza");
         guidewire.ir_a_navegacion_superior()
                 .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
     }

@@ -133,10 +133,6 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade polizaFinanciada;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_false-inputEl']")
     private WebElementFacade polizaFinanciadaNo;
-    @FindBy(xpath = ".//tr[11]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
-    private WebElementFacade botonNumeroCuotas;
-    @FindBy(xpath = "//li[contains(.,'12')]")
-    private WebElementFacade itemNumeroCuotas;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumber-inputEl']")
     private WebElementFacade textoNumeroCuotas;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div")
@@ -183,6 +179,8 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade linkCoaseguro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardInfoBar:PolicyNum-btnInnerEl']")
     private WebElementFacade nroPolizaColectiva;
+
+    private static final int WAIT_TIME_30000 = 3000;
 
     public OpcionesInformacionPolizaPage(WebDriver driver) {
         super(driver);
@@ -412,7 +410,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     }
 
     public void validarRetroactividadPoliza(String mensaje) {
-        waitUntil(WAIT_TIME_3000);
+        waitUntil(WAIT_TIME_30000);
         botonSiguiente.click();
         waitFor(mensajeValidacion).shouldBePresent();
         MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
@@ -511,7 +509,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     public void validarInfoPolizaPA(ExamplesTable infoPolizaPA) {
         Map<String, String> informacionPoliza = infoPolizaPA.getRows().get(0);
         String fechaFin = LocalDateTime.now().plusYears(Integer.parseInt(informacionPoliza.get("aniosVigencia"))).toString(DD_MM_YYYY);
-        waitForTextToAppear("Información de póliza", 30000);
+        waitForTextToAppear("Información de póliza", WAIT_TIME_30000);
         try {
             MatcherAssert.assertThat(tipoDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDocumentoTomador"))));
             MatcherAssert.assertThat(numeroDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("numeroDocumentoTomador"))));

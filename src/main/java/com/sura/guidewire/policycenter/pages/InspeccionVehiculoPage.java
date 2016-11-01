@@ -54,6 +54,8 @@ public class InspeccionVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:1:UWIssueRowSet:ShortDescription']")
     private WebElementFacade registroBloqueoInspeccion;
 
+    protected static final int WAIT_TIME_10000 = 10000;
+
     public InspeccionVehiculoPage(WebDriver driver){
         super(driver);
     }
@@ -67,8 +69,8 @@ public class InspeccionVehiculoPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(campoPlaca).shouldBePresent();
         campoPlaca.type(placa);
         act.sendKeys(Keys.TAB).build().perform();
-        waitUntil(10000);
-        withTimeoutOf(50,TimeUnit.SECONDS).waitFor(campoModelo).isDisplayed();
+        waitUntil(WAIT_TIME_10000);
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(campoModelo).isDisplayed();
         campoNumeroVehiculo.click();
     }
 

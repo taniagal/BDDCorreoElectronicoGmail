@@ -76,7 +76,7 @@ public class HistorialCuentaPage extends PageUtil {
         waitUntil(WAIT_TIME_2500);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mnuCuenta).shouldBePresent();
         mnuCuenta.click();
-        waitUntil(4000);
+        waitUntil(WAIT_TIME_3500);
         mnuCuenta.click();
         waitUntil(WAIT_TIME_1500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
