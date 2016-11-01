@@ -167,7 +167,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
     }
 
     public void irASiguiente() {
-        waitUntil(WAIT_TIME_2000);
+        waitUntil(WAIT_TIME_3000);
         waitFor(botonSiguiente).waitUntilPresent();
         botonSiguiente.click();
     }
