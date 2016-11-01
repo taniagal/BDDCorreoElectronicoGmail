@@ -59,6 +59,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade comboBoxPlan;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV:0:tipoDocument']")
     private WebElementFacade nitAsegurado;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesLV-body']")
+    private WebElementFacade tablaVehiculo;
 
     protected static final int WAIT_TIME_28000 = 28000;
 
@@ -95,7 +97,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         campoVehiculoCeroKm.click();
         Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        waitUntil(WAIT_TIME_2500);
+        waitFor(ExpectedConditions.elementToBeSelected(campoVehiculoCeroKm));
+        waitUntil(WAIT_TIME_3000);
         selectItem(comboBoxPlan, vehiculo.get("plan"));
         if (!"random".equals(vehiculo.get("placa"))) {
             ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
@@ -105,8 +108,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         }
         waitUntil(WAIT_TIME_1000);
         comboBoxVehiculoServicio.click();
-        waitForTextToAppear(campoTxtPlaca.getText(), WAIT_TIME_28000);
-        waitUntil(WAIT_TIME_3000);
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(tablaVehiculo).shouldContainText(campoTxtPlaca.getText());
+        waitUntil(WAIT_TIME_1000);
         selectItem(comboBoxModelo, vehiculo.get("modelo"));
         waitForTextToAppear(vehiculo.get("modelo"), WAIT_TIME_28000);
         ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));

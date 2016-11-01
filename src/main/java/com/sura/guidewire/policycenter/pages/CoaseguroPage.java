@@ -19,17 +19,19 @@ import org.slf4j.LoggerFactory;
 public class CoaseguroPage extends PageUtil {
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade linkAgregarCoaseguro;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:ReferencePolicyNumber-inputEl']")
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:ReferencePolicyNumber-inputEl']")
     private WebElementFacade campoTxtPolizaDeReferencia;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:administrativeExpenses-inputEl']")
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:administrativeExpenses-inputEl']")
     private WebElementFacade campoTxtDastosAdministrativos;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:DocumentNumberReference-inputEl']")
+    private WebElementFacade campoTxtNumeroDeDocumento;
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:editConinsuranceLink']")
     private WebElementFacade linkEditarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV_tb:Add-btnInnerEl']")
     private WebElementFacade botonAgregar;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:coinsuranceTypeQuestion_true-inputEl']")
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion_true-inputEl']")
     private WebElementFacade radioBotonAceptado;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[1]/td[4]")
     private WebElementFacade radioBotonLider;
@@ -49,17 +51,10 @@ public class CoaseguroPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
         linkAgregarCoaseguro.click();
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
-        campoTxtDastosAdministrativos.waitUntilPresent();
+        waitFor(campoTxtDastosAdministrativos).shouldBePresent();
+        radioBotonLider.shouldBePresent();
         waitUntil(WAIT_TIME_1000);
-        radioBotonLider.waitUntilPresent();
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        try{
-            if(radioBotonAceptado.isSelected()) {
-                right.append("radio_boton_cedido, ");
-            }
-        }catch (StaleElementReferenceException e){
-            LOGGER.info("Stale element in line 56 "+e);
-        }
         if(!botonAgregar.isPresent()) {
             right.append("boton_agregar, ");
         }
@@ -76,6 +71,7 @@ public class CoaseguroPage extends PageUtil {
 
     public void agregarCoaseguro(List<Aseguradora> aseguradoras) {
         campoTxtPolizaDeReferencia.waitUntilPresent().sendKeys("poliza123");
+        campoTxtNumeroDeDocumento.sendKeys("1234567891");
         Actions act = new Actions(getDriver());
         int i = 1;
         for (Aseguradora aseguradora : aseguradoras) {
