@@ -23,11 +23,6 @@ public class NuevaPolizaDefinitions {
         nuevaPolizaSteps.buscarCuenta(numCuenta);
     }
 
-    @When("despliegue la lista de organizacion")
-    public void darClicEnLaListaOrganizacion(){
-        nuevaPolizaSteps.desplegarListaDeOrganizaciones();
-    }
-
     @When("seleccione la organizacion <organizacion>")
     public void seleccionarLaOrganizacion(@Named("organizacion") String organizacion){
         nuevaPolizaSteps.seleccionarOrganizacion(organizacion);
@@ -54,9 +49,9 @@ public class NuevaPolizaDefinitions {
         nuevaPolizaSteps.validarCamposDeLaVentanaNuevaCotizacion();
     }
 
-    @Then("la tabla de productos con los productos de Autos y Multiriesgo corporativo y los botones para elegir producto deshabilitados")
-    public void validarLosBotonesDeLaTablaProductosDeshabilitados(){
-        nuevaPolizaSteps.validarBotonesDeLaTablaProductosDeshabilitados();
+    @Then("se debe visualizar la tabla de productos con los productos de Autos y Multiriesgo corporativo y los botones para elegir producto habilitados")
+    public void validarLosBotonesDeLaTablaProductosHabilitados(){
+        nuevaPolizaSteps.validarBotonesDeLaTablaProductosHabilitados();
     }
 
     @Then("me debe mostrar las organizaciones: $listaOrganizaciones")

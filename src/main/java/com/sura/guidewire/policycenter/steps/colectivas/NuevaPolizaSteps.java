@@ -45,8 +45,8 @@ public class NuevaPolizaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void validarBotonesDeLaTablaProductosDeshabilitados() {
-        nuevaPolizaPage.validarBotonesDeshabilitadosPorProducto();
+    public void validarBotonesDeLaTablaProductosHabilitados() {
+        nuevaPolizaPage.validarBotonesHabilitadosPorProducto();
     }
 
     @Step

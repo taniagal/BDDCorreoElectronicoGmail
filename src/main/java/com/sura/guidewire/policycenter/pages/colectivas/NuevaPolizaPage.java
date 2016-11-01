@@ -113,8 +113,8 @@ public class NuevaPolizaPage extends PageUtil {
         }
     }
 
-    public void validarBotonesDeshabilitadosPorProducto() {
-        this.validarBotonesDeLaTablaProductos(false);
+    public void validarBotonesHabilitadosPorProducto() {
+        this.validarBotonesDeLaTablaProductos(true);
     }
 
     public void validarBotonesDeLaTablaProductos(boolean habilitados) {
