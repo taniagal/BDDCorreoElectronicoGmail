@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class TarifaAutosPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver-btnInnerEl']")
     private WebElementFacade botonAgregarAsegurado;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:RatingOverrideButtonDV:RatingOverrideButtonDV:ViewWorksheet']")
     private WebElementFacade botonMostrarHojaDeCalculo;
@@ -86,8 +86,6 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade comboBoxPerdidaTotal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAAsistenciaDV:4:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxConductorElegido;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:TermType-inputEl']")
-    private WebElementFacade comboBoxTipoPlazo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAGastosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade comboBoxGastosTraspaso;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAGastosDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
@@ -98,8 +96,6 @@ public class TarifaAutosPage extends PageUtil {
     private WebElementFacade menuItemCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']")
     private WebElementFacade meniItemAsegurados;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
-    private WebElementFacade meniItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact:1:UnassignedDriver-textEl']")
     private WebElementFacade navItemAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact-textEl']")
@@ -122,15 +118,6 @@ public class TarifaAutosPage extends PageUtil {
 
     public void marcarCoberturaDanios() {
         checkBoxDaniosCarro.click();
-    }
-
-
-    public void cambiarTipoPlazo() {
-        meniItemInformacionDePoliza.click();
-        comboBoxTipoPlazo.waitUntilPresent().clear();
-        selectItem(comboBoxTipoPlazo, "6 meses");
-        waitForComboValue(comboBoxTipoPlazo, "6 meses");
-        waitUntil(WAIT_TIME_2000);
     }
 
 

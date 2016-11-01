@@ -51,6 +51,7 @@ public class CoaseguroPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
         linkAgregarCoaseguro.click();
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
+        waitUntil(WAIT_TIME_1000);
         waitFor(campoTxtDastosAdministrativos).shouldBePresent();
         radioBotonLider.shouldBePresent();
         waitUntil(WAIT_TIME_1000);
