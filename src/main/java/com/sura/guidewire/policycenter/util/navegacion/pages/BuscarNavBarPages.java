@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.util.navegacion.pages;
 
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.navegacion.util.widget.MenuBarNavWidgetPage;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
@@ -44,7 +45,7 @@ public class BuscarNavBarPages extends PageObject {
         lblCuenta.clear();
         lblCuenta.sendKeys(numCuenta);
         btnBuscaCuenta.click();
-        waitABit(WAIT_TIME_1000);
+        PageUtil.waitUntil(WAIT_TIME_1000);
         linkCuenta.click();
     }
 

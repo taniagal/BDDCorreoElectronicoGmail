@@ -93,6 +93,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade tablaProductos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:Accepted-inputEl']")
     WebElementFacade checkiReaseguroAceptado;
+    @net.serenitybdd.core.annotations.findby.FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptarPopup;
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
@@ -170,6 +172,14 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
         botonElegirProducto.click();
+        if ("Multiriesgo corporativo".equals(nomProducto)) {
+            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+            if (botonAceptarPopup.isPresent()) {
+                botonAceptarPopup.click();
+                waitForAbsenceOf(".//span[contains(.,'Aceptar')]");
+            }
+            resetImplicitTimeout();
+        }
     }
 
     public Integer encontrarProducto(String producto) {
