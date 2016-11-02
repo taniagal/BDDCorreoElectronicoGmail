@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.definitions;
 
+import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.colectivas.NuevaPolizaSteps;
 import com.sura.guidewire.policycenter.util.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireSteps;
@@ -29,6 +30,8 @@ public class EdificiosUbicaciones {
     PolizaSteps polizaSteps;
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
+    @Steps
+    ExpedicionDePolizaSteps expedicionDePolizaSteps;
     @Steps
     IngresoAPolicyCenterDefinitions guidewireLogin;
     @Steps
@@ -142,6 +145,13 @@ public class EdificiosUbicaciones {
 
         LOGGER.info("Poliza.cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo");
     }
+
+    @When("intente cotizar y expedir la poliza")
+            public void cuandoIntenteCotizarYExpedirLaPoliza(){
+              edificiosUbicacionesSteps.seleccionar_boton_cotizar();
+              expedicionDePolizaSteps.clic_en_expedir_poliza();
+             expedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion();
+            }
 
 
     public void cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo() {

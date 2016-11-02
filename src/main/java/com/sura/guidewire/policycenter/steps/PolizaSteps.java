@@ -10,6 +10,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 
 import java.util.List;
 
@@ -167,6 +168,11 @@ public class PolizaSteps extends GuidewireSteps {
     public void ingresarFechaSuperior(){
         obtenerPolizaPage().ingresarFechaSuperior(obtenerPolizaPage().obtenerFechacancelacionElemento());
     }
+    public void validarcamposnoeditables(){
+
+        //MatcherAssert.assertThat(obtenerPolizaPage().esCamposAseguradorasCoasegurosEditables(), Is.is(false));
+        obtenerPolizaPage().esCamposAseguradorasCoasegurosEditables();
+    }
 
     @Step
     public void validar_opcion_cancelar_transaccion(){
@@ -186,4 +192,10 @@ public class PolizaSteps extends GuidewireSteps {
         String XpathMensajeCancelacionPendiente = ".//*[contains(.,'Esta póliza tiene Cancelación pendiente')]";
         obtenerPolizaPage().validarQueNoSeMuestreMensaje(XpathMensajeCancelacionPendiente);
     }
+    @Step
+    public void ver_resumen_de_la_poliza_expedida(){
+        obtenerPolizaPage().ingresaraResumenDeLaPolizaExpedida();
+    }
+    @Step
+    public void ingresar_a_ver_coaseguros() {obtenerPolizaPage().ingresarOpcionMostrarCoaseguros();}
 }

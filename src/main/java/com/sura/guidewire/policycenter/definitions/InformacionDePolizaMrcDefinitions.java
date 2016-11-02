@@ -1,12 +1,17 @@
 package com.sura.guidewire.policycenter.definitions;
 
+
 import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
+import com.sura.guidewire.policycenter.util.navegacion.definitions.*;
+import com.sura.guidewire.policycenter.util.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 public class InformacionDePolizaMrcDefinitions {
@@ -17,6 +22,9 @@ public class InformacionDePolizaMrcDefinitions {
     @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
 
+    @Steps
+    IngresoAPolicyCenterDefinitions guidewireLogin;
+
 
     @Given("se inicio una nueva suscripcion <numeroCuenta>")
     public void iniciaNuevaSuscripcionCuenta(@Named("numeroCuenta") String numeroCuenta) {
@@ -24,9 +32,47 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
     }
 
+    @Given("que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>")
+    public void iniciaNuevaSuscripcion(@Named("numCuenta") String numeroCuenta,@Named("rolUsuario") String rolUsuario) {
+
+        if (SerenityWebdriverManager.inThisTestThread().hasAnInstantiatedDriver()) {
+            SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
+        }
+
+        guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
+
+        informacionDePolizaMrcSteps.navegar_barra_superior(numeroCuenta);
+        informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
+    }
+
     @When("este expidiendo una poliza de propiedad comercial")
     public void expidePolizaPropiedadComercial() {
         informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto();
+    }
+
+
+    @When("quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>")
+        public void cuandoQuieroExpedirUnaPolizaNuevaConLosSiguientesDatos(@Named("agente")String agente,
+                                                                           @Named("organizacion")String organizacion,
+                                                                           @Named("canal")String canal,
+                                                                           @Named("tipoPoliza")String tipoPoliza,
+                                                                           @Named("producto")String producto) {
+
+        informacionDePolizaMrcSteps.ingresar_nueva_cotizacion(agente,organizacion,canal,tipoPoliza,producto);
+
+    }
+    @When("quiero agregar un coaseguro <TipoCo> con particion de aseguradoras $entradatable")
+        public void cuandoQuieroAgregarunCoaseguro(@Named("TipoCo")String tipoCo, ExamplesTable entradatable){
+        informacionDePolizaMrcSteps.agrego_un_coaseguro(tipoCo,entradatable);
+    }
+    @When("ingrese a edificios y ubicaciones")
+    public void cuandoIntenteIngresarAEdificiosYUbicaciones(){
+        informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones();
+    }
+    @Then("se debe validar que se muestren los mensajes de obligatoriedad siguientes $mensajesesperados")
+    public void entoncesSeDebenValidarQueSeMuestrenLosMensajesDeObligatoriedad(ExamplesTable mensajesesperados)
+    {
+        informacionDePolizaMrcSteps.validar_mensajes_coaseguros(mensajesesperados);
     }
 
     @When("seleccione el producto <nomProducto> a expedir")
@@ -107,6 +153,11 @@ public class InformacionDePolizaMrcDefinitions {
     @Then("debe desaparecer del formulario principal")
     public void thenDebeDesaparecerDelFormularioPrincipal() {
         informacionDePolizaMrcSteps.validar_descipcion_de_direccion();
+    }
+
+    @Then("no se debe inhabilitar la opcion Numero de documento")
+    public void entoncesNoSeDebeHabilitarLaOpcionNumeroDeDocumento(){
+        informacionDePolizaMrcSteps.validar_campos_inhabilitados();
     }
 
 
