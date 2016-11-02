@@ -39,6 +39,11 @@ public class ProcesoDeCancelacionSteps extends ScenarioSteps {
     @Step
     public void valida_mensaje_en_pantanlla_programar_cancelacion(String mensaje) {
         procesoDeCancelacionPage.validaVentanaMensaje(mensaje);
+
+    }
+
+    @Step
+    public void cerrar_cancelacion_opcion_retirar_transaccion(){
         cotizacionDeCancelacionPage.cerrarTransaccionPoliza();
     }
 }
