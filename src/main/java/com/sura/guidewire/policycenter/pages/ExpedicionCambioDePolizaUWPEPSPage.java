@@ -20,8 +20,6 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends PageUtil{
 
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
     private WebElementFacade menuPoliza;
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
-    private WebElementFacade buscarCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:DocumentType-inputEl']")
     private WebElementFacade campoTipoDocumento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:DocumentNumber-inputEl']")
@@ -78,7 +76,7 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends PageUtil{
     }
 
     public void validarMensajePEP(String mensaje) {
-        withTimeoutOf(40,TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(grupoMensajes).shouldBeVisible();
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuPoliza).waitUntilClickable();
     }

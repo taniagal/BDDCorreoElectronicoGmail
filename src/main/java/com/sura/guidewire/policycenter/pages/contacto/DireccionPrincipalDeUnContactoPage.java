@@ -37,6 +37,9 @@ public class DireccionPrincipalDeUnContactoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='ContactFile_Details:ContactFile_DetailsInternalScreen:InternalDetailsCardPanelCV:AddressesPanelSet:AddressDetailDV:Description-labelEl']")
     private WebElementFacade labelDescripcionDireccion;
 
+    public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
+    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+
     DetallesContactoPage contactoPage = new DetallesContactoPage(getDriver());
 
     public DireccionPrincipalDeUnContactoPage(WebDriver driver){
@@ -65,47 +68,32 @@ public class DireccionPrincipalDeUnContactoPage extends PageUtil {
 
     public void validarCampos() {
         comboBoxPais.waitUntilPresent();
-        StringBuilder right = new StringBuilder(contactoPage.MSJVALIDARVALORES);
-        if(!"Colombia".equals(comboBoxPais.getValue().toString())) {
-            right.append(" pais,");
+        StringBuilder valor = new StringBuilder(MSJVALIDARVALORES);
+        valor = concatenarElementoDiferente("Colombia", comboBoxPais.getValue().toString(), " pais,", valor);
+        valor = concatenarElementoDiferente("<ninguno>", comboBoxDepartamento.getValue().toString(), "departamento,", valor);
+        valor = concatenarElementoDiferente("Esta Direccion podria estandarizarse automáticamente", campoTxtDireccion.getAttribute("data-qtip"), "drireccion data-tip,", valor);
+        valor = concatenarElementoDiferente("200", campoTxtDireccion.getAttribute("maxlength"), "direccion maxlength,", valor);
+        String res = valor.toString();
+        if (MSJVALIDARVALORES.equals(res)) {
+            res = valor.toString().substring(0, valor.toString().length() - 1);
         }
-        if(!"<ninguno>".equals(comboBoxDepartamento.getValue().toString())) {
-            right.append(" departamento,");
-        }
-        if(!"Esta Direccion podria estandarizarse automáticamente".equals(campoTxtDireccion.getAttribute("data-qtip"))) {
-            right.append("drireccion data-tip,");
-        }
-        if(!"200".equals(campoTxtDireccion.getAttribute("maxlength"))) {
-            right.append("direccion maxlength,");
-        }
-        String res = right.toString();
-        if(contactoPage.MSJVALIDARVALORES.equals(res)){
-            res = right.toString().substring(0,right.toString().length()-1);
-        }
-        MatcherAssert.assertThat(res,"No estan correctos los valores".equals(res));
+        MatcherAssert.assertThat(res, "No estan correctos los valores".equals(res));
     }
-
     
     public void validarDatosPantalla() {
         waitUntil(WAIT_TIME_1000);
-        StringBuilder notPresent = new StringBuilder(contactoPage.MSJVALIDARELEMENTOS);
-        if(!labelPais.isPresent())
-            notPresent.append(" pais,");
-        if(!labelDepartamento.isPresent())
-            notPresent.append(" deprtamento,");
-        if(!labelCiudad.isPresent())
-            notPresent.append(" ciudad,");
-        if(!labelDireccion.isPresent())
-            notPresent.append(" direccion,");
-        if(!labelTipoDireccion.isPresent())
-            notPresent.append(" tipo dirección,");
-        if(!labelDescripcionDireccion.isPresent())
-            notPresent.append(" descripción direccion,");
-        String res = notPresent.toString();
-        if(contactoPage.MSJVALIDARELEMENTOS.equals(res)){
-            res = notPresent.toString().substring(0,notPresent.toString().length()-1);
+        StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
+        noPresente = concatenarElementoNoPresente(labelPais, " pais,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelDepartamento, " deprtamento,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelCiudad, " ciudad,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelTipoDireccion, "  tipo dirección,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelDescripcionDireccion, "  descripción direccion,", noPresente);
+        noPresente = concatenarElementoNoPresente(labelDireccion, "direccion,", noPresente);
+        String res = noPresente.toString();
+        if (MSJVALIDARELEMENTOS.equals(res)) {
+            res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
         }
-        MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
+        MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
 

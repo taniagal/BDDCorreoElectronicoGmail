@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.steps.colectivas.NuevaPolizaSteps;
 import com.sura.guidewire.policycenter.util.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireSteps;
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;

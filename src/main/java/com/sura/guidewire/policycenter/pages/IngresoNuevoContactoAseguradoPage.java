@@ -65,11 +65,11 @@ public class IngresoNuevoContactoAseguradoPage extends PageUtil{
         campoDepartamento.sendKeys(datosContacto.get("departamento"));
         campoDepartamento.sendKeys(Keys.ENTER);
         waitUntil(WAIT_TIME_3000);
-        campoCiudad.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoCiudad.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoCiudad.sendKeys(datosContacto.get("ciudad"));
         campoCiudad.sendKeys(Keys.ENTER);
         waitUntil(WAIT_TIME_2000);
-        campoDireccion.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoDireccion.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDireccion.sendKeys(datosContacto.get("direccion"));
         waitUntil(WAIT_TIME_2000);
         campoTipoDireccion.clear();

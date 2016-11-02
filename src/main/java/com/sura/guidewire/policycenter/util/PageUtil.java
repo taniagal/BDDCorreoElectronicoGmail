@@ -1,9 +1,11 @@
 package com.sura.guidewire.policycenter.util;
 
 import com.google.common.base.Function;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.steps.StepInterceptor;
@@ -43,6 +45,7 @@ public class PageUtil extends PageObject {
     protected static final int WAIT_TIME_10 = 10;
     protected static final int WAIT_TIME_7 = 7;
     protected static final int WAIT_TIME_5 = 5;
+    protected static final int WAIT_TIME_4 = 4;
     protected static final int WAIT_TIME_3 = 3;
     protected static final int WAIT_TIME_2 = 2;
     protected static final int WAIT_TIME_1 = 1;
@@ -53,16 +56,16 @@ public class PageUtil extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(menu).click();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(menu).click();
         waitUntil(WAIT_TIME_3000);
-        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(ExpectedConditions.elementToBeClickable(menu));
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(ExpectedConditions.elementToBeClickable(menu));
         menu.click();
         waitUntil(WAIT_TIME_500);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         return actions;
     }
 
-    public void selectItem(WebElementFacade element, String option){
+    public void selectItem(WebElementFacade element, String option) {
         waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
         element.click();
         waitUntil(WAIT_TIME_200);
@@ -83,18 +86,18 @@ public class PageUtil extends PageObject {
                 }
             });
         } catch (TimeoutException e) {
-            LOGGER.info("TimeoutException in "+e);
+            LOGGER.info("TimeoutException in " + e);
         }
     }
 
 
-    public void verificarMensaje(WebElementFacade divMensaje, String mensaje){
+    public void verificarMensaje(WebElementFacade divMensaje, String mensaje) {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
-        MatcherAssert.assertThat("Falló el mensaje de validacion '"+mensaje+"'", divMensaje.containsText(mensaje));
+        MatcherAssert.assertThat("Falló el mensaje de validacion '" + mensaje + "'", divMensaje.containsText(mensaje));
     }
 
 
-    public void verificarMensajes(WebElementFacade divMensaje,ExamplesTable mensajes) {
+    public void verificarMensajes(WebElementFacade divMensaje, ExamplesTable mensajes) {
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         for (Map<String, String> mensaje : mensajes.getRows()) {
             MatcherAssert.assertThat("Error: en la validacion del mensaje " + mensaje.get("mensaje"), divMensaje.containsText(mensaje.get("mensaje")));
@@ -103,7 +106,7 @@ public class PageUtil extends PageObject {
 
 
     public List<WebElementFacade> getLista(String locator) {
-        return withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).findAll(locator);
+        return withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).findAll(locator);
     }
 
 
@@ -120,27 +123,28 @@ public class PageUtil extends PageObject {
     }
 
 
-    public void ingresarDato(WebElementFacade elemento, String dato){
+    public void ingresarDato(WebElementFacade elemento, String dato) {
         do {
             waitFor(elemento).waitUntilPresent();
             elemento.clear();
             waitUntil(WAIT_TIME_500);
             waitFor(elemento).shouldContainText("");
             elemento.sendKeys(dato);
-        }while (!elemento.getValue().equals(dato));
+        } while (!elemento.getValue().equals(dato));
     }
 
-    public void waitForComboValue(WebElementFacade element, String value ){
+    public void waitForComboValue(WebElementFacade element, String value) {
         try {
             withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
-        }catch (ElementNotVisibleException e){
-            LOGGER.info("ElementNotVisible at PageUtil 129 "+e);
+        } catch (ElementNotVisibleException e) {
+            LOGGER.info("ElementNotVisible at PageUtil 129 " + e);
         }
         waitUntil(WAIT_TIME_2000);
     }
 
     /**
      * Crea numero de cedula
+     *
      * @return numero de cedula de 8 digitos
      */
     public String cedulaRandom() {
@@ -150,10 +154,27 @@ public class PageUtil extends PageObject {
 
     /**
      * Crea un numero de nit
+     *
      * @return numero de nit de 9 digitos
      */
     public String nitRandom() {
         int nit = (int) Math.floor(Math.random() * (900000000 - 999999999) + 999999999);
         return Integer.toString(nit);
+    }
+
+
+    public StringBuilder concatenarElementoDiferente(String valorElemento, String campo, String elemento, StringBuilder valor) {
+        if (!valorElemento.equals(campo)) {
+            valor.append(elemento);
+        }
+        return valor;
+    }
+
+
+    public StringBuilder concatenarElementoNoPresente(WebElementFacade campo, String elemento, StringBuilder notPresent) {
+        if (!campo.isPresent()) {
+            notPresent.append(elemento);
+        }
+        return notPresent;
     }
 }

@@ -34,7 +34,7 @@ public class PolizasDePrimeraPerdidaPage extends PageUtil {
     }
 
     public void irAArticulos() {
-        withTimeoutOf(25, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonAgregarArticulos).waitUntilPresent().click();
     }
 

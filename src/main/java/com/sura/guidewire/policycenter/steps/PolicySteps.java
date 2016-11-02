@@ -10,7 +10,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class PolicySteps extends ScenarioSteps {
 
     private final SeusLoginPage seus = new SeusLoginPage(getDriver());
-    private final PageUtil gw = new PageUtil(getDriver());
 
     public PolicySteps(Pages pages) {
         super(pages);

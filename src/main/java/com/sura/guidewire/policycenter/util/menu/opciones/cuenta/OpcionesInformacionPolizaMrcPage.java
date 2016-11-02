@@ -2,8 +2,10 @@ package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
 
 import com.sura.guidewire.policycenter.util.PageUtil;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -91,6 +93,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade tablaProductos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:Accepted-inputEl']")
     WebElementFacade checkiReaseguroAceptado;
+    @net.serenitybdd.core.annotations.findby.FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptarPopup;
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
@@ -122,7 +126,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         itemDirectorio.waitUntilVisible().waitUntilClickable().click();
         waitInfoPoliza(lblBuscarDirectorio);
         itemTipoDocumento.clear();
-        fluent().await().atMost(200,TimeUnit.MILLISECONDS);
+        fluent().await().atMost(WAIT_TIME_200, TimeUnit.MILLISECONDS);
         itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
         itemTipoDocumento.sendKeys(Keys.ENTER);
         waitInfoPoliza(lblPrimerNombre);
@@ -132,7 +136,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         btnSelecciona.waitUntilVisible().waitUntilClickable().click();
         waitInfoPoliza(lblInformaPoliza);
         btnSiguinete.waitUntilVisible().waitUntilClickable().click();
-        //waitInfoPoliza(mensajePantalla);
     }
 
 
@@ -160,15 +163,23 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
             waitInfoPoliza(lblInformaPoliza);
             esVisible = false;
         }
-        return  esVisible;
+        return esVisible;
     }
 
-    public void  seleccionarProducto(String nomProducto) {
+    public void seleccionarProducto(String nomProducto) {
         waitUntil(WAIT_TIME_1000);
         String xpathBotonElegirProducto = BTNELEGIRPRODUCTO + this.encontrarProducto(nomProducto).toString() + ":addSubmission']";
         WebElementFacade botonElegirProducto = esperarElemento(xpathBotonElegirProducto);
         botonElegirProducto.waitUntilEnabled();
         botonElegirProducto.click();
+        if ("Multiriesgo corporativo".equals(nomProducto)) {
+            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+            if (botonAceptarPopup.isPresent()) {
+                botonAceptarPopup.click();
+                waitForAbsenceOf(".//span[contains(.,'Aceptar')]");
+            }
+            resetImplicitTimeout();
+        }
     }
 
     public Integer encontrarProducto(String producto) {
@@ -191,49 +202,33 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void validaCamposPoliza() {
-        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if (!lblTipoDocumento.isPresent()) {
-            notPresent.append("Label errado: Tipo documento|");
-        }
-        if (!lblNumeroDocumento.isPresent()) {
-            notPresent.append("Label errado: Numero documento|");
-        }
-        if (!lblNumeroTelefono.isPresent()) {
-            notPresent.append("label errado: Teléfono|");
-        }
-        if (!lblDireccion.isPresent()) {
-            notPresent.append("label errado: Dirección de la poliza|");
-        }
-        if ("".equals(inputTipoDocumento.getText())) {
-            notPresent.append("salida errada: Tipo cedula|");
-        }
-        if ("".equals(inputNumeroDocumento.getText())) {
-            notPresent.append("salida errada: Numero cedula|");
-        }
-        if ("".equals(inputNumeroTelefono.getText())) {
-            notPresent.append("salida errada: Telefono|");
-        }
-        if ("".equals(inputDireccion.getText())) {
-            notPresent.append("salida errada: Direccion|");
-        }
-        if (inputReaseguroEspecial.isVisible()) {
-            notPresent.append("radio boton: No esta present|");
-        }
+        StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
+        noPresente = concatenarElementoNoPresente(lblTipoDocumento, "Label errado: Tipo documento|", noPresente);
+        noPresente = concatenarElementoNoPresente(lblNumeroDocumento, "Label errado: Numero documento|", noPresente);
+        noPresente = concatenarElementoNoPresente(lblNumeroTelefono, "Label errado: Teléfono|", noPresente);
+        noPresente = concatenarElementoNoPresente(lblDireccion, "radio boton: No esta present|", noPresente);
+        noPresente = concatenarElementoNoPresente(inputReaseguroEspecial, "Label errado: Dirección de la poliza|v|", noPresente);
+        noPresente = concatenarElementoDiferente("", inputTipoDocumento.getText(), "salida errada: Tipo cedula|", noPresente);
+        noPresente = concatenarElementoDiferente("", inputNumeroDocumento.getText(), "salida errada: Numero cedula|", noPresente);
+        noPresente = concatenarElementoDiferente("", inputNumeroTelefono.getText(), "salida errada: Telefono|", noPresente);
+        noPresente = concatenarElementoDiferente("", inputDireccion.getText(), "salida errada: Direccion|", noPresente);
+        noPresente = concatenarElementoDiferente("", inputReaseguroEspecial.getText(), "radio boton: No esta present|", noPresente);
+        
         if (!"Fecha inicio de vigencia".equals(lblFechaVigencia.getText())) {
-            notPresent.append("salida errada: Fecha inicio de vigencia|");
+            noPresente.append("salida errada: Fecha inicio de vigencia|");
         }
         if (!"Fecha fin de vigencia".equals(lblFechaExpiracion.getText())) {
-            notPresent.append("salida errada: Fecha fin de vigencia|");
+            noPresente.append("salida errada: Fecha fin de vigencia|");
         }
         if (!"Fecha de expedición".equals(lblFechaescrita.getText())) {
-            notPresent.append("salida errada: Fecha de expedición|");
+            noPresente.append("salida errada: Fecha de expedición|");
         }
         if (!"Descripción de la dirección".equals(lblDescripcionDir.getText())) {
-            notPresent.append("salida errada: Descripcion direccion|");
+            noPresente.append("salida errada: Descripcion direccion|");
         }
-        String res = notPresent.toString();
+        String res = noPresente.toString();
         if (MSJVALIDARELEMENTOS.equals(res)) {
-            res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
+            res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
         }
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
@@ -246,10 +241,12 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void validaReaseguro() {
         setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if (!"Compañía cedente".equals(lblTomador.getText()))
+        if (!"Compañía cedente".equals(lblTomador.getText())) {
             notPresent.append("salida errada: Compañía cedente|");
-        if (tblTomadoresAdicionales.isPresent())
+        }
+        if (tblTomadoresAdicionales.isPresent()) {
             notPresent.append("los tomadores adicionales no pueden estar presentes|");
+        }
         String res = notPresent.toString();
         if (MSJVALIDARELEMENTOS.equals(res)) {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
@@ -261,10 +258,11 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void validaFormularioDescripDireccion() {
         if (esVisible) {
             MatcherAssert.assertThat("el campo Descripcion direccion no debe estar presente", !lblDescripDireccion.isPresent());
-        }else{
+        } else {
             MatcherAssert.assertThat("el campo Descripcion direccion debe estar presente al ingresar direccion", lblDescripDireccion.isPresent());
         }
     }
+
     // TODO: 30/06/2016 Metodo wait para implementar generico
     public void waitInfoPoliza(WebElementFacade webElementFacade) {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();

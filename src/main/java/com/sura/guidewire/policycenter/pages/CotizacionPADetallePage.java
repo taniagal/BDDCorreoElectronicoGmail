@@ -82,7 +82,7 @@ public class CotizacionPADetallePage extends PageUtil {
 
         waitFor(tablaCoberturas).shouldBeVisible();
         List<WebElement> allRows = tablaCoberturas.findElements(By.tagName("tr"));
-        waitABit(WAIT_TIME_1000);
+        waitUntil(WAIT_TIME_1000);
         String validacion = null;
         Map<String,String> coberturas = new HashMap<>();
         Map<String,String> terminoCoberturas = new HashMap<>();

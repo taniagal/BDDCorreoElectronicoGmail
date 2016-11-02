@@ -8,8 +8,6 @@ import org.openqa.selenium.Keys;
 
 public class MenuAdministracionSteps extends ScenarioSteps {
 
-    private static final String XPATH_CONTENEDOR_SUBMENU_DESPLEGABLE = "//div[contains(@class, 'x-panel x-layer x-panel-default x-menu x-border-box')]";
-
     @Step
     public void consultar_numero_de_subscripcion(String numSubscripcion) {
         String xpathTxtNumeroSubscripcion = ".//input[contains(@name,'SubmissionNumberSearchItem')]";

@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
@@ -41,7 +40,7 @@ public class EdicionContactoAseguradoPage extends PageUtil{
     }
 
     public void editarDatosComunesDeContacto(Map<String, String> datosContacto){
-        campoTipoDocumento.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoTipoDocumento.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoTipoDocumento.sendKeys(datosContacto.get("tipoId"));
         campoTipoDocumento.sendKeys(Keys.ENTER);
         campoNumeroDocumento.clear();
@@ -50,15 +49,15 @@ public class EdicionContactoAseguradoPage extends PageUtil{
         campoPais.sendKeys(datosContacto.get("pais"));
         campoPais.sendKeys(Keys.ENTER);
         waitUntil(WAIT_TIME_3000);
-        campoDepartamento.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoDepartamento.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDepartamento.sendKeys(datosContacto.get("departamento"));
         campoDepartamento.sendKeys(Keys.ENTER);
         waitUntil(WAIT_TIME_3000);
-        campoCiudad.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoCiudad.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoCiudad.sendKeys(datosContacto.get("ciudad"));
         campoCiudad.sendKeys(Keys.ENTER);
         waitUntil(WAIT_TIME_1000);
-        campoDireccion.withTimeoutOf(5, TimeUnit.SECONDS).waitUntilClickable().clear();
+        campoDireccion.withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitUntilClickable().clear();
         campoDireccion.sendKeys(datosContacto.get("direccion"));
         waitUntil(WAIT_TIME_1000);
         campoTipoDireccion.clear();
