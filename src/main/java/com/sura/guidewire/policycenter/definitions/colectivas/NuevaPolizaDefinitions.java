@@ -28,11 +28,6 @@ public class NuevaPolizaDefinitions {
         nuevaPolizaSteps.seleccionarOrganizacion(organizacion);
     }
 
-    @When("despliegue la lista canal")
-    public void darClicEnLaListaCanal(){
-        nuevaPolizaSteps.desplegarListaCanal();
-    }
-
     @When("seleccione el canal <canal>")
     public void seleccionarElCanal(@Named("canal") String canal){
         nuevaPolizaSteps.seleccionarCanal(canal);
