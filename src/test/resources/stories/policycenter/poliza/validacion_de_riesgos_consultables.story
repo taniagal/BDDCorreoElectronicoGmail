@@ -1,7 +1,6 @@
 Validacion de riesgos consultables
 
 Meta:
-<<<<<<< HEAD
 
 Scenario: 1 Validacion de riesgos consultables (tomador adicional,asegurador,direccion) al cotizar nueva poliza
 
