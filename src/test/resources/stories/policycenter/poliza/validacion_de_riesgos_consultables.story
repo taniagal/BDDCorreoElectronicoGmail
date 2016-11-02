@@ -8,13 +8,11 @@ Scenario: 1 Validacion de riesgos consultables (tomador adicional,asegurador,dir
 Meta:
 =======
 @lote1
->>>>>>> develop
 @Story CDSEG-3124
 @URL https://jira.suramericana.com.co/browse/CDSEG-3124
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
-<<<<<<< HEAD
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When quiera agregar un tomador adicional que es riesgo consultable <cedula>
 And intente ingresar una nueva ubicacion
