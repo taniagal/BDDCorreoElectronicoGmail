@@ -20,7 +20,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.LocalDateTime;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.slf4j.LoggerFactory;
 
 public class InformacionDePolizaColectivaPage extends PageUtil {
 

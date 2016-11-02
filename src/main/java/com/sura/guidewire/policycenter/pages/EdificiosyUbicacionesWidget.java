@@ -179,7 +179,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 esSeleccionado = true;
             }
         } catch (Exception e) {
-            LOGGER.info("Pestaña no visualizada en Edificios y ubicaciones");
+            LOGGER.info("Pestaña no visualizada en Edificios y ubicaciones" + e);
             esSeleccionado = true;
         }
         resetImplicitTimeout();

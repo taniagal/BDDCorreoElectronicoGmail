@@ -95,7 +95,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
-            waitUntil(1000);
+            waitUntil(WAIT_TIME_1000);
             botonSiguiente.click();
         }
         resetImplicitTimeout();
@@ -125,7 +125,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             waitUntil(WAIT_TIME_2000);
             ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
             campoTxtPlaca.click();
-            waitUntil(WAIT_TIME_2000);
             withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
             waitUntil(WAIT_TIME_2000);
             selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));

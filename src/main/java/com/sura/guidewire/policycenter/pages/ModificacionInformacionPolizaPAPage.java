@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 public class ModificacionInformacionPolizaPAPage extends PageUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionInformacionPolizaPAPage.class);
-
     Actions act = new Actions(getDriver());
 
     @FindBy(xpath=".//*[@id='TabBar:PolicyTab-btnWrap']")

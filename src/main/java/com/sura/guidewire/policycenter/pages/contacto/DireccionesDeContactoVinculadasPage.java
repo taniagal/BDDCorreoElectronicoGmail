@@ -112,7 +112,6 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
         WebElementFacade menuContactoDireccionPrincipal = esperarElemento(".//*[@id='EditAccountPopup:EditAccountScreen:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail']");
         accion.moveToElement(menuContactoDireccionPrincipal).release(menuContactoDireccionPrincipal).click().build().perform();
         waitForTextToAppear("Esta dirección está vinculada a otras direcciones");
-        WebElementFacade botonActualizar = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-botonInnerEl']");
         botonActualizar.click();
     }
 
@@ -285,7 +284,6 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
     public void editarDireccionVinculadaDelContacto(String direccion) {
         this.escribirEnElCampo(direccion, campoTxtDireccion);
         botonActualizarDireccionesLigadas.click();
-        WebElementFacade botonActualizar = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-botonInnerEl']");
         botonActualizar.click();
     }
 

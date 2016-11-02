@@ -271,16 +271,4 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
         waitFor(labelDCIva).shouldContainText(infoDetalleCotizacion.get("DC_iva"));
         MatcherAssert.assertThat(labelDCIva.getText(), Matchers.containsString(infoDetalleCotizacion.get("DC_iva")));
     }
-
-    public WebElementFacade esperarElemento(final String xpath) {
-        Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
-                .withTimeout(WAIT_TIME_28, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
-                .ignoring(NoSuchElementException.class);
-        return espera.until(new Function<WebDriver, WebElementFacade>() {
-            public WebElementFacade apply(WebDriver driver) {
-                return findBy(xpath);
-            }
-        });
-    }
 }

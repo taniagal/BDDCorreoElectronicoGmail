@@ -21,8 +21,6 @@ import org.slf4j.LoggerFactory;
 
 
 public class OpcionesAdminitradorCotizaciones extends PageUtil {
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
-
     Actions act = new Actions(getDriver());
 
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:0']")
@@ -64,11 +62,6 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-labelEl']")
     private WebElementFacade labelCodigoAgente;
 
-    private int band = 0;
-
-    /*
-    * WebElementFacade ingresados para story Nueva
-    * */
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-itemEl']")
     private WebElementFacade itmNoTomarJ;
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuIcon']")
@@ -100,8 +93,17 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     @FindBy(id = "NotTakenReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msgNoTomar;
 
+
     private static final String SUBMITIONXPATH = ".//img[contains(@id,'SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
-    private  static final String DECLINELETTER = "//a[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+    private static final String DECLINELETTER = "//a[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
+    private static final int CONSTANTE_7 = 7;
+    private static final int CONSTANTE_6 = 6;
+    private static final int CONSTANTE_5 = 5;
+    private static final int CONSTANTE_4 = 4;
+    private static final int CONSTANTE_3 = 3;
+    private static final int CONSTANTE_2 = 2;
+    private int band = 0;
 
     public OpcionesAdminitradorCotizaciones(WebDriver driver) {
         super(driver);
@@ -114,12 +116,12 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (!("".equals(cells.get(2).getText()) || " ".equals(cells.get(2).getText()))) {
-                if ("Cotizado".equals(cells.get(7).getText()) || "Borrador".equals(cells.get(7).getText())) {
+            if (!("".equals(cells.get(CONSTANTE_2).getText()) || " ".equals(cells.get(CONSTANTE_2).getText()))) {
+                if ("Cotizado".equals(cells.get(CONSTANTE_7).getText()) || "Borrador".equals(cells.get(CONSTANTE_7).getText())) {
                     try {
                         WebElementFacade botonAccciones = findBy(SUBMITIONXPATH + i + ":SubmissionActions:SubmissionActionsMenuIcon')]");
                         botonAccciones.click();
-                        waitFor(2).seconds();
+                        waitFor(CONSTANTE_2).seconds();
                         band = i;
                     } catch (Exception e){
                         LOGGER.info(" "+e);
@@ -188,19 +190,19 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             if (tProductos.equals(producto) && !("".equals(cells.get(1).getText()) || " ".equals(cells.get(1).getText()))) {
                 MatcherAssert.assertThat(cells.get(1).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
-                MatcherAssert.assertThat(cells.get(2).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
-                MatcherAssert.assertThat(cells.get(3).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
-                MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
-                MatcherAssert.assertThat(cells.get(5).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
-                MatcherAssert.assertThat(cells.get(7).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+                MatcherAssert.assertThat(cells.get(CONSTANTE_2).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+                MatcherAssert.assertThat(cells.get(CONSTANTE_3).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+                MatcherAssert.assertThat(cells.get(CONSTANTE_4).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+                MatcherAssert.assertThat(cells.get(CONSTANTE_5).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+                MatcherAssert.assertThat(cells.get(CONSTANTE_7).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
             } else if (!("".equals(cells.get(1).getText()) || " ".equals(cells.get(1).getText()))) {
                 boolean valido = cells.get(1).getText().equals(producto);
                 MatcherAssert.assertThat(cells.get(1).getText(), Is.is(Matchers.equalTo(producto)));
-                MatcherAssert.assertThat(cells.get(2).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
-                MatcherAssert.assertThat(cells.get(3).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
-                MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
-                MatcherAssert.assertThat(cells.get(5).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
-                MatcherAssert.assertThat(cells.get(7).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+                MatcherAssert.assertThat(cells.get(CONSTANTE_2).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+                MatcherAssert.assertThat(cells.get(CONSTANTE_3).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+                MatcherAssert.assertThat(cells.get(CONSTANTE_4).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+                MatcherAssert.assertThat(cells.get(CONSTANTE_5).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+                MatcherAssert.assertThat(cells.get(CONSTANTE_7).getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
             }
         }
     }
@@ -237,10 +239,10 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (!vacio.equals(cells.get(2).getText()) && cells.get(7).getText().equals(expedida)) {
-                MatcherAssert.assertThat(cells.get(6).getText(), Is.is(Matchers.notNullValue()));
-            } else if (!vacio.equals(cells.get(2).getText()) && !expedida.equals(cells.get(7).getText())) {
-                MatcherAssert.assertThat(cells.get(6).getText(), Is.is(Matchers.equalTo(vacio)));
+            if (!vacio.equals(cells.get(CONSTANTE_2).getText()) && cells.get(CONSTANTE_7).getText().equals(expedida)) {
+                MatcherAssert.assertThat(cells.get(CONSTANTE_6).getText(), Is.is(Matchers.notNullValue()));
+            } else if (!vacio.equals(cells.get(CONSTANTE_2).getText()) && !expedida.equals(cells.get(CONSTANTE_7).getText())) {
+                MatcherAssert.assertThat(cells.get(CONSTANTE_6).getText(), Is.is(Matchers.equalTo(vacio)));
             }
         }
     }
@@ -253,7 +255,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (!(" ".equals(cells.get(2).getText()) && " ".equals(cells.get(6).getText())) && expedida.equals(cells.get(7).getText())) {
+            if (!(" ".equals(cells.get(CONSTANTE_2).getText()) && " ".equals(cells.get(CONSTANTE_6).getText())) && expedida.equals(cells.get(CONSTANTE_7).getText())) {
                 contador++;
             }
         }
@@ -267,8 +269,8 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (!" ".equals(cells.get(2).getText())) {
-                if (cells.get(1).getText().equals(propiedadComercial) && cells.get(7).getText().equals(declinado)) {
+            if (!" ".equals(cells.get(CONSTANTE_2).getText())) {
+                if (cells.get(1).getText().equals(propiedadComercial) && cells.get(CONSTANTE_7).getText().equals(declinado)) {
                     band = i;
                     break;
                 }
