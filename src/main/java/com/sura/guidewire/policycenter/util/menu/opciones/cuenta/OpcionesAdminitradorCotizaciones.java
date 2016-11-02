@@ -298,13 +298,13 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void mostrarTodosLosProductos(String producto) {
-        waitABit(WAIT_TIME_1000);
+        waitUntil(WAIT_TIME_1000);
         txtProductos.click();
         WebElementFacade cbxProducto = findBy(".//li[contains(.,'" + producto + "')]");
-        waitABit(WAIT_TIME_1000);
+        waitUntil(WAIT_TIME_1000);
         cbxProducto.click();
         act.sendKeys(Keys.ENTER);
-        waitABit(WAIT_TIME_1500);
+        waitUntil(WAIT_TIME_1500);
     }
 
     /**
