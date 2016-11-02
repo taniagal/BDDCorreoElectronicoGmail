@@ -3,11 +3,14 @@ package com.sura.guidewire.policycenter.pages;
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.slf4j.LoggerFactory;
 
 
 public class ModificacionVehiculoPage extends PageUtil {
@@ -20,6 +23,9 @@ public class ModificacionVehiculoPage extends PageUtil {
     private WebElementFacade campoTxtzona;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']")
     private WebElementFacade grupoMensajes;
+
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
 
     public ModificacionVehiculoPage(WebDriver driver) {
         super(driver);
@@ -61,7 +67,11 @@ public class ModificacionVehiculoPage extends PageUtil {
     public void registrarZonaCirculacion(String ciudadCirculacion) {
         waitUntil(WAIT_TIME_3000);
         waitFor(campoCiudadCirculacion).typeAndTab(ciudadCirculacion);
+        try {
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona,"11"));
+        }catch (TimeoutException e){
+            LOGGER.info("TimeoutException at ModificacionVehiculoPage Page 71 " + e);
+        }
         waitFor(botonSiguiente).click();
         waitUntil(WAIT_TIME_3000);
     }

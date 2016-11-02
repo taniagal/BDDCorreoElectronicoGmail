@@ -4,7 +4,7 @@ Meta: @lote2
 
 Scenario: 1 Programar cancelacion de poliza
 
-Meta: @lote1
+Meta: @lote2
 @Story CDSEG-3425
 @URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
