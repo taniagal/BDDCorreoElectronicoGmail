@@ -37,6 +37,9 @@ public class NuevaPolizaPage extends PageUtil {
     private WebElementFacade tablaProductosColectiva;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']")
     private WebElementFacade btnCuentas;
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
+    WebElementFacade txtNumeroCuenta;
+
 
 
     private List<WebElement> filas;
@@ -194,8 +197,7 @@ public class NuevaPolizaPage extends PageUtil {
         waitUntil(WAIT_TIME_3000);
         btnBuscar.click();
         btnCuentas.click();
-        WebElementFacade txtNumeroCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']");
-        txtNumeroCuenta.sendKeys(numeroCuenta);
+        txtNumeroCuenta.waitUntilPresent().sendKeys(numeroCuenta);
         WebElementFacade btnBuscarCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
         btnBuscarCuenta.click();
         WebElementFacade grdNumeroCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']");

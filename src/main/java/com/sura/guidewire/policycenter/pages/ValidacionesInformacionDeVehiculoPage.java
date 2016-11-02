@@ -8,12 +8,15 @@ import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.slf4j.LoggerFactory;
 
 
 public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
@@ -64,6 +67,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+
     protected static final int WAIT_TIME_28000 = 28000;
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
@@ -71,7 +76,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void irAVehiculos() {
-        waitFor(menuItemVehiculos).shouldBePresent();
+        waitFor(menuItemVehiculos).waitUntilPresent();
         waitUntil(WAIT_TIME_2000);
         menuItemVehiculos.click();
     }
@@ -91,7 +96,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
     }
 
-    public void clickLinkDescartarCambios(){
+    public void clickLinkDescartarCambios() {
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
@@ -100,38 +105,43 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         }
         resetImplicitTimeout();
     }
+
     public void clickVolver() {
         botonVolver.click();
         waitFor(campoTxtchasis).shouldBePresent();
     }
 
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-            campoVehiculoCeroKm.click();
-            Map<String, String> vehiculo = datosVehiculo.getRow(0);
-            waitUntil(WAIT_TIME_3000);
-            selectItem(comboBoxPlan, vehiculo.get("plan"));
-            if (!"random".equals(vehiculo.get("placa"))) {
-                ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
-            } else {
-                campoTxtPlaca.clear();
-                campoTxtPlaca.sendKeys("QWE" + (int) Math.floor(Math.random() * (100 - 999) + 999));
-            }
-            waitUntil(WAIT_TIME_1000);
-            comboBoxVehiculoServicio.click();
-            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(tablaVehiculo).shouldContainText(campoTxtPlaca.getText());
-            waitUntil(WAIT_TIME_2000);
-            selectItem(comboBoxModelo, vehiculo.get("modelo"));
-            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, vehiculo.get("modelo")));
-            waitUntil(WAIT_TIME_2000);
-            ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
-            campoTxtPlaca.click();
+        campoVehiculoCeroKm.click();
+        Map<String, String> vehiculo = datosVehiculo.getRow(0);
+        waitUntil(WAIT_TIME_3000);
+        selectItem(comboBoxPlan, vehiculo.get("plan"));
+        if (!"random".equals(vehiculo.get("placa"))) {
+            ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
+        } else {
+            campoTxtPlaca.clear();
+            campoTxtPlaca.sendKeys("QWE" + (int) Math.floor(Math.random() * (100 - 999) + 999));
+        }
+        waitUntil(WAIT_TIME_1000);
+        comboBoxVehiculoServicio.click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(tablaVehiculo).shouldContainText(campoTxtPlaca.getText());
+        waitUntil(WAIT_TIME_2000);
+        selectItem(comboBoxModelo, vehiculo.get("modelo"));
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo,vehiculo.get("modelo")));
+        waitUntil(WAIT_TIME_2000);
+        ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
+        campoTxtPlaca.click();
+        try {
             withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
-            waitUntil(WAIT_TIME_2000);
-            selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-            waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-            waitUntil(WAIT_TIME_1000);
-            waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
-            selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
+        } catch (ElementNotVisibleException e) {
+            LOGGER.info("ElementNotVisible at ValidacionesInformacionDeVehiculo Page 134 " + e);
+        }
+        waitUntil(WAIT_TIME_2000);
+        selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+        waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+        waitUntil(WAIT_TIME_1000);
+        waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
+        selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         if (!"null".equals(vehiculo.get("descuento"))) {
             campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
             campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
