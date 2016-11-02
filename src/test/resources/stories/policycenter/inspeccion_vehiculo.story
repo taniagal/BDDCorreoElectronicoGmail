@@ -41,8 +41,8 @@ Then se debe recuperar los siguientes datos:
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
-|numCuenta  |organizacion|canal             |placa |valorAsegurado|
-|C1060447895|Sura        |Canal Tradicional |MJK289|21800000,00   |
+|numCuenta  |placa |valorAsegurado|
+|C1060447895|MJK289|21800000,00   |
 
 Scenario: Consultar inspeccion valida en SIA
 Given se ha realizado la cotizacion <cotizacion>
