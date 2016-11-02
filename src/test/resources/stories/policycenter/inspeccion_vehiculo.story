@@ -15,8 +15,6 @@ Scenario: Consulta de inspeccion no valida y busqueda en el modelo de seguros
 GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar la cuenta <numCuenta>
 When estoy expidiendo una poliza de autos
-And seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
 When ingrese los datos del asegurado
 And el vehiculo tenga inspeccion no valida
@@ -27,14 +25,12 @@ Then se debe recuperar los siguientes datos:
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
-|numCuenta  |organizacion|canal      |placa |valorAsegurado|
-|C1060447895|Bancolombia |Televentas |HZR123|165900000,00  |
+|numCuenta  |placa |valorAsegurado|
+|C1060447895|HZR123|165900000,00  |
 
 Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
 Given que voy a buscar la cuenta <numCuenta>
 When estoy expidiendo una poliza de autos
-And seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
 When ingrese los datos del asegurado
 And el vehiculo tenga inspeccion
