@@ -44,6 +44,7 @@ public class ProcesoDeCancelacionDefinitions {
     @Then("debe mostrar una ventana con un <mensaje> de autorizacion")
     public void thenDebeMostrarUnaVentanaConUnmensajeDeAutorizacion(@Named("mensaje")String mensaje) {
         procesoDeCancelacionSteps.valida_mensaje_en_pantanlla_programar_cancelacion(mensaje);
+        procesoDeCancelacionSteps.cerrar_cancelacion_opcion_retirar_transaccion();
     }
 
 }
