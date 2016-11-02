@@ -31,6 +31,9 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
 
+    protected static final int WAIT_TIME_30000 = 30000;
+
+
     public DisponibilidadDetalleProductoPage(WebDriver driver) {
         super(driver);
     }
@@ -47,7 +50,7 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
 
     public void seleccionarAgente(String agente) {
         this.seleccionarAgentePorNombre(agente);
-        waitForTextToAppear("Productos ofrecidos", 30000);
+        waitForTextToAppear("Productos ofrecidos", WAIT_TIME_30000);
     }
 
     public void seleccionarAgentePorNombre(String nombreAgente) {

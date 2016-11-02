@@ -7,29 +7,28 @@ import com.sura.guidewire.policycenter.util.model.Aseguradora;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
 
 public class CoaseguroPage extends PageUtil {
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade linkAgregarCoaseguro;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:ReferencePolicyNumber-inputEl']")
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:ReferencePolicyNumber-inputEl']")
     private WebElementFacade campoTxtPolizaDeReferencia;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:administrativeExpenses-inputEl']")
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:administrativeExpenses-inputEl']")
     private WebElementFacade campoTxtDastosAdministrativos;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:DocumentNumberReference-inputEl']")
+    private WebElementFacade campoTxtNumeroDeDocumento;
     @FindBy(xpath = ".//*//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:editConinsuranceLink']")
     private WebElementFacade linkEditarCoaseguro;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV_tb:Add-btnInnerEl']")
     private WebElementFacade botonAgregar;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:coinsuranceTypeQuestion_true-inputEl']")
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion_true-inputEl']")
     private WebElementFacade radioBotonAceptado;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/*/table/tbody/tr[1]/td[4]")
     private WebElementFacade radioBotonLider;
@@ -38,7 +37,6 @@ public class CoaseguroPage extends PageUtil {
     @FindBy(id = "Coinsurance_ExtPopup:_msgs")
     private WebElementFacade divMensaje;
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private static final String MSJVALIDARVALORES = "No estan correctos los elementos:";
 
     public CoaseguroPage(WebDriver diver) {
@@ -49,17 +47,11 @@ public class CoaseguroPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(linkAgregarCoaseguro).shouldBePresent();
         linkAgregarCoaseguro.click();
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(radioBotonAceptado).waitUntilPresent().click();
-        campoTxtDastosAdministrativos.waitUntilPresent();
         waitUntil(WAIT_TIME_1000);
-        radioBotonLider.waitUntilPresent();
+        waitFor(campoTxtDastosAdministrativos).shouldBePresent();
+        radioBotonLider.shouldBePresent();
+        waitUntil(WAIT_TIME_1000);
         StringBuilder right = new StringBuilder(MSJVALIDARVALORES);
-        try{
-            if(radioBotonAceptado.isSelected()) {
-                right.append("radio_boton_cedido, ");
-            }
-        }catch (StaleElementReferenceException e){
-            LOGGER.info("Stale element in line 56 "+e);
-        }
         if(!botonAgregar.isPresent()) {
             right.append("boton_agregar, ");
         }
@@ -76,6 +68,7 @@ public class CoaseguroPage extends PageUtil {
 
     public void agregarCoaseguro(List<Aseguradora> aseguradoras) {
         campoTxtPolizaDeReferencia.waitUntilPresent().sendKeys("poliza123");
+        campoTxtNumeroDeDocumento.sendKeys("1234567891");
         Actions act = new Actions(getDriver());
         int i = 1;
         for (Aseguradora aseguradora : aseguradoras) {

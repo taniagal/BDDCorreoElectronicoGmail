@@ -3,7 +3,6 @@ package com.sura.guidewire.policycenter.pages.colectivas;
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -36,8 +35,6 @@ public class NuevaPolizaPage extends PageUtil {
     private WebElementFacade tablaProductosIndividual;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV-body']")
     private WebElementFacade tablaProductosColectiva;
-    @FindBy(xpath = "//li")
-    private WebElementFacade listaDesplegable;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']")
     private WebElementFacade btnCuentas;
 
@@ -193,7 +190,7 @@ public class NuevaPolizaPage extends PageUtil {
     }
 
     public void buscarCuenta(String numeroCuenta) {
-        withTimeoutOf(35, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
         waitUntil(WAIT_TIME_3000);
         btnBuscar.click();
         btnCuentas.click();

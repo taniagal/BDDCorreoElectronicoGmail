@@ -23,7 +23,7 @@ public class ValidacionesCambioDePolizaVehiculosPage extends PageUtil{
     }
 
     public void emitirPoliza(){
-        withTimeoutOf(22, TimeUnit.SECONDS).waitFor(botonEmitirPoliza).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonEmitirPoliza).shouldBePresent();
         waitUntil(WAIT_TIME_3000);
         botonEmitirPoliza.click();
         waitForTextToAppear("¿Está seguro de que desea expedir este cambio de póliza?");

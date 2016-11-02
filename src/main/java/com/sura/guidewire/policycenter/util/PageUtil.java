@@ -43,6 +43,7 @@ public class PageUtil extends PageObject {
     protected static final int WAIT_TIME_10 = 10;
     protected static final int WAIT_TIME_7 = 7;
     protected static final int WAIT_TIME_5 = 5;
+    protected static final int WAIT_TIME_4 = 4;
     protected static final int WAIT_TIME_3 = 3;
     protected static final int WAIT_TIME_2 = 2;
     protected static final int WAIT_TIME_1 = 1;
@@ -155,5 +156,21 @@ public class PageUtil extends PageObject {
     public String nitRandom() {
         int nit = (int) Math.floor(Math.random() * (900000000 - 999999999) + 999999999);
         return Integer.toString(nit);
+    }
+
+
+    public StringBuilder concatenarElementoDiferente(String valorElemento, String campo, String elemento, StringBuilder valor) {
+        if (!valorElemento.equals(campo)) {
+            valor.append(elemento);
+        }
+        return valor;
+    }
+
+
+    public StringBuilder concatenarElementoNoPresente(WebElementFacade campo, String elemento, StringBuilder notPresent) {
+        if (!campo.isPresent()) {
+            notPresent.append(elemento);
+        }
+        return notPresent;
     }
 }

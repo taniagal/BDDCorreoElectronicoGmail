@@ -86,6 +86,41 @@ public class EdificiosUbicaciones {
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
 
+    @When("ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
+    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula,String tipoBeneficiario) {
+
+        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
+        int index = 0;
+        for (Map<String, String> entradaCobertura : entradatable.getRows()) {
+            index++;
+            String tab = entradaCobertura.get("TAB");
+            String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
+            String cobertura = entradaCobertura.get("COBERTURA");
+            String entrada = entradaCobertura.get("ENTRADAS");
+            boolean esOtroArticulo = false;
+            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))) {
+                esOtroArticulo = true;
+            }
+            boolean esUltimaFilaDeExampleTable = index == entradatable.getRows().size();
+            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
+
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
+        }
+           edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
+           edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
+
+        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
+        edificiosUbicacionesSteps.seleccionar_boton_cotizar();
+
+    }
+
+    //// TODO: 21/10/2016 Construilo con example table
+    @When("intente ingresar una nueva ubicacion")
+    public void cuandoIntenteIngresarUnaNuevaUbicacion(){
+        edificiosUbicacionesSteps.remover_riesgos();
+        edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
+    }
+
     @When("haga clic en el boton Aceptar")
     public void cuandoHagaClicEnElBotonAceptar() {
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
@@ -138,6 +173,16 @@ public class EdificiosUbicaciones {
             MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
         }
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
+    }
+
+    @Then("se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras $mensajesEsperados")
+    public void entoncesValidarLosRiesgosConsutablesMostrandoLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
+        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
+
+        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
+            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
+            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
+        }
     }
 
     @Then("se debe mostrar el siguiente mensaje $mensajesEsperados")

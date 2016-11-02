@@ -22,9 +22,9 @@ public class PolizaPage extends GuidewirePage {
 
     private static String XPATH_MENU_DESPLEGABLE = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
-    private String XpathMetodoDeReembolso = "//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CalcMethod-inputEl']";
-    private String XpathMensajeBloqueoCancelacionPoliza = "//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']";
-    private String XpathMensajeDeCancelacionPolizaconOneroso = "//label[@id='CancellationWizard:CancellationWizard_QuoteScreen:WarningOnerousMessageCancellation']";
+    private String xpathMetodoDeReembolso = "//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CalcMethod-inputEl']";
+    private String xpathMensajeBloqueoCancelacionPoliza = "//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']";
+    private String xpathMensajeDeCancelacionPolizaconOneroso = "//label[@id='CancellationWizard:CancellationWizard_QuoteScreen:WarningOnerousMessageCancellation']";
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private List<String> listaMotivos;
     private List<WebElementFacade> listaMotivosWE;
@@ -262,14 +262,14 @@ public class PolizaPage extends GuidewirePage {
     }
     public String obtenerMetodoDeReembolso(){
         waitFor(2).seconds();
-        return findBy(XpathMetodoDeReembolso).getText();
+        return findBy(xpathMetodoDeReembolso).getText();
     }
     public WebElementFacade obtenerTituloBloqueoCancelacionPoliza(){
-        return findBy(XpathMensajeBloqueoCancelacionPoliza);
+        return findBy(xpathMensajeBloqueoCancelacionPoliza);
 
     }
     public WebElementFacade obtenerMensajeDeCancelacionPolizaConOneroso(){
-        return findBy(XpathMensajeDeCancelacionPolizaconOneroso);
+        return findBy(xpathMensajeDeCancelacionPolizaconOneroso);
 
     }
     public void validarTransaccionPendienteNoExistenteEnResumenPoliza(String tipo){
@@ -286,16 +286,14 @@ public class PolizaPage extends GuidewirePage {
         }
         MatcherAssert.assertThat("No existe la póliza", Is.is(Matchers.equalTo(existeTransaccion)));
     }
-    public boolean esVisibleMensaje(String xpath)
-    {
+    public boolean esVisibleMensaje(String xpath) {
         boolean visible;
         visible= findBy(xpath).isVisible();
 
         return visible;
     }
 
-    public void validarQueNoSeMuestreMensaje(String xpath)
-    {
+    public void validarQueNoSeMuestreMensaje(String xpath) {
         MatcherAssert.assertThat(esVisibleMensaje(xpath), Is.is(false));
     }
 

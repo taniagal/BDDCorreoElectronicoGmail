@@ -76,8 +76,8 @@ public class ExpedicionDePolizaPage extends PageUtil{
 
     @FindBy(xpath = ".//img[@class='error_icon']")
     WebElementFacade iconoError;
-    
-    PageUtil pageUtil = new PageUtil(getDriver());
+
+    protected static final int WAIT_TIME_30000 = 30000;
 
 
     public ExpedicionDePolizaPage(WebDriver driver){
@@ -120,7 +120,7 @@ public class ExpedicionDePolizaPage extends PageUtil{
 
     public void validarResumenDeLaPolizaExpedida(String infoCotizacion, String infoPoliza, String admorCotizacion,
                                                  String nuevaCotizacion, String escritorio) {
-        waitForTextToAppear("Cotización Expedida", 30000);
+        waitForTextToAppear("Cotización Expedida", WAIT_TIME_30000);
         waitFor(campoNumeroCotizacion);
         MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacion)));
         MatcherAssert.assertThat(campoNumeroPoliza.getText(), Is.is(Matchers.containsString(infoPoliza)));

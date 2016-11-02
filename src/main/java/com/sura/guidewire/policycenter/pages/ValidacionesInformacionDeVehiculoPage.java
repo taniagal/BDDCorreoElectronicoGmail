@@ -59,6 +59,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade comboBoxPlan;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV:0:tipoDocument']")
     private WebElementFacade nitAsegurado;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesLV-body']")
+    private WebElementFacade tablaVehiculo;
+    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
+    private WebElementFacade linkDescartarCambios;
 
     protected static final int WAIT_TIME_28000 = 28000;
 
@@ -87,38 +91,47 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
     }
 
+    public void clickLinkDescartarCambios(){
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        if (linkDescartarCambios.isPresent()) {
+            linkDescartarCambios.click();
+            waitUntil(WAIT_TIME_1000);
+            botonSiguiente.click();
+        }
+        resetImplicitTimeout();
+    }
     public void clickVolver() {
         botonVolver.click();
         waitFor(campoTxtchasis).shouldBePresent();
     }
 
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        campoVehiculoCeroKm.click();
-        Map<String, String> vehiculo = datosVehiculo.getRow(0);
-        waitUntil(WAIT_TIME_2500);
-        selectItem(comboBoxPlan, vehiculo.get("plan"));
-        if (!"random".equals(vehiculo.get("placa"))) {
-            ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
-        } else {
-            campoTxtPlaca.clear();
-            campoTxtPlaca.sendKeys("QWE" + (int) Math.floor(Math.random() * (100 - 999) + 999));
-        }
-        waitUntil(WAIT_TIME_1000);
-        comboBoxVehiculoServicio.click();
-        waitForTextToAppear(campoTxtPlaca.getText(), WAIT_TIME_28000);
-        waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxModelo, vehiculo.get("modelo"));
-        waitForTextToAppear(vehiculo.get("modelo"), WAIT_TIME_28000);
-        ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
-        campoTxtPlaca.click();
-        waitUntil(WAIT_TIME_2000);
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
-        selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitUntil(WAIT_TIME_1000);
-        waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
-        selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
-
+            campoVehiculoCeroKm.click();
+            Map<String, String> vehiculo = datosVehiculo.getRow(0);
+            waitUntil(WAIT_TIME_3000);
+            selectItem(comboBoxPlan, vehiculo.get("plan"));
+            if (!"random".equals(vehiculo.get("placa"))) {
+                ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
+            } else {
+                campoTxtPlaca.clear();
+                campoTxtPlaca.sendKeys("QWE" + (int) Math.floor(Math.random() * (100 - 999) + 999));
+            }
+            waitUntil(WAIT_TIME_1000);
+            comboBoxVehiculoServicio.click();
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(tablaVehiculo).shouldContainText(campoTxtPlaca.getText());
+            waitUntil(WAIT_TIME_2000);
+            selectItem(comboBoxModelo, vehiculo.get("modelo"));
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, vehiculo.get("modelo")));
+            waitUntil(WAIT_TIME_2000);
+            ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
+            campoTxtPlaca.click();
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
+            waitUntil(WAIT_TIME_2000);
+            selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+            waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+            waitUntil(WAIT_TIME_1000);
+            waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
+            selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         if (!"null".equals(vehiculo.get("descuento"))) {
             campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
             campoTxtRecargo.sendKeys(vehiculo.get("recargo"));

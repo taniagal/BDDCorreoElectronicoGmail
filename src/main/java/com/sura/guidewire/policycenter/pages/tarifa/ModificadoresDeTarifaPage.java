@@ -29,10 +29,8 @@ public class ModificadoresDeTarifaPage extends PageUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
-    private int bonoComercial = 0;
-    private int bonoTecnico = 0;
-    private int descuento = 0;
-
+    int bonoComercial = 0;
+    int bonoTecnico = 0;
 
     public ModificadoresDeTarifaPage(WebDriver driver){
         super(driver);

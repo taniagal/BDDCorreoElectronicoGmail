@@ -33,12 +33,12 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void abrir_nueva_cuenta() {
+    public void abrirNuevaCuenta() {
         inicioPage().irANuevaCuenta();
     }
 
     @Step
-    public void agregar_tipo_documento(String tipoDocumento) {
+    public void agregarTipoDocumento(String tipoDocumento) {
         if ("".equals(cedula) || "".equals(nit)) {
             initRandoms();
         }
@@ -52,7 +52,7 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_tipo_documento_b(String tipoDocumento) {
+    public void agregarTipoDocumentoB(String tipoDocumento) {
         initRandoms();
         if ("NIT".equals(tipoDocumento)) {
             cuentaPage.buscarPersona(NOMBRECUENTA, "Compania");
@@ -64,7 +64,7 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_documento(String tipoDocumento) {
+    public void agregarDocumento(String tipoDocumento) {
         initRandoms();
         StringBuilder documento = new StringBuilder("us");
         if ("NIT".equals(tipoDocumento) || "IDENT. FISCAL PARA EXTRANJEROS".equals(tipoDocumento)) {
@@ -79,7 +79,7 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_documento(String tipoDocumento,String documento) {
+    public void agregarDocumento(String tipoDocumento, String documento) {
         if ("NIT".equals(tipoDocumento)) {
             cuentaPage.buscarPersona(NOMBRECUENTA, "Compania");
         } else {
@@ -89,54 +89,54 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_direccion(ExamplesTable datos) {
+    public void agregarDireccion(ExamplesTable datos) {
         cuentaPage.agregarDireccion(datos);
         cuentaPage.actualizar();
     }
 
     @Step
-    public void agregar_organizacion(String nombreOrganizacion, String agente) {
+    public void agregarOrganizacion(String nombreOrganizacion, String agente) {
         cuentaPage.agregarOrganizacion(nombreOrganizacion,agente);
     }
 
     @Step
-    public void agregar_nombre(String primerNombre, String primerApellido, String fechaNacimiento){
+    public void agregarNombre(String primerNombre, String primerApellido, String fechaNacimiento){
         cuentaPage.agregarNombres(primerNombre,primerApellido,fechaNacimiento);
     }
 
     @Step
-    public void agregar_nombre_comecial(String nombreComercial) {
+    public void agregarNombreComecial(String nombreComercial) {
         cuentaPage.agregarNombrecomercial(nombreComercial);
     }
 
     @Step
-    public void agregar_telefono_oficina(String telefonoOficina) {
+    public void agregarTelefonoOficina(String telefonoOficina) {
         cuentaPage.agregarTelefonoOficina(telefonoOficina);
     }
 
 
     @Step
-    public void agregar_razon_social(String razonSocial) {
+    public void agregarRazonSocial(String razonSocial) {
         cuentaPage.agregarRazonsocial(razonSocial);
     }
 
     @Step
-    public void verificar_cuenta(String nombreCuenta){
+    public void verificarCuenta(String nombreCuenta){
         cuentaPage.verificarCuentaNumero(nombreCuenta);
     }
 
     @Step
-    public void verificar_edad_menor(String mensaje){
+    public void verificarEdadMenor(String mensaje){
         cuentaPage.verificarMensaje(mensaje);
     }
 
     @Step
-    public void verificar_mensaje(String mensaje){
+    public void verificarMensaje(String mensaje){
         cuentaPage.verificarMensaje(mensaje);
     }
 
     @Step
-    public void verificar_estado_de_mensaje(String mensaje) {
+    public void verificarEstadoDeMensaje(String mensaje) {
         cuentaPage.verificarEstadoDeMensaje(mensaje);
     }
 

@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.pages.EdificiosyUbicacionesWidget;
+import com.sura.guidewire.policycenter.pages.colectivas.NuevaPolizaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -12,6 +13,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
     private static EdificiosyUbicacionesWidget edificiosyUbicacionesWidget;
     private static AgregarArticuloEdificiosyUbicacionesWidget agregarArticuloEdificiosyUbicacionesWidget;
+    private static NuevaPolizaPage nuevaPolizaPage;
 
     public EdificiosUbicacionesSteps(Pages pages) {
         super(pages);
@@ -25,6 +27,21 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     @Step
     public void seleccionar_boton_agregar_articulo_a_una_ubicacion() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacion();
+    }
+
+    @Step
+    public void ingresar_interes_adicional_a_articulo(String numerocedula){
+        edificiosyUbicacionesWidget.ingresarInteresAdicional(numerocedula);
+    }
+
+    @Step
+    public void ingresar_tipo_beneficiario(String beneficiario){
+        agregarArticuloEdificiosyUbicacionesWidget.desplegarListaTipoBeneficiario();
+        nuevaPolizaPage.seleccionarElementoDeLaLista(beneficiario);
+    }
+    @Step
+    public void seleccionar_boton_cotizar(){
+        edificiosyUbicacionesWidget.cliclearBtnCotizar();
     }
 
     @Step
@@ -61,9 +78,14 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void seleccionar_boton_aceptar_en_la_parte_superior_izquierda() {
         agregarArticuloEdificiosyUbicacionesWidget.seleccionarBotonAceptarParteSuperiorIzquierda();
     }
-
+    @Step
     public void cancelar_ingreso_de_nueva_ubicacion() {
         edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
+    }
+    @Step
+    public void remover_riesgos(){
+        edificiosyUbicacionesWidget.removerRiesgos();
+
     }
 
     public String armarMensajeParaElReporteDeSerenity(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo) {
