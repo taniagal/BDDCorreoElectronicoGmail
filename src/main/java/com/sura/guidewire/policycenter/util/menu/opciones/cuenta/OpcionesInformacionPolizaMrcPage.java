@@ -116,6 +116,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade tablaAseguradoras;
     @FindBy(xpath = "//span[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     private WebElementFacade bttonAceptarCoaseguro;
+    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptarPopup;
 
 
     private static String lblMensajesAlerta = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
