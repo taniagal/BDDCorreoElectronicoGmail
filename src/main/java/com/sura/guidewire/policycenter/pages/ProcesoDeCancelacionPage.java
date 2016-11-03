@@ -36,12 +36,12 @@ public class ProcesoDeCancelacionPage extends PageUtil {
     WebElementFacade btnCancelarVentana;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
     WebElementFacade btnInicio;
+    InicioCancelacionPage iniCancelacion = new InicioCancelacionPage(getDriver());
 
     public ProcesoDeCancelacionPage(WebDriver drive) {
         super(drive);
     }
-    
-    InicioCancelacionPage iniCancelacion = new InicioCancelacionPage(getDriver());
+
 
     public void iniciarProcesoCancelacion() {
         waitUntil(WAIT_TIME_1000);
@@ -72,7 +72,7 @@ public class ProcesoDeCancelacionPage extends PageUtil {
         btnRetirarTransaccion.click();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarAhora).waitUntilPresent();
         btnAceptarAhora.click();
-        waitUntil(1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void iniciaProgramacionDeCancelacion() {

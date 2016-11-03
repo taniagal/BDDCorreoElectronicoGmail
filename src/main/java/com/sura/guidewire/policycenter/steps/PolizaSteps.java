@@ -152,8 +152,7 @@ public class PolizaSteps extends GuidewireSteps {
         return this.polizaPage;
     }
 
-    public InstruccionesPreviasARenovacionPage obtenerInstruccionesPreviasPage()
-    {
+    public InstruccionesPreviasARenovacionPage obtenerInstruccionesPreviasPage(){
         return this.instruccionesPreviasARenovacionPage;
     }
 
@@ -176,21 +175,21 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public void validar_opcion_cancelar_transaccion(){
-        String XpathBtnCancelarTransaccion = ".//a[contains(.,'Cancelar transacción')]";
-        obtenerPolizaPage().validarBotones(XpathBtnCancelarTransaccion);
+        String xpathBtnCancelarTransaccion = ".//a[contains(.,'Cancelar transacción')]";
+        obtenerPolizaPage().validarBotones(xpathBtnCancelarTransaccion);
     }
     @Step
     public void validar_ocultacion_campo_fuente() {
-        String XpathBtnCancelarTransaccion = ".//tr[contains(.,'Fuente')]";
-        obtenerPolizaPage().validarBotones(XpathBtnCancelarTransaccion);
+        String xpathBtnCancelarTransaccion = ".//tr[contains(.,'Fuente')]";
+        obtenerPolizaPage().validarBotones(xpathBtnCancelarTransaccion);
     }
     @Step
     public void validar_que_no_se_muestre_tipo_en_tabla_transacciones(String tipo){
         obtenerPolizaPage().validarTransaccionPendienteNoExistenteEnResumenPoliza(tipo);
     }
     public void validar_que_no_se_muestre_mensaje(){
-        String XpathMensajeCancelacionPendiente = ".//*[contains(.,'Esta póliza tiene Cancelación pendiente')]";
-        obtenerPolizaPage().validarQueNoSeMuestreMensaje(XpathMensajeCancelacionPendiente);
+        String xpathMensajeCancelacionPendiente = ".//*[contains(.,'Esta póliza tiene Cancelación pendiente')]";
+        obtenerPolizaPage().validarQueNoSeMuestreMensaje(xpathMensajeCancelacionPendiente);
     }
     @Step
     public void ver_resumen_de_la_poliza_expedida(){

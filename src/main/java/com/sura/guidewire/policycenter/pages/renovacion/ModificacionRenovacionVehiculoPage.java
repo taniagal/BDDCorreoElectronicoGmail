@@ -15,9 +15,6 @@ import java.util.concurrent.TimeUnit;
 public class ModificacionRenovacionVehiculoPage extends PageUtil {
 
     private final Actions act = new Actions(getDriver());
-
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']")
-    private WebElementFacade labelVehiculos;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade itemVehiculos;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
@@ -46,12 +43,6 @@ public class ModificacionRenovacionVehiculoPage extends PageUtil {
     private WebElementFacade campoValorAccesorios;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosEspValue_DV-inputEl']")
     private WebElementFacade campoValorAccesoriosEspeciales;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
-    private WebElementFacade campoPlaca;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm-bodyEl']")
-    private WebElementFacade campoVehiculoCeroKm;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:foreignEnrollment-bodyEl']")
-    private WebElementFacade campoMatriculaExtranjera;
 
     public ModificacionRenovacionVehiculoPage(WebDriver driver){
         super(driver);

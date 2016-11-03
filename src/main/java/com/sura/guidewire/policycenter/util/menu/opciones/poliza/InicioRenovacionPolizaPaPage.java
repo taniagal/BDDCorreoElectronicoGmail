@@ -152,12 +152,11 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     }
 
     public void retirarTransaccion() {
-
-        withTimeoutOf(40, TimeUnit.SECONDS).waitFor(btnOpcionDeCierre).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnOpcionDeCierre).waitUntilClickable();
         btnOpcionDeCierre.click();
-        withTimeoutOf(40, TimeUnit.SECONDS).waitFor(btnRetiraTransaccion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRetiraTransaccion).waitUntilClickable();
         btnRetiraTransaccion.click();
-        withTimeoutOf(40, TimeUnit.SECONDS).waitFor(btnAceptarRetiraTransaccion).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarRetiraTransaccion).waitUntilClickable();
         btnAceptarRetiraTransaccion.click();
     }
 }

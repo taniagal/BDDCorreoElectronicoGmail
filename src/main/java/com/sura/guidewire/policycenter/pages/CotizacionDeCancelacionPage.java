@@ -43,6 +43,8 @@ public class CotizacionDeCancelacionPage extends PageUtil {
     WebElementFacade btnRetirarTransaccion;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnAceptarRetirarTransaccion;
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
+    WebElementFacade linkVisualizaPoliza;
 
     InicioCancelacionPage inicioCancelacionPage;
     ReglasRenovacionDosPage reglasRenovacionDosPage;
@@ -84,6 +86,8 @@ public class CotizacionDeCancelacionPage extends PageUtil {
         btnRetirarTransaccion.click();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarRetirarTransaccion).waitUntilClickable();
         btnAceptarRetirarTransaccion.click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(linkVisualizaPoliza).waitUntilClickable();
+        linkVisualizaPoliza.click();
         waitUntil(WAIT_TIME_1000);
     }
 

@@ -34,12 +34,6 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     private WebElementFacade labelDanos;
     @FindBy(xpath = "//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup-legendTitle']")
     private WebElementFacade labelHurto;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup-innerCt']")
-    private WebElementFacade coberturaResponsabilidadCivil;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup-innerCt']")
-    private WebElementFacade coberturaDanos;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup-innerCt']")
-    private WebElementFacade coberturaHurto;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:EditPolicy']")
     private WebElementFacade botonEditarTransaccionPoliza;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
@@ -70,24 +64,12 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     private WebElementFacade checkBoxAccidentes;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
     private WebElementFacade lblMensaje;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:OptionTermInput-inputEl']")
-    private WebElementFacade lstLimite;
-    @FindBy(xpath = ".//li[contains(.,'32.000.000')]")
-    private WebElementFacade vlrLimite;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup:1:CovTermInputSet:OptionTermInput-inputEl']")
-    private WebElementFacade lstDeducible;
-    @FindBy(xpath = "//li[contains(.,'0')]")
-    private WebElementFacade vlrDeducible;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     private WebElementFacade btnBorrar;
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
-    private WebElementFacade btnInicio;
-
 
     public ModificacionRenovacionCoberturasPAPage(WebDriver driver) {
         super(driver);
     }
-
 
     public void irAPantallaCoberturasSinValidacionFecha() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();

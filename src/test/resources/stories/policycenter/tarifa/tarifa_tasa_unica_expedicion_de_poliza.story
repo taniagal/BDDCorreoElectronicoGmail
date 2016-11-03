@@ -1,6 +1,6 @@
 Tarifa Tasa Unica Expedicion De Poliza
 
-Meta: @lote2
+Meta: @lote4
 @issue #CDSEG-2417
 @sprint 8
 @tag automator: nelson_jhair_mosquera_palacios

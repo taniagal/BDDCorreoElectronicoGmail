@@ -27,7 +27,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String LINK_AGREGAR_UBICACION = "//a[contains(.,'Agregar ubicación')]";
     private static final String XPATH_COTIZAR = "//a[contains(.,'Cotizar')]";
     private static final String LINK_OPCION_UBICACION_NUEVA = "//a[contains(.,'Ubicación nueva')]";
-    private static final String XPATH_CANCELAR_INGRESO = ".//a[@id='CPLocationPopup:Cancel']";
     private static final String XPATH_LEGEND_COBERTURA_DE_RIESGO = ".//legend[ (descendant::div[contains(., '";
     private static final String INPUT = "input";
     private static final String XPATH_PARTE1 = ".//div[ (descendant::*[contains(., '";
@@ -49,7 +48,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_BTN_BUSCAR = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']";
     private static final String XPATH_BTN_SELECCIONA = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']";
     private static final String XPATH_INTERES_ADICIONAL = "//label[contains(.,'Interes Adicional')]";
-    private static final String XPATH_SELECCIONAR__RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
+    private static final String XPATH_SELECCIONAR_RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
     private static final String XPATH_BTON_REMOVER_RIESGOS =  "//a[contains(.,'Remover Riesgo')]";
 
     TableWidgetPage tabla;
@@ -105,26 +104,26 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
         waitFor(1).seconds();
         enter(depto).into($(xpathDepto));
-        waitFor(2).seconds();
-        //$(depto).sendKeys(Keys.TAB);
+        waitFor(WAIT_TIME_2).seconds();
+        
         $(xpathDepto).click();
 
-        waitFor(2).seconds();
+        waitFor(WAIT_TIME_2).seconds();
         enter(ciudad).into($(xpathCiudad));
-        waitFor(2).seconds();
-        //$(ciudad).sendKeys(Keys.TAB);
+        waitFor(WAIT_TIME_2).seconds();
+        
         $(xpathCiudad).click();
 
-        waitFor(2).seconds();
+        waitFor(WAIT_TIME_2).seconds();
         enter(direccion).into($(xpathDireccion));
-        waitFor(2).seconds();
+        waitFor(WAIT_TIME_2).seconds();
         $(xpathDireccion).click();
 
         waitFor(1).seconds();
         enter(actividadEconomica).into($(xpathActividadEconomica));
-        waitFor(2).seconds();
+        waitFor(WAIT_TIME_2).seconds();
         $(xpathActividadEconomica).sendKeys(Keys.ENTER);
-        waitFor(2).seconds();
+        waitFor(WAIT_TIME_2).seconds();
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
         findBy("//div[@class='message']").waitUntilVisible();
@@ -148,7 +147,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void removerRiesgos(){
         waitFor(WAIT_TIME_3).second();
-        findBy(XPATH_SELECCIONAR__RIESGOS).click();
+        findBy(XPATH_SELECCIONAR_RIESGOS).click();
         waitFor(WAIT_TIME_3).second();
         findBy(XPATH_BTON_REMOVER_RIESGOS).waitUntilVisible().waitUntilClickable();
         findBy(XPATH_BTON_REMOVER_RIESGOS).shouldBeVisible();
@@ -180,7 +179,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 esSeleccionado = true;
             }
         } catch (Exception e) {
-            LOGGER.info("Pestaña no visualizada en Edificios y ubicaciones");
+            LOGGER.info("Pestaña no visualizada en Edificios y ubicaciones" + e);
             esSeleccionado = true;
         }
         resetImplicitTimeout();
@@ -276,7 +275,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 estaSeleccionado = true;
             }
         } catch (Exception e) {
-            LOGGER.info("CHECK DE COBERTURA: " + cobertura + " NO ENCONTRADo EN EL DOM");
+            LOGGER.info("CHECK DE COBERTURA: " + cobertura + " NO ENCONTRADo EN EL DOM "+e);
         }
         return estaSeleccionado;
 
@@ -296,7 +295,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 estaSeleccionado = true;
             }
         } catch (Exception e) {
-            LOGGER.info("CHECK DE COBERTURA: " + cobertura + " NO ENCONTRADo EN EL DOM");
+            LOGGER.info("CHECK DE COBERTURA: " + cobertura + " NO ENCONTRADo EN EL DOM "+e);
         }
         return estaSeleccionado;
 
@@ -340,14 +339,14 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
             cliclearBtnAgregarArticulo();
             ingresarInputTiposDeArticulos(tipoArticulo);
-            waitFor(3).seconds();
+            waitFor(WAIT_TIME_3).seconds();
             ingresarTextAreaDescripcion(tipoArticulo);
         }
 
 
         if (cobertura.length() > 0) {
             seleccionarCobertura(obtenerDivCobertura(cobertura), cobertura);
-            waitFor(2).seconds();
+            waitFor(WAIT_TIME_2).seconds();
             ingresarEntrada(entrada, valorEntrada);
         } else {
             ingresarEntrada(entrada, valorEntrada);
@@ -409,14 +408,14 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void cliclearBtnCotizar() {
         WebElementFacade btnAgregarArticulo = findBy(XPATH_COTIZAR).waitUntilVisible().waitUntilClickable();
         btnAgregarArticulo.click();
-        waitFor(4).second();
+        waitFor(WAIT_TIME_4).second();
     }
 
     public void ingresarInputTiposDeArticulos(String tipoArticulo) {
         waitForTextToAppear("Tipos de Artículos");
         String xInputTiposDeArticulos = ".//*[@id='AddOtherArticlesPopup:typeArticle-inputEl']";
         enter(tipoArticulo).into($(xInputTiposDeArticulos));
-        waitFor(4).second();
+        waitFor(WAIT_TIME_4).second();
         $(xInputTiposDeArticulos).sendKeys(Keys.ENTER);
         esperarAQueElementoTengaValor(findBy(xInputTiposDeArticulos), tipoArticulo);
     }
@@ -453,7 +452,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         itemDirectorio.waitUntilVisible().waitUntilClickable().click();
         waitFor(lblBuscarDirectorio);
         itemTipoDocumento.clear();
-        fluent().await().atMost(200,TimeUnit.MILLISECONDS);
+        fluent().await().atMost(WAIT_TIME_200,TimeUnit.MILLISECONDS);
         itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
         itemTipoDocumento.sendKeys(Keys.ENTER);
         waitFor(lblPrimerNombre);

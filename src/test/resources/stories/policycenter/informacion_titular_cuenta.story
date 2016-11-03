@@ -1,6 +1,6 @@
 Informacion Titular Cuenta
 
-Meta: @lote4
+Meta: @lote2
 
 @issue #CDSEG-657
 @tag automator: diego_cardona_acevedo
@@ -93,7 +93,7 @@ Examples:
 | CEDULA DE CIUDADANIA | ALFREDO | Antioquia | Actividad económica |
 
 Scenario: Informacion basica
-Meta: @lote4
+Meta: @lote2
 @manual
 Given que existe titular de la cuenta
 When ingrese a informacion del titular de la cuenta

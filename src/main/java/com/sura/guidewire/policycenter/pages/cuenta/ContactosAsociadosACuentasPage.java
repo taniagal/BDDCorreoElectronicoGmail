@@ -109,7 +109,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     public void selecionarContacto(String posicion) {
         List<WebElementFacade> contactos = getListaContactos();
         contactos.get(Integer.parseInt(posicion)).click();
-        waitABit(WAIT_TIME_1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void seleccionarTabDetalleContacto() {
@@ -164,13 +164,13 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     public void verificarRolesFuncionesNoEsNulo() {
         List<WebElementFacade> rolesFunciones = getListaRolesFunciones();
         MatcherAssert.assertThat("El contacto debe tener roles o funciones asignados", !rolesFunciones.isEmpty());
-        waitABit(WAIT_TIME_1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void verificarDireccioneNoEsNulo() {
         List<WebElementFacade> direcciones = getListaDirecciones();
         MatcherAssert.assertThat("El contacto debe tener direcciones asignados", !direcciones.isEmpty());
-        waitABit(WAIT_TIME_1000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {

@@ -83,7 +83,12 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
     private WebElementFacade campoTxtPlaca;
 
-    String[] comparaValores = new String[2];
+    private static final int CONSTANTE_11 = 11;
+    private static final int CONSTANTE_8 = 8;
+    private static final int CONSTANTE_2 = 2;
+
+
+    String[] comparaValores = new String[CONSTANTE_2];
     Actions actions = new Actions(getDriver());
     OpcionesInformacionPolizaMrcPage opcionPolizaMrc = new OpcionesInformacionPolizaMrcPage(getDriver());
 
@@ -104,7 +109,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
         btnItemDirec.click();
         opcionPolizaMrc.waitInfoPoliza(lblBuscarDirec);
         txtTipoDoc.clear();
-        waitUntil(800);
+        waitUntil(WAIT_TIME_800);
         txtTipoDoc.type(tipoDocumento);
         txtTipoDoc.sendKeys(Keys.ENTER);
         opcionPolizaMrc.waitInfoPoliza(lblPrimerNombre);
@@ -133,11 +138,11 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
         ingresarDato(txtAcceEspeciales,valorAccesorioEsp);
         txtValorAsegurado.click();
         waitUntil(WAIT_TIME_3000);
-        int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0, 8));
+        int valorAsegurado = Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_8));
         int valorAccesorioEntero = Integer.parseInt(valorAccesorio);
         int valorAccesorioEspEntero = Integer.parseInt(valorAccesorioEsp);
         int valorTotalizado = valorAccesorioEntero + valorAccesorioEspEntero + valorAsegurado;
-        String valorDeLabel = lblSumaValor.getText().substring(0, 11);
+        String valorDeLabel = lblSumaValor.getText().substring(0, CONSTANTE_11);
         valorDeLabel = valorDeLabel.replaceAll("\\$", "").replaceAll("\\.", "");
         comparaValores[0] = Integer.toString(valorTotalizado);
         comparaValores[1] = valorDeLabel;

@@ -113,7 +113,6 @@ public class InformacionDePolizaMrcDefinitions {
     public void mensajesDeErrorRiesgosYPeps(@Named("mensaje")String mensaje,
                                             @Named("mensaje2")String mensaje2) {
         informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
-       // informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje2);
     }
 
      /*

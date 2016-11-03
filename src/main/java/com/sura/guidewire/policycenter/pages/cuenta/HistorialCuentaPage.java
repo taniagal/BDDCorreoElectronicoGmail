@@ -68,6 +68,9 @@ public class HistorialCuentaPage extends PageUtil {
     @FindBy(xpath="//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade txtProducto;
 
+    protected static final int POSICION_4 = 4;
+
+
     public HistorialCuentaPage(WebDriver driver) {
         super(driver);
     }
@@ -76,7 +79,7 @@ public class HistorialCuentaPage extends PageUtil {
         waitUntil(WAIT_TIME_2500);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mnuCuenta).shouldBePresent();
         mnuCuenta.click();
-        waitUntil(4000);
+        waitUntil(WAIT_TIME_3500);
         mnuCuenta.click();
         waitUntil(WAIT_TIME_1500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
@@ -174,7 +177,7 @@ public class HistorialCuentaPage extends PageUtil {
         String producto = txtProducto.getValue().toString();
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            MatcherAssert.assertThat(cells.get(4).getText(), Is.is(Matchers.equalTo(producto)));
+            MatcherAssert.assertThat(cells.get(POSICION_4).getText(), Is.is(Matchers.equalTo(producto)));
         }
     }
 }

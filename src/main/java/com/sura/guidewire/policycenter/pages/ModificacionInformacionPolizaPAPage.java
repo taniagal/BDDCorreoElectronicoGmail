@@ -17,13 +17,10 @@ import org.slf4j.LoggerFactory;
 public class ModificacionInformacionPolizaPAPage extends PageUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionInformacionPolizaPAPage.class);
-
     Actions act = new Actions(getDriver());
 
     @FindBy(xpath=".//*[@id='TabBar:PolicyTab-btnWrap']")
     private WebElementFacade menuPoliza;
-    @FindBy(xpath=".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-textEl']")
-    private WebElementFacade labelNuevaCotizacion;
     @FindBy(xpath=".//*[@id='TabBar:PolicyTab:PolicyTab_PolicyRetrievalItem-inputEl']")
     private WebElementFacade campoBuscarPoliza;
     @FindBy(xpath=".//*[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")

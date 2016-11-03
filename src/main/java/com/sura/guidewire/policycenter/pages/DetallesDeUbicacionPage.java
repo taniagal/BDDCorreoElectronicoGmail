@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.util.PageUtil;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -14,36 +15,35 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 
-
 public class DetallesDeUbicacionPage extends PageUtil {
 
-    @FindBy(xpath=".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     private WebElementFacade numeroDeCuenta;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:Next-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB-btnInnerEl']")
     private WebElementFacade botonAgregarUbicacion;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB:AddNewLocation-itemEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB:AddNewLocation-itemEl']")
     private WebElementFacade botonAgregarNuevaUbicacion;
-    @FindBy(xpath=".//*[@id='CPLocationPopup:Update-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptar;
-    @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:LocationName-inputEl']")
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:LocationName-inputEl']")
     private WebElementFacade campoTxtDescripcionDeUbicacion;
-    @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade comboBoxDepartamento;
-    @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
     private WebElementFacade comboBoxCiudad;
-    @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade campoTxtDireccion;
-    @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']")
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']")
     private WebElementFacade comboBoxActividadEconomica;
-    @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:PredominantUse-labelEl']")
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:PredominantUse-labelEl']")
     private WebElementFacade labelUsoPredominante;
-    @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BasementNumber-labelEl']")
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BasementNumber-labelEl']")
     private WebElementFacade labelNumeroDeSotanos;
-    @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:FloorNumber-labelEl']")
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:FloorNumber-labelEl']")
     private WebElementFacade labelNumeroDePisos;
-    @FindBy(xpath=".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BuildYear-labelEl']")
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BuildYear-labelEl']")
     private WebElementFacade labelAnioDeConstruccion;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions-btnInnerEl']")
     private WebElementFacade botonAcciones;
@@ -55,7 +55,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
     private WebElementFacade subMenuNuevaCotizacion;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
     private WebElementFacade menuItemEscritorio;
-    @FindBy(css=".message")
+    @FindBy(css = ".message")
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-inputEl']")
     private WebElementFacade comboBoxOrganizacion;
@@ -63,8 +63,6 @@ public class DetallesDeUbicacionPage extends PageUtil {
     private WebElementFacade comboBoxCanal;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-triggerWrap']/tbody/tr/td/input")
     private WebElementFacade comboBoxOrganizacionW;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-triggerWrap']/tbody/tr/td/input")
-    private WebElementFacade comboBoxCanalW;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarPopup;
 
@@ -75,7 +73,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
         super(driver);
     }
 
-    public void  seleccionarProducto(String nomProducto) {
+    public void seleccionarProducto(String nomProducto) {
         waitForTextToAppear(nomProducto);
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
@@ -83,16 +81,18 @@ public class DetallesDeUbicacionPage extends PageUtil {
         int i = 0;
         if (!descripcionProductos.isEmpty()) {
             for (WebElementFacade descripcion : descripcionProductos) {
+                waitUntil(WAIT_TIME_1000);
                 if (nomProducto.equals(descripcion.getText())) {
                     botones.get(i).click();
-                    if ("Multiriesgo corporativo".equals(nomProducto)){
-                        setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
-                        if (botonAceptarPopup.isPresent()){
+                    if ("Multiriesgo corporativo".equals(nomProducto)) {
+                        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+                        if (botonAceptarPopup.isPresent()) {
                             botonAceptarPopup.click();
                             waitForAbsenceOf(".//span[contains(.,'Aceptar')]");
                         }
                         resetImplicitTimeout();
                     }
+                    break;
                 }
                 i++;
             }
@@ -100,9 +100,9 @@ public class DetallesDeUbicacionPage extends PageUtil {
     }
 
 
-    public void irANuevaCotizacion(){
-        setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
-        if(!botonAcciones.isPresent()) {
+    public void irANuevaCotizacion() {
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        if (!botonAcciones.isPresent()) {
             menuItemEscritorio.click();
         }
         resetImplicitTimeout();
@@ -115,20 +115,20 @@ public class DetallesDeUbicacionPage extends PageUtil {
         numeroDeCuenta.waitUntilPresent().sendKeys(dato.get("cuenta"));
         comboBoxNombreAgente.click();
         linkNombre.waitUntilVisible();
-        Actions actions =  new Actions(getDriver());
+        Actions actions = new Actions(getDriver());
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
         comboBoxOrganizacion.waitUntilPresent();
-        selectItem(comboBoxOrganizacion,dato.get("organizacion"));
-        waitForComboValue(comboBoxOrganizacionW,dato.get("organizacion"));
+        selectItem(comboBoxOrganizacion, dato.get("organizacion"));
+        waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
         waitUntil(WAIT_TIME_1000);
-        selectItem(comboBoxCanal,dato.get("canal"));
-        waitForComboValue(comboBoxCanal,dato.get("canal"));
+        selectItem(comboBoxCanal, dato.get("canal"));
+        waitForComboValue(comboBoxCanal, dato.get("canal"));
         seleccionarProducto(dato.get("producto"));
     }
 
-    public void irAUbicacion(){
+    public void irAUbicacion() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
@@ -137,44 +137,45 @@ public class DetallesDeUbicacionPage extends PageUtil {
     public void setDireccion(String direccion, String departamento, String ciudad) {
         campoTxtDireccion.sendKeys(direccion);
         this.direccion = direccion;
-        selectItem(comboBoxDepartamento,departamento);
-        waitForComboValue(comboBoxDepartamento,departamento);
-        selectItem(comboBoxCiudad,ciudad);
-        waitForComboValue(comboBoxCiudad,ciudad);
+        selectItem(comboBoxDepartamento, departamento);
+        waitForComboValue(comboBoxDepartamento, departamento);
+        selectItem(comboBoxCiudad, ciudad);
+        waitForComboValue(comboBoxCiudad, ciudad);
     }
 
-    public void setUbicacion(String descripcion, String actividad){
+    public void setUbicacion(String descripcion, String actividad) {
         waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
-        selectItem(comboBoxActividadEconomica,actividad);
+        selectItem(comboBoxActividadEconomica, actividad);
         botonAceptar.click();
     }
 
-    public void validarCamposNuevos(){
-            StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-            if(!labelUsoPredominante.isPresent()) {
-                notPresent.append(" uso_predominante,");
-            }
-            if(!labelNumeroDeSotanos.isPresent()) {
-                notPresent.append(" numero_de_sotanos,");
-            }
-            if(!labelNumeroDePisos.isPresent()) {
-                notPresent.append(" numero_de_pisos,");
-            }
-            if(!labelAnioDeConstruccion.isPresent()) {
-                notPresent.append(" anio_de_construccion,");
-            }
-            String res = notPresent.toString();
-            if(MSJVALIDARELEMENTOS.equals(res))
-                res = notPresent.toString().substring(0,notPresent.toString().length()-1);
-        MatcherAssert.assertThat(res,"No estan presentes los elementos".equals(res));
+    public void validarCamposNuevos() {
+        StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
+        if (!labelUsoPredominante.isPresent()) {
+            notPresent.append(" uso_predominante,");
         }
+        if (!labelNumeroDeSotanos.isPresent()) {
+            notPresent.append(" numero_de_sotanos,");
+        }
+        if (!labelNumeroDePisos.isPresent()) {
+            notPresent.append(" numero_de_pisos,");
+        }
+        if (!labelAnioDeConstruccion.isPresent()) {
+            notPresent.append(" anio_de_construccion,");
+        }
+        String res = notPresent.toString();
+        if (MSJVALIDARELEMENTOS.equals(res)) {
+            res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
+        }
+        MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
+    }
 
-    public void validarIngresoDeUbicacion(){
+    public void validarIngresoDeUbicacion() {
         MatcherAssert.assertThat("Error al agregar la ubicacion", getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/div/table/tbody/tr").get(1).getText().contains(direccion));
     }
 
     public void verificarMensaje(String mensaje) {
-        verificarMensaje(divMensaje,mensaje);
+        verificarMensaje(divMensaje, mensaje);
     }
 
 

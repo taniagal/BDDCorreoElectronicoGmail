@@ -162,7 +162,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     }
 
     public void verInfoResumenCuenta(Map<String, String> infoResumenCuenta) {
-        waitForTextToAppear("Resumen de la cuenta", 2000);
+        waitForTextToAppear("Resumen de la cuenta", WAIT_TIME_2000);
         MatcherAssert.assertThat(lblResumenCuenta.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("lblResumenCuenta"))));
         MatcherAssert.assertThat(lblTipoDoc.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("tipoDocumento"))));
         MatcherAssert.assertThat(lblNumDoc.getText(), Is.is(Matchers.equalTo(infoResumenCuenta.get("numDocumento"))));
@@ -212,13 +212,13 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     }
 
     public void editarResumenCuenta() {
-        waitABit(WAIT_TIME_1500);
+        waitUntil(WAIT_TIME_1500);
         waitFor(btnEditarCuenta).shouldBeVisible();
         btnEditarCuenta.click();
     }
 
     public void validarCamposEditablesPersona() {
-        waitForTextToAppear("Editar cuenta", 1000);
+        waitForTextToAppear("Editar cuenta", WAIT_TIME_1000);
         MatcherAssert.assertThat(txtPrimerNombre.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtSegundoNombre.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtPrimerApellido.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
@@ -241,7 +241,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     }
 
     public void validarCamposEditablesCompania() {
-        waitForTextToAppear("Editar cuenta", 1000);
+        waitForTextToAppear("Editar cuenta", WAIT_TIME_1000);
         MatcherAssert.assertThat(txtRazonSocial.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtNombreComercial.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtActEconomica.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
@@ -264,16 +264,16 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     }
 
     public void editarPais(String pais) {
-        waitForTextToAppear("Editar cuenta", 2000);
+        waitForTextToAppear("Editar cuenta", WAIT_TIME_2000);
         waitFor(txtPais).shouldBeVisible();
         txtPais.click();
         WebElementFacade itmPais = findBy(".//li[contains(.,'" + pais + "')]");
         itmPais.click();
-        waitABit(WAIT_TIME_3000);
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void validarDepartamento(String departamento) {
-        waitABit(4000);
+        waitUntil(WAIT_TIME_3000);
         waitFor(txtDepartamento).shouldBeVisible();
         MatcherAssert.assertThat(txtDepartamento.getText(), Is.is(Matchers.equalTo(departamento)));
     }
@@ -283,11 +283,11 @@ public class OpcionesResumenCuentaPage extends PageUtil {
         txtDepartamento.click();
         WebElementFacade itmDepto = findBy(".//li[contains(.,'" + departamento + "')]");
         itmDepto.click();
-        waitABit(WAIT_TIME_3000);
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void validarCiudad(String ciudad) {
-        waitABit(4000);
+        waitUntil(WAIT_TIME_3000);
         waitFor(txtCiudadC).shouldBePresent();
         MatcherAssert.assertThat(txtCiudadC.getText(), Is.is(Matchers.equalTo(ciudad)));
     }

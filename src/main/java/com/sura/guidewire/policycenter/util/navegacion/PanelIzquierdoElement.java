@@ -22,7 +22,7 @@ public class PanelIzquierdoElement extends PageObject implements Serializable{
             opcion.waitUntilClickable().click();
 
         } catch (Exception e){
-            LOGGER.info(e.getMessage());
+            LOGGER.info(e.toString());
         }
     }
 }

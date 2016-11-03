@@ -1,7 +1,6 @@
 package com.sura.guidewire.policycenter.util.navegacion.steps;
 
 import com.sura.guidewire.policycenter.util.navegacion.pages.BuscarNavBarPages;
-import com.sura.guidewire.policycenter.util.navegacion.pages.PolizaNavBarPages;
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;

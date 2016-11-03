@@ -5,7 +5,7 @@ Meta: @lote2
 
 Scenario: 1 Rescindir Cancelacion de poliza
 
-Meta: @lote1
+Meta: @lote2
 @Story CDSEG-
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
