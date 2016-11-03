@@ -255,8 +255,16 @@ public class Poliza {
 
     }
 
-
-
+    @Then("debo ver en el resumen de la poliza y en informacion de poliza los coaseguros no editables")
+    public void entoncesDeboVerEnElResumenDeLaPolizaYEnInformacionDePolizaLosCoasegurosNoEditables(){
+        LOGGER.info("Poliza.entoncesDeboVerEnElResumenDeLaPolizaLosCoasegurosNoEditables");
+        polizaSteps.ver_resumen_de_la_poliza_expedida();
+        polizaSteps.ingresar_a_ver_coaseguros();
+        polizaSteps.validarcamposnoeditables();
+        polizaSteps.seleccionar_opcion_informacion_de_poliza();
+        polizaSteps.ingresar_a_ver_coaseguros();
+        polizaSteps.validarcamposnoeditables();
+    }
     @When("seleccione la lista motivo de cancelacion")
     public void cuandoSeleccioneLaListaMotivoDeCancelacion() {
         LOGGER.info("Poliza.cuandoSeleccioneLaListaMotivoDeCancelacion");
