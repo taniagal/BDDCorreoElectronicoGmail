@@ -33,5 +33,9 @@ public class AnalisisDeRiesgoSteps extends ScenarioSteps {
         MatcherAssert.assertThat(obtenerRiesgosPage().obtenerCompromisoBloqueado().getText(), Matchers.containsString(mensaje));
 
     }
+    @Step
+    public void seleccionar_opcion_analisis_de_riesgos_en_cotizacion(){
+        obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgoCotizacion();
+    }
 }
 

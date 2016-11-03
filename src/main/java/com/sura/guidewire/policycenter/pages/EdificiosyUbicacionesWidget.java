@@ -102,25 +102,25 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         $(xpathPais).type(pais);
         $(xpathPais).click();
 
-        waitFor(1).seconds();
+        waitFor(WAIT_TIME_2).seconds();
         enter(depto).into($(xpathDepto));
         waitFor(WAIT_TIME_2).seconds();
         
         $(xpathDepto).click();
 
         waitFor(WAIT_TIME_2).seconds();
-        enter(ciudad).into($(xpathCiudad));
+        $(xpathCiudad).type(ciudad);
         waitFor(WAIT_TIME_2).seconds();
         
         $(xpathCiudad).click();
 
-        waitFor(WAIT_TIME_2).seconds();
-        enter(direccion).into($(xpathDireccion));
+        waitFor(WAIT_TIME_3).seconds();
+        $(xpathDireccion).type(direccion);
         waitFor(WAIT_TIME_2).seconds();
         $(xpathDireccion).click();
 
-        waitFor(1).seconds();
-        enter(actividadEconomica).into($(xpathActividadEconomica));
+        waitFor(WAIT_TIME_2).seconds();
+        $(xpathActividadEconomica).type(actividadEconomica);
         waitFor(WAIT_TIME_2).seconds();
         $(xpathActividadEconomica).sendKeys(Keys.ENTER);
         waitFor(WAIT_TIME_2).seconds();

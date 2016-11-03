@@ -242,7 +242,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         listaCanal.click();
         listaCanal.sendKeys(canal);
         listaCanal.sendKeys(Keys.ENTER);
-        waitFor(WAIT_TIME_3).second();
+        waitFor(WAIT_TIME_1).second();
+        listaCanal.sendKeys(Keys.TAB);
 
     }
     public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras){

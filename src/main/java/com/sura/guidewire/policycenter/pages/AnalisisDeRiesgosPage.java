@@ -23,4 +23,18 @@ public class AnalisisDeRiesgosPage extends PageObject {
 
     }
 
+    public void ingresarAOpcionAnalisisdeRiesgoCotizacion() {
+        String xpathAnalisisRiesgos = ".//*[@id='SubmissionWizard:RiskAnalysis']/div";
+        String xpathMensajeAlertaEdificiosYUbicaciones = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']";
+        String xpathBorrarWorkskpace = "//span[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']";
+        findBy(xpathAnalisisRiesgos).click();
+        if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
+            findBy(xpathAnalisisRiesgos).waitUntilClickable().click();
+            waitForTextToAppear("Análisis de riesgo");
+        }
+        if(findBy(xpathBorrarWorkskpace).isVisible())
+        {
+            findBy(xpathAnalisisRiesgos).click();
+        }
+    }
 }

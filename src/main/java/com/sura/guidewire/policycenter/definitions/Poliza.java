@@ -187,6 +187,13 @@ public class Poliza {
         analisisDeRiesgoSteps.seleccion_opcion_analisis_de_riesgos();
         analisisDeRiesgoSteps.se_muestra_compromiso_bloqueado(mensaje);
     }
+
+    @When("se solicite aprobacion para los riesgos")
+    public void cuandoSeSoliciteAprobacionParaLosriesgos() {
+        LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacionDeLosRiesgos");
+        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgos_en_cotizacion();
+    }
+
     @Then("se debe mostrar un mensaje con el texto: $Mensaje")
     public void entoncesSeDebeMostrarUnMensajeConElTexto(String mensaje){
         LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion");
