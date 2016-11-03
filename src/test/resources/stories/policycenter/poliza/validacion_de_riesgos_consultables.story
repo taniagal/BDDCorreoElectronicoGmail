@@ -1,20 +1,17 @@
 Validacion de riesgos consultables
 
 Meta:
-<<<<<<< HEAD
 
 Scenario: 1 Validacion de riesgos consultables (tomador adicional,asegurador,direccion) al cotizar nueva poliza
 
 Meta:
 =======
 @lote1
->>>>>>> develop
 @Story CDSEG-3124
 @URL https://jira.suramericana.com.co/browse/CDSEG-3124
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
-<<<<<<< HEAD
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When quiera agregar un tomador adicional que es riesgo consultable <cedula>
 And intente ingresar una nueva ubicacion
@@ -62,15 +59,6 @@ Meta: @manual
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 =======
-Scenario: 1 Validacion de riesgos consultables en cotizacion de poliza
-Meta:
-@manual
-Given que estoy en el resumen de la cuenta <numCuenta> con el rol <rolUsuario>
-When ingrese a cotizar una nueva poliza con la informacion: <NomAgente>, <Organizacion>, <Canal>, <Producto>
-And quiera agregar un tomador adicional que es riesgo consultable <cedula>
-And ingrese la informacion del asegurado y beneficiario
-Then se deben validar en Riesgos consultables el tomador, tomadores adicionales, asegurados , beneficiarios, direcciones y se debe mostrar el mensaje por cada una de las figuras
->>>>>>> develop
 
 Given que estoy en la informacion de la poliza con numero(s) de subscripcion <numSubscripcion>
 When  quiero agregar un tomador adicional que es riesgo consultable <cedula>

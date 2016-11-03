@@ -1,15 +1,21 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
 
+import com.sura.guidewire.policycenter.pages.colectivas.NuevaPolizaPage;
+import com.sura.guidewire.policycenter.util.AssertUtil;
 import com.sura.guidewire.policycenter.util.PageUtil;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,6 +31,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade txtFechaVigencia;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
     WebElementFacade txtNumDocumento;
+    @FindBy(xpath = "//input[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:DocumentNumberReference-inputEl']")
+    WebElementFacade txtNumDocumentoCoaseguro;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']")
     WebElementFacade lblInformaPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
@@ -93,12 +101,34 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade tablaProductos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:Accepted-inputEl']")
     WebElementFacade checkiReaseguroAceptado;
-    @net.serenitybdd.core.annotations.findby.FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-inputEl']")
+    private WebElementFacade listaOrganizacion;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-inputEl']")
+    private WebElementFacade listaCanal;
+    //@FindBy(xpath =".//a[contains(.,'Agregar coaseguro')]")
+    @FindBy(xpath = "//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
+    private WebElementFacade agregarCoaseguro;
+    @FindBy(xpath = "//input[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion_true-inputEl']")
+    private WebElementFacade radioButtonAceptado;
+    @FindBy(xpath = "//input[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion_false-inputEl']")
+    private WebElementFacade radioButtonCedido;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']")
+    private WebElementFacade tablaAseguradoras;
+    @FindBy(xpath = "//span[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
+    private WebElementFacade bttonAceptarCoaseguro;
+    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarPopup;
 
+
+    private static String lblMensajesAlerta = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
+    private static String LISTA_TIPO_BENEFICIARIO_UNO = "//div[contains(.,'Seguros Generales Suramericana S.A.') and contains(@class,'x-grid-cell-inner')]";
+    private static String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
     private boolean esVisible;
+
+
+    NuevaPolizaPage nuevaPolizaPage;
 
     Actions actions = new Actions(getDriver());
 
@@ -138,7 +168,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         btnSiguinete.waitUntilVisible().waitUntilClickable().click();
     }
 
-
+    public void seleccionBotonSiguiente()
+    {
+        btnSiguinete.click();
+    }
     public void seleccionaRiesgoAceptado() {
         waitInfoPoliza(lblInformaPoliza);
         radioBotReaseguroEspecial.click();
@@ -196,10 +229,116 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         return filaBoton;
     }
 
+    public void seleccionarOrganizacion(String organizacion) {
+        listaOrganizacion.waitUntilPresent();
+        listaOrganizacion.click();
+        listaOrganizacion.sendKeys(organizacion);
+        listaOrganizacion.sendKeys(Keys.ENTER);
+
+    }
+
+    public void seleccionarCanal(String canal) {
+        waitFor(WAIT_TIME_5).second();
+        listaCanal.click();
+        listaCanal.sendKeys(canal);
+        listaCanal.sendKeys(Keys.ENTER);
+        waitFor(WAIT_TIME_3).second();
+
+    }
+    public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras){
+        waitFor(WAIT_TIME_3).second();
+        agregarCoaseguro.click();
+        seleccionarElTipoDeCoaseguro(tipoCo);
+        agregoLasAseguradoras(tablaaseguradoras);
+
+
+
+    }
+    public void seleccionarElTipoDeCoaseguro(String tipoCoaseguro) {
+        waitUntil(WAIT_TIME_1000);
+        if ("Cedido".equals(tipoCoaseguro)) {
+            if ("0% 0%".equals($(radioButtonCedido).getCssValue("background-position"))) {
+                waitUntil(WAIT_TIME_1500);
+                radioButtonCedido.click();
+            }
+        } else {
+            if (!"0% 0%".equals($(radioButtonAceptado).getCssValue("background-position"))) {
+                waitUntil(WAIT_TIME_1500);
+                radioButtonAceptado.click();
+            }
+        }
+    }
+    public void agregoLasAseguradoras(ExamplesTable tablaaseguradoras){
+
+        Map<String, String> asegurados;
+        Actions act = new Actions(getDriver());
+        for (int i = 0; i < tablaaseguradoras.getRowCount(); i++) {
+            asegurados = tablaaseguradoras.getRows().get(i);
+            if(i==0){
+                if(!asegurados.get("ASEGURADORA").equals("Seguros Generales Suramericana S.A.")) {
+                    desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO_UNO, asegurados.get("ASEGURADORA"));
+                }
+                findBy(LISTA_TIPO_BENEFICIARIO_UNO).click();
+                act.sendKeys(Keys.TAB).build().perform();
+                act.sendKeys(Keys.ENTER).build().perform();
+                act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
+            }else {
+                desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO,asegurados.get("ASEGURADORA"));
+                act.sendKeys(Keys.TAB).build().perform();
+                act.sendKeys(Keys.ENTER).build().perform();
+                act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
+            }
+        }
+    }
+
+    public void validarMensajesCoaseguros(ExamplesTable mensajesEsperados) {
+        List<String> mensajesWSList = new ArrayList<>(obtenerMensajesDeTrabajoCoaseguro());
+        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
+            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
+            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
+        }
+    }
+
+    public List<String> obtenerMensajesDeTrabajoCoaseguro(){
+        List<String> mensajesEspacioDeTrabajo = new ArrayList<>();
+        for (WebElementFacade mensaje : findAll(lblMensajesAlerta)){
+            mensajesEspacioDeTrabajo.add(mensaje.getText());
+        }
+        return mensajesEspacioDeTrabajo;
+    }
+
+    public void noHabilitarNumeroDocumentoCoaseguro() {
+        boolean validacion = txtNumDocumentoCoaseguro.isCurrentlyEnabled();
+        MatcherAssert.assertThat(validacion, Is.is(Matchers.not(Matchers.equalTo(true))));
+    }
+
+
     public void validaNombreTomador(String nombreCompleto) {
         waitInfoPoliza(lblInformaPoliza);
         MatcherAssert.assertThat("el al mostrar nombre completo", nombreCompleto.equals(lblNombreCompleto.getText()));
     }
+
+    public void desplegarListaTipoAsegurado(String XPathAsegurado,String elemento){
+        WebElementFacade listaTipoAsegurado = findBy(XPathAsegurado);
+        listaTipoAsegurado.click();
+        waitFor(WAIT_TIME_3);
+        seleccionarElementoDeLaLista(elemento);
+    }
+
+    public void seleccionarElementoDeLaLista(String elementoLista) {
+        List<WebElementFacade> listaElementosCotizacion = findAll(By.xpath(".//li[@role='option']"));
+        if (!listaElementosCotizacion.isEmpty()) {
+            for (WebElementFacade listaElemento : listaElementosCotizacion) {
+                if (listaElemento.containsText(elementoLista)) {
+                    listaElemento.click();
+                    break;
+                }
+            }
+        }
+    }
+
+
+
 
     public void validaCamposPoliza() {
         StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
