@@ -135,7 +135,7 @@ public class PageUtil extends PageObject {
 
     public void waitForComboValue(WebElementFacade element, String value) {
         try {
-            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
+            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisible at PageUtil 129 " + e);
         }

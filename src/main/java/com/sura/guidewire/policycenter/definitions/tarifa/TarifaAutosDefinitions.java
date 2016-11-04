@@ -16,9 +16,9 @@ public class TarifaAutosDefinitions {
     TarifaAutosSteps tarifaAutosSteps;
 
 
-    @When("ingrese los datos del asegurado")
-    public void agregarAsegurado() {
-        tarifaAutosSteps.agregar_asegurados();
+    @When("ingrese los datos del asegurado <tipo_documento> <documento>")
+    public void agregarAsegurado(@Named("tipo_documento") String tipoDocumento, @Named("documento") String documento) {
+        tarifaAutosSteps.agregar_asegurados(tipoDocumento, documento);
     }
 
     @When("ingrese los datos del vehiculo: $datosVehiculo")
@@ -37,12 +37,12 @@ public class TarifaAutosDefinitions {
     }
 
     @Then("el resultado de la cotizacion debe ser <valor>")
-    public void verificarResultado(@Named("valor")String valor){
+    public void verificarResultado(@Named("valor") String valor) {
         tarifaAutosSteps.verificar_tarifacion(valor);
     }
 
     @Then("el resultado de la cotizacion en cada cobertura debe ser: $valor")
-    public void verificarResultado(ExamplesTable valor){
+    public void verificarResultado(ExamplesTable valor) {
         tarifaAutosSteps.verificar_tarifacion_por_coberturas(valor);
     }
 }

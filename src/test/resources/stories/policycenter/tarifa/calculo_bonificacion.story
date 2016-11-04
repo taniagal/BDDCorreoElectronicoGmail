@@ -15,12 +15,12 @@ GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta      |organizacion|producto|canal            |
 |C1060447895 |Sura        |Autos   |Canal Tradicional|
-When ingrese los datos del asegurado
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese la placa <placa> en la informacion del vehiculo
 Then se debe ver reflejada la bonificacion <bonoComercial> <bonoTecnico> de esta placa
 
 
 
 Examples:
-|placa |bonoComercial|bonoTecnico|
-|CYU123|0            |50         |
+|placa |bonoComercial|bonoTecnico|tipo_documento      |documento |
+|CYU123|0            |50         |CEDULA DE CIUDADANIA|1060447895|
