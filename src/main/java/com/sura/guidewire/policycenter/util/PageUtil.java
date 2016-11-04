@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 
 
 public class PageUtil extends PageObject {
-    private final Actions actions = new Actions(getDriver());
+    protected final Actions actions = new Actions(getDriver());
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     protected static final int WAIT_TIME_5000 = 5000;
