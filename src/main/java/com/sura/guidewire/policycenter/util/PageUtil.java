@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 
 
 public class PageUtil extends PageObject {
-    private final Actions actions = new Actions(getDriver());
+    protected final Actions actions = new Actions(getDriver());
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     protected static final int WAIT_TIME_5000 = 5000;
@@ -135,7 +135,7 @@ public class PageUtil extends PageObject {
 
     public void waitForComboValue(WebElementFacade element, String value) {
         try {
-            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
+            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisible at PageUtil 129 " + e);
         }

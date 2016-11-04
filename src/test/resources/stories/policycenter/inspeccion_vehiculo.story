@@ -16,7 +16,7 @@ GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar la cuenta <numCuenta>
 When estoy expidiendo una poliza de autos
 And seleccione el producto para expedir la poliza
-When ingrese los datos del asegurado
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion no valida
 And la placa <placa> estuvo vigente en la compañia
 Then se debe recuperar los siguientes datos:
@@ -32,7 +32,7 @@ Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
 Given que voy a buscar la cuenta <numCuenta>
 When estoy expidiendo una poliza de autos
 And seleccione el producto para expedir la poliza
-When ingrese los datos del asegurado
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion
 And la placa <placa> estuvo vigente pero ahora esta cancelada
 Then se debe recuperar los siguientes datos:

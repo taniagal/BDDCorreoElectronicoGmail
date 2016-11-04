@@ -15,7 +15,7 @@ GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |
 |C1060447895|Sura        |Autos   |Canal Tradicional|
-When ingrese los datos del asegurado
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |TCU107|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
@@ -42,5 +42,5 @@ Then el valor del monto en cada cobertura debe ser:
 |33  |11.824    |
 
 Examples:
-||
-||
+|tipo_documento      |documento |
+|CEDULA DE CIUDADANIA|1060447895|

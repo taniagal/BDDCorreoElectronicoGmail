@@ -16,7 +16,7 @@ GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |
 |C1060447895|Sura        |Autos   |Canal Tradicional|
-When ingrese los datos del asegurado
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |TYU140|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
@@ -26,15 +26,17 @@ And ingrese las coberturas:
 Then el resultado de la cotizacion debe ser <valor>
 
 Examples:
-|valor  |
-|975.890|
+|valor  |tipo_documento      |documento |
+|975.890|CEDULA DE CIUDADANIA|1060447895|
+
+
 
 
 Scenario:  Realizar una cotizacion con todas las coberturas para autos
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |
 |C1060447895|Sura        |Autos   |Canal Tradicional|
-When ingrese los datos del asegurado
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |TAU103|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
@@ -58,5 +60,5 @@ Then el resultado de la cotizacion en cada cobertura debe ser:
 |33  |25.799    |
 
 Examples:
-||
-||
+|tipo_documento      |documento |
+|CEDULA DE CIUDADANIA|1060447895|
