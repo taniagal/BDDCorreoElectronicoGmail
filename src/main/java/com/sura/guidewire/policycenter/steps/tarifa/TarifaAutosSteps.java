@@ -15,8 +15,8 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_asegurados() {
-        tarifaAutosPage.setAsegurados();
+    public void agregar_asegurados(String tipoDocumento, String documento) {
+        tarifaAutosPage.seleccionarAsegurado(tipoDocumento,documento);
         vehiculoPage.clickSiguiente();
     }
 

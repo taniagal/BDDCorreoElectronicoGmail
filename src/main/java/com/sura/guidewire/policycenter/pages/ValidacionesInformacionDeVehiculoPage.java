@@ -14,6 +14,7 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
@@ -125,8 +126,13 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
         comboBoxVehiculoServicio.click();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(tablaVehiculo).shouldContainText(campoTxtPlaca.getText());
-        waitUntil(WAIT_TIME_2000);
-        selectItem(comboBoxModelo, vehiculo.get("modelo"));
+        waitUntil(WAIT_TIME_3000);
+        try {
+            selectItem(comboBoxModelo, vehiculo.get("modelo"));
+        }catch (StaleElementReferenceException e){
+            LOGGER.info("StaleElementReferenceException at ValidacionesInformacionDeVehiculo Page 131 " + e);
+            selectItem(comboBoxModelo, vehiculo.get("modelo"));
+        }
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo,vehiculo.get("modelo")));
         waitUntil(WAIT_TIME_2000);
         ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
@@ -134,7 +140,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         try {
             withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
         } catch (ElementNotVisibleException e) {
-            LOGGER.info("ElementNotVisible at ValidacionesInformacionDeVehiculo Page 134 " + e);
+            LOGGER.info("ElementNotVisible at ValidacionesInformacionDeVehiculo Page 140 " + e);
         }
         waitUntil(WAIT_TIME_2000);
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
@@ -146,14 +152,12 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
             campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
         }
-
         if (!"null".equals(vehiculo.get("motor"))) {
             campoTxtMotor.clear();
             campoTxtMotor.sendKeys(vehiculo.get("motor"));
             campoTxtchasis.clear();
             campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
-
         MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
     }
 
