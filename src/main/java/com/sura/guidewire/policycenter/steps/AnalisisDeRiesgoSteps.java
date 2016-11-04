@@ -37,5 +37,9 @@ public class AnalisisDeRiesgoSteps extends ScenarioSteps {
     public void seleccionar_opcion_analisis_de_riesgos_en_cotizacion(){
         obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgoCotizacion();
     }
+    @Step
+    public void solicitar_aprobacion(){
+        obtenerRiesgosPage().seleccionarSolicitarAprobacion();
+    }
 }
 

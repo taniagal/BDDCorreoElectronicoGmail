@@ -112,7 +112,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         $(xpathCiudad).type(ciudad);
         waitFor(WAIT_TIME_2).seconds();
         
-        $(xpathCiudad).click();
+        $(xpathCiudad).sendKeys(Keys.ENTER);
 
         waitFor(WAIT_TIME_3).seconds();
         $(xpathDireccion).type(direccion);

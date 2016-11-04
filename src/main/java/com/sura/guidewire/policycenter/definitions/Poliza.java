@@ -189,9 +189,10 @@ public class Poliza {
     }
 
     @When("se solicite aprobacion para los riesgos")
-    public void cuandoSeSoliciteAprobacionParaLosriesgos() {
+    public void cuandoSeSoliciteAprobacionParaLosriesgos(String) {
         LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacionDeLosRiesgos");
         analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgos_en_cotizacion();
+        analisisDeRiesgoSteps.solicitar_aprobacion();
     }
 
     @Then("se debe mostrar un mensaje con el texto: $Mensaje")

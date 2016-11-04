@@ -26,6 +26,7 @@ And se solicite aprobacion para los riesgos
 
 
 
+
 Examples:
 | numCuenta  | agente         | organizacion | canal             | tipoPoliza | producto                | rolUsuario | cedula  | tipoBeneficiario |
 | C000888888 | DIRECTO > 4999 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | 9876543 | Asegurado        |
