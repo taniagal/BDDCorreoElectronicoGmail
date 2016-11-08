@@ -1,6 +1,6 @@
 Renovacion Deseo Financiacion Pa
 
-Meta: @lote1
+Meta: @lote2
 
 @issue #CDSEG-2309
 @tag automator: diego_cardona_acevedo

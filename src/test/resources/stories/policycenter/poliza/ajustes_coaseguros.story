@@ -3,7 +3,7 @@ Ajustes Coaseguros
 
 Scenario:  1 Validacion de campos obligatorios en tipo de coaseguro aceptado
 
-Meta:@lote2
+Meta:@lote1
 @Story CDSEG-2778
 @URL https://jira.suramericana.com.co/browse/CDSEG-2778
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
@@ -30,7 +30,7 @@ Examples:
 
 Scenario:  2 Validacion de campo Numero de documento en tipo de coaseguro cedido
 
-Meta:@lote2
+Meta:@lote1
 @Story CDSEG-2778
 @URL https://jira.suramericana.com.co/browse/CDSEG-2778
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
@@ -52,7 +52,7 @@ Examples:
 
 Scenario:  3 Validacion de coaseguro no editable en resumen e informacion de poliza
 
-Meta:@lote2
+Meta:@lote1
 @Story CDSEG-2778
 @URL https://jira.suramericana.com.co/browse/CDSEG-2778
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
