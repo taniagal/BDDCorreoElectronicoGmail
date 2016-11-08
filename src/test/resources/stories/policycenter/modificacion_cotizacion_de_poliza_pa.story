@@ -1,6 +1,6 @@
 Modificacion Cotizacion De Poliza Pa
 
-Meta: @lote1
+Meta: @lote3
 
 @issue #CDSEG-1286
 @tag automator: diego_cardona_acevedo

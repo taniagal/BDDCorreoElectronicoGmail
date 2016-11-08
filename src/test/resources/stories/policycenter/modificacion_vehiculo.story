@@ -1,6 +1,6 @@
 Modificacion Vehiculo
 
-Meta: @lote2
+Meta: @lote3
 
 @issue #CDSEG-1248
 @tag automator: diego_cardona_acevedo

@@ -1,6 +1,6 @@
 Aplicar Modificadores A Tarifa
 
-Meta: @lote3
+Meta: @lote2
 @issue #CDSEG-2421
 @sprint 7
 @tag automator: nelson_jhair_mosquera_palacios

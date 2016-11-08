@@ -1,5 +1,5 @@
 Instrucciones previas a renovacion
-Meta: @lote2
+Meta: @lote4
 
 Narrative:
 las Instrucciones previas a la renovación que se quieren para el producto multirriesgo corporativo son :
@@ -23,7 +23,7 @@ Las opciones de no renovación para las opciones No tomada deben ser:
 Las demás funciones se dejan  como vienen de caja GW y no requiere cambios.
 
 Scenario: 1 Validacion que existan todas las instrucciones esperadas
-Meta: @lote2
+Meta: @lote4
 @Story CDSEG-907
 @URL https://jira.suramericana.com.co/browse/CDSEG-907
 @tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
@@ -45,7 +45,7 @@ Examples:
 
 
 Scenario: 2 Validacion que existan todas las razones de No renovable
-Meta: @lote2
+Meta: @lote4
 @Story CDSEG-907
 @URL https://jira.suramericana.com.co/browse/CDSEG-907
 @tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
@@ -68,7 +68,7 @@ Examples:
 | TEST_77444226 | Asesor     |             |
 
 Scenario: 3 Validacion que existan todas las razones de No renovable y consultar al asegurador
-Meta: @lote2
+Meta: @lote4
 @Story CDSEG-907
 @URL https://jira.suramericana.com.co/browse/CDSEG-907
 @tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
@@ -91,7 +91,7 @@ Examples:
 | TEST_77444226 | Asesor     |             |
 
 Scenario: 4 Validacion que existan todas las razones de No tomada
-Meta: @lote2
+Meta: @lote4
 @Story CDSEG-907
 @URL https://jira.suramericana.com.co/browse/CDSEG-907
 @tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
