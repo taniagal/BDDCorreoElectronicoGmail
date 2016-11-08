@@ -170,8 +170,12 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
-        botonBorrar.waitUntilPresent().click();
-        botonBorrar.waitUntilNotVisible();
+        setImplicitTimeout(WAIT_TIME_10, TimeUnit.SECONDS);
+        if (botonBorrar.isPresent()) {
+            botonBorrar.waitUntilPresent().click();
+            botonBorrar.waitUntilNotVisible();
+        }
+        resetImplicitTimeout();
         comboBoxLimite.waitUntilPresent();
         waitUntil(WAIT_TIME_1500);
         comboBoxLimite.clear();
@@ -181,7 +185,7 @@ public class TarifaAutosPage extends PageUtil {
         waitUntil(WAIT_TIME_800);
         selectItem(comboBoxDeducible, dato.get("deducible"));
         selectItem(comboBoxAbogado, dato.get("abogado"));
-        selectItem(comboBoxPerdidaDeLlaves,dato.get("PLlaves"));
+        selectItem(comboBoxPerdidaDeLlaves, dato.get("PLlaves"));
     }
 
 
@@ -204,7 +208,7 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCoberturasDeDanios(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
-        if(!comboBoxGastosDeTransporteCarro.isPresent()) {
+        if (!comboBoxGastosDeTransporteCarro.isPresent()) {
             labelGatosTransporteCarro.waitUntilPresent();
         }
         selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
