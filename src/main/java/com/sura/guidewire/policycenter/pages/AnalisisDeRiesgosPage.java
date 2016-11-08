@@ -11,8 +11,9 @@ import java.util.List;
 
 public class AnalisisDeRiesgosPage extends PageObject {
     protected static final int WAIT_TIME_2 = 2;
+    private int numeroDeRiesgos;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-    public static String xPathSolicitarAprobacion = ".//*[contains(@id,'SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet') and contains(@id,'UWIssueRowSet:RequestApproval')]";
+    private static String xPathSolicitarAprobacion = ".//*[contains(@id,'SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet') and contains(@id,'UWIssueRowSet:RequestApproval')]";
 
     public WebElementFacade obtenerCompromisoBloqueado() {
 
@@ -28,6 +29,14 @@ public class AnalisisDeRiesgosPage extends PageObject {
         findBy(xpathAnalisisRiesgos).waitUntilClickable().click();
         waitFor(WAIT_TIME_2).second();
 
+    }
+
+    public void setNumeroDeRiesgos(int numeroDeRiesgos) {
+        this.numeroDeRiesgos = numeroDeRiesgos;
+    }
+
+    public int getNumeroDeRiesgos() {
+        return numeroDeRiesgos;
     }
 
     public void ingresarAOpcionAnalisisdeRiesgoCotizacion() {
@@ -46,20 +55,21 @@ public class AnalisisDeRiesgosPage extends PageObject {
     }
 
     public void seleccionarSolicitarAprobacion() {
-        int i=1;
+        int bttonSolicitarAprobacion = 1;
         try {
             List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(xPathSolicitarAprobacion));
             for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
-                String boton = ".//a[contains(@id,'SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:"+i+":UWIssueRowSet:RequestApproval')]";
+                String boton = ".//a[contains(@id,'SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:" + bttonSolicitarAprobacion + ":UWIssueRowSet:RequestApproval')]";
                 WebElementFacade bot = findBy(boton);
                 bot.click();
                 aceptarInicioSolicitudAprobacion();
                 waitFor(WAIT_TIME_2);
-                i++;
+                bttonSolicitarAprobacion++;
             }
         } catch (Exception e) {
             LOGGER.error("ERROR EN ANALISISDERIESGO TRAZA:" + e);
         }
+        setNumeroDeRiesgos(bttonSolicitarAprobacion);
     }
 
     public void aceptarInicioSolicitudAprobacion() {

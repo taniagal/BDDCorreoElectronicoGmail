@@ -23,6 +23,7 @@ And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipo
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                    | 100            |
 
 And se solicite aprobacion para los riesgos
+Then se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consutable
 
 
 
