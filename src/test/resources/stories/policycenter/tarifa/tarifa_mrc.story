@@ -44,7 +44,7 @@ Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
 |prima    |departamento|ciudad   |direccion        |descripcion  |actividad|
-|1.400.000|Caldas      |MANIZALES|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|1.283.333|Caldas      |MANIZALES|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 Scenario:  Tarifa MRC - Cobertura Terremoto en Caldas sin deducible
@@ -62,4 +62,4 @@ Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
 |prima    |departamento|ciudad   |direccion        |descripcion  |actividad|
-|1.166.667|Caldas      |MANIZALES|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|1.283.333|Caldas      |MANIZALES|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|

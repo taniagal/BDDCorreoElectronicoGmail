@@ -31,8 +31,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade checkBoxTerremoto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]")
     private WebElementFacade checkBoxArticulo;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalCost-inputEl']")
-    private WebElementFacade labelCostoTotal;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
+    private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_true-inputEl']")
     private WebElementFacade radioBotonDeducibleSi;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_false-inputEl']")
@@ -44,9 +44,9 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarTarifacion(String prima) {
         botonCotizar.waitUntilPresent().click();
-        labelCostoTotal.waitUntilPresent();
-        MatcherAssert.assertThat("Error en el valor de la prima. Esperaba: " + prima + " pero fue: " + labelCostoTotal.getText(),
-                labelCostoTotal.containsText(prima));
+        labelPrimaTotal.waitUntilPresent();
+        MatcherAssert.assertThat("Error en el valor de la prima. Esperaba: " + prima + " pero fue: " + labelPrimaTotal.getText(),
+                labelPrimaTotal.containsText(prima));
     }
 
     public void irAArticulo() {
