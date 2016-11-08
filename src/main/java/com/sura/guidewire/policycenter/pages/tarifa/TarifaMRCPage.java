@@ -33,6 +33,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade checkBoxArticulo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotal;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup-legendTitle']")
+    private WebElementFacade labelTerremoto;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_true-inputEl']")
     private WebElementFacade radioBotonDeducibleSi;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_false-inputEl']")
@@ -64,15 +66,25 @@ public class TarifaMRCPage extends PageUtil {
         if(!"null".equals(dato.get("valorComercial"))){
             campoTxtValorComercial.sendKeys(dato.get("valorComercial"));
         }
+        if(labelTerremoto.containsText("Terremoto")){
+            checkBoxTerremoto = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
+            campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
+        }
         checkBoxTerremoto.click();
         campoTxtValorAsegurado.waitUntilPresent().sendKeys(dato.get("valorAsegurado"));
     }
 
     public void seleccionarDeducibleSi(){
+        if(labelTerremoto.containsText("Terremoto")){
+            radioBotonDeducibleSi = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_true-inputEl']");
+        }
         radioBotonDeducibleSi.click();
     }
 
     public void seleccionarDeducibleNo(){
+        if(labelTerremoto.containsText("Terremoto")){
+            radioBotonDeducibleNo = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_false-inputEl']");
+        }
         radioBotonDeducibleNo.click();
     }
 
