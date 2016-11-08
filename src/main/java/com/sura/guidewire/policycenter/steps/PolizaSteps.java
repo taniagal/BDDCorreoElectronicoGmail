@@ -100,6 +100,13 @@ public class PolizaSteps extends GuidewireSteps {
         getDriver().findElement(By.xpath(xpathBttonCancelarAhora)).click();
     }
     @Step
+    public void seleccionar_opcion_retirar_transaccion() {
+        waitFor(1).second();
+        String xpathBttonRetirarTransaccion = "//a[contains(.,'Retirar transacción')]";
+        getDriver().findElement(By.xpath(xpathBttonRetirarTransaccion)).click();
+    }
+
+    @Step
     public void seleccionar_opcion_programar_cancelacion() {
         waitFor(1).second();
         String xpathBttonProgramarCancelacion = "//a[contains(.,'Programar cancelación')]";

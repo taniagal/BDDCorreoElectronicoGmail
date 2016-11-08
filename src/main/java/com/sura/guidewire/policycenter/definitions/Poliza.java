@@ -168,6 +168,16 @@ public class Poliza {
         polizaSteps.seleccionar_opcion_rescindir_cancelacion();
 
     }
+    @When("retire la cancelacion de la subscripcion <numSubscripcion>")
+    public void cuandoRetireaLaSubscripcion(String numSubscripcion){
+        LOGGER.info("Poliza.cuandoRetireaLaSubscripcion");
+        guidewire.ir_a_navegacion_superior()
+                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
+        polizaSteps.seleccionar_opcion_cierre();
+        polizaSteps.seleccionar_opcion_retirar_transaccion();
+        polizaSteps.confirmar_cancelacion();
+
+    }
     @When("ingreso al resumen de la poliza")
     public void cuandoIngreseAlResumenDeLaPoliza(String numPoliza){
         LOGGER.info("Poliza.cuandoIngreseAlResumenDeLaPoliza");

@@ -44,7 +44,11 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.navegar_barra_superior(numeroCuenta);
         informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
     }
-
+    @When("ingrese a la cuenta <numCuenta>")
+    public void cuandoIngreseALaCuenta(@Named("numCuenta") String numeroCuenta){
+        informacionDePolizaMrcSteps.navegar_barra_superior(numeroCuenta);
+        informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
+    }
     @When("este expidiendo una poliza de propiedad comercial")
     public void expidePolizaPropiedadComercial() {
         informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto();
