@@ -1,6 +1,6 @@
 Modificacion Renovacion Coberturas Pa
 
-Meta: @lote4
+Meta: @lote1
 
 @issue #CDSEG-2977
 @tag automator: diego_cardona_acevedo
