@@ -6,7 +6,7 @@ Scenario: 1 Validacion de riesgos consultables (tomador adicional,asegurador,dir
 
 Meta:
 =======
-@lote1
+@lote2
 @Story CDSEG-3124
 @URL https://jira.suramericana.com.co/browse/CDSEG-3124
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
