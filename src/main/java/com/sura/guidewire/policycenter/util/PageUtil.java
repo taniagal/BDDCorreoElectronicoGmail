@@ -6,21 +6,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import net.serenitybdd.core.exceptions.SerenityManagedException;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
 
@@ -67,7 +63,7 @@ public class PageUtil extends PageObject {
 
     public void selectItem(WebElementFacade element, String option) {
         waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
-        element.click();
+        clickElement(element);
         waitUntil(WAIT_TIME_200);
         element.sendKeys(option);
         element.sendKeys(Keys.ENTER);
@@ -135,7 +131,7 @@ public class PageUtil extends PageObject {
 
     public void waitForComboValue(WebElementFacade element, String value) {
         try {
-            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
+            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(element, value));
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisible at PageUtil 129 " + e);
         }
@@ -176,5 +172,15 @@ public class PageUtil extends PageObject {
             notPresent.append(elemento);
         }
         return notPresent;
+    }
+
+
+    public void clickElement(WebElementFacade element){
+            try {
+                element.click();
+            } catch (WebDriverException e) {
+                waitUntil(WAIT_TIME_2000);
+                clickElement(element);
+            }
     }
 }
