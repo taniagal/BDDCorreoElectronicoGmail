@@ -1,15 +1,13 @@
 Iniciar Cancelacion
 
-Meta: @lote1
 
-Scenario: 1 Validacion lista de motivos
-
-Meta: @lote1
+Meta: @lote2
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
+Scenario: 1 Validacion lista de motivos
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When seleccione la lista motivo de cancelacion
 Then se debe visualizar los siguientes motivos
@@ -31,7 +29,7 @@ Examples:
 
 Scenario:  2 Validacion fecha de cancelacion
 
-Meta: @lote1
+Meta: @lote2
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -48,7 +46,7 @@ Examples:
 
 Scenario:  3 Ingreso de fecha superior a los 60 dias de retroactividad
 
-Meta: @lote1
+Meta: @lote2
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -65,7 +63,7 @@ Examples:
 
 Scenario: 4 Validacion opcion cancelar transaccion
 
-Meta: @lote1
+Meta: @lote2
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -82,7 +80,7 @@ Examples:
 
 Scenario: 5 Validacion metodo de reembolso y campo fuente
 
-Meta: @lote1
+Meta: @lote2
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -104,7 +102,7 @@ Examples:
 
 Scenario: 6 Validacion lista de motivos para poliza bancolombia
 
-Meta: @lote1 @manual
+Meta: @lote2 @manual
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8

@@ -125,8 +125,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         }
         waitUntil(WAIT_TIME_1000);
         comboBoxVehiculoServicio.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(tablaVehiculo).shouldContainText(campoTxtPlaca.getText());
-        waitUntil(WAIT_TIME_3000);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, campoTxtPlaca.getText()));
+        waitUntil(WAIT_TIME_2000);
         try {
             selectItem(comboBoxModelo, vehiculo.get("modelo"));
         }catch (StaleElementReferenceException e){

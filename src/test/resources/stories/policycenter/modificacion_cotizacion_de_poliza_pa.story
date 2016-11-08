@@ -1,6 +1,6 @@
 Modificacion Cotizacion De Poliza Pa
 
-Meta: @lote4
+Meta: @lote3
 
 @issue #CDSEG-1286
 @tag automator: diego_cardona_acevedo
@@ -18,7 +18,7 @@ Given se ha realizado la cotizacion de la modificacion <cotizacion>
 When ingrese al detalle de la modificacion
 Then debo ver de la cotizacion la siguiente informacion
 |numeroPoliza |numeroCotizacion|tomador                        |tipoDocumento       |numeroDocumento|direccion                                  |tipoDireccion          |descripcionDireccion                      |empresaAseguradora       |prima              |iva              |total              |
-|TEST_22222222|55555555        |DORIAN STIWAR EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891     |CRA 65 # 48-162, LOUISVILLE, Estados Unidos|DIRECCION DE RESIDENCIA|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$1.486.425,00 (COP)|$237.828,00 (COP)|$1.724.253,00 (COP)|
+|TEST_22222222|55555555        |DORIAN STIWAR EASTMOND PULGARIN|CEDULA DE CIUDADANIA|1234567891     |CRA 65 # 48-162, LOUISVILLE, Estados Unidos|DIRECCION DE RESIDENCIA|Created by the Address Builder with code 0|Acme Low Hazard Insurance|$1.435.051,00 (COP)|$229.608,00 (COP)|$1.664.659,00 (COP)|
 
 Examples:
 |cotizacion|

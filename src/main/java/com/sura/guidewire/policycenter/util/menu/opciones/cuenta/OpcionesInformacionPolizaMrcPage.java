@@ -279,7 +279,9 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 if(!asegurados.get("ASEGURADORA").equals("Seguros Generales Suramericana S.A.")) {
                     desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO_UNO, asegurados.get("ASEGURADORA"));
                 }
+                waitFor(WAIT_TIME_2).second();
                 findBy(LISTA_TIPO_BENEFICIARIO_UNO).click();
+                waitFor(WAIT_TIME_2).second();
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
@@ -288,6 +290,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
+                act.sendKeys(Keys.TAB).build().perform();
             }
         }
     }
