@@ -20,3 +20,11 @@ Then se debe habilitar la opcion de requisitos, con el fin de visualizar los req
 Examples:
 |numeroCotizacion|
 |22334457        |
+
+Scenario: validar mensaje de advertencia - requisitos pendientes
+Given existe una cotizacion <numeroCotizacion>
+When llegue a la expedicion de la poliza
+And la poliza tenga requisitos pendientes
+Then se debe mostrar un mensaje de advertencia
+|mensaje                                            |
+|Existen requisitos pendientes, por favor verifique.|
