@@ -279,6 +279,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                     desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO_UNO, asegurados.get("ASEGURADORA"));
                 }
                 findBy(LISTA_TIPO_BENEFICIARIO_UNO).click();
+                waitFor(WAIT_TIME_2).second();
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
@@ -287,6 +288,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
+                act.sendKeys(Keys.TAB).build().perform();
             }
         }
     }

@@ -76,5 +76,5 @@ Then debo ver en el resumen de la poliza y en informacion de poliza los coasegur
 
 Examples:
 | numCuenta  | agente         | organizacion | canal             | tipoPoliza | producto                | rolUsuario | TipoCo   |
-| C000888888 | DIRECTO > 4999 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | Cedido   |
+| C000999999 | DIRECTO > 4999 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | Cedido   |
 
