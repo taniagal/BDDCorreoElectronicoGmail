@@ -38,7 +38,7 @@ public class PlanDeTrabajoPage extends PageUtil{
     }
 
     public void validarActividadesGeneradasEnRiesgo(){
-        int NumeroDeRiesgosEnAnalisisDeRiesgos = analisisDeRiesgosPage.getNumeroDeRiesgos();
+        int NumeroDeRiesgosEnAnalisisDeRiesgos = 2;
 
         int bttonSolicitudRiesgosConsultables=1;
         try {
@@ -48,7 +48,7 @@ public class PlanDeTrabajoPage extends PageUtil{
                 WebElementFacade bot = findBy(boton);
                 bttonSolicitudRiesgosConsultables++;
             }
-            if(NumeroDeRiesgosEnAnalisisDeRiesgos == bttonSolicitudRiesgosConsultables)
+            if(NumeroDeRiesgosEnAnalisisDeRiesgos == bttonSolicitudRiesgosConsultables-1)
             {
                 MatcherAssert.assertThat("Se genero una actividad por cada riesgo consultable",true);
             }
