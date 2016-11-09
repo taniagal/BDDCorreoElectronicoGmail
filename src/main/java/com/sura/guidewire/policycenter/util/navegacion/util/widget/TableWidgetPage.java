@@ -162,12 +162,11 @@ public class TableWidgetPage extends PageObject {
 
         if (existenFilasEnTabla() && indiceDeColumna > 0 && indiceDeColumna < obtenerEncabezado().size()) {
             for (WebElement fila : obtenerFilas()) {
+                PageUtil.waitUntil(2000);
                 WebElement celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
                 filasPorColumna.add(celda);
             }
-
         }
-
         return filasPorColumna;
     }
 
