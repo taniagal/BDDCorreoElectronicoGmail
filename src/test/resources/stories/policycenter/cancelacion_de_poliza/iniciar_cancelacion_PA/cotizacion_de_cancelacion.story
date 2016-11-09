@@ -1,7 +1,7 @@
 Cotizacion De Cancelacion
 
-Meta: @lote2
-
+Meta:
+@lote2
 @issue #USC-14740
 @tag automator: Jonathan_Mejia_Leon
 @local
@@ -24,7 +24,9 @@ Examples:
 
 
 Scenario: mostrar datos generales de poliza y valores al cotizar
-Meta: @lote2 @manual
+Meta:
+@lote2
+@manual
 Given que existe una <poliza> y esta dentro de la vigencia
 When  se valide el tipo de interes adicional del beneficiario de la poliza
 And Este en la pantalla de confirmación de la cancelacion y se identifique que el tipo de beneficiario es oneroso

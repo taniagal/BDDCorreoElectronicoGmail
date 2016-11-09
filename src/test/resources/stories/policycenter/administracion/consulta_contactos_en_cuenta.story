@@ -1,6 +1,6 @@
 Consulta Contactos En Cuenta
 
-Meta: @lote2
+Meta: @lote3
 @Story CDSEG-845
 @url https://jira.suramericana.com.co/browse/CDSEG-845
 @tag automator:andres_alarcon_guerrero, informer:liliana_restrepo_munneton, sprint:1

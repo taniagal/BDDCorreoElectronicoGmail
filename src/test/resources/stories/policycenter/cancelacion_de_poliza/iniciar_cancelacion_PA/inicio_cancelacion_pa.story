@@ -1,6 +1,6 @@
-Regla Pre Renovacion Direccion Pa
+Inicio Cancelacion Pa
 
-Meta: @lote4
+Meta: @lote2
 
 @issue #USC-14730
 @tag automator: Jonathan_Mejia_Leon
@@ -62,7 +62,8 @@ Examples:
 
 
 Scenario: validar metodo de reembolso
-Meta: @lote4 @manual
+Meta:
+ @manual
 Given que existe la <poliza> y esta dentro de la vigencia
 When necesito iniciar una cancelacion
 And ingrese uno de los motivos:
@@ -82,7 +83,8 @@ Examples:
 |TEST_22266674|
 
 Scenario: motivos de cancelacion para polizas de bancolombia
-Meta: @lote4 @manual
+Meta:
+@manual
 Given que existe <poliza> y esta dentro de la vigencia
 When se necesita iniciar la cancelacion
 Then Se debe validar en la lista cuando la poliza NO es de bancolombia

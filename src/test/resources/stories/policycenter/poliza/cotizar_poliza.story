@@ -3,7 +3,8 @@ Narrative:
 
 Scenario: Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial buscando por
 numero de cuenta y persona juridica
-Meta: @lote1
+
+Meta: @lote4
 @Story CDSEG-907
 @URL https://jira.suramericana.com.co/browse/CDSEG-907
 @tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
