@@ -13,9 +13,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.LoggerFactory;
 
@@ -124,30 +122,43 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             campoTxtPlaca.sendKeys("QWE" + (int) Math.floor(Math.random() * (100 - 999) + 999));
         }
         waitUntil(WAIT_TIME_1000);
-        comboBoxVehiculoServicio.click();
+        clickVehiculoServicio();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, campoTxtPlaca.getText()));
         waitUntil(WAIT_TIME_2000);
-        try {
-            selectItem(comboBoxModelo, vehiculo.get("modelo"));
-        }catch (StaleElementReferenceException e){
-            LOGGER.info("StaleElementReferenceException at ValidacionesInformacionDeVehiculo Page 131 " + e);
-            selectItem(comboBoxModelo, vehiculo.get("modelo"));
-        }
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo,vehiculo.get("modelo")));
+        seleccionarComboBoxModelo(vehiculo);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, vehiculo.get("modelo")));
         waitUntil(WAIT_TIME_2000);
         ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
         campoTxtPlaca.click();
-        try {
-            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
-        } catch (ElementNotVisibleException e) {
-            LOGGER.info("ElementNotVisible at ValidacionesInformacionDeVehiculo Page 140 " + e);
-        }
+        waitForCampoTxtValorAsegurado(vehiculo);
         waitUntil(WAIT_TIME_2000);
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitUntil(WAIT_TIME_1000);
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
+        agregarDescuento(vehiculo);
+        MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+    }
+
+    private void waitForCampoTxtValorAsegurado(Map<String, String> vehiculo) {
+        try {
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
+        } catch (ElementNotVisibleException e) {
+            LOGGER.info("ElementNotVisible at ValidacionesInformacionDeVehiculo Page 140 " + e);
+        }
+    }
+
+    private void seleccionarComboBoxModelo(Map<String, String> vehiculo) {
+        try {
+            selectItem(comboBoxModelo, vehiculo.get("modelo"));
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException at ValidacionesInformacionDeVehiculo Page 131 " + e);
+            selectItem(comboBoxModelo, vehiculo.get("modelo"));
+        }
+    }
+
+    private void agregarDescuento(Map<String, String> vehiculo) {
         if (!"null".equals(vehiculo.get("descuento"))) {
             campoTxtDescuento.sendKeys(vehiculo.get("descuento"));
             campoTxtRecargo.sendKeys(vehiculo.get("recargo"));
@@ -158,7 +169,23 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             campoTxtchasis.clear();
             campoTxtchasis.sendKeys(vehiculo.get("chasis"));
         }
-        MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+    }
+
+    private void clickVehiculoServicio() {
+        try {
+            comboBoxVehiculoServicio.click();
+        } catch (UnhandledAlertException f) {
+            LOGGER.info("UnhandledAlertException " + f);
+            try {
+                Alert alert = getDriver().switchTo().alert();
+                String alertText = alert.getText();
+                LOGGER.info("Alert data: " + alertText);
+                alert.accept();
+            } catch (NoAlertPresentException e) {
+                LOGGER.info("NoAlertPresentException " + e);
+            }
+            comboBoxVehiculoServicio.click();
+        }
     }
 
     public void agregarCodigoFasecolda(String codigo) {
