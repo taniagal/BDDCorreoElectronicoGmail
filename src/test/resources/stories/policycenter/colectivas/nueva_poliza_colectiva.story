@@ -1,6 +1,6 @@
 Nueva Poliza Colectiva
 
-Meta: @lote2
+Meta: @lote3
 
 @issue #CDSEG-812
 @Automatizador Eliana Alvarez
