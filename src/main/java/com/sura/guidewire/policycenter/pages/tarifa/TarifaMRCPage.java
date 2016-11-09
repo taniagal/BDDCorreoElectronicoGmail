@@ -25,6 +25,16 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtValorAsegurado;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:ComercialValue_Input-inputEl']")
     private WebElementFacade campoTxtValorComercial;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:1:RateModifier-inputEl']")
+    private WebElementFacade campoTxtCalificacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:2:RateModifier-inputEl']")
+    private WebElementFacade campoTxtBasico;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:3:RateModifier-inputEl']")
+    private WebElementFacade campoTxtRotura;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-inputEl']")
+    private WebElementFacade campoTxtDañioInterno;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:5:RateModifier-inputEl']")
+    private WebElementFacade campoTxtSustraccion;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade checkBoxEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
@@ -39,6 +49,11 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade radioBotonDeducibleSi;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_false-inputEl']")
     private WebElementFacade radioBotonDeducibleNo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:Modifiers']")
+    private WebElementFacade menuItemModificadores;
+
+    public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+
 
     public TarifaMRCPage(WebDriver driver) {
         super(driver);
@@ -92,4 +107,22 @@ public class TarifaMRCPage extends PageUtil {
         botonActualizar.click();
     }
 
+    public void irAModificadores() {
+        menuItemModificadores.waitUntilPresent().click();
+    }
+
+    public void verificarModificadores(){
+        StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
+        campoTxtBasico.waitUntilPresent();
+        noPresente = concatenarElementoNoPresente(campoTxtBasico, " modificador basico,", noPresente);
+        noPresente = concatenarElementoNoPresente(campoTxtCalificacion, " modificador calificacion,", noPresente);
+        noPresente = concatenarElementoNoPresente(campoTxtDañioInterno, " modificador daño interno,", noPresente);
+        noPresente = concatenarElementoNoPresente(campoTxtRotura, " modificador rotura,", noPresente);
+        noPresente = concatenarElementoNoPresente(campoTxtSustraccion, " modificador sustraccion,", noPresente);
+        String res = noPresente.toString();
+        if (MSJVALIDARELEMENTOS.equals(res)) {
+            res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
+        }
+        MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
+    }
 }

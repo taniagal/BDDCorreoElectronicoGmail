@@ -35,4 +35,14 @@ public class TarifaMRCDefinitions {
     public void agregarArticulo(){
         tarifaMRCSteps.agregarArticulo();
     }
+
+    @When("quiera ingresar modificadores de tarifa")
+    public void irAModificadores(){
+        tarifaMRCSteps.irAModificadores();
+    }
+
+    @Then("debo poder ver los modificadores definidos")
+    public void verificarModificadores(){
+        tarifaMRCSteps.verificarModificadores();
+    }
 }
