@@ -39,23 +39,14 @@ public class PlanDeTrabajoPage extends PageUtil{
 
     public void validarActividadesGeneradasEnRiesgo(){
         int NumeroDeRiesgosEnAnalisisDeRiesgos = 2;
-
         int bttonSolicitudRiesgosConsultables=1;
-        try {
-            List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(xPathSolicitudRiesgos));
-            for (WebElementFacade agenteElemento : listaNombresAgentesElement) {
-                String boton = "//a[contains(@id,'SubmissionWizard:JobWizardToolsMenuWizardStepSet:WorkplanScreen:JobWizardWorkplanPanelSet:JobWizardWorkplanLV:"+bttonSolicitudRiesgosConsultables+":Subject)]";
-                WebElementFacade bot = findBy(boton);
+        List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(xPathSolicitudRiesgos));
+        for (bttonSolicitudRiesgosConsultables =1 ;bttonSolicitudRiesgosConsultables <= listaNombresAgentesElement.size() ; bttonSolicitudRiesgosConsultables++) {
                 bttonSolicitudRiesgosConsultables++;
             }
-            if(NumeroDeRiesgosEnAnalisisDeRiesgos == bttonSolicitudRiesgosConsultables-1)
+            if(NumeroDeRiesgosEnAnalisisDeRiesgos == listaNombresAgentesElement.size())
             {
                 MatcherAssert.assertThat("Se genero una actividad por cada riesgo consultable",true);
             }
-        } catch (Exception e) {
-            LOGGER.error("ERROR EN PlAN DE TRABAJO TRAZA:" + e);
         }
-
-
     }
-}

@@ -2,16 +2,21 @@ package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 
 public class AnalisisDeRiesgosPage extends PageUtil {
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV_tb:LockForReview-btnInnerEl']")
+    private WebElementFacade botonBloqueo;
+    @FindBy(xpath = ".//a[contains(.,'Borrar')]")
+    private WebElementFacade botonBorrar;
     private int numeroDeRiesgos;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private static String xPathSolicitarAprobacion = ".//*[contains(@id,'SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet') and contains(@id,'UWIssueRowSet:RequestApproval')]";
@@ -55,26 +60,27 @@ public class AnalisisDeRiesgosPage extends PageUtil {
             waitForTextToAppear("Análisis de riesgo");
         }
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
-            findBy(xpathBorrarWorkskpace).click();
+            waitUntil(WAIT_TIME_3000);
+            botonBorrar.click();
         }
     }
 
     public void seleccionarSolicitarAprobacion() {
-        int bttonSolicitarAprobacion = 1;
-        waitFor(WAIT_TIME_4);
-        try {
+        int bttonSolicitarAprobacion=1;
             List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(xPathSolicitarAprobacion));
-            while (bttonSolicitarAprobacion <= listaNombresAgentesElement.size()) {
-                String boton = ".//a[contains(@id,'SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:" + bttonSolicitarAprobacion + ":UWIssueRowSet:RequestApproval')]";
-                WebElementFacade bot = findBy(boton);
-                bot.click();
+            for (bttonSolicitarAprobacion =1 ;bttonSolicitarAprobacion <= listaNombresAgentesElement.size() ; bttonSolicitarAprobacion++) {
+                WebElementFacade botonSolicitarAprobacion = findBy( ".//a[contains(@id,'RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:"+bttonSolicitarAprobacion+":UWIssueRowSet:RequestApproval')]");
+                try {
+                    botonBloqueo.waitUntilPresent();
+                }catch (StaleElementReferenceException e){
+                    LOGGER.info("StaleElementReferenceException "+e);
+                }
+                waitUntil(WAIT_TIME_2000);
+                botonSolicitarAprobacion.click();
+                waitUntil(WAIT_TIME_2000);
                 aceptarInicioSolicitudAprobacion();
-                waitFor(WAIT_TIME_2);
-                bttonSolicitarAprobacion++;
+                waitUntil(WAIT_TIME_3000);
             }
-        } catch (Exception e) {
-            LOGGER.error("ERROR EN ANALISISDERIESGO TRAZA:" + e);
-        }
         setNumeroDeRiesgos(bttonSolicitarAprobacion);
     }
 
