@@ -1,4 +1,4 @@
-Meta: @lote2
+Meta: @lote4
 Narrative:
 
 Scenario: Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial buscando por

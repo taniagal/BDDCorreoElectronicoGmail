@@ -1,7 +1,7 @@
 Validacion informacion poliza en cambio poliza
 
 
-Meta: @lote2
+Meta: @lote4
 @Story CDSEG-920
 @URL https://jira.suramericana.com.co/browse/CDSEG-920
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:4

@@ -1,6 +1,6 @@
 Seleccion De Ofertas
 
-Meta: @lote2
+Meta: @lote4
 
 @issue CDSEG-1023
 @tag automator: eliana_alvarez, sprint:2
