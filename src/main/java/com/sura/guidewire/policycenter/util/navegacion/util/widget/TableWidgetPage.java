@@ -12,10 +12,10 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.RenderedPageObjectView;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
-
 
 
 public class TableWidgetPage extends PageObject {
@@ -58,7 +58,7 @@ public class TableWidgetPage extends PageObject {
     }
 
     public Boolean existenFilasEnTabla() {
-        if (! obtenerFilas().isEmpty()) {
+        if (!obtenerFilas().isEmpty()) {
             return true;
         }
         return false;
@@ -95,16 +95,16 @@ public class TableWidgetPage extends PageObject {
     public void seleccionarDeComboConValor(String valorInputDeComboBox) {
         Boolean iterara = true;
 
-        while (iterara){
+        while (iterara) {
             try {
                 Iterator opcionToolbar = toolbarListWE.iterator();
 
-                if("Mostrar todos los roles".equals(valorInputDeComboBox)){
+                if ("Mostrar todos los roles".equals(valorInputDeComboBox)) {
                     findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:roleFilters-inputEl']").click();
                     findBy(LISTA_COMBO_DESPLEGABLE).waitUntilVisible();
                     shouldBeVisible(findBy(LISTA_COMBO_DESPLEGABLE));
                     iterara = false;
-                }else{
+                } else {
                     findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:personCompanyFilters-inputEl']").click();
                 }
                 iterara = false;
@@ -124,10 +124,18 @@ public class TableWidgetPage extends PageObject {
 
         List<WebElement> opcionesDeCombo = getDriver().findElements(By.xpath(xpathDelCombo));
         for (WebElement opcion : opcionesDeCombo) {
-            PageUtil.waitUntil(1000);
-            if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
-                opcion.click();
-                fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
+            try {
+                if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
+                    opcion.click();
+                    fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
+                }
+            } catch (StaleElementReferenceException e) {
+                LOGGER.info("StaleElementReferenceException " + e);
+                PageUtil.waitUntil(2000);
+                if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
+                    opcion.click();
+                    fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
+                }
             }
         }
 
