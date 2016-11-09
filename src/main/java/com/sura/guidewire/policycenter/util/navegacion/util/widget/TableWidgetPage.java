@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
@@ -122,6 +124,7 @@ public class TableWidgetPage extends PageObject {
 
         List<WebElement> opcionesDeCombo = getDriver().findElements(By.xpath(xpathDelCombo));
         for (WebElement opcion : opcionesDeCombo) {
+            PageUtil.waitUntil(1000);
             if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
                 opcion.click();
                 fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
