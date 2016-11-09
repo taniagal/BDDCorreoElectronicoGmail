@@ -1,10 +1,10 @@
 Procesar Cancelacion
 
-Meta: @lote1
+Meta: @lote1 @manual
 
 Scenario: 1 Programar cancelacion de poliza
 
-Meta: @lote1
+Meta: @lote1 @manual
 @Story CDSEG-3425
 @URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -24,7 +24,7 @@ Examples:
 
 Scenario: 2 Cancelar poliza con beneficiario oneroso
 
-Meta: @lote1
+Meta: @lote1 @manual
 @Story CDSEG-3425
 @URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -42,7 +42,7 @@ Examples:
 
 Scenario: 3 Cancelacion de  poliza con beneficiario oneroso sin aprobar UW
 
-Meta: @lote1
+Meta: @lote1 @manual
 @Story CDSEG-3425
 @URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -60,7 +60,7 @@ Examples:
 
 Scenario: 4 Cotizacion de cancelacion de poliza con beneficiario oneroso
 
-Meta: @lote1
+Meta: @lote1 @manual
 @Story CDSEG-3423
 @URL https://jira.suramericana.com.co/browse/CDSEG-3423
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
@@ -79,7 +79,7 @@ Examples:
 
 Scenario: 5 Cancelar poliza
 
-Meta: @lote1
+Meta: @lote1 @manual
 @Story CDSEG-3425
 @URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
