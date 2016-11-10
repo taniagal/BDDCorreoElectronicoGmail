@@ -1,6 +1,6 @@
 Inspeccion Vehiculo
 
-Meta:
+Meta: @lote2
 
 @issue #CDSEG-751
 @tag automator: diego_cardona_acevedo
@@ -18,7 +18,7 @@ When estoy expidiendo una poliza de autos
 And seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
-When ingrese los datos del asegurado
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion no valida
 And la placa <placa> estuvo vigente en la compañia
 Then se debe recuperar los siguientes datos:
@@ -27,8 +27,8 @@ Then se debe recuperar los siguientes datos:
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
-|numCuenta  |organizacion|canal      |placa |valorAsegurado|
-|C1060447895|Bancolombia |Televentas |HZR123|165900000,00  |
+|numCuenta  |organizacion|canal      |placa |valorAsegurado|tipo_documento      |documento |
+|C1060447895|Bancolombia |Televentas |HZR123|165900000,00  |CEDULA DE CIUDADANIA|1060447895|
 
 Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
 Given que voy a buscar la cuenta <numCuenta>
@@ -36,7 +36,7 @@ When estoy expidiendo una poliza de autos
 And seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
-When ingrese los datos del asegurado
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion
 And la placa <placa> estuvo vigente pero ahora esta cancelada
 Then se debe recuperar los siguientes datos:
@@ -45,8 +45,8 @@ Then se debe recuperar los siguientes datos:
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
-|numCuenta  |organizacion|canal             |placa |valorAsegurado|
-|C1060447895|Sura        |Canal Tradicional |MJK289|21800000,00   |
+|numCuenta  |organizacion|canal             |placa |valorAsegurado|tipo_documento      |documento |
+|C1060447895|Sura        |Canal Tradicional |MJK289|21800000,00   |CEDULA DE CIUDADANIA|1060447895|
 
 Scenario: Consultar inspeccion valida en SIA
 Given se ha realizado la cotizacion <cotizacion>
@@ -71,7 +71,8 @@ Examples:
 |22221222  |COR219 |El vehículo no tiene una inspección vigente a la fecha de ingreso del riesgo. |
 
 Scenario: Consulta requisito inspeccion en el modelo
-Meta: @manual
+Meta: @lote2
+@manual
 Given se tiene la informacion de la placa del vehiculo ingresada
 When el vehiculo tenga inspeccion no valida o no tenga inspeccion
 And la placa estuvo vigente en la compania
@@ -85,7 +86,8 @@ Examples:
 | |
 
 Scenario: Consulta requisito inspeccion en WS fasecolda
-Meta: @manual
+Meta: @lote2
+@manual
 Given se tiene la informacion de la placa del vehiculo ingresada
 When se haga la busqueda de informacion en el WS de fasecolda
 And se cumplan las condiciones para el requisito de inspeccion

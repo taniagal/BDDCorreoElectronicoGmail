@@ -1,6 +1,6 @@
 Detalle Registros Suscripcion
 
-Meta:
+Meta: @lote3
 
 @issue #SUGWUSC-14959
 @tag automator: Eliana_Alvarez
@@ -45,7 +45,7 @@ Then debo ver el costo total <total> para las cotizaciones en estado cotizado
 
 Examples:
 | numCuenta  | total               |
-| C000902244 | $2.828.547,00 (COP) |
+| C000902244 | $1.664.659,00 (COP) |
 
 Scenario: Consultar numero de cotizaciones del grupo
 Given que voy a buscar la cuenta <numCuenta>

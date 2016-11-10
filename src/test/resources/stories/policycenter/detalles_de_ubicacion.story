@@ -1,6 +1,6 @@
 Detalles De Ubicacion
 
-Meta:
+Meta: @lote3
 @issue #CDSEG-915
 @sprint 2
 @tag automator: nelson_jhair_mosquera_palacios

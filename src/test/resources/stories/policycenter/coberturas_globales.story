@@ -1,6 +1,6 @@
 Coberturas Globales
 
-Meta:
+Meta: @lote3
 @issue #CDSEG-738
 @sprint 3
 @tag automator: nelson_jhair_mosquera_palacios

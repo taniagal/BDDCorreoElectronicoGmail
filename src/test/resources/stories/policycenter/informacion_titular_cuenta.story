@@ -1,6 +1,6 @@
 Informacion Titular Cuenta
 
-Meta:
+Meta: @lote2
 
 @issue #CDSEG-657
 @tag automator: diego_cardona_acevedo
@@ -30,7 +30,7 @@ Then debe mostrarme en metricas de valor del cliente: Anio de vigencia de la pri
 
 Examples:
 | tipoDoc              | nombre   | apellido | anioVigencia                         | polizasActivas | canceladoPorCliente | canceladoPorCompania | otrasCancelaciones | primaVitalicia  | totalSiniestrosAbiertos | totalNetoIncurrido   |
-| CEDULA DE CIUDADANIA | Yurledys | Gallego  | Año de vigencia de la primera póliza | 0              | 0                   | 0                    | 0                  | Prima vitalicia | 0                       | Total neto incurrido |
+| CEDULA DE CIUDADANIA | Yurledys | Gallego  | Año de vigencia de la primera póliza | 2              | 0                   | 0                    | 0                  | Prima vitalicia | 0                       | Total neto incurrido |
 
 
 Scenario: Concatenar nombre completo de persona natural
@@ -93,7 +93,8 @@ Examples:
 | CEDULA DE CIUDADANIA | ALFREDO | Antioquia | Actividad económica |
 
 Scenario: Informacion basica
-Meta: @manual
+Meta: @lote2
+@manual
 Given que existe titular de la cuenta
 When ingrese a informacion del titular de la cuenta
 Then debe mostrarme en la informacion basica: Titular de la cuenta <titularCuenta>, tipo de documento <tipoDocumento>, Nro de documento <nroDocumento>, prima en vigencia <primaVigencia>, Segmentacion <segmentacion>, Comportamiento <comportamiento>, Total no Facturado <totalNoFacturado>, total actualmente facturado <totalFacturado>, total vencido <totalVencido> y total pendiente <totalPendiente>.

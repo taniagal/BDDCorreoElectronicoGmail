@@ -1,6 +1,6 @@
 Modificacion Informacion Poliza Pa
 
-Meta:
+Meta: @lote4
 
 @issue #CDSEG-977
 @tag automator: diego_cardona_acevedo
@@ -42,7 +42,7 @@ Examples:
 |TEST_22223222 |
 
 Scenario: Validar campo poliza financiada
-Meta:
+Meta: @lote4
 @manual
 Given ya se tiene una poliza expedida
 When el tipo de poliza es PPAutos
@@ -51,14 +51,3 @@ Then se debe habilitar el campo poliza financiada
 Examples:
 |numeroPoliza  |
 |TEST_22223222 |
-
-Scenario: Validar que muestre mensaje warning de PEPS para tomador - Información de la póliza
-Given ya se tiene una poliza expedida <numeroPoliza>
-When adicione un segundo tomador <tipoDocumento> <numeroDocumento>
-And se presione el boton siguiente
-Then se debe mostrar el mensaje como warning <mensaje> que se obtenga de Riesgos PEPS de tomador
-And se debe permitir continuar a asegurados de la modificacion
-
-Examples:
-|numeroPoliza |tipoDocumento        |numeroDocumento |mensaje                                                                                               |
-|TEST_22223222|CEDULA DE CIUDADANIA |123456          |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|

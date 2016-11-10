@@ -1,6 +1,6 @@
 Detalle De Asegurado De Cotizacion
 
-Meta:
+Meta: @lote2
 
 @issue #CDSEG-1027
 @tag automator: eliana_alvarez, sprint:2
@@ -26,8 +26,7 @@ And consulte un asegurado del directorio
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
 And seleccione el contacto a agregar
 And vaya al siguiente paso de la cotizacion
-Then muestre el mensaje de validacion del asegurado <mensaje>
-And se debe permitir continuar la cotizacion
+Then se debe continuar al siguiente paso de la cotizacion
 
 Examples:
 | cuenta     | agente  | organizacion | canal             | producto | tipoId               | numeroId | mensaje                                                                                              |
@@ -68,14 +67,14 @@ And seleccione el contacto a agregar
 And vaya a la opcion agregar
 And agregue un asegurado que es contacto de la cuenta
 Then deben quedar agregados como asegurados:
-|nombre|tipoDocumento|numeroDocumento|
-|DIEGO VELEZ|CEDULA DE CIUDADANIA|32536001|
-|GLORIA GALLEGO|CEDULA DE CIUDADANIA|1264567899|
-And se debe permitir continuar la cotizacion
+| nombre         | tipoDocumento        | numeroDocumento |
+| DIEGO VELEZ    | CEDULA DE CIUDADANIA | 32536001        |
+| GLORIA GALLEGO | CEDULA DE CIUDADANIA | 1264567899      |
+And se debe continuar al siguiente paso de la cotizacion
 
 Examples:
-|cuenta    | agente  | organizacion | canal             | producto |tipoId|numeroId|mensaje|
-|C000888888| DIRECTO | Sura         | Canal Tradicional | Autos    |CEDULA DE CIUDADANIA|32536001|DIEGO VELEZ, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
+| cuenta     | agente  | organizacion | canal             | producto | tipoId               | numeroId | mensaje                                                                                                   |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Autos    | CEDULA DE CIUDADANIA | 32536001 | DIEGO VELEZ, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal. |
 
 Scenario: Agregar asegurado y Editar campos en creacion tipo persona natural
 Given voy a crear una nueva cotizacion
@@ -88,17 +87,17 @@ And quiera agregar un asegurado
 And vaya a la opcion agregar
 And seleccione ingresar nueva persona natural
 And ingrese los datos de persona natural:
-|tipoId|numeroId|primerNombre|primerApellido|pais|departamento|ciudad|direccion|tipoDireccion|
-|CEDULA DE CIUDADANIA|1234568999|LUCIANA|LONDOÑO|Colombia|Antioquia|Medellin|Cra 65 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
+| tipoId               | numeroId   | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
+| CEDULA DE CIUDADANIA | 1234568999 | LUCIANA      | LONDOÑO        | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
 And quiera editar los datos del nuevo contacto persona natural:
-|tipoId|numeroId|primerNombre|primerApellido|pais|departamento|ciudad|direccion|tipoDireccion|
-|CEDULA DE CIUDADANIA|1234569999|LUCIANA|CALLE|Colombia|Antioquia|Medellin|Cra 65 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
+| tipoId               | numeroId   | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
+| CEDULA DE CIUDADANIA | 1234569999 | LUCIANA      | CALLE          | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
 And vaya a la opcion agregar
 And consulte un asegurado del directorio
 And vuelva a ver los asegurados
 Then deben quedar agregados como asegurados:
-|nombre|tipoDocumento|numeroDocumento|
-|LUCIANA CALLE|CEDULA DE CIUDADANIA|1234568999|
+| nombre        | tipoDocumento        | numeroDocumento |
+| LUCIANA CALLE | CEDULA DE CIUDADANIA | 1234568999      |
 
 Examples:
 |cuenta    | agente  | organizacion | canal             | producto |
@@ -115,17 +114,17 @@ And quiera agregar un asegurado
 And vaya a la opcion agregar
 And seleccione ingresar nueva persona juridica
 And ingrese los datos de persona juridica:
-|tipoId|numeroId|razonSocial|pais|departamento|ciudad|direccion|tipoDireccion|
-|NIT|9998887777|COOPERATIVA NUMERODOS|Colombia|Antioquia|Medellin|Cra 66 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
+| tipoId | numeroId   | razonSocial           | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
+| NIT    | 9998887777 | COOPERATIVA NUMERODOS | Colombia | Antioquia    | Medellin | Cra 66 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
 And quiera editar los datos del nuevo contacto persona juridica:
-|tipoId|numeroId|razonSocial|pais|departamento|ciudad|direccion|tipoDireccion|
-|NIT|9998887778|COOPERATIVA LALO|Colombia|Antioquia|Medellin|Cra 67 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
+| tipoId | numeroId   | razonSocial      | pais     | departamento | ciudad   | direccion       | tipoDireccion                  | monedaPreferida |
+| NIT    | 9998887778 | COOPERATIVA LALO | Colombia | Antioquia    | Medellin | Cra 67 # 48-162 | DIRECCION DE OFICINA PRINCIPAL | COP             |
 And vaya a la opcion agregar
 And consulte un asegurado del directorio
 And vuelva a ver los asegurados
 Then deben quedar agregados como asegurados:
-|nombre|tipoDocumento|numeroDocumento|
-|COOPERATIVA LALO|NIT|9998887777|
+| nombre           | tipoDocumento | numeroDocumento |
+| COOPERATIVA LALO | NIT           | 9998887777      |
 
 Examples:
 |cuenta    | agente  | organizacion | canal             | producto |
@@ -142,14 +141,14 @@ And quiera agregar un asegurado
 And vaya a la opcion agregar
 And seleccione ingresar nueva persona natural
 And ingrese los datos de persona natural:
-|tipoId|numeroId|primerNombre|primerApellido|pais|departamento|ciudad|direccion|tipoDireccion|
-|CEDULA DE CIUDADANIA|10000000010|ELIANA|QUINTERO|Colombia|Antioquia|Medellin|Cra 65 # 48-162|DIRECCION DE OFICINA PRINCIPAL|
+| tipoId               | numeroId    | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
+| CEDULA DE CIUDADANIA | 10000000010 | ELIANA       | QUINTERO       | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
 And vaya al siguiente paso de la cotizacion
 Then muestre el mensaje de validacion del asegurado <mensaje>
 
 Examples:
-|cuenta    | agente  | organizacion | canal             | producto |mensaje|
-|C000888888| DIRECTO | Sura         | Canal Tradicional | Autos    |La longitud del número de documento de identificación no es válida, máximo 10 caracteres|
+| cuenta     | agente  | organizacion | canal             | producto | mensaje                                                                                  |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Autos    | La longitud del número de documento de identificación no es válida, máximo 10 caracteres |
 
 Scenario: Quitar asegurado
 Given voy a crear una nueva cotizacion
@@ -184,8 +183,7 @@ And consulte un asegurado del directorio
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
 And seleccione el contacto a agregar
 And vaya al siguiente paso de la cotizacion
-Then muestre el mensaje de validacion del asegurado <mensaje> que viene de Riesgos Consultables
-And se debe permitir continuar la cotizacion
+Then se debe continuar al siguiente paso de la cotizacion
 
 Examples:
 | cuenta     | agente  | organizacion | canal             | producto | tipoId               | numeroId | mensaje                                                                                                |

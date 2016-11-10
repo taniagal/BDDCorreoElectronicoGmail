@@ -1,6 +1,6 @@
 Informacion Poliza Pa
 
-Meta:
+Meta: @lote4
 
 @issue #CDSEG-995
 @tag automator: diego_cardona_acevedo
@@ -135,23 +135,8 @@ Examples:
 | numCuenta    | organizacion | canal      | organizacionDetalle | canalDetalle | tipoPoliza | tipoPlazo | fechaInicioVigencia | mensaje                                                                                     |
 | C000888888   | Bancolombia  | Televentas | Bancolombia         | Televentas   | PPAutos    | 6 meses   | 01/01/2016          | La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
 
-Scenario: Validar warning por tomador riesgo PEP
-Given que voy a buscar la cuenta <numCuenta>
-And se visualiza la informacion de la poliza
-When seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
-And seleccione el producto para expedir la poliza
-And pase a la siguiente opcion
-And se identifique el tipo <tipoDocumento> y numero de documento <numeroDocumento> del tomador como PEPS
-Then se debe mostrar el mensaje <mensaje> que se obtenga de Riesgos PEPS como warning
-And se debe permitir continuar la cotizacion
-
-Examples:
-|numCuenta   |tipoDocumento       |numeroDocumento|organizacion|canal             |mensaje                                                                                               |
-|C000777778  |CEDULA DE CIUDADANIA|123456         |Sura        |Canal Tradicional |FRANK RAMIREZ ALZATE con CEDULA DE CIUDADANIA - 123456 es un riesgo no estándar y debe ser autorizado.|
-
 Scenario: Seleccionar oficina de radicacion
-Meta:
+Meta: @lote4
 @manual
 Given ya se inicio una nueva suscripcion
 And se puede visualizar la informacion de la poliza

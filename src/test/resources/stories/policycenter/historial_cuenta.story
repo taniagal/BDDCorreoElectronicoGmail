@@ -1,6 +1,6 @@
 Historial Cuenta
 
-Meta:
+Meta: @lote4
 
 @issue #CDSEG-925
 @tag automator: diego_cardona_acevedo
@@ -50,7 +50,7 @@ Examples:
 |C000777777|Super User|01/01/2016|12/30/2016 |
 
 Scenario: Busqueda de historial por usuario
-Meta:
+Meta: @lote
 @manual
 Given estoy en el historial de la cuenta
 When indique un <usuario> para realizar la busqueda
@@ -61,7 +61,7 @@ Examples:
 |C010478975|Super User|
 
 Scenario: Busqueda del historial por rango de fechas, Sin indicar  la opción de fecha  Hasta
-Meta:
+Meta: @lote4
 @manual
 Given estoy en el historial de la cuenta
 When se realiza la busqueda por <fecha> y solo se indique la opcion desde
@@ -72,7 +72,7 @@ Examples:
 |C010478975|01/04/2016|
 
 Scenario: Busqueda del historial por rango de fechas, sin indicar la opcion de fecha Desde
-Meta:
+Meta: @lote4
 @manual
 Given estoy en el historial de la cuenta
 When se realiza la busqueda por <fecha> y solo se indique la opcion hasta
@@ -83,7 +83,7 @@ Examples:
 |C010478975|01/04/2016|
 
 Scenario: Busqueda del historial por rango de fechas
-Meta:
+Meta: @lote4
 @manual
 Given estoy en el historial de la cuenta
 When se realiza la busqueda por fecha ( <desde> - <hasta>)
@@ -94,7 +94,7 @@ Examples:
 |C010478975|01/01/2016|01/07/2016|
 
 Scenario: Ver detalle de la transaccion - Poliza
-Meta:
+Meta: @lote4
 @manual
 Given estoy en el historial de la cuenta
 When seleccione  el  numero de la <poliza>
@@ -105,7 +105,7 @@ Examples:
 |C010478975|pedrvevi|
 
 Scenario: Ver detalle de la transaccion - Transaccion de Poliza
-Meta:
+Meta: @lote4
 @manual
 Given estoy en el historial de la cuenta
 When seleccione  el  numero de la transaccion <numeroTransaccion> de la poliza
@@ -116,7 +116,7 @@ Examples:
 |C010478975|pedrvevi|
 
 Scenario: Valor original
-Meta:
+Meta: @lote4
 @manual
 Given estoy en el historial de la cuenta
 When se realice una modificacion valorable a la <poliza> de la cuenta
@@ -127,7 +127,7 @@ Examples:
 |C010478975|pedrvevi|123|
 
 Scenario: Valor nuevo
-Meta:
+Meta: @lote4
 @manual
 Given estoy en el historial de la cuenta
 When se realice una modificacion valorable a la <poliza> de la cuenta
