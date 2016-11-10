@@ -2,6 +2,7 @@ Solicitar Requisito Pa
 
 Meta:
 
+@lote4
 @issue #CDSEG-2881
 @tag automator: diego_cardona_acevedo
 @local
@@ -24,7 +25,28 @@ Examples:
 Scenario: validar mensaje de advertencia - requisitos pendientes
 Given existe una cotizacion <numeroCotizacion>
 When llegue a la expedicion de la poliza
-And la poliza tenga requisitos pendientes
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                            |
 |Existen requisitos pendientes, por favor verifique.|
+
+Examples:
+|numeroCotizacion|
+|22334457        |
+
+Scenario: validar opcion Solicitar requisitos - modificacion
+Given he realizado la cotizacion <cotizacion>
+When intente expedir la poliza
+And existan requisitos pendientes
+Then se debe mostrar un mensaje de advertencia
+|mensaje                                            |
+|Existen requisitos pendientes, por favor verifique.|
+
+Examples:
+|cotizacion|
+|55570000  |
+
+Scenario: Validar ventana de requisitos
+Meta: @manual
+Given estoy expidiendo una poliza nueva
+When seleccione la opcion expedir poliza
+Then se deben cargar en la ventana de requisitos los requisitos de acuerdo a la regla de negocio
