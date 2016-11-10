@@ -22,8 +22,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade botonCrearVehiculo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:Prev-btnInnerEl']")
-    public WebElementFacade botonVolver;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
     private WebElementFacade campoTxtPlaca;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
@@ -98,11 +96,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             botonSiguiente.click();
         }
         resetImplicitTimeout();
-    }
-
-    public void clickVolver() {
-        botonVolver.click();
-        waitFor(campoTxtchasis).shouldBePresent();
     }
 
     public void agregarVehiculo(ExamplesTable datosVehiculo) {

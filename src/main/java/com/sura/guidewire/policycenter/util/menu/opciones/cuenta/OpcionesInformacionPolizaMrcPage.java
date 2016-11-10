@@ -104,7 +104,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade listaOrganizacion;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-inputEl']")
     private WebElementFacade listaCanal;
-    //@FindBy(xpath =".//a[contains(.,'Agregar coaseguro')]")
     @FindBy(xpath = "//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade agregarCoaseguro;
     @FindBy(xpath = "//input[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion_true-inputEl']")
