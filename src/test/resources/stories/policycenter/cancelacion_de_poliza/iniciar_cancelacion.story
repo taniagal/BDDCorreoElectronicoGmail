@@ -1,11 +1,13 @@
 Iniciar Cancelacion
 
 
-Meta: @lote2
+Meta:
+@lote3
 @Story CDSEG-3417
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
+
 
 Scenario: 1 Validacion lista de motivos
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
@@ -27,14 +29,9 @@ Examples:
 | numPoliza     | rolUsuario |
 | TEST_99999999 | Asesor     |
 
+
+
 Scenario:  2 Validacion fecha de cancelacion
-
-Meta: @lote2
-@Story CDSEG-3417
-@URL https://jira.suramericana.com.co/browse/CDSEG-
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: por error de cobro, Descripción: Prueba
 Then se debe mostrar la fecha del dia de hoy
@@ -44,14 +41,8 @@ Examples:
 | TEST_99999999 | Asesor     |
 
 
+
 Scenario:  3 Ingreso de fecha superior a los 60 dias de retroactividad
-
-Meta: @lote2
-@Story CDSEG-3417
-@URL https://jira.suramericana.com.co/browse/CDSEG-
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: por error de cobro, Descripción: Prueba
 And ingrese fecha superior a 61 dias
@@ -61,14 +52,9 @@ Examples:
 | numPoliza     | rolUsuario |
 | TEST_99999999 | Asesor     |
 
+
+
 Scenario: 4 Validacion opcion cancelar transaccion
-
-Meta: @lote2
-@Story CDSEG-3417
-@URL https://jira.suramericana.com.co/browse/CDSEG-
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese a la opcion de cancelar poliza
 Then se debe mostrar la opcion de cancelar transaccion
@@ -78,14 +64,8 @@ Examples:
 | TEST_99999999 | Asesor     |
 
 
+
 Scenario: 5 Validacion metodo de reembolso y campo fuente
-
-Meta: @lote2
-@Story CDSEG-3417
-@URL https://jira.suramericana.com.co/browse/CDSEG-
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When seleccione la lista motivo de cancelacion
 And seleccione el <motivo> de cancelacion
@@ -102,12 +82,8 @@ Examples:
 
 Scenario: 6 Validacion lista de motivos para poliza bancolombia
 
-Meta: @lote2 @manual
-@Story CDSEG-3417
-@URL https://jira.suramericana.com.co/browse/CDSEG-
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
+Meta:
+@manual
 Given que estoy en el resumen de la poliza MRC  de bancolombia con numero de poliza <numPoliza> con el rol <rolUsuario>
 When seleccione la lista motivos de cancelacion
 Then se deben visualizar los siguientes motivos
