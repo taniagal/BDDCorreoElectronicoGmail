@@ -13,8 +13,6 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.concurrent.TimeUnit;
 
 public class ModificacionRenovacionVehiculoPage extends PageUtil {
-
-    private final Actions act = new Actions(getDriver());
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade itemVehiculos;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
@@ -57,7 +55,7 @@ public class ModificacionRenovacionVehiculoPage extends PageUtil {
     public void irAModificarVehiculo() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
         waitForTextToAppear("Si se edita esta transacción de la póliza, se invalida la cotización actual");
-        act.sendKeys(Keys.ENTER).build().perform();
+        actions.sendKeys(Keys.ENTER).build().perform();
         waitUntil(WAIT_TIME_1500);
     }
 

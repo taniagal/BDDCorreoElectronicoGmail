@@ -112,16 +112,16 @@ public class Poliza {
     public void cuandoIntenteCambiarInformacionDeLaPolizaMRC() {
         LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
 
-        polizaSteps.seleccionar_boton_acciones();
-        polizaSteps.seleccionar_opcion_cambiar_poliza();
+        polizaSteps.seleccionarBotonAcciones();
+        polizaSteps.seleccionarOpcionCambiarPoliza();
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
-        polizaSteps.seleccionar_opcion_informacion_de_poliza();
+        polizaSteps.seleccionarOpcionInformacionDePoliza();
     }
 
     @When("desee seleccionar instrucciones previas a la renovacion")
     public void cuandoDeseeSeleccionarInstruccionesPreviasALaRenovacion() {
         LOGGER.info("Poliza.cuandoDeseeRealizarInstruccionesPreviasALaRenovacion");
-        polizaSteps.seleccionar_boton_acciones().
+        polizaSteps.seleccionarBotonAcciones().
                 seleccionar_instrucciones_previas_a_la_renovacion();
 
         instruccionesPreviasARenovacionSteps.seleccionar_boton_editar().
@@ -131,17 +131,17 @@ public class Poliza {
     @When("ingrese los motivos de cancelacion de la poliza Motivo: $motivo, Descripción: $descripcion")
     public void cuandoIngreseLosMotivosDeCancelacion(String motivo, String descripcion) {
         LOGGER.info("Poliza.cuandoIngreseLosMotivosDeCancelacion");
-        polizaSteps.seleccionar_boton_acciones().seleccionar_cancelar_poliza();
-        polizaSteps.ingresar_motivos_cancelacion(motivo, descripcion);
+        polizaSteps.seleccionarBotonAcciones().seleccionar_cancelar_poliza();
+        polizaSteps.ingresarMotivosCancelacion(motivo, descripcion);
     }
 
     @When("realice la cancelacion de poliza")
     public void cuandoRealiceCancelacionDeLaPoliza() {
         LOGGER.info("Poliza.cuandoRealiceCancelacionDeLaPoliza");
-        polizaSteps.iniciar_cancelacion_de_poliza();
-        polizaSteps.seleccionar_opcion_compromiso();
-        polizaSteps.seleccionar_opcion_cancelar_ahora();
-        polizaSteps.confirmar_cancelacion();
+        polizaSteps.iniciarCancelacionDePoliza();
+        polizaSteps.seleccionarOpcionCompromiso();
+        polizaSteps.seleccionarOpcionCancelarAhora();
+        polizaSteps.confirmarCancelacion();
 
     }
     @When("ingrese fecha superior al dia actual")
@@ -152,10 +152,10 @@ public class Poliza {
     @When("realice la programacion de cancelacion")
         public void cuandoRealiceLaProgramacionDeCancelacion(){
             LOGGER.info("Poliza.cuandoRealiceLaProgramacionDeCancelacion");
-            polizaSteps.iniciar_cancelacion_de_poliza();
-            polizaSteps.seleccionar_opcion_compromiso();
-            polizaSteps.seleccionar_opcion_programar_cancelacion();
-            polizaSteps.confirmar_cancelacion();
+            polizaSteps.iniciarCancelacionDePoliza();
+            polizaSteps.seleccionarOpcionCompromiso();
+            polizaSteps.seleccionarOpcionProgramarCancelacion();
+            polizaSteps.confirmarCancelacion();
         }
 
     @When("rescinda la cancelacion de la poliza <numPoliza>")
@@ -163,9 +163,19 @@ public class Poliza {
         LOGGER.info("Poliza.cuandoRescindaLaCancelacion");
         guidewire.ir_a_navegacion_superior()
                 .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
-        polizaSteps.seleccionar_boton_acciones().seleccionar_boton_rescindir_cancelacion().seleccionar_poliza_a_rescindir();
-        polizaSteps.seleccionar_opcion_cierre();
-        polizaSteps.seleccionar_opcion_rescindir_cancelacion();
+        polizaSteps.seleccionarBotonAcciones().seleccionar_boton_rescindir_cancelacion().seleccionar_poliza_a_rescindir();
+        polizaSteps.seleccionarOpcionCierre();
+        polizaSteps.seleccionarOpcionRescindirCancelacion();
+
+    }
+    @When("retire la cancelacion de la subscripcion <numSubscripcion>")
+    public void cuandoRetireaLaSubscripcion(String numSubscripcion){
+        LOGGER.info("Poliza.cuandoRetireaLaSubscripcion");
+        guidewire.ir_a_navegacion_superior()
+                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
+        polizaSteps.seleccionarOpcionCierre();
+        polizaSteps.seleccionarOpcionRetirarTransaccion();
+        polizaSteps.confirmarCancelacion();
 
     }
     @When("ingreso al resumen de la poliza")
@@ -179,7 +189,7 @@ public class Poliza {
     @When("inicie la cancelacion")
     public void cuandoInicieLaCancelacion(){
         LOGGER.info("Poliza.cuandocuandoInicieLaCancelacion");
-        polizaSteps.iniciar_cancelacion_de_poliza();
+        polizaSteps.iniciarCancelacionDePoliza();
     }
     @Then("se debe generar un UW Issue para solicitar la autorización y el mensaje debe ser: $mensaje")
     public void entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion(String mensaje) {
@@ -190,13 +200,13 @@ public class Poliza {
     @Then("se debe mostrar un mensaje con el texto: $Mensaje")
     public void entoncesSeDebeMostrarUnMensajeConElTexto(String mensaje){
         LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion");
-        polizaSteps.se_muestra_bloqueo_cancelacion_de_poliza(mensaje);
+        polizaSteps.seMuestraBloqueoCancelacionDePoliza(mensaje);
     }
 
     @Then("se debe visualizar un mensaje con el texto: $Mensaje")
     public void entoncesSeDebevisualizarrUnMensajeConElTexto(String mensaje){
         LOGGER.info("Poliza.entoncesSeDebevisualizarrUnMensajeConElTexto");
-        polizaSteps.se_muestra_mensaje__de_beneficiario_oneroso(mensaje);
+        polizaSteps.seMuestraMensajeDeBeneficiarioOneroso(mensaje);
     }
 
     @When("despliegue $opcion")
@@ -249,8 +259,8 @@ public class Poliza {
     @Then("la revocacion es correcta si no se se muestra el tipo en el campo <tipo> y se oculta el mensaje de cancelacion pendiente")
     public void entoncesLaRevocacionesEsCorrectaSiNoSeMuestra(String tipo){
         LOGGER.info("Poliza.entoncesLaRevocacionesEsCorrectaSiNoSeMuestra");
-        polizaSteps.validar_que_no_se_muestre_tipo_en_tabla_transacciones(tipo);
-        polizaSteps.validar_que_no_se_muestre_mensaje();
+        polizaSteps.validarQueNoSeMuestreTipoEnTablaTransacciones(tipo);
+        polizaSteps.validarQueNoSeMuestreMensaje();
 
 
     }
@@ -258,18 +268,18 @@ public class Poliza {
     @Then("debo ver en el resumen de la poliza y en informacion de poliza los coaseguros no editables")
     public void entoncesDeboVerEnElResumenDeLaPolizaYEnInformacionDePolizaLosCoasegurosNoEditables(){
         LOGGER.info("Poliza.entoncesDeboVerEnElResumenDeLaPolizaLosCoasegurosNoEditables");
-        polizaSteps.ver_resumen_de_la_poliza_expedida();
-        polizaSteps.ingresar_a_ver_coaseguros();
+        polizaSteps.verResumenDeLaPolizaExpedida();
+        polizaSteps.ingresarAVerCoaseguros();
         polizaSteps.validarcamposnoeditables();
-        polizaSteps.seleccionar_opcion_informacion_de_poliza();
-        polizaSteps.ingresar_a_ver_coaseguros();
+        polizaSteps.seleccionarOpcionInformacionDePoliza();
+        polizaSteps.ingresarAVerCoaseguros();
         polizaSteps.validarcamposnoeditables();
     }
     @When("seleccione la lista motivo de cancelacion")
     public void cuandoSeleccioneLaListaMotivoDeCancelacion() {
         LOGGER.info("Poliza.cuandoSeleccioneLaListaMotivoDeCancelacion");
-        polizaSteps.seleccionar_boton_acciones().seleccionar_cancelar_poliza();
-        polizaSteps. desplegar_lista_motivos_cancelacion();
+        polizaSteps.seleccionarBotonAcciones().seleccionar_cancelar_poliza();
+        polizaSteps.desplegarListaMotivosCancelacion();
 
     }
     @Then("se debe visualizar los siguientes motivos $motivos")
@@ -283,7 +293,7 @@ public class Poliza {
     }
     @Then("se debe mostrar la fecha del dia de hoy")
     public void entoncesValidarFechaSeaFechadeHOY(){
-        MatcherAssert.assertThat(polizaSteps.es_fecha_cancelacion_nHOY(), Is.is(true));
+        MatcherAssert.assertThat(polizaSteps.esFechaCancelacionNHOY(), Is.is(true));
         LOGGER.info("CotizacionDefinitions.ValidarFechaSeaFechadeHOY");
     }
     @When("ingrese fecha superior a 61 dias")
@@ -295,23 +305,23 @@ public class Poliza {
     @Then("se debe mostrar mensaje con el texto: $advertencia")
     public void entoncesSeDebeMostrarMensajeConElTexto(String advertencia) {
         LOGGER.info("Poliza.entoncesSeDebeMostrarMensajeConElTexto");
-        assertThat(polizaSteps.validar_mensaje(), equalTo(advertencia));
+        assertThat(polizaSteps.validarMensaje(), equalTo(advertencia));
     }
     @When("ingrese a la opcion de cancelar poliza")
     public void cuandoIngreseALaOpcionDeCancelarPoliza(){
         LOGGER.info("Poliza.cuandoIngreseALaOpcionDeCancelarPoliza");
-        polizaSteps.seleccionar_boton_acciones().seleccionar_cancelar_poliza();
+        polizaSteps.seleccionarBotonAcciones().seleccionar_cancelar_poliza();
 
     }
     @Then("se debe mostrar la opcion de cancelar transaccion")
     public void entoncesSeDebeMostrarLaOpcionDeCancelarTransaccion() {
         LOGGER.info("Poliza.entoncesSeDebeMostrarLaOpcionDeCancelarTransaccion");
-        polizaSteps.validar_opcion_cancelar_transaccion();
+        polizaSteps.validarOpcionCancelarTransaccion();
     }
     @When("desee seleccionar motivos de cancelacion")
         public void cuandoSeleccioneMotivosdeCancelacion(){
             LOGGER.info("Poliza.cuandoSeleccioneMotivosdeCancelacion");
-            polizaSteps.desplegar_lista_motivos_cancelacion();
+            polizaSteps.desplegarListaMotivosCancelacion();
 
 
 
@@ -319,12 +329,12 @@ public class Poliza {
     @When("seleccione el <motivo> de cancelacion")
     public void cuandoSeleccioneelMotivodeCancelacion(@Named("motivo") String motivo,@Named("descripcion") String descripcion){
         LOGGER.info("Poliza.cuandoSeleccioneelMotivodeCancelacion");
-        polizaSteps.ingresar_motivos_cancelacion(motivo, descripcion);
+        polizaSteps.ingresarMotivosCancelacion(motivo, descripcion);
     }
     @Then("se debe mostrar el metodo de reembolso <reembolso> sin el campo fuente")
     public void entoncesSedebeMostrarElMetodoDeReembolsoSinElcampofuente(@Named("reembolso") String reembolso){
         LOGGER.info("Poliza.entoncesSedebeMostrarElMetodoDeReembolsoSinElcampofuente");
         org.hamcrest.MatcherAssert.assertThat(polizaSteps.obtenerPolizaPage().obtenerMetodoDeReembolso(), equalTo(reembolso));
-        polizaSteps.validar_ocultacion_campo_fuente();
+        polizaSteps.validarOcultacionCampoFuente();
     }
 }

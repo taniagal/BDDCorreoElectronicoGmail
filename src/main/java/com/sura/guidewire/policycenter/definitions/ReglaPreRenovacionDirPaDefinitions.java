@@ -31,7 +31,7 @@ public class ReglaPreRenovacionDirPaDefinitions {
     }
 
     @Then("se deben habilitar solo las opciones: $opcionesDir")
-    public void thenhabilitarInstrucciones(ExamplesTable opcionesDir) throws Exception {
+    public void thenhabilitarInstrucciones(ExamplesTable opcionesDir){
         reglaPreRenovacionDirPaSteps.valida_opciones_intruccion_detalles(opcionesDir);
     }
 

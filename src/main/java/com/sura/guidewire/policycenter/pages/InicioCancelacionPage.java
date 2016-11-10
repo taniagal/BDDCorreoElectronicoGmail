@@ -107,7 +107,7 @@ public class InicioCancelacionPage extends PageUtil{
         MatcherAssert.assertThat("Mensaje no corresponde al referenciado", lblMensaje.getText().contains(mensaje));
     }
 
-    public void validaListaMotivoDiferenteBancolombia(ExamplesTable listaMotivo) throws Exception {
+    public void validaListaMotivoDiferenteBancolombia(ExamplesTable listaMotivo) {
         waitUntil(WAIT_TIME_800);
         txtLista.click();
         this.validarDatosDeLaLista(listaMotivo);
@@ -115,7 +115,7 @@ public class InicioCancelacionPage extends PageUtil{
     }
 
 
-    public void validarDatosDeLaLista(ExamplesTable listaMotivo) throws Exception{
+    public void validarDatosDeLaLista(ExamplesTable listaMotivo){
         List<WebElementFacade> elementoInstruccion;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(listaMotivo);
         for (String tipo : elementosRequeridos) {

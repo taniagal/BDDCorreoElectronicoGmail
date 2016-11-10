@@ -53,7 +53,7 @@ public class AdmonCotizacionCuentaNoTomarDefinitions {
         admonCotizacionCuentaNoTomarSteps.inhabilita_acciones();
     }
     @Then("el sistema debe mostrarme todas las siguientes opciones: $listaCodRazon")
-    public void validarOpciones(ExamplesTable listaCodRazon) throws Exception {
+    public void validarOpciones(ExamplesTable listaCodRazon){
         admonCotizacionCuentaNoTomarSteps.valida_lista_de_razones(listaCodRazon);
     }
 

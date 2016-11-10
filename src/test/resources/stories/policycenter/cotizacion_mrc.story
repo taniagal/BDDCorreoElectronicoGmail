@@ -1,6 +1,6 @@
 Cotizacion MRC
 
-Meta: @lote3
+Meta: @lote2
 
 @issue #CDSEG-774
 @tag automator: diego_cardona_acevedo
@@ -18,20 +18,11 @@ Given se ha realizado la cotizacion MRC <cotizacion>
 When ingrese a consultar la cotizacion
 Then debo ver la informacion de la cotizacion
 | cotizacion | tomador              | tipoDocumento        | numeroDocumento | direccion                                   | tipoDireccion           | descripcionDireccion                       | empresaAseguradora        | prima             | impuestos        | total             |
-| 22222237   | FRANK RAMIREZ ALZATE | CEDULA DE CIUDADANIA | 123456          | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | Acme Low Hazard Insurance | $120.000,00 (COP) | $19.200,00 (COP) | $139.200,00 (COP) |
+| 22222237   | FRANK RAMIREZ ALZATE | CEDULA DE CIUDADANIA | 123456          | CRA 65 # 48-162, LOUISVILLE, Estados Unidos | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | Acme Low Hazard Insurance | $200.000,00 (COP) | $32.000,00 (COP) | $232.000,00 (COP) |
 
 Examples:
 |cotizacion |
 |22222237   |
-
-Scenario: Mostrar Prima
-Given se ha realizado la cotizacion MRC <cotizacion>
-When ingrese a consultar la cotizacion
-Then debo ver la prima <primaTotal> a cobrar al cliente
-
-Examples:
-|cotizacion |primaTotal         |
-|22222237   | $120.000,00 (COP) |
 
 Scenario: Validar informacion detalle cotizacion
 Given se ha realizado la cotizacion MRC <cotizacion>

@@ -38,7 +38,7 @@ public class InicioCancelacionSteps extends ScenarioSteps {
     }
 
 
-    public void valida_lista_de_motivos_diferente_bancolombia(ExamplesTable listaMotivo) throws Exception {
+    public void valida_lista_de_motivos_diferente_bancolombia(ExamplesTable listaMotivo) {
         inicioCancelacionPage.validaListaMotivoDiferenteBancolombia(listaMotivo);
     }
 }

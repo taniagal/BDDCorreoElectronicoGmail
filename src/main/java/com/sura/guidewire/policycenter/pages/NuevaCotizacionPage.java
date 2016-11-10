@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.model.AgenteModel;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +24,7 @@ import org.slf4j.LoggerFactory;
 // TODO: 15/06/2016 Pendiente refactor
 public class NuevaCotizacionPage extends PageObject {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
+    private static final int CONSTANTE_2 = 2;
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private List<AgenteModel> listaAgentesModel = null;
     private String nombreAgente;
@@ -47,6 +48,7 @@ public class NuevaCotizacionPage extends PageObject {
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
     public static final String TRACE = "\nTRACE: \n";
     protected static final int WAIT_TIME_15 = 15;
+    protected static final int WAIT_TIME_2000 = 2000;
 
 
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
@@ -114,8 +116,16 @@ public class NuevaCotizacionPage extends PageObject {
     }
 
     public Boolean esFechaPorDefectoHOY(WebElementFacade fecha) {
-        if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getText()).toLocalDate())) {
-            return Boolean.TRUE;
+        try {
+            if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getText()).toLocalDate())) {
+                return Boolean.TRUE;
+            }
+        }catch (StaleElementReferenceException e){
+            LOGGER.info("StaleElementReferenceException " + e);
+            PageUtil.waitUntil(WAIT_TIME_2000);
+            if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getText()).toLocalDate())) {
+                return Boolean.TRUE;
+            }
         }
         return Boolean.FALSE;
     }
@@ -214,7 +224,7 @@ public class NuevaCotizacionPage extends PageObject {
                 String codigo = agenteArray[1];
                 String nombre = agenteArray[0];
 
-                if (agenteArray.length == 2) {
+                if (agenteArray.length == CONSTANTE_2) {
                     AgenteModel agente = new AgenteModel(nombre, codigo);
                     listaAgentesModel.add(agente);
                 }

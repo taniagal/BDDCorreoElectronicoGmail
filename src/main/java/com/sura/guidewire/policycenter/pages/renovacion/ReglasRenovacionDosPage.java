@@ -36,6 +36,9 @@ public class ReglasRenovacionDosPage extends PageUtil {
     @FindBy(id = "RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs")
     WebElementFacade lblMensajes;
 
+    private static final int CONSTANTE_8 = 8;
+    private static final double CONSTANTE_02 = 0.2;
+
 
     public ReglasRenovacionDosPage(WebDriver driver) {
         super(driver);
@@ -65,8 +68,8 @@ public class ReglasRenovacionDosPage extends PageUtil {
 
     public void ingresaValorMayorVeintePorciento() {
         waitUntil(WAIT_TIME_1000);
-        int valorDeLabel = Integer.parseInt(txtValorAsegurado.getValue().substring(0, 8));
-        int valorTotalAccesorio = 1 + logicaExtraeOSumaPorcentaje(valorDeLabel, 0.2);
+        int valorDeLabel = Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_8));
+        int valorTotalAccesorio = 1 + logicaExtraeOSumaPorcentaje(valorDeLabel, CONSTANTE_02);
         txtvalorAccesorios.clear();
         txtvalorAccesorios.click();
         txtvalorAccesorios.sendKeys(Integer.toString(valorTotalAccesorio));
@@ -75,7 +78,7 @@ public class ReglasRenovacionDosPage extends PageUtil {
 
     public void ingresaValorAccesoriosEspeciales() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(txtvalorAccesoriosEspe).waitUntilClickable();
-        int valorTotalAccesorioEsp = 1 + Integer.parseInt(txtValorAsegurado.getValue().substring(0, 8));
+        int valorTotalAccesorioEsp = 1 + Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_8));
         txtvalorAccesoriosEspe.clear();
         txtvalorAccesoriosEspe.click();
         txtvalorAccesoriosEspe.sendKeys(Integer.toString(valorTotalAccesorioEsp));
@@ -83,8 +86,7 @@ public class ReglasRenovacionDosPage extends PageUtil {
     }
 
     public int logicaExtraeOSumaPorcentaje(int valorCalcular, double porcentaje) {
-        int numeroConPorcentaje = (int) (valorCalcular * porcentaje);
-        return numeroConPorcentaje;
+        return (int) (valorCalcular * porcentaje);
     }
 
     public void validacionMensajeValores(String mensaje){

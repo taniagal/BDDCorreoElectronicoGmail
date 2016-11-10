@@ -33,7 +33,7 @@ public class InformacionDePolizaMrcDefinitions {
     }
 
     @Given("que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>")
-    public void iniciaNuevaSuscripcion(@Named("numCuenta") String numeroCuenta,@Named("rolUsuario") String rolUsuario) {
+    public void iniciaNuevaSuscripcion(@Named("numCuenta") String numeroCuenta, @Named("rolUsuario") String rolUsuario) {
 
         if (SerenityWebdriverManager.inThisTestThread().hasAnInstantiatedDriver()) {
             SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
@@ -45,6 +45,12 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
     }
 
+    @When("ingrese a la cuenta <numCuenta>")
+    public void cuandoIngreseALaCuenta(@Named("numCuenta") String numeroCuenta) {
+        informacionDePolizaMrcSteps.navegar_barra_superior(numeroCuenta);
+        informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
+    }
+
     @When("este expidiendo una poliza de propiedad comercial")
     public void expidePolizaPropiedadComercial() {
         informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto();
@@ -52,31 +58,33 @@ public class InformacionDePolizaMrcDefinitions {
 
 
     @When("quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>")
-        public void cuandoQuieroExpedirUnaPolizaNuevaConLosSiguientesDatos(@Named("agente")String agente,
-                                                                           @Named("organizacion")String organizacion,
-                                                                           @Named("canal")String canal,
-                                                                           @Named("tipoPoliza")String tipoPoliza,
-                                                                           @Named("producto")String producto) {
+    public void cuandoQuieroExpedirUnaPolizaNuevaConLosSiguientesDatos(@Named("agente") String agente,
+                                                                       @Named("organizacion") String organizacion,
+                                                                       @Named("canal") String canal,
+                                                                       @Named("tipoPoliza") String tipoPoliza,
+                                                                       @Named("producto") String producto) {
 
-        informacionDePolizaMrcSteps.ingresar_nueva_cotizacion(agente,organizacion,canal,tipoPoliza,producto);
+        informacionDePolizaMrcSteps.ingresar_nueva_cotizacion(agente, organizacion, canal, tipoPoliza, producto);
 
     }
+
     @When("quiero agregar un coaseguro <TipoCo> con particion de aseguradoras $entradatable")
-        public void cuandoQuieroAgregarunCoaseguro(@Named("TipoCo")String tipoCo, ExamplesTable entradatable){
-        informacionDePolizaMrcSteps.agrego_un_coaseguro(tipoCo,entradatable);
+    public void cuandoQuieroAgregarunCoaseguro(@Named("TipoCo") String tipoCo, ExamplesTable entradatable) {
+        informacionDePolizaMrcSteps.agrego_un_coaseguro(tipoCo, entradatable);
     }
+
     @When("ingrese a edificios y ubicaciones")
-    public void cuandoIntenteIngresarAEdificiosYUbicaciones(){
+    public void cuandoIntenteIngresarAEdificiosYUbicaciones() {
         informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones();
     }
+
     @Then("se debe validar que se muestren los mensajes de obligatoriedad siguientes $mensajesesperados")
-    public void entoncesSeDebenValidarQueSeMuestrenLosMensajesDeObligatoriedad(ExamplesTable mensajesesperados)
-    {
+    public void entoncesSeDebenValidarQueSeMuestrenLosMensajesDeObligatoriedad(ExamplesTable mensajesesperados) {
         informacionDePolizaMrcSteps.validar_mensajes_coaseguros(mensajesesperados);
     }
 
     @When("seleccione el producto <nomProducto> a expedir")
-    public void seleccioneElProducto(@Named("nomProducto") String nomProducto){
+    public void seleccioneElProducto(@Named("nomProducto") String nomProducto) {
         informacionDePolizaMrcSteps.seleccionar_producto(nomProducto);
     }
 
@@ -105,13 +113,13 @@ public class InformacionDePolizaMrcDefinitions {
     */
 
     @When("quiera agregar un tomador adicional que es riesgo consultable <cedula>")
-    public void tomadorAdicionalRiesgoConsultabale(@Named("cedula")String cedula) {
-         informacionDePolizaMrcSteps.ingresar_tomador_adicional(cedula);
+    public void tomadorAdicionalRiesgoConsultabale(@Named("cedula") String cedula) {
+        informacionDePolizaMrcSteps.ingresar_tomador_adicional(cedula);
     }
 
     @Then("se debe mostrar un mensaje de error <mensaje> <mensaje2>")
-    public void mensajesDeErrorRiesgosYPeps(@Named("mensaje")String mensaje,
-                                            @Named("mensaje2")String mensaje2) {
+    public void mensajesDeErrorRiesgosYPeps(@Named("mensaje") String mensaje,
+                                            @Named("mensaje2") String mensaje2) {
         informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
     }
 
@@ -155,7 +163,7 @@ public class InformacionDePolizaMrcDefinitions {
     }
 
     @Then("no se debe inhabilitar la opcion Numero de documento")
-    public void entoncesNoSeDebeHabilitarLaOpcionNumeroDeDocumento(){
+    public void entoncesNoSeDebeHabilitarLaOpcionNumeroDeDocumento() {
         informacionDePolizaMrcSteps.validar_campos_inhabilitados();
     }
 

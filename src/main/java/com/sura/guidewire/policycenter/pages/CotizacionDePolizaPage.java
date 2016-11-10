@@ -93,8 +93,8 @@ public class CotizacionDePolizaPage extends PageUtil {
     @FindBy(xpath = "//td[2]/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr[2]/td[2]/div")
     private WebElementFacade campoNumeroCuotas;
 
-    protected static final int CONSTANTE_5 = 5;
-    protected static final int WAIT_TIME_40000 = 40000;
+    private static final int CONSTANTE_5 = 5;
+    private static final int WAIT_TIME_40000 = 40000;
 
 
     public CotizacionDePolizaPage(WebDriver driver){
@@ -209,7 +209,7 @@ public class CotizacionDePolizaPage extends PageUtil {
     public WebElementFacade esperarElemento(final String xpath) {
         Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(WAIT_TIME_28, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
+                .pollingEvery(CONSTANTE_5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
         return  espera.until(new Function<WebDriver, WebElementFacade>() {
             public WebElementFacade apply(WebDriver driver) {

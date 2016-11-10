@@ -29,6 +29,7 @@ public class OpcionesInformacionDePagoPage extends PageUtil {
 
     public void clickEnPagos() {
         waitPayment(btnPago);
+        waitUntil(WAIT_TIME_2000);
         btnPago.click();
     }
 

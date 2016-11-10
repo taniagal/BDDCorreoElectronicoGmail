@@ -1,6 +1,6 @@
 Nueva Poliza Individual
 
-Meta: @lote1
+Meta: @lote3
 
 @issue #CDSEG-812
 @Automatizador Eliana Alvarez

@@ -18,7 +18,7 @@ When estoy expidiendo una poliza de autos
 And seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
-When ingrese los datos del asegurado
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion no valida
 And la placa <placa> estuvo vigente en la compañia
 Then se debe recuperar los siguientes datos:
@@ -27,8 +27,8 @@ Then se debe recuperar los siguientes datos:
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
-|numCuenta  |organizacion|canal      |placa |valorAsegurado|
-|C1060447895|Bancolombia |Televentas |HZR123|165900000,00  |
+|numCuenta  |organizacion|canal      |placa |valorAsegurado|tipo_documento      |documento |
+|C1060447895|Bancolombia |Televentas |HZR123|165900000,00  |CEDULA DE CIUDADANIA|1060447895|
 
 Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
 Given que voy a buscar la cuenta <numCuenta>
@@ -36,7 +36,7 @@ When estoy expidiendo una poliza de autos
 And seleccione la organizacion <organizacion>
 And seleccione el canal <canal>
 And seleccione el producto para expedir la poliza
-When ingrese los datos del asegurado
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And el vehiculo tenga inspeccion
 And la placa <placa> estuvo vigente pero ahora esta cancelada
 Then se debe recuperar los siguientes datos:
@@ -45,8 +45,8 @@ Then se debe recuperar los siguientes datos:
 And el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda
 
 Examples:
-|numCuenta  |organizacion|canal             |placa |valorAsegurado|
-|C1060447895|Sura        |Canal Tradicional |MJK289|21800000,00   |
+|numCuenta  |organizacion|canal             |placa |valorAsegurado|tipo_documento      |documento |
+|C1060447895|Sura        |Canal Tradicional |MJK289|21800000,00   |CEDULA DE CIUDADANIA|1060447895|
 
 Scenario: Consultar inspeccion valida en SIA
 Given se ha realizado la cotizacion <cotizacion>

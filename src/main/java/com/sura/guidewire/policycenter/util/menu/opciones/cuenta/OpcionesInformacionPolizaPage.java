@@ -181,6 +181,11 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade nroPolizaColectiva;
 
     private static final int WAIT_TIME_30000 = 3000;
+    private static final int CONSTANTE_10 = 10;
+    private static final int CONSTANTE_6 = 6;
+    private static final int CONSTANTE_5 = 5;
+    private static final int CONSTANTE_50 = 50;
+    private static final int CONSTANTE_2 = 2;
 
     public OpcionesInformacionPolizaPage(WebDriver driver) {
         super(driver);
@@ -279,12 +284,12 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         String fechaVigencia = fechaVigenciaPoliza.getValue();
         waitFor(fechaExpiracionPoliza).shouldBeVisible();
         String fechaExpiracion = fechaExpiracionPoliza.getTextValue();
-        String aniovig = fechaVigencia.substring(6, 10);
-        String anioexp = fechaExpiracion.substring(6, 10);
-        String mesvig = fechaVigencia.substring(0, 2);
-        String mesexp = fechaExpiracion.substring(0, 2);
-        String diavig = fechaVigencia.substring(WAIT_TIME_3, 5);
-        String diaexp = fechaExpiracion.substring(WAIT_TIME_3, 5);
+        String aniovig = fechaVigencia.substring(CONSTANTE_6, CONSTANTE_10);
+        String anioexp = fechaExpiracion.substring(CONSTANTE_6, CONSTANTE_10);
+        String mesvig = fechaVigencia.substring(0, CONSTANTE_2);
+        String mesexp = fechaExpiracion.substring(0, CONSTANTE_2);
+        String diavig = fechaVigencia.substring(WAIT_TIME_3, CONSTANTE_5);
+        String diaexp = fechaExpiracion.substring(WAIT_TIME_3, CONSTANTE_5);
         int aniovignum = Integer.parseInt(aniovig);
         int anioexpnum = Integer.parseInt(anioexp);
         int mesvignum = Integer.parseInt(mesvig);
@@ -300,12 +305,12 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
             MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(0)));
             MatcherAssert.assertThat(restadia, Is.is(Matchers.equalTo(0)));
         } else if ("6 meses".equals(tipoPlazo)) {
-            if (mesvignum > 6) {
+            if (mesvignum > CONSTANTE_6) {
                 MatcherAssert.assertThat(restaanio, Is.is(Matchers.equalTo(1)));
-                MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(-6)));
+                MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(-CONSTANTE_6)));
             } else {
                 MatcherAssert.assertThat(restaanio, Is.is(Matchers.equalTo(0)));
-                MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(6)));
+                MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(CONSTANTE_6)));
             }
             MatcherAssert.assertThat(restadia, Is.is(Matchers.equalTo(0)));
         } else if ("Otra".equals(tipoPlazo)) {
@@ -376,7 +381,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         String descuentoPoliza = textoDescuentoPoliza.getValue();
         waitFor(mensajeValidacion).shouldBeVisible();
         if (esNumerico(descuentoPoliza)) {
-            if (Integer.parseInt(descuentoPoliza) > 50 || Integer.parseInt(descuentoPoliza) < 0) {
+            if (Integer.parseInt(descuentoPoliza) > CONSTANTE_50 || Integer.parseInt(descuentoPoliza) < 0) {
                 MatcherAssert.assertThat(mensajeValidacion.getText(), Is.is(Matchers.equalTo(mensaje)));
             }
         } else {

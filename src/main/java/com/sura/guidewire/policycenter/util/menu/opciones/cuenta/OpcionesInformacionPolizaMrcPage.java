@@ -4,12 +4,6 @@ package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 import com.sura.guidewire.policycenter.pages.colectivas.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.util.AssertUtil;
 import com.sura.guidewire.policycenter.util.PageUtil;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -21,6 +15,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class OpcionesInformacionPolizaMrcPage extends PageUtil {
@@ -112,10 +111,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade radioButtonAceptado;
     @FindBy(xpath = "//input[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion_false-inputEl']")
     private WebElementFacade radioButtonCedido;
-    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']")
-    private WebElementFacade tablaAseguradoras;
-    @FindBy(xpath = "//span[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
-    private WebElementFacade bttonAceptarCoaseguro;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarPopup;
 
@@ -168,10 +163,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         btnSiguinete.waitUntilVisible().waitUntilClickable().click();
     }
 
-    public void seleccionBotonSiguiente()
-    {
+    public void seleccionBotonSiguiente()    {
         btnSiguinete.click();
     }
+
     public void seleccionaRiesgoAceptado() {
         waitInfoPoliza(lblInformaPoliza);
         radioBotReaseguroEspecial.click();
@@ -275,10 +270,12 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         for (int i = 0; i < tablaaseguradoras.getRowCount(); i++) {
             asegurados = tablaaseguradoras.getRows().get(i);
             if(i==0){
-                if(!asegurados.get("ASEGURADORA").equals("Seguros Generales Suramericana S.A.")) {
+                if(!"Seguros Generales Suramericana S.A.".equals(asegurados.get("ASEGURADORA"))) {
                     desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO_UNO, asegurados.get("ASEGURADORA"));
                 }
+                waitFor(WAIT_TIME_2).second();
                 findBy(LISTA_TIPO_BENEFICIARIO_UNO).click();
+                waitFor(WAIT_TIME_2).second();
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
@@ -287,6 +284,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
+                act.sendKeys(Keys.TAB).build().perform();
             }
         }
     }
@@ -318,8 +316,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         MatcherAssert.assertThat("el al mostrar nombre completo", nombreCompleto.equals(lblNombreCompleto.getText()));
     }
 
-    public void desplegarListaTipoAsegurado(String XPathAsegurado,String elemento){
-        WebElementFacade listaTipoAsegurado = findBy(XPathAsegurado);
+    public void desplegarListaTipoAsegurado(String xPathAsegurado,String elemento){
+        WebElementFacade listaTipoAsegurado = findBy(xPathAsegurado);
         listaTipoAsegurado.click();
         waitFor(WAIT_TIME_3);
         seleccionarElementoDeLaLista(elemento);
