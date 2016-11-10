@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
+import com.sura.guidewire.policycenter.util.PageUtil;
 import com.sura.guidewire.policycenter.util.model.AgenteModel;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,6 +48,7 @@ public class NuevaCotizacionPage extends PageObject {
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
     public static final String TRACE = "\nTRACE: \n";
     protected static final int WAIT_TIME_15 = 15;
+    protected static final int WAIT_TIME_2000 = 2000;
 
 
     // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
@@ -114,8 +116,16 @@ public class NuevaCotizacionPage extends PageObject {
     }
 
     public Boolean esFechaPorDefectoHOY(WebElementFacade fecha) {
-        if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getText()).toLocalDate())) {
-            return Boolean.TRUE;
+        try {
+            if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getText()).toLocalDate())) {
+                return Boolean.TRUE;
+            }
+        }catch (StaleElementReferenceException e){
+            LOGGER.info("StaleElementReferenceException " + e);
+            PageUtil.waitUntil(WAIT_TIME_2000);
+            if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getText()).toLocalDate())) {
+                return Boolean.TRUE;
+            }
         }
         return Boolean.FALSE;
     }

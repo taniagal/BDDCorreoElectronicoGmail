@@ -184,6 +184,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             } catch (NoAlertPresentException e) {
                 LOGGER.info("NoAlertPresentException " + e);
             }
+            waitUntil(WAIT_TIME_2000);
             comboBoxVehiculoServicio.click();
         }
     }

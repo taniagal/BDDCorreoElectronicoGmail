@@ -7,12 +7,12 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-public class TarifaMRCSteps extends ScenarioSteps{
+public class TarifaMRCSteps extends ScenarioSteps {
     TarifaMRCPage tarifaMRCPage = new TarifaMRCPage(getDriver());
     PolizasDePrimeraPerdidaPage polizasDePrimeraPerdidaPage = new PolizasDePrimeraPerdidaPage(getDriver());
 
 
-    public TarifaMRCSteps(Pages page){
+    public TarifaMRCSteps(Pages page) {
         super(page);
     }
 
@@ -22,28 +22,38 @@ public class TarifaMRCSteps extends ScenarioSteps{
     }
 
     @Step
-    public void irAArticulos(){
+    public void irAArticulos() {
         polizasDePrimeraPerdidaPage.irAArticulos();
     }
 
     @Step
-    public void seleccionarCobertura(ExamplesTable datos){
+    public void seleccionarCobertura(ExamplesTable datos) {
         tarifaMRCPage.irAArticulo();
         tarifaMRCPage.seleccionarCoberturaTerremoto(datos);
     }
 
     @Step
-    public void seleccionarDeducibleSi(){
+    public void seleccionarDeducibleSi() {
         tarifaMRCPage.seleccionarDeducibleSi();
     }
 
     @Step
-    public void seleccionarDeducibleNo(){
+    public void seleccionarDeducibleNo() {
         tarifaMRCPage.seleccionarDeducibleNo();
     }
 
     @Step
     public void agregarArticulo() {
         tarifaMRCPage.agregarArticulo();
+    }
+
+    @Step
+    public void irAModificadores() {
+        tarifaMRCPage.irAModificadores();
+    }
+
+    @Step
+    public void verificarModificadores(){
+        tarifaMRCPage.verificarModificadores();
     }
 }

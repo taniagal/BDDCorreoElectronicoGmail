@@ -2,16 +2,14 @@ Rescindir Cancelacion
 
 
 Meta: @lote2
-
-Scenario: 1 Rescindir Cancelacion de poliza
-
-Meta: @lote2
+@manual
 @Story CDSEG-
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
 @Sprint 9
 
-Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
+Scenario: 1 Rescindir Cancelacion de poliza
+Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba programacion
 And ingrese fecha superior al dia actual
 And realice la programacion de cancelacion
@@ -24,14 +22,15 @@ Examples:
 | TEST_99999999 | Asesor     |
 
 
-Scenario: 2 Validar Rescindir Cancelacion de poliza
-Meta: @lote2
+Meta:
+@manual
 @Story CDSEG-
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
 @Sprint 9
 
-Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
+Scenario: 2 Validar Rescindir Cancelacion de poliza
+Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba programacion
 And ingrese fecha superior al dia actual
 And realice la programacion de cancelacion
