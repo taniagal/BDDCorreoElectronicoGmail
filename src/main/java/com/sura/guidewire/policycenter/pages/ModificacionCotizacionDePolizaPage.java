@@ -11,7 +11,6 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,9 +19,6 @@ import java.util.concurrent.TimeUnit;
 
 
 public class ModificacionCotizacionDePolizaPage extends PageUtil {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ModificacionCotizacionDePolizaPage.class);
-
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:ttlBar']")
     private WebElementFacade tituloDePagina;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:PolicyNumber-labelEl']")
