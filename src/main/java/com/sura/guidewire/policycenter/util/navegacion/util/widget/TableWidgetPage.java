@@ -25,6 +25,7 @@ public class TableWidgetPage extends PageObject {
     private static String ENCABEZADO_TABLA = ".//div[ (descendant::*[contains(@id, 'gridcolumn')]) and contains(@id,'headercontainer') and contains(@id,'targetEl') and contains(@class,'x-box-target') and contains(@role,'presentation')]/div";
     private static String TABLA = ".//*[contains(@id,'gridview') and contains(@id,'table') and contains(@class,'x-gridview') and contains(@class,'table') and contains(@class,'x-grid-table')]";
     private static String LISTA_COMBO_DESPLEGABLE = ".//ul[contains(@class,'x-list-plain')]";
+    private static final int WAIT_TIME_2000 = 2000;
 
     private List<WebElement> toolbarListWE;
     private WebElement contenedorWE = null;
@@ -131,7 +132,7 @@ public class TableWidgetPage extends PageObject {
                 }
             } catch (StaleElementReferenceException e) {
                 LOGGER.info("StaleElementReferenceException " + e);
-                PageUtil.waitUntil(2000);
+                PageUtil.waitUntil(WAIT_TIME_2000);
                 if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
                     opcion.click();
                     fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
@@ -162,8 +163,14 @@ public class TableWidgetPage extends PageObject {
 
         if (existenFilasEnTabla() && indiceDeColumna > 0 && indiceDeColumna < obtenerEncabezado().size()) {
             for (WebElement fila : obtenerFilas()) {
-                PageUtil.waitUntil(2000);
-                WebElement celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
+                WebElement celda;
+                try {
+                    celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
+                }catch (StaleElementReferenceException e){
+                    LOGGER.info("StaleElementReferenceException " + e);
+                    PageUtil.waitUntil(WAIT_TIME_2000);
+                    celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
+                }
                 filasPorColumna.add(celda);
             }
         }
