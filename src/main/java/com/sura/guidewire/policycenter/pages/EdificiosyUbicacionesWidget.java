@@ -51,6 +51,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_SELECCIONAR_RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
     private static final String XPATH_BTON_REMOVER_RIESGOS =  "//a[contains(.,'Remover Riesgo')]";
 
+    private static final int WAIT_TIME_250 = 250;
+
     TableWidgetPage tabla;
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
@@ -247,7 +249,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private void esperarAQueElementoTengaValor(WebElementFacade elemento, String valorEntrada) {
         waitForCondition()
                 .withTimeout(WAIT_TIME_2, TimeUnit.SECONDS)
-                .pollingEvery(250, TimeUnit.MILLISECONDS)
+                .pollingEvery(WAIT_TIME_250, TimeUnit.MILLISECONDS)
                 .until(inputEsActualizadoA(elemento, valorEntrada));
     }
 

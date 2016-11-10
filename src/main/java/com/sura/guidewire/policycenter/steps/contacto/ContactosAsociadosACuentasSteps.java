@@ -69,7 +69,7 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verOpcionesDeCreacionDeContactoPorRoleDeContactos(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
+    public void verOpcionesDeCreacionDeContactoPorRoleDeContactos(ExamplesTable opcionesPorRol, Boolean darClick){
         contactosAsociadosACuentasPage.existeOpcionesPorSubMenu(opcionesPorRol, darClick);
     }
 
@@ -79,12 +79,12 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     }
 
     @Step
-    public Boolean esContactoAsociado(String nombre) throws Exception {
+    public Boolean esContactoAsociado(String nombre){
         return contactosAsociadosACuentasPage.esContactoAsociado(nombre);
     }
 
     @Step
-    public void buscarContactoDelDirectorio() throws Exception {
+    public void buscarContactoDelDirectorio(){
         Boolean esContactoAsociadoDesdeDirectorio = busquedaDelDirectorioPage.buscarContacto("CEDULA DE CIUDADANIA", "DORIAN", "EASTMOND");
         if (esContactoAsociadoDesdeDirectorio && esContactoAsociado("DORIAN STIWAR EASTMOND PULGARIN")) {
             contactosAsociadosACuentasPage.validarOcurrenciaDeMensajeDeAplicacion(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:_msgs']/div","porque ya tiene ese rol");
@@ -92,12 +92,12 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void eliminarContactoAsociando(String nombreContacto) throws Exception {
+    public void eliminarContactoAsociando(String nombreContacto){
         contactosAsociadosACuentasPage.ElimnarContactoAsociado(nombreContacto);
     }
 
     @Step
-    public void contactoEliminado(String contactoEliminado) throws Exception {
+    public void contactoEliminado(String contactoEliminado){
         contactosAsociadosACuentasPage.contactoEliminado(contactoEliminado);
     }
 

@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
 // TODO: 15/06/2016 Pendiente refactor
 public class NuevaCotizacionPage extends PageObject {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
+    private static final int CONSTANTE_2 = 2;
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private List<AgenteModel> listaAgentesModel = null;
     private String nombreAgente;
@@ -224,7 +224,7 @@ public class NuevaCotizacionPage extends PageObject {
                 String codigo = agenteArray[1];
                 String nombre = agenteArray[0];
 
-                if (agenteArray.length == 2) {
+                if (agenteArray.length == CONSTANTE_2) {
                     AgenteModel agente = new AgenteModel(nombre, codigo);
                     listaAgentesModel.add(agente);
                 }

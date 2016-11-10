@@ -78,6 +78,8 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
     private static final String PAIS = "pais";
     private static final String TIPO_DIRECCION = "tipoDireccion";
     private static final int WAIT_TIME_10000 = 10000;
+    private static final int CONSTANTE_3 = 3;
+    private static final int CONSTANTE_2 = 2;
 
 
     public DireccionesDeContactoVinculadasPage(WebDriver driver) {
@@ -168,8 +170,8 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
             contactosVinculados = contactosDireccionVinculada.getRows().get(i);
             MatcherAssert.assertThat(cells.get(0).getText(), Is.is(Matchers.equalTo(contactosVinculados.get("nombre"))));
             MatcherAssert.assertThat(cells.get(1).getText(), Is.is(Matchers.equalTo(contactosVinculados.get("primaria"))));
-            MatcherAssert.assertThat(cells.get(2).getText().replace(" ", ""), Is.is(Matchers.equalTo(contactosVinculados.get("telefono"))));
-            MatcherAssert.assertThat(cells.get(3).getText(), Is.is(Matchers.notNullValue()));
+            MatcherAssert.assertThat(cells.get(CONSTANTE_2).getText().replace(" ", ""), Is.is(Matchers.equalTo(contactosVinculados.get("telefono"))));
+            MatcherAssert.assertThat(cells.get(CONSTANTE_3).getText(), Is.is(Matchers.notNullValue()));
         }
         WebElementFacade botonCancelarDetalles = esperarElemento(".//*[@id='LinkedAddressEditPopup:Cancel-botonInnerEl']");
         botonCancelarDetalles.click();
@@ -234,7 +236,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
 
     public void ingresarDatoEnCombo(WebElementFacade combo, String dato) {
         int intentos = 0;
-        while (intentos < 3) {
+        while (intentos < CONSTANTE_3) {
             try {
                 if (combo.getAttribute("value").equals(dato)) {
                     MatcherAssert.assertThat(combo.getValue(), Is.is(Matchers.equalTo(dato)));
@@ -315,7 +317,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
         List<WebElement> filas = tablaContactos.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (columna.get(2).getText().equals(nombreContacto)) {
+            if (columna.get(CONSTANTE_2).getText().equals(nombreContacto)) {
                 return filaBoton;
             }
             filaBoton++;

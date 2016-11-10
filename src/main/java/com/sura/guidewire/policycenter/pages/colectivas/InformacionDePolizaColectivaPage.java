@@ -2,6 +2,20 @@ package com.sura.guidewire.policycenter.pages.colectivas;
 
 
 import com.sura.guidewire.policycenter.util.PageUtil;
+import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
+import org.jbehave.core.model.ExamplesTable;
+import org.joda.time.LocalDateTime;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.slf4j.LoggerFactory;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -9,17 +23,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
-import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
-import org.hamcrest.core.Is;
-import org.jbehave.core.model.ExamplesTable;
-import org.joda.time.LocalDateTime;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 
 public class InformacionDePolizaColectivaPage extends PageUtil {
 
@@ -120,7 +123,9 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:deleteCoinsurance']")
     WebElementFacade linkEliminarCoaseguro;
 
-    protected static final int WAIT_TIME_30000 = 30000;
+    private static final int WAIT_TIME_30000 = 30000;
+    private static final int CONSTANTE_6 = 6;
+    private static final int CONSTANTE_10 = 10;
     private static final String DD_MM_YYYY = "dd/MM/yyyy";
     private static final Date fechaHoy = new Date();
     private static final String ROLLISTAS = "textbox";
@@ -234,6 +239,7 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
                 waitFor(botonSiguiente);
                 botonSiguiente.click();
             } catch (Exception e) {
+                LOGGER.info("Exception " + e);
                 waitUntil(WAIT_TIME_5000);
                 botonSiguiente.click();
             }
@@ -249,8 +255,8 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
     public void validarFechaFinDeVigenciaCambiada(int aniosFinVigencia) {
         waitUntil(WAIT_TIME_1000);
         String nuevaFechaFin = fechaInicioVigencia.getValue();
-        Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 10)) + aniosFinVigencia;
-        String fechaFinVigencia = nuevaFechaFin.replace(nuevaFechaFin.substring(6, 10), anioVigenciaProducto.toString());
+        Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(CONSTANTE_6, CONSTANTE_10)) + aniosFinVigencia;
+        String fechaFinVigencia = nuevaFechaFin.replace(nuevaFechaFin.substring(CONSTANTE_6, CONSTANTE_10), anioVigenciaProducto.toString());
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(fechaFinVigencia)));
     }
 

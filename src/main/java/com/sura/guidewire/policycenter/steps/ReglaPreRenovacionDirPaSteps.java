@@ -22,7 +22,7 @@ public class ReglaPreRenovacionDirPaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void valida_opciones_intruccion_detalles(ExamplesTable opcionesDir) throws Exception {
+    public void valida_opciones_intruccion_detalles(ExamplesTable opcionesDir){
         reglaPreRenovacionDirPaPage.validaLista(opcionesDir);
     }
 }

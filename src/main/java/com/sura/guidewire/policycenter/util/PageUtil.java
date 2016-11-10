@@ -1,12 +1,6 @@
 package com.sura.guidewire.policycenter.util;
 
 import com.google.common.base.Function;
-
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
-import net.serenitybdd.core.exceptions.SerenityManagedException;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.steps.StepInterceptor;
@@ -19,11 +13,14 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 
 public class PageUtil extends PageObject {
     protected final Actions actions = new Actions(getDriver());
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
+    protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     protected static final int WAIT_TIME_5000 = 5000;
     protected static final int WAIT_TIME_3500 = 3500;
     protected static final int WAIT_TIME_3000 = 3000;
@@ -109,7 +106,7 @@ public class PageUtil extends PageObject {
     public WebElementFacade esperarElemento(final String xpath) {
         Wait<WebDriver> espera = new FluentWait<WebDriver>(getDriver())
                 .withTimeout(WAIT_TIME_20, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
+                .pollingEvery(WAIT_TIME_5, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
         return espera.until(new Function<WebDriver, WebElementFacade>() {
             public WebElementFacade apply(WebDriver driver) {
@@ -181,6 +178,7 @@ public class PageUtil extends PageObject {
             } catch (WebDriverException e) {
                 waitUntil(WAIT_TIME_2000);
                 clickElement(element);
+                LOGGER.info("WebDriverException " + e);
             }
     }
 }

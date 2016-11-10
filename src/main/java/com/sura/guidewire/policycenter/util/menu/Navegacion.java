@@ -693,7 +693,6 @@ public class Navegacion extends PageUtil {
     public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta() {
         waitFor(mnuAccionesCuenta).waitUntilPresent();
         gw.deployMenu(mnuAccionesCuenta);
-        //act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(WAIT_TIME_300);
         act.moveToElement(mnuAccionNuevoEnvio2).release(mnuAccionNuevoEnvio2).click().build().perform();
         return new CuentaNuevoEnvioPage(getDriver());

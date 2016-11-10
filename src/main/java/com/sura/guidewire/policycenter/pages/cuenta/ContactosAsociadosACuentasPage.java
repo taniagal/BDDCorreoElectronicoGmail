@@ -173,11 +173,11 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
     }
 
-    public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick) throws Exception {
+    public void existeOpcionesPorSubMenu(ExamplesTable opcionesPorRol, Boolean darClick){
         MatcherAssert.assertThat(ASSERTMENUCREARNUEVOCONTACTO, GwNavegacionUtil.existenOpcionesPorMenuHastaSegundoNivel(getDriver(), Keys.RIGHT, "LINK", opcionesPorRol, darClick));
     }
 
-    public Boolean esContactoAsociado(String nombreContacto) throws Exception {
+    public Boolean esContactoAsociado(String nombreContacto){
         Boolean esAsociado = Boolean.FALSE;
         for (WebElementFacade contacto : getListaContactos()) {
             if (((WebElementFacade) contacto).getText().split("\n")[1].toString().equals(nombreContacto)) {

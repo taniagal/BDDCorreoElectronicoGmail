@@ -404,14 +404,14 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
 
-    public void validarOpcionesDeAgregar(ExamplesTable listaRazones) throws Exception {
+    public void validarOpcionesDeAgregar(ExamplesTable listaRazones){
         listaTipoRazon.click();
         this.validarDatosDeLaLista(listaRazones);
         btnCancelar.click();
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
 
-    public void validarOpcionesDeAgregarNoTomar(ExamplesTable listaRazones) throws Exception {
+    public void validarOpcionesDeAgregarNoTomar(ExamplesTable listaRazones){
         listaTipoRazonNoTomar.click();
         this.validarDatosDeLaLista(listaRazones);
         btnCancelarNoTomar.click();
@@ -422,7 +422,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         MatcherAssert.assertThat("No se pudieron visualizar las polizas", getListaCotizaciones().isEmpty());
     }
 
-    private void validarDatosDeLaLista(ExamplesTable tipoCanal) throws Exception {
+    private void validarDatosDeLaLista(ExamplesTable tipoCanal){
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {

@@ -25,7 +25,7 @@ public class ReglasRenovacionDosDefinitions {
     }
 
     @When("se ingrese el valor de los accesorios es superior al 20% del valor asegurado del vehiculo")
-    public void whenSeIdentifiqueQueElValorDeLosAccesoriosEsSuperiorAl20DelValorAseguradoDelVehículo() {
+    public void whenSeIdentifiqueQueElValorDeLosAccesoriosEsSuperiorAl20DelValorAseguradoDelVehiculo() {
         reglasRenovacionDosSteps.ingresar_valor_mayor_en_accesorios();
     }
 
