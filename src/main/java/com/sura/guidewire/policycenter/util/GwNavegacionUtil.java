@@ -31,7 +31,6 @@ public final class GwNavegacionUtil {
         String menu = "";
 
         try {
-            HashSet<String> nombreColumnasTablaHS = obtenerNombreColumnasDeExamplesTable(opcionesPorMenu);
             for (String menuPrimerNivel : obtenerNombreColumnasDeExamplesTable(opcionesPorMenu)) {
 
                 menu = "MENU -> " + menuPrimerNivel;
