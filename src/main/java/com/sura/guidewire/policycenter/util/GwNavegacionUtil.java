@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 public final class GwNavegacionUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+    private static final int CONSTANTE_60 = 60;
 
     private GwNavegacionUtil(){
     }
@@ -93,7 +94,7 @@ public final class GwNavegacionUtil {
     }
 
     public static void esperarElementoSeaClickable(WebDriver driver, WebElement element) {
-        new WebDriverWait(driver, 60).ignoring(NoSuchElementException.class)
+        new WebDriverWait(driver, CONSTANTE_60).ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 

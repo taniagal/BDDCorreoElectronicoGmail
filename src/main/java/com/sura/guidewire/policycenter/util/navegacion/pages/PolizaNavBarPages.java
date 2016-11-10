@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 
 public class PolizaNavBarPages extends PageObject {
     private static String MENU_POLIZA = ".//a[contains(@id,'TabBar:PolicyTab')]";
+    private static final int CONSTANTE_5 = 5;
+    private static final int CONSTANTE_2 = 2;
 
     public enum Opcion {
         BTN_NUEVA_COTIZACION(".//a[contains(@id,'TabBar:PolicyTab:PolicyTab_NewSubmission-textEl')]"),
@@ -25,13 +27,13 @@ public class PolizaNavBarPages extends PageObject {
 
 
     public PolizaNavBarPages seleccionarMenu() {
-        waitFor(5).seconds();
+        waitFor(CONSTANTE_5).seconds();
         findBy(MENU_POLIZA).waitUntilVisible();
 
         WebElement menuBuscar = getDriver().findElement(By.xpath(MENU_POLIZA));
         element(menuBuscar).setWindowFocus();
         element(menuBuscar).sendKeys(Keys.ARROW_DOWN);
-        waitFor(2).seconds();
+        waitFor(CONSTANTE_2).seconds();
         return switchToPage(PolizaNavBarPages.class);
     }
 

@@ -32,6 +32,9 @@ public class GuidewireLoginPages extends PageUtil implements Serializable{
     public static final String BTN_LOGIN = "//span[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']";
     public static final String MNU_CONTACTO = "//span[@id='TabBar:ContactTab-btnInnerEl']";
 
+    private static final int CONSTANTE_5 = 5;
+    private static final int CONSTANTE_250 = 250;
+
     public GuidewireLoginPages(WebDriver driver){
         super(driver);
     }
@@ -71,8 +74,8 @@ public class GuidewireLoginPages extends PageUtil implements Serializable{
 
     private void esperarAQueDigite(String elemento, String valor) {
         waitForCondition()
-                .withTimeout(5, TimeUnit.SECONDS)
-                .pollingEvery(250,TimeUnit.MILLISECONDS)
+                .withTimeout(CONSTANTE_5, TimeUnit.SECONDS)
+                .pollingEvery(CONSTANTE_250,TimeUnit.MILLISECONDS)
                 .until(valorDeEntradaActualizadoA(elemento, valor));
     }
 

@@ -120,7 +120,9 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:CollectivePolicyInfo_ExtInputSet:deleteCoinsurance']")
     WebElementFacade linkEliminarCoaseguro;
 
-    protected static final int WAIT_TIME_30000 = 30000;
+    private static final int WAIT_TIME_30000 = 30000;
+    private static final int CONSTANTE_6 = 6;
+    private static final int CONSTANTE_10 = 10;
     private static final String DD_MM_YYYY = "dd/MM/yyyy";
     private static final Date fechaHoy = new Date();
     private static final String ROLLISTAS = "textbox";
@@ -249,8 +251,8 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
     public void validarFechaFinDeVigenciaCambiada(int aniosFinVigencia) {
         waitUntil(WAIT_TIME_1000);
         String nuevaFechaFin = fechaInicioVigencia.getValue();
-        Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(6, 10)) + aniosFinVigencia;
-        String fechaFinVigencia = nuevaFechaFin.replace(nuevaFechaFin.substring(6, 10), anioVigenciaProducto.toString());
+        Integer anioVigenciaProducto = Integer.parseInt(nuevaFechaFin.substring(CONSTANTE_6, CONSTANTE_10)) + aniosFinVigencia;
+        String fechaFinVigencia = nuevaFechaFin.replace(nuevaFechaFin.substring(CONSTANTE_6, CONSTANTE_10), anioVigenciaProducto.toString());
         MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Is.is(Matchers.equalTo(fechaFinVigencia)));
     }
 
