@@ -5,13 +5,14 @@ Como usuario de policy center quiero poder solicitar autorización a los comites
 quiero poder solicitar autorización a los comites de Riesgos consultables
 para poder cotizar o expedir una poliza
 
-Scenario: 1 Validar que se genere actividad de riesgo consultable al cotizar una poliza
 
 Meta: @lote2
 @Story CDSEG-
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
 @Sprint 9
+
+Scenario: 1 Validar que se genere actividad de riesgo consultable al cotizar una poliza
 
 Given que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>
 When quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>
