@@ -50,7 +50,7 @@ public final class GwNavegacionUtil {
         }
     }
 
-    private static void recorrerOpciones(WebDriver driver, String tipoElementoMenu, ExamplesTable opcionesPorMenu, String menuPrimerNivel, Boolean darClick) throws Exception {
+    private static void recorrerOpciones(WebDriver driver, String tipoElementoMenu, ExamplesTable opcionesPorMenu, String menuPrimerNivel, Boolean darClick){
         String menu;
         for (Map<String, String> row : opcionesPorMenu.getRows()) {
             menu = "MENU -> " + menuPrimerNivel + " -> " + row.get(menuPrimerNivel);
@@ -64,7 +64,7 @@ public final class GwNavegacionUtil {
     }
 
 
-    private static HashSet<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable) throws Exception {
+    private static HashSet<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable){
         LOGGER.error("GuidewireUtil.obtenerNombreColumnasDeExamplesTable");
 
         HashSet<String> nombreColumnasTablaHS = new HashSet<>();
@@ -81,7 +81,7 @@ public final class GwNavegacionUtil {
     }
 
 
-    private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu) throws Exception {
+    private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu){
         LOGGER.error("GuidewireUtil.obtenerMenuPorTextoContenido");
 
         if ("LINK".equals(tipoElementoMenu)) {
@@ -98,7 +98,7 @@ public final class GwNavegacionUtil {
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public static List<String> obtenerTablaDeEjemplosDeUnaColumna(ExamplesTable tablaUnaColumna) throws Exception {
+    public static List<String> obtenerTablaDeEjemplosDeUnaColumna(ExamplesTable tablaUnaColumna){
         List<String> valores = new ArrayList<>();
 
         Parameters row = tablaUnaColumna.getRowAsParameters(0);

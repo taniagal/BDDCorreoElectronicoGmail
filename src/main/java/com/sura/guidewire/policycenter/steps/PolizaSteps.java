@@ -1,16 +1,15 @@
 package com.sura.guidewire.policycenter.steps;
 
-import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireSteps;
-import com.sura.guidewire.policycenter.util.navegacion.util.widget.EspacioDeTrabajoWidget;
 import com.sura.guidewire.policycenter.pages.AccionesWidget;
 import com.sura.guidewire.policycenter.pages.InstruccionesPreviasARenovacionPage;
 import com.sura.guidewire.policycenter.pages.PolizaPage;
+import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireSteps;
+import com.sura.guidewire.policycenter.util.navegacion.util.widget.EspacioDeTrabajoWidget;
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.hamcrest.core.Is;
 
 import java.util.List;
 

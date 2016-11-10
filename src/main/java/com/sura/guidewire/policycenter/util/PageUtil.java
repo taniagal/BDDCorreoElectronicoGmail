@@ -20,8 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PageUtil extends PageObject {
     protected final Actions actions = new Actions(getDriver());
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
+    protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     protected static final int WAIT_TIME_5000 = 5000;
     protected static final int WAIT_TIME_3500 = 3500;
     protected static final int WAIT_TIME_3000 = 3000;

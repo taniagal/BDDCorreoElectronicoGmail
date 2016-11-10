@@ -43,7 +43,7 @@ public class InicioCancelacionDefinitions {
     }
 
     @Then("Se debe validar en la lista cuando la poliza NO es de bancolombia: $listaMotivo")
-    public void thenSeDebeValidarEnLaListaCuandoLaPolizaNOEsDeBancolombia(ExamplesTable listaMotivo) throws Exception{
+    public void thenSeDebeValidarEnLaListaCuandoLaPolizaNOEsDeBancolombia(ExamplesTable listaMotivo) {
         inicioCancelacionSteps.valida_lista_de_motivos_diferente_bancolombia(listaMotivo);
     }
 

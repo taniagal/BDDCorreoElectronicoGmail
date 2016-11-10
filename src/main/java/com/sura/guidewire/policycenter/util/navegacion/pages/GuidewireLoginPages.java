@@ -20,8 +20,6 @@ import java.util.concurrent.TimeUnit;
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class GuidewireLoginPages extends PageUtil implements Serializable{
     private static final long serialVersionUID = 1L;
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
     public static final String TITULO_PAGINA_PPL_DE_ACCESO = ".//span[@id='DesktopActivities:DesktopActivitiesScreen:0']";
     public static final String TXT_USUARIO_SEUS = "//input[@placeholder='Usuario']";
     public static final String TXT_USUARIO = "//input[@id='Login:LoginScreen:LoginDV:username-inputEl']";

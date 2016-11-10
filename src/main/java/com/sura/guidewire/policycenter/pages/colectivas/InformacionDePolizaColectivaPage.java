@@ -2,6 +2,20 @@ package com.sura.guidewire.policycenter.pages.colectivas;
 
 
 import com.sura.guidewire.policycenter.util.PageUtil;
+import net.serenitybdd.core.annotations.findby.By;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.steps.StepInterceptor;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
+import org.jbehave.core.model.ExamplesTable;
+import org.joda.time.LocalDateTime;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.slf4j.LoggerFactory;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -9,17 +23,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
-import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
-import org.hamcrest.core.Is;
-import org.jbehave.core.model.ExamplesTable;
-import org.joda.time.LocalDateTime;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 
 public class InformacionDePolizaColectivaPage extends PageUtil {
 
@@ -236,6 +239,7 @@ public class InformacionDePolizaColectivaPage extends PageUtil {
                 waitFor(botonSiguiente);
                 botonSiguiente.click();
             } catch (Exception e) {
+                LOGGER.info("Exception " + e);
                 waitUntil(WAIT_TIME_5000);
                 botonSiguiente.click();
             }
