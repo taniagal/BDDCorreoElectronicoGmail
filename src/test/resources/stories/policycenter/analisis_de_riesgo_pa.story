@@ -12,14 +12,14 @@ Given se ha realizado la cotizacion <cotizacion>
 When intente expedir una poliza con un valor asegurado del vehiculo superior al permitido
 Then se debe generar un bloqueo en la poliza, mostrar el siguiente mensaje
 |mensaje |
-|El valor asegurado del vehículo supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
+|El valor asegurado del vehículo ($369.900.000,00) supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
 And generar un UW issue
 |UWIssue |
-|El valor asegurado del vehículo supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
+|El valor asegurado del vehículo ($369.900.000,00) supera el límite máximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comité de Riesgo No Estándar Autos|
 
 Examples:
 |cotizacion|
-|0012638466|
+|34445557  |
 
 Scenario: Validar valor de los accesorios del vehiculo en expedicion de poliza
 Given se ha realizado la cotizacion <cotizacion>
@@ -33,7 +33,7 @@ And generar un UW issue
 
 Examples:
 |cotizacion|
-|0012638466|
+|34445557  |
 
 Scenario: Validar valor de los accesorios especiales del vehiculo en expedicion de poliza
 Given se ha realizado la cotizacion <cotizacion>
@@ -47,4 +47,4 @@ And generar un UW issue
 
 Examples:
 |cotizacion|
-|0012638466|
+|34445557  |
