@@ -41,8 +41,11 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageObject {
     public void expedirPoliza() {
         waitFor(botonExpedirPoliza);
         botonExpedirPoliza.click();
+        waitFor(botonAceptarMensaje);
+        botonAceptarMensaje.click();
         botonBorrar.waitUntilPresent().click();
         botonBorrar.waitUntilNotVisible();
+        botonExpedirPoliza.click();
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
         waitForTextToAppear("Cotización Expedida", WAIT_TIME_30000);
