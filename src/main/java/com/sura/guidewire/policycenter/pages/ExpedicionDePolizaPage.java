@@ -180,4 +180,14 @@ public class ExpedicionDePolizaPage extends PageUtil{
         linkIrAListaDeRiesgos.click();
         waitForTextToAppear("Riesgos");
     }
+
+    public void validarMensajeRequisitos() {
+        waitForTextToAppear("Existen requisitos pendientes, por favor verifique.", WAIT_TIME_30000);
+        WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
+        botonBorrar.click();
+        waitUntil(WAIT_TIME_2000);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonAceptarMensaje).click();
+    }
 }
