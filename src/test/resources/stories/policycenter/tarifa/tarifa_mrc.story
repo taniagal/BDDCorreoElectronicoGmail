@@ -21,7 +21,7 @@ And descripcion <descripcion>, actividad economica <actividad>
 When seleccione la cobertura de terremoto:
 |valorReconstruccion|valorAsegurado|valorComercial|
 |100000000          |100000000     |null          |
-And agregue el articulo
+And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
@@ -39,7 +39,7 @@ When seleccione la cobertura de terremoto:
 |valorReconstruccion|valorAsegurado|valorComercial|
 |100000000          |100000000     |120000000     |
 And seleccione la opcion de deducible en si
-And agregue el articulo
+And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
@@ -57,7 +57,7 @@ When seleccione la cobertura de terremoto:
 |valorReconstruccion|valorAsegurado|valorComercial|
 |100000000          |100000000     |120000000     |
 And seleccione la opcion de deducible en no
-And agregue el articulo
+And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:

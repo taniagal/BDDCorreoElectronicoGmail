@@ -31,7 +31,7 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.seleccionarDeducibleNo();
     }
 
-    @When("agregue el articulo")
+    @When("cotice el articulo")
     public void agregarArticulo(){
         tarifaMRCSteps.agregarArticulo();
     }
@@ -45,4 +45,11 @@ public class TarifaMRCDefinitions {
     public void verificarModificadores(){
         tarifaMRCSteps.verificarModificadores();
     }
+
+    @Then("debo poder ver el valor de la tasa global")
+    public void verificarTasaGlobal(){
+        tarifaMRCSteps.verificarTasaGlobal();
+    }
+
+
 }

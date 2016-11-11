@@ -56,4 +56,9 @@ public class TarifaMRCSteps extends ScenarioSteps {
     public void verificarModificadores(){
         tarifaMRCPage.verificarModificadores();
     }
+
+    @Step
+public void verificarTasaGlobal() {
+        tarifaMRCPage.verificarTasaGlobal();
+    }
 }

@@ -7,6 +7,7 @@ import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
+import javax.swing.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -35,6 +36,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtDañioInterno;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:5:RateModifier-inputEl']")
     private WebElementFacade campoTxtSustraccion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:7:RateModifier-inputEl']")
+    private WebElementFacade campoTxtTasaGlobal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade checkBoxEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
@@ -53,14 +56,14 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade menuItemModificadores;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-
+    double valorAsegurado = 0;
+    double primaTotal = 0;
 
     public TarifaMRCPage(WebDriver driver) {
         super(driver);
     }
 
     public void verificarTarifacion(String prima) {
-        botonCotizar.waitUntilPresent().click();
         labelPrimaTotal.waitUntilPresent();
         MatcherAssert.assertThat("Error en el valor de la prima. Esperaba: " + prima + " pero fue: " + labelPrimaTotal.getText(),
                 labelPrimaTotal.containsText(prima));
@@ -78,40 +81,42 @@ public class TarifaMRCPage extends PageUtil {
         Map<String, String> dato = datos.getRow(0);
         checkBoxEdificios.waitUntilPresent().click();
         campoTxtValorReconstruccion.waitUntilPresent().sendKeys(dato.get("valorReconstruccion"));
-        if(!"null".equals(dato.get("valorComercial"))){
+        if (!"null".equals(dato.get("valorComercial"))) {
             campoTxtValorComercial.sendKeys(dato.get("valorComercial"));
         }
-        if(labelTerremoto.containsText("Terremoto")){
+        if (labelTerremoto.containsText("Terremoto")) {
             checkBoxTerremoto = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
             campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
         }
         checkBoxTerremoto.click();
         campoTxtValorAsegurado.waitUntilPresent().sendKeys(dato.get("valorAsegurado"));
+        valorAsegurado = Integer.parseInt(dato.get("valorAsegurado"));
     }
 
-    public void seleccionarDeducibleSi(){
-        if(labelTerremoto.containsText("Terremoto")){
+    public void seleccionarDeducibleSi() {
+        if (labelTerremoto.containsText("Terremoto")) {
             radioBotonDeducibleSi = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_true-inputEl']");
         }
         radioBotonDeducibleSi.click();
     }
 
-    public void seleccionarDeducibleNo(){
-        if(labelTerremoto.containsText("Terremoto")){
+    public void seleccionarDeducibleNo() {
+        if (labelTerremoto.containsText("Terremoto")) {
             radioBotonDeducibleNo = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_false-inputEl']");
         }
         radioBotonDeducibleNo.click();
     }
 
-    public void agregarArticulo(){
+    public void agregarArticulo() {
         botonActualizar.click();
+        botonCotizar.waitUntilPresent().click();
     }
 
     public void irAModificadores() {
         menuItemModificadores.waitUntilPresent().click();
     }
 
-    public void verificarModificadores(){
+    public void verificarModificadores() {
         StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
         campoTxtBasico.waitUntilPresent();
         noPresente = concatenarElementoNoPresente(campoTxtBasico, " modificador basico,", noPresente);
@@ -124,5 +129,13 @@ public class TarifaMRCPage extends PageUtil {
             res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
         }
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
+    }
+
+    public void verificarTasaGlobal() {
+        labelPrimaTotal.waitUntilPresent();
+        primaTotal = Integer.parseInt(labelPrimaTotal.getText().substring(1, 10).replace(".",""));
+        menuItemModificadores.click();
+        double tasaGlobal = primaTotal / valorAsegurado;
+        MatcherAssert.assertThat("El calculo de la tasa global es incorrecto", campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0,4).replace(".",",")));
     }
 }
