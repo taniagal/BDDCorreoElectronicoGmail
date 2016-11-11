@@ -118,6 +118,15 @@ public class Poliza {
         polizaSteps.seleccionarOpcionInformacionDePoliza();
     }
 
+    @When("cuando intente renovar informacion de la poliza MRC")
+    public void cuandoIntenterRenovarPolizaMRC() {
+        LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
+
+        polizaSteps.seleccionarBotonAcciones();
+        polizaSteps.seleccionarOpcionRenovarPoliza();
+        polizaSteps.confirmarRenovacion();
+    }
+
     @When("desee seleccionar instrucciones previas a la renovacion")
     public void cuandoDeseeSeleccionarInstruccionesPreviasALaRenovacion() {
         LOGGER.info("Poliza.cuandoDeseeRealizarInstruccionesPreviasALaRenovacion");
@@ -209,6 +218,13 @@ public class Poliza {
     public void cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza() {
         LOGGER.info("Poliza.cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza");
         analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_cambio_poliza();
+        analisisDeRiesgoSteps.solicitar_aprobacion();
+    }
+
+    @When("se solicite aprobacion para los riesgos en renovacion de poliza")
+    public void cuandoSeSoliciteAprobacionParaLosriesgosEnRenovacionDePoliza() {
+        LOGGER.info("Poliza.cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza");
+        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_renovacion_poliza();
         analisisDeRiesgoSteps.solicitar_aprobacion();
     }
 

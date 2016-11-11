@@ -100,6 +100,7 @@ public class PolizaPage extends GuidewirePage {
     }
 
 
+
     public void editarTransaccion() {
         LOGGER.info("PolizaPage.editarTransaccion");
         WebElementFacade btnEditarTransaccion = null;

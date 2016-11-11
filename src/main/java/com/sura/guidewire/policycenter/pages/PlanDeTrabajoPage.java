@@ -28,6 +28,7 @@ public class PlanDeTrabajoPage extends PageUtil{
     private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
     String xPathOpcionPlanDeTrabajo = ".//*[@id='SubmissionWizard:Workplan']";
     String xPathOpcionPlanDeTrabajoEnCambioDePoliza = ".//*[@id='PolicyChangeWizard:Workplan']";
+    String xPathOpcionPlanDeTrabajoEnRenovacionDePoliza = ".//*[@id='RenewalWizard:Workplan']";
 
 
     public PlanDeTrabajoPage(WebDriver driver) {
@@ -40,6 +41,11 @@ public class PlanDeTrabajoPage extends PageUtil{
     }
     public void ingresarALaOpcionPlanDeTrabajoEnCambioDePoliza() {
         findBy(xPathOpcionPlanDeTrabajoEnCambioDePoliza).click();
+        waitForTextToAppear("Plan de trabajo");
+    }
+
+    public void ingresarALaOpcionPlanDeTrabajoEnRenovacionDePoliza() {
+        findBy(xPathOpcionPlanDeTrabajoEnRenovacionDePoliza).click();
         waitForTextToAppear("Plan de trabajo");
     }
 

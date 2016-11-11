@@ -24,6 +24,8 @@ import java.util.concurrent.TimeUnit;
 
 public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']")
+    WebElementFacade LblInformaPolizaEnRenovacion;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade txtNomAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
@@ -50,6 +52,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade btnSiguinete;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
     WebElementFacade btnSiguineteCambioDePoliza;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
+    WebElementFacade btnSiguineteRenovacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton-btnInnerEl']")
     WebElementFacade btnAgregar;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -171,6 +175,11 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         btnSiguineteCambioDePoliza.click();
     }
 
+    public void seleccionBotonSiguienteenRenovacionDePoliza()    {
+        waitUntil(WAIT_TIME_5000);
+        btnSiguineteRenovacionDePoliza.click();
+    }
+
     public void seleccionaRiesgoAceptado() {
         waitInfoPoliza(lblInformaPoliza);
         radioBotReaseguroEspecial.click();
@@ -243,7 +252,11 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         listaCanal.sendKeys(Keys.ENTER);
         waitFor(WAIT_TIME_1).second();
         listaCanal.sendKeys(Keys.TAB);
+    }
 
+    public void seleccionarInformacionDePoliza(){
+        LblInformaPolizaEnRenovacion.click();
+        waitForTextToAppear("Información de póliza");
     }
     public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras){
         waitFor(WAIT_TIME_3).second();

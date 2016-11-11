@@ -33,7 +33,6 @@ Examples:
 | C000888888 | Armstrong - Cayman Captive Srvs > 501-002546 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | 9876543 | Asegurado        |
 
 
-
 Scenario: 2 Validar que se genere actividad de riesgo consultable al modificar una poliza
 
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
@@ -52,3 +51,19 @@ Examples:
 | TEST_99999999 | Asesor     | 9876543 | Asegurado        |
 
 
+Scenario: 3 Validar que se genere actividad de riesgo consultable al renovar una poliza
+
+Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
+When cuando intente renovar informacion de la poliza MRC
+And ingrese a edificios y ubicaciones en renovacion de poliza
+And intente ingresar una nueva ubicacion en renovacion de poliza
+And ingrese las entradas en renovacion de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
+| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                            | VALOR_ENTRADAS |
+| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                | 100            |
+| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                    | 100            |
+And se solicite aprobacion para los riesgos en renovacion de poliza
+Then se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consultable en renovacion de poliza
+
+Examples:
+| numPoliza     | rolUsuario | cedula  | tipoBeneficiario |
+| TEST_99999999 | Asesor     | 9876543 | Asegurado        |

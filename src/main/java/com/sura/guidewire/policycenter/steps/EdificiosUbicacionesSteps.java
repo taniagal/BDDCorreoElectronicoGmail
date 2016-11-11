@@ -32,7 +32,10 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     public void seleccionar_boton_agregar_articulo_a_una_ubicacion_en_cambio_de_poliza(){
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnCambioDePoliza();
     }
-
+    @Step
+    public void seleccionar_boton_agregar_articulo_a_una_ubicacion_en_renovacion_de_poliza(){
+        edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnRenovacionDePoliza();
+    }
     @Step
     public void ingresar_interes_adicional_a_articulo(String numerocedula){
         edificiosyUbicacionesWidget.ingresarInteresAdicional(numerocedula);
@@ -89,6 +92,12 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     @Step
     public void remover_riesgos(){
         edificiosyUbicacionesWidget.removerRiesgos();
+
+    }
+
+    @Step
+    public void seleccionar_boton_editar_transaccion_de_poliza(){
+        edificiosyUbicacionesWidget.editartransacciondepoliza();
 
     }
 

@@ -147,6 +147,34 @@ public class EdificiosUbicaciones {
 
     }
 
+    @When("ingrese las entradas en renovacion de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
+    public void cuandoIntenteIngresarLasEntradasEnRenovacionDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula,String tipoBeneficiario) {
+
+        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion_en_renovacion_de_poliza();
+        int index = 0;
+        for (Map<String, String> entradaCobertura : entradatable.getRows()) {
+            index++;
+            String tab = entradaCobertura.get("TAB");
+            String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
+            String cobertura = entradaCobertura.get("COBERTURA");
+            String entrada = entradaCobertura.get("ENTRADAS");
+            boolean esOtroArticulo = false;
+            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))) {
+                esOtroArticulo = true;
+            }
+            boolean esUltimaFilaDeExampleTable = index == entradatable.getRows().size();
+            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
+
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
+        }
+        edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
+        edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
+
+        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
+        edificiosUbicacionesSteps.seleccionar_boton_cotizar();
+
+    }
+
 
     //// TODO: 21/10/2016 Construilo con example table
     @When("intente ingresar una nueva ubicacion")
@@ -154,6 +182,14 @@ public class EdificiosUbicaciones {
         edificiosUbicacionesSteps.remover_riesgos();
         edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
     }
+
+    @When("intente ingresar una nueva ubicacion en renovacion de poliza")
+    public void cuandoIntenteIngresarUnaNuevaUbicacionEnRenovacionDePoliza(){
+        edificiosUbicacionesSteps.seleccionar_boton_editar_transaccion_de_poliza();
+        edificiosUbicacionesSteps.remover_riesgos();
+        edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
+    }
+
 
     @When("haga clic en el boton Aceptar")
     public void cuandoHagaClicEnElBotonAceptar() {

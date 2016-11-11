@@ -4,8 +4,8 @@ package com.sura.guidewire.policycenter.steps;
 import com.sura.guidewire.policycenter.pages.AnalisisDeRiesgosPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.hamcrest.Matchers;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 
 
 public class AnalisisDeRiesgoSteps extends ScenarioSteps {
@@ -40,6 +40,10 @@ public class AnalisisDeRiesgoSteps extends ScenarioSteps {
     @Step
     public void seleccionar_opcion_analisis_de_riesgo_en_cambio_poliza(){
         obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgoEnCambioDePoliza();
+    }
+    @Step
+    public void seleccionar_opcion_analisis_de_riesgo_en_renovacion_poliza(){
+        obtenerRiesgosPage().ingresarAOpcionAnalisisdeRiesgoEnRenovacionDePoliza();
     }
     @Step
     public void solicitar_aprobacion(){
