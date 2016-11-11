@@ -43,7 +43,6 @@ public class NuevaPolizaPage extends PageUtil {
 
 
     private List<WebElement> filas;
-    Actions acciones = new Actions(getDriver());
 
     public NuevaPolizaPage(WebDriver driver) {
         super(driver);
@@ -51,7 +50,8 @@ public class NuevaPolizaPage extends PageUtil {
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
         waitUntil(WAIT_TIME_3000);
-        acciones.click(elementoDeLaLista).build().perform();
+        //actions.click(elementoDeLaLista).build().perform();
+        elementoDeLaLista.waitUntilPresent().click();
     }
 
     public void desplegarListaDeOrganizaciones() {

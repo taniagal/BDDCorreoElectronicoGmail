@@ -118,6 +118,15 @@ public class Poliza {
         polizaSteps.seleccionarOpcionInformacionDePoliza();
     }
 
+    @When("cuando intente renovar informacion de la poliza MRC")
+    public void cuandoIntenterRenovarPolizaMRC() {
+        LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
+
+        polizaSteps.seleccionarBotonAcciones();
+        polizaSteps.seleccionarOpcionRenovarPoliza();
+        polizaSteps.confirmarRenovacion();
+    }
+
     @When("desee seleccionar instrucciones previas a la renovacion")
     public void cuandoDeseeSeleccionarInstruccionesPreviasALaRenovacion() {
         LOGGER.info("Poliza.cuandoDeseeRealizarInstruccionesPreviasALaRenovacion");
@@ -197,6 +206,28 @@ public class Poliza {
         analisisDeRiesgoSteps.seleccion_opcion_analisis_de_riesgos();
         analisisDeRiesgoSteps.se_muestra_compromiso_bloqueado(mensaje);
     }
+
+    @When("se solicite aprobacion para los riesgos")
+    public void cuandoSeSoliciteAprobacionParaLosriesgos() {
+        LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacionDeLosRiesgos");
+        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgos_en_cotizacion();
+        analisisDeRiesgoSteps.solicitar_aprobacion();
+    }
+
+    @When("se solicite aprobacion para los riesgos en cambio de poliza")
+    public void cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza() {
+        LOGGER.info("Poliza.cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza");
+        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_cambio_poliza();
+        analisisDeRiesgoSteps.solicitar_aprobacion();
+    }
+
+    @When("se solicite aprobacion para los riesgos en renovacion de poliza")
+    public void cuandoSeSoliciteAprobacionParaLosriesgosEnRenovacionDePoliza() {
+        LOGGER.info("Poliza.cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza");
+        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_renovacion_poliza();
+        analisisDeRiesgoSteps.solicitar_aprobacion();
+    }
+
     @Then("se debe mostrar un mensaje con el texto: $Mensaje")
     public void entoncesSeDebeMostrarUnMensajeConElTexto(String mensaje){
         LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion");
