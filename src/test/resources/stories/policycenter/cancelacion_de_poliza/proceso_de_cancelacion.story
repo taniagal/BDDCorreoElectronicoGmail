@@ -1,4 +1,4 @@
-Procedo De Cancelacion
+Proceso De Cancelacion
 
 Meta: @lote2
 
