@@ -1,7 +1,7 @@
 package com.sura.policycenter.selenium.definitions;
 
+import com.sura.guidewire.policycenter.steps.ExpedicionCambioDePolizaUWPEPSSteps;
 import com.sura.policycenter.selenium.steps.AnalisisDeRiesgoPaSteps;
-import com.sura.policycenter.selenium.steps.ExpedicionCambioDePolizaUWPEPSSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;

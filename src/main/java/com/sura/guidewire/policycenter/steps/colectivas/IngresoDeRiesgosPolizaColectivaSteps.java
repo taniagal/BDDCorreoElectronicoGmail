@@ -107,7 +107,6 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
     @Step
     public void validarInformacionDePolizaPA(ExamplesTable infoPoliza) {
         opcionesInformacionPolizaPage.irAInformacionDePoliza();
-        opcionesInformacionPolizaPage.validarInfoPolizaPA(infoPoliza);
     }
 
     @Step
@@ -124,24 +123,7 @@ public class IngresoDeRiesgosPolizaColectivaSteps extends ScenarioSteps {
         ingresoDeRiesgosPolizaColectivaPages.clicEnActualizarInformacionDePolizaColectiva();
     }
 
-    @Step
-    public void validarFechaFinVigenciaPolizaColectivaAutos() {
-        opcionesInformacionPolizaPage.validarFechaFinVigenciaPolizaColectivaAutos();
-        opcionesInformacionPolizaPage.validarFechaInicioVigenciaPolizaColectiva();
-    }
-
-    @Step
-    public void validarFechaFinVigenciaPolizaColectivaCommercial(int numeroDias) {
-        opcionesInformacionPolizaPage.validarFechaFinVigenciaPolizaColectivaCommercial(numeroDias);
-        opcionesInformacionPolizaPage.validarFechaInicioVigenciaPolizaColectiva();
-    }
-
-    @Step
-    public void validarFechaInicioVigenciaMenorALaPolizaMadre(String mensaje) {
-        opcionesInformacionPolizaPage.validarFechaInicioVigenciaMenorALaPolizaMadre(mensaje);
-    }
-
-    @Step
+   @Step
     public void validarOpcionIrAListaDeRiesgos() {
         expedicionDePolizaPage.validarOpcionIrAListaDeRiesgos();
     }

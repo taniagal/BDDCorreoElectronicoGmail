@@ -78,6 +78,11 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones();
     }
 
+    @When("de clic en Aceptar de la ventana Coaseguro")
+    public void darClicEnAceptarDeCoaseuguro(){
+        informacionDePolizaMrcSteps.darClicEnAceptarDeCoaseuguro();
+    }
+
     @Then("se debe validar que se muestren los mensajes de obligatoriedad siguientes $mensajesesperados")
     public void entoncesSeDebenValidarQueSeMuestrenLosMensajesDeObligatoriedad(ExamplesTable mensajesesperados) {
         informacionDePolizaMrcSteps.validar_mensajes_coaseguros(mensajesesperados);

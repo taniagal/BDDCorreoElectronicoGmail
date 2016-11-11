@@ -112,6 +112,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade radioButtonCedido;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarPopup;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
+    WebElementFacade botonAceptarCoaseguro;
 
 
     private static String lblMensajesAlerta = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
@@ -405,4 +407,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
 
+    public void darClicEnAceptarDeCoaseuguro() {
+        botonAceptarCoaseguro.click();
+    }
 }
