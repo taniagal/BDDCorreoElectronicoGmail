@@ -23,7 +23,7 @@ import static ch.lambdaj.Lambda.on;
 public class PolizaPage extends GuidewirePage {
 
 
-    private static String XPATH_MENU_DESPLEGABLE = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
+    private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = "//a[contains(.,'Mostrar coaseguro')]";
     private static String xpathTablaCoasegurosAseguradosResumenPoliza = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/div/table";
     private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
@@ -227,9 +227,9 @@ public class PolizaPage extends GuidewirePage {
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
 
 
-        waitFor(findBy(XPATH_MENU_DESPLEGABLE)).waitUntilVisible();
-        shouldBeVisible(getDriver().findElement(By.xpath(XPATH_MENU_DESPLEGABLE)));
-        listaMotivosWE = findBy(XPATH_MENU_DESPLEGABLE).thenFindAll("//li");
+        waitFor(findBy(xpathMenuDesplegable)).waitUntilVisible();
+        shouldBeVisible(getDriver().findElement(By.xpath(xpathMenuDesplegable)));
+        listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
         listaMotivos = extract(listaMotivosWE, on(WebElementFacade.class).getText());
     }
     public List<String> obtenerMotivosDisponibles(){

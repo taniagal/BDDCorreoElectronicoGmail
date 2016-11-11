@@ -18,6 +18,8 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageObject {
     private WebElementFacade botonAceptarAprobacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
     private WebElementFacade botonExpedirPoliza;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton']")
+    private WebElementFacade botonBorrar;
 
     protected static final int WAIT_TIME_30000 = 30000;
 
@@ -38,6 +40,11 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageObject {
 
     public void expedirPoliza() {
         waitFor(botonExpedirPoliza);
+        botonExpedirPoliza.click();
+        waitFor(botonAceptarMensaje);
+        botonAceptarMensaje.click();
+        botonBorrar.waitUntilPresent().click();
+        botonBorrar.waitUntilNotVisible();
         botonExpedirPoliza.click();
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();

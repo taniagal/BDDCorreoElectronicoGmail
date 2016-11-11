@@ -73,6 +73,8 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuItemNuevoEnvio;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
     private WebElementFacade mnuNumeroSub;
+    @net.serenitybdd.core.annotations.findby.FindBy(xpath = ".//*[@id='SubmissionWizard:Prev-btnInnerEl']")
+    public WebElementFacade botonVolver;
 
     // Objetos menu Contacto
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
@@ -1181,7 +1183,7 @@ public class Navegacion extends PageUtil {
         ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(mnuInformacionDePoliza).shouldBePresent();
         mnuInformacionDePoliza.click();
-        vehiculoPage.botonVolver.waitUntilPresent();
+        botonVolver.waitUntilPresent();
         waitUntil(WAIT_TIME_1000);
         return new OpcionesInformacionPolizaPage(getDriver());
     }
