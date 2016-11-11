@@ -77,6 +77,10 @@ public class InformacionDePolizaMrcDefinitions {
     public void cuandoIntenteIngresarAEdificiosYUbicaciones() {
         informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones();
     }
+    @When("ingrese a edificios y ubicaciones en cambio de poliza")
+    public void cuandoIntenteIngresarAEdificiosYUbicacionesEnCambioDePoliza() {
+        informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones_en_cambio_de_poliza();
+    }
 
     @Then("se debe validar que se muestren los mensajes de obligatoriedad siguientes $mensajesesperados")
     public void entoncesSeDebenValidarQueSeMuestrenLosMensajesDeObligatoriedad(ExamplesTable mensajesesperados) {

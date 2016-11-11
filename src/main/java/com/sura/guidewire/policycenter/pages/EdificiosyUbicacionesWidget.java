@@ -59,6 +59,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonAgregarArticulos;
     @FindBy(css = ".message")
     private WebElementFacade divMensaje;
+    @FindBy(xpath =".//a[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
+    private WebElementFacade botonAgregarArticulosCambioPoliza;
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -77,6 +79,19 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
         waitFor(botonAgregarArticulos).waitUntilPresent();
         List<WebElementFacade> elementosList = findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']");
+        elementosList.get(0).click();
+        String tituloDePaginaAgregarArticulos = "Volver a Edificios y ubicaciones";
+        waitForTextToAppear(tituloDePaginaAgregarArticulos);
+        shouldContainText(tituloDePaginaAgregarArticulos);
+    }
+
+    public void agregarArticuloAPrimerUbicacionEnCambioDePoliza() {
+        waitForTextToAppear("Edificios y ubicaciones");
+        if (tabla == null) {
+            obtenerTabla();
+        }
+        waitFor(botonAgregarArticulosCambioPoliza).waitUntilPresent();
+        List<WebElementFacade> elementosList = findAll(".//a[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']");
         elementosList.get(0).click();
         String tituloDePaginaAgregarArticulos = "Volver a Edificios y ubicaciones";
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
@@ -130,7 +145,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
         findBy("//div[@class='message']").waitUntilVisible();
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
-        findBy("//span[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:ttlBar']").waitUntilVisible();
+        waitForTextToAppear("Edificios y ubicaciones");
     }
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {

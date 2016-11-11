@@ -89,6 +89,8 @@ public class EdificiosUbicaciones {
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
 
+
+
     @When("ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula,String tipoBeneficiario) {
 
@@ -116,6 +118,35 @@ public class EdificiosUbicaciones {
         edificiosUbicacionesSteps.seleccionar_boton_cotizar();
 
     }
+
+    @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
+    public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula,String tipoBeneficiario) {
+
+        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion_en_cambio_de_poliza();
+        int index = 0;
+        for (Map<String, String> entradaCobertura : entradatable.getRows()) {
+            index++;
+            String tab = entradaCobertura.get("TAB");
+            String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
+            String cobertura = entradaCobertura.get("COBERTURA");
+            String entrada = entradaCobertura.get("ENTRADAS");
+            boolean esOtroArticulo = false;
+            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))) {
+                esOtroArticulo = true;
+            }
+            boolean esUltimaFilaDeExampleTable = index == entradatable.getRows().size();
+            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
+
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
+        }
+        edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
+        edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
+
+        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
+        edificiosUbicacionesSteps.seleccionar_boton_cotizar();
+
+    }
+
 
     //// TODO: 21/10/2016 Construilo con example table
     @When("intente ingresar una nueva ubicacion")

@@ -27,6 +27,8 @@ public class PlanDeTrabajoPage extends PageUtil{
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
     String xPathOpcionPlanDeTrabajo = ".//*[@id='SubmissionWizard:Workplan']";
+    String xPathOpcionPlanDeTrabajoEnCambioDePoliza = ".//*[@id='PolicyChangeWizard:Workplan']";
+
 
     public PlanDeTrabajoPage(WebDriver driver) {
         super(driver);
@@ -34,6 +36,10 @@ public class PlanDeTrabajoPage extends PageUtil{
 
     public void ingresarALaOpcionPlanDeTrabajo() {
         findBy(xPathOpcionPlanDeTrabajo).click();
+        waitForTextToAppear("Plan de trabajo");
+    }
+    public void ingresarALaOpcionPlanDeTrabajoEnCambioDePoliza() {
+        findBy(xPathOpcionPlanDeTrabajoEnCambioDePoliza).click();
         waitForTextToAppear("Plan de trabajo");
     }
 

@@ -93,7 +93,7 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public void seleccionarBotonSiguienteEnInicioDeCambioDePoliza() {
-        waitFor(WAIT_TIME_20).seconds();
+        waitFor(WAIT_TIME_5).seconds();
         waitForTextToAppear("Iniciar cambios en póliza");
         String btnSiguienteCambioPoliza = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange-btnInnerEl']";
         findBy(btnSiguienteCambioPoliza).waitUntilVisible().waitUntilClickable().click();

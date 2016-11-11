@@ -14,10 +14,16 @@ public class PlandeTrabajoDefinitions {
     PlanDeTrabajoSteps planDeTrabajoSteps;
 
 
-    @Then("se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consutable")
+    @Then("se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consultable")
     public void entoncesSeDebeGenerarUnaActividadPorCadaDniODireccionDiferenteQueSeaRiesgoConsultable()
     {
         planDeTrabajoSteps.ingresar_al_plan_de_trabajo();
+    }
+
+    @Then("se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consultable en cambio de poliza")
+    public void entoncesSeDebeGenerarUnaActividadPorCadaDniODireccionDiferenteQueSeaRiesgoConsultableEnCambioDePoliza()
+    {
+        planDeTrabajoSteps.ingresar_al_plan_de_trabajo_en_cambio_de_poliza();
     }
 
 

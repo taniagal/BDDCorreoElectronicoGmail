@@ -18,4 +18,9 @@ public class PlanDeTrabajoSteps extends ScenarioSteps {
         planDeTrabajoPage.ingresarALaOpcionPlanDeTrabajo();
         planDeTrabajoPage.validarActividadesGeneradasEnRiesgo();
     }
+    @Step
+    public void ingresar_al_plan_de_trabajo_en_cambio_de_poliza(){
+        planDeTrabajoPage.ingresarALaOpcionPlanDeTrabajoEnCambioDePoliza();
+        planDeTrabajoPage.validarActividadesGeneradasEnRiesgo();
+    }
 }

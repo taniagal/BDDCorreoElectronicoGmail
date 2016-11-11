@@ -205,6 +205,13 @@ public class Poliza {
         analisisDeRiesgoSteps.solicitar_aprobacion();
     }
 
+    @When("se solicite aprobacion para los riesgos en cambio de poliza")
+    public void cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza() {
+        LOGGER.info("Poliza.cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza");
+        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_cambio_poliza();
+        analisisDeRiesgoSteps.solicitar_aprobacion();
+    }
+
     @Then("se debe mostrar un mensaje con el texto: $Mensaje")
     public void entoncesSeDebeMostrarUnMensajeConElTexto(String mensaje){
         LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion");

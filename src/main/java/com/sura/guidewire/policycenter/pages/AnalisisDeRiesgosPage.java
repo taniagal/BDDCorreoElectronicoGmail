@@ -13,13 +13,13 @@ import java.util.List;
 
 
 public class AnalisisDeRiesgosPage extends PageUtil {
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV_tb:LockForReview-btnInnerEl']")
+    @FindBy(xpath = ".//*[contains(@id,'Job_RiskAnalysisScreen') and contains(@id,'RiskAnalysisCV_tb:LockForReview-btnInnerEl')]")
     private WebElementFacade botonBloqueo;
     @FindBy(xpath = ".//a[contains(.,'Borrar')]")
     private WebElementFacade botonBorrar;
     private int numeroDeRiesgos;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-    private static String xPathSolicitarAprobacion = ".//*[contains(@id,'SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet') and contains(@id,'UWIssueRowSet:RequestApproval')]";
+    private static String xPathSolicitarAprobacion = ".//*[contains(@id,'Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet') and contains(@id,'UWIssueRowSet:RequestApproval')]";
 
     public AnalisisDeRiesgosPage(WebDriver driver) {
         super(driver);
@@ -65,6 +65,24 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         }
     }
 
+    public void ingresarAOpcionAnalisisdeRiesgoEnCambioDePoliza() {
+        String xpathAnalisisRiesgos = ".//*[@id='PolicyChangeWizard:RiskAnalysis']/div";
+        String xpathMensajeAlertaEdificiosYUbicaciones = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']";
+        String xpathBorrarWorkskpace = ".//a[contains(.,'Borrar')]";
+        waitUntil(WAIT_TIME_2000);
+        findBy(xpathAnalisisRiesgos).click();
+        waitFor(WAIT_TIME_2).second();
+        if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
+            findBy(xpathAnalisisRiesgos).click();
+            waitForTextToAppear("Análisis de riesgo");
+        }
+        if (findBy(xpathBorrarWorkskpace).isVisible()) {
+            waitUntil(WAIT_TIME_3000);
+            botonBorrar.click();
+        }
+    }
+
+
     public void seleccionarSolicitarAprobacion() {
         int bttonSolicitarAprobacion=1;
             List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(xPathSolicitarAprobacion));
@@ -83,6 +101,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
             }
         setNumeroDeRiesgos(bttonSolicitarAprobacion);
     }
+
 
     public void aceptarInicioSolicitudAprobacion() {
         String xpathAceptarInicioSolicitud = ".//a[contains(.,'Aceptar')]";

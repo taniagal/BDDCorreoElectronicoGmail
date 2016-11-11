@@ -48,6 +48,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade mensajePantalla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     WebElementFacade btnSiguinete;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
+    WebElementFacade btnSiguineteCambioDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton-btnInnerEl']")
     WebElementFacade btnAgregar;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -165,6 +167,9 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public void seleccionBotonSiguiente()    {
         btnSiguinete.click();
+    }
+    public void seleccionBotonSiguienteenCambioDePoliza()    {
+        btnSiguineteCambioDePoliza.click();
     }
 
     public void seleccionaRiesgoAceptado() {

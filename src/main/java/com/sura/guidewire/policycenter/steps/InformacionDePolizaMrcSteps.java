@@ -116,5 +116,9 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     public void ingresar_a_edificios_y_ubicaciones() {
         opcionesInformacionPolizaMrcPage.seleccionBotonSiguiente();
     }
+    @Step
+    public void ingresar_a_edificios_y_ubicaciones_en_cambio_de_poliza(){
+        opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenCambioDePoliza();
+    }
 }
 
