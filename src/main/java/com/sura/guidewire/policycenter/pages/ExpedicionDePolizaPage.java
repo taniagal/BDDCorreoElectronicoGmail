@@ -78,6 +78,7 @@ public class ExpedicionDePolizaPage extends PageUtil{
     WebElementFacade iconoError;
 
     protected static final int WAIT_TIME_30000 = 30000;
+    protected static final int WAIT_TIME_45000 = 45000;
 
 
     public ExpedicionDePolizaPage(WebDriver driver){
@@ -182,11 +183,10 @@ public class ExpedicionDePolizaPage extends PageUtil{
     }
 
     public void validarMensajeRequisitos() {
-        waitForTextToAppear("Existen requisitos pendientes, por favor verifique.", WAIT_TIME_30000);
+        waitForTextToAppear("Existen requisitos pendientes, por favor verifique.", WAIT_TIME_45000);
         WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
-        botonBorrar.click();
-        waitUntil(WAIT_TIME_2000);
+        waitUntil(WAIT_TIME_5000);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonAceptarMensaje).click();
     }
