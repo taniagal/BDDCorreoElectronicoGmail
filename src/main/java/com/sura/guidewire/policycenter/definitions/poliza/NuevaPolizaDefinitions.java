@@ -1,7 +1,7 @@
-package com.sura.guidewire.policycenter.definitions.colectivas;
+package com.sura.guidewire.policycenter.definitions.poliza;
 
 import com.google.inject.name.Named;
-import com.sura.guidewire.policycenter.steps.colectivas.NuevaPolizaSteps;
+import com.sura.guidewire.policycenter.steps.poliza.NuevaPolizaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;

@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.util.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.policycenter.pages.colectivas.NuevaPolizaPage;
+import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.util.AssertUtil;
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
