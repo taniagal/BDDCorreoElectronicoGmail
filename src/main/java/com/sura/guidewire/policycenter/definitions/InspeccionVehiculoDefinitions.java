@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.CotizacionMRCSteps;
+import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.InspeccionVehiculoSteps;
 import com.sura.guidewire.policycenter.steps.ValidacionesInformacionDeVehiculoSteps;
 import net.thucydides.core.annotations.Manual;
@@ -21,6 +22,9 @@ public class InspeccionVehiculoDefinitions {
 
     @Steps
     InspeccionVehiculoSteps inspeccionVehiculoSteps;
+
+    @Steps
+    ExpedicionDePolizaSteps expedicionDePolizaSteps;
 
     @Given("se ha realizado la cotizacion <cotizacion>")
     public void buscarCotizacion(@Named("cotizacion") String cotizacion){
@@ -80,6 +84,11 @@ public class InspeccionVehiculoDefinitions {
     @Then("se debe permitir expedir la poliza")
     public void permitirExpedirPoliza(){
         inspeccionVehiculoSteps.validar_Cotizacion_Expedida();
+    }
+
+    @Then("validar la solicitud de requisitos")
+    public void validarSolicitudRequisitos(){
+        expedicionDePolizaSteps.validarMensajeRequisitos();
     }
 
     @SuppressWarnings("EmptyMethod")

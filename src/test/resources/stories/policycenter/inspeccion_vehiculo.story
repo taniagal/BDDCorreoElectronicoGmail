@@ -44,27 +44,29 @@ Examples:
 |numCuenta  |placa |valorAsegurado|
 |C1060447895|MJK289|21800000,00   |
 
-Scenario: Consultar inspeccion valida en SIA
-Given se ha realizado la cotizacion <cotizacion>
-And se tiene la informacion de la placa <placa> del vehiculo ingresada
-When la inspeccion es valida en SIA
-Then se debe permitir expedir la poliza
-And la fecha de inspeccion debe ser la fecha de inicio de vigencia de la poliza
-
-Examples:
-|cotizacion |placa |
-|22221122   |USU422|
-
 Scenario: Vehiculo sin requisito inspeccion para poder expedir
 Given se ha realizado la cotizacion <cotizacion>
 When se identifique que el vehiculo <placa> no cumple con el requisito de inspeccion
 And llegue a la expedicion de la poliza
-Then se debe mostrar en la pantalla un mensaje <mensaje> indicando que el vehiculo no tiene inspeccion
+Then validar la solicitud de requisitos
+And se debe mostrar en la pantalla un mensaje <mensaje> indicando que el vehiculo no tiene inspeccion
 And generar el UW Issue <mensaje> y no permitir expedir
 
 Examples:
 |cotizacion|placa  |mensaje                                                                       |
 |22221222  |COR219 |El vehículo no tiene una inspección vigente a la fecha de ingreso del riesgo. |
+
+Scenario: Consultar inspeccion valida en SIA
+Given se ha realizado la cotizacion <cotizacion>
+And se tiene la informacion de la placa <placa> del vehiculo ingresada
+When la inspeccion es valida en SIA
+Then validar la solicitud de requisitos
+And se debe permitir expedir la poliza
+And la fecha de inspeccion debe ser la fecha de inicio de vigencia de la poliza
+
+Examples:
+|cotizacion |placa |
+|22221122   |USU422|
 
 Scenario: Consulta requisito inspeccion en el modelo
 Meta: @lote2
@@ -77,10 +79,6 @@ Then se debe permitir expedir la poliza
 And el valor asegurado se debe consultar
 And traer de la tabla fasecolda
 
-Examples:
-| |
-| |
-
 Scenario: Consulta requisito inspeccion en WS fasecolda
 Meta: @lote2
 @manual
@@ -90,8 +88,4 @@ And se cumplan las condiciones para el requisito de inspeccion
 Then se debe permitir expedir la poliza
 And el valor asegurado se debe consultar
 And traer de la tabla fasecolda
-
-Examples:
-| |
-| |
 
