@@ -1,6 +1,10 @@
 Analisis De Riesgo Pa
 
-Meta:
+Meta: @lote1
+
+@issue #CDSEG-993
+@tag automator: diego_cardona_acevedo
+@Sprint 9
 
 Narrative:
 Como usuario de Policy Center
