@@ -1,4 +1,4 @@
-Meta: @lote2
+Meta: @lote3
 
 @issue #SUGWUSC-14966
 @Automatizador: Jonathan Mejia

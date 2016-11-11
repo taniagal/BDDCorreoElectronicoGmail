@@ -25,7 +25,7 @@ public class PanelSuperiorElement extends PageObject implements Serializable {
         } catch (TimeoutException e){
             LOGGER.info("Elemento del menú no encontrado | Elemento: " + opcion + "\n TRAZA: " + e);
         } catch (Exception e){
-            LOGGER.info(e.toString());
+            LOGGER.info("Exception" + e);
         }
     }
 

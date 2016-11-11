@@ -4,16 +4,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.RenderedPageObjectView;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
-
 
 
 public class TableWidgetPage extends PageObject {
@@ -23,6 +25,7 @@ public class TableWidgetPage extends PageObject {
     private static String ENCABEZADO_TABLA = ".//div[ (descendant::*[contains(@id, 'gridcolumn')]) and contains(@id,'headercontainer') and contains(@id,'targetEl') and contains(@class,'x-box-target') and contains(@role,'presentation')]/div";
     private static String TABLA = ".//*[contains(@id,'gridview') and contains(@id,'table') and contains(@class,'x-gridview') and contains(@class,'table') and contains(@class,'x-grid-table')]";
     private static String LISTA_COMBO_DESPLEGABLE = ".//ul[contains(@class,'x-list-plain')]";
+    private static final int WAIT_TIME_2000 = 2000;
 
     private List<WebElement> toolbarListWE;
     private WebElement contenedorWE = null;
@@ -56,7 +59,7 @@ public class TableWidgetPage extends PageObject {
     }
 
     public Boolean existenFilasEnTabla() {
-        if (! obtenerFilas().isEmpty()) {
+        if (!obtenerFilas().isEmpty()) {
             return true;
         }
         return false;
@@ -93,16 +96,16 @@ public class TableWidgetPage extends PageObject {
     public void seleccionarDeComboConValor(String valorInputDeComboBox) {
         Boolean iterara = true;
 
-        while (iterara){
+        while (iterara) {
             try {
                 Iterator opcionToolbar = toolbarListWE.iterator();
 
-                if("Mostrar todos los roles".equals(valorInputDeComboBox)){
+                if ("Mostrar todos los roles".equals(valorInputDeComboBox)) {
                     findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:roleFilters-inputEl']").click();
                     findBy(LISTA_COMBO_DESPLEGABLE).waitUntilVisible();
                     shouldBeVisible(findBy(LISTA_COMBO_DESPLEGABLE));
                     iterara = false;
-                }else{
+                } else {
                     findBy(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:personCompanyFilters-inputEl']").click();
                 }
                 iterara = false;
@@ -122,9 +125,18 @@ public class TableWidgetPage extends PageObject {
 
         List<WebElement> opcionesDeCombo = getDriver().findElements(By.xpath(xpathDelCombo));
         for (WebElement opcion : opcionesDeCombo) {
-            if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
-                opcion.click();
-                fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
+            try {
+                if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
+                    opcion.click();
+                    fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
+                }
+            } catch (StaleElementReferenceException e) {
+                LOGGER.info("StaleElementReferenceException " + e);
+                PageUtil.waitUntil(WAIT_TIME_2000);
+                if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
+                    opcion.click();
+                    fluent().await().atMost(waitForTimeoutInMilliseconds(), TimeUnit.MILLISECONDS);
+                }
             }
         }
 
@@ -151,12 +163,17 @@ public class TableWidgetPage extends PageObject {
 
         if (existenFilasEnTabla() && indiceDeColumna > 0 && indiceDeColumna < obtenerEncabezado().size()) {
             for (WebElement fila : obtenerFilas()) {
-                WebElement celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
+                WebElement celda;
+                try {
+                    celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
+                }catch (StaleElementReferenceException e){
+                    LOGGER.info("StaleElementReferenceException " + e);
+                    PageUtil.waitUntil(WAIT_TIME_2000);
+                    celda = fila.findElement(By.xpath("td[" + indiceDeColumna + "]"));
+                }
                 filasPorColumna.add(celda);
             }
-
         }
-
         return filasPorColumna;
     }
 

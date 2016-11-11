@@ -86,6 +86,7 @@ public class ExpedicionDePolizaPage extends PageUtil{
 
     public void irABuscarCotizacion(String cotizacion){
         waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
+        waitUntil(WAIT_TIME_1000);
         menuPoliza.click();
         waitForAnyTextToAppear("Cotización", "Buscar pólizas");
         waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();

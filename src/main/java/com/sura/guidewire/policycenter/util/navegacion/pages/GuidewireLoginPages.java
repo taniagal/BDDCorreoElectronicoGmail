@@ -5,11 +5,9 @@ import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
@@ -20,8 +18,6 @@ import java.util.concurrent.TimeUnit;
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class GuidewireLoginPages extends PageUtil implements Serializable{
     private static final long serialVersionUID = 1L;
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
     public static final String TITULO_PAGINA_PPL_DE_ACCESO = ".//span[@id='DesktopActivities:DesktopActivitiesScreen:0']";
     public static final String TXT_USUARIO_SEUS = "//input[@placeholder='Usuario']";
     public static final String TXT_USUARIO = "//input[@id='Login:LoginScreen:LoginDV:username-inputEl']";
@@ -31,6 +27,9 @@ public class GuidewireLoginPages extends PageUtil implements Serializable{
     public static final String BTN_LOGIN_SEUS = "//input[@type='submit']";
     public static final String BTN_LOGIN = "//span[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']";
     public static final String MNU_CONTACTO = "//span[@id='TabBar:ContactTab-btnInnerEl']";
+
+    private static final int CONSTANTE_5 = 5;
+    private static final int CONSTANTE_250 = 250;
 
     public GuidewireLoginPages(WebDriver driver){
         super(driver);
@@ -71,8 +70,8 @@ public class GuidewireLoginPages extends PageUtil implements Serializable{
 
     private void esperarAQueDigite(String elemento, String valor) {
         waitForCondition()
-                .withTimeout(5, TimeUnit.SECONDS)
-                .pollingEvery(250,TimeUnit.MILLISECONDS)
+                .withTimeout(CONSTANTE_5, TimeUnit.SECONDS)
+                .pollingEvery(CONSTANTE_250,TimeUnit.MILLISECONDS)
                 .until(valorDeEntradaActualizadoA(elemento, valor));
     }
 

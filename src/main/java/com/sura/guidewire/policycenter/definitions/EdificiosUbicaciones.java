@@ -1,12 +1,11 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
-import com.sura.guidewire.policycenter.steps.colectivas.NuevaPolizaSteps;
-import com.sura.guidewire.policycenter.util.navegacion.definitions.IngresoAPolicyCenterDefinitions;
-import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireSteps;
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
+import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
 import com.sura.guidewire.policycenter.util.AssertUtil;
+import com.sura.guidewire.policycenter.util.navegacion.definitions.IngresoAPolicyCenterDefinitions;
+import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
@@ -58,12 +57,12 @@ public class EdificiosUbicaciones {
                 .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
 
         try {
-            polizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
+            polizaSteps.seleccionarBotonLlamadoEditarTransaccionDePoliza();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
         }
 
-        polizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
+        polizaSteps.seleccionarOpcionEdificiosYUbicaciones();
     }
 
     @When("intente ingresar las entradas de las diferentes coberturas $entradas")
@@ -134,12 +133,12 @@ public class EdificiosUbicaciones {
     public void cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo() {
 
         try {
-            polizaSteps.seleccionar_boton_llamado_editar_transaccion_de_poliza();
+            polizaSteps.seleccionarBotonLlamadoEditarTransaccionDePoliza();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION NO ENCONTRADO " + e);
         }
 
-        polizaSteps.seleccionar_opcion_edificios_y_ubicaciones();
+        polizaSteps.seleccionarOpcionEdificiosYUbicaciones();
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
         cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo();
 

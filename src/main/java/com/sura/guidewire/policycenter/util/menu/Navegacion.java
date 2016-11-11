@@ -73,6 +73,8 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuItemNuevoEnvio;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
     private WebElementFacade mnuNumeroSub;
+    @net.serenitybdd.core.annotations.findby.FindBy(xpath = ".//*[@id='SubmissionWizard:Prev-btnInnerEl']")
+    public WebElementFacade botonVolver;
 
     // Objetos menu Contacto
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
@@ -380,16 +382,18 @@ public class Navegacion extends PageUtil {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
-        waitUntil(WAIT_TIME_3000);
+        waitFor(WAIT_TIME_5).second();
         gw.deployMenu(mnuCuenta);
+        waitFor(WAIT_TIME_3).second();
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
         waitForTextToAppear("Nueva cuenta");
-        waitUntil(WAIT_TIME_2000);
+        waitFor(WAIT_TIME_2).second();
         waitFor(txtNumCuenta).waitUntilEnabled();
+        txtNumCuenta.click();
         txtNumCuenta.waitUntilEnabled().type(numCuenta);
         withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(btnBuscarCuenta).shouldBePresent();
         btnBuscarCuenta.waitUntilVisible().waitUntilClickable().click();
-        waitUntil(WAIT_TIME_2000);
+        waitFor(WAIT_TIME_5).second();
         return new CuentaBuscarPage(getDriver());
     }
 
@@ -691,7 +695,6 @@ public class Navegacion extends PageUtil {
     public CuentaNuevoEnvioPage irACuentaNuevoEnvioCuenta() {
         waitFor(mnuAccionesCuenta).waitUntilPresent();
         gw.deployMenu(mnuAccionesCuenta);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(WAIT_TIME_300);
         act.moveToElement(mnuAccionNuevoEnvio2).release(mnuAccionNuevoEnvio2).click().build().perform();
         return new CuentaNuevoEnvioPage(getDriver());
@@ -1180,7 +1183,7 @@ public class Navegacion extends PageUtil {
         ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(mnuInformacionDePoliza).shouldBePresent();
         mnuInformacionDePoliza.click();
-        vehiculoPage.botonVolver.waitUntilPresent();
+        botonVolver.waitUntilPresent();
         waitUntil(WAIT_TIME_1000);
         return new OpcionesInformacionPolizaPage(getDriver());
     }

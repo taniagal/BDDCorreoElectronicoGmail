@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 public final class GwNavegacionUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+    private static final int CONSTANTE_60 = 60;
 
     private GwNavegacionUtil(){
     }
@@ -30,7 +31,6 @@ public final class GwNavegacionUtil {
         String menu = "";
 
         try {
-            HashSet<String> nombreColumnasTablaHS = obtenerNombreColumnasDeExamplesTable(opcionesPorMenu);
             for (String menuPrimerNivel : obtenerNombreColumnasDeExamplesTable(opcionesPorMenu)) {
 
                 menu = "MENU -> " + menuPrimerNivel;
@@ -49,7 +49,7 @@ public final class GwNavegacionUtil {
         }
     }
 
-    private static void recorrerOpciones(WebDriver driver, String tipoElementoMenu, ExamplesTable opcionesPorMenu, String menuPrimerNivel, Boolean darClick) throws Exception {
+    private static void recorrerOpciones(WebDriver driver, String tipoElementoMenu, ExamplesTable opcionesPorMenu, String menuPrimerNivel, Boolean darClick){
         String menu;
         for (Map<String, String> row : opcionesPorMenu.getRows()) {
             menu = "MENU -> " + menuPrimerNivel + " -> " + row.get(menuPrimerNivel);
@@ -63,7 +63,7 @@ public final class GwNavegacionUtil {
     }
 
 
-    private static HashSet<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable) throws Exception {
+    private static HashSet<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable){
         LOGGER.error("GuidewireUtil.obtenerNombreColumnasDeExamplesTable");
 
         HashSet<String> nombreColumnasTablaHS = new HashSet<>();
@@ -80,7 +80,7 @@ public final class GwNavegacionUtil {
     }
 
 
-    private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu) throws Exception {
+    private static WebElement obtenerMenuPorTextoContenido(WebDriver driver, String textoDelMenu, String tipoElementoMenu){
         LOGGER.error("GuidewireUtil.obtenerMenuPorTextoContenido");
 
         if ("LINK".equals(tipoElementoMenu)) {
@@ -93,11 +93,11 @@ public final class GwNavegacionUtil {
     }
 
     public static void esperarElementoSeaClickable(WebDriver driver, WebElement element) {
-        new WebDriverWait(driver, 60).ignoring(NoSuchElementException.class)
+        new WebDriverWait(driver, CONSTANTE_60).ignoring(NoSuchElementException.class)
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public static List<String> obtenerTablaDeEjemplosDeUnaColumna(ExamplesTable tablaUnaColumna) throws Exception {
+    public static List<String> obtenerTablaDeEjemplosDeUnaColumna(ExamplesTable tablaUnaColumna){
         List<String> valores = new ArrayList<>();
 
         Parameters row = tablaUnaColumna.getRowAsParameters(0);

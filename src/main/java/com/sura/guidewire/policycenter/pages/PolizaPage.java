@@ -23,17 +23,21 @@ import static ch.lambdaj.Lambda.on;
 public class PolizaPage extends GuidewirePage {
 
 
-    private static String XPATH_MENU_DESPLEGABLE = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
+    private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = "//a[contains(.,'Mostrar coaseguro')]";
     private static String xpathTablaCoasegurosAseguradosResumenPoliza = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/div/table";
     private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
     private String xpathMetodoDeReembolso = "//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CalcMethod-inputEl']";
     private String xpathMensajeBloqueoCancelacionPoliza = "//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']";
     private String xpathMensajeDeCancelacionPolizaconOneroso = "//label[@id='CancellationWizard:CancellationWizard_QuoteScreen:WarningOnerousMessageCancellation']";
-    private String XpathVerPolizExpedida = "//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']";
+    private String xpathVerPolizExpedida = "//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']";
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private List<String> listaMotivos;
     private List<WebElementFacade> listaMotivosWE;
+    protected static final int CONSTANTE_61 = 61;
+    protected static final int WAIT_TIME_20 = 20;
+    protected static final int CONSTANTE_10 = 10;
+    protected static final int WAIT_TIME_5 = 5;
     protected static final int WAIT_TIME_2 = 2;
     protected static final int WAIT_TIME_1 = 1;
     public static final String TRACE = "\nTRACE: \n";
@@ -89,7 +93,7 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public void seleccionarBotonSiguienteEnInicioDeCambioDePoliza() {
-        waitFor(20).seconds();
+        waitFor(WAIT_TIME_20).seconds();
         waitForTextToAppear("Iniciar cambios en póliza");
         String btnSiguienteCambioPoliza = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange-btnInnerEl']";
         findBy(btnSiguienteCambioPoliza).waitUntilVisible().waitUntilClickable().click();
@@ -210,11 +214,11 @@ public class PolizaPage extends GuidewirePage {
         String xpathTextareaDescripcion = "//textarea[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:ReasonDescription-inputEl']";
 
         findBy(xpathInputMotivo).type(motivo);
-        waitFor(2).seconds();
+        waitFor(WAIT_TIME_2).seconds();
         findBy(xpathInputMotivo).sendKeys(Keys.ENTER);
-        waitFor(2).seconds();
+        waitFor(WAIT_TIME_2).seconds();
         findBy(xpathTextareaDescripcion).type(descripcion);
-        waitFor(2).seconds();
+        waitFor(WAIT_TIME_2).seconds();
         findBy(xpathTextareaDescripcion).sendKeys(Keys.ENTER);
 
     }
@@ -223,9 +227,9 @@ public class PolizaPage extends GuidewirePage {
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
 
 
-        waitFor(findBy(XPATH_MENU_DESPLEGABLE)).waitUntilVisible();
-        shouldBeVisible(getDriver().findElement(By.xpath(XPATH_MENU_DESPLEGABLE)));
-        listaMotivosWE = findBy(XPATH_MENU_DESPLEGABLE).thenFindAll("//li");
+        waitFor(findBy(xpathMenuDesplegable)).waitUntilVisible();
+        shouldBeVisible(getDriver().findElement(By.xpath(xpathMenuDesplegable)));
+        listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
         listaMotivos = extract(listaMotivosWE, on(WebElementFacade.class).getText());
     }
     public List<String> obtenerMotivosDisponibles(){
@@ -246,26 +250,26 @@ public class PolizaPage extends GuidewirePage {
     }
 
     public void ingresarFechaAnteriorA61Dias(WebElementFacade fecha) {
-        LocalDate fechaHace61Dias = formatter.parseDateTime(fecha.getValue()).toLocalDate().minusDays(61);
+        LocalDate fechaHace61Dias = formatter.parseDateTime(fecha.getValue()).toLocalDate().minusDays(CONSTANTE_61);
         obtenerFechacancelacionElemento().clear();
         obtenerFechacancelacionElemento().sendKeys(formatter.print(fechaHace61Dias));
         obtenerFechacancelacionElemento().sendKeys(Keys.TAB);
     }
 
     public void ingresarFechaSuperior(WebElementFacade fecha) {
-        LocalDate fechaSuperior = formatter.parseDateTime(fecha.getValue()).toLocalDate().plusDays(10);
+        LocalDate fechaSuperior = formatter.parseDateTime(fecha.getValue()).toLocalDate().plusDays(CONSTANTE_10);
         obtenerFechacancelacionElemento().clear();
         obtenerFechacancelacionElemento().sendKeys(formatter.print(fechaSuperior));
         obtenerFechacancelacionElemento().sendKeys(Keys.TAB);
     }
 
     public void ingresaraResumenDeLaPolizaExpedida(){
-        findBy(XpathVerPolizExpedida).click();
+        findBy(xpathVerPolizExpedida).click();
         waitForTextToAppear("Resumen");
     }
 
     public WebElementFacade obtenerFechacancelacionElemento() {
-        waitFor(2).seconds();
+        waitFor(WAIT_TIME_2).seconds();
         return findBy(xpathFechaVigenteCancelacion);
     }
     public void validarBotones (String path){
@@ -273,7 +277,7 @@ public class PolizaPage extends GuidewirePage {
 
     }
     public String obtenerMetodoDeReembolso(){
-        waitFor(2).seconds();
+        waitFor(WAIT_TIME_2).seconds();
         return findBy(xpathMetodoDeReembolso).getText();
     }
     public WebElementFacade obtenerTituloBloqueoCancelacionPoliza(){
@@ -292,7 +296,7 @@ public class PolizaPage extends GuidewirePage {
         String existeTransaccion = "No existe la póliza";
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if(tipo.equals(cells.get(5).getText())){
+            if(tipo.equals(cells.get(WAIT_TIME_5).getText())){
                 existeTransaccion = "Se encontró la póliza en las transacciones";
             }
         }
@@ -355,8 +359,7 @@ public class PolizaPage extends GuidewirePage {
         MatcherAssert.assertThat(buscarInputHabilitadoEnElemento(xpathTablaCoasegurosAseguradosResumenPoliza),Is.is(false));
 
     }
-    public void ingresarOpcionMostrarCoaseguros()
-    {
+    public void ingresarOpcionMostrarCoaseguros(){
         findBy(xpathMostrarCoaseguros).click();
         waitForTextToAppear("Coaseguro");
     }

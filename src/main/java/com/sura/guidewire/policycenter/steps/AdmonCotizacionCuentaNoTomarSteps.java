@@ -30,7 +30,7 @@ public class AdmonCotizacionCuentaNoTomarSteps extends ScenarioSteps {
     }
 
     @Step
-    public void valida_lista_de_razones(ExamplesTable listaRazones) throws Exception{
+    public void valida_lista_de_razones(ExamplesTable listaRazones){
         opcionesAdminitradorCotizaciones.validarOpcionesDeAgregarNoTomar(listaRazones);
     }
 

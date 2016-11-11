@@ -67,37 +67,37 @@ public class ContactosAsociadosACuentaDefinitions {
     }
 
     @Given("debo darClick <darClick>  y ver las opciones de menú para los roles $opcionesPorRoles")
-    public void thenDeboVerLasOpcionesDeMenuParaLosRoles(ExamplesTable opcionesPorRoles, Boolean darClick) throws Exception {
+    public void thenDeboVerLasOpcionesDeMenuParaLosRoles(ExamplesTable opcionesPorRoles, Boolean darClick){
         contactosAsociadosACuentaSteps.verOpcionesDeCreacionDeContactoPorRoleDeContactos(opcionesPorRoles, darClick);
 
     }
 
     @Given("asocie un nuevo contacto a la cuenta con el rol seleccionado")
-    public void andAsocieUnNuevoContactoALaCuenta() throws Exception {
+    public void andAsocieUnNuevoContactoALaCuenta(){
         NuevoAseguradoNombradoPage nuevoAseguradoNombradoPage = new NuevoAseguradoNombradoPage(contactosAsociadosACuentaSteps.getDriver());
         nuevoAseguradoNombradoPage.asociarNuevoAseguradoNombradoACuenta();
 
     }
 
     @Then("debo poder visualizar el contacto recien asociado con su rol seleccionado <contacto>")
-    public void thenVisualizarContactoAsociado(@Named("contacto") String contacto) throws Exception {
+    public void thenVisualizarContactoAsociado(@Named("contacto") String contacto){
         contactosAsociadosACuentaSteps.esContactoAsociado(contacto);
     }
 
     @Given("busco un contacto del directorio  que no exista en la cuenta con un rol existente")
-    public void thenBuscUnContactoDelDirectorioQueNoExistaEnLaCuentaConUnRolExistente() throws Exception {
+    public void thenBuscUnContactoDelDirectorioQueNoExistaEnLaCuentaConUnRolExistente(){
         contactosAsociadosACuentaSteps.buscarContactoDelDirectorio();
     }
 
 
     @Given("y deseo eliminar el contacto <contactoEliminado>")
-    public void givenYDeseoEliminarElContactocontactoEliminado(String contactoEliminado) throws Exception {
+    public void givenYDeseoEliminarElContactocontactoEliminado(String contactoEliminado){
         contactosAsociadosACuentaSteps.eliminarContactoAsociando(contactoEliminado);
     }
 
 
     @Then("el contacto <contactoEliminado> ya no debe estar asociado a la cuenta")
-    public void thenContatctoEliminado(String contactoEliminado) throws Exception {
+    public void thenContatctoEliminado(String contactoEliminado){
         contactosAsociadosACuentaSteps.contactoEliminado(contactoEliminado);
     }
 

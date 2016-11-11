@@ -20,7 +20,7 @@ Then se debe mostrar la informacion del detalle de cotizacion por riesgo, donde 
 |TKC459 |2016   |00601182        |Mazda |MPV   |
 And en el detalle por coberturas mostrar:
 | cobertura                          | terminoCobertura | prima       | subtotal            | subtotalPrimas      |
-| Cobertura de Responsabilidad Civil | 32.000.000       | $421.825,00 | $1.563.958,00 (COP) | $3.127.916,00 (COP) |
+| Cobertura de Responsabilidad Civil | 32.000.000       | $421.825,00 | $1.520.016,00 (COP) | $3.040.032,00 (COP) |
 
 Examples:
 |cotizacion |
@@ -53,7 +53,7 @@ Given se ha realizado la renovacion de la cotizacion <cotizacion>
 When ingrese revisar la cotizacion
 Then se debe mostrar la informacion general de la poliza cotizada con los siguientes datos:
 | numeroPoliza  | numeroRenovacion | tomador     | tipoDocumento        | numeroDocumento | direccion                                      | tipoDireccion           | descripcionDireccion                       | empresaAseguradora        | primaTotal          | iva               | costoTotal          |
-| TEST_32112332 | 32112330         | JORGE PAISA | CEDULA DE CIUDADANIA | 1356118711      | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | Acme Low Hazard Insurance | $3.127.916,00 (COP) | $500.467,00 (COP) | $3.628.383,00 (COP) |
+| TEST_32112332 | 32112330         | JORGE PAISA | CEDULA DE CIUDADANIA | 1356118711      | CRA 65 # 48-162, SAN FRANCISCO, Estados Unidos | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | Acme Low Hazard Insurance | $3.040.032,00 (COP) | $486.405,00 (COP) | $3.526.437,00 (COP) |
 
 Examples:
 |cotizacion |

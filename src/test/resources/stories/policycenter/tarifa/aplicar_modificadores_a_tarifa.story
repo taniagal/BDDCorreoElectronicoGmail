@@ -1,6 +1,6 @@
 Aplicar Modificadores A Tarifa
 
-Meta: @lote3
+Meta: @lote4
 @issue #CDSEG-2421
 @sprint 7
 @tag automator: nelson_jhair_mosquera_palacios
@@ -23,17 +23,18 @@ And ingrese los valores de los modificadores de la tarifa:
 |descientoD|bonificacionC|descuento|recargo|suavizacion|bonificacionT|
 |GPS Sura  | 45          |10       | 5     | 3         |5            |
 And seleccione algunas las coberturas:
-|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |Taller|Grua|CE|CS  |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |
-|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus|6 |Plus|10 |0  |1.50|40|16|20|Opción 1|Opción 1|
+|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |Taller|Grua        |TM      |CE|CS  |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
+|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus 1000 km|Taller 1|6 |Plus|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
 Then el valor del monto en cada cobertura debe ser:
 |fila|valor     |
 |1   |447.275   |
 |4   |2.790.097 |
-|9   |437.552   |
-|14  |7.036     |
-|17  |8.021     |
-|19  |11.824    |
-|21  |26.128    |
+|8   |437.552   |
+|12  |7.036     |
+|15  |8.021     |
+|17  |11.824    |
+|19  |26.128    |
+|21  |11.824    |
 |23  |11.824    |
 |25  |11.824    |
 |27  |11.824    |

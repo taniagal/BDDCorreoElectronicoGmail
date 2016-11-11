@@ -87,6 +87,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade linkDescartarCambios;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    private static final int CONSTANTE_3 = 3;
     String primaTotal = "";
 
     public TarifaTasaUnicaPage(WebDriver driver) {
@@ -99,23 +100,14 @@ public class TarifaTasaUnicaPage extends PageUtil {
         menuItemExportar.waitUntilPresent().click();
         botonExportarAHojaDeCalculo.waitUntilPresent();
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        if (!comboBoxExportar.isPresent()) {
-            notPresent.append(" combobox exportar,");
-        }
-        if (!comboBoxFormato.isPresent()) {
-            notPresent.append(" combobox formato,");
-        }
-        if (!comboBoxLocal.isPresent()) {
-            notPresent.append(" combobox local,");
-        }
-        if (!comboBoxIdioma.isPresent()) {
-            notPresent.append(" combobox idioma,");
-        }
+        notPresent = concatenarElementoNoPresente(comboBoxExportar," combobox exportar,",notPresent);
+        notPresent = concatenarElementoNoPresente(comboBoxFormato," combobox formato,",notPresent);
+        notPresent = concatenarElementoNoPresente(comboBoxLocal," combobox local,",notPresent);
+        notPresent = concatenarElementoNoPresente(comboBoxIdioma," combobox idioma,",notPresent);
         String res = notPresent.toString();
         if (MSJVALIDARELEMENTOS.equals(res)) {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
         }
-
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
@@ -171,7 +163,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemRenovarPoliza.waitUntilPresent().click();
         botonAceptar.waitUntilPresent().click();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < CONSTANTE_3; i++) {
             botonHojaDeCalculoRenovacion.waitUntilPresent();
             waitUntil(WAIT_TIME_3000);
             menuPoliza.click();

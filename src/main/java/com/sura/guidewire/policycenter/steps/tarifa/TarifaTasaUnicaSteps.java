@@ -23,22 +23,22 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void ir_a_informacion_de_poliza(){
+    public void irAInformacionDePoliza(){
         vehiculoPage.clickSiguiente();
     }
 
     @Step
-    public void verificar_elementos_exportacion() {
+    public void verificarElementosExportacion() {
         tasaUnicaPage.verificarElementosExportacion();
     }
 
     @Step
-    public void verificar_elementos_importacion() {
+    public void verificarElementosImportacion() {
         tasaUnicaPage.verificarElementosImportacion();
     }
 
     @Step
-    public void agregar_vehiculo(ExamplesTable datosVehiculo) {
+    public void agregarVehiculo(ExamplesTable datosVehiculo) {
         if (token) {
             vehiculoPage.irAVehiculos();
             vehiculoPage.agregarVehiculo(datosVehiculo);
@@ -46,38 +46,38 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void expedir_poliza() {
+    public void expedirPoliza() {
         if (token) {
             analisisDeRiesgoPage.expedirPoliza();
         }
     }
 
     @Step
-    public void ir_a_informacion_de_poliza_expedida() {
+    public void irAInformacionDePolizaExpedida() {
         if (token) {
             tasaUnicaPage.irAInformacionDePoliza();
         }
     }
 
     @Step
-    public void seleciconar_coberturas(ExamplesTable coberturas) {
+    public void seleciconarCoberturas(ExamplesTable coberturas) {
         if (token) {
             vehiculoPage.clickSiguiente();
             vehiculoPage.clickLinkDescartarCambios();
-            tarifaAutosPage.setCoberturas(coberturas);
             tarifaAutosPage.seleccionarCoberturas(coberturas);
+            tarifaAutosPage.seleccionarCoberturas1(coberturas);
             tarifaAutosPage.seleccionarCoberturasDeDanios(coberturas);
             tarifaAutosPage.cotizar();
         }
     }
 
     @Step
-    public void verificar_estado_del_envio(String cotizacion) {
+    public void verificarEstadoDelEnvio(String cotizacion) {
         token = tasaUnicaPage.verificarEstadoDelEnvio(cotizacion);
     }
 
     @Step
-    public void ingreso_a_policyCenter(){
+    public void ingresoAPolicyCenter(){
         String pais = "Colombia";
         String usuario = "pedrvevi";
         String contrasenia = "pedrvevi";
@@ -86,35 +86,35 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void cambiar_infromacion_de_poliza(String valorAsegurado) {
+    public void cambiarInfromacionDePoliza(String valorAsegurado) {
         tasaUnicaPage.comenzarCambioDePoliza();
         tasaUnicaPage.cambiarValorAsegurado(valorAsegurado);
     }
 
     @Step
-    public void cambiar_infromacion_del_asegurado(String primerNombre, String segundoNombre, String estadoCivil) {
+    public void cambiarInfromacionDelAsegurado(String primerNombre, String segundoNombre, String estadoCivil) {
         tasaUnicaPage.comenzarCambioDePoliza();
         tasaUnicaPage.cambiarDatosDelAsegurado(primerNombre,segundoNombre,estadoCivil);
     }
 
     @Step
-    public void verificar_no_cambio_de_tarifa() {
+    public void verificarNoCambioDeTarifa() {
         tasaUnicaPage.verificarTarifacionSinCambio();
     }
 
     @Step
-    public void verificar_cambio_de_tarifa() {
+    public void verificarCambioDeTarifa() {
         tasaUnicaPage.verificarCambioDeTarifa();
     }
 
     @Step
-    public void renovar_poliza() {
+    public void renovarPoliza() {
         tasaUnicaPage.comenzarRenovacionDePoliza();
         tasaUnicaPage.renovarPoliza();
     }
 
     @Step
-    public void verificar_renovacion_tarifa() {
+    public void verificarRenovacionTarifa() {
         tasaUnicaPage.verificarTarifaRenovacionSinCambio();
     }
 }
