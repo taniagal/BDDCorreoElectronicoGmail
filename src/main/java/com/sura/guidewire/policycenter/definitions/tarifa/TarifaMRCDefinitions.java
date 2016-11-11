@@ -51,5 +51,13 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.verificarTasaGlobal();
     }
 
+    @When("intente modificar la tasa global a un valor <valor> menor al del departamento")
+    public void ingresarTasaGlobal(@Named("valor") String valor){
+        tarifaMRCSteps.ingresarTasaGlobal(valor);
+    }
 
+    @Then("debo poder ver el mensaje de bloqueo <mensaje>")
+    public void verificarMensaje(@Named("mensaje") String mensaje){
+        tarifaMRCSteps.verificarMensaje(mensaje);
+    }
 }

@@ -14,12 +14,18 @@ import java.util.concurrent.TimeUnit;
 public class TarifaMRCPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Next']")
+    private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:removeLocation']")
     private WebElementFacade botonBorrarArticulo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:JobWizardToolbarButtonSet:EditPolicy']")
+    private WebElementFacade botonEditarTransaccionDePoliza;
+    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonAceptarPopup;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']")
     private WebElementFacade campoTxtValorReconstruccion;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
@@ -44,6 +50,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade checkBoxTerremoto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]")
     private WebElementFacade checkBoxArticulo;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:_msgs']")
+    private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup-legendTitle']")
@@ -90,7 +98,7 @@ public class TarifaMRCPage extends PageUtil {
         }
         checkBoxTerremoto.click();
         campoTxtValorAsegurado.waitUntilPresent().sendKeys(dato.get("valorAsegurado"));
-        valorAsegurado = Integer.parseInt(dato.get("valorAsegurado"));
+        valorAsegurado = Double.parseDouble(dato.get("valorAsegurado"));
     }
 
     public void seleccionarDeducibleSi() {
@@ -133,9 +141,27 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarTasaGlobal() {
         labelPrimaTotal.waitUntilPresent();
-        primaTotal = Integer.parseInt(labelPrimaTotal.getText().substring(1, 10).replace(".",""));
+        primaTotal = Integer.parseInt(labelPrimaTotal.getText().substring(1, 10).replace(".", ""));
         menuItemModificadores.click();
         double tasaGlobal = primaTotal / valorAsegurado;
-        MatcherAssert.assertThat("El calculo de la tasa global es incorrecto", campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0,4).replace(".",",")));
+        MatcherAssert.assertThat("El calculo de la tasa global es incorrecto", campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0, 4).replace(".", ",")));
+    }
+
+
+    public void ingresarTasaGlobal(String valor) {
+        labelPrimaTotal.waitUntilPresent();
+        menuItemModificadores.click();
+        campoTxtTasaGlobal.waitUntilPresent();
+        botonEditarTransaccionDePoliza.click();
+        botonAceptarPopup.waitUntilPresent().click();
+        botonAceptarPopup.waitUntilNotVisible();
+        waitUntil(WAIT_TIME_500);
+        campoTxtTasaGlobal.clear();
+        campoTxtTasaGlobal.sendKeys(valor);
+        botonSiguiente.click();
+    }
+
+    public void verificarMensaje(String mensaje) {
+        verificarMensaje(divMensaje, mensaje);
     }
 }
