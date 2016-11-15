@@ -48,6 +48,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade checkBoxEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxTerremoto;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxAMIT;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]")
     private WebElementFacade checkBoxArticulo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:_msgs']")
@@ -140,11 +142,7 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void verificarTasaGlobal() {
-        labelPrimaTotal.waitUntilPresent();
-        primaTotal = Integer.parseInt(labelPrimaTotal.getText().substring(1, 10).replace(".", ""));
-        menuItemModificadores.click();
-        double tasaGlobal = primaTotal / valorAsegurado;
-        MatcherAssert.assertThat("El calculo de la tasa global es incorrecto", campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0, 4).replace(".", ",")));
+
     }
 
 
@@ -163,5 +161,8 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarMensaje(String mensaje) {
         verificarMensaje(divMensaje, mensaje);
+    }
+
+    public void seleccionarCoberturaAMIT() {
     }
 }
