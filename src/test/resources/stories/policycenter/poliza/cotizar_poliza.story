@@ -1,6 +1,6 @@
-Meta: @lote2
+Meta:
+@lote2
 @Story CDSEG-907
-@URL https://jira.suramericana.com.co/browse/CDSEG-907
 @tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
 @Sprint 7
 

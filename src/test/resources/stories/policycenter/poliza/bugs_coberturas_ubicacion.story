@@ -1,10 +1,9 @@
 Bugs Coberturas Ubicacion
 
-Meta: @lote2
+Meta:
+@lote2
 @Story CDSEG-2887
-@URL https://jira.suramericana.com.co/browse/CDSEG-2887
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:6
-@LOB Multiriesgo corporativo
+@tag automator:andres_alarcon_guerrero
 @Sprint 6
 
 Scenario: 1 Bug CDSEG-2887

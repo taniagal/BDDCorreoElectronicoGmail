@@ -1,11 +1,11 @@
 Rescindir Cancelacion
 
 
-Meta: @lote3
+Meta:
+@lote3
 @manual
-@Story CDSEG-
-@URL https://jira.suramericana.com.co/browse/CDSEG-
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
+@Story CDSEG-???
+@tag automator:juan_gabriel_zapata
 @Sprint 9
 
 Scenario: 1 Rescindir Cancelacion de poliza
