@@ -181,7 +181,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
-        agregarNuevaUbicacion("Colombia", "Antioquia", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
+        agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
     }
 
     public void removerRiesgos(){
