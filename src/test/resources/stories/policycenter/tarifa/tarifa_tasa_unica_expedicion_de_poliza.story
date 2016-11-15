@@ -1,7 +1,6 @@
 Tarifa Tasa Unica Expedicion De Poliza
 
 Meta:
-@lote1
 @lote2
 @issue #CDSEG-2417
 @sprint 8

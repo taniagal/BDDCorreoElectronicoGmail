@@ -6,7 +6,8 @@ quiero poder solicitar autorización a los comites de Riesgos consultables
 para poder cotizar o expedir una poliza
 
 
-Meta: @lote2
+Meta:
+@lote1
 @Story CDSEG-
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
