@@ -1,7 +1,7 @@
 Rescindir Cancelacion
 
 
-Meta: @lote2
+Meta: @lote3
 @manual
 @Story CDSEG-
 @URL https://jira.suramericana.com.co/browse/CDSEG-
