@@ -88,6 +88,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     //display key de los estados: typeList localization ---> TypeKey.PolicyPeriodStatus
     public void validarFiltroEstado(String filtroEstado) {
         List<WebElement> cells;
+        String estadoStr;
         String[] listEstadosCompletos = {"Comprometida", "No tomado", "Retirado", "Vencida", "Rechazado",
                 "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida"};
         String[] listEstadosAbiertos = {"Cotizado", "Borrador", "Nuevo", "Cotización", "Vinculación contractual",
@@ -100,12 +101,13 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         for (WebElement row : allRows) {
             try {
                 cells = row.findElements(By.tagName("td"));
+                estadoStr = cells.get(CONSTANTE_5).getText();
             } catch (StaleElementReferenceException e) {
                 LOGGER.info("StaleElementReferenceException " + e);
-                waitUntil(WAIT_TIME_2000);
+                waitUntil(WAIT_TIME_3000);
                 cells = row.findElements(By.tagName("td"));
+                estadoStr = cells.get(CONSTANTE_5).getText();
             }
-            String estadoStr = cells.get(CONSTANTE_5).getText();
             if (("Completo").equals(filtroEstado)) {
                 MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosCompletos));
             } else if (("Abierto").equals(filtroEstado)) {
