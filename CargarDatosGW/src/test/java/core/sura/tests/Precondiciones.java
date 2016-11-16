@@ -84,7 +84,7 @@ public class Precondiciones extends MetodosComunes{
             driver.findElement(By.xpath(".//*[@id='lower']/input")).click();
         }
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:PolicyTab-btnWrap']"))).isDisplayed();
     }
 
     public void elegirLenguaje() throws Exception {
@@ -95,7 +95,7 @@ public class Precondiciones extends MetodosComunes{
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher']"))).isDisplayed();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:3:langs-textEl']"))).isDisplayed();
-        driver.findElement(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")).click();
+        driver.findElement(By.xpath(".//*[@id='TabBar:ContactTab']")).click();
         Thread.sleep(2200);
     }
 
