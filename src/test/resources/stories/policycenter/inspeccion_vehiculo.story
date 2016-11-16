@@ -1,6 +1,6 @@
 Inspeccion Vehiculo
 
-Meta: @lote1
+Meta: @lote2
 
 @issue #CDSEG-751
 @tag automator: diego_cardona_acevedo
