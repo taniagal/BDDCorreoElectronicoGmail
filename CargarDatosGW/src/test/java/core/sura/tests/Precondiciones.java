@@ -36,7 +36,7 @@ public class Precondiciones extends MetodosComunes{
         act = new Actions(driver);
         wait = new WebDriverWait(driver, 1000);
         Properties prop = loadProperty();
-        baseUrl = "http://dllocoreseguros.suramericana.com:7003";
+        baseUrl = prop.getProperty("url");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
@@ -94,7 +94,7 @@ public class Precondiciones extends MetodosComunes{
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher']"))).isDisplayed();
         act.sendKeys(Keys.ARROW_RIGHT).build().perform();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:3:langs-textEl']"))).isDisplayed();
-        driver.findElement(By.xpath(".//*[@id='TabBar:ContactTab']")).click();
+        driver.findElement(By.xpath(".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")).click();
         Thread.sleep(2200);
     }
 
