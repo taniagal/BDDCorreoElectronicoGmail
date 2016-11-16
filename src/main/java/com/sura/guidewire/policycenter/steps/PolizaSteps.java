@@ -54,6 +54,10 @@ public class PolizaSteps extends GuidewireSteps {
         accionesWidget.seleccionarOpcionCambioDePoliza();
     }
 
+    public void seleccionarOpcionRenovarPoliza() {
+        accionesWidget.seleccionarOpcionRenovarPoliza();
+    }
+
     public List<String> espacioDeTrabajo() {
         espacioDeTrabajoWidget.desplegarEspacioDeTrabajo();
         return espacioDeTrabajoWidget.obtenerMensajesDeTrabajo();
@@ -68,6 +72,7 @@ public class PolizaSteps extends GuidewireSteps {
         polizaPage.seleccionarOpcionInformacionDeLaPoliza();
     }
 
+    @Step
     public void seleccionarBotonSiguienteParaIniciarCambioEnPoliza() {
         polizaPage.seleccionarBotonSiguienteEnInicioDeCambioDePoliza();
     }
@@ -128,6 +133,12 @@ public class PolizaSteps extends GuidewireSteps {
         waitFor(CONSTANTE_5).seconds();
         String xpathBttonConfirmarCancelacion = ".//a[contains(@class, 'x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon') and contains(., 'Aceptar')]";
         getDriver().findElement(By.xpath(xpathBttonConfirmarCancelacion)).click();
+    }
+    @Step
+    public void confirmarRenovacion(){
+        waitFor(CONSTANTE_2).second();
+        String xpathBttonConfirmarRenovacion = "//a[contains(.,'Aceptar')]";
+        getDriver().findElement(By.xpath(xpathBttonConfirmarRenovacion)).click();
     }
 
     public String obtenerTituloPagina(){
