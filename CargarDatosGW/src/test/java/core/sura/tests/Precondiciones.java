@@ -36,7 +36,7 @@ public class Precondiciones extends MetodosComunes{
         act = new Actions(driver);
         wait = new WebDriverWait(driver, 1000);
         Properties prop = loadProperty();
-        baseUrl = prop.getProperty("url");
+        baseUrl = "http://dllocoreseguros.suramericana.com:7003";
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
@@ -55,7 +55,6 @@ public class Precondiciones extends MetodosComunes{
     }
 
     public void cargarDatos() throws Exception {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
         driver.findElement(By.xpath(".//input[@id='QuickJump-inputEl']")).sendKeys(Keys.ALT,Keys.SHIFT, "t");
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']"))).isDisplayed();
         driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']")).click();
