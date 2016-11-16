@@ -22,13 +22,6 @@ public class TarifaTasaUnicaDefinitions {
 
 
 
-
-    @Given("que tengo una poliza expedida")
-    public void estadoDePoliza(){
-        //Metodo vacio para efectos del reporte
-    }
-
-
     @When("vaya a cargar el archivo con las tasas")
     public void irAInformacionDePoliza(){
         tasaUnicaSteps.irAInformacionDePoliza();
@@ -94,23 +87,23 @@ public class TarifaTasaUnicaDefinitions {
 
     @Given("que tengo una cotizacion <cotizacion>")
     public void givenIrALaCotizacion(@Named("cotizacion") String cotizacion) {
-        tasaUnicaSteps.ingresoAPolicyCenter();
         cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
         tasaUnicaSteps.verificarEstadoDelEnvio(cotizacion);
 
     }
 
-    @When("vaya a agregar el vehiculo con los datos: $datosVehiculo")
+    @Given("vaya a agregar el vehiculo con los datos: $datosVehiculo")
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         tasaUnicaSteps.agregarVehiculo(datosVehiculo);
     }
 
-    @When("expido la poliza")
+    @Given("expido la poliza")
     public void expedirPoliza() {
         tasaUnicaSteps.expedirPoliza();
+        tasaUnicaSteps.irAInformacionDePolizaExpedida();
     }
 
-    @When("seleccione algunas coberturas: $coberturas")
+    @Given("seleccione algunas coberturas: $coberturas")
     public void agregarCoberturas(ExamplesTable coberturas) {
         tasaUnicaSteps.seleciconarCoberturas(coberturas);
     }

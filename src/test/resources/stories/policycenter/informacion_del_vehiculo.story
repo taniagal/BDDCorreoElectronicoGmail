@@ -1,4 +1,4 @@
-Meta: @lote3
+Meta: @lote1
 @issue #SUGWUSC-15123
 
 Narrative:

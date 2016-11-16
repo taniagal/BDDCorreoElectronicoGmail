@@ -35,6 +35,11 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion();
     }
 
+    @When("valide la solicitud de requisitos")
+    public void validarSolicitudRequisitos() {
+        expedicionDePolizaSteps.validarMensajeRequisitos();
+    }
+
     @When("cancelo el mensaje <mensaje> de expedir poliza")
     public void cancelarExpedicionDePoliza(@Named("mensaje") String mensaje){
         expedicionDePolizaSteps.clic_en_cancelar_del_mensaje_de_confirmacion(mensaje);

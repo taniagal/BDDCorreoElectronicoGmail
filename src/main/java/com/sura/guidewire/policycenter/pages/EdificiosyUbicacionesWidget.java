@@ -2,10 +2,12 @@ package com.sura.guidewire.policycenter.pages;
 
 import com.google.common.base.Function;
 import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import com.sura.guidewire.policycenter.util.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.MatcherAssert;
@@ -50,6 +52,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_INTERES_ADICIONAL = "//label[contains(.,'Interes Adicional')]";
     private static final String XPATH_SELECCIONAR_RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
     private static final String XPATH_BTON_REMOVER_RIESGOS =  "//a[contains(.,'Remover Riesgo')]";
+    private static final String XPATH_EDITAR_TRANSACCION_POLIZA = ".//span[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']";
+    private static final String XPATH_ACEPTAR = "//a[contains(.,'Aceptar')]";
+    private static final String XPATH_DESCARTAR_CAMBIOS = "//a[contains(.,'Descartar cambios no guardados')]";
 
     private static final int WAIT_TIME_250 = 250;
 
@@ -59,10 +64,17 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonAgregarArticulos;
     @FindBy(css = ".message")
     private WebElementFacade divMensaje;
+    @FindBy(xpath =".//a[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
+    private WebElementFacade botonAgregarArticulosCambioPoliza;
+    @FindBy(xpath =".//a[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
+    private WebElementFacade botonAgregarArticulosRenovacionPoliza;
+    @Steps
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
     }
+
 
     private void obtenerTabla() {
         this.tabla = new TableWidgetPage(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
@@ -77,6 +89,31 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
         waitFor(botonAgregarArticulos).waitUntilPresent();
         List<WebElementFacade> elementosList = findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']");
+        elementosList.get(0).click();
+        String tituloDePaginaAgregarArticulos = "Volver a Edificios y ubicaciones";
+        waitForTextToAppear(tituloDePaginaAgregarArticulos);
+        shouldContainText(tituloDePaginaAgregarArticulos);
+    }
+
+    public void agregarArticuloAPrimerUbicacionEnCambioDePoliza() {
+        waitForTextToAppear("Edificios y ubicaciones");
+        if (tabla == null) {
+            obtenerTabla();
+        }
+        waitFor(botonAgregarArticulosCambioPoliza).waitUntilPresent();
+        List<WebElementFacade> elementosList = findAll(".//a[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']");
+        elementosList.get(0).click();
+        String tituloDePaginaAgregarArticulos = "Volver a Edificios y ubicaciones";
+        waitForTextToAppear(tituloDePaginaAgregarArticulos);
+        shouldContainText(tituloDePaginaAgregarArticulos);
+    }
+    public void agregarArticuloAPrimerUbicacionEnRenovacionDePoliza() {
+        waitForTextToAppear("Edificios y ubicaciones");
+        if (tabla == null) {
+            obtenerTabla();
+        }
+        waitFor(botonAgregarArticulosRenovacionPoliza).waitUntilPresent();
+        List<WebElementFacade> elementosList = findAll("//a[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']");
         elementosList.get(0).click();
         String tituloDePaginaAgregarArticulos = "Volver a Edificios y ubicaciones";
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
@@ -104,25 +141,25 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         $(xpathPais).type(pais);
         $(xpathPais).click();
 
-        waitFor(1).seconds();
+        waitFor(WAIT_TIME_2).seconds();
         enter(depto).into($(xpathDepto));
         waitFor(WAIT_TIME_2).seconds();
         
         $(xpathDepto).click();
 
         waitFor(WAIT_TIME_2).seconds();
-        enter(ciudad).into($(xpathCiudad));
+        $(xpathCiudad).type(ciudad);
         waitFor(WAIT_TIME_2).seconds();
         
         $(xpathCiudad).click();
 
-        waitFor(WAIT_TIME_2).seconds();
-        enter(direccion).into($(xpathDireccion));
+        waitFor(WAIT_TIME_3).seconds();
+        $(xpathDireccion).type(direccion);
         waitFor(WAIT_TIME_2).seconds();
         $(xpathDireccion).click();
 
-        waitFor(1).seconds();
-        enter(actividadEconomica).into($(xpathActividadEconomica));
+        waitFor(WAIT_TIME_2).seconds();
+        $(xpathActividadEconomica).type(actividadEconomica);
         waitFor(WAIT_TIME_2).seconds();
         $(xpathActividadEconomica).sendKeys(Keys.ENTER);
         waitFor(WAIT_TIME_2).seconds();
@@ -130,7 +167,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
         findBy("//div[@class='message']").waitUntilVisible();
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
-        findBy("//span[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:ttlBar']").waitUntilVisible();
+        waitForTextToAppear("Edificios y ubicaciones");
     }
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
@@ -155,6 +192,21 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         findBy(XPATH_BTON_REMOVER_RIESGOS).shouldBeVisible();
         findBy(XPATH_BTON_REMOVER_RIESGOS).click();
         waitFor(WAIT_TIME_3).second();
+    }
+    public void editartransacciondepoliza(){
+        waitUntil(WAIT_TIME_2000);
+        findBy(XPATH_EDITAR_TRANSACCION_POLIZA).waitUntilVisible().click();
+        waitUntil(WAIT_TIME_2000);
+        findBy(XPATH_ACEPTAR).click();
+        waitUntil(WAIT_TIME_2000);
+         if(findBy(XPATH_DESCARTAR_CAMBIOS).isVisible())
+         {
+             waitUntil(WAIT_TIME_2000);
+             findBy(XPATH_DESCARTAR_CAMBIOS).click();
+             waitForTextToAppear("Información de póliza");
+             opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenRenovacionDePoliza();
+
+         }
     }
 
 

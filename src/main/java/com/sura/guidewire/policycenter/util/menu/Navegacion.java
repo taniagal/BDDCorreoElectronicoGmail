@@ -382,7 +382,7 @@ public class Navegacion extends PageUtil {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
-        waitFor(WAIT_TIME_5).second();
+        waitUntil(WAIT_TIME_5);
         gw.deployMenu(mnuCuenta);
         waitFor(WAIT_TIME_3).second();
         act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
