@@ -73,7 +73,7 @@ Examples:
 |22221122   |USU422|
 
 Scenario: Consulta requisito inspeccion en el modelo
-Meta: @lote2
+Meta:
 @manual
 Given se tiene la informacion de la placa del vehiculo ingresada
 When el vehiculo tenga inspeccion no valida o no tenga inspeccion
@@ -84,7 +84,7 @@ And el valor asegurado se debe consultar
 And traer de la tabla fasecolda
 
 Scenario: Consulta requisito inspeccion en WS fasecolda
-Meta: @lote2
+Meta:
 @manual
 Given se tiene la informacion de la placa del vehiculo ingresada
 When se haga la busqueda de informacion en el WS de fasecolda

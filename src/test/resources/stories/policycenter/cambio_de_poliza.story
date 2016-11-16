@@ -1,4 +1,4 @@
-Meta: @lote1
+Meta: @lote2
 @issue #SUGWUSC-15127
 @Atomatizador Jonathan Mejia
 @tag automator: Jonathan_Mejia_Leon
@@ -73,7 +73,7 @@ Examples:
 |TEST_22223278          |No         |
 
 Scenario:  Validacion de fecha exacta para cambio de poliza
-Meta: @lote1
+Meta: @lote2
 @manual
 Given que voy a buscar una de las polizas <buscarNumeroPoliza>
 When quiero relizar el cambio de una poliza con la fecha vigente

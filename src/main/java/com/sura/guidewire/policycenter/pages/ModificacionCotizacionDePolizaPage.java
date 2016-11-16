@@ -142,7 +142,7 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
     }
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).waitUntilPresent();
         Map<String, String> datosCotizacion;
         MatcherAssert.assertThat(labelNumeroPoliza.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroPoliza"))));
         MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroCotizacion"))));
@@ -198,12 +198,11 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
     }
 
     public void validarDireccionTomador(String direccion) {
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(campoDireccion).shouldBePresent();
+        waitFor(campoDireccion).waitUntilPresent();
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
 
     public void validarTerminoCobertura() {
-
         waitFor(tablaCoberturas).shouldBeVisible();
         List<WebElement> allRows = tablaCoberturas.findElements(By.tagName("tr"));
         waitUntil(WAIT_TIME_1000);
@@ -248,7 +247,7 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
     public void validarDetallesCosto(Map<String, String> infoDetalleCotizacion) {
         waitFor(botonDetalleCambioCosto).shouldBeVisible();
         botonDetalleCambioCosto.click();
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonDetalleCambioCosto).shouldBePresent();
+        waitFor(botonDetalleCambioCosto).waitUntilPresent();
         MatcherAssert.assertThat(labelDCVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_labelVehiculo"))));
         MatcherAssert.assertThat(labelDCPlaca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_placa"))));
         MatcherAssert.assertThat(labelDCCodigoFasecolda.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_codigoFasecolda"))));

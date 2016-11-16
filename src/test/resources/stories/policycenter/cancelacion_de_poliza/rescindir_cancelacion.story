@@ -1,11 +1,11 @@
 Rescindir Cancelacion
 
 
-Meta: @lote2
+Meta:
+@lote3
 @manual
-@Story CDSEG-
-@URL https://jira.suramericana.com.co/browse/CDSEG-
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
+@Story CDSEG-???
+@tag automator:juan_gabriel_zapata
 @Sprint 9
 
 Scenario: 1 Rescindir Cancelacion de poliza
@@ -24,11 +24,6 @@ Examples:
 
 Meta:
 @manual
-@Story CDSEG-
-@URL https://jira.suramericana.com.co/browse/CDSEG-
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
-@Sprint 9
-
 Scenario: 2 Validar Rescindir Cancelacion de poliza
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba programacion
