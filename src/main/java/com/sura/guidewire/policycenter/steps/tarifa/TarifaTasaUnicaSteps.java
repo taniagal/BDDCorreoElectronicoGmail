@@ -15,7 +15,6 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
     TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
     AprobacionDeAnalisisDeRiesgoPage analisisDeRiesgoPage = new AprobacionDeAnalisisDeRiesgoPage(getDriver());
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
-    SeusLoginPage seus = new SeusLoginPage(getDriver());
     boolean token = false;
 
     public TarifaTasaUnicaSteps(Pages pages){
@@ -74,15 +73,6 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
     @Step
     public void verificarEstadoDelEnvio(String cotizacion) {
         token = tasaUnicaPage.verificarEstadoDelEnvio(cotizacion);
-    }
-
-    @Step
-    public void ingresoAPolicyCenter(){
-        String pais = "Colombia";
-        String usuario = "pedrvevi";
-        String contrasenia = "pedrvevi";
-        seus.open();
-        seus.login(pais,usuario, contrasenia);
     }
 
     @Step
