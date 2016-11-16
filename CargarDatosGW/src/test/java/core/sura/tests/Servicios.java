@@ -88,7 +88,7 @@ public class Servicios extends MetodosComunes{
             driver.findElement(By.xpath(".//*[@id='lower']/input")).click();
         }
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:ContactTab']"))).isDisplayed();
     }
 
     @After
