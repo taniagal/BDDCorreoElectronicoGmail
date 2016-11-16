@@ -23,9 +23,8 @@ Examples:
 |TEST_22221241|
 
 
-Scenario: mostrar datos generales de poliza y valores al cotizar
+Scenario: mostrar datos generales de poliza y valores al cotizar (manual)
 Meta:
-@lote2
 @manual
 Given que existe una <poliza> y esta dentro de la vigencia
 When  se valide el tipo de interes adicional del beneficiario de la poliza

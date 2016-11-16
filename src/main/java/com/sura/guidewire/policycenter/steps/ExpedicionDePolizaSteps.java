@@ -52,4 +52,9 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     public void clic_en_expedir_poliza_por_cambio() {
         expedicionDePolizaPage.expedirPolizaPorCambio();
     }
+
+    @Step
+    public void validarMensajeRequisitos() {
+        expedicionDePolizaPage.validarMensajeRequisitos();
+    }
 }
