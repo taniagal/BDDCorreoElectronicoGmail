@@ -141,6 +141,14 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void verificarTasaGlobal() {
+        double tasaGlobal = 0;
+        labelPrimaTotal.waitUntilPresent();
+        menuItemModificadores.click();
+        campoTxtTasaGlobal.waitUntilPresent();
+        primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1,10).replace(".",","));
+        tasaGlobal = primaTotal / valorAsegurado;
+        MatcherAssert.assertThat("", campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0, 4)
+            .replace(".",",")));
     }
 
 

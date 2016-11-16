@@ -19,9 +19,9 @@ Given estoy cotizando una poliza:
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura de terremoto:
-|valorReconstruccion|valorAsegurado|valorComercial|
-|100000000          |100000000     |null          |
+When seleccione la cobertura:
+|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
+|100000000          |100000000     |null          |Terremoto|
 And cotice el articulo
 Then debo poder ver el valor de la tasa global
 
@@ -37,9 +37,9 @@ Given estoy cotizando una poliza:
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura de terremoto:
-|valorReconstruccion|valorAsegurado|valorComercial|
-|100000000          |100000000     |null          |
+When seleccione la cobertura:
+|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
+|100000000          |100000000     |null          |Terremoto|
 And cotice el articulo
 And intente modificar la tasa global a un valor <valor> menor al del departamento
 Then debo poder ver el mensaje de bloqueo <mensaje>
