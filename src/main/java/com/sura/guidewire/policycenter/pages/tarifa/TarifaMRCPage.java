@@ -7,7 +7,6 @@ import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
-import javax.swing.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -47,8 +46,8 @@ public class TarifaMRCPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade checkBoxEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
-    private WebElementFacade checkBoxTerremoto;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxCobertura;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxAMIT;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]")
     private WebElementFacade checkBoxArticulo;
@@ -57,7 +56,7 @@ public class TarifaMRCPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup-legendTitle']")
-    private WebElementFacade labelTerremoto;
+    private WebElementFacade labelcobertura;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_true-inputEl']")
     private WebElementFacade radioBotonDeducibleSi;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_false-inputEl']")
@@ -87,31 +86,31 @@ public class TarifaMRCPage extends PageUtil {
         botonAgregarArticulos.click();
     }
 
-    public void seleccionarCoberturaTerremoto(ExamplesTable datos) {
+    public void seleccionarCobertura(ExamplesTable datos) {
         Map<String, String> dato = datos.getRow(0);
         checkBoxEdificios.waitUntilPresent().click();
         campoTxtValorReconstruccion.waitUntilPresent().sendKeys(dato.get("valorReconstruccion"));
         if (!"null".equals(dato.get("valorComercial"))) {
             campoTxtValorComercial.sendKeys(dato.get("valorComercial"));
         }
-        if (labelTerremoto.containsText("Terremoto")) {
-            checkBoxTerremoto = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
+        if (labelcobertura.containsText(dato.get("cobertura"))) {
+            checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
             campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
         }
-        checkBoxTerremoto.click();
+        checkBoxCobertura.click();
         campoTxtValorAsegurado.waitUntilPresent().sendKeys(dato.get("valorAsegurado"));
         valorAsegurado = Double.parseDouble(dato.get("valorAsegurado"));
     }
 
     public void seleccionarDeducibleSi() {
-        if (labelTerremoto.containsText("Terremoto")) {
+        if (labelcobertura.containsText("Terremoto")) {
             radioBotonDeducibleSi = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_true-inputEl']");
         }
         radioBotonDeducibleSi.click();
     }
 
     public void seleccionarDeducibleNo() {
-        if (labelTerremoto.containsText("Terremoto")) {
+        if (labelcobertura.containsText("Terremoto")) {
             radioBotonDeducibleNo = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:5:CovTermInputSet:BooleanTermInput_false-inputEl']");
         }
         radioBotonDeducibleNo.click();
@@ -142,7 +141,6 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void verificarTasaGlobal() {
-
     }
 
 
@@ -163,6 +161,4 @@ public class TarifaMRCPage extends PageUtil {
         verificarMensaje(divMensaje, mensaje);
     }
 
-    public void seleccionarCoberturaAMIT() {
-    }
 }

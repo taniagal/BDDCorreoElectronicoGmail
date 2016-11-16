@@ -29,7 +29,7 @@ public class TarifaMRCSteps extends ScenarioSteps {
     @Step
     public void seleccionarCobertura(ExamplesTable datos) {
         tarifaMRCPage.irAArticulo();
-        tarifaMRCPage.seleccionarCoberturaTerremoto(datos);
+        tarifaMRCPage.seleccionarCobertura(datos);
     }
 
     @Step
@@ -70,10 +70,5 @@ public class TarifaMRCSteps extends ScenarioSteps {
     @Step
     public void ingresarTasaGlobal(String valor) {
         tarifaMRCPage.ingresarTasaGlobal(valor);
-    }
-
-    @Step
-    public void seleccionarAMIT(ExamplesTable datos) {
-        tarifaMRCPage.seleccionarCoberturaAMIT();
     }
 }

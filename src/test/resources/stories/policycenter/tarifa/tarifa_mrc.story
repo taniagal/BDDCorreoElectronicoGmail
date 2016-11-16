@@ -18,9 +18,9 @@ Given estoy cotizando una poliza:
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura de terremoto:
-|valorReconstruccion|valorAsegurado|valorComercial|
-|100000000          |100000000     |null          |
+When seleccione la cobertura:
+|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
+|100000000          |100000000     |null          |Terremoto|
 And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 
@@ -35,9 +35,9 @@ Given estoy cotizando una poliza:
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura de terremoto:
-|valorReconstruccion|valorAsegurado|valorComercial|
-|100000000          |100000000     |120000000     |
+When seleccione la cobertura:
+|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
+|100000000          |100000000     |120000000     |Terremoto|
 And seleccione la opcion de deducible en si
 And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
@@ -53,9 +53,9 @@ Given estoy cotizando una poliza:
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura de terremoto:
-|valorReconstruccion|valorAsegurado|valorComercial|
-|100000000          |100000000     |120000000     |
+When seleccione la cobertura:
+|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
+|100000000          |100000000     |120000000     |Terremoto|
 And seleccione la opcion de deducible en no
 And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
@@ -71,9 +71,9 @@ Given estoy cotizando una poliza:
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura de AMIT:
-|valorReconstruccion|valorAsegurado|valorComercial|
-|100000000          |100000000     |120000000     |
+When seleccione la cobertura:
+|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
+|100000000          |100000000     |120000000     |Asonada  |
 And seleccione la opcion de deducible en no
 And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion

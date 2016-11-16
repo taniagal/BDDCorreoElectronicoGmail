@@ -16,14 +16,9 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.verificarTarifacion(prima);
     }
 
-    @When("seleccione la cobertura de terremoto: $datos")
+    @When("seleccione la cobertura: $datos")
     public void seleccionarCobertura(ExamplesTable datos){
         tarifaMRCSteps.seleccionarCobertura(datos);
-    }
-
-    @When("seleccione la cobertura de AMIT: $datos")
-    public void seleccionarAMIT(ExamplesTable datos){
-        tarifaMRCSteps.seleccionarAMIT(datos);
     }
 
     @When("seleccione la opcion de deducible en si")
