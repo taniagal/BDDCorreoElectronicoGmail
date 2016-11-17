@@ -29,6 +29,7 @@ public class TarifaMRCSteps extends ScenarioSteps {
     @Step
     public void seleccionarCobertura(ExamplesTable datos) {
         tarifaMRCPage.irAArticulo();
+        tarifaMRCPage.ingresarValorReconstruccion(datos);
         tarifaMRCPage.seleccionarCobertura(datos);
     }
 
@@ -70,5 +71,10 @@ public class TarifaMRCSteps extends ScenarioSteps {
     @Step
     public void ingresarTasaGlobal(String valor) {
         tarifaMRCPage.ingresarTasaGlobal(valor);
+    }
+
+    @Step
+    public void verificarTarifacionEnCobertura(String prima) {
+        tarifaMRCPage.verificarTarifacionEnCobertura(prima);
     }
 }

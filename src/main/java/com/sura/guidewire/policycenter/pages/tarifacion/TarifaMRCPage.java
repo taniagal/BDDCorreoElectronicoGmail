@@ -7,6 +7,7 @@ import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -63,6 +64,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade radioBotonDeducibleNo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:Modifiers']")
     private WebElementFacade menuItemModificadores;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[4]/td[3]")
+    private WebElementFacade montoCobertura;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     double valorAsegurado = 0;
@@ -87,19 +90,27 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void seleccionarCobertura(ExamplesTable datos) {
+        for(Map<String, String> dato : datos.getRows()) {
+            if (labelcobertura.containsText(dato.get("cobertura"))) {
+                checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
+                campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
+            }else {
+                checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']");
+                campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
+            }
+            checkBoxCobertura.click();
+            campoTxtValorAsegurado.waitUntilPresent().sendKeys(dato.get("valorAsegurado"));
+            valorAsegurado = Double.parseDouble(dato.get("valorAsegurado"));
+        }
+    }
+
+    public void ingresarValorReconstruccion(ExamplesTable datos) {
         Map<String, String> dato = datos.getRow(0);
         checkBoxEdificios.waitUntilPresent().click();
         campoTxtValorReconstruccion.waitUntilPresent().sendKeys(dato.get("valorReconstruccion"));
         if (!"null".equals(dato.get("valorComercial"))) {
             campoTxtValorComercial.sendKeys(dato.get("valorComercial"));
         }
-        if (labelcobertura.containsText(dato.get("cobertura"))) {
-            checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
-            campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
-        }
-        checkBoxCobertura.click();
-        campoTxtValorAsegurado.waitUntilPresent().sendKeys(dato.get("valorAsegurado"));
-        valorAsegurado = Double.parseDouble(dato.get("valorAsegurado"));
     }
 
     public void seleccionarDeducibleSi() {
@@ -143,12 +154,12 @@ public class TarifaMRCPage extends PageUtil {
     public void verificarTasaGlobal() {
         double tasaGlobal = 0;
         labelPrimaTotal.waitUntilPresent();
-        primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1,10).replace(".",""));
+        primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, 10).replace(".", ""));
         menuItemModificadores.click();
         campoTxtTasaGlobal.waitUntilPresent();
         tasaGlobal = primaTotal / valorAsegurado;
         MatcherAssert.assertThat("", campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0, 4)
-            .replace(".",",")));
+                .replace(".", ",")));
     }
 
 
@@ -169,4 +180,8 @@ public class TarifaMRCPage extends PageUtil {
         verificarMensaje(divMensaje, mensaje);
     }
 
+    public void verificarTarifacionEnCobertura(String prima) {
+        MatcherAssert.assertThat("Error en el valor de la cobertura Expected: " + prima + " But was: " +
+                montoCobertura.getText(),montoCobertura.containsText(prima));
+    }
 }
