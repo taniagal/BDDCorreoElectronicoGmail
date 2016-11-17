@@ -16,7 +16,12 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.verificarTarifacion(prima);
     }
 
-    @When("seleccione la cobertura de terremoto: $datos")
+    @Then("debo poder ver el valor de la prima <prima> en la cobertura")
+    public void verificarTarifacionEnCobertura(@Named("prima")String prima){
+        tarifaMRCSteps.verificarTarifacionEnCobertura(prima);
+    }
+
+    @When("seleccione la cobertura: $datos")
     public void seleccionarCobertura(ExamplesTable datos){
         tarifaMRCSteps.seleccionarCobertura(datos);
     }
@@ -31,7 +36,7 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.seleccionarDeducibleNo();
     }
 
-    @When("agregue el articulo")
+    @When("cotice el articulo")
     public void agregarArticulo(){
         tarifaMRCSteps.agregarArticulo();
     }
@@ -44,5 +49,20 @@ public class TarifaMRCDefinitions {
     @Then("debo poder ver los modificadores definidos")
     public void verificarModificadores(){
         tarifaMRCSteps.verificarModificadores();
+    }
+
+    @Then("debo poder ver el valor de la tasa global")
+    public void verificarTasaGlobal(){
+        tarifaMRCSteps.verificarTasaGlobal();
+    }
+
+    @When("intente modificar la tasa global a un valor <valor> menor al del departamento")
+    public void ingresarTasaGlobal(@Named("valor") String valor){
+        tarifaMRCSteps.ingresarTasaGlobal(valor);
+    }
+
+    @Then("debo poder ver el mensaje de bloqueo <mensaje>")
+    public void verificarMensaje(@Named("mensaje") String mensaje){
+        tarifaMRCSteps.verificarMensaje(mensaje);
     }
 }

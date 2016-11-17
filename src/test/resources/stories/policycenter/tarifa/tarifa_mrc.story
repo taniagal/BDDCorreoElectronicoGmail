@@ -18,10 +18,10 @@ Given estoy cotizando una poliza:
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura de terremoto:
-|valorReconstruccion|valorAsegurado|valorComercial|
-|100000000          |100000000     |null          |
-And agregue el articulo
+When seleccione la cobertura:
+|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
+|100000000          |100000000     |null          |Terremoto|
+And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
@@ -35,16 +35,16 @@ Given estoy cotizando una poliza:
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura de terremoto:
-|valorReconstruccion|valorAsegurado|valorComercial|
-|100000000          |100000000     |120000000     |
+When seleccione la cobertura:
+|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
+|100000000          |100000000     |120000000     |Terremoto|
 And seleccione la opcion de deducible en si
-And agregue el articulo
+And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
 |prima    |departamento|ciudad   |direccion        |descripcion  |actividad|
-|1.283.333|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|1.540.000|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 Scenario:  Tarifa MRC - Cobertura Terremoto en Caldas sin deducible
@@ -53,13 +53,31 @@ Given estoy cotizando una poliza:
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura de terremoto:
-|valorReconstruccion|valorAsegurado|valorComercial|
-|100000000          |100000000     |120000000     |
+When seleccione la cobertura:
+|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
+|100000000          |100000000     |120000000     |Terremoto|
 And seleccione la opcion de deducible en no
-And agregue el articulo
+And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
 |prima    |departamento|ciudad   |direccion        |descripcion  |actividad|
 |1.283.333|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+
+
+Scenario:  Tarifa MRC - Cobertura AMIT
+Given estoy cotizando una poliza:
+|cuenta     |organizacion|producto               |canal            |
+|C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
+When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+And descripcion <descripcion>, actividad economica <actividad>
+When seleccione la cobertura:
+|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
+|100000000          |100000000     |120000000     |Asonada  |
+|100000000          |100000000     |120000000     |Terremoto|
+And cotice el articulo
+Then debo poder ver el valor de la prima <prima> en la cobertura
+
+Examples:
+|prima    |departamento|ciudad   |direccion        |descripcion  |actividad|
+|6.754.386|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
