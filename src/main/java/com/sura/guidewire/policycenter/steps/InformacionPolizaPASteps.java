@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.steps;
 
-import com.sura.guidewire.policycenter.pages.InicioPage;
-import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
+import com.sura.guidewire.policycenter.pages.commons.InicioPage;
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import java.util.Map;
 
 import net.thucydides.core.annotations.Step;

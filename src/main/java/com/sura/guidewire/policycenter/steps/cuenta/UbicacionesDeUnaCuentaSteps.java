@@ -14,22 +14,22 @@ public class UbicacionesDeUnaCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ir_a_ubicaciones_de_una_cuenta(String cuenta){
+    public void irAUbicacionesDeUnaCuenta(String cuenta){
         ubicacionesDeUnaCuentaPage.irAUbicacionesDeUnaCuenta(cuenta);
     }
 
     @Step
-    public void agregar_ubicacion(String nombreUbicacion,String direccion){
+    public void agregarUbicacion(String nombreUbicacion, String direccion){
         ubicacionesDeUnaCuentaPage.agregarUbicacion(nombreUbicacion,direccion);
     }
 
     @Step
-    public void agregar_direccion(String departamento, String ciudad, String tipoDireccion) {
+    public void agregarDireccion(String departamento, String ciudad, String tipoDireccion) {
         ubicacionesDeUnaCuentaPage.agregaDireccion(departamento,ciudad,tipoDireccion);
     }
 
     @Step
-    public void verificar_tipo_de_direccion(){
+    public void verificarTipoDeDireccion(){
         ubicacionesDeUnaCuentaPage.verificarTipoDeDireccion();
     }
 }

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
-import com.sura.guidewire.policycenter.util.navegacion.util.widget.TableWidgetPage;
+import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
 import java.util.ArrayList;
 import java.util.List;
 import net.serenitybdd.core.pages.PageObject;

@@ -39,7 +39,7 @@ public class AnalisisDeRiesgoPaDefinitions {
     }
 
     @Then("generar un UW issue $UWIssue")
-    public void validarGeneracionUWIssue(ExamplesTable UWIssue){
-        analisisDeRiesgoPaSteps.validar_Que_Se_Genere_UWIssue(UWIssue);
+    public void validarGeneracionUWIssue(ExamplesTable uwissue){
+        analisisDeRiesgoPaSteps.validar_Que_Se_Genere_UWIssue(uwissue);
     }
 }

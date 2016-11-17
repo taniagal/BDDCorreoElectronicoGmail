@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.navegacion.util.widget.TableWidgetPage;
+import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.By;

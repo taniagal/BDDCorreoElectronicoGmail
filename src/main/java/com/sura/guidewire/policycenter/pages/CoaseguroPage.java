@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
-import com.sura.guidewire.policycenter.util.model.Aseguradora;
+import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.model.Aseguradora;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

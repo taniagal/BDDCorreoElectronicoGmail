@@ -1,9 +1,9 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.google.common.base.Function;
-import com.sura.guidewire.policycenter.util.PageUtil;
-import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
-import com.sura.guidewire.policycenter.util.navegacion.util.widget.TableWidgetPage;
+import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
+import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.cuenta;
 
-import com.sura.guidewire.policycenter.pages.InicioPage;
+import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.steps.cuenta.BusquedaDeOrganizacionSteps;
 
 import net.thucydides.core.annotations.Managed;

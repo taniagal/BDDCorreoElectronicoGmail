@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.definitions.cuenta;
 
-import com.sura.guidewire.policycenter.steps.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.commons.SeusLoginSteps;
 import com.sura.guidewire.policycenter.steps.contacto.BusquedaContactoSteps;
-import com.sura.guidewire.policycenter.steps.PolicySteps;
+import com.sura.guidewire.policycenter.steps.commons.PolicySteps;
 import java.util.HashMap;
 import java.util.Map;
 
