@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps;
 
-import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.ValidacionDelNegocioCoberturaPage;
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.ValidacionDelNegocioCoberturaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;

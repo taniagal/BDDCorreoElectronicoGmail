@@ -2,7 +2,7 @@ package com.sura.guidewire.policycenter.definitions;
 
 
 import com.google.inject.name.Named;
-import com.sura.guidewire.policycenter.pages.InicioPage;
+import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.steps.CotizacionDePolizaSteps;
 import java.util.HashMap;
 import java.util.Map;
