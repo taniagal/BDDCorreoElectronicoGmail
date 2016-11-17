@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 
-import com.sura.guidewire.policycenter.steps.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.commons.SeusLoginSteps;
 import com.sura.guidewire.policycenter.steps.CoberturaGlobalSteps;
 
 import net.thucydides.core.annotations.Steps;

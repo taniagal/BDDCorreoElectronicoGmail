@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps;
 
-import com.sura.guidewire.policycenter.util.model.Aseguradora;
+import com.sura.guidewire.policycenter.utils.model.Aseguradora;
 import com.sura.guidewire.policycenter.pages.CoaseguroPage;
 import java.util.List;
 
