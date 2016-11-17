@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.steps;
 
 
-import com.sura.guidewire.policycenter.util.navegacion.PanelIzquierdoElement;
-import com.sura.guidewire.policycenter.util.navegacion.PanelSuperiorElement;
+import com.sura.guidewire.policycenter.utils.navegacion.PanelIzquierdoElement;
+import com.sura.guidewire.policycenter.utils.navegacion.PanelSuperiorElement;
 import com.sura.guidewire.policycenter.pages.NuevaCotizacionPage;
 import java.io.Serializable;
 import net.thucydides.core.annotations.ManagedPages;
