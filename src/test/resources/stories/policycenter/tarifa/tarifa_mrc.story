@@ -74,7 +74,6 @@ And descripcion <descripcion>, actividad economica <actividad>
 When seleccione la cobertura:
 |valorReconstruccion|valorAsegurado|valorComercial|cobertura|
 |100000000          |100000000     |120000000     |Asonada  |
-And seleccione la opcion de deducible en no
 And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 
