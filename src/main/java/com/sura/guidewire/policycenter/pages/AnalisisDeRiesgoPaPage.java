@@ -1,4 +1,4 @@
-package com.sura.policycenter.selenium.pages;
+package com.sura.guidewire.policycenter.pages;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
