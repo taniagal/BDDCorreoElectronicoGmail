@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.utils.navegacion.pages;
 
-import com.sura.guidewire.policycenter.utils.PageUtil;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.util.widget.MenuBarNavWidgetPage;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;

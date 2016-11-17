@@ -1,8 +1,8 @@
-package com.sura.guidewire.policycenter.steps.tarifa;
+package com.sura.guidewire.policycenter.steps.tarifacion;
 
 
-import com.sura.guidewire.policycenter.pages.tarifa.ModificadoresDeTarifaPage;
-import com.sura.guidewire.policycenter.pages.tarifa.TarifaAutosPage;
+import com.sura.guidewire.policycenter.pages.tarifacion.ModificadoresDeTarifaPage;
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
@@ -19,26 +19,26 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void agregar_placa_y_asegurado(String placa) {
+    public void agregarPlacaYAsegurado(String placa) {
         vehiculoPage.crearVehiculo();
         tarifaAutosPage.relacionarAsegurado();
         vehiculoPage.agregarPlaca(placa);
     }
 
     @Step
-    public void agregar_vehiculo(ExamplesTable datosPoliza) {
+    public void agregarVehiculo(ExamplesTable datosPoliza) {
         vehiculoPage.crearVehiculo();
         tarifaAutosPage.relacionarAsegurado();
         vehiculoPage.agregarVehiculo(datosPoliza);
     }
 
     @Step
-    public void agregar_modificadores(ExamplesTable valores) {
+    public void agregarModificadores(ExamplesTable valores) {
         modificadoresDeTarifaPage.agregarModificadores(valores);
     }
 
     @Step
-    public void seleciconar_coberturas(ExamplesTable coberturas) {
+    public void seleciconarCoberturas(ExamplesTable coberturas) {
         vehiculoPage.clickSiguiente();
         tarifaAutosPage.seleccionarCoberturas(coberturas);
         tarifaAutosPage.seleccionarCoberturas1(coberturas);
@@ -50,13 +50,13 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps{
 
 
     @Step
-    public void verificar_bonificacion(String bonoComercial, String bonoTecnico) {
+    public void verificarBonificacion(String bonoComercial, String bonoTecnico) {
         modificadoresDeTarifaPage.verificarBonoTecnico(bonoTecnico);
         modificadoresDeTarifaPage.verificarBonoComercial(bonoComercial);
     }
 
     @Step
-    public void verificar_tarifacion_por_coberturas(ExamplesTable valor) {
+    public void verificarTarifacionPorCoberturas(ExamplesTable valor) {
         modificadoresDeTarifaPage.verificarTarifacionPorCoberturas(valor);
     }
 }

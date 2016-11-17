@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.utils.navegacion.pages;
 
 import com.google.common.base.Function;
-import com.sura.guidewire.policycenter.utils.PageUtil;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;

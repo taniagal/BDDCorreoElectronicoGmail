@@ -1,7 +1,7 @@
-package com.sura.guidewire.policycenter.definitions.tarifa;
+package com.sura.guidewire.policycenter.definitions.tarifacion;
 
 import com.sura.guidewire.policycenter.steps.CotizacionPADetalleSteps;
-import com.sura.guidewire.policycenter.steps.tarifa.TarifaTasaUnicaSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.steps.ValidacionesInformacionDeVehiculoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;

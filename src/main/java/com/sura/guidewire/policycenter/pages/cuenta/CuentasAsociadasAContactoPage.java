@@ -2,7 +2,7 @@ package com.sura.guidewire.policycenter.pages.cuenta;
 
 import java.util.concurrent.TimeUnit;
 
-import com.sura.guidewire.policycenter.pages.SeusLoginPage;
+import com.sura.guidewire.policycenter.pages.commons.SeusLoginPage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;

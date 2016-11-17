@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.utils.menu.superior.contacto;
 
-import com.sura.guidewire.policycenter.utils.PageUtil;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import org.openqa.selenium.WebDriver;
 
 /**

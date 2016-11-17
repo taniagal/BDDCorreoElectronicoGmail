@@ -1,6 +1,6 @@
-package com.sura.guidewire.policycenter.pages;
+package com.sura.guidewire.policycenter.pages.commons;
 
- import com.sura.guidewire.policycenter.utils.PageUtil;
+ import com.sura.guidewire.policycenter.resources.PageUtil;
  import com.sura.guidewire.policycenter.utils.menu.Navegacion;
 import com.sura.guidewire.policycenter.utils.menu.acciones.administracion.AdminCodAgenteNuevoPage;
 import com.sura.guidewire.policycenter.utils.menu.acciones.administracion.AdminGrupoNuevoPage;

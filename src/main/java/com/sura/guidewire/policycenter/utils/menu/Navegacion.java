@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.utils.menu;
 
-import com.sura.guidewire.policycenter.utils.PageUtil;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.utils.menu.acciones.administracion.*;
 import com.sura.guidewire.policycenter.utils.menu.acciones.contacto.ContactoNuevaCuentaPage;

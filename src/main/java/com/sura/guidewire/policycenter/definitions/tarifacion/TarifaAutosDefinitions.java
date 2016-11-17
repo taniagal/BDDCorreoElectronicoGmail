@@ -1,7 +1,7 @@
-package com.sura.guidewire.policycenter.definitions.tarifa;
+package com.sura.guidewire.policycenter.definitions.tarifacion;
 
 import com.sura.guidewire.policycenter.steps.DetallesDeUbicacionSteps;
-import com.sura.guidewire.policycenter.steps.tarifa.TarifaAutosSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
@@ -18,31 +18,31 @@ public class TarifaAutosDefinitions {
 
     @When("ingrese los datos del asegurado <tipo_documento> <documento>")
     public void agregarAsegurado(@Named("tipo_documento") String tipoDocumento, @Named("documento") String documento) {
-        tarifaAutosSteps.agregar_asegurados(tipoDocumento, documento);
+        tarifaAutosSteps.agregarAsegurados(tipoDocumento, documento);
     }
 
     @When("ingrese los datos del vehiculo: $datosVehiculo")
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        tarifaAutosSteps.agregar_vehiculo(datosVehiculo);
+        tarifaAutosSteps.agregarVehiculo(datosVehiculo);
     }
 
     @When("ingrese las coberturas: $coberturas")
     public void agregarcoberturas(ExamplesTable coberturas) {
-        tarifaAutosSteps.agregar_coberturas(coberturas);
+        tarifaAutosSteps.agregarCoberturas(coberturas);
     }
 
     @When("seleccione todas las coberturas: $coberturas")
     public void agregarTodasLasCoberturas(ExamplesTable coberturas) {
-        tarifaAutosSteps.seleciconar_coberturas(coberturas);
+        tarifaAutosSteps.seleciconarCoberturas(coberturas);
     }
 
     @Then("el resultado de la cotizacion debe ser <valor>")
     public void verificarResultado(@Named("valor") String valor) {
-        tarifaAutosSteps.verificar_tarifacion(valor);
+        tarifaAutosSteps.verificarTarifacion(valor);
     }
 
     @Then("el resultado de la cotizacion en cada cobertura debe ser: $valor")
     public void verificarResultado(ExamplesTable valor) {
-        tarifaAutosSteps.verificar_tarifacion_por_coberturas(valor);
+        tarifaAutosSteps.verificarTarifacionPorCoberturas(valor);
     }
 }

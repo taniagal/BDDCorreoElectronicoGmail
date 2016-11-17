@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.utils;
+package com.sura.guidewire.policycenter.resources;
 
 import com.google.common.base.Function;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -139,7 +139,6 @@ public class PageUtil extends PageObject {
 
     /**
      * Crea numero de cedula
-     *
      * @return numero de cedula de 8 digitos
      */
     public String cedulaRandom() {
@@ -149,7 +148,6 @@ public class PageUtil extends PageObject {
 
     /**
      * Crea un numero de nit
-     *
      * @return numero de nit de 9 digitos
      */
     public String nitRandom() {

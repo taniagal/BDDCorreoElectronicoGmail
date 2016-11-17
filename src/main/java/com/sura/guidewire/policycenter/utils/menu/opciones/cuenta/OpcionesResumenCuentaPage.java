@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
-import com.sura.guidewire.policycenter.utils.PageUtil;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 
 import java.util.Map;
 

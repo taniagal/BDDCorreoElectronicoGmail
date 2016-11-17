@@ -1,6 +1,6 @@
-package com.sura.guidewire.policycenter.steps.tarifa;
+package com.sura.guidewire.policycenter.steps.tarifacion;
 
-import com.sura.guidewire.policycenter.pages.tarifa.TarifaAutosPage;
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
@@ -15,13 +15,13 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_asegurados(String tipoDocumento, String documento) {
+    public void agregarAsegurados(String tipoDocumento, String documento) {
         tarifaAutosPage.seleccionarAsegurado(tipoDocumento,documento);
         vehiculoPage.clickSiguiente();
     }
 
     @Step
-    public void agregar_vehiculo(ExamplesTable datosPoliza) {
+    public void agregarVehiculo(ExamplesTable datosPoliza) {
         vehiculoPage.crearVehiculo();
         tarifaAutosPage.relacionarAsegurado();
         vehiculoPage.agregarVehiculo(datosPoliza);
@@ -29,14 +29,14 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregar_coberturas(ExamplesTable datosCoberturas) {
+    public void agregarCoberturas(ExamplesTable datosCoberturas) {
         tarifaAutosPage.seleccionarCoberturas(datosCoberturas);
         tarifaAutosPage.desMarcarCoberturaHurto();
         tarifaAutosPage.cotizar();
     }
 
     @Step
-    public void seleciconar_coberturas(ExamplesTable coberturas) {
+    public void seleciconarCoberturas(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturas(coberturas);
         tarifaAutosPage.seleccionarCoberturas1(coberturas);
         tarifaAutosPage.seleccionarCoberturasDeDanios(coberturas);
@@ -46,12 +46,12 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificar_tarifacion(String valor) {
+    public void verificarTarifacion(String valor) {
         tarifaAutosPage.verificarTarifacion(valor);
     }
 
     @Step
-    public void verificar_tarifacion_por_coberturas(ExamplesTable valor) {
+    public void verificarTarifacionPorCoberturas(ExamplesTable valor) {
         tarifaAutosPage.verificarTarifacionPorCoberturas(valor);
     }
 }
