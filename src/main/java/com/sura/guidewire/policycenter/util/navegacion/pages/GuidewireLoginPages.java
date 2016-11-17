@@ -8,6 +8,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 
 import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
@@ -17,6 +18,24 @@ import java.util.concurrent.TimeUnit;
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 public class GuidewireLoginPages extends PageUtil implements Serializable{
+
+    @FindBy(xpath = ".//*[@id='country']")
+    private WebElementFacade pais;
+    @FindBy(id = "username")
+    private WebElementFacade usuario;
+    @FindBy(xpath = ".//*[@id='password']")
+    private WebElementFacade contrasenia;
+    @FindBy(xpath = ".//*[@id='lower']/input")
+    private WebElementFacade btnSubmit;
+    @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
+    private WebElementFacade mnuContact;
+    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
+    private WebElementFacade usuario1;
+    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
+    private WebElementFacade contrasenia1;
+    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
+    private WebElementFacade btnSubmit1;
+
     private static final long serialVersionUID = 1L;
     public static final String TITULO_PAGINA_PPL_DE_ACCESO = ".//span[@id='DesktopActivities:DesktopActivitiesScreen:0']";
     public static final String TXT_USUARIO_SEUS = "//input[@placeholder='Usuario']";
@@ -93,6 +112,26 @@ public class GuidewireLoginPages extends PageUtil implements Serializable{
                 enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
                 enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
                 elemento(GuidewireLoginPages.BTN_LOGIN).click();
+            }
+            resetImplicitTimeout();
+            setImplicitTimeout(0, TimeUnit.SECONDS);
+            if (!mnuContact.isPresent()) {
+                if (usuario1.isPresent()) {
+                    if (!findAll(TXT_USUARIO).isEmpty()) {
+                        enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
+                        enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
+                        elemento(GuidewireLoginPages.BTN_LOGIN).click();
+                    }
+                } else {
+                    this.usuario.waitUntilPresent();
+                    this.usuario.clear();
+                    this.contrasenia.clear();
+                    this.pais.click();
+                    this.pais.selectByVisibleText("Colombia");
+                    this.usuario.type("pedrvevi");
+                    this.contrasenia.type("pedrvevi");
+                    btnSubmit.click();
+                }
             }
             resetImplicitTimeout();
         }
