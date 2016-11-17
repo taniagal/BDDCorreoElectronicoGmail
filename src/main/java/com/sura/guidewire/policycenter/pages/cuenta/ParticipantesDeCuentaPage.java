@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.utils.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;

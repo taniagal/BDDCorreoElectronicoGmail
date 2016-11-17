@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.contacto;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.utils.PageUtil;
 import com.sura.guidewire.policycenter.pages.InicioPage;
 import com.sura.guidewire.policycenter.pages.contacto.NuevoContactoPage;
 import net.thucydides.core.annotations.Step;

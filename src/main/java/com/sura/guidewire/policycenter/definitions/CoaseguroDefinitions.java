@@ -2,7 +2,7 @@ package com.sura.guidewire.policycenter.definitions;
 
 
 import com.sura.guidewire.policycenter.steps.SeusLoginSteps;
-import com.sura.guidewire.policycenter.util.model.Aseguradora;
+import com.sura.guidewire.policycenter.utils.model.Aseguradora;
 import com.sura.guidewire.policycenter.steps.CoaseguroSteps;
 import java.util.ArrayList;
 import java.util.List;

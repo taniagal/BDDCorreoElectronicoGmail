@@ -2,7 +2,7 @@ package com.sura.guidewire.policycenter.pages;
 
 import java.util.concurrent.TimeUnit;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.utils.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;

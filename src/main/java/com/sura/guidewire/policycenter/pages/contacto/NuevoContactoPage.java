@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
-import com.sura.guidewire.policycenter.util.constantes.EnumContacto;
+import com.sura.guidewire.policycenter.utils.PageUtil;
+import com.sura.guidewire.policycenter.utils.constantes.EnumContacto;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

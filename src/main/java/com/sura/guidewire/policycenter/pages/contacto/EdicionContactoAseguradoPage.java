@@ -3,7 +3,7 @@ package com.sura.guidewire.policycenter.pages.contacto;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.utils.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.tarifa;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.utils.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.cuenta;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.utils.PageUtil;
 import com.sura.guidewire.policycenter.pages.cuenta.CuentaPage;
 import com.sura.guidewire.policycenter.pages.InicioPage;
 import net.thucydides.core.annotations.Step;

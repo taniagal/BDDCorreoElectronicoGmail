@@ -1,14 +1,10 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.AssertUtil;
-import com.sura.guidewire.policycenter.util.PageUtil;
-import jxl.common.Assert;
+import com.sura.guidewire.policycenter.utils.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
-import org.assertj.core.api.Assertions;
 import org.fluentlenium.core.annotation.Page;
-import org.fluentlenium.core.filter.matcher.Matcher;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
