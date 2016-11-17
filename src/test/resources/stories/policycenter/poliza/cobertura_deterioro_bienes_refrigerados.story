@@ -1,16 +1,13 @@
-cobertura deterioro bienes refrigerados
+Cobertura Deterioro Bienes Refrigerados
 
-Meta: @lote1
-
-
-
-Scenario: 1 Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo)
-Meta: @lote1
+Meta: @lote2
 @Story CDSEG-943
 @URL https://jira.suramericana.com.co/browse/CDSEG-943
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
+
+Scenario: 1 Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo)
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
@@ -29,13 +26,8 @@ Examples:
 | 22222236        | Asesor     |             |
 
 
+
 Scenario: 2 Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo) - 40 porciento
-Meta: @lote1
-@Story CDSEG-943
-@URL https://jira.suramericana.com.co/browse/CDSEG-943
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
@@ -55,13 +47,8 @@ Examples:
 
 
 Scenario: 3 Parametro del 40 porciento
-Meta: @lote1
-@Story CDSEG-943
-@URL https://jira.suramericana.com.co/browse/CDSEG-943
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
+Meta: @lote2
 @manual
-@Sprint 5
 Given he ingresado al Product Designer
 When seleccione en System Tables
 And seleccione cp_term_articles_rules_ext.xml
@@ -73,13 +60,8 @@ Examples:
 | 22222236        | Asesor     |             |
 
 
+
 Scenario: 4 Cobertura de terremoto para suelos y terrenos (categoría otros)
-Meta: @lote1
-@Story CDSEG-844
-@URL https://jira.suramericana.com.co/browse/CDSEG-844
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
@@ -97,12 +79,6 @@ Examples:
 
 
 Scenario: 5 Cobertura de terremoto para suelos y terrenos máximo 1000 millones
-Meta: @lote1
-@Story CDSEG-844
-@URL https://jira.suramericana.com.co/browse/CDSEG-844
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
@@ -118,13 +94,8 @@ Examples:
 | numSubscripcion | rolUsuario | descripcion |
 | 22222236        | Asesor     |             |
 
+
 Scenario: 6 Cobertura de terremoto para suelos y terrenos  Edificio obligatorio
-Meta: @lote1
-@Story CDSEG-844
-@URL https://jira.suramericana.com.co/browse/CDSEG-844
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB             | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
@@ -141,13 +112,8 @@ Examples:
 
 
 Scenario: 7 Parametro de 1000 millones y 20%
-Meta: @lote1
-@Story CDSEG-844
-@URL https://jira.suramericana.com.co/browse/CDSEG-844
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
+Meta: @lote2
 @manual
-@Sprint 5
 Given Estoy ingresando la información de coberturas a nivel de riesgo
 When Quiera cambiar el valor de 1,000 millones a otro valor o quiera cambiar el valor del 20% a otro valor
 Then Se cambie simplemente en una tabla de parámetros. Estos valores no deben estar quemados en el código.

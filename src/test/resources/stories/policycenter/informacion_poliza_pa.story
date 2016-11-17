@@ -1,6 +1,6 @@
 Informacion Poliza Pa
 
-Meta: @lote4
+Meta: @lote2
 
 @issue #CDSEG-995
 @tag automator: diego_cardona_acevedo
@@ -118,7 +118,7 @@ Examples:
 | C000888888   | Bancolombia         | Televentas   | PPAutos    | 6 meses   | 01/01/2016          | La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
 
 Scenario: Seleccionar oficina de radicacion
-Meta: @lote4
+Meta:
 @manual
 Given ya se inicio una nueva suscripcion
 And se puede visualizar la informacion de la poliza

@@ -1,14 +1,13 @@
-cobertura ubicacion otros
+Cobertura Ubicacion Otros
 
-Meta: @lote1
-
-Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)
-Meta: @lote1
+Meta: @lote2
 @Story CDSEG-767
 @URL https://jira.suramericana.com.co/browse/CDSEG-767
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
 @LOB Multiriesgo corporativo
 @Sprint 5
+
+Scenario: 1 Sublimite de perdidas de contenidos en tanques (Coberturas del riesgo)
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO         | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                       | VALOR_ENTRADAS |
@@ -26,12 +25,6 @@ Examples:
 
 
 Scenario: 2 Portadores externos de datos (Coberturas del riesgo)
-Meta: @lote1
-@Story CDSEG-767
-@URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                    | ENTRADAS                                     | VALOR_ENTRADAS |
@@ -46,12 +39,6 @@ Examples:
 
 
 Scenario: 3 Gastos por arrendamiento de sistema electronico de procesamiento de datos (Coberturas del riesgo)
-Meta: @lote1
-@Story CDSEG-767
-@URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                                                                 | ENTRADAS                                                                                  | VALOR_ENTRADAS |
@@ -66,12 +53,6 @@ Examples:
 
 
 Scenario: 4 Sublimite todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados (Coberturas del riesgo) - Porcentaje
-Meta: @lote1
-@Story CDSEG-767
-@URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA                                      | ENTRADAS                                                                                          | VALOR_ENTRADAS |
@@ -90,12 +71,6 @@ Examples:
 
 
 Scenario: 5 Sublimites menores a valor asegurado daños (coberturas a nivel de riesgo)
-Meta: @lote1
-@Story CDSEG-767
-@URL https://jira.suramericana.com.co/browse/CDSEG-767
-@tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
-@LOB Multiriesgo corporativo
-@Sprint 5
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                                                                                               | VALOR_ENTRADAS |
