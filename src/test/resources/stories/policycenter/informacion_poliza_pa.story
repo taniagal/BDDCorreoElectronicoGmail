@@ -44,80 +44,102 @@ Scenario: Ingresar segundo tomador
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
+And seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el tipo de poliza <tipoPoliza> para autos
 And adicione un segundo tomador <tipoDocumento>, <primerNombre>, <primerApellido>
 Then debe quedar registrado en la informacion de la poliza
 
 Examples:
-|numCuenta  |tipoDocumento        |primerNombre |primerApellido |
-|C000888888 |CEDULA DE CIUDADANIA |JORGE        |PAISA          |
+|numCuenta  |tipoDocumento        |primerNombre |primerApellido |organizacion|canal            |tipoPoliza   |
+|C000888888 |CEDULA DE CIUDADANIA |JORGE        |PAISA          |Sura        |Canal Tradicional|PPAutos      |
 
 Scenario: Validar porcentaje descuento de poliza
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
+And seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el tipo de poliza <tipoPoliza> para autos
 And ingrese un porcentaje <porcentaje> de poliza superior al 50.00
 Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder el 50
 
 Examples:
-|numCuenta      |porcentaje |mensaje                                                                          |
-|C000888888     |60         |Descuento póliza : El descuento de la póliza debe estar en un rango de 0% a 50%. |
-|C000888888     |abc        |Descuento póliza : debe ser un valor numérico.                                   |
+|numCuenta      |porcentaje |mensaje                                                                          |organizacion|canal            |tipoPoliza   |
+|C000888888     |60         |Descuento póliza : El descuento de la póliza debe estar en un rango de 0% a 50%. |Sura        |Canal Tradicional|PPAutos      |
+|C000888888     |abc        |Descuento póliza : debe ser un valor numérico.                                   |Sura        |Canal Tradicional|PPAutos      |
 
 Scenario: Validar longitud decimales porcentaje descuento de poliza
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
+And seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el tipo de poliza <tipoPoliza> para autos
 And ingrese un porcentaje <porcentaje> de poliza con mas de dos enteros y dos decimales
-Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder la longitud de dos digitos a izquierda o derecha
+Then debe mostrar un mensaje <mensaje> indicando que el porcentaje no puede exceder la longitud de dos digitos a
+izquierda o derecha
 
 Examples:
-|numCuenta      |porcentaje     |mensaje                                                                                 |
-|C000888888     |20,325         |Descuento póliza : El descuento de la póliza puede tener máximo 2 cifras decimales.     |
+|numCuenta      |porcentaje     |mensaje                                                                                 |organizacion|canal            |tipoPoliza   |
+|C000888888     |20,325         |Descuento póliza : El descuento de la póliza puede tener máximo 2 cifras decimales.     |Sura        |Canal Tradicional|PPAutos      |
 
 Scenario: Deseo de financiacion de poliza
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
+And seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el tipo de poliza <tipoPoliza> para autos
 And indique que deseo financiar la poliza
 Then se debe habilitar la opcion de numero de cuotas
 
 Examples:
-|numCuenta    |
-|C000888888   |
+|numCuenta    |organizacion|canal            |tipoPoliza   |
+|C000888888   |Sura        |Canal Tradicional|PPAutos      |
 
 Scenario: No deseo de financiacion de poliza
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
+And seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el tipo de poliza <tipoPoliza> para autos
 And no indique que deseo financiar la poliza
 Then no se debe habilitar la opcion de numero de cuotas
 
 Examples:
-|numCuenta    |
-|C000888888   |
+|numCuenta    |organizacion|canal            |tipoPoliza   |
+|C000888888   |Sura        |Canal Tradicional|PPAutos      |
 
 Scenario: Deseo de financiacion de poliza - opcion Siguiente
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
+And seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el tipo de poliza <tipoPoliza> para autos
 And indique que deseo financiar la poliza
 And indique el numero de cuotas
 And seleccione la opcion siguiente
 Then se debe mostrar un mensaje <mensaje> de advertencia
 
 Examples:
-|numCuenta    |mensaje                                                                                  |
-|C000888888   |La financiación de la póliza está sujeta a aprobación por parte del área de financiación.|
+|numCuenta    |mensaje                                                                                  |organizacion|canal            |tipoPoliza   |
+|C000888888   |La financiación de la póliza está sujeta a aprobación por parte del área de financiación.|Sura        |Canal Tradicional|PPAutos      |
 
 Scenario: Validar retroactividad en la vigencia de la poliza
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
-And modifique la fecha de inicio de vigencia <organizacionDetalle> <canalDetalle> <tipoPoliza> <tipoPlazo> <fechaInicioVigencia>
+And seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el tipo de poliza <tipoPoliza> para autos
+And modifique la fecha de inicio de vigencia <organizacion> <canal> <tipoPoliza> <tipoPlazo> <fechaInicioVigencia>
 Then se debe cumplir con la retroactividad permitida <mensaje>
 
 Examples:
-| numCuenta    | organizacionDetalle | canalDetalle | tipoPoliza | tipoPlazo | fechaInicioVigencia | mensaje                                                                                     |
+| numCuenta    | organizacion | canal | tipoPoliza | tipoPlazo | fechaInicioVigencia | mensaje                                                                                     |
 | C000888888   | Bancolombia         | Televentas   | PPAutos    | 6 meses   | 01/01/2016          | La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
 
 Scenario: Seleccionar oficina de radicacion

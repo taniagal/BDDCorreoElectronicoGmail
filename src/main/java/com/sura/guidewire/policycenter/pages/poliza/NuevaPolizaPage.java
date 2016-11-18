@@ -10,7 +10,6 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
@@ -41,10 +40,6 @@ public class NuevaPolizaPage extends PageUtil {
     private WebElementFacade btnCuentas;
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
     WebElementFacade txtNumeroCuenta;
-
-
-
-    private List<WebElement> filas;
 
     Actions acciones = new Actions(getDriver());
 
@@ -132,15 +127,6 @@ public class NuevaPolizaPage extends PageUtil {
         this.desplegarElementoDeLaLista(listaTipoPoliza);
         this.seleccionarElementoDeLaLista(tipoPoliza);
         waitForAbsenceOf("//li");
-    }
-
-    public void validarBotonesHabilitados() {
-        this.validarBotonesDeLaTablaProductos(true);
-    }
-
-
-    public void validarNoSeListanProductos(){
-        MatcherAssert.assertThat(waitFor(tablaProductosColectiva).getText(), Is.is(Matchers.equalTo("")));
     }
 
     public void buscarCuenta(String numeroCuenta) {

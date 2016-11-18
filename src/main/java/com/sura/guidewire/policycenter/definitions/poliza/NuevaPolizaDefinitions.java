@@ -53,13 +53,4 @@ public class NuevaPolizaDefinitions {
         nuevaPolizaSteps.validaListaCanalDeAcuerdoALaOrganizacion(datosListaCanal);
     }
 
-    @Then("los botones de elegir producto deben estar habilitados")
-    public void validarBotonesParaElegirProductoHabilitados(){
-        nuevaPolizaSteps.validarBotonesHabilitados();
-    }
-
-    @Then("no debe mostrar la lista de productos")
-    public void validarQueNoSeListanProductos(){
-        nuevaPolizaSteps.validarNoSeListanProductos();
-    }
 }

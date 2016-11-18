@@ -123,9 +123,9 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.definirPolizaFinanciada();
     }
 
-    @When("modifique la fecha de inicio de vigencia <organizacionDetalle> <canalDetalle> <tipoPoliza> <tipoPlazo> <fechaInicioVigencia>")
-    public void modificarfechaInicioVigencia(@Named("organizacionDetalle") String organizacionDetalle,
-                                             @Named("canalDetalle") String canalDetalle,
+    @When("modifique la fecha de inicio de vigencia <organizacion> <canal> <tipoPoliza> <tipoPlazo> <fechaInicioVigencia>")
+    public void modificarfechaInicioVigencia(@Named("organizacion") String organizacionDetalle,
+                                             @Named("canal") String canalDetalle,
                                              @Named("tipoPoliza") String tipoPoliza,
                                              @Named("tipoPlazo") String tipoPlazo,
                                              @Named("fechaInicioVigencia") String fechaInicioVigencia) {

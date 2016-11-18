@@ -53,14 +53,4 @@ public class NuevaPolizaSteps extends ScenarioSteps{
     public void seleccionarElTipoDePoliza(String tipoPoliza) {
         nuevaPolizaPage.seleccionarElTipoDePoliza(tipoPoliza);
     }
-
-    @Step
-    public void validarBotonesHabilitados() {
-        nuevaPolizaPage.validarBotonesHabilitados();
-    }
-
-    @Step
-    public void validarNoSeListanProductos() {
-        nuevaPolizaPage.validarNoSeListanProductos();
-    }
 }
