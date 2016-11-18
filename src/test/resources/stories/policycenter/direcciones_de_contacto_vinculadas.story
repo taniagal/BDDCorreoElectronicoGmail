@@ -43,8 +43,8 @@ Then el campo departamento debe tener el valor <departamento>
 And el campo ciudad debe tener el valor <ciudad>
 
 Examples:
-| numCuenta  | nombreContacto  | pais           | departamento | ciudad    |
-| C000484848 | RICARDO GIRALDO | Estados Unidos | <ninguno>    | <ninguno> |
+| numCuenta  | nombreContacto  | pais     | departamento | ciudad    |
+| C000484848 | RICARDO GIRALDO | Colombia | <ninguno>    | <ninguno> |
 
 Scenario: Edicion del campo Direccion validando que se estandariza la direccion ingresada
 Given que voy a buscar la cuenta <numCuenta>

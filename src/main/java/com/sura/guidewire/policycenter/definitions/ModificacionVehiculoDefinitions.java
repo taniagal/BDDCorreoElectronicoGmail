@@ -3,7 +3,7 @@ package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.ModificacionInformacionPolizaPASteps;
 import com.sura.guidewire.policycenter.steps.ModificacionVehiculoSteps;
-import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireSteps;
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Manual;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -22,7 +22,7 @@ public class ModificacionVehiculoDefinitions{
 
     @Given("se tiene una poliza expedida <numeroPoliza>")
     public void buscarPoliza(@Named("numeroPoliza") String numeroPoliza){
-        guidewire.ir_a_navegacion_superior().desplegar_menu_poliza().consultar_numero_de_poliza(numeroPoliza);
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numeroPoliza);
         modificacionInformacionPolizaPASteps.irAModificarInformacionPoliza();
         modificacionVehiculoSteps.ir_A_Modificar_Vehiculo();
     }

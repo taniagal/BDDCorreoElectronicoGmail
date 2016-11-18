@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.navegacion.util.widget.TableWidgetPage;
+import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.openqa.selenium.By;
@@ -27,7 +27,7 @@ public class TransaccionesDePolizaWidgetObject extends PageObject{
 
         this.tablaTransaccionesDePoliza.enToolbar().seleccionarDeComboConLabel("Producto");
         this.tablaTransaccionesDePoliza.opcionDeCombo("Multiriesgo corporativo");
-        ( (WebElement) this.tablaTransaccionesDePoliza.obtenerColumnaDeTabla("N.º de transacción").get(0)).findElement(By.tagName("a")).click();
+        ((WebElement) this.tablaTransaccionesDePoliza.obtenerColumnaDeTabla("N.º de transacción").get(0)).findElement(By.tagName("a")).click();
 
         String tituloDePaginaContactos = "Información de póliza";
         waitForTextToAppear(tituloDePaginaContactos);

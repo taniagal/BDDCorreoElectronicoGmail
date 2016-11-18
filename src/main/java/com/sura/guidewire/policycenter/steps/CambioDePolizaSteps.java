@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.CambioDePolizaPage;
-import com.sura.guidewire.policycenter.pages.InicioPage;
+import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;

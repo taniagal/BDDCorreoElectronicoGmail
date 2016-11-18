@@ -1,10 +1,10 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.DisponibilidadDetalleProductoPage;
-import com.sura.guidewire.policycenter.pages.InicioPage;
+import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.colectivas.InformacionDePolizaColectivaPage;
 import com.sura.guidewire.policycenter.pages.colectivas.NuevaPolizaPage;
-import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -115,6 +115,18 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     @Step
     public void ingresar_a_edificios_y_ubicaciones() {
         opcionesInformacionPolizaMrcPage.seleccionBotonSiguiente();
+    }
+    @Step
+    public void ingresar_a_edificios_y_ubicaciones_en_cambio_de_poliza(){
+        opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenCambioDePoliza();
+    }
+    @Step
+    public void ingresar_a_edificios_y_ubicaciones_en_renovacion_de_poliza(){
+        opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenRenovacionDePoliza();
+    }
+    @Step
+    public void ingresar_a_informacion_de_poliza(){
+        opcionesInformacionPolizaMrcPage.seleccionarInformacionDePoliza();
     }
 }
 

@@ -1,11 +1,11 @@
 package com.sura.guidewire.policycenter.definitions;
 
 
-import com.sura.guidewire.policycenter.util.navegacion.definitions.IngresoAPolicyCenterDefinitions;
-import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireSteps;
+import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import com.sura.guidewire.policycenter.steps.InstruccionesPreviasARenovacionSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
-import com.sura.guidewire.policycenter.util.AssertUtil;
+import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.steps.AnalisisDeRiesgoSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -63,8 +63,8 @@ public class Poliza {
 
         guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
 
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDePoliza(numPoliza);
 
         LOGGER.info("Poliza.dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza");
     }
@@ -99,8 +99,8 @@ public class Poliza {
         // TODO: 27/07/2016 Capturar el rol desde el gherkin en i am Asesor
         guidewireLogin.dadoQueAccedoAPolicyCenterConRol("Asesor");
 
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
 
         assertThat(esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), Is.is(Matchers.equalTo(true)));
 
@@ -116,6 +116,15 @@ public class Poliza {
         polizaSteps.seleccionarOpcionCambiarPoliza();
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
         polizaSteps.seleccionarOpcionInformacionDePoliza();
+    }
+
+    @When("cuando intente renovar informacion de la poliza MRC")
+    public void cuandoIntenterRenovarPolizaMRC() {
+        LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
+
+        polizaSteps.seleccionarBotonAcciones();
+        polizaSteps.seleccionarOpcionRenovarPoliza();
+        polizaSteps.confirmarRenovacion();
     }
 
     @When("desee seleccionar instrucciones previas a la renovacion")
@@ -161,8 +170,8 @@ public class Poliza {
     @When("rescinda la cancelacion de la poliza <numPoliza>")
     public void cuandoRescindaLaCancelacion(String numPoliza){
         LOGGER.info("Poliza.cuandoRescindaLaCancelacion");
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDePoliza(numPoliza);
         polizaSteps.seleccionarBotonAcciones().seleccionar_boton_rescindir_cancelacion().seleccionar_poliza_a_rescindir();
         polizaSteps.seleccionarOpcionCierre();
         polizaSteps.seleccionarOpcionRescindirCancelacion();
@@ -171,8 +180,8 @@ public class Poliza {
     @When("retire la cancelacion de la subscripcion <numSubscripcion>")
     public void cuandoRetireaLaSubscripcion(String numSubscripcion){
         LOGGER.info("Poliza.cuandoRetireaLaSubscripcion");
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
         polizaSteps.seleccionarOpcionCierre();
         polizaSteps.seleccionarOpcionRetirarTransaccion();
         polizaSteps.confirmarCancelacion();
@@ -181,8 +190,8 @@ public class Poliza {
     @When("ingreso al resumen de la poliza")
     public void cuandoIngreseAlResumenDeLaPoliza(String numPoliza){
         LOGGER.info("Poliza.cuandoIngreseAlResumenDeLaPoliza");
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDePoliza(numPoliza);
     }
 
 
@@ -197,6 +206,28 @@ public class Poliza {
         analisisDeRiesgoSteps.seleccion_opcion_analisis_de_riesgos();
         analisisDeRiesgoSteps.se_muestra_compromiso_bloqueado(mensaje);
     }
+
+    @When("se solicite aprobacion para los riesgos")
+    public void cuandoSeSoliciteAprobacionParaLosriesgos() {
+        LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacionDeLosRiesgos");
+        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgos_en_cotizacion();
+        analisisDeRiesgoSteps.solicitar_aprobacion();
+    }
+
+    @When("se solicite aprobacion para los riesgos en cambio de poliza")
+    public void cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza() {
+        LOGGER.info("Poliza.cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza");
+        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_cambio_poliza();
+        analisisDeRiesgoSteps.solicitar_aprobacion();
+    }
+
+    @When("se solicite aprobacion para los riesgos en renovacion de poliza")
+    public void cuandoSeSoliciteAprobacionParaLosriesgosEnRenovacionDePoliza() {
+        LOGGER.info("Poliza.cuandoSeSoliciteAprobacionParaLosriesgosEnCambioDePoliza");
+        analisisDeRiesgoSteps.seleccionar_opcion_analisis_de_riesgo_en_renovacion_poliza();
+        analisisDeRiesgoSteps.solicitar_aprobacion();
+    }
+
     @Then("se debe mostrar un mensaje con el texto: $Mensaje")
     public void entoncesSeDebeMostrarUnMensajeConElTexto(String mensaje){
         LOGGER.info("Poliza.entoncesSeDebeGeneraruNUWIssueParaSolicitarLaAutorizacion");

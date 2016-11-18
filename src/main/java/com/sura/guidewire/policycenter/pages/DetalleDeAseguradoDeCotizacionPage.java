@@ -1,10 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -13,17 +10,19 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
-public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
-    Actions acciones = new Actions(getDriver());
-
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']/div")
+public class DetalleDeAseguradoDeCotizacionPage extends PageUtil {
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:PADrivers']/div")
     WebElementFacade botonAsegurados;
-    @FindBy(xpath=".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver']")
     WebElementFacade botonAgregar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriversLV_tb:AddDriver:AddExistingContact']")
     WebElementFacade opcionContactoDeCuenta;
@@ -64,7 +63,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
 
     protected static final int CONSTANTE_5 = 5;
 
-    public DetalleDeAseguradoDeCotizacionPage(WebDriver driver){
+    public DetalleDeAseguradoDeCotizacionPage(WebDriver driver) {
         super(driver);
     }
 
@@ -87,8 +86,8 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
         for (int i = 0; i < listaAgregar.getRowCount(); i++) {
             for (WebElementFacade opciones : elementosAgregar) {
                 elementosRequeridos = listaAgregar.getRows().get(i);
-                if((elementosRequeridos.get("agregar")).equals(opciones.getText())){
-                    opcionesAgregar ++;
+                if ((elementosRequeridos.get("agregar")).equals(opciones.getText())) {
+                    opcionesAgregar++;
                 }
             }
         }
@@ -98,9 +97,9 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
 
     public void agregarAseguradoContactoDeLaCuenta() {
         waitFor(opcionContactoDeCuenta).waitUntilPresent();
-        acciones.moveToElement(opcionContactoDeCuenta).release(opcionContactoDeCuenta).build().perform();
+        actions.moveToElement(opcionContactoDeCuenta).release(opcionContactoDeCuenta).build().perform();
         waitFor(contactoDeCuenta).waitUntilPresent();
-        acciones.moveToElement(contactoDeCuenta).release().click().build().perform();
+        actions.moveToElement(contactoDeCuenta).release().click().build().perform();
 
     }
 
@@ -116,20 +115,20 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
 
     public void seleccionarNuevaPersonaNatural() {
         waitFor(opcionNuevo).waitUntilPresent();
-        acciones.moveToElement(opcionNuevo).release(opcionNuevo).build().perform();
+        actions.moveToElement(opcionNuevo).release(opcionNuevo).build().perform();
         waitFor(opcionNuevoPersonaNatural).waitUntilPresent();
         opcionNuevoPersonaNatural.withTimeoutOf(CONSTANTE_5, TimeUnit.SECONDS).waitUntilVisible().click();
     }
 
     public void seleccionarNuevaPersonaJuridica() {
         waitFor(opcionNuevo).waitUntilPresent();
-        acciones.moveToElement(opcionNuevo).release(opcionNuevo).build().perform();
+        actions.moveToElement(opcionNuevo).release(opcionNuevo).build().perform();
         waitFor(opcionNuevoPersonaJuridica).waitUntilPresent();
         opcionNuevoPersonaJuridica.click();
     }
 
     public String validarMensaje() {
-       return waitFor(mensajeBuscarDirectorio).waitUntilVisible().getText();
+        return waitFor(mensajeBuscarDirectorio).waitUntilVisible().getText();
     }
 
     public void validarAseguradosAgregados(ExamplesTable asegurados) {
@@ -137,7 +136,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
         waitUntil(WAIT_TIME_2000);
         waitFor(tablaAsegurados).waitUntilPresent();
         List<WebElement> allRows = tablaAsegurados.findElements(By.tagName("tr"));
-        for (int i=0; i<allRows.size(); i++){
+        for (int i = 0; i < allRows.size(); i++) {
             aseguradosAgregados = asegurados.getRows().get(i);
             MatcherAssert.assertThat(allRows.get(i).getText(), Matchers.containsString(aseguradosAgregados.get("nombre")));
             MatcherAssert.assertThat(allRows.get(i).getText(), Matchers.containsString(aseguradosAgregados.get("tipoDocumento")));
@@ -203,7 +202,13 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil{
         botonSiguiente.click();
         WebElementFacade labelTituloVehiculos = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).shouldBePresent();
-        MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
+        try {
+            MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            waitUntil(WAIT_TIME_2000);
+            MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
+        }
         waitUntil(WAIT_TIME_1000);
     }
 }

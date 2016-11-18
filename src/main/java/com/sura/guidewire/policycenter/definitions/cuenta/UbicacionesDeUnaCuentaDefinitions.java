@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions.cuenta;
 
 
-import com.sura.guidewire.policycenter.steps.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.commons.SeusLoginSteps;
 import com.sura.guidewire.policycenter.steps.cuenta.UbicacionesDeUnaCuentaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -19,22 +19,22 @@ public class UbicacionesDeUnaCuentaDefinitions {
     @Given("que tengo una cuenta <cuenta>")
     public void givenQueTengoUnaCuenta(@Named("cuenta") String cuenta) {
         seusLoginSteps.login();
-        ubicacionesDeUnaCuentaSteps.ir_a_ubicaciones_de_una_cuenta(cuenta);
+        ubicacionesDeUnaCuentaSteps.irAUbicacionesDeUnaCuenta(cuenta);
     }
 
     @When("cuando agregue una nueva ubicacion nombre <nombre>, direccion <direccion>")
     public void whenCuandoAgregueUnaNuevaUbicacion(@Named("nombre") String nombre,@Named("direccion") String direccion) {
-        ubicacionesDeUnaCuentaSteps.agregar_ubicacion(nombre,direccion);
+        ubicacionesDeUnaCuentaSteps.agregarUbicacion(nombre,direccion);
     }
 
     @When("departamento <departamento>, ciudad <ciudad>, tipo de direccion <tipo_direccion>")
     public void andCuandoAgregueDireccion(@Named("departamento") String departamento,@Named("ciudad") String ciudad,@Named("tipo_direccion") String tipoDireccion) {
-        ubicacionesDeUnaCuentaSteps.agregar_direccion(departamento,ciudad,tipoDireccion);
+        ubicacionesDeUnaCuentaSteps.agregarDireccion(departamento,ciudad,tipoDireccion);
     }
 
     @Then("debo poder ver el tipo de vivienda en el detalle de la ubicacion")
     public void thenDeboPoderVerElTipoDeVivienda() {
-        ubicacionesDeUnaCuentaSteps.verificar_tipo_de_direccion();
+        ubicacionesDeUnaCuentaSteps.verificarTipoDeDireccion();
     }
 
 }

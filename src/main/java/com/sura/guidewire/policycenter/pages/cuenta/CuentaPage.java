@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;

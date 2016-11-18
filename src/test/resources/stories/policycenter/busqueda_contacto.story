@@ -1,6 +1,6 @@
 Busqueda Contacto
 
-Meta: @lote2
+Meta: @lote1
 
 @issue #CDSEG-894
 @tag automator: diego_cardona_acevedo
@@ -175,28 +175,28 @@ Examples:
 | CEDULA DE CIUDADANIA | YURLEDYS     | GALLEGO        | YURLEDYS | GALLEGO |
 
 Scenario: Consultar contacto de tipo persona juridica por razon social
-Meta: @lote2
+Meta:
 @manual
 Given estoy buscando un contacto
 When quiera consultar contacto de tipo persona juridica por razon social
 Then debo ver la informacion del contacto de tipo persona juridica
 
 Scenario: Consultar contacto de tipo persona juridica por nombre comercial
-Meta: @lote2
+Meta:
 @manual
 Given estoy buscando un contacto
 When quiera consultar contacto de tipo persona juridica por nombre comercial
 Then debo ver la informacion del contacto de tipo persona juridica
 
 Scenario: Opcion Contactos - Buscar, persona juridica por nombre comercial
-Meta: @lote2
+Meta:
 @manual
 Given estoy buscando un contacto
 When quiera consultar contacto de tipo persona juridica por nombre comercial
 Then debo ver la informacion del contacto de tipo persona juridica
 
 Scenario: Consultar contacto de tipo persona juridica por tipo y numero de identificacion
-Meta: @lote2
+Meta:
 @manual
 Given estoy buscando un contacto
 When quiera consultar contacto de tipo persona juridica por tipo y numero de identificacion
