@@ -1,7 +1,6 @@
 package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import net.serenitybdd.core.annotations.findby.By;
@@ -130,8 +129,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private boolean esVisible;
 
 
-    NuevaPolizaPage nuevaPolizaPage;
-
     Actions actions = new Actions(getDriver());
 
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
@@ -237,23 +234,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
             filaBoton++;
         }
         return filaBoton;
-    }
-
-    public void seleccionarOrganizacion(String organizacion) {
-        listaOrganizacion.waitUntilPresent();
-        listaOrganizacion.click();
-        listaOrganizacion.sendKeys(organizacion);
-        listaOrganizacion.sendKeys(Keys.ENTER);
-
-    }
-
-    public void seleccionarCanal(String canal) {
-        waitFor(WAIT_TIME_5).second();
-        listaCanal.click();
-        listaCanal.sendKeys(canal);
-        listaCanal.sendKeys(Keys.ENTER);
-        waitFor(WAIT_TIME_1).second();
-        listaCanal.sendKeys(Keys.TAB);
     }
 
     public void seleccionarInformacionDePoliza(){

@@ -17,7 +17,7 @@ Meta:
 Scenario: 1 Validar que se genere actividad de riesgo consultable al cotizar una poliza
 
 Given que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>
-When quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>
+When quiero expedir una poliza nueva con los siguientes datos: <agente> <producto>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion
 And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
@@ -30,8 +30,8 @@ Then se debe generar una actividad por cada DNI o direccion diferente que sea ri
 
 
 Examples:
-| numCuenta  | agente                                       | organizacion | canal             | tipoPoliza | producto                | rolUsuario | cedula  | tipoBeneficiario |
-| C000888888 | Armstrong - Cayman Captive Srvs > 501-002546 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | 9876543 | Asegurado        |
+| numCuenta  | agente                                       | producto                | rolUsuario | cedula  | tipoBeneficiario |
+| C000888888 | Armstrong - Cayman Captive Srvs > 501-002546 | Multiriesgo corporativo | Asesor     | 9876543 | Asegurado        |
 
 
 Scenario: 2 Validar que se genere actividad de riesgo consultable al modificar una poliza

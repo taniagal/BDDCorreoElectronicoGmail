@@ -26,8 +26,8 @@ Then debo ver en el resumen de la poliza y en informacion de poliza los coasegur
 
 
 Examples:
-| numCuenta  | agente                                       | organizacion | canal             | tipoPoliza | producto                | rolUsuario | TipoCo | numSubscripcion |
-| C000777777 | Armstrong - Cayman Captive Srvs > 501-002546 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | Cedido | 22222236        |
+| numCuenta  | agente                                       | producto                | rolUsuario | TipoCo | numSubscripcion |
+| C000777777 | Armstrong - Cayman Captive Srvs > 501-002546 | Multiriesgo corporativo | Asesor     | Cedido | 22222236        |
 
 
 
@@ -47,8 +47,8 @@ Then se debe validar que se muestren los mensajes de obligatoriedad siguientes
 
 
 Examples:
-| numCuenta  | agente         | organizacion | canal             | tipoPoliza | producto                | rolUsuario | TipoCo   |
-| C000888888 | DIRECTO > 4999 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | Aceptado |
+| numCuenta  | agente         | producto                | rolUsuario | TipoCo   |
+| C000888888 | DIRECTO > 4999 | Multiriesgo corporativo | Asesor     | Aceptado |
 
 
 
@@ -63,5 +63,5 @@ And de clic en Aceptar de la ventana Coaseguro
 Then no se debe inhabilitar la opcion Numero de documento
 
 Examples:
-| numCuenta  | agente         | organizacion | canal             | tipoPoliza | producto                | rolUsuario | TipoCo   |
-| C000888888 | DIRECTO > 4999 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | Cedido   |
+| numCuenta  | agente         | producto                | rolUsuario | TipoCo   |
+| C000888888 | DIRECTO > 4999 | Multiriesgo corporativo | Asesor     | Cedido   |

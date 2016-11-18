@@ -85,10 +85,8 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresar_nueva_cotizacion(String agente, String organizacion, String canal, String producto) {
+    public void ingresar_nueva_cotizacion(String agente, String producto) {
         disponibilidadDetalleProductoPage.seleccionarAgente(agente);
-        opcionesInformacionPolizaMrcPage.seleccionarOrganizacion(organizacion);
-        opcionesInformacionPolizaMrcPage.seleccionarCanal(canal);
         opcionesInformacionPolizaMrcPage.seleccionarProducto(producto);
     }
 

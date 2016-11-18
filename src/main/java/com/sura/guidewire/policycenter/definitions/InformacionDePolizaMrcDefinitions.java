@@ -56,14 +56,11 @@ public class InformacionDePolizaMrcDefinitions {
     }
 
 
-    @When("quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>")
+    @When("quiero expedir una poliza nueva con los siguientes datos: <agente> <producto>")
     public void cuandoQuieroExpedirUnaPolizaNuevaConLosSiguientesDatos(@Named("agente") String agente,
-                                                                       @Named("organizacion") String organizacion,
-                                                                       @Named("canal") String canal,
-                                                                       @Named("tipoPoliza") String tipoPoliza,
                                                                        @Named("producto") String producto) {
 
-        informacionDePolizaMrcSteps.ingresar_nueva_cotizacion(agente, organizacion, canal, producto);
+        informacionDePolizaMrcSteps.ingresar_nueva_cotizacion(agente, producto);
 
     }
 
