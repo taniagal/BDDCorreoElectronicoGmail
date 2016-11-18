@@ -49,8 +49,7 @@ public class NuevaPolizaPage extends PageUtil {
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
         waitUntil(WAIT_TIME_3000);
-        //actions.click(elementoDeLaLista).build().perform();
-        elementoDeLaLista.waitUntilPresent().click();
+        actions.click(elementoDeLaLista).build().perform();
     }
 
     public void desplegarListaDeOrganizaciones() {
