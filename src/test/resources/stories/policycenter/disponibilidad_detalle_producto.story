@@ -12,8 +12,8 @@ quiero poder configurar el modelo del producto teniendo en cuenta los canales de
 para que se muestren las coberturas, terminos y opciones segun la disponibilidad
 
 Scenario: Validar la organizacion, el canal y el tipo de poliza cuando el producto es Autos
-GivenStories: stories/policycenter/login_policy.story
-Given que voy a buscar la cuenta <numCuenta>
+Meta: @manual @lote3
+Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And quiero expedir una poliza nueva
 And seleccione el agente <agente>
 When seleccione el producto <producto> para expedir la poliza
@@ -28,7 +28,7 @@ Examples:
 | C000888888 | DIRECTO | Autos    | PPAutos        | Bancolombia      | Televentas        |
 
 Scenario: Validar la organizacion, el canal y el tipo de poliza cuando el producto es Autos para las diferentes combinaciones
-Meta: @manual
+Meta: @manual @lote3
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And quiero expedir una poliza nueva
 And seleccione el agente <agente>
