@@ -10,24 +10,15 @@ public class NuevaPolizaSteps extends ScenarioSteps{
     private NuevaPolizaPage nuevaPolizaPage;
 
     @Step
-    public void desplegarListaDeOrganizaciones() {
-        nuevaPolizaPage.desplegarListaDeOrganizaciones();
-    }
-
-    @Step
     public void validarListaDeOrganizaciones(ExamplesTable listaOrganizaciones) {
         nuevaPolizaPage.validarListaDeOrganizaciones(listaOrganizaciones);
     }
 
     @Step
-    public void seleccionarOrganizacion(String organizacion) {
-        nuevaPolizaPage.seleccionarOrganizacion(organizacion);
+    public void seleccionarOrganizacion(ExamplesTable datosAutos) {
+        nuevaPolizaPage.seleccionarOrganizacion(datosAutos);
     }
 
-    @Step
-    public void desplegarListaCanal() {
-        nuevaPolizaPage.desplegarListaCanal();
-    }
 
     @Step
     public void validaListaCanalDeAcuerdoALaOrganizacion(String datosListaCanal) {
@@ -42,15 +33,5 @@ public class NuevaPolizaSteps extends ScenarioSteps{
     @Step
     public void validarBotonesDeLaTablaProductosHabilitados() {
         nuevaPolizaPage.validarBotonesHabilitadosPorProducto();
-    }
-
-    @Step
-    public void seleccionarCanal(String canal) {
-        nuevaPolizaPage.seleccionarCanal(canal);
-    }
-
-    @Step
-    public void seleccionarElTipoDePoliza(String tipoPoliza) {
-        nuevaPolizaPage.seleccionarElTipoDePoliza(tipoPoliza);
     }
 }

@@ -26,16 +26,10 @@ public class NuevaPolizaPage extends PageUtil {
     private WebElementFacade listaCanal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
     private WebElementFacade listaTipoPoliza;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:CreateIndividualPolicy_true-inputEl']")
-    private WebElementFacade radioBotonIndividual;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:CreateIndividualPolicy_false-inputEl']")
-    private WebElementFacade radioBotonColectiva;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-triggerWrap']/tbody/tr/td/input")
+    private WebElementFacade listaOrganizacionW;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnInnerEl']")
     private WebElementFacade btnBuscar;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
-    private WebElementFacade tablaProductosIndividual;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:CollectiveProductSelectionLV:CollectiveProductSelection_ExtLV-body']")
-    private WebElementFacade tablaProductosColectiva;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']")
     private WebElementFacade btnCuentas;
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
@@ -50,14 +44,6 @@ public class NuevaPolizaPage extends PageUtil {
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
         waitUntil(WAIT_TIME_3000);
         acciones.click(elementoDeLaLista).build().perform();
-    }
-
-    public void desplegarListaDeOrganizaciones() {
-        this.desplegarElementoDeLaLista(listaOrganizacion);
-    }
-
-    public void desplegarListaCanal() {
-        this.desplegarElementoDeLaLista(listaCanal);
     }
 
     public void validarListaDeOrganizaciones(ExamplesTable listaOrganizaciones) {
@@ -79,11 +65,17 @@ public class NuevaPolizaPage extends PageUtil {
         }
     }
 
-    public void seleccionarOrganizacion(String organizacion) {
+    public void seleccionarOrganizacion(ExamplesTable datosAutos) {
+        Map<String, String> dato = datosAutos.getRow(0);
+        waitForTextToAppear("Información de póliza");
         listaOrganizacion.waitUntilPresent();
-        listaOrganizacion.sendKeys(Keys.ESCAPE);
-        this.desplegarElementoDeLaLista(listaOrganizacion);
-        this.seleccionarElementoDeLaLista(organizacion);
+        selectItem(listaOrganizacion, dato.get("organizacion"));
+        waitForComboValue(listaOrganizacionW, dato.get("organizacion"));
+        waitUntil(WAIT_TIME_1000);
+        selectItem(listaCanal, dato.get("canal"));
+        waitForComboValue(listaCanal, dato.get("canal"));
+        selectItem(listaTipoPoliza, dato.get("tipoPoliza"));
+        waitForComboValue(listaTipoPoliza, dato.get("tipoPoliza"));
     }
 
     public void seleccionarElementoDeLaLista(String elementoLista) {
@@ -113,20 +105,6 @@ public class NuevaPolizaPage extends PageUtil {
                 botonesProductos.get(i).shouldNotBeEnabled();
             }
         }
-    }
-
-    public void seleccionarCanal(String canal) {
-        waitFor(listaCanal);
-        this.desplegarElementoDeLaLista(listaCanal);
-        this.seleccionarElementoDeLaLista(canal);
-        waitForAbsenceOf("//li");
-    }
-
-    public void seleccionarElTipoDePoliza(String tipoPoliza) {
-        waitFor(listaTipoPoliza);
-        this.desplegarElementoDeLaLista(listaTipoPoliza);
-        this.seleccionarElementoDeLaLista(tipoPoliza);
-        waitForAbsenceOf("//li");
     }
 
     public void buscarCuenta(String numeroCuenta) {

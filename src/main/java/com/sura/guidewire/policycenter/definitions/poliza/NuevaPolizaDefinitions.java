@@ -23,19 +23,9 @@ public class NuevaPolizaDefinitions {
         nuevaPolizaSteps.buscarCuenta(numCuenta);
     }
 
-    @When("seleccione la organizacion <organizacion>")
-    public void seleccionarLaOrganizacion(@Named("organizacion") String organizacion){
-        nuevaPolizaSteps.seleccionarOrganizacion(organizacion);
-    }
-
-    @When("seleccione el canal <canal>")
-    public void seleccionarElCanal(@Named("canal") String canal){
-        nuevaPolizaSteps.seleccionarCanal(canal);
-    }
-
-    @When("seleccione el tipo de poliza <tipoPoliza> para autos")
-    public void seleccionarTipoDePoliza(@Named("tipoPoliza") String tipoPoliza){
-        nuevaPolizaSteps.seleccionarElTipoDePoliza(tipoPoliza);
+    @When("seleccione la organizacion, el canal y el tipo de poliza: $datosAutos")
+    public void seleccionarLaOrganizacion(ExamplesTable datosAutos){
+        nuevaPolizaSteps.seleccionarOrganizacion(datosAutos);
     }
 
     @Then("se debe visualizar la tabla de productos con los productos de Autos y Multiriesgo corporativo y los botones para elegir producto habilitados")
