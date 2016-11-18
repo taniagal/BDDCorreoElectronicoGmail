@@ -40,11 +40,6 @@ public class NuevaPolizaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void validarCamposDeLaVentanaNuevaCotizacion() {
-        nuevaPolizaPage.validarCamposDeLaVentanaNuevaCotizacion();
-    }
-
-    @Step
     public void validarBotonesDeLaTablaProductosHabilitados() {
         nuevaPolizaPage.validarBotonesHabilitadosPorProducto();
     }
@@ -57,11 +52,6 @@ public class NuevaPolizaSteps extends ScenarioSteps{
     @Step
     public void seleccionarElTipoDePoliza(String tipoPoliza) {
         nuevaPolizaPage.seleccionarElTipoDePoliza(tipoPoliza);
-    }
-
-    @Step
-    public void validarProductos(String productos, String tipoPoliza) {
-        nuevaPolizaPage.validarProductos(productos, tipoPoliza);
     }
 
     @Step

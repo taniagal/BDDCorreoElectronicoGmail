@@ -63,7 +63,7 @@ public class InformacionDePolizaMrcDefinitions {
                                                                        @Named("tipoPoliza") String tipoPoliza,
                                                                        @Named("producto") String producto) {
 
-        informacionDePolizaMrcSteps.ingresar_nueva_cotizacion(agente, organizacion, canal, tipoPoliza, producto);
+        informacionDePolizaMrcSteps.ingresar_nueva_cotizacion(agente, organizacion, canal, producto);
 
     }
 

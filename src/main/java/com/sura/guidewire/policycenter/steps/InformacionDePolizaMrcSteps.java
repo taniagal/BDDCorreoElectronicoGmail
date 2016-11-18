@@ -1,9 +1,8 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.DisponibilidadDetalleProductoPage;
-import com.sura.guidewire.policycenter.pages.InicioPage;
-import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
-import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
+import com.sura.guidewire.policycenter.pages.commons.InicioPage;
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -12,7 +11,6 @@ import org.jbehave.core.model.ExamplesTable;
 public class InformacionDePolizaMrcSteps extends ScenarioSteps {
 
     DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage;
-    NuevaPolizaPage nuevaPolizaPage;
 
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage(getDriver());
 
@@ -87,11 +85,10 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresar_nueva_cotizacion(String agente, String organizacion, String canal, String tipoPoliza, String producto) {
+    public void ingresar_nueva_cotizacion(String agente, String organizacion, String canal, String producto) {
         disponibilidadDetalleProductoPage.seleccionarAgente(agente);
         opcionesInformacionPolizaMrcPage.seleccionarOrganizacion(organizacion);
         opcionesInformacionPolizaMrcPage.seleccionarCanal(canal);
-        nuevaPolizaPage.seleccionarElTipoDePoliza(tipoPoliza);
         opcionesInformacionPolizaMrcPage.seleccionarProducto(producto);
     }
 

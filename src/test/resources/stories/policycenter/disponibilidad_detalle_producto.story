@@ -28,20 +28,20 @@ Examples:
 | C000888888 | DIRECTO | Autos    | PPAutos        | Bancolombia      | Televentas        |
 
 Scenario: Validar la organizacion, el canal y el tipo de poliza cuando el producto es Autos para las diferentes combinaciones
-Given que voy a buscar la cuenta <numCuenta>
+Meta: @manual
+Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And quiero expedir una poliza nueva
 And seleccione el agente <agente>
-When seleccione tipo de poliza <tipoPoliza> de la nueva cotizacion
-And seleccione el producto <producto> para expedir la poliza
+When seleccione el producto <producto> para expedir la poliza
 And seleccione la opcion informacion de poliza
 Then debo ver la organizacion <infoOrganizacion> seleccionada
 And debor ver el canal <infoCanal> seleccionado
 And debo ver el tipo de poliza <infoTipoPoliza> seleccionado
 
 Examples:
-| numCuenta  | agente  | organizacion | canal             | tipoPoliza | producto | infoTipoPoliza | infoOrganizacion | infoCanal         |
-| C000888888 | DIRECTO | Exito        | Exito             | Individual | Autos    | PPAutos        | Exito            | Exito             |
-| C000888888 | DIRECTO | GMAC         | GMAC              | Individual | Autos    | PPAutos        | GMAC             | GMAC              |
-| C000888888 | DIRECTO | Sura         | Autos + Soat      | Individual | Autos    | PPAutos        | Sura             | Autos + Soat      |
-| C000888888 | DIRECTO | Sura         | Canal Tradicional | Individual | Autos    | PPAutos        | Sura             | Canal Tradicional |
-| C000888888 | DIRECTO | Sura         | Televentas        | Individual | Autos    | PPAutos        | Sura             | Televentas        |
+| numCuenta  | agente  | organizacion | canal             | producto | infoTipoPoliza | infoOrganizacion | infoCanal         |
+| C000888888 | DIRECTO | Exito        | Exito             | Autos    | PPAutos        | Exito            | Exito             |
+| C000888888 | DIRECTO | GMAC         | GMAC              | Autos    | PPAutos        | GMAC             | GMAC              |
+| C000888888 | DIRECTO | Sura         | Autos + Soat      | Autos    | PPAutos        | Sura             | Autos + Soat      |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Autos    | PPAutos        | Sura             | Canal Tradicional |
+| C000888888 | DIRECTO | Sura         | Televentas        | Autos    | PPAutos        | Sura             | Televentas        |

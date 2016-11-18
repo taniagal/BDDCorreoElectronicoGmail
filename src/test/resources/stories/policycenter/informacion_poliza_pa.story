@@ -29,13 +29,16 @@ Scenario: Cambiar inicio de vigencia
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
 When seleccione el producto para expedir la poliza
+And seleccione la organizacion <organizacion>
+And seleccione el canal <canal>
+And seleccione el tipo de poliza <tipoPoliza> para autos
 And modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
 Then esta <fechaInicioVigencia> debe calcular de forma automatica la fecha de fin de vigencia, la cual depende del tipo de plazo
 
 
 Examples:
-|numCuenta     |fechaInicioVigencia|tipoPlazo |
-|C000888888    |07/15/2016         |Anual     |
+|numCuenta     |fechaInicioVigencia|tipoPlazo |organizacion|canal            |tipoPoliza   |
+|C000888888    |07/15/2016         |Anual     |Sura        |Canal Tradicional|PPAutos      |
 
 Scenario: Ingresar segundo tomador
 Given que voy a buscar la cuenta <numCuenta>
