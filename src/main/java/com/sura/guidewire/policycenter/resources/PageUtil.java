@@ -62,6 +62,7 @@ public class PageUtil extends PageObject {
         waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
         clickElement(element);
         waitUntil(WAIT_TIME_200);
+        element.clear();
         element.sendKeys(option);
         element.sendKeys(Keys.ENTER);
     }

@@ -57,12 +57,16 @@ public class DetallesDeUbicacionPage extends PageUtil {
     private WebElementFacade menuItemEscritorio;
     @FindBy(css = ".message")
     private WebElementFacade divMensaje;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
+    private WebElementFacade subMenuInformacionPoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
     private WebElementFacade comboBoxOrganizacion;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
     private WebElementFacade comboBoxCanal;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-triggerWrap']/tbody/tr/td/input")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-triggerWrap']/tbody/tr/td/input")
     private WebElementFacade comboBoxOrganizacionW;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
+    private WebElementFacade comboTipoPoliza;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarPopup;
 
@@ -119,13 +123,19 @@ public class DetallesDeUbicacionPage extends PageUtil {
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
-        comboBoxOrganizacion.waitUntilPresent();
-        selectItem(comboBoxOrganizacion, dato.get("organizacion"));
-        waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
-        waitUntil(WAIT_TIME_1000);
-        selectItem(comboBoxCanal, dato.get("canal"));
-        waitForComboValue(comboBoxCanal, dato.get("canal"));
         seleccionarProducto(dato.get("producto"));
+        if("Autos".equals(dato.get("producto"))) {
+            subMenuInformacionPoliza.waitUntilPresent().click();
+            waitForTextToAppear("Información de póliza");
+            comboBoxOrganizacion.waitUntilPresent();
+            selectItem(comboBoxOrganizacion, dato.get("organizacion"));
+            waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
+            waitUntil(WAIT_TIME_1000);
+            selectItem(comboBoxCanal, dato.get("canal"));
+            waitForComboValue(comboBoxCanal, dato.get("canal"));
+            selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
+            waitForComboValue(comboTipoPoliza, dato.get("tipoPoliza"));
+        }
     }
 
     public void irAUbicacion() {
