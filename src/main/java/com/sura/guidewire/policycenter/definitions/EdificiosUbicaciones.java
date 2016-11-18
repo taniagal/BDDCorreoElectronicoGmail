@@ -240,7 +240,6 @@ public class EdificiosUbicaciones {
     @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
     @Aliases(values = {
             "se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados",
-            "se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados"
     })
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
         List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
@@ -251,6 +250,18 @@ public class EdificiosUbicaciones {
         }
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
+
+    @Then("se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados")
+    public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacio(ExamplesTable mensajesEsperados) {
+        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
+
+        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
+            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
+            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
+        }
+        edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
+    }
+
 
     @Then("se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras $mensajesEsperados")
     public void entoncesValidarLosRiesgosConsutablesMostrandoLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
