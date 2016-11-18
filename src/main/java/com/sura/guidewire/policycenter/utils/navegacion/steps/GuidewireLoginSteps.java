@@ -16,24 +16,24 @@ public class GuidewireLoginSteps extends ScenarioSteps {
 
 
     @Step
-    public String validar_que_el_titulo_de_la_pagina_principal_sea_mis_actividads() {
+    public String validarQueElTituloDeLaPaginaPrincipalSeaMisActividads() {
         return loginPage.obtenerTituloPaginaPplAcceso();
     }
 
     @Step
-    public void abrir_navegador(WebDriver driver) {
+    public void abrirNavegador(WebDriver driver) {
         this.loginPage = new GuidewireLoginPages(driver);
         this.loginPage.open();
     }
 
     @Step
-    public void loguearse_a_policycenter_con_rol(String rolUsuario){
-        abrir_navegador(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
-        loginPage.ingresar_por_rol(rolUsuario);
+    public void loguearseAPolicycenterConRol(String rolUsuario){
+        abrirNavegador(SerenityWebdriverManager.inThisTestThread().getCurrentDriver());
+        loginPage.ingresarPorRol(rolUsuario);
     }
 
     @Step
-    public void loguearse_a_policycenter_como_su(String usuario, String contrasenia, String pais) {
+    public void loguearseAPolicycenterComoSu(String usuario, String contrasenia, String pais) {
         if (loginPage.elemento(GuidewireLoginPages.TXT_USUARIO_SEUS) == null && loginPage.elemento(GuidewireLoginPages.TXT_CONTRASENIA_SEUS) == null) {
             loginPage.enter("su").into(loginPage.elemento(GuidewireLoginPages.TXT_USUARIO));
             loginPage.enter("gw").into(loginPage.elemento(GuidewireLoginPages.TXT_CONTRASENIA));

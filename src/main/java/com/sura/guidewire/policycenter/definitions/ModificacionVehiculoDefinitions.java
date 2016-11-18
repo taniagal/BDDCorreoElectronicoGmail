@@ -22,7 +22,7 @@ public class ModificacionVehiculoDefinitions{
 
     @Given("se tiene una poliza expedida <numeroPoliza>")
     public void buscarPoliza(@Named("numeroPoliza") String numeroPoliza){
-        guidewire.ir_a_navegacion_superior().desplegar_menu_poliza().consultar_numero_de_poliza(numeroPoliza);
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDePoliza(numeroPoliza);
         modificacionInformacionPolizaPASteps.irAModificarInformacionPoliza();
         modificacionVehiculoSteps.ir_A_Modificar_Vehiculo();
     }

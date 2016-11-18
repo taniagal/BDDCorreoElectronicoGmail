@@ -53,8 +53,8 @@ public class EdificiosUbicaciones {
 
         guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
 
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
 
         try {
             polizaSteps.seleccionarBotonLlamadoEditarTransaccionDePoliza();

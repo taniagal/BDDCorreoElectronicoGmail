@@ -116,11 +116,6 @@ public class TableWidgetPage extends PageObject {
         }
     }
 
-    protected TableWidgetPage seleccionarDeTablaEnlace(String nombreDeEnlace) {
-        contenedorWE.findElement(By.linkText(nombreDeEnlace)).click();
-        return this;
-    }
-
     public void opcionDeCombo(String nombreDeOpcionDeCombo, String xpathDelCombo) {
 
         List<WebElement> opcionesDeCombo = getDriver().findElements(By.xpath(xpathDelCombo));

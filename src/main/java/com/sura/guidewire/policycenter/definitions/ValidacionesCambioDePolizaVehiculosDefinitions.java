@@ -22,7 +22,7 @@ public class ValidacionesCambioDePolizaVehiculosDefinitions {
 
     @Given("se ha realizado la cotizacion de la modificacion <cotizacion>")
     public void irALaCotizacion(@Named("cotizacion") String cotizacion) {
-        guidewire.ir_a_navegacion_superior().desplegar_menu_poliza().consultar_numero_de_subscripcion(cotizacion);
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDeSubscripcion(cotizacion);
     }
 
     @When("ingrese al detalle de la modificacion")
