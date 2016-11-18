@@ -43,7 +43,7 @@ Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y estado de actividad <estadoActividad>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
 |prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
-|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Antioquia|
 
 Examples:
 |usuario|estadoActividad|
@@ -55,7 +55,7 @@ Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y prioridad <filtroPrioridad>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
 |prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
-|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Antioquia|
 
 Examples:
 |usuario|filtroPrioridad|
@@ -66,7 +66,7 @@ Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro asignado a <usuario> y vencida <filtroVencida>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
 |prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
-|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Antioquia|
 
 Examples:
 |usuario|filtroVencida|
@@ -77,7 +77,7 @@ Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro asignado a <usuario>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
 |prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
-|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|>
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Antioquia|>
 
 Examples:
 |usuario|
@@ -88,7 +88,7 @@ Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro numero de poliza<numeroPoliza>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
 |prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
-|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Antioquia|
 
 Examples:
 |numeroPoliza|
@@ -99,7 +99,7 @@ Given que me encuentro en la busqueda de actividades
 When quiera realizar la busqueda de actividades por el filtro numero de cuenta<numeroCuenta>
 Then me debe listar la siguiente informacion para  las actividades asociadas al filtro de busqueda ingresado:
 |prioridad|estadoActividad|asunto|id|titularCuenta|producto|asignadoPor|estado|
-|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Kentucky|
+|Normal|Abierta|Dorian Eastmond Activity|C001888888|DORIAN STIWAR EASTMOND PULGARIN|||Antioquia|
 
 Examples:
 |numeroCuenta|

@@ -1,9 +1,9 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.google.common.base.Function;
-import com.sura.guidewire.policycenter.util.PageUtil;
-import com.sura.guidewire.policycenter.util.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
-import com.sura.guidewire.policycenter.util.navegacion.util.widget.TableWidgetPage;
+import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
+import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -181,7 +181,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
-        agregarNuevaUbicacion("Colombia", "Antioquia", "MEDELLIN", "CR 65 45 45", "Acabado de productos textiles");
+        agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
     }
 
     public void removerRiesgos(){
