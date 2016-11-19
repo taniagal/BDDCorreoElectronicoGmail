@@ -138,6 +138,11 @@ public class PageUtil extends PageObject {
         waitUntil(WAIT_TIME_2000);
     }
 
+    public void desplegarElementoDeLista(WebElementFacade elementoDeLaLista) {
+        waitUntil(WAIT_TIME_3000);
+        elementoDeLaLista.waitUntilPresent().click();
+    }
+
     /**
      * Crea numero de cedula
      * @return numero de cedula de 8 digitos

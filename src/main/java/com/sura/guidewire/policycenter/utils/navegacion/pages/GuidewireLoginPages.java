@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
-public class GuidewireLoginPages extends PageUtil implements Serializable{
+public class GuidewireLoginPages extends PageUtil{
 
     @FindBy(xpath = ".//*[@id='country']")
     private WebElementFacade pais;
@@ -46,7 +46,6 @@ public class GuidewireLoginPages extends PageUtil implements Serializable{
     public static final String BTN_LOGIN_SEUS = "//input[@type='submit']";
     public static final String BTN_LOGIN = "//span[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']";
     public static final String MNU_CONTACTO = "//span[@id='TabBar:ContactTab-btnInnerEl']";
-
     private static final int CONSTANTE_5 = 5;
     private static final int CONSTANTE_250 = 250;
 
@@ -79,7 +78,6 @@ public class GuidewireLoginPages extends PageUtil implements Serializable{
         } catch (Exception e) {
             LOGGER.info("Error desconocido en: NuevaCotizacionPage.elemento Elemento: " + xpath + "TRACE: " + e);
         }
-
         return elemento;
     }
 
@@ -104,16 +102,9 @@ public class GuidewireLoginPages extends PageUtil implements Serializable{
     }
 
 
-    public void ingresar_por_rol(String rol) {
-        LOGGER.info("INICIO GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
+    public void ingresarPorRol(String rol) {
+        LOGGER.info("INICIO GuidewireLoginPages.ingresarPorRol( " + rol + ")");
         if ("Asesor".equals(rol)) {
-            setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
-            if (!findAll(TXT_USUARIO).isEmpty()) {
-                enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
-                enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
-                elemento(GuidewireLoginPages.BTN_LOGIN).click();
-            }
-            resetImplicitTimeout();
             setImplicitTimeout(0, TimeUnit.SECONDS);
             if (!mnuContact.isPresent()) {
                 if (usuario1.isPresent()) {
@@ -136,7 +127,7 @@ public class GuidewireLoginPages extends PageUtil implements Serializable{
             resetImplicitTimeout();
         }
         waitForPresenceOf(MNU_CONTACTO);
-        LOGGER.info("FIN GuidewireLoginPages.ingresar_por_rol( " + rol + ")");
+        LOGGER.info("FIN GuidewireLoginPages.ingresarPorRol( " + rol + ")");
     }
 }
 

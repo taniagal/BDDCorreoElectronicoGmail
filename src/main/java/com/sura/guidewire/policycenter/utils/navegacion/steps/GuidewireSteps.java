@@ -13,12 +13,12 @@ public class GuidewireSteps extends ScenarioSteps {
     @Steps MenuPolizaSteps menuPolizaSteps;
 
     @Step
-    public GuidewireSteps ir_a_navegacion_superior(){
+    public GuidewireSteps irANavegacionSuperior(){
         return this;
     }
 
     @Step
-    public MenuPolizaSteps desplegar_menu_poliza(){
+    public MenuPolizaSteps desplegarMenuPoliza(){
         guidewirePage.barraNavegacion().deplegarMenu(MenuNavegacionSuperiorEnum.POLIZA);
         return menuPolizaSteps;
     }

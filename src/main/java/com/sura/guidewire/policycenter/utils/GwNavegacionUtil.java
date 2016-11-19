@@ -1,26 +1,19 @@
 package com.sura.guidewire.policycenter.utils;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.steps.StepInterceptor;
 import org.jbehave.core.model.ExamplesTable;
 import org.jbehave.core.steps.Parameters;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
+
+import java.util.*;
 
 public final class GwNavegacionUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-    private static final int CONSTANTE_60 = 60;
 
     private GwNavegacionUtil(){
     }
@@ -90,11 +83,6 @@ public final class GwNavegacionUtil {
             return null;
         }
 
-    }
-
-    public static void esperarElementoSeaClickable(WebDriver driver, WebElement element) {
-        new WebDriverWait(driver, CONSTANTE_60).ignoring(NoSuchElementException.class)
-                .until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public static List<String> obtenerTablaDeEjemplosDeUnaColumna(ExamplesTable tablaUnaColumna){

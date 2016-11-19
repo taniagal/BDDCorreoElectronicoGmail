@@ -1,14 +1,18 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
+import com.sura.guidewire.policycenter.pages.colectivas.NuevaPolizaPage;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
 
-public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
+import static com.sura.guidewire.policycenter.pages.colectivas.NuevaPolizaPage.*;
+
+public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -22,7 +26,9 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
     private static String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
 
 
-    private NuevaPolizaPage nuevaPolizaPage;
+    public AgregarArticuloEdificiosyUbicacionesWidget(WebDriver driver) {
+        super(driver);
+    }
 
     public void seleccionarCheck(String xpath){
         WebElementFacade chk = null;
@@ -73,6 +79,6 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageObject {
     }
     public void desplegarListaTipoBeneficiario(){
         WebElementFacade listaTipoBeneficiario = findBy(LISTA_TIPO_BENEFICIARIO);
-        nuevaPolizaPage.desplegarElementoDeLaLista(listaTipoBeneficiario);
+        desplegarElementoDeLista(listaTipoBeneficiario);
     }
 }

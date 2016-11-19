@@ -63,8 +63,8 @@ public class Poliza {
 
         guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
 
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDePoliza(numPoliza);
 
         LOGGER.info("Poliza.dadoQueEstoyEnResumenDeLaPolizaMRCConNumeroDePoliza");
     }
@@ -99,8 +99,8 @@ public class Poliza {
         // TODO: 27/07/2016 Capturar el rol desde el gherkin en i am Asesor
         guidewireLogin.dadoQueAccedoAPolicyCenterConRol("Asesor");
 
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
 
         assertThat(esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), Is.is(Matchers.equalTo(true)));
 
@@ -170,8 +170,8 @@ public class Poliza {
     @When("rescinda la cancelacion de la poliza <numPoliza>")
     public void cuandoRescindaLaCancelacion(String numPoliza){
         LOGGER.info("Poliza.cuandoRescindaLaCancelacion");
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDePoliza(numPoliza);
         polizaSteps.seleccionarBotonAcciones().seleccionar_boton_rescindir_cancelacion().seleccionar_poliza_a_rescindir();
         polizaSteps.seleccionarOpcionCierre();
         polizaSteps.seleccionarOpcionRescindirCancelacion();
@@ -180,8 +180,8 @@ public class Poliza {
     @When("retire la cancelacion de la subscripcion <numSubscripcion>")
     public void cuandoRetireaLaSubscripcion(String numSubscripcion){
         LOGGER.info("Poliza.cuandoRetireaLaSubscripcion");
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
         polizaSteps.seleccionarOpcionCierre();
         polizaSteps.seleccionarOpcionRetirarTransaccion();
         polizaSteps.confirmarCancelacion();
@@ -190,8 +190,8 @@ public class Poliza {
     @When("ingreso al resumen de la poliza")
     public void cuandoIngreseAlResumenDeLaPoliza(String numPoliza){
         LOGGER.info("Poliza.cuandoIngreseAlResumenDeLaPoliza");
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_poliza(numPoliza);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDePoliza(numPoliza);
     }
 
 

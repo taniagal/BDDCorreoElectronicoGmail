@@ -30,16 +30,16 @@ public class IngresoAPolicyCenterDefinitions {
     @When("Digíto usuario $usuario y contraseña $contrasenia, país $pais y enviar las credenciales")
     public void ingresarComoSuperUsuarioPolicyCenter(String usuario, String contrasenia, String pais){
         login.getLoginPage().open();
-        login.loguearse_a_policycenter_como_su(usuario, contrasenia, pais);
+        login.loguearseAPolicycenterComoSu(usuario, contrasenia, pais);
     }
     @Then("Debería acceder a PolicyCenter y ver página $tituloPagina")
     public void ingresarAPolicyCenter(String tituloPagina){
-        SeleneseTestNgHelper.assertEquals(tituloPagina, login.validar_que_el_titulo_de_la_pagina_principal_sea_mis_actividads());
+        SeleneseTestNgHelper.assertEquals(tituloPagina, login.validarQueElTituloDeLaPaginaPrincipalSeaMisActividads());
     }
 
     @Given("que ingrese a PolicyCenter como usuario $rolUsuario")
     public void dadoQueAccedoAPolicyCenterConRol(@Named("rolUsuario") String rolUsuario) {
-        login.loguearse_a_policycenter_con_rol(rolUsuario);
+        login.loguearseAPolicycenterConRol(rolUsuario);
         LOGGER.info("IngresoAPolicyCenterDefinitions.dadoQueAccedoAPolicyCenterConRol");
 
     }

@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.utils.navegacion.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import com.sura.guidewire.policycenter.utils.navegacion.util.widget.MenuBarNavWidgetPage;
+
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
@@ -50,13 +50,12 @@ public class BuscarNavBarPages extends PageObject {
     }
 
 
-    public MenuBarNavWidgetPage seleccionarOpcion() {
+    public void seleccionarOpcion() {
         findBy(MENU_BUSCAR).waitUntilVisible();
         WebElement menuBuscar = getDriver().findElement(By.xpath(MENU_BUSCAR));
         element(menuBuscar).setWindowFocus();
         element(menuBuscar).sendKeys(Keys.ARROW_DOWN);
         fluent().await().atMost(WAIT_TIME_2, TimeUnit.SECONDS);
-        return switchToPage(MenuBarNavWidgetPage.class);
     }
 
     public void clicenOpcionCuentas() {
