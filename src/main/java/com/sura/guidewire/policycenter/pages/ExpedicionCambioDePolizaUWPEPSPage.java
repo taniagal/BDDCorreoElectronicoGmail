@@ -57,7 +57,7 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends PageUtil{
     }
 
     public void emitirPoliza() {
-        waitUntil(WAIT_TIME_2000);
+        waitUntil(WAIT_TIME_3000);
         if(botonExpedirPoliza.isCurrentlyVisible()){
             withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
         }else if(botonExpedirPolizaModificacion.isCurrentlyVisible()){

@@ -7,9 +7,11 @@ Como usuario de Policy Center
 Quiero poder gestionar los UW que se generen por bloqueo en la linea de multiriesgo corporativo
 
 Scenario: Validar el valor ingresado superior al 10% en el sublimite de la cobertura deterioro de bienes refrigerados por rotura de maquinaria en la cotizacion
-Meta: @manual
-Given estoy realizando una cotizacion para el producto de mrc
-When intente ingresar las entradas de las diferentes coberturas
+GivenStories: stories/policycenter/login_policy.story
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When quiera agregar un tomador adicional que es riesgo consultable <cedula>
+And intente ingresar una nueva ubicacion
+And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO                       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios                           |                     |                  | Valor Reconstrucción             | 100            |
 | Información de Artículos | Edificios                           |                     | Danos materiales | Valor asegurado danos materiales | 100            |
@@ -23,7 +25,7 @@ Then se debe generar un bloqueo en la poliza, mostrar el siguiente mensaje
 |La sumatoria del valor asegurable de todos los artículos de maquinaria y equipo contratistas de toda la póliza debe ser menor o igual al 10% del valor asegurable total de todos los artículos de la póliza.|
 
 Examples:
-||
+|numSubscripcion|
 ||
 
 Scenario: Validar el valor ingresado superior al 10% en el sublimite de la cobertura deterioro de bienes refrigerados por rotura de maquinaria en la expedicion

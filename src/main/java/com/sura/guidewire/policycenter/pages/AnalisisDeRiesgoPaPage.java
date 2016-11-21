@@ -1,5 +1,6 @@
-package com.sura.policycenter.selenium.pages;
+package com.sura.guidewire.policycenter.pages;
 
+import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -13,7 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class AnalisisDeRiesgoPaPage extends PageObject{
+public class AnalisisDeRiesgoPaPage extends PageUtil{
 
     public AnalisisDeRiesgoPaPage (WebDriver driver){
         super(driver);
@@ -23,8 +24,16 @@ public class AnalisisDeRiesgoPaPage extends PageObject{
         waitForTextToAppear("¿Está seguro de que desea expedir esta póliza?");
         Actions act = new Actions(getDriver());
         act.sendKeys(Keys.ENTER).build().perform();
-        //WebElementFacade botonAceptarExpedicion = findBy(".//div[7]/div[3]/div/div/a/span/span/span");
-        //withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonAceptarExpedicion).click();
+        WebElementFacade mensajeRequisitos = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div");
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(mensajeRequisitos).shouldBeVisible();
+        if(mensajeRequisitos.isCurrentlyVisible()){
+            WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
+            botonBorrar.click();
+            waitUntil(WAIT_TIME_1500);
+            WebElementFacade botonExpedir = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']");
+            withTimeoutOf(30,TimeUnit.SECONDS).waitFor(botonExpedir).click();
+            act.sendKeys(Keys.ENTER).build().perform();
+        }
     }
 
     public void validarBloqueoExpedicion(ExamplesTable mensaje) {
