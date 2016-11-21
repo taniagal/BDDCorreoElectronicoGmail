@@ -23,7 +23,8 @@ Examples:
 
 
 Scenario: Cargar archivo de tasas - exportar
-Meta: @lote3 @manual
+Meta:
+@manual
 Given estoy realizando una cotizacion
 When Cuando se vaya a realizar la carga del archivo
 Then se debe poder exportar la estructura del archivo para luego ser cargada
@@ -34,7 +35,8 @@ Examples:
 
 
 Scenario: Cargar archivo de tasas - importar
-Meta: @lote3 @manual
+Meta:
+@manual
 Given estoy realizando una cotizacion
 When Cuando se vaya a realizar la carga del archivo
 Then se debe poder cargar el archivo donde se tienen definidas las tasas para la poliza
