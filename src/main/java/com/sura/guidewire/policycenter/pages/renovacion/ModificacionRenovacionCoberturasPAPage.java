@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import javax.swing.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -28,11 +29,11 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     private WebElementFacade labelDanosCarro;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0']")
     private WebElementFacade labelHurtoCarro;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup-legendTitle']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup-legendTitle']")
     private WebElementFacade labelResponsabilidadCivil;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup-legendTitle']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup-legendTitle']")
     private WebElementFacade labelDanos;
-    @FindBy(xpath = "//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup-legendTitle']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup-legendTitle']")
     private WebElementFacade labelHurto;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:EditPolicy']")
     private WebElementFacade botonEditarTransaccionPoliza;
@@ -66,6 +67,11 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     private WebElementFacade lblMensaje;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     private WebElementFacade btnBorrar;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
+    private WebElementFacade btnSiguiente;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
+    private WebElementFacade lblMensajeFecha;
+
 
     public ModificacionRenovacionCoberturasPAPage(WebDriver driver) {
         super(driver);
@@ -142,7 +148,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     }
 
     public void borrarEspacioTrabajo() {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(btnBorrar).click();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(btnBorrar).click();
         PageUtil espera = new PageUtil(getDriver());
         espera.waitUntil(WAIT_TIME_2000);
     }
