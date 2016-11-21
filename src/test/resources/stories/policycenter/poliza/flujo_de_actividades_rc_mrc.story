@@ -68,3 +68,41 @@ Then se debe generar una actividad por cada DNI o direccion diferente que sea ri
 Examples:
 | numPoliza     | rolUsuario | cedula  | tipoBeneficiario |
 | TEST_99999999 | Asesor     | 9876543 | Asegurado        |
+
+
+Scenario: 4 Validar cierre automatico de la actividad
+
+Meta: @manual
+@Story CDSEG-
+@URL https://jira.suramericana.com.co/browse/CDSEG-3124
+@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
+@Sprint 8
+
+
+Given  que se proceso el formulario por parte de los diferentes comites
+When se obtenga respuesta afirmativa o negativa
+Then se debe completar automaticamente la actividad con la respuesta
+
+Examples:
+| |
+| |
+
+
+Scenario: 5 Validar que se genere actividad al expedidor
+
+
+Meta: @manual
+@Story CDSEG-
+@URL https://jira.suramericana.com.co/browse/CDSEG-3124
+@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
+@Sprint 8
+
+
+Given  que se proceso el formulario por parte de los diferentes comites
+When se obtenga respuesta afirmativa o negativa
+Then se debe completar automaticamente la actividad con la respuesta
+
+Examples:
+| |
+| |
+
