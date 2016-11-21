@@ -185,6 +185,7 @@ public class PageUtil extends PageObject {
                 waitUntil(WAIT_TIME_2000);
                 clickElement(element);
                 LOGGER.info("WebDriverException " + e);
+                LOGGER.info(e.getStackTrace().toString());
             }
     }
 }

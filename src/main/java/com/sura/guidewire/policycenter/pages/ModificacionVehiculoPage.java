@@ -30,13 +30,11 @@ public class ModificacionVehiculoPage extends PageUtil {
     }
 
     public void irAModificarVehiculo() {
-        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
         WebElementFacade tituloInformacionPoliza = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:ttlBar']");
         waitFor(tituloInformacionPoliza).shouldBePresent();
         waitFor(botonSiguiente).click();
         WebElementFacade tituloAsegurados = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
         waitFor(tituloAsegurados).shouldBePresent();
-        tasaUnicaPage.llenarInfoPoliza();
         waitFor(botonSiguiente).click();
     }
 

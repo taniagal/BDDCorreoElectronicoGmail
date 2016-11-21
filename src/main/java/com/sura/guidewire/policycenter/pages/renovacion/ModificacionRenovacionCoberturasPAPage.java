@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -8,17 +9,12 @@ import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
-
-    private final Actions act = new Actions(getDriver());
-
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PALine']/div")
     private WebElementFacade itemCoberturasAuto;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']")
@@ -84,6 +80,8 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     }
 
     public void irAPantallaCoberturas() {
+        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
+        tasaUnicaPage.llenarInfoPoliza();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
     }
 
@@ -102,7 +100,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     public void editarTransaccionPoliza() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
         waitForTextToAppear("Si se edita esta transacción de la póliza, se invalida la cotización actual");
-        act.sendKeys(Keys.ENTER).build().perform();
+        actions.sendKeys(Keys.ENTER).build().perform();
         waitUntil(WAIT_TIME_1500);
     }
 
