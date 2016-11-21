@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -28,6 +29,8 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
 
 
     public void irAPantallairARevisionDePolizaSinValidacionFecha() {
+        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
+        tasaUnicaPage.llenarInfoPoliza();
         String xpathItemRevisionPoliza = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyReview']/div";
         WebElementFacade itemRevisionPoliza = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).find(By.xpath(xpathItemRevisionPoliza));
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemRevisionPoliza).click();

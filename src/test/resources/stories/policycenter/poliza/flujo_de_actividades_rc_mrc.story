@@ -1,11 +1,4 @@
 Flujo De Actividades Rc Mrc
-
-Narrative:
-Como usuario de policy center quiero poder solicitar autorización a los comites de Riesgos consultables
-quiero poder solicitar autorización a los comites de Riesgos consultables
-para poder cotizar o expedir una poliza
-
-
 Meta:
 @lote1
 @Story CDSEG-
@@ -13,12 +6,20 @@ Meta:
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
 @Sprint 9
 
+Narrative:
+Como usuario de policy center quiero poder solicitar autorización a los comites de Riesgos consultables
+quiero poder solicitar autorización a los comites de Riesgos consultables
+para poder cotizar o expedir una poliza
+
+
+
 
 Scenario: 1 Validar que se genere actividad de riesgo consultable al cotizar una poliza
-
-Given que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>
-When quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>
-And ingrese a edificios y ubicaciones
+GivenStories: stories/policycenter/login_policy.story
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto               |canal            |
+|C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
+When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion
 And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                            | VALOR_ENTRADAS |
@@ -30,8 +31,8 @@ Then se debe generar una actividad por cada DNI o direccion diferente que sea ri
 
 
 Examples:
-| numCuenta  | agente                                       | organizacion | canal             | tipoPoliza | producto                | rolUsuario | cedula  | tipoBeneficiario |
-| C000888888 | Armstrong - Cayman Captive Srvs > 501-002546 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | 9876543 | Asegurado        |
+| rolUsuario | cedula  | tipoBeneficiario |
+| Asesor     | 9876543 | Asegurado        |
 
 
 Scenario: 2 Validar que se genere actividad de riesgo consultable al modificar una poliza

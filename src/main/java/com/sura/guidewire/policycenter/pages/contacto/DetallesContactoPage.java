@@ -163,6 +163,7 @@ public class DetallesContactoPage extends PageUtil {
 
     public void setNombre(String segundoNombre) {
         campoTxtSegundoNombre.waitUntilPresent();
+        waitUntil(WAIT_TIME_800);
         campoTxtSegundoNombre.clear();
         campoTxtSegundoNombre.sendKeys(segundoNombre);
         dtlContact[CONSTANTE_2] = segundoNombre;

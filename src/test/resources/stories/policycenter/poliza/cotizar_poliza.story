@@ -18,17 +18,11 @@ And validar que se autocompleta el campo nombre y solo aparece el nombre del age
 
 When he seleccionado en el nombre del agente DELIMA MEDELLIN
 And se muestre la fecha de efecto de la cotizacion
-And seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
 Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
 Then se mostraran en orden alfabetico los:
 |productos              |
 |Autos                  |
 |Multiriesgo corporativo|
-
-Examples:
-|organizacion|canal            |
-|Sura        |Canal Tradicional|
 
 Scenario: Validaciones como precondicion en la realizacion de una cotizacion para el Producto comercial buscando
 por numero de cuenta y persona natural
@@ -45,14 +39,8 @@ respectivo en el campo codigo de agente
 
 When he seleccionado en el nombre del agente DELIMA MEDELLIN
 And se muestre la fecha de efecto de la cotizacion
-And seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
 Then se mostrara por defecto la fecha de hoy en la que se esta cotizando y no podra ser editable
 Then se mostraran en orden alfabetico los:
 |productos              |
 |Autos                  |
 |Multiriesgo corporativo|
-
-Examples:
-|organizacion|canal            |
-|Sura        |Canal Tradicional|

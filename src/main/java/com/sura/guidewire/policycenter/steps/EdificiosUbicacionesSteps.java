@@ -2,7 +2,7 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.AgregarArticuloEdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.pages.EdificiosyUbicacionesWidget;
-import com.sura.guidewire.policycenter.pages.colectivas.NuevaPolizaPage;
+import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;

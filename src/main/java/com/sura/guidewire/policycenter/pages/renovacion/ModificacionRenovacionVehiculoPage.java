@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -46,6 +47,8 @@ public class ModificacionRenovacionVehiculoPage extends PageUtil {
     }
 
     public void irAVehiculos(){
+        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
+        tasaUnicaPage.llenarInfoPoliza();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
         waitUntil(WAIT_TIME_1500);
         itemVehiculos.click();

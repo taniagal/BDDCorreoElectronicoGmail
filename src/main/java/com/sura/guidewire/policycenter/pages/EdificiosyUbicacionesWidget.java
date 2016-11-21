@@ -165,8 +165,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(WAIT_TIME_2).seconds();
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
-        findBy("//div[@class='message']").waitUntilVisible();
-        findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
         waitForTextToAppear("Edificios y ubicaciones");
     }
 
