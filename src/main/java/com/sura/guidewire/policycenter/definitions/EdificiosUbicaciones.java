@@ -3,9 +3,9 @@ package com.sura.guidewire.policycenter.definitions;
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
-import com.sura.guidewire.policycenter.util.AssertUtil;
-import com.sura.guidewire.policycenter.util.navegacion.definitions.IngresoAPolicyCenterDefinitions;
-import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireSteps;
+import com.sura.guidewire.policycenter.utils.AssertUtil;
+import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
@@ -53,8 +53,8 @@ public class EdificiosUbicaciones {
 
         guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
 
-        guidewire.ir_a_navegacion_superior()
-                .desplegar_menu_poliza().consultar_numero_de_subscripcion(numSubscripcion);
+        guidewire.irANavegacionSuperior()
+                .desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
 
         try {
             polizaSteps.seleccionarBotonLlamadoEditarTransaccionDePoliza();
@@ -89,6 +89,8 @@ public class EdificiosUbicaciones {
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
 
+
+
     @When("ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula,String tipoBeneficiario) {
 
@@ -117,12 +119,77 @@ public class EdificiosUbicaciones {
 
     }
 
+    @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
+    public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula,String tipoBeneficiario) {
+
+        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion_en_cambio_de_poliza();
+        int index = 0;
+        for (Map<String, String> entradaCobertura : entradatable.getRows()) {
+            index++;
+            String tab = entradaCobertura.get("TAB");
+            String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
+            String cobertura = entradaCobertura.get("COBERTURA");
+            String entrada = entradaCobertura.get("ENTRADAS");
+            boolean esOtroArticulo = false;
+            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))) {
+                esOtroArticulo = true;
+            }
+            boolean esUltimaFilaDeExampleTable = index == entradatable.getRows().size();
+            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
+
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
+        }
+        edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
+        edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
+
+        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
+        edificiosUbicacionesSteps.seleccionar_boton_cotizar();
+
+    }
+
+    @When("ingrese las entradas en renovacion de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
+    public void cuandoIntenteIngresarLasEntradasEnRenovacionDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula,String tipoBeneficiario) {
+
+        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion_en_renovacion_de_poliza();
+        int index = 0;
+        for (Map<String, String> entradaCobertura : entradatable.getRows()) {
+            index++;
+            String tab = entradaCobertura.get("TAB");
+            String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
+            String cobertura = entradaCobertura.get("COBERTURA");
+            String entrada = entradaCobertura.get("ENTRADAS");
+            boolean esOtroArticulo = false;
+            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))) {
+                esOtroArticulo = true;
+            }
+            boolean esUltimaFilaDeExampleTable = index == entradatable.getRows().size();
+            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
+
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
+        }
+        edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
+        edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
+
+        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
+        edificiosUbicacionesSteps.seleccionar_boton_cotizar();
+
+    }
+
+
     //// TODO: 21/10/2016 Construilo con example table
     @When("intente ingresar una nueva ubicacion")
     public void cuandoIntenteIngresarUnaNuevaUbicacion(){
         edificiosUbicacionesSteps.remover_riesgos();
         edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
     }
+
+    @When("intente ingresar una nueva ubicacion en renovacion de poliza")
+    public void cuandoIntenteIngresarUnaNuevaUbicacionEnRenovacionDePoliza(){
+        edificiosUbicacionesSteps.seleccionar_boton_editar_transaccion_de_poliza();
+        edificiosUbicacionesSteps.remover_riesgos();
+        edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
+    }
+
 
     @When("haga clic en el boton Aceptar")
     public void cuandoHagaClicEnElBotonAceptar() {
@@ -173,7 +240,6 @@ public class EdificiosUbicaciones {
     @Then("se debe validar que ningun sublimite de las coberturas anteriores sobrepase el valor asegurado de la cobertura de sustraccion con violencia (sustraccion principal) $mensajesEsperados")
     @Aliases(values = {
             "se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales). $mensajesEsperados",
-            "se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados"
     })
     public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacioDeTrabajo(ExamplesTable mensajesEsperados) {
         List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
@@ -184,6 +250,18 @@ public class EdificiosUbicaciones {
         }
         edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
     }
+
+    @Then("se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados")
+    public void entoncesValidarQueAparezcanLosSiguientesMensajesEnElEspacio(ExamplesTable mensajesEsperados) {
+        List<String> mensajesWSList = new ArrayList<>(polizaSteps.espacioDeTrabajo());
+
+        for (Map<String, String> mensajes : mensajesEsperados.getRows()) {
+            String mensaje = mensajes.get("MENSAJES_WORKSPACE");
+            MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
+        }
+        edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
+    }
+
 
     @Then("se deben validar los riesgos consultables mostrando los siguientes mensaje por cada una de las figuras $mensajesEsperados")
     public void entoncesValidarLosRiesgosConsutablesMostrandoLosSiguientesMensajes(ExamplesTable mensajesEsperados) {

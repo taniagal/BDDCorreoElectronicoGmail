@@ -20,7 +20,7 @@ public class AnalisisDeRiesgoPaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void validar_Que_Se_Genere_UWIssue(ExamplesTable UWIssue) {
-        analisisDeRiesgo.validarGeneracionUWIssue(UWIssue);
+    public void validar_Que_Se_Genere_UWIssue(ExamplesTable uwissue) {
+        analisisDeRiesgo.validarGeneracionUWIssue(uwissue);
     }
 }

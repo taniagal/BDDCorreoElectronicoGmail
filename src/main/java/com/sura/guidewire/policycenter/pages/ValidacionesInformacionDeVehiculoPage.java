@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -132,9 +132,16 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     private void waitForCampoTxtValorAsegurado(Map<String, String> vehiculo) {
         try {
-            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
-        } catch (ElementNotVisibleException e) {
-            LOGGER.info("ElementNotVisible at ValidacionesInformacionDeVehiculo Page 140 " + e);
+            try {
+                withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
+            } catch (ElementNotVisibleException e) {
+                LOGGER.info("ElementNotVisible at ValidacionesInformacionDeVehiculo Page 140 " + e);
+            }
+        }catch (TimeoutException e){
+            LOGGER.info("TimeoutException " + e);
+            selectItem(comboBoxModelo,"2010");
+            waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2010"));
+            seleccionarComboBoxModelo(vehiculo);
         }
     }
 

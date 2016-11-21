@@ -55,7 +55,6 @@ public class Precondiciones extends MetodosComunes{
     }
 
     public void cargarDatos() throws Exception {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
         driver.findElement(By.xpath(".//input[@id='QuickJump-inputEl']")).sendKeys(Keys.ALT,Keys.SHIFT, "t");
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']"))).isDisplayed();
         driver.findElement(By.xpath(".//*[@id='InternalToolsTabBar:UnsupportedToolsTab-btnInnerEl']")).click();
@@ -84,7 +83,7 @@ public class Precondiciones extends MetodosComunes{
             driver.findElement(By.xpath(".//*[@id='lower']/input")).click();
         }
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='DesktopActivities:DesktopActivitiesScreen:0']"))).isDisplayed();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='TabBar:PolicyTab-btnWrap']"))).isDisplayed();
     }
 
     public void elegirLenguaje() throws Exception {

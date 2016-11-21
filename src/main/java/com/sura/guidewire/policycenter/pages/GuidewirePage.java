@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.navegacion.widget.INavegacionSuperiorWidget;
+import com.sura.guidewire.policycenter.utils.navegacion.widget.INavegacionSuperiorWidget;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.Managed;

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.contacto;
 
-import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireLoginSteps;
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireLoginSteps;
 import com.sura.guidewire.policycenter.steps.cuenta.CuentaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;

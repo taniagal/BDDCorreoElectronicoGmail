@@ -1,6 +1,10 @@
 Analisis De Riesgo Mrc
 
-Meta:
+Meta: @lote1
+
+@issue #CDSEG-993
+@tag automator: eliana_alvarez
+@Sprint 9
 
 Narrative:
 Como usuario de Policy Center

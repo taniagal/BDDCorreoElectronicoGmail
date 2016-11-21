@@ -1,8 +1,8 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
 
-import com.sura.guidewire.policycenter.util.PageUtil;
-import com.sura.guidewire.policycenter.util.GwNavegacionUtil;
+import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.colectivas;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -11,7 +11,6 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 import java.util.Map;
@@ -43,7 +42,6 @@ public class NuevaPolizaPage extends PageUtil {
 
 
     private List<WebElement> filas;
-    Actions acciones = new Actions(getDriver());
 
     public NuevaPolizaPage(WebDriver driver) {
         super(driver);
@@ -51,7 +49,7 @@ public class NuevaPolizaPage extends PageUtil {
 
     public void desplegarElementoDeLaLista(WebElementFacade elementoDeLaLista) {
         waitUntil(WAIT_TIME_3000);
-        acciones.click(elementoDeLaLista).build().perform();
+        actions.click(elementoDeLaLista).build().perform();
     }
 
     public void desplegarListaDeOrganizaciones() {

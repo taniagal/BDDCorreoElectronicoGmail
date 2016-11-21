@@ -1,7 +1,10 @@
 package com.sura.guidewire.policycenter.pages;
 
+<<<<<<< HEAD:src/main/java/com/sura/guidewire/policycenter/pages/AnalisisDeRiesgoPaPage.java
 import com.sura.guidewire.policycenter.util.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
+=======
+>>>>>>> develop:src/main/java/com/sura/guidewire/policycenter/pages/AnalisisDeRiesgoPaPage.java
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -16,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 public class AnalisisDeRiesgoPaPage extends PageUtil{
 
-    public AnalisisDeRiesgoPaPage (WebDriver driver){
+    public AnalisisDeRiesgoPaPage(WebDriver driver) {
         super(driver);
     }
 
@@ -39,17 +42,17 @@ public class AnalisisDeRiesgoPaPage extends PageUtil{
     public void validarBloqueoExpedicion(ExamplesTable mensaje) {
         Map<String, String> mensajeBloqueo = mensaje.getRows().get(0);
         WebElementFacade labelBloqueo = findBy(".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']");
-        withTimeoutOf(40,TimeUnit.SECONDS).waitFor(labelBloqueo).shouldBeVisible();
+        withTimeoutOf(40, TimeUnit.SECONDS).waitFor(labelBloqueo).shouldBeVisible();
         WebElementFacade grupoMensajes = findBy(".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']");
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensajeBloqueo.get("mensaje")));
     }
 
-    public void validarGeneracionUWIssue(ExamplesTable UWIssue) {
-        Map<String, String> UWIssues = UWIssue.getRows().get(0);
+    public void validarGeneracionUWIssue(ExamplesTable uwissue) {
+        Map<String, String> UWIssues = uwissue.getRows().get(0);
         WebElementFacade itemAnalisisRiesgo = findBy(".//*[@id='SubmissionWizard:RiskAnalysis']/div/span");
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(itemAnalisisRiesgo).click();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(itemAnalisisRiesgo).click();
         WebElementFacade labelAnalisisRiesgo = findBy(".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:0']");
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelAnalisisRiesgo).shouldBeVisible();
+        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(labelAnalisisRiesgo).shouldBeVisible();
         WebElementFacade grupoUWIssues = findBy(".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']");
         MatcherAssert.assertThat(grupoUWIssues.getText(), Matchers.containsString(UWIssues.get("UWIssue")));
     }

@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.steps.AnalisisDeRiesgoPaSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionCambioDePolizaUWPEPSSteps;
+import com.sura.guidewire.policycenter.steps.AnalisisDeRiesgoPaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -39,7 +39,7 @@ public class AnalisisDeRiesgoPaDefinitions {
     }
 
     @Then("generar un UW issue $UWIssue")
-    public void validarGeneracionUWIssue(ExamplesTable UWIssue){
-        analisisDeRiesgoPaSteps.validar_Que_Se_Genere_UWIssue(UWIssue);
+    public void validarGeneracionUWIssue(ExamplesTable uwissue){
+        analisisDeRiesgoPaSteps.validar_Que_Se_Genere_UWIssue(uwissue);
     }
 }

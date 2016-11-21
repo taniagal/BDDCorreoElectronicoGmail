@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -78,6 +78,7 @@ public class ExpedicionDePolizaPage extends PageUtil{
     WebElementFacade iconoError;
 
     protected static final int WAIT_TIME_30000 = 30000;
+    protected static final int WAIT_TIME_45000 = 45000;
 
 
     public ExpedicionDePolizaPage(WebDriver driver){
@@ -179,5 +180,14 @@ public class ExpedicionDePolizaPage extends PageUtil{
         waitFor(linkIrAListaDeRiesgos);
         linkIrAListaDeRiesgos.click();
         waitForTextToAppear("Riesgos");
+    }
+
+    public void validarMensajeRequisitos() {
+        waitForTextToAppear("Existen requisitos pendientes, por favor verifique.", WAIT_TIME_45000);
+        WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
+        waitUntil(WAIT_TIME_5000);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonAceptarMensaje).click();
     }
 }

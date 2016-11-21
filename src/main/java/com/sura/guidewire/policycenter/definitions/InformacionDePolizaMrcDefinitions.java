@@ -2,8 +2,7 @@ package com.sura.guidewire.policycenter.definitions;
 
 
 import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
-import com.sura.guidewire.policycenter.util.navegacion.definitions.*;
-import com.sura.guidewire.policycenter.util.navegacion.definitions.IngresoAPolicyCenterDefinitions;
+import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
@@ -76,6 +75,15 @@ public class InformacionDePolizaMrcDefinitions {
     @When("ingrese a edificios y ubicaciones")
     public void cuandoIntenteIngresarAEdificiosYUbicaciones() {
         informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones();
+    }
+    @When("ingrese a edificios y ubicaciones en cambio de poliza")
+    public void cuandoIntenteIngresarAEdificiosYUbicacionesEnCambioDePoliza() {
+        informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones_en_cambio_de_poliza();
+    }
+    @When("ingrese a edificios y ubicaciones en renovacion de poliza")
+    public void cuandoIntenteIngresarAEdificiosYUbicacionesRenovacionDePoliza() {
+        informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones_en_renovacion_de_poliza();
+
     }
 
     @Then("se debe validar que se muestren los mensajes de obligatoriedad siguientes $mensajesesperados")

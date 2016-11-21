@@ -62,6 +62,7 @@ Scenario: Validacion de resumen de la poliza al expedirla
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
+And valide la solicitud de requisitos
 Then debe mostrar el resumen de la poliza expedida con la informacion de cotizacion <infoCotizacion>, poliza <infoPoliza>, administrador de contizaciones <admorCotizacion>, nueva cotizacion <nuevaCotizacion>, escritorio <escritorio>
 
 Examples:

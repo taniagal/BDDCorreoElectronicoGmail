@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.contacto;
 
-import com.sura.guidewire.policycenter.util.PageUtil;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.apache.commons.lang3.ArrayUtils;
@@ -8,6 +8,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -86,6 +87,8 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
     //display key de los estados: typeList localization ---> TypeKey.PolicyPeriodStatus
     public void validarFiltroEstado(String filtroEstado) {
+        List<WebElement> cells;
+        String estadoStr;
         String[] listEstadosCompletos = {"Comprometida", "No tomado", "Retirado", "Vencida", "Rechazado",
                 "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida"};
         String[] listEstadosAbiertos = {"Cotizado", "Borrador", "Nuevo", "Cotización", "Vinculación contractual",
@@ -96,8 +99,15 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
-            List<WebElement> cells = row.findElements(By.tagName("td"));
-            String estadoStr = cells.get(CONSTANTE_5).getText();
+            try {
+                cells = row.findElements(By.tagName("td"));
+                estadoStr = cells.get(CONSTANTE_5).getText();
+            } catch (StaleElementReferenceException e) {
+                LOGGER.info("StaleElementReferenceException " + e);
+                waitUntil(WAIT_TIME_3000);
+                cells = row.findElements(By.tagName("td"));
+                estadoStr = cells.get(CONSTANTE_5).getText();
+            }
             if (("Completo").equals(filtroEstado)) {
                 MatcherAssert.assertThat(estadoStr, Matchers.isIn(listEstadosCompletos));
             } else if (("Abierto").equals(filtroEstado)) {

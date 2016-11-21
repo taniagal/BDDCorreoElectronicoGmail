@@ -1,11 +1,11 @@
 package com.sura.guidewire.policycenter.steps.cuenta;
 
-import com.sura.guidewire.policycenter.util.navegacion.steps.GuidewireLoginSteps;
+import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireLoginSteps;
 import com.sura.guidewire.policycenter.pages.cuenta.BusquedaDeCuentaPage;
 import com.sura.guidewire.policycenter.pages.cuenta.ContactosAsociadosACuentaWidgetPage;
 import com.sura.guidewire.policycenter.pages.cuenta.CuentaPages;
 import com.sura.guidewire.policycenter.pages.TransaccionesDePolizaWidgetObject;
-import com.sura.guidewire.policycenter.util.navegacion.steps.MenuBuscarSteps;
+import com.sura.guidewire.policycenter.utils.navegacion.steps.MenuBuscarSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -37,8 +37,8 @@ public class CuentaSteps extends ScenarioSteps {
     public void login(WebDriver driver, String rolUsuario) {
         SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();
 
-        loginSteps.abrir_navegador(driver);
-        loginSteps.loguearse_a_policycenter_con_rol(rolUsuario);
+        loginSteps.abrirNavegador(driver);
+        loginSteps.loguearseAPolicycenterConRol(rolUsuario);
 
         LOGGER.info("CuentaSteps.loginSteps");
     }
@@ -49,8 +49,8 @@ public class CuentaSteps extends ScenarioSteps {
     }
 
     public void consultarCuentaPorNumeroDeCuenta(String numCuenta) {
-        String numeroCuenta = numCuenta;
-        buscarSteps.ingresar_a_la_opcion_Buscar();
+
+        buscarSteps.ingresarALaOpcionBuscar();
         this.cuenta = irAPaginaBusquedaDeCuentas().luego().ingresar().numeroDeCuenta(numCuenta).luego().buscar().seleccionarCuenta(numCuenta);
     }
 
@@ -63,7 +63,7 @@ public class CuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public TransaccionesDePolizaWidgetObject consultar_transacciones_de_poliza() {
+    public TransaccionesDePolizaWidgetObject consultarTransaccionesDePoliza() {
         return cuenta.enTransaccionesDePoliza();
     }
 
