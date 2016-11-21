@@ -1,11 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
-<<<<<<< HEAD:src/main/java/com/sura/guidewire/policycenter/pages/AnalisisDeRiesgoPaPage.java
-import com.sura.guidewire.policycenter.util.PageUtil;
-import net.serenitybdd.core.annotations.findby.FindBy;
-=======
->>>>>>> develop:src/main/java/com/sura/guidewire/policycenter/pages/AnalisisDeRiesgoPaPage.java
-import net.serenitybdd.core.pages.PageObject;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
