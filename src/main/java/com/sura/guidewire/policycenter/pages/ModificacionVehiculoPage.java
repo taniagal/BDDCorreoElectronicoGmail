@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -24,19 +25,18 @@ public class ModificacionVehiculoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']")
     private WebElementFacade grupoMensajes;
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
-
     public ModificacionVehiculoPage(WebDriver driver) {
         super(driver);
     }
 
     public void irAModificarVehiculo() {
+        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
         WebElementFacade tituloInformacionPoliza = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:ttlBar']");
         waitFor(tituloInformacionPoliza).shouldBePresent();
         waitFor(botonSiguiente).click();
         WebElementFacade tituloAsegurados = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
         waitFor(tituloAsegurados).shouldBePresent();
+        tasaUnicaPage.llenarInfoPoliza();
         waitFor(botonSiguiente).click();
     }
 

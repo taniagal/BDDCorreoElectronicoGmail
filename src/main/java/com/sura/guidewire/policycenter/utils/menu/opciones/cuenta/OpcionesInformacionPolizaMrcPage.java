@@ -117,6 +117,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade radioButtonCedido;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarPopup;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
+    private WebElementFacade menuItemInformacionDePoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']/div")
+    private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
     WebElementFacade botonAceptarCoaseguro;
 
@@ -242,7 +246,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
     public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras){
         waitFor(WAIT_TIME_3).second();
-        agregarCoaseguro.click();
+        menuItemInformacionDePoliza.click();
+        divMensaje.waitUntilPresent();
+        menuItemInformacionDePoliza.click();
+        agregarCoaseguro.waitUntilPresent().click();
         seleccionarElTipoDeCoaseguro(tipoCo);
         agregoLasAseguradoras(tablaaseguradoras);
 

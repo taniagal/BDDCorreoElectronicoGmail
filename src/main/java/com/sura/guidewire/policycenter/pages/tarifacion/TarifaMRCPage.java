@@ -82,11 +82,15 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void irAArticulo() {
+        borrarArticulo();
+        botonAgregarArticulos.click();
+    }
+
+    public void borrarArticulo() {
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonBorrarArticulo).waitUntilPresent();
         checkBoxArticulo.click();
         botonBorrarArticulo.click();
         waitUntil(WAIT_TIME_1500);
-        botonAgregarArticulos.click();
     }
 
     public void seleccionarCobertura(ExamplesTable datos) {

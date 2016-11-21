@@ -145,7 +145,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemCambiarPoliza.waitUntilPresent().click();
         botonSiguienteCambioDePoliza.waitUntilPresent().click();
-        llenarInfoCambioDePoliza();
+        llenarInfoPoliza();
     }
 
     public void cambiarValorAsegurado(String valorAsegurado) {
@@ -186,7 +186,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
 
     public void renovarPoliza() {
-        llenarInfoCambioDePoliza();
+        llenarInfoPoliza();
         botonCotizarRenovacion.waitUntilPresent();
         waitUntil(WAIT_TIME_1000);
         checkBoxTasaUnica.shouldBePresent();
@@ -222,7 +222,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
 
-    public void llenarInfoCambioDePoliza() {
+    public void llenarInfoPoliza() {
         setImplicitTimeout(1,TimeUnit.SECONDS);
         if (headerRenovacion.isPresent()) {
             comboBoxOrganizacion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']");
