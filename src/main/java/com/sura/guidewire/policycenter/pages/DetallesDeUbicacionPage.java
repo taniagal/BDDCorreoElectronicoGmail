@@ -11,6 +11,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
@@ -78,7 +79,14 @@ public class DetallesDeUbicacionPage extends PageUtil {
     }
 
     public void seleccionarProducto(String nomProducto) {
-        waitForTextToAppear(nomProducto);
+        try {
+            waitForTextToAppear(nomProducto);
+        }catch (TimeoutException e){
+            LOGGER.info("StaleElementReferenceException " + e);
+            LOGGER.info(e.getStackTrace().toString());
+            selectItem(comboBoxNombreAgente, "ADHR");
+            waitForTextToAppear(nomProducto);
+        }
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
         waitUntil(WAIT_TIME_1000);
@@ -120,6 +128,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
         comboBoxNombreAgente.click();
         linkNombre.waitUntilVisible();
         Actions actions = new Actions(getDriver());
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();

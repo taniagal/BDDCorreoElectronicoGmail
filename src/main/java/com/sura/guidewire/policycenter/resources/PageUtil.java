@@ -130,7 +130,15 @@ public class PageUtil extends PageObject {
                 waitUntil(WAIT_TIME_2000);
                 waitFor(elemento).waitUntilPresent();
             }
-            elemento.clear();
+
+            try {
+                elemento.clear();
+            }catch (ElementNotVisibleException e){
+                LOGGER.info("ElementNotVisibleException " + e);
+                LOGGER.info(e.getStackTrace().toString());
+                waitUntil(WAIT_TIME_2000);
+                elemento.clear();
+            }
             waitUntil(WAIT_TIME_500);
             waitFor(elemento).shouldContainText("");
             elemento.sendKeys(dato);
