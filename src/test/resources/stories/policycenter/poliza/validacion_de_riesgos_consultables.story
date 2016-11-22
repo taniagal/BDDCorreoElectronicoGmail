@@ -2,10 +2,8 @@ Validacion de riesgos consultables
 
 
 Meta:
-=======
-@lote4
+@lote2
 @Story CDSEG-3124
-@URL https://jira.suramericana.com.co/browse/CDSEG-3124
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
