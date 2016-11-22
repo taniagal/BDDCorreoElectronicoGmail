@@ -12,7 +12,8 @@ quiero poder configurar el modelo del producto teniendo en cuenta los canales de
 para que se muestren las coberturas, terminos y opciones segun la disponibilidad
 
 Scenario: Validar la organizacion cuando el producto es Autos
-Meta: @manual @lote3
+Meta:
+@manual
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And quiero expedir una poliza nueva
 And seleccione el agente <agente>
@@ -31,7 +32,8 @@ Examples:
 | C000888888 | DIRECTO | Autos    |
 
 Scenario: Validar la el canal cuando se selecciona una organizacion especifica cuando el producto es Autos
-Meta: @manual @lote3
+Meta:
+@manual
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And quiero expedir una poliza nueva
 And seleccione el agente <agente>
@@ -55,7 +57,8 @@ Examples:
 | C000888888 | DIRECTO | Autos    |
 
 Scenario: Validar la el canal cuando se selecciona una organizacion especifica cuando el producto es Autos
-Meta: @manual @lote3
+Meta:
+@manual
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And quiero expedir una poliza nueva
 And seleccione el agente <agente>
@@ -78,8 +81,10 @@ Examples:
 | numCuenta  | agente  | producto |tipoPoliza   |
 | C000888888 | DIRECTO | Autos    |PPAutos      |
 
+
 Scenario: Validar la organizacion, el canal y el tipo de poliza cuando el producto es Autos para las diferentes combinaciones
-Meta: @manual @lote3
+Meta:
+@manual
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
 And quiero expedir una poliza nueva
 And seleccione el agente <agente>
