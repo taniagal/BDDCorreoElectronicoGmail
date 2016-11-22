@@ -10,7 +10,6 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
 
@@ -31,10 +30,6 @@ public class GuidewireLoginPages extends PageUtil{
     private WebElementFacade mnuContact;
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
     private WebElementFacade usuario1;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:password-inputEl']")
-    private WebElementFacade contrasenia1;
-    @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
-    private WebElementFacade btnSubmit1;
 
     private static final long serialVersionUID = 1L;
     public static final String TITULO_PAGINA_PPL_DE_ACCESO = ".//span[@id='DesktopActivities:DesktopActivitiesScreen:0']";

@@ -101,9 +101,9 @@ public class BusquedaContactoPage extends PageUtil {
 
     public void irABuscarContacto() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuBuscar).click();
-        waitForTextToAppear("Buscar pólizas",WAIT_TIME_5000);
+        waitForTextToAppear("Buscar pólizas");
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuBuscarContacto).click();
-        waitForTextToAppear(BUSQUEDADECONTACTOS,WAIT_TIME_5000);
+        waitForTextToAppear(BUSQUEDADECONTACTOS);
     }
 
     public void consultarPersonaJuridaPorRazonSocial(String tipoDoc, String razonSocial) {
