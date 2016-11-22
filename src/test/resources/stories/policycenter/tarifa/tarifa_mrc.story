@@ -13,59 +13,7 @@ Al cotizar una poliza de MRC quiero ser capaz de registrar toda la información 
 
 Scenario:  Tarifa MRC - Cobertura Terremoto en Antioquia
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto               |canal            |
-|C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
-When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
-And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura:
-|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
-|100000000          |100000000     |null          |Terremoto|
-And cotice el articulo
-Then debo poder ver el valor de la prima <prima> en la cotizacion
 
-Examples:
-|prima    |departamento|ciudad  |direccion        |descripcion  |actividad|
-|1.016.667|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
-
-
-Scenario:  Tarifa MRC - Cobertura Terremoto en Caldas con deducible
-Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto               |canal            |
-|C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
-When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
-And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura:
-|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
-|100000000          |100000000     |120000000     |Terremoto|
-And seleccione la opcion de deducible en si
-And cotice el articulo
-Then debo poder ver el valor de la prima <prima> en la cotizacion
-
-Examples:
-|prima    |departamento|ciudad   |direccion        |descripcion  |actividad|
-|1.540.000|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
-
-
-Scenario:  Tarifa MRC - Cobertura Terremoto en Caldas sin deducible
-Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto               |canal            |
-|C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
-When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
-And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura:
-|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
-|100000000          |100000000     |120000000     |Terremoto|
-And seleccione la opcion de deducible en no
-And cotice el articulo
-Then debo poder ver el valor de la prima <prima> en la cotizacion
-
-Examples:
-|prima    |departamento|ciudad   |direccion        |descripcion  |actividad|
-|1.283.333|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
-
-
-Scenario: Tarifa MRC - Cobertura AMIT
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto               |canal            |
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
@@ -80,4 +28,4 @@ Then debo poder ver el valor de la prima <prima> en la cobertura
 
 Examples:
 |prima    |departamento|ciudad  |direccion        |descripcion  |actividad|
-|6.754.386|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|1.016.667|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|

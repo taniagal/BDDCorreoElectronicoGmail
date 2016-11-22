@@ -1,6 +1,6 @@
 Registro De Coaseguro
 
-Meta: @lote2
+Meta: @lote4
 @issue #NotFound
 @sprint 2
 @tag automator: nelson_jhair_mosquera_palacios
