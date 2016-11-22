@@ -647,7 +647,6 @@ public class Navegacion extends PageUtil {
     // Navegacion menu Acciones Escritorio
     public EscritorioNuevoEnvioPage irAEscritorioNuevoEnvio() {
         menuEscritorio.click();
-        waitUntil(WAIT_TIME_1000);
         gw.deployMenu(mnuAccionesEscritorio);
         act.moveToElement(mnuAccionNuevoEnvio).release(mnuAccionNuevoEnvio).click().build().perform();
         return new EscritorioNuevoEnvioPage(getDriver());
