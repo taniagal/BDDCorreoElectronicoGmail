@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']")
-    WebElementFacade LblInformaPolizaEnRenovacion;
+    WebElementFacade lblInformaPolizaEnRenovacion;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade txtNomAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
@@ -105,10 +105,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade tablaProductos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:Accepted-inputEl']")
     WebElementFacade checkiReaseguroAceptado;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-inputEl']")
-    private WebElementFacade listaOrganizacion;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-inputEl']")
-    private WebElementFacade listaCanal;
     @FindBy(xpath = "//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade agregarCoaseguro;
     @FindBy(xpath = "//input[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion_true-inputEl']")
@@ -241,7 +237,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionarInformacionDePoliza(){
-        LblInformaPolizaEnRenovacion.click();
+        lblInformaPolizaEnRenovacion.click();
         waitForTextToAppear("Información de póliza");
     }
     public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras){

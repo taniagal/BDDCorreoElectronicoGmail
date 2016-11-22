@@ -132,16 +132,20 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     private void waitForCampoTxtValorAsegurado(Map<String, String> vehiculo) {
         try {
-            try {
-                withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
-            } catch (ElementNotVisibleException e) {
-                LOGGER.info("ElementNotVisible at ValidacionesInformacionDeVehiculo Page 140 " + e);
-            }
+            waitForValorAsegurado(vehiculo);
         }catch (TimeoutException e){
             LOGGER.info("TimeoutException " + e);
             selectItem(comboBoxModelo,"2010");
             waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2010"));
             seleccionarComboBoxModelo(vehiculo);
+        }
+    }
+
+    private void waitForValorAsegurado(Map<String, String> vehiculo) {
+        try {
+            withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
+        } catch (ElementNotVisibleException e) {
+            LOGGER.info("ElementNotVisible at ValidacionesInformacionDeVehiculo Page 140 " + e);
         }
     }
 
