@@ -65,7 +65,7 @@ Examples:
 |1.283.333|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
-Scenario:  Tarifa MRC - Cobertura AMIT
+Scenario: Tarifa MRC - Cobertura AMIT
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto               |canal            |
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
@@ -79,5 +79,5 @@ And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cobertura
 
 Examples:
-|prima    |departamento|ciudad   |direccion        |descripcion  |actividad|
-|6.754.386|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|prima    |departamento|ciudad  |direccion        |descripcion  |actividad|
+|6.754.386|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
