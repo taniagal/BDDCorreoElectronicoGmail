@@ -1,6 +1,6 @@
 cobertura ubicacion sustraccion
 
-Meta: @lote1
+Meta: @lote2
 
 Scenario: 1 Validacion de sublimites maximos para las otras coberturas de sustraccion (coberturas de riesgo)
 Meta: @lote1

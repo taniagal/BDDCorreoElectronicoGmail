@@ -1,7 +1,7 @@
 Contacto Ordenes De Trabajo
 
 Meta:
-@lote2
+@lote4
 @issue #CDSEG-875
 @tag automator: eliana_alvarez, sprint:1
 @Sprint 1
