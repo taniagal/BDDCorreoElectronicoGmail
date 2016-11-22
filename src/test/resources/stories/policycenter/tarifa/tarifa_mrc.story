@@ -1,6 +1,6 @@
 Tarifa MRC
 
-Meta: @lote3
+Meta: @lote1
 @issue #CDSEG-4322
 @sprint 9
 @tag automator: nelson_jhair_mosquera_palacios
