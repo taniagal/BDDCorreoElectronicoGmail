@@ -15,10 +15,10 @@ Scenario: Validar la organizacion cuando el producto es Autos
 Meta:
 @manual
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
-And quiero expedir una poliza nueva
-And seleccione el agente <agente>
-When seleccione el producto <producto> para expedir la poliza
-And seleccione la opcion informacion de poliza
+And  quiero expedir una poliza nueva
+And  seleccione el agente <agente>
+When  seleccione el producto <producto> para expedir la poliza
+And  seleccione la opcion informacion de poliza
 Then debo ver la organizacion la siguiente lista de organizaciones:
 |Bancolombia    |
 |Exito          |
@@ -35,10 +35,10 @@ Scenario: Validar la el canal cuando se selecciona una organizacion especifica c
 Meta:
 @manual
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
-And quiero expedir una poliza nueva
-And seleccione el agente <agente>
-When seleccione el producto <producto> para expedir la poliza
-And seleccione la opcion informacion de poliza
+And  quiero expedir una poliza nueva
+And  seleccione el agente <agente>
+When  seleccione el producto <producto> para expedir la poliza
+And  seleccione la opcion informacion de poliza
 And seleccione la organizacion:
 |Bancolombia    |
 |Exito          |
@@ -60,10 +60,10 @@ Scenario: Validar la el canal cuando se selecciona una organizacion especifica c
 Meta:
 @manual
 Given que voy a buscar la cuenta <numCuenta> para poliza individual
-And quiero expedir una poliza nueva
-And seleccione el agente <agente>
-When seleccione el producto <producto> para expedir la poliza
-And seleccione la opcion informacion de poliza
+And  quiero expedir una poliza nueva
+And  seleccione el agente <agente>
+When  seleccione el producto <producto> para expedir la poliza
+And  seleccione la opcion informacion de poliza
 And seleccione la organizacion:
 |Bancolombia    |
 |Exito          |
@@ -85,14 +85,14 @@ Examples:
 Scenario: Validar la organizacion, el canal y el tipo de poliza cuando el producto es Autos para las diferentes combinaciones
 Meta:
 @manual
-Given que voy a buscar la cuenta <numCuenta> para poliza individual
-And quiero expedir una poliza nueva
-And seleccione el agente <agente>
-When seleccione el producto <producto> para expedir la poliza
-And seleccione la opcion informacion de poliza
-Then debo ver la organizacion <infoOrganizacion> seleccionada
-And debor ver el canal <infoCanal> seleccionado
-And debo ver el tipo de poliza <infoTipoPoliza> seleccionado
+Given  que voy a buscar la cuenta <numCuenta> para poliza individual
+And  quiero expedir una poliza nueva
+And  seleccione el agente <agente>
+When  seleccione el producto <producto> para expedir la poliza
+And  seleccione la opcion informacion de poliza
+Then  debo ver la organizacion <infoOrganizacion> seleccionada
+And  debor ver el canal <infoCanal> seleccionado
+And  debo ver el tipo de poliza <infoTipoPoliza> seleccionado
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | producto | infoTipoPoliza | infoOrganizacion | infoCanal         |
