@@ -1,6 +1,6 @@
 inicio renovacion de poliza pa
 
-Meta: @lote1
+Meta: @lote2
 
 @issue #CDSEG-821
 @tag automator: Jonathan_Mejia_Leon

@@ -64,7 +64,7 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade radioBotonDeducibleNo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:Modifiers']")
     private WebElementFacade menuItemModificadores;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[4]/td[3]")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[6]/td[3]")
     private WebElementFacade montoCobertura;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";

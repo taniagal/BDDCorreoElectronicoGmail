@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class PageUtil extends PageObject {
     protected final Actions actions = new Actions(getDriver());
     protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+    protected static final int WAIT_TIME_30000 = 30000;
     protected static final int WAIT_TIME_5000 = 5000;
     protected static final int WAIT_TIME_3500 = 3500;
     protected static final int WAIT_TIME_3000 = 3000;
@@ -188,13 +189,15 @@ public class PageUtil extends PageObject {
 
 
     public void clickElement(WebElementFacade element) {
-        try {
-            element.click();
-        } catch (WebDriverException e) {
-            waitUntil(WAIT_TIME_2000);
-            clickElement(element);
-            LOGGER.info("WebDriverException " + e);
-            LOGGER.info(e.getStackTrace().toString());
+        for (int i = 0; i < 6; i++) {
+            try {
+                element.click();
+                i = 6;
+            } catch (WebDriverException e) {
+                waitUntil(WAIT_TIME_2000);
+                LOGGER.info("WebDriverException " + e);
+                LOGGER.info(e.getStackTrace().toString());
+            }
         }
     }
 }

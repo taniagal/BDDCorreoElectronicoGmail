@@ -1,7 +1,7 @@
 Ajustes Coaseguros
 
 Meta:
-@lote1
+@lote2
 @Story CDSEG-2778
 @URL https://jira.suramericana.com.co/browse/CDSEG-2778
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
