@@ -11,7 +11,8 @@ Como usuario de Policy Center
 Quiero poder gestionar los UW que se generen por bloqueo en la linea de multiriesgo corporativo
 
 Scenario: Validar el valor ingresado superior al 10% en el sublimite de la cobertura deterioro de bienes refrigerados por rotura de maquinaria en la cotizacion
-Given que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>
+Meta: @manual
+Given que estoy iniciando nueva suscripcion con rol de usuario
 When quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>
 And ingrese a edificios y ubicaciones
 And intente ingresar las entradas de las diferentes coberturas
