@@ -115,7 +115,6 @@ public class Poliza {
         polizaSteps.seleccionarBotonAcciones();
         polizaSteps.seleccionarOpcionCambiarPoliza();
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
-        polizaSteps.seleccionarOpcionInformacionDePoliza();
     }
 
     @When("cuando intente renovar informacion de la poliza MRC")

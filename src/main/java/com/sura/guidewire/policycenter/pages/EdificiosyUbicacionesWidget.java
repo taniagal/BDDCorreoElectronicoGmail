@@ -28,6 +28,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
     private static final String LINK_AGREGAR_UBICACION = "//a[contains(.,'Agregar ubicación')]";
     private static final String XPATH_COTIZAR = "//a[contains(.,'Cotizar')]";
+    private static final String XPATH_BORRAR = "//a[contains(.,'Borrar')]";
     private static final String LINK_OPCION_UBICACION_NUEVA = "//a[contains(.,'Ubicación nueva')]";
     private static final String XPATH_LEGEND_COBERTURA_DE_RIESGO = ".//legend[ (descendant::div[contains(., '";
     private static final String INPUT = "input";
@@ -51,7 +52,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_BTN_SELECCIONA = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']";
     private static final String XPATH_INTERES_ADICIONAL = "//label[contains(.,'Interes Adicional')]";
     private static final String XPATH_SELECCIONAR_RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
-    private static final String XPATH_BTON_REMOVER_RIESGOS =  "//a[contains(.,'Remover Riesgo')]";
+    private static final String XPATH_BTON_REMOVER_RIESGOS = "//a[contains(.,'Remover Riesgo')]";
     private static final String XPATH_EDITAR_TRANSACCION_POLIZA = ".//span[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']";
     private static final String XPATH_ACEPTAR = "//a[contains(.,'Aceptar')]";
     private static final String XPATH_DESCARTAR_CAMBIOS = "//a[contains(.,'Descartar cambios no guardados')]";
@@ -65,9 +66,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonAgregarArticulos;
     @FindBy(css = ".message")
     private WebElementFacade divMensaje;
-    @FindBy(xpath =".//a[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
+    @FindBy(xpath = ".//a[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulosCambioPoliza;
-    @FindBy(xpath =".//a[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
+    @FindBy(xpath = ".//a[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulosRenovacionPoliza;
     @Steps
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
@@ -108,6 +109,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
         shouldContainText(tituloDePaginaAgregarArticulos);
     }
+
     public void agregarArticuloAPrimerUbicacionEnRenovacionDePoliza() {
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         if (tabla == null) {
@@ -145,13 +147,13 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(WAIT_TIME_2).seconds();
         enter(depto).into($(xpathDepto));
         waitFor(WAIT_TIME_2).seconds();
-        
+
         $(xpathDepto).click();
 
         waitFor(WAIT_TIME_2).seconds();
         $(xpathCiudad).type(ciudad);
         waitFor(WAIT_TIME_2).seconds();
-        
+
         $(xpathCiudad).click();
 
         waitFor(WAIT_TIME_3).seconds();
@@ -165,8 +167,13 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         $(xpathActividadEconomica).sendKeys(Keys.ENTER);
         waitFor(WAIT_TIME_2).seconds();
 
+
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
-        waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
+
+        if (findBy(".//a[contains(.,'Borrar')]").isVisible()) {
+            findBy(".//*[@id='CPLocationPopup:Update-btnInnerEl']").click();
+            waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
+        }
     }
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
@@ -183,7 +190,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
     }
 
-    public void removerRiesgos(){
+    public void removerRiesgos() {
         waitFor(WAIT_TIME_3).second();
         findBy(XPATH_SELECCIONAR_RIESGOS).click();
         waitFor(WAIT_TIME_3).second();
@@ -192,19 +199,20 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         findBy(XPATH_BTON_REMOVER_RIESGOS).click();
         waitFor(WAIT_TIME_3).second();
     }
-    public void editartransacciondepoliza(){
+
+    public void editartransacciondepoliza() {
         waitUntil(WAIT_TIME_2000);
         findBy(XPATH_EDITAR_TRANSACCION_POLIZA).waitUntilVisible().click();
         waitUntil(WAIT_TIME_2000);
         findBy(XPATH_ACEPTAR).click();
         waitUntil(WAIT_TIME_2000);
-         if(findBy(XPATH_DESCARTAR_CAMBIOS).isVisible()){
-             waitUntil(WAIT_TIME_2000);
-             findBy(XPATH_DESCARTAR_CAMBIOS).click();
-             waitForTextToAppear("Información de póliza");
-             opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenRenovacionDePoliza();
+        if (findBy(XPATH_DESCARTAR_CAMBIOS).isVisible()) {
+            waitUntil(WAIT_TIME_2000);
+            findBy(XPATH_DESCARTAR_CAMBIOS).click();
+            waitForTextToAppear("Información de póliza");
+            opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenRenovacionDePoliza();
 
-         }
+        }
     }
 
 
@@ -327,7 +335,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 estaSeleccionado = true;
             }
         } catch (Exception e) {
-            LOGGER.info("CHECK DE COBERTURA: " + cobertura + " NO ENCONTRADo EN EL DOM "+e);
+            LOGGER.info("CHECK DE COBERTURA: " + cobertura + " NO ENCONTRADo EN EL DOM " + e);
         }
         return estaSeleccionado;
 
@@ -347,7 +355,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
                 estaSeleccionado = true;
             }
         } catch (Exception e) {
-            LOGGER.info("CHECK DE COBERTURA: " + cobertura + " NO ENCONTRADo EN EL DOM "+e);
+            LOGGER.info("CHECK DE COBERTURA: " + cobertura + " NO ENCONTRADo EN EL DOM " + e);
         }
         return estaSeleccionado;
 
@@ -484,7 +492,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     public void verificarMensajes(ExamplesTable mensajes) {
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(divMensaje).shouldBePresent();
         for (Map<String, String> mensaje : mensajes.getRows()) {
-            MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE")+" but was: "+divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
+            MatcherAssert.assertThat("Error: en la validacion del mensaje Expected: " + mensaje.get("MENSAJES_WORKSPACE") + " but was: " + divMensaje.getText(), divMensaje.containsText(mensaje.get("MENSAJES_WORKSPACE")));
         }
     }
 
@@ -504,7 +512,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         itemDirectorio.waitUntilVisible().waitUntilClickable().click();
         waitFor(lblBuscarDirectorio);
         itemTipoDocumento.clear();
-        fluent().await().atMost(WAIT_TIME_200,TimeUnit.MILLISECONDS);
+        fluent().await().atMost(WAIT_TIME_200, TimeUnit.MILLISECONDS);
         itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
         itemTipoDocumento.sendKeys(Keys.ENTER);
         waitFor(lblPrimerNombre);
