@@ -94,16 +94,6 @@ Examples:
 |numCuenta   |declinado|propiedadComercial     |crearCarta                |
 |C000777777  |Declinada|Multiriesgo corporativo|Crear carta de declinación|
 
-Scenario: No permitir crear carta de declinacion
-Given estoy en una cuenta <numCuenta>
-When ingrese a cotizaciones de la cuenta
-And una cotizacion sea producto Auto Personal <producto>
-Then no debe aparecer la opcion de crear carta de declinacion <crearCarta>.
-
-Examples:
-|numCuenta   |producto|crearCarta                |
-|C000777777  |Autos   |Crear carta de declinación|
-
 Scenario: Permitir descargar cartas
 Given estoy en una cuenta <numCuenta>
 When ingrese a cotizaciones de la cuenta
@@ -113,3 +103,10 @@ Then me debe permitir descargar esta carta. Esta funcionalidad queda tal cual co
 Examples:
 |numCuenta  |
 |C000777777 |
+
+Scenario: No permitir crear carta de declinacion
+Meta: @manual
+Given estoy en una cuenta
+When ingrese a cotizaciones de la cuenta
+And una cotizacion sea producto Auto Personal
+Then no debe aparecer la opcion de crear carta de declinacion
