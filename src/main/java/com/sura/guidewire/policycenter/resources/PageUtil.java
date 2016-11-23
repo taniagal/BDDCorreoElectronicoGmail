@@ -52,9 +52,9 @@ public class PageUtil extends PageObject {
     public Actions deployMenu(WebElementFacade menu) {
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(menu).waitUntilPresent();
         clickElement(menu);
-        waitUntil(WAIT_TIME_2500);
+        waitUntil(WAIT_TIME_3000);
         clickElement(menu);
-        waitUntil(WAIT_TIME_500);
+        waitUntil(WAIT_TIME_800);
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         return actions;
     }

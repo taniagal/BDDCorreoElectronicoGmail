@@ -76,10 +76,6 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     WebElementFacade btnAceptarRetiraTransaccion;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
     WebElementFacade btnPoliza;
-
-
-    PageUtil pageUtil = new PageUtil(getDriver());
-
     public InicioRenovacionPolizaPaPage(WebDriver driver) {
         super(driver);
     }
@@ -93,7 +89,7 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
         menuNumeropoliza.waitUntilPresent();
-        pageUtil.ingresarDato(menuNumeropoliza, cotizacion);
+        ingresarDato(menuNumeropoliza, cotizacion);
         menuNumeropoliza.sendKeys(Keys.ENTER);
         waitForTextToAppear("Cotización");
         waitForTextToAppear(cotizacion);
