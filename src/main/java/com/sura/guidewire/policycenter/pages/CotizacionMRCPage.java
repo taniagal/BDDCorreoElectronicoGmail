@@ -16,9 +16,6 @@ import org.openqa.selenium.interactions.Actions;
 
 
 public class CotizacionMRCPage extends PageUtil {
-
-    private final Actions act = new Actions(getDriver());
-
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
     private WebElementFacade menuPoliza;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
@@ -80,8 +77,6 @@ public class CotizacionMRCPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:Premiums']")
     private WebElementFacade labelPrimas;
     @FindBy(xpath = "//td/div/div/div/div/div/div")
-    private WebElementFacade columnaConsecutivo;
-    @FindBy(xpath = "//td/div/div/div/div/div[2]/div")
     private WebElementFacade columnaDescripcion;
     @FindBy(xpath = "//div/div/div/div/div[3]/div")
     private WebElementFacade columnaMonto;
@@ -105,7 +100,7 @@ public class CotizacionMRCPage extends PageUtil {
         clickElement(menuPoliza);
         waitUntil(WAIT_TIME_3500);
         menuPoliza.click();
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(WAIT_TIME_1000);
         buscarCotizacion.typeAndEnter(cotizacion);
         waitUntil(WAIT_TIME_2000);
@@ -172,14 +167,9 @@ public class CotizacionMRCPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(tabPrimaPoliza).shouldBeVisible();
         MatcherAssert.assertThat(tabPrimaPoliza.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("tabPrimaPoliza"))));
         MatcherAssert.assertThat(botonAnularClasificacion.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("botonAnularClasificacion"))));
-        MatcherAssert.assertThat(labelPrimas.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("primas"))));
-        MatcherAssert.assertThat(columnaConsecutivo.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("columnaConsecutivo"))));
         MatcherAssert.assertThat(columnaDescripcion.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("columnaDescripcion"))));
         MatcherAssert.assertThat(columnaMonto.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("columnaMonto"))));
         MatcherAssert.assertThat(labelOtrosCargos.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("otrosCargos"))));
-        MatcherAssert.assertThat(columnaDescripcionCargos.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("columnaDescripcionCargos"))));
-        MatcherAssert.assertThat(columnaEstadoCargos.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("columnaEstadoCargos"))));
-        MatcherAssert.assertThat(columnaMontoCargos.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("columnaMontoCargos"))));
     }
 
     public void validarBloqueoCotizacion(String mensaje) {

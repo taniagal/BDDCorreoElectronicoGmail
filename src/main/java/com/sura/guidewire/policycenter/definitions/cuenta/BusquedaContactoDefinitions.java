@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.cuenta;
 
-import com.sura.guidewire.policycenter.steps.commons.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
 import com.sura.guidewire.policycenter.steps.contacto.BusquedaContactoSteps;
 import com.sura.guidewire.policycenter.steps.commons.PolicySteps;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class BusquedaContactoDefinitions {
     PolicySteps pcs;
 
     @Steps
-    SeusLoginSteps seusLoginSteps;
+    LoginSteps loginSteps;
 
     @Steps
     private BusquedaContactoSteps buscarContactoSteps;

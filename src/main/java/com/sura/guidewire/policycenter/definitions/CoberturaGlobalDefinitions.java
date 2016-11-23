@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 
-import com.sura.guidewire.policycenter.steps.commons.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
 import com.sura.guidewire.policycenter.steps.CoberturaGlobalSteps;
 
 import net.thucydides.core.annotations.Steps;
@@ -15,7 +15,7 @@ public class CoberturaGlobalDefinitions {
     @Steps
     CoberturaGlobalSteps coberturaGlobalSteps;
     @Steps
-    SeusLoginSteps seusLoginSteps;
+    LoginSteps loginSteps;
 
     @When("agregue coberturas globales con datos: $datosCobertura")
     public void agregarCoberturas(ExamplesTable datosCobertura){

@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 
-import com.sura.guidewire.policycenter.steps.commons.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
 import com.sura.guidewire.policycenter.utils.model.Aseguradora;
 import com.sura.guidewire.policycenter.steps.CoaseguroSteps;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class CoaseguroDefinitions {
     @Steps
     CoaseguroSteps coaseguroSteps;
     @Steps
-    SeusLoginSteps seusLoginSteps;
+    LoginSteps loginSteps;
 
     List<Aseguradora> aseguradoras = new ArrayList<>();
     Aseguradora aseguradora = null;
