@@ -124,7 +124,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
             waitUntil(WAIT_TIME_1000);
             itmAsegurado.click();
         }
-        btnDetalleVehiculo.click();
+        clickElement(btnDetalleVehiculo);
         campoTxtPlaca.waitUntilPresent();
     }
 
