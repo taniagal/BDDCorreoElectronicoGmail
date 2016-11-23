@@ -21,6 +21,7 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil{
         withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade analisisRiesgo = findBy(".//*[@id='SubmissionWizard:RiskAnalysis']/div");
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(analisisRiesgo).click();
+        waitUntil(WAIT_TIME_2500);
     }
 
     public void validarGeneracionUWIssue(ExamplesTable mensajesBloqueo){

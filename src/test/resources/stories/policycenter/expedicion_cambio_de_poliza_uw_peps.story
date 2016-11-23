@@ -16,48 +16,56 @@ GivenStories: stories/policycenter/login_policy.story
 Given existe una cotizacion <numeroCotizacion>
 And el tomador <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
 When intente expedir la poliza
-Then mostrar el mensaje <mensaje> que devuelve el servicio
+Then mostrar el mensaje <validacion> que devuelve el servicio
+And al ir a la opcion de analisis de riesgo
+And debo ver un UW issue para la figura indicada
+|mensaje|
+|ANTONIO RESTREPO CEDULA DE CIUDADANIA 71123456 es un riesgo no estándar y debe ser analizado por el comité de evaluación para el(los) rol(es): TOMADOR|
 
 Examples:
-|numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                             |
-|22222228         |CEDULA DE CIUDADANIA |1025312689      |ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado.|
+|numeroCotizacion |tipoDocumento        |numeroDocumento |validacion                                                                                                                                                       |
+|22222228         |CEDULA DE CIUDADANIA |1025312689      |ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado. Diríjase a análisis de riesgos para solicitar aprobación.|
 
 Scenario: Identificacion cliente PEP en beneficiario nuevo
 Given existe una cotizacion <numeroCotizacion>
 And el beneficiario <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
 When intente expedir la poliza
-Then mostrar el mensaje <mensaje> que devuelve el servicio
+Then mostrar el mensaje <validacion> que devuelve el servicio
+And al ir a la opcion de analisis de riesgo
+And debo ver un UW issue para la figura indicada
+|mensaje |
+|GLADYS OCHOA CEDULA DE CIUDADANIA 94372371 es un riesgo no estándar y debe ser analizado por el comité de evaluación para el(los) rol(es):, BENEFICIARIO|
 
 Examples:
-|numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                         |
-|22222228         |CEDULA DE CIUDADANIA |1025312689      |GLADYS OCHOA con CEDULA DE CIUDADANIA - 94372371 es un riesgo no estándar y debe ser autorizado.|
+|numeroCotizacion |tipoDocumento        |numeroDocumento |validacion                                                                                         |
+|22222228         |CEDULA DE CIUDADANIA |1025312689      |GLADYS OCHOA con CEDULA DE CIUDADANIA - 94372371 es un riesgo no estándar y debe ser autorizado. Diríjase a análisis de riesgos para solicitar aprobación.|
 
 Scenario: Modificacion - Identificacion cliente PEP en tomador
 Given existe una cotizacion <numeroCotizacion> la cual se va a modificar
 And el tomador <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
 When intente expedir la poliza
-Then mostrar el mensaje <mensaje> que devuelve el servicio
+Then mostrar el mensaje <validacion> que devuelve el servicio
 
 Examples:
-|numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                             |
-|55570000         |CEDULA DE CIUDADANIA |1025312689      |ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado.|
+|numeroCotizacion |tipoDocumento        |numeroDocumento |validacion   |
+|55570000         |CEDULA DE CIUDADANIA |1025312689      |ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado.es un riesgo no estándar y debe ser autorizado. Diríjase a análisis de riesgos para solicitar aprobación.|
 
 
 Scenario: Modificacion - Identificacion cliente PEP en asegurado
 Given existe una cotizacion <numeroCotizacion> la cual se va a modificar
 And el asegurado <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
 When intente expedir la poliza
-Then mostrar el mensaje <mensaje> que devuelve el servicio
+Then mostrar el mensaje <validacion> que devuelve el servicio
 
 Examples:
-|numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                           |
-|55570000         |CEDULA DE CIUDADANIA |1025312689      |CAROLINA OCHOA con CEDULA DE CIUDADANIA - 71318883 es un riesgo no estándar y debe ser autorizado.|
+|numeroCotizacion |tipoDocumento        |numeroDocumento |validacion  |
+|55570000         |CEDULA DE CIUDADANIA |1025312689      |CAROLINA OCHOA con CEDULA DE CIUDADANIA - 71318883 es un riesgo no estándar y debe ser autorizado. Diríjase a análisis de riesgos para solicitar aprobación.|
 
 Scenario: Modificacion - Identificacion cliente PEP en beneficiario
 Given existe una cotizacion <numeroCotizacion> la cual se va a modificar
 And el beneficiario <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
 When intente expedir la poliza
-Then mostrar el mensaje <mensaje> que devuelve el servicio
+Then mostrar el mensaje <validacion> que devuelve el servicio
 
 Examples:
 |numeroCotizacion |tipoDocumento        |numeroDocumento |mensaje                                                                                         |
