@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions.cuenta;
 
 
-import com.sura.guidewire.policycenter.steps.commons.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
 import com.sura.guidewire.policycenter.steps.cuenta.UbicacionesDeUnaCuentaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -11,14 +11,14 @@ import org.jbehave.core.annotations.When;
 
 public class UbicacionesDeUnaCuentaDefinitions {
     @Steps
-    SeusLoginSteps seusLoginSteps;
+    LoginSteps loginSteps;
 
     @Steps
     UbicacionesDeUnaCuentaSteps ubicacionesDeUnaCuentaSteps;
 
     @Given("que tengo una cuenta <cuenta>")
     public void givenQueTengoUnaCuenta(@Named("cuenta") String cuenta) {
-        seusLoginSteps.login();
+        loginSteps.login();
         ubicacionesDeUnaCuentaSteps.irAUbicacionesDeUnaCuenta(cuenta);
     }
 

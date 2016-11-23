@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 
-import com.sura.guidewire.policycenter.steps.commons.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
 import com.sura.guidewire.policycenter.steps.DetallesDeUbicacionSteps;
 import com.sura.guidewire.policycenter.steps.ValidacionesInformacionDeVehiculoSteps;
 import net.thucydides.core.annotations.Steps;
@@ -13,7 +13,7 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class ValidacionesInformacionDeVehiculoDefinitions {
     @Steps
-    SeusLoginSteps loginSteps;
+    LoginSteps loginSteps;
 
     @Steps
     DetallesDeUbicacionSteps detallesDeUbicacionSteps;
