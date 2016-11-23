@@ -401,6 +401,11 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
+    public void seleccionarTipoNoReaseguro(){
+        btnNoReaseguroEspecial.click();
+        waitUntil(WAIT_TIME_5000);
+    }
+
     public void validaFormularioDescripDireccion() {
         if (esVisible) {
             MatcherAssert.assertThat("el campo Descripcion direccion no debe estar presente", !lblDescripDireccion.isPresent());
