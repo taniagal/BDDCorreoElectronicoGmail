@@ -371,7 +371,8 @@ public class Navegacion extends PageUtil {
 
     // Navegacion menu Cuenta
     public NuevaCuentaPage irANuevaCuenta() {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(mnuCuenta).click();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
+        clickElement(mnuCuenta);
         waitForAnyTextToAppear("Resumen de la cuenta","Búsqueda de cuentas");
         waitUntil(WAIT_TIME_2500);
         mnuCuenta.waitUntilClickable().click();
@@ -646,7 +647,6 @@ public class Navegacion extends PageUtil {
     // Navegacion menu Acciones Escritorio
     public EscritorioNuevoEnvioPage irAEscritorioNuevoEnvio() {
         menuEscritorio.click();
-        waitUntil(WAIT_TIME_1000);
         gw.deployMenu(mnuAccionesEscritorio);
         act.moveToElement(mnuAccionNuevoEnvio).release(mnuAccionNuevoEnvio).click().build().perform();
         return new EscritorioNuevoEnvioPage(getDriver());

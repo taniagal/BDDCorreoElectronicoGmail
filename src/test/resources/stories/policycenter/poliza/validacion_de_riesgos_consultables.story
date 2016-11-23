@@ -2,10 +2,8 @@ Validacion de riesgos consultables
 
 
 Meta:
-=======
-@lote4
+@lote2
 @Story CDSEG-3124
-@URL https://jira.suramericana.com.co/browse/CDSEG-3124
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
 
@@ -31,14 +29,11 @@ Examples:
 
 
 
+
+Meta:
+@manual
+
 Scenario: 2 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al modificar nueva poliza
-
-Meta: @manual
-@Story CDSEG-3124
-@URL https://jira.suramericana.com.co/browse/CDSEG-3124
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Given que estoy en la informacion de la poliza con numero(s) de subscripcion <numSubscripcion>
 When  quiero agregar un tomador adicional que es riesgo consultable <cedula>
 And intente ingresar una nueva ubicacion(es)
@@ -49,15 +44,11 @@ Examples:
 | numPoliza  | rolUsuario |
 | 6076942934 | Asesor     |
 
+
+Meta:
+@manual
+
 Scenario: 3 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al renovar nueva poliza
-
-Meta: @manual
-@Story CDSEG-3124
-@URL https://jira.suramericana.com.co/browse/CDSEG-3124
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-=======
-
 Given que estoy en la informacion de la poliza con numero(s) de subscripcion <numSubscripcion>
 When  quiero agregar un tomador adicional que es riesgo consultable <cedula>
 And intente ingresar una nueva ubicacion(es)

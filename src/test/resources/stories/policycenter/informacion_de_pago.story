@@ -1,6 +1,6 @@
 informacion de pago
 
-Meta: @lote4
+Meta: @lote2
 
 @issue #CDSEG-2305
 @tag automator: Jonathan_Mejia_Leon
@@ -33,7 +33,7 @@ Examples:
 |22221239  |Factura directa |Plan de pagos|
 
 Scenario: Visualizar seleccion en programa de pagos retorno billing
-Meta: @lote3 @manual
+Meta:@manual
 Given que estoy en la pantalla de pago
 Then ingrese a la pantalla de pago
 Then debe dejarme seleccionar un SOLO plan de pagos en la tabla mostrada

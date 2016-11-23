@@ -16,11 +16,9 @@ GivenStories: stories/policycenter/login_policy.story
 Given inicio una nueva cotizacion
 When ingrese la cuenta <cuenta>
 And seleccione el agente <agente>
-And seleccione la organizacion <organizacion>
-And seleccione el canal <canal>
 And seleccione el producto <producto> para expedir la poliza
 Then no debe mostrar el menu vertical
 
 Examples:
-| cuenta     | agente  | organizacion | canal             | producto |
-| C000888888 | DIRECTO | Sura         | Canal Tradicional | Autos    |
+| cuenta     | agente  | producto |
+| C000888888 | DIRECTO | Autos    |

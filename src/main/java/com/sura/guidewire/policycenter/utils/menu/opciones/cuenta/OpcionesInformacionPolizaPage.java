@@ -6,8 +6,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
-import org.jbehave.core.model.ExamplesTable;
-import org.joda.time.LocalDateTime;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,8 +17,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class OpcionesInformacionPolizaPage extends PageUtil {
-
-    private static final String DD_MM_YYYY = "dd/MM/yyyy";
 
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
@@ -136,7 +132,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade mensajeValidacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
-    @FindBy(id = "SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
     private WebElementFacade campoOrganizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
     private WebElementFacade campoCanal;
@@ -146,38 +142,11 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade comboBoxNombreAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
     private WebElementFacade grupoMensajes;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducerCode-inputEl']")
-    private WebElementFacade campoAgente;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:Producer-inputEl']")
-    private WebElementFacade campoOficina;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-inputEl']")
-    private WebElementFacade tipoDocumento;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
-    private WebElementFacade numeroDocumento;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Name-inputEl']")
-    private WebElementFacade nombreTomador;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
-    private WebElementFacade telefonoTomador;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-inputEl']")
-    private WebElementFacade direccionTomador;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:AddressType-inputEl']")
-    private WebElementFacade tipoDirTomador;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:AddressDescription-inputEl']")
-    private WebElementFacade descripcionDireccionTomador;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
     private WebElementFacade menuInformacionPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div")
     private WebElementFacade mensajeFinanciacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:ChangePolicyAddressButton:ChangePolicyAddressButtonMenuIcon']/img")
-    private WebElementFacade botonCambiarDireccion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']/img")
-    private WebElementFacade botonCambiarTomador;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
-    private WebElementFacade linkCoaseguro;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:JobWizardInfoBar:PolicyNum-btnInnerEl']")
-    private WebElementFacade nroPolizaColectiva;
-
-    private static final int WAIT_TIME_30000 = 3000;
+    
     private static final int CONSTANTE_10 = 10;
     private static final int CONSTANTE_6 = 6;
     private static final int CONSTANTE_5 = 5;
@@ -503,61 +472,6 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
 
     public void validarMensajeFinanciacion(String mensaje){
         MatcherAssert.assertThat(mensajeFinanciacion.getText(),Is.is(Matchers.equalTo(mensaje)));
-    }
-
-    /**
-     * Métodos para las validaciones de pólizas hija de pólizas colectivas
-     */
-    public void validarInfoPolizaPA(ExamplesTable infoPolizaPA) {
-        Map<String, String> informacionPoliza = infoPolizaPA.getRows().get(0);
-        String fechaFin = LocalDateTime.now().plusYears(Integer.parseInt(informacionPoliza.get("aniosVigencia"))).toString(DD_MM_YYYY);
-        waitForTextToAppear("Información de póliza", WAIT_TIME_30000);
-        try {
-            MatcherAssert.assertThat(tipoDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDocumentoTomador"))));
-            MatcherAssert.assertThat(numeroDocumento.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("numeroDocumentoTomador"))));
-            MatcherAssert.assertThat(nombreTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("nombreTomador"))));
-            MatcherAssert.assertThat(telefonoTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("telefonoTomador"))));
-            MatcherAssert.assertThat(tipoDirTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoDireccionTomador"))));
-            MatcherAssert.assertThat(descripcionDireccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descripcionDirTomador"))));
-            MatcherAssert.assertThat(direccionTomador.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("direccionTomador"))));
-            MatcherAssert.assertThat(campoOrganizacion.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("organizacion"))));
-            MatcherAssert.assertThat(campoCanal.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("canal"))));
-            MatcherAssert.assertThat(campoTipoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPoliza"))));
-            MatcherAssert.assertThat(tipoPlazoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("tipoPlazo"))));
-            MatcherAssert.assertThat(fechaVigenciaPoliza.getValue(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(DD_MM_YYYY))));
-            MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), containsText(fechaFin));
-            MatcherAssert.assertThat(fechaEscrita.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(DD_MM_YYYY))));
-            MatcherAssert.assertThat(campoOficina.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("oficina"))));
-            MatcherAssert.assertThat(campoAgente.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("agente"))));
-            MatcherAssert.assertThat(textoDescuentoPoliza.getText(), Is.is(Matchers.equalTo(informacionPoliza.get("descuento"))));
-            setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
-            MatcherAssert.assertThat(botonCambiarDireccion.isVisible(), Is.is(Matchers.equalTo(false)));
-            MatcherAssert.assertThat(botonCambiarTomador.isVisible(), Is.is(Matchers.equalTo(false)));
-            MatcherAssert.assertThat(linkCoaseguro.isVisible(), Is.is(Matchers.equalTo(false)));
-            MatcherAssert.assertThat(polizaFinanciada.isVisible(), Is.is(Matchers.equalTo(false)));
-            MatcherAssert.assertThat(nroPolizaColectiva.isPresent(), Is.is(Matchers.equalTo(true)));
-            resetImplicitTimeout();
-        } catch (AssertionError assertionError) {
-            resetImplicitTimeout();
-            LOGGER.error("Algún elemento de la pantalla no es válido", assertionError);
-        }
-    }
-
-    public void validarFechaFinVigenciaPolizaColectivaAutos() {
-        MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().plusYears(1).toString(DD_MM_YYYY))));
-    }
-
-    public void validarFechaInicioVigenciaPolizaColectiva() {
-        MatcherAssert.assertThat(fechaVigenciaPoliza.getValue(), Is.is(Matchers.equalTo(LocalDateTime.now().toString(DD_MM_YYYY))));
-    }
-
-    public void validarFechaFinVigenciaPolizaColectivaCommercial(int numeroDias) {
-        MatcherAssert.assertThat(fechaExpiracionPoliza.getText(), Is.is(Matchers.equalTo(LocalDateTime.now().minusDays(numeroDias).plusYears(1).toString(DD_MM_YYYY))));
-    }
-
-    public void validarFechaInicioVigenciaMenorALaPolizaMadre(String mensaje) {
-        WebElementFacade mensajeFechaInicioColectiva = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div");
-        MatcherAssert.assertThat(mensajeFechaInicioColectiva.getText(), Matchers.containsString(mensaje + " (" + LocalDateTime.now().plusDays(1).toString(DD_MM_YYYY) + ")"));
     }
 }
 

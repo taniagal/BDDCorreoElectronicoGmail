@@ -1,6 +1,6 @@
 Calculo Tasa Global
 
-Meta: @lote3
+Meta: @lote2
 @issue #CDSEG-4326
 @issue #CDSEG-4333
 @sprint 9
@@ -28,7 +28,7 @@ Then debo poder ver el valor de la tasa global
 
 Examples:
 |departamento|ciudad  |direccion        |descripcion  |actividad|
-|Antioquia   |MEDELLIN|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 Scenario:  Validar tasa por departamento MRC
@@ -47,4 +47,4 @@ Then debo poder ver el mensaje de bloqueo <mensaje>
 
 Examples:
 |departamento|ciudad  |direccion        |descripcion  |actividad                    |valor|mensaje                                                             |
-|Antioquia   |MEDELLIN|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|0,5  |El valor ingresado no esta permitido ya que no cumple con el RT y RA|
+|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|0,5  |El valor ingresado no esta permitido ya que no cumple con el RT y RA|

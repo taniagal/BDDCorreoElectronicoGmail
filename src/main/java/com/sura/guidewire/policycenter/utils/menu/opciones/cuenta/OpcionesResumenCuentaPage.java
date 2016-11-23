@@ -253,7 +253,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
         MatcherAssert.assertThat(txtEmailSecundarioCompania.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtPais.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtDepartamento.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
-        MatcherAssert.assertThat(txtCiudad.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
+        MatcherAssert.assertThat(txtCiudadC.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtTipoDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtDescripcionDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));

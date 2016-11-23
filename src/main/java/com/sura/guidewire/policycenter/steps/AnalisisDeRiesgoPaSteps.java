@@ -10,17 +10,17 @@ public class AnalisisDeRiesgoPaSteps extends ScenarioSteps{
     private AnalisisDeRiesgoPaPage analisisDeRiesgo;
 
     @Step
-    public void aceptar_expedicion() {
+    public void aceptarExpedicion() {
         analisisDeRiesgo.aceptarExpedicion();
     }
 
     @Step
-    public void validar_Que_Se_Genere_Bloqueo(ExamplesTable mensaje) {
+    public void validarQueSeGenereBloqueo(ExamplesTable mensaje) {
         analisisDeRiesgo.validarBloqueoExpedicion(mensaje);
     }
 
     @Step
-    public void validar_Que_Se_Genere_UWIssue(ExamplesTable uwissue) {
+    public void validarQueSeGenereUWIssue(ExamplesTable uwissue) {
         analisisDeRiesgo.validarGeneracionUWIssue(uwissue);
     }
 }

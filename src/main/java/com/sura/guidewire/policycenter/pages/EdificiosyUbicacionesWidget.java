@@ -55,6 +55,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_EDITAR_TRANSACCION_POLIZA = ".//span[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']";
     private static final String XPATH_ACEPTAR = "//a[contains(.,'Aceptar')]";
     private static final String XPATH_DESCARTAR_CAMBIOS = "//a[contains(.,'Descartar cambios no guardados')]";
+    private static final String LABEL_EDIFICIOS_Y_UBICACIONES = "Edificios y ubicaciones";
 
     private static final int WAIT_TIME_250 = 250;
 
@@ -83,7 +84,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void agregarArticuloAPrimerUbicacion() {
-        waitForTextToAppear("Edificios y ubicaciones");
+        waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         if (tabla == null) {
             obtenerTabla();
         }
@@ -96,7 +97,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void agregarArticuloAPrimerUbicacionEnCambioDePoliza() {
-        waitForTextToAppear("Edificios y ubicaciones");
+        waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         if (tabla == null) {
             obtenerTabla();
         }
@@ -108,7 +109,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         shouldContainText(tituloDePaginaAgregarArticulos);
     }
     public void agregarArticuloAPrimerUbicacionEnRenovacionDePoliza() {
-        waitForTextToAppear("Edificios y ubicaciones");
+        waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         if (tabla == null) {
             obtenerTabla();
         }
@@ -121,7 +122,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void agregarNuevaUbicacion(String pais, String depto, String ciudad, String direccion, String actividadEconomica) {
-        waitForTextToAppear("Edificios y ubicaciones");
+        waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         findBy(LINK_AGREGAR_UBICACION).waitUntilVisible().waitUntilClickable();
         findBy(LINK_AGREGAR_UBICACION).shouldBeVisible();
         findBy(LINK_AGREGAR_UBICACION).click();
@@ -165,9 +166,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(WAIT_TIME_2).seconds();
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
-        findBy("//div[@class='message']").waitUntilVisible();
-        findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
-        waitForTextToAppear("Edificios y ubicaciones");
+        waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
     }
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
@@ -199,8 +198,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitUntil(WAIT_TIME_2000);
         findBy(XPATH_ACEPTAR).click();
         waitUntil(WAIT_TIME_2000);
-         if(findBy(XPATH_DESCARTAR_CAMBIOS).isVisible())
-         {
+         if(findBy(XPATH_DESCARTAR_CAMBIOS).isVisible()){
              waitUntil(WAIT_TIME_2000);
              findBy(XPATH_DESCARTAR_CAMBIOS).click();
              waitForTextToAppear("Información de póliza");

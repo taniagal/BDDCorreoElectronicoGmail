@@ -34,6 +34,11 @@ public class TarifaMRCSteps extends ScenarioSteps {
     }
 
     @Step
+    public void borrarArticulo(){
+        tarifaMRCPage.borrarArticulo();
+    }
+
+    @Step
     public void seleccionarDeducibleSi() {
         tarifaMRCPage.seleccionarDeducibleSi();
     }

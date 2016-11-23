@@ -1,9 +1,8 @@
 package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 
-import com.sura.guidewire.policycenter.pages.colectivas.NuevaPolizaPage;
-import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.AssertUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -25,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']")
-    WebElementFacade LblInformaPolizaEnRenovacion;
+    WebElementFacade lblInformaPolizaEnRenovacion;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade txtNomAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
@@ -106,10 +105,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade tablaProductos;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:Accepted-inputEl']")
     WebElementFacade checkiReaseguroAceptado;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:SalesOrganizationType-inputEl']")
-    private WebElementFacade listaOrganizacion;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:ChannelType-inputEl']")
-    private WebElementFacade listaCanal;
     @FindBy(xpath = "//a[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:addConinsuranceLink']")
     private WebElementFacade agregarCoaseguro;
     @FindBy(xpath = "//input[@id='Coinsurance_ExtPopup:CoinsuranceInputSet:coinsuranceTypeQuestion_true-inputEl']")
@@ -118,6 +113,12 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private WebElementFacade radioButtonCedido;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarPopup;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
+    private WebElementFacade menuItemInformacionDePoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']/div")
+    private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='Coinsurance_ExtPopup:Update-btnInnerEl']")
+    WebElementFacade botonAceptarCoaseguro;
 
 
     private static String lblMensajesAlerta = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
@@ -127,8 +128,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private static String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
     private boolean esVisible;
 
-
-    NuevaPolizaPage nuevaPolizaPage;
 
     Actions actions = new Actions(getDriver());
 
@@ -237,30 +236,16 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         return filaBoton;
     }
 
-    public void seleccionarOrganizacion(String organizacion) {
-        listaOrganizacion.waitUntilPresent();
-        listaOrganizacion.click();
-        listaOrganizacion.sendKeys(organizacion);
-        listaOrganizacion.sendKeys(Keys.ENTER);
-
-    }
-
-    public void seleccionarCanal(String canal) {
-        waitFor(WAIT_TIME_5).second();
-        listaCanal.click();
-        listaCanal.sendKeys(canal);
-        listaCanal.sendKeys(Keys.ENTER);
-        waitFor(WAIT_TIME_1).second();
-        listaCanal.sendKeys(Keys.TAB);
-    }
-
     public void seleccionarInformacionDePoliza(){
-        LblInformaPolizaEnRenovacion.click();
+        lblInformaPolizaEnRenovacion.click();
         waitForTextToAppear("Información de póliza");
     }
     public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras){
         waitFor(WAIT_TIME_3).second();
-        agregarCoaseguro.click();
+        menuItemInformacionDePoliza.click();
+        divMensaje.waitUntilPresent();
+        menuItemInformacionDePoliza.click();
+        agregarCoaseguro.waitUntilPresent().click();
         seleccionarElTipoDeCoaseguro(tipoCo);
         agregoLasAseguradoras(tablaaseguradoras);
 
@@ -424,4 +409,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
 
+    public void darClicEnAceptarDeCoaseuguro() {
+        botonAceptarCoaseguro.click();
+    }
 }

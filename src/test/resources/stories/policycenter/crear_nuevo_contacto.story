@@ -18,7 +18,7 @@ Then se debe crear una persona tipo natural con primer nombre <primerNombre>
 
 Examples:
 |tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion       |direccion  |departamento|ciudad  |
-|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |DIRECCION DE TRABAJO|CRA 50     |Antioquia   |MEDELLIN|
+|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |DIRECCION DE TRABAJO|CRA 50     |Antioquia   |Medellin|
 
 
 Scenario: Crear contacto persona juridica
@@ -32,7 +32,7 @@ Then se debe crear una persona tipo juridica con razon social <razonSocial>
 
 Examples:
 |tipoDocumento|numeroDeDocumento|razonSocial     | tipoDireccion       |direccion  |departamento|ciudad  |
-|NIT          |12452267         |LA VAQUITA      |DIRECCION DE TRABAJO |CRA 50     |Antioquia   |MEDELLIN|
+|NIT          |12452267         |LA VAQUITA      |DIRECCION DE TRABAJO |CRA 50     |Antioquia   |Medellin|
 
 
 Scenario: Validar Contacto Existente
@@ -47,7 +47,7 @@ Then debe validar que el contacto ya existe
 
 Examples:
 |tipoDocumento|numeroDeDocumento|razonSocial| tipoDireccion      |direccion|departamento|ciudad  |
-|NIT          |9202086745       |LA VAQUITA |DIRECCION DE TRABAJO|CRA 50   |Antioquia   |MEDELLIN|
+|NIT          |9202086745       |LA VAQUITA |DIRECCION DE TRABAJO|CRA 50   |Antioquia   |Medellin|
 
 
 
@@ -65,7 +65,7 @@ Then el campo de ciudad deben ser obligatorios
 
 Examples:
 |tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion       |direccion  |tipoTelefonoFijo     |numeroTelefonoFijo|departamento|ciudad  |
-|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |DIRECCION DE TRABAJO|CRA 50     |Vivienda             |12345678          |Antioquia   |MEDELLIN|
+|CEDULA DE CIUDADANIA   |23456897           |BRAYAN         |RUIZ           |DIRECCION DE TRABAJO|CRA 50     |Vivienda             |12345678          |Antioquia   |Medellin|
 
 
 
