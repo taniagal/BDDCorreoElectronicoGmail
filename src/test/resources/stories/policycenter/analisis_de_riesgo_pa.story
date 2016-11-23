@@ -4,6 +4,7 @@ Meta: @lote1
 
 @issue #CDSEG-993
 @tag automator: diego_cardona_acevedo
+@local
 @Sprint 9
 
 Narrative:
