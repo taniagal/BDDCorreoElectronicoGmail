@@ -151,7 +151,7 @@ public class PageUtil extends PageObject {
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisible at PageUtil 129 " + e);
         }
-        waitUntil(WAIT_TIME_2000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void desplegarElementoDeLista(WebElementFacade elementoDeLaLista) {
@@ -204,7 +204,7 @@ public class PageUtil extends PageObject {
             } catch (WebDriverException e) {
                 waitUntil(WAIT_TIME_2000);
                 LOGGER.info("WebDriverException " + e);
-                LOGGER.info(e.getStackTrace().toString());
+                LOGGER.info("-------------- " + i);
             }
         }
     }

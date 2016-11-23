@@ -133,10 +133,8 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     private WebElementFacade txtPais;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade txtDepartamento;
-    @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City-inputEl']")
-    private WebElementFacade txtCiudad;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
-    private WebElementFacade txtCiudadC;
+    private WebElementFacade txtCiudad;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade txtDireccion;
     @FindBy(xpath = ".//*[@id='EditAccountPopup:EditAccountScreen:AddressType-inputEl']")
@@ -218,7 +216,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
     }
 
     public void validarCamposEditablesPersona() {
-        waitForTextToAppear("Editar cuenta", WAIT_TIME_1000);
+        waitForTextToAppear("Editar cuenta");
         MatcherAssert.assertThat(txtPrimerNombre.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtSegundoNombre.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtPrimerApellido.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
@@ -253,7 +251,7 @@ public class OpcionesResumenCuentaPage extends PageUtil {
         MatcherAssert.assertThat(txtEmailSecundarioCompania.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtPais.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtDepartamento.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
-        MatcherAssert.assertThat(txtCiudadC.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
+        MatcherAssert.assertThat(txtCiudad.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtTipoDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
         MatcherAssert.assertThat(txtDescripcionDireccion.getTagName(), Is.is(Matchers.equalTo(VALIDAREDITABLES)));
@@ -288,8 +286,8 @@ public class OpcionesResumenCuentaPage extends PageUtil {
 
     public void validarCiudad(String ciudad) {
         waitUntil(WAIT_TIME_3000);
-        waitFor(txtCiudadC).shouldBePresent();
-        MatcherAssert.assertThat(txtCiudadC.getText(), Is.is(Matchers.equalTo(ciudad)));
+        waitFor(txtCiudad).shouldBePresent();
+        MatcherAssert.assertThat(txtCiudad.getText(), Is.is(Matchers.equalTo(ciudad)));
     }
 
     public void validarInformacionOculta() {

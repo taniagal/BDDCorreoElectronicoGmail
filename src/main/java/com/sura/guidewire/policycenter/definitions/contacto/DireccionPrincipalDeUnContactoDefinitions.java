@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.contacto;
 
-import com.sura.guidewire.policycenter.steps.commons.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
 import com.sura.guidewire.policycenter.steps.contacto.DetallesContactoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Named;
@@ -14,7 +14,7 @@ public class DireccionPrincipalDeUnContactoDefinitions {
     DetallesContactoSteps detallesContactoSteps;
 
     @Steps
-    SeusLoginSteps seusLoginSteps;
+    LoginSteps loginSteps;
 
     @When("se vaya a ingresar la nueva direccion y valide los campos en pantalla")
     public void irADirecciones() {
