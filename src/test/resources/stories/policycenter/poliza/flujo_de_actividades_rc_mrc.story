@@ -1,6 +1,6 @@
 Flujo De Actividades Rc Mrc
 Meta:
-@lote1
+@lote2
 @Story CDSEG-
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
@@ -53,6 +53,7 @@ Examples:
 | TEST_99999999 | Asesor     | 9876543 | Asegurado        |
 
 
+
 Scenario: 3 Validar que se genere actividad de riesgo consultable al renovar una poliza
 
 Given que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
@@ -73,12 +74,8 @@ Examples:
 
 Scenario: 4 Validar cierre automatico de la actividad
 
-Meta: @manual
-@Story CDSEG-
-@URL https://jira.suramericana.com.co/browse/CDSEG-3124
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 9
-
+Meta:
+@manual
 
 Given  que se proceso el formulario por parte de los diferentes comites
 When se obtenga respuesta afirmativa o negativa
@@ -92,12 +89,8 @@ Examples:
 Scenario: 5 Validar que se genere actividad al expedidor
 
 
-Meta: @manual
-@Story CDSEG-
-@URL https://jira.suramericana.com.co/browse/CDSEG-3124
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 9
-
+Meta:
+@manual
 
 Given  que se proceso el formulario por parte de los diferentes comites
 When se obtenga respuesta afirmativa o negativa

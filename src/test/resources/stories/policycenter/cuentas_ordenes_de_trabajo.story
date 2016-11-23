@@ -1,6 +1,6 @@
 Cuentas Ordenes De Trabajo
 
-Meta: @lote1
+Meta: @lote2
 
 @issue #CDSEG-967
 @tag automator:andres_alarcon_guerrero, informer:pablo_armando_gonzales_restrepo, sprint:1
