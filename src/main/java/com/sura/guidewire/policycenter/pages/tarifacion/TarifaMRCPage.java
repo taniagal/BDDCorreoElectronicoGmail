@@ -5,7 +5,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 import java.util.List;
 import java.util.Map;
@@ -94,11 +94,11 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void seleccionarCobertura(ExamplesTable datos) {
-        for(Map<String, String> dato : datos.getRows()) {
+        for (Map<String, String> dato : datos.getRows()) {
             if (labelcobertura.containsText(dato.get("cobertura"))) {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
                 campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
-            }else {
+            } else {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']");
                 campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
             }
@@ -157,8 +157,23 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarTasaGlobal() {
         double tasaGlobal = 0;
-        labelPrimaTotal.waitUntilPresent();
-        primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, 10).replace(".", ""));
+        try {
+            labelPrimaTotal.waitUntilPresent();
+            primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, 10).replace(".", ""));
+        } catch (UnhandledAlertException f) {
+            LOGGER.info("UnhandledAlertException " + f);
+            try {
+                Alert alert = getDriver().switchTo().alert();
+                String alertText = alert.getText();
+                LOGGER.info("Alert data: " + alertText);
+                alert.accept();
+            } catch (NoAlertPresentException e) {
+                LOGGER.info("NoAlertPresentException " + e);
+            }
+            waitUntil(WAIT_TIME_2000);
+            labelPrimaTotal.waitUntilPresent();
+            primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, 10).replace(".", ""));
+        }
         menuItemModificadores.click();
         campoTxtTasaGlobal.waitUntilPresent();
         tasaGlobal = primaTotal / valorAsegurado;
@@ -186,6 +201,6 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarTarifacionEnCobertura(String prima) {
         MatcherAssert.assertThat("Error en el valor de la cobertura Expected: " + prima + " But was: " +
-                montoCobertura.getText(),montoCobertura.containsText(prima));
+                montoCobertura.getText(), montoCobertura.containsText(prima));
     }
 }
