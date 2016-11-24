@@ -127,6 +127,11 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.ingresar_tomador_adicional(cedula);
     }
 
+    @When("seleccione poliza de tipo no reaseguro especial")
+    public void cuandoSeleccionPolizDeTipoNoReaseguroEspecial(){
+        informacionDePolizaMrcSteps.seleccionar_poliza_tipo_no_reaseguro();
+    }
+
     @Then("se debe mostrar un mensaje de error <mensaje> <mensaje2>")
     public void mensajesDeErrorRiesgosYPeps(@Named("mensaje") String mensaje,
                                             @Named("mensaje2") String mensaje2) {

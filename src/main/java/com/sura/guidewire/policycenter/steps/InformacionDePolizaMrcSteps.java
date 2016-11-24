@@ -121,6 +121,10 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     public void ingresar_a_informacion_de_poliza(){
         opcionesInformacionPolizaMrcPage.seleccionarInformacionDePoliza();
     }
+    @Step
+    public void seleccionar_poliza_tipo_no_reaseguro(){
+        opcionesInformacionPolizaMrcPage.seleccionarTipoNoReaseguro();
+    }
 
     @Step
     public void darClicEnAceptarDeCoaseuguro() {
