@@ -100,9 +100,11 @@ public class BusquedaContactoPage extends PageUtil {
     }
 
     public void irABuscarContacto() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuBuscar).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuBuscar).waitUntilPresent();
+        clickElement(menuBuscar);
         waitForTextToAppear("Buscar pólizas");
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuBuscarContacto).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuBuscarContacto).waitUntilPresent();
+        clickElement(menuBuscarContacto);
         waitForTextToAppear(BUSQUEDADECONTACTOS);
     }
 
