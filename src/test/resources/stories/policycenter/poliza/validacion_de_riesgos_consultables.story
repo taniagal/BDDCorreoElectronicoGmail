@@ -26,7 +26,7 @@ Then se deben validar los riesgos consultables mostrando los siguientes mensaje 
 
 Examples:
 | numSubscripcion | rolUsuario | cedula  | tipoBeneficiario |
-| 0013335301       | Asesor     | 9876543 | Asegurado       |
+| 22266771        | Asesor     | 9876543 | Asegurado        |
 
 Scenario: 2 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al modificar nueva poliza
 
