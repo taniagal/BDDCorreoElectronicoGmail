@@ -12,8 +12,6 @@ quiero poder solicitar autorización a los comites de Riesgos consultables
 para poder cotizar o expedir una poliza
 
 
-
-
 Scenario: 1 Validar que se genere actividad de riesgo consultable al cotizar una poliza
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:

@@ -51,6 +51,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade btnSiguinete;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
     WebElementFacade btnSiguineteCambioDePoliza;
+    @FindBy(xpath = ".//input[contains(@id,'false-inputEl')]")
+    WebElementFacade btnNoReaseguroEspecial;
     @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
     WebElementFacade btnSiguineteRenovacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton-btnInnerEl']")
@@ -171,7 +173,11 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         btnSiguinete.click();
     }
     public void seleccionBotonSiguienteenCambioDePoliza()    {
+        btnNoReaseguroEspecial.click();
+        waitUntil(WAIT_TIME_5000);
         btnSiguineteCambioDePoliza.click();
+        waitUntil(WAIT_TIME_5000);
+        waitForTextToAppear("Edificios y ubicaciones");
     }
 
     public void seleccionBotonSiguienteenRenovacionDePoliza()    {
@@ -391,6 +397,11 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         }
         resetImplicitTimeout();
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
+    }
+
+    public void seleccionarTipoNoReaseguro(){
+        btnNoReaseguroEspecial.click();
+        waitUntil(WAIT_TIME_5000);
     }
 
     public void validaFormularioDescripDireccion() {

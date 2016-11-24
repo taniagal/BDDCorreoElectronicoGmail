@@ -24,6 +24,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
     private static final String LINK_AGREGAR_UBICACION = "//a[contains(.,'Agregar ubicación')]";
     private static final String XPATH_COTIZAR = "//a[contains(.,'Cotizar')]";
+    private static final String XPATH_BORRAR = "//a[contains(.,'Borrar')]";
     private static final String LINK_OPCION_UBICACION_NUEVA = "//a[contains(.,'Ubicación nueva')]";
     private static final String XPATH_LEGEND_COBERTURA_DE_RIESGO = ".//legend[ (descendant::div[contains(., '";
     private static final String INPUT = "input";
@@ -177,8 +178,13 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         $(xpathActividadEconomica).sendKeys(Keys.ENTER);
         waitFor(WAIT_TIME_2).seconds();
 
+
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
-        waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
+
+        if (findBy(".//a[contains(.,'Borrar')]").isVisible()) {
+            findBy(".//*[@id='CPLocationPopup:Update-btnInnerEl']").click();
+            waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
+        }
     }
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
