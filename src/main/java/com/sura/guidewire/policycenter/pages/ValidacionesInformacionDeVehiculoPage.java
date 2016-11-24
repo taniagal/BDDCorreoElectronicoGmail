@@ -120,12 +120,19 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     private void ingresarPlaca(Map<String, String> vehiculo) {
+        waitUntil(WAIT_TIME_1000);
         if (!"random".equals(vehiculo.get("placa"))) {
             ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
         } else {
             String placa = "QWE" + (int) Math.floor(Math.random() * (100 - 999) + 999);
             campoTxtPlaca.clear();
-            ingresarDato(campoTxtPlaca, placa);
+            try {
+                ingresarDato(campoTxtPlaca, placa);
+            } catch (StaleElementReferenceException e) {
+                waitUntil(WAIT_TIME_2000);
+                ingresarDato(campoTxtPlaca, placa);
+                LOGGER.info("StaleElementReferenceException at ValidacionesInformacionDeVehiculo Page 129 " + e);
+            }
         }
         waitUntil(WAIT_TIME_1000);
     }
@@ -133,9 +140,9 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private void waitForCampoTxtValorAsegurado(Map<String, String> vehiculo) {
         try {
             waitForValorAsegurado(vehiculo);
-        }catch (TimeoutException e){
+        } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
-            selectItem(comboBoxModelo,"2010");
+            selectItem(comboBoxModelo, "2010");
             waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2010"));
             seleccionarComboBoxModelo(vehiculo);
         }

@@ -345,8 +345,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
 
-
-
     public void validaCamposPoliza() {
         StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
         noPresente = concatenarElementoNoPresente(lblTipoDocumento, "Label errado: Tipo documento|", noPresente);

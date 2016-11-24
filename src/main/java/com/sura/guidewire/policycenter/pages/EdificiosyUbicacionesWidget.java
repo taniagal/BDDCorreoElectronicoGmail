@@ -12,8 +12,7 @@ import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
@@ -22,9 +21,6 @@ import java.util.concurrent.TimeUnit;
 
 
 public class EdificiosyUbicacionesWidget extends PageUtil {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
     private static final String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
     private static final String LINK_AGREGAR_UBICACION = "//a[contains(.,'Agregar ubicación')]";
     private static final String XPATH_COTIZAR = "//a[contains(.,'Cotizar')]";
@@ -85,7 +81,22 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void agregarArticuloAPrimerUbicacion() {
-        waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
+        waitUntil(WAIT_TIME_2000);
+        try {
+            waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
+        } catch (UnhandledAlertException f) {
+            LOGGER.info("UnhandledAlertException " + f);
+            try {
+                Alert alert = getDriver().switchTo().alert();
+                String alertText = alert.getText();
+                LOGGER.info("Alert data: " + alertText);
+                alert.accept();
+            } catch (NoAlertPresentException e) {
+                waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
+                waitUntil(WAIT_TIME_2000);
+                LOGGER.info("NoAlertPresentException " + e);
+            }
+        }
         if (tabla == null) {
             obtenerTabla();
         }
