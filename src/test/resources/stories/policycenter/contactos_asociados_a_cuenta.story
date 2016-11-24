@@ -1,12 +1,14 @@
-Meta: @lote2
+Contactos Asociados A Cuenta
+
+Meta:
+@lote2
+@Story CDSEG-845
+@tag automator:andres_alarcon_guerrero
+@tag automator:juan_carlos_restrepo
+@Sprint 1
+
 Narrative: Modificación de la lista de los  filtros de búsqueda de los contactos de la cuenta (Rol y tipo de persona)
 
-Meta: @lote2
-@Story CDSEG-845
-@URL https://jira.suramericana.com.co/browse/CDSEG-845
-@tag automator:andres_alarcon_guerrero, informer:liliana_restrepo_munneton, sprint:1
-
-@Sprint 1
 
 Scenario: Correccion Bug, validacion de direccion de un contacto de facturacion
 GivenStories: stories/policycenter/login_policy.story
