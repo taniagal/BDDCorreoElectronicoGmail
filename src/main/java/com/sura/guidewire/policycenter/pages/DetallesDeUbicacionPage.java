@@ -1,19 +1,19 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class DetallesDeUbicacionPage extends PageUtil {
@@ -81,7 +81,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
     public void seleccionarProducto(String nomProducto) {
         try {
             waitForTextToAppear(nomProducto);
-        }catch (TimeoutException e){
+        } catch (TimeoutException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             LOGGER.info(e.getStackTrace().toString());
             selectItem(comboBoxNombreAgente, "ADHR");
@@ -133,7 +133,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
         seleccionarProducto(dato.get("producto"));
-        if("Autos".equals(dato.get("producto"))) {
+        if ("Autos".equals(dato.get("producto"))) {
             withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(subMenuInformacionPoliza).waitUntilPresent().click();
             waitForTextToAppear("Información de póliza");
             comboBoxOrganizacion.waitUntilPresent();
@@ -143,7 +143,13 @@ public class DetallesDeUbicacionPage extends PageUtil {
                 waitUntil(WAIT_TIME_1000);
                 selectItem(comboBoxCanal, dato.get("canal"));
                 waitForComboValue(comboBoxCanal, dato.get("canal"));
-                selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
+                try {
+                    selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
+                } catch (ElementNotVisibleException e) {
+                    LOGGER.info("ElementNotVisibleException " + e);
+                    waitUntil(WAIT_TIME_2000);
+                    selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
+                }
                 waitForComboValue(comboTipoPoliza, dato.get("tipoPoliza"));
             }
         }
