@@ -11,6 +11,7 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -57,8 +58,6 @@ public class BusquedaActividadesPage extends PageUtil {
     private WebElementFacade menuBuscarActividades;
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     private WebElementFacade botonRestablecer;
-
-    Actions actions = new Actions(getDriver());
 
     public BusquedaActividadesPage(WebDriver driver) {
         super(driver);
@@ -148,6 +147,12 @@ public class BusquedaActividadesPage extends PageUtil {
         waitFor(elemento);
         elemento.clear();
         elemento.sendKeys(dato);
+        try {
         elemento.sendKeys(Keys.ENTER);
+        }catch (StaleElementReferenceException e){
+            LOGGER.info("StaleElementReferenceException " + e);
+            waitUntil(WAIT_TIME_500);
+            ingresarDatoEnCombo(elemento,dato);
+        }
     }
 }

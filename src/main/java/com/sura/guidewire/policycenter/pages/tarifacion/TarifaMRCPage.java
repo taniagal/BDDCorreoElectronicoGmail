@@ -5,9 +5,11 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.UnhandledAlertException;
+import org.openqa.selenium.WebDriver;
 
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -64,19 +66,38 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade radioBotonDeducibleNo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:Modifiers']")
     private WebElementFacade menuItemModificadores;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[6]/td[3]")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[4]/td[3]")
     private WebElementFacade montoCobertura;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[6]/td[3]")
+    private WebElementFacade montoCobertura2;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[4]/td[1]")
+    private WebElementFacade labelDescripcionCobertura;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     double valorAsegurado = 0;
     double primaTotal = 0;
+    String cobertura = "";
 
     public TarifaMRCPage(WebDriver driver) {
         super(driver);
     }
 
     public void verificarTarifacion(String prima) {
-        labelPrimaTotal.waitUntilPresent();
+        try {
+            labelPrimaTotal.waitUntilPresent();
+        } catch (UnhandledAlertException f) {
+            LOGGER.info("UnhandledAlertException " + f);
+            try {
+                Alert alert = getDriver().switchTo().alert();
+                String alertText = alert.getText();
+                LOGGER.info("Alert data: " + alertText);
+                alert.accept();
+            } catch (NoAlertPresentException e) {
+                LOGGER.info("NoAlertPresentException " + e);
+            }
+            waitUntil(WAIT_TIME_2000);
+            labelPrimaTotal.waitUntilPresent();
+        }
         MatcherAssert.assertThat("Error en el valor de la prima. Esperaba: " + prima + " pero fue: " + labelPrimaTotal.getText(),
                 labelPrimaTotal.containsText(prima));
     }
@@ -94,6 +115,7 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void seleccionarCobertura(ExamplesTable datos) {
+        cobertura = datos.getRow(0).get("cobertura");
         for (Map<String, String> dato : datos.getRows()) {
             if (labelcobertura.containsText(dato.get("cobertura"))) {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
@@ -176,9 +198,9 @@ public class TarifaMRCPage extends PageUtil {
         }
         menuItemModificadores.click();
         campoTxtTasaGlobal.waitUntilPresent();
-        tasaGlobal = primaTotal / valorAsegurado;
-        MatcherAssert.assertThat("", campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0, 4)
-                .replace(".", ",")));
+        tasaGlobal = ((primaTotal / valorAsegurado) * 1000) + 0.00003;
+        MatcherAssert.assertThat("Error: el valor de la tasa global es incorrecto, was: " + campoTxtTasaGlobal.getText(),
+                campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0, 7).replace(".", ",")));
     }
 
 
@@ -200,6 +222,9 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void verificarTarifacionEnCobertura(String prima) {
+        if (!labelDescripcionCobertura.containsText(cobertura)) {
+            montoCobertura = montoCobertura2;
+        }
         MatcherAssert.assertThat("Error en el valor de la cobertura Expected: " + prima + " But was: " +
                 montoCobertura.getText(), montoCobertura.containsText(prima));
     }
