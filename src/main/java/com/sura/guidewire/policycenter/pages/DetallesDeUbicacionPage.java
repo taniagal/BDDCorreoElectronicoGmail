@@ -134,16 +134,18 @@ public class DetallesDeUbicacionPage extends PageUtil {
         actions.sendKeys(Keys.ENTER).build().perform();
         seleccionarProducto(dato.get("producto"));
         if("Autos".equals(dato.get("producto"))) {
-            subMenuInformacionPoliza.waitUntilPresent().click();
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(subMenuInformacionPoliza).waitUntilPresent().click();
             waitForTextToAppear("Información de póliza");
             comboBoxOrganizacion.waitUntilPresent();
-            selectItem(comboBoxOrganizacion, dato.get("organizacion"));
-            waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
-            waitUntil(WAIT_TIME_1000);
-            selectItem(comboBoxCanal, dato.get("canal"));
-            waitForComboValue(comboBoxCanal, dato.get("canal"));
-            selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
-            waitForComboValue(comboTipoPoliza, dato.get("tipoPoliza"));
+            if (!comboBoxOrganizacion.getValue().equals(dato.get("producto"))) {
+                selectItem(comboBoxOrganizacion, dato.get("organizacion"));
+                waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
+                waitUntil(WAIT_TIME_1000);
+                selectItem(comboBoxCanal, dato.get("canal"));
+                waitForComboValue(comboBoxCanal, dato.get("canal"));
+                selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
+                waitForComboValue(comboTipoPoliza, dato.get("tipoPoliza"));
+            }
         }
     }
 
