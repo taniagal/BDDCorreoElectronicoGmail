@@ -30,6 +30,7 @@ Examples:
 
 
 Scenario:  Tarifa MRC - Cobertura Terremoto en Caldas con deducible
+GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto               |canal            |
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
@@ -48,6 +49,7 @@ Examples:
 
 
 Scenario:  Tarifa MRC - Cobertura Terremoto en Caldas sin deducible
+GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto               |canal            |
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
