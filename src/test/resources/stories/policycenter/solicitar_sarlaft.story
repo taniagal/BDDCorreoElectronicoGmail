@@ -1,11 +1,19 @@
+Solicitar Sarlaft
+
 Meta:
+
+@issue #CDSEG-834
+@tag automator: diego_cardona_acevedo
+@local
+@Sprint 10
+@lote4
 
 Narrative:
 Como usuario de negocio
 Quiero que se levante el requisito de sarlaft de en el pub Visual de requisitos
 y habilitar el boton de Sarlaft para cada figura diferente (Tomador, asegurado  y beneficiario en el caso de que este sea gratiuto)
 
-Scenario: Habilitar opcion Sarlaft en expedicion - Tomador
+Scenario: Habilitar opcion Sarlaft en expedicion
 GivenStories: stories/policycenter/login_policy.story
 Given existe una cotizacion <numeroCotizacion>
 When intente expedir la poliza cuyas figuras requieran Sarlaft
@@ -18,7 +26,7 @@ Examples:
 |numeroCotizacion|
 |22222228        |
 
-Scenario: Habilitar opcion Sarlaft en modificacion - Tomador
+Scenario: Habilitar opcion Sarlaft en modificacion
 Given existe una cotizacion <numeroCotizacion>
 When intente expedir la modificacion cuyas figuras requieran Sarlaft
 And vaya a la opcion de analisis de riesgo
