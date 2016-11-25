@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.definitions.colectivas;
 
 import com.sura.guidewire.policycenter.steps.colectivas.ConfiguracionModeloDeDatosColectivosSteps;
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
@@ -14,8 +15,13 @@ public class ConfiguracionModeloDeDatosColectivosDefinitions {
         datosColectivosSteps.ingresarAPolicyInfo();
     }
 
-    @Then("se deben ver los nuevos campos agregados con sus estados iniciales respectivos")
-    public void verificarestadoDeCamposNuevos(){
-        datosColectivosSteps.verificarEstadoDeCamposNuevos();
+    @Then("se deben ver los nuevos campos agregados con sus estados iniciales respectivos <tipo_facturacion>")
+    public void verificarestadoDeCamposNuevos(@Named("tipo_facturacion") String tipoFacturacion){
+        datosColectivosSteps.verificarEstadoDeCamposNuevos(tipoFacturacion);
+    }
+
+    @Then("se deben ver los nuevos campos agregados con sus estados iniciales respectivos para el tipo de facturacion <tipo_facturacion>")
+    public void verificarestadoDeCamposEnFacturacionPorRiego(@Named("tipo_facturacion") String tipoFacturacion){
+        datosColectivosSteps.verificarestadoDeCamposEnFacturacionPorRiego(tipoFacturacion);
     }
 }

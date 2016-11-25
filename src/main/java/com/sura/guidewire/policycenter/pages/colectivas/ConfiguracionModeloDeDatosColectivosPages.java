@@ -1,4 +1,4 @@
-package com.sura.guidewire.policycenter.pages;
+package com.sura.guidewire.policycenter.pages.colectivas;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
@@ -30,15 +30,22 @@ public class ConfiguracionModeloDeDatosColectivosPages extends PageUtil {
         clickElement(menuItemInformacionDePoliza);
     }
 
-    public void verificarEstadosDeCamposNuevos() {
+    public void verificarEstadosDeCamposNuevos(String tipoFacturacion) {
         campoDiaDeFacturacion.waitUntilPresent();
         int diaFacturacion = Integer.parseInt(campoDiaDeFacturacion.getText());
         int diaInicioVigencia = Integer.parseInt(comboCobFechaDeInicioDeVigencia.getValue().substring(0, 2));
         MatcherAssert.assertThat("Error: el día de facturacion no es igual al dia de inicio de vigencia de la poliza" +
-                " Expected: "+ diaInicioVigencia + " but was: " + diaFacturacion, diaFacturacion == diaInicioVigencia);
+                " Expected: " + diaInicioVigencia + " but was: " + diaFacturacion, diaFacturacion == diaInicioVigencia);
+        MatcherAssert.assertThat("Error: el tipo de vigencia por defecto no es Cerrada", campoTipoDeVigencia.containsText("Cerrada"));
+        MatcherAssert.assertThat("Error: el tipo de facturacion por defecto no es Grupal", campoTipoDeFacturacion.containsText(tipoFacturacion));
+        MatcherAssert.assertThat("Error: el tipo de devolucion por defecto no es Grupal", campoTipoDeDevolucion.containsText(tipoFacturacion));
+        MatcherAssert.assertThat("Error: el campo dia de facturacion no debe ser editable", !campoDiaDeFacturacion.getAttribute("class").contains("x-form-text"));
+        MatcherAssert.assertThat("Error: el valor del tipo de devolucion debe ser igual al del tipo de facturacion",
+                campoTipoDeDevolucion.getText().equals(campoTipoDeFacturacion.getText()));
+    }
 
-        MatcherAssert.assertThat("Error: el tipo de vigencia por defecto no es Cerrada",campoTipoDeVigencia.containsText("Cerrada"));
-        MatcherAssert.assertThat("Error: el tipo de facturacion por defecto no es Grupal",campoTipoDeFacturacion.containsText("Grupal"));
-        MatcherAssert.assertThat("Error: el tipo de devolucion por defecto no es Grupal",campoTipoDeDevolucion.containsText("Grupal"));
+    public void verificarEstadosCamposEnFacturacionPorRiesgo(String tipoFacturacion) {
+        MatcherAssert.assertThat("Error: esta cotizacion debe tener tipo de facturacion Por riesgo", campoTipoDeFacturacion.containsText(tipoFacturacion));
+        MatcherAssert.assertThat("Error: el campo dia de facturacion debe ser editable", campoDiaDeFacturacion.getAttribute("class").contains("x-form-text"));
     }
 }

@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.steps.colectivas;
 
-import com.sura.guidewire.policycenter.pages.ConfiguracionModeloDeDatosColectivosPages;
+import com.sura.guidewire.policycenter.pages.colectivas.ConfiguracionModeloDeDatosColectivosPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -18,7 +18,12 @@ public class ConfiguracionModeloDeDatosColectivosSteps  extends ScenarioSteps{
     }
 
     @Step
-    public void verificarEstadoDeCamposNuevos(){
-        datosColectivosPages.verificarEstadosDeCamposNuevos();
+    public void verificarEstadoDeCamposNuevos(String tipoFacturacion){
+        datosColectivosPages.verificarEstadosDeCamposNuevos(tipoFacturacion);
+    }
+
+    @Step
+    public void verificarestadoDeCamposEnFacturacionPorRiego(String tipoFacturacion) {
+        datosColectivosPages.verificarEstadosCamposEnFacturacionPorRiesgo(tipoFacturacion);
     }
 }
