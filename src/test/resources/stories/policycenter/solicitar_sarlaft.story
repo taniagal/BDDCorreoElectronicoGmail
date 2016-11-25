@@ -17,3 +17,15 @@ Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft
 Examples:
 |numeroCotizacion|
 |22222228        |
+
+Scenario: Habilitar opcion Sarlaft en modificacion - Tomador
+Given existe una cotizacion <numeroCotizacion>
+When intente expedir la modificacion cuyas figuras requieran Sarlaft
+And vaya a la opcion de analisis de riesgo
+Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft en modificacion
+|mensaje|
+|Para el contacto ANTONIO RESTREPO con número de documento 71123456 se requiere que diligencie el Sarlaft, para diligenciarlo por favor ingrese.|
+
+Examples:
+|numeroCotizacion|
+|55570000        |
