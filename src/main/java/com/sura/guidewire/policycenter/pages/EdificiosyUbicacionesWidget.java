@@ -478,7 +478,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void cliclearBtnCotizar() {
         WebElementFacade btnAgregarArticulo = findBy(XPATH_COTIZAR).waitUntilVisible().waitUntilClickable();
-        btnAgregarArticulo.click();
+        btnAgregarArticulo.waitUntilPresent().click();
         waitFor(WAIT_TIME_4).second();
     }
 

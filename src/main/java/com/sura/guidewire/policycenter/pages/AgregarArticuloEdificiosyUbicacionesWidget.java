@@ -9,9 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
 
 public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
     private static String CHECK_EDIFICIO = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']";
     private static String CHECK_EDIFICIO_DANOS_MATERIALES = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox')]";
     private static String TXT_VALOR_RECONSTRUCCION = "//input[contains(@id,'CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl')]";
@@ -67,8 +64,8 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
 
     public void seleccionarBotonAceptarParteSuperiorIzquierda() {
         try {
-            findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).waitUntilVisible().waitUntilClickable();
-            findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).click();
+            findBy(LINK_ACEPTAR_AGREGAR_ARTICULO).waitUntilPresent();
+            clickElement(findBy(LINK_ACEPTAR_AGREGAR_ARTICULO));
         }catch (Exception e) {
             LOGGER.info("ELEMENTO NO CLICKLEABLE" + e);
         }
