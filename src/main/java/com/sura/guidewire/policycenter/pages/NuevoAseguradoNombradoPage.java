@@ -2,10 +2,14 @@ package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.TimeUnit;
 
 public class NuevoAseguradoNombradoPage extends PageUtil {
 
@@ -36,8 +40,22 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
     private WebElementFacade cboDetalleTipoDireccion;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade cboDetalleDireccion;
-    @FindBy(xpath = ".//a[contains(.,'Actualizar')]")
+    @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:ForceDupCheckUpdate']")
     private WebElementFacade btnActualizar;
+    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:addContactButton']")
+    private WebElementFacade botonCrearcontacto;
+    @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:LinkAddressMenuMenuIcon']")
+    private WebElementFacade botonDireccionAsociada;
+    @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail:PrimaryAddress-textEl']")
+    private WebElementFacade itemDireccionContactoAsociada;
+    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:addContactButton:0:roleType:0:contactType']")
+    private WebElementFacade itemNuevaPersonaNatural;
+    @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:Cancel']")
+    private WebElementFacade botonCancelar;
+
+
+
+
 
     public NuevoAseguradoNombradoPage(WebDriver driver) {
         super(driver);
@@ -73,12 +91,47 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
             waitUntil(WAIT_TIME_1000);
             txtDireccion.type("CL 45 - 56 A 109");
             waitUntil(WAIT_TIME_2000);
-            btnActualizar.click();
+            clickActualizar();
             esAsociado = Boolean.TRUE;
         } catch (Exception e) {
             LOGGER.error("This is error : " + e);
-            esAsociado =  Boolean.FALSE;
+            esAsociado = Boolean.FALSE;
         }
         return esAsociado;
+    }
+
+    public void verificarDireccionContacto() {
+        botonCrearcontacto.waitUntilPresent().click();
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        itemNuevaPersonaNatural.waitUntilPresent().click();
+        botonDireccionAsociada.click();
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+        itemDireccionContactoAsociada.waitUntilPresent();
+        MatcherAssert.assertThat("Error: Campo de direccion contacto asociado vacia", !itemDireccionContactoAsociada.getText().equals("*<vacío>"));
+        clickCancelar();
+        botonCrearcontacto.waitUntilPresent();
+    }
+
+    public void clickActualizar() {
+        btnActualizar.click();
+        try {
+            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(botonCrearcontacto).waitUntilPresent();
+        } catch (TimeoutException e) {
+            LOGGER.info("TimeoutException " + e);
+            btnActualizar.click();
+        }
+    }
+
+
+    public void clickCancelar() {
+        botonCancelar.click();
+        try {
+            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(botonCrearcontacto).waitUntilPresent();
+        } catch (TimeoutException e) {
+            LOGGER.info("TimeoutException " + e);
+            botonCancelar.click();
+        }
     }
 }
