@@ -19,7 +19,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     private WebElementFacade mnuTransaccionesPoliza;
     @FindBy(xpath = "//div[3]/div/table/tbody/tr/td/div")
     private WebElementFacade fechaCreacion;
-    @FindBy(xpath = "//div/table/tbody/tr/td[2]/div")
+    @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']/*/table/tbody/tr/td[2]/div")
     private WebElementFacade poliza;
     @FindBy(xpath = "//td[3]/div")
     private WebElementFacade producto;

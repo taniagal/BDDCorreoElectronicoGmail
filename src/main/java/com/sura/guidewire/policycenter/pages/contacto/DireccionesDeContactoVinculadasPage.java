@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 
 
 public class DireccionesDeContactoVinculadasPage extends PageUtil {
-    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-botonInnerEl']")
+    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
     private WebElementFacade botonActualizar;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:EditAddress']")
     private WebElementFacade botonEditarDireccion;
@@ -39,7 +39,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
     private WebElementFacade campoTxtTipoDireccion;
     @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:AddressDescription-inputEl']")
     private WebElementFacade campoTxtDescripcion;
-    @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:UpdateAllButton-botonInnerEl']")
+    @FindBy(xpath = ".//*[@id='LinkedAddressEditPopup:UpdateAllButton-btnInnerEl']")
     private WebElementFacade botonActualizarDireccionesLigadas;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
     private WebElementFacade campoTxtDepartamentoContacto;
@@ -55,7 +55,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
     private WebElementFacade tabla;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesPanelSet:AddressDetailDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
     private WebElementFacade campoDireccionDetalleDirecciones;
-    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-botonInnerEl']")
+    @FindBy(xpath = "//*[@id='EditAccountContactPopup:ContactDetailScreen:Update-btnInnerEl']")
     private WebElementFacade botonActualizarContacto;
     @FindBy(xpath = ".//*[@id='EditAccountContactPopup:__crumb__']")
     private WebElementFacade linkVolverAContacto;
@@ -65,12 +65,14 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
     private WebElementFacade mensajeDireccionVinculada;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:ttlBar']")
     private WebElementFacade titulo;
+    @FindBy(xpath = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesCardTab-btnInnerEl']")
+    private WebElementFacade pestanaDirecciones;
 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private static final String XPATH_DIRECCION_DETALLE = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']";
     private static final String XPATH_BOTON_ASOCIAR_DIRECCION = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:LinkAddressMenuMenuIcon']/img";
-    private static final String XPATH_BOTON_CANCELAR = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-botonInnerEl']";
+    private static final String XPATH_BOTON_CANCELAR = ".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-btnInnerEl']";
     private static final String DEPARTAMENTO = "departamento";
     private static final String CIUDAD = "ciudad";
     private static final String DIRECCION = "direccion";
@@ -111,7 +113,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
         botonLaMismaDireccionQue.click();
         WebElementFacade menuContactoTitular = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail']");
         accion.moveToElement(menuContactoTitular).release(menuContactoTitular).build().perform();
-        WebElementFacade menuContactoDireccionPrincipal = esperarElemento(".//*[@id='EditAccountPopup:EditAccountScreen:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail']");
+        WebElementFacade menuContactoDireccionPrincipal = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail:PrimaryAddress-textEl']");
         accion.moveToElement(menuContactoDireccionPrincipal).release(menuContactoDireccionPrincipal).click().build().perform();
         waitForTextToAppear("Esta dirección está vinculada a otras direcciones");
         botonActualizar.click();
@@ -173,7 +175,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
             MatcherAssert.assertThat(cells.get(CONSTANTE_2).getText().replace(" ", ""), Is.is(Matchers.equalTo(contactosVinculados.get("telefono"))));
             MatcherAssert.assertThat(cells.get(CONSTANTE_3).getText(), Is.is(Matchers.notNullValue()));
         }
-        WebElementFacade botonCancelarDetalles = esperarElemento(".//*[@id='LinkedAddressEditPopup:Cancel-botonInnerEl']");
+        WebElementFacade botonCancelarDetalles = esperarElemento(".//*[@id='LinkedAddressEditPopup:Cancel-btnInnerEl']");
         botonCancelarDetalles.click();
         waitFor(linkVolverAContacto).waitUntilPresent().click();
         waitFor(botonAceptarMensaje).waitUntilPresent().click();
@@ -187,8 +189,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
     }
 
     public void editarDireccionEnPestaniaDirecciones(String direccion) {
-        WebElementFacade pestanaDirecciones = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AddressesCardTab-botonInnerEl']");
-        pestanaDirecciones.click();
+        pestanaDirecciones.waitUntilPresent().click();
         waitFor(campoDireccionDetalleDirecciones).waitUntilPresent().clear();
         waitFor(campoDireccionDetalleDirecciones).sendKeys(direccion);
         waitFor(botonActualizarContacto).click();
@@ -197,16 +198,6 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
     public void seleccionarUnContacto(String nombreContacto) {
         WebElementFacade contactoAEditar = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV:" + encontrarContacto(nombreContacto).toString() + ":Name']");
         contactoAEditar.click();
-    }
-
-    public void validarLongitudDelCampoDireccion(String direccionOk) {
-        this.seleccionarUnContacto("RICARDO GIRALDO");
-        WebElementFacade campoDireccionDetalle = esperarElemento(XPATH_DIRECCION_DETALLE);
-        Integer longitudCampo = campoDireccionDetalle.getValue().length();
-        linkVolverAContacto.click();
-        waitFor(botonAceptarMensaje).waitUntilPresent().click();
-        waitForTextToAppear("Contactos de archivo de cuenta");
-        MatcherAssert.assertThat(longitudCampo.toString(), Is.is(Matchers.equalTo(direccionOk)));
     }
 
     public void editarDireccionCampoPais(String pais) {
@@ -218,14 +209,13 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
 
     public void validarElCampoDepartamento(String departamento) {
         WebElementFacade campoDepartamento = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']");
-        this.ingresarDatoEnCombo(campoDepartamento, departamento);
+        ingresarDatoEnCombo(campoDepartamento, departamento);
     }
 
     public void validarElCampoCiudad(String ciudad) {
-        WebElementFacade campoCiudad = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:City_Ext-inputEl']");
-        this.ingresarDatoEnCombo(campoCiudad, ciudad);
-
-        this.clicEnBotonCancelar();
+        WebElementFacade campoCiudad = esperarElemento(".//*[@id='EditAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:AddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']");
+        ingresarDatoEnCombo(campoCiudad, ciudad);
+        clicEnBotonCancelar();
         waitForTextToAppear("Contactos de archivo de cuenta");
     }
 
@@ -249,8 +239,6 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
             }
             intentos++;
         }
-        WebElementFacade botonCancelar = findBy(".//*[@id='EditAccountContactPopup:ContactDetailScreen:Cancel-botonInnerEl']");
-        waitFor(botonCancelar).waitUntilPresent().click();
         waitForTextToAppear("Contactos de archivo de cuenta", WAIT_TIME_10000);
     }
 
@@ -328,7 +316,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
 
     public void seleccionarCrearContactoSecundarioPersonaNatural() {
         Actions accion = new Actions(getDriver());
-        WebElementFacade botonCrearNuevoContacto = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:addContactButton-botonInnerEl']");
+        WebElementFacade botonCrearNuevoContacto = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:addContactButton-btnInnerEl']");
         botonCrearNuevoContacto.click();
         WebElementFacade opcionContactoSecundario = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:addContactButton:3:roleType']");
         accion.moveToElement(opcionContactoSecundario).release(opcionContactoSecundario).build().perform();
@@ -377,10 +365,10 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
 
     public void validarEtiquetasDeLaVentana(String titulo, String botonLigagas, String botonDesligar) {
         WebElementFacade tituloDeVentana = esperarElemento(".//*[@id='LinkedAddressEditPopup:ttlBar']");
-        WebElementFacade botonActualizarLigadas = esperarElemento(".//*[@id='LinkedAddressEditPopup:UpdateAllButton-botonInnerEl']");
-        WebElementFacade botonActualizarDesligar = findBy(".//*[@id='LinkedAddressEditPopup:UpdateAndUnlinkButton-botonInnerEl']");
+        WebElementFacade botonActualizarLigadas = esperarElemento(".//*[@id='LinkedAddressEditPopup:UpdateAllButton-btnInnerEl']");
+        WebElementFacade botonActualizarDesligar = findBy(".//*[@id='LinkedAddressEditPopup:UpdateAndUnlinkButton-btnInnerEl']");
         WebElementFacade tituloEdicionDirecciones = findBy(".//*[@id='LinkedAddressEditPopup:EditAddress']");
-        WebElementFacade botonCancelarEdidion = findBy(".//*[@id='LinkedAddressEditPopup:Cancel-botonInnerEl']");
+        WebElementFacade botonCancelarEdidion = findBy(".//*[@id='LinkedAddressEditPopup:Cancel-btnInnerEl']");
 
         MatcherAssert.assertThat(tituloDeVentana.getText(), Is.is(Matchers.equalTo(titulo)));
         MatcherAssert.assertThat(tituloEdicionDirecciones.getText(), Is.is(Matchers.equalTo(titulo)));
@@ -390,7 +378,7 @@ public class DireccionesDeContactoVinculadasPage extends PageUtil {
 
         this.clicEnBotonCancelar();
 
-        WebElementFacade pestaniaDirecciones = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesCardTab-botonInnerEl']");
+        WebElementFacade pestaniaDirecciones = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesCardTab-btnInnerEl']");
         pestaniaDirecciones.click();
 
         WebElementFacade tituloPanelPestaniaDirecciones = esperarElemento(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactCV:AddressesPanelSet:0']");

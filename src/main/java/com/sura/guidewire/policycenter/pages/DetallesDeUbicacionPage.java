@@ -82,9 +82,8 @@ public class DetallesDeUbicacionPage extends PageUtil {
         try {
             waitForTextToAppear(nomProducto);
         } catch (TimeoutException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
-            LOGGER.info(e.getStackTrace().toString());
-            selectItem(comboBoxNombreAgente, "ADHR");
+            LOGGER.info("TimeoutException " + e);
+            selectItem(comboBoxNombreAgente, "A");
             waitForTextToAppear(nomProducto);
         }
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");

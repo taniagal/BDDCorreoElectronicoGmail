@@ -70,4 +70,9 @@ public class TarifaMRCDefinitions {
     public void verificarMensaje(@Named("mensaje") String mensaje){
         tarifaMRCSteps.verificarMensaje(mensaje);
     }
+
+    @Then("el valor de iva debe ser igual a 0 (cero)")
+    public void verificarImpuestos(){
+        tarifaMRCSteps.verificarImpuestos();
+    }
 }

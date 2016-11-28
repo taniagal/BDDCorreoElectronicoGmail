@@ -213,7 +213,7 @@ public class PageUtil extends PageObject {
 
 
     public void clickElement(WebElementFacade element) {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 7; i++) {
             try {
                 element.click();
                 i = 6;

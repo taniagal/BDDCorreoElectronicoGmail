@@ -186,8 +186,8 @@ public class ResumenCuentaDefinitions {
     }
 
     @Then("la informacion de actividades actuales, terminos de la poliza y transacciones de la poliza pendientes deben estar\n" +
-            "ocultos")
-    public void validarInformacionOculta() {
-        resumenCuentaSteps.validarInformacionOculta();
+            "visibles")
+    public void validarInformacionVisible() {
+        resumenCuentaSteps.validarInformacionVisible();
     }
 }
