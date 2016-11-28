@@ -1183,7 +1183,8 @@ public class Navegacion extends PageUtil {
         waitForTextToAppear("Cotizaciones de la cuenta");
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
         waitUntil(WAIT_TIME_1000);
-        mnuAdmCotizaciones.waitUntilVisible().waitUntilClickable().click();
+        mnuAdmCotizaciones.waitUntilVisible();
+        clickElement(mnuAdmCotizaciones);
         waitUntil(WAIT_TIME_800);
         return new OpcionesAdminitradorCotizaciones(getDriver());
     }

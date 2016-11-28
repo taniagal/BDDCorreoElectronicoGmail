@@ -6,6 +6,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -239,9 +240,14 @@ public class TarifaTasaUnicaPage extends PageUtil {
             selectItem(comboBoxCanal, "Canal Tradicional");
             waitForComboValue(comboBoxCanal, "Canal Tradicional");
             try {
+                waitUntil(WAIT_TIME_1000);
                 selectItem(comboBoxTipoPoliza, "PPAutos");
             } catch (ElementNotVisibleException e) {
                 LOGGER.info("ElementNotVisibleException " + e);
+                waitUntil(WAIT_TIME_2000);
+                selectItem(comboBoxTipoPoliza, "PPAutos");
+            } catch (StaleElementReferenceException f) {
+                LOGGER.info("StaleElementReferenceException " + f);
                 waitUntil(WAIT_TIME_2000);
                 selectItem(comboBoxTipoPoliza, "PPAutos");
             }

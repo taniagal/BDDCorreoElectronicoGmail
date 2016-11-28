@@ -58,6 +58,8 @@ public class BusquedaActividadesPage extends PageUtil {
     private WebElementFacade menuBuscarActividades;
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     private WebElementFacade botonRestablecer;
+    @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
+    private WebElementFacade divMensaje;
 
     public BusquedaActividadesPage(WebDriver driver) {
         super(driver);
@@ -116,7 +118,7 @@ public class BusquedaActividadesPage extends PageUtil {
     public void validarMensjeFiltroRequerido(String mensaje) {
         waitFor(btnBuscar).waitUntilPresent();
         actions.click(btnBuscar).build().perform();
-        waitForPresenceOf(".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div");
+        divMensaje.waitUntilPresent();
         MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
     }
 
