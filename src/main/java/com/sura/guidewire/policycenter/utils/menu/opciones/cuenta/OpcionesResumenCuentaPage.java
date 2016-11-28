@@ -1,9 +1,6 @@
 package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.Map;
-
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -11,6 +8,8 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.Map;
 
 public class OpcionesResumenCuentaPage extends PageUtil {
     Actions act = new Actions(getDriver());
@@ -290,9 +289,9 @@ public class OpcionesResumenCuentaPage extends PageUtil {
         MatcherAssert.assertThat(txtCiudad.getText(), Is.is(Matchers.equalTo(ciudad)));
     }
 
-    public void validarInformacionOculta() {
-        MatcherAssert.assertThat(tableActividadesActuales.isVisible(), Is.is(Matchers.equalTo(false)));
-        MatcherAssert.assertThat(tableTerminosDeLaPoliza.isVisible(), Is.is(Matchers.equalTo(false)));
-        MatcherAssert.assertThat(tableTransaccionesPolizaPdtes.isVisible(), Is.is(Matchers.equalTo(false)));
+    public void validarInformacionVisible() {
+        MatcherAssert.assertThat(tableActividadesActuales.isVisible(), Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat(tableTerminosDeLaPoliza.isVisible(), Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat(tableTransaccionesPolizaPdtes.isVisible(), Is.is(Matchers.equalTo(true)));
     }
 }
