@@ -9,6 +9,7 @@ import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 
 import static com.sura.guidewire.policycenter.pages.NuevaCotizacionPage.TXT_CODIGO_AGENTE;
@@ -144,5 +145,9 @@ public class CotizacionSteps extends ScenarioSteps implements Serializable {
 
     public Boolean esFechaEditable() {
         return getCotizacionPage().esFechaEditable();
+    }
+
+    public void validar_campos_cotizacion_poliza(String estadouno,String estadodos,ExamplesTable menusesperados){
+        getCotizacionPage().validarCamposOpcionCotizacionDePoliza(estadouno,estadodos,menusesperados);
     }
 }

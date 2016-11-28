@@ -10,11 +10,8 @@ import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
-import org.jbehave.core.annotations.Alias;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Pending;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
@@ -87,6 +84,10 @@ public class CotizacionDefinitions {
         cotizador.getCotizacionPage().obtenerFechaCotizacionElemento().shouldBeCurrentlyVisible();
 
         LOGGER.info("CotizacionDefinitions.esVisibleFechaDefecto");
+    }
+    @Then("en cotizacion de poliza debe estar en estado <estadodos> las siguientes opciones $menusesperados")
+    public void entoncesEnCotizacionDePolizaDebenEstarEnEstado(@Named("estadouno") String estadouno, @Named("estadodos") String estadodos, ExamplesTable menusesperados) {
+        cotizador.validar_campos_cotizacion_poliza(estadouno,estadodos,menusesperados);
     }
 
     /**

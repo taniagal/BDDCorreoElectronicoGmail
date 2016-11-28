@@ -141,6 +141,11 @@ public class ExpedicionDePolizaPage extends PageUtil {
         MatcherAssert.assertThat(campoIrAlEscritorio.getText(), Is.is(Matchers.equalTo(escritorio)));
         waitFor(ExpectedConditions.elementToBeClickable(botonEscritorio));
     }
+    public void ingresarVerCotizacion(){
+        waitFor(campoNumeroCotizacion);
+        campoNumeroCotizacion.click();
+        waitForTextToAppear("Cotización");
+    }
 
     public void validarMensaje(String mensaje) {
         String[] mensajes = mensaje.split("\\^");

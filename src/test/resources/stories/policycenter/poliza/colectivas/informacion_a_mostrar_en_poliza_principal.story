@@ -10,7 +10,7 @@ Meta:
 
 
 
-Scenario: 1 Validacion de campos en menu lateral de  poliza principal en cotizacion
+Scenario: 1 Validacion de campos en menu lateral y opcion cotizacion de la poliza principal
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When cotize una poliza
@@ -27,6 +27,9 @@ And deben estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
 | Edificios y Ubicaciones   |
 | Modificadores             |
+And en cotizacion de poliza debe estar en estado <estadodos> las siguientes opciones $menusesperados
+| OPCIONES_MENU_NO_VISIBLES |
+| Prima de Poliza   |
 
 Examples:
 | numSubscripcion | rolUsuario | estadouno | estadodos  |
@@ -34,10 +37,59 @@ Examples:
 
 
 
-Scenario: 2 Validacion de campos en revision de poliza y cotizacion de  poliza principal
-
+Scenario: 2 Validacion de campos en revision de poliza
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When ingrese a la opcion revision de la poliza
+Then en revision de poliza deben estar en estado <estadodos> las siguientes opciones $menusesperados
+| OPCIONES_MENU_NO_VISIBLES |
+| Edificios   |
+
+Examples:
+| numSubscripcion | rolUsuario | estadodos  |
+| 33344336        | Asesor     | No visible |
+
+
+Scenario: 3 Validacion de campos en menu lateral de poliza principal expedida
+GivenStories: stories/policycenter/login_policy.story
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+And ingrese a ver cotizacion de poliza expedida
+Then deben estar en estado <estadodos> las siguientes opciones
+| OPCIONES_MENU_NO_VISIBLES |
+| Edificios y Ubicaciones   |
+| Modificadores             |
+And en cotizacion de poliza debe estar en estado <estadodos> las siguientes opciones $menusesperados
+| OPCIONES_MENU_NO_VISIBLES |
+| Prima de Poliza   |
+
+Examples:
+| numSubscripcion | rolUsuario | estadodos  |
+| 33344336        | Asesor     | No visible |
+
+
+Scenario: 4 Validacion de campos no editables en informacion
+GivenStories: stories/policycenter/login_policy.story
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When ingrese a la opcion informacion de poliza
+Then ningun campo puede ser editable en informacion
+
+Examples:
+| numSubscripcion | rolUsuario | estadodos  |
+| 33344336        | Asesor     | No visible |
+
+
+Scenario: 5 Validacion de campos no editables en pago
+GivenStories: stories/policycenter/login_policy.story
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When ingrese a la opcion de pago
+Then ningun campo puede ser editable en pago
+
+Examples:
+| numSubscripcion | rolUsuario | estadodos  |
+| 33344336        | Asesor     | No visible |
+
+
 
 
 

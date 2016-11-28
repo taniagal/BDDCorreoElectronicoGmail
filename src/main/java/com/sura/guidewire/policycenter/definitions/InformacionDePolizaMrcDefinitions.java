@@ -81,6 +81,14 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones_en_renovacion_de_poliza();
 
     }
+    @When("ingrese a informacion de poliza")
+    public void cuandoIngreseAInformacionDePoliza(){
+        informacionDePolizaMrcSteps.ingresar_a_informacion_de_poliza();
+    }
+    @When("ingrese a la opcion informacion de poliza")
+    public void cuandoSeleccioneLaOpcionInformacionDePoliza(){
+        informacionDePolizaMrcSteps.ingresar_a_opcion_informacion_de_poliza();
+    }
 
     @When("de clic en Aceptar de la ventana Coaseguro")
     public void darClicEnAceptarDeCoaseuguro(){
@@ -189,6 +197,11 @@ public class InformacionDePolizaMrcDefinitions {
     public void entoncesSeDebenMostrarLasSiguientesOpciones(@Named("estadouno") String estadouno,@Named("estadodos") String estadodos, ExamplesTable menusesperados){
         informacionDePolizaMrcSteps.validar_campos(estadouno,estadodos,menusesperados);
     }
+    @Then("ningun campo puede ser editable en informacion")
+    public void entoncesNingunCampoPuedeSerEditable(){
+        informacionDePolizaMrcSteps.validarCamposNoEditablesEnInformacionDePoliza();
+    }
+
 
 
 

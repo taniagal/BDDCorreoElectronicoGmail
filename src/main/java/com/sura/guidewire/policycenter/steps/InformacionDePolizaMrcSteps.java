@@ -110,7 +110,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         opcionesInformacionPolizaMrcPage.noHabilitarNumeroDocumentoCoaseguro();
     }
     public void validar_campos(String estadouno,String estadodos,ExamplesTable menusesperados){
-        opcionesInformacionPolizaMrcPage.validarCampos(estadouno,estadodos,menusesperados);
+        opcionesInformacionPolizaMrcPage.validarCamposMenuLateral(estadouno,estadodos,menusesperados);
     }
 
     @Step
@@ -130,6 +130,10 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         opcionesInformacionPolizaMrcPage.seleccionarInformacionDePoliza();
     }
     @Step
+    public void ingresar_a_opcion_informacion_de_poliza(){
+        opcionesInformacionPolizaMrcPage.ingresarAInformacionDePoliza();
+    }
+    @Step
     public void seleccionar_poliza_tipo_no_reaseguro(){
         opcionesInformacionPolizaMrcPage.seleccionarTipoNoReaseguro();
     }
@@ -137,6 +141,10 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     @Step
     public void darClicEnAceptarDeCoaseuguro() {
         opcionesInformacionPolizaMrcPage.darClicEnAceptarDeCoaseuguro();
+    }
+
+    public void validarCamposNoEditablesEnInformacionDePoliza(){
+        opcionesInformacionPolizaMrcPage.validarcamposNoEditablesEnInformacionDePoliza();
     }
 }
 

@@ -125,11 +125,14 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade botonAceptarCoaseguro;
 
 
-    private static String lblMensajesAlerta = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
+    private static String LBL_MENSAJE_ALERTA = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
     private static String LISTA_TIPO_BENEFICIARIO_UNO = "//div[contains(.,'Seguros Generales Suramericana S.A.') and contains(@class,'x-grid-cell-inner')]";
     private static String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
+    private static String LBL_MENU_LATERAL_INICIAL =  ".//td[contains(@id,'SubmissionWizard') and contains(.,'";
+    private static String LBL_MENU_LATERAL_FINAL =  "')]";
+    private static String LBL_INFORMACION_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV')]/td/div";
     private boolean esVisible;
 
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
@@ -227,8 +230,9 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         }
     }
     public void seleccionarOpcionCotizar(){
-        waitUntil(WAIT_TIME_2000);
+        waitUntil(WAIT_TIME_3000);
         lblCotizar.waitUntilClickable().click();
+        waitForTextToAppear("Cotización");
     }
 
     public Integer encontrarProducto(String producto) {
@@ -249,6 +253,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         lblInformaPolizaEnRenovacion.click();
         waitForTextToAppear("Información de póliza");
     }
+    public void ingresarAInformacionDePoliza(){
+        menuItemInformacionDePoliza.click();
+        waitForTextToAppear("Información de póliza");
+    }
     public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras){
         waitFor(WAIT_TIME_3).second();
         menuItemInformacionDePoliza.click();
@@ -257,10 +265,9 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         agregarCoaseguro.waitUntilPresent().click();
         seleccionarElTipoDeCoaseguro(tipoCo);
         agregoLasAseguradoras(tablaaseguradoras);
-
-
-
     }
+
+
     public void seleccionarElTipoDeCoaseguro(String tipoCoaseguro) {
         waitUntil(WAIT_TIME_1000);
         if ("Cedido".equals(tipoCoaseguro)) {
@@ -311,7 +318,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public List<String> obtenerMensajesDeTrabajoCoaseguro(){
         List<String> mensajesEspacioDeTrabajo = new ArrayList<>();
-        for (WebElementFacade mensaje : findAll(lblMensajesAlerta)){
+        for (WebElementFacade mensaje : findAll(LBL_MENSAJE_ALERTA)){
             mensajesEspacioDeTrabajo.add(mensaje.getText());
         }
         return mensajesEspacioDeTrabajo;
@@ -402,7 +409,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
-    public void validarCampos(String estadouno,String estadodos,ExamplesTable menusesperados) {
+    public void validarCampos(String estadouno,String estadodos,ExamplesTable menusesperados,String pathinicial,String pathfinal) {
         WebElementFacade elementoMenu;
         Map<String, String> menus;
         String xpathMenu;
@@ -411,7 +418,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
             if(estadouno.contains("Visible") && menus.get("OPCIONES_MENU") != null)
             {
                 String mensaje = menus.get("OPCIONES_MENU");
-                xpathMenu = ".//td[contains(@id,'SubmissionWizard') and contains(.,'" + mensaje + "')]";
+                xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
                 MatcherAssert.assertThat("Alguno de los campos no es visible",
                         elementoMenu.isVisible());
@@ -419,15 +426,24 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
             else if(estadodos.contains("No visible"))
             {
                 String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
-                xpathMenu = ".//td[contains(@id,'SubmissionWizard') and contains(.,'" + mensaje + "')]";
+                xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
                 MatcherAssert.assertThat("Alguno de los campos es visible",
                         !elementoMenu.isVisible());
             }
         }
     }
+    public void validarCamposNoEditables(String elementos){
+        List<WebElementFacade> listaElementos = findAll(By.xpath(elementos));
+        for (WebElementFacade listaElemento : listaElementos){
+            MatcherAssert.assertThat("El campo "+ listaElemento.getTagName()+"es editable, lo cual es un error.Verificar",
+                    !listaElemento.getAttribute("class").contains("x-form-text") || !listaElemento.getAttribute("class").contains("x-form-text"));
+        }
+    }
 
-
+    public void validarCamposMenuLateral(String estadouno,String estadodos,ExamplesTable menusesperados) {
+       validarCampos(estadouno,estadodos,menusesperados,LBL_MENU_LATERAL_INICIAL,LBL_MENU_LATERAL_FINAL);
+    }
 
     public void seleccionarTipoNoReaseguro(){
         btnNoReaseguroEspecial.click();
@@ -446,9 +462,14 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void waitInfoPoliza(WebElementFacade webElementFacade) {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
-
-
     public void darClicEnAceptarDeCoaseuguro() {
         botonAceptarCoaseguro.click();
+    }
+
+
+
+    public void validarcamposNoEditablesEnInformacionDePoliza()
+    {
+        validarCamposNoEditables(LBL_INFORMACION_POLIZA);
     }
 }
