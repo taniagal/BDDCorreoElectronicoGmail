@@ -1,16 +1,20 @@
 Ajustes Coaseguros
 
-
-Scenario:  1 Validacion de coaseguro no editable en resumen e informacion de poliza
-
-Meta:@lote1
+Meta:
+@lote2
 @Story CDSEG-2778
 @URL https://jira.suramericana.com.co/browse/CDSEG-2778
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
 @Sprint 9
 
-Given que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>
-When quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>
+Scenario:  1 Validacion de coaseguro no editable en resumen e informacion de poliza
+GivenStories: stories/policycenter/login_policy.story
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto               |canal            |
+|C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
+When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+And descripcion <descripcion>, actividad economica <actividad>
+And borro el articulo anterior
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
 | ASEGURADORA                         | PARTICIPACION |
 | Seguros Generales Suramericana S.A. | 60            |
@@ -24,16 +28,19 @@ And intente ingresar las entradas de las diferentes coberturas
 And intente cotizar y expedir la poliza
 Then debo ver en el resumen de la poliza y en informacion de poliza los coaseguros no editables
 
-
 Examples:
-| numCuenta  | agente                                       | organizacion | canal             | tipoPoliza | producto                | rolUsuario | TipoCo | numSubscripcion |
-| C000777777 | Armstrong - Cayman Captive Srvs > 501-002546 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | Cedido | 22222236        |
+| numCuenta | TipoCo | numSubscripcion|departamento|ciudad   |direccion        |descripcion  |actividad|
+| C000777777| Cedido | 22222236       |Antioquia   |Medellin |CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 
 Scenario:  2 Validacion de campos obligatorios en tipo de coaseguro aceptado
-Given que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>
-When quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto               |canal            |
+|C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
+When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+And descripcion <descripcion>, actividad economica <actividad>
+And borro el articulo anterior
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
 | ASEGURADORA                         | PARTICIPACION |
 | Seguros Generales Suramericana S.A. | 60            |
@@ -47,14 +54,18 @@ Then se debe validar que se muestren los mensajes de obligatoriedad siguientes
 
 
 Examples:
-| numCuenta  | agente         | organizacion | canal             | tipoPoliza | producto                | rolUsuario | TipoCo   |
-| C000888888 | DIRECTO > 4999 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | Aceptado |
+| TipoCo   | numCuenta | TipoCo | numSubscripcion|departamento|ciudad   |direccion        |descripcion  |actividad|
+| Aceptado | C000777777| Cedido | 22222236       |Antioquia   |Medellin |CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 
 Scenario:  3 Validacion de campo Numero de documento en tipo de coaseguro cedido
-Given que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>
-When quiero expedir una poliza nueva con los siguientes datos: <agente> <organizacion> <canal> <tipoPoliza> <producto>
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto               |canal            |
+|C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
+When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+And descripcion <descripcion>, actividad economica <actividad>
+And borro el articulo anterior
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
 | ASEGURADORA                         | PARTICIPACION |
 | Seguros Generales Suramericana S.A. | 60            |
@@ -63,5 +74,5 @@ And de clic en Aceptar de la ventana Coaseguro
 Then no se debe inhabilitar la opcion Numero de documento
 
 Examples:
-| numCuenta  | agente         | organizacion | canal             | tipoPoliza | producto                | rolUsuario | TipoCo   |
-| C000888888 | DIRECTO > 4999 | Sura         | Canal Tradicional | Individual | Multiriesgo corporativo | Asesor     | Cedido   |
+| TipoCo   | numCuenta | TipoCo | numSubscripcion|departamento|ciudad   |direccion        |descripcion  |actividad|
+| Cedido   | C000777777| Cedido | 22222236       |Antioquia   |Medellin |CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|

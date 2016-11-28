@@ -1,5 +1,5 @@
-Meta: @lote4
-
+Meta:
+@lote2
 @issue #SUGWUSC-11480
 @tag automator: Jonathan_Mejia_Leon
 @local
@@ -10,7 +10,7 @@ Como usuario de policy center
 quiero ser capaz de parametrizar diferentes reglas de negocio para
 algunas coberturas de multiriesgo corporativo.
 
-Scenario: Validacion regla de negocio cuando el valor es mayor al 10%
+Scenario: Validacion regla de negocio cuando el valor es menor al 10%
 GivenStories: stories/policycenter/login_policy.story
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
 When quiera mostrar los edificios y ubicaciones
@@ -31,7 +31,7 @@ Examples:
 |11111334   |
 
 Scenario: Modificar una cotizacion cuando el valor es mayor al 10%
-Meta: @lote4
+Meta:
 @manual
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
 When quiera mostrar los edificios y ubicaciones

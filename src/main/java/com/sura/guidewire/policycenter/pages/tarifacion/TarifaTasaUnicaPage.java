@@ -5,6 +5,8 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -67,6 +69,12 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade campoTxtSegundoNombre;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:MaritalStatus-inputEl']")
     private WebElementFacade comboBoxEstadoCivil;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
+    private WebElementFacade comboBoxOrganizacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
+    private WebElementFacade comboBoxCanal;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
+    private WebElementFacade comboBoxTipoPoliza;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']")
     private WebElementFacade checkBoxTasaUnica;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:__crumb__']")
@@ -75,6 +83,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade filaExaminar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header']")
     private WebElementFacade headerEnvio;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:0_header']")
+    private WebElementFacade headerRenovacion;
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
     private WebElementFacade linkVerCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
@@ -96,14 +106,15 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
 
     public void verificarElementosExportacion() {
-        botonHojaDeCalculo.waitUntilPresent().click();
+        botonHojaDeCalculo.waitUntilPresent();
+        clickElement(botonHojaDeCalculo);
         menuItemExportar.waitUntilPresent().click();
         botonExportarAHojaDeCalculo.waitUntilPresent();
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
-        notPresent = concatenarElementoNoPresente(comboBoxExportar," combobox exportar,",notPresent);
-        notPresent = concatenarElementoNoPresente(comboBoxFormato," combobox formato,",notPresent);
-        notPresent = concatenarElementoNoPresente(comboBoxLocal," combobox local,",notPresent);
-        notPresent = concatenarElementoNoPresente(comboBoxIdioma," combobox idioma,",notPresent);
+        notPresent = concatenarElementoNoPresente(comboBoxExportar, " combobox exportar,", notPresent);
+        notPresent = concatenarElementoNoPresente(comboBoxFormato, " combobox formato,", notPresent);
+        notPresent = concatenarElementoNoPresente(comboBoxLocal, " combobox local,", notPresent);
+        notPresent = concatenarElementoNoPresente(comboBoxIdioma, " combobox idioma,", notPresent);
         String res = notPresent.toString();
         if (MSJVALIDARELEMENTOS.equals(res)) {
             res = notPresent.toString().substring(0, notPresent.toString().length() - 1);
@@ -136,6 +147,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemCambiarPoliza.waitUntilPresent().click();
         botonSiguienteCambioDePoliza.waitUntilPresent().click();
+        llenarInfoPoliza();
     }
 
     public void cambiarValorAsegurado(String valorAsegurado) {
@@ -176,6 +188,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
 
     public void renovarPoliza() {
+        llenarInfoPoliza();
         botonCotizarRenovacion.waitUntilPresent();
         waitUntil(WAIT_TIME_1000);
         checkBoxTasaUnica.shouldBePresent();
@@ -210,4 +223,35 @@ public class TarifaTasaUnicaPage extends PageUtil {
         primaTotal = labelPrimaTotalCotizacion.waitUntilPresent().getText();
     }
 
+
+    public void llenarInfoPoliza() {
+        setImplicitTimeout(1, TimeUnit.SECONDS);
+        if (headerRenovacion.isPresent()) {
+            comboBoxOrganizacion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']");
+            comboBoxCanal = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']");
+            comboBoxTipoPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']");
+        }
+        resetImplicitTimeout();
+        comboBoxOrganizacion.waitUntilPresent();
+        if (!comboBoxOrganizacion.getValue().equals("Sura")) {
+            selectItem(comboBoxOrganizacion, "Sura");
+            waitForComboValue(comboBoxOrganizacion, "Sura");
+            waitUntil(WAIT_TIME_1000);
+            selectItem(comboBoxCanal, "Canal Tradicional");
+            waitForComboValue(comboBoxCanal, "Canal Tradicional");
+            try {
+                waitUntil(WAIT_TIME_1000);
+                selectItem(comboBoxTipoPoliza, "PPAutos");
+            } catch (ElementNotVisibleException e) {
+                LOGGER.info("ElementNotVisibleException " + e);
+                waitUntil(WAIT_TIME_2000);
+                selectItem(comboBoxTipoPoliza, "PPAutos");
+            } catch (StaleElementReferenceException f) {
+                LOGGER.info("StaleElementReferenceException " + f);
+                waitUntil(WAIT_TIME_2000);
+                selectItem(comboBoxTipoPoliza, "PPAutos");
+            }
+            waitForComboValue(comboBoxTipoPoliza, "PPAutos");
+        }
+    }
 }

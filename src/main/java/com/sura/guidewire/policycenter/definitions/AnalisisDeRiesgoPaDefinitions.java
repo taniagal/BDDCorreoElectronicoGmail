@@ -18,28 +18,28 @@ public class AnalisisDeRiesgoPaDefinitions {
     @When("intente expedir una poliza con un valor asegurado del vehiculo superior al permitido")
     public void expedirPolizaValorAsegurado(){
         expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
-        analisisDeRiesgoPaSteps.aceptar_expedicion();
+        analisisDeRiesgoPaSteps.aceptarExpedicion();
     }
 
     @When("intente expedir una poliza con un valor de accesorios superior al permitido")
     public void expedirPolizaValorAccesorios(){
         expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
-        analisisDeRiesgoPaSteps.aceptar_expedicion();
+        analisisDeRiesgoPaSteps.aceptarExpedicion();
     }
 
     @When("intente expedir una poliza con un valor de accesorios especiales superior al permitido")
     public void expedirPolizaValorAccesoriosEspeciales(){
         expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
-        analisisDeRiesgoPaSteps.aceptar_expedicion();
+        analisisDeRiesgoPaSteps.aceptarExpedicion();
     }
 
     @Then("se debe generar un bloqueo en la poliza, mostrar el siguiente mensaje $mensaje")
     public void validarBloqueoExpedicion(ExamplesTable mensaje){
-        analisisDeRiesgoPaSteps.validar_Que_Se_Genere_Bloqueo(mensaje);
+        analisisDeRiesgoPaSteps.validarQueSeGenereBloqueo(mensaje);
     }
 
     @Then("generar un UW issue $UWIssue")
     public void validarGeneracionUWIssue(ExamplesTable uwissue){
-        analisisDeRiesgoPaSteps.validar_Que_Se_Genere_UWIssue(uwissue);
+        analisisDeRiesgoPaSteps.validarQueSeGenereUWIssue(uwissue);
     }
 }

@@ -19,12 +19,6 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
     public TarifaTasaUnicaSteps(Pages pages){
         super(pages);
     }
-
-    @Step
-    public void irAInformacionDePoliza(){
-        vehiculoPage.clickSiguiente();
-    }
-
     @Step
     public void verificarElementosExportacion() {
         tasaUnicaPage.verificarElementosExportacion();

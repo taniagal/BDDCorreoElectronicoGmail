@@ -140,7 +140,7 @@ public class PolizaPage extends GuidewirePage {
             shouldBeVisible(opcion);
             opcion.waitUntilClickable().click();
             String xpathimgMensajesWarnig = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']//div//img[@class='warning_icon']";
-            setImplicitTimeout(WAIT_TIME_2,TimeUnit.SECONDS);
+            setImplicitTimeout(WAIT_TIME_5,TimeUnit.SECONDS);
             if (findBy(xpathimgMensajesWarnig).isVisible()) {
                 opcion.waitUntilClickable().click();
             }
@@ -363,6 +363,12 @@ public class PolizaPage extends GuidewirePage {
     public void ingresarOpcionMostrarCoaseguros(){
         findBy(xpathMostrarCoaseguros).click();
         waitForTextToAppear("Coaseguro");
+    }
+
+    public void seleccionarBotonAcciones(){
+        String xpathLinkAcciones = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]";
+        WebElementFacade botonAcciones = findBy(xpathLinkAcciones);
+        botonAcciones.waitUntilPresent().click();
     }
 
 

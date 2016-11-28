@@ -15,12 +15,11 @@ import java.util.List;
 /**
  * Created by juanzaag on 04/11/2016.
  */
-public class PlanDeTrabajoPage extends PageUtil{
+public class PlanDeTrabajoPage extends PageUtil {
 
     @Page
     AnalisisDeRiesgosPage analisisDeRiesgosPage;
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private String xPathSolicitudRiesgos = ".//a[contains(.,'Solicitud Riesgos Consultables')]";
     String xPathOpcionPlanDeTrabajo = ".//*[@id='SubmissionWizard:Workplan']";
     String xPathOpcionPlanDeTrabajoEnCambioDePoliza = ".//*[@id='PolicyChangeWizard:Workplan']";
@@ -35,6 +34,7 @@ public class PlanDeTrabajoPage extends PageUtil{
         findBy(xPathOpcionPlanDeTrabajo).click();
         waitForTextToAppear("Plan de trabajo");
     }
+
     public void ingresarALaOpcionPlanDeTrabajoEnCambioDePoliza() {
         findBy(xPathOpcionPlanDeTrabajoEnCambioDePoliza).click();
         waitForTextToAppear("Plan de trabajo");
@@ -45,16 +45,15 @@ public class PlanDeTrabajoPage extends PageUtil{
         waitForTextToAppear("Plan de trabajo");
     }
 
-    public void validarActividadesGeneradasEnRiesgo(){
-        int NumeroDeRiesgosEnAnalisisDeRiesgos = 2;
-        int bttonSolicitudRiesgosConsultables=1;
+    public void validarActividadesGeneradasEnRiesgo() {
+        int numeroDeRiesgosEnAnalisisDeRiesgos = 2;
+        int bttonSolicitudRiesgosConsultables = 1;
         List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(xPathSolicitudRiesgos));
-        for (bttonSolicitudRiesgosConsultables =1 ;bttonSolicitudRiesgosConsultables <= listaNombresAgentesElement.size() ; bttonSolicitudRiesgosConsultables++) {
-                bttonSolicitudRiesgosConsultables++;
-            }
-            if(NumeroDeRiesgosEnAnalisisDeRiesgos == listaNombresAgentesElement.size())
-            {
-                MatcherAssert.assertThat("Se genero una actividad por cada riesgo consultable",true);
-            }
+        for (bttonSolicitudRiesgosConsultables = 1; bttonSolicitudRiesgosConsultables <= listaNombresAgentesElement.size(); bttonSolicitudRiesgosConsultables++) {
+            bttonSolicitudRiesgosConsultables++;
+        }
+        if (numeroDeRiesgosEnAnalisisDeRiesgos == listaNombresAgentesElement.size()) {
+            MatcherAssert.assertThat("Se genero una actividad por cada riesgo consultable", true);
         }
     }
+}

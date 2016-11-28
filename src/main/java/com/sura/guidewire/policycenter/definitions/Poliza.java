@@ -111,11 +111,9 @@ public class Poliza {
     @When("cuando intente cambiar informacion de la poliza MRC")
     public void cuandoIntenteCambiarInformacionDeLaPolizaMRC() {
         LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
-
         polizaSteps.seleccionarBotonAcciones();
         polizaSteps.seleccionarOpcionCambiarPoliza();
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
-        polizaSteps.seleccionarOpcionInformacionDePoliza();
     }
 
     @When("cuando intente renovar informacion de la poliza MRC")

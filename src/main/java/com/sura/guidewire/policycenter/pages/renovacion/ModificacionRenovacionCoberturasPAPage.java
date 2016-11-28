@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -8,16 +9,12 @@ import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
-
-    private final Actions act = new Actions(getDriver());
-
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PALine']/div")
     private WebElementFacade itemCoberturasAuto;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']")
@@ -28,11 +25,11 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     private WebElementFacade labelDanosCarro;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0']")
     private WebElementFacade labelHurtoCarro;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:CoverageInputSet:CovPatternInputGroup-legendTitle']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup-legendTitle']")
     private WebElementFacade labelResponsabilidadCivil;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup-legendTitle']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PADanosAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup-legendTitle']")
     private WebElementFacade labelDanos;
-    @FindBy(xpath = "//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:CoverageInputSet:CovPatternInputGroup-legendTitle']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup-legendTitle']")
     private WebElementFacade labelHurto;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:EditPolicy']")
     private WebElementFacade botonEditarTransaccionPoliza;
@@ -67,6 +64,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     private WebElementFacade btnBorrar;
 
+
     public ModificacionRenovacionCoberturasPAPage(WebDriver driver) {
         super(driver);
     }
@@ -78,6 +76,8 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     }
 
     public void irAPantallaCoberturas() {
+        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
+        tasaUnicaPage.llenarInfoPoliza();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
     }
 
@@ -96,7 +96,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     public void editarTransaccionPoliza() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
         waitForTextToAppear("Si se edita esta transacción de la póliza, se invalida la cotización actual");
-        act.sendKeys(Keys.ENTER).build().perform();
+        actions.sendKeys(Keys.ENTER).build().perform();
         waitUntil(WAIT_TIME_1500);
     }
 
@@ -142,7 +142,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     }
 
     public void borrarEspacioTrabajo() {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(btnBorrar).click();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(btnBorrar).click();
         PageUtil espera = new PageUtil(getDriver());
         espera.waitUntil(WAIT_TIME_2000);
     }

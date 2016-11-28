@@ -57,7 +57,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
     WebElementFacade lstTipoBeneficia;
     @FindBy(xpath = ".//div[4]/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     WebElementFacade lstTipoBeneficia2;
-    @FindBy(xpath = ".//li[contains(.,'Asegurado')]")
+    @FindBy(xpath = ".//li[contains(.,'Oneroso')]")
     WebElementFacade itmAsegurado;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:VehicleDetailCardTab-btnInnerEl']")
     WebElementFacade btnDetalleVehiculo;
@@ -124,7 +124,7 @@ public class OpcionesInformacionDelVehiculoPage extends PageUtil {
             waitUntil(WAIT_TIME_1000);
             itmAsegurado.click();
         }
-        btnDetalleVehiculo.click();
+        clickElement(btnDetalleVehiculo);
         campoTxtPlaca.waitUntilPresent();
     }
 

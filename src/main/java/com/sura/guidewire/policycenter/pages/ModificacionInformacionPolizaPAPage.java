@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -105,6 +106,7 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void irAModificarInformacionPoliza() {
+        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
         waitUntil(WAIT_TIME_2500);
         waitFor(menuAcciones).shouldBePresent();
         menuAcciones.click();
@@ -112,6 +114,7 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
         itemCambiarPoliza.click();
         waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
         botonSiguienteInfoPoliza.click();
+        tasaUnicaPage.llenarInfoPoliza();
         waitUntil(WAIT_TIME_2000);
     }
 

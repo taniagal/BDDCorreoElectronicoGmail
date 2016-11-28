@@ -2,18 +2,17 @@ package com.sura.guidewire.policycenter.pages;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.Map;
-
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.Map;
 
 
 public class BusquedaActividadesPage extends PageUtil {
@@ -57,8 +56,8 @@ public class BusquedaActividadesPage extends PageUtil {
     private WebElementFacade menuBuscarActividades;
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     private WebElementFacade botonRestablecer;
-
-    Actions actions = new Actions(getDriver());
+    @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
+    private WebElementFacade divMensaje;
 
     public BusquedaActividadesPage(WebDriver driver) {
         super(driver);
@@ -117,7 +116,7 @@ public class BusquedaActividadesPage extends PageUtil {
     public void validarMensjeFiltroRequerido(String mensaje) {
         waitFor(btnBuscar).waitUntilPresent();
         actions.click(btnBuscar).build().perform();
-        waitForPresenceOf(".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div");
+        divMensaje.waitUntilPresent();
         MatcherAssert.assertThat(this.msgFiltrosRequeridos.getText(), Matchers.containsString(mensaje));
     }
 
@@ -129,7 +128,13 @@ public class BusquedaActividadesPage extends PageUtil {
 
     public void buscarPorFiltrosUsuarioYEstadoDeActividad(String usuario, String estadoActividad) {
         waitFor(txtAsignadoA).waitUntilVisible();
-        txtAsignadoA.sendKeys(usuario);
+        try {
+            txtAsignadoA.sendKeys(usuario);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            waitUntil(WAIT_TIME_2000);
+            txtAsignadoA.sendKeys(usuario);
+        }
         this.ingresarDatoEnCombo(txtEstadoActividad, estadoActividad);
     }
 
@@ -148,6 +153,12 @@ public class BusquedaActividadesPage extends PageUtil {
         waitFor(elemento);
         elemento.clear();
         elemento.sendKeys(dato);
-        elemento.sendKeys(Keys.ENTER);
+        try {
+            elemento.sendKeys(Keys.ENTER);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            waitUntil(WAIT_TIME_500);
+            ingresarDatoEnCombo(elemento, dato);
+        }
     }
 }

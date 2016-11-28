@@ -80,7 +80,7 @@ public class ReglasRenovacionDosPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(txtvalorAccesoriosEspe).waitUntilClickable();
         int valorTotalAccesorioEsp = 1 + Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_8));
         txtvalorAccesoriosEspe.clear();
-        txtvalorAccesoriosEspe.click();
+        clickElement(txtvalorAccesoriosEspe);
         txtvalorAccesoriosEspe.sendKeys(Integer.toString(valorTotalAccesorioEsp));
         btnSiguinete.click();
     }

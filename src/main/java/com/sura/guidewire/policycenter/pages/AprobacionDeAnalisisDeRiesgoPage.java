@@ -1,12 +1,12 @@
 package com.sura.guidewire.policycenter.pages;
 
 
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
-public class AprobacionDeAnalisisDeRiesgoPage extends PageObject {
+public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:RiskAnalysis']/div")
     private WebElementFacade menuAnalisisDeRiesgo;
@@ -20,8 +20,6 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageObject {
     private WebElementFacade botonExpedirPoliza;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton']")
     private WebElementFacade botonBorrar;
-
-    protected static final int WAIT_TIME_30000 = 30000;
 
     public AprobacionDeAnalisisDeRiesgoPage(WebDriver driver) {
         super(driver);

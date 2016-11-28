@@ -2,8 +2,6 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.DisponibilidadDetalleProductoPage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
-import com.sura.guidewire.policycenter.pages.colectivas.InformacionDePolizaColectivaPage;
-import com.sura.guidewire.policycenter.pages.colectivas.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
@@ -13,8 +11,6 @@ import org.jbehave.core.model.ExamplesTable;
 public class InformacionDePolizaMrcSteps extends ScenarioSteps {
 
     DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage;
-    NuevaPolizaPage nuevaPolizaPage;
-    InformacionDePolizaColectivaPage informacionDePolizaColectivaSteps;
 
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage(getDriver());
 
@@ -89,11 +85,8 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresar_nueva_cotizacion(String agente, String organizacion, String canal, String tipoPoliza, String producto) {
+    public void ingresar_nueva_cotizacion(String agente, String producto) {
         disponibilidadDetalleProductoPage.seleccionarAgente(agente);
-        opcionesInformacionPolizaMrcPage.seleccionarOrganizacion(organizacion);
-        opcionesInformacionPolizaMrcPage.seleccionarCanal(canal);
-        nuevaPolizaPage.seleccionarElTipoDePoliza(tipoPoliza);
         opcionesInformacionPolizaMrcPage.seleccionarProducto(producto);
     }
 
@@ -115,7 +108,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     @Step
     public void ingresar_a_edificios_y_ubicaciones() {
         opcionesInformacionPolizaMrcPage.seleccionBotonSiguiente();
-    }
+    }    
     @Step
     public void ingresar_a_edificios_y_ubicaciones_en_cambio_de_poliza(){
         opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenCambioDePoliza();
@@ -127,6 +120,15 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     @Step
     public void ingresar_a_informacion_de_poliza(){
         opcionesInformacionPolizaMrcPage.seleccionarInformacionDePoliza();
+    }
+    @Step
+    public void seleccionar_poliza_tipo_no_reaseguro(){
+        opcionesInformacionPolizaMrcPage.seleccionarTipoNoReaseguro();
+    }
+
+    @Step
+    public void darClicEnAceptarDeCoaseuguro() {
+        opcionesInformacionPolizaMrcPage.darClicEnAceptarDeCoaseuguro();
     }
 }
 

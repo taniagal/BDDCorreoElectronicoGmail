@@ -61,8 +61,8 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuItemNuevaCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
     private WebElementFacade txtNumCuenta;
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
-    private WebElementFacade btnBuscarCuenta;
+    @FindBy(xpath=".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtBuscar;
 
     // Objetos menu Poliza
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
@@ -371,7 +371,8 @@ public class Navegacion extends PageUtil {
 
     // Navegacion menu Cuenta
     public NuevaCuentaPage irANuevaCuenta() {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(mnuCuenta).click();
+        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
+        clickElement(mnuCuenta);
         waitForAnyTextToAppear("Resumen de la cuenta","Búsqueda de cuentas");
         waitUntil(WAIT_TIME_2500);
         mnuCuenta.waitUntilClickable().click();
@@ -382,18 +383,9 @@ public class Navegacion extends PageUtil {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
-        waitUntil(WAIT_TIME_5);
-        gw.deployMenu(mnuCuenta);
-        waitFor(WAIT_TIME_3).second();
-        act.moveToElement(txtNumCuenta).release(txtNumCuenta).click().build().perform();
-        waitForTextToAppear("Nueva cuenta");
-        waitFor(WAIT_TIME_2).second();
-        waitFor(txtNumCuenta).waitUntilEnabled();
-        txtNumCuenta.click();
-        txtNumCuenta.waitUntilEnabled().type(numCuenta);
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(btnBuscarCuenta).shouldBePresent();
-        btnBuscarCuenta.waitUntilVisible().waitUntilClickable().click();
-        waitFor(WAIT_TIME_5).second();
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(campoTxtBuscar).waitUntilPresent();
+        campoTxtBuscar.sendKeys("Account " + numCuenta);
+        campoTxtBuscar.sendKeys(Keys.ENTER);
         return new CuentaBuscarPage(getDriver());
     }
 
@@ -646,7 +638,6 @@ public class Navegacion extends PageUtil {
     // Navegacion menu Acciones Escritorio
     public EscritorioNuevoEnvioPage irAEscritorioNuevoEnvio() {
         menuEscritorio.click();
-        waitUntil(WAIT_TIME_1000);
         gw.deployMenu(mnuAccionesEscritorio);
         act.moveToElement(mnuAccionNuevoEnvio).release(mnuAccionNuevoEnvio).click().build().perform();
         return new EscritorioNuevoEnvioPage(getDriver());
@@ -1192,7 +1183,8 @@ public class Navegacion extends PageUtil {
         waitForTextToAppear("Cotizaciones de la cuenta");
         waitFor(mnuAdmCotizaciones).shouldBeEnabled();
         waitUntil(WAIT_TIME_1000);
-        mnuAdmCotizaciones.waitUntilVisible().waitUntilClickable().click();
+        mnuAdmCotizaciones.waitUntilVisible();
+        clickElement(mnuAdmCotizaciones);
         waitUntil(WAIT_TIME_800);
         return new OpcionesAdminitradorCotizaciones(getDriver());
     }

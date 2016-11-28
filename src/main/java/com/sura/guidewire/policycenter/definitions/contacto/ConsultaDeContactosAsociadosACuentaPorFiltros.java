@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.contacto;
 
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireLoginSteps;
 import com.sura.guidewire.policycenter.steps.cuenta.CuentaSteps;
 import net.thucydides.core.annotations.Managed;
@@ -11,6 +12,7 @@ import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
 
@@ -43,7 +45,13 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
 
     @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro $filtro en la columna $columna")
     public void deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna(@Named("filtro") String filtro, @Named("columna") String columna) {
-        MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), CoreMatchers.hasItem(CoreMatchers.containsString(filtro)));
+        try {
+            MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), CoreMatchers.hasItem(CoreMatchers.containsString(filtro)));
+        }catch (StaleElementReferenceException e){
+            LOGGER.info("StaleElementReferenceException " + e);
+            PageUtil.waitUntil(1000);
+            MatcherAssert.assertThat(cuenta.obtenerContactosAsociadosWO().obtenerColumna(columna), CoreMatchers.hasItem(CoreMatchers.containsString(filtro)));
+        }
 
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna");
     }

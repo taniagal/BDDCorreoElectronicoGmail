@@ -178,9 +178,9 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil {
 
     public void irACrearNuevaCotizacion() {
         waitFor(menuPoliza).waitUntilPresent();
-        menuPoliza.click();
+        clickElement(menuPoliza);
         waitUntil(WAIT_TIME_3000);
-        menuPoliza.click();
+        clickElement(menuPoliza);
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
         menuPolizaNuevoEnvio.waitUntilVisible().click();
     }

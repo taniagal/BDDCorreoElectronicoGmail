@@ -6,17 +6,14 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
-
-public class ExpedicionDePolizaPage extends PageUtil{
+public class ExpedicionDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     WebElementFacade tituloVentana;
 
@@ -41,7 +38,7 @@ public class ExpedicionDePolizaPage extends PageUtil{
     @FindBy(xpath = ".//a[contains(.,'Cancelar')]")
     WebElementFacade botonCancelarMensaje;
 
-    @FindBy(id="TabBar:DesktopTab-btnInnerEl")
+    @FindBy(id = "TabBar:DesktopTab-btnInnerEl")
     WebElementFacade botonInicio;
 
     @FindBy(xpath = ".//td[contains(.,'¿Está seguro de que desea expedir esta póliza?')]")
@@ -77,32 +74,45 @@ public class ExpedicionDePolizaPage extends PageUtil{
     @FindBy(xpath = ".//img[@class='error_icon']")
     WebElementFacade iconoError;
 
-    protected static final int WAIT_TIME_30000 = 30000;
     protected static final int WAIT_TIME_45000 = 45000;
 
 
-    public ExpedicionDePolizaPage(WebDriver driver){
+    public ExpedicionDePolizaPage(WebDriver driver) {
         super(driver);
     }
 
-    public void irABuscarCotizacion(String cotizacion){
-        waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
+    public void irABuscarCotizacion(String cotizacion) {
+        waitFor(menuPoliza).waitUntilPresent().waitUntilPresent();
         waitUntil(WAIT_TIME_1000);
-        menuPoliza.click();
+        clickElement(menuPoliza);
         waitForAnyTextToAppear("Cotización", "Buscar pólizas");
         waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
         waitUntil(WAIT_TIME_1500);
         menuPoliza.click();
         menuPoliza.sendKeys(Keys.ARROW_DOWN);
         menuNumeroCotizacion.waitUntilPresent();
-        ingresarDato(menuNumeroCotizacion,cotizacion);
+        ingresarDato(menuNumeroCotizacion, cotizacion);
         menuNumeroCotizacion.sendKeys(Keys.ENTER);
         waitForTextToAppear("Cotización");
         waitForTextToAppear(cotizacion);
     }
 
     public void expedirPoliza() {
-        waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));
+        try {
+            waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));
+        } catch (UnhandledAlertException f) {
+            LOGGER.info("UnhandledAlertException " + f);
+            try {
+                Alert alert = getDriver().switchTo().alert();
+                String alertText = alert.getText();
+                LOGGER.info("Alert data: " + alertText);
+                alert.accept();
+            } catch (NoAlertPresentException e) {
+                LOGGER.info("NoAlertPresentException " + e);
+            }
+            waitUntil(WAIT_TIME_2000);
+            waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));
+        }
         waitFor(ExpectedConditions.elementToBeClickable(botonExpedirPoliza));
         botonExpedirPoliza.click();
     }
@@ -132,15 +142,15 @@ public class ExpedicionDePolizaPage extends PageUtil{
         waitFor(ExpectedConditions.elementToBeClickable(botonEscritorio));
     }
 
-    public void validarMensaje( String mensaje) {
+    public void validarMensaje(String mensaje) {
         String[] mensajes = mensaje.split("\\^");
         Integer contadorMensajesOk = 0;
         Integer numeroMensajes = mensajes.length;
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mensajeRiesgos).waitUntilPresent();
         List<WebElementFacade> mensajesRiesgos = findAll(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div");
-        for(int i = 0; i < numeroMensajes; i++) {
+        for (int i = 0; i < numeroMensajes; i++) {
             for (WebElementFacade lista : mensajesRiesgos) {
-                if(lista.getText().contains(mensajes[i])){
+                if (lista.getText().contains(mensajes[i])) {
                     contadorMensajesOk++;
                     break;
                 }
@@ -170,7 +180,7 @@ public class ExpedicionDePolizaPage extends PageUtil{
         waitForTextToAppear("Mis actividades");
     }
 
-    public void irAPolizaColectiva(){
+    public void irAPolizaColectiva() {
         waitFor(linkIrAPolizaColectiva);
         linkIrAPolizaColectiva.click();
         waitForTextToAppear("Información de la póliza colectiva");

@@ -11,7 +11,7 @@ Como usuario de Policy Center
 Quiero poder gestionar los UW que se generen por bloqueo en la linea de multiriesgo corporativo
 
 Scenario: Validar el valor ingresado superior al 10% en el sublimite de la cobertura deterioro de bienes refrigerados por rotura de maquinaria en la cotizacion
-Meta: @manual
+Meta: @ lote1 @manual
 Given estoy realizando una cotizacion para el producto de mrc
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO                       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
@@ -31,7 +31,7 @@ Examples:
 ||
 
 Scenario: Validar el valor ingresado superior al 10% en el sublimite de la cobertura deterioro de bienes refrigerados por rotura de maquinaria en la expedicion
-Meta: @manual
+Meta: @ lote1 @manual
 When intente expedir una poliza con un valor ingresado superior al 10% en el sublimite de la cobertura deterioro de bienes refrigerados por rotura de maquinaria
 Then se debe generar un bloqueo en la poliza, mostrar el siguiente mensaje
 |mensaje |
@@ -45,7 +45,7 @@ Examples:
 |0012638466|
 
 Scenario: Validar que el valor ingresado en el sublimite de la cobertura  deterioro de bienes refrigerados por rotura de maquinaria, debe ser menor igual al 40% del valor asegurable de los artículos del riesgo o de la ubicación
-Meta: @manual
+Meta: @ lote1 @manual
 Given se ha realizado la cotizacion para el producto de mrc
 When intente expedir una poliza con un valor ingresado en el sublimite de la cobertura deterioro de bienes refrigerados por rotura de maquinaria, mayor al 40% del valor asegurable de los artículos del riesgo o de la ubicación
 Then se debe generar un bloqueo en la poliza, mostrar el siguiente mensaje

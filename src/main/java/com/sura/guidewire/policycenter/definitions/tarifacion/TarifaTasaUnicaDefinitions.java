@@ -24,7 +24,7 @@ public class TarifaTasaUnicaDefinitions {
 
     @When("vaya a cargar el archivo con las tasas")
     public void irAInformacionDePoliza(){
-        tasaUnicaSteps.irAInformacionDePoliza();
+        //Empty Method
     }
 
     @When("realize una modificacion en el valor asegurado <valor_asegurado>")
@@ -89,7 +89,6 @@ public class TarifaTasaUnicaDefinitions {
     public void givenIrALaCotizacion(@Named("cotizacion") String cotizacion) {
         cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
         tasaUnicaSteps.verificarEstadoDelEnvio(cotizacion);
-
     }
 
     @Given("vaya a agregar el vehiculo con los datos: $datosVehiculo")
