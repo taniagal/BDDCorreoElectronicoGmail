@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class EdificiosUbicaciones {
+public class EdificiosUbicacionesDefinitions {
 
     @Steps
     PolizaSteps polizaSteps;
@@ -45,7 +45,7 @@ public class EdificiosUbicaciones {
         //TODO: 04/08/2016 Existen otros dado ?:  El artículo Edificio debe tener mínimo un asegurado, El artículo Dinero en efectivo debe tener mínimo un asegurado
 
 
-        LOGGER.info("EdificiosUbicaciones.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
+        LOGGER.info("EdificiosUbicacionesDefinitions.dadoQueEstoyEnEdificiosYUbicacionesDeUnaPoliza");
 
         if (SerenityWebdriverManager.inThisTestThread().hasAnInstantiatedDriver()) {
             SerenityWebdriverManager.inThisTestThread().resetCurrentDriver();

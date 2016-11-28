@@ -8,6 +8,7 @@ Meta:
 @Sprint 8
 
 Scenario: 1 Validacion de riesgos consultables (tomador adicional,asegurador,direccion) al cotizar nueva poliza
+GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When seleccione poliza de tipo no reaseguro especial
 And quiera agregar un tomador adicional que es riesgo consultable <cedula>

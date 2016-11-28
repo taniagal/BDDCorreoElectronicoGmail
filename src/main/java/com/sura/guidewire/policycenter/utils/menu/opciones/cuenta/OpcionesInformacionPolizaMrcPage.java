@@ -37,6 +37,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade lblInformaPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
     WebElementFacade lblNuevaCotizacion;
+    @FindBy(xpath = "//a[contains(.,'Cotizar')]")
+    WebElementFacade lblCotizar;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade lblTabla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Name-inputEl']")
@@ -227,6 +229,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
             resetImplicitTimeout();
         }
     }
+    public void seleccionarOpcionCotizar(){
+        waitUntil(WAIT_TIME_2000);
+        lblCotizar.waitUntilClickable().click();
+    }
 
     public Integer encontrarProducto(String producto) {
         withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
@@ -398,6 +404,33 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         resetImplicitTimeout();
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
+
+    public void validarCampos(String estadouno,String estadodos,ExamplesTable menusesperados) {
+        WebElementFacade elementoMenu;
+        Map<String, String> menus;
+        String xpathMenu;
+        for (int i = 0; i < menusesperados.getRowCount(); i++) {
+            menus = menusesperados.getRows().get(i);
+            if(estadouno.contains("Visible") && menus.get("OPCIONES_MENU") != null)
+            {
+                String mensaje = menus.get("OPCIONES_MENU");
+                xpathMenu = ".//td[contains(@id,'SubmissionWizard') and contains(.,'" + mensaje + "')]";
+                elementoMenu = findBy(xpathMenu);
+                MatcherAssert.assertThat("Alguno de los campos no es visible",
+                        elementoMenu.isVisible());
+            }
+            else if(estadodos.contains("No visible"))
+            {
+                String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
+                xpathMenu = ".//td[contains(@id,'SubmissionWizard') and contains(.,'" + mensaje + "')]";
+                elementoMenu = findBy(xpathMenu);
+                MatcherAssert.assertThat("Alguno de los campos es visible",
+                        !elementoMenu.isVisible());
+            }
+        }
+    }
+
+
 
     public void seleccionarTipoNoReaseguro(){
         btnNoReaseguroEspecial.click();
