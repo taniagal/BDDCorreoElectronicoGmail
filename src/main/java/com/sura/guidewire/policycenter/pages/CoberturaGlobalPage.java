@@ -85,7 +85,7 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void cargarMultiplesUbicaciones(String valor) {
-        linkCoberturas.click();
+        clickElement(linkCoberturas);
         checkBoxDanosMateriales.click();
         campoTxtValorAseguradoDanosMateriales.sendKeys(valor);
         linkDetalles.click();

@@ -462,7 +462,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void seleccionarCobertura(WebElementFacade divEntradasAgregarOtroArticulo, String cobertura) {
-
         WebElementFacade xpathTrCoberturaDeRiesgo = divEntradasAgregarOtroArticulo.findBy(".//tr[ (descendant::div[contains(., '" + cobertura + "')])] ");
         WebElementFacade inputCoberturaDeRiesgo = xpathTrCoberturaDeRiesgo.find(By.tagName(INPUT));
 
