@@ -95,7 +95,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade inputNumeroTelefono;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-inputEl']")
     WebElementFacade inputDireccion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:reaseguroEspecial_false-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']")
     WebElementFacade inputReaseguroEspecial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:CompanyNamedInsuredLabel-labelEl']")
     WebElementFacade lblTomador;
@@ -131,9 +131,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
     private boolean esVisible;
-
-
-    Actions actions = new Actions(getDriver());
 
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
         super(driver);

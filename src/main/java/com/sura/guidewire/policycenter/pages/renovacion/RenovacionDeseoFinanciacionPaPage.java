@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -28,6 +29,8 @@ public class RenovacionDeseoFinanciacionPaPage extends PageUtil {
     }
 
     public void seleccionarDeseoFinanciacionSi() {
+        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
+        tasaUnicaPage.llenarInfoPoliza();
         WebElementFacade deseoFinanciacionSi = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-inputEl']");
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(deseoFinanciacionSi).click();
         WebElementFacade numeroCuotas = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumber-inputEl']");

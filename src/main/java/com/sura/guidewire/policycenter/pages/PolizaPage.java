@@ -365,5 +365,11 @@ public class PolizaPage extends GuidewirePage {
         waitForTextToAppear("Coaseguro");
     }
 
+    public void seleccionarBotonAcciones(){
+        String xpathLinkAcciones = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]";
+        WebElementFacade botonAcciones = findBy(xpathLinkAcciones);
+        botonAcciones.waitUntilPresent().click();
+    }
+
 
 }

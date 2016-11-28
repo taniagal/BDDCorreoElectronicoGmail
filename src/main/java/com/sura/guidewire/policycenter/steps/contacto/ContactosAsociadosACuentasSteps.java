@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.steps.contacto;
 
+import com.sura.guidewire.policycenter.pages.NuevoAseguradoNombradoPage;
 import com.sura.guidewire.policycenter.pages.cuenta.ContactosAsociadosACuentasPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.cuenta.panel.contactos.BusquedaContactoDelDirectorioPage;
 import net.thucydides.core.annotations.Step;
@@ -15,6 +16,7 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     private static final String POLIZAS_ASOCIADAS = "POLIZAS_ASOCIADAS";
     private ContactosAsociadosACuentasPage contactosAsociadosACuentasPage;
     private BusquedaContactoDelDirectorioPage busquedaDelDirectorioPage;
+    private NuevoAseguradoNombradoPage aseguradoNombradoPage;
 
     @Step
     public void consultarContactos() {
@@ -99,6 +101,11 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     @Step
     public void contactoEliminado(String contactoEliminado){
         contactosAsociadosACuentasPage.contactoEliminado(contactoEliminado);
+    }
+
+    @Step
+    public void verificarDireccionContacto(){
+        aseguradoNombradoPage.verificarDireccionContacto();
     }
 
 }
