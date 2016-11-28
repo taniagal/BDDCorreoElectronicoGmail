@@ -92,11 +92,11 @@ Examples:
 |tipoCuenta|numCuenta  |direccion       |
 |Compañía  |C010478975 |CRA 65 # 40 - 50|
 
-Scenario: Validar informacion oculta en resumen de la cuenta de persona natural
+Scenario: Validar informacion visible en resumen de la cuenta de persona natural
 Given estoy en una cuenta <numCuenta>
 When ingrese al resumen de la cuenta
 Then la informacion de actividades actuales, terminos de la poliza y transacciones de la poliza pendientes deben estar
-ocultos
+visibles
 
 Examples:
 |numCuenta  |
