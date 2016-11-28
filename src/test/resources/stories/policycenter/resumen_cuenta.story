@@ -1,6 +1,6 @@
 Resumen Cuenta
 
-Meta: @lote2
+Meta: @lote1
 
 @issue #CDSEG-666
 @tag automator: diego_cardona_acevedo

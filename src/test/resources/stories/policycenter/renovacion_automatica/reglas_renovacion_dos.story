@@ -1,6 +1,6 @@
 Reglas Renovacion Dos
 
-Meta: @lote2
+Meta: @lote1
 
 @issue #CDSEG-3014
 @tag automator: Jonathan_Mejia_Leon

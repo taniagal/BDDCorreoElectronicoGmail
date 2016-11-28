@@ -181,10 +181,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
 
-        if (findBy(".//a[contains(.,'Borrar')]").isVisible()) {
+        setImplicitTimeout(WAIT_TIME_7, TimeUnit.SECONDS);
+        if (findBy(".//a[contains(.,'Borrar')]").isPresent()) {
             findBy(".//*[@id='CPLocationPopup:Update-btnInnerEl']").click();
-            waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
+            waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES, WAIT_TIME_30000);
         }
+        resetImplicitTimeout();
     }
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {

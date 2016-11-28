@@ -28,6 +28,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade botonEditarTransaccionDePoliza;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarPopup;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:Taxes-inputEl']")
+    private WebElementFacade campoIva;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']")
     private WebElementFacade campoTxtValorReconstruccion;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
@@ -206,6 +208,7 @@ public class TarifaMRCPage extends PageUtil {
 
     public void ingresarTasaGlobal(String valor) {
         labelPrimaTotal.waitUntilPresent();
+        verificarValorIva();
         menuItemModificadores.click();
         campoTxtTasaGlobal.waitUntilPresent();
         botonEditarTransaccionDePoliza.click();
@@ -227,5 +230,17 @@ public class TarifaMRCPage extends PageUtil {
         }
         MatcherAssert.assertThat("Error en el valor de la cobertura Expected: " + prima + " But was: " +
                 montoCobertura.getText(), montoCobertura.containsText(prima));
+    }
+
+    public void verificarImpuestos() {
+        MatcherAssert.assertThat("Error en el valor del IVA Expected: 0,00 But was: " +
+                campoIva.getText(), campoIva.containsText("0,00"));
+    }
+
+    public void verificarValorIva() {
+        primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, 10).replace(".", ""));
+        int iva = (int) (primaTotal * 0.16 + 0.28);
+        MatcherAssert.assertThat("Error en el calculo del valor del IVA , was: " + campoIva.getText(),
+                campoIva.getText().substring(1, 8).replace(".", "").equals(Integer.toString(iva)));
     }
 }

@@ -15,7 +15,7 @@ public class AnalisisDeRiesgoPaPage extends PageUtil {
 
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarPopup;
-    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton']")
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     private WebElementFacade botonBorrar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
     private WebElementFacade botonExpedirPoliza;
