@@ -50,7 +50,6 @@ Examples:
 
 
 Scenario: 3 Validacion de campos en menu lateral de poliza principal expedida
-GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
@@ -69,7 +68,6 @@ Examples:
 
 
 Scenario: 4 Validacion de campos no editables en informacion
-GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When ingrese a la opcion informacion de poliza
 Then ningun campo puede ser editable en informacion
@@ -80,7 +78,6 @@ Examples:
 
 
 Scenario: 5 Validacion de campos no editables en pago
-GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When ingrese a la opcion de pago
 Then ningun campo puede ser editable en pago
