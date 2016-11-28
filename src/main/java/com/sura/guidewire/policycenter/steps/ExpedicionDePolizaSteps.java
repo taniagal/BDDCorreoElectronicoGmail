@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.steps;
 
+import com.sura.guidewire.policycenter.pages.CotizacionMRCPage;
 import com.sura.guidewire.policycenter.pages.ExpedicionDePolizaPage;
 import com.sura.guidewire.policycenter.pages.PanelSurEspacioDeTrabajoPage;
 import net.thucydides.core.annotations.Step;
@@ -10,10 +11,12 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
 
     ExpedicionDePolizaPage expedicionDePolizaPage;
     PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;
+    CotizacionMRCPage cotizacionMRCPage;
+
 
     @Step
     public void navegar_barra_superior(String cotizacion) {
-        expedicionDePolizaPage.irABuscarCotizacion(cotizacion);
+        cotizacionMRCPage.irABuscarCotizacion(cotizacion);
     }
 
     @Step

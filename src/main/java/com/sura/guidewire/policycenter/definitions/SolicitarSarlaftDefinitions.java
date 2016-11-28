@@ -26,13 +26,13 @@ public class SolicitarSarlaftDefinitions {
     @When("intente expedir la poliza cuyas figuras requieran Sarlaft")
     public void expedirPoliza(){
         expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
-        analisisDeRiesgoPaSteps.aceptar_expedicion();
+        analisisDeRiesgoPaSteps.aceptarExpedicion();
     }
 
     @When("intente expedir la modificacion cuyas figuras requieran Sarlaft")
     public void modificarPoliza(){
         expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
-        cambioEnExpedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion();
+        cambioEnExpedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
     }
 
     @Then("debo ver un UW issue que indique que se requiere diligenciar Sarlaft $mensaje")

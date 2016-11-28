@@ -15,22 +15,22 @@ public class CambioEnExpedicionDePolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void clic_en_expedir_poliza() {
+    public void clicEnExpedirPoliza() {
         cambioEnExpedicionDePolizaPage.expedirPoliza();
     }
 
     @Step
-    public void clic_en_aceptar_del_mensaje_de_confirmacion() {
+    public void clicEnAceptarDelMensajeDeConfirmacion() {
         cambioEnExpedicionDePolizaPage.aceptarExpedirPoliza();
     }
 
     @Step
-    public void validar_resumen_de_la_poliza_expedida(String infoCambio, String infoPoliza, String escritorio) {
+    public void validarResumenDeLaPolizaExpedida(String infoCambio, String infoPoliza, String escritorio) {
         cambioEnExpedicionDePolizaPage.validarResumenDeLaPolizaExpedida(infoCambio, infoPoliza, escritorio);
     }
 
     @Step
-    public void clic_en_cancelar_del_mensaje_de_confirmacion() {
+    public void clicEnCancelarDelMensajeDeConfirmacion() {
         cambioEnExpedicionDePolizaPage.cancelarExpedirPoliza();
     }
 }
