@@ -154,7 +154,7 @@ public class TarifaAutosPage extends PageUtil {
         waitUntil(WAIT_TIME_800);
         botonBuscar.waitUntilPresent();
         campoTxtNumeroDocumento.sendKeys(documento);
-        botonBuscar.click();
+        clickElement(botonBuscar);
         botonSeleccionar.waitUntilPresent().click();
         campoTxtNombre.waitUntilPresent();
     }

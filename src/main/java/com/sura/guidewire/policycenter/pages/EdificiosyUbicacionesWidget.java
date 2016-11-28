@@ -181,10 +181,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
 
-        if (findBy(".//a[contains(.,'Borrar')]").isVisible()) {
+        setImplicitTimeout(WAIT_TIME_7, TimeUnit.SECONDS);
+        if (findBy(".//a[contains(.,'Borrar')]").isPresent()) {
             findBy(".//*[@id='CPLocationPopup:Update-btnInnerEl']").click();
-            waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
+            waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES, WAIT_TIME_30000);
         }
+        resetImplicitTimeout();
     }
 
     public void seleccionarEnlaceCancelarIngresoNuevaUbicacion() {
@@ -460,7 +462,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void seleccionarCobertura(WebElementFacade divEntradasAgregarOtroArticulo, String cobertura) {
-
         WebElementFacade xpathTrCoberturaDeRiesgo = divEntradasAgregarOtroArticulo.findBy(".//tr[ (descendant::div[contains(., '" + cobertura + "')])] ");
         WebElementFacade inputCoberturaDeRiesgo = xpathTrCoberturaDeRiesgo.find(By.tagName(INPUT));
 
@@ -478,7 +479,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void cliclearBtnCotizar() {
         WebElementFacade btnAgregarArticulo = findBy(XPATH_COTIZAR).waitUntilVisible().waitUntilClickable();
-        btnAgregarArticulo.click();
+        btnAgregarArticulo.waitUntilPresent().click();
         waitFor(WAIT_TIME_4).second();
     }
 

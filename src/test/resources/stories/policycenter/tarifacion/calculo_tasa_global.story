@@ -1,6 +1,6 @@
 Calculo Tasa Global
 
-Meta: @lote2
+Meta: @lote3
 @issue #CDSEG-4326
 @issue #CDSEG-4333
 @sprint 9
@@ -14,24 +14,7 @@ Al cotizar una poliza de MRC quiero ser capaz de registrar toda la información 
 
 Scenario:  Validar valor de la tasa global en na cotizacion de MRC
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto               |canal            |
-|C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
-When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
-And descripcion <descripcion>, actividad economica <actividad>
-When seleccione la cobertura:
-|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
-|100000000          |100000000     |null          |Terremoto|
-And cotice el articulo
-Then debo poder ver el valor de la tasa global
 
-
-Examples:
-|departamento|ciudad  |direccion        |descripcion  |actividad|
-|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
-
-
-Scenario:  Validar tasa por departamento MRC
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto               |canal            |
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|

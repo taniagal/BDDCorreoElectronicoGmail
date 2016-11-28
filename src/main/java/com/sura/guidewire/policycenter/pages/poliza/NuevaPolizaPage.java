@@ -28,11 +28,13 @@ public class NuevaPolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-triggerWrap']/tbody/tr/td/input")
     private WebElementFacade listaOrganizacionW;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab-btnInnerEl']")
-    private WebElementFacade btnBuscar;
+    private WebElementFacade botonBuscar;
     @FindBy(xpath = ".//*[@id='Search:MenuLinks:Search_AccountSearch']")
-    private WebElementFacade btnCuentas;
+    private WebElementFacade botonCuentas;
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:AccountNumber-inputEl']")
     WebElementFacade txtNumeroCuenta;
+    @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']")
+    WebElementFacade grdNumeroCuenta;
 
     Actions acciones = new Actions(getDriver());
 
@@ -107,14 +109,13 @@ public class NuevaPolizaPage extends PageUtil {
     }
 
     public void buscarCuenta(String numeroCuenta) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnBuscar).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBuscar).waitUntilPresent();
         waitUntil(WAIT_TIME_3000);
-        btnBuscar.click();
-        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(btnCuentas).click();
+        botonBuscar.click();
+        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(botonCuentas).click();
         txtNumeroCuenta.waitUntilPresent().sendKeys(numeroCuenta);
-        WebElementFacade btnBuscarCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
-        btnBuscarCuenta.click();
-        WebElementFacade grdNumeroCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchResultsLV:0:AccountNumber']");
-        grdNumeroCuenta.click();
+        WebElementFacade botonBuscarCuenta = esperarElemento(".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']");
+        botonBuscarCuenta.click();
+        grdNumeroCuenta.waitUntilPresent().click();
     }
 }

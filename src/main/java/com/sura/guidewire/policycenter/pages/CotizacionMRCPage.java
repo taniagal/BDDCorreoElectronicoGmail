@@ -88,6 +88,10 @@ public class CotizacionMRCPage extends PageUtil {
     private WebElementFacade columnaEstadoCargos;
     @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr[2]/td/div/div/div/div/div[3]/div")
     private WebElementFacade columnaMontoCargos;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtBuscar;
+    @FindBy(xpath = ".//*[@id='DesktopSubmissions:DesktopSubmissionsScreen:SubmissionSearch-inputEl']")
+    private WebElementFacade campoTxtSubN;
 
     protected static final int WAIT_TIME_7000 = 7000;
 
@@ -96,14 +100,10 @@ public class CotizacionMRCPage extends PageUtil {
     }
 
     public void irABuscarCotizacion(String cotizacion) {
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(menuPoliza).shouldBePresent();
-        clickElement(menuPoliza);
-        waitUntil(WAIT_TIME_3500);
-        menuPoliza.click();
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(WAIT_TIME_1000);
-        buscarCotizacion.typeAndEnter(cotizacion);
-        waitUntil(WAIT_TIME_2000);
+        campoTxtBuscar.waitUntilPresent().sendKeys("MySubmissions");
+        campoTxtBuscar.sendKeys(Keys.ENTER);
+        campoTxtSubN.waitUntilPresent().sendKeys(cotizacion);
+        campoTxtSubN.sendKeys(Keys.ENTER);
     }
 
     public void ingresarACotizacion() {
