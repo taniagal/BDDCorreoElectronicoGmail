@@ -10,7 +10,7 @@ Meta:
 
 
 
-Scenario: 1 Validacion de campos en menu lateral y opcion cotizacion de la poliza principal
+Scenario: 1 Validacion de campos en menu lateral y opcion cotizacion
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When cotize una poliza
@@ -71,6 +71,9 @@ Scenario: 4 Validacion de campos no editables en informacion
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When ingrese a la opcion informacion de poliza
 Then ningun campo puede ser editable en informacion
+And en informacion de poliza deben estar en estado <estadodos> las siguientes opciones
+| OPCIONES_MENU_NO_VISIBLES |
+| Agregar coaseguro         |
 
 Examples:
 | numSubscripcion | rolUsuario | estadodos  |

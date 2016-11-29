@@ -112,6 +112,9 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     public void validar_campos(String estadouno,String estadodos,ExamplesTable menusesperados){
         opcionesInformacionPolizaMrcPage.validarCamposMenuLateral(estadouno,estadodos,menusesperados);
     }
+    public void validar_campos_informacion_poliza(String estadouno,String estadodos,ExamplesTable menusesperados){
+        opcionesInformacionPolizaMrcPage.validarCamposInformacionPoliza(estadouno,estadodos,menusesperados);
+    }
 
     @Step
     public void ingresar_a_edificios_y_ubicaciones() {

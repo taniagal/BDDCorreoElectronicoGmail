@@ -85,10 +85,17 @@ public class InformacionDePolizaMrcDefinitions {
     public void cuandoIngreseAInformacionDePoliza(){
         informacionDePolizaMrcSteps.ingresar_a_informacion_de_poliza();
     }
+
     @When("ingrese a la opcion informacion de poliza")
     public void cuandoSeleccioneLaOpcionInformacionDePoliza(){
         informacionDePolizaMrcSteps.ingresar_a_opcion_informacion_de_poliza();
     }
+
+    @Then("en informacion de poliza deben estar en estado <estadodos> las siguientes opciones $menusesperados")
+    public void entoncesenInformacionDePolizaSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,@Named("estadodos") String estadodos, ExamplesTable menusesperados){
+        informacionDePolizaMrcSteps.validar_campos_informacion_poliza(estadouno,estadodos,menusesperados);
+    }
+
 
     @When("de clic en Aceptar de la ventana Coaseguro")
     public void darClicEnAceptarDeCoaseuguro(){
@@ -194,14 +201,13 @@ public class InformacionDePolizaMrcDefinitions {
     @Aliases(values = {
             "deben estar en estado <estadodos> las siguientes opciones $menusesperados",
     })
-    public void entoncesSeDebenMostrarLasSiguientesOpciones(@Named("estadouno") String estadouno,@Named("estadodos") String estadodos, ExamplesTable menusesperados){
+    public void entoncesSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,@Named("estadodos") String estadodos, ExamplesTable menusesperados){
         informacionDePolizaMrcSteps.validar_campos(estadouno,estadodos,menusesperados);
     }
     @Then("ningun campo puede ser editable en informacion")
     public void entoncesNingunCampoPuedeSerEditable(){
         informacionDePolizaMrcSteps.validarCamposNoEditablesEnInformacionDePoliza();
     }
-
 
 
 

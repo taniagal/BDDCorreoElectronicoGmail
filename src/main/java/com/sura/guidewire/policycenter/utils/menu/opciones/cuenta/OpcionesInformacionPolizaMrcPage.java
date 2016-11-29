@@ -133,6 +133,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private static String LBL_MENU_LATERAL_INICIAL =  ".//td[contains(@id,'SubmissionWizard') and contains(.,'";
     private static String LBL_MENU_LATERAL_FINAL =  "')]";
     private static String LBL_INFORMACION_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV')]/td/div";
+    private static String LINK_MENU_LATERAL_INICIAL =  ".//a[contains(@id,'SubmissionWizard') and contains(.,'";
+    private static String LINK_MENU_LATERAL_FINAL =  "')]";
     private boolean esVisible;
 
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
@@ -443,6 +445,9 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public void validarCamposMenuLateral(String estadouno,String estadodos,ExamplesTable menusesperados) {
        validarCampos(estadouno,estadodos,menusesperados,LBL_MENU_LATERAL_INICIAL,LBL_MENU_LATERAL_FINAL);
+    }
+    public void validarCamposInformacionPoliza(String estadouno,String estadodos,ExamplesTable menusesperados){
+        validarCampos(estadouno,estadodos,menusesperados,LINK_MENU_LATERAL_INICIAL,LINK_MENU_LATERAL_FINAL);
     }
 
     public void seleccionarTipoNoReaseguro(){
