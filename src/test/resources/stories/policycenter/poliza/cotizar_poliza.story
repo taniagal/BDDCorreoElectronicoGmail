@@ -1,5 +1,5 @@
 Meta:
-@lote2
+@lote1
 @Story CDSEG-907
 @tag automator:andres_alarcon_guerrero, informer:juan_esteban_restrepo, sprint:7
 @Sprint 7

@@ -10,7 +10,7 @@ Como usuario PolicyCenter
 Quiero ser capaz de ingresar y visualizar la informacion de la poliza incluyendo el nombre tomador
 ,tomador adcicional, validar vigencia de la poliza.
 
-Scenario: visualizar datos de la poliza
+Scenario: Visualizar datos de la poliza
 GivenStories: stories/policycenter/login_policy.story
 Given se inicio una nueva suscripcion <numeroCuenta>
 When este expidiendo una poliza de propiedad comercial
@@ -58,7 +58,7 @@ Examples:
 |numeroCuenta  |cedula|nomProducto            |mensaje                                       |mensaje2                                                                                                                                              |
 |C001888888    |123456|Multiriesgo corporativo|es un riesgo no estándar y debe ser autorizado|El tomador es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial|
 
-Scenario: ocultar descipcion de la direccion cuando el campo no tenga datos informativos
+Scenario: Ocultar descipcion de la direccion cuando el campo no tenga datos informativos
 Given se inicio una nueva suscripcion <numeroCuenta>
 When este expidiendo una poliza de propiedad comercial
 And seleccione el producto <nomProducto> a expedir

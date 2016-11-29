@@ -344,4 +344,7 @@ public class NuevaCotizacionPage extends PageObject {
         return existeOcurrencia;
     }
 
+
+    
+
 }

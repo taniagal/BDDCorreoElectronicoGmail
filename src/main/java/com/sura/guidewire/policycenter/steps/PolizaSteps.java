@@ -43,9 +43,7 @@ public class PolizaSteps extends GuidewireSteps {
 
     @Step
     public BotonAccionesSteps seleccionarBotonAcciones() {
-        waitFor(1).second();
-        String xpathLinkAcciones = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]";
-        getDriver().findElement(By.xpath(xpathLinkAcciones)).click();
+        polizaPage.seleccionarBotonAcciones();
         return botonAccionesSteps;
     }
 

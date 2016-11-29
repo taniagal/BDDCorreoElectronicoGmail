@@ -2,7 +2,7 @@ Generacion Uw Issue Riesgos Consultables Pa
 
 Meta:
 
-@lote4
+@lote2
 @issue #CDSEG-1260
 @tag automator: diego_cardona_acevedo
 @local
@@ -49,7 +49,7 @@ Given se ha realizado la cotizacion de la modificacion
 When las figuras asegurado, beneficiario y/o tomador sean riesgo consultable
 And la placa, motor y chasis sean riesgo consultable
 And realice la cotizacion de la modificacion
-And vaya a la opcion de analisis de riesgo
+And  vaya a  opcion de analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 
 Scenario: Analisis de riesgo - Uw issue - Modificacion
@@ -58,5 +58,5 @@ Given se ha realizado la cotizacion de una renovacion
 When las figuras asegurado, beneficiario y/o tomador sean riesgo consultable
 And la placa, motor y chasis sean riesgo consultable
 And realice la cotizacion de la renovacion
-And vaya a la opcion de analisis de riesgo
+And  vaya a opcion de analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante

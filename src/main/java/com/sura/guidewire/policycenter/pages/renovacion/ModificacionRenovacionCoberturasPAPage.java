@@ -63,10 +63,6 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     private WebElementFacade lblMensaje;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     private WebElementFacade btnBorrar;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
-    private WebElementFacade btnSiguiente;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
-    private WebElementFacade lblMensajeFecha;
 
 
     public ModificacionRenovacionCoberturasPAPage(WebDriver driver) {

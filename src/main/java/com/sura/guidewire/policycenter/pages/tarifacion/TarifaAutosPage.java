@@ -5,6 +5,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -110,9 +111,7 @@ public class TarifaAutosPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_AssignDriversDV:DriverPctLV_tb:AddDriver:0:Driver']")
     private WebElementFacade menuItemAseguradoR;
 
-
     private static final String TABLAXPATH = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
     public TarifaAutosPage(WebDriver driver) {
         super(driver);
@@ -128,7 +127,13 @@ public class TarifaAutosPage extends PageUtil {
 
 
     public void cotizar() {
-        botonCotizar.click();
+        try {
+            clickElement(botonCotizar);
+        } catch (ElementNotVisibleException e) {
+            LOGGER.info("ElementNotVisibleException " + e);
+            waitUntil(WAIT_TIME_2000);
+            clickElement(botonCotizar);
+        }
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
         waitUntil(WAIT_TIME_500);
         menuItemCotizacion.waitUntilPresent().click();
@@ -154,7 +159,7 @@ public class TarifaAutosPage extends PageUtil {
         waitUntil(WAIT_TIME_800);
         botonBuscar.waitUntilPresent();
         campoTxtNumeroDocumento.sendKeys(documento);
-        botonBuscar.click();
+        clickElement(botonBuscar);
         botonSeleccionar.waitUntilPresent().click();
         campoTxtNombre.waitUntilPresent();
     }

@@ -17,7 +17,7 @@ public class ExpedicionRenovacionPADefinitions {
 
     @Given("se esta cotizando una renovacion de poliza <cotizacion>")
     public void buscarCotizacion(@Named("cotizacion") String cotizacion){
-        cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
+        cotizacionMRCSteps.irABuscarCotizacionPoliza(cotizacion);
     }
 
     @When("emita la renovacion")

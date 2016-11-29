@@ -1,18 +1,18 @@
-Calculo Tasa Global
+Impuestos De Tarifa
 
-Meta: @lote2
-@issue #CDSEG-4326
-@issue #CDSEG-4333
-@sprint 9
+Meta:
+@lote1
+@issue #CDSEG-735
+@sprint 10
 @tag automator: nelson_jhair_mosquera_palacios
-@local
 
 Narrative:
 Como usuario de policy center
-Al cotizar una poliza de MRC quiero ser capaz de registrar toda la información del riesgo.
+Al cotizar una poliza de MRC quiero que al momento de tarifar y calcular los impuestos (IVA)
+se tenga en cuenta las ciudades que están exceptas de este.
 
 
-Scenario:  Validar valor de la tasa global en na cotizacion de MRC
+Scenario:  Verificar impuesto en la ciudad de circulacion Leticia
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto               |canal            |
@@ -23,15 +23,15 @@ When seleccione la cobertura:
 |valorReconstruccion|valorAsegurado|valorComercial|cobertura|
 |100000000          |100000000     |null          |Terremoto|
 And cotice el articulo
-Then debo poder ver el valor de la tasa global
-
+Then el valor de iva debe ser igual a 0 (cero)
 
 Examples:
-|departamento|ciudad  |direccion        |descripcion  |actividad|
-|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|prima    |departamento|ciudad |direccion        |descripcion  |actividad|
+|1.016.667|Amazonas    |Leticia|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
-Scenario:  Validar tasa por departamento MRC
+
+Scenario:  Verificar impuesto en la ciudad de circulación es San Andres
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto               |canal            |
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
@@ -41,10 +41,8 @@ When seleccione la cobertura:
 |valorReconstruccion|valorAsegurado|valorComercial|cobertura|
 |100000000          |100000000     |null          |Terremoto|
 And cotice el articulo
-And intente modificar la tasa global a un valor <valor> menor al del departamento
-Then debo poder ver el mensaje de bloqueo <mensaje>
-
+Then el valor de iva debe ser igual a 0 (cero)
 
 Examples:
-|departamento|ciudad  |direccion        |descripcion  |actividad                    |valor|mensaje                                                             |
-|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|0,5  |El valor ingresado no esta permitido ya que no cumple con el RT y RA|
+|prima    |departamento            |ciudad    |direccion        |descripcion  |actividad|
+|1.016.667|San Andres Y Providencia|San Andres|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|

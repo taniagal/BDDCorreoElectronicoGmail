@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 //@DefaultUrl("https://qacoreseguros.suramericana.com/pc/PolicyCenter.do")
-public class SeusLoginPage extends PageUtil {
+public class LoginPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='country']")
     private WebElementFacade pais;
@@ -31,7 +31,7 @@ public class SeusLoginPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']")
     private WebElementFacade btnSubmit1;
 
-    public SeusLoginPage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver);
     }
 

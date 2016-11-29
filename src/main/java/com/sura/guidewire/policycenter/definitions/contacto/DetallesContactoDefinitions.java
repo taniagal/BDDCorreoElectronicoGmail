@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.contacto;
 
-import com.sura.guidewire.policycenter.steps.commons.SeusLoginSteps;
+import com.sura.guidewire.policycenter.steps.commons.LoginSteps;
 import com.sura.guidewire.policycenter.steps.contacto.DetallesContactoSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -11,7 +11,7 @@ import org.jbehave.core.annotations.When;
 @SuppressWarnings("WeakerAccess")
 public class DetallesContactoDefinitions {
     @Steps
-    private SeusLoginSteps seusLogin;
+    private LoginSteps seusLogin;
 
     @Steps
     private DetallesContactoSteps detallesContactoSteps;

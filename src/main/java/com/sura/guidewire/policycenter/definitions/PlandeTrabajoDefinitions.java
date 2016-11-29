@@ -20,19 +20,17 @@ public class PlandeTrabajoDefinitions {
 
 
     @Then("se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consultable")
-    public void entoncesSeDebeGenerarUnaActividadPorCadaDniODireccionDiferenteQueSeaRiesgoConsultable()
-    {
+    public void entoncesSeDebeGenerarUnaActividadPorCadaDniODireccionDiferenteQueSeaRiesgoConsultable() {
         planDeTrabajoSteps.ingresar_al_plan_de_trabajo();
     }
 
     @Then("se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consultable en cambio de poliza")
-    public void entoncesSeDebeGenerarUnaActividadPorCadaDniODireccionDiferenteQueSeaRiesgoConsultableEnCambioDePoliza()
-    {
+    public void entoncesSeDebeGenerarUnaActividadPorCadaDniODireccionDiferenteQueSeaRiesgoConsultableEnCambioDePoliza() {
         planDeTrabajoSteps.ingresar_al_plan_de_trabajo_en_cambio_de_poliza();
     }
+
     @Then("se debe generar una actividad por cada DNI o direccion diferente que sea riesgo consultable en renovacion de poliza")
-    public void entoncesSeDebeGenerarUnaActividadPorCadaDniODireccionDiferenteQueSeaRiesgoConsultableEnRenovacionoDePoliza()
-    {
+    public void entoncesSeDebeGenerarUnaActividadPorCadaDniODireccionDiferenteQueSeaRiesgoConsultableEnRenovacionoDePoliza() {
         planDeTrabajoSteps.ingresar_al_plan_de_trabajo_en_renovacion_de_poliza();
         informacionDePolizaMrcSteps.ingresar_a_informacion_de_poliza();
         polizaSteps.seleccionarOpcionCierre();

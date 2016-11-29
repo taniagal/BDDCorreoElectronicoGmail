@@ -82,4 +82,9 @@ public class TarifaMRCSteps extends ScenarioSteps {
     public void verificarTarifacionEnCobertura(String prima) {
         tarifaMRCPage.verificarTarifacionEnCobertura(prima);
     }
+
+    @Step
+    public void verificarImpuestos(){
+        tarifaMRCPage.verificarImpuestos();
+    }
 }

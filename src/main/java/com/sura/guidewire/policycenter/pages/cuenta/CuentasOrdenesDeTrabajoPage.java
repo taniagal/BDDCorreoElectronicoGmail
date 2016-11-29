@@ -1,6 +1,6 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
-import com.sura.guidewire.policycenter.pages.commons.SeusLoginPage;
+import com.sura.guidewire.policycenter.pages.commons.LoginPage;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
@@ -15,7 +15,7 @@ import org.openqa.selenium.support.FindBy;
 
 
 
-public class CuentasOrdenesDeTrabajoPage extends SeusLoginPage {
+public class CuentasOrdenesDeTrabajoPage extends LoginPage {
     @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_WorkOrders']/div")
     private WebElementFacade mnuTransaccionesPoliza;
     @FindBy(xpath=".//td/div/div/div/div/table/tbody/tr/td[2]/table/tbody/tr/td/input")

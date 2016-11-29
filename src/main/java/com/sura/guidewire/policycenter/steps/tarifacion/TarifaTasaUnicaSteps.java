@@ -32,6 +32,7 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps{
     @Step
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         if (token) {
+            tasaUnicaPage.llenarInfoPoliza();
             vehiculoPage.irAVehiculos();
             vehiculoPage.agregarVehiculo(datosVehiculo);
         }

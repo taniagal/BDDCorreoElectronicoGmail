@@ -1,6 +1,6 @@
 Informacion Poliza Pa
 
-Meta: @lote1
+Meta: @lote2
 
 @issue #CDSEG-995
 @tag automator: diego_cardona_acevedo
@@ -32,8 +32,6 @@ When seleccione el producto para expedir la poliza
 And seleccione la organizacion, el canal y el tipo de poliza:
 |organizacion   |canal              |tipoPoliza |
 |Sura           |Canal Tradicional  |PPAutos    |
-And seleccione el canal <canal>
-And seleccione el tipo de poliza <tipoPoliza> para autos
 And modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
 Then esta <fechaInicioVigencia> debe calcular de forma automatica la fecha de fin de vigencia, la cual depende del tipo de plazo
 

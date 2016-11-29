@@ -11,30 +11,8 @@ Como usuario PolicyCenter
 quiero poder actualizar la direccion de un contacto que este asociada a otros contactos
 para mantener la informacion actualizada de direcciones
 
-Scenario: Edicion del campo direccion - validar longitud maxima de 200 caracteres en Detalle de contacto
-GivenStories: stories/policycenter/login_policy.story
-Given que voy a buscar la cuenta <numCuenta>
-And que me encuentro en los contactos de la cuenta
-When seleccione el contacto a editar <nombreContacto>
-And ingrese a editar la direccion por <direccion>
-Then el campo direccion no debe permitir ingresar mas de 200 caracteres <direccionOk>
-
-Examples:
-| numCuenta  | nombreContacto  | direccion                                                                                                                                                                                                 | direccionOk |
-| C000484848 | RICARDO GIRALDO | CL 14 # 48 - 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162162 CRA 65 # 48 162 C PRU | 200         |
-
-Scenario: Edicion del campo direccion - validar longitud maxima de 200 caracteres en Detalle de contacto, Direcciones
-Given que voy a buscar la cuenta <numCuenta>
-And que me encuentro en los contactos de la cuenta
-When seleccione el contacto a editar <nombreContacto>
-And ingrese a editar la direccion por <direccion> en detalle contacto pestaña direcciones
-Then el campo direccion no debe permitir ingresar mas de 200 caracteres <direccionOk>
-
-Examples:
-| numCuenta  | nombreContacto  | direccion                                                                                                                                                                                                 | direccionOk |
-| C000484848 | RICARDO GIRALDO | CL 14 # 48 - 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162 CRA 65 # 48 162162 CRA 65 # 48 162 PRUEB | 200         |
-
 Scenario: Edicion del campo Pais validando que departamento y ciudad se actualizan a ninguno
+GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar la cuenta <numCuenta>
 And que me encuentro en los contactos de la cuenta
 When seleccione el contacto a editar <nombreContacto>
@@ -44,7 +22,8 @@ And el campo ciudad debe tener el valor <ciudad>
 
 Examples:
 | numCuenta  | nombreContacto  | pais     | departamento | ciudad    |
-| C000484848 | RICARDO GIRALDO | Colombia | <ninguno>    | <ninguno> |
+| C000484848 | RICARDO GIRALDO | Colombia | Antioquia    | MEDELLLIN |
+
 
 Scenario: Edicion del campo Direccion validando que se estandariza la direccion ingresada
 Given que voy a buscar la cuenta <numCuenta>
@@ -55,7 +34,9 @@ Then la direccion debe quedar estandarizada <direccionEstandarizada> del contact
 
 Examples:
 | numCuenta  | direccionSinEstandarizar | direccionEstandarizada | nombreContacto  |
-| C000484848 | CARRERA 65 48 162        | CR 65 # 48 - 162       | RICARDO GIRALDO |
+| C000484848 | CARRERA 65 48 162        | CARRERA 65 48 162      | RICARDO GIRALDO |
+
+
 
 Scenario: consultar direccion de un contacto que tiene una direccion asociada a otro contacto
 Given que voy a buscar la cuenta <numCuenta>
@@ -63,19 +44,21 @@ And que me encuentro en los contactos de la cuenta
 When cuando vincule las direcciones del contacto <nombreContactoUno> y contacto <nombreContactoDos> y la desee editar
 Then me debe mostrar la siguiente informacion:
 | pais     | departamento | ciudad   | direccion        | tipoDeDireccion       | descripcion                                |
-| Colombia | Antioquia    | MEDELLIN | CR 65 # 48 - 162 |DIRECCION DE RESIDENCIA| Created by the Address Builder with code 0 |
+| Colombia | Antioquia    | MEDELLIN | CARRERA 65 48 162 |DIRECCION DE RESIDENCIA| Created by the Address Builder with code 0 |
 
 Examples:
 | numCuenta  | nombreContactoUno | nombreContactoDos |
 | C000484848 | OSCAR GOMEZ       | CARLOS PERALTA    |
+
+
 
 Scenario: actualizar direccion solo ingresando campos obligatorios
 Given que voy a buscar la cuenta <numCuenta>
 And que me encuentro en los contactos de la cuenta
 When ingrese solo informacion obligatoria
 Then me debe mostrar esta informacion:
-| pais     | departamento | ciudad   | direccion        | tipoDeDireccion       | descripcion |
-| Colombia | Antioquia    | MEDELLIN | CR 65 # 48 - 162 |DIRECCION DE RESIDENCIA|             |
+| pais     | departamento | ciudad   | direccion         | tipoDeDireccion       | descripcion |
+| Colombia | Antioquia    | MEDELLIN | CARRERA 65 48 162 |DIRECCION DE RESIDENCIA|             |
 Examples:
 | numCuenta  |
 | C000484848 |
@@ -135,13 +118,13 @@ And seleccione la opcion para editar la direccion
 And ingrese a editar la direccion por <direccion> en la ventana de contactos vinculados y desligue la direccion
 Then las direcciones fueron desvinculas de los contactos:
 | contactoDesligado | direccionDesligada                                                       |
-| RICARDO GIRALDO   | CR 65 # 48 - 162                                                         |
+| RICARDO GIRALDO   | CARRERA 65 48 162                                                         |
 | CARLOS PERALTA    | CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO |
 | OSCAR GOMEZ       | CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO |
 
 Examples:
-| numCuenta  | nombreContacto  | direccion          |
-| C000484848 | RICARDO GIRALDO | Carrera 65 #48-162 |
+| numCuenta  | nombreContacto  | direccion         |
+| C000484848 | RICARDO GIRALDO | Carrera 65 48 162 |
 
 Scenario: validar en la creacion de contacto secundario se puede seleccionar la misma direccion de otro contacto
 Given que voy a buscar la cuenta <numCuenta>
@@ -154,8 +137,8 @@ Then la lista de contactos debe ser la siguiente:
 | CARLOS PERALTA (Asegurado nombrado)    |
 | OSCAR GOMEZ (Asegurado nombrado)       |
 And debo poder asociar una direccion de otro contacto y se debe asociar la dirección seleccionada al nuevo contacto  y mostrar los datos de la dirección
-| pais     | departamento | ciudad   | direccion        | tipoDireccion         | descripcion                                |
-| Colombia | Antioquia    | MEDELLIN | CR 65 # 48 - 162 |DIRECCION DE RESIDENCIA| Created by the Address Builder with code 0 |
+| pais     | departamento | ciudad   | direccion         | tipoDireccion         | descripcion                                |
+| Colombia | Antioquia    | <ninguno>| CARRERA 65 48 162 |DIRECCION DE RESIDENCIA| Created by the Address Builder with code 0 |
 
 Examples:
 | numCuenta  |

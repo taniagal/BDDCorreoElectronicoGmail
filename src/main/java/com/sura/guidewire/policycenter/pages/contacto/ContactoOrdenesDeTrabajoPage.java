@@ -7,10 +7,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -22,7 +19,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     private WebElementFacade mnuTransaccionesPoliza;
     @FindBy(xpath = "//div[3]/div/table/tbody/tr/td/div")
     private WebElementFacade fechaCreacion;
-    @FindBy(xpath = "//div/table/tbody/tr/td[2]/div")
+    @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']/*/table/tbody/tr/td[2]/div")
     private WebElementFacade poliza;
     @FindBy(xpath = "//td[3]/div")
     private WebElementFacade producto;
@@ -94,10 +91,15 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         String[] listEstadosAbiertos = {"Cotizado", "Borrador", "Nuevo", "Cotización", "Vinculación contractual",
                 "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
         String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);
-
         waitFor(table).waitUntilVisible();
-
-        List<WebElement> allRows = table.findElements(By.tagName("tr"));
+        List<WebElement> allRows;
+        try {
+            allRows = table.findElements(By.tagName("tr"));
+        } catch (ElementNotVisibleException e) {
+            LOGGER.info("ElementNotVisibleException " + e);
+            waitUntil(WAIT_TIME_2000);
+            allRows = table.findElements(By.tagName("tr"));
+        }
         for (WebElement row : allRows) {
             try {
                 cells = row.findElements(By.tagName("td"));

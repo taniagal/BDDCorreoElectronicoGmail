@@ -5,6 +5,8 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -51,6 +53,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade menuiItemAsegurados;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:ViewQuote']/div")
     private WebElementFacade menuiItemCotizacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
+    private WebElementFacade menuiItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Export-inputEl']")
     private WebElementFacade comboBoxExportar;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Format-inputEl']")
@@ -223,20 +227,45 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
 
     public void llenarInfoPoliza() {
-        setImplicitTimeout(1,TimeUnit.SECONDS);
+        setImplicitTimeout(2, TimeUnit.SECONDS);
         if (headerRenovacion.isPresent()) {
             comboBoxOrganizacion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']");
             comboBoxCanal = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']");
             comboBoxTipoPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']");
+        }else if (menuiItemInformacionDePoliza.isPresent()){
+            menuiItemInformacionDePoliza.click();
+            comboBoxOrganizacion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']");
+            comboBoxCanal = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']");
+            comboBoxTipoPoliza = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']");
         }
         resetImplicitTimeout();
-        comboBoxOrganizacion.waitUntilPresent();
-        selectItem(comboBoxOrganizacion, "Sura");
-        waitForComboValue(comboBoxOrganizacion, "Sura");
-        waitUntil(WAIT_TIME_1000);
-        selectItem(comboBoxCanal, "Canal Tradicional");
-        waitForComboValue(comboBoxCanal, "Canal Tradicional");
-        selectItem(comboBoxTipoPoliza, "PPAutos");
-        waitForComboValue(comboBoxTipoPoliza, "PPAutos");
+        try {
+            waitUntil(WAIT_TIME_2000);
+            comboBoxOrganizacion.waitUntilPresent();
+        }catch (StaleElementReferenceException f) {
+            LOGGER.info("StaleElementReferenceException " + f);
+            waitUntil(WAIT_TIME_2000);
+            comboBoxOrganizacion.waitUntilPresent();
+        }
+        if (!comboBoxOrganizacion.getValue().equals("Sura")) {
+            selectItem(comboBoxOrganizacion, "Sura");
+            waitForComboValue(comboBoxOrganizacion, "Sura");
+            waitUntil(WAIT_TIME_1000);
+            selectItem(comboBoxCanal, "Canal Tradicional");
+            waitForComboValue(comboBoxCanal, "Canal Tradicional");
+            try {
+                waitUntil(WAIT_TIME_1000);
+                selectItem(comboBoxTipoPoliza, "PPAutos");
+            } catch (ElementNotVisibleException e) {
+                LOGGER.info("ElementNotVisibleException " + e);
+                waitUntil(WAIT_TIME_2000);
+                selectItem(comboBoxTipoPoliza, "PPAutos");
+            } catch (StaleElementReferenceException f) {
+                LOGGER.info("StaleElementReferenceException " + f);
+                waitUntil(WAIT_TIME_2000);
+                selectItem(comboBoxTipoPoliza, "PPAutos");
+            }
+            waitForComboValue(comboBoxTipoPoliza, "PPAutos");
+        }
     }
 }

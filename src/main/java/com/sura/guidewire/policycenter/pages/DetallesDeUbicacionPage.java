@@ -1,18 +1,19 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class DetallesDeUbicacionPage extends PageUtil {
@@ -78,7 +79,13 @@ public class DetallesDeUbicacionPage extends PageUtil {
     }
 
     public void seleccionarProducto(String nomProducto) {
-        waitForTextToAppear(nomProducto);
+        try {
+            waitForTextToAppear(nomProducto);
+        } catch (TimeoutException e) {
+            LOGGER.info("TimeoutException " + e);
+            selectItem(comboBoxNombreAgente, "A");
+            waitForTextToAppear(nomProducto);
+        }
         List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
         List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
         waitUntil(WAIT_TIME_1000);
@@ -91,7 +98,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
                     if ("Multiriesgo corporativo".equals(nomProducto)) {
                         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
                         if (botonAceptarPopup.isPresent()) {
-                            botonAceptarPopup.click();
+                            withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonAceptarPopup).click();
                             waitForAbsenceOf(".//span[contains(.,'Aceptar')]");
                         }
                         resetImplicitTimeout();
@@ -122,19 +129,28 @@ public class DetallesDeUbicacionPage extends PageUtil {
         Actions actions = new Actions(getDriver());
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ENTER).build().perform();
         seleccionarProducto(dato.get("producto"));
-        if("Autos".equals(dato.get("producto"))) {
-            subMenuInformacionPoliza.waitUntilPresent().click();
+        if ("Autos".equals(dato.get("producto"))) {
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(subMenuInformacionPoliza).waitUntilPresent().click();
             waitForTextToAppear("Información de póliza");
             comboBoxOrganizacion.waitUntilPresent();
-            selectItem(comboBoxOrganizacion, dato.get("organizacion"));
-            waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
-            waitUntil(WAIT_TIME_1000);
-            selectItem(comboBoxCanal, dato.get("canal"));
-            waitForComboValue(comboBoxCanal, dato.get("canal"));
-            selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
-            waitForComboValue(comboTipoPoliza, dato.get("tipoPoliza"));
+            if (!comboBoxOrganizacion.getValue().equals(dato.get("producto"))) {
+                selectItem(comboBoxOrganizacion, dato.get("organizacion"));
+                waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
+                waitUntil(WAIT_TIME_1000);
+                selectItem(comboBoxCanal, dato.get("canal"));
+                waitForComboValue(comboBoxCanal, dato.get("canal"));
+                try {
+                    selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
+                } catch (ElementNotVisibleException e) {
+                    LOGGER.info("ElementNotVisibleException " + e);
+                    waitUntil(WAIT_TIME_2000);
+                    selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
+                }
+                waitForComboValue(comboTipoPoliza, dato.get("tipoPoliza"));
+            }
         }
     }
 

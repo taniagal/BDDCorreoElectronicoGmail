@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class PageUtil extends PageObject {
-    protected final Actions actions = new Actions(getDriver());
+    protected Actions actions = new Actions(getDriver());
     protected static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     protected static final int WAIT_TIME_30000 = 30000;
     protected static final int WAIT_TIME_5000 = 5000;
@@ -50,12 +50,28 @@ public class PageUtil extends PageObject {
     }
 
     public Actions deployMenu(WebElementFacade menu) {
+        actions = new Actions(getDriver());
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(menu).waitUntilPresent();
         clickElement(menu);
-        waitUntil(WAIT_TIME_2500);
+        waitUntil(WAIT_TIME_3000);
         clickElement(menu);
-        waitUntil(WAIT_TIME_500);
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        waitUntil(WAIT_TIME_800);
+        try {
+            actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        } catch (UnhandledAlertException f) {
+            LOGGER.info("UnhandledAlertException " + f);
+            try {
+                Alert alert = getDriver().switchTo().alert();
+                String alertText = alert.getText();
+                LOGGER.info("Alert data: " + alertText);
+                alert.accept();
+            } catch (NoAlertPresentException e) {
+                LOGGER.info("NoAlertPresentException " + e);
+            }
+            waitUntil(WAIT_TIME_2000);
+            deployMenu(menu);
+        }
+
         return actions;
     }
 
@@ -130,7 +146,15 @@ public class PageUtil extends PageObject {
                 waitUntil(WAIT_TIME_2000);
                 waitFor(elemento).waitUntilPresent();
             }
-            elemento.clear();
+
+            try {
+                elemento.clear();
+            }catch (ElementNotVisibleException e){
+                LOGGER.info("ElementNotVisibleException " + e);
+                LOGGER.info(e.getStackTrace().toString());
+                waitUntil(WAIT_TIME_2000);
+                elemento.clear();
+            }
             waitUntil(WAIT_TIME_500);
             waitFor(elemento).shouldContainText("");
             elemento.sendKeys(dato);
@@ -143,7 +167,7 @@ public class PageUtil extends PageObject {
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisible at PageUtil 129 " + e);
         }
-        waitUntil(WAIT_TIME_2000);
+        waitUntil(WAIT_TIME_1000);
     }
 
     public void desplegarElementoDeLista(WebElementFacade elementoDeLaLista) {
@@ -189,14 +213,14 @@ public class PageUtil extends PageObject {
 
 
     public void clickElement(WebElementFacade element) {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 7; i++) {
             try {
                 element.click();
                 i = 6;
             } catch (WebDriverException e) {
                 waitUntil(WAIT_TIME_2000);
                 LOGGER.info("WebDriverException " + e);
-                LOGGER.info(e.getStackTrace().toString());
+                LOGGER.info("-------------- " + i);
             }
         }
     }

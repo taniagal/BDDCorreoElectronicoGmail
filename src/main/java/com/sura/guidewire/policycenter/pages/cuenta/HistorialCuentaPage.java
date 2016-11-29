@@ -76,15 +76,15 @@ public class HistorialCuentaPage extends PageUtil {
     }
 
     public void seleccionarCuenta(String numCuenta) {
-        waitUntil(WAIT_TIME_2500);
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mnuCuenta).shouldBePresent();
-        mnuCuenta.click();
+        waitUntil(WAIT_TIME_2000);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
+        clickElement(mnuCuenta);
         waitUntil(WAIT_TIME_3500);
-        mnuCuenta.click();
-        waitUntil(WAIT_TIME_1500);
+        clickElement(mnuCuenta);
+        waitUntil(WAIT_TIME_500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(WAIT_TIME_3500);
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(txtNumCuenta).type(numCuenta);
+        txtNumCuenta.waitUntilPresent();
+        ingresarDato(txtNumCuenta, numCuenta);
         act.sendKeys(Keys.ENTER).build().perform();
         waitUntil(WAIT_TIME_2000);
     }

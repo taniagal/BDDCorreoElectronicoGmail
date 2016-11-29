@@ -32,7 +32,7 @@ public class ExpedicionCambioDePolizaUWPEPSDefinitions {
 
     @Given("existe una cotizacion <numeroCotizacion> la cual se va a modificar")
     public void irAModificarCotizacion(@Named("numeroCotizacion") String numeroCotizacion){
-        cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(numeroCotizacion);
+        cotizacionMRCSteps.irABuscarCotizacionPoliza(numeroCotizacion);
     }
 
     @Given("el tomador <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS")
