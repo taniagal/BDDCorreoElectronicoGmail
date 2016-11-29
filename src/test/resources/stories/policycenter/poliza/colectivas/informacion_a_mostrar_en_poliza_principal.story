@@ -3,9 +3,9 @@ Informacion a mostrar en poliza principal
 
 Meta:
 @lote3
-@Story CDSEG-2778
-@URL https://jira.suramericana.com.co/browse/CDSEG-2778
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
+@Story CDSEG-4618
+@URL https://jira.suramericana.com.co/browse/CDSEG-4618
+@tag automator:juan_gabriel_zapata
 @Sprint 10
 
 
@@ -25,11 +25,11 @@ Then deben estar en estado <estadouno> las siguientes opciones
 | Historial       |
 And deben estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
-| Edificios y Ubicaciones   |
+| Edificios y ubicaciones   |
 | Modificadores             |
 And en cotizacion de poliza debe estar en estado <estadodos> las siguientes opciones $menusesperados
 | OPCIONES_MENU_NO_VISIBLES |
-| Prima de Poliza   |
+| Prima de póliza   |
 
 Examples:
 | numSubscripcion | rolUsuario | estadouno | estadodos  |
@@ -60,7 +60,7 @@ Then deben estar en estado <estadodos> las siguientes opciones
 | Modificadores             |
 And en cotizacion de poliza debe estar en estado <estadodos> las siguientes opciones $menusesperados
 | OPCIONES_MENU_NO_VISIBLES |
-| Prima de Poliza   |
+| Prima de póliza   |
 
 Examples:
 | numSubscripcion | rolUsuario | estadodos  |

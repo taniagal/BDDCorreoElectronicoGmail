@@ -26,7 +26,7 @@ public class PagoPolizaPages extends PageUtil {
         opcionesInformacionPolizaMrcPage.validarCamposNoEditables(LBL_PAGO_POLIZA);
     }
     public void ingresarALAOpcionDePagos(){
-        menuItemPago.click();
+        menuItemPago.waitUntilClickable().click();
         waitForTextToAppear("Pago");
     }
 }
