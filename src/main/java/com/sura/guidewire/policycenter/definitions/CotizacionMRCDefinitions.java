@@ -50,69 +50,69 @@ public class CotizacionMRCDefinitions {
 
     @Given("se ha realizado la cotizacion MRC <cotizacion>")
     public void givenIrALaCotizacion(@Named("cotizacion") String cotizacion) {
-        cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
+        cotizacionMRCSteps.irABuscarCotizacionPoliza(cotizacion);
     }
 
     @Given("se registraron los riesgos y coberturas que se desean cotizar <cotizacion>")
     public void buscarCotizacionBorrador(@Named("cotizacion") String cotizacion){
-        cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
+        cotizacionMRCSteps.irABuscarCotizacionPoliza(cotizacion);
     }
 
     @When("ingrese a consultar la cotizacion")
     public void consultarCotizacion(){
-        cotizacionMRCSteps.ver_Detalle_Cotizacion();
+        cotizacionMRCSteps.verDetalleCotizacion();
     }
 
 
 
     @When("realice la cotizacion")
     public void ingresarACotizacion(){
-        cotizacionMRCSteps.ingresar_A_Cotizacion();
+        cotizacionMRCSteps.ingresarACotizacion();
     }
 
     @When("los participantes y/o ubicaciones sean riesgo consultable")
     public void validarTipoRiesgo(){
-        cotizacionMRCSteps.validar_Tipo_Riesgo();
+        cotizacionMRCSteps.validarTipoRiesgo();
     }
 
     @When("los participantes (tomador, asegurado y/o beneficiario) sean identificados como PEP")
     public void validarRiesgoPEP(){
-        cotizacionMRCSteps.validar_Tipo_Riesgo();
+        cotizacionMRCSteps.validarTipoRiesgo();
     }
 
     @When("ya exista una cotizacion en estado cotizado del mismo cliente, para el producto Multiriesgo corporativo con un\n" +
             "agente diferente al que se ingreso")
     public void validarExclusividadCotizacion(){
-        cotizacionMRCSteps.validar_Tipo_Riesgo();
+        cotizacionMRCSteps.validarTipoRiesgo();
     }
 
     @Then("debo ver la informacion de la cotizacion $informacionCotizacion")
     public void validarInformacionCotizacion(ExamplesTable informacionCotizacion){
-        cotizacionMRCSteps.validar_Informacion_Cotizacion(labelsCotizacionPoliza, informacionCotizacion);
+        cotizacionMRCSteps.validarInformacionCotizacion(labelsCotizacionPoliza, informacionCotizacion);
     }
 
     @Then("debo ver la prima <primaTotal> a cobrar al cliente")
     public void validarPrimaTotal(@Named("primaTotal") String primaTotal){
-        cotizacionMRCSteps.validar_Prima(primaTotal);
+        cotizacionMRCSteps.validarPrima(primaTotal);
     }
 
     @Then("se muestre el detalle de la prima por riesgo")
     public void mostrarDetallePrima(){
-        cotizacionMRCSteps.mostrar_Detalle_Prima_Por_Riesgo(labelsCotizacionPoliza);
+        cotizacionMRCSteps.mostrarDetallePrimaPorRiesgo(labelsCotizacionPoliza);
     }
 
     @Then("no debe permitir cotizar; se debe mostrar el mensaje de respuesta <mensaje> que envie riesgos consultables")
     public void validarBloqueoCotizacionMRC(@Named("mensaje") String mensaje) {
-        cotizacionMRCSteps.validar_Bloqueo_Cotizacion(mensaje);
+        cotizacionMRCSteps.validarBloqueoCotizacion(mensaje);
     }
 
     @Then("no debe permitir cotizar; se debe mostrar el mensaje de respuesta <mensaje> que envie PEP")
     public void validarBloqueoPEP(@Named("mensaje") String mensaje) {
-        cotizacionMRCSteps.validar_Bloqueo_Cotizacion(mensaje);
+        cotizacionMRCSteps.validarBloqueoCotizacion(mensaje);
     }
 
     @Then("no debe permitir cotizar; se debe mostrar el mensaje de error <mensaje>")
     public void validarBloqueoExclusividad(@Named("mensaje") String mensaje) {
-        cotizacionMRCSteps.validar_Bloqueo_Cotizacion(mensaje);
+        cotizacionMRCSteps.validarBloqueoCotizacion(mensaje);
     }
 }

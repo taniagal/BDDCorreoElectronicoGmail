@@ -93,28 +93,24 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     private WebElementFacade itemAsegurados;
     @FindBy(xpath=".//td[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div/span")
     private WebElementFacade itemVehiculos;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtBuscar;
 
     public ModificacionInformacionPolizaPAPage(WebDriver driver) {
         super(driver);
     }
 
     public void ingresarPoliza(String numeroPoliza) {
-        deployMenu(menuPoliza);
-        ingresarDato(campoBuscarPoliza,numeroPoliza);
-        campoBuscarPoliza.sendKeys(Keys.ENTER);
-        waitForAbsenceOf(".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']");
+        campoTxtBuscar.waitUntilPresent().sendKeys("Policy " + numeroPoliza);
+        campoTxtBuscar.sendKeys(Keys.ENTER);
     }
 
     public void irAModificarInformacionPoliza() {
-        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
-        waitUntil(WAIT_TIME_2500);
-        waitFor(menuAcciones).shouldBePresent();
-        menuAcciones.click();
-        waitFor(itemCambiarPoliza).shouldBeVisible();
-        itemCambiarPoliza.click();
+        waitFor(menuAcciones).waitUntilPresent();
+        clickElement(menuAcciones);
+        itemCambiarPoliza.waitUntilPresent().click();
         waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
         botonSiguienteInfoPoliza.click();
-        tasaUnicaPage.llenarInfoPoliza();
         waitUntil(WAIT_TIME_2000);
     }
 

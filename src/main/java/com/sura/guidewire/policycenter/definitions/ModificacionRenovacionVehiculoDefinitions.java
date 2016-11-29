@@ -19,7 +19,7 @@ public class ModificacionRenovacionVehiculoDefinitions {
 
     @Given("estoy editando la renovacion de una poliza <cotizacion>")
     public void irAModificarRenovacionPoliza(@Named("cotizacion") String cotizacion){
-        cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
+        cotizacionMRCSteps.irABuscarCotizacionPoliza(cotizacion);
 
     }
 

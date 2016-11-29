@@ -199,7 +199,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil {
     public void validarContinuacionDeCotizacion() {
         waitUntil(WAIT_TIME_1000);
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBePresent();
-        botonSiguiente.click();
+        clickElement(botonSiguiente);
         WebElementFacade labelTituloVehiculos = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).shouldBePresent();
         try {
