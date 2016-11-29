@@ -1,6 +1,6 @@
 Cotizacion De Poliza
 
-Meta: @lote3
+Meta: @lote2
 
 @issue #CDSEG-843
 @tag automator: diego_cardona_acevedo
