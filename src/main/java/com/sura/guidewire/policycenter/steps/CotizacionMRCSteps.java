@@ -18,42 +18,42 @@ public class CotizacionMRCSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ir_A_Buscar_Cotizacion_Poliza(String cotizacion) {
+    public void irABuscarCotizacionPoliza(String cotizacion) {
         cotizacionMRCPage.irABuscarCotizacion(cotizacion);
     }
 
     @Step
-    public void ver_Detalle_Cotizacion() {
+    public void verDetalleCotizacion() {
         cotizacionMRCPage.verDetalleCotizacion();
     }
 
     @Step
-    public void validar_Informacion_Cotizacion(Map<String, String> labelsCotizacionPoliza, ExamplesTable informacionCotizacion) {
+    public void validarInformacionCotizacion(Map<String, String> labelsCotizacionPoliza, ExamplesTable informacionCotizacion) {
         cotizacionMRCPage.validarInformacionCotizacion(labelsCotizacionPoliza, informacionCotizacion);
     }
 
     @Step
-    public void validar_Prima(String primaTotal) {
+    public void validarPrima(String primaTotal) {
         cotizacionMRCPage.validarPrima(primaTotal);
     }
 
     @Step
-    public void mostrar_Detalle_Prima_Por_Riesgo(Map<String, String> labelsCotizacionPoliza) {
+    public void mostrarDetallePrimaPorRiesgo(Map<String, String> labelsCotizacionPoliza) {
         cotizacionMRCPage.mostrarDetallePrima(labelsCotizacionPoliza);
     }
 
     @Step
-    public void validar_Bloqueo_Cotizacion(String mensaje) {
+    public void validarBloqueoCotizacion(String mensaje) {
         cotizacionMRCPage.validarBloqueoCotizacion(mensaje);
     }
 
     @Step
-    public void ingresar_A_Cotizacion() {
+    public void ingresarACotizacion() {
         cotizacionMRCPage.ingresarACotizacion();
     }
 
     @Step
-    public void validar_Tipo_Riesgo() {
+    public void validarTipoRiesgo() {
         cotizacionMRCPage.validarTipoRiesgo();
     }
 }

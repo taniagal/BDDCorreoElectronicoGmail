@@ -1,15 +1,17 @@
 package com.sura.guidewire.policycenter.utils.menu;
 
-import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.menu.acciones.administracion.*;
 import com.sura.guidewire.policycenter.utils.menu.acciones.contacto.ContactoNuevaCuentaPage;
+import com.sura.guidewire.policycenter.utils.menu.acciones.cuenta.*;
 import com.sura.guidewire.policycenter.utils.menu.acciones.escritorio.EscritorioNuevaCuentaPage;
 import com.sura.guidewire.policycenter.utils.menu.acciones.escritorio.EscritorioNuevoEnvioPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesAdminitradorCotizaciones;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesCrearPartcCuentaPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesResumenCuentaPage;
+import com.sura.guidewire.policycenter.utils.menu.superior.administracion.*;
 import com.sura.guidewire.policycenter.utils.menu.superior.buscar.*;
 import com.sura.guidewire.policycenter.utils.menu.superior.contacto.BuscarContactoPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.contacto.NuevaCompaniaPage;
@@ -20,17 +22,13 @@ import com.sura.guidewire.policycenter.utils.menu.superior.equipo.EquipoPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.escritorio.*;
 import com.sura.guidewire.policycenter.utils.menu.superior.poliza.NuevoEnvioPage;
 import com.sura.guidewire.policycenter.utils.menu.superior.poliza.PolizaBuscarPage;
-import java.util.concurrent.TimeUnit;
-
-import com.sura.guidewire.policycenter.utils.menu.acciones.cuenta.*;
-import com.sura.guidewire.policycenter.utils.menu.superior.administracion.*;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-
+import java.util.concurrent.TimeUnit;
 
 
 public class Navegacion extends PageUtil {
@@ -59,10 +57,12 @@ public class Navegacion extends PageUtil {
     // Objetos menu Cuenta
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-itemEl']")
     private WebElementFacade mnuItemNuevaCuenta;
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
+    @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
     private WebElementFacade txtNumCuenta;
-    @FindBy(xpath=".//*[@id='QuickJump-inputEl']")
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtBuscar;
+    @FindBy(xpath = ".//*[@id='DesktopSubmissions:DesktopSubmissionsScreen:SubmissionSearch-inputEl']")
+    private WebElementFacade campoTxtSubN;
 
     // Objetos menu Poliza
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
@@ -73,7 +73,7 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuItemNuevoEnvio;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
     private WebElementFacade mnuNumeroSub;
-    @net.serenitybdd.core.annotations.findby.FindBy(xpath = ".//*[@id='SubmissionWizard:Prev-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Prev-btnInnerEl']")
     public WebElementFacade botonVolver;
 
     // Objetos menu Contacto
@@ -322,18 +322,17 @@ public class Navegacion extends PageUtil {
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         waitUntil(WAIT_TIME_300);
         waitFor(mnuPoliza).shouldBeVisible();
-        ingresarDato(mnuNumPoliza,numPoliza);
+        ingresarDato(mnuNumPoliza, numPoliza);
         act.sendKeys(Keys.ENTER).build().perform();
         waitUntil(WAIT_TIME_500);
         return new PolizaBuscarPage(getDriver());
     }
 
     public PolizaBuscarPage irABuscarSubPoliza(String numSubPoliza) {
-        waitUntil(WAIT_TIME_2000);
-        gw.deployMenu(mnuPoliza);
-        ingresarDato(mnuNumeroSub,numSubPoliza);
-        mnuNumeroSub.sendKeys(Keys.ENTER);
-        waitForAbsenceOf(".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']");
+        campoTxtBuscar.waitUntilPresent().sendKeys("MySubmissions");
+        campoTxtBuscar.sendKeys(Keys.ENTER);
+        campoTxtSubN.waitUntilPresent().sendKeys(numSubPoliza);
+        campoTxtSubN.sendKeys(Keys.ENTER);
         return new PolizaBuscarPage(getDriver());
     }
 
@@ -371,9 +370,9 @@ public class Navegacion extends PageUtil {
 
     // Navegacion menu Cuenta
     public NuevaCuentaPage irANuevaCuenta() {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(mnuCuenta).waitUntilPresent();
         clickElement(mnuCuenta);
-        waitForAnyTextToAppear("Resumen de la cuenta","Búsqueda de cuentas");
+        waitForAnyTextToAppear("Resumen de la cuenta", "Búsqueda de cuentas");
         waitUntil(WAIT_TIME_2500);
         mnuCuenta.waitUntilClickable().click();
         waitUntil(WAIT_TIME_500);
@@ -383,7 +382,7 @@ public class Navegacion extends PageUtil {
     }
 
     public CuentaBuscarPage irACuentaBuscar(String numCuenta) {
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(campoTxtBuscar).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(campoTxtBuscar).waitUntilPresent();
         campoTxtBuscar.sendKeys("Account " + numCuenta);
         campoTxtBuscar.sendKeys(Keys.ENTER);
         return new CuentaBuscarPage(getDriver());
@@ -445,7 +444,7 @@ public class Navegacion extends PageUtil {
 
     public BuscarContactosPage irABuscarContactos() {
         waitUntil(WAIT_TIME_2500);
-        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(mnuBuscar).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(mnuBuscar).shouldBePresent();
         gw.deployMenu(mnuBuscar);
         act.moveToElement(mnuItemBusquedaContacto).release(mnuItemBusquedaContacto).click().build().perform();
         return new BuscarContactosPage(getDriver());
@@ -1084,10 +1083,10 @@ public class Navegacion extends PageUtil {
     }
 
     public CuentaNuevaCotizacionPage irANuevaCotizacion() {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(mnuAccionesCuenta).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(mnuAccionesCuenta).shouldBePresent();
         waitFor(mnuAccionesCuenta).shouldBeVisible();
         mnuAccionesCuenta.click();
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(mnuNuevaCotizacion).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(mnuNuevaCotizacion).shouldBePresent();
         mnuNuevaCotizacion.click();
         return new CuentaNuevaCotizacionPage(getDriver());
     }

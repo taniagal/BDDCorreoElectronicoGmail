@@ -16,7 +16,7 @@ public class ModificacionRenovacionCoberturasPADefinitions {
 
     @Given("estoy renovando una poliza <cotizacionRenovacion>")
     public void irABuscarCotizacionRenovacion(@Named("cotizacionRenovacion") String cotizacionRenovacion){
-        cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacionRenovacion);
+        cotizacionMRCSteps.irABuscarCotizacionPoliza(cotizacionRenovacion);
     }
 
     @When("este en la pantalla de coberturas")
