@@ -50,11 +50,6 @@ public class DireccionesDeContactoVinculadasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarLongitudDelCampoDireccion(String direccionOk) {
-        direccionesDeContactoVinculadasPage.validarLongitudDelCampoDireccion(direccionOk);
-    }
-
-    @Step
     public void editarDireccionEnPestaniaDirecciones(String direccion) {
         direccionesDeContactoVinculadasPage.editarDireccionEnPestaniaDirecciones(direccion);
     }

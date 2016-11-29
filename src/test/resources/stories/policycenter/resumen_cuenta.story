@@ -16,6 +16,8 @@ Given estoy en una cuenta <numCuenta>
 When ingrese al resumen de la cuenta
 Then puedo visualizar el resumen de la cuenta seleccionada de tipo persona juridica, el listado de actividades, vigencias
 de las polizas asociadas a la cuenta y transacciones pendientes de las polizas asociadas a la cuenta
+And la informacion de actividades actuales, terminos de la poliza y transacciones de la poliza pendientes deben estar
+visibles
 
 Examples:
 |numCuenta  |
@@ -73,7 +75,7 @@ Examples:
 Scenario: Editar cuenta - Direccion estandarizada
 Meta:
 @Manual
-Given estoy en el resumen de una cuenta <numCuenta> de tipo persona juridica <tipoCuenta>
+Given que estoy en el resumen de una cuenta <numCuenta> de tipo persona juridica <tipoCuenta>
 When ingrese a editar la direccion de la cuenta e indique una direccion <direccion> que se pueda estandarizar
 Then se debe almacenar la direccion de acuerdo a la estandarizacion dada
 
@@ -84,20 +86,10 @@ Examples:
 Scenario: Editar cuenta - Direccion no estandarizada
 Meta:
 @Manual
-Given estoy en el resumen de una cuenta <numCuenta> de tipo persona juridica <tipoCuenta>
+Given que estoy en el resumen de una cuenta <numCuenta> de tipo persona juridica <tipoCuenta>
 When ingrese a editar la direccion de la cuenta e indique una direccion <direccion> que no se pueda estandarizar
 Then se debe almacenar la direccion como la ingreso el usuario
 
 Examples:
 |tipoCuenta|numCuenta  |direccion       |
 |Compañía  |C010478975 |CRA 65 # 40 - 50|
-
-Scenario: Validar informacion visible en resumen de la cuenta de persona natural
-Given estoy en una cuenta <numCuenta>
-When ingrese al resumen de la cuenta
-Then la informacion de actividades actuales, terminos de la poliza y transacciones de la poliza pendientes deben estar
-visibles
-
-Examples:
-|numCuenta  |
-|C000888888 |

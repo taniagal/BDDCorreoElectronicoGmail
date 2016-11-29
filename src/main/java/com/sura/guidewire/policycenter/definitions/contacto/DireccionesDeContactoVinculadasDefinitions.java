@@ -105,11 +105,6 @@ public class DireccionesDeContactoVinculadasDefinitions {
         direccionesDeContactoVinculadasSteps.validarInfoContactosAsociadosADireccion(contactosDireccionVinculada);
     }
 
-    @Then("el campo direccion no debe permitir ingresar mas de 200 caracteres <direccionOk>")
-    public void validarLongitudDelCampoDireccion(@Named("direccionOk") String direccionOk){
-        direccionesDeContactoVinculadasSteps.validarLongitudDelCampoDireccion(direccionOk);
-    }
-
     @Then("el campo departamento debe tener el valor <departamento>")
     public void validarElCampoDepartamento(@Named("departamento")String departamento){
         direccionesDeContactoVinculadasSteps.validarElCampoDepartamento(departamento);
