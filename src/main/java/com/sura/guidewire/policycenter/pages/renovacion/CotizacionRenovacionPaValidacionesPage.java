@@ -29,8 +29,6 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
 
 
     public void irAPantallairARevisionDePolizaSinValidacionFecha() {
-        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
-        tasaUnicaPage.llenarInfoPoliza();
         String xpathItemRevisionPoliza = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyReview']/div";
         WebElementFacade itemRevisionPoliza = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).find(By.xpath(xpathItemRevisionPoliza));
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemRevisionPoliza).click();
