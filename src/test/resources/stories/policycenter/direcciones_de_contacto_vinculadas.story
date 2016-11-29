@@ -124,7 +124,7 @@ Then las direcciones fueron desvinculas de los contactos:
 
 Examples:
 | numCuenta  | nombreContacto  | direccion         |
-| C000484848 | RICARDO GIRALDO | Carrera 65 48-162 |
+| C000484848 | RICARDO GIRALDO | Carrera 65 48 162 |
 
 Scenario: validar en la creacion de contacto secundario se puede seleccionar la misma direccion de otro contacto
 Given que voy a buscar la cuenta <numCuenta>

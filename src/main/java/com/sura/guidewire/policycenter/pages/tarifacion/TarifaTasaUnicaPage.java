@@ -227,7 +227,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
 
     public void llenarInfoPoliza() {
-        setImplicitTimeout(4, TimeUnit.SECONDS);
+        setImplicitTimeout(2, TimeUnit.SECONDS);
         if (headerRenovacion.isPresent()) {
             comboBoxOrganizacion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']");
             comboBoxCanal = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']");
@@ -239,7 +239,14 @@ public class TarifaTasaUnicaPage extends PageUtil {
             comboBoxTipoPoliza = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']");
         }
         resetImplicitTimeout();
-        comboBoxOrganizacion.waitUntilPresent();
+        try {
+            waitUntil(WAIT_TIME_2000);
+            comboBoxOrganizacion.waitUntilPresent();
+        }catch (StaleElementReferenceException f) {
+            LOGGER.info("StaleElementReferenceException " + f);
+            waitUntil(WAIT_TIME_2000);
+            comboBoxOrganizacion.waitUntilPresent();
+        }
         if (!comboBoxOrganizacion.getValue().equals("Sura")) {
             selectItem(comboBoxOrganizacion, "Sura");
             waitForComboValue(comboBoxOrganizacion, "Sura");
