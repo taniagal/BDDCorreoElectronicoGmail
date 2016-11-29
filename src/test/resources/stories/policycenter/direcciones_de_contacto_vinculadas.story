@@ -34,7 +34,7 @@ Then la direccion debe quedar estandarizada <direccionEstandarizada> del contact
 
 Examples:
 | numCuenta  | direccionSinEstandarizar | direccionEstandarizada | nombreContacto  |
-| C000484848 | CARRERA 65 48 162        | CR 65 # 48 - 162       | RICARDO GIRALDO |
+| C000484848 | CARRERA 65 48 162        | CARRERA 65 48 162      | RICARDO GIRALDO |
 
 
 
@@ -44,7 +44,7 @@ And que me encuentro en los contactos de la cuenta
 When cuando vincule las direcciones del contacto <nombreContactoUno> y contacto <nombreContactoDos> y la desee editar
 Then me debe mostrar la siguiente informacion:
 | pais     | departamento | ciudad   | direccion        | tipoDeDireccion       | descripcion                                |
-| Colombia | Antioquia    | MEDELLIN | CR 65 # 48 - 162 |DIRECCION DE RESIDENCIA| Created by the Address Builder with code 0 |
+| Colombia | Antioquia    | MEDELLIN | CARRERA 65 48 162 |DIRECCION DE RESIDENCIA| Created by the Address Builder with code 0 |
 
 Examples:
 | numCuenta  | nombreContactoUno | nombreContactoDos |
@@ -57,8 +57,8 @@ Given que voy a buscar la cuenta <numCuenta>
 And que me encuentro en los contactos de la cuenta
 When ingrese solo informacion obligatoria
 Then me debe mostrar esta informacion:
-| pais     | departamento | ciudad   | direccion        | tipoDeDireccion       | descripcion |
-| Colombia | Antioquia    | MEDELLIN | CR 65 # 48 - 162 |DIRECCION DE RESIDENCIA|             |
+| pais     | departamento | ciudad   | direccion         | tipoDeDireccion       | descripcion |
+| Colombia | Antioquia    | MEDELLIN | CARRERA 65 48 162 |DIRECCION DE RESIDENCIA|             |
 Examples:
 | numCuenta  |
 | C000484848 |
@@ -118,13 +118,13 @@ And seleccione la opcion para editar la direccion
 And ingrese a editar la direccion por <direccion> en la ventana de contactos vinculados y desligue la direccion
 Then las direcciones fueron desvinculas de los contactos:
 | contactoDesligado | direccionDesligada                                                       |
-| RICARDO GIRALDO   | CR 65 # 48 - 162                                                         |
+| RICARDO GIRALDO   | CARRERA 65 48 162                                                         |
 | CARLOS PERALTA    | CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO |
 | OSCAR GOMEZ       | CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO |
 
 Examples:
-| numCuenta  | nombreContacto  | direccion          |
-| C000484848 | RICARDO GIRALDO | Carrera 65 #48-162 |
+| numCuenta  | nombreContacto  | direccion         |
+| C000484848 | RICARDO GIRALDO | Carrera 65 48-162 |
 
 Scenario: validar en la creacion de contacto secundario se puede seleccionar la misma direccion de otro contacto
 Given que voy a buscar la cuenta <numCuenta>
@@ -137,8 +137,8 @@ Then la lista de contactos debe ser la siguiente:
 | CARLOS PERALTA (Asegurado nombrado)    |
 | OSCAR GOMEZ (Asegurado nombrado)       |
 And debo poder asociar una direccion de otro contacto y se debe asociar la dirección seleccionada al nuevo contacto  y mostrar los datos de la dirección
-| pais     | departamento | ciudad   | direccion        | tipoDireccion         | descripcion                                |
-| Colombia | Antioquia    | <ninguno>| CR 65 # 48 - 162 |DIRECCION DE RESIDENCIA| Created by the Address Builder with code 0 |
+| pais     | departamento | ciudad   | direccion         | tipoDireccion         | descripcion                                |
+| Colombia | Antioquia    | <ninguno>| CARRERA 65 48 162 |DIRECCION DE RESIDENCIA| Created by the Address Builder with code 0 |
 
 Examples:
 | numCuenta  |

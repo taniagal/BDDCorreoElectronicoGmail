@@ -53,6 +53,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade menuiItemAsegurados;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:ViewQuote']/div")
     private WebElementFacade menuiItemCotizacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
+    private WebElementFacade menuiItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Export-inputEl']")
     private WebElementFacade comboBoxExportar;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Format-inputEl']")
@@ -225,11 +227,16 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
 
     public void llenarInfoPoliza() {
-        setImplicitTimeout(1, TimeUnit.SECONDS);
+        setImplicitTimeout(4, TimeUnit.SECONDS);
         if (headerRenovacion.isPresent()) {
             comboBoxOrganizacion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']");
             comboBoxCanal = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']");
             comboBoxTipoPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']");
+        }else if (menuiItemInformacionDePoliza.isPresent()){
+            menuiItemInformacionDePoliza.click();
+            comboBoxOrganizacion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']");
+            comboBoxCanal = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']");
+            comboBoxTipoPoliza = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']");
         }
         resetImplicitTimeout();
         comboBoxOrganizacion.waitUntilPresent();
