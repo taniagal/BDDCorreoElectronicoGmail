@@ -106,13 +106,11 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void irAModificarInformacionPoliza() {
-        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
         waitFor(menuAcciones).waitUntilPresent();
         clickElement(menuAcciones);
         itemCambiarPoliza.waitUntilPresent().click();
         waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
         botonSiguienteInfoPoliza.click();
-        tasaUnicaPage.llenarInfoPoliza();
         waitUntil(WAIT_TIME_2000);
     }
 

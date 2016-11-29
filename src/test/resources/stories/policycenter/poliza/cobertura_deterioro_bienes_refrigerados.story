@@ -1,6 +1,6 @@
 Cobertura Deterioro Bienes Refrigerados
 
-Meta: @lote1
+Meta: @lote2
 @Story CDSEG-943
 @URL https://jira.suramericana.com.co/browse/CDSEG-943
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
@@ -47,7 +47,7 @@ Examples:
 
 
 Scenario: 3 Parametro del 40 porciento
-Meta: @lote2
+Meta:
 @manual
 Given he ingresado al Product Designer
 When seleccione en System Tables
@@ -112,7 +112,7 @@ Examples:
 
 
 Scenario: 7 Parametro de 1000 millones y 20%
-Meta: @lote2
+Meta:
 @manual
 Given Estoy ingresando la información de coberturas a nivel de riesgo
 When Quiera cambiar el valor de 1,000 millones a otro valor o quiera cambiar el valor del 20% a otro valor

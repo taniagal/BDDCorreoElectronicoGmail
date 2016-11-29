@@ -36,7 +36,7 @@ Examples:
 
 
 Scenario: Riesgos consultables - Tipo Causal Tecnica
-Meta: @lote3
+Meta:
 @manual
 Given  he realizado la cotizacion
 When  ingrese a la cotizacion

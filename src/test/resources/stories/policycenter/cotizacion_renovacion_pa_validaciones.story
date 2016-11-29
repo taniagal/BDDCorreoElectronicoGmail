@@ -25,7 +25,7 @@ Examples:
 |32112331   |
 
 Scenario: Quote - Riesgos Consultables - Motor, Chasis y Placa
-Meta: @lote3
+Meta:
 @manual
 Given estoy cotizando la renovacion de la poliza
 When el motor, chasis y/o placa sean Riesgo consultable bloqueante
