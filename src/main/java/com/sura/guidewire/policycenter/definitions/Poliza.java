@@ -97,7 +97,7 @@ public class Poliza {
         LOGGER.info("Poliza.dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar");
 
         // TODO: 27/07/2016 Capturar el rol desde el gherkin en i am Asesor
-        guidewireLogin.dadoQueAccedoAPolicyCenterConRol("Asesor");
+        //guidewireLogin.dadoQueAccedoAPolicyCenterConRol("Asesor");
 
         guidewire.irANavegacionSuperior()
                 .desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
