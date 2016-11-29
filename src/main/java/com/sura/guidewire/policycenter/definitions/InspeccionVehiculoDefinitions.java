@@ -28,7 +28,7 @@ public class InspeccionVehiculoDefinitions {
 
     @Given("se ha realizado la cotizacion <cotizacion>")
     public void buscarCotizacion(@Named("cotizacion") String cotizacion){
-        cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
+        cotizacionMRCSteps.irABuscarCotizacionPoliza(cotizacion);
     }
 
     @Given("se tiene la informacion de la placa <placa> del vehiculo ingresada")

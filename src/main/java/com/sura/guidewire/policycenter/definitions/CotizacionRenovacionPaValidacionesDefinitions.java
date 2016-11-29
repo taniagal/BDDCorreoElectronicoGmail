@@ -19,7 +19,7 @@ public class CotizacionRenovacionPaValidacionesDefinitions {
 
     @Given("estoy cotizando la renovacion de la poliza <cotizacion>")
     public void ingresarARenovacionDeCotizacion(@Named("cotizacion") String cotizacion){
-        cotizacionMRCSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
+        cotizacionMRCSteps.irABuscarCotizacionPoliza(cotizacion);
     }
 
     @When("cotice con algunas de las figuras que son Riesgo consultable bloqueante")
