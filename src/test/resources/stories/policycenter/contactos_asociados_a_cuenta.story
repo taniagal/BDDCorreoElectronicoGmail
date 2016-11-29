@@ -1,7 +1,7 @@
 Contactos Asociados A Cuenta
 
 Meta:
-@lote1
+@lote2
 @Story CDSEG-845
 @tag automator:andres_alarcon_guerrero
 @tag automator:juan_carlos_restrepo

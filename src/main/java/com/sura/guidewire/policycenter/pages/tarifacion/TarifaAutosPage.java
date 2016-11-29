@@ -128,11 +128,11 @@ public class TarifaAutosPage extends PageUtil {
 
     public void cotizar() {
         try {
-            botonCotizar.click();
+            clickElement(botonCotizar);
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisibleException " + e);
             waitUntil(WAIT_TIME_2000);
-            botonCotizar.click();
+            clickElement(botonCotizar);
         }
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
         waitUntil(WAIT_TIME_500);

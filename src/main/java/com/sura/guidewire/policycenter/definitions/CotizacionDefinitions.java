@@ -42,10 +42,7 @@ public class CotizacionDefinitions {
     public void crearNuevaCotizacion(){
 
         guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
-        cotizador.waitFor(CONSTANTE_5).seconds();
-        cotizador.ir_al_menu_escritorio_del_panel_superior();
-        cotizador.clic_en_la_opcion_acciones_del_panel_izquierdo();
-        cotizador.clic_en_la_opcion_nueva_cotizacion();
+        cotizador.irANuevaCotizacion();
         MatcherAssert.assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF("Nueva cotización"), Is.is(CoreMatchers.equalTo("Nueva cotización")));
 
         LOGGER.info("CotizacionDefinitions.crearNuevaCotizacion");
@@ -63,8 +60,8 @@ public class CotizacionDefinitions {
     @When("digite el numero de cuenta $numeroCuenta de una persona juridica y digite la tecla $teclaAccion para activar la busqueda")
     @Alias("digite el numero de cuenta $numeroCuenta de una persona natural y digite la tecla $teclaAccion para activar la busqueda")
     public void buscarCuentaPorNumeroDeCuenta(String numeroCuenta){
-        cotizador.digitar_numero_de_cuenta(numeroCuenta);
-        cotizador.digitar_la_tecla();
+        cotizador.digitarNumeroDeCuenta(numeroCuenta);
+        cotizador.digitarLaTecla();
 
         LOGGER.info("CotizacionDefinitions.cuandoBusqueCuentaExistenteNumero");
     }
@@ -131,7 +128,7 @@ public class CotizacionDefinitions {
 
     @Then("seleccionar nombre de producto $producto")
     public void seleccionarNombreDeProducto(String productos){
-        cotizador.seleccionar_el_boton_elegir(productos);
+        cotizador.seleccionarElBotonElegir(productos);
         LOGGER.info("CotizacionDefinitions.seleccionarNombreDeProducto");
     }
 
