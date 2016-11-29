@@ -20,6 +20,10 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     public void clic_en_expedir_poliza() {
         expedicionDePolizaPage.expedirPoliza();
     }
+    @Step
+    public void clic_en_ver_cotizacion(){
+        expedicionDePolizaPage.ingresarVerCotizacion();
+    }
 
     @Step
     public void clic_en_aceptar_del_mensaje_de_confirmacion() {

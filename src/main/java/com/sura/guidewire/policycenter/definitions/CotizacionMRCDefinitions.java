@@ -63,6 +63,8 @@ public class CotizacionMRCDefinitions {
         cotizacionMRCSteps.verDetalleCotizacion();
     }
 
+
+
     @When("realice la cotizacion")
     public void ingresarACotizacion(){
         cotizacionMRCSteps.ingresarACotizacion();
