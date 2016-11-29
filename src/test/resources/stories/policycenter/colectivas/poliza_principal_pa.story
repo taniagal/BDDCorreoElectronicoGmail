@@ -15,6 +15,7 @@ Scenario: Verificar al consultar una cotizacion que no debe estar la seccion de 
 GivenStories: stories/policycenter/login_policy.story
 Given que tengo una cotizacion <cotizacion>
 Then no debe estar visible la sección de contrato de poliza: asegurados, vehiculos, coberturas
+And debe estar visible la seccion del menu herramientas con las opciones: Resumen, facturacion, Contactos, Participantes y Notas
 
 Examples:
 |cotizacion|
@@ -25,7 +26,18 @@ Given que tengo una cotizacion <cotizacion>
 When ingrese a la revision de la poliza
 Then la  ventana de revision de poliza solo debe mostrar la informacion general sin las tablas del detalle de riesgo
 
+Examples:
+|cotizacion|
+|33333336  |
+
 Scenario: Verificar en la  ventana de cotizacion solo se debe visualizar la información general, sin el detalle de vehiculos
 Given que tengo una cotizacion <cotizacion>
 When cotice y vaya a la ventana de cotizacion
 Then solo se debe visualizar la informacion general, sin el detalle de vehiculos
+And los campos de la cotizacion no sean editables
+And no debe estar visible la sección de contrato de poliza: asegurados, vehiculos, coberturas
+And debe estar visible la seccion del menu herramientas con las opciones: Resumen, facturacion, Contactos, Participantes y Notas
+
+Examples:
+|cotizacion|
+|33333336  |
