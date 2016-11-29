@@ -114,6 +114,7 @@ public class BusquedaActividadesPage extends PageUtil {
     }
 
     public void validarMensjeFiltroRequerido(String mensaje) {
+        waitUntil(WAIT_TIME_3000);
         waitFor(btnBuscar).waitUntilPresent();
         actions.click(btnBuscar).build().perform();
         divMensaje.waitUntilPresent();
