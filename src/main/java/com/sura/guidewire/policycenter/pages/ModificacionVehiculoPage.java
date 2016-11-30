@@ -53,9 +53,9 @@ public class ModificacionVehiculoPage extends PageUtil {
         WebElementFacade campoClaseVehiculo = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Type_DV-inputEl']");
         MatcherAssert.assertThat("Error en el valor de la clase de vehiculo",campoClaseVehiculo.getText(), Is.is(Matchers.equalTo(claseVehiculo)));
         WebElementFacade campoMarca = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Make_DV-inputEl']");
-        MatcherAssert.assertThat("Error en el valor de la marca",campoMarca.containsText(marca));
+        MatcherAssert.assertThat("Error en el valor de la marca",campoMarca.getValue().contains(marca));
         WebElementFacade campoLinea = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Model_DV-inputEl']");
-        MatcherAssert.assertThat("Error en el valor de la linea",campoLinea.containsText(linea));
+        MatcherAssert.assertThat("Error en el valor de la linea",campoLinea.getValue().contains(linea));
         waitUntil(WAIT_TIME_1000);
     }
 
