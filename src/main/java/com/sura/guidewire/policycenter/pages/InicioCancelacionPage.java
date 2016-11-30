@@ -57,11 +57,11 @@ public class InicioCancelacionPage extends PageUtil {
         selectItem(txtMotivo, "Financiación cancelación por");
         waitUntil(WAIT_TIME_1000);
         try {
-            txtDescripMotivo.click();
+            clickElement(txtDescripMotivo);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
             waitUntil(WAIT_TIME_2000);
-            txtDescripMotivo.click();
+            clickElement(txtDescripMotivo);
         }
         txtDescripMotivo.sendKeys("Motivo de prueba");
         String fecha = calculaRetroactividad31Dias(txtFechaVigenciaCancelacion.getValue());

@@ -76,8 +76,6 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     }
 
     public void irAPantallaCoberturas() {
-        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
-        tasaUnicaPage.llenarInfoPoliza();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
     }
 

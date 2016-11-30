@@ -29,8 +29,6 @@ public class RenovacionDeseoFinanciacionPaPage extends PageUtil {
     }
 
     public void seleccionarDeseoFinanciacionSi() {
-        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
-        tasaUnicaPage.llenarInfoPoliza();
         WebElementFacade deseoFinanciacionSi = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-inputEl']");
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(deseoFinanciacionSi).click();
         WebElementFacade numeroCuotas = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:FundedPolicyQuotaNumber-inputEl']");

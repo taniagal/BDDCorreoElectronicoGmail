@@ -227,12 +227,12 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
 
     public void llenarInfoPoliza() {
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(1, TimeUnit.SECONDS);
         if (headerRenovacion.isPresent()) {
             comboBoxOrganizacion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']");
             comboBoxCanal = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']");
             comboBoxTipoPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']");
-        }else if (menuiItemInformacionDePoliza.isPresent()){
+        } else if (menuiItemInformacionDePoliza.isPresent()) {
             menuiItemInformacionDePoliza.click();
             comboBoxOrganizacion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']");
             comboBoxCanal = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']");
@@ -242,12 +242,12 @@ public class TarifaTasaUnicaPage extends PageUtil {
         try {
             waitUntil(WAIT_TIME_2000);
             comboBoxOrganizacion.waitUntilPresent();
-        }catch (StaleElementReferenceException f) {
+        } catch (StaleElementReferenceException f) {
             LOGGER.info("StaleElementReferenceException " + f);
             waitUntil(WAIT_TIME_2000);
             comboBoxOrganizacion.waitUntilPresent();
         }
-        if (!comboBoxOrganizacion.getValue().equals("Sura")) {
+        if (!comboBoxOrganizacion.getText().equals("Sura")) {
             selectItem(comboBoxOrganizacion, "Sura");
             waitForComboValue(comboBoxOrganizacion, "Sura");
             waitUntil(WAIT_TIME_1000);
