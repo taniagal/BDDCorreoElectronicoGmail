@@ -197,11 +197,8 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil {
     }
 
     public void validarContinuacionDeCotizacion() {
-        waitUntil(WAIT_TIME_1000);
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonSiguiente).shouldBePresent();
-        clickElement(botonSiguiente);
         WebElementFacade labelTituloVehiculos = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).waitUntilPresent();
         try {
             MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
         } catch (StaleElementReferenceException e) {
