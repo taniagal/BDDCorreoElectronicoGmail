@@ -20,7 +20,12 @@ public class PolizaPrincipalPaDefinitions {
         polizaPrincipalPaSteps.cotizarEIrALaSeccionDeCotizacion();
     }
 
-    @Then("no debe estar visible la sección de contrato de poliza: asegurados, vehiculos, coberturas")
+    @When("voy a la opcion de cotizacion")
+    public void clicMenuLateralCotizacion(){
+        polizaPrincipalPaSteps.clicMenuLateralCotizacion();
+    }
+
+    @Then("no debe estar visible la seccion de contrato de poliza: asegurados, vehiculos, coberturas")
     public void validarElementosNoVisiblesDelMenu(){
         polizaPrincipalPaSteps.validarElementosNoVisiblesDelMenu();
     }
@@ -41,7 +46,23 @@ public class PolizaPrincipalPaDefinitions {
     }
 
     @Then("los campos de la cotizacion no sean editables")
-    public void validarQueLosCamposDeLaCotizacioNoSonEditables(){
-        polizaPrincipalPaSteps.validarQueLosCamposDeLaCotizacioNoSonEditables();
+    public void validarQueLosCamposDeLaCotizacionNoSonEditables(){
+        polizaPrincipalPaSteps.validarQueLosCamposDeLaCotizacionNoSonEditables();
     }
+
+    @Then("no debe estar visible en el menu lateral las opciones: asegurados, vehiculos, coberturas")
+    public void validarQueLasOpcionesDeAseguradosVehiculosCoberturasNoSonVisibles(){
+        polizaPrincipalPaSteps.validarQueLasOpcionesDeAseguradosVehiculosCoberturasNoSonVisibles();
+    }
+
+    @Then("debe estar visible en el menu lateral con las opciones: Resumen, facturacion, Contactos, Participantes y Notas")
+    public void validarQueLasOpcionesDelMenuLateralEnHerramientasEnPolizaExpedidaSonVisibles(){
+        polizaPrincipalPaSteps.validarQueLasOpcionesDelMenuLateralEnHerramientasEnPolizaExpedidaSonVisibles();
+    }
+
+    @Then("los campos de la ventana cotizacion de la poliza expedida no son editables")
+    public void validarQueLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables(){
+        polizaPrincipalPaSteps.validarQueLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables();
+    }
+
 }

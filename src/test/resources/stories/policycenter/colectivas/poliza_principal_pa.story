@@ -14,7 +14,7 @@ Quiero tener disponible la informacion de la poliza principal, tanto la replicad
 Scenario: Verificar al consultar una cotizacion que no debe estar la seccion de contrato de poliza(Asegurados, vehiculos, coberturas)
 GivenStories: stories/policycenter/login_policy.story
 Given que tengo una cotizacion <cotizacion>
-Then no debe estar visible la sección de contrato de poliza: asegurados, vehiculos, coberturas
+Then no debe estar visible la seccion de contrato de poliza: asegurados, vehiculos, coberturas
 And debe estar visible la seccion del menu herramientas con las opciones: Resumen, facturacion, Contactos, Participantes y Notas
 
 Examples:
@@ -35,9 +35,19 @@ Given que tengo una cotizacion <cotizacion>
 When cotice y vaya a la ventana de cotizacion
 Then solo se debe visualizar la informacion general, sin el detalle de vehiculos
 And los campos de la cotizacion no sean editables
-And no debe estar visible la sección de contrato de poliza: asegurados, vehiculos, coberturas
+And no debe estar visible la seccion de contrato de poliza: asegurados, vehiculos, coberturas
 And debe estar visible la seccion del menu herramientas con las opciones: Resumen, facturacion, Contactos, Participantes y Notas
 
 Examples:
 |cotizacion|
 |33333336  |
+
+Scenario: Verificar en la poliza expedida que no debe estar la seccion de contrato de poliza(Asegurados, vehiculos, coberturas)
+Given que tengo una cotizacion <cotizacion>
+Then no debe estar visible en el menu lateral las opciones: asegurados, vehiculos, coberturas
+And debe estar visible en el menu lateral con las opciones: Resumen, facturacion, Contactos, Participantes y Notas
+And los campos de la ventana cotizacion de la poliza expedida no son editables
+
+Examples:
+|cotizacion|
+|33333339  |

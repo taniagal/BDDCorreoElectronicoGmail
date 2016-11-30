@@ -47,7 +47,33 @@ public class PolizaPrincipalPaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarQueLosCamposDeLaCotizacioNoSonEditables() {
+    public void validarQueLosCamposDeLaCotizacionNoSonEditables() {
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarQueTodosLosCamposDeLaCotizacionNoSonEditables(), Is.is(Matchers.equalTo(true)));
+    }
+
+    @Step
+    public void validarQueLasOpcionesDeAseguradosVehiculosCoberturasNoSonVisibles() {
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralEnPolizaAseguradosNoVisible(), Is.is(Matchers.equalTo(false)));
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralEnPolizaVehiculosNoVisible(), Is.is(Matchers.equalTo(false)));
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralEnPolizaCoberturasNoVisible(), Is.is(Matchers.equalTo(false)));
+    }
+
+    @Step
+    public void validarQueLasOpcionesDelMenuLateralEnHerramientasEnPolizaExpedidaSonVisibles() {
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralEnPolizaResumenVisible(), Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralEnPolizaFacturacionVisible(), Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralEnPolizaNotasVisible(), Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralEnPolizaParticipantesVisible(), Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarMenuLateralEnPolizaContactosVisible(), Is.is(Matchers.equalTo(true)));
+    }
+
+    @Step
+    public void clicMenuLateralCotizacion(){
+        polizaPrincipalPaPages.clicMenuLateralCotizacion();
+    }
+
+    @Step
+    public void validarQueLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables() {
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarQueTodosLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables(), Is.is(Matchers.equalTo(true)));
     }
 }

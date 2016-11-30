@@ -95,6 +95,45 @@ public class PolizaPrincipalPaPages extends PageUtil {
         return esElElementoWebVisible(botonVerTablaDeTrabajo);
     }
 
+    public boolean validarMenuLateralEnPolizaAseguradosNoVisible() {
+        WebElementFacade menuLateralAsegurados = findBy(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_Drivers']/div");
+        return esElElementoWebVisible(menuLateralAsegurados);
+    }
+    public boolean validarMenuLateralEnPolizaVehiculosNoVisible() {
+        WebElementFacade menuLateralVehiculos = findBy(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_Vehicles']/div");
+        return esElElementoWebVisible(menuLateralVehiculos);
+    }
+
+    public boolean validarMenuLateralEnPolizaCoberturasNoVisible() {
+        WebElementFacade menuLateralAsegurados = findBy(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PersonalAuto']/div");
+        return esElElementoWebVisible(menuLateralAsegurados);
+    }
+
+    public boolean validarMenuLateralEnPolizaResumenVisible() {
+        WebElementFacade menuLateralResumen = findBy(".//*[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Summary']/div");
+        return esElElementoWebVisible(menuLateralResumen);
+    }
+
+    public boolean validarMenuLateralEnPolizaFacturacionVisible() {
+        WebElementFacade menuLateralFacturacion = findBy(".//*[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Billing']/div");
+        return esElElementoWebVisible(menuLateralFacturacion);
+    }
+
+    public boolean validarMenuLateralEnPolizaNotasVisible() {
+        WebElementFacade menuLateralNotas = findBy(".//*[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Notes']/div");
+        return esElElementoWebVisible(menuLateralNotas);
+    }
+
+    public boolean validarMenuLateralEnPolizaParticipantesVisible() {
+        WebElementFacade menuLateralParticipantes = findBy(".//*[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Participants']/div");
+        return esElElementoWebVisible(menuLateralParticipantes);
+    }
+
+    public boolean validarMenuLateralEnPolizaContactosVisible() {
+        WebElementFacade menuLateralContactos = findBy(".//*[@id='PolicyFile:MenuLinks:PolicyFile_PolicyFile_Contacts']/div");
+        return esElElementoWebVisible(menuLateralContactos);
+    }
+
     public boolean validarPanelDeDetalleEnCotizacion() {
         WebElementFacade panelDeDetalle = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:1']");
         return esElElementoWebVisible(panelDeDetalle);
@@ -114,7 +153,6 @@ public class PolizaPrincipalPaPages extends PageUtil {
         setImplicitTimeout(WAIT_TIME_3000, TimeUnit.MILLISECONDS);
         int editables = 0;
         for (int i = 0; i < camposDeCotizacion.size(); i++) {
-            System.out.println("campo.getText " + camposDeCotizacion.get(i).getText());
             if (!camposDeCotizacion.get(i).getText().equals(null)) {
                 editables++;
             }
@@ -127,8 +165,8 @@ public class PolizaPrincipalPaPages extends PageUtil {
         }
     }
 
-    public boolean validarQueTodosLosCamposDeLaPolizaNoSonEditables() {
-        List<WebElementFacade> camposDePoliza = findAll("//div[contains(@id, 'PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_')]");
+    public boolean validarQueTodosLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables() {
+        List<WebElementFacade> camposDePoliza = findAll("//div[contains(@id, 'PolicyFile_Pricing:PolicyFile_PricingScreen:PolicyFile_Quote_SummaryDV:')]");
         boolean NoEditables = false;
         setImplicitTimeout(WAIT_TIME_3000, TimeUnit.MILLISECONDS);
         for (int i = 0; i < camposDePoliza.size(); i++) {
@@ -142,6 +180,13 @@ public class PolizaPrincipalPaPages extends PageUtil {
         }
         resetImplicitTimeout();
         return NoEditables;
+    }
+
+    public void clicMenuLateralCotizacion(){
+        WebElementFacade botonMenuLateralCotizacion = findBy(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_Pricing']/div");
+        botonMenuLateralCotizacion.waitUntilPresent();
+        botonMenuLateralCotizacion.click();
+        waitForTextToAppear(TITULO_COTIZACION);
     }
 
 
