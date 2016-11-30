@@ -25,17 +25,6 @@ Examples:
 | C000484848 | RICARDO GIRALDO | Colombia | Antioquia    | MEDELLLIN |
 
 
-Scenario: Edicion del campo Direccion validando que se estandariza la direccion ingresada
-Given que voy a buscar la cuenta <numCuenta>
-And que me encuentro en los contactos de la cuenta
-When seleccione el contacto a editar <nombreContacto>
-And ingrese a editar la direccion por <direccionSinEstandarizar>
-Then la direccion debe quedar estandarizada <direccionEstandarizada> del contacto <nombreContacto>
-
-Examples:
-| numCuenta  | direccionSinEstandarizar | direccionEstandarizada | nombreContacto  |
-| C000484848 | CARRERA 65 48 162        | CARRERA 65 48 162      | RICARDO GIRALDO |
-
 
 
 Scenario: consultar direccion de un contacto que tiene una direccion asociada a otro contacto
@@ -87,17 +76,6 @@ Examples:
 | numCuenta  | nombreContacto  | titulo                  | botonLigagas                             | botonDesligar                             |
 | C000484848 | RICARDO GIRALDO | Detalle de la dirección | Actualizar todas las direcciones ligadas | Actualizar sólo esta dirección y desligar |
 
-Scenario: validar cuando una direccion no se puede estandarizar la deje como la ingresa el usuario
-Given que voy a buscar la cuenta <numCuenta>
-And que me encuentro en los contactos de la cuenta
-When seleccione el contacto a editar <nombreContacto>
-And seleccione la opcion para editar la direccion
-And ingrese a editar la direccion por <direccion> en la ventana de contactos vinculados
-Then la direccion debe quedar como la ingreso el usuario <direccionUsuario> del contacto <nombreContacto>
-
-Examples:
-| numCuenta  | nombreContacto  | direccion                                                                | direccionUsuario                                                         |
-| C000484848 | RICARDO GIRALDO | Calle 89 F con circular 1 numero 77 FF 77 avenida guayabal por el centro | CALLE 89 F CON CIRCULAR 1 NUMERO 77 FF 77 AVENIDA GUAYABAL POR EL CENTRO |
 
 Scenario: validar se actualiza la direccion vinculada de todos los contactos
 Given que voy a buscar la cuenta <numCuenta>
