@@ -44,19 +44,7 @@ Then se debe mostrar un mensaje <mensaje> de error
 Examples:
 |numeroCuenta  |nomProducto            |fechaInicioVigencia|mensaje                                                                                    |
 |C000888888    |Multiriesgo corporativo|01/01/2016         |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días)|
-|C000888888    |Multiriesgo corporativo|30/12/2016         |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
-
-Scenario: Agregar tomador adicional cuando es un riesgo consultable
-Given se inicio una nueva suscripcion <numeroCuenta>
-When este expidiendo una poliza de propiedad comercial
-And seleccione el producto <nomProducto> a expedir
-And quiera agregar un tomador adicional que es riesgo consultable <cedula>
-Then se debe mostrar un mensaje de error <mensaje> <mensaje2>
-
-
-Examples:
-|numeroCuenta  |cedula|nomProducto            |mensaje                                       |mensaje2                                                                                                                                              |
-|C001888888    |123456|Multiriesgo corporativo|es un riesgo no estándar y debe ser autorizado|El tomador es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial|
+|C000888888    |Multiriesgo corporativo|30/12/2017         |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
 Scenario: Ocultar descipcion de la direccion cuando el campo no tenga datos informativos
 Given se inicio una nueva suscripcion <numeroCuenta>
