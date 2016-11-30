@@ -43,7 +43,7 @@ public class PolizaPrincipalPaSteps extends ScenarioSteps {
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarTablaDeVehiculosEnCotizacion(), Is.is(Matchers.equalTo(true)));
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarPanelDeDetalleEnCotizacion(), Is.is(Matchers.equalTo(false)));
         MatcherAssert.assertThat(polizaPrincipalPaPages.validarBotonVerTablaDeTrabajoEnCotizacion(), Is.is(Matchers.equalTo(false)));
-//        MatcherAssert.assertThat(polizaPrincipalPaPages.validarTablaTituloVehiculosEnCotizacion(), Is.is(Matchers.equalTo(true)));
+        MatcherAssert.assertThat(polizaPrincipalPaPages.validarTablaTituloVehiculosEnCotizacion(), Is.is(Matchers.equalTo(true)));
     }
 
     @Step
