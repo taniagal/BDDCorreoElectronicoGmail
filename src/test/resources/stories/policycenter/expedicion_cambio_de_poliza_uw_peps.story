@@ -82,10 +82,6 @@ Then  se debe generar un UW issue
 And  mostrar el mensaje <mensaje> que devuelve el servicio
 And  concatenarlo con el texto "Para solicitar la autorización diríjase a la opción Análisis de riesgo"
 
-Examples:
-|||
-|||
-
 Scenario: DNI que ya existian en la poliza y son PEP
 Meta: @lote3
 @manual
@@ -96,7 +92,3 @@ And no son nuevos en el cambio
 When  intente expedir la poliza
 And se identifique que los DNI son riesgo PEP que ya venian asegurados y habian sido autorizados
 Then  se debe permitir expedir el cambio de la poliza y mostrar el número del cambio y de la póliza
-
-Examples:
-|||
-|||
