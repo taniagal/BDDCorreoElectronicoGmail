@@ -248,24 +248,26 @@ public class TarifaTasaUnicaPage extends PageUtil {
             comboBoxOrganizacion.waitUntilPresent();
         }
         if (!comboBoxOrganizacion.getValue().equals("Sura")) {
-            selectItem(comboBoxOrganizacion, "Sura");
-            waitForComboValue(comboBoxOrganizacion, "Sura");
-            waitUntil(WAIT_TIME_1000);
-            selectItem(comboBoxCanal, "Canal Tradicional");
-            waitForComboValue(comboBoxCanal, "Canal Tradicional");
-            try {
+            if (comboBoxOrganizacion.getAttribute("class").contains("x-form-text")) {
+                selectItem(comboBoxOrganizacion, "Sura");
+                waitForComboValue(comboBoxOrganizacion, "Sura");
                 waitUntil(WAIT_TIME_1000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
-            } catch (ElementNotVisibleException e) {
-                LOGGER.info("ElementNotVisibleException " + e);
-                waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
-            } catch (StaleElementReferenceException f) {
-                LOGGER.info("StaleElementReferenceException " + f);
-                waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
+                selectItem(comboBoxCanal, "Canal Tradicional");
+                waitForComboValue(comboBoxCanal, "Canal Tradicional");
+                try {
+                    waitUntil(WAIT_TIME_1000);
+                    selectItem(comboBoxTipoPoliza, "PPAutos");
+                } catch (ElementNotVisibleException e) {
+                    LOGGER.info("ElementNotVisibleException " + e);
+                    waitUntil(WAIT_TIME_2000);
+                    selectItem(comboBoxTipoPoliza, "PPAutos");
+                } catch (StaleElementReferenceException f) {
+                    LOGGER.info("StaleElementReferenceException " + f);
+                    waitUntil(WAIT_TIME_2000);
+                    selectItem(comboBoxTipoPoliza, "PPAutos");
+                }
+                waitForComboValue(comboBoxTipoPoliza, "PPAutos");
             }
-            waitForComboValue(comboBoxTipoPoliza, "PPAutos");
         }
     }
 }
