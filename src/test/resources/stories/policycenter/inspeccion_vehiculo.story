@@ -48,25 +48,25 @@ Scenario: Vehiculo sin requisito inspeccion para poder expedir
 Given se ha realizado la cotizacion <cotizacion>
 When se identifique que el vehiculo <placa> no cumple con el requisito de inspeccion
 And llegue a la expedicion de la poliza
-Then validar la solicitud de requisitos
+Then validar la solicitud de requisitos <requisitos>
 And se debe mostrar en la pantalla un mensaje <mensaje> indicando que el vehiculo no tiene inspeccion
 And generar el UW Issue <mensaje> y no permitir expedir
 
 Examples:
-|cotizacion|placa  |mensaje                                                                       |
-|22221222  |COR219 |El vehículo no tiene una inspección vigente a la fecha de ingreso del riesgo. |
+|cotizacion|placa  |mensaje                                                                       |requisitos                                         |
+|22221222  |COR219 |El vehículo no tiene una inspección vigente a la fecha de ingreso del riesgo. |Existen requisitos pendientes, por favor verifique.|
 
 Scenario: Consultar inspeccion valida en SIA
 Given se ha realizado la cotizacion <cotizacion>
 And se tiene la informacion de la placa <placa> del vehiculo ingresada
 When la inspeccion es valida en SIA
-Then validar la solicitud de requisitos
+Then validar la solicitud de requisitos <requisitos>
 And se debe permitir expedir la poliza
 And la fecha de inspeccion debe ser la fecha de inicio de vigencia de la poliza
 
 Examples:
-|cotizacion |placa |
-|22221122   |USU422|
+|cotizacion |placa |requisitos                                          |
+|22221122   |USU422|Existen requisitos pendientes, por favor verifique. |
 
 Scenario: Consulta requisito inspeccion en el modelo
 Meta:
