@@ -85,15 +85,13 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends PageUtil {
             waitUntil(WAIT_TIME_2000);
             MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(mensaje));
         }
-    withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).
-    waitFor(menuPoliza).
-    waitUntilClickable();
-}
+    	withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).
+    	waitFor(menuPoliza).
+    	waitUntilClickable();
+    }
 
     public void validarConcatenacionMensaje(ExamplesTable texto) {
         Map<String, String> textoConcatenado = texto.getRows().get(0);
         MatcherAssert.assertThat(grupoMensajes.getText(), Matchers.containsString(textoConcatenado.get("texto")));
     }
-
-
 }
