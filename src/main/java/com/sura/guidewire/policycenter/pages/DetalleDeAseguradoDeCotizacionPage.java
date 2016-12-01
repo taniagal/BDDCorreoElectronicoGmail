@@ -10,7 +10,6 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -197,15 +196,13 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil {
     }
 
     public void validarContinuacionDeCotizacion() {
+        waitUntil(WAIT_TIME_3000);
+        waitFor(botonSiguiente).waitUntilPresent().click();
+        waitForTextToAppear("Vehículos");
         WebElementFacade labelTituloVehiculos = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).waitUntilPresent();
-        try {
-            MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
-        } catch (StaleElementReferenceException e) {
-            LOGGER.info("StaleElementReferenceException " + e);
-            waitUntil(WAIT_TIME_2000);
-            MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
-        }
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).shouldBePresent();
+        MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
         waitUntil(WAIT_TIME_1000);
     }
 }
+
