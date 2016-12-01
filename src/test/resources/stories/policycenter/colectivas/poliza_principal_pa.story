@@ -43,11 +43,18 @@ Examples:
 |33333336  |
 
 Scenario: Verificar en la poliza expedida que no debe estar la seccion de contrato de poliza(Asegurados, vehiculos, coberturas)
-Given que tengo una cotizacion <cotizacion>
+Given ya se tiene una poliza expedida <numeroPoliza>
+When voy a la opcion de cotizacion
 Then no debe estar visible en el menu lateral las opciones: asegurados, vehiculos, coberturas
 And debe estar visible en el menu lateral con las opciones: Resumen, facturacion, Contactos, Participantes y Notas
 And los campos de la ventana cotizacion de la poliza expedida no son editables
 
 Examples:
-|cotizacion|
-|33333339  |
+|numeroPoliza   |
+|TEST_33333339  |
+
+Scenario: Verificar que cuando revise la facturación los campos que no sean de consulta no pueden ser editables
+Meta: @manual
+Given que tengo una poliza en estado expedida
+When voy a la opcion de facturacion
+Then los campos que no sean de consulta no pueden ser editables
