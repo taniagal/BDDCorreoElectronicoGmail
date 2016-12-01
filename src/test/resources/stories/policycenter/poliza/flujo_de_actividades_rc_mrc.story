@@ -1,7 +1,7 @@
 Flujo De Actividades Rc Mrc
+
 Meta:
 @lote2
-@Story CDSEG-
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
 @Sprint 9

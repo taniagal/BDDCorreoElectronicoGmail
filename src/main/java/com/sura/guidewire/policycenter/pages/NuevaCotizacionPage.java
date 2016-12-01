@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import com.sura.guidewire.policycenter.utils.model.AgenteModel;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,6 +15,7 @@ import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -29,7 +31,7 @@ public class NuevaCotizacionPage extends PageObject {
     private List<AgenteModel> listaAgentesModel = null;
     private String nombreAgente;
     private List<WebElementFacade> listaDeProductosElement;
-
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
     @FindBy (xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductSettingsDV:DefaultPPEffDate-inputEl']")
     WebElementFacade labelFecha;
 
@@ -46,6 +48,8 @@ public class NuevaCotizacionPage extends PageObject {
     public static final String MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'displayfield') and contains(@id,'inputEl')]";
     public static final String MENSAJES_DE_INFORMACION = ".//*[@id='NewSubmission:NewSubmissionScreen:_msgs']/div";
     public static final String BTNS_DE_MENSAJE_EMERGENTE_DE_INFORMACION = "//div[contains(@id,'messagebox') and contains(@id,'toolbar') and contains(@id,'targetEl')]/a";
+    public static final String LBL_OPCIONES_MENU_INICIAL =  ".//span[contains(@id,'SubmissionWizard') and contains(.,'";
+    public static final  String LBL_OPCIONES_MENU_FINAL =  "')]";
     public static final String TRACE = "\nTRACE: \n";
     protected static final int WAIT_TIME_15 = 15;
     protected static final int WAIT_TIME_2000 = 2000;
@@ -343,5 +347,13 @@ public class NuevaCotizacionPage extends PageObject {
 
         return existeOcurrencia;
     }
+    public void validarCamposOpcionCotizacionDePoliza(String estadouno,String estadodos,ExamplesTable menusesperados){
+        opcionesInformacionPolizaMrcPage.validarCampos(estadouno,estadodos,menusesperados, LBL_OPCIONES_MENU_INICIAL, LBL_OPCIONES_MENU_FINAL);
+    }
+
+
+
+
+    
 
 }

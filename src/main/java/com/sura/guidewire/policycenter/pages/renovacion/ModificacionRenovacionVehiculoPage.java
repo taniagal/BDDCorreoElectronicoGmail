@@ -47,8 +47,6 @@ public class ModificacionRenovacionVehiculoPage extends PageUtil {
     }
 
     public void irAVehiculos(){
-        TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
-        tasaUnicaPage.llenarInfoPoliza();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
         waitUntil(WAIT_TIME_1500);
         itemVehiculos.click();
@@ -72,19 +70,23 @@ public class ModificacionRenovacionVehiculoPage extends PageUtil {
     }
 
     public void validarEdicionCampos(){
-        String editable = "input";
-        MatcherAssert.assertThat(campoCiudadCirculacion.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoTipoServicio.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoMotor.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoChasis.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoBonificacionTecnica.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoBonificacionComercial.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoDescuento.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoRecargo.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoSuavizacion.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoValorAsegurado.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoValorAccesorios.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoValorAccesoriosEspeciales.getTagName(), Matchers.is(Matchers.equalTo(editable)));
+        verificarSiCampoEsEditable(campoCiudadCirculacion, "Ciudad de Circulacion");
+        verificarSiCampoEsEditable(campoTipoServicio, "tipo servicio");
+        verificarSiCampoEsEditable(campoMotor, "Motor");
+        verificarSiCampoEsEditable(campoChasis, "chasis");
+        verificarSiCampoEsEditable(campoBonificacionTecnica, "bonificacion tecnica");
+        verificarSiCampoEsEditable(campoBonificacionComercial, "bonificacion comercial");
+        verificarSiCampoEsEditable(campoDescuento, "Descuento");
+        verificarSiCampoEsEditable(campoRecargo, "recargo");
+        verificarSiCampoEsEditable(campoSuavizacion, "suavizacion");
+        verificarSiCampoEsEditable(campoValorAsegurado, "valor asegurado");
+        verificarSiCampoEsEditable(campoValorAccesorios, "valor accesorios");
+        verificarSiCampoEsEditable(campoValorAccesoriosEspeciales, "valor accesorios especiales");
+    }
+
+    public void verificarSiCampoEsEditable(WebElementFacade elemento, String nombreCampo){
+        MatcherAssert.assertThat("Error: el campo "+ nombreCampo+" debe ser editable",
+                elemento.getAttribute("class").contains("x-form-text"));
     }
 
     public void validarCamposNoEditablesVehiculo() {

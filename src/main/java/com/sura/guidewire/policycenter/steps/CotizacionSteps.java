@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.steps;
 
 
+import com.sura.guidewire.policycenter.pages.DetallesDeUbicacionPage;
 import com.sura.guidewire.policycenter.utils.navegacion.PanelIzquierdoElement;
 import com.sura.guidewire.policycenter.utils.navegacion.PanelSuperiorElement;
 import com.sura.guidewire.policycenter.pages.NuevaCotizacionPage;
@@ -9,6 +10,7 @@ import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 
 import static com.sura.guidewire.policycenter.pages.NuevaCotizacionPage.TXT_CODIGO_AGENTE;
@@ -22,49 +24,36 @@ public class CotizacionSteps extends ScenarioSteps implements Serializable {
     private PanelSuperiorElement panelSuperior;
     private PanelIzquierdoElement panelIzquierdo;
     private NuevaCotizacionPage cotizacionPage;
-
+    DetallesDeUbicacionPage detallesDeUbicacionPage;
 
     @ManagedPages
     Pages pages;
 
 
     @Step
-    public void ir_al_menu_escritorio_del_panel_superior(){
-        panelSuperior.waitForTextToAppear("Escritorio");
-        panelSuperior.irMenu(PanelSuperiorElement.MENU_ESCRITORIO);
+    public void irANuevaCotizacion(){
+        detallesDeUbicacionPage.irANuevaCotizacion();
     }
 
     @Step
-    public void clic_en_la_opcion_acciones_del_panel_izquierdo(){
-        panelIzquierdo.waitForTextToAppear("Acciones");
-        panelIzquierdo.opcion(PanelIzquierdoElement.LINK_ACCIONES);
-    }
-
-    @Step
-    public void clic_en_la_opcion_nueva_cotizacion(){
-        panelIzquierdo.waitForTextToAppear("Nueva cotización");
-        panelIzquierdo.opcion(PanelIzquierdoElement.LINK_NUEVA_COTIZACION);
-    }
-
-    @Step
-    public void digitar_numero_de_cuenta(String numeroCuenta) {
+    public void digitarNumeroDeCuenta(String numeroCuenta) {
         getCotizacionPage().enter(numeroCuenta).into(cotizacionPage.elemento(TXT_NUMERO_CUENTA));
     }
 
     @Step
-    public void digitar_la_tecla() {
+    public void digitarLaTecla() {
         // TODO: 08/06/2016 \VALIDAR QUE LO QUE SE ENVIA EN LA HISTORIA SEA UNA TECLA 
         getCotizacionPage().getDriver().switchTo().activeElement().sendKeys(Keys.TAB);
     }
 
     @Step
-    public void digitar_nombre_agente(String nombreAgente) {
+    public void digitarNombreAgente(String nombreAgente) {
         getCotizacionPage().enter(nombreAgente).into(cotizacionPage.elemento(TXT_NOMBRE_AGENTE));
 
     }
 
     @Step
-    public void digitar_codigo_de_agente(String codigoAgente) {
+    public void digitarCodigoDeAgente(String codigoAgente) {
         getCotizacionPage().enter(codigoAgente).into(cotizacionPage.elemento(TXT_CODIGO_AGENTE));
     }
 
@@ -73,7 +62,7 @@ public class CotizacionSteps extends ScenarioSteps implements Serializable {
     }
 
     @Step
-    public void seleccionar_el_boton_elegir(String producto) {
+    public void seleccionarElBotonElegir(String producto) {
         getCotizacionPage().seleccionarProducto(producto);
     }
 
@@ -144,5 +133,9 @@ public class CotizacionSteps extends ScenarioSteps implements Serializable {
 
     public Boolean esFechaEditable() {
         return getCotizacionPage().esFechaEditable();
+    }
+
+    public void validar_campos_cotizacion_poliza(String estadouno,String estadodos,ExamplesTable menusesperados){
+        getCotizacionPage().validarCamposOpcionCotizacionDePoliza(estadouno,estadodos,menusesperados);
     }
 }

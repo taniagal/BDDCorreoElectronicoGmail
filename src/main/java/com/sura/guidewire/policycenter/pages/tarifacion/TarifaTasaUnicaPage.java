@@ -53,6 +53,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade menuiItemAsegurados;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:ViewQuote']/div")
     private WebElementFacade menuiItemCotizacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
+    private WebElementFacade menuiItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Export-inputEl']")
     private WebElementFacade comboBoxExportar;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Format-inputEl']")
@@ -132,10 +134,14 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
 
-    public boolean verificarEstadoDelEnvio(String cotizacion) {
-        boolean val = false;
+    public int verificarEstadoDelEnvio(String cotizacion) {
+        int val = 1;
         waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, cotizacion));
-        val = (headerEnvio.containsText("Expedida")) ? false : true;
+        if(headerEnvio.containsText("Expedida")){
+            val = 0;
+        }else if(headerEnvio.containsText("Cotizado")){
+            val = 2;
+        }
         return val;
     }
 
@@ -230,10 +236,22 @@ public class TarifaTasaUnicaPage extends PageUtil {
             comboBoxOrganizacion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']");
             comboBoxCanal = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']");
             comboBoxTipoPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']");
+        } else if (menuiItemInformacionDePoliza.isPresent()) {
+            menuiItemInformacionDePoliza.click();
+            comboBoxOrganizacion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']");
+            comboBoxCanal = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']");
+            comboBoxTipoPoliza = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']");
         }
         resetImplicitTimeout();
-        comboBoxOrganizacion.waitUntilPresent();
-        if (!comboBoxOrganizacion.getValue().equals("Sura")) {
+        try {
+            waitUntil(WAIT_TIME_2000);
+            comboBoxOrganizacion.waitUntilPresent();
+        } catch (StaleElementReferenceException f) {
+            LOGGER.info("StaleElementReferenceException " + f);
+            waitUntil(WAIT_TIME_2000);
+            llenarInfoPoliza();
+        }
+        if (!comboBoxOrganizacion.getText().equals("Sura")) {
             selectItem(comboBoxOrganizacion, "Sura");
             waitForComboValue(comboBoxOrganizacion, "Sura");
             waitUntil(WAIT_TIME_1000);

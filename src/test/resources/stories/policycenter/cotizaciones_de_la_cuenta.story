@@ -1,6 +1,6 @@
 Cotizaciones De La Cuenta
 
-Meta: @lote1
+Meta: @lote2
 
 @issue #CDSEG-684
 @tag automator: diego_cardona_acevedo

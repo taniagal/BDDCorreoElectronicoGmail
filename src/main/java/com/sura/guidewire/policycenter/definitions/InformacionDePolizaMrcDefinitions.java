@@ -6,10 +6,7 @@ import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPoli
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
@@ -63,6 +60,8 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.ingresar_nueva_cotizacion(agente, producto);
 
     }
+    @When("cotize una poliza")
+    public void cuandoCotizeUnaPoliza(){informacionDePolizaMrcSteps.seleccionar_opcion_cotizar();}
 
     @When("quiero agregar un coaseguro <TipoCo> con particion de aseguradoras $entradatable")
     public void cuandoQuieroAgregarunCoaseguro(@Named("TipoCo") String tipoCo, ExamplesTable entradatable) {
@@ -82,6 +81,21 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones_en_renovacion_de_poliza();
 
     }
+    @When("ingrese a informacion de poliza")
+    public void cuandoIngreseAInformacionDePoliza(){
+        informacionDePolizaMrcSteps.ingresar_a_informacion_de_poliza();
+    }
+
+    @When("ingrese a la opcion informacion de poliza")
+    public void cuandoSeleccioneLaOpcionInformacionDePoliza(){
+        informacionDePolizaMrcSteps.ingresar_a_opcion_informacion_de_poliza();
+    }
+
+    @Then("en informacion de poliza deben estar en estado <estadodos> las siguientes opciones $menusesperados")
+    public void entoncesenInformacionDePolizaSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,@Named("estadodos") String estadodos, ExamplesTable menusesperados){
+        informacionDePolizaMrcSteps.validar_campos_informacion_poliza(estadouno,estadodos,menusesperados);
+    }
+
 
     @When("de clic en Aceptar de la ventana Coaseguro")
     public void darClicEnAceptarDeCoaseuguro(){
@@ -181,6 +195,21 @@ public class InformacionDePolizaMrcDefinitions {
     public void entoncesNoSeDebeHabilitarLaOpcionNumeroDeDocumento() {
         informacionDePolizaMrcSteps.validar_campos_inhabilitados();
     }
+
+
+    @Then("deben estar en estado <estadouno> las siguientes opciones $menusesperados")
+    @Aliases(values = {
+            "deben estar en estado <estadodos> las siguientes opciones $menusesperados",
+    })
+    public void entoncesSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,@Named("estadodos") String estadodos, ExamplesTable menusesperados){
+        informacionDePolizaMrcSteps.validar_campos(estadouno,estadodos,menusesperados);
+    }
+    @Then("ningun campo puede ser editable en informacion")
+    public void entoncesNingunCampoPuedeSerEditable(){
+        informacionDePolizaMrcSteps.validarCamposNoEditablesEnInformacionDePoliza();
+    }
+
+
 
 
 }

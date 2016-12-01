@@ -11,13 +11,14 @@ import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
-public class InicioCancelacionPage extends PageUtil{
+public class InicioCancelacionPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")
     WebElementFacade btnAcciones;
@@ -41,6 +42,7 @@ public class InicioCancelacionPage extends PageUtil{
     WebElementFacade txtFechaVigenciaCancelacion;
     @FindBy(xpath = ".//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:ReasonDescription-inputEl']")
     WebElementFacade txtDescripMotivo;
+
     public InicioCancelacionPage(WebDriver driver) {
         super(driver);
     }
@@ -54,7 +56,13 @@ public class InicioCancelacionPage extends PageUtil{
     public void ingresarFechaRetroactiva() {
         selectItem(txtMotivo, "Financiación cancelación por");
         waitUntil(WAIT_TIME_1000);
-        txtDescripMotivo.click();
+        try {
+            clickElement(txtDescripMotivo);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            waitUntil(WAIT_TIME_2000);
+            clickElement(txtDescripMotivo);
+        }
         txtDescripMotivo.sendKeys("Motivo de prueba");
         String fecha = calculaRetroactividad31Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
@@ -115,7 +123,7 @@ public class InicioCancelacionPage extends PageUtil{
     }
 
 
-    public void validarDatosDeLaLista(ExamplesTable listaMotivo){
+    public void validarDatosDeLaLista(ExamplesTable listaMotivo) {
         List<WebElementFacade> elementoInstruccion;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(listaMotivo);
         for (String tipo : elementosRequeridos) {

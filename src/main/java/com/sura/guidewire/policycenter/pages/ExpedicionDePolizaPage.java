@@ -74,8 +74,6 @@ public class ExpedicionDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//img[@class='error_icon']")
     WebElementFacade iconoError;
 
-    protected static final int WAIT_TIME_45000 = 45000;
-
 
     public ExpedicionDePolizaPage(WebDriver driver) {
         super(driver);
@@ -141,6 +139,11 @@ public class ExpedicionDePolizaPage extends PageUtil {
         MatcherAssert.assertThat(campoIrAlEscritorio.getText(), Is.is(Matchers.equalTo(escritorio)));
         waitFor(ExpectedConditions.elementToBeClickable(botonEscritorio));
     }
+    public void ingresarVerCotizacion(){
+        waitFor(campoNumeroCotizacion);
+        campoNumeroCotizacion.click();
+        waitForTextToAppear("Cotización");
+    }
 
     public void validarMensaje(String mensaje) {
         String[] mensajes = mensaje.split("\\^");
@@ -193,7 +196,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
     }
 
     public void validarMensajeRequisitos() {
-        waitForTextToAppear("Existen requisitos pendientes, por favor verifique.", WAIT_TIME_45000);
+        waitForTextToAppear("Existen requisitos pendientes, por favor verifique.", WAIT_TIME_30000);
         WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
         waitUntil(WAIT_TIME_5000);

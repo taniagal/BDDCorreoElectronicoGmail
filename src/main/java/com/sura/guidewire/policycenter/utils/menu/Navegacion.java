@@ -71,8 +71,6 @@ public class Navegacion extends PageUtil {
     private WebElementFacade mnuNumPoliza;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-itemEl']")
     private WebElementFacade mnuItemNuevoEnvio;
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
-    private WebElementFacade mnuNumeroSub;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Prev-btnInnerEl']")
     public WebElementFacade botonVolver;
 
@@ -317,14 +315,8 @@ public class Navegacion extends PageUtil {
     }
 
     public PolizaBuscarPage irABuscarPoliza(String numPoliza) {
-        waitFor(mnuPoliza).shouldBeVisible();
-        gw.deployMenu(mnuPoliza);
-        act.sendKeys(Keys.ARROW_DOWN).build().perform();
-        waitUntil(WAIT_TIME_300);
-        waitFor(mnuPoliza).shouldBeVisible();
-        ingresarDato(mnuNumPoliza, numPoliza);
-        act.sendKeys(Keys.ENTER).build().perform();
-        waitUntil(WAIT_TIME_500);
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoTxtBuscar).waitUntilPresent().sendKeys("Policy " + numPoliza);
+        campoTxtBuscar.sendKeys(Keys.ENTER);
         return new PolizaBuscarPage(getDriver());
     }
 

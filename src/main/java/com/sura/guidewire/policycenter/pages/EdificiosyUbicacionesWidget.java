@@ -364,7 +364,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             String xpathLegendCoberturaDeRiesgo = XPATH_LEGEND_COBERTURA_DE_RIESGO + cobertura + CIERRE_XPATH1;
             WebElementFacade inputCoberturaDeRiesgo = findBy(xpathLegendCoberturaDeRiesgo).find(By.tagName(INPUT));
 
-            if (CSS_POSICION2.equals(inputCoberturaDeRiesgo.getCssValue(BACKGROUND_POSICION)) || CSS_POSICION.equals(inputCoberturaDeRiesgo.getCssValue(BACKGROUND_POSICION))) {
+            if (CSS_POSICION2.equals(inputCoberturaDeRiesgo.waitUntilPresent().getCssValue(BACKGROUND_POSICION)) || CSS_POSICION.equals(inputCoberturaDeRiesgo.waitUntilPresent().getCssValue(BACKGROUND_POSICION))) {
                 estaSeleccionado = true;
             }
         } catch (Exception e) {
@@ -385,7 +385,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         String xpathTrCoberturaDeRiesgo = XPATH2_PARTE1 + tipoArticulo + XPATH2_PARTE2;
         WebElementFacade inputCoberturaDeRiesgo = findBy(xpathTrCoberturaDeRiesgo).find(By.tagName(INPUT));
 
-        if (CSS_POSICION2.equals(inputCoberturaDeRiesgo.getCssValue(BACKGROUND_POSICION)) || CSS_POSICION.equals(inputCoberturaDeRiesgo.getCssValue(BACKGROUND_POSICION))) {
+        if (CSS_POSICION2.equals(inputCoberturaDeRiesgo.waitUntilPresent().getCssValue(BACKGROUND_POSICION)) || CSS_POSICION.equals(inputCoberturaDeRiesgo.waitUntilPresent().getCssValue(BACKGROUND_POSICION))) {
             estaSeleccionado = true;
         } else {
             estaSeleccionado = false;
@@ -478,8 +478,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void cliclearBtnCotizar() {
-        WebElementFacade btnAgregarArticulo = findBy(XPATH_COTIZAR).waitUntilVisible().waitUntilClickable();
-        btnAgregarArticulo.waitUntilPresent().click();
+        WebElementFacade btnCotizar = findBy(XPATH_COTIZAR).waitUntilVisible().waitUntilClickable();
+        btnCotizar.waitUntilPresent().click();
         waitFor(WAIT_TIME_4).second();
     }
 
