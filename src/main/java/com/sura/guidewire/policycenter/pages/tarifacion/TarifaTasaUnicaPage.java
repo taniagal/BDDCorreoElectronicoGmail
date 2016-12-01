@@ -249,7 +249,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         } catch (StaleElementReferenceException f) {
             LOGGER.info("StaleElementReferenceException " + f);
             waitUntil(WAIT_TIME_2000);
-            comboBoxOrganizacion.waitUntilPresent();
+            llenarInfoPoliza();
         }
         if (!comboBoxOrganizacion.getText().equals("Sura")) {
             selectItem(comboBoxOrganizacion, "Sura");

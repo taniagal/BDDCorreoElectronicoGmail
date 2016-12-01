@@ -82,6 +82,9 @@ public class PageUtil extends PageObject {
             LOGGER.info("ElementNotVisibleException " + e);
             waitUntil(WAIT_TIME_2000);
             waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
+        } catch (StaleElementReferenceException f){
+            LOGGER.info("StaleElementReferenceException " + f);
+            waitUntil(WAIT_TIME_2000);
         }
         clickElement(element);
         waitUntil(WAIT_TIME_200);
