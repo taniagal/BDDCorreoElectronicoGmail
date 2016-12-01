@@ -134,10 +134,14 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
 
-    public boolean verificarEstadoDelEnvio(String cotizacion) {
-        boolean val = false;
+    public int verificarEstadoDelEnvio(String cotizacion) {
+        int val = 1;
         waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, cotizacion));
-        val = (headerEnvio.containsText("Expedida")) ? false : true;
+        if(headerEnvio.containsText("Expedida")){
+            val = 0;
+        }else if(headerEnvio.containsText("Cotizado")){
+            val = 2;
+        }
         return val;
     }
 
@@ -245,7 +249,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         } catch (StaleElementReferenceException f) {
             LOGGER.info("StaleElementReferenceException " + f);
             waitUntil(WAIT_TIME_2000);
-            comboBoxOrganizacion.waitUntilPresent();
+            llenarInfoPoliza();
         }
         if (!comboBoxOrganizacion.getText().equals("Sura")) {
             selectItem(comboBoxOrganizacion, "Sura");
