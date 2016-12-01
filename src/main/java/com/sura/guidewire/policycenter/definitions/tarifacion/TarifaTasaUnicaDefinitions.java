@@ -1,7 +1,6 @@
 package com.sura.guidewire.policycenter.definitions.tarifacion;
 
 import com.sura.guidewire.policycenter.steps.CotizacionPADetalleSteps;
-import com.sura.guidewire.policycenter.steps.commons.CommonMethodsSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.steps.ValidacionesInformacionDeVehiculoSteps;
 import net.thucydides.core.annotations.Steps;
@@ -21,8 +20,6 @@ public class TarifaTasaUnicaDefinitions {
     @Steps
     ValidacionesInformacionDeVehiculoSteps vehiculoSteps;
 
-    @Steps
-    CommonMethodsSteps commonMethodsSteps;
 
     @When("vaya a cargar el archivo con las tasas")
     public void irAInformacionDePoliza() {
@@ -90,7 +87,7 @@ public class TarifaTasaUnicaDefinitions {
     @Given("que tengo una cotizacion <cotizacion>")
     public void givenIrALaCotizacion(@Named("cotizacion") String cotizacion) {
         cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
-        commonMethodsSteps.copiarEnvio();
+        tasaUnicaSteps.verificarEstadoDelEnvio(cotizacion);
     }
 
     @Given("vaya a agregar el vehiculo con los datos: $datosVehiculo")
