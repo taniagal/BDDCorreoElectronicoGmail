@@ -95,7 +95,7 @@ public class CotizacionDePolizaDefinitions {
 
     @When("la cotizacion tenga intencion de financiacion")
     public void ingresarACotizacionFinanciada(){
-        cotizacionDePolizaSteps.ingresarACotizacion();
+        cotizacionDePolizaSteps.validarCargueCotizacion();
     }
 
     @Then("debo ver la siguiente informacion $informacionCotizacion")

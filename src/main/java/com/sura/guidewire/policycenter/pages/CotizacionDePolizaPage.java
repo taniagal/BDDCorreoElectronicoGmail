@@ -225,4 +225,10 @@ public class CotizacionDePolizaPage extends PageUtil {
         MatcherAssert.assertThat("Error en el valor de la cuota, expected '"+valorCuota+"' but was: "+campoValorCuota.getText(),campoValorCuota.getText().contains(valorCuota));
         MatcherAssert.assertThat(campoNumeroCuotas.getText(), Is.is(Matchers.equalTo(numeroCuotas)));
     }
+
+    public void validarCargueCotizacion() {
+        WebElementFacade labelCotizacion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']");
+        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();
+        MatcherAssert.assertThat(labelCotizacion.getText(), Matchers.is(Matchers.equalTo("Cotización")));
+    }
 }
