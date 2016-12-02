@@ -128,7 +128,7 @@ Then en revision de poliza deben estar en estado <estadodos> las siguientes opci
 
 Examples:
 | numSubscripcion | rolUsuario | estadodos  |
-| 0011742328       | Asesor     | No visible |
+| 33344336       | Asesor     | No visible |
 
 
 Scenario: 7 Validacion de campos en menu lateral de poliza principal expedida
