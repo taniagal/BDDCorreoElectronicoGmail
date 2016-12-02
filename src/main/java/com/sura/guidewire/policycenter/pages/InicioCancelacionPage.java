@@ -50,7 +50,8 @@ public class InicioCancelacionPage extends PageUtil {
     public void inicioCancelacion() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilEnabled().waitUntilClickable();
         btnAcciones.click();
-        btnCancelarPoliza.click();
+        waitUntil(WAIT_TIME_3000);
+        btnCancelarPoliza.waitUntilClickable().click();
     }
 
     public void ingresarFechaRetroactiva() {
@@ -76,9 +77,9 @@ public class InicioCancelacionPage extends PageUtil {
         String cadenaAux = "Financiación cancelación por";
         selectItem(txtMotivo, cadenaAux);
         waitUntil(WAIT_TIME_1000);
+        withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(txtFechaVigenciaCancelacion);
         String fecha = calculaEmisionAnticipada61Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
-        txtFechaVigenciaCancelacion.click();
         txtFechaVigenciaCancelacion.sendKeys(fecha);
         txtDescripMotivo.click();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensaje).waitUntilPresent();
