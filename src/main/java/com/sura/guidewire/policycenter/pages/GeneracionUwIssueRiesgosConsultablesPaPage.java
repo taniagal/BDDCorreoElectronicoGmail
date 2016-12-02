@@ -13,11 +13,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil{
-
-    /*@FindBy(xpath = ".//*[@id='SubmissionWizard:RiskAnalysis']/div")
-    private WebElementFacade analisisRiesgoExpedicion;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:RiskAnalysis']/div/span")
-    private WebElementFacade analisisRiesgoModificacion;*/
+    
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']")
     private WebElementFacade grupoUWIssues;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']")
