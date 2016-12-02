@@ -88,7 +88,7 @@ public class InspeccionVehiculoDefinitions {
 
     @Then("validar la solicitud de requisitos <requisitos>")
     public void validarSolicitudRequisitos(@Named("requisitos") String requisitos){
-        expedicionDePolizaSteps.validarMensajeRequisitos(requisitos;
+        expedicionDePolizaSteps.validarMensajeRequisitos(requisitos);
     }
 
     @SuppressWarnings("EmptyMethod")
