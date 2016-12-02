@@ -86,9 +86,9 @@ public class InspeccionVehiculoDefinitions {
         inspeccionVehiculoSteps.validar_Cotizacion_Expedida();
     }
 
-    @Then("validar la solicitud de requisitos")
-    public void validarSolicitudRequisitos(){
-        expedicionDePolizaSteps.validarMensajeRequisitos();
+    @Then("validar la solicitud de requisitos <requisitos>")
+    public void validarSolicitudRequisitos(@Named("requisitos") String requisitos){
+        expedicionDePolizaSteps.validarMensajeRequisitos(requisitos);
     }
 
     @SuppressWarnings("EmptyMethod")
