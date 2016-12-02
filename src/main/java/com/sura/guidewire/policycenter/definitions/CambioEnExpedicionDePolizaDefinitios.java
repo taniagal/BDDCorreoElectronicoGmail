@@ -31,24 +31,24 @@ public class CambioEnExpedicionDePolizaDefinitios {
 
     @When("cuando vaya expedir el cambio de una poliza")
     public void expedirCambioDePoliza(){
-        cambioEnExpedicionDePolizaSteps.clic_en_expedir_poliza();
+        cambioEnExpedicionDePolizaSteps.clicEnExpedirPoliza();
     }
 
     @When("confirmo el mensaje de expedir cambio de poliza")
     public void confirmarMensajeDeExpedirPoliza() {
-        cambioEnExpedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion();
+        cambioEnExpedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
     }
 
     @Then("debe mostrar el resumen de la poliza expedida con la informacion del cambio <infoCambio>, poliza <infoPoliza>,  escritorio <escritorio>")
     public void confirma (@Named("infoCambio")String infoCambio,
                           @Named("infoPoliza")String infoPoliza,
                           @Named("escritorio")String escritorio){
-        cambioEnExpedicionDePolizaSteps.validar_resumen_de_la_poliza_expedida(infoCambio, infoPoliza, escritorio);
+        cambioEnExpedicionDePolizaSteps.validarResumenDeLaPolizaExpedida(infoCambio, infoPoliza, escritorio);
     }
 
     @Then("cancelo el mensaje de expedir cambio de poliza")
     public void cancelarMensajeDeExpedirPoliza() {
-        cambioEnExpedicionDePolizaSteps.clic_en_cancelar_del_mensaje_de_confirmacion();
+        cambioEnExpedicionDePolizaSteps.clicEnCancelarDelMensajeDeConfirmacion();
     }
 
 }

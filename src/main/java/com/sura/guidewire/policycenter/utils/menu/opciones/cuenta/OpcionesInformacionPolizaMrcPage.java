@@ -436,14 +436,14 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 String mensaje = menus.get("OPCIONES_MENU");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
-                MatcherAssert.assertThat("Alguno de los campos no es visible",
-                        elementoMenu.isVisible());
+                MatcherAssert.assertThat("Alguno de los campos no es visible", elementoMenu.isVisible());
             } else if (estadodos.contains("No visible")) {
                 String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
-                MatcherAssert.assertThat("Alguno de los campos es visible",
-                        !elementoMenu.isVisible());
+                setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
+                MatcherAssert.assertThat("Alguno de los campos es visible", !elementoMenu.isVisible());
+                resetImplicitTimeout();
             }
         }
     }
