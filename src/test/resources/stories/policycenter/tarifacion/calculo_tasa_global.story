@@ -30,4 +30,4 @@ Then debo poder ver el mensaje de bloqueo <mensaje>
 
 Examples:
 |departamento|ciudad  |direccion        |descripcion  |actividad                    |valor |mensaje                                                             |
-|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|0,0005|El valor ingresado no esta permitido ya que no cumple con el RT y RA|
+|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|0,05|El valor ingresado no esta permitido ya que no cumple con el RT y RA|
