@@ -15,7 +15,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -237,8 +236,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionarOpcionCotizar() {
-        waitUntil(WAIT_TIME_5000);
-        lblCotizar.click();
         waitUntil(WAIT_TIME_3000);
         lblCotizar.waitUntilClickable().click();
         waitForTextToAppear("Cotización");
@@ -374,13 +371,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         noPresente = concatenarElementoNoPresente(lblNumeroTelefono, "Label errado: Teléfono|", noPresente);
         noPresente = concatenarElementoNoPresente(lblDireccion, "radio boton: No esta present|", noPresente);
         noPresente = concatenarElementoNoPresente(inputReaseguroEspecial, "Label errado: Dirección de la poliza|v|", noPresente);
-        noPresente = concatenarElementoDiferente("", inputTipoDocumento.getText(), "salida errada: Tipo cedula|", noPresente);
-        noPresente = concatenarElementoDiferente("", inputNumeroDocumento.getText(), "salida errada: Numero cedula|", noPresente);
-        noPresente = concatenarElementoDiferente("", inputNumeroTelefono.getText(), "salida errada: Telefono|", noPresente);
-        noPresente = concatenarElementoDiferente("", inputDireccion.getText(), "salida errada: Direccion|", noPresente);
-        noPresente = concatenarElementoDiferente("", inputReaseguroEspecial.getText(), "radio boton: No esta present|", noPresente);
-
-
         if (!"Fecha inicio de vigencia".equals(lblFechaVigencia.getText())) {
             noPresente.append("salida errada: Fecha inicio de vigencia|");
         }
@@ -436,7 +426,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
-
     public void validarCampos(String estadouno, String estadodos, ExamplesTable menusesperados, String pathinicial, String pathfinal) {
         WebElementFacade elementoMenu;
         Map<String, String> menus;
@@ -448,8 +437,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
                 MatcherAssert.assertThat("Alguno de los campos no es visible", elementoMenu.isVisible());
-                MatcherAssert.assertThat("Alguno de los campos no es visible",
-                        elementoMenu.isVisible());
             } else if (estadodos.contains("No visible")) {
                 String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
                 xpathMenu = pathinicial + mensaje + pathfinal;
