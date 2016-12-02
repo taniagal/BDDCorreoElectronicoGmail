@@ -235,8 +235,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionarOpcionCotizar() {
-        waitUntil(WAIT_TIME_3000);
-        lblCotizar.waitUntilClickable().click();
+        waitUntil(WAIT_TIME_5000);
+        lblCotizar.click();
         waitForTextToAppear("Cotización");
     }
 
@@ -416,6 +416,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         resetImplicitTimeout();
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
+
 
     public void validarCampos(String estadouno, String estadodos, ExamplesTable menusesperados, String pathinicial, String pathfinal) {
         WebElementFacade elementoMenu;

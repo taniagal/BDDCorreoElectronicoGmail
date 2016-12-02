@@ -98,7 +98,6 @@ public class Poliza {
 
         guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
 
-        assertThat(esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), Is.is(Matchers.equalTo(true)));
 
 
     }
