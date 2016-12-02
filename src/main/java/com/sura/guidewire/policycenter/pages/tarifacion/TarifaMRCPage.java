@@ -238,9 +238,9 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void verificarValorIva() {
-        primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, 10).replace(".", ""));
-        int iva = (int) (primaTotal * 0.16 + 0.28);
+        primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, 8).replace(".", ""));
+        int iva = (int) (primaTotal * 0.16 + 1);
         MatcherAssert.assertThat("Error en el calculo del valor del IVA , was: " + campoIva.getText(),
-                campoIva.getText().substring(1, 8).replace(".", "").equals(Integer.toString(iva)));
+                campoIva.getText().substring(1, 7).replace(".", "").equals(Integer.toString(iva)));
     }
 }

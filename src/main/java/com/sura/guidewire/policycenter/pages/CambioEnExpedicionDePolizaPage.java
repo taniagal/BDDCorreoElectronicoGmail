@@ -8,25 +8,24 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class CambioEnExpedicionDePolizaPage extends PageUtil{
     @FindBy(xpath=".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange']")
     WebElementFacade botonExpedirPoliza;
-
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
-
     @FindBy(xpath = ".//a[contains(.,'Cancelar')]")
     WebElementFacade botonCancelarMensaje;
-
     @FindBy(xpath = ".//label[@id='JobComplete:JobCompleteScreen:Message']")
     WebElementFacade campoInformacionCambio;
-
     @FindBy(xpath = ".//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
     WebElementFacade campoVerPoliza;
-
     @FindBy(xpath = ".//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToDesktop-inputEl']")
     WebElementFacade campoIrAlEscritorio;
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
+    WebElementFacade msjAdvertenciaCaja;
 
     public CambioEnExpedicionDePolizaPage(WebDriver driver){
         super(driver);
@@ -41,6 +40,9 @@ public class CambioEnExpedicionDePolizaPage extends PageUtil{
         botonAceptarMensaje.waitUntilVisible();
         botonAceptarMensaje.click();
         waitUntil(WAIT_TIME_1000);
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(msjAdvertenciaCaja).waitUntilVisible();
+        botonExpedirPoliza.click();
+        botonAceptarMensaje.click();
     }
 
     public void validarResumenDeLaPolizaExpedida(String infoCambio, String infoPoliza, String escritorio) {
@@ -49,7 +51,6 @@ public class CambioEnExpedicionDePolizaPage extends PageUtil{
         MatcherAssert.assertThat(campoVerPoliza.getText(), Is.is(Matchers.containsString(infoPoliza)));
         MatcherAssert.assertThat(campoIrAlEscritorio.getText(), Is.is(Matchers.equalTo(escritorio)));
     }
-
 
     public void cancelarExpedirPoliza() {
         botonCancelarMensaje.waitUntilVisible();

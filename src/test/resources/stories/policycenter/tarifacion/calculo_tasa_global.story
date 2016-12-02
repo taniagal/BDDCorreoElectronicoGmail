@@ -12,11 +12,11 @@ Como usuario de policy center
 Al cotizar una poliza de MRC quiero ser capaz de registrar toda la información del riesgo.
 
 
-Scenario:  Validar valor de la tasa global en na cotizacion de MRC
+Scenario:  Validar valor de la tasa global en una cotizacion de MRC
 GivenStories: stories/policycenter/login_policy.story
 
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto               |canal            |
+|cuenta     |organizacion       |producto               |canal            |
 |C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -29,5 +29,5 @@ Then debo poder ver el mensaje de bloqueo <mensaje>
 
 
 Examples:
-|departamento|ciudad  |direccion        |descripcion  |actividad                    |valor|mensaje                                                             |
-|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|0,5  |El valor ingresado no esta permitido ya que no cumple con el RT y RA|
+|departamento|ciudad  |direccion        |descripcion  |actividad                    |valor |mensaje                                                             |
+|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|0,05|El valor ingresado no esta permitido ya que no cumple con el RT y RA|

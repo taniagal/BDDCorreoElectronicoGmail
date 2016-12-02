@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.steps;
 
+import com.sura.guidewire.policycenter.pages.CotizacionMRCPage;
 import com.sura.guidewire.policycenter.pages.ExpedicionDePolizaPage;
 import com.sura.guidewire.policycenter.pages.PanelSurEspacioDeTrabajoPage;
 import net.thucydides.core.annotations.Step;
@@ -10,15 +11,21 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
 
     ExpedicionDePolizaPage expedicionDePolizaPage;
     PanelSurEspacioDeTrabajoPage panelSurEspacioDeTrabajoPage;
+    CotizacionMRCPage cotizacionMRCPage;
+
 
     @Step
     public void navegar_barra_superior(String cotizacion) {
-        expedicionDePolizaPage.irABuscarCotizacion(cotizacion);
+        cotizacionMRCPage.irABuscarCotizacion(cotizacion);
     }
 
     @Step
     public void clic_en_expedir_poliza() {
         expedicionDePolizaPage.expedirPoliza();
+    }
+    @Step
+    public void clic_en_ver_cotizacion(){
+        expedicionDePolizaPage.ingresarVerCotizacion();
     }
 
     @Step
@@ -54,7 +61,7 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarMensajeRequisitos() {
-        expedicionDePolizaPage.validarMensajeRequisitos();
+    public void validarMensajeRequisitos(String requisitos) {
+        expedicionDePolizaPage.validarMensajeRequisitos(requisitos);
     }
 }

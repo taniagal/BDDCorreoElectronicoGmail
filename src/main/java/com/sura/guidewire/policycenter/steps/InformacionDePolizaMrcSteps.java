@@ -45,6 +45,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     @Step
     public void valida_datos_del_tomador(String tomador) {
         opcionesInformacionPolizaMrcPage.validaNombreTomador(tomador);
+        opcionesInformacionPolizaMrcPage.validarValoresDeCampos();
         opcionesInformacionPolizaMrcPage.validaCamposPoliza();
     }
 
@@ -91,6 +92,11 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
+    public void seleccionar_opcion_cotizar(){
+        opcionesInformacionPolizaMrcPage.seleccionarOpcionCotizar();
+    }
+
+    @Step
     public void agrego_un_coaseguro(String tipoCo, ExamplesTable tablaaseguradoras) {
         opcionesInformacionPolizaMrcPage.agregarUnCoaseguro(tipoCo, tablaaseguradoras);
     }
@@ -103,6 +109,12 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     @Step
     public void validar_campos_inhabilitados() {
         opcionesInformacionPolizaMrcPage.noHabilitarNumeroDocumentoCoaseguro();
+    }
+    public void validar_campos(String estadouno,String estadodos,ExamplesTable menusesperados){
+        opcionesInformacionPolizaMrcPage.validarCamposMenuLateral(estadouno,estadodos,menusesperados);
+    }
+    public void validar_campos_informacion_poliza(String estadouno,String estadodos,ExamplesTable menusesperados){
+        opcionesInformacionPolizaMrcPage.validarCamposInformacionPoliza(estadouno,estadodos,menusesperados);
     }
 
     @Step
@@ -122,6 +134,10 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         opcionesInformacionPolizaMrcPage.seleccionarInformacionDePoliza();
     }
     @Step
+    public void ingresar_a_opcion_informacion_de_poliza(){
+        opcionesInformacionPolizaMrcPage.ingresarAInformacionDePoliza();
+    }
+    @Step
     public void seleccionar_poliza_tipo_no_reaseguro(){
         opcionesInformacionPolizaMrcPage.seleccionarTipoNoReaseguro();
     }
@@ -129,6 +145,10 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     @Step
     public void darClicEnAceptarDeCoaseuguro() {
         opcionesInformacionPolizaMrcPage.darClicEnAceptarDeCoaseuguro();
+    }
+
+    public void validarCamposNoEditablesEnInformacionDePoliza(){
+        opcionesInformacionPolizaMrcPage.validarcamposNoEditablesEnInformacionDePoliza();
     }
 }
 

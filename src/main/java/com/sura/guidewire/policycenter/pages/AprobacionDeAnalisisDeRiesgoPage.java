@@ -6,6 +6,8 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:RiskAnalysis']/div")
@@ -20,6 +22,8 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     private WebElementFacade botonExpedirPoliza;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton']")
     private WebElementFacade botonBorrar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:ViewQuote']/div")
+    private WebElementFacade menuItemCotizacion;
 
     public AprobacionDeAnalisisDeRiesgoPage(WebDriver driver) {
         super(driver);
@@ -37,6 +41,10 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPoliza() {
+        setImplicitTimeout(3, TimeUnit.SECONDS);
+        if (!botonExpedirPoliza.isPresent()){
+            clickElement(menuItemCotizacion);
+        }
         waitFor(botonExpedirPoliza);
         botonExpedirPoliza.click();
         waitFor(botonAceptarMensaje);

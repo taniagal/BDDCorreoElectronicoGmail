@@ -96,13 +96,8 @@ public class Poliza {
     public void dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar(@Named("numSubscripcion") String numSubscripcion) {
         LOGGER.info("Poliza.dadoQueEstoyEnLaInformacionDeLaPolizaConNumeroDeSubscripcionQueDeseoCambiar");
 
-        // TODO: 27/07/2016 Capturar el rol desde el gherkin en i am Asesor
-        guidewireLogin.dadoQueAccedoAPolicyCenterConRol("Asesor");
+        guidewire.irANavegacionSuperior().desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
 
-        guidewire.irANavegacionSuperior()
-                .desplegarMenuPoliza().consultarNumeroDeSubscripcion(numSubscripcion);
-
-        assertThat(esperoVerNumeroDeSubscripcionEnEnvio(numSubscripcion), Is.is(Matchers.equalTo(true)));
 
 
     }

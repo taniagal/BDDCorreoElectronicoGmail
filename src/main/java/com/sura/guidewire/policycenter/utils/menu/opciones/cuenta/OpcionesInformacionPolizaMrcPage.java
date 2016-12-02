@@ -37,6 +37,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade lblInformaPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
     WebElementFacade lblNuevaCotizacion;
+    @FindBy(xpath = "//a[contains(.,'Cotizar')]")
+    WebElementFacade lblCotizar;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade lblTabla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Name-inputEl']")
@@ -69,11 +71,11 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade itemTipoDocumento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
     WebElementFacade radioBotReaseguroEspecial;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-inputEl']")
     WebElementFacade lblTipoDocumento;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     WebElementFacade lblNumeroDocumento;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
     WebElementFacade lblNumeroTelefono;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:ChangePolicyAddressButton-labelEl']")
     WebElementFacade lblDireccion;
@@ -123,12 +125,19 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade botonAceptarCoaseguro;
 
 
-    private static String lblMensajesAlerta = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
+    private static String LBL_MENSAJE_ALERTA = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
     private static String LISTA_TIPO_BENEFICIARIO_UNO = "//div[contains(.,'Seguros Generales Suramericana S.A.') and contains(@class,'x-grid-cell-inner')]";
     private static String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
+    private static String LBL_MENU_LATERAL_INICIAL = ".//td[contains(@id,'SubmissionWizard') and contains(.,'";
+    private static String LBL_MENU_LATERAL_FINAL = "')]";
+    private static String LBL_INFORMACION_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV')]/td/div";
+    private static String LINK_MENU_LATERAL_INICIAL = ".//a[contains(@id,'SubmissionWizard') and contains(.,'";
+    private static String LINK_MENU_LATERAL_FINAL = "')]";
     private boolean esVisible;
+    public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
+
 
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
         super(driver);
@@ -166,10 +175,11 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         btnSiguinete.waitUntilVisible().waitUntilClickable().click();
     }
 
-    public void seleccionBotonSiguiente()    {
+    public void seleccionBotonSiguiente() {
         btnSiguinete.click();
     }
-    public void seleccionBotonSiguienteenCambioDePoliza()    {
+
+    public void seleccionBotonSiguienteenCambioDePoliza() {
         btnNoReaseguroEspecial.click();
         waitUntil(WAIT_TIME_5000);
         btnSiguineteCambioDePoliza.click();
@@ -177,7 +187,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         waitForTextToAppear("Edificios y ubicaciones");
     }
 
-    public void seleccionBotonSiguienteenRenovacionDePoliza()    {
+    public void seleccionBotonSiguienteenRenovacionDePoliza() {
         waitUntil(WAIT_TIME_5000);
         btnSiguineteRenovacionDePoliza.click();
     }
@@ -225,6 +235,12 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         }
     }
 
+    public void seleccionarOpcionCotizar() {
+        waitUntil(WAIT_TIME_3000);
+        lblCotizar.waitUntilClickable().click();
+        waitForTextToAppear("Cotización");
+    }
+
     public Integer encontrarProducto(String producto) {
         withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
         Integer filaBoton = 0;
@@ -239,11 +255,17 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         return filaBoton;
     }
 
-    public void seleccionarInformacionDePoliza(){
+    public void seleccionarInformacionDePoliza() {
         lblInformaPolizaEnRenovacion.click();
         waitForTextToAppear("Información de póliza");
     }
-    public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras){
+
+    public void ingresarAInformacionDePoliza() {
+        menuItemInformacionDePoliza.click();
+        waitForTextToAppear("Información de póliza");
+    }
+
+    public void agregarUnCoaseguro(String tipoCo, ExamplesTable tablaaseguradoras) {
         waitFor(WAIT_TIME_3).second();
         menuItemInformacionDePoliza.click();
         divMensaje.waitUntilPresent();
@@ -251,10 +273,9 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         agregarCoaseguro.waitUntilPresent().click();
         seleccionarElTipoDeCoaseguro(tipoCo);
         agregoLasAseguradoras(tablaaseguradoras);
-
-
-
     }
+
+
     public void seleccionarElTipoDeCoaseguro(String tipoCoaseguro) {
         waitUntil(WAIT_TIME_1000);
         if ("Cedido".equals(tipoCoaseguro)) {
@@ -269,14 +290,15 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
             }
         }
     }
-    public void agregoLasAseguradoras(ExamplesTable tablaaseguradoras){
+
+    public void agregoLasAseguradoras(ExamplesTable tablaaseguradoras) {
 
         Map<String, String> asegurados;
         Actions act = new Actions(getDriver());
         for (int i = 0; i < tablaaseguradoras.getRowCount(); i++) {
             asegurados = tablaaseguradoras.getRows().get(i);
-            if(i==0){
-                if(!"Seguros Generales Suramericana S.A.".equals(asegurados.get("ASEGURADORA"))) {
+            if (i == 0) {
+                if (!"Seguros Generales Suramericana S.A.".equals(asegurados.get("ASEGURADORA"))) {
                     desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO_UNO, asegurados.get("ASEGURADORA"));
                 }
                 waitFor(WAIT_TIME_2).second();
@@ -285,8 +307,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
-            }else {
-                desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO,asegurados.get("ASEGURADORA"));
+            } else {
+                desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO, asegurados.get("ASEGURADORA"));
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
@@ -303,9 +325,9 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         }
     }
 
-    public List<String> obtenerMensajesDeTrabajoCoaseguro(){
+    public List<String> obtenerMensajesDeTrabajoCoaseguro() {
         List<String> mensajesEspacioDeTrabajo = new ArrayList<>();
-        for (WebElementFacade mensaje : findAll(lblMensajesAlerta)){
+        for (WebElementFacade mensaje : findAll(LBL_MENSAJE_ALERTA)) {
             mensajesEspacioDeTrabajo.add(mensaje.getText());
         }
         return mensajesEspacioDeTrabajo;
@@ -322,7 +344,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         MatcherAssert.assertThat("el al mostrar nombre completo", nombreCompleto.equals(lblNombreCompleto.getText()));
     }
 
-    public void desplegarListaTipoAsegurado(String xPathAsegurado,String elemento){
+    public void desplegarListaTipoAsegurado(String xPathAsegurado, String elemento) {
         WebElementFacade listaTipoAsegurado = findBy(xPathAsegurado);
         listaTipoAsegurado.click();
         waitFor(WAIT_TIME_3);
@@ -349,12 +371,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         noPresente = concatenarElementoNoPresente(lblNumeroTelefono, "Label errado: Teléfono|", noPresente);
         noPresente = concatenarElementoNoPresente(lblDireccion, "radio boton: No esta present|", noPresente);
         noPresente = concatenarElementoNoPresente(inputReaseguroEspecial, "Label errado: Dirección de la poliza|v|", noPresente);
-        noPresente = concatenarElementoDiferente("", inputTipoDocumento.getText(), "salida errada: Tipo cedula|", noPresente);
-        noPresente = concatenarElementoDiferente("", inputNumeroDocumento.getText(), "salida errada: Numero cedula|", noPresente);
-        noPresente = concatenarElementoDiferente("", inputNumeroTelefono.getText(), "salida errada: Telefono|", noPresente);
-        noPresente = concatenarElementoDiferente("", inputDireccion.getText(), "salida errada: Direccion|", noPresente);
-        noPresente = concatenarElementoDiferente("", inputReaseguroEspecial.getText(), "radio boton: No esta present|", noPresente);
-        
         if (!"Fecha inicio de vigencia".equals(lblFechaVigencia.getText())) {
             noPresente.append("salida errada: Fecha inicio de vigencia|");
         }
@@ -372,6 +388,20 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
             res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
         }
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
+    }
+
+    public void validarValoresDeCampos() {
+        StringBuilder valor = new StringBuilder(MSJVALIDARVALORES);
+        valor = concatenarElementoDiferente("CEDULA DE CIUDADANIA", inputTipoDocumento.getText(), "Tipo cedula|", valor);
+        valor = concatenarElementoDiferente("1234567891", inputNumeroDocumento.getText(), " Numero cedula|", valor);
+        valor = concatenarElementoDiferente("408-2211", inputNumeroTelefono.getText(), " Telefono|", valor);
+        valor = concatenarElementoDiferente("CRA 65 # 48-162, MEDELLIN, Colombia", inputDireccion.getText(), " Direccion|", valor);
+
+        String res = valor.toString();
+        if (MSJVALIDARVALORES.equals(res)) {
+            res = valor.toString().substring(0, valor.toString().length() - 1);
+        }
+        MatcherAssert.assertThat(res, "No estan correctos los valores".equals(res));
     }
 
     public void validaMensajeEnPantalla(String mensaje) {
@@ -396,7 +426,45 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
-    public void seleccionarTipoNoReaseguro(){
+    public void validarCampos(String estadouno, String estadodos, ExamplesTable menusesperados, String pathinicial, String pathfinal) {
+        WebElementFacade elementoMenu;
+        Map<String, String> menus;
+        String xpathMenu;
+        for (int i = 0; i < menusesperados.getRowCount(); i++) {
+            menus = menusesperados.getRows().get(i);
+            if (estadouno.contains("Visible") && menus.get("OPCIONES_MENU") != null) {
+                String mensaje = menus.get("OPCIONES_MENU");
+                xpathMenu = pathinicial + mensaje + pathfinal;
+                elementoMenu = findBy(xpathMenu);
+                MatcherAssert.assertThat("Alguno de los campos no es visible", elementoMenu.isVisible());
+            } else if (estadodos.contains("No visible")) {
+                String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
+                xpathMenu = pathinicial + mensaje + pathfinal;
+                elementoMenu = findBy(xpathMenu);
+                setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
+                MatcherAssert.assertThat("Alguno de los campos es visible", !elementoMenu.isVisible());
+                resetImplicitTimeout();
+            }
+        }
+    }
+
+    public void validarCamposNoEditables(String elementos) {
+        List<WebElementFacade> listaElementos = findAll(By.xpath(elementos));
+        for (WebElementFacade listaElemento : listaElementos) {
+            MatcherAssert.assertThat("El campo " + listaElemento.getTagName() + "es editable, lo cual es un error.Verificar",
+                    !listaElemento.getAttribute("class").contains("x-form-text") || !listaElemento.getAttribute("class").contains("x-form-text"));
+        }
+    }
+
+    public void validarCamposMenuLateral(String estadouno, String estadodos, ExamplesTable menusesperados) {
+        validarCampos(estadouno, estadodos, menusesperados, LBL_MENU_LATERAL_INICIAL, LBL_MENU_LATERAL_FINAL);
+    }
+
+    public void validarCamposInformacionPoliza(String estadouno, String estadodos, ExamplesTable menusesperados) {
+        validarCampos(estadouno, estadodos, menusesperados, LINK_MENU_LATERAL_INICIAL, LINK_MENU_LATERAL_FINAL);
+    }
+
+    public void seleccionarTipoNoReaseguro() {
         btnNoReaseguroEspecial.click();
         waitUntil(WAIT_TIME_5000);
     }
@@ -414,8 +482,12 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
 
-
     public void darClicEnAceptarDeCoaseuguro() {
         botonAceptarCoaseguro.click();
+    }
+
+
+    public void validarcamposNoEditablesEnInformacionDePoliza() {
+        validarCamposNoEditables(LBL_INFORMACION_POLIZA);
     }
 }

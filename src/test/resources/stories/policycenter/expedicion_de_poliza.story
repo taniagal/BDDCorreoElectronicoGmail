@@ -62,10 +62,10 @@ Scenario: Validacion de resumen de la poliza al expedirla
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
-And valide la solicitud de requisitos
+And valide la solicitud de requisitos <requisitos>
 Then debe mostrar el resumen de la poliza expedida con la informacion de cotizacion <infoCotizacion>, poliza <infoPoliza>, administrador de contizaciones <admorCotizacion>, nueva cotizacion <nuevaCotizacion>, escritorio <escritorio>
 
 Examples:
-|cotizacion|infoCotizacion|infoPoliza|admorCotizacion|nuevaCotizacion|escritorio|
-|22222225|Ver cotización (N.° 22222225)|Ver póliza (N.°|Ir al administrador de cotizaciones para esta cuenta|Hacer una cotización para una cuenta diferente|Ir al escritorio|
-|22223226|Ver cotización (N.° 22223226)|Ver póliza (N.°|Ir al administrador de cotizaciones para esta cuenta|Hacer una cotización para una cuenta diferente|Ir al escritorio|
+|cotizacion |infoCotizacion                 |infoPoliza     |admorCotizacion                                        |nuevaCotizacion                                |escritorio         |requisitos                                         |
+|22222225   |Ver cotización (N.° 22222225)  |Ver póliza (N.°|Ir al administrador de cotizaciones para esta cuenta   |Hacer una cotización para una cuenta diferente |Ir al escritorio   |Existen requisitos pendientes, por favor verifique.|
+|22223226   |Ver cotización (N.° 22223226)  |Ver póliza (N.°|Ir al administrador de cotizaciones para esta cuenta   |Hacer una cotización para una cuenta diferente |Ir al escritorio   |Las restricciones del contrato de reaseguro deben ser validadas manualmente ya que ha indicado que la póliza tiene Fronting|

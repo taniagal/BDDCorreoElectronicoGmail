@@ -34,10 +34,14 @@ public class ExpedicionDePolizaDefinitions {
     public void confirmarMensajeDeExpedirPoliza() {
         expedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion();
     }
+    @When("ingrese a ver cotizacion de poliza expedida")
+    public void cuandoIngreseAVerCotizacionDePolizExpedida(){
+        expedicionDePolizaSteps.clic_en_ver_cotizacion();
+    }
 
-    @When("valide la solicitud de requisitos")
-    public void validarSolicitudRequisitos() {
-        expedicionDePolizaSteps.validarMensajeRequisitos();
+    @When("valide la solicitud de requisitos <requisitos>")
+    public void validarSolicitudRequisitos(@Named("requisitos") String requisitos) {
+        expedicionDePolizaSteps.validarMensajeRequisitos(requisitos);
     }
 
     @When("cancelo el mensaje <mensaje> de expedir poliza")

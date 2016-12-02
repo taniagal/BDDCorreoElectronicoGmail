@@ -11,22 +11,21 @@ Narrative:
 Como usuario de policyCenter
 Quiero poder procesar la cancelación de una póliza  de autos de manera manual.
 
-Scenario: Validar emision adelantada
-GivenStories: stories/policycenter/login_policy.story
-Given que existe una <poliza> y esta dentro de la vigencia
+Scenario: Validar underwrite cuando la fecha es mayor a la politica
+Meta: @lote2 @manual
+Given que existe una <poliza> no esta dentro de la vigencia
 When necesito iniciar la cancelacion
 And se ingrese la fecha con emision anticipada mayor a la politica
 And se empiece la cancelacion
 Then se debe mostrar un <mensaje> de advertencia en el formulario
-And debe permitir realizar la cancelacion
-And debe generar la autorizacion
 
 Examples:
 |poliza       |mensaje                                          |
 |TEST_22221241|Esta oferta necesita de aprobación del asegurador|
 
 Scenario: programar cancelacion
-Given que existe una <poliza> y esta dentro de la vigencia
+Meta: @lote2 @manual
+Given que existe una <poliza> y esta dentro de la vigencia en claims
 When necesito iniciar la cancelacion
 And se ingrese la fecha con emision anticipada mayor a la politica
 And se empiece la cancelacion
