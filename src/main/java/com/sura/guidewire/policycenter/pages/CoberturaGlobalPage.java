@@ -1,8 +1,12 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionDePagoPage;
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -46,6 +50,19 @@ public class CoberturaGlobalPage extends PageUtil {
     private WebElementFacade labelDescripcion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBlanketScreen:CPBlanketPanelSet:CPSuraBlanket:BlanketLocationLV-body']/*/table/tbody/tr[1]/td[2]")
     private WebElementFacade tablaUbicaciones;
+    @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
+    private WebElementFacade bttonAceptar;
+    @FindBy(xpath = ".//*[contains(@id,'CPBlanketSura_ExtPopup:DescriptionMasterPolicy-inputEl')]")
+    private WebElementFacade labelDescripcionCoberturaGlobal;
+
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage(getDriver());
+    private static String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_INICIAL = ".//div[contains(@id,'CPBlanketSura_ExtPopup') and contains(@id,'CoverageInputSet:CovPatternInputGroup-legendTitle') and contains(.,'";
+    private static String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_FINAL = "')]";
+    private static String LBL_PESTAÑA_COBERTURAS_INICIAL= "//label[contains(.,'";
+    private static String LBL_PESTAÑA_COBERTURAS_FINAL = "')]";
+    private static String LBL_OPCION_COBERTURA_GLOBAL_INICIAL= "//span[contains(.,'";
+    private static String LBL_OPCION_COBERTURA_GLOBAL_FINAL = "')]";
+
 
 
     public CoberturaGlobalPage(WebDriver driver) {
@@ -53,19 +70,37 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void irACoberturasGlobales() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent();
+        clickElement(menuItemCoberturaGlobal);
     }
 
-    public void navegarPorCobertura(String descripcion, String tipoCobertura){
+    public void navegarPorCobertura(String descripcion, String tipoCobertura) {
         botonAgregarCoberturaGeneral.waitUntilPresent().click();
         waitFor(campoTxtDescripcion).sendKeys(descripcion);
         selectItem(comboBoxTipoCobertura, tipoCobertura);
         waitUntil(WAIT_TIME_1000);
     }
+
+    public void ingresarAgregarCoberturaGlobal() {
+        botonAgregarCoberturaGeneral.waitUntilPresent().click();
+    }
+
+    public void validarCamposAgregarCobertura(String estadouno, String estadodos, ExamplesTable menusesperados) {
+        opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_INICIAL, LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_FINAL);
+    }
+
+    public void validarCamposPestañaCoberturas(String estadouno, String estadodos, ExamplesTable menusesperados) {
+        opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_PESTAÑA_COBERTURAS_INICIAL, LBL_PESTAÑA_COBERTURAS_FINAL);
+    }
+
+    public void validarCamposCoberturasGlobales(String estadouno, String estadodos, ExamplesTable menusesperados){
+        opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_OPCION_COBERTURA_GLOBAL_INICIAL, LBL_OPCION_COBERTURA_GLOBAL_FINAL);
+    }
+
     public void agregarCoberturasGlobales(ExamplesTable datosCobertura) {
         Map<String, String> dato = datosCobertura.getRow(0);
         navegarPorCobertura(dato.get("descripcion"), dato.get("tipo_cobertura"));
-        if("Multiples ubicaciones".equals(dato.get("tipo_cobertura"))) {
+        if ("Multiples ubicaciones".equals(dato.get("tipo_cobertura"))) {
             cargarMultiplesUbicaciones(dato.get("valor"));
         } else if ("Una cobertura".equals(dato.get("tipo_cobertura"))) {
             cargarCoberturaUnica(dato.get("nombre_cobertura"), dato.get("valor"));
@@ -99,7 +134,7 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void verificarUbicacionesCubiertas() {
-        waitFor(ExpectedConditions.textToBePresentInElement(tablaUbicaciones,"CRA 65 # 48-162"));
+        waitFor(ExpectedConditions.textToBePresentInElement(tablaUbicaciones, "CRA 65 # 48-162"));
         MatcherAssert.assertThat("Error al Agregar la ubicacion, la tabla de ubicaciones agregadas está vacía", tablaUbicaciones.containsText("CRA 65 # 48-162"));
     }
 
@@ -113,7 +148,15 @@ public class CoberturaGlobalPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
     }
 
+    public void seleccionarBotonAceptar(){
+        bttonAceptar.waitUntilClickable().click();
+    }
+    public void ingresarDescripcionDetalleCoberturaGlobal(String descripcion){
+        waitFor(WAIT_TIME_2);
+        labelDescripcionCoberturaGlobal.sendKeys(descripcion);
+    }
+
     public void verificarMensajeError(String mensaje) {
-        verificarMensaje(divMensaje,mensaje);
+        verificarMensaje(divMensaje, mensaje);
     }
 }

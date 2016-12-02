@@ -296,7 +296,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         String xpathTREntrada = XPATH2_PARTE1 + entrada + "') ]) and @class='x-form-item-input-row' ]";
         WebElementFacade inputValorEntrada = findBy(xpathTREntrada).find(By.tagName(INPUT));
         withAction().moveToElement(inputValorEntrada).perform();
-
         enter(valorEntrada).into(inputValorEntrada);
         inputValorEntrada.click();
         esperarAQueElementoTengaValor(findBy(xpathTREntrada).find(By.tagName(INPUT)), valorEntrada);

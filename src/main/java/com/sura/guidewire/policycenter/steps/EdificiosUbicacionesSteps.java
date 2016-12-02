@@ -158,6 +158,16 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         }
     }
 
+    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String cobertura, String entrada, String valorEntrada, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
+        // Registro de tarea dinámica en el reporte de Serenity
+
+
+            seleccionarCoberturaDelRiesgo(cobertura);
+            edificiosyUbicacionesWidget.ingresarValorAEntrada(entrada, valorEntrada);
+
+
+    }
+
     private void seleccionarCoberturaDelRiesgo(String cobertura) {
         if (!edificiosyUbicacionesWidget.estaSeleccionadaCoberturaDeRiesgo(cobertura)) {
             edificiosyUbicacionesWidget.seleccionarCoberturaDelRiesgo(cobertura);

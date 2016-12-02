@@ -24,7 +24,8 @@ public class PolizaSteps extends GuidewireSteps {
     private static final int CONSTANTE_3 = 3;
     private static final int CONSTANTE_2 = 2;
 
-    @Steps private static BotonAccionesSteps botonAccionesSteps;
+    @Steps
+    private static BotonAccionesSteps botonAccionesSteps;
 
 
     @Step
@@ -33,7 +34,7 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     public Boolean esperoVerNumeroDeSubscripcionEnEnvio(String numeroSubscripcion) {
-        return polizaPage.obtenerEnvio().contains("Envío ".concat(numeroSubscripcion));
+        return polizaPage.obtenerEnvio(numeroSubscripcion).contains("Envío ".concat(numeroSubscripcion));
     }
 
     @Step
@@ -86,6 +87,7 @@ public class PolizaSteps extends GuidewireSteps {
         String xpathBttonCancelacion = "//a[contains(.,'Iniciar cancelación')]";
         getDriver().findElement(By.xpath(xpathBttonCancelacion)).click();
     }
+
     @Step
     public void seleccionarOpcionCompromiso() {
         waitFor(CONSTANTE_2).seconds();
@@ -94,17 +96,19 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
-    public void seleccionarOpcionCierre(){
+    public void seleccionarOpcionCierre() {
         waitFor(CONSTANTE_2).second();
         String xpathBttonCierre = "//a[contains(.,'Opciones de cierre')]";
         getDriver().findElement(By.xpath(xpathBttonCierre)).click();
     }
+
     @Step
     public void seleccionarOpcionCancelarAhora() {
         waitFor(1).second();
         String xpathBttonCancelarAhora = "//a[contains(.,'Cancelar ahora')]";
         getDriver().findElement(By.xpath(xpathBttonCancelarAhora)).click();
     }
+
     @Step
     public void seleccionarOpcionRetirarTransaccion() {
         waitFor(1).second();
@@ -127,28 +131,31 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
-    public void confirmarCancelacion(){
+    public void confirmarCancelacion() {
         waitFor(CONSTANTE_5).seconds();
         String xpathBttonConfirmarCancelacion = ".//a[contains(@class, 'x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon') and contains(., 'Aceptar')]";
         getDriver().findElement(By.xpath(xpathBttonConfirmarCancelacion)).click();
     }
+
     @Step
-    public void confirmarRenovacion(){
+    public void confirmarRenovacion() {
         waitFor(CONSTANTE_2).second();
         String xpathBttonConfirmarRenovacion = "//a[contains(.,'Aceptar')]";
         getDriver().findElement(By.xpath(xpathBttonConfirmarRenovacion)).click();
     }
 
-    public String obtenerTituloPagina(){
-       return getDriver().findElement(By.xpath("//span[@id='JobComplete:JobCompleteScreen:ttlBar']")).getText();
+    public String obtenerTituloPagina() {
+        return getDriver().findElement(By.xpath("//span[@id='JobComplete:JobCompleteScreen:ttlBar']")).getText();
 
     }
+
     @Step
     public void seMuestraBloqueoCancelacionDePoliza(String mensaje) {
 
         MatcherAssert.assertThat(obtenerPolizaPage().obtenerTituloBloqueoCancelacionPoliza().getText(), Matchers.containsString(mensaje));
 
     }
+
     @Step
     public void seMuestraMensajeDeBeneficiarioOneroso(String mensaje) {
 
@@ -157,21 +164,21 @@ public class PolizaSteps extends GuidewireSteps {
     }
 
     @Step
-    public String validarMensaje(){
+    public String validarMensaje() {
         return getDriver().findElement(By.xpath(".//*[@id='StartCancellation:StartCancellationScreen:WarningMessageCancellation']")).getText();
     }
 
 
     @Step
     public void desplegarListaMotivosCancelacion() {
-          polizaPage.desplegarMotivosCancelacion();
+        polizaPage.desplegarMotivosCancelacion();
     }
 
-    public PolizaPage obtenerPolizaPage(){
+    public PolizaPage obtenerPolizaPage() {
         return this.polizaPage;
     }
 
-    public InstruccionesPreviasARenovacionPage obtenerInstruccionesPreviasPage(){
+    public InstruccionesPreviasARenovacionPage obtenerInstruccionesPreviasPage() {
         return this.instruccionesPreviasARenovacionPage;
     }
 
@@ -180,40 +187,47 @@ public class PolizaSteps extends GuidewireSteps {
         return obtenerPolizaPage().esFechaCancelacionHOY();
     }
 
-    public void ingresarFechaAnteriorA61Dias(){
+    public void ingresarFechaAnteriorA61Dias() {
         obtenerPolizaPage().ingresarFechaAnteriorA61Dias(obtenerPolizaPage().obtenerFechacancelacionElemento());
     }
-    public void ingresarFechaSuperior(){
+
+    public void ingresarFechaSuperior() {
         obtenerPolizaPage().ingresarFechaSuperior(obtenerPolizaPage().obtenerFechacancelacionElemento());
     }
-    public void validarcamposnoeditables(){
+
+    public void validarcamposnoeditables() {
         obtenerPolizaPage().esCamposAseguradorasCoasegurosEditables();
     }
 
     @Step
-    public void validarOpcionCancelarTransaccion(){
+    public void validarOpcionCancelarTransaccion() {
         String xpathBtnCancelarTransaccion = ".//a[contains(.,'Cancelar transacción')]";
         obtenerPolizaPage().validarBotones(xpathBtnCancelarTransaccion);
     }
+
     @Step
     public void validarOcultacionCampoFuente() {
         String xpathBtnCancelarTransaccion = ".//tr[contains(.,'Fuente')]";
         obtenerPolizaPage().validarBotones(xpathBtnCancelarTransaccion);
     }
+
     @Step
-    public void validarQueNoSeMuestreTipoEnTablaTransacciones(String tipo){
+    public void validarQueNoSeMuestreTipoEnTablaTransacciones(String tipo) {
         obtenerPolizaPage().validarTransaccionPendienteNoExistenteEnResumenPoliza(tipo);
     }
-    public void validarQueNoSeMuestreMensaje(){
+
+    public void validarQueNoSeMuestreMensaje() {
         String xpathMensajeCancelacionPendiente = ".//*[contains(.,'Esta póliza tiene Cancelación pendiente')]";
         obtenerPolizaPage().validarQueNoSeMuestreMensaje(xpathMensajeCancelacionPendiente);
     }
+
     @Step
-    public void verResumenDeLaPolizaExpedida(){
+    public void verResumenDeLaPolizaExpedida() {
         obtenerPolizaPage().ingresaraResumenDeLaPolizaExpedida();
     }
+
     @Step
-    public void ingresarAVerCoaseguros(){
+    public void ingresarAVerCoaseguros() {
         obtenerPolizaPage().ingresarOpcionMostrarCoaseguros();
     }
 }
