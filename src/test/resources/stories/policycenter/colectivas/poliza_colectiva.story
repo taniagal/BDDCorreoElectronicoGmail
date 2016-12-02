@@ -2,7 +2,7 @@ Poliza colectiva
 
 
 Meta:
-@lote4
+@lote2
 @Story CDSEG-4620 @Story CDSEG-4618
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata
@@ -145,7 +145,7 @@ And en cotizacion de poliza debe estar en estado <estadodos> las siguientes opci
 | Prima de póliza   |
 
 Examples:
-| numSubscripcion | rolUsuario | estadodos  |
+| numSubscripcion| rolUsuario | estadodos  |
 | 33344336       | Asesor     | No visible |
 
 
