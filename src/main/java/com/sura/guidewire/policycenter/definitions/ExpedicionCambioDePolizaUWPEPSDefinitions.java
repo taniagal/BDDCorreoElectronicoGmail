@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.definitions;
 import com.sura.guidewire.policycenter.steps.CotizacionMRCSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionCambioDePolizaUWPEPSSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
+import com.sura.guidewire.policycenter.steps.GeneracionUwIssueRiesgosConsultablesPaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -20,6 +21,9 @@ public class ExpedicionCambioDePolizaUWPEPSDefinitions {
 
     @Steps
     ExpedicionDePolizaSteps expedicionDePolizaSteps;
+
+    @Steps
+    GeneracionUwIssueRiesgosConsultablesPaSteps generacionUwIssueRiesgosConsultablesPaSteps;
 
     @Given("existe una cotizacion <numeroCotizacion>")
     public void irABuscarCotizacion(@Named("numeroCotizacion") String cotizacion){
@@ -60,13 +64,23 @@ public class ExpedicionCambioDePolizaUWPEPSDefinitions {
         expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
     }
 
-    @Then("mostrar el mensaje <mensaje> que devuelve el servicio")
-    public void validarMensaje(@Named("mensaje") String mensaje){
+    @Then("al ir a la opcion de analisis de riesgo")
+    public void irAAnalisisDeRiesgo(){
+        generacionUwIssueRiesgosConsultablesPaSteps.ir_A_Analisis_De_Riesgo();
+    }
+
+    @Then("mostrar el mensaje <validacion> que devuelve el servicio")
+    public void validarMensaje(@Named("validacion") String mensaje){
         expedicionCambioDePolizaUWPEPSSteps.validar_Mensaje_Que_Devuelve_El_Servicio_PEPS(mensaje);
     }
 
     @Then("concatenarlo con el texto $texto")
     public void concatenarMensaje(ExamplesTable texto){
         expedicionCambioDePolizaUWPEPSSteps.validar_Concatenacion_Mensaje(texto);
+    }
+
+    @Then("debo ver un UW issue para la figura indicada $mensaje")
+    public void validarUWIssuePEP(ExamplesTable mensaje){
+        generacionUwIssueRiesgosConsultablesPaSteps.validar_Que_Se_Genere_Uw_Issue(mensaje);
     }
 }

@@ -61,7 +61,7 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarMensajeRequisitos() {
-        expedicionDePolizaPage.validarMensajeRequisitos();
+    public void validarMensajeRequisitos(String requisitos) {
+        expedicionDePolizaPage.validarMensajeRequisitos(requisitos);
     }
 }

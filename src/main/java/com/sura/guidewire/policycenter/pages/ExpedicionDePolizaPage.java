@@ -195,8 +195,8 @@ public class ExpedicionDePolizaPage extends PageUtil {
         waitForTextToAppear("Riesgos");
     }
 
-    public void validarMensajeRequisitos() {
-        waitForTextToAppear("Existen requisitos pendientes, por favor verifique.", WAIT_TIME_30000);
+    public void validarMensajeRequisitos(String requisitos) {
+        waitForTextToAppear(requisitos, WAIT_TIME_30000);
         WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
         waitUntil(WAIT_TIME_5000);
