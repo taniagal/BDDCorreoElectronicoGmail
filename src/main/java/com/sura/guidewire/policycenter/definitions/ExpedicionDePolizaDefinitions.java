@@ -39,9 +39,9 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.clic_en_ver_cotizacion();
     }
 
-    @When("valide la solicitud de requisitos")
-    public void validarSolicitudRequisitos() {
-        expedicionDePolizaSteps.validarMensajeRequisitos();
+    @When("valide la solicitud de requisitos <requisitos>")
+    public void validarSolicitudRequisitos(@Named("requisitos") String requisitos) {
+        expedicionDePolizaSteps.validarMensajeRequisitos(requisitos);
     }
 
     @When("cancelo el mensaje <mensaje> de expedir poliza")
