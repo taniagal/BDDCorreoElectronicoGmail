@@ -12,6 +12,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -21,7 +22,8 @@ import static ch.lambdaj.Lambda.extract;
 import static ch.lambdaj.Lambda.on;
 
 public class PolizaPage extends GuidewirePage {
-
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
+    WebElementFacade headerEnvio;
 
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = "//a[contains(.,'Mostrar coaseguro')]";
@@ -46,7 +48,7 @@ public class PolizaPage extends GuidewirePage {
     public enum Opcion {
         LINK_EDIFICIOS_Y_UBICACIONES(".//*[@id='SubmissionWizard:LOBWizardStepGroup:CPBuildings']/div"),
         LINK_INFORMACION_DE_LA_POLIZA(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PolicyInfo']/div"),
-        ENVIO(".//*[contains(@id,'SubmissionWizard') and contains(@id,'_header_hd-textEl')]");
+        ENVIO(".//*[@id='SubmissionWizard:0_header_hd']");
         private String elemento;
 
         Opcion(String opcion) {
@@ -100,7 +102,6 @@ public class PolizaPage extends GuidewirePage {
     }
 
 
-
     public void editarTransaccion() {
         LOGGER.info("PolizaPage.editarTransaccion");
         WebElementFacade btnEditarTransaccion = null;
@@ -108,7 +109,7 @@ public class PolizaPage extends GuidewirePage {
 
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         try {
-            btnEditarTransaccion = withTimeoutOf(WAIT_TIME_1,TimeUnit.SECONDS).find(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
+            btnEditarTransaccion = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).find(Boton.EDITAR_TRANSACCION_DE_POLIZA.xpath()).waitUntilVisible();
         } catch (Exception e) {
             LOGGER.info("BOTON EDITAR TRANSACCION DE POLIZA NO VISUALIZADO : " + e);
         }
@@ -140,7 +141,7 @@ public class PolizaPage extends GuidewirePage {
             shouldBeVisible(opcion);
             opcion.waitUntilClickable().click();
             String xpathimgMensajesWarnig = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']//div//img[@class='warning_icon']";
-            setImplicitTimeout(WAIT_TIME_5,TimeUnit.SECONDS);
+            setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
             if (findBy(xpathimgMensajesWarnig).isVisible()) {
                 opcion.waitUntilClickable().click();
             }
@@ -155,11 +156,11 @@ public class PolizaPage extends GuidewirePage {
 
     }
 
-    public String obtenerEnvio() {
+    public String obtenerEnvio(String numeroSubscripcion) {
         LOGGER.info("InformacionPolizaPage.obtenerEnvio");
-        WebElementFacade envio = findBy(Opcion.ENVIO.xpath()).waitUntilVisible();
-        shouldBeVisible(envio);
-        return envio.getText();
+        headerEnvio.waitUntilPresent();
+        waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, numeroSubscripcion));
+        return headerEnvio.getText();
     }
 
     public Boolean esEditableElemento(String nombreElemento) {
@@ -223,6 +224,7 @@ public class PolizaPage extends GuidewirePage {
         findBy(xpathTextareaDescripcion).sendKeys(Keys.ENTER);
 
     }
+
     public void desplegarMotivosCancelacion() {
         String xpathDropdownInstruccion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:Reason-inputEl']";
         findBy(xpathDropdownInstruccion).waitUntilVisible().click();
@@ -233,15 +235,18 @@ public class PolizaPage extends GuidewirePage {
         listaMotivosWE = findBy(xpathMenuDesplegable).thenFindAll("//li");
         listaMotivos = extract(listaMotivosWE, on(WebElementFacade.class).getText());
     }
-    public List<String> obtenerMotivosDisponibles(){
-        return  this.listaMotivos;
+
+    public List<String> obtenerMotivosDisponibles() {
+        return this.listaMotivos;
     }
+
     public Boolean esFechaCancelacionHOY() {
 
         waitFor(xpathFechaVigenteCancelacion);
         waitFor(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathFechaVigenteCancelacion)));
         return esFechaPorDefectoHOY(obtenerFechacancelacionElemento());
     }
+
     public Boolean esFechaPorDefectoHOY(WebElementFacade fecha) {
         waitFor(fecha);
         if (LocalDate.now().isEqual(formatter.parseDateTime(fecha.getValue()).toLocalDate())) {
@@ -264,7 +269,7 @@ public class PolizaPage extends GuidewirePage {
         obtenerFechacancelacionElemento().sendKeys(Keys.TAB);
     }
 
-    public void ingresaraResumenDeLaPolizaExpedida(){
+    public void ingresaraResumenDeLaPolizaExpedida() {
         findBy(xpathVerPolizExpedida).click();
         waitForTextToAppear("Resumen");
     }
@@ -273,23 +278,28 @@ public class PolizaPage extends GuidewirePage {
         waitFor(WAIT_TIME_2).seconds();
         return findBy(xpathFechaVigenteCancelacion);
     }
-    public void validarBotones (String path){
-         findBy(path);
+
+    public void validarBotones(String path) {
+        findBy(path);
 
     }
-    public String obtenerMetodoDeReembolso(){
+
+    public String obtenerMetodoDeReembolso() {
         waitFor(WAIT_TIME_2).seconds();
         return findBy(xpathMetodoDeReembolso).getText();
     }
-    public WebElementFacade obtenerTituloBloqueoCancelacionPoliza(){
+
+    public WebElementFacade obtenerTituloBloqueoCancelacionPoliza() {
         return findBy(xpathMensajeBloqueoCancelacionPoliza);
 
     }
-    public WebElementFacade obtenerMensajeDeCancelacionPolizaConOneroso(){
+
+    public WebElementFacade obtenerMensajeDeCancelacionPolizaConOneroso() {
         return findBy(xpathMensajeDeCancelacionPolizaconOneroso);
 
     }
-    public void validarTransaccionPendienteNoExistenteEnResumenPoliza(String tipo){
+
+    public void validarTransaccionPendienteNoExistenteEnResumenPoliza(String tipo) {
         String xPathTablaTransacciones = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_JobsInProgressLV-body']";
         WebElementFacade tablaTransacciones = findBy(xPathTablaTransacciones);
         waitFor(tablaTransacciones);
@@ -297,15 +307,16 @@ public class PolizaPage extends GuidewirePage {
         String existeTransaccion = "No existe la póliza";
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if(tipo.equals(cells.get(WAIT_TIME_5).getText())){
+            if (tipo.equals(cells.get(WAIT_TIME_5).getText())) {
                 existeTransaccion = "Se encontró la póliza en las transacciones";
             }
         }
         MatcherAssert.assertThat("No existe la póliza", Is.is(Matchers.equalTo(existeTransaccion)));
     }
+
     public boolean esVisibleMensaje(String xpath) {
         boolean visible;
-        visible= findBy(xpath).isVisible();
+        visible = findBy(xpath).isVisible();
 
         return visible;
     }
@@ -357,15 +368,16 @@ public class PolizaPage extends GuidewirePage {
 
     public void esCamposAseguradorasCoasegurosEditables() {
 
-        MatcherAssert.assertThat(buscarInputHabilitadoEnElemento(xpathTablaCoasegurosAseguradosResumenPoliza),Is.is(false));
+        MatcherAssert.assertThat(buscarInputHabilitadoEnElemento(xpathTablaCoasegurosAseguradosResumenPoliza), Is.is(false));
 
     }
-    public void ingresarOpcionMostrarCoaseguros(){
+
+    public void ingresarOpcionMostrarCoaseguros() {
         findBy(xpathMostrarCoaseguros).click();
         waitForTextToAppear("Coaseguro");
     }
 
-    public void seleccionarBotonAcciones(){
+    public void seleccionarBotonAcciones() {
         String xpathLinkAcciones = "//span[contains(@id,'PolicyFile:PolicyFileMenuActions-btnInnerEl')]";
         WebElementFacade botonAcciones = findBy(xpathLinkAcciones);
         botonAcciones.waitUntilPresent().click();
