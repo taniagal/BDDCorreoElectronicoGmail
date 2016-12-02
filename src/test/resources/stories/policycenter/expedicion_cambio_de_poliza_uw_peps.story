@@ -1,6 +1,6 @@
 Expedicion Cambio De Poliza Uw Peps
 
-Meta: @lote4
+Meta: @lote2
 
 @issue #CDSEG-1252
 @tag automator: diego_cardona_acevedo
