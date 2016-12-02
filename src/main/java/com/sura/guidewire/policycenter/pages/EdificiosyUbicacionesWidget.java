@@ -214,7 +214,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void editartransacciondepoliza() {
-        waitUntil(WAIT_TIME_2000);
+        waitUntil(WAIT_TIME_5000);
         findBy(XPATH_EDITAR_TRANSACCION_POLIZA).waitUntilVisible().click();
         waitUntil(WAIT_TIME_2000);
         findBy(XPATH_ACEPTAR).click();
