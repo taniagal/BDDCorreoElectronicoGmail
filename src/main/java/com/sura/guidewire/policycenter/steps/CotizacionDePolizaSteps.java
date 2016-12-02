@@ -80,4 +80,9 @@ public class CotizacionDePolizaSteps extends ScenarioSteps  {
     public void mostrar_Valor_A_Pagar_Por_Cuota_Y_Numero_De_Cuotas(String valorCuota, String numeroCuotas) {
         cotizacionDePolizaPage.mostrarValorYCuotas(valorCuota, numeroCuotas);
     }
+
+    @Step
+    public void validarCargueCotizacion() {
+        cotizacionDePolizaPage.validarCargueCotizacion();
+    }
 }
