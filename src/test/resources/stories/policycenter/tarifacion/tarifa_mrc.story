@@ -26,8 +26,8 @@ And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
-|prima    |departamento|ciudad  |direccion        |descripcion  |actividad|
-|1.016.667|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|prima  |departamento|ciudad  |direccion        |descripcion  |actividad|
+|101.667|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 Scenario:  Tarifa MRC - Cobertura Terremoto en Caldas con deducible
@@ -44,8 +44,8 @@ And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
-|prima    |departamento|ciudad   |direccion        |descripcion  |actividad|
-|1.540.000|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|prima  |departamento|ciudad   |direccion        |descripcion  |actividad|
+|154.000|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 Scenario:  Tarifa MRC - Cobertura Terremoto en Caldas sin deducible
@@ -62,8 +62,8 @@ And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cotizacion
 
 Examples:
-|prima    |departamento|ciudad   |direccion        |descripcion  |actividad|
-|1.283.333|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|prima  |departamento|ciudad   |direccion        |descripcion  |actividad|
+|128.333|Caldas      |Manizales|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 Scenario: Tarifa MRC - Cobertura AMIT
@@ -80,5 +80,5 @@ And cotice el articulo
 Then debo poder ver el valor de la prima <prima> en la cobertura
 
 Examples:
-|prima    |departamento|ciudad  |direccion        |descripcion  |actividad|
-|53.509,00|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|prima|departamento|ciudad  |direccion        |descripcion  |actividad|
+|5.351|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|

@@ -21,45 +21,44 @@ public class TarifaTasaUnicaDefinitions {
     ValidacionesInformacionDeVehiculoSteps vehiculoSteps;
 
 
-
     @When("vaya a cargar el archivo con las tasas")
-    public void irAInformacionDePoliza(){
+    public void irAInformacionDePoliza() {
         //Empty Method
     }
 
     @When("realize una modificacion en el valor asegurado <valor_asegurado>")
-    public void cambiarInformacionDePolizaValorAsegurado(@Named("valor_asegurado") String valorAsegurado){
+    public void cambiarInformacionDePolizaValorAsegurado(@Named("valor_asegurado") String valorAsegurado) {
         tasaUnicaSteps.cambiarInfromacionDePoliza(valorAsegurado);
     }
 
     @When("realize una modificacion en los de datos del aseguradocon los datos nombre <primer_nombre> <segundo_nombre>, estado civil <estado_civil>")
     public void cambiarInformacionDePolizaBeneficiario(@Named("primer_nombre") String primerNombre,
-                                                       @Named("segundo_nombre") String segundoNombre,@Named("estado_civil") String estadoCivil){
-        tasaUnicaSteps.cambiarInfromacionDelAsegurado(primerNombre,segundoNombre,estadoCivil);
+                                                       @Named("segundo_nombre") String segundoNombre, @Named("estado_civil") String estadoCivil) {
+        tasaUnicaSteps.cambiarInfromacionDelAsegurado(primerNombre, segundoNombre, estadoCivil);
     }
 
     @Then("se debe tarifar con el esquema de tasa unica, generando cobro o devolucion de prima")
-    public void verificarTarifacion(){
+    public void verificarTarifacion() {
         tasaUnicaSteps.verificarCambioDeTarifa();
     }
 
     @Then("se debe tarifar con el esquema de tasa unica, sin generar cobro o devolucion de prima")
-    public void verificarTarifacionSinCambioEnCobro(){
+    public void verificarTarifacionSinCambioEnCobro() {
         tasaUnicaSteps.verificarNoCambioDeTarifa();
     }
 
     @Then("me deben aparecer las opciones de exportar el archivo")
-    public void verificarelementosExportacion(){
+    public void verificarelementosExportacion() {
         tasaUnicaSteps.verificarElementosExportacion();
     }
 
     @Then("debo poder verificar los datos de la poliza")
-    public void verificarDatosDePoliza(){
+    public void verificarDatosDePoliza() {
         tasaUnicaSteps.irAInformacionDePolizaExpedida();
     }
 
     @Then("las de importar el archivo")
-    public void verificarelementosImportacion(){
+    public void verificarelementosImportacion() {
         tasaUnicaSteps.verificarElementosImportacion();
     }
 
@@ -113,7 +112,7 @@ public class TarifaTasaUnicaDefinitions {
     }
 
     @Then("se debe tarifar con el esquema de tasa unica, generando el valor de la prima")
-    public void verificarTarifaRenovacion(){
+    public void verificarTarifaRenovacion() {
         tasaUnicaSteps.verificarRenovacionTarifa();
     }
 

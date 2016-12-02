@@ -72,11 +72,11 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade itemTipoDocumento;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
     WebElementFacade radioBotReaseguroEspecial;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:DocumentType-inputEl']")
     WebElementFacade lblTipoDocumento;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     WebElementFacade lblNumeroDocumento;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Phone:GlobalPhoneInputSet:PhoneDisplay-inputEl']")
     WebElementFacade lblNumeroTelefono;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:ChangePolicyAddressButton-labelEl']")
     WebElementFacade lblDireccion;
@@ -137,6 +137,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     private static String LINK_MENU_LATERAL_INICIAL = ".//a[contains(@id,'SubmissionWizard') and contains(.,'";
     private static String LINK_MENU_LATERAL_FINAL = "')]";
     private boolean esVisible;
+    public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
+
 
     public OpcionesInformacionPolizaMrcPage(WebDriver driver) {
         super(driver);
@@ -237,6 +239,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void seleccionarOpcionCotizar() {
         waitUntil(WAIT_TIME_5000);
         lblCotizar.click();
+        waitUntil(WAIT_TIME_3000);
+        lblCotizar.waitUntilClickable().click();
         waitForTextToAppear("Cotización");
     }
 
@@ -376,6 +380,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         noPresente = concatenarElementoDiferente("", inputDireccion.getText(), "salida errada: Direccion|", noPresente);
         noPresente = concatenarElementoDiferente("", inputReaseguroEspecial.getText(), "radio boton: No esta present|", noPresente);
 
+
         if (!"Fecha inicio de vigencia".equals(lblFechaVigencia.getText())) {
             noPresente.append("salida errada: Fecha inicio de vigencia|");
         }
@@ -393,6 +398,20 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
             res = noPresente.toString().substring(0, noPresente.toString().length() - 1);
         }
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
+    }
+
+    public void validarValoresDeCampos() {
+        StringBuilder valor = new StringBuilder(MSJVALIDARVALORES);
+        valor = concatenarElementoDiferente("CEDULA DE CIUDADANIA", inputTipoDocumento.getText(), "Tipo cedula|", valor);
+        valor = concatenarElementoDiferente("1234567891", inputNumeroDocumento.getText(), " Numero cedula|", valor);
+        valor = concatenarElementoDiferente("408-2211", inputNumeroTelefono.getText(), " Telefono|", valor);
+        valor = concatenarElementoDiferente("CRA 65 # 48-162, MEDELLIN, Colombia", inputDireccion.getText(), " Direccion|", valor);
+
+        String res = valor.toString();
+        if (MSJVALIDARVALORES.equals(res)) {
+            res = valor.toString().substring(0, valor.toString().length() - 1);
+        }
+        MatcherAssert.assertThat(res, "No estan correctos los valores".equals(res));
     }
 
     public void validaMensajeEnPantalla(String mensaje) {
@@ -429,6 +448,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
                 MatcherAssert.assertThat("Alguno de los campos no es visible", elementoMenu.isVisible());
+                MatcherAssert.assertThat("Alguno de los campos no es visible",
+                        elementoMenu.isVisible());
             } else if (estadodos.contains("No visible")) {
                 String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
                 xpathMenu = pathinicial + mensaje + pathfinal;

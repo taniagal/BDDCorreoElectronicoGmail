@@ -76,7 +76,16 @@ public class PageUtil extends PageObject {
     }
 
     public void selectItem(WebElementFacade element, String option) {
-        waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
+        try {
+            waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
+        } catch (ElementNotVisibleException e) {
+            LOGGER.info("ElementNotVisibleException " + e);
+            waitUntil(WAIT_TIME_2000);
+            waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
+        } catch (StaleElementReferenceException f){
+            LOGGER.info("StaleElementReferenceException " + f);
+            waitUntil(WAIT_TIME_2000);
+        }
         clickElement(element);
         waitUntil(WAIT_TIME_200);
         element.clear();
@@ -149,7 +158,7 @@ public class PageUtil extends PageObject {
 
             try {
                 elemento.clear();
-            }catch (ElementNotVisibleException e){
+            } catch (ElementNotVisibleException e) {
                 LOGGER.info("ElementNotVisibleException " + e);
                 LOGGER.info(e.getStackTrace().toString());
                 waitUntil(WAIT_TIME_2000);

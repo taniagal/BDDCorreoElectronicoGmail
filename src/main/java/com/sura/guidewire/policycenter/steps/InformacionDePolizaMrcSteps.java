@@ -45,6 +45,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     @Step
     public void valida_datos_del_tomador(String tomador) {
         opcionesInformacionPolizaMrcPage.validaNombreTomador(tomador);
+        opcionesInformacionPolizaMrcPage.validarValoresDeCampos();
         opcionesInformacionPolizaMrcPage.validaCamposPoliza();
     }
 
