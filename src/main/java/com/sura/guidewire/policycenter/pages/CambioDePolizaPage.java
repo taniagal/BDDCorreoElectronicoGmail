@@ -20,7 +20,7 @@ public class CambioDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//span[contains(@id,'PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_ChangePolicy-textEl')]")
     WebElementFacade opcionCambiarPoliza;
 
-    @FindBy(xpath = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial-inputEl']")
+    @FindBy(xpath = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl")
     WebElementFacade reaseguroEspecial;
 
     @FindBy(xpath = ".//label[@class='x-component g-msg-warning x-component-default']")
