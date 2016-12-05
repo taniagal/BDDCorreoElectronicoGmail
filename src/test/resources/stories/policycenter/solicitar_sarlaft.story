@@ -1,12 +1,11 @@
 Solicitar Sarlaft
 
 Meta:
-
+@lote2
 @issue #CDSEG-834
 @tag automator: diego_cardona_acevedo
 @local
 @Sprint 10
-@lote4
 
 Narrative:
 Como usuario de negocio

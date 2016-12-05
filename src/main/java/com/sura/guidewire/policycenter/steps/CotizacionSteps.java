@@ -1,10 +1,9 @@
 package com.sura.guidewire.policycenter.steps;
 
 
-import com.sura.guidewire.policycenter.pages.DetallesDeUbicacionPage;
 import com.sura.guidewire.policycenter.utils.navegacion.PanelIzquierdoElement;
 import com.sura.guidewire.policycenter.utils.navegacion.PanelSuperiorElement;
-import com.sura.guidewire.policycenter.pages.NuevaCotizacionPage;
+import com.sura.guidewire.policycenter.pages.CotizacionPage;
 import java.io.Serializable;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Step;
@@ -13,9 +12,9 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 
-import static com.sura.guidewire.policycenter.pages.NuevaCotizacionPage.TXT_CODIGO_AGENTE;
-import static com.sura.guidewire.policycenter.pages.NuevaCotizacionPage.TXT_NOMBRE_AGENTE;
-import static com.sura.guidewire.policycenter.pages.NuevaCotizacionPage.TXT_NUMERO_CUENTA;
+import static com.sura.guidewire.policycenter.pages.CotizacionPage.TXT_CODIGO_AGENTE;
+import static com.sura.guidewire.policycenter.pages.CotizacionPage.TXT_NOMBRE_AGENTE;
+import static com.sura.guidewire.policycenter.pages.CotizacionPage.TXT_NUMERO_CUENTA;
 
 public class CotizacionSteps extends ScenarioSteps implements Serializable {
 
@@ -23,17 +22,10 @@ public class CotizacionSteps extends ScenarioSteps implements Serializable {
 
     private PanelSuperiorElement panelSuperior;
     private PanelIzquierdoElement panelIzquierdo;
-    private NuevaCotizacionPage cotizacionPage;
-    DetallesDeUbicacionPage detallesDeUbicacionPage;
+    private CotizacionPage cotizacionPage;
 
     @ManagedPages
     Pages pages;
-
-
-    @Step
-    public void irANuevaCotizacion(){
-        detallesDeUbicacionPage.irANuevaCotizacion();
-    }
 
     @Step
     public void digitarNumeroDeCuenta(String numeroCuenta) {
@@ -57,7 +49,7 @@ public class CotizacionSteps extends ScenarioSteps implements Serializable {
         getCotizacionPage().enter(codigoAgente).into(cotizacionPage.elemento(TXT_CODIGO_AGENTE));
     }
 
-    public NuevaCotizacionPage getCotizacionPage() {
+    public CotizacionPage getCotizacionPage() {
         return cotizacionPage;
     }
 

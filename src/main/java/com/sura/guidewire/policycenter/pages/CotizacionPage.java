@@ -24,7 +24,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.slf4j.LoggerFactory;
 
 // TODO: 15/06/2016 Pendiente refactor
-public class NuevaCotizacionPage extends PageObject {
+public class CotizacionPage extends PageObject {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private static final int CONSTANTE_2 = 2;
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");

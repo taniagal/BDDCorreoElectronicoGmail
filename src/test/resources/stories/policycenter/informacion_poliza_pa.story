@@ -1,6 +1,6 @@
 Informacion Poliza Pa
 
-Meta: @lote2
+Meta: @lote3
 
 @issue #CDSEG-995
 @tag automator: diego_cardona_acevedo

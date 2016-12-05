@@ -46,30 +46,9 @@ public class DetallesDeUbicacionPage extends PageUtil {
     private WebElementFacade labelNumeroDePisos;
     @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:BuildYear-labelEl']")
     private WebElementFacade labelAnioDeConstruccion;
-    @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions-btnInnerEl']")
-    private WebElementFacade botonAcciones;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:AccountName-inputEl']")
-    private WebElementFacade linkNombre;
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
-    private WebElementFacade comboBoxNombreAgente;
-    @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']")
-    private WebElementFacade subMenuNuevaCotizacion;
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
-    private WebElementFacade menuItemEscritorio;
     @FindBy(css = ".message")
     private WebElementFacade divMensaje;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
-    private WebElementFacade subMenuInformacionPoliza;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
-    private WebElementFacade comboBoxOrganizacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
-    private WebElementFacade comboBoxCanal;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-triggerWrap']/tbody/tr/td/input")
-    private WebElementFacade comboBoxOrganizacionW;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
-    private WebElementFacade comboTipoPoliza;
-    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
-    private WebElementFacade botonAceptarPopup;
+
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     String direccion = "";
@@ -78,82 +57,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
         super(driver);
     }
 
-    public void seleccionarProducto(String nomProducto) {
-        try {
-            waitForTextToAppear(nomProducto);
-        } catch (TimeoutException e) {
-            LOGGER.info("TimeoutException " + e);
-            selectItem(comboBoxNombreAgente, "A");
-            waitForTextToAppear(nomProducto);
-        }
-        List<WebElementFacade> descripcionProductos = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[2]");
-        List<WebElementFacade> botones = getLista(".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']/div/table/tbody/tr/td[1]");
-        waitUntil(WAIT_TIME_1000);
-        int i = 0;
-        if (!descripcionProductos.isEmpty()) {
-            for (WebElementFacade descripcion : descripcionProductos) {
-                waitUntil(WAIT_TIME_1000);
-                if (nomProducto.equals(descripcion.getText())) {
-                    botones.get(i).click();
-                    if ("Multiriesgo corporativo".equals(nomProducto)) {
-                        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
-                        if (botonAceptarPopup.isPresent()) {
-                            withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonAceptarPopup).click();
-                            waitForAbsenceOf(".//span[contains(.,'Aceptar')]");
-                        }
-                        resetImplicitTimeout();
-                    }
-                    break;
-                }
-                i++;
-            }
-        }
-    }
-
-
-    public void irANuevaCotizacion() {
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
-        if (!botonAcciones.isPresent()) {
-            menuItemEscritorio.click();
-        }
-        resetImplicitTimeout();
-        botonAcciones.click();
-        subMenuNuevaCotizacion.waitUntilPresent().click();
-    }
-
-    public void setDatos(ExamplesTable datosCotizacion) {
-        Map<String, String> dato = datosCotizacion.getRow(0);
-        numeroDeCuenta.waitUntilPresent().sendKeys(dato.get("cuenta"));
-        comboBoxNombreAgente.click();
-        linkNombre.waitUntilVisible();
-        Actions actions = new Actions(getDriver());
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        actions.sendKeys(Keys.ENTER).build().perform();
-        seleccionarProducto(dato.get("producto"));
-        if ("Autos".equals(dato.get("producto"))) {
-            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(subMenuInformacionPoliza).waitUntilPresent().click();
-            waitForTextToAppear("Información de póliza");
-            comboBoxOrganizacion.waitUntilPresent();
-            if (!comboBoxOrganizacion.getValue().equals(dato.get("producto"))) {
-                selectItem(comboBoxOrganizacion, dato.get("organizacion"));
-                waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
-                waitUntil(WAIT_TIME_1000);
-                selectItem(comboBoxCanal, dato.get("canal"));
-                waitForComboValue(comboBoxCanal, dato.get("canal"));
-                try {
-                    selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
-                } catch (ElementNotVisibleException e) {
-                    LOGGER.info("ElementNotVisibleException " + e);
-                    waitUntil(WAIT_TIME_2000);
-                    selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
-                }
-                waitForComboValue(comboTipoPoliza, dato.get("tipoPoliza"));
-            }
-        }
-    }
-
+    
     public void irAUbicacion() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();

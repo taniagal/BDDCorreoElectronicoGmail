@@ -14,12 +14,6 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ir_a_nueva_poliza(ExamplesTable datosCotizacion){
-        detallesDeUbicacionPage.irANuevaCotizacion();
-        detallesDeUbicacionPage.setDatos(datosCotizacion);
-    }
-
-    @Step
     public void validarCamposnuevos(){
         detallesDeUbicacionPage.irAUbicacion();
         detallesDeUbicacionPage.validarCamposNuevos();
@@ -49,10 +43,5 @@ public class DetallesDeUbicacionSteps extends ScenarioSteps {
     @Step
     public void verificar_mensaje(String mensaje) {
         detallesDeUbicacionPage.verificarMensaje(mensaje);
-    }
-
-    @Step
-    public void elegirProducto(String producto) {
-        detallesDeUbicacionPage.seleccionarProducto(producto);
     }
 }

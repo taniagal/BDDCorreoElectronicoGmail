@@ -27,9 +27,9 @@ public class SeleccionDeOfertasDefinitions {
         seleccionDeOfertasSteps.ingresarDatosInicialesCotizacion(cuenta);
     }
 
-    @When("seleccione la linea de negocio de autos")
-    public void seleccionarLineaPA() {
-        seleccionDeOfertasSteps.seleccionarLineaPA();
+    @When("quiera seleccionar una oferta")
+    public void seleccionarOferta() {
+        //Empty Method
     }
 
     @Then("no debe mostrar el menu vertical")

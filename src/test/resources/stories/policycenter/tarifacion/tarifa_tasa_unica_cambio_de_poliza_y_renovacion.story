@@ -35,36 +35,3 @@ Examples:
 |Miguel       |Felipe        |CASADO      |22222365  |
 
 
-
-Scenario: Realizar una modificacion de valor asegurado a una poliza con tarifa tasa unica
-Given que tengo una cotizacion <cotizacion>
-And vaya a agregar el vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
-|random|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
-And seleccione algunas coberturas:
-|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
-|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
-And expido la poliza
-When realize una modificacion en el valor asegurado <valor_asegurado>
-Then se debe tarifar con el esquema de tasa unica, generando cobro o devolucion de prima
-
-Examples:
-|valor_asegurado|cotizacion|
-|20000000       |22222365  |
-
-
-Scenario: Realizar la renovacion de una poliza con tarifa tasa unica
-Given que tengo una cotizacion <cotizacion>
-And vaya a agregar el vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
-|random|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
-And seleccione algunas coberturas:
-|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
-|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
-And expido la poliza
-When realize la renovacion de una poliza
-Then se debe tarifar con el esquema de tasa unica, generando el valor de la prima
-
-Examples:
-|cotizacion|
-|22222365  |
