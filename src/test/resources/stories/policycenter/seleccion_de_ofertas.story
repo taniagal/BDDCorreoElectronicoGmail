@@ -14,8 +14,8 @@ para poder realizar una cotizacion sobre la misma
 Scenario: Opcion ofertas del menu ocultas
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|cuenta    |organizacion|producto|canal            |tipoPoliza |
+|C000888888|Sura        |Autos   |Canal Tradicional|PPAutos    |
 When quiera seleccionar una oferta
 Then no debe mostrar el menu vertical
 
