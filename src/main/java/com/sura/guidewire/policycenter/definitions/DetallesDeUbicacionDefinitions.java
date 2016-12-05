@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.definitions;
 
 
 import com.sura.guidewire.policycenter.steps.DetallesDeUbicacionSteps;
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -13,6 +14,9 @@ import org.jbehave.core.model.ExamplesTable;
 public class DetallesDeUbicacionDefinitions {
     @Steps
     private DetallesDeUbicacionSteps detallesDeUbicacionSteps;
+
+    @Steps
+    private NuevaCotizacionSteps nuevaCotizacionSteps;
 
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>")
     public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad){
@@ -36,5 +40,10 @@ public class DetallesDeUbicacionDefinitions {
     @Then("que se muestre el mensaje <mensaje>")
     public void verificarMensaje(@Named("mensaje")String mensaje){
          detallesDeUbicacionSteps.verificar_mensaje(mensaje);
+    }
+
+    @When("seleccione el producto <producto> para expedir la poliza")
+    public void elegirProducto(@Named("producto") String producto){
+        nuevaCotizacionSteps.seleccionDeProducto(producto);
     }
 }

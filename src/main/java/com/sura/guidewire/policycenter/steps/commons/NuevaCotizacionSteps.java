@@ -23,8 +23,15 @@ public class NuevaCotizacionSteps extends ScenarioSteps{
     public void irANuevaCotizacion(){
         nuevaCotizacionPage.irANuevaCotizacion();
     }
+
     @Step
     public void seleccionarProducto(ExamplesTable datosCotizacion) {
         nuevaCotizacionPage.seleccionarProducto(datosCotizacion);
     }
+
+    @Step
+    public void seleccionDeProducto(String producto) {
+        nuevaCotizacionPage.seleccionDeProducto(producto);
+    }
+
 }
