@@ -90,7 +90,8 @@ public class TarifaTasaUnicaDefinitions {
     @Given("que tengo una cotizacion <cotizacion>")
     public void givenIrALaCotizacion(@Named("cotizacion") String cotizacion) {
         cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
-        nuevaCotizacionSteps.copiarEnvio();
+        tasaUnicaSteps.verificarEstadoDelEnvio(cotizacion);
+//        nuevaCotizacionSteps.copiarEnvio();
     }
 
     @Given("vaya a agregar el vehiculo con los datos: $datosVehiculo")

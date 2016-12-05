@@ -32,29 +32,37 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
 
     @Step
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        tasaUnicaPage.llenarInfoPoliza();
-        vehiculoPage.irAVehiculos();
-        vehiculoPage.agregarVehiculo(datosVehiculo);
+        if (token == 1) {
+            tasaUnicaPage.llenarInfoPoliza();
+            vehiculoPage.irAVehiculos();
+            vehiculoPage.agregarVehiculo(datosVehiculo);
+        }
     }
 
     @Step
     public void expedirPoliza() {
-        analisisDeRiesgoPage.expedirPoliza();
+        if (token == 1) {
+            analisisDeRiesgoPage.expedirPoliza();
+        }
     }
 
     @Step
     public void irAInformacionDePolizaExpedida() {
-        tasaUnicaPage.irAInformacionDePoliza();
+        if (token == 1) {
+            tasaUnicaPage.irAInformacionDePoliza();
+        }
     }
 
     @Step
     public void seleciconarCoberturas(ExamplesTable coberturas) {
-        vehiculoPage.clickSiguiente();
-        vehiculoPage.clickLinkDescartarCambios();
-        tarifaAutosPage.seleccionarCoberturas(coberturas);
-        tarifaAutosPage.seleccionarCoberturas1(coberturas);
-        tarifaAutosPage.seleccionarCoberturasDeDanios(coberturas);
-        tarifaAutosPage.cotizar();
+        if (token == 1) {
+            vehiculoPage.clickSiguiente();
+            vehiculoPage.clickLinkDescartarCambios();
+            tarifaAutosPage.seleccionarCoberturas(coberturas);
+            tarifaAutosPage.seleccionarCoberturas1(coberturas);
+            tarifaAutosPage.seleccionarCoberturasDeDanios(coberturas);
+            tarifaAutosPage.cotizar();
+        }
     }
 
     @Step
