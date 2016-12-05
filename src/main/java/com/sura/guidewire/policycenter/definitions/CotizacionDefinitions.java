@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.definitions;
 
+import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.steps.CotizacionSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.thoughtworks.selenium.SeleneseTestNgHelper;
@@ -32,6 +33,9 @@ public class CotizacionDefinitions {
     @Steps
     CotizacionSteps cotizador;
 
+    @Steps
+    NuevaCotizacionPage nuevaCotizacionPage;
+
     /**
      * GIVENs
      */
@@ -39,7 +43,7 @@ public class CotizacionDefinitions {
     public void crearNuevaCotizacion(){
 
         guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
-        cotizador.irANuevaCotizacion();
+        nuevaCotizacionPage.irANuevaCotizacion();
         MatcherAssert.assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF("Nueva cotización"), Is.is(CoreMatchers.equalTo("Nueva cotización")));
 
         LOGGER.info("CotizacionDefinitions.crearNuevaCotizacion");

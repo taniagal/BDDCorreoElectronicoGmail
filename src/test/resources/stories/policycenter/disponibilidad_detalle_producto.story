@@ -14,11 +14,10 @@ para que se muestren las coberturas, terminos y opciones segun la disponibilidad
 Scenario: Validar la organizacion cuando el producto es Autos
 Meta:
 @manual
-Given que voy a buscar la cuenta <numCuenta> para poliza individual
-And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
-When  seleccione el producto <producto> para expedir la poliza
-And   seleccione la opcion informacion de poliza
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto|canal            |
+|C000888888|Sura        |Autos   |Canal Tradicional|
+When   seleccione la opcion informacion de poliza
 Then  debo ver la organizacion la siguiente lista de organizaciones:
 |Bancolombia    |
 |Exito          |
@@ -34,11 +33,10 @@ Examples:
 Scenario: Validar la el canal cuando se selecciona una organizacion especifica cuando el producto es Autos
 Meta:
 @manual
-Given  que voy a buscar la cuenta <numCuenta> para poliza individual
-And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
-When  seleccione el producto <producto> para expedir la poliza
-And  seleccione la opcion informacion de poliza
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto|canal            |
+|C000888888|Sura        |Autos   |Canal Tradicional|
+When   seleccione la opcion informacion de poliza
 And  seleccione la organizacion:
 |Bancolombia    |
 |Exito          |
@@ -59,11 +57,10 @@ Examples:
 Scenario: Validar la el canal cuando se selecciona una organizacion especifica cuando el producto es Autos
 Meta:
 @manual
-Given  que voy a buscar la cuenta <numCuenta> para poliza individual
-And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
-When  seleccione el producto <producto> para expedir la poliza
-And   seleccione la opcion informacion de poliza
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto|canal            |
+|C000888888|Sura        |Autos   |Canal Tradicional|
+When   seleccione la opcion informacion de poliza
 And  seleccione la organizacion:
 |Bancolombia    |
 |Exito          |
@@ -85,11 +82,10 @@ Examples:
 Scenario: Validar la organizacion, el canal y el tipo de poliza cuando el producto es Autos para las diferentes combinaciones
 Meta:
 @manual
-Given que voy a buscar la cuenta <numCuenta> para poliza individual
-And   quiero expedir una poliza nueva
-And   seleccione el agente <agente>
-When  seleccione el producto <producto> para expedir la poliza
-And   seleccione la opcion informacion de poliza
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto|canal            |
+|C000888888|Sura        |Autos   |Canal Tradicional|
+When   seleccione la opcion informacion de poliza
 Then  debo ver la organizacion <infoOrganizacion> seleccionada
 And   debor ver el canal <infoCanal> seleccionado
 And   debo ver el tipo de poliza <infoTipoPoliza> seleccionado

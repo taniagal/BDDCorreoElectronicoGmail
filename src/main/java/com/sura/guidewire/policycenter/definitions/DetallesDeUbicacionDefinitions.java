@@ -14,14 +14,6 @@ public class DetallesDeUbicacionDefinitions {
     @Steps
     private DetallesDeUbicacionSteps detallesDeUbicacionSteps;
 
-    /**
-     * ESCENARIO 1
-     */
-    @Given("estoy cotizando una poliza: $datosCotizacion")
-    public void agregarPoliza(ExamplesTable datosCotizacion) {
-        detallesDeUbicacionSteps.ir_a_nueva_poliza(datosCotizacion);
-    }
-
     @When("agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>")
     public void agregarUbicacion(@Named("direccion")String direccion, @Named("departamento")String departamento, @Named("ciudad")String ciudad){
         detallesDeUbicacionSteps.validar_campos_nuevos();
@@ -45,10 +37,4 @@ public class DetallesDeUbicacionDefinitions {
     public void verificarMensaje(@Named("mensaje")String mensaje){
          detallesDeUbicacionSteps.verificar_mensaje(mensaje);
     }
-
-    @When("seleccione el producto <producto> para expedir la poliza")
-    public void elegirProducto(@Named("producto") String producto){
-        detallesDeUbicacionSteps.elegirProducto(producto);
-    }
-
 }
