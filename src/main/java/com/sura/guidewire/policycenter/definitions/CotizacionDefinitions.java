@@ -7,6 +7,7 @@ import com.thoughtworks.selenium.SeleneseTestNgHelper;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -33,7 +34,7 @@ public class CotizacionDefinitions {
     @Steps
     CotizacionSteps cotizador;
 
-    @Steps
+    @Page
     NuevaCotizacionPage nuevaCotizacionPage;
 
     /**
@@ -59,18 +60,30 @@ public class CotizacionDefinitions {
      * WHENs
      */
     @When("digite el numero de cuenta $numeroCuenta de una persona juridica y digite la tecla $teclaAccion para activar la busqueda")
-    @Alias("digite el numero de cuenta $numeroCuenta de una persona natural y digite la tecla $teclaAccion para activar la busqueda")
     public void buscarCuentaPorNumeroDeCuenta(String numeroCuenta){
         cotizador.digitarNumeroDeCuenta(numeroCuenta);
         cotizador.digitarLaTecla();
 
         LOGGER.info("CotizacionDefinitions.cuandoBusqueCuentaExistenteNumero");
     }
+    @When("digite el numero de cuenta $numeroCuenta de una persona natural y digite la tecla $teclaAccion para activar la busqueda")
+    public void buscarCuentaPorNumeroDeCuentaPersonaNatural(String numeroCuenta){
+        cotizador.digitarNumeroDeCuenta(numeroCuenta);
+        cotizador.digitarLaTecla();
+
+        LOGGER.info("CotizacionDefinitions.cuandoBusqueCuentaExistentePersonaNatural");
+    }
+
     @When("se ingrese la primera letra del nombre del agente $nombre")
-    @Alias("se ingrese una palabra completa $nombre")
     public void ingresarCaracteresEnNombreAgente(String nombre){
         cotizador.getCotizacionPage().setNombreAgente(nombre);
         LOGGER.info("CotizacionDefinitions.ingresarCaracteresEnNombreAgente");
+    }
+
+    @When("se ingrese una palabra completa $nombre")
+    public void ingresarPalabraCompleta(String nombre){
+        cotizador.getCotizacionPage().setNombreAgente(nombre);
+        LOGGER.info("CotizacionDefinitions.ingresarPalabraCompleta");
     }
 
     @When("he seleccionado en el nombre del agente $nombre")
@@ -95,20 +108,32 @@ public class CotizacionDefinitions {
      * THENs
      */
     @Then("espero ver el nombre de la persona jurídica $nombre de la cuenta existente junto con la etiqueta $tipoPersona")
-    @Alias("espero ver el nombre de la persona natural $nombre de la cuenta existente junto con la etiqueta $tipoPersona")
     public void validarEtiquetaNombreYNombre(String nombre, String tipoPersona) throws InterruptedException {
         SeleneseTestNgHelper.assertEquals(nombre, cotizador.obtenerTextoLinkNombrePersonaWEF(nombre));
         SeleneseTestNgHelper.assertEquals(tipoPersona, cotizador.obtenerTextoLabelNombrePersonaWEF());
 
         LOGGER.info("CotizacionDefinitions.validarEtiquetaNombreYNombre");
     }
+    @Then("espero ver el nombre de la persona natural $nombre de la cuenta existente junto con la etiqueta $tipoPersona")
+    public void validarEtiquetaNombreYNombrePersonaNatural(String nombre, String tipoPersona) throws InterruptedException {
+        SeleneseTestNgHelper.assertEquals(nombre, cotizador.obtenerTextoLinkNombrePersonaWEF(nombre));
+        SeleneseTestNgHelper.assertEquals(tipoPersona, cotizador.obtenerTextoLabelNombrePersonaWEF());
+
+        LOGGER.info("CotizacionDefinitions.validarEtiquetaNombreYNombrePersonaNatural");
+    }
 
     @Then("se debera activar la lista de los nombres de los agentes que empiecen por dicha letra")
-    @Alias("se debera activar la lista de los nombres de los agentes que empiecen por dicha palabra ingresada")
     public void validarSiSeActivaListaDeNombres(){
 
         MatcherAssert.assertThat(cotizador.tamanioListaAgentesPorFiltro(cotizador.getNombreAgente()), Matchers.greaterThan(0));
         LOGGER.info("CotizacionDefinitions.validarSiSeActivaListaDeNombres");
+    }
+
+    @Then("se debera activar la lista de los nombres de los agentes que empiecen por dicha palabra ingresada")
+    public void validarSiSeActivaListaDeNombresPorPalabra(){
+
+        MatcherAssert.assertThat(cotizador.tamanioListaAgentesPorFiltro(cotizador.getNombreAgente()), Matchers.greaterThan(0));
+        LOGGER.info("CotizacionDefinitions.validarSiSeActivaListaDeNombresPorPalabra");
     }
 
     @Then("validar que se autocompleta el campo nombre y solo aparece el nombre del agente en este campo y el codigo respectivo en el campo codigo de agente")
