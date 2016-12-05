@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.steps.CotizacionSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
@@ -8,7 +7,6 @@ import com.thoughtworks.selenium.SeleneseTestNgHelper;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
-import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -35,8 +33,8 @@ public class CotizacionDefinitions {
     @Steps
     CotizacionSteps cotizador;
 
-    @Page
-    NuevaCotizacionPage nuevaCotizacionPage;
+    @Steps
+    NuevaCotizacionSteps nuevaCotizacionSteps;
 
     /**
      * GIVENs
@@ -45,7 +43,7 @@ public class CotizacionDefinitions {
     public void crearNuevaCotizacion() {
 
         guidewire.dadoQueAccedoAPolicyCenterConRol("Asesor");
-        nuevaCotizacionPage.irANuevaCotizacion();
+        nuevaCotizacionSteps.irANuevaCotizacion();
         MatcherAssert.assertThat(cotizador.getCotizacionPage().obtenerTextoTituloPaginaWEF("Nueva cotización"), Is.is(CoreMatchers.equalTo("Nueva cotización")));
 
         LOGGER.info("CotizacionDefinitions.crearNuevaCotizacion");
