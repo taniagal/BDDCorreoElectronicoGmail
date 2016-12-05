@@ -4,7 +4,7 @@ Meta:
 @lote2
 @Story CDSEG-2778
 @URL https://jira.suramericana.com.co/browse/CDSEG-2778
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:9
+@tag automator:juan_gabriel_zapata
 @Sprint 9
 
 Scenario:  1 Validacion de coaseguro no editable en resumen e informacion de poliza
@@ -23,8 +23,8 @@ And de clic en Aceptar de la ventana Coaseguro
 And ingrese a edificios y ubicaciones
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100            |
-| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100            |
+| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
+| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
 And intente cotizar y expedir la poliza
 Then debo ver en el resumen de la poliza y en informacion de poliza los coaseguros no editables
 
