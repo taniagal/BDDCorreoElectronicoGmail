@@ -477,7 +477,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void cliclearBtnCotizar() {
-        WebElementFacade btnCotizar = findBy(XPATH_COTIZAR).waitUntilVisible().waitUntilClickable();
+        WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
         btnCotizar.waitUntilPresent().click();
         waitFor(WAIT_TIME_4).second();
     }
@@ -526,8 +526,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         fluent().await().atMost(WAIT_TIME_200, TimeUnit.MILLISECONDS);
         itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
         itemTipoDocumento.sendKeys(Keys.ENTER);
-        waitFor(lblPrimerNombre);
-        txtNumDocumento.sendKeys(cedula);
+        lblPrimerNombre.waitUntilPresent();
+        txtNumDocumento.waitUntilPresent().sendKeys(cedula);
         btnBuscar.waitUntilVisible().waitUntilClickable().click();
         waitFor(btnSelecciona);
         btnSelecciona.waitUntilVisible().waitUntilClickable().click();

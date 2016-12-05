@@ -261,7 +261,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void ingresarAInformacionDePoliza() {
-        menuItemInformacionDePoliza.click();
+        clickElement(menuItemInformacionDePoliza);
         waitForTextToAppear("Información de póliza");
     }
 
