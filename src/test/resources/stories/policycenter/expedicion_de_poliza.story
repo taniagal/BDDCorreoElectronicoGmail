@@ -1,6 +1,6 @@
 Expedicion De Poliza
 
-Meta: @lote2
+Meta: @lote3
 
 @issue #SUGWUSC-15128, CDSEG-856
 @Automatizador Jonathan Mejia, Eliana Alvarez
