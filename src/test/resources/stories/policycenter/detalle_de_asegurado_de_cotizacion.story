@@ -93,8 +93,8 @@ Examples:
 
 Scenario: Agregar y Editar campos en creacion tipo persona juridica
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|cuenta    |organizacion|producto|canal            |tipoPoliza |
+|C000888888|Sura        |Autos   |Canal Tradicional|PPAutos    |
 When quiera agregar un asegurado
 And vaya a la opcion agregar
 And seleccione ingresar nueva persona juridica
@@ -117,8 +117,8 @@ Examples:
 
 Scenario: Mostrar errores al validar las reglas de MDM al dar siguiente
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|cuenta    |organizacion|producto|canal            |tipoPoliza |
+|C000888888|Sura        |Autos   |Canal Tradicional|PPAutos    |
 When quiera agregar un asegurado
 And vaya a la opcion agregar
 And seleccione ingresar nueva persona natural
@@ -134,8 +134,8 @@ Examples:
 
 Scenario: Quitar asegurado
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|cuenta    |organizacion|producto|canal            |tipoPoliza |
+|C000888888|Sura        |Autos   |Canal Tradicional|PPAutos    |
 When quiera agregar un asegurado
 And vaya a la opcion agregar
 And consulte un asegurado del directorio
@@ -151,8 +151,8 @@ Examples:
 
 Scenario: Validar asegurado que es riesgo consultable
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|cuenta    |organizacion|producto|canal            |tipoPoliza |
+|C000888888|Sura        |Autos   |Canal Tradicional|PPAutos    |
 When quiera agregar un asegurado
 And vaya a la opcion agregar
 And consulte un asegurado del directorio

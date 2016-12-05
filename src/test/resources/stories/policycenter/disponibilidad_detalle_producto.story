@@ -15,8 +15,8 @@ Scenario: Validar la organizacion cuando el producto es Autos
 Meta:
 @manual
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto|canal            |
-|C000888888|Sura        |Autos   |Canal Tradicional|
+|cuenta    |organizacion|producto|canal            |tipoPoliza |
+|C000888888|Sura        |Autos   |Canal Tradicional|PPAutos    |
 When   seleccione la opcion informacion de poliza
 Then  debo ver la organizacion la siguiente lista de organizaciones:
 |Bancolombia    |
