@@ -19,16 +19,6 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     private WebElementFacade mnuTransaccionesPoliza;
     @FindBy(xpath = "//div[3]/div/table/tbody/tr/td/div")
     private WebElementFacade fechaCreacion;
-    @FindBy(xpath = "//td[2]/div")
-    private WebElementFacade poliza;
-    @FindBy(xpath = "//td[3]/div")
-    private WebElementFacade producto;
-    @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']/*/table/tbody/tr[4]/td[4]")
-    private WebElementFacade numeroTransaccion;
-    @FindBy(xpath = "//td[5]/div")
-    private WebElementFacade tipo;
-    @FindBy(xpath = "//td[6]/div")
-    private WebElementFacade estado;
     @FindBy(xpath = "//td[7]/div")
     private WebElementFacade fechaFin;
     @FindBy(xpath = "//td[8]/div")
@@ -78,11 +68,6 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + numeroTransaccion + "')]").getText(), Matchers.containsString(numeroTransaccion));
         MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + tipo + "')]").getText(), Matchers.containsString(tipo));
         MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + estado + "')]").getText(), Matchers.containsString(estado));
-        MatcherAssert.assertThat(this.poliza.getText(), Matchers.containsString(poliza));
-        MatcherAssert.assertThat(this.producto.getText(), Matchers.containsString(producto));
-        MatcherAssert.assertThat(this.numeroTransaccion.getText(), Matchers.containsString(numeroTransaccion));
-        MatcherAssert.assertThat(this.tipo.getText(), Matchers.containsString(tipo));
-        MatcherAssert.assertThat(this.estado.getText(), Matchers.containsString(estado));
         MatcherAssert.assertThat(this.fechaFin.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(this.participante.getText(), Matchers.containsString(participante));
     }
