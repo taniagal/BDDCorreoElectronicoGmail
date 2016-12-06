@@ -12,24 +12,16 @@ Como usuario de Policy Center
 Quiero ser capaz de consultar las transacciones de una cuenta
 para obtener información de las transacciones asociadas a la misma
 
-Scenario: Validar que una poliza individual de una poliza colectiva no se visualice en las transacciones de poliza individual
-GivenStories: stories/policycenter/login_policy.story
-Given que voy a buscar la cuenta <numCuenta>
-When consulte todas las transacciones de la cuenta
-Then no debo ver la poliza <transaccion> asociada a una colectiva
-
-Examples:
-| numCuenta  | transaccion |
-| C001888888 | 34222225    |
 
 Scenario: Ver informacion de las transacciones asociadas al cuenta
+GivenStories: stories/policycenter/login_policy.story
 Given que voy a buscar la cuenta <numCuenta>
 When consulte las transacciones de poliza por estado <filtroEstado>
 Then debe mostrarme el listado de transacciones con su respectiva informacion: numero de poliza <poliza>, producto <producto>, transaccion <transaccion>, tipo <tipo>, estado <estado>, participante <participante>
 
 Examples:
 | numCuenta  | filtroEstado | poliza        | producto | transaccion | tipo       | estado   | participante |
-| C000922810 | Completo     | TEST_22222297 | Autos    | 22222297    | Cotización | Expedida | Super User   |
+| C001888888 | Completo     | TEST_22222222 | Autos    | 22222222    | Cotización | Expedida | Super User   |
 
 
 Scenario: Ver informacion de transacciones sin registros
@@ -58,7 +50,7 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 | numCuenta  | filtroEstado | filtroTransaccion |
-| C000922810 | Todos        | Cotización        |
+| C001888888 | Todos        | Cotización        |
 
 Scenario: Ver informacion filtrada por producto
 Given que voy a buscar la cuenta <numCuenta>
@@ -69,4 +61,4 @@ Then debe mostrarme el listado de transacciones filtradas por tipo de transaccio
 
 Examples:
 | numCuenta  | filtroEstado | filtroTransaccion | filtroProducto |
-| C000922810 | Todos        | Todos             | Autos          |
+| C001888888 | Todos        | Todos             | Autos          |

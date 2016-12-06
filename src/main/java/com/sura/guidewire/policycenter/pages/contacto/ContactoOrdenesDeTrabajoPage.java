@@ -19,7 +19,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     private WebElementFacade mnuTransaccionesPoliza;
     @FindBy(xpath = "//div[3]/div/table/tbody/tr/td/div")
     private WebElementFacade fechaCreacion;
-    @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']/*/table/tbody/tr[4]/td[2]")
+    @FindBy(xpath = "//td[2]/div")
     private WebElementFacade poliza;
     @FindBy(xpath = "//td[3]/div")
     private WebElementFacade producto;
@@ -73,7 +73,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         waitFor(fechaCreacion).waitUntilPresent();
         waitUntil(WAIT_TIME_3000);
         MatcherAssert.assertThat(this.fechaCreacion.getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat("Error en el numero de poliza",this.poliza.containsText(poliza));
+        MatcherAssert.assertThat(this.poliza.getText(), Matchers.containsString(poliza));
         MatcherAssert.assertThat(this.producto.getText(), Matchers.containsString(producto));
         MatcherAssert.assertThat(this.numeroTransaccion.getText(), Matchers.containsString(numeroTransaccion));
         MatcherAssert.assertThat(this.tipo.getText(), Matchers.containsString(tipo));

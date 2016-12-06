@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
 
-@DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
+@DefaultUrl("http://10.214.18.197:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
 //@DefaultUrl("https://labcoreseguros.suramericana.com/pc/PolicyCenter.do")
 public class LoginPage extends PageUtil {
