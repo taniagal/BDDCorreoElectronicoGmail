@@ -177,6 +177,12 @@ public class BusquedaContactoDefinitions {
         buscarContactoSteps.consultarContactoPorNombresYApellidos(tipoDoc, "", "", primerApellido, segundoApellido);
     }
 
+    @When("ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>")
+    public void buscarContactoPorIdentificacion(@com.google.inject.name.Named("tipoId") String tipoId,
+                                                @com.google.inject.name.Named("numeroId") String numeroId){
+        buscarContactoSteps.consultarContactoPorTipoDocumentoCotizacion(tipoId, numeroId);
+    }
+
     @Then("no debo ver la informacion del contacto de tipo persona juridica")
     public void thenValidarInformacionPersonaJuridica(){
         buscarContactoSteps.validarInformacionTipoId();

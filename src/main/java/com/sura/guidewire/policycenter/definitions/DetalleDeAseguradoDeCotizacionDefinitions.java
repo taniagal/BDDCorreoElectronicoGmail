@@ -19,9 +19,6 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
     @Steps
     private DetalleDeAseguradoDeCotizacionSteps detalleDeAseguradoDeCotizacionSteps;
 
-    @Steps
-    private BusquedaContactoSteps busquedaContactoSteps;
-
     @Given("voy a crear una nueva cotizacion")
     public void irACrearNuevaCotizacion(@Named("cuenta") String cuenta){
         detalleDeAseguradoDeCotizacionSteps.irACrearNuevaCotizacion();
@@ -50,12 +47,6 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
     @When("consulte un asegurado del directorio")
     public void agregarAseguradoContactoDelDirectorio(){
         detalleDeAseguradoDeCotizacionSteps.agregarAseguradoContactoDelDirectorio();
-    }
-
-    @When("ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>")
-    public void buscarContactoPorIdentificacion(@Named("tipoId") String tipoId,
-                                                @Named("numeroId") String numeroId){
-        busquedaContactoSteps.consultarContactoPorTipoDocumentoCotizacion(tipoId, numeroId);
     }
 
     @When("seleccione el contacto a agregar")
