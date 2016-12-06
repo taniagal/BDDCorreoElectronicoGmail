@@ -230,7 +230,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         botonTipoPlazo.click();
         waitFor(tipoPlazoPoliza).shouldBeVisible();
         $(tipoPlazoPoliza).type(tipoPlazo);
-        waitFor(itemTipoPlazo).shouldBeVisible();
+        waitFor(itemTipoPlazo).waitUntilPresent();
         itemTipoPlazo.click();
         waitUntil(WAIT_TIME_1000);
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
