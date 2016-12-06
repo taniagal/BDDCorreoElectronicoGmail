@@ -10,6 +10,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
+import net.thucydides.core.webdriver.exceptions.ElementShouldBePresentException;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
@@ -66,6 +67,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonAgregarArticulosCambioPoliza;
     @FindBy(xpath = ".//a[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulosRenovacionPoliza;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
+    private WebElementFacade botonAceptarCambioDePoliza;
     @Steps
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
@@ -478,7 +481,16 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void cliclearBtnCotizar() {
         WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
-        btnCotizar.waitUntilPresent().click();
+        try {
+            btnCotizar.waitUntilPresent().click();
+        } catch (ElementShouldBePresentException e) {
+            LOGGER.info("ElementShouldBePresentException " + e);
+            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+            if (botonAceptarCambioDePoliza.isPresent()) {
+                botonAceptarCambioDePoliza.click();
+                withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(btnCotizar).click();
+            }
+        }
         waitFor(WAIT_TIME_4).second();
     }
 

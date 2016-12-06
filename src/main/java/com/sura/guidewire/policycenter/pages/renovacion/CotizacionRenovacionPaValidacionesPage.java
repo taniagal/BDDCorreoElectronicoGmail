@@ -49,7 +49,7 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
     }
 
     public void validarBloqueoYMensajeRC(ExamplesTable mensajeRC) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(grupoMensajesRC).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(grupoMensajesRC).waitUntilPresent();
         boolean validacion = false;
         validacion = validarMensajeRC(mensajeRC);
         MatcherAssert.assertThat(validacion, Matchers.is(Matchers.equalTo(true)));
