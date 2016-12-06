@@ -21,7 +21,7 @@ Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de tra
 | El valor de "Sublímite para perdida de contenido en tanques" deber ser menor o igual a la sumatoria de los valores asegurables de " - Mercancías a granel - Existencias fijas - Existencias flotantes - ". |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
-| 0011751399      | Asesor     |             |
+| 22222236      | Asesor     |             |
 
 
 Scenario: 2 Portadores externos de datos (Coberturas del riesgo)
@@ -35,7 +35,7 @@ Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de tra
 | Para poder seleccionar el "Valor asegurado portadores externos de datos " debe tener asegurado "Equipo electrónico fijo |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
-| 0011751399      | Asesor     |             |
+| 22222236      | Asesor     |             |
 
 
 Scenario: 3 Gastos por arrendamiento de sistema electronico de procesamiento de datos (Coberturas del riesgo)
@@ -49,7 +49,7 @@ Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de tra
 | Para poder seleccionar el "Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos" debe tener asegurado "Equipo electrónico fijo |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
-| 0011751399        | Asesor     |             |
+| 22222236        | Asesor     |             |
 
 
 Scenario: 4 Sublimite todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados (Coberturas del riesgo) - Porcentaje
@@ -66,7 +66,7 @@ Then se debe mostrar el siguiente mensaje
 | El valor de "Valor asegurado todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados" deber ser menor o igual al "10,0%" de la sumatoria de los valores asegurables de "todos los articulos". |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
-| 0011751399      | Asesor     |             |
+| 22222236      | Asesor     |             |
 
 
 Scenario: 5 Sublimites menores a valor asegurado daños (coberturas a nivel de riesgo)
@@ -104,5 +104,5 @@ Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de tra
 |El valor del "Sublimite para deterioro de bienes refrigerados por rotura de maquinaria " debe ser menor o igual a la sumatoria de los valores asegurados de la cobertura de "Danos materiales" de todos los artículos de la ubicación.                                                                                  |
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
-| 0011751399      | Asesor     |             |
+| 22222236      | Asesor     |             |
 
