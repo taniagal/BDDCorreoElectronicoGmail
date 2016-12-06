@@ -14,10 +14,8 @@ import java.util.concurrent.TimeUnit;
 
 public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil{
     
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']")
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade grupoUWIssues;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']")
-    private WebElementFacade grupoUWIssuesModificacion;
 
     public GeneracionUwIssueRiesgosConsultablesPaPage(WebDriver driver){
         super(driver);
@@ -36,18 +34,7 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil{
     }
 
     public void validarGeneracionUWIssue(ExamplesTable mensajesBloqueo){
-        Map<String, String> bloqueoUW;
-        if(grupoUWIssues.isCurrentlyVisible()) {
-            for (int i = 0; i < mensajesBloqueo.getRowCount(); i++) {
-                bloqueoUW = mensajesBloqueo.getRows().get(i);
-                MatcherAssert.assertThat(grupoUWIssues.getText(), Matchers.containsString(bloqueoUW.get("mensaje")));
-            }
-        } else if(grupoUWIssuesModificacion.isCurrentlyVisible()){
-            for (int i = 0; i < mensajesBloqueo.getRowCount(); i++) {
-                bloqueoUW = mensajesBloqueo.getRows().get(i);
-                MatcherAssert.assertThat(grupoUWIssuesModificacion.getText(), Matchers.containsString(bloqueoUW.get("mensaje")));
-            }
-        }
+            verificarMensajes(grupoUWIssues, mensajesBloqueo);
     }
 
     public void aceptarExpedicionPoliza() {

@@ -19,10 +19,10 @@ When las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo
 And vaya a la opcion de analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 |mensaje|
-|FRANK RAMIREZ ALZATE es un riesgo no estándar y debe ser analizado por el comité de evaluación para el(los) rol(es): TOMADOR, ASEGURADO |
-|El chasis CH212121 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
-|La placa T64497 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
-|El motor AB3C2 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
+|FRANK RAMIREZ ALZATE, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
+|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
+|T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
+|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
 
 Examples:
 |numeroCotizacion|
@@ -34,10 +34,10 @@ When las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo
 And vaya a la opcion de analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 |mensaje|
-|FRANK RAMIREZ ALZATE es un riesgo no estándar y debe ser analizado por el comité de evaluación para el(los) rol(es): TOMADOR, ASEGURADO |
-|El chasis CH212121 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
-|La placa T64497 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
-|El motor AB3C2 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
+|FRANK RAMIREZ ALZATE, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
+|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
+|T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
+|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
 
 Examples:
 |numeroCotizacion|
