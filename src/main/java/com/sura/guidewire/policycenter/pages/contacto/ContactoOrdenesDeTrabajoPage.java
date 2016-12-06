@@ -73,6 +73,11 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         waitFor(fechaCreacion).waitUntilPresent();
         waitUntil(WAIT_TIME_3000);
         MatcherAssert.assertThat(this.fechaCreacion.getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + poliza + "')]").getText(), Matchers.containsString(poliza));
+        MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + producto + "')]").getText(), Matchers.containsString(producto));
+        MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + numeroTransaccion + "')]").getText(), Matchers.containsString(numeroTransaccion));
+        MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + tipo + "')]").getText(), Matchers.containsString(tipo));
+        MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + estado + "')]").getText(), Matchers.containsString(estado));
         MatcherAssert.assertThat(this.poliza.getText(), Matchers.containsString(poliza));
         MatcherAssert.assertThat(this.producto.getText(), Matchers.containsString(producto));
         MatcherAssert.assertThat(this.numeroTransaccion.getText(), Matchers.containsString(numeroTransaccion));
