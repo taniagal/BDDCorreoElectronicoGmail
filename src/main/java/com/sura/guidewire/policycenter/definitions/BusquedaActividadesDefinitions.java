@@ -24,6 +24,11 @@ public class BusquedaActividadesDefinitions {
         busquedaActividadesSteps.buscarActividades();
     }
 
+    @When("agregue una actividad a la poliza")
+    public void agregarActividadALaPoliza() {
+        busquedaActividadesSteps.agregarActividadALaPoliza();
+    }
+
     @When("quiera realizar la busqueda de actividades por el filtro asignado a <usuario>")
     public void filtrarPorUsuarioAsignado(@Named("usuario") String usuario ) {
         busquedaActividadesSteps.filtrarPorAsignado(usuario);
@@ -75,6 +80,11 @@ public class BusquedaActividadesDefinitions {
     @Then("me debe mostrar el siguiente mensaje <mensaje>")
     public void validarMensajeFiltroRequerido(@Named("mensaje") String mensaje) {
         busquedaActividadesSteps.validarMensajeFiltroRequerido(mensaje);
+    }
+
+    @Then("la poliza debe quedar con una actividad asignada")
+    public void asignarActividadAPoliza() {
+        busquedaActividadesSteps.asignarActividadAPoliza();
     }
 
 }
