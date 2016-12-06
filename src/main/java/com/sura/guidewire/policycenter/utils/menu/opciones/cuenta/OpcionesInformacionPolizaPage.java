@@ -226,12 +226,8 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
             validacion = e.getMessage();
         }
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
-        waitFor(botonTipoPlazo).shouldBeVisible();
-        botonTipoPlazo.click();
-        waitFor(tipoPlazoPoliza).shouldBeVisible();
-        $(tipoPlazoPoliza).type(tipoPlazo);
-        waitFor(itemTipoPlazo).waitUntilPresent();
-        itemTipoPlazo.click();
+        selectItem(tipoPlazoPoliza, tipoPlazo);
+        waitForComboValue(tipoPlazoPoliza, tipoPlazo);
         waitUntil(WAIT_TIME_1000);
         waitFor(fechaVigenciaPoliza).shouldBeVisible();
         waitUntil(WAIT_TIME_1000);

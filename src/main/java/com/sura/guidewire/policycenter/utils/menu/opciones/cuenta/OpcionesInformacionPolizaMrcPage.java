@@ -280,12 +280,12 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
         if ("Cedido".equals(tipoCoaseguro)) {
             if ("0% 0%".equals($(radioButtonCedido).getCssValue("background-position"))) {
-                waitUntil(WAIT_TIME_1500);
+                waitUntil(WAIT_TIME_2000);
                 radioButtonCedido.click();
             }
         } else {
-            if (!"0% 0%".equals($(radioButtonAceptado).getCssValue("background-position"))) {
-                waitUntil(WAIT_TIME_1500);
+            {
+                waitUntil(WAIT_TIME_2000);
                 radioButtonAceptado.click();
             }
         }
@@ -441,7 +441,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 String mensaje = menus.get("OPCIONES_MENU_NO_VISIBLES");
                 xpathMenu = pathinicial + mensaje + pathfinal;
                 elementoMenu = findBy(xpathMenu);
-                setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
+                setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
                 MatcherAssert.assertThat("Alguno de los campos es visible", !elementoMenu.isVisible());
                 resetImplicitTimeout();
             }

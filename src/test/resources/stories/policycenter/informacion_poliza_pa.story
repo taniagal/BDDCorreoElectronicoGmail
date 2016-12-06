@@ -38,7 +38,7 @@ Then esta <fechaInicioVigencia> debe calcular de forma automatica la fecha de fi
 
 Examples:
 |numCuenta     |fechaInicioVigencia|tipoPlazo |
-|C000888888    |07/15/2016         |Anual     |
+|C000888888    |15/07/2016         |Anual     |
 
 Scenario: Ingresar segundo tomador
 Given que voy a buscar la cuenta <numCuenta>

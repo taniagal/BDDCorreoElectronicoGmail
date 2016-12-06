@@ -54,8 +54,8 @@ Then se debe validar que se muestren los mensajes de obligatoriedad siguientes
 
 
 Examples:
-| TipoCo   | numCuenta | TipoCo | numSubscripcion|departamento|ciudad   |direccion        |descripcion  |actividad|
-| Aceptado | C000777777| Cedido | 22222236       |Antioquia   |Medellin |CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+| TipoCo   | numCuenta |numSubscripcion|departamento|ciudad   |direccion        |descripcion  |actividad|
+| Aceptado | C000777777|22222236       |Antioquia   |Medellin |CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
 
 
@@ -74,5 +74,5 @@ And de clic en Aceptar de la ventana Coaseguro
 Then no se debe inhabilitar la opcion Numero de documento
 
 Examples:
-| TipoCo   | numCuenta | TipoCo | numSubscripcion|departamento|ciudad   |direccion        |descripcion  |actividad|
-| Cedido   | C000777777| Cedido | 22222236       |Antioquia   |Medellin |CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+| TipoCo   | numCuenta | numSubscripcion|departamento|ciudad   |direccion        |descripcion  |actividad|
+| Cedido   | C000777777| 22222236       |Antioquia   |Medellin |CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
