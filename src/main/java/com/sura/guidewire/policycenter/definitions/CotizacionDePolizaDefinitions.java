@@ -7,6 +7,7 @@ import com.sura.guidewire.policycenter.steps.CotizacionDePolizaSteps;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.sura.guidewire.policycenter.steps.InformacionPolizaPASteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.jbehave.core.annotations.Given;
@@ -19,6 +20,9 @@ import org.jbehave.core.model.ExamplesTable;
 public class CotizacionDePolizaDefinitions {
     @Steps
     CotizacionDePolizaSteps cotizacionDePolizaSteps;
+
+    @Steps
+    InformacionPolizaPASteps informacionPolizaPASteps;
 
     private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
@@ -96,6 +100,11 @@ public class CotizacionDePolizaDefinitions {
     @When("la cotizacion tenga intencion de financiacion")
     public void ingresarACotizacionFinanciada(){
         cotizacionDePolizaSteps.validarCargueCotizacion();
+    }
+
+    @When("se muestre el mensaje <mensaje> de advertencia de financiacion")
+    public void validarMensajeIntencionFinanciacion(@Named("mensaje") String mensaje){
+        informacionPolizaPASteps.mostrar_Mensaje_Advertencia_Financiacion(mensaje);
     }
 
     @Then("debo ver la siguiente informacion $informacionCotizacion")
