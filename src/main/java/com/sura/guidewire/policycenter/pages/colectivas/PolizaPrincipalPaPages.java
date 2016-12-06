@@ -153,7 +153,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
         setImplicitTimeout(WAIT_TIME_3000, TimeUnit.MILLISECONDS);
         int editables = 0;
         for (int i = 0; i < camposDeCotizacion.size(); i++) {
-            if (!camposDeCotizacion.get(i).getText().equals(null)) {
+            if (camposDeCotizacion.get(i).getText() != null) {
                 editables++;
             }
         }
@@ -171,7 +171,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
         setImplicitTimeout(WAIT_TIME_3000, TimeUnit.MILLISECONDS);
         for (int i = 0; i < camposDePoliza.size(); i++) {
             if (camposDePoliza.get(i).getAttribute("role").equals("textbox")) {
-                if (!camposDePoliza.get(i).getText().equals(null)) {
+                if (camposDePoliza.get(i).getText() != null) {
                     NoEditables = true;
                 } else {
                     return false;

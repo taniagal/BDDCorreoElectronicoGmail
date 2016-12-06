@@ -61,7 +61,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         }
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
             waitUntil(WAIT_TIME_3000);
-            botonBorrar.click();
+            clickElement(botonBorrar);
         }
     }
 
