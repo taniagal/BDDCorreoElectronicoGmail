@@ -5,10 +5,7 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -22,6 +19,10 @@ public class NuevaCotizacionPage extends PageUtil{
     private WebElementFacade botonAcciones;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarPopup;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    private WebElementFacade botonBotonCotizar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']")
+    private WebElementFacade checkBoxTasaUnica;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     private WebElementFacade comboBoxNombreAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
@@ -31,7 +32,7 @@ public class NuevaCotizacionPage extends PageUtil{
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-triggerWrap']/tbody/tr/td/input")
     private WebElementFacade comboBoxOrganizacionW;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
-    private WebElementFacade comboTipoPoliza;
+    private WebElementFacade comboBoxTipoPoliza;
     @FindBy(css = ".message")
     private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
@@ -49,7 +50,7 @@ public class NuevaCotizacionPage extends PageUtil{
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']")
     private WebElementFacade menuItemNuevaCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
-    private WebElementFacade menuItemInformacionPoliza;
+    private WebElementFacade menuItemInformacionDePoliza;
 
 
     public NuevaCotizacionPage(WebDriver driver){
@@ -61,6 +62,7 @@ public class NuevaCotizacionPage extends PageUtil{
         menuAcciones.waitUntilPresent().click();
         menuItemCopiarEnvio.waitUntilPresent().click();
         waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio,"00"));
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void seleccionDeProducto(String nomProducto) {
@@ -119,7 +121,7 @@ public class NuevaCotizacionPage extends PageUtil{
         actions.sendKeys(Keys.ENTER).build().perform();
         seleccionDeProducto(dato.get("producto"));
         if ("Autos".equals(dato.get("producto"))) {
-            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemInformacionPoliza).waitUntilPresent().click();
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemInformacionDePoliza).waitUntilPresent().click();
             waitForTextToAppear("Información de póliza");
             comboBoxOrganizacion.waitUntilPresent();
             if (!comboBoxOrganizacion.getValue().equals(dato.get("producto"))) {
@@ -129,20 +131,58 @@ public class NuevaCotizacionPage extends PageUtil{
                 selectItem(comboBoxCanal, dato.get("canal"));
                 waitForComboValue(comboBoxCanal, dato.get("canal"));
                 try {
-                    selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
+                    selectItem(comboBoxTipoPoliza, dato.get("tipoPoliza"));
                 } catch (ElementNotVisibleException e) {
                     LOGGER.info("ElementNotVisibleException " + e);
                     waitUntil(WAIT_TIME_2000);
-                    selectItem(comboTipoPoliza, dato.get("tipoPoliza"));
+                    selectItem(comboBoxTipoPoliza, dato.get("tipoPoliza"));
                 }
-                waitForComboValue(comboTipoPoliza, dato.get("tipoPoliza"));
+                waitForComboValue(comboBoxTipoPoliza, dato.get("tipoPoliza"));
             }
         }
     }
 
 
     public void cotizarEnvioCopiada(){
-        menuItemInformacionPoliza.waitUntilPresent();
-        clickElement(menuItemInformacionPoliza);
+        menuItemInformacionDePoliza.waitUntilPresent();
+        clickElement(menuItemInformacionDePoliza);
+        botonBotonCotizar.waitUntilPresent().click();
+    }
+
+
+    public void llenarInfoPoliza() {
+        menuItemInformacionDePoliza.waitUntilPresent();
+        clickElement(menuItemInformacionDePoliza);
+        try {
+            waitUntil(WAIT_TIME_2000);
+            comboBoxOrganizacion.waitUntilPresent();
+        } catch (StaleElementReferenceException f) {
+            LOGGER.info("StaleElementReferenceException " + f);
+            waitUntil(WAIT_TIME_2000);
+        }
+        if (!comboBoxOrganizacion.getText().equals("Sura")) {
+            selectItem(comboBoxOrganizacion, "Sura");
+            waitForComboValue(comboBoxOrganizacion, "Sura");
+            waitUntil(WAIT_TIME_1000);
+            selectItem(comboBoxCanal, "Canal Tradicional");
+            waitForComboValue(comboBoxCanal, "Canal Tradicional");
+            try {
+                waitUntil(WAIT_TIME_1000);
+                selectItem(comboBoxTipoPoliza, "PPAutos");
+            } catch (ElementNotVisibleException e) {
+                LOGGER.info("ElementNotVisibleException " + e);
+                waitUntil(WAIT_TIME_2000);
+                selectItem(comboBoxTipoPoliza, "PPAutos");
+            } catch (StaleElementReferenceException f) {
+                LOGGER.info("StaleElementReferenceException " + f);
+                waitUntil(WAIT_TIME_2000);
+                selectItem(comboBoxTipoPoliza, "PPAutos");
+            }
+            waitForComboValue(comboBoxTipoPoliza, "PPAutos");
+        }
+    }
+
+    public void desmarcarTasaUnica(){
+        checkBoxTasaUnica.click();
     }
 }

@@ -12,6 +12,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 
@@ -51,9 +52,9 @@ public class CotizacionPADetalleDefinitions {
         cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
     }
 
-    @When("ingrese al detalle de la cotizacion")
-    public void verDetalleCotizacion() {
-        nuevaCotizacionSteps.cotizarEnvioCopiado();
+    @When("ingrese al detalle de la cotizacion: $datosCotizacion")
+    public void cotizarEnvioCopiadoPa(ExamplesTable datosCotizacion) {
+        nuevaCotizacionSteps.cotizarEnvioCopiadoPa(datosCotizacion);
     }
 
     @Then("se debe mostrar la informacion del detalle de cotizacion por riesgo")

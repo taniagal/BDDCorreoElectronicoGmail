@@ -234,4 +234,13 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         MatcherAssert.assertThat(labelTituloCoberturasAuto.getText(), Is.is(Matchers.equalTo("Coberturas de auto personal")));
         waitUntil(WAIT_TIME_1000);
     }
+
+    public void agregarCiudadDeCirculacionY0Km(ExamplesTable datosCotizacion) {
+        Map<String, String> vehiculo = datosCotizacion.getRow(0);
+        comboBoxCiudadCirculacion.waitUntilPresent().click();
+        waitUntil(WAIT_TIME_3000);
+        seleccionarComboBoxModelo(vehiculo);
+        selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+        waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+    }
 }

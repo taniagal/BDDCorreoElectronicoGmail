@@ -71,12 +71,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade campoTxtSegundoNombre;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:MaritalStatus-inputEl']")
     private WebElementFacade comboBoxEstadoCivil;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
-    private WebElementFacade comboBoxOrganizacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
-    private WebElementFacade comboBoxCanal;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
-    private WebElementFacade comboBoxTipoPoliza;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']")
     private WebElementFacade checkBoxTasaUnica;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:__crumb__']")
@@ -223,37 +217,5 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public void guardarMontoPorCoberturas() {
         primaTotal = labelPrimaTotalCotizacion.waitUntilPresent().getText();
-    }
-
-
-    public void llenarInfoPoliza() {
-        menuiItemInformacionDePoliza.waitUntilPresent().click();
-        try {
-            waitUntil(WAIT_TIME_2000);
-            comboBoxOrganizacion.waitUntilPresent();
-        } catch (StaleElementReferenceException f) {
-            LOGGER.info("StaleElementReferenceException " + f);
-            waitUntil(WAIT_TIME_2000);
-        }
-        if (!comboBoxOrganizacion.getText().equals("Sura")) {
-            selectItem(comboBoxOrganizacion, "Sura");
-            waitForComboValue(comboBoxOrganizacion, "Sura");
-            waitUntil(WAIT_TIME_1000);
-            selectItem(comboBoxCanal, "Canal Tradicional");
-            waitForComboValue(comboBoxCanal, "Canal Tradicional");
-            try {
-                waitUntil(WAIT_TIME_1000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
-            } catch (ElementNotVisibleException e) {
-                LOGGER.info("ElementNotVisibleException " + e);
-                waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
-            } catch (StaleElementReferenceException f) {
-                LOGGER.info("StaleElementReferenceException " + f);
-                waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
-            }
-            waitForComboValue(comboBoxTipoPoliza, "PPAutos");
-        }
     }
 }
