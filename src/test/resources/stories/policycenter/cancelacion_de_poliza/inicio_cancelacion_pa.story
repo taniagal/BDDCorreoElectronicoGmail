@@ -20,7 +20,7 @@ Then Se deben mostrar los campos motivo, metodo de reembolso, fecha vigente de c
 
 Examples:
 |poliza       |
-|TEST_22266674|
+|TEST_22222222|
 
 Scenario: Validacion de retroactividad en cancelacion de poliza
 Given que existe una <poliza> y esta dentro de la vigencia
@@ -30,7 +30,7 @@ Then Se debe validar la retroactividad sino cumple con <mensaje>
 
 Examples:
 |poliza       |mensaje|
-|TEST_22266674|La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días)|
+|TEST_22222222|La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días)|
 
 Scenario: Validacion emision adelantada en cancelacion de poliza
 Given que existe una <poliza> y esta dentro de la vigencia
@@ -40,7 +40,7 @@ Then Se debe validar la emision anticipada con <mensaje>
 
 Examples:
 |poliza       |mensaje|
-|TEST_22266674|La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (60 días)|
+|TEST_22222222|La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (60 días)|
 
 Scenario: motivos de cancelacion para polizas diferentes a Bancolombia
 Given que existe una <poliza> y esta dentro de la vigencia
@@ -58,7 +58,7 @@ Then Se debe validar en la lista cuando la poliza NO es de bancolombia:
 
 Examples:
 |poliza       |
-|TEST_22266674|
+|TEST_22222222|
 
 
 Scenario: validar metodo de reembolso
@@ -80,7 +80,7 @@ Then Se debe validar el cambio en metodo de reembolso
 
 Examples:
 |poliza       |
-|TEST_22266674|
+|TEST_22222222|
 
 Scenario: motivos de cancelacion para polizas de bancolombia
 Meta:
@@ -96,4 +96,4 @@ Then Se debe validar en la lista cuando la poliza NO es de bancolombia
 
 Examples:
 |poliza       |
-|TEST_22266674|
+|TEST_22222222|
