@@ -10,7 +10,7 @@ Como usuario PolicyCenter
 quiero poder buscar Actividades
 para encontrar una cuenta especifica, poliza, transaccion de poliza, actividad
 
-Scenario: Realizar busqueda de actividades por alguno de los filtros requeridos y estado de actividad sin resultados
+Scenario: Asignar actividad a poliza expedida
 GivenStories: stories/policycenter/login_policy.story
 Given ya se tiene una poliza expedida <numeroPoliza>
 When agregue una actividad a la poliza
