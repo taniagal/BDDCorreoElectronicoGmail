@@ -67,4 +67,3 @@ Then no debo visualizar la advertencia con el <mensaje>
 Examples:
 |buscarNumeroPoliza       |mensaje|
 |TEST_22266668            |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
-
