@@ -37,3 +37,17 @@ el numero de cotas <numeroCuotas> indicadas en la informacion de la poliza
 Examples:
 |tipo_documento      |documento |valorCuota |numeroCuotas|mensaje |
 |CEDULA DE CIUDADANIA|1060447895|$101.620,00|11          |La financiación de la póliza está sujeta a aprobación por parte del área de financiación.|
+
+Scenario: Riesgos consultables - Tipo Causal Tecnica
+Meta: @manual
+Given  he realizado la cotizacion
+When  ingrese a la cotizacion
+And  el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
+Then  no se debe permitir continuar con la cotizacion y mostrar un mensaje
+
+Scenario: Riesgos consultables - Tipo Causal Moral
+Meta: @manual
+Given  he realizado la cotizacion
+When  ingrese a la cotizacion
+And  el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
+Then  no se debe permitir continuar con la cotizacion y mostrar un mensaje
