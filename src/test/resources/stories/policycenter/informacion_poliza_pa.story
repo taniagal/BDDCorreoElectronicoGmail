@@ -33,12 +33,11 @@ And seleccione la organizacion, el canal y el tipo de poliza:
 |organizacion   |canal              |tipoPoliza |
 |Sura           |Canal Tradicional  |PPAutos    |
 And modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
-Then esta <fechaInicioVigencia> debe calcular de forma automatica la fecha de fin de vigencia, la cual depende del tipo de plazo
-
+Then la fecha fin de vigencia <fechaFinVigencia> se debe calcular de forma automatica, la cual depende del tipo de plazo
 
 Examples:
-|numCuenta     |fechaInicioVigencia|tipoPlazo |
-|C000888888    |15/07/2016         |Anual     |
+|numCuenta     |fechaInicioVigencia|fechaFinVigencia|tipoPlazo |
+|C000888888    |30/11/2016         |30/11/2017      |Anual     |
 
 Scenario: Ingresar segundo tomador
 Given que voy a buscar la cuenta <numCuenta>
@@ -84,20 +83,6 @@ Examples:
 |numCuenta      |porcentaje     |mensaje                                                                                 |
 |C000888888     |20,325         |Descuento póliza : El descuento de la póliza puede tener máximo 2 cifras decimales.     |
 
-Scenario: Deseo de financiacion de poliza
-Given que voy a buscar la cuenta <numCuenta>
-And se visualiza la informacion de la poliza
-When seleccione el producto para expedir la poliza
-And seleccione la organizacion, el canal y el tipo de poliza:
-|organizacion   |canal              |tipoPoliza |
-|Sura           |Canal Tradicional  |PPAutos    |
-And indique que deseo financiar la poliza
-Then se debe habilitar la opcion de numero de cuotas
-
-Examples:
-|numCuenta    |
-|C000888888   |
-
 Scenario: No deseo de financiacion de poliza
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
@@ -135,12 +120,12 @@ When seleccione el producto para expedir la poliza
 And seleccione la organizacion, el canal y el tipo de poliza:
 |organizacion   |canal              |tipoPoliza |
 |Sura           |Canal Tradicional  |PPAutos    |
-And modifique la fecha de inicio de vigencia <organizacion> <canal> <tipoPoliza> <tipoPlazo> <fechaInicioVigencia>
+And modifique la fecha de inicio de vigencia <tipoPlazo> <fechaInicioVigencia>
 Then se debe cumplir con la retroactividad permitida <mensaje>
 
 Examples:
-| numCuenta    | tipoPlazo | fechaInicioVigencia | mensaje                                                                                     |
-| C000888888   | 6 meses   | 01/01/2016          | La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
+|numCuenta  |tipoPlazo |fechaInicioVigencia |mensaje                                                                                     |
+|C000888888 |6 meses   |01/01/2016          |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días) |
 
 Scenario: Seleccionar oficina de radicacion
 Meta:

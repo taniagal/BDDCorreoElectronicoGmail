@@ -46,3 +46,17 @@ Then debe enviar un mensaje a un buzon previamente configurado cuando existe un 
 Examples:
 |cotizacion|
 |22222227  |
+
+Scenario: Riesgos consultables - Tipo Causal Tecnica
+Meta: @manual
+Given  he realizado la cotizacion
+When  ingrese a la cotizacion
+And  el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
+Then  no se debe permitir continuar con la cotizacion y mostrar un mensaje
+
+Scenario: Riesgos consultables - Tipo Causal Moral
+Meta: @manual
+Given  he realizado la cotizacion
+When  ingrese a la cotizacion
+And  el tipo de causal es MORAL, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
+Then  no se debe permitir continuar con la cotizacion y mostrar un mensaje

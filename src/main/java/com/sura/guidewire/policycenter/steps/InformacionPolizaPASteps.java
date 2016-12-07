@@ -47,8 +47,8 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     }
 
     @Step
-    public void calcularFechaFinVigencia(String fechaInicioVigencia) {
-        opcionesInformacionPoliza.calcularFechaFinVigencia(fechaInicioVigencia);
+    public void calcularFechaFinVigencia(String fechaFinVigencia) {
+        opcionesInformacionPoliza.calcularFechaFinVigencia(fechaFinVigencia);
     }
 
     @Step
