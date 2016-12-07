@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
 import com.sura.guidewire.policycenter.steps.InstruccionesPreviasARenovacionSteps;
@@ -42,8 +43,14 @@ public class Poliza {
     @Steps
     IngresoAPolicyCenterDefinitions guidewireLogin;
 
-    @Steps GuidewireSteps guidewire;
-    @Steps InstruccionesPreviasARenovacionSteps instruccionesPreviasARenovacionSteps;
+    @Steps
+    GuidewireSteps guidewire;
+
+    @Steps
+    InstruccionesPreviasARenovacionSteps instruccionesPreviasARenovacionSteps;
+
+    @Steps
+    NuevaCotizacionSteps nuevaCotizacionSteps;
 
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
@@ -100,6 +107,12 @@ public class Poliza {
 
 
 
+    }
+
+    @When("copie la poliza")
+    public void cuandoCopieLaPoliza() {
+        LOGGER.info("Poliza.cuandoCopie la poliza");
+        nuevaCotizacionSteps.copiarEnvio();
     }
 
     // TODO: 04/08/2016 Esto va para la definicion de informacion de la poliza

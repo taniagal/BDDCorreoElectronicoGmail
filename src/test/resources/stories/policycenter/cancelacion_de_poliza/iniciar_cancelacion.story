@@ -27,7 +27,7 @@ Then se debe visualizar los siguientes motivos
 
 Examples:
 | numPoliza     | rolUsuario |
-| TEST_99999999 | Asesor     |
+| TEST_22222236 | Asesor     |
 
 
 
@@ -38,7 +38,7 @@ Then se debe mostrar la fecha del dia de hoy
 
 Examples:
 | numPoliza     | rolUsuario |
-| TEST_99999999 | Asesor     |
+| TEST_22222236 | Asesor     |
 
 
 
@@ -50,7 +50,7 @@ Then se debe mostrar mensaje con el texto: Advertencia: La fecha de cancelación
 
 Examples:
 | numPoliza     | rolUsuario |
-| TEST_99999999 | Asesor     |
+| TEST_22222236 | Asesor     |
 
 
 
@@ -61,7 +61,7 @@ Then se debe mostrar la opcion de cancelar transaccion
 
 Examples:
 | numPoliza     | rolUsuario |
-| TEST_99999999 | Asesor     |
+| TEST_22222236 | Asesor     |
 
 
 
@@ -74,10 +74,10 @@ Then se debe mostrar el metodo de reembolso <reembolso> sin el campo fuente
 
 Examples:
 | numPoliza     | rolUsuario | motivo                  | descripcion             | reembolso      |
-| TEST_99999999 | Asesor     | Por pérdida total       | prueba perdida total    | Sin devolución |
-| TEST_99999999 | Asesor     | Por error de trámite    | prueba error tramite    | Fijo           |
-| TEST_99999999 | Asesor     | Por error en expedición | prueba error expedicion | Fijo           |
-| TEST_99999999 | Asesor     | Por no renovada         | prueba error prorrata   | Prorrata       |
+| TEST_22222236 | Asesor     | Por pérdida total       | prueba perdida total    | Sin devolución |
+| TEST_22222236 | Asesor     | Por error de trámite    | prueba error tramite    | Fijo           |
+| TEST_22222236 | Asesor     | Por error en expedición | prueba error expedicion | Fijo           |
+| TEST_22222236 | Asesor     | Por no renovada         | prueba error prorrata   | Prorrata       |
 
 
 Scenario: 6 Validacion lista de motivos para poliza bancolombia
