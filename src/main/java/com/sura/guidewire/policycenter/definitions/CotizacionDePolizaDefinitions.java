@@ -4,6 +4,10 @@ package com.sura.guidewire.policycenter.definitions;
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.steps.CotizacionDePolizaSteps;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.sura.guidewire.policycenter.steps.InformacionPolizaPASteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
@@ -19,6 +23,9 @@ import java.util.Map;
 public class CotizacionDePolizaDefinitions {
     @Steps
     CotizacionDePolizaSteps cotizacionDePolizaSteps;
+
+    @Steps
+    InformacionPolizaPASteps informacionPolizaPASteps;
 
     @Steps
     NuevaCotizacionSteps nuevaCotizacionSteps;
@@ -51,7 +58,7 @@ public class CotizacionDePolizaDefinitions {
 
     @When("ingrese al detalle de la cotizacion")
     public void verDetalleCotizacion() {
-        //nuevaCotizacionSteps.clickBotonCotizar();
+        cotizacionDePolizaSteps.verDetalleCotizacion();
     }
 
     @When("ingrese a la revision de la poliza")
@@ -99,6 +106,21 @@ public class CotizacionDePolizaDefinitions {
     @When("la cotizacion tenga intencion de financiacion")
     public void ingresarACotizacionFinanciada() {
         cotizacionDePolizaSteps.validarCargueCotizacion();
+    }
+
+    @When("se muestre el mensaje <mensaje> de advertencia de financiacion")
+    public void validarMensajeIntencionFinanciacion(@Named("mensaje") String mensaje){
+        informacionPolizaPASteps.mostrar_Mensaje_Advertencia_Financiacion(mensaje);
+    }
+
+    @When("intente realizar la cotizacion")
+    public void intentarCotizar(){
+        nuevaCotizacionSteps.intentarCotizar();
+    }
+
+    @When("ingrese las coberturas basicas: $coberturas")
+    public void agregarcoberturas(ExamplesTable coberturas) {
+        nuevaCotizacionSteps.seleccionarCoberturaBasicas(coberturas);
     }
 
     @Then("debo ver la siguiente informacion $informacionCotizacion")
@@ -155,5 +177,10 @@ public class CotizacionDePolizaDefinitions {
     public void mostrarValorYNumeroDeCuotas(@Named("valorCuota") String valorCuota,
                                             @Named("numeroCuotas") String numeroCuotas) {
         cotizacionDePolizaSteps.mostrar_Valor_A_Pagar_Por_Cuota_Y_Numero_De_Cuotas(valorCuota, numeroCuotas);
+    }
+
+    @Then("realizar la cotizacion")
+    public void realizarCotizacion(){
+        nuevaCotizacionSteps.intentarCotizar();
     }
 }
