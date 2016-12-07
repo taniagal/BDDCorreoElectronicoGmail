@@ -26,7 +26,7 @@ public class CotizacionDePolizaDefinitions {
 
     @Steps
     InformacionPolizaPASteps informacionPolizaPASteps;
-    
+
     @Steps
     NuevaCotizacionSteps nuevaCotizacionSteps;
 
@@ -113,6 +113,16 @@ public class CotizacionDePolizaDefinitions {
         informacionPolizaPASteps.mostrar_Mensaje_Advertencia_Financiacion(mensaje);
     }
 
+    @When("intente realizar la cotizacion")
+    public void intentarCotizar(){
+        nuevaCotizacionSteps.intentarCotizar();
+    }
+
+    @When("ingrese las coberturas basicas: $coberturas")
+    public void agregarcoberturas(ExamplesTable coberturas) {
+        nuevaCotizacionSteps.seleccionarCoberturaBasicas(coberturas);
+    }
+
     @Then("debo ver la siguiente informacion $informacionCotizacion")
     public void validarInformacionCotizacion(ExamplesTable informacionCotizacion) {
         cotizacionDePolizaSteps.validarInformacionCotizacion(infoCotizacionPoliza, informacionCotizacion);
@@ -167,5 +177,10 @@ public class CotizacionDePolizaDefinitions {
     public void mostrarValorYNumeroDeCuotas(@Named("valorCuota") String valorCuota,
                                             @Named("numeroCuotas") String numeroCuotas) {
         cotizacionDePolizaSteps.mostrar_Valor_A_Pagar_Por_Cuota_Y_Numero_De_Cuotas(valorCuota, numeroCuotas);
+    }
+
+    @Then("realizar la cotizacion")
+    public void realizarCotizacion(){
+        nuevaCotizacionSteps.intentarCotizar();
     }
 }
