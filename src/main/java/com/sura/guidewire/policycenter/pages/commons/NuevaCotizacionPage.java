@@ -42,14 +42,14 @@ public class NuevaCotizacionPage extends PageUtil{
     private WebElementFacade menuAcciones;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_CopySubmission']")
     private WebElementFacade menuItemCopiarEnvio;
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    private WebElementFacade menuItemEscritorio;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
     private WebElementFacade numeroDeCuenta;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']")
-    private WebElementFacade subMenuNuevaCotizacion;
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
-    private WebElementFacade menuItemEscritorio;
+    private WebElementFacade menuItemNuevaCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
-    private WebElementFacade subMenuInformacionPoliza;
+    private WebElementFacade menuItemInformacionPoliza;
 
 
     public NuevaCotizacionPage(WebDriver driver){
@@ -62,7 +62,6 @@ public class NuevaCotizacionPage extends PageUtil{
         menuItemCopiarEnvio.waitUntilPresent().click();
         waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio,"00"));
     }
-
 
     public void seleccionDeProducto(String nomProducto) {
         try {
@@ -104,7 +103,7 @@ public class NuevaCotizacionPage extends PageUtil{
         }
         resetImplicitTimeout();
         botonAcciones.click();
-        subMenuNuevaCotizacion.waitUntilPresent().click();
+        menuItemNuevaCotizacion.waitUntilPresent().click();
     }
 
     public void seleccionarProducto(ExamplesTable datosCotizacion) {
@@ -119,7 +118,7 @@ public class NuevaCotizacionPage extends PageUtil{
         actions.sendKeys(Keys.ENTER).build().perform();
         seleccionDeProducto(dato.get("producto"));
         if ("Autos".equals(dato.get("producto"))) {
-            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(subMenuInformacionPoliza).waitUntilPresent().click();
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemInformacionPoliza).waitUntilPresent().click();
             waitForTextToAppear("Información de póliza");
             comboBoxOrganizacion.waitUntilPresent();
             if (!comboBoxOrganizacion.getValue().equals(dato.get("producto"))) {
@@ -138,5 +137,11 @@ public class NuevaCotizacionPage extends PageUtil{
                 waitForComboValue(comboTipoPoliza, dato.get("tipoPoliza"));
             }
         }
+    }
+
+
+    public void cotizarEnvioCopiada(){
+        menuItemInformacionPoliza.waitUntilPresent();
+        clickElement(menuItemInformacionPoliza);
     }
 }

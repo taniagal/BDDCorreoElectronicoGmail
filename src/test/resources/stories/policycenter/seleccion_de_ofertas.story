@@ -21,5 +21,5 @@ When quiera seleccionar una oferta
 Then no debe mostrar el menu vertical
 
 Examples:
-||
-||
+| cuenta     | agente  | producto |
+| C000888888 | DIRECTO | Autos    |

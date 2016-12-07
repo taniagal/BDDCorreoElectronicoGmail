@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.CotizacionPADetalleSteps;
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.cuenta.HistorialCuentaSteps;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +25,9 @@ public class CotizacionPADetalleDefinitions {
 
     @Steps
     HistorialCuentaSteps historialCuentaSteps;
+
+    @Steps
+    NuevaCotizacionSteps nuevaCotizacionSteps;
 
     private final Map<String, String> infoDetalleCotizacion = new HashMap<>();
 
@@ -49,7 +53,7 @@ public class CotizacionPADetalleDefinitions {
 
     @When("ingrese al detalle de la cotizacion")
     public void verDetalleCotizacion() {
-        cotizacionPADetalleSteps.ver_Detalle_Cotizacion();
+        nuevaCotizacionSteps.cotizarEnvioCopiado();
     }
 
     @Then("se debe mostrar la informacion del detalle de cotizacion por riesgo")

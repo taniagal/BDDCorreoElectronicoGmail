@@ -14,13 +14,13 @@ Asi ver los detalles de la cotizacion de una poliza de Autos por cada uno de los
 
 Scenario: Quote
 GivenStories: stories/policycenter/login_policy.story
-Given he realizado la cotizacion <cotizacion>
+Given estoy cotizando una poliza basado en otro envio <envio>
 When ingrese al detalle de la cotizacion
 Then se debe mostrar la informacion del detalle de cotizacion por riesgo
 
 Examples:
-|cotizacion |
-|22227777   |
+|envio   |
+|22222365|
 
 Scenario: Quote - Termino de la cobertura
 Given he realizado la cotizacion <cotizacion>
