@@ -238,6 +238,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void seleccionarOpcionCotizar() {
         waitUntil(WAIT_TIME_3000);
         lblCotizar.waitUntilClickable().click();
+        waitFor(WAIT_TIME_20).second();
         waitForTextToAppear("Cotización");
     }
 
