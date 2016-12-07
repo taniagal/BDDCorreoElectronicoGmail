@@ -49,7 +49,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_BTN_SELECCIONA = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']";
     private static final String XPATH_INTERES_ADICIONAL = "//label[contains(.,'Interes Adicional')]";
     private static final String XPATH_SELECCIONAR_RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
-    private static final String XPATH_BTON_REMOVER_RIESGOS = "//a[contains(.,'Remover Riesgo')]";
+    private static final String XPATH_BTON_REMOVER_RIESGOS = ".//a[contains(.,'Remover Riesgo')]";
     private static final String XPATH_EDITAR_TRANSACCION_POLIZA = ".//span[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']";
     private static final String XPATH_ACEPTAR = "//a[contains(.,'Aceptar')]";
     private static final String XPATH_DESCARTAR_CAMBIOS = "//a[contains(.,'Descartar cambios no guardados')]";
@@ -185,7 +185,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
 
         setImplicitTimeout(WAIT_TIME_7, TimeUnit.SECONDS);
-        if (findBy(".//a[contains(.,'Borrar')]").isPresent()) {
+        if (findBy(".//a[contains(.,'Borrar')]").waitUntilVisible().isVisible()) {
             findBy(".//*[@id='CPLocationPopup:Update-btnInnerEl']").click();
             waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES, WAIT_TIME_30000);
         }

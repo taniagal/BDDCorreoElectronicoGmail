@@ -83,6 +83,7 @@ public class NuevaCotizacionPage extends PageUtil{
                     if ("Multiriesgo corporativo".equals(nomProducto)) {
                         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
                         if (botonAceptarPopup.isPresent()) {
+                            waitUntil(WAIT_TIME_1000);
                             botonAceptarPopup.click();
                             botonAceptarPopup.waitUntilNotVisible();
                         }
