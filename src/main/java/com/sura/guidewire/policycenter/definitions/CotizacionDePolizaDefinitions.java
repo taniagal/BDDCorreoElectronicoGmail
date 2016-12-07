@@ -4,9 +4,7 @@ package com.sura.guidewire.policycenter.definitions;
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.steps.CotizacionDePolizaSteps;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.jbehave.core.annotations.Given;
@@ -14,15 +12,20 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class CotizacionDePolizaDefinitions {
     @Steps
     CotizacionDePolizaSteps cotizacionDePolizaSteps;
 
+    @Steps
+    NuevaCotizacionSteps nuevaCotizacionSteps;
+
     private final Map<String, String> infoCotizacionPoliza = new HashMap<>();
 
-    public CotizacionDePolizaDefinitions(){
+    public CotizacionDePolizaDefinitions() {
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
         infoCotizacionPoliza.put("vigenciaPoliza", "Vigencia de la póliza");
         infoCotizacionPoliza.put("tomador", "Tomador");
@@ -48,26 +51,26 @@ public class CotizacionDePolizaDefinitions {
 
     @When("ingrese al detalle de la cotizacion")
     public void verDetalleCotizacion() {
-        cotizacionDePolizaSteps.verDetalleCotizacion();
+        //nuevaCotizacionSteps.clickBotonCotizar();
     }
 
     @When("ingrese a la revision de la poliza")
-    public void ingresarARevisionPoliza(){
+    public void ingresarARevisionPoliza() {
         cotizacionDePolizaSteps.ingresarARevisionPoliza();
     }
 
     @When("ingrese a la cotizacion")
-    public void ingresarACotizacion(){
+    public void ingresarACotizacion() {
         cotizacionDePolizaSteps.ingresarACotizacion();
     }
 
     @When("el tipo de riesgo es CHASIS")
-    public void validarTipoRiesgoChasis(){
+    public void validarTipoRiesgoChasis() {
         cotizacionDePolizaSteps.validarTipoRiesgo();
     }
 
     @When("las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable")
-    public void validarFigurasCotizacion(){
+    public void validarFigurasCotizacion() {
         cotizacionDePolizaSteps.validarFigurasCotizacion();
     }
 
@@ -78,23 +81,23 @@ public class CotizacionDePolizaDefinitions {
 
     @When("ya existe una cotizacion para el mismo Asegurado <asegurado>, diferente asesor y mismo numero de placa <placa>")
     public void validarCotizacionDuplicada(@Named("asegurado") String asegurado,
-                                           @Named("placa") String placa){
+                                           @Named("placa") String placa) {
         cotizacionDePolizaSteps.validarDatosCotizacionPEP(asegurado, placa);
     }
 
     @When("ya existe una cotizacion para el mismo Asegurado (Numero de identificacion, Tipo de identificacion, diferente asesor\n" +
             "y mismo numero de placa)")
-    public void validarExclusividad(){
+    public void validarExclusividad() {
         cotizacionDePolizaSteps.validarTipoRiesgo();
     }
 
     @When("se haya definido la cotizacion con intencion de financiacion")
-    public void validarFinanciacion(){
+    public void validarFinanciacion() {
         cotizacionDePolizaSteps.validarTipoRiesgo();
     }
 
     @When("la cotizacion tenga intencion de financiacion")
-    public void ingresarACotizacionFinanciada(){
+    public void ingresarACotizacionFinanciada() {
         cotizacionDePolizaSteps.validarCargueCotizacion();
     }
 
@@ -104,7 +107,7 @@ public class CotizacionDePolizaDefinitions {
     }
 
     @Then("debo poder ver la direccion del tomador de la poliza <direccion>, la cual se indico como principal")
-    public void validarDireccion(@Named("direccion") String direccion){
+    public void validarDireccion(@Named("direccion") String direccion) {
         cotizacionDePolizaSteps.validarDireccionTomador(direccion);
     }
 
@@ -114,43 +117,43 @@ public class CotizacionDePolizaDefinitions {
     }
 
     @Then("no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensaje>; no se debe mostrar ningun valor de cotizacion al cliente")
-    public void validarBloqueoCotizacion(@Named("mensaje") String mensaje){
+    public void validarBloqueoCotizacion(@Named("mensaje") String mensaje) {
         cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
     }
 
     @Then("se debe mostrar un mensaje <mensaje> que indique \"El cliente (nombre del Aegurado) ya tiene una cotizacion en curso\n" +
             "para el producto seleccionado para la oficina (nombre de la oficina que se ingreso en la primera cotizacion)”,\n" +
             "con dos opciones : Solicitar Aprobacion y cancelar")
-    public void validarBloqueoPEP(@Named("mensaje") String mensaje){
+    public void validarBloqueoPEP(@Named("mensaje") String mensaje) {
         cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
     }
 
     @Then("no se debe permitir continuar con la cotizacion y mostrar un mensaje <mensaje> que indique el chasis es un riesgo")
-    public void validarBloqueoChasis(@Named("mensaje") String mensaje){
+    public void validarBloqueoChasis(@Named("mensaje") String mensaje) {
         cotizacionDePolizaSteps.validarBloqueoChasis(mensaje);
     }
 
     @Then("se debe mostrar un mensaje  <mensaje >que indique \"El cliente (nombre del Aegurado) ya tiene una cotizacion en curso para\n" +
             "el producto seleccionado para la oficina (nombre de la oficina que se ingreso en la primera cotizacion)”,\n" +
             "con dos opciones : Solicitar Aprobacion y cancelar")
-    public void validarBloqueoPorExclusividad(@Named("mensaje") String mensaje){
+    public void validarBloqueoPorExclusividad(@Named("mensaje") String mensaje) {
         cotizacionDePolizaSteps.validarBloqueoPorExclusividad(mensaje);
     }
 
     @Then("se debe mostrar un mensaje <mensaje> de advertencia sin bloquear la cotizacion")
-    public void validarNoBloqueoCotizacion(@Named("mensaje") String mensaje){
+    public void validarNoBloqueoCotizacion(@Named("mensaje") String mensaje) {
         cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
     }
 
     @Then("se debe mostrar un mensaje <mensaje> como advertencia")
-    public void validarMensajeFinanciacion(@Named("mensaje") String mensaje){
+    public void validarMensajeFinanciacion(@Named("mensaje") String mensaje) {
         cotizacionDePolizaSteps.validarBloqueoCotizacion(mensaje);
     }
 
     @Then("se debe mostrar en el detalle de la cotizacion el Valor por cuota a pagar <valorCuota> y\n" +
             "el numero de cotas <numeroCuotas> indicadas en la informacion de la poliza")
     public void mostrarValorYNumeroDeCuotas(@Named("valorCuota") String valorCuota,
-                                            @Named("numeroCuotas") String numeroCuotas){
+                                            @Named("numeroCuotas") String numeroCuotas) {
         cotizacionDePolizaSteps.mostrar_Valor_A_Pagar_Por_Cuota_Y_Numero_De_Cuotas(valorCuota, numeroCuotas);
     }
 }

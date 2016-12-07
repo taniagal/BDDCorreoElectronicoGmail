@@ -14,7 +14,6 @@ para comenzar un proceso de expedicion con un cliente en caso de ser posible
 
 Scenario: Informacion general de cotizacion
 GivenStories: stories/policycenter/login_policy.story
-
 Given he realizado la cotizacion <cotizacion>
 When ingrese a la cotizacion
 And se haya definido la cotizacion con intencion de financiacion
@@ -44,7 +43,7 @@ And  el tipo de causal es TECNICA, el tipo de riesgo CHASIS, MOTOR Y/O PLACA
 Then  no se debe permitir continuar con la cotizacion y mostrar un mensaje
 
 Scenario: Riesgos consultables - Tipo Causal Moral
-Meta: @lote3
+Meta:
 @manual
 Given  he realizado la cotizacion
 When  ingrese a la cotizacion
