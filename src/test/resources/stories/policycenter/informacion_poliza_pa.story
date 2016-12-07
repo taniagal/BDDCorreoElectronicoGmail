@@ -97,22 +97,6 @@ Examples:
 |numCuenta    |
 |C000888888   |
 
-Scenario: Deseo de financiacion de poliza - opcion Siguiente
-Given que voy a buscar la cuenta <numCuenta>
-And se visualiza la informacion de la poliza
-When seleccione el producto para expedir la poliza
-And seleccione la organizacion, el canal y el tipo de poliza:
-|organizacion   |canal              |tipoPoliza |
-|Sura           |Canal Tradicional  |PPAutos    |
-And indique que deseo financiar la poliza
-And indique el numero de cuotas
-And seleccione la opcion siguiente
-Then se debe mostrar un mensaje <mensaje> de advertencia
-
-Examples:
-|numCuenta    |mensaje                                                                                  |
-|C000888888   |La financiación de la póliza está sujeta a aprobación por parte del área de financiación.|
-
 Scenario: Validar retroactividad en la vigencia de la poliza
 Given que voy a buscar la cuenta <numCuenta>
 And se visualiza la informacion de la poliza
