@@ -16,19 +16,13 @@ GivenStories: stories/policycenter/login_policy.story
 Given ingreso a una cuenta <numCuenta>
 When ingrese al historial
 Then mostrar la informacion del historial de la cuenta
-
-Examples:
-|numCuenta |tipo|usuario|fechaTransaccion|descripcion|producto|poliza|transaccionPoliza|valorOriginal|valorNuevo|
-|C000777777|Tipo|Usuario|Fecha de transacción|Descripción|Producto|Póliza|Transacción de póliza|Valor original|Valor nuevo|
-
-Scenario: Busqueda de historial por la opcion Relacionado con
-Given estoy en el historial de la cuenta <numCuenta>
-When indique el criterio de busqueda Relacionado con
-Then debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con
+And indique el criterio de busqueda Relacionado con
+And debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con
 And mostrar la informacion del historial de la cuenta
 
+
 Examples:
-|numCuenta |tipo|usuario|fechaTransaccion|descripcion|producto|poliza|transaccionPoliza|valorOriginal|valorNuevo|
+|numCuenta |tipo|usuario|fechaTransaccion    |descripcion|producto|poliza|transaccionPoliza    |valorOriginal |valorNuevo |
 |C000777777|Tipo|Usuario|Fecha de transacción|Descripción|Producto|Póliza|Transacción de póliza|Valor original|Valor nuevo|
 
 Scenario: Busqueda de historial por la opcion producto

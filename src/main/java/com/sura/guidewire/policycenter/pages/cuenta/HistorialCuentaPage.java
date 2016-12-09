@@ -27,11 +27,11 @@ public class HistorialCuentaPage extends PageUtil {
     private WebElementFacade mnuHistorial;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
     private WebElementFacade btnMostrarRelacionadoCon;
-    @FindBy(xpath=".//li[5]")
+    @FindBy(xpath=".//li[4]")
     private WebElementFacade itmRelacionadoCon;
     @FindBy(xpath=".//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade btnMostrarProducto;
-    @FindBy(xpath=".//li[2]")
+    @FindBy(xpath="..//div[5]/div/ul/li[2]")
     private WebElementFacade itmProducto;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:user-inputEl']")
     private WebElementFacade txtUsuario;
@@ -57,7 +57,7 @@ public class HistorialCuentaPage extends PageUtil {
     private WebElementFacade colValorOriginal;
     @FindBy(xpath=".//div[9]/div/span")
     private WebElementFacade colValorNuevo;
-    @FindBy(xpath=".//li[2]")
+    @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
     private WebElementFacade itmRelacionadoConRenovacion;
     @FindBy(xpath=".//td[3]/div/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade txtFechaDesde;
@@ -65,7 +65,7 @@ public class HistorialCuentaPage extends PageUtil {
     private WebElementFacade txtFechaHasta;
     @FindBy(xpath=".//td/div/div[3]/div/table")
     private WebElementFacade table;
-    @FindBy(xpath="//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    @FindBy(xpath=".//li[2]")
     private WebElementFacade txtProducto;
 
     protected static final int POSICION_4 = 4;

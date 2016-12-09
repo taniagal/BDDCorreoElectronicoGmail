@@ -39,7 +39,7 @@ public class HistorialCuentaDefinitions {
         historialCuentaSteps.validarColumnasHistorialCuenta();
     }
 
-    @When("indique el criterio de busqueda Relacionado con")
+    @Then("indique el criterio de busqueda Relacionado con")
     public void whenIndiqueElCriterioDeBusquedaRelacionadoCon() {
         historialCuentaSteps.buscarCuentaRelacionadoCon();
     }
@@ -47,13 +47,6 @@ public class HistorialCuentaDefinitions {
     @Then("debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con")
     public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoRelacionadoCon() {
         historialCuentaSteps.validarResultadoBusqueda();
-    }
-
-    @When("indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> y <FechaHasta>")
-    public void whenIndiqueMultiplesCriterios (@Named("Usuario") String usuario,
-                                               @Named("FechaDesde") String fechaDesde,
-                                               @Named("FechaHasta") String fechaHasta){
-        historialCuentaSteps.buscarCuentaConMultiplesOpciones( usuario,  fechaDesde,  fechaHasta);
     }
 
     @Then("debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda")
@@ -70,4 +63,11 @@ public class HistorialCuentaDefinitions {
     public void thenDeboPoderVerLasTransaccionesRelacionadasALaOpcionIndicadaEnElCampoProducto() {
         historialCuentaSteps.validarResultadoProducto();
     }
+    @When("indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> y <FechaHasta>")
+    public void whenIndiqueMultiplesCriterios (@Named("Usuario") String usuario,
+                                               @Named("FechaDesde") String fechaDesde,
+                                               @Named("FechaHasta") String fechaHasta){
+        historialCuentaSteps.buscarCuentaConMultiplesOpciones( usuario,  fechaDesde,  fechaHasta);
+    }
+
 }
