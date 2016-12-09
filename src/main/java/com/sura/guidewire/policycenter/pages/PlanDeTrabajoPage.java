@@ -54,6 +54,7 @@ public class PlanDeTrabajoPage extends PageUtil {
         }
         if (numeroDeRiesgosEnAnalisisDeRiesgos == listaNombresAgentesElement.size()) {
             MatcherAssert.assertThat("Se genero una actividad por cada riesgo consultable", true);
+            waitUntil(WAIT_TIME_1000);
         }
     }
 }
