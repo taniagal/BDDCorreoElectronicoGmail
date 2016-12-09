@@ -6,42 +6,14 @@ Meta:
 @tag automator:andres_alarcon_guerrero
 @Sprint 6
 
-Scenario: 1 Bug CDSEG-2887
-Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
-When intente ingresar las entradas de las diferentes coberturas
-| TAB             | TIPO_ARTICULO     | COBERTURA | OTRO_ARTICULO_OTROS | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Otros Articulos | Suelos y Terrenos | Terremoto |                     | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
-| Otros Articulos | Suelos y Terrenos | Terremoto | X                   | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
-When haga clic en el boton Aceptar
-Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
-Examples:
-| numSubscripcion | rolUsuario | descripcion |
-| 22222236        | Asesor     |             |
 
-
-Scenario: 2 Bug CDSEG-2756
-Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
-When intente ingresar las entradas de las diferentes coberturas
-| TAB             | TIPO_ARTICULO     | COBERTURA | OTRO_ARTICULO_OTROS | ENTRADAS                                                                             | VALOR_ENTRADAS |
-| Otros Articulos | Suelos y Terrenos | Terremoto |                     | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
-| Otros Articulos | Suelos y Terrenos | Terremoto | X                   | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
-| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
-When haga clic en el boton Aceptar
-Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
-Examples:
-| numSubscripcion | rolUsuario | descripcion |
-| 22222236        | Asesor     |             |
-
-
-Scenario: 3 Bug CDSEG-1900 Validaciones en valores de los sublimites cobertura
-Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
+Scenario: 1 Bug CDSEG-1900 Validaciones en valores de los sublimites cobertura
+GivenStories: stories/policycenter/login_policy.story
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When copie la poliza
+And ingrese a edificios y ubicaciones
+And intente ingresar una nueva ubicacion sin riesgo consultable
+And borro el articulo anterior
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                            | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                | 10000          |
@@ -54,4 +26,23 @@ Then se debe validar que ningun sublimite de las coberturas anteriores sobrepase
 Then no debe dejar continuar y debe permanecer en la pagina Agregar Articulo
 Examples:
 | numSubscripcion | rolUsuario | descripcion |
-| 22222236        | Asesor     |             |
+| 22222211        | Asesor     |             |
+
+
+Scenario: 2 Bug CDSEG-2887, CDSEG-2756
+Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
+When intente ingresar las entradas de las diferentes coberturas
+| TAB             | TIPO_ARTICULO     | COBERTURA | OTRO_ARTICULO_OTROS | ENTRADAS                                                                             | VALOR_ENTRADAS |
+| Otros Articulos | Suelos y Terrenos | Terremoto |                     | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
+| Otros Articulos | Suelos y Terrenos | Terremoto | X                   | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Valor Asegurable                                                                     | 4              |
+| Otros Articulos | Suelos y Terrenos |           |                     | Índice variable                                                                      | 1              |
+When haga clic en el boton Aceptar
+Then se espera que el siguiente mensaje se muestre una sola vez: Para seleccionar la cobertura de "Terremoto" del articulo "Suelos y Terrenos" debe tener seleccionada la cobertura de "Terremoto" para el artículo "Edificio".
+Examples:
+| numSubscripcion | rolUsuario | descripcion |
+| 22222211        | Asesor     |             |
+
+
