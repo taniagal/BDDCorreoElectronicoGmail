@@ -105,11 +105,11 @@ public class CambioDePolizaPage extends PageUtil {
     }
 
 
-    public void cambiarFechaDeVigencia() {
+    public void cambiarFechaDeVigencia(String dias) {
         botonEditarTransaccionDePoliza.waitUntilPresent().click();
         botonAceptarPopup.waitUntilPresent().click();
         irAInformacionDePoliza();
-        String fecha = Utils.sumarDiasALaFechaActual(-31);
+        String fecha = Utils.sumarDiasALaFechaActual(Integer.parseInt(dias));
         campoTxtFechaInicioDeVigencia.waitUntilPresent().clear();
         campoTxtFechaInicioDeVigencia.sendKeys(fecha);
         comboBoxTipoPlazo.click();
