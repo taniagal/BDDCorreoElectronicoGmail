@@ -119,7 +119,13 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
     }
 
-    private void ingresarPlaca(Map<String, String> vehiculo) {
+    public void ingresarPlacaConModelo2011(Map<String, String> vehiculo){
+        ingresarPlaca(vehiculo);
+        tablaVehiculo.click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2011"));
+    }
+
+    public void ingresarPlaca(Map<String, String> vehiculo) {
         waitUntil(WAIT_TIME_1000);
         if (!"random".equals(vehiculo.get("placa"))) {
             ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
@@ -156,7 +162,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         }
     }
 
-    private void seleccionarComboBoxModelo(Map<String, String> vehiculo) {
+    public void seleccionarComboBoxModelo(Map<String, String> vehiculo) {
         try {
             selectItem(comboBoxModelo, vehiculo.get("modelo"));
         } catch (StaleElementReferenceException e) {

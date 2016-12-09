@@ -92,7 +92,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionar_opcion_cotizar(){
+    public void seleccionarOpcionCotizar(){
         opcionesInformacionPolizaMrcPage.seleccionarOpcionCotizar();
     }
 

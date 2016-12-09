@@ -38,9 +38,9 @@ public class CambioDePolizaDefinitions {
         cambioDePolizaSteps.cambiarPoliza();
     }
 
-    @When("cambie la fecha de inicio de vigencia de pa poliza")
-    public void cambiarFechaDeVigencia() {
-        cambioDePolizaSteps.cambiarFechaDeVigencia();
+    @When("cambie la fecha de inicio de vigencia <dias> de pa poliza")
+    public void cambiarFechaDeVigencia(@Named("dias") String dias) {
+        cambioDePolizaSteps.cambiarFechaDeVigencia(dias);
     }
 
     @Given("le ingreso el reaseguro especial")

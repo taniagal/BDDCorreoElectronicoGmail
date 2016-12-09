@@ -56,7 +56,7 @@ public class CambioDePolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void cambiarFechaDeVigencia() {
-        cambioDePolizaPage.cambiarFechaDeVigencia();
+    public void cambiarFechaDeVigencia(String dias) {
+        cambioDePolizaPage.cambiarFechaDeVigencia(dias);
     }
 }

@@ -28,7 +28,7 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
 
     @When("vaya al agregar un vehiculo con datos faltantes")
     public void irAVehiculos() {
-        vehiculoSteps.crear_vehiculo();
+        vehiculoSteps.crearVehiculo();
     }
 
     @Then("deben aparecer los mensajes de validacion: $mensajes")
@@ -48,12 +48,12 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
     @When("agrege un vehiculo con codigo fasecolda <codigo> que no existe")
     public void agregarCodigoFasecolda(@Named("codigo") String codigo) {
         vehiculoSteps.ir_a_vehiculos();
-        vehiculoSteps.agregar_codigo_fasecolda(codigo);
+        vehiculoSteps.agregarCodigoFasecolda(codigo);
     }
 
     @Then("debo ingresar un nuevo codigo")
     public void validarCampodeCodigo() {
-        vehiculoSteps.verificar_estado_del_campo_codigo();
+        vehiculoSteps.verificarEstadoDelCampoCodigo();
     }
 
     /**
@@ -62,12 +62,17 @@ public class ValidacionesInformacionDeVehiculoDefinitions {
     @When("vaya a agregar un vehiculo con los datos: $datosVehiculo")
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         vehiculoSteps.ir_a_vehiculos();
-        vehiculoSteps.agregar_vehiculo(datosVehiculo);
+        vehiculoSteps.agregarVehiculo(datosVehiculo);
     }
 
     @When("voy a realizar el siguiente paso")
     public void siguiente(){
         vehiculoSteps.siguiente();
+    }
+
+    @When("agregue la placa del vehiculo")
+    public void agregarPlaca(){
+        vehiculoSteps.agregarPlaca();
     }
 
 }

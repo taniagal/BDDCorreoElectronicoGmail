@@ -38,7 +38,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
     WebElementFacade lblNuevaCotizacion;
     @FindBy(xpath = "//a[contains(.,'Cotizar')]")
-    WebElementFacade lblCotizar;
+    WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade lblTabla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Name-inputEl']")
@@ -236,9 +236,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionarOpcionCotizar() {
-        waitUntil(WAIT_TIME_3000);
-        lblCotizar.waitUntilClickable().click();
-        waitFor(WAIT_TIME_20).second();
+        botonCotizar.waitUntilClickable();
+        clickElement(botonCotizar);
         waitForTextToAppear("Cotización");
     }
 
