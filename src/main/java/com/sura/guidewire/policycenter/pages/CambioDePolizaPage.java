@@ -27,7 +27,7 @@ public class CambioDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//label[@class='x-component g-msg-warning x-component-default']")
     WebElementFacade mensajeAdvertencia;
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PolicyInfo']")
-    WebElementFacade informacionpoliza;
+    WebElementFacade menuItemInformacionDePolizaExp;
     @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:ttlBar']")
     WebElementFacade lblinicioCambioPoliza;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
@@ -35,7 +35,7 @@ public class CambioDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
     WebElementFacade radioBotonReaseguroEspeciaSi;
     @FindBy(xpath = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:reaseguroEspecial-inputEl']")
-    WebElementFacade reaseguroEspecial;
+    WebElementFacade campoReaseguroEspecial;
     @FindBy(xpath = ".//span[contains(@id,'PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_ChangePolicy-textEl')]")
     WebElementFacade opcionCambiarPoliza;
 
@@ -57,16 +57,15 @@ public class CambioDePolizaPage extends PageUtil {
     }
 
     public void  esReaseguroEspecial(String reaseguro) {
-        reaseguroEspecial.waitUntilPresent();
-        MatcherAssert.assertThat(reaseguroEspecial.getText(), Is.is(Matchers.equalTo(reaseguro)));
+        campoReaseguroEspecial.waitUntilPresent();
+        MatcherAssert.assertThat(campoReaseguroEspecial.getText(), Is.is(Matchers.equalTo(reaseguro)));
     }
 
     public void validarMensaje(String mensaje) {verificarMensaje(mensajeAdvertencia,mensaje);
     }
 
     public void seleccionarInformacionPoliza() {
-        waitFor(informacionpoliza).waitUntilPresent();
-        informacionpoliza.click();
+        waitFor(menuItemInformacionDePolizaExp).waitUntilPresent().click();
     }
 
     public void validarMensajeNoHayReaseguro() {
@@ -79,6 +78,5 @@ public class CambioDePolizaPage extends PageUtil {
         radioBotonReaseguroEspeciaSi.waitUntilPresent().click();
         checkBoxFronting.waitUntilPresent().click();
         clickElement(botonSiguiente);
-        //panelMensaje.waitUntilPresent();
     }
 }
