@@ -65,7 +65,8 @@ public class NuevaCotizacionPage extends PageUtil {
             withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
-            selectItem(comboBoxNombreAgente, "A");
+        } catch (StaleElementReferenceException f){
+            LOGGER.info("StaleElementReferenceException " + f);
         }
         waitUntil(WAIT_TIME_2000);
     }

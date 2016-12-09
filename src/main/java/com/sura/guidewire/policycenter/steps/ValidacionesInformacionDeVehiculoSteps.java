@@ -6,6 +6,9 @@ import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
 
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
@@ -26,22 +29,22 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
     }
 
     @Step
-    public void crear_vehiculo(){
+    public void crearVehiculo(){
         vehiculoPage.crearVehiculo();
     }
 
     @Step
-    public void agregar_codigo_fasecolda(String codigo) {
+    public void agregarCodigoFasecolda(String codigo) {
         vehiculoPage.agregarCodigoFasecolda(codigo);
     }
 
     @Step
-    public void verificar_estado_del_campo_codigo() {
+    public void verificarEstadoDelCampoCodigo() {
         vehiculoPage.verificarEstadoDelCampoCodigo();
     }
 
     @Step
-    public void agregar_vehiculo(ExamplesTable datosVehiculo) {
+    public void agregarVehiculo(ExamplesTable datosVehiculo) {
         vehiculoPage.crearVehiculo();
         vehiculoPage.agregarVehiculo(datosVehiculo);
     }
@@ -54,5 +57,17 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
     @Step
     public void validarAvanceSiguientePagina() {
         vehiculoPage.validarAvanceSiguientePagina();
+    }
+
+    @Step
+    public void agregarPlaca() {
+        HashMap<String, String> vehiculo = new HashMap<String, String>();
+        vehiculo.put("placa", "random");
+        vehiculo.put("modelo", "2010");
+        vehiculoPage.irAVehiculos();
+        vehiculoPage.ingresarPlacaConModelo2011(vehiculo);
+        vehiculoPage.seleccionarComboBoxModelo(vehiculo);
+        vehiculo.put("modelo", "2011");
+        vehiculoPage.seleccionarComboBoxModelo(vehiculo);
     }
 }

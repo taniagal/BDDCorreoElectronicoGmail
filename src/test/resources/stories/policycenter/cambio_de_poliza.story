@@ -13,7 +13,9 @@ Al realizar el cambio de una poliza quiero identificar cuando una poliza tiene r
 Scenario:  Realizar cambio de una poliza PA con retroactividad
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
-When cambie la fecha de inicio de vigencia de pa poliza
+When agregue la placa del vehiculo
+And cotize una poliza
+And cambie la fecha de inicio de vigencia de pa poliza
 And cotize una poliza
 And expido la poliza y voy al archivo de poliza
 And quiero relizar el cambio de una poliza
