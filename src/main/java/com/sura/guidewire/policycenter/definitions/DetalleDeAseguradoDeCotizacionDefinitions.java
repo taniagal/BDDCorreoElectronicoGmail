@@ -20,7 +20,7 @@ public class DetalleDeAseguradoDeCotizacionDefinitions {
     private DetalleDeAseguradoDeCotizacionSteps detalleDeAseguradoDeCotizacionSteps;
 
     @Given("voy a crear una nueva cotizacion")
-    public void irACrearNuevaCotizacion(@Named("cuenta") String cuenta){
+    public void irACrearNuevaCotizacion(){
         detalleDeAseguradoDeCotizacionSteps.irACrearNuevaCotizacion();
         }
 

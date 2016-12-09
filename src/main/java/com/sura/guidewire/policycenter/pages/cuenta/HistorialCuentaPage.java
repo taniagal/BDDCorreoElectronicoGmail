@@ -27,11 +27,11 @@ public class HistorialCuentaPage extends PageUtil {
     private WebElementFacade mnuHistorial;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
     private WebElementFacade btnMostrarRelacionadoCon;
-    @FindBy(xpath=".//li[5]")
+    @FindBy(xpath=".//li[4]")
     private WebElementFacade itmRelacionadoCon;
     @FindBy(xpath=".//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade btnMostrarProducto;
-    @FindBy(xpath=".//li[2]")
+    @FindBy(xpath=".//li[contains(.,'Autos')]")
     private WebElementFacade itmProducto;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:user-inputEl']")
     private WebElementFacade txtUsuario;
@@ -57,19 +57,18 @@ public class HistorialCuentaPage extends PageUtil {
     private WebElementFacade colValorOriginal;
     @FindBy(xpath=".//div[9]/div/span")
     private WebElementFacade colValorNuevo;
-    @FindBy(xpath=".//li[2]")
+    @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
     private WebElementFacade itmRelacionadoConRenovacion;
     @FindBy(xpath=".//td[3]/div/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade txtFechaDesde;
     @FindBy(xpath=".//tr[3]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade txtFechaHasta;
-    @FindBy(xpath=".//td/div/div[3]/div/table")
+    @FindBy(xpath=".//td/div/div[2]/div/table")
     private WebElementFacade table;
-    @FindBy(xpath="//td[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
+    @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:ProductFilter-inputEl']")
     private WebElementFacade txtProducto;
 
     protected static final int POSICION_4 = 4;
-
 
     public HistorialCuentaPage(WebDriver driver) {
         super(driver);
@@ -146,12 +145,13 @@ public class HistorialCuentaPage extends PageUtil {
         MatcherAssert.assertThat(colValorNuevo.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
     }
 
-    public void buscarCuentaConMultiplesOpciones(String usuario, String fechaDesde, String fechaHasta){
-        waitFor(btnMostrarRelacionadoCon).shouldBePresent();
-        btnMostrarRelacionadoCon.click();
-        itmRelacionadoConRenovacion.click();
+    public void buscarCuentaConMultiplesOpciones(String usuario, String producto, String fechaDesde, String fechaHasta){
         txtUsuario.waitUntilEnabled();
         txtUsuario.type(usuario);
+        waitFor(btnMostrarProducto).shouldBePresent();
+        btnMostrarProducto.click();
+        itmProducto.click();
+        waitUntil(WAIT_TIME_1000);
         txtFechaDesde.waitUntilEnabled();
         txtFechaDesde.type(fechaDesde);
         txtFechaHasta.waitUntilEnabled();
@@ -161,7 +161,7 @@ public class HistorialCuentaPage extends PageUtil {
         waitUntil(WAIT_TIME_3000);
     }
 
-    public void validarDatosOpcionesMultiples(){
+    public void validarDatosOpcionesMultiples() {
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String usuario = txtUsuario.getValue().toString();
