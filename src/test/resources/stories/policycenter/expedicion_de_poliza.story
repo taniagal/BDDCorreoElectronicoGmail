@@ -22,7 +22,7 @@ Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 
 Examples:
 |cotizacion|mensaje|
-|22222211  |JOSE PAEZ ALZATE, El tomador es un riesgo no es estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial.|
+|22222212  |JOSE PAEZ ALZATE, El tomador es un riesgo no estándar y debe ser analizado por el Comité de Evaluación, por favor tramite el caso con el Gerente o Director Comercial.|
 
 Scenario: Validacion de identificacion de participantes PEPS y riesgos asegurados para autos
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
