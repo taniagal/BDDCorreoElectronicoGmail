@@ -184,8 +184,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
 
-        setImplicitTimeout(WAIT_TIME_7, TimeUnit.SECONDS);
-        if (findBy(".//a[contains(.,'Borrar')]").waitUntilVisible().isVisible()) {
+        setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
+        if (findBy(".//a[contains(.,'Borrar')]").isVisible()) {
             findBy(".//*[@id='CPLocationPopup:Update-btnInnerEl']").click();
             waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES, WAIT_TIME_30000);
         }
@@ -204,6 +204,10 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
         agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
+    }
+
+    public void ingresarNuevaUbicacionSinRiesgoConsultable(){
+        agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 45 30 30", "Acabado de productos textiles");
     }
 
     public void removerRiesgos() {

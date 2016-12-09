@@ -31,10 +31,8 @@ And confirmo el mensaje de expedir poliza
 Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 
 Examples:
-| cotizacion | mensaje                                                                                                                                                                                                                                                                                                  |
-| 22222210   | JOSE PAEZ ALZATE, El tomador es un riesgo no estándar y no es posible gestionar la solicitud por este canal.                                                                                                                                                                                             |
-| 22222227   | DIEGO VELEZ, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal.                                                                                                                                                                                                |
-| 22222226   | T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.^AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.^CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal.     |
+| cotizacion | mensaje     |
+| 22222210   | JOSE PAEZ ALZATE, El tomador es un riesgo no estándar y no es posible gestionar la solicitud por este canal.^DIEGO VELEZ, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal.^T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal.^AB3C2, El motor es un riesgo no estándar y no es posible gestionar la solicitud por este canal.^CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal.|
 
 Scenario: Validacion de riesgos consultables para intereses adicionales
 Meta:
@@ -43,6 +41,3 @@ Given que tengo una cotizacion y voy a crear una poliza
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 Then debe enviar un mensaje a un buzon previamente configurado cuando existe un interes adicional riesgo consultable
-Examples:
-|cotizacion|
-|22222227  |

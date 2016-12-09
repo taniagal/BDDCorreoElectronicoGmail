@@ -115,7 +115,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
                 botonSolicitarAprobacion.click();
                 waitUntil(WAIT_TIME_2000);
                 aceptarInicioSolicitudAprobacion();
-                waitUntil(WAIT_TIME_3000);
+                waitUntil(WAIT_TIME_5000);
             }
         setNumeroDeRiesgos(bttonSolicitarAprobacion);
     }

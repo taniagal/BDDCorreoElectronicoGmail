@@ -124,6 +124,11 @@ public class Poliza {
         polizaSteps.seleccionarBotonSiguienteParaIniciarCambioEnPoliza();
     }
 
+    @When("ingrese al resumen de la poliza expedida")
+    public void cuandoIntenteIngresarAlResumenDeLaPolizaExpedida() {
+        polizaSteps.verResumenDeLaPolizaExpedida();
+    }
+
     @When("cuando intente renovar informacion de la poliza MRC")
     public void cuandoIntenterRenovarPolizaMRC() {
         LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");

@@ -238,48 +238,10 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         fechaExpiracionPoliza.click();
     }
 
-    public void calcularFechaFinVigencia(String fechaInicioVigencia) {
+    public void calcularFechaFinVigencia(String fechaFinVigencia) {
         waitForTextToAppear("Tomador");
-        waitFor(tipoPlazoPoliza).shouldBeVisible();
-        String tipoPlazo = tipoPlazoPoliza.getValue();
-        waitFor(fechaVigenciaPoliza).shouldBeVisible();
-        String fechaVigencia = fechaVigenciaPoliza.getValue();
-        waitFor(fechaExpiracionPoliza).shouldBeVisible();
-        String fechaExpiracion = fechaExpiracionPoliza.getTextValue();
-        String aniovig = fechaVigencia.substring(CONSTANTE_6, CONSTANTE_10);
-        String anioexp = fechaExpiracion.substring(CONSTANTE_6, CONSTANTE_10);
-        String mesvig = fechaVigencia.substring(0, CONSTANTE_2);
-        String mesexp = fechaExpiracion.substring(0, CONSTANTE_2);
-        String diavig = fechaVigencia.substring(WAIT_TIME_3, CONSTANTE_5);
-        String diaexp = fechaExpiracion.substring(WAIT_TIME_3, CONSTANTE_5);
-        int aniovignum = Integer.parseInt(aniovig);
-        int anioexpnum = Integer.parseInt(anioexp);
-        int mesvignum = Integer.parseInt(mesvig);
-        int mesexpnum = Integer.parseInt(mesexp);
-        int diavignum = Integer.parseInt(diavig);
-        int diaexpnum = Integer.parseInt(diaexp);
-        int restaanio = anioexpnum - aniovignum;
-        int restames = mesexpnum - mesvignum;
-        int restadia = diaexpnum - diavignum;
-
-        if ("Anual".equals(tipoPlazo)) {
-            MatcherAssert.assertThat(restaanio, Is.is(Matchers.equalTo(1)));
-            MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(0)));
-            MatcherAssert.assertThat(restadia, Is.is(Matchers.equalTo(0)));
-        } else if ("6 meses".equals(tipoPlazo)) {
-            if (mesvignum > CONSTANTE_6) {
-                MatcherAssert.assertThat(restaanio, Is.is(Matchers.equalTo(1)));
-                MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(-CONSTANTE_6)));
-            } else {
-                MatcherAssert.assertThat(restaanio, Is.is(Matchers.equalTo(0)));
-                MatcherAssert.assertThat(restames, Is.is(Matchers.equalTo(CONSTANTE_6)));
-            }
-            MatcherAssert.assertThat(restadia, Is.is(Matchers.equalTo(0)));
-        } else if ("Otra".equals(tipoPlazo)) {
-            waitFor(fechaExpiracionPoliza).shouldBeVisible();
-            MatcherAssert.assertThat(fechaExpiracionPoliza.getTagName(), Is.is(Matchers.equalTo("input")));
-        }
-
+        WebElementFacade campoFechaFinVigencia = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:ExpirationDate-inputEl']");
+        MatcherAssert.assertThat(campoFechaFinVigencia.getText(), Matchers.is(Matchers.equalTo(fechaFinVigencia)));
     }
 
     public void adicionarSegundoTomador(String tipoDocumento, String primerNombre, String primerApellido) {
