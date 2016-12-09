@@ -62,7 +62,9 @@ public class InformacionDePolizaMrcDefinitions {
     }
 
     @When("cotice una poliza")
-    public void cuandoCotizeUnaPoliza(){informacionDePolizaMrcSteps.seleccionar_opcion_cotizar();}
+    public void cuandoCotizeUnaPoliza(){
+        informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
+    }
 
     @When("quiero agregar un coaseguro <TipoCo> con particion de aseguradoras $entradatable")
     public void cuandoQuieroAgregarunCoaseguro(@Named("TipoCo") String tipoCo, ExamplesTable entradatable) {

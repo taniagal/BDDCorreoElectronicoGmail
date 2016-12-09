@@ -12,8 +12,48 @@ Como usuario de Policy Center
 Quiero porder solicitar una cotizacion
 Asi ver los detalles de la cotizacion de una poliza MRC
 
-Scenario: validacion de exclusividad en la cotizacion
+Scenario: Cotizar una poliza MRC
 GivenStories: stories/policycenter/login_policy.story
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto               |canal            |
+|C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
+When ingrese a edificios y ubicaciones
+And intente ingresar una nueva ubicacion sin riesgo consultable
+And borro el articulo anterior
+And intente ingresar las entradas de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
+| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+And cotice una poliza
+Then debo ver la informacion de la cotizacion
+| tomador     | tipoDocumento        | numeroDocumento | direccion                           | tipoDireccion           | descripcionDireccion                       | prima             | impuestos        | total             |
+| JORGE PAISA | CEDULA DE CIUDADANIA | 1356118711      | CRA 65 # 48-162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | $124.000,00 (COP) | $19.840,00 (COP) | $143.840,00 (COP) |
+And se muestre el detalle de la prima por riesgo
+
+Examples:
+||
+||
+
+Scenario: Cotizar una poliza MRC con un riesgo consultable bloqueante
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto               |canal            |
+|C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
+When quiera agregar un tomador adicional que es riesgo consultable <cedula>
+And ingrese a edificios y ubicaciones
+And intente ingresar una nueva ubicacion sin riesgo consultable
+And borro el articulo anterior
+And intente ingresar las entradas de las diferentes coberturas
+| TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
+| Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+And cotice una poliza
+Then no debe permitir cotizar; se debe mostrar el mensaje de respuesta <mensaje> que envie riesgos consultables
+
+Examples:
+|cedula  |cedulaPEP |mensaje                                                                             |
+|9876543 |98499112  |El tomador es un riesgo no estándar y debe ser analizado por el Comité de Evaluación|
+
+Scenario: validacion de exclusividad en la cotizacion
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto               |canal            |
 |C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
