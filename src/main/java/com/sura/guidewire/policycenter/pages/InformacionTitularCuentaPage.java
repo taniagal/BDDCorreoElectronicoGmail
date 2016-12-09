@@ -134,11 +134,10 @@ public class InformacionTitularCuentaPage extends PageUtil {
         MatcherAssert.assertThat(txtTotalPendiente.getText().toString(), Matchers.is(Matchers.equalTo(totalPendiente)));
     }
 
-    public void validarInformacionMetricas(String anioVigencia, String polizasActivas, String canceladoPorCliente,
+    public void validarInformacionMetricas(String anioVigencia, String canceladoPorCliente,
                                            String canceladoPorCompania, String otrasCancelaciones, String primaVitalicia,
                                            String totalSiniestrosAbiertos, String totalNetoIncurrido) {
         MatcherAssert.assertThat(lblAnioVigencia.getText().toString(), Matchers.is(Matchers.equalTo(anioVigencia)));
-        MatcherAssert.assertThat(txtPolizasActivas.getText().toString(), Matchers.is(Matchers.equalTo(polizasActivas)));
         MatcherAssert.assertThat(txtCanceladoPorCliente.getText().toString(), Matchers.is(Matchers.equalTo(canceladoPorCliente)));
         MatcherAssert.assertThat(txtCanceladoPorCompania.getText().toString(), Matchers.is(Matchers.equalTo(canceladoPorCompania)));
         MatcherAssert.assertThat(txtOtrasCancelaciones.getText().toString(), Matchers.is(Matchers.equalTo(otrasCancelaciones)));
@@ -189,11 +188,6 @@ public class InformacionTitularCuentaPage extends PageUtil {
         MatcherAssert.assertThat(txtCanceladoPorCompania.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
         MatcherAssert.assertThat(txtOtrasCancelaciones.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
         MatcherAssert.assertThat(txtTotalSiniestrosAbiertos.getTagName(), Matchers.is(Matchers.equalTo(DIV)));
-    }
-
-    public void validarInformacionFallecimiento(String fechaFallecimiento, String causaFallecimiento) {
-        MatcherAssert.assertThat(lblFechaFallecimiento.getText().toString(), Matchers.is(Matchers.equalTo(fechaFallecimiento)));
-        MatcherAssert.assertThat(txtCausaFallecimiento.getText().toString(), Matchers.is(Matchers.equalTo(causaFallecimiento)));
     }
 
     public void validarCampoActividadEconomica(String actividadEconomica) {
