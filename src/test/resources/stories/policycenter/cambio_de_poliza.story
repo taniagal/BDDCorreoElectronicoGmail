@@ -12,23 +12,39 @@ Al realizar el cambio de una poliza quiero identificar cuando una poliza tiene r
 
 Scenario:  Realizar cambio de una poliza que tiene reaseguro especial
 GivenStories: stories/policycenter/login_policy.story
-Given que voy a buscar una poliza  <buscarNumeroPoliza>
-When que tiene marcado el campo reaseguro especial en <reaseguro>
+Given estoy cotizando una poliza basado en otro envio <envio>
+And le ingreso el reaseguro especial
+When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+And descripcion <descripcion>, actividad economica <actividad>
+When seleccione la cobertura:
+|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
+|100000000          |100000000     |null          |Terremoto|
+And cotice el articulo bloqueado
+And expido la poliza y voy al archivo de poliza
+And que tiene marcado el campo reaseguro especial en <reaseguro>
 And quiero relizar el cambio de una poliza
 Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
-|buscarNumeroPoliza     |reaseguro  |mensaje
-|TEST_22222224          |Sí         |Esta poliza tiene reaseguro especial. Debe validar que las condiciones otorgadas no amparadas por el contrato automático tengan respaldo facultativo o aceptación especial.
+|envio   |reaseguro|departamento|ciudad  |direccion        |descripcion  |actividad                    |mensaje
+|22222211|Sí       |Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|Esta poliza tiene reaseguro especial. Debe validar que las condiciones otorgadas no amparadas por el contrato automático tengan respaldo facultativo o aceptación especial.
+
+
 
 Scenario:  Realizar cambio de una poliza PA con retroactividad
-Given que voy a buscar una poliza  <buscarNumeroPoliza>
-When quiero relizar el cambio de una poliza
+Given estoy cotizando una poliza basado en otro envio <envio>
+When agregue la placa del vehiculo
+And cotize una poliza
+And cambie la fecha de inicio de vigencia <dias> de pa poliza
+And cotize una poliza
+And expido la poliza y voy al archivo de poliza
+And quiero relizar el cambio de una poliza
 Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
-|buscarNumeroPoliza       |mensaje|
-|TEST_22266665            |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días)       |
+|envio   |dias|mensaje|
+|22228589|-31 |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días) |
+
 
 Scenario:  Realizar cambio de una poliza PA con emision anticipada
 Given que voy a buscar una poliza  <buscarNumeroPoliza>
@@ -58,7 +74,7 @@ Examples:
 |TEST_22266668            |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
 Scenario:  Validacion de fecha exacta para cambio de poliza
-Meta: @lote2
+Meta:
 @manual
 Given que voy a buscar una de las polizas <buscarNumeroPoliza>
 When quiero relizar el cambio de una poliza con la fecha vigente
@@ -67,3 +83,6 @@ Then no debo visualizar la advertencia con el <mensaje>
 Examples:
 |buscarNumeroPoliza       |mensaje|
 |TEST_22266668            |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
+
+
+

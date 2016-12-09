@@ -22,7 +22,7 @@ public class GeneracionUwIssueRiesgosConsultablesPaDefinitions {
 
     @When("las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable e intente expedir la poliza")
     public void expedirPoliza() {
-        expedicionDePolizaSteps.clic_en_expedir_poliza();
+        expedicionDePolizaSteps.clicEnExpedirPoliza();
         generacionUwIssueRiesgosConsultablesPaSteps.aceptar_Expedicion_Poliza();
     }
 

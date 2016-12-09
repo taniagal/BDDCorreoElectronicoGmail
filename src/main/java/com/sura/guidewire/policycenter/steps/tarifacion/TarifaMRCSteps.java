@@ -54,6 +54,11 @@ public class TarifaMRCSteps extends ScenarioSteps {
     }
 
     @Step
+    public void cotizarArticuloBloqueado() {
+        tarifaMRCPage.cotizarArticuloBloqueado();
+    }
+
+    @Step
     public void irAModificadores() {
         tarifaMRCPage.irAModificadores();
     }

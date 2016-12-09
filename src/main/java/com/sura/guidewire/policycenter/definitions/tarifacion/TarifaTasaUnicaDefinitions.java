@@ -91,7 +91,6 @@ public class TarifaTasaUnicaDefinitions {
     public void givenIrALaCotizacion(@Named("cotizacion") String cotizacion) {
         cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(cotizacion);
         tasaUnicaSteps.verificarEstadoDelEnvio(cotizacion);
-//        nuevaCotizacionSteps.copiarEnvio();
     }
 
     @Given("vaya a agregar el vehiculo con los datos: $datosVehiculo")
@@ -103,6 +102,12 @@ public class TarifaTasaUnicaDefinitions {
     public void expedirPoliza() {
         tasaUnicaSteps.expedirPoliza();
         tasaUnicaSteps.irAInformacionDePolizaExpedida();
+    }
+
+    @When("expido la poliza y voy al archivo de poliza")
+    public void expedirPolizaMrc() {
+        tasaUnicaSteps.expedirPoliza();
+        tasaUnicaSteps.irAArchivoDePolizaExpedida();
     }
 
     @Given("seleccione algunas coberturas: $coberturas")

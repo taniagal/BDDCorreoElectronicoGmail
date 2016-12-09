@@ -41,6 +41,11 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.agregarArticulo();
     }
 
+    @When("cotice el articulo bloqueado")
+    public void cotizarArticuloBloqueado(){
+        tarifaMRCSteps.cotizarArticuloBloqueado();
+    }
+
     @When("quiera ingresar modificadores de tarifa")
     public void irAModificadores(){
         tarifaMRCSteps.irAModificadores();

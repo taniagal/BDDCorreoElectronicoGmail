@@ -60,6 +60,7 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.ingresar_nueva_cotizacion(agente, producto);
 
     }
+
     @When("cotice una poliza")
     public void cuandoCotizeUnaPoliza(){informacionDePolizaMrcSteps.seleccionar_opcion_cotizar();}
 

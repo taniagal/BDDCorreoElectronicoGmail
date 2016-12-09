@@ -56,6 +56,13 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
     }
 
     @Step
+    public void irAArchivoDePolizaExpedida() {
+        if (token == 1) {
+            tasaUnicaPage.irAArchivoDePoliza();
+        }
+    }
+
+    @Step
     public void seleciconarCoberturas(ExamplesTable coberturas) {
         if (token == 1) {
             vehiculoPage.clickSiguiente();
