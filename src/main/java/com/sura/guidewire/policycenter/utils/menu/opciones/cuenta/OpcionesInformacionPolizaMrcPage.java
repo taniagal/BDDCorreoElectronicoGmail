@@ -188,7 +188,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionBotonSiguienteenRenovacionDePoliza() {
-        waitUntil(WAIT_TIME_5000);
+        waitFor(WAIT_TIME_7).second();
         btnSiguineteRenovacionDePoliza.click();
     }
 

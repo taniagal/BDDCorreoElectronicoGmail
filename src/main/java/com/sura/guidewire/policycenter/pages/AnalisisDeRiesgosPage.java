@@ -77,7 +77,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
             waitForTextToAppear("Análisis de riesgo");
         }
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
-            waitUntil(WAIT_TIME_3000);
+            waitUntil(WAIT_TIME_5000);
             botonBorrar.click();
         }
     }
