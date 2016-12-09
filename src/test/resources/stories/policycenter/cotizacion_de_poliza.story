@@ -28,7 +28,7 @@ And ingrese los datos del vehiculo:
 And ingrese las coberturas basicas:
 |limite|deducible|abogado |PLlaves |
 |1.440 |0        |Opción 1|Opción 1|
-And intente realizar la cotizacion
+And intente cotizar
 Then se debe mostrar un mensaje <mensaje> como advertencia
 And realizar la cotizacion
 And se debe mostrar en el detalle de la cotizacion el Valor por cuota a pagar <valorCuota> y

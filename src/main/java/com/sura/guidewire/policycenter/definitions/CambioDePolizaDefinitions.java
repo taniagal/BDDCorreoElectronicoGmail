@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.CambioDePolizaSteps;
+import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -17,6 +18,9 @@ public class CambioDePolizaDefinitions {
     @Steps
     CambioDePolizaSteps cambioDePolizaSteps;
 
+    @Steps
+    NuevaCotizacionSteps nuevaCotizacionSteps;
+
     @Given("que voy a buscar una poliza  <buscarNumeroPoliza>")
     public void irABuscarPoliza(String buscarNumeroPoliza){
         cambioDePolizaSteps.irABuscarPoliza(buscarNumeroPoliza);
@@ -32,6 +36,11 @@ public class CambioDePolizaDefinitions {
     public void cambiarPoliza() {
         cambioDePolizaSteps.irAMenuAcciones();
         cambioDePolizaSteps.cambiarPoliza();
+    }
+
+    @When("cambie la fecha de inicio de vigencia de pa poliza")
+    public void cambiarFechaDeVigencia() {
+        cambioDePolizaSteps.cambiarFechaDeVigencia();
     }
 
     @Given("le ingreso el reaseguro especial")

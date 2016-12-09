@@ -104,7 +104,7 @@ public class TarifaTasaUnicaDefinitions {
         tasaUnicaSteps.irAInformacionDePolizaExpedida();
     }
 
-    @When("expido la poliza")
+    @When("expido la poliza y voy al archivo de poliza")
     public void expedirPolizaMrc() {
         tasaUnicaSteps.expedirPoliza();
         tasaUnicaSteps.irAArchivoDePolizaExpedida();

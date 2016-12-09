@@ -62,7 +62,7 @@ public class NuevaCotizacionPage extends PageUtil {
         menuAcciones.waitUntilPresent().click();
         menuItemCopiarEnvio.waitUntilPresent().click();
         try {
-            withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
+            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
             selectItem(comboBoxNombreAgente, "A");
