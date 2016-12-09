@@ -34,6 +34,11 @@ public class CambioDePolizaDefinitions {
         cambioDePolizaSteps.cambiarPoliza();
     }
 
+    @Given("le ingreso el reaseguro especial")
+    public void ingresarReaseguroEspecial() {
+        cambioDePolizaSteps.ingresarReaseguroEspecial();
+    }
+
     @Then("debo visualizar la advertencia con el <mensaje>")
     public void validarMensaje(String mensaje) {
         cambioDePolizaSteps.validarMensaje(mensaje);

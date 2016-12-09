@@ -51,7 +51,7 @@ public class CotizacionDePolizaDefinitions {
 
     @When("ingrese al detalle de la cotizacion")
     public void verDetalleCotizacion() {
-        //nuevaCotizacionSteps.clickBotonCotizar();
+        nuevaCotizacionSteps.cotizarEnvioCopiadoPa();
     }
 
     @When("ingrese a la revision de la poliza")

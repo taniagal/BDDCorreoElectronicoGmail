@@ -105,6 +105,12 @@ public class TarifaTasaUnicaDefinitions {
         tasaUnicaSteps.irAInformacionDePolizaExpedida();
     }
 
+    @When("expido la poliza")
+    public void expedirPolizaMrc() {
+        tasaUnicaSteps.expedirPoliza();
+        tasaUnicaSteps.irAInformacionDePolizaExpedida();
+    }
+
     @Given("seleccione algunas coberturas: $coberturas")
     public void agregarCoberturas(ExamplesTable coberturas) {
         tasaUnicaSteps.seleciconarCoberturas(coberturas);

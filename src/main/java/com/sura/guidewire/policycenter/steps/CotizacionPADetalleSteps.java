@@ -31,11 +31,6 @@ public class CotizacionPADetalleSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validar_Informacion_Detalle_Cotizacion(Map<String, String> infoDetalleCotizacion) {
-        cotizacionPADetallePage.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
-    }
-
-    @Step
     public void validarTerminoCobertura() {
         cotizacionPADetallePage.validarTerminoCobertura();
     }

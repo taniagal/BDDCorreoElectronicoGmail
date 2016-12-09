@@ -215,8 +215,8 @@ public class EdificiosUbicacionesDefinitions {
     @When("intente cotizar y expedir la poliza")
             public void cuandoIntenteCotizarYExpedirLaPoliza(){
               edificiosUbicacionesSteps.seleccionar_boton_cotizar();
-              expedicionDePolizaSteps.clic_en_expedir_poliza();
-             expedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion();
+              expedicionDePolizaSteps.clicEnExpedirPoliza();
+             expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
             }
 
 
