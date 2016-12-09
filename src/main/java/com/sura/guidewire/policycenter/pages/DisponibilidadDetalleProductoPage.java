@@ -31,9 +31,6 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     WebElementFacade campoNombreAgente;
 
-    protected static final int WAIT_TIME_30000 = 30000;
-
-
     public DisponibilidadDetalleProductoPage(WebDriver driver) {
         super(driver);
     }

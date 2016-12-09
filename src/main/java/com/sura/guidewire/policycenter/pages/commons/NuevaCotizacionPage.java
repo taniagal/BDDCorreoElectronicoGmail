@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class NuevaCotizacionPage extends PageUtil{
+public class NuevaCotizacionPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions-btnInnerEl']")
     private WebElementFacade botonAcciones;
@@ -53,15 +53,20 @@ public class NuevaCotizacionPage extends PageUtil{
     private WebElementFacade menuItemInformacionDePoliza;
 
 
-    public NuevaCotizacionPage(WebDriver driver){
+    public NuevaCotizacionPage(WebDriver driver) {
         super(driver);
     }
 
 
-    public  void copiarEnvio(){
+    public void copiarEnvio() {
         menuAcciones.waitUntilPresent().click();
         menuItemCopiarEnvio.waitUntilPresent().click();
-        waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio,"00"));
+        try {
+            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
+        } catch (TimeoutException e) {
+            LOGGER.info("TimeoutException " + e);
+            selectItem(comboBoxNombreAgente, "A");
+        }
         waitUntil(WAIT_TIME_2000);
     }
 
@@ -143,7 +148,7 @@ public class NuevaCotizacionPage extends PageUtil{
     }
 
 
-    public void cotizarEnvioCopiada(){
+    public void cotizarEnvioCopiada() {
         menuItemInformacionDePoliza.waitUntilPresent();
         clickElement(menuItemInformacionDePoliza);
         botonBotonCotizar.waitUntilPresent().click();
@@ -182,7 +187,7 @@ public class NuevaCotizacionPage extends PageUtil{
         }
     }
 
-    public void desmarcarTasaUnica(){
+    public void desmarcarTasaUnica() {
         checkBoxTasaUnica.click();
     }
 }

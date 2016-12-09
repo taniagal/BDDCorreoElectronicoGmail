@@ -18,10 +18,9 @@ public class NuevaCotizacionDefinitions {
         nuevaCotizacionSteps.seleccionarProducto(datosCotizacion);
     }
 
-    @Given("estoy cotizando una poliza basado en otro envio: $datosCotizacion")
-    public void copiarEnvio(ExamplesTable datosCotizacion) {
-        nuevaCotizacionSteps.irABuscarCotizacion(datosCotizacion.getRow(0).get("envio"));
+    @Given("estoy cotizando una poliza basado en otro envio <envio>")
+    public void copiarEnvio(@Named("envio") String envio) {
+        nuevaCotizacionSteps.irABuscarCotizacion(envio);
         nuevaCotizacionSteps.copiarEnvio();
-        nuevaCotizacionSteps.cotizarEnvioCopiadoPa();
     }
 }

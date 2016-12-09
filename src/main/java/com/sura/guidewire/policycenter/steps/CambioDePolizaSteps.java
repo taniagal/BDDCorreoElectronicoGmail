@@ -6,7 +6,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 
-public class CambioDePolizaSteps extends ScenarioSteps{
+public class CambioDePolizaSteps extends ScenarioSteps {
 
     private CambioDePolizaPage cambioDePolizaPage;
 
@@ -48,5 +48,15 @@ public class CambioDePolizaSteps extends ScenarioSteps{
     @Step
     public void validarMensajeNoReaseguro() {
         cambioDePolizaPage.validarMensajeNoHayReaseguro();
+    }
+
+    @Step
+    public void ingresarReaseguroEspecial() {
+        cambioDePolizaPage.ingresarReaseguroEspecial();
+    }
+
+    @Step
+    public void cambiarFechaDeVigencia() {
+        cambioDePolizaPage.cambiarFechaDeVigencia();
     }
 }

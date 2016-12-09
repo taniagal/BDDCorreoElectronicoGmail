@@ -59,7 +59,8 @@ public class DetallesDeUbicacionPage extends PageUtil {
 
     
     public void irAUbicacion() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        clickElement(botonSiguiente);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
     }

@@ -2,7 +2,12 @@ package com.sura.guidewire.policycenter.pages;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -11,29 +16,33 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
 
-
-
 public class CambioDePolizaPage extends PageUtil {
+    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
+    WebElementFacade botonInicio;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
+    WebElementFacade botonSiguiente;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:Fronting-inputEl']")
+    WebElementFacade checkBoxFronting;
+    @FindBy(xpath = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:reaseguroEspecial-inputEl']")
+    WebElementFacade campoReaseguroEspecial;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:EffectiveDate-inputEl']")
+    WebElementFacade campoTxtFechaInicioDeVigencia;
     @FindBy(xpath = ".//span[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")
     WebElementFacade menuAcciones;
-
-    @FindBy(xpath = ".//span[contains(@id,'PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_ChangePolicy-textEl')]")
-    WebElementFacade opcionCambiarPoliza;
-
-    @FindBy(xpath = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:reaseguroEspecial-inputEl']")
-    WebElementFacade reaseguroEspecial;
-
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
+    WebElementFacade menuItemInformacionDePoliza;
     @FindBy(xpath = ".//label[@class='x-component g-msg-warning x-component-default']")
     WebElementFacade mensajeAdvertencia;
-
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_PolicyInfo']")
-    WebElementFacade informacionpoliza;
-
+    WebElementFacade menuItemInformacionDePolizaExp;
     @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:ttlBar']")
     WebElementFacade lblinicioCambioPoliza;
-
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
-    WebElementFacade btnInicio;
+    @FindBy(xpath = ".//span[contains(@id,'PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_ChangePolicy-textEl')]")
+    WebElementFacade opcionCambiarPoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
+    WebElementFacade panelMensaje;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
+    WebElementFacade radioBotonReaseguroEspeciaSi;
 
 
     public CambioDePolizaPage(WebDriver driver) {
@@ -52,20 +61,42 @@ public class CambioDePolizaPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblinicioCambioPoliza).waitUntilPresent();
     }
 
-    public void  esReaseguroEspecial(String reaseguro) {
-        reaseguroEspecial.waitUntilPresent();
-        MatcherAssert.assertThat(reaseguroEspecial.getText(), Is.is(Matchers.equalTo(reaseguro)));
+    public void esReaseguroEspecial(String reaseguro) {
+        campoReaseguroEspecial.waitUntilPresent();
+        MatcherAssert.assertThat(campoReaseguroEspecial.getText(), Is.is(Matchers.equalTo(reaseguro)));
     }
 
-    public void validarMensaje(String mensaje) {verificarMensaje(mensajeAdvertencia,mensaje);
+    public void validarMensaje(String mensaje) {
+        verificarMensaje(mensajeAdvertencia, mensaje);
     }
 
     public void seleccionarInformacionPoliza() {
-        waitFor(informacionpoliza).waitUntilPresent();
-        informacionpoliza.click();
+        waitFor(menuItemInformacionDePolizaExp).waitUntilPresent().click();
     }
 
     public void validarMensajeNoHayReaseguro() {
         MatcherAssert.assertThat("Mensaje en reaseguro NO debe ser visible", !mensajeAdvertencia.isVisible());
+    }
+
+    public void ingresarReaseguroEspecial() {
+        irAInformacionDePoliza();
+        radioBotonReaseguroEspeciaSi.waitUntilPresent().click();
+        checkBoxFronting.waitUntilPresent().click();
+        clickElement(botonSiguiente);
+    }
+
+    public void irAInformacionDePoliza() {
+        menuItemInformacionDePoliza.waitUntilPresent();
+        clickElement(menuItemInformacionDePoliza);
+    }
+
+
+    public void cambiarFechaDeVigencia() {
+        DateFormat df = new SimpleDateFormat("dd/MM/yy");
+        Date date = new Date();
+
+        irAInformacionDePoliza();
+        campoTxtFechaInicioDeVigencia.waitUntilPresent().clear();
+        campoTxtFechaInicioDeVigencia.sendKeys("08/11/2016");
     }
 }
