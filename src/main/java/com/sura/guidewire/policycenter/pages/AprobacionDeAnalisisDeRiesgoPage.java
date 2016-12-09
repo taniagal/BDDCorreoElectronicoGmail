@@ -41,17 +41,19 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPoliza() {
-        setImplicitTimeout(3, TimeUnit.SECONDS);
+        setImplicitTimeout(2, TimeUnit.SECONDS);
         if (!botonExpedirPoliza.isPresent()){
             clickElement(menuItemCotizacion);
         }
+        resetImplicitTimeout();
         waitFor(botonExpedirPoliza);
-        botonExpedirPoliza.click();
+        clickElement(botonExpedirPoliza);
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
-        botonBorrar.waitUntilPresent().click();
+        botonBorrar.waitUntilPresent();
+        clickElement(botonBorrar);
         botonBorrar.waitUntilNotVisible();
-        botonExpedirPoliza.click();
+        clickElement(botonExpedirPoliza);
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
         waitForTextToAppear("Cotización Expedida", WAIT_TIME_30000);

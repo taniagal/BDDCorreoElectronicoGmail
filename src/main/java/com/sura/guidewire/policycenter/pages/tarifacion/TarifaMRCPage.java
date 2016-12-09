@@ -5,10 +5,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.UnhandledAlertException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -158,6 +155,13 @@ public class TarifaMRCPage extends PageUtil {
     public void agregarArticulo() {
         botonActualizar.click();
         botonCotizar.waitUntilPresent().click();
+    }
+
+    public void cotizarArticuloBloqueado() {
+        botonActualizar.click();
+        botonCotizar.waitUntilPresent().click();
+        waitFor(find(By.cssSelector(".message")));
+        botonCotizar.click();
     }
 
     public void irAModificadores() {

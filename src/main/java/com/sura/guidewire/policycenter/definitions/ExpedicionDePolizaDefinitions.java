@@ -21,7 +21,7 @@ public class ExpedicionDePolizaDefinitions {
 
     @When("voy a expedir una poliza")
     public void expedirPoliza() {
-        expedicionDePolizaSteps.clic_en_expedir_poliza();
+        expedicionDePolizaSteps.clicEnExpedirPoliza();
     }
 
     @When("voy a expedir una poliza por cambio")
@@ -32,11 +32,11 @@ public class ExpedicionDePolizaDefinitions {
 
     @When("confirmo el mensaje de expedir poliza")
     public void confirmarMensajeDeExpedirPoliza() {
-        expedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion();
+        expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
     }
     @When("ingrese a ver cotizacion de poliza expedida")
     public void cuandoIngreseAVerCotizacionDePolizExpedida(){
-        expedicionDePolizaSteps.clic_en_ver_cotizacion();
+        expedicionDePolizaSteps.clicEnVerCotizacion();
     }
 
     @When("valide la solicitud de requisitos <requisitos>")
@@ -46,7 +46,7 @@ public class ExpedicionDePolizaDefinitions {
 
     @When("cancelo el mensaje <mensaje> de expedir poliza")
     public void cancelarExpedicionDePoliza(@Named("mensaje") String mensaje){
-        expedicionDePolizaSteps.clic_en_cancelar_del_mensaje_de_confirmacion(mensaje);
+        expedicionDePolizaSteps.clicEnCancelarDelMensajeDeConfirmacion(mensaje);
     }
 
 
@@ -56,7 +56,7 @@ public class ExpedicionDePolizaDefinitions {
                                                  @Named("admorCotizacion") String admorCotizacion,
                                                  @Named("nuevaCotizacion") String nuevaCotizacion,
                                                  @Named("escritorio") String escritorio) {
-        expedicionDePolizaSteps.validar_resumen_de_la_poliza_expedida(infoCotizacion, infoPoliza, admorCotizacion,
+        expedicionDePolizaSteps.validarResumenDeLaPolizaExpedida(infoCotizacion, infoPoliza, admorCotizacion,
                                                                       nuevaCotizacion, escritorio);
     }
 

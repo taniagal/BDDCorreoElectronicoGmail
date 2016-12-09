@@ -36,10 +36,10 @@ public class InformacionTitularCuentaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarInformacionMetricas (String anioVigencia, String polizasActivas, String canceladoPorCliente,
+    public void validarInformacionMetricas (String anioVigencia, String canceladoPorCliente,
                                             String canceladoPorCompania, String otrasCancelaciones, String primaVitalicia,
                                             String totalSiniestrosAbiertos, String totalNetoIncurrido){
-        informacionTitularCuentaPage.validarInformacionMetricas(anioVigencia,polizasActivas,canceladoPorCliente,
+        informacionTitularCuentaPage.validarInformacionMetricas(anioVigencia,canceladoPorCliente,
                canceladoPorCompania, otrasCancelaciones, primaVitalicia, totalSiniestrosAbiertos, totalNetoIncurrido);
     }
 
@@ -65,11 +65,6 @@ public class InformacionTitularCuentaSteps extends ScenarioSteps {
     @Step
     public void validarCamposComoNoEditables() {
         informacionTitularCuentaPage.validarCamposComoNoEditables();
-    }
-
-    @Step
-    public void validarInformacionFallecimiento(String fechaFallecimiento, String causaFallecimiento){
-        informacionTitularCuentaPage.validarInformacionFallecimiento(fechaFallecimiento, causaFallecimiento);
     }
 
     @Step

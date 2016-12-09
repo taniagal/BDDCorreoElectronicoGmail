@@ -81,6 +81,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade headerEnvio;
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
     private WebElementFacade linkVerCotizacion;
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
+    private WebElementFacade linkVerPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotalCotizacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
@@ -213,6 +215,10 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public void irAInformacionDePoliza() {
         linkVerCotizacion.waitUntilPresent().click();
+    }
+
+    public void irAArchivoDePoliza() {
+        linkVerPoliza.waitUntilPresent().click();
     }
 
     public void guardarMontoPorCoberturas() {

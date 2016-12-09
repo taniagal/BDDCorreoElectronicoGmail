@@ -51,12 +51,12 @@ public class InformacionTitularCuentaDefinitions {
     }
 
     @Then("debe mostrarme en metricas de valor del cliente: Anio de vigencia de la primera poliza <anioVigencia>, polizas activas <polizasActivas>, Cancelado por el cliente <canceladoPorCliente>, cancelado por la compania de seguros por falta de pago <canceladoPorCompania>, otras cancelaciones <otrasCancelaciones>, prima vitalicia <primaVitalicia>. Informacion de siniestros abiertos: Total de siniestros abiertos <totalSiniestrosAbiertos>, total neto incurrido <totalNetoIncurrido>.")
-    public void thenMostrarInformacionMetricas(@Named("anioVigencia")String anioVigencia,@Named("polizasActivas")String polizasActivas,
+    public void thenMostrarInformacionMetricas(@Named("anioVigencia")String anioVigencia,
                                                @Named("canceladoPorCliente")String canceladoPorCliente,@Named("canceladoPorCompania")String canceladoPorCompania,
                                                @Named("otrasCancelaciones")String otrasCancelaciones,@Named("primaVitalicia")String primaVitalicia,
                                                @Named("totalSiniestrosAbiertos")String totalSiniestrosAbiertos,@Named("totalNetoIncurrido")String totalNetoIncurrido){
 
-        informacionTitularCuentaSteps.validarInformacionMetricas(anioVigencia,polizasActivas,canceladoPorCliente,canceladoPorCompania, otrasCancelaciones, primaVitalicia,
+        informacionTitularCuentaSteps.validarInformacionMetricas(anioVigencia,canceladoPorCliente,canceladoPorCompania, otrasCancelaciones, primaVitalicia,
                 totalSiniestrosAbiertos, totalNetoIncurrido);
     }
 
@@ -74,8 +74,8 @@ public class InformacionTitularCuentaDefinitions {
         informacionTitularCuentaSteps.validarInformacionTransacciones(fechaCreacion, nroPoliza, producto, nroTransaccion, tipo, estado);
     }
 
-    @Then("debe mostrarme Numero de poliza <nroPoliza>, producto <producto>, asegurado <asegurado>, Fecha de perdida <fechaPerdida>, numero de siniestros <numeroSiniestros>, Estado <estado>, total incurrido <totalIncurrido>.")
-    public void thenMostrarInformacionSiniestros(@Named("nroPoliza")String nroPoliza,@Named("producto")String producto,
+    @Then("debe mostrarme Numero de poliza <numeroPoliza>, producto <producto>, asegurado <asegurado>, Fecha de perdida <fechaPerdida>, numero de siniestros <numeroSiniestros>, Estado <estado>, total incurrido <totalIncurrido>.")
+    public void thenMostrarInformacionSiniestros(@Named("numeroPoliza")String nroPoliza,@Named("producto")String producto,
                                                  @Named("asegurado")String asegurado,@Named("fechaPerdida")String fechaPerdida,
                                                  @Named("numeroSiniestros")String numeroSiniestros,@Named("estado")String estado,
                                                  @Named("totalIncurrido")String totalIncurrido){
@@ -88,13 +88,6 @@ public class InformacionTitularCuentaDefinitions {
     public void thenValidarCamposComoNoEditables(){
 
         informacionTitularCuentaSteps.validarCamposComoNoEditables();
-    }
-
-    @Then("los campos fecha de fallecimiento <fechaFallecimiento> y causa de fallecimiento <causaFallecimiento> se deben mostrar unicamente cuando tengan informacion relacionada, de lo contrario estos campos deben permanecer ocultos.")
-    public void thenMostarFechaYCausaFallecimiento(@Named("fechaFallecimiento")String fechaFallecimiento,
-                                                   @Named("causaFallecimiento")String causaFallecimiento){
-
-        informacionTitularCuentaSteps.validarInformacionFallecimiento(fechaFallecimiento, causaFallecimiento);
     }
 
     @Then("si el dato actividad economica esta vacio, este campo se debe ocultar, de lo contrario, se debe mostrar la actividad economica normalmente.")

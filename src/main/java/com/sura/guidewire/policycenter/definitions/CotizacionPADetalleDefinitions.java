@@ -57,11 +57,6 @@ public class CotizacionPADetalleDefinitions {
         nuevaCotizacionSteps.cotizarEnvioCopiadoPa(datosCotizacion);
     }
 
-    @Then("se debe mostrar la informacion del detalle de cotizacion por riesgo")
-    public void thenMostrarInformacionDetalleCotizacion(){
-        cotizacionPADetalleSteps.validar_Informacion_Detalle_Cotizacion(infoDetalleCotizacion);
-    }
-
     @Then("se debe mostrar en la columna \"Termino\" el limite o deducible de la cobertura en el caso de que aplique")
     public void thenValidarTerminoCobertura(){
         cotizacionPADetalleSteps.validarTerminoCobertura();
