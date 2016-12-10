@@ -126,7 +126,7 @@ public class NuevaCotizacionPage extends PageUtil{
             if (!comboBoxOrganizacion.getValue().equals(dato.get("producto"))) {
                 selectItem(comboBoxOrganizacion, dato.get("organizacion"));
                 waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
-                waitUntil(WAIT_TIME_1000);
+                waitUntil(WAIT_TIME_1500);
                 selectItem(comboBoxCanal, dato.get("canal"));
                 waitForComboValue(comboBoxCanal, dato.get("canal"));
                 try {
