@@ -4,15 +4,8 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
-import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
@@ -76,6 +69,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
     public void setUbicacion(String descripcion, String actividad) {
         waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
         selectItem(comboBoxActividadEconomica, actividad);
+        waitUntil(WAIT_TIME_1000);
         botonAceptar.click();
     }
 
