@@ -21,7 +21,7 @@ Then cancelo el mensaje de expedir cambio de poliza
 
 Examples:
 |cotizacion |
-|55555558   |
+|22222222   |
 
 
 Scenario: Validacion de resumen de la poliza expedirla
@@ -32,7 +32,7 @@ Then debe mostrar el resumen de la poliza expedida con la informacion del cambio
 
 Examples:
 |cotizacion |infoCambio                                              |infoPoliza     |escritorio      |
-|55555558   |El cambio en la póliza (N.° 55555558) ha sido realizado.|Ver póliza (N.°|Ir al escritorio|
+|22222222   |El cambio en la póliza (N.° 55555558) ha sido realizado.|Ver póliza (N.°|Ir al escritorio|
 
 
 Scenario: Validacion etiquetas y mensaje de ventana
@@ -45,4 +45,4 @@ Then  se deben validar todos las etiquetas y mensajes del formulario <mensaje>
 
 Examples:
 |cotizacion |mensaje|
-|55555558   |Esta Seguro que desea expedir este cambio en la poliza?|
+|22222222   |Esta Seguro que desea expedir este cambio en la poliza?|
