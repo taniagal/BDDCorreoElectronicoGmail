@@ -69,6 +69,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonAgregarArticulosRenovacionPoliza;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptarCambioDePoliza;
+    @FindBy(xpath = ".//a[contains(.,'Borrar')]")
+    private WebElementFacade botonBorrar;
     @Steps
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
@@ -164,7 +166,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
         $(xpathDepto).click();
 
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(WAIT_TIME_5).seconds();
         $(xpathCiudad).type(ciudad);
         waitFor(WAIT_TIME_2).seconds();
 
@@ -175,18 +177,18 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(WAIT_TIME_2).seconds();
         $(xpathDireccion).click();
 
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(WAIT_TIME_3).seconds();
         $(xpathActividadEconomica).type(actividadEconomica);
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(WAIT_TIME_3).seconds();
         $(xpathActividadEconomica).sendKeys(Keys.ENTER);
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(WAIT_TIME_3).seconds();
 
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
 
         setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
-        if (findBy(".//a[contains(.,'Borrar')]").isVisible()) {
-            findBy(".//*[@id='CPLocationPopup:Update-btnInnerEl']").click();
+        if (botonBorrar.isVisible()) {
+            clickElement(findBy(".//*[@id='CPLocationPopup:Update']"));
             waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES, WAIT_TIME_30000);
         }
         resetImplicitTimeout();
