@@ -104,7 +104,6 @@ public class CambioDePolizaPage extends PageUtil {
         clickElement(menuItemInformacionDePoliza);
     }
 
-
     public void cambiarFechaDeVigencia(String dias) {
         botonEditarTransaccionDePoliza.waitUntilPresent().click();
         botonAceptarPopup.waitUntilPresent().click();

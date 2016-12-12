@@ -129,8 +129,6 @@ public class TarifaAutosPage extends PageUtil {
     public void cotizar() {
         intentarCotizar();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
-        waitUntil(WAIT_TIME_500);
-        menuItemCotizacion.waitUntilPresent().click();
     }
 
     public void intentarCotizar() {

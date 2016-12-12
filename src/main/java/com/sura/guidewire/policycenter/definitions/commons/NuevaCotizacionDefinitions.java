@@ -23,4 +23,9 @@ public class NuevaCotizacionDefinitions {
         nuevaCotizacionSteps.irABuscarCotizacion(envio);
         nuevaCotizacionSteps.copiarEnvio();
     }
+
+    @Given("ingrese los datos de la cotizacion PA $datosCtotizacion")
+    public void copiarEnvio(ExamplesTable datosCtotizacion) {
+        nuevaCotizacionSteps.cotizarEnvioCopiadoPa(datosCtotizacion);
+    }
 }

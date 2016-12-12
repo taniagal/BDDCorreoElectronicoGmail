@@ -16,8 +16,6 @@ public class CambioEnExpedicionDePolizaPage extends PageUtil{
     WebElementFacade botonExpedirPoliza;
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
-    @FindBy(xpath = ".//a[contains(.,'Cancelar')]")
-    WebElementFacade botonCancelarMensaje;
     @FindBy(xpath = ".//label[@id='JobComplete:JobCompleteScreen:Message']")
     WebElementFacade campoInformacionCambio;
     @FindBy(xpath = ".//div[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
@@ -47,13 +45,8 @@ public class CambioEnExpedicionDePolizaPage extends PageUtil{
 
     public void validarResumenDeLaPolizaExpedida(String infoCambio, String infoPoliza, String escritorio) {
         campoInformacionCambio.waitUntilPresent();
-        MatcherAssert.assertThat(campoInformacionCambio.getText(), Is.is(Matchers.equalTo(infoCambio)));
-        MatcherAssert.assertThat(campoVerPoliza.getText(), Is.is(Matchers.containsString(infoPoliza)));
-        MatcherAssert.assertThat(campoIrAlEscritorio.getText(), Is.is(Matchers.equalTo(escritorio)));
-    }
-
-    public void cancelarExpedirPoliza() {
-        botonCancelarMensaje.waitUntilVisible();
-        botonCancelarMensaje.click();
+        verificarMensaje(campoInformacionCambio, infoCambio);
+        verificarMensaje(campoVerPoliza, infoPoliza);
+        verificarMensaje(campoIrAlEscritorio, escritorio);
     }
 }
