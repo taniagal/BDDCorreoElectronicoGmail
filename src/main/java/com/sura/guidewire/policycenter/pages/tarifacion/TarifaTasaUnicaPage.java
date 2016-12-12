@@ -5,8 +5,6 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -139,11 +137,15 @@ public class TarifaTasaUnicaPage extends PageUtil {
         return val;
     }
 
-    public void comenzarCambioDePoliza() {
+    public void comenzarCambioDePolizaConValorDecotizacion() {
         menuiItemCotizacion.waitUntilPresent().click();
         guardarMontoPorCoberturas();
         menuAccionesEnvio.waitUntilPresent().click();
         menuItemArchivoDePoliza.waitUntilPresent().click();
+        clickCambioDePoliza();
+    }
+
+    public void clickCambioDePoliza() {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemCambiarPoliza.waitUntilPresent().click();
         botonSiguienteCambioDePoliza.waitUntilPresent().click();
