@@ -25,10 +25,11 @@ Then se debe mostrar los <mensaje1> <mensaje2> de alerta
 
 Examples:
 |poliza       |  mensaje1                                | mensaje2                                 |
-|TEST_22266674|  es mayor al 20% del valor Asegurado     | es mayor al valor Asegurado del vehículo.|
+|TEST_22222222|  es mayor al 20% del valor Asegurado     | es mayor al valor Asegurado del vehículo.|
 
 Scenario: Tope maximo valor asegurado del vehiculo
-Meta: @lote2 @manual
+Meta:
+@manual
 Given que es necesario renovar una <poliza> autos
 When quiera realizar esta la renovacion
 And edite la renovacion de poliza

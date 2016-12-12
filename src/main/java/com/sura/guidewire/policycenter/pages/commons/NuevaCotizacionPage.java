@@ -62,11 +62,10 @@ public class NuevaCotizacionPage extends PageUtil {
         menuAcciones.waitUntilPresent().click();
         menuItemCopiarEnvio.waitUntilPresent().click();
         try {
-            waitUntil(WAIT_TIME_1000);
-            withTimeoutOf(WAIT_TIME_4, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
+            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
-        } catch (StaleElementReferenceException f) {
+        } catch (StaleElementReferenceException f){
             LOGGER.info("StaleElementReferenceException " + f);
         }
         waitUntil(WAIT_TIME_2000);
@@ -132,7 +131,7 @@ public class NuevaCotizacionPage extends PageUtil {
             withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemInformacionDePoliza).waitUntilPresent().click();
             waitForTextToAppear("Información de póliza");
             comboBoxOrganizacion.waitUntilPresent();
-            if (!comboBoxOrganizacion.getValue().equals(dato.get("producto"))) {
+            if (!comboBoxOrganizacion.getValue().equals(dato.get("organizacion"))) {
                 selectItem(comboBoxOrganizacion, dato.get("organizacion"));
                 waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
                 waitUntil(WAIT_TIME_3000);
