@@ -64,8 +64,3 @@ And desahabilitar la opcion de acciones para no ser modificada
 Examples:
 | envio    | departamento | ciudad   | direccion         | descripcion   | actividad                     | numCuenta  | razon   | numCotizacion | accion    |
 | 22222211 | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | C001888888 | Cartera | 22223228      | Declinada |
-
-
-
-
-
