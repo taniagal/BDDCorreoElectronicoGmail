@@ -56,9 +56,9 @@ public class CotizacionDePolizaDefinitions {
         inicioPage().irABuscarSubPoliza(cotizacion);
     }
 
-    @When("ingrese al detalle de la cotizacion")
-    public void verDetalleCotizacion() {
-        nuevaCotizacionSteps.cotizarEnvioCopiadoPa();
+    @When("ingrese al detalle de la cotizacion $datosCotizacion")
+    public void verDetalleCotizacion(ExamplesTable datosCotizacion) {
+        nuevaCotizacionSteps.cotizarEnvioCopiadoPa(datosCotizacion);
     }
 
     @When("ingrese a la revision de la poliza")

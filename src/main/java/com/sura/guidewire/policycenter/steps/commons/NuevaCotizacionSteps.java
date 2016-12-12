@@ -5,7 +5,9 @@ import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPa
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
+import com.sura.guidewire.policycenter.steps.ValidacionesInformacionDeVehiculoSteps;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
@@ -14,6 +16,8 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
+    @Steps
+    ValidacionesInformacionDeVehiculoSteps vehiculoSteps;
 
     public NuevaCotizacionSteps(Pages pages) {
         super(pages);
@@ -50,10 +54,10 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
 
     @Step
     public void cotizarEnvioCopiadoPa(ExamplesTable datosCotizacion) {
-        nuevaCotizacionPage.llenarInfoPoliza();
-        nuevaCotizacionPage.desmarcarTasaUnica();
         vehiculoPage.irAVehiculos();
+        vehiculoSteps.agregarPlaca();
         vehiculoPage.agregarCiudadDeCirculacionY0Km(datosCotizacion);
+        vehiculoPage.clickSiguiente();
         seleccionarCoberturaBasicas(datosCotizacion);
         tarifaAutosPage.cotizar();
     }

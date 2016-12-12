@@ -81,13 +81,13 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
 
     @Step
     public void cambiarInfromacionDePoliza(String valorAsegurado) {
-        tasaUnicaPage.comenzarCambioDePoliza();
+        tasaUnicaPage.comenzarCambioDePolizaConValorDecotizacion();
         tasaUnicaPage.cambiarValorAsegurado(valorAsegurado);
     }
 
     @Step
     public void cambiarInfromacionDelAsegurado(String primerNombre, String segundoNombre, String estadoCivil) {
-        tasaUnicaPage.comenzarCambioDePoliza();
+        tasaUnicaPage.comenzarCambioDePolizaConValorDecotizacion();
         tasaUnicaPage.cambiarDatosDelAsegurado(primerNombre, segundoNombre, estadoCivil);
     }
 

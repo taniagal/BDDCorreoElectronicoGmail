@@ -35,7 +35,7 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade comboBoxTipoPoliza;
     @FindBy(css = ".message")
     private WebElementFacade divMensaje;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd-textEl']")
     private WebElementFacade headerEnvio;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:AccountName-inputEl']")
     private WebElementFacade linkNombre;
@@ -62,10 +62,11 @@ public class NuevaCotizacionPage extends PageUtil {
         menuAcciones.waitUntilPresent().click();
         menuItemCopiarEnvio.waitUntilPresent().click();
         try {
-            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
+            waitUntil(WAIT_TIME_1000);
+            withTimeoutOf(WAIT_TIME_4, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
-        } catch (StaleElementReferenceException f){
+        } catch (StaleElementReferenceException f) {
             LOGGER.info("StaleElementReferenceException " + f);
         }
         waitUntil(WAIT_TIME_2000);
