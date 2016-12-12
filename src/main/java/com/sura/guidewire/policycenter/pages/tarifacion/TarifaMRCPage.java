@@ -155,6 +155,7 @@ public class TarifaMRCPage extends PageUtil {
     public void agregarArticulo() {
         botonActualizar.click();
         botonCotizar.waitUntilPresent().click();
+        waitForTextToAppear("Cotizado");
     }
 
     public void cotizarArticuloBloqueado() {
@@ -247,4 +248,5 @@ public class TarifaMRCPage extends PageUtil {
         MatcherAssert.assertThat("Error en el calculo del valor del IVA , was: " + campoIva.getText(),
                 campoIva.getText().substring(1, 7).replace(".", "").equals(Integer.toString(iva)));
     }
+
 }
