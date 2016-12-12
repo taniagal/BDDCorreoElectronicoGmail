@@ -70,7 +70,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     public void irAVehiculos() {
         waitFor(menuItemVehiculos).waitUntilPresent();
         waitUntil(WAIT_TIME_2000);
-        menuItemVehiculos.click();
+        clickElement(menuItemVehiculos);
     }
 
     public void crearVehiculo() {
@@ -85,7 +85,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void clickSiguiente() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        clickElement(botonSiguiente);
     }
 
     public void clickLinkDescartarCambios() {
@@ -121,7 +122,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void ingresarPlacaConModelo2011(Map<String, String> vehiculo){
         ingresarPlaca(vehiculo);
-        tablaVehiculo.click();
+        clickElement(tablaVehiculo);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2011"));
     }
 
@@ -243,9 +244,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void agregarCiudadDeCirculacionY0Km(ExamplesTable datosCotizacion) {
         Map<String, String> vehiculo = datosCotizacion.getRow(0);
-        comboBoxCiudadCirculacion.waitUntilPresent().click();
-        waitUntil(WAIT_TIME_3000);
-        seleccionarComboBoxModelo(vehiculo);
         selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
         waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
     }

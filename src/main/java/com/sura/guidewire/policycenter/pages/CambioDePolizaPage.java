@@ -31,7 +31,7 @@ public class CambioDePolizaPage extends PageUtil {
     WebElementFacade botonAceptarPopup;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy']")
     WebElementFacade botonEditarTransaccionDePoliza;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:Fronting-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:Fronting-inputEl']")
     WebElementFacade checkBoxFronting;
     @FindBy(xpath = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:reaseguroEspecial-inputEl']")
     WebElementFacade campoReaseguroEspecial;
@@ -55,7 +55,7 @@ public class CambioDePolizaPage extends PageUtil {
     WebElementFacade opcionCambiarPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
     WebElementFacade panelMensaje;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
     WebElementFacade radioBotonReaseguroEspeciaSi;
 
 
@@ -103,7 +103,6 @@ public class CambioDePolizaPage extends PageUtil {
         menuItemInformacionDePoliza.waitUntilPresent();
         clickElement(menuItemInformacionDePoliza);
     }
-
 
     public void cambiarFechaDeVigencia(String dias) {
         botonEditarTransaccionDePoliza.waitUntilPresent().click();

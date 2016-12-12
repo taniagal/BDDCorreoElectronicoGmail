@@ -1,6 +1,5 @@
 Meta: @lote2
 @issue #SUGWUSC-15127
-@Atomatizador Jonathan Mejia
 @tag automator: Jonathan_Mejia_Leon
 @local
 Sprint 5
@@ -34,9 +33,9 @@ Examples:
 Scenario:  Realizar cambio de una poliza PA con retroactividad
 Given estoy cotizando una poliza basado en otro envio <envio>
 When agregue la placa del vehiculo
-And cotize una poliza
+And cotice una poliza
 And cambie la fecha de inicio de vigencia <dias> de pa poliza
-And cotize una poliza
+And cotice una poliza
 And expido la poliza y voy al archivo de poliza
 And quiero relizar el cambio de una poliza
 Then debo visualizar la advertencia con el <mensaje>
@@ -52,8 +51,8 @@ When quiero relizar el cambio de una poliza
 Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
-|buscarNumeroPoliza       |mensaje|
-|TEST_22266666            |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (60 días)       |
+|buscarNumeroPoliza|mensaje|
+|TEST_22222222     |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (60 días)       |
 
 Scenario:  Realizar cambio de una poliza CP con retroactividad
 Given que voy a buscar una poliza  <buscarNumeroPoliza>
@@ -61,8 +60,8 @@ When quiero relizar el cambio de una poliza
 Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
-|buscarNumeroPoliza       |mensaje|
-|TEST_22266667            |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días)       |
+|buscarNumeroPoliza|mensaje|
+|TEST_22222236     |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (60 días)       |
 
 Scenario:  Realizar cambio de una poliza CP con emision anticipada
 Given que voy a buscar una poliza  <buscarNumeroPoliza>
@@ -70,8 +69,8 @@ When quiero relizar el cambio de una poliza
 Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
-|buscarNumeroPoliza       |mensaje|
-|TEST_22266668            |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
+|buscarNumeroPoliza|mensaje|
+|TEST_22222237     |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
 Scenario:  Validacion de fecha exacta para cambio de poliza
 Meta:
@@ -81,8 +80,8 @@ When quiero relizar el cambio de una poliza con la fecha vigente
 Then no debo visualizar la advertencia con el <mensaje>
 
 Examples:
-|buscarNumeroPoliza       |mensaje|
-|TEST_22266668            |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
+|buscarNumeroPoliza |mensaje|
+|TEST_22266668      |La fecha inicio de vigencia no cumple con el parámetro de emisión anticipada definido (45 días)|
 
 
 

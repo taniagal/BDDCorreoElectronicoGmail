@@ -35,7 +35,7 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade comboBoxTipoPoliza;
     @FindBy(css = ".message")
     private WebElementFacade divMensaje;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd-textEl']")
     private WebElementFacade headerEnvio;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:AccountName-inputEl']")
     private WebElementFacade linkNombre;
@@ -62,7 +62,7 @@ public class NuevaCotizacionPage extends PageUtil {
         menuAcciones.waitUntilPresent().click();
         menuItemCopiarEnvio.waitUntilPresent().click();
         try {
-            withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
+            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(headerEnvio, "00"));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
         } catch (StaleElementReferenceException f){
@@ -131,7 +131,7 @@ public class NuevaCotizacionPage extends PageUtil {
             withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemInformacionDePoliza).waitUntilPresent().click();
             waitForTextToAppear("Información de póliza");
             comboBoxOrganizacion.waitUntilPresent();
-            if (!comboBoxOrganizacion.getValue().equals(dato.get("producto"))) {
+            if (!comboBoxOrganizacion.getValue().equals(dato.get("organizacion"))) {
                 selectItem(comboBoxOrganizacion, dato.get("organizacion"));
                 waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
                 waitUntil(WAIT_TIME_3000);

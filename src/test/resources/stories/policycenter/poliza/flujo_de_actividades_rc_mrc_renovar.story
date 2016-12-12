@@ -1,4 +1,4 @@
-Flujo de activiades Rc Mr renovar
+Flujo de actividades Rc Mrc renovar
 
 Meta:
 @lote2
