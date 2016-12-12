@@ -77,7 +77,8 @@ public class DetallesDeUbicacionPage extends PageUtil {
     public void setUbicacion(String descripcion, String actividad) {
         waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
         selectItem(comboBoxActividadEconomica, actividad);
-        botonAceptar.click();
+        waitForComboValue(comboBoxActividadEconomica, actividad);
+        clickElement(botonAceptar);
     }
 
     public void validarCamposNuevos() {
