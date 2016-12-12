@@ -85,7 +85,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void clickSiguiente() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        clickElement(botonSiguiente);
     }
 
     public void clickLinkDescartarCambios() {
