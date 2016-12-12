@@ -2,7 +2,6 @@ package com.sura.guidewire.policycenter.pages;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +11,6 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.LoggerFactory;
 
 
 public class PanelSurEspacioDeTrabajoPage extends PageUtil {
@@ -29,8 +27,6 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
     WebElementFacade panelInferiorTablaDeMensajes;
     @FindBy(xpath = ".//*[@id='CollectivePolicyInfo_Ext:Cancel-btnInnerEl']")
     WebElementFacade btnCancelar;
-
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesInformacionPolizaPage.class);
 
     public PanelSurEspacioDeTrabajoPage(WebDriver driver) {
         super(driver);
@@ -57,13 +53,8 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
                 }
             }
         }
-        try{
-
-            MatcherAssert.assertThat(contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
+            MatcherAssert.assertThat("El número de mensajes: ", contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
             MatcherAssert.assertThat(iconoError.isVisible(), Is.is(Matchers.equalTo(true)));
-        }catch (java.lang.AssertionError assertionError){
-            LOGGER.error("El mensaje no es válido", assertionError);
-        }
     }
 
     public void borrarEspacioDeTrabajo(){

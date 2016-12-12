@@ -16,19 +16,13 @@ GivenStories: stories/policycenter/login_policy.story
 Given se tiene una poliza expedida <numeroPoliza>
 When digite el numero fasecolda <numeroFasecolda> y modelo <modelo> de un vehiculo
 Then se deben recuperar los datos del vehiculo: clase vehiculo <claseVehiculo>, marca <marca>  y linea <linea>
+And registre una zona de circulacion no permitida <ciudadCirculacion>
+And se debe mostrar un mensaje <mensaje> indicando la restriccion
 
 Examples:
-|numeroPoliza |numeroFasecolda|modelo|claseVehiculo     |marca|linea|
-|TEST_22223223|00601182       |2016  |Camperos y pickups|Mazda|MPV  |
+|numeroPoliza |numeroFasecolda|modelo|claseVehiculo     |marca|linea|ciudadCirculacion|mensaje
+|TEST_22222222|00601182       |2016  |Camperos y pickups|Mazda|MPV  |ACANDI           |Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.|
 
-Scenario: Zona de circulacion no permitida
-Given se tiene una poliza expedida <numeroPoliza>
-When registre una zona de circulacion no permitida <ciudadCirculacion>
-Then se debe mostrar un mensaje <mensaje> indicando la restriccion
-
-Examples:
-|numeroPoliza |ciudadCirculacion|mensaje                                                                                   |
-|TEST_22222222|ACANDI           |Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.|
 
 Scenario: Consultar bonificaciones
 Meta:
@@ -39,7 +33,7 @@ Then se debe mostrar en los campos de bonificación tecnica y comercial el porce
 
 Examples:
 |numeroPoliza |
-|TEST_22223223|
+|TEST_22222222|
 
 Scenario: Validar que muestre mensaje warning de PEPS para intereses adicionales - Vehiculos
 Meta:

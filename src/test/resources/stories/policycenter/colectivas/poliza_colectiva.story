@@ -95,7 +95,7 @@ Examples:
 
 Scenario: 5 Validacion de campos en menu lateral y opcion cotizacion ern poliza principal
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When cotize una poliza
+When cotice una poliza
 Then deben estar en estado <estadouno> las siguientes opciones
 | OPCIONES_MENU   |
 | Formularios     |

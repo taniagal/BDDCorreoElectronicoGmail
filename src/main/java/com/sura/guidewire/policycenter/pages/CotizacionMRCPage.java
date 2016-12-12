@@ -137,13 +137,8 @@ public class CotizacionMRCPage extends PageUtil {
         MatcherAssert.assertThat(labelPrimaTotal.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("primaTotal"))));
         MatcherAssert.assertThat(labelImpuestos.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("impuestos"))));
         MatcherAssert.assertThat(labelCostoTotal.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("costoTotal"))));
-
-        if (campoNumeroCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("cotizacion"))) {
-            datosCotizacion = informacionCotizacion.getRows().get(0);
-        }else{
-            datosCotizacion = informacionCotizacion.getRows().get(1);
-        }
-        MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("cotizacion"))));
+        datosCotizacion = informacionCotizacion.getRows().get(0);
+        MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(campoVigenciaPoliza.getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(campoTomador.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tomador"))));
         MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDocumento"))));

@@ -24,6 +24,11 @@ public class AdmonCotizacionCuentaDeclinaDefinitions {
         admonCotizacionCuentaSteps.navegar_barra_superior(numCuenta);
     }
 
+    @When("estoy visualizando las cotizaciones de la cuenta <numCuenta>")
+    public void visualizacionDeCotizacion(@Named("numCuenta") String numCuenta) {
+        admonCotizacionCuentaSteps.navegar_barra_superior(numCuenta);
+    }
+
     @When("quiera declinar la cotizacion por cualquier razon <razon>")
     public void razonDeclinarCotizacion(@Named("razon") String razon) {
         admonCotizacionCuentaSteps.seleccionar_opcion_en_acciones();
