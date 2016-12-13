@@ -97,8 +97,8 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
 
     public void irARenovacion() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAcciones).waitUntilPresent();
-        btnAcciones.click();
-        btnRenovarPoliza.click();
+        clickElement(btnAcciones);
+        clickElement(btnRenovarPoliza);
     }
 
     public void cancelaOperacionRenovacion() {
