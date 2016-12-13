@@ -62,7 +62,7 @@ public class AdmonCotizacionCuentaDeclinaDefinitions {
         admonCotizacionCuentaSteps.seleccionar_opcion_en_acciones();
     }
 
-    @Then("el sistema debe mostrarme todas las opciones: $listaCodRazon")
+    @When("el sistema debe mostrarme todas las opciones: $listaCodRazon")
     public void validarOpciones(ExamplesTable listaCodRazon){
         admonCotizacionCuentaSteps.valida_lista_de_razones(listaCodRazon);
     }

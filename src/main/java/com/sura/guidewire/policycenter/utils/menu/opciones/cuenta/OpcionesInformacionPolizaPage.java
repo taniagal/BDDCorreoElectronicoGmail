@@ -415,7 +415,8 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     }
 
     public void noIndicarPolizaFinanciada() {
-        waitFor(polizaFinanciadaNo).click();
+        polizaFinanciadaNo.waitUntilPresent();
+        clickElement(polizaFinanciadaNo);
     }
 
     public void noHabilitarNumeroCuotas() {

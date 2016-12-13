@@ -15,7 +15,7 @@ When intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Existencias fijas     |                     |                  | Valor Asegurable                               | 10             |
 | Coberturas del Riesgo    |                       |                     | Danos materiales | Sublímite para perdida de contenido en tanques | 31             |
 | Otros Articulos          | Mercancías a granel   |                     |                  | Valor Asegurable                               | 10             |
-When haga clic en el boton Aceptar
+And haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                         |
 | El valor de "Sublímite para perdida de contenido en tanques" deber ser menor o igual a la sumatoria de los valores asegurables de " - Mercancías a granel - Existencias fijas - Existencias flotantes - ". |
@@ -43,7 +43,7 @@ Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con e
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA                                                                 | ENTRADAS                                                                                  | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Gastos por arrendamiento de sistema electrónico de procesamiento de datos | Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos | 11             |
-When haga clic en el boton Aceptar
+And haga clic en el boton Aceptar
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                  |
 | Para poder seleccionar el "Valor asegurado gastos por arrendamiento de sistema electronico de procesamiento de datos" debe tener asegurado "Equipo electrónico fijo |
@@ -75,7 +75,7 @@ Scenario: 5 Sublimites menores a valor asegurado daños (coberturas a nivel de r
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar una nueva ubicacion sin riesgo consultable
 And borro el articulo anterior
-When intente ingresar las entradas de las diferentes coberturas
+And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                                                                                               | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                                                                                                                   | 200            |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                                                                                                                       | 51             |

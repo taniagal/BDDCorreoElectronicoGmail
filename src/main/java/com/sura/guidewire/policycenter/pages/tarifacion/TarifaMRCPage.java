@@ -152,10 +152,17 @@ public class TarifaMRCPage extends PageUtil {
         radioBotonDeducibleNo.click();
     }
 
+    /**
+     * la variable numeroCotizacion se usa en la prueba de declinar cotizacion para obtener el numero de cotizacion
+     * generado al crear una nueva cotizacion y luego poderla consultar y declinar.
+     * numeroCotizacion es un static String y fue creada en la clase padre.
+     */
+
     public void agregarArticulo() {
         botonActualizar.click();
         botonCotizar.waitUntilPresent().click();
         waitForTextToAppear("Cotizado");
+        numeroCotizacion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();
     }
 
     public void cotizarArticuloBloqueado() {
