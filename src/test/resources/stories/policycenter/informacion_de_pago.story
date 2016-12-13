@@ -32,8 +32,10 @@ Examples:
 |22222212  |Factura directa |Plan de pagos|
 |22222210   |Factura directa |Plan de pagos|
 
+
 Scenario: Visualizar seleccion en programa de pagos retorno billing
-Meta:@manual
+Meta:
+@manual
 Given que estoy en la pantalla de pago
 Then ingrese a la pantalla de pago
 Then debe dejarme seleccionar un SOLO plan de pagos en la tabla mostrada
