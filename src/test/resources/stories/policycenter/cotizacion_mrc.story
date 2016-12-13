@@ -17,8 +17,8 @@ GivenStories: stories/policycenter/login_policy.story
 Given se ha realizado la cotizacion MRC <cotizacion>
 When ingrese a consultar la cotizacion
 Then debo ver la informacion de la cotizacion
-| cotizacion | tomador              | tipoDocumento        | numeroDocumento | direccion                           | tipoDireccion           | descripcionDireccion                       | prima            | impuestos     | total            |
-| 22222237   | FRANK RAMIREZ ALZATE | CEDULA DE CIUDADANIA | 123456          | CRA 65 # 48-162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | $10.000,00 (COP) | $550,00 (COP) | $10.550,00 (COP) |
+| cotizacion | tomador              | tipoDocumento        | numeroDocumento | direccion                           | tipoDireccion           | descripcionDireccion                       | prima            | impuestos       | total            |
+| 22222237   | FRANK RAMIREZ ALZATE | CEDULA DE CIUDADANIA | 123456          | CRA 65 # 48-162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | $43.485,00 (COP) | $6.958,00 (COP) | $50.443,00 (COP) |
 
 Examples:
 |cotizacion |
