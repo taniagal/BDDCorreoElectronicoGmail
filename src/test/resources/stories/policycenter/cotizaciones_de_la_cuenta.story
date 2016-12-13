@@ -22,7 +22,7 @@ Then se debe iniciar el proceso de nueva cotizacion
 
 Examples:
 |numCuenta   |
-|C000777777  |
+|C001888888  |
 
 Scenario: Ocultar opcion de retirar
 Given estoy en una cuenta <numCuenta>
@@ -32,7 +32,7 @@ Then no debe aparece la opcion de retirar <retirar>.
 
 Examples:
 |numCuenta  |declinar |noTomar   |retirar |
-|C000777777 |Declinar |No tomar  |Retirar |
+|C001888888 |Declinar |No tomar  |Retirar |
 
 Scenario: Mostrar resultado segun el filtro
 Given estoy en una cuenta <numCuenta>
@@ -43,7 +43,7 @@ Fecha inicio de vigencia, Fecha fin de vigencia, Estado, Costo total
 
 Examples:
 |numCuenta  |cotizaciones           |productos              |
-|C000777777 |Todas las cotizaciones |Multiriesgo corporativo|
+|C001888888 |Todas las cotizaciones |Multiriesgo corporativo|
 
 
 Scenario: Mostrar numero de poliza
@@ -55,7 +55,7 @@ Then se debe mostrar el numero de la poliza.
 
 Examples:
 |numCuenta |estado  |producto           |
-|C000777777|Expedida|Todos los productos|
+|C001888888|Expedida|Todos los productos|
 
 Scenario: No mostrar numero de poliza
 Given estoy en una cuenta <numCuenta>
@@ -65,7 +65,7 @@ Then el numero de poliza debe aparecer vacio.
 
 Examples:
 |numCuenta   |estado  |
-|C000777777  |Borrador|
+|C001888888  |Borrador|
 
 Scenario: Permitir crear carta de declinacion
 Given estoy en una cuenta <numCuenta>
@@ -75,7 +75,7 @@ Then me debe permitir crear una carta de declinacion por medio de un boton. El l
 
 Examples:
 |numCuenta   |declinado|propiedadComercial     |crearCarta                |
-|C000777777  |Declinada|Multiriesgo corporativo|Crear carta de declinación|
+|C001888888  |Declinada|Multiriesgo corporativo|Crear carta de declinación|
 
 Scenario: Permitir descargar cartas
 Given estoy en una cuenta <numCuenta>
@@ -85,7 +85,7 @@ Then me debe permitir descargar esta carta. Esta funcionalidad queda tal cual co
 
 Examples:
 |numCuenta  |
-|C000777777 |
+|C001888888 |
 
 Scenario: No permitir crear carta de declinacion
 Meta: @manual
