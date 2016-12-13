@@ -50,5 +50,8 @@ public class AdmonCotizacionCuentaNoTomarSteps extends ScenarioSteps {
     }
 
 
-
+    @Step
+    public void cotizarParaLaOpcionNoTomar() {
+        opcionesAdminitradorCotizaciones.cotizarParaOpcionesDeclinarYNoTomar("no tomar");
+    }
 }

@@ -17,7 +17,7 @@ And descripcion <descripcion>, actividad economica <actividad>
 And seleccione la cobertura:
 |valorReconstruccion|valorAsegurado|valorComercial|cobertura|
 |100000000          |100000000     |null          |Terremoto|
-And cotice el articulo
+And cotice para la opcion declinar MRC
 And estoy visualizando las cotizaciones de la cuenta <numCuenta>
 And quiera declinar la cotizacion sin ingresar la razon
 Then el sistema debe mostrar un mesaje <mensaje>
@@ -33,7 +33,7 @@ And descripcion <descripcion>, actividad economica <actividad>
 And seleccione la cobertura:
 |valorReconstruccion|valorAsegurado|valorComercial|cobertura|
 |100000000          |100000000     |null          |Terremoto|
-And cotice el articulo
+And cotice para la opcion declinar MRC
 And estoy visualizando las cotizaciones de la cuenta <numCuenta>
 And quiera declinar la cotizacion
 And el sistema debe mostrarme todas las opciones:
