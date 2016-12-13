@@ -232,10 +232,8 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void validarEstadoDiferenteExpedida(String estado) {
-
-        Integer contador = 0;
         String expedida = "Expedida";
-        String vacio = " ";
+        String vacio = "";
 
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {
@@ -243,7 +241,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
             if (!vacio.equals(cells.get(CONSTANTE_2).getText()) && cells.get(CONSTANTE_7).getText().equals(expedida)) {
                 MatcherAssert.assertThat(cells.get(CONSTANTE_6).getText(), Is.is(Matchers.notNullValue()));
             } else if (!vacio.equals(cells.get(CONSTANTE_2).getText()) && !expedida.equals(cells.get(CONSTANTE_7).getText())) {
-                MatcherAssert.assertThat(cells.get(CONSTANTE_6).getText(), Is.is(Matchers.equalTo(vacio)));
+                MatcherAssert.assertThat(cells.get(CONSTANTE_6).getText().replace(" ", ""), Is.is(Matchers.equalTo(vacio)));
             }
         }
     }
@@ -264,8 +262,6 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void validarEstadoCotizacionDeclinado(String propiedadComercial, String declinado) {
-        boolean validacion = false;
-        String excepcion = null;
         int i = 0;
         List<WebElement> allRows = tblCotizaciones.findElements(By.tagName("tr"));
         for (WebElement row : allRows) {

@@ -192,4 +192,8 @@ public class NuevaCotizacionPage extends PageUtil {
     public void desmarcarTasaUnica() {
         checkBoxTasaUnica.click();
     }
+
+    public void seleccionarReaseguroEspecialNo() {
+        findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']").waitUntilPresent().click();
+    }
 }

@@ -82,4 +82,9 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
         tarifaAutosPage.seleccionarCoberturas(datosCotizacion);
         tarifaAutosPage.desMarcarCoberturas();
     }
+
+    @Step
+    public void seleccionarReaseguroEspecialNo() {
+        nuevaCotizacionPage.seleccionarReaseguroEspecialNo();
+    }
 }

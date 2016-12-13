@@ -28,4 +28,9 @@ public class NuevaCotizacionDefinitions {
     public void copiarEnvio(ExamplesTable datosCtotizacion) {
         nuevaCotizacionSteps.cotizarEnvioCopiadoPa(datosCtotizacion);
     }
+
+    @Given("seleccione reaseguro especial No")
+    public void seleccionarReaseguroEspecialNo() {
+        nuevaCotizacionSteps.seleccionarReaseguroEspecialNo();
+    }
 }
