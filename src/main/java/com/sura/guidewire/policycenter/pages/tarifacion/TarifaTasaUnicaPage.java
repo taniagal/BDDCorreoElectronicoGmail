@@ -19,6 +19,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade botonExportarAHojaDeCalculo;
     @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange']")
     private WebElementFacade botonSiguienteCambioDePoliza;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
+    private WebElementFacade botonEditarTransaccionDePoliza;
     @FindBy(xpath = ".//*[@id='ExcelImportFilePopup:ImportButton']")
     private WebElementFacade botonImportar;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
@@ -53,6 +55,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade menuiItemCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
     private WebElementFacade menuiItemInformacionDePoliza;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']/div")
+    private WebElementFacade menuItemInformacionDePolizaRenovacion;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Export-inputEl']")
     private WebElementFacade comboBoxExportar;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Format-inputEl']")
@@ -91,7 +95,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade linkDescartarCambios;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    private static final int CONSTANTE_3 = 3;
     String primaTotal = "";
 
     public TarifaTasaUnicaPage(WebDriver driver) {
@@ -173,18 +176,29 @@ public class TarifaTasaUnicaPage extends PageUtil {
         guardarMontoPorCoberturas();
         menuAccionesEnvio.waitUntilPresent().click();
         menuItemArchivoDePoliza.waitUntilPresent().click();
+        nuevaRenovacion();
+    }
+
+    public void nuevaRenovacion() {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemRenovarPoliza.waitUntilPresent().click();
         botonAceptar.waitUntilPresent().click();
-        for (int i = 0; i < CONSTANTE_3; i++) {
-            botonHojaDeCalculoRenovacion.waitUntilPresent();
-            waitUntil(WAIT_TIME_3000);
-            menuPoliza.click();
-            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
-            if (botonCotizarRenovacion.isPresent()) {
-                break;
-            }
-        }
+        botonHojaDeCalculoRenovacion.waitUntilPresent();
+        waitUntil(WAIT_TIME_5000);
+        clickElement(menuPoliza);
+    }
+
+    public void irAInformacionDePolizaRenovacion(){
+        menuItemInformacionDePolizaRenovacion.waitUntilPresent();
+        clickElement(menuItemInformacionDePolizaRenovacion);
+    }
+
+    public void editarTransaccion(){
+        botonEditarTransaccionDePoliza.waitUntilPresent();
+        clickElement(botonEditarTransaccionDePoliza);
+        botonAceptar.waitUntilPresent().click();
+        botonEditarTransaccionDePoliza.waitUntilNotVisible();
+        descartarCambios();
     }
 
 
@@ -193,6 +207,10 @@ public class TarifaTasaUnicaPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
         checkBoxTasaUnica.shouldBePresent();
         botonCotizarRenovacion.click();
+        descartarCambios();
+    }
+
+    public void descartarCambios() {
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();

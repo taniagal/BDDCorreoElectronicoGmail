@@ -1,61 +1,79 @@
 package com.sura.guidewire.policycenter.steps;
 
+import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.renovacion.RenovacionDeseoFinanciacionPaPage;
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
-public class RenovacionDeseoFinanciacionPaSteps extends ScenarioSteps{
+public class RenovacionDeseoFinanciacionPaSteps extends ScenarioSteps {
 
+    @Page
     RenovacionDeseoFinanciacionPaPage renovacionDeseoFinanciacionPage;
 
+    @Page
+    TarifaTasaUnicaPage tasaUnicaPage;
+
+    @Page
+    ValidacionesInformacionDeVehiculoPage vehiculoPage;
+
     @Step
-    public void seleccionar_Deseo_Financiacion_Si() {
+    public void seleccionarDeseoFinanciacionSi() {
         renovacionDeseoFinanciacionPage.seleccionarDeseoFinanciacionSi();
     }
 
     @Step
-    public void seleccionar_Opcion_Siguiente() {
+    public void seleccionarOpcionSiguiente() {
         renovacionDeseoFinanciacionPage.seleccionarOpcionSiguiente();
     }
 
     @Step
-    public void validar_Que_Se_Muestre_Mensaje_Deseo_Financiacion(ExamplesTable mensaje) {
+    public void validarQueSeMuestreMensajeDeseoFinanciacion(ExamplesTable mensaje) {
         renovacionDeseoFinanciacionPage.validarMensajeDeseoFinanciacion(mensaje);
     }
 
     @Step
-    public void cotizar_Renovacion_De_Poliza() {
+    public void cotizarRenovacionDePoliza() {
         renovacionDeseoFinanciacionPage.cotizarRenovacionPoliza();
     }
 
     @Step
-    public void ir_A_Revision_De_Poliza() {
+    public void irARevisionDePoliza() {
         renovacionDeseoFinanciacionPage.irARevisionDePoliza();
     }
 
     @Step
-    public void validar_Mensaje_Financiacion_Al_Cotizar_Renovacion(ExamplesTable mensaje) {
+    public void validarMensajeFinanciacionAlCotizarRenovacion(ExamplesTable mensaje) {
         renovacionDeseoFinanciacionPage.validarMensajeFinanciacionCotizacionRenovacion(mensaje);
     }
 
     @Step
-    public void validar_Que_Se_Muestre_Numero_De_Cuotas(ExamplesTable numeroCuotas) {
+    public void validarQueSeMuestreNumeroDeCuotas(ExamplesTable numeroCuotas) {
         renovacionDeseoFinanciacionPage.validarNumeroDeCuotas(numeroCuotas);
     }
 
     @Step
-    public void validar_Que_La_Cotizacion_Tenga_Intencion_De_Financiacion() {
-        renovacionDeseoFinanciacionPage.validarCotizacionConIntencionDeFinanciacion();
-    }
-
-    @Step
-    public void validar_Que_Se_Muestre_Valor_Y_Numero_De_Cuotas(ExamplesTable detalleCotizacion) {
+    public void validarQueSeMuestreValorYNumeroDeCuotas(ExamplesTable detalleCotizacion) {
         renovacionDeseoFinanciacionPage.validarValorYNumeroDeCuotas(detalleCotizacion);
     }
 
     @Step
-    public void expedir_Poliza_De_Renovacion() {
+    public void expedirPolizaDeRenovacion() {
         renovacionDeseoFinanciacionPage.expedirPolizaRenovacion();
+    }
+
+    @Step
+    public void marcarDeseoDeFinanciacion() {
+        renovacionDeseoFinanciacionPage.marcarDeseodeFinanciacion();
+        vehiculoPage.clickSiguiente();
+    }
+
+    @Step
+    public void comenzarRenovacion() {
+        tasaUnicaPage.nuevaRenovacion();
+        tasaUnicaPage.irAInformacionDePolizaRenovacion();
+        tasaUnicaPage.editarTransaccion();
     }
 }

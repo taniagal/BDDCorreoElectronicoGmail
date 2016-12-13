@@ -56,10 +56,10 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     public void cotizarEnvioCopiadoPa(ExamplesTable datosCotizacion) {
         vehiculoPage.irAVehiculos();
         vehiculoSteps.agregarPlaca();
-        vehiculoPage.agregarCiudadDeCirculacionY0Km(datosCotizacion);
+        vehiculoPage.agregarCiudadDeCirculacion(datosCotizacion);
         vehiculoPage.clickSiguiente();
         seleccionarCoberturaBasicas(datosCotizacion);
-        tarifaAutosPage.cotizar();
+        tarifaAutosPage.intentarCotizar();
     }
 
     @Step

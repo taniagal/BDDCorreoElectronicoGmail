@@ -1,7 +1,7 @@
 Renovacion Deseo Financiacion Pa
 
-Meta: @lote4
-
+Meta:
+@lote4
 @issue #CDSEG-2309
 @tag automator: diego_cardona_acevedo
 @local
@@ -13,59 +13,58 @@ Quiero poder realizar la cotizacion de la renovacion de una poliza de personal a
 
 Scenario: Validar numero de cuotas - informacion de poliza
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando la renovacion de la poliza <cotizacion>
-When la poliza tiene intencion de financiacion
+Given estoy cotizando una poliza basado en otro envio <envio>
+When ingrese los datos de la cotizacion:
+|ciudad_circulacion|limite|deducible|abogado |PLlaves |modelo|
+|MEDELLIN          |1.440 |0        |Opción 1|Opción 1|2016  |
+And cotice una poliza
+And expido la poliza y voy al archivo de poliza
+And comienzo una nueva renovacion
 Then se debe mostrar el campo numero de cuotas, permitiendo seleccionar entre las opciones de 11 y 12
 |cuota11|cuota12|
 |11     |12     |
 
 Examples:
-|cotizacion|
-|32112331  |
+|envio   |
+|22228589|
+
 
 Scenario: Validar mensaje de advertencia de financiacion - informacion de poliza
-Given estoy cotizando la renovacion de la poliza <cotizacion>
-And la poliza tiene intencion de financiacion
+Given estoy cotizando la renovacion de la poliza
 When seleccione la opcion siguiente en la renovacion
 Then se debe mostrar un mensaje como advertencia
-|mensaje |
+|mensaje                                                                                  |
 |La financiación de la póliza está sujeta a aprobación por parte del área de financiación.|
 
 Examples:
-|cotizacion|
-|32112331  |
+||
+||
+
 
 Scenario: Validar mensaje de advertencia de financiacion - cotizacion
-Given estoy cotizando la renovacion de la poliza <cotizacion>
+Given estoy cotizando la renovacion de la poliza
 When realice la cotizacion de la renovacion con intencion de financiacion
 Then se debe mostrar una advertencia en la cotizacion
 |mensaje |
 |La financiación de la póliza está sujeta a aprobación por parte del área de financiación.|
 
 Examples:
-|cotizacion|
-|32112331  |
+||
+||
 
-Scenario: Validar que se muestre valor y numero de cuotas en la cotizacion
-Given estoy cotizando la renovacion de la poliza <cotizacion>
-When la cotizacion de renovacion tenga intencion de financiacion
+
+Scenario: Validar que se muestre valor, numero de cuotas en la cotizacion y mensaje de advertencia de financiacion - expedicion
+Given estoy cotizando la renovacion de la poliza
+When cotice una poliza
 Then se debe mostrar en el detalle de la cotizacion el valor por cuota a pagar
 y el numero de cotas indicadas en la informacion de la poliza
 |valorCuota |numeroCuota|
-|$101.620   |11         |
-
-Examples:
-|cotizacion|
-|55556666  |
-
-Scenario: Validar mensaje de advertencia de financiacion - expedicion
-Given estoy cotizando la renovacion de la poliza <cotizacion>
-When la cotizacion de renovacion tenga intencion de financiacion
+|$184.622   |12         |
 And trate de expedir la poliza
-Then se debe mostrar una advertencia en la cotizacion
+And se debe mostrar una advertencia en la cotizacion
 |mensaje |
 |La financiación de la póliza está sujeta a aprobación por parte del área de financiación.|
 
 Examples:
-|cotizacion|
-|55556666  |
+||
+||
