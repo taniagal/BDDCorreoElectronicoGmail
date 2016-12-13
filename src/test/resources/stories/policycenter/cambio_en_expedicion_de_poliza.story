@@ -15,8 +15,8 @@ Scenario: Validacion de resumen de la poliza expedirla
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
 And ingrese los datos de la cotizacion PA
-|envio   |ciudad_circulacion|limite|deducible|abogado |PLlaves |modelo|
-|22228589|MEDELLIN          |1.440 |0        |Opción 1|Opción 1|2016  |
+|ciudad_circulacion|limite|deducible|abogado |PLlaves |modelo|
+|MEDELLIN          |1.440 |0        |Opción 1|Opción 1|2016  |
 When expido la poliza y voy al archivo de poliza
 And expida el cambio de una poliza
 Then debe mostrar el resumen de la poliza expedida con la informacion del cambio <infoCambio>, poliza <infoPoliza>,  escritorio <escritorio>

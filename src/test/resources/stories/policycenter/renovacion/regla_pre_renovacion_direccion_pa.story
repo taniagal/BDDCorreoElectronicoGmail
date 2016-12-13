@@ -1,7 +1,7 @@
 Regla Pre Renovacion Direccion Pa
 
-Meta: @lote3
-
+Meta:
+@lote3
 @issue #CDSEG-997
 @tag automator: Jonathan_Mejia_Leon
 @local
@@ -23,4 +23,4 @@ Then se deben habilitar solo las opciones:
 
 Examples:
 |poliza       |
-|TEST_22222239|
+|TEST_22222222|

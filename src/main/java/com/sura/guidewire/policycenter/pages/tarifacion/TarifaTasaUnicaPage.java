@@ -145,10 +145,10 @@ public class TarifaTasaUnicaPage extends PageUtil {
         guardarMontoPorCoberturas();
         menuAccionesEnvio.waitUntilPresent().click();
         menuItemArchivoDePoliza.waitUntilPresent().click();
-        clickCambioDePoliza();
+        nuevoCambioDePoliza();
     }
 
-    public void clickCambioDePoliza() {
+    public void nuevoCambioDePoliza() {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemCambiarPoliza.waitUntilPresent().click();
         botonSiguienteCambioDePoliza.waitUntilPresent().click();
