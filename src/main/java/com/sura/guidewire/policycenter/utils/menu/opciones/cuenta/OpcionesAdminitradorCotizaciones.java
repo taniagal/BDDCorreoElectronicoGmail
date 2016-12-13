@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +19,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
-
 
 
 public class OpcionesAdminitradorCotizaciones extends PageUtil {
@@ -67,8 +67,6 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private WebElementFacade itmNoTomarJ;
     @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuIcon']")
     private WebElementFacade btnAccionesJ;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuIcon']")
-    private WebElementFacade btnAcciones2;
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade txtCodRazon;
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReasonText-inputEl']")
@@ -93,6 +91,8 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private WebElementFacade msg;
     @FindBy(id = "NotTakenReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msgNoTomar;
+
+    private WebElementFacade botonAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuIcon']");
 
 
     private static final String SUBMITIONXPATH = ".//img[contains(@id,'SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
@@ -124,8 +124,8 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
                         botonAccciones.click();
                         waitFor(CONSTANTE_2).seconds();
                         band = i;
-                    } catch (Exception e){
-                        LOGGER.info(" "+e);
+                    } catch (Exception e) {
+                        LOGGER.info(" " + e);
                     }
                     break;
                 }
@@ -282,7 +282,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
 
     public void mostrarBotonCrearCartaDeclinacion(String crearCarta) {
         if (band != 0) {
-            WebElementFacade botonCrearCartaDeclinacion = findBy(DECLINELETTER+band+":DeclineLetter']");
+            WebElementFacade botonCrearCartaDeclinacion = findBy(DECLINELETTER + band + ":DeclineLetter']");
             MatcherAssert.assertThat(botonCrearCartaDeclinacion.getText(), Is.is(Matchers.equalTo(crearCarta)));
             band = 0;
         } else {
@@ -317,8 +317,26 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
      */
 
     public void seleccionarAccionesDeclinar() {
-        btnAcciones2.waitUntilVisible().waitUntilClickable().click();
-        $(itmDeclinarComProp).waitUntilVisible().waitUntilClickable().click();
+        Integer fila = this.encontrarCotizacion(numeroCotizacion);
+        botonAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:"+fila.toString()+":SubmissionActions:SubmissionActionsMenuIcon']");
+        botonAcciones.waitUntilVisible().waitUntilClickable().click();
+        WebElementFacade opcionDeclinar = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:"+fila.toString()+":SubmissionActions:SubmissionActionsMenuItemSet:Decline']");
+        opcionDeclinar.waitUntilVisible().waitUntilClickable().click();
+    }
+
+    public Integer encontrarCotizacion(String cotizacion) {
+        waitForTextToAppear(cotizacion);
+        Integer filaBoton = 0;
+        WebElementFacade filaCotizacion = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + filaBoton + ":SubmissionNumber']");
+        while (filaCotizacion.isVisible()){
+            if(filaCotizacion.getText().equals(cotizacion)){
+                return filaBoton;
+            }else {
+                filaBoton++;
+                filaCotizacion = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + filaBoton + ":SubmissionNumber']");
+            }
+        }
+        return filaBoton;
     }
 
     public void seleccionarAccionesNoTomar() {
@@ -373,7 +391,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
         if (!getListaCotizaciones().isEmpty()) {
             for (WebElementFacade cotizacion : getListaCotizaciones()) {
-                if (numCotizacion.equals(cotizacion.getText())) {
+                if (numeroCotizacion.equals(cotizacion.getText())) {
                     MatcherAssert.assertThat("El estado no pertenece a la accion dada", accion.equals(getListaEstado().get(i).getText()));
                     break;
                 }
@@ -384,7 +402,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void validaAccionDesabilita() {
-        MatcherAssert.assertThat("Boton Acciones no esta presente", !btnAcciones2.isPresent());
+        MatcherAssert.assertThat("Boton Acciones no esta presente", botonAcciones.isVisible(), Is.is(Matchers.equalTo(false)));
     }
 
     public void validaAccionDesabilitaNoTomar() {
@@ -405,14 +423,14 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
 
-    public void validarOpcionesDeAgregar(ExamplesTable listaRazones){
+    public void validarOpcionesDeAgregar(ExamplesTable listaRazones) {
         listaTipoRazon.click();
         this.validarDatosDeLaLista(listaRazones);
         btnCancelar.click();
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
 
-    public void validarOpcionesDeAgregarNoTomar(ExamplesTable listaRazones){
+    public void validarOpcionesDeAgregarNoTomar(ExamplesTable listaRazones) {
         listaTipoRazonNoTomar.click();
         this.validarDatosDeLaLista(listaRazones);
         btnCancelarNoTomar.click();
@@ -423,7 +441,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         MatcherAssert.assertThat("No se pudieron visualizar las polizas", getListaCotizaciones().isEmpty());
     }
 
-    private void validarDatosDeLaLista(ExamplesTable tipoCanal){
+    private void validarDatosDeLaLista(ExamplesTable tipoCanal) {
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
         for (String tipo : elementosRequeridos) {
