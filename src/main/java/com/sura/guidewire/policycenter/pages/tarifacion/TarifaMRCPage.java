@@ -82,28 +82,14 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void verificarTarifacion(String prima) {
-        try {
-            labelPrimaTotal.waitUntilPresent();
-        } catch (UnhandledAlertException f) {
-            LOGGER.info("UnhandledAlertException " + f);
-            try {
-                Alert alert = getDriver().switchTo().alert();
-                String alertText = alert.getText();
-                LOGGER.info("Alert data: " + alertText);
-                alert.accept();
-            } catch (NoAlertPresentException e) {
-                LOGGER.info("NoAlertPresentException " + e);
-            }
-            waitUntil(WAIT_TIME_2000);
-            labelPrimaTotal.waitUntilPresent();
-        }
-        MatcherAssert.assertThat("Error en el valor de la prima. Esperaba: " + prima + " pero fue: " + labelPrimaTotal.getText(),
-                labelPrimaTotal.containsText(prima));
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelPrimaTotal);
+        MatcherAssert.assertThat("Error en el valor de la prima. Esperaba: " + prima + " pero fue: " +
+                labelPrimaTotal.getText(), labelPrimaTotal.containsText(prima));
     }
 
     public void irAArticulo() {
         borrarArticulo();
-        botonAgregarArticulos.click();
+        clickElement(botonAgregarArticulos);
     }
 
     public void borrarArticulo() {

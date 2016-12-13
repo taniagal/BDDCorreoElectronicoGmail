@@ -248,6 +248,9 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void agregarCiudadDeCirculacion(ExamplesTable datosCotizacion) {
         Map<String, String> vehiculo = datosCotizacion.getRow(0);
+        campoVehiculoCeroKm.waitUntilPresent();
+        clickElement(campoVehiculoCeroKm);
+        waitUntil(WAIT_TIME_3000);
         seleccionarCiudadDeCirculacion(vehiculo);
     }
 }
