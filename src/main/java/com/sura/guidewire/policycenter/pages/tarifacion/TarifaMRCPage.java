@@ -148,7 +148,6 @@ public class TarifaMRCPage extends PageUtil {
         botonActualizar.click();
         botonCotizar.waitUntilPresent().click();
         waitForTextToAppear("Cotizado");
-        numeroCotizacion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();
     }
 
     public void cotizarArticuloBloqueado() {

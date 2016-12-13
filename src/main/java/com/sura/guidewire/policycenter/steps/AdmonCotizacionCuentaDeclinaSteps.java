@@ -61,5 +61,8 @@ public class AdmonCotizacionCuentaDeclinaSteps extends ScenarioSteps {
         opcionesAdminitradorCotizaciones.validarOpcionesDeAgregar(listaRazones);
     }
 
-
+    @Step
+    public void cotizarParaLaOpcionDeclinar() {
+        opcionesAdminitradorCotizaciones.cotizarParaOpcionesDeclinarYNoTomar("declinar");
+    }
 }
