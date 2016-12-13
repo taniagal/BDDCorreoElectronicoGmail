@@ -63,10 +63,6 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerCode-labelEl']")
     private WebElementFacade labelCodigoAgente;
 
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob-itemEl']")
-    private WebElementFacade itmNoTomarJ;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuIcon']")
-    private WebElementFacade btnAccionesJ;
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade txtCodRazon;
     @FindBy(xpath = ".//*[@id='DeclineReasonPopup:RejectScreen:RejectReasonDV:RejectReasonText-inputEl']")
@@ -91,6 +87,10 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private WebElementFacade msg;
     @FindBy(id = "NotTakenReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msgNoTomar;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
+    private WebElementFacade botonActualizar;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
+    private WebElementFacade botonCotizar;
 
     private WebElementFacade botonAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:0:SubmissionActions:SubmissionActionsMenuIcon']");
 
@@ -308,40 +308,35 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         waitUntil(WAIT_TIME_1500);
     }
 
-    /**
-     * Metodos Ingresados para re-usar el mismo Page.TEST_22266665}
-     * Intervenido por: Jonathan Mejia Leon
-     * Fecha de intervencion: 21/06/2016
-     * Motivo: Uso del page para Administracion de cotización (Declinar-No Tomar)
-     * Story usada: admon_cotizacion_cuenta.story
-     */
-
     public void seleccionarAccionesDeclinar() {
-        Integer fila = this.encontrarCotizacion(numeroCotizacion);
-        botonAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:"+fila.toString()+":SubmissionActions:SubmissionActionsMenuIcon']");
+        Integer fila = this.encontrarCotizacion(numeroCotizacionDeclinar);
+        botonAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + fila.toString() + ":SubmissionActions:SubmissionActionsMenuIcon']");
         botonAcciones.waitUntilVisible().waitUntilClickable().click();
-        WebElementFacade opcionDeclinar = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:"+fila.toString()+":SubmissionActions:SubmissionActionsMenuItemSet:Decline']");
+        WebElementFacade opcionDeclinar = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + fila.toString() + ":SubmissionActions:SubmissionActionsMenuItemSet:Decline']");
         opcionDeclinar.waitUntilVisible().waitUntilClickable().click();
+    }
+
+    public void seleccionarAccionesNoTomar() {
+        Integer fila = this.encontrarCotizacion(numeroCotizacionNoTomar);
+        botonAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + fila.toString() + ":SubmissionActions:SubmissionActionsMenuIcon']");
+        botonAcciones.waitUntilVisible().waitUntilClickable().click();
+        WebElementFacade opcionNoTomar = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + fila.toString() + ":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']");
+        opcionNoTomar.waitUntilVisible().waitUntilClickable().click();
     }
 
     public Integer encontrarCotizacion(String cotizacion) {
         waitForTextToAppear(cotizacion);
         Integer filaBoton = 0;
         WebElementFacade filaCotizacion = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + filaBoton + ":SubmissionNumber']");
-        while (filaCotizacion.isVisible()){
-            if(filaCotizacion.getText().equals(cotizacion)){
+        while (filaCotizacion.isVisible()) {
+            if (filaCotizacion.getText().equals(cotizacion)) {
                 return filaBoton;
-            }else {
+            } else {
                 filaBoton++;
                 filaCotizacion = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + filaBoton + ":SubmissionNumber']");
             }
         }
         return filaBoton;
-    }
-
-    public void seleccionarAccionesNoTomar() {
-        btnAccionesJ.waitUntilVisible().waitUntilClickable().click();
-        $(itmNoTomarJ).waitUntilVisible().waitUntilClickable().click();
     }
 
     public void ingresaRechazo(String razon) {
@@ -388,10 +383,15 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
 
     public void validaEstado(String numCotizacion, String accion) {
         int i = 0;
+        if("declinada".equals(accion.toLowerCase())) {
+            numCotizacion = numeroCotizacionDeclinar;
+        }else{
+            numCotizacion = numeroCotizacionNoTomar;
+        }
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
         if (!getListaCotizaciones().isEmpty()) {
             for (WebElementFacade cotizacion : getListaCotizaciones()) {
-                if (numeroCotizacion.equals(cotizacion.getText())) {
+                if (numCotizacion.equals(cotizacion.getText())) {
                     MatcherAssert.assertThat("El estado no pertenece a la accion dada", accion.equals(getListaEstado().get(i).getText()));
                     break;
                 }
@@ -406,7 +406,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void validaAccionDesabilitaNoTomar() {
-        MatcherAssert.assertThat("Boton Acciones no esta presente", !btnAccionesJ.isPresent());
+        MatcherAssert.assertThat("Boton Acciones no esta presente", botonAcciones.isVisible(), Is.is(Matchers.equalTo(false)));
     }
 
     public void validaMensaje(String mensaje) {
@@ -437,10 +437,6 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
     }
 
-    public void validarTodasLasCotizaciones() {
-        MatcherAssert.assertThat("No se pudieron visualizar las polizas", getListaCotizaciones().isEmpty());
-    }
-
     private void validarDatosDeLaLista(ExamplesTable tipoCanal) {
         List<WebElementFacade> elementosTipoCanalVentas;
         List<String> elementosRequeridos = GwNavegacionUtil.obtenerTablaDeEjemplosDeUnaColumna(tipoCanal);
@@ -449,6 +445,17 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
             for (WebElementFacade lista : elementosTipoCanalVentas) {
                 MatcherAssert.assertThat(tipo, Matchers.containsString(lista.getText()));
             }
+        }
+    }
+
+    public void cotizarParaOpcionesDeclinarYNoTomar(String accion) {
+        botonActualizar.click();
+        botonCotizar.waitUntilPresent().click();
+        waitForTextToAppear("Cotizado");
+        if ("declinar".equals(accion)) {
+            numeroCotizacionDeclinar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();
+        }else{
+            numeroCotizacionNoTomar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();
         }
     }
 }
