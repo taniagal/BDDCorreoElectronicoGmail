@@ -27,7 +27,7 @@ Then el valor de iva debe ser igual a 0 (cero)
 
 Examples:
 |prima    |departamento|ciudad |direccion        |descripcion  |actividad|
-|1.016.667|Amazonas    |Leticia|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|1.016.667|Amazonas    |Leticia|CR 44 A # 41 - 00|Edificio Core|Acabado de productos textiles|
 
 
 
@@ -45,4 +45,4 @@ Then el valor de iva debe ser igual a 0 (cero)
 
 Examples:
 |prima    |departamento            |ciudad    |direccion        |descripcion  |actividad|
-|1.016.667|San Andres Y Providencia|San Andres|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
+|1.016.667|San Andres Y Providencia|San Andres|CR 44 A # 42 - 00|Edificio Core|Acabado de productos textiles|
