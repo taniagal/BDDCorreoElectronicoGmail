@@ -238,6 +238,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     public void seleccionarOpcionCotizar() {
         botonCotizar.waitUntilPresent();
         clickElement(botonCotizar);
+        waitForTextToAppear("Cotización");
     }
 
     public Integer encontrarProducto(String producto) {

@@ -26,7 +26,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
     WebElementFacade menuNumeroCotizacion;
 
-    @FindBy(id = "SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl")
+    @FindBy(xpath =  "//a[contains(.,'Expedir póliza') and contains(@id,'JobWizardToolbarButtonSet:IssuesPolicy')]")
     WebElementFacade botonExpedirPoliza;
 
     @FindBy(id = "PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange-btnInnerEl")
