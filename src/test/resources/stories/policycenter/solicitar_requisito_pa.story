@@ -12,26 +12,48 @@ Narrative:
 Como usuario de negocio
 Quiero que se levante el requisito para la solucion de autos de acuerdo a las reglas de negocio ya definidas.
 
-Scenario: habilitar opcion Solicitar requisitos - expedicion
+Scenario: validar opcion requisitos
 GivenStories: stories/policycenter/login_policy.story
-Given existe una cotizacion <numeroCotizacion>
-When llegue a la expedicion de la poliza
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto|canal            |tipoPoliza |
+|C000888888|Sura        |Autos   |Canal Tradicional|PPAutos    |
+When seleccione la opcion siguiente
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
+|TYU141|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+And ingrese las coberturas basicas:
+|limite|deducible|abogado |PLlaves |
+|1.440 |0        |Opción 1|Opción 1|
+And intente cotizar
+And llegue a la expedicion de la poliza
 Then se debe habilitar la opcion de requisitos, con el fin de visualizar los requisitos requeridos
 
 Examples:
-|numeroCotizacion|
-|22334457        |
+|tipo_documento      |documento |
+|CEDULA DE CIUDADANIA|1060447895|
 
 Scenario: validar mensaje de advertencia - requisitos pendientes
-Given existe una cotizacion <numeroCotizacion>
-When llegue a la expedicion de la poliza
+Given estoy cotizando una poliza:
+|cuenta    |organizacion|producto|canal            |tipoPoliza |
+|C000888888|Sura        |Autos   |Canal Tradicional|PPAutos    |
+When seleccione la opcion siguiente
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
+|TYU141|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+And ingrese las coberturas basicas:
+|limite|deducible|abogado |PLlaves |
+|1.440 |0        |Opción 1|Opción 1|
+And intente cotizar
+And llegue a la expedicion de la poliza
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                            |
 |Existen requisitos pendientes, por favor verifique.|
 
 Examples:
-|numeroCotizacion|
-|22334457        |
+|tipo_documento      |documento |
+|CEDULA DE CIUDADANIA|1060447895|
 
 Scenario: validar opcion Solicitar requisitos - modificacion
 Given he realizado la cotizacion <cotizacion>
@@ -43,7 +65,7 @@ Then se debe mostrar un mensaje de advertencia
 
 Examples:
 |cotizacion|
-|55570000  |
+|22222244  |
 
 Scenario: Validar ventana de requisitos
 Meta: @manual
