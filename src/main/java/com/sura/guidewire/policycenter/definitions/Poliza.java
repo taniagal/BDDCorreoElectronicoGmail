@@ -129,7 +129,7 @@ public class Poliza {
         polizaSteps.verResumenDeLaPolizaExpedida();
     }
 
-    @When("cuando intente renovar informacion de la poliza MRC")
+    @When("intente renovar la poliza")
     public void cuandoIntenterRenovarPolizaMRC() {
         LOGGER.info("Poliza.cuandoIntenteCambiarInformacionDeLaPolizaMRC");
 
