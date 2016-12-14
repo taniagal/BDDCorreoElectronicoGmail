@@ -53,7 +53,7 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
                 }
             }
         }
-            MatcherAssert.assertThat("El número de mensajes: ", contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
+            MatcherAssert.assertThat("Se esperaba que se mostrara mensaje", contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
             MatcherAssert.assertThat(iconoError.isVisible(), Is.is(Matchers.equalTo(true)));
     }
 
