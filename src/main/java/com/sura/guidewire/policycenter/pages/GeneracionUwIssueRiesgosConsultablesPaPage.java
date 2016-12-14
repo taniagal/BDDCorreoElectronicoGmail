@@ -13,10 +13,10 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil{
-    
-    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
+
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']")
     private WebElementFacade grupoUWIssues;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:RiskAnalysis']/div")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:RiskAnalysis']/div/span")
     private WebElementFacade analisisRiesgoExpedicion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:RiskAnalysis']/div/span")
     private WebElementFacade analisisRiesgoModificacion;
@@ -30,30 +30,25 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil{
     public void irAAnalisisDeRiesgo() {
         WebElementFacade resultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
-        //WebElementFacade analisisRiesgoExpedicion = findBy(".//*[@id='SubmissionWizard:RiskAnalysis']/div");
-        //WebElementFacade analisisRiesgoModificacion = findBy(".//*[@id='PolicyChangeWizard:RiskAnalysis']/div/span");
-        //if(analisisRiesgoExpedicion.isCurrentlyVisible()){
-        WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
-        withTimeoutOf(WAIT_TIME_5000,TimeUnit.SECONDS).waitFor(botonBorrar).click();
         if(analisisRiesgoExpedicion.isPresent()){
             withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(analisisRiesgoExpedicion).click();
-        } //else if(analisisRiesgoModificacion.isCurrentlyVisible()){
-        else if(analisisRiesgoModificacion.isPresent()){
+            WebElementFacade labelAnalisisRiesgos = findBy(".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:0']");
+            withTimeoutOf(WAIT_TIME_30000, TimeUnit.SECONDS).waitFor(labelAnalisisRiesgos).shouldBePresent();
+        } else if(analisisRiesgoModificacion.isPresent()){
             withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(analisisRiesgoModificacion).click();
+            WebElementFacade labelAnalisisRiesgosMod = findBy(".//*[@id='PolicyChangeWizard:Job_RiskAnalysisScreen:0']");
+            withTimeoutOf(WAIT_TIME_30000, TimeUnit.SECONDS).waitFor(labelAnalisisRiesgosMod).shouldBePresent();
         }
     }
 
     public void validarGeneracionUWIssue(ExamplesTable mensajesBloqueo){
-        //verificarMensajes(grupoUWIssues, mensajesBloqueo);
         Map<String, String> bloqueoUW;
-        //if(grupoUWIssues.isCurrentlyVisible()) {
         if(grupoUWIssues.isPresent()) {
             for (int i = 0; i < mensajesBloqueo.getRowCount(); i++) {
                 bloqueoUW = mensajesBloqueo.getRows().get(i);
                 MatcherAssert.assertThat(grupoUWIssues.getText(), Matchers.containsString(bloqueoUW.get("mensaje")));
             }
-        } //else if(grupoUWIssuesModificacion.isCurrentlyVisible()){
-        else if(grupoUWIssuesModificacion.isPresent()){
+        } else if(grupoUWIssuesModificacion.isPresent()){
             for (int i = 0; i < mensajesBloqueo.getRowCount(); i++) {
                 bloqueoUW = mensajesBloqueo.getRows().get(i);
                 MatcherAssert.assertThat(grupoUWIssuesModificacion.getText(), Matchers.containsString(bloqueoUW.get("mensaje")));

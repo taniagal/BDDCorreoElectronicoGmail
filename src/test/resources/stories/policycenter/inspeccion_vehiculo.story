@@ -54,7 +54,7 @@ And generar el UW Issue <mensaje> y no permitir expedir
 
 Examples:
 |cotizacion|placa  |mensaje                                                                       |requisitos                                         |
-|22221222  |COR219 |El vehículo no tiene una inspección vigente a la fecha de ingreso del riesgo. |Existen requisitos pendientes, por favor verifique.|
+|22222214  |COR219 |El vehículo no tiene una inspección vigente a la fecha de ingreso del riesgo. |Existen requisitos pendientes, por favor verifique.|
 
 Scenario: Consultar inspeccion valida en SIA
 Given se ha realizado la cotizacion <cotizacion>
@@ -66,7 +66,7 @@ And la fecha de inspeccion debe ser la fecha de inicio de vigencia de la poliza
 
 Examples:
 |cotizacion |placa |requisitos                                          |
-|22221122   |USU422|Existen requisitos pendientes, por favor verifique. |
+|22222215   |USU422|Existen requisitos pendientes, por favor verifique. |
 
 Scenario: Consulta requisito inspeccion en el modelo
 Meta:

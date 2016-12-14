@@ -12,6 +12,7 @@ así poder crear, actualizar,copiar y retirar cotizaciones para una cuenta dada
 Scenario: Declinar una cotizacion sin razon
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
+And seleccione reaseguro especial No
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
 And seleccione la cobertura:
@@ -28,6 +29,7 @@ Examples:
 
 Scenario: Validar al seleccionar la opcion declinar y declinar una cotizacion desde una cuenta
 Given estoy cotizando una poliza basado en otro envio <envio>
+And seleccione reaseguro especial No
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
 And seleccione la cobertura:
