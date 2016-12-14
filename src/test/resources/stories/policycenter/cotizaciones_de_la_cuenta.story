@@ -21,8 +21,8 @@ And seleccione la opcion de crear nueva cotizacion
 Then se debe iniciar el proceso de nueva cotizacion
 
 Examples:
-|numCuenta   |
-|C000777777  |
+| numCuenta  |
+| C001888888 |
 
 Scenario: Ocultar opcion de retirar
 Given estoy en una cuenta <numCuenta>
@@ -31,8 +31,8 @@ And muestre el listado de las acciones que se le pueden hacer a una cotizacion <
 Then no debe aparece la opcion de retirar <retirar>.
 
 Examples:
-|numCuenta  |declinar |noTomar   |retirar |
-|C000777777 |Declinar |No tomar  |Retirar |
+| numCuenta  | declinar | noTomar  | retirar |
+| C001888888 | Declinar | No tomar | Retirar |
 
 Scenario: Mostrar resultado segun el filtro
 Given estoy en una cuenta <numCuenta>
@@ -42,8 +42,8 @@ Then se debe mostrar la información de acuerdo a los filtros <productos>: Accio
 Fecha inicio de vigencia, Fecha fin de vigencia, Estado, Costo total
 
 Examples:
-|numCuenta  |cotizaciones           |productos              |
-|C000777777 |Todas las cotizaciones |Multiriesgo corporativo|
+| numCuenta  | cotizaciones           | productos               |
+| C001888888 | Todas las cotizaciones | Multiriesgo corporativo |
 
 
 Scenario: Mostrar numero de poliza
@@ -54,8 +54,8 @@ And una cotizacion se encuentre en un estado 'Expedida' <estado>
 Then se debe mostrar el numero de la poliza.
 
 Examples:
-|numCuenta |estado  |producto           |
-|C000777777|Expedida|Todos los productos|
+| numCuenta  | estado   | producto            |
+| C001888888 | Expedida | Todos los productos |
 
 Scenario: No mostrar numero de poliza
 Given estoy en una cuenta <numCuenta>
@@ -64,18 +64,26 @@ And una cotizacion se encuentre en un estado diferente a 'Expedida' <estado>
 Then el numero de poliza debe aparecer vacio.
 
 Examples:
-|numCuenta   |estado  |
-|C000777777  |Borrador|
+| numCuenta  | estado   |
+| C001888888 | Borrador |
 
 Scenario: Permitir crear carta de declinacion
-Given estoy en una cuenta <numCuenta>
-When ingrese a cotizaciones de la cuenta
+Given estoy cotizando una poliza basado en otro envio <envio>
+And seleccione reaseguro especial No
+When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
+And descripcion <descripcion>, actividad economica <actividad>
+And seleccione la cobertura:
+| valorReconstruccion | valorAsegurado | valorComercial | cobertura |
+| 100000000           | 100000000      | null           | Terremoto |
+And cotice para la opcion declinar MRC
+And estoy visualizando las cotizaciones de la cuenta <numCuenta>
+And quiera declinar la cotizacion por cualquier razon <razon>
 And una cotizacion este en estado 'Declinado' <declinado> y no se haya generado una carta de declinacion para esta cotizacion y sea cotizacion de MRC <propiedadComercial>
 Then me debe permitir crear una carta de declinacion por medio de un boton. El label del boton debe ser 'Crear carta de declinacion' <crearCarta>.
 
 Examples:
-|numCuenta   |declinado|propiedadComercial     |crearCarta                |
-|C000777777  |Declinada|Multiriesgo corporativo|Crear carta de declinación|
+| envio    | numCuenta  | declinado | propiedadComercial      | crearCarta                 | departamento | ciudad   | direccion         | descripcion   | actividad
+| 22222211 | C001888888 | Declinada | Multiriesgo corporativo | Crear carta de declinación | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles
 
 Scenario: Permitir descargar cartas
 Given estoy en una cuenta <numCuenta>
@@ -84,8 +92,8 @@ And a una cotizacion se le haya creado carta de confirmacion o de declinacion
 Then me debe permitir descargar esta carta. Esta funcionalidad queda tal cual como viene de caja.
 
 Examples:
-|numCuenta  |
-|C000777777 |
+| numCuenta  |
+| C001888888 |
 
 Scenario: No permitir crear carta de declinacion
 Meta: @manual

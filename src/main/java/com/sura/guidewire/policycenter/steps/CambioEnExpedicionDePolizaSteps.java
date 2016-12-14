@@ -30,7 +30,7 @@ public class CambioEnExpedicionDePolizaSteps extends ScenarioSteps {
 
     @Step
     public void cotizarYExpedirCambioDePoliza() {
-        tasaUnicaPage.clickCambioDePoliza();
+        tasaUnicaPage.nuevoCambioDePoliza();
         polizaMrcPage.seleccionarOpcionCotizar();
         analisisDeRiesgoPage.expedirPoliza();
     }

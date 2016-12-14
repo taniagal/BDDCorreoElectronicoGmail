@@ -22,6 +22,11 @@ public class CotizacionRenovacionPaValidacionesDefinitions {
         cotizacionMRCSteps.irABuscarCotizacionPoliza(cotizacion);
     }
 
+    @Given("estoy cotizando la renovacion de la poliza")
+    public void ingresarARenovacionDeCotizacion(){
+        //Empty Method
+    }
+
     @When("cotice con algunas de las figuras que son Riesgo consultable bloqueante")
     public void validarFigurasRiesgoConsultable(){
         cotizacionRenovacionPaValidacionesSteps.ir_A_Revision_De_Poliza();
@@ -43,6 +48,6 @@ public class CotizacionRenovacionPaValidacionesDefinitions {
     @Then("se debe bloquear la cotizacion y mostrar el mensaje que devuelve el servicio $mensajeRC")
     public void validarMensajeValidacionRC(ExamplesTable mensajeRC){
         cotizacionRenovacionPaValidacionesSteps.validar_Que_Se_Bloquee_Cotizacion_Y_Muestre_Mensaje(mensajeRC);
-        cotizacionRenovacionPaValidacionesSteps.limpiar_espacio_de_trabajo();
+        cotizacionRenovacionPaValidacionesSteps.limpiarEspacioDeTrabajo();
     }
 }

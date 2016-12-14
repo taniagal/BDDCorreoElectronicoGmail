@@ -42,6 +42,11 @@ public class AdmonCotizacionCuentaNoTomarDefinitions {
         admonCotizacionCuentaNoTomarSteps.ingresar_informacion_al_momento_de_rechazar(razon);
     }
 
+    @When("cotice para la opcion no tomar MRC")
+    public void cotizarParaLaOpcionNoTomar() {
+        admonCotizacionCuentaNoTomarSteps.cotizarParaLaOpcionNoTomar();
+    }
+
     @Then("el sistema debe mostrar el estado no tomada <numCotizacion> <accion>")
     public void thenElSistemaDebeMostrarElEstadoNoTomadanumCotizacion(@Named("numCotizacion") String numCotizacion,
                                                                       @Named("accion") String accion) {
@@ -52,6 +57,7 @@ public class AdmonCotizacionCuentaNoTomarDefinitions {
     public void thenDesahabilitarLaOpcionDeAcciones() {
         admonCotizacionCuentaNoTomarSteps.inhabilita_acciones();
     }
+
     @Then("el sistema debe mostrarme todas las siguientes opciones: $listaCodRazon")
     public void validarOpciones(ExamplesTable listaCodRazon){
         admonCotizacionCuentaNoTomarSteps.valida_lista_de_razones(listaCodRazon);

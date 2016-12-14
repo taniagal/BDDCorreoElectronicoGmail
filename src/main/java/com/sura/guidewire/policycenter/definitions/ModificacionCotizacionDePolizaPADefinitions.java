@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.definitions;
 
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.steps.CotizacionPADetalleSteps;
+import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.ModificacionCotizacionDePolizaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
@@ -23,6 +24,8 @@ public class ModificacionCotizacionDePolizaPADefinitions {
     @Steps
     CotizacionPADetalleSteps cotizacionPADetalleSteps;
 
+    @Steps
+    InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
     public ModificacionCotizacionDePolizaPADefinitions(){
         infoCotizacionPoliza.put("numeroPoliza", "Número de póliza");
         infoCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
@@ -75,6 +78,12 @@ public class ModificacionCotizacionDePolizaPADefinitions {
         cotizacionDePolizaSteps.verDetalleCotizacion();
     }
 
+    @When("cotice el cambio de poliza")
+    public void cotizarCambioDePoliza() {
+        cotizacionDePolizaSteps.comenzarCambioDePoliza();
+        informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
+    }
+
     @Then("debo ver de la cotizacion la siguiente informacion $informacionCotizacion")
     public void validarInformacionCotizacion(ExamplesTable informacionCotizacion) {
         cotizacionDePolizaSteps.validarInformacionCotizacion(infoCotizacionPoliza, informacionCotizacion);
@@ -83,11 +92,6 @@ public class ModificacionCotizacionDePolizaPADefinitions {
     @Then("debo poder ver la direccion del tomador de la modificacion <direccion>, la cual se indico como principal")
     public void validarDireccion(@Named("direccion") String direccion){
         cotizacionDePolizaSteps.validarDireccionTomador(direccion);
-    }
-
-    @Then("se debe mostrar la informacion del detalle de modificacion por riesgo")
-    public void thenMostrarInformacionDetalleCotizacion(){
-        cotizacionDePolizaSteps.validarInformacionDetalleCotizacion(infoCotizacionPoliza);
     }
 
     @Then("se debe mostrar en la columna \"Termino\" de la modificacion el limite o deducible de la cobertura en el caso de que aplique")
@@ -103,10 +107,5 @@ public class ModificacionCotizacionDePolizaPADefinitions {
     @Then("se debe mostrar en la columna \"Termino\" de la modificacion el deducible de la cobertura en el caso de que aplique")
     public void thenValidarDeducibleCobertura(){
         cotizacionDePolizaSteps.validarTerminoCobertura();
-    }
-
-    @Then("debo ver los detalles del cambio del costo de la modificacion")
-    public void thenValidarDetallesCosto(){
-        cotizacionDePolizaSteps.validarDetallesCosto(infoCotizacionPoliza);
     }
 }

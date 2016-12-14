@@ -30,7 +30,7 @@ public class CotizacionRenovacionPaValidacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void limpiar_espacio_de_trabajo() {
+    public void limpiarEspacioDeTrabajo() {
         cotizacionRenovacionPAValidacionesPage.limpiarMensajes();
     }
 

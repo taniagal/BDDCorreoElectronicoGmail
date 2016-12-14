@@ -1,15 +1,21 @@
 package com.sura.guidewire.policycenter.steps;
 import com.sura.guidewire.policycenter.pages.ModificacionCotizacionDePolizaPage;
 import java.util.Map;
+
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 
-public class ModificacionCotizacionDePolizaSteps extends ScenarioSteps  {
+public class ModificacionCotizacionDePolizaSteps extends ScenarioSteps {
 
     private final ModificacionCotizacionDePolizaPage cotizacionDePolizaPage = new ModificacionCotizacionDePolizaPage(getDriver());
+
+    @Page
+    TarifaTasaUnicaPage tasaUnicaPage;
 
     public ModificacionCotizacionDePolizaSteps(Pages pages){
         super(pages);
@@ -18,6 +24,11 @@ public class ModificacionCotizacionDePolizaSteps extends ScenarioSteps  {
     @Step
     public void verDetalleCotizacion() {
         cotizacionDePolizaPage.verDetalleCotizacion();
+    }
+
+    @Step
+    public void comenzarCambioDePoliza() {
+        tasaUnicaPage.nuevoCambioDePoliza();
     }
 
     @Step
@@ -30,16 +41,7 @@ public class ModificacionCotizacionDePolizaSteps extends ScenarioSteps  {
         cotizacionDePolizaPage.validarDireccionTomador(direccion);
     }
 
-    @Step
-    public void validarInformacionDetalleCotizacion(Map<String, String> infoDetalleCotizacion) {
-        cotizacionDePolizaPage.validarInformacionDetalleCotizacion(infoDetalleCotizacion);
-    }
-
     public void validarTerminoCobertura() {
         cotizacionDePolizaPage.validarTerminoCobertura();
-    }
-
-    public void validarDetallesCosto(Map<String, String> infoDetalleCotizacion) {
-        cotizacionDePolizaPage.validarDetallesCosto(infoDetalleCotizacion);
     }
 }

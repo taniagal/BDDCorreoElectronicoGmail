@@ -64,10 +64,12 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
         HashMap<String, String> vehiculo = new HashMap<String, String>();
         vehiculo.put("placa", "random");
         vehiculo.put("modelo", "2010");
+        vehiculo.put("ciudad_circulacion", "MEDELLIN");
         vehiculoPage.irAVehiculos();
         vehiculoPage.ingresarPlacaConModelo2011(vehiculo);
         vehiculoPage.seleccionarComboBoxModelo(vehiculo);
         vehiculo.put("modelo", "2011");
         vehiculoPage.seleccionarComboBoxModelo(vehiculo);
+        vehiculoPage.seleccionarCiudadDeCirculacion(vehiculo);
     }
 }

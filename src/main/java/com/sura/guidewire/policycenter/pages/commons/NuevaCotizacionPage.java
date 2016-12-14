@@ -170,11 +170,11 @@ public class NuevaCotizacionPage extends PageUtil {
         if (!comboBoxOrganizacion.getText().equals("Sura")) {
             selectItem(comboBoxOrganizacion, "Sura");
             waitForComboValue(comboBoxOrganizacion, "Sura");
-            waitUntil(WAIT_TIME_1000);
+            waitUntil(WAIT_TIME_2000);
             selectItem(comboBoxCanal, "Canal Tradicional");
             waitForComboValue(comboBoxCanal, "Canal Tradicional");
             try {
-                waitUntil(WAIT_TIME_1000);
+                waitUntil(WAIT_TIME_2000);
                 selectItem(comboBoxTipoPoliza, "PPAutos");
             } catch (ElementNotVisibleException e) {
                 LOGGER.info("ElementNotVisibleException " + e);
@@ -191,5 +191,9 @@ public class NuevaCotizacionPage extends PageUtil {
 
     public void desmarcarTasaUnica() {
         checkBoxTasaUnica.click();
+    }
+
+    public void seleccionarReaseguroEspecialNo() {
+        findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']").waitUntilPresent().click();
     }
 }
