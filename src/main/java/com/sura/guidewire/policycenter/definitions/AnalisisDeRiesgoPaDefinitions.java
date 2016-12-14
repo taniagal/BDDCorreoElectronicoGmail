@@ -15,20 +15,8 @@ public class AnalisisDeRiesgoPaDefinitions {
     @Steps
     AnalisisDeRiesgoPaSteps analisisDeRiesgoPaSteps;
 
-    @When("intente expedir una poliza con un valor asegurado del vehiculo superior al permitido")
+    @When("intente expedir una poliza con un valor asegurado del vehiculo, valor accesosios y accesorios especiales superior al permitido")
     public void expedirPolizaValorAsegurado(){
-        expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
-        analisisDeRiesgoPaSteps.aceptarExpedicion();
-    }
-
-    @When("intente expedir una poliza con un valor de accesorios superior al permitido")
-    public void expedirPolizaValorAccesorios(){
-        expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
-        analisisDeRiesgoPaSteps.aceptarExpedicion();
-    }
-
-    @When("intente expedir una poliza con un valor de accesorios especiales superior al permitido")
-    public void expedirPolizaValorAccesoriosEspeciales(){
         expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
         analisisDeRiesgoPaSteps.aceptarExpedicion();
     }
