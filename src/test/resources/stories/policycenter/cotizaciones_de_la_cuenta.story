@@ -82,8 +82,8 @@ And una cotizacion este en estado 'Declinado' <declinado> y no se haya generado 
 Then me debe permitir crear una carta de declinacion por medio de un boton. El label del boton debe ser 'Crear carta de declinacion' <crearCarta>.
 
 Examples:
-| envio    | numCuenta  | declinado | propiedadComercial      | crearCarta                 | departamento | ciudad   | direccion         | descripcion   | actividad
-| 22222211 | C001888888 | Declinada | Multiriesgo corporativo | Crear carta de declinación | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles
+| envio    | numCuenta  | declinado | propiedadComercial      | crearCarta                 | departamento | ciudad   | direccion         | descripcion   | actividad                     | razon   |
+| 22222211 | C001888888 | Declinada | Multiriesgo corporativo | Crear carta de declinación | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | Cartera |
 
 Scenario: Permitir descargar cartas
 Given estoy en una cuenta <numCuenta>
