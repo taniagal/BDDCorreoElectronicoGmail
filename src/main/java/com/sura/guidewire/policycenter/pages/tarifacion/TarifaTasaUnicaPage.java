@@ -189,18 +189,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
         botonHojaDeCalculoRenovacion.waitUntilPresent();
         waitUntil(WAIT_TIME_5000);
         clickElement(menuPoliza);
-        menuItemInformacionDePolizaRenovacion.waitUntilPresent();
-        clickElement(menuItemInformacionDePolizaRenovacion);
-        editarTransaccion();
-         /*setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
-       for (int i = 0; i < CONSTANTE_3; i++) {
-            botonHojaDeCalculoRenovacion.waitUntilPresent();
-
-            if (botonCotizarRenovacion.isPresent() || botonEditarTransaccionDePoliza.isPresent()) {
-                break;
-            }
-            resetImplicitTimeout();
-        }*/
     }
 
     public void editarTransaccion(){
