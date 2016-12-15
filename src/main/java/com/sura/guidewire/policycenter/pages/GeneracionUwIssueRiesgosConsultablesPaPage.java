@@ -20,6 +20,10 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil{
     private WebElementFacade analisisRiesgoExpedicion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:RiskAnalysis']/div/span")
     private WebElementFacade analisisRiesgoModificacion;
+    @FindBy(xpath = ".//span[contains(text(), 'Análisis de riesgo') and contains(@class, 'x-tree-node-text')]")
+    private WebElementFacade analisisDeRiesgo;
+    @FindBy(xpath = ".//*[contains(text(), 'Análisis de riesgo') and contains(@id, 'Job_RiskAnalysisScreen')]")
+    private WebElementFacade labelAnalisisDeRiesgo;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']")
     private WebElementFacade grupoUWIssuesModificacion;
 
@@ -30,15 +34,9 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil{
     public void irAAnalisisDeRiesgo() {
         WebElementFacade resultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
-        if(analisisRiesgoExpedicion.isPresent()){
-            withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(analisisRiesgoExpedicion).click();
-            WebElementFacade labelAnalisisRiesgos = findBy(".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:0']");
-            withTimeoutOf(WAIT_TIME_30000, TimeUnit.SECONDS).waitFor(labelAnalisisRiesgos).shouldBePresent();
-        } else if(analisisRiesgoModificacion.isPresent()){
-            withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(analisisRiesgoModificacion).click();
-            WebElementFacade labelAnalisisRiesgosMod = findBy(".//*[@id='PolicyChangeWizard:Job_RiskAnalysisScreen:0']");
-            withTimeoutOf(WAIT_TIME_30000, TimeUnit.SECONDS).waitFor(labelAnalisisRiesgosMod).shouldBePresent();
-        }
+        waitUntil(WAIT_TIME_3000);
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(analisisDeRiesgo).click();
+        withTimeoutOf(WAIT_TIME_30000, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgo).shouldBePresent();
     }
 
     public void validarGeneracionUWIssue(ExamplesTable mensajesBloqueo){
