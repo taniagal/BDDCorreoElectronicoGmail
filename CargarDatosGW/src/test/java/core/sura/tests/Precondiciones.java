@@ -31,7 +31,7 @@ public class Precondiciones extends MetodosComunes{
 
     @Before
     public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "..\\chromedriver.exe");
         driver = new ChromeDriver();
         act = new Actions(driver);
         wait = new WebDriverWait(driver, 1000);

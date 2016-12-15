@@ -29,6 +29,7 @@ public class BotonAccionesSteps extends ScenarioSteps {
         waitFor(WAIT_TIME_1).seconds();
         String xpathLinkCancelarPoliza = "//a[contains(.,'Cancelar póliza')]";
         getPages().getDriver().findElement(By.xpath(xpathLinkCancelarPoliza)).click();
+        waitFor(WAIT_TIME_2).seconds();
     }
     @Step
     public BotonAccionesSteps seleccionar_boton_rescindir_cancelacion() {

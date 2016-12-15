@@ -16,7 +16,6 @@ Given estoy cotizando una poliza:
 |C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-And borro el articulo anterior
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
 | ASEGURADORA                         | PARTICIPACION |
 | Seguros Generales Suramericana S.A. | 60            |
@@ -41,7 +40,6 @@ Given estoy cotizando una poliza:
 |C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-And borro el articulo anterior
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
 | ASEGURADORA                         | PARTICIPACION |
 | Seguros Generales Suramericana S.A. | 60            |
@@ -60,7 +58,6 @@ Given estoy cotizando una poliza:
 |C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-And borro el articulo anterior
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
 | ASEGURADORA                         | PARTICIPACION |
 | Seguros Generales Suramericana S.A. | 60            |
