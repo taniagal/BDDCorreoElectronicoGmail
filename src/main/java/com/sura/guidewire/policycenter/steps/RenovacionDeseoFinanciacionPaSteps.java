@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
+import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.pages.renovacion.RenovacionDeseoFinanciacionPaPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import net.thucydides.core.annotations.Step;
@@ -18,6 +19,9 @@ public class RenovacionDeseoFinanciacionPaSteps extends ScenarioSteps {
 
     @Page
     ValidacionesInformacionDeVehiculoPage vehiculoPage;
+
+    @Page
+    NuevaCotizacionPage nuevaCotizacionPage;
 
     @Step
     public void seleccionarDeseoFinanciacionSi() {
@@ -67,6 +71,7 @@ public class RenovacionDeseoFinanciacionPaSteps extends ScenarioSteps {
     @Step
     public void marcarDeseoDeFinanciacion() {
         renovacionDeseoFinanciacionPage.marcarDeseodeFinanciacion();
+        nuevaCotizacionPage.llenarInfoPoliza();
         vehiculoPage.clickSiguiente();
     }
 

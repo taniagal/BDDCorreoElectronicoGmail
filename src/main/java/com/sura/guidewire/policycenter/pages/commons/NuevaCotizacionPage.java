@@ -21,8 +21,6 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade botonAceptarPopup;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade botonBotonCotizar;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']")
-    private WebElementFacade checkBoxTasaUnica;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     private WebElementFacade comboBoxNombreAgente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
@@ -162,7 +160,7 @@ public class NuevaCotizacionPage extends PageUtil {
         clickElement(menuItemInformacionDePoliza);
         try {
             waitUntil(WAIT_TIME_2000);
-            comboBoxOrganizacion.waitUntilPresent();
+            withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
         } catch (StaleElementReferenceException f) {
             LOGGER.info("StaleElementReferenceException " + f);
             waitUntil(WAIT_TIME_2000);
@@ -187,10 +185,6 @@ public class NuevaCotizacionPage extends PageUtil {
             }
             waitForComboValue(comboBoxTipoPoliza, "PPAutos");
         }
-    }
-
-    public void desmarcarTasaUnica() {
-        checkBoxTasaUnica.click();
     }
 
     public void seleccionarReaseguroEspecialNo() {

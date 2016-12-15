@@ -27,6 +27,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
+    private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:RenewalQuote']")
     private WebElementFacade botonCotizarRenovacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
@@ -95,6 +97,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade linkDescartarCambios;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    private static final int CONSTANTE_3 = 3;
     String primaTotal = "";
 
     public TarifaTasaUnicaPage(WebDriver driver) {
