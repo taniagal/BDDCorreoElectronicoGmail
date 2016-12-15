@@ -19,7 +19,7 @@ And los filtros deben ser <estado>, <transaccion>
 
 Examples:
 | numCuenta  | nombre     | tipoDeTransaccion | nroDeTransacciones | estado | transaccion |
-| C001888888 | SG22222222 | Grupo de envíos   | 17                 | Estado | Transacción |
+| C001888888 | SG22222214 | Grupo de envíos   | 17                 | Estado | Transacción |
 
 Scenario: Consultar el detalle de los grupos de cotizacion y renovación
 Given que voy a buscar la cuenta <numCuenta>
