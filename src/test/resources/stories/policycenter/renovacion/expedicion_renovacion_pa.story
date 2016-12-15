@@ -20,7 +20,7 @@ Then se debe mostrar un mensaje que indique
 
 Examples:
 |cotizacion|
-|32112330  |
+|22222333  |
 
 
 Scenario: Expedir renovacion - Confirmacion expedicion
