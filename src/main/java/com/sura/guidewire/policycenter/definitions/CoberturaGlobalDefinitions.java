@@ -84,12 +84,6 @@ public class CoberturaGlobalDefinitions {
         coberturaGlobalSteps.verificar_mensaje_error(mensaje);
     }
 
-
-   /* @Then("en agregar coberturas globales deben estar en estado <estadouno> las siguientes opciones $menusesperados")
-    public void entoncesEnAgregarCoberturasSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,@Named("estadodos") String estadodos, ExamplesTable menusesperados){
-        coberturaGlobalSteps.validar_campos_agregar_cobertura(estadouno,estadodos,menusesperados);
-    }  */
-
     @Then("en agregar coberturas globales deben estar en estado <estadouno> las siguientes opciones $menusesperados")
     public void entoncesEnAgregarCoberturasSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno, ExamplesTable menusesperados){
         String estadodos = "";
