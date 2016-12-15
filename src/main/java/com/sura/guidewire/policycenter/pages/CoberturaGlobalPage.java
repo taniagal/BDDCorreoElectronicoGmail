@@ -72,6 +72,7 @@ public class CoberturaGlobalPage extends PageUtil {
     public void irACoberturasGlobales() {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemCoberturaGlobal).waitUntilPresent();
         clickElement(menuItemCoberturaGlobal);
+        clickElement(menuItemCoberturaGlobal);
     }
 
     public void navegarPorCobertura(String descripcion, String tipoCobertura) {
@@ -125,7 +126,7 @@ public class CoberturaGlobalPage extends PageUtil {
         campoTxtValorAseguradoDanosMateriales.sendKeys(valor);
         linkDetalles.click();
         linkUbicacionDisponible.waitUntilPresent().click();
-        waitFor(labelDescripcion).shouldContainText("CRA 65");
+        waitFor(labelDescripcion).shouldContainText("CR 44 A # 45 - 00");
     }
 
     public void verificarCoberturasIncluidas() {
@@ -134,8 +135,8 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void verificarUbicacionesCubiertas() {
-        waitFor(ExpectedConditions.textToBePresentInElement(tablaUbicaciones, "CRA 65 # 48-162"));
-        MatcherAssert.assertThat("Error al Agregar la ubicacion, la tabla de ubicaciones agregadas está vacía", tablaUbicaciones.containsText("CRA 65 # 48-162"));
+        waitFor(ExpectedConditions.textToBePresentInElement(tablaUbicaciones, "CR 44 A # 45 - 00"));
+        MatcherAssert.assertThat("Error al Agregar la ubicacion, la tabla de ubicaciones agregadas está vacía", tablaUbicaciones.containsText("CR 44 A # 45 - 00"));
     }
 
     public void seleccionarCoberturaUnica(ExamplesTable datosCobertura) {

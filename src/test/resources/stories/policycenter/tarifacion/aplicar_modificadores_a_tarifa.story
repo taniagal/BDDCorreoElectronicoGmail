@@ -24,7 +24,7 @@ And ingrese los valores de los modificadores de la tarifa:
 |GPS Sura  | 45          |10       | 5     | 3         |5            |
 And seleccione algunas las coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |Taller|Grua        |TM      |CE|CS  |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
-|1.440 |0        |Opción 1|20 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus 1000 km|Taller 1|6 |Plus|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
+|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|Conces|Plus 1000 km|Taller 1|6 |Plus|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
 Then el valor del monto en cada cobertura debe ser:
 |fila|valor     |
 |1   |447.275   |
