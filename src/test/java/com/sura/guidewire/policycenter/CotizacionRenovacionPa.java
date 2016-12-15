@@ -2,5 +2,6 @@ package com.sura.guidewire.policycenter;
 
 import net.serenitybdd.jbehave.SerenityStory;
 
-public class CotizacionRenovacionPa extends SerenityStory{
+public class
+CotizacionRenovacionPa extends SerenityStory{
 }

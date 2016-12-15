@@ -43,6 +43,8 @@ public class PageUtil extends PageObject {
     protected static final int WAIT_TIME_3 = 3;
     protected static final int WAIT_TIME_2 = 2;
     protected static final int WAIT_TIME_1 = 1;
+    protected static String numeroCotizacionNoTomar;
+    protected static String numeroCotizacionDeclinar;
 
 
     public PageUtil(WebDriver driver) {

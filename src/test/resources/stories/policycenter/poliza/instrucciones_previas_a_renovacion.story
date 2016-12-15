@@ -41,7 +41,7 @@ Then espero ver las opciones de instrucciones siguientes
 
 Examples:
 | numPoliza     | rolUsuario | descripcion |
-| TEST_77444226 | Asesor     |             |
+| TEST_22222236 | Asesor     |             |
 
 
 Scenario: 2 Validacion que existan todas las razones de No renovable
@@ -65,7 +65,7 @@ Then debe visualizarse las siguientes razones
 
 Examples:
 | numPoliza     | rolUsuario | descripcion |
-| TEST_77444226 | Asesor     |             |
+| TEST_22222236 | Asesor     |             |
 
 Scenario: 3 Validacion que existan todas las razones de No renovable y consultar al asegurador
 Meta: @lote4
@@ -88,7 +88,7 @@ Then debe visualizarse las siguientes razones
 
 Examples:
 | numPoliza     | rolUsuario | descripcion |
-| TEST_77444226 | Asesor     |             |
+| TEST_22222236 | Asesor     |             |
 
 Scenario: 4 Validacion que existan todas las razones de No tomada
 Meta: @lote4
@@ -108,4 +108,4 @@ Then debe visualizarse las siguientes razones
 
 Examples:
 | numPoliza     | rolUsuario | descripcion |
-| TEST_77444226 | Asesor     |             |
+| TEST_22222236 | Asesor     |             |

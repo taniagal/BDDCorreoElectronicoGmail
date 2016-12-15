@@ -38,7 +38,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
     WebElementFacade lblNuevaCotizacion;
     @FindBy(xpath = "//a[contains(.,'Cotizar')]")
-    WebElementFacade lblCotizar;
+    WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade lblTabla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:Name-inputEl']")
@@ -95,7 +95,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade inputNumeroTelefono;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:PolicyAddressDisplayInputSet:globalAddressContainer:GlobalAddressInputSet:AddressSummary-inputEl']")
     WebElementFacade inputDireccion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial-labelEl']")
+    @FindBy(xpath = ".//input[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_false-inputEl']")
     WebElementFacade inputReaseguroEspecial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:CompanyNamedInsuredLabel-labelEl']")
     WebElementFacade lblTomador;
@@ -188,7 +188,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionBotonSiguienteenRenovacionDePoliza() {
-        waitUntil(WAIT_TIME_5000);
+        waitFor(WAIT_TIME_7).second();
         btnSiguineteRenovacionDePoliza.click();
     }
 
@@ -236,8 +236,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionarOpcionCotizar() {
-        waitUntil(WAIT_TIME_3000);
-        lblCotizar.waitUntilClickable().click();
+        botonCotizar.waitUntilPresent();
+        clickElement(botonCotizar);
         waitForTextToAppear("Cotización");
     }
 
@@ -369,8 +369,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         noPresente = concatenarElementoNoPresente(lblTipoDocumento, "Label errado: Tipo documento|", noPresente);
         noPresente = concatenarElementoNoPresente(lblNumeroDocumento, "Label errado: Numero documento|", noPresente);
         noPresente = concatenarElementoNoPresente(lblNumeroTelefono, "Label errado: Teléfono|", noPresente);
-        noPresente = concatenarElementoNoPresente(lblDireccion, "radio boton: No esta present|", noPresente);
-        noPresente = concatenarElementoNoPresente(inputReaseguroEspecial, "Label errado: Dirección de la poliza|v|", noPresente);
+        noPresente = concatenarElementoNoPresente(lblDireccion, "Label errado: Dirección de la poliza", noPresente);
+        noPresente = concatenarElementoNoPresente(inputReaseguroEspecial, "radio boton: No esta present|", noPresente);
         if (!"Fecha inicio de vigencia".equals(lblFechaVigencia.getText())) {
             noPresente.append("salida errada: Fecha inicio de vigencia|");
         }

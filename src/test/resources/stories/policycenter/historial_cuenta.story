@@ -16,19 +16,13 @@ GivenStories: stories/policycenter/login_policy.story
 Given ingreso a una cuenta <numCuenta>
 When ingrese al historial
 Then mostrar la informacion del historial de la cuenta
-
-Examples:
-|numCuenta |tipo|usuario|fechaTransaccion|descripcion|producto|poliza|transaccionPoliza|valorOriginal|valorNuevo|
-|C000777777|Tipo|Usuario|Fecha de transacción|Descripción|Producto|Póliza|Transacción de póliza|Valor original|Valor nuevo|
-
-Scenario: Busqueda de historial por la opcion Relacionado con
-Given estoy en el historial de la cuenta <numCuenta>
-When indique el criterio de busqueda Relacionado con
-Then debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con
+And indique el criterio de busqueda Relacionado con
+And debo poder ver las transacciones relacionadas a la opcion indicada en el campo Relacionado con
 And mostrar la informacion del historial de la cuenta
 
+
 Examples:
-|numCuenta |tipo|usuario|fechaTransaccion|descripcion|producto|poliza|transaccionPoliza|valorOriginal|valorNuevo|
+|numCuenta |tipo|usuario|fechaTransaccion    |descripcion|producto|poliza|transaccionPoliza    |valorOriginal |valorNuevo |
 |C000777777|Tipo|Usuario|Fecha de transacción|Descripción|Producto|Póliza|Transacción de póliza|Valor original|Valor nuevo|
 
 Scenario: Busqueda de historial por la opcion producto
@@ -40,17 +34,17 @@ Examples:
 |numCuenta |
 |C000777777|
 
-Scenario: Busqueda de historial combinando multiples opciones: Usuario, Relacionado Con y Fechas
+Scenario: Busqueda de historial combinando multiples opciones: Usuario, Producto y Fechas
 Given estoy en el historial de la cuenta <numCuenta>
-When indique los criterios de busqueda <Usuario>, RelacionadoCon y <FechaDesde> y <FechaHasta>
+When indique los criterios de busqueda <Usuario>, <Producto> y <FechaDesde> y <FechaHasta>
 Then debo poder ver las transacciones relacionadas a la opciones indicadas en los campos de busqueda
 
 Examples:
-|numCuenta |Usuario   |FechaDesde|FechaHasta |
-|C000777777|Super User|01/01/2016|12/30/2016 |
+|numCuenta |Usuario   |FechaDesde|FechaHasta |Producto |
+|C000777777|Super User|01/01/2016|30/12/2016 |Autos    |
 
 Scenario: Busqueda de historial por usuario
-Meta: @lote
+Meta:
 @manual
 Given estoy en el historial de la cuenta
 When indique un <usuario> para realizar la busqueda
@@ -61,7 +55,7 @@ Examples:
 |C010478975|Super User|
 
 Scenario: Busqueda del historial por rango de fechas, Sin indicar  la opción de fecha  Hasta
-Meta: @lote4
+Meta:
 @manual
 Given estoy en el historial de la cuenta
 When se realiza la busqueda por <fecha> y solo se indique la opcion desde
@@ -72,7 +66,7 @@ Examples:
 |C010478975|01/04/2016|
 
 Scenario: Busqueda del historial por rango de fechas, sin indicar la opcion de fecha Desde
-Meta: @lote4
+Meta:
 @manual
 Given estoy en el historial de la cuenta
 When se realiza la busqueda por <fecha> y solo se indique la opcion hasta
@@ -83,7 +77,7 @@ Examples:
 |C010478975|01/04/2016|
 
 Scenario: Busqueda del historial por rango de fechas
-Meta: @lote4
+Meta:
 @manual
 Given estoy en el historial de la cuenta
 When se realiza la busqueda por fecha ( <desde> - <hasta>)
@@ -94,7 +88,7 @@ Examples:
 |C010478975|01/01/2016|01/07/2016|
 
 Scenario: Ver detalle de la transaccion - Poliza
-Meta: @lote4
+Meta:
 @manual
 Given estoy en el historial de la cuenta
 When seleccione  el  numero de la <poliza>
@@ -105,7 +99,7 @@ Examples:
 |C010478975|pedrvevi|
 
 Scenario: Ver detalle de la transaccion - Transaccion de Poliza
-Meta: @lote4
+Meta:
 @manual
 Given estoy en el historial de la cuenta
 When seleccione  el  numero de la transaccion <numeroTransaccion> de la poliza
@@ -116,7 +110,7 @@ Examples:
 |C010478975|pedrvevi|
 
 Scenario: Valor original
-Meta: @lote4
+Meta:
 @manual
 Given estoy en el historial de la cuenta
 When se realice una modificacion valorable a la <poliza> de la cuenta
@@ -127,7 +121,7 @@ Examples:
 |C010478975|pedrvevi|123|
 
 Scenario: Valor nuevo
-Meta: @lote4
+Meta:
 @manual
 Given estoy en el historial de la cuenta
 When se realice una modificacion valorable a la <poliza> de la cuenta

@@ -5,10 +5,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.UnhandledAlertException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -85,35 +82,13 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void verificarTarifacion(String prima) {
-        try {
-            labelPrimaTotal.waitUntilPresent();
-        } catch (UnhandledAlertException f) {
-            LOGGER.info("UnhandledAlertException " + f);
-            try {
-                Alert alert = getDriver().switchTo().alert();
-                String alertText = alert.getText();
-                LOGGER.info("Alert data: " + alertText);
-                alert.accept();
-            } catch (NoAlertPresentException e) {
-                LOGGER.info("NoAlertPresentException " + e);
-            }
-            waitUntil(WAIT_TIME_2000);
-            labelPrimaTotal.waitUntilPresent();
-        }
-        MatcherAssert.assertThat("Error en el valor de la prima. Esperaba: " + prima + " pero fue: " + labelPrimaTotal.getText(),
-                labelPrimaTotal.containsText(prima));
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelPrimaTotal);
+        MatcherAssert.assertThat("Error en el valor de la prima. Esperaba: " + prima + " pero fue: " +
+                labelPrimaTotal.getText(), labelPrimaTotal.containsText(prima));
     }
 
     public void irAArticulo() {
-        borrarArticulo();
-        botonAgregarArticulos.click();
-    }
-
-    public void borrarArticulo() {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonBorrarArticulo).waitUntilPresent();
-        checkBoxArticulo.click();
-        botonBorrarArticulo.click();
-        waitUntil(WAIT_TIME_1500);
+        clickElement(botonAgregarArticulos);
     }
 
     public void seleccionarCobertura(ExamplesTable datos) {
@@ -155,9 +130,23 @@ public class TarifaMRCPage extends PageUtil {
         radioBotonDeducibleNo.click();
     }
 
+    /**
+     * la variable numeroCotizacion se usa en la prueba de declinar cotizacion para obtener el numero de cotizacion
+     * generado al crear una nueva cotizacion y luego poderla consultar y declinar.
+     * numeroCotizacion es un static String y fue creada en la clase padre.
+     */
+
     public void agregarArticulo() {
         botonActualizar.click();
         botonCotizar.waitUntilPresent().click();
+        waitForTextToAppear("Cotizado");
+    }
+
+    public void cotizarArticuloBloqueado() {
+        botonActualizar.click();
+        botonCotizar.waitUntilPresent().click();
+        waitFor(find(By.cssSelector(".message")));
+        botonCotizar.click();
     }
 
     public void irAModificadores() {
@@ -243,4 +232,5 @@ public class TarifaMRCPage extends PageUtil {
         MatcherAssert.assertThat("Error en el calculo del valor del IVA , was: " + campoIva.getText(),
                 campoIva.getText().substring(1, 7).replace(".", "").equals(Integer.toString(iva)));
     }
+
 }

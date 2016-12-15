@@ -95,7 +95,7 @@ Examples:
 
 Scenario: 5 Validacion de campos en menu lateral y opcion cotizacion ern poliza principal
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When cotize una poliza
+When cotice una poliza
 Then deben estar en estado <estadouno> las siguientes opciones
 | OPCIONES_MENU   |
 | Formularios     |
@@ -112,6 +112,10 @@ And deben estar en estado <estadodos> las siguientes opciones
 And en cotizacion de poliza debe estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
 | Prima de póliza   |
+And en revision de poliza deben estar en estado <estadodos> las siguientes opciones
+| OPCIONES_MENU_NO_VISIBLES |
+| Edificios   |
+
 
 Examples:
 | numSubscripcion | rolUsuario | estadouno | estadodos  |
@@ -119,21 +123,10 @@ Examples:
 
 
 
-Scenario: 6 Validacion de campos en revision de poliza principal
+Scenario: 6 Validacion de campos en menu lateral de poliza principal expedida
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When ingrese a la opcion revision de la poliza
-Then en revision de poliza deben estar en estado <estadodos> las siguientes opciones
-| OPCIONES_MENU_NO_VISIBLES |
-| Edificios   |
-
-Examples:
-| numSubscripcion | rolUsuario | estadodos  |
-| 33344336       | Asesor     | No visible |
-
-
-Scenario: 7 Validacion de campos en menu lateral de poliza principal expedida
-Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When voy a expedir una poliza
+When ingrese a la informacion de la poliza
+And voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
 And ingrese a ver cotizacion de poliza expedida
 Then deben estar en estado <estadodos> las siguientes opciones
@@ -149,7 +142,7 @@ Examples:
 | 33344336       | Asesor     | No visible |
 
 
-Scenario: 8 Validacion de campos no editables en informacion
+Scenario: 7 Validacion de campos no editables en informacion en poliza principal expedida
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When ingrese a la opcion informacion de poliza
 Then ningun campo puede ser editable en informacion
@@ -162,7 +155,7 @@ Examples:
 | 33344336        | Asesor     | No visible |
 
 
-Scenario: 9 Validacion de campos no editables en pago
+Scenario: 8 Validacion de campos no editables en pago en poliza principal expedida
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When ingrese a la opcion de pago
 Then ningun campo puede ser editable en pago

@@ -69,7 +69,7 @@ public class InspeccionVehiculoPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(campoPlaca).shouldBePresent();
         campoPlaca.type(placa);
         act.sendKeys(Keys.TAB).build().perform();
-        waitUntil(WAIT_TIME_10000);
+        waitForTextToAppear("Camperos y pickups", WAIT_TIME_30000);
         withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(campoModelo).isDisplayed();
         campoNumeroVehiculo.click();
     }

@@ -11,7 +11,6 @@ Como usuario de PolicyCenter
 Quiero poder ingresar la información de uno o varios asegurados
 Para agregarlos a la cotizacion
 
-
 Scenario: Validar asegurado que es persona publicamente expuesta
 GivenStories: stories/policycenter/login_policy.story
 Given voy a crear una nueva cotizacion

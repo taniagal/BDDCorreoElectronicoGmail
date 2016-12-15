@@ -41,6 +41,11 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.agregarArticulo();
     }
 
+    @When("cotice el articulo bloqueado")
+    public void cotizarArticuloBloqueado(){
+        tarifaMRCSteps.cotizarArticuloBloqueado();
+    }
+
     @When("quiera ingresar modificadores de tarifa")
     public void irAModificadores(){
         tarifaMRCSteps.irAModificadores();
@@ -59,11 +64,6 @@ public class TarifaMRCDefinitions {
     @When("intente modificar la tasa global a un valor <valor> menor al del departamento")
     public void ingresarTasaGlobal(@Named("valor") String valor){
         tarifaMRCSteps.ingresarTasaGlobal(valor);
-    }
-
-    @When("borro el articulo anterior")
-    public void borrarArticulo(){
-        tarifaMRCSteps.borrarArticulo();
     }
 
     @Then("debo poder ver el mensaje de bloqueo <mensaje>")

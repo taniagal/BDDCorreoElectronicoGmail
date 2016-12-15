@@ -70,7 +70,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     public void irAVehiculos() {
         waitFor(menuItemVehiculos).waitUntilPresent();
         waitUntil(WAIT_TIME_2000);
-        menuItemVehiculos.click();
+        clickElement(menuItemVehiculos);
     }
 
     public void crearVehiculo() {
@@ -85,7 +85,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void clickSiguiente() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        clickElement(botonSiguiente);
     }
 
     public void clickLinkDescartarCambios() {
@@ -110,8 +111,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         campoTxtPlaca.click();
         waitForCampoTxtValorAsegurado(vehiculo);
         waitUntil(WAIT_TIME_2000);
-        selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
-        waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+        seleccionarCiudadDeCirculacion(vehiculo);
         waitUntil(WAIT_TIME_1000);
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
@@ -119,7 +119,18 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
     }
 
-    private void ingresarPlaca(Map<String, String> vehiculo) {
+    public void seleccionarCiudadDeCirculacion(Map<String, String> vehiculo) {
+        selectItem(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+        waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
+    }
+
+    public void ingresarPlacaConModelo2011(Map<String, String> vehiculo){
+        ingresarPlaca(vehiculo);
+        clickElement(tablaVehiculo);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2011"));
+    }
+
+    public void ingresarPlaca(Map<String, String> vehiculo) {
         waitUntil(WAIT_TIME_1000);
         if (!"random".equals(vehiculo.get("placa"))) {
             ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
@@ -156,7 +167,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         }
     }
 
-    private void seleccionarComboBoxModelo(Map<String, String> vehiculo) {
+    public void seleccionarComboBoxModelo(Map<String, String> vehiculo) {
         try {
             selectItem(comboBoxModelo, vehiculo.get("modelo"));
         } catch (StaleElementReferenceException e) {
@@ -233,5 +244,13 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(labelTituloCoberturasAuto).shouldBePresent();
         MatcherAssert.assertThat(labelTituloCoberturasAuto.getText(), Is.is(Matchers.equalTo("Coberturas de auto personal")));
         waitUntil(WAIT_TIME_1000);
+    }
+
+    public void agregarCiudadDeCirculacion(ExamplesTable datosCotizacion) {
+        Map<String, String> vehiculo = datosCotizacion.getRow(0);
+        campoVehiculoCeroKm.waitUntilPresent();
+        clickElement(campoVehiculoCeroKm);
+        waitUntil(WAIT_TIME_3000);
+        seleccionarCiudadDeCirculacion(vehiculo);
     }
 }

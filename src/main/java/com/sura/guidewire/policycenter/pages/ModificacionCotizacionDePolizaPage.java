@@ -143,27 +143,7 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
 
     public void validarInformacionCotizacion(Map<String, String> infoCotizacionPoliza, ExamplesTable informacionCotizacion) {
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(campoNumeroDeCotizacion).waitUntilPresent();
-        Map<String, String> datosCotizacion;
-        MatcherAssert.assertThat(labelNumeroPoliza.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroPoliza"))));
-        MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroCotizacion"))));
-        MatcherAssert.assertThat(labelVigenciaPoliza.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("vigenciaPoliza"))));
-        MatcherAssert.assertThat(labelTomador.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("tomador"))));
-        MatcherAssert.assertThat(labelTipoDocumento.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("tipoDocumento"))));
-        MatcherAssert.assertThat(labelNumeroDocumento.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("numeroDocumento"))));
-        MatcherAssert.assertThat(labelDireccion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("direccion"))));
-        MatcherAssert.assertThat(labelTipoDireccion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("tipoDireccion"))));
-        MatcherAssert.assertThat(labelDescripcionDireccion.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("descripcionDireccion"))));
-        MatcherAssert.assertThat(labelEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("empresaAseguradora"))));
-        MatcherAssert.assertThat(labelPrimaTotal.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("primaTotal"))));
-        MatcherAssert.assertThat(labelIva.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("iva"))));
-        MatcherAssert.assertThat(labelCostoTotal.getText(), Is.is(Matchers.equalTo(infoCotizacionPoliza.get("costoTotal"))));
-
-        if (campoNumeroDeCotizacion.getText().equals(informacionCotizacion.getRows().get(0).get("numeroCotizacion"))) {
-            datosCotizacion = informacionCotizacion.getRows().get(0);
-        } else {
-            datosCotizacion = informacionCotizacion.getRows().get(1);
-        }
-        MatcherAssert.assertThat(campoNumeroDeCotizacion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("numeroCotizacion"))));
+        Map<String, String> datosCotizacion = informacionCotizacion.getRows().get(0);
         MatcherAssert.assertThat(campoTomador.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tomador"))));
         MatcherAssert.assertThat(campoTipoDocumento.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDocumento"))));
         MatcherAssert.assertThat(campoNumeroDocumento.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("numeroDocumento"))));
@@ -171,26 +151,7 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("descripcionDireccion"))));
         MatcherAssert.assertThat(campoEmpresaAseguradora.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("empresaAseguradora"))));
-        MatcherAssert.assertThat(campoPrimaTotal.getText(), Matchers.containsString(datosCotizacion.get("prima")));
-        MatcherAssert.assertThat(campoIva.getText(), Matchers.containsString(datosCotizacion.get("iva")));
-        MatcherAssert.assertThat(campoCostoTotal.getText(), Matchers.containsString(datosCotizacion.get("total")));
         MatcherAssert.assertThat(campoVigenciaDePoliza.getText(), Is.is(Matchers.notNullValue()));
-
-    }
-
-    public void validarInformacionDetalleCotizacion(Map<String, String> infoDetalleCotizacion) {
-        MatcherAssert.assertThat(labelVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("labelVehiculo"))));
-        MatcherAssert.assertThat(labelPlaca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("placa"))));
-        MatcherAssert.assertThat(labelCodigoFasecolda.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("codigoFasecolda"))));
-        MatcherAssert.assertThat(labelMarca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("marca"))));
-        MatcherAssert.assertThat(labelModelo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("modelo"))));
-        MatcherAssert.assertThat(labelLinea.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("linea"))));
-        MatcherAssert.assertThat(labelDescripcionCobertura.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("descripcion"))));
-        MatcherAssert.assertThat(labelValorTerminoCobertura.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("valorTermino"))));
-        MatcherAssert.assertThat(labelPrima.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("prima"))));
-        MatcherAssert.assertThat(labelSubtotal.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotal"))));
-        MatcherAssert.assertThat(labelSubtotalPrimas.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("subtotalPrimas"))));
-        MatcherAssert.assertThat(labelImpuesto.getText(), Matchers.containsString(infoDetalleCotizacion.get("iva")));
     }
 
     public void validarDireccion(String direccion) {
@@ -242,23 +203,5 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
         }
 
         MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
-    }
-
-    public void validarDetallesCosto(Map<String, String> infoDetalleCotizacion) {
-        waitFor(botonDetalleCambioCosto).shouldBeVisible();
-        botonDetalleCambioCosto.click();
-        waitFor(botonDetalleCambioCosto).waitUntilPresent();
-        MatcherAssert.assertThat(labelDCVehiculo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_labelVehiculo"))));
-        MatcherAssert.assertThat(labelDCPlaca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_placa"))));
-        MatcherAssert.assertThat(labelDCCodigoFasecolda.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_codigoFasecolda"))));
-        MatcherAssert.assertThat(labelDCMarca.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_marca"))));
-        MatcherAssert.assertThat(labelDCModelo.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_modelo"))));
-        MatcherAssert.assertThat(labelDCLinea.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_linea"))));
-        MatcherAssert.assertThat(labelDCDescripcionCobertura.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_descripcion"))));
-        MatcherAssert.assertThat(labelDCPrima.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_prima"))));
-        MatcherAssert.assertThat(labelDCSubtotal.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_subtotal"))));
-        MatcherAssert.assertThat(labelDCSubtotalPrimas.getText(), Is.is(Matchers.equalTo(infoDetalleCotizacion.get("DC_subtotalPrimas"))));
-        waitFor(labelDCIva).shouldContainText(infoDetalleCotizacion.get("DC_iva"));
-        MatcherAssert.assertThat(labelDCIva.getText(), Matchers.containsString(infoDetalleCotizacion.get("DC_iva")));
     }
 }

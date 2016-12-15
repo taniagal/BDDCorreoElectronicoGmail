@@ -1,42 +1,33 @@
 cambio en expedicion de Poliza
 
-Meta: @lote2
-
+Meta:
+@lote2
 @issue #CDSEG-1251
-@Automatizador Jonathan Mejia
 @tag automator: Jonathan_Mejia_Leon
-@local
-Sprint 4
+@Sprint 4
 
 Narrative:
 Como usuario de policy center
 quiero ser capaz de emitir cambios para las pólizas de auto en PolicyCenter.
 
 
-Scenario: Validacion boton cancelar
-GivenStories: stories/policycenter/login_policy.story
-Given Que tengo una cotizacion <cotizacion>
-When cuando vaya expedir el cambio de una poliza
-Then cancelo el mensaje de expedir cambio de poliza
-
-Examples:
-|cotizacion |
-|55555558   |
-
-
 Scenario: Validacion de resumen de la poliza expedirla
-Given Que tengo una cotizacion <cotizacion>
-When cuando vaya expedir el cambio de una poliza
-And confirmo el mensaje de expedir cambio de poliza
+GivenStories: stories/policycenter/login_policy.story
+Given estoy cotizando una poliza basado en otro envio <envio>
+And ingrese los datos de la cotizacion PA
+|ciudad_circulacion|limite|deducible|abogado |PLlaves |modelo|
+|MEDELLIN          |1.440 |0        |Opción 1|Opción 1|2016  |
+When expido la poliza y voy al archivo de poliza
+And expida el cambio de una poliza
 Then debe mostrar el resumen de la poliza expedida con la informacion del cambio <infoCambio>, poliza <infoPoliza>,  escritorio <escritorio>
 
 Examples:
-|cotizacion |infoCambio                                              |infoPoliza     |escritorio      |
-|55555558   |El cambio en la póliza (N.° 55555558) ha sido realizado.|Ver póliza (N.°|Ir al escritorio|
+|envio   |infoCambio                 |infoPoliza     |escritorio      |
+|22228589|El cambio en la póliza (N.°|Ver póliza (N.°|Ir al escritorio|
 
 
 Scenario: Validacion etiquetas y mensaje de ventana
-Meta: @lote2
+Meta:
 @manual
 Given  Que tengo una cotizacion <cotizacion >
 When cuando vaya expedir en el cambio de una poliza

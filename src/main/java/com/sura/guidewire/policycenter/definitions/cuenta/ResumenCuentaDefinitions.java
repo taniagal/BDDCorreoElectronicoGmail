@@ -109,17 +109,17 @@ public class ResumenCuentaDefinitions {
         resumenCuentaSteps.consultarResumenCuenta();
     }
 
-    @When("ingrese a editar dicha cuenta")
+    @Then("ingrese a editar dicha cuenta")
     public void editarResumenCuenta(){
         resumenCuentaSteps.editarResumenCuenta();
     }
 
-    @When("edite el campo pais <pais>")
+    @Then("edite el campo pais <pais>")
     public void editarPais(@Named("pais") String pais){
         resumenCuentaSteps.editarPais(pais);
     }
 
-    @When("edite el campo departamento <pais> <departamento>")
+    @Then("edite el campo departamento <pais> <departamento>")
     public void editarDepto(@Named("pais") String pais,
                             @Named("departamento") String departamento){
         resumenCuentaSteps.editarPais(pais);

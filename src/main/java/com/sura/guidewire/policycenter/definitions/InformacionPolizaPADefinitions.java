@@ -165,9 +165,9 @@ public class InformacionPolizaPADefinitions {
         informacionPolizaPASteps.seleccionar_Opcion_Siguiente();
     }
 
-    @Then("esta <fechaInicioVigencia> debe calcular de forma automatica la fecha de fin de vigencia, la cual depende del tipo de plazo")
-    public void calcularFechaFinVigencia(@Named("fechaInicioVigencia") String fechaInicioVigencia) {
-        informacionPolizaPASteps.calcularFechaFinVigencia(fechaInicioVigencia);
+    @Then("la fecha fin de vigencia <fechaFinVigencia> se debe calcular de forma automatica, la cual depende del tipo de plazo")
+    public void calcularFechaFinVigencia(@Named("fechaFinVigencia") String fechaFinVigencia) {
+        informacionPolizaPASteps.calcularFechaFinVigencia(fechaFinVigencia);
     }
 
     @Then("debe quedar registrado en la informacion de la poliza")

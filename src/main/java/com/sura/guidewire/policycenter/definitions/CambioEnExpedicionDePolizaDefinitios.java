@@ -29,14 +29,9 @@ public class CambioEnExpedicionDePolizaDefinitios {
     }
 
 
-    @When("cuando vaya expedir el cambio de una poliza")
+    @When("expida el cambio de una poliza")
     public void expedirCambioDePoliza(){
-        cambioEnExpedicionDePolizaSteps.clicEnExpedirPoliza();
-    }
-
-    @When("confirmo el mensaje de expedir cambio de poliza")
-    public void confirmarMensajeDeExpedirPoliza() {
-        cambioEnExpedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
+        cambioEnExpedicionDePolizaSteps.cotizarYExpedirCambioDePoliza();
     }
 
     @Then("debe mostrar el resumen de la poliza expedida con la informacion del cambio <infoCambio>, poliza <infoPoliza>,  escritorio <escritorio>")
@@ -45,10 +40,4 @@ public class CambioEnExpedicionDePolizaDefinitios {
                           @Named("escritorio")String escritorio){
         cambioEnExpedicionDePolizaSteps.validarResumenDeLaPolizaExpedida(infoCambio, infoPoliza, escritorio);
     }
-
-    @Then("cancelo el mensaje de expedir cambio de poliza")
-    public void cancelarMensajeDeExpedirPoliza() {
-        cambioEnExpedicionDePolizaSteps.clicEnCancelarDelMensajeDeConfirmacion();
-    }
-
 }

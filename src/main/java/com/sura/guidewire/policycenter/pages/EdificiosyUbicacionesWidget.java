@@ -49,7 +49,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_BTN_SELECCIONA = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']";
     private static final String XPATH_INTERES_ADICIONAL = "//label[contains(.,'Interes Adicional')]";
     private static final String XPATH_SELECCIONAR_RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
-    private static final String XPATH_BTON_REMOVER_RIESGOS = "//a[contains(.,'Remover Riesgo')]";
+    private static final String XPATH_BTON_REMOVER_RIESGOS = ".//a[contains(.,'Remover Riesgo')]";
     private static final String XPATH_EDITAR_TRANSACCION_POLIZA = ".//span[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']";
     private static final String XPATH_ACEPTAR = "//a[contains(.,'Aceptar')]";
     private static final String XPATH_DESCARTAR_CAMBIOS = "//a[contains(.,'Descartar cambios no guardados')]";
@@ -69,6 +69,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonAgregarArticulosRenovacionPoliza;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptarCambioDePoliza;
+    @FindBy(xpath = ".//a[contains(.,'Borrar')]")
+    private WebElementFacade botonBorrar;
     @Steps
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
@@ -164,7 +166,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
         $(xpathDepto).click();
 
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(WAIT_TIME_5).seconds();
         $(xpathCiudad).type(ciudad);
         waitFor(WAIT_TIME_2).seconds();
 
@@ -175,18 +177,18 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(WAIT_TIME_2).seconds();
         $(xpathDireccion).click();
 
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(WAIT_TIME_3).seconds();
         $(xpathActividadEconomica).type(actividadEconomica);
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(WAIT_TIME_3).seconds();
         $(xpathActividadEconomica).sendKeys(Keys.ENTER);
-        waitFor(WAIT_TIME_2).seconds();
+        waitFor(WAIT_TIME_3).seconds();
 
 
         findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
 
-        setImplicitTimeout(WAIT_TIME_7, TimeUnit.SECONDS);
-        if (findBy(".//a[contains(.,'Borrar')]").isPresent()) {
-            findBy(".//*[@id='CPLocationPopup:Update-btnInnerEl']").click();
+        setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
+        if (botonBorrar.isVisible()) {
+            clickElement(findBy(".//*[@id='CPLocationPopup:Update']"));
             waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES, WAIT_TIME_30000);
         }
         resetImplicitTimeout();
@@ -206,14 +208,20 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
     }
 
+    public void ingresarNuevaUbicacionSinRiesgoConsultable(){
+        agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 45 30 30", "Acabado de productos textiles");
+    }
+
     public void removerRiesgos() {
-        waitFor(WAIT_TIME_3).second();
-        findBy(XPATH_SELECCIONAR_RIESGOS).click();
-        waitFor(WAIT_TIME_3).second();
-        findBy(XPATH_BTON_REMOVER_RIESGOS).waitUntilVisible().waitUntilClickable();
-        findBy(XPATH_BTON_REMOVER_RIESGOS).shouldBeVisible();
-        findBy(XPATH_BTON_REMOVER_RIESGOS).click();
-        waitFor(WAIT_TIME_3).second();
+        if(findBy(XPATH_SELECCIONAR_RIESGOS).isVisible()) {
+            waitFor(WAIT_TIME_3).second();
+            findBy(XPATH_SELECCIONAR_RIESGOS).click();
+            waitFor(WAIT_TIME_3).second();
+            findBy(XPATH_BTON_REMOVER_RIESGOS).waitUntilVisible().waitUntilClickable();
+            findBy(XPATH_BTON_REMOVER_RIESGOS).shouldBeVisible();
+            findBy(XPATH_BTON_REMOVER_RIESGOS).click();
+            waitFor(WAIT_TIME_3).second();
+        }
     }
 
     public void editartransacciondepoliza() {
@@ -295,7 +303,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarValorAEntrada(String entrada, String valorEntrada) {
         waitForAnyTextToAppear(entrada);
-        shouldContainText(entrada);
         String xpathTREntrada = XPATH2_PARTE1 + entrada + "') ]) and @class='x-form-item-input-row' ]";
         WebElementFacade inputValorEntrada = findBy(xpathTREntrada).find(By.tagName(INPUT));
         withAction().moveToElement(inputValorEntrada).perform();

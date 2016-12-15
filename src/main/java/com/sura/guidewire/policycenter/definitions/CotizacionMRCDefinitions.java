@@ -4,6 +4,9 @@ import com.sura.guidewire.policycenter.steps.CotizacionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.CotizacionMRCSteps;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.sura.guidewire.policycenter.steps.DetalleDeAseguradoDeCotizacionSteps;
+import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
@@ -21,6 +24,12 @@ public class CotizacionMRCDefinitions {
 
     @Steps
     CotizacionDePolizaSteps cotizacionDePolizaSteps;
+
+    @Steps
+    InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
+
+    @Steps
+    DetalleDeAseguradoDeCotizacionSteps detalleDeAseguradoDeCotizacionSteps;
 
     public CotizacionMRCDefinitions(){
         labelsCotizacionPoliza.put("numeroCotizacion", "Número de cotización");
@@ -63,8 +72,6 @@ public class CotizacionMRCDefinitions {
         cotizacionMRCSteps.verDetalleCotizacion();
     }
 
-
-
     @When("realice la cotizacion")
     public void ingresarACotizacion(){
         cotizacionMRCSteps.ingresarACotizacion();
@@ -84,6 +91,16 @@ public class CotizacionMRCDefinitions {
             "agente diferente al que se ingreso")
     public void validarExclusividadCotizacion(){
         cotizacionMRCSteps.validarTipoRiesgo();
+    }
+
+    @When("voy a crear una nueva cotizacion")
+    public void irACrearCotizacion(){
+        detalleDeAseguradoDeCotizacionSteps.irACrearNuevaCotizacion();
+    }
+
+    @When("crear una cotizacion nueva con la cuenta <cuenta>")
+    public void crearCotizacion(@Named("cuenta") String cuenta){
+        detalleDeAseguradoDeCotizacionSteps.ingresarCuenta(cuenta);
     }
 
     @Then("debo ver la informacion de la cotizacion $informacionCotizacion")
@@ -106,8 +123,8 @@ public class CotizacionMRCDefinitions {
         cotizacionMRCSteps.validarBloqueoCotizacion(mensaje);
     }
 
-    @Then("no debe permitir cotizar; se debe mostrar el mensaje de respuesta <mensaje> que envie PEP")
-    public void validarBloqueoPEP(@Named("mensaje") String mensaje) {
+    @Then("no debe permitir cotizar; se debe mostrar el mensaje de respuesta <mensajePEP> que envie PEP")
+    public void validarBloqueoPEP(@Named("mensajePEP") String mensaje) {
         cotizacionMRCSteps.validarBloqueoCotizacion(mensaje);
     }
 

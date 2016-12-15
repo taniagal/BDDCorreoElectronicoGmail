@@ -18,12 +18,14 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     private WebElementFacade botonAceptarMensaje;
     @FindBy(xpath = ".//*[@id='RiskApprovalDetailsPopup:Update-btnInnerEl']")
     private WebElementFacade botonAceptarAprobacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
+    @FindBy(xpath = ".//span[contains(.,'Expedir póliza')]")
     private WebElementFacade botonExpedirPoliza;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton']")
     private WebElementFacade botonBorrar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:ViewQuote']/div")
     private WebElementFacade menuItemCotizacion;
+    @FindBy(xpath = ".//a[contains(.,'Cancelar')]")
+    private WebElementFacade botonCancelarMensaje;
 
     public AprobacionDeAnalisisDeRiesgoPage(WebDriver driver) {
         super(driver);
@@ -41,19 +43,20 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPoliza() {
-        setImplicitTimeout(3, TimeUnit.SECONDS);
+        setImplicitTimeout(2, TimeUnit.SECONDS);
         if (!botonExpedirPoliza.isPresent()){
             clickElement(menuItemCotizacion);
         }
+        resetImplicitTimeout();
         waitFor(botonExpedirPoliza);
-        botonExpedirPoliza.click();
+        clickElement(botonExpedirPoliza);
+        waitFor(botonAceptarMensaje);
+        botonCancelarMensaje.shouldBeCurrentlyVisible();
+        botonAceptarMensaje.click();
+        botonBorrar.waitUntilPresent();
+        clickElement(botonExpedirPoliza);
         waitFor(botonAceptarMensaje);
         botonAceptarMensaje.click();
-        botonBorrar.waitUntilPresent().click();
-        botonBorrar.waitUntilNotVisible();
-        botonExpedirPoliza.click();
-        waitFor(botonAceptarMensaje);
-        botonAceptarMensaje.click();
-        waitForTextToAppear("Cotización Expedida", WAIT_TIME_30000);
+        waitForAnyTextToAppear("Cotización Expedida","Cambio en la póliza Expedida");
     }
 }

@@ -1,12 +1,12 @@
 Procesar Cancelacion
 
-
-Meta: @lote1
-@manual
+Meta:
+@lote1
 @Story CDSEG-3425
 @URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
+@manual
 
 Scenario: 1 Programar cancelacion de poliza
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
@@ -21,13 +21,8 @@ Examples:
 | TEST_22263226 | Asesor     |
 
 
-Meta: @lote1
+Meta:
 @manual
-@Story CDSEG-3425
-@URL https://jira.suramericana.com.co/browse/CDSEG-3425
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Scenario: 2 Cancelar poliza con beneficiario oneroso
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba programacion
@@ -40,13 +35,8 @@ Examples:
 
 
 
-Meta: @lote1
+Meta:
 @manual
-@Story CDSEG-3425
-@URL https://jira.suramericana.com.co/browse/CDSEG-3425
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Scenario: 3 Cancelacion de  poliza con beneficiario oneroso sin aprobar UW
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba cancelacion  de poliza
@@ -59,13 +49,8 @@ Examples:
 
 
 
-Meta: @lote1
+Meta:
 @manual
-@Story CDSEG-3423
-@URL https://jira.suramericana.com.co/browse/CDSEG-3423
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Scenario: 4 Cotizacion de cancelacion de poliza con beneficiario oneroso
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba cancelacion  de poliza
@@ -78,13 +63,8 @@ Examples:
 
 
 
-Meta: @lote1
+Meta:
 @manual
-@Story CDSEG-3425
-@URL https://jira.suramericana.com.co/browse/CDSEG-3425
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Scenario: 5 Cancelar poliza
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de trámite, Descripción: Prueba cancelacion  de poliza
@@ -98,13 +78,8 @@ Examples:
 
 
 
-Meta: @lote1
+Meta:
 @manual
-@Story CDSEG-3425
-@URL https://jira.suramericana.com.co/browse/CDSEG-3425
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Scenario: 6 Cancelar poliza con retroactividad
 Given  que quiero expedir la cancelación de una poliza con retroactividad superior a 60 días
 When  intente procesar la cancelación
@@ -117,13 +92,8 @@ Examples:
 
 
 
-Meta: @lote1
+Meta:
 @manual
-@Story CDSEG-3774
-@URL https://jira.suramericana.com.co/browse/CDSEG-3774
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Scenario: 7 Cancelar poliza con siniestro asociado
 Given  que quiero expedir la cancelación de una poliza con un siniestro asociado
 When  intente procesar la cancelación
@@ -135,13 +105,8 @@ Examples:
 |  |  |
 
 
-Meta: @lote1
+Meta:
 @manual
-@Story CDSEG-3782
-@URL https://jira.suramericana.com.co/browse/CDSEG-3782
-@tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
-@Sprint 8
-
 Scenario: 8 Cancelar poliza adelantada (billing)
 Given  que quiero cancelar la poliza con un fecha superior al día de hoy
 When  intente procesar la cancelación

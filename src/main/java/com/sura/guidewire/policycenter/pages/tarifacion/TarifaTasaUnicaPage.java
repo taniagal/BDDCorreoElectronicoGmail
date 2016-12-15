@@ -5,8 +5,6 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -21,12 +19,16 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade botonExportarAHojaDeCalculo;
     @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange']")
     private WebElementFacade botonSiguienteCambioDePoliza;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
+    private WebElementFacade botonEditarTransaccionDePoliza;
     @FindBy(xpath = ".//*[@id='ExcelImportFilePopup:ImportButton']")
     private WebElementFacade botonImportar;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptar;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
+    private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:RenewalQuote']")
     private WebElementFacade botonCotizarRenovacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
@@ -55,6 +57,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade menuiItemCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
     private WebElementFacade menuiItemInformacionDePoliza;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']/div")
+    private WebElementFacade menuItemInformacionDePolizaRenovacion;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Export-inputEl']")
     private WebElementFacade comboBoxExportar;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Format-inputEl']")
@@ -71,12 +75,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade campoTxtSegundoNombre;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:MaritalStatus-inputEl']")
     private WebElementFacade comboBoxEstadoCivil;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
-    private WebElementFacade comboBoxOrganizacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
-    private WebElementFacade comboBoxCanal;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
-    private WebElementFacade comboBoxTipoPoliza;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']")
     private WebElementFacade checkBoxTasaUnica;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:__crumb__']")
@@ -87,6 +85,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade headerEnvio;
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
     private WebElementFacade linkVerCotizacion;
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
+    private WebElementFacade linkVerPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotalCotizacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
@@ -143,11 +143,15 @@ public class TarifaTasaUnicaPage extends PageUtil {
         return val;
     }
 
-    public void comenzarCambioDePoliza() {
+    public void comenzarCambioDePolizaConValorDecotizacion() {
         menuiItemCotizacion.waitUntilPresent().click();
         guardarMontoPorCoberturas();
         menuAccionesEnvio.waitUntilPresent().click();
         menuItemArchivoDePoliza.waitUntilPresent().click();
+        nuevoCambioDePoliza();
+    }
+
+    public void nuevoCambioDePoliza() {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemCambiarPoliza.waitUntilPresent().click();
         botonSiguienteCambioDePoliza.waitUntilPresent().click();
@@ -175,18 +179,29 @@ public class TarifaTasaUnicaPage extends PageUtil {
         guardarMontoPorCoberturas();
         menuAccionesEnvio.waitUntilPresent().click();
         menuItemArchivoDePoliza.waitUntilPresent().click();
+        nuevaRenovacion();
+    }
+
+    public void nuevaRenovacion() {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemRenovarPoliza.waitUntilPresent().click();
         botonAceptar.waitUntilPresent().click();
-        for (int i = 0; i < CONSTANTE_3; i++) {
-            botonHojaDeCalculoRenovacion.waitUntilPresent();
-            waitUntil(WAIT_TIME_3000);
-            menuPoliza.click();
-            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
-            if (botonCotizarRenovacion.isPresent()) {
-                break;
-            }
-        }
+        botonHojaDeCalculoRenovacion.waitUntilPresent();
+        waitUntil(WAIT_TIME_5000);
+        clickElement(menuPoliza);
+    }
+
+    public void irAInformacionDePolizaRenovacion(){
+        menuItemInformacionDePolizaRenovacion.waitUntilPresent();
+        clickElement(menuItemInformacionDePolizaRenovacion);
+    }
+
+    public void editarTransaccion(){
+        botonEditarTransaccionDePoliza.waitUntilPresent();
+        clickElement(botonEditarTransaccionDePoliza);
+        botonAceptar.waitUntilPresent().click();
+        botonEditarTransaccionDePoliza.waitUntilNotVisible();
+        descartarCambios();
     }
 
 
@@ -195,6 +210,10 @@ public class TarifaTasaUnicaPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
         checkBoxTasaUnica.shouldBePresent();
         botonCotizarRenovacion.click();
+        descartarCambios();
+    }
+
+    public void descartarCambios() {
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
             linkDescartarCambios.click();
@@ -221,39 +240,11 @@ public class TarifaTasaUnicaPage extends PageUtil {
         linkVerCotizacion.waitUntilPresent().click();
     }
 
-    public void guardarMontoPorCoberturas() {
-        primaTotal = labelPrimaTotalCotizacion.waitUntilPresent().getText();
+    public void irAArchivoDePoliza() {
+        linkVerPoliza.waitUntilPresent().click();
     }
 
-
-    public void llenarInfoPoliza() {
-        menuiItemInformacionDePoliza.waitUntilPresent().click();
-        try {
-            waitUntil(WAIT_TIME_2000);
-            comboBoxOrganizacion.waitUntilPresent();
-        } catch (StaleElementReferenceException f) {
-            LOGGER.info("StaleElementReferenceException " + f);
-            waitUntil(WAIT_TIME_2000);
-        }
-        if (!comboBoxOrganizacion.getText().equals("Sura")) {
-            selectItem(comboBoxOrganizacion, "Sura");
-            waitForComboValue(comboBoxOrganizacion, "Sura");
-            waitUntil(WAIT_TIME_1000);
-            selectItem(comboBoxCanal, "Canal Tradicional");
-            waitForComboValue(comboBoxCanal, "Canal Tradicional");
-            try {
-                waitUntil(WAIT_TIME_1000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
-            } catch (ElementNotVisibleException e) {
-                LOGGER.info("ElementNotVisibleException " + e);
-                waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
-            } catch (StaleElementReferenceException f) {
-                LOGGER.info("StaleElementReferenceException " + f);
-                waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
-            }
-            waitForComboValue(comboBoxTipoPoliza, "PPAutos");
-        }
+    public void guardarMontoPorCoberturas() {
+        primaTotal = labelPrimaTotalCotizacion.waitUntilPresent().getText();
     }
 }

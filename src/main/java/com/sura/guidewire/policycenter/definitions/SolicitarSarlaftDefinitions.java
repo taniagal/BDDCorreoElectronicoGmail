@@ -1,9 +1,6 @@
 package com.sura.guidewire.policycenter.definitions;
 
-import com.sura.guidewire.policycenter.steps.AnalisisDeRiesgoPaSteps;
-import com.sura.guidewire.policycenter.steps.CambioEnExpedicionDePolizaSteps;
-import com.sura.guidewire.policycenter.steps.ExpedicionCambioDePolizaUWPEPSSteps;
-import com.sura.guidewire.policycenter.steps.GeneracionUwIssueRiesgosConsultablesPaSteps;
+import com.sura.guidewire.policycenter.steps.*;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -23,10 +20,19 @@ public class SolicitarSarlaftDefinitions {
     @Steps
     CambioEnExpedicionDePolizaSteps cambioEnExpedicionDePolizaSteps;
 
+    @Steps
+    SolicitarRequisitoPaSteps solicitarRequisitoPaSteps;
+
+
     @When("intente expedir la poliza cuyas figuras requieran Sarlaft")
     public void expedirPoliza(){
         expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
         analisisDeRiesgoPaSteps.aceptarExpedicion();
+    }
+
+    @When("ingrese la organizacion, canal y tipo de poliza")
+    public void ingresarOrganizacion(){
+        solicitarRequisitoPaSteps.llenarInfoPoliza();
     }
 
     @When("intente expedir la modificacion cuyas figuras requieran Sarlaft")
@@ -37,11 +43,6 @@ public class SolicitarSarlaftDefinitions {
 
     @Then("debo ver un UW issue que indique que se requiere diligenciar Sarlaft $mensaje")
     public void validarUWIssueSarlaft(ExamplesTable mensaje){
-        generacionUwIssueRiesgosConsultablesPaSteps.validar_Que_Se_Genere_Uw_Issue(mensaje);
-    }
-
-    @Then("debo ver un UW issue que indique que se requiere diligenciar Sarlaft en modificacion $mensaje")
-    public void validarUWIssueSarlaftModificacion(ExamplesTable mensaje){
         generacionUwIssueRiesgosConsultablesPaSteps.validar_Que_Se_Genere_Uw_Issue(mensaje);
     }
 }

@@ -50,9 +50,10 @@ public class DetallesDeUbicacionPage extends PageUtil {
         super(driver);
     }
 
-    
+
     public void irAUbicacion() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        clickElement(botonSiguiente);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarUbicacion).waitUntilPresent().click();
         botonAgregarNuevaUbicacion.click();
     }
@@ -69,8 +70,8 @@ public class DetallesDeUbicacionPage extends PageUtil {
     public void setUbicacion(String descripcion, String actividad) {
         waitFor(campoTxtDescripcionDeUbicacion).sendKeys(descripcion);
         selectItem(comboBoxActividadEconomica, actividad);
-        waitUntil(WAIT_TIME_1000);
-        botonAceptar.click();
+        waitForComboValue(comboBoxActividadEconomica, actividad);
+        clickElement(botonAceptar);
     }
 
     public void validarCamposNuevos() {
@@ -95,7 +96,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
     }
 
     public void validarIngresoDeUbicacion() {
-        MatcherAssert.assertThat("Error al agregar la ubicacion", getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/div/table/tbody/tr").get(1).getText().contains(direccion));
+        MatcherAssert.assertThat("Error al agregar la ubicacion", getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/div/table/tbody/tr").get(0).getText().contains(direccion));
     }
 
     public void verificarMensaje(String mensaje) {

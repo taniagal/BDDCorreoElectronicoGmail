@@ -10,7 +10,8 @@ Meta:
 Scenario: 1 Validacion de riesgos consultables (tomador adicional,asegurador,direccion) al cotizar nueva poliza
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When seleccione poliza de tipo no reaseguro especial
+When copie la poliza
+And seleccione poliza de tipo no reaseguro especial
 And quiera agregar un tomador adicional que es riesgo consultable <cedula>
 And intente ingresar una nueva ubicacion
 And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
@@ -27,7 +28,7 @@ Then se deben validar los riesgos consultables mostrando los siguientes mensaje 
 
 Examples:
 | numSubscripcion | rolUsuario | cedula  | tipoBeneficiario |
-| 22266771        | Asesor     | 9876543 | Asegurado        |
+| 22222211        | Asesor     | 9876543 | Asegurado        |
 
 Scenario: 2 Validacion de riesgos consultables (tomador, tomador adicional,beneficiario,basegurador,direccion) al modificar nueva poliza
 

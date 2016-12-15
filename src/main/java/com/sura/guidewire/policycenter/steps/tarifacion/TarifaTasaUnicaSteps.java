@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.steps.tarifacion;
 
 import com.sura.guidewire.policycenter.pages.AprobacionDeAnalisisDeRiesgoPage;
+import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
@@ -14,6 +15,7 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
     TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
     AprobacionDeAnalisisDeRiesgoPage analisisDeRiesgoPage = new AprobacionDeAnalisisDeRiesgoPage(getDriver());
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
+    NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
     int token = 1;
 
     public TarifaTasaUnicaSteps(Pages pages) {
@@ -33,7 +35,7 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
     @Step
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         if (token == 1) {
-            tasaUnicaPage.llenarInfoPoliza();
+            nuevaCotizacionPage.llenarInfoPoliza();
             vehiculoPage.irAVehiculos();
             vehiculoPage.agregarVehiculo(datosVehiculo);
         }
@@ -50,6 +52,13 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
     public void irAInformacionDePolizaExpedida() {
         if (token == 1) {
             tasaUnicaPage.irAInformacionDePoliza();
+        }
+    }
+
+    @Step
+    public void irAArchivoDePolizaExpedida() {
+        if (token == 1) {
+            tasaUnicaPage.irAArchivoDePoliza();
         }
     }
 
@@ -72,13 +81,13 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
 
     @Step
     public void cambiarInfromacionDePoliza(String valorAsegurado) {
-        tasaUnicaPage.comenzarCambioDePoliza();
+        tasaUnicaPage.comenzarCambioDePolizaConValorDecotizacion();
         tasaUnicaPage.cambiarValorAsegurado(valorAsegurado);
     }
 
     @Step
     public void cambiarInfromacionDelAsegurado(String primerNombre, String segundoNombre, String estadoCivil) {
-        tasaUnicaPage.comenzarCambioDePoliza();
+        tasaUnicaPage.comenzarCambioDePolizaConValorDecotizacion();
         tasaUnicaPage.cambiarDatosDelAsegurado(primerNombre, segundoNombre, estadoCivil);
     }
 

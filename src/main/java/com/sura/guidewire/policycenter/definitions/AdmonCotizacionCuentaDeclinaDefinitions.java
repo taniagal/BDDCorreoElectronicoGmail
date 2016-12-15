@@ -19,9 +19,15 @@ public class AdmonCotizacionCuentaDeclinaDefinitions {
     @Steps
     AdmonCotizacionCuentaDeclinaSteps admonCotizacionCuentaSteps;
 
-    @Given("que estoy visualizando las cotizaciones de la cuenta <numCuenta>")
-    public void visualizaCotizacion(@Named("numCuenta") String numCuenta) {
+
+    @When("estoy visualizando las cotizaciones de la cuenta <numCuenta>")
+    public void visualizacionDeCotizacion(@Named("numCuenta") String numCuenta) {
         admonCotizacionCuentaSteps.navegar_barra_superior(numCuenta);
+    }
+
+    @When("cotice para la opcion declinar MRC")
+    public void cotizarParaLaOpcionDeclinar() {
+        admonCotizacionCuentaSteps.cotizarParaLaOpcionDeclinar();
     }
 
     @When("quiera declinar la cotizacion por cualquier razon <razon>")
@@ -57,7 +63,7 @@ public class AdmonCotizacionCuentaDeclinaDefinitions {
         admonCotizacionCuentaSteps.seleccionar_opcion_en_acciones();
     }
 
-    @Then("el sistema debe mostrarme todas las opciones: $listaCodRazon")
+    @When("el sistema debe mostrarme todas las opciones: $listaCodRazon")
     public void validarOpciones(ExamplesTable listaCodRazon){
         admonCotizacionCuentaSteps.valida_lista_de_razones(listaCodRazon);
     }

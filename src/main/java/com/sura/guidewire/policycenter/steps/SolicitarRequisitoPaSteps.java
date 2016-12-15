@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.SolicitarRequisitoPaPage;
+import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
@@ -8,6 +9,8 @@ import org.jbehave.core.model.ExamplesTable;
 public class SolicitarRequisitoPaSteps extends ScenarioSteps{
 
     private SolicitarRequisitoPaPage solicitarRequisitoPa;
+
+    private NuevaCotizacionPage nuevaCotizacionPage;
 
     @Step
     public void validar_Que_Se_Habilite_La_Opcion_Solicitar_Requisitos() {
@@ -22,5 +25,10 @@ public class SolicitarRequisitoPaSteps extends ScenarioSteps{
     @Step
     public void validar_Que_Existan_Requisitos_Pendientes() {
         solicitarRequisitoPa.validarRequisitos();
+    }
+
+    @Step
+    public void llenarInfoPoliza() {
+        nuevaCotizacionPage.llenarInfoPoliza();
     }
 }

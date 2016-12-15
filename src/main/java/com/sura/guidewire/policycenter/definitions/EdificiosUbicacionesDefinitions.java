@@ -183,6 +183,12 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
     }
 
+    @When("intente ingresar una nueva ubicacion sin riesgo consultable")
+    public void cuandoIntenteIngresarUnaNuevaUbicacionSinRiesgo(){
+        edificiosUbicacionesSteps.remover_riesgos();
+        edificiosUbicacionesSteps.ingresar_nueva_ubicacion_sin_riesgo();
+    }
+
     @When("intente ingresar una nueva ubicacion en renovacion de poliza")
     public void cuandoIntenteIngresarUnaNuevaUbicacionEnRenovacionDePoliza(){
         edificiosUbicacionesSteps.seleccionar_boton_editar_transaccion_de_poliza();
@@ -215,8 +221,8 @@ public class EdificiosUbicacionesDefinitions {
     @When("intente cotizar y expedir la poliza")
             public void cuandoIntenteCotizarYExpedirLaPoliza(){
               edificiosUbicacionesSteps.seleccionar_boton_cotizar();
-              expedicionDePolizaSteps.clic_en_expedir_poliza();
-             expedicionDePolizaSteps.clic_en_aceptar_del_mensaje_de_confirmacion();
+              expedicionDePolizaSteps.clicEnExpedirPoliza();
+             expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
             }
 
 

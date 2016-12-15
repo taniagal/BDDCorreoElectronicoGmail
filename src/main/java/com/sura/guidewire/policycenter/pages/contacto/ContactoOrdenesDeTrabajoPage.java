@@ -19,8 +19,18 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
     private WebElementFacade mnuTransaccionesPoliza;
     @FindBy(xpath = "//div[3]/div/table/tbody/tr/td/div")
     private WebElementFacade fechaCreacion;
+    @FindBy(xpath = "//td[3]/div")
+    private WebElementFacade producto;
+    @FindBy(xpath = ".//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV-body']/*/table/tbody/tr[4]/td[4]")
+    private WebElementFacade numeroTransaccion;
+    @FindBy(xpath = "//td[5]/div")
+    private WebElementFacade tipo;
+    @FindBy(xpath = "//td[6]/div")
+    private WebElementFacade estado;
     @FindBy(xpath = "//td[7]/div")
     private WebElementFacade fechaFin;
+    @FindBy(xpath = "//td[8]/div")
+    private WebElementFacade participante;
     @FindBy(xpath = "//*[@id='ContactFile_WorkOrders:AssociatedWorkOrdersLV_tb:WorkOrdersCompletenessFilter-inputEl']")
     private WebElementFacade filtroEstado;
     @FindBy(xpath = "//td/div/div[3]/div/table")
@@ -45,7 +55,9 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
     public void filtrarTransaccionesPorEstado(String estado) {
         waitFor(filtroEstado).waitUntilPresent();
-        selectItem(filtroEstado, estado);
+        filtroEstado.click();
+        filtroEstado.sendKeys(estado);
+        filtroEstado.sendKeys(Keys.ENTER);
         waitUntil(WAIT_TIME_3000);
     }
 
@@ -59,13 +71,13 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         waitFor(fechaCreacion).waitUntilPresent();
         waitUntil(WAIT_TIME_3000);
         MatcherAssert.assertThat(this.fechaCreacion.getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + poliza + "')]").getText(), Matchers.containsString(poliza));
-        MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + producto + "')]").getText(), Matchers.containsString(producto));
-        MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + numeroTransaccion + "')]").getText(), Matchers.containsString(numeroTransaccion));
-        MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + tipo + "')]").getText(), Matchers.containsString(tipo));
-        MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + estado + "')]").getText(), Matchers.containsString(estado));
+        MatcherAssert.assertThat(findBy(".//*[contains(text(), '" + poliza + "')]").getText(), Matchers.containsString(poliza));
+        MatcherAssert.assertThat(this.producto.getText(), Matchers.containsString(producto));
+        MatcherAssert.assertThat(findBy(".//*[contains(text(), '" +numeroTransaccion + "') and contains(@id,'WorkOrderNumber')]").getText(), Matchers.containsString(numeroTransaccion));
+        MatcherAssert.assertThat(this.tipo.getText(), Matchers.containsString(tipo));
+        MatcherAssert.assertThat(this.estado.getText(), Matchers.containsString(estado));
         MatcherAssert.assertThat(this.fechaFin.getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(findBy(".//div[contains(text(), '" + participante + "')]").getText(), Matchers.containsString(participante));
+        MatcherAssert.assertThat(this.participante.getText(), Matchers.containsString(participante));
     }
 
     //display key de los estados: typeList localization ---> TypeKey.PolicyPeriodStatus
@@ -73,7 +85,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         List<WebElement> cells;
         String estadoStr;
         String[] listEstadosCompletos = {"Comprometida", "No tomado", "Retirado", "Vencida", "Rechazado",
-                "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida"};
+                "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida", "Declinada"};
         String[] listEstadosAbiertos = {"Cotizado", "Borrador", "Nuevo", "Cotización", "Vinculación contractual",
                 "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
         String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);
@@ -108,7 +120,9 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
 
     public void filtrarTransaccionesPorTransaccion(String filtroTransaccion) {
         waitFor(filtroTipoTransaccion).waitUntilPresent();
-        selectItem(filtroTipoTransaccion, filtroTransaccion);
+        this.filtroTipoTransaccion.click();
+        this.filtroTipoTransaccion.sendKeys(filtroTransaccion);
+        this.filtroTipoTransaccion.sendKeys(Keys.ENTER);
     }
 
     public void validarTransaccionesPorTransaccion(String filtroTransaccion) {
@@ -127,7 +141,9 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
         waitFor(this.filtroProducto).waitUntilPresent();
         waitUntil(WAIT_TIME_2000);
-        selectItem(this.filtroProducto, filtroProducto);
+        this.filtroProducto.click();
+        this.filtroProducto.sendKeys(filtroProducto);
+        this.filtroProducto.sendKeys(Keys.ENTER);
     }
 
     public void validarTransaccionesPorProducto(String filtroProducto) {

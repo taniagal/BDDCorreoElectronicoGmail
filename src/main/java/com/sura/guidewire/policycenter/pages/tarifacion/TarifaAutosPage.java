@@ -118,7 +118,7 @@ public class TarifaAutosPage extends PageUtil {
     }
 
 
-    public void desMarcarCoberturaHurto() {
+    public void desMarcarCoberturas() {
         checkBoxHurto.click();
         comboBoxPerdidaTotalHurto.waitUntilNotVisible();
         checkBoxDaniosCarro.click();
@@ -127,6 +127,11 @@ public class TarifaAutosPage extends PageUtil {
 
 
     public void cotizar() {
+        intentarCotizar();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
+    }
+
+    public void intentarCotizar() {
         try {
             clickElement(botonCotizar);
         } catch (ElementNotVisibleException e) {
@@ -134,9 +139,6 @@ public class TarifaAutosPage extends PageUtil {
             waitUntil(WAIT_TIME_2000);
             clickElement(botonCotizar);
         }
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonMostrarHojaDeCalculo).shouldBePresent();
-        waitUntil(WAIT_TIME_500);
-        menuItemCotizacion.waitUntilPresent().click();
     }
 
 
@@ -149,7 +151,8 @@ public class TarifaAutosPage extends PageUtil {
 
 
     public void seleccionarAsegurado(String tipoDocumento, String documento) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(meniItemAsegurados).waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(meniItemAsegurados).waitUntilPresent();
+        clickElement(meniItemAsegurados);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         menuItemDelDireciotio.waitUntilPresent().click();
         comboBoxTipoDocumento.waitUntilPresent().clear();

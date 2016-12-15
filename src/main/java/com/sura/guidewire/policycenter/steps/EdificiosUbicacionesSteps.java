@@ -25,6 +25,11 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
+    public void ingresar_nueva_ubicacion_sin_riesgo() {
+        edificiosyUbicacionesWidget.ingresarNuevaUbicacionSinRiesgoConsultable();
+    }
+
+    @Step
     public void seleccionar_boton_agregar_articulo_a_una_ubicacion() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacion();
     }

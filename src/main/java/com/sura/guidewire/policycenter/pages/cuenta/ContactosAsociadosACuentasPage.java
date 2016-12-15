@@ -213,8 +213,8 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     }
 
     public void ElimnarContactoAsociado(String nombreContacto) {
-        waitUntil(WAIT_TIME_1000);
-        List<WebElementFacade> checkBoxes = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS)
+        waitUntil(WAIT_TIME_2000);
+        List<WebElementFacade> checkBoxes = withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS)
                 .findAll(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV-body']/*/table/tbody/tr/td[1]");
         combos = checkBoxes.size();
         int i = 0;

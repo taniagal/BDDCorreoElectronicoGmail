@@ -49,8 +49,8 @@ public class HistorialCuentaSteps  extends ScenarioSteps {
     }
 
     @Step
-    public void buscarCuentaConMultiplesOpciones(String usuario, String fechaDesde, String fechaHasta) {
-        historialCuentaPage.buscarCuentaConMultiplesOpciones( usuario,  fechaDesde,  fechaHasta);
+    public void buscarCuentaConMultiplesOpciones(String usuario, String producto, String fechaDesde, String fechaHasta) {
+        historialCuentaPage.buscarCuentaConMultiplesOpciones( usuario, producto, fechaDesde,  fechaHasta);
     }
 
     @Step

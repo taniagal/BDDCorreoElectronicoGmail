@@ -1,15 +1,20 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
+import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaPage;
 import java.util.Map;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 
 
 public class InformacionPolizaPASteps extends ScenarioSteps {
+
+    @Page
+    NuevaCotizacionPage nuevaCotizacionPage;
 
     OpcionesInformacionPolizaPage opcionesInformacionPoliza = new OpcionesInformacionPolizaPage(getDriver());
 
@@ -39,6 +44,7 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     @Step
     public void accionarInformacionPoliza() {
         inicioPage().irAInformacionDePoliza();
+        nuevaCotizacionPage.llenarInfoPoliza();
     }
 
     @Step
@@ -47,8 +53,8 @@ public class InformacionPolizaPASteps extends ScenarioSteps {
     }
 
     @Step
-    public void calcularFechaFinVigencia(String fechaInicioVigencia) {
-        opcionesInformacionPoliza.calcularFechaFinVigencia(fechaInicioVigencia);
+    public void calcularFechaFinVigencia(String fechaFinVigencia) {
+        opcionesInformacionPoliza.calcularFechaFinVigencia(fechaFinVigencia);
     }
 
     @Step

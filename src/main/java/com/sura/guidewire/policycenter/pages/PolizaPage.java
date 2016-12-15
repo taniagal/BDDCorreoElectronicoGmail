@@ -80,7 +80,7 @@ public class PolizaPage extends GuidewirePage {
         LINK_AGREGAR_COASEGURO(".//a[contains(.,'Agregar coaseguro')]"),
         LINK_AGREGAR_TOMADOR(".//a[contains(.,'Agregar') and contains(@id,'AddContactsButton')]"),
         TD_DIV_REASEGURO_ACEPTADO(".//td[contains(@id,'reaseguroAceptado-bodyEl') and (descendant::*[contains(., 'No')])]"),
-        DIV_REASEGURO_ESPECIAL(".//div[contains(@id,'reaseguroEspecial-containerEl')]/table/tbody/tr/td"),
+        DIV_REASEGURO_ESPECIAL(".//div[contains(@id,'campoReaseguroEspecial-containerEl')]/table/tbody/tr/td"),
         TD_FECHA_FIN_VIGENCIA(".//td[contains(@id,'ExpirationDate-bodyEl')]");
 
         private String elemento;
