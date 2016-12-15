@@ -4,7 +4,7 @@ Meta:
 @lote2
 @issue #CDSEG-1251
 @tag automator: Jonathan_Mejia_Leon
-Sprint 4
+@Sprint 4
 
 Narrative:
 Como usuario de policy center
