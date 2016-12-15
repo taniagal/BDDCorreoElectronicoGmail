@@ -29,10 +29,8 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends PageUtil {
     private WebElementFacade campoTipoDocumentoModificacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:DocumentNumber-inputEl']")
     private WebElementFacade campoNumeroDocumentoModificacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
+    @FindBy(xpath = ".//*[contains(text(), 'Exped') and contains(@id, 'QuoteScreen:JobWizardToolbarButtonSet')]")
     private WebElementFacade botonExpedirPoliza;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange-btnInnerEl']")
-    private WebElementFacade botonExpedirPolizaModificacion;
     @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']")
     private WebElementFacade tituloBloqueo;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
@@ -59,11 +57,7 @@ public class ExpedicionCambioDePolizaUWPEPSPage extends PageUtil {
 
     public void emitirPoliza() {
         waitUntil(WAIT_TIME_3000);
-        if (botonExpedirPoliza.isPresent()) {
-            withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
-        } else if (botonExpedirPolizaModificacion.isCurrentlyVisible()) {
-            withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonExpedirPolizaModificacion).click();
-        }
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
     }
 
     public void aceptarExpedir() {

@@ -32,6 +32,7 @@ And vaya a la opcion de analisis de riesgo
 Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft
 |mensaje|
 |Para el contacto CAROLINA OCHOA con número de documento 71318883 se requiere que diligencie el Sarlaft; ingrese aquí para diligenciarlo.|
+
 Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |
 |CEDULA DE CIUDADANIA|71318883  |C1060447895|Autos   |DIRECTO|
@@ -46,7 +47,7 @@ Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft en mod
 
 Examples:
 |numeroCotizacion|
-|55570000        |
+|22222244        |
 
 Scenario: Habilitar opcion Sarlaft en Renovacion - Tomador
 Meta:@manual
