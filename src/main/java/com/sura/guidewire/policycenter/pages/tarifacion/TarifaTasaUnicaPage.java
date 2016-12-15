@@ -186,21 +186,21 @@ public class TarifaTasaUnicaPage extends PageUtil {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemRenovarPoliza.waitUntilPresent().click();
         botonAceptar.waitUntilPresent().click();
-        for (int i = 0; i < CONSTANTE_3; i++) {
+        botonHojaDeCalculoRenovacion.waitUntilPresent();
+        waitUntil(WAIT_TIME_5000);
+        clickElement(menuPoliza);
+        menuItemInformacionDePolizaRenovacion.waitUntilPresent();
+        clickElement(menuItemInformacionDePolizaRenovacion);
+        editarTransaccion();
+         /*setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+       for (int i = 0; i < CONSTANTE_3; i++) {
             botonHojaDeCalculoRenovacion.waitUntilPresent();
-            waitUntil(WAIT_TIME_3000);
-            clickElement(menuPoliza);
-            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+
             if (botonCotizarRenovacion.isPresent() || botonEditarTransaccionDePoliza.isPresent()) {
                 break;
             }
             resetImplicitTimeout();
-        }
-    }
-
-    public void irAInformacionDePolizaRenovacion(){
-        menuItemInformacionDePolizaRenovacion.waitUntilPresent();
-        clickElement(menuItemInformacionDePolizaRenovacion);
+        }*/
     }
 
     public void editarTransaccion(){
