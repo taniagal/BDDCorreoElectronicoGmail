@@ -96,7 +96,7 @@ public class DetallesDeUbicacionPage extends PageUtil {
     }
 
     public void validarIngresoDeUbicacion() {
-        MatcherAssert.assertThat("Error al agregar la ubicacion", getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/div/table/tbody/tr").get(1).getText().contains(direccion));
+        MatcherAssert.assertThat("Error al agregar la ubicacion", getLista(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/div/table/tbody/tr").get(0).getText().contains(direccion));
     }
 
     public void verificarMensaje(String mensaje) {
