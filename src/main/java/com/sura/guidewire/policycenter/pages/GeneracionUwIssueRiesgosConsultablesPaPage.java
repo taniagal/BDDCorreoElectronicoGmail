@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
 
-    @FindBy(xpath = ".//[contains(@id, 'Wizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body')]")
+    @FindBy(xpath = ".//*[contains(@id, 'Wizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body')]")
     private WebElementFacade grupoUWIssues;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:RiskAnalysis']/div/span")
     private WebElementFacade analisisRiesgoExpedicion;

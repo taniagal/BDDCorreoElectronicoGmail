@@ -41,7 +41,7 @@ Scenario: Habilitar opcion Sarlaft en modificacion
 Given existe una cotizacion <numeroCotizacion>
 When intente expedir la modificacion cuyas figuras requieran Sarlaft
 And vaya a la opcion de analisis de riesgo
-Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft en modificacion
+Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft
 |mensaje|
 |Para el contacto ANTONIO RESTREPO con número de documento 71123456 se requiere que diligencie el Sarlaft; ingrese aquí para diligenciarlo.|
 
