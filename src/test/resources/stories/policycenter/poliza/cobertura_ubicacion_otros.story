@@ -55,7 +55,6 @@ Examples:
 Scenario: 4 Sublimite todo riesgo construccion y/o todo riesgo montaje dentro de los predios asegurados (Coberturas del riesgo) - Porcentaje
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar una nueva ubicacion sin riesgo consultable
-And borro el articulo anterior
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA                                      | ENTRADAS                                                                                          | VALOR_ENTRADAS |
 | Información de Artículos | Edificios           |                     |                                                | Valor Reconstrucción                                                                              | 50             |
@@ -74,7 +73,6 @@ Examples:
 Scenario: 5 Sublimites menores a valor asegurado daños (coberturas a nivel de riesgo)
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar una nueva ubicacion sin riesgo consultable
-And borro el articulo anterior
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                                                                                               | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                                                                                                                   | 200            |

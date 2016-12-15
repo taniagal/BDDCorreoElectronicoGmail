@@ -13,7 +13,6 @@ Given que estoy en la informacion de la poliza con numero de subscripcion <numSu
 When copie la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-And borro el articulo anterior
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                            | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                | 10000          |

@@ -30,7 +30,6 @@ Examples:
 Scenario: 2 Valor asegurado de la cobertura Deterioro de bienes refigerados por rotura maquinaria (Coberturas del riesgo) - 40 porciento
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar una nueva ubicacion sin riesgo consultable
-And borro el articulo anterior
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                                                 | VALOR_ENTRADAS |
 | Coberturas del Riesgo    |                     |                     | Danos materiales | Sublimite para deterioro de bienes refrigerados por rotura de maquinaria | 9              |
@@ -66,7 +65,6 @@ Examples:
 Scenario: 4 Cobertura de terremoto para suelos y terrenos (categoría otros)
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar una nueva ubicacion sin riesgo consultable
-And borro el articulo anterior
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
 | Información de Artículos | Edificios         |                     |           | Valor Reconstrucción                                                                 | 50             |
@@ -85,7 +83,6 @@ Examples:
 Scenario: 5 Cobertura de terremoto para suelos y terrenos máximo 1000 millones
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar una nueva ubicacion sin riesgo consultable
-And borro el articulo anterior
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
 | Información de Artículos | Edificios         |                     |           | Valor Reconstrucción                                                                 | 1000000001     |
@@ -104,7 +101,6 @@ Examples:
 Scenario: 6 Cobertura de terremoto para suelos y terrenos  Edificio obligatorio
 Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con el rol <rolUsuario>
 When intente ingresar una nueva ubicacion sin riesgo consultable
-And borro el articulo anterior
 And intente ingresar las entradas de las diferentes coberturas
 | TAB             | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA | ENTRADAS                                                                             | VALOR_ENTRADAS |
 | Otros Articulos | Suelos y Terrenos |                     | Terremoto | Valor asegurado terremoto, temblor de tierra, erupcion volcanica, tsunami y maremoto | 1000000000     |

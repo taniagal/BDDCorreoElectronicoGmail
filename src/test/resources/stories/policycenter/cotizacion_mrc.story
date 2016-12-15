@@ -19,7 +19,6 @@ Given estoy cotizando una poliza:
 |C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-And borro el articulo anterior
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
@@ -41,7 +40,6 @@ Given estoy cotizando una poliza:
 When quiera agregar un tomador adicional que es riesgo consultable <cedula>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-And borro el articulo anterior
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
@@ -59,7 +57,6 @@ Given estoy cotizando una poliza:
 |C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-And borro el articulo anterior
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |
@@ -71,7 +68,6 @@ And seleccione el agente <agente>
 And seleccione el producto <producto> para expedir la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-And borro el articulo anterior
 And intente ingresar las entradas de las diferentes coberturas
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100000000      |

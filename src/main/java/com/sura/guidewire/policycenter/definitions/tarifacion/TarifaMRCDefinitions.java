@@ -66,11 +66,6 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.ingresarTasaGlobal(valor);
     }
 
-    @When("borro el articulo anterior")
-    public void borrarArticulo(){
-        tarifaMRCSteps.borrarArticulo();
-    }
-
     @Then("debo poder ver el mensaje de bloqueo <mensaje>")
     public void verificarMensaje(@Named("mensaje") String mensaje){
         tarifaMRCSteps.verificarMensaje(mensaje);
