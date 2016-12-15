@@ -27,7 +27,7 @@ And intente ingresar las entradas de las diferentes coberturas
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
 And intente cotizar y expedir la poliza
 And ingrese al resumen de la poliza expedida
-And cuando intente renovar informacion de la poliza MRC
+And intente renovar la poliza
 And ingrese a edificios y ubicaciones en renovacion de poliza
 And intente ingresar una nueva ubicacion en renovacion de poliza
 And ingrese las entradas en renovacion de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
