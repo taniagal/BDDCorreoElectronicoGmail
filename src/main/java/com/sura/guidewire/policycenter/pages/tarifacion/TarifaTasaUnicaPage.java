@@ -19,7 +19,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade botonExportarAHojaDeCalculo;
     @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange']")
     private WebElementFacade botonSiguienteCambioDePoliza;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:PostQuoteWizardStepSet:RenewalWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
     private WebElementFacade botonEditarTransaccionDePoliza;
     @FindBy(xpath = ".//*[@id='ExcelImportFilePopup:ImportButton']")
     private WebElementFacade botonImportar;
@@ -189,6 +189,11 @@ public class TarifaTasaUnicaPage extends PageUtil {
         botonHojaDeCalculoRenovacion.waitUntilPresent();
         waitUntil(WAIT_TIME_5000);
         clickElement(menuPoliza);
+    }
+
+    public void irAInformacionDePolizaRenovacion(){
+        menuItemInformacionDePolizaRenovacion.waitUntilPresent();
+        clickElement(menuItemInformacionDePolizaRenovacion);
     }
 
     public void editarTransaccion(){
