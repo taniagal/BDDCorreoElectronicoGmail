@@ -53,7 +53,10 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         String xpathAnalisisRiesgos = ".//*[@id='SubmissionWizard:RiskAnalysis']/div";
         String xpathMensajeAlertaEdificiosYUbicaciones = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']";
         String xpathBorrarWorkskpace = ".//a[contains(.,'Borrar')]";
+        String xpathWorkskpace =".//a[contains(.,'Resultados de validación')]";
+        findBy(xpathWorkskpace).waitUntilVisible();
         findBy(xpathAnalisisRiesgos).click();
+
         waitFor(WAIT_TIME_2).second();
         if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
             findBy(xpathAnalisisRiesgos).click();
@@ -61,7 +64,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         }
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
             waitUntil(WAIT_TIME_3000);
-            clickElement(botonBorrar);
+            botonBorrar.click();
         }
     }
 
@@ -69,8 +72,8 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         String xpathAnalisisRiesgos = ".//*[@id='PolicyChangeWizard:RiskAnalysis']/div";
         String xpathMensajeAlertaEdificiosYUbicaciones = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']";
         String xpathBorrarWorkskpace = ".//a[contains(.,'Borrar')]";
-        waitUntil(WAIT_TIME_5000);
         findBy(xpathAnalisisRiesgos).click();
+        waitForTextToAppear("Análisis de riesgo");
         waitFor(WAIT_TIME_2).second();
         if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
             findBy(xpathAnalisisRiesgos).click();
@@ -115,7 +118,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
                 botonSolicitarAprobacion.click();
                 waitUntil(WAIT_TIME_2000);
                 aceptarInicioSolicitudAprobacion();
-                waitUntil(WAIT_TIME_5000);
+                waitUntil(WAIT_TIME_2000);
             }
         setNumeroDeRiesgos(bttonSolicitarAprobacion);
     }

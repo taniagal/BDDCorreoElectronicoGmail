@@ -85,7 +85,7 @@ public class ContactoOrdenesDeTrabajoPage extends PageUtil {
         List<WebElement> cells;
         String estadoStr;
         String[] listEstadosCompletos = {"Comprometida", "No tomado", "Retirado", "Vencida", "Rechazado",
-                "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida"};
+                "No renovado", "LegacyConversion", "Revocado", "Exonerado", "Completado", "Expedida", "Declinada"};
         String[] listEstadosAbiertos = {"Cotizado", "Borrador", "Nuevo", "Cotización", "Vinculación contractual",
                 "Renovando", "No renovando", "No tomando", "Cancelando", "Revocando", "Rehabilitando"};
         String[] listEstadosTodos = ArrayUtils.addAll(listEstadosCompletos, listEstadosAbiertos);
