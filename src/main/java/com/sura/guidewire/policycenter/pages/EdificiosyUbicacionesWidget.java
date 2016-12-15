@@ -213,13 +213,15 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void removerRiesgos() {
-        waitFor(WAIT_TIME_3).second();
-        findBy(XPATH_SELECCIONAR_RIESGOS).click();
-        waitFor(WAIT_TIME_3).second();
-        findBy(XPATH_BTON_REMOVER_RIESGOS).waitUntilVisible().waitUntilClickable();
-        findBy(XPATH_BTON_REMOVER_RIESGOS).shouldBeVisible();
-        findBy(XPATH_BTON_REMOVER_RIESGOS).click();
-        waitFor(WAIT_TIME_3).second();
+        if(findBy(XPATH_SELECCIONAR_RIESGOS).isVisible()) {
+            waitFor(WAIT_TIME_3).second();
+            findBy(XPATH_SELECCIONAR_RIESGOS).click();
+            waitFor(WAIT_TIME_3).second();
+            findBy(XPATH_BTON_REMOVER_RIESGOS).waitUntilVisible().waitUntilClickable();
+            findBy(XPATH_BTON_REMOVER_RIESGOS).shouldBeVisible();
+            findBy(XPATH_BTON_REMOVER_RIESGOS).click();
+            waitFor(WAIT_TIME_3).second();
+        }
     }
 
     public void editartransacciondepoliza() {
@@ -301,7 +303,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void ingresarValorAEntrada(String entrada, String valorEntrada) {
         waitForAnyTextToAppear(entrada);
-        shouldContainText(entrada);
         String xpathTREntrada = XPATH2_PARTE1 + entrada + "') ]) and @class='x-form-item-input-row' ]";
         WebElementFacade inputValorEntrada = findBy(xpathTREntrada).find(By.tagName(INPUT));
         withAction().moveToElement(inputValorEntrada).perform();
