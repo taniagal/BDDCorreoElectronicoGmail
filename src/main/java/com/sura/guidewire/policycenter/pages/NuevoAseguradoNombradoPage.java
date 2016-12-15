@@ -104,7 +104,8 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
         botonCrearcontacto.waitUntilPresent().click();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        itemNuevaPersonaNatural.waitUntilPresent().click();
+        withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(itemNuevaPersonaNatural).waitUntilPresent();
+        itemNuevaPersonaNatural.click();
         botonDireccionAsociada.click();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
