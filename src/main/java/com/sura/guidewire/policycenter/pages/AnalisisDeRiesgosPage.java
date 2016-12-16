@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class AnalisisDeRiesgosPage extends PageUtil {
@@ -62,10 +63,13 @@ public class AnalisisDeRiesgosPage extends PageUtil {
             findBy(xpathAnalisisRiesgos).click();
             waitForTextToAppear("Análisis de riesgo");
         }
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
+            resetImplicitTimeout();
             waitUntil(WAIT_TIME_3000);
             botonBorrar.click();
         }
+        resetImplicitTimeout();
     }
 
     public void ingresarAOpcionAnalisisdeRiesgoEnCambioDePoliza() {
