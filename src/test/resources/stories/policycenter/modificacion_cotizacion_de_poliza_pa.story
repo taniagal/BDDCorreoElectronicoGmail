@@ -22,7 +22,7 @@ When expido la poliza y voy al archivo de poliza
 And cotice el cambio de poliza
 Then debo ver de la cotizacion la siguiente informacion
 | tomador     | tipoDocumento        | numeroDocumento | direccion                           | tipoDireccion           | descripcionDireccion                       | empresaAseguradora        |
-| JORGE PAISA | CEDULA DE CIUDADANIA | 1356118711      | CRA 65 # 48-162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | Acme Low Hazard Insurance |
+| JORGE PAISA | CEDULA DE CIUDADANIA | 1356118711      | CR 65 # 48 - 162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | Acme Low Hazard Insurance |
 And debo poder ver la direccion del tomador de la modificacion <direccion>, la cual se indico como principal
 And se debe mostrar en la columna "Termino" de la modificacion el limite o deducible de la cobertura en el caso de que aplique
 And se debe mostrar en la columna "Termino" de la modificacion el limite de la cobertura en el caso de que aplique
@@ -30,7 +30,7 @@ And se debe mostrar en la columna "Termino" de la modificacion el deducible de l
 
 Examples:
 |envio   | direccion                           |
-|22228589| CRA 65 # 48-162, MEDELLIN, Colombia |
+|22228589| CR 65 # 48 - 162, MEDELLIN, Colombia |
 
 
 

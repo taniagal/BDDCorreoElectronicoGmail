@@ -26,7 +26,7 @@ And intente ingresar las entradas de las diferentes coberturas
 And cotice una poliza
 Then debo ver la informacion de la cotizacion
 | tomador     | tipoDocumento        | numeroDocumento | direccion                           | tipoDireccion           | descripcionDireccion                       | prima             | impuestos        | total             |
-| JORGE PAISA | CEDULA DE CIUDADANIA | 1356118711      | CRA 65 # 48-162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | $124.000,00 (COP) | $19.840,00 (COP) | $143.840,00 (COP) |
+| JORGE PAISA | CEDULA DE CIUDADANIA | 1356118711      | CR 65 # 48 - 162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | $124.000,00 (COP) | $19.840,00 (COP) | $143.840,00 (COP) |
 And se muestre el detalle de la prima por riesgo
 
 Examples:

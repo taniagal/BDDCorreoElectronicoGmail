@@ -9,6 +9,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -66,10 +67,10 @@ public class InicioCancelacionPage extends PageUtil {
         }
         txtDescripMotivo.sendKeys("Motivo de prueba");
         withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(txtFechaVigenciaCancelacion);
-        String fecha = calculaRetroactividad31Dias(txtFechaVigenciaCancelacion.getValue());
+        LocalDate fecha = calculaRetroactividad31Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
         txtFechaVigenciaCancelacion.click();
-        txtFechaVigenciaCancelacion.sendKeys(fecha);
+        txtFechaVigenciaCancelacion.sendKeys(DateTimeFormat.forPattern("dd/MM/yyyy").print(fecha));
         txtDescripMotivo.click();
     }
 
@@ -87,10 +88,9 @@ public class InicioCancelacionPage extends PageUtil {
         txtDescripMotivo.sendKeys(cadenaAux);
     }
 
-    public String calculaRetroactividad31Dias(String fecha) {
-        DateTimeFormatter formato = DateTimeFormat.forPattern("dd/MM/yyyy");
-        DateTime fechaEnFormatoDate = formato.parseDateTime(fecha);
-        return fechaEnFormatoDate.minusDays(31).toString(formato);
+    public LocalDate calculaRetroactividad31Dias(String fecha) {
+        LocalDate fechaHace31Dias = DateTimeFormat.forPattern("dd/MM/yyyy").parseDateTime(fecha).toLocalDate().minusDays(31);
+        return fechaHace31Dias;
     }
 
     public String calculaEmisionAnticipada61Dias(String fecha) {

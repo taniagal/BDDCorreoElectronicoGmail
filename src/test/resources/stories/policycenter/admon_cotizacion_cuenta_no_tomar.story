@@ -35,7 +35,7 @@ Examples:
 Scenario: No tomar una cotizacion desde una cuenta
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto               |
-|C1060447895|Sura        |Multiriesgo corporativo|
+|C000484848 |Sura        |Multiriesgo corporativo|
 And seleccione reaseguro especial No
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -50,7 +50,7 @@ And desahabilitar la opcion de acciones
 
 Examples:
 |departamento|ciudad  |direccion        |descripcion  |actividad                    | numCuenta   | razon              | numCotizacion | accion    |
-|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles| C1060447895 | No acuerdo de pago |               | No tomada |
+|Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles| C000484848  | No acuerdo de pago |               | No tomada |
 
 Scenario: Validar campos obligatorios de lista despleglable razon de no tomar
 Meta: @manual
