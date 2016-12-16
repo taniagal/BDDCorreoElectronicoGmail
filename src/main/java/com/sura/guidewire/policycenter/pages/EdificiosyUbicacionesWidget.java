@@ -11,6 +11,7 @@ import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import net.thucydides.core.webdriver.exceptions.ElementShouldBePresentException;
+import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
@@ -71,8 +72,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonAceptarCambioDePoliza;
     @FindBy(xpath = ".//a[contains(.,'Borrar')]")
     private WebElementFacade botonBorrar;
-    @Steps
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:CPBuildings']")
+    WebElementFacade edificiosyUbicacionesRenovacion;
+    @Page
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
+    @Page
+    PolizaPage polizaPage;
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
@@ -213,7 +218,9 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void removerRiesgos() {
+        setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
         if(findBy(XPATH_SELECCIONAR_RIESGOS).isVisible()) {
+            resetImplicitTimeout();
             waitFor(WAIT_TIME_3).second();
             findBy(XPATH_SELECCIONAR_RIESGOS).click();
             waitFor(WAIT_TIME_3).second();
@@ -222,6 +229,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             findBy(XPATH_BTON_REMOVER_RIESGOS).click();
             waitFor(WAIT_TIME_3).second();
         }
+        resetImplicitTimeout();
     }
 
     public void editartransacciondepoliza() {
@@ -233,9 +241,12 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         if (findBy(XPATH_DESCARTAR_CAMBIOS).isVisible()) {
             waitUntil(WAIT_TIME_2000);
             findBy(XPATH_DESCARTAR_CAMBIOS).click();
-            waitForTextToAppear("Información de póliza");
-            opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenRenovacionDePoliza();
-
+            clickElement(edificiosyUbicacionesRenovacion);
+            waitForTextToAppear("Edificios y ubicaciones");
+            findBy(XPATH_EDITAR_TRANSACCION_POLIZA).waitUntilVisible().click();
+            waitUntil(WAIT_TIME_2000);
+            findBy(XPATH_ACEPTAR).click();
+            waitUntil(WAIT_TIME_2000);
         }
     }
 
