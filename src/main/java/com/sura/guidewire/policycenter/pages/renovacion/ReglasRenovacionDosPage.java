@@ -6,6 +6,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -32,8 +33,10 @@ public class ReglasRenovacionDosPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosValue_DV-inputEl']")
     WebElementFacade txtvalorAccesorios;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosEspValue_DV-inputEl']")
-    WebElementFacade txtvalorAccesoriosEspe;
-    @FindBy(id = "RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs")
+    WebElementFacade txtValorAccesoriosEspe;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
+    WebElementFacade campoTxtCiudadDeCirculacion;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']")
     WebElementFacade lblMensajes;
 
     private static final int CONSTANTE_8 = 8;
@@ -77,12 +80,13 @@ public class ReglasRenovacionDosPage extends PageUtil {
     }
 
     public void ingresaValorAccesoriosEspeciales() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(txtvalorAccesoriosEspe).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(txtValorAccesoriosEspe).waitUntilClickable();
         int valorTotalAccesorioEsp = 1 + Integer.parseInt(txtValorAsegurado.getValue().substring(0, CONSTANTE_8));
-        txtvalorAccesoriosEspe.clear();
-        clickElement(txtvalorAccesoriosEspe);
-        txtvalorAccesoriosEspe.sendKeys(Integer.toString(valorTotalAccesorioEsp));
-        btnSiguinete.click();
+        txtValorAccesoriosEspe.clear();
+        clickElement(txtValorAccesoriosEspe);
+        txtValorAccesoriosEspe.sendKeys(Integer.toString(valorTotalAccesorioEsp));
+        selectItem(campoTxtCiudadDeCirculacion, "MEDELLIN");
+        clickElement(btnSiguinete);
     }
 
     public int logicaExtraeOSumaPorcentaje(int valorCalcular, double porcentaje) {
@@ -90,8 +94,7 @@ public class ReglasRenovacionDosPage extends PageUtil {
     }
 
     public void validacionMensajeValores(String mensaje){
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensajes).waitUntilPresent();
-        waitUntil(WAIT_TIME_1000);
+        waitFor(ExpectedConditions.textToBePresentInElement(lblMensajes,mensaje));
         MatcherAssert.assertThat("No aparecio mensaje de alerta", lblMensajes.getText().contains(mensaje));
     }
 

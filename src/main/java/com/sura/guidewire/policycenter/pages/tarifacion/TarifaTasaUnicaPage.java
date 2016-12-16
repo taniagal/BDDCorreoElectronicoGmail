@@ -122,7 +122,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
-
     public void verificarElementosImportacion() {
         linkVonverAVehiculos.click();
         botonHojaDeCalculo.waitUntilPresent().click();
@@ -159,6 +158,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public void cambiarValorAsegurado(String valorAsegurado) {
         menuItemVehiculos.waitUntilPresent().click();
+        isMessagePresent(menuItemVehiculos);
         campoTxtValorasegurado.waitUntilPresent().clear();
         campoTxtValorasegurado.sendKeys(valorAsegurado);
         botonCotizar.click();
@@ -166,6 +166,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public void cambiarDatosDelAsegurado(String primerNombre, String segundoNombre, String estadoCivil) {
         menuiItemAsegurados.waitUntilPresent().click();
+        isMessagePresent(menuiItemAsegurados);
         campoTxtNombre.waitUntilPresent().clear();
         campoTxtNombre.sendKeys(primerNombre);
         campoTxtSegundoNombre.sendKeys(segundoNombre);
@@ -173,6 +174,13 @@ public class TarifaTasaUnicaPage extends PageUtil {
         botonCotizarAsegurado.click();
     }
 
+    public void isMessagePresent(WebElementFacade element) {
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        if (findBy(".message").isPresent()){
+            element.click();
+        }
+        resetImplicitTimeout();
+    }
 
     public void comenzarRenovacionDePoliza() {
         menuiItemCotizacion.waitUntilPresent().click();
@@ -203,7 +211,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
         botonEditarTransaccionDePoliza.waitUntilNotVisible();
         descartarCambios();
     }
-
 
     public void renovarPoliza() {
         botonCotizarRenovacion.waitUntilPresent();

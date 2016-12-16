@@ -41,6 +41,8 @@ And se cancela el proceso de renovacion
 Examples:
 |poliza       |mensaje|
 |TEST_22222222|¿Esta seguro de que desea renovar esta póliza?|
+
+
 Scenario: validar renovacion despues del vencimiento
 Meta: @manual
 Given que es necesario renovar una <poliza> de autos cuando ya esta vencida
