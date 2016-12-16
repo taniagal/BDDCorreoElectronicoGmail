@@ -36,96 +36,96 @@ When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segu
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-| Yurledys     |               | Ga             |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |  CRA 65 ST, MEDELLIN, Antioquia    |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+| Yurledys     |               | Ga             |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona natural por primer nombre y segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-| Yurledys     |               |                | Torres          | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |  CRA 65 ST, MEDELLIN, Antioquia    |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+| Yurledys     |               |                | Torres          | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo nombre y primer apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-| Yurledys     | Paola         | Gallego        |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |  CRA 65 ST, MEDELLIN, Antioquia    |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+| Yurledys     | Paola         | Gallego        |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, primer apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-| Yurledys     | Pa            |                |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |  CRA 65 ST, MEDELLIN, Antioquia    |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+| Yurledys     | Pa            |                |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, primer apellido y segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-| Yurledys     |               | Gallego        | Torres          | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |  CRA 65 ST, MEDELLIN, Antioquia    |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+| Yurledys     |               | Gallego        | Torres          | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-| Yurledys     |               |                | To              | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |  CRA 65 ST, MEDELLIN, Antioquia    |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+| Yurledys     |               |                | To              | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo nombre, primer apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-| Yurledys     | Paola         | Gallego        |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |  CRA 65 ST, MEDELLIN, Antioquia    |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+| Yurledys     | Paola         | Gallego        |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona natural por segundo nombre, primer apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-|              | Paola         | Gallego        |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |  CRA 65 ST, MEDELLIN, Antioquia    |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+|              | Paola         | Gallego        |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona natural por segundo nombre, primer apellido y segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-|              | Paola         | Gallego        | Torres          | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |  CRA 65 ST, MEDELLIN, Antioquia    |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+|              | Paola         | Gallego        | Torres          | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona natural por segundo nombre, segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-|              | Paola         |                | Torres          | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |  CRA 65 ST, MEDELLIN, Antioquia    |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+|              | Paola         |                | Torres          | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona natural por primer nombre, segundo nombre, primer apellido y segundo apellido
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-| Yurledys     | Paola         | Gallego        | Torres          | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |  CRA 65 ST, MEDELLIN, Antioquia    |
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+| Yurledys     | Paola         | Gallego        | Torres          | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona natural por primer nombre y segundo nombre
 When ingrese la informacion de primer nombre <primerNombre> segundo nombre <segundoNombre> primer apellido <primerApellido> y segundo apellido <segundoApellido>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion |
-| Yurledys     | Paola         |                |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |CRA 65 ST, MEDELLIN, Antioquia|
+| primerNombre | segundoNombre | primerApellido | segundoApellido | numeroCuenta | nombre                        | direccion                             |
+| Yurledys     | Paola         |                |                 | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 
 Scenario: Busqueda de cuenta persona natural por primer nombre y primer apellido sin datos existentes
@@ -178,40 +178,40 @@ When ingrese la informacion de tipo de documento <tipoDocumento> y numero de doc
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| tipoDocumento        | numeroDocumento | numeroCuenta | nombre                        | direccion |
-| CEDULA DE CIUDADANIA | 1234567890      | C000888888   | YURLEDYS PAOLA GALLEGO TORRES |CRA 65 ST, MEDELLIN, Antioquia|
+| tipoDocumento        | numeroDocumento | numeroCuenta | nombre                        | direccion                             |
+| CEDULA DE CIUDADANIA | 1234567890      | C000888888   | YURLEDYS PAOLA GALLEGO TORRES | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona juridica por tipo y numero de documento
 When ingrese la informacion de tipo de documento <tipoDocumento> y numero de documento <numeroDocumento> del titular de la cuenta
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| tipoDocumento | numeroDocumento | numeroCuenta | nombre              | direccion |
-| NIT           | 9202086744      | C010478975   | VARIEDADES YURLEDYS |CRA 65 ST, MEDELLIN, Antioquia|
+| tipoDocumento | numeroDocumento | numeroCuenta | nombre              | direccion                             |
+| NIT           | 9202086744      | C010478975   | VARIEDADES YURLEDYS | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda cuenta por persona juridica por razon social
 When ingrese la informacion de tipo de razon social <razonSocial> del titular de la cuenta
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| razonSocial             | numeroCuenta | nombre              | direccion                      |
-| Variedades Yurledys S.A | C010478975   | VARIEDADES YURLEDYS | CRA 65 ST, MEDELLIN, Antioquia |
+| razonSocial             | numeroCuenta | nombre              | direccion                             |
+| Variedades Yurledys S.A | C010478975   | VARIEDADES YURLEDYS | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona juridica por nombre comercial
 When ingrese la informacion de nombre comercial <nombreComercial> del titular de la cuenta
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| nombreComercial     | numeroCuenta | nombre              | direccion |
-| Variedades Yurledys | C010478975   | VARIEDADES YURLEDYS |  CRA 65 ST, MEDELLIN, Antioquia    |
+| nombreComercial     | numeroCuenta | nombre              | direccion                             |
+| Variedades Yurledys | C010478975   | VARIEDADES YURLEDYS | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona juridica por nombre comercial y razon social
 When ingrese la informacion de nombre comercial <nombreComercial> del titular de la cuenta e ingrese razon social <razonSocial>
 Then me debe mostrar numero de cuenta <numeroCuenta>, nombre <nombre> y direccion <direccion>
 
 Examples:
-| nombreComercial     | razonSocial         | numeroCuenta | nombre              | direccion                      |
-| Variedades Yurledys | Variedades Yurledys | C010478975   | VARIEDADES YURLEDYS | CRA 65 ST, MEDELLIN, Antioquia |
+| nombreComercial     | razonSocial         | numeroCuenta | nombre              | direccion                             |
+| Variedades Yurledys | Variedades Yurledys | C010478975   | VARIEDADES YURLEDYS | CR 65 # 48 - 162, MEDELLIN, Antioquia |
 
 Scenario: Busqueda de cuenta persona juridica por razon social sin datos existentes
 Given que me encuentro en la busqueda de cuentas
