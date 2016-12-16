@@ -21,6 +21,7 @@ public class BotonAccionesSteps extends ScenarioSteps {
     public void seleccionar_instrucciones_previas_a_la_renovacion() {
         waitFor(WAIT_TIME_1).seconds();
         String xpathLinkInstruccionesPreviasARenovacion = "//a[contains(.,'Instrucciones previas a la renovación')]";
+        waitFor(WAIT_TIME_2).seconds();
         getPages().getDriver().findElement(By.xpath(xpathLinkInstruccionesPreviasARenovacion)).click();
     }
 
