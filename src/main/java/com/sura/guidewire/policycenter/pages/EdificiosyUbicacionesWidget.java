@@ -91,7 +91,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void agregarArticuloAPrimerUbicacion() {
-        waitUntil(WAIT_TIME_2000);
+        waitUntil(WAIT_TIME_5000);
         try {
             waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         } catch (UnhandledAlertException f) {
