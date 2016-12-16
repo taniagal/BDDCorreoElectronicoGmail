@@ -65,6 +65,7 @@ public class InicioCancelacionPage extends PageUtil {
             clickElement(txtDescripMotivo);
         }
         txtDescripMotivo.sendKeys("Motivo de prueba");
+        withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(txtFechaVigenciaCancelacion);
         String fecha = calculaRetroactividad31Dias(txtFechaVigenciaCancelacion.getValue());
         txtFechaVigenciaCancelacion.clear();
         txtFechaVigenciaCancelacion.click();

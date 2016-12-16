@@ -44,7 +44,7 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
     private WebElementFacade btnActualizar;
     @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:addContactButton']")
     private WebElementFacade botonCrearcontacto;
-    @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:LinkAddressMenuMenuIcon']")
+    @FindBy(xpath = "//img[contains(@src,'images/app/drop_button.png')]")
     private WebElementFacade botonDireccionAsociada;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail:PrimaryAddress-textEl']")
     private WebElementFacade itemDireccionContactoAsociada;
@@ -101,11 +101,6 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
     }
 
     public void verificarDireccionContacto() {
-        botonCrearcontacto.waitUntilPresent().click();
-        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
-        withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(itemNuevaPersonaNatural).waitUntilPresent();
-        itemNuevaPersonaNatural.click();
         botonDireccionAsociada.click();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();

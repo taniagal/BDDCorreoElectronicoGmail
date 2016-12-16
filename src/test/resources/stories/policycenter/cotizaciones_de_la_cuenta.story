@@ -68,7 +68,9 @@ Examples:
 | C001888888 | Borrador |
 
 Scenario: Permitir crear carta de declinacion
-Given estoy cotizando una poliza basado en otro envio <envio>
+Given estoy cotizando una poliza:
+| cuenta     | organizacion | producto                |
+| C001888888 | Sura         | Multiriesgo corporativo |
 And seleccione reaseguro especial No
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>

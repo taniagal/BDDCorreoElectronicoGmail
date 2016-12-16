@@ -20,14 +20,13 @@ And registre una zona de circulacion no permitida <ciudadCirculacion>
 And se debe mostrar un mensaje <mensaje> indicando la restriccion
 
 Examples:
-|numeroPoliza |numeroFasecolda|modelo|claseVehiculo     |marca|linea|ciudadCirculacion|mensaje
-|TEST_22222222|00601182       |2016  |Camperos y pickups|Mazda|MPV  |ACANDI           |Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.|
-
+|numeroPoliza |numeroFasecolda|modelo|claseVehiculo |marca|linea                            |ciudadCirculacion|mensaje
+|TEST_22222222|52525252       |2016  |Automóviles   |AUDI |TT  8S 2.0 TFSI CO - TP 2000CC T |ACANDI           |Por política de la compañía no esta permitido asegurar vehículos que circulen en esta zona.|
 
 Scenario: Consultar bonificaciones
 Meta:
-@Manual
-Given se tiene una poliza expedida <numeroPoliza>
+@manual
+Given se tiene una poliza expedida
 When se ingrese a modificar la informacion del vehiculo
 Then se debe mostrar en los campos de bonificación tecnica y comercial el porcentaje en cada uno de ellos
 

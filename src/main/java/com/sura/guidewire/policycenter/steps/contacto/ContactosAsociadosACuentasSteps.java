@@ -104,7 +104,9 @@ public class ContactosAsociadosACuentasSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarDireccionContacto(){
+    public void verificarDireccionContacto(ExamplesTable opcionesPorRol){
+        contactosAsociadosACuentasPage.clicCrearNuevoContacto();
+        contactosAsociadosACuentasPage.existeOpcionesPorSubMenu(opcionesPorRol, true);
         aseguradoNombradoPage.verificarDireccionContacto();
     }
 
