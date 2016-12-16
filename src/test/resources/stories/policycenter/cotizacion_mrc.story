@@ -36,7 +36,7 @@ Examples:
 Scenario: Cotizar una poliza MRC con un riesgo consultable bloqueante
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto               |canal            |
-|C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
+|C000222333|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When quiera agregar un tomador adicional que es riesgo consultable <cedula>
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
