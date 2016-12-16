@@ -1,14 +1,19 @@
 package com.sura.guidewire.policycenter.steps;
 
 
+import com.sura.guidewire.policycenter.utils.menu.Navegacion;
 import com.sura.guidewire.policycenter.utils.menu.opciones.poliza.InicioRenovacionPolizaPaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 public class InicioRenovacionPolizaPaSteps extends ScenarioSteps {
+    @Page
     InicioRenovacionPolizaPaPage inicioRenovacionPolizaPaPage;
+    @Page
+    Navegacion navegacion;
 
     public InicioRenovacionPolizaPaSteps(Pages pages) {
         super(pages);
@@ -16,8 +21,8 @@ public class InicioRenovacionPolizaPaSteps extends ScenarioSteps {
 
 
     @Step
-    public void navegar_barra_superior(String cotizacion) {
-        inicioRenovacionPolizaPaPage.irABuscarCotizacion(cotizacion);
+    public void navegar_barra_superior(String poliza) {
+        navegacion.irABuscarPoliza(poliza);
     }
 
     @Step

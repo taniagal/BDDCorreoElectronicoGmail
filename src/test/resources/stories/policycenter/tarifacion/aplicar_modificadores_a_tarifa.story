@@ -1,6 +1,7 @@
 Aplicar Modificadores A Tarifa
 
-Meta: @lote4
+Meta:
+@lote4
 @issue #CDSEG-2421
 @sprint 7
 @tag automator: nelson_jhair_mosquera_palacios
@@ -28,19 +29,19 @@ And seleccione algunas las coberturas:
 Then el valor del monto en cada cobertura debe ser:
 |fila|valor     |
 |1   |447.275   |
-|4   |2.790.097 |
-|8   |437.552   |
+|4   |2.790.099 |
+|8   |437.555   |
 |12  |7.036     |
 |15  |8.021     |
-|17  |11.824    |
+|17  |11.825    |
 |19  |26.128    |
-|21  |11.824    |
-|23  |11.824    |
-|25  |11.824    |
-|27  |11.824    |
-|29  |11.824    |
-|31  |11.824    |
-|33  |11.824    |
+|21  |11.825    |
+|23  |11.825    |
+|25  |11.825    |
+|27  |11.825    |
+|29  |11.825    |
+|31  |11.825    |
+|33  |11.825    |
 
 Examples:
 |tipo_documento      |documento |
