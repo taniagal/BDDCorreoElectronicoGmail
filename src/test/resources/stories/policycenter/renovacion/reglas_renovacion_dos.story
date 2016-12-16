@@ -14,8 +14,13 @@ y envian las pólizas al proceso manual.
 
 Scenario: Valor accesorios superior al 20% del valor asegurado
 GivenStories: stories/policycenter/login_policy.story
-Given que es necesario renovar una <poliza> de autos
-When quiera realizar esta renovacion
+Given estoy cotizando una poliza basado en otro envio <envio>
+When ingrese los datos de la cotizacion:
+|ciudad_circulacion|limite|deducible|abogado |PLlaves |modelo|
+|MEDELLIN          |1.440 |0        |Opción 1|Opción 1|2016  |
+And cotice una poliza
+And expido la poliza y voy al archivo de poliza
+And quiera realizar esta renovacion
 And quiera aceptar esta renovacion
 And ingrese a la pantalla de vehiculos
 And edite la renovacion
@@ -24,8 +29,8 @@ And Se ingrese el valor de los accesorios especiales es superior al 100% del val
 Then se debe mostrar los <mensaje1> <mensaje2> de alerta
 
 Examples:
-|poliza       |  mensaje1                                | mensaje2                                 |
-|TEST_22222222|  es mayor al 20% del valor Asegurado     | es mayor al valor Asegurado del vehículo.|
+|envio   |  mensaje1                                | mensaje2                                 |
+|22228589|  es mayor al 20% del valor Asegurado     | es mayor al valor Asegurado del vehículo.|
 
 Scenario: Tope maximo valor asegurado del vehiculo
 Meta:

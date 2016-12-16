@@ -141,7 +141,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         elementosList.get(0).click();
         String tituloDePaginaAgregarArticulos = "Volver a Edificios y ubicaciones";
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
-        shouldContainText(tituloDePaginaAgregarArticulos);
     }
 
     public void agregarNuevaUbicacion(String pais, String depto, String ciudad, String direccion, String actividadEconomica) {
