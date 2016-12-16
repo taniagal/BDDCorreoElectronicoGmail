@@ -83,9 +83,9 @@ public class ContactosAsociadosACuentaDefinitions {
     public void thenVisualizarContactoAsociado(@Named("contacto") String contacto){
         contactosAsociadosACuentaSteps.esContactoAsociado(contacto);
     }
-    @Then("debo poder visualizar direccion del contacto")
-    public void thenVisualizarDireccionContactoAsociado() {
-        contactosAsociadosACuentaSteps.verificarDireccionContacto();
+    @Then("debo poder visualizar direccion del contacto $opcionesPorRoles")
+    public void thenVisualizarDireccionContactoAsociado(ExamplesTable opcionesPorRoles) {
+        contactosAsociadosACuentaSteps.verificarDireccionContacto(opcionesPorRoles);
     }
 
     @Given("busco un contacto del directorio  que no exista en la cuenta con un rol existente")
