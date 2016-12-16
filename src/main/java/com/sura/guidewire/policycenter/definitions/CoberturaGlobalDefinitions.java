@@ -48,14 +48,9 @@ public class CoberturaGlobalDefinitions {
             String descripcion = entradaCoberturaGlobal.get("DESCRIPCION");
             String cobertura = entradaCoberturaGlobal.get("COBERTURA");
             String entrada = entradaCoberturaGlobal.get("ENTRADAS");
-            boolean esOtroArticulo = false;
-            if ("X".equals(entradaCoberturaGlobal.get("OTRO_ARTICULO_OTROS"))) {
-                esOtroArticulo = true;
-            }
-            boolean esUltimaFilaDeExampleTable = index == entradas.getRows().size();
             String valorEntrada = entradaCoberturaGlobal.get("VALOR_ENTRADAS");
             coberturaGlobalSteps.ingresar_descripcion_detalle_cobertua_global(descripcion);
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(cobertura, entrada, valorEntrada, esOtroArticulo, esUltimaFilaDeExampleTable);
+            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgoPolizaColectiva(cobertura, entrada, valorEntrada);
         }
 
         coberturaGlobalSteps.seleccionar_boton_aceptar_de_la_parte_superior_izquierda();
