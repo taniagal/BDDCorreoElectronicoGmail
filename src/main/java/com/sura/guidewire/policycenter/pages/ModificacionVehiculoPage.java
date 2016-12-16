@@ -10,6 +10,8 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class ModificacionVehiculoPage extends PageUtil {
 
@@ -21,6 +23,8 @@ public class ModificacionVehiculoPage extends PageUtil {
     private WebElementFacade campoTxtzona;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']")
     private WebElementFacade grupoMensajes;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:_msgs']/div")
+    private WebElementFacade validacionVigencia;
 
     public ModificacionVehiculoPage(WebDriver driver) {
         super(driver);
@@ -30,6 +34,11 @@ public class ModificacionVehiculoPage extends PageUtil {
         WebElementFacade tituloInformacionPoliza = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PolicyChangeWizard_PolicyInfoScreen:ttlBar']");
         waitFor(tituloInformacionPoliza).shouldBePresent();
         waitFor(botonSiguiente).click();
+        setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
+        if(validacionVigencia.isPresent()){
+            waitFor(botonSiguiente).click();
+        }
+        resetImplicitTimeout();
         WebElementFacade tituloAsegurados = findBy(".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']");
         waitFor(tituloAsegurados).shouldBePresent();
         waitFor(botonSiguiente).click();
