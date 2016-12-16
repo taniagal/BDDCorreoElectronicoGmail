@@ -1,7 +1,7 @@
 Modificacion Informacion Poliza Pa
 
-Meta: @lote2
-
+Meta:
+@lote2
 @issue #CDSEG-977
 @tag automator: diego_cardona_acevedo
 @local
@@ -17,7 +17,7 @@ Given ya se tiene una poliza expedida <numeroPoliza>
 When ingrese a modificar dicha cotizacion
 Then se debe visualizar los datos de la informacion de la poliza
 | tipoDocumento        | numeroDocumento | nombre                          | telefono | direccion                           | tipoDireccion           | descripcionDireccion                       | tipoPlazo |
-| CEDULA DE CIUDADANIA | 1234567891      | DORIAN STIWAR EASTMOND PULGARIN | 408-2211 | CRA 65 # 48-162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | Anual     |
+| CEDULA DE CIUDADANIA | 1234567891      | DORIAN STIWAR EASTMOND PULGARIN | 408-2211 | CR 65 # 48 - 162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | Anual     |
 
 Examples:
 | numeroPoliza  |

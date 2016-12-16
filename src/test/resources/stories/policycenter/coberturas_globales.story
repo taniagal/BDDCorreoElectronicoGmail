@@ -42,13 +42,14 @@ Examples:
 |departamento|ciudad  |direccion        |descripcion  |actividad|
 |Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles|
 
+
 Scenario:  Validar la seleccion de une unica cobertura global cuando se selecciona el tipo Una Cobertura
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto               |canal           |
 |C1060447895|Sura       |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
-And agregue coberturas globales con datos:
+And agregue una cobertura global con datos:
 |descripcion       |tipo_cobertura|valor   |nombre_cobertura  |
 |cobertura global 2|Una cobertura |15000000|Gastos adicionales|
 Then debe mostrarme un mensaje<mensaje> de error

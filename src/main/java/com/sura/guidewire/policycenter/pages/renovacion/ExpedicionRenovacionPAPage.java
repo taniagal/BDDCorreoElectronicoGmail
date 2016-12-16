@@ -49,7 +49,6 @@ public class ExpedicionRenovacionPAPage extends PageUtil {
         act.sendKeys(Keys.TAB).build().perform();
         waitUntil(WAIT_TIME_1000);
         act.sendKeys(Keys.ENTER).build().perform();
-        waitForAbsenceOf(".//span/div/table/tbody/tr/td[2]/div");
     }
 
     public void mostrarResumenRenovacion() {

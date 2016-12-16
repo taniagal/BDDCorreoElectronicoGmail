@@ -14,12 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 
 public class InicioRenovacionPolizaPaPage extends PageUtil {
-
-
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
-    WebElementFacade menuPoliza;
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_PolicyRetrievalItem-inputEl']")
-    WebElementFacade menuNumeropoliza;
     @FindBy(xpath = ".//*[@id='messagebox-1001-displayfield-inputEl']")
     WebElementFacade lblMensajeEnPantalla;
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")
@@ -78,21 +72,6 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     WebElementFacade btnPoliza;
     public InicioRenovacionPolizaPaPage(WebDriver driver) {
         super(driver);
-    }
-
-
-    public void irABuscarCotizacion(String cotizacion) {
-        waitFor(menuPoliza).waitUntilPresent();
-        menuPoliza.click();
-        waitForAnyTextToAppear("Cotización", "Buscar pólizas");
-        waitFor(menuPoliza).waitUntilPresent();
-        menuPoliza.click();
-        menuPoliza.sendKeys(Keys.ARROW_DOWN);
-        menuNumeropoliza.waitUntilPresent();
-        ingresarDato(menuNumeropoliza, cotizacion);
-        menuNumeropoliza.sendKeys(Keys.ENTER);
-        waitForTextToAppear("Cotización");
-        waitForTextToAppear(cotizacion);
     }
 
     public void irARenovacion() {

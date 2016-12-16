@@ -45,9 +45,4 @@ public class SolicitarSarlaftDefinitions {
     public void validarUWIssueSarlaft(ExamplesTable mensaje){
         generacionUwIssueRiesgosConsultablesPaSteps.validar_Que_Se_Genere_Uw_Issue(mensaje);
     }
-
-    @Then("debo ver un UW issue que indique que se requiere diligenciar Sarlaft en modificacion $mensajemod")
-    public void validarUWIssueSarlaftModificacion(ExamplesTable mensajemod){
-        generacionUwIssueRiesgosConsultablesPaSteps.validar_Que_Se_Genere_Uw_Issue(mensajemod);
-    }
 }
