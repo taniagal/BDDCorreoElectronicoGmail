@@ -32,7 +32,7 @@ Examples:
 Scenario: Validar al seleccionar la opcion declinar y declinar una cotizacion desde una cuenta
 Given estoy cotizando una poliza:
 | cuenta      | organizacion | producto                |
-| C1060447895 | Sura         | Multiriesgo corporativo |
+| C002888989  | Sura         | Multiriesgo corporativo |
 And seleccione reaseguro especial No
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -54,4 +54,4 @@ And desahabilitar la opcion de acciones para no ser modificada
 
 Examples:
 | envio    | departamento | ciudad   | direccion         | descripcion   | actividad                     | numCuenta   | razon   | numCotizacion | accion    |
-| 22222211 | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | C1060447895 | Cartera |               | Declinada |
+| 22222211 | Antioquia    | Medellin | CR 44 A # 45 - 00 | Edificio Core | Acabado de productos textiles | C002888989  | Cartera |               | Declinada |
