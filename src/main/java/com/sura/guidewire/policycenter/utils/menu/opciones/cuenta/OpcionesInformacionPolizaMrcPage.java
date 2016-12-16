@@ -356,13 +356,12 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         if (!listaElementosCotizacion.isEmpty()) {
             for (WebElementFacade listaElemento : listaElementosCotizacion) {
                 if (listaElemento.containsText(elementoLista)) {
-                    listaElemento.click();
+                    listaElemento.waitUntilPresent().click();
                     break;
                 }
             }
         }
     }
-
 
     public void validaCamposPoliza() {
         StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
