@@ -1,7 +1,7 @@
 Cotizacion Renovacion Pa Validaciones
 
-Meta: @lote1
-
+Meta:
+@lote2
 @issue #CDSEG-2295
 @tag automator: diego_cardona_acevedo
 @local

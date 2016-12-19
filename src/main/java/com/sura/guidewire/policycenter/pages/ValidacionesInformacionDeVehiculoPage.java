@@ -8,7 +8,10 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Map;
@@ -124,7 +127,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitForComboValue(comboBoxCiudadCirculacion, vehiculo.get("ciudad_circulacion"));
     }
 
-    public void ingresarPlacaConModelo2011(Map<String, String> vehiculo){
+    public void ingresarPlacaConModelo2011(Map<String, String> vehiculo) {
         ingresarPlaca(vehiculo);
         clickElement(tablaVehiculo);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2011"));
@@ -192,22 +195,12 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     private void clickVehiculoServicio() {
+        comboBoxVehiculoServicio.click();
         try {
-            comboBoxVehiculoServicio.click();
-        } catch (UnhandledAlertException f) {
-            LOGGER.info("UnhandledAlertException " + f);
-            try {
-                Alert alert = getDriver().switchTo().alert();
-                String alertText = alert.getText();
-                LOGGER.info("Alert data: " + alertText);
-                alert.accept();
-            } catch (NoAlertPresentException e) {
-                LOGGER.info("NoAlertPresentException " + e);
-            }
-            waitUntil(WAIT_TIME_2000);
-            comboBoxVehiculoServicio.click();
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, campoTxtPlaca.getText()));
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
         }
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, campoTxtPlaca.getText()));
         waitUntil(WAIT_TIME_2000);
     }
 

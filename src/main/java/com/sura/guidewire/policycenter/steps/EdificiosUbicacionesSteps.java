@@ -163,7 +163,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         }
     }
 
-    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String cobertura, String entrada, String valorEntrada, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
+    public void ingresarValorDeEntradaDeLaCoberturaDelRiesgoPolizaColectiva(String cobertura, String entrada, String valorEntrada) {
         // Registro de tarea dinámica en el reporte de Serenity
 
 

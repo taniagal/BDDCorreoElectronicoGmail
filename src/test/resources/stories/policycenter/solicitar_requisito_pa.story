@@ -1,8 +1,7 @@
 Solicitar Requisito Pa
 
 Meta:
-
-@lote4
+@lote2
 @issue #CDSEG-2881
 @tag automator: diego_cardona_acevedo
 @local

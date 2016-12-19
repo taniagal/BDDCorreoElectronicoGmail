@@ -19,7 +19,7 @@ And descripcion <descripcion>, actividad economica <actividad>
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
 | ASEGURADORA                         | PARTICIPACION |
 | Seguros Generales Suramericana S.A. | 60            |
-| COMPANIA DE SEGUROS BOLIVAR S.A.    | 40            |
+| ACE SEGUROS S.A.                    | 40            |
 And de clic en Aceptar de la ventana Coaseguro
 Then se debe validar que se muestren los mensajes de obligatoriedad siguientes
 | MENSAJES_WORKSPACE                                |
@@ -43,7 +43,7 @@ And descripcion <descripcion>, actividad economica <actividad>
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
 | ASEGURADORA                         | PARTICIPACION |
 | Seguros Generales Suramericana S.A. | 60            |
-| COMPANIA DE SEGUROS BOLIVAR S.A.    | 40            |
+| ACE SEGUROS S.A.                    | 40            |
 And de clic en Aceptar de la ventana Coaseguro
 Then no se debe inhabilitar la opcion Numero de documento
 
@@ -61,7 +61,7 @@ And descripcion <descripcion>, actividad economica <actividad>
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
 | ASEGURADORA                         | PARTICIPACION |
 | Seguros Generales Suramericana S.A. | 60            |
-| COMPANIA DE SEGUROS BOLIVAR S.A.    | 40            |
+| ACE SEGUROS S.A                     | 40            |
 And de clic en Aceptar de la ventana Coaseguro
 And ingrese a edificios y ubicaciones
 And intente ingresar las entradas de las diferentes coberturas
