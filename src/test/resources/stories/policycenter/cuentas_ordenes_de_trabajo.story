@@ -31,7 +31,7 @@ Then se muestra el mensaje informativo de transaccionde poliza no encontrada <me
 
 Examples:
 | numCuenta  | mensaje                          |
-| C000484848 | No tiene transacciones asociadas |
+| C000328888 | No tiene transacciones asociadas |
 
 Scenario: Ver informacion filtrada por estado
 Given que voy a buscar la cuenta <numCuenta>
