@@ -15,6 +15,12 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
+    @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnEl']")
+    private WebElementFacade botonSiguiente;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:Prev-btnEl']")
+    private WebElementFacade botonVolver;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:EditPolicy']")
+    private WebElementFacade botonEditarTransaccionPoliza;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PALine']/div")
     private WebElementFacade itemCoberturasAuto;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:ttlBar']")
@@ -31,8 +37,6 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     private WebElementFacade labelDanos;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAHurtoAlCarroGrpDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup-legendTitle']")
     private WebElementFacade labelHurto;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:EditPolicy']")
-    private WebElementFacade botonEditarTransaccionPoliza;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade campoLimiteRC;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:1:SuraPACovTermInputSet:OptionTermInput-inputEl']")
@@ -76,10 +80,11 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
     }
 
     public void irAPantallaCoberturas() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemCoberturasAuto).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemCoberturasAuto);
+        clickElement(itemCoberturasAuto);
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (lblMensaje.isPresent()) {
-            itemCoberturasAuto.click();
+            clickElement(itemCoberturasAuto);
         }
         resetImplicitTimeout();
     }
@@ -101,6 +106,9 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
             withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(botonEditarTransaccionPoliza).click();
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
+            waitUntil(WAIT_TIME_3000);
+            botonSiguiente.click();
+            clickElement(botonVolver);
         }
 
         try {
@@ -131,16 +139,16 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
         MatcherAssert.assertThat(campoPerdidaTotalDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         MatcherAssert.assertThat(campoPerdidaParcialDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         MatcherAssert.assertThat(campoPerdidaFranquiciaDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoGastosTransporteDanos.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         MatcherAssert.assertThat(campoAbogado.getTagName(), Matchers.is(Matchers.equalTo(editable)));
+        clickElement(checkBoxHurto);
         MatcherAssert.assertThat(campoPerdidaTotalHurto.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         MatcherAssert.assertThat(campoPerdidaParcialHurto.getTagName(), Matchers.is(Matchers.equalTo(editable)));
         MatcherAssert.assertThat(campoPerdidaFranquiciaHurto.getTagName(), Matchers.is(Matchers.equalTo(editable)));
-        MatcherAssert.assertThat(campoGastosTransporteHurto.getTagName(), Matchers.is(Matchers.equalTo(editable)));
     }
 
     public void retirarCoberturasOpcionales() {
         String xpathFieldsetHurto = ".//fieldset[(child::legend[contains(.,'Hurto')]) and (descendant::input[contains(@role,'checkbox')])]";
+        waitUntil(WAIT_TIME_5000);
         WebElementFacade grupoCoberturaHurto = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetHurto));
         MatcherAssert.assertThat(grupoCoberturaHurto, Matchers.notNullValue());
         checkBoxHurto.click();
@@ -150,7 +158,7 @@ public class ModificacionRenovacionCoberturasPAPage extends PageUtil {
         String xpathFieldsetAccidentes = ".//fieldset[(child::legend[contains(.,'Accidentes al Conductor')]) and (descendant::input[contains(@role,'checkbox')])]";
         WebElementFacade grupoCoberturaAccidentes = withTimeoutOf(WAIT_TIME_1, TimeUnit.SECONDS).find(By.xpath(xpathFieldsetAccidentes));
         MatcherAssert.assertThat(grupoCoberturaAccidentes, Matchers.notNullValue());
-        checkBoxAccidentes.click();
+        clickElement(checkBoxAccidentes);
     }
 
     public void borrarEspacioTrabajo() {

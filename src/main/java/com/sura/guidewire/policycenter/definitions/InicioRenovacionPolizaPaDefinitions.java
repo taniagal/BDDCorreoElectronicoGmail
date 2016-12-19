@@ -17,43 +17,43 @@ public class InicioRenovacionPolizaPaDefinitions {
 
     @Given("que es necesario renovar una <poliza> de autos")
     public void givenQueEsNecesarioRenovarUnapolizaDeAutos(@Named("poliza") String poliza) {
-        inicioRenovacionPolizaPaSteps.navegar_barra_superior(poliza);
+        inicioRenovacionPolizaPaSteps.navegarBarraSuperior(poliza);
     }
 
     @When("quiera realizar esta renovacion")
     public void whenQuieraRealizarEstaRenovacion() {
-        inicioRenovacionPolizaPaSteps.navegar_por_renovacion();
+        inicioRenovacionPolizaPaSteps.navegarPorRenovacion();
     }
 
     @Then("se deben mostrar un mensaje <mensaje>")
     public void thenSeDebenMostrarUnMensajemensaje(@Named("mensaje") String mensaje) {
-        inicioRenovacionPolizaPaSteps.validacion_de_mensaje_en_pantalla(mensaje);
+        inicioRenovacionPolizaPaSteps.validacionDeMensajeEnPantalla(mensaje);
     }
 
     @Then("se cancela el proceso de renovacion")
     public void thenSeCancelaElProcesoDeRenovacion() {
-        inicioRenovacionPolizaPaSteps.cancela_operacion_de_renovacion();
+        inicioRenovacionPolizaPaSteps.cancelaOperacionDeRenovacion();
     }
 
     @When("quiera aceptar esta renovacion")
     public void whenQuieraAceptarEstaRenovacion() {
-        inicioRenovacionPolizaPaSteps.aceptar_operacion_de_renovacion();
+       inicioRenovacionPolizaPaSteps.aceptarOperacionDeRenovacion();
     }
 
     @Then("se debe validar los datos del tomador: $datosTomador")
     public void validaDatosDeTomador(ExamplesTable datosTomador) {
-        inicioRenovacionPolizaPaSteps.validacion_en_pantalla_tomador(datosTomador);
+        inicioRenovacionPolizaPaSteps.validacionEnPantallaTomador(datosTomador);
     }
 
     @Then("validar campos informativos de asegurado: $datosAsegurado")
     public void validaDatosDeAsegurado(ExamplesTable datosAsegurado) {
-       inicioRenovacionPolizaPaSteps.validacion_en_pantalla_asegurado(datosAsegurado);
+       inicioRenovacionPolizaPaSteps.validacionEnPantallaAsegurado(datosAsegurado);
     }
 
     @Then("validar campos informativos de vehiculo: $datosVehiculo")
     public void validaDatosDeVehiculo(ExamplesTable datosVehiculo) {
-        inicioRenovacionPolizaPaSteps.validacion_en_pantalla_vehiculo(datosVehiculo);
-        inicioRenovacionPolizaPaSteps.opciones_de_cierre();
+        inicioRenovacionPolizaPaSteps.validacionEnPantallaVehiculo(datosVehiculo);
+        inicioRenovacionPolizaPaSteps.opcionesDeCierre();
     }
 
 

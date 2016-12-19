@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.steps;
 
 
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.utils.menu.Navegacion;
 import com.sura.guidewire.policycenter.utils.menu.opciones.poliza.InicioRenovacionPolizaPaPage;
 import net.thucydides.core.annotations.Step;
@@ -14,6 +15,8 @@ public class InicioRenovacionPolizaPaSteps extends ScenarioSteps {
     InicioRenovacionPolizaPaPage inicioRenovacionPolizaPaPage;
     @Page
     Navegacion navegacion;
+    @Page
+    TarifaTasaUnicaPage tasaUnicaPage;
 
     public InicioRenovacionPolizaPaSteps(Pages pages) {
         super(pages);
@@ -21,47 +24,48 @@ public class InicioRenovacionPolizaPaSteps extends ScenarioSteps {
 
 
     @Step
-    public void navegar_barra_superior(String poliza) {
+    public void navegarBarraSuperior(String poliza) {
         navegacion.irABuscarPoliza(poliza);
     }
 
     @Step
-    public void navegar_por_renovacion() {
-        inicioRenovacionPolizaPaPage.irARenovacion();
+    public void navegarPorRenovacion() {
+        tasaUnicaPage.nuevaRenovacion();
+//        inicioRenovacionPolizaPaPage.irARenovacion();
     }
 
     @Step
-    public void validacion_de_mensaje_en_pantalla(String mensaje) {
+    public void validacionDeMensajeEnPantalla(String mensaje) {
         inicioRenovacionPolizaPaPage.validaMensajeEnPantalla(mensaje);
     }
 
     @Step
-    public void cancela_operacion_de_renovacion() {
+    public void cancelaOperacionDeRenovacion() {
         inicioRenovacionPolizaPaPage.cancelaOperacionRenovacion();
     }
 
     @Step
-    public void aceptar_operacion_de_renovacion() {
+    public void aceptarOperacionDeRenovacion() {
         inicioRenovacionPolizaPaPage.aceptaOperacionRenovacion();
     }
 
     @Step
-    public void validacion_en_pantalla_tomador(ExamplesTable datosTomador) {
+    public void validacionEnPantallaTomador(ExamplesTable datosTomador) {
         inicioRenovacionPolizaPaPage.validacionesPantallaFormularios(datosTomador);
     }
 
     @Step
-    public void validacion_en_pantalla_asegurado(ExamplesTable datosAsegurado) {
+    public void validacionEnPantallaAsegurado(ExamplesTable datosAsegurado) {
         inicioRenovacionPolizaPaPage.validacionesPantallaFormularios(datosAsegurado);
     }
 
     @Step
-    public void validacion_en_pantalla_vehiculo(ExamplesTable datosVehiculo) {
+    public void validacionEnPantallaVehiculo(ExamplesTable datosVehiculo) {
         inicioRenovacionPolizaPaPage.validacionesPantallaFormularios(datosVehiculo);
     }
 
     @Step
-    public void opciones_de_cierre() {
+    public void opcionesDeCierre() {
         inicioRenovacionPolizaPaPage.retirarTransaccion();
     }
 

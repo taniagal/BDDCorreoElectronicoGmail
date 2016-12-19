@@ -5,6 +5,7 @@ import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
 public class NuevaCotizacionDefinitions {
@@ -26,6 +27,11 @@ public class NuevaCotizacionDefinitions {
 
     @Given("ingrese los datos de la cotizacion PA $datosCtotizacion")
     public void copiarEnvio(ExamplesTable datosCtotizacion) {
+        nuevaCotizacionSteps.cotizarEnvioCopiadoPa(datosCtotizacion);
+    }
+
+    @When("ingrese los datos de la cotizacion PA $datosCtotizacion")
+    public void cotizarEnviocopiado(ExamplesTable datosCtotizacion) {
         nuevaCotizacionSteps.cotizarEnvioCopiadoPa(datosCtotizacion);
     }
 

@@ -14,7 +14,7 @@ Quiero poder realizar la cotizacion de la renovacion de una poliza de personal a
 Scenario: Validar numero de cuotas - informacion de poliza
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
-When ingrese los datos de la cotizacion:
+When ingrese los datos de la cotizacion con intencion de financiacion:
 |ciudad_circulacion|limite|deducible|abogado |PLlaves |modelo|
 |MEDELLIN          |1.440 |0        |Opción 1|Opción 1|2016  |
 And cotice una poliza

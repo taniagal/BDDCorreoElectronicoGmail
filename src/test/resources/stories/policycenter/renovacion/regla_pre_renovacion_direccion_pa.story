@@ -15,7 +15,7 @@ con el fin de  que al momento en el que se inicie la renovación automática de 
 Scenario: registrar instruccion previa a la renovacion
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
-When ingrese los datos de la cotizacion:
+When ingrese los datos de la cotizacion PA
 |ciudad_circulacion|limite|deducible|abogado |PLlaves |modelo|
 |MEDELLIN          |1.440 |0        |Opción 1|Opción 1|2016  |
 And cotice una poliza
