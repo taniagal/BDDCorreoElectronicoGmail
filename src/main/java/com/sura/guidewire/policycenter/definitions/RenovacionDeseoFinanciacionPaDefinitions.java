@@ -30,7 +30,7 @@ public class RenovacionDeseoFinanciacionPaDefinitions {
         renovacionDeseoFinanciacionPaSteps.seleccionarOpcionSiguiente();
     }
 
-    @When("ingrese los datos de la cotizacion: $datosCotizacion")
+    @When("ingrese los datos de la cotizacion con intencion de financiacion: $datosCotizacion")
     public void validarIntencionFinanciacion(ExamplesTable datosCotizacion) {
         renovacionDeseoFinanciacionPaSteps.marcarDeseoDeFinanciacion();
         nuevaCotizacionSteps.cotizarEnvioCopiadoPa(datosCotizacion);
