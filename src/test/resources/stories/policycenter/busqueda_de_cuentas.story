@@ -1,6 +1,6 @@
 Busqueda de Cuentas
 
-Meta: @lote4
+Meta: @lote2
 @issue #CDSEG-921
 @tag automator: eliana_alvarez, sprint:1
 @Sprint 1
