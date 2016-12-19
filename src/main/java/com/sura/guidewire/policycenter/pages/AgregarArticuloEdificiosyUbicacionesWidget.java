@@ -74,6 +74,7 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
             LOGGER.info("ELEMENTO NO CLICKLEABLE" + e);
         }
     }
+
     public void desplegarListaTipoBeneficiario(){
         WebElementFacade listaTipoBeneficiario = findBy(LISTA_TIPO_BENEFICIARIO);
         desplegarElementoDeLista(listaTipoBeneficiario);

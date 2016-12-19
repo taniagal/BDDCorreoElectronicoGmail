@@ -32,16 +32,19 @@ public class PlanDeTrabajoPage extends PageUtil {
 
     public void ingresarALaOpcionPlanDeTrabajo() {
         findBy(xPathOpcionPlanDeTrabajo).click();
+        waitUntil(WAIT_TIME_3000);
         waitForTextToAppear("Plan de trabajo");
     }
 
     public void ingresarALaOpcionPlanDeTrabajoEnCambioDePoliza() {
         findBy(xPathOpcionPlanDeTrabajoEnCambioDePoliza).click();
+        waitUntil(WAIT_TIME_3000);
         waitForTextToAppear("Plan de trabajo");
     }
 
     public void ingresarALaOpcionPlanDeTrabajoEnRenovacionDePoliza() {
         findBy(xPathOpcionPlanDeTrabajoEnRenovacionDePoliza).click();
+        waitUntil(WAIT_TIME_3000);
         waitForTextToAppear("Plan de trabajo");
     }
 

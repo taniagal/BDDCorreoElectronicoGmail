@@ -91,7 +91,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void agregarArticuloAPrimerUbicacion() {
-        waitUntil(WAIT_TIME_5000);
+        waitUntil(WAIT_TIME_2000);
         try {
             waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         } catch (UnhandledAlertException f) {
@@ -188,7 +188,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(WAIT_TIME_3).seconds();
 
 
-        findBy(".//*[@id='CPLocationPopup:Update']").waitUntilVisible().waitUntilClickable().click();
+        clickElement(findBy(".//*[@id='CPLocationPopup:Update']"));
 
         setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
         if (botonBorrar.isVisible()) {

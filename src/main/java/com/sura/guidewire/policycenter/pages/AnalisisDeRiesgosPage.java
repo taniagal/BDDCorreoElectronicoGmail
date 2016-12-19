@@ -56,17 +56,22 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         String xpathBorrarWorkskpace = ".//a[contains(.,'Borrar')]";
         String xpathWorkskpace =".//a[contains(.,'Resultados de validación')]";
         findBy(xpathWorkskpace).waitUntilVisible();
-        findBy(xpathAnalisisRiesgos).click();
 
-        waitFor(WAIT_TIME_2).second();
         if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
             findBy(xpathAnalisisRiesgos).click();
             waitForTextToAppear("Análisis de riesgo");
         }
+        else
+        {
+            findBy(xpathAnalisisRiesgos).click();
+            waitForTextToAppear("Análisis de riesgo");
+
+        }
+
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
             resetImplicitTimeout();
-            waitUntil(WAIT_TIME_3000);
+            waitUntil(WAIT_TIME_1000);
             botonBorrar.click();
         }
         resetImplicitTimeout();
@@ -122,7 +127,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
                 botonSolicitarAprobacion.click();
                 waitUntil(WAIT_TIME_2000);
                 aceptarInicioSolicitudAprobacion();
-                waitUntil(WAIT_TIME_2000);
+                waitUntil(WAIT_TIME_3000);
             }
         setNumeroDeRiesgos(bttonSolicitarAprobacion);
     }
