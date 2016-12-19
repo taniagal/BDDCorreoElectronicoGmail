@@ -13,7 +13,7 @@ Scenario: Declinar una cotizacion sin razon
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 | cuenta      | organizacion | producto                |
-| C1060447895 | Sura         | Multiriesgo corporativo |
+| C000902244  | Sura         | Multiriesgo corporativo |
 And seleccione reaseguro especial No
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -27,7 +27,7 @@ Then el sistema debe mostrar un mesaje <mensaje>
 
 Examples:
 | envio    |departamento|ciudad  |direccion        |descripcion  |actividad                    | numCuenta  | mensaje                                     |
-| 22222211 |Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles| C1060447895 | Falta el campo obligatorio "Código de razón |
+| 22222211 |Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles| C000902244 | Falta el campo obligatorio "Código de razón |
 
 Scenario: Validar al seleccionar la opcion declinar y declinar una cotizacion desde una cuenta
 Given estoy cotizando una poliza:
