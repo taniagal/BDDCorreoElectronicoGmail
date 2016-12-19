@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
+import com.sura.guidewire.policycenter.pages.ModificacionInformacionPolizaPAPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
@@ -8,6 +9,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
+import org.omg.CORBA.TIMEOUT;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
@@ -73,4 +76,34 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(borraMensajeEspacioTrabajo).click();
     }
 
+    public void irAInformacionPolizaRenovacion() {
+        WebElementFacade itemInformacionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']/div");
+        withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(itemInformacionPoliza).click();
+        WebElementFacade labelInformacionPoliza = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:ttlBar']");
+        withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(labelInformacionPoliza).shouldBePresent();
+        WebElementFacade botonEditarTransaccion = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']");
+        setImplicitTimeout(WAIT_TIME_5,TimeUnit.SECONDS);
+        if(botonEditarTransaccion.isPresent()){
+            botonEditarTransaccion.click();
+            actions.sendKeys(Keys.ENTER);
+        }
+        resetImplicitTimeout();
+    }
+
+    public void adicionarSegundoTomadorEnRenovacion(ExamplesTable datosTomador) {
+        WebElementFacade labelTomadorSecundario = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton-labelEl']");
+        waitFor(labelTomadorSecundario).shouldBePresent();
+        WebElementFacade botonTomadorSecundario = findBy(".//a[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:ChangeSecondaryNamedInsuredButtonMenuIcon']/img");
+        waitFor(botonTomadorSecundario).click();
+        WebElementFacade itemPersonaDirectorio = findBy(".//a[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-itemEl']/span");
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(itemPersonaDirectorio).click();
+        Map<String, String> informacionTomador = datosTomador.getRows().get(0);
+        ModificacionInformacionPolizaPAPage modificacionInformacionPolizaPaPage = new ModificacionInformacionPolizaPAPage(getDriver());
+        modificacionInformacionPolizaPaPage.adicionarContacto(informacionTomador.get("tipoDocumento"), informacionTomador.get("numeroDocumento"));
+    }
+
+    public void realizarCotizacionDeRenovacion() {
+        WebElementFacade botonCotizar = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:RenewalQuote-btnInnerEl']");
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonCotizar).click();
+    }
 }

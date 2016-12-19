@@ -104,8 +104,7 @@ public class InspeccionVehiculoPage extends PageUtil {
     }
 
     public void expedirPoliza() {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(botonExpedirPoliza).shouldBeVisible();
-        botonExpedirPoliza.click();
+        botonExpedirPoliza.waitUntilPresent().click();
         waitUntil(WAIT_TIME_1000);
         act.sendKeys(Keys.ENTER).build().perform();
         waitUntil(WAIT_TIME_3000);
