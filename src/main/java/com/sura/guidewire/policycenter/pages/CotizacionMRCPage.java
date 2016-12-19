@@ -124,7 +124,7 @@ public class CotizacionMRCPage extends PageUtil {
     }
 
     public void validarInformacionCotizacion(Map<String, String> labelsCotizacionPoliza, ExamplesTable informacionCotizacion) {
-        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(labelNumeroCotizacion).shouldBeVisible();
+        waitFor(labelNumeroCotizacion).shouldBeVisible();
         Map<String, String> datosCotizacion;
         MatcherAssert.assertThat(labelNumeroCotizacion.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("numeroCotizacion"))));
         MatcherAssert.assertThat(labelVigenciaPoliza.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("vigenciaPoliza"))));
