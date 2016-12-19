@@ -34,5 +34,18 @@ public class CotizacionRenovacionPaValidacionesSteps extends ScenarioSteps {
         cotizacionRenovacionPAValidacionesPage.limpiarMensajes();
     }
 
+    @Step
+    public void irAInformacionPolizaRenovacion() {
+        cotizacionRenovacionPAValidacionesPage.irAInformacionPolizaRenovacion();
+    }
 
+    @Step
+    public void adicionarSegundoTomadorEnRenovacion(ExamplesTable datosTomador) {
+        cotizacionRenovacionPAValidacionesPage.adicionarSegundoTomadorEnRenovacion(datosTomador);
+    }
+
+    @Step
+    public void realizarCotizacionDeRenovacion() {
+        cotizacionRenovacionPAValidacionesPage.realizarCotizacionDeRenovacion();
+    }
 }
