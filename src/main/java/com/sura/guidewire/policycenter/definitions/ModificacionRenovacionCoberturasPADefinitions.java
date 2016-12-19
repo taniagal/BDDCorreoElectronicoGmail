@@ -48,7 +48,6 @@ public class ModificacionRenovacionCoberturasPADefinitions {
     @Then("debo poder modificar los deducibles y limites tanto de las coberturas opcionales como obligatorias")
     public void modificarDeduciblesYLimites(){
         modificacionRenovacionCoberturasPASteps.modificar_Deducibles_Y_Limites_De_Las_Coberturas();
-        modificacionRenovacionCoberturasPASteps.borrar_espacio_trabajo();
     }
 
     @Then("debo poder retirar una cobertura que es Opcional")
