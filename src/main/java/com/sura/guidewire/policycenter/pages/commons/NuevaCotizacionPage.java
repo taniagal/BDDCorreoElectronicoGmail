@@ -173,17 +173,17 @@ public class NuevaCotizacionPage extends PageUtil {
             waitForComboValue(comboBoxCanal, "Canal Tradicional");
             try {
                 waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
+                selectItem(comboBoxTipoPoliza, "Individual");
             } catch (ElementNotVisibleException e) {
                 LOGGER.info("ElementNotVisibleException " + e);
                 waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
+                selectItem(comboBoxTipoPoliza, "Individual");
             } catch (StaleElementReferenceException f) {
                 LOGGER.info("StaleElementReferenceException " + f);
                 waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "PPAutos");
+                selectItem(comboBoxTipoPoliza, "Individual");
             }
-            waitForComboValue(comboBoxTipoPoliza, "PPAutos");
+            waitForComboValue(comboBoxTipoPoliza, "Individual");
         }
     }
 

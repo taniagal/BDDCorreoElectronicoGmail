@@ -25,7 +25,7 @@ Scenario:  Verificar validacion de codigo facecolda erroneo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |tipoPoliza  |
-|C1060447895|Sura        |Autos   |Canal Tradicional|PPAutos     |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual  |
 When agrege un vehiculo con codigo fasecolda <codigo> que no existe
 Then deben aparecer los mensajes de validacion:
 |mensaje                                                                                                                |
@@ -39,7 +39,7 @@ Examples:
 Scenario:  Validar si el valor asegurado del vehiculo supera el tope maximo del valor permitido
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |tipoPoliza  |
-|C1060447895|Sura        |Autos   |Canal Tradicional|PPAutos     |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual  |
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan             |
 |T64493|2017  |09403011        |MEDELLIN          |Particular       |null  |null |830000000      |null     |null   |2   |Plan Modular|
@@ -57,7 +57,7 @@ Examples:
 Scenario:  Validar si el valor asegurado del vehiculo supera el tope minimo del valor permitido
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |tipoPoliza  |
-|C1060447895|Sura        |Autos   |Canal Tradicional|PPAutos     |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual  |
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan             |
 |T64413|1993  |07015010        |MEDELLIN          |Particular       |null  |null |1400000        |null     |null   |2   |Plan Modular|
