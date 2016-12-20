@@ -102,8 +102,7 @@ public class HistorialCuentaPage extends PageUtil {
     }
 
     public void seleccionarHistorial() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(mnuHistorial).shouldBePresent();
-        mnuHistorial.click();
+        clickElement(mnuHistorial);
         waitUntil(WAIT_TIME_3000);
     }
 
@@ -162,7 +161,7 @@ public class HistorialCuentaPage extends PageUtil {
     }
 
     public void validarDatosOpcionesMultiples() {
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String usuario = txtUsuario.getValue().toString();
         for (WebElement row : allRows) {
