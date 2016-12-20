@@ -25,6 +25,11 @@ public class InicioRenovacionPolizaPaDefinitions {
         inicioRenovacionPolizaPaSteps.navegarPorRenovacion();
     }
 
+    @When("quiera realizar una renovacion")
+    public void whenQuieraRealizarRenovacion() {
+        inicioRenovacionPolizaPaSteps.irARenovavion();
+    }
+
     @Then("se deben mostrar un mensaje <mensaje>")
     public void thenSeDebenMostrarUnMensajemensaje(@Named("mensaje") String mensaje) {
         inicioRenovacionPolizaPaSteps.validacionDeMensajeEnPantalla(mensaje);
@@ -37,23 +42,24 @@ public class InicioRenovacionPolizaPaDefinitions {
 
     @When("quiera aceptar esta renovacion")
     public void whenQuieraAceptarEstaRenovacion() {
-       inicioRenovacionPolizaPaSteps.aceptarOperacionDeRenovacion();
+        inicioRenovacionPolizaPaSteps.aceptarOperacionDeRenovacion();
+        inicioRenovacionPolizaPaSteps.opcionesDeCierre();
     }
 
     @Then("se debe validar los datos del tomador: $datosTomador")
     public void validaDatosDeTomador(ExamplesTable datosTomador) {
         inicioRenovacionPolizaPaSteps.validacionEnPantallaTomador(datosTomador);
+
     }
 
     @Then("validar campos informativos de asegurado: $datosAsegurado")
     public void validaDatosDeAsegurado(ExamplesTable datosAsegurado) {
-       inicioRenovacionPolizaPaSteps.validacionEnPantallaAsegurado(datosAsegurado);
+        inicioRenovacionPolizaPaSteps.validacionEnPantallaAsegurado(datosAsegurado);
     }
 
     @Then("validar campos informativos de vehiculo: $datosVehiculo")
     public void validaDatosDeVehiculo(ExamplesTable datosVehiculo) {
         inicioRenovacionPolizaPaSteps.validacionEnPantallaVehiculo(datosVehiculo);
-        inicioRenovacionPolizaPaSteps.opcionesDeCierre();
     }
 
 
