@@ -160,7 +160,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public void ingresarTomadorAdicional(String cedula) {
         waitUntil(WAIT_TIME_2000);
-        btnAgregar.waitUntilVisible().waitUntilClickable().click();
+        btnAgregar.waitUntilPresent().click();
         itemDirectorio.waitUntilVisible().waitUntilClickable().click();
         waitInfoPoliza(lblBuscarDirectorio);
         itemTipoDocumento.clear();
