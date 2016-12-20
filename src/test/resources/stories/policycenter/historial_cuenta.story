@@ -1,6 +1,6 @@
 Historial Cuenta
 
-Meta: @lote4
+Meta: @lote2
 
 @issue #CDSEG-925
 @tag automator: diego_cardona_acevedo
