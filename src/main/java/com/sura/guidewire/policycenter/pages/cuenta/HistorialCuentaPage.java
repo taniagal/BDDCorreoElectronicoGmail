@@ -161,7 +161,7 @@ public class HistorialCuentaPage extends PageUtil {
     }
 
     public void validarDatosOpcionesMultiples() {
-        withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
+        waitFor(table).shouldBePresent();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String usuario = txtUsuario.getValue().toString();
         for (WebElement row : allRows) {
@@ -171,7 +171,7 @@ public class HistorialCuentaPage extends PageUtil {
     }
 
     public void validarResultadoProducto(){
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(table).shouldBePresent();
+        waitFor(table).shouldBePresent();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
         String producto = txtProducto.getValue().toString();
         for (WebElement row : allRows) {
