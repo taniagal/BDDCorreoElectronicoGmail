@@ -147,7 +147,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         findBy(LINK_AGREGAR_UBICACION).waitUntilVisible().waitUntilClickable();
         findBy(LINK_AGREGAR_UBICACION).shouldBeVisible();
-        findBy(LINK_AGREGAR_UBICACION).click();
+        clickElement(findBy(LINK_AGREGAR_UBICACION));
 
         findBy(LINK_OPCION_UBICACION_NUEVA).waitUntilVisible().waitUntilClickable();
         findBy(LINK_OPCION_UBICACION_NUEVA).shouldBeVisible();

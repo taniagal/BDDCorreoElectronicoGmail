@@ -79,7 +79,7 @@ Then debo ver el tipo de poliza <tipoPoliza>
 
 Examples:
 | numCuenta  | agente  | producto |tipoPoliza   |
-| C000888888 | DIRECTO | Autos    |PPAutos      |
+| C000888888 | DIRECTO | Autos    |Individual      |
 
 
 Scenario: Validar la organizacion, el canal y el tipo de poliza cuando el producto es Autos para las diferentes combinaciones
@@ -96,8 +96,8 @@ And   debo ver el tipo de poliza <infoTipoPoliza> seleccionado
 
 Examples:
 | numCuenta  | agente  | organizacion | canal             | producto | infoTipoPoliza | infoOrganizacion | infoCanal         |
-| C000888888 | DIRECTO | Exito        | Exito             | Autos    | PPAutos        | Exito            | Exito             |
-| C000888888 | DIRECTO | GMAC         | GMAC              | Autos    | PPAutos        | GMAC             | GMAC              |
-| C000888888 | DIRECTO | Sura         | Autos + Soat      | Autos    | PPAutos        | Sura             | Autos + Soat      |
-| C000888888 | DIRECTO | Sura         | Canal Tradicional | Autos    | PPAutos        | Sura             | Canal Tradicional |
-| C000888888 | DIRECTO | Sura         | Televentas        | Autos    | PPAutos        | Sura             | Televentas        |
+| C000888888 | DIRECTO | Exito        | Exito             | Autos    | Individual        | Exito            | Exito             |
+| C000888888 | DIRECTO | GMAC         | GMAC              | Autos    | Individual        | GMAC             | GMAC              |
+| C000888888 | DIRECTO | Sura         | Autos + Soat      | Autos    | Individual        | Sura             | Autos + Soat      |
+| C000888888 | DIRECTO | Sura         | Canal Tradicional | Autos    | Individual        | Sura             | Canal Tradicional |
+| C000888888 | DIRECTO | Sura         | Televentas        | Autos    | Individual        | Sura             | Televentas        |

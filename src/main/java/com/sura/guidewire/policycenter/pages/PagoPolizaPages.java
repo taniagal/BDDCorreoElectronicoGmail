@@ -18,7 +18,7 @@ public class PagoPolizaPages extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:BillingInfo']/div")
     private WebElementFacade menuItemPago;
-    private static String LBL_PAGO_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV')]/td/div";
+    private static String LBL_PAGO_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard')]/td";
 
 
     public void validarcamposNoEditablesEnPagoDePoliza()
@@ -26,6 +26,7 @@ public class PagoPolizaPages extends PageUtil {
         opcionesInformacionPolizaMrcPage.validarCamposNoEditables(LBL_PAGO_POLIZA);
     }
     public void ingresarALAOpcionDePagos(){
+        waitUntil(WAIT_TIME_2000);
         menuItemPago.waitUntilClickable().click();
         waitForTextToAppear("Pago");
     }
