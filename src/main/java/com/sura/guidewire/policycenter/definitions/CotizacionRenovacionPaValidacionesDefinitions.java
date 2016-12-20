@@ -45,6 +45,21 @@ public class CotizacionRenovacionPaValidacionesDefinitions {
         cotizacionRenovacionPaValidacionesSteps.seleccionar_Opcion_Cotizar();
     }
 
+    @When("vaya a informacion de poliza en la renovacion")
+    public void irAInformacionPolizaRenovacion(){
+        cotizacionRenovacionPaValidacionesSteps.irAInformacionPolizaRenovacion();
+    }
+
+    @When("adicione un segundo tomador en la renovacion el cual es riesgo consultable $datosTomador")
+    public void adicionarSegundoTomadorEnRenovacion(ExamplesTable datosTomador){
+        cotizacionRenovacionPaValidacionesSteps.adicionarSegundoTomadorEnRenovacion(datosTomador);
+    }
+
+    @When("cotice la renovacion")
+    public void cotizarRenovacion(){
+        cotizacionRenovacionPaValidacionesSteps.realizarCotizacionDeRenovacion();
+    }
+
     @Then("se debe bloquear la cotizacion y mostrar el mensaje que devuelve el servicio $mensajeRC")
     public void validarMensajeValidacionRC(ExamplesTable mensajeRC){
         cotizacionRenovacionPaValidacionesSteps.validar_Que_Se_Bloquee_Cotizacion_Y_Muestre_Mensaje(mensajeRC);
