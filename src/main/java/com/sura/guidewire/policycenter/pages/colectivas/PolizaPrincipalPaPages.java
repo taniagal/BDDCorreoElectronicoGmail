@@ -99,6 +99,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
         WebElementFacade menuLateralAsegurados = findBy(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_Drivers']/div");
         return esElElementoWebVisible(menuLateralAsegurados);
     }
+
     public boolean validarMenuLateralEnPolizaVehiculosNoVisible() {
         WebElementFacade menuLateralVehiculos = findBy(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_Vehicles']/div");
         return esElElementoWebVisible(menuLateralVehiculos);
@@ -151,18 +152,18 @@ public class PolizaPrincipalPaPages extends PageUtil {
     public boolean validarQueTodosLosCamposDeLaCotizacionNoSonEditables() {
         List<WebElementFacade> camposDeCotizacion = findAll("//div[contains(@id, 'SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:')]");
         setImplicitTimeout(WAIT_TIME_3000, TimeUnit.MILLISECONDS);
-        int editables = 0;
+        boolean editables = false;
         for (int i = 0; i < camposDeCotizacion.size(); i++) {
-            if (camposDeCotizacion.get(i).getText() != null) {
-                editables++;
+            if (camposDeCotizacion.get(i).getAttribute("role").equals("textbox")) {
+                if (camposDeCotizacion.get(i).getText() != null) {
+                    editables = true;
+                } else {
+                    return false;
+                }
             }
         }
         resetImplicitTimeout();
-        if (editables == camposDeCotizacion.size()) {
-            return true;
-        } else {
-            return false;
-        }
+        return editables;
     }
 
     public boolean validarQueTodosLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables() {
@@ -182,7 +183,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
         return NoEditables;
     }
 
-    public void clicMenuLateralCotizacion(){
+    public void clicMenuLateralCotizacion() {
         WebElementFacade botonMenuLateralCotizacion = findBy(".//*[@id='PolicyFile:PolicyFileAcceleratedMenuActions:PolicyMenuItemSet:PolicyMenuItemSet_Pricing']/div");
         botonMenuLateralCotizacion.waitUntilPresent();
         botonMenuLateralCotizacion.click();
