@@ -7,7 +7,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
 

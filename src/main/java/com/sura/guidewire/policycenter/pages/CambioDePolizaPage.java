@@ -1,25 +1,19 @@
 package com.sura.guidewire.policycenter.pages;
 
 
+import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
 import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import javax.swing.*;
+import java.util.concurrent.TimeUnit;
 
 
 public class CambioDePolizaPage extends PageUtil {
@@ -31,7 +25,7 @@ public class CambioDePolizaPage extends PageUtil {
     WebElementFacade botonAceptarPopup;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy']")
     WebElementFacade botonEditarTransaccionDePoliza;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:Fronting-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:Facultative-inputEl']")
     WebElementFacade checkBoxFronting;
     @FindBy(xpath = ".//*[@id='PolicyFile_PolicyInfo:PolicyFile_PolicyInfoScreen:PolicyFile_PolicyInfoDV:AccountInfoInputSet:InsuredInputSet:RIPolicyFieldsInputSet:reaseguroEspecial-inputEl']")
     WebElementFacade campoReaseguroEspecial;
@@ -105,13 +99,19 @@ public class CambioDePolizaPage extends PageUtil {
     }
 
     public void cambiarFechaDeVigencia(String dias) {
+        NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
         botonEditarTransaccionDePoliza.waitUntilPresent().click();
         botonAceptarPopup.waitUntilPresent().click();
         irAInformacionDePoliza();
         String fecha = Utils.sumarDiasALaFechaActual(Integer.parseInt(dias));
+        nuevaCotizacionPage.llenarInfoPoliza();
         campoTxtFechaInicioDeVigencia.waitUntilPresent().clear();
         campoTxtFechaInicioDeVigencia.sendKeys(fecha);
-        comboBoxTipoPlazo.click();
-        waitFor(ExpectedConditions.textToBePresentInElement(campoTxtFechaFinDeVigencia, fecha.substring(0,5)));
+        clickElement(comboBoxTipoPlazo);
+        try {
+            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(campoTxtFechaFinDeVigencia, fecha.substring(0, 5)));
+        }catch (TimeoutException e) {
+            LOGGER.info("TimeoutException " + e);
+        }
     }
 }

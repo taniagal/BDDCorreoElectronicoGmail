@@ -28,6 +28,7 @@ public class TarifaMRCSteps extends ScenarioSteps {
 
     @Step
     public void seleccionarCobertura(ExamplesTable datos) {
+        tarifaMRCPage.borrarArticulo();
         tarifaMRCPage.irAArticulo();
         tarifaMRCPage.ingresarValorReconstruccion(datos);
         tarifaMRCPage.seleccionarCobertura(datos);

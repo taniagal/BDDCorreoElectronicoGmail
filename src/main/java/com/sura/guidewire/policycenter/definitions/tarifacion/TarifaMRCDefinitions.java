@@ -24,6 +24,7 @@ public class TarifaMRCDefinitions {
     @When("seleccione la cobertura: $datos")
     public void seleccionarCobertura(ExamplesTable datos){
         tarifaMRCSteps.seleccionarCobertura(datos);
+
     }
 
     @When("seleccione la opcion de deducible en si")

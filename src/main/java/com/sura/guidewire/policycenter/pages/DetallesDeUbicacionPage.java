@@ -74,6 +74,8 @@ public class DetallesDeUbicacionPage extends PageUtil {
         clickElement(botonAceptar);
     }
 
+
+
     public void validarCamposNuevos() {
         StringBuilder notPresent = new StringBuilder(MSJVALIDARELEMENTOS);
         if (!labelUsoPredominante.isPresent()) {
