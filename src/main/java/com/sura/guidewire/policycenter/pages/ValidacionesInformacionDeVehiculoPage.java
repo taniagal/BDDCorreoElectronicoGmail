@@ -128,6 +128,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void ingresarPlacaConModelo2011(Map<String, String> vehiculo) {
+        campoVehiculoCeroKm.click();
+        waitUntil(WAIT_TIME_3000);
         ingresarPlaca(vehiculo);
         clickElement(tablaVehiculo);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2011"));

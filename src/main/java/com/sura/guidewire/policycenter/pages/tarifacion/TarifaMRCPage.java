@@ -233,4 +233,10 @@ public class TarifaMRCPage extends PageUtil {
                 campoIva.getText().substring(1, 7).replace(".", "").equals(Integer.toString(iva)));
     }
 
+    public void borrarArticulo() {
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonBorrarArticulo).waitUntilPresent();
+        checkBoxArticulo.click();
+        botonBorrarArticulo.click();
+        waitUntil(WAIT_TIME_1500);
+    }
 }
