@@ -69,9 +69,9 @@ public class ModificacionInformacionPolizaPADefinitions {
     }
 
     @SuppressWarnings("EmptyMethod")
-    @When("el tipo de poliza es PPAutos")
+    @When("el tipo de poliza es Individual")
     @Manual
-    public void validarTipoPolizaPPAutos(){
+    public void validarTipoPolizaIndividual(){
         //Se ejecuta manualmente
     }
 

@@ -16,7 +16,7 @@ Scenario:  Realizar una cotizacion con deseo de financiacion
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|PPAutos    |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual    |
 When indique que deseo financiar la poliza
 And indique el numero de cuotas
 And seleccione la opcion siguiente

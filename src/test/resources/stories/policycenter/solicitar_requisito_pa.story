@@ -15,7 +15,7 @@ Scenario: validar opcion requisitos
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |tipoPoliza |
-|C000888888|Sura        |Autos   |Canal Tradicional|PPAutos    |
+|C000888888|Sura        |Autos   |Canal Tradicional|Individual    |
 When seleccione la opcion siguiente
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
@@ -35,7 +35,7 @@ Examples:
 Scenario: validar mensaje de advertencia - requisitos pendientes
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |tipoPoliza |
-|C000888888|Sura        |Autos   |Canal Tradicional|PPAutos    |
+|C000888888|Sura        |Autos   |Canal Tradicional|Individual    |
 When seleccione la opcion siguiente
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:

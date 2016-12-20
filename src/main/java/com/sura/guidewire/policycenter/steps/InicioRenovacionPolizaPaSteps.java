@@ -31,7 +31,11 @@ public class InicioRenovacionPolizaPaSteps extends ScenarioSteps {
     @Step
     public void navegarPorRenovacion() {
         tasaUnicaPage.nuevaRenovacion();
-//        inicioRenovacionPolizaPaPage.irARenovacion();
+    }
+
+    @Step
+    public void irARenovavion() {
+        inicioRenovacionPolizaPaPage.irARenovacion();
     }
 
     @Step
@@ -62,6 +66,7 @@ public class InicioRenovacionPolizaPaSteps extends ScenarioSteps {
     @Step
     public void validacionEnPantallaVehiculo(ExamplesTable datosVehiculo) {
         inicioRenovacionPolizaPaPage.validacionesPantallaFormularios(datosVehiculo);
+        inicioRenovacionPolizaPaPage.retirarTransaccion();
     }
 
     @Step

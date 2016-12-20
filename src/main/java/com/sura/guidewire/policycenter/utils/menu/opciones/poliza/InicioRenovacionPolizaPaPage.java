@@ -6,7 +6,6 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
@@ -25,7 +24,7 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnAceptarRenovacion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguiente;
+    WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:AccountInfoInputSet:OfficialIDInputSet:OfficialIDDV_Input-inputEl']")
     WebElementFacade datoCedeulaTomador;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:Producer-inputEl']")
@@ -68,8 +67,11 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     WebElementFacade btnRetiraTransaccion;
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnAceptarRetiraTransaccion;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:RenewalQuote-btnInnerEl']")
+    WebElementFacade botonCotizaeV;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
     WebElementFacade btnPoliza;
+
     public InicioRenovacionPolizaPaPage(WebDriver driver) {
         super(driver);
     }
@@ -86,12 +88,7 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
 
     public void aceptaOperacionRenovacion() {
         btnAceptarRenovacion.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilClickable();
-    }
-
-    public void clickBotonSiguiente() {
-        btnSiguiente.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnSiguiente).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilClickable();
     }
 
     public void validaMensajeEnPantalla(String mensaje) {
@@ -99,39 +96,42 @@ public class InicioRenovacionPolizaPaPage extends PageUtil {
     }
 
     public void validacionesPantallaFormularios(ExamplesTable datosTomador) {
+        waitUntil(WAIT_TIME_1000);
         Map<String, String> datos = datosTomador.getRow(0);
         if ("tomador".equals(datos.get("rol"))) {
             MatcherAssert.assertThat("cedula del tomador no valida", datoCedeulaTomador.getText().equals(datos.get("cedulaTomador")));
             MatcherAssert.assertThat("el nombre del tomador no es valido", datoNombre.getText().equals(datos.get("nombre")));
-            MatcherAssert.assertThat("el nombre de oficina de radicacion", datoOficinaDeRadicacion.getText().equals(datos.get("oficinaRadicacion")));
-            MatcherAssert.assertThat("el nombre de agente", datoAgente.getText().contains(datos.get("codAgente")));
-            clickBotonSiguiente();
+            MatcherAssert.assertThat("el nombre de oficina de radicacion", datoOficinaDeRadicacion.getValue().equals(datos.get("oficinaRadicacion")));
+            MatcherAssert.assertThat("el nombre de agente", datoAgente.getValue().contains(datos.get("codAgente")));
+            clickElement(botonSiguiente);
         } else if ("asegurado".equals(datos.get("rol"))) {
+            setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+            if (findBy(".message").isPresent()) {
+                clickElement(botonSiguiente);
+            }
+            resetImplicitTimeout();
             MatcherAssert.assertThat("cedula del Asegurado no valida", datoCedulaAsegurado.getText().equals(datos.get("cedulaAsegurado")));
-            MatcherAssert.assertThat("primer nombre no valido", datoPrimerNombreAsegurado.getText().equals(datos.get("pNombre")));
-            MatcherAssert.assertThat("primer apellido no valido", datoPrimerApellidoAsegurado.getText().equals(datos.get("pApellido")));
-            clickBotonSiguiente();
+            MatcherAssert.assertThat("primer nombre no valido", datoPrimerNombreAsegurado.getValue().equals(datos.get("pNombre")));
+            MatcherAssert.assertThat("primer apellido no valido", datoPrimerApellidoAsegurado.getValue().equals(datos.get("pApellido")));
+            clickElement(botonSiguiente);
         } else if ("vehiculo".equals(datos.get("rol"))) {
-            MatcherAssert.assertThat("placa no valida", datoPlaca.getText().equals(datos.get("placa")));
-            MatcherAssert.assertThat("modelo no valido", datoModelo.getText().equals(datos.get("modelo")));
-            MatcherAssert.assertThat("codFasecolda no valido", datoCodFasecolda.getText().equals(datos.get("codFasecolda")));
+            botonCotizaeV.waitUntilPresent();
+            MatcherAssert.assertThat("modelo no valido", datoModelo.getValue().equals(datos.get("modelo")));
+            MatcherAssert.assertThat("codFasecolda no valido", datoCodFasecolda.getValue().equals(datos.get("codFasecolda")));
             MatcherAssert.assertThat("clase Vehiculo no valido", datoClaseVehiculo.getText().equals(datos.get("claseVehiculo")));
             MatcherAssert.assertThat("marca no valida", datoMarca.getText().equals(datos.get("marca")));
             MatcherAssert.assertThat("linea no valida", datoLinea.getText().equals(datos.get("linea")));
             MatcherAssert.assertThat("zona no valida", datoZona.getText().equals(datos.get("zona")));
-            MatcherAssert.assertThat("tipo Servicio no valido", datoTipoServicio.getText().equals(datos.get("tipoServicio")));
-            MatcherAssert.assertThat("motor no valido", datoMotor.getText().equals(datos.get("motor")));
-            MatcherAssert.assertThat("chasis no valido", datoChasis.getText().equals(datos.get("chasis")));
+            MatcherAssert.assertThat("tipo Servicio no valido", datoTipoServicio.getValue().equals(datos.get("tipoServicio")));
+            MatcherAssert.assertThat("motor no valido", datoMotor.getValue().equals(datos.get("motor")));
+            MatcherAssert.assertThat("chasis no valido", datoChasis.getValue().equals(datos.get("chasis")));
             btnPoliza.click();
         }
     }
 
     public void retirarTransaccion() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnOpcionDeCierre).waitUntilClickable();
-        btnOpcionDeCierre.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnRetiraTransaccion).waitUntilClickable();
-        btnRetiraTransaccion.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarRetiraTransaccion).waitUntilClickable();
-        btnAceptarRetiraTransaccion.click();
+        clickElement(btnOpcionDeCierre);
+        clickElement(btnRetiraTransaccion);
+        clickElement(btnAceptarRetiraTransaccion);
     }
 }

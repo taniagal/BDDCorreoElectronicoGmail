@@ -12,7 +12,7 @@ Scenario: Validacion de los elementos de exportacion e importacion del archivo d
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |tipoPoliza  |
-|C000222333|Sura        |Autos   |Canal Tradicional|PPAutos     |
+|C000222333|Sura        |Autos   |Canal Tradicional|Individual     |
 When vaya a cargar el archivo con las tasas
 Then me deben aparecer las opciones de exportar el archivo
 And las de importar el archivo

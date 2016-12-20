@@ -9,7 +9,7 @@ Scenario: Ingreso de informacion del vehiculo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |tipoPoliza |
-|C000222333|Sura        |Autos   |Canal Tradicional|PPAutos    |
+|C000222333|Sura        |Autos   |Canal Tradicional|Individual    |
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan             |
 |AK0249|2009  |08001111        |MEDELLIN          |Particular       |PR3B4  |SnR4 |13500000       |null     |null   |2   |Plan Autos Básico|
@@ -23,7 +23,7 @@ Examples:
 Scenario: Validacion de caracteres especiales en campos informacion del vehiculo
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |tipoPoliza |
-|C000222333|Sura        |Autos   |Canal Tradicional|PPAutos    |
+|C000222333|Sura        |Autos   |Canal Tradicional|Individual    |
 When vaya a agregar un vehiculo con los datos:
 |placa  |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis                 |motor                       |valor_asegurado|descuento|recargo|zona|plan             |
 |AKN0099|2009  |08001111        |MEDELLIN          |Particular       |PR3B4_-/-#$%&/()=?¡¿'  |86-51/*4213486+145646!"_#$% |13500000       |9,9999   |100    |2   |Plan Autos Básico|
@@ -37,7 +37,7 @@ Examples:
 Scenario: Validar campos de valores asegurados, accesorios y tope definido por perfil
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |tipoPoliza |
-|C000222333|Sura        |Autos   |Canal Tradicional|PPAutos    |
+|C000222333|Sura        |Autos   |Canal Tradicional|Individual    |
 When vaya a agregar un vehiculo con los datos:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan             |
 |AKU009|2009  |08001111        |MEDELLIN          |Particular       |PR3B4  |SnR4 |13500000       |null     |null   |2   |Plan Autos Básico|
