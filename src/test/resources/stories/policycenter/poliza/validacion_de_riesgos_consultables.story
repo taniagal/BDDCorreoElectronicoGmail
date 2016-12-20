@@ -11,7 +11,6 @@ Scenario: 1 Validacion de riesgos consultables (tomador adicional,asegurador,dir
 GivenStories: stories/policycenter/login_policy.story
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When copie la poliza
-And seleccione poliza de tipo no reaseguro especial
 And quiera agregar un tomador adicional que es riesgo consultable <cedula>
 And intente ingresar una nueva ubicacion
 And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional

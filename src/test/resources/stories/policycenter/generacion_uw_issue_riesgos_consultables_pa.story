@@ -14,19 +14,29 @@ Quiero poder gestionar los UW que se generen cuando una de las figuras de la cot
 
 Scenario: Analisis de riesgo - Uw issue - Quote
 GivenStories: stories/policycenter/login_policy.story
-Given existe una cotizacion <numeroCotizacion>
-When las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable
+Given estoy cotizando una poliza:
+|cuenta     |organizacion|producto|canal            |tipoPoliza |
+|C1060447895|Sura        |Autos   |Canal Tradicional|PPAutos    |
+When seleccione la opcion siguiente
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis  |motor |valor_asegurado|descuento|recargo|zona|plan        |
+|T64497|2016  |00601182        |MEDELLIN          |Particular       |CH212121|AB3C2 |165900000      |null     |null   |2   |Plan Modular|
+And ingrese las coberturas basicas:
+|limite|deducible|abogado |PLlaves |
+|1.440 |0        |Opción 1|Opción 1|
+And intente cotizar
 And vaya a la opcion de analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 |mensaje|
-|FRANK RAMIREZ ALZATE, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
-|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
-|T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
-|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
+|DIEGO VELEZ es un riesgo no estándar y debe ser analizado por el comité de evaluación para el(los) rol(es): ASEGURADO|
+|El chasis CH212121 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
+|La placa T64497 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
+|El motor AB3C2 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
 
 Examples:
-|numeroCotizacion|
-|22334456        |
+|tipo_documento       |documento |
+|CEDULA DE CIUDADANIA |32536001  |
 
 Scenario: Analisis de riesgo - Uw issue - Issue
 Given existe una cotizacion <numeroCotizacion>
@@ -34,14 +44,15 @@ When las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo
 And vaya a la opcion de analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 |mensaje|
-|FRANK RAMIREZ ALZATE, El asegurado es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
-|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
-|T64497, La placa es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
-|CH212121, El chasis es un riesgo no estándar y no es posible gestionar la solicitud por este canal. Diríjase a análisis de riesgos para solicitar aprobación.|
+|DIEGO VELEZ es un riesgo no estándar y debe ser analizado por el comité de evaluación para el(los) rol(es): ASEGURADO|
+|JOSE PAEZ ALZATE es un riesgo no estándar y debe ser analizado por el comité de evaluación para el(los) rol(es): TOMADOR|
+|El chasis CH212121 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
+|La placa T64497 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
+|El motor AB3C2 es un riesgo no estándar y debe ser analizado por el comité de evaluación.|
 
 Examples:
 |numeroCotizacion|
-|22334457        |
+|22222210        |
 
 Scenario: Analisis de riesgo - Uw issue - Modificacion
 Meta: @manual
