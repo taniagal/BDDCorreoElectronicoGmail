@@ -20,43 +20,21 @@ Then mostrar el mensaje <validacion> que devuelve el servicio
 And al ir a la opcion de analisis de riesgo
 And debo ver un UW issue para la figura indicada
 |mensaje|
-|ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser analizado por el comité de evaluación para el(los) rol(es): TOMADOR |
-|CAROLINA OCHOA con CEDULA DE CIUDADANIA - 71318883 es un riesgo no estándar y debe ser analizado por el comité de evaluación para el(los) rol(es): ASEGURADO |
-|GLADYS OCHOA con CEDULA DE CIUDADANIA - 94372371 es un riesgo no estándar y debe ser analizado por el comité de evaluación para el(los) rol(es): BENEFICIARIO|
-
+|El tomador(a) FRANK RAMIREZ ALZATE con DNI C123456 es PEP (Persona públicamente expuesta) y es necesario tramitar el caso con su director o gerente.|
 Examples:
 |numeroCotizacion |tipoDocumento        |numeroDocumento |validacion |
-|22222228         |CEDULA DE CIUDADANIA |1025312689      |ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado. Diríjase a análisis de riesgos para solicitar aprobación.|
+|22222238         |CEDULA DE CIUDADANIA |123456          |El tomador(a) FRANK RAMIREZ ALZATE con DNI C123456 es PEP (Persona públicamente expuesta) y es necesario tramitar el caso con su director o gerente. Diríjase a análisis de riesgos para solicitar aprobación.|
 
 Scenario: Modificacion - Identificacion cliente PEP en tomador, asegurado y beneficiario
 Given existe una cotizacion <numeroCotizacion> la cual se va a modificar
 And el tomador <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
-When intente expedir la poliza
-Then mostrar el mensaje <validacion> que devuelve el servicio
-
-Examples:
-|numeroCotizacion |tipoDocumento        |numeroDocumento |validacion |
-|55570000         |CEDULA DE CIUDADANIA |1025312689      |ANTONIO RESTREPO con CEDULA DE CIUDADANIA - 71123456 es un riesgo no estándar y debe ser autorizado. Diríjase a análisis de riesgos para solicitar aprobación.|
-
-Scenario: Modificacion - Identificacion cliente PEP en asegurado
-Given existe una cotizacion <numeroCotizacion> la cual se va a modificar
 And el asegurado <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
-When intente expedir la poliza
-Then mostrar el mensaje <validacion> que devuelve el servicio
-
-Examples:
-|numeroCotizacion |tipoDocumento        |numeroDocumento |validacion  |
-|55570000         |CEDULA DE CIUDADANIA |1025312689      |CAROLINA OCHOA con CEDULA DE CIUDADANIA - 71318883 es un riesgo no estándar y debe ser autorizado. Diríjase a análisis de riesgos para solicitar aprobación.|
-
-Scenario: Modificacion - Identificacion cliente PEP en beneficiario
-Given existe una cotizacion <numeroCotizacion> la cual se va a modificar
 And el beneficiario <tipoDocumento> <numeroDocumento> se identifica como riesgo PEPS
 When intente expedir la poliza
 Then mostrar el mensaje <validacion> que devuelve el servicio
-
 Examples:
-|numeroCotizacion |tipoDocumento        |numeroDocumento |validacion                                                                                         |
-|55570000         |CEDULA DE CIUDADANIA |1025312689      |GLADYS OCHOA con CEDULA DE CIUDADANIA - 94372371 es un riesgo no estándar y debe ser autorizado.|
+|numeroCotizacion |tipoDocumento        |numeroDocumento     |validacion                                                                                                                                                                                                  |validacion                                                                                                                                                                                                  |validacion                                                                                                                                                                                                   |
+|22222246         |CEDULA DE CIUDADANIA |1025312689          |El tomador(a) ANTONIO RESTREPO con DNI C71123456 es PEP (Persona públicamente expuesta) y es necesario tramitar el caso con su director o gerente. Diríjase a análisis de riesgos para solicitar aprobación.|El asegurado(a) CAROLINA OCHOA con DNI C71318883 es PEP (Persona públicamente expuesta) y es necesario tramitar el caso con su director o gerente. Diríjase a análisis de riesgos para solicitar aprobación.|El beneficiario(a) GLADYS OCHOA con DNI C94372371 es PEP (Persona públicamente expuesta) y es necesario tramitar el caso con su director o gerente. Diríjase a análisis de riesgos para solicitar aprobación.|
 
 Scenario: Identificacion cliente PEP siendo el tomador, asegurado y beneficiario el mismo cliente nuevo
 Meta: @manual
@@ -77,3 +55,6 @@ And no son nuevos en el cambio
 When  intente expedir la poliza
 And se identifique que los DNI son riesgo PEP que ya venian asegurados y habian sido autorizados
 Then  se debe permitir expedir el cambio de la poliza y mostrar el número del cambio y de la póliza
+
+
+
