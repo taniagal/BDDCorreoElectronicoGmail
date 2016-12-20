@@ -145,13 +145,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void agregarNuevaUbicacion(String pais, String depto, String ciudad, String direccion, String actividadEconomica) {
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
-        findBy(LINK_AGREGAR_UBICACION).waitUntilVisible().waitUntilClickable();
         findBy(LINK_AGREGAR_UBICACION).shouldBeVisible();
         clickElement(findBy(LINK_AGREGAR_UBICACION));
-
-        findBy(LINK_OPCION_UBICACION_NUEVA).waitUntilVisible().waitUntilClickable();
         findBy(LINK_OPCION_UBICACION_NUEVA).shouldBeVisible();
-        findBy(LINK_OPCION_UBICACION_NUEVA).click();
+        clickElement(findBy(LINK_OPCION_UBICACION_NUEVA));
+
 
         waitForTextToAppear("Información de ubicación");
         String xpathPais = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']";
