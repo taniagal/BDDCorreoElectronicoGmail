@@ -16,10 +16,6 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[contains(@id, 'Wizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body')]")
     private WebElementFacade grupoUWIssues;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:RiskAnalysis']/div/span")
-    private WebElementFacade analisisRiesgoExpedicion;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:RiskAnalysis']/div/span")
-    private WebElementFacade analisisRiesgoModificacion;
     @FindBy(xpath = ".//span[contains(text(), 'Análisis de riesgo') and contains(@class, 'x-tree-node-text')]")
     private WebElementFacade analisisDeRiesgo;
     @FindBy(xpath = ".//*[contains(text(), 'Análisis de riesgo') and contains(@id, 'Job_RiskAnalysisScreen')]")

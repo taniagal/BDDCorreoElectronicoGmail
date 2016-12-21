@@ -10,9 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 
 public class DetallesDeUbicacionPage extends PageUtil {
-
-    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:Account-inputEl']")
-    private WebElementFacade numeroDeCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:addLocationsTB-btnInnerEl']")
@@ -73,7 +70,6 @@ public class DetallesDeUbicacionPage extends PageUtil {
         waitForComboValue(comboBoxActividadEconomica, actividad);
         clickElement(botonAceptar);
     }
-
 
 
     public void validarCamposNuevos() {

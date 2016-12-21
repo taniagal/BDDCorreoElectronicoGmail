@@ -148,8 +148,8 @@ public class TarifaMRCPage extends PageUtil {
     public void descartarCambios() {
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
-            linkDescartarCambios.click();
-            botonCotizar.click();
+            clickElement(linkDescartarCambios);
+            clickElement(botonCotizar);
         }
         resetImplicitTimeout();
     }

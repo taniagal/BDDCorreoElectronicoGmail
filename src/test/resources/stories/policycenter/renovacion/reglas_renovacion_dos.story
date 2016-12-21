@@ -18,7 +18,6 @@ Given estoy cotizando una poliza basado en otro envio <envio>
 When ingrese los datos de la cotizacion PA
 |ciudad_circulacion|limite|deducible|abogado |PLlaves |modelo|
 |MEDELLIN          |1.440 |0        |Opción 1|Opción 1|2016  |
-And cotice una poliza
 And expido la poliza y voy al archivo de poliza
 And quiera realizar esta renovacion
 And quiera aceptar esta renovacion

@@ -29,7 +29,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
     WebElementFacade menuNumeroCotizacion;
 
-    @FindBy(xpath =  "//a[contains(.,'Expedir póliza') and contains(@id,'JobWizardToolbarButtonSet:IssuesPolicy')]")
+    @FindBy(xpath = "//a[contains(.,'Expedir póliza') and contains(@id,'JobWizardToolbarButtonSet:IssuesPolicy')]")
     WebElementFacade botonExpedirPoliza;
 
     @FindBy(id = "PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange-btnInnerEl")
@@ -123,9 +123,8 @@ public class ExpedicionDePolizaPage extends PageUtil {
         this.aceptarMensajeRequisitosPendientes();
     }
 
-    public void aceptarMensajeRequisitosPendientes(){
-        if(mensajeRequisitosPendientes.isVisible())
-        {
+    public void aceptarMensajeRequisitosPendientes() {
+        if (mensajeRequisitosPendientes.isVisible()) {
             botonBorrar.click();
             waitUntil(WAIT_TIME_3000);
             botonExpedirPoliza.click();
@@ -146,7 +145,8 @@ public class ExpedicionDePolizaPage extends PageUtil {
         MatcherAssert.assertThat(campoIrAlEscritorio.getText(), Is.is(Matchers.equalTo(escritorio)));
         waitFor(ExpectedConditions.elementToBeClickable(botonEscritorio));
     }
-    public void ingresarVerCotizacion(){
+
+    public void ingresarVerCotizacion() {
         waitFor(campoNumeroCotizacion);
         campoNumeroCotizacion.click();
         waitForTextToAppear("Cotización");
