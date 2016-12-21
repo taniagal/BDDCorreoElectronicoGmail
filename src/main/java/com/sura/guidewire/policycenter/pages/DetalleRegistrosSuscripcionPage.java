@@ -18,46 +18,34 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:SubmissionGroupJobsLV-body']")
     WebElementFacade tablaEnvios;
-    @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_UnderwritingFiles']/div/span")
+    @FindBy(xpath = ".//*[@id='AccountFile:MenuLinks:AccountFile_UnderwritingFiles']/div/span")
     WebElementFacade mnuRegistrosSuscripcion;
-    @FindBy(xpath=".//*[@id='UnderwritingFiles:RenewalManagerScreen:RenewalManagerLV:0:GroupName']")
+    @FindBy(xpath = ".//a[contains(@id, 'UnderwritingFiles:RenewalManagerScreen:RenewalManagerLV:') and contains(text(), 'SG222222')]")
     WebElementFacade lblTransaccionDetalle;
-    @FindBy(xpath=".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:NumJobs-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:NumJobs-inputEl']")
     WebElementFacade lblNroCotizaciones;
-    @FindBy(xpath=".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:TotalCost-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:TotalCost-inputEl']")
     WebElementFacade lblCostoTotal;
-    @FindBy(xpath="//span[contains(text(),'Producto')]")
+    @FindBy(xpath = "//span[contains(text(),'Producto')]")
     WebElementFacade columnaProducto;
-    @FindBy(xpath="//div/table/tbody/tr/td[2]/div")
-    WebElementFacade lblNroEnvio;
-    @FindBy(xpath="//span[contains(text(),'Estado')]")
+    @FindBy(xpath = "//span[contains(text(),'Estado')]")
     WebElementFacade columnaEstadoDetalle;
-    @FindBy(xpath="//td[4]/div")
-    WebElementFacade lblNroPoliza;
-    @FindBy(xpath="//span[contains(text(),'Crear fecha')]")
+    @FindBy(xpath = "//span[contains(text(),'Crear fecha')]")
     WebElementFacade columnaCrearFecha;
-    @FindBy(xpath="//span[contains(text(),'Fecha de cierre')]")
+    @FindBy(xpath = "//span[contains(text(),'Fecha de cierre')]")
     WebElementFacade columnaFechaCierre;
-    @FindBy(xpath=".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:RiskAnalysisCardTab']")
+    @FindBy(xpath = ".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:RiskAnalysisCardTab']")
     WebElementFacade mnuAnalisis;
-    @FindBy(xpath=".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:ActivitiesCardTab']")
+    @FindBy(xpath = ".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:ActivitiesCardTab']")
     WebElementFacade mnuActividades;
-    @FindBy(xpath=".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:NumJobs-labelEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:NumJobs-labelEl']")
     WebElementFacade lblTituloNroCotizaciones;
-    @FindBy(xpath="//div[3]/div/table/tbody/tr/td/div")
-    WebElementFacade lblNombre;
-    @FindBy(xpath="//div/table/tbody/tr/td[2]/div")
-    WebElementFacade lblPrimeraFechaVigencia;
-    @FindBy(xpath="//td[3]/div")
-    WebElementFacade lblUltimaFechaVigencia;
-    @FindBy(xpath="//td[4]/div")
-    WebElementFacade lblTipoTransaccion;
-    @FindBy(xpath="//td[5]/div")
-    WebElementFacade lblNroTransaccion;
-    @FindBy(xpath="//div/label")
+    @FindBy(xpath = "//div/label")
     WebElementFacade lblEstado;
-    @FindBy(xpath="//label[2]")
+    @FindBy(xpath = "//label[2]")
     WebElementFacade lblTransaccion;
+    @FindBy(xpath = ".//*[@id='UnderwritingFiles:RenewalManagerScreen:RenewalManagerLV-body']")
+    WebElementFacade tablaRegistros;
 
     public DetalleRegistrosSuscripcionPage(WebDriver driver) {
         super(driver);
@@ -77,10 +65,10 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
         return filaPoliza;
     }
 
-    public void validarCamposDetalle(String producto, String nroEnvio, String estado, String nroPoliza){
+    public void validarCamposDetalle(String producto, String nroEnvio, String estado, String nroPoliza) {
         String fila = this.encontrarPoliza(nroEnvio).toString();
-        WebElementFacade filaNroEnvio = findBy(".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:SubmissionGroupJobsLV:"+fila+":Submission']");
-        WebElementFacade filaPoliza = findBy(".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:SubmissionGroupJobsLV:"+fila+":PolicyNumber']");
+        WebElementFacade filaNroEnvio = findBy(".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:SubmissionGroupJobsLV:" + fila + ":Submission']");
+        WebElementFacade filaPoliza = findBy(".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:SubmissionGroupJobsLV:" + fila + ":PolicyNumber']");
         MatcherAssert.assertThat(filaNroEnvio.getText(), Is.is(Matchers.equalTo(nroEnvio)));
         MatcherAssert.assertThat(filaPoliza.getText(), Is.is(Matchers.equalTo(nroPoliza)));
         columnaFechaCierre.shouldBeVisible();
@@ -91,11 +79,26 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
 
     public void validarCamposRegistros(String nombre, String tipoDeTransaccion, String nroDeTransacciones) {
         waitFor(lblTransaccionDetalle);
-        MatcherAssert.assertThat(lblNombre.getText(), Is.is(Matchers.equalTo(nombre)));
-        MatcherAssert.assertThat(lblPrimeraFechaVigencia.getText(), Is.is(IsNull.notNullValue()));
-        MatcherAssert.assertThat(lblUltimaFechaVigencia.getText(), Is.is(IsNull.notNullValue()));
-        MatcherAssert.assertThat(lblTipoTransaccion.getText(), Is.is(Matchers.equalTo(tipoDeTransaccion)));
-        MatcherAssert.assertThat(lblNroTransaccion.getText(), Is.is(IsNull.notNullValue()));
+        String xpathTabla = "/tr[" + this.encontrarRegistro(nombre).toString() + "]";
+        MatcherAssert.assertThat(findBy("//div[3]/div/table/tbody" + xpathTabla + "/td[1]/div").getText(), Is.is(Matchers.equalTo(nombre)));
+        MatcherAssert.assertThat(findBy("//div/table/tbody" + xpathTabla + "/td[3]/div").getText(), Is.is(IsNull.notNullValue()));
+        MatcherAssert.assertThat(findBy("/" + xpathTabla + "/td[3]/div").getText(), Is.is(IsNull.notNullValue()));
+        MatcherAssert.assertThat(findBy("/" + xpathTabla + "/td[4]/div").getText(), Is.is(Matchers.equalTo(tipoDeTransaccion)));
+        MatcherAssert.assertThat(findBy("/" + xpathTabla + "/td[5]/div").getText(), Is.is(IsNull.notNullValue()));
+    }
+
+    public Integer encontrarRegistro(String nombre) {
+        waitFor(tablaRegistros).waitUntilPresent();
+        Integer filaRegistro = 1;
+        List<WebElement> filas = tablaRegistros.findElements(By.tagName("tr"));
+        for (WebElement row : filas) {
+            List<WebElement> columna = row.findElements(By.tagName("td"));
+            if (nombre.equals(columna.get(0).getText())) {
+                return filaRegistro;
+            }
+            filaRegistro++;
+        }
+        return filaRegistro;
     }
 
     public void buscarRegistrosSuscripcion() {
@@ -128,11 +131,11 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
         mnuAnalisis.shouldNotBeVisible();
     }
 
-    public  void validarVisibilidadMenuActividades() {
+    public void validarVisibilidadMenuActividades() {
         mnuActividades.shouldNotBeVisible();
     }
 
-    public void validarTituloSumatoriaDeCotizaciones(String titulo){
+    public void validarTituloSumatoriaDeCotizaciones(String titulo) {
         MatcherAssert.assertThat(lblTituloNroCotizaciones.getText(), Is.is(Matchers.equalTo(titulo)));
     }
 
