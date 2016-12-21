@@ -64,4 +64,9 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     public void validarMensajeRequisitos(String requisitos) {
         expedicionDePolizaPage.validarMensajeRequisitos(requisitos);
     }
+
+    @Step
+    public void clicEnAceptarDelMensajeDeConfirmacionYRequisitos() {
+        expedicionDePolizaPage.aceptarExpedirPolizaConRequisitosPendientes();
+    }
 }

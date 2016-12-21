@@ -132,8 +132,13 @@ public class ExpedicionDePolizaPage extends PageUtil {
         waitFor(ExpectedConditions.visibilityOf(botonAceptarMensaje));
         waitFor(ExpectedConditions.elementToBeClickable(botonAceptarMensaje));
         botonAceptarMensaje.click();
-        aceptarMensajeRequisitosPendientes();
+    }
 
+    public void aceptarExpedirPolizaConRequisitosPendientes() {
+        waitFor(ExpectedConditions.visibilityOf(botonAceptarMensaje));
+        waitFor(ExpectedConditions.elementToBeClickable(botonAceptarMensaje));
+        botonAceptarMensaje.click();
+        aceptarMensajeRequisitosPendientes();
     }
 
     public void aceptarMensajeRequisitosPendientes(){

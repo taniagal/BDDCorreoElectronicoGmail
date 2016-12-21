@@ -16,7 +16,7 @@ Scenario: Validacion en MRC de direccion como riesg}o consultable
 GivenStories: stories/policycenter/login_policy.story
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
 When voy a expedir una poliza
-And confirmo el mensaje de expedir poliza
+And confirmo el mensaje de expedir poliza con requisitos
 Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 
 Examples:
@@ -26,7 +26,7 @@ Examples:
 Scenario: Validacion de riesgos consultables en la expedicion de poliza - Bug
 Given Que tengo una cotizacion <cotizacion> y voy a crear una poliza
 When voy a expedir una poliza
-And confirmo el mensaje de expedir poliza
+And confirmo el mensaje de expedir poliza con requisitos
 Then El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>
 
 Examples:
