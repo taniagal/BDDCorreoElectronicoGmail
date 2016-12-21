@@ -127,7 +127,7 @@ Scenario: 6 Validacion de campos en menu lateral de poliza principal expedida
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
 When ingrese a la informacion de la poliza
 And voy a expedir una poliza
-And confirmo el mensaje de expedir poliza
+And confirmo el mensaje de expedir poliza con requisitos
 And ingrese a ver cotizacion de poliza expedida
 Then deben estar en estado <estadodos> las siguientes opciones
 | OPCIONES_MENU_NO_VISIBLES |
