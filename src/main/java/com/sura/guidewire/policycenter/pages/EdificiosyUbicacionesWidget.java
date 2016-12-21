@@ -189,7 +189,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(WAIT_TIME_3).seconds();
 
 
-        clickElement(findBy(".//*[@id='CPLocationPopup:Update']"));
+        findBy(".//*[@id='CPLocationPopup:Update']").waitUntilPresent().click();
 
         setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
         if (botonBorrar.isVisible()) {
@@ -243,10 +243,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             findBy(XPATH_DESCARTAR_CAMBIOS).click();
             clickElement(edificiosyUbicacionesRenovacion);
             waitForTextToAppear("Edificios y ubicaciones");
-            findBy(XPATH_EDITAR_TRANSACCION_POLIZA).waitUntilVisible().click();
-            waitUntil(WAIT_TIME_2000);
-            findBy(XPATH_ACEPTAR).click();
-            waitUntil(WAIT_TIME_2000);
         }
     }
 

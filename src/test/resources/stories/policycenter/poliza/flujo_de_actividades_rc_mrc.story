@@ -15,8 +15,8 @@ para poder cotizar o expedir una poliza
 Scenario: 1 Validar que se genere actividad de riesgo consultable al cotizar una poliza
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta    |producto               |
-|C000777777|Multiriesgo corporativo|
+|cuenta    |organizacion|producto               |canal            |
+|C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion
 And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
