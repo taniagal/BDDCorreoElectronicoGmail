@@ -1,6 +1,6 @@
 Informacion Titular Cuenta
 
-Meta: @lote2
+Meta: @lote1
 
 @issue #CDSEG-657
 @tag automator: diego_cardona_acevedo
