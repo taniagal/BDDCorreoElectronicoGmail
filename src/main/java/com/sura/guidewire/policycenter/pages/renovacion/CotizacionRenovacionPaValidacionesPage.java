@@ -103,7 +103,14 @@ public class CotizacionRenovacionPaValidacionesPage extends PageUtil {
     }
 
     public void realizarCotizacionDeRenovacion() {
-        WebElementFacade botonCotizar = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:RenewalQuote-btnInnerEl']");
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonCotizar).click();
+        WebElementFacade botonCotizarInfoPolicy = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:RenewalQuote-btnInnerEl']");
+        WebElementFacade botonCotizarVehiculos = findBy(".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:RenewalQuote-btnInnerEl']");
+        setImplicitTimeout(WAIT_TIME_5,TimeUnit.SECONDS);
+        if(botonCotizarInfoPolicy.isPresent()){
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonCotizarInfoPolicy).click();
+        }else if(botonCotizarVehiculos.isPresent()){
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonCotizarVehiculos).click();
+        }
+        resetImplicitTimeout();
     }
 }
