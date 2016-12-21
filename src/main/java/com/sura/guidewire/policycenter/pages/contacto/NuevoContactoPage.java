@@ -84,16 +84,13 @@ public class NuevoContactoPage extends PageUtil {
     }
 
     public void actualizarPersonaNatural(String primerNombre) {
-        this.botonActualizar.waitUntilClickable();
-        this.botonActualizar.click();
-        waitUntil(WAIT_TIME_2000);
+        actualizar();
         nombreContact.waitUntilPresent();
-        MatcherAssert.assertThat(this.nombreContact.getText(), Matchers.containsString(primerNombre));
+        MatcherAssert.assertThat(nombreContact.getText(), Matchers.containsString(primerNombre));
     }
 
     private void actualizar() {
-        this.botonActualizar.waitUntilClickable();
-        this.botonActualizar.click();
+        clickElement(botonActualizar);
         waitUntil(WAIT_TIME_1000);
     }
 
