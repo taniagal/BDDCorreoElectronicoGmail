@@ -277,6 +277,10 @@ public class EdificiosUbicacionesDefinitions {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
             MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
         }
+        polizaSteps.seleccionarOpcionCierre();
+        polizaSteps.seleccionarOpcionRetirarTransaccion();
+        polizaSteps.confirmarCancelacion();
+
     }
 
     @Then("se debe mostrar el siguiente mensaje $mensajesEsperados")
