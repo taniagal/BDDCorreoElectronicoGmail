@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.pages;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -10,8 +11,10 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -30,24 +33,6 @@ public class BusquedaActividadesPage extends PageUtil {
     private WebElementFacade txtNumeroCuenta;
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search']")
     private WebElementFacade btnBuscar;
-    @FindBy(xpath = "//td[4]/div")
-    private WebElementFacade grdFechaVencimiento;
-    @FindBy(xpath = "//td[5]/div")
-    private WebElementFacade grdPrioridad;
-    @FindBy(xpath = "//td[6]/div")
-    private WebElementFacade grdEstadoActividad;
-    @FindBy(xpath = "//td[7]/div")
-    private WebElementFacade grdAsunto;
-    @FindBy(xpath = "//td[8]/div")
-    private WebElementFacade grdId;
-    @FindBy(xpath = "//td[9]/div")
-    private WebElementFacade grdCuenta;
-    @FindBy(xpath = "//td[10]/div")
-    private WebElementFacade grdProducto;
-    @FindBy(xpath = "//td[11]/div")
-    private WebElementFacade grdAsignadoPor;
-    @FindBy(xpath = "//td[12]/div")
-    private WebElementFacade grdEstado;
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
     private WebElementFacade msgFiltrosRequeridos;
     @FindBy(xpath = ".//*[@id='TabBar:SearchTab']")
@@ -58,6 +43,8 @@ public class BusquedaActividadesPage extends PageUtil {
     private WebElementFacade botonRestablecer;
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:_msgs']/div")
     private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitiesSearchLV-body']")
+    private WebElementFacade tablaActividades;
 
     public BusquedaActividadesPage(WebDriver driver) {
         super(driver);
@@ -80,17 +67,31 @@ public class BusquedaActividadesPage extends PageUtil {
 
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
+        String xpathTabla = "//tr[" + this.encontrarActividad(exampleTable.get("id")).toString() + "]";
         actions.click(btnBuscar).build().perform();
-        grdFechaVencimiento.waitUntilVisible();
-        MatcherAssert.assertThat(this.grdFechaVencimiento.getText(), Is.is(Matchers.notNullValue()));
-        MatcherAssert.assertThat(this.grdPrioridad.getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
-        MatcherAssert.assertThat(this.grdEstadoActividad.getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
-        MatcherAssert.assertThat(this.grdAsunto.getText(), Is.is(Matchers.equalTo(exampleTable.get("asunto"))));
-        MatcherAssert.assertThat(this.grdId.getText(), Is.is(Matchers.equalTo(exampleTable.get("id"))));
-        MatcherAssert.assertThat(this.grdCuenta.getText(), Is.is(Matchers.equalTo(exampleTable.get("titularCuenta"))));
-        MatcherAssert.assertThat(this.grdProducto.getText(), Matchers.containsString(exampleTable.get("producto")));
-        MatcherAssert.assertThat(this.grdAsignadoPor.getText(), Matchers.containsString(exampleTable.get("asignadoPor")));
-        MatcherAssert.assertThat(this.grdEstado.getText(), Is.is(Matchers.equalTo(exampleTable.get("estado"))));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[4]/div").waitUntilVisible().getText(), Is.is(Matchers.notNullValue()));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[5]/div").getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[6]/div").getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[7]/div").getText(), Is.is(Matchers.equalTo(exampleTable.get("asunto"))));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[8]/div").getText(), Is.is(Matchers.equalTo(exampleTable.get("id"))));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[9]/div").getText(), Is.is(Matchers.equalTo(exampleTable.get("titularCuenta"))));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[10]/div").getText(), Matchers.containsString(exampleTable.get("producto")));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[11]/div").getText(), Matchers.containsString(exampleTable.get("asignadoPor")));
+        MatcherAssert.assertThat(findBy(xpathTabla + "/td[12]/div").getText(), Is.is(Matchers.equalTo(exampleTable.get("estado"))));
+    }
+
+    public Integer encontrarActividad(String idActividad) {
+        waitFor(tablaActividades).waitUntilPresent();
+        Integer filaActividad = 1;
+        List<WebElement> filas = tablaActividades.findElements(By.tagName("tr"));
+        for (WebElement row : filas) {
+            List<WebElement> columna = row.findElements(By.tagName("td"));
+            if (idActividad.equals(columna.get(8).getText())) {
+                return filaActividad;
+            }
+            filaActividad++;
+        }
+        return filaActividad;
     }
 
     public void limpiarFiltros() {
