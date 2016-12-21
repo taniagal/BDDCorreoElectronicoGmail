@@ -1,6 +1,6 @@
 Calculo Tasa Global
 
-Meta: @lote2
+Meta: @lote4
 @issue #CDSEG-4326
 @issue #CDSEG-4333
 @sprint 9

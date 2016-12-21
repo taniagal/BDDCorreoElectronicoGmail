@@ -1,6 +1,6 @@
 Detalle De Asegurado De Cotizacion
 
-Meta: @lote3
+Meta: @lote2
 
 @issue #CDSEG-1027
 @tag automator: eliana_alvarez, sprint:2

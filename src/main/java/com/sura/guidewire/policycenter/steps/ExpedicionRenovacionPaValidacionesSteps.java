@@ -2,7 +2,9 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.renovacion.ExpedicionRenovacionPaValidacionesPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jbehave.core.model.ExamplesTable;
 
 public class ExpedicionRenovacionPaValidacionesSteps extends ScenarioSteps{
 
@@ -16,5 +18,20 @@ public class ExpedicionRenovacionPaValidacionesSteps extends ScenarioSteps{
     @Step
     public void validar_Valor_Accesorios_Y_Accesorios_Especiales() {
         expedicionRenovacionPaValidacionesPage.validarExpedicionDeRenovacion();
+    }
+
+    @Step
+    public void validarAsuntosQueBloqueanExpedicion(ExamplesTable mensaje) {
+        expedicionRenovacionPaValidacionesPage.validarAsuntosQueBloqueanExpedicion(mensaje);
+    }
+
+    @Step
+    public void editarInformacionVehiculoRenovacion(ExamplesTable infoVehiculo) {
+        expedicionRenovacionPaValidacionesPage.editarInformacionVehiculoRenovacion(infoVehiculo);
+    }
+
+    @Step
+    public void aceptarRenovacion() {
+        expedicionRenovacionPaValidacionesPage.aceptarRenovacion();
     }
 }

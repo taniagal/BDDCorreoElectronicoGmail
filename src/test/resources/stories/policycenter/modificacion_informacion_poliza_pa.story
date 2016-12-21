@@ -1,7 +1,7 @@
 Modificacion Informacion Poliza Pa
 
 Meta:
-@lote2
+@lote4
 @issue #CDSEG-977
 @tag automator: diego_cardona_acevedo
 @local

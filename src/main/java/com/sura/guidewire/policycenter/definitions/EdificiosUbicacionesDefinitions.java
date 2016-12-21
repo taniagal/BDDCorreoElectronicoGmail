@@ -3,6 +3,7 @@ package com.sura.guidewire.policycenter.definitions;
 import com.sura.guidewire.policycenter.steps.EdificiosUbicacionesSteps;
 import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
 import com.sura.guidewire.policycenter.steps.PolizaSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import com.sura.guidewire.policycenter.utils.AssertUtil;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
@@ -35,6 +36,8 @@ public class EdificiosUbicacionesDefinitions {
     IngresoAPolicyCenterDefinitions guidewireLogin;
     @Steps
     GuidewireSteps guidewire;
+    @Steps
+    TarifaTasaUnicaSteps tasaUnicaSteps;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -90,9 +93,8 @@ public class EdificiosUbicacionesDefinitions {
     }
 
 
-
     @When("ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
-    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula,String tipoBeneficiario) {
+    public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
 
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
         int index = 0;
@@ -111,8 +113,8 @@ public class EdificiosUbicacionesDefinitions {
 
             edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
         }
-           edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
-           edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
+        edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
+        edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
 
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
         edificiosUbicacionesSteps.seleccionar_boton_cotizar();
@@ -120,7 +122,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
-    public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula,String tipoBeneficiario) {
+    public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
 
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion_en_cambio_de_poliza();
         int index = 0;
@@ -148,7 +150,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("ingrese las entradas en renovacion de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
-    public void cuandoIntenteIngresarLasEntradasEnRenovacionDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula,String tipoBeneficiario) {
+    public void cuandoIntenteIngresarLasEntradasEnRenovacionDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
 
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion_en_renovacion_de_poliza();
         int index = 0;
@@ -178,19 +180,19 @@ public class EdificiosUbicacionesDefinitions {
 
     //// TODO: 21/10/2016 Construilo con example table
     @When("intente ingresar una nueva ubicacion")
-    public void cuandoIntenteIngresarUnaNuevaUbicacion(){
+    public void cuandoIntenteIngresarUnaNuevaUbicacion() {
         edificiosUbicacionesSteps.remover_riesgos();
         edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
     }
 
     @When("intente ingresar una nueva ubicacion sin riesgo consultable")
-    public void cuandoIntenteIngresarUnaNuevaUbicacionSinRiesgo(){
+    public void cuandoIntenteIngresarUnaNuevaUbicacionSinRiesgo() {
         edificiosUbicacionesSteps.remover_riesgos();
         edificiosUbicacionesSteps.ingresar_nueva_ubicacion_sin_riesgo();
     }
 
     @When("intente ingresar una nueva ubicacion en renovacion de poliza")
-    public void cuandoIntenteIngresarUnaNuevaUbicacionEnRenovacionDePoliza(){
+    public void cuandoIntenteIngresarUnaNuevaUbicacionEnRenovacionDePoliza() {
         edificiosUbicacionesSteps.seleccionar_boton_editar_transaccion_de_poliza();
         edificiosUbicacionesSteps.remover_riesgos();
         edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
@@ -219,12 +221,10 @@ public class EdificiosUbicacionesDefinitions {
     }
 
     @When("intente cotizar y expedir la poliza")
-            public void cuandoIntenteCotizarYExpedirLaPoliza(){
-              edificiosUbicacionesSteps.seleccionar_boton_cotizar();
-              expedicionDePolizaSteps.clicEnExpedirPoliza();
-             expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
-            }
-
+    public void cuandoIntenteCotizarYExpedirLaPoliza() {
+        edificiosUbicacionesSteps.seleccionar_boton_cotizar();
+        tasaUnicaSteps.expedirPoliza();
+    }
 
     public void cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo() {
         edificiosUbicacionesSteps.seleccionar_check_del_articulo_a_agregar();
