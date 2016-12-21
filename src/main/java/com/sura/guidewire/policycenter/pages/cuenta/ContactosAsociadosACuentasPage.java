@@ -229,6 +229,7 @@ public class ContactosAsociadosACuentasPage extends PageUtil {
     }
 
     public void contactoEliminado(String contactoEliminado) {
+        waitForTextToDisappear(contactoEliminado);
         int tablaSinDato = getLista(".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV-body']/*/table/tbody/tr/td[1]").size();
         MatcherAssert.assertThat("No se borró el contacto", tablaSinDato < combos);
     }
