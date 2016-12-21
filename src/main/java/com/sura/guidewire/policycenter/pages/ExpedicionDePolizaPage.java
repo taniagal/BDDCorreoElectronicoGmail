@@ -20,6 +20,9 @@ public class ExpedicionDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']")
     WebElementFacade campoNumeroEnvio;
 
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
+    WebElementFacade botonBorrar;
+
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
     WebElementFacade menuPoliza;
 
@@ -34,6 +37,9 @@ public class ExpedicionDePolizaPage extends PageUtil {
 
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
+
+    @FindBy(xpath = ".//*[contains(@id,'WebMessageWorksheet:WebMessageWorksheetScreen') and contains(.,'Existen requisitos pendientes')]")
+    WebElementFacade mensajeRequisitosPendientes;
 
     @FindBy(xpath = ".//a[contains(.,'Cancelar')]")
     WebElementFacade botonCancelarMensaje;
@@ -126,6 +132,20 @@ public class ExpedicionDePolizaPage extends PageUtil {
         waitFor(ExpectedConditions.visibilityOf(botonAceptarMensaje));
         waitFor(ExpectedConditions.elementToBeClickable(botonAceptarMensaje));
         botonAceptarMensaje.click();
+        aceptarMensajeRequisitosPendientes();
+
+    }
+
+    public void aceptarMensajeRequisitosPendientes(){
+        if(mensajeRequisitosPendientes.isVisible())
+        {
+            botonBorrar.click();
+            waitUntil(WAIT_TIME_3000);
+            botonExpedirPoliza.click();
+            waitUntil(WAIT_TIME_3000);
+            botonAceptarMensaje.click();
+            waitForTextToAppear("Cotización Expedida");
+        }
     }
 
     public void validarResumenDeLaPolizaExpedida(String infoCotizacion, String infoPoliza, String admorCotizacion,
@@ -197,7 +217,6 @@ public class ExpedicionDePolizaPage extends PageUtil {
 
     public void validarMensajeRequisitos(String requisitos) {
         waitForTextToAppear(requisitos, WAIT_TIME_30000);
-        WebElementFacade botonBorrar = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']");
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
         waitUntil(WAIT_TIME_5000);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();

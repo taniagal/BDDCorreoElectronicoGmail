@@ -303,7 +303,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                     desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO_UNO, asegurados.get("ASEGURADORA"));
                 }
                 waitFor(WAIT_TIME_2).second();
-                findBy(LISTA_TIPO_BENEFICIARIO_UNO).click();
+                clickElement(findBy(LISTA_TIPO_BENEFICIARIO_UNO));
                 waitFor(WAIT_TIME_2).second();
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
