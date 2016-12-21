@@ -34,6 +34,7 @@ public class PageUtil extends PageObject {
     protected static final int WAIT_TIME_300 = 300;
     protected static final int WAIT_TIME_200 = 200;
     protected static final int WAIT_TIME_28 = 28;
+    protected static final int WAIT_TIME_30 = 30;
     protected static final int WAIT_TIME_20 = 20;
     protected static final int WAIT_TIME_15 = 15;
     protected static final int WAIT_TIME_10 = 10;

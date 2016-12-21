@@ -153,6 +153,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
         boolean editables = false;
         for (int i = 0; i < camposEnPantalla.size(); i++) {
             if (camposEnPantalla.get(i).getAttribute("role").equals("textbox")) {
+                withTimeoutOf(WAIT_TIME_30, TimeUnit.SECONDS).waitFor(camposEnPantalla.get(i)).waitUntilVisible();
                 if (camposEnPantalla.get(i).getText() != null) {
                     editables = true;
                 } else {
