@@ -85,22 +85,6 @@ public class ExpedicionDePolizaPage extends PageUtil {
         super(driver);
     }
 
-    public void irABuscarCotizacion(String cotizacion) {
-        waitFor(menuPoliza).waitUntilPresent().waitUntilPresent();
-        waitUntil(WAIT_TIME_1000);
-        clickElement(menuPoliza);
-        waitForAnyTextToAppear("Cotización", "Buscar pólizas");
-        waitFor(menuPoliza).waitUntilPresent().waitUntilClickable();
-        waitUntil(WAIT_TIME_1500);
-        menuPoliza.click();
-        menuPoliza.sendKeys(Keys.ARROW_DOWN);
-        menuNumeroCotizacion.waitUntilPresent();
-        ingresarDato(menuNumeroCotizacion, cotizacion);
-        menuNumeroCotizacion.sendKeys(Keys.ENTER);
-        waitForTextToAppear("Cotización");
-        waitForTextToAppear(cotizacion);
-    }
-
     public void expedirPoliza() {
         try {
             waitFor(ExpectedConditions.visibilityOf(botonExpedirPoliza));
@@ -132,8 +116,11 @@ public class ExpedicionDePolizaPage extends PageUtil {
         waitFor(ExpectedConditions.visibilityOf(botonAceptarMensaje));
         waitFor(ExpectedConditions.elementToBeClickable(botonAceptarMensaje));
         botonAceptarMensaje.click();
-        aceptarMensajeRequisitosPendientes();
+    }
 
+    public void aceptarExpedirPolizaConRequisitosPendientes() {
+        this.aceptarExpedirPoliza();
+        this.aceptarMensajeRequisitosPendientes();
     }
 
     public void aceptarMensajeRequisitosPendientes(){

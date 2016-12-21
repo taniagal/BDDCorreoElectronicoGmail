@@ -149,10 +149,11 @@ public class PolizaPrincipalPaPages extends PageUtil {
         }
     }
 
-    public boolean validarCamposEditables(List<WebElementFacade> camposEnPantalla){
+    public boolean validarCamposEditables(List<WebElementFacade> camposEnPantalla) {
         boolean editables = false;
+        setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
         for (int i = 0; i < camposEnPantalla.size(); i++) {
-            if (camposEnPantalla.get(i).getAttribute("role").equals("textbox")) {
+            if (camposEnPantalla.get(i).getAttribute("role").equals("textbox") && camposEnPantalla.get(i).isVisible()) {
                 if (camposEnPantalla.get(i).getText() != null) {
                     editables = true;
                 } else {
@@ -160,6 +161,7 @@ public class PolizaPrincipalPaPages extends PageUtil {
                 }
             }
         }
+        resetImplicitTimeout();
         return editables;
     }
 

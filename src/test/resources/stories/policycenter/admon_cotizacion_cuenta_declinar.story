@@ -27,7 +27,7 @@ Then el sistema debe mostrar un mesaje <mensaje>
 
 Examples:
 | envio    |departamento|ciudad  |direccion        |descripcion  |actividad                    | numCuenta  | mensaje                                     |
-| 22222211 |Antioquia   |Medellin|CR 44 A # 45 - 00|Edificio Core|Acabado de productos textiles| C000902244 | Falta el campo obligatorio "Código de razón |
+| 22222211 |Antioquia   |Medellin|CR 44 A # 49 - 00|Edificio Core|Acabado de productos textiles| C000902244 | Falta el campo obligatorio "Código de razón |
 
 Scenario: Validar al seleccionar la opcion declinar y declinar una cotizacion desde una cuenta
 Given estoy cotizando una poliza:

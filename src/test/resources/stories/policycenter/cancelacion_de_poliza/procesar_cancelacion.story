@@ -6,9 +6,9 @@ Meta:
 @URL https://jira.suramericana.com.co/browse/CDSEG-3425
 @tag automator:juan_gabriel_zapata, informer:juan_esteban_restrepo, sprint:8
 @Sprint 8
-@manual
 
 Scenario: 1 Programar cancelacion de poliza
+Meta: @manual
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba programacion
 And ingrese fecha superior al dia actual
@@ -21,9 +21,8 @@ Examples:
 | TEST_22263226 | Asesor     |
 
 
-Meta:
-@manual
 Scenario: 2 Cancelar poliza con beneficiario oneroso
+Meta: @manual
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba programacion
 And inicie la cancelacion
@@ -34,10 +33,8 @@ Examples:
 | TEST_22253226 | Asesor     |
 
 
-
-Meta:
-@manual
 Scenario: 3 Cancelacion de  poliza con beneficiario oneroso sin aprobar UW
+Meta: @manual
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba cancelacion  de poliza
 And realice la cancelacion de poliza
@@ -48,10 +45,8 @@ Examples:
 | TEST_22253226 | Asesor     |
 
 
-
-Meta:
-@manual
 Scenario: 4 Cotizacion de cancelacion de poliza con beneficiario oneroso
+Meta: @manual
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de cobro, Descripción: Prueba cancelacion  de poliza
 And inicie la cancelacion
@@ -62,10 +57,8 @@ Examples:
 | TEST_22253226 | Asesor     |
 
 
-
-Meta:
-@manual
 Scenario: 5 Cancelar poliza
+Meta: @manual
 Given  que estoy en el resumen de la poliza MRC con numero de poliza <numPoliza> con el rol <rolUsuario>
 When ingrese los motivos de cancelacion de la poliza Motivo: Por error de trámite, Descripción: Prueba cancelacion  de poliza
 And realice la cancelacion de poliza
@@ -77,10 +70,8 @@ Examples:
 | TEST_22263226 | Asesor     |
 
 
-
-Meta:
-@manual
 Scenario: 6 Cancelar poliza con retroactividad
+Meta: @manual
 Given  que quiero expedir la cancelación de una poliza con retroactividad superior a 60 días
 When  intente procesar la cancelación
 Then  se debe generar un UW Issue para solicitar la autorización, el mensaje debe ser: "La fecha de cancelación no cumple con el parametro de retraoctividad de 60 días"
@@ -91,10 +82,8 @@ Examples:
 |  |  |
 
 
-
-Meta:
-@manual
 Scenario: 7 Cancelar poliza con siniestro asociado
+Meta: @manual
 Given  que quiero expedir la cancelación de una poliza con un siniestro asociado
 When  intente procesar la cancelación
 Then  se debe visualizar el mensaje: "La poliza tiene un siniestro en estado "estado del siniestro" posterior a la fecha en que se desea cancelar la póliza y no puede cancelarse"
@@ -104,10 +93,8 @@ Examples:
 |  |  |
 |  |  |
 
-
-Meta:
-@manual
 Scenario: 8 Cancelar poliza adelantada (billing)
+Meta: @manual
 Given  que quiero cancelar la poliza con un fecha superior al día de hoy
 When  intente procesar la cancelación
 Then  se debe validar en Billing la fecha de cancelación sugerida con base en la facturación generada y no permitir cancelar si la fecha de cancelación ingresada supera la fecha sugerida por billing y se debe generar un UW Issue, el mesanje de la autorización debe ser: "La fecha de cancelación es posterior al último periodo pagado de la póliza. La cancelación debe ser autorizada"
@@ -116,13 +103,3 @@ Then  se debe validar en Billing la fecha de cancelación sugerida con base en l
 Examples:
 |  |  |
 |  |  |
-
-
-
-
-
-
-
-
-
-

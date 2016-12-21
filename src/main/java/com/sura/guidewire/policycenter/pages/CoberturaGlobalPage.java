@@ -1,11 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
-import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionDePagoPage;
 import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -13,6 +8,9 @@ import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class CoberturaGlobalPage extends PageUtil {
@@ -54,15 +52,16 @@ public class CoberturaGlobalPage extends PageUtil {
     private WebElementFacade bttonAceptar;
     @FindBy(xpath = ".//*[contains(@id,'CPBlanketSura_ExtPopup:DescriptionMasterPolicy-inputEl')]")
     private WebElementFacade labelDescripcionCoberturaGlobal;
+    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
+    private WebElementFacade linkDescartarCambios;
 
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage = new OpcionesInformacionPolizaMrcPage(getDriver());
     private static String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_INICIAL = ".//div[contains(@id,'CPBlanketSura_ExtPopup') and contains(@id,'CoverageInputSet:CovPatternInputGroup-legendTitle') and contains(.,'";
     private static String LBL_OPCIONES_AGREGAR_COBERTURA_GLOBAL_FINAL = "')]";
-    private static String LBL_PESTAÑA_COBERTURAS_INICIAL= "//label[contains(.,'";
+    private static String LBL_PESTAÑA_COBERTURAS_INICIAL = "//label[contains(.,'";
     private static String LBL_PESTAÑA_COBERTURAS_FINAL = "')]";
-    private static String LBL_OPCION_COBERTURA_GLOBAL_INICIAL= "//span[contains(.,'";
+    private static String LBL_OPCION_COBERTURA_GLOBAL_INICIAL = "//span[contains(.,'";
     private static String LBL_OPCION_COBERTURA_GLOBAL_FINAL = "')]";
-
 
 
     public CoberturaGlobalPage(WebDriver driver) {
@@ -76,7 +75,14 @@ public class CoberturaGlobalPage extends PageUtil {
     }
 
     public void navegarPorCobertura(String descripcion, String tipoCobertura) {
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         botonAgregarCoberturaGeneral.waitUntilPresent().click();
+        if (linkDescartarCambios.isPresent()) {
+            linkDescartarCambios.click();
+            waitUntil(WAIT_TIME_1000);
+            botonAgregarCoberturaGeneral.waitUntilPresent().click();
+        }
+        resetImplicitTimeout();
         waitFor(campoTxtDescripcion).sendKeys(descripcion);
         selectItem(comboBoxTipoCobertura, tipoCobertura);
         waitUntil(WAIT_TIME_1000);
@@ -94,7 +100,7 @@ public class CoberturaGlobalPage extends PageUtil {
         opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_PESTAÑA_COBERTURAS_INICIAL, LBL_PESTAÑA_COBERTURAS_FINAL);
     }
 
-    public void validarCamposCoberturasGlobales(String estadouno, String estadodos, ExamplesTable menusesperados){
+    public void validarCamposCoberturasGlobales(String estadouno, String estadodos, ExamplesTable menusesperados) {
         opcionesInformacionPolizaMrcPage.validarCampos(estadouno, estadodos, menusesperados, LBL_OPCION_COBERTURA_GLOBAL_INICIAL, LBL_OPCION_COBERTURA_GLOBAL_FINAL);
     }
 
@@ -149,10 +155,11 @@ public class CoberturaGlobalPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
     }
 
-    public void seleccionarBotonAceptar(){
+    public void seleccionarBotonAceptar() {
         bttonAceptar.waitUntilClickable().click();
     }
-    public void ingresarDescripcionDetalleCoberturaGlobal(String descripcion){
+
+    public void ingresarDescripcionDetalleCoberturaGlobal(String descripcion) {
         waitFor(WAIT_TIME_2);
         labelDescripcionCoberturaGlobal.sendKeys(descripcion);
     }
