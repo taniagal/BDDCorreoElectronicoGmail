@@ -1,7 +1,7 @@
 Cotizacion De Cancelacion
 
 Meta:
-@lote2
+@lote1
 @issue #USC-14740
 @tag automator: Jonathan_Mejia_Leon
 @local
