@@ -40,7 +40,7 @@ public class TarifaMRCPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:3:RateModifier-inputEl']")
     private WebElementFacade campoTxtRotura;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-inputEl']")
-    private WebElementFacade campoTxtDañioInterno;
+    private WebElementFacade campoTxtDanioInterno;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:5:RateModifier-inputEl']")
     private WebElementFacade campoTxtSustraccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:7:RateModifier-inputEl']")
@@ -71,6 +71,8 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade montoCobertura2;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[4]/td[1]")
     private WebElementFacade labelDescripcionCobertura;
+    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
+    private WebElementFacade linkDescartarCambios;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     double valorAsegurado = 0;
@@ -139,7 +141,17 @@ public class TarifaMRCPage extends PageUtil {
     public void agregarArticulo() {
         botonActualizar.click();
         botonCotizar.waitUntilPresent().click();
+        descartarCambios();
         waitForTextToAppear("Cotizado");
+    }
+
+    public void descartarCambios() {
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        if (linkDescartarCambios.isPresent()) {
+            linkDescartarCambios.click();
+            botonCotizar.click();
+        }
+        resetImplicitTimeout();
     }
 
     public void cotizarArticuloBloqueado() {
@@ -158,7 +170,7 @@ public class TarifaMRCPage extends PageUtil {
         campoTxtBasico.waitUntilPresent();
         noPresente = concatenarElementoNoPresente(campoTxtBasico, " modificador basico,", noPresente);
         noPresente = concatenarElementoNoPresente(campoTxtCalificacion, " modificador calificacion,", noPresente);
-        noPresente = concatenarElementoNoPresente(campoTxtDañioInterno, " modificador daño interno,", noPresente);
+        noPresente = concatenarElementoNoPresente(campoTxtDanioInterno, " modificador daño interno,", noPresente);
         noPresente = concatenarElementoNoPresente(campoTxtRotura, " modificador rotura,", noPresente);
         noPresente = concatenarElementoNoPresente(campoTxtSustraccion, " modificador sustraccion,", noPresente);
         String res = noPresente.toString();

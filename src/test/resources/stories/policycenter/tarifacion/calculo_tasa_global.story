@@ -1,6 +1,6 @@
 Calculo Tasa Global
 
-Meta: @lote3
+Meta: @lote4
 @issue #CDSEG-4326
 @issue #CDSEG-4333
 @sprint 9
@@ -17,7 +17,7 @@ GivenStories: stories/policycenter/login_policy.story
 
 Given estoy cotizando una poliza:
 |cuenta     |organizacion       |producto               |canal            |
-|C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
+|C0007777797|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
 When seleccione la cobertura:

@@ -1,6 +1,6 @@
 Proceso De Cancelacion
 
-Meta: @lote2
+Meta: @lote1
 
 @issue #USC-14750
 @tag automator: Jonathan_Mejia_Leon

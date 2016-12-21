@@ -1,4 +1,4 @@
-Meta: @lote2
+Meta: @lote1
 @issue #SUGWUSC-15127
 @tag automator: Jonathan_Mejia_Leon
 @local

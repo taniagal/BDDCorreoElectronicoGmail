@@ -72,8 +72,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonAceptarCambioDePoliza;
     @FindBy(xpath = ".//a[contains(.,'Borrar')]")
     private WebElementFacade botonBorrar;
+    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
+    private WebElementFacade linkDescartarCambios;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:CPBuildings']")
-    WebElementFacade edificiosyUbicacionesRenovacion;
+    private WebElementFacade edificiosyUbicacionesRenovacion;
+
     @Page
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
     @Page
@@ -508,6 +511,16 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
         waitFor(WAIT_TIME_4).second();
     }
+
+        public void descartarCambios() {
+        WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
+            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+            if (linkDescartarCambios.isPresent()) {
+                linkDescartarCambios.click();
+                btnCotizar.click();
+            }
+            resetImplicitTimeout();
+        }
 
     public void ingresarInputTiposDeArticulos(String tipoArticulo) {
         waitForTextToAppear("Tipos de Artículos");
