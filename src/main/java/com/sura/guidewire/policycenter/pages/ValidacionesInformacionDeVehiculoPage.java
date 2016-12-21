@@ -207,7 +207,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void agregarCodigoFasecolda(String codigo) {
-        waitFor(botonCrearVehiculo).click();
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
         comboBoxModelo.waitUntilPresent();
         selectItem(comboBoxModelo, "2015");
         waitForTextToAppear("2015");
