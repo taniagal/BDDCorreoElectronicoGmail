@@ -14,6 +14,8 @@ public class ReglasRenovacionDosPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
     WebElementFacade btnSiguinete;
+    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PersonalVehicles']")
+    WebElementFacade menuItemVehiculo;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:ttlBar']")
     WebElementFacade lblAsegurado;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
@@ -21,7 +23,7 @@ public class ReglasRenovacionDosPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='button-1005-btnInnerEl']")
     WebElementFacade btnAceptarEditarTransaccion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:RenewalQuote-btnInnerEl']")
-    WebElementFacade btnCotizar;
+    WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:CloseOptions-btnInnerEl']")
     WebElementFacade btnOpcionDeCierre;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:CloseOptions:Withdraw']")
@@ -38,6 +40,8 @@ public class ReglasRenovacionDosPage extends PageUtil {
     WebElementFacade campoTxtCiudadDeCirculacion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']")
     WebElementFacade lblMensajes;
+    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
+    private WebElementFacade menuPoliza;
 
     private static final int CONSTANTE_8 = 8;
     private static final double CONSTANTE_02 = 0.2;
@@ -51,13 +55,20 @@ public class ReglasRenovacionDosPage extends PageUtil {
     *El metodo contiene los waitUntil debido que espera un refresh en la pantalla para la aparicion de un botón
     */
     public void clicHastaVehiculo() {
-        waitUntil(WAIT_TIME_1000);
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnSiguinete).waitUntilClickable();
-        btnSiguinete.click();
-        waitUntil(WAIT_TIME_1000);
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblAsegurado).waitUntilPresent();
-        waitUntil(WAIT_TIME_1000);
-        btnSiguinete.click();
+        for (int i = 0; i < 3; i++) {
+            setImplicitTimeout(0, TimeUnit.SECONDS);
+            if (!botonCotizar.isPresent()) {
+                waitUntil(WAIT_TIME_3000);
+                clickElement(menuPoliza);
+            }
+            resetImplicitTimeout();
+        }
+        clickElement(menuItemVehiculo);
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        if (findBy(".message").isVisible()) {
+            clickElement(menuItemVehiculo);
+        }
+        resetImplicitTimeout();
     }
 
     public void editarTransaccion() {
@@ -65,7 +76,7 @@ public class ReglasRenovacionDosPage extends PageUtil {
         btnEditarTransaccion.click();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnAceptarEditarTransaccion).waitUntilClickable();
         btnAceptarEditarTransaccion.click();
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilClickable();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonCotizar).waitUntilClickable();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(lblMensajes).waitUntilPresent();
     }
 
@@ -93,9 +104,8 @@ public class ReglasRenovacionDosPage extends PageUtil {
         return (int) (valorCalcular * porcentaje);
     }
 
-    public void validacionMensajeValores(String mensaje){
-        waitFor(ExpectedConditions.textToBePresentInElement(lblMensajes,mensaje));
-        MatcherAssert.assertThat("No aparecio mensaje de alerta", lblMensajes.getText().contains(mensaje));
+    public void validacionMensajeValores(String mensaje) {
+        verificarMensaje(lblMensajes, mensaje);
     }
 
     public void cerrarTransaccion() {
