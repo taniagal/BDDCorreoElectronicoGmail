@@ -125,10 +125,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade botonAceptarCoaseguro;
 
 
+    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static String LBL_MENSAJE_ALERTA = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
     private static String LISTA_TIPO_BENEFICIARIO_UNO = "//div[contains(.,'Seguros Generales Suramericana S.A.') and contains(@class,'x-grid-cell-inner')]";
     private static String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
-    private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
     private static String LBL_MENU_LATERAL_INICIAL = ".//td[contains(@id,'SubmissionWizard') and contains(.,'";
     private static String LBL_MENU_LATERAL_FINAL = "')]";
@@ -227,10 +227,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         botonElegirProducto.waitUntilEnabled();
         botonElegirProducto.click();
         if ("Multiriesgo corporativo".equals(nomProducto)) {
-            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
-            if (botonAceptarPopup.isPresent()) {
+            setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+            if (botonAceptarPopup.isVisible()) {
                 botonAceptarPopup.click();
-                waitForAbsenceOf(".//span[contains(.,'Aceptar')]");
+                botonAceptarPopup.waitUntilNotVisible();
             }
             resetImplicitTimeout();
         }

@@ -1,8 +1,5 @@
 package com.sura.guidewire.policycenter.pages;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,14 +9,12 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class CotizacionMRCPage extends PageUtil {
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
-    private WebElementFacade menuPoliza;
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
-    private WebElementFacade buscarCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     private WebElementFacade tituloPagina;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-labelEl']")
@@ -38,8 +33,6 @@ public class CotizacionMRCPage extends PageUtil {
     private WebElementFacade labelTipoDireccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:AddressDescription-labelEl']")
     private WebElementFacade labelDescripcionDireccion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:UWCompany-labelEl']")
-    private WebElementFacade labelEmpresaAseguradora;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-labelEl']")
     private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:Taxes-labelEl']")
@@ -62,8 +55,6 @@ public class CotizacionMRCPage extends PageUtil {
     private WebElementFacade campoTipoDireccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:AddressDescription-inputEl']")
     private WebElementFacade campoDescripcionDireccion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:UWCompany-inputEl']")
-    private WebElementFacade campoEmpresaAseguradora;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade campoPrimaTotal;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:Taxes-inputEl']")
@@ -74,20 +65,12 @@ public class CotizacionMRCPage extends PageUtil {
     private WebElementFacade tabPrimaPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:RatingOverrideButtonDV:RatingOverrideButtonDV:OverrideRating']")
     private WebElementFacade botonAnularClasificacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:Premiums']")
-    private WebElementFacade labelPrimas;
     @FindBy(xpath = "//td/div/div/div/div/div/div")
     private WebElementFacade columnaDescripcion;
     @FindBy(xpath = "//div/div/div/div/div[3]/div")
     private WebElementFacade columnaMonto;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:OtherCharges']")
     private WebElementFacade labelOtrosCargos;
-    @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr[2]/td/div/div/div/div/div/div")
-    private WebElementFacade columnaDescripcionCargos;
-    @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr[2]/td/div/div/div/div/div[2]/div")
-    private WebElementFacade columnaEstadoCargos;
-    @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr[2]/td/div/div/div/div/div[3]/div")
-    private WebElementFacade columnaMontoCargos;
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtBuscar;
     @FindBy(xpath = ".//*[@id='DesktopSubmissions:DesktopSubmissionsScreen:SubmissionSearch-inputEl']")

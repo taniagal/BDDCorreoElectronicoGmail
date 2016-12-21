@@ -3,11 +3,9 @@ package com.sura.guidewire.policycenter.pages;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.steps.StepInterceptor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -19,7 +17,6 @@ public class AnalisisDeRiesgosPage extends PageUtil {
     @FindBy(xpath = ".//a[contains(.,'Borrar')]")
     private WebElementFacade botonBorrar;
     private int numeroDeRiesgos;
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
     private static String xPathSolicitarAprobacion = ".//*[contains(@id,'Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet') and contains(@id,'UWIssueRowSet:RequestApproval')]";
 
     public AnalisisDeRiesgosPage(WebDriver driver) {
@@ -54,18 +51,15 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         String xpathAnalisisRiesgos = ".//*[@id='SubmissionWizard:RiskAnalysis']/div";
         String xpathMensajeAlertaEdificiosYUbicaciones = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']";
         String xpathBorrarWorkskpace = ".//a[contains(.,'Borrar')]";
-        String xpathWorkskpace =".//a[contains(.,'Resultados de validación')]";
+        String xpathWorkskpace = ".//a[contains(.,'Resultados de validación')]";
         findBy(xpathWorkskpace).waitUntilVisible();
 
         if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
             findBy(xpathAnalisisRiesgos).click();
             waitForTextToAppear("Análisis de riesgo");
-        }
-        else
-        {
+        } else {
             findBy(xpathAnalisisRiesgos).click();
             waitForTextToAppear("Análisis de riesgo");
-
         }
 
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
@@ -114,21 +108,21 @@ public class AnalisisDeRiesgosPage extends PageUtil {
 
 
     public void seleccionarSolicitarAprobacion() {
-        int bttonSolicitarAprobacion=1;
-            List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(xPathSolicitarAprobacion));
-            for (bttonSolicitarAprobacion =1 ;bttonSolicitarAprobacion <= listaNombresAgentesElement.size() ; bttonSolicitarAprobacion++) {
-                WebElementFacade botonSolicitarAprobacion = findBy( ".//a[contains(@id,'RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:"+bttonSolicitarAprobacion+":UWIssueRowSet:RequestApproval')]");
-                try {
-                    botonBloqueo.waitUntilPresent();
-                }catch (StaleElementReferenceException e){
-                    LOGGER.info("StaleElementReferenceException "+e);
-                }
-                waitUntil(WAIT_TIME_2000);
-                botonSolicitarAprobacion.click();
-                waitUntil(WAIT_TIME_2000);
-                aceptarInicioSolicitudAprobacion();
-                waitUntil(WAIT_TIME_3000);
+        int bttonSolicitarAprobacion = 1;
+        List<WebElementFacade> listaNombresAgentesElement = findAll(By.xpath(xPathSolicitarAprobacion));
+        for (bttonSolicitarAprobacion = 1; bttonSolicitarAprobacion <= listaNombresAgentesElement.size(); bttonSolicitarAprobacion++) {
+            WebElementFacade botonSolicitarAprobacion = findBy(".//a[contains(@id,'RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:" + bttonSolicitarAprobacion + ":UWIssueRowSet:RequestApproval')]");
+            try {
+                botonBloqueo.waitUntilPresent();
+            } catch (StaleElementReferenceException e) {
+                LOGGER.info("StaleElementReferenceException " + e);
             }
+            waitUntil(WAIT_TIME_2000);
+            botonSolicitarAprobacion.click();
+            waitUntil(WAIT_TIME_2000);
+            aceptarInicioSolicitudAprobacion();
+            waitUntil(WAIT_TIME_3000);
+        }
         setNumeroDeRiesgos(bttonSolicitarAprobacion);
     }
 

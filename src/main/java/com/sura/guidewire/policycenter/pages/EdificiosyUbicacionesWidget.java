@@ -7,15 +7,12 @@ import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetP
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.steps.StepInterceptor;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import net.thucydides.core.webdriver.exceptions.ElementShouldBePresentException;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Map;
@@ -26,7 +23,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_DIV_CONTENEDOR_TABLA = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV']";
     private static final String LINK_AGREGAR_UBICACION = "//a[contains(.,'Agregar ubicación')]";
     private static final String XPATH_COTIZAR = "//a[contains(.,'Cotizar')]";
-    private static final String XPATH_BORRAR = "//a[contains(.,'Borrar')]";
     private static final String LINK_OPCION_UBICACION_NUEVA = "//a[contains(.,'Ubicación nueva')]";
     private static final String XPATH_LEGEND_COBERTURA_DE_RIESGO = ".//legend[ (descendant::div[contains(., '";
     private static final String INPUT = "input";
@@ -213,13 +209,13 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
     }
 
-    public void ingresarNuevaUbicacionSinRiesgoConsultable(){
+    public void ingresarNuevaUbicacionSinRiesgoConsultable() {
         agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 45 30 30", "Acabado de productos textiles");
     }
 
     public void removerRiesgos() {
-        setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
-        if(findBy(XPATH_SELECCIONAR_RIESGOS).isVisible()) {
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        if (findBy(XPATH_SELECCIONAR_RIESGOS).isVisible()) {
             resetImplicitTimeout();
             waitFor(WAIT_TIME_3).second();
             findBy(XPATH_SELECCIONAR_RIESGOS).click();
@@ -508,15 +504,15 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(WAIT_TIME_4).second();
     }
 
-        public void descartarCambios() {
+    public void descartarCambios() {
         WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
-            setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
-            if (linkDescartarCambios.isPresent()) {
-                linkDescartarCambios.click();
-                btnCotizar.click();
-            }
-            resetImplicitTimeout();
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        if (linkDescartarCambios.isPresent()) {
+            linkDescartarCambios.click();
+            btnCotizar.click();
         }
+        resetImplicitTimeout();
+    }
 
     public void ingresarInputTiposDeArticulos(String tipoArticulo) {
         waitForTextToAppear("Tipos de Artículos");
