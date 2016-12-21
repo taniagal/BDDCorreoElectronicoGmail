@@ -130,6 +130,6 @@ public class CotizacionMRCDefinitions {
 
     @Then("no debe permitir cotizar; se debe mostrar el mensaje de error <mensaje>")
     public void validarBloqueoExclusividad(@Named("mensaje") String mensaje) {
-        cotizacionMRCSteps.validarBloqueoCotizacion(mensaje);
+        cotizacionMRCSteps.validarBloqueoExclusividad(mensaje);
     }
 }

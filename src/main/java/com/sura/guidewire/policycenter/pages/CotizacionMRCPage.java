@@ -157,6 +157,11 @@ public class CotizacionMRCPage extends PageUtil {
         waitUntil(WAIT_TIME_5000);
     }
 
+    public void validarBloqueoExclusividad(String mensaje) {
+        waitForTextToAppear("Asuntos previos a la cotización");
+        MatcherAssert.assertThat(findBy(".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:0:ShortDescriptionAndSize-inputEl']").getText(), Matchers.containsString(mensaje));
+    }
+
     public void validarTipoRiesgo() {
         waitUntil(WAIT_TIME_1500);
         WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");

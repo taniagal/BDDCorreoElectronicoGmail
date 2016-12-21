@@ -56,4 +56,9 @@ public class CotizacionMRCSteps extends ScenarioSteps {
     public void validarTipoRiesgo() {
         cotizacionMRCPage.validarTipoRiesgo();
     }
+
+    @Step
+    public void validarBloqueoExclusividad(String mensaje) {
+        cotizacionMRCPage.validarBloqueoExclusividad(mensaje);
+    }
 }
