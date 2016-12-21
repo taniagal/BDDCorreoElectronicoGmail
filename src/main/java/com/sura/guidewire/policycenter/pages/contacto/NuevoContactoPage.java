@@ -136,8 +136,7 @@ public class NuevoContactoPage extends PageUtil {
     }
 
     public void verificarContactoExistente() {
-        botonActualizar.waitUntilClickable();
-        botonActualizar.click();
+        clickElement(botonActualizar);
         waitUntil(WAIT_TIME_1000);
         MatcherAssert.assertThat(this.contactoExistente.getText().toString(), Matchers.containsString("Ya existe un contacto con el mismo número de identificación"));
     }
