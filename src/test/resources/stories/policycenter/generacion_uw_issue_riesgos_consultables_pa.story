@@ -15,8 +15,8 @@ Quiero poder gestionar los UW que se generen cuando una de las figuras de la cot
 Scenario: Analisis de riesgo - Uw issue - Quote
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|PPAutos    |
+|cuenta     |organizacion|producto|canal            |tipoPoliza    |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual    |
 When seleccione la opcion siguiente
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:

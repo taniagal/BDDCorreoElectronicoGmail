@@ -28,8 +28,8 @@ And se debe mostrar en la columna Termino el limite o deducible de la cobertura 
 |limite     |deducible |
 |32.000.000 |0         |
 And se debe mostrar la informacion general de la poliza cotizada con los siguientes datos:
-| numeroPoliza  | numeroRenovacion | tomador          | tipoDocumento        | numeroDocumento | direccion                            | tipoDireccion           | descripcionDireccion                       | empresaAseguradora        | primaTotal          | iva               | costoTotal          |
-| TEST_22222122 | 22222333         | JOSE PAEZ ALZATE | CEDULA DE CIUDADANIA | 9876543         | CR 65 # 48 - 162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | Acme Low Hazard Insurance | $1.435.051,00 (COP) | $229.608,00 (COP) | $1.664.659,00 (COP) |
+| numeroPoliza  | numeroRenovacion | tomador          | tipoDocumento        | numeroDocumento | direccion                            | tipoDireccion           | descripcionDireccion                       | primaTotal          | iva               | costoTotal          |
+| TEST_22222122 | 22222333         | JOSE PAEZ ALZATE | CEDULA DE CIUDADANIA | 9876543         | CR 65 # 48 - 162, MEDELLIN, Colombia | DIRECCION DE RESIDENCIA | Created by the Address Builder with code 0 | $1.435.051,00 (COP) | $229.608,00 (COP) | $1.664.659,00 (COP) |
 
 Examples:
 |cotizacion |
