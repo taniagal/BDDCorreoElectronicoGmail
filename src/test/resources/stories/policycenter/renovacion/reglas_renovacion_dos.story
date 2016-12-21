@@ -20,9 +20,7 @@ When ingrese los datos de la cotizacion PA
 |MEDELLIN          |1.440 |0        |Opción 1|Opción 1|2016  |
 And expido la poliza y voy al archivo de poliza
 And quiera realizar esta renovacion
-And quiera aceptar esta renovacion
 And ingrese a la pantalla de vehiculos
-And edite la renovacion
 And se ingrese el valor de los accesorios es superior al 20% del valor asegurado del vehiculo
 And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
 Then se debe mostrar los <mensaje1> <mensaje2> de alerta
