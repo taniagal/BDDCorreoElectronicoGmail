@@ -3,7 +3,7 @@ Inicio Cancelacion Pa
 Meta: @lote2
 
 @issue #USC-14730
-@tag automator: Jonathan_Mejia_Leon
+@tag automator: juan_carlos_restrepo
 @local
 Sprint 8
 
