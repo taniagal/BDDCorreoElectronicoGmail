@@ -2,7 +2,7 @@ Validaciones Poliza colectiva
 
 
 Meta:
-@lote2
+@lote1
 @Story CDSEG-4620 @Story CDSEG-4618
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata
