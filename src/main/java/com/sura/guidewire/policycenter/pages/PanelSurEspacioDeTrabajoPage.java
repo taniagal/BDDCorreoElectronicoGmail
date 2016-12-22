@@ -12,8 +12,6 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
-
 
 public class PanelSurEspacioDeTrabajoPage extends PageUtil {
 
