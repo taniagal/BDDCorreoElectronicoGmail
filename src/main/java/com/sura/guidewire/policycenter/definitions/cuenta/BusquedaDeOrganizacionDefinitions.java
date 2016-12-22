@@ -22,13 +22,10 @@ public class BusquedaDeOrganizacionDefinitions {
     @Steps
     private BusquedaDeOrganizacionSteps busquedaDeOrganizacionSteps;
 
-    private InicioPage inicioPage() {
-        return ThucydidesWebDriverSupport.getPages().currentPageAt(InicioPage.class);
-    }
 
     @Given("que me encuentro en la pantalla de organizaciones")
     public void givenQueMeEncuentroEnLaPantallaDeOrganizaciones() {
-        inicioPage().irAAdminOrganizaciones();
+        busquedaDeOrganizacionSteps.irABuscarOrganizaciones();
     }
 
     @When("ingreso el campo razon social <organizacion>")

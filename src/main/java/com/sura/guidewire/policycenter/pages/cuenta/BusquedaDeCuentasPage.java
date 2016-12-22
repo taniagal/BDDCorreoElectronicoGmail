@@ -93,7 +93,7 @@ public class BusquedaDeCuentasPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='AccountSearch:AccountSearchScreen:AccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     private WebElementFacade botonRestablecer;
 
-    Actions actions = new Actions(getDriver());
+    Actions acciones = new Actions(getDriver());
 
     private static final String CHECK_NO_SELECCIONADO = "Check no seleccionado";
 
@@ -104,11 +104,11 @@ public class BusquedaDeCuentasPage extends PageUtil {
 
     public void irABuscarCuentas() {
         waitFor(menuBuscar).waitUntilVisible().waitUntilClickable();
-        actions.click(menuBuscar).build().perform();
+        acciones.click(menuBuscar).build().perform();
         waitForTextToAppear("Buscar pólizas");
         waitFor(menuBuscarCuentas).waitUntilVisible();
         waitUntil(WAIT_TIME_1500);
-        actions.click(menuBuscarCuentas).build().perform();
+        acciones.click(menuBuscarCuentas).build().perform();
     }
 
     public void buscarCuentaPorNombreYApellido(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido) {
@@ -119,12 +119,12 @@ public class BusquedaDeCuentasPage extends PageUtil {
         txtPrimerApellido.sendKeys(primerApellido);
         txtSegundoApellido.sendKeys(segundoApellido);
         waitFor(btnBuscar).waitUntilVisible();
-        actions.click(btnBuscar).build().perform();
+        acciones.click(btnBuscar).build().perform();
     }
 
     private void limpiarFormulario() {
         waitFor(botonRestablecer).waitUntilVisible().waitUntilClickable();
-        actions.click(botonRestablecer).build().perform();
+        acciones.click(botonRestablecer).build().perform();
         PageUtil.waitUntil(WAIT_TIME_2000);
     }
 
@@ -136,7 +136,7 @@ public class BusquedaDeCuentasPage extends PageUtil {
         txtTipoDocumento.sendKeys(Keys.ENTER);
         txtNumeroDocumento.sendKeys(numeroDocumento);
         waitFor(btnBuscar).waitUntilVisible();
-        actions.click(btnBuscar).build().perform();
+        acciones.click(btnBuscar).build().perform();
     }
 
     public void mostrarInformacionDeLaCuenta(String numeroCuenta, String nombre, String direccion) {
@@ -194,7 +194,7 @@ public class BusquedaDeCuentasPage extends PageUtil {
         waitFor(txtRazonSocial);
         txtRazonSocial.sendKeys(razonSocial);
         waitFor(btnBuscar).waitUntilVisible();
-        actions.click(btnBuscar).build().perform();
+        acciones.click(btnBuscar).build().perform();
     }
 
     public void seleccionarTipoIdentificacion(String tipoDocumento) {
@@ -208,7 +208,7 @@ public class BusquedaDeCuentasPage extends PageUtil {
         waitFor(txtNombreComercial);
         txtNombreComercial.sendKeys(nombreComercial);
         waitFor(btnBuscar).waitUntilVisible();
-        actions.click(btnBuscar).build().perform();
+        acciones.click(btnBuscar).build().perform();
     }
 
     public void seleccionarImprimir() {
@@ -223,7 +223,7 @@ public class BusquedaDeCuentasPage extends PageUtil {
         MatcherAssert.assertThat(this.lblImprimir.getText(), Matchers.containsString(imprimir));
         MatcherAssert.assertThat(this.lblExportar.getText(), Matchers.containsString(exportar));
         MatcherAssert.assertThat(this.lblExportarPersonalizado.getText(), Matchers.containsString(exportarPersonalizado));
-        actions.click(btnVolverBuscarCuentas).build().perform();
+        acciones.click(btnVolverBuscarCuentas).build().perform();
     }
 
     public void ingresarRazonSocialYPrimerNombre(String razonSocial, String primerNombre) {
@@ -232,7 +232,7 @@ public class BusquedaDeCuentasPage extends PageUtil {
         this.txtRazonSocial.sendKeys(razonSocial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         waitFor(btnBuscar).waitUntilVisible();
-        actions.click(btnBuscar).build().perform();
+        acciones.click(btnBuscar).build().perform();
     }
 
     public void ingresarNombreComercialYPrimerNombre(String nombreComercial, String primerNombre) {
@@ -241,7 +241,7 @@ public class BusquedaDeCuentasPage extends PageUtil {
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtPrimerNombre.sendKeys(primerNombre);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.click(btnBuscar).build().perform();
+        acciones.click(btnBuscar).build().perform();
     }
 
     public void ingresarRazonSocialYNombreComercial(String nombreComercial, String razonSocial) {
@@ -250,7 +250,7 @@ public class BusquedaDeCuentasPage extends PageUtil {
         this.txtNombreComercial.sendKeys(nombreComercial);
         this.txtRazonSocial.sendKeys(razonSocial);
         waitFor(btnBuscar).waitUntilPresent();
-        actions.click(btnBuscar).build().perform();
+        acciones.click(btnBuscar).build().perform();
     }
 
     public void seleccionarItemEnCombo(WebElementFacade elemento, String dato){
