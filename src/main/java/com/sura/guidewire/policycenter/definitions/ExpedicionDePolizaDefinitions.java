@@ -68,8 +68,8 @@ public class ExpedicionDePolizaDefinitions {
 
     @Then("El proceso se debe frenar y debe mostrar el mensaje de error <mensaje> y <mensaje2>")
     public void validarMensajesDeRiesgos(@Named("mensaje") String mensaje, @Named("mensaje2") String mensaje2) {
-        expedicionDePolizaSteps.validar_mensaje(mensaje);
-        expedicionDePolizaSteps.validar_mensaje(mensaje2);
+        expedicionDePolizaSteps.validar_mensaje_direccion(mensaje);
+        expedicionDePolizaSteps.validar_mensaje_direccion(mensaje2);
     }
 
     @Then("El proceso se debe frenar y debe mostrar el mensaje de error <mensaje>")
