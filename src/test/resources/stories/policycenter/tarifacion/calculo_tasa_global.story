@@ -14,10 +14,9 @@ Al cotizar una poliza de MRC quiero ser capaz de registrar toda la información 
 
 Scenario:  Validar valor de la tasa global en una cotizacion de MRC
 GivenStories: stories/policycenter/login_policy.story
-
-Given estoy cotizando una poliza:
-|cuenta     |organizacion       |producto               |canal            |
-|C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|
+Given estoy cotizando una poliza de mrc:
+|organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
 When seleccione la cobertura:

@@ -1,12 +1,14 @@
 package com.sura.guidewire.policycenter.steps.cuenta;
 
-import com.sura.guidewire.policycenter.resources.PageUtil;
-import com.sura.guidewire.policycenter.pages.cuenta.CuentaPage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
+import com.sura.guidewire.policycenter.pages.cuenta.CuentaPage;
+import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
+
+import java.util.Map;
 
 public class CuentaNuevaSteps extends ScenarioSteps {
 
@@ -26,10 +28,20 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         return getPages().currentPageAt(InicioPage.class);
     }
 
-    private void  initRandoms(){
+    private void initRandoms() {
         cedula = gw.cedulaRandom();
         nit = gw.nitRandom();
 
+    }
+
+    @Step
+    public void crearCuentaNueva(ExamplesTable datosCotizacion) {
+        Map<String, String> datosCuenta = datosCotizacion.getRow(0);
+        abrirNuevaCuenta();
+        agregarTipoDocumento(datosCuenta.get("tipo_documento"));
+        agregarOrganizacion(datosCuenta.get("organizacion"), datosCuenta.get("agente"));
+        agregarNombre(datosCuenta.get("primer_nombre"), datosCuenta.get("primer_apellido"), datosCuenta.get("fecha_nacimiento"));
+        agregarDireccion(datosCotizacion);
     }
 
     @Step
@@ -96,12 +108,12 @@ public class CuentaNuevaSteps extends ScenarioSteps {
 
     @Step
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
-        cuentaPage.agregarOrganizacion(nombreOrganizacion,agente);
+        cuentaPage.agregarOrganizacion(nombreOrganizacion, agente);
     }
 
     @Step
-    public void agregarNombre(String primerNombre, String primerApellido, String fechaNacimiento){
-        cuentaPage.agregarNombres(primerNombre,primerApellido,fechaNacimiento);
+    public void agregarNombre(String primerNombre, String primerApellido, String fechaNacimiento) {
+        cuentaPage.agregarNombres(primerNombre, primerApellido, fechaNacimiento);
     }
 
     @Step
@@ -121,17 +133,17 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarCuenta(String nombreCuenta){
+    public void verificarCuenta(String nombreCuenta) {
         cuentaPage.verificarCuentaNumero(nombreCuenta);
     }
 
     @Step
-    public void verificarEdadMenor(String mensaje){
+    public void verificarEdadMenor(String mensaje) {
         cuentaPage.verificarMensaje(mensaje);
     }
 
     @Step
-    public void verificarMensaje(String mensaje){
+    public void verificarMensaje(String mensaje) {
         cuentaPage.verificarMensaje(mensaje);
     }
 

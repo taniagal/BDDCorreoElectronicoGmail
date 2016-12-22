@@ -23,6 +23,8 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade botonBotonCotizar;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
     private WebElementFacade comboBoxNombreAgente;
+    @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-triggerWrap']")
+    private WebElementFacade comboBoxNombreAgenteCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:SalesOrganizationType-inputEl']")
     private WebElementFacade comboBoxOrganizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:ChannelType-inputEl']")
@@ -39,6 +41,8 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade linkNombre;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:WizardMenuActions-btnInnerEl']")
     private WebElementFacade menuAcciones;
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions']")
+    private WebElementFacade menuAccionesCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:WizardMenuActions:WizardMenuActions_Create:WizardMenuActions_CopySubmission']")
     private WebElementFacade menuItemCopiarEnvio;
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
@@ -47,6 +51,8 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade numeroDeCuenta;
     @FindBy(xpath = ".//*[@id='Desktop:DesktopMenuActions:DesktopMenuActions_Create:DesktopMenuActions_NewSubmission-textEl']")
     private WebElementFacade menuItemNuevaCotizacion;
+    @FindBy(xpath = ".//*[@id='AccountFile:AccountFileMenuActions:AccountFileMenuActions_Create:AccountFileMenuActions_NewSubmission']")
+    private WebElementFacade menuItemNuevaCotizacionCuenta;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade menuItemInformacionDePoliza;
 
@@ -114,11 +120,27 @@ public class NuevaCotizacionPage extends PageUtil {
         menuItemNuevaCotizacion.waitUntilPresent().click();
     }
 
+    public void nuevaCotizacionEnCuenta() {
+        menuAccionesCuenta.waitUntilPresent();
+        clickElement(menuAccionesCuenta);
+        menuItemNuevaCotizacionCuenta.waitUntilPresent().click();
+    }
+
     public void seleccionarProducto(ExamplesTable datosCotizacion) {
         Map<String, String> dato = datosCotizacion.getRow(0);
         numeroDeCuenta.waitUntilPresent().sendKeys(dato.get("cuenta"));
         comboBoxNombreAgente.click();
         linkNombre.waitUntilVisible();
+        seleccionarProductoDesdeCuenta(datosCotizacion);
+    }
+
+    public void seleccionarAgente(){
+        comboBoxNombreAgenteCuenta.waitUntilPresent();
+        clickElement(comboBoxNombreAgenteCuenta);
+    }
+
+    public void seleccionarProductoDesdeCuenta(ExamplesTable datosCotizacion) {
+        Map<String, String> dato = datosCotizacion.getRow(0);
         Actions actions = new Actions(getDriver());
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();

@@ -38,8 +38,19 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     }
 
     @Step
+    public void nuevaCotizacionenCuenta() {
+        nuevaCotizacionPage.nuevaCotizacionEnCuenta();
+    }
+
+    @Step
     public void seleccionarProducto(ExamplesTable datosCotizacion) {
         nuevaCotizacionPage.seleccionarProducto(datosCotizacion);
+    }
+
+    @Step
+    public void seleccionarProductoDesdeCuenta(ExamplesTable datosCotizacion) {
+        nuevaCotizacionPage.seleccionarAgente();
+        nuevaCotizacionPage.seleccionarProductoDesdeCuenta(datosCotizacion);
     }
 
     @Step
@@ -63,22 +74,22 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void cotizarEnvioCopiadoPa(){
+    public void cotizarEnvioCopiadoPa() {
         nuevaCotizacionPage.cotizarEnvioCopiada();
     }
 
     @Step
-    public void clickBotonCotizar(){
+    public void clickBotonCotizar() {
         tarifaAutosPage.cotizar();
     }
 
     @Step
-    public void intentarCotizar(){
+    public void intentarCotizar() {
         tarifaAutosPage.intentarCotizar();
     }
 
     @Step
-    public void seleccionarCoberturaBasicas(ExamplesTable datosCotizacion){
+    public void seleccionarCoberturaBasicas(ExamplesTable datosCotizacion) {
         tarifaAutosPage.seleccionarCoberturas(datosCotizacion);
         tarifaAutosPage.desMarcarCoberturas();
     }
