@@ -7,12 +7,7 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class BusquedaDeOrganizacionSteps extends ScenarioSteps {
 
-    private final BusquedaDeOrganizacionPage busquedaDeOrganizacionPage = new BusquedaDeOrganizacionPage(getDriver());
-
-    public BusquedaDeOrganizacionSteps(Pages pages) {
-        super(pages);
-    }
-
+    BusquedaDeOrganizacionPage busquedaDeOrganizacionPage;
 
     @Step
     public void ingresarRazonSocial(String razonSocial) {
@@ -24,4 +19,8 @@ public class BusquedaDeOrganizacionSteps extends ScenarioSteps {
         busquedaDeOrganizacionPage.validarOrganizacion(organizacion);
     }
 
+    @Step
+    public void irABuscarOrganizaciones() {
+        busquedaDeOrganizacionPage.irABuscarOrganizaciones();
+    }
 }

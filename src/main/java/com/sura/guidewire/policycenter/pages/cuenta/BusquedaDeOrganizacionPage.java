@@ -11,9 +11,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class BusquedaDeOrganizacionPage extends PageObject {
 
-    @FindBy(xpath=".//*[@id='OrganizationSearchPage:OrganizationSearchScreen:OrganizationSearchDV:GlobalContactNameInputSet:Name-inputEl']")
+    @FindBy(xpath = ".//*[@id='OrganizationSearchPage:OrganizationSearchScreen:OrganizationSearchDV:GlobalContactNameInputSet:Name-inputEl']")
     private WebElementFacade txtRazonSocial;
-    @FindBy(xpath=".//*[@id='OrganizationSearchPage:OrganizationSearchScreen:OrganizationSearchResultsLV:0:Name']")
+    @FindBy(xpath = ".//*[@id='OrganizationSearchPage:OrganizationSearchScreen:OrganizationSearchResultsLV:0:Name']")
     private WebElementFacade linkRazonSocial;
 
     public BusquedaDeOrganizacionPage(WebDriver driver) {
@@ -29,5 +29,11 @@ public class BusquedaDeOrganizacionPage extends PageObject {
     public void validarOrganizacion(String nomOrganizacion) {
         linkRazonSocial.waitUntilClickable();
         MatcherAssert.assertThat(linkRazonSocial.getText(), Matchers.containsString(nomOrganizacion));
+    }
+
+    public void irABuscarOrganizaciones() {
+        findBy(".//*[@id='TabBar:AdminTab-btnInnerEl']").waitUntilVisible().waitUntilClickable().click();
+        findBy(".//*[@id='Admin:MenuLinks:Admin_UsersAndSecurity:UsersAndSecurity_OrganizationSearchPage']/div").waitUntilPresent().click();
+        waitForTextToAppear("Razón social");
     }
 }
