@@ -9,9 +9,10 @@ Meta:
 
 Scenario: 1 Validacion de riesgos consultables (tomador adicional,asegurador,direccion) al cotizar nueva poliza
 GivenStories: stories/policycenter/login_policy.story
-Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When copie la poliza
-And quiera agregar un tomador adicional que es riesgo consultable <cedula>
+Given estoy cotizando una poliza de mrc:
+|organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|02/12/1990      |JUAN        |ELIAS       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+When quiera agregar un tomador adicional que es riesgo consultable <cedula>
 And intente ingresar una nueva ubicacion
 And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
