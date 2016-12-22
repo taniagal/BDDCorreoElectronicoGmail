@@ -39,8 +39,26 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
         }
     }
 
-    public void validarMensaje(String mensaje) {
+    public void validarMensajeDireccion(String mensaje) {
         verificarMensaje(panelInferiorTablaDeMensajes, mensaje);
+    }
+
+    public void validarMensaje(String mensaje) {
+        String[] mensajes = mensaje.split("\\^");
+        Integer contadorMensajesOk = 0;
+        Integer numeroMensajes = mensajes.length;
+        waitFor(panelInferiorTablaDeMensajes);
+        List<WebElementFacade> mensajesRiesgos = findAll(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div");
+        for (int i = 0; i < numeroMensajes; i++) {
+            for (WebElementFacade lista : mensajesRiesgos) {
+                if (lista.getText().contains(mensajes[i])) {
+                    contadorMensajesOk++;
+                    break;
+                }
+            }
+        }
+        MatcherAssert.assertThat("Se esperaba que se mostrara mensaje", contadorMensajesOk.toString(), Is.is(Matchers.equalTo(numeroMensajes.toString())));
+        MatcherAssert.assertThat(iconoError.isVisible(), Is.is(Matchers.equalTo(true)));
     }
 
     public void borrarEspacioDeTrabajo(){
