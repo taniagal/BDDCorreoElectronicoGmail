@@ -15,8 +15,8 @@ When quiera crear una cuenta para un contacto persona natural e ingrese document
 And nombre de organizacion <nombre_organizacion> <agente>
 And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>
 And ingrese los datos de direccion:
-|direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|DIRECCION DE RESIDENCIA      |Antioquia   |Medellin|
+|direccion       |tipo_direccion         |departamento|ciudad  |
+|CALLE 54B #50-25|DIRECCION DE RESIDENCIA|Antioquia   |Medellin|
 Then se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural
 
 Examples:
