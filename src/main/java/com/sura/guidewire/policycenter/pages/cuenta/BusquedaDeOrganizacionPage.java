@@ -15,6 +15,8 @@ public class BusquedaDeOrganizacionPage extends PageObject {
     private WebElementFacade txtRazonSocial;
     @FindBy(xpath = ".//*[@id='OrganizationSearchPage:OrganizationSearchScreen:OrganizationSearchResultsLV:0:Name']")
     private WebElementFacade linkRazonSocial;
+    @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
+    private WebElementFacade campoTxtBuscar;
 
     public BusquedaDeOrganizacionPage(WebDriver driver) {
         super(driver);
@@ -32,7 +34,8 @@ public class BusquedaDeOrganizacionPage extends PageObject {
     }
 
     public void irABuscarOrganizaciones() {
-        findBy(".//*[@id='TabBar:AdminTab-btnInnerEl']").waitUntilVisible().waitUntilClickable().click();
+        campoTxtBuscar.sendKeys("Admin");
+        campoTxtBuscar.sendKeys(Keys.ENTER);
         findBy(".//*[@id='Admin:MenuLinks:Admin_UsersAndSecurity:UsersAndSecurity_OrganizationSearchPage']/div").waitUntilPresent().click();
         waitForTextToAppear("Razón social");
     }
