@@ -3,7 +3,7 @@ informacion de pago
 Meta: @lote1
 
 @issue #CDSEG-2305
-@tag automator: juan_carlos_restrepo
+@tag automator: Jonathan_Mejia_Leon
 @local
 Sprint 6
 

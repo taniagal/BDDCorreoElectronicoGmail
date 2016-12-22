@@ -3,7 +3,7 @@ Proceso De Cancelacion
 Meta: @lote1
 
 @issue #USC-14750
-@tag automator: juan_carlos_restrepo
+@tag automator: Jonathan_Mejia_Leon
 @local
 Sprint 8
 

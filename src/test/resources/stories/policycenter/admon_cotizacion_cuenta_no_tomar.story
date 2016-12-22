@@ -1,7 +1,7 @@
 Meta: @lote3
 
 @issue #SUGWUSC-14968
-@tag automator: juan_carlos_restrepo
+@tag automator: Jonathan_Mejia_Leon
 @local
 
 

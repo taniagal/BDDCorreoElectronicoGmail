@@ -1,6 +1,6 @@
 Meta: @lote3
 @issue #SUGWUSC-15127
-@tag automator: juan_carlos_restrepo
+@tag automator: Jonathan_Mejia_Leon
 @local
 Sprint 5
 

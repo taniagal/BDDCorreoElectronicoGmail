@@ -2,7 +2,7 @@ Cancelacion Poliza Claims
 
 Meta: @lote1
 @issue #CDSEG-3842
-@tag automator: juan_carlos_restrepo
+@tag automator: Jonathan_Mejia_Leon
 @local
 Sprint 9
 
