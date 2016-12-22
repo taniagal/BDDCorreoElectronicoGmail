@@ -8,10 +8,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Map;
@@ -199,9 +196,11 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private void clickVehiculoServicio() {
         comboBoxVehiculoServicio.click();
         try {
-            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, campoTxtPlaca.getText()));
+            waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, campoTxtPlaca.getText()));
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
+        } catch (NoSuchElementException f){
+            LOGGER.info("NoSuchElementException " + f);
         }
         waitUntil(WAIT_TIME_2000);
     }
