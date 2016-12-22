@@ -34,16 +34,14 @@ public class TarifaMRCPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:ComercialValue_Input-inputEl']")
     private WebElementFacade campoTxtValorComercial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:1:RateModifier-inputEl']")
-    private WebElementFacade campoTxtCalificacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:2:RateModifier-inputEl']")
     private WebElementFacade campoTxtBasico;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:3:RateModifier-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:2:RateModifier-inputEl']")
     private WebElementFacade campoTxtRotura;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:3:RateModifier-inputEl']")
     private WebElementFacade campoTxtDanioInterno;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:5:RateModifier-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-inputEl']")
     private WebElementFacade campoTxtSustraccion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:7:RateModifier-inputEl']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:5:RateModifier-inputEl']")
     private WebElementFacade campoTxtTasaGlobal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade checkBoxEdificios;
@@ -65,11 +63,11 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade radioBotonDeducibleNo;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:Modifiers']")
     private WebElementFacade menuItemModificadores;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[4]/td[3]")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[3]/td[3]")
     private WebElementFacade montoCobertura;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[6]/td[3]")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[5]/td[3]")
     private WebElementFacade montoCobertura2;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[4]/td[1]")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[3]/td[1]")
     private WebElementFacade labelDescripcionCobertura;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
@@ -169,7 +167,6 @@ public class TarifaMRCPage extends PageUtil {
         StringBuilder noPresente = new StringBuilder(MSJVALIDARELEMENTOS);
         campoTxtBasico.waitUntilPresent();
         noPresente = concatenarElementoNoPresente(campoTxtBasico, " modificador basico,", noPresente);
-        noPresente = concatenarElementoNoPresente(campoTxtCalificacion, " modificador calificacion,", noPresente);
         noPresente = concatenarElementoNoPresente(campoTxtDanioInterno, " modificador daño interno,", noPresente);
         noPresente = concatenarElementoNoPresente(campoTxtRotura, " modificador rotura,", noPresente);
         noPresente = concatenarElementoNoPresente(campoTxtSustraccion, " modificador sustraccion,", noPresente);
@@ -229,6 +226,7 @@ public class TarifaMRCPage extends PageUtil {
         if (!labelDescripcionCobertura.containsText(cobertura)) {
             montoCobertura = montoCobertura2;
         }
+        montoCobertura.waitUntilPresent();
         MatcherAssert.assertThat("Error en el valor de la cobertura Expected: " + prima + " But was: " +
                 montoCobertura.getText(), montoCobertura.containsText(prima));
     }
@@ -243,12 +241,5 @@ public class TarifaMRCPage extends PageUtil {
         int iva = (int) (primaTotal * 0.16 + 1);
         MatcherAssert.assertThat("Error en el calculo del valor del IVA , was: " + campoIva.getText(),
                 campoIva.getText().substring(1, 7).replace(".", "").equals(Integer.toString(iva)));
-    }
-
-    public void borrarArticulo() {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonBorrarArticulo).waitUntilPresent();
-        checkBoxArticulo.click();
-        botonBorrarArticulo.click();
-        waitUntil(WAIT_TIME_1500);
     }
 }
