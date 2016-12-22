@@ -2,15 +2,11 @@ package com.sura.guidewire.policycenter.pages;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
-import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class PanelSurEspacioDeTrabajoPage extends PageUtil {
@@ -19,8 +15,6 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
     WebElementFacade panelInferiorTitulo;
     @FindBy(xpath = ".//*[@id='southPanel-splitter-collapseEl']")
     WebElementFacade panelInferiorBotonArriba;
-    @FindBy(xpath = ".//img[@class='error_icon']")
-    WebElementFacade iconoError;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     WebElementFacade panelInferiorBotonBorrar;
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
@@ -40,6 +34,7 @@ public class PanelSurEspacioDeTrabajoPage extends PageUtil {
     }
 
     public void validarMensaje(String mensaje) {
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(panelInferiorTablaDeMensajes);
         verificarMensaje(panelInferiorTablaDeMensajes, mensaje);
     }
 
