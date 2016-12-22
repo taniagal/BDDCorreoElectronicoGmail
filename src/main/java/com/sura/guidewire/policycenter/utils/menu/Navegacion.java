@@ -1156,7 +1156,7 @@ public class Navegacion extends PageUtil {
     }
 
     public OpcionesResumenCuentaPage irAOpcionesResumenCuenta() {
-        mnuResumenCuenta.click();
+        clickElement(mnuResumenCuenta);
         waitUntil(WAIT_TIME_800);
         return new OpcionesResumenCuentaPage(getDriver());
     }

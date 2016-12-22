@@ -45,7 +45,7 @@ Examples:
 
 Scenario: Editar cuenta - Direccion estandarizada
 Meta:
-@Manual
+@manual
 Given que estoy en el resumen de una cuenta <numCuenta> de tipo persona juridica <tipoCuenta>
 When ingrese a editar la direccion de la cuenta e indique una direccion <direccion> que se pueda estandarizar
 Then se debe almacenar la direccion de acuerdo a la estandarizacion dada
@@ -56,7 +56,7 @@ Examples:
 
 Scenario: Editar cuenta - Direccion no estandarizada
 Meta:
-@Manual
+@manual
 Given que estoy en el resumen de una cuenta <numCuenta> de tipo persona juridica <tipoCuenta>
 When ingrese a editar la direccion de la cuenta e indique una direccion <direccion> que no se pueda estandarizar
 Then se debe almacenar la direccion como la ingreso el usuario
