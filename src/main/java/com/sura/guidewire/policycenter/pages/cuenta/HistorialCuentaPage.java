@@ -63,10 +63,12 @@ public class HistorialCuentaPage extends PageUtil {
     private WebElementFacade txtFechaDesde;
     @FindBy(xpath=".//tr[3]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade txtFechaHasta;
-    @FindBy(xpath=".//td/div/div[2]/div/table")
+    @FindBy(xpath=".//*[@id='AccountFile_History:1-body']")
     private WebElementFacade table;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:ProductFilter-inputEl']")
     private WebElementFacade txtProducto;
+    @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
+    private WebElementFacade botonRestablecer;
 
     protected static final int POSICION_4 = 4;
 
@@ -88,18 +90,6 @@ public class HistorialCuentaPage extends PageUtil {
         waitUntil(WAIT_TIME_2000);
     }
 
-    public void buscarCuenta(String numCuenta) {
-        waitFor(mnuCuenta).shouldBePresent();
-        act.sendKeys(mnuCuenta,Keys.ARROW_DOWN).build().perform();
-        act.moveToElement(txtNumCuenta).click().build().perform();
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
-        waitUntil(WAIT_TIME_2000);
-        txtNumCuenta.waitUntilEnabled();
-        txtNumCuenta.type(numCuenta);
-        btnBuscarCuenta.waitUntilEnabled();
-        btnBuscarCuenta.click();
-        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
-    }
 
     public void seleccionarHistorial() {
         clickElement(mnuHistorial);
@@ -145,6 +135,8 @@ public class HistorialCuentaPage extends PageUtil {
     }
 
     public void buscarCuentaConMultiplesOpciones(String usuario, String producto, String fechaDesde, String fechaHasta){
+        botonRestablecer.waitUntilPresent().click();
+        waitForTextToDisappear(usuario, WAIT_TIME_30000);
         txtUsuario.waitUntilEnabled();
         txtUsuario.type(usuario);
         waitFor(btnMostrarProducto).shouldBePresent();
