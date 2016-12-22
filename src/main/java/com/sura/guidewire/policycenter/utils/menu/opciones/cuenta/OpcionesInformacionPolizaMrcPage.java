@@ -50,13 +50,13 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
     WebElementFacade mensajePantalla;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguinete;
+    WebElementFacade btnSiguiente;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguineteCambioDePoliza;
+    WebElementFacade btnSiguienteCambioDePoliza;
     @FindBy(xpath = ".//input[contains(@id,'false-inputEl')]")
     WebElementFacade btnNoReaseguroEspecial;
     @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
-    WebElementFacade btnSiguineteRenovacionDePoliza;
+    WebElementFacade btnSiguienteRenovacionDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton-btnInnerEl']")
     WebElementFacade btnAgregar;
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
@@ -126,15 +126,16 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
 
     private static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
-    private static String LBL_MENSAJE_ALERTA = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
-    private static String LISTA_TIPO_BENEFICIARIO_UNO = "//div[contains(.,'Seguros Generales Suramericana S.A.') and contains(@class,'x-grid-cell-inner')]";
-    private static String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
-    private static String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
-    private static String LBL_MENU_LATERAL_INICIAL = ".//td[contains(@id,'SubmissionWizard') and contains(.,'";
-    private static String LBL_MENU_LATERAL_FINAL = "')]";
-    private static String LBL_INFORMACION_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV')]/td/div";
-    private static String LINK_MENU_LATERAL_INICIAL = ".//a[contains(@id,'SubmissionWizard') and contains(.,'";
-    private static String LINK_MENU_LATERAL_FINAL = "')]";
+    private static final String LBL_MENSAJE_ALERTA = ".//*[@id='Coinsurance_ExtPopup:_msgs']/div";
+    private static final String LISTA_TIPO_BENEFICIARIO_UNO = "//div[contains(.,'Seguros Generales Suramericana S.A.') and contains(@class,'x-grid-cell-inner')]";
+    private static final String LISTA_TIPO_BENEFICIARIO = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]";
+    private static final String BTNELEGIRPRODUCTO = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV:";
+    private static final String LBL_MENU_LATERAL_INICIAL = ".//td[contains(@id,'SubmissionWizard') and contains(.,'";
+    private static final String LBL_MENU_LATERAL_FINAL = "')]";
+    private static final String LBL_INFORMACION_POLIZA = ".//*[contains(@id,'SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV')]/td/div";
+    private static final String LINK_MENU_LATERAL_INICIAL = ".//a[contains(@id,'SubmissionWizard') and contains(.,'";
+    private static final String LINK_MENU_LATERAL_FINAL = "')]";
+    private static final String ASEGURADORA = "ASEGURADORA";
     private boolean esVisible;
     public static final String MSJVALIDARVALORES = "No estan correctos los valores:";
 
@@ -173,24 +174,24 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         waitInfoPoliza(btnSelecciona);
         btnSelecciona.waitUntilVisible().waitUntilClickable().click();
         waitInfoPoliza(lblInformaPoliza);
-        btnSiguinete.waitUntilVisible().waitUntilClickable().click();
+        btnSiguiente.waitUntilVisible().waitUntilClickable().click();
     }
 
     public void seleccionBotonSiguiente() {
-        btnSiguinete.click();
+        btnSiguiente.waitUntilVisible().waitUntilClickable().click();
     }
 
     public void seleccionBotonSiguienteenCambioDePoliza() {
         btnNoReaseguroEspecial.click();
         waitUntil(WAIT_TIME_5000);
-        btnSiguineteCambioDePoliza.click();
+        btnSiguienteCambioDePoliza.click();
         waitUntil(WAIT_TIME_5000);
         waitForTextToAppear("Edificios y ubicaciones");
     }
 
     public void seleccionBotonSiguienteenRenovacionDePoliza() {
         waitFor(WAIT_TIME_7).second();
-        btnSiguineteRenovacionDePoliza.click();
+        btnSiguienteRenovacionDePoliza.click();
     }
 
     public void seleccionaRiesgoAceptado() {
@@ -285,11 +286,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 radioButtonCedido.click();
             }
         } else {
-            {
-                waitUntil(WAIT_TIME_2000);
-                radioButtonAceptado.click();
-            }
+            waitUntil(WAIT_TIME_2000);
+            radioButtonAceptado.click();
         }
+
     }
 
     public void agregoLasAseguradoras(ExamplesTable tablaaseguradoras) {
@@ -299,8 +299,8 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         for (int i = 0; i < tablaaseguradoras.getRowCount(); i++) {
             asegurados = tablaaseguradoras.getRows().get(i);
             if (i == 0) {
-                if (!"Seguros Generales Suramericana S.A.".equals(asegurados.get("ASEGURADORA"))) {
-                    desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO_UNO, asegurados.get("ASEGURADORA"));
+                if (!"Seguros Generales Suramericana S.A.".equals(asegurados.get(ASEGURADORA))) {
+                    desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO_UNO, asegurados.get(ASEGURADORA));
                 }
                 waitFor(WAIT_TIME_2).second();
                 clickElement(findBy(LISTA_TIPO_BENEFICIARIO_UNO));
@@ -309,7 +309,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
             } else {
-                desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO, asegurados.get("ASEGURADORA"));
+                desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO, asegurados.get(ASEGURADORA));
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
@@ -452,7 +452,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         List<WebElementFacade> listaElementos = findAll(By.xpath(elementos));
         for (WebElementFacade listaElemento : listaElementos) {
             MatcherAssert.assertThat("El campo " + listaElemento.getTagName() + "es editable, lo cual es un error.Verificar",
-                    !listaElemento.getAttribute("class").contains("x-form-text") || !listaElemento.getAttribute("class").contains("x-form-text"));
+                    !listaElemento.getAttribute("class").contains("x-form-text"));
         }
     }
 
@@ -477,7 +477,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         }
     }
 
-    // TODO: 30/06/2016 Metodo wait para implementar generico
     public void waitInfoPoliza(WebElementFacade webElementFacade) {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
     }
