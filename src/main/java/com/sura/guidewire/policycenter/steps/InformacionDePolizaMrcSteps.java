@@ -97,6 +97,11 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
+    public void seleccionarOpcionCotizarPolizaPrincipal(){
+        opcionesInformacionPolizaMrcPage.seleccionarOpcionCotizarPolizaPrincipal();
+    }
+
+    @Step
     public void agrego_un_coaseguro(String tipoCo, ExamplesTable tablaaseguradoras) {
         opcionesInformacionPolizaMrcPage.agregarUnCoaseguro(tipoCo, tablaaseguradoras);
     }

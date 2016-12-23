@@ -203,25 +203,6 @@ public class TarifaMRCPage extends PageUtil {
                 campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0, 7).replace(".", ",")));
     }
 
-
-    public void ingresarTasaGlobal(String valor) {
-        labelPrimaTotal.waitUntilPresent();
-        verificarValorIva();
-        menuItemModificadores.click();
-        campoTxtTasaGlobal.waitUntilPresent();
-        botonEditarTransaccionDePoliza.click();
-        botonAceptarPopup.waitUntilPresent().click();
-        botonAceptarPopup.waitUntilNotVisible();
-        waitUntil(WAIT_TIME_500);
-        campoTxtTasaGlobal.clear();
-        campoTxtTasaGlobal.sendKeys(valor);
-        botonSiguiente.click();
-    }
-
-    public void verificarMensaje(String mensaje) {
-        verificarMensaje(divMensaje, mensaje);
-    }
-
     public void verificarTarifacionEnCobertura(String prima) {
         if (!labelDescripcionCobertura.containsText(cobertura)) {
             montoCobertura = montoCobertura2;
