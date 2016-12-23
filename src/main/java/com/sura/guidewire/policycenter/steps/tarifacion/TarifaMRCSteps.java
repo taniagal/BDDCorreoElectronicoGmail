@@ -69,16 +69,6 @@ public class TarifaMRCSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarMensaje(String mensaje) {
-        tarifaMRCPage.verificarMensaje(mensaje);
-    }
-
-    @Step
-    public void ingresarTasaGlobal(String valor) {
-        tarifaMRCPage.ingresarTasaGlobal(valor);
-    }
-
-    @Step
     public void verificarTarifacionEnCobertura(String prima) {
         tarifaMRCPage.verificarTarifacionEnCobertura(prima);
     }

@@ -243,6 +243,12 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         waitForTextToAppear("Cotización");
     }
 
+    public void seleccionarOpcionCotizarPolizaPrincipal() {
+        botonCotizar.waitUntilPresent();
+        clickElement(botonCotizar);
+        waitForTextToAppear("Número de cotización");
+    }
+
     public Integer encontrarProducto(String producto) {
         withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(tablaProductos).waitUntilVisible();
         Integer filaBoton = 0;

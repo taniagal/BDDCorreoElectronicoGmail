@@ -137,7 +137,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         if (!"random".equals(vehiculo.get("placa"))) {
             ingresarDato(campoTxtPlaca, vehiculo.get("placa"));
         } else {
-            String placa = "QWE" + (int) Math.floor(Math.random() * (100 - 999) + 999);
+            String placa = "QWE" + (int) Math.floor(Math.random() * (1000 - 9999) + 9999);
             campoTxtPlaca.clear();
             try {
                 ingresarDato(campoTxtPlaca, placa);
