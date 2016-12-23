@@ -163,7 +163,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     private void waitForValorAsegurado(Map<String, String> vehiculo) {
         try {
-            withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
+            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
         } catch (ElementNotVisibleException e) {
             LOGGER.info("ElementNotVisible at ValidacionesInformacionDeVehiculo Page 140 " + e);
         }
