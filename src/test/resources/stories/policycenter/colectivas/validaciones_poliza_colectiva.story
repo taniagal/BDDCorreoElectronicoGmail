@@ -2,7 +2,7 @@ Validaciones Poliza colectiva
 
 
 Meta:
-@lote2
+@lote1
 @Story CDSEG-4620 @Story CDSEG-4618
 @URL https://jira.suramericana.com.co/browse/CDSEG-
 @tag automator:juan_gabriel_zapata
@@ -95,7 +95,7 @@ Examples:
 
 Scenario: 5 Validacion de campos en menu lateral y opcion cotizacion ern poliza principal
 Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
-When cotice una poliza
+When cotice una poliza principal
 Then deben estar en estado <estadouno> las siguientes opciones
 | OPCIONES_MENU   |
 | Formularios     |
