@@ -1,6 +1,6 @@
 Cobertura Deterioro Bienes Refrigerados
 
-Meta: @lote2
+Meta: @lote4
 @Story CDSEG-943
 @URL https://jira.suramericana.com.co/browse/CDSEG-943
 @tag automator:andres_alarcon_guerrero, informer:alejandro_esteban_villada_marin, sprint:5
