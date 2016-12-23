@@ -293,7 +293,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void agregoLasAseguradoras(ExamplesTable tablaaseguradoras) {
-
         Map<String, String> asegurados;
         Actions act = new Actions(getDriver());
         for (int i = 0; i < tablaaseguradoras.getRowCount(); i++) {
@@ -310,6 +309,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
             } else {
                 desplegarListaTipoAsegurado(LISTA_TIPO_BENEFICIARIO, asegurados.get(ASEGURADORA));
+                waitFor(WAIT_TIME_2).second();
                 act.sendKeys(Keys.TAB).build().perform();
                 act.sendKeys(Keys.ENTER).build().perform();
                 act.sendKeys(asegurados.get("PARTICIPACION")).build().perform();
