@@ -228,7 +228,7 @@ public class CotizacionDePolizaPage extends PageUtil {
 
     public void validarCargueCotizacion() {
         WebElementFacade labelCotizacion = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']");
-        withTimeoutOf(30,TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelCotizacion).shouldBeVisible();
         MatcherAssert.assertThat(labelCotizacion.getText(), Matchers.is(Matchers.equalTo("Cotización")));
     }
 }
