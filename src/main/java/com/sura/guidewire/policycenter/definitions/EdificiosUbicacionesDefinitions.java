@@ -72,23 +72,7 @@ public class EdificiosUbicacionesDefinitions {
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
 
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
-        int index = 0;
-        for (Map<String, String> entradaCobertura : entradas.getRows()) {
-            index++;
-            String tab = entradaCobertura.get("TAB");
-            String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
-            String cobertura = entradaCobertura.get("COBERTURA");
-            String entrada = entradaCobertura.get("ENTRADAS");
-            boolean esOtroArticulo = false;
-            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))) {
-                esOtroArticulo = true;
-            }
-            boolean esUltimaFilaDeExampleTable = index == entradas.getRows().size();
-            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
-
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
-        }
-
+        edificiosUbicacionesSteps.ingresarCoberturas(entradas);
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
 
@@ -97,25 +81,9 @@ public class EdificiosUbicacionesDefinitions {
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
 
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
-        int index = 0;
-        for (Map<String, String> entradaCobertura : entradatable.getRows()) {
-            index++;
-            String tab = entradaCobertura.get("TAB");
-            String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
-            String cobertura = entradaCobertura.get("COBERTURA");
-            String entrada = entradaCobertura.get("ENTRADAS");
-            boolean esOtroArticulo = false;
-            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))) {
-                esOtroArticulo = true;
-            }
-            boolean esUltimaFilaDeExampleTable = index == entradatable.getRows().size();
-            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
-
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
-        }
+        edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
         edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
         edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
-
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
         edificiosUbicacionesSteps.seleccionar_boton_cotizar();
 
@@ -125,22 +93,7 @@ public class EdificiosUbicacionesDefinitions {
     public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
 
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion_en_cambio_de_poliza();
-        int index = 0;
-        for (Map<String, String> entradaCobertura : entradatable.getRows()) {
-            index++;
-            String tab = entradaCobertura.get("TAB");
-            String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
-            String cobertura = entradaCobertura.get("COBERTURA");
-            String entrada = entradaCobertura.get("ENTRADAS");
-            boolean esOtroArticulo = false;
-            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))) {
-                esOtroArticulo = true;
-            }
-            boolean esUltimaFilaDeExampleTable = index == entradatable.getRows().size();
-            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
-
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
-        }
+        edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
         edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
         edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
 
@@ -153,25 +106,9 @@ public class EdificiosUbicacionesDefinitions {
     public void cuandoIntenteIngresarLasEntradasEnRenovacionDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
 
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion_en_renovacion_de_poliza();
-        int index = 0;
-        for (Map<String, String> entradaCobertura : entradatable.getRows()) {
-            index++;
-            String tab = entradaCobertura.get("TAB");
-            String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
-            String cobertura = entradaCobertura.get("COBERTURA");
-            String entrada = entradaCobertura.get("ENTRADAS");
-            boolean esOtroArticulo = false;
-            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))) {
-                esOtroArticulo = true;
-            }
-            boolean esUltimaFilaDeExampleTable = index == entradatable.getRows().size();
-            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
-
-            edificiosUbicacionesSteps.ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
-        }
+        edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
         edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
         edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
-
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
         edificiosUbicacionesSteps.seleccionar_boton_cotizar();
 
