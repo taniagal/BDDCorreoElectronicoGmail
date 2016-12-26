@@ -76,8 +76,6 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     private WebElementFacade tipoPlazoPoliza;
     @FindBy(xpath = ".//tr[5]/td/table/tbody/tr/td[2]/table/tbody/tr/td[2]/div")
     private WebElementFacade botonTipoPlazo;
-    @FindBy(xpath = ".//li")
-    private WebElementFacade itemTipoPlazo;
     @FindBy(xpath = ".//tr[12]/td/table/tbody/tr/td[2]/table/tbody/tr/td[3]/a/img")
     private WebElementFacade botonAseguradoSecundario;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:SecondaryNamedInsuredInputSet:ChangeSecondaryNamedInsuredButton:SecondaryNamedInsuredABContactAdder-textEl']")
@@ -147,11 +145,7 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']/div")
     private WebElementFacade mensajeFinanciacion;
     
-    private static final int CONSTANTE_10 = 10;
-    private static final int CONSTANTE_6 = 6;
-    private static final int CONSTANTE_5 = 5;
     private static final int CONSTANTE_50 = 50;
-    private static final int CONSTANTE_2 = 2;
 
     public OpcionesInformacionPolizaPage(WebDriver driver) {
         super(driver);
@@ -433,4 +427,3 @@ public class OpcionesInformacionPolizaPage extends PageUtil {
         MatcherAssert.assertThat(mensajeFinanciacion.getText(),Is.is(Matchers.equalTo(mensaje)));
     }
 }
-

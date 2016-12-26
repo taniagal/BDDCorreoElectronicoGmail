@@ -17,8 +17,6 @@ import java.util.concurrent.TimeUnit;
 
 
 public class CambioDePolizaPage extends PageUtil {
-    @FindBy(xpath = ".//*[@id='TabBar:DesktopTab-btnInnerEl']")
-    WebElementFacade botonInicio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
     WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
@@ -47,12 +45,8 @@ public class CambioDePolizaPage extends PageUtil {
     WebElementFacade lblinicioCambioPoliza;
     @FindBy(xpath = ".//span[contains(@id,'PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_ChangePolicy-textEl')]")
     WebElementFacade opcionCambiarPoliza;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:_msgs']")
-    WebElementFacade panelMensaje;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
     WebElementFacade radioBotonReaseguroEspeciaSi;
-
-    private static final int CONSTANTE_5 = 5;
 
 
     public CambioDePolizaPage(WebDriver driver) {
