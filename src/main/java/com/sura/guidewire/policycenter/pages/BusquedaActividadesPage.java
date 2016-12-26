@@ -46,7 +46,7 @@ public class BusquedaActividadesPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitiesSearchLV-body']")
     private WebElementFacade tablaActividades;
 
-    private static final int CONSTANTE_8 = 8;
+    private static final int CONSTANTE_7 = 7;
 
 
     public BusquedaActividadesPage(WebDriver driver) {
@@ -69,10 +69,10 @@ public class BusquedaActividadesPage extends PageUtil {
     }
 
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
+        actions.click(btnBuscar).build().perform();
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
         waitForTextToAppear(exampleTable.get("asunto"), WAIT_TIME_30000);
         String xpathTabla = "//tr[" + this.encontrarActividad(exampleTable.get("id")).toString() + "]";
-        actions.click(btnBuscar).build().perform();
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[4]/div").waitUntilVisible().getText(), Is.is(Matchers.notNullValue()));
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[5]/div").getText(), Is.is(Matchers.equalTo(exampleTable.get("prioridad"))));
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[6]/div").getText(), Is.is(Matchers.equalTo(exampleTable.get("estadoActividad"))));
@@ -90,7 +90,7 @@ public class BusquedaActividadesPage extends PageUtil {
         List<WebElement> filas = tablaActividades.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (idActividad.equals(columna.get(CONSTANTE_8).getText())) {
+            if (idActividad.equals(columna.get(CONSTANTE_7).getText())) {
                 return filaActividad;
             }
             filaActividad++;
