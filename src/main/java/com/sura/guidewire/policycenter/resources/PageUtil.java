@@ -44,6 +44,10 @@ public class PageUtil extends PageObject {
     protected static final int WAIT_TIME_3 = 3;
     protected static final int WAIT_TIME_2 = 2;
     protected static final int WAIT_TIME_1 = 1;
+    protected static final int CONSTANTE_10000000 = 10000000;
+    protected static final int CONSTANTE_99999999 = 99999999;
+    protected static final int CONSTANTE_900000000 = 900000000;
+    protected static final int CONSTANTE_999999999 = 999999999;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
 
@@ -193,7 +197,7 @@ public class PageUtil extends PageObject {
      * @return numero de cedula de 8 digitos
      */
     public String cedulaRandom() {
-        int cedula = (int) Math.floor(Math.random() * (10000000 - 99999999) + 99999999);
+        int cedula = (int) Math.floor(Math.random() * (CONSTANTE_10000000 - CONSTANTE_99999999) + CONSTANTE_99999999);
         return Integer.toString(cedula);
     }
 
@@ -203,7 +207,7 @@ public class PageUtil extends PageObject {
      * @return numero de nit de 9 digitos
      */
     public String nitRandom() {
-        int nit = (int) Math.floor(Math.random() * (900000000 - 999999999) + 999999999);
+        int nit = (int) Math.floor(Math.random() * (CONSTANTE_900000000 - CONSTANTE_999999999) + CONSTANTE_999999999);
         return Integer.toString(nit);
     }
 

@@ -5,7 +5,6 @@ import com.sura.guidewire.policycenter.pages.EdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
-import net.thucydides.core.requirements.model.Example;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 

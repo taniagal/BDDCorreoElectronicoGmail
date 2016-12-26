@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
-import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -9,7 +8,6 @@ import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -21,12 +19,8 @@ public class RenovacionDeseoFinanciacionPaPage extends PageUtil {
     private WebElementFacade grupoMensajesValidacion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
     private WebElementFacade mensajeValidacion;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:_msgs']")
-    private WebElementFacade mensajesAdvertencia;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade menuItemInformacionDePoliza;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:ViewQuote']/div")
-    private WebElementFacade menuItemCotizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:FundedPolicyInputSet:QuestionFundedPolicy_true-inputEl']")
     private WebElementFacade radioBotonDeseaFinanciarLaPolizaSi;
 
