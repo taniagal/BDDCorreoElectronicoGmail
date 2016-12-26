@@ -52,6 +52,8 @@ public class CambioDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
     WebElementFacade radioBotonReaseguroEspeciaSi;
 
+    private static final int CONSTANTE_5 = 5;
+
 
     public CambioDePolizaPage(WebDriver driver) {
         super(driver);
@@ -109,7 +111,7 @@ public class CambioDePolizaPage extends PageUtil {
         campoTxtFechaInicioDeVigencia.sendKeys(fecha);
         clickElement(comboBoxTipoPlazo);
         try {
-            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(campoTxtFechaFinDeVigencia, fecha.substring(0, 5)));
+            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElement(campoTxtFechaFinDeVigencia, fecha.substring(0, WAIT_TIME_5)));
         }catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
         }

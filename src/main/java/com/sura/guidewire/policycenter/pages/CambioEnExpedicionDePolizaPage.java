@@ -3,16 +3,13 @@ package com.sura.guidewire.policycenter.pages;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
-import org.hamcrest.core.Is;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
 
-public class CambioEnExpedicionDePolizaPage extends PageUtil{
-    @FindBy(xpath=".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange']")
+public class CambioEnExpedicionDePolizaPage extends PageUtil {
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:BindPolicyChange']")
     WebElementFacade botonExpedirPoliza;
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     WebElementFacade botonAceptarMensaje;
@@ -25,7 +22,7 @@ public class CambioEnExpedicionDePolizaPage extends PageUtil{
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     WebElementFacade msjAdvertenciaCaja;
 
-    public CambioEnExpedicionDePolizaPage(WebDriver driver){
+    public CambioEnExpedicionDePolizaPage(WebDriver driver) {
         super(driver);
     }
 
