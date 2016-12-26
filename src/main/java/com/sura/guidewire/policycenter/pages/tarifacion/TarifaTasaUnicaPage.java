@@ -19,8 +19,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade botonExportarAHojaDeCalculo;
     @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:NewPolicyChange']")
     private WebElementFacade botonSiguienteCambioDePoliza;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
-    private WebElementFacade botonEditarTransaccionDePoliza;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
     private WebElementFacade botonEditarTransaccionDePolizaInfo;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:JobWizardToolbarButtonSet:EditPolicy']")
@@ -43,8 +41,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade menuItemExportar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:Spreadsheet:Import-textEl']")
     private WebElementFacade menuItemImportar;
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
-    private WebElementFacade menuPoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:WizardMenuActions']")
     private WebElementFacade menuAccionesEnvio;
     @FindBy(xpath = ".//*[@id='PolicyFile:PolicyFileMenuActions']")
@@ -61,8 +57,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade menuiItemAsegurados;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:ViewQuote']/div")
     private WebElementFacade menuiItemCotizacion;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']/div")
-    private WebElementFacade menuiItemInformacionDePoliza;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PolicyInfo']/div")
     private WebElementFacade menuItemInformacionDePolizaRenovacion;
     @FindBy(xpath = ".//*[@id='ExcelExportPopup:Export-inputEl']")
@@ -203,7 +197,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         botonHojaDeCalculoRenovacion.waitUntilPresent();
         waitUntil(WAIT_TIME_7000);
         clickElement(botonSiguiente);
-        setImplicitTimeout(3, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
         if (!botonEditarTransaccionDePolizaAsegurado.isPresent()) {
             clickElement(botonVolver);
             waitUntil(WAIT_TIME_3000);
