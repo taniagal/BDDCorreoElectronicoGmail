@@ -5,8 +5,11 @@ import com.sura.guidewire.policycenter.pages.EdificiosyUbicacionesWidget;
 import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
+import net.thucydides.core.requirements.model.Example;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
+
+import java.util.Map;
 
 public class EdificiosUbicacionesSteps extends ScenarioSteps {
 
@@ -132,6 +135,24 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
         }
 
         return mensajeStepReporte;
+    }
+    public void ingresarCoberturas(ExamplesTable entradas){
+        int index = 0;
+        for (Map<String, String> entradaCobertura : entradas.getRows()) {
+            index++;
+            String tab = entradaCobertura.get("TAB");
+            String tipoArticulo = entradaCobertura.get("TIPO_ARTICULO");
+            String cobertura = entradaCobertura.get("COBERTURA");
+            String entrada = entradaCobertura.get("ENTRADAS");
+            boolean esOtroArticulo = false;
+            if ("X".equals(entradaCobertura.get("OTRO_ARTICULO_OTROS"))) {
+                esOtroArticulo = true;
+            }
+            boolean esUltimaFilaDeExampleTable = index == entradas.getRows().size();
+            String valorEntrada = entradaCobertura.get("VALOR_ENTRADAS");
+
+            ingresarValorDeEntradaDeLaCoberturaDelRiesgo(tab, cobertura, entrada, valorEntrada, tipoArticulo, esOtroArticulo, esUltimaFilaDeExampleTable);
+        }
     }
 
     // TODO: 01/09/2016 code smell
