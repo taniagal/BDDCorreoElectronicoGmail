@@ -18,7 +18,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
     private WebElementFacade botonBorrar;
     private int numeroDeRiesgos;
     private static String xPathSolicitarAprobacion = ".//*[contains(@id,'Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet') and contains(@id,'UWIssueRowSet:RequestApproval')]";
-    private final static String LABRL_ANALISIS_DE_RIESGO = "Análisis de riesgo"; 
+    private static final String LABRL_ANALISIS_DE_RIESGO = "Análisis de riesgo";
     public AnalisisDeRiesgosPage(WebDriver driver) {
         super(driver);
     }
