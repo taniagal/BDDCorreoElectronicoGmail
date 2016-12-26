@@ -4,9 +4,7 @@ package com.sura.guidewire.policycenter.pages.renovacion;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -45,6 +43,7 @@ public class ReglasRenovacionDosPage extends PageUtil {
 
     private static final int CONSTANTE_8 = 8;
     private static final double CONSTANTE_02 = 0.2;
+    private static final int CONSTANTE_3 = 3;
 
 
     public ReglasRenovacionDosPage(WebDriver driver) {
@@ -55,7 +54,7 @@ public class ReglasRenovacionDosPage extends PageUtil {
     *El metodo contiene los waitUntil debido que espera un refresh en la pantalla para la aparicion de un botón
     */
     public void clicHastaVehiculo() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < CONSTANTE_3; i++) {
             setImplicitTimeout(0, TimeUnit.SECONDS);
             if (!botonCotizar.isPresent()) {
                 waitUntil(WAIT_TIME_3000);

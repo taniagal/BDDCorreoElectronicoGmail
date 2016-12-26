@@ -95,6 +95,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
 
     private static final String SUBMITIONXPATH = ".//img[contains(@id,'SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
     private static final String DECLINELETTER = "//a[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
+    private static final String BOTON_ACCIONES_1 = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:";
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(OpcionesAdminitradorCotizaciones.class);
     private static final int CONSTANTE_7 = 7;
     private static final int CONSTANTE_6 = 6;
@@ -304,30 +305,30 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
 
     public void seleccionarAccionesDeclinar() {
         Integer fila = this.encontrarCotizacion(numeroCotizacionDeclinar);
-        botonAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + fila.toString() + ":SubmissionActions:SubmissionActionsMenuIcon']");
+        botonAcciones = findBy(BOTON_ACCIONES_1 + fila.toString() + ":SubmissionActions:SubmissionActionsMenuIcon']");
         botonAcciones.waitUntilVisible().waitUntilClickable().click();
-        WebElementFacade opcionDeclinar = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + fila.toString() + ":SubmissionActions:SubmissionActionsMenuItemSet:Decline']");
+        WebElementFacade opcionDeclinar = findBy(BOTON_ACCIONES_1 + fila.toString() + ":SubmissionActions:SubmissionActionsMenuItemSet:Decline']");
         opcionDeclinar.waitUntilVisible().waitUntilClickable().click();
     }
 
     public void seleccionarAccionesNoTomar() {
         Integer fila = this.encontrarCotizacion(numeroCotizacionNoTomar);
-        botonAcciones = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + fila.toString() + ":SubmissionActions:SubmissionActionsMenuIcon']");
+        botonAcciones = findBy(BOTON_ACCIONES_1 + fila.toString() + ":SubmissionActions:SubmissionActionsMenuIcon']");
         botonAcciones.waitUntilVisible().waitUntilClickable().click();
-        WebElementFacade opcionNoTomar = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + fila.toString() + ":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']");
+        WebElementFacade opcionNoTomar = findBy(BOTON_ACCIONES_1 + fila.toString() + ":SubmissionActions:SubmissionActionsMenuItemSet:NotTakenJob']");
         opcionNoTomar.waitUntilVisible().waitUntilClickable().click();
     }
 
     public Integer encontrarCotizacion(String cotizacion) {
         waitForTextToAppear(cotizacion);
         Integer filaBoton = 0;
-        WebElementFacade filaCotizacion = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + filaBoton + ":SubmissionNumber']");
+        WebElementFacade filaCotizacion = findBy(BOTON_ACCIONES_1 + filaBoton + ":SubmissionNumber']");
         while (filaCotizacion.isVisible()) {
             if (filaCotizacion.getText().equals(cotizacion)) {
                 return filaBoton;
             } else {
                 filaBoton++;
-                filaCotizacion = findBy(".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:" + filaBoton + ":SubmissionNumber']");
+                filaCotizacion = findBy(BOTON_ACCIONES_1 + filaBoton + ":SubmissionNumber']");
             }
         }
         return filaBoton;

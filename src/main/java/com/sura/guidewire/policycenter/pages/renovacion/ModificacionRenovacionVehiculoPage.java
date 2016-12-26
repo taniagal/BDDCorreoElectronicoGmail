@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
-import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
