@@ -13,7 +13,7 @@ Scenario:  1 Validacion de campos obligatorios en tipo de coaseguro aceptado
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|02/12/1990      |PACHO        |ANTONIA       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+|Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|23/12/1982      |PACHO        |ANTONIA       |DIRECCION DE RESIDENCIA|CALLE 58C #50-39|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
@@ -37,7 +37,7 @@ Examples:
 Scenario:  2 Validacion de campo Numero de documento en tipo de coaseguro cedido
 Given estoy cotizando una poliza de mrc:
 |organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|02/12/1990      |ZACARIAS        |ALBERTO       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+|Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|02/12/1990      |ZACARIAS        |ALBERTO       |DIRECCION DE RESIDENCIA|CALLE 50A #24-10|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
@@ -55,7 +55,7 @@ Examples:
 Scenario:  3 Validacion de coaseguro no editable en resumen e informacion de poliza
 Given estoy cotizando una poliza de mrc:
 |organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|02/12/1990      |SCHUMACHER        |JAIR       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+|Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|22/01/1985      |SCHUMACHER        |JAIR       |DIRECCION DE RESIDENCIA|CALLE 47D #35-10|Antioquia   |Medellin|INT-3 |
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
 And quiero agregar un coaseguro <TipoCo> con particion de aseguradoras
