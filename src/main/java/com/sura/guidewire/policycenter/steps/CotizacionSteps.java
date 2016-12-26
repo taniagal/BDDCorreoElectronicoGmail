@@ -1,8 +1,6 @@
 package com.sura.guidewire.policycenter.steps;
 
 
-import com.sura.guidewire.policycenter.utils.navegacion.PanelIzquierdoElement;
-import com.sura.guidewire.policycenter.utils.navegacion.PanelSuperiorElement;
 import com.sura.guidewire.policycenter.pages.CotizacionPage;
 import java.io.Serializable;
 import net.thucydides.core.annotations.ManagedPages;
@@ -20,8 +18,6 @@ public class CotizacionSteps extends ScenarioSteps implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private PanelSuperiorElement panelSuperior;
-    private PanelIzquierdoElement panelIzquierdo;
     private CotizacionPage cotizacionPage;
 
     @ManagedPages

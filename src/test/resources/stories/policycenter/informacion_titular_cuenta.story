@@ -24,8 +24,8 @@ And debe mostrarme Numero de poliza <numeroPoliza>, producto <producto>, asegura
 And los campos que se muestren no deben permitir la edicion, es decir, todos los campos seran solo informativos.
 
 Examples:
-|tipoDoc             |nombre  |apellido|informacionBasica                   |metricas                     |transacciones                     |siniestros         |anioVigencia                        |canceladoPorCliente|canceladoPorCompania|otrasCancelaciones|primaVitalicia |totalSiniestrosAbiertos|totalNetoIncurrido  | nombreCompleto                |fechaCreacion     | nroPoliza    | producto | nroTransaccion     | tipo | estado |numeroPoliza     |producto| asegurado | fechaPerdida        | numeroSiniestros     | estado|totalIncurrido  |
-|CEDULA DE CIUDADANIA|Yurledys|Gallego |Información del titular de la cuenta|Métricas de valor del cliente|Transacciones de póliza pendientes|Siniestros abiertos|Año de vigencia de la primera póliza|0                  |0                   |0                 |Prima vitalicia|0                      |Total neto incurrido| YURLEDYS PAOLA GALLEGO TORRES |Fecha de creación | N° de póliza | Producto | N.º de transacción | Tipo | Estado |Número de póliza |Producto| Asegurado | Fecha de la pérdida | Número de siniestros | Estado|Total incurrido |
+| tipoDoc              | nombre   | apellido | informacionBasica                    | metricas                      | transacciones                      | siniestros          | anioVigencia                         | canceladoPorCliente | canceladoPorCompania | otrasCancelaciones | primaVitalicia  | totalSiniestrosAbiertos | totalNetoIncurrido   | nombreCompleto                | fechaCreacion     | nroPoliza    | producto | nroTransaccion     | tipo | estado | numeroPoliza     | producto | asegurado | fechaPerdida        | numeroSiniestros     | estado | totalIncurrido  |
+| CEDULA DE CIUDADANIA | Yurledys | Gallego  | Información del titular de la cuenta | Métricas de valor del cliente | Transacciones de póliza pendientes | Siniestros abiertos | Año de vigencia de la primera póliza | 0                   | 0                    | 0                  | Prima vitalicia | 0                       | Total neto incurrido | YURLEDYS PAOLA GALLEGO TORRES | Fecha de creación | N° de póliza | Producto | N.º de transacción | Tipo | Estado | Número de póliza | Producto | Asegurado | Fecha de la pérdida | Número de siniestros | Estado | Total incurrido |
 
 
 Scenario: Mostrar campos fecha de fallecimiento y causa de fallecimiento
@@ -36,16 +36,18 @@ When ingrese a informacion del titular de la cuenta
 Then los campos fecha de fallecimiento <fechaFallecimiento> y causa de fallecimiento <causaFallecimiento> se deben mostrar unicamente cuando tengan informacion relacionada, de lo contrario estos campos deben permanecer ocultos.
 And si el dato actividad economica esta vacio, este campo se debe ocultar, de lo contrario, se debe mostrar la actividad economica normalmente.
 Examples:
-| tipoDoc              | nombre  | apellido  | fechaFallecimiento     | causaFallecimiento |actividadEconomica  |
-| CEDULA DE CIUDADANIA | ALFREDO | Antioquia | Fecha de fallecimiento | ACCIDENTE          |Actividad económica |
+| tipoDoc              | nombre  | apellido  | fechaFallecimiento     | causaFallecimiento | actividadEconomica  |
+| CEDULA DE CIUDADANIA | ALFREDO | Antioquia | Fecha de fallecimiento | ACCIDENTE          | Actividad económica |
 
 Scenario: Informacion basica
 Meta:
 @manual
 Given que existe titular de la cuenta
 When ingrese a informacion del titular de la cuenta
-Then debe mostrarme en la informacion basica: Titular de la cuenta <titularCuenta>, tipo de documento <tipoDocumento>, Nro de documento <nroDocumento>, prima en vigencia <primaVigencia>, Segmentacion <segmentacion>, Comportamiento <comportamiento>, Total no Facturado <totalNoFacturado>, total actualmente facturado <totalFacturado>, total vencido <totalVencido> y total pendiente <totalPendiente>.
+Then debe mostrarme en la informacion basica: Titular de la cuenta, tipo de documento, Nro de documento, prima en vigencia, Segmentacion, Comportamiento, Total no Facturado, total actualmente facturado total vencido y total pendiente
+| titularCuenta | tipoDocumento | nroDocumento | primaVigencia | segmentacion | comportamiento | totalNoFacturado | totalFacturado | totalVencido | totalPendiente |
+|               |               |              |               |              |                |                  |                |              |                |
 
 Examples:
-| |
-| |
+|  |
+|  |
