@@ -46,6 +46,9 @@ public class BusquedaActividadesPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='ActivitySearch:ActivitySearchScreen:ActivitiesSearchLV-body']")
     private WebElementFacade tablaActividades;
 
+    private static final int CONSTANTE_8 = 8;
+
+
     public BusquedaActividadesPage(WebDriver driver) {
         super(driver);
     }
@@ -86,7 +89,7 @@ public class BusquedaActividadesPage extends PageUtil {
         List<WebElement> filas = tablaActividades.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
-            if (idActividad.equals(columna.get(8).getText())) {
+            if (idActividad.equals(columna.get(CONSTANTE_8).getText())) {
                 return filaActividad;
             }
             filaActividad++;

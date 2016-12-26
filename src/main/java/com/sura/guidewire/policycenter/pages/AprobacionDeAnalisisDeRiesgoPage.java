@@ -43,7 +43,7 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
     }
 
     public void expedirPoliza() {
-        setImplicitTimeout(2, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
         if (!botonExpedirPoliza.isPresent()){
             clickElement(menuItemCotizacion);
         }
