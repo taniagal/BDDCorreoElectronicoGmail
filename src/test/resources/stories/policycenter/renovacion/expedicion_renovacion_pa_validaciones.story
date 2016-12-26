@@ -1,7 +1,7 @@
 Expedicion Renovacion Pa Validaciones
 
-Meta: @lote2
-
+Meta:
+@lote3
 @issue #CDSEG-2296
 @tag automator: diego_cardona_acevedo
 @local

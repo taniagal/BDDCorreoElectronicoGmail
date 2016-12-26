@@ -18,7 +18,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
     private WebElementFacade botonBorrar;
     private int numeroDeRiesgos;
     private static String xPathSolicitarAprobacion = ".//*[contains(@id,'Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet') and contains(@id,'UWIssueRowSet:RequestApproval')]";
-
+    private final static String LABRL_ANALISIS_DE_RIESGO = "Análisis de riesgo"; 
     public AnalisisDeRiesgosPage(WebDriver driver) {
         super(driver);
     }
@@ -56,10 +56,10 @@ public class AnalisisDeRiesgosPage extends PageUtil {
 
         if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
             findBy(xpathAnalisisRiesgos).click();
-            waitForTextToAppear("Análisis de riesgo");
+            waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
         } else {
             findBy(xpathAnalisisRiesgos).click();
-            waitForTextToAppear("Análisis de riesgo");
+            waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
         }
 
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
@@ -76,11 +76,11 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         String xpathMensajeAlertaEdificiosYUbicaciones = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:_msgs']";
         String xpathBorrarWorkskpace = ".//a[contains(.,'Borrar')]";
         findBy(xpathAnalisisRiesgos).click();
-        waitForTextToAppear("Análisis de riesgo");
+        waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
         waitFor(WAIT_TIME_2).second();
         if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
             findBy(xpathAnalisisRiesgos).click();
-            waitForTextToAppear("Análisis de riesgo");
+            waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
         }
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
             waitUntil(WAIT_TIME_5000);
@@ -97,7 +97,7 @@ public class AnalisisDeRiesgosPage extends PageUtil {
         waitFor(WAIT_TIME_2).second();
         if (findBy(xpathMensajeAlertaEdificiosYUbicaciones).isVisible()) {
             findBy(xpathAnalisisRiesgos).click();
-            waitForTextToAppear("Análisis de riesgo");
+            waitForTextToAppear(LABRL_ANALISIS_DE_RIESGO);
         }
         if (findBy(xpathBorrarWorkskpace).isVisible()) {
             waitUntil(WAIT_TIME_3000);
