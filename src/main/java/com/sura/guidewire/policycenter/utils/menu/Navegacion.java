@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.utils.menu;
 
-import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import com.sura.guidewire.policycenter.utils.menu.acciones.administracion.*;
 import com.sura.guidewire.policycenter.utils.menu.acciones.contacto.ContactoNuevaCuentaPage;
@@ -57,8 +56,6 @@ public class Navegacion extends PageUtil {
     // Objetos menu Cuenta
     @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_NewAccount-itemEl']")
     private WebElementFacade mnuItemNuevaCuenta;
-    @FindBy(xpath = ".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
-    private WebElementFacade txtNumCuenta;
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtBuscar;
     @FindBy(xpath = ".//*[@id='DesktopSubmissions:DesktopSubmissionsScreen:SubmissionSearch-inputEl']")
@@ -67,8 +64,6 @@ public class Navegacion extends PageUtil {
     // Objetos menu Poliza
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
     private WebElementFacade mnuPoliza;
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_PolicyRetrievalItem-inputEl']")
-    private WebElementFacade mnuNumPoliza;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_NewSubmission-itemEl']")
     private WebElementFacade mnuItemNuevoEnvio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:Prev-btnInnerEl']")
@@ -1162,7 +1157,6 @@ public class Navegacion extends PageUtil {
     }
 
     public OpcionesInformacionPolizaPage irAInformacionDePoliza() {
-        ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(mnuInformacionDePoliza).shouldBePresent();
         mnuInformacionDePoliza.click();
         botonVolver.waitUntilPresent();
