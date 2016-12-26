@@ -21,8 +21,6 @@ public class HistorialCuentaPage extends PageUtil {
     private WebElementFacade mnuCuenta;
     @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem-inputEl']")
     private WebElementFacade txtNumCuenta;
-    @FindBy(xpath=".//*[@id='TabBar:AccountTab:AccountTab_AccountNumberSearchItem_Button']")
-    private WebElementFacade btnBuscarCuenta;
     @FindBy(xpath=".//*[@id='AccountFile:MenuLinks:AccountFile_AccountFile_History']/div")
     private WebElementFacade mnuHistorial;
     @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
@@ -57,8 +55,6 @@ public class HistorialCuentaPage extends PageUtil {
     private WebElementFacade colValorOriginal;
     @FindBy(xpath=".//div[9]/div/span")
     private WebElementFacade colValorNuevo;
-    @FindBy(xpath=".//*[@id='AccountFile_History:HistoryScreenDV:relatedto-inputEl']")
-    private WebElementFacade itmRelacionadoConRenovacion;
     @FindBy(xpath=".//td[3]/div/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
     private WebElementFacade txtFechaDesde;
     @FindBy(xpath=".//tr[3]/td/table/tbody/tr/td[2]/table/tbody/tr/td/input")
@@ -117,21 +113,21 @@ public class HistorialCuentaPage extends PageUtil {
 
     public void validarResultadoBusqueda(){
         waitFor(itemTipoResultado).shouldBePresent();
-        MatcherAssert.assertThat(itemTipoResultado.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(""))));
-        MatcherAssert.assertThat(itemTipoResultado.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(itemTipoResultado.getText(), Is.is(Matchers.not(Matchers.equalTo(""))));
+        MatcherAssert.assertThat(itemTipoResultado.getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
     }
 
     public void validarColumnasHistorialCuenta(){
         waitFor(colTipo).shouldBePresent();
-        MatcherAssert.assertThat(colTipo.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
-        MatcherAssert.assertThat(colUsuario.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
-        MatcherAssert.assertThat(colFechaTransaccion.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
-        MatcherAssert.assertThat(colDescripcion.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
-        MatcherAssert.assertThat(colProducto.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
-        MatcherAssert.assertThat(colPoliza.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
-        MatcherAssert.assertThat(colTransaccionPoliza.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
-        MatcherAssert.assertThat(colValorOriginal.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
-        MatcherAssert.assertThat(colValorNuevo.getText().toString(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colTipo.getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colUsuario.getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colFechaTransaccion.getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colDescripcion.getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colProducto.getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colPoliza.getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colTransaccionPoliza.getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colValorOriginal.getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
+        MatcherAssert.assertThat(colValorNuevo.getText(), Is.is(Matchers.not(Matchers.equalTo(null))));
     }
 
     public void buscarCuentaConMultiplesOpciones(String usuario, String producto, String fechaDesde, String fechaHasta){
@@ -155,7 +151,7 @@ public class HistorialCuentaPage extends PageUtil {
     public void validarDatosOpcionesMultiples() {
         waitFor(table).shouldBePresent();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
-        String usuario = txtUsuario.getValue().toString();
+        String usuario = txtUsuario.getValue();
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             MatcherAssert.assertThat(cells.get(1).getText(), Is.is(Matchers.equalTo(usuario)));
@@ -165,7 +161,7 @@ public class HistorialCuentaPage extends PageUtil {
     public void validarResultadoProducto(){
         waitFor(table).shouldBePresent();
         List<WebElement> allRows = table.findElements(By.tagName("tr"));
-        String producto = txtProducto.getValue().toString();
+        String producto = txtProducto.getValue();
         for (WebElement row : allRows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             MatcherAssert.assertThat(cells.get(POSICION_4).getText(), Is.is(Matchers.equalTo(producto)));

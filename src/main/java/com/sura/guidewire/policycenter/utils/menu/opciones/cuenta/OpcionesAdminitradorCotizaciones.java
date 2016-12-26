@@ -81,8 +81,6 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     private WebElementFacade listaTipoRazon;
     @FindBy(xpath = ".//*[@id='NotTakenReasonPopup:RejectScreen:RejectReasonDV:RejectReason-inputEl']")
     private WebElementFacade listaTipoRazonNoTomar;
-    @FindBy(xpath = ".//*[@id='SubmissionManager:SubmissionManagerScreen:SubmissionManagerLV:1:SubmissionActions:SubmissionActionsMenuItemSet:Decline']")
-    private WebElementFacade itmDeclinarComProp;
     @FindBy(id = "DeclineReasonPopup:RejectScreen:_msgs")
     private WebElementFacade msg;
     @FindBy(id = "NotTakenReasonPopup:RejectScreen:_msgs")
@@ -212,18 +210,18 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         String validacion = null;
         try {
             waitForTextToAppear("Cotizaciones de la cuenta");
-            MatcherAssert.assertThat(lblCotizacionesCuenta.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("lblCotizaciones"))));
-            MatcherAssert.assertThat(btnNuevaCotizacion.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("btnNuevaCotizacion"))));
-            MatcherAssert.assertThat(colAcciones.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("acciones"))));
-            MatcherAssert.assertThat(colProducto.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("producto"))));
-            MatcherAssert.assertThat(colNumCotizacion.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("numCotizacion"))));
-            MatcherAssert.assertThat(colTipoCotizacion.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("tipoCotizacion"))));
-            MatcherAssert.assertThat(colFechaIniVigencia.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("fechaIniVigencia"))));
-            MatcherAssert.assertThat(colFechaFinVigencia.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("fechaFinVigencia"))));
-            MatcherAssert.assertThat(colNumeroPoliza.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("numPoliza"))));
-            MatcherAssert.assertThat(colEstado.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("estado"))));
-            MatcherAssert.assertThat(colCostoTotal.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("costoTotal"))));
-            MatcherAssert.assertThat(colCartas.getText().toString(), Is.is(Matchers.equalTo(labelsCotizaciones.get("cartas"))));
+            MatcherAssert.assertThat(lblCotizacionesCuenta.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("lblCotizaciones"))));
+            MatcherAssert.assertThat(btnNuevaCotizacion.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("btnNuevaCotizacion"))));
+            MatcherAssert.assertThat(colAcciones.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("acciones"))));
+            MatcherAssert.assertThat(colProducto.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("producto"))));
+            MatcherAssert.assertThat(colNumCotizacion.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("numCotizacion"))));
+            MatcherAssert.assertThat(colTipoCotizacion.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("tipoCotizacion"))));
+            MatcherAssert.assertThat(colFechaIniVigencia.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("fechaIniVigencia"))));
+            MatcherAssert.assertThat(colFechaFinVigencia.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("fechaFinVigencia"))));
+            MatcherAssert.assertThat(colNumeroPoliza.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("numPoliza"))));
+            MatcherAssert.assertThat(colEstado.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("estado"))));
+            MatcherAssert.assertThat(colCostoTotal.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("costoTotal"))));
+            MatcherAssert.assertThat(colCartas.getText(), Is.is(Matchers.equalTo(labelsCotizaciones.get("cartas"))));
         } catch (Exception e) {
             LOGGER.error(validacion, e);
             validacion = e.getMessage();
@@ -378,16 +376,17 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void validaEstado(String numCotizacion, String accion) {
+        String numeroCotizacion;
         int i = 0;
-        if("declinada".equals(accion.toLowerCase())) {
-            numCotizacion = numeroCotizacionDeclinar;
+        if("declinada".equalsIgnoreCase(accion)) {
+            numeroCotizacion = numeroCotizacionDeclinar;
         }else{
-            numCotizacion = numeroCotizacionNoTomar;
+            numeroCotizacion = numeroCotizacionNoTomar;
         }
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
         if (!getListaCotizaciones().isEmpty()) {
             for (WebElementFacade cotizacion : getListaCotizaciones()) {
-                if (numCotizacion.equals(cotizacion.getText())) {
+                if (numeroCotizacion.equals(cotizacion.getText())) {
                     MatcherAssert.assertThat("El estado no pertenece a la accion dada", accion.equals(getListaEstado().get(i).getText()));
                     break;
                 }
@@ -448,7 +447,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
         botonActualizar.click();
         botonCotizar.waitUntilPresent().click();
         waitForTextToAppear("Cotizado");
-        if ("declinar".equals(accion)) {
+        if ("declinar".equalsIgnoreCase(accion)) {
             numeroCotizacionDeclinar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();
         }else{
             numeroCotizacionNoTomar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();
