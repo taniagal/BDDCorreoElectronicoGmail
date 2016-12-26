@@ -21,6 +21,9 @@ public class ConfiguracionModeloDeDatosColectivosPages extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:RefundType-inputEl']")
     private WebElementFacade campoTipoDeDevolucion;
 
+    private static final int CONSTANTE_2 = 2;
+
+
     public ConfiguracionModeloDeDatosColectivosPages(WebDriver driver) {
         super(driver);
     }
@@ -33,7 +36,7 @@ public class ConfiguracionModeloDeDatosColectivosPages extends PageUtil {
     public void verificarEstadosDeCamposNuevos(String tipoFacturacion) {
         campoDiaDeFacturacion.waitUntilPresent();
         int diaFacturacion = Integer.parseInt(campoDiaDeFacturacion.getText());
-        int diaInicioVigencia = Integer.parseInt(comboCobFechaDeInicioDeVigencia.getValue().substring(0, 2));
+        int diaInicioVigencia = Integer.parseInt(comboCobFechaDeInicioDeVigencia.getValue().substring(0, CONSTANTE_2));
         MatcherAssert.assertThat("Error: el día de facturacion no es igual al dia de inicio de vigencia de la poliza" +
                 " Expected: " + diaInicioVigencia + " but was: " + diaFacturacion, diaFacturacion == diaInicioVigencia);
         MatcherAssert.assertThat("Error: el tipo de vigencia por defecto no es Cerrada", campoTipoDeVigencia.containsText("Cerrada"));

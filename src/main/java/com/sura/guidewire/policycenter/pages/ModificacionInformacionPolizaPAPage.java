@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.pages;
 
-import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -15,10 +14,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class ModificacionInformacionPolizaPAPage extends PageUtil {
-    @FindBy(xpath=".//*[@id='TabBar:PolicyTab-btnWrap']")
-    private WebElementFacade menuPoliza;
-    @FindBy(xpath=".//*[@id='TabBar:PolicyTab:PolicyTab_PolicyRetrievalItem-inputEl']")
-    private WebElementFacade campoBuscarPoliza;
     @FindBy(xpath=".//*[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']")
     private WebElementFacade menuAcciones;
     @FindBy(xpath=".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_NewWorkOrder:PolicyFileMenuActions_ChangePolicy-itemEl']")
