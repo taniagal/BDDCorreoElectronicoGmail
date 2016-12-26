@@ -1,7 +1,6 @@
 package com.sura.guidewire.policycenter.pages.renovacion;
 
 import com.sura.guidewire.policycenter.pages.ModificacionInformacionPolizaPAPage;
-import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -9,7 +8,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
-import org.omg.CORBA.TIMEOUT;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 

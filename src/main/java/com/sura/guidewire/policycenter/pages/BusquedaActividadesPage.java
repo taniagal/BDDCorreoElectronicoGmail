@@ -70,6 +70,7 @@ public class BusquedaActividadesPage extends PageUtil {
 
     public void validarResultado(ExamplesTable resultadoFiltroActividades) {
         Map<String, String> exampleTable = resultadoFiltroActividades.getRows().get(0);
+        waitForTextToAppear(exampleTable.get("asunto"), WAIT_TIME_30000);
         String xpathTabla = "//tr[" + this.encontrarActividad(exampleTable.get("id")).toString() + "]";
         actions.click(btnBuscar).build().perform();
         MatcherAssert.assertThat(findBy(xpathTabla + "/td[4]/div").waitUntilVisible().getText(), Is.is(Matchers.notNullValue()));
