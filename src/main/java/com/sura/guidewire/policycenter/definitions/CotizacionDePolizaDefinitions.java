@@ -4,9 +4,6 @@ package com.sura.guidewire.policycenter.definitions;
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.steps.CotizacionDePolizaSteps;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.sura.guidewire.policycenter.steps.InformacionPolizaPASteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import net.thucydides.core.annotations.Steps;
@@ -109,12 +106,12 @@ public class CotizacionDePolizaDefinitions {
     }
 
     @When("se muestre el mensaje <mensaje> de advertencia de financiacion")
-    public void validarMensajeIntencionFinanciacion(@Named("mensaje") String mensaje){
+    public void validarMensajeIntencionFinanciacion(@Named("mensaje") String mensaje) {
         informacionPolizaPASteps.mostrar_Mensaje_Advertencia_Financiacion(mensaje);
     }
 
     @When("intente cotizar")
-    public void intentarCotizar(){
+    public void intentarCotizar() {
         nuevaCotizacionSteps.intentarCotizar();
     }
 
@@ -180,7 +177,7 @@ public class CotizacionDePolizaDefinitions {
     }
 
     @Then("realizar la cotizacion")
-    public void realizarCotizacion(){
+    public void realizarCotizacion() {
         nuevaCotizacionSteps.intentarCotizar();
     }
 }

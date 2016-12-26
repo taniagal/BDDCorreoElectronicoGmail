@@ -3,7 +3,6 @@ package com.sura.guidewire.policycenter.definitions;
 import com.sura.guidewire.policycenter.steps.AdmonCotizacionCuentaDeclinaSteps;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -59,12 +58,12 @@ public class AdmonCotizacionCuentaDeclinaDefinitions {
     }
 
     @When("quiera declinar la cotizacion")
-    public void declinar () {
+    public void declinar() {
         admonCotizacionCuentaSteps.seleccionar_opcion_en_acciones();
     }
 
     @When("el sistema debe mostrarme todas las opciones: $listaCodRazon")
-    public void validarOpciones(ExamplesTable listaCodRazon){
+    public void validarOpciones(ExamplesTable listaCodRazon) {
         admonCotizacionCuentaSteps.valida_lista_de_razones(listaCodRazon);
     }
 

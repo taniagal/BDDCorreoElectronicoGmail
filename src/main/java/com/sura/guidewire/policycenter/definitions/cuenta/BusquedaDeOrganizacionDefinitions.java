@@ -1,12 +1,8 @@
 package com.sura.guidewire.policycenter.definitions.cuenta;
 
-import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.steps.cuenta.BusquedaDeOrganizacionSteps;
-
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-
-import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
