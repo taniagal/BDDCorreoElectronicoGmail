@@ -2,7 +2,6 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.CotizacionPADetallePage;
 import com.sura.guidewire.policycenter.pages.commons.InicioPage;
-import java.util.Map;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;

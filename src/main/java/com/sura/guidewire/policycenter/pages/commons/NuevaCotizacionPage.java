@@ -33,8 +33,6 @@ public class NuevaCotizacionPage extends PageUtil {
     private WebElementFacade comboBoxOrganizacionW;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
     private WebElementFacade comboBoxTipoPoliza;
-    @FindBy(css = ".message")
-    private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:0_header_hd-textEl']")
     private WebElementFacade headerEnvio;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:AccountName-inputEl']")
@@ -56,6 +54,11 @@ public class NuevaCotizacionPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:PolicyInfo']")
     private WebElementFacade menuItemInformacionDePoliza;
 
+    private static final String ORGANIZACION = "organizacion";
+    private static final String TIPO_POLIZA = "tipoPoliza";
+    private static final String INDIVIDUAL = "Individual";
+    private static final String STALE_ELEMENT_REFERENCE_EXCEPTION = "StaleElementReferenceException ";
+
 
     public NuevaCotizacionPage(WebDriver driver) {
         super(driver);
@@ -71,7 +74,7 @@ public class NuevaCotizacionPage extends PageUtil {
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
         } catch (StaleElementReferenceException f){
-            LOGGER.info("StaleElementReferenceException " + f);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
         }
         waitUntil(WAIT_TIME_2000);
     }
@@ -152,20 +155,20 @@ public class NuevaCotizacionPage extends PageUtil {
             withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(menuItemInformacionDePoliza).waitUntilPresent().click();
             waitForTextToAppear("Información de póliza");
             comboBoxOrganizacion.waitUntilPresent();
-            if (!comboBoxOrganizacion.getValue().equals(dato.get("organizacion"))) {
-                selectItem(comboBoxOrganizacion, dato.get("organizacion"));
-                waitForComboValue(comboBoxOrganizacionW, dato.get("organizacion"));
+            if (!comboBoxOrganizacion.getValue().equals(dato.get(ORGANIZACION))) {
+                selectItem(comboBoxOrganizacion, dato.get(ORGANIZACION));
+                waitForComboValue(comboBoxOrganizacionW, dato.get(ORGANIZACION));
                 waitUntil(WAIT_TIME_3000);
                 selectItem(comboBoxCanal, dato.get("canal"));
                 waitForComboValue(comboBoxCanal, dato.get("canal"));
                 try {
-                    selectItem(comboBoxTipoPoliza, dato.get("tipoPoliza"));
+                    selectItem(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
                 } catch (ElementNotVisibleException e) {
                     LOGGER.info("ElementNotVisibleException " + e);
                     waitUntil(WAIT_TIME_3000);
-                    selectItem(comboBoxTipoPoliza, dato.get("tipoPoliza"));
+                    selectItem(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
                 }
-                waitForComboValue(comboBoxTipoPoliza, dato.get("tipoPoliza"));
+                waitForComboValue(comboBoxTipoPoliza, dato.get(TIPO_POLIZA));
             }
         }
     }
@@ -185,10 +188,10 @@ public class NuevaCotizacionPage extends PageUtil {
             waitUntil(WAIT_TIME_2000);
             withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
         } catch (StaleElementReferenceException f) {
-            LOGGER.info("StaleElementReferenceException " + f);
+            LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
             waitUntil(WAIT_TIME_2000);
         }
-        if (!comboBoxOrganizacion.getText().equals("Sura")) {
+        if (!"Sura".equals(comboBoxOrganizacion.getText())) {
             selectItem(comboBoxOrganizacion, "Sura");
             waitForComboValue(comboBoxOrganizacion, "Sura");
             waitUntil(WAIT_TIME_2000);
@@ -196,17 +199,17 @@ public class NuevaCotizacionPage extends PageUtil {
             waitForComboValue(comboBoxCanal, "Canal Tradicional");
             try {
                 waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "Individual");
+                selectItem(comboBoxTipoPoliza, INDIVIDUAL);
             } catch (ElementNotVisibleException e) {
                 LOGGER.info("ElementNotVisibleException " + e);
                 waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "Individual");
+                selectItem(comboBoxTipoPoliza, INDIVIDUAL);
             } catch (StaleElementReferenceException f) {
-                LOGGER.info("StaleElementReferenceException " + f);
+                LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
                 waitUntil(WAIT_TIME_2000);
-                selectItem(comboBoxTipoPoliza, "Individual");
+                selectItem(comboBoxTipoPoliza, INDIVIDUAL);
             }
-            waitForComboValue(comboBoxTipoPoliza, "Individual");
+            waitForComboValue(comboBoxTipoPoliza, INDIVIDUAL);
         }
     }
 
