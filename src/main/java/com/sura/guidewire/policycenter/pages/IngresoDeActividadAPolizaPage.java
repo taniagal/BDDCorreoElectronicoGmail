@@ -5,18 +5,16 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import java.util.concurrent.TimeUnit;
-
-public class IngresoDeActividadAPolizaPage extends PageUtil{
+public class IngresoDeActividadAPolizaPage extends PageUtil {
 
     protected Actions actions = new Actions(getDriver());
 
-    public IngresoDeActividadAPolizaPage(WebDriver driver){
+    public IngresoDeActividadAPolizaPage(WebDriver driver) {
         super(driver);
     }
 
 
-    public void irALaOpcionNuevaActividadDeLaPoliza(){
+    public void irALaOpcionNuevaActividadDeLaPoliza() {
         WebElementFacade botonMenuLateralAcciones = findBy(".//*[@id='PolicyFile:PolicyFileMenuActions-btnInnerEl']");
         WebElementFacade opcionMenuLateralAccionesNuevaActividad = findBy(".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_NewActivity-textEl']");
         WebElementFacade opcionMenuLateralAccionesRequest = findBy(".//*[@id='PolicyFile:PolicyFileMenuActions:PolicyFileMenuActions_Create:PolicyFileMenuActions_NewActivity:NewActivityMenuItemSet:3:NewActivityMenuItemSet_Category-textEl']");
@@ -29,7 +27,7 @@ public class IngresoDeActividadAPolizaPage extends PageUtil{
         opcionMenuLateralAccionesCrearAgente.waitUntilPresent().click();
     }
 
-    public void crearUnaActividadPorDefectoALaPoliza(){
+    public void crearUnaActividadPorDefectoALaPoliza() {
         WebElementFacade botonAceptarActividadNueva = findBy(".//*[@id='NewActivityWorksheet:NewActivityScreen:NewActivityScreen_UpdateButton-btnInnerEl']").waitUntilVisible();
         botonAceptarActividadNueva.click();
         botonAceptarActividadNueva.waitUntilNotVisible();

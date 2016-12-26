@@ -24,14 +24,14 @@ public class SolicitarRequisitoPaPage extends PageUtil{
     public void validarOpcionHabilitada() {
         WebElementFacade botonRequisitos = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:RequestRequirement-btnInnerEl']");
         MatcherAssert.assertThat(botonRequisitos.getAttribute("unselectable"), Matchers.equalTo("on"));
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonBorrar).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
     }
 
     public void validarAdvertenciaRequisitos(ExamplesTable mensaje){
         Map<String, String> advertencia = mensaje.getRows().get(0);
         WebElementFacade mensajeAdvertencia = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
         MatcherAssert.assertThat(mensajeAdvertencia.getText(), Matchers.containsString(advertencia.get("mensaje")));
-        withTimeoutOf(30, TimeUnit.SECONDS).waitFor(botonBorrar).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
     }
 
     public void validarRequisitos() {

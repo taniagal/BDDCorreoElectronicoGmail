@@ -52,8 +52,6 @@ public class CambioDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:RIPolicyFieldsInputSet:reaseguroEspecial_true-inputEl']")
     WebElementFacade radioBotonReaseguroEspeciaSi;
 
-    private static final int CONSTANTE_5 = 5;
-
 
     public CambioDePolizaPage(WebDriver driver) {
         super(driver);

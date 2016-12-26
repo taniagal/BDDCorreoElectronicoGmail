@@ -48,8 +48,6 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
     private WebElementFacade botonDireccionAsociada;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:AccountContactCV:AccountContactDV:LinkedAddressInputSet:LinkAddressMenu:0:contactDetail:PrimaryAddress-textEl']")
     private WebElementFacade itemDireccionContactoAsociada;
-    @FindBy(xpath = ".//*[@id='AccountFile_Contacts:AccountFile_ContactsScreen:AccountContactsLV_tb:addContactButton:0:roleType:0:contactType']")
-    private WebElementFacade itemNuevaPersonaNatural;
     @FindBy(xpath = ".//*[@id='NewAccountContactPopup:ContactDetailScreen:Cancel']")
     private WebElementFacade botonCancelar;
 
@@ -105,7 +103,7 @@ public class NuevoAseguradoNombradoPage extends PageUtil {
         actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         itemDireccionContactoAsociada.waitUntilPresent();
-        MatcherAssert.assertThat("Error: Campo de direccion contacto asociado vacia", !itemDireccionContactoAsociada.getText().equals("*<vacío>"));
+        MatcherAssert.assertThat("Error: Campo de direccion contacto asociado vacia", !"*<vacío>".equals(itemDireccionContactoAsociada.getText()));
         clickCancelar();
         botonCrearcontacto.waitUntilPresent();
     }
