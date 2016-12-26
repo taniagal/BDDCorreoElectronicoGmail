@@ -17,13 +17,13 @@ public class PolizaPrincipalPaPages extends PageUtil {
     }
 
     public boolean validarElementosDeshabilitadosDelMenu() {
-        final String CONTRATO_DE_POLIZA = "Contrato de póliza";
+        final String contratoDePoliza = "Contrato de póliza";
         List<WebElementFacade> elementosDelMenuDeshabilitados = findAll(By.xpath(".//td[contains(@class, 'x-grid-cell-treecolumn x-grid-cell-first x-grid-cell-last x-grid-cell-treecolumn g-accordion-item g-accordion-depth-1 x-tree-node-depth-1 g-disabled')]/div/span"));
         setImplicitTimeout(WAIT_TIME_3000, TimeUnit.MILLISECONDS);
         boolean deshabilitado = false;
         if (!elementosDelMenuDeshabilitados.isEmpty()) {
             for (int i = 0; i < elementosDelMenuDeshabilitados.size(); i++) {
-                if (CONTRATO_DE_POLIZA.equals(elementosDelMenuDeshabilitados.get(0).getText())) {
+                if (contratoDePoliza.equals(elementosDelMenuDeshabilitados.get(0).getText())) {
                     deshabilitado = true;
                     break;
                 }
@@ -141,19 +141,19 @@ public class PolizaPrincipalPaPages extends PageUtil {
     }
 
     public boolean validarTablaDeVehiculosEnCotizacion() {
+        boolean vacio = false;
         List<WebElementFacade> tablasDeVehiculos = findAll(".//td[@class='x-table-layout-cell']");
         if (tablasDeVehiculos.isEmpty()) {
-            return true;
-        } else {
-            return false;
+            vacio = true;
         }
+        return vacio;
     }
 
     public boolean validarCamposEditables(List<WebElementFacade> camposEnPantalla) {
         boolean editables = false;
         setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
         for (int i = 0; i < camposEnPantalla.size(); i++) {
-            if (camposEnPantalla.get(i).getAttribute("role").equals("textbox") && camposEnPantalla.get(i).isVisible()) {
+            if ("textbox".equals(camposEnPantalla.get(i).getAttribute("role")) && camposEnPantalla.get(i).isVisible()) {
                 if (camposEnPantalla.get(i).getText() != null) {
                     editables = true;
                 } else {
@@ -167,14 +167,12 @@ public class PolizaPrincipalPaPages extends PageUtil {
 
     public boolean validarQueTodosLosCamposDeLaCotizacionNoSonEditables() {
         List<WebElementFacade> camposDeCotizacion = findAll("//div[contains(@id, 'SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:')]");
-        boolean editables = this.validarCamposEditables(camposDeCotizacion);
-        return editables;
+        return this.validarCamposEditables(camposDeCotizacion);
     }
 
     public boolean validarQueTodosLosCamposDeLaCotizacionEnLaPolizaExpedidaNoSonEditables() {
         List<WebElementFacade> camposDePoliza = findAll("//div[contains(@id, 'PolicyFile_Pricing:PolicyFile_PricingScreen:PolicyFile_Quote_SummaryDV:')]");
-        boolean editables = this.validarCamposEditables(camposDePoliza);
-        return editables;
+        return this.validarCamposEditables(camposDePoliza);
     }
 
     public void clicMenuLateralCotizacion() {

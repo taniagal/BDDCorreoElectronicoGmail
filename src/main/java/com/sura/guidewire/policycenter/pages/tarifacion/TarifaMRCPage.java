@@ -13,18 +13,10 @@ import java.util.concurrent.TimeUnit;
 public class TarifaMRCPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:QuoteOrReview']")
     private WebElementFacade botonCotizar;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:Next']")
-    private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
     private WebElementFacade botonActualizar;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV_tb:removeLocation']")
-    private WebElementFacade botonBorrarArticulo;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:JobWizardToolbarButtonSet:EditPolicy']")
-    private WebElementFacade botonEditarTransaccionDePoliza;
-    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
-    private WebElementFacade botonAceptarPopup;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:Taxes-inputEl']")
     private WebElementFacade campoIva;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']")
@@ -47,12 +39,6 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade checkBoxEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxCobertura;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
-    private WebElementFacade checkBoxAMIT;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV-body']/*/table/tbody/tr[1]/td[1]")
-    private WebElementFacade checkBoxArticulo;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:_msgs']")
-    private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup-legendTitle']")
@@ -73,6 +59,12 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade linkDescartarCambios;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    public static final int CONSTANTE_7 = 7;
+    public static final int CONSTANTE_10 = 10;
+    public static final int CONSTANTE_8 = 8;
+    public static final int CONSTANTE_1000 = 1000;
+    public static final double CONSTANTE_016 = 0.16;
+    public static final double CONSTANTE_00003 = 0.00003;
     double valorAsegurado = 0;
     double primaTotal = 0;
     String cobertura = "";
@@ -181,7 +173,7 @@ public class TarifaMRCPage extends PageUtil {
         double tasaGlobal = 0;
         try {
             labelPrimaTotal.waitUntilPresent();
-            primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, 10).replace(".", ""));
+            primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_10).replace(".", ""));
         } catch (UnhandledAlertException f) {
             LOGGER.info("UnhandledAlertException " + f);
             try {
@@ -194,13 +186,13 @@ public class TarifaMRCPage extends PageUtil {
             }
             waitUntil(WAIT_TIME_2000);
             labelPrimaTotal.waitUntilPresent();
-            primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, 10).replace(".", ""));
+            primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_10).replace(".", ""));
         }
         menuItemModificadores.click();
         campoTxtTasaGlobal.waitUntilPresent();
-        tasaGlobal = ((primaTotal / valorAsegurado) * 1000) + 0.00003;
+        tasaGlobal = ((primaTotal / valorAsegurado) * CONSTANTE_1000) + CONSTANTE_00003;
         MatcherAssert.assertThat("Error: el valor de la tasa global es incorrecto, was: " + campoTxtTasaGlobal.getText(),
-                campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0, 7).replace(".", ",")));
+                campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0, CONSTANTE_7).replace(".", ",")));
     }
 
     public void verificarTarifacionEnCobertura(String prima) {
@@ -218,9 +210,9 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void verificarValorIva() {
-        primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, 8).replace(".", ""));
-        int iva = (int) (primaTotal * 0.16 + 1);
+        primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_8).replace(".", ""));
+        int iva = (int) (primaTotal * CONSTANTE_016 + 1);
         MatcherAssert.assertThat("Error en el calculo del valor del IVA , was: " + campoIva.getText(),
-                campoIva.getText().substring(1, 7).replace(".", "").equals(Integer.toString(iva)));
+                campoIva.getText().substring(1, CONSTANTE_7).replace(".", "").equals(Integer.toString(iva)));
     }
 }
