@@ -28,7 +28,17 @@ public class SolicitarRequisitoPaSteps extends ScenarioSteps{
     }
 
     @Step
+    public void clicEnElBotonRequisitos() {
+        solicitarRequisitoPa.clicEnElBotonRequisitos();
+    }
+
+    @Step
     public void llenarInfoPoliza() {
         nuevaCotizacionPage.llenarInfoPoliza();
+    }
+
+    @Step
+    public void validarElRequisito(ExamplesTable requisito) {
+        solicitarRequisitoPa.validarElRequisito(requisito);
     }
 }
