@@ -77,4 +77,9 @@ public class TarifaMRCSteps extends ScenarioSteps {
     public void verificarImpuestos(){
         tarifaMRCPage.verificarImpuestos();
     }
+
+    @Step
+    public void seleccionarCoberturaDaños(String valor, String valorIndice) {
+        tarifaMRCPage.seleccionarCoberturaDanios(valor, valorIndice);
+    }
 }
