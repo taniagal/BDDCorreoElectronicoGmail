@@ -75,4 +75,9 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     public void clicEnAceptarDelMensajeDeConfirmacionYRequisitos() {
         expedicionDePolizaPage.aceptarExpedirPolizaConRequisitosPendientes();
     }
+
+    @Step
+    public void continuarExpedicionConRequisitos() {
+        expedicionDePolizaPage.aceptarMensajeRequisitosPendientes();
+    }
 }

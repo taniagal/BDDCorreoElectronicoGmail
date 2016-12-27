@@ -55,6 +55,11 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.clicEnCancelarDelMensajeDeConfirmacion(mensaje);
     }
 
+    @When("continuo la expedicion con requisitos pendientes")
+    public void continuarExpedicionConRequisitos(){
+        expedicionDePolizaSteps.continuarExpedicionConRequisitos();
+    }
+
 
     @Then("debe mostrar el resumen de la poliza expedida con la informacion de cotizacion <infoCotizacion>, poliza <infoPoliza>, administrador de contizaciones <admorCotizacion>, nueva cotizacion <nuevaCotizacion>, escritorio <escritorio>")
     public void validarResumenDeLaPolizaExpedida(@Named("infoCotizacion") String infoCotizacion,
