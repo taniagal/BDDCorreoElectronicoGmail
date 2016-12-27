@@ -2,7 +2,7 @@ Rescindir Cancelacion
 
 
 Meta:
-@lote3
+@lote2
 @manual
 @Story CDSEG-???
 @tag automator:juan_gabriel_zapata
