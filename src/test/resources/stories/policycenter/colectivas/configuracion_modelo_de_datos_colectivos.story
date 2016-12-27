@@ -14,7 +14,8 @@ Quiero ser capaz de aplicar a la tarifa los modificadores que se encuentran a ni
 Scenario: Verificar informacion de poliza colectiva PA  con tipo de facturacion grupal
 GivenStories: stories/policycenter/login_policy.story
 Given que tengo una cotizacion <cotizacion>
-When ingrese a la informacion de la poliza
+When copie la poliza
+And ingrese a la informacion de la poliza
 Then se deben ver los nuevos campos agregados con sus estados iniciales respectivos <tipo_facturacion>
 
 Examples:
