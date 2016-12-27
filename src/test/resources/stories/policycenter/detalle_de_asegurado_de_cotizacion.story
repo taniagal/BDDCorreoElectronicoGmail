@@ -22,7 +22,6 @@ And vaya a la opcion agregar
 And consulte un asegurado del directorio
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
 And seleccione el contacto a agregar
-And vaya al siguiente paso de la cotizacion
 Then se debe continuar al siguiente paso de la cotizacion
 
 Examples:
@@ -165,7 +164,6 @@ And vaya a la opcion agregar
 And consulte un asegurado del directorio
 And ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>
 And seleccione el contacto a agregar
-And vaya al siguiente paso de la cotizacion
 Then se debe continuar al siguiente paso de la cotizacion
 
 Examples:
