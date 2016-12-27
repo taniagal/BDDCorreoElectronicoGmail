@@ -10,6 +10,7 @@ import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -178,7 +179,12 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionBotonSiguiente() {
-        btnSiguiente.waitUntilVisible().waitUntilClickable().click();
+        try {
+            btnSiguiente.waitUntilVisible().click();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            btnSiguiente.waitUntilVisible().click();
+        }
     }
 
     public void seleccionBotonSiguienteenCambioDePoliza() {

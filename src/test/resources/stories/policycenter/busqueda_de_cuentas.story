@@ -304,7 +304,7 @@ Examples:
 | Variedades      | Yurledys     | Especifique ya sea un nombre de compañía o de una persona, pero no ambos. |
 
 Scenario: Exportar resultados de busqueda en PDF, CSV y CSV Personalizado
-Meta: @lote4
+Meta:
 @manual
 Given que he buscado una cuenta y la busqueda arrojo resultados
 When quiera exportar el resultado arrojado en la busqueda
