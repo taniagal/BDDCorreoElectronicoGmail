@@ -163,3 +163,43 @@ Then ningun campo puede ser editable en pago
 Examples:
 | numSubscripcion | rolUsuario | estadodos  |
 | 33344336       | Asesor     | No visible |
+
+Scenario:  9 Validacion de cotizacion sin riesgos en poliza riesgo
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When copie la poliza
+And cotice una poliza
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                         |
+|No se puede cotizar una póliza CP sin coberturas.|
+
+Examples:
+| numSubscripcion | rolUsuario|
+| 33355336       | Asesor     |
+
+Scenario: 10 Validacion de ubicaciones en poliza riesgo
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When copie la poliza
+And ingrese a edificios y ubicaciones
+Then en edificios deben estar en estado <estadodos> las siguientes opciones
+| OPCIONES_MENU_NO_VISIBLES |
+| Agregar Articulos         |
+
+Examples:
+| numSubscripcion | rolUsuario |estadodos  |
+| 33355336        | Asesor     |No visible |
+
+Scenario: 11 Validacion de ubicacion unica en poliza riesgo
+Given que estoy en la informacion de la poliza con numero de subscripcion <numSubscripcion>
+When copie la poliza
+And ingrese a edificios y ubicaciones
+And intente ingresar una nueva ubicacion sin riesgo consultable
+And intente ingresar una nueva ubicacion sin riesgo consultable
+And cotice una poliza
+Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
+| MENSAJES_WORKSPACE                                                                                                                                                                                         |
+|Solo se permite ingresar un riesgo en la póliza.|
+
+
+Examples:
+| numSubscripcion | rolUsuario |estadodos  |
+| 33355336        | Asesor     |No visible |
