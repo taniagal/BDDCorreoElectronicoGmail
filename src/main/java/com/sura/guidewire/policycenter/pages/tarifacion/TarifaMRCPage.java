@@ -35,10 +35,16 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtSustraccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-inputEl']")
     private WebElementFacade campoTxtTasaGlobal;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
+    private WebElementFacade campoTxtValorAsegurableDaniosMateriales;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:VariableRate_Input-inputEl']")
+    private WebElementFacade campoTxtIndiceVariable;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
     private WebElementFacade checkBoxEdificios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']")
     private WebElementFacade checkBoxCobertura;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:_checkbox']")
+    private WebElementFacade checkBoxDaniosMateriales;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:TotalPremium-inputEl']")
     private WebElementFacade labelPrimaTotal;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup-legendTitle']")
@@ -214,5 +220,11 @@ public class TarifaMRCPage extends PageUtil {
         int iva = (int) (primaTotal * CONSTANTE_016 + 1);
         MatcherAssert.assertThat("Error en el calculo del valor del IVA , was: " + campoIva.getText(),
                 campoIva.getText().substring(1, CONSTANTE_7).replace(".", "").equals(Integer.toString(iva)));
+    }
+
+    public void seleccionarCoberturaDanios(String valor, String valorIndice) {
+        clickElement(checkBoxDaniosMateriales);
+        campoTxtValorAsegurableDaniosMateriales.sendKeys(valor);
+        campoTxtIndiceVariable.sendKeys(valorIndice);
     }
 }
