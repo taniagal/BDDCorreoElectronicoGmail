@@ -41,4 +41,9 @@ public class SolicitarRequisitoPaSteps extends ScenarioSteps{
     public void validarElRequisito(ExamplesTable requisito) {
         solicitarRequisitoPa.validarElRequisito(requisito);
     }
+
+    @Step
+    public void validar_que_se_muestre_mensaje_de_bloqueo(ExamplesTable mensajeB) {
+        solicitarRequisitoPa.validarMensajeBloqueante(mensajeB);
+    }
 }

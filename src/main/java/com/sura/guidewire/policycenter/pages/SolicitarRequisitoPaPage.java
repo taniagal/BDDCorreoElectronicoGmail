@@ -50,6 +50,14 @@ public class SolicitarRequisitoPaPage extends PageUtil{
     public void validarElRequisito(ExamplesTable requisito) {
         Map<String, String> listaRequisitos = requisito.getRows().get(0);
         MatcherAssert.assertThat("El requisito pendiente no es " + listaRequisitos.get("requisito") ,findBy("//*[@id='reqCliente']/tbody/tr/td[3]").getText(), Is.is(Matchers.equalTo(listaRequisitos.get("requisito"))));
-        MatcherAssert.assertThat("El estado del requisito no es " + listaRequisitos.get("estado"), findBy("//*[@id='reqCliente']/tbody/tr/td[7]").getText(), Is.is(Matchers.equalTo(listaRequisitos.get("estado"))));
+        MatcherAssert.assertThat("El estado del requisito no es " + listaRequisitos.get("estado"), findBy("//*[@id='reqCliente']/tbody/tr/td[9]").getText(), Is.is(Matchers.equalTo(listaRequisitos.get("estado"))));
+    }
+
+    public void validarMensajeBloqueante(ExamplesTable mensajeB) {
+        Map<String, String> bloqueo = mensajeB.getRows().get(0);
+        WebElementFacade mensajeAdvertencia = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
+        MatcherAssert.assertThat(mensajeAdvertencia.getText(), Matchers.containsString(bloqueo.get("mensajeB")));
+        MatcherAssert.assertThat("El mensaje no es de bloqueo ",findBy(".//img[@class='error_icon']").isVisible(), Is.is(Matchers.equalTo(true)));
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
     }
 }

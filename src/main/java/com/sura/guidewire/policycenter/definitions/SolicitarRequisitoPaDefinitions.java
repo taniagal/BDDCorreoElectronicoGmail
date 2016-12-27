@@ -32,6 +32,11 @@ public class SolicitarRequisitoPaDefinitions {
         solicitarRequisitoPaSteps.validar_Que_Se_Muestre_Mensaje_De_Advertencia(mensaje);
     }
 
+    @Then("se debe mostrar un mensaje bloqueante $mensajeB")
+    public void validarMensajeBloqueante(ExamplesTable mensajeB){
+        solicitarRequisitoPaSteps.validar_que_se_muestre_mensaje_de_bloqueo(mensajeB);
+    }
+
     @Then("voy a validar el requisito en la aplicacion con el usuario <usuario> y contrasenia <contrasenia>")
     public void irAValidarElRequisito(@Named("usuario")String usuario, @Named("contrasenia") String contrasenia){
         solicitarRequisitoPaSteps.clicEnElBotonRequisitos();
