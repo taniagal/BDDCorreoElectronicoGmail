@@ -65,6 +65,7 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void seleccionarBotonAceptarParteSuperiorIzquierda() {
+            waitUntil(WAIT_TIME_2000);
             botonActualizar.waitUntilPresent();
             clickElement(botonActualizar);
     }
