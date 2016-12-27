@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -64,12 +65,8 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void seleccionarBotonAceptarParteSuperiorIzquierda() {
-        try {
             botonActualizar.waitUntilPresent();
             clickElement(botonActualizar);
-        } catch (Exception e) {
-            LOGGER.info("ELEMENTO NO CLICKLEABLE" + e);
-        }
     }
 
     public void desplegarListaTipoBeneficiario() {
