@@ -98,7 +98,7 @@ public class InformacionDePolizaMrcDefinitions {
         informacionDePolizaMrcSteps.ingresar_a_opcion_informacion_de_poliza();
     }
 
-    @Then("en informacion de poliza deben estar en estado <estadodos> las siguientes opciones $menusesperados")
+    @Then("en $variable deben estar en estado <estadodos> las siguientes opciones $menusesperados")
     public void entoncesenInformacionDePolizaSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,@Named("estadodos") String estadodos, ExamplesTable menusesperados){
         informacionDePolizaMrcSteps.validar_campos_informacion_poliza(estadouno,estadodos,menusesperados);
     }
