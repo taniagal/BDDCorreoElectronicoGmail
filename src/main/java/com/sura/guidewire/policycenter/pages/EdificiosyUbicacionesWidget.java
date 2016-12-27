@@ -493,7 +493,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         WebElementFacade btnCotizar = findBy(XPATH_COTIZAR);
         try {
             withTimeoutOf(WAIT_TIME_7, TimeUnit.SECONDS).waitFor(btnCotizar).waitUntilPresent().click();
-        } catch (ElementShouldBePresentException e) {
+        } catch (TimeoutException e) {
             LOGGER.info("ElementShouldBePresentException " + e);
             setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
             if (botonAceptarCambioDePoliza.isPresent()) {
