@@ -1,15 +1,15 @@
 package com.sura.guidewire.policycenter.pages.cuenta;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class CuentaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='NewAccount:NewAccountScreen:NewAccountSearchDV:GlobalContactNameInputSet:Name-inputEl']")
@@ -44,6 +44,8 @@ public class CuentaPage extends PageUtil {
     private WebElementFacade botonSeleccionarOrganizacion;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:ForceDupCheckUpdate-btnInnerEl']")
     private WebElementFacade botonActualizar;
+    @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:Update-btnInnerEl']")
+    private WebElementFacade botonActualizarCoincidente;
     @FindBy(xpath = ".//*[@id='AccountFile:AccountFileInfoBar:AccountName-btnInnerEl']")
     private WebElementFacade labelCuentaNumero;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:OfficialIDInputSet:DocumentType-inputEl']")
@@ -64,8 +66,10 @@ public class CuentaPage extends PageUtil {
     private WebElementFacade campoTxtNombreComercial;
     @FindBy(xpath = ".//*[@id='CreateAccount:CreateAccountScreen:CreateAccountDV:CreateAccountContactInputSet:Phone:GlobalPhoneInputSet:NationalSubscriberNumber-inputEl']")
     private WebElementFacade campoTxtTelefonoOficina;
+    @FindBy(xpath = ".//*[@id='DuplicateContactsPopup:DuplicateContactsScreen:ResultsLV:0:Select']")
+    private WebElementFacade linkElegir;
 
-    public CuentaPage(WebDriver driver){
+    public CuentaPage(WebDriver driver) {
         super(driver);
     }
 
@@ -89,14 +93,14 @@ public class CuentaPage extends PageUtil {
     }
 
     public void agregarDireccion(ExamplesTable datos) {
-        Map<String,String> dato = datos.getRow(0);
+        Map<String, String> dato = datos.getRow(0);
         campoTxtDireccionNuevaCuentaPersonal.sendKeys(dato.get("direccion"));
-        selectItem(comboBoxDepartamento,dato.get("departamento"));
-        waitForComboValue(comboBoxDepartamento,dato.get("departamento"));
-        selectItem(comboBoxCiudad,dato.get("ciudad"));
-        waitForComboValue(comboBoxCiudad,dato.get("ciudad"));
+        selectItem(comboBoxDepartamento, dato.get("departamento"));
+        waitForComboValue(comboBoxDepartamento, dato.get("departamento"));
+        selectItem(comboBoxCiudad, dato.get("ciudad"));
+        waitForComboValue(comboBoxCiudad, dato.get("ciudad"));
         selectItem(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
-        waitForComboValue(comboBoxTipoDireccionNuevaCuentaPersonal,dato.get("tipo_direccion"));
+        waitForComboValue(comboBoxTipoDireccionNuevaCuentaPersonal, dato.get("tipo_direccion"));
     }
 
     public void agregarOrganizacion(String nombreOrganizacion, String agente) {
@@ -106,7 +110,7 @@ public class CuentaPage extends PageUtil {
         botonBuscarOrganizacion.click();
         botonSeleccionarOrganizacion.click();
         waitUntil(WAIT_TIME_500);
-        selectItem(comboBoxCodigoAgente,agente);
+        selectItem(comboBoxCodigoAgente, agente);
     }
 
     public void agregarNombrecomercial(String nombreComercial) {
@@ -119,35 +123,42 @@ public class CuentaPage extends PageUtil {
     }
 
 
-    public void actualizar(){
+    public void actualizar() {
         botonActualizar.click();
         waitUntil(WAIT_TIME_1000);
+        setImplicitTimeout(WAIT_TIME_4, TimeUnit.SECONDS);
+        if (linkElegir.isPresent()) {
+            linkElegir.click();
+            withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonActualizarCoincidente);
+            clickElement(botonActualizarCoincidente);
+        }
+        resetImplicitTimeout();
     }
 
-    public void buscarPersona(String nombre, String persona){
+    public void buscarPersona(String nombre, String persona) {
         waitFor(campoTxtNombreCompania).shouldBePresent();
         campoTxtNombreCompania.sendKeys(nombre);
         botonBuscar.click();
-        if("Compania".equals(persona)) {
+        if ("Compania".equals(persona)) {
             botonCrearCuentaNueva.click();
             botonNuevaCuentaCompania.click();
-        }else {
+        } else {
             botonCrearCuentaNueva.click();
             botonNuevaCuentaPersonal.click();
         }
         waitUntil(WAIT_TIME_1000);
     }
 
-    public  void verificarMensaje(String mensaje){
-        verificarMensaje(divMensaje,mensaje);
+    public void verificarMensaje(String mensaje) {
+        verificarMensaje(divMensaje, mensaje);
     }
 
     public void verificarCuentaNumero(String nombreCuenta) {
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(botonEditarCuenta).shouldBePresent();
-        MatcherAssert.assertThat("Falló la creación de la cuenta",  labelCuentaNumero.containsText(nombreCuenta));
+        MatcherAssert.assertThat("Falló la creación de la cuenta", labelCuentaNumero.containsText(nombreCuenta));
     }
 
-    public  void verificarEstadoDeMensaje(String mensaje){
+    public void verificarEstadoDeMensaje(String mensaje) {
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(divMensaje).shouldContainText(mensaje);
         MatcherAssert.assertThat("El mensaje erroneo sigue apareciendo", !divMensaje.containsText(mensaje));
     }

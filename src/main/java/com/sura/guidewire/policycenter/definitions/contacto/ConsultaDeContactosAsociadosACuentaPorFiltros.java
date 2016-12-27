@@ -42,8 +42,6 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
 
     }
 
-
-
     @Then("debo ver contactos asociados a esta cuenta que cumplan con el filtro $filtro en la columna $columna")
     public void deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna(@Named("filtro") String filtro, @Named("columna") String columna) {
         try {
@@ -56,10 +54,4 @@ public class ConsultaDeContactosAsociadosACuentaPorFiltros {
 
         LOGGER.info("ConsultaDeContactosAsociadosACuentaPorFiltrosDefinitions.deboVerContactosAsociadosAEstaCuentaConFiltrosAplicadosEnColumna");
     }
-
-    @When("ingrese a PolicyCenter y me loguee con un usuario de rol $rolUsuario")
-    public void accesoAPolicyCenter(@Named("rolUsuario") String rolUsuario) {
-        cuenta.login(driver, rolUsuario);
-    }
-
 }
