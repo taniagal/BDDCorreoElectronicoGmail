@@ -41,7 +41,6 @@ public class IngresoAPolicyCenterDefinitions {
     public void dadoQueAccedoAPolicyCenterConRol(@Named("rolUsuario") String rolUsuario) {
         login.loguearseAPolicycenterConRol(rolUsuario);
         LOGGER.info("IngresoAPolicyCenterDefinitions.dadoQueAccedoAPolicyCenterConRol");
-
     }
 
 

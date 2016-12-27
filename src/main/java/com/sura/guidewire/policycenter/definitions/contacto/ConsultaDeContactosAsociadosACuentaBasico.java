@@ -65,11 +65,9 @@ public class ConsultaDeContactosAsociadosACuentaBasico {
     }
 
 
-    @Given("que he ingresado a PolicyCenter como usuario $rolUsuario")
-    public void accesoAPolicyCenter(@Named("rolUsuario") String rolUsuario) {
-        cuenta.login(driver, rolUsuario);
-        LOGGER.info("IngresoAPolicyCenterDefinitions.dadoQueAccedoAPolicyCenterConRol");
-
+    @Given("que he ingresado a PolicyCenter")
+    public void accesoAPolicyCenter() {
+       //Empty Method
     }
 
 
