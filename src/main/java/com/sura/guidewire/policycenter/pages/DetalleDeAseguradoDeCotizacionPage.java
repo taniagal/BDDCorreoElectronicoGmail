@@ -200,7 +200,7 @@ public class DetalleDeAseguradoDeCotizacionPage extends PageUtil {
         waitFor(botonSiguiente).waitUntilPresent().click();
         waitForTextToAppear("Vehículos");
         WebElementFacade labelTituloVehiculos = findBy(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:ttlBar']");
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(labelTituloVehiculos).isCurrentlyVisible();
         MatcherAssert.assertThat(labelTituloVehiculos.getText(), Is.is(Matchers.equalTo("Vehículos")));
         waitUntil(WAIT_TIME_1000);
     }
