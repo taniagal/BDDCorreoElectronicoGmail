@@ -169,7 +169,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
         waitFor(WAIT_TIME_5).seconds();
         $(xpathCiudad).type(ciudad);
-        waitFor(WAIT_TIME_2).seconds();
+        waitUntil(WAIT_TIME_3000);
 
         $(xpathCiudad).click();
 
