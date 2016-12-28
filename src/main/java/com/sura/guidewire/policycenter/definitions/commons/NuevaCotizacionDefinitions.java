@@ -23,7 +23,7 @@ public class NuevaCotizacionDefinitions {
         nuevaCotizacionSteps.seleccionarProducto(datosCotizacion);
     }
 
-    @Given("estoy cotizando una poliza de mrc: $datosCotizacion")
+    @Given("estoy cotizando una poliza de PA: $datosCotizacion")
     public void nuevaPolizaMrcConCuenta(ExamplesTable datosCotizacion) {
         cuentaNuevaSteps.crearCuentaNueva(datosCotizacion);
         nuevaCotizacionSteps.nuevaCotizacionenCuenta();

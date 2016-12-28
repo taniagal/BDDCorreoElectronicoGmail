@@ -41,7 +41,7 @@ Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |tipoPoliza  |
 |C1060447895|Sura        |Autos   |Canal Tradicional|Individual  |
 When vaya a agregar un vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan             |
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
 |T64493|2017  |09403011        |MEDELLIN          |Particular       |null  |null |830000000      |null     |null   |2   |Plan Modular|
 And voy a realizar el siguiente paso
 Then deben aparecer los mensajes de validacion:
