@@ -16,17 +16,24 @@ Requiero poder realizar los siguientes ajuste para el calculo de la prima de MRC
 Scenario: Validar valor de interes adicional
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
-|cuenta     |organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
-|C1060447895|Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|02/12/1990      |MIKASA        |AKERMAN       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
+| cuenta      | organizacion | producto                | canal             | tipo_documento       | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
+| C1060447895 | Sura         | Multiriesgo corporativo | Canal Tradicional | CEDULA DE CIUDADANIA | 02/12/1990       | MIKASA        | AKERMAN         | DIRECCION DE RESIDENCIA | CALLE 54B #50-25 | Antioquia    | Medellin | INT-3  |
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
 When seleccione la cobertura:
-|valorReconstruccion|valorAsegurado|valorComercial|cobertura|
-|120000000          |120000000     |120000000     |Terremoto|
+| valorReconstruccion | valorAsegurado | valorComercial | cobertura |
+| 120000000           | 120000000      | 120000000      | Terremoto |
 And seleccione la cobertura de daños materiales con valor <valor> e indice variable <valorIndice>
+And ingrese las entradas de las diferentes coberturas
+| TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                  | VALOR_ENTRADAS |
+| Coberturas del Riesgo |               |                     | Sustraccion | Valor asegurado sustraccion con violencia | 120000000      |
 And cotice el articulo
-Then debo poder ver el valor de la prima <prima> en la cobertura
+Then debo poder ver el valor de la prima en la cobertura y el valor de cobertura de sustraccion
+| cobertura                     | prima   |
+| Cobertura de Terremoto        | 125.050 |
+| Cobertura de Sustraccion      | 4.674   |
+| Cobertura de Danos materiales | 42.066  |
 
 Examples:
-|valor    |valorIndice|prima  |departamento|ciudad  |direccion        |descripcion  |actividad|
-|120000000|5          |125.050|Antioquia   |Medellin|CR 44 A # 73 - 00|Edificio Core|Actividades de agencias de empleo|
+| valor     | valorIndice | departamento | ciudad   | direccion         | descripcion   | actividad                         |
+| 120000000 | 5           | Antioquia    | Medellin | CR 44 A # 73 - 00 | Edificio Core | Actividades de agencias de empleo |

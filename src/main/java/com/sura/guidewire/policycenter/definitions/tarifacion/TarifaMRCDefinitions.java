@@ -21,6 +21,11 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.verificarTarifacionEnCobertura(prima);
     }
 
+    @Then("debo poder ver el valor de la prima en la cobertura y el valor de cobertura de sustraccion $primasPoliza")
+    public void verificarTarifacionEnCoberturasTerremotoYSustraccion(ExamplesTable primasPoliza){
+        tarifaMRCSteps.verificarTarifacionEnCoberturasTerremotoYSustraccion(primasPoliza);
+    }
+
     @When("seleccione la cobertura: $datos")
     public void seleccionarCobertura(ExamplesTable datos){
         tarifaMRCSteps.seleccionarCobertura(datos);
