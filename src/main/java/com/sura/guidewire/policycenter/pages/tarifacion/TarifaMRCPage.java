@@ -63,6 +63,10 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade labelDescripcionCobertura;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
+    private WebElementFacade botonAgregarContacto;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl']")
+    private WebElementFacade botonAgregarContactoDelDirectorio;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     public static final int CONSTANTE_7 = 7;
@@ -226,5 +230,10 @@ public class TarifaMRCPage extends PageUtil {
         clickElement(checkBoxDaniosMateriales);
         campoTxtValorAsegurableDaniosMateriales.sendKeys(valor);
         campoTxtIndiceVariable.sendKeys(valorIndice);
+    }
+
+    public void agregarContactoDelDirectorio(){
+        botonAgregarContacto.waitUntilPresent().click();
+        botonAgregarContactoDelDirectorio.click();
     }
 }
