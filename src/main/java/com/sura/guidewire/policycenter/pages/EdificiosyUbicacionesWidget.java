@@ -8,7 +8,6 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import net.thucydides.core.webdriver.exceptions.ElementShouldBePresentException;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
@@ -51,6 +50,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_ACEPTAR = "//a[contains(.,'Aceptar')]";
     private static final String XPATH_DESCARTAR_CAMBIOS = "//a[contains(.,'Descartar cambios no guardados')]";
     private static final String LABEL_EDIFICIOS_Y_UBICACIONES = "Edificios y ubicaciones";
+    private static final String XPATH_CHECK_CONTACTO = ".//*[contains(@class,'x-column-header-text')]/div";
 
     private static final int WAIT_TIME_250 = 250;
 
@@ -564,6 +564,16 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(btnSelecciona);
         btnSelecciona.waitUntilVisible().waitUntilClickable().click();
         waitFor(lblInteresAdicional);
+    }
+
+    public void validarNoVisibilidad(){
+        validarNoVisibilidadDeObjeto(XPATH_CHECK_CONTACTO);
+    }
+
+    public void validarNoVisibilidadDeObjeto(String xpath){
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        MatcherAssert.assertThat("Alguno de los campos es visible", !findBy(xpath).isVisible());
+        resetImplicitTimeout();
     }
 
 }
