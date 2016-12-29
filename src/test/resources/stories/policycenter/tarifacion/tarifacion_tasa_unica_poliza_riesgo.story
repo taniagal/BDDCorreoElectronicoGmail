@@ -18,10 +18,10 @@ And vaya a la poliza riesgo <riesgo>
 And valide la carga del archivo de tasa unica en la poliza riesgo
 And cotice la poliza riesgo con el asegurado, el auto y las coberturas necesarias
 | tipoDocumento        | documento  | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | limite | deducible | abogado  | PLlaves  | PTH | PPH | GTH | PTD | PPD | GT |
-| CEDULA DE CIUDADANIA | 1234567890 | TUU225 | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 32000000        | null      | null    | 2    | Plan Autos Global | 1.440  | 0         | Opción 1 | Opción 1 | 0   | 730 | 40  | 0   | 730 | 40 |
+| CEDULA DE CIUDADANIA | 1234567890 | TUU225 | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Global | 1.440  | 0         | Opción 1 | Opción 1 | 0   | 730 | 40  | 0   | 730 | 40 |
 And el valor de la prima total y el iva deben ser:
-| primaT  | iva     |
-| 639.999 | 102.400 |
+| primaT  | iva    |
+| 357.999 | 57.280 |
 
 Examples:
 | cotizacion | infoCotizacion                | riesgo   |
