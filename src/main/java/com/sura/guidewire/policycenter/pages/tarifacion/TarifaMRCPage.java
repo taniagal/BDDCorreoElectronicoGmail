@@ -1,12 +1,14 @@
 package com.sura.guidewire.policycenter.pages.tarifacion;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.annotations.findby.*;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
+import org.openqa.selenium.By;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -63,8 +65,11 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade labelDescripcionCobertura;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']")
+    private WebElementFacade tablaPrimas;
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
+    public static final int CONSTANTE_0 = 0;
     public static final int CONSTANTE_7 = 7;
     public static final int CONSTANTE_10 = 10;
     public static final int CONSTANTE_8 = 8;
@@ -227,4 +232,28 @@ public class TarifaMRCPage extends PageUtil {
         campoTxtValorAsegurableDaniosMateriales.sendKeys(valor);
         campoTxtIndiceVariable.sendKeys(valorIndice);
     }
+
+    public void verificarTarifacionEnCoberturasTerremotoYSustraccion(ExamplesTable primasPoliza) {
+        Integer fila;
+        for(int i = 0; i < primasPoliza.getRowCount(); i++){
+            fila = encontrarCobertura(primasPoliza.getRows().get(i).get("cobertura"));
+            String xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr["+fila.toString()+"]/td[3]";
+            MatcherAssert.assertThat(findBy(xpath).getText(), containsText((primasPoliza.getRows().get(i).get("prima"))));
+        }
+    }
+
+    public Integer encontrarCobertura(String cobertura) {
+        waitFor(tablaPrimas).waitUntilPresent();
+        Integer filaActividad = 1;
+        List<WebElement> filas = tablaPrimas.findElements(By.tagName("tr"));
+        for (WebElement row : filas) {
+            List<WebElement> columna = row.findElements(By.tagName("td"));
+            if (cobertura.equalsIgnoreCase(columna.get(CONSTANTE_0).getText())) {
+                return filaActividad;
+            }
+            filaActividad++;
+        }
+        return filaActividad;
+    }
+
 }

@@ -82,4 +82,9 @@ public class TarifaMRCSteps extends ScenarioSteps {
     public void seleccionarCoberturaDaños(String valor, String valorIndice) {
         tarifaMRCPage.seleccionarCoberturaDanios(valor, valorIndice);
     }
+
+    @Step
+    public void verificarTarifacionEnCoberturasTerremotoYSustraccion(ExamplesTable primasPoliza) {
+        tarifaMRCPage.verificarTarifacionEnCoberturasTerremotoYSustraccion(primasPoliza);
+    }
 }

@@ -76,6 +76,11 @@ public class EdificiosUbicacionesDefinitions {
         edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
     }
 
+    @When("ingrese las entradas de las diferentes coberturas $coberturas")
+    public void ingresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable coberturas) {
+        edificiosUbicacionesSteps.ingresarCoberturas(coberturas);
+    }
+
 
     @When("ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
@@ -242,6 +247,11 @@ public class EdificiosUbicacionesDefinitions {
     @Then("no debe dejar continuar y debe permanecer en la pagina $pagina")
     public void noDebeDejarContinuarYDebePermanecerEnLaPagina(String pagina) {
         //Metodo Vacio
+    }
+
+    @Then("no debe estar visible $variable")
+    public void entoncesNoDebeEstarVisibleNingunContactoPorDefecto(){
+        edificiosUbicacionesSteps.validarNoVisibilidadDeObjeto();
     }
 
 

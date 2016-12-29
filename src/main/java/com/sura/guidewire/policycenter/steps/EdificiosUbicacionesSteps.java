@@ -181,6 +181,11 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
             seleccionarTab(tab);
             edificiosyUbicacionesWidget.ingresarOtroArticulo(tipoArticulo, cobertura, entrada, valorEntrada, esOtroArticulo, esUltimaFilaDeExampleTable);
         }
+
+        if("Interes Adicional".equals(tab)){
+            seleccionarTab(tab);
+            seleccionarTipoDeArticulo(tipoArticulo);
+        }
     }
 
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgoPolizaColectiva(String cobertura, String entrada, String valorEntrada) {
@@ -219,6 +224,10 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     @Step
     public void verificar_mensaje(ExamplesTable mensajes){
         edificiosyUbicacionesWidget.verificarMensajes(mensajes);
+    }
+
+    public void validarNoVisibilidadDeObjeto(){
+        edificiosyUbicacionesWidget.validarNoVisibilidad();
     }
 
 
