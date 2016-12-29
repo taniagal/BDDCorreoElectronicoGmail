@@ -188,7 +188,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionBotonSiguienteenCambioDePoliza() {
-        btnNoReaseguroEspecial.click();
         waitUntil(WAIT_TIME_5000);
         btnSiguienteCambioDePoliza.click();
         waitUntil(WAIT_TIME_5000);
