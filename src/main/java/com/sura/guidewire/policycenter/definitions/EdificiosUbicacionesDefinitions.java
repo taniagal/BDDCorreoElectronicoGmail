@@ -82,7 +82,7 @@ public class EdificiosUbicacionesDefinitions {
     }
 
 
-    @When("ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
+    @When("ingrese la entrada de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
 
         edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();

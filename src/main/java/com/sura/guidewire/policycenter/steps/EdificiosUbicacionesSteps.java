@@ -157,7 +157,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     // TODO: 01/09/2016 code smell
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
         // Registro de tarea dinámica en el reporte de Serenity
-        ingresar_valor_de_entrada_de_la_cobertura(armarMensajeParaElReporteDeSerenity(tab, cobertura, entrada, valorEntrada, tipoArticulo));
+          ingresar_valor_de_entrada_de_la_cobertura(armarMensajeParaElReporteDeSerenity(tab, cobertura, entrada, valorEntrada, tipoArticulo));
 
         if ("Coberturas del Riesgo".equals(tab)) {
             seleccionarTab(tab);
