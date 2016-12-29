@@ -68,6 +68,7 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
         vehiculoPage.irAVehiculos();
         vehiculoSteps.agregarPlaca();
         vehiculoPage.agregarCiudadDeCirculacion(datosCotizacion);
+        vehiculoPage.validarQueNoPermiteAgregarMasDeUnAuto();
         vehiculoPage.clickSiguiente();
         seleccionarCoberturaBasicas(datosCotizacion);
         tarifaAutosPage.intentarCotizar();

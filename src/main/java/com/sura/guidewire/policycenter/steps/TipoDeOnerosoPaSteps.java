@@ -10,6 +10,8 @@ import org.fluentlenium.core.annotation.Page;
 
 public class TipoDeOnerosoPaSteps extends ScenarioSteps {
 
+    ValidacionesInformacionDeVehiculoPage vehiculoPage;
+
     @Page
     TipoDeOnerosoPaPage tipoDeOnerosoPaPage;
 
@@ -23,6 +25,7 @@ public class TipoDeOnerosoPaSteps extends ScenarioSteps {
     @Step
     public void agregarInteresAdicional() {
         informacionDeVehiculoPage.crearVehiculo();
+        vehiculoPage.validarQueNoPermiteAgregarMasDeUnAuto();
         tipoDeOnerosoPaPage.agregarInteresAdicional();
     }
     @Step

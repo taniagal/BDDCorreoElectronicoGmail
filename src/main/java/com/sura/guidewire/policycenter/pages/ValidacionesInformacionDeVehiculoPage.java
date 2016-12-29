@@ -251,4 +251,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitUntil(WAIT_TIME_3000);
         seleccionarCiudadDeCirculacion(vehiculo);
     }
+
+    public void validarQueNoPermiteAgregarMasDeUnAuto() {
+        setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
+        MatcherAssert.assertThat("El botón de crear vehículo debe estar oculto cuando ya hay un vehículo creado ", botonCrearVehiculo.isVisible(), Is.is(Matchers.equalTo(false)));
+        resetImplicitTimeout();
+    }
 }
