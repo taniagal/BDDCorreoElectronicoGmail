@@ -28,7 +28,19 @@ public class TipoDeOnerosoPaSteps extends ScenarioSteps {
         vehiculoPage.validarQueNoPermiteAgregarMasDeUnAuto();
         tipoDeOnerosoPaPage.agregarInteresAdicional();
     }
+
     @Step
     public void verificarMarca(){
-        tipoDeOnerosoPaPage.verificarMarca();}
+        tipoDeOnerosoPaPage.verificarMarca();
+    }
+
+    @Step
+    public void verificarMarcaSustitucion(){
+        tipoDeOnerosoPaPage.verificarMarcaSustitucion();
+    }
+
+    @Step
+    public void verificarSeleccionSustitucion(){
+        tipoDeOnerosoPaPage.verificarSeleccionSustitucion();
+    }
 }

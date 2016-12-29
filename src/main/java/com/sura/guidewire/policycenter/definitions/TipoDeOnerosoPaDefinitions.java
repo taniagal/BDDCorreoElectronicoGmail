@@ -18,6 +18,9 @@ public class TipoDeOnerosoPaDefinitions {
     @Steps
     EdificiosUbicacionesSteps edificiosUbicacionesSteps;
 
+    @Steps
+    ModificacionInformacionPolizaPADefinitions informacionPolizaPADefinitions;
+
 
     @When("vaya agregar el interes adicional" )
     public void agregarInteresAdicional() {
@@ -40,4 +43,15 @@ public class TipoDeOnerosoPaDefinitions {
         vehiculoSteps.ir_a_vehiculos();
         vehiculoSteps.agregarVehiculo(datosVehiculo);
     }
+
+    @Then("Se debe marcar la opcion ¿Es una sustitucion? por defecto en NO")
+    public void verificarMarcaSustitucion(){
+        onerosoPaSteps.verificarMarcaSustitucion();
+    }
+
+    @Then("se debe seleccionar la opcion sustitucion")
+    public void verificarSeleccionSustitucion(){
+        onerosoPaSteps.verificarSeleccionSustitucion();
+    }
+
 }

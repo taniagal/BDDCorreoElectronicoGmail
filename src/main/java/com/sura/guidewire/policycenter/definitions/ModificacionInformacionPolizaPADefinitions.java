@@ -51,11 +51,6 @@ public class ModificacionInformacionPolizaPADefinitions {
         modificacionInformacionPolizaPASteps.irAModificarInformacionPoliza();
     }
 
-    @Then("se debe agregar el Check box ¿Es una sustitución?")
-    public void seleccionChek(){
-
-    }
-
     @When("adicione un segundo tomador <tipoDocumento> <numeroDocumento>")
     public void adicionarSegundoTomador(@Named("tipoDocumento") String tipoDocumento,
                                         @Named("numeroDocumento") String numeroDocumento){
