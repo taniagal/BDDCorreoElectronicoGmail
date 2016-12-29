@@ -20,14 +20,17 @@ Examples:
 |TipoBeneficiario|
 |Oneroso Leasing|
 
-Scenario: Solo un vehículo por póliza
-Given estoy cotizando una poliza:
-|cuenta     |organizacion|producto|canal            |tipoPoliza  |
-|C1060447895|Sura        |Autos   |Canal Tradicional|Individual  |
-When Se haya creado un vehículo:
-
-Then no debe permitir crear otro vehículo, solo se podra crear otro vehiculo si se elimina el vehículo previamente ingresado
+Scenario: Sustitucion de vehiculo
+Given ya se tiene una poliza expedida <numeroPoliza>
+When ingrese a modificar dicha cotizacion
+Then se debe agregar el Check box ¿Es una sustitución?
+When este en la pantalla vehiculos
+Then se debe habilitar el boton Eliminar vehiculo
+And elimine el vehículo que traía la póliza
+When se habilita el boton Crear vehiculo
+Then cree el nuevo vehículo
+And se debe conservar la siguiente información del vehiculo
 
 Examples:
-||
-||
+| numeroPoliza  |
+| TEST_22222222 |
