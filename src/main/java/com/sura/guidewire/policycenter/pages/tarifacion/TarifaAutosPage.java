@@ -187,17 +187,22 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarCoberturas1(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
-        selectItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
-        labelGatosTransporte.waitUntilPresent();
-        selectItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
-        selectItem(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
-        waitForComboValue(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
+        seleccionarCoberturasHurto(coberturas);
         clickElement(checkBoxAccidentes);
         selectItem(comboBoxAccidentes, dato.get("AC"));
         checkBoxGastosTaspaso.click();
         selectItem(comboBoxGastosTraspaso, dato.get("GTR"));
         checkBoxGAstosDeParqueadero.click();
         selectItem(comboBoxgastosDeParqueadero, dato.get("GP"));
+    }
+
+    public void seleccionarCoberturasHurto(ExamplesTable coberturas) {
+        Map<String, String> dato = coberturas.getRow(0);
+        selectItem(comboBoxPerdidaTotalHurto, dato.get("PTH"));
+        labelGatosTransporte.waitUntilPresent();
+        selectItem(comboBoxPerdidaParcialHurto, dato.get("PPH"));
+        selectItem(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
+        waitForComboValue(comboBoxGastosDeTransporteHurto, dato.get("GTH"));
     }
 
 

@@ -125,4 +125,19 @@ public class TarifaTasaUnicaDefinitions {
         tasaUnicaSteps.verificarRenovacionTarifa();
     }
 
+    @When("valide que este seleccionada la opcion de tasa unica para la poliza principal")
+    public void validarTasaUnicaEnPolizaColectivaPrincipal() {
+        tasaUnicaSteps.validarTasaUnicaEnPolizaColectivaPrincipal();
+    }
+
+    @Then("valide la carga del archivo de tasa unica en la poliza riesgo")
+    public void validarLaCargaDelArchivoDeTasaUnicaEnPolizaRiesgo() {
+        tasaUnicaSteps.validarLaCargaDelArchivoDeTasaUnicaEnPolizaRiesgo();
+    }
+
+    @Then("el valor de la prima total y el iva deben ser: $primaRiesgo")
+    public void validarElValorDeLaPrimaYElIvaParaLaPolizaRiesgo(ExamplesTable primaRiesgo) {
+        tasaUnicaSteps.validarElValorDeLaPrimaYElIvaParaLaPolizaRiesgo(primaRiesgo);
+    }
+
 }
