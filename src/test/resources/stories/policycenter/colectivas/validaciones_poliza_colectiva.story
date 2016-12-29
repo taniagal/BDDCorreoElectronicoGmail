@@ -231,7 +231,7 @@ Given que estoy en la informacion de la poliza con numero de subscripcion <numSu
 When copie la poliza
 And ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion sin riesgo consultable
-And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
+And ingrese la entrada de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO     | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios         |                     |                  | Valor Reconstrucción             | 100000000      |
 | Información de Artículos | Edificios         |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |

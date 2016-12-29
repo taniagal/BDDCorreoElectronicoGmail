@@ -19,7 +19,7 @@ Given estoy cotizando una poliza:
 |C000777777|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When ingrese a edificios y ubicaciones
 And intente ingresar una nueva ubicacion
-And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
+And ingrese la entrada de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                                            | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción                                | 100000000      |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales                    | 100000000      |
