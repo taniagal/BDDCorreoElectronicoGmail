@@ -12,7 +12,7 @@ Quiero que se levante el requisito para la solucion de multiriesgo de acuerdo a 
 
 Scenario: validar requisito de inspeccion para multiriesgo en expedicion de poliza
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
+Given estoy cotizando una poliza de mrc para un numero de documento especifico:
 | cuenta     | organizacion | producto                |
 | C000888888 | Sura         | Multiriesgo corporativo |
 And seleccione reaseguro especial No

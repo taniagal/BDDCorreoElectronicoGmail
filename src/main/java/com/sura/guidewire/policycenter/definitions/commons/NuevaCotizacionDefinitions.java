@@ -35,6 +35,13 @@ public class NuevaCotizacionDefinitions {
         nuevaCotizacionSteps.seleccionarProductoDesdeCuenta(datosCotizacion);
     }
 
+    @Given("estoy cotizando una poliza de mrc para un numero de documento especifico: $datosCotizacion")
+    public void nuevaPolizaMrcConCuentaNueva(ExamplesTable datosCotizacion) {
+        cuentaNuevaSteps.crearCuentaNueva(datosCotizacion);
+        nuevaCotizacionSteps.nuevaCotizacionenCuenta();
+        nuevaCotizacionSteps.seleccionarProductoDesdeCuenta(datosCotizacion);
+    }
+
     @Given("estoy cotizando una poliza basado en otro envio <envio>")
     public void copiarEnvio(@Named("envio") String envio) {
         nuevaCotizacionSteps.irABuscarCotizacion(envio);
