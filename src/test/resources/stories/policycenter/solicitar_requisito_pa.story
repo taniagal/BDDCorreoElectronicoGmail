@@ -48,7 +48,7 @@ And intente cotizar
 And llegue a la expedicion de la poliza
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                            |
-|Existen requisitos pendientes, por favor verifique.|
+|Existen requisitos opcionales pendientes, por favor verifique.|
 
 Examples:
 |tipo_documento      |documento |
@@ -60,7 +60,7 @@ When intente expedir la poliza
 And existan requisitos pendientes
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                            |
-|Existen requisitos pendientes, por favor verifique.|
+|Existen requisitos opcionales pendientes, por favor verifique.|
 
 Examples:
 |cotizacion|
