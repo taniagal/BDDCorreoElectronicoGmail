@@ -5,9 +5,13 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
+import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class TarifaTasaUnicaPage extends PageUtil {
@@ -260,5 +264,23 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public void guardarMontoPorCoberturas() {
         primaTotal = labelPrimaTotalCotizacion.waitUntilPresent().getText();
+    }
+
+    public void validarTasaUnicaEnPolizaColectivaPrincipal() {
+        WebElementFacade checkTasaUnica = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']");
+        MatcherAssert.assertThat("0px -15px", Is.is(Matchers.equalTo(checkTasaUnica.getCssValue("background-position"))));
+    }
+
+    public void validarLaCargaDelArchivoDeTasaUnicaEnPolizaRiesgo() {
+        WebElementFacade checkTasaUnica = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']");
+        MatcherAssert.assertThat(checkTasaUnica.getText(), Is.is(Matchers.equalTo("Sí")));
+    }
+
+    public void validarElValorDeLaPrimaYElIvaParaLaPolizaRiesgo(ExamplesTable primaRiesgo) {
+        Map<String, String> valoresPrimaRiesgo = primaRiesgo.getRow(0);
+        WebElementFacade campoPrimaRiesgo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:5-body']/*/table/tbody/tr[1]/td[2]");
+        WebElementFacade campoIvaPrimaRiesgo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:5-body']/*/table/tbody/tr[2]/td[2]");
+        MatcherAssert.assertThat("El valor de la prima no es correcto ",campoPrimaRiesgo.getText(), Matchers.containsString(valoresPrimaRiesgo.get("primaT")));
+        MatcherAssert.assertThat("El valor del iva no es correcto ", campoIvaPrimaRiesgo.getText(), Matchers.containsString(valoresPrimaRiesgo.get("iva")));
     }
 }

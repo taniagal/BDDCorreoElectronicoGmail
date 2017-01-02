@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.steps.tarifacion;
 
 import com.sura.guidewire.policycenter.pages.AprobacionDeAnalisisDeRiesgoPage;
+import com.sura.guidewire.policycenter.pages.DisponibilidadDetalleProductoPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
@@ -16,6 +17,7 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
     AprobacionDeAnalisisDeRiesgoPage analisisDeRiesgoPage = new AprobacionDeAnalisisDeRiesgoPage(getDriver());
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
     NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
+    DisponibilidadDetalleProductoPage disponibilidadDetalleProductoPage;
     int token = 1;
 
     public TarifaTasaUnicaSteps(Pages pages) {
@@ -110,5 +112,21 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
     @Step
     public void verificarRenovacionTarifa() {
         tasaUnicaPage.verificarTarifaRenovacionSinCambio();
+    }
+
+    @Step
+    public void validarTasaUnicaEnPolizaColectivaPrincipal() {
+        tasaUnicaPage.validarTasaUnicaEnPolizaColectivaPrincipal();
+    }
+
+    @Step
+    public void validarLaCargaDelArchivoDeTasaUnicaEnPolizaRiesgo() {
+        disponibilidadDetalleProductoPage.verInformacionDePoliza();
+        tasaUnicaPage.validarLaCargaDelArchivoDeTasaUnicaEnPolizaRiesgo();
+    }
+
+    @Step
+    public void validarElValorDeLaPrimaYElIvaParaLaPolizaRiesgo(ExamplesTable primaRiesgo) {
+        tasaUnicaPage.validarElValorDeLaPrimaYElIvaParaLaPolizaRiesgo(primaRiesgo);
     }
 }
