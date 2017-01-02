@@ -14,7 +14,7 @@ Given estoy cotizando una poliza de mrc:
 |Sura        |Multiriesgo corporativo|Canal Tradicional|CEDULA DE CIUDADANIA|02/12/1990      |JUAN        |ELIAS       |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|INT-3 |
 When quiera agregar un tomador adicional que es riesgo consultable <cedula>
 And intente ingresar una nueva ubicacion
-And ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
+And ingrese la entrada de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional
 | TAB                      | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
 | Información de Artículos | Edificios     |                     |                  | Valor Reconstrucción             | 100            |
 | Información de Artículos | Edificios     |                     | Danos materiales | Valor asegurado danos materiales | 100            |
