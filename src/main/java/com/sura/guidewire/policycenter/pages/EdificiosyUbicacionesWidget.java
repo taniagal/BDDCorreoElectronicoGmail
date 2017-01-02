@@ -8,7 +8,6 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import net.thucydides.core.webdriver.exceptions.ElementShouldBePresentException;
 import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
@@ -51,6 +50,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_ACEPTAR = "//a[contains(.,'Aceptar')]";
     private static final String XPATH_DESCARTAR_CAMBIOS = "//a[contains(.,'Descartar cambios no guardados')]";
     private static final String LABEL_EDIFICIOS_Y_UBICACIONES = "Edificios y ubicaciones";
+    private static final String XPATH_CHECK_CONTACTO = ".//*[contains(@class,'x-column-header-text')]/div";
 
     private static final int WAIT_TIME_250 = 250;
 
@@ -58,8 +58,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
-    @FindBy(css = ".message")
-    private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton']")
+    private WebElementFacade botonAgregarAsegurado;
     @FindBy(xpath = ".//a[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulosCambioPoliza;
     @FindBy(xpath = ".//a[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
@@ -68,10 +68,23 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonAceptarCambioDePoliza;
     @FindBy(xpath = ".//a[contains(.,'Borrar')]")
     private WebElementFacade botonBorrar;
-    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
-    private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    private WebElementFacade botonBuscar;
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']")
+    private WebElementFacade botonSeleccionar;
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
+    private WebElementFacade comboBoxTipoDocumento;
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
+    private WebElementFacade campoTxtNumeroDocumento;
+    @FindBy(css = ".message")
+    private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:CPBuildings']")
     private WebElementFacade edificiosyUbicacionesRenovacion;
+    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
+    private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch']")
+    private WebElementFacade menuItemDelDireciotio;
+
 
     @Page
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
@@ -539,31 +552,29 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
     }
 
-    public void ingresarInteresAdicional(String cedula) {
+    public void agregarInteresAdicional(String cedula){
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
+        menuItemDelDireciotio.waitUntilPresent().click();
+        comboBoxTipoDocumento.waitUntilPresent().clear();
+        waitUntil(WAIT_TIME_300);
+        comboBoxTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
+        comboBoxTipoDocumento.sendKeys(Keys.ENTER);
+        waitUntil(WAIT_TIME_800);
+        botonBuscar.waitUntilPresent();
+        campoTxtNumeroDocumento.sendKeys(cedula);
+        clickElement(botonBuscar);
+        botonSeleccionar.waitUntilPresent().click();
+        botonAgregarAsegurado.waitUntilPresent();
+    }
 
-        WebElementFacade btnAgregar = findBy(XPATH_BTON_AGREGAR);
-        WebElementFacade itemDirectorio = findBy(XPATH_BTON_DIRECTORIO);
-        WebElementFacade lblBuscarDirectorio = findBy(XPATH_BUSCAR_DIRECTORIO);
-        WebElementFacade itemTipoDocumento = findBy(XPATH_TIPO_DOCUMENTO);
-        WebElementFacade lblPrimerNombre = findBy(XPATH_LBL_PRIMER_NOMBRE);
-        WebElementFacade txtNumDocumento = findBy(XPATH_NUM_DOCUMENTO);
-        WebElementFacade btnBuscar = findBy(XPATH_BTN_BUSCAR);
-        WebElementFacade btnSelecciona = findBy(XPATH_BTN_SELECCIONA);
-        WebElementFacade lblInteresAdicional = findBy(XPATH_INTERES_ADICIONAL);
+    public void validarNoVisibilidad(){
+        validarNoVisibilidadDeObjeto(XPATH_CHECK_CONTACTO);
+    }
 
-        btnAgregar.waitUntilVisible().waitUntilClickable().click();
-        itemDirectorio.waitUntilVisible().waitUntilClickable().click();
-        waitFor(lblBuscarDirectorio);
-        itemTipoDocumento.clear();
-        waitForTextToAppear("Tipo documento");
-        itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
-        itemTipoDocumento.sendKeys(Keys.ENTER);
-        lblPrimerNombre.waitUntilPresent();
-        txtNumDocumento.waitUntilPresent().sendKeys(cedula);
-        btnBuscar.waitUntilVisible().waitUntilClickable().click();
-        waitFor(btnSelecciona);
-        btnSelecciona.waitUntilVisible().waitUntilClickable().click();
-        waitFor(lblInteresAdicional);
+    public void validarNoVisibilidadDeObjeto(String xpath){
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
+        MatcherAssert.assertThat("Alguno de los campos es visible", !findBy(xpath).isVisible());
+        resetImplicitTimeout();
     }
 
 }

@@ -107,8 +107,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         ingresarPlaca(vehiculo);
         clickVehiculoServicio();
         seleccionarComboBoxModelo(vehiculo);
-        ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
-        campoTxtPlaca.click();
+        if(!"".equals(vehiculo.get("codigo_fasecolda"))){
+            ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
+            campoTxtPlaca.click();
+        }
         waitForCampoTxtValorAsegurado(vehiculo);
         waitUntil(WAIT_TIME_2000);
         seleccionarCiudadDeCirculacion(vehiculo);

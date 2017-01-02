@@ -34,10 +34,8 @@ public class ExpedicionDePolizaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validarResumenDeLaPolizaExpedida(String infoCotizacion, String infoPoliza, String admorCotizacion,
-                                                 String nuevaCotizacion, String escritorio) {
-        expedicionDePolizaPage.validarResumenDeLaPolizaExpedida(infoCotizacion, infoPoliza, admorCotizacion,
-                nuevaCotizacion, escritorio);
+    public void validarResumenDeLaPolizaExpedida(String infoCotizacion) {
+        expedicionDePolizaPage.validarResumenDeLaPolizaExpedida(infoCotizacion);
     }
 
     @Step

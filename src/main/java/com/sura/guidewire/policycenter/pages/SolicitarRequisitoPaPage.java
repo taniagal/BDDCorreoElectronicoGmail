@@ -25,7 +25,6 @@ public class SolicitarRequisitoPaPage extends PageUtil{
     public void validarOpcionHabilitada() {
         WebElementFacade botonRequisitos = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:RequestRequirement-btnInnerEl']");
         MatcherAssert.assertThat(botonRequisitos.getAttribute("unselectable"), Matchers.equalTo("on"));
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
     }
 
     public void validarAdvertenciaRequisitos(ExamplesTable mensaje){
