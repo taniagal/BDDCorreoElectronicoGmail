@@ -20,12 +20,11 @@ When seleccione la opcion siguiente
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
-|TYU141|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+|TYU137|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas basicas:
 |limite|deducible|abogado |PLlaves |
 |1.440 |0        |Opción 1|Opción 1|
 And intente cotizar
-And llegue a la expedicion de la poliza
 Then se debe habilitar la opcion de requisitos, con el fin de visualizar los requisitos requeridos
 
 Examples:
@@ -40,7 +39,7 @@ When seleccione la opcion siguiente
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
-|TYU141|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+|TYU135|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas basicas:
 |limite|deducible|abogado |PLlaves |
 |1.440 |0        |Opción 1|Opción 1|

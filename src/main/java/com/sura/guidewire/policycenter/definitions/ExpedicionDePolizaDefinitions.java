@@ -57,14 +57,9 @@ public class ExpedicionDePolizaDefinitions {
     }
 
 
-    @Then("debe mostrar el resumen de la poliza expedida con la informacion de cotizacion <infoCotizacion>, poliza <infoPoliza>, administrador de contizaciones <admorCotizacion>, nueva cotizacion <nuevaCotizacion>, escritorio <escritorio>")
-    public void validarResumenDeLaPolizaExpedida(@Named("infoCotizacion") String infoCotizacion,
-                                                 @Named("infoPoliza") String infoPoliza,
-                                                 @Named("admorCotizacion") String admorCotizacion,
-                                                 @Named("nuevaCotizacion") String nuevaCotizacion,
-                                                 @Named("escritorio") String escritorio) {
-        expedicionDePolizaSteps.validarResumenDeLaPolizaExpedida(infoCotizacion, infoPoliza, admorCotizacion,
-                                                                      nuevaCotizacion, escritorio);
+    @Then("debe mostrar el resumen de la poliza expedida con la informacion de cotizacion <infoCotizacion>")
+    public void validarResumenDeLaPolizaExpedida(@Named("infoCotizacion") String infoCotizacion) {
+        expedicionDePolizaSteps.validarResumenDeLaPolizaExpedida(infoCotizacion);
     }
 
     @Then("El proceso se debe frenar y debe mostrar el mensaje de error <mensaje> y <mensaje2>")

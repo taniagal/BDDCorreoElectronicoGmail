@@ -71,46 +71,51 @@ public class EdificiosUbicacionesDefinitions {
     @When("intente ingresar las entradas de las diferentes coberturas $entradas")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
 
-        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(entradas);
-        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+    }
+
+    @When("ingrese las entradas de las diferentes coberturas $coberturas")
+    public void ingresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable coberturas) {
+        edificiosUbicacionesSteps.ingresarCoberturas(coberturas);
     }
 
 
-    @When("ingrese las entradas de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
+    @When("ingrese la entrada de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
 
-        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
-        edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
-        edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
-        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
-        edificiosUbicacionesSteps.seleccionar_boton_cotizar();
+        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula);
+        edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
 
     }
 
     @When("ingrese las entradas en cambio de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasEnCambioDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
 
-        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion_en_cambio_de_poliza();
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
-        edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
-        edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
+        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula);
+        edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
 
-        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
-        edificiosUbicacionesSteps.seleccionar_boton_cotizar();
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
 
     }
 
     @When("ingrese las entradas en renovacion de poliza de las diferentes coberturas con interes <cedula> <tipoBeneficiario> adicional  $entradatable")
     public void cuandoIntenteIngresarLasEntradasEnRenovacionDePolizaDeLasDiferentesCoberturasConInteresado(ExamplesTable entradatable, String cedula, String tipoBeneficiario) {
 
-        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion_en_renovacion_de_poliza();
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacionEnRenovacionDePoliza();
         edificiosUbicacionesSteps.ingresarCoberturas(entradatable);
-        edificiosUbicacionesSteps.ingresar_interes_adicional_a_articulo(cedula);
-        edificiosUbicacionesSteps.ingresar_tipo_beneficiario(tipoBeneficiario);
-        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
-        edificiosUbicacionesSteps.seleccionar_boton_cotizar();
+        edificiosUbicacionesSteps.ingresarInteresAdicionalAArticulo(cedula);
+        edificiosUbicacionesSteps.ingresarTipoBeneficiario(tipoBeneficiario);
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
 
     }
 
@@ -118,27 +123,27 @@ public class EdificiosUbicacionesDefinitions {
     //// TODO: 21/10/2016 Construilo con example table
     @When("intente ingresar una nueva ubicacion")
     public void cuandoIntenteIngresarUnaNuevaUbicacion() {
-        edificiosUbicacionesSteps.remover_riesgos();
-        edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
+        edificiosUbicacionesSteps.removerRiesgos();
+        edificiosUbicacionesSteps.ingresarNuevaUbicacion();
     }
 
     @When("intente ingresar una nueva ubicacion sin riesgo consultable")
     public void cuandoIntenteIngresarUnaNuevaUbicacionSinRiesgo() {
-        edificiosUbicacionesSteps.remover_riesgos();
-        edificiosUbicacionesSteps.ingresar_nueva_ubicacion_sin_riesgo();
+        edificiosUbicacionesSteps.removerRiesgos();
+        edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo();
     }
 
     @When("intente ingresar una nueva ubicacion en renovacion de poliza")
     public void cuandoIntenteIngresarUnaNuevaUbicacionEnRenovacionDePoliza() {
-        edificiosUbicacionesSteps.seleccionar_boton_editar_transaccion_de_poliza();
-        edificiosUbicacionesSteps.remover_riesgos();
-        edificiosUbicacionesSteps.ingresar_nueva_ubicacion();
+        edificiosUbicacionesSteps.seleccionarBotonEditarTransaccionDePoliza();
+        edificiosUbicacionesSteps.removerRiesgos();
+        edificiosUbicacionesSteps.ingresarNuevaUbicacion();
     }
 
 
     @When("haga clic en el boton Aceptar")
     public void cuandoHagaClicEnElBotonAceptar() {
-        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
     }
 
     @When("cuando intente ingresar un articulo para una ubicacion para comprobar las validaciones de error del articulo")
@@ -151,7 +156,7 @@ public class EdificiosUbicacionesDefinitions {
         }
 
         polizaSteps.seleccionarOpcionEdificiosYUbicaciones();
-        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo();
 
         LOGGER.info("Poliza.cuandoIntenteIngresarUnArticuloParaUnaUbicacionParaComprobarLasValidacionesDeErrorDelArticulo");
@@ -159,24 +164,24 @@ public class EdificiosUbicacionesDefinitions {
 
     @When("intente cotizar y expedir la poliza")
     public void cuandoIntenteCotizarYExpedirLaPoliza() {
-        edificiosUbicacionesSteps.seleccionar_boton_cotizar();
+        edificiosUbicacionesSteps.seleccionarBotonCotizar();
         tasaUnicaSteps.expedirPoliza();
     }
 
     public void cuandoIntenteIngresarUnArticuloAUnaUbicacionParaComprobarValidacionesDeErrorDelArticulo() {
-        edificiosUbicacionesSteps.seleccionar_check_del_articulo_a_agregar();
-        edificiosUbicacionesSteps.seleccionar_check_de_cobertura_que_desea_aplicar();
+        edificiosUbicacionesSteps.seleccionarCheckDelArticuloAAgregar();
+        edificiosUbicacionesSteps.seleccionarCheckDeCoberturaQueDeseaAplicar();
 
         /*
         Se ingresa valor asegurado superior al valor del articulo a asegurar y se ingresa valores a sublimites
         que superen el valor asegurado con el fin de validar en el paso de comprobaciones que se verifiquen los limites
         de valores para valor asegurado y sublimites.
          */
-        edificiosUbicacionesSteps.ingresar_valor_reconstruccion_del_articulo("10000");
-        edificiosUbicacionesSteps.ingresar_valor_asegurado_danos_materiales("10001");
-        edificiosUbicacionesSteps.ingresar_valor_sublimite_translados("10002");
-        edificiosUbicacionesSteps.ingresar_valor_sublimite_para_combustion("10002");
-        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
+        edificiosUbicacionesSteps.ingresarValorReconstruccionDelArticulo("10000");
+        edificiosUbicacionesSteps.ingresarValorAseguradoDanosMateriales("10001");
+        edificiosUbicacionesSteps.ingresarValorSublimiteTranslados("10002");
+        edificiosUbicacionesSteps.ingresarValorSublimiteParaCombustion("10002");
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
     }
 
 
@@ -191,7 +196,7 @@ public class EdificiosUbicacionesDefinitions {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
             MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
         }
-        edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
+        edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
     }
 
     @Then("se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo) $mensajesEsperados")
@@ -202,7 +207,7 @@ public class EdificiosUbicacionesDefinitions {
             String mensaje = mensajes.get("MENSAJES_WORKSPACE");
             MatcherAssert.assertThat(mensajesWSList, AssertUtil.hasItemContainsString(mensaje));
         }
-        edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
+        edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
     }
 
 
@@ -222,8 +227,8 @@ public class EdificiosUbicacionesDefinitions {
 
     @Then("se debe mostrar el siguiente mensaje $mensajesEsperados")
     public void entoncesValidarQueAparezcanLosSiguientesMensajes(ExamplesTable mensajesEsperados) {
-        edificiosUbicacionesSteps.verificar_mensaje(mensajesEsperados);
-        edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
+        edificiosUbicacionesSteps.verificarMensaje(mensajesEsperados);
+        edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
     }
 
     @Then("se espera que el siguiente mensaje se muestre una sola vez: $mensajesEsperado")
@@ -236,7 +241,7 @@ public class EdificiosUbicacionesDefinitions {
         }
         MatcherAssert.assertThat("Ocurrencia de mensaje: " + mensajesEsperado + " es de " + contadorDeOcurrencias + "veces", contadorDeOcurrencias, Is.is(CoreMatchers.equalTo(1)));
 
-        edificiosUbicacionesSteps.cancelar_ingreso_de_nueva_ubicacion();
+        edificiosUbicacionesSteps.cancelarIngresoDeNuevaUbicacion();
     }
 
     @Then("no debe dejar continuar y debe permanecer en la pagina $pagina")
@@ -244,5 +249,8 @@ public class EdificiosUbicacionesDefinitions {
         //Metodo Vacio
     }
 
-
+    @Then("no debe estar visible $variable")
+    public void entoncesNoDebeEstarVisibleNingunContactoPorDefecto(){
+        edificiosUbicacionesSteps.validarNoVisibilidadDeObjeto();
+    }
 }

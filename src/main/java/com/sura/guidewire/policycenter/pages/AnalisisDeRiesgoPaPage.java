@@ -27,11 +27,6 @@ public class AnalisisDeRiesgoPaPage extends PageUtil {
     public void aceptarExpedicion() {
         botonAceptarPopup.waitUntilPresent().click();
         botonAceptarPopup.waitUntilNotVisible();
-        botonBorrar.waitUntilPresent().click();
-        botonBorrar.waitUntilNotVisible();
-        botonExpedirPoliza.click();
-        waitFor(botonAceptarPopup).waitUntilPresent();
-        botonAceptarPopup.click();
     }
 
     public void validarBloqueoExpedicion(ExamplesTable mensaje) {
