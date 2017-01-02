@@ -6,16 +6,21 @@ import com.sura.guidewire.policycenter.pages.commons.InicioPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.steps.ValidacionesInformacionDeVehiculoSteps;
+import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
+import java.util.Map;
+
 public class NuevaCotizacionSteps extends ScenarioSteps {
     NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
+    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
+
     @Steps
     ValidacionesInformacionDeVehiculoSteps vehiculoSteps;
 
@@ -97,5 +102,20 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     @Step
     public void seleccionarReaseguroEspecialNo() {
         nuevaCotizacionPage.seleccionarReaseguroEspecialNo();
+    }
+
+    @Step
+    public void cotizarLaPolizaRiesgoConTasaUnica(ExamplesTable datos) {
+        Map<String, String> datosAsegurado = datos.getRows().get(0);
+        tarifaAutosPage.seleccionarAsegurado(datosAsegurado.get("tipoDocumento"), datosAsegurado.get("documento"));
+        vehiculoPage.clickSiguiente();
+        vehiculoPage.crearVehiculo();
+        tarifaAutosPage.relacionarAsegurado();
+        vehiculoPage.agregarVehiculo(datos);
+        vehiculoPage.clickSiguiente();
+        tarifaAutosPage.seleccionarCoberturas(datos);
+        tarifaAutosPage.seleccionarCoberturasHurto(datos);
+        tarifaAutosPage.seleccionarCoberturasDeDanios(datos);
+        opcionesInformacionPolizaMrcPage.seleccionarOpcionCotizarPolizaPrincipal();
     }
 }

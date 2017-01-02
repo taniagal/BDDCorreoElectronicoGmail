@@ -53,18 +53,6 @@ public class ExpedicionDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewJob-inputEl']")
     WebElementFacade campoNumeroCotizacion;
 
-    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
-    WebElementFacade campoNumeroPoliza;
-
-    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:SubmissionManager-inputEl']")
-    WebElementFacade campoAdministradorDeCotizaciones;
-
-    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:SubmitAnother-inputEl']")
-    WebElementFacade campoCotizacionParaCuentaDiferente;
-
-    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToDesktop-inputEl']")
-    WebElementFacade campoIrAlEscritorio;
-
     @FindBy(xpath = ".//*[@id='TabBar:DesktopTab']")
     WebElementFacade botonEscritorio;
 
@@ -134,16 +122,10 @@ public class ExpedicionDePolizaPage extends PageUtil {
         }
     }
 
-    public void validarResumenDeLaPolizaExpedida(String infoCotizacion, String infoPoliza, String admorCotizacion,
-                                                 String nuevaCotizacion, String escritorio) {
+    public void validarResumenDeLaPolizaExpedida(String infoCotizacion) {
         waitForTextToAppear("Cotización Expedida", WAIT_TIME_30000);
         waitFor(campoNumeroCotizacion);
         MatcherAssert.assertThat(campoNumeroCotizacion.getText(), Is.is(Matchers.equalTo(infoCotizacion)));
-        MatcherAssert.assertThat(campoNumeroPoliza.getText(), Is.is(Matchers.containsString(infoPoliza)));
-        MatcherAssert.assertThat(campoAdministradorDeCotizaciones.getText(), Is.is(Matchers.equalTo(admorCotizacion)));
-        MatcherAssert.assertThat(campoCotizacionParaCuentaDiferente.getText(), Is.is(Matchers.equalTo(nuevaCotizacion)));
-        MatcherAssert.assertThat(campoIrAlEscritorio.getText(), Is.is(Matchers.equalTo(escritorio)));
-        waitFor(ExpectedConditions.elementToBeClickable(botonEscritorio));
     }
 
     public void ingresarVerCotizacion() {
