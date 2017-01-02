@@ -45,7 +45,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
     @Step
     public void ingresarInteresAdicionalAArticulo(String numerocedula){
-        edificiosyUbicacionesWidget.ingresarInteresAdicional(numerocedula);
+        edificiosyUbicacionesWidget.agregarInteresAdicional(numerocedula);
     }
 
     @Step
