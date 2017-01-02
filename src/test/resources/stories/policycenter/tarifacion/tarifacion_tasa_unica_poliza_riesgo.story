@@ -1,7 +1,10 @@
-Meta:
+Meta: @lote2
+@issue #CDSEG-4235
+@tag automator: eliana_alvarez
+@sprint 12
 
 Narrative:
-Como usuario de Poliy Center requiero ajustar la tarifa tasa única en el nuevo modelo de colectividad, ya que el archivo
+Como usuario de Policy Center requiero ajustar la tarifa tasa única en el nuevo modelo de colectividad, ya que el archivo
 debe quedar alojado en la póliza principal y las pólizas riesgos deben tener la posibilidad de poder ir a leer ese archivo
 para poder tarifar.
 
