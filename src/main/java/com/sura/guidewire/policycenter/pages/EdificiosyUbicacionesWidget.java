@@ -556,9 +556,10 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(lblBuscarDirectorio);
         itemTipoDocumento.clear();
         waitForTextToAppear("Tipo documento");
+        itemTipoDocumento.click();
         itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
         itemTipoDocumento.sendKeys(Keys.ENTER);
-        lblPrimerNombre.waitUntilPresent();
+        lblPrimerNombre.waitUntilVisible();
         txtNumDocumento.waitUntilPresent().sendKeys(cedula);
         btnBuscar.waitUntilVisible().waitUntilClickable().click();
         waitFor(btnSelecciona);
