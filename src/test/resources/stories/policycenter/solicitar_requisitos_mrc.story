@@ -12,9 +12,9 @@ Quiero que se levante el requisito para la solucion de multiriesgo de acuerdo a 
 
 Scenario: validar requisito de inspeccion para multiriesgo en expedicion de poliza
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza de mrc para un numero de documento especifico:
-| cuenta     | organizacion | producto                |
-| C000888888 | Sura         | Multiriesgo corporativo |
+Given estoy cotizando una poliza de mrc:
+| organizacion | producto                | tipo_documento       | numeroDocumento | fecha_nacimiento | primer_nombre | primer_apellido | tipo_direccion          | direccion        | departamento | ciudad   | agente |
+| Sura         | Multiriesgo corporativo | CEDULA DE CIUDADANIA | 1112223331      | 10/10/1974       | ANDREA        | GARABITO        | DIRECCION DE RESIDENCIA | CALLE 28F #60-68 | Antioquia    | Medellin | INT-3  |
 And seleccione reaseguro especial No
 When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
 And descripcion <descripcion>, actividad economica <actividad>
@@ -30,8 +30,8 @@ Then se debe mostrar un mensaje de advertencia
 
 
 Examples:
-| departamento | ciudad   | direccion         | descripcion       | actividad                     | usuario  | contrasenia |
-| Antioquia    | Medellin | CR 45 A # 44 - 01 | Prueba requisitos | Acabado de productos textiles | linajate | linajate    |
+| departamento | ciudad   | direccion         | descripcion       | actividad                     |
+| Antioquia    | Medellin | CR 45 A # 44 - 01 | Prueba requisitos | Acabado de productos textiles |
 
 Scenario: validar requisito de firma cliente para multiriesgo en expedicion de poliza
 Given estoy cotizando una poliza:
