@@ -180,8 +180,15 @@ public class TarifaAutosPage extends PageUtil {
         comboBoxLimite.sendKeys(Keys.ENTER);
         waitUntil(WAIT_TIME_800);
         selectItem(comboBoxDeducible, dato.get("deducible"));
+        this.seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
         if(!"".equals(dato.get("abogado"))){
             selectItem(comboBoxAbogado, dato.get("abogado"));
+        }
+    }
+
+    public void seleccionarPerdidaDeLlaves(String llaves){
+        if(!"".equals(llaves)){
+            selectItem(comboBoxPerdidaDeLlaves, llaves);
         }
     }
 
