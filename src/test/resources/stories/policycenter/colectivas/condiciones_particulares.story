@@ -138,7 +138,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 8 Opcion Cero Kilometros en estado NO
+Scenario: 9 Opcion Cero Kilometros en estado NO
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
