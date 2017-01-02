@@ -100,6 +100,7 @@ public class CoaseguroPage extends PageUtil {
 
     public void guardarcosaeguro(){
         botonAceptar.click();
+        //if(divMensaje.isPresent())
     }
 
 
