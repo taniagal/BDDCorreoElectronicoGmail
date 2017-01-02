@@ -57,7 +57,7 @@ public class NuevaCotizacionDefinitions {
     }
 
     @Then("vaya a la poliza riesgo <riesgo>")
-        public void IrAConsultarLaCotizacionRiesgo(@Named("riesgo") String riesgo) {
+        public void irAConsultarLaCotizacionRiesgo(@Named("riesgo") String riesgo) {
             cotizacionPADetalleSteps.ir_A_Buscar_Cotizacion_Poliza(riesgo);
     }
 
