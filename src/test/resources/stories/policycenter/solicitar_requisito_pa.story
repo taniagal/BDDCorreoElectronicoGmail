@@ -20,7 +20,7 @@ When seleccione la opcion siguiente
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
-|TYU137|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas basicas:
 |limite|deducible|abogado |PLlaves |
 |1.440 |0        |Opción 1|Opción 1|
@@ -28,30 +28,28 @@ And intente cotizar
 Then se debe habilitar la opcion de requisitos, con el fin de visualizar los requisitos requeridos
 
 Examples:
-|tipo_documento      |documento |
-|CEDULA DE CIUDADANIA|1060447895|
+|tipo_documento      |documento|
+|CEDULA DE CIUDADANIA|11111111 |
 
 Scenario: validar mensaje de advertencia - requisitos pendientes
 Given estoy cotizando una poliza:
-|cuenta    |organizacion|producto|canal            |tipoPoliza |
-|C000888888|Sura        |Autos   |Canal Tradicional|Individual    |
-When seleccione la opcion siguiente
-And ingrese los datos del asegurado <tipo_documento> <documento>
+|cuenta     |organizacion|producto|canal            |tipoPoliza |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual    |
+When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
-|TYU135|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
-And ingrese las coberturas basicas:
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+And ingrese las coberturas:
 |limite|deducible|abogado |PLlaves |
 |1.440 |0        |Opción 1|Opción 1|
-And intente cotizar
 And llegue a la expedicion de la poliza
 Then se debe mostrar un mensaje de advertencia
 |mensaje                                            |
 |Existen requisitos pendientes, por favor verifique.|
 
 Examples:
-|tipo_documento      |documento |
-|CEDULA DE CIUDADANIA|1060447895|
+|tipo_documento      |documento|
+|CEDULA DE CIUDADANIA|11111111 |
 
 Scenario: validar opcion Solicitar requisitos - modificacion
 Given he realizado la cotizacion <cotizacion>
