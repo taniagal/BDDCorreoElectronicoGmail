@@ -77,30 +77,30 @@ public class InformacionDePolizaMrcDefinitions {
 
     @When("ingrese a edificios y ubicaciones")
     public void cuandoIntenteIngresarAEdificiosYUbicaciones() {
-        informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones();
+        informacionDePolizaMrcSteps.ingresarAEdificiosYUbicaciones();
     }
     @When("ingrese a edificios y ubicaciones en cambio de poliza")
     public void cuandoIntenteIngresarAEdificiosYUbicacionesEnCambioDePoliza() {
-        informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones_en_cambio_de_poliza();
+        informacionDePolizaMrcSteps.ingresarAEdificiosYUbicacionesEnCambioDePoliza();
     }
     @When("ingrese a edificios y ubicaciones en renovacion de poliza")
     public void cuandoIntenteIngresarAEdificiosYUbicacionesRenovacionDePoliza() {
-        informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones_en_renovacion_de_poliza();
+        informacionDePolizaMrcSteps.ingresarAEdificiosYUbicacionesEnRenovacionDePoliza();
 
     }
     @When("ingrese a informacion de poliza")
     public void cuandoIngreseAInformacionDePoliza(){
-        informacionDePolizaMrcSteps.ingresar_a_informacion_de_poliza();
+        informacionDePolizaMrcSteps.ingresarAInformacionDePoliza();
     }
 
     @When("ingrese a la opcion informacion de poliza")
     public void cuandoSeleccioneLaOpcionInformacionDePoliza(){
-        informacionDePolizaMrcSteps.ingresar_a_opcion_informacion_de_poliza();
+        informacionDePolizaMrcSteps.ingresarAOpcionInformacionDePoliza();
     }
 
     @Then("en $variable deben estar en estado <estadodos> las siguientes opciones $menusesperados")
     public void entoncesenInformacionDePolizaSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,@Named("estadodos") String estadodos, ExamplesTable menusesperados){
-        informacionDePolizaMrcSteps.validar_campos_informacion_poliza(estadouno,estadodos,menusesperados);
+        informacionDePolizaMrcSteps.validarCamposInformacionPoliza(estadouno,estadodos,menusesperados);
     }
 
 

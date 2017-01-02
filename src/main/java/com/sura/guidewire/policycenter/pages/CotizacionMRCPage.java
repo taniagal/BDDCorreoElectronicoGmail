@@ -69,8 +69,6 @@ public class CotizacionMRCPage extends PageUtil {
     private WebElementFacade columnaDescripcion;
     @FindBy(xpath = "//div/div/div/div/div[3]/div")
     private WebElementFacade columnaMonto;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:OtherCharges']")
-    private WebElementFacade labelOtrosCargos;
     @FindBy(xpath = ".//*[@id='QuickJump-inputEl']")
     private WebElementFacade campoTxtBuscar;
     @FindBy(xpath = ".//*[@id='DesktopSubmissions:DesktopSubmissionsScreen:SubmissionSearch-inputEl']")
@@ -145,7 +143,6 @@ public class CotizacionMRCPage extends PageUtil {
         MatcherAssert.assertThat(botonAnularClasificacion.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("botonAnularClasificacion"))));
         MatcherAssert.assertThat(columnaDescripcion.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("columnaDescripcion"))));
         MatcherAssert.assertThat(columnaMonto.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("columnaMonto"))));
-        MatcherAssert.assertThat(labelOtrosCargos.getText(), Is.is(Matchers.equalTo(labelsCotizacionPoliza.get("otrosCargos"))));
     }
 
     public void validarBloqueoCotizacion(String mensaje) {
