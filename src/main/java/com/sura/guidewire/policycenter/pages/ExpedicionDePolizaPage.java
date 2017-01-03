@@ -187,7 +187,7 @@ public class ExpedicionDePolizaPage extends PageUtil {
     public void validarMensajeRequisitos(String requisitos) {
         waitForTextToAppear(requisitos, WAIT_TIME_30000);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
-        waitUntil(WAIT_TIME_5000);
+        botonBorrar.waitUntilNotVisible();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonAceptarMensaje).click();
     }
