@@ -13,16 +13,16 @@ public class SolicitarRequisitoPaDefinitions {
 
     @When("existan requisitos pendientes")
     public void validarRequisitos(){
-        solicitarRequisitoPaSteps.validar_Que_Existan_Requisitos_Pendientes();
+        solicitarRequisitoPaSteps.validarQueExistanRequisitosPendientes();
     }
 
     @Then("se debe habilitar la opcion de requisitos, con el fin de visualizar los requisitos requeridos")
     public void validarOpcionHabilitada(){
-        solicitarRequisitoPaSteps.validar_Que_Se_Habilite_La_Opcion_Solicitar_Requisitos();
+        solicitarRequisitoPaSteps.validarQueSeHabiliteLaOpcionSolicitarRequisitos();
     }
 
     @Then("se debe mostrar un mensaje de advertencia $mensaje")
     public void validarMensajeAdvertencia(ExamplesTable mensaje){
-        solicitarRequisitoPaSteps.validar_Que_Se_Muestre_Mensaje_De_Advertencia(mensaje);
+        solicitarRequisitoPaSteps.validarQueSeMuestreMensajeDeAdvertencia(mensaje);
     }
 }
