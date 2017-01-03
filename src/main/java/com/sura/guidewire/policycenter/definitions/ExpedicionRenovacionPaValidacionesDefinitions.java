@@ -41,13 +41,6 @@ public class ExpedicionRenovacionPaValidacionesDefinitions {
     @When("el valor de los accesorios y accesorios especiales supere el monto permitido")
     public void validarAccesorios(){
         expedicionRenovacionPaValidacionesSteps.validar_Valor_Accesorios_Y_Accesorios_Especiales();
-        modificacionRenovacionCoberturasPASteps.borrar_espacio_trabajo();
-    }
-
-    @When("emita la renovacion nuevamente")
-    public void emitirRenovacion(){
-        expedicionRenovacionPASteps.emitir_Renovacion();
-        expedicionRenovacionPaValidacionesSteps.aceptarRenovacion();
     }
 
     @When("el valor de los accesorios especiales supere el monto permitido")
