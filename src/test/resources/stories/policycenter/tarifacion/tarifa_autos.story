@@ -46,8 +46,8 @@ And seleccione todas las coberturas:
 Then el resultado de la cotizacion en cada cobertura debe ser:
 |fila|valor     |
 |1   |975.890   |
-|4   |6.087.596 |
-|8   |1.384.737 |
+|4   |6.330.728 |
+|8   |1.600.515 |
 |12  |15.352    |
 |15  |17.500    |
 |17  |25.799    |
