@@ -58,6 +58,33 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade botonExpedirPoliza;
     @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
     private WebElementFacade botonAceptarExpedicion;
+    @FindBy(xpath = ".//div[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
+    private WebElementFacade tablaRequisito;
+    @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
+    private WebElementFacade tablaRequisitos;
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div[2]")
+    private WebElementFacade labelRequisitoPorPlacaExtrangera;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:Next-btnInnerEl']")
+    private WebElementFacade botonSiguienteProducto;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel_tb:Add-btnInnerEl']")
+    private WebElementFacade botonAgregarVehiculo;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
+    private WebElementFacade botonEditarCambioPoliza;
+    @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
+    private WebElementFacade botonEditarCambioPolizaAceptar;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div/span")
+    private WebElementFacade itemVehiculosModificacion;
+    @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
+    private WebElementFacade labelMensajePlacaRiesgoConsultable;
+    @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
+    private WebElementFacade panelRequisitos;
+    @FindBy(xpath = "..//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:1:ShortDescriptionAndSize-inputEl']")
+    private WebElementFacade labelMensajePlacaExtranjeraCucuta;
+    @FindBy(xpath = ".//*[@id='centerPanel']")
+    private WebElementFacade tablaRequisitosAutorizacion;
+
+
+
 
     public void cambiarPlaca(String placa) {
         waitUntil(WAIT_TIME_2000);
@@ -94,18 +121,17 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void mostrarPlacaInicial(String placaInicial) {
         waitForTextToAppear(placaInicial);
+        waitUntil(WAIT_TIME_2000);
         MatcherAssert.assertThat(txtCambioDePlaca.getText(), Is.is(Matchers.equalTo(placaInicial)));
     }
 
-    public void ingresarPlacaVenezolana(String ciudad, String placaVenezolana) {
+    public void ingresarPlacaVenezolana(String placaVenezolana) {
+        waitUntil(WAIT_TIME_2000);
+        itemCambiarPlaca.click();
         waitUntil(WAIT_TIME_2000);
         txtPlacaNueva.clear();
         txtPlacaNueva.sendKeys(placaVenezolana);
-        waitUntil(WAIT_TIME_2000);
-        txtCiudad.clear();
-        txtCiudad.sendKeys(ciudad);
-        waitUntil(WAIT_TIME_2000);
-        botonSiguiente.click();
+
     }
 
     public void cambiarPorPlacaExistente(String placaExistente) {
@@ -123,17 +149,21 @@ public class CambioDePlacaPage extends PageUtil {
         }
     }
 
-    public void mensajePlacaExistente(String mensaje) {
-        MatcherAssert.assertThat("Error, el modelo fue modificado", labelMensajePlacaExistente.getValue().equals("mensaje"));
+    public void mensajePlacaExistente(ExamplesTable mensaje) {
+        botonSiguiente.click();
+    Map<String, String> datos = mensaje.getRow(0);
+        txtMotor.waitUntilPresent();
+        MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExistente.getText().equals(datos.get("mensaje")));
+}
 
-    }
+
 
     public void clickItemCambiarPlaca() {
         Actions actions = new Actions(getDriver());
         int intentos = 0;
         while (intentos < 3) {
             waitUntil(WAIT_TIME_2000);
-            if (!"0 -15px".equals(itemCambiarPlaca.getCssValue("background-position"))) {
+            if (!"0px -15px".equals(itemCambiarPlaca.getCssValue("background-position"))) {
                 actions.click(itemCambiarPlaca).build().perform();
                 System.out.println("seleccionado ");
             } else {
@@ -144,9 +174,90 @@ public class CambioDePlacaPage extends PageUtil {
         waitUntil(WAIT_TIME_2000);
     }
 
+    public void deseleccionarCheckBoxDePlaca() {
+        Actions actions = new Actions(getDriver());
+        int intentos = 0;
+        while (intentos < 3) {
+            waitUntil(WAIT_TIME_2000);
+            System.out.println("posicion seleccionado " + itemCambiarPlaca.getCssValue("background-position"));
+            if ("0px -15px".equals(itemCambiarPlaca.getCssValue("background-position")) || "-15px -15px".equals(itemCambiarPlaca.getCssValue("background-position"))) {
+                //itemCambiarPlaca.click();
+                actions.click(itemCambiarPlaca).build().perform();
+                waitUntil(WAIT_TIME_2000);
+            } else {
+                break;
+            }
+            intentos++;
+        }
+    }
+
+
     public void expedirCambioPoliza() {
         botonExpedirPoliza.waitUntilPresent().click();
         botonAceptarExpedicion.waitUntilPresent().click();
-        waitForTextToAppear("");
+        waitUntil(WAIT_TIME_3000);
+
+    }
+
+
+    public void mensajeAutorizacion(ExamplesTable mensajeAutorizacion) {
+        Map<String, String> datos = mensajeAutorizacion.getRow(0);
+        tablaRequisitos.waitUntilPresent();
+        MatcherAssert.assertThat("Error, mensaje no encontrado", labelRequisitoPorPlacaExtrangera.getText().equals(datos.get("mensajeAutorizacion")));
+
+    }
+
+    public void clickSiguiente() {
+        waitUntil(WAIT_TIME_3000);
+        botonSiguienteProducto.click();
+        waitUntil(WAIT_TIME_3000);
+    }
+
+    public void clickAgregarVehiculo() {
+        botonAgregarVehiculo.click();
+        waitUntil(WAIT_TIME_3000);
+    }
+
+    public void editarCambioPoliza() {
+        botonEditarCambioPoliza.click();
+        waitUntil(WAIT_TIME_3000);
+        botonEditarCambioPolizaAceptar.click();
+        waitUntil(WAIT_TIME_3000);
+    }
+
+    public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
+        itemVehiculosModificacion.click();
+        waitUntil(WAIT_TIME_3000);
+        itemCambiarPlaca.click();
+        waitUntil(WAIT_TIME_3000);
+        txtCambioDePlaca.clear();
+        txtCambioDePlaca.sendKeys(placaRiesgoConsultable);
+
+    }
+
+    public void mensajePlacaRiesgoConsultable(ExamplesTable mensajePlacaRiesgoConsultable) {
+        Map<String, String> datos = mensajePlacaRiesgoConsultable.getRow(0);
+        panelRequisitos.waitUntilPresent();
+        MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaRiesgoConsultable.getText().equals(datos.get("mensajePlacaRiesgoConsultable")));
+    }
+
+    public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
+        itemVehiculosModificacion.click();
+        waitUntil(WAIT_TIME_3000);
+        itemCambiarPlaca.click();
+        waitUntil(WAIT_TIME_3000);
+        txtCambioDePlaca.clear();
+        txtCambioDePlaca.sendKeys(venezolana);
+        txtCiudad.clear();
+        waitUntil(WAIT_TIME_3000);
+        txtCiudad.sendKeys(ciudad);
+
+    }
+
+    public void mensajeDeAutorizacion(ExamplesTable mensajeDeAutorizacion) {
+        Map<String, String> datos = mensajeDeAutorizacion.getRow(0);
+        tablaRequisitosAutorizacion.waitUntilPresent();
+        MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExtranjeraCucuta.getText().equals(datos.get("mensajeDeAutorizacion")));
+
     }
 }

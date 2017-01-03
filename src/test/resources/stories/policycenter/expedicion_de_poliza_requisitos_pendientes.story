@@ -16,15 +16,10 @@ debe sacar un mensaje de alerta y debe permitir expedir la poliza
 
 Scenario:Maximo valor de accesorios
 GivenStories: stories/policycenter/login_policy.story
-Given que voy a buscar la cuenta <numCuenta>
-And estoy expidiendo una poliza de autos
-And seleccione el producto para expedir la poliza
-And quiera agregar un asegurado
-And vaya a la opcion agregar
-And seleccione ingresar nueva persona natural
-And ingrese los datos de persona natural:
-| tipoId               | numeroId   | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
-| CEDULA DE CIUDADANIA | 1070678905 | LUCIANA      | LONDOÑO        | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
+Given estoy cotizando una poliza de mrc con documento:
+|organizacion|producto               |canal            |tipoPoliza |tipo_documento      |documento|fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|Sura        |Autos                  |Canal Tradicional|Individual |CEDULA DE CIUDADANIA|1030765432|10/10/1973     |LUCIANA      |LONDOÑO        |DIRECCION DE RESIDENCIA|CALLE 65F #60-69|Antioquia   |Medellin|INT-3 |
+And ingrese los datos del asegurado <tipo_documento> <documento>
 And vaya a agregar el vehiculo con los siguientes datos:
 |placa   |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
 |randoms |2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
@@ -39,8 +34,8 @@ Then debo ver un mensaje bloqueante
 |Existen requisitos obligatorios pendientes por adjuntar, por favor verifique|
 
 Examples:
-|numCuenta |accesorios|
-|C000888888|2600000,00|
+|numCuenta |accesorios|tipo_documento      |documento |
+|C000888888|2600000,00|CEDULA DE CIUDADANIA|1234567890|
 
 Scenario:Vehiculo Requiere Inspeccion
 Given que voy a buscar la cuenta <numCuenta>

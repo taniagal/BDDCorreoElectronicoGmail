@@ -25,22 +25,22 @@ public class CambioDePlacaSteps extends ScenarioSteps {
     }
 
     public void cambioPlacaSegundaVez() {
-        cambioDePlacaPage.clickItemCambiarPlaca();
+        cambioDePlacaPage.deseleccionarCheckBoxDePlaca();
     }
 
     public void placaAnterior(String placaInicial) {
         cambioDePlacaPage.mostrarPlacaInicial(placaInicial);
     }
 
-    public void placaVenezolana(String placaVenezolana, String ciudad) {
-        cambioDePlacaPage.ingresarPlacaVenezolana(placaVenezolana, ciudad);
+    public void placaVenezolana(String placaVenezolana) {
+        cambioDePlacaPage.ingresarPlacaVenezolana(placaVenezolana);
     }
 
     public void cambiarPorPlacaExistente(String placaExistente) {
         cambioDePlacaPage.cambiarPorPlacaExistente(placaExistente);
     }
 
-    public void mensajePlacaExistente(String mensaje) {
+    public void mensajePlacaExistente(ExamplesTable mensaje) {
         cambioDePlacaPage.mensajePlacaExistente(mensaje);
     }
 
@@ -50,5 +50,39 @@ public class CambioDePlacaSteps extends ScenarioSteps {
 
     public void expedirCambioPoliza() {
         cambioDePlacaPage.expedirCambioPoliza();
+    }
+
+
+    public void mensajeAutorizacion(ExamplesTable mensajeAutorizacion) {
+        cambioDePlacaPage.mensajeAutorizacion(mensajeAutorizacion);
+    }
+
+    public void clickSiguiente() {
+        cambioDePlacaPage.clickSiguiente();
+    }
+
+    public void clickAgregarVehiculo() {
+        cambioDePlacaPage.clickAgregarVehiculo();
+    }
+
+    public void editarCambioDePoliza() {
+        cambioDePlacaPage.editarCambioPoliza();
+    }
+
+    public void placaRiesgoConsultable(String placaRiesgoConsultable) {
+        cambioDePlacaPage.ingresarPlacaRiesgoConsultable(placaRiesgoConsultable);
+    }
+
+    public void mensajePlacaRiesgoConsultable(ExamplesTable mensajePlacaRiesgoConsultable) {
+        cambioDePlacaPage.mensajePlacaRiesgoConsultable(mensajePlacaRiesgoConsultable);
+    }
+
+    public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
+        cambioDePlacaPage.ingresarPlacaExtranjera(venezolana,ciudad);
+    }
+
+    public void mensajeDeAutorizacion(ExamplesTable mensajeDeAutorizacion) {
+        cambioDePlacaPage.mensajeDeAutorizacion(mensajeDeAutorizacion);
+
     }
 }

@@ -39,6 +39,18 @@ public class CuentaNuevaSteps extends ScenarioSteps {
         Map<String, String> datosCuenta = datosCotizacion.getRow(0);
         abrirNuevaCuenta();
         agregarTipoDocumento(datosCuenta.get("tipo_documento"));
+        agregarDatosCuenta(datosCotizacion, datosCuenta);
+    }
+
+    @Step
+    public void crearCuentaNuevaConDocumento(ExamplesTable datosCotizacion) {
+        Map<String, String> datosCuenta = datosCotizacion.getRow(0);
+        abrirNuevaCuenta();
+        agregarDocumento(datosCuenta.get("tipo_documento"), datosCuenta.get("documento"));
+        agregarDatosCuenta(datosCotizacion, datosCuenta);
+    }
+
+    private void agregarDatosCuenta(ExamplesTable datosCotizacion, Map<String, String> datosCuenta) {
         agregarOrganizacion(datosCuenta.get("organizacion"), datosCuenta.get("agente"));
         agregarNombre(datosCuenta.get("primer_nombre"), datosCuenta.get("primer_apellido"), datosCuenta.get("fecha_nacimiento"));
         agregarDireccion(datosCotizacion);

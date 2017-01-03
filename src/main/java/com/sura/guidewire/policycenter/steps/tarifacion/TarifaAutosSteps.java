@@ -15,6 +15,12 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
+    public void agregarAseguradosDelDirectorio(String tipoDocumento, String documento) {
+        tarifaAutosPage.seleccionarAsegurado(tipoDocumento,documento);
+        vehiculoPage.clickSiguiente();
+    }
+
+    @Step
     public void agregarAsegurados(String tipoDocumento, String documento) {
         tarifaAutosPage.seleccionarAsegurado(tipoDocumento,documento);
         vehiculoPage.clickSiguiente();
@@ -25,7 +31,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
         vehiculoPage.crearVehiculo();
         tarifaAutosPage.relacionarAsegurado();
         vehiculoPage.agregarVehiculo(datosPoliza);
-        vehiculoPage.clickSiguiente();
+        //vehiculoPage.clickSiguiente();
     }
 
     @Step
@@ -54,4 +60,6 @@ public class TarifaAutosSteps extends ScenarioSteps {
     public void verificarTarifacionPorCoberturas(ExamplesTable valor) {
         tarifaAutosPage.verificarTarifacionPorCoberturas(valor);
     }
+
+
 }
