@@ -53,13 +53,6 @@ public class AprobacionDeAnalisisDeRiesgoPage extends PageUtil {
         waitFor(botonAceptarMensaje);
         botonCancelarMensaje.shouldBeCurrentlyVisible();
         botonAceptarMensaje.click();
-        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
-        if(botonBorrar.isPresent()) {
-            clickElement(botonExpedirPoliza);
-            waitFor(botonAceptarMensaje);
-            botonAceptarMensaje.click();
-        }
-        resetImplicitTimeout();
         waitForAnyTextToAppear("Cotización Expedida","Cambio en la póliza Expedida");
     }
 }
