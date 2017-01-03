@@ -39,19 +39,6 @@ public class SolicitarRequisitoPaPage extends PageUtil{
         actions.sendKeys(Keys.ENTER).build().perform();
     }
 
-    public void clicEnElBotonRequisitos(){
-        findBy("//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:RequestRequirement-btnInnerEl']").click();
-        for(String winHandle : getDriver().getWindowHandles()){
-            System.out.println("paginas " + getDriver().switchTo().window(winHandle));
-        }
-    }
-
-    public void validarElRequisito(ExamplesTable requisito) {
-        Map<String, String> listaRequisitos = requisito.getRows().get(0);
-        MatcherAssert.assertThat("El requisito pendiente no es " + listaRequisitos.get("requisito") ,findBy("//*[@id='reqCliente']/tbody/tr/td[3]").getText(), Is.is(Matchers.equalTo(listaRequisitos.get("requisito"))));
-        MatcherAssert.assertThat("El estado del requisito no es " + listaRequisitos.get("estado"), findBy("//*[@id='reqCliente']/tbody/tr/td[9]").getText(), Is.is(Matchers.equalTo(listaRequisitos.get("estado"))));
-    }
-
     public void validarMensajeBloqueante(ExamplesTable mensajeB) {
         Map<String, String> bloqueo = mensajeB.getRows().get(0);
         WebElementFacade mensajeAdvertencia = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
