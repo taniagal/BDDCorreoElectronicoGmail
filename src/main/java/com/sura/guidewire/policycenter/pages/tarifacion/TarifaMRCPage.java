@@ -62,6 +62,10 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade labelDescripcionCobertura;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
+    private WebElementFacade botonAgregarContacto;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl']")
+    private WebElementFacade botonAgregarContactoDelDirectorio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']")
     private WebElementFacade tablaPrimas;
 
@@ -231,6 +235,11 @@ public class TarifaMRCPage extends PageUtil {
         clickElement(checkBoxDaniosMateriales);
         campoTxtValorAsegurableDaniosMateriales.sendKeys(valor);
         campoTxtIndiceVariable.sendKeys(valorIndice);
+    }
+
+    public void agregarContactoDelDirectorio(){
+        botonAgregarContacto.waitUntilPresent().click();
+        botonAgregarContactoDelDirectorio.click();
     }
 
     public void verificarTarifacionEnCoberturasTerremotoYSustraccion(ExamplesTable primasPoliza) {
