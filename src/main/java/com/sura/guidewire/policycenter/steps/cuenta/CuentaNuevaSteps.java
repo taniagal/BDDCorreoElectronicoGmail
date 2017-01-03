@@ -37,6 +37,9 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     @Step
     public void crearCuentaNueva(ExamplesTable datosCotizacion) {
         Map<String, String> datosCuenta = datosCotizacion.getRow(0);
+        if(datosCuenta.get("numeroDocumento")==null){
+            datosCuenta.put("numeroDocumento", "");
+        }
         abrirNuevaCuenta();
         agregarTipoDocumento(datosCuenta.get("tipo_documento"), datosCuenta.get("numeroDocumento"));
         agregarOrganizacion(datosCuenta.get("organizacion"), datosCuenta.get("agente"));
