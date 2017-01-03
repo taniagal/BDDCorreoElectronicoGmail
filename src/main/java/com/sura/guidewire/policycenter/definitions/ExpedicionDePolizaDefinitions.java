@@ -55,12 +55,6 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.clicEnCancelarDelMensajeDeConfirmacion(mensaje);
     }
 
-    @When("continuo la expedicion con requisitos pendientes")
-    public void continuarExpedicionConRequisitos(){
-        expedicionDePolizaSteps.continuarExpedicionConRequisitos();
-    }
-
-
     @Then("debe mostrar el resumen de la poliza expedida con la informacion de cotizacion <infoCotizacion>")
     public void validarResumenDeLaPolizaExpedida(@Named("infoCotizacion") String infoCotizacion) {
         expedicionDePolizaSteps.validarResumenDeLaPolizaExpedida(infoCotizacion);
@@ -76,12 +70,6 @@ public class ExpedicionDePolizaDefinitions {
     public void validarMensajeDeRiesgos(@Named("mensaje") String mensaje) {
         expedicionDePolizaSteps.validar_mensaje(mensaje);
     }
-
-    @Then("debe volver a la pantalla de cotizacion")
-    public void validarCancelacionDeExpedicionDePoliza(){
-        expedicionDePolizaSteps.validar_que_vuelve_a_la_ventana_de_cotizacion();
-    }
-
 
     @SuppressWarnings("EmptyMethod")
     @Then("debe enviar un mensaje a un buzon previamente configurado cuando existe un interes adicional riesgo consultable")
