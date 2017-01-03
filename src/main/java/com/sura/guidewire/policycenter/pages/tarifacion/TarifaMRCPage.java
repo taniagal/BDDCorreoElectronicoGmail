@@ -6,7 +6,6 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
-import org.openqa.selenium.By;
 
 import java.util.List;
 import java.util.Map;
@@ -23,8 +22,6 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoIva;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']")
     private WebElementFacade campoTxtValorReconstruccion;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
-    private WebElementFacade campoTxtValorAsegurado;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:ComercialValue_Input-inputEl']")
     private WebElementFacade campoTxtValorComercial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:0:RateModifier-inputEl']")
@@ -103,13 +100,16 @@ public class TarifaMRCPage extends PageUtil {
         for (Map<String, String> dato : datos.getRows()) {
             if (labelcobertura.containsText(dato.get("cobertura"))) {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
-                campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
             } else {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']");
-                campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
             }
-            checkBoxCobertura.click();
-            campoTxtValorAsegurado.waitUntilPresent().sendKeys(dato.get("valorAsegurado"));
+
+            try {
+                checkBoxCobertura.click();
+            } catch (StaleElementReferenceException e) {
+                LOGGER.info("StaleElementReferenceException " + e);
+                checkBoxCobertura.click();
+            }
             valorAsegurado = Double.parseDouble(dato.get("valorAsegurado"));
         }
     }
@@ -244,9 +244,9 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarTarifacionEnCoberturasTerremotoYSustraccion(ExamplesTable primasPoliza) {
         Integer fila;
-        for(int i = 0; i < primasPoliza.getRowCount(); i++){
+        for (int i = 0; i < primasPoliza.getRowCount(); i++) {
             fila = encontrarCobertura(primasPoliza.getRows().get(i).get("cobertura"));
-            String xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr["+fila.toString()+"]/td[3]";
+            String xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[" + fila.toString() + "]/td[3]";
             MatcherAssert.assertThat(findBy(xpath).getText(), containsText((primasPoliza.getRows().get(i).get("prima"))));
         }
     }

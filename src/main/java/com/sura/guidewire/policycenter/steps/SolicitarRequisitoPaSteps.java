@@ -23,17 +23,17 @@ public class SolicitarRequisitoPaSteps extends ScenarioSteps{
     private NuevaCotizacionPage nuevaCotizacionPage;
 
     @Step
-    public void validar_Que_Se_Habilite_La_Opcion_Solicitar_Requisitos() {
+    public void validarQueSeHabiliteLaOpcionSolicitarRequisitos() {
         solicitarRequisitoPa.validarOpcionHabilitada();
     }
 
     @Step
-    public void validar_Que_Se_Muestre_Mensaje_De_Advertencia(ExamplesTable mensaje){
+    public void validarQueSeMuestreMensajeDeAdvertencia(ExamplesTable mensaje){
         solicitarRequisitoPa.validarAdvertenciaRequisitos(mensaje);
     }
 
     @Step
-    public void validar_Que_Existan_Requisitos_Pendientes() {
+    public void validarQueExistanRequisitosPendientes() {
         solicitarRequisitoPa.validarRequisitos();
     }
 
