@@ -34,8 +34,6 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtSustraccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-inputEl']")
     private WebElementFacade campoTxtTasaGlobal;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
-    private WebElementFacade campoTxtValorAsegurableDaniosMateriales;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:VariableRate_Input-inputEl']")
     private WebElementFacade campoTxtIndiceVariable;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
@@ -101,10 +99,10 @@ public class TarifaMRCPage extends PageUtil {
             }
 
             try {
-                checkBoxCobertura.click();
+                clickElement(checkBoxCobertura);
             } catch (StaleElementReferenceException e) {
                 LOGGER.info("StaleElementReferenceException " + e);
-                checkBoxCobertura.click();
+                clickElement(checkBoxCobertura);
             }
             valorAsegurado = Double.parseDouble(dato.get("valorAsegurado"));
         }
@@ -229,7 +227,6 @@ public class TarifaMRCPage extends PageUtil {
 
     public void seleccionarCoberturaDanios(String valor, String valorIndice) {
         clickElement(checkBoxDaniosMateriales);
-        campoTxtValorAsegurableDaniosMateriales.sendKeys(valor);
         campoTxtIndiceVariable.sendKeys(valorIndice);
     }
 
