@@ -24,6 +24,11 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.clicEnExpedirPoliza();
     }
 
+    @Then("voy a expedir una poliza")
+    public void expedirPolizaDos() {
+        expedicionDePolizaSteps.clicEnExpedirPoliza();
+    }
+
     @When("voy a expedir una poliza por cambio")
     public void expedirPolizaCambio() {
         expedicionDePolizaSteps.clic_en_expedir_poliza_por_cambio();
@@ -32,6 +37,11 @@ public class ExpedicionDePolizaDefinitions {
 
     @When("confirmo el mensaje de expedir poliza")
     public void confirmarMensajeDeExpedirPoliza() {
+        expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
+    }
+
+    @Then("confirmo el mensaje de expedir poliza")
+    public void confirmarMensajeDeExpedirPolizaDos() {
         expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
     }
 

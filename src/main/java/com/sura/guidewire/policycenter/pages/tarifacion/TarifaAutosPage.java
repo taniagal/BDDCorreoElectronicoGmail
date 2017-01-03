@@ -166,7 +166,15 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
-        setImplicitTimeout(WAIT_TIME_10, TimeUnit.SECONDS);
+        seleccionarCoberturasRC(datosCoberturas);
+        if(!"".equals(dato.get("abogado"))){
+            selectItem(comboBoxAbogado, dato.get("abogado"));
+        }
+    }
+
+    public void seleccionarCoberturasRC(ExamplesTable datosCoberturas) {
+        Map<String, String> dato = datosCoberturas.getRow(0);
+        setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
             botonBorrar.waitUntilPresent().click();
             botonBorrar.waitUntilNotVisible();
@@ -180,10 +188,6 @@ public class TarifaAutosPage extends PageUtil {
         comboBoxLimite.sendKeys(Keys.ENTER);
         waitUntil(WAIT_TIME_800);
         selectItem(comboBoxDeducible, dato.get("deducible"));
-        this.seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
-        if(!"".equals(dato.get("abogado"))){
-            selectItem(comboBoxAbogado, dato.get("abogado"));
-        }
     }
 
     public void seleccionarPerdidaDeLlaves(String llaves){
