@@ -174,7 +174,7 @@ public class TarifaAutosPage extends PageUtil {
 
     public void seleccionarCoberturasRC(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
-        setImplicitTimeout(WAIT_TIME_10, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
         if (botonBorrar.isPresent()) {
             botonBorrar.waitUntilPresent().click();
             botonBorrar.waitUntilNotVisible();
