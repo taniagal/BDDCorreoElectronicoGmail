@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.BusquedaDePolizaPage;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
@@ -67,5 +68,10 @@ public class BusquedaDePolizaSteps extends ScenarioSteps{
     @Step
     public void buscarPolizaPorNumeroCuentaYDosOpcionales(String numeroCuenta, String producto, String codigoAgente) {
         busquedaDePolizaPage.buscarPolizaPorNumeroCuentaYDosOpcionales(numeroCuenta, producto, codigoAgente);
+    }
+
+    @Step
+    public void verificarResumenDePoliza(String poliza) {
+        busquedaDePolizaPage.verificarResumenDePoliza(poliza);
     }
 }

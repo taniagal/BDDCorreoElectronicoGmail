@@ -41,6 +41,8 @@ public class BusquedaDePolizaPage extends PageUtil {
     WebElementFacade tituloBuscarPoliza;
     @FindBy(xpath = ".//*[@id='PolicySearch:PolicySearchScreen:DatabasePolicySearchPanelSet:PolicySearchDV:SearchAndResetInputSet:SearchLinksInputSet:Reset']")
     WebElementFacade botonRestablecer;
+    @FindBy(xpath = ".//*[@id='PolicyFile_Summary:Policy_SummaryScreen:Policy_Summary_PolicyDV:PolicyNumber-inputEl']")
+    WebElementFacade campoNumeroDePoliza;
 
     protected static final int WAIT_TIME_3500 = 3500;
     protected static final int CONSTANTE_9 = 9;
@@ -187,5 +189,10 @@ public class BusquedaDePolizaPage extends PageUtil {
         this.ingresarDatoEnCampoProducto(producto);
         txtCodigoAgente.sendKeys(codigoAgente);
         this.clicEnBotonBuscar();
+    }
+
+    public void verificarResumenDePoliza(String poliza) {
+        campoNumeroDePoliza.waitUntilPresent();
+        MatcherAssert.assertThat("Error, no se encontró la poliza pero el aplicativo si está desplegado",campoNumeroDePoliza.containsText(poliza));
     }
 }
