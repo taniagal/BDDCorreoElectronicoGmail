@@ -154,5 +154,4 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     public void verificarEstadoDeMensaje(String mensaje) {
         cuentaPage.verificarEstadoDeMensaje(mensaje);
     }
-
 }

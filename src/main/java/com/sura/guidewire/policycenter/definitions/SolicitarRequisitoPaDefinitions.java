@@ -22,11 +22,6 @@ public class SolicitarRequisitoPaDefinitions {
         solicitarRequisitoPaSteps.validar_Que_Existan_Requisitos_Pendientes();
     }
 
-    @When("seleccione la cobertura y agregue interes adicional para tipo el tipo de beneficiaro requerido: $articuloConInteres")
-    public void ingresarArticuloYBeneficiario(ExamplesTable articuloConInteres){
-        solicitarRequisitoPaSteps.ingresarArticuloYBeneficiario(articuloConInteres);
-    }
-
     @Then("se debe habilitar la opcion de requisitos, con el fin de visualizar los requisitos requeridos")
     public void validarOpcionHabilitada(){
         solicitarRequisitoPaSteps.validar_Que_Se_Habilite_La_Opcion_Solicitar_Requisitos();
