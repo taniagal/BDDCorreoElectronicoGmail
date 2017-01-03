@@ -20,17 +20,17 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
     private WebElementFacade analisisDeRiesgo;
     @FindBy(xpath = ".//*[contains(text(), 'Análisis de riesgo') and contains(@id, 'Job_RiskAnalysisScreen')]")
     private WebElementFacade labelAnalisisDeRiesgo;
+    @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0-btnInnerEl']")
+    private WebElementFacade resultadosValidacion;
 
     public GeneracionUwIssueRiesgosConsultablesPaPage(WebDriver driver) {
         super(driver);
     }
 
     public void irAAnalisisDeRiesgo() {
-        WebElementFacade resultadosValidacion = findBy(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
-        waitUntil(WAIT_TIME_3000);
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(analisisDeRiesgo).click();
-        withTimeoutOf(WAIT_TIME_30000, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgo).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(resultadosValidacion);
+        clickElement(analisisDeRiesgo);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgo);
     }
 
     public void validarGeneracionUWIssue(ExamplesTable mensajesBloqueo) {

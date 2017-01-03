@@ -115,7 +115,7 @@ public class TarifaAutosPage extends PageUtil {
 
 
     public void desMarcarCoberturas() {
-        checkBoxHurto.click();
+        clickElement(checkBoxHurto);
         comboBoxPerdidaTotalHurto.waitUntilNotVisible();
         checkBoxDaniosCarro.click();
         comboBoxPerdidaTotalDaniosDeducible.waitUntilNotVisible();
@@ -180,9 +180,15 @@ public class TarifaAutosPage extends PageUtil {
         comboBoxLimite.sendKeys(Keys.ENTER);
         waitUntil(WAIT_TIME_800);
         selectItem(comboBoxDeducible, dato.get("deducible"));
-        selectItem(comboBoxPerdidaDeLlaves, dato.get("PLlaves"));
+        this.seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
         if(!"".equals(dato.get("abogado"))){
             selectItem(comboBoxAbogado, dato.get("abogado"));
+        }
+    }
+
+    public void seleccionarPerdidaDeLlaves(String llaves){
+        if(!"".equals(llaves)){
+            selectItem(comboBoxPerdidaDeLlaves, llaves);
         }
     }
 
