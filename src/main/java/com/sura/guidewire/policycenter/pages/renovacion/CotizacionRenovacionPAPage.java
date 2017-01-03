@@ -85,7 +85,7 @@ public class CotizacionRenovacionPAPage extends PageUtil {
         MatcherAssert.assertThat(campoValorTermino.getText(), Matchers.containsString(cobertura.get("terminoCobertura")));
         MatcherAssert.assertThat(campoPrima.getText(), Matchers.containsString(cobertura.get("prima")));
         MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa, fué $0,00 (COP)",!campoSubtotalSumaPrimas.getText().equals("$0,00 (COP)"));
-        MatcherAssert.assertThat(campoSubtotalPrimas.getText(), Matchers.containsString(cobertura.get("subtotalPrimas")));
+        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa, fué $0,00 (COP)",!campoSubtotalPrimas.getText().equals("$0,00 (COP)"));
     }
 
     public void validarDireccionTomador(ExamplesTable direccion) {
