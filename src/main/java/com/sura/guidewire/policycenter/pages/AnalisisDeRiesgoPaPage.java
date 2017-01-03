@@ -51,7 +51,7 @@ public class AnalisisDeRiesgoPaPage extends PageUtil {
     }
 
     public void ingresarAnalisisDeRiesgo(){
-        waitUntil(WAIT_TIME_2000);
+        waitUntil(WAIT_TIME_3000);
         analisiDeRiesgo.waitUntilVisible().click();
     }
 }

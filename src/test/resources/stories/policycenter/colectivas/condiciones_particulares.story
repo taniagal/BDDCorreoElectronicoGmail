@@ -163,3 +163,24 @@ Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+
+
+Scenario: 10 Expedir auto cero kilometros
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |
+| YFP099 | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |
+When ingrese a la pantalla de coberturas
+And ingrese las coberturas a auto cero kilometros:
+|limite|deducible|
+|1.440 |0        |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+Then se debe permitir expedir la poliza
+
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
