@@ -20,7 +20,7 @@ public class CuentaNuevaDefinitions {
     @When("quiera crear una cuenta para un contacto persona natural e ingrese documento, tipo de documento <tipo_documento>")
     public void crearCuentaNuevaPersonaNatural(@Named("tipo_documento")String tipoDocumento){
         cuentaNuevaSteps.abrirNuevaCuenta();
-        cuentaNuevaSteps.agregarTipoDocumento(tipoDocumento);
+        cuentaNuevaSteps.agregarTipoDocumento(tipoDocumento, "");
     }
 
     @When("fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>")
@@ -50,7 +50,7 @@ public class CuentaNuevaDefinitions {
     @When("quiera crear una cuenta para un contacto persona juridica e ingrese nit, tipo de documento <tipo_documento>")
     public void crearCuentaNuevaPersonaJuridica(@Named("tipo_documento")String tipoDocumento){
         cuentaNuevaSteps.abrirNuevaCuenta();
-        cuentaNuevaSteps.agregarTipoDocumento(tipoDocumento);
+        cuentaNuevaSteps.agregarTipoDocumento(tipoDocumento, "");
     }
 
     @When("nombre empresa <razon_social>")

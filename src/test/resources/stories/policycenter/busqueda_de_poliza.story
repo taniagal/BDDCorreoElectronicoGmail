@@ -134,3 +134,15 @@ Then debe mostrar el mensaje <mensaje>
 Examples:
 | numeroCuenta | codigoAgente      | mensaje                             |
 | C001888888   | QA1PRODUCERCODE01 | La búsqueda no devolvió resultados. |
+
+
+Scenario: Smoke test busqueda de poliza
+Meta:
+@smoke
+Given me encuentro logueado en policy center
+When busque la poliza <poliza>
+Then debo poder ver el resumen de la poliza <poliza>
+
+Examples:
+|poliza      |
+|900000000001|
