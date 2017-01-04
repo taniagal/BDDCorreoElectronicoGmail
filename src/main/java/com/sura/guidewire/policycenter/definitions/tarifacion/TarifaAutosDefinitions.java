@@ -26,13 +26,18 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregarVehiculo(datosVehiculo);
     }
 
+    @When("ingrese la informacion del vehiculo: $datosVehiculo")
+    public void agregarVehiculoConAcessorios(ExamplesTable datosVehiculo) {
+        tarifaAutosSteps.agregarVehiculoDos(datosVehiculo);
+    }
 
 
     @When("ingrese las coberturas: $coberturas")
     public void agregarcoberturas(ExamplesTable coberturas) {
         tarifaAutosSteps.agregarCoberturas(coberturas);
     }
-    @When("ingrese las coberturas a auto cero kilometros: $coberturas")
+
+    @When("ingrese las coberturas a $texto: $coberturas")
     public void agregarcoberturasCeroKilometros(ExamplesTable coberturas){
         tarifaAutosSteps.agregarCoberturasRC(coberturas);
     }
