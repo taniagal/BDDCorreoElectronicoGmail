@@ -68,7 +68,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void irACoverturas() {
+    public void seleccionarBotonSiguiente() {
         vehiculoPage.clickSiguiente();
     }
 }

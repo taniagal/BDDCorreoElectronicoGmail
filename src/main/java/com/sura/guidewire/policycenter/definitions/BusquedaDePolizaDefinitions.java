@@ -16,12 +16,6 @@ public class BusquedaDePolizaDefinitions {
     @Steps
     BusquedaDePolizaSteps busquedaDePolizaSteps;
 
-    @Steps
-    LoginSteps loginSteps;
-
-    @Steps
-    CambioDePolizaSteps cambioDePolizaSteps;
-
     @Given("que voy a buscar una poliza")
     public void irABuscarPoliza() {
         busquedaDePolizaSteps.irABuscarPoliza();
@@ -86,20 +80,5 @@ public class BusquedaDePolizaDefinitions {
                                                           @Named("producto") String producto,
                                                           @Named("numeroCuenta") String codigoAgente) {
         busquedaDePolizaSteps.buscarPolizaPorNumeroCuentaYDosOpcionales(numeroCuenta, producto, codigoAgente);
-    }
-
-    @Given("me encuentro logueado en policy center")
-    public void ingresarAPolicyCenter() {
-        loginSteps.login();
-    }
-
-    @When("busque la poliza <poliza>")
-    public void buscarPoliza(@Named("poliza") String poliza) {
-        cambioDePolizaSteps.irABuscarPoliza(poliza);
-    }
-
-    @Then("debo poder ver el resumen de la poliza <poliza>")
-    public void verificarResumenDePoliza(@Named("poliza") String poliza) {
-        busquedaDePolizaSteps.verificarResumenDePoliza(poliza);
     }
 }

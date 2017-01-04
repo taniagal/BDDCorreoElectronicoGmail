@@ -44,7 +44,12 @@ public class TarifaAutosDefinitions {
 
     @When("ingrese a la pantalla de coberturas")
     public void irACoberturas() {
-        tarifaAutosSteps.irACoverturas();
+        tarifaAutosSteps.seleccionarBotonSiguiente();
+    }
+
+    @When("vaya a la pantalla de coberturas")
+    public void seleccionarBotonSiguiente(){
+        tarifaAutosSteps.seleccionarBotonSiguiente();
     }
 
     @When("seleccione todas las coberturas: $coberturas")

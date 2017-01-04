@@ -36,7 +36,7 @@ public class MetodosComunes {
         return prop;
     }
 
-    public void waitUntil(int millis) {
+    public static void waitUntil(int millis) {
         Integer i = 0;
         Wait<Integer> wait = new FluentWait<Integer>(i).withTimeout(millis,
                 TimeUnit.MILLISECONDS).pollingEvery(millis,
