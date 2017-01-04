@@ -50,6 +50,8 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade txtPlacaNueva;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
     private WebElementFacade txtCiudad;
+    @FindBy(xpath = ".//li")
+    private WebElementFacade txtCiudadCirculacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//div[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
@@ -70,6 +72,8 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade botonAgregarVehiculo;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
     private WebElementFacade botonEditarCambioPoliza;
+    @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
+    private WebElementFacade botonEditarCambioPolizaExpedicion;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonEditarCambioPolizaAceptar;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div/span")
@@ -78,7 +82,7 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade labelMensajePlacaRiesgoConsultable;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
     private WebElementFacade panelRequisitos;
-    @FindBy(xpath = "..//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:1:ShortDescriptionAndSize-inputEl']")
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:2:ShortDescriptionAndSize-inputEl']")
     private WebElementFacade labelMensajePlacaExtranjeraCucuta;
     @FindBy(xpath = ".//*[@id='centerPanel']")
     private WebElementFacade tablaRequisitosAutorizacion;
@@ -219,10 +223,17 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void editarCambioPoliza() {
-        botonEditarCambioPoliza.click();
-        waitUntil(WAIT_TIME_3000);
-        botonEditarCambioPolizaAceptar.click();
-        waitUntil(WAIT_TIME_3000);
+        if (botonEditarCambioPoliza.isPresent()) {
+            botonEditarCambioPoliza.click();
+            waitUntil(WAIT_TIME_3000);
+            botonEditarCambioPolizaAceptar.click();
+            waitUntil(WAIT_TIME_3000);
+        }
+        else if (botonEditarCambioPolizaExpedicion.isPresent()){
+            botonEditarCambioPolizaExpedicion.click();
+            waitUntil(WAIT_TIME_3000);
+
+        }
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
@@ -251,13 +262,16 @@ public class CambioDePlacaPage extends PageUtil {
         txtCiudad.clear();
         waitUntil(WAIT_TIME_3000);
         txtCiudad.sendKeys(ciudad);
+        txtCiudadCirculacion.click();
+
 
     }
 
     public void mensajeDeAutorizacion(ExamplesTable mensajeDeAutorizacion) {
         Map<String, String> datos = mensajeDeAutorizacion.getRow(0);
-        tablaRequisitosAutorizacion.waitUntilPresent();
+        labelMensajePlacaExtranjeraCucuta.waitUntilPresent();
         MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExtranjeraCucuta.getText().equals(datos.get("mensajeDeAutorizacion")));
+        waitUntil(WAIT_TIME_3000);
 
     }
 }

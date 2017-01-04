@@ -62,6 +62,9 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade botonCotizarSubmission;
     @FindBy(xpath = ".//*[@id=\"JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl\"]")
     private WebElementFacade clickArchivoDePoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_false-inputEl']")
+    private WebElementFacade itemNoImportadoPorTerceros;
+
 
 
     public void valorAccesorios(String accesorios) {
@@ -101,15 +104,15 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void vehiculoImportadoTerceros() {
+        campoTxtAccesorios.clear();
         waitUntil(WAIT_TIME_2000);
         clickElement(itemImportado);
         waitUntil(WAIT_TIME_2000);
         clickElement(itemImportadoPorTerceros);
-
-
     }
 
     public void ingresarBeneficiarioOneroso() {
+        itemNoImportadoPorTerceros.click();
         waitUntil(WAIT_TIME_3000);
         clickElement(botonInteresAdicional);
         waitUntil(WAIT_TIME_3000);
@@ -174,7 +177,6 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         waitUntil(WAIT_TIME_3000);
 
 
-
     }
 
     public void clickArchivoDePoliza() {
@@ -182,6 +184,10 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         clickArchivoDePoliza.click();
         waitUntil(WAIT_TIME_3000);
 
+    }
+
+    public void seleccionarOpcionCeroKilometros() {
+        itemVehiculoCeroKilometros.click();
     }
 }
 

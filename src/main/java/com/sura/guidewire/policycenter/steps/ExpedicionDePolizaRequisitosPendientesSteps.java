@@ -107,4 +107,8 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
     public void clickArchivoDePoliza() {
         expedicionDePolizaRequisitosPendientesPage.clickArchivoDePoliza();
     }
+
+    public void deseleccionarVehiculoCeroKilometros() {
+        expedicionDePolizaRequisitosPendientesPage.seleccionarOpcionCeroKilometros();
+    }
 }

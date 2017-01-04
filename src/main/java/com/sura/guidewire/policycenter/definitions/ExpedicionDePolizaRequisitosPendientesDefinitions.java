@@ -4,8 +4,10 @@ package com.sura.guidewire.policycenter.definitions;
 import com.google.inject.name.Named;
 import com.sura.guidewire.policycenter.steps.*;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.WhenPageOpens;
 import org.eclipse.jetty.util.annotation.Name;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -25,6 +27,8 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     GuidewireLoginSteps guidewireLoginSteps;
     @Steps
     InformacionPolizaPASteps informacionPolizaPASteps;
+    @Steps
+    TarifaAutosSteps tarifaAutosSteps;
 
     @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
@@ -34,18 +38,25 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
         expedicionDePolizaRequisitosPendientesSteps.ingresarValorAccesorios(accesorios);
 
     }
-    @Given("seleccione la opcion importado por terceros")
+    @Given("deseleccione la opcion vehiculo cero kilometros")
+    public void deseleccionarVehiculoCeroKilometros(){
+        expedicionDePolizaRequisitosPendientesSteps.deseleccionarVehiculoCeroKilometros();
+
+    }
+
+    @When("seleccione la opcion importado por terceros")
     public void seleccionarImportado(){
         expedicionDePolizaRequisitosPendientesSteps.seleccionarVehiculoImportado();
 
     }
-    @Given("ingrese un beneficiario oneroso")
+    @When("ingrese un beneficiario oneroso")
     public void ingresarBeneficiarioOneroso(){
         expedicionDePolizaRequisitosPendientesSteps.clickEnInteresAdicional();
 
     }
 
-    @Then("debo ver un mensaje bloqueante $mensaje")
+
+    @When("debo ver un mensaje bloqueante $mensaje")
     public void mensajeBloqueante(ExamplesTable mensaje){
         expedicionDePolizaRequisitosPendientesSteps.verMensaje(mensaje);
 
@@ -92,10 +103,6 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
         informacionPolizaPASteps.seleccionarProducto();
         informacionPolizaPASteps.accionarInformacionPoliza();
     }
-    @Given("vaya a agregar el vehiculo con los siguientes datos: $datosVehiculo")
-    public void agregarVehiculo(ExamplesTable datosVehiculo) {
-        expedicionDePolizaRequisitosPendientesSteps.agregarVehiculo(datosVehiculo);
-    }
     @When("se ingrese a la opcion vehiculos")
     public void irAVehiculosModificacion() {
         expedicionDePolizaRequisitosPendientesSteps.clickVehiculos();
@@ -131,6 +138,9 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     }
 
 
-
+    @Given("ingrese los datos del vehiculo: $datosVehiculo")
+    public void agregarVehiculo(ExamplesTable datosVehiculo) {
+        tarifaAutosSteps.agregarVehiculo(datosVehiculo);
+    }
 
 }

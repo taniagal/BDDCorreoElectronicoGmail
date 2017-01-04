@@ -17,25 +17,42 @@ debe sacar un mensaje de alerta y debe permitir expedir la poliza
 Scenario:Maximo valor de accesorios
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc con documento:
-|organizacion|producto               |canal            |tipoPoliza |tipo_documento      |documento|fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
+|organizacion|producto               |canal            |tipoPoliza |tipo_documento      |documento |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
 |Sura        |Autos                  |Canal Tradicional|Individual |CEDULA DE CIUDADANIA|1030765432|10/10/1973     |LUCIANA      |LONDOÑO        |DIRECCION DE RESIDENCIA|CALLE 65F #60-69|Antioquia   |Medellin|INT-3 |
 And ingrese los datos del asegurado <tipo_documento> <documento>
-And vaya a agregar el vehiculo con los siguientes datos:
+And ingrese los datos del vehiculo:
 |placa   |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
-|randoms |2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
+|ASDF2   |2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
 And ingrese un valor maximo para los accesorios <accesorios>
 And seleccione algunas coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
 |1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
 When voy a expedir una poliza
 And confirmo el mensaje de expedir poliza
-Then debo ver un mensaje bloqueante
+And debo ver un mensaje bloqueante
 |mensaje|
 |Existen requisitos obligatorios pendientes por adjuntar, por favor verifique|
+And cuando edite la transacion de la poliza
+And ingrese a la opcion vehiculos
+And seleccione la opcion importado por terceros
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+And debo ver un mensaje bloqueante
+|mensaje|
+|Existen requisitos obligatorios pendientes por adjuntar, por favor verifique|
+And cuando edite la transacion de la poliza
+And ingrese a la opcion vehiculos
+And ingrese un beneficiario oneroso
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+And debo ver un mensaje bloqueante
+|mensaje|
+|Existen requisitos obligatorios pendientes por adjuntar, por favor verifique|
+And cuando edite la transacion de la poliza
 
 Examples:
-|numCuenta |accesorios|tipo_documento      |documento |
-|C000888888|2600000,00|CEDULA DE CIUDADANIA|1234567890|
+|accesorios|tipo_documento      |documento |
+|2600000,00|CEDULA DE CIUDADANIA|1234567890|
 
 Scenario:Vehiculo Requiere Inspeccion
 Given que voy a buscar la cuenta <numCuenta>
@@ -63,83 +80,8 @@ Examples:
 |numCuenta |accesorios|
 |C000888888|2600000,00|
 
-Scenario:Vehiculo importado por terceros
-Given que voy a buscar la cuenta <numCuenta>
-And estoy expidiendo una poliza de autos
-And seleccione el producto para expedir la poliza
-And quiera agregar un asegurado
-And vaya a la opcion agregar
-And seleccione ingresar nueva persona natural
-And ingrese los datos de persona natural:
-| tipoId               | numeroId   | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
-| CEDULA DE CIUDADANIA | 1030678907 | LUCIANA      | LONDOÑO        | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
-And vaya a agregar el vehiculo con los siguientes datos:
-|placa  |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
-|randomo|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
-And seleccione la opcion importado por terceros
-And seleccione algunas coberturas:
-|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
-|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
-When voy a expedir una poliza
-And confirmo el mensaje de expedir poliza
-Then debo ver un mensaje bloqueante
-|mensaje|
-|Existen requisitos obligatorios pendientes por adjuntar, por favor verifique|
 
-Examples:
-|numCuenta |
-|C000888888|
 
-Scenario:Vehiculo importado por terceros y cero kilometros
-Given que voy a buscar la cuenta <numCuenta>
-And estoy expidiendo una poliza de autos
-And seleccione el producto para expedir la poliza
-And quiera agregar un asegurado
-And vaya a la opcion agregar
-And seleccione ingresar nueva persona natural
-And ingrese los datos de persona natural:
-| tipoId               | numeroId   | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
-| CEDULA DE CIUDADANIA | 1030678908 | LUCIANA      | LONDOÑO        | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
-And vaya a agregar el vehiculo con los siguientes datos:
-|placa  |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
-|randomp|2016  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
-And seleccione la opcion importado por terceros
-And de click en cero kilometros
-And seleccione algunas coberturas:
-|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
-|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
-When voy a expedir una poliza
-And confirmo el mensaje de expedir poliza
-Then debo ver un mensaje bloqueante
-|mensaje|
-|Existen requisitos obligatorios pendientes por adjuntar, por favor verifique|
-
-Examples:
-|numCuenta |
-|C000888888|
-
-Scenario:Vehiculo con beneficiario oneroso
-Given que voy a buscar la cuenta <numCuenta>
-And estoy expidiendo una poliza de autos
-And seleccione el producto para expedir la poliza
-And quiera agregar un asegurado
-And vaya a la opcion agregar
-And seleccione ingresar nueva persona natural
-And ingrese los datos de persona natural:
-| tipoId               | numeroId   | primerNombre | primerApellido | pais     | departamento | ciudad   | direccion       | tipoDireccion                  |
-| CEDULA DE CIUDADANIA | 1030678909 | LUCIANA      | LONDOÑO        | Colombia | Antioquia    | Medellin | Cra 65 # 48-162 | DIRECCION DE OFICINA PRINCIPAL |
-And vaya a agregar el vehiculo con los siguientes datos:
-|placa  |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
-|randomj|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
-And ingrese un beneficiario oneroso
-And seleccione algunas coberturas:
-|limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
-|1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
-When voy a expedir una poliza
-And confirmo el mensaje de expedir poliza
-Then debo ver un mensaje bloqueante
-|mensaje|
-|Existen requisitos obligatorios pendientes por adjuntar, por favor verifique|
 
 Examples:
 |numCuenta |
@@ -181,7 +123,7 @@ And ingrese la organizacion, canal y tipo de poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
-|TYU141|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+|ASDF2 |2016  |01601265        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas basicas:
 |limite|deducible|abogado |PLlaves |
 |1.440 |0        |Opción 1|Opción 1|
