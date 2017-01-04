@@ -6,6 +6,8 @@ import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
 import com.sura.guidewire.policycenter.steps.reaseguro.CrearYEditarCumulosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
 public class CrearYEditarCumulosDefinitions {
@@ -21,20 +23,20 @@ public class CrearYEditarCumulosDefinitions {
 
     @Given("ingrese a edificios y ubicaciones")
     public void cuandoIntenteIngresarAEdificiosYUbicaciones() {
-        informacionDePolizaMrcSteps.ingresar_a_edificios_y_ubicaciones();
+        informacionDePolizaMrcSteps.ingresarAEdificiosYUbicaciones();
     }
 
     @Given("intente ingresar una nueva ubicacion sin riesgo consultable")
     public void cuandoIntenteIngresarUnaNuevaUbicacionSinRiesgo() {
-        edificiosUbicacionesSteps.remover_riesgos();
-        edificiosUbicacionesSteps.ingresar_nueva_ubicacion_sin_riesgo();
+        edificiosUbicacionesSteps.removerRiesgos();
+        edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo();
     }
 
     @Given("intente ingresar las entradas de las diferentes coberturas $entradas")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
-        edificiosUbicacionesSteps.seleccionar_boton_agregar_articulo_a_una_ubicacion();
+        edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
         edificiosUbicacionesSteps.ingresarCoberturas(entradas);
-        edificiosUbicacionesSteps.seleccionar_boton_aceptar_en_la_parte_superior_izquierda();
+        edificiosUbicacionesSteps.seleccionarBotonAceptarEnLaParteSuperiorIzquierda();
     }
 
     @Given("cotice una poliza")
@@ -42,10 +44,16 @@ public class CrearYEditarCumulosDefinitions {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
     }
 
-    @Given("ingrese la informacion de un acuerdo facultativo")
-    public void ingreseAcuerdoFacultativo(){
+    @Given("ingrese la informacion de un acuerdo facultativo <descripcionDeAcuerdo>")
+    public void ingreseAcuerdoFacultativo(@Named("descripcionDeAcuerdo")String descripcionDeAcuerdo){
         crearYEditarCumulosSteps.ingresar_a_opcion_reaseguro();
         crearYEditarCumulosSteps.ingresar_a_opcion_crear_acuerdo_facultativo();
+        crearYEditarCumulosSteps.ingresarDescripcionDeAcuerdoyDireccion(descripcionDeAcuerdo);
+    }
+
+    @When("Ingrese la información de un reasegurador en la tabla de reaseguradores $datosReaseguradores")
+    public void ingresaInformacionEnTablaParaReasegurado(ExamplesTable datosReaseguradores){
+        crearYEditarCumulosSteps.ingresarModalidadDeTasa(datosReaseguradores);
     }
 
 }
