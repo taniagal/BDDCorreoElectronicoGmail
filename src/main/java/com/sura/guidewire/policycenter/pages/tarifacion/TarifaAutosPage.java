@@ -167,6 +167,7 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCoberturas(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
         seleccionarCoberturasRC(datosCoberturas);
+        seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
         if(!"".equals(dato.get("abogado"))){
             selectItem(comboBoxAbogado, dato.get("abogado"));
         }
