@@ -35,15 +35,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String CIERRE_XPATH1 = "')])]";
     private static final String XPATH2_PARTE2 = "')]) and @class='x-form-item-input-row' ]";
     private static final String XPATH_PARTE2 = "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]";
-    private static final String XPATH_BTON_AGREGAR = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnInnerEl']";
-    private static final String XPATH_BTON_DIRECTORIO = "//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl']";
-    private static final String XPATH_BUSCAR_DIRECTORIO = "//span[@id='ContactSearchPopup:ContactSearchScreen:ttlBar']";
-    private static final String XPATH_TIPO_DOCUMENTO = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']";
-    private static final String XPATH_LBL_PRIMER_NOMBRE = ".//*[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-labelEl']";
-    private static final String XPATH_NUM_DOCUMENTO = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']";
-    private static final String XPATH_BTN_BUSCAR = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']";
-    private static final String XPATH_BTN_SELECCIONA = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']";
-    private static final String XPATH_INTERES_ADICIONAL = "//label[contains(.,'Interes Adicional')]";
     private static final String XPATH_SELECCIONAR_RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
     private static final String XPATH_BTON_REMOVER_RIESGOS = ".//a[contains(.,'Remover Riesgo')]";
     private static final String XPATH_EDITAR_TRANSACCION_POLIZA = ".//span[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']";

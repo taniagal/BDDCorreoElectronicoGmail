@@ -115,6 +115,11 @@ public class CotizacionDePolizaDefinitions {
         nuevaCotizacionSteps.intentarCotizar();
     }
 
+    @Then("intente cotizar")
+    public void intentarCotizarDos() {
+        nuevaCotizacionSteps.intentarCotizar();
+    }
+
     @When("ingrese las coberturas basicas: $coberturas")
     public void agregarcoberturas(ExamplesTable coberturas) {
         nuevaCotizacionSteps.seleccionarCoberturaBasicas(coberturas);

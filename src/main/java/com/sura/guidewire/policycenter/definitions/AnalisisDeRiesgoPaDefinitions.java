@@ -30,4 +30,8 @@ public class AnalisisDeRiesgoPaDefinitions {
     public void validarGeneracionUWIssue(ExamplesTable uwissue){
         analisisDeRiesgoPaSteps.validarQueSeGenereUWIssue(uwissue);
     }
+    @Then("ingrese a analisis de riesgo")
+    public void ingreseAnalisisDeRiesgo(){
+        analisisDeRiesgoPaSteps.ingresarAAnalisisDeRiesgo();
+    }
 }
