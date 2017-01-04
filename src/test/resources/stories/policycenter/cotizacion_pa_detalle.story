@@ -12,7 +12,7 @@ Como usuario de policyCenter
 Quiero poder solicitar una cotizacion
 Asi ver los detalles de la cotizacion de una poliza de Autos por cada uno de los Riesgos (Vehiculos)
 
-Scenario: Quote
+Scenario: Cotizacion y validacion que no se permite agregar mas de un vehiculo
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza basado en otro envio <envio>
 When ingrese al detalle de la cotizacion
