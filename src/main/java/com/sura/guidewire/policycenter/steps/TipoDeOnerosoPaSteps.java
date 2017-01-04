@@ -33,14 +33,4 @@ public class TipoDeOnerosoPaSteps extends ScenarioSteps {
     public void verificarMarca(){
         tipoDeOnerosoPaPage.verificarMarca();
     }
-
-    @Step
-    public void verificarMarcaSustitucion(){
-        tipoDeOnerosoPaPage.verificarMarcaSustitucion();
-    }
-
-    @Step
-    public void verificarSeleccionSustitucion(){
-        tipoDeOnerosoPaPage.verificarSeleccionSustitucion();
-    }
 }

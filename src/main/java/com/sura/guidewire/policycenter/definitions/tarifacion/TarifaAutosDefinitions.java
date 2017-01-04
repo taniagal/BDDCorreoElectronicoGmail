@@ -31,6 +31,11 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregarCoberturas(coberturas);
     }
 
+    @When("vaya a la pantalla de coberturas")
+    public void seleccionarBotonSiguiente(){
+        tarifaAutosSteps.seleccionarBotonSiguiente();
+    }
+
     @When("seleccione todas las coberturas: $coberturas")
     public void agregarTodasLasCoberturas(ExamplesTable coberturas) {
         tarifaAutosSteps.seleciconarCoberturas(coberturas);

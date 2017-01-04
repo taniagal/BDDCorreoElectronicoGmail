@@ -21,10 +21,6 @@ public class TipoDeOnerosoPaPage extends PageUtil {
     private WebElementFacade comboBoxTipoBeneficiario;
     @FindBy(xpath = ".//input[@inputvalue='true']")
     private WebElementFacade radioBotonSeNecesitaCertificadoSi;
-    @FindBy(xpath = ".//input[@inputvalue='false']")
-    private WebElementFacade radioBotonSustitucionNO;
-    @FindBy(xpath = "//input[contains(@id,'true-inputEl')]")
-    private WebElementFacade radiBotonSustitucionSi;
 
     public TipoDeOnerosoPaPage(WebDriver driver) {
         super(driver);
@@ -38,13 +34,5 @@ public class TipoDeOnerosoPaPage extends PageUtil {
     }
     public void verificarMarca(){
         MatcherAssert.assertThat("Error no se encuentra marcado el campo Requiere certificado en Si","0px -15px".equals(radioBotonSeNecesitaCertificadoSi.getCssValue("background-position")));
-    }
-
-    public void verificarMarcaSustitucion(){
-        MatcherAssert.assertThat("Error no se encuentra marcado el campo Sustitucion en No","0px -15px".equals(radioBotonSustitucionNO.getCssValue("background-position")));
-    }
-
-    public void verificarSeleccionSustitucion(){
-        clickElement(radiBotonSustitucionSi);
     }
 }

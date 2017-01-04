@@ -109,12 +109,6 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
         waitUntil(WAIT_TIME_2000);
     }
 
-    public void irModificarInformacionPolizaSustitucion() {
-        waitFor(menuAcciones).waitUntilPresent();
-        clickElement(menuAcciones);
-        itemCambiarPoliza.waitUntilPresent().click();
-    }
-
     public void validarInformacionPoliza(Map<String, String> labelsInformacionPoliza, ExamplesTable informacionPoliza) {
         withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(campoTipoDocumento).shouldBePresent();
         Map<String, String> datosPoliza;
