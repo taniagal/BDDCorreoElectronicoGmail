@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import page.LoginPage;
 import page.SmokeTestPage;
 
 import java.util.Properties;
@@ -19,9 +20,10 @@ import java.util.concurrent.TimeUnit;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SmokeTests extends MetodosComunes {
-
     private WebDriver driver;
-    WebDriverWait wait;
+    private LoginPage loginPage;
+    private WebDriverWait wait;
+    private SmokeTestPage smokeTestPage;
 
     @Before
     public void setUp() throws Exception {
@@ -34,10 +36,15 @@ public class SmokeTests extends MetodosComunes {
         wait = new WebDriverWait(driver, 1000);
     }
 
+    private void initPages() {
+        loginPage = PageFactory.initElements(driver, LoginPage.class);
+        smokeTestPage = PageFactory.initElements(driver, SmokeTestPage.class);
+    }
+
     @Test
     public void buscarPoliza() {
-        SmokeTestPage smokeTestPage = PageFactory.initElements(driver, SmokeTestPage.class);
-        smokeTestPage.login("pedrvevi", "pedrvevi", driver);
+        initPages();
+        loginPage.login("pedrvevi", "pedrvevi", driver);
         smokeTestPage.buscarPoliza("900000000001");
         MatcherAssert.assertThat("Error, no se encontró la poliza pero el aplicativo si está desplegado",
                 smokeTestPage.verificarResumenDePoliza("900000000001"));
@@ -45,8 +52,8 @@ public class SmokeTests extends MetodosComunes {
 
     @Test
     public void buscarCuenta() {
-        SmokeTestPage smokeTestPage = PageFactory.initElements(driver, SmokeTestPage.class);
-        smokeTestPage.login("pedrvevi", "pedrvevi", driver);
+        initPages();
+        loginPage.login("pedrvevi", "pedrvevi", driver);
         smokeTestPage.buscarCuenta("C1060447895");
         MatcherAssert.assertThat("Error, no se encontró la cuenta pero el aplicativo si está desplegado",
                 smokeTestPage.verificarResumenDeCuenta("C1060447895"));
