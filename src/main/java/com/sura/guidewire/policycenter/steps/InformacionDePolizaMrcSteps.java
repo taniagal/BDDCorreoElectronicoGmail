@@ -118,28 +118,28 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     public void validar_campos(String estadouno,String estadodos,ExamplesTable menusesperados){
         opcionesInformacionPolizaMrcPage.validarCamposMenuLateral(estadouno,estadodos,menusesperados);
     }
-    public void validar_campos_informacion_poliza(String estadouno,String estadodos,ExamplesTable menusesperados){
+    public void validarCamposInformacionPoliza(String estadouno, String estadodos, ExamplesTable menusesperados){
         opcionesInformacionPolizaMrcPage.validarCamposInformacionPoliza(estadouno,estadodos,menusesperados);
     }
 
     @Step
-    public void ingresar_a_edificios_y_ubicaciones() {
+    public void ingresarAEdificiosYUbicaciones() {
         opcionesInformacionPolizaMrcPage.seleccionBotonSiguiente();
     }    
     @Step
-    public void ingresar_a_edificios_y_ubicaciones_en_cambio_de_poliza(){
+    public void ingresarAEdificiosYUbicacionesEnCambioDePoliza(){
         opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenCambioDePoliza();
     }
     @Step
-    public void ingresar_a_edificios_y_ubicaciones_en_renovacion_de_poliza(){
+    public void ingresarAEdificiosYUbicacionesEnRenovacionDePoliza(){
         opcionesInformacionPolizaMrcPage.seleccionBotonSiguienteenRenovacionDePoliza();
     }
     @Step
-    public void ingresar_a_informacion_de_poliza(){
+    public void ingresarAInformacionDePoliza(){
         opcionesInformacionPolizaMrcPage.seleccionarInformacionDePoliza();
     }
     @Step
-    public void ingresar_a_opcion_informacion_de_poliza(){
+    public void ingresarAOpcionInformacionDePoliza(){
         opcionesInformacionPolizaMrcPage.ingresarAInformacionDePoliza();
     }
     @Step

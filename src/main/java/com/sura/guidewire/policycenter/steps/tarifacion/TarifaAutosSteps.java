@@ -46,6 +46,11 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
+    public void agregarCoberturasRC(ExamplesTable coberturas){
+        tarifaAutosPage.seleccionarCoberturasRC(coberturas);
+    }
+
+    @Step
     public void verificarTarifacion(String valor) {
         tarifaAutosPage.verificarTarifacion(valor);
     }

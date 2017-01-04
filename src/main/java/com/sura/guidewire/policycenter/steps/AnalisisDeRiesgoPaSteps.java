@@ -23,4 +23,7 @@ public class AnalisisDeRiesgoPaSteps extends ScenarioSteps{
     public void validarQueSeGenereUWIssue(ExamplesTable uwissue) {
         analisisDeRiesgo.validarGeneracionUWIssue(uwissue);
     }
+
+    @Step
+    public void ingresarAAnalisisDeRiesgo() { analisisDeRiesgo.ingresarAnalisisDeRiesgo(); }
 }

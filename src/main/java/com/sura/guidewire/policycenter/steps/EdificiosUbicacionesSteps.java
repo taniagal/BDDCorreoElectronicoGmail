@@ -22,88 +22,88 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void ingresar_nueva_ubicacion() {
+    public void ingresarNuevaUbicacion() {
         edificiosyUbicacionesWidget.ingresarNuevaUbicacionConRiesgoConsultable();
     }
 
     @Step
-    public void ingresar_nueva_ubicacion_sin_riesgo() {
+    public void ingresarNuevaUbicacionSinRiesgo() {
         edificiosyUbicacionesWidget.ingresarNuevaUbicacionSinRiesgoConsultable();
     }
 
     @Step
-    public void seleccionar_boton_agregar_articulo_a_una_ubicacion() {
+    public void seleccionarBotonAgregarArticuloAUnaUbicacion() {
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacion();
     }
     @Step
-    public void seleccionar_boton_agregar_articulo_a_una_ubicacion_en_cambio_de_poliza(){
+    public void seleccionarBotonAgregarArticuloAUnaUbicacionEnCambioDePoliza(){
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnCambioDePoliza();
     }
     @Step
-    public void seleccionar_boton_agregar_articulo_a_una_ubicacion_en_renovacion_de_poliza(){
+    public void seleccionarBotonAgregarArticuloAUnaUbicacionEnRenovacionDePoliza(){
         edificiosyUbicacionesWidget.agregarArticuloAPrimerUbicacionEnRenovacionDePoliza();
     }
     @Step
-    public void ingresar_interes_adicional_a_articulo(String numerocedula){
-        edificiosyUbicacionesWidget.ingresarInteresAdicional(numerocedula);
+    public void ingresarInteresAdicionalAArticulo(String numerocedula){
+        edificiosyUbicacionesWidget.agregarInteresAdicional(numerocedula);
     }
 
     @Step
-    public void ingresar_tipo_beneficiario(String beneficiario){
+    public void ingresarTipoBeneficiario(String beneficiario){
         agregarArticuloEdificiosyUbicacionesWidget.desplegarListaTipoBeneficiario();
         nuevaPolizaPage.seleccionarElementoDeLaLista(beneficiario);
     }
     @Step
-    public void seleccionar_boton_cotizar(){
+    public void seleccionarBotonCotizar(){
         edificiosyUbicacionesWidget.cliclearBtnCotizar();
     }
 
     @Step
-    public void seleccionar_check_del_articulo_a_agregar() {
+    public void seleccionarCheckDelArticuloAAgregar() {
         agregarArticuloEdificiosyUbicacionesWidget.seleccionarArticuloEdificio();
     }
 
     @Step
-    public void seleccionar_check_de_cobertura_que_desea_aplicar() {
+    public void seleccionarCheckDeCoberturaQueDeseaAplicar() {
         agregarArticuloEdificiosyUbicacionesWidget.seleccionarDanosMaterialesDeArticuloEdificio();
     }
 
     @Step
-    public void ingresar_valor_reconstruccion_del_articulo(String valor) {
+    public void ingresarValorReconstruccionDelArticulo(String valor) {
         agregarArticuloEdificiosyUbicacionesWidget.ingresarValorReconstruccion(valor);
     }
 
     @Step
-    public void ingresar_valor_asegurado_danos_materiales(String valor) {
+    public void ingresarValorAseguradoDanosMateriales(String valor) {
         agregarArticuloEdificiosyUbicacionesWidget.ingresarValorAseguradoDanosMateriales(valor);
     }
 
     @Step
-    public void ingresar_valor_sublimite_translados(String valor) {
+    public void ingresarValorSublimiteTranslados(String valor) {
         agregarArticuloEdificiosyUbicacionesWidget.ingresarValorSublimiteTranslado(valor);
     }
 
     @Step
-    public void ingresar_valor_sublimite_para_combustion(String valor) {
+    public void ingresarValorSublimiteParaCombustion(String valor) {
         agregarArticuloEdificiosyUbicacionesWidget.ingresarValorSublimiteCombustion(valor);
     }
 
     @Step
-    public void seleccionar_boton_aceptar_en_la_parte_superior_izquierda() {
+    public void seleccionarBotonAceptarEnLaParteSuperiorIzquierda() {
         agregarArticuloEdificiosyUbicacionesWidget.seleccionarBotonAceptarParteSuperiorIzquierda();
     }
     @Step
-    public void cancelar_ingreso_de_nueva_ubicacion() {
+    public void cancelarIngresoDeNuevaUbicacion() {
         edificiosyUbicacionesWidget.seleccionarEnlaceCancelarIngresoNuevaUbicacion();
     }
     @Step
-    public void remover_riesgos(){
+    public void removerRiesgos(){
         edificiosyUbicacionesWidget.removerRiesgos();
 
     }
 
     @Step
-    public void seleccionar_boton_editar_transaccion_de_poliza(){
+    public void seleccionarBotonEditarTransaccionDePoliza(){
         edificiosyUbicacionesWidget.editartransacciondepoliza();
 
     }
@@ -157,7 +157,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     // TODO: 01/09/2016 code smell
     public void ingresarValorDeEntradaDeLaCoberturaDelRiesgo(String tab, String cobertura, String entrada, String valorEntrada, String tipoArticulo, boolean esOtroArticulo, boolean esUltimaFilaDeExampleTable) {
         // Registro de tarea dinámica en el reporte de Serenity
-        ingresar_valor_de_entrada_de_la_cobertura(armarMensajeParaElReporteDeSerenity(tab, cobertura, entrada, valorEntrada, tipoArticulo));
+          ingresar_valor_de_entrada_de_la_cobertura(armarMensajeParaElReporteDeSerenity(tab, cobertura, entrada, valorEntrada, tipoArticulo));
 
         if ("Coberturas del Riesgo".equals(tab)) {
             seleccionarTab(tab);
@@ -222,7 +222,7 @@ public class EdificiosUbicacionesSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificar_mensaje(ExamplesTable mensajes){
+    public void verificarMensaje(ExamplesTable mensajes){
         edificiosyUbicacionesWidget.verificarMensajes(mensajes);
     }
 

@@ -37,8 +37,11 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     @Step
     public void crearCuentaNueva(ExamplesTable datosCotizacion) {
         Map<String, String> datosCuenta = datosCotizacion.getRow(0);
+        if (datosCuenta.get("numeroDocumento") == null) {
+            datosCuenta.put("numeroDocumento", "");
+        }
         abrirNuevaCuenta();
-        agregarTipoDocumento(datosCuenta.get("tipo_documento"));
+        agregarTipoDocumento(datosCuenta.get("tipo_documento"), datosCuenta.get("numeroDocumento"));
         agregarOrganizacion(datosCuenta.get("organizacion"), datosCuenta.get("agente"));
         agregarNombre(datosCuenta.get("primer_nombre"), datosCuenta.get("primer_apellido"), datosCuenta.get("fecha_nacimiento"));
         agregarDireccion(datosCotizacion);
@@ -50,9 +53,12 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarTipoDocumento(String tipoDocumento) {
-        if ("".equals(cedula) || "".equals(nit)) {
+    public void agregarTipoDocumento(String tipoDocumento, String numeroDocumento) {
+        if ("".equals(numeroDocumento)) {
             initRandoms();
+        } else {
+            cedula = numeroDocumento;
+            nit = numeroDocumento;
         }
         if ("NIT".equals(tipoDocumento)) {
             cuentaPage.buscarPersona(NOMBRECUENTA, "Compania");
@@ -151,5 +157,4 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     public void verificarEstadoDeMensaje(String mensaje) {
         cuentaPage.verificarEstadoDeMensaje(mensaje);
     }
-
 }

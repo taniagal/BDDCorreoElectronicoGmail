@@ -35,15 +35,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String CIERRE_XPATH1 = "')])]";
     private static final String XPATH2_PARTE2 = "')]) and @class='x-form-item-input-row' ]";
     private static final String XPATH_PARTE2 = "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]";
-    private static final String XPATH_BTON_AGREGAR = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnInnerEl']";
-    private static final String XPATH_BTON_DIRECTORIO = "//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl']";
-    private static final String XPATH_BUSCAR_DIRECTORIO = "//span[@id='ContactSearchPopup:ContactSearchScreen:ttlBar']";
-    private static final String XPATH_TIPO_DOCUMENTO = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']";
-    private static final String XPATH_LBL_PRIMER_NOMBRE = ".//*[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-labelEl']";
-    private static final String XPATH_NUM_DOCUMENTO = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']";
-    private static final String XPATH_BTN_BUSCAR = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']";
-    private static final String XPATH_BTN_SELECCIONA = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']";
-    private static final String XPATH_INTERES_ADICIONAL = "//label[contains(.,'Interes Adicional')]";
     private static final String XPATH_SELECCIONAR_RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
     private static final String XPATH_BTON_REMOVER_RIESGOS = ".//a[contains(.,'Remover Riesgo')]";
     private static final String XPATH_EDITAR_TRANSACCION_POLIZA = ".//span[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']";
@@ -58,8 +49,8 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulos;
-    @FindBy(css = ".message")
-    private WebElementFacade divMensaje;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton']")
+    private WebElementFacade botonAgregarAsegurado;
     @FindBy(xpath = ".//a[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
     private WebElementFacade botonAgregarArticulosCambioPoliza;
     @FindBy(xpath = ".//a[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']")
@@ -68,10 +59,23 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade botonAceptarCambioDePoliza;
     @FindBy(xpath = ".//a[contains(.,'Borrar')]")
     private WebElementFacade botonBorrar;
-    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
-    private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']")
+    private WebElementFacade botonBuscar;
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']")
+    private WebElementFacade botonSeleccionar;
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']")
+    private WebElementFacade comboBoxTipoDocumento;
+    @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']")
+    private WebElementFacade campoTxtNumeroDocumento;
+    @FindBy(css = ".message")
+    private WebElementFacade divMensaje;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:CPBuildings']")
     private WebElementFacade edificiosyUbicacionesRenovacion;
+    @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
+    private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch']")
+    private WebElementFacade menuItemDelDireciotio;
+
 
     @Page
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
@@ -539,31 +543,19 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
     }
 
-    public void ingresarInteresAdicional(String cedula) {
-
-        WebElementFacade btnAgregar = findBy(XPATH_BTON_AGREGAR);
-        WebElementFacade itemDirectorio = findBy(XPATH_BTON_DIRECTORIO);
-        WebElementFacade lblBuscarDirectorio = findBy(XPATH_BUSCAR_DIRECTORIO);
-        WebElementFacade itemTipoDocumento = findBy(XPATH_TIPO_DOCUMENTO);
-        WebElementFacade lblPrimerNombre = findBy(XPATH_LBL_PRIMER_NOMBRE);
-        WebElementFacade txtNumDocumento = findBy(XPATH_NUM_DOCUMENTO);
-        WebElementFacade btnBuscar = findBy(XPATH_BTN_BUSCAR);
-        WebElementFacade btnSelecciona = findBy(XPATH_BTN_SELECCIONA);
-        WebElementFacade lblInteresAdicional = findBy(XPATH_INTERES_ADICIONAL);
-
-        btnAgregar.waitUntilVisible().waitUntilClickable().click();
-        itemDirectorio.waitUntilVisible().waitUntilClickable().click();
-        waitFor(lblBuscarDirectorio);
-        itemTipoDocumento.clear();
-        waitForTextToAppear("Tipo documento");
-        itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
-        itemTipoDocumento.sendKeys(Keys.ENTER);
-        lblPrimerNombre.waitUntilPresent();
-        txtNumDocumento.waitUntilPresent().sendKeys(cedula);
-        btnBuscar.waitUntilVisible().waitUntilClickable().click();
-        waitFor(btnSelecciona);
-        btnSelecciona.waitUntilVisible().waitUntilClickable().click();
-        waitFor(lblInteresAdicional);
+    public void agregarInteresAdicional(String cedula){
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
+        menuItemDelDireciotio.waitUntilPresent().click();
+        comboBoxTipoDocumento.waitUntilPresent().clear();
+        waitUntil(WAIT_TIME_300);
+        comboBoxTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
+        comboBoxTipoDocumento.sendKeys(Keys.ENTER);
+        waitUntil(WAIT_TIME_800);
+        botonBuscar.waitUntilPresent();
+        campoTxtNumeroDocumento.sendKeys(cedula);
+        clickElement(botonBuscar);
+        botonSeleccionar.waitUntilPresent().click();
+        botonAgregarAsegurado.waitUntilPresent();
     }
 
     public void validarNoVisibilidad(){

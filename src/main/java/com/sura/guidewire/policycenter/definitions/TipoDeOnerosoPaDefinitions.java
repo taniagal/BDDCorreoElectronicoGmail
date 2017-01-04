@@ -30,7 +30,7 @@ public class TipoDeOnerosoPaDefinitions {
 
     @Then("debo poder ver y seleccionar los tipos de beneficiarios $TipoBeneficiario")
     public void verificarTipoDeBeneficiarios(String TipoBeneficiario){
-        edificiosUbicacionesSteps.ingresar_tipo_beneficiario(TipoBeneficiario);
+        edificiosUbicacionesSteps.ingresarTipoBeneficiario(TipoBeneficiario);
     }
 
     @Then("se debe marcar el campo Requiere certificado por defecto en SI")

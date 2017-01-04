@@ -60,6 +60,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade tablaVehiculo;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath ="//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_true-inputEl']")
+    private WebElementFacade comboBoxSiCeroKilometros;
+
+
 
     protected static final int WAIT_TIME_28000 = 28000;
 
@@ -107,8 +111,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         ingresarPlaca(vehiculo);
         clickVehiculoServicio();
         seleccionarComboBoxModelo(vehiculo);
-        ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
-        campoTxtPlaca.click();
+        if(!"".equals(vehiculo.get("codigo_fasecolda"))){
+            ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
+            campoTxtPlaca.click();
+        }
         waitForCampoTxtValorAsegurado(vehiculo);
         waitUntil(WAIT_TIME_2000);
         seleccionarCiudadDeCirculacion(vehiculo);
@@ -116,7 +122,14 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         agregarDescuento(vehiculo);
+        if("Si".equals(vehiculo.get("cero_kilometros"))) {
+            seleccionarVehiculoCeroKilometros();
+        }
         MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+    }
+
+    public void seleccionarVehiculoCeroKilometros(){
+        comboBoxSiCeroKilometros.waitUntilVisible().click();
     }
 
     public void seleccionarCiudadDeCirculacion(Map<String, String> vehiculo) {
