@@ -7,12 +7,13 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
 import java.util.HashMap;
+import java.util.Map;
 
-public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
+public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps {
 
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
 
-    public ValidacionesInformacionDeVehiculoSteps(Pages pages){
+    public ValidacionesInformacionDeVehiculoSteps(Pages pages) {
         super(pages);
     }
 
@@ -28,7 +29,7 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
     }
 
     @Step
-    public void crearVehiculo(){
+    public void crearVehiculo() {
         vehiculoPage.crearVehiculo();
     }
 
@@ -49,12 +50,12 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
     }
 
     @Step
-    public void seleccionarVehiculoCeroKilometros(){
+    public void seleccionarVehiculoCeroKilometros() {
         vehiculoPage.seleccionarVehiculoCeroKilometros();
     }
 
     @Step
-    public void siguiente(){
+    public void siguiente() {
         vehiculoPage.clickSiguiente();
     }
 
@@ -65,7 +66,7 @@ public class ValidacionesInformacionDeVehiculoSteps extends ScenarioSteps{
 
     @Step
     public void agregarPlaca() {
-        HashMap<String, String> vehiculo = new HashMap<String, String>();
+        Map<String, String> vehiculo = new HashMap<>();
         vehiculo.put("placa", "random");
         vehiculo.put("modelo", "2010");
         vehiculo.put("ciudad_circulacion", "MEDELLIN");
