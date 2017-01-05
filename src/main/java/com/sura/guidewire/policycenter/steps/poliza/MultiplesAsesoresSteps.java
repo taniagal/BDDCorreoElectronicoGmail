@@ -15,7 +15,7 @@ public class MultiplesAsesoresSteps extends ScenarioSteps {
         multiplesAsesoresPage.verDetalleMultipleAsesores();
     }
     @Step
-    public void ingresarAsesores(List<String> listaAgentes,List<String> listaPorcentaje) {
-       multiplesAsesoresPage.ingresarAsesores(listaAgentes,listaPorcentaje);
+    public void ingresarAsesores(List<String> listaCodigAsesor,List<String> listaPorcentaje, List<String> listaRol) {
+       multiplesAsesoresPage.ingresarAsesores(listaCodigAsesor,listaPorcentaje,listaRol);
     }
 }

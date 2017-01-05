@@ -5,6 +5,7 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
@@ -15,15 +16,16 @@ public class MultiplesAsesoresPage extends PageUtil {
     public MultiplesAsesoresPage (WebDriver driver) {
         super(driver);
     }
+    private static final String PATHTABLAENCABEZADOAGENTE= ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']";
     private static final String PATHENCABEZADOINFORMACIONDEINTEMEDIACION = ".//*[@id='ProducerCodeInfo_ExtPopup:ttlBar']";
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducersLink']")
     private WebElementFacade linkVerDetalles;
     @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:Edit']")
     private WebElementFacade btnEditar;
     @FindBy(xpath = " .//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV_tb:Add']")
-    private WebElementFacade btnAgregarAgente;
+    private WebElementFacade btnAgregar;
     @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV_tb:Remove']")
-    private WebElementFacade btnQuitarAgente;
+    private WebElementFacade btnQuitar;
     private static final String PATHTABLAAGENTE =".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']/*/table/tbody/tr";
 
 
@@ -32,12 +34,23 @@ public class MultiplesAsesoresPage extends PageUtil {
         esperarObjetoClikeableServidor(PATHENCABEZADOINFORMACIONDEINTEMEDIACION);
     }
 
-    public void ingresarAsesores(List<String> listaAgentes,List<String> listaPorcentaje) {
+    public void ingresarAsesores(List<String> listaCodigAsesor,List<String> listaPorcentaje, List<String> listaRol) {
         clicObjeto(btnEditar);
+        esperarObjetoClikeableServidor(PATHENCABEZADOINFORMACIONDEINTEMEDIACION);
+        ingresarCodigoAsesor(listaCodigAsesor,listaPorcentaje,listaRol);
+         //Validar que se ha 100% los 8 asesores
+    }
+    public  void ingresarCodigoAsesor(List<String> listaCodigAsesor,List<String> listaPorcentaje, List<String> listaRol){
+        String porcentaje = listaPorcentaje.get(0);
+        escribirTextoCeldaTabla(PATHTABLAAGENTE,1,3,porcentaje);
+        escribirTextoCeldaTabla(PATHTABLAAGENTE, 1, 4, listaRol.get(0));
+        for (int i = 2; i<=listaCodigAsesor.size()-1; i++) {
+            clicObjeto(btnAgregar);
+            escribirTextoCeldaTabla(PATHTABLAAGENTE,i,2,listaCodigAsesor.get(i-1));
+            escribirTextoCeldaTabla(PATHTABLAAGENTE, i, 3, listaPorcentaje.get(i-1));
+            escribirTextoCeldaTabla(PATHTABLAAGENTE, i, 4, listaRol.get(1));
 
-
-
-
+        }
     }
     //TODO Metodos que pueden agregar a utileria de comando
     public void esperarObjetoClikeableServidor(String pathElemento) {
@@ -70,12 +83,7 @@ public class MultiplesAsesoresPage extends PageUtil {
     public void clicObjeto(WebElementFacade objeto) {
         objeto.waitUntilClickable().click();
     }
-    //TODO Metodos que pueden agregar a utileria de comando
-    public void clicFilaTabla(String path, int indice) {
-        WebElementFacade elemento = getElemento(path + "[" + indice + "]");
-        this.clicObjeto(elemento);
-    }
-    //TODO Metodos que pueden agregar a utileria de comando
+     //TODO Metodos que pueden agregar a utileria de comando
     public int consultarNumeroElementosTabla(String pathTabla) {
         List<WebElementFacade> listaFacturas = this.getList(pathTabla);
         return listaFacturas.size();
@@ -89,4 +97,19 @@ public class MultiplesAsesoresPage extends PageUtil {
         WebElementFacade elemento = getElemento(path + "[" + indiceFila + "]" + "/td[" + indiceColumna + "]");
         return elemento.getText();
     }
+    public void escribirTextoCeldaTabla(String path, int indiceFila, int indiceColumna,String texto) {
+        WebElementFacade elemento = getElemento(path + "[" + indiceFila + "]" + "/td[" + indiceColumna + "]");
+        clicObjeto(elemento);
+        borrarRegistroDatos(15);
+        actions.sendKeys(texto).build().perform();
+        esperarObjetoClikeableServidor(PATHTABLAENCABEZADOAGENTE);
+
+    }
+    public void  borrarRegistroDatos(int cantidad){
+        for(int i=0; i<cantidad;i++)
+        {
+            actions.sendKeys(Keys.BACK_SPACE).build().perform();
+        }
+    }
+
 }

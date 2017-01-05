@@ -14,8 +14,8 @@ Given que existe una cuenta activa donde estoy cotizando una poliza:
 |C000112400|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When Debe permitir el ingreso de máximo 8 asesores en la poliza, validando la participacion
  del 100% de los asesores que intervienen en la póliza:
- |codigoAsesor                 |porcentaje                     |
- |499,784,459,852,987,963,123  |30,10,10,10,10,10,10,10        |
+ |codigoAsesor                   |porcentaje    |rol            |
+ |as1,as2,as3,as4,as5,as6,as7,as8|1,2,3,4,5,6,7,8|Lider,Adicional|
 Then Debe quedar un asesor con rol líder.
 Examples:
 ||
