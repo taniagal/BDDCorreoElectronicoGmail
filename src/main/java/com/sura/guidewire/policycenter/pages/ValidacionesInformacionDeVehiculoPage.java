@@ -88,7 +88,11 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void clickSiguiente() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        try {
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+        }
         clickElement(botonSiguiente);
     }
 
@@ -261,7 +265,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     public void agregarValorAsegurado(String valorAsegurado) {
         campoTxtValorAsegurado.waitUntilPresent().clear();
         campoTxtValorAsegurado.sendKeys(valorAsegurado);
-   }
+    }
 
     public void validarQueNoPermiteAgregarMasDeUnAuto() {
         setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);

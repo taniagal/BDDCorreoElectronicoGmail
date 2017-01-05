@@ -241,8 +241,6 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
     public void verificarTarifacionSinCambio() {
-        //TarifaMRCPage mrcPage = new TarifaMRCPage(getDriver());
-        //mrcPage.verificarValorIva();
         MatcherAssert.assertThat("Error, hubo un cambio en el valor de la tarifa durante el policy change, Expected: " +
                 primaTotal + " but was: " + labelPrimaTotalCambio.getText(), primaTotal.equals(labelPrimaTotalCambio.getText()));
     }
