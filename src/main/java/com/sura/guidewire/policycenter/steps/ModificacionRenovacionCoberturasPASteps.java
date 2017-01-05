@@ -10,47 +10,47 @@ public class ModificacionRenovacionCoberturasPASteps extends ScenarioSteps {
     private ModificacionRenovacionCoberturasPAPage modificacionRenovacionCoberturas;
 
     @Step
-    public void ir_A_Pantalla_de_Coberturas_Auto_Personal() {
+    public void irAPantallaDeCoberturasAutoPersonal() {
         modificacionRenovacionCoberturas.irAPantallaCoberturas();
     }
 
     @Step
-    public void ir_A_Pantalla_de_Coberturas_Auto_Personal_sin_retroactividad() {
+    public void irAPantallaDeCoberturasAutoPersonalSinRetroactividad() {
         modificacionRenovacionCoberturas.irAPantallaCoberturasSinValidacionFecha();
     }
 
     @Step
-    public void validar_Coberturas_De_La_Poliza(ExamplesTable coberturas) {
+    public void validarCoberturasDeLaPoliza(ExamplesTable coberturas) {
         modificacionRenovacionCoberturas.validarCoberturasPoliza(coberturas);
     }
 
     @Step
-    public void intentar_Retirar_Cobertura_Obligatoria(ExamplesTable cobertura) {
+    public void intentarRetirarCoberturaObligatoria(ExamplesTable cobertura) {
         modificacionRenovacionCoberturas.retirarCoberturaObligatoria(cobertura);
     }
 
     @Step
-    public void validar_Que_No_Se_Permitan_Retirar_Coberturas_Obligatorias() {
+    public void validarQueNoSePermitanRetirarCoberturasObligatorias() {
         modificacionRenovacionCoberturas.validarCoberturasObligatorias();
     }
 
     @Step
-    public void modificar_Deducibles_Y_Limites_De_Las_Coberturas() {
+    public void modificarDeduciblesYLimitesDeLasCoberturas() {
         modificacionRenovacionCoberturas.modificarDeduciblesYLimites();
     }
 
     @Step
-    public void retirar_Coberturas_Que_Son_Opcionales() {
+    public void retirarCoberturasQueSonOpcionales() {
         modificacionRenovacionCoberturas.retirarCoberturasOpcionales();
     }
 
     @Step
-    public void adicionar_Nueva_Cobertura() {
+    public void adicionarNuevaCobertura() {
         modificacionRenovacionCoberturas.adicionarNuevaCobertura();
     }
 
     @Step
-    public void editar_Transaccion_De_Poliza() {
+    public void editarTransaccionDePoliza() {
         modificacionRenovacionCoberturas.editarTransaccionPoliza();
     }
 
