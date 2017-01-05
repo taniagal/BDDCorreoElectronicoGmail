@@ -25,7 +25,6 @@ public class PolizaPage extends GuidewirePage {
 
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = "//a[contains(.,'Mostrar coaseguro')]";
-    private static String xpathTablaCoasegurosAseguradosResumenPoliza = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/div/table";
     private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
     private String xpathMetodoDeReembolso = "//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CalcMethod-inputEl']";
     private String xpathMensajeBloqueoCancelacionPoliza = "//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']";
@@ -321,12 +320,6 @@ public class PolizaPage extends GuidewirePage {
 
     public void validarQueNoSeMuestreMensaje(String xpath) {
         MatcherAssert.assertThat(esVisibleMensaje(xpath), Is.is(false));
-    }
-
-    public void esCamposAseguradorasCoasegurosEditables() {
-        CotizacionPage cotizacionPage = new CotizacionPage();
-        MatcherAssert.assertThat(cotizacionPage.buscarInputHabilitadoEnElemento(xpathTablaCoasegurosAseguradosResumenPoliza), Is.is(false));
-
     }
 
     public void ingresarOpcionMostrarCoaseguros() {

@@ -37,10 +37,6 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
     private WebElementFacade campoTipoDireccion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:AddressDescription-inputEl']")
     private WebElementFacade campoDescripcionDireccion;
-    @FindBy(xpath = ".//td[@id='PolicyChangeWizard:LOBWizardStepGroup:PALine']/div/span")
-    private WebElementFacade botonCoberturasPA;
-    @FindBy(xpath = ".//td[@id='PolicyChangeWizard:ViewQuote']/div")
-    private WebElementFacade botonCotizacion;
 
     public ModificacionCotizacionDePolizaPage(WebDriver driver) {
         super(driver);
