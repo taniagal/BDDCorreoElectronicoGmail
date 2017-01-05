@@ -2,9 +2,8 @@ package com.sura.guidewire.policycenter.definitions;
 
 
 import com.google.inject.name.Named;
-import com.sura.guidewire.policycenter.steps.CotizacionPADetalleSteps;
-import com.sura.guidewire.policycenter.steps.InformacionDePolizaMrcSteps;
-import com.sura.guidewire.policycenter.steps.ModificacionCotizacionDePolizaSteps;
+import com.sura.guidewire.policycenter.steps.*;
+import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -23,6 +22,12 @@ public class ModificacionCotizacionDePolizaPADefinitions {
 
     @Steps
     CotizacionPADetalleSteps cotizacionPADetalleSteps;
+    @Steps
+    TarifaTasaUnicaSteps tarifaTasaUnicaSteps;
+    @Steps
+    ExpedicionCambioDePolizaUWPEPSSteps expedicionCambioDePolizaUWPEPSSteps;
+    @Steps
+    SolicitarRequisitoPaSteps solicitarRequisitoPaSteps;
 
     @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
@@ -107,5 +112,14 @@ public class ModificacionCotizacionDePolizaPADefinitions {
     @Then("se debe mostrar en la columna \"Termino\" de la modificacion el deducible de la cobertura en el caso de que aplique")
     public void thenValidarDeducibleCobertura(){
         cotizacionDePolizaSteps.validarTerminoCobertura();
+    }
+
+    @Then("realizo la modificacion de la poliza e intento expedirla con requisitos pendientes")
+    public void modificarCotizarYExpedirPolizaConRequisitosPendientes(){
+        tarifaTasaUnicaSteps.irAArchivoDePolizaExpedida();
+        cotizacionDePolizaSteps.comenzarCambioDePoliza();
+        informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
+        expedicionCambioDePolizaUWPEPSSteps.emitir_poliza();
+        solicitarRequisitoPaSteps.validarQueExistanRequisitosPendientes();
     }
 }
