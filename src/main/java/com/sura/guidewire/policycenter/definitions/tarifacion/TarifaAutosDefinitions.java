@@ -26,11 +26,15 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.agregarVehiculo(datosVehiculo);
     }
 
+    @When("agregue un nuevo valor asegurado <valor_asegurado>")
+    public void agregarValorasegurado(@Named("valor_asegurado") String valorAsegurado) {
+        tarifaAutosSteps.agregarValorAsegurado(valorAsegurado);
+    }
+    
     @When("ingrese la informacion del vehiculo: $datosVehiculo")
     public void agregarVehiculoConAcessorios(ExamplesTable datosVehiculo) {
         tarifaAutosSteps.agregarVehiculoDos(datosVehiculo);
     }
-
 
     @When("ingrese las coberturas: $coberturas")
     public void agregarcoberturas(ExamplesTable coberturas) {
@@ -57,9 +61,19 @@ public class TarifaAutosDefinitions {
         tarifaAutosSteps.seleciconarCoberturas(coberturas);
     }
 
+    @When("seleccione todas las coberturas corbeta: $coberturas")
+    public void agregarTodasLasCoberturasCorbeta(ExamplesTable coberturas) {
+        tarifaAutosSteps.seleciconarCoberturasCorbeta(coberturas);
+    }
+
     @Then("el resultado de la cotizacion debe ser <valor>")
     public void verificarResultado(@Named("valor") String valor) {
         tarifaAutosSteps.verificarTarifacion(valor);
+    }
+
+    @Then("el resultado de la tarifacion debe ser prima <prima> iva <iva> costo total <costo>")
+    public void verificarResultadoTarifacionTotal(@Named("prima") String primaTotal, @Named("iva") String iva, @Named("costo") String costoTotal) {
+        tarifaAutosSteps.verificarTarifacionTotal(primaTotal,iva,costoTotal);
     }
 
     @Then("el resultado de la cotizacion en cada cobertura debe ser: $valor")
