@@ -28,6 +28,8 @@ public class ModificacionCotizacionDePolizaPADefinitions {
     ExpedicionCambioDePolizaUWPEPSSteps expedicionCambioDePolizaUWPEPSSteps;
     @Steps
     SolicitarRequisitoPaSteps solicitarRequisitoPaSteps;
+    @Steps
+    ExpedicionDePolizaSteps expedicionDePolizaSteps;
 
     @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
@@ -116,6 +118,7 @@ public class ModificacionCotizacionDePolizaPADefinitions {
 
     @Then("realizo la modificacion de la poliza e intento expedirla con requisitos pendientes")
     public void modificarCotizarYExpedirPolizaConRequisitosPendientes(){
+        expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
         tarifaTasaUnicaSteps.irAArchivoDePolizaExpedida();
         cotizacionDePolizaSteps.comenzarCambioDePoliza();
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();

@@ -29,6 +29,7 @@ And se debe mostrar un mensaje de advertencia
 | mensaje                                                        |
 | Existen requisitos opcionales pendientes, por favor verifique. |
 And voy a expedir una poliza
+
 And realizo la modificacion de la poliza e intento expedirla con requisitos pendientes
 Then se debe mostrar un mensaje de advertencia
 | mensaje                                                        |
