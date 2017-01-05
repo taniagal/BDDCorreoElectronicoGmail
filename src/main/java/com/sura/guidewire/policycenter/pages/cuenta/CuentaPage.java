@@ -127,7 +127,7 @@ public class CuentaPage extends PageUtil {
     public void actualizar() {
         botonActualizar.click();
         waitUntil(WAIT_TIME_1000);
-        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (linkElegir.isPresent()) {
             linkElegir.click();
             withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonActualizarCoincidente);

@@ -64,11 +64,6 @@ public class TarifaMRCSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarTasaGlobal() {
-        tarifaMRCPage.verificarTasaGlobal();
-    }
-
-    @Step
     public void verificarTarifacionEnCobertura(String prima) {
         tarifaMRCPage.verificarTarifacionEnCobertura(prima);
     }
