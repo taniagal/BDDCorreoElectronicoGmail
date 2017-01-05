@@ -37,8 +37,6 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
     private WebElementFacade campoTipoDireccion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:Quote_SummaryDV:PolicyAddress:PolicyAddressDisplayInputSet:AddressDescription-inputEl']")
     private WebElementFacade campoDescripcionDireccion;
-    @FindBy(xpath = ".//td[2]/div/div[2]/div/table")
-    private WebElementFacade tablaCoberturas;
     @FindBy(xpath = ".//td[@id='PolicyChangeWizard:LOBWizardStepGroup:PALine']/div/span")
     private WebElementFacade botonCoberturasPA;
     @FindBy(xpath = ".//td[@id='PolicyChangeWizard:ViewQuote']/div")
@@ -74,38 +72,4 @@ public class ModificacionCotizacionDePolizaPage extends PageUtil {
         waitFor(campoDireccion).waitUntilPresent();
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(direccion)));
     }
-
-    public void validarTerminoCobertura() {
-        waitFor(tablaCoberturas).shouldBeVisible();
-        List<WebElement> allRows = tablaCoberturas.findElements(By.tagName("tr"));
-        waitUntil(WAIT_TIME_1000);
-        String validacion = null;
-        Map<String, String> terminoCoberturas = new HashMap<>();
-        try {
-            int i = 0;
-            for (WebElement row : allRows) {
-                List<WebElement> cells = row.findElements(By.tagName("td"));
-                String terminoCob = cells.get(1).getText();
-                if (!"-".equals(terminoCob)) {
-                    i++;
-                    terminoCoberturas.put("dato" + i, terminoCob);
-                }
-            }
-            waitFor(botonCoberturasPA).shouldBeVisible();
-            botonCoberturasPA.click();
-            waitForTextToAppear("Coberturas de auto personal", WAIT_TIME_1000);
-            for (int j = 1; j <= i; j++) {
-                WebElementFacade coberturaAuto = findBy(".//div[contains(.,'" + terminoCoberturas.get("dato" + j) + "')]");
-                waitFor(coberturaAuto).shouldBeVisible();
-                MatcherAssert.assertThat(coberturaAuto.getText(), Is.is(Matchers.notNullValue()));
-            }
-            waitFor(botonCotizacion).shouldBeVisible();
-            botonCotizacion.click();
-            waitForTextToAppear("Cotización", WAIT_TIME_1000);
-        } catch (Exception e) {
-            LOGGER.error("This is error", e);
-            validacion = e.getMessage();
-        }
-        MatcherAssert.assertThat(validacion, Is.is(Matchers.equalTo(null)));
-    }
-}
+ }
