@@ -100,6 +100,7 @@ public class TarifaMRCPage extends PageUtil {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
             } else {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']");
+                waitUntil(WAIT_TIME_1000);
             }
 
             try {
@@ -230,8 +231,8 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void seleccionarCoberturaDanios(String valor, String valorIndice) {
-        clickElement(checkBoxDaniosMateriales);
         campoTxtIndiceVariable.sendKeys(valorIndice);
+        clickElement(checkBoxDaniosMateriales);
     }
 
     public void agregarContactoDelDirectorio(){

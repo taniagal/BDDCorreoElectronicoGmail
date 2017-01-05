@@ -66,9 +66,8 @@ public class CuentaNuevaDefinitions {
     /**
      * ESCENARIO 3
      */
-    @Then("No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje> y <mensaje2>")
+    @Then("No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>")
     public void verificarMensaje(@Named("mensaje")String mensaje){
         cuentaNuevaSteps.verificarMensaje(mensaje);
-        cuentaNuevaSteps.verificarEdadMenor(mensaje);
     }
 }
