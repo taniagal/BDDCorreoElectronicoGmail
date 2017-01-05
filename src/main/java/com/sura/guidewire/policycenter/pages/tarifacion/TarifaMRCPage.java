@@ -231,8 +231,8 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void seleccionarCoberturaDanios(String valor, String valorIndice) {
-        clickElement(checkBoxDaniosMateriales);
         campoTxtIndiceVariable.sendKeys(valorIndice);
+        clickElement(checkBoxDaniosMateriales);
     }
 
     public void agregarContactoDelDirectorio(){

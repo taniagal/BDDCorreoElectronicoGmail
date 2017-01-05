@@ -21,42 +21,42 @@ public class ModificacionRenovacionCoberturasPADefinitions {
 
     @When("este en la pantalla de coberturas")
     public void irAPantallaCoberturas(){
-        modificacionRenovacionCoberturasPASteps.ir_A_Pantalla_de_Coberturas_Auto_Personal();
+        modificacionRenovacionCoberturasPASteps.irAPantallaDeCoberturasAutoPersonal();
     }
 
     @When("este en la pantalla de coberturas sin validar fecha")
     public void irAPantallaCoberturasSinValidaRetroactividad(){
-        modificacionRenovacionCoberturasPASteps.ir_A_Pantalla_de_Coberturas_Auto_Personal_sin_retroactividad();
+        modificacionRenovacionCoberturasPASteps.irAPantallaDeCoberturasAutoPersonalSinRetroactividad();
     }
 
     @When("intente retirar coberturas obligatorias $cobertura")
     public void retirarCoberturasObligatorias(ExamplesTable cobertura){
-        modificacionRenovacionCoberturasPASteps.editar_Transaccion_De_Poliza();
-        modificacionRenovacionCoberturasPASteps.intentar_Retirar_Cobertura_Obligatoria(cobertura);
+        modificacionRenovacionCoberturasPASteps.editarTransaccionDePoliza();
+        modificacionRenovacionCoberturasPASteps.intentarRetirarCoberturaObligatoria(cobertura);
     }
 
     @Then("se deben cargar todas las coberturas con las que venia la poliza $coberturas")
     public void validarCoberturasPoliza(ExamplesTable coberturas){
-        modificacionRenovacionCoberturasPASteps.validar_Coberturas_De_La_Poliza(coberturas);
+        modificacionRenovacionCoberturasPASteps.validarCoberturasDeLaPoliza(coberturas);
     }
 
     @Then("no debo poder retirar las coberturas obligatorias")
     public void validarRetiroCoberturas(){
-        modificacionRenovacionCoberturasPASteps.validar_Que_No_Se_Permitan_Retirar_Coberturas_Obligatorias();
+        modificacionRenovacionCoberturasPASteps.validarQueNoSePermitanRetirarCoberturasObligatorias();
     }
 
     @Then("debo poder modificar los deducibles y limites tanto de las coberturas opcionales como obligatorias")
     public void modificarDeduciblesYLimites(){
-        modificacionRenovacionCoberturasPASteps.modificar_Deducibles_Y_Limites_De_Las_Coberturas();
+        modificacionRenovacionCoberturasPASteps.modificarDeduciblesYLimitesDeLasCoberturas();
     }
 
     @Then("debo poder retirar una cobertura que es Opcional")
     public void retirarCoberturasOpcionales(){
-        modificacionRenovacionCoberturasPASteps.retirar_Coberturas_Que_Son_Opcionales();
+        modificacionRenovacionCoberturasPASteps.retirarCoberturasQueSonOpcionales();
     }
 
     @Then("debo poder adicionar una nueva cobertura")
     public void adicionarNuevaCobertura(){
-        modificacionRenovacionCoberturasPASteps.adicionar_Nueva_Cobertura();
+        modificacionRenovacionCoberturasPASteps.adicionarNuevaCobertura();
     }
 }

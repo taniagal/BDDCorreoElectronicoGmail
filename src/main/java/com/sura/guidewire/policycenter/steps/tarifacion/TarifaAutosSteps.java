@@ -30,6 +30,13 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
+    public void agregarVehiculoDos(ExamplesTable datosPoliza) {
+        vehiculoPage.crearVehiculo();
+        tarifaAutosPage.relacionarAsegurado();
+        vehiculoPage.agregarVehiculo(datosPoliza);
+    }
+
+    @Step
     public void agregarCoberturas(ExamplesTable datosCoberturas) {
         tarifaAutosPage.seleccionarCoberturas(datosCoberturas);
         tarifaAutosPage.desMarcarCoberturas();
@@ -62,7 +69,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void irACoverturas() {
+    public void seleccionarBotonSiguiente() {
         vehiculoPage.clickSiguiente();
     }
 

@@ -144,11 +144,6 @@ public class CuentaNuevaSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verificarEdadMenor(String mensaje) {
-        cuentaPage.verificarMensaje(mensaje);
-    }
-
-    @Step
     public void verificarMensaje(String mensaje) {
         cuentaPage.verificarMensaje(mensaje);
     }

@@ -30,20 +30,30 @@ public class TarifaAutosDefinitions {
     public void agregarValorasegurado(@Named("valor_asegurado") String valorAsegurado) {
         tarifaAutosSteps.agregarValorAsegurado(valorAsegurado);
     }
+    
+    @When("ingrese la informacion del vehiculo: $datosVehiculo")
+    public void agregarVehiculoConAcessorios(ExamplesTable datosVehiculo) {
+        tarifaAutosSteps.agregarVehiculoDos(datosVehiculo);
+    }
 
     @When("ingrese las coberturas: $coberturas")
     public void agregarcoberturas(ExamplesTable coberturas) {
         tarifaAutosSteps.agregarCoberturas(coberturas);
     }
 
-    @When("ingrese las coberturas a auto cero kilometros: $coberturas")
-    public void agregarcoberturasCeroKilometros(ExamplesTable coberturas) {
+    @When("ingrese las coberturas a $texto: $coberturas")
+    public void agregarcoberturasCeroKilometros(ExamplesTable coberturas){
         tarifaAutosSteps.agregarCoberturasRC(coberturas);
     }
 
     @When("ingrese a la pantalla de coberturas")
     public void irACoberturas() {
-        tarifaAutosSteps.irACoverturas();
+        tarifaAutosSteps.seleccionarBotonSiguiente();
+    }
+
+    @When("vaya a la pantalla de coberturas")
+    public void seleccionarBotonSiguiente(){
+        tarifaAutosSteps.seleccionarBotonSiguiente();
     }
 
     @When("seleccione todas las coberturas: $coberturas")
