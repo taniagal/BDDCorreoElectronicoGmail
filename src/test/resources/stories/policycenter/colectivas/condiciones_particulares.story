@@ -266,7 +266,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355347  |
 
 
-Scenario: 14 Validacion expedicion: vehiculo blindado en estado NO
+Scenario: 14 Validacion expedicion de vehiculo blindado en estado NO
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
