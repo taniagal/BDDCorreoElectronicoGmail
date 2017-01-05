@@ -4,6 +4,7 @@ import com.sura.guidewire.policycenter.pages.ExpedicionDePolizaRequisitosPendien
 import com.sura.guidewire.policycenter.pages.GuidewireLoginPages;
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.commons.NuevaCotizacionPage;
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
@@ -18,6 +19,7 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
         super(pages);
     }
         ExpedicionDePolizaRequisitosPendientesPage expedicionDePolizaRequisitosPendientesPage;
+    TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
         GuidewireLoginPages login = new GuidewireLoginPages();
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
     TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
@@ -110,5 +112,52 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
 
     public void deseleccionarVehiculoCeroKilometros() {
         expedicionDePolizaRequisitosPendientesPage.seleccionarOpcionCeroKilometros();
+    }
+
+    public void irAVehiculos() {
+        expedicionDePolizaRequisitosPendientesPage.irAVehiculos();
+    }
+
+    public void verMensajeOpcional(ExamplesTable mensaje) {
+        expedicionDePolizaRequisitosPendientesPage.verMensajeOpcional(mensaje);
+    }
+
+    public void cotizarPoliza() {
+        expedicionDePolizaRequisitosPendientesPage.cotizarPoliza();
+    }
+
+    public void datosVehiculo(ExamplesTable datos) {
+        vehiculoPage.crearVehiculo();
+        tarifaAutosPage.relacionarAsegurado();
+        expedicionDePolizaRequisitosPendientesPage.agregarVehiculo(datos);
+
+    }
+
+    public void cambiarValorAccesorios() {
+        expedicionDePolizaRequisitosPendientesPage.cambiarValorAccesorios();
+    }
+
+    public void verMensajeBloqueante(ExamplesTable mensaje) {
+        expedicionDePolizaRequisitosPendientesPage.verMensajeBloqueanteModificacion(mensaje);
+    }
+
+    public void clickEnInteresAdicionalModificacion(String beneficiario) {
+        expedicionDePolizaRequisitosPendientesPage.beneficiarioOnerosoModificacion(beneficiario);
+    }
+
+    public void cancelarPoliza() {
+        expedicionDePolizaRequisitosPendientesPage.cancelarPoliza();
+    }
+
+    public void verMensajecancelacion(ExamplesTable mensaje) {
+        expedicionDePolizaRequisitosPendientesPage.verMensajeCancelacion(mensaje);
+    }
+
+    public void agregarCiudadCirculacion(String ciudad) {
+        expedicionDePolizaRequisitosPendientesPage.agregarCiudadCirculacion(ciudad);
+    }
+
+    public void ingresarCoberturasModificacion() {
+        expedicionDePolizaRequisitosPendientesPage.ingresarCoberturas();
     }
 }

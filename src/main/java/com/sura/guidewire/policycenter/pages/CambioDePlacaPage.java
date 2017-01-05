@@ -72,7 +72,7 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade botonAgregarVehiculo;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
     private WebElementFacade botonEditarCambioPoliza;
-    @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
     private WebElementFacade botonEditarCambioPolizaExpedicion;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonEditarCambioPolizaAceptar;
@@ -232,7 +232,8 @@ public class CambioDePlacaPage extends PageUtil {
         else if (botonEditarCambioPolizaExpedicion.isPresent()){
             botonEditarCambioPolizaExpedicion.click();
             waitUntil(WAIT_TIME_3000);
-
+            botonEditarCambioPolizaAceptar.click();
+            waitUntil(WAIT_TIME_3000);
         }
     }
 

@@ -6,6 +6,7 @@ import com.sura.guidewire.policycenter.steps.*;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaTasaUnicaSteps;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.WhenPageOpens;
 import org.eclipse.jetty.util.annotation.Name;
@@ -13,6 +14,7 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.support.FindBy;
 
 public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     @Steps
@@ -33,7 +35,7 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     @Steps
     InformacionDePolizaMrcSteps informacionDePolizaMrcSteps;
 
-    @Given("ingrese un valor maximo para los accesorios <accesorios>")
+    @When("ingrese un valor maximo para los accesorios <accesorios>")
     public void ingresarValorAccesorios(@Named("accesorios") String accesorios){
         expedicionDePolizaRequisitosPendientesSteps.ingresarValorAccesorios(accesorios);
 
@@ -44,21 +46,69 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
 
     }
 
+    @When("debo ver un mensaje opcional $mensaje")
+    public void mensajeOpcional(ExamplesTable mensaje){
+        expedicionDePolizaRequisitosPendientesSteps.verMensajeOpcional(mensaje);
+
+    }
+    @Then("debo ver un mensaje opcional cero kilometros $mensaje")
+    public void mensajeOpcionalCeroKilometros(ExamplesTable mensaje){
+        expedicionDePolizaRequisitosPendientesSteps.verMensajeOpcional(mensaje);
+
+    }
     @When("seleccione la opcion importado por terceros")
     public void seleccionarImportado(){
         expedicionDePolizaRequisitosPendientesSteps.seleccionarVehiculoImportado();
 
     }
-    @When("ingrese un beneficiario oneroso")
+    @When("intente cotizar la poliza")
+    public void cotizarPoliza(){
+        expedicionDePolizaRequisitosPendientesSteps.cotizarPoliza();
+
+    }
+    @Given("ingrese los siguientes datos del vehiculo: $datos")
+    public void datosVehiculo(ExamplesTable datos){
+        expedicionDePolizaRequisitosPendientesSteps.datosVehiculo(datos);
+
+    }
+    @Given("ingrese un beneficiario oneroso")
     public void ingresarBeneficiarioOneroso(){
         expedicionDePolizaRequisitosPendientesSteps.clickEnInteresAdicional();
 
     }
+    @When("ingrese un beneficiario oneroso en modificacion <beneficiario>")
+    public void ingresarBeneficiarioOnerosoModificacion(@Named("beneficiario") String beneficiario){
+        expedicionDePolizaRequisitosPendientesSteps.clickEnInteresAdicionalModificacion(beneficiario);
 
+    }
+    @When("ingrese algunas coberturas en modificacion")
+    public void ingresarCoberturasModificacion(){
+        expedicionDePolizaRequisitosPendientesSteps.ingresarCoberturasModificacion();
 
+    }
+    @When("vaya a vehiculos en expedicion")
+    public void irAVehiculos(){
+        expedicionDePolizaRequisitosPendientesSteps.irAVehiculos();
+
+    }
+    @Then("debo ver un mensaje bloqueante en modificacion $mensaje")
+    public void mensajeBloqueanteModificacion(ExamplesTable mensaje){
+        expedicionDePolizaRequisitosPendientesSteps.verMensajeBloqueante(mensaje);
+
+    }
     @When("debo ver un mensaje bloqueante $mensaje")
     public void mensajeBloqueante(ExamplesTable mensaje){
         expedicionDePolizaRequisitosPendientesSteps.verMensaje(mensaje);
+
+    }
+    @Then("debo ver un mensaje bloqueante accesorios $mensaje")
+    public void mensajeBloqueanteAccesorios(ExamplesTable mensaje){
+        expedicionDePolizaRequisitosPendientesSteps.verMensaje(mensaje);
+
+    }
+    @Then("debe salir un mensaje de requisitos obligatorios en cancelacion $mensaje")
+    public void mensajeBloqueanteCancelacion(ExamplesTable mensaje){
+        expedicionDePolizaRequisitosPendientesSteps.verMensajecancelacion(mensaje);
 
     }
     @When("vaya a la opcion requisitos")
@@ -107,6 +157,10 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     public void irAVehiculosModificacion() {
         expedicionDePolizaRequisitosPendientesSteps.clickVehiculos();
     }
+    @When("ingrese la ciudad de circulacion <ciudad>")
+    public void agregarCiudadCirculacion(@Named("ciudad") String ciudad) {
+        expedicionDePolizaRequisitosPendientesSteps.agregarCiudadCirculacion(ciudad);
+    }
     @When("ingrese un valor de accesorios superior al permitido <accesorios>")
     public void valorAccesoriosModificacion(@Named("accesorios") String accesorios) {
         expedicionDePolizaRequisitosPendientesSteps.agregarAccesoriosModificacion(accesorios);
@@ -120,10 +174,20 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     public void archivoDePoliza() {
         expedicionDePolizaRequisitosPendientesSteps.clickArchivoDePoliza();
     }
+    @When("cambie el valor de los accesorios")
+    public void cambiarAccesorios() {
+        expedicionDePolizaRequisitosPendientesSteps.cambiarValorAccesorios();
+    }
     @When("intente cotizar el cambio de poliza")
     public void cotizarCambioDePoliza() {
         expedicionDePolizaRequisitosPendientesSteps.clickOpcionCotizar();
     }
+
+    @When("seleccionamos el motivo de cancelacion")
+    public void cancelarPoliza() {
+        expedicionDePolizaRequisitosPendientesSteps.cancelarPoliza();
+    }
+
     @When("de click en expedir poliza")
     public void expedirCambioPoliza() {
         expedicionDePolizaRequisitosPendientesSteps.clickExpedirPoliza();
