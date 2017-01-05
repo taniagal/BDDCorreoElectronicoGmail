@@ -177,7 +177,7 @@ public class TarifaAutosPage extends PageUtil {
     }
 
 
-    public void seleccionarCoberturas(ExamplesTable datosCoberturas) {
+    public void seleccionarCoberturasBasica(ExamplesTable datosCoberturas) {
         Map<String, String> dato = datosCoberturas.getRow(0);
         seleccionarCoberturasRC(datosCoberturas);
         seleccionarPerdidaDeLlaves(dato.get("PLlaves"));
@@ -237,7 +237,7 @@ public class TarifaAutosPage extends PageUtil {
     }
 
 
-    public void seleccionarCoberturasDeDanios(ExamplesTable coberturas) {
+    public void seleccionarCoberturasDanios(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
         if (!comboBoxGastosDeTransporteCarro.isPresent()) {
