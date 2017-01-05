@@ -60,9 +60,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade tablaVehiculo;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
-    @FindBy(xpath ="//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_true-inputEl']")
+    @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_true-inputEl']")
     private WebElementFacade comboBoxSiCeroKilometros;
-
 
 
     protected static final int WAIT_TIME_28000 = 28000;
@@ -111,7 +110,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         ingresarPlaca(vehiculo);
         clickVehiculoServicio();
         seleccionarComboBoxModelo(vehiculo);
-        if(!"".equals(vehiculo.get("codigo_fasecolda"))){
+        if (!"".equals(vehiculo.get("codigo_fasecolda"))) {
             ingresarDato(campoTxtCodigoFasecolda, vehiculo.get("codigo_fasecolda"));
             campoTxtPlaca.click();
         }
@@ -122,13 +121,13 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         agregarDescuento(vehiculo);
-        if("Si".equals(vehiculo.get("cero_kilometros"))) {
+        if ("Si".equals(vehiculo.get("cero_kilometros"))) {
             seleccionarVehiculoCeroKilometros();
         }
         MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
     }
 
-    public void seleccionarVehiculoCeroKilometros(){
+    public void seleccionarVehiculoCeroKilometros() {
         comboBoxSiCeroKilometros.waitUntilVisible().click();
     }
 
@@ -165,20 +164,14 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     private void waitForCampoTxtValorAsegurado(Map<String, String> vehiculo) {
         try {
-            waitForValorAsegurado(vehiculo);
+            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
             selectItem(comboBoxModelo, "2010");
             waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, "2010"));
             seleccionarComboBoxModelo(vehiculo);
-        }
-    }
-
-    private void waitForValorAsegurado(Map<String, String> vehiculo) {
-        try {
-            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
         } catch (ElementNotVisibleException e) {
-            LOGGER.info("ElementNotVisible at ValidacionesInformacionDeVehiculo Page 140 " + e);
+            LOGGER.info("ElementNotVisibleException" + e);
         }
     }
 
@@ -212,14 +205,14 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             waitFor(ExpectedConditions.textToBePresentInElement(tablaVehiculo, campoTxtPlaca.getText()));
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-        } catch (NoSuchElementException f){
+        } catch (NoSuchElementException f) {
             LOGGER.info("NoSuchElementException " + f);
         }
         waitUntil(WAIT_TIME_2000);
     }
 
     public void agregarCodigoFasecolda(String codigo) {
-        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonCrearVehiculo).click();
         comboBoxModelo.waitUntilPresent();
         selectItem(comboBoxModelo, "2015");
         waitForTextToAppear("2015");
@@ -263,5 +256,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         clickElement(campoVehiculoCeroKm);
         waitUntil(WAIT_TIME_3000);
         seleccionarCiudadDeCirculacion(vehiculo);
+    }
+
+    public void agregarValorAsegurado(String valorAsegurado) {
+        campoTxtValorAsegurado.waitUntilPresent().clear();
+        campoTxtValorAsegurado.sendKeys(valorAsegurado);
     }
 }

@@ -1,7 +1,7 @@
 package com.sura.guidewire.policycenter.steps.tarifacion;
 
-import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -9,14 +9,15 @@ import org.jbehave.core.model.ExamplesTable;
 
 public class TarifaAutosSteps extends ScenarioSteps {
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
-    ValidacionesInformacionDeVehiculoPage vehiculoPage =  new ValidacionesInformacionDeVehiculoPage(getDriver());
+    ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
+
     public TarifaAutosSteps(Pages page) {
         super(page);
     }
 
     @Step
     public void agregarAsegurados(String tipoDocumento, String documento) {
-        tarifaAutosPage.seleccionarAsegurado(tipoDocumento,documento);
+        tarifaAutosPage.seleccionarAsegurado(tipoDocumento, documento);
         vehiculoPage.clickSiguiente();
     }
 
@@ -46,7 +47,7 @@ public class TarifaAutosSteps extends ScenarioSteps {
     }
 
     @Step
-    public void agregarCoberturasRC(ExamplesTable coberturas){
+    public void agregarCoberturasRC(ExamplesTable coberturas) {
         tarifaAutosPage.seleccionarCoberturasRC(coberturas);
     }
 
@@ -63,5 +64,23 @@ public class TarifaAutosSteps extends ScenarioSteps {
     @Step
     public void irACoverturas() {
         vehiculoPage.clickSiguiente();
+    }
+
+    @Step
+    public void agregarValorAsegurado(String valorAsegurado) {
+        vehiculoPage.irAVehiculos();
+        vehiculoPage.agregarValorAsegurado(valorAsegurado);
+        tarifaAutosPage.intentarCotizar();
+    }
+
+    @Step
+    public void seleciconarCoberturasCorbeta(ExamplesTable coberturas) {
+        tarifaAutosPage.seleccionarCoberturasRC(coberturas);
+        tarifaAutosPage.seleccionarCoberturasCorbeta(coberturas);
+    }
+
+    @Step
+    public void verificarTarifacionTotal(String primaTotal, String iva, String costoTotal) {
+        tarifaAutosPage.verificarTarifacionTotal(primaTotal, iva, costoTotal);
     }
 }
