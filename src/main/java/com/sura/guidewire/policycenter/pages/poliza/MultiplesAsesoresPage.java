@@ -38,7 +38,6 @@ public class MultiplesAsesoresPage extends PageUtil {
         clicObjeto(btnEditar);
         esperarObjetoClikeableServidor(PATHENCABEZADOINFORMACIONDEINTEMEDIACION);
         ingresarCodigoAsesor(listaCodigAsesor,listaPorcentaje,listaRol);
-         //Validar que se ha 100% los 8 asesores
     }
     public  void ingresarCodigoAsesor(List<String> listaCodigAsesor,List<String> listaPorcentaje, List<String> listaRol){
         String porcentaje = listaPorcentaje.get(0);
