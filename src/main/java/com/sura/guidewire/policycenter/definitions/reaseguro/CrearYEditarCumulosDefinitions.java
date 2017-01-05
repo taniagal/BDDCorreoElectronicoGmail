@@ -7,6 +7,7 @@ import com.sura.guidewire.policycenter.steps.reaseguro.CrearYEditarCumulosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
@@ -20,6 +21,8 @@ public class CrearYEditarCumulosDefinitions {
 
     @Steps
     CrearYEditarCumulosSteps crearYEditarCumulosSteps;
+
+    ExamplesTable datosReasegurador;
 
     @Given("ingrese a edificios y ubicaciones")
     public void cuandoIntenteIngresarAEdificiosYUbicaciones() {
@@ -53,7 +56,22 @@ public class CrearYEditarCumulosDefinitions {
 
     @When("Ingrese la información de un reasegurador en la tabla de reaseguradores $datosReaseguradores")
     public void ingresaInformacionEnTablaParaReasegurado(ExamplesTable datosReaseguradores){
-        crearYEditarCumulosSteps.ingresarModalidadDeTasa(datosReaseguradores);
+        datosReasegurador = datosReaseguradores;
+        crearYEditarCumulosSteps.ingresarModalidadDeTasaEnTabla(datosReaseguradores);
     }
 
+    @Then("el valor de tasa bruta de cesion debe tomar el mismo valor de la columna en la tabla")
+    public void thenElValorDeTasaBrutaDeCesionDebeTomarElMismoValorDeLaColumnavalor() {
+        crearYEditarCumulosSteps.validaTasaBruta();
+    }
+
+    @Then("el valor de tasa neta de cesion debe tomar el valor definido para regla de negocio")
+    public void thenElValorDeTasaNetaDeCesionDebeTomarElValorDefinidoParaReglaDeNegocio() {
+        crearYEditarCumulosSteps.validaTasaNeta();
+    }
+
+    @Then("se debe mostrar un mensaje <mensaje> validando utilidades negativas")
+    public void seDebeMostarUnmensajeValidandoUtilidadesNegatibas(@Named("mensaje")String mensaje) {
+        crearYEditarCumulosSteps.validacionUtilidadesNegativas(mensaje);
+    }
 }

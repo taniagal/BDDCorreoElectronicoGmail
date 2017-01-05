@@ -197,7 +197,7 @@ public class PageUtil extends PageObject {
     * Implementacion espera de click, el numero de intentos se configura en la variable CONSTANTE_MAXIMO_EJECUCIONES
     */
 
-    public void waitClickInButton(WebElementFacade elemento) {
+    public void waitAndClickOnButton(WebElementFacade elemento) {
         boolean ejecuto = false;
         int maximoEjecuciones = CONSTANTE_MAXIMO_EJECUCIONES;
         int ejecuciones = CONSTANTE_CUENTA_EJECUCIONES;
