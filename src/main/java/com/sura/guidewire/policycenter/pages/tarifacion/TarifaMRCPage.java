@@ -1,12 +1,11 @@
 package com.sura.guidewire.policycenter.pages.tarifacion;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import net.serenitybdd.core.annotations.findby.*;
+import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
-import org.openqa.selenium.By;
 
 import java.util.List;
 import java.util.Map;
@@ -23,8 +22,6 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoIva;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:AmountSubjectReconstruction_Input-inputEl']")
     private WebElementFacade campoTxtValorReconstruccion;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
-    private WebElementFacade campoTxtValorAsegurado;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:ComercialValue_Input-inputEl']")
     private WebElementFacade campoTxtValorComercial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:0:RateModifier-inputEl']")
@@ -37,8 +34,6 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade campoTxtSustraccion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:ModifiersScreen:CPComercialPropertyModifiersDV:4:RateModifier-inputEl']")
     private WebElementFacade campoTxtTasaGlobal;
-    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:0:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']")
-    private WebElementFacade campoTxtValorAsegurableDaniosMateriales;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:VariableRate_Input-inputEl']")
     private WebElementFacade campoTxtIndiceVariable;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:HasEdificio-inputEl']")
@@ -65,6 +60,10 @@ public class TarifaMRCPage extends PageUtil {
     private WebElementFacade labelDescripcionCobertura;
     @FindBy(xpath = ".//a[contains(.,'Descartar cambios no guardados')]")
     private WebElementFacade linkDescartarCambios;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
+    private WebElementFacade botonAgregarContacto;
+    @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl']")
+    private WebElementFacade botonAgregarContactoDelDirectorio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']")
     private WebElementFacade tablaPrimas;
 
@@ -99,13 +98,17 @@ public class TarifaMRCPage extends PageUtil {
         for (Map<String, String> dato : datos.getRows()) {
             if (labelcobertura.containsText(dato.get("cobertura"))) {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
-                campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
             } else {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']");
-                campoTxtValorAsegurado = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:0:CovTermInputSet:DirectTermInput-inputEl']");
+                waitUntil(WAIT_TIME_1000);
             }
-            checkBoxCobertura.click();
-            campoTxtValorAsegurado.waitUntilPresent().sendKeys(dato.get("valorAsegurado"));
+
+            try {
+                clickElement(checkBoxCobertura);
+            } catch (StaleElementReferenceException e) {
+                LOGGER.info("StaleElementReferenceException " + e);
+                clickElement(checkBoxCobertura);
+            }
             valorAsegurado = Double.parseDouble(dato.get("valorAsegurado"));
         }
     }
@@ -180,32 +183,6 @@ public class TarifaMRCPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
-    public void verificarTasaGlobal() {
-        double tasaGlobal = 0;
-        try {
-            labelPrimaTotal.waitUntilPresent();
-            primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_10).replace(".", ""));
-        } catch (UnhandledAlertException f) {
-            LOGGER.info("UnhandledAlertException " + f);
-            try {
-                Alert alert = getDriver().switchTo().alert();
-                String alertText = alert.getText();
-                LOGGER.info("Alert data: " + alertText);
-                alert.accept();
-            } catch (NoAlertPresentException e) {
-                LOGGER.info("NoAlertPresentException " + e);
-            }
-            waitUntil(WAIT_TIME_2000);
-            labelPrimaTotal.waitUntilPresent();
-            primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_10).replace(".", ""));
-        }
-        menuItemModificadores.click();
-        campoTxtTasaGlobal.waitUntilPresent();
-        tasaGlobal = ((primaTotal / valorAsegurado) * CONSTANTE_1000) + CONSTANTE_00003;
-        MatcherAssert.assertThat("Error: el valor de la tasa global es incorrecto, was: " + campoTxtTasaGlobal.getText(),
-                campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0, CONSTANTE_7).replace(".", ",")));
-    }
-
     public void verificarTarifacionEnCobertura(String prima) {
         if (!labelDescripcionCobertura.containsText(cobertura)) {
             montoCobertura = montoCobertura2;
@@ -222,23 +199,28 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarValorIva() {
         primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_8).replace(".", ""));
-        int iva = (int) (primaTotal * CONSTANTE_016 + 1);
+        int iva = (int) (primaTotal * CONSTANTE_016);
         MatcherAssert.assertThat("Error en el calculo del valor del IVA , was: " + campoIva.getText(),
                 campoIva.getText().substring(1, CONSTANTE_7).replace(".", "").equals(Integer.toString(iva)));
     }
 
     public void seleccionarCoberturaDanios(String valor, String valorIndice) {
-        clickElement(checkBoxDaniosMateriales);
-        campoTxtValorAsegurableDaniosMateriales.sendKeys(valor);
         campoTxtIndiceVariable.sendKeys(valorIndice);
+        clickElement(checkBoxDaniosMateriales);
+    }
+
+    public void agregarContactoDelDirectorio(){
+        botonAgregarContacto.waitUntilPresent().click();
+        botonAgregarContactoDelDirectorio.click();
     }
 
     public void verificarTarifacionEnCoberturasTerremotoYSustraccion(ExamplesTable primasPoliza) {
+        verificarValorIva();
         Integer fila;
-        for(int i = 0; i < primasPoliza.getRowCount(); i++){
+        for (int i = 0; i < primasPoliza.getRowCount(); i++) {
             fila = encontrarCobertura(primasPoliza.getRows().get(i).get("cobertura"));
-            String xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr["+fila.toString()+"]/td[3]";
-            MatcherAssert.assertThat(findBy(xpath).getText(), containsText((primasPoliza.getRows().get(i).get("prima"))));
+            String xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[" + fila.toString() + "]/td[3]";
+            MatcherAssert.assertThat(findBy(xpath).getText(), containsText(primasPoliza.getRows().get(i).get("prima")));
         }
     }
 

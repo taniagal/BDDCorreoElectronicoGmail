@@ -67,11 +67,6 @@ public class TarifaMRCDefinitions {
         tarifaMRCSteps.verificarModificadores();
     }
 
-    @Then("debo poder ver el valor de la tasa global")
-    public void verificarTasaGlobal(){
-        tarifaMRCSteps.verificarTasaGlobal();
-    }
-
     @Then("el valor de iva debe ser igual a 0 (cero)")
     public void verificarImpuestos(){
         tarifaMRCSteps.verificarImpuestos();

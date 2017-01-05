@@ -21,11 +21,11 @@ public class CotizacionPADetallePage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:ttlBar']")
     private WebElementFacade tituloDePagina;
-    @FindBy(xpath = "//td[@id='SubmissionWizard:LOBWizardStepGroup:PALine']/div")
+    @FindBy(xpath = "//td[contains(@id, 'Wizard:LOBWizardStepGroup:PALine')]/div")
     private WebElementFacade botonCoberturasPA;
     @FindBy(xpath = "//td[2]/div/div[2]/div/table")
     private WebElementFacade tablaCoberturas;
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:ViewQuote']/div")
+    @FindBy(xpath = ".//*[contains(@id, 'Wizard:ViewQuote')]/div")
     private WebElementFacade botonCotizacion;
 
     public CotizacionPADetallePage(WebDriver driver) {

@@ -5,10 +5,7 @@ import com.sura.guidewire.policycenter.steps.CotizacionPADetalleSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.steps.cuenta.CuentaNuevaSteps;
 import net.thucydides.core.annotations.Steps;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
+import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
 
 public class NuevaCotizacionDefinitions {
@@ -29,6 +26,7 @@ public class NuevaCotizacionDefinitions {
     }
 
     @Given("estoy cotizando una poliza de mrc: $datosCotizacion")
+    @Alias("estoy cotizando una poliza de autos: $datosCotizacion")
     public void nuevaPolizaMrcConCuenta(ExamplesTable datosCotizacion) {
         cuentaNuevaSteps.crearCuentaNueva(datosCotizacion);
         nuevaCotizacionSteps.nuevaCotizacionenCuenta();

@@ -2,13 +2,11 @@ package com.sura.guidewire.policycenter.pages;
 
 import com.google.common.base.Function;
 import com.sura.guidewire.policycenter.resources.PageUtil;
-import com.sura.guidewire.policycenter.utils.menu.opciones.cuenta.OpcionesInformacionPolizaMrcPage;
 import com.sura.guidewire.policycenter.utils.navegacion.util.widget.TableWidgetPage;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
-import org.fluentlenium.core.annotation.Page;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.*;
@@ -35,15 +33,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String CIERRE_XPATH1 = "')])]";
     private static final String XPATH2_PARTE2 = "')]) and @class='x-form-item-input-row' ]";
     private static final String XPATH_PARTE2 = "')]) and contains(@class, 'x-container g-dv-column x-container-default x-table-layout-ct') ]";
-    private static final String XPATH_BTON_AGREGAR = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton-btnInnerEl']";
-    private static final String XPATH_BTON_DIRECTORIO = "//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch-textEl']";
-    private static final String XPATH_BUSCAR_DIRECTORIO = "//span[@id='ContactSearchPopup:ContactSearchScreen:ttlBar']";
-    private static final String XPATH_TIPO_DOCUMENTO = ".//*[@id='ContactSearchPopup:ContactSearchScreen:DocumentType-inputEl']";
-    private static final String XPATH_LBL_PRIMER_NOMBRE = ".//*[@id='ContactSearchPopup:ContactSearchScreen:BasicContactInfoInputSet:GlobalPersonNameInputSet:FirstName-labelEl']";
-    private static final String XPATH_NUM_DOCUMENTO = ".//*[@id='ContactSearchPopup:ContactSearchScreen:identificationNumber-inputEl']";
-    private static final String XPATH_BTN_BUSCAR = ".//*[@id='ContactSearchPopup:ContactSearchScreen:SearchAndResetInputSet:SearchLinksInputSet:Search']";
-    private static final String XPATH_BTN_SELECCIONA = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']";
-    private static final String XPATH_INTERES_ADICIONAL = "//label[contains(.,'Interes Adicional')]";
     private static final String XPATH_SELECCIONAR_RIESGOS = "//div[contains(@style,'margin-left: auto; margin-right: auto;')]";
     private static final String XPATH_BTON_REMOVER_RIESGOS = ".//a[contains(.,'Remover Riesgo')]";
     private static final String XPATH_EDITAR_TRANSACCION_POLIZA = ".//span[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']";
@@ -51,6 +40,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private static final String XPATH_DESCARTAR_CAMBIOS = "//a[contains(.,'Descartar cambios no guardados')]";
     private static final String LABEL_EDIFICIOS_Y_UBICACIONES = "Edificios y ubicaciones";
     private static final String XPATH_CHECK_CONTACTO = ".//*[contains(@class,'x-column-header-text')]/div";
+    private static final String VOLVER_A_EDIFICIOS = "Volver a Edificios y ubicaciones";
 
     private static final int WAIT_TIME_250 = 250;
 
@@ -86,11 +76,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade menuItemDelDireciotio;
 
 
-    @Page
-    OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
-    @Page
-    PolizaPage polizaPage;
-
     public EdificiosyUbicacionesWidget(WebDriver driver) {
         super(driver);
     }
@@ -125,7 +110,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(botonAgregarArticulos).waitUntilPresent();
         List<WebElementFacade> elementosList = findAll(".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']");
         elementosList.get(0).click();
-        String tituloDePaginaAgregarArticulos = "Volver a Edificios y ubicaciones";
+        String tituloDePaginaAgregarArticulos = VOLVER_A_EDIFICIOS;
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
         shouldContainText(tituloDePaginaAgregarArticulos);
     }
@@ -138,7 +123,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(botonAgregarArticulosCambioPoliza).waitUntilPresent();
         List<WebElementFacade> elementosList = findAll(".//a[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']");
         elementosList.get(0).click();
-        String tituloDePaginaAgregarArticulos = "Volver a Edificios y ubicaciones";
+        String tituloDePaginaAgregarArticulos = VOLVER_A_EDIFICIOS;
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
         shouldContainText(tituloDePaginaAgregarArticulos);
     }
@@ -151,7 +136,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitFor(botonAgregarArticulosRenovacionPoliza).waitUntilPresent();
         List<WebElementFacade> elementosList = findAll("//a[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:CPBuildingsScreen:CPBuildingsAndLocationsLV:0:Actions:AddNewBuilding']");
         elementosList.get(0).click();
-        String tituloDePaginaAgregarArticulos = "Volver a Edificios y ubicaciones";
+        String tituloDePaginaAgregarArticulos = VOLVER_A_EDIFICIOS;
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
     }
 
@@ -275,7 +260,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             shouldContainText(tab);
             String xpathTab = ".//a[ (descendant::*[contains(., '" + tab + CIERRE_XPATH1;
             String classProp = $(xpathTab).getAttribute("class");
-            if (classProp.contains("x-active") && classProp.contains("x-tab-active") && classProp.contains("x-tab-default-active") && classProp.contains("x-top-active") && classProp.contains("x-tab-top-active") && classProp.contains("x-tab-default-top-active")) {
+            if (this.primeraCondicion(classProp) && this.segundaCondicion(classProp)) {
                 esSeleccionado = true;
             }
         } catch (Exception e) {
@@ -284,6 +269,22 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
         resetImplicitTimeout();
         return esSeleccionado;
+    }
+
+    private boolean primeraCondicion(String objeto){
+        boolean condicionUno = false;
+        if (objeto.contains("x-active") && objeto.contains("x-tab-active") && objeto.contains("x-tab-default-active")){
+            condicionUno = true;
+        }
+        return condicionUno;
+    }
+
+    private boolean segundaCondicion(String objeto){
+        boolean condicionDos = false;
+        if (objeto.contains("x-top-active") && objeto.contains("x-tab-top-active") && objeto.contains("x-tab-default-top-active")){
+            condicionDos = true;
+        }
+        return condicionDos;
     }
 
     public void seleccionarCoberturaDelRiesgo(String cobertura) {
@@ -400,7 +401,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public boolean estaPresenteEnLaPaginaEdificiosyUbicaciones() {
-        return getRenderedView().containsText("Volver a Edificios y ubicaciones");
+        return getRenderedView().containsText(VOLVER_A_EDIFICIOS);
     }
 
     public boolean estaSeleccionadaTipoDeArticuloEnInformacionDeArticulo(String tipoArticulo) {

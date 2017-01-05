@@ -21,6 +21,11 @@ public class AnalisisDeRiesgoPaDefinitions {
         analisisDeRiesgoPaSteps.aceptarExpedicion();
     }
 
+    @When("ingrese a analisis de riesgo")
+    public void ingreseAnalisisDeRiesgoDos(){
+        analisisDeRiesgoPaSteps.ingresarAAnalisisDeRiesgo();
+    }
+
     @Then("se debe generar un bloqueo en la poliza, mostrar el siguiente mensaje $mensaje")
     public void validarBloqueoExpedicion(ExamplesTable mensaje){
         analisisDeRiesgoPaSteps.validarQueSeGenereBloqueo(mensaje);
@@ -30,4 +35,9 @@ public class AnalisisDeRiesgoPaDefinitions {
     public void validarGeneracionUWIssue(ExamplesTable uwissue){
         analisisDeRiesgoPaSteps.validarQueSeGenereUWIssue(uwissue);
     }
+    @Then("ingrese a analisis de riesgo")
+    public void ingreseAnalisisDeRiesgo(){
+        analisisDeRiesgoPaSteps.ingresarAAnalisisDeRiesgo();
+    }
+
 }

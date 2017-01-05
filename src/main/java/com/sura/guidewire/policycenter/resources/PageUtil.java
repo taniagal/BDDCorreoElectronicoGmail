@@ -48,6 +48,7 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_99999999 = 99999999;
     protected static final int CONSTANTE_900000000 = 900000000;
     protected static final int CONSTANTE_999999999 = 999999999;
+    protected static final int CONSTANTE_7 = 7;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
 
@@ -229,10 +230,10 @@ public class PageUtil extends PageObject {
 
 
     public void clickElement(WebElementFacade element) {
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < CONSTANTE_7; i++) {
             try {
                 element.click();
-                i = 6;
+                break;
             } catch (WebDriverException e) {
                 waitUntil(WAIT_TIME_2000);
                 LOGGER.info("WebDriverException " + e);

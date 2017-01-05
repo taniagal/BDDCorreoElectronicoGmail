@@ -104,5 +104,210 @@ Examples:
 ||
 
 
+Scenario: 8 Validacion cero kilometros en estado SI
+GivenStories: stories/policycenter/login_policy.story
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | cero_kilometros | vehiculo_blindado |
+| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Si              | Si                |
+Then deben aparecer los mensajes de validacion:
+| mensaje                                                                     |
+| Vehículo 0 Km : El vehículo no es considerado como 0 km                     |
+When seleccione la opcion siguiente
+And ingrese las coberturas basicas:
+|limite|deducible|abogado |PLlaves |
+|1.440 |0        |Opción 1|Opción 1|
+And intente cotizar
+Then se debe mostrar un mensaje de advertencia
+|mensaje                                            |
+|Este tipo de vehículo (usado) no está permitido    |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+And ingrese a analisis de riesgo
+Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
+| mensaje                                                                          |
+| Este tipo de vehículo (usado) no está permitido                                  |
+| no es considerado como 0 km, requiere autorización.                              |
 
 
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+
+
+Scenario: 9 Validacion Cero Kilometros en estado NO
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
+|TZZ301|2011  |                |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Modular|
+And ingrese las coberturas basicas:
+|limite|deducible|abogado |PLlaves |
+|1.440 |0        |Opción 1|Opción 1|
+And intente cotizar
+Then se debe mostrar un mensaje de advertencia
+|mensaje                                            |
+|Este tipo de vehículo (usado) no está permitido    |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+And ingrese a analisis de riesgo
+Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
+|mensaje                                                                         |
+|Este tipo de vehículo (usado) no está permitido                                 |
+
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+
+
+Scenario: 10 Validacion de expedicion de auto cero kilometros
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |
+When ingrese a la pantalla de coberturas
+And ingrese las coberturas a auto cero kilometros:
+|limite|deducible|
+|1.440 |0        |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+Then se debe permitir expedir la poliza
+
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+
+Scenario: 11 Validacion bloqueo de expedicion por maximo valor accesorios
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese la informacion del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |
+| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Autos Básico |
+And se ingrese el valor de los accesorios es superior al 20% del valor asegurado del vehiculo
+And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
+Then deben aparecer los mensajes de validacion:
+| mensaje                                                                        |
+| El valor de los accesorios es mayor al 20% del valor Asegurado                 |
+| El valor de los accesorios especiales es mayor al valor Asegurado del vehículo |
+When seleccione la opcion siguiente
+And ingrese las coberturas a auto no cero kilometros:
+|limite|deducible|
+|1.440 |0        |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+And ingrese a analisis de riesgo
+Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
+|mensaje                                                                         |
+|El valor de los accesorios es mayor al 20% del valor Asegurado                  |
+|El valor de los accesorios especiales es mayor al valor Asegurado del vehículo  |
+
+
+Examples:
+|tipo_documento      |documento |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|33355439  |
+
+
+Scenario: 12 Validacion de expedicion por maximo valor accesorios
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese la informacion del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              | cero_kilometros |
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |
+And se ingrese el valor de los accesorios es superior al 20% del valor asegurado del vehiculo
+And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
+And ingrese las coberturas a auto cero kilometros:
+|limite|deducible|
+|1.440 |0        |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+Then se debe permitir expedir la poliza
+
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+
+
+Scenario: 13 Validacion bloqueo vehiculo blindado en estado SI
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan         | vehiculo_blindado |
+| random | 2011   |                  | MEDELLIN           | Particular        | null   | null  | 17900000        | null      | null    | 2    | Plan Modular | Si                |
+And ingrese las coberturas basicas:
+|limite|deducible|abogado |PLlaves |
+|1.440 |0        |Opción 1|Opción 1|
+And intente cotizar
+Then se debe mostrar un mensaje de advertencia
+|mensaje                                            |
+|Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza  |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+And ingrese a analisis de riesgo
+Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
+| mensaje                                                                          |
+| Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza      |
+
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355347  |
+
+
+Scenario: 14 Validacion expedicion: vehiculo blindado en estado NO
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |cero_kilometros|
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |
+And ingrese las coberturas a auto cero kilometros:
+|limite|deducible|
+|1.440 |0        |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+Then se debe permitir expedir la poliza
+
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355347  |
+
+
+Scenario: 15 Validaciones de vehiculo blindado para poliza sin condicion particular(CP)
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |cero_kilometros| vehiculo_blindado |
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |Si                 |
+And ingrese las coberturas a auto cero kilometros:
+|limite|deducible|
+|1.440 |0        |
+And intente cotizar
+Then se debe mostrar un mensaje de advertencia
+|mensaje                                            |
+|Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza  |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+And ingrese a analisis de riesgo
+Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
+| mensaje                                                                          |
+| Este tipo de vehículo (Blindado) no está permitido para ingreso a la póliza      |
+
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |

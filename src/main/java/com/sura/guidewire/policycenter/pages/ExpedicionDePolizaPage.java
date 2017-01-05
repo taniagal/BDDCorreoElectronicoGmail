@@ -23,12 +23,6 @@ public class ExpedicionDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     WebElementFacade botonBorrar;
 
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab']")
-    WebElementFacade menuPoliza;
-
-    @FindBy(xpath = ".//*[@id='TabBar:PolicyTab:PolicyTab_SubmissionNumberSearchItem-inputEl']")
-    WebElementFacade menuNumeroCotizacion;
-
     @FindBy(xpath = "//a[contains(.,'Expedir póliza') and contains(@id,'JobWizardToolbarButtonSet:IssuesPolicy')]")
     WebElementFacade botonExpedirPoliza;
 
@@ -44,9 +38,6 @@ public class ExpedicionDePolizaPage extends PageUtil {
     @FindBy(xpath = ".//a[contains(.,'Cancelar')]")
     WebElementFacade botonCancelarMensaje;
 
-    @FindBy(id = "TabBar:DesktopTab-btnInnerEl")
-    WebElementFacade botonInicio;
-
     @FindBy(xpath = ".//td[contains(.,'¿Está seguro de que desea expedir esta póliza?')]")
     WebElementFacade mensajeConfirmacion;
 
@@ -58,12 +49,6 @@ public class ExpedicionDePolizaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
     WebElementFacade mensajeRiesgos;
-
-    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToCollectivePolicy-inputEl']")
-    WebElementFacade linkIrAPolizaColectiva;
-
-    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ReturnToRisks-inputEl']")
-    WebElementFacade linkIrAListaDeRiesgos;
 
     @FindBy(xpath = ".//img[@class='error_icon']")
     WebElementFacade iconoError;
@@ -172,22 +157,10 @@ public class ExpedicionDePolizaPage extends PageUtil {
         waitForTextToAppear("Mis actividades");
     }
 
-    public void irAPolizaColectiva() {
-        waitFor(linkIrAPolizaColectiva);
-        linkIrAPolizaColectiva.click();
-        waitForTextToAppear("Información de la póliza colectiva");
-    }
-
-    public void validarOpcionIrAListaDeRiesgos() {
-        waitFor(linkIrAListaDeRiesgos);
-        linkIrAListaDeRiesgos.click();
-        waitForTextToAppear("Riesgos");
-    }
-
     public void validarMensajeRequisitos(String requisitos) {
         waitForTextToAppear(requisitos, WAIT_TIME_30000);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonBorrar).click();
-        waitUntil(WAIT_TIME_5000);
+        botonBorrar.waitUntilNotVisible();
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonExpedirPoliza).click();
         withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonAceptarMensaje).click();
     }

@@ -19,6 +19,9 @@ public class AnalisisDeRiesgoPaPage extends PageUtil {
     private WebElementFacade botonBorrar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:IssuesPolicy-btnInnerEl']")
     private WebElementFacade botonExpedirPoliza;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:RiskAnalysis']")
+    private WebElementFacade analisiDeRiesgo;
+
 
     public AnalisisDeRiesgoPaPage(WebDriver driver) {
         super(driver);
@@ -45,5 +48,10 @@ public class AnalisisDeRiesgoPaPage extends PageUtil {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelAnalisisRiesgo).shouldBeVisible();
         WebElementFacade grupoUWIssues = findBy(".//*[@id='SubmissionWizard:Job_RiskAnalysisScreen:RiskAnalysisCV:RiskEvaluationPanelSet:0-body']");
         MatcherAssert.assertThat(grupoUWIssues.getText(), Matchers.containsString(uwissues.get("UWIssue")));
+    }
+
+    public void ingresarAnalisisDeRiesgo(){
+        waitUntil(WAIT_TIME_3000);
+        analisiDeRiesgo.waitUntilVisible().click();
     }
 }
