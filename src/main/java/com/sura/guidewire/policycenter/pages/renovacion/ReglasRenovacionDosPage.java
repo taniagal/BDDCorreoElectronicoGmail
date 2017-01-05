@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ReglasRenovacionDosPage extends PageUtil {
 
-    @FindBy(xpath = ".//*[@id='RenewalWizard:Next-btnInnerEl']")
+    @FindBy(xpath = ".//*[contains(@id,'Next-btnInnerEl')]")
     WebElementFacade btnSiguinete;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:PersonalVehicles']")
     WebElementFacade menuItemVehiculo;
@@ -32,9 +32,9 @@ public class ReglasRenovacionDosPage extends PageUtil {
     WebElementFacade txtValorAsegurado;
     @FindBy(xpath = ".//*[contains(@id,'LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosValue_DV-inputEl')]")
     WebElementFacade txtvalorAccesorios;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosEspValue_DV-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id,'LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosEspValue_DV-inputEl')]")
     WebElementFacade txtValorAccesoriosEspe;
-    @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
+    @FindBy(xpath = ".//*[contains(@id,'LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl')]")
     WebElementFacade campoTxtCiudadDeCirculacion;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']")
     WebElementFacade lblMensajes;
