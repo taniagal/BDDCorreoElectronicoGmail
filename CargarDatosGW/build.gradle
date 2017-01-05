@@ -27,7 +27,7 @@ task escribirArchivo << {
 		}else if(project.getProperties().get("env") == "reaseguro" ){
 			props.setProperty("url","http://dllocoreseguros.suramericana.com:7033")
 		}else if(project.getProperties().get("env") == "uat" ){
-            props.setProperty("url","https://labcoreseguros.suramericana.com/pc/PolicyCenter.do")
+            props.setProperty("url","https://labcoreseguros.suramericana.com")
         }else{
 			props.setProperty("url","http://local.sura.com:8180")
 		}

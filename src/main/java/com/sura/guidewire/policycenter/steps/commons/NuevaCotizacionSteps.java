@@ -73,6 +73,7 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
         vehiculoPage.irAVehiculos();
         vehiculoSteps.agregarPlaca();
         vehiculoPage.agregarCiudadDeCirculacion(datosCotizacion);
+        vehiculoPage.validarQueNoPermiteAgregarMasDeUnAuto();
         vehiculoPage.clickSiguiente();
         seleccionarCoberturaBasicas(datosCotizacion);
         tarifaAutosPage.intentarCotizar();
@@ -95,7 +96,7 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
 
     @Step
     public void seleccionarCoberturaBasicas(ExamplesTable datosCotizacion) {
-        tarifaAutosPage.seleccionarCoberturas(datosCotizacion);
+        tarifaAutosPage.seleccionarCoberturasBasica(datosCotizacion);
         tarifaAutosPage.desMarcarCoberturas();
     }
 
@@ -113,9 +114,9 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
         tarifaAutosPage.relacionarAsegurado();
         vehiculoPage.agregarVehiculo(datos);
         vehiculoPage.clickSiguiente();
-        tarifaAutosPage.seleccionarCoberturas(datos);
+        tarifaAutosPage.seleccionarCoberturasBasica(datos);
         tarifaAutosPage.seleccionarCoberturasHurto(datos);
-        tarifaAutosPage.seleccionarCoberturasDeDanios(datos);
+        tarifaAutosPage.seleccionarCoberturasDanios(datos);
         opcionesInformacionPolizaMrcPage.seleccionarOpcionCotizarPolizaPrincipal();
     }
 }

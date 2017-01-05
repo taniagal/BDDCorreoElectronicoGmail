@@ -100,6 +100,7 @@ public class TarifaMRCPage extends PageUtil {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:1:CoverageInputSet:CovPatternInputGroup:_checkbox']");
             } else {
                 checkBoxCobertura = findBy(".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:3:CoverageInputSet:CovPatternInputGroup:_checkbox']");
+                waitUntil(WAIT_TIME_1000);
             }
 
             try {
@@ -182,32 +183,6 @@ public class TarifaMRCPage extends PageUtil {
         MatcherAssert.assertThat(res, "No estan presentes los elementos".equals(res));
     }
 
-    public void verificarTasaGlobal() {
-        double tasaGlobal = 0;
-        try {
-            labelPrimaTotal.waitUntilPresent();
-            primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_10).replace(".", ""));
-        } catch (UnhandledAlertException f) {
-            LOGGER.info("UnhandledAlertException " + f);
-            try {
-                Alert alert = getDriver().switchTo().alert();
-                String alertText = alert.getText();
-                LOGGER.info("Alert data: " + alertText);
-                alert.accept();
-            } catch (NoAlertPresentException e) {
-                LOGGER.info("NoAlertPresentException " + e);
-            }
-            waitUntil(WAIT_TIME_2000);
-            labelPrimaTotal.waitUntilPresent();
-            primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_10).replace(".", ""));
-        }
-        menuItemModificadores.click();
-        campoTxtTasaGlobal.waitUntilPresent();
-        tasaGlobal = ((primaTotal / valorAsegurado) * CONSTANTE_1000) + CONSTANTE_00003;
-        MatcherAssert.assertThat("Error: el valor de la tasa global es incorrecto, was: " + campoTxtTasaGlobal.getText(),
-                campoTxtTasaGlobal.getText().equals(Double.toString(tasaGlobal).substring(0, CONSTANTE_7).replace(".", ",")));
-    }
-
     public void verificarTarifacionEnCobertura(String prima) {
         if (!labelDescripcionCobertura.containsText(cobertura)) {
             montoCobertura = montoCobertura2;
@@ -224,14 +199,14 @@ public class TarifaMRCPage extends PageUtil {
 
     public void verificarValorIva() {
         primaTotal = Double.parseDouble(labelPrimaTotal.getText().substring(1, CONSTANTE_8).replace(".", ""));
-        int iva = (int) (primaTotal * CONSTANTE_016 + 1);
+        int iva = (int) (primaTotal * CONSTANTE_016);
         MatcherAssert.assertThat("Error en el calculo del valor del IVA , was: " + campoIva.getText(),
                 campoIva.getText().substring(1, CONSTANTE_7).replace(".", "").equals(Integer.toString(iva)));
     }
 
     public void seleccionarCoberturaDanios(String valor, String valorIndice) {
-        clickElement(checkBoxDaniosMateriales);
         campoTxtIndiceVariable.sendKeys(valorIndice);
+        clickElement(checkBoxDaniosMateriales);
     }
 
     public void agregarContactoDelDirectorio(){
@@ -240,11 +215,12 @@ public class TarifaMRCPage extends PageUtil {
     }
 
     public void verificarTarifacionEnCoberturasTerremotoYSustraccion(ExamplesTable primasPoliza) {
+        verificarValorIva();
         Integer fila;
         for (int i = 0; i < primasPoliza.getRowCount(); i++) {
             fila = encontrarCobertura(primasPoliza.getRows().get(i).get("cobertura"));
             String xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[" + fila.toString() + "]/td[3]";
-            MatcherAssert.assertThat(findBy(xpath).getText(), containsText((primasPoliza.getRows().get(i).get("prima"))));
+            MatcherAssert.assertThat(findBy(xpath).getText(), containsText(primasPoliza.getRows().get(i).get("prima")));
         }
     }
 

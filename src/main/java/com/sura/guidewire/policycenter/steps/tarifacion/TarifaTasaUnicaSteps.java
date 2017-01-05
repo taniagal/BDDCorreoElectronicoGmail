@@ -69,9 +69,9 @@ public class TarifaTasaUnicaSteps extends ScenarioSteps {
         if (token == 1) {
             vehiculoPage.clickSiguiente();
             vehiculoPage.clickLinkDescartarCambios();
-            tarifaAutosPage.seleccionarCoberturas(coberturas);
+            tarifaAutosPage.seleccionarCoberturasBasica(coberturas);
             tarifaAutosPage.seleccionarCoberturas1(coberturas);
-            tarifaAutosPage.seleccionarCoberturasDeDanios(coberturas);
+            tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
             tarifaAutosPage.cotizar();
         }
     }

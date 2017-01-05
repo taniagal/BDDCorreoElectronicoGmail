@@ -9,23 +9,20 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
-import org.slf4j.LoggerFactory;
 
 // TODO: 15/06/2016 Pendiente refactor
-public class CotizacionPage extends PageObject {
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
+public class CotizacionPage extends GuidewirePage {
     private static final int CONSTANTE_2 = 2;
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
     private List<AgenteModel> listaAgentesModel = null;
@@ -349,5 +346,10 @@ public class CotizacionPage extends PageObject {
     }
     public void validarCamposOpcionCotizacionDePoliza(String estadouno,String estadodos,ExamplesTable menusesperados){
         opcionesInformacionPolizaMrcPage.validarCampos(estadouno,estadodos,menusesperados, LBL_OPCIONES_MENU_INICIAL, LBL_OPCIONES_MENU_FINAL);
+    }
+
+    public void esCamposAseguradorasCoasegurosEditables() {
+        MatcherAssert.assertThat(buscarInputHabilitadoEnElemento(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/div/table"), Is.is(false));
+
     }
 }
