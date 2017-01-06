@@ -17,27 +17,28 @@ public class MultiplesAsesoresPage extends PageUtil {
     public MultiplesAsesoresPage (WebDriver driver) {
         super(driver);
     }
-    private static final String PATHTABLAENCABEZADOAGENTE= ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']";
+
     private static final String PATHENCABEZADOINFORMACIONDEINTEMEDIACION = ".//*[@id='ProducerCodeInfo_ExtPopup:ttlBar']";
-    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducersLink']")
-    private WebElementFacade linkVerDetalles;
+    private static final String PATHTABLAENCABEZADOAGENTE= ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']";
+    private static final String PATHTABLAAGENTE =".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']/*/table/tbody/tr";
+
+    @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:Update']")
+    private WebElementFacade btnAdicionarAsesores;
     @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:Edit']")
     private WebElementFacade btnEditar;
     @FindBy(xpath = " .//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV_tb:Add']")
     private WebElementFacade btnAgregar;
-
     @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:Update']")
     private WebElementFacade btnAceptar;
-
     @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV_tb:Remove']")
     private WebElementFacade btnQuitar;
-    private static final String PATHTABLAAGENTE =".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']/*/table/tbody/tr";
+
 
     @FindBy(xpath =".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade labelmensajeDeValidacion;
 
     public void verDetalleMultipleAsesores() {
-        linkVerDetalles.waitUntilPresent().click();
+        btnAdicionarAsesores.waitUntilPresent().click();
         esperarObjetoClikeableServidor(PATHENCABEZADOINFORMACIONDEINTEMEDIACION);
     }
 
