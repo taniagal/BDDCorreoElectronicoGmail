@@ -2,10 +2,9 @@ package com.sura.guidewire.policycenter.steps.poliza;
 
 
 import com.sura.guidewire.policycenter.pages.poliza.MultiplesAsesoresPage;
+import com.sura.guidewire.policycenter.utils.Parametros;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-
-import java.util.List;
 
 public class MultiplesAsesoresSteps extends ScenarioSteps {
     private MultiplesAsesoresPage multiplesAsesoresPage;
@@ -15,7 +14,7 @@ public class MultiplesAsesoresSteps extends ScenarioSteps {
         multiplesAsesoresPage.verDetalleMultipleAsesores();
     }
     @Step
-    public void ingresarAsesores(List<String> listaCodigAsesor,List<String> listaPorcentaje, List<String> listaRol) {
-       multiplesAsesoresPage.ingresarAsesores(listaCodigAsesor,listaPorcentaje,listaRol);
+    public void ingresarAsesores(Parametros parametros) {
+       multiplesAsesoresPage.ingresarAsesores(parametros);
     }
 }

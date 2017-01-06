@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.pages.poliza;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.Parametros;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -24,32 +25,44 @@ public class MultiplesAsesoresPage extends PageUtil {
     private WebElementFacade btnEditar;
     @FindBy(xpath = " .//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV_tb:Add']")
     private WebElementFacade btnAgregar;
+
+    @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:Update']")
+    private WebElementFacade btnAceptar;
+
     @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV_tb:Remove']")
     private WebElementFacade btnQuitar;
     private static final String PATHTABLAAGENTE =".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']/*/table/tbody/tr";
 
+    @FindBy(xpath =".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
+    private WebElementFacade labelmensajeDeValidacion;
 
     public void verDetalleMultipleAsesores() {
         linkVerDetalles.waitUntilPresent().click();
         esperarObjetoClikeableServidor(PATHENCABEZADOINFORMACIONDEINTEMEDIACION);
     }
 
-    public void ingresarAsesores(List<String> listaCodigAsesor,List<String> listaPorcentaje, List<String> listaRol) {
+    public void ingresarAsesores(Parametros parametros) {
         clicObjeto(btnEditar);
         esperarObjetoClikeableServidor(PATHENCABEZADOINFORMACIONDEINTEMEDIACION);
-        ingresarCodigoAsesor(listaCodigAsesor,listaPorcentaje,listaRol);
+        ingresarCodigoAsesor(parametros);
     }
-    public  void ingresarCodigoAsesor(List<String> listaCodigAsesor,List<String> listaPorcentaje, List<String> listaRol){
-        String porcentaje = listaPorcentaje.get(0);
-        escribirTextoCeldaTabla(PATHTABLAAGENTE,1,3,porcentaje);
-        escribirTextoCeldaTabla(PATHTABLAAGENTE, 1, 4, listaRol.get(0));
-        for (int i = 2; i<=listaCodigAsesor.size()-1; i++) {
-            clicObjeto(btnAgregar);
-            escribirTextoCeldaTabla(PATHTABLAAGENTE,i,2,listaCodigAsesor.get(i-1));
-            escribirTextoCeldaTabla(PATHTABLAAGENTE, i, 3, listaPorcentaje.get(i-1));
-            escribirTextoCeldaTabla(PATHTABLAAGENTE, i, 4, listaRol.get(1));
+    public  void ingresarCodigoAsesor(Parametros parametros){
 
+        for (int i = 1; i<=parametros.getListaAgentes().size(); i++) {
+            esperarObjetoClikeableServidor(PATHTABLAENCABEZADOAGENTE);
+            escribirTextoCeldaTabla(PATHTABLAAGENTE, i,2,parametros.getListaAgentes().get(i-1));
+            escribirTextoCeldaTabla(PATHTABLAAGENTE, i,3, parametros.getListaPorcentaje().get(i-1));
+            escribirTextoCeldaTabla(PATHTABLAAGENTE, i,4, parametros.getListarol().get(i-1));
+
+            if(i<parametros.getListaAgentes().size()){
+                clicObjeto(btnAgregar);
+            }
         }
+        clicObjeto(btnAceptar);
+        esperarObjetoClikeableServidor(PATHTABLAENCABEZADOAGENTE);
+    }
+    public void validacionMensaje(Parametros parametros){
+        verificarMensaje(labelmensajeDeValidacion,parametros.getMensaje());
     }
     //TODO Metodos que pueden agregar a utileria de comando
     public void esperarObjetoClikeableServidor(String pathElemento) {
@@ -99,7 +112,7 @@ public class MultiplesAsesoresPage extends PageUtil {
     public void escribirTextoCeldaTabla(String path, int indiceFila, int indiceColumna,String texto) {
         WebElementFacade elemento = getElemento(path + "[" + indiceFila + "]" + "/td[" + indiceColumna + "]");
         clicObjeto(elemento);
-        borrarRegistroDatos(15);
+        borrarRegistroDatos(20);
         actions.sendKeys(texto).build().perform();
         esperarObjetoClikeableServidor(PATHTABLAENCABEZADOAGENTE);
 
