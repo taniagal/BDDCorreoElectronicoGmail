@@ -98,8 +98,8 @@ public class TarifaTasaUnicaDefinitions {
         tasaUnicaSteps.agregarVehiculo(datosVehiculo);
     }
 
-    @Given("expido la poliza")
-    public void expedirPoliza() {
+    @Given("expido la poliza y voy a informacion de poliza expedida")
+    public void expedirPolizaConInfo() {
         tasaUnicaSteps.expedirPoliza();
         tasaUnicaSteps.irAInformacionDePolizaExpedida();
     }
@@ -108,6 +108,11 @@ public class TarifaTasaUnicaDefinitions {
     public void expedirPolizaMrc() {
         tasaUnicaSteps.expedirPoliza();
         tasaUnicaSteps.irAArchivoDePolizaExpedida();
+    }
+
+    @When("expido la poliza")
+    public void expedirPoliza() {
+        tasaUnicaSteps.expedirPoliza();
     }
 
     @Given("seleccione algunas coberturas: $coberturas")
