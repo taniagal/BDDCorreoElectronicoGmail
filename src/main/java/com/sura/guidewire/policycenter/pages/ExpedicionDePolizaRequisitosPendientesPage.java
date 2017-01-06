@@ -49,7 +49,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade botonVehiculos;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosValue_DV-inputEl']")
     private WebElementFacade txtAccesoriosModificacion;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    @FindBy(xpath = ".//a[contains(.,'Cotizar')]")
     private WebElementFacade botonCotizarModificacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
     private WebElementFacade txtciudadPolizaModificacion;
@@ -64,9 +64,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
     private WebElementFacade txtCiudadModificacion;
 
-    @FindBy(xpath = "..//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
-    private WebElementFacade botonCotizarSubmission;
-    @FindBy(xpath = ".//*[@id=\"JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl\"]")
+    @FindBy(xpath = ".//*[@id='JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl']")
     private WebElementFacade clickArchivoDePoliza;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Imported_false-inputEl']")
     private WebElementFacade itemNoImportadoPorTerceros;
@@ -228,15 +226,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void cotizarModificacionPoliza() {
-        waitUntil(WAIT_TIME_3000);
         clickElement(botonCotizarModificacion);
-        waitUntil(WAIT_TIME_3000);
-
-    }
-
-    public void clickExpedirPoliza() {
-        waitUntil(WAIT_TIME_3000);
-
     }
 
     public void ingresarCiudadModificacion(String ciudad) {
@@ -251,16 +241,6 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     public void clickVehiculoCeroKilometros() {
         waitUntil(WAIT_TIME_3000);
         itemVehiculoCeroKilometros.click();
-
-    }
-
-    public void valirdarPresenciaCotizar() {
-        waitUntil(WAIT_TIME_3000);
-        if(botonCotizarSubmission.isPresent()){
-            botonCotizarSubmission.click();
-        }
-        waitUntil(WAIT_TIME_3000);
-
 
     }
 
@@ -325,9 +305,6 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         waitUntil(WAIT_TIME_2000);
         itemVehiculoCeroKilometros.click();
         waitUntil(WAIT_TIME_2000);
-
-
-
     }
 
     public void cambiarValorAccesorios() {
