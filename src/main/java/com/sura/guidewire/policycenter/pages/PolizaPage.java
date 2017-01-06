@@ -9,8 +9,6 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,7 +25,6 @@ public class PolizaPage extends GuidewirePage {
 
     private static String xpathMenuDesplegable = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default x-border-box']";
     private static String xpathMostrarCoaseguros = "//a[contains(.,'Mostrar coaseguro')]";
-    private static String xpathTablaCoasegurosAseguradosResumenPoliza = ".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/div/table";
     private String xpathFechaVigenteCancelacion = "//input[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CancelDate_date-inputEl']";
     private String xpathMetodoDeReembolso = "//*[@id='StartCancellation:StartCancellationScreen:CancelPolicyDV:CalcMethod-inputEl']";
     private String xpathMensajeBloqueoCancelacionPoliza = "//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:PreQuoteIssueTitle']";
@@ -325,53 +322,6 @@ public class PolizaPage extends GuidewirePage {
         MatcherAssert.assertThat(esVisibleMensaje(xpath), Is.is(false));
     }
 
-    // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
-    public Boolean buscarInputHabilitadoEnElemento(String xpath) {
-        WebElementFacade input = null;
-        Boolean elementoEncontrado;
-        try {
-            input = elemento(xpath).findBy(By.tagName("input"));
-            input.shouldBeEnabled();
-            elementoEncontrado = Boolean.TRUE;
-        } catch (NoSuchElementException nosee) {
-            LOGGER.info("Elemento input no encontrado: " + nosee);
-            elementoEncontrado = Boolean.FALSE;
-        } catch (StaleElementReferenceException sere) {
-            LOGGER.info("StaleElementReferenceException : " + sere);
-            elementoEncontrado = Boolean.FALSE;
-        } catch (AssertionError ae) {
-            LOGGER.info("StaleElementReferenceException : " + ae);
-            elementoEncontrado = Boolean.FALSE;
-        }
-
-        return elementoEncontrado;
-    }
-
-    // TODO: 13/06/2016 Sacar este metodo y hacerlo reusable
-    public WebElementFacade elemento(String xpath) {
-        WebElementFacade elemento = null;
-
-        try {
-            waitFor($(xpath)).shouldBeVisible();
-            elemento = element(find(By.xpath(xpath)));
-
-        } catch (NoSuchElementException e) {
-            LOGGER.info("\nERROR050: Elemento  no encontrado \nElemento: " + xpath + TRACE + e);
-        } catch (StaleElementReferenceException sere) {
-            LOGGER.info("\nERROR051: Elemento  no existe en el DOM \nElemento: " + xpath + TRACE + sere);
-        } catch (Exception e) {
-            LOGGER.info("\nERROR: Error desconocido en: elemento \nElemento: " + xpath + TRACE + e);
-        }
-
-        return elemento;
-    }
-
-    public void esCamposAseguradorasCoasegurosEditables() {
-
-        MatcherAssert.assertThat(buscarInputHabilitadoEnElemento(xpathTablaCoasegurosAseguradosResumenPoliza), Is.is(false));
-
-    }
-
     public void ingresarOpcionMostrarCoaseguros() {
         findBy(xpathMostrarCoaseguros).click();
         waitForTextToAppear("Coaseguro");
@@ -382,6 +332,5 @@ public class PolizaPage extends GuidewirePage {
         WebElementFacade botonAcciones = findBy(xpathLinkAcciones);
         botonAcciones.waitUntilPresent().click();
     }
-
 
 }

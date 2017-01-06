@@ -126,4 +126,8 @@ public class CotizacionSteps extends ScenarioSteps implements Serializable {
     public void validar_campos_cotizacion_poliza(String estadouno,String estadodos,ExamplesTable menusesperados){
         getCotizacionPage().validarCamposOpcionCotizacionDePoliza(estadouno,estadodos,menusesperados);
     }
+
+    public void validar_campos_aseguradora_poliza(){
+        getCotizacionPage().esCamposAseguradorasCoasegurosEditables();
+    }
 }

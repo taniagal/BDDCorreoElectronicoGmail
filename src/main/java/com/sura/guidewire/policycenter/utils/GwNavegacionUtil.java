@@ -48,7 +48,7 @@ public final class GwNavegacionUtil {
             menu = "MENU -> " + menuPrimerNivel + " -> " + row.get(menuPrimerNivel);
             LOGGER.error(menu);
             WebElement elementoSubMenu = obtenerMenuPorTextoContenido(driver, row.get(menuPrimerNivel), tipoElementoMenu);
-            if(darClick){
+            if(darClick && elementoSubMenu != null){
                 elementoSubMenu.click();
             }
 
@@ -56,15 +56,15 @@ public final class GwNavegacionUtil {
     }
 
 
-    private static HashSet<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable){
+    private static Set<String> obtenerNombreColumnasDeExamplesTable(ExamplesTable examplesTable){
         LOGGER.error("GuidewireUtil.obtenerNombreColumnasDeExamplesTable");
 
-        HashSet<String> nombreColumnasTablaHS = new HashSet<>();
+        Set<String> nombreColumnasTablaHS = new HashSet<>();
         Parameters row = examplesTable.getRowAsParameters(0);
         Iterator<String> menu = row.values().keySet().iterator();
 
         while (menu.hasNext()) {
-            String key = (String) menu.next();
+            String key =  menu.next();
             nombreColumnasTablaHS.add(key);
         }
 
@@ -92,11 +92,11 @@ public final class GwNavegacionUtil {
         Iterator<String> opcion = row.values().keySet().iterator();
 
         while (opcion.hasNext()) {
-            String key = (String) opcion.next();
+            String key = opcion.next();
             valores.add(key);
         }
         for (Map<String, String> enc : tablaUnaColumna.getRows()) {
-            valores.add(enc.get(valores.get(0)).toString());
+            valores.add(enc.get(valores.get(0)));
 
         }
         return valores;

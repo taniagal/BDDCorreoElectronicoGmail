@@ -1,7 +1,7 @@
 Tarifacion Tasa Unica Poliza Riesgo
 
 Meta:
-@lote1
+@lote3
 @issue #CDSEG-4235
 @tag automator: eliana_alvarez
 @sprint 12

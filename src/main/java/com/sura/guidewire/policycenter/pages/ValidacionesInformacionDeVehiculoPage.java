@@ -62,7 +62,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade linkDescartarCambios;
     @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_true-inputEl']")
     private WebElementFacade comboBoxSiCeroKilometros;
-
+    @FindBy(xpath ="//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:0:BooleanModifier_true-inputEl']")
+    private WebElementFacade comboBoxSiVehiculoBLindado;
 
     protected static final int WAIT_TIME_28000 = 28000;
 
@@ -88,7 +89,11 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     }
 
     public void clickSiguiente() {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        try {
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+        }
         clickElement(botonSiguiente);
     }
 
@@ -124,11 +129,19 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         if ("Si".equals(vehiculo.get("cero_kilometros"))) {
             seleccionarVehiculoCeroKilometros();
         }
+        if("Si".equals(vehiculo.get("vehiculo_blindado"))){
+            seleccionarVehiculoBlindado();
+        }
         MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
     }
 
     public void seleccionarVehiculoCeroKilometros() {
         comboBoxSiCeroKilometros.waitUntilVisible().click();
+    }
+
+    public void seleccionarVehiculoBlindado() {
+        waitUntil(WAIT_TIME_2000);
+        clickElement(comboBoxSiVehiculoBLindado);
     }
 
     public void seleccionarCiudadDeCirculacion(Map<String, String> vehiculo) {
@@ -261,7 +274,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     public void agregarValorAsegurado(String valorAsegurado) {
         campoTxtValorAsegurado.waitUntilPresent().clear();
         campoTxtValorAsegurado.sendKeys(valorAsegurado);
-   }
+    }
 
     public void validarQueNoPermiteAgregarMasDeUnAuto() {
         setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
