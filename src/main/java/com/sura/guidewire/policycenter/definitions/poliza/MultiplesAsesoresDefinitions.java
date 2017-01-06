@@ -24,12 +24,14 @@ public class MultiplesAsesoresDefinitions {
             " del 100% de los asesores que intervienen en la póliza:$asesores")
     public void ingresoDeAsesores(ExamplesTable opciones){
        Parametros parametros = new Parametros(opciones);
-        multiplesAsesoresSteps.verDetallesMultipleAsesores();
-        multiplesAsesoresSteps.ingresarAsesores(parametros);
+        multiplesAsesoresSteps.adicionarAsesoresDeComision();
+        multiplesAsesoresSteps.ingresarInformacionDelAsesor(parametros);
     }
     @Then("Debe quedar un asesor con rol líder:$opciones")
     public void validarAsesorlider(ExamplesTable opciones) {
         Parametros parametros = new Parametros(opciones);
+        multiplesAsesoresSteps.adicionarAsesoresDeComision();
         multiplesAsesoresSteps.validarRolAsesor(parametros);
+
     }
 }

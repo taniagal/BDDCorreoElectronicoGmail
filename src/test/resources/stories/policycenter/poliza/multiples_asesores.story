@@ -15,7 +15,7 @@ Given que existe una cuenta activa donde estoy cotizando una poliza:
 When Debe permitir el ingreso de máximo 8 asesores en la poliza, validando la participacion
  del 100% de los asesores que intervienen en la póliza:
  |codigoAsesor                   |porcentaje       |rol            |
- |as1,as2,as3,as4,as5,as6,as7,as8|100,2,3,4,5,6,7,8|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
+ |as1,as2,as3,as4,as5,as6,as7,as8|30,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
 Then Debe quedar un asesor con rol líder:
   |rol|
   |Lider|

@@ -17,12 +17,12 @@ public class MultiplesAsesoresPage extends PageUtil {
     public MultiplesAsesoresPage (WebDriver driver) {
         super(driver);
     }
-
+    private static final String PATHENCABEZADO_INFORMACIONPOLIZA = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']";
     private static final String PATHENCABEZADOINFORMACIONDEINTEMEDIACION = ".//*[@id='ProducerCodeInfo_ExtPopup:ttlBar']";
     private static final String PATHTABLAENCABEZADOAGENTE= ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']";
     private static final String PATHTABLAAGENTE =".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']/*/table/tbody/tr";
 
-    @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:Update']")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducersLink']")
     private WebElementFacade btnAdicionarAsesores;
     @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:Edit']")
     private WebElementFacade btnEditar;
@@ -37,12 +37,13 @@ public class MultiplesAsesoresPage extends PageUtil {
     @FindBy(xpath =".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade labelmensajeDeValidacion;
 
-    public void verDetalleMultipleAsesores() {
+    public void adicionarAsesoresDeComision() {
+        esperarObjetoClikeableServidor(PATHENCABEZADO_INFORMACIONPOLIZA);
         btnAdicionarAsesores.waitUntilPresent().click();
         esperarObjetoClikeableServidor(PATHENCABEZADOINFORMACIONDEINTEMEDIACION);
     }
 
-    public void ingresarAsesores(Parametros parametros) {
+    public void ingresarInformacionDelAsesor(Parametros parametros) {
         clicObjeto(btnEditar);
         esperarObjetoClikeableServidor(PATHENCABEZADOINFORMACIONDEINTEMEDIACION);
         ingresarCodigoAsesor(parametros);
@@ -139,7 +140,6 @@ public class MultiplesAsesoresPage extends PageUtil {
 
     public void validarRolAsesor(Parametros parametros) {
         int cantidaRol = consultarNumeroElementosTabla(PATHTABLAAGENTE);
-        int cantidaEncontrada = 0;
         String rol = "";
         for(int i = 1; i <= cantidaRol; i ++){
            rol= consultarTextoCeldaTabla(PATHTABLAAGENTE,1,4);
@@ -147,6 +147,5 @@ public class MultiplesAsesoresPage extends PageUtil {
                MatcherAssert.assertThat("No se encontro el rol", false);
            }
         }
-
     }
 }

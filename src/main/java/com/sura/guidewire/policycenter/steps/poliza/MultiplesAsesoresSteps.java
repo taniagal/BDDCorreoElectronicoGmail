@@ -10,12 +10,12 @@ public class MultiplesAsesoresSteps extends ScenarioSteps {
     private MultiplesAsesoresPage multiplesAsesoresPage;
 
     @Step
-    public void verDetallesMultipleAsesores() {
-        multiplesAsesoresPage.verDetalleMultipleAsesores();
+    public void adicionarAsesoresDeComision() {
+        multiplesAsesoresPage.adicionarAsesoresDeComision();
     }
     @Step
-    public void ingresarAsesores(Parametros parametros) {
-       multiplesAsesoresPage.ingresarAsesores(parametros);
+    public void ingresarInformacionDelAsesor(Parametros parametros) {
+       multiplesAsesoresPage.ingresarInformacionDelAsesor(parametros);
     }
     @Step
     public void validarRolAsesor(Parametros opciones) {
