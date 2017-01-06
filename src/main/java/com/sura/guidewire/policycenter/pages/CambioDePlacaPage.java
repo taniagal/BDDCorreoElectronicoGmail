@@ -82,7 +82,7 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade labelMensajePlacaRiesgoConsultable;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
     private WebElementFacade panelRequisitos;
-    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:2:ShortDescriptionAndSize-inputEl']")
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']")
     private WebElementFacade labelMensajePlacaExtranjeraCucuta;
     @FindBy(xpath = ".//*[@id='centerPanel']")
     private WebElementFacade tablaRequisitosAutorizacion;
@@ -268,7 +268,7 @@ public class CambioDePlacaPage extends PageUtil {
     public void mensajeDeAutorizacion(ExamplesTable mensajeDeAutorizacion) {
         Map<String, String> datos = mensajeDeAutorizacion.getRow(0);
         labelMensajePlacaExtranjeraCucuta.waitUntilPresent();
-        MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExtranjeraCucuta.getText().equals(datos.get("mensajeDeAutorizacion")));
+        MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExtranjeraCucuta.getText().contains(datos.get("mensajeDeAutorizacion")));
         waitUntil(WAIT_TIME_3000);
 
     }
