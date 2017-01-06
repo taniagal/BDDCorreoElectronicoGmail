@@ -78,7 +78,6 @@ public class CambioDePlacaDefinitions {
     @When("expida el cambio de la poliza")
     public void expedirCambioPoliza() {
         cambioDePlacaSteps.expedirCambioPoliza();
-
     }
 
     @When("debe mostrar un mensaje solicitando autorizacion $mensajeAutorizacion")
