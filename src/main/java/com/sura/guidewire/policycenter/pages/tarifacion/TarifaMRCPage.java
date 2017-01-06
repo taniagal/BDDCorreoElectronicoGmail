@@ -220,7 +220,7 @@ public class TarifaMRCPage extends PageUtil {
         for (int i = 0; i < primasPoliza.getRowCount(); i++) {
             fila = encontrarCobertura(primasPoliza.getRows().get(i).get("cobertura"));
             String xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:1-body']/*/table/tbody/tr[" + fila.toString() + "]/td[3]";
-            MatcherAssert.assertThat(findBy(xpath).getText(), containsText((primasPoliza.getRows().get(i).get("prima"))));
+            MatcherAssert.assertThat(findBy(xpath).getText(), containsText(primasPoliza.getRows().get(i).get("prima")));
         }
     }
 

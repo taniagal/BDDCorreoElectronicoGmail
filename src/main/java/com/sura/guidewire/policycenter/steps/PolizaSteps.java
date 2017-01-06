@@ -195,10 +195,6 @@ public class PolizaSteps extends GuidewireSteps {
         obtenerPolizaPage().ingresarFechaSuperior(obtenerPolizaPage().obtenerFechacancelacionElemento());
     }
 
-    public void validarcamposnoeditables() {
-        obtenerPolizaPage().esCamposAseguradorasCoasegurosEditables();
-    }
-
     @Step
     public void validarOpcionCancelarTransaccion() {
         String xpathBtnCancelarTransaccion = ".//a[contains(.,'Cancelar transacción')]";

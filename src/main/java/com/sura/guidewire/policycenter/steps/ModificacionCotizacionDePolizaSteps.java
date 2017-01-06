@@ -1,4 +1,5 @@
 package com.sura.guidewire.policycenter.steps;
+import com.sura.guidewire.policycenter.pages.CotizacionPADetallePage;
 import com.sura.guidewire.policycenter.pages.ModificacionCotizacionDePolizaPage;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.jbehave.core.model.ExamplesTable;
 public class ModificacionCotizacionDePolizaSteps extends ScenarioSteps {
 
     private final ModificacionCotizacionDePolizaPage cotizacionDePolizaPage = new ModificacionCotizacionDePolizaPage(getDriver());
+    CotizacionPADetallePage cotizacionPADetallePage;
 
     @Page
     TarifaTasaUnicaPage tasaUnicaPage;
@@ -42,6 +44,6 @@ public class ModificacionCotizacionDePolizaSteps extends ScenarioSteps {
     }
 
     public void validarTerminoCobertura() {
-        cotizacionDePolizaPage.validarTerminoCobertura();
+        cotizacionPADetallePage.validarTerminoCobertura();
     }
 }

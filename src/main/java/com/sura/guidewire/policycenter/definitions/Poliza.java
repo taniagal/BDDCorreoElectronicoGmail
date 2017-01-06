@@ -1,6 +1,7 @@
 package com.sura.guidewire.policycenter.definitions;
 
 
+import com.sura.guidewire.policycenter.steps.CotizacionSteps;
 import com.sura.guidewire.policycenter.steps.commons.NuevaCotizacionSteps;
 import com.sura.guidewire.policycenter.utils.navegacion.definitions.IngresoAPolicyCenterDefinitions;
 import com.sura.guidewire.policycenter.utils.navegacion.steps.GuidewireSteps;
@@ -45,6 +46,9 @@ public class Poliza {
 
     @Steps
     GuidewireSteps guidewire;
+
+    @Steps
+    CotizacionSteps cotizacionSteps;
 
     @Steps
     InstruccionesPreviasARenovacionSteps instruccionesPreviasARenovacionSteps;
@@ -312,10 +316,10 @@ public class Poliza {
         LOGGER.info("Poliza.entoncesDeboVerEnElResumenDeLaPolizaLosCoasegurosNoEditables");
         polizaSteps.verResumenDeLaPolizaExpedida();
         polizaSteps.ingresarAVerCoaseguros();
-        polizaSteps.validarcamposnoeditables();
+        cotizacionSteps.validar_campos_aseguradora_poliza();
         polizaSteps.seleccionarOpcionInformacionDePoliza();
         polizaSteps.ingresarAVerCoaseguros();
-        polizaSteps.validarcamposnoeditables();
+        cotizacionSteps.validar_campos_aseguradora_poliza();
     }
     @When("seleccione la lista motivo de cancelacion")
     public void cuandoSeleccioneLaListaMotivoDeCancelacion() {
