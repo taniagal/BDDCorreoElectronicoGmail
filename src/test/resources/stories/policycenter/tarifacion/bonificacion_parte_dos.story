@@ -29,4 +29,4 @@ Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:
 |bonoT|bonoC|tipo_documento      |documento |mensaje|
-|10   |10   |CEDULA DE CIUDADANIA|1060447895|El valor de la bonificación ha sido cambiado manualmente|
+|10   |10   |CEDULA DE CIUDADANIA|1060447895|La bonificación no coincide con lo arrojado por el sistema, Favor verificar|

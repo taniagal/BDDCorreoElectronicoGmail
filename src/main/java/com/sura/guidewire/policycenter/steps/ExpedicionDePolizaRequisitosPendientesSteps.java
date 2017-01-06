@@ -89,10 +89,6 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
         expedicionDePolizaRequisitosPendientesPage.cotizarModificacionPoliza();
     }
 
-    public void clickExpedirPoliza() {
-        expedicionDePolizaRequisitosPendientesPage.clickExpedirPoliza();
-    }
-
     public void ingresarCiudadModificacionPoliza(String ciudad) {
         expedicionDePolizaRequisitosPendientesPage.ingresarCiudadModificacion(ciudad);
 
@@ -100,10 +96,6 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
 
     public void clickVehiculoCeroKilometros() {
         expedicionDePolizaRequisitosPendientesPage.clickVehiculoCeroKilometros();
-    }
-
-    public void validarBotonCotizacion() {
-        expedicionDePolizaRequisitosPendientesPage.valirdarPresenciaCotizar();
     }
 
     public void clickArchivoDePoliza() {

@@ -130,12 +130,11 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaVenezolana(String placaVenezolana) {
-        waitUntil(WAIT_TIME_2000);
-        itemCambiarPlaca.click();
+        clickElement(itemCambiarPlaca);
+        clickElement(itemCambiarPlaca);
         waitUntil(WAIT_TIME_2000);
         txtPlacaNueva.clear();
         txtPlacaNueva.sendKeys(placaVenezolana);
-
     }
 
     public void cambiarPorPlacaExistente(String placaExistente) {
@@ -199,8 +198,6 @@ public class CambioDePlacaPage extends PageUtil {
     public void expedirCambioPoliza() {
         botonExpedirPoliza.waitUntilPresent().click();
         botonAceptarExpedicion.waitUntilPresent().click();
-        waitUntil(WAIT_TIME_3000);
-
     }
 
 
@@ -239,9 +236,9 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
         itemVehiculosModificacion.click();
-        waitUntil(WAIT_TIME_3000);
-        itemCambiarPlaca.click();
-        waitUntil(WAIT_TIME_3000);
+        clickElement(itemCambiarPlaca);
+        clickElement(itemCambiarPlaca);
+        waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.clear();
         txtCambioDePlaca.sendKeys(placaRiesgoConsultable);
 
@@ -255,9 +252,9 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
         itemVehiculosModificacion.click();
-        waitUntil(WAIT_TIME_3000);
-        itemCambiarPlaca.click();
-        waitUntil(WAIT_TIME_3000);
+        clickElement(itemCambiarPlaca);
+        clickElement(itemCambiarPlaca);
+        waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.clear();
         txtCambioDePlaca.sendKeys(venezolana);
         txtCiudad.clear();
