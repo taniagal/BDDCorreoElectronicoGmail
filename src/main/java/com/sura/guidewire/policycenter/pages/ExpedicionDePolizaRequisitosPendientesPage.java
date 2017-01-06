@@ -1,5 +1,6 @@
 package com.sura.guidewire.policycenter.pages;
 
+import com.sura.guidewire.policycenter.pages.poliza.NuevaPolizaPage;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -16,6 +17,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         super(driver);
     }
 
+    @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
+    private WebElementFacade botonBorrar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosValue_DV-inputEl']")
     private WebElementFacade campoTxtAccesorios;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
@@ -46,10 +49,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade botonVehiculos;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:AccesoriosValue_DV-inputEl']")
     private WebElementFacade txtAccesoriosModificacion;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade botonCotizarModificacion;
-    @FindBy(xpath = "")
-    private WebElementFacade botonExpedirPolizaModificacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
     private WebElementFacade txtciudadPolizaModificacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_true-inputEl']")
@@ -111,7 +112,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade comboBoxTipoServicio;
     @FindBy(xpath = ".//li[2]")
     private WebElementFacade comboBoxTipoServicioClick;
-    @FindBy(xpath = ".//div[3]/div/table/tbody/tr/td[5]/div")
+    @FindBy(xpath = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]")
     private WebElementFacade txtBeneficiarioOnerosoModificacion;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
     private WebElementFacade tablaRequisitosModificacion;
@@ -136,8 +137,8 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     @FindBy(xpath = ".//li[2]")
     private WebElementFacade botonLimiteCobertura;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PAPADanosATercerosDetailDV:0:SuraPACoverageInputSet:CovPatternInputGroup:1:SuraPACovTermInputSet:OptionTermInput-inputEl']")
-    private WebElementFacade txtDeducible;
-    @FindBy(xpath = ".//div[7]/div/ul/li")
+    private WebElementFacade comboBoxDeducible;
+    @FindBy(xpath = ".//div[12]/div/ul/li")
     private WebElementFacade botonDeducibleModificacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PersonalAutoScreen:PAPerVehiclePanelSet:VehicleCoverageDetailsCV:PALlavesDetailDV:0:SuraPACoverageInputSet:CovPatternSubmitInputGroup:0:SuraPACovTermInputSet:OptionTermInput-inputEl']")
     private WebElementFacade txtPerdidaDeLLaves;
@@ -151,7 +152,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade botonExistenteInteresAdicional;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton:AddExistingContact:0:ExistingAdditionalInterest-textEl']")
     private WebElementFacade botonContactoExistenteInteresAdicional;
-    @FindBy(xpath = ".//li[3]")
+    @FindBy(xpath = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]")
     private WebElementFacade txtBeneficiarioOnerosoModificacionBeneficiario;
 
 
@@ -228,7 +229,9 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
 
     public void cotizarModificacionPoliza() {
         waitUntil(WAIT_TIME_3000);
-        botonCotizarModificacion.click();
+        clickElement(botonCotizarModificacion);
+        waitUntil(WAIT_TIME_3000);
+
     }
 
     public void clickExpedirPoliza() {
@@ -350,8 +353,10 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         botonContactoExistenteInteresAdicional.click();
         txtBeneficiarioOnerosoModificacion.click();
         waitUntil(WAIT_TIME_3000);
-        txtBeneficiarioOnerosoModificacionBeneficiario.sendKeys(beneficiario);
-        txtBeneficiarioOnerosoModificacionBeneficiario.click();
+        NuevaPolizaPage nuevaPolizaPage= new NuevaPolizaPage(getDriver());
+        nuevaPolizaPage.seleccionarElementoDeLaLista(beneficiario);
+//        txtBeneficiarioOnerosoModificacion.sendKeys(beneficiario);
+//        txtBeneficiarioOnerosoModificacionBeneficiario.click();
     }
 
     public void cancelarPoliza() {
@@ -382,13 +387,14 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         waitUntil(WAIT_TIME_3000);
     }
 
-    public void ingresarCoberturas() {
-    txtLimiteCobertura.click();
-    botonLimiteCobertura.click();
-    txtDeducible.click();
-    botonDeducibleModificacion.click();
-    txtPerdidaDeLLaves.click();
-    botonPerdidaDeLlaves.click();
+    public void ingresarCoberturas(String deducible, String perdida_llaves) {
+        clickElement(botonSiguienteModificacion);
+        clickElement(botonSiguienteModificacion);
+        botonBorrar.waitUntilPresent().click();
+        botonBorrar.waitUntilNotVisible();
+        selectItem(txtLimiteCobertura, "1.440");
+        selectItem(comboBoxDeducible, deducible);
+        selectItem(txtPerdidaDeLLaves,perdida_llaves);
     }
 }
 

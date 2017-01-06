@@ -157,7 +157,7 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
         expedicionDePolizaRequisitosPendientesPage.agregarCiudadCirculacion(ciudad);
     }
 
-    public void ingresarCoberturasModificacion() {
-        expedicionDePolizaRequisitosPendientesPage.ingresarCoberturas();
+    public void ingresarCoberturasModificacion(String deducible, String perdida_llaves) {
+        expedicionDePolizaRequisitosPendientesPage.ingresarCoberturas(deducible, perdida_llaves);
     }
 }

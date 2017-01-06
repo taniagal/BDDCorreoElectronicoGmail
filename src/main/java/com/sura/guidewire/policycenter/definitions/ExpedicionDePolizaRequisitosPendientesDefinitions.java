@@ -71,7 +71,7 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
         expedicionDePolizaRequisitosPendientesSteps.datosVehiculo(datos);
 
     }
-    @Given("ingrese un beneficiario oneroso")
+    @When("ingrese un beneficiario oneroso")
     public void ingresarBeneficiarioOneroso(){
         expedicionDePolizaRequisitosPendientesSteps.clickEnInteresAdicional();
 
@@ -81,9 +81,9 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
         expedicionDePolizaRequisitosPendientesSteps.clickEnInteresAdicionalModificacion(beneficiario);
 
     }
-    @When("ingrese algunas coberturas en modificacion")
-    public void ingresarCoberturasModificacion(){
-        expedicionDePolizaRequisitosPendientesSteps.ingresarCoberturasModificacion();
+    @When("ingrese algunas coberturas en modificacion <deducible> <perdida_llaves>")
+    public void ingresarCoberturasModificacion(@Named("deducible") String deducible , @Named("perdida_llaves") String perdida_llaves){
+        expedicionDePolizaRequisitosPendientesSteps.ingresarCoberturasModificacion(deducible,perdida_llaves);
 
     }
     @When("vaya a vehiculos en expedicion")
