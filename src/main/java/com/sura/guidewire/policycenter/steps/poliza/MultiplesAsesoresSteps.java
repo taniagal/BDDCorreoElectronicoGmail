@@ -17,4 +17,10 @@ public class MultiplesAsesoresSteps extends ScenarioSteps {
     public void ingresarAsesores(Parametros parametros) {
        multiplesAsesoresPage.ingresarAsesores(parametros);
     }
+    @Step
+    public void validarRolAsesor(Parametros opciones) {
+        multiplesAsesoresPage.validarRolAsesor(opciones);
+    }
+
+
 }

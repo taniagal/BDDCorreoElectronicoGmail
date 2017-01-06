@@ -5,6 +5,7 @@ import com.sura.guidewire.policycenter.steps.poliza.MultiplesAsesoresSteps;
 import com.sura.guidewire.policycenter.utils.Parametros;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.model.ExamplesTable;
 
@@ -25,5 +26,10 @@ public class MultiplesAsesoresDefinitions {
        Parametros parametros = new Parametros(opciones);
         multiplesAsesoresSteps.verDetallesMultipleAsesores();
         multiplesAsesoresSteps.ingresarAsesores(parametros);
+    }
+    @Then("Debe quedar un asesor con rol líder:$opciones")
+    public void validarAsesorlider(ExamplesTable opciones) {
+        Parametros parametros = new Parametros(opciones);
+        multiplesAsesoresSteps.validarRolAsesor(parametros);
     }
 }

@@ -17,9 +17,19 @@ public class Parametros {
     private String  porcentaje;
     private String  rol;
     private String  mensaje;
-    List<String> listarol;
+
+
+    List<String> listaroles;
     List<String> listaAgentes;
     List<String> listaPorcentaje;
+
+    public List<String> getListaroles() {
+        return listaroles;
+    }
+
+    public void setListaroles(List<String> listaroles) {
+        this.listaroles = listaroles;
+    }
 
     public String getMensaje() {
         return mensaje;
@@ -34,14 +44,6 @@ public class Parametros {
     }
     public void setRol(String rol) {
         this.rol = rol;
-    }
-
-    public List<String> getListarol() {
-        return listarol;
-    }
-
-    public void setListarol(List<String> listarol) {
-        this.listarol = listarol;
     }
 
     public List<String> getListaPorcentaje() {
@@ -90,8 +92,8 @@ public class Parametros {
             listaPorcentaje= new ArrayList<>();
             Collections.addAll(listaPorcentaje, arrayPorcentaje);
             String[] arrayRol= this.rol.split(",");
-            listarol= new ArrayList<>();
-            Collections.addAll(listarol, arrayRol);
+            listaroles= new ArrayList<>();
+            Collections.addAll(listaroles, arrayRol);
         }
     }
 }

@@ -53,7 +53,7 @@ public class MultiplesAsesoresPage extends PageUtil {
             esperarObjetoClikeableServidor(PATHTABLAENCABEZADOAGENTE);
             escribirTextoCeldaTabla(PATHTABLAAGENTE, i,2,parametros.getListaAgentes().get(i-1));
             escribirTextoCeldaTabla(PATHTABLAAGENTE, i,3, parametros.getListaPorcentaje().get(i-1));
-            escribirTextoCeldaTabla(PATHTABLAAGENTE, i,4, parametros.getListarol().get(i-1));
+            escribirTextoCeldaTabla(PATHTABLAAGENTE, i,4, parametros.getListaroles().get(i-1));
 
             if(i<parametros.getListaAgentes().size()){
                 clicObjeto(btnAgregar);
@@ -92,32 +92,44 @@ public class MultiplesAsesoresPage extends PageUtil {
     public WebElementFacade getElemento(String locator) {
         return withTimeoutOf(1, TimeUnit.SECONDS).find(locator);
     }
+
     //TODO Metodos que pueden agregar a utileria de comando
     public void clicObjeto(WebElementFacade objeto) {
         objeto.waitUntilClickable().click();
     }
+
      //TODO Metodos que pueden agregar a utileria de comando
     public int consultarNumeroElementosTabla(String pathTabla) {
         List<WebElementFacade> listaFacturas = this.getList(pathTabla);
         return listaFacturas.size();
     }
+
     //TODO Metodos que pueden agregar a utileria de comando
     public List<WebElementFacade> getList(String locator) {
         return withTimeoutOf(55, TimeUnit.SECONDS).findAll(locator);
     }
+
     //TODO Metodos que pueden agregar a utileria de comando
     public String consultarTextoCeldaTabla(String path, int indiceFila, int indiceColumna) {
         WebElementFacade elemento = getElemento(path + "[" + indiceFila + "]" + "/td[" + indiceColumna + "]");
         return elemento.getText();
     }
+
+    //TODO Metodos que pueden agregar a utileria de comando
     public void escribirTextoCeldaTabla(String path, int indiceFila, int indiceColumna,String texto) {
-        WebElementFacade elemento = getElemento(path + "[" + indiceFila + "]" + "/td[" + indiceColumna + "]");
+
+        WebElementFacade elemento = consultarElementoFilaColumna(path,indiceFila,indiceColumna);
         clicObjeto(elemento);
         borrarRegistroDatos(20);
         actions.sendKeys(texto).build().perform();
         esperarObjetoClikeableServidor(PATHTABLAENCABEZADOAGENTE);
 
     }
+    //TODO Metodos que pueden agregar a utileria de comando
+    public WebElementFacade consultarElementoFilaColumna(String path, int indiceFila, int indiceColumna) {
+        return getElemento(path + "[" + indiceFila + "]" + "/td[" + indiceColumna + "]");
+    }
+
     public void  borrarRegistroDatos(int cantidad){
         for(int i=0; i<cantidad;i++)
         {
@@ -125,4 +137,16 @@ public class MultiplesAsesoresPage extends PageUtil {
         }
     }
 
+    public void validarRolAsesor(Parametros parametros) {
+        int cantidaRol = consultarNumeroElementosTabla(PATHTABLAAGENTE);
+        int cantidaEncontrada = 0;
+        String rol = "";
+        for(int i = 1; i <= cantidaRol; i ++){
+           rol= consultarTextoCeldaTabla(PATHTABLAAGENTE,1,4);
+           if(!rol.equals(parametros.getRol())){
+               MatcherAssert.assertThat("No se encontro el rol", false);
+           }
+        }
+
+    }
 }
