@@ -1,7 +1,7 @@
 Calculo Bonificacion
 
 Meta:
-@lote1
+@lote3
 @issue #CDSEG-1938
 @Sprint 6
 @tag automator: nelson_jhair_mosquera_palacios

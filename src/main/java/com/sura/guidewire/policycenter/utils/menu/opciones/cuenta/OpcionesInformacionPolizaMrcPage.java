@@ -179,11 +179,12 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void seleccionBotonSiguiente() {
+        btnSiguiente.waitUntilPresent();
         try {
-            btnSiguiente.waitUntilVisible().click();
+            clickElement(btnSiguiente);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            btnSiguiente.waitUntilVisible().click();
+            clickElement(btnSiguiente);
         }
     }
 
