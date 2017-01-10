@@ -48,6 +48,8 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_99999999 = 99999999;
     protected static final int CONSTANTE_900000000 = 900000000;
     protected static final int CONSTANTE_999999999 = 999999999;
+    protected static final int CONSTANTE_MAXIMO_EJECUCIONES = 120;
+    protected static final int CONSTANTE_CUENTA_EJECUCIONES = 0;
     protected static final int CONSTANTE_7 = 7;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
@@ -191,6 +193,35 @@ public class PageUtil extends PageObject {
         waitUntil(WAIT_TIME_3000);
         elementoDeLaLista.waitUntilPresent().click();
     }
+
+    /*
+    * Implementacion espera de click, el numero de intentos se configura en la variable CONSTANTE_MAXIMO_EJECUCIONES
+    */
+
+    public void waitAndClickOnButton(WebElementFacade elemento) {
+        boolean ejecuto = false;
+        int maximoEjecuciones = CONSTANTE_MAXIMO_EJECUCIONES;
+        int ejecuciones = CONSTANTE_CUENTA_EJECUCIONES;
+        while(ejecuciones < maximoEjecuciones && !ejecuto) {
+            this.waitUntil(WAIT_TIME_500);
+            try {
+                this.clickObject(elemento);
+                ejecuto = true;
+            }
+            catch (Exception ex) {
+            }
+            ejecuciones = ejecuciones + 1;
+        }
+        if(!ejecuto) {
+            MatcherAssert.assertThat("No se pudo dar click a botón", false);
+        }
+    }
+
+    public void clickObject(WebElementFacade objeto) {
+        objeto.waitUntilClickable().click();
+    }
+
+
 
     /**
      * Crea numero de cedula
