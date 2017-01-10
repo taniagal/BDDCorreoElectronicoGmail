@@ -14,10 +14,16 @@ y envian las pólizas al proceso manual.
 
 Scenario: Valor accesorios superior al 20% del valor asegurado
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza basado en otro envio <envio>
-When ingrese los datos de la cotizacion PA
-|ciudad_circulacion|limite|deducible|abogado |PLlaves |modelo|
-|MEDELLIN          |1.440 |0        |Opción 1|Opción 1|2016  |
+Given estoy cotizando una poliza:
+|cuenta     |organizacion|producto|canal            |tipoPoliza |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
+When ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+And ingrese las coberturas:
+|limite|deducible|abogado |PLlaves |
+|1.440 |0        |Opción 1|Opción 1|
 And expido la poliza y voy al archivo de poliza
 And quiera realizar esta renovacion
 And ingrese a la pantalla de vehiculos
@@ -26,8 +32,8 @@ And Se ingrese el valor de los accesorios especiales es superior al 100% del val
 Then se debe mostrar los <mensaje1> <mensaje2> de alerta
 
 Examples:
-|envio   |  mensaje1                                | mensaje2                                 |
-|22228589|  es mayor al 20% del valor Asegurado     | es mayor al valor Asegurado del vehículo.|
+|envio   |tipo_documento      |documento |mensaje1                                | mensaje2                                 |
+|22228589|CEDULA DE CIUDADANIA|1060447895|es mayor al 20% del valor Asegurado     | es mayor al valor Asegurado del vehículo.|
 
 Scenario: Tope maximo valor asegurado del vehiculo
 Meta:

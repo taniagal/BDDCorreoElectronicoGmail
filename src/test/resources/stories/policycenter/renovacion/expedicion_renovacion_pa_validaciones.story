@@ -26,11 +26,13 @@ Examples:
 |22222336   |
 
 Scenario: Validar motor y chasis
-Given estoy cotizando una poliza basado en otro envio <envio>
-And vaya a agregar el vehiculo con los datos:
-|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis |motor|valor_asegurado|descuento|recargo|zona|plan        |
-|random|2011  |01601225        |MEDELLIN          |Particular       |kljh456|yui10|17900000       |null     |null   |2   |Plan Modular|
-When ingrese a la pantalla de coberturas
+Given estoy cotizando una poliza:
+|cuenta     |organizacion|producto|canal            |tipoPoliza |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
+When ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas:
 |limite|deducible|abogado |PLlaves |
 |1.440 |0        |Opción 1|Opción 1|
@@ -47,5 +49,5 @@ Then mostrar el siguiente mensaje de bloqueo
 |El número de motor no ha sido ingresado  |
 |El número de chasis no ha sido ingresado |
 Examples:
-|envio   |
-|22228589|
+|tipo_documento      |documento |
+|CEDULA DE CIUDADANIA|1060447895|
