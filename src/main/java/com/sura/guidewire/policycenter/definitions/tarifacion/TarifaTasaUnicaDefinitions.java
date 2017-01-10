@@ -120,6 +120,11 @@ public class TarifaTasaUnicaDefinitions {
         tasaUnicaSteps.seleciconarCoberturas(coberturas);
     }
 
+    @When("seleccione algunas coberturas: $coberturas")
+    public void agregarAlgunascoberturas(ExamplesTable coberturas) {
+        tasaUnicaSteps.seleciconarCoberturas(coberturas);
+    }
+
     @When("realize la renovacion de una poliza")
     public void renovarPoliza() {
         tasaUnicaSteps.renovarPoliza();

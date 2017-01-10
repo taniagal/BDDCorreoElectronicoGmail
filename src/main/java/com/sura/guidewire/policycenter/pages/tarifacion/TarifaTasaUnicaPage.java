@@ -204,7 +204,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
         if (!botonEditarTransaccionDePolizaAsegurado.isPresent()) {
             clickElement(botonVolver);
-            waitUntil(WAIT_TIME_3000);
+            waitUntil(WAIT_TIME_5000);
             clickElement(botonSiguiente);
         }
         clickElement(botonVolver);
