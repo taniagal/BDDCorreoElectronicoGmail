@@ -1,7 +1,8 @@
 package com.sura.guidewire.policycenter.steps;
 
-/**
- * Created by tanigral on 10/01/2017.
- */
-public class SolicitarSarlaftMrcSteps {
+
+import net.thucydides.core.steps.ScenarioSteps;
+
+public class SolicitarSarlaftMrcSteps extends ScenarioSteps {
+
 }

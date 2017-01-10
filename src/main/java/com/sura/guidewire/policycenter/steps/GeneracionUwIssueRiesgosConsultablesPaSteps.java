@@ -23,4 +23,8 @@ public class GeneracionUwIssueRiesgosConsultablesPaSteps extends ScenarioSteps{
     public void aceptar_Expedicion_Poliza() {
         generacionUwIssueRiesgosConsultablesPa.aceptarExpedicionPoliza();
     }
+
+    public void validarMensajeBloqueanteSarlaft(ExamplesTable mensaje) {
+        generacionUwIssueRiesgosConsultablesPa.validarGeneracionMensajeBloqueante(mensaje);
+    }
 }

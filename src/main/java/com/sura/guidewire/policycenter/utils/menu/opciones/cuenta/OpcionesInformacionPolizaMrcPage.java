@@ -167,7 +167,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         waitInfoPoliza(lblBuscarDirectorio);
         itemTipoDocumento.clear();
         fluent().await().atMost(WAIT_TIME_200, TimeUnit.MILLISECONDS);
-        itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
+        itemTipoDocumento.sendKeys("NIT");
         itemTipoDocumento.sendKeys(Keys.ENTER);
         waitInfoPoliza(lblPrimerNombre);
         txtNumDocumento.sendKeys(cedula);

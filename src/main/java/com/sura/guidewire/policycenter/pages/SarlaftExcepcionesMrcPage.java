@@ -4,8 +4,8 @@ import com.sura.guidewire.policycenter.resources.PageUtil;
 import org.openqa.selenium.WebDriver;
 
 
-public class SarlaftExcepcionesPage extends PageUtil {
-    public SarlaftExcepcionesPage(WebDriver driver) {
+public class SarlaftExcepcionesMrcPage extends PageUtil {
+    public SarlaftExcepcionesMrcPage(WebDriver driver) {
         super(driver);
     }
 }
