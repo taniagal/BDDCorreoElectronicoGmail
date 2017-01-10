@@ -447,7 +447,7 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     public void cotizarParaOpcionesDeclinarYNoTomar(String accion) {
         botonActualizar.click();
         botonCotizar.waitUntilPresent().click();
-        waitForTextToAppear("Cotizado");
+        waitForTextToAppear("Cotizado", WAIT_TIME_30000);
         if ("declinar".equalsIgnoreCase(accion)) {
             numeroCotizacionDeclinar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();
         }else{
