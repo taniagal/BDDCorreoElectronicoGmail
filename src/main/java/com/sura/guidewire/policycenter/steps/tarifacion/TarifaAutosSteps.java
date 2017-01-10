@@ -96,4 +96,17 @@ public class TarifaAutosSteps extends ScenarioSteps {
     public void verificarTarifacionTotal(String primaTotal, String iva, String costoTotal) {
         tarifaAutosPage.verificarTarifacionTotal(primaTotal, iva, costoTotal);
     }
+
+    @Step
+    public void verificarNoDependenciaDeCobertura() {
+        tarifaAutosPage.verificarDependenciaDeCobertura();
+    }
+
+    @Step
+    public void verificarDependenciaDeCobertura() {
+        tarifaAutosPage.marcharCoberturaAccidentes();
+        tarifaAutosPage.verificarDependenciaDeCobertura();
+        tarifaAutosPage.desMarcarCoberturas();
+        tarifaAutosPage.verificarCoberturaAccidentes();
+    }
 }
