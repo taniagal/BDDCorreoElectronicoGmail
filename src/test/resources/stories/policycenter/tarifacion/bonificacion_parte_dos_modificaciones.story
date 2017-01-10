@@ -19,7 +19,7 @@ Given estoy cotizando una poliza:
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
-|TYU140|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
 And ingrese las coberturas:
 |limite|deducible|abogado |PLlaves |
 |1.440 |0        |Opción 1|Opción 1|
@@ -28,5 +28,5 @@ And cambio la fecha de vigencia
 Then se debe generar un UW con el mensaje <mensaje>
 
 Examples:
-|bonoT|bonoC|tipo_documento      |documento |mensaje|
-|10   |10   |CEDULA DE CIUDADANIA|1060447895|La bonificación no coincide con lo arrojado por el sistema, Favor verificar|
+|tipo_documento      |documento |mensaje|
+|CEDULA DE CIUDADANIA|1060447895|La bonificación no coincide con lo arrojado por el sistema, Favor verificar|

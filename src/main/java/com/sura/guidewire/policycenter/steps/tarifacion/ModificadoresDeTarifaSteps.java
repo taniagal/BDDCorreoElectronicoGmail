@@ -28,8 +28,8 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps {
     @Step
     public void agregarPlacaYAsegurado(String placa) {
         vehiculoPage.crearVehiculo();
-        tarifaAutosPage.relacionarAsegurado();
         vehiculoPage.agregarPlaca(placa);
+        tarifaAutosPage.relacionarAsegurado();
     }
 
     @Step
