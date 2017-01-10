@@ -40,14 +40,14 @@ Examples:
 
 
 
-Scenario: Creacion unica de cuenta persona natural
+Scenario: Creacion de cuenta persona natural con documento repetido
 When quiera crear una cuenta para un contacto e ingrese documento <documento>, tipo de documento <tipo_documento>
 And nombre de organizacion <nombre_organizacion> <agente>
 And fecha de nacimiento <fecha_nacimiento> Primer nombre <primer_nombre>,primer apellido <primer_apellido>
 And ingrese los datos de direccion:
 |direccion       |tipo_direccion         |departamento|ciudad  |
 |CALLE 54B #50-25|DIRECCION DE RESIDENCIA|Antioquia   |Medellin|
-Then No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
+Then se debe crear la cuenta con el cliente <primer_nombre> <primer_apellido> persona natural
 
 Examples:
 |tipo_documento       |documento |fecha_nacimiento |primer_nombre |primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |nombre_organizacion|agente|mensaje                                                    |
@@ -65,5 +65,5 @@ And ingrese los datos de direccion:
 Then No debe permitir crear una nueva cuenta y debe mostrar el mensaje <mensaje>
 
 Examples:
-|tipo_documento       |documento|fecha_nacimiento |primer_nombre |primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |nombre_organizacion|agente|mensaje                                                                                   |
-|TARJETA DE IDENTIDAD |214521545|15/02/2008       |SASHA         |AKERMAN        |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 |Por políticas de la compañia no es posible crear una cuenta a una persona menor de 16 años|
+|tipo_documento       |documento |fecha_nacimiento |primer_nombre |primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |nombre_organizacion|agente|mensaje                                                                                   |
+|TARJETA DE IDENTIDAD |2145215450|15/02/2008       |SASHA         |AKERMAN        |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 |Por políticas de la compañia no es posible crear una cuenta a una persona menor de 16 años|

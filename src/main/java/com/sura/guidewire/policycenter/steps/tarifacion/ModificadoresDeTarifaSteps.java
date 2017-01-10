@@ -59,4 +59,15 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps{
     public void verificarTarifacionPorCoberturas(ExamplesTable valor) {
         modificadoresDeTarifaPage.verificarTarifacionPorCoberturas(valor);
     }
+
+    @Step
+    public void cambiarBonificacion(String bonoC, String bonoT){
+        modificadoresDeTarifaPage.cambiarBonificacion(bonoC, bonoT);
+        vehiculoPage.clickSiguiente();
+    }
+
+    @Step
+    public void verificarUW(String mensaje) {
+        modificadoresDeTarifaPage.verificarUW(mensaje);
+    }
 }

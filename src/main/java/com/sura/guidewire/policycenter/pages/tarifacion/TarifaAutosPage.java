@@ -172,8 +172,21 @@ public class TarifaAutosPage extends PageUtil {
         botonBuscar.waitUntilPresent();
         campoTxtNumeroDocumento.sendKeys(documento);
         clickElement(botonBuscar);
-        botonSeleccionar.waitUntilPresent().click();
+        seleccionarAsegurado(documento);
         campoTxtNombre.waitUntilPresent();
+    }
+
+    public void seleccionarAsegurado(String documento) {
+        setImplicitTimeout(WAIT_TIME_10,TimeUnit.SECONDS);
+        if (botonSeleccionar.isPresent()) {
+            botonSeleccionar.click();
+        }else {
+            resetImplicitTimeout();
+            campoTxtNumeroDocumento.sendKeys(documento);
+            clickElement(botonBuscar);
+            botonSeleccionar.click();
+        }
+        resetImplicitTimeout();
     }
 
 

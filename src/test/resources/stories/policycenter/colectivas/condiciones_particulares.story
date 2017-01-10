@@ -263,7 +263,7 @@ Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 
 Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355347  |
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
 Scenario: 14 Validacion expedicion de vehiculo blindado en estado NO
@@ -283,7 +283,7 @@ Then se debe permitir expedir la poliza
 
 Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355347  |
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
 Scenario: 15 Validaciones de vehiculo blindado para poliza sin condicion particular(CP)

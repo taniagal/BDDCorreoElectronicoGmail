@@ -1,7 +1,7 @@
 Calculo Bonificacion
 
 Meta:
-@lote1
+@lote2
 @issue #CDSEG-1938
 @Sprint 6
 @tag automator: nelson_jhair_mosquera_palacios
@@ -20,8 +20,6 @@ When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese la placa <placa> en la informacion del vehiculo
 Then se debe ver reflejada la bonificacion <bonoComercial> <bonoTecnico> de esta placa
 
-
-
 Examples:
 |placa |bonoComercial|bonoTecnico|tipo_documento      |documento |
-|CYU123|0            |50         |CEDULA DE CIUDADANIA|1060447895|
+|CYU123|0            |20         |CEDULA DE CIUDADANIA|1060447895|
