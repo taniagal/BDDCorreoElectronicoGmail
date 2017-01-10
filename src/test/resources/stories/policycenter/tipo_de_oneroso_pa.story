@@ -13,9 +13,9 @@ Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |tipoPoliza  |
 |C1060447895|Sura        |Autos   |Canal Tradicional|Individual  |
 When vaya agregar el interes adicional
-Then debo poder ver y seleccionar los tipos de beneficiarios <TipoBeneficiario>
+Then debo poder ver y seleccionar los tipos de beneficiarios <tipoBeneficiario>
 And se debe marcar el campo Requiere certificado por defecto en SI
 
 Examples:
-|TipoBeneficiario|
+|tipoBeneficiario|
 |Oneroso Leasing|
