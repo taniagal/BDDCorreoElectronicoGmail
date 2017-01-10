@@ -56,6 +56,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
     private static final String CELDA_VALOR = "//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]";
     private static final double CONSTANTE_UNO = 1;
     private static final double CONSTANTE_CIEN = 100.0;
+    private static final int CONSTANTE_MIL = 1000;
     private static double valorTasa = 0;
     private static double valorComisionReaseguroCedido = 0;
     private static double valorExpuesto = 0;
@@ -138,11 +139,11 @@ public class CrearYEditarCumulosPages extends PageUtil {
 
     public String calculaPrimaBrutaDeCesionRegla() {
         String[] valorExpuestoCadena = listValorExpuestoRiesgo.getText().split(",");
-        valorExpuesto = Double.parseDouble(valorExpuestoCadena[0].substring(1).replaceAll("\\.",""));
-        valorTasa = Double.parseDouble($(VALOR).getText());
-        double valorPrimaBrutaDeCesion = valorTasa / valorExpuesto;
-        return Double.toString(valorPrimaBrutaDeCesion);
-    }
+        valorExpuesto = Integer.parseInt(valorExpuestoCadena[0].substring(1).replaceAll("\\.",""));
+        valorTasa = Double.parseDouble($(VALOR).getText().replaceAll("\\.",""));
+        double valorPrimaBrutaDeCesion = (valorTasa / valorExpuesto) * CONSTANTE_MIL;
+        return Double.toString(valorPrimaBrutaDeCesion).replace(".", ",");
+       }
 
     public void validaTasaBrutaDeCesion() {
         MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));
@@ -152,12 +153,12 @@ public class CrearYEditarCumulosPages extends PageUtil {
         MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaTasaNetaDeCesionRegla()));
     }
 
-    public void validaUtilidadesNegativas(String mensaje){
-        MatcherAssert.assertThat("error debe mostar un mensaje con utilidades negativa", lblMensajeAdvertencia.getText().contains(mensaje));
-    }
-
     public void validaPrimaBrutaDeCesion() {
         MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
+    }
+
+    public void validaUtilidadesNegativas(String mensaje){
+        MatcherAssert.assertThat("error debe mostar un mensaje con utilidades negativa", lblMensajeAdvertencia.getText().contains(mensaje));
     }
 
 }
