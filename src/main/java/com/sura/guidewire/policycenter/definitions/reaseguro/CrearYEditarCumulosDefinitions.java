@@ -74,4 +74,10 @@ public class CrearYEditarCumulosDefinitions {
     public void seDebeMostarUnmensajeValidandoUtilidadesNegatibas(@Named("mensaje")String mensaje) {
         crearYEditarCumulosSteps.validacionUtilidadesNegativas(mensaje);
     }
+
+    @Then("el valor de la prima bruta de cesion debe tomar el mismo valor de la columna en la tabla")
+    public void thenElValorDeprimaBrutaDeCesionDebeTomarElMismoValorDeLaColumnavalor() {
+        crearYEditarCumulosSteps.validaPrimaBruta();
+    }
+
 }

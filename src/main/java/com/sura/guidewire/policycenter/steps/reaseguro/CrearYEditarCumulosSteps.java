@@ -54,4 +54,8 @@ public class CrearYEditarCumulosSteps extends ScenarioSteps {
     public void validacionUtilidadesNegativas(String mensaje) {
         crearYEditarCumulosPages.validaUtilidadesNegativas(mensaje);
     }
+
+    public void validaPrimaBruta() {
+        crearYEditarCumulosPages.validaPrimaBrutaDeCesion();
+    }
 }

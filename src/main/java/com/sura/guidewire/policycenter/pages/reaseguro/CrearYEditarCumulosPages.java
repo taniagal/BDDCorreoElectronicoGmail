@@ -45,17 +45,20 @@ public class CrearYEditarCumulosPages extends PageUtil {
     WebElementFacade listcomisionIntermediario;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[14]")
     WebElementFacade listTasaBrutaDeCesion;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:0-body']/div/table/tbody/tr/td[5]")
+    WebElementFacade listValorExpuestoRiesgo;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:_msgs']")
     WebElementFacade lblMensajeAdvertencia;
 
     private static final String PAIS_ALEMANIA = "Alemania";
     private static final String ASEGURA_ALLIANZ = "ALLIANZ RE";
-    private static final String VALORENDECIMALES = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[7]";
+    private static final String VALOR = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[7]";
     private static final String CELDA_VALOR = "//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]";
     private static final double CONSTANTE_UNO = 1;
     private static final double CONSTANTE_CIEN = 100.0;
     private static double valorTasa = 0;
     private static double valorComisionReaseguroCedido = 0;
+    private static double valorExpuesto = 0;
 
 
     public CrearYEditarCumulosPages(WebDriver driver) {
@@ -100,7 +103,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
         Map<String, String> datoReaseguradores = datosReaseguradores.getRow(0);
         listcomisionReaseguroCedido.click();
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionReasegurador"));
-        waitAndClickOnButton($(VALORENDECIMALES));
+        waitAndClickOnButton($(VALOR));
         waitUntil(WAIT_TIME_500);
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("valorReaseguro"));
     }
@@ -126,25 +129,35 @@ public class CrearYEditarCumulosPages extends PageUtil {
         actions.sendKeys(Keys.TAB).build().perform();
     }
 
+    public String calculaTasaNetaDeCesionRegla() {
+        valorComisionReaseguroCedido = Double.parseDouble(listcomisionReaseguroCedido.getText()) / CONSTANTE_CIEN;
+        valorTasa = Double.parseDouble($(VALOR).getText().replace(",", "."));
+        double valorTasaBrutaDeCesion = valorTasa / (CONSTANTE_UNO - valorComisionReaseguroCedido);
+        return Double.toString(valorTasaBrutaDeCesion).replace(".", ",");
+    }
+
+    public String calculaPrimaBrutaDeCesionRegla() {
+        String[] valorExpuestoCadena = listValorExpuestoRiesgo.getText().split(",");
+        valorExpuesto = Double.parseDouble(valorExpuestoCadena[0].substring(1).replaceAll("\\.",""));
+        valorTasa = Double.parseDouble($(VALOR).getText());
+        double valorPrimaBrutaDeCesion = valorTasa / valorExpuesto;
+        return Double.toString(valorPrimaBrutaDeCesion);
+    }
+
     public void validaTasaBrutaDeCesion() {
-        MatcherAssert.assertThat("No está el campo tipo de direccion", listTasaBrutaDeCesion.getText().equals($(VALORENDECIMALES).getText()));
+        MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));
     }
 
     public void validaTasaNetaDeCesion() {
-        String tasaObtenida = calculaTasaNetaDeCesionRegla();
-        MatcherAssert.assertThat("No está el campo tipo de direccion", listTasaBrutaDeCesion.getText().equals(tasaObtenida));
+        MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaTasaNetaDeCesionRegla()));
     }
 
     public void validaUtilidadesNegativas(String mensaje){
-        MatcherAssert.assertThat("No está el campo tipo de direccion", lblMensajeAdvertencia.getText().contains(mensaje));
+        MatcherAssert.assertThat("error debe mostar un mensaje con utilidades negativa", lblMensajeAdvertencia.getText().contains(mensaje));
     }
 
-    public String calculaTasaNetaDeCesionRegla() {
-        valorComisionReaseguroCedido = Double.parseDouble(listcomisionReaseguroCedido.getText()) / CONSTANTE_CIEN;
-        valorTasa = Double.parseDouble($(VALORENDECIMALES).getText().replace(",", "."));
-        double valorTasaBVrutaDeCesion = valorTasa / (CONSTANTE_UNO - valorComisionReaseguroCedido);
-        String tasaNetaCesion = Double.toString(valorTasaBVrutaDeCesion).replace(".", ",");
-        return tasaNetaCesion;
+    public void validaPrimaBrutaDeCesion() {
+        MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
     }
 
 }
