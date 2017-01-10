@@ -51,4 +51,9 @@ public class ModificadoresDeTarifaDefinitions {
     public void verificarUW(@Named("mensaje") String mensaje){
         modificadoresDeTarifaSteps.verificarUW(mensaje);
     }
+
+    @When("cambio la fecha de vigencia")
+    public void cambiarFechaDeVigencia(){
+        modificadoresDeTarifaSteps.cambiarFechaDeVigencia();
+    }
 }

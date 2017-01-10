@@ -1,20 +1,27 @@
 package com.sura.guidewire.policycenter.steps.tarifacion;
 
 
+import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.ModificadoresDeTarifaPage;
 import com.sura.guidewire.policycenter.pages.tarifacion.TarifaAutosPage;
-import com.sura.guidewire.policycenter.pages.ValidacionesInformacionDeVehiculoPage;
+import com.sura.guidewire.policycenter.pages.tarifacion.TarifaTasaUnicaPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
-public class ModificadoresDeTarifaSteps extends ScenarioSteps{
-    ModificadoresDeTarifaPage modificadoresDeTarifaPage = new ModificadoresDeTarifaPage(getDriver());
-    ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
-    TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
+public class ModificadoresDeTarifaSteps extends ScenarioSteps {
+    @Page
+    ModificadoresDeTarifaPage modificadoresDeTarifaPage;
+    @Page
+    ValidacionesInformacionDeVehiculoPage vehiculoPage;
+    @Page
+    TarifaAutosPage tarifaAutosPage;
+    @Page
+    TarifaTasaUnicaPage tasaUnicaPage;
 
-    public ModificadoresDeTarifaSteps(Pages pages){
+    public ModificadoresDeTarifaSteps(Pages pages) {
         super(pages);
     }
 
@@ -61,7 +68,7 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void cambiarBonificacion(String bonoC, String bonoT){
+    public void cambiarBonificacion(String bonoC, String bonoT) {
         modificadoresDeTarifaPage.cambiarBonificacion(bonoC, bonoT);
         vehiculoPage.clickSiguiente();
     }
@@ -69,5 +76,10 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps{
     @Step
     public void verificarUW(String mensaje) {
         modificadoresDeTarifaPage.verificarUW(mensaje);
+    }
+
+    @Step
+    public void cambiarFechaDeVigencia() {
+        tasaUnicaPage.cambiarFechaDeVigencia();
     }
 }
