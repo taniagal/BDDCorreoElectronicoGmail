@@ -97,6 +97,15 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         clickElement(botonSiguiente);
     }
 
+    public void clickSiguienteConMensaje(){
+        clickSiguiente();
+        setImplicitTimeout(WAIT_TIME_2,TimeUnit.SECONDS);
+        if ($(".message").isPresent()){
+            clickSiguiente();
+        }
+        resetImplicitTimeout();
+    }
+
     public void clickLinkDescartarCambios() {
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (linkDescartarCambios.isPresent()) {
