@@ -548,8 +548,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitUntil(WAIT_TIME_300);
         comboBoxTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_800);
-        botonBuscar.waitUntilPresent();
+        waitForTextToAppear("Primer nombre");
         campoTxtNumeroDocumento.sendKeys(cedula);
         clickElement(botonBuscar);
         botonSeleccionar.waitUntilPresent().click();
