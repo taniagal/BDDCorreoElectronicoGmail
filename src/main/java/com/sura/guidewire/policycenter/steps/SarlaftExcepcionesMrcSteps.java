@@ -14,8 +14,5 @@ public class SarlaftExcepcionesMrcSteps extends ScenarioSteps{
     @Steps
     SarlaftExcepcionesMrcPage sarlaftExcepcionesMrcPage;
 
-    public void agregarSegundoTomador(String tipoDocumento, String documento) {
-        sarlaftExcepcionesMrcPage.adicionarSegundoTomador(tipoDocumento,documento);
 
-    }
 }

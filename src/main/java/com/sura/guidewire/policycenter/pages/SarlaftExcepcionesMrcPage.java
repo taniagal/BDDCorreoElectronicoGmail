@@ -12,6 +12,7 @@ public class SarlaftExcepcionesMrcPage extends PageUtil {
         super(driver);
 
     }
+
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton-btnInnerEl']")
     WebElementFacade btnAgregar;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:AdditionalNamedInsuredsDV:NamedInsuredInputSet:NamedInsuredsLV_tb:AddContactsButton:AddFromSearch-textEl']")
@@ -27,12 +28,4 @@ public class SarlaftExcepcionesMrcPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='ContactSearchPopup:ContactSearchScreen:ContactSearchResultsLV:0:_Select']")
     WebElementFacade btnSelecciona;
 
-    public void adicionarSegundoTomador(String tipoDocumento, String documento) {
-        clickElement(btnAgregar);
-        clickElement(itemDirectorio);
-        itemTipoDocumento.sendKeys(tipoDocumento);
-        txtNumDocumento.sendKeys(documento);
-        clickElement(btnBuscar);
-        clickElement(btnSelecciona);
-    }
 }

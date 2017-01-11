@@ -9,10 +9,4 @@ public class SarlaftExcepcionesMrcDefinitions {
 
     @Steps
     SarlaftExcepcionesMrcSteps sarlaftExcepcionesMrcSteps;
-
-    @When("adicione un segundo tomador que requiere sarlaft <tipoDocumento> <documento>")
-    public void agregarSegundoTomador(@Named("tipoDocumento")String tipoDocumento, @Named("documento")String documento){
-        sarlaftExcepcionesMrcSteps.agregarSegundoTomador(tipoDocumento,documento);
-    }
-
 }
