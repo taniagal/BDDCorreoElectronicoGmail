@@ -9,9 +9,7 @@ import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Map;
 
@@ -102,7 +100,7 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void clickCambiarPlaca() {
-        clickElement(checkBoxCambioDePlaca);
+        this.clickItemCambiarPlaca();
     }
 
     public void datosPlacaAnterior(ExamplesTable datosPlaca) {
@@ -160,7 +158,7 @@ public class CambioDePlacaPage extends PageUtil {
         int intentos = 0;
         while (intentos < CONSTANTE_3) {
             waitUntil(WAIT_TIME_2000);
-            if (!"0px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position"))) {
+            if (!"0px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position")) || !"-15px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position"))) {
                 actions.click(checkBoxCambioDePlaca).build().perform();
             } else {
                 break;
@@ -219,19 +217,12 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
         clickElement(menuItemVehiculosModificacion);
-        clickElement(checkBoxCambioDePlaca);
-        clickElement(checkBoxCambioDePlaca);
-        waitUntil(WAIT_TIME_2000);
-        try {
-            campoTxtPlaca.clear();
-        } catch (WebDriverException e) {
-            LOGGER.info("WebDriverException");
-            clickElement(checkBoxCambioDePlaca);
-            campoTxtPlaca.clear();
-        }
+        this.deseleccionarCheckBoxDePlaca();
+        this.clickItemCambiarPlaca();
+        campoTxtPlaca.clear();
         campoTxtPlaca.sendKeys(placaRiesgoConsultable);
         campoTxtPlaca.sendKeys(Keys.TAB);
-        waitFor(ExpectedConditions.textToBePresentInElement(tablaDetallesDelVehiculoPlaca,placaRiesgoConsultable));
+        waitForTextToAppear(placaRiesgoConsultable.toUpperCase());
     }
 
     public void mensajePlacaRiesgoConsultable(ExamplesTable mensajePlacaRiesgoConsultable) {
@@ -242,7 +233,7 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
         ingresarPlacaRiesgoConsultable(venezolana);
-        selectItem(campoTxtCiudad,ciudad);
+        selectItem(campoTxtCiudad, ciudad);
     }
 
     public void mensajeDeAutorizacion(ExamplesTable mensajeDeAutorizacion) {
