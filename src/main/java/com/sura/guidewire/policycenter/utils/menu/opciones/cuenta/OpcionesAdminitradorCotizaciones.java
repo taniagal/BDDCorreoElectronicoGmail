@@ -442,7 +442,8 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void cotizarParaOpcionesDeclinarYNoTomar(String accion) {
-        botonActualizar.click();
+        botonActualizar.waitUntilPresent();
+        clickElement(botonActualizar);
         botonCotizar.waitUntilPresent().click();
         waitForTextToAppear("Cotizado", WAIT_TIME_30000);
         if ("declinar".equalsIgnoreCase(accion)) {
