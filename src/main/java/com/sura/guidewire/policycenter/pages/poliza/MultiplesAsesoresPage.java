@@ -14,10 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 public class MultiplesAsesoresPage extends PageUtil {
 
-    public MultiplesAsesoresPage(WebDriver driver) {
-        super(driver);
-    }
-
     private static final String PATH_ENCABEZADO_INFORMACIONPOLIZA = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']";
     private static final String PATH_ENCABEZADO_INFORMACION_DE_INTEMEDIACION = ".//*[@id='ProducerCodeInfo_ExtPopup:ttlBar']";
     private static final String PATH_TABLA_ENCABEZADO_AGENTE = ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV-body']";
@@ -33,10 +29,12 @@ public class MultiplesAsesoresPage extends PageUtil {
     private WebElementFacade btnAceptar;
     @FindBy(xpath = ".//*[@id='ProducerCodeInfo_ExtPopup:ProducerCodeInformationDV:ProducerInformationLV_tb:Remove']")
     private WebElementFacade btnQuitar;
-
-
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']")
     private WebElementFacade labelmensajeDeValidacion;
+
+    public MultiplesAsesoresPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void adicionarAsesoresDeComision() {
         esperarObjetoClikeableServidor(PATH_ENCABEZADO_INFORMACIONPOLIZA);

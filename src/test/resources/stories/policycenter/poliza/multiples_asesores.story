@@ -1,5 +1,10 @@
 multiples_asesores
-Meta:
+Meta:@lote1
+@issue #SUGWUSC-1162
+@tag automatizador: danny_barrientos, informer:danny_barrientos, sprint:10
+@LOB Multiriesgo corporativo
+@Sprint 10
+
 
 Narrative:
 1.Se requiere la creación de una tabla relacionada al Policy Period que permita el almacenamiento de varios producer code para una póliza.
@@ -19,7 +24,7 @@ Given que existe una cuenta activa donde estoy cotizando una poliza:
 |C000112400|Sura        |Multiriesgo corporativo|Canal Tradicional|
 When Debe permitir el ingreso de máximo 8 asesores en la poliza, validando la participacion
  del 100% de los asesores que intervienen en la poliza:
- |codigoAsesor                   |porcentaje             |rol            |
+ |codigoAsesor                   |porcentaje             |rol                                                                        |
  |as1,as2,as3,as4,as5,as6,as7,as8|30,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
 Then Debe quedar un asesor con rol:
  |rol|validarDato|
@@ -34,7 +39,7 @@ Given que existe una cuenta activa donde estoy cotizando una poliza:
 |C000112400|Sura        |Autos      |Canal Tradicional|Individual|
 When Debe permitir el ingreso de máximo 8 asesores en la poliza, validando la participacion
  del 100% de los asesores que intervienen en la poliza:
- |codigoAsesor                   |porcentaje             |rol            |
+ |codigoAsesor                   |porcentaje             |rol                                                                        |
  |as1,as2,as3,as4,as5,as6,as7,as8|30,10,10,10,10,10,10,10|Lider,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional,Adicional|
 Then Debe quedar un asesor con rol:
   |rol|validarDato|
