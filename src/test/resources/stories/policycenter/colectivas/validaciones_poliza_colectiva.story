@@ -170,7 +170,7 @@ When copie la poliza
 And cotice una poliza
 Then se debe mostrar el siguiente mensaje como lo hace guidewire (espacio de trabajo)
 | MENSAJES_WORKSPACE                                                                                                                                                                                         |
-|No se puede cotizar una póliza CP sin coberturas.|
+|No se puede cotizar una póliza CP sin artículos y coberturas|
 
 Examples:
 | numSubscripcion | rolUsuario|
