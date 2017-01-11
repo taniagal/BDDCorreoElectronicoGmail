@@ -3,7 +3,6 @@ package com.sura.guidewire.policycenter.pages;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -15,10 +14,6 @@ import java.util.Map;
 
 
 public class CambioDePlacaPage extends PageUtil {
-
-    public CambioDePlacaPage(WebDriver driver) {
-        super(driver);
-    }
 
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:plateChange-inputEl']")
     private WebElementFacade itemCambiarPlaca;
@@ -87,7 +82,11 @@ public class CambioDePlacaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='centerPanel']")
     private WebElementFacade tablaRequisitosAutorizacion;
 
+    private static final int CONSTANTE_3 = 3;
 
+    public CambioDePlacaPage(WebDriver driver) {
+        super(driver);
+    }
 
 
     public void cambiarPlaca(String placa) {
@@ -139,11 +138,9 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void cambiarPorPlacaExistente(String placaExistente) {
         int intentos = 0;
-        while (intentos < 3) {
+        while (intentos < CONSTANTE_3) {
             waitUntil(WAIT_TIME_2000);
-            System.out.println("ingreso a ciclo placa existente ");
             if ("".equals(txtCambioDePlaca.getText())) {
-                System.out.println("ingreso a if ");
                 txtCambioDePlaca.clear();
                 txtCambioDePlaca.sendKeys(placaExistente);
                 break;
@@ -154,21 +151,19 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void mensajePlacaExistente(ExamplesTable mensaje) {
         botonSiguiente.click();
-    Map<String, String> datos = mensaje.getRow(0);
+        Map<String, String> datos = mensaje.getRow(0);
         txtMotor.waitUntilPresent();
         MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExistente.getText().equals(datos.get("mensaje")));
-}
-
+    }
 
 
     public void clickItemCambiarPlaca() {
         Actions actions = new Actions(getDriver());
         int intentos = 0;
-        while (intentos < 3) {
+        while (intentos < CONSTANTE_3) {
             waitUntil(WAIT_TIME_2000);
             if (!"0px -15px".equals(itemCambiarPlaca.getCssValue("background-position"))) {
                 actions.click(itemCambiarPlaca).build().perform();
-                System.out.println("seleccionado ");
             } else {
                 break;
             }
@@ -180,11 +175,9 @@ public class CambioDePlacaPage extends PageUtil {
     public void deseleccionarCheckBoxDePlaca() {
         Actions actions = new Actions(getDriver());
         int intentos = 0;
-        while (intentos < 3) {
+        while (intentos < CONSTANTE_3) {
             waitUntil(WAIT_TIME_2000);
-            System.out.println("posicion seleccionado " + itemCambiarPlaca.getCssValue("background-position"));
             if ("0px -15px".equals(itemCambiarPlaca.getCssValue("background-position")) || "-15px -15px".equals(itemCambiarPlaca.getCssValue("background-position"))) {
-                //itemCambiarPlaca.click();
                 actions.click(itemCambiarPlaca).build().perform();
                 waitUntil(WAIT_TIME_2000);
             } else {
@@ -221,17 +214,12 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void editarCambioPoliza() {
         if (botonEditarCambioPoliza.isPresent()) {
-            botonEditarCambioPoliza.click();
-            waitUntil(WAIT_TIME_3000);
-            botonEditarCambioPolizaAceptar.click();
-            waitUntil(WAIT_TIME_3000);
+            clickElement(botonEditarCambioPoliza);
+        } else if (botonEditarCambioPolizaExpedicion.isPresent()) {
+            clickElement(botonEditarCambioPolizaExpedicion);
         }
-        else if (botonEditarCambioPolizaExpedicion.isPresent()){
-            botonEditarCambioPolizaExpedicion.click();
-            waitUntil(WAIT_TIME_3000);
-            botonEditarCambioPolizaAceptar.click();
-            waitUntil(WAIT_TIME_3000);
-        }
+        clickElement(botonEditarCambioPolizaAceptar);
+
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
@@ -261,8 +249,6 @@ public class CambioDePlacaPage extends PageUtil {
         waitUntil(WAIT_TIME_3000);
         txtCiudad.sendKeys(ciudad);
         txtCiudadCirculacion.click();
-
-
     }
 
     public void mensajeDeAutorizacion(ExamplesTable mensajeDeAutorizacion) {

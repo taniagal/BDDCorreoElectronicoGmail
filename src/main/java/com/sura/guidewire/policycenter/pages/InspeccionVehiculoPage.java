@@ -107,7 +107,6 @@ public class InspeccionVehiculoPage extends PageUtil {
         botonExpedirPoliza.waitUntilPresent().click();
         waitUntil(WAIT_TIME_1000);
         act.sendKeys(Keys.ENTER).build().perform();
-        waitUntil(WAIT_TIME_3000);
     }
 
     public void validarVehiculoSinInspeccion(String placa) {
@@ -126,7 +125,7 @@ public class InspeccionVehiculoPage extends PageUtil {
     }
 
     public void validarCotizacionExpedida() {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(labelCotizacionExpedida).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelCotizacionExpedida).shouldBeVisible();
         MatcherAssert.assertThat(labelCotizacionExpedida.getText(),Is.is(Matchers.equalTo("Cotización Expedida")));
     }
 }

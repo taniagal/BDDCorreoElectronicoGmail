@@ -42,5 +42,3 @@ Then Se debe mostrar el <mensaje> de ALERTA
 Examples:
 |poliza       |  mensaje                                                                                                                                                                                                                           |
 |TEST_22266674|  El valor asegurado del vehículo supera el límite maximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comite de Riesgo No Estándar Autos|
-
-

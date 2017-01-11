@@ -33,63 +33,63 @@ public class InspeccionVehiculoDefinitions {
 
     @Given("se tiene la informacion de la placa <placa> del vehiculo ingresada")
     public void validarInformacionPlaca(@Named("placa") String placa){
-        inspeccionVehiculoSteps.validar_Informacion_De_La_Placa(placa);
+        inspeccionVehiculoSteps.validarInformacionDeLaPlaca(placa);
     }
 
     @When("el vehiculo tenga inspeccion no valida")
     public void validarInspeccionVehiculo() {
-        inspeccionVehiculoSteps.crear_vehiculo();
+        inspeccionVehiculoSteps.crearVehiculo();
     }
 
     @When("el vehiculo tenga inspeccion")
     public void validarInspeccion() {
-        inspeccionVehiculoSteps.crear_vehiculo();
+        inspeccionVehiculoSteps.crearVehiculo();
     }
 
     @When("la placa <placa> estuvo vigente en la compañia")
     public void validarVigenciaPlaca(@Named("placa") String placa){
-        inspeccionVehiculoSteps.validar_Vigencia_De_La_Placa(placa);
+        inspeccionVehiculoSteps.validarVigenciaDeLaPlaca(placa);
     }
 
     @When("la placa <placa> estuvo vigente pero ahora esta cancelada")
     public void validarPlacaCancelada(@Named("placa") String placa){
-        inspeccionVehiculoSteps.validar_Vigencia_De_La_Placa(placa);
+        inspeccionVehiculoSteps.validarVigenciaDeLaPlaca(placa);
     }
 
     @When("la inspeccion es valida en SIA")
     public void validarInspeccionSIA(){
-        inspeccionVehiculoSteps.permitir_Expedir_Poliza();
+        inspeccionVehiculoSteps.permitirExpedirPoliza();
     }
 
     @When("se identifique que el vehiculo <placa> no cumple con el requisito de inspeccion")
     public void validarVehiculoSinInspeccion(@Named("placa") String placa){
-        inspeccionVehiculoSteps.validar_Informacion_De_La_Placa(placa);
+        inspeccionVehiculoSteps.validarInformacionDeLaPlaca(placa);
     }
 
     @When("llegue a la expedicion de la poliza")
     public void expedirPoliza(){
-        inspeccionVehiculoSteps.permitir_Expedir_Poliza();
+        inspeccionVehiculoSteps.permitirExpedirPoliza();
     }
 
     @Then("se debe recuperar los siguientes datos: $datosVehiculo")
     public void validarDatosVehiculo(ExamplesTable datosVehiculo){
-        inspeccionVehiculoSteps.validar_Informacion_Del_Vehiculo(datosVehiculo);
+        inspeccionVehiculoSteps.validarInformacionDelVehiculo(datosVehiculo);
     }
 
     @Then("el valor asegurado <valorAsegurado> se debe consultar y traer de la tabla fasecolda")
     public void validarValorAsegurado(@Named("valorAsegurado") String valorAsegurado){
-        inspeccionVehiculoSteps.validar_Valor_Asegurado_Del_Vehiculo(valorAsegurado);
+        inspeccionVehiculoSteps.validarValorAseguradoDelVehiculo(valorAsegurado);
     }
 
     @Then("se debe permitir expedir la poliza")
     public void permitirExpedirPoliza(){
-        inspeccionVehiculoSteps.validar_Cotizacion_Expedida();
+        inspeccionVehiculoSteps.validarCotizacionExpedida();
     }
 
     @Then("validar la solicitud de requisitos <requisitos>")
     public void validarSolicitudRequisitos(@Named("requisitos") String requisitos){
         expedicionDePolizaSteps.validarMensajeRequisitos(requisitos);
-    }
+        }
 
     @SuppressWarnings("EmptyMethod")
     @Then("la fecha de inspeccion debe ser la fecha de inicio de vigencia de la poliza")
@@ -100,7 +100,7 @@ public class InspeccionVehiculoDefinitions {
 
     @Then("se debe mostrar en la pantalla un mensaje <mensaje> indicando que el vehiculo no tiene inspeccion")
     public void validarMensajeBloqueo(@Named("mensaje") String mensaje){
-        inspeccionVehiculoSteps.mostrar_Mensaje_De_Bloqueo_De_Expedicion(mensaje);
+        inspeccionVehiculoSteps.mostrarMensajeDeBloqueoDeExpedicion(mensaje);
     }
 
     @Then("generar el UW Issue <mensaje> y no permitir expedir")

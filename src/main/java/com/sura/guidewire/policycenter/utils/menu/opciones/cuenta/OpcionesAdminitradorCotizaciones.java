@@ -334,10 +334,8 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void ingresaRechazo(String razon) {
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(txtCodRazon).shouldBeEnabled();
-        txtCodRazon.clear();
-        txtCodRazon.sendKeys(razon);
-        txtRazonCartaDeclina.click();
+        txtCodRazon.waitUntilPresent();
+        selectItem(txtCodRazon, razon);
         txtRazonCartaDeclina.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
         btnRechazar.click();
     }

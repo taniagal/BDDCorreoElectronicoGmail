@@ -23,70 +23,70 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void navegar_barra_superior(String numCuenta) {
+    public void navegarBarraSuperior(String numCuenta) {
         inicioPage().irACuentaBuscar(numCuenta);
     }
 
     @Step
-    public void navegar_por_las_opciones_de_acciones() {
+    public void navegarPorLasOpcionesDeAcciones() {
         inicioPage().irACuentaNuevoEnvioCuenta();
     }
 
     @Step
-    public void selecciona_cotizacion_para_producto() {
+    public void seleccionaCotizacionParaProducto() {
         opcionesInformacionPolizaMrcPage.ingresaAgente();
     }
 
     @Step
-    public void seleccionar_producto(String nomProducto) {
+    public void seleccionarProducto(String nomProducto) {
         opcionesInformacionPolizaMrcPage.seleccionarProducto(nomProducto);
     }
 
     @Step
-    public void valida_datos_del_tomador(String tomador) {
+    public void validaDatosDelTomador(String tomador) {
         opcionesInformacionPolizaMrcPage.validaNombreTomador(tomador);
         opcionesInformacionPolizaMrcPage.validarValoresDeCampos();
         opcionesInformacionPolizaMrcPage.validaCamposPoliza();
     }
 
     @Step
-    public void ingresar_fecha_de_vigencia(String fechaInicioVigencia) {
+    public void ingresarFechaDeVigencia(String fechaInicioVigencia) {
         opcionesInformacionPolizaMrcPage.ingresarFechaVigencia(fechaInicioVigencia);
     }
 
     @Step
-    public void valida_mensaje_en_pantalla(String mensaje) {
+    public void validaMensajeEnPantalla(String mensaje) {
         opcionesInformacionPolizaMrcPage.validaMensajeEnPantalla(mensaje);
 
     }
 
     @Step
-    public void ingresar_tomador_adicional(String cedula) {
-        opcionesInformacionPolizaMrcPage.ingresarTomadorAdicional(cedula);
+    public void ingresarTomadorAdicional(String tipoDocumento, String documento) {
+        opcionesInformacionPolizaMrcPage.ingresarTomadorAdicional(tipoDocumento,documento);
     }
 
     @Step
-    public void seleccionar_si_en_reaseguro() {
+    public void seleccionarSiEnReaseguro() {
         opcionesInformacionPolizaMrcPage.seleccionaRiesgoAceptado();
     }
 
     @Step
-    public void valida_opciones_reaseguro() {
+    public void validaOpcionesReaseguro() {
         opcionesInformacionPolizaMrcPage.validaReaseguro();
     }
 
     @Step
-    public void eliminar_descripcion_de_direccion_en_contacto() {
+    public void eliminarDescripcionDeDireccionEnContacto() {
         opcionesInformacionPolizaMrcPage.editarDescripDireccionTomador();
     }
 
     @Step
-    public void validar_descipcion_de_direccion() {
+    public void validarDescipcionDeDireccion() {
         opcionesInformacionPolizaMrcPage.validaFormularioDescripDireccion();
     }
 
     @Step
-    public void ingresar_nueva_cotizacion(String agente, String producto) {
+    public void ingresarNuevaCotizacion(String agente, String producto) {
         disponibilidadDetalleProductoPage.seleccionarAgente(agente);
         opcionesInformacionPolizaMrcPage.seleccionarProducto(producto);
     }
@@ -107,15 +107,15 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
     }
 
     @Step
-    public void validar_mensajes_coaseguros(ExamplesTable mensajes) {
+    public void validarMensajesCoaseguros(ExamplesTable mensajes) {
         opcionesInformacionPolizaMrcPage.validarMensajesCoaseguros(mensajes);
     }
 
     @Step
-    public void validar_campos_inhabilitados() {
+    public void validarCamposInhabilitados() {
         opcionesInformacionPolizaMrcPage.noHabilitarNumeroDocumentoCoaseguro();
     }
-    public void validar_campos(String estadouno,String estadodos,ExamplesTable menusesperados){
+    public void validarCampos(String estadouno, String estadodos, ExamplesTable menusesperados){
         opcionesInformacionPolizaMrcPage.validarCamposMenuLateral(estadouno,estadodos,menusesperados);
     }
     public void validarCamposInformacionPoliza(String estadouno, String estadodos, ExamplesTable menusesperados){
@@ -143,7 +143,7 @@ public class InformacionDePolizaMrcSteps extends ScenarioSteps {
         opcionesInformacionPolizaMrcPage.ingresarAInformacionDePoliza();
     }
     @Step
-    public void seleccionar_poliza_tipo_no_reaseguro(){
+    public void seleccionarPolizaTipoNoReaseguro(){
         opcionesInformacionPolizaMrcPage.seleccionarTipoNoReaseguro();
     }
 

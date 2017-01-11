@@ -29,3 +29,4 @@ BDDCore.iml
 sonar-project.properties
 phantomjsdriver.log
 CargarDatosGW/src/main/resources/gradle.properties
+src/test/resources/stories/policycenter/reaseguro/crear_y_editar_cumulos.story
