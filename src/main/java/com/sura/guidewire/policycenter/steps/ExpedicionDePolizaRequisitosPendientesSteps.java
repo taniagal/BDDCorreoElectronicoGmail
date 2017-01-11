@@ -72,7 +72,7 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
 
     @Step
     public void ingresarCiudadModificacionPoliza(String ciudad) {
-        expedicionDePolizaRequisitosPendientesPage.ingresarCiudadModificacion(ciudad);
+        expedicionDePolizaRequisitosPendientesPage.agregarCiudadCirculacion(ciudad);
 
     }
 

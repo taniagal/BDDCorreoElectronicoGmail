@@ -169,7 +169,11 @@ public class TarifaAutosPage extends PageUtil {
         comboBoxTipoDocumento.sendKeys(tipoDocumento);
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
         waitUntil(WAIT_TIME_800);
-        botonBuscar.waitUntilPresent();
+        try {
+            botonBuscar.waitUntilPresent();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+        }
         campoTxtNumeroDocumento.sendKeys(documento);
         clickElement(botonBuscar);
         seleccionarAsegurado(documento);
@@ -207,7 +211,7 @@ public class TarifaAutosPage extends PageUtil {
             botonBorrar.waitUntilNotVisible();
         }
         resetImplicitTimeout();
-        comboBoxLimite.waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(comboBoxLimite).waitUntilPresent();
         waitUntil(WAIT_TIME_1500);
         comboBoxLimite.clear();
         waitUntil(WAIT_TIME_500);
@@ -345,7 +349,7 @@ public class TarifaAutosPage extends PageUtil {
         MatcherAssert.assertThat("Error, la cobertura de accidentes al conductor no se encuentra presente.", comboBoxAccidentes.isPresent());
     }
 
-    public void marcharCoberturaAccidentes(){
+    public void marcharCoberturaAccidentes() {
         clickElement(checkBoxAccidentes);
     }
 

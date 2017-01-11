@@ -117,8 +117,8 @@ public class TableWidgetPage extends PageObject {
     }
 
     public void opcionDeCombo(String nombreDeOpcionDeCombo, String xpathDelCombo) {
-
         List<WebElement> opcionesDeCombo = getDriver().findElements(By.xpath(xpathDelCombo));
+                PageUtil.waitUntil(WAIT_TIME_3000);
         for (WebElement opcion : opcionesDeCombo) {
             try {
                 if (opcion.getText().equals(nombreDeOpcionDeCombo)) {
