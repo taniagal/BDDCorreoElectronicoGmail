@@ -62,7 +62,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade linkDescartarCambios;
     @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:vehicleKm_true-inputEl']")
     private WebElementFacade comboBoxSiCeroKilometros;
-    @FindBy(xpath ="//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:0:BooleanModifier_true-inputEl']")
+    @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:0:BooleanModifier_true-inputEl']")
     private WebElementFacade comboBoxSiVehiculoBLindado;
 
     protected static final int WAIT_TIME_28000 = 28000;
@@ -97,10 +97,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         clickElement(botonSiguiente);
     }
 
-    public void clickSiguienteConMensaje(){
+    public void clickSiguienteConMensaje() {
         clickSiguiente();
-        setImplicitTimeout(WAIT_TIME_2,TimeUnit.SECONDS);
-        if ($(".message").isPresent()){
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        if ($(".message").isPresent()) {
             clickSiguiente();
         }
         resetImplicitTimeout();
@@ -138,10 +138,19 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         if ("Si".equals(vehiculo.get("cero_kilometros"))) {
             seleccionarVehiculoCeroKilometros();
         }
-        if("Si".equals(vehiculo.get("vehiculo_blindado"))){
+        if ("Si".equals(vehiculo.get("vehiculo_blindado"))) {
             seleccionarVehiculoBlindado();
         }
-        MatcherAssert.assertThat("Error en el servicio de fasecolda", campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+        try {
+            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get("valor_asegurado") +
+                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException" + e);
+
+            waitUntil(WAIT_TIME_2000);
+            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get("valor_asegurado") +
+                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+        }
     }
 
     public void seleccionarVehiculoCeroKilometros() {
