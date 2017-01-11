@@ -24,8 +24,8 @@ public class InformacionDePolizaMrcDefinitions {
 
     @Given("se inicio una nueva suscripcion <numeroCuenta>")
     public void iniciaNuevaSuscripcionCuenta(@Named("numeroCuenta") String numeroCuenta) {
-        informacionDePolizaMrcSteps.navegar_barra_superior(numeroCuenta);
-        informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
+        informacionDePolizaMrcSteps.navegarBarraSuperior(numeroCuenta);
+        informacionDePolizaMrcSteps.navegarPorLasOpcionesDeAcciones();
     }
 
     @Given("que estoy iniciando nueva suscripcion <numCuenta> con rol de usuario <rolUsuario>")
@@ -37,19 +37,19 @@ public class InformacionDePolizaMrcDefinitions {
 
         guidewireLogin.dadoQueAccedoAPolicyCenterConRol(rolUsuario);
 
-        informacionDePolizaMrcSteps.navegar_barra_superior(numeroCuenta);
-        informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
+        informacionDePolizaMrcSteps.navegarBarraSuperior(numeroCuenta);
+        informacionDePolizaMrcSteps.navegarPorLasOpcionesDeAcciones();
     }
 
     @When("ingrese a la cuenta <numCuenta>")
     public void cuandoIngreseALaCuenta(@Named("numCuenta") String numeroCuenta) {
-        informacionDePolizaMrcSteps.navegar_barra_superior(numeroCuenta);
-        informacionDePolizaMrcSteps.navegar_por_las_opciones_de_acciones();
+        informacionDePolizaMrcSteps.navegarBarraSuperior(numeroCuenta);
+        informacionDePolizaMrcSteps.navegarPorLasOpcionesDeAcciones();
     }
 
     @When("este expidiendo una poliza de propiedad comercial")
     public void expidePolizaPropiedadComercial() {
-        informacionDePolizaMrcSteps.selecciona_cotizacion_para_producto();
+        informacionDePolizaMrcSteps.seleccionaCotizacionParaProducto();
     }
 
 
@@ -57,17 +57,17 @@ public class InformacionDePolizaMrcDefinitions {
     public void cuandoQuieroExpedirUnaPolizaNuevaConLosSiguientesDatos(@Named("agente") String agente,
                                                                        @Named("producto") String producto) {
 
-        informacionDePolizaMrcSteps.ingresar_nueva_cotizacion(agente, producto);
+        informacionDePolizaMrcSteps.ingresarNuevaCotizacion(agente, producto);
 
     }
 
     @When("cotice una poliza")
-    public void cuandoCotizeUnaPoliza(){
+    public void cuandoCotizeUnaPoliza() {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizar();
     }
 
     @When("cotice una poliza principal")
-    public void cuandoCoticeUnaPolizaPrincipal(){
+    public void cuandoCoticeUnaPolizaPrincipal() {
         informacionDePolizaMrcSteps.seleccionarOpcionCotizarPolizaPrincipal();
     }
 
@@ -80,49 +80,52 @@ public class InformacionDePolizaMrcDefinitions {
     public void cuandoIntenteIngresarAEdificiosYUbicaciones() {
         informacionDePolizaMrcSteps.ingresarAEdificiosYUbicaciones();
     }
+
     @When("ingrese a edificios y ubicaciones en cambio de poliza")
     public void cuandoIntenteIngresarAEdificiosYUbicacionesEnCambioDePoliza() {
         informacionDePolizaMrcSteps.ingresarAEdificiosYUbicacionesEnCambioDePoliza();
     }
+
     @When("ingrese a edificios y ubicaciones en renovacion de poliza")
     public void cuandoIntenteIngresarAEdificiosYUbicacionesRenovacionDePoliza() {
         informacionDePolizaMrcSteps.ingresarAEdificiosYUbicacionesEnRenovacionDePoliza();
 
     }
+
     @When("ingrese a informacion de poliza")
-    public void cuandoIngreseAInformacionDePoliza(){
+    public void cuandoIngreseAInformacionDePoliza() {
         informacionDePolizaMrcSteps.ingresarAInformacionDePoliza();
     }
 
     @When("ingrese a la opcion informacion de poliza")
-    public void cuandoSeleccioneLaOpcionInformacionDePoliza(){
+    public void cuandoSeleccioneLaOpcionInformacionDePoliza() {
         informacionDePolizaMrcSteps.ingresarAOpcionInformacionDePoliza();
     }
 
     @Then("en $variable deben estar en estado <estadodos> las siguientes opciones $menusesperados")
-    public void entoncesenInformacionDePolizaSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,@Named("estadodos") String estadodos, ExamplesTable menusesperados){
-        informacionDePolizaMrcSteps.validarCamposInformacionPoliza(estadouno,estadodos,menusesperados);
+    public void entoncesenInformacionDePolizaSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno, @Named("estadodos") String estadodos, ExamplesTable menusesperados) {
+        informacionDePolizaMrcSteps.validarCamposInformacionPoliza(estadouno, estadodos, menusesperados);
     }
 
 
     @When("de clic en Aceptar de la ventana Coaseguro")
-    public void darClicEnAceptarDeCoaseuguro(){
+    public void darClicEnAceptarDeCoaseuguro() {
         informacionDePolizaMrcSteps.darClicEnAceptarDeCoaseuguro();
     }
 
     @Then("se debe validar que se muestren los mensajes de obligatoriedad siguientes $mensajesesperados")
     public void entoncesSeDebenValidarQueSeMuestrenLosMensajesDeObligatoriedad(ExamplesTable mensajesesperados) {
-        informacionDePolizaMrcSteps.validar_mensajes_coaseguros(mensajesesperados);
+        informacionDePolizaMrcSteps.validarMensajesCoaseguros(mensajesesperados);
     }
 
     @When("seleccione el producto <nomProducto> a expedir")
     public void seleccioneElProducto(@Named("nomProducto") String nomProducto) {
-        informacionDePolizaMrcSteps.seleccionar_producto(nomProducto);
+        informacionDePolizaMrcSteps.seleccionarProducto(nomProducto);
     }
 
     @Then("se debe visualizar los datos del tomador <tomador>")
     public void datosDelTomadorYAdicional(@Named("tomador") String tomador) {
-        informacionDePolizaMrcSteps.valida_datos_del_tomador(tomador);
+        informacionDePolizaMrcSteps.validaDatosDelTomador(tomador);
     }
 
     /*
@@ -131,12 +134,12 @@ public class InformacionDePolizaMrcDefinitions {
 
     @When("modifique la fecha de inicio de vigencia de la poliza <fechaInicioVigencia>")
     public void modificaFechaInicioFechaFin(@Named("fechaInicioVigencia") String fechaInicioVigencia) {
-        informacionDePolizaMrcSteps.ingresar_fecha_de_vigencia(fechaInicioVigencia);
+        informacionDePolizaMrcSteps.ingresarFechaDeVigencia(fechaInicioVigencia);
     }
 
     @Then("se debe mostrar un mensaje <mensaje> de error")
     public void mostarMensaError(@Named("mensaje") String mensaje) {
-        informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
+        informacionDePolizaMrcSteps.validaMensajeEnPantalla(mensaje);
     }
 
 
@@ -144,20 +147,20 @@ public class InformacionDePolizaMrcDefinitions {
     * 3 Historia
     */
 
-    @When("quiera agregar un tomador adicional que es riesgo consultable <cedula>")
-    public void tomadorAdicionalRiesgoConsultabale(@Named("cedula") String cedula) {
-        informacionDePolizaMrcSteps.ingresar_tomador_adicional(cedula);
+    @When("quiera agregar un tomador adicional que es riesgo consultable <tipo_documento> <documento>")
+    public void tomadorAdicionalRiesgoConsultabale(@Named("tipo_documento") String tipoDocumento, @Named("documento") String documento) {
+        informacionDePolizaMrcSteps.ingresarTomadorAdicional(tipoDocumento, documento);
     }
 
     @When("seleccione poliza de tipo no reaseguro especial")
-    public void cuandoSeleccionPolizDeTipoNoReaseguroEspecial(){
-        informacionDePolizaMrcSteps.seleccionar_poliza_tipo_no_reaseguro();
+    public void cuandoSeleccionPolizDeTipoNoReaseguroEspecial() {
+        informacionDePolizaMrcSteps.seleccionarPolizaTipoNoReaseguro();
     }
 
     @Then("se debe mostrar un mensaje de error <mensaje> <mensaje2>")
     public void mensajesDeErrorRiesgosYPeps(@Named("mensaje") String mensaje,
                                             @Named("mensaje2") String mensaje2) {
-        informacionDePolizaMrcSteps.valida_mensaje_en_pantalla(mensaje);
+        informacionDePolizaMrcSteps.validaMensajeEnPantalla(mensaje);
     }
 
      /*
@@ -167,22 +170,22 @@ public class InformacionDePolizaMrcDefinitions {
 
     @When("seleccione la poliza como reaseguro especial")
     public void whenSeleccioneLaPolizaComoReaseguroAceptado() {
-        informacionDePolizaMrcSteps.seleccionar_si_en_reaseguro();
+        informacionDePolizaMrcSteps.seleccionarSiEnReaseguro();
     }
 
     @Then("la etiqueta del tomador debe cambiar a tomador cedente")
     public void thenLaEtiquetaDelTomadorDebeCambiarATomadorCedente() {
-        informacionDePolizaMrcSteps.valida_opciones_reaseguro();
+        informacionDePolizaMrcSteps.validaOpcionesReaseguro();
     }
 
     @Then("la etiqueta reaseguro debe marcarce a (si) automaticamente sin ser editable")
     public void cambioTomadorReaseguro() {
-        informacionDePolizaMrcSteps.valida_opciones_reaseguro();
+        informacionDePolizaMrcSteps.validaOpcionesReaseguro();
     }
 
     @Then("se debe ocultar la opcion de tomadores adicionales")
     public void thenSeDebeOcultarLaOpcionDeTomadoresAdicionales() {
-        informacionDePolizaMrcSteps.valida_opciones_reaseguro();
+        informacionDePolizaMrcSteps.validaOpcionesReaseguro();
     }
 
     /*
@@ -191,17 +194,17 @@ public class InformacionDePolizaMrcDefinitions {
 
     @When("requiera quitar la descripcion de la direccion del contacto")
     public void whenRequieraQuitarLaDescripcionDeLaDireccionDelContacto() {
-        informacionDePolizaMrcSteps.eliminar_descripcion_de_direccion_en_contacto();
+        informacionDePolizaMrcSteps.eliminarDescripcionDeDireccionEnContacto();
     }
 
     @Then("debe desaparecer del formulario principal")
     public void thenDebeDesaparecerDelFormularioPrincipal() {
-        informacionDePolizaMrcSteps.validar_descipcion_de_direccion();
+        informacionDePolizaMrcSteps.validarDescipcionDeDireccion();
     }
 
     @Then("no se debe inhabilitar la opcion Numero de documento")
     public void entoncesNoSeDebeHabilitarLaOpcionNumeroDeDocumento() {
-        informacionDePolizaMrcSteps.validar_campos_inhabilitados();
+        informacionDePolizaMrcSteps.validarCamposInhabilitados();
     }
 
 
@@ -209,15 +212,14 @@ public class InformacionDePolizaMrcDefinitions {
     @Aliases(values = {
             "deben estar en estado <estadodos> las siguientes opciones $menusesperados",
     })
-    public void entoncesSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno,@Named("estadodos") String estadodos, ExamplesTable menusesperados){
-        informacionDePolizaMrcSteps.validar_campos(estadouno,estadodos,menusesperados);
+    public void entoncesSeDebenValidarLasSiguientesOpciones(@Named("estadouno") String estadouno, @Named("estadodos") String estadodos, ExamplesTable menusesperados) {
+        informacionDePolizaMrcSteps.validarCampos(estadouno, estadodos, menusesperados);
     }
+
     @Then("ningun campo puede ser editable en informacion")
-    public void entoncesNingunCampoPuedeSerEditable(){
+    public void entoncesNingunCampoPuedeSerEditable() {
         informacionDePolizaMrcSteps.validarCamposNoEditablesEnInformacionDePoliza();
     }
-
-
 
 
 }

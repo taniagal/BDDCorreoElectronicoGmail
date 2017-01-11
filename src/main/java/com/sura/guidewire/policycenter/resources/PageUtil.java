@@ -50,7 +50,7 @@ public class PageUtil extends PageObject {
     protected static final int CONSTANTE_999999999 = 999999999;
     protected static final int CONSTANTE_MAXIMO_EJECUCIONES = 120;
     protected static final int CONSTANTE_CUENTA_EJECUCIONES = 0;
-    protected static final int CONSTANTE_7 = 7;
+    protected static final int CONSTANTE_20 = 20;
     protected static String numeroCotizacionNoTomar;
     protected static String numeroCotizacionDeclinar;
 
@@ -66,22 +66,7 @@ public class PageUtil extends PageObject {
         waitUntil(WAIT_TIME_3000);
         clickElement(menu);
         waitUntil(WAIT_TIME_800);
-        try {
-            actions.sendKeys(Keys.ARROW_DOWN).build().perform();
-        } catch (UnhandledAlertException f) {
-            LOGGER.info("UnhandledAlertException " + f);
-            try {
-                Alert alert = getDriver().switchTo().alert();
-                String alertText = alert.getText();
-                LOGGER.info("Alert data: " + alertText);
-                alert.accept();
-            } catch (NoAlertPresentException e) {
-                LOGGER.info("NoAlertPresentException " + e);
-            }
-            waitUntil(WAIT_TIME_2000);
-            deployMenu(menu);
-        }
-
+        actions.sendKeys(Keys.ARROW_DOWN).build().perform();
         return actions;
     }
 
@@ -92,7 +77,7 @@ public class PageUtil extends PageObject {
             LOGGER.info("ElementNotVisibleException " + e);
             waitUntil(WAIT_TIME_2000);
             waitFor(ExpectedConditions.elementToBeClickable(element)).shouldBeDisplayed();
-        } catch (StaleElementReferenceException f){
+        } catch (StaleElementReferenceException f) {
             LOGGER.info("StaleElementReferenceException " + f);
             waitUntil(WAIT_TIME_2000);
         }
@@ -202,25 +187,19 @@ public class PageUtil extends PageObject {
         boolean ejecuto = false;
         int maximoEjecuciones = CONSTANTE_MAXIMO_EJECUCIONES;
         int ejecuciones = CONSTANTE_CUENTA_EJECUCIONES;
-        while(ejecuciones < maximoEjecuciones && !ejecuto) {
+        while (ejecuciones < maximoEjecuciones && !ejecuto) {
             this.waitUntil(WAIT_TIME_500);
             try {
-                this.clickObject(elemento);
+                clickElement(elemento);
                 ejecuto = true;
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
             }
             ejecuciones = ejecuciones + 1;
         }
-        if(!ejecuto) {
+        if (!ejecuto) {
             MatcherAssert.assertThat("No se pudo dar click a botón", false);
         }
     }
-
-    public void clickObject(WebElementFacade objeto) {
-        objeto.waitUntilClickable().click();
-    }
-
 
 
     /**
@@ -261,14 +240,14 @@ public class PageUtil extends PageObject {
 
 
     public void clickElement(WebElementFacade element) {
-        for (int i = 0; i < CONSTANTE_7; i++) {
+        for (int i = 0; i < CONSTANTE_20; i++) {
             try {
                 element.click();
                 break;
             } catch (WebDriverException e) {
-                waitUntil(WAIT_TIME_2000);
+                waitUntil(WAIT_TIME_500);
                 LOGGER.info("WebDriverException " + e);
-                LOGGER.info("-------------- " + i);
+                LOGGER.info("--- click " + i);
             }
         }
     }

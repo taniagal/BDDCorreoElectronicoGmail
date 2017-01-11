@@ -101,12 +101,10 @@ public class ModificacionInformacionPolizaPAPage extends PageUtil {
     }
 
     public void irAModificarInformacionPoliza() {
-        waitFor(menuAcciones).waitUntilPresent();
         clickElement(menuAcciones);
         itemCambiarPoliza.waitUntilPresent().click();
         waitFor(botonSiguienteInfoPoliza).shouldBeVisible();
         botonSiguienteInfoPoliza.click();
-        waitUntil(WAIT_TIME_2000);
     }
 
     public void validarInformacionPoliza(Map<String, String> labelsInformacionPoliza, ExamplesTable informacionPoliza) {
