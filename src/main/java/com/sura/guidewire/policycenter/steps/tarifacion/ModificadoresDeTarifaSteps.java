@@ -82,4 +82,14 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps {
     public void cambiarFechaDeVigencia() {
         tasaUnicaPage.cambiarFechaDeVigencia();
     }
+
+    @Step
+    public void cambiarBonificacionTecnica(String bonoT) {
+        modificadoresDeTarifaPage.cambiarBonificacionTecnica(bonoT);
+    }
+
+    @Step
+    public void comenzarCambioDePoliza(){
+        tasaUnicaPage.nuevoCambioDePoliza();
+    }
 }

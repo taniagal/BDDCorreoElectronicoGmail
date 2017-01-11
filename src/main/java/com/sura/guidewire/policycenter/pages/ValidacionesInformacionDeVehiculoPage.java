@@ -73,7 +73,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void irAVehiculos() {
         waitFor(menuItemVehiculos).waitUntilPresent();
-        waitUntil(WAIT_TIME_2000);
         clickElement(menuItemVehiculos);
     }
 
@@ -104,15 +103,6 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
             LOGGER.info("StaleElementReferenceException " + e);
         }
         clickElement(botonSiguiente);
-    }
-
-    public void clickSiguienteConMensaje(){
-        clickSiguiente();
-        setImplicitTimeout(WAIT_TIME_2,TimeUnit.SECONDS);
-        if ($(".message").isPresent()){
-            clickSiguiente();
-        }
-        resetImplicitTimeout();
     }
 
     public void clickLinkDescartarCambios() {
