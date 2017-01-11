@@ -88,6 +88,15 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitForTextToAppear(placa, WAIT_TIME_28000);
     }
 
+    public void clickSiguienteConMensaje(){
+        clickSiguiente();
+        setImplicitTimeout(WAIT_TIME_2,TimeUnit.SECONDS);
+        if ($(".message").isPresent()){
+            clickSiguiente();
+        }
+        resetImplicitTimeout();
+    }
+
     public void clickSiguiente() {
         try {
             withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonSiguiente).waitUntilPresent();
