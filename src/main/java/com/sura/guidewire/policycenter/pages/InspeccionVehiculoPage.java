@@ -126,7 +126,7 @@ public class InspeccionVehiculoPage extends PageUtil {
     }
 
     public void validarCotizacionExpedida() {
-        withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(labelCotizacionExpedida).shouldBeVisible();
+        withTimeoutOf(WAIT_TIME_28,TimeUnit.SECONDS).waitFor(labelCotizacionExpedida).shouldBeVisible();
         MatcherAssert.assertThat(labelCotizacionExpedida.getText(),Is.is(Matchers.equalTo("Cotización Expedida")));
     }
 }
