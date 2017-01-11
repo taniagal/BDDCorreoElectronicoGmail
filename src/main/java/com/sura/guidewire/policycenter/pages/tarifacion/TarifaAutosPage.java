@@ -211,7 +211,7 @@ public class TarifaAutosPage extends PageUtil {
             botonBorrar.waitUntilNotVisible();
         }
         resetImplicitTimeout();
-        comboBoxLimite.waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(comboBoxLimite).waitUntilPresent();
         waitUntil(WAIT_TIME_1500);
         comboBoxLimite.clear();
         waitUntil(WAIT_TIME_500);

@@ -73,6 +73,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void irAVehiculos() {
         waitFor(menuItemVehiculos).waitUntilPresent();
+        waitUntil(WAIT_TIME_2000);
         clickElement(menuItemVehiculos);
     }
 
@@ -140,8 +141,16 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         if ("Si".equals(vehiculo.get("vehiculo_blindado"))) {
             seleccionarVehiculoBlindado();
         }
-        MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get("valor_asegurado")
-                + " but was+" + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+        try {
+            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get("valor_asegurado") +
+                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException" + e);
+
+            waitUntil(WAIT_TIME_2000);
+            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get("valor_asegurado") +
+                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+        }
     }
 
     public void seleccionarVehiculoCeroKilometros() {
