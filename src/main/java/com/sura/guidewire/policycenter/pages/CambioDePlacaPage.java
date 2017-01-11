@@ -81,6 +81,8 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade labelMensajePlacaExtranjeraCucuta;
     @FindBy(xpath = ".//*[@id='centerPanel']")
     private WebElementFacade tablaRequisitosAutorizacion;
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']")
+    private WebElementFacade tablaRequisitosModificacion;
 
     private static final int CONSTANTE_3 = 3;
 
@@ -217,12 +219,15 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
-        itemVehiculosModificacion.click();
-        clickElement(itemCambiarPlaca);
+        waitUntil(WAIT_TIME_2000);
+        clickElement(itemVehiculosModificacion);
+        waitUntil(WAIT_TIME_2000);
         clickElement(itemCambiarPlaca);
         waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.clear();
+        waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.sendKeys(placaRiesgoConsultable);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void mensajePlacaRiesgoConsultable(ExamplesTable mensajePlacaRiesgoConsultable) {
@@ -233,7 +238,6 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
         itemVehiculosModificacion.click();
-        clickElement(itemCambiarPlaca);
         clickElement(itemCambiarPlaca);
         waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.clear();
@@ -253,6 +257,5 @@ public class CambioDePlacaPage extends PageUtil {
         tablaRequisitosModificacion.waitUntilPresent();
         MatcherAssert.assertThat(tablaRequisitosModificacion.getText(), Matchers.containsString(datos.get("mensajeDeAutorizacion")));
         waitUntil(WAIT_TIME_3000);
-
     }
 }
