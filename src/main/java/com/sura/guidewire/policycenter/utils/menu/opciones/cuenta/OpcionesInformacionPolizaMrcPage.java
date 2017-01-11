@@ -495,6 +495,15 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public void darClicEnAceptarDeCoaseuguro() {
         botonAceptarCoaseguro.click();
+       /* setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
+        if ($(".message").isPresent()){
+            resetImplicitTimeout();
+            $(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/div/table/tbody/tr[2]/td[2]/div").click();
+            actions.click().build().perform();
+            actions.sendKeys("ACE SEGUROS S.A.").build().perform();
+            actions.sendKeys(Keys.TAB).build().perform();
+        }
+        resetImplicitTimeout();*/
     }
 
 
