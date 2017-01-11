@@ -22,4 +22,4 @@ Then se debe ver reflejada la bonificacion <bonoComercial> <bonoTecnico> de esta
 
 Examples:
 |placa |bonoComercial|bonoTecnico|tipo_documento      |documento |
-|CYU123|0            |20         |CEDULA DE CIUDADANIA|1060447895|
+|CYU123|0            |20         |CEDULA DE CIUDADANIA|1077567553|

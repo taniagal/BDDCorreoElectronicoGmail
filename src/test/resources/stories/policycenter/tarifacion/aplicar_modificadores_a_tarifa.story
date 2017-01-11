@@ -44,5 +44,5 @@ Then el valor del monto en cada cobertura debe ser:
 |33  |11.825    |
 
 Examples:
-|tipo_documento      |documento |
-|CEDULA DE CIUDADANIA|1060447895|
+|tipo_documento      |documento|
+|CEDULA DE CIUDADANIA|11111111 |
