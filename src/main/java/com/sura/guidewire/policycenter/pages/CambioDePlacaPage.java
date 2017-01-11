@@ -116,12 +116,6 @@ public class CambioDePlacaPage extends PageUtil {
 
     }
 
-    public void cambiarPlacaSegundaVez() {
-        waitUntil(WAIT_TIME_3000);
-        itemCambiarPlaca.click();
-        waitUntil(WAIT_TIME_3000);
-    }
-
     public void mostrarPlacaInicial(String placaInicial) {
         waitForTextToAppear(placaInicial);
         waitUntil(WAIT_TIME_2000);
@@ -129,8 +123,8 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaVenezolana(String placaVenezolana) {
-        clickElement(itemCambiarPlaca);
-        clickElement(itemCambiarPlaca);
+        this.deseleccionarCheckBoxDePlaca();
+        this.clickItemCambiarPlaca();
         waitUntil(WAIT_TIME_2000);
         txtPlacaNueva.clear();
         txtPlacaNueva.sendKeys(placaVenezolana);
