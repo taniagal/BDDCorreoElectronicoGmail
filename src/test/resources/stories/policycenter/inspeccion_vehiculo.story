@@ -28,6 +28,8 @@ Examples:
 | numCuenta   | placa  | valorAsegurado | tipo_documento       | documento  |
 | C1060447895 | HZR123 | 165900000,00   | CEDULA DE CIUDADANIA | 1060447895 |
 
+
+
 Scenario: Consulta de placa en el modelo de seguros la cual esta cancelada
 Given que voy a buscar la cuenta <numCuenta>
 When estoy expidiendo una poliza de autos
@@ -44,6 +46,8 @@ Examples:
 | numCuenta   | placa  | valorAsegurado | tipo_documento       | documento  |
 | C1060447895 | MJK289 | 21800000,00    | CEDULA DE CIUDADANIA | 1060447895 |
 
+
+
 Scenario: Vehiculo sin requisito inspeccion para poder expedir
 Given se ha realizado la cotizacion <cotizacion>
 When se identifique que el vehiculo <placa> no cumple con el requisito de inspeccion
@@ -55,16 +59,27 @@ Examples:
 |cotizacion|placa  |mensaje                                                                       |requisitos                                         |
 |22222214  |COR219 |El vehículo no tiene una inspección vigente a la fecha de ingreso del riesgo. |Existen requisitos pendientes, por favor verifique.|
 
+
+
 Scenario: Consultar inspeccion valida en SIA
-Given se ha realizado la cotizacion <cotizacion>
-And se tiene la informacion de la placa <placa> del vehiculo ingresada
-When la inspeccion es valida en SIA
+Given estoy cotizando una poliza:
+|cuenta     |organizacion|producto|canal            |tipoPoliza |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
+When ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
+|USU422|2011  |01601225        |MEDELLIN          |Particular       |null  |null |17900000       |null     |null   |2   |Plan Modular|
+And ingrese las coberturas:
+|limite|deducible|abogado |PLlaves |
+|1.440 |0        |Opción 1|Opción 1|
+And expido la poliza
 Then se debe permitir expedir la poliza
 And la fecha de inspeccion debe ser la fecha de inicio de vigencia de la poliza
 
 Examples:
-|cotizacion |placa |requisitos                                          |
-|22222215   |USU422|Existen requisitos pendientes, por favor verifique. |
+|cotizacion |placa |tipo_documento      |documento |
+|22222215   |USU422|CEDULA DE CIUDADANIA|1060447895|
+
 
 Scenario: Consulta requisito inspeccion en el modelo
 Meta:

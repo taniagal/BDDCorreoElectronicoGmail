@@ -149,9 +149,7 @@ public class CotizacionMRCPage extends PageUtil {
         WebElementFacade resultadosValidacion = withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).find(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
-        waitUntil(WAIT_TIME_3000);
         MatcherAssert.assertThat(tablaMensajes.getText(), Matchers.containsString(mensaje));
-        waitUntil(WAIT_TIME_5000);
     }
 
     public void validarBloqueoExclusividad(String mensaje) {
