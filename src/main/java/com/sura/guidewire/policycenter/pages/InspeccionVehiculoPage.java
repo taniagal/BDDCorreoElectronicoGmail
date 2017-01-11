@@ -107,7 +107,6 @@ public class InspeccionVehiculoPage extends PageUtil {
         botonExpedirPoliza.waitUntilPresent().click();
         waitUntil(WAIT_TIME_1000);
         act.sendKeys(Keys.ENTER).build().perform();
-        waitUntil(WAIT_TIME_3000);
     }
 
     public void validarVehiculoSinInspeccion(String placa) {

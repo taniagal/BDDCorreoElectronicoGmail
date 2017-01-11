@@ -21,25 +21,25 @@ public class AdmonCotizacionCuentaNoTomarDefinitions {
 
     @When("no quiera tomar la cotizacion sin ingresar una razon")
     public void tomarCotizacionSinRazon() {
-        admonCotizacionCuentaNoTomarSteps.seleccionar_opcion_en_acciones();
-        admonCotizacionCuentaNoTomarSteps.declinar_sin_razon();
+        admonCotizacionCuentaNoTomarSteps.seleccionarOpcionEnAcciones();
+        admonCotizacionCuentaNoTomarSteps.declinarSinRazon();
     }
 
     @Then("el sistema debe mostrar un mesaje <mensaje> y bloquear la accion")
     public void mensajeYBloqueoDeAccion(@Named("mensaje") String mensaje) {
-        admonCotizacionCuentaNoTomarSteps.valida_mensaje(mensaje);
+        admonCotizacionCuentaNoTomarSteps.validaMensaje(mensaje);
     }
 
 
     @When("no quiera tomar la cotizacion")
     public void noTomarCotizacion() {
-        admonCotizacionCuentaNoTomarSteps.seleccionar_opcion_en_acciones();
+        admonCotizacionCuentaNoTomarSteps.seleccionarOpcionEnAcciones();
     }
 
     @When("no quiera tomar la cotizacion por una razon <razon>")
     public void whenQuieraNoTomarLaCotizacionPorUnaRazonrazon(@Named("razon") String razon) {
-        admonCotizacionCuentaNoTomarSteps.seleccionar_opcion_en_acciones();
-        admonCotizacionCuentaNoTomarSteps.ingresar_informacion_al_momento_de_rechazar(razon);
+        admonCotizacionCuentaNoTomarSteps.seleccionarOpcionEnAcciones();
+        admonCotizacionCuentaNoTomarSteps.ingresarInformacionAlMomentoDeRechazar(razon);
     }
 
     @When("cotice para la opcion no tomar MRC")
@@ -50,17 +50,17 @@ public class AdmonCotizacionCuentaNoTomarDefinitions {
     @Then("el sistema debe mostrar el estado no tomada <numCotizacion> <accion>")
     public void thenElSistemaDebeMostrarElEstadoNoTomadanumCotizacion(@Named("numCotizacion") String numCotizacion,
                                                                       @Named("accion") String accion) {
-        admonCotizacionCuentaNoTomarSteps.valida_estado_de_la_cotizacion(numCotizacion, accion);
+        admonCotizacionCuentaNoTomarSteps.validaEstadoDeLaCotizacion(numCotizacion, accion);
     }
 
     @Then("desahabilitar la opcion de acciones")
     public void thenDesahabilitarLaOpcionDeAcciones() {
-        admonCotizacionCuentaNoTomarSteps.inhabilita_acciones();
+        admonCotizacionCuentaNoTomarSteps.inhabilitaAcciones();
     }
 
     @Then("el sistema debe mostrarme todas las siguientes opciones: $listaCodRazon")
     public void validarOpciones(ExamplesTable listaCodRazon){
-        admonCotizacionCuentaNoTomarSteps.valida_lista_de_razones(listaCodRazon);
+        admonCotizacionCuentaNoTomarSteps.validaListaDeRazones(listaCodRazon);
     }
 
 }

@@ -11,25 +11,7 @@ así poder crear, actualizar,copiar y retirar cotizaciones para una cuenta dada
 
 Scenario: Declinar una cotizacion sin razon
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza:
-| cuenta      | organizacion | producto                |
-| C000902244  | Sura         | Multiriesgo corporativo |
-And seleccione reaseguro especial No
-When agregue una nueva ubicacion departamento <departamento>, ciuad <ciudad>, direccion <direccion>
-And descripcion <descripcion>, actividad economica <actividad>
-And seleccione la cobertura:
-| valorReconstruccion | valorAsegurado | valorComercial | cobertura |
-| 100000000           | 100000000      | null           | Terremoto |
-And cotice para la opcion declinar MRC
-And estoy visualizando las cotizaciones de la cuenta <numCuenta>
-And quiera declinar la cotizacion sin ingresar la razon
-Then el sistema debe mostrar un mesaje <mensaje>
 
-Examples:
-| envio    |departamento|ciudad  |direccion        |descripcion  |actividad                    | numCuenta  | mensaje                                     |
-| 22222211 |Antioquia   |Medellin|CR 44 A # 49 - 00|Edificio Core|Acabado de productos textiles| C000902244 | Falta el campo obligatorio "Código de razón |
-
-Scenario: Validar al seleccionar la opcion declinar y declinar una cotizacion desde una cuenta
 Given estoy cotizando una poliza:
 | cuenta      | organizacion | producto                |
 | C002888989  | Sura         | Multiriesgo corporativo |
