@@ -80,7 +80,9 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     }
     
     public void cambiarBonificacion(String bonoC, String bonoT){
+        campoTxtBonificacionComercial.clear();
         campoTxtBonificacionComercial.sendKeys(bonoC);
+        campoTxtBonificacionTecnica.clear();
         campoTxtBonificacionTecnica.sendKeys(bonoT);
     }
 
