@@ -26,7 +26,7 @@ And vaya a agregar el vehiculo con los datos:
 And seleccione algunas coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
 |1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
-And expido la poliza
+And expido la poliza y voy a informacion de poliza expedida
 When realize una modificacion en los de datos del aseguradocon los datos nombre <primer_nombre> <segundo_nombre>, estado civil <estado_civil>
 Then se debe tarifar con el esquema de tasa unica, sin generar cobro o devolucion de prima
 
@@ -44,7 +44,7 @@ And vaya a agregar el vehiculo con los datos:
 And seleccione algunas coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
 |1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
-And expido la poliza
+And expido la poliza y voy a informacion de poliza expedida
 When realize una modificacion en el valor asegurado <valor_asegurado>
 Then se debe tarifar con el esquema de tasa unica, generando cobro o devolucion de prima
 
@@ -61,7 +61,7 @@ And vaya a agregar el vehiculo con los datos:
 And seleccione algunas coberturas:
 |limite|deducible|abogado |PTH|PPH|PPHF|GTH|AC|AS                |PTD|PPD|PPDF|GT|PP|PT|GTR     |GP      |PLlaves |
 |1.440 |0        |Opción 1|10 |910|1.50|40.|35|Asistencia Clásica|10 |0  |1.50|40|16|20|Opción 1|Opción 1|Opción 1|
-And expido la poliza
+And expido la poliza y voy a informacion de poliza expedida
 When realize la renovacion de una poliza
 Then se debe tarifar con el esquema de tasa unica, generando el valor de la prima
 

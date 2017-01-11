@@ -15,7 +15,7 @@ Scenario: Validar mensaje de advertencia - requisitos pendientes
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta    |organizacion|producto|canal            |tipoPoliza |
-|C002888993|Sura        |Autos   |Canal Tradicional|Individual    |
+|C002888993|Sura        |Autos   |Canal Tradicional|Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |

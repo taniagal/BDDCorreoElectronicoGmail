@@ -80,4 +80,15 @@ public class TarifaAutosDefinitions {
     public void verificarResultado(ExamplesTable valor) {
         tarifaAutosSteps.verificarTarifacionPorCoberturas(valor);
     }
+
+    @Then("debo poder ver la cobertura de accidentes al conductor sin dependencia de daños o hurto")
+    public void verificarNoDependenciaDeCobertura(){
+        tarifaAutosSteps.verificarNoDependenciaDeCobertura();
+    }
+
+    @Then("debo poder ver la cobertura de accidentes al conductor con dependencia de daños o hurto")
+    public void verificarDependenciaDeCobertura(){
+        tarifaAutosSteps.verificarDependenciaDeCobertura();
+    }
 }
+

@@ -4,4 +4,5 @@ import net.serenitybdd.jbehave.SerenityStory;
 
 
 public class CambioDePlaca extends SerenityStory {
+
 }

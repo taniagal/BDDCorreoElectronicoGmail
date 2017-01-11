@@ -6,8 +6,6 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.jbehave.core.model.ExamplesTable;
 
-import java.util.Map;
-
 public class SolicitarRequisitoPaSteps extends ScenarioSteps{
 
     private SolicitarRequisitoPaPage solicitarRequisitoPa;
@@ -34,7 +32,7 @@ public class SolicitarRequisitoPaSteps extends ScenarioSteps{
     }
 
     @Step
-    public void validar_que_se_muestre_mensaje_de_bloqueo(ExamplesTable mensajeB) {
+    public void validarQueSeMuestreMensajeDeBloqueo(ExamplesTable mensajeB) {
         solicitarRequisitoPa.validarMensajeBloqueante(mensajeB);
     }
 }

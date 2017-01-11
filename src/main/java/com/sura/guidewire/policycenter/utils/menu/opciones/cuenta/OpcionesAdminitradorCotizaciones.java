@@ -1,11 +1,6 @@
 package com.sura.guidewire.policycenter.utils.menu.opciones.cuenta;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import com.sura.guidewire.policycenter.utils.GwNavegacionUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -19,6 +14,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class OpcionesAdminitradorCotizaciones extends PageUtil {
@@ -335,10 +334,8 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void ingresaRechazo(String razon) {
-        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(txtCodRazon).shouldBeEnabled();
-        txtCodRazon.clear();
-        txtCodRazon.sendKeys(razon);
-        txtRazonCartaDeclina.click();
+        txtCodRazon.waitUntilPresent();
+        selectItem(txtCodRazon, razon);
         txtRazonCartaDeclina.sendKeys("Texto de Razon caracteres especiales !#$%&/()=");
         btnRechazar.click();
     }
@@ -379,9 +376,9 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     public void validaEstado(String numCotizacion, String accion) {
         String numeroCotizacion;
         int i = 0;
-        if("declinada".equalsIgnoreCase(accion)) {
+        if ("declinada".equalsIgnoreCase(accion)) {
             numeroCotizacion = numeroCotizacionDeclinar;
-        }else{
+        } else {
             numeroCotizacion = numeroCotizacionNoTomar;
         }
         waitFor(lblCotizacionesCuenta).waitUntilVisible();
@@ -445,12 +442,13 @@ public class OpcionesAdminitradorCotizaciones extends PageUtil {
     }
 
     public void cotizarParaOpcionesDeclinarYNoTomar(String accion) {
-        botonActualizar.click();
+        botonActualizar.waitUntilPresent();
+        clickElement(botonActualizar);
         botonCotizar.waitUntilPresent().click();
-        waitForTextToAppear("Cotizado");
+        waitForTextToAppear("Cotizado", WAIT_TIME_30000);
         if ("declinar".equalsIgnoreCase(accion)) {
             numeroCotizacionDeclinar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();
-        }else{
+        } else {
             numeroCotizacionNoTomar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:Quote_SummaryDV:JobNumber-inputEl']").getText();
         }
     }

@@ -16,6 +16,8 @@ import org.slf4j.LoggerFactory;
 public class ModificadoresDeTarifaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:6:RateModifier-inputEl']")
     public WebElementFacade campoTxtBonificacionTecnica;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:6:RateModifier-inputEl']")
+    public WebElementFacade campoTxtBonificacionTecnicaCambio;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:2:RateModifier-inputEl']")
     public WebElementFacade campoTxtBonificacionComercial;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:3:RateModifier-inputEl']")
@@ -26,6 +28,10 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     public WebElementFacade campoTxtSuavizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:1:TypeKeyModifier-inputEl']")
     public WebElementFacade comboBoxDescuentoDipositivo;
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:0:ShortDescriptionAndSize']")
+    public WebElementFacade labelUW;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div")
+    private WebElementFacade menuItemVehiculos;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -37,11 +43,11 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     }
 
     public void verificarBonoTecnico(String bono){
-        MatcherAssert.assertThat("Error en el valor de la bonificación técnica, was "+campoTxtBonificacionTecnica.getValue(), campoTxtBonificacionTecnica.getValue().contains(bono) || campoTxtBonificacionTecnica.getValue().contains("20"));
+        MatcherAssert.assertThat("Error en el valor de la bonificación técnica, was "+campoTxtBonificacionTecnica.getValue(), campoTxtBonificacionTecnica.getValue().contains(bono));
     }
 
     public void verificarBonoComercial(String bono){
-        MatcherAssert.assertThat("Error en el valor de la bonificación comercial, was "+campoTxtBonificacionComercial.getValue(), campoTxtBonificacionComercial.getValue().contains(bono) || campoTxtBonificacionComercial.getValue().contains("20"));
+        MatcherAssert.assertThat("Error en el valor de la bonificación comercial, was "+campoTxtBonificacionComercial.getValue(), campoTxtBonificacionComercial.getValue().contains(bono));
     }
 
     public void agregarModificadores(ExamplesTable valores) {
@@ -71,5 +77,22 @@ public class ModificadoresDeTarifaPage extends PageUtil {
             MatcherAssert.assertThat("Error en el valor de la cobertura '" + valor.get("fila") + " - " +
                     cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
         }
+    }
+    
+    public void cambiarBonificacion(String bonoC, String bonoT){
+        campoTxtBonificacionComercial.clear();
+        campoTxtBonificacionComercial.sendKeys(bonoC);
+        campoTxtBonificacionTecnica.clear();
+        campoTxtBonificacionTecnica.sendKeys(bonoT);
+    }
+
+    public void verificarUW(String mensaje) {
+        verificarMensaje(labelUW,mensaje);
+    }
+
+    public void cambiarBonificacionTecnica(String bonoT) {
+        waitFor(menuItemVehiculos).waitUntilPresent();
+        clickElement(menuItemVehiculos);
+        campoTxtBonificacionTecnicaCambio.waitUntilPresent().sendKeys(bonoT);
     }
 }

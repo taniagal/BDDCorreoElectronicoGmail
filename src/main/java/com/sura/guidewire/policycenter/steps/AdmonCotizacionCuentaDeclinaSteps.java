@@ -21,43 +21,43 @@ public class AdmonCotizacionCuentaDeclinaSteps extends ScenarioSteps {
 
 
     @Step
-    public void navegar_barra_superior(String numCuenta) {
+    public void navegarBarraSuperior(String numCuenta) {
         inicioPage().irACuentaBuscar(numCuenta);
         inicioPage().irAOpcionesAdministradorCotizaciones();
     }
 
     @Step
-    public void seleccionar_opcion_en_acciones() {
+    public void seleccionarOpcionEnAcciones() {
         opcionesAdminitradorCotizaciones.seleccionarAccionesDeclinar();
     }
 
     @Step
-    public void ingresar_informacion_al_momento_de_rechazar(String razon) {
+    public void ingresarInformacionAlMomentoDeRechazar(String razon) {
         opcionesAdminitradorCotizaciones.ingresaRechazo(razon);
     }
 
     @Step
-    public void declinar_sin_razon() {
+    public void declinarSinRazon() {
         opcionesAdminitradorCotizaciones.noIngresaRechazo();
     }
 
     @Step
-    public void valida_estado_de_la_cotizacion(String numCotizacion, String accion) {
+    public void validaEstadoDeLaCotizacion(String numCotizacion, String accion) {
         opcionesAdminitradorCotizaciones.validaEstado(numCotizacion, accion);
     }
 
     @Step
-    public void inhabilita_acciones() {
+    public void inhabilitaAcciones() {
         opcionesAdminitradorCotizaciones.validaAccionDesabilita();
     }
 
     @Step
-    public void valida_mensaje(String mensaje) {
+    public void validaMensaje(String mensaje) {
         opcionesAdminitradorCotizaciones.validaMensaje(mensaje);
     }
 
     @Step
-    public void valida_lista_de_razones(ExamplesTable listaRazones){
+    public void validaListaDeRazones(ExamplesTable listaRazones){
         opcionesAdminitradorCotizaciones.validarOpcionesDeAgregar(listaRazones);
     }
 

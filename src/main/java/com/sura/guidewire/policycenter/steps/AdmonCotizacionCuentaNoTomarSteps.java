@@ -15,37 +15,37 @@ public class AdmonCotizacionCuentaNoTomarSteps extends ScenarioSteps {
     }
 
     @Step
-    public void seleccionar_opcion_en_acciones() {
+    public void seleccionarOpcionEnAcciones() {
         opcionesAdminitradorCotizaciones.seleccionarAccionesNoTomar();
     }
 
     @Step
-    public void declinar_sin_razon() {
+    public void declinarSinRazon() {
         opcionesAdminitradorCotizaciones.noIngresaRechazoNoTomar();
     }
 
     @Step
-    public void valida_mensaje(String mensaje) {
+    public void validaMensaje(String mensaje) {
         opcionesAdminitradorCotizaciones.validaMensajeNoTomar(mensaje);
     }
 
     @Step
-    public void valida_lista_de_razones(ExamplesTable listaRazones){
+    public void validaListaDeRazones(ExamplesTable listaRazones){
         opcionesAdminitradorCotizaciones.validarOpcionesDeAgregarNoTomar(listaRazones);
     }
 
     @Step
-    public void ingresar_informacion_al_momento_de_rechazar(String razon) {
+    public void ingresarInformacionAlMomentoDeRechazar(String razon) {
         opcionesAdminitradorCotizaciones.ingresaRechazoNoTomar(razon);
     }
 
     @Step
-    public void valida_estado_de_la_cotizacion(String numCotizacion, String razon) {
+    public void validaEstadoDeLaCotizacion(String numCotizacion, String razon) {
         opcionesAdminitradorCotizaciones.validaEstado(numCotizacion, razon);
     }
 
     @Step
-    public void inhabilita_acciones() {
+    public void inhabilitaAcciones() {
         opcionesAdminitradorCotizaciones.validaAccionDesabilitaNoTomar();
     }
 
