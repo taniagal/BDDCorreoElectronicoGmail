@@ -164,7 +164,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         btnAgregar.waitUntilPresent();
         clickElement(btnAgregar);
         itemDirectorio.waitUntilVisible().waitUntilClickable().click();
-        selectItem(itemTipoDocumento, tipoDocumento);
+        itemTipoDocumento.waitUntilPresent().clear();
+        waitUntil(WAIT_TIME_300);
+        itemTipoDocumento.sendKeys(tipoDocumento);
+        itemTipoDocumento.sendKeys(Keys.ENTER);
         waitForAnyTextToAppear("Primer nombre", "Razón social");
         txtNumDocumento.sendKeys(documento);
         clickElement(btnBuscar);

@@ -81,6 +81,8 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade labelMensajePlacaExtranjeraCucuta;
     @FindBy(xpath = ".//*[@id='centerPanel']")
     private WebElementFacade tablaRequisitosAutorizacion;
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']")
+    private WebElementFacade tablaRequisitosModificacion;
 
     private static final int CONSTANTE_3 = 3;
 
@@ -116,12 +118,6 @@ public class CambioDePlacaPage extends PageUtil {
 
     }
 
-    public void cambiarPlacaSegundaVez() {
-        waitUntil(WAIT_TIME_3000);
-        itemCambiarPlaca.click();
-        waitUntil(WAIT_TIME_3000);
-    }
-
     public void mostrarPlacaInicial(String placaInicial) {
         waitForTextToAppear(placaInicial);
         waitUntil(WAIT_TIME_2000);
@@ -129,8 +125,8 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaVenezolana(String placaVenezolana) {
-        clickElement(itemCambiarPlaca);
-        clickElement(itemCambiarPlaca);
+        this.deseleccionarCheckBoxDePlaca();
+        this.clickItemCambiarPlaca();
         waitUntil(WAIT_TIME_2000);
         txtPlacaNueva.clear();
         txtPlacaNueva.sendKeys(placaVenezolana);
@@ -223,13 +219,15 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
-        itemVehiculosModificacion.click();
-        clickElement(itemCambiarPlaca);
+        waitUntil(WAIT_TIME_2000);
+        clickElement(itemVehiculosModificacion);
+        waitUntil(WAIT_TIME_2000);
         clickElement(itemCambiarPlaca);
         waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.clear();
+        waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.sendKeys(placaRiesgoConsultable);
-
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void mensajePlacaRiesgoConsultable(ExamplesTable mensajePlacaRiesgoConsultable) {
@@ -241,21 +239,23 @@ public class CambioDePlacaPage extends PageUtil {
     public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
         itemVehiculosModificacion.click();
         clickElement(itemCambiarPlaca);
-        clickElement(itemCambiarPlaca);
         waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.clear();
+        waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.sendKeys(venezolana);
+        waitUntil(WAIT_TIME_2000);
         txtCiudad.clear();
-        waitUntil(WAIT_TIME_3000);
+        waitUntil(WAIT_TIME_2000);
         txtCiudad.sendKeys(ciudad);
-        txtCiudadCirculacion.click();
+        waitUntil(WAIT_TIME_2000);
+        clickElement(txtCiudadCirculacion);
+        waitUntil(WAIT_TIME_2000);
     }
 
     public void mensajeDeAutorizacion(ExamplesTable mensajeDeAutorizacion) {
         Map<String, String> datos = mensajeDeAutorizacion.getRow(0);
-        labelMensajePlacaExtranjeraCucuta.waitUntilPresent();
-        MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExtranjeraCucuta.getText().contains(datos.get("mensajeDeAutorizacion")));
+        tablaRequisitosModificacion.waitUntilPresent();
+        MatcherAssert.assertThat(tablaRequisitosModificacion.getText(), Matchers.containsString(datos.get("mensajeDeAutorizacion")));
         waitUntil(WAIT_TIME_3000);
-
     }
 }
