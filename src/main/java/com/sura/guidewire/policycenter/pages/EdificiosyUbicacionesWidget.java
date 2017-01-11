@@ -199,6 +199,15 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 45 30 30", "Acabado de productos textiles");
     }
 
+    public void ingresarNuevaUbicacionSinRiesgoConsultable(ExamplesTable datosUbicacion) {
+        Map<String, String> valoresUbicaion = datosUbicacion.getRow(0);
+        agregarNuevaUbicacion(valoresUbicaion.get("pais"),
+                              valoresUbicaion.get("departamento"),
+                              valoresUbicaion.get("ciudad"),
+                              valoresUbicaion.get("direccion"),
+                              valoresUbicaion.get("actividadEconomica"));
+    }
+
     public void removerRiesgos() {
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         if (findBy(XPATH_SELECCIONAR_RIESGOS).isVisible()) {
@@ -259,17 +268,17 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         return esSeleccionado;
     }
 
-    private boolean primeraCondicion(String objeto){
+    private boolean primeraCondicion(String objeto) {
         boolean condicionUno = false;
-        if (objeto.contains("x-active") && objeto.contains("x-tab-active") && objeto.contains("x-tab-default-active")){
+        if (objeto.contains("x-active") && objeto.contains("x-tab-active") && objeto.contains("x-tab-default-active")) {
             condicionUno = true;
         }
         return condicionUno;
     }
 
-    private boolean segundaCondicion(String objeto){
+    private boolean segundaCondicion(String objeto) {
         boolean condicionDos = false;
-        if (objeto.contains("x-top-active") && objeto.contains("x-tab-top-active") && objeto.contains("x-tab-default-top-active")){
+        if (objeto.contains("x-top-active") && objeto.contains("x-tab-top-active") && objeto.contains("x-tab-default-top-active")) {
             condicionDos = true;
         }
         return condicionDos;
@@ -541,7 +550,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
     }
 
-    public void agregarInteresAdicional(String cedula){
+    public void agregarInteresAdicional(String cedula) {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         menuItemDelDireciotio.waitUntilPresent().click();
         comboBoxTipoDocumento.waitUntilPresent().clear();
@@ -556,11 +565,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         botonAgregarAsegurado.waitUntilPresent();
     }
 
-    public void validarNoVisibilidad(){
+    public void validarNoVisibilidad() {
         validarNoVisibilidadDeObjeto(XPATH_CHECK_CONTACTO);
     }
 
-    public void validarNoVisibilidadDeObjeto(String xpath){
+    public void validarNoVisibilidadDeObjeto(String xpath) {
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         MatcherAssert.assertThat("Alguno de los campos es visible", !findBy(xpath).isVisible());
         resetImplicitTimeout();

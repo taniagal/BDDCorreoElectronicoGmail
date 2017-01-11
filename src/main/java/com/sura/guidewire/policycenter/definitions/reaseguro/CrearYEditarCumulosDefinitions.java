@@ -35,6 +35,12 @@ public class CrearYEditarCumulosDefinitions {
         edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo();
     }
 
+    @Given("intente ingresar una nueva ubicacion sin riesgo consultable $datosUbicacion")
+    public void cuandoIntenteIngresarUnaNuevaUbicacionSinRiesgo(ExamplesTable datosUbicacion) {
+        edificiosUbicacionesSteps.removerRiesgos();
+        edificiosUbicacionesSteps.ingresarNuevaUbicacionSinRiesgo(datosUbicacion);
+    }
+
     @Given("intente ingresar las entradas de las diferentes coberturas $entradas")
     public void cuandoIntenteIngresarLasEntradasDeLasDiferentesCoberturas(ExamplesTable entradas) {
         edificiosUbicacionesSteps.seleccionarBotonAgregarArticuloAUnaUbicacion();
