@@ -22,6 +22,8 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
     private WebElementFacade labelAnalisisDeRiesgo;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0-btnInnerEl']")
     private WebElementFacade resultadosValidacion;
+    @FindBy(xpath = "//*[@id='wsTabBar:wsTab_0:panelId']")
+    private WebElementFacade tablaRequisitos;
 
     public GeneracionUwIssueRiesgosConsultablesPaPage(WebDriver driver) {
         super(driver);
@@ -45,5 +47,12 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
     public void aceptarExpedicionPoliza() {
         waitForTextToAppear("¿Está seguro de que desea expedir esta póliza?");
         actions.sendKeys(Keys.ENTER).build().perform();
+    }
+
+    public void validarGeneracionMensajeBloqueante(ExamplesTable mensaje) {
+        Map<String, String> datos = mensaje.getRow(0);
+        tablaRequisitos.waitUntilPresent();
+        MatcherAssert.assertThat("Error, mensaje no encontrado", tablaRequisitos.getText().contains(datos.get("mensaje")));
+        waitUntil(WAIT_TIME_3000);
     }
 }
