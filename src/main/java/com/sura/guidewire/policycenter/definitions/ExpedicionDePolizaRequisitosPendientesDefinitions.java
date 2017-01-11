@@ -56,13 +56,11 @@ public class ExpedicionDePolizaRequisitosPendientesDefinitions {
     @When("ingrese algunas coberturas en modificacion <deducible> <perdidaLlaves>")
     public void ingresarCoberturasModificacion(@Named("deducible") String deducible, @Named("perdidaLlaves") String perdidaLlaves) {
         expedicionDePolizaRequisitosPendientesSteps.ingresarCoberturasModificacion(deducible, perdidaLlaves);
-
     }
 
     @When("vaya a vehiculos en expedicion")
     public void irAVehiculos() {
         expedicionDePolizaRequisitosPendientesSteps.irAVehiculos();
-
     }
 
     @Then("debo ver un mensaje bloqueante en modificacion $mensaje")
