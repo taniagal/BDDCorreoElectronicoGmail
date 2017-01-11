@@ -219,11 +219,8 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
-        waitUntil(WAIT_TIME_2000);
-        clickElement(itemVehiculosModificacion);
-        waitUntil(WAIT_TIME_2000);
-        clickElement(itemCambiarPlaca);
-        waitUntil(WAIT_TIME_2000);
+        this.deseleccionarCheckBoxDePlaca();
+        this.clickItemCambiarPlaca();
         txtCambioDePlaca.clear();
         waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.sendKeys(placaRiesgoConsultable);
