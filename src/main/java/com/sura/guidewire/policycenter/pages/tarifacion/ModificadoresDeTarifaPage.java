@@ -26,6 +26,8 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     public WebElementFacade campoTxtSuavizacion;
     @FindBy(xpath = ".//*[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:1:TypeKeyModifier-inputEl']")
     public WebElementFacade comboBoxDescuentoDipositivo;
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:0:ShortDescriptionAndSize-inputEl']")
+    public WebElementFacade labelUW;
 
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
 
@@ -37,11 +39,11 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     }
 
     public void verificarBonoTecnico(String bono){
-        MatcherAssert.assertThat("Error en el valor de la bonificación técnica, was "+campoTxtBonificacionTecnica.getValue(), campoTxtBonificacionTecnica.getValue().contains(bono) || campoTxtBonificacionTecnica.getValue().contains("20"));
+        MatcherAssert.assertThat("Error en el valor de la bonificación técnica, was "+campoTxtBonificacionTecnica.getValue(), campoTxtBonificacionTecnica.getValue().contains(bono));
     }
 
     public void verificarBonoComercial(String bono){
-        MatcherAssert.assertThat("Error en el valor de la bonificación comercial, was "+campoTxtBonificacionComercial.getValue(), campoTxtBonificacionComercial.getValue().contains(bono) || campoTxtBonificacionComercial.getValue().contains("20"));
+        MatcherAssert.assertThat("Error en el valor de la bonificación comercial, was "+campoTxtBonificacionComercial.getValue(), campoTxtBonificacionComercial.getValue().contains(bono));
     }
 
     public void agregarModificadores(ExamplesTable valores) {
@@ -71,5 +73,14 @@ public class ModificadoresDeTarifaPage extends PageUtil {
             MatcherAssert.assertThat("Error en el valor de la cobertura '" + valor.get("fila") + " - " +
                     cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
         }
+    }
+    
+    public void cambiarBonificacion(String bonoC, String bonoT){
+        campoTxtBonificacionComercial.sendKeys(bonoC);
+        campoTxtBonificacionTecnica.sendKeys(bonoT);
+    }
+
+    public void verificarUW(String mensaje) {
+        verificarMensaje(labelUW,mensaje);
     }
 }

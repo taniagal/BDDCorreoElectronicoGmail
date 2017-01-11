@@ -1,7 +1,7 @@
 Aplicar Modificadores A Tarifa
 
 Meta:
-@lote4
+@lote1
 @issue #CDSEG-2421
 @sprint 7
 @tag automator: nelson_jhair_mosquera_palacios
@@ -15,7 +15,7 @@ Scenario: Realizar una cotizacion de autos con modificadores de tarifa
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|Individual    |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos de vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
@@ -29,8 +29,8 @@ And seleccione algunas las coberturas:
 Then el valor del monto en cada cobertura debe ser:
 |fila|valor     |
 |1   |447.275   |
-|4   |2.790.099 |
-|8   |437.555   |
+|4   |2.901.532 |
+|8   |505.328   |
 |12  |7.036     |
 |15  |8.021     |
 |17  |11.825    |
@@ -45,4 +45,4 @@ Then el valor del monto en cada cobertura debe ser:
 
 Examples:
 |tipo_documento      |documento |
-|CEDULA DE CIUDADANIA|1234567891|
+|CEDULA DE CIUDADANIA|1060447895|

@@ -24,6 +24,11 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.clicEnExpedirPoliza();
     }
 
+    @Then("voy a expedir una poliza")
+    public void expedirPolizaDos() {
+        expedicionDePolizaSteps.clicEnExpedirPoliza();
+    }
+
     @When("voy a expedir una poliza por cambio")
     public void expedirPolizaCambio() {
         expedicionDePolizaSteps.clic_en_expedir_poliza_por_cambio();
@@ -35,6 +40,10 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
     }
 
+    @Then("confirmo el mensaje de expedir poliza")
+    public void confirmarMensajeDeExpedirPolizaDos() {
+        expedicionDePolizaSteps.clicEnAceptarDelMensajeDeConfirmacion();
+    }
 
     @When("confirmo el mensaje de expedir poliza con requisitos")
     public void confirmarMensajeDeExpedirPolizaConRequisitosPendientes() {
@@ -56,7 +65,6 @@ public class ExpedicionDePolizaDefinitions {
         expedicionDePolizaSteps.clicEnCancelarDelMensajeDeConfirmacion(mensaje);
     }
 
-
     @Then("debe mostrar el resumen de la poliza expedida con la informacion de cotizacion <infoCotizacion>")
     public void validarResumenDeLaPolizaExpedida(@Named("infoCotizacion") String infoCotizacion) {
         expedicionDePolizaSteps.validarResumenDeLaPolizaExpedida(infoCotizacion);
@@ -72,12 +80,6 @@ public class ExpedicionDePolizaDefinitions {
     public void validarMensajeDeRiesgos(@Named("mensaje") String mensaje) {
         expedicionDePolizaSteps.validar_mensaje(mensaje);
     }
-
-    @Then("debe volver a la pantalla de cotizacion")
-    public void validarCancelacionDeExpedicionDePoliza(){
-        expedicionDePolizaSteps.validar_que_vuelve_a_la_ventana_de_cotizacion();
-    }
-
 
     @SuppressWarnings("EmptyMethod")
     @Then("debe enviar un mensaje a un buzon previamente configurado cuando existe un interes adicional riesgo consultable")

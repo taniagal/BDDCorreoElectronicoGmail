@@ -178,8 +178,8 @@ public class BusquedaContactoDefinitions {
     }
 
     @When("ingrese a buscar contacto del directorio con tipo de documento <tipoId> y numero de documento <numeroId>")
-    public void buscarContactoPorIdentificacion(@com.google.inject.name.Named("tipoId") String tipoId,
-                                                @com.google.inject.name.Named("numeroId") String numeroId){
+    public void buscarContactoPorIdentificacion(@Named("tipoId") String tipoId,
+                                                @Named("numeroId") String numeroId){
         buscarContactoSteps.consultarContactoPorTipoDocumentoCotizacion(tipoId, numeroId);
     }
 

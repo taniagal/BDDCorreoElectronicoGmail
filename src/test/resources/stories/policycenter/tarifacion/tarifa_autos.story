@@ -15,7 +15,7 @@ Scenario:  Tarifa Autos - Cobertura RC
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza:
 |cuenta     |organizacion|producto|canal            |tipoPoliza |
-|C1060447895|Sura        |Autos   |Canal Tradicional|Individual    |
+|C1060447895|Sura        |Autos   |Canal Tradicional|Individual |
 When ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 |placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
@@ -46,8 +46,8 @@ And seleccione todas las coberturas:
 Then el resultado de la cotizacion en cada cobertura debe ser:
 |fila|valor     |
 |1   |975.890   |
-|4   |6.087.596 |
-|8   |1.384.737 |
+|4   |6.330.728 |
+|8   |1.600.515 |
 |12  |15.352    |
 |15  |17.500    |
 |17  |25.799    |

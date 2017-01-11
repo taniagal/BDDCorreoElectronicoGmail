@@ -40,9 +40,9 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps{
     @Step
     public void seleciconarCoberturas(ExamplesTable coberturas) {
         vehiculoPage.clickSiguiente();
-        tarifaAutosPage.seleccionarCoberturas(coberturas);
+        tarifaAutosPage.seleccionarCoberturasBasica(coberturas);
         tarifaAutosPage.seleccionarCoberturas1(coberturas);
-        tarifaAutosPage.seleccionarCoberturasDeDanios(coberturas);
+        tarifaAutosPage.seleccionarCoberturasDanios(coberturas);
         tarifaAutosPage.seleccionarCoberturas2(coberturas);
         tarifaAutosPage.seleccionarCoberturas3(coberturas);
         tarifaAutosPage.cotizar();
@@ -58,5 +58,16 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps{
     @Step
     public void verificarTarifacionPorCoberturas(ExamplesTable valor) {
         modificadoresDeTarifaPage.verificarTarifacionPorCoberturas(valor);
+    }
+
+    @Step
+    public void cambiarBonificacion(String bonoC, String bonoT){
+        modificadoresDeTarifaPage.cambiarBonificacion(bonoC, bonoT);
+        vehiculoPage.clickSiguiente();
+    }
+
+    @Step
+    public void verificarUW(String mensaje) {
+        modificadoresDeTarifaPage.verificarUW(mensaje);
     }
 }

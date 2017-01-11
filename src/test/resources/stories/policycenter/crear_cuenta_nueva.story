@@ -30,14 +30,13 @@ When quiera crear una cuenta para un contacto persona juridica e ingrese nit, ti
 And nombre de organizacion <nombre_organizacion> <agente>
 And nombre empresa <razon_social>
 And ingrese los datos de direccion:
-|direccion       |tipo_direccion|departamento|ciudad  |
-|CALLE 54B #50-25|DIRECCION DE RESIDENCIA      |Antioquia   |Medellin|
+|direccion       |tipo_direccion         |departamento|ciudad  |
+|CALLE 54B #50-25|DIRECCION DE RESIDENCIA|Antioquia   |Medellin|
 Then se debe crear la cuenta con el cliente <razon_social> persona juridica
 
 Examples:
 |razon_social|tipo_documento |tipo_direccion         |direccion       |departamento|ciudad  |nombre_organizacion|agente|
 |UMBRELLA    |NIT            |DIRECCION DE RESIDENCIA|CALLE 54B #50-25|Antioquia   |Medellin|Sura               |INT-3 |
-
 
 
 Scenario: Creacion unica de cuenta persona natural y crear una cuenta para un contacto menor de edad

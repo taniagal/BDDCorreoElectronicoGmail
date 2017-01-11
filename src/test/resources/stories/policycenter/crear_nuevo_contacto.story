@@ -36,18 +36,18 @@ Examples:
 
 
 Scenario: Validar Contacto Existente
-
-Given estoy en la pantalla de crear contacto persona juridica
+Given estoy en la pantalla de crear contacto persona natural
 When ingreso la informacion del tipo de documento <tipoDocumento>
 And ingreso la informacion de numero de documento <numeroDeDocumento>
-And ingreso la informacion de razon social <razonSocial>
+And ingreso la informacion de primer nombre <primerNombre>
+And ingreso la informacion de primer apellido <primerApellido>
 And ingreso la informacion de tipo de direccion <tipoDireccion>
 And ingreso la informacion de direccion <direccion>, <departamento>, y <ciudad>
 Then debe validar que el contacto ya existe
 
 Examples:
-|tipoDocumento|numeroDeDocumento|razonSocial| tipoDireccion      |direccion|departamento|ciudad  |
-|NIT          |9202086745       |LA VAQUITA |DIRECCION DE TRABAJO|CRA 50   |Antioquia   |Medellin|
+|tipoDocumento          |numeroDeDocumento  |primerNombre   |primerApellido |tipoDireccion       |direccion  |departamento|ciudad  |
+|CEDULA DE CIUDADANIA   |1234567895         |BRAYAN         |RUIZ           |DIRECCION DE TRABAJO|CRA 50     |Antioquia   |Medellin|
 
 
 

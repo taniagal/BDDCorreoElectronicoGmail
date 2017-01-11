@@ -37,14 +37,14 @@ And quiera agregar un asegurado
 And vaya a la opcion agregar
 Then el boton recuperar mvr no es visible
 And Se debe mostrar las opciones:
-|agregar|
-|Nuevo|
-|Del Directorio|
-|Contactos de la cuenta|
+| agregar                |
+| Nuevo                  |
+| Del Directorio         |
+| Contactos de la cuenta |
 
 Examples:
-|cuenta    | agente  | producto |
-|C000888888| DIRECTO | Autos    |
+| cuenta     | agente  | producto |
+| C000888888 | DIRECTO | Autos    |
 
 Scenario: Agregar varios asegurados: Agregar asegurado de los contactos de la cuenta y validar asegurado del directorio riesgo consultable
 Given voy a crear una nueva cotizacion
@@ -90,8 +90,8 @@ Then deben quedar agregados como asegurados:
 | LUCIANA CALLE | CEDULA DE CIUDADANIA | 1234568999      |
 
 Examples:
-|cuenta    | agente  | producto |
-|C000888888| DIRECTO | Autos    |
+| cuenta     | agente  | producto |
+| C000888888 | DIRECTO | Autos    |
 
 Scenario: Agregar y Editar campos en creacion tipo persona juridica
 Given voy a crear una nueva cotizacion
@@ -115,8 +115,8 @@ Then deben quedar agregados como asegurados:
 | COOPERATIVA LALO | NIT           | 9998887777      |
 
 Examples:
-|cuenta    | agente  | producto |
-|C000888888| DIRECTO | Autos    |
+| cuenta     | agente  | producto |
+| C000888888 | DIRECTO | Autos    |
 
 Scenario: Mostrar errores al validar las reglas de MDM al dar siguiente
 Given voy a crear una nueva cotizacion
@@ -133,8 +133,8 @@ And vaya al siguiente paso de la cotizacion
 Then muestre el mensaje de validacion del asegurado <mensaje>
 
 Examples:
-| cuenta     | agente  | producto | mensaje                                                                                  |
-| C000888888 | DIRECTO | Autos    | La longitud del número de documento de identificación no es válida, máximo 10 caracteres |
+| cuenta     | agente  | producto | mensaje                                                                                             |
+| C000888888 | DIRECTO | Autos    | La longitud del número de documento de identificación no es válida, mínimo 3 y máximo 10 caracteres |
 
 Scenario: Quitar asegurado
 Given voy a crear una nueva cotizacion
@@ -151,8 +151,8 @@ And quite el contacto de la lista
 Then la lista de asegurados debe quedar vacia
 
 Examples:
-| cuenta   | agente  | producto | tipoId | numeroId |
-|C000888888| DIRECTO | Autos    |NIT     |9202086744|
+| cuenta     | agente  | producto | tipoId | numeroId   |
+| C000888888 | DIRECTO | Autos    | NIT    | 9202086744 |
 
 Scenario: Validar asegurado que es riesgo consultable
 Given voy a crear una nueva cotizacion

@@ -11,6 +11,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 import java.util.Map;
@@ -19,6 +20,7 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
+    @Page
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
     @Steps
@@ -73,6 +75,7 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
         vehiculoPage.irAVehiculos();
         vehiculoSteps.agregarPlaca();
         vehiculoPage.agregarCiudadDeCirculacion(datosCotizacion);
+        vehiculoPage.validarQueNoPermiteAgregarMasDeUnAuto();
         vehiculoPage.clickSiguiente();
         seleccionarCoberturaBasicas(datosCotizacion);
         tarifaAutosPage.intentarCotizar();
@@ -95,7 +98,7 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
 
     @Step
     public void seleccionarCoberturaBasicas(ExamplesTable datosCotizacion) {
-        tarifaAutosPage.seleccionarCoberturas(datosCotizacion);
+        tarifaAutosPage.seleccionarCoberturasBasica(datosCotizacion);
         tarifaAutosPage.desMarcarCoberturas();
     }
 
@@ -113,9 +116,9 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
         tarifaAutosPage.relacionarAsegurado();
         vehiculoPage.agregarVehiculo(datos);
         vehiculoPage.clickSiguiente();
-        tarifaAutosPage.seleccionarCoberturas(datos);
+        tarifaAutosPage.seleccionarCoberturasBasica(datos);
         tarifaAutosPage.seleccionarCoberturasHurto(datos);
-        tarifaAutosPage.seleccionarCoberturasDeDanios(datos);
+        tarifaAutosPage.seleccionarCoberturasDanios(datos);
         opcionesInformacionPolizaMrcPage.seleccionarOpcionCotizarPolizaPrincipal();
     }
 }

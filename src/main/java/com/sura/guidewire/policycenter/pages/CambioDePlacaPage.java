@@ -3,7 +3,6 @@ package com.sura.guidewire.policycenter.pages;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
@@ -15,10 +14,6 @@ import java.util.Map;
 
 
 public class CambioDePlacaPage extends PageUtil {
-
-    public CambioDePlacaPage(WebDriver driver) {
-        super(driver);
-    }
 
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:plateChange-inputEl']")
     private WebElementFacade itemCambiarPlaca;
@@ -72,7 +67,7 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade botonAgregarVehiculo;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:PolicyChangeWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
     private WebElementFacade botonEditarCambioPoliza;
-    @FindBy(xpath = ".//a[contains(.,'Aceptar')]")
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:EditPolicy-btnInnerEl']")
     private WebElementFacade botonEditarCambioPolizaExpedicion;
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonEditarCambioPolizaAceptar;
@@ -82,12 +77,17 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade labelMensajePlacaRiesgoConsultable;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
     private WebElementFacade panelRequisitos;
-    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV:2:ShortDescriptionAndSize-inputEl']")
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']")
     private WebElementFacade labelMensajePlacaExtranjeraCucuta;
     @FindBy(xpath = ".//*[@id='centerPanel']")
     private WebElementFacade tablaRequisitosAutorizacion;
-    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']")
-    private WebElementFacade tablaRequisitosModificacion;
+
+    private static final int CONSTANTE_3 = 3;
+
+    public CambioDePlacaPage(WebDriver driver) {
+        super(driver);
+    }
+
 
     public void cambiarPlaca(String placa) {
         waitUntil(WAIT_TIME_2000);
@@ -116,12 +116,6 @@ public class CambioDePlacaPage extends PageUtil {
 
     }
 
-    public void cambiarPlacaSegundaVez() {
-        waitUntil(WAIT_TIME_3000);
-        itemCambiarPlaca.click();
-        waitUntil(WAIT_TIME_3000);
-    }
-
     public void mostrarPlacaInicial(String placaInicial) {
         waitForTextToAppear(placaInicial);
         waitUntil(WAIT_TIME_2000);
@@ -129,21 +123,18 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaVenezolana(String placaVenezolana) {
-        waitUntil(WAIT_TIME_2000);
-        itemCambiarPlaca.click();
+        this.deseleccionarCheckBoxDePlaca();
+        this.clickItemCambiarPlaca();
         waitUntil(WAIT_TIME_2000);
         txtPlacaNueva.clear();
         txtPlacaNueva.sendKeys(placaVenezolana);
-
     }
 
     public void cambiarPorPlacaExistente(String placaExistente) {
         int intentos = 0;
-        while (intentos < 3) {
+        while (intentos < CONSTANTE_3) {
             waitUntil(WAIT_TIME_2000);
-            System.out.println("ingreso a ciclo placa existente ");
             if ("".equals(txtCambioDePlaca.getText())) {
-                System.out.println("ingreso a if ");
                 txtCambioDePlaca.clear();
                 txtCambioDePlaca.sendKeys(placaExistente);
                 break;
@@ -154,21 +145,19 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void mensajePlacaExistente(ExamplesTable mensaje) {
         botonSiguiente.click();
-    Map<String, String> datos = mensaje.getRow(0);
+        Map<String, String> datos = mensaje.getRow(0);
         txtMotor.waitUntilPresent();
         MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExistente.getText().equals(datos.get("mensaje")));
-}
-
+    }
 
 
     public void clickItemCambiarPlaca() {
         Actions actions = new Actions(getDriver());
         int intentos = 0;
-        while (intentos < 3) {
+        while (intentos < CONSTANTE_3) {
             waitUntil(WAIT_TIME_2000);
             if (!"0px -15px".equals(itemCambiarPlaca.getCssValue("background-position"))) {
                 actions.click(itemCambiarPlaca).build().perform();
-                System.out.println("seleccionado ");
             } else {
                 break;
             }
@@ -180,11 +169,9 @@ public class CambioDePlacaPage extends PageUtil {
     public void deseleccionarCheckBoxDePlaca() {
         Actions actions = new Actions(getDriver());
         int intentos = 0;
-        while (intentos < 3) {
+        while (intentos < CONSTANTE_3) {
             waitUntil(WAIT_TIME_2000);
-            System.out.println("posicion seleccionado " + itemCambiarPlaca.getCssValue("background-position"));
             if ("0px -15px".equals(itemCambiarPlaca.getCssValue("background-position")) || "-15px -15px".equals(itemCambiarPlaca.getCssValue("background-position"))) {
-                //itemCambiarPlaca.click();
                 actions.click(itemCambiarPlaca).build().perform();
                 waitUntil(WAIT_TIME_2000);
             } else {
@@ -198,8 +185,6 @@ public class CambioDePlacaPage extends PageUtil {
     public void expedirCambioPoliza() {
         botonExpedirPoliza.waitUntilPresent().click();
         botonAceptarExpedicion.waitUntilPresent().click();
-        waitUntil(WAIT_TIME_3000);
-
     }
 
 
@@ -223,18 +208,17 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void editarCambioPoliza() {
         if (botonEditarCambioPoliza.isPresent()) {
-            waitUntil(WAIT_TIME_3000);
-           clickElement(botonEditarCambioPoliza);
-           waitUntil(WAIT_TIME_3000);
-        }
-        else if (botonEditarCambioPolizaExpedicion.isPresent()){
+            clickElement(botonEditarCambioPoliza);
+        } else if (botonEditarCambioPolizaExpedicion.isPresent()) {
             clickElement(botonEditarCambioPolizaExpedicion);
         }
         clickElement(botonEditarCambioPolizaAceptar);
+
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
-        clickElement(itemVehiculosModificacion);
+        itemVehiculosModificacion.click();
+        clickElement(itemCambiarPlaca);
         clickElement(itemCambiarPlaca);
         waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.clear();
@@ -249,6 +233,7 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
         itemVehiculosModificacion.click();
+        clickElement(itemCambiarPlaca);
         clickElement(itemCambiarPlaca);
         waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.clear();
