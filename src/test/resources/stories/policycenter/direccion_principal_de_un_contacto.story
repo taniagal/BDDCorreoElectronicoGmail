@@ -1,6 +1,6 @@
 Direccion Principal De Un Contacto
 
-Meta: @lote4
+Meta: @lote3
 @issue #CDSEG-886
 @sprint 1
 @tag automator: nelson_jhair_mosquera_palacios
