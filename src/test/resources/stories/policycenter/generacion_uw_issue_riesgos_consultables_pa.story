@@ -1,7 +1,7 @@
 Generacion Uw Issue Riesgos Consultables Pa
 
 Meta:
-@lote2
+@lote3
 @issue #CDSEG-1260
 @tag automator: diego_cardona_acevedo
 @local
