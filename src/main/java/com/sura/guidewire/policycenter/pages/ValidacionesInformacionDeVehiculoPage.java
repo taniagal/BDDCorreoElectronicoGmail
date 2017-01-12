@@ -70,7 +70,8 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade comboBoxNoTransporteCombustible;
 
     protected static final int WAIT_TIME_28000 = 28000;
-    private String OPCION = "Si";
+    private String opcion = "Si";
+    private static final String VALOR_ASEGURADO = "valor_asegurado";
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
@@ -144,28 +145,28 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         }
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         agregarDescuento(vehiculo);
-        if (OPCION.equals(vehiculo.get("cero_kilometros"))) {
+        if (opcion.equals(vehiculo.get("cero_kilometros"))) {
             seleccionarVehiculoCeroKilometros();
         }
-        if(OPCION.equals(vehiculo.get("vehiculo_blindado"))){
+        if(opcion.equals(vehiculo.get("vehiculo_blindado"))){
             seleccionarVehiculoBlindado();
         }
-        if(OPCION.equals(vehiculo.get("transporte_combustible"))){
-            SeleccionarTransporteDeCombustible(OPCION);
+        if(opcion.equals(vehiculo.get("transporte_combustible"))){
+            seleccionarTransporteDeCombustible(opcion);
         }
         else{
-            OPCION = "No";
-            SeleccionarTransporteDeCombustible(OPCION);
+            opcion = "No";
+            seleccionarTransporteDeCombustible(opcion);
         }
         try {
-            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get("valor_asegurado") +
-                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get(VALOR_ASEGURADO) +
+                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get(VALOR_ASEGURADO)));
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException" + e);
 
             waitUntil(WAIT_TIME_2000);
-            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get("valor_asegurado") +
-                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get(VALOR_ASEGURADO) +
+                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get(VALOR_ASEGURADO)));
         }
     }
 
@@ -178,14 +179,14 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         clickElement(comboBoxSiVehiculoBLindado);
     }
 
-    public void SeleccionarTransporteDeCombustible(String opcion){
+    public void seleccionarTransporteDeCombustible(String opcion){
         waitUntil(WAIT_TIME_2000);
-        if(opcion.equals("Si")) {
+        if("Si".equals(opcion)) {
             clickElement(comboBoxSiTransporteCombustible);
         }
         else{
             clickElement(comboBoxNoTransporteCombustible);
-            OPCION = "Si";
+            this.opcion = "Si";
         }
     }
 
@@ -222,7 +223,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void waitForCampoTxtValorAsegurado(Map<String, String> vehiculo) {
         try {
-            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
+            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get(VALOR_ASEGURADO)));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
             selectItem(comboBoxModelo, "2010");
