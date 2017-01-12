@@ -189,14 +189,6 @@ public class CambioDePlacaPage extends PageUtil {
         MatcherAssert.assertThat("Error, mensaje no encontrado", labelRequisitoPorPlacaExtrangera.getText().equals(datos.get("mensajeAutorizacion")));
     }
 
-    public void clickSiguiente() {
-        clickElement(botonSiguienteProducto);
-    }
-
-    public void clickAgregarVehiculo() {
-        clickElement(botonAgregarVehiculo);
-    }
-
     public void editarCambioPoliza() {
         if (botonEditarCambioPoliza.isPresent()) {
             clickElement(botonEditarCambioPoliza);
