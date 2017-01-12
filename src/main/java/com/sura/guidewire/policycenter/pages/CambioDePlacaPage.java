@@ -209,12 +209,12 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
-        itemVehiculosModificacion.click();
-        clickElement(itemCambiarPlaca);
-        clickElement(itemCambiarPlaca);
+        menuItemVehiculosModificacion.click();
+        clickElement(checkBoxCambioDePlaca);
+        clickElement(checkBoxCambioDePlaca);
         waitUntil(WAIT_TIME_2000);
-        txtCambioDePlaca.clear();
-        txtCambioDePlaca.sendKeys(placaRiesgoConsultable);
+        campoTxtPlaca.clear();
+        campoTxtPlaca.sendKeys(placaRiesgoConsultable);
     }
 
     public void mensajePlacaRiesgoConsultable(ExamplesTable mensajePlacaRiesgoConsultable) {
