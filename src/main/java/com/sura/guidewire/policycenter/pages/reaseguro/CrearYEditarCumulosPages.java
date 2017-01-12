@@ -47,6 +47,8 @@ public class CrearYEditarCumulosPages extends PageUtil {
     WebElementFacade listcomisionReaseguroCedido;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[9]")
     WebElementFacade listcomisionIntermediario;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[10]")
+    WebElementFacade listcomisionPromotora;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[14]")
     WebElementFacade listTasaBrutaDeCesion;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:0-body']/div/table/tbody/tr/td[5]")
@@ -140,7 +142,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
         $(CELDA_VALOR).clear();
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionIntermediario"));
         actions.sendKeys(Keys.TAB).build().perform();
-        waitUntil(WAIT_TIME_500);
+        waitAndClickOnButton(listcomisionPromotora);
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionPromotora"));
         actions.sendKeys(Keys.TAB).build().perform();
     }
