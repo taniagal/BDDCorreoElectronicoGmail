@@ -1,6 +1,7 @@
 Cambio De Placa
+
 Meta:
-@lote3
+@lote2
 @issue #CDSEG-4756
 @tag automator: tania_grajales_alzate
 @Sprint 12
