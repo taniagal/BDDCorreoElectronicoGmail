@@ -11,6 +11,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.fluentlenium.core.annotation.Page;
 import org.jbehave.core.model.ExamplesTable;
 
 import java.util.Map;
@@ -19,6 +20,7 @@ public class NuevaCotizacionSteps extends ScenarioSteps {
     NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
+    @Page
     OpcionesInformacionPolizaMrcPage opcionesInformacionPolizaMrcPage;
 
     @Steps

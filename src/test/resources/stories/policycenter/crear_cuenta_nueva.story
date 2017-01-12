@@ -1,6 +1,6 @@
 Crear Cuenta Nueva
 
-Meta: @lote3
+Meta: @lote4
 @issue #CDSEG-990
 @sprint 1
 @tag automator: nelson_jhair_mosquera_palacios

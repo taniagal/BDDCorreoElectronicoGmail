@@ -1,6 +1,6 @@
 Detalles Contacto Edicion
 
-Meta: @lote3
+Meta: @lote2
 @issue #CDSEG-830
 @sprint 1
 @tag automator: nelson_jhair_mosquera_palacios

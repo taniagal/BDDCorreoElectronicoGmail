@@ -7,6 +7,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
@@ -15,9 +16,9 @@ import java.util.Map;
 public class CambioDePlacaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:plateChange-inputEl']")
-    private WebElementFacade itemCambiarPlaca;
+    private WebElementFacade checkBoxCambioDePlaca;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
-    private WebElementFacade txtCambioDePlaca;
+    private WebElementFacade campoTxtPlaca;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:Year_DV-inputEl']")
     private WebElementFacade txtModelo;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:facecoldaCode_DV-inputEl']")
@@ -43,9 +44,7 @@ public class CambioDePlacaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:LicensePlate_DV-inputEl']")
     private WebElementFacade txtPlacaNueva;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
-    private WebElementFacade txtCiudad;
-    @FindBy(xpath = ".//li")
-    private WebElementFacade txtCiudadCirculacion;
+    private WebElementFacade campoTxtCiudad;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:Next-btnInnerEl']")
     private WebElementFacade botonSiguiente;
     @FindBy(xpath = ".//div[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:_msgs']/div")
@@ -71,7 +70,7 @@ public class CambioDePlacaPage extends PageUtil {
     @FindBy(xpath = ".//span[contains(.,'Aceptar')]")
     private WebElementFacade botonEditarCambioPolizaAceptar;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div/span")
-    private WebElementFacade itemVehiculosModificacion;
+    private WebElementFacade menuItemVehiculosModificacion;
     @FindBy(xpath = ".//div[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']/div")
     private WebElementFacade labelMensajePlacaRiesgoConsultable;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0:panelId']")
@@ -80,6 +79,10 @@ public class CambioDePlacaPage extends PageUtil {
     private WebElementFacade labelMensajePlacaExtranjeraCucuta;
     @FindBy(xpath = ".//*[@id='centerPanel']")
     private WebElementFacade tablaRequisitosAutorizacion;
+    @FindBy(xpath = ".//*[@id='UWBlockProgressIssuesPopup:IssuesScreen:ApproveDV']")
+    private WebElementFacade tablaRequisitosModificacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesLV-body']/div/table/tbody/tr/td[3]")
+    private WebElementFacade tablaDetallesDelVehiculoPlaca;
 
     private static final int CONSTANTE_3 = 3;
 
@@ -89,14 +92,13 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void cambiarPlaca(String placa) {
         waitUntil(WAIT_TIME_2000);
-        txtCambioDePlaca.clear();
-        txtCambioDePlaca.sendKeys(placa);
+        campoTxtPlaca.clear();
+        campoTxtPlaca.sendKeys(placa);
         waitUntil(WAIT_TIME_2000);
     }
 
     public void clickCambiarPlaca() {
-        waitUntil(WAIT_TIME_3000);
-        itemCambiarPlaca.click();
+        this.clickItemCambiarPlaca();
     }
 
     public void datosPlacaAnterior(ExamplesTable datosPlaca) {
@@ -113,21 +115,15 @@ public class CambioDePlacaPage extends PageUtil {
         MatcherAssert.assertThat("Error, el chasis  fue modificada", txtChasis.getValue().equals(datos.get("chasis")));
     }
 
-    public void cambiarPlacaSegundaVez() {
-        waitUntil(WAIT_TIME_3000);
-        itemCambiarPlaca.click();
-        waitUntil(WAIT_TIME_3000);
-    }
-
     public void mostrarPlacaInicial(String placaInicial) {
         waitForTextToAppear(placaInicial);
-        waitUntil(WAIT_TIME_2000);
-        MatcherAssert.assertThat(txtCambioDePlaca.getText(), Is.is(Matchers.equalTo(placaInicial)));
+        campoTxtPlaca.waitUntilPresent();
+        MatcherAssert.assertThat(campoTxtPlaca.getText(), Is.is(Matchers.equalTo(placaInicial)));
     }
 
     public void ingresarPlacaVenezolana(String placaVenezolana) {
-        clickElement(itemCambiarPlaca);
-        clickElement(itemCambiarPlaca);
+        this.deseleccionarCheckBoxDePlaca();
+        this.clickItemCambiarPlaca();
         waitUntil(WAIT_TIME_2000);
         txtPlacaNueva.clear();
         txtPlacaNueva.sendKeys(placaVenezolana);
@@ -137,9 +133,9 @@ public class CambioDePlacaPage extends PageUtil {
         int intentos = 0;
         while (intentos < CONSTANTE_3) {
             waitUntil(WAIT_TIME_2000);
-            if ("".equals(txtCambioDePlaca.getText())) {
-                txtCambioDePlaca.clear();
-                txtCambioDePlaca.sendKeys(placaExistente);
+            if ("".equals(campoTxtPlaca.getText())) {
+                campoTxtPlaca.clear();
+                campoTxtPlaca.sendKeys(placaExistente);
                 break;
             }
             intentos++;
@@ -158,8 +154,8 @@ public class CambioDePlacaPage extends PageUtil {
         int intentos = 0;
         while (intentos < CONSTANTE_3) {
             waitUntil(WAIT_TIME_2000);
-            if (!"0px -15px".equals(itemCambiarPlaca.getCssValue("background-position"))) {
-                actions.click(itemCambiarPlaca).build().perform();
+            if (!"0px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position")) || !"-15px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position"))) {
+                actions.click(checkBoxCambioDePlaca).build().perform();
             } else {
                 break;
             }
@@ -173,8 +169,8 @@ public class CambioDePlacaPage extends PageUtil {
         int intentos = 0;
         while (intentos < CONSTANTE_3) {
             waitUntil(WAIT_TIME_2000);
-            if ("0px -15px".equals(itemCambiarPlaca.getCssValue("background-position")) || "-15px -15px".equals(itemCambiarPlaca.getCssValue("background-position"))) {
-                actions.click(itemCambiarPlaca).build().perform();
+            if ("0px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position")) || "-15px -15px".equals(checkBoxCambioDePlaca.getCssValue("background-position"))) {
+                actions.click(checkBoxCambioDePlaca).build().perform();
                 waitUntil(WAIT_TIME_2000);
             } else {
                 break;
@@ -195,28 +191,21 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void clickSiguiente() {
-        waitUntil(WAIT_TIME_3000);
-        botonSiguienteProducto.click();
-        waitUntil(WAIT_TIME_3000);
+        clickElement(botonSiguienteProducto);
     }
 
     public void clickAgregarVehiculo() {
-        botonAgregarVehiculo.click();
-        waitUntil(WAIT_TIME_3000);
+        clickElement(botonAgregarVehiculo);
     }
 
     public void editarCambioPoliza() {
         if (botonEditarCambioPoliza.isPresent()) {
-            botonEditarCambioPoliza.click();
-            waitUntil(WAIT_TIME_3000);
-            botonEditarCambioPolizaAceptar.click();
-            waitUntil(WAIT_TIME_3000);
+            clickElement(botonEditarCambioPoliza);
         } else if (botonEditarCambioPolizaExpedicion.isPresent()) {
-            botonEditarCambioPolizaExpedicion.click();
-            waitUntil(WAIT_TIME_3000);
-            botonEditarCambioPolizaAceptar.click();
-            waitUntil(WAIT_TIME_3000);
+            clickElement(botonEditarCambioPolizaExpedicion);
         }
+        clickElement(botonEditarCambioPolizaAceptar);
+
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
@@ -235,16 +224,8 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
-        itemVehiculosModificacion.click();
-        clickElement(itemCambiarPlaca);
-        clickElement(itemCambiarPlaca);
-        waitUntil(WAIT_TIME_2000);
-        txtCambioDePlaca.clear();
-        txtCambioDePlaca.sendKeys(venezolana);
-        txtCiudad.clear();
-        waitUntil(WAIT_TIME_3000);
-        txtCiudad.sendKeys(ciudad);
-        txtCiudadCirculacion.click();
+        ingresarPlacaRiesgoConsultable(venezolana);
+        selectItem(campoTxtCiudad, ciudad);
     }
 
     public String validarMensajeAutorizacion() {

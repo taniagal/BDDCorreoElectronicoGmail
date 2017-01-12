@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.pages.tarifacion;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -77,6 +78,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade campoTxtNombre;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl']")
     private WebElementFacade campoTxtSegundoNombre;
+    @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:StartPolicyChangeDV:EffectiveDate_date-inputEl']")
+    private WebElementFacade campoTxtFechaDeInicioDeVigencia;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:MaritalStatus-inputEl']")
     private WebElementFacade comboBoxEstadoCivil;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']")
@@ -102,6 +105,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static final int WAIT_TIME_7000 = 7000;
+    private static final int DOS = 2;
+    private static final int TREINTA_Y_TRES = 33;
     String primaTotal = "";
 
     public TarifaTasaUnicaPage(WebDriver driver) {
@@ -141,7 +146,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         if (headerEnvio.containsText("Expedida")) {
             val = 0;
         } else if (headerEnvio.containsText("Cotizado")) {
-            val = 2;
+            val = DOS;
         }
         return val;
     }
@@ -155,9 +160,20 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
     public void nuevoCambioDePoliza() {
+        clickAccionesYCambiarPoliza();
+        botonSiguienteCambioDePoliza.waitUntilPresent().click();
+    }
+
+    public void clickAccionesYCambiarPoliza() {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemCambiarPoliza.waitUntilPresent().click();
-        botonSiguienteCambioDePoliza.waitUntilPresent().click();
+    }
+
+    public void cambiarFechaDeVigencia(){
+        clickAccionesYCambiarPoliza();
+        campoTxtFechaDeInicioDeVigencia.waitUntilPresent().clear();
+        campoTxtFechaDeInicioDeVigencia.sendKeys(Utils.sumarDiasALaFechaActual(TREINTA_Y_TRES));
+        botonSiguienteCambioDePoliza.click();
     }
 
     public void cambiarValorAsegurado(String valorAsegurado) {

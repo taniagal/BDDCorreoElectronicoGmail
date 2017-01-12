@@ -1,7 +1,7 @@
 Condiciones particulares
 
 Meta:
-@lote1
+@lote3
 @issue #CDSEG-4621
 @sprint 11
 @tag automator: juan_gabriel_zapata
@@ -104,7 +104,7 @@ Examples:
 ||
 
 
-Scenario: 8 Validacion cero kilometros en estado SI
+Scenario: 9 Validacion de bloqueo de vehiculo cero kilometros en estado SI
 GivenStories: stories/policycenter/login_policy.story
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
@@ -138,7 +138,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 9 Validacion Cero Kilometros en estado NO
+Scenario: 10 Validacion de bloqueo de vehiculo cero kilometros en estado NO
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -165,7 +165,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 10 Validacion de expedicion de auto cero kilometros
+Scenario: 11 Validacion de expedicion de vehiculo cero kilometros
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -185,7 +185,7 @@ Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
-Scenario: 11 Validacion bloqueo de expedicion por maximo valor accesorios
+Scenario: 12 Validacion bloqueo de vehiculo por maximo valor accesorios
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -217,7 +217,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|33355439  |
 
 
-Scenario: 12 Validacion de expedicion por maximo valor accesorios
+Scenario: 13 Validacion de expedicion por maximo valor accesorios
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -239,7 +239,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 13 Validacion bloqueo vehiculo blindado en estado SI
+Scenario: 14 Validacion bloqueo de vehiculo blindado en estado SI
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -266,7 +266,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 14 Validacion expedicion de vehiculo blindado en estado NO
+Scenario: 15 Validacion expedicion de vehiculo blindado en estado NO
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -286,7 +286,7 @@ Examples:
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 15 Validaciones de vehiculo blindado para poliza sin condicion particular(CP)
+Scenario: 16 Validacion bloqueo de vehiculo blindado para poliza sin condicion particular(CP)
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -311,3 +311,87 @@ Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
 |CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+
+
+Scenario: 17 Validacion bloqueo: vehiculo de transporte de combustible en estado SI
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |transporte_combustible|
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si                    |
+And ingrese las coberturas a auto cero kilometros:
+|limite|deducible|
+|1.440 |0        |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+And ingrese a analisis de riesgo
+Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
+| mensaje                                                                          |
+| Valor para campo transporta combustible no permitido. Por favor verifique        |
+
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
+
+
+Scenario: 18 Validacion expedicion: vehiculo de transporte de combustible en estado NO
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |transporte_combustible|
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |No                    |
+And ingrese las coberturas a auto cero kilometros:
+|limite|deducible|
+|1.440 |0        |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+Then se debe permitir expedir la poliza
+
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
+
+
+Scenario: 19 Validacion de expedicion sin seleccionar opcion de transporte de combustible
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |
+And ingrese las coberturas a vehiculo:
+|limite|deducible|
+|1.440 |0        |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+Then se debe permitir expedir la poliza
+
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355390  |
+
+
+Scenario: 20 Validacion de expedicion: vehiculo de transporte de combustible para poliza sin condicion particular(CP)
+Given que tengo una cotizacion <cotizacion>
+When copie la poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+| placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |cero_kilometros| transporte_combustible |
+| random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |Si                      |
+And ingrese las coberturas a vehiculo:
+|limite|deducible|
+|1.440 |0        |
+And intente cotizar
+And voy a expedir una poliza
+And confirmo el mensaje de expedir poliza
+Then se debe permitir expedir la poliza
+
+Examples:
+|tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
+

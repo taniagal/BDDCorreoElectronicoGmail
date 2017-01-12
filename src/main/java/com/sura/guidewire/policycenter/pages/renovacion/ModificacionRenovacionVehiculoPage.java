@@ -48,7 +48,7 @@ public class ModificacionRenovacionVehiculoPage extends PageUtil {
     public void irAVehiculos(){
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(itemVehiculos).click();
         waitUntil(WAIT_TIME_1500);
-        itemVehiculos.click();
+        clickElement(itemVehiculos);
     }
 
     public void irAModificarVehiculo() {

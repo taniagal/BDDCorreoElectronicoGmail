@@ -185,20 +185,18 @@ public class NuevaCotizacionPage extends PageUtil {
         menuItemInformacionDePoliza.waitUntilPresent();
         clickElement(menuItemInformacionDePoliza);
         try {
-            waitUntil(WAIT_TIME_2000);
             withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
         } catch (StaleElementReferenceException f) {
             LOGGER.info(STALE_ELEMENT_REFERENCE_EXCEPTION + f);
             waitUntil(WAIT_TIME_2000);
+            withTimeoutOf(WAIT_TIME_20,TimeUnit.SECONDS).waitFor(comboBoxOrganizacion);
         }
         if (!"Sura".equals(comboBoxOrganizacion.getText())) {
             selectItem(comboBoxOrganizacion, "Sura");
             waitForComboValue(comboBoxOrganizacion, "Sura");
-            waitUntil(WAIT_TIME_2000);
             selectItem(comboBoxCanal, "Canal Tradicional");
             waitForComboValue(comboBoxCanal, "Canal Tradicional");
             try {
-                waitUntil(WAIT_TIME_2000);
                 selectItem(comboBoxTipoPoliza, INDIVIDUAL);
             } catch (ElementNotVisibleException e) {
                 LOGGER.info("ElementNotVisibleException " + e);
