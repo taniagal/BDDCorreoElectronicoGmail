@@ -1,14 +1,10 @@
 package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.CambioDePlacaPage;
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
-
-import java.util.Map;
 
 public class CambioDePlacaSteps extends ScenarioSteps {
 
@@ -56,14 +52,6 @@ public class CambioDePlacaSteps extends ScenarioSteps {
 
     public void mensajeAutorizacion(ExamplesTable mensajeAutorizacion) {
         cambioDePlacaPage.mensajeAutorizacion(mensajeAutorizacion);
-    }
-
-    public void clickSiguiente() {
-        cambioDePlacaPage.clickSiguiente();
-    }
-
-    public void clickAgregarVehiculo() {
-        cambioDePlacaPage.clickAgregarVehiculo();
     }
 
     public void editarCambioDePoliza() {
