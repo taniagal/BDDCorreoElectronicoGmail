@@ -120,7 +120,7 @@ public class BusquedaDePolizaPage extends PageUtil {
 
     public void clicEnBotonBuscar(){
         waitFor(btnBuscar).waitUntilPresent().waitUntilClickable();
-        btnBuscar.click();
+        clickElement(btnBuscar);
     }
 
 

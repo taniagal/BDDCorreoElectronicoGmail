@@ -1,8 +1,7 @@
 Generacion Uw Issue Riesgos Consultables Pa
 
 Meta:
-
-@lote2
+@lote3
 @issue #CDSEG-1260
 @tag automator: diego_cardona_acevedo
 @local
@@ -38,6 +37,7 @@ Examples:
 |tipo_documento       |documento |
 |CEDULA DE CIUDADANIA |32536001  |
 
+
 Scenario: Analisis de riesgo - Uw issue - Issue
 Given existe una cotizacion <numeroCotizacion>
 When las figuras asegurado, beneficiario, tomador y/o cuentahabiente sean riesgo consultable e intente expedir la poliza
@@ -54,8 +54,10 @@ Examples:
 |numeroCotizacion|
 |22222210        |
 
+
 Scenario: Analisis de riesgo - Uw issue - Modificacion
-Meta: @manual
+Meta:
+@manual
 Given se ha realizado la cotizacion de la modificacion
 When las figuras asegurado, beneficiario y/o tomador sean riesgo consultable
 And la placa, motor y chasis sean riesgo consultable
@@ -63,8 +65,10 @@ And realice la cotizacion de la modificacion
 And  vaya a  opcion de analisis de riesgo
 Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 
+
 Scenario: Analisis de riesgo - Uw issue - Modificacion
-Meta: @manual
+Meta:
+@manual
 Given se ha realizado la cotizacion de una renovacion
 When las figuras asegurado, beneficiario y/o tomador sean riesgo consultable
 And la placa, motor y chasis sean riesgo consultable

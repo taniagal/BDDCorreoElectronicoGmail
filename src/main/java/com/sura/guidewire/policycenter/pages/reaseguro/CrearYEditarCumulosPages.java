@@ -6,7 +6,9 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
@@ -22,7 +24,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add-btnWrap']")
     WebElementFacade btnAgregarDireccionRiesgoAplicable;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add:0:riskbutton']")
-    WebElementFacade ListDireccionRiesgoAplicable;
+    WebElementFacade listDireccionRiesgoAplicable;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV_tb:Add-btnInnerEl']")
     WebElementFacade btnAgregaInformacionReaseguro;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:0:reName']")
@@ -35,6 +37,8 @@ public class CrearYEditarCumulosPages extends PageUtil {
     WebElementFacade btnAceptarReasegurador;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[6]/div")
     WebElementFacade listFormaCotizacionModalidad;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[7]/div")
+    WebElementFacade listFormaCotizacionValor;
     @FindBy(xpath = "//input[contains(@class,'x-form-field x-form-text x-form-focus x-field-form-focus x-field-default-form-focus')]")
     WebElementFacade txtFormaCotizacionModalidad;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[3]")
@@ -43,6 +47,8 @@ public class CrearYEditarCumulosPages extends PageUtil {
     WebElementFacade listcomisionReaseguroCedido;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[9]")
     WebElementFacade listcomisionIntermediario;
+    @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[10]")
+    WebElementFacade listcomisionPromotora;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV-body']/div/table/tbody/tr/td[14]")
     WebElementFacade listTasaBrutaDeCesion;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:0-body']/div/table/tbody/tr/td[5]")
@@ -80,8 +86,8 @@ public class CrearYEditarCumulosPages extends PageUtil {
         actions.doubleClick(txtIngresaDescripcionAcuerdo).build().perform();
         actions.sendKeys(descripcionDeAcuerdo).build().perform();
         btnAgregarDireccionRiesgoAplicable.click();
-        ListDireccionRiesgoAplicable.waitUntilPresent();
-        ListDireccionRiesgoAplicable.click();
+        listDireccionRiesgoAplicable.waitUntilPresent();
+        listDireccionRiesgoAplicable.click();
     }
 
     public void ingresoInformacionDeReaseguroEnTabla() {
@@ -90,7 +96,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
         listPaisSeleccionar.waitUntilClickable();
         selectItem(listPaisSeleccionar, PAIS_ALEMANIA);
         selectItem(listNombreReaseugurador, ASEGURA_ALLIANZ);
-        btnAceptarReasegurador.click();
+        clickElement(btnAceptarReasegurador);
     }
 
     public void ingresaParticipacion(ExamplesTable datosReaseguradores) {
@@ -104,14 +110,25 @@ public class CrearYEditarCumulosPages extends PageUtil {
         Map<String, String> datoReaseguradores = datosReaseguradores.getRow(0);
         listcomisionReaseguroCedido.click();
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionReasegurador"));
+        actions.sendKeys(Keys.TAB).build().perform();
         waitAndClickOnButton($(VALOR));
-        waitUntil(WAIT_TIME_500);
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("valorReaseguro"));
+        actions.sendKeys(Keys.TAB).build().perform();
     }
 
     public void seleccionaModalidadPrima(ExamplesTable datosReaseguradores) {
         Map<String, String> datoReaseguradores = datosReaseguradores.getRow(0);
-        listFormaCotizacionModalidad.click();
+        try {
+            clickElement(listFormaCotizacionModalidad);
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            waitUntil(WAIT_TIME_2000);
+            clickElement(listFormaCotizacionModalidad);
+        }catch (ElementNotVisibleException e){
+            LOGGER.info("ElementNotVisibleException " + e);
+            waitUntil(WAIT_TIME_2000);
+            clickElement(listFormaCotizacionModalidad);
+        }
         waitUntil(WAIT_TIME_2000);
         $(CELDA_VALOR).clear();
         txtFormaCotizacionModalidad.sendKeys(datoReaseguradores.get("modalidad"));
@@ -125,7 +142,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
         $(CELDA_VALOR).clear();
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionIntermediario"));
         actions.sendKeys(Keys.TAB).build().perform();
-        waitUntil(WAIT_TIME_500);
+        waitAndClickOnButton(listcomisionPromotora);
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionPromotora"));
         actions.sendKeys(Keys.TAB).build().perform();
     }
@@ -139,11 +156,11 @@ public class CrearYEditarCumulosPages extends PageUtil {
 
     public String calculaPrimaBrutaDeCesionRegla() {
         String[] valorExpuestoCadena = listValorExpuestoRiesgo.getText().split(",");
-        valorExpuesto = Integer.parseInt(valorExpuestoCadena[0].substring(1).replaceAll("\\.",""));
-        valorTasa = Double.parseDouble($(VALOR).getText().replaceAll("\\.",""));
+        valorExpuesto = Integer.parseInt(valorExpuestoCadena[0].substring(1).replaceAll("\\.", ""));
+        valorTasa = Double.parseDouble($(VALOR).getText().replaceAll("\\.", ""));
         double valorPrimaBrutaDeCesion = (valorTasa / valorExpuesto) * CONSTANTE_MIL;
         return Double.toString(valorPrimaBrutaDeCesion).replace(".", ",");
-       }
+    }
 
     public void validaTasaBrutaDeCesion() {
         MatcherAssert.assertThat("Error no coincide el valor de tasa bruta: ", listTasaBrutaDeCesion.getText().equals($(VALOR).getText()));
@@ -157,7 +174,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
         MatcherAssert.assertThat("Error no coincide el valor de tasa neta", listTasaBrutaDeCesion.getText().equals(calculaPrimaBrutaDeCesionRegla()));
     }
 
-    public void validaUtilidadesNegativas(String mensaje){
+    public void validaUtilidadesNegativas(String mensaje) {
         MatcherAssert.assertThat("error debe mostar un mensaje con utilidades negativa", lblMensajeAdvertencia.getText().contains(mensaje));
     }
 

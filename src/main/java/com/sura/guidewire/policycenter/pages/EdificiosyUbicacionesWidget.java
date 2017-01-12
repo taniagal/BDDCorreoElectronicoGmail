@@ -9,7 +9,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 import java.util.Map;
@@ -89,21 +91,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void agregarArticuloAPrimerUbicacion() {
         waitUntil(WAIT_TIME_2000);
-        try {
-            waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
-        } catch (UnhandledAlertException f) {
-            LOGGER.info("UnhandledAlertException " + f);
-            try {
-                Alert alert = getDriver().switchTo().alert();
-                String alertText = alert.getText();
-                LOGGER.info("Alert data: " + alertText);
-                alert.accept();
-            } catch (NoAlertPresentException e) {
-                waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
-                waitUntil(WAIT_TIME_2000);
-                LOGGER.info("NoAlertPresentException " + e);
-            }
-        }
+        waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         if (tabla == null) {
             obtenerTabla();
         }

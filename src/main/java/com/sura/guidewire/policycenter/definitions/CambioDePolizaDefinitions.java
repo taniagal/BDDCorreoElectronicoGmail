@@ -43,6 +43,11 @@ public class CambioDePolizaDefinitions {
         cambioDePolizaSteps.cambiarFechaDeVigencia(dias);
     }
 
+    @When("ingrese la informacion de poliza")
+    public void cambiarIngresarAInformacionDePoliza() {
+        cambioDePolizaSteps.llenarInformacionDePoliza();
+    }
+
     @Given("le ingreso el reaseguro especial")
     public void ingresarReaseguroEspecial() {
         cambioDePolizaSteps.ingresarReaseguroEspecial();
