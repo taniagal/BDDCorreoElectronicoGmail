@@ -147,7 +147,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         findBy(LINK_OPCION_UBICACION_NUEVA).shouldBeVisible();
         clickElement(findBy(LINK_OPCION_UBICACION_NUEVA));
 
-
         waitForTextToAppear("Información de ubicación");
         String xpathPais = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']";
         String xpathDepto = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']";
@@ -155,36 +154,26 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         String xpathDireccion = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']";
         String xpathActividadEconomica = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']";
 
-
         $(xpathPais).type(pais);
         $(xpathPais).click();
-
         waitFor(WAIT_TIME_2).seconds();
         enter(depto).into($(xpathDepto));
         waitFor(WAIT_TIME_2).seconds();
-
         $(xpathDepto).click();
-
         waitFor(WAIT_TIME_5).seconds();
         $(xpathCiudad).type(ciudad);
         waitUntil(WAIT_TIME_3000);
-
         $(xpathCiudad).click();
-
         waitFor(WAIT_TIME_3).seconds();
         $(xpathDireccion).type(direccion);
         waitFor(WAIT_TIME_2).seconds();
         $(xpathDireccion).click();
-
         waitFor(WAIT_TIME_3).seconds();
         $(xpathActividadEconomica).type(actividadEconomica);
         waitFor(WAIT_TIME_3).seconds();
         $(xpathActividadEconomica).sendKeys(Keys.ENTER);
         waitFor(WAIT_TIME_3).seconds();
-
-
-        findBy(".//*[@id='CPLocationPopup:Update']").waitUntilPresent().click();
-
+        clickElement($(".//*[@id='CPLocationPopup:Update']"));
         setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
         if (botonBorrar.isVisible()) {
             clickElement(findBy(".//*[@id='CPLocationPopup:Update']"));
@@ -201,7 +190,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             LOGGER.info("ELEMENTO NO CLICKEABLE" + e);
         }
     }
-
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
         agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
@@ -560,8 +548,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitUntil(WAIT_TIME_300);
         comboBoxTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
-        waitUntil(WAIT_TIME_800);
-        botonBuscar.waitUntilPresent();
+        waitForTextToAppear("Primer nombre");
         campoTxtNumeroDocumento.sendKeys(cedula);
         clickElement(botonBuscar);
         botonSeleccionar.waitUntilPresent().click();
