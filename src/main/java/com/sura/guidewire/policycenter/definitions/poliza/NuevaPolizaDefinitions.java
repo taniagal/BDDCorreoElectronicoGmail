@@ -42,5 +42,4 @@ public class NuevaPolizaDefinitions {
     public void validarListaCanalDeAcuerdoALaOrganizacion(@Named("datosListaCanal") String datosListaCanal){
         nuevaPolizaSteps.validaListaCanalDeAcuerdoALaOrganizacion(datosListaCanal);
     }
-
 }

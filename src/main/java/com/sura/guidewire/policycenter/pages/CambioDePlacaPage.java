@@ -12,7 +12,6 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.Map;
 
-
 public class CambioDePlacaPage extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:plateChange-inputEl']")
@@ -88,7 +87,6 @@ public class CambioDePlacaPage extends PageUtil {
         super(driver);
     }
 
-
     public void cambiarPlaca(String placa) {
         waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.clear();
@@ -113,7 +111,6 @@ public class CambioDePlacaPage extends PageUtil {
         MatcherAssert.assertThat("Error, el tipo de servicio fue modificada", txtTipoServicio.getValue().equals(datos.get("tipoServicio")));
         MatcherAssert.assertThat("Error, el motor fue modificada", txtMotor.getValue().equals(datos.get("motor")));
         MatcherAssert.assertThat("Error, el chasis  fue modificada", txtChasis.getValue().equals(datos.get("chasis")));
-
     }
 
     public void cambiarPlacaSegundaVez() {
@@ -156,7 +153,6 @@ public class CambioDePlacaPage extends PageUtil {
         MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExistente.getText().equals(datos.get("mensaje")));
     }
 
-
     public void clickItemCambiarPlaca() {
         Actions actions = new Actions(getDriver());
         int intentos = 0;
@@ -187,18 +183,15 @@ public class CambioDePlacaPage extends PageUtil {
         }
     }
 
-
     public void expedirCambioPoliza() {
         botonExpedirPoliza.waitUntilPresent().click();
         botonAceptarExpedicion.waitUntilPresent().click();
     }
 
-
     public void mensajeAutorizacion(ExamplesTable mensajeAutorizacion) {
         Map<String, String> datos = mensajeAutorizacion.getRow(0);
         tablaRequisitos.waitUntilPresent();
         MatcherAssert.assertThat("Error, mensaje no encontrado", labelRequisitoPorPlacaExtrangera.getText().equals(datos.get("mensajeAutorizacion")));
-
     }
 
     public void clickSiguiente() {
@@ -233,7 +226,6 @@ public class CambioDePlacaPage extends PageUtil {
         waitUntil(WAIT_TIME_2000);
         txtCambioDePlaca.clear();
         txtCambioDePlaca.sendKeys(placaRiesgoConsultable);
-
     }
 
     public void mensajePlacaRiesgoConsultable(ExamplesTable mensajePlacaRiesgoConsultable) {
@@ -255,11 +247,9 @@ public class CambioDePlacaPage extends PageUtil {
         txtCiudadCirculacion.click();
     }
 
-    public void mensajeDeAutorizacion(ExamplesTable mensajeDeAutorizacion) {
-        Map<String, String> datos = mensajeDeAutorizacion.getRow(0);
+    public String validarMensajeAutorizacion() {
         labelMensajePlacaExtranjeraCucuta.waitUntilPresent();
-        MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExtranjeraCucuta.getText().contains(datos.get("mensajeDeAutorizacion")));
-        waitUntil(WAIT_TIME_3000);
-
+        return labelMensajePlacaExtranjeraCucuta.getText().toString();
     }
+
 }
