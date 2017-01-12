@@ -9,7 +9,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.SerenityWebdriverManager;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 import java.util.Map;
@@ -89,21 +91,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
 
     public void agregarArticuloAPrimerUbicacion() {
         waitUntil(WAIT_TIME_2000);
-        try {
-            waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
-        } catch (UnhandledAlertException f) {
-            LOGGER.info("UnhandledAlertException " + f);
-            try {
-                Alert alert = getDriver().switchTo().alert();
-                String alertText = alert.getText();
-                LOGGER.info("Alert data: " + alertText);
-                alert.accept();
-            } catch (NoAlertPresentException e) {
-                waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
-                waitUntil(WAIT_TIME_2000);
-                LOGGER.info("NoAlertPresentException " + e);
-            }
-        }
+        waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         if (tabla == null) {
             obtenerTabla();
         }
@@ -259,17 +247,17 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         return esSeleccionado;
     }
 
-    private boolean primeraCondicion(String objeto){
+    private boolean primeraCondicion(String objeto) {
         boolean condicionUno = false;
-        if (objeto.contains("x-active") && objeto.contains("x-tab-active") && objeto.contains("x-tab-default-active")){
+        if (objeto.contains("x-active") && objeto.contains("x-tab-active") && objeto.contains("x-tab-default-active")) {
             condicionUno = true;
         }
         return condicionUno;
     }
 
-    private boolean segundaCondicion(String objeto){
+    private boolean segundaCondicion(String objeto) {
         boolean condicionDos = false;
-        if (objeto.contains("x-top-active") && objeto.contains("x-tab-top-active") && objeto.contains("x-tab-default-top-active")){
+        if (objeto.contains("x-top-active") && objeto.contains("x-tab-top-active") && objeto.contains("x-tab-default-top-active")) {
             condicionDos = true;
         }
         return condicionDos;
@@ -541,7 +529,7 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         }
     }
 
-    public void agregarInteresAdicional(String cedula){
+    public void agregarInteresAdicional(String cedula) {
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonAgregarAsegurado).waitUntilPresent().click();
         menuItemDelDireciotio.waitUntilPresent().click();
         comboBoxTipoDocumento.waitUntilPresent().clear();
@@ -555,11 +543,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         botonAgregarAsegurado.waitUntilPresent();
     }
 
-    public void validarNoVisibilidad(){
+    public void validarNoVisibilidad() {
         validarNoVisibilidadDeObjeto(XPATH_CHECK_CONTACTO);
     }
 
-    public void validarNoVisibilidadDeObjeto(String xpath){
+    public void validarNoVisibilidadDeObjeto(String xpath) {
         setImplicitTimeout(WAIT_TIME_1, TimeUnit.SECONDS);
         MatcherAssert.assertThat("Alguno de los campos es visible", !findBy(xpath).isVisible());
         resetImplicitTimeout();
