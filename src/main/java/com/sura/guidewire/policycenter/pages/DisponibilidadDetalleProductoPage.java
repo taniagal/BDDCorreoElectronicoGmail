@@ -27,9 +27,13 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoInputSet:PolicyType_ExtInputSet:PAPolicyType-inputEl']")
     private WebElementFacade listaPATipoPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV-body']")
-    WebElementFacade tablaProductos;
+    private WebElementFacade tablaProductos;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:SelectAccountAndProducerDV:ProducerSelectionInputSet:ProducerName-inputEl']")
-    WebElementFacade campoNombreAgente;
+    private WebElementFacade campoNombreAgente;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:Producer-inputEl']")
+    private WebElementFacade campoTxtOficinaDeRadicacion;
+    @FindBy(xpath = ".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:SubmissionWizard_PolicyInfoDV:PolicyInfoProducerOfRecordInputSet:ProducerCode-inputEl']")
+    private WebElementFacade comboBoxCodigoDeAgente;
 
     public DisponibilidadDetalleProductoPage(WebDriver driver) {
         super(driver);
@@ -78,5 +82,13 @@ public class DisponibilidadDetalleProductoPage extends PageUtil {
     public void validarElProducto(String tipoPoliza) {
         waitFor(listaPATipoPoliza);
         MatcherAssert.assertThat(listaPATipoPoliza.getText(), Is.is(Matchers.equalTo(tipoPoliza)));
+    }
+
+    public void seleccionarAgenteDeRegistro(){
+        campoTxtOficinaDeRadicacion.waitUntilPresent().clear();
+        campoTxtOficinaDeRadicacion.sendKeys("SURA");
+        clickElement(comboBoxCodigoDeAgente);
+        waitForComboValue(campoTxtOficinaDeRadicacion,"SURA");
+        selectItem(comboBoxCodigoDeAgente,"4999");
     }
 }
