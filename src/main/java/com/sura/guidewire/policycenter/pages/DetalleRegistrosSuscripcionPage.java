@@ -46,6 +46,12 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
     WebElementFacade lblTransaccion;
     @FindBy(xpath = ".//*[@id='UnderwritingFiles:RenewalManagerScreen:RenewalManagerLV-body']")
     WebElementFacade tablaRegistros;
+    @FindBy(xpath = ".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:NumJobs-inputEl']")
+    WebElementFacade campoPaginas;
+    @FindBy(xpath = "//span[contains(@class,'x-btn-icon-el x-tbar-page-next')]")
+    WebElementFacade botonSiguienteTabla;
+
+    private static final String MENOS_UNO = "-1";
 
     public DetalleRegistrosSuscripcionPage(WebDriver driver) {
         super(driver);
@@ -54,19 +60,32 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
     public Integer encontrarPoliza(String numeroPoliza) {
         withTimeoutOf(WAIT_TIME_15, TimeUnit.SECONDS).waitFor(tablaEnvios).waitUntilVisible();
         Integer filaPoliza = 0;
+        boolean encontrado = false;
         List<WebElement> filas = tablaEnvios.findElements(By.tagName("tr"));
         for (WebElement row : filas) {
             List<WebElement> columna = row.findElements(By.tagName("td"));
             if (numeroPoliza.equals(columna.get(1).getText())) {
-                return filaPoliza;
+                encontrado = true;
+                break;
             }
             filaPoliza++;
+        }
+        if (!encontrado) {
+            filaPoliza = -1;
         }
         return filaPoliza;
     }
 
     public void validarCamposDetalle(String producto, String nroEnvio, String estado, String nroPoliza) {
-        String fila = this.encontrarPoliza(nroEnvio).toString();
+        String fila = "";
+        int paginas = this.iteraciones(Integer.parseInt(campoPaginas.waitUntilPresent().getText()));
+        for (int i = 1; i <= paginas; i++) {
+            fila = this.encontrarPoliza(nroEnvio).toString();
+            if (fila.equals(MENOS_UNO)) {
+                botonSiguienteTabla.click();
+                waitUntil(WAIT_TIME_3);
+            }
+        }
         WebElementFacade filaNroEnvio = findBy(".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:SubmissionGroupJobsLV:" + fila + ":Submission']");
         WebElementFacade filaPoliza = findBy(".//*[@id='SubmissionGroupDetail:SubmissionGroupDetailScreen:SubmissionGroupJobsLV:" + fila + ":PolicyNumber']");
         MatcherAssert.assertThat(filaNroEnvio.getText(), Is.is(Matchers.equalTo(nroEnvio)));
@@ -75,6 +94,15 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
         columnaProducto.shouldBeVisible();
         columnaEstadoDetalle.shouldBeVisible();
         columnaCrearFecha.shouldBeVisible();
+    }
+
+    public int iteraciones(Integer paginas) {
+        int modulo = paginas % 15;
+        int divido = paginas / 15;
+        if (modulo != 0) {
+            divido++;
+        }
+        return divido;
     }
 
     public void validarCamposRegistros(String nombre, String tipoDeTransaccion, String nroDeTransacciones) {
