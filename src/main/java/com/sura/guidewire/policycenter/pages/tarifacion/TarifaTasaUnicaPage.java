@@ -105,6 +105,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
 
     public static final String MSJVALIDARELEMENTOS = "No estan presentes los elementos:";
     private static final int WAIT_TIME_7000 = 7000;
+    private static final int DOS = 2;
+    private static final int TREINTA_Y_TRES = 33;
     String primaTotal = "";
 
     public TarifaTasaUnicaPage(WebDriver driver) {
@@ -144,7 +146,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         if (headerEnvio.containsText("Expedida")) {
             val = 0;
         } else if (headerEnvio.containsText("Cotizado")) {
-            val = 2;
+            val = DOS;
         }
         return val;
     }
@@ -170,7 +172,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
     public void cambiarFechaDeVigencia(){
         clickAccionesYCambiarPoliza();
         campoTxtFechaDeInicioDeVigencia.waitUntilPresent().clear();
-        campoTxtFechaDeInicioDeVigencia.sendKeys(Utils.sumarDiasALaFechaActual(33));
+        campoTxtFechaDeInicioDeVigencia.sendKeys(Utils.sumarDiasALaFechaActual(TREINTA_Y_TRES));
         botonSiguienteCambioDePoliza.click();
     }
 

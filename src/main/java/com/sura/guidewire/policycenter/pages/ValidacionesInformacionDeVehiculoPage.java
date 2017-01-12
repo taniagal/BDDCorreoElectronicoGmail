@@ -64,8 +64,14 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade comboBoxSiCeroKilometros;
     @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:0:BooleanModifier_true-inputEl']")
     private WebElementFacade comboBoxSiVehiculoBLindado;
+    @FindBy(xpath ="//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:transportFuel_true-inputEl']")
+    private WebElementFacade comboBoxSiTransporteCombustible;
+    @FindBy(xpath ="//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:transportFuel_false-inputEl']")
+    private WebElementFacade comboBoxNoTransporteCombustible;
 
     protected static final int WAIT_TIME_28000 = 28000;
+    private String opcion = "Si";
+    private static final String VALOR_ASEGURADO = "valor_asegurado";
 
     public ValidacionesInformacionDeVehiculoPage(WebDriver driver) {
         super(driver);
@@ -139,21 +145,28 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         }
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         agregarDescuento(vehiculo);
-        if ("Si".equals(vehiculo.get("cero_kilometros"))) {
+        if (opcion.equals(vehiculo.get("cero_kilometros"))) {
             seleccionarVehiculoCeroKilometros();
         }
-        if ("Si".equals(vehiculo.get("vehiculo_blindado"))) {
+        if(opcion.equals(vehiculo.get("vehiculo_blindado"))){
             seleccionarVehiculoBlindado();
         }
+        if(opcion.equals(vehiculo.get("transporte_combustible"))){
+            seleccionarTransporteDeCombustible(opcion);
+        }
+        else{
+            opcion = "No";
+            seleccionarTransporteDeCombustible(opcion);
+        }
         try {
-            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get("valor_asegurado") +
-                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get(VALOR_ASEGURADO) +
+                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get(VALOR_ASEGURADO)));
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException" + e);
 
             waitUntil(WAIT_TIME_2000);
-            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get("valor_asegurado") +
-                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get("valor_asegurado")));
+            MatcherAssert.assertThat("Error en el servicio de fasecolda, expected: " + vehiculo.get(VALOR_ASEGURADO) +
+                    " but was: " + campoTxtValorAsegurado.getValue(), campoTxtValorAsegurado.getValue().contains(vehiculo.get(VALOR_ASEGURADO)));
         }
     }
 
@@ -164,6 +177,17 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     public void seleccionarVehiculoBlindado() {
         waitUntil(WAIT_TIME_2000);
         clickElement(comboBoxSiVehiculoBLindado);
+    }
+
+    public void seleccionarTransporteDeCombustible(String opcion){
+        waitUntil(WAIT_TIME_2000);
+        if("Si".equals(opcion)) {
+            clickElement(comboBoxSiTransporteCombustible);
+        }
+        else{
+            clickElement(comboBoxNoTransporteCombustible);
+            this.opcion = "Si";
+        }
     }
 
     public void seleccionarCiudadDeCirculacion(Map<String, String> vehiculo) {
@@ -199,7 +223,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
 
     public void waitForCampoTxtValorAsegurado(Map<String, String> vehiculo) {
         try {
-            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get("valor_asegurado")));
+            withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(ExpectedConditions.textToBePresentInElementValue(campoTxtValorAsegurado, vehiculo.get(VALOR_ASEGURADO)));
         } catch (TimeoutException e) {
             LOGGER.info("TimeoutException " + e);
             selectItem(comboBoxModelo, "2010");
