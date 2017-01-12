@@ -219,7 +219,7 @@ Then deben aparecer los mensajes de validacion:
 | El valor de los accesorios es mayor al 20% del valor Asegurado                 |
 | El valor de los accesorios especiales es mayor al valor Asegurado del vehículo |
 When seleccione la opcion siguiente
-And ingrese las coberturas a auto no cero kilometros:
+And ingrese las coberturas a vehiculo:
 |limite|deducible|
 |1.440 |0        |
 And intente cotizar
@@ -246,7 +246,7 @@ And ingrese la informacion del vehiculo:
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico | Si              |
 And se ingrese el valor de los accesorios es superior al 20% del valor asegurado del vehiculo
 And Se ingrese el valor de los accesorios especiales es superior al 100% del valor asegurado del vehículo
-And ingrese las coberturas a auto cero kilometros:
+And ingrese las coberturas a vehiculo:
 |limite|deducible|
 |1.440 |0        |
 And intente cotizar
@@ -293,7 +293,7 @@ And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |cero_kilometros|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |
-And ingrese las coberturas a auto cero kilometros:
+And ingrese las coberturas a vehiculo:
 |limite|deducible|
 |1.440 |0        |
 And intente cotizar
@@ -313,7 +313,7 @@ And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |cero_kilometros| vehiculo_blindado |
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si             |Si                 |
-And ingrese las coberturas a auto cero kilometros:
+And ingrese las coberturas a vehiculo:
 |limite|deducible|
 |1.440 |0        |
 And intente cotizar
@@ -340,7 +340,7 @@ And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |transporte_combustible|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |Si                    |
-And ingrese las coberturas a auto cero kilometros:
+And ingrese las coberturas a vehiculo:
 |limite|deducible|
 |1.440 |0        |
 And intente cotizar
@@ -363,7 +363,7 @@ And ingrese los datos del asegurado <tipo_documento> <documento>
 And ingrese los datos del vehiculo:
 | placa  | modelo | codigo_fasecolda | ciudad_circulacion | vehiculo_servicio | chasis | motor | valor_asegurado | descuento | recargo | zona | plan              |transporte_combustible|
 | random | 2016   | 52525252         | MEDELLIN           | Particular        | null   | null  | 16000000        | null      | null    | 2    | Plan Autos Básico |No                    |
-And ingrese las coberturas a auto cero kilometros:
+And ingrese las coberturas a vehiculo:
 |limite|deducible|
 |1.440 |0        |
 And intente cotizar
