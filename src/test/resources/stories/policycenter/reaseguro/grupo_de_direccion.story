@@ -10,7 +10,7 @@ Meta:
 Narrative:
 
 
-Scenario: Valica
+Scenario: Validacion de calculos en porcentaje de contratos
 GivenStories: stories/policycenter/login_policy.story
 Given estoy cotizando una poliza de mrc:
 |organizacion|producto               |canal            |tipo_documento      |fecha_nacimiento|primer_nombre|primer_apellido|tipo_direccion         |direccion       |departamento|ciudad  |agente|
@@ -21,12 +21,13 @@ And intente ingresar una nueva ubicacion sin riesgo consultable
 | pais    | departamento| ciudad   | direccion   | actividadEconomica                           |
 | Colombia| Antioquia   | Medellin | CR 45 30 30 | Fabricación de otros artículos textiles n.c.p|
 And intente ingresar las entradas de las diferentes coberturas
-| TAB                      | TIPO_ARTICULO      | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
-| Información de Artículos | Edificios          |                     |                  | Valor Reconstrucción             | 100000000      |
-| Información de Artículos | Edificios          |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
-| Información de Artículos | Maquinaria y equipo|                     | Danos materiales | Valor Asegurable                 | 100000000      |
-| Información de Artículos | Maquinaria y equipo|                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+| TAB                      | TIPO_ARTICULO       | OTRO_ARTICULO_OTROS | COBERTURA        | ENTRADAS                         | VALOR_ENTRADAS |
+| Información de Artículos | Edificios           |                     |                  | Valor Reconstrucción             | 100000000      |
+| Información de Artículos | Edificios           |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+| Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor Asegurable                 | 100000000      |
+| Información de Artículos | Maquinaria y equipo |                     | Danos materiales | Valor asegurado danos materiales | 100000000      |
+And cotice una poliza
 
 Examples:
-|fechaInicioVigencia|pais|departamento|ciudad|direccion|actividadEconomica
+|fechaInicioVigencia|
 |01/01/2016         |
