@@ -137,7 +137,11 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitUntil(WAIT_TIME_2000);
         seleccionarCiudadDeCirculacion(vehiculo);
         waitUntil(WAIT_TIME_1000);
-        waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
+        try {
+            waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
+        }catch (TimeoutException e){
+            LOGGER.info("TimeoutException" + e);
+        }
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
         agregarDescuento(vehiculo);
         if (OPCION.equals(vehiculo.get("cero_kilometros"))) {

@@ -1,7 +1,7 @@
 Crear Y Editar Cumulos
 
 Meta:
-@lote4
+@lote3
 @issue #CDSEG-2886
 @sprint 7
 @tag automator: jonathan_mejia_leon

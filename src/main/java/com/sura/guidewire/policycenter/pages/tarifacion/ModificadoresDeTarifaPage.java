@@ -1,16 +1,14 @@
 package com.sura.guidewire.policycenter.pages.tarifacion;
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
-
-import java.util.Map;
-
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.steps.StepInterceptor;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.LoggerFactory;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 public class ModificadoresDeTarifaPage extends PageUtil {
@@ -33,26 +31,24 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:PersonalVehicles']/div")
     private WebElementFacade menuItemVehiculos;
 
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(StepInterceptor.class);
-
     int bonoComercial = 0;
     int bonoTecnico = 0;
 
-    public ModificadoresDeTarifaPage(WebDriver driver){
+    public ModificadoresDeTarifaPage(WebDriver driver) {
         super(driver);
     }
 
-    public void verificarBonoTecnico(String bono){
-        MatcherAssert.assertThat("Error en el valor de la bonificación técnica, was "+campoTxtBonificacionTecnica.getValue(), campoTxtBonificacionTecnica.getValue().contains(bono));
+    public void verificarBonoTecnico(String bono) {
+        MatcherAssert.assertThat("Error en el valor de la bonificación técnica, was " + campoTxtBonificacionTecnica.getValue(), campoTxtBonificacionTecnica.getValue().contains(bono));
     }
 
-    public void verificarBonoComercial(String bono){
-        MatcherAssert.assertThat("Error en el valor de la bonificación comercial, was "+campoTxtBonificacionComercial.getValue(), campoTxtBonificacionComercial.getValue().contains(bono));
+    public void verificarBonoComercial(String bono) {
+        MatcherAssert.assertThat("Error en el valor de la bonificación comercial, was " + campoTxtBonificacionComercial.getValue(), campoTxtBonificacionComercial.getValue().contains(bono));
     }
 
     public void agregarModificadores(ExamplesTable valores) {
-        Map<String,String> valor = valores.getRow(0);
-        selectItem(comboBoxDescuentoDipositivo,valor.get("descientoD"));
+        Map<String, String> valor = valores.getRow(0);
+        selectItem(comboBoxDescuentoDipositivo, valor.get("descientoD"));
         campoTxtBonificacionComercial.clear();
         campoTxtBonificacionComercial.sendKeys(valor.get("bonificacionC"));
         campoTxtDescuento.sendKeys(valor.get("descuento"));
@@ -68,7 +64,7 @@ public class ModificadoresDeTarifaPage extends PageUtil {
         String tablaxpth = ".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:RatingCumulDetailsPanelSet:0:0:costLV-body']/*/table/tbody/tr[";
         for (Map<String, String> valor : valores.getRows()) {
             WebElementFacade tablaDescripcion = findBy(tablaxpth + valor.get("fila") + "]/td[3]");
-            LOGGER.info(valor.get("valor")+" | "+tablaDescripcion.getText());
+            LOGGER.info(valor.get("valor") + " | " + tablaDescripcion.getText());
         }
 
         for (Map<String, String> valor : valores.getRows()) {
@@ -78,8 +74,8 @@ public class ModificadoresDeTarifaPage extends PageUtil {
                     cobertura.getText() + "' de la tarifacion Expected: " + valor + " But was: " + tablaDescripcion.getText(), tablaDescripcion.containsText(valor.get("valor")));
         }
     }
-    
-    public void cambiarBonificacion(String bonoC, String bonoT){
+
+    public void cambiarBonificacion(String bonoC, String bonoT) {
         campoTxtBonificacionComercial.clear();
         campoTxtBonificacionComercial.sendKeys(bonoC);
         campoTxtBonificacionTecnica.clear();
@@ -87,11 +83,11 @@ public class ModificadoresDeTarifaPage extends PageUtil {
     }
 
     public void verificarUW(String mensaje) {
-        verificarMensaje(labelUW,mensaje);
+        verificarMensaje(labelUW, mensaje);
     }
 
     public void cambiarBonificacionTecnica(String bonoT) {
-        waitFor(menuItemVehiculos).waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_30, TimeUnit.SECONDS).waitFor(menuItemVehiculos).waitUntilPresent();
         clickElement(menuItemVehiculos);
         campoTxtBonificacionTecnicaCambio.waitUntilPresent().sendKeys(bonoT);
     }

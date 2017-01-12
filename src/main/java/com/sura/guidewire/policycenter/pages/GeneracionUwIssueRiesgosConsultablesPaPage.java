@@ -7,6 +7,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
@@ -30,7 +31,7 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
     }
 
     public void irAAnalisisDeRiesgo() {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(resultadosValidacion);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(resultadosValidacion);
         clickElement(analisisDeRiesgo);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgo);
     }
@@ -51,8 +52,12 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
 
     public void validarGeneracionMensajeBloqueante(ExamplesTable mensaje) {
         Map<String, String> datos = mensaje.getRow(0);
-        tablaRequisitos.waitUntilPresent();
+        try {
+            tablaRequisitos.waitUntilPresent();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            tablaRequisitos.waitUntilPresent();
+        }
         MatcherAssert.assertThat("Error, mensaje no encontrado", tablaRequisitos.getText().contains(datos.get("mensaje")));
-        waitUntil(WAIT_TIME_3000);
     }
 }

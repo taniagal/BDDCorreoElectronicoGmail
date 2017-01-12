@@ -1,7 +1,7 @@
 Condiciones particulares
 
 Meta:
-@lote1
+@lote3
 @issue #CDSEG-4621
 @sprint 11
 @tag automator: juan_gabriel_zapata

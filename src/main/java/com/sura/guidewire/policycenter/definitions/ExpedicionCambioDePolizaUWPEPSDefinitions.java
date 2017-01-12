@@ -66,7 +66,7 @@ public class ExpedicionCambioDePolizaUWPEPSDefinitions {
 
     @Then("al ir a la opcion de analisis de riesgo")
     public void irAAnalisisDeRiesgo(){
-        generacionUwIssueRiesgosConsultablesPaSteps.ir_A_Analisis_De_Riesgo();
+        generacionUwIssueRiesgosConsultablesPaSteps.irAAnalisisDeRiesgo();
     }
 
     @Then("mostrar el mensaje <validacion> que devuelve el servicio")
@@ -81,6 +81,6 @@ public class ExpedicionCambioDePolizaUWPEPSDefinitions {
 
     @Then("debo ver un UW issue para la figura indicada $mensaje")
     public void validarUWIssuePEP(ExamplesTable mensaje){
-        generacionUwIssueRiesgosConsultablesPaSteps.validar_Que_Se_Genere_Uw_Issue(mensaje);
+        generacionUwIssueRiesgosConsultablesPaSteps.validarQueSeGenereUwIssue(mensaje);
     }
 }
