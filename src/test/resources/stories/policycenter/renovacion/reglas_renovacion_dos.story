@@ -29,6 +29,8 @@ Examples:
 |envio   |  mensaje1                                | mensaje2                                 |
 |22228589|  es mayor al 20% del valor Asegurado     | es mayor al valor Asegurado del vehículo.|
 
+
+
 Scenario: Tope maximo valor asegurado del vehiculo
 Meta:
 @manual
@@ -40,5 +42,3 @@ Then Se debe mostrar el <mensaje> de ALERTA
 Examples:
 |poliza       |  mensaje                                                                                                                                                                                                                           |
 |TEST_22266674|  El valor asegurado del vehículo supera el límite maximo permitido por políticas. El aseguramiento de este carro así como la oferta presentada al cliente, deben ser avalados previamente por el Comite de Riesgo No Estándar Autos|
-
-

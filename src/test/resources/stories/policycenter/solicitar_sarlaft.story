@@ -28,6 +28,9 @@ And ingrese las coberturas basicas:
 |1.440 |0        |Opción 1|Opción 1|
 And intente cotizar
 And intente expedir la poliza cuyas figuras requieran Sarlaft
+And debe aparecer un mensaje bloqueante en la ventana de requisitos
+|mensaje|
+|El contacto CAROLINA OCHOA con DNI C71318883 requiere sarlaft, diríjase a analisís de riesgo para diligenciarlo.|
 And vaya a la opcion de analisis de riesgo
 Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft
 |mensaje|
@@ -35,11 +38,14 @@ Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft
 
 Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |
-|CEDULA DE CIUDADANIA|71318883  |C1060447895|Autos   |DIRECTO|
+|CEDULA DE CIUDADANIA|71318883  |C000888888 |Autos   |DIRECTO|
 
 Scenario: Habilitar opcion Sarlaft en modificacion
 Given existe una cotizacion <numeroCotizacion>
 When intente expedir la modificacion cuyas figuras requieran Sarlaft
+And debe aparecer un mensaje bloqueante en la ventana de requisitos
+|mensaje|
+|El contacto ANTONIO RESTREPO con DNI C71123456 requiere sarlaft, diríjase a analisís de riesgo para diligenciarlo.|
 And vaya a la opcion de analisis de riesgo
 Then debo ver un UW issue que indique que se requiere diligenciar Sarlaft
 |mensaje|

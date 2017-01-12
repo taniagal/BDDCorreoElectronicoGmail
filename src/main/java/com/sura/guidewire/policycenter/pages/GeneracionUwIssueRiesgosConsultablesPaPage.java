@@ -7,6 +7,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
@@ -22,13 +23,15 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
     private WebElementFacade labelAnalisisDeRiesgo;
     @FindBy(xpath = ".//*[@id='wsTabBar:wsTab_0-btnInnerEl']")
     private WebElementFacade resultadosValidacion;
+    @FindBy(xpath = "//*[@id='wsTabBar:wsTab_0:panelId']")
+    private WebElementFacade tablaRequisitos;
 
     public GeneracionUwIssueRiesgosConsultablesPaPage(WebDriver driver) {
         super(driver);
     }
 
     public void irAAnalisisDeRiesgo() {
-        withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(resultadosValidacion);
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(resultadosValidacion);
         clickElement(analisisDeRiesgo);
         withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(labelAnalisisDeRiesgo);
     }
@@ -45,5 +48,16 @@ public class GeneracionUwIssueRiesgosConsultablesPaPage extends PageUtil {
     public void aceptarExpedicionPoliza() {
         waitForTextToAppear("¿Está seguro de que desea expedir esta póliza?");
         actions.sendKeys(Keys.ENTER).build().perform();
+    }
+
+    public void validarGeneracionMensajeBloqueante(ExamplesTable mensaje) {
+        Map<String, String> datos = mensaje.getRow(0);
+        try {
+            tablaRequisitos.waitUntilPresent();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            tablaRequisitos.waitUntilPresent();
+        }
+        MatcherAssert.assertThat("Error, mensaje no encontrado", tablaRequisitos.getText().contains(datos.get("mensaje")));
     }
 }

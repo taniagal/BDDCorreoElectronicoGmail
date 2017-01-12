@@ -61,6 +61,8 @@ public class CotizacionRenovacionPAPage extends PageUtil {
     @FindBy(xpath = "//tr[3]/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td/div/table/tbody/tr/td[2]/div/div[2]/div/table/tbody/tr/td[2]/div")
     private WebElementFacade campoSubtotalPrimas;
 
+    private static final String CERO_COP = "$0,00 (COP)";
+
     public CotizacionRenovacionPAPage (WebDriver driver){
         super(driver);
     }
@@ -84,8 +86,8 @@ public class CotizacionRenovacionPAPage extends PageUtil {
         MatcherAssert.assertThat(campoCobertura.getText(), Matchers.containsString(cobertura.get("cobertura")));
         MatcherAssert.assertThat(campoValorTermino.getText(), Matchers.containsString(cobertura.get("terminoCobertura")));
         MatcherAssert.assertThat(campoPrima.getText(), Matchers.containsString(cobertura.get("prima")));
-        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa, fué $0,00 (COP)",!campoSubtotalSumaPrimas.getText().equals("$0,00 (COP)"));
-        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa, fué $0,00 (COP)",!campoSubtotalPrimas.getText().equals("$0,00 (COP)"));
+        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa, fué $0,00 (COP)",!CERO_COP.equals(campoSubtotalSumaPrimas.getText()));
+        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa, fué $0,00 (COP)",!CERO_COP.equals(campoSubtotalPrimas.getText()));
     }
 
     public void validarDireccionTomador(ExamplesTable direccion) {
@@ -109,8 +111,8 @@ public class CotizacionRenovacionPAPage extends PageUtil {
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("direccion"))));
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(informacionRenovacion.get("descripcionDireccion"))));
-        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en prima total, fué $0,00 (COP)",!campoPrimaTotal.getText().equals("$0,00 (COP)"));
-        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en iva, fué $0,00 (COP)",!campoIva.getText().equals("$0,00 (COP)"));
-        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en costo total, fué $0,00 (COP)",!campoCostoTotal.getText().equals("$0,00 (COP)"));
+        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en prima total, fué $0,00 (COP)",!CERO_COP.equals(campoPrimaTotal.getText()));
+        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en iva, fué $0,00 (COP)",!CERO_COP.equals(campoIva.getText()));
+        MatcherAssert.assertThat("Error, no está apareciendo el valor de la tarifa en costo total, fué $0,00 (COP)",!CERO_COP.equals(campoCostoTotal.getText()));
     }
 }

@@ -38,7 +38,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade lblInformaPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
     WebElementFacade lblNuevaCotizacion;
-    @FindBy(xpath = "//a[contains(.,'Cotizar')]")
+    @FindBy(xpath = ".//a[contains(.,'Cotizar')]")
     WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade lblTabla;
@@ -160,30 +160,30 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         actions.sendKeys(Keys.ENTER).build().perform();
     }
 
-    public void ingresarTomadorAdicional(String cedula) {
-        waitUntil(WAIT_TIME_2000);
-        btnAgregar.waitUntilPresent().click();
+    public void ingresarTomadorAdicional(String tipoDocumento, String documento) {
+        btnAgregar.waitUntilPresent();
+        clickElement(btnAgregar);
         itemDirectorio.waitUntilVisible().waitUntilClickable().click();
-        waitInfoPoliza(lblBuscarDirectorio);
-        itemTipoDocumento.clear();
-        fluent().await().atMost(WAIT_TIME_200, TimeUnit.MILLISECONDS);
-        itemTipoDocumento.sendKeys("CEDULA DE CIUDADANIA");
+        itemTipoDocumento.waitUntilPresent().clear();
+        waitUntil(WAIT_TIME_300);
+        itemTipoDocumento.sendKeys(tipoDocumento);
         itemTipoDocumento.sendKeys(Keys.ENTER);
-        waitInfoPoliza(lblPrimerNombre);
-        txtNumDocumento.sendKeys(cedula);
-        btnBuscar.waitUntilVisible().waitUntilClickable().click();
-        waitInfoPoliza(btnSelecciona);
-        btnSelecciona.waitUntilVisible().waitUntilClickable().click();
+        waitForAnyTextToAppear("Primer nombre", "Razón social");
+        txtNumDocumento.sendKeys(documento);
+        clickElement(btnBuscar);
+        btnSelecciona.waitUntilPresent();
+        clickElement(btnSelecciona);
         waitInfoPoliza(lblInformaPoliza);
-        btnSiguiente.waitUntilVisible().waitUntilClickable().click();
+        clickElement(btnSiguiente);
     }
 
     public void seleccionBotonSiguiente() {
+        btnSiguiente.waitUntilPresent();
         try {
-            btnSiguiente.waitUntilVisible().click();
+            clickElement(btnSiguiente);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
-            btnSiguiente.waitUntilVisible().click();
+            clickElement(btnSiguiente);
         }
     }
 
@@ -489,11 +489,20 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     }
 
     public void waitInfoPoliza(WebElementFacade webElementFacade) {
-        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(webElementFacade).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(webElementFacade).waitUntilPresent();
     }
 
     public void darClicEnAceptarDeCoaseuguro() {
         botonAceptarCoaseguro.click();
+       /* setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
+        if ($(".message").isPresent()){
+            resetImplicitTimeout();
+            $(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/div/table/tbody/tr[2]/td[2]/div").click();
+            actions.click().build().perform();
+            actions.sendKeys("ACE SEGUROS S.A.").build().perform();
+            actions.sendKeys(Keys.TAB).build().perform();
+        }
+        resetImplicitTimeout();*/
     }
 
 

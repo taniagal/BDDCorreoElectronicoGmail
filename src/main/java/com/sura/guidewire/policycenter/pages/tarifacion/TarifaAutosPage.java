@@ -169,11 +169,28 @@ public class TarifaAutosPage extends PageUtil {
         comboBoxTipoDocumento.sendKeys(tipoDocumento);
         comboBoxTipoDocumento.sendKeys(Keys.ENTER);
         waitUntil(WAIT_TIME_800);
-        botonBuscar.waitUntilPresent();
+        try {
+            botonBuscar.waitUntilPresent();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+        }
         campoTxtNumeroDocumento.sendKeys(documento);
         clickElement(botonBuscar);
-        botonSeleccionar.waitUntilPresent().click();
+        seleccionarAsegurado(documento);
         campoTxtNombre.waitUntilPresent();
+    }
+
+    public void seleccionarAsegurado(String documento) {
+        setImplicitTimeout(WAIT_TIME_10, TimeUnit.SECONDS);
+        if (botonSeleccionar.isPresent()) {
+            botonSeleccionar.click();
+        } else {
+            resetImplicitTimeout();
+            campoTxtNumeroDocumento.sendKeys(documento);
+            clickElement(botonBuscar);
+            botonSeleccionar.click();
+        }
+        resetImplicitTimeout();
     }
 
 
@@ -194,7 +211,7 @@ public class TarifaAutosPage extends PageUtil {
             botonBorrar.waitUntilNotVisible();
         }
         resetImplicitTimeout();
-        comboBoxLimite.waitUntilPresent();
+        withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(comboBoxLimite).waitUntilPresent();
         waitUntil(WAIT_TIME_1500);
         comboBoxLimite.clear();
         waitUntil(WAIT_TIME_500);
@@ -240,8 +257,16 @@ public class TarifaAutosPage extends PageUtil {
     public void seleccionarCoberturasDanios(ExamplesTable coberturas) {
         Map<String, String> dato = coberturas.getRow(0);
         selectItem(comboBoxPerdidaTotalDaniosDeducible, dato.get("PTD"));
-        if (!comboBoxGastosDeTransporteCarro.isPresent()) {
-            labelGatosTransporteCarro.waitUntilPresent();
+        try {
+            if (!comboBoxGastosDeTransporteCarro.isPresent()) {
+                labelGatosTransporteCarro.waitUntilPresent();
+            }
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            waitUntil(WAIT_TIME_2000);
+            if (!comboBoxGastosDeTransporteCarro.isPresent()) {
+                labelGatosTransporteCarro.waitUntilPresent();
+            }
         }
         selectItem(comboBoxPerdidaParcialDaniosDeducible, dato.get("PPD"));
         selectItem(comboBoxGastosDeTransporteCarro, dato.get("GT"));
@@ -303,20 +328,32 @@ public class TarifaAutosPage extends PageUtil {
         }
     }
 
-    public void verificarTarifacionTotal(String primaTotal, String iva, String costoTotal){
+    public void verificarTarifacionTotal(String primaTotal, String iva, String costoTotal) {
         campoPrimaTotal.waitUntilPresent();
         MatcherAssert.assertThat("Error en el valor de la prima, expected: " + primaTotal + " but was: " +
-                campoPrimaTotal.getText(),campoPrimaTotal.containsText(primaTotal));
+                campoPrimaTotal.getText(), campoPrimaTotal.containsText(primaTotal));
         MatcherAssert.assertThat("Error en el valor del iva, expected: " + iva + " but was: " +
-                campoIva.getText(),campoIva.containsText(iva));
+                campoIva.getText(), campoIva.containsText(iva));
         MatcherAssert.assertThat("Error en el valor del costo total, expected: " + costoTotal + " but was: " +
-                campoCostoTotal.getText(),campoCostoTotal.containsText(costoTotal));
-}
+                campoCostoTotal.getText(), campoCostoTotal.containsText(costoTotal));
+    }
 
-    public void verificarCoberturasVehiculoSustituto(ExamplesTable datosCoberturaVehiculo){
+    public void verificarCoberturasVehiculoSustituto(ExamplesTable datosCoberturaVehiculo) {
         Map<String, String> coberturaVehiculo = datosCoberturaVehiculo.getRow(0);
         MatcherAssert.assertThat("Error, el campo valor Limite es Incorrecto", comboBoxLimite.getValue(), Is.is(Matchers.equalTo(coberturaVehiculo.get("limite"))));
         MatcherAssert.assertThat("Error, el campo Deducible es Incorrecto", comboBoxDeducible.getValue(), Is.is(Matchers.equalTo(coberturaVehiculo.get("deducible"))));
         MatcherAssert.assertThat("Error, el campo Abogado es Incorrecto", comboBoxAbogado.getValue(), Is.is(Matchers.equalTo(coberturaVehiculo.get("abogado"))));
+    }
+
+    public void verificarDependenciaDeCobertura() {
+        MatcherAssert.assertThat("Error, la cobertura de accidentes al conductor no se encuentra presente.", comboBoxAccidentes.isPresent());
+    }
+
+    public void marcharCoberturaAccidentes() {
+        clickElement(checkBoxAccidentes);
+    }
+
+    public void verificarCoberturaAccidentes() {
+        MatcherAssert.assertThat("Error, la cobertura de accidentes al conductor se presente.", !comboBoxAccidentes.isPresent());
     }
 }

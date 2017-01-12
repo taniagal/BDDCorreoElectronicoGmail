@@ -361,7 +361,7 @@ public class Navegacion extends PageUtil {
         clickElement(mnuCuenta);
         waitForAnyTextToAppear("Resumen de la cuenta", "Búsqueda de cuentas");
         waitUntil(WAIT_TIME_2500);
-        mnuCuenta.waitUntilClickable().click();
+        clickElement(mnuCuenta);
         waitUntil(WAIT_TIME_500);
         act.sendKeys(Keys.ARROW_DOWN).build().perform();
         act.moveToElement(mnuItemNuevaCuenta).release(mnuItemNuevaCuenta).click().build().perform();

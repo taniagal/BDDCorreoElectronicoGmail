@@ -2,6 +2,7 @@ package com.sura.guidewire.policycenter.pages.tarifacion;
 
 
 import com.sura.guidewire.policycenter.resources.PageUtil;
+import com.sura.guidewire.policycenter.utils.Utils;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.hamcrest.MatcherAssert;
@@ -77,6 +78,8 @@ public class TarifaTasaUnicaPage extends PageUtil {
     private WebElementFacade campoTxtNombre;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:GlobalPersonNameInputSet:MiddleName-inputEl']")
     private WebElementFacade campoTxtSegundoNombre;
+    @FindBy(xpath = ".//*[@id='StartPolicyChange:StartPolicyChangeScreen:StartPolicyChangeDV:EffectiveDate_date-inputEl']")
+    private WebElementFacade campoTxtFechaDeInicioDeVigencia;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PADriversScreen:PADriversPanelSet:DriversListDetailPanel:DriverDetailsCV:PolicyContactDetailsDV:PolicyContactRoleNameInputSet:MaritalStatus-inputEl']")
     private WebElementFacade comboBoxEstadoCivil;
     @FindBy(xpath = ".//*[@id='RenewalWizard:LOBWizardStepGroup:RenewalWizard_PolicyInfoScreen:RenewalWizard_PolicyInfoDV:PolicyInfoInputSet:specialRate_ext-inputEl']")
@@ -155,9 +158,20 @@ public class TarifaTasaUnicaPage extends PageUtil {
     }
 
     public void nuevoCambioDePoliza() {
+        clickAccionesYCambiarPoliza();
+        botonSiguienteCambioDePoliza.waitUntilPresent().click();
+    }
+
+    public void clickAccionesYCambiarPoliza() {
         menuAccionesPoliza.waitUntilPresent().click();
         menuItemCambiarPoliza.waitUntilPresent().click();
-        botonSiguienteCambioDePoliza.waitUntilPresent().click();
+    }
+
+    public void cambiarFechaDeVigencia(){
+        clickAccionesYCambiarPoliza();
+        campoTxtFechaDeInicioDeVigencia.waitUntilPresent().clear();
+        campoTxtFechaDeInicioDeVigencia.sendKeys(Utils.sumarDiasALaFechaActual(33));
+        botonSiguienteCambioDePoliza.click();
     }
 
     public void cambiarValorAsegurado(String valorAsegurado) {
@@ -204,7 +218,7 @@ public class TarifaTasaUnicaPage extends PageUtil {
         setImplicitTimeout(WAIT_TIME_3, TimeUnit.SECONDS);
         if (!botonEditarTransaccionDePolizaAsegurado.isPresent()) {
             clickElement(botonVolver);
-            waitUntil(WAIT_TIME_3000);
+            waitUntil(WAIT_TIME_5000);
             clickElement(botonSiguiente);
         }
         clickElement(botonVolver);

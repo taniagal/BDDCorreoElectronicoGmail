@@ -21,7 +21,7 @@ public class AdmonCotizacionCuentaDeclinaDefinitions {
 
     @When("estoy visualizando las cotizaciones de la cuenta <numCuenta>")
     public void visualizacionDeCotizacion(@Named("numCuenta") String numCuenta) {
-        admonCotizacionCuentaSteps.navegar_barra_superior(numCuenta);
+        admonCotizacionCuentaSteps.navegarBarraSuperior(numCuenta);
     }
 
     @When("cotice para la opcion declinar MRC")
@@ -31,40 +31,40 @@ public class AdmonCotizacionCuentaDeclinaDefinitions {
 
     @When("quiera declinar la cotizacion por cualquier razon <razon>")
     public void razonDeclinarCotizacion(@Named("razon") String razon) {
-        admonCotizacionCuentaSteps.seleccionar_opcion_en_acciones();
-        admonCotizacionCuentaSteps.ingresar_informacion_al_momento_de_rechazar(razon);
+        admonCotizacionCuentaSteps.seleccionarOpcionEnAcciones();
+        admonCotizacionCuentaSteps.ingresarInformacionAlMomentoDeRechazar(razon);
     }
 
     @Then("el sistema debe mostrar el estado declinada <numCotizacion> <accion>")
     public void estadoDeclinarCotizacion(@Named("numCotizacion") String numCotizacion,
                                          @Named("accion") String accion) {
-        admonCotizacionCuentaSteps.valida_estado_de_la_cotizacion(numCotizacion, accion);
+        admonCotizacionCuentaSteps.validaEstadoDeLaCotizacion(numCotizacion, accion);
     }
 
     @Then("desahabilitar la opcion de acciones para no ser modificada")
     public void thenDesahabilitarLaOpcionDeAccionesParaNoSerModificada() {
-        admonCotizacionCuentaSteps.inhabilita_acciones();
+        admonCotizacionCuentaSteps.inhabilitaAcciones();
     }
 
     @When("quiera declinar la cotizacion sin ingresar la razon")
     public void navegaCotizacion() {
-        admonCotizacionCuentaSteps.seleccionar_opcion_en_acciones();
-        admonCotizacionCuentaSteps.declinar_sin_razon();
+        admonCotizacionCuentaSteps.seleccionarOpcionEnAcciones();
+        admonCotizacionCuentaSteps.declinarSinRazon();
     }
 
     @Then("el sistema debe mostrar un mesaje <mensaje>")
     public void mostarMensaje(@Named("mensaje") String mensaje) {
-        admonCotizacionCuentaSteps.valida_mensaje(mensaje);
+        admonCotizacionCuentaSteps.validaMensaje(mensaje);
     }
 
     @When("quiera declinar la cotizacion")
     public void declinar() {
-        admonCotizacionCuentaSteps.seleccionar_opcion_en_acciones();
+        admonCotizacionCuentaSteps.seleccionarOpcionEnAcciones();
     }
 
     @When("el sistema debe mostrarme todas las opciones: $listaCodRazon")
     public void validarOpciones(ExamplesTable listaCodRazon) {
-        admonCotizacionCuentaSteps.valida_lista_de_razones(listaCodRazon);
+        admonCotizacionCuentaSteps.validaListaDeRazones(listaCodRazon);
     }
 
 }

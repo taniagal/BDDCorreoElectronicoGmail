@@ -76,7 +76,7 @@ public class CotizacionMRCPage extends PageUtil {
 
     protected static final int WAIT_TIME_7000 = 7000;
 
-    public CotizacionMRCPage(WebDriver driver){
+    public CotizacionMRCPage(WebDriver driver) {
         super(driver);
     }
 
@@ -90,9 +90,9 @@ public class CotizacionMRCPage extends PageUtil {
     public void ingresarACotizacion() {
         WebElementFacade botonInformacionPoliza = findBy(".//*[@id='SubmissionWizard:PolicyInfo']/div/span");
         WebElementFacade titulo = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:ttlBar']");
-        if(titulo.isCurrentlyVisible()){
-            waitForTextToAppear("Información de póliza",WAIT_TIME_5000);
-        }else{
+        if (titulo.isCurrentlyVisible()) {
+            waitForTextToAppear("Información de póliza", WAIT_TIME_5000);
+        } else {
             waitFor(botonInformacionPoliza).shouldBeVisible();
             botonInformacionPoliza.click();
         }
@@ -127,14 +127,14 @@ public class CotizacionMRCPage extends PageUtil {
         MatcherAssert.assertThat(campoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("direccion"))));
         MatcherAssert.assertThat(campoTipoDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("tipoDireccion"))));
         MatcherAssert.assertThat(campoDescripcionDireccion.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("descripcionDireccion"))));
-        MatcherAssert.assertThat(campoPrimaTotal.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("prima"))));
-        MatcherAssert.assertThat(campoImpuestos.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("impuestos"))));
-        MatcherAssert.assertThat(campoCostoTotal.getText(), Is.is(Matchers.equalTo(datosCotizacion.get("total"))));
+        MatcherAssert.assertThat("Error en la tarifacion, fue $0,00", !campoPrimaTotal.getText().contains("$0,00"));
+        MatcherAssert.assertThat("Error en la tarifacion, fue $0,00", !campoImpuestos.getText().contains("$0,00"));
+        MatcherAssert.assertThat("Error en la tarifacion, fue $0,00", !campoCostoTotal.getText().contains("$0,00"));
     }
 
     public void validarPrima(String primaTotal) {
         waitUntil(WAIT_TIME_7000);
-        MatcherAssert.assertThat(campoPrimaTotal.getText(),Is.is(Matchers.equalTo(primaTotal)));
+        MatcherAssert.assertThat(campoPrimaTotal.getText(), Is.is(Matchers.equalTo(primaTotal)));
     }
 
     public void mostrarDetallePrima(Map<String, String> labelsCotizacionPoliza) {
@@ -149,9 +149,7 @@ public class CotizacionMRCPage extends PageUtil {
         WebElementFacade resultadosValidacion = withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).find(".//*[@id='wsTabBar:wsTab_0-btnInnerEl']");
         withTimeoutOf(WAIT_TIME_20, TimeUnit.SECONDS).waitFor(resultadosValidacion).shouldBeVisible();
         WebElementFacade tablaMensajes = findBy(".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:grpMsgs']");
-        waitUntil(WAIT_TIME_3000);
-        MatcherAssert.assertThat(tablaMensajes.getText(),Matchers.containsString(mensaje));
-        waitUntil(WAIT_TIME_5000);
+        MatcherAssert.assertThat(tablaMensajes.getText(), Matchers.containsString(mensaje));
     }
 
     public void validarBloqueoExclusividad(String mensaje) {
@@ -162,7 +160,7 @@ public class CotizacionMRCPage extends PageUtil {
     public void validarTipoRiesgo() {
         waitUntil(WAIT_TIME_1500);
         WebElementFacade botonCotizar = findBy(".//*[@id='SubmissionWizard:SubmissionWizard_PolicyInfoScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']");
-        withTimeoutOf(WAIT_TIME_10,TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
+        withTimeoutOf(WAIT_TIME_10, TimeUnit.SECONDS).waitFor(botonCotizar).shouldBePresent();
         botonCotizar.click();
         waitUntil(WAIT_TIME_5000);
     }

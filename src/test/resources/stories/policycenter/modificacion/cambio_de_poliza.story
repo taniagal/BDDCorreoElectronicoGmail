@@ -1,4 +1,7 @@
-Meta: @lote3
+Cambio De Poliza
+
+Meta:
+@lote3
 @issue #SUGWUSC-15127
 @tag automator: Jonathan_Mejia_Leon
 @local
@@ -10,10 +13,18 @@ Al realizar el cambio de una poliza quiero identificar cuando una poliza tiene r
 
 Scenario:  Realizar cambio de una poliza PA con retroactividad
 GivenStories: stories/policycenter/login_policy.story
-Given estoy cotizando una poliza basado en otro envio <envio>
-When ingrese los datos de la cotizacion PA
-|ciudad_circulacion|limite|deducible|abogado |PLlaves |modelo|
-|MEDELLIN          |1.440 |0        |Opción 1|Opción 1|2016  |
+Given voy a crear una nueva cotizacion
+And crear una cotizacion nueva con la cuenta <cuenta>
+And seleccione el agente <agente>
+When seleccione el producto <producto> para expedir la poliza
+And ingrese la informacion de poliza
+And ingrese los datos del asegurado <tipo_documento> <documento>
+And ingrese los datos del vehiculo:
+|placa |modelo|codigo_fasecolda|ciudad_circulacion|vehiculo_servicio|chasis|motor|valor_asegurado|descuento|recargo|zona|plan        |
+|random|2016  |00601182        |MEDELLIN          |Particular       |null  |null |165900000      |null     |null   |2   |Plan Modular|
+And ingrese las coberturas:
+|limite|deducible|abogado |PLlaves |
+|1.440 |0        |Opción 1|Opción 1|
 And cambie la fecha de inicio de vigencia <dias> de pa poliza
 And cotice una poliza
 And expido la poliza y voy al archivo de poliza
@@ -21,8 +32,9 @@ And quiero relizar el cambio de una poliza
 Then debo visualizar la advertencia con el <mensaje>
 
 Examples:
-|envio   |dias|mensaje|
-|22228589|-31 |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días) |
+|tipo_documento      |documento |dias|cuenta     | producto| agente  |mensaje|
+|CEDULA DE CIUDADANIA|1060447895|-31 |C1060447895| Autos   | DIRECTO |La fecha inicio de vigencia no cumple con el parámetro de retroactividad definido (30 días) |
+
 
 Scenario:  Realizar cambio de una poliza PA con emision anticipada
 Given que voy a buscar una poliza  <buscarNumeroPoliza>

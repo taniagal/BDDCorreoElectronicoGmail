@@ -1,7 +1,7 @@
 Condiciones particulares
 
 Meta:
-@lote1
+@lote3
 @issue #CDSEG-4621
 @sprint 11
 @tag automator: juan_gabriel_zapata
@@ -263,10 +263,10 @@ Then debo ver un UW issue por cada figura que sea riesgo consultable bloqueante
 
 Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355347  |
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
-Scenario: 14 Validacion expedicion: vehiculo blindado en estado NO
+Scenario: 14 Validacion expedicion de vehiculo blindado en estado NO
 Given que tengo una cotizacion <cotizacion>
 When copie la poliza
 And ingrese los datos del asegurado <tipo_documento> <documento>
@@ -283,7 +283,7 @@ Then se debe permitir expedir la poliza
 
 Examples:
 |tipo_documento      |documento |cuenta     |producto|agente |cotizacion|
-|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355347  |
+|CEDULA DE CIUDADANIA|1060447895|C1060447895|Autos   |DIRECTO|33355366  |
 
 
 Scenario: 15 Validaciones de vehiculo blindado para poliza sin condicion particular(CP)

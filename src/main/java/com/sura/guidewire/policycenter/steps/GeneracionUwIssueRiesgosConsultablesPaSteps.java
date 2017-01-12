@@ -10,17 +10,21 @@ public class GeneracionUwIssueRiesgosConsultablesPaSteps extends ScenarioSteps{
     private GeneracionUwIssueRiesgosConsultablesPaPage generacionUwIssueRiesgosConsultablesPa;
 
     @Step
-    public void ir_A_Analisis_De_Riesgo() {
+    public void irAAnalisisDeRiesgo() {
         generacionUwIssueRiesgosConsultablesPa.irAAnalisisDeRiesgo();
     }
 
     @Step
-    public void validar_Que_Se_Genere_Uw_Issue(ExamplesTable mensaje) {
+    public void validarQueSeGenereUwIssue(ExamplesTable mensaje) {
         generacionUwIssueRiesgosConsultablesPa.validarGeneracionUWIssue(mensaje);
     }
 
     @Step
-    public void aceptar_Expedicion_Poliza() {
+    public void aceptarExpedicionPoliza() {
         generacionUwIssueRiesgosConsultablesPa.aceptarExpedicionPoliza();
+    }
+
+    public void validarMensajeBloqueanteSarlaft(ExamplesTable mensaje) {
+        generacionUwIssueRiesgosConsultablesPa.validarGeneracionMensajeBloqueante(mensaje);
     }
 }

@@ -100,7 +100,6 @@ public class CambioDePolizaPage extends PageUtil {
         botonAceptarPopup.waitUntilPresent().click();
         irAInformacionDePoliza();
         String fecha = Utils.sumarDiasALaFechaActual(Integer.parseInt(dias));
-        nuevaCotizacionPage.llenarInfoPoliza();
         campoTxtFechaInicioDeVigencia.waitUntilPresent().clear();
         campoTxtFechaInicioDeVigencia.sendKeys(fecha);
         clickElement(comboBoxTipoPlazo);
