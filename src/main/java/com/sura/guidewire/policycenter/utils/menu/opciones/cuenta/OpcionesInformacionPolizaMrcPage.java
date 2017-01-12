@@ -38,7 +38,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade lblInformaPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
     WebElementFacade lblNuevaCotizacion;
-    @FindBy(xpath = "//a[contains(.,'Cotizar')]")
+    @FindBy(xpath = ".//a[contains(.,'Cotizar')]")
     WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade lblTabla;
