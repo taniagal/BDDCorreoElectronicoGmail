@@ -90,7 +90,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
         listPaisSeleccionar.waitUntilClickable();
         selectItem(listPaisSeleccionar, PAIS_ALEMANIA);
         selectItem(listNombreReaseugurador, ASEGURA_ALLIANZ);
-        btnAceptarReasegurador.click();
+        clickElement(btnAceptarReasegurador);
     }
 
     public void ingresaParticipacion(ExamplesTable datosReaseguradores) {
@@ -106,7 +106,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
         $(CELDA_VALOR).sendKeys(datoReaseguradores.get("comisionReasegurador"));
         waitAndClickOnButton($(VALOR));
         waitUntil(WAIT_TIME_500);
-        $(CELDA_VALOR).sendKeys(datoReaseguradores.get("valorReaseguro"));
+        $(CELDA_VALOR).waitUntilPresent().sendKeys(datoReaseguradores.get("valorReaseguro"));
     }
 
     public void seleccionaModalidadPrima(ExamplesTable datosReaseguradores) {
