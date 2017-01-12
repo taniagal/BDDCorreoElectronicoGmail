@@ -24,7 +24,7 @@ public class CrearYEditarCumulosPages extends PageUtil {
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add-btnWrap']")
     WebElementFacade btnAgregarDireccionRiesgoAplicable;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:Add:0:riskbutton']")
-    WebElementFacade ListDireccionRiesgoAplicable;
+    WebElementFacade listDireccionRiesgoAplicable;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV_tb:Add-btnInnerEl']")
     WebElementFacade btnAgregaInformacionReaseguro;
     @FindBy(xpath = ".//*[@id='RIWorksheetPopup:Worksheet:RIWorksheetsPanelSet:RIWorksheetCV:worksheetItemsLV:WorksheetItemsLV:0:reName']")
@@ -86,8 +86,8 @@ public class CrearYEditarCumulosPages extends PageUtil {
         actions.doubleClick(txtIngresaDescripcionAcuerdo).build().perform();
         actions.sendKeys(descripcionDeAcuerdo).build().perform();
         btnAgregarDireccionRiesgoAplicable.click();
-        ListDireccionRiesgoAplicable.waitUntilPresent();
-        ListDireccionRiesgoAplicable.click();
+        listDireccionRiesgoAplicable.waitUntilPresent();
+        listDireccionRiesgoAplicable.click();
     }
 
     public void ingresoInformacionDeReaseguroEnTabla() {
