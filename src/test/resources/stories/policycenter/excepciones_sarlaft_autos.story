@@ -19,23 +19,6 @@ And se adicione alguna validacion de autos
 And se expida la poliza
 Then no se debe frenar la expediciion
 
-Scenario: Validar sarlaft con validaciones de autos en asegurado
-Meta:@manual
-Given se esta cotizando una poliza nueva
-When adicione un asegurado que requiera salaft
-And se adicione alguna validacion de autos
-And se expida la poliza
-Then no se debe frenar la expediciion
-
-Scenario: Validar sarlaft con validaciones de autos en tomador-modificacion
-Meta:@manual
-Given se tiene un poliza expedida de autos
-When entre a modificar la poliza
-And se adicione un tomador secundario que requiera salaft
-And se adicione alguna validacion de autos
-And se expida la poliza
-Then no se debe frenar la expedicion
-
 Scenario: Validar sarlaft con validaciones de autos en asegurado-modificacion
 Meta:@manual
 Given se tiene un poliza expedida de autos
@@ -45,7 +28,8 @@ And se adicione alguna validacion de autos
 And se expida la poliza
 Then no se debe frenar la expedicion
 
-Scenario: Validar sarlaft en modificacion con tomador
+
+Scenario: Validar sarlaft en modificacion con tomador y/o asegurado
 Meta:@manual
 Given se tiene un poliza expedida de autos
 When entre a modificar la poliza
@@ -53,10 +37,3 @@ And se adicione un tomador secundario que requiera salaft
 And se expida la poliza
 Then debe de sacar un mensaje requiriendo sarlaft
 
-Scenario: Validar sarlaft en modificacion con asegurado
-Meta:@manual
-Given se tiene un poliza expedida de autos
-When entre a modificar la poliza
-And se adicione un asegurado que requiera sarlaft
-And se expida la poliza
-Then debe de sacar un mensaje requiriendo sarlaft
