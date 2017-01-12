@@ -52,6 +52,7 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
     WebElementFacade botonSiguienteTabla;
 
     private static final String MENOS_UNO = "-1";
+    private static final int QUINCE = 15;
 
     public DetalleRegistrosSuscripcionPage(WebDriver driver) {
         super(driver);
@@ -97,8 +98,8 @@ public class DetalleRegistrosSuscripcionPage extends PageUtil {
     }
 
     public int iteraciones(Integer paginas) {
-        int modulo = paginas % 15;
-        int divido = paginas / 15;
+        int modulo = paginas % QUINCE;
+        int divido = paginas / QUINCE;
         if (modulo != 0) {
             divido++;
         }
