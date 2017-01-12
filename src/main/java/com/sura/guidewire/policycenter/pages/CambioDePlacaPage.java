@@ -209,7 +209,7 @@ public class CambioDePlacaPage extends PageUtil {
     }
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
-        menuItemVehiculosModificacion.click();
+        clickElement(menuItemVehiculosModificacion);
         clickElement(checkBoxCambioDePlaca);
         clickElement(checkBoxCambioDePlaca);
         waitUntil(WAIT_TIME_2000);
