@@ -64,9 +64,9 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
     private WebElementFacade comboBoxSiCeroKilometros;
     @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PAVehicleModifiersDV:0:BooleanModifier_true-inputEl']")
     private WebElementFacade comboBoxSiVehiculoBLindado;
-    @FindBy(xpath ="//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:transportFuel_true-inputEl']")
+    @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:transportFuel_true-inputEl']")
     private WebElementFacade comboBoxSiTransporteCombustible;
-    @FindBy(xpath ="//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:transportFuel_false-inputEl']")
+    @FindBy(xpath = "//input[@id='SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:transportFuel_false-inputEl']")
     private WebElementFacade comboBoxNoTransporteCombustible;
 
     protected static final int WAIT_TIME_28000 = 28000;
@@ -94,10 +94,10 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitForTextToAppear(placa, WAIT_TIME_28000);
     }
 
-    public void clickSiguienteConMensaje(){
+    public void clickSiguienteConMensaje() {
         clickSiguiente();
-        setImplicitTimeout(WAIT_TIME_2,TimeUnit.SECONDS);
-        if ($(".message").isPresent()){
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
+        if ($(".message").isPresent()) {
             clickSiguiente();
         }
         resetImplicitTimeout();
@@ -140,7 +140,7 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         waitUntil(WAIT_TIME_1000);
         try {
             waitFor(ExpectedConditions.textToBePresentInElement(campoTxtzona, vehiculo.get("zona")));
-        }catch (TimeoutException e){
+        } catch (TimeoutException e) {
             LOGGER.info("TimeoutException" + e);
         }
         selectItem(comboBoxVehiculoServicio, vehiculo.get("vehiculo_servicio"));
@@ -148,13 +148,12 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         if (opcion.equals(vehiculo.get("cero_kilometros"))) {
             seleccionarVehiculoCeroKilometros();
         }
-        if(opcion.equals(vehiculo.get("vehiculo_blindado"))){
+        if (opcion.equals(vehiculo.get("vehiculo_blindado"))) {
             seleccionarVehiculoBlindado();
         }
-        if(opcion.equals(vehiculo.get("transporte_combustible"))){
+        if (opcion.equals(vehiculo.get("transporte_combustible"))) {
             seleccionarTransporteDeCombustible(opcion);
-        }
-        else{
+        } else {
             opcion = "No";
             seleccionarTransporteDeCombustible(opcion);
         }
@@ -179,12 +178,11 @@ public class ValidacionesInformacionDeVehiculoPage extends PageUtil {
         clickElement(comboBoxSiVehiculoBLindado);
     }
 
-    public void seleccionarTransporteDeCombustible(String opcion){
+    public void seleccionarTransporteDeCombustible(String opcion) {
         waitUntil(WAIT_TIME_2000);
-        if("Si".equals(opcion)) {
+        if ("Si".equals(opcion)) {
             clickElement(comboBoxSiTransporteCombustible);
-        }
-        else{
+        } else {
             clickElement(comboBoxNoTransporteCombustible);
             this.opcion = "Si";
         }
