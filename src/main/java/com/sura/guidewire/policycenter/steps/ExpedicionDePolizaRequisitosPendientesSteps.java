@@ -18,20 +18,18 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
     public ExpedicionDePolizaRequisitosPendientesSteps(Pages pages) {
         super(pages);
     }
-        ExpedicionDePolizaRequisitosPendientesPage expedicionDePolizaRequisitosPendientesPage;
+
+    ExpedicionDePolizaRequisitosPendientesPage expedicionDePolizaRequisitosPendientesPage;
     TarifaAutosPage tarifaAutosPage = new TarifaAutosPage(getDriver());
-        GuidewireLoginPages login = new GuidewireLoginPages();
+    GuidewireLoginPages login = new GuidewireLoginPages();
     ValidacionesInformacionDeVehiculoPage vehiculoPage = new ValidacionesInformacionDeVehiculoPage(getDriver());
     TarifaTasaUnicaPage tasaUnicaPage = new TarifaTasaUnicaPage(getDriver());
     NuevaCotizacionPage nuevaCotizacionPage = new NuevaCotizacionPage(getDriver());
 
-
-    int token=1;
-
+    int token = 1;
 
     public void ingresarValorAccesorios(String accesorios) {
         expedicionDePolizaRequisitosPendientesPage.valorAccesorios(accesorios);
-
     }
 
     public void verMensaje(ExamplesTable mensaje) {
@@ -52,12 +50,12 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
             login.enter(usuario).into(login.elemento(GuidewireLoginPages.TXT_USUARIO_SEUS));
             login.enter(contrasenia).into(login.elemento(GuidewireLoginPages.TXT_CONTRASENIA_SEUS));
         }
-        if (login.elemento(GuidewireLoginPages.CBO_PAIS) != null){
+        if (login.elemento(GuidewireLoginPages.CBO_PAIS) != null) {
             login.elemento(GuidewireLoginPages.CBO_PAIS).selectByVisibleText(pais);
             login.elemento(GuidewireLoginPages.BTN_LOGIN_SEUS).click();
         }
-
     }
+
     @Step
     public void agregarVehiculo(ExamplesTable datosVehiculo) {
         if (token == 1) {
@@ -87,10 +85,6 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
 
     public void clickOpcionCotizar() {
         expedicionDePolizaRequisitosPendientesPage.cotizarModificacionPoliza();
-    }
-
-    public void clickExpedirPoliza() {
-        expedicionDePolizaRequisitosPendientesPage.clickExpedirPoliza();
     }
 
     public void ingresarCiudadModificacionPoliza(String ciudad) {
@@ -130,7 +124,6 @@ public class ExpedicionDePolizaRequisitosPendientesSteps extends ScenarioSteps {
         vehiculoPage.crearVehiculo();
         tarifaAutosPage.relacionarAsegurado();
         expedicionDePolizaRequisitosPendientesPage.agregarVehiculo(datos);
-
     }
 
     public void cambiarValorAccesorios() {

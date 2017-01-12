@@ -105,6 +105,7 @@ Examples:
 |tipo_documento      |documento |
 |CEDULA DE CIUDADANIA|1234567890|
 
+
 Scenario: Validacion beneficiario oneroso en expedicion-modificacion
 Given ya se tiene una poliza expedida <numeroPoliza>
 When ingrese a modificar dicha cotizacion

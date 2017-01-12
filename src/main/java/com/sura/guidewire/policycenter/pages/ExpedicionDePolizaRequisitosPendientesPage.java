@@ -10,12 +10,14 @@ import org.jbehave.core.model.ExamplesTable;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
-
+import java.util.concurrent.TimeUnit;
 
 public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     public ExpedicionDePolizaRequisitosPendientesPage(WebDriver driver) {
         super(driver);
     }
+    NuevaPolizaPage nuevaPolizaPage = new NuevaPolizaPage(getDriver());
+
 
     @FindBy(xpath = ".//*[@id='WebMessageWorksheet:WebMessageWorksheetScreen:WebMessageWorksheet_ClearButton-btnInnerEl']")
     private WebElementFacade botonBorrar;
@@ -63,7 +65,6 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade botonCiudadModificacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:PersonalAuto_VehicleDV:city-inputEl']")
     private WebElementFacade txtCiudadModificacion;
-
     @FindBy(xpath = "..//*[@id='SubmissionWizard:SubmissionWizard_PreQualificationScreen:JobWizardToolbarButtonSet:QuoteOrReview-btnInnerEl']")
     private WebElementFacade botonCotizarSubmission;
     @FindBy(xpath = ".//*[@id=\"JobComplete:JobCompleteScreen:JobCompleteDV:ViewPolicy-inputEl\"]")
@@ -148,13 +149,12 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     private WebElementFacade botonInteresAdicionalModificacion;
     @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton-btnWrap']")
     private WebElementFacade botonAgregarBeneficiarioModificacion;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton:AddExistingContact-textEl']")
-    private WebElementFacade botonExistenteInteresAdicional;
-    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton:AddExistingContact:0:ExistingAdditionalInterest-textEl']")
-    private WebElementFacade botonContactoExistenteInteresAdicional;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton:AddOtherContact-itemEl']")
+    private WebElementFacade botonContactoModificacion;
+    @FindBy(xpath = ".//*[@id='PolicyChangeWizard:LOBWizardStepGroup:LineWizardStepSet:PAVehiclesScreen:PAVehiclesPanelSet:VehiclesListDetailPanel:VehiclesDetailsCV:AdditionalInterestDetailsDV:AdditionalInterestLV_tb:AddContactsButton:AddOtherContact:0:acctContact-textEl']")
+    private WebElementFacade botonContactoExistente;
     @FindBy(xpath = "//div[contains(.,'<ninguno>') and contains(@class,'x-grid-cell-inner')]")
     private WebElementFacade txtBeneficiarioOnerosoModificacionBeneficiario;
-
 
     public void valorAccesorios(String accesorios) {
         waitUntil(WAIT_TIME_3000);
@@ -174,7 +174,7 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
 
     public void clickRequisitosPendientes() {
         findBy(".//*[@id='SubmissionWizard:SubmissionWizard_QuoteScreen:JobWizardToolbarButtonSet:RequestRequirement-btnInnerEl']").click();
-        for(String winHandle : getDriver().getWindowHandles()){
+        for (String winHandle : getDriver().getWindowHandles()) {
             System.out.println("paginas " + getDriver().switchTo().window(winHandle));
         }
     }
@@ -184,7 +184,6 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         waitUntil(WAIT_TIME_2000);
         clickElement(botonCrearVehiculo);
         waitUntil(WAIT_TIME_3000);
-
     }
 
     public void relacionarAsegurado() {
@@ -209,14 +208,11 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         botonContacto.click();
         txtTipoBeneficiario.click();
         txtTipoBeneficiarioOneroso.click();
-
     }
 
     public void clickVehiculosModificacion() {
-        waitUntil(WAIT_TIME_3000);
-        botonVehiculosModificacion.click();
-        waitUntil(WAIT_TIME_5000);
-        botonVehiculosModificacion.click();
+        clickElement(botonVehiculosModificacion);
+        clickElement(botonVehiculosModificacion);
     }
 
     public void agregarAccesorios(String accesorios) {
@@ -228,56 +224,41 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void cotizarModificacionPoliza() {
-        waitUntil(WAIT_TIME_3000);
         clickElement(botonCotizarModificacion);
         waitUntil(WAIT_TIME_3000);
-
-    }
-
-    public void clickExpedirPoliza() {
-        waitUntil(WAIT_TIME_3000);
-
     }
 
     public void ingresarCiudadModificacion(String ciudad) {
         waitUntil(WAIT_TIME_3000);
         txtciudadPolizaModificacion.clear();
         txtciudadPolizaModificacion.sendKeys(ciudad);
-        waitUntil(WAIT_TIME_1000);
-        botonCiudadModificacion.click();
+        clickElement(botonCiudadModificacion);
         waitUntil(WAIT_TIME_1000);
     }
 
     public void clickVehiculoCeroKilometros() {
         waitUntil(WAIT_TIME_3000);
-        itemVehiculoCeroKilometros.click();
-
+        clickElement(itemVehiculoCeroKilometros);
     }
 
     public void valirdarPresenciaCotizar() {
         waitUntil(WAIT_TIME_3000);
-        if(botonCotizarSubmission.isPresent()){
-            botonCotizarSubmission.click();
+        if (botonCotizarSubmission.isPresent()) {
+            clickElement(botonCotizarSubmission);
         }
         waitUntil(WAIT_TIME_3000);
-
-
     }
 
     public void clickArchivoDePoliza() {
-        waitUntil(WAIT_TIME_3000);
-        clickArchivoDePoliza.click();
-        waitUntil(WAIT_TIME_3000);
-
+       clickElement(clickArchivoDePoliza);
     }
 
     public void seleccionarOpcionCeroKilometros() {
-        itemVehiculoCeroKilometros.click();
+        clickElement(itemVehiculoCeroKilometros);
     }
 
     public void irAVehiculos() {
-        waitUntil(WAIT_TIME_2000);
-        itemVehiculos.click();
+        clickElement(itemVehiculos);
         waitUntil(WAIT_TIME_2000);
     }
 
@@ -291,48 +272,44 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
     }
 
     public void cotizarPoliza() {
-        botonCotizar.click();
+       clickElement(botonCotizar);
     }
 
     public void agregarVehiculo(ExamplesTable datos) {
         Map<String, String> vehiculo = datos.getRow(0);
         comboBoxPlanSubmission.clear();
-        selectItem(comboBoxPlanSubmission , vehiculo.get("plan"));
+        selectItem(comboBoxPlanSubmission, vehiculo.get("plan"));
         waitUntil(WAIT_TIME_3000);
-        selectItem(txtPlacaSubmission , vehiculo.get("placa"));
+        selectItem(txtPlacaSubmission, vehiculo.get("placa"));
         comboBoxModeloSubmission.clear();
         waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxModeloSubmission , vehiculo.get("modelo"));
+        selectItem(comboBoxModeloSubmission, vehiculo.get("modelo"));
         waitUntil(WAIT_TIME_3000);
-        selectItem(txtCodigoFasecoldaSubmission ,vehiculo.get("codigo_fasecolda"));
+        selectItem(txtCodigoFasecoldaSubmission, vehiculo.get("codigo_fasecolda"));
         waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxClaseVehiculoSubmission , vehiculo.get("clase_vehiculo"));
+        selectItem(comboBoxClaseVehiculoSubmission, vehiculo.get("clase_vehiculo"));
         waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxMarcaSubmission ,vehiculo.get("marca"));
+        selectItem(comboBoxMarcaSubmission, vehiculo.get("marca"));
         waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxLinea,vehiculo.get("linea"));
+        selectItem(comboBoxLinea, vehiculo.get("linea"));
         waitUntil(WAIT_TIME_3000);
-        selectItem(comboBoxCiudadCirculacionSubmission,vehiculo.get("ciudad_circulacion"));
+        selectItem(comboBoxCiudadCirculacionSubmission, vehiculo.get("ciudad_circulacion"));
         waitUntil(WAIT_TIME_3000);
         selectItem(comboBoxTipoServicio, vehiculo.get("vehiculo_servicio"));
         waitUntil(WAIT_TIME_3000);
-        selectItem(txtMotorSubmission,vehiculo.get("motor"));
+        selectItem(txtMotorSubmission, vehiculo.get("motor"));
         waitUntil(WAIT_TIME_3000);
-        selectItem(txtChasisSubmission,vehiculo.get("chasis"));
+        selectItem(txtChasisSubmission, vehiculo.get("chasis"));
         waitUntil(WAIT_TIME_3000);
         txtValorAseguradoSubmission.clear();
-        selectItem(txtValorAseguradoSubmission,vehiculo.get("valor_asegurado"));
+        selectItem(txtValorAseguradoSubmission, vehiculo.get("valor_asegurado"));
         waitUntil(WAIT_TIME_2000);
         itemVehiculoCeroKilometros.click();
         waitUntil(WAIT_TIME_2000);
-
-
-
     }
 
     public void cambiarValorAccesorios() {
         campoTxtAccesorios.clear();
-
     }
 
     public void verMensajeBloqueanteModificacion(ExamplesTable mensaje) {
@@ -342,31 +319,29 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
             bloqueoUW = mensaje.getRows().get(i);
             MatcherAssert.assertThat(tablaRequisitosModificacion.getText(), Matchers.containsString(bloqueoUW.get("mensaje")));
         }
-
     }
 
     public void beneficiarioOnerosoModificacion(String beneficiario) {
+        clickElement(botonInteresAdicionalModificacion);
         waitUntil(WAIT_TIME_3000);
-        botonInteresAdicionalModificacion.click();
-        botonAgregarBeneficiarioModificacion.click();
-        botonExistenteInteresAdicional.click();
-        botonContactoExistenteInteresAdicional.click();
-        txtBeneficiarioOnerosoModificacion.click();
+        withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(botonAgregarBeneficiarioModificacion).click();
+        //waitUntil(WAIT_TIME_5000);
+        withTimeoutOf(WAIT_TIME_5, TimeUnit.SECONDS).waitFor(botonContactoModificacion).click();
+        waitUntil(WAIT_TIME_2000);
+        clickElement(botonContactoExistente);
         waitUntil(WAIT_TIME_3000);
-        NuevaPolizaPage nuevaPolizaPage= new NuevaPolizaPage(getDriver());
+        clickElement(txtBeneficiarioOnerosoModificacion);
+        waitUntil(WAIT_TIME_3000);
         nuevaPolizaPage.seleccionarElementoDeLaLista(beneficiario);
-//        txtBeneficiarioOnerosoModificacion.sendKeys(beneficiario);
-//        txtBeneficiarioOnerosoModificacionBeneficiario.click();
+        waitUntil(WAIT_TIME_3000);
     }
 
     public void cancelarPoliza() {
-        txtCancelarPoliza.click();
-        waitUntil(WAIT_TIME_3000);
-        txtMotivoCancelarPoliza.click();
-        botonIniciarTransaccion.click();
-        waitUntil(WAIT_TIME_3000);
-        botonOpcionesDeCompromiso.click();
-        botonAceptarCancelacion.click();
+        clickElement(txtCancelarPoliza);
+        clickElement(txtMotivoCancelarPoliza);
+        clickElement(botonIniciarTransaccion);
+        clickElement(botonOpcionesDeCompromiso);
+        clickElement(botonAceptarCancelacion);
     }
 
     public void verMensajeCancelacion(ExamplesTable mensaje) {
@@ -383,18 +358,21 @@ public class ExpedicionDePolizaRequisitosPendientesPage extends PageUtil {
         txtCiudadModificacion.clear();
         waitUntil(WAIT_TIME_3000);
         txtCiudadModificacion.waitUntilPresent().sendKeys(ciudad);
-        botonCiudadModificacion.click();
+        clickElement(botonCiudadModificacion);
         waitUntil(WAIT_TIME_3000);
     }
 
     public void ingresarCoberturas(String deducible, String perdida_llaves) {
+        waitUntil(WAIT_TIME_3000);
         clickElement(botonSiguienteModificacion);
         clickElement(botonSiguienteModificacion);
+        waitUntil(WAIT_TIME_3000);
         botonBorrar.waitUntilPresent().click();
         botonBorrar.waitUntilNotVisible();
+        waitUntil(WAIT_TIME_3000);
         selectItem(txtLimiteCobertura, "1.440");
         selectItem(comboBoxDeducible, deducible);
-        selectItem(txtPerdidaDeLLaves,perdida_llaves);
+        selectItem(txtPerdidaDeLLaves, perdida_llaves);
     }
 }
 
