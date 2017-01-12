@@ -171,10 +171,12 @@ public class TarifaAutosPage extends PageUtil {
         waitUntil(WAIT_TIME_800);
         try {
             botonBuscar.waitUntilPresent();
+            campoTxtNumeroDocumento.sendKeys(documento);
         } catch (StaleElementReferenceException e) {
             LOGGER.info("StaleElementReferenceException " + e);
+            waitUntil(WAIT_TIME_2000);
+            campoTxtNumeroDocumento.sendKeys(documento);
         }
-        campoTxtNumeroDocumento.sendKeys(documento);
         clickElement(botonBuscar);
         seleccionarAsegurado(documento);
         campoTxtNombre.waitUntilPresent();
