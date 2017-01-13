@@ -22,8 +22,8 @@ import java.util.concurrent.TimeUnit;
 public class SmokeTests extends MetodosComunes {
     private WebDriver driver;
     private LoginPage loginPage;
-    private WebDriverWait wait;
     private SmokeTestPage smokeTestPage;
+    private static final int WAIT_30 = 30;
 
     @Before
     public void setUp() throws Exception {
@@ -31,9 +31,8 @@ public class SmokeTests extends MetodosComunes {
         Properties prop = loadProperty();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(WAIT_30, TimeUnit.SECONDS);
         driver.get(prop.getProperty("url") + "/pc/PolicyCenter.do");
-        wait = new WebDriverWait(driver, 1000);
     }
 
     private void initPages() {

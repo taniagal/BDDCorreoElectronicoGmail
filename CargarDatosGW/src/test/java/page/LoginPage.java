@@ -26,14 +26,13 @@ public class LoginPage {
     private WebElement botonIniciarSeus;
     @FindBy(xpath = ".//*[@id='TabBar:PolicyTab-btnWrap']")
     private WebElement menuPoliza;
-
-    private static final int DIEZ = 10;
-    private static final int TRES = 3;
-    private static final int TREINTA = 30;
+    private static final int WAIT_10 = 10;
+    private static final int WAIT_3 = 3;
+    private static final int WAIT_30 = 30;
 
     public void login(String usuario, String contrasenia, WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, DIEZ);
-        driver.manage().timeouts().implicitlyWait(TRES, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, WAIT_10);
+        driver.manage().timeouts().implicitlyWait(WAIT_3, TimeUnit.SECONDS);
         if (driver.findElements(By.xpath(".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")).size() > 0) {
             campoTxtUsuario.sendKeys("su");
             campoTxtContrasenia.sendKeys("gw");
@@ -46,7 +45,7 @@ public class LoginPage {
             campoTxtContraseniaSeus.sendKeys(contrasenia);
             botonIniciarSeus.click();
         }
-        driver.manage().timeouts().implicitlyWait(TREINTA, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(WAIT_30, TimeUnit.SECONDS);
         wait.until(ExpectedConditions.elementToBeClickable(menuPoliza)).isDisplayed();
     }
 }
