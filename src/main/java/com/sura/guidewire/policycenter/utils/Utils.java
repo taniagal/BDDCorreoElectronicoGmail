@@ -14,8 +14,9 @@ public class Utils {
     protected static final int CONSTANTE_99999999 = 99999999;
     protected static final int CONSTANTE_900000000 = 900000000;
     protected static final int CONSTANTE_999999999 = 999999999;
-
     java.text.NumberFormat nuevoFormato = java.text.NumberFormat.getInstance();
+    private Utils(){
+    }
 
     public static String sumarDiasALaFechaActual(int dias) {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");

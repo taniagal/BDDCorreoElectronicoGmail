@@ -86,6 +86,7 @@ public class ModificadoresDeTarifaSteps extends ScenarioSteps {
     @Step
     public void cambiarBonificacionTecnica(String bonoT) {
         modificadoresDeTarifaPage.cambiarBonificacionTecnica(bonoT);
+        modificadoresDeTarifaPage.verificarModificadoresHabilitados();
     }
 
     @Step
