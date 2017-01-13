@@ -83,7 +83,13 @@ public class PageUtil extends PageObject {
         }
         clickElement(element);
         waitUntil(WAIT_TIME_200);
-        element.clear();
+        try {
+            element.clear();
+        } catch (StaleElementReferenceException g) {
+            LOGGER.info("StaleElementReferenceException " + g);
+            waitUntil(WAIT_TIME_2000);
+            element.clear();
+        }
         element.sendKeys(option);
         element.sendKeys(Keys.ENTER);
     }
@@ -250,5 +256,9 @@ public class PageUtil extends PageObject {
                 LOGGER.info("--- click " + i);
             }
         }
+    }
+
+    public boolean esEditable(WebElementFacade element) {
+        return element.getAttribute("class").contains("x-form-text");
     }
 }
