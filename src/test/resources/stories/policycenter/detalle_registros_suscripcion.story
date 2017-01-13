@@ -1,7 +1,7 @@
 Detalle Registros Suscripcion
 
-Meta: @lote3
-
+Meta:
+@lote3
 @issue #SUGWUSC-14959
 @tag automator: Eliana_Alvarez
 

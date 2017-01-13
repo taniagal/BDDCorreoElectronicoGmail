@@ -1,7 +1,7 @@
 Sustituciones
 
 Meta:
-@lote3
+@lote2
 @tag automator: juan_carlos_restrepo
 @issue #CDSEG-4998
 @sprint 12

@@ -82,8 +82,8 @@ public class SustitucionesPage extends PageUtil {
         MatcherAssert.assertThat("Error, el valor de la zona es Incorrecto", labelTextoZona.getText().equals(vehiculo.get("zona")));
         MatcherAssert.assertThat("Error, el valor del Tipo de servicio es Incorrecto", comboBoxTipoServicio.getValue().equals(vehiculo.get("vehiculo_servicio")));
         MatcherAssert.assertThat("Error, No se encuentra el Asegurado", tablaAsegurado.isPresent());
-        MatcherAssert.assertThat("Error, el valor de la bonificacion comercial es Incorrecto", campoTextoBonificacionComercial.getValue().equals(vehiculo.get("bonificacionC")));
-        MatcherAssert.assertThat("Error, el valor de la suavizacion es Incorrecto", campoTextoSuavizacion.getValue().equals(vehiculo.get("suavizacion")));
+        MatcherAssert.assertThat("Error, el valor de la bonificacion comercial es Incorrecto", campoTextoBonificacionComercial.getText().equals(vehiculo.get("bonificacionC")));
+        MatcherAssert.assertThat("Error, el valor de la suavizacion es Incorrecto", campoTextoSuavizacion.getText().equals(vehiculo.get("suavizacion")));
         MatcherAssert.assertThat("Error, el valor de la bonificacion tecnica es Incorrecto", campoTextoBonificacionTecnica.getValue().equals(vehiculo.get("bonificacionT")));
     }
 

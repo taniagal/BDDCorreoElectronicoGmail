@@ -38,7 +38,7 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
     WebElementFacade lblInformaPoliza;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ttlBar']")
     WebElementFacade lblNuevaCotizacion;
-    @FindBy(xpath = "//a[contains(.,'Cotizar')]")
+    @FindBy(xpath = ".//a[contains(.,'Cotizar')]")
     WebElementFacade botonCotizar;
     @FindBy(xpath = ".//*[@id='NewSubmission:NewSubmissionScreen:ProductOffersDV:ProductSelectionLV:ProductSelectionLV-body']")
     WebElementFacade lblTabla;
@@ -164,7 +164,10 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
         btnAgregar.waitUntilPresent();
         clickElement(btnAgregar);
         itemDirectorio.waitUntilVisible().waitUntilClickable().click();
-        selectItem(itemTipoDocumento, tipoDocumento);
+        itemTipoDocumento.waitUntilPresent().clear();
+        waitUntil(WAIT_TIME_300);
+        itemTipoDocumento.sendKeys(tipoDocumento);
+        itemTipoDocumento.sendKeys(Keys.ENTER);
         waitForAnyTextToAppear("Primer nombre", "Razón social");
         txtNumDocumento.sendKeys(documento);
         clickElement(btnBuscar);
@@ -491,15 +494,6 @@ public class OpcionesInformacionPolizaMrcPage extends PageUtil {
 
     public void darClicEnAceptarDeCoaseuguro() {
         botonAceptarCoaseguro.click();
-       /* setImplicitTimeout(WAIT_TIME_1,TimeUnit.SECONDS);
-        if ($(".message").isPresent()){
-            resetImplicitTimeout();
-            $(".//*[@id='Coinsurance_ExtPopup:insuranceLV-body']/div/table/tbody/tr[2]/td[2]/div").click();
-            actions.click().build().perform();
-            actions.sendKeys("ACE SEGUROS S.A.").build().perform();
-            actions.sendKeys(Keys.TAB).build().perform();
-        }
-        resetImplicitTimeout();*/
     }
 
 

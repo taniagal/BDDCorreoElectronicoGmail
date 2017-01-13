@@ -1,6 +1,5 @@
 package com.sura.guidewire.policycenter.utils.navegacion.pages;
 
-import com.google.common.base.Function;
 import com.sura.guidewire.policycenter.resources.PageUtil;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -13,25 +12,23 @@ import org.openqa.selenium.support.FindBy;
 import java.util.concurrent.TimeUnit;
 
 
-
 @DefaultUrl("http://local.sura.com:8180/pc/PolicyCenter.do")
 //@DefaultUrl("http://dllocoreseguros.suramericana.com:7003/pc/PolicyCenter.do")
-public class GuidewireLoginPages extends PageUtil{
+public class GuidewireLoginPages extends PageUtil {
 
     @FindBy(xpath = ".//*[@id='country']")
-    private WebElementFacade pais;
+    private WebElementFacade campoPais;
     @FindBy(id = "username")
-    private WebElementFacade usuario;
+    private WebElementFacade campoUsuario;
     @FindBy(xpath = ".//*[@id='password']")
-    private WebElementFacade contrasenia;
+    private WebElementFacade campoContrasenia;
     @FindBy(xpath = ".//*[@id='lower']/input")
-    private WebElementFacade btnSubmit;
+    private WebElementFacade botonEnviar;
     @FindBy(xpath = ".//*[@id='TabBar:ContactTab-btnWrap']")
-    private WebElementFacade mnuContact;
+    private WebElementFacade menuContacto;
     @FindBy(xpath = ".//*[@id='Login:LoginScreen:LoginDV:username-inputEl']")
-    private WebElementFacade usuario1;
+    private WebElementFacade campoUsuario1;
 
-    private static final long serialVersionUID = 1L;
     public static final String TITULO_PAGINA_PPL_DE_ACCESO = ".//span[@id='DesktopActivities:DesktopActivitiesScreen:0']";
     public static final String TXT_USUARIO_SEUS = "//input[@placeholder='Usuario']";
     public static final String TXT_USUARIO = "//input[@id='Login:LoginScreen:LoginDV:username-inputEl']";
@@ -41,20 +38,9 @@ public class GuidewireLoginPages extends PageUtil{
     public static final String BTN_LOGIN_SEUS = "//input[@type='submit']";
     public static final String BTN_LOGIN = "//span[@id='Login:LoginScreen:LoginDV:submit-btnInnerEl']";
     public static final String MNU_CONTACTO = "//span[@id='TabBar:ContactTab-btnInnerEl']";
-    private static final int CONSTANTE_5 = 5;
-    private static final int CONSTANTE_250 = 250;
 
-    public GuidewireLoginPages(WebDriver driver){
+    public GuidewireLoginPages(WebDriver driver) {
         super(driver);
-    }
-
-    public void clicBotonLogIn(){
-        findBy(BTN_LOGIN).then().click();
-    }
-
-    public void digitar(String elemento, String valor){
-        enter(valor).into($(elemento ));
-        esperarAQueDigite(elemento, valor);
     }
 
     public WebElementFacade elemento(String xpath) {
@@ -68,7 +54,7 @@ public class GuidewireLoginPages extends PageUtil{
 
         } catch (NoSuchElementException e) {
             LOGGER.info("Elemento de NuevaCotizacionPage no encontrado Elemento: " + xpath + "TRACE: " + e);
-        } catch (StaleElementReferenceException sere){
+        } catch (StaleElementReferenceException sere) {
             LOGGER.info("Elemento de NuevaCotizacionPage no existe en el DOM Elemento: " + xpath + "TRACE: " + sere);
         } catch (Exception e) {
             LOGGER.info("Error desconocido en: NuevaCotizacionPage.elemento Elemento: " + xpath + "TRACE: " + e);
@@ -76,24 +62,8 @@ public class GuidewireLoginPages extends PageUtil{
         return elemento;
     }
 
-    public String obtenerTituloPaginaPplAcceso(){
+    public String obtenerTituloPaginaPplAcceso() {
         return $(TITULO_PAGINA_PPL_DE_ACCESO).getText();
-    }
-
-    private void esperarAQueDigite(String elemento, String valor) {
-        waitForCondition()
-                .withTimeout(CONSTANTE_5, TimeUnit.SECONDS)
-                .pollingEvery(CONSTANTE_250,TimeUnit.MILLISECONDS)
-                .until(valorDeEntradaActualizadoA(elemento, valor));
-    }
-
-    private Function<? super WebDriver, Boolean> valorDeEntradaActualizadoA(final String elemento, final String valor) {
-        return new Function<WebDriver, Boolean>() {
-            @Override
-            public Boolean apply(WebDriver webDriver) {
-                return $(elemento).getValue().equalsIgnoreCase(valor);
-            }
-        };
     }
 
 
@@ -101,29 +71,23 @@ public class GuidewireLoginPages extends PageUtil{
         LOGGER.info("INICIO GuidewireLoginPages.ingresarPorRol( " + rol + ")");
         if ("Asesor".equals(rol)) {
             setImplicitTimeout(0, TimeUnit.SECONDS);
-            if (!mnuContact.isPresent()) {
-                if (usuario1.isPresent()) {
-                    if (!findAll(TXT_USUARIO).isEmpty()) {
-                        enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
-                        enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
-                        elemento(GuidewireLoginPages.BTN_LOGIN).click();
-                    }
-                } else {
-                    this.usuario.waitUntilPresent();
-                    this.usuario.clear();
-                    this.contrasenia.clear();
-                    this.pais.click();
-                    this.pais.selectByVisibleText("Colombia");
-                    this.usuario.type("pedrvevi");
-                    this.contrasenia.type("pedrvevi");
-                    btnSubmit.click();
-                }
+            if (!menuContacto.isPresent() && campoUsuario1.isPresent() && !findAll(TXT_USUARIO).isEmpty()) {
+                enter("su").into(elemento(GuidewireLoginPages.TXT_USUARIO));
+                enter("gw").into(elemento(GuidewireLoginPages.TXT_CONTRASENIA));
+                elemento(GuidewireLoginPages.BTN_LOGIN).click();
+            } else {
+                this.campoUsuario.waitUntilPresent();
+                this.campoUsuario.clear();
+                this.campoContrasenia.clear();
+                this.campoPais.click();
+                this.campoPais.selectByVisibleText("Colombia");
+                this.campoUsuario.type("pedrvevi");
+                this.campoContrasenia.type("pedrvevi");
+                botonEnviar.click();
             }
-            resetImplicitTimeout();
         }
+        resetImplicitTimeout();
         waitForPresenceOf(MNU_CONTACTO);
         LOGGER.info("FIN GuidewireLoginPages.ingresarPorRol( " + rol + ")");
     }
 }
-
-
