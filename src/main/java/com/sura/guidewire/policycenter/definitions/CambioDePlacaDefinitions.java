@@ -12,6 +12,7 @@ import org.jbehave.core.model.ExamplesTable;
 public class CambioDePlacaDefinitions {
     @Steps
     CambioDePlacaSteps cambioDePlacaSteps;
+
     @Steps
     TarifaAutosSteps tarifaAutosSteps;
 
