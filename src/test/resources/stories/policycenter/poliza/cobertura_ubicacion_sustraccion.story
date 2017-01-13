@@ -133,7 +133,6 @@ Given que estoy en edificios y ubicaciones de una poliza <numSubscripcion> con e
 When intente ingresar las entradas de las diferentes coberturas
 | TAB                   | TIPO_ARTICULO | OTRO_ARTICULO_OTROS | COBERTURA   | ENTRADAS                                                                       | VALOR_ENTRADAS |
 | Coberturas del Riesgo |               |                     | Sustraccion | Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte | 11             |
-When haga clic en el boton Aceptar
 Then se debe validar que el valor ingresado en este sublimite sea menor o igual a la suma de los valores asegurables del equipo electronico movil y portatil (se suman los de la categoria otros y los normales).
 | MENSAJES_WORKSPACE                                                                                                                                                                      |
 | El valor de "Sublimite sustracion con violencia de dinero en efectivo dentro de caja fuerte" deber ser menor o igual a la sumatoria de los valores asegurables de "Dinero en efectivo". |
