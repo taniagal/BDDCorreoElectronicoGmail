@@ -76,6 +76,16 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     private WebElementFacade linkDescartarCambios;
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:InputCoverageBuilding:ArticleTypeDetailDV:CPBuildingInteresAdicional:CPAdditionalInteresInputSet:AdditionalInterestLV_tb:AddContactsButton:AddFromSearch']")
     private WebElementFacade menuItemDelDireciotio;
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']")
+    private WebElementFacade comboBoxDepartamento;
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']")
+    private WebElementFacade comboBoxCiudad;
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']")
+    private WebElementFacade campoTxtDireccion;
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']")
+    private WebElementFacade comboBoxActividadEconomica;
+    @FindBy(xpath = ".//*[@id='CPLocationPopup:Update-btnInnerEl']")
+    private WebElementFacade botonAceptar;
 
 
     public EdificiosyUbicacionesWidget(WebDriver driver) {
@@ -128,43 +138,23 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
         waitForTextToAppear(tituloDePaginaAgregarArticulos);
     }
 
-    public void agregarNuevaUbicacion(String pais, String depto, String ciudad, String direccion, String actividadEconomica) {
+    public void agregarNuevaUbicacion(String departamento, String ciudad, String direccion, String actividad) {
         waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES);
         findBy(LINK_AGREGAR_UBICACION).shouldBeVisible();
         clickElement(findBy(LINK_AGREGAR_UBICACION));
         findBy(LINK_OPCION_UBICACION_NUEVA).shouldBeVisible();
         clickElement(findBy(LINK_OPCION_UBICACION_NUEVA));
-
-        waitForTextToAppear("Información de ubicación");
-        String xpathPais = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Country-inputEl']";
-        String xpathDepto = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:State-inputEl']";
-        String xpathCiudad = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:Sura_City-inputEl']";
-        String xpathDireccion = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:TargetedAddressInputSet:globalAddressContainer:GlobalAddressInputSet:AddressLine1-inputEl']";
-        String xpathActividadEconomica = ".//*[@id='CPLocationPopup:LocationDetailDV:LocationDetailInputSet:EconomicActivity-inputEl']";
-
-        $(xpathPais).type(pais);
-        $(xpathPais).click();
-        waitFor(WAIT_TIME_2).seconds();
-        enter(depto).into($(xpathDepto));
-        waitFor(WAIT_TIME_2).seconds();
-        $(xpathDepto).click();
-        waitFor(WAIT_TIME_5).seconds();
-        $(xpathCiudad).type(ciudad);
-        waitUntil(WAIT_TIME_3000);
-        $(xpathCiudad).click();
-        waitFor(WAIT_TIME_3).seconds();
-        $(xpathDireccion).type(direccion);
-        waitFor(WAIT_TIME_2).seconds();
-        $(xpathDireccion).click();
-        waitFor(WAIT_TIME_3).seconds();
-        $(xpathActividadEconomica).type(actividadEconomica);
-        waitFor(WAIT_TIME_3).seconds();
-        $(xpathActividadEconomica).sendKeys(Keys.ENTER);
-        waitFor(WAIT_TIME_3).seconds();
-        clickElement($(".//*[@id='CPLocationPopup:Update']"));
-        setImplicitTimeout(WAIT_TIME_5, TimeUnit.SECONDS);
+        campoTxtDireccion.waitUntilPresent().sendKeys(direccion);
+        selectItem(comboBoxDepartamento, departamento);
+        waitForComboValue(comboBoxDepartamento, departamento);
+        selectItem(comboBoxCiudad, ciudad);
+        waitForComboValue(comboBoxCiudad, ciudad);
+        selectItem(comboBoxActividadEconomica, actividad);
+        waitForComboValue(comboBoxActividadEconomica, actividad);
+        clickElement(botonAceptar);
+        setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);
         if (botonBorrar.isVisible()) {
-            clickElement(findBy(".//*[@id='CPLocationPopup:Update']"));
+            clickElement(botonAceptar);
             waitForTextToAppear(LABEL_EDIFICIOS_Y_UBICACIONES, WAIT_TIME_30000);
         }
         resetImplicitTimeout();
@@ -180,11 +170,11 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
     }
 
     public void ingresarNuevaUbicacionConRiesgoConsultable() {
-        agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
+        agregarNuevaUbicacion("Antioquia", "Medellin", "CR 65 45 45", "Acabado de productos textiles");
     }
 
     public void ingresarNuevaUbicacionSinRiesgoConsultable() {
-        agregarNuevaUbicacion("Colombia", "Antioquia", "Medellin", "CR 45 30 30", "Acabado de productos textiles");
+        agregarNuevaUbicacion("Antioquia", "Medellin", "CR 45 30 30", "Acabado de productos textiles");
     }
 
     public void removerRiesgos() {
@@ -215,7 +205,6 @@ public class EdificiosyUbicacionesWidget extends PageUtil {
             waitForTextToAppear("Edificios y ubicaciones");
         }
     }
-
 
     public void seleccionarTab(String tab) {
         setImplicitTimeout(WAIT_TIME_2, TimeUnit.SECONDS);

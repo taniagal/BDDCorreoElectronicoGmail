@@ -7,12 +7,10 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.jbehave.core.model.ExamplesTable;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.Map;
-
 
 public class CambioDePlacaPage extends PageUtil {
 
@@ -91,7 +89,6 @@ public class CambioDePlacaPage extends PageUtil {
         super(driver);
     }
 
-
     public void cambiarPlaca(String placa) {
         waitUntil(WAIT_TIME_2000);
         campoTxtPlaca.clear();
@@ -115,7 +112,6 @@ public class CambioDePlacaPage extends PageUtil {
         MatcherAssert.assertThat("Error, el tipo de servicio fue modificada", txtTipoServicio.getValue().equals(datos.get("tipoServicio")));
         MatcherAssert.assertThat("Error, el motor fue modificada", txtMotor.getValue().equals(datos.get("motor")));
         MatcherAssert.assertThat("Error, el chasis  fue modificada", txtChasis.getValue().equals(datos.get("chasis")));
-
     }
 
     public void mostrarPlacaInicial(String placaInicial) {
@@ -152,7 +148,6 @@ public class CambioDePlacaPage extends PageUtil {
         MatcherAssert.assertThat("Error, mensaje no encontrado", labelMensajePlacaExistente.getText().equals(datos.get("mensaje")));
     }
 
-
     public void clickItemCambiarPlaca() {
         Actions actions = new Actions(getDriver());
         int intentos = 0;
@@ -183,26 +178,15 @@ public class CambioDePlacaPage extends PageUtil {
         }
     }
 
-
     public void expedirCambioPoliza() {
         botonExpedirPoliza.waitUntilPresent().click();
         botonAceptarExpedicion.waitUntilPresent().click();
     }
 
-
     public void mensajeAutorizacion(ExamplesTable mensajeAutorizacion) {
         Map<String, String> datos = mensajeAutorizacion.getRow(0);
         tablaRequisitos.waitUntilPresent();
         MatcherAssert.assertThat("Error, mensaje no encontrado", labelRequisitoPorPlacaExtrangera.getText().equals(datos.get("mensajeAutorizacion")));
-
-    }
-
-    public void clickSiguiente() {
-        clickElement(botonSiguienteProducto);
-    }
-
-    public void clickAgregarVehiculo() {
-        clickElement(botonAgregarVehiculo);
     }
 
     public void editarCambioPoliza() {
@@ -217,12 +201,11 @@ public class CambioDePlacaPage extends PageUtil {
 
     public void ingresarPlacaRiesgoConsultable(String placaRiesgoConsultable) {
         clickElement(menuItemVehiculosModificacion);
-        this.deseleccionarCheckBoxDePlaca();
-        this.clickItemCambiarPlaca();
+        clickElement(checkBoxCambioDePlaca);
+        clickElement(checkBoxCambioDePlaca);
+        waitUntil(WAIT_TIME_2000);
         campoTxtPlaca.clear();
         campoTxtPlaca.sendKeys(placaRiesgoConsultable);
-        campoTxtPlaca.sendKeys(Keys.TAB);
-        waitForTextToAppear(placaRiesgoConsultable.toUpperCase());
     }
 
     public void mensajePlacaRiesgoConsultable(ExamplesTable mensajePlacaRiesgoConsultable) {
@@ -236,9 +219,9 @@ public class CambioDePlacaPage extends PageUtil {
         selectItem(campoTxtCiudad, ciudad);
     }
 
-    public void mensajeDeAutorizacion(ExamplesTable mensajeDeAutorizacion) {
-        Map<String, String> datos = mensajeDeAutorizacion.getRow(0);
-        tablaRequisitosModificacion.waitUntilPresent();
-        MatcherAssert.assertThat(tablaRequisitosModificacion.getText(), Matchers.containsString(datos.get("mensajeDeAutorizacion")));
+    public String validarMensajeAutorizacion() {
+        labelMensajePlacaExtranjeraCucuta.waitUntilPresent();
+        return labelMensajePlacaExtranjeraCucuta.getText();
     }
+
 }

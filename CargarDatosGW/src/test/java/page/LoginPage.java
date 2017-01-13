@@ -30,7 +30,6 @@ public class LoginPage {
     private static final int WAIT_3 = 3;
     private static final int WAIT_30 = 30;
 
-
     public void login(String usuario, String contrasenia, WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, WAIT_10);
         driver.manage().timeouts().implicitlyWait(WAIT_3, TimeUnit.SECONDS);

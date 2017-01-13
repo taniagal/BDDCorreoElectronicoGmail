@@ -2,8 +2,9 @@ package com.sura.guidewire.policycenter.steps;
 
 import com.sura.guidewire.policycenter.pages.CambioDePlacaPage;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.jbehave.core.model.ExamplesTable;
-
 
 public class CambioDePlacaSteps extends ScenarioSteps {
 
@@ -11,7 +12,6 @@ public class CambioDePlacaSteps extends ScenarioSteps {
 
     public void cambioDePlaca(String placa) {
         cambioDePlacaPage.cambiarPlaca(placa);
-
     }
 
     public void clickCambiarPlaca() {
@@ -20,8 +20,6 @@ public class CambioDePlacaSteps extends ScenarioSteps {
 
     public void datosDePlacaAnterior(ExamplesTable datosPlaca) {
         cambioDePlacaPage.datosPlacaAnterior(datosPlaca);
-
-
     }
 
     public void cambioPlacaSegundaVez() {
@@ -52,17 +50,8 @@ public class CambioDePlacaSteps extends ScenarioSteps {
         cambioDePlacaPage.expedirCambioPoliza();
     }
 
-
     public void mensajeAutorizacion(ExamplesTable mensajeAutorizacion) {
         cambioDePlacaPage.mensajeAutorizacion(mensajeAutorizacion);
-    }
-
-    public void clickSiguiente() {
-        cambioDePlacaPage.clickSiguiente();
-    }
-
-    public void clickAgregarVehiculo() {
-        cambioDePlacaPage.clickAgregarVehiculo();
     }
 
     public void editarCambioDePoliza() {
@@ -78,11 +67,11 @@ public class CambioDePlacaSteps extends ScenarioSteps {
     }
 
     public void ingresarPlacaExtranjera(String venezolana, String ciudad) {
-        cambioDePlacaPage.ingresarPlacaExtranjera(venezolana,ciudad);
+        cambioDePlacaPage.ingresarPlacaExtranjera(venezolana, ciudad);
     }
 
     public void mensajeDeAutorizacion(ExamplesTable mensajeDeAutorizacion) {
-        cambioDePlacaPage.mensajeDeAutorizacion(mensajeDeAutorizacion);
-
+        String mensajePlacaNoAutorizada = mensajeDeAutorizacion.getRow(0).get("mensajeDeAutorizacion");
+        MatcherAssert.assertThat("mensaje personalizado",cambioDePlacaPage.validarMensajeAutorizacion(), Matchers.containsString(mensajePlacaNoAutorizada));
     }
 }
