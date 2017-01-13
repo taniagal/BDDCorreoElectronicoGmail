@@ -6,6 +6,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import java.util.concurrent.TimeUnit;
 
 public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
     @FindBy(xpath = ".//*[@id='CPBuildingSuraPopup:Update-btnInnerEl']")
@@ -65,7 +66,7 @@ public class AgregarArticuloEdificiosyUbicacionesWidget extends PageUtil {
 
     public void seleccionarBotonAceptarParteSuperiorIzquierda() {
             waitUntil(WAIT_TIME_2000);
-            botonActualizar.waitUntilPresent();
+            withTimeoutOf(WAIT_TIME_28, TimeUnit.SECONDS).waitFor(botonActualizar).waitUntilPresent();
             clickElement(botonActualizar);
     }
 

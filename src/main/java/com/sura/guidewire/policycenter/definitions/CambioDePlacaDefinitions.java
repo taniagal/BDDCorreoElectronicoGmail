@@ -1,8 +1,6 @@
 package com.sura.guidewire.policycenter.definitions;
 
 import com.sura.guidewire.policycenter.steps.CambioDePlacaSteps;
-import com.sura.guidewire.policycenter.steps.ExpedicionDePolizaSteps;
-import com.sura.guidewire.policycenter.steps.InformacionPolizaPASteps;
 import com.sura.guidewire.policycenter.steps.tarifacion.TarifaAutosSteps;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;

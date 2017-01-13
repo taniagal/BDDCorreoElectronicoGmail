@@ -34,9 +34,12 @@ public class PrecondicionesPage {
     private WebElement menuItemIdioma;
     @FindBy(xpath = ".//*[@id='TabBar:LanguageTabBarLink:languageSwitcher:1:langs-textEl']")
     private WebElement menuItemColombia;
+    private static final int WAIT_1000 = 1000;
+    private static final int WAIT_10 = 10;
+    private static final int WAIT_2000 = 2000;
 
     public void cargarDatos(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 1000);
+        WebDriverWait wait = new WebDriverWait(driver, WAIT_1000);
         campoTxtBuscar.sendKeys(Keys.ALT, Keys.SHIFT, "t");
         wait.until(ExpectedConditions.elementToBeClickable(menuHerramientasInternas)).isDisplayed();
         menuHerramientasInternas.click();
@@ -52,7 +55,7 @@ public class PrecondicionesPage {
     }
 
     public void elegirLenguaje(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, WAIT_10);
         Actions actions = new Actions(driver);
         botonPreferencias.click();
         wait.until(ExpectedConditions.elementToBeClickable(menuItemInternacional)).isDisplayed();
@@ -62,6 +65,6 @@ public class PrecondicionesPage {
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
         wait.until(ExpectedConditions.elementToBeClickable(menuItemColombia)).isDisplayed();
         menuItemColombia.click();
-        MetodosComunes.waitUntil(2000);
+        MetodosComunes.waitUntil(WAIT_2000);
     }
 }

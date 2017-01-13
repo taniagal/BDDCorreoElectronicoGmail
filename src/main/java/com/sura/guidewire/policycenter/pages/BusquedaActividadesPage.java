@@ -157,7 +157,13 @@ public class BusquedaActividadesPage extends PageUtil {
 
     public void ingresarDatoEnCombo(WebElementFacade elemento, String dato) {
         waitFor(elemento);
-        elemento.clear();
+        try {
+            elemento.clear();
+        } catch (StaleElementReferenceException e) {
+            LOGGER.info("StaleElementReferenceException " + e);
+            waitUntil(WAIT_TIME_2000);
+            elemento.clear();
+        }
         elemento.sendKeys(dato);
         try {
             elemento.sendKeys(Keys.ENTER);
