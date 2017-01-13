@@ -194,11 +194,12 @@ public class PageUtil extends PageObject {
         int maximoEjecuciones = CONSTANTE_MAXIMO_EJECUCIONES;
         int ejecuciones = CONSTANTE_CUENTA_EJECUCIONES;
         while (ejecuciones < maximoEjecuciones && !ejecuto) {
-            this.waitUntil(WAIT_TIME_1000);
+            waitUntil(WAIT_TIME_1000);
             try {
                 clickElement(elemento);
                 ejecuto = true;
             } catch (Exception ex) {
+                LOGGER.info("Exception " + ex);
             }
             ejecuciones = ejecuciones + 1;
         }
