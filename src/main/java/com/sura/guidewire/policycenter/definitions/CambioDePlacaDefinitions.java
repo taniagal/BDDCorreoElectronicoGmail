@@ -12,8 +12,15 @@ import org.jbehave.core.model.ExamplesTable;
 public class CambioDePlacaDefinitions {
     @Steps
     CambioDePlacaSteps cambioDePlacaSteps;
+
     @Steps
     TarifaAutosSteps tarifaAutosSteps;
+
+    @Steps
+    InformacionPolizaPASteps informacionPolizaPASteps;
+
+    @Steps
+    ExpedicionDePolizaSteps expedicionDePolizaSteps;
 
     @When("cuando cambie la placa <placa>")
     public void cambiarPlaca(@Named("placa") String placa) {
